@@ -71,6 +71,42 @@ test("supports Home, End, Space, and Enter without duplicate change events", () 
   expect(change).not.toHaveBeenCalled();
 });
 
+test("supports viewport/track markup and only scrolls the track", () => {
+  document.body.innerHTML = `
+    <fieldset class="instui-segmented-control" aria-label="Course view">
+      <div class="viewport">
+        <button class="overflow-start" type="button" aria-label="Previous" hidden></button>
+        <div class="track">
+          <label><input type="radio" name="view" checked> Grid</label>
+          <label><input type="radio" name="view"> Map</label>
+          <label><input type="radio" name="view"> List</label>
+        </div>
+        <button class="overflow-end" type="button" aria-label="Next" hidden></button>
+      </div>
+    </fieldset>`;
+  const host = document.querySelector<HTMLElement>(".instui-segmented-control")!;
+  const track = document.querySelector<HTMLElement>(".track")!;
+  const start = document.querySelector<HTMLButtonElement>(".overflow-start")!;
+  const end = document.querySelector<HTMLButtonElement>(".overflow-end")!;
+  Object.defineProperty(track, "scrollWidth", { configurable: true, value: 300 });
+  Object.defineProperty(track, "clientWidth", { configurable: true, value: 100 });
+  Object.defineProperty(track, "scrollLeft", { configurable: true, writable: true, value: 0 });
+  Object.defineProperty(start, "offsetWidth", { configurable: true, value: 20 });
+  Object.defineProperty(end, "offsetWidth", { configurable: true, value: 20 });
+  Object.defineProperty(track, "scrollBy", {
+    configurable: true,
+    value: vi.fn((options) => {
+      track.scrollLeft = Number(options.left ?? 0);
+    }),
+  });
+  const handle = initSegmentedControl(host, { isOverflown: true });
+  expect(start.hidden).toBe(true);
+  expect(end.hidden).toBe(false);
+  end.click();
+  expect(track.scrollLeft).toBeGreaterThan(0);
+  handle.cleanup();
+});
+
 test("enables overflow arrows only when requested and measured content clips", () => {
   const { host, strip, start, end } = setup();
   Object.defineProperty(strip, "scrollWidth", { configurable: true, value: 300 });

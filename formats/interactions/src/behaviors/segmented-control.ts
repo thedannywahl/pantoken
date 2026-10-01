@@ -20,11 +20,12 @@ export function initSegmentedControl(
   const existing = initialized.get(host);
   if (existing) return existing;
 
-  const strip = host;
-  const startButton = host.querySelector<HTMLButtonElement>(":scope > .overflow-start");
-  const endButton = host.querySelector<HTMLButtonElement>(":scope > .overflow-end");
+  const viewport = host.querySelector<HTMLElement>(":scope > .viewport") ?? host;
+  const strip = viewport.querySelector<HTMLElement>(":scope > .track") ?? viewport;
+  const startButton = viewport.querySelector<HTMLButtonElement>(":scope > .overflow-start");
+  const endButton = viewport.querySelector<HTMLButtonElement>(":scope > .overflow-end");
   const radios = (): HTMLInputElement[] => [
-    ...host.querySelectorAll<HTMLInputElement>(":scope > label > input[type=radio]"),
+    ...strip.querySelectorAll<HTMLInputElement>(":scope > label > input[type=radio]"),
   ];
   const segments = (): HTMLElement[] => [...strip.querySelectorAll<HTMLElement>(":scope > label")];
   const isOverflown = options.isOverflown ?? true;
@@ -44,8 +45,8 @@ export function initSegmentedControl(
   }
 
   const bounds = (): { left: number; right: number; rtl: boolean } => {
-    const rect = strip!.getBoundingClientRect();
-    const rtl = getComputedStyle(strip!).direction === "rtl";
+    const rect = strip.getBoundingClientRect();
+    const rtl = getComputedStyle(strip).direction === "rtl";
     return {
       left: rect.left + (startButton?.hidden ? 0 : arrowWidth),
       right: rect.right - (endButton?.hidden ? 0 : arrowWidth),
@@ -66,7 +67,7 @@ export function initSegmentedControl(
   };
 
   const updateArrows = (): void => {
-    if (!strip || !startButton || !endButton) return;
+    if (!startButton || !endButton) return;
     const { left, right, rtl } = bounds();
     if (!rtl) {
       startButton.hidden = strip.scrollLeft <= 1;
@@ -82,9 +83,11 @@ export function initSegmentedControl(
   };
 
   const refresh = (): void => {
-    if (!strip || !startButton || !endButton || !isOverflown) {
+    if (!isOverflown) {
       if (startButton) startButton.hidden = true;
       if (endButton) endButton.hidden = true;
+      strip.style.removeProperty("--pantoken-segmented-start-reserve");
+      strip.style.removeProperty("--pantoken-segmented-end-reserve");
       return;
     }
     strip.style.removeProperty("--pantoken-segmented-start-reserve");
@@ -92,13 +95,13 @@ export function initSegmentedControl(
     const overflows = strip.scrollWidth > strip.clientWidth + 1;
     if (!overflows) {
       arrowWidth = 0;
-      startButton.hidden = true;
-      endButton.hidden = true;
+      if (startButton) startButton.hidden = true;
+      if (endButton) endButton.hidden = true;
       return;
     }
-    startButton.hidden = true;
-    endButton.hidden = false;
-    arrowWidth = Math.max(startButton.offsetWidth, endButton.offsetWidth);
+    arrowWidth = Math.max(startButton?.offsetWidth ?? 0, endButton?.offsetWidth ?? 0);
+    if (startButton) startButton.hidden = true;
+    if (endButton) endButton.hidden = false;
     updateArrows();
   };
 

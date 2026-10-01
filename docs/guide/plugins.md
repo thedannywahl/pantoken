@@ -86,10 +86,14 @@ press. Use logical start/end controls and accessible button labels in both direc
 
 ```html
 <fieldset class="instui-segmented-control" aria-label="Course view" data-overflown>
-  <button class="overflow-start" type="button" aria-label="Previous views" hidden></button>
-  <label><input type="radio" name="course-view" checked /> Grid</label>
-  <label><input type="radio" name="course-view" /> List</label>
-  <button class="overflow-end" type="button" aria-label="Next views" hidden></button>
+  <div class="viewport">
+    <button class="overflow-start" type="button" aria-label="Previous views" hidden></button>
+    <div class="track">
+      <label><input type="radio" name="course-view" checked /> Grid</label>
+      <label><input type="radio" name="course-view" /> List</label>
+    </div>
+    <button class="overflow-end" type="button" aria-label="Next views" hidden></button>
+  </div>
 </fieldset>
 ```
 
@@ -121,9 +125,9 @@ per page and a separate empty alert in the server HTML, both **outside** the bus
   <span class="instui-screen-reader-content" role="alert" data-skeleton-error></span>
   <section data-skeleton-region aria-busy="true">
     <div class="instui-skeleton-loader -type-text -size-md" aria-hidden="true">
-      <div class="shape"><span class="animation"></span></div>
+      <div class="shape"></div>
       <div class="skeleton-row">
-        <div class="shape"><span class="animation"></span></div>
+        <div class="shape"></div>
       </div>
     </div>
   </section>

@@ -128,16 +128,17 @@ test("skeleton loader supports prefixing and all decorative variants", () => {
   const css = skeletonLoaderRules();
   expect(css).toContain(".instui-skeleton-loader");
   expect(css).toContain(".skeleton-row");
-  expect(css).toContain("-type-text");
-  expect(css).toContain("-type-avatar");
-  expect(css).toContain("-type-image");
-  expect(css).toContain(".animation");
+  expect(css).toContain("&.-type-text");
+  expect(css).toContain("&.-type-avatar");
+  expect(css).toContain("&.-type-image");
+  expect(css).toContain("::before");
   expect(skeletonLoaderRules("my-")).toContain(".my-skeleton-loader");
   expect(skeletonLoaderRules("")).toContain(".skeleton-loader {");
 });
 
 test("skeleton text rows use size-specific heights and internal leading", () => {
   const css = skeletonLoaderRules();
+  expect(css).toContain("&.-size-md");
   for (const size of ["xxs", "xs", "sm", "md", "lg", "xl", "xxl"]) {
     expect(css).toContain(`--instui-component-skeleton-loader-text-height-${size}`);
     expect(css).toContain(`--instui-component-skeleton-loader-text-padding-${size}`);

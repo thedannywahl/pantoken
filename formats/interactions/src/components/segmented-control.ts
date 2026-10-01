@@ -1,4 +1,3 @@
-// fallow-ignore-file unused-file
 /* c8 ignore file */
 import { initSegmentedControl } from "../behaviors/segmented-control.js";
 

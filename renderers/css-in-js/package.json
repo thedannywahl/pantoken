@@ -39,8 +39,12 @@
     "@pantoken/utils": "workspace:*"
   },
   "devDependencies": {
+    "@emotion/react": "catalog:",
+    "@emotion/styled": "catalog:",
     "@pantoken/components": "workspace:*",
     "@types/node": "catalog:",
+    "react": "catalog:",
+    "react-dom": "catalog:",
     "typescript": "catalog:",
     "vite": "catalog:",
     "vite-plus": "catalog:"

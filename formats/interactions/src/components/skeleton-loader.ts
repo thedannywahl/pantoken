@@ -1,4 +1,3 @@
-// fallow-ignore-file unused-file
 /* c8 ignore file */
 import { initSkeletonLoading } from "../behaviors/skeleton-loader.js";
 

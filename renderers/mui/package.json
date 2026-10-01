@@ -39,6 +39,9 @@
     "@pantoken/utils": "workspace:*"
   },
   "devDependencies": {
+    "@emotion/react": "catalog:",
+    "@emotion/styled": "catalog:",
+    "@mui/material": "catalog:",
     "@pantoken/components": "workspace:*",
     "@types/node": "catalog:",
     "typescript": "catalog:",

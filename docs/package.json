@@ -90,6 +90,7 @@
     "@pantoken/web-components": "workspace:*",
     "@resvg/resvg-js": "catalog:",
     "@types/node": "catalog:",
+    "ajv": "catalog:",
     "codemirror": "catalog:",
     "fflate": "catalog:",
     "lucide": "catalog:",

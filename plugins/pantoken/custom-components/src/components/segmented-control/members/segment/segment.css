@@ -1,7 +1,7 @@
 /**
  * @component segmented-control.segment
  * @memberOf segmented-control
- * @selector .pfx-segmented-control > label
+ * @selector .pfx-segmented-control > label, .pfx-segmented-control > .viewport > .track > label
  * @summary A selectable segmented-control label and its native radio input.
  * @remarks A `-icon-*` class may live on the label or its native input; the interaction helper
  *   promotes input classes to the label so the shared glyph painter can render it.
@@ -15,7 +15,8 @@
  */
 @scope (.pfx-segmented-control) {
   :scope {
-    > label {
+    > label,
+    > .viewport > .track > label {
       position: relative;
       display: inline-flex;
       flex: none;

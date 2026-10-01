@@ -69,6 +69,7 @@
     "@codemirror/view": "catalog:",
     "@pantoken/utils": "workspace:*",
     "@types/node": "catalog:",
+    "happy-dom": "catalog:",
     "less": "catalog:",
     "postcss": "catalog:",
     "tinymce": "catalog:",

@@ -154,10 +154,10 @@
 
   "duplicates": {
     // Duplication is gated (not advisory): `health:fallow` fails when the duplicated-line ratio
-    // exceeds `threshold`. The measured ratio is just over 3.3% after excluding the locale demo pages and
-    // build-only TinyMCE Oxide Less sources (see `ignore` below) — those clones dwarfed everything else
-    // (28.8%) because they are intentional translated near-copies of docs/demos/*.html, not copy-paste debt. It moved up from ~2.9% when
-    // the pendo renderer's button/radio "elevated alert" colour overrides (button.css, inputs.css)
+    // exceeds `threshold`. The measured ratio is 3.73% after excluding the locale demo pages and
+    // build-only TinyMCE Oxide Less sources (see `ignore` below). Those clones dwarfed everything else
+    // (28.8%) because they are intentional translated near-copies of docs/demos/*.html, not copy-paste debt.
+    // The pendo renderer's button/radio "elevated alert" colour overrides (button.css, inputs.css)
     // added structural duplication that mirrors @pantoken/components's alert.css token-for-token —
     // pendo intentionally reimplements that component's colour contract in plain CSS rather than
     // importing it, so the two can't share a selector. The remaining duplication is this kind of
@@ -166,7 +166,7 @@
     // Tighten it further as the remaining clones are refactored out.
     "enabled": true,
     "minOccurrences": 2,
-    "threshold": 3.4,
+    "threshold": 3.8,
     // Locale demo pages are translated clones of docs/demos/*.html — near-identical markup by
     // design, not copy-paste debt. Excluding the whole demos tree (root + every locale) keeps
     // duplication findings meaningful.

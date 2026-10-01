@@ -41,6 +41,7 @@
   "devDependencies": {
     "@pantoken/components": "workspace:*",
     "@types/node": "catalog:",
+    "@vue/server-renderer": "catalog:",
     "bingo-stratum": "catalog:",
     "typescript": "catalog:",
     "vite": "catalog:",

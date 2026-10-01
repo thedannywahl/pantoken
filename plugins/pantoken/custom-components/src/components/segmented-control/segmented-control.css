@@ -11,9 +11,13 @@
  * @part overflow-end — Scroll to the following hidden segment.
  * @structure
  * .pfx-segmented-control {
- *   .overflow-start:optional {}
- *   @component segmented-control.segment:one-or-more {}
- *   .overflow-end:optional {}
+ *   .viewport {
+ *     .overflow-start:optional {}
+ *     .track {
+ *       @component segmented-control.segment:one-or-more {}
+ *     }
+ *     .overflow-end:optional {}
+ *   }
  * }
  * @a11y Use a labelled fieldset and one shared radio name with a checked default. Native radios
  *   announce their checked state; overflow buttons need labels describing their scroll direction.
@@ -21,14 +25,18 @@
  * @example
  * ```html
  * <fieldset class="pfx-segmented-control" aria-label="Course view">
- *   <button class="overflow-start" aria-label="Scroll to previous views" hidden></button>
- *   <label class="-icon-settings"><input type="radio" name="view" checked>Settings</label>
- *   <label class="-icon-sliders-vertical"><input type="radio" name="view">Options</label>
- *   <label class="-icon-wrench"><input type="radio" name="view">Config</label>
- *   <label class="-icon-sliders-horizontal"><input type="radio" name="view">Utilities</label>
- *   <label class="-icon-monitor-cog"><input type="radio" name="view">Preferences</label>
- *   <label class="-icon-settings-2"><input type="radio" name="view">Feature flags</label>
- *   <button class="overflow-end" aria-label="Scroll to next views" hidden></button>
+ *   <div class="viewport">
+ *     <button class="overflow-start" aria-label="Scroll to previous views" hidden></button>
+ *     <div class="track">
+ *       <label class="-icon-settings"><input type="radio" name="view" checked>Settings</label>
+ *       <label class="-icon-sliders-vertical"><input type="radio" name="view">Options</label>
+ *       <label class="-icon-wrench"><input type="radio" name="view">Config</label>
+ *       <label class="-icon-sliders-horizontal"><input type="radio" name="view">Utilities</label>
+ *       <label class="-icon-monitor-cog"><input type="radio" name="view">Preferences</label>
+ *       <label class="-icon-settings-2"><input type="radio" name="view">Feature flags</label>
+ *     </div>
+ *     <button class="overflow-end" aria-label="Scroll to next views" hidden></button>
+ *   </div>
  * </fieldset>
  * ```
  */
@@ -52,10 +60,22 @@
         var(--instui-drop-shadow-blur-elevation3-dropshadow1)
         var(--instui-drop-shadow-spread-elevation3-dropshadow1)
         var(--instui-color-drop-shadow-shadow-color2);
+    margin: 0;
+    border: 0;
+    min-inline-size: 0;
+    max-inline-size: 100%;
+    padding: 0;
+    font-family: var(--instui-component-segmented-control-font-family);
+    font-weight: var(--instui-component-segmented-control-font-weight);
+    font-size: var(--pantoken-segmented-font-size);
+    line-height: var(--instui-component-segmented-control-line-height);
+  }
+
+  & > .viewport {
+    position: relative;
     display: flex;
     align-items: center;
     gap: var(--instui-component-segmented-control-track-gap);
-    position: relative;
     box-sizing: border-box;
     min-inline-size: 0;
     max-inline-size: 100%;
@@ -72,15 +92,23 @@
     border: 0;
     border-radius: var(--instui-component-segmented-control-track-border-radius);
     background: var(--instui-component-segmented-control-track-background-color);
-    font-family: var(--instui-component-segmented-control-font-family);
-    font-weight: var(--instui-component-segmented-control-font-weight);
-    font-size: var(--pantoken-segmented-font-size);
-    line-height: var(--instui-component-segmented-control-line-height);
-    overflow-x: auto;
-    scrollbar-width: none;
+    overflow: hidden;
   }
 
-  &::-webkit-scrollbar {
+  & > .viewport > .track {
+    display: flex;
+    align-items: center;
+    gap: var(--instui-component-segmented-control-track-gap);
+    min-inline-size: 0;
+    max-inline-size: 100%;
+    flex: 1 1 auto;
+    overflow-x: auto;
+    scrollbar-width: none;
+    padding-block: 0;
+    border-radius: var(--instui-component-segmented-control-track-border-radius);
+  }
+
+  & > .viewport > .track::-webkit-scrollbar {
     display: none;
   }
 
@@ -116,7 +144,7 @@
     background: var(--instui-component-segmented-control-track-background-disabled-color);
   }
 
-  & > :is(.overflow-start, .overflow-end) {
+  & > .viewport > :is(.overflow-start, .overflow-end) {
     position: absolute;
     z-index: 2;
     inline-size: var(--instui-component-base-button-medium-height);
@@ -132,16 +160,16 @@
     transform: translateY(-50%);
   }
 
-  & > .overflow-start {
-    inset-inline-start: 0;
+  & > .viewport > .overflow-start {
+    inset-inline-start: var(--instui-component-segmented-control-track-padding);
   }
 
-  & > .overflow-end {
-    inset-inline-end: 0;
+  & > .viewport > .overflow-end {
+    inset-inline-end: var(--instui-component-segmented-control-track-padding);
   }
 
-  & > .overflow-start::before,
-  & > .overflow-end::before {
+  & > .viewport > .overflow-start::before,
+  & > .viewport > .overflow-end::before {
     content: "";
     display: block;
     inline-size: 1rem;
@@ -152,21 +180,21 @@
     mask: center / contain no-repeat;
   }
 
-  & > .overflow-start::before {
+  & > .viewport > .overflow-start::before {
     -webkit-mask-image: var(--instui-icon-chevron-left);
     mask-image: var(--instui-icon-chevron-left);
   }
 
-  & > .overflow-end::before {
+  & > .viewport > .overflow-end::before {
     -webkit-mask-image: var(--instui-icon-chevron-right);
     mask-image: var(--instui-icon-chevron-right);
   }
 
-  &:dir(rtl) > :is(.overflow-start, .overflow-end)::before {
+  &:dir(rtl) > .viewport > :is(.overflow-start, .overflow-end)::before {
     transform: rotate(180deg);
   }
 
-  & > :is(.overflow-start, .overflow-end)[hidden] {
+  & > .viewport > :is(.overflow-start, .overflow-end)[hidden] {
     display: none;
   }
 }

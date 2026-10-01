@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: pantoken\n"
-"PO-Revision-Date: 2026-09-30 19:39+0000\n"
+"PO-Revision-Date: 2026-10-01 01:26+0000\n"
 "Last-Translator: pantoken localization engine\n"
 "Language-Team: pantoken\n"
 "MIME-Version: 1.0\n"
@@ -4073,6 +4073,12 @@ msgstr ""
 #: css/index.md
 #, no-c-format
 msgctxt "docs.api:prose"
+msgid "A selectable segmented-control label and its native radio input."
+msgstr ""
+
+#: css/index.md
+#, no-c-format
+msgctxt "docs.api:prose"
 msgid "A vertical navigation rail of icon-over-label items, with a minimized icons-only mode."
 msgstr ""
 
@@ -7267,7 +7273,7 @@ msgstr ""
 #: css/segmented-control.md
 #, no-c-format
 msgctxt "docs.api:prose"
-msgid "The selected segment and overflow buttons use the shared resting elevation until\n  upstream provides dedicated shadow tokens. Override --pantoken-segmented-selected-shadow and\n  --pantoken-segmented-overflow-shadow if the application has exact design shadow values."
+msgid "The selected segment uses a distinct active-item shadow; it does not match an existing\n  --instui-elevation-* composite. Overflow buttons use the upstream elevation3 component tokens."
 msgstr ""
 
 #: css/segmented-control.md
@@ -7283,15 +7289,42 @@ msgid "@import \"@pantoken/plugin-custom-components/segmented-control.css\";"
 msgstr ""
 
 #: css/segmented-control.md
+#: css/side-nav-bar.md
+#: renderers/web-components/src/variables/drilldown.md
 #, no-c-format
 msgctxt "docs.api:prose"
-msgid " Grid"
+msgid "Settings"
+msgstr ""
+
+#: css/segmented-control.md
+#: renderers/web-components/src/variables/popover.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Options"
 msgstr ""
 
 #: css/segmented-control.md
 #, no-c-format
 msgctxt "docs.api:prose"
-msgid " List"
+msgid "Config"
+msgstr ""
+
+#: css/segmented-control.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Utilities"
+msgstr ""
+
+#: css/segmented-control.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Preferences"
+msgstr ""
+
+#: css/segmented-control.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Feature flags"
 msgstr ""
 
 #: css/segmented-control.md
@@ -7324,16 +7357,22 @@ msgctxt "docs.api:prose"
 msgid "Scroll to the preceding hidden segment."
 msgstr ""
 
-#: css/segmented-control.md
+#: css/segmented-control.segment.md
 #, no-c-format
 msgctxt "docs.api:prose"
-msgid "One labelled radio option."
+msgid "`.instui-segmented-control` — A selectable segmented-control label and its native radio input."
 msgstr ""
 
-#: css/segmented-control.md
+#: css/segmented-control.segment.md
 #, no-c-format
 msgctxt "docs.api:prose"
-msgid "The horizontal scroll track."
+msgid "A `-icon-*` class may live on the label or its native input; the interaction helper\n  promotes input classes to the label so the shared glyph painter can render it."
+msgstr ""
+
+#: css/segmented-control.segment.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Keep the native radio in the label so checked, focus, disabled, and keyboard semantics remain available."
 msgstr ""
 
 #: css/side-nav-bar.item.md
@@ -7388,13 +7427,6 @@ msgstr ""
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "Calendar"
-msgstr ""
-
-#: css/side-nav-bar.md
-#: renderers/web-components/src/variables/drilldown.md
-#, no-c-format
-msgctxt "docs.api:prose"
-msgid "Settings"
 msgstr ""
 
 #: css/side-nav-bar.md
@@ -7486,12 +7518,6 @@ msgstr ""
 #: css/skeleton-loader.md
 #, no-c-format
 msgctxt "docs.api:prose"
-msgid "@import \"@pantoken/plugin-custom-components/skeleton-loader.css\";"
-msgstr ""
-
-#: css/skeleton-loader.md
-#, no-c-format
-msgctxt "docs.api:prose"
 msgid "Large text row."
 msgstr ""
 
@@ -7547,6 +7573,18 @@ msgstr ""
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "A text bar (default)."
+msgstr ""
+
+#: css/skeleton-loader.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "The clipped placeholder surface sized for the selected loader type."
+msgstr ""
+
+#: css/skeleton-loader.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "A repeated text-row wrapper that applies vertical spacing."
 msgstr ""
 
 #: css/spacing.md
@@ -19844,12 +19882,6 @@ msgctxt "docs.api:prose"
 msgid "`<instui-popover>` — a floating surface. Like `<instui-context-view>`, the host is a native\n`[popover]` (top layer + light-dismiss), so a light-DOM `popovertarget` button can toggle it by id.\nContent goes in the default slot."
 msgstr ""
 
-#: renderers/web-components/src/variables/popover.md
-#, no-c-format
-msgctxt "docs.api:prose"
-msgid "Options"
-msgstr ""
-
 #: renderers/web-components/src/variables/progress.md
 #, no-c-format
 msgctxt "docs.api:prose"
@@ -20273,6 +20305,12 @@ msgstr ""
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "Stylesheet URLs to load into the iframe's `<head>` (tokens, components, utilities, icons, …)."
+msgstr ""
+
+#: tools/demo/src/interfaces/ExampleSrcdocOptions.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Browser script URLs to load after the example markup (interaction bundles, when needed)."
 msgstr ""
 
 #: tools/demo/src/interfaces/ExampleSrcdocOptions.md
