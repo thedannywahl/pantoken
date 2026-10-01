@@ -7,21 +7,22 @@
  * @modifier -size-lg — Large segments.
  * @modifier -size-md — Medium segments (default).
  * @modifier -size-sm — Small segments.
+ * @part viewport — Clips the segment row and anchors the overflow controls.
+ * @part track — Scrollable row containing the selectable segments.
  * @part overflow-start — Scroll to the preceding hidden segment.
  * @part overflow-end — Scroll to the following hidden segment.
  * @structure
- * .pfx-segmented-control {
+ * fieldset.pfx-segmented-control {
  *   .viewport {
- *     .overflow-start:optional {}
+ *     button.overflow-start:optional {}
  *     .track {
  *       @component segmented-control.segment:one-or-more {}
  *     }
- *     .overflow-end:optional {}
+ *     button.overflow-end:optional {}
  *   }
  * }
  * @a11y Use a labelled fieldset and one shared radio name with a checked default. Native radios
  *   announce their checked state; overflow buttons need labels describing their scroll direction.
- * @usage @import "@pantoken/plugin-custom-components/segmented-control.css";
  * @example
  * ```html
  * <fieldset class="pfx-segmented-control" aria-label="Course view">
