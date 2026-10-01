@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: pantoken\n"
-"PO-Revision-Date: 2026-09-23 03:49+0000\n"
+"PO-Revision-Date: 2026-10-01 01:53+0000\n"
 "Last-Translator: pantoken localization engine\n"
 "Language-Team: pantoken\n"
 "MIME-Version: 1.0\n"
@@ -806,6 +806,18 @@ msgstr "รีจิสทรี"
 msgctxt "docs.chrome:agentTools.registryManifestDescription"
 msgid "shadcn-compatible index of Pantoken CSS registry items."
 msgstr "ดัชนีที่เข้ากันได้กับ shadcn ของไอเท็มรีจิสทรี CSS ของ Pantoken"
+
+#: docs/.vitepress/i18n.json#agentTools.targetCompatibilityTitle
+#, no-c-format
+msgctxt "docs.chrome:agentTools.targetCompatibilityTitle"
+msgid "Target compatibility"
+msgstr "ความเข้ากันได้ของเป้าหมาย"
+
+#: docs/.vitepress/i18n.json#agentTools.targetCompatibilityDescription
+#, no-c-format
+msgctxt "docs.chrome:agentTools.targetCompatibilityDescription"
+msgid "Verified host versions and tested environments for Pantoken adapters."
+msgstr "เวอร์ชันของโฮสต์ที่ได้รับการยืนยันและสภาพแวดล้อมที่ผ่านการทดสอบสำหรับอะแดปเตอร์ของ Pantoken."
 
 #: docs/.vitepress/i18n.json#agentTools.capabilitiesTitle
 #, fuzzy, no-c-format

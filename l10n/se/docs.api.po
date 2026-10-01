@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: pantoken\n"
-"PO-Revision-Date: 2026-09-28 16:34+0000\n"
+"PO-Revision-Date: 2026-10-01 05:20+0000\n"
 "Last-Translator: pantoken localization engine\n"
 "Language-Team: pantoken\n"
 "MIME-Version: 1.0\n"
@@ -710,7 +710,7 @@ msgstr "\n  Buorre! Don geavahit \"success\"-várriin.\n  "
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "Ok"
-msgstr "OK"
+msgstr "Okei"
 
 #: css/alert.md
 #, fuzzy, no-c-format
@@ -1278,7 +1278,7 @@ msgstr " várri, ja oaivvildan ikona.\n"
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "OK"
-msgstr "OK"
+msgstr "Buorre"
 
 #: css/banner.md
 #, no-c-format
@@ -1548,7 +1548,7 @@ msgstr "Bovttadeapmi"
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "Guides"
-msgstr "Guides"
+msgstr "Oahpahusat"
 
 #: css/breadcrumb.md
 #, fuzzy, no-c-format
@@ -1560,7 +1560,7 @@ msgstr "Komponenttat"
 #, fuzzy, no-c-format
 msgctxt "docs.api:prose"
 msgid "Breadcrumb"
-msgstr "breadcrumb"
+msgstr "Čuovvagávpi"
 
 #: css/breadcrumb.md
 #, no-c-format
@@ -1602,13 +1602,13 @@ msgstr "Njuolga. @affects breadcrumb.link — Skalá rievddaseparátora boarjjej
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "`.breakpoints` — Extra-small viewport width for phone-sized previews."
-msgstr "`.breakpoints` — Extra-small viewport width for phone-sized previews."
+msgstr "`.breakpoints` — Ovdalán-mearridit viewport-bassus telefóna-vuoddáhallain."
 
 #: css/breakpoints.md
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "Extra-small viewport width (20em / 320px)."
-msgstr "Extra-small viewport width (20em / 320px)."
+msgstr "Ovdalán-mearridit viewport-bassus (20em / 320px)."
 
 #: css/button-set.md
 #, fuzzy, no-c-format
@@ -2064,10 +2064,10 @@ msgstr "Ođđa riekta ovttas `role=\"table\"` ja descriptiivalaš `aria-label` a
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "March 2026"
-msgstr "March 2026"
+msgstr "mars 2026"
 
 #: css/calendar.md
-#, no-c-format
+#, no-c-format, pantoken-verbatim
 msgctxt "docs.api:prose"
 msgid "Su"
 msgstr "Su"
@@ -2079,31 +2079,31 @@ msgid "Mo"
 msgstr "Mode"
 
 #: css/calendar.md
-#, no-c-format
+#, no-c-format, pantoken-verbatim
 msgctxt "docs.api:prose"
 msgid "Tu"
 msgstr "Tu"
 
 #: css/calendar.md
-#, no-c-format
+#, no-c-format, pantoken-verbatim
 msgctxt "docs.api:prose"
 msgid "We"
 msgstr "We"
 
 #: css/calendar.md
-#, no-c-format
+#, no-c-format, pantoken-verbatim
 msgctxt "docs.api:prose"
 msgid "Th"
 msgstr "Th"
 
 #: css/calendar.md
-#, no-c-format
+#, no-c-format, pantoken-verbatim
 msgctxt "docs.api:prose"
 msgid "Fr"
 msgstr "Fr"
 
 #: css/calendar.md
-#, no-c-format
+#, no-c-format, pantoken-verbatim
 msgctxt "docs.api:prose"
 msgid "Sa"
 msgstr "Sa"
@@ -2504,7 +2504,7 @@ msgstr "**Source:** [context-view.css](https://github.com/thedannywahl/pantoken/
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "A context view frames a callout with a caret. As a popover it rides the top layer and closes when you click away or press Esc."
-msgstr "A context view frames a callout with a caret. As a popover it rides the top layer and closes when you click away or press Esc."
+msgstr "Kontextmáilbmi rámmá callouta maid leat caret. Popoverkéntii leat sátne toppláhkas ja šaddá go don klikkehivččat borran dahje geahččat Esc."
 
 #: css/context-view.md
 #, no-c-format
@@ -4499,7 +4499,7 @@ msgstr "`.instui-icon` — Ikonasysteama: `.instui-icon` sizeheapmi ja ovddabeai
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "A logo is meaningful, not decorative — give the host element `role=\"img\"` and an `aria-label` naming the product; never mark it `aria-hidden`."
-msgstr "A logo is meaningful, not decorative — give the host element `role=\"img\"` and an `aria-label` naming the product; never mark it `aria-hidden`."
+msgstr "Logo lea máŋga, ii dekoratiivvan — geavahit host-elementa `role=\"img\"` ja `aria-label` mii namma produktan; eai ožžot máksit `aria-hidden`."
 
 #: css/logo.md
 #, fuzzy, no-c-format
@@ -7147,7 +7147,7 @@ msgstr "**Source:** [index.ts](https://github.com/thedannywahl/pantoken/blob/mai
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "Padded box with a large top margin."
-msgstr "Padded box with a large top margin."
+msgstr "Paddejuvvon boksa šaddet stuorran ovttasmuššan."
 
 #: css/spacing.md
 #, no-c-format
@@ -7243,7 +7243,7 @@ msgstr "**Source:** [index.ts](https://github.com/thedannywahl/pantoken/blob/mai
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "Always on top."
-msgstr "Always on top."
+msgstr "Juokčamat gávpogis."
 
 #: css/stacking.md
 #, no-c-format
@@ -7345,40 +7345,40 @@ msgstr "Gaska-juhkkojuvvon fálaldagat."
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "Rank"
-msgstr "Rank"
+msgstr "Ráŋga"
 
 #: css/table.md
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "Title"
-msgstr "Title"
+msgstr "Ovdas"
 
 #: css/table.md
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "Year"
-msgstr "Year"
+msgstr "Jahki"
 
 #: css/table.md
 #, fuzzy, no-c-format
 msgctxt "docs.api:prose"
 msgid "Rating"
-msgstr "rating"
+msgstr "Ráđđi"
 
 #: css/table.md
-#, no-c-format
+#, no-c-format, pantoken-verbatim
 msgctxt "docs.api:prose"
 msgid "The Shawshank Redemption"
 msgstr "The Shawshank Redemption"
 
 #: css/table.md
-#, no-c-format
+#, no-c-format, pantoken-verbatim
 msgctxt "docs.api:prose"
 msgid "The Godfather"
 msgstr "The Godfather"
 
 #: css/table.md
-#, no-c-format
+#, no-c-format, pantoken-verbatim
 msgctxt "docs.api:prose"
 msgid "The Godfather: Part II"
 msgstr "The Godfather: Part II"
@@ -8660,7 +8660,7 @@ msgstr "**Gruppa:** Plugins · **Lähte:** [visual-debug.css](https://github.com
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "Outlined child."
-msgstr "Outlined child."
+msgstr "Rievdadan oaidnit."
 
 #: css/visual-debug.md
 #, no-c-format
@@ -9940,7 +9940,7 @@ msgstr "Tokenat leat dálkkástit go deras fáddá gaskavuohta galggašii vaihki
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "The document-global `@property` registrations, with no declarations. Load this once per document;\nevery theme sheet below is declarations only, so loading a second theme cannot clobber it."
-msgstr "The document-global `@property` registrations, with no declarations. Load this once per document;\nevery theme sheet below is declarations only, so loading a second theme cannot clobber it."
+msgstr "Dokumenta-globalat `@property` registrádusat, deklaráhtaid leat maiddái. Čohkkit dait oktavuođas dokumentas;\nbuohkat theme-láhpiid geavahit leat doarjjis deklaráhtaid, niin ovtta theme čuovvut ii sáhtá muhtit."
 
 #: formats/css/src/functions/schemeOverrideTokens.md
 #, no-c-format
@@ -10541,7 +10541,7 @@ msgstr "Dát [IconResolver](../../../../packages/core/src/type-aliases/IconResol
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "Inline CSS rules into matching HTML elements without fetching external resources."
-msgstr "Inline CSS rules into matching HTML elements without fetching external resources."
+msgstr "Sisán CSS-ráđđit HTML-eleménttain mii fitnat, ilman gulahit externála resursaid."
 
 #: formats/inline-styles/src/interfaces/InlineHtmlOptions.md
 #, no-c-format
@@ -11133,7 +11133,7 @@ msgstr "The scope registered for `instanceId` in `doc`, if any."
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "True when a registrations sheet with `id` is already present in `doc`."
-msgstr "True when a registrations sheet with `id` is already present in `doc`."
+msgstr "Buorre gos registreringsark med `id` leat maŋemus `doc`."
 
 #: formats/scope/src/functions/isScheme.md
 #: packages/utils/src/functions/isScheme.md
@@ -11146,7 +11146,7 @@ msgstr "Guske barggoduššu vuoigŋa [Scheme](../type-aliases/Scheme.md)."
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "Call `listener` whenever the scope resolved for `target` changes, including when an ancestor's\nattributes change."
-msgstr "Call `listener` whenever the scope resolved for `target` changes, including when an ancestor's\nattributes change."
+msgstr "Gulahit `listener` go skopma mii čájeha máŋgaš`target` váldá, manná go eanetmearrášis attributesat dihte geahččat."
 
 #: formats/scope/src/functions/observeScope.md
 #, fuzzy, no-c-format
@@ -11182,19 +11182,19 @@ msgstr "Never reads `document.documentElement` — that global read is exactly w
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "Resolve the scope in effect for `start` by walking up its ancestors."
-msgstr "Resolve the scope in effect for `start` by walking up its ancestors."
+msgstr "Boađán gávdno mii lea barggus duinna `start` go vuordit maidna maidnáid."
 
 #: formats/scope/src/functions/resolveScope.md
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "The element to resolve for. Its own attributes participate."
-msgstr "The element to resolve for. Its own attributes participate."
+msgstr "Elementta mii lea boađán birra. Sii ovttas-attributtat sátnejuvvot barggut."
 
 #: formats/scope/src/functions/resolveScope.md
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "The [ResolvedScope](../interfaces/ResolvedScope.md); fields no ancestor declared are left `undefined`."
-msgstr "The [ResolvedScope](../interfaces/ResolvedScope.md); fields no ancestor declared are left `undefined`."
+msgstr "Dat [ResolvedScope](../interfaces/ResolvedScope.md); dutkanat mii olbmot ii vuosttašeavddiin oassin leat vuoigŋain `undefined`."
 
 #: formats/scope/src/index.md
 #, fuzzy, no-c-format
@@ -11341,37 +11341,37 @@ msgstr "Ovdas branda čalbmi-gova."
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "Identifier distinguishing this pantoken instance from others on the page. Scopes, storage keys,\nand frame messages are all keyed by it."
-msgstr "Identifier distinguishing this pantoken instance from others on the page. Scopes, storage keys,\nand frame messages are all keyed by it."
+msgstr "Identifikáhtta mii čuovvutnieđii dan pantoken-instancea muhtumin dihtii sáddet. Scopes, storage keys,\nja frame messages leat buot šaddet dán identifikáhtta báikkis."
 
 #: formats/scope/src/interfaces/CreateScopeOptions.md
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "Stop ancestor resolution at this element, so nothing outside can theme what is inside. Use for\na preview pane that must not inherit the surrounding app's theme."
-msgstr "Stop ancestor resolution at this element, so nothing outside can theme what is inside. Use for\na preview pane that must not inherit the surrounding app's theme."
+msgstr "Ceahppit ealáheapmi gávdnot dán elementtas, nuppi eai ollu dutnje sáhttá themevuođa maiddái maid leat dahkat. Geavahit \nesihievđasideami malli mii eai galgga álgat olbmui appa themea."
 
 #: formats/scope/src/interfaces/CreateScopeOptions.md
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "Persist and restore state. Pass `false` to keep the scope in-memory only (default `true`)."
-msgstr "Persist and restore state. Pass `false` to keep the scope in-memory only (default `true`)."
+msgstr "Gávdnat ja restorvodat stáhta. Áddet `false` maina guhká keep the scope in-memory only (default `true`))."
 
 #: formats/scope/src/interfaces/CreateScopeOptions.md
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "Storage backend (default `localStorage`, silently skipped when unavailable)."
-msgstr "Storage backend (default `localStorage`, silently skipped when unavailable)."
+msgstr "Storage-backend (default `localStorage`, dulka čuovvut čavččašii gos ii leat vejolaš))."
 
 #: formats/scope/src/interfaces/PantokenScope.md
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "A live scope bound to one element."
-msgstr "A live scope bound to one element."
+msgstr "Eallin skopma sáhttuheapmi ovddas elementas."
 
 #: formats/scope/src/interfaces/PantokenScope.md
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "The element carrying the scope attributes."
-msgstr "The element carrying the scope attributes."
+msgstr "Elementa mii čájeha skopmabeaivvi atributtat."
 
 #: formats/scope/src/interfaces/PantokenScope.md
 #, fuzzy, no-c-format
@@ -11383,37 +11383,37 @@ msgstr "Produktta mii logga boađe."
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "The scope's own configuration — what it declares, not what it inherits."
-msgstr "The scope's own configuration — what it declares, not what it inherits."
+msgstr "Skopma borggut konfiguráhtsa — maid son čájet, ii ge mii ii leat nagodat."
 
 #: formats/scope/src/interfaces/PantokenScope.md
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "Merge a partial configuration in. Pass `null` for a field to clear it and inherit again."
-msgstr "Merge a partial configuration in. Pass `null` for a field to clear it and inherit again."
+msgstr "Liiddu buorre jaoalkkaskonfiguráhtsa. Ođđa `null`-gieldda dát čájehuvvan mielddis ja nagodat eará dál."
 
 #: formats/scope/src/interfaces/PantokenScope.md
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "Resolve the effective scope for a descendant (defaults to this scope's own element)."
-msgstr "Resolve the effective scope for a descendant (defaults to this scope's own element)."
+msgstr "Ráhkista effektiva skopma almmuhuvvan (default-barggii dán skopma oainnuid elementa)."
 
 #: formats/scope/src/interfaces/PantokenScope.md
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "Send this scope's state to `frame` and keep it in sync. Returns a detach function."
-msgstr "Send this scope's state to `frame` and keep it in sync. Returns a detach function."
+msgstr "Gávdnet dán skopma stáhta `frame`-iin ja čuvvo govvidit syncas. Boađe barggodat fárusvuohta."
 
 #: formats/scope/src/interfaces/PantokenScope.md
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "Observe changes. Returns an unsubscribe function."
-msgstr "Observe changes. Returns an unsubscribe function."
+msgstr "Observiherat muhtin. Boađe unregister-funktuvdna (unsubscribe) fárusvuohta."
 
 #: formats/scope/src/interfaces/PantokenScope.md
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "Remove the attributes, detach frames, and unregister."
-msgstr "Remove the attributes, detach frames, and unregister."
+msgstr "Rundo atributtat, lohkad frammat ja čájeha unregistrere."
 
 #: formats/scope/src/interfaces/ResolvedScope.md
 #, no-c-format
@@ -11711,7 +11711,7 @@ msgstr "Plugins mii ovddastallan tools mii buoriheapmi, gruppejuvvo host:in. Dat
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "Ensure `components.json` in the given directory registers the `@pantoken` namespace.\nReturns true if modified or already present, false if components.json does not exist."
-msgstr "Ensure `components.json` in the given directory registers the `@pantoken` namespace.\nReturns true if modified or already present, false if components.json does not exist."
+msgstr "Gávdnet ahte `components.json` dáhpáhuska direktorijas registrerá `@pantoken` namoservnna. Boađehuvvo true jos geavahuvvo muokta dahje álki leat, false jos components.json ii leat."
 
 #: packages/cli/src/functions/parseArgs.md
 #, no-c-format
@@ -11747,7 +11747,7 @@ msgstr "Geavaha CLI."
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "**Add a component from the pantoken registry**"
-msgstr "**Add a component from the pantoken registry**"
+msgstr "**Laggat komponenta pantoken-registrabmii**"
 
 #: packages/cli/src/functions/run.md
 #, fuzzy, no-c-format
@@ -13596,7 +13596,7 @@ msgstr "**Liinjehuvvat token e-postsella (light mode)**"
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "Inline resolved pantoken tokens and component CSS into HTML email markup."
-msgstr "Inline resolved pantoken tokens and component CSS into HTML email markup."
+msgstr "Válddeheapmi inline pantoken-tokenrat ja komponenta CSS HTML e-posta merkimižžis."
 
 #: platforms/email/src/index.md
 #, no-c-format
@@ -13614,26 +13614,26 @@ msgstr "Email clients don't support CSS custom properties and often strip `&lt;s
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "Options for filtering component CSS for email output."
-msgstr "Options for filtering component CSS for email output."
+msgstr "Valgagat komponentta CSS:s filtriheapmi e‑postta ožžoheapmi."
 
 #: platforms/email/src/interfaces/EmailCssOptions.md
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "Client capability profile. Defaults to `generic`."
-msgstr "Client capability profile. Defaults to `generic`."
+msgstr "Kliientta geavaheapmi profil. Dolávvut: `generic`."
 
 #: platforms/email/src/interfaces/EmailCssOptions.md
 #: platforms/email/src/interfaces/InlineEmailHtmlOptions.md
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "Component names to allow in addition to the default email-safe set."
-msgstr "Component names to allow in addition to the default email-safe set."
+msgstr "Komponentta nammat mii sáhttit geavahit defaultte e‑postta­sávvan setta oassin."
 
 #: platforms/email/src/interfaces/EmailCssOptions.md
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "Component names to remove even when they are in the default or custom allowlist."
-msgstr "Component names to remove even when they are in the default or custom allowlist."
+msgstr "Komponentta nammat mii fertet mannat go dat leat default dahje čuovgga geavahuslisttas."
 
 #: platforms/email/src/interfaces/InlineEmailHtmlOptions.md
 #, no-c-format
@@ -13699,7 +13699,7 @@ msgstr "Additional caller-supplied CSS."
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "Supported email client capability profiles."
-msgstr "Supported email client capability profiles."
+msgstr "Geahččodit e‑postklientta geavahusprofiillat."
 
 #: platforms/email/src/variables/dark.md
 #, no-c-format
@@ -14433,7 +14433,7 @@ msgstr "Dat lea [ResolvedDemo](../interfaces/ResolvedDemo.md)."
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "The `[data-pantoken-color=\"custom\"]` remap rule without the derived primitives, for pages that\nset `--instui-primitive-color-custom-custom*` themselves at runtime (e.g. from a color picker)."
-msgstr "The `[data-pantoken-color=\"custom\"]` remap rule without the derived primitives, for pages that\nset `--instui-primitive-color-custom-custom*` themselves at runtime (e.g. from a color picker)."
+msgstr "Dát `[data-pantoken-color=\"custom\"]` remap-rávnnji maid ii leat geavahit geavahan-primitiivaid, doaimmaid mii\nset `--instui-primitive-color-custom-custom*` iežas várásrávnnjis (d.b. kolora valgevuođa čállet ))."
 
 #: plugins/pantoken/custom-theme-colors/src/functions/customThemeColors.md
 #, fuzzy, no-c-format
@@ -14470,19 +14470,19 @@ msgstr "Derive the `custom` primitive scale from a brand hex. The input is ancho
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "The [CustomColorScale](../interfaces/CustomColorScale.md)."
-msgstr "The [CustomColorScale](../interfaces/CustomColorScale.md)."
+msgstr "Dat [CustomColorScale](../interfaces/CustomColorScale.md)."
 
 #: plugins/pantoken/custom-theme-colors/src/functions/deriveScale.md
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "Derive a full primitive scale from one hex: anchor it at the step with the nearest reference\nlightness, then rebuild every step at its reference lightness with the input's hue and a chroma\nscaled by the reference shape."
-msgstr "Derive a full primitive scale from one hex: anchor it at the step with the nearest reference\nlightness, then rebuild every step at its reference lightness with the input's hue and a chroma\nscaled by the reference shape."
+msgstr "Gullat čuovgat primitiivva skaála ovddas hex-birra: gávdnet dat steppi šaddan beassat referenssa\nlightness, de oassehuvvot buohkat steppat dutnje referenssa lightnessin inputta hue ja chroma\nskálastuvvon reference shape mielde."
 
 #: plugins/pantoken/custom-theme-colors/src/functions/deriveScale.md
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "A hex color accepted by [parseHexColor](parseHexColor.md)."
-msgstr "A hex color accepted by [parseHexColor](parseHexColor.md)."
+msgstr "Hex-fága mii elfet [parseHexColor](parseHexColor.md)."
 
 #: plugins/pantoken/custom-theme-colors/src/functions/deriveScale.md
 #, fuzzy, no-c-format
@@ -14572,25 +14572,25 @@ msgstr "Selector prefix for the conditional rules — see [CustomThemeColorsCssO
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "A derived custom primitive scale."
-msgstr "A derived custom primitive scale."
+msgstr "Ráhkadan vuollán primitiiva skaala."
 
 #: plugins/pantoken/custom-theme-colors/src/interfaces/CustomColorScale.md
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "The validated input, normalized to lowercase `#rrggbb`."
-msgstr "The validated input, normalized to lowercase `#rrggbb`."
+msgstr "Válddán dássedje, normaliseret álggu čađa `#rrggbb`."
 
 #: plugins/pantoken/custom-theme-colors/src/interfaces/CustomColorScale.md
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "The step whose reference lightness is nearest the input's."
-msgstr "The step whose reference lightness is nearest the input's."
+msgstr "Steppi mii referenssa čalbmi lea nuppi dássedje čalbmiin."
 
 #: plugins/pantoken/custom-theme-colors/src/interfaces/CustomColorScale.md
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "Every primitive step mapped to its derived `#rrggbb`."
-msgstr "Every primitive step mapped to its derived `#rrggbb`."
+msgstr "Buot primitiiva stepat álggahit ráhkadan `#rrggbb`."
 
 #: plugins/pantoken/custom-theme-colors/src/interfaces/CustomThemeColorsCssOptions.md
 #, fuzzy, no-c-format
@@ -14602,19 +14602,19 @@ msgstr "Ovdalašvuohta [customIcons](../functions/customIcons.md) pluginii."
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "Selector prefix the conditional `[data-pantoken-color=\"…\"]` rules are scoped under. Defaults to\n`:root`. Two callers can each pass a different selector (e.g. `:root` for a page's chrome and\n`#some-tray` for a nested widget) to run independent, non-interfering color instances on the\nsame page — each toggles its own attribute on its own element instead of sharing `:root`."
-msgstr "Selector prefix the conditional `[data-pantoken-color=\"…\"]` rules are scoped under. Defaults to\n`:root`. Two callers can each pass a different selector (e.g. `:root` for a page's chrome and\n`#some-tray` for a nested widget) to run independent, non-interfering color instances on the\nsame page — each toggles its own attribute on its own element instead of sharing `:root`."
+msgstr "Selektora-prefiksas mii girjjálašii dieđuid `[data-pantoken-color=\"…\"]` riikkain almmuhis. Dáhkkát ihte \n`:root`. Guokte válddudeaddjit sáhttá čuovvut eanet selektora (go `:root` dálbma čálli ja \n`#some-tray` njuovvan widgetis) maid čuovvut iežaset, eai dagahit ávkkástallama dohkkiduhttin fargguinstanssain dálbma stránnnas — jaččat čuovvut iežaset atributta iežaset elementas maid leat eai vuoigŋain `:root`."
 
 #: plugins/pantoken/custom-theme-colors/src/interfaces/CustomThemeColorsCssOptions.md
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "An additional selector whose subtree should always render the true, unremapped colors,\nregardless of what an ancestor's `[data-pantoken-color]` scope currently has active. Emits one\nunconditional rule pinning every token this plugin can override back to its own base value —\ne.g. a color-swatch legend nested inside an already-themed page needs its reference swatches to\nstay constant rather than inherit the ancestor's remap."
-msgstr "An additional selector whose subtree should always render the true, unremapped colors,\nregardless of what an ancestor's `[data-pantoken-color]` scope currently has active. Emits one\nunconditional rule pinning every token this plugin can override back to its own base value —\ne.g. a color-swatch legend nested inside an already-themed page needs its reference swatches to\nstay constant rather than inherit the ancestor's remap."
+msgstr "Olggobealde selektora mii subtreed dahká almmuhit govva, eanet remappendit farggaid,\nohcat ma mamuheapmi `[data-pantoken-color]` riiká šaddet aktivalaš. Emittehit okta\nehteheapmi reegga mii pinneaba gaskal geahččalit buot tokenat mii dál plugin sáhttá oarjjit máŋggabeaivviin basteavdnjalaš vuoigŋaid —\nmuhto: farggu-swátša legend njuovvan osain olggobealde teavsttas fertehahtti heivehttojuvvonhemiin galgá \nvaikko čuovvut ain dohkkehuvvon remappiin."
 
 #: plugins/pantoken/custom-theme-colors/src/interfaces/CustomThemeColorsCssOptions.md
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "A brand hex (`#rgb`/`#rrggbb`) to derive the `custom` scale from. When set, a\n`[data-pantoken-color=\"custom\"]` rule is appended — see [customColorCss](../functions/customColorCss.md)."
-msgstr "A brand hex (`#rgb`/`#rrggbb`) to derive the `custom` scale from. When set, a\n`[data-pantoken-color=\"custom\"]` rule is appended — see [customColorCss](../functions/customColorCss.md)."
+msgstr "Bárdni hex (`#rgb`/`#rrggbb`)) mii čájeha `custom` skaála almmuhi. Ku váldde, \n`[data-pantoken-color=\"custom\"]` reega lea lihkaduvvon — geažes [customColorCss](../functions/customColorCss.md)."
 
 #: plugins/pantoken/custom-theme-colors/src/interfaces/CustomThemeColorsOptions.md
 #, fuzzy, no-c-format
@@ -14650,7 +14650,7 @@ msgstr "Selector prefix for the conditional rules — see [CustomThemeColorsCssO
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "Per-step reference lightness and normalized chroma, index-aligned with `steps`. JSON-safe."
-msgstr "Per-step reference lightness and normalized chroma, index-aligned with `steps`. JSON-safe."
+msgstr "Beaivve-šeapmaseahttá referenssa čáppat ja normaliseret kromma, indeks-alihtejuvvon `steps`. JSON-buorre."
 
 #: plugins/pantoken/custom-theme-colors/src/type-aliases/PantokenColorNamespace.md
 #, no-c-format
@@ -14668,7 +14668,7 @@ msgstr "13 disponibela fargga nammaservodat site tema fargga váilutbargguid ož
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "The color namespace whose scale is derived from an arbitrary hex rather than shipped."
-msgstr "The color namespace whose scale is derived from an arbitrary hex rather than shipped."
+msgstr "Farga nammasiidda mii skála lea válddagahttán arvhalaš hex-davddas geavahan, ii go geažes šaddan."
 
 #: plugins/pantoken/deprecations/src/functions/compareVersions.md
 #, no-c-format
@@ -15295,7 +15295,7 @@ msgstr "Geavahit Lucide Lab icon-node array dábálaš SVG-markupas."
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "Convert a Lucide Lab export name to its kebab-case token name."
-msgstr "Convert a Lucide Lab export name to its kebab-case token name."
+msgstr "Gáibidit Lucide Lab export-namme kebab-case token-namme."
 
 #: plugins/pantoken/lucide-lab/src/index.md
 #, fuzzy, no-c-format
@@ -17514,7 +17514,7 @@ msgstr "Dekoratiivalaš ikona-markup mii oidnot editorin sisältas go picker ii 
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "The logo markup retained in editor content after a picker selection — same\nzero-width-space/`contenteditable=\"false\"` noneditable-object technique as `icons.ts`'s\n`buildIconMarkup`. Unlike a decorative icon, a logo names a real product, so it carries\n`role=\"img\"` + `aria-label` instead of `aria-hidden`."
-msgstr "The logo markup retained in editor content after a picker selection — same\nzero-width-space/`contenteditable=\"false\"` noneditable-object technique as `icons.ts`'s\n`buildIconMarkup`. Unlike a decorative icon, a logo names a real product, so it carries\n`role=\"img\"` + `aria-label` instead of `aria-hidden`."
+msgstr "Logo-markup mii lea stadtan editor-contenttas picker-searvvi beassan — sama\nzero-width-space/`contenteditable=\"false\"` noneditable-object teknihkka nugo `icons.ts`'s\n`buildIconMarkup`. Deike dekorativalaš ikona, logo namma ealát produktu, dasa oaidná \n`role=\"img\"` + `aria-label` nuppi `aria-hidden`."
 
 #: renderers/tinymce/src/functions/createComponentsPlugin.md
 #, no-c-format
@@ -17532,7 +17532,7 @@ msgstr "Dárbbuheapmi:\n  tinymce.PluginManager.add(\n    \"pantokenComponents\"
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "Build an opt-in plugin that adds pantoken classes to TinyMCE-authored content."
-msgstr "Build an opt-in plugin that adds pantoken classes to TinyMCE-authored content."
+msgstr "Dárbbašit opt-in-plugin mii addá pantoken-klasseat TinyMCE-ovddideamit sisdoavttin."
 
 #: renderers/tinymce/src/functions/createFullscreenFooterPlugin.md
 #, no-c-format
@@ -17604,7 +17604,7 @@ msgstr "readonly [`Token`](../interfaces/Token.md)[]"
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "Logos under `product` (all when omitted) whose name, product, or variant matches `query`."
-msgstr "Logos under `product` (all when omitted) whose name, product, or variant matches `query`."
+msgstr "Logot almmuhit `product` (buot go eai dálvvo ) migu namma, produhhta dahje varianta čalbmi `query`."
 
 #: renderers/tinymce/src/functions/filterLogos.md
 #, fuzzy, no-c-format
@@ -17628,13 +17628,13 @@ msgstr "Rievdan CdnFile ikonii maide gávdnojit dan source-n. Dál boađe `{ pac
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "A `data:` URI usable as an `<img src>` for the icon, for sources this package bundles; for the\nrest it reads the custom property back off `root`, which resolves once the source's glyph sheet\nhas loaded. Returns `undefined` when neither path yields a glyph."
-msgstr "A `data:` URI usable as an `<img src>` for the icon, for sources this package bundles; for the\nrest it reads the custom property back off `root`, which resolves once the source's glyph sheet\nhas loaded. Returns `undefined` when neither path yields a glyph."
+msgstr "URI mii sáhttá geavahit ovddas `data:` mii leat geavahus dál `<img src>` icon-bargui; čuovgat dahkat čađa maid dasa paketta bundeat; dasgo earábargguid ovddas čállá dan dieđuid geavahit `root`, mii diehtá gos gulli girjji/šiihtet vuođđuhuvvo. Várre `undefined` gos ii dahká juohkeha mávsun gilla."
 
 #: renderers/tinymce/src/functions/getLogoCdnFile.md
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "Resolve a logo's stylesheet: the `.-logo-<name>` mask painter plus its `--instui-logo-<name>` token."
-msgstr "Resolve a logo's stylesheet: the `.-logo-<name>` mask painter plus its `--instui-logo-<name>` token."
+msgstr "Geatnegovat logoa stáileatšuvdna: dát `.-logo-<name>` maskamaálár ja su `--instui-logo-<name>` token."
 
 #: renderers/tinymce/src/functions/getModifierSuggestions.md
 #, no-c-format
@@ -17718,7 +17718,7 @@ msgstr "Materialize declared layout image slots without embedding a provider URL
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "Give every empty glyph span in `html` the non-editable, ZWSP-filled shape the pickers insert."
-msgstr "Give every empty glyph span in `html` the non-editable, ZWSP-filled shape the pickers insert."
+msgstr "Gávdno buot čuovgat gieldda-spanat in `html` stáhta non-editable, ZWSP-fáttá skávlla mii pickerat čállá."
 
 #: renderers/tinymce/src/functions/pantokenContentCssUrls.md
 #, no-c-format
@@ -17766,7 +17766,7 @@ msgstr "Register a TinyMCE icon pack whose complete key set mirrors the installe
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "Re-resolve every tagged stylesheet in the content document, e.g. after a CDN provider switch."
-msgstr "Re-resolve every tagged stylesheet in the content document, e.g. after a CDN provider switch."
+msgstr "Re-ruovttoluhttit juohke stuidna stylesheet mat leat merkedeas content-dokumentas, nugo go CDN-servrra válddon vaihkká."
 
 #: renderers/tinymce/src/functions/validateClassToken.md
 #, no-c-format
@@ -18174,7 +18174,7 @@ msgstr "Dán pluginis registrerađo darba-ruovttoluhttu gávpoguođa/meny-juvvon
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "Command that opens the icons picker."
-msgstr "Command that opens the icons picker."
+msgstr "Kommando mii boađe ikona valgáda."
 
 #: renderers/tinymce/src/variables/ICON_SOURCES.md
 #, no-c-format
@@ -18198,7 +18198,7 @@ msgstr "Dán pluginis registrerađo darba-ruovttoluhttu gávpoguođa/meny-juvvon
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "Commands exposed for hosts that want explicit pantoken-aware toolbar actions."
-msgstr "Commands exposed for hosts that want explicit pantoken-aware toolbar actions."
+msgstr "Kommandot mii leat čuovvut hosttaidejuvvon, mainna hosttat háliidit ávžžut pantoken-buođus toolbar-aktiviteta."
 
 #: renderers/tinymce/src/variables/PANTOKEN_ICON.md
 #, no-c-format
@@ -18235,7 +18235,7 @@ msgstr "Olmmolaš lávlla mii čájeha picker-tabmas ja autocompleter-ráddi č�
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "English defaults for TinyMCE integration UI strings."
-msgstr "English defaults for TinyMCE integration UI strings."
+msgstr "Engelska gárvisvuođat TinyMCE-integrasuvnna UI-stringsaide."
 
 #: renderers/tinymce/src/variables/pageTemplates.md
 #, no-c-format
@@ -19249,13 +19249,13 @@ msgstr "Ruoŧa (Svenska) lokalála paket."
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "`<instui-tabs>` — a light-DOM tabbed panel set. It keeps the existing `.instui-tabs` CSS contract\nintact while adding selection, panel visibility, and keyboard behavior through the shared tabs\ninteraction. Load `@pantoken/components/components.css` for the tab visuals."
-msgstr "`<instui-tabs>` — a light-DOM tabbed panel set. It keeps the existing `.instui-tabs` CSS contract\nintact while adding selection, panel visibility, and keyboard behavior through the shared tabs\ninteraction. Load `@pantoken/components/components.css` for the tab visuals."
+msgstr "`<instui-tabs>` — light‑DOM-tabbo panelasetma. Sii čuohppá dát existing`.instui-tabs` CSS-kontrakta\nmuhtun, ja addá olggobeavddi, panela álgguheapmi ja dáiddaládjehuvvan kláhppa­bargu dialoga maid golahallat divvot tabs\njuohkevaš jođiheaddjin. Load `@pantoken/components/components.css` dál tabba visualaid."
 
 #: renderers/web-components/src/variables/tabs.md
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "General"
-msgstr "General"
+msgstr "Gaskavuohta"
 
 #: renderers/web-components/src/variables/tabs.md
 #, fuzzy, no-c-format
@@ -19345,7 +19345,7 @@ msgstr "`&lt;instui-truncate&gt;` — clamps slotted text to a fixed number of l
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "A long description that will be clamped to two lines…"
-msgstr "A long description that will be clamped to two lines…"
+msgstr "Guhká čállinvuohta mii galgá stuorrat guokte rájedii…"
 
 #: renderers/web-components/src/variables/uk.md
 #, no-c-format
@@ -19545,7 +19545,7 @@ msgstr "Stylesheet‑URL:s mii runner injektee (runnerin chrome ja bures rendere
 
 #: tools/demo/src/interfaces/DemoMarkdownItOptions.md
 #: tools/demo/src/interfaces/ResolveOptions.md
-#, no-c-format
+#, no-c-format, pantoken-verbatim
 msgctxt "docs.api:prose"
 msgid "Localized [RunnerLabels](RunnerLabels.md) for the runner's view tabs, forwarded in the runner URL."
 msgstr "Localized [RunnerLabels](RunnerLabels.md) for the runner's view tabs, forwarded in the runner URL."
@@ -19566,7 +19566,7 @@ msgstr "Route a `demo:self:&lt;name&gt;` fence to a locale-specific self-hosted 
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "Resolve the runner's view-tab labels for the current page, from its markdown-it `env.relativePath`\n— the same locale lookup as [DemoMarkdownItOptions.localePrefix](#localeprefix). Omit for a single-locale\nsite (the runner then shows its English defaults)."
-msgstr "Resolve the runner's view-tab labels for the current page, from its markdown-it `env.relativePath`\n— the same locale lookup as [DemoMarkdownItOptions.localePrefix](#localeprefix). Omit for a single-locale\nsite (the runner then shows its English defaults)."
+msgstr "Resolve the runner's view-tab labels for the current page, from its markdown-it `env.relativePath`\n— the same locale lookup as [DemoMarkdownItOptions.localePrefix](#localeprefix). Omit for a single-locale\nsite (the runner then shows its English defaults))."
 
 #: tools/demo/src/interfaces/ExampleSrcdocOptions.md
 #, no-c-format
@@ -30478,3 +30478,263 @@ msgstr "Hoverejuvvon \"view fullscreen\"-buktá, mii lámmá demonstrasuvnna/dae
 #~ msgctxt "docs.api:text"
 #~ msgid "Components"
 #~ msgstr "Komponentat"
+
+msgctxt "docs.api:prose"
+msgid "Every token is exposed as a `var(--instui-*)` reference (not a concrete value), so Tailwind\nutilities like `bg-background-base` theme through the same CSS custom properties that\n`@pantoken/css` emits — light/dark and high-contrast all keep working."
+msgstr "Buot tokenat leat vuođđudit maŋit `var(--instui-*)` reference (ii leat konkretne arvvuid), dasgo Tailwind\n utilitehtat nugo `bg-background-base` teemmat čuovvut dihte samme CSS buolvvaspropertijain mii\n`@pantoken/css` geavahit) — beaivi/ruovttoluotta ja gárvviskontrástta leat veahá buorre servodat."
+
+msgctxt "docs.api:prose"
+msgid "`.instui-segmented-control` — A selectable segmented-control label and its native radio input."
+msgstr "`.instui-segmented-control` — Váljálaš segment-searvvi lágán ja su naddji radio-input."
+
+msgctxt "docs.api:prose"
+msgid "A `-icon-*` class may live on the label or its native input; the interaction helper\n  promotes input classes to the label so the shared glyph painter can render it."
+msgstr "A `-icon-*` class sáhttá leat lágánis vai su naddji inputis; interakšuvdna helper\n viessuheapmi promuša input-classat lágánnis, nu go dađistagaš glyph-málerihkka sáhtá ráhkadit dan."
+
+msgctxt "docs.api:prose"
+msgid "Keep the native radio in the label so checked, focus, disabled, and keyboard semantics remain available."
+msgstr "Leavga naddji radio lágánis, dasgo checked-, focus-, disabled- ja keyboard-semantihkka sáhttá leat dálbmuheapmi."
+
+msgctxt "docs.api:prose"
+msgid "Bind the parent content region to SSR-provided status and error announcements."
+msgstr "Gávdnat áddjá sisdoallobargga SSR-dihttan status- ja vearráoarruid."
+
+msgctxt "docs.api:prose"
+msgid "Segmented control options; the medium size is the CSS default."
+msgstr "Segmenterašuvnna válggat; mearrádus (medium) lea CSS-gálbma."
+
+msgctxt "docs.api:prose"
+msgid "The generated Swift uses UIKit and targets iOS. `mise run verify:swift:syntax` only parses its\nsource; `mise run verify:swift:host` needs full Xcode and the iOS Simulator SDK to type-check it."
+msgstr "Genererhta Swift dahká UIKit ja sáhttá iOS. `mise run verify:swift:syntax` doarvvojuvvo doarvut mii leat\nsource; `mise run verify:swift:host` galgá leat čuovvut Xcode ja iOS Simulator SDK:s maŋŋil type-checkimii."
+
+msgctxt "docs.api:prose"
+msgid "Build segmented-control CSS, replacing the component prefix sentinel."
+msgstr "Geavahit segmented-control CSS, váldit component prefix sentinel."
+
+msgctxt "docs.api:prose"
+msgid "Build the skeleton loader CSS, replacing the component prefix sentinel."
+msgstr "Geavaheaddjit skeleton loader CSS, váldit komponentaprefiksa seantinel."
+
+msgctxt "docs.api:prose"
+msgid "`@pantoken/bootstrap` — theme Bootstrap 5.2+ body variables and primary buttons with Instructure tokens."
+msgstr "`@pantoken/bootstrap` — Bootstrap 5.2+-tema bodda-muđui ja primára-buttodat Instructure-tokenain."
+
+msgctxt "docs.api:prose"
+msgid "Points body and primary-button `--bs-*` CSS variables at `var(--instui-*)`. Load it after\nBootstrap and `@pantoken/css`; other component variants retain their Bootstrap defaults."
+msgstr "Poabbát bodda- ja primára-buttodat CSS-muđuid `var(--instui-*)`. Loaddat daid deavdit \nBootstrap ja `@pantoken/css`; eatnamát komponenttavariantaat čuovvut Bootstrap-defaultaid."
+
+msgctxt "docs.api:prose"
+msgid "`@pantoken/foundation` — theme Foundation for Sites Sass output and common CSS classes."
+msgstr "`@pantoken/foundation` — Foundation for Sites tema, Sass-oažžut ja ovttas CSS-klassat."
+
+msgctxt "docs.api:prose"
+msgid "Foundation is Sass-first, so this package ships two layers. [toFoundationSettings](functions/toFoundationSettings.md) emits a\n`_settings`-style Sass partial with concrete light-mode rebrand values so Foundation's colour functions can\ncompile. [toFoundationCss](functions/toFoundationCss.md) emits a thin variable-backed CSS overlay that themes the common compiled\nclasses (`.button`, `.callout`, links) the same way — useful when you consume stock Foundation CSS\nand just want to layer Instructure colors on top without recompiling."
+msgstr "Foundation lea Sass-ovdal, dasgo das pakkaja boađe guokte steallat. [toFoundationSettings](functions/toFoundationSettings.md) oaidná \n`_settings`-stáilas Sass-dáhpput mii leat konkrehttat njuovvat-moddi rebrand-arvot, go Foundationa fágadusat sáhtát \ncompile. [toFoundationCss](functions/toFoundationCss.md) oaidná varsá lávlugovva variabla‑vuostta CSS-ovttasvarvvu mii temaillá ovttas kompilaš\nklassat (`.button`, `.callout`, links) sama nugo — buoremus go don geavahuvvo stuorradit Foundation CSS\n ja nu ahte doarjja Instructure ruoššit olbmuid gávdnojuvvon without recompiling.)"
+
+msgctxt "docs.api:prose"
+msgid "Browser script URLs to load after the example markup (interaction bundles, when needed)."
+msgstr "Browser-skripta URL-siid maid galgat čállit maŋimus buktin markupjielda (interaksuvdna bundlašat, gos galgat)."
+
+msgctxt "docs.api:text"
+msgid "EmailCssOptions"
+msgstr "EmailCssOptions"
+
+msgctxt "docs.api:text"
+msgid "InlineEmailHtmlOptions"
+msgstr "InlineEmailHtmlOptions"
+
+msgctxt "docs.api:text"
+msgid "EmailClient"
+msgstr "EmailClient"
+
+msgctxt "docs.api:text"
+msgid "light"
+msgstr "light"
+
+msgctxt "docs.api:text"
+msgid "inlineEmailHtml"
+msgstr "inlineEmailHtml"
+
+msgctxt "docs.api:text"
+msgid "GlyphSyncTarget"
+msgstr "GlyphSyncTarget"
+
+msgctxt "docs.api:text"
+msgid "PRODUCT_LABELS"
+msgstr "PRODUCT_LABELS"
+
+msgctxt "docs.api:text"
+msgid "retargetContentStylesheets"
+msgstr "retargetContentStylesheets"
+
+msgctxt "docs.api:text"
+msgid "normalizeGlyphHtml"
+msgstr "normalizeGlyphHtml"
+
+msgctxt "docs.api:text"
+msgid "injectUsedGlyphAssets"
+msgstr "injectUsedGlyphAssets"
+
+msgctxt "docs.api:text"
+msgid "registerGlyphSync"
+msgstr "registerGlyphSync"
+
+msgctxt "docs.api:text"
+msgid "logoVariantLabel"
+msgstr "logoVariantLabel"
+
+msgctxt "docs.api:text"
+msgid "filterLogos"
+msgstr "filterLogos"
+
+msgctxt "docs.api:text"
+msgid "getLogoCdnFile"
+msgstr "getLogoCdnFile"
+
+msgctxt "docs.api:text"
+msgid "buildLogoMarkup"
+msgstr "buildLogoMarkup"
+
+msgctxt "docs.api:text"
+msgid "getUsedLogoCdnFiles"
+msgstr "getUsedLogoCdnFiles"
+
+msgctxt "docs.api:text"
+msgid "modifyExpression"
+msgstr "modifyExpression"
+
+msgctxt "docs.api:text"
+msgid "inline-styles"
+msgstr "inline-styles"
+
+msgctxt "docs.api:text"
+msgid "InlineHtmlOptions"
+msgstr "InlineHtmlOptions"
+
+msgctxt "docs.api:text"
+msgid "inlineHtml"
+msgstr "inlineHtml"
+
+msgctxt "docs.api:text"
+msgid "InPlaceEditOptions"
+msgstr "InPlaceEditOptions"
+
+msgctxt "docs.api:text"
+msgid "SegmentedControlOptions"
+msgstr "SegmentedControlOptions"
+
+msgctxt "docs.api:text"
+msgid "SegmentedControlHandle"
+msgstr "SegmentedControlHandle"
+
+msgctxt "docs.api:text"
+msgid "SkeletonLoadingState"
+msgstr "SkeletonLoadingState"
+
+msgctxt "docs.api:text"
+msgid "SkeletonLoadingOptions"
+msgstr "SkeletonLoadingOptions"
+
+msgctxt "docs.api:text"
+msgid "SkeletonLoadingHandle"
+msgstr "SkeletonLoadingHandle"
+
+msgctxt "docs.api:text"
+msgid "InPlaceEditInputType"
+msgstr "InPlaceEditInputType"
+
+msgctxt "docs.api:text"
+msgid "initSegmentedControl"
+msgstr "initSegmentedControl"
+
+msgctxt "docs.api:text"
+msgid "initSkeletonLoading"
+msgstr "initSkeletonLoading"
+
+msgctxt "docs.api:text"
+msgid "buttonSetRules"
+msgstr "buttonSetRules"
+
+msgctxt "docs.api:text"
+msgid "logoRules"
+msgstr "logoRules"
+
+msgctxt "docs.api:text"
+msgid "segmentedControlRules"
+msgstr "segmentedControlRules"
+
+msgctxt "docs.api:text"
+msgid "skeletonLoaderRules"
+msgstr "skeletonLoaderRules"
+
+msgctxt "docs.api:text"
+msgid "breakpointDeclarations"
+msgstr "breakpointDeclarations"
+
+msgctxt "docs.api:text"
+msgid "ReferenceCurve"
+msgstr "ReferenceCurve"
+
+msgctxt "docs.api:text"
+msgid "CustomColorScale"
+msgstr "CustomColorScale"
+
+msgctxt "docs.api:text"
+msgid "CustomColorCssOptions"
+msgstr "CustomColorCssOptions"
+
+msgctxt "docs.api:text"
+msgid "CUSTOM_COLOR_KEY"
+msgstr "CUSTOM_COLOR_KEY"
+
+msgctxt "docs.api:text"
+msgid "isHexColor"
+msgstr "isHexColor"
+
+msgctxt "docs.api:text"
+msgid "deriveScale"
+msgstr "deriveScale"
+
+msgctxt "docs.api:text"
+msgid "customColorReferenceCurve"
+msgstr "customColorReferenceCurve"
+
+msgctxt "docs.api:text"
+msgid "deriveCustomColorScale"
+msgstr "deriveCustomColorScale"
+
+msgctxt "docs.api:text"
+msgid "customColorCss"
+msgstr "customColorCss"
+
+msgctxt "docs.api:text"
+msgid "customColorRemapCss"
+msgstr "customColorRemapCss"
+
+msgctxt "docs.api:text"
+msgid "button-set"
+msgstr "button-set"
+
+msgctxt "docs.api:text"
+msgid "day"
+msgstr "day"
+
+msgctxt "docs.api:text"
+msgid "segmented-control"
+msgstr "segmented-control"
+
+msgctxt "docs.api:text"
+msgid "segment"
+msgstr "segment"
+
+msgctxt "docs.api:text"
+msgid "skeleton-loader"
+msgstr "skeleton-loader"
+
+msgctxt "docs.api:text"
+msgid "logo"
+msgstr "logo"
+
+msgctxt "docs.api:text"
+msgid "breakpoints"
+msgstr "breakpoints"

@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: pantoken\n"
-"PO-Revision-Date: 2026-09-28 16:28+0000\n"
+"PO-Revision-Date: 2026-10-01 03:28+0000\n"
 "Last-Translator: pantoken localization engine\n"
 "Language-Team: pantoken\n"
 "MIME-Version: 1.0\n"
@@ -1644,7 +1644,7 @@ msgstr "Konfime"
 #, fuzzy, no-c-format
 msgctxt "docs.api:prose"
 msgid "Day"
-msgstr "day"
+msgstr "Jou"
 
 #: css/button-set.md
 #, fuzzy, no-c-format
@@ -1698,7 +1698,7 @@ msgstr "Fè chak pitit ki pa modifye resevwa koulè siksè a pa default."
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "Default every unmodified child to the tertiary (text-style) color."
-msgstr "Default every unmodified child to the tertiary (text-style) color."
+msgstr "Defini chak pitit ki pa modifye sou defo nan koulè tersyè a (text-style) koulè."
 
 #: css/button-set.md
 #, no-c-format
@@ -14273,7 +14273,7 @@ msgstr "Yon [PantokenPlugin](../../../../../packages/core/src/interfaces/Pantoke
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "Build the logo utility CSS as an aspect-ratio-aware mask painter for `@pantoken/plugin-logos`'\n`-logo-<name>` glyph classes, substituting `prefix` for the `pfx-` sentinel."
-msgstr "Build the logo utility CSS as an aspect-ratio-aware mask painter for `@pantoken/plugin-logos`'\n`-logo-<name>` glyph classes, substituting `prefix` for the `pfx-` sentinel."
+msgstr "Bati CSS zouti logo a kòm yon pent mask ki sansib a rapò aspè pou klas glif `@pantoken/plugin-logos`'\n`-logo-<name>` glyph classes, ranplase `prefix` pou `pfx-` santinèl."
 
 #: plugins/pantoken/custom-components/src/index.md
 #, no-c-format
@@ -15060,7 +15060,7 @@ msgstr "Chèn SVG la, oswa `undefined` si konbinezon sa a pa egziste."
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "**Read a logo's aspect ratio**"
-msgstr "**Read a logo's aspect ratio**"
+msgstr "**Li rapò aspè logo a**"
 
 #: plugins/pantoken/logos/src/functions/getLogoSvg.md
 #, no-c-format
@@ -15182,14 +15182,14 @@ msgstr "Chemen an anndan `assets/logos`, egzanp `\"canvas/horizontal-full-color.
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "The SVG's natural `viewBox` width, used with [height](#height) to derive `--pantoken-logo-aspect`."
-msgstr "The SVG's natural `viewBox` width, used with [height](#height) to derive `--pantoken-logo-aspect`."
+msgstr "Lajè natirèl SVG la `viewBox` lajè, ki itilize ak [height](#height) pou detèmine `--pantoken-logo-aspect`."
 
 #: plugins/pantoken/logos/src/interfaces/LogoMeta.md
 #: renderers/tinymce/src/interfaces/LogoMeta.md
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "The SVG's natural `viewBox` height, used with [width](#width) to derive `--pantoken-logo-aspect`."
-msgstr "The SVG's natural `viewBox` height, used with [width](#width) to derive `--pantoken-logo-aspect`."
+msgstr "Wotè natirèl SVG la `viewBox` wotè, ki itilize ak [width](#width) pou detèmine `--pantoken-logo-aspect`."
 
 #: plugins/pantoken/logos/src/interfaces/LogosOptions.md
 #, no-c-format
@@ -17634,7 +17634,7 @@ msgstr "Yon URI `data:` `data:` ki itil kòm `<img src>` `<img src>` pou ikon an
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "Resolve a logo's stylesheet: the `.-logo-<name>` mask painter plus its `--instui-logo-<name>` token."
-msgstr "Resolve a logo's stylesheet: the `.-logo-<name>` mask painter plus its `--instui-logo-<name>` token."
+msgstr "Rezoud fèy stil yon logo: `.-logo-<name>` pentè mask la plis token li a `--instui-logo-<name>`."
 
 #: renderers/tinymce/src/functions/getModifierSuggestions.md
 #, no-c-format
@@ -17658,7 +17658,7 @@ msgstr "lekti sèlman [`CdnFile`](../../../../platforms/canvas-theme-editor/src/
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "Resolve the logo stylesheets used by `-logo-*` classes below `root`."
-msgstr "Resolve the logo stylesheets used by `-logo-*` classes below `root`."
+msgstr "Rezoud fichye stil logo yo ki itilize pa klas `-logo-*` anba `root`."
 
 #: renderers/tinymce/src/functions/getUsedLogoCdnFiles.md
 #, fuzzy, no-c-format
@@ -30662,3 +30662,259 @@ msgstr "Yon bouton \"view fullscreen\" ki parèt lè w pase sourit la sou li, ko
 #~ msgctxt "docs.api:text"
 #~ msgid "breakpoints"
 #~ msgstr "breakpoints"
+
+msgctxt "docs.api:prose"
+msgid "Every token is exposed as a `var(--instui-*)` reference (not a concrete value), so Tailwind\nutilities like `bg-background-base` theme through the same CSS custom properties that\n`@pantoken/css` emits — light/dark and high-contrast all keep working."
+msgstr "Chak token ekspoze kòm yon `var(--instui-*)` referans (se pa yon valè konkrè), kidonk Tailwind\nutilitè tankou `bg-background-base` aplike tèm atravè menm pwopriyete CSS koutim yo ke\n`@pantoken/css` emèt — limyè/fènwa ak segondè-kontras tout kontinye fonksyone."
+
+msgctxt "docs.api:prose"
+msgid "A single-select row of compact view or filter options."
+msgstr "Yon ranje chwa sèl pou opsyon vi konpak oswa filtè."
+
+msgctxt "docs.api:prose"
+msgid "A selectable segmented-control label and its native radio input."
+msgstr "Yon etikèt kontwòl segmante ki ka chwazi ak eleman antre radyo natif natal li."
+
+msgctxt "docs.api:prose"
+msgid "Decorative placeholder for content that has not loaded yet."
+msgstr "Yon espas rezève dekoratif pou kontni ki poko chaje."
+
+msgctxt "docs.api:prose"
+msgid "`.instui-segmented-control` — A single-select row of compact view or filter options."
+msgstr "`.instui-segmented-control` — Yon liy sèl-chwa nan opsyon vi konpak oswa filtè."
+
+msgctxt "docs.api:prose"
+msgid "The selected segment uses a distinct active-item shadow; it does not match an existing\n  --instui-elevation-* composite. Overflow buttons use the upstream elevation3 component tokens."
+msgstr "Sèk chwazi a itilize yon lonbraj atik-aktif distenk; li pa matche ak yon\n egzistan  --instui-elevation-* konpoze. Bouton debòde yo itilize tokèn konpozan elevation3 upstream yo."
+
+msgctxt "docs.api:prose"
+msgid "Use a labelled fieldset and one shared radio name with a checked default. Native radios\n  announce their checked state; overflow buttons need labels describing their scroll direction."
+msgstr "Sèvi ak yon fieldset make epi yon sèl non radio pataje ak yon default make. Radios natifnatal\n  anonse eta make yo; bouton debòde bezwen etikèt ki dekri direksyon defile yo."
+
+msgctxt "docs.api:prose"
+msgid "Config"
+msgstr "Konfig"
+
+msgctxt "docs.api:prose"
+msgid "Utilities"
+msgstr "Itilite"
+
+msgctxt "docs.api:prose"
+msgid "Preferences"
+msgstr "Preferans"
+
+msgctxt "docs.api:prose"
+msgid "Feature flags"
+msgstr "Flag karakteristik"
+
+msgctxt "docs.api:prose"
+msgid "Large segments."
+msgstr "Segment gwo."
+
+msgctxt "docs.api:prose"
+msgid "Medium segments (default)."
+msgstr "Segment mwayen (default)."
+
+msgctxt "docs.api:prose"
+msgid "Small segments."
+msgstr "Segment piti."
+
+msgctxt "docs.api:prose"
+msgid "Scroll to the following hidden segment."
+msgstr "Defile pou rive nan segment kache ki annapre."
+
+msgctxt "docs.api:prose"
+msgid "Scroll to the preceding hidden segment."
+msgstr "Defile pou rive nan segment kache ki anvan."
+
+msgctxt "docs.api:prose"
+msgid "Scrollable row containing the selectable segments."
+msgstr "Liy defilab ki gen segment ki chwazi yo."
+
+msgctxt "docs.api:prose"
+msgid "Clips the segment row and anchors the overflow controls."
+msgstr "Koupe liy segment la epi ankre kontwòl debòde yo."
+
+msgctxt "docs.api:prose"
+msgid "`.instui-segmented-control` — A selectable segmented-control label and its native radio input."
+msgstr "`.instui-segmented-control` — Yon etikèt kontwòl segmante ki ka chwazi ak bouton radyo natif natal li."
+
+msgctxt "docs.api:prose"
+msgid "A `-icon-*` class may live on the label or its native input; the interaction helper\n  promotes input classes to the label so the shared glyph painter can render it."
+msgstr "Yon `-icon-*` klas ka rete sou etikèt la oswa sou bouton natif natal li; èd entèraksyon\n  transfere klas input yo sou etikèt la pou pentè glif pataje a ka rann li."
+
+msgctxt "docs.api:prose"
+msgid "Keep the native radio in the label so checked, focus, disabled, and keyboard semantics remain available."
+msgstr "Kenbe bouton radyo natif natal la nan etikèt la pou estati tcheke, fokus, dezaktive, ak semantik klavye rete disponib."
+
+msgctxt "docs.api:prose"
+msgid "`.instui-skeleton-loader` — Decorative placeholder for content that has not loaded yet."
+msgstr "`.instui-skeleton-loader` — Plas kenbe dekoratif pou kontni ki poko chaje."
+
+msgctxt "docs.api:prose"
+msgid "Mark the decorative loader aria-hidden=\"true\". Put aria-busy on the parent content region,\n  with an initially empty status and alert outside that region. Use initSkeletonLoading from the\n  interactions package to announce the parent's loading state. Shapes must not receive focus."
+msgstr "Mete loader dekoratif la aria-hidden=\"true\". Mete aria-busy sou rejyon kontni paran an,\n  ak yon estati inisyalman vid ak yon alèt deyò rejyon sa a. Sèvi ak initSkeletonLoading soti nan the\n  interactions package pou anonse eta chajman paran an. Fòm yo pa dwe resevwa konsantre."
+
+msgctxt "docs.api:prose"
+msgid "Large text row."
+msgstr "Liy tèks gwo."
+
+msgctxt "docs.api:prose"
+msgid "Medium text row (default)."
+msgstr "Liy tèks mwayen (pa defo)."
+
+msgctxt "docs.api:prose"
+msgid "Small text row."
+msgstr "Liy tèks piti."
+
+msgctxt "docs.api:prose"
+msgid "Extra-large text row."
+msgstr "Liy tèks ekstra-gwo."
+
+msgctxt "docs.api:prose"
+msgid "Extra-small text row."
+msgstr "Liy tèks ekstra-piti."
+
+msgctxt "docs.api:prose"
+msgid "Largest text row."
+msgstr "Liy tèks ki pi gwo."
+
+msgctxt "docs.api:prose"
+msgid "Legend-sized text row."
+msgstr "Liy tèks gwosè lejann."
+
+msgctxt "docs.api:prose"
+msgid "A round avatar placeholder, medium size only."
+msgstr "Yon plas kenbe avatar wonn, sèlman gwosè mwayen."
+
+msgctxt "docs.api:prose"
+msgid "An image placeholder, medium size only."
+msgstr "Yon plas kenbe imaj, sèlman gwosè mwayen."
+
+msgctxt "docs.api:prose"
+msgid "A text bar (default)."
+msgstr "Yon ba tèks (pa defo)."
+
+msgctxt "docs.api:prose"
+msgid "The clipped placeholder surface sized for the selected loader type."
+msgstr "Sifas plas kenbe koupe a dimansyon pou tip loader chwazi a."
+
+msgctxt "docs.api:prose"
+msgid "A repeated text-row wrapper that applies vertical spacing."
+msgstr "Yon anvlòp liy-tèks repete ki aplike espas vètikal."
+
+msgctxt "docs.api:prose"
+msgid "Enhance a labelled native radio group with keyboard navigation and optional overflow controls."
+msgstr "Amelyore yon gwoup radyo natif ki gen etikèt ak navigasyon pa klavye ak kontwòl debòde opsyonèl."
+
+msgctxt "docs.api:prose"
+msgid "Bind the parent content region to SSR-provided status and error announcements."
+msgstr "Lye rejyon kontni paran an ak deklarasyon estati ak erè ki bay pa SSR."
+
+msgctxt "docs.api:prose"
+msgid "Detach the segmented-control listeners and observers."
+msgstr "Retire ekoutè ak obsèvatè segmented-control yo."
+
+msgctxt "docs.api:prose"
+msgid "Segmented control options; the medium size is the CSS default."
+msgstr "Opsyon kontwòl segman; gwosè mwayen an se valè default CSS la."
+
+msgctxt "docs.api:prose"
+msgid "Control parent-level loading semantics without touching decorative skeleton shapes."
+msgstr "Kontwole semantik chajman nan nivo paran san manyen fòm skelèt dekoratif yo."
+
+msgctxt "docs.api:prose"
+msgid "Pre-rendered announcement elements must be outside the busy content region."
+msgstr "Eleman anons pre-rann yo dwe deyò rejyon kontni ki okipe a."
+
+msgctxt "docs.api:prose"
+msgid "State update sent to an auto-registered skeleton loading region."
+msgstr "Mizajou eta voye nan yon rejyon chajman skeleton ki otomatikman anrejistre."
+
+msgctxt "docs.api:prose"
+msgid "The generated Swift uses UIKit and targets iOS. `mise run verify:swift:syntax` only parses its\nsource; `mise run verify:swift:host` needs full Xcode and the iOS Simulator SDK to type-check it."
+msgstr "Swift ki jenere a itilize UIKit epi vize iOS. `mise run verify:swift:syntax` sèlman analize li\nsource; `mise run verify:swift:host` bezwen Xcode konplè ak iOS Simulator SDK pou tcheke tip li."
+
+msgctxt "docs.api:prose"
+msgid "Build segmented-control CSS, replacing the component prefix sentinel."
+msgstr "Bati CSS pou segmented-control, ranplase siyant prefiks konpozan an."
+
+msgctxt "docs.api:prose"
+msgid "Build the skeleton loader CSS, replacing the component prefix sentinel."
+msgstr "Konstwi CSS chajè eskeleton la, ranplase sentinèl prefiks konpozan an."
+
+msgctxt "docs.api:prose"
+msgid "`@pantoken/bootstrap` — theme Bootstrap 5.2+ body variables and primary buttons with Instructure tokens."
+msgstr "`@pantoken/bootstrap` — tèm Bootstrap 5.2+ varyab kò ak bouton prensipal ak tokens Instructure."
+
+msgctxt "docs.api:prose"
+msgid "Points body and primary-button `--bs-*` CSS variables at `var(--instui-*)`. Load it after\nBootstrap and `@pantoken/css`; other component variants retain their Bootstrap defaults."
+msgstr "Endike varyab CSS kò a ak bouton-prensipal `--bs-*` nan `var(--instui-*)`. Chaje li apre\nBootstrap ak `@pantoken/css`; lòt varyant konpozan yo kenbe valè default Bootstrap yo."
+
+msgctxt "docs.api:prose"
+msgid "Emit the Foundation Sass settings override. Import it before Foundation itself and\n`@include foundation-everything` so its palette is available to Sass."
+msgstr "Pibliye ranplasman anviwònman Sass Foundation la. Enpòte li anvan Foundation tèt li ak\n`@include foundation-everything` pou palèt li a disponib pou Sass."
+
+msgctxt "docs.api:prose"
+msgid "`@pantoken/foundation` — theme Foundation for Sites Sass output and common CSS classes."
+msgstr "`@pantoken/foundation` — tèm Foundation for Sites sòti Sass ak klas CSS komen."
+
+msgctxt "docs.api:prose"
+msgid "Foundation is Sass-first, so this package ships two layers. [toFoundationSettings](functions/toFoundationSettings.md) emits a\n`_settings`-style Sass partial with concrete light-mode rebrand values so Foundation's colour functions can\ncompile. [toFoundationCss](functions/toFoundationCss.md) emits a thin variable-backed CSS overlay that themes the common compiled\nclasses (`.button`, `.callout`, links) the same way — useful when you consume stock Foundation CSS\nand just want to layer Instructure colors on top without recompiling."
+msgstr "Foundation is Sass-first, so this package ships two layers. [toFoundationSettings](functions/toFoundationSettings.md) pibliye yon\n`_settings`-style pati Sass ak valè rebrand mòd-limyè konkrè pou fonksyon koulè Foundation yo ka\nkonpile. [toFoundationCss](functions/toFoundationCss.md) pibliye yon kouch CSS mens apiye sou varyab ki aplike tèm sou klas konpile komen\n (`.button`, `.callout`, lyen) menm jan an — itil lè w konsome CSS Foundation estanda\nepi ou jis vle mete koulè Instructure sou li san re-konpile."
+
+msgctxt "docs.api:prose"
+msgid "Registration and shadow output are environment-verified with Happy DOM; real-browser behavior is\nnot covered by that check."
+msgstr "Enskripsyon ak pwodiksyon lonbraj yo verifye nan anviwònman an ak Happy DOM; konpòtman navigatè reyèl la se\npa kouvri pa tchek sa a."
+
+msgctxt "docs.api:prose"
+msgid "Browser script URLs to load after the example markup (interaction bundles, when needed)."
+msgstr "URL script navigatè pou chaje apre markup egzanp lan (pakèt entèraksyon, lè sa nesesè)."
+
+msgctxt "docs.api:text"
+msgid "SegmentedControlOptions"
+msgstr "SegmentedControlOptions"
+
+msgctxt "docs.api:text"
+msgid "SegmentedControlHandle"
+msgstr "SegmentedControlHandle"
+
+msgctxt "docs.api:text"
+msgid "SkeletonLoadingState"
+msgstr "SkeletonLoadingState"
+
+msgctxt "docs.api:text"
+msgid "SkeletonLoadingOptions"
+msgstr "SkeletonLoadingOptions"
+
+msgctxt "docs.api:text"
+msgid "SkeletonLoadingHandle"
+msgstr "SkeletonLoadingHandle"
+
+msgctxt "docs.api:text"
+msgid "initSegmentedControl"
+msgstr "initSegmentedControl"
+
+msgctxt "docs.api:text"
+msgid "initSkeletonLoading"
+msgstr "initSkeletonLoading"
+
+msgctxt "docs.api:text"
+msgid "segmentedControlRules"
+msgstr "segmentedControlRules"
+
+msgctxt "docs.api:text"
+msgid "skeletonLoaderRules"
+msgstr "skeletonLoaderRules"
+
+msgctxt "docs.api:text"
+msgid "segmented-control"
+msgstr "segmented-control"
+
+msgctxt "docs.api:text"
+msgid "segment"
+msgstr "segment"
+
+msgctxt "docs.api:text"
+msgid "skeleton-loader"
+msgstr "skeleton-loader"

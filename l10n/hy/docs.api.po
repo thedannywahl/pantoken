@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: pantoken\n"
-"PO-Revision-Date: 2026-09-28 16:14+0000\n"
+"PO-Revision-Date: 2026-10-01 02:09+0000\n"
 "Last-Translator: pantoken localization engine\n"
 "Language-Team: pantoken\n"
 "MIME-Version: 1.0\n"
@@ -26005,3 +26005,257 @@ msgstr "Logos picker-ն այլևս չի ցուցադրում product/layout/colo
 msgctxt "docs.api:prose"
 msgid "Brand names shown on the logos picker's tabs — proper nouns, so never translated."
 msgstr "Լոգոների ընտրության ներդիրներում ցուցադրվող ապրանքանիշերի անվանումները՝ հատուկ անուններ են, ուստի երբեք չեն թարգմանվում:"
+
+msgctxt "docs.api:prose"
+msgid "Every token is exposed as a `var(--instui-*)` reference (not a concrete value), so Tailwind\nutilities like `bg-background-base` theme through the same CSS custom properties that\n`@pantoken/css` emits — light/dark and high-contrast all keep working."
+msgstr "Յուրաքանչյուր token բացահայտվում է որպես `var(--instui-*)` հղում (ոչ կոնկրետ արժեք), այդ պատճառով Tailwind\n կոմպոնենտները, ինչպիսիք են `bg-background-base`, թեման են վերահեռափոխում նույն CSS հատուկ հատկությունների միջոցով, որոնք \n`@pantoken/css` արտահայտում են — լուսով/մութով և բարձր կոնտրաստով ռեժիմները շարունակում են գործել):"
+
+msgctxt "docs.api:prose"
+msgid "A single-select row of compact view or filter options."
+msgstr "Մի ընտրելի տող՝ կոմպակտ դիտման կամ ֆիլտրի ընտրանքների համար."
+
+msgctxt "docs.api:prose"
+msgid "A selectable segmented-control label and its native radio input."
+msgstr "Ընտրելի հատվածացված կառավարման պիտակն ու նրա բնիկ ռադիո էլեմենտը."
+
+msgctxt "docs.api:prose"
+msgid "Decorative placeholder for content that has not loaded yet."
+msgstr "Զարդարիչ տեղակայում այն պարունակության համար, որը դեռ չի բեռնվել."
+
+msgctxt "docs.api:prose"
+msgid "@import \"@pantoken/plugin-custom-components/segmented-control.css\";"
+msgstr "@import \"@pantoken/plugin-custom-components/segmented-control.css\";"
+
+msgctxt "docs.api:prose"
+msgid "`.instui-segmented-control` — A single-select row of compact view or filter options."
+msgstr "`.instui-segmented-control` — մեկընտրական տող կոմպակտ դիտման կամ ֆիլտրի տարբերակների համար."
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "The selected segment uses a distinct active-item shadow; it does not match an existing\n  --instui-elevation-* composite. Overflow buttons use the upstream elevation3 component tokens."
+msgstr "The selected segment uses a distinct active-item shadow; it does not match an existing\n  --instui-elevation-* composite. Overflow buttons use the upstream elevation3 component tokens."
+
+msgctxt "docs.api:prose"
+msgid "Use a labelled fieldset and one shared radio name with a checked default. Native radios\n  announce their checked state; overflow buttons need labels describing their scroll direction."
+msgstr "Օգտագործեք պիտակավորված fieldset և մեկ համօգտագործվող radio name՝ նշված կանխադրվածով։ Native radios\n հայտնում են իրենց նշված վիճակը; overflow կոճակներին անհրաժեշտ են պիտակներ, որոնք նկարագրում են սքրոլի ուղղությունը."
+
+msgctxt "docs.api:prose"
+msgid "Config"
+msgstr "Կարգավորումներ"
+
+msgctxt "docs.api:prose"
+msgid "Utilities"
+msgstr "Օգտակար գործիքներ"
+
+msgctxt "docs.api:prose"
+msgid "Preferences"
+msgstr "Նախապատվություններ"
+
+msgctxt "docs.api:prose"
+msgid "Feature flags"
+msgstr "Հատկությունների դրոշակներ"
+
+msgctxt "docs.api:prose"
+msgid "Large segments."
+msgstr "Մեծ հատվածներ."
+
+msgctxt "docs.api:prose"
+msgid "Medium segments (default)."
+msgstr "Միջին հատվածներ (default)."
+
+msgctxt "docs.api:prose"
+msgid "Small segments."
+msgstr "Փոքր հատվածներ."
+
+msgctxt "docs.api:prose"
+msgid "Scroll to the following hidden segment."
+msgstr "Սքրոլ անել մինչև հետևյալ թաքնված հատվածը."
+
+msgctxt "docs.api:prose"
+msgid "Scroll to the preceding hidden segment."
+msgstr "Սքրոլ անել մինչև նախորդ թաքնված հատվածը."
+
+msgctxt "docs.api:prose"
+msgid "`.instui-segmented-control` — A selectable segmented-control label and its native radio input."
+msgstr "`.instui-segmented-control` — Ընտրելի հատվածային վերահսկիչի (segmented-control) պիտակ և նրա բնիկ ռադիո մուտքը."
+
+msgctxt "docs.api:prose"
+msgid "A `-icon-*` class may live on the label or its native input; the interaction helper\n  promotes input classes to the label so the shared glyph painter can render it."
+msgstr "Մի `-icon-*` դասը կարող է տեղակայվել պիտակի վրա կամ նրա բնիկ ինպուտի վրա; միջգործնական օգնականը\n  տեղափոխում է ինպուտի դասերը պիտակի վրա, որպեսզի համընդհանուր գլիֆ-նկարչը կարողանա դրանք նկարել."
+
+msgctxt "docs.api:prose"
+msgid "Keep the native radio in the label so checked, focus, disabled, and keyboard semantics remain available."
+msgstr "Պահեք բնիկ ռադիոն պիտակի մեջ, որպեսզի checked, focus, disabled և keyboard սեմանտիկան մնան հասանելի."
+
+msgctxt "docs.api:prose"
+msgid "`.instui-skeleton-loader` — Decorative placeholder for content that has not loaded yet."
+msgstr "`.instui-skeleton-loader` — Զարդարիչ պահակ՝ այն բովանդակության համար, որը դեռ չի բեռնվել։"
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "Mark the decorative loader aria-hidden=\"true\". Put aria-busy on the parent content region,\n  with an initially empty status and alert outside that region. Use initSkeletonLoading from the\n  interactions package to announce the parent's loading state. Shapes must not receive focus."
+msgstr "Mark the decorative loader aria-hidden=\"true\". Put aria-busy on the parent content region,\n  with an initially empty status and alert outside that region. Use initSkeletonLoading from the\n  interactions package to announce the parent's loading state. Shapes must not receive focus."
+
+msgctxt "docs.api:prose"
+msgid "Large text row."
+msgstr "Մեծ տեքստային տող։"
+
+msgctxt "docs.api:prose"
+msgid "Medium text row (default)."
+msgstr "Միջին տեքստային տող (ստանդարտ)."
+
+msgctxt "docs.api:prose"
+msgid "Small text row."
+msgstr "Փոքր տեքստային տող։"
+
+msgctxt "docs.api:prose"
+msgid "Extra-large text row."
+msgstr "Շատ մեծ տեքստային տող։"
+
+msgctxt "docs.api:prose"
+msgid "Extra-small text row."
+msgstr "Շատ փոքր տեքստային տող։"
+
+msgctxt "docs.api:prose"
+msgid "Largest text row."
+msgstr "Ամենամեծ տեքստային տող։"
+
+msgctxt "docs.api:prose"
+msgid "Legend-sized text row."
+msgstr "Տեքստային տող՝ լեգենդի չափի։"
+
+msgctxt "docs.api:prose"
+msgid "A round avatar placeholder, medium size only."
+msgstr "Շրջանաձև avatar-ի պահեստամաս, միայն միջին չափսով։"
+
+msgctxt "docs.api:prose"
+msgid "An image placeholder, medium size only."
+msgstr "Պատկերի պահեստամաս, միայն միջին չափսով։"
+
+msgctxt "docs.api:prose"
+msgid "A text bar (default)."
+msgstr "Տեքստային գոտի (նախնական)."
+
+msgctxt "docs.api:prose"
+msgid "The clipped placeholder surface sized for the selected loader type."
+msgstr "Կլիպացված պահեստային մակերես, չափված ընտրված loader տեսակի համար։"
+
+msgctxt "docs.api:prose"
+msgid "A repeated text-row wrapper that applies vertical spacing."
+msgstr "Կրկնվող տեքստային տողերի պարուրիչ, որը կիրառում է ուղղահայաց բացատներ։"
+
+msgctxt "docs.api:prose"
+msgid "Enhance a labelled native radio group with keyboard navigation and optional overflow controls."
+msgstr "Բարելավել լեյբլավորված բնիկ ռադիո խումբը՝ հավելելով ստեղնաշարի միջոցով նավիգացիա և ցանկության դեպքում overflow կառավարման հնարավորություններ։"
+
+msgctxt "docs.api:prose"
+msgid "Bind the parent content region to SSR-provided status and error announcements."
+msgstr "Փոխկապակցել ծնողական բովանդակության տարածքը SSR-ի կողմից տրամադրվող կարգավիճակի և սխալների հայտարարությունների հետ։"
+
+msgctxt "docs.api:prose"
+msgid "Detach the segmented-control listeners and observers."
+msgstr "Հեռացնել segmented-control-ի լսողներն ու դիտորդները."
+
+msgctxt "docs.api:prose"
+msgid "Segmented control options; the medium size is the CSS default."
+msgstr "Բաժանված վերահսկման ընտրանքներ; միջին չափը CSS‑ի ստանդարտն է."
+
+msgctxt "docs.api:prose"
+msgid "Control parent-level loading semantics without touching decorative skeleton shapes."
+msgstr "Կառավարեք ծնողական մակարդակի բեռնման սեմանտիկան՝ առանց որևէ միջամտության զարդարիչ «skeleton» ձևերին։"
+
+msgctxt "docs.api:prose"
+msgid "Pre-rendered announcement elements must be outside the busy content region."
+msgstr "Նախօրոք նախապատրաստված հայտարարության տարրերը պետք է գտնվեն զբաղված բովանդակության տարածքից դուրս։"
+
+msgctxt "docs.api:prose"
+msgid "State update sent to an auto-registered skeleton loading region."
+msgstr "Կարգավիճակի թարմացում ուղարկվել է ավտոմատ түрде գրանցված skeleton բեռնման գոտուն։"
+
+msgctxt "docs.api:prose"
+msgid "The generated Swift uses UIKit and targets iOS. `mise run verify:swift:syntax` only parses its\nsource; `mise run verify:swift:host` needs full Xcode and the iOS Simulator SDK to type-check it."
+msgstr "Ստեղծված Swift-ը օգտագործում է UIKit և թիրախավորում է iOS. `mise run verify:swift:syntax` միայն վերլուծում է դրա\nաղբյուրը; `mise run verify:swift:host` պահանջում է ամբողջական Xcode և iOS Simulator SDK՝ տիպերի ստուգման համար."
+
+msgctxt "docs.api:prose"
+msgid "Build segmented-control CSS, replacing the component prefix sentinel."
+msgstr "Կառուցել segmented-control-ի CSS-ը, փոխարինելով կոմպոնենտի նախածանցի նշիչը։"
+
+msgctxt "docs.api:prose"
+msgid "Build the skeleton loader CSS, replacing the component prefix sentinel."
+msgstr "Ստեղծել skeleton loader-ի CSS‑ը՝ փոխարինելով կոմպոնենտի նախածանցի նշիչը։"
+
+msgctxt "docs.api:prose"
+msgid "`@pantoken/bootstrap` — theme Bootstrap 5.2+ body variables and primary buttons with Instructure tokens."
+msgstr "`@pantoken/bootstrap` — Bootstrap 5.2+ թեմայի body փոփոխականներ և primary կոճակներ՝ Instructure տոկեններով."
+
+msgctxt "docs.api:prose"
+msgid "Points body and primary-button `--bs-*` CSS variables at `var(--instui-*)`. Load it after\nBootstrap and `@pantoken/css`; other component variants retain their Bootstrap defaults."
+msgstr "Points body and primary-button `--bs-*` CSS փոփոխականները տեղակայված են `var(--instui-*)`. Լցնել այն `Bootstrap\n-ից և `@pantoken/css`-ից հետո`; մյուս կոմպոնենտների տարբերակները պահպանում են իրենց Bootstrap-ի կանխադրվածները."
+
+msgctxt "docs.api:prose"
+msgid "Emit the Foundation Sass settings override. Import it before Foundation itself and\n`@include foundation-everything` so its palette is available to Sass."
+msgstr "Արտահանիր Foundation-ի Sass կարգավորումներն էլ ավելի վերակապը (override): Ներմուծիր այն Foundation-ի ինքը նախքան և\n`@include foundation-everything` այնպես որ նրա գույների պալիտրան հասանելի լինի Sass‑ին."
+
+msgctxt "docs.api:prose"
+msgid "`@pantoken/foundation` — theme Foundation for Sites Sass output and common CSS classes."
+msgstr "`@pantoken/foundation` — թեմա՝ Foundation for Sites-ի Sass-ի ելք և ընդհանուր CSS դասեր."
+
+msgctxt "docs.api:prose"
+msgid "Foundation is Sass-first, so this package ships two layers. [toFoundationSettings](functions/toFoundationSettings.md) emits a\n`_settings`-style Sass partial with concrete light-mode rebrand values so Foundation's colour functions can\ncompile. [toFoundationCss](functions/toFoundationCss.md) emits a thin variable-backed CSS overlay that themes the common compiled\nclasses (`.button`, `.callout`, links) the same way — useful when you consume stock Foundation CSS\nand just want to layer Instructure colors on top without recompiling."
+msgstr "Foundation-ը առաջին հերթին հենված է Sass-ի վրա, ուստի այս փաթեթը տրամադրում է երկու շերտ։ [toFoundationSettings](functions/toFoundationSettings.md) արտադրում է \n`_settings`-ճանաչագրված Sass partial կոնկրետ light-mode ռեբրենդավորման արժեքներով, որպեսզի Foundation-ի գույնի ֆունկցիաները կարողանան \ncompile։ [toFoundationCss](functions/toFoundationCss.md) արտադրում է նուրբ, փոփոխականներով ապահովված CSS օվերլեյ, որը թեմավորում է ընդհանուր կոմպիլացված \nclasses (`.button`, `.callout`, links) նույն կերպ) — օգտակար է, երբ օգտագործում եք stock Foundation CSS\n և պարզապես ցանկանում եք վերին շերտով կիրառել Instructure գույները առանց կրկնակի կոմպիլացնելու անհրաժեշտության։"
+
+msgctxt "docs.api:prose"
+msgid "Registration and shadow output are environment-verified with Happy DOM; real-browser behavior is\nnot covered by that check."
+msgstr "Գրանցումը և ստվերային ելքը շրջակա միջավայրով վավերացվել են Happy DOM-ով; իրական զննարկչային վարքագիծը\nայդ ստուգմամբ չի ընդգրկվում։"
+
+msgctxt "docs.api:prose"
+msgid "Browser script URLs to load after the example markup (interaction bundles, when needed)."
+msgstr "Օրինակային նշագրումից հետո բեռնելու համար բրաուզերի սկրիպտների URL-ներ (ինտերակցիայի փաթեթներ, երբ անհրաժեշտ է)."
+
+msgctxt "docs.api:text"
+msgid "SegmentedControlOptions"
+msgstr "SegmentedControlOptions"
+
+msgctxt "docs.api:text"
+msgid "SegmentedControlHandle"
+msgstr "SegmentedControlHandle"
+
+msgctxt "docs.api:text"
+msgid "SkeletonLoadingState"
+msgstr "SkeletonLoadingState"
+
+msgctxt "docs.api:text"
+msgid "SkeletonLoadingOptions"
+msgstr "SkeletonLoadingOptions"
+
+msgctxt "docs.api:text"
+msgid "SkeletonLoadingHandle"
+msgstr "SkeletonLoadingHandle"
+
+msgctxt "docs.api:text"
+msgid "initSegmentedControl"
+msgstr "initSegmentedControl"
+
+msgctxt "docs.api:text"
+msgid "initSkeletonLoading"
+msgstr "initSkeletonLoading"
+
+msgctxt "docs.api:text"
+msgid "segmentedControlRules"
+msgstr "segmentedControlRules"
+
+msgctxt "docs.api:text"
+msgid "skeletonLoaderRules"
+msgstr "skeletonLoaderRules"
+
+msgctxt "docs.api:text"
+msgid "segmented-control"
+msgstr "segmented-control"
+
+msgctxt "docs.api:text"
+msgid "segment"
+msgstr "segment"
+
+msgctxt "docs.api:text"
+msgid "skeleton-loader"
+msgstr "skeleton-loader"

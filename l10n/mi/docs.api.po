@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: pantoken\n"
-"PO-Revision-Date: 2026-09-28 16:31+0000\n"
+"PO-Revision-Date: 2026-10-01 04:39+0000\n"
 "Last-Translator: pantoken localization engine\n"
 "Language-Team: pantoken\n"
 "MIME-Version: 1.0\n"
@@ -1644,7 +1644,7 @@ msgstr "Whakau"
 #, fuzzy, no-c-format
 msgctxt "docs.api:prose"
 msgid "Day"
-msgstr "day"
+msgstr "Rā"
 
 #: css/button-set.md
 #, fuzzy, no-c-format
@@ -14470,7 +14470,7 @@ msgstr "Derive the `custom` tairanga tino mai i tētahi hex tohu. Ka tau te urun
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "The [CustomColorScale](../interfaces/CustomColorScale.md)."
-msgstr "The [CustomColorScale](../interfaces/CustomColorScale.md)."
+msgstr "Te [CustomColorScale](../interfaces/CustomColorScale.md)."
 
 #: plugins/pantoken/custom-theme-colors/src/functions/deriveScale.md
 #, no-c-format
@@ -14482,7 +14482,7 @@ msgstr "Derive a full primitive scale from one hex: anchor it at the step with t
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "A hex color accepted by [parseHexColor](parseHexColor.md)."
-msgstr "A hex color accepted by [parseHexColor](parseHexColor.md)."
+msgstr "He hex tae e whakaaetia ana e [parseHexColor](parseHexColor.md)."
 
 #: plugins/pantoken/custom-theme-colors/src/functions/deriveScale.md
 #, fuzzy, no-c-format
@@ -14518,13 +14518,13 @@ msgstr "Whakamanaia, ā, whakaritea kia tika te tae hex nā te kaiwhakamahi i tu
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "A hex color, with or without the leading `#`."
-msgstr "A hex color, with or without the leading `#`."
+msgstr "He tae heks, me te kore rānei o te tohu tīmatanga `#`."
 
 #: plugins/pantoken/custom-theme-colors/src/functions/parseHexColor.md
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "Lowercase `#rrggbb`."
-msgstr "Lowercase `#rrggbb`."
+msgstr "Reta iti `#rrggbb`."
 
 #: plugins/pantoken/custom-theme-colors/src/functions/parseHexColor.md
 #, no-c-format
@@ -15060,7 +15060,7 @@ msgstr "Te aho SVG, ranei `undefined` mēnā kāore tērā huinga e wātea."
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "**Read a logo's aspect ratio**"
-msgstr "**Read a logo's aspect ratio**"
+msgstr "**Pānuitia te tārite āhua o te tohu**"
 
 #: plugins/pantoken/logos/src/functions/getLogoSvg.md
 #, no-c-format
@@ -30506,3 +30506,416 @@ msgstr "He pātene ka puta i te pākina \"tiro i te mata-katoa\", ā, ka whakano
 #~ msgctxt "docs.api:text"
 #~ msgid "ai-gradient"
 #~ msgstr "ai-gradient"
+
+msgctxt "docs.api:prose"
+msgid "Every token is exposed as a `var(--instui-*)` reference (not a concrete value), so Tailwind\nutilities like `bg-background-base` theme through the same CSS custom properties that\n`@pantoken/css` emits — light/dark and high-contrast all keep working."
+msgstr "Ka whakamaharatia ia token hei `var(--instui-*)` tohu (ehara i te uara mārō), nō reira ngā taputapu Tailwind\n pērā i `bg-background-base` e arataki ana i te kaupapa mā ngā rawa ritenga CSS kotahi e\n`@pantoken/css` e whakaputa — ka noho tonu te mahi o ngā aratau mārama/pō me te tino-āhua-rerekē."
+
+msgctxt "docs.api:prose"
+msgid "A single-select row of compact view or filter options."
+msgstr "He rārangi kōwhiri kotahi mō ngā kōwhiringa tirohanga paku, mō te tātari rānei."
+
+msgctxt "docs.api:prose"
+msgid "A selectable segmented-control label and its native radio input."
+msgstr "He tapanga whakahaere wāhanga ka taea te tīpako me tana whakauru pātene irarangi taketake."
+
+msgctxt "docs.api:prose"
+msgid "Decorative placeholder for content that has not loaded yet."
+msgstr "He tūāpapa whakapaipai mō te ihirangi kāore anō kia uta."
+
+msgctxt "docs.api:prose"
+msgid "`.instui-segmented-control` — A single-select row of compact view or filter options."
+msgstr "`.instui-segmented-control` — He rārangi kōwhiri kotahi mō ngā kōwhiringa tirohanga whāiti, ā, ngā kōwhira tātari."
+
+msgctxt "docs.api:prose"
+msgid "The selected segment uses a distinct active-item shadow; it does not match an existing\n  --instui-elevation-* composite. Overflow buttons use the upstream elevation3 component tokens."
+msgstr "Ka whakamahia e te wāhanga kua tīpakohia tētahi atarangi tūnga-tau motuhake; kāore ia e ōrite ki tētahi existing\n  --instui-elevation-* composite. Ka whakamahi ngā pātene whakawhānui i ngā tohu kōwae elevation3 mai i runga."
+
+msgctxt "docs.api:prose"
+msgid "Use a labelled fieldset and one shared radio name with a checked default. Native radios\n  announce their checked state; overflow buttons need labels describing their scroll direction."
+msgstr "Whakamahia he fieldset kua tapaina me tētahi ingoa reo-irirangi tiritahi me te taunoa kua tirohia. Ka pānuitia e ngā reo irirangi taketake\n tō rātou āhua kua tirohia; me whai tapanga ngā pātene whakawhānui e whakaahua ana i tō rātou arahina panuku."
+
+msgctxt "docs.api:prose"
+msgid "Config"
+msgstr "Kōwhiringa"
+
+msgctxt "docs.api:prose"
+msgid "Utilities"
+msgstr "Utauta"
+
+msgctxt "docs.api:prose"
+msgid "Preferences"
+msgstr "Manakohanga"
+
+msgctxt "docs.api:prose"
+msgid "Feature flags"
+msgstr "Tūtohu āhuatanga"
+
+msgctxt "docs.api:prose"
+msgid "Large segments."
+msgstr "Ngā wahanga rahi."
+
+msgctxt "docs.api:prose"
+msgid "Medium segments (default)."
+msgstr "Ngā wahanga āhua-motu (taunoa)."
+
+msgctxt "docs.api:prose"
+msgid "Small segments."
+msgstr "Ngā wahanga iti."
+
+msgctxt "docs.api:prose"
+msgid "Scroll to the following hidden segment."
+msgstr "Panuku ki te wahanga huna e whai ake nei."
+
+msgctxt "docs.api:prose"
+msgid "Scroll to the preceding hidden segment."
+msgstr "Panuku ki te wahanga huna i mua."
+
+msgctxt "docs.api:prose"
+msgid "Scrollable row containing the selectable segments."
+msgstr "Rārangi ka taea te panuku e rongo ana i ngā wahanga ka taea te tīpako."
+
+msgctxt "docs.api:prose"
+msgid "Clips the segment row and anchors the overflow controls."
+msgstr "Ka tapahia te rārangi wahanga, ā, ka herea ngā mana whakawhānui."
+
+msgctxt "docs.api:prose"
+msgid "`.instui-segmented-control` — A selectable segmented-control label and its native radio input."
+msgstr "`.instui-segmented-control` — He tapanga whakahaere wahanga e taea te tohua me tāna whakauru pōro taketake."
+
+msgctxt "docs.api:prose"
+msgid "A `-icon-*` class may live on the label or its native input; the interaction helper\n  promotes input classes to the label so the shared glyph painter can render it."
+msgstr "He `-icon-*` kara ka taea te noho i runga i te tapanga, i tōna whakauru pōro taketake rānei; ka whakatairanga te āwhina whakawhitinga\n i ngā kara whakauru ki te tapanga kia taea ai e te kaitā tohu tuitui te whakaatu."
+
+msgctxt "docs.api:prose"
+msgid "Keep the native radio in the label so checked, focus, disabled, and keyboard semantics remain available."
+msgstr "Tūwāhi te whakauru pōro taketake i roto i te tapanga kia noho tonu ngā āhuatanga kua tohua, te arotahi, te kore-āhei, me ngā tikanga papapātuhi."
+
+msgctxt "docs.api:prose"
+msgid "`.instui-skeleton-loader` — Decorative placeholder for content that has not loaded yet."
+msgstr "`.instui-skeleton-loader` — He tohu whakapaipai mō ngā ihirangi kāore anō kia utaina."
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "Mark the decorative loader aria-hidden=\"true\". Put aria-busy on the parent content region,\n  with an initially empty status and alert outside that region. Use initSkeletonLoading from the\n  interactions package to announce the parent's loading state. Shapes must not receive focus."
+msgstr "Mark the decorative loader aria-hidden=\"true\". Put aria-busy on the parent content region,\n  with an initially empty status and alert outside that region. Use initSkeletonLoading from the\n  interactions package to announce the parent's loading state. Shapes must not receive focus."
+
+msgctxt "docs.api:prose"
+msgid "Large text row."
+msgstr "Rārangi kuputuhi nui."
+
+msgctxt "docs.api:prose"
+msgid "Medium text row (default)."
+msgstr "Rārangi kuputuhi rahi (taunoa)."
+
+msgctxt "docs.api:prose"
+msgid "Small text row."
+msgstr "Rārangi kuputuhi iti."
+
+msgctxt "docs.api:prose"
+msgid "Extra-large text row."
+msgstr "Rārangi kuputuhi tino-nui."
+
+msgctxt "docs.api:prose"
+msgid "Extra-small text row."
+msgstr "Rārangi kuputuhi tino-iti."
+
+msgctxt "docs.api:prose"
+msgid "Largest text row."
+msgstr "Rārangi kuputuhi nui rawa."
+
+msgctxt "docs.api:prose"
+msgid "Legend-sized text row."
+msgstr "Rārangi kuputuhi rahi mō te legend."
+
+msgctxt "docs.api:prose"
+msgid "A round avatar placeholder, medium size only."
+msgstr "He tūāhua porowhita mō te avatar, mō te rahi waenganui anake."
+
+msgctxt "docs.api:prose"
+msgid "An image placeholder, medium size only."
+msgstr "He tūāhua whakaahua, mō te rahi waenganui anake."
+
+msgctxt "docs.api:prose"
+msgid "A text bar (default)."
+msgstr "He pae kuputuhi (taunoa)."
+
+msgctxt "docs.api:prose"
+msgid "The clipped placeholder surface sized for the selected loader type."
+msgstr "Ko te mata tūāhua tapahia kua whakaritea ki te rahi mō te momo kaituhi kua tohua."
+
+msgctxt "docs.api:prose"
+msgid "A repeated text-row wrapper that applies vertical spacing."
+msgstr "He kapi rārangi kuputuhi e tau ai te mokowā poutū."
+
+msgctxt "docs.api:prose"
+msgid "Enhance a labelled native radio group with keyboard navigation and optional overflow controls."
+msgstr "Whakapai ake i tētahi rōpū pātene radio taiao kua tapaina, mā te tāpiri i te whakatere mā te papapātuhi, me ētahi mana whakahaere whakawhānuitanga (overflow) kōwhiringa."
+
+msgctxt "docs.api:prose"
+msgid "Bind the parent content region to SSR-provided status and error announcements."
+msgstr "Tūhonohia te rohe ihirangi matua ki ngā pānui mō te tūnga me ngā hapa i tukuna e SSR."
+
+msgctxt "docs.api:prose"
+msgid "Detach the segmented-control listeners and observers."
+msgstr "Wehea ngā kaiwhakarongo me ngā kaitirotiro o te segmented-control."
+
+msgctxt "docs.api:prose"
+msgid "Segmented control options; the medium size is the CSS default."
+msgstr "Kōwhiringa kāwhiri wehewehe; ko te rahi waenganui te taunoa CSS."
+
+msgctxt "docs.api:prose"
+msgid "Control parent-level loading semantics without touching decorative skeleton shapes."
+msgstr "Whakahaerehia ngā tikanga uta ā‑mātua kia kore e pā ki ngā āhua pūtau whakapaipai."
+
+msgctxt "docs.api:prose"
+msgid "Pre-rendered announcement elements must be outside the busy content region."
+msgstr "Me noho ngā wāhanga pānui kua reri i waho o te rohe ihirangi pukumahi."
+
+msgctxt "docs.api:prose"
+msgid "State update sent to an auto-registered skeleton loading region."
+msgstr "Kua tukuna te whakahou ā-tāhu ki tētahi rohe uta “skeleton” kua rēhitatia aunoa."
+
+msgctxt "docs.api:prose"
+msgid "The generated Swift uses UIKit and targets iOS. `mise run verify:swift:syntax` only parses its\nsource; `mise run verify:swift:host` needs full Xcode and the iOS Simulator SDK to type-check it."
+msgstr "Ko te Swift i hanga e whakamahi ana i te UIKit ā, e whāngai ana ki te iOS. `mise run verify:swift:syntax` anake e tātaritia ana tana \n puna; `mise run verify:swift:host` e hiahia ana ki te Xcode katoa me te iOS Simulator SDK kia taea te whakamātau-momo (type-check) i taua mea."
+
+msgctxt "docs.api:prose"
+msgid "Build segmented-control CSS, replacing the component prefix sentinel."
+msgstr "Waihanga i te CSS mō te segmented-control, me te whakakapi i te tohu tūtohu whakamua o te wahanga."
+
+msgctxt "docs.api:prose"
+msgid "Build the skeleton loader CSS, replacing the component prefix sentinel."
+msgstr "Hangaia te CSS mō te kaituhi anga, me te whakakapi i te tohu tūmau ā-wāhanga."
+
+msgctxt "docs.api:prose"
+msgid "`@pantoken/bootstrap` — theme Bootstrap 5.2+ body variables and primary buttons with Instructure tokens."
+msgstr "`@pantoken/bootstrap` — kaupapa Bootstrap 5.2+ ngā taurangi tinana (body) me ngā pātene matua me ngā tokena Instructure."
+
+msgctxt "docs.api:prose"
+msgid "Points body and primary-button `--bs-*` CSS variables at `var(--instui-*)`. Load it after\nBootstrap and `@pantoken/css`; other component variants retain their Bootstrap defaults."
+msgstr "E tohu ana i ngā taurangi CSS mō te body me te pātene-matua `--bs-*` kei `var(--instui-*)`. Tāuruhia i muri i \nBootstrap me `@pantoken/css`; ka mau tonu ngā rerekētanga ā-hua o ētahi atu wāhanga ki ā rātou taunoa Bootstrap."
+
+msgctxt "docs.api:prose"
+msgid "Emit the Foundation Sass settings override. Import it before Foundation itself and\n`@include foundation-everything` so its palette is available to Sass."
+msgstr "Tukuna te whakakapi tautuhinga Foundation Sass. Tāuru i mua i te Foundation tonu me\n`@include foundation-everything` kia wātea ai tōna papamuri tae ki Sass."
+
+msgctxt "docs.api:prose"
+msgid "`@pantoken/foundation` — theme Foundation for Sites Sass output and common CSS classes."
+msgstr "`@pantoken/foundation` — kaupapa Foundation for Sites pouputanga Sass me ngā karaehe CSS noa."
+
+msgctxt "docs.api:prose"
+msgid "Foundation is Sass-first, so this package ships two layers. [toFoundationSettings](functions/toFoundationSettings.md) emits a\n`_settings`-style Sass partial with concrete light-mode rebrand values so Foundation's colour functions can\ncompile. [toFoundationCss](functions/toFoundationCss.md) emits a thin variable-backed CSS overlay that themes the common compiled\nclasses (`.button`, `.callout`, links) the same way — useful when you consume stock Foundation CSS\nand just want to layer Instructure colors on top without recompiling."
+msgstr "He tuatahi a Foundation ki te Sass, nō reira ka tukuna e tēnei mōkihi ngā paparanga e rua. [toFoundationSettings](functions/toFoundationSettings.md) ka whakaputa i tētahi wahanga Sass ā-\n`_settings` me ngā uara whakakahakoretanga mō te aratau mārama kia taea e ngā tātai tae o Foundation te\nwhakakōpeke. [toFoundationCss](functions/toFoundationCss.md) ka whakaputa i tētahi uwhi CSS angiangi e tautokohia ana e ngā rerekētanga (variables) e whakarite ana i te kaupapa mō ngā karaehe kua\nkomihia (`.button`, `.callout`, )ngā hononga i taua ara — he whaihua ina ka whakamahi koe i te CSS paerewa o Foundation\nme te hiahia noa ki te tāpiri i ngā tae Instructure ki runga, me te kore e whakahōputu anō)."
+
+msgctxt "docs.api:prose"
+msgid "Registration and shadow output are environment-verified with Happy DOM; real-browser behavior is\nnot covered by that check."
+msgstr "Kua whakamātautauhia te rēhitatanga me te putanga huna i te taiao mā Happy DOM; kāore te whanonga i te pūtirotiro tūturu\ne kapia e taua tirotiro."
+
+msgctxt "docs.api:prose"
+msgid "Browser script URLs to load after the example markup (interaction bundles, when needed)."
+msgstr "Ngā URL o ngā kōwae tuhi kaitirotiro hei uta i muri i te tohu tauira (ngā kohinga pāhekoheko, ina hiahiatia)."
+
+msgctxt "docs.api:text"
+msgid "EmailCssOptions"
+msgstr "EmailCssOptions"
+
+msgctxt "docs.api:text"
+msgid "InlineEmailHtmlOptions"
+msgstr "InlineEmailHtmlOptions"
+
+msgctxt "docs.api:text"
+msgid "EmailClient"
+msgstr "EmailClient"
+
+msgctxt "docs.api:text"
+msgid "light"
+msgstr "light"
+
+msgctxt "docs.api:text"
+msgid "inlineEmailHtml"
+msgstr "inlineEmailHtml"
+
+msgctxt "docs.api:text"
+msgid "GlyphSyncTarget"
+msgstr "GlyphSyncTarget"
+
+msgctxt "docs.api:text"
+msgid "PRODUCT_LABELS"
+msgstr "PRODUCT_LABELS"
+
+msgctxt "docs.api:text"
+msgid "retargetContentStylesheets"
+msgstr "retargetContentStylesheets"
+
+msgctxt "docs.api:text"
+msgid "normalizeGlyphHtml"
+msgstr "normalizeGlyphHtml"
+
+msgctxt "docs.api:text"
+msgid "injectUsedGlyphAssets"
+msgstr "injectUsedGlyphAssets"
+
+msgctxt "docs.api:text"
+msgid "registerGlyphSync"
+msgstr "registerGlyphSync"
+
+msgctxt "docs.api:text"
+msgid "logoVariantLabel"
+msgstr "logoVariantLabel"
+
+msgctxt "docs.api:text"
+msgid "filterLogos"
+msgstr "filterLogos"
+
+msgctxt "docs.api:text"
+msgid "getLogoCdnFile"
+msgstr "getLogoCdnFile"
+
+msgctxt "docs.api:text"
+msgid "buildLogoMarkup"
+msgstr "buildLogoMarkup"
+
+msgctxt "docs.api:text"
+msgid "getUsedLogoCdnFiles"
+msgstr "getUsedLogoCdnFiles"
+
+msgctxt "docs.api:text"
+msgid "modifyExpression"
+msgstr "modifyExpression"
+
+msgctxt "docs.api:text"
+msgid "inline-styles"
+msgstr "inline-styles"
+
+msgctxt "docs.api:text"
+msgid "InlineHtmlOptions"
+msgstr "InlineHtmlOptions"
+
+msgctxt "docs.api:text"
+msgid "inlineHtml"
+msgstr "inlineHtml"
+
+msgctxt "docs.api:text"
+msgid "InPlaceEditOptions"
+msgstr "InPlaceEditOptions"
+
+msgctxt "docs.api:text"
+msgid "SegmentedControlOptions"
+msgstr "SegmentedControlOptions"
+
+msgctxt "docs.api:text"
+msgid "SegmentedControlHandle"
+msgstr "SegmentedControlHandle"
+
+msgctxt "docs.api:text"
+msgid "SkeletonLoadingState"
+msgstr "SkeletonLoadingState"
+
+msgctxt "docs.api:text"
+msgid "SkeletonLoadingOptions"
+msgstr "SkeletonLoadingOptions"
+
+msgctxt "docs.api:text"
+msgid "SkeletonLoadingHandle"
+msgstr "SkeletonLoadingHandle"
+
+msgctxt "docs.api:text"
+msgid "InPlaceEditInputType"
+msgstr "InPlaceEditInputType"
+
+msgctxt "docs.api:text"
+msgid "initSegmentedControl"
+msgstr "initSegmentedControl"
+
+msgctxt "docs.api:text"
+msgid "initSkeletonLoading"
+msgstr "initSkeletonLoading"
+
+msgctxt "docs.api:text"
+msgid "buttonSetRules"
+msgstr "buttonSetRules"
+
+msgctxt "docs.api:text"
+msgid "logoRules"
+msgstr "logoRules"
+
+msgctxt "docs.api:text"
+msgid "segmentedControlRules"
+msgstr "segmentedControlRules"
+
+msgctxt "docs.api:text"
+msgid "skeletonLoaderRules"
+msgstr "skeletonLoaderRules"
+
+msgctxt "docs.api:text"
+msgid "breakpointDeclarations"
+msgstr "breakpointDeclarations"
+
+msgctxt "docs.api:text"
+msgid "ReferenceCurve"
+msgstr "ReferenceCurve"
+
+msgctxt "docs.api:text"
+msgid "CustomColorScale"
+msgstr "CustomColorScale"
+
+msgctxt "docs.api:text"
+msgid "CustomColorCssOptions"
+msgstr "CustomColorCssOptions"
+
+msgctxt "docs.api:text"
+msgid "CUSTOM_COLOR_KEY"
+msgstr "CUSTOM_COLOR_KEY"
+
+msgctxt "docs.api:text"
+msgid "isHexColor"
+msgstr "isHexColor"
+
+msgctxt "docs.api:text"
+msgid "deriveScale"
+msgstr "deriveScale"
+
+msgctxt "docs.api:text"
+msgid "customColorReferenceCurve"
+msgstr "customColorReferenceCurve"
+
+msgctxt "docs.api:text"
+msgid "deriveCustomColorScale"
+msgstr "deriveCustomColorScale"
+
+msgctxt "docs.api:text"
+msgid "customColorCss"
+msgstr "customColorCss"
+
+msgctxt "docs.api:text"
+msgid "customColorRemapCss"
+msgstr "customColorRemapCss"
+
+msgctxt "docs.api:text"
+msgid "button-set"
+msgstr "button-set"
+
+msgctxt "docs.api:text"
+msgid "day"
+msgstr "day"
+
+msgctxt "docs.api:text"
+msgid "segmented-control"
+msgstr "segmented-control"
+
+msgctxt "docs.api:text"
+msgid "segment"
+msgstr "segment"
+
+msgctxt "docs.api:text"
+msgid "skeleton-loader"
+msgstr "skeleton-loader"
+
+msgctxt "docs.api:text"
+msgid "logo"
+msgstr "logo"
+
+msgctxt "docs.api:text"
+msgid "breakpoints"
+msgstr "breakpoints"

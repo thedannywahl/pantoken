@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: pantoken\n"
-"PO-Revision-Date: 2026-09-28 16:33+0000\n"
+"PO-Revision-Date: 2026-10-01 05:59+0000\n"
 "Last-Translator: pantoken localization engine\n"
 "Language-Team: pantoken\n"
 "MIME-Version: 1.0\n"
@@ -1644,7 +1644,7 @@ msgstr "Potwierdź"
 #, fuzzy, no-c-format
 msgctxt "docs.api:prose"
 msgid "Day"
-msgstr "day"
+msgstr "Dzień"
 
 #: css/button-set.md
 #, fuzzy, no-c-format
@@ -14273,7 +14273,7 @@ msgstr "Wtyczka [PantokenPlugin](../../../../../packages/core/src/interfaces/Pan
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "Build the logo utility CSS as an aspect-ratio-aware mask painter for `@pantoken/plugin-logos`'\n`-logo-<name>` glyph classes, substituting `prefix` for the `pfx-` sentinel."
-msgstr "Build the logo utility CSS as an aspect-ratio-aware mask painter for `@pantoken/plugin-logos`'\n`-logo-<name>` glyph classes, substituting `prefix` for the `pfx-` sentinel."
+msgstr "Zbuduj CSS narzędzia logo jako malarza maski uwzględniającego proporcje dla klas glifów `@pantoken/plugin-logos`'\n`-logo-<name>`, zastępując `prefix` dla `pfx-` znacznika."
 
 #: plugins/pantoken/custom-components/src/index.md
 #, no-c-format
@@ -15182,14 +15182,14 @@ msgstr "Ścieżka wewnątrz `assets/logos`, np. `\"canvas/horizontal-full-color.
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "The SVG's natural `viewBox` width, used with [height](#height) to derive `--pantoken-logo-aspect`."
-msgstr "The SVG's natural `viewBox` width, used with [height](#height) to derive `--pantoken-logo-aspect`."
+msgstr "Naturalna szerokość SVG, używana wraz z [height](#height) w celu wyprowadzenia `--pantoken-logo-aspect`."
 
 #: plugins/pantoken/logos/src/interfaces/LogoMeta.md
 #: renderers/tinymce/src/interfaces/LogoMeta.md
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "The SVG's natural `viewBox` height, used with [width](#width) to derive `--pantoken-logo-aspect`."
-msgstr "The SVG's natural `viewBox` height, used with [width](#width) to derive `--pantoken-logo-aspect`."
+msgstr "Naturalna wysokość SVG, używana wraz z [width](#width) w celu wyprowadzenia `--pantoken-logo-aspect`."
 
 #: plugins/pantoken/logos/src/interfaces/LogosOptions.md
 #, no-c-format
@@ -17634,7 +17634,7 @@ msgstr "URI `data:` użyteczne jako `<img src>` dla ikony, dla źródeł dołąc
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "Resolve a logo's stylesheet: the `.-logo-<name>` mask painter plus its `--instui-logo-<name>` token."
-msgstr "Resolve a logo's stylesheet: the `.-logo-<name>` mask painter plus its `--instui-logo-<name>` token."
+msgstr "Rozwiąż arkusz stylów logo: `.-logo-<name>` malująca maska oraz jej `--instui-logo-<name>` token."
 
 #: renderers/tinymce/src/functions/getModifierSuggestions.md
 #, no-c-format
@@ -30506,3 +30506,415 @@ msgstr "Przycisk „pokaż na pełnym ekranie” pojawiający się po najechaniu
 #~ msgctxt "docs.api:text"
 #~ msgid "ai-gradient"
 #~ msgstr "ai-gradient"
+
+msgctxt "docs.api:prose"
+msgid "Every token is exposed as a `var(--instui-*)` reference (not a concrete value), so Tailwind\nutilities like `bg-background-base` theme through the same CSS custom properties that\n`@pantoken/css` emits — light/dark and high-contrast all keep working."
+msgstr "Każdy token jest udostępniany jako `var(--instui-*)` odwołanie (nie konkretna wartość), więc narzędzia Tailwind\n takie jak `bg-background-base` motywują przez te same niestandardowe właściwości CSS, które\n`@pantoken/css` emitują — tryb jasny/ciemny i wysoki kontrast wciąż działają."
+
+msgctxt "docs.api:prose"
+msgid "A single-select row of compact view or filter options."
+msgstr "Wiersz pojedynczego wyboru z kompaktowymi opcjami widoku lub filtrowania."
+
+msgctxt "docs.api:prose"
+msgid "A selectable segmented-control label and its native radio input."
+msgstr "Wybieralna etykieta kontrolki segmentowej i jej natywne pole radiowe."
+
+msgctxt "docs.api:prose"
+msgid "Decorative placeholder for content that has not loaded yet."
+msgstr "Dekoracyjny symbol zastępczy dla zawartości, która jeszcze się nie załadowała."
+
+msgctxt "docs.api:prose"
+msgid "`.instui-segmented-control` — A single-select row of compact view or filter options."
+msgstr "`.instui-segmented-control` — Wiersz z pojedynczym wyborem dla kompaktowego widoku lub opcji filtrowania."
+
+msgctxt "docs.api:prose"
+msgid "The selected segment uses a distinct active-item shadow; it does not match an existing\n  --instui-elevation-* composite. Overflow buttons use the upstream elevation3 component tokens."
+msgstr "Wybrany segment używa odrębnego cienia aktywnego elementu; nie odpowiada istniejącemu\n  --instui-elevation-* composite. Przyciski przepełnienia używają tokenów komponentu elevation3 pochodzących z upstream."
+
+msgctxt "docs.api:prose"
+msgid "Use a labelled fieldset and one shared radio name with a checked default. Native radios\n  announce their checked state; overflow buttons need labels describing their scroll direction."
+msgstr "Użyj oznaczonego fieldsetu i jednej wspólnej nazwy dla przycisków radio z domyślnie zaznaczonym elementem. Natywne radio\n zgłaszają swój stan zaznaczenia; przyciski przepełnienia potrzebują etykiet opisujących kierunek przewijania."
+
+msgctxt "docs.api:prose"
+msgid "Config"
+msgstr "Konfiguracja"
+
+msgctxt "docs.api:prose"
+msgid "Utilities"
+msgstr "Narzędzia"
+
+msgctxt "docs.api:prose"
+msgid "Preferences"
+msgstr "Preferencje"
+
+msgctxt "docs.api:prose"
+msgid "Feature flags"
+msgstr "Flagi funkcji"
+
+msgctxt "docs.api:prose"
+msgid "Large segments."
+msgstr "Duże segmenty."
+
+msgctxt "docs.api:prose"
+msgid "Medium segments (default)."
+msgstr "Średnie segmenty (domyślnie)."
+
+msgctxt "docs.api:prose"
+msgid "Small segments."
+msgstr "Małe segmenty."
+
+msgctxt "docs.api:prose"
+msgid "Scroll to the following hidden segment."
+msgstr "Przewiń do następnego ukrytego segmentu."
+
+msgctxt "docs.api:prose"
+msgid "Scroll to the preceding hidden segment."
+msgstr "Przewiń do poprzedniego ukrytego segmentu."
+
+msgctxt "docs.api:prose"
+msgid "Scrollable row containing the selectable segments."
+msgstr "Przewijalny wiersz zawierający wybieralne segmenty."
+
+msgctxt "docs.api:prose"
+msgid "Clips the segment row and anchors the overflow controls."
+msgstr "Przycina wiersz segmentów i kotwiczy kontrolki przepełnienia."
+
+msgctxt "docs.api:prose"
+msgid "`.instui-segmented-control` — A selectable segmented-control label and its native radio input."
+msgstr "`.instui-segmented-control` — Wybieralna etykieta kontrolki segmentowej oraz jej natywne pole radiowe."
+
+msgctxt "docs.api:prose"
+msgid "A `-icon-*` class may live on the label or its native input; the interaction helper\n  promotes input classes to the label so the shared glyph painter can render it."
+msgstr "Klasa `-icon-*` może znajdować się na etykiecie lub na jej natywnym polu wejściowym; pomocnik interakcji\n  promuje klasy wejścia do etykiety, dzięki czemu wspólny rysownik glifów może je wyrenderować."
+
+msgctxt "docs.api:prose"
+msgid "Keep the native radio in the label so checked, focus, disabled, and keyboard semantics remain available."
+msgstr "Trzymaj natywne pole radiowe w etykiecie, aby stany zaznaczenia, fokusu, wyłączenia i semantyka klawiatury pozostały dostępne."
+
+msgctxt "docs.api:prose"
+msgid "`.instui-skeleton-loader` — Decorative placeholder for content that has not loaded yet."
+msgstr "`.instui-skeleton-loader` — Dekoracyjny symbol zastępczy dla treści, która jeszcze się nie załadowała."
+
+msgctxt "docs.api:prose"
+msgid "Mark the decorative loader aria-hidden=\"true\". Put aria-busy on the parent content region,\n  with an initially empty status and alert outside that region. Use initSkeletonLoading from the\n  interactions package to announce the parent's loading state. Shapes must not receive focus."
+msgstr "Oznacz dekoracyjny loader aria-hidden=\"true\". Umieść aria-busy na nadrzędnym obszarze zawartości,\n  z początkowo pustym statusem i alertem poza tym obszarem. Użyj initSkeletonLoading z pakietu interactions\n  aby zadeklarować stan ładowania elementu nadrzędnego. Kształty nie powinny otrzymywać fokusu."
+
+msgctxt "docs.api:prose"
+msgid "Large text row."
+msgstr "Wiersz z dużym tekstem."
+
+msgctxt "docs.api:prose"
+msgid "Medium text row (default)."
+msgstr "Wiersz ze średnim tekstem (domyślny)."
+
+msgctxt "docs.api:prose"
+msgid "Small text row."
+msgstr "Wiersz z małym tekstem."
+
+msgctxt "docs.api:prose"
+msgid "Extra-large text row."
+msgstr "Wiersz z bardzo dużym tekstem."
+
+msgctxt "docs.api:prose"
+msgid "Extra-small text row."
+msgstr "Wiersz z bardzo małym tekstem."
+
+msgctxt "docs.api:prose"
+msgid "Largest text row."
+msgstr "Największy wiersz tekstu."
+
+msgctxt "docs.api:prose"
+msgid "Legend-sized text row."
+msgstr "Wiersz tekstu w rozmiarze legendy."
+
+msgctxt "docs.api:prose"
+msgid "A round avatar placeholder, medium size only."
+msgstr "Okrągły symbol zastępczy avatara, tylko rozmiar średni."
+
+msgctxt "docs.api:prose"
+msgid "An image placeholder, medium size only."
+msgstr "Symbol zastępczy obrazu, tylko rozmiar średni."
+
+msgctxt "docs.api:prose"
+msgid "A text bar (default)."
+msgstr "Pasek tekstowy (domyślny)."
+
+msgctxt "docs.api:prose"
+msgid "The clipped placeholder surface sized for the selected loader type."
+msgstr "Przycięta powierzchnia symbolu zastępczego dopasowana do wybranego typu loadera."
+
+msgctxt "docs.api:prose"
+msgid "A repeated text-row wrapper that applies vertical spacing."
+msgstr "Powtarzający się wrapper wierszy tekstowych, który stosuje odstępy pionowe."
+
+msgctxt "docs.api:prose"
+msgid "Enhance a labelled native radio group with keyboard navigation and optional overflow controls."
+msgstr "Ulepsz oznaczoną natywną grupę przycisków radiowych, dodając nawigację klawiaturą i opcjonalne kontrolki przepełnienia."
+
+msgctxt "docs.api:prose"
+msgid "Bind the parent content region to SSR-provided status and error announcements."
+msgstr "Powiąż region zawartości nadrzędnej z komunikatami o statusie i błędach dostarczanymi przez SSR."
+
+msgctxt "docs.api:prose"
+msgid "Detach the segmented-control listeners and observers."
+msgstr "Odłącz nasłuchiwacze i obserwatorów segmented-control."
+
+msgctxt "docs.api:prose"
+msgid "Segmented control options; the medium size is the CSS default."
+msgstr "Opcje kontrolki segmentowej; rozmiar średni jest domyślny w CSS."
+
+msgctxt "docs.api:prose"
+msgid "Control parent-level loading semantics without touching decorative skeleton shapes."
+msgstr "Kontroluj semantykę ładowania na poziomie rodzica, nie zmieniając dekoracyjnych kształtów szkieletu."
+
+msgctxt "docs.api:prose"
+msgid "Pre-rendered announcement elements must be outside the busy content region."
+msgstr "Wstępnie wyrenderowane elementy ogłoszeń muszą znajdować się poza obszarem zajętej treści."
+
+msgctxt "docs.api:prose"
+msgid "State update sent to an auto-registered skeleton loading region."
+msgstr "Aktualizacja stanu wysłana do automatycznie zarejestrowanego regionu ładowania szkieletu."
+
+msgctxt "docs.api:prose"
+msgid "The generated Swift uses UIKit and targets iOS. `mise run verify:swift:syntax` only parses its\nsource; `mise run verify:swift:host` needs full Xcode and the iOS Simulator SDK to type-check it."
+msgstr "Wygenerowany Swift używa UIKit i jest przeznaczony dla iOS. `mise run verify:swift:syntax` jedynie parsuje swoje\nźródło; `mise run verify:swift:host` wymaga pełnego Xcode i SDK iOS Simulator, aby przeprowadzić kontrolę typów."
+
+msgctxt "docs.api:prose"
+msgid "Build segmented-control CSS, replacing the component prefix sentinel."
+msgstr "Zbuduj CSS dla segmented-control, zastępując znacznik prefiksu komponentu."
+
+msgctxt "docs.api:prose"
+msgid "Build the skeleton loader CSS, replacing the component prefix sentinel."
+msgstr "Zbuduj CSS dla szkieletowego loadera, zastępując znacznik prefiksu komponentu."
+
+msgctxt "docs.api:prose"
+msgid "`@pantoken/bootstrap` — theme Bootstrap 5.2+ body variables and primary buttons with Instructure tokens."
+msgstr "`@pantoken/bootstrap` — zmienne body motywu Bootstrap 5.2+ oraz przyciski primary z tokenami Instructure."
+
+msgctxt "docs.api:prose"
+msgid "Points body and primary-button `--bs-*` CSS variables at `var(--instui-*)`. Load it after\nBootstrap and `@pantoken/css`; other component variants retain their Bootstrap defaults."
+msgstr "Wskazuje zmienne CSS dla body i przycisku primary `--bs-*` w `var(--instui-*)`. Załaduj je po\nBootstrap i `@pantoken/css`; inne warianty komponentów zachowują domyślne wartości Bootstrap."
+
+msgctxt "docs.api:prose"
+msgid "Emit the Foundation Sass settings override. Import it before Foundation itself and\n`@include foundation-everything` so its palette is available to Sass."
+msgstr "Wygeneruj nadpisanie ustawień Foundation Sass. Importuj je przed samym Foundation i\n`@include foundation-everything` tak, aby jego paleta była dostępna dla Sass."
+
+msgctxt "docs.api:prose"
+msgid "`@pantoken/foundation` — theme Foundation for Sites Sass output and common CSS classes."
+msgstr "`@pantoken/foundation` — motyw Foundation for Sites, wynik Sass i wspólne klasy CSS."
+
+msgctxt "docs.api:prose"
+msgid "Foundation is Sass-first, so this package ships two layers. [toFoundationSettings](functions/toFoundationSettings.md) emits a\n`_settings`-style Sass partial with concrete light-mode rebrand values so Foundation's colour functions can\ncompile. [toFoundationCss](functions/toFoundationCss.md) emits a thin variable-backed CSS overlay that themes the common compiled\nclasses (`.button`, `.callout`, links) the same way — useful when you consume stock Foundation CSS\nand just want to layer Instructure colors on top without recompiling."
+msgstr "Foundation jest nastawiony na Sass, więc ten pakiet dostarcza dwie warstwy. [toFoundationSettings](functions/toFoundationSettings.md) emituje częściowy plik Sass w stylu \n`_settings` z konkretnymi wartościami rebrandingu dla trybu jasnego, dzięki czemu funkcje kolorów Foundation mogą się skompilować. [toFoundationCss](functions/toFoundationCss.md) emituje cienką nakładkę CSS opartą na zmiennych, która nadaje motyw skompilowanym wspólnym klasom (\nclasses (`.button`, `.callout`, linki) w ten sam sposób — przydatne, gdy korzystasz ze standardowego CSS Foundation i chcesz jedynie nałożyć kolory Instructure bez rekompilacji."
+
+msgctxt "docs.api:prose"
+msgid "Registration and shadow output are environment-verified with Happy DOM; real-browser behavior is\nnot covered by that check."
+msgstr "Rejestracja i wyjście shadow są weryfikowane w środowisku przy użyciu Happy DOM; zachowanie w prawdziwej przeglądarce jest\nnie objęte tą kontrolą."
+
+msgctxt "docs.api:prose"
+msgid "Browser script URLs to load after the example markup (interaction bundles, when needed)."
+msgstr "Adresy URL skryptów przeglądarki do załadowania po przykładzie znaczników (paczki interakcji, gdy potrzebne)."
+
+msgctxt "docs.api:text"
+msgid "EmailCssOptions"
+msgstr "EmailCssOptions"
+
+msgctxt "docs.api:text"
+msgid "InlineEmailHtmlOptions"
+msgstr "InlineEmailHtmlOptions"
+
+msgctxt "docs.api:text"
+msgid "EmailClient"
+msgstr "EmailClient"
+
+msgctxt "docs.api:text"
+msgid "light"
+msgstr "light"
+
+msgctxt "docs.api:text"
+msgid "inlineEmailHtml"
+msgstr "inlineEmailHtml"
+
+msgctxt "docs.api:text"
+msgid "GlyphSyncTarget"
+msgstr "GlyphSyncTarget"
+
+msgctxt "docs.api:text"
+msgid "PRODUCT_LABELS"
+msgstr "PRODUCT_LABELS"
+
+msgctxt "docs.api:text"
+msgid "retargetContentStylesheets"
+msgstr "retargetContentStylesheets"
+
+msgctxt "docs.api:text"
+msgid "normalizeGlyphHtml"
+msgstr "normalizeGlyphHtml"
+
+msgctxt "docs.api:text"
+msgid "injectUsedGlyphAssets"
+msgstr "injectUsedGlyphAssets"
+
+msgctxt "docs.api:text"
+msgid "registerGlyphSync"
+msgstr "registerGlyphSync"
+
+msgctxt "docs.api:text"
+msgid "logoVariantLabel"
+msgstr "logoVariantLabel"
+
+msgctxt "docs.api:text"
+msgid "filterLogos"
+msgstr "filterLogos"
+
+msgctxt "docs.api:text"
+msgid "getLogoCdnFile"
+msgstr "getLogoCdnFile"
+
+msgctxt "docs.api:text"
+msgid "buildLogoMarkup"
+msgstr "buildLogoMarkup"
+
+msgctxt "docs.api:text"
+msgid "getUsedLogoCdnFiles"
+msgstr "getUsedLogoCdnFiles"
+
+msgctxt "docs.api:text"
+msgid "modifyExpression"
+msgstr "modifyExpression"
+
+msgctxt "docs.api:text"
+msgid "inline-styles"
+msgstr "inline-styles"
+
+msgctxt "docs.api:text"
+msgid "InlineHtmlOptions"
+msgstr "InlineHtmlOptions"
+
+msgctxt "docs.api:text"
+msgid "inlineHtml"
+msgstr "inlineHtml"
+
+msgctxt "docs.api:text"
+msgid "InPlaceEditOptions"
+msgstr "InPlaceEditOptions"
+
+msgctxt "docs.api:text"
+msgid "SegmentedControlOptions"
+msgstr "SegmentedControlOptions"
+
+msgctxt "docs.api:text"
+msgid "SegmentedControlHandle"
+msgstr "SegmentedControlHandle"
+
+msgctxt "docs.api:text"
+msgid "SkeletonLoadingState"
+msgstr "SkeletonLoadingState"
+
+msgctxt "docs.api:text"
+msgid "SkeletonLoadingOptions"
+msgstr "SkeletonLoadingOptions"
+
+msgctxt "docs.api:text"
+msgid "SkeletonLoadingHandle"
+msgstr "SkeletonLoadingHandle"
+
+msgctxt "docs.api:text"
+msgid "InPlaceEditInputType"
+msgstr "InPlaceEditInputType"
+
+msgctxt "docs.api:text"
+msgid "initSegmentedControl"
+msgstr "initSegmentedControl"
+
+msgctxt "docs.api:text"
+msgid "initSkeletonLoading"
+msgstr "initSkeletonLoading"
+
+msgctxt "docs.api:text"
+msgid "buttonSetRules"
+msgstr "buttonSetRules"
+
+msgctxt "docs.api:text"
+msgid "logoRules"
+msgstr "logoRules"
+
+msgctxt "docs.api:text"
+msgid "segmentedControlRules"
+msgstr "segmentedControlRules"
+
+msgctxt "docs.api:text"
+msgid "skeletonLoaderRules"
+msgstr "skeletonLoaderRules"
+
+msgctxt "docs.api:text"
+msgid "breakpointDeclarations"
+msgstr "breakpointDeclarations"
+
+msgctxt "docs.api:text"
+msgid "ReferenceCurve"
+msgstr "ReferenceCurve"
+
+msgctxt "docs.api:text"
+msgid "CustomColorScale"
+msgstr "CustomColorScale"
+
+msgctxt "docs.api:text"
+msgid "CustomColorCssOptions"
+msgstr "CustomColorCssOptions"
+
+msgctxt "docs.api:text"
+msgid "CUSTOM_COLOR_KEY"
+msgstr "CUSTOM_COLOR_KEY"
+
+msgctxt "docs.api:text"
+msgid "isHexColor"
+msgstr "isHexColor"
+
+msgctxt "docs.api:text"
+msgid "deriveScale"
+msgstr "deriveScale"
+
+msgctxt "docs.api:text"
+msgid "customColorReferenceCurve"
+msgstr "customColorReferenceCurve"
+
+msgctxt "docs.api:text"
+msgid "deriveCustomColorScale"
+msgstr "deriveCustomColorScale"
+
+msgctxt "docs.api:text"
+msgid "customColorCss"
+msgstr "customColorCss"
+
+msgctxt "docs.api:text"
+msgid "customColorRemapCss"
+msgstr "customColorRemapCss"
+
+msgctxt "docs.api:text"
+msgid "button-set"
+msgstr "button-set"
+
+msgctxt "docs.api:text"
+msgid "day"
+msgstr "day"
+
+msgctxt "docs.api:text"
+msgid "segmented-control"
+msgstr "segmented-control"
+
+msgctxt "docs.api:text"
+msgid "segment"
+msgstr "segment"
+
+msgctxt "docs.api:text"
+msgid "skeleton-loader"
+msgstr "skeleton-loader"
+
+msgctxt "docs.api:text"
+msgid "logo"
+msgstr "logo"
+
+msgctxt "docs.api:text"
+msgid "breakpoints"
+msgstr "breakpoints"

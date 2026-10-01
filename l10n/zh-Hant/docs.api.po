@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: pantoken\n"
-"PO-Revision-Date: 2026-09-28 18:56+0000\n"
+"PO-Revision-Date: 2026-10-01 07:02+0000\n"
 "Last-Translator: pantoken localization engine\n"
 "Language-Team: pantoken\n"
 "MIME-Version: 1.0\n"
@@ -1644,7 +1644,7 @@ msgstr "確認"
 #, fuzzy, no-c-format
 msgctxt "docs.api:prose"
 msgid "Day"
-msgstr "day"
+msgstr "天"
 
 #: css/button-set.md
 #, fuzzy, no-c-format
@@ -30506,3 +30506,415 @@ msgstr "一個可在懸停時顯示的「檢視全螢幕」按鈕，覆蓋在示
 #~ msgctxt "docs.api:text"
 #~ msgid "ai-gradient"
 #~ msgstr "ai-gradient"
+
+msgctxt "docs.api:prose"
+msgid "Every token is exposed as a `var(--instui-*)` reference (not a concrete value), so Tailwind\nutilities like `bg-background-base` theme through the same CSS custom properties that\n`@pantoken/css` emits — light/dark and high-contrast all keep working."
+msgstr "每個 token 都以 `var(--instui-*)` 參考的形式暴露（不是具體的值)，因此 Tailwind\n 像 `bg-background-base` 這類的 utilities 可以透過與\n`@pantoken/css` 所發出的相同 CSS custom properties 一起套用主題 — 淺色/深色與高對比皆能繼續運作。"
+
+msgctxt "docs.api:prose"
+msgid "A single-select row of compact view or filter options."
+msgstr "單選列，用於緊湊檢視或篩選選項。"
+
+msgctxt "docs.api:prose"
+msgid "A selectable segmented-control label and its native radio input."
+msgstr "可選的分段控制標籤及其原生的單選輸入。"
+
+msgctxt "docs.api:prose"
+msgid "Decorative placeholder for content that has not loaded yet."
+msgstr "尚未載入內容的裝飾性佔位符。"
+
+msgctxt "docs.api:prose"
+msgid "`.instui-segmented-control` — A single-select row of compact view or filter options."
+msgstr "`.instui-segmented-control` — 單選的緊湊檢視或篩選選項列。"
+
+msgctxt "docs.api:prose"
+msgid "The selected segment uses a distinct active-item shadow; it does not match an existing\n  --instui-elevation-* composite. Overflow buttons use the upstream elevation3 component tokens."
+msgstr "所選的分段使用不同的活動項目陰影；它不符合現有的\n  --instui-elevation-* 複合。溢出按鈕使用上游的 elevation3 元件代幣。"
+
+msgctxt "docs.api:prose"
+msgid "Use a labelled fieldset and one shared radio name with a checked default. Native radios\n  announce their checked state; overflow buttons need labels describing their scroll direction."
+msgstr "使用帶標籤的 fieldset 和共用的 radio name，並設定一個預設選中。原生的 radio\n 會宣告它們的選中狀態；溢出按鈕需要描述滾動方向的標籤。"
+
+msgctxt "docs.api:prose"
+msgid "Config"
+msgstr "設定"
+
+msgctxt "docs.api:prose"
+msgid "Utilities"
+msgstr "工具"
+
+msgctxt "docs.api:prose"
+msgid "Preferences"
+msgstr "偏好"
+
+msgctxt "docs.api:prose"
+msgid "Feature flags"
+msgstr "功能旗標"
+
+msgctxt "docs.api:prose"
+msgid "Large segments."
+msgstr "大型分段。"
+
+msgctxt "docs.api:prose"
+msgid "Medium segments (default)."
+msgstr "中型分段（預設)。"
+
+msgctxt "docs.api:prose"
+msgid "Small segments."
+msgstr "小型分段。"
+
+msgctxt "docs.api:prose"
+msgid "Scroll to the following hidden segment."
+msgstr "滾動到下方隱藏的分段。"
+
+msgctxt "docs.api:prose"
+msgid "Scroll to the preceding hidden segment."
+msgstr "滾動到上方隱藏的分段。"
+
+msgctxt "docs.api:prose"
+msgid "Scrollable row containing the selectable segments."
+msgstr "可滾動的列，包含可選取的分段。"
+
+msgctxt "docs.api:prose"
+msgid "Clips the segment row and anchors the overflow controls."
+msgstr "裁切分段列並錨定溢出控制項。"
+
+msgctxt "docs.api:prose"
+msgid "`.instui-segmented-control` — A selectable segmented-control label and its native radio input."
+msgstr "`.instui-segmented-control` — 可選的分段控制標籤及其原生 radio 輸入。"
+
+msgctxt "docs.api:prose"
+msgid "A `-icon-*` class may live on the label or its native input; the interaction helper\n  promotes input classes to the label so the shared glyph painter can render it."
+msgstr "一個 `-icon-*` 類別可以放在標籤或其原生輸入上；互動輔助程式\n  會將輸入的類別提升到標籤，使共享的字形繪製器能夠呈現它。"
+
+msgctxt "docs.api:prose"
+msgid "Keep the native radio in the label so checked, focus, disabled, and keyboard semantics remain available."
+msgstr "將原生 radio 保留在標籤內，以便已選取、聚焦、停用與鍵盤語意仍然可用。"
+
+msgctxt "docs.api:prose"
+msgid "`.instui-skeleton-loader` — Decorative placeholder for content that has not loaded yet."
+msgstr "`.instui-skeleton-loader` — 裝飾性占位符，用於尚未載入的內容。"
+
+msgctxt "docs.api:prose"
+msgid "Mark the decorative loader aria-hidden=\"true\". Put aria-busy on the parent content region,\n  with an initially empty status and alert outside that region. Use initSkeletonLoading from the\n  interactions package to announce the parent's loading state. Shapes must not receive focus."
+msgstr "將裝飾性載入器標記為 aria-hidden=\"true\"。在父內容區域上放置 aria-busy，\n  並在該區域外使用最初為空的狀態和警示。使用 initSkeletonLoading from the\n  interactions package 來通報父層的載入狀態。形狀不得獲得焦點。"
+
+msgctxt "docs.api:prose"
+msgid "Large text row."
+msgstr "大型文字列。"
+
+msgctxt "docs.api:prose"
+msgid "Medium text row (default)."
+msgstr "中型文字列 (default)."
+
+msgctxt "docs.api:prose"
+msgid "Small text row."
+msgstr "小型文字列。"
+
+msgctxt "docs.api:prose"
+msgid "Extra-large text row."
+msgstr "超大型文字列。"
+
+msgctxt "docs.api:prose"
+msgid "Extra-small text row."
+msgstr "超小型文字列。"
+
+msgctxt "docs.api:prose"
+msgid "Largest text row."
+msgstr "最大文字列。"
+
+msgctxt "docs.api:prose"
+msgid "Legend-sized text row."
+msgstr "圖例大小文字列。"
+
+msgctxt "docs.api:prose"
+msgid "A round avatar placeholder, medium size only."
+msgstr "圓形大頭貼占位符，僅中等尺寸。"
+
+msgctxt "docs.api:prose"
+msgid "An image placeholder, medium size only."
+msgstr "圖片占位符，僅中等尺寸。"
+
+msgctxt "docs.api:prose"
+msgid "A text bar (default)."
+msgstr "文字欄 (default)."
+
+msgctxt "docs.api:prose"
+msgid "The clipped placeholder surface sized for the selected loader type."
+msgstr "為所選載入器類型裁剪的占位表面。"
+
+msgctxt "docs.api:prose"
+msgid "A repeated text-row wrapper that applies vertical spacing."
+msgstr "一個重複的文字列包裝器，用於套用垂直間距。"
+
+msgctxt "docs.api:prose"
+msgid "Enhance a labelled native radio group with keyboard navigation and optional overflow controls."
+msgstr "為已標記的原生單選群組新增鍵盤導覽與可選的溢出控制。"
+
+msgctxt "docs.api:prose"
+msgid "Bind the parent content region to SSR-provided status and error announcements."
+msgstr "將父內容區域綁定到由 SSR 提供的狀態與錯誤公告。"
+
+msgctxt "docs.api:prose"
+msgid "Detach the segmented-control listeners and observers."
+msgstr "解除 segmented-control 的監聽器和觀察者。"
+
+msgctxt "docs.api:prose"
+msgid "Segmented control options; the medium size is the CSS default."
+msgstr "分段控制選項；中等大小是 CSS 的預設值。"
+
+msgctxt "docs.api:prose"
+msgid "Control parent-level loading semantics without touching decorative skeleton shapes."
+msgstr "在不變更裝飾性骨架形狀的情況下，控制父層級的載入語義。"
+
+msgctxt "docs.api:prose"
+msgid "Pre-rendered announcement elements must be outside the busy content region."
+msgstr "預先呈現的公告元素必須位於忙碌內容區域之外。"
+
+msgctxt "docs.api:prose"
+msgid "State update sent to an auto-registered skeleton loading region."
+msgstr "已將狀態更新發送到自動註冊的骨架載入區域。"
+
+msgctxt "docs.api:prose"
+msgid "The generated Swift uses UIKit and targets iOS. `mise run verify:swift:syntax` only parses its\nsource; `mise run verify:swift:host` needs full Xcode and the iOS Simulator SDK to type-check it."
+msgstr "產生的 Swift 使用 UIKit，並以 iOS 為目標。 `mise run verify:swift:syntax` 僅解析其\nsource； `mise run verify:swift:host` 需要完整的 Xcode 與 iOS Simulator SDK 來為其進行型別檢查。"
+
+msgctxt "docs.api:prose"
+msgid "Build segmented-control CSS, replacing the component prefix sentinel."
+msgstr "建立 segmented-control 的 CSS，替換元件前綴哨兵。"
+
+msgctxt "docs.api:prose"
+msgid "Build the skeleton loader CSS, replacing the component prefix sentinel."
+msgstr "建立骨架載入器的 CSS，替換元件前綴哨兵。"
+
+msgctxt "docs.api:prose"
+msgid "`@pantoken/bootstrap` — theme Bootstrap 5.2+ body variables and primary buttons with Instructure tokens."
+msgstr "`@pantoken/bootstrap` — 主題 Bootstrap 5.2+ 的 body 變數和使用 Instructure tokens 的主要按鈕。"
+
+msgctxt "docs.api:prose"
+msgid "Points body and primary-button `--bs-*` CSS variables at `var(--instui-*)`. Load it after\nBootstrap and `@pantoken/css`; other component variants retain their Bootstrap defaults."
+msgstr "將 body 與 primary-button `--bs-*` 的 CSS 變數指向 `var(--instui-*)`。請在 \nBootstrap 與 `@pantoken/css` 之後載入；其他元件變體保留其 Bootstrap 預設值。"
+
+msgctxt "docs.api:prose"
+msgid "Emit the Foundation Sass settings override. Import it before Foundation itself and\n`@include foundation-everything` so its palette is available to Sass."
+msgstr "匯出 Foundation 的 Sass 設定覆寫。將它在 Foundation 本體之前匯入，和\n`@include foundation-everything`，以便其調色板可供 Sass 使用。"
+
+msgctxt "docs.api:prose"
+msgid "`@pantoken/foundation` — theme Foundation for Sites Sass output and common CSS classes."
+msgstr "`@pantoken/foundation` — 為 Foundation for Sites 的 Sass 輸出與通用 CSS 類別的主題。"
+
+msgctxt "docs.api:prose"
+msgid "Foundation is Sass-first, so this package ships two layers. [toFoundationSettings](functions/toFoundationSettings.md) emits a\n`_settings`-style Sass partial with concrete light-mode rebrand values so Foundation's colour functions can\ncompile. [toFoundationCss](functions/toFoundationCss.md) emits a thin variable-backed CSS overlay that themes the common compiled\nclasses (`.button`, `.callout`, links) the same way — useful when you consume stock Foundation CSS\nand just want to layer Instructure colors on top without recompiling."
+msgstr "Foundation 以 Sass 為先，因此此套件提供兩層。 [toFoundationSettings](functions/toFoundationSettings.md) 會輸出一個\n`_settings`-風格的 Sass partial，包含具體的淺色模式重塑值，讓 Foundation 的顏色函式能夠\n編譯。 [toFoundationCss](functions/toFoundationCss.md) 會輸出一個以變數為後盾的薄型 CSS 覆蓋，為常見的已編譯\n類別（`.button`, `.callout`, 連結)以相同方式主題化）— 當你使用原生的 Foundation CSS\n並且只想在上面疊加 Instructure 的色彩而不重新編譯時，這非常有用。"
+
+msgctxt "docs.api:prose"
+msgid "Registration and shadow output are environment-verified with Happy DOM; real-browser behavior is\nnot covered by that check."
+msgstr "註冊和 shadow 輸出已透過 Happy DOM 在該環境驗證；真實瀏覽器的行為\n不包含在該檢查中。"
+
+msgctxt "docs.api:prose"
+msgid "Browser script URLs to load after the example markup (interaction bundles, when needed)."
+msgstr "在範例標記之後要載入的瀏覽器腳本 URL（互動套件，必要時)。"
+
+msgctxt "docs.api:text"
+msgid "EmailCssOptions"
+msgstr "EmailCssOptions"
+
+msgctxt "docs.api:text"
+msgid "InlineEmailHtmlOptions"
+msgstr "InlineEmailHtmlOptions"
+
+msgctxt "docs.api:text"
+msgid "EmailClient"
+msgstr "EmailClient"
+
+msgctxt "docs.api:text"
+msgid "light"
+msgstr "light"
+
+msgctxt "docs.api:text"
+msgid "inlineEmailHtml"
+msgstr "inlineEmailHtml"
+
+msgctxt "docs.api:text"
+msgid "GlyphSyncTarget"
+msgstr "GlyphSyncTarget"
+
+msgctxt "docs.api:text"
+msgid "PRODUCT_LABELS"
+msgstr "PRODUCT_LABELS"
+
+msgctxt "docs.api:text"
+msgid "retargetContentStylesheets"
+msgstr "retargetContentStylesheets"
+
+msgctxt "docs.api:text"
+msgid "normalizeGlyphHtml"
+msgstr "normalizeGlyphHtml"
+
+msgctxt "docs.api:text"
+msgid "injectUsedGlyphAssets"
+msgstr "injectUsedGlyphAssets"
+
+msgctxt "docs.api:text"
+msgid "registerGlyphSync"
+msgstr "registerGlyphSync"
+
+msgctxt "docs.api:text"
+msgid "logoVariantLabel"
+msgstr "logoVariantLabel"
+
+msgctxt "docs.api:text"
+msgid "filterLogos"
+msgstr "filterLogos"
+
+msgctxt "docs.api:text"
+msgid "getLogoCdnFile"
+msgstr "getLogoCdnFile"
+
+msgctxt "docs.api:text"
+msgid "buildLogoMarkup"
+msgstr "buildLogoMarkup"
+
+msgctxt "docs.api:text"
+msgid "getUsedLogoCdnFiles"
+msgstr "getUsedLogoCdnFiles"
+
+msgctxt "docs.api:text"
+msgid "modifyExpression"
+msgstr "modifyExpression"
+
+msgctxt "docs.api:text"
+msgid "inline-styles"
+msgstr "inline-styles"
+
+msgctxt "docs.api:text"
+msgid "InlineHtmlOptions"
+msgstr "InlineHtmlOptions"
+
+msgctxt "docs.api:text"
+msgid "inlineHtml"
+msgstr "inlineHtml"
+
+msgctxt "docs.api:text"
+msgid "InPlaceEditOptions"
+msgstr "InPlaceEditOptions"
+
+msgctxt "docs.api:text"
+msgid "SegmentedControlOptions"
+msgstr "SegmentedControlOptions"
+
+msgctxt "docs.api:text"
+msgid "SegmentedControlHandle"
+msgstr "SegmentedControlHandle"
+
+msgctxt "docs.api:text"
+msgid "SkeletonLoadingState"
+msgstr "SkeletonLoadingState"
+
+msgctxt "docs.api:text"
+msgid "SkeletonLoadingOptions"
+msgstr "SkeletonLoadingOptions"
+
+msgctxt "docs.api:text"
+msgid "SkeletonLoadingHandle"
+msgstr "SkeletonLoadingHandle"
+
+msgctxt "docs.api:text"
+msgid "InPlaceEditInputType"
+msgstr "InPlaceEditInputType"
+
+msgctxt "docs.api:text"
+msgid "initSegmentedControl"
+msgstr "initSegmentedControl"
+
+msgctxt "docs.api:text"
+msgid "initSkeletonLoading"
+msgstr "initSkeletonLoading"
+
+msgctxt "docs.api:text"
+msgid "buttonSetRules"
+msgstr "buttonSetRules"
+
+msgctxt "docs.api:text"
+msgid "logoRules"
+msgstr "logoRules"
+
+msgctxt "docs.api:text"
+msgid "segmentedControlRules"
+msgstr "segmentedControlRules"
+
+msgctxt "docs.api:text"
+msgid "skeletonLoaderRules"
+msgstr "skeletonLoaderRules"
+
+msgctxt "docs.api:text"
+msgid "breakpointDeclarations"
+msgstr "breakpointDeclarations"
+
+msgctxt "docs.api:text"
+msgid "ReferenceCurve"
+msgstr "ReferenceCurve"
+
+msgctxt "docs.api:text"
+msgid "CustomColorScale"
+msgstr "CustomColorScale"
+
+msgctxt "docs.api:text"
+msgid "CustomColorCssOptions"
+msgstr "CustomColorCssOptions"
+
+msgctxt "docs.api:text"
+msgid "CUSTOM_COLOR_KEY"
+msgstr "CUSTOM_COLOR_KEY"
+
+msgctxt "docs.api:text"
+msgid "isHexColor"
+msgstr "isHexColor"
+
+msgctxt "docs.api:text"
+msgid "deriveScale"
+msgstr "deriveScale"
+
+msgctxt "docs.api:text"
+msgid "customColorReferenceCurve"
+msgstr "customColorReferenceCurve"
+
+msgctxt "docs.api:text"
+msgid "deriveCustomColorScale"
+msgstr "deriveCustomColorScale"
+
+msgctxt "docs.api:text"
+msgid "customColorCss"
+msgstr "customColorCss"
+
+msgctxt "docs.api:text"
+msgid "customColorRemapCss"
+msgstr "customColorRemapCss"
+
+msgctxt "docs.api:text"
+msgid "button-set"
+msgstr "button-set"
+
+msgctxt "docs.api:text"
+msgid "day"
+msgstr "day"
+
+msgctxt "docs.api:text"
+msgid "segmented-control"
+msgstr "segmented-control"
+
+msgctxt "docs.api:text"
+msgid "segment"
+msgstr "segment"
+
+msgctxt "docs.api:text"
+msgid "skeleton-loader"
+msgstr "skeleton-loader"
+
+msgctxt "docs.api:text"
+msgid "logo"
+msgstr "logo"
+
+msgctxt "docs.api:text"
+msgid "breakpoints"
+msgstr "breakpoints"

@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: pantoken\n"
-"PO-Revision-Date: 2026-09-28 16:27+0000\n"
+"PO-Revision-Date: 2026-10-01 02:55+0000\n"
 "Last-Translator: pantoken localization engine\n"
 "Language-Team: pantoken\n"
 "MIME-Version: 1.0\n"
@@ -1644,7 +1644,7 @@ msgstr "Confirmer"
 #, fuzzy, no-c-format
 msgctxt "docs.api:prose"
 msgid "Day"
-msgstr "day"
+msgstr "Jour"
 
 #: css/button-set.md
 #, fuzzy, no-c-format
@@ -31484,3 +31484,260 @@ msgstr "Un bouton « voir en plein écran » visible au survol, superposé sur u
 #~ msgctxt "docs.api:text"
 #~ msgid "breakpoints"
 #~ msgstr "breakpoints"
+
+msgctxt "docs.api:prose"
+msgid "Every token is exposed as a `var(--instui-*)` reference (not a concrete value), so Tailwind\nutilities like `bg-background-base` theme through the same CSS custom properties that\n`@pantoken/css` emits — light/dark and high-contrast all keep working."
+msgstr "Chaque jeton est exposé comme une `var(--instui-*)` référence (pas une valeur concrète), donc les utilitaires Tailwind\n comme `bg-background-base` thématisent via les mêmes propriétés personnalisées CSS que\n`@pantoken/css` émettent — les modes clair/sombre et de contraste élevé continuent tous de fonctionner."
+
+msgctxt "docs.api:prose"
+msgid "A single-select row of compact view or filter options."
+msgstr "Une rangée à sélection unique d'options de vue compacte ou de filtre."
+
+msgctxt "docs.api:prose"
+msgid "A selectable segmented-control label and its native radio input."
+msgstr "Une étiquette de contrôle segmenté sélectionnable et son élément radio natif."
+
+msgctxt "docs.api:prose"
+msgid "Decorative placeholder for content that has not loaded yet."
+msgstr "Espace réservé décoratif pour du contenu qui n'a pas encore été chargé."
+
+msgctxt "docs.api:prose"
+msgid "`.instui-segmented-control` — A single-select row of compact view or filter options."
+msgstr "`.instui-segmented-control` — Une rangée à sélection unique d'options de vue compacte ou de filtre."
+
+msgctxt "docs.api:prose"
+msgid "The selected segment uses a distinct active-item shadow; it does not match an existing\n  --instui-elevation-* composite. Overflow buttons use the upstream elevation3 component tokens."
+msgstr "Le segment sélectionné utilise une ombre d'élément actif distincte; elle ne correspond pas à un existing\n  --instui-elevation-* composite. Les boutons de débordement utilisent les tokens de composant elevation3 en amont."
+
+msgctxt "docs.api:prose"
+msgid "Use a labelled fieldset and one shared radio name with a checked default. Native radios\n  announce their checked state; overflow buttons need labels describing their scroll direction."
+msgstr "Utiliser un fieldset étiqueté et un nom de radio partagé avec une valeur par défaut cochée. Les radios natives\n  annoncent leur état coché; les boutons de débordement ont besoin d'étiquettes décrivant leur direction de défilement."
+
+msgctxt "docs.api:prose"
+msgid "Config"
+msgstr "Configuration"
+
+msgctxt "docs.api:prose"
+msgid "Utilities"
+msgstr "Utilitaires"
+
+msgctxt "docs.api:prose"
+msgid "Preferences"
+msgstr "Préférences"
+
+msgctxt "docs.api:prose"
+msgid "Feature flags"
+msgstr "Drapeaux de fonctionnalité"
+
+msgctxt "docs.api:prose"
+msgid "Large segments."
+msgstr "Segments larges."
+
+msgctxt "docs.api:prose"
+msgid "Medium segments (default)."
+msgstr "Segments moyens (par défaut)."
+
+msgctxt "docs.api:prose"
+msgid "Small segments."
+msgstr "Petits segments."
+
+msgctxt "docs.api:prose"
+msgid "Scroll to the following hidden segment."
+msgstr "Faire défiler jusqu'au segment caché suivant."
+
+msgctxt "docs.api:prose"
+msgid "Scroll to the preceding hidden segment."
+msgstr "Faire défiler jusqu'au segment caché précédent."
+
+msgctxt "docs.api:prose"
+msgid "Scrollable row containing the selectable segments."
+msgstr "Rangée défilable contenant les segments sélectionnables."
+
+msgctxt "docs.api:prose"
+msgid "Clips the segment row and anchors the overflow controls."
+msgstr "Masque la rangée de segments et ancre les contrôles de débordement."
+
+msgctxt "docs.api:prose"
+msgid "`.instui-segmented-control` — A selectable segmented-control label and its native radio input."
+msgstr "`.instui-segmented-control` — Une étiquette de contrôle segmenté sélectionnable et son bouton radio natif."
+
+msgctxt "docs.api:prose"
+msgid "A `-icon-*` class may live on the label or its native input; the interaction helper\n  promotes input classes to the label so the shared glyph painter can render it."
+msgstr "Une `-icon-*` classe peut se trouver sur l'étiquette ou sur son input natif; l'aide d'interaction\n  promeut les classes d'input vers l'étiquette afin que le peintre de glyphe partagé puisse le rendre."
+
+msgctxt "docs.api:prose"
+msgid "Keep the native radio in the label so checked, focus, disabled, and keyboard semantics remain available."
+msgstr "Gardez le bouton radio natif dans l'étiquette afin que les états coché, focus, désactivé et la sémantique clavier restent disponibles."
+
+msgctxt "docs.api:prose"
+msgid "`.instui-skeleton-loader` — Decorative placeholder for content that has not loaded yet."
+msgstr "`.instui-skeleton-loader` — Espace réservé décoratif pour le contenu qui n'a pas encore été chargé."
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "Mark the decorative loader aria-hidden=\"true\". Put aria-busy on the parent content region,\n  with an initially empty status and alert outside that region. Use initSkeletonLoading from the\n  interactions package to announce the parent's loading state. Shapes must not receive focus."
+msgstr "Mark the decorative loader aria-hidden=\"true\". Put aria-busy on the parent content region,\n  with an initially empty status and alert outside that region. Use initSkeletonLoading from the\n  interactions package to announce the parent's loading state. Shapes must not receive focus."
+
+msgctxt "docs.api:prose"
+msgid "Large text row."
+msgstr "Grande ligne de texte."
+
+msgctxt "docs.api:prose"
+msgid "Medium text row (default)."
+msgstr "Ligne de texte moyenne (par défaut)."
+
+msgctxt "docs.api:prose"
+msgid "Small text row."
+msgstr "Petite ligne de texte."
+
+msgctxt "docs.api:prose"
+msgid "Extra-large text row."
+msgstr "Ligne de texte extra-large."
+
+msgctxt "docs.api:prose"
+msgid "Extra-small text row."
+msgstr "Ligne de texte extra-petite."
+
+msgctxt "docs.api:prose"
+msgid "Largest text row."
+msgstr "Ligne de texte la plus grande."
+
+msgctxt "docs.api:prose"
+msgid "Legend-sized text row."
+msgstr "Ligne de texte de taille légende."
+
+msgctxt "docs.api:prose"
+msgid "A round avatar placeholder, medium size only."
+msgstr "Un espace réservé d'avatar rond, taille moyenne uniquement."
+
+msgctxt "docs.api:prose"
+msgid "An image placeholder, medium size only."
+msgstr "Un espace réservé pour image, taille moyenne uniquement."
+
+msgctxt "docs.api:prose"
+msgid "A text bar (default)."
+msgstr "Une barre de texte (par défaut)."
+
+msgctxt "docs.api:prose"
+msgid "The clipped placeholder surface sized for the selected loader type."
+msgstr "La surface de l'espace réservé découpée, dimensionnée pour le type de chargeur sélectionné."
+
+msgctxt "docs.api:prose"
+msgid "A repeated text-row wrapper that applies vertical spacing."
+msgstr "Un conteneur de lignes de texte répété qui applique un espacement vertical."
+
+msgctxt "docs.api:prose"
+msgid "Enhance a labelled native radio group with keyboard navigation and optional overflow controls."
+msgstr "Améliorer un groupe de boutons radio natif étiqueté avec navigation au clavier et contrôles de débordement optionnels."
+
+msgctxt "docs.api:prose"
+msgid "Bind the parent content region to SSR-provided status and error announcements."
+msgstr "Lier la région de contenu parente aux annonces d'état et d'erreur fournies par le SSR."
+
+msgctxt "docs.api:prose"
+msgid "Detach the segmented-control listeners and observers."
+msgstr "Détacher les écouteurs et observateurs du segmented-control."
+
+msgctxt "docs.api:prose"
+msgid "Segmented control options; the medium size is the CSS default."
+msgstr "Options du contrôle segmenté ; la taille moyenne est la valeur par défaut CSS."
+
+msgctxt "docs.api:prose"
+msgid "Control parent-level loading semantics without touching decorative skeleton shapes."
+msgstr "Contrôler la sémantique de chargement au niveau parent sans toucher aux formes de squelette décoratives."
+
+msgctxt "docs.api:prose"
+msgid "Pre-rendered announcement elements must be outside the busy content region."
+msgstr "Les éléments d'annonce pré-rendus doivent se trouver en dehors de la zone de contenu occupée."
+
+msgctxt "docs.api:prose"
+msgid "State update sent to an auto-registered skeleton loading region."
+msgstr "Mise à jour d'état envoyée à une zone de chargement squelettique auto-enregistrée."
+
+msgctxt "docs.api:prose"
+msgid "The generated Swift uses UIKit and targets iOS. `mise run verify:swift:syntax` only parses its\nsource; `mise run verify:swift:host` needs full Xcode and the iOS Simulator SDK to type-check it."
+msgstr "Le Swift généré utilise UIKit et cible iOS. `mise run verify:swift:syntax` analyse uniquement sa\nsource; `mise run verify:swift:host` nécessite Xcode complet et le SDK iOS Simulator pour effectuer la vérification de type."
+
+msgctxt "docs.api:prose"
+msgid "Build segmented-control CSS, replacing the component prefix sentinel."
+msgstr "Générer le CSS de segmented-control en remplaçant la sentinelle du préfixe du composant."
+
+msgctxt "docs.api:prose"
+msgid "Build the skeleton loader CSS, replacing the component prefix sentinel."
+msgstr "Construire le CSS du squelette de chargement, en remplaçant le sentinel du préfixe du composant."
+
+msgctxt "docs.api:prose"
+msgid "`@pantoken/bootstrap` — theme Bootstrap 5.2+ body variables and primary buttons with Instructure tokens."
+msgstr "`@pantoken/bootstrap` — variables du body du thème Bootstrap 5.2+ et boutons primaires avec les tokens Instructure."
+
+msgctxt "docs.api:prose"
+msgid "Points body and primary-button `--bs-*` CSS variables at `var(--instui-*)`. Load it after\nBootstrap and `@pantoken/css`; other component variants retain their Bootstrap defaults."
+msgstr "Indique les variables CSS du body et du bouton-primaire `--bs-*` à `var(--instui-*)`. Chargez‑le après\nBootstrap and `@pantoken/css`; les autres variantes de composants conservent leurs valeurs par défaut Bootstrap."
+
+msgctxt "docs.api:prose"
+msgid "Emit the Foundation Sass settings override. Import it before Foundation itself and\n`@include foundation-everything` so its palette is available to Sass."
+msgstr "Émet la surcharge des paramètres Sass de Foundation. Importez-le avant Foundation lui-même et\n`@include foundation-everything` pour que sa palette soit disponible pour Sass."
+
+msgctxt "docs.api:prose"
+msgid "`@pantoken/foundation` — theme Foundation for Sites Sass output and common CSS classes."
+msgstr "`@pantoken/foundation` — thème Foundation for Sites, sortie Sass et classes CSS communes."
+
+msgctxt "docs.api:prose"
+msgid "Foundation is Sass-first, so this package ships two layers. [toFoundationSettings](functions/toFoundationSettings.md) emits a\n`_settings`-style Sass partial with concrete light-mode rebrand values so Foundation's colour functions can\ncompile. [toFoundationCss](functions/toFoundationCss.md) emits a thin variable-backed CSS overlay that themes the common compiled\nclasses (`.button`, `.callout`, links) the same way — useful when you consume stock Foundation CSS\nand just want to layer Instructure colors on top without recompiling."
+msgstr "Foundation privilégie Sass, donc ce package fournit deux couches. [toFoundationSettings](functions/toFoundationSettings.md) génère un\n`_settings`-style partial Sass avec des valeurs concrètes de rebranding pour le mode clair afin que les fonctions de couleur de Foundation puissent\ncompiler. [toFoundationCss](functions/toFoundationCss.md) génère une mince couche CSS reposant sur des variables qui thématise les \nclasses compilées communes (`.button`, `.callout`, les liens) de la même manière — utile lorsque vous utilisez le CSS Foundation standard\net que vous souhaitez simplement superposer les couleurs Instructure par-dessus sans recompiler."
+
+msgctxt "docs.api:prose"
+msgid "Registration and shadow output are environment-verified with Happy DOM; real-browser behavior is\nnot covered by that check."
+msgstr "L'enregistrement et la sortie shadow sont vérifiés dans l'environnement avec Happy DOM ; le comportement dans un vrai navigateur n'est\npas couvert par cette vérification."
+
+msgctxt "docs.api:prose"
+msgid "Browser script URLs to load after the example markup (interaction bundles, when needed)."
+msgstr "URL des scripts du navigateur à charger après le balisage d'exemple (bundles d'interaction, si nécessaire)."
+
+msgctxt "docs.api:text"
+msgid "SegmentedControlOptions"
+msgstr "SegmentedControlOptions"
+
+msgctxt "docs.api:text"
+msgid "SegmentedControlHandle"
+msgstr "SegmentedControlHandle"
+
+msgctxt "docs.api:text"
+msgid "SkeletonLoadingState"
+msgstr "SkeletonLoadingState"
+
+msgctxt "docs.api:text"
+msgid "SkeletonLoadingOptions"
+msgstr "SkeletonLoadingOptions"
+
+msgctxt "docs.api:text"
+msgid "SkeletonLoadingHandle"
+msgstr "SkeletonLoadingHandle"
+
+msgctxt "docs.api:text"
+msgid "initSegmentedControl"
+msgstr "initSegmentedControl"
+
+msgctxt "docs.api:text"
+msgid "initSkeletonLoading"
+msgstr "initSkeletonLoading"
+
+msgctxt "docs.api:text"
+msgid "segmentedControlRules"
+msgstr "segmentedControlRules"
+
+msgctxt "docs.api:text"
+msgid "skeletonLoaderRules"
+msgstr "skeletonLoaderRules"
+
+msgctxt "docs.api:text"
+msgid "segmented-control"
+msgstr "segmented-control"
+
+msgctxt "docs.api:text"
+msgid "segment"
+msgstr "segment"
+
+msgctxt "docs.api:text"
+msgid "skeleton-loader"
+msgstr "skeleton-loader"

@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: pantoken\n"
-"PO-Revision-Date: 2026-09-28 16:28+0000\n"
+"PO-Revision-Date: 2026-10-01 03:36+0000\n"
 "Last-Translator: pantoken localization engine\n"
 "Language-Team: pantoken\n"
 "MIME-Version: 1.0\n"
@@ -1644,7 +1644,7 @@ msgstr "אישור"
 #, fuzzy, no-c-format
 msgctxt "docs.api:prose"
 msgid "Day"
-msgstr "day"
+msgstr "יום"
 
 #: css/button-set.md
 #, fuzzy, no-c-format
@@ -14470,7 +14470,7 @@ msgstr "Derive the `custom` סולמת הפרימיטיבים מה-hex של מו
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "The [CustomColorScale](../interfaces/CustomColorScale.md)."
-msgstr "The [CustomColorScale](../interfaces/CustomColorScale.md)."
+msgstr "ה [CustomColorScale](../interfaces/CustomColorScale.md)."
 
 #: plugins/pantoken/custom-theme-colors/src/functions/deriveScale.md
 #, no-c-format
@@ -14482,7 +14482,7 @@ msgstr "Derive a full primitive scale from one hex: anchor it at the step with t
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "A hex color accepted by [parseHexColor](parseHexColor.md)."
-msgstr "A hex color accepted by [parseHexColor](parseHexColor.md)."
+msgstr "צבע hex שמתקבל על-ידי [parseHexColor](parseHexColor.md)."
 
 #: plugins/pantoken/custom-theme-colors/src/functions/deriveScale.md
 #, fuzzy, no-c-format
@@ -14494,7 +14494,7 @@ msgstr "Output of buildReferenceCurve."
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "Whether a value is a valid [parseHexColor](parseHexColor.md) input."
-msgstr "Whether a value is a valid [parseHexColor](parseHexColor.md) input."
+msgstr "האם ערך הוא קלט תקף ל[parseHexColor](parseHexColor.md)."
 
 #: plugins/pantoken/custom-theme-colors/src/functions/isHexColor.md
 #, fuzzy, no-c-format
@@ -14518,13 +14518,13 @@ msgstr "Validate and normalize a user-supplied hex color. This is the only entry
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "A hex color, with or without the leading `#`."
-msgstr "A hex color, with or without the leading `#`."
+msgstr "צבע hex, עם או בלי התו המוביל `#`."
 
 #: plugins/pantoken/custom-theme-colors/src/functions/parseHexColor.md
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "Lowercase `#rrggbb`."
-msgstr "Lowercase `#rrggbb`."
+msgstr "באותיות קטנות `#rrggbb`."
 
 #: plugins/pantoken/custom-theme-colors/src/functions/parseHexColor.md
 #, no-c-format
@@ -14572,25 +14572,25 @@ msgstr "Prefix של Selector עבור החוקים המותנים — ראו [Cu
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "A derived custom primitive scale."
-msgstr "A derived custom primitive scale."
+msgstr "סולם פרימיטיבי מותאם נגזר."
 
 #: plugins/pantoken/custom-theme-colors/src/interfaces/CustomColorScale.md
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "The validated input, normalized to lowercase `#rrggbb`."
-msgstr "The validated input, normalized to lowercase `#rrggbb`."
+msgstr "הקלט המאומת, מנורמל לאותיות קטנות `#rrggbb`."
 
 #: plugins/pantoken/custom-theme-colors/src/interfaces/CustomColorScale.md
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "The step whose reference lightness is nearest the input's."
-msgstr "The step whose reference lightness is nearest the input's."
+msgstr "השלב שבהירות ההתייחסותית שלו הקרובה ביותר לזו של הקלט."
 
 #: plugins/pantoken/custom-theme-colors/src/interfaces/CustomColorScale.md
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "Every primitive step mapped to its derived `#rrggbb`."
-msgstr "Every primitive step mapped to its derived `#rrggbb`."
+msgstr "כל צעד פרימיטיבי ממופה לנגזר שלו `#rrggbb`."
 
 #: plugins/pantoken/custom-theme-colors/src/interfaces/CustomThemeColorsCssOptions.md
 #, fuzzy, no-c-format
@@ -14650,7 +14650,7 @@ msgstr "Prefix של Selector עבור החוקים המותנים — ראו [Cu
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "Per-step reference lightness and normalized chroma, index-aligned with `steps`. JSON-safe."
-msgstr "Per-step reference lightness and normalized chroma, index-aligned with `steps`. JSON-safe."
+msgstr "בהירות התייחסות לכל שלב וכרומה מנורמלת, מיושרת לפי אינדקס עם `steps`. בטוח ל-JSON."
 
 #: plugins/pantoken/custom-theme-colors/src/type-aliases/PantokenColorNamespace.md
 #, no-c-format
@@ -14668,7 +14668,7 @@ msgstr "13 מרחבי השמות של הצבעים הזמינים לבחירת �
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "The color namespace whose scale is derived from an arbitrary hex rather than shipped."
-msgstr "The color namespace whose scale is derived from an arbitrary hex rather than shipped."
+msgstr "מרחב שמות הצבע שהסולם שלו נגזר מקוד hex שרירותי במקום מהסולם המסופק."
 
 #: plugins/pantoken/deprecations/src/functions/compareVersions.md
 #, no-c-format
@@ -30662,3 +30662,261 @@ msgstr "כפתור שניתן להרחיף מעליו \"view fullscreen\", המ�
 #~ msgctxt "docs.api:text"
 #~ msgid "breakpoints"
 #~ msgstr "breakpoints"
+
+msgctxt "docs.api:prose"
+msgid "Every token is exposed as a `var(--instui-*)` reference (not a concrete value), so Tailwind\nutilities like `bg-background-base` theme through the same CSS custom properties that\n`@pantoken/css` emits — light/dark and high-contrast all keep working."
+msgstr "כל טוקן נחשף כ `var(--instui-*)` התייחסות (לא ערך קונקרטי), כך Tailwind\nutilities like `bg-background-base` מעצבות את הנושא דרך אותן תכונות CSS מותאמות אישית ש\n`@pantoken/css` מפיקות — בהיר/כהה וניגודיות גבוהה ממשיכים לעבוד."
+
+msgctxt "docs.api:prose"
+msgid "A single-select row of compact view or filter options."
+msgstr "שורה לבחירה יחידה של אפשרויות תצוגה או סינון קומפקטיות."
+
+msgctxt "docs.api:prose"
+msgid "A selectable segmented-control label and its native radio input."
+msgstr "תווית של בקר מקטעים ניתנת לבחירה וקלט הרדיו המקורי שלה."
+
+msgctxt "docs.api:prose"
+msgid "Decorative placeholder for content that has not loaded yet."
+msgstr "ממלא מקום דקורטיבי עבור תוכן שטרם נטען."
+
+msgctxt "docs.api:prose"
+msgid "`.instui-segmented-control` — A single-select row of compact view or filter options."
+msgstr "`.instui-segmented-control` — שורת בחירה יחידה של תצוגה קומפקטית או אפשרויות סינון."
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "The selected segment uses a distinct active-item shadow; it does not match an existing\n  --instui-elevation-* composite. Overflow buttons use the upstream elevation3 component tokens."
+msgstr "The selected segment uses a distinct active-item shadow; it does not match an existing\n  --instui-elevation-* composite. Overflow buttons use the upstream elevation3 component tokens."
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "Use a labelled fieldset and one shared radio name with a checked default. Native radios\n  announce their checked state; overflow buttons need labels describing their scroll direction."
+msgstr "Use a labelled fieldset and one shared radio name with a checked default. Native radios\n  announce their checked state; overflow buttons need labels describing their scroll direction."
+
+msgctxt "docs.api:prose"
+msgid "Config"
+msgstr "הגדרות"
+
+msgctxt "docs.api:prose"
+msgid "Utilities"
+msgstr "כלים"
+
+msgctxt "docs.api:prose"
+msgid "Preferences"
+msgstr "העדפות"
+
+msgctxt "docs.api:prose"
+msgid "Feature flags"
+msgstr "דגלי תכונה"
+
+msgctxt "docs.api:prose"
+msgid "Large segments."
+msgstr "סגמנטים גדולים."
+
+msgctxt "docs.api:prose"
+msgid "Medium segments (default)."
+msgstr "סגמנטים בינוניים (ברירת מחדל)."
+
+msgctxt "docs.api:prose"
+msgid "Small segments."
+msgstr "סגמנטים קטנים."
+
+msgctxt "docs.api:prose"
+msgid "Scroll to the following hidden segment."
+msgstr "גלול אל הסגמנט הנסתר הבא."
+
+msgctxt "docs.api:prose"
+msgid "Scroll to the preceding hidden segment."
+msgstr "גלול אל הסגמנט הנסתר הקודם."
+
+msgctxt "docs.api:prose"
+msgid "Scrollable row containing the selectable segments."
+msgstr "שורה ניתנת לגלילה המכילה את הסגמנטים הניתנים לבחירה."
+
+msgctxt "docs.api:prose"
+msgid "Clips the segment row and anchors the overflow controls."
+msgstr "חותך את שורת הסגמנטים ומעגן את בקרות ההצפה."
+
+msgctxt "docs.api:prose"
+msgid "`.instui-segmented-control` — A selectable segmented-control label and its native radio input."
+msgstr "`.instui-segmented-control` — תווית של בקרת מקטעים ניתנת לבחירה וקלט הרדיו המקורי שלה."
+
+msgctxt "docs.api:prose"
+msgid "A `-icon-*` class may live on the label or its native input; the interaction helper\n  promotes input classes to the label so the shared glyph painter can render it."
+msgstr "A `-icon-*` class may live on the label or its native input; the interaction helper\n  מקדם מחלקות של קלט לתווית כדי שמצייר הגליפים המשותף יוכל להציג אותן."
+
+msgctxt "docs.api:prose"
+msgid "Keep the native radio in the label so checked, focus, disabled, and keyboard semantics remain available."
+msgstr "השאר את קלט הרדיו המקומי בתוך התווית כדי שמצבי מסומן, פוקוס, מושבת ותחבירי המקלדת יישארו זמינים."
+
+msgctxt "docs.api:prose"
+msgid "`.instui-skeleton-loader` — Decorative placeholder for content that has not loaded yet."
+msgstr "`.instui-skeleton-loader` — מציין דקורטיבי עבור תוכן שטרם נטען."
+
+msgctxt "docs.api:prose"
+msgid "Mark the decorative loader aria-hidden=\"true\". Put aria-busy on the parent content region,\n  with an initially empty status and alert outside that region. Use initSkeletonLoading from the\n  interactions package to announce the parent's loading state. Shapes must not receive focus."
+msgstr "סמן את הטעינה הדקורטיבית aria-hidden=\"true\". Put aria-busy on the parent content region,\n  עם סטטוס ריק בתחילה והתרעה מחוץ לאזור זה. Use initSkeletonLoading from the\n  interactions package to announce the parent's loading state. צורות לא צריכות לקבל פוקוס."
+
+msgctxt "docs.api:prose"
+msgid "Large text row."
+msgstr "שורה של טקסט גדולה."
+
+msgctxt "docs.api:prose"
+msgid "Medium text row (default)."
+msgstr "שורה של טקסט בגודל בינוני (default)."
+
+msgctxt "docs.api:prose"
+msgid "Small text row."
+msgstr "שורה של טקסט קטנה."
+
+msgctxt "docs.api:prose"
+msgid "Extra-large text row."
+msgstr "שורה של טקסט גדולה במיוחד."
+
+msgctxt "docs.api:prose"
+msgid "Extra-small text row."
+msgstr "שורה של טקסט קטנה במיוחד."
+
+msgctxt "docs.api:prose"
+msgid "Largest text row."
+msgstr "השורה הגדולה ביותר של טקסט."
+
+msgctxt "docs.api:prose"
+msgid "Legend-sized text row."
+msgstr "שורה של טקסט בגודל מקרא."
+
+msgctxt "docs.api:prose"
+msgid "A round avatar placeholder, medium size only."
+msgstr "ממלא-מקום של אווטאר עגול, רק בגודל בינוני."
+
+msgctxt "docs.api:prose"
+msgid "An image placeholder, medium size only."
+msgstr "ממלא-מקום לתמונה, רק בגודל בינוני."
+
+msgctxt "docs.api:prose"
+msgid "A text bar (default)."
+msgstr "סרגל טקסט (default)."
+
+msgctxt "docs.api:prose"
+msgid "The clipped placeholder surface sized for the selected loader type."
+msgstr "ממשטח ממלא-מקום חתוך המותאם לגודל עבור סוג הטעינה הנבחר."
+
+msgctxt "docs.api:prose"
+msgid "A repeated text-row wrapper that applies vertical spacing."
+msgstr "עטיפת שורות טקסט חוזרת שמיישמת ריווח אנכי."
+
+msgctxt "docs.api:prose"
+msgid "Enhance a labelled native radio group with keyboard navigation and optional overflow controls."
+msgstr "שפר קבוצת רדיו מקומית מתוייגת עם ניווט במקלדת ובקרות גלישה אופציונליות."
+
+msgctxt "docs.api:prose"
+msgid "Bind the parent content region to SSR-provided status and error announcements."
+msgstr "קשור את אזור התוכן של ההורה להודעות מצב ושגיאה הנספקות על‑ידי SSR."
+
+msgctxt "docs.api:prose"
+msgid "Detach the segmented-control listeners and observers."
+msgstr "נתק את המאזינים והמשקיפים של segmented-control."
+
+msgctxt "docs.api:prose"
+msgid "Segmented control options; the medium size is the CSS default."
+msgstr "אפשרויות בקרת מסופים מקוטעות; הגודל הבינוני הוא ברירת המחדל ב‑CSS."
+
+msgctxt "docs.api:prose"
+msgid "Control parent-level loading semantics without touching decorative skeleton shapes."
+msgstr "שלוט בסמנטיקה של טעינה ברמת ההורה מבלי לגעת בצורות שלד דקורטיביות."
+
+msgctxt "docs.api:prose"
+msgid "Pre-rendered announcement elements must be outside the busy content region."
+msgstr "רכיבי הכרזות שהוכנו מראש חייבים להיות מחוץ לאזור התוכן העמוס."
+
+msgctxt "docs.api:prose"
+msgid "State update sent to an auto-registered skeleton loading region."
+msgstr "עדכון מצב נשלח לאזור טעינה של שלד שנרשם אוטומטית."
+
+msgctxt "docs.api:prose"
+msgid "The generated Swift uses UIKit and targets iOS. `mise run verify:swift:syntax` only parses its\nsource; `mise run verify:swift:host` needs full Xcode and the iOS Simulator SDK to type-check it."
+msgstr "קוד Swift שנוצר משתמש ב-UIKit ומיועד ל-iOS. `mise run verify:swift:syntax` רק מנתח את ה\nsource; `mise run verify:swift:host` דורש Xcode המלא ואת ערכת ה-SDK של iOS Simulator כדי לבצע בדיקת טיפוסים עליו."
+
+msgctxt "docs.api:prose"
+msgid "Build segmented-control CSS, replacing the component prefix sentinel."
+msgstr "בנה CSS עבור segmented-control, והחלף את הסנטינל של קידומת הרכיב."
+
+msgctxt "docs.api:prose"
+msgid "Build the skeleton loader CSS, replacing the component prefix sentinel."
+msgstr "בנה את ה־CSS של 'skeleton loader', והחלף את הסנטינל של קידומת הרכיב."
+
+msgctxt "docs.api:prose"
+msgid "`@pantoken/bootstrap` — theme Bootstrap 5.2+ body variables and primary buttons with Instructure tokens."
+msgstr "`@pantoken/bootstrap` — ערכת נושא Bootstrap 5.2+: משתני גוף וכפתורי primary עם טוקנים של Instructure."
+
+msgctxt "docs.api:prose"
+msgid "Points body and primary-button `--bs-*` CSS variables at `var(--instui-*)`. Load it after\nBootstrap and `@pantoken/css`; other component variants retain their Bootstrap defaults."
+msgstr "מגדיר את משתני ה-CSS של ה-body וכפתור ה-primary `--bs-*` במקום `var(--instui-*)`. טען אותו אחרי\nBootstrap ו `@pantoken/css`; וריאנטים אחרים של רכיבים שומרים על ברירות המחדל של Bootstrap."
+
+msgctxt "docs.api:prose"
+msgid "Emit the Foundation Sass settings override. Import it before Foundation itself and\n`@include foundation-everything` so its palette is available to Sass."
+msgstr "פלט את קובץ ההחלפה של הגדרות Foundation Sass. ייבא אותו לפני Foundation עצמו ו\n`@include foundation-everything` כך שהפלטה שלו תהיה זמינה לSass."
+
+msgctxt "docs.api:prose"
+msgid "`@pantoken/foundation` — theme Foundation for Sites Sass output and common CSS classes."
+msgstr "`@pantoken/foundation` — ערכת נושא לפלט ה‑Sass של Foundation for Sites ולמחלקות CSS השכיחות."
+
+msgctxt "docs.api:prose"
+msgid "Foundation is Sass-first, so this package ships two layers. [toFoundationSettings](functions/toFoundationSettings.md) emits a\n`_settings`-style Sass partial with concrete light-mode rebrand values so Foundation's colour functions can\ncompile. [toFoundationCss](functions/toFoundationCss.md) emits a thin variable-backed CSS overlay that themes the common compiled\nclasses (`.button`, `.callout`, links) the same way — useful when you consume stock Foundation CSS\nand just want to layer Instructure colors on top without recompiling."
+msgstr "Foundation מתוכנן בראש ובראשונה ל‑Sass, לכן חבילה זו מספקת שתי שכבות. [toFoundationSettings](functions/toFoundationSettings.md) מייצרת חלקית Sass בסגנון \n`_settings` עם ערכי מיתוג למצב בהיר קונקרטיים, כך שפונקציות הצבע של Foundation יוכלו לפעול בזמן הקומפילציה. [toFoundationCss](functions/toFoundationCss.md) מייצרת שכבת CSS דקה הנתמכת במשתנים שמעניקה ערכת נושא למחלקות המוכללות הנפוצות \n ( `.button`, `.callout`, קישורים) באותה צורה ) — שימושי כשאתה צורך את ה‑Foundation CSS המלא\n ופשוט רוצה לשים מעליו את צבעי Instructure מבלי לקמפל מחדש."
+
+msgctxt "docs.api:prose"
+msgid "Registration and shadow output are environment-verified with Happy DOM; real-browser behavior is\nnot covered by that check."
+msgstr "הרשמה ופלט הצללים מאומתים בסביבה עם Happy DOM; התנהגות בדפדפן אמיתי אינה\nמכוסה על ידי הבדיקה הזו."
+
+msgctxt "docs.api:prose"
+msgid "Browser script URLs to load after the example markup (interaction bundles, when needed)."
+msgstr "כתובות URL של סקריפטים לדפדפן לטעינה לאחר סימון הדוגמה (חבילות אינטראקציה, במידת הצורך)."
+
+msgctxt "docs.api:text"
+msgid "SegmentedControlOptions"
+msgstr "SegmentedControlOptions"
+
+msgctxt "docs.api:text"
+msgid "SegmentedControlHandle"
+msgstr "SegmentedControlHandle"
+
+msgctxt "docs.api:text"
+msgid "SkeletonLoadingState"
+msgstr "SkeletonLoadingState"
+
+msgctxt "docs.api:text"
+msgid "SkeletonLoadingOptions"
+msgstr "SkeletonLoadingOptions"
+
+msgctxt "docs.api:text"
+msgid "SkeletonLoadingHandle"
+msgstr "SkeletonLoadingHandle"
+
+msgctxt "docs.api:text"
+msgid "initSegmentedControl"
+msgstr "initSegmentedControl"
+
+msgctxt "docs.api:text"
+msgid "initSkeletonLoading"
+msgstr "initSkeletonLoading"
+
+msgctxt "docs.api:text"
+msgid "segmentedControlRules"
+msgstr "segmentedControlRules"
+
+msgctxt "docs.api:text"
+msgid "skeletonLoaderRules"
+msgstr "skeletonLoaderRules"
+
+msgctxt "docs.api:text"
+msgid "segmented-control"
+msgstr "segmented-control"
+
+msgctxt "docs.api:text"
+msgid "segment"
+msgstr "segment"
+
+msgctxt "docs.api:text"
+msgid "skeleton-loader"
+msgstr "skeleton-loader"

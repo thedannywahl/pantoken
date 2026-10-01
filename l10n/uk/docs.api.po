@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: pantoken\n"
-"PO-Revision-Date: 2026-09-28 18:53+0000\n"
+"PO-Revision-Date: 2026-10-01 07:20+0000\n"
 "Last-Translator: pantoken localization engine\n"
 "Language-Team: pantoken\n"
 "MIME-Version: 1.0\n"
@@ -877,7 +877,7 @@ msgid "Give an image avatar a meaningful `alt` (the person's name), not a generi
 msgstr "Надайте зображенню-аватару осмислений `alt` (ім'я особи), а не загальний «avatar»; для аватарів тільки з ініціалами надавайте перевагу справжньому імені (звичайний текст, data-initials, .name або .first-name/.last-name) замість попередньо скорочених літер, щоб допоміжні технології оголошували реальне ім'я."
 
 #: css/avatar.md
-#, no-c-format
+#, no-c-format, pantoken-verbatim
 msgctxt "docs.api:prose"
 msgid "LH"
 msgstr "LH"
@@ -886,7 +886,7 @@ msgstr "LH"
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "AI"
-msgstr "AI"
+msgstr "ШІ"
 
 #: css/avatar.md
 #, no-c-format
@@ -895,19 +895,19 @@ msgid "Dr. Nguyen Van Thoc"
 msgstr "Д-р Nguyen Van Thoc"
 
 #: css/avatar.md
-#, no-c-format
+#, no-c-format, pantoken-verbatim
 msgctxt "docs.api:prose"
 msgid "Miguel Sanchez"
 msgstr "Miguel Sanchez"
 
 #: css/avatar.md
-#, no-c-format
+#, no-c-format, pantoken-verbatim
 msgctxt "docs.api:prose"
 msgid "Miguel"
 msgstr "Miguel"
 
 #: css/avatar.md
-#, no-c-format
+#, no-c-format, pantoken-verbatim
 msgctxt "docs.api:prose"
 msgid "Sanchez"
 msgstr "Sanchez"
@@ -1644,7 +1644,7 @@ msgstr "Підтвердити"
 #, fuzzy, no-c-format
 msgctxt "docs.api:prose"
 msgid "Day"
-msgstr "day"
+msgstr "День"
 
 #: css/button-set.md
 #, fuzzy, no-c-format
@@ -1698,7 +1698,7 @@ msgstr "Задайте кожному немодифікованому дочі�
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "Default every unmodified child to the tertiary (text-style) color."
-msgstr "Default every unmodified child to the tertiary (text-style) color."
+msgstr "За замовчуванням усім незміненим дочірнім елементам призначати третинний (колір text-style)."
 
 #: css/button-set.md
 #, no-c-format
@@ -4499,7 +4499,7 @@ msgstr "`.instui-icon` — Система іконок: розмірування
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "A logo is meaningful, not decorative — give the host element `role=\"img\"` and an `aria-label` naming the product; never mark it `aria-hidden`."
-msgstr "A logo is meaningful, not decorative — give the host element `role=\"img\"` and an `aria-label` naming the product; never mark it `aria-hidden`."
+msgstr "Логотип має нести зміст, а не бути декоративним — додайте елементу-хосту `role=\"img\"` та `aria-label`, що містить назву продукту; ніколи не позначайте його `aria-hidden`."
 
 #: css/logo.md
 #, fuzzy, no-c-format
@@ -13620,7 +13620,7 @@ msgstr "Параметри фільтрації CSS компонентів дл�
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "Client capability profile. Defaults to `generic`."
-msgstr "Client capability profile. Defaults to `generic`."
+msgstr "Профіль можливостей клієнта. За замовчуванням — `generic`."
 
 #: platforms/email/src/interfaces/EmailCssOptions.md
 #: platforms/email/src/interfaces/InlineEmailHtmlOptions.md
@@ -13657,7 +13657,7 @@ msgstr "Який режим кольору вирішувати (за замов
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "Component class prefix. Defaults to `instui`."
-msgstr "Component class prefix. Defaults to `instui`."
+msgstr "Префікс класу компонента. За замовчуванням `instui`."
 
 #: platforms/email/src/interfaces/InlineEmailHtmlOptions.md
 #, fuzzy, no-c-format
@@ -13675,13 +13675,13 @@ msgstr "Застосувати одну з передвстановлених а
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "Retain pseudo-class and media-query rules in a style element. Defaults to `false`."
-msgstr "Retain pseudo-class and media-query rules in a style element. Defaults to `false`."
+msgstr "Зберігати правила псевдокласів і медіа-запитів у елементі стилю. За замовчуванням `false`."
 
 #: platforms/email/src/interfaces/InlineEmailHtmlOptions.md
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "Email client capability profile. Defaults to `generic`."
-msgstr "Email client capability profile. Defaults to `generic`."
+msgstr "Профіль можливостей поштового клієнта. За замовчуванням `generic`."
 
 #: platforms/email/src/interfaces/InlineEmailHtmlOptions.md
 #, no-c-format
@@ -14273,7 +14273,7 @@ msgstr "Плагін [PantokenPlugin](../../../../../packages/core/src/interface
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "Build the logo utility CSS as an aspect-ratio-aware mask painter for `@pantoken/plugin-logos`'\n`-logo-<name>` glyph classes, substituting `prefix` for the `pfx-` sentinel."
-msgstr "Build the logo utility CSS as an aspect-ratio-aware mask painter for `@pantoken/plugin-logos`'\n`-logo-<name>` glyph classes, substituting `prefix` for the `pfx-` sentinel."
+msgstr "Побудуйте CSS утиліту логотипу як маску-малювальник, що враховує співвідношення сторін, для `@pantoken/plugin-logos`'\n`-logo-<name>` класів гліфів, підставляючи `prefix` за `pfx-` сигнальний маркер."
 
 #: plugins/pantoken/custom-components/src/index.md
 #, no-c-format
@@ -15060,7 +15060,7 @@ msgstr "Рядок SVG або `undefined`, якщо така комбінаці�
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "**Read a logo's aspect ratio**"
-msgstr "**Read a logo's aspect ratio**"
+msgstr "**Зчитати співвідношення сторін логотипу**"
 
 #: plugins/pantoken/logos/src/functions/getLogoSvg.md
 #, no-c-format
@@ -15182,14 +15182,14 @@ msgstr "Шлях всередині `assets/logos`, наприклад `\"canvas
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "The SVG's natural `viewBox` width, used with [height](#height) to derive `--pantoken-logo-aspect`."
-msgstr "The SVG's natural `viewBox` width, used with [height](#height) to derive `--pantoken-logo-aspect`."
+msgstr "Природна `viewBox` ширина SVG, яка використовується разом із [height](#height) для отримання `--pantoken-logo-aspect`."
 
 #: plugins/pantoken/logos/src/interfaces/LogoMeta.md
 #: renderers/tinymce/src/interfaces/LogoMeta.md
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "The SVG's natural `viewBox` height, used with [width](#width) to derive `--pantoken-logo-aspect`."
-msgstr "The SVG's natural `viewBox` height, used with [width](#width) to derive `--pantoken-logo-aspect`."
+msgstr "Природна `viewBox` висота SVG, яка використовується разом із [width](#width) для отримання `--pantoken-logo-aspect`."
 
 #: plugins/pantoken/logos/src/interfaces/LogosOptions.md
 #, no-c-format
@@ -17634,7 +17634,7 @@ msgstr "URI типу `data:`, придатний як `<img src>` для іко�
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "Resolve a logo's stylesheet: the `.-logo-<name>` mask painter plus its `--instui-logo-<name>` token."
-msgstr "Resolve a logo's stylesheet: the `.-logo-<name>` mask painter plus its `--instui-logo-<name>` token."
+msgstr "Вирішити таблицю стилів логотипу: `.-logo-<name>` малювальник маски плюс його `--instui-logo-<name>` токен."
 
 #: renderers/tinymce/src/functions/getModifierSuggestions.md
 #, no-c-format
@@ -17658,7 +17658,7 @@ msgstr "лише для читання [`CdnFile`](../../../../platforms/canvas-
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "Resolve the logo stylesheets used by `-logo-*` classes below `root`."
-msgstr "Resolve the logo stylesheets used by `-logo-*` classes below `root`."
+msgstr "Визначити файли стилів логотипу, які використовуються класами `-logo-*` нижче `root`."
 
 #: renderers/tinymce/src/functions/getUsedLogoCdnFiles.md
 #, fuzzy, no-c-format
@@ -30506,3 +30506,417 @@ msgstr "Кнопка «переглянути на весь екран», яка
 #~ msgctxt "docs.api:text"
 #~ msgid "ai-gradient"
 #~ msgstr "ai-gradient"
+
+msgctxt "docs.api:prose"
+msgid "Every token is exposed as a `var(--instui-*)` reference (not a concrete value), so Tailwind\nutilities like `bg-background-base` theme through the same CSS custom properties that\n`@pantoken/css` emits — light/dark and high-contrast all keep working."
+msgstr "Кожен токен представлений як `var(--instui-*)` посилання (не конкретне значення), тому утиліти Tailwind\nяк-от `bg-background-base` змінюють тему через ті самі CSS-персоналізовані властивості, які\n`@pantoken/css` видає — світла/темна та висококонтрастна теми продовжують працювати."
+
+msgctxt "docs.api:prose"
+msgid "A single-select row of compact view or filter options."
+msgstr "Рядок з одиночним вибором компактних варіантів перегляду або фільтра."
+
+msgctxt "docs.api:prose"
+msgid "A selectable segmented-control label and its native radio input."
+msgstr "Вибирана мітка сегментованого контролю та її рідний радіокнопковий елемент."
+
+msgctxt "docs.api:prose"
+msgid "Decorative placeholder for content that has not loaded yet."
+msgstr "Декоративний заповнювач для вмісту, що ще не завантажився."
+
+msgctxt "docs.api:prose"
+msgid "`.instui-segmented-control` — A single-select row of compact view or filter options."
+msgstr "`.instui-segmented-control` — Ряд з одиничним вибором компактного подання або параметрів фільтра."
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "The selected segment uses a distinct active-item shadow; it does not match an existing\n  --instui-elevation-* composite. Overflow buttons use the upstream elevation3 component tokens."
+msgstr "The selected segment uses a distinct active-item shadow; it does not match an existing\n  --instui-elevation-* composite. Overflow buttons use the upstream elevation3 component tokens."
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "Use a labelled fieldset and one shared radio name with a checked default. Native radios\n  announce their checked state; overflow buttons need labels describing their scroll direction."
+msgstr "Use a labelled fieldset and one shared radio name with a checked default. Native radios\n  announce their checked state; overflow buttons need labels describing their scroll direction."
+
+msgctxt "docs.api:prose"
+msgid "Config"
+msgstr "Конфігурація"
+
+msgctxt "docs.api:prose"
+msgid "Utilities"
+msgstr "Утиліти"
+
+msgctxt "docs.api:prose"
+msgid "Preferences"
+msgstr "Налаштування"
+
+msgctxt "docs.api:prose"
+msgid "Feature flags"
+msgstr "Флаги функцій"
+
+msgctxt "docs.api:prose"
+msgid "Large segments."
+msgstr "Великі сегменти."
+
+msgctxt "docs.api:prose"
+msgid "Medium segments (default)."
+msgstr "Середні сегменти (за замовчуванням)."
+
+msgctxt "docs.api:prose"
+msgid "Small segments."
+msgstr "Малі сегменти."
+
+msgctxt "docs.api:prose"
+msgid "Scroll to the following hidden segment."
+msgstr "Прокрутити до наступного прихованого сегмента."
+
+msgctxt "docs.api:prose"
+msgid "Scroll to the preceding hidden segment."
+msgstr "Прокрутити до попереднього прихованого сегмента."
+
+msgctxt "docs.api:prose"
+msgid "Scrollable row containing the selectable segments."
+msgstr "Ряд із прокруткою, що містить вибірні сегменти."
+
+msgctxt "docs.api:prose"
+msgid "Clips the segment row and anchors the overflow controls."
+msgstr "Обрізає ряд сегментів і прив'язує елементи керування переповненням."
+
+msgctxt "docs.api:prose"
+msgid "`.instui-segmented-control` — A selectable segmented-control label and its native radio input."
+msgstr "`.instui-segmented-control` — Мітка сегментованого керування, яку можна вибрати, та її рідний радіо-елемент."
+
+msgctxt "docs.api:prose"
+msgid "A `-icon-*` class may live on the label or its native input; the interaction helper\n  promotes input classes to the label so the shared glyph painter can render it."
+msgstr "Клас `-icon-*` може розташовуватися на мітці або на її рідному елементі вводу; допоміжний модуль взаємодії\n  переносить класи з елемента вводу на мітку, щоб спільний рендерер гліфів міг їх відобразити."
+
+msgctxt "docs.api:prose"
+msgid "Keep the native radio in the label so checked, focus, disabled, and keyboard semantics remain available."
+msgstr "Тримайте рідний радіо-елемент у мітці, щоб семантика вибраного стану, фокусу, відключення та клавіатури залишалася доступною."
+
+msgctxt "docs.api:prose"
+msgid "`.instui-skeleton-loader` — Decorative placeholder for content that has not loaded yet."
+msgstr "`.instui-skeleton-loader` — Декоративний заповнювач для вмісту, який ще не завантажився."
+
+msgctxt "docs.api:prose"
+msgid "Mark the decorative loader aria-hidden=\"true\". Put aria-busy on the parent content region,\n  with an initially empty status and alert outside that region. Use initSkeletonLoading from the\n  interactions package to announce the parent's loading state. Shapes must not receive focus."
+msgstr "Позначте декоративний завантажувач aria-hidden=\"true\". Помістіть aria-busy на батьківський регіон вмісту,\n  зі спочатку порожнім статусом і повідомленням за межами цього регіону. Використовуйте initSkeletonLoading from the\n  interactions package to announce the parent's loading state. Фігури не повинні отримувати фокус."
+
+msgctxt "docs.api:prose"
+msgid "Large text row."
+msgstr "Великий текстовий рядок."
+
+msgctxt "docs.api:prose"
+msgid "Medium text row (default)."
+msgstr "Середній текстовий рядок (default)."
+
+msgctxt "docs.api:prose"
+msgid "Small text row."
+msgstr "Малий текстовий рядок."
+
+msgctxt "docs.api:prose"
+msgid "Extra-large text row."
+msgstr "Дуже великий текстовий рядок."
+
+msgctxt "docs.api:prose"
+msgid "Extra-small text row."
+msgstr "Дуже малий текстовий рядок."
+
+msgctxt "docs.api:prose"
+msgid "Largest text row."
+msgstr "Найбільший текстовий рядок."
+
+msgctxt "docs.api:prose"
+msgid "Legend-sized text row."
+msgstr "Текстовий рядок розміру легенди."
+
+msgctxt "docs.api:prose"
+msgid "A round avatar placeholder, medium size only."
+msgstr "Круглий заповнювач аватара, лише середнього розміру."
+
+msgctxt "docs.api:prose"
+msgid "An image placeholder, medium size only."
+msgstr "Заповнювач зображення, лише середнього розміру."
+
+msgctxt "docs.api:prose"
+msgid "A text bar (default)."
+msgstr "Текстова панель (default)."
+
+msgctxt "docs.api:prose"
+msgid "The clipped placeholder surface sized for the selected loader type."
+msgstr "Обрізана поверхня-заповнювач, підігнана за розміром під вибраний тип завантажувача."
+
+msgctxt "docs.api:prose"
+msgid "A repeated text-row wrapper that applies vertical spacing."
+msgstr "Повторюваний контейнер рядків тексту, який додає вертикальні відступи."
+
+msgctxt "docs.api:prose"
+msgid "Enhance a labelled native radio group with keyboard navigation and optional overflow controls."
+msgstr "Покращити позначену нативну групу радіокнопок клавіатурною навігацією та необов'язковими елементами керування переповненням."
+
+msgctxt "docs.api:prose"
+msgid "Bind the parent content region to SSR-provided status and error announcements."
+msgstr "Прив'язати батьківський регіон вмісту до повідомлень про статус і помилки, наданих SSR."
+
+msgctxt "docs.api:prose"
+msgid "Detach the segmented-control listeners and observers."
+msgstr "Від'єднати слухачів і спостерігачів segmented-control."
+
+msgctxt "docs.api:prose"
+msgid "Segmented control options; the medium size is the CSS default."
+msgstr "Параметри сегментованого контролю; середній розмір — значення за замовчуванням у CSS."
+
+msgctxt "docs.api:prose"
+msgid "Control parent-level loading semantics without touching decorative skeleton shapes."
+msgstr "Керуйте семантикою завантаження на рівні батьківського елемента, не зачіпаючи декоративні скелетонні форми."
+
+msgctxt "docs.api:prose"
+msgid "Pre-rendered announcement elements must be outside the busy content region."
+msgstr "Попередньо відрендерені елементи оголошення повинні знаходитися поза областю зайнятого вмісту."
+
+msgctxt "docs.api:prose"
+msgid "State update sent to an auto-registered skeleton loading region."
+msgstr "Оновлення стану надіслано до автоматично зареєстрованої області скелетного завантаження."
+
+msgctxt "docs.api:prose"
+msgid "The generated Swift uses UIKit and targets iOS. `mise run verify:swift:syntax` only parses its\nsource; `mise run verify:swift:host` needs full Xcode and the iOS Simulator SDK to type-check it."
+msgstr "Згенерований Swift використовує UIKit і націлений на iOS. `mise run verify:swift:syntax` лише розбирає його\nsource; `mise run verify:swift:host` потребує повного Xcode та iOS Simulator SDK, щоб перевірити типи."
+
+msgctxt "docs.api:prose"
+msgid "Build segmented-control CSS, replacing the component prefix sentinel."
+msgstr "Створити CSS для segmented-control, замінивши маркер префікса компонента."
+
+msgctxt "docs.api:prose"
+msgid "Build the skeleton loader CSS, replacing the component prefix sentinel."
+msgstr "Створити CSS для скелетного лоадера, замінивши сигнальний маркер префікса компонента."
+
+msgctxt "docs.api:prose"
+msgid "`@pantoken/bootstrap` — theme Bootstrap 5.2+ body variables and primary buttons with Instructure tokens."
+msgstr "`@pantoken/bootstrap` — змінні тіла теми Bootstrap 5.2+ та основні кнопки з токенами Instructure."
+
+msgctxt "docs.api:prose"
+msgid "Points body and primary-button `--bs-*` CSS variables at `var(--instui-*)`. Load it after\nBootstrap and `@pantoken/css`; other component variants retain their Bootstrap defaults."
+msgstr "Вказує змінні CSS для тіла та основної кнопки `--bs-*` за адресою `var(--instui-*)`. Завантажте його після\nBootstrap і `@pantoken/css`; інші варіанти компонентів зберігають свої значення за замовчуванням Bootstrap."
+
+msgctxt "docs.api:prose"
+msgid "Emit the Foundation Sass settings override. Import it before Foundation itself and\n`@include foundation-everything` so its palette is available to Sass."
+msgstr "Виведіть перевизначення налаштувань Foundation Sass. Імпортуйте його перед самим Foundation та\n`@include foundation-everything` щоб його палітра була доступна для Sass."
+
+msgctxt "docs.api:prose"
+msgid "`@pantoken/foundation` — theme Foundation for Sites Sass output and common CSS classes."
+msgstr "`@pantoken/foundation` — тема для вихідного Sass Foundation for Sites та загальних CSS-класів."
+
+msgctxt "docs.api:prose"
+msgid "Foundation is Sass-first, so this package ships two layers. [toFoundationSettings](functions/toFoundationSettings.md) emits a\n`_settings`-style Sass partial with concrete light-mode rebrand values so Foundation's colour functions can\ncompile. [toFoundationCss](functions/toFoundationCss.md) emits a thin variable-backed CSS overlay that themes the common compiled\nclasses (`.button`, `.callout`, links) the same way — useful when you consume stock Foundation CSS\nand just want to layer Instructure colors on top without recompiling."
+msgstr "Foundation спочатку орієнтований на Sass, тому цей пакет постачає два рівні. [toFoundationSettings](functions/toFoundationSettings.md) генерує частковий Sass у стилі \n`_settings` з конкретними значеннями ребрендингу для світлого режиму, щоб колірні функції Foundation могли\nскомпілюватися. [toFoundationCss](functions/toFoundationCss.md) створює тонкий CSS-шар, що підтримується змінними, який задає тему для скомпільованих загальних\nкласів (`.button`, `.callout`, посилання) таким же чином — корисно, коли ви використовуєте штатний Foundation CSS\n і просто хочете накласти кольори Instructure зверху без перекомпіляції."
+
+msgctxt "docs.api:prose"
+msgid "Registration and shadow output are environment-verified with Happy DOM; real-browser behavior is\nnot covered by that check."
+msgstr "Реєстрація та теневий вивід перевірені в середовищі з Happy DOM; поведінка в реальному браузері є\nне охоплюється цією перевіркою."
+
+msgctxt "docs.api:prose"
+msgid "Browser script URLs to load after the example markup (interaction bundles, when needed)."
+msgstr "URL-адреси скриптів браузера для завантаження після прикладу розмітки (interaction bundles, when needed)."
+
+msgctxt "docs.api:text"
+msgid "EmailCssOptions"
+msgstr "EmailCssOptions"
+
+msgctxt "docs.api:text"
+msgid "InlineEmailHtmlOptions"
+msgstr "InlineEmailHtmlOptions"
+
+msgctxt "docs.api:text"
+msgid "EmailClient"
+msgstr "EmailClient"
+
+msgctxt "docs.api:text"
+msgid "light"
+msgstr "light"
+
+msgctxt "docs.api:text"
+msgid "inlineEmailHtml"
+msgstr "inlineEmailHtml"
+
+msgctxt "docs.api:text"
+msgid "GlyphSyncTarget"
+msgstr "GlyphSyncTarget"
+
+msgctxt "docs.api:text"
+msgid "PRODUCT_LABELS"
+msgstr "PRODUCT_LABELS"
+
+msgctxt "docs.api:text"
+msgid "retargetContentStylesheets"
+msgstr "retargetContentStylesheets"
+
+msgctxt "docs.api:text"
+msgid "normalizeGlyphHtml"
+msgstr "normalizeGlyphHtml"
+
+msgctxt "docs.api:text"
+msgid "injectUsedGlyphAssets"
+msgstr "injectUsedGlyphAssets"
+
+msgctxt "docs.api:text"
+msgid "registerGlyphSync"
+msgstr "registerGlyphSync"
+
+msgctxt "docs.api:text"
+msgid "logoVariantLabel"
+msgstr "logoVariantLabel"
+
+msgctxt "docs.api:text"
+msgid "filterLogos"
+msgstr "filterLogos"
+
+msgctxt "docs.api:text"
+msgid "getLogoCdnFile"
+msgstr "getLogoCdnFile"
+
+msgctxt "docs.api:text"
+msgid "buildLogoMarkup"
+msgstr "buildLogoMarkup"
+
+msgctxt "docs.api:text"
+msgid "getUsedLogoCdnFiles"
+msgstr "getUsedLogoCdnFiles"
+
+msgctxt "docs.api:text"
+msgid "modifyExpression"
+msgstr "modifyExpression"
+
+msgctxt "docs.api:text"
+msgid "inline-styles"
+msgstr "inline-styles"
+
+msgctxt "docs.api:text"
+msgid "InlineHtmlOptions"
+msgstr "InlineHtmlOptions"
+
+msgctxt "docs.api:text"
+msgid "inlineHtml"
+msgstr "inlineHtml"
+
+msgctxt "docs.api:text"
+msgid "InPlaceEditOptions"
+msgstr "InPlaceEditOptions"
+
+msgctxt "docs.api:text"
+msgid "SegmentedControlOptions"
+msgstr "SegmentedControlOptions"
+
+msgctxt "docs.api:text"
+msgid "SegmentedControlHandle"
+msgstr "SegmentedControlHandle"
+
+msgctxt "docs.api:text"
+msgid "SkeletonLoadingState"
+msgstr "SkeletonLoadingState"
+
+msgctxt "docs.api:text"
+msgid "SkeletonLoadingOptions"
+msgstr "SkeletonLoadingOptions"
+
+msgctxt "docs.api:text"
+msgid "SkeletonLoadingHandle"
+msgstr "SkeletonLoadingHandle"
+
+msgctxt "docs.api:text"
+msgid "InPlaceEditInputType"
+msgstr "InPlaceEditInputType"
+
+msgctxt "docs.api:text"
+msgid "initSegmentedControl"
+msgstr "initSegmentedControl"
+
+msgctxt "docs.api:text"
+msgid "initSkeletonLoading"
+msgstr "initSkeletonLoading"
+
+msgctxt "docs.api:text"
+msgid "buttonSetRules"
+msgstr "buttonSetRules"
+
+msgctxt "docs.api:text"
+msgid "logoRules"
+msgstr "logoRules"
+
+msgctxt "docs.api:text"
+msgid "segmentedControlRules"
+msgstr "segmentedControlRules"
+
+msgctxt "docs.api:text"
+msgid "skeletonLoaderRules"
+msgstr "skeletonLoaderRules"
+
+msgctxt "docs.api:text"
+msgid "breakpointDeclarations"
+msgstr "breakpointDeclarations"
+
+msgctxt "docs.api:text"
+msgid "ReferenceCurve"
+msgstr "ReferenceCurve"
+
+msgctxt "docs.api:text"
+msgid "CustomColorScale"
+msgstr "CustomColorScale"
+
+msgctxt "docs.api:text"
+msgid "CustomColorCssOptions"
+msgstr "CustomColorCssOptions"
+
+msgctxt "docs.api:text"
+msgid "CUSTOM_COLOR_KEY"
+msgstr "CUSTOM_COLOR_KEY"
+
+msgctxt "docs.api:text"
+msgid "isHexColor"
+msgstr "isHexColor"
+
+msgctxt "docs.api:text"
+msgid "deriveScale"
+msgstr "deriveScale"
+
+msgctxt "docs.api:text"
+msgid "customColorReferenceCurve"
+msgstr "customColorReferenceCurve"
+
+msgctxt "docs.api:text"
+msgid "deriveCustomColorScale"
+msgstr "deriveCustomColorScale"
+
+msgctxt "docs.api:text"
+msgid "customColorCss"
+msgstr "customColorCss"
+
+msgctxt "docs.api:text"
+msgid "customColorRemapCss"
+msgstr "customColorRemapCss"
+
+msgctxt "docs.api:text"
+msgid "button-set"
+msgstr "button-set"
+
+msgctxt "docs.api:text"
+msgid "day"
+msgstr "day"
+
+msgctxt "docs.api:text"
+msgid "segmented-control"
+msgstr "segmented-control"
+
+msgctxt "docs.api:text"
+msgid "segment"
+msgstr "segment"
+
+msgctxt "docs.api:text"
+msgid "skeleton-loader"
+msgstr "skeleton-loader"
+
+msgctxt "docs.api:text"
+msgid "logo"
+msgstr "logo"
+
+msgctxt "docs.api:text"
+msgid "breakpoints"
+msgstr "breakpoints"

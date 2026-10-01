@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: pantoken\n"
-"PO-Revision-Date: 2026-09-28 16:30+0000\n"
+"PO-Revision-Date: 2026-10-01 04:23+0000\n"
 "Last-Translator: pantoken localization engine\n"
 "Language-Team: pantoken\n"
 "MIME-Version: 1.0\n"
@@ -1644,7 +1644,7 @@ msgstr "確認"
 #, fuzzy, no-c-format
 msgctxt "docs.api:prose"
 msgid "Day"
-msgstr "day"
+msgstr "日"
 
 #: css/button-set.md
 #, fuzzy, no-c-format
@@ -1698,7 +1698,7 @@ msgstr "未変更の子要素をすべて成功（success）カラーにデフ�
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "Default every unmodified child to the tertiary (text-style) color."
-msgstr "Default every unmodified child to the tertiary (text-style) color."
+msgstr "未変更の子をすべて三次 (text-style) color にデフォルトにします."
 
 #: css/button-set.md
 #, no-c-format
@@ -15060,7 +15060,7 @@ msgstr "SVG文字列、またはその組み合わせが存在しない場合は
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "**Read a logo's aspect ratio**"
-msgstr "**Read a logo's aspect ratio**"
+msgstr "**ロゴのアスペクト比を読み取る**"
 
 #: plugins/pantoken/logos/src/functions/getLogoSvg.md
 #, no-c-format
@@ -17682,7 +17682,7 @@ msgstr "Appends a `<link rel=\"stylesheet\">` to the editor's content document `
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "Inject the stylesheet of every glyph `resolve` finds in the editor body."
-msgstr "Inject the stylesheet of every glyph `resolve` finds in the editor body."
+msgstr "エディター本文で `resolve` が見つけるすべてのグリフのスタイルシートを注入します."
 
 #: renderers/tinymce/src/functions/listComponents.md
 #, no-c-format
@@ -17718,7 +17718,7 @@ msgstr "レイアウト内にプロバイダのURLを埋め込まずに、宣言
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "Give every empty glyph span in `html` the non-editable, ZWSP-filled shape the pickers insert."
-msgstr "Give every empty glyph span in `html` the non-editable, ZWSP-filled shape the pickers insert."
+msgstr "すべての空のグリフ span を `html` に、ピッカーが挿入する非編集可能でZWSPで埋められた形状にする。"
 
 #: renderers/tinymce/src/functions/pantokenContentCssUrls.md
 #, no-c-format
@@ -30506,3 +30506,416 @@ msgstr "ホバー可能な「全画面表示」ボタン。VitePress の code-bl
 #~ msgctxt "docs.api:text"
 #~ msgid "ai-gradient"
 #~ msgstr "ai-gradient"
+
+msgctxt "docs.api:prose"
+msgid "Every token is exposed as a `var(--instui-*)` reference (not a concrete value), so Tailwind\nutilities like `bg-background-base` theme through the same CSS custom properties that\n`@pantoken/css` emits — light/dark and high-contrast all keep working."
+msgstr "すべてのトークンは `var(--instui-*)` 参照として公開されます（具体的な値ではなく)、したがって Tailwind\nのようなユーティリティは `bg-background-base` を通して同じ CSS カスタムプロパティでテーマ化し、\n`@pantoken/css` が出力するため — ライト/ダークやハイコントラストもすべて動作し続けます。"
+
+msgctxt "docs.api:prose"
+msgid "A single-select row of compact view or filter options."
+msgstr "コンパクト表示またはフィルターオプションの単一選択行。"
+
+msgctxt "docs.api:prose"
+msgid "A selectable segmented-control label and its native radio input."
+msgstr "選択可能なセグメント化コントロールのラベルとそのネイティブのラジオ入力。"
+
+msgctxt "docs.api:prose"
+msgid "Decorative placeholder for content that has not loaded yet."
+msgstr "まだ読み込まれていないコンテンツの装飾的プレースホルダー。"
+
+msgctxt "docs.api:prose"
+msgid "`.instui-segmented-control` — A single-select row of compact view or filter options."
+msgstr "`.instui-segmented-control` — 単一選択のコンパクト表示またはフィルター用オプションの行。"
+
+msgctxt "docs.api:prose"
+msgid "The selected segment uses a distinct active-item shadow; it does not match an existing\n  --instui-elevation-* composite. Overflow buttons use the upstream elevation3 component tokens."
+msgstr "選択されたセグメントは異なるアクティブアイテムのシャドウを使用します; 既存の\n  --instui-elevation-* 複合とは一致しません。オーバーフローボタンはアップストリームの elevation3 コンポーネントトークンを使用します。"
+
+msgctxt "docs.api:prose"
+msgid "Use a labelled fieldset and one shared radio name with a checked default. Native radios\n  announce their checked state; overflow buttons need labels describing their scroll direction."
+msgstr "ラベル付きのfieldsetと、チェック済みのデフォルトを持つ共通のラジオ名を1つ使用してください。ネイティブラジオは\n  チェック状態をアナウンスします; オーバーフローボタンにはスクロール方向を説明するラベルが必要です。"
+
+msgctxt "docs.api:prose"
+msgid "Config"
+msgstr "設定"
+
+msgctxt "docs.api:prose"
+msgid "Utilities"
+msgstr "ユーティリティ"
+
+msgctxt "docs.api:prose"
+msgid "Preferences"
+msgstr "環境設定"
+
+msgctxt "docs.api:prose"
+msgid "Feature flags"
+msgstr "機能フラグ"
+
+msgctxt "docs.api:prose"
+msgid "Large segments."
+msgstr "大きなセグメント。"
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "Medium segments (default)."
+msgstr "Medium segments (default)."
+
+msgctxt "docs.api:prose"
+msgid "Small segments."
+msgstr "小さなセグメント。"
+
+msgctxt "docs.api:prose"
+msgid "Scroll to the following hidden segment."
+msgstr "次の非表示セグメントまでスクロールします。"
+
+msgctxt "docs.api:prose"
+msgid "Scroll to the preceding hidden segment."
+msgstr "前の非表示セグメントまでスクロールします。"
+
+msgctxt "docs.api:prose"
+msgid "Scrollable row containing the selectable segments."
+msgstr "選択可能なセグメントを含むスクロール可能な行。"
+
+msgctxt "docs.api:prose"
+msgid "Clips the segment row and anchors the overflow controls."
+msgstr "セグメント行をクリップし、オーバーフローコントロールをアンカーします。"
+
+msgctxt "docs.api:prose"
+msgid "`.instui-segmented-control` — A selectable segmented-control label and its native radio input."
+msgstr "`.instui-segmented-control` — 選択可能なセグメント化コントロールのラベルとそのネイティブなラジオ入力。"
+
+msgctxt "docs.api:prose"
+msgid "A `-icon-*` class may live on the label or its native input; the interaction helper\n  promotes input classes to the label so the shared glyph painter can render it."
+msgstr "その `-icon-*` クラスはラベル上またはネイティブ入力上のどちらに置かれていてもよく、相互作用ヘルパー\n  は入力のクラスをラベルに昇格させて共有のグリフ描画器がそれを描画できるようにする。"
+
+msgctxt "docs.api:prose"
+msgid "Keep the native radio in the label so checked, focus, disabled, and keyboard semantics remain available."
+msgstr "チェック状態、フォーカス、無効状態、およびキーボードのセマンティクスが利用可能であり続けるように、ネイティブのラジオをラベル内に保持する。"
+
+msgctxt "docs.api:prose"
+msgid "`.instui-skeleton-loader` — Decorative placeholder for content that has not loaded yet."
+msgstr "`.instui-skeleton-loader` — 読み込みされていないコンテンツの装飾用プレースホルダー。"
+
+msgctxt "docs.api:prose"
+msgid "Mark the decorative loader aria-hidden=\"true\". Put aria-busy on the parent content region,\n  with an initially empty status and alert outside that region. Use initSkeletonLoading from the\n  interactions package to announce the parent's loading state. Shapes must not receive focus."
+msgstr "装飾的なローダーには aria-hidden=\"true\" を付ける。親コンテンツ領域に aria-busy を設定し,\n  その領域外で初期は空のステータスとアラートを用意する。親の読み込み状態を通知するには \n  interactions パッケージの initSkeletonLoading を使用する。図形はフォーカスを受けてはならない。"
+
+msgctxt "docs.api:prose"
+msgid "Large text row."
+msgstr "大きいテキスト行。"
+
+msgctxt "docs.api:prose"
+msgid "Medium text row (default)."
+msgstr "中くらいのテキスト行 (デフォルト)."
+
+msgctxt "docs.api:prose"
+msgid "Small text row."
+msgstr "小さいテキスト行。"
+
+msgctxt "docs.api:prose"
+msgid "Extra-large text row."
+msgstr "特大のテキスト行。"
+
+msgctxt "docs.api:prose"
+msgid "Extra-small text row."
+msgstr "特小のテキスト行。"
+
+msgctxt "docs.api:prose"
+msgid "Largest text row."
+msgstr "最大のテキスト行。"
+
+msgctxt "docs.api:prose"
+msgid "Legend-sized text row."
+msgstr "レジェンドサイズのテキスト行。"
+
+msgctxt "docs.api:prose"
+msgid "A round avatar placeholder, medium size only."
+msgstr "丸いアバタープレースホルダー、中サイズのみ。"
+
+msgctxt "docs.api:prose"
+msgid "An image placeholder, medium size only."
+msgstr "画像プレースホルダー、中サイズのみ。"
+
+msgctxt "docs.api:prose"
+msgid "A text bar (default)."
+msgstr "テキストバー (デフォルト)."
+
+msgctxt "docs.api:prose"
+msgid "The clipped placeholder surface sized for the selected loader type."
+msgstr "選択したローダータイプに合わせてサイズ調整された切り抜きプレースホルダー面。"
+
+msgctxt "docs.api:prose"
+msgid "A repeated text-row wrapper that applies vertical spacing."
+msgstr "垂直間隔を適用する、繰り返しのテキスト行ラッパー。"
+
+msgctxt "docs.api:prose"
+msgid "Enhance a labelled native radio group with keyboard navigation and optional overflow controls."
+msgstr "ラベル付きのネイティブラジオグループにキーボードナビゲーションとオプションのオーバーフローコントロールを追加する。"
+
+msgctxt "docs.api:prose"
+msgid "Bind the parent content region to SSR-provided status and error announcements."
+msgstr "親のコンテンツ領域を SSR によって提供されるステータスおよびエラーの通知にバインドする。"
+
+msgctxt "docs.api:prose"
+msgid "Detach the segmented-control listeners and observers."
+msgstr "segmented-control のリスナーとオブザーバーを切り離す。"
+
+msgctxt "docs.api:prose"
+msgid "Segmented control options; the medium size is the CSS default."
+msgstr "セグメント化されたコントロールのオプション; ミディアムサイズはCSSのデフォルトです。"
+
+msgctxt "docs.api:prose"
+msgid "Control parent-level loading semantics without touching decorative skeleton shapes."
+msgstr "装飾的なスケルトンの形状に触れずに、親レベルの読み込みセマンティクスを制御します。"
+
+msgctxt "docs.api:prose"
+msgid "Pre-rendered announcement elements must be outside the busy content region."
+msgstr "事前にレンダリングされたアナウンス要素は、ビジーなコンテンツ領域の外に配置する必要があります。"
+
+msgctxt "docs.api:prose"
+msgid "State update sent to an auto-registered skeleton loading region."
+msgstr "状態の更新が自動登録されたスケルトン読み込み領域に送信されました。"
+
+msgctxt "docs.api:prose"
+msgid "The generated Swift uses UIKit and targets iOS. `mise run verify:swift:syntax` only parses its\nsource; `mise run verify:swift:host` needs full Xcode and the iOS Simulator SDK to type-check it."
+msgstr "生成された Swift は UIKit を使用し、iOS をターゲットにしています。`mise run verify:swift:syntax` はその\nソースを解析するだけです; `mise run verify:swift:host` が型チェックするにはフルの Xcode と iOS Simulator SDK が必要です。"
+
+msgctxt "docs.api:prose"
+msgid "Build segmented-control CSS, replacing the component prefix sentinel."
+msgstr "segmented-control CSS をビルドし、コンポーネントプレフィックスセンチネルを置き換えます."
+
+msgctxt "docs.api:prose"
+msgid "Build the skeleton loader CSS, replacing the component prefix sentinel."
+msgstr "コンポーネント接頭辞のセントネルを置き換えて、スケルトンローダーのCSSを作成する。"
+
+msgctxt "docs.api:prose"
+msgid "`@pantoken/bootstrap` — theme Bootstrap 5.2+ body variables and primary buttons with Instructure tokens."
+msgstr "`@pantoken/bootstrap` — テーマ。Bootstrap 5.2+ のボディ変数と Instructure トークンを使用したプライマリボタン。"
+
+msgctxt "docs.api:prose"
+msgid "Points body and primary-button `--bs-*` CSS variables at `var(--instui-*)`. Load it after\nBootstrap and `@pantoken/css`; other component variants retain their Bootstrap defaults."
+msgstr "ボディとプライマリボタンの `--bs-*` CSS 変数を `var(--instui-*)` に設定します。\nBootstrap と `@pantoken/css` の後に読み込んでください; 他のコンポーネントのバリアントは Bootstrap の既定値を保持します。"
+
+msgctxt "docs.api:prose"
+msgid "Emit the Foundation Sass settings override. Import it before Foundation itself and\n`@include foundation-everything` so its palette is available to Sass."
+msgstr "Foundation Sass 設定のオーバーライドを出力します。Foundation 本体および\n`@include foundation-everything` の前にこれをインポートして、そのパレットが Sass で利用できるようにします。"
+
+msgctxt "docs.api:prose"
+msgid "`@pantoken/foundation` — theme Foundation for Sites Sass output and common CSS classes."
+msgstr "`@pantoken/foundation` — Foundation for Sites の Sass 出力と共通 CSS クラスのテーマ。"
+
+msgctxt "docs.api:prose"
+msgid "Foundation is Sass-first, so this package ships two layers. [toFoundationSettings](functions/toFoundationSettings.md) emits a\n`_settings`-style Sass partial with concrete light-mode rebrand values so Foundation's colour functions can\ncompile. [toFoundationCss](functions/toFoundationCss.md) emits a thin variable-backed CSS overlay that themes the common compiled\nclasses (`.button`, `.callout`, links) the same way — useful when you consume stock Foundation CSS\nand just want to layer Instructure colors on top without recompiling."
+msgstr "Foundation は Sass を第一に設計しているため、このパッケージは 2 層を提供します。 [toFoundationSettings](functions/toFoundationSettings.md) は具体的なライトモードのリブランド値を含む a\n`_settings`スタイルの Sass パーシャルを出力し、Foundation のカラーファンクションが\nコンパイルできるようにします。 [toFoundationCss](functions/toFoundationCss.md) は薄い変数ベースの CSS オーバーレイを出力して、共通のコンパイル済み\nクラス（`.button`, `.callout`, links)を同様に）にテーマを適用します — ストックの Foundation CSS\nを利用し、再コンパイルせずに Instructure の色を上から重ねたい場合に便利です。"
+
+msgctxt "docs.api:prose"
+msgid "Registration and shadow output are environment-verified with Happy DOM; real-browser behavior is\nnot covered by that check."
+msgstr "登録とシャドウ出力は Happy DOM によって環境で検証されています; 実際のブラウザでの挙動は\nその検査では対象外です。"
+
+msgctxt "docs.api:prose"
+msgid "Browser script URLs to load after the example markup (interaction bundles, when needed)."
+msgstr "例のマークアップの後に読み込むブラウザスクリプトのURL（必要な場合のインタラクションバンドル)."
+
+msgctxt "docs.api:text"
+msgid "EmailCssOptions"
+msgstr "EmailCssOptions"
+
+msgctxt "docs.api:text"
+msgid "InlineEmailHtmlOptions"
+msgstr "InlineEmailHtmlOptions"
+
+msgctxt "docs.api:text"
+msgid "EmailClient"
+msgstr "EmailClient"
+
+msgctxt "docs.api:text"
+msgid "light"
+msgstr "light"
+
+msgctxt "docs.api:text"
+msgid "inlineEmailHtml"
+msgstr "inlineEmailHtml"
+
+msgctxt "docs.api:text"
+msgid "GlyphSyncTarget"
+msgstr "GlyphSyncTarget"
+
+msgctxt "docs.api:text"
+msgid "PRODUCT_LABELS"
+msgstr "PRODUCT_LABELS"
+
+msgctxt "docs.api:text"
+msgid "retargetContentStylesheets"
+msgstr "retargetContentStylesheets"
+
+msgctxt "docs.api:text"
+msgid "normalizeGlyphHtml"
+msgstr "normalizeGlyphHtml"
+
+msgctxt "docs.api:text"
+msgid "injectUsedGlyphAssets"
+msgstr "injectUsedGlyphAssets"
+
+msgctxt "docs.api:text"
+msgid "registerGlyphSync"
+msgstr "registerGlyphSync"
+
+msgctxt "docs.api:text"
+msgid "logoVariantLabel"
+msgstr "logoVariantLabel"
+
+msgctxt "docs.api:text"
+msgid "filterLogos"
+msgstr "filterLogos"
+
+msgctxt "docs.api:text"
+msgid "getLogoCdnFile"
+msgstr "getLogoCdnFile"
+
+msgctxt "docs.api:text"
+msgid "buildLogoMarkup"
+msgstr "buildLogoMarkup"
+
+msgctxt "docs.api:text"
+msgid "getUsedLogoCdnFiles"
+msgstr "getUsedLogoCdnFiles"
+
+msgctxt "docs.api:text"
+msgid "modifyExpression"
+msgstr "modifyExpression"
+
+msgctxt "docs.api:text"
+msgid "inline-styles"
+msgstr "inline-styles"
+
+msgctxt "docs.api:text"
+msgid "InlineHtmlOptions"
+msgstr "InlineHtmlOptions"
+
+msgctxt "docs.api:text"
+msgid "inlineHtml"
+msgstr "inlineHtml"
+
+msgctxt "docs.api:text"
+msgid "InPlaceEditOptions"
+msgstr "InPlaceEditOptions"
+
+msgctxt "docs.api:text"
+msgid "SegmentedControlOptions"
+msgstr "SegmentedControlOptions"
+
+msgctxt "docs.api:text"
+msgid "SegmentedControlHandle"
+msgstr "SegmentedControlHandle"
+
+msgctxt "docs.api:text"
+msgid "SkeletonLoadingState"
+msgstr "SkeletonLoadingState"
+
+msgctxt "docs.api:text"
+msgid "SkeletonLoadingOptions"
+msgstr "SkeletonLoadingOptions"
+
+msgctxt "docs.api:text"
+msgid "SkeletonLoadingHandle"
+msgstr "SkeletonLoadingHandle"
+
+msgctxt "docs.api:text"
+msgid "InPlaceEditInputType"
+msgstr "InPlaceEditInputType"
+
+msgctxt "docs.api:text"
+msgid "initSegmentedControl"
+msgstr "initSegmentedControl"
+
+msgctxt "docs.api:text"
+msgid "initSkeletonLoading"
+msgstr "initSkeletonLoading"
+
+msgctxt "docs.api:text"
+msgid "buttonSetRules"
+msgstr "buttonSetRules"
+
+msgctxt "docs.api:text"
+msgid "logoRules"
+msgstr "logoRules"
+
+msgctxt "docs.api:text"
+msgid "segmentedControlRules"
+msgstr "segmentedControlRules"
+
+msgctxt "docs.api:text"
+msgid "skeletonLoaderRules"
+msgstr "skeletonLoaderRules"
+
+msgctxt "docs.api:text"
+msgid "breakpointDeclarations"
+msgstr "breakpointDeclarations"
+
+msgctxt "docs.api:text"
+msgid "ReferenceCurve"
+msgstr "ReferenceCurve"
+
+msgctxt "docs.api:text"
+msgid "CustomColorScale"
+msgstr "CustomColorScale"
+
+msgctxt "docs.api:text"
+msgid "CustomColorCssOptions"
+msgstr "CustomColorCssOptions"
+
+msgctxt "docs.api:text"
+msgid "CUSTOM_COLOR_KEY"
+msgstr "CUSTOM_COLOR_KEY"
+
+msgctxt "docs.api:text"
+msgid "isHexColor"
+msgstr "isHexColor"
+
+msgctxt "docs.api:text"
+msgid "deriveScale"
+msgstr "deriveScale"
+
+msgctxt "docs.api:text"
+msgid "customColorReferenceCurve"
+msgstr "customColorReferenceCurve"
+
+msgctxt "docs.api:text"
+msgid "deriveCustomColorScale"
+msgstr "deriveCustomColorScale"
+
+msgctxt "docs.api:text"
+msgid "customColorCss"
+msgstr "customColorCss"
+
+msgctxt "docs.api:text"
+msgid "customColorRemapCss"
+msgstr "customColorRemapCss"
+
+msgctxt "docs.api:text"
+msgid "button-set"
+msgstr "button-set"
+
+msgctxt "docs.api:text"
+msgid "day"
+msgstr "day"
+
+msgctxt "docs.api:text"
+msgid "segmented-control"
+msgstr "segmented-control"
+
+msgctxt "docs.api:text"
+msgid "segment"
+msgstr "segment"
+
+msgctxt "docs.api:text"
+msgid "skeleton-loader"
+msgstr "skeleton-loader"
+
+msgctxt "docs.api:text"
+msgid "logo"
+msgstr "logo"
+
+msgctxt "docs.api:text"
+msgid "breakpoints"
+msgstr "breakpoints"

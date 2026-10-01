@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: pantoken\n"
-"PO-Revision-Date: 2026-09-28 16:31+0000\n"
+"PO-Revision-Date: 2026-10-01 04:47+0000\n"
 "Last-Translator: pantoken localization engine\n"
 "Language-Team: pantoken\n"
 "MIME-Version: 1.0\n"
@@ -1644,7 +1644,7 @@ msgstr "Sahkan"
 #, fuzzy, no-c-format
 msgctxt "docs.api:prose"
 msgid "Day"
-msgstr "day"
+msgstr "Hari"
 
 #: css/button-set.md
 #, fuzzy, no-c-format
@@ -14470,7 +14470,7 @@ msgstr "Terbitkan skala primitif `custom` daripada hex jenama. Input dipasakkan 
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "The [CustomColorScale](../interfaces/CustomColorScale.md)."
-msgstr "The [CustomColorScale](../interfaces/CustomColorScale.md)."
+msgstr "Skala Warna Tersuai [CustomColorScale](../interfaces/CustomColorScale.md)."
 
 #: plugins/pantoken/custom-theme-colors/src/functions/deriveScale.md
 #, no-c-format
@@ -30506,3 +30506,415 @@ msgstr "Butang \"view fullscreen\" yang boleh di-hover, dilapiskan pada bingkai 
 #~ msgctxt "docs.api:text"
 #~ msgid "ai-gradient"
 #~ msgstr "ai-gradient"
+
+msgctxt "docs.api:prose"
+msgid "Every token is exposed as a `var(--instui-*)` reference (not a concrete value), so Tailwind\nutilities like `bg-background-base` theme through the same CSS custom properties that\n`@pantoken/css` emits — light/dark and high-contrast all keep working."
+msgstr "Setiap token didedahkan sebagai `var(--instui-*)` rujukan (bukan nilai konkrit)), jadi utiliti Tailwind\n seperti `bg-background-base` menggunakan tema melalui sifat tersuai CSS yang sama yang\n`@pantoken/css` keluarkan — mod terang/gelap dan kontras tinggi semuanya terus berfungsi."
+
+msgctxt "docs.api:prose"
+msgid "A single-select row of compact view or filter options."
+msgstr "Baris pilihan pemilihan tunggal untuk pilihan paparan kompak atau penapis."
+
+msgctxt "docs.api:prose"
+msgid "A selectable segmented-control label and its native radio input."
+msgstr "Label kawalan bersegmen yang boleh dipilih dan input radio natifnya."
+
+msgctxt "docs.api:prose"
+msgid "Decorative placeholder for content that has not loaded yet."
+msgstr "Penanda tempat hiasan untuk kandungan yang belum dimuatkan lagi."
+
+msgctxt "docs.api:prose"
+msgid "`.instui-segmented-control` — A single-select row of compact view or filter options."
+msgstr "`.instui-segmented-control` — Baris pilihan satu-pilih bagi paparan padat atau pilihan penapis."
+
+msgctxt "docs.api:prose"
+msgid "The selected segment uses a distinct active-item shadow; it does not match an existing\n  --instui-elevation-* composite. Overflow buttons use the upstream elevation3 component tokens."
+msgstr "Segmen yang dipilih menggunakan bayang item-aktif yang berbeza; ia tidak sepadan dengan komposit\n  --instui-elevation-*. Butang limpahan menggunakan token komponen elevation3 hulu."
+
+msgctxt "docs.api:prose"
+msgid "Use a labelled fieldset and one shared radio name with a checked default. Native radios\n  announce their checked state; overflow buttons need labels describing their scroll direction."
+msgstr "Gunakan fieldset berlabel dan satu nama radio dikongsi dengan lalai bertanda. Radio asli\n  mengumumkan keadaan bertanda mereka; butang limpahan memerlukan label yang menerangkan arah tatal mereka."
+
+msgctxt "docs.api:prose"
+msgid "Config"
+msgstr "Konfigurasi"
+
+msgctxt "docs.api:prose"
+msgid "Utilities"
+msgstr "Utiliti"
+
+msgctxt "docs.api:prose"
+msgid "Preferences"
+msgstr "Keutamaan"
+
+msgctxt "docs.api:prose"
+msgid "Feature flags"
+msgstr "Bendera ciri"
+
+msgctxt "docs.api:prose"
+msgid "Large segments."
+msgstr "Segmen besar."
+
+msgctxt "docs.api:prose"
+msgid "Medium segments (default)."
+msgstr "Segmen sederhana (lalai)."
+
+msgctxt "docs.api:prose"
+msgid "Small segments."
+msgstr "Segmen kecil."
+
+msgctxt "docs.api:prose"
+msgid "Scroll to the following hidden segment."
+msgstr "Tatal ke segmen tersembunyi berikut."
+
+msgctxt "docs.api:prose"
+msgid "Scroll to the preceding hidden segment."
+msgstr "Tatal ke segmen tersembunyi sebelumnya."
+
+msgctxt "docs.api:prose"
+msgid "Scrollable row containing the selectable segments."
+msgstr "Baris boleh tatal yang mengandungi segmen boleh dipilih."
+
+msgctxt "docs.api:prose"
+msgid "Clips the segment row and anchors the overflow controls."
+msgstr "Memotong baris segmen dan menambat kawalan limpahan."
+
+msgctxt "docs.api:prose"
+msgid "`.instui-segmented-control` — A selectable segmented-control label and its native radio input."
+msgstr "`.instui-segmented-control` — Label kawalan bersegmen yang boleh dipilih dan input radio asli padanya."
+
+msgctxt "docs.api:prose"
+msgid "A `-icon-*` class may live on the label or its native input; the interaction helper\n  promotes input classes to the label so the shared glyph painter can render it."
+msgstr "Kelas `-icon-*` boleh wujud pada label atau pada input asli; pembantu interaksi\n  memindahkan kelas input ke label supaya pelukis glif bersama dapat memaparkannya."
+
+msgctxt "docs.api:prose"
+msgid "Keep the native radio in the label so checked, focus, disabled, and keyboard semantics remain available."
+msgstr "Biarkan radio asli dalam label supaya keadaan dipilih, fokus, dilumpuhkan, dan semantik papan kekunci kekal tersedia."
+
+msgctxt "docs.api:prose"
+msgid "`.instui-skeleton-loader` — Decorative placeholder for content that has not loaded yet."
+msgstr "`.instui-skeleton-loader` — Pemegang tempat hiasan untuk kandungan yang belum dimuatkan lagi."
+
+msgctxt "docs.api:prose"
+msgid "Mark the decorative loader aria-hidden=\"true\". Put aria-busy on the parent content region,\n  with an initially empty status and alert outside that region. Use initSkeletonLoading from the\n  interactions package to announce the parent's loading state. Shapes must not receive focus."
+msgstr "Tandakan pemuat hiasan aria-hidden=\"true\". Put aria-busy pada kawasan kandungan induk,\n  dengan status yang pada mulanya kosong dan amaran di luar kawasan tersebut. Gunakan initSkeletonLoading dari the\n  interactions package untuk mengumumkan keadaan pemuatan induk. Bentuk tidak boleh menerima fokus."
+
+msgctxt "docs.api:prose"
+msgid "Large text row."
+msgstr "Baris teks besar."
+
+msgctxt "docs.api:prose"
+msgid "Medium text row (default)."
+msgstr "Baris teks sederhana (lalai)."
+
+msgctxt "docs.api:prose"
+msgid "Small text row."
+msgstr "Baris teks kecil."
+
+msgctxt "docs.api:prose"
+msgid "Extra-large text row."
+msgstr "Baris teks ekstra-besar."
+
+msgctxt "docs.api:prose"
+msgid "Extra-small text row."
+msgstr "Baris teks ekstra-kecil."
+
+msgctxt "docs.api:prose"
+msgid "Largest text row."
+msgstr "Baris teks terbesar."
+
+msgctxt "docs.api:prose"
+msgid "Legend-sized text row."
+msgstr "Baris teks saiz legenda."
+
+msgctxt "docs.api:prose"
+msgid "A round avatar placeholder, medium size only."
+msgstr "Pemegang tempat avatar bulat, saiz sederhana sahaja."
+
+msgctxt "docs.api:prose"
+msgid "An image placeholder, medium size only."
+msgstr "Pemegang tempat imej, saiz sederhana sahaja."
+
+msgctxt "docs.api:prose"
+msgid "A text bar (default)."
+msgstr "Bar teks (lalai)."
+
+msgctxt "docs.api:prose"
+msgid "The clipped placeholder surface sized for the selected loader type."
+msgstr "Permukaan pemegang tempat yang dipotong bersaiz untuk jenis pemuat yang dipilih."
+
+msgctxt "docs.api:prose"
+msgid "A repeated text-row wrapper that applies vertical spacing."
+msgstr "Pembalut baris-teks berulang yang menerapkan jarak menegak."
+
+msgctxt "docs.api:prose"
+msgid "Enhance a labelled native radio group with keyboard navigation and optional overflow controls."
+msgstr "Tingkatkan kumpulan radio natif yang berlabel dengan navigasi papan kekunci dan kawalan lebihan pilihan."
+
+msgctxt "docs.api:prose"
+msgid "Bind the parent content region to SSR-provided status and error announcements."
+msgstr "Pautkan kawasan kandungan induk kepada pengumuman status dan ralat yang disediakan oleh SSR."
+
+msgctxt "docs.api:prose"
+msgid "Detach the segmented-control listeners and observers."
+msgstr "Lepaskan pendengar dan pemerhati segmented-control."
+
+msgctxt "docs.api:prose"
+msgid "Segmented control options; the medium size is the CSS default."
+msgstr "Pilihan kawalan bersegmen; saiz sederhana adalah lalai CSS."
+
+msgctxt "docs.api:prose"
+msgid "Control parent-level loading semantics without touching decorative skeleton shapes."
+msgstr "Kawal semantik pemuatan peringkat induk tanpa menyentuh bentuk rangka hiasan."
+
+msgctxt "docs.api:prose"
+msgid "Pre-rendered announcement elements must be outside the busy content region."
+msgstr "Elemen pengumuman yang dirender terlebih dahulu mestilah berada di luar kawasan kandungan yang sibuk."
+
+msgctxt "docs.api:prose"
+msgid "State update sent to an auto-registered skeleton loading region."
+msgstr "Kemas kini status dihantar ke kawasan pemuatan rangka yang didaftarkan secara automatik."
+
+msgctxt "docs.api:prose"
+msgid "The generated Swift uses UIKit and targets iOS. `mise run verify:swift:syntax` only parses its\nsource; `mise run verify:swift:host` needs full Xcode and the iOS Simulator SDK to type-check it."
+msgstr "Swift yang dijana menggunakan UIKit dan mensasarkan iOS. `mise run verify:swift:syntax` hanya mengurai nya\nsumber; `mise run verify:swift:host` memerlukan Xcode penuh dan SDK iOS Simulator untuk memeriksa jenisnya."
+
+msgctxt "docs.api:prose"
+msgid "Build segmented-control CSS, replacing the component prefix sentinel."
+msgstr "Bina CSS untuk segmented-control, menggantikan sentinel awalan komponen."
+
+msgctxt "docs.api:prose"
+msgid "Build the skeleton loader CSS, replacing the component prefix sentinel."
+msgstr "Bina CSS pemuat rangka, menggantikan penanda awalan komponen."
+
+msgctxt "docs.api:prose"
+msgid "`@pantoken/bootstrap` — theme Bootstrap 5.2+ body variables and primary buttons with Instructure tokens."
+msgstr "`@pantoken/bootstrap` — tema Bootstrap 5.2+ pembolehubah badan dan butang utama dengan token Instructure."
+
+msgctxt "docs.api:prose"
+msgid "Points body and primary-button `--bs-*` CSS variables at `var(--instui-*)`. Load it after\nBootstrap and `@pantoken/css`; other component variants retain their Bootstrap defaults."
+msgstr "Menandakan pembolehubah CSS badan dan butang-utama `--bs-*` di `var(--instui-*)`. Muatkan ia selepas\nBootstrap and `@pantoken/css`; varian komponen lain mengekalkan lalai Bootstrap mereka."
+
+msgctxt "docs.api:prose"
+msgid "Emit the Foundation Sass settings override. Import it before Foundation itself and\n`@include foundation-everything` so its palette is available to Sass."
+msgstr "Terbitkan override tetapan Foundation Sass. Importkannya sebelum Foundation itu sendiri dan\n`@include foundation-everything` supaya paletnya tersedia untuk Sass."
+
+msgctxt "docs.api:prose"
+msgid "`@pantoken/foundation` — theme Foundation for Sites Sass output and common CSS classes."
+msgstr "`@pantoken/foundation` — tema untuk output Sass Foundation for Sites dan kelas CSS biasa."
+
+msgctxt "docs.api:prose"
+msgid "Foundation is Sass-first, so this package ships two layers. [toFoundationSettings](functions/toFoundationSettings.md) emits a\n`_settings`-style Sass partial with concrete light-mode rebrand values so Foundation's colour functions can\ncompile. [toFoundationCss](functions/toFoundationCss.md) emits a thin variable-backed CSS overlay that themes the common compiled\nclasses (`.button`, `.callout`, links) the same way — useful when you consume stock Foundation CSS\nand just want to layer Instructure colors on top without recompiling."
+msgstr "Foundation is Sass-first, so this package ships two layers. [toFoundationSettings](functions/toFoundationSettings.md) emits a\n`_settings`-style Sass partial with concrete light-mode rebrand values so Foundation's colour functions can\ncompile. [toFoundationCss](functions/toFoundationCss.md) emits a thin variable-backed CSS overlay that themes the common compiled\nclasses (`.button`, `.callout`, links) the same way — berguna apabila anda menggunakan CSS Foundation stok dan hanya mahu melapiskan warna Instructure di atas tanpa menyusun semula."
+
+msgctxt "docs.api:prose"
+msgid "Registration and shadow output are environment-verified with Happy DOM; real-browser behavior is\nnot covered by that check."
+msgstr "Pendaftaran dan keluaran bayangan disahkan dalam persekitaran dengan Happy DOM; kelakuan pelayar sebenar adalah\ntidak diliputi oleh pemeriksaan itu."
+
+msgctxt "docs.api:prose"
+msgid "Browser script URLs to load after the example markup (interaction bundles, when needed)."
+msgstr "URL skrip penyemak imbas untuk dimuatkan selepas markup contoh (bundel interaksi, jika diperlukan)."
+
+msgctxt "docs.api:text"
+msgid "EmailCssOptions"
+msgstr "EmailCssOptions"
+
+msgctxt "docs.api:text"
+msgid "InlineEmailHtmlOptions"
+msgstr "InlineEmailHtmlOptions"
+
+msgctxt "docs.api:text"
+msgid "EmailClient"
+msgstr "EmailClient"
+
+msgctxt "docs.api:text"
+msgid "light"
+msgstr "light"
+
+msgctxt "docs.api:text"
+msgid "inlineEmailHtml"
+msgstr "inlineEmailHtml"
+
+msgctxt "docs.api:text"
+msgid "GlyphSyncTarget"
+msgstr "GlyphSyncTarget"
+
+msgctxt "docs.api:text"
+msgid "PRODUCT_LABELS"
+msgstr "PRODUCT_LABELS"
+
+msgctxt "docs.api:text"
+msgid "retargetContentStylesheets"
+msgstr "retargetContentStylesheets"
+
+msgctxt "docs.api:text"
+msgid "normalizeGlyphHtml"
+msgstr "normalizeGlyphHtml"
+
+msgctxt "docs.api:text"
+msgid "injectUsedGlyphAssets"
+msgstr "injectUsedGlyphAssets"
+
+msgctxt "docs.api:text"
+msgid "registerGlyphSync"
+msgstr "registerGlyphSync"
+
+msgctxt "docs.api:text"
+msgid "logoVariantLabel"
+msgstr "logoVariantLabel"
+
+msgctxt "docs.api:text"
+msgid "filterLogos"
+msgstr "filterLogos"
+
+msgctxt "docs.api:text"
+msgid "getLogoCdnFile"
+msgstr "getLogoCdnFile"
+
+msgctxt "docs.api:text"
+msgid "buildLogoMarkup"
+msgstr "buildLogoMarkup"
+
+msgctxt "docs.api:text"
+msgid "getUsedLogoCdnFiles"
+msgstr "getUsedLogoCdnFiles"
+
+msgctxt "docs.api:text"
+msgid "modifyExpression"
+msgstr "modifyExpression"
+
+msgctxt "docs.api:text"
+msgid "inline-styles"
+msgstr "inline-styles"
+
+msgctxt "docs.api:text"
+msgid "InlineHtmlOptions"
+msgstr "InlineHtmlOptions"
+
+msgctxt "docs.api:text"
+msgid "inlineHtml"
+msgstr "inlineHtml"
+
+msgctxt "docs.api:text"
+msgid "InPlaceEditOptions"
+msgstr "InPlaceEditOptions"
+
+msgctxt "docs.api:text"
+msgid "SegmentedControlOptions"
+msgstr "SegmentedControlOptions"
+
+msgctxt "docs.api:text"
+msgid "SegmentedControlHandle"
+msgstr "SegmentedControlHandle"
+
+msgctxt "docs.api:text"
+msgid "SkeletonLoadingState"
+msgstr "SkeletonLoadingState"
+
+msgctxt "docs.api:text"
+msgid "SkeletonLoadingOptions"
+msgstr "SkeletonLoadingOptions"
+
+msgctxt "docs.api:text"
+msgid "SkeletonLoadingHandle"
+msgstr "SkeletonLoadingHandle"
+
+msgctxt "docs.api:text"
+msgid "InPlaceEditInputType"
+msgstr "InPlaceEditInputType"
+
+msgctxt "docs.api:text"
+msgid "initSegmentedControl"
+msgstr "initSegmentedControl"
+
+msgctxt "docs.api:text"
+msgid "initSkeletonLoading"
+msgstr "initSkeletonLoading"
+
+msgctxt "docs.api:text"
+msgid "buttonSetRules"
+msgstr "buttonSetRules"
+
+msgctxt "docs.api:text"
+msgid "logoRules"
+msgstr "logoRules"
+
+msgctxt "docs.api:text"
+msgid "segmentedControlRules"
+msgstr "segmentedControlRules"
+
+msgctxt "docs.api:text"
+msgid "skeletonLoaderRules"
+msgstr "skeletonLoaderRules"
+
+msgctxt "docs.api:text"
+msgid "breakpointDeclarations"
+msgstr "breakpointDeclarations"
+
+msgctxt "docs.api:text"
+msgid "ReferenceCurve"
+msgstr "ReferenceCurve"
+
+msgctxt "docs.api:text"
+msgid "CustomColorScale"
+msgstr "CustomColorScale"
+
+msgctxt "docs.api:text"
+msgid "CustomColorCssOptions"
+msgstr "CustomColorCssOptions"
+
+msgctxt "docs.api:text"
+msgid "CUSTOM_COLOR_KEY"
+msgstr "CUSTOM_COLOR_KEY"
+
+msgctxt "docs.api:text"
+msgid "isHexColor"
+msgstr "isHexColor"
+
+msgctxt "docs.api:text"
+msgid "deriveScale"
+msgstr "deriveScale"
+
+msgctxt "docs.api:text"
+msgid "customColorReferenceCurve"
+msgstr "customColorReferenceCurve"
+
+msgctxt "docs.api:text"
+msgid "deriveCustomColorScale"
+msgstr "deriveCustomColorScale"
+
+msgctxt "docs.api:text"
+msgid "customColorCss"
+msgstr "customColorCss"
+
+msgctxt "docs.api:text"
+msgid "customColorRemapCss"
+msgstr "customColorRemapCss"
+
+msgctxt "docs.api:text"
+msgid "button-set"
+msgstr "button-set"
+
+msgctxt "docs.api:text"
+msgid "day"
+msgstr "day"
+
+msgctxt "docs.api:text"
+msgid "segmented-control"
+msgstr "segmented-control"
+
+msgctxt "docs.api:text"
+msgid "segment"
+msgstr "segment"
+
+msgctxt "docs.api:text"
+msgid "skeleton-loader"
+msgstr "skeleton-loader"
+
+msgctxt "docs.api:text"
+msgid "logo"
+msgstr "logo"
+
+msgctxt "docs.api:text"
+msgid "breakpoints"
+msgstr "breakpoints"

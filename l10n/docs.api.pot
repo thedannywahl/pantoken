@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: pantoken\n"
-"PO-Revision-Date: 2026-10-01 01:26+0000\n"
+"PO-Revision-Date: 2026-10-01 02:07+0000\n"
 "Last-Translator: pantoken localization engine\n"
 "Language-Team: pantoken\n"
 "MIME-Version: 1.0\n"
@@ -206,12 +206,6 @@ msgstr ""
 #: bundlers/next/src/index.md
 #, no-c-format
 msgctxt "docs.api:prose"
-msgid "Target: Next.js. Current format: `Production build transpiling and rendering Instructure UI 11.7.7 with React 19.3.0`. Minimum host version: `16.0.0`. Tested through `16.3.8`. Newer releases require review."
-msgstr ""
-
-#: bundlers/next/src/index.md
-#, no-c-format
-msgctxt "docs.api:prose"
 msgid "`@pantoken/next` — a Next.js config adapter."
 msgstr ""
 
@@ -319,12 +313,6 @@ msgstr ""
 #: bundlers/panda/src/index.md
 #, no-c-format
 msgctxt "docs.api:prose"
-msgid "Target: Panda CSS. Current format: `Panda token utility extraction from the Pantoken preset`. Minimum host version: `1.12.1`. Tested through `2.0.0`. Newer releases require review."
-msgstr ""
-
-#: bundlers/panda/src/index.md
-#, no-c-format
-msgctxt "docs.api:prose"
 msgid "`@pantoken/panda` — an Instructure design-token preset for Panda CSS."
 msgstr ""
 
@@ -380,12 +368,6 @@ msgstr ""
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "**Spread it into panda.config.ts**"
-msgstr ""
-
-#: bundlers/postcss/src/index.md
-#, no-c-format
-msgctxt "docs.api:prose"
-msgid "Target: PostCSS. Minimum host version: `8.0.0`. Tested through `8.5.28`. Newer releases require review."
 msgstr ""
 
 #: bundlers/postcss/src/index.md
@@ -485,12 +467,6 @@ msgstr ""
 #: bundlers/tailwind/src/index.md
 #, no-c-format
 msgctxt "docs.api:prose"
-msgid "Target: Tailwind CSS. Minimum host version: `4.0.17`. Tested through `4.3.3`. Newer releases require review."
-msgstr ""
-
-#: bundlers/tailwind/src/index.md
-#, no-c-format
-msgctxt "docs.api:prose"
 msgid "`@pantoken/tailwind` — a Tailwind CSS preset that maps Instructure design tokens into the theme."
 msgstr ""
 
@@ -557,12 +533,6 @@ msgstr ""
 #: bundlers/vite/src/index.md
 #, no-c-format
 msgctxt "docs.api:prose"
-msgid "Target: Vite. Minimum host version: `8.0.0`. Tested through `8.3.1`. Newer releases require review."
-msgstr ""
-
-#: bundlers/vite/src/index.md
-#, no-c-format
-msgctxt "docs.api:prose"
 msgid "`@pantoken/vite` — a Vite plugin for pantoken."
 msgstr ""
 
@@ -612,12 +582,6 @@ msgstr ""
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "**Rename the emitted asset**"
-msgstr ""
-
-#: bundlers/webpack/src/index.md
-#, no-c-format
-msgctxt "docs.api:prose"
-msgid "Target: webpack. Current format: `Emitted token CSS build asset`. Minimum host version: `5.61.0`. Tested through `5.111.1`. Newer releases require review."
 msgstr ""
 
 #: bundlers/webpack/src/index.md
@@ -7283,12 +7247,6 @@ msgid "Use a labelled fieldset and one shared radio name with a checked default.
 msgstr ""
 
 #: css/segmented-control.md
-#, no-c-format
-msgctxt "docs.api:prose"
-msgid "@import \"@pantoken/plugin-custom-components/segmented-control.css\";"
-msgstr ""
-
-#: css/segmented-control.md
 #: css/side-nav-bar.md
 #: renderers/web-components/src/variables/drilldown.md
 #, no-c-format
@@ -7355,6 +7313,18 @@ msgstr ""
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "Scroll to the preceding hidden segment."
+msgstr ""
+
+#: css/segmented-control.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Scrollable row containing the selectable segments."
+msgstr ""
+
+#: css/segmented-control.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Clips the segment row and anchors the overflow controls."
 msgstr ""
 
 #: css/segmented-control.segment.md
@@ -13723,12 +13693,6 @@ msgstr ""
 #: platforms/android/src/index.md
 #, no-c-format
 msgctxt "docs.api:prose"
-msgid "Target: Android resources. Current format: `Generated colors, dimensions, and VectorDrawable compile and link with Android build-tools`. Minimum host version: `API 35 / build-tools 35.0.0`. Tested through `API 35 / build-tools 35.0.0`. Newer releases require review."
-msgstr ""
-
-#: platforms/android/src/index.md
-#, no-c-format
-msgctxt "docs.api:prose"
 msgid "`@pantoken/android` — emit Instructure design tokens as Android resource XML."
 msgstr ""
 
@@ -13799,12 +13763,6 @@ msgstr ""
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "The component-style sheets for a given theme/mode pair (token sheet plus the constant set)."
-msgstr ""
-
-#: platforms/canvas-theme-editor/src/index.md
-#, no-c-format
-msgctxt "docs.api:prose"
-msgid "Target: Canvas Theme Editor. Host compatibility has not yet been verified."
 msgstr ""
 
 #: platforms/canvas-theme-editor/src/index.md
@@ -14020,12 +13978,6 @@ msgstr ""
 #: platforms/compose/src/index.md
 #, no-c-format
 msgctxt "docs.api:prose"
-msgid "Target: Jetpack Compose. Current format: `Generated Color and Dp token object compiles in an Android library module`. Minimum host version: `Kotlin 2.1.10 / Compose UI 1.8.2 / Android API 35`. Tested through `Kotlin 2.1.10 / Compose UI 1.8.2 / Android API 35`. Newer releases require review."
-msgstr ""
-
-#: platforms/compose/src/index.md
-#, no-c-format
-msgctxt "docs.api:prose"
 msgid "`@pantoken/compose` — emit Instructure design tokens as Jetpack Compose (Kotlin), via Style\nDictionary. It flattens the IR to concrete, single-mode values and keeps the natively-typed\ntokens (colours, dimensions, numbers)."
 msgstr ""
 
@@ -14080,12 +14032,6 @@ msgstr ""
 #: platforms/drupal/src/index.md
 #, no-c-format
 msgctxt "docs.api:prose"
-msgid "Target: Drupal themes. Current format: `Drupal core discovers generated theme; InfoParser and Symfony YAML accept metadata`. Minimum host version: `10.6.18`. Tested through `11.3.2`. Newer releases require review."
-msgstr ""
-
-#: platforms/drupal/src/index.md
-#, no-c-format
-msgctxt "docs.api:prose"
 msgid "`@pantoken/drupal` — emit an Instructure-themed Drupal sub-theme."
 msgstr ""
 
@@ -14135,12 +14081,6 @@ msgstr ""
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "Inline resolved pantoken tokens and component CSS into HTML email markup."
-msgstr ""
-
-#: platforms/email/src/index.md
-#, no-c-format
-msgctxt "docs.api:prose"
-msgid "Target: HTML email. Host compatibility has not yet been verified."
 msgstr ""
 
 #: platforms/email/src/index.md
@@ -14279,12 +14219,6 @@ msgstr ""
 #: platforms/flutter/src/index.md
 #, no-c-format
 msgctxt "docs.api:prose"
-msgid "Target: Flutter. Host compatibility has not yet been verified."
-msgstr ""
-
-#: platforms/flutter/src/index.md
-#, no-c-format
-msgctxt "docs.api:prose"
 msgid "`@pantoken/flutter` — emit Instructure design tokens as Flutter (Dart), via Style Dictionary. It\nflattens the IR to concrete, single-mode values and keeps the natively-typed tokens."
 msgstr ""
 
@@ -14334,12 +14268,6 @@ msgstr ""
 #: platforms/hugo/src/index.md
 #, no-c-format
 msgctxt "docs.api:prose"
-msgid "Target: Hugo. Current format: `Hugo Pipes builds the Pantoken token stylesheet`. Minimum host version: `0.165.0`. Tested through `0.165.0`. Newer releases require review."
-msgstr ""
-
-#: platforms/hugo/src/index.md
-#, no-c-format
-msgctxt "docs.api:prose"
 msgid "`@pantoken/hugo` — emit the Instructure token stylesheet for a Hugo site."
 msgstr ""
 
@@ -14366,12 +14294,6 @@ msgstr ""
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "The Sass partial (`_sass/pantoken.scss`), the plain stylesheet\n(`assets/css/pantoken.css`), and the prose stylesheet (`assets/css/pantoken-prose.css`)."
-msgstr ""
-
-#: platforms/jekyll/src/index.md
-#, no-c-format
-msgctxt "docs.api:prose"
-msgid "Target: Jekyll. Current format: `Jekyll builds the generated Sass partial into site CSS`. Minimum host version: `4.4.1`. Tested through `4.4.1`. Newer releases require review."
 msgstr ""
 
 #: platforms/jekyll/src/index.md
@@ -14414,12 +14336,6 @@ msgstr ""
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "**iced (Color), dark mode**"
-msgstr ""
-
-#: platforms/rust/src/index.md
-#, no-c-format
-msgctxt "docs.api:prose"
-msgid "Target: Rust GUI frameworks. Current format: `Generated egui Color32 accessors and iced_core Color constants compile with the Rust toolchain`. Minimum host version: `1.95.0`. Tested through `1.95.0`. Newer releases require review."
 msgstr ""
 
 #: platforms/rust/src/index.md
@@ -14481,12 +14397,6 @@ msgstr ""
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "**Dark mode with a custom class name and an asset catalog**"
-msgstr ""
-
-#: platforms/swift/src/index.md
-#, no-c-format
-msgctxt "docs.api:prose"
-msgid "Target: Swift iOS. Current format: `UIKit SwiftPM module, runtime token check, and compiled Icons.xcassets`. Tested environment: `Xcode 27.0 (27A266a), Swift 6.4, iOS Simulator SDK/runtime 27.0, iPhone 18 Pro, arm64 iOS 15 deployment target`. Runtime tested only on iOS Simulator 27.0; this does not establish an iOS 15 runtime floor. No watchOS or tvOS claim."
 msgstr ""
 
 #: platforms/swift/src/index.md
@@ -14558,12 +14468,6 @@ msgstr ""
 #: platforms/vanilla/src/index.md
 #, no-c-format
 msgctxt "docs.api:prose"
-msgid "Target: Vanilla Forums. Host compatibility has not yet been verified."
-msgstr ""
-
-#: platforms/vanilla/src/index.md
-#, no-c-format
-msgctxt "docs.api:prose"
 msgid "`@pantoken/vanilla` — Instructure design tokens as a Vanilla Forums Foundation `variables.json`."
 msgstr ""
 
@@ -14625,12 +14529,6 @@ msgstr ""
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "**Convert an IR to a light-mode theme.json**"
-msgstr ""
-
-#: platforms/wordpress/src/index.md
-#, no-c-format
-msgctxt "docs.api:prose"
-msgid "Target: WordPress block themes. Current format: `theme.json v3`. Minimum host version: `6.6`. Tested through `7.1.2`. Newer releases require review."
 msgstr ""
 
 #: platforms/wordpress/src/index.md
@@ -16875,12 +16773,6 @@ msgstr ""
 #: renderers/angular/src/index.md
 #, no-c-format
 msgctxt "docs.api:prose"
-msgid "Target: Angular. Current format: `CUSTOM_ELEMENTS_SCHEMA template compilation (Angular 16.2.12 / TS 5.1.6; Angular 22.2.0 / TS 6.0.3)`. Minimum host version: `16.2.12`. Tested through `22.2.0`. Newer releases require review."
-msgstr ""
-
-#: renderers/angular/src/index.md
-#, no-c-format
-msgctxt "docs.api:prose"
 msgid "`@pantoken/angular` — Angular helpers over `@pantoken/web-components`."
 msgstr ""
 
@@ -16912,12 +16804,6 @@ msgstr ""
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "Build the pantoken stylesheet for a theme (with optional plugin CSS). Exposed for direct use."
-msgstr ""
-
-#: renderers/astro/src/index.md
-#, no-c-format
-msgctxt "docs.api:prose"
-msgid "Target: Astro / Starlight. Current format: `Built Starlight page with injected token stylesheet (Astro 5 and 7)`. Minimum host version: `0.35.0`. Tested through `0.42.4`. Newer releases require review."
 msgstr ""
 
 #: renderers/astro/src/index.md
@@ -16986,12 +16872,6 @@ msgstr ""
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "**Scope to Bootstrap's theme attribute**"
-msgstr ""
-
-#: renderers/bootstrap/src/index.md
-#, no-c-format
-msgctxt "docs.api:prose"
-msgid "Target: Bootstrap. Current format: `CSS variables: body + primary button`. Minimum host version: `5.2.0`. Tested through `5.3.8`. Newer releases require review."
 msgstr ""
 
 #: renderers/bootstrap/src/index.md
@@ -17074,12 +16954,6 @@ msgstr ""
 #: renderers/css-in-js/src/index.md
 #, no-c-format
 msgctxt "docs.api:prose"
-msgid "Target: Emotion CSS-in-JS. Current format: `ThemeProvider SSR emits the Pantoken token variable`. Minimum host version: `11.14.0`. Tested through `11.14.0`. Newer releases require review."
-msgstr ""
-
-#: renderers/css-in-js/src/index.md
-#, no-c-format
-msgctxt "docs.api:prose"
 msgid "`@pantoken/css-in-js` — an Instructure theme object for runtime CSS-in-JS libraries."
 msgstr ""
 
@@ -17129,12 +17003,6 @@ msgstr ""
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "Emit the Infima → Instructure CSS-variable bridge."
-msgstr ""
-
-#: renderers/docusaurus/src/index.md
-#, no-c-format
-msgctxt "docs.api:prose"
-msgid "Target: Docusaurus theme-classic. Current format: `Infima CSS-variable bridge: primary and background`. Minimum host version: `3.0.0`. Tested through `3.10.2`. Newer releases require review."
 msgstr ""
 
 #: renderers/docusaurus/src/index.md
@@ -17201,12 +17069,6 @@ msgstr ""
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "**Let consumer settings still win**"
-msgstr ""
-
-#: renderers/foundation/src/index.md
-#, no-c-format
-msgctxt "docs.api:prose"
-msgid "Target: Foundation for Sites. Current format: `Concrete Sass settings + variable-backed CSS overlay`. Minimum host version: `6.1.2`. Tested through `6.9.0`. Newer releases require review."
 msgstr ""
 
 #: renderers/foundation/src/index.md
@@ -17287,12 +17149,6 @@ msgstr ""
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "**Compose a brand-icon plugin's resolver**"
-msgstr ""
-
-#: renderers/markdown-it/src/index.md
-#, no-c-format
-msgctxt "docs.api:prose"
-msgid "Target: markdown-it. Minimum host version: `14.0.0`. Tested through `15.0.2`. Newer releases require review."
 msgstr ""
 
 #: renderers/markdown-it/src/index.md
@@ -17382,12 +17238,6 @@ msgstr ""
 #: renderers/mintlify/src/index.md
 #, no-c-format
 msgctxt "docs.api:prose"
-msgid "Target: Mintlify docs.json. Current format: `Official CLI validates generated colors and background theme config`. Minimum host version: `4.0.1555`. Tested through `4.0.1557`. Newer releases require review."
-msgstr ""
-
-#: renderers/mintlify/src/index.md
-#, no-c-format
-msgctxt "docs.api:prose"
 msgid "`@pantoken/mintlify` — theme a Mintlify docs site with Instructure tokens."
 msgstr ""
 
@@ -17466,12 +17316,6 @@ msgstr ""
 #: renderers/mui/src/index.md
 #, no-c-format
 msgctxt "docs.api:prose"
-msgid "Target: Material UI. Current format: `Concrete createTheme palettes (MUI 5, 6, 7, 9)`. Minimum host version: `5.0.0`. Tested through `9.4.0`. Newer releases require review."
-msgstr ""
-
-#: renderers/mui/src/index.md
-#, no-c-format
-msgctxt "docs.api:prose"
 msgid "`@pantoken/mui` — theme MUI (Material UI) with Instructure tokens."
 msgstr ""
 
@@ -17533,12 +17377,6 @@ msgstr ""
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "**Canvas theme, unscoped, keep the full token set**"
-msgstr ""
-
-#: renderers/pendo/src/index.md
-#, no-c-format
-msgctxt "docs.api:prose"
-msgid "Target: Pendo. Host compatibility has not yet been verified."
 msgstr ""
 
 #: renderers/pendo/src/index.md
@@ -17724,12 +17562,6 @@ msgstr ""
 #: renderers/react-markdown/src/index.md
 #, no-c-format
 msgctxt "docs.api:prose"
-msgid "Target: react-markdown. Current format: `SSR-rendered InstUI heading, icon, and color swatch with React 19.3.0`. Minimum host version: `10.1.0`. Tested through `10.1.0`. Newer releases require review."
-msgstr ""
-
-#: renderers/react-markdown/src/index.md
-#, no-c-format
-msgctxt "docs.api:prose"
 msgid "`@pantoken/react-markdown` — render Markdown with Instructure UI components and pantoken icons."
 msgstr ""
 
@@ -17880,12 +17712,6 @@ msgstr ""
 #: renderers/react-native/src/index.md
 #, no-c-format
 msgctxt "docs.api:prose"
-msgid "Target: React Native. Host compatibility has not yet been verified."
-msgstr ""
-
-#: renderers/react-native/src/index.md
-#, no-c-format
-msgctxt "docs.api:prose"
 msgid "`@pantoken/react-native` — Instructure design tokens as React Native `StyleSheet`-friendly\nobjects. React Native has no CSS variables, so tokens are fully resolved to concrete values:\ncolours stay hex strings, dimensions become numbers (dp), and icons are excluded."
 msgstr ""
 
@@ -17929,12 +17755,6 @@ msgstr ""
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "React hook returning a resolved `--instui-*` token value (re-reads on `name` change)."
-msgstr ""
-
-#: renderers/react/src/index.md
-#, no-c-format
-msgctxt "docs.api:prose"
-msgid "Target: React. Current format: `SSR-rendered Icon custom element and token fallback`. Minimum host version: `19.3.0`. Tested through `19.3.0`. Newer releases require review."
 msgstr ""
 
 #: renderers/react/src/index.md
@@ -18003,12 +17823,6 @@ msgstr ""
 #: renderers/rehype/src/index.md
 #, no-c-format
 msgctxt "docs.api:prose"
-msgid "Target: rehype. Current format: `HAST + raw SVG`. Minimum host version: `13.0.0`. Tested through `13.0.2`. Newer releases require review."
-msgstr ""
-
-#: renderers/rehype/src/index.md
-#, no-c-format
-msgctxt "docs.api:prose"
 msgid "`@pantoken/rehype` — render `:icon:` codes as inline SVG."
 msgstr ""
 
@@ -18046,12 +17860,6 @@ msgstr ""
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "Emit Tailwind v4 aliases for the shadcn theme variables and derived radius scale."
-msgstr ""
-
-#: renderers/shadcn/src/index.md
-#, no-c-format
-msgctxt "docs.api:prose"
-msgid "Target: shadcn/ui CSS variables. Current format: `Tailwind 4.3.3 compiles the Pantoken primary theme alias`. Minimum host version: `4.3.3`. Tested through `4.3.3`. Newer releases require review."
 msgstr ""
 
 #: renderers/shadcn/src/index.md
@@ -18106,12 +17914,6 @@ msgstr ""
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "A `ThemeVars`-shaped object."
-msgstr ""
-
-#: renderers/storybook/src/index.md
-#, no-c-format
-msgctxt "docs.api:prose"
-msgid "Target: Storybook theming. Current format: `Storybook ThemeVars constructor accepts light and dark Pantoken themes`. Minimum host version: `8.6.14`. Tested through `8.6.14`. Newer releases require review."
 msgstr ""
 
 #: renderers/storybook/src/index.md
@@ -18187,12 +17989,6 @@ msgstr ""
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "Passed through to `register()` (e.g. `prefix`, `only`)."
-msgstr ""
-
-#: renderers/svelte/src/index.md
-#, no-c-format
-msgctxt "docs.api:prose"
-msgid "Target: Svelte. Current format: `Icon action component compiles and SSR renders on Svelte 4 and 5`. Minimum host version: `4.2.20`. Tested through `5.57.1`. Newer releases require review."
 msgstr ""
 
 #: renderers/svelte/src/index.md
@@ -18481,12 +18277,6 @@ msgstr ""
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "Validate a pantoken class token (e.g., \"instui-button\", \"instui-button.-color-primary\").\nReturns an array of validation errors (empty if valid)."
-msgstr ""
-
-#: renderers/tinymce/src/index.md
-#, no-c-format
-msgctxt "docs.api:prose"
-msgid "Target: TinyMCE PluginManager. Current format: `Pantoken plugin registration and callback initialization`. Minimum host version: `8.9.2`. Tested through `8.9.2`. Newer releases require review."
 msgstr ""
 
 #: renderers/tinymce/src/interfaces/ContentClassesPluginOptions.md
@@ -18955,12 +18745,6 @@ msgstr ""
 #: renderers/vitepress/src/index.md
 #, no-c-format
 msgctxt "docs.api:prose"
-msgid "Target: VitePress. Current format: `Built site CSS includes the Pantoken primary-brand bridge`. Minimum host version: `1.6.4`. Tested through `1.6.4`. Newer releases require review."
-msgstr ""
-
-#: renderers/vitepress/src/index.md
-#, no-c-format
-msgctxt "docs.api:prose"
 msgid "`@pantoken/vitepress` — theme a VitePress site with Instructure tokens."
 msgstr ""
 
@@ -19001,12 +18785,6 @@ msgstr ""
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "The resolver (defaults to the built-in pantoken icon set)."
-msgstr ""
-
-#: renderers/vue/src/index.md
-#, no-c-format
-msgctxt "docs.api:prose"
-msgid "Target: Vue. Current format: `Plugin installation, custom-element configuration, and SSR output`. Minimum host version: `3.0.0`. Tested through `3.5.43`. Newer releases require review."
 msgstr ""
 
 #: renderers/vue/src/index.md
@@ -19158,12 +18936,6 @@ msgstr ""
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "First day of week as a JS `Date.getDay()` index (0=Sunday … 6=Saturday)."
-msgstr ""
-
-#: renderers/web-components/src/index.md
-#, no-c-format
-msgctxt "docs.api:prose"
-msgid "Target: Web Components. Current format: `Custom-element registration and button shadow output`. Tested environment: `Node 26.10.0 with happy-dom 20.14.5`. Real-browser rendering and interaction behavior are not verified."
 msgstr ""
 
 #: renderers/web-components/src/index.md

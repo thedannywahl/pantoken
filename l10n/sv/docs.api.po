@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: pantoken\n"
-"PO-Revision-Date: 2026-09-28 16:35+0000\n"
+"PO-Revision-Date: 2026-10-01 06:47+0000\n"
 "Last-Translator: pantoken localization engine\n"
 "Language-Team: pantoken\n"
 "MIME-Version: 1.0\n"
@@ -1644,7 +1644,7 @@ msgstr "Bekräfta"
 #, fuzzy, no-c-format
 msgctxt "docs.api:prose"
 msgid "Day"
-msgstr "day"
+msgstr "Dag"
 
 #: css/button-set.md
 #, fuzzy, no-c-format
@@ -14273,7 +14273,7 @@ msgstr "En [PantokenPlugin](../../../../../packages/core/src/interfaces/Pantoken
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "Build the logo utility CSS as an aspect-ratio-aware mask painter for `@pantoken/plugin-logos`'\n`-logo-<name>` glyph classes, substituting `prefix` for the `pfx-` sentinel."
-msgstr "Build the logo utility CSS as an aspect-ratio-aware mask painter for `@pantoken/plugin-logos`'\n`-logo-<name>` glyph classes, substituting `prefix` for the `pfx-` sentinel."
+msgstr "Bygg logo-utility CSS som en aspektförhållande-medveten maskmålare för `@pantoken/plugin-logos`'\n`-logo-<name>` glyph-klasser, genom att ersätta `prefix` för `pfx-`-sentineln."
 
 #: plugins/pantoken/custom-components/src/index.md
 #, no-c-format
@@ -14470,7 +14470,7 @@ msgstr "Derive the `custom` primitiva skalan från en brand-hex. Indatan förank
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "The [CustomColorScale](../interfaces/CustomColorScale.md)."
-msgstr "The [CustomColorScale](../interfaces/CustomColorScale.md)."
+msgstr "Den [CustomColorScale](../interfaces/CustomColorScale.md)."
 
 #: plugins/pantoken/custom-theme-colors/src/functions/deriveScale.md
 #, no-c-format
@@ -14482,7 +14482,7 @@ msgstr "Derive a full primitive scale from one hex: anchor it at the step with t
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "A hex color accepted by [parseHexColor](parseHexColor.md)."
-msgstr "A hex color accepted by [parseHexColor](parseHexColor.md)."
+msgstr "En hexfärg som accepteras av [parseHexColor](parseHexColor.md)."
 
 #: plugins/pantoken/custom-theme-colors/src/functions/deriveScale.md
 #, fuzzy, no-c-format
@@ -14494,7 +14494,7 @@ msgstr "Output of buildReferenceCurve."
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "Whether a value is a valid [parseHexColor](parseHexColor.md) input."
-msgstr "Whether a value is a valid [parseHexColor](parseHexColor.md) input."
+msgstr "Om ett värde är en giltig [parseHexColor](parseHexColor.md) indata."
 
 #: plugins/pantoken/custom-theme-colors/src/functions/isHexColor.md
 #, fuzzy, no-c-format
@@ -14518,13 +14518,13 @@ msgstr "Validate and normalize a user-supplied hex color. This is the only entry
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "A hex color, with or without the leading `#`."
-msgstr "A hex color, with or without the leading `#`."
+msgstr "En hexfärg, med eller utan den ledande `#`."
 
 #: plugins/pantoken/custom-theme-colors/src/functions/parseHexColor.md
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "Lowercase `#rrggbb`."
-msgstr "Lowercase `#rrggbb`."
+msgstr "Små bokstäver `#rrggbb`."
 
 #: plugins/pantoken/custom-theme-colors/src/functions/parseHexColor.md
 #, no-c-format
@@ -14578,7 +14578,7 @@ msgstr "En härledd custom-primitiv skala."
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "The validated input, normalized to lowercase `#rrggbb`."
-msgstr "The validated input, normalized to lowercase `#rrggbb`."
+msgstr "Den validerade indata, normaliserad till gemener `#rrggbb`."
 
 #: plugins/pantoken/custom-theme-colors/src/interfaces/CustomColorScale.md
 #, no-c-format
@@ -17634,7 +17634,7 @@ msgstr "En `data:`-URI som kan användas som `<img src>` för ikonen, för de k�
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "Resolve a logo's stylesheet: the `.-logo-<name>` mask painter plus its `--instui-logo-<name>` token."
-msgstr "Resolve a logo's stylesheet: the `.-logo-<name>` mask painter plus its `--instui-logo-<name>` token."
+msgstr "Lös en logotyps stilmall: `.-logo-<name>` maskmålare plus dess `--instui-logo-<name>` token."
 
 #: renderers/tinymce/src/functions/getModifierSuggestions.md
 #, no-c-format
@@ -17658,7 +17658,7 @@ msgstr "skrivskyddad [`CdnFile`](../../../../platforms/canvas-theme-editor/src/i
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "Resolve the logo stylesheets used by `-logo-*` classes below `root`."
-msgstr "Resolve the logo stylesheets used by `-logo-*` classes below `root`."
+msgstr "Lös upp logotypens stilmallar som används av `-logo-*` klasser nedan `root`."
 
 #: renderers/tinymce/src/functions/getUsedLogoCdnFiles.md
 #, fuzzy, no-c-format
@@ -30506,3 +30506,415 @@ msgstr "En hovringsbar \"visa i helskärm\"-knapp, överlagrad på en demo/exemp
 #~ msgctxt "docs.api:text"
 #~ msgid "ai-gradient"
 #~ msgstr "ai-gradient"
+
+msgctxt "docs.api:prose"
+msgid "Every token is exposed as a `var(--instui-*)` reference (not a concrete value), so Tailwind\nutilities like `bg-background-base` theme through the same CSS custom properties that\n`@pantoken/css` emits — light/dark and high-contrast all keep working."
+msgstr "Varje token exponeras som en `var(--instui-*)` referens (inte ett konkret värde), så Tailwind\nverktyg som `bg-background-base` tematiserar via samma CSS-variabler som\n`@pantoken/css` avger — ljust/mörkt och högkontrast fortsätter fungera."
+
+msgctxt "docs.api:prose"
+msgid "A single-select row of compact view or filter options."
+msgstr "En rad med enkelval för kompakta vy- eller filteralternativ."
+
+msgctxt "docs.api:prose"
+msgid "A selectable segmented-control label and its native radio input."
+msgstr "En valbar segmenterad kontrolls etikett och dess inbyggda radioknapp."
+
+msgctxt "docs.api:prose"
+msgid "Decorative placeholder for content that has not loaded yet."
+msgstr "Dekorativ platshållare för innehåll som ännu inte har laddats."
+
+msgctxt "docs.api:prose"
+msgid "`.instui-segmented-control` — A single-select row of compact view or filter options."
+msgstr "`.instui-segmented-control` — En enkelsvalsrad med kompakta visnings- eller filteralternativ."
+
+msgctxt "docs.api:prose"
+msgid "The selected segment uses a distinct active-item shadow; it does not match an existing\n  --instui-elevation-* composite. Overflow buttons use the upstream elevation3 component tokens."
+msgstr "Det valda segmentet använder en distinkt aktiv-objekt-skugga; det matchar inte en befintlig\n  --instui-elevation-*-komposit. Överflödsknappar använder upstream elevation3-komponenttokenarna."
+
+msgctxt "docs.api:prose"
+msgid "Use a labelled fieldset and one shared radio name with a checked default. Native radios\n  announce their checked state; overflow buttons need labels describing their scroll direction."
+msgstr "Använd ett märkt fieldset och ett delat radioknappnamn med ett förvalt markerat värde. Inbyggda radioknappar\n  annonserar sitt markerade tillstånd; överflödsknappar behöver etiketter som beskriver deras rullriktning."
+
+msgctxt "docs.api:prose"
+msgid "Config"
+msgstr "Konfiguration"
+
+msgctxt "docs.api:prose"
+msgid "Utilities"
+msgstr "Verktyg"
+
+msgctxt "docs.api:prose"
+msgid "Preferences"
+msgstr "Inställningar"
+
+msgctxt "docs.api:prose"
+msgid "Feature flags"
+msgstr "Funktionsflaggor"
+
+msgctxt "docs.api:prose"
+msgid "Large segments."
+msgstr "Stora segment."
+
+msgctxt "docs.api:prose"
+msgid "Medium segments (default)."
+msgstr "Medelstora segment (standard)."
+
+msgctxt "docs.api:prose"
+msgid "Small segments."
+msgstr "Små segment."
+
+msgctxt "docs.api:prose"
+msgid "Scroll to the following hidden segment."
+msgstr "Rulla till följande dolda segment."
+
+msgctxt "docs.api:prose"
+msgid "Scroll to the preceding hidden segment."
+msgstr "Rulla till det föregående dolda segmentet."
+
+msgctxt "docs.api:prose"
+msgid "Scrollable row containing the selectable segments."
+msgstr "Rullbar rad som innehåller de valbara segmenten."
+
+msgctxt "docs.api:prose"
+msgid "Clips the segment row and anchors the overflow controls."
+msgstr "Beskär segmentraden och förankrar överflödskontrollerna."
+
+msgctxt "docs.api:prose"
+msgid "`.instui-segmented-control` — A selectable segmented-control label and its native radio input."
+msgstr "`.instui-segmented-control` — En valbar segmenterad kontroll-etikett och dess inbyggda radioknapp."
+
+msgctxt "docs.api:prose"
+msgid "A `-icon-*` class may live on the label or its native input; the interaction helper\n  promotes input classes to the label so the shared glyph painter can render it."
+msgstr "En `-icon-*` klass kan finnas på etiketten eller dess inbyggda input; interaktionshjälparen\n  flyttar input-klasser till etiketten så att den delade glyfsmålaren kan rendera den."
+
+msgctxt "docs.api:prose"
+msgid "Keep the native radio in the label so checked, focus, disabled, and keyboard semantics remain available."
+msgstr "Behåll den inbyggda radioknappen i etiketten så att markering, fokus, inaktiverat tillstånd och tangentbordssemantik förblir tillgängliga."
+
+msgctxt "docs.api:prose"
+msgid "`.instui-skeleton-loader` — Decorative placeholder for content that has not loaded yet."
+msgstr "`.instui-skeleton-loader` — Dekorativ platshållare för innehåll som inte har laddats än."
+
+msgctxt "docs.api:prose"
+msgid "Mark the decorative loader aria-hidden=\"true\". Put aria-busy on the parent content region,\n  with an initially empty status and alert outside that region. Use initSkeletonLoading from the\n  interactions package to announce the parent's loading state. Shapes must not receive focus."
+msgstr "Markera den dekorativa loadern aria-hidden=\"true\". Sätt aria-busy på den överordnade innehållsregionen,\n  med en initialt tom status och ett aviseringselement utanför den regionen. Använd initSkeletonLoading från \n  interactions-paketet för att tillkännage förälderns laddningstillstånd. Former får inte ta fokus."
+
+msgctxt "docs.api:prose"
+msgid "Large text row."
+msgstr "Stor textrad."
+
+msgctxt "docs.api:prose"
+msgid "Medium text row (default)."
+msgstr "Medelstor textrad (standard)."
+
+msgctxt "docs.api:prose"
+msgid "Small text row."
+msgstr "Liten textrad."
+
+msgctxt "docs.api:prose"
+msgid "Extra-large text row."
+msgstr "Extra stor textrad."
+
+msgctxt "docs.api:prose"
+msgid "Extra-small text row."
+msgstr "Extra liten textrad."
+
+msgctxt "docs.api:prose"
+msgid "Largest text row."
+msgstr "Störst textrad."
+
+msgctxt "docs.api:prose"
+msgid "Legend-sized text row."
+msgstr "Legend-stor textrad."
+
+msgctxt "docs.api:prose"
+msgid "A round avatar placeholder, medium size only."
+msgstr "En rund avatar-platshållare, endast mellanstor."
+
+msgctxt "docs.api:prose"
+msgid "An image placeholder, medium size only."
+msgstr "En bild-platshållare, endast mellanstor."
+
+msgctxt "docs.api:prose"
+msgid "A text bar (default)."
+msgstr "En textfält (standard)."
+
+msgctxt "docs.api:prose"
+msgid "The clipped placeholder surface sized for the selected loader type."
+msgstr "Den avklippta platshållarytan anpassad för den valda loader-typen."
+
+msgctxt "docs.api:prose"
+msgid "A repeated text-row wrapper that applies vertical spacing."
+msgstr "Ett upprepat text-radsomslag som applicerar vertikalt mellanrum."
+
+msgctxt "docs.api:prose"
+msgid "Enhance a labelled native radio group with keyboard navigation and optional overflow controls."
+msgstr "Förbättra en märkt inbyggd radiogrupp med tangentbordsnavigering och valfria överflödeskontroller."
+
+msgctxt "docs.api:prose"
+msgid "Bind the parent content region to SSR-provided status and error announcements."
+msgstr "Knyt den överordnade innehållsregionen till SSR-levererade status- och felmeddelanden."
+
+msgctxt "docs.api:prose"
+msgid "Detach the segmented-control listeners and observers."
+msgstr "Koppla bort lyssnare och observatörer för segmented-control."
+
+msgctxt "docs.api:prose"
+msgid "Segmented control options; the medium size is the CSS default."
+msgstr "Alternativ för segmenterad kontroll; mediumstorleken är CSS-standard."
+
+msgctxt "docs.api:prose"
+msgid "Control parent-level loading semantics without touching decorative skeleton shapes."
+msgstr "Kontrollera inläsningssemantiken på föräldranivå utan att röra dekorativa skelettformer."
+
+msgctxt "docs.api:prose"
+msgid "Pre-rendered announcement elements must be outside the busy content region."
+msgstr "För-renderade meddelandeelement måste vara utanför det upptagna innehållsområdet."
+
+msgctxt "docs.api:prose"
+msgid "State update sent to an auto-registered skeleton loading region."
+msgstr "Statusuppdatering skickad till en automatregistrerad region för skelettladdning."
+
+msgctxt "docs.api:prose"
+msgid "The generated Swift uses UIKit and targets iOS. `mise run verify:swift:syntax` only parses its\nsource; `mise run verify:swift:host` needs full Xcode and the iOS Simulator SDK to type-check it."
+msgstr "Den genererade Swift-koden använder UIKit och riktar sig mot iOS. `mise run verify:swift:syntax` parserar endast dess\nsource; `mise run verify:swift:host` behöver en fullständig Xcode-installation och iOS Simulator SDK för att typkontrollera den."
+
+msgctxt "docs.api:prose"
+msgid "Build segmented-control CSS, replacing the component prefix sentinel."
+msgstr "Bygg segmented-control CSS, ersätt komponentprefix-sentinellen."
+
+msgctxt "docs.api:prose"
+msgid "Build the skeleton loader CSS, replacing the component prefix sentinel."
+msgstr "Bygg skeleton loader CSS och ersätt komponentprefix-sentineln."
+
+msgctxt "docs.api:prose"
+msgid "`@pantoken/bootstrap` — theme Bootstrap 5.2+ body variables and primary buttons with Instructure tokens."
+msgstr "`@pantoken/bootstrap` — tema Bootstrap 5.2+ body-variabler och primära knappar med Instructure-tokens."
+
+msgctxt "docs.api:prose"
+msgid "Points body and primary-button `--bs-*` CSS variables at `var(--instui-*)`. Load it after\nBootstrap and `@pantoken/css`; other component variants retain their Bootstrap defaults."
+msgstr "Anger body- och primary-button `--bs-*` CSS-variabler vid `var(--instui-*)`. Ladda den efter\nBootstrap och `@pantoken/css`; andra komponentvarianter behåller sina Bootstrap-standardvärden."
+
+msgctxt "docs.api:prose"
+msgid "Emit the Foundation Sass settings override. Import it before Foundation itself and\n`@include foundation-everything` so its palette is available to Sass."
+msgstr "Generera Foundation Sass-inställningsöverskrivningen. Importera den före Foundation själv och\n`@include foundation-everything` så att dess palett är tillgänglig för Sass."
+
+msgctxt "docs.api:prose"
+msgid "`@pantoken/foundation` — theme Foundation for Sites Sass output and common CSS classes."
+msgstr "`@pantoken/foundation` — tema Foundation for Sites Sass-utdata och vanliga CSS-klasser."
+
+msgctxt "docs.api:prose"
+msgid "Foundation is Sass-first, so this package ships two layers. [toFoundationSettings](functions/toFoundationSettings.md) emits a\n`_settings`-style Sass partial with concrete light-mode rebrand values so Foundation's colour functions can\ncompile. [toFoundationCss](functions/toFoundationCss.md) emits a thin variable-backed CSS overlay that themes the common compiled\nclasses (`.button`, `.callout`, links) the same way — useful when you consume stock Foundation CSS\nand just want to layer Instructure colors on top without recompiling."
+msgstr "Foundation är Sass-fokuserat, så det här paketet levereras i två lager. [toFoundationSettings](functions/toFoundationSettings.md) genererar en\n`_settings`-stilad Sass-partial med konkreta ommärkningsvärden för ljust läge så Foundations färgfunktioner kan kompilera. [toFoundationCss](functions/toFoundationCss.md) genererar en tunn variabelstödd CSS-överlagring som tematiserar de vanliga kompilerade\nclasses (`.button`, `.callout`, links) på samma sätt — användbart när du använder standard Foundation CSS\n och bara vill lägga Instructure-färger ovanpå utan att kompilera om."
+
+msgctxt "docs.api:prose"
+msgid "Registration and shadow output are environment-verified with Happy DOM; real-browser behavior is\nnot covered by that check."
+msgstr "Registrering och skuggutdata är miljöverifierade med Happy DOM; beteende i riktig webbläsare omfattas\ninte av den kontrollen."
+
+msgctxt "docs.api:prose"
+msgid "Browser script URLs to load after the example markup (interaction bundles, when needed)."
+msgstr "Webbläsarskript-URL:er som ska laddas efter exempelmarkeringen (interaktionspaket, vid behov)."
+
+msgctxt "docs.api:text"
+msgid "EmailCssOptions"
+msgstr "EmailCssOptions"
+
+msgctxt "docs.api:text"
+msgid "InlineEmailHtmlOptions"
+msgstr "InlineEmailHtmlOptions"
+
+msgctxt "docs.api:text"
+msgid "EmailClient"
+msgstr "EmailClient"
+
+msgctxt "docs.api:text"
+msgid "light"
+msgstr "light"
+
+msgctxt "docs.api:text"
+msgid "inlineEmailHtml"
+msgstr "inlineEmailHtml"
+
+msgctxt "docs.api:text"
+msgid "GlyphSyncTarget"
+msgstr "GlyphSyncTarget"
+
+msgctxt "docs.api:text"
+msgid "PRODUCT_LABELS"
+msgstr "PRODUCT_LABELS"
+
+msgctxt "docs.api:text"
+msgid "retargetContentStylesheets"
+msgstr "retargetContentStylesheets"
+
+msgctxt "docs.api:text"
+msgid "normalizeGlyphHtml"
+msgstr "normalizeGlyphHtml"
+
+msgctxt "docs.api:text"
+msgid "injectUsedGlyphAssets"
+msgstr "injectUsedGlyphAssets"
+
+msgctxt "docs.api:text"
+msgid "registerGlyphSync"
+msgstr "registerGlyphSync"
+
+msgctxt "docs.api:text"
+msgid "logoVariantLabel"
+msgstr "logoVariantLabel"
+
+msgctxt "docs.api:text"
+msgid "filterLogos"
+msgstr "filterLogos"
+
+msgctxt "docs.api:text"
+msgid "getLogoCdnFile"
+msgstr "getLogoCdnFile"
+
+msgctxt "docs.api:text"
+msgid "buildLogoMarkup"
+msgstr "buildLogoMarkup"
+
+msgctxt "docs.api:text"
+msgid "getUsedLogoCdnFiles"
+msgstr "getUsedLogoCdnFiles"
+
+msgctxt "docs.api:text"
+msgid "modifyExpression"
+msgstr "modifyExpression"
+
+msgctxt "docs.api:text"
+msgid "inline-styles"
+msgstr "inline-styles"
+
+msgctxt "docs.api:text"
+msgid "InlineHtmlOptions"
+msgstr "InlineHtmlOptions"
+
+msgctxt "docs.api:text"
+msgid "inlineHtml"
+msgstr "inlineHtml"
+
+msgctxt "docs.api:text"
+msgid "InPlaceEditOptions"
+msgstr "InPlaceEditOptions"
+
+msgctxt "docs.api:text"
+msgid "SegmentedControlOptions"
+msgstr "SegmentedControlOptions"
+
+msgctxt "docs.api:text"
+msgid "SegmentedControlHandle"
+msgstr "SegmentedControlHandle"
+
+msgctxt "docs.api:text"
+msgid "SkeletonLoadingState"
+msgstr "SkeletonLoadingState"
+
+msgctxt "docs.api:text"
+msgid "SkeletonLoadingOptions"
+msgstr "SkeletonLoadingOptions"
+
+msgctxt "docs.api:text"
+msgid "SkeletonLoadingHandle"
+msgstr "SkeletonLoadingHandle"
+
+msgctxt "docs.api:text"
+msgid "InPlaceEditInputType"
+msgstr "InPlaceEditInputType"
+
+msgctxt "docs.api:text"
+msgid "initSegmentedControl"
+msgstr "initSegmentedControl"
+
+msgctxt "docs.api:text"
+msgid "initSkeletonLoading"
+msgstr "initSkeletonLoading"
+
+msgctxt "docs.api:text"
+msgid "buttonSetRules"
+msgstr "buttonSetRules"
+
+msgctxt "docs.api:text"
+msgid "logoRules"
+msgstr "logoRules"
+
+msgctxt "docs.api:text"
+msgid "segmentedControlRules"
+msgstr "segmentedControlRules"
+
+msgctxt "docs.api:text"
+msgid "skeletonLoaderRules"
+msgstr "skeletonLoaderRules"
+
+msgctxt "docs.api:text"
+msgid "breakpointDeclarations"
+msgstr "breakpointDeclarations"
+
+msgctxt "docs.api:text"
+msgid "ReferenceCurve"
+msgstr "ReferenceCurve"
+
+msgctxt "docs.api:text"
+msgid "CustomColorScale"
+msgstr "CustomColorScale"
+
+msgctxt "docs.api:text"
+msgid "CustomColorCssOptions"
+msgstr "CustomColorCssOptions"
+
+msgctxt "docs.api:text"
+msgid "CUSTOM_COLOR_KEY"
+msgstr "CUSTOM_COLOR_KEY"
+
+msgctxt "docs.api:text"
+msgid "isHexColor"
+msgstr "isHexColor"
+
+msgctxt "docs.api:text"
+msgid "deriveScale"
+msgstr "deriveScale"
+
+msgctxt "docs.api:text"
+msgid "customColorReferenceCurve"
+msgstr "customColorReferenceCurve"
+
+msgctxt "docs.api:text"
+msgid "deriveCustomColorScale"
+msgstr "deriveCustomColorScale"
+
+msgctxt "docs.api:text"
+msgid "customColorCss"
+msgstr "customColorCss"
+
+msgctxt "docs.api:text"
+msgid "customColorRemapCss"
+msgstr "customColorRemapCss"
+
+msgctxt "docs.api:text"
+msgid "button-set"
+msgstr "button-set"
+
+msgctxt "docs.api:text"
+msgid "day"
+msgstr "day"
+
+msgctxt "docs.api:text"
+msgid "segmented-control"
+msgstr "segmented-control"
+
+msgctxt "docs.api:text"
+msgid "segment"
+msgstr "segment"
+
+msgctxt "docs.api:text"
+msgid "skeleton-loader"
+msgstr "skeleton-loader"
+
+msgctxt "docs.api:text"
+msgid "logo"
+msgstr "logo"
+
+msgctxt "docs.api:text"
+msgid "breakpoints"
+msgstr "breakpoints"

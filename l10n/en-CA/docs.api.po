@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: pantoken\n"
-"PO-Revision-Date: 2026-09-28 16:25+0000\n"
+"PO-Revision-Date: 2026-10-01 02:38+0000\n"
 "Last-Translator: pantoken localization engine\n"
 "Language-Team: pantoken\n"
 "MIME-Version: 1.0\n"
@@ -31522,3 +31522,305 @@ msgstr "A hoverable \"view fullscreen\" button, overlaid on a demo/example frame
 #~ msgctxt "docs.api:text"
 #~ msgid "breakpoints"
 #~ msgstr "breakpoints"
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "Every token is exposed as a `var(--instui-*)` reference (not a concrete value), so Tailwind\nutilities like `bg-background-base` theme through the same CSS custom properties that\n`@pantoken/css` emits — light/dark and high-contrast all keep working."
+msgstr "Every token is exposed as a `var(--instui-*)` reference (not a concrete value), so Tailwind\nutilities like `bg-background-base` theme through the same CSS custom properties that\n`@pantoken/css` emits — light/dark and high-contrast all keep working."
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "A single-select row of compact view or filter options."
+msgstr "A single-select row of compact view or filter options."
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "A selectable segmented-control label and its native radio input."
+msgstr "A selectable segmented-control label and its native radio input."
+
+msgctxt "docs.api:prose"
+msgid "Decorative placeholder for content that has not loaded yet."
+msgstr "Decorative placeholder for content that hasn't loaded yet."
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "`.instui-segmented-control` — A single-select row of compact view or filter options."
+msgstr "`.instui-segmented-control` — A single-select row of compact view or filter options."
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "The selected segment uses a distinct active-item shadow; it does not match an existing\n  --instui-elevation-* composite. Overflow buttons use the upstream elevation3 component tokens."
+msgstr "The selected segment uses a distinct active-item shadow; it does not match an existing\n  --instui-elevation-* composite. Overflow buttons use the upstream elevation3 component tokens."
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "Use a labelled fieldset and one shared radio name with a checked default. Native radios\n  announce their checked state; overflow buttons need labels describing their scroll direction."
+msgstr "Use a labelled fieldset and one shared radio name with a checked default. Native radios\n  announce their checked state; overflow buttons need labels describing their scroll direction."
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "Config"
+msgstr "Config"
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "Utilities"
+msgstr "Utilities"
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "Preferences"
+msgstr "Preferences"
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "Feature flags"
+msgstr "Feature flags"
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "Large segments."
+msgstr "Large segments."
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "Medium segments (default)."
+msgstr "Medium segments (default)."
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "Small segments."
+msgstr "Small segments."
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "Scroll to the following hidden segment."
+msgstr "Scroll to the following hidden segment."
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "Scroll to the preceding hidden segment."
+msgstr "Scroll to the preceding hidden segment."
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "Scrollable row containing the selectable segments."
+msgstr "Scrollable row containing the selectable segments."
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "Clips the segment row and anchors the overflow controls."
+msgstr "Clips the segment row and anchors the overflow controls."
+
+msgctxt "docs.api:prose"
+msgid "`.instui-segmented-control` — A selectable segmented-control label and its native radio input."
+msgstr "`.instui-segmented-control` — A selectable segmented control label and its native radio input."
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "A `-icon-*` class may live on the label or its native input; the interaction helper\n  promotes input classes to the label so the shared glyph painter can render it."
+msgstr "A `-icon-*` class may live on the label or its native input; the interaction helper\n  promotes input classes to the label so the shared glyph painter can render it."
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "Keep the native radio in the label so checked, focus, disabled, and keyboard semantics remain available."
+msgstr "Keep the native radio in the label so checked, focus, disabled, and keyboard semantics remain available."
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "`.instui-skeleton-loader` — Decorative placeholder for content that has not loaded yet."
+msgstr "`.instui-skeleton-loader` — Decorative placeholder for content that has not loaded yet."
+
+msgctxt "docs.api:prose"
+msgid "Mark the decorative loader aria-hidden=\"true\". Put aria-busy on the parent content region,\n  with an initially empty status and alert outside that region. Use initSkeletonLoading from the\n  interactions package to announce the parent's loading state. Shapes must not receive focus."
+msgstr "Mark the decorative loader as aria-hidden=\"true\". Put aria-busy on the parent content region,\n  an initially empty status and an alert outside that region. Use initSkeletonLoading from the\n  interactions package to announce the parent's loading state. Shapes must not receive focus."
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "Large text row."
+msgstr "Large text row."
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "Medium text row (default)."
+msgstr "Medium text row (default)."
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "Small text row."
+msgstr "Small text row."
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "Extra-large text row."
+msgstr "Extra-large text row."
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "Extra-small text row."
+msgstr "Extra-small text row."
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "Largest text row."
+msgstr "Largest text row."
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "Legend-sized text row."
+msgstr "Legend-sized text row."
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "A round avatar placeholder, medium size only."
+msgstr "A round avatar placeholder, medium size only."
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "An image placeholder, medium size only."
+msgstr "An image placeholder, medium size only."
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "A text bar (default)."
+msgstr "A text bar (default)."
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "The clipped placeholder surface sized for the selected loader type."
+msgstr "The clipped placeholder surface sized for the selected loader type."
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "A repeated text-row wrapper that applies vertical spacing."
+msgstr "A repeated text-row wrapper that applies vertical spacing."
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "Enhance a labelled native radio group with keyboard navigation and optional overflow controls."
+msgstr "Enhance a labelled native radio group with keyboard navigation and optional overflow controls."
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "Bind the parent content region to SSR-provided status and error announcements."
+msgstr "Bind the parent content region to SSR-provided status and error announcements."
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "Detach the segmented-control listeners and observers."
+msgstr "Detach the segmented-control listeners and observers."
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "Segmented control options; the medium size is the CSS default."
+msgstr "Segmented control options; the medium size is the CSS default."
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "Control parent-level loading semantics without touching decorative skeleton shapes."
+msgstr "Control parent-level loading semantics without touching decorative skeleton shapes."
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "Pre-rendered announcement elements must be outside the busy content region."
+msgstr "Pre-rendered announcement elements must be outside the busy content region."
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "State update sent to an auto-registered skeleton loading region."
+msgstr "State update sent to an auto-registered skeleton loading region."
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "The generated Swift uses UIKit and targets iOS. `mise run verify:swift:syntax` only parses its\nsource; `mise run verify:swift:host` needs full Xcode and the iOS Simulator SDK to type-check it."
+msgstr "The generated Swift uses UIKit and targets iOS. `mise run verify:swift:syntax` only parses its\nsource; `mise run verify:swift:host` needs full Xcode and the iOS Simulator SDK to type-check it."
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "Build segmented-control CSS, replacing the component prefix sentinel."
+msgstr "Build segmented-control CSS, replacing the component prefix sentinel."
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "Build the skeleton loader CSS, replacing the component prefix sentinel."
+msgstr "Build the skeleton loader CSS, replacing the component prefix sentinel."
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "`@pantoken/bootstrap` — theme Bootstrap 5.2+ body variables and primary buttons with Instructure tokens."
+msgstr "`@pantoken/bootstrap` — theme Bootstrap 5.2+ body variables and primary buttons with Instructure tokens."
+
+msgctxt "docs.api:prose"
+msgid "Points body and primary-button `--bs-*` CSS variables at `var(--instui-*)`. Load it after\nBootstrap and `@pantoken/css`; other component variants retain their Bootstrap defaults."
+msgstr "Points body and primary button `--bs-*` CSS variables at `var(--instui-*)`. Load it after \nBootstrap and `@pantoken/css`; other component variants retain their Bootstrap defaults."
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "Emit the Foundation Sass settings override. Import it before Foundation itself and\n`@include foundation-everything` so its palette is available to Sass."
+msgstr "Emit the Foundation Sass settings override. Import it before Foundation itself and\n`@include foundation-everything` so its palette is available to Sass."
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "`@pantoken/foundation` — theme Foundation for Sites Sass output and common CSS classes."
+msgstr "`@pantoken/foundation` — theme Foundation for Sites Sass output and common CSS classes."
+
+msgctxt "docs.api:prose"
+msgid "Foundation is Sass-first, so this package ships two layers. [toFoundationSettings](functions/toFoundationSettings.md) emits a\n`_settings`-style Sass partial with concrete light-mode rebrand values so Foundation's colour functions can\ncompile. [toFoundationCss](functions/toFoundationCss.md) emits a thin variable-backed CSS overlay that themes the common compiled\nclasses (`.button`, `.callout`, links) the same way — useful when you consume stock Foundation CSS\nand just want to layer Instructure colors on top without recompiling."
+msgstr "Foundation is Sass-first, so this package ships two layers. [toFoundationSettings](functions/toFoundationSettings.md) emits a\n`_settings`-style Sass partial with concrete light-mode rebrand values so Foundation's colour functions can\ncompile. [toFoundationCss](functions/toFoundationCss.md) emits a thin variable-backed CSS overlay that themes the common compiled\nclasses (`.button`, `.callout`, links) the same way — useful when you consume stock Foundation CSS\nand just want to layer Instructure colours on top without recompiling."
+
+msgctxt "docs.api:prose"
+msgid "Registration and shadow output are environment-verified with Happy DOM; real-browser behavior is\nnot covered by that check."
+msgstr "Registration and shadow output are environment-verified with Happy DOM; real-browser behaviour is\nnot covered by that check."
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "Browser script URLs to load after the example markup (interaction bundles, when needed)."
+msgstr "Browser script URLs to load after the example markup (interaction bundles, when needed)."
+
+msgctxt "docs.api:text"
+msgid "SegmentedControlOptions"
+msgstr "SegmentedControlOptions"
+
+msgctxt "docs.api:text"
+msgid "SegmentedControlHandle"
+msgstr "SegmentedControlHandle"
+
+msgctxt "docs.api:text"
+msgid "SkeletonLoadingState"
+msgstr "SkeletonLoadingState"
+
+msgctxt "docs.api:text"
+msgid "SkeletonLoadingOptions"
+msgstr "SkeletonLoadingOptions"
+
+msgctxt "docs.api:text"
+msgid "SkeletonLoadingHandle"
+msgstr "SkeletonLoadingHandle"
+
+msgctxt "docs.api:text"
+msgid "initSegmentedControl"
+msgstr "initSegmentedControl"
+
+msgctxt "docs.api:text"
+msgid "initSkeletonLoading"
+msgstr "initSkeletonLoading"
+
+msgctxt "docs.api:text"
+msgid "segmentedControlRules"
+msgstr "segmentedControlRules"
+
+msgctxt "docs.api:text"
+msgid "skeletonLoaderRules"
+msgstr "skeletonLoaderRules"
+
+msgctxt "docs.api:text"
+msgid "segmented-control"
+msgstr "segmented-control"
+
+msgctxt "docs.api:text"
+msgid "segment"
+msgstr "segment"
+
+msgctxt "docs.api:text"
+msgid "skeleton-loader"
+msgstr "skeleton-loader"
