@@ -1,5 +1,17 @@
 # CHANGELOG
 
+## 0.2.0
+
+### Minor Changes
+
+- 962c640: Verify react-markdown 10.1.0 with React 19.3.0 by rendering an InstUI heading, icon, and color swatch through React SSR. Monitor future host releases for review.
+
+### Patch Changes
+
+- Updated dependencies [962c640]
+  - @pantoken/rehype@0.2.0
+  - @pantoken/icons@0.3.2
+
 ## 0.1.18
 
 ### Patch Changes

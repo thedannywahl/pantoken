@@ -1,5 +1,56 @@
 # CHANGELOG
 
+## 0.6.0
+
+### Minor Changes
+
+- 962c640: Show target compatibility on every adapter API page and extract the central compatibility matrix for future localization.
+- 962c640: Inventory target compatibility for platform, bundler, and renderer packages without claiming unverified host versions.
+
+### Patch Changes
+
+- 962c640: Keep package compatibility sections idempotent and refresh the full API translation catalog after CSS API generation.
+- 962c640: Record the instructure-design-tokens v2.1.0 ref and resolved commit in the compatibility manifest and reference.
+- 962c640: Rebuild the interactions IIFE before docs development so live CSS API examples include current behavior.
+- 962c640: Add an environment-level registration and shadow-output check using Happy DOM. Real-browser rendering and interaction behavior remain unverified.
+- 962c640: Preserve nested color channels in native token resolution, advertise only iOS for UIKit Swift output, and add mise-managed SwiftPM scaffolding and native checks.
+- 962c640: Rename the docs deploy tooling to provider-neutral names: `docs/cloudflare/` is now `docs/edge/`, `prepare-cloudflare-deploy.ts` is `prepare-deploy.ts`, and `sync-cloudflare-r2.ts` is `sync-assets.ts`. Deploy trees now write to `docs/.vitepress/deploy-site` and `docs/.vitepress/deploy-assets`, the `CLOUDFLARE_R2_*` script knobs become `DOCS_ASSETS_*`, and `DOCS_CF_*` become `DOCS_DEPLOY_*`. The `docs:deploy:sync-r2` script is now `docs:deploy:sync-assets`.
+- 962c640: Compatibility checks now read their default release list from `target-compatibility.json` and accept candidate versions without editing verified support claims. A repository gate detects adapters that drift away from the registry.
+- 962c640: Document the segmented-control registry item, root-English demo, native radio usage, overflow behavior, and provisional shadow variables.
+- 962c640: Add token-backed SkeletonLoader styles with a finite, reduced-motion-aware shimmer and reusable parent-region loading announcements. Document the state-event input boundary.
+- 962c640: Document SkeletonLoader's root-English API, demo, registry installation, and parent loading-state contract. Correct its repeatable-row CSS API annotation.
+- 962c640: Record Xcode 27/iOS 27 simulator runtime evidence for generated token values and the optional icon asset catalog. Do not infer an iOS 15 runtime floor.
+- 962c640: Publish the schema-linked target compatibility registry on the documentation site and in installed agent guidance.
+- 962c640: Explain how maintainers review, retest, and remap platform adapters after releases, including targets without automated feeds.
+- 962c640: Verify Angular custom-element template compilation on 16.2.12 / TypeScript 5.1.6 and 22.2.0 / TypeScript 6.0.3. Monitor Angular releases for review.
+- 962c640: Verify the Starlight token injection with real site builds on Starlight 0.35.0 / Astro 5.18.2 and Starlight 0.42.4 / Astro 7.3.5. Monitor Starlight releases for review.
+- 962c640: Theme Bootstrap 5.2.0–5.3.8 body and primary-button variables with Instructure tokens, backed by real stylesheet checks.
+- 962c640: Verify Emotion 11.14.0 by server-rendering a styled component with the Pantoken theme. Monitor future Emotion releases for review; styled-components and Stitches remain unverified.
+- 962c640: Verify the primary-color and background CSS-variable bridge against Infima CSS in Docusaurus theme-classic 3.0.0 through 3.10.2, and monitor new theme releases for review.
+- 962c640: Verify generated theme discovery, metadata, and libraries with Drupal 10.6.18 and 11.3.2, and monitor stable Drupal core releases through Packagist.
+- 962c640: Verify Foundation for Sites 6.1.2 through 6.9.0 with real Sass primary-button compilation and a variable-backed CSS overlay. Publish the bounded compatibility record, release monitoring, and package documentation.
+- 962c640: Verify Hugo 0.165.0 with a real Hugo Pipes site build, and monitor stable Hugo GitHub releases for review.
+- 962c640: Verify Jekyll 4.4.1 with a real site build that compiles the generated Pantoken Sass partial, and monitor stable Jekyll releases through GitHub.
+- 962c640: Verify markdown-it releases from 14.0.0 through 15.0.2 with a real parser and reuse isolated npm-version checks across adapters.
+- 962c640: Verify the generated Mintlify docs.json theme with Mintlify CLI 4.0.1555 and monitor future CLI releases for review.
+- 962c640: Verify concrete light and dark palettes with MUI createTheme on published 5, 6, 7, and 9 releases. Monitor new MUI releases for review and document the tested API surface.
+- 962c640: Verify Next 16.0.0 and 16.3.7 production builds that transpile and statically render Instructure UI 11.7.7 with React 19.3.0. Monitor Next releases for review.
+- 962c640: Verify Panda CSS 1.12.1 and 2.0.0 with real builds that extract a utility using the Pantoken brand token. Monitor future Panda releases for review.
+- 962c640: Verify the PostCSS plugin against exact releases from 8.0.0 through 8.5.28 and publish the tested support window.
+- 962c640: Verify react-markdown 10.1.0 with React 19.3.0 by rendering an InstUI heading, icon, and color swatch through React SSR. Monitor future host releases for review.
+- 962c640: Verify React 19.3.0 server rendering for the custom Icon element and SSR-safe token fallback. Document the exact tested surface and monitor new React releases.
+- 962c640: Verify SVG icon rendering through real rehype 13.0.0–13.0.2 pipelines with rehype-raw 7.0.0.
+- 962c640: Verify Tailwind 4.3.3 compiles a primary utility through the generated shadcn CSS theme aliases, and monitor future Tailwind releases for review.
+- 962c640: Verify light and dark theme objects with the real @storybook/theming 8.6.14 create function, and monitor new theming releases for review.
+- 962c640: Verify Svelte 4.2.20 and 5.57.1 compile and server-render a component using the Pantoken icon action, and monitor future Svelte releases for review.
+- 962c640: Verify Tailwind 4.0.17 through 4.3.3 with real CLI builds and document the v4 config and generated utility names.
+- 962c640: Verify TinyMCE 8.9.2 PluginManager registration and Pantoken callback initialization. Browser editor rendering and visual UI behavior remain unverified.
+- 962c640: Verify Vite 8.0.0 through 8.3.1 with real builds of the virtual modules and HTML stylesheet injection.
+- 962c640: Verify VitePress 1.6.4 with a real site build that includes the Pantoken primary-brand CSS bridge. Monitor future VitePress releases for review.
+- 962c640: Verify Vue 3.0.0 and 3.5.43 with real SSR apps that install the Pantoken plugin, render an InstUI custom element, and exercise the SSR token fallback. Monitor Vue releases for review.
+- 962c640: Verify webpack 5.61.0 through 5.111.1 with real builds that emit the token CSS asset. Use webpack-sources directly so the plugin works with webpack 5 compilers that lack the newer compiler.webpack property.
+- 962c640: Verify the current WordPress theme.json v3 output against WordPress 6.6 through 7.1.2 and document the tested host-version floor.
+
 ## 0.5.14
 
 ### Patch Changes

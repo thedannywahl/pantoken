@@ -1,5 +1,12 @@
 # CHANGELOG
 
+## 0.1.17
+
+### Patch Changes
+
+- Updated dependencies [962c640]
+  - @pantoken/utils@1.2.1
+
 ## 0.1.16
 
 ### Patch Changes

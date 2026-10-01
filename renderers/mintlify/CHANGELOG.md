@@ -1,5 +1,18 @@
 # CHANGELOG
 
+## 0.2.0
+
+### Minor Changes
+
+- 962c640: Verify the generated Mintlify docs.json theme with Mintlify CLI 4.0.1555 and monitor future CLI releases for review.
+
+### Patch Changes
+
+- Updated dependencies [962c640]
+- Updated dependencies [962c640]
+  - @pantoken/tokens@0.8.0
+  - @pantoken/utils@1.2.1
+
 ## 0.1.19
 
 ### Patch Changes

@@ -1,5 +1,17 @@
 # CHANGELOG
 
+## 0.2.0
+
+### Minor Changes
+
+- 962c640: Verify Hugo 0.165.0 with a real Hugo Pipes site build, and monitor stable Hugo GitHub releases for review.
+
+### Patch Changes
+
+- @pantoken/components@2.0.1
+  - @pantoken/css@0.4.2
+  - @pantoken/scss@0.1.20
+
 ## 0.1.36
 
 ### Patch Changes

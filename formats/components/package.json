@@ -1,6 +1,6 @@
 {
   "name": "@pantoken/components",
-  "version": "2.0.0",
+  "version": "2.0.1",
   "description": "An InstUI-look CSS component library from the pantoken tokens: prose/content styling plus class-based components (button, alert, badge).",
   "homepage": "https://pantoken.app",
   "bugs": "https://github.com/thedannywahl/pantoken/issues",

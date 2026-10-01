@@ -1,5 +1,17 @@
 # CHANGELOG
 
+## 0.2.0
+
+### Minor Changes
+
+- 962c640: Verify Svelte 4.2.20 and 5.57.1 compile and server-render a component using the Pantoken icon action, and monitor future Svelte releases for review.
+
+### Patch Changes
+
+- Updated dependencies [962c640]
+  - @pantoken/web-components@0.7.2
+  - @pantoken/scaffold-base@0.3.5
+
 ## 0.1.40
 
 ### Patch Changes

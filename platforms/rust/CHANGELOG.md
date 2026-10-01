@@ -1,5 +1,16 @@
 # CHANGELOG
 
+## 0.1.22
+
+### Patch Changes
+
+- 962c640: Generate egui colors as `Color32` accessors so the emitted Rust compiles with current egui releases; keep dimensions and iced colors as constants.
+- Updated dependencies [962c640]
+- Updated dependencies [962c640]
+  - @pantoken/tokens@0.8.0
+  - @pantoken/utils@1.2.1
+  - @pantoken/core@0.6.1
+
 ## 0.1.21
 
 ### Patch Changes

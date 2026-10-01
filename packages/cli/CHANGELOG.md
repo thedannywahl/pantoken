@@ -1,5 +1,40 @@
 # CHANGELOG
 
+## 0.1.46
+
+### Patch Changes
+
+- 962c640: Preserve nested color channels in native token resolution, advertise only iOS for UIKit Swift output, and add mise-managed SwiftPM scaffolding and native checks.
+- Updated dependencies [962c640]
+- Updated dependencies [962c640]
+- Updated dependencies [962c640]
+- Updated dependencies [962c640]
+- Updated dependencies [962c640]
+- Updated dependencies [962c640]
+- Updated dependencies [962c640]
+- Updated dependencies [962c640]
+- Updated dependencies [962c640]
+- Updated dependencies [962c640]
+- Updated dependencies [962c640]
+- Updated dependencies [962c640]
+  - @pantoken/android@0.1.24
+  - @pantoken/compose@0.1.24
+  - @pantoken/tokens@0.8.0
+  - @pantoken/swift@0.1.24
+  - @pantoken/rust@0.1.22
+  - @pantoken/scaffold@1.6.1
+  - @pantoken/drupal@0.2.0
+  - @pantoken/hugo@0.2.0
+  - @pantoken/jekyll@0.2.0
+  - @pantoken/mintlify@0.2.0
+  - @pantoken/wordpress@0.2.0
+  - @pantoken/swatches@0.1.20
+  - @pantoken/icon-font@0.1.23
+  - @pantoken/email@0.1.21
+  - @pantoken/flutter@0.1.24
+  - @pantoken/vanilla@0.1.17
+  - @pantoken/pendo@0.4.11
+
 ## 0.1.45
 
 ### Patch Changes

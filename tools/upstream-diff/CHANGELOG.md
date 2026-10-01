@@ -1,5 +1,14 @@
 # CHANGELOG
 
+## 0.1.19
+
+### Patch Changes
+
+- 962c640: Vendor instructure-design-tokens v2.1.0, including segmented-control tokens and updated rebrand interaction colors. Record the reviewed upstream drift baseline.
+- Updated dependencies [962c640]
+  - @pantoken/tokens@0.8.0
+  - @pantoken/plugin-deprecations@0.3.13
+
 ## 0.1.18
 
 ### Patch Changes

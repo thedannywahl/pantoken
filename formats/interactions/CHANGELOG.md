@@ -1,5 +1,18 @@
 # @pantoken/interactions
 
+## 0.5.0
+
+### Minor Changes
+
+- 962c640: Add a token-backed segmented control with three sizes, native single-selection semantics, and optional bidirectional overflow navigation. The selected segment and scroll buttons use the existing resting elevation until their design shadow values are confirmed.
+- 962c640: Add token-backed SkeletonLoader styles with a finite, reduced-motion-aware shimmer and reusable parent-region loading announcements. Document the state-event input boundary.
+
+### Patch Changes
+
+- 962c640: Publish schemas for component capabilities and add schema references to the VS Code custom-data payloads.
+- Updated dependencies [962c640]
+  - @pantoken/utils@1.2.1
+
 ## 0.4.1
 
 ### Patch Changes

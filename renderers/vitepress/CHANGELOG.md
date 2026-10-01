@@ -1,5 +1,11 @@
 # CHANGELOG
 
+## 0.3.0
+
+### Minor Changes
+
+- 962c640: Verify VitePress 1.6.4 with a real site build that includes the Pantoken primary-brand CSS bridge. Monitor future VitePress releases for review.
+
 ## 0.2.3
 
 ### Patch Changes

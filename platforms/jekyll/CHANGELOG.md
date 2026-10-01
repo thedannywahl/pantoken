@@ -1,5 +1,17 @@
 # CHANGELOG
 
+## 0.2.0
+
+### Minor Changes
+
+- 962c640: Verify Jekyll 4.4.1 with a real site build that compiles the generated Pantoken Sass partial, and monitor stable Jekyll releases through GitHub.
+
+### Patch Changes
+
+- @pantoken/components@2.0.1
+  - @pantoken/css@0.4.2
+  - @pantoken/scss@0.1.20
+
 ## 0.1.36
 
 ### Patch Changes

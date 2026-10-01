@@ -1,5 +1,14 @@
 # CHANGELOG
 
+## 0.6.1
+
+### Patch Changes
+
+- 962c640: Preserve nested color channels in native token resolution, advertise only iOS for UIKit Swift output, and add mise-managed SwiftPM scaffolding and native checks.
+- Updated dependencies [962c640]
+  - @pantoken/utils@1.2.1
+  - @pantoken/plugin-kit@0.3.4
+
 ## 0.6.0
 
 ### Minor Changes

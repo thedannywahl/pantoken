@@ -1,5 +1,17 @@
 # CHANGELOG
 
+## 0.2.0
+
+### Minor Changes
+
+- 962c640: Verify Angular custom-element template compilation on 16.2.12 / TypeScript 5.1.6 and 22.2.0 / TypeScript 6.0.3. Monitor Angular releases for review.
+
+### Patch Changes
+
+- Updated dependencies [962c640]
+  - @pantoken/web-components@0.7.2
+  - @pantoken/scaffold-base@0.3.5
+
 ## 0.1.39
 
 ### Patch Changes

@@ -1,5 +1,18 @@
 # CHANGELOG
 
+## 0.2.0
+
+### Minor Changes
+
+- 962c640: Verify Foundation for Sites 6.1.2 through 6.9.0 with real Sass primary-button compilation and a variable-backed CSS overlay. Publish the bounded compatibility record, release monitoring, and package documentation.
+
+### Patch Changes
+
+- Updated dependencies [962c640]
+- Updated dependencies [962c640]
+  - @pantoken/tokens@0.8.0
+  - @pantoken/utils@1.2.1
+
 ## 0.1.4
 
 ### Patch Changes

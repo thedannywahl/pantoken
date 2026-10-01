@@ -1,5 +1,16 @@
 # CHANGELOG
 
+## 0.2.0
+
+### Minor Changes
+
+- 962c640: Verify generated theme discovery, metadata, and libraries with Drupal 10.6.18 and 11.3.2, and monitor stable Drupal core releases through Packagist.
+
+### Patch Changes
+
+- @pantoken/components@2.0.1
+  - @pantoken/css@0.4.2
+
 ## 0.1.35
 
 ### Patch Changes

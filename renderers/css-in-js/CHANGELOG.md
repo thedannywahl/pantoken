@@ -1,5 +1,18 @@
 # CHANGELOG
 
+## 0.2.0
+
+### Minor Changes
+
+- 962c640: Verify Emotion 11.14.0 by server-rendering a styled component with the Pantoken theme. Monitor future Emotion releases for review; styled-components and Stitches remain unverified.
+
+### Patch Changes
+
+- Updated dependencies [962c640]
+- Updated dependencies [962c640]
+  - @pantoken/tokens@0.8.0
+  - @pantoken/utils@1.2.1
+
 ## 0.1.19
 
 ### Patch Changes

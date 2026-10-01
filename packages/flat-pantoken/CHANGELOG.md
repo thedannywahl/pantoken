@@ -1,5 +1,14 @@
 # pantoken
 
+## 0.1.11
+
+### Patch Changes
+
+- Updated dependencies [962c640]
+- Updated dependencies [962c640]
+  - @pantoken/cli@0.1.46
+  - @pantoken/pantoken@0.2.26
+
 ## 0.1.10
 
 ### Patch Changes

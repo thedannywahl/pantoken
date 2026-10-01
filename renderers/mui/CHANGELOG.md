@@ -1,5 +1,18 @@
 # CHANGELOG
 
+## 0.2.0
+
+### Minor Changes
+
+- 962c640: Verify concrete light and dark palettes with MUI createTheme on published 5, 6, 7, and 9 releases. Monitor new MUI releases for review and document the tested API surface.
+
+### Patch Changes
+
+- Updated dependencies [962c640]
+- Updated dependencies [962c640]
+  - @pantoken/tokens@0.8.0
+  - @pantoken/utils@1.2.1
+
 ## 0.1.19
 
 ### Patch Changes

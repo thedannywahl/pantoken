@@ -1,5 +1,17 @@
 # CHANGELOG
 
+## 0.2.0
+
+### Minor Changes
+
+- 962c640: Verify Vue 3.0.0 and 3.5.43 with real SSR apps that install the Pantoken plugin, render an InstUI custom element, and exercise the SSR token fallback. Monitor Vue releases for review.
+
+### Patch Changes
+
+- Updated dependencies [962c640]
+  - @pantoken/web-components@0.7.2
+  - @pantoken/scaffold-base@0.3.5
+
 ## 0.1.40
 
 ### Patch Changes

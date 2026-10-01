@@ -1,5 +1,15 @@
 # CHANGELOG
 
+## 0.2.0
+
+### Minor Changes
+
+- 962c640: Verify markdown-it releases from 14.0.0 through 15.0.2 with a real parser and reuse isolated npm-version checks across adapters.
+
+### Patch Changes
+
+- @pantoken/icons@0.3.2
+
 ## 0.1.16
 
 ### Patch Changes

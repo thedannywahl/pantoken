@@ -1,6 +1,6 @@
 {
   "name": "@pantoken/foundation",
-  "version": "0.1.4",
+  "version": "0.2.0",
   "description": "Theme Foundation for Sites with concrete light-mode Sass settings and a CSS variable overlay.",
   "homepage": "https://pantoken.app",
   "bugs": "https://github.com/thedannywahl/pantoken/issues",

@@ -1,5 +1,11 @@
 # CHANGELOG
 
+## 0.2.0
+
+### Minor Changes
+
+- 962c640: Verify Next 16.0.0 and 16.3.7 production builds that transpile and statically render Instructure UI 11.7.7 with React 19.3.0. Monitor Next releases for review.
+
 ## 0.1.3
 
 ### Patch Changes

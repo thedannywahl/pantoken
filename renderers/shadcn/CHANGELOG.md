@@ -1,5 +1,11 @@
 # CHANGELOG
 
+## 0.3.0
+
+### Minor Changes
+
+- 962c640: Verify Tailwind 4.3.3 compiles a primary utility through the generated shadcn CSS theme aliases, and monitor future Tailwind releases for review.
+
 ## 0.2.0
 
 ### Minor Changes

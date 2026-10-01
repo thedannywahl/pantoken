@@ -1,5 +1,16 @@
 # CHANGELOG
 
+## 0.2.0
+
+### Minor Changes
+
+- 962c640: Verify the current WordPress theme.json v3 output against WordPress 6.6 through 7.1.2 and document the tested host-version floor.
+
+### Patch Changes
+
+- Updated dependencies [962c640]
+  - @pantoken/utils@1.2.1
+
 ## 0.1.16
 
 ### Patch Changes

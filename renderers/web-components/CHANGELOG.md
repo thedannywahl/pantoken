@@ -1,5 +1,18 @@
 # CHANGELOG
 
+## 0.7.2
+
+### Patch Changes
+
+- 962c640: Add an environment-level registration and shadow-output check using Happy DOM. Real-browser rendering and interaction behavior remain unverified.
+- Updated dependencies [962c640]
+- Updated dependencies [962c640]
+- Updated dependencies [962c640]
+  - @pantoken/interactions@0.5.0
+  - @pantoken/components@2.0.1
+  - @pantoken/icons@0.3.2
+  - @pantoken/scaffold-base@0.3.5
+
 ## 0.7.1
 
 ### Patch Changes

@@ -1,5 +1,16 @@
 # CHANGELOG
 
+## 0.2.0
+
+### Minor Changes
+
+- 962c640: Verify Tailwind 4.0.17 through 4.3.3 with real CLI builds and document the v4 config and generated utility names.
+
+### Patch Changes
+
+- Updated dependencies [962c640]
+  - @pantoken/tokens@0.8.0
+
 ## 0.1.13
 
 ### Patch Changes
