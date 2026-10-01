@@ -1,5 +1,15 @@
 # CHANGELOG
 
+## 0.2.0
+
+### Minor Changes
+
+- 962c640: Verify webpack 5.61.0 through 5.111.1 with real builds that emit the token CSS asset. Use webpack-sources directly so the plugin works with webpack 5 compilers that lack the newer compiler.webpack property.
+
+### Patch Changes
+
+- @pantoken/css@0.4.2
+
 ## 0.1.23
 
 ### Patch Changes

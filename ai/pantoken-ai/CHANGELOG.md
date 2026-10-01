@@ -1,5 +1,16 @@
 # CHANGELOG
 
+## 1.4.0
+
+### Minor Changes
+
+- 962c640: Publish the schema-linked target compatibility registry on the documentation site and in installed agent guidance.
+
+### Patch Changes
+
+- Updated dependencies [962c640]
+  - @pantoken/scaffold@1.6.1
+
 ## 1.3.4
 
 ### Patch Changes

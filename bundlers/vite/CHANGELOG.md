@@ -1,5 +1,17 @@
 # CHANGELOG
 
+## 0.2.0
+
+### Minor Changes
+
+- 962c640: Verify Vite 8.0.0 through 8.3.1 with real builds of the virtual modules and HTML stylesheet injection.
+
+### Patch Changes
+
+- Updated dependencies [962c640]
+  - @pantoken/tokens@0.8.0
+  - @pantoken/css@0.4.2
+
 ## 0.1.23
 
 ### Patch Changes

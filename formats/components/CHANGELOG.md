@@ -1,5 +1,15 @@
 # CHANGELOG
 
+## 2.0.1
+
+### Patch Changes
+
+- Updated dependencies [962c640]
+- Updated dependencies [962c640]
+  - @pantoken/tokens@0.8.0
+  - @pantoken/utils@1.2.1
+  - @pantoken/scaffold-base@0.3.5
+
 ## 2.0.0
 
 ### Major Changes

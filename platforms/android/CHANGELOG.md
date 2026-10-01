@@ -1,5 +1,15 @@
 # CHANGELOG
 
+## 0.1.24
+
+### Patch Changes
+
+- 962c640: Add Android API 35 resource compilation and linking verification for generated values and VectorDrawables.
+- Updated dependencies [962c640]
+- Updated dependencies [962c640]
+  - @pantoken/tokens@0.8.0
+  - @pantoken/core@0.6.1
+
 ## 0.1.23
 
 ### Patch Changes

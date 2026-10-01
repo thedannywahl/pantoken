@@ -1,5 +1,16 @@
 # CHANGELOG
 
+## 0.2.0
+
+### Minor Changes
+
+- 962c640: Verify the PostCSS plugin against exact releases from 8.0.0 through 8.5.28 and publish the tested support window.
+
+### Patch Changes
+
+- 962c640: Verify markdown-it releases from 14.0.0 through 15.0.2 with a real parser and reuse isolated npm-version checks across adapters.
+- @pantoken/css@0.4.2
+
 ## 0.1.23
 
 ### Patch Changes

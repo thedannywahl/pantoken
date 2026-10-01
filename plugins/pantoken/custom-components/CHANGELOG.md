@@ -1,5 +1,18 @@
 # @pantoken/plugin-custom-components
 
+## 0.7.0
+
+### Minor Changes
+
+- 962c640: Add a token-backed segmented control with three sizes, native single-selection semantics, and optional bidirectional overflow navigation. The selected segment and scroll buttons use the existing resting elevation until their design shadow values are confirmed.
+- 962c640: Add token-backed SkeletonLoader styles with a finite, reduced-motion-aware shimmer and reusable parent-region loading announcements. Document the state-event input boundary.
+- 962c640: Support explicitly applying the skeleton loader's default text type and medium size modifiers.
+
+### Patch Changes
+
+- 962c640: Document SkeletonLoader's root-English API, demo, registry installation, and parent loading-state contract. Correct its repeatable-row CSS API annotation.
+- @pantoken/plugin-kit@0.3.4
+
 ## 0.6.0
 
 ### Minor Changes

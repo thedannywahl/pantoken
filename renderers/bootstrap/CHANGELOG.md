@@ -1,5 +1,11 @@
 # CHANGELOG
 
+## 0.2.0
+
+### Minor Changes
+
+- 962c640: Theme Bootstrap 5.2.0–5.3.8 body and primary-button variables with Instructure tokens, backed by real stylesheet checks.
+
 ## 0.1.3
 
 ### Patch Changes

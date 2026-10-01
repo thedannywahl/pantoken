@@ -1,5 +1,17 @@
 # CHANGELOG
 
+## 0.2.0
+
+### Minor Changes
+
+- 962c640: Verify React 19.3.0 server rendering for the custom Icon element and SSR-safe token fallback. Document the exact tested surface and monitor new React releases.
+
+### Patch Changes
+
+- Updated dependencies [962c640]
+  - @pantoken/web-components@0.7.2
+  - @pantoken/scaffold-base@0.3.5
+
 ## 0.1.40
 
 ### Patch Changes

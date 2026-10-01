@@ -1,5 +1,111 @@
 # CHANGELOG
 
+## 0.2.26
+
+### Patch Changes
+
+- 962c640: Publish schemas for component capabilities and add schema references to the VS Code custom-data payloads.
+- Updated dependencies [962c640]
+- Updated dependencies [962c640]
+- Updated dependencies [962c640]
+- Updated dependencies [962c640]
+- Updated dependencies [962c640]
+- Updated dependencies [962c640]
+- Updated dependencies [962c640]
+- Updated dependencies [962c640]
+- Updated dependencies [962c640]
+- Updated dependencies [962c640]
+- Updated dependencies [962c640]
+- Updated dependencies [962c640]
+- Updated dependencies [962c640]
+- Updated dependencies [962c640]
+- Updated dependencies [962c640]
+- Updated dependencies [962c640]
+- Updated dependencies [962c640]
+- Updated dependencies [962c640]
+- Updated dependencies [962c640]
+- Updated dependencies [962c640]
+- Updated dependencies [962c640]
+- Updated dependencies [962c640]
+- Updated dependencies [962c640]
+- Updated dependencies [962c640]
+- Updated dependencies [962c640]
+- Updated dependencies [962c640]
+- Updated dependencies [962c640]
+- Updated dependencies [962c640]
+- Updated dependencies [962c640]
+- Updated dependencies [962c640]
+- Updated dependencies [962c640]
+- Updated dependencies [962c640]
+- Updated dependencies [962c640]
+- Updated dependencies [962c640]
+- Updated dependencies [962c640]
+- Updated dependencies [962c640]
+- Updated dependencies [962c640]
+- Updated dependencies [962c640]
+- Updated dependencies [962c640]
+  - @pantoken/android@0.1.24
+  - @pantoken/compose@0.1.24
+  - @pantoken/web-components@0.7.2
+  - @pantoken/tokens@0.8.0
+  - @pantoken/swift@0.1.24
+  - @pantoken/cli@0.1.46
+  - @pantoken/interactions@0.5.0
+  - @pantoken/plugin-custom-components@0.7.0
+  - @pantoken/angular@0.2.0
+  - @pantoken/astro@0.2.0
+  - @pantoken/bootstrap@0.2.0
+  - @pantoken/css-in-js@0.2.0
+  - @pantoken/docusaurus@0.2.0
+  - @pantoken/drupal@0.2.0
+  - @pantoken/foundation@0.2.0
+  - @pantoken/hugo@0.2.0
+  - @pantoken/jekyll@0.2.0
+  - @pantoken/markdown-it@0.2.0
+  - @pantoken/postcss@0.2.0
+  - @pantoken/mintlify@0.2.0
+  - @pantoken/mui@0.2.0
+  - @pantoken/next@0.2.0
+  - @pantoken/panda@0.2.0
+  - @pantoken/react-markdown@0.2.0
+  - @pantoken/react@0.2.0
+  - @pantoken/rehype@0.2.0
+  - @pantoken/shadcn@0.3.0
+  - @pantoken/storybook@0.2.0
+  - @pantoken/svelte@0.2.0
+  - @pantoken/tailwind@0.2.0
+  - @pantoken/tinymce@0.6.0
+  - @pantoken/vite@0.2.0
+  - @pantoken/vitepress@0.3.0
+  - @pantoken/vue@0.2.0
+  - @pantoken/webpack@0.2.0
+  - @pantoken/wordpress@0.2.0
+  - @pantoken/swatches@0.1.20
+  - @pantoken/components@2.0.1
+  - @pantoken/css@0.4.2
+  - @pantoken/dtcg@0.1.18
+  - @pantoken/icons@0.3.2
+  - @pantoken/less@0.1.20
+  - @pantoken/scss@0.1.20
+  - @pantoken/stylus@0.1.20
+  - @pantoken/email@0.1.21
+  - @pantoken/flutter@0.1.24
+  - @pantoken/vanilla@0.1.17
+  - @pantoken/plugin-custom-theme-colors@0.3.2
+  - @pantoken/plugin-primitives@1.0.6
+  - @pantoken/plugin-stacking@1.0.10
+  - @pantoken/plugin-theme-custom-media@0.2.9
+  - @pantoken/pendo@0.4.11
+  - @pantoken/react-native@0.1.20
+  - @pantoken/figma@0.1.17
+  - @pantoken/scope@0.4.3
+  - @pantoken/plugin-custom-icons@0.3.14
+  - @pantoken/plugin-layouts@0.5.2
+  - @pantoken/plugin-logos@0.5.3
+  - @pantoken/plugin-simple-icons@0.3.12
+  - @pantoken/plugin-transition@1.0.9
+  - @pantoken/plugin-visual-debug@0.1.20
+
 ## 0.2.25
 
 ### Patch Changes

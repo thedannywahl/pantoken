@@ -1,5 +1,15 @@
 # CHANGELOG
 
+## 0.2.0
+
+### Minor Changes
+
+- 962c640: Verify SVG icon rendering through real rehype 13.0.0–13.0.2 pipelines with rehype-raw 7.0.0.
+
+### Patch Changes
+
+- @pantoken/icons@0.3.2
+
 ## 0.1.16
 
 ### Patch Changes

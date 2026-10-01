@@ -1,5 +1,17 @@
 # CHANGELOG
 
+## 0.2.0
+
+### Minor Changes
+
+- 962c640: Verify the Starlight token injection with real site builds on Starlight 0.35.0 / Astro 5.18.2 and Starlight 0.42.4 / Astro 7.3.5. Monitor Starlight releases for review.
+
+### Patch Changes
+
+- Updated dependencies [962c640]
+  - @pantoken/tokens@0.8.0
+  - @pantoken/css@0.4.2
+
 ## 0.1.23
 
 ### Patch Changes

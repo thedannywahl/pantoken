@@ -1,5 +1,18 @@
 # CHANGELOG
 
+## 0.2.0
+
+### Minor Changes
+
+- 962c640: Verify Panda CSS 1.12.1 and 2.0.0 with real builds that extract a utility using the Pantoken brand token. Monitor future Panda releases for review.
+
+### Patch Changes
+
+- Updated dependencies [962c640]
+- Updated dependencies [962c640]
+  - @pantoken/tokens@0.8.0
+  - @pantoken/utils@1.2.1
+
 ## 0.1.19
 
 ### Patch Changes

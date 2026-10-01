@@ -1,5 +1,16 @@
 # CHANGELOG
 
+## 0.1.24
+
+### Patch Changes
+
+- 962c640: Preserve nested color channels in native token resolution, advertise only iOS for UIKit Swift output, and add mise-managed SwiftPM scaffolding and native checks.
+- 962c640: Record Xcode 27/iOS 27 simulator runtime evidence for generated token values and the optional icon asset catalog. Do not infer an iOS 15 runtime floor.
+- Updated dependencies [962c640]
+- Updated dependencies [962c640]
+  - @pantoken/tokens@0.8.0
+  - @pantoken/core@0.6.1
+
 ## 0.1.23
 
 ### Patch Changes

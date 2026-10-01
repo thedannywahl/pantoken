@@ -1,5 +1,27 @@
 # @pantoken/tinymce
 
+## 0.6.0
+
+### Minor Changes
+
+- 962c640: Verify TinyMCE 8.9.2 PluginManager registration and Pantoken callback initialization. Browser editor rendering and visual UI behavior remain unverified.
+
+### Patch Changes
+
+- Updated dependencies [962c640]
+- Updated dependencies [962c640]
+- Updated dependencies [962c640]
+- Updated dependencies [962c640]
+- Updated dependencies [962c640]
+  - @pantoken/tokens@0.8.0
+  - @pantoken/plugin-custom-components@0.7.0
+  - @pantoken/components@2.0.1
+  - @pantoken/plugin-custom-icons@0.3.14
+  - @pantoken/plugin-layouts@0.5.2
+  - @pantoken/plugin-logos@0.5.3
+  - @pantoken/plugin-lucide-lab@0.4.2
+  - @pantoken/plugin-simple-icons@0.3.12
+
 ## 0.5.0
 
 ### Minor Changes

@@ -1,5 +1,11 @@
 # CHANGELOG
 
+## 0.2.0
+
+### Minor Changes
+
+- 962c640: Verify the primary-color and background CSS-variable bridge against Infima CSS in Docusaurus theme-classic 3.0.0 through 3.10.2, and monitor new theme releases for review.
+
 ## 0.1.3
 
 ### Patch Changes

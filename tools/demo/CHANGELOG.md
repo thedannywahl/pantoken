@@ -1,5 +1,11 @@
 # CHANGELOG
 
+## 0.5.1
+
+### Patch Changes
+
+- 962c640: Apply custom palette scales and color-scheme updates inside live-demo iframes.
+
 ## 0.5.0
 
 ### Minor Changes

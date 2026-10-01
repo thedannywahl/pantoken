@@ -1,5 +1,11 @@
 # CHANGELOG
 
+## 0.8.0
+
+### Minor Changes
+
+- 962c640: Vendor instructure-design-tokens v2.1.0, including segmented-control tokens and updated rebrand interaction colors. Record the reviewed upstream drift baseline.
+
 ## 0.7.0
 
 ### Minor Changes

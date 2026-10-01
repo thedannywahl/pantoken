@@ -1,5 +1,11 @@
 # CHANGELOG
 
+## 1.2.1
+
+### Patch Changes
+
+- 962c640: Preserve nested color channels in native token resolution, advertise only iOS for UIKit Swift output, and add mise-managed SwiftPM scaffolding and native checks.
+
 ## 1.2.0
 
 ### Minor Changes
