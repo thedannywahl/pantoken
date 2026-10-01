@@ -167,7 +167,7 @@ buildTokens({
 Nekaj stvari, ki so bile prej vtičniki, zdaj prihaja v `@pantoken/components`, ker jih toliko komponent potrebuje iz škatle: elevacijske sence (`--instui-elevation-*`, v `components.css`), fokusni obroček (v `base.css` — vsak fokusabilen dobi to, ko pantoken upravlja stran), in Instructure brand pisave (Atkinson Hyperlegible Next: `base.css` uporablja `--instui-font-family-base`; opcijski
 `@pantoken/components/fonts.css` naloži `@font-face` woff2).
 
-## Barve teme
+## Barve teme {#theme-colors}
 
 `@pantoken/plugin-custom-theme-colors` izda en `[data-pantoken-color="…"]` blok na paleto
 (`navy`, `blue`, `green`, `red`, `orange`, `grey`, `plum`, `violet`, `stone`, `sky`, `honey`, `sea`,

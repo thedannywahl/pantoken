@@ -65,7 +65,7 @@ expect(unknownReferences(myBridgeCss, tokens)).toEqual([]);
 - `@pantoken/plugin-prune-custom-props` — een PostCSS-plugin (geen pantoken-plugin) die ongebruikte custom properties uit een stylesheet verwijdert.
 - `@pantoken/plugin-custom-theme-colors` — rebrandt een pagina door één attribuut in te stellen
   (`data-pantoken-color`) op een van 13 paletten, of op `custom` voor een willekeurige merk-hex. Zie
-  [Thema kleuren](#thema-kleuren).
+  [Thema kleuren](#theme-colors).
 - `@pantoken/plugin-custom-components` — token-ondersteunde custom controls inclusief SegmentedControl
   en SkeletonLoader.
 
@@ -175,7 +175,7 @@ ring (in `base.css` — elke focusable krijgt het wanneer pantoken de pagina beh
 fonts (Atkinson Hyperlegible Next: `base.css` past `--instui-font-family-base` toe; de opt-in
 `@pantoken/components/fonts.css` laadt de `@font-face` woff2s).
 
-## Thema kleuren
+## Thema kleuren {#theme-colors}
 
 `@pantoken/plugin-custom-theme-colors` genereert één `[data-pantoken-color="…"]` blok per palet
 (`navy`, `blue`, `green`, `red`, `orange`, `grey`, `plum`, `violet`, `stone`, `sky`, `honey`, `sea`,

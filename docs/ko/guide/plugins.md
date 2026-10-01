@@ -136,7 +136,7 @@ buildTokens({
 
 예전에는 플러그인이었던 몇 가지는 이제 `@pantoken/components` 에 번들로 포함되어 많은 컴포넌트가 기본적으로 필요로 합니다: elevation 섀도우들 (`--instui-elevation-*`, `components.css` 내), 포커스-아웃라인 링 ( `base.css` 내 — pantoken이 페이지를 소유할 때 모든 포커서블에 적용), 그리고 Instructure 브랜드 폰트들(Atkinson Hyperlegible Next: `base.css` 는 `--instui-font-family-base` 를 적용; 옵트-인 `@pantoken/components/fonts.css` 는 `@font-face` woff2 파일들을 로드).
 
-## 테마 색상
+## 테마 색상 {#theme-colors}
 
 `@pantoken/plugin-custom-theme-colors` 은 팔레트당 하나의 `[data-pantoken-color="…"]` 블록을 배출합니다
 (`navy`, `blue`, `green`, `red`, `orange`, `grey`, `plum`, `violet`, `stone`, `sky`, `honey`, `sea`,

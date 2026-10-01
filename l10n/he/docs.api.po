@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: pantoken\n"
-"PO-Revision-Date: 2026-10-01 03:36+0000\n"
+"PO-Revision-Date: 2026-10-01 15:11+0000\n"
 "Last-Translator: pantoken localization engine\n"
 "Language-Team: pantoken\n"
 "MIME-Version: 1.0\n"
@@ -877,13 +877,13 @@ msgid "Give an image avatar a meaningful `alt` (the person's name), not a generi
 msgstr "תנו לתמונת פרופיל מבוססת תמונה `alt` משמעותית (שמו של האדם), לא \"avatar\" גנרי; לפרופילים שמציגים רק אותיות, העדיפו תוכן של שם אמיתי (טקסט יחיד, data-initials, .name, או .first-name/.last-name) על פני אותיות מקוצרות מראש, כדי שטכנולוגיות סיוע יודיעו את השם האמיתי."
 
 #: css/avatar.md
-#, no-c-format
+#, no-c-format, pantoken-verbatim
 msgctxt "docs.api:prose"
 msgid "LH"
 msgstr "LH"
 
 #: css/avatar.md
-#, no-c-format
+#, no-c-format, pantoken-verbatim
 msgctxt "docs.api:prose"
 msgid "AI"
 msgstr "AI"
@@ -898,19 +898,19 @@ msgstr "ד\"ר Nguyen Van Thoc"
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "Miguel Sanchez"
-msgstr "Miguel Sanchez"
+msgstr "מיגל סאנצ'ז"
 
 #: css/avatar.md
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "Miguel"
-msgstr "Miguel"
+msgstr "מיגל"
 
 #: css/avatar.md
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "Sanchez"
-msgstr "Sanchez"
+msgstr "סאנצ'ז"
 
 #: css/avatar.md
 #, no-c-format
@@ -2280,7 +2280,7 @@ msgstr "תיבת סימון מקומית `<input type=\"checkbox\">` מניעה 
 #, fuzzy, no-c-format
 msgctxt "docs.api:prose"
 msgid "Checkbox\n"
-msgstr "checkbox"
+msgstr "תיבת סימון\n"
 
 #: css/checkbox.md
 #, fuzzy, no-c-format

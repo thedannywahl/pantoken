@@ -165,7 +165,7 @@ eu trochi allan o'r blwch: cysgodau codiad (`--instui-elevation-*`, yn `componen
 Instructure (Atkinson Hyperlegible Next: mae `base.css` yn cymhwyso `--instui-font-family-base`; mae'r
 `@pantoken/components/fonts.css` dewisol yn llwytho'r woff2s `@font-face`).
 
-## Lliwiau Themâu
+## Lliwiau Themâu {#theme-colors}
 
 Mae `@pantoken/plugin-custom-theme-colors` yn allyrru bloc `[data-pantoken-color="…"]` fesul palette
 (`navy`, `blue`, `green`, `red`, `orange`, `grey`, `plum`, `violet`, `stone`, `sky`, `honey`, `sea`,

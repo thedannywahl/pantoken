@@ -169,7 +169,7 @@ por defecto: sombras de elevación (`--instui-elevation-*`, en `components.css`)
 (Atkinson Hyperlegible Next: `base.css` aplica `--instui-font-family-base`; el opt-in
 `@pantoken/components/fonts.css` carga los woff2s `@font-face`).
 
-## Colores del tema
+## Colores del tema {#theme-colors}
 
 `@pantoken/plugin-custom-theme-colors` emite un bloque `[data-pantoken-color="…"]` por paleta
 (`navy`, `blue`, `green`, `red`, `orange`, `grey`, `plum`, `violet`, `stone`, `sky`, `honey`, `sea`,

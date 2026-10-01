@@ -151,7 +151,7 @@ buildTokens({
 
 Néhány dolog, amelyek korábban beépülők voltak, most a `@pantoken/components`-ben érkeznek, mivel sok komponensnek alapból szüksége van rájuk: emelési árnyékok (`--instui-elevation-*`, a `components.css`-ban), a focus-outline gyűrű (a `base.css`-ben — minden fókuszolható megkapja, amikor a pantoken birtokolja az oldalt), és az Instructure márkabetűtípusok (Atkinson Hyperlegible Next: a `base.css` alkalmazza a `--instui-font-family-base`-et; az opcionális `@pantoken/components/fonts.css` tölti be a `@font-face` woff2-okat).
 
-## Téma színek
+## Téma színek {#theme-colors}
 
 A `@pantoken/plugin-custom-theme-colors` egy `[data-pantoken-color="…"]` blokkot bocsát ki palettánként
 (`navy`, `blue`, `green`, `red`, `orange`, `grey`, `plum`, `violet`, `stone`, `sky`, `honey`, `sea`,

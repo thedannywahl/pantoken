@@ -136,7 +136,7 @@ buildTokens({
 
 一些過去曾是外掛的功能現在直接包含在 `@pantoken/components` 中，因為許多元件開箱即用就需要它們：升降陰影（`--instui-elevation-*`，位於 `components.css` 中）、焦點輪廓環（位於 `base.css` — 當 pantoken 管理頁面時每個可聚焦項目都會得到它），以及 Instructure 品牌字型（Atkinson Hyperlegible Next：`base.css` 應用 `--instui-font-family-base`；選用的 `@pantoken/components/fonts.css` 會載入 `@font-face` woff2s）。
 
-## 主題色彩
+## 主題色彩 {#theme-colors}
 
 `@pantoken/plugin-custom-theme-colors` 對每個調色板輸出一個 `[data-pantoken-color="…"]` 區塊
 （`navy`、`blue`、`green`、`red`、`orange`、`grey`、`plum`、`violet`、`stone`、`sky`、`honey`、`sea`、

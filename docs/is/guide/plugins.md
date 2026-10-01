@@ -177,7 +177,7 @@ hringurinn (í `base.css` — hvert fókus-hæft fær hann þegar pantoken á s�
 leturgerðir (Atkinson Hyperlegible Next: `base.css` beitir `--instui-font-family-base`; valfrjálsi
 `@pantoken/components/fonts.css` hleður `@font-face` woff2-skrám).
 
-## Þemu-litir (Theme colors)
+## Þemu-litir (Theme colors) {#theme-colors}
 
 `@pantoken/plugin-custom-theme-colors` gefur eitt `[data-pantoken-color="…"]` blokk fyrir hvert litasafn
 (`navy`, `blue`, `green`, `red`, `orange`, `grey`, `plum`, `violet`, `stone`, `sky`, `honey`, `sea`,

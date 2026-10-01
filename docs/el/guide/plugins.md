@@ -176,7 +176,7 @@ buildTokens({
 του brand Instructure (Atkinson Hyperlegible Next: `base.css` εφαρμόζει `--instui-font-family-base`; το opt-in
 `@pantoken/components/fonts.css` φορτώνει τα `@font-face` woff2s).
 
-## Χρώματα θέματος
+## Χρώματα θέματος {#theme-colors}
 
 `@pantoken/plugin-custom-theme-colors` εκπέμπει ένα `[data-pantoken-color="…"]` block ανά παλέτα
 (`navy`, `blue`, `green`, `red`, `orange`, `grey`, `plum`, `violet`, `stone`, `sky`, `honey`, `sea`,

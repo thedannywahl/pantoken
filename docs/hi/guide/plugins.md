@@ -138,7 +138,7 @@ buildTokens({
 
 कुछ चीजें जो पहले प्लगइन्स थीं अब `@pantoken/components` में शिप होती हैं, क्योंकि बहुत से कंपोनेंट्स को ये आउट-ऑफ-द-बॉक्स चाहिए: एलेवेशन शैडोज़ (`--instui-elevation-*`, `components.css` में), फोकस-आउटलाइन रिंग ( `base.css` में — जब pantoken पेज का मालिक होता है तो हर फोकसेबल इसे पाता है), और Instructure ब्रांड फॉण्ट्स (Atkinson Hyperlegible Next: `base.css` `--instui-font-family-base` लागू करता है; ऑप्ट-इन `@pantoken/components/fonts.css` `@font-face` woff2s लोड करता है)।
 
-## थीम रंग
+## थीम रंग {#theme-colors}
 
 `@pantoken/plugin-custom-theme-colors` प्रत्येक पेलट के लिए एक `[data-pantoken-color="…"]` ब्लॉक इमिट करता है
 (`navy`, `blue`, `green`, `red`, `orange`, `grey`, `plum`, `violet`, `stone`, `sky`, `honey`, `sea`,

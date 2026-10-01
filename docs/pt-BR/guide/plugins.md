@@ -165,7 +165,7 @@ pronto para uso: sombras de elevação (`--instui-elevation-*`, em `components.c
 (em `base.css` — todo focável o recebe quando o pantoken controla a página), e as fontes da marca Instructure
 (Atkinson Hyperlegible Next: `base.css` aplica `--instui-font-family-base`; o `@pantoken/components/fonts.css` opt-in carrega os woff2s `@font-face`).
 
-## Cores do tema
+## Cores do tema {#theme-colors}
 
 `@pantoken/plugin-custom-theme-colors` emite um bloco `[data-pantoken-color="…"]` por paleta
 (`navy`, `blue`, `green`, `red`, `orange`, `grey`, `plum`, `violet`, `stone`, `sky`, `honey`, `sea`,

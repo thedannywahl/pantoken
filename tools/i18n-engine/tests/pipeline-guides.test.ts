@@ -14,6 +14,7 @@ describe("docs.guides PO migration", () => {
       .filter((entry) => entry.isDirectory() && entry.name !== "en")
       .filter((entry) => readdirSync(join(root, "l10n", entry.name)).includes("docs.guides.po"))
       .map((entry) => entry.name);
+    const compatibilitySource = readFileSync(join(root, "docs", "compatibility.md"), "utf8");
 
     for (const locale of locales) {
       const entries = parsePo(readFileSync(join(root, "l10n", locale, "docs.guides.po"), "utf8"));
@@ -32,8 +33,20 @@ describe("docs.guides PO migration", () => {
         expect(normalizeWholeFileMarkdown(translated === "" ? source : translated) + "\n").toBe(
           readFileSync(join(root, "docs", locale, file), "utf8"),
         );
+        if (file === "guide/plugins.md") {
+          expect(translated).toMatch(/^## .+ \{#theme-colors\}$/mu);
+          expect(translated).toContain("](#theme-colors)");
+        }
       }
       expect(translations).toHaveLength(files.length);
+
+      const compatibility = entries.find(
+        (entry) => !entry.obsolete && entry.msgid === compatibilitySource,
+      );
+      expect(compatibility?.msgstr).not.toBe("");
+      expect(normalizeWholeFileMarkdown(compatibility?.msgstr ?? compatibilitySource) + "\n").toBe(
+        readFileSync(join(root, "docs", locale, "compatibility.md"), "utf8"),
+      );
     }
   });
 });

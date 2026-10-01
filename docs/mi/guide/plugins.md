@@ -60,7 +60,7 @@ expect(unknownReferences(myBridgeCss, tokens)).toEqual([]);
   ngā rawa ritenga-kāore i whakamahia i tētahi pepa-kāhua (stylesheet).
 - `@pantoken/plugin-custom-theme-colors` — ka whakahōu i te waitohu whārangi mā te tautuhi i tētahi āhuatanga
   (`data-pantoken-color`) ki tētahi o ngā papa tae 13, rānei ki `custom` mō tētahi hex waitohu. Tirohia
-  [Ngā tae Kaupapa](/#theme-colors).
+  [Ngā tae Kaupapa](#theme-colors).
 - `@pantoken/plugin-custom-components` — ngā whakatikatika ritengakore tautoko-tuhu (token-backed) pērā i SegmentedControl
   me SkeletonLoader.
 
@@ -148,7 +148,7 @@ buildTokens({
 
 He mea iti e kawea ai i mua i ētahi tārua: kei roto i `@pantoken/components` inā te nui o ngā waahanga e hiahiatia ana e aua waahanga i waho o te pouaka: ngā atahanga atahanga-elevation (`--instui-elevation-*`, i roto i `components.css`), te porowhita arotahi āro (focus-outline ring) (i roto i `base.css` — ka riro mā te pantoken te whiwhi mō ia mea aro-wāhanga), me ngā momo momotuhi waitohu Instructure (Atkinson Hyperlegible Next: `base.css` ka whakamahi i `--instui-font-family-base`; ko te kōwhiringa kōwhiri `@pantoken/components/fonts.css` ka uta i ngā woff2s `@font-face`).
 
-## Ngā tae Kaupapa (Theme colors)
+## Ngā tae Kaupapa (Theme colors) {#theme-colors}
 
 Ka whakaputa e `@pantoken/plugin-custom-theme-colors` tētahi poraka `[data-pantoken-color="…"]` mō ia papa tae
 (`navy`, `blue`, `green`, `red`, `orange`, `grey`, `plum`, `violet`, `stone`, `sky`, `honey`, `sea`,

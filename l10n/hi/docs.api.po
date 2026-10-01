@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: pantoken\n"
-"PO-Revision-Date: 2026-10-01 03:43+0000\n"
+"PO-Revision-Date: 2026-10-01 15:11+0000\n"
 "Last-Translator: pantoken localization engine\n"
 "Language-Team: pantoken\n"
 "MIME-Version: 1.0\n"
@@ -877,13 +877,13 @@ msgid "Give an image avatar a meaningful `alt` (the person's name), not a generi
 msgstr "छवि अवतार के लिए एक अर्थपूर्ण `alt` (व्यक्ति का नाम) दें, सामान्य \"avatar\" नहीं; केवल प्रारंभिक अक्षरों वाले अवतार के लिए, सहायक तकनीक वास्तविक नाम घोषित करे इसलिए वास्तविक नाम का कंटेंट (सादा टेक्स्ट, data-initials, .name, या .first-name/.last-name) पूर्व-संक्षेपित अक्षरों के बजाय प्राथमिकता दें।"
 
 #: css/avatar.md
-#, no-c-format
+#, no-c-format, pantoken-verbatim
 msgctxt "docs.api:prose"
 msgid "LH"
 msgstr "LH"
 
 #: css/avatar.md
-#, no-c-format
+#, no-c-format, pantoken-verbatim
 msgctxt "docs.api:prose"
 msgid "AI"
 msgstr "AI"
@@ -898,19 +898,19 @@ msgstr "डॉ. Nguyen Van Thoc"
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "Miguel Sanchez"
-msgstr "Miguel Sanchez"
+msgstr "मिगुएल सांचेज़"
 
 #: css/avatar.md
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "Miguel"
-msgstr "Miguel"
+msgstr "मिगुएल"
 
 #: css/avatar.md
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "Sanchez"
-msgstr "Sanchez"
+msgstr "सांचेज़"
 
 #: css/avatar.md
 #, no-c-format

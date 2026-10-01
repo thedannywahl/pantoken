@@ -170,7 +170,7 @@ Kilka rzeczy, które kiedyś były wtyczkami, teraz dołączone są w `@pantoken
 (w `base.css` — każdy element fokusowalny go otrzymuje gdy pantoken zarządza stroną), oraz fonty marki Instructure (Atkinson Hyperlegible Next: `base.css` stosuje `--instui-font-family-base`; opcjonalny
 `@pantoken/components/fonts.css` ładuje pliki `@font-face` w formacie woff2).
 
-## Kolory motywu
+## Kolory motywu {#theme-colors}
 
 `@pantoken/plugin-custom-theme-colors` emituje jeden blok `[data-pantoken-color="…"]` na paletę
 (`navy`, `blue`, `green`, `red`, `orange`, `grey`, `plum`, `violet`, `stone`, `sky`, `honey`, `sea`,

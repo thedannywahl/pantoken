@@ -136,12 +136,12 @@ buildTokens({
 
 Մի քանի այն բանից, ինչը նախկինում եղել է պլագին, այժմ առաքվում է `@pantoken/components`-ում, քանի որ շատ կոմպոնենտներ դրանց կարիքն ունեն՝ դուրս տուփից. elevation ստվերները (`--instui-elevation-*`, `components.css`), focus-outline օղակը (`base.css`-ում — բոլոր focus-կարողները ստանում են այն, երբ pantoken-ը տիրապետում է էջին), և Instructure-ի բրենդ فونտերը (Atkinson Hyperlegible Next: `base.css` կիրառում է `--instui-font-family-base`; opt-in `@pantoken/components/fonts.css` լիցքավորում է `@font-face` woff2-երը):
 
-## Թեմայի գույներ
+## Թեմայի գույներ {#theme-colors}
 
 `@pantoken/plugin-custom-theme-colors` արձակում է մեկ `[data-pantoken-color="…"]` բլոկ յուրաքանչյուր պալետայի համար
 (`navy`, `blue`, `green`, `red`, `orange`, `grey`, `plum`, `violet`, `stone`, `sky`, `honey`, `sea`,
 `aurora`). Յուրաքանչյուր բլոկը ուղղորդում է brand primitives-ները (`--instui-primitive-color-navy-*` և `-blue-*`) ընտրված պալետային: Դա նաև վերամկրտում է brand մակերեսները, որոնք upstream-ը բրաշել էր որպես literal hex, պահպանելով դրանց baked alpha-ն `color-mix()`-ի միջոցով: Սեմանտիկ status գույները, արտահայտված կապույտ ակցենտները և elevation ստվերները տեղում են: Փորձեք այն
-[swatch-based theming demo]-ում (https://stackblitz.com/edit/vitejs-vite-sg9oy7ln?file=index.html):
+[swatch-based theming demo]-ում ([StackBlitz demo](https://stackblitz.com/edit/vitejs-vite-sg9oy7ln?file=index.html)):
 
 ```html
 <html data-pantoken-color="sea"></html>

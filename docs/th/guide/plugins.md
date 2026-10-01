@@ -153,7 +153,7 @@ buildTokens({
 (ใน `base.css` — ทุกองค์ประกอบที่รับโฟกัสจะได้มันเมื่อ pantoken เป็นเจ้าของหน้า), และฟอนต์แบรนด์ Instructure (Atkinson Hyperlegible Next: `base.css` ใช้ `--instui-font-family-base`; ตัวเลือก opt-in
 `@pantoken/components/fonts.css` โหลด `@font-face` woff2s)
 
-## สีธีม
+## สีธีม {#theme-colors}
 
 `@pantoken/plugin-custom-theme-colors` ส่งออกบล็อก `[data-pantoken-color="…"]` หนึ่งบล็อกต่อพาเลต
 (`navy`, `blue`, `green`, `red`, `orange`, `grey`, `plum`, `violet`, `stone`, `sky`, `honey`, `sea`,

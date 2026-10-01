@@ -136,11 +136,11 @@ buildTokens({
 
 כמה דברים שבעבר היו תוספים עכשיו נארזים ב‑`@pantoken/components`, מאחר שכל כך הרבה רכיבים צריכים אותם מחוץ לקופסה: צללי elevation (`--instui-elevation-*`, ב‑`components.css`), טבעת ה‑focus-outline (ב‑`base.css` — כל ניתן‑פוקוס מקבל אותה כאשר pantoken שולט בדף), וגופני המותג של Instructure (Atkinson Hyperlegible Next: `base.css` מיישם `--instui-font-family-base`; ה‑opt‑in `@pantoken/components/fonts.css` טוען את ה‑woff2s של `@font-face`).
 
-## צבעי נושא
+## צבעי נושא {#theme-colors}
 
 `@pantoken/plugin-custom-theme-colors` מפיק בלוק `[data-pantoken-color="…"]` יחיד לכל פלטה
 (`navy`, `blue`, `green`, `red`, `orange`, `grey`, `plum`, `violet`, `stone`, `sky`, `honey`, `sea`,
-`aurora`). כל בלוק מפנה את פרימיטיבים המותג (`--instui-primitive-color-navy-*` ו‑`-blue-*`) אל הפלטה הנבחרת. הוא גם מחדש־גזור את משטחי המותג שאוברסטרים שטחנו להקסים מילוליים, ושומר על האלפא המוטמעת שלהם דרך `color-mix()`. צבעי סטטוס סמנטיים, הדגשים כחולים מפורשים, וצללי elevation נשארים ללא שינוי. נסה זאת בדמו של theming מבוסס‑swatch: https://stackblitz.com/edit/vitejs-vite-sg9oy7ln?file=index.html.
+`aurora`). כל בלוק מפנה את פרימיטיבים המותג (`--instui-primitive-color-navy-*` ו‑`-blue-*`) אל הפלטה הנבחרת. הוא גם מחדש־גזור את משטחי המותג שאוברסטרים שטחנו להקסים מילוליים, ושומר על האלפא המוטמעת שלהם דרך `color-mix()`. צבעי סטטוס סמנטיים, הדגשים כחולים מפורשים, וצללי elevation נשארים ללא שינוי. נסה זאת בדמו של theming מבוסס‑swatch: [StackBlitz demo](https://stackblitz.com/edit/vitejs-vite-sg9oy7ln?file=index.html).
 
 ```html
 <html data-pantoken-color="sea"></html>

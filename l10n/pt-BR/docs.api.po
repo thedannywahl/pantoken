@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: pantoken\n"
-"PO-Revision-Date: 2026-10-01 06:13+0000\n"
+"PO-Revision-Date: 2026-10-01 15:41+0000\n"
 "Last-Translator: pantoken localization engine\n"
 "Language-Team: pantoken\n"
 "MIME-Version: 1.0\n"
@@ -710,7 +710,7 @@ msgstr "\n  Parabéns! Você está usando a cor \"success\".\n  "
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "Ok"
-msgstr "Ok"
+msgstr "Tudo bem"
 
 #: css/alert.md
 #, fuzzy, no-c-format

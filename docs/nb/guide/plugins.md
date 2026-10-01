@@ -178,7 +178,7 @@ trenger dem fra boksen: elevasjonsskygger (`--instui-elevation-*`, i `components
 fonter (Atkinson Hyperlegible Next: `base.css` anvender `--instui-font-family-base`; den opt-in
 `@pantoken/components/fonts.css` laster `@font-face` woff2-filene).
 
-## Tema-farger
+## Tema-farger {#theme-colors}
 
 `@pantoken/plugin-custom-theme-colors` emitterer ett `[data-pantoken-color="…"]`-blokk per palett
 (`navy`, `blue`, `green`, `red`, `orange`, `grey`, `plum`, `violet`, `stone`, `sky`, `honey`, `sea`,

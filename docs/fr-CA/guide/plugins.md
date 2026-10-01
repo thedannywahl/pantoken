@@ -178,7 +178,7 @@ besoin par défaut : les ombres d'élévation (`--instui-elevation-*`, dans `com
 (Atkinson Hyperlegible Next : `base.css` applique `--instui-font-family-base` ; le chargement opt-in
 `@pantoken/components/fonts.css` charge les woff2s `@font-face`).
 
-## Couleurs de thème
+## Couleurs de thème {#theme-colors}
 
 `@pantoken/plugin-custom-theme-colors` émet un bloc `[data-pantoken-color="…"]` par palette
 (`navy`, `blue`, `green`, `red`, `orange`, `grey`, `plum`, `violet`, `stone`, `sky`, `honey`, `sea`,

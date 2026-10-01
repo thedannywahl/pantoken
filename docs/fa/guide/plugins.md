@@ -136,7 +136,7 @@ buildTokens({
 
 چند مورد که قبلاً پلاگین بودند اکنون در `@pantoken/components` بسته‌بندی می‌شوند، چون خیلی از کامپوننت‌ها آن‌ها را از جعبه نیاز دارند: سایه‌های elevation (`--instui-elevation-*`, در `components.css`), حلقهٔ focus-outline (در `base.css` — هر عنصر فوکوس‌پذیر وقتی pantoken مالک صفحه است آن را دریافت می‌کند)، و فونت‌های برند Instructure (Atkinson Hyperlegible Next: `base.css` `--instui-font-family-base` را اعمال می‌کند؛ `@pantoken/components/fonts.css` اختیاری `@font-face` woff2s را بارگیری می‌کند).
 
-## رنگ‌های تم
+## رنگ‌های تم {#theme-colors}
 
 `@pantoken/plugin-custom-theme-colors` برای هر پالت یک بلاک `[data-pantoken-color="…"]` صادر می‌کند
 (`navy`, `blue`, `green`, `red`, `orange`, `grey`, `plum`, `violet`, `stone`, `sky`, `honey`, `sea`,

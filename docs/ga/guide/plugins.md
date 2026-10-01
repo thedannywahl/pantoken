@@ -145,7 +145,7 @@ buildTokens({
 
 Tá cúpla rud a bhíodh ina bhreiseáin anois ag dul i gcóir i `@pantoken/components`, ó tharla go n-úsáideann an-chuid comhpháirteanna iad amach den bhosca: scáthanna ardaithe (`--instui-elevation-*`, i `components.css`), fáinne béime fócas (i `base.css` — faigheann gach rud inléite é nuair a bhaineann pantoken leathanach leis), agus na claonta branda Instructure (Atkinson Hyperlegible Next: cuireann `base.css` i bhfeidhm `--instui-font-family-base`; luchtóidh an roghnú `@pantoken/components/fonts.css` na woff2s `@font-face`).
 
-## Dathanna téama
+## Dathanna téama {#theme-colors}
 
 Gintear `@pantoken/plugin-custom-theme-colors` bloc `[data-pantoken-color="…"]` amháin in aghaidh na pailléide
 (`navy`, `blue`, `green`, `red`, `orange`, `grey`, `plum`, `violet`, `stone`, `sky`, `honey`, `sea`,

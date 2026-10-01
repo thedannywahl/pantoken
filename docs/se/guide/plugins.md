@@ -152,7 +152,7 @@ ring (in `base.css` — buot focusable gávnná das go pantoken omáhii sivva), 
 fonts (Atkinson Hyperlegible Next: `base.css` applie-r `--instui-font-family-base`; opt-in
 `@pantoken/components/fonts.css` load:á `@font-face` woff2s).
 
-## Theme colors
+## Theme colors {#theme-colors}
 
 `@pantoken/plugin-custom-theme-colors` emits ovtta `[data-pantoken-color="…"]` block per palette
 (`navy`, `blue`, `green`, `red`, `orange`, `grey`, `plum`, `violet`, `stone`, `sky`, `honey`, `sea`,

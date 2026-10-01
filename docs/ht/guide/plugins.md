@@ -158,7 +158,7 @@ buildTokens({
 Kèk bagay ki te konn yon fwa plugin kounye a voye nan `@pantoken/components`, paske anpil konpozan bezwen yo soti nan bwat la: lonbraj elevasyon (`--instui-elevation-*`, nan `components.css`), bag limit-fokal la (nan `base.css` — chak eleman kapab jwenn li lè pantoken posede paj la), ak polis mak Instructure yo (Atkinson Hyperlegible Next: `base.css` aplike `--instui-font-family-base`; opt-in
 `@pantoken/components/fonts.css` chaje `@font-face` woff2s yo).
 
-## Koulè tèm
+## Koulè tèm {#theme-colors}
 
 `@pantoken/plugin-custom-theme-colors` emèt yon blòk `[data-pantoken-color="…"]` pa palèt
 (`navy`, `blue`, `green`, `red`, `orange`, `grey`, `plum`, `violet`, `stone`, `sky`, `honey`, `sea`,

@@ -164,7 +164,7 @@ Quelques éléments qui étaient autrefois des plugins sont maintenant fournis d
 (dans `base.css` — chaque élément focalisable l'obtient quand pantoken gère la page), et les polices de marque Instructure (Atkinson Hyperlegible Next : `base.css` applique `--instui-font-family-base` ; l'opt-in
 `@pantoken/components/fonts.css` charge les woff2s `@font-face`).
 
-## Couleurs de thème
+## Couleurs de thème {#theme-colors}
 
 `@pantoken/plugin-custom-theme-colors` émet un bloc `[data-pantoken-color="…"]` par palette
 (`navy`, `blue`, `green`, `red`, `orange`, `grey`, `plum`, `violet`, `stone`, `sky`, `honey`, `sea`,

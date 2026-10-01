@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: pantoken\n"
-"PO-Revision-Date: 2026-10-01 05:43+0000\n"
+"PO-Revision-Date: 2026-10-01 16:27+0000\n"
 "Last-Translator: pantoken localization engine\n"
 "Language-Team: pantoken\n"
 "MIME-Version: 1.0\n"
@@ -710,7 +710,7 @@ msgstr "\n  Gratulerer! Du bruker \"success\"-fargen.\n  "
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "Ok"
-msgstr "Ok"
+msgstr "Greitt"
 
 #: css/alert.md
 #, fuzzy, no-c-format
@@ -1278,7 +1278,7 @@ msgstr "Dette er eit fiolett banner med eit tilpassa ikon."
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "OK"
-msgstr "OK"
+msgstr "Greit"
 
 #: css/banner.md
 #, no-c-format

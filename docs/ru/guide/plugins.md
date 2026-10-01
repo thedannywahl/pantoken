@@ -173,7 +173,7 @@ buildTokens({
 шрифты Instructure (Atkinson Hyperlegible Next: `base.css` применяет `--instui-font-family-base`; опциональный
 `@pantoken/components/fonts.css` загружает woff2-файлы `@font-face`).
 
-## Цвета темы
+## Цвета темы {#theme-colors}
 
 `@pantoken/plugin-custom-theme-colors` генерирует один блок `[data-pantoken-color="…"]` на палитру
 (`navy`, `blue`, `green`, `red`, `orange`, `grey`, `plum`, `violet`, `stone`, `sky`, `honey`, `sea`,

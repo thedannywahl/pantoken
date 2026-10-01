@@ -65,7 +65,7 @@ expect(unknownReferences(myBridgeCss, tokens)).toEqual([]);
   custom property yang tidak terpakai dari stylesheet.
 - `@pantoken/plugin-custom-theme-colors` — merubah merek halaman dengan mengatur satu atribut
   (`data-pantoken-color`) ke salah satu dari 13 palet, atau ke `custom` untuk hex merek apa pun. Lihat
-  [Warna tema](#tema-warna).
+  [Warna tema](#theme-colors).
 - `@pantoken/plugin-custom-components` — kontrol khusus yang didukung token termasuk SegmentedControl
   dan SkeletonLoader.
 
@@ -166,7 +166,7 @@ Beberapa hal yang dulu plugin sekarang dikirim dalam `@pantoken/components`, kar
 (di `base.css` — setiap elemen yang dapat difokus mendapatkannya saat pantoken mengendalikan halaman), dan font merek Instructure (Atkinson Hyperlegible Next: `base.css` menerapkan `--instui-font-family-base`; opt-in
 `@pantoken/components/fonts.css` memuat woff2 `@font-face`).
 
-## Tema warna
+## Tema warna {#theme-colors}
 
 `@pantoken/plugin-custom-theme-colors` menerbitkan satu blok `[data-pantoken-color="…"]` per palet
 (`navy`, `blue`, `green`, `red`, `orange`, `grey`, `plum`, `violet`, `stone`, `sky`, `honey`, `sea`,

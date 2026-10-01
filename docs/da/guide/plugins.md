@@ -136,7 +136,7 @@ buildTokens({
 
 Et par ting, som tidligere var plugins, leveres nu i `@pantoken/components`, da så mange komponenter har brug for dem ud af boksen: elevation-skager (`--instui-elevation-*`, i `components.css`), focus-outline-ringen (i `base.css` — hver fokusérbar får den når pantoken ejer siden), og Instructure-brand-fonts (Atkinson Hyperlegible Next: `base.css` anvender `--instui-font-family-base`; den opt-in `@pantoken/components/fonts.css` indlæser `@font-face` woff2'erne).
 
-## Tema-farver
+## Tema-farver {#theme-colors}
 
 `@pantoken/plugin-custom-theme-colors` udsender én `[data-pantoken-color="…"]` blok per palet
 (`navy`, `blue`, `green`, `red`, `orange`, `grey`, `plum`, `violet`, `stone`, `sky`, `honey`, `sea`,

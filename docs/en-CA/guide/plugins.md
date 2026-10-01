@@ -66,7 +66,7 @@ expect(unknownReferences(myBridgeCss, tokens)).toEqual([]);
   unused custom properties from a stylesheet.
 - `@pantoken/plugin-custom-theme-colors` — rebrands a page by setting one attribute
   (`data-pantoken-color`) to one of 13 palettes, or to `custom` for any brand hex. See
-  [Theme colours](#theme-colours).
+  [Theme colours](#theme-colors).
 - `@pantoken/plugin-custom-components` — token-backed custom controls including SegmentedControl
   and SkeletonLoader.
 
@@ -180,7 +180,7 @@ ring (in `base.css` — every focusable gets it when pantoken owns the page), an
 fonts (Atkinson Hyperlegible Next: `base.css` applies `--instui-font-family-base`; the opt-in
 `@pantoken/components/fonts.css` loads the `@font-face` woff2s).
 
-## Theme colours
+## Theme colours {#theme-colors}
 
 `@pantoken/plugin-custom-theme-colors` emits one `[data-pantoken-color="…"]` block per palette
 (`navy`, `blue`, `green`, `red`, `orange`, `grey`, `plum`, `violet`, `stone`, `sky`, `honey`, `sea`,

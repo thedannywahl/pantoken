@@ -167,7 +167,7 @@ chúng sẵn theo mặc định: bóng elevation (`--instui-elevation-*`, trong 
 (Atkinson Hyperlegible Next: `base.css` áp dụng `--instui-font-family-base`; tùy chọn `@pantoken/components/fonts.css` tải các
 woff2s `@font-face`).
 
-## Màu chủ đề
+## Màu chủ đề {#theme-colors}
 
 `@pantoken/plugin-custom-theme-colors` phát ra một khối `[data-pantoken-color="…"]` cho mỗi bảng màu
 (`navy`, `blue`, `green`, `red`, `orange`, `grey`, `plum`, `violet`, `stone`, `sky`, `honey`, `sea`,

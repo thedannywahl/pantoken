@@ -138,7 +138,7 @@ buildTokens({
 
 Eskiden eklenti olan bazı şeyler artık `@pantoken/components` içinde paketlenmiş halde gelir; çünkü birçok bileşen bunlara kutudan çıktığı gibi ihtiyaç duyar: yükseltme gölgeleri (`--instui-elevation-*`, `components.css` içinde), odak-outline halkası (`base.css` içinde — pantoken sayfaya sahip olduğunda her odaklanabilir öğe bunu alır) ve Instructure marka fontları (Atkinson Hyperlegible Next: `base.css` `--instui-font-family-base` uygular; isteğe bağlı `@pantoken/components/fonts.css` `@font-face` woff2'leri yükler).
 
-## Tema renkleri
+## Tema renkleri {#theme-colors}
 
 `@pantoken/plugin-custom-theme-colors`, her palet için bir `[data-pantoken-color="…"]` bloğu üretir
 (`navy`, `blue`, `green`, `red`, `orange`, `grey`, `plum`, `violet`, `stone`, `sky`, `honey`, `sea`,
