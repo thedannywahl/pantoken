@@ -10,4 +10,6 @@
 - Web: `import "@pantoken/css/inject";`. Icons: `@pantoken/web-components` (`<instui-icon>`).
 - React: `@pantoken/react`. Tailwind: `@pantoken/tailwind` preset.
 - Native / other ecosystems: `npx pantoken generate <swift|android|compose|flutter|rust|wordpress|vanilla|drupal|jekyll|hugo> --out <dir>`.
+- Check the [target compatibility registry](https://pantoken.app/target-compatibility.json) before recommending a host version; the
+  registry's `$schema` field links its schema. Only named versions or environments are verified.
 - InstUI React components: `@instructure/ui-*`. pantoken is the token/icon layer.

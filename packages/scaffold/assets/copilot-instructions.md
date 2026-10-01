@@ -25,6 +25,8 @@ When styling this project, use pantoken components, icons and tokens.
 - Tailwind: `pantokenPreset()` from `@pantoken/tailwind`.
 - Native / CMS/site/design targets: `npx pantoken generate
 <swift|android|compose|flutter|rust|wordpress|vanilla|drupal|swatches|icon-font|pendo|mintlify|jekyll|hugo>`.
+- Check the [target compatibility registry](https://pantoken.app/target-compatibility.json) before recommending a host version. Its
+  `$schema` field links the schema; tested versions and environments do not imply future support.
 - For InstUI React components use `@instructure/ui-*`; pantoken is the token/icon layer. Use
   `@instructure/ui-*` for interactive, accessible UI components (buttons, modals, forms). Use
   `@pantoken/react` only for icons and token consumption. Do not substitute one for the other.

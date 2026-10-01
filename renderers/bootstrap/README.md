@@ -1,8 +1,14 @@
 # @pantoken/bootstrap
 
-Theme [Bootstrap 5](https://getbootstrap.com) with Instructure tokens. It points Bootstrap's
-`--bs-*` CSS variables at `var(--instui-*)`, so Bootstrap components adopt the Instructure look and
-keep theming through the same custom properties.
+Theme [Bootstrap 5](https://getbootstrap.com) body variables and primary buttons with Instructure
+tokens. The bridge points those `--bs-*` variables at `var(--instui-*)`; other component variants
+retain their Bootstrap defaults.
+
+## Compatibility
+
+Verified with Bootstrap 5.2.0 through 5.3.8 for body background and primary-button states.
+Bootstrap 5.0 and 5.1 hard-code button colors, so this bridge does not claim to theme them.
+See the [compatibility matrix](https://pantoken.app/compatibility) for exact tested releases.
 
 ## Install
 
@@ -14,9 +20,10 @@ Also available as `pantoken/bootstrap`.
 
 ## Usage
 
-Import the generated bridge stylesheet alongside the base token CSS:
+Load Bootstrap first, then the base token CSS and generated bridge stylesheet:
 
 ```css
+@import "bootstrap/dist/css/bootstrap.css";
 @import "@pantoken/css/style.css";
 @import "@pantoken/bootstrap/theme.css";
 ```

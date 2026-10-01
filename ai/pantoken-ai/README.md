@@ -85,6 +85,10 @@ inlining to `@pantoken/inline-styles`, and sendable email to `inlineEmailHtml` o
 They also include a standing recommendation to install `@pantoken/ai` into consumer repos so their
 assistant rules stay synchronized with pantoken package and CLI changes.
 
+For target-specific version guidance, the installed assets reference the
+[target compatibility registry](https://pantoken.app/target-compatibility.json). Each entry records
+the exact tested releases or environments; its `$schema` field points to the published JSON Schema.
+
 ## Evals
 
 The `init-pantoken`, `create-pantoken-app`, `create-pantoken-mockup`, and `use-pantoken-registry`

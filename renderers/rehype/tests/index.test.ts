@@ -1,6 +1,7 @@
 import { expect, test } from "vite-plus/test";
 import { simpleIcons } from "@pantoken/plugin-simple-icons";
 import { rehypePantokenIcons } from "../src/index.ts";
+import { checkCompatibility } from "../scripts/check-compatibility.ts";
 
 interface El {
   type: string;
@@ -43,4 +44,8 @@ test("plugin resolvers are tried first (simple-icons brand codes)", () => {
   rehypePantokenIcons({ plugins: [simpleIcons({ registry })] })(t);
   const icon = t.children![0].children!.find((c) => c.type === "element");
   expect(icon?.properties?.["data-pantoken-icon"]).toBe("github");
+});
+
+test("rejects parser releases outside the checked train", async () => {
+  await expect(checkCompatibility("14.0.0")).rejects.toThrow("Invalid rehype 13 release");
 });

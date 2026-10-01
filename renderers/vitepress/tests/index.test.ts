@@ -1,4 +1,5 @@
 import { expect, test } from "vite-plus/test";
+import { checkCompatibility } from "../scripts/check-compatibility.ts";
 import { tokens } from "@pantoken/tokens";
 import { unknownReferences } from "@pantoken/utils";
 import { VITEPRESS_TO_INSTUI, toVitePressCss } from "../src/index.ts";
@@ -96,4 +97,8 @@ test("selector is configurable", () => {
 test("includes 60+ variable mappings", () => {
   const mappedCount = Object.keys(VITEPRESS_TO_INSTUI).length;
   expect(mappedCount).toBeGreaterThanOrEqual(60);
+});
+
+test("rejects VitePress releases outside the checked major", async () => {
+  await expect(checkCompatibility("2.0.0")).rejects.toThrow("Invalid VitePress 1 release");
 });

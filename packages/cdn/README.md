@@ -28,8 +28,8 @@ buildFileUrls([{ package: "@pantoken/components", path: "dist/components.css" }]
 
 ## Providers
 
-Ships with `jsdelivr` (the default), `unpkg`, and `esmsh` — all backed by Cloudflare/Fastly-class
-multi-CDN networks with strong global coverage. `jsdelivr` is the only one with a multi-file
+Ships with `jsdelivr` (the default), `unpkg`, and `esmsh` — all backed by multi-CDN networks
+with strong global coverage. `jsdelivr` is the only one with a multi-file
 combine endpoint; `buildFileUrls` falls back to one URL per file for the others.
 
 Bring your own provider with `defineCdnProvider`:

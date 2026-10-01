@@ -1,4 +1,5 @@
 import { expect, test } from "vite-plus/test";
+import { checkCompatibility } from "../scripts/check-compatibility.ts";
 import { toHugoAssets } from "../src/index.ts";
 
 test("emits an assets sass partial, a css asset, and the prose stylesheet", () => {
@@ -17,4 +18,8 @@ test("the sass partial carries scss variables and the css carries custom propert
   const css = files.find((f) => f.path.endsWith(".css"))?.content ?? "";
   expect(sass).toContain("$instui-");
   expect(css).toContain("--instui-");
+});
+
+test("rejects Hugo releases without a verified host image", () => {
+  expect(() => checkCompatibility("0.167.0")).toThrow("Unsupported Hugo release");
 });

@@ -1,7 +1,349 @@
 {
   "linkset": [
     {
-      "anchor": "https://pantoken.app/",
+      "anchor": "https://pantoken.app/.well-known/api-catalog",
+      "item": [
+        {
+          "href": "https://registry.npmjs.org/@pantoken%2Fai",
+          "title": "@pantoken/ai"
+        },
+        {
+          "href": "https://registry.npmjs.org/@pantoken%2Fandroid",
+          "title": "@pantoken/android"
+        },
+        {
+          "href": "https://registry.npmjs.org/@pantoken%2Fangular",
+          "title": "@pantoken/angular"
+        },
+        {
+          "href": "https://registry.npmjs.org/@pantoken%2Fastro",
+          "title": "@pantoken/astro"
+        },
+        {
+          "href": "https://registry.npmjs.org/@pantoken%2Fbootstrap",
+          "title": "@pantoken/bootstrap"
+        },
+        {
+          "href": "https://registry.npmjs.org/@pantoken%2Fcanvas-theme-editor",
+          "title": "@pantoken/canvas-theme-editor"
+        },
+        {
+          "href": "https://registry.npmjs.org/@pantoken%2Fcdn",
+          "title": "@pantoken/cdn"
+        },
+        {
+          "href": "https://registry.npmjs.org/@pantoken%2Fcli",
+          "title": "@pantoken/cli"
+        },
+        {
+          "href": "https://registry.npmjs.org/@pantoken%2Fcomponents",
+          "title": "@pantoken/components"
+        },
+        {
+          "href": "https://registry.npmjs.org/@pantoken%2Fcompose",
+          "title": "@pantoken/compose"
+        },
+        {
+          "href": "https://registry.npmjs.org/@pantoken%2Fcore",
+          "title": "@pantoken/core"
+        },
+        {
+          "href": "https://registry.npmjs.org/@pantoken%2Fcss",
+          "title": "@pantoken/css"
+        },
+        {
+          "href": "https://registry.npmjs.org/@pantoken%2Fcss-in-js",
+          "title": "@pantoken/css-in-js"
+        },
+        {
+          "href": "https://registry.npmjs.org/@pantoken%2Fdemo",
+          "title": "@pantoken/demo"
+        },
+        {
+          "href": "https://registry.npmjs.org/@pantoken%2Fdocusaurus",
+          "title": "@pantoken/docusaurus"
+        },
+        {
+          "href": "https://registry.npmjs.org/@pantoken%2Fdrupal",
+          "title": "@pantoken/drupal"
+        },
+        {
+          "href": "https://registry.npmjs.org/@pantoken%2Fdtcg",
+          "title": "@pantoken/dtcg"
+        },
+        {
+          "href": "https://registry.npmjs.org/@pantoken%2Femail",
+          "title": "@pantoken/email"
+        },
+        {
+          "href": "https://registry.npmjs.org/@pantoken%2Ffigma",
+          "title": "@pantoken/figma"
+        },
+        {
+          "href": "https://registry.npmjs.org/@pantoken%2Fflutter",
+          "title": "@pantoken/flutter"
+        },
+        {
+          "href": "https://registry.npmjs.org/@pantoken%2Ffoundation",
+          "title": "@pantoken/foundation"
+        },
+        {
+          "href": "https://registry.npmjs.org/@pantoken%2Fhugo",
+          "title": "@pantoken/hugo"
+        },
+        {
+          "href": "https://registry.npmjs.org/@pantoken%2Ficon-font",
+          "title": "@pantoken/icon-font"
+        },
+        {
+          "href": "https://registry.npmjs.org/@pantoken%2Ficons",
+          "title": "@pantoken/icons"
+        },
+        {
+          "href": "https://registry.npmjs.org/@pantoken%2Finline-styles",
+          "title": "@pantoken/inline-styles"
+        },
+        {
+          "href": "https://registry.npmjs.org/@pantoken%2Finteractions",
+          "title": "@pantoken/interactions"
+        },
+        {
+          "href": "https://registry.npmjs.org/@pantoken%2Fjekyll",
+          "title": "@pantoken/jekyll"
+        },
+        {
+          "href": "https://registry.npmjs.org/@pantoken%2Fless",
+          "title": "@pantoken/less"
+        },
+        {
+          "href": "https://registry.npmjs.org/@pantoken%2Fmarkdown-it",
+          "title": "@pantoken/markdown-it"
+        },
+        {
+          "href": "https://registry.npmjs.org/@pantoken%2Fmintlify",
+          "title": "@pantoken/mintlify"
+        },
+        {
+          "href": "https://registry.npmjs.org/@pantoken%2Fmodel",
+          "title": "@pantoken/model"
+        },
+        {
+          "href": "https://registry.npmjs.org/@pantoken%2Fmui",
+          "title": "@pantoken/mui"
+        },
+        {
+          "href": "https://registry.npmjs.org/@pantoken%2Fnext",
+          "title": "@pantoken/next"
+        },
+        {
+          "href": "https://registry.npmjs.org/@pantoken%2Fpanda",
+          "title": "@pantoken/panda"
+        },
+        {
+          "href": "https://registry.npmjs.org/@pantoken%2Fpantoken",
+          "title": "@pantoken/pantoken"
+        },
+        {
+          "href": "https://registry.npmjs.org/@pantoken%2Fpendo",
+          "title": "@pantoken/pendo"
+        },
+        {
+          "href": "https://registry.npmjs.org/@pantoken%2Fplugin-colors",
+          "title": "@pantoken/plugin-colors"
+        },
+        {
+          "href": "https://registry.npmjs.org/@pantoken%2Fplugin-custom-components",
+          "title": "@pantoken/plugin-custom-components"
+        },
+        {
+          "href": "https://registry.npmjs.org/@pantoken%2Fplugin-custom-icons",
+          "title": "@pantoken/plugin-custom-icons"
+        },
+        {
+          "href": "https://registry.npmjs.org/@pantoken%2Fplugin-custom-theme-colors",
+          "title": "@pantoken/plugin-custom-theme-colors"
+        },
+        {
+          "href": "https://registry.npmjs.org/@pantoken%2Fplugin-flatten-property",
+          "title": "@pantoken/plugin-flatten-property"
+        },
+        {
+          "href": "https://registry.npmjs.org/@pantoken%2Fplugin-kit",
+          "title": "@pantoken/plugin-kit"
+        },
+        {
+          "href": "https://registry.npmjs.org/@pantoken%2Fplugin-layouts",
+          "title": "@pantoken/plugin-layouts"
+        },
+        {
+          "href": "https://registry.npmjs.org/@pantoken%2Fplugin-logos",
+          "title": "@pantoken/plugin-logos"
+        },
+        {
+          "href": "https://registry.npmjs.org/@pantoken%2Fplugin-lucide-lab",
+          "title": "@pantoken/plugin-lucide-lab"
+        },
+        {
+          "href": "https://registry.npmjs.org/@pantoken%2Fplugin-mangle-custom-props",
+          "title": "@pantoken/plugin-mangle-custom-props"
+        },
+        {
+          "href": "https://registry.npmjs.org/@pantoken%2Fplugin-primitives",
+          "title": "@pantoken/plugin-primitives"
+        },
+        {
+          "href": "https://registry.npmjs.org/@pantoken%2Fplugin-props-minify",
+          "title": "@pantoken/plugin-props-minify"
+        },
+        {
+          "href": "https://registry.npmjs.org/@pantoken%2Fplugin-prune-custom-props",
+          "title": "@pantoken/plugin-prune-custom-props"
+        },
+        {
+          "href": "https://registry.npmjs.org/@pantoken%2Fplugin-simple-icons",
+          "title": "@pantoken/plugin-simple-icons"
+        },
+        {
+          "href": "https://registry.npmjs.org/@pantoken%2Fplugin-stacking",
+          "title": "@pantoken/plugin-stacking"
+        },
+        {
+          "href": "https://registry.npmjs.org/@pantoken%2Fplugin-theme-custom-media",
+          "title": "@pantoken/plugin-theme-custom-media"
+        },
+        {
+          "href": "https://registry.npmjs.org/@pantoken%2Fplugin-transition",
+          "title": "@pantoken/plugin-transition"
+        },
+        {
+          "href": "https://registry.npmjs.org/@pantoken%2Fplugin-visual-debug",
+          "title": "@pantoken/plugin-visual-debug"
+        },
+        {
+          "href": "https://registry.npmjs.org/@pantoken%2Fpostcss",
+          "title": "@pantoken/postcss"
+        },
+        {
+          "href": "https://registry.npmjs.org/@pantoken%2Freact",
+          "title": "@pantoken/react"
+        },
+        {
+          "href": "https://registry.npmjs.org/@pantoken%2Freact-markdown",
+          "title": "@pantoken/react-markdown"
+        },
+        {
+          "href": "https://registry.npmjs.org/@pantoken%2Freact-native",
+          "title": "@pantoken/react-native"
+        },
+        {
+          "href": "https://registry.npmjs.org/@pantoken%2Frehype",
+          "title": "@pantoken/rehype"
+        },
+        {
+          "href": "https://registry.npmjs.org/@pantoken%2Frust",
+          "title": "@pantoken/rust"
+        },
+        {
+          "href": "https://registry.npmjs.org/@pantoken%2Fscaffold",
+          "title": "@pantoken/scaffold"
+        },
+        {
+          "href": "https://registry.npmjs.org/@pantoken%2Fscaffold-base",
+          "title": "@pantoken/scaffold-base"
+        },
+        {
+          "href": "https://registry.npmjs.org/@pantoken%2Fscope",
+          "title": "@pantoken/scope"
+        },
+        {
+          "href": "https://registry.npmjs.org/@pantoken%2Fscss",
+          "title": "@pantoken/scss"
+        },
+        {
+          "href": "https://registry.npmjs.org/@pantoken%2Fsd-config",
+          "title": "@pantoken/sd-config"
+        },
+        {
+          "href": "https://registry.npmjs.org/@pantoken%2Fshadcn",
+          "title": "@pantoken/shadcn"
+        },
+        {
+          "href": "https://registry.npmjs.org/@pantoken%2Fstorybook",
+          "title": "@pantoken/storybook"
+        },
+        {
+          "href": "https://registry.npmjs.org/@pantoken%2Fstylus",
+          "title": "@pantoken/stylus"
+        },
+        {
+          "href": "https://registry.npmjs.org/@pantoken%2Fsvelte",
+          "title": "@pantoken/svelte"
+        },
+        {
+          "href": "https://registry.npmjs.org/@pantoken%2Fswatches",
+          "title": "@pantoken/swatches"
+        },
+        {
+          "href": "https://registry.npmjs.org/@pantoken%2Fswift",
+          "title": "@pantoken/swift"
+        },
+        {
+          "href": "https://registry.npmjs.org/@pantoken%2Ftailwind",
+          "title": "@pantoken/tailwind"
+        },
+        {
+          "href": "https://registry.npmjs.org/@pantoken%2Ftinymce",
+          "title": "@pantoken/tinymce"
+        },
+        {
+          "href": "https://registry.npmjs.org/@pantoken%2Ftokens",
+          "title": "@pantoken/tokens"
+        },
+        {
+          "href": "https://registry.npmjs.org/@pantoken%2Ftypedoc-plugin-demo",
+          "title": "@pantoken/typedoc-plugin-demo"
+        },
+        {
+          "href": "https://registry.npmjs.org/@pantoken%2Ftypedoc-plugin-live-example",
+          "title": "@pantoken/typedoc-plugin-live-example"
+        },
+        {
+          "href": "https://registry.npmjs.org/@pantoken%2Futils",
+          "title": "@pantoken/utils"
+        },
+        {
+          "href": "https://registry.npmjs.org/@pantoken%2Fvanilla",
+          "title": "@pantoken/vanilla"
+        },
+        {
+          "href": "https://registry.npmjs.org/@pantoken%2Fvite",
+          "title": "@pantoken/vite"
+        },
+        {
+          "href": "https://registry.npmjs.org/@pantoken%2Fvite-workspace-orchestrator",
+          "title": "@pantoken/vite-workspace-orchestrator"
+        },
+        {
+          "href": "https://registry.npmjs.org/@pantoken%2Fvitepress",
+          "title": "@pantoken/vitepress"
+        },
+        {
+          "href": "https://registry.npmjs.org/@pantoken%2Fvue",
+          "title": "@pantoken/vue"
+        },
+        {
+          "href": "https://registry.npmjs.org/@pantoken%2Fweb-components",
+          "title": "@pantoken/web-components"
+        },
+        {
+          "href": "https://registry.npmjs.org/@pantoken%2Fwebpack",
+          "title": "@pantoken/webpack"
+        },
+        {
+          "href": "https://registry.npmjs.org/@pantoken%2Fwordpress",
+          "title": "@pantoken/wordpress"
+        }
+      ],
       "service-doc": [
         {
           "href": "https://pantoken.app/guide/getting-started",
@@ -9,9 +351,9 @@
           "title": "pantoken documentation"
         },
         {
-          "href": "https://pantoken.app/guide/getting-started.md",
+          "href": "https://create.pantoken.app/SKILL.md",
           "type": "text/markdown",
-          "title": "pantoken documentation (Markdown)"
+          "title": "create-pantoken-app agent skill"
         }
       ],
       "alternate": [
@@ -24,11 +366,6 @@
           "href": "https://pantoken.app/llms-full.txt",
           "type": "text/plain",
           "title": "Full documentation as one document"
-        },
-        {
-          "href": "https://create.pantoken.app",
-          "type": "text/markdown",
-          "title": "create-pantoken-app agent skill"
         }
       ]
     }

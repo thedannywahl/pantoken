@@ -36,6 +36,8 @@ test("run generates Swift + an SPM manifest stub", async () => {
   const manifest = readFileSync(join(out, "Package.swift"), "utf8");
   expect(manifest).toContain('name: "PanTokens"');
   expect(manifest).toContain("swift-tools-version");
+  expect(manifest).toContain(".iOS(.v15)");
+  expect(manifest).not.toContain(".macOS(");
 });
 
 test("run generates Android resource XML", async () => {

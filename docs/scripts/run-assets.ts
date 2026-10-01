@@ -1,6 +1,6 @@
 /**
  * Run the docs asset generators, respecting their real dependencies instead of the serial `&&` chain
- * they used to live in. Thirteen of the fifteen are independent; the chain's ordering was incidental.
+ * they used to live in. Sixteen of the eighteen are independent; the chain's ordering was incidental.
  *
  * Deliberately a plain script rather than a vp task DAG: package-scoped tasks need a
  * `docs/vite.config.ts`, and Vite resolves a config file from the project root, so dropping one
@@ -38,8 +38,11 @@ export const ASSET_TASKS: readonly AssetTask[] = [
   { name: "cdn-plugin-manifest", script: "scripts/cdn-plugin-manifest.ts" },
   { name: "create-app-skill", script: "scripts/stage-create-pantoken-app-skill.ts" },
   { name: "vscode-custom-data", script: "scripts/stage-vscode-custom-data.ts" },
+  { name: "published-schemas", script: "scripts/stage-published-schemas.ts" },
+  { name: "api-catalog", script: "scripts/stage-api-catalog.ts" },
   { name: "i18n-schemas", script: "scripts/stage-i18n-schemas.ts" },
   { name: "tinymce-schema", script: "scripts/stage-tinymce-save-schema.ts" },
+  { name: "target-compatibility", script: "scripts/stage-target-compatibility.ts" },
   { name: "registry", script: "scripts/generate-registry.ts" },
   { name: "canvas-rce", script: "scripts/build-canvas-rce.ts" },
   { name: "demos", script: "scripts/demos.ts", dependsOn: ["site-themes"] },

@@ -1,0 +1,70 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://pantoken.app/schemas/cdn-plugin-manifest.schema.json",
+  "title": "Pantoken CDN plugin manifest",
+  "type": "object",
+  "required": [
+    "$schema",
+    "customComponents",
+    "layouts",
+    "otherPlugins",
+    "customIcons",
+    "simpleIcons",
+    "logos"
+  ],
+  "properties": {
+    "$schema": { "const": "https://pantoken.app/schemas/cdn-plugin-manifest.schema.json" },
+    "customComponents": { "$ref": "#/$defs/nameList" },
+    "layouts": { "$ref": "#/$defs/nameList" },
+    "customIcons": { "$ref": "#/$defs/nameList" },
+    "otherPlugins": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["key", "pkg", "file", "label"],
+        "properties": {
+          "key": { "type": "string" },
+          "pkg": { "type": "string", "pattern": "^@pantoken/" },
+          "file": { "type": "string" },
+          "label": { "type": "string" }
+        },
+        "additionalProperties": false
+      }
+    },
+    "simpleIcons": {
+      "type": "object",
+      "required": ["pkg", "file", "manifest"],
+      "properties": {
+        "pkg": { "type": "string", "pattern": "^@pantoken/" },
+        "file": { "type": "string" },
+        "manifest": { "type": "string", "format": "uri" }
+      },
+      "additionalProperties": false
+    },
+    "logos": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["product", "label", "items"],
+        "properties": {
+          "product": { "type": "string" },
+          "label": { "type": "string" },
+          "items": { "$ref": "#/$defs/nameList" }
+        },
+        "additionalProperties": false
+      }
+    }
+  },
+  "$defs": {
+    "nameList": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["name"],
+        "properties": { "name": { "type": "string", "minLength": 1 } },
+        "additionalProperties": false
+      }
+    }
+  },
+  "additionalProperties": false
+}

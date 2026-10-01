@@ -7,10 +7,12 @@
  * @experimental
  */
 import { css as pantokenCss } from "@pantoken/css";
+import webpackSources from "webpack-sources";
+
+const { RawSource } = webpackSources;
 
 /** The minimal Webpack compiler surface this plugin uses (avoids a hard dependency on webpack). */
 interface CompilerLike {
-  webpack: { sources: { RawSource: new (source: string) => unknown } };
   hooks: {
     thisCompilation: { tap: (name: string, fn: (compilation: CompilationLike) => void) => void };
   };
@@ -57,7 +59,6 @@ export class PantokenWebpackPlugin {
   }
 
   apply(compiler: CompilerLike): void {
-    const { RawSource } = compiler.webpack.sources;
     compiler.hooks.thisCompilation.tap("@pantoken/webpack", (compilation) => {
       compilation.hooks.processAssets.tap({ name: "@pantoken/webpack" }, () => {
         compilation.emitAsset(this.filename, new RawSource(pantokenCss));

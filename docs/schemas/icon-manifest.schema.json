@@ -1,0 +1,78 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://pantoken.app/schemas/icon-manifest.schema.json",
+  "title": "Pantoken icon manifest",
+  "type": "object",
+  "required": ["$schema", "description", "icons"],
+  "properties": {
+    "$schema": { "const": "https://pantoken.app/schemas/icon-manifest.schema.json" },
+    "description": { "type": "string" },
+    "icons": {
+      "type": "array",
+      "items": {
+        "oneOf": [
+          { "$ref": "#/$defs/instui" },
+          { "$ref": "#/$defs/lucideLab" },
+          { "$ref": "#/$defs/simpleIcons" },
+          { "$ref": "#/$defs/customIcons" },
+          { "$ref": "#/$defs/logos" }
+        ]
+      }
+    }
+  },
+  "$defs": {
+    "instui": {
+      "type": "object",
+      "required": ["source", "name", "css"],
+      "properties": {
+        "source": { "const": "instui" },
+        "name": { "type": "string" },
+        "css": { "type": "string", "format": "uri" }
+      },
+      "additionalProperties": false
+    },
+    "lucideLab": {
+      "type": "object",
+      "required": ["source", "name", "css"],
+      "properties": {
+        "source": { "const": "lucide-lab" },
+        "name": { "type": "string" },
+        "css": { "type": "string", "format": "uri" }
+      },
+      "additionalProperties": false
+    },
+    "simpleIcons": {
+      "type": "object",
+      "required": ["source", "slug", "title", "css"],
+      "properties": {
+        "source": { "const": "simple-icons" },
+        "slug": { "type": "string" },
+        "title": { "type": "string" },
+        "css": { "type": "string", "format": "uri" }
+      },
+      "additionalProperties": false
+    },
+    "customIcons": {
+      "type": "object",
+      "required": ["source", "name", "css"],
+      "properties": {
+        "source": { "const": "custom-icons" },
+        "name": { "type": "string" },
+        "css": { "type": "string", "format": "uri" }
+      },
+      "additionalProperties": false
+    },
+    "logos": {
+      "type": "object",
+      "required": ["source", "name", "product", "css"],
+      "properties": {
+        "source": { "const": "logos" },
+        "name": { "type": "string" },
+        "product": { "type": "string" },
+        "css": { "type": "string", "format": "uri" }
+      },
+      "additionalProperties": false
+    }
+  },
+  "additionalProperties": false
+}

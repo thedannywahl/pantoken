@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: pantoken\n"
-"PO-Revision-Date: 2026-09-28 16:26+0000\n"
+"PO-Revision-Date: 2026-10-01 17:29+0000\n"
 "Last-Translator: pantoken localization engine\n"
 "Language-Team: pantoken\n"
 "MIME-Version: 1.0\n"
@@ -1644,7 +1644,7 @@ msgstr "Confirmar"
 #, fuzzy, no-c-format
 msgctxt "docs.api:prose"
 msgid "Day"
-msgstr "day"
+msgstr "Día"
 
 #: css/button-set.md
 #, fuzzy, no-c-format
@@ -2106,7 +2106,7 @@ msgstr "Vi"
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "Sa"
-msgstr "Sa"
+msgstr "Sáb"
 
 #: css/calendar.md
 #, no-c-format
@@ -14470,7 +14470,7 @@ msgstr "Derive the `custom` escala primitiva `custom` desde un hex de marca. La 
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "The [CustomColorScale](../interfaces/CustomColorScale.md)."
-msgstr "The [CustomColorScale](../interfaces/CustomColorScale.md)."
+msgstr "El [CustomColorScale](../interfaces/CustomColorScale.md)."
 
 #: plugins/pantoken/custom-theme-colors/src/functions/deriveScale.md
 #, no-c-format
@@ -30506,3 +30506,572 @@ msgstr "Un botón \"ver en pantalla completa\" que aparece al pasar el cursor, s
 #~ msgctxt "docs.api:text"
 #~ msgid "ai-gradient"
 #~ msgstr "ai-gradient"
+
+msgctxt "docs.api:prose"
+msgid "Every token is exposed as a `var(--instui-*)` reference (not a concrete value), so Tailwind\nutilities like `bg-background-base` theme through the same CSS custom properties that\n`@pantoken/css` emits — light/dark and high-contrast all keep working."
+msgstr "Cada token se expone como una `var(--instui-*)` referencia (no un valor concreto), por lo que las utilidades de Tailwind\n como `bg-background-base` tematizan a través de las mismas propiedades CSS personalizadas que\n`@pantoken/css` emite — claro/oscuro y alto contraste siguen funcionando."
+
+msgctxt "docs.api:prose"
+msgid "A single-select row of compact view or filter options."
+msgstr "Una fila de selección única de opciones de vista compacta o de filtro."
+
+msgctxt "docs.api:prose"
+msgid "A selectable segmented-control label and its native radio input."
+msgstr "Una etiqueta de control segmentado seleccionable y su entrada de radio nativa."
+
+msgctxt "docs.api:prose"
+msgid "Decorative placeholder for content that has not loaded yet."
+msgstr "Marcador de posición decorativo para contenido que aún no se ha cargado."
+
+msgctxt "docs.api:prose"
+msgid "`.instui-segmented-control` — A single-select row of compact view or filter options."
+msgstr "`.instui-segmented-control` — Una fila de selección única de opciones de vista compacta o filtro."
+
+msgctxt "docs.api:prose"
+msgid "The selected segment uses a distinct active-item shadow; it does not match an existing\n  --instui-elevation-* composite. Overflow buttons use the upstream elevation3 component tokens."
+msgstr "El segmento seleccionado usa una sombra de elemento activo distinta; no coincide con un existing\n  --instui-elevation-* composite. Los botones de desbordamiento usan los tokens del componente elevation3 de origen."
+
+msgctxt "docs.api:prose"
+msgid "Use a labelled fieldset and one shared radio name with a checked default. Native radios\n  announce their checked state; overflow buttons need labels describing their scroll direction."
+msgstr "Use un fieldset etiquetado y un nombre de radio compartido con un valor predeterminado marcado. Los radios nativos\n  anuncian su estado marcado; los botones de desbordamiento necesitan etiquetas que describan su dirección de desplazamiento."
+
+msgctxt "docs.api:prose"
+msgid "Config"
+msgstr "Configuración"
+
+msgctxt "docs.api:prose"
+msgid "Utilities"
+msgstr "Utilidades"
+
+msgctxt "docs.api:prose"
+msgid "Preferences"
+msgstr "Preferencias"
+
+msgctxt "docs.api:prose"
+msgid "Feature flags"
+msgstr "Banderas de funciones"
+
+msgctxt "docs.api:prose"
+msgid "Large segments."
+msgstr "Segmentos grandes."
+
+msgctxt "docs.api:prose"
+msgid "Medium segments (default)."
+msgstr "Segmentos medianos (default)."
+
+msgctxt "docs.api:prose"
+msgid "Small segments."
+msgstr "Segmentos pequeños."
+
+msgctxt "docs.api:prose"
+msgid "Scroll to the following hidden segment."
+msgstr "Desplácese al siguiente segmento oculto."
+
+msgctxt "docs.api:prose"
+msgid "Scroll to the preceding hidden segment."
+msgstr "Desplácese al segmento oculto anterior."
+
+msgctxt "docs.api:prose"
+msgid "Scrollable row containing the selectable segments."
+msgstr "Fila desplazable que contiene los segmentos seleccionables."
+
+msgctxt "docs.api:prose"
+msgid "Clips the segment row and anchors the overflow controls."
+msgstr "Recorta la fila de segmentos y ancla los controles de desbordamiento."
+
+msgctxt "docs.api:prose"
+msgid "`.instui-segmented-control` — A selectable segmented-control label and its native radio input."
+msgstr "`.instui-segmented-control` — Una etiqueta de control segmentado seleccionable y su entrada de radio nativa."
+
+msgctxt "docs.api:prose"
+msgid "A `-icon-*` class may live on the label or its native input; the interaction helper\n  promotes input classes to the label so the shared glyph painter can render it."
+msgstr "Una `-icon-*` clase puede residir en la etiqueta o en su entrada nativa; el auxiliar de interacción\n  promueve las clases del input a la etiqueta para que el pintor de glifos compartido pueda representarlo."
+
+msgctxt "docs.api:prose"
+msgid "Keep the native radio in the label so checked, focus, disabled, and keyboard semantics remain available."
+msgstr "Mantén el radio nativo en la etiqueta para que las semánticas de seleccionado, foco, deshabilitado y teclado sigan estando disponibles."
+
+msgctxt "docs.api:prose"
+msgid "`.instui-skeleton-loader` — Decorative placeholder for content that has not loaded yet."
+msgstr "`.instui-skeleton-loader` — Marcador decorativo para contenido que aún no se ha cargado."
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "Mark the decorative loader aria-hidden=\"true\". Put aria-busy on the parent content region,\n  with an initially empty status and alert outside that region. Use initSkeletonLoading from the\n  interactions package to announce the parent's loading state. Shapes must not receive focus."
+msgstr "Mark the decorative loader aria-hidden=\"true\". Put aria-busy on the parent content region,\n  with an initially empty status and alert outside that region. Use initSkeletonLoading from the\n  interactions package to announce the parent's loading state. Shapes must not receive focus."
+
+msgctxt "docs.api:prose"
+msgid "Large text row."
+msgstr "Fila de texto grande."
+
+msgctxt "docs.api:prose"
+msgid "Medium text row (default)."
+msgstr "Fila de texto mediana (predeterminado)."
+
+msgctxt "docs.api:prose"
+msgid "Small text row."
+msgstr "Fila de texto pequeña."
+
+msgctxt "docs.api:prose"
+msgid "Extra-large text row."
+msgstr "Fila de texto extra grande."
+
+msgctxt "docs.api:prose"
+msgid "Extra-small text row."
+msgstr "Fila de texto extra pequeña."
+
+msgctxt "docs.api:prose"
+msgid "Largest text row."
+msgstr "Fila de texto más grande."
+
+msgctxt "docs.api:prose"
+msgid "Legend-sized text row."
+msgstr "Fila de texto tamaño leyenda."
+
+msgctxt "docs.api:prose"
+msgid "A round avatar placeholder, medium size only."
+msgstr "Un marcador de avatar redondo, solo tamaño mediano."
+
+msgctxt "docs.api:prose"
+msgid "An image placeholder, medium size only."
+msgstr "Un marcador de imagen, solo tamaño mediano."
+
+msgctxt "docs.api:prose"
+msgid "A text bar (default)."
+msgstr "Una barra de texto (predeterminado)."
+
+msgctxt "docs.api:prose"
+msgid "The clipped placeholder surface sized for the selected loader type."
+msgstr "La superficie de marcador recortada dimensionada para el tipo de cargador seleccionado."
+
+msgctxt "docs.api:prose"
+msgid "A repeated text-row wrapper that applies vertical spacing."
+msgstr "Un contenedor repetido de filas de texto que aplica espaciado vertical."
+
+msgctxt "docs.api:prose"
+msgid "Enhance a labelled native radio group with keyboard navigation and optional overflow controls."
+msgstr "Mejorar un grupo nativo de botones de opción etiquetado con navegación por teclado y controles de desbordamiento opcionales."
+
+msgctxt "docs.api:prose"
+msgid "Bind the parent content region to SSR-provided status and error announcements."
+msgstr "Vincular la región de contenido principal a los anuncios de estado y errores proporcionados por SSR."
+
+msgctxt "docs.api:prose"
+msgid "Detach the segmented-control listeners and observers."
+msgstr "Desconectar los oyentes y observadores del segmented-control."
+
+msgctxt "docs.api:prose"
+msgid "Segmented control options; the medium size is the CSS default."
+msgstr "Opciones de control segmentado; el tamaño medio es el valor predeterminado de CSS."
+
+msgctxt "docs.api:prose"
+msgid "Control parent-level loading semantics without touching decorative skeleton shapes."
+msgstr "Controla la semántica de carga a nivel del padre sin tocar las formas esqueléticas decorativas."
+
+msgctxt "docs.api:prose"
+msgid "Pre-rendered announcement elements must be outside the busy content region."
+msgstr "Los elementos de anuncio prerenderizados deben estar fuera de la región de contenido ocupada."
+
+msgctxt "docs.api:prose"
+msgid "State update sent to an auto-registered skeleton loading region."
+msgstr "Actualización de estado enviada a una región de carga esqueleto auto-registrada."
+
+msgctxt "docs.api:prose"
+msgid "The generated Swift uses UIKit and targets iOS. `mise run verify:swift:syntax` only parses its\nsource; `mise run verify:swift:host` needs full Xcode and the iOS Simulator SDK to type-check it."
+msgstr "El Swift generado usa UIKit y está dirigido a iOS. `mise run verify:swift:syntax` solo analiza su\nsource; `mise run verify:swift:host` necesita Xcode completo y el SDK del simulador de iOS para comprobar los tipos."
+
+msgctxt "docs.api:prose"
+msgid "Build segmented-control CSS, replacing the component prefix sentinel."
+msgstr "Generar CSS de segmented-control, reemplazando el centinela de prefijo del componente."
+
+msgctxt "docs.api:prose"
+msgid "Build the skeleton loader CSS, replacing the component prefix sentinel."
+msgstr "Construir el CSS del esqueleto de carga, reemplazando el centinela del prefijo del componente."
+
+msgctxt "docs.api:prose"
+msgid "`@pantoken/bootstrap` — theme Bootstrap 5.2+ body variables and primary buttons with Instructure tokens."
+msgstr "`@pantoken/bootstrap` — variables de body del tema Bootstrap 5.2+ y botones primarios con tokens de Instructure."
+
+msgctxt "docs.api:prose"
+msgid "Points body and primary-button `--bs-*` CSS variables at `var(--instui-*)`. Load it after\nBootstrap and `@pantoken/css`; other component variants retain their Bootstrap defaults."
+msgstr "Apunta las variables CSS del body y del botón primario `--bs-*` en `var(--instui-*)`. Cárgalo después de\nBootstrap y `@pantoken/css`; otras variantes de componentes conservan sus valores predeterminados de Bootstrap."
+
+msgctxt "docs.api:prose"
+msgid "Emit the Foundation Sass settings override. Import it before Foundation itself and\n`@include foundation-everything` so its palette is available to Sass."
+msgstr "Emitir la anulación de la configuración de Foundation Sass. Impórtela antes de Foundation en sí y\n`@include foundation-everything` para que su paleta esté disponible para Sass."
+
+msgctxt "docs.api:prose"
+msgid "`@pantoken/foundation` — theme Foundation for Sites Sass output and common CSS classes."
+msgstr "`@pantoken/foundation` — tema Foundation for Sites, salida Sass y clases CSS comunes."
+
+msgctxt "docs.api:prose"
+msgid "Foundation is Sass-first, so this package ships two layers. [toFoundationSettings](functions/toFoundationSettings.md) emits a\n`_settings`-style Sass partial with concrete light-mode rebrand values so Foundation's colour functions can\ncompile. [toFoundationCss](functions/toFoundationCss.md) emits a thin variable-backed CSS overlay that themes the common compiled\nclasses (`.button`, `.callout`, links) the same way — useful when you consume stock Foundation CSS\nand just want to layer Instructure colors on top without recompiling."
+msgstr "Foundation está diseñado primero para Sass, por lo que este paquete incluye dos capas. [toFoundationSettings](functions/toFoundationSettings.md) emite un parcial Sass de estilo \n`_settings` con valores concretos de rebrand en modo claro para que las funciones de color de Foundation puedan\ncompilar. [toFoundationCss](functions/toFoundationCss.md) emite una superposición CSS ligera respaldada por variables que tematiza las clases compiladas comunes\n (`.button`, `.callout`, links) de la misma manera — útil cuando consumes el CSS base de Foundation\n y solo quieres superponer los colores de Instructure sin volver a compilar."
+
+msgctxt "docs.api:prose"
+msgid "Registration and shadow output are environment-verified with Happy DOM; real-browser behavior is\nnot covered by that check."
+msgstr "El registro y la salida de shadow están verificados en el entorno con Happy DOM; el comportamiento en un navegador real no está\ncubierto por esa verificación."
+
+msgctxt "docs.api:prose"
+msgid "Browser script URLs to load after the example markup (interaction bundles, when needed)."
+msgstr "URLs de scripts del navegador para cargar después del marcado de ejemplo (paquetes de interacción, cuando sea necesario)."
+
+msgctxt "docs.api:text"
+msgid "EmailCssOptions"
+msgstr "EmailCssOptions"
+
+msgctxt "docs.api:text"
+msgid "InlineEmailHtmlOptions"
+msgstr "InlineEmailHtmlOptions"
+
+msgctxt "docs.api:text"
+msgid "EmailClient"
+msgstr "EmailClient"
+
+msgctxt "docs.api:text"
+msgid "light"
+msgstr "light"
+
+msgctxt "docs.api:text"
+msgid "inlineEmailHtml"
+msgstr "inlineEmailHtml"
+
+msgctxt "docs.api:text"
+msgid "GlyphSyncTarget"
+msgstr "GlyphSyncTarget"
+
+msgctxt "docs.api:text"
+msgid "PRODUCT_LABELS"
+msgstr "PRODUCT_LABELS"
+
+msgctxt "docs.api:text"
+msgid "retargetContentStylesheets"
+msgstr "retargetContentStylesheets"
+
+msgctxt "docs.api:text"
+msgid "normalizeGlyphHtml"
+msgstr "normalizeGlyphHtml"
+
+msgctxt "docs.api:text"
+msgid "injectUsedGlyphAssets"
+msgstr "injectUsedGlyphAssets"
+
+msgctxt "docs.api:text"
+msgid "registerGlyphSync"
+msgstr "registerGlyphSync"
+
+msgctxt "docs.api:text"
+msgid "logoVariantLabel"
+msgstr "logoVariantLabel"
+
+msgctxt "docs.api:text"
+msgid "filterLogos"
+msgstr "filterLogos"
+
+msgctxt "docs.api:text"
+msgid "getLogoCdnFile"
+msgstr "getLogoCdnFile"
+
+msgctxt "docs.api:text"
+msgid "buildLogoMarkup"
+msgstr "buildLogoMarkup"
+
+msgctxt "docs.api:text"
+msgid "getUsedLogoCdnFiles"
+msgstr "getUsedLogoCdnFiles"
+
+msgctxt "docs.api:text"
+msgid "modifyExpression"
+msgstr "modifyExpression"
+
+msgctxt "docs.api:text"
+msgid "inline-styles"
+msgstr "inline-styles"
+
+msgctxt "docs.api:text"
+msgid "InlineHtmlOptions"
+msgstr "InlineHtmlOptions"
+
+msgctxt "docs.api:text"
+msgid "inlineHtml"
+msgstr "inlineHtml"
+
+msgctxt "docs.api:text"
+msgid "InPlaceEditOptions"
+msgstr "InPlaceEditOptions"
+
+msgctxt "docs.api:text"
+msgid "SegmentedControlOptions"
+msgstr "SegmentedControlOptions"
+
+msgctxt "docs.api:text"
+msgid "SegmentedControlHandle"
+msgstr "SegmentedControlHandle"
+
+msgctxt "docs.api:text"
+msgid "SkeletonLoadingState"
+msgstr "SkeletonLoadingState"
+
+msgctxt "docs.api:text"
+msgid "SkeletonLoadingOptions"
+msgstr "SkeletonLoadingOptions"
+
+msgctxt "docs.api:text"
+msgid "SkeletonLoadingHandle"
+msgstr "SkeletonLoadingHandle"
+
+msgctxt "docs.api:text"
+msgid "InPlaceEditInputType"
+msgstr "InPlaceEditInputType"
+
+msgctxt "docs.api:text"
+msgid "initSegmentedControl"
+msgstr "initSegmentedControl"
+
+msgctxt "docs.api:text"
+msgid "initSkeletonLoading"
+msgstr "initSkeletonLoading"
+
+msgctxt "docs.api:text"
+msgid "buttonSetRules"
+msgstr "buttonSetRules"
+
+msgctxt "docs.api:text"
+msgid "logoRules"
+msgstr "logoRules"
+
+msgctxt "docs.api:text"
+msgid "segmentedControlRules"
+msgstr "segmentedControlRules"
+
+msgctxt "docs.api:text"
+msgid "skeletonLoaderRules"
+msgstr "skeletonLoaderRules"
+
+msgctxt "docs.api:text"
+msgid "breakpointDeclarations"
+msgstr "breakpointDeclarations"
+
+msgctxt "docs.api:text"
+msgid "ReferenceCurve"
+msgstr "ReferenceCurve"
+
+msgctxt "docs.api:text"
+msgid "CustomColorScale"
+msgstr "CustomColorScale"
+
+msgctxt "docs.api:text"
+msgid "CustomColorCssOptions"
+msgstr "CustomColorCssOptions"
+
+msgctxt "docs.api:text"
+msgid "CUSTOM_COLOR_KEY"
+msgstr "CUSTOM_COLOR_KEY"
+
+msgctxt "docs.api:text"
+msgid "isHexColor"
+msgstr "isHexColor"
+
+msgctxt "docs.api:text"
+msgid "deriveScale"
+msgstr "deriveScale"
+
+msgctxt "docs.api:text"
+msgid "customColorReferenceCurve"
+msgstr "customColorReferenceCurve"
+
+msgctxt "docs.api:text"
+msgid "deriveCustomColorScale"
+msgstr "deriveCustomColorScale"
+
+msgctxt "docs.api:text"
+msgid "customColorCss"
+msgstr "customColorCss"
+
+msgctxt "docs.api:text"
+msgid "customColorRemapCss"
+msgstr "customColorRemapCss"
+
+msgctxt "docs.api:text"
+msgid "button-set"
+msgstr "button-set"
+
+msgctxt "docs.api:text"
+msgid "day"
+msgstr "day"
+
+msgctxt "docs.api:text"
+msgid "segmented-control"
+msgstr "segmented-control"
+
+msgctxt "docs.api:text"
+msgid "segment"
+msgstr "segment"
+
+msgctxt "docs.api:text"
+msgid "skeleton-loader"
+msgstr "skeleton-loader"
+
+msgctxt "docs.api:text"
+msgid "logo"
+msgstr "logo"
+
+msgctxt "docs.api:text"
+msgid "breakpoints"
+msgstr "breakpoints"
+
+msgctxt "docs.api:prose"
+msgid "Target: Next.js. Current format: `Production build transpiling and rendering Instructure UI 11.7.7 with React 19.3.0`. Minimum host version: `16.0.0`. Tested through `16.3.8`. Newer releases require review."
+msgstr "Target: Next.js. Current format: `Production build transpiling and rendering Instructure UI 11.7.7 with React 19.3.0`. Minimum host version: `16.0.0`. Tested through `16.3.8`. Newer releases require review."
+
+msgctxt "docs.api:prose"
+msgid "Target: Panda CSS. Current format: `Panda token utility extraction from the Pantoken preset`. Minimum host version: `1.12.1`. Tested through `2.0.0`. Newer releases require review."
+msgstr "Target: Panda CSS. Current format: `Panda token utility extraction from the Pantoken preset`. Minimum host version: `1.12.1`. Tested through `2.0.0`. Newer releases require review."
+
+msgctxt "docs.api:prose"
+msgid "Target: PostCSS. Minimum host version: `8.0.0`. Tested through `8.5.28`. Newer releases require review."
+msgstr "Target: PostCSS. Minimum host version: `8.0.0`. Tested through `8.5.28`. Newer releases require review."
+
+msgctxt "docs.api:prose"
+msgid "Target: Tailwind CSS. Minimum host version: `4.0.17`. Tested through `4.3.3`. Newer releases require review."
+msgstr "Target: Tailwind CSS. Minimum host version: `4.0.17`. Tested through `4.3.3`. Newer releases require review."
+
+msgctxt "docs.api:prose"
+msgid "Target: Vite. Minimum host version: `8.0.0`. Tested through `8.3.1`. Newer releases require review."
+msgstr "Target: Vite. Minimum host version: `8.0.0`. Tested through `8.3.1`. Newer releases require review."
+
+msgctxt "docs.api:prose"
+msgid "Target: webpack. Current format: `Emitted token CSS build asset`. Minimum host version: `5.61.0`. Tested through `5.111.1`. Newer releases require review."
+msgstr "Target: webpack. Current format: `Emitted token CSS build asset`. Minimum host version: `5.61.0`. Tested through `5.111.1`. Newer releases require review."
+
+msgctxt "docs.api:prose"
+msgid "Target: Android resources. Current format: `Generated colors, dimensions, and VectorDrawable compile and link with Android build-tools`. Minimum host version: `API 35 / build-tools 35.0.0`. Tested through `API 35 / build-tools 35.0.0`. Newer releases require review."
+msgstr "Target: Android resources. Current format: `Generated colors, dimensions, and VectorDrawable compile and link with Android build-tools`. Minimum host version: `API 35 / build-tools 35.0.0`. Tested through `API 35 / build-tools 35.0.0`. Newer releases require review."
+
+msgctxt "docs.api:prose"
+msgid "Target: Canvas Theme Editor. Host compatibility has not yet been verified."
+msgstr "Target: Canvas Theme Editor. Host compatibility has not yet been verified."
+
+msgctxt "docs.api:prose"
+msgid "Target: Jetpack Compose. Current format: `Generated Color and Dp token object compiles in an Android library module`. Minimum host version: `Kotlin 2.1.10 / Compose UI 1.8.2 / Android API 35`. Tested through `Kotlin 2.1.10 / Compose UI 1.8.2 / Android API 35`. Newer releases require review."
+msgstr "Target: Jetpack Compose. Current format: `Generated Color and Dp token object compiles in an Android library module`. Minimum host version: `Kotlin 2.1.10 / Compose UI 1.8.2 / Android API 35`. Tested through `Kotlin 2.1.10 / Compose UI 1.8.2 / Android API 35`. Newer releases require review."
+
+msgctxt "docs.api:prose"
+msgid "Target: Drupal themes. Current format: `Drupal core discovers generated theme; InfoParser and Symfony YAML accept metadata`. Minimum host version: `10.6.18`. Tested through `11.3.2`. Newer releases require review."
+msgstr "Target: Drupal themes. Current format: `Drupal core discovers generated theme; InfoParser and Symfony YAML accept metadata`. Minimum host version: `10.6.18`. Tested through `11.3.2`. Newer releases require review."
+
+msgctxt "docs.api:prose"
+msgid "Target: HTML email. Host compatibility has not yet been verified."
+msgstr "Target: HTML email. Host compatibility has not yet been verified."
+
+msgctxt "docs.api:prose"
+msgid "Target: Flutter. Host compatibility has not yet been verified."
+msgstr "Target: Flutter. Host compatibility has not yet been verified."
+
+msgctxt "docs.api:prose"
+msgid "Target: Hugo. Current format: `Hugo Pipes builds the Pantoken token stylesheet`. Minimum host version: `0.165.0`. Tested through `0.165.0`. Newer releases require review."
+msgstr "Target: Hugo. Current format: `Hugo Pipes builds the Pantoken token stylesheet`. Minimum host version: `0.165.0`. Tested through `0.165.0`. Newer releases require review."
+
+msgctxt "docs.api:prose"
+msgid "Target: Jekyll. Current format: `Jekyll builds the generated Sass partial into site CSS`. Minimum host version: `4.4.1`. Tested through `4.4.1`. Newer releases require review."
+msgstr "Target: Jekyll. Current format: `Jekyll builds the generated Sass partial into site CSS`. Minimum host version: `4.4.1`. Tested through `4.4.1`. Newer releases require review."
+
+msgctxt "docs.api:prose"
+msgid "Target: Rust GUI frameworks. Current format: `Generated egui Color32 accessors and iced_core Color constants compile with the Rust toolchain`. Minimum host version: `1.95.0`. Tested through `1.95.0`. Newer releases require review."
+msgstr "Target: Rust GUI frameworks. Current format: `Generated egui Color32 accessors and iced_core Color constants compile with the Rust toolchain`. Minimum host version: `1.95.0`. Tested through `1.95.0`. Newer releases require review."
+
+msgctxt "docs.api:prose"
+msgid "Target: Swift iOS. Current format: `UIKit SwiftPM module, runtime token check, and compiled Icons.xcassets`. Tested environment: `Xcode 27.0 (27A266a), Swift 6.4, iOS Simulator SDK/runtime 27.0, iPhone 18 Pro, arm64 iOS 15 deployment target`. Runtime tested only on iOS Simulator 27.0; this does not establish an iOS 15 runtime floor. No watchOS or tvOS claim."
+msgstr "Target: Swift iOS. Current format: `UIKit SwiftPM module, runtime token check, and compiled Icons.xcassets`. Tested environment: `Xcode 27.0 (27A266a), Swift 6.4, iOS Simulator SDK/runtime 27.0, iPhone 18 Pro, arm64 iOS 15 deployment target`. Runtime tested only on iOS Simulator 27.0; this does not establish an iOS 15 runtime floor. No watchOS or tvOS claim."
+
+msgctxt "docs.api:prose"
+msgid "Target: Vanilla Forums. Host compatibility has not yet been verified."
+msgstr "Target: Vanilla Forums. Host compatibility has not yet been verified."
+
+msgctxt "docs.api:prose"
+msgid "Target: WordPress block themes. Current format: `theme.json v3`. Minimum host version: `6.6`. Tested through `7.1.2`. Newer releases require review."
+msgstr "Target: WordPress block themes. Current format: `theme.json v3`. Minimum host version: `6.6`. Tested through `7.1.2`. Newer releases require review."
+
+msgctxt "docs.api:prose"
+msgid "Target: Angular. Current format: `CUSTOM_ELEMENTS_SCHEMA template compilation (Angular 16.2.12 / TS 5.1.6; Angular 22.2.0 / TS 6.0.3)`. Minimum host version: `16.2.12`. Tested through `22.2.0`. Newer releases require review."
+msgstr "Target: Angular. Current format: `CUSTOM_ELEMENTS_SCHEMA template compilation (Angular 16.2.12 / TS 5.1.6; Angular 22.2.0 / TS 6.0.3)`. Minimum host version: `16.2.12`. Tested through `22.2.0`. Newer releases require review."
+
+msgctxt "docs.api:prose"
+msgid "Target: Astro / Starlight. Current format: `Built Starlight page with injected token stylesheet (Astro 5 and 7)`. Minimum host version: `0.35.0`. Tested through `0.42.4`. Newer releases require review."
+msgstr "Target: Astro / Starlight. Current format: `Built Starlight page with injected token stylesheet (Astro 5 and 7)`. Minimum host version: `0.35.0`. Tested through `0.42.4`. Newer releases require review."
+
+msgctxt "docs.api:prose"
+msgid "Target: Bootstrap. Current format: `CSS variables: body + primary button`. Minimum host version: `5.2.0`. Tested through `5.3.8`. Newer releases require review."
+msgstr "Target: Bootstrap. Current format: `CSS variables: body + primary button`. Minimum host version: `5.2.0`. Tested through `5.3.8`. Newer releases require review."
+
+msgctxt "docs.api:prose"
+msgid "Target: Emotion CSS-in-JS. Current format: `ThemeProvider SSR emits the Pantoken token variable`. Minimum host version: `11.14.0`. Tested through `11.14.0`. Newer releases require review."
+msgstr "Target: Emotion CSS-in-JS. Current format: `ThemeProvider SSR emits the Pantoken token variable`. Minimum host version: `11.14.0`. Tested through `11.14.0`. Newer releases require review."
+
+msgctxt "docs.api:prose"
+msgid "Target: Docusaurus theme-classic. Current format: `Infima CSS-variable bridge: primary and background`. Minimum host version: `3.0.0`. Tested through `3.10.2`. Newer releases require review."
+msgstr "Target: Docusaurus theme-classic. Current format: `Infima CSS-variable bridge: primary and background`. Minimum host version: `3.0.0`. Tested through `3.10.2`. Newer releases require review."
+
+msgctxt "docs.api:prose"
+msgid "Target: Foundation for Sites. Current format: `Concrete Sass settings + variable-backed CSS overlay`. Minimum host version: `6.1.2`. Tested through `6.9.0`. Newer releases require review."
+msgstr "Target: Foundation for Sites. Current format: `Concrete Sass settings + variable-backed CSS overlay`. Minimum host version: `6.1.2`. Tested through `6.9.0`. Newer releases require review."
+
+msgctxt "docs.api:prose"
+msgid "Target: markdown-it. Minimum host version: `14.0.0`. Tested through `15.0.2`. Newer releases require review."
+msgstr "Target: markdown-it. Minimum host version: `14.0.0`. Tested through `15.0.2`. Newer releases require review."
+
+msgctxt "docs.api:prose"
+msgid "Target: Mintlify docs.json. Current format: `Official CLI validates generated colors and background theme config`. Minimum host version: `4.0.1555`. Tested through `4.0.1557`. Newer releases require review."
+msgstr "Target: Mintlify docs.json. Current format: `Official CLI validates generated colors and background theme config`. Minimum host version: `4.0.1555`. Tested through `4.0.1557`. Newer releases require review."
+
+msgctxt "docs.api:prose"
+msgid "Target: Material UI. Current format: `Concrete createTheme palettes (MUI 5, 6, 7, 9)`. Minimum host version: `5.0.0`. Tested through `9.4.0`. Newer releases require review."
+msgstr "Target: Material UI. Current format: `Concrete createTheme palettes (MUI 5, 6, 7, 9)`. Minimum host version: `5.0.0`. Tested through `9.4.0`. Newer releases require review."
+
+msgctxt "docs.api:prose"
+msgid "Target: Pendo. Host compatibility has not yet been verified."
+msgstr "Target: Pendo. Host compatibility has not yet been verified."
+
+msgctxt "docs.api:prose"
+msgid "Target: React. Current format: `SSR-rendered Icon custom element and token fallback`. Minimum host version: `19.3.0`. Tested through `19.3.0`. Newer releases require review."
+msgstr "Target: React. Current format: `SSR-rendered Icon custom element and token fallback`. Minimum host version: `19.3.0`. Tested through `19.3.0`. Newer releases require review."
+
+msgctxt "docs.api:prose"
+msgid "Target: react-markdown. Current format: `SSR-rendered InstUI heading, icon, and color swatch with React 19.3.0`. Minimum host version: `10.1.0`. Tested through `10.1.0`. Newer releases require review."
+msgstr "Target: react-markdown. Current format: `SSR-rendered InstUI heading, icon, and color swatch with React 19.3.0`. Minimum host version: `10.1.0`. Tested through `10.1.0`. Newer releases require review."
+
+msgctxt "docs.api:prose"
+msgid "Target: React Native. Host compatibility has not yet been verified."
+msgstr "Target: React Native. Host compatibility has not yet been verified."
+
+msgctxt "docs.api:prose"
+msgid "Target: rehype. Current format: `HAST + raw SVG`. Minimum host version: `13.0.0`. Tested through `13.0.2`. Newer releases require review."
+msgstr "Target: rehype. Current format: `HAST + raw SVG`. Minimum host version: `13.0.0`. Tested through `13.0.2`. Newer releases require review."
+
+msgctxt "docs.api:prose"
+msgid "Target: shadcn/ui CSS variables. Current format: `Tailwind 4.3.3 compiles the Pantoken primary theme alias`. Minimum host version: `4.3.3`. Tested through `4.3.3`. Newer releases require review."
+msgstr "Target: shadcn/ui CSS variables. Current format: `Tailwind 4.3.3 compiles the Pantoken primary theme alias`. Minimum host version: `4.3.3`. Tested through `4.3.3`. Newer releases require review."
+
+msgctxt "docs.api:prose"
+msgid "Target: Storybook theming. Current format: `Storybook ThemeVars constructor accepts light and dark Pantoken themes`. Minimum host version: `8.6.14`. Tested through `8.6.14`. Newer releases require review."
+msgstr "Target: Storybook theming. Current format: `Storybook ThemeVars constructor accepts light and dark Pantoken themes`. Minimum host version: `8.6.14`. Tested through `8.6.14`. Newer releases require review."
+
+msgctxt "docs.api:prose"
+msgid "Target: Svelte. Current format: `Icon action component compiles and SSR renders on Svelte 4 and 5`. Minimum host version: `4.2.20`. Tested through `5.57.1`. Newer releases require review."
+msgstr "Target: Svelte. Current format: `Icon action component compiles and SSR renders on Svelte 4 and 5`. Minimum host version: `4.2.20`. Tested through `5.57.1`. Newer releases require review."
+
+msgctxt "docs.api:prose"
+msgid "Target: TinyMCE PluginManager. Current format: `Pantoken plugin registration and callback initialization`. Minimum host version: `8.9.2`. Tested through `8.9.2`. Newer releases require review."
+msgstr "Target: TinyMCE PluginManager. Current format: `Pantoken plugin registration and callback initialization`. Minimum host version: `8.9.2`. Tested through `8.9.2`. Newer releases require review."
+
+msgctxt "docs.api:prose"
+msgid "Target: VitePress. Current format: `Built site CSS includes the Pantoken primary-brand bridge`. Minimum host version: `1.6.4`. Tested through `1.6.4`. Newer releases require review."
+msgstr "Target: VitePress. Current format: `Built site CSS includes the Pantoken primary-brand bridge`. Minimum host version: `1.6.4`. Tested through `1.6.4`. Newer releases require review."
+
+msgctxt "docs.api:prose"
+msgid "Target: Vue. Current format: `Plugin installation, custom-element configuration, and SSR output`. Minimum host version: `3.0.0`. Tested through `3.5.43`. Newer releases require review."
+msgstr "Target: Vue. Current format: `Plugin installation, custom-element configuration, and SSR output`. Minimum host version: `3.0.0`. Tested through `3.5.43`. Newer releases require review."
+
+msgctxt "docs.api:prose"
+msgid "Target: Web Components. Current format: `Custom-element registration and button shadow output`. Tested environment: `Node 26.10.0 with happy-dom 20.14.5`. Real-browser rendering and interaction behavior are not verified."
+msgstr "Target: Web Components. Current format: `Custom-element registration and button shadow output`. Tested environment: `Node 26.10.0 with happy-dom 20.14.5`. Real-browser rendering and interaction behavior are not verified."

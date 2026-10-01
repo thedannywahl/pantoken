@@ -12,6 +12,12 @@ const IR: Token[] = [
     inherits: true,
     value: "light-dark(var(--instui-leaf), #000)",
   },
+  {
+    name: "--instui-shadow",
+    syntax: "*",
+    inherits: true,
+    value: "light-dark(rgba(35,68,101,0.15), rgba(0,0,0,0.3))",
+  },
 ];
 
 test("typed VAR_RE captures the property name", () => {
@@ -30,6 +36,8 @@ test("makeResolver keeps light-dark() without a mode, collapses with one", () =>
   expect(makeResolver(IR, { mode: "dark" })("var(--instui-bg)")).toBe("#000");
   // light-dark whose branch is itself a reference resolves too.
   expect(makeResolver(IR, { mode: "light" })("var(--instui-themed-ref)")).toBe("#0374B5");
+  expect(makeResolver(IR, { mode: "light" })("var(--instui-shadow)")).toBe("rgba(35,68,101,0.15)");
+  expect(makeResolver(IR, { mode: "dark" })("var(--instui-shadow)")).toBe("rgba(0,0,0,0.3)");
 });
 
 test("overrides win over the base set", () => {
@@ -39,8 +47,14 @@ test("overrides win over the base set", () => {
   expect(makeResolver(IR, { overrides: over })("var(--instui-brand)")).toBe("#000");
 });
 
+test("does not collapse malformed light-dark values with extra top-level arguments", () => {
+  const malformed = "light-dark(rgba(35,68,101,0.15), rgba(0,0,0,0.3), #fff)";
+  expect(makeResolver(IR, { mode: "light" })(malformed)).toBe(malformed);
+});
+
 test("resolveTokens returns a name→resolved map", () => {
   const map = resolveTokens(IR, { mode: "dark" });
   expect(map.get("--instui-brand")).toBe("#0374B5");
   expect(map.get("--instui-bg")).toBe("#000");
+  expect(map.get("--instui-shadow")).toBe("rgba(0,0,0,0.3)");
 });

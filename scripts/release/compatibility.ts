@@ -13,6 +13,7 @@
  * @module
  */
 import fs from "node:fs/promises";
+import { Ajv2020 } from "ajv/dist/2020.js";
 import path from "node:path";
 import { loadWorkspacePackages } from "./workspace-packages.ts";
 
@@ -52,6 +53,87 @@ export interface ConsumerEntry {
   path: string;
   /** The upstream tier that governs this consumer. */
   governedBy: "token-ir" | "instui-react";
+  targetSupport: TargetSupport;
+}
+
+/** A claim is made only after the named target releases have passed integration checks. */
+export type TargetSupport =
+  | { target: string; format?: string; status: "unverified" }
+  | { target: string; format?: string; status: "not-applicable"; reason: string }
+  | {
+      target: string;
+      format?: string;
+      status: "environment-verified";
+      testedEnvironments: string[];
+      limitations: string;
+      testCommand: string;
+    }
+  | {
+      target: string;
+      format?: string;
+      status: "verified";
+      minimum: string;
+      testedThrough: string;
+      testedVersions: string[];
+      testCommand: string;
+    };
+
+/** Validate the published JSON Schema and return package records without metadata. */
+export function validateTargetRegistry(
+  registry: unknown,
+  schema: object,
+): Record<string, TargetSupport> {
+  const ajv = new Ajv2020();
+  const validate = ajv.compile(schema);
+  if (!validate(registry)) {
+    throw new Error(`Invalid target compatibility registry: ${ajv.errorsText(validate.errors)}`);
+  }
+  const { $schema, ...support } = registry as { $schema: string } & Record<string, TargetSupport>;
+  if ($schema !== (schema as { $id?: string }).$id) {
+    throw new Error("Invalid target compatibility schema URL");
+  }
+  return support;
+}
+
+/** Ensure each adapter has one explicit, internally consistent support record. */
+export function validateTargetSupport(
+  names: readonly string[],
+  support: Record<string, TargetSupport>,
+): void {
+  const known = new Set(names);
+  for (const name of Object.keys(support)) {
+    if (!known.has(name)) throw new Error(`Unknown target support package: ${name}`);
+  }
+  for (const name of names) {
+    const record = support[name];
+    if (!record || !record.target?.trim()) {
+      throw new Error(`Missing target support record: ${name}`);
+    }
+    if (record.status === "verified") {
+      if (
+        !record.minimum ||
+        !record.testedThrough ||
+        !record.testCommand ||
+        !record.testedVersions?.includes(record.minimum) ||
+        !record.testedVersions.includes(record.testedThrough)
+      ) {
+        throw new Error(`Unsubstantiated target support claim: ${name}`);
+      }
+    } else if (record.status === "environment-verified") {
+      if (
+        !record.testCommand?.trim() ||
+        !record.limitations?.trim() ||
+        !record.testedEnvironments?.length ||
+        record.testedEnvironments.some((environment) => !environment.trim())
+      ) {
+        throw new Error(`Unsubstantiated target environment claim: ${name}`);
+      }
+    } else if (record.status === "not-applicable") {
+      if (!record.reason?.trim()) throw new Error(`Missing N/A reason: ${name}`);
+    } else if (record.status !== "unverified") {
+      throw new Error(`Invalid target support status: ${name}`);
+    }
+  }
 }
 
 /** One deprecated token's lifecycle, surfaced from the ledger for auto-documentation. */
@@ -129,14 +211,20 @@ async function instuiDeps(pkgPath: string): Promise<string[]> {
  * @returns The {@link Compatibility} manifest — deterministic, no timestamps, so the gate can diff it.
  */
 export async function buildCompatibility(): Promise<Compatibility> {
-  const [workspaceYaml, lockfile, metaRaw, ledgerRaw] = await Promise.all([
+  const [workspaceYaml, lockfile, metaRaw, ledgerRaw, supportRaw, schemaRaw] = await Promise.all([
     fs.readFile(path.join(WORKSPACE_ROOT, "pnpm-workspace.yaml"), "utf8"),
     fs.readFile(path.join(WORKSPACE_ROOT, "pnpm-lock.yaml"), "utf8"),
     fs.readFile(path.join(WORKSPACE_ROOT, "formats/tokens/generated/meta.json"), "utf8"),
     fs.readFile(path.join(WORKSPACE_ROOT, "formats/tokens/deprecations.json"), "utf8"),
+    fs.readFile(path.join(WORKSPACE_ROOT, "scripts/release/target-compatibility.json"), "utf8"),
+    fs.readFile(
+      path.join(WORKSPACE_ROOT, "scripts/release/target-compatibility.schema.json"),
+      "utf8",
+    ),
   ]);
   const meta = JSON.parse(metaRaw) as Meta;
   const ledger = JSON.parse(ledgerRaw) as Ledger;
+  const support = validateTargetRegistry(JSON.parse(supportRaw), JSON.parse(schemaRaw) as object);
 
   const upstream: Record<string, UpstreamEntry> = {
     [TOKEN_SOURCE]: {
@@ -165,16 +253,25 @@ export async function buildCompatibility(): Promise<Compatibility> {
 
   const { packages } = await loadWorkspacePackages();
   const consumerPkgs = packages.filter(
-    (p) => p.path.startsWith("renderers/") || p.path.startsWith("platforms/"),
+    (p) =>
+      p.path.startsWith("renderers/") ||
+      p.path.startsWith("platforms/") ||
+      p.path.startsWith("bundlers/"),
+  );
+  validateTargetSupport(
+    consumerPkgs.map((pkg) => pkg.name),
+    support,
   );
   const consumers: ConsumerEntry[] = [];
   for (const pkg of consumerPkgs) {
+    const targetSupport = support[pkg.name]!;
     const deps = await instuiDeps(pkg.path);
     const usesReact = deps.some((d) => REACT_PACKAGES.includes(d));
     consumers.push({
       package: pkg.name,
       path: pkg.path,
       governedBy: usesReact ? "instui-react" : "token-ir",
+      targetSupport,
     });
   }
   consumers.sort((a, b) => a.path.localeCompare(b.path));
@@ -198,7 +295,18 @@ export function renderMarkdown(compat: Compatibility): string {
     .map(([name, e]) => `| \`${name}\` | ${e.feeds} | \`${e.range}\` | \`${e.resolved}\` |`)
     .join("\n");
   const consumerRows = compat.consumers
-    .map((c) => `| \`${c.package}\` | \`${c.path}\` | ${c.governedBy} |`)
+    .map((consumer) => {
+      const support = consumer.targetSupport;
+      const version =
+        support.status === "verified"
+          ? `\`${support.minimum}\` through \`${support.testedThrough}\` (verified)`
+          : support.status === "environment-verified"
+            ? `Tested environment: ${support.testedEnvironments.map((environment) => `\`${environment}\``).join(", ")}. ${support.limitations}`
+            : support.status === "not-applicable"
+              ? `N/A: ${support.reason}`
+              : "Not yet verified";
+      return `| \`${consumer.package}\` | \`${consumer.path}\` | ${consumer.governedBy} | ${support.target} | ${support.format ?? "—"} | ${version} |`;
+    })
     .join("\n");
 
   const deprecationSection =
@@ -218,8 +326,9 @@ ${compat.deprecations
 <!-- Generated by \`vp run sync:compatibility\`. Do not edit by hand; run the writer and commit. -->
 
 This page records the Instructure UI sources this pantoken build resolves from, and which consumers
-are validated against it. Regenerate it with \`vp run sync:compatibility\`; the \`gate:compatibility\`
-check fails if it drifts.
+use them. Target versions are separate: only verified releases are claimed, and releases newer than
+the last verified release need review. Regenerate it with \`vp run sync:compatibility\`; the
+\`gate:compatibility\` check fails if it drifts.
 
 ## Upstream sources
 
@@ -233,9 +342,29 @@ ${upstreamRows}
 
 ## Consumers
 
-| Package | Path | Governed by |
-| --- | --- | --- |
+| Package | Path | Governed by | Target | Current format | Host versions |
+| --- | --- | --- | --- | --- | --- |
 ${consumerRows}
+
+## Reviewing target releases
+
+The weekly target-release workflow opens a review issue for new stable WordPress releases and
+ecosystems with an explicit npm peer. For other targets, maintainers check the platform's official
+release notes weekly and open a review issue manually; an absent issue does not mean a new release
+is supported. To extend a claim:
+
+1. Inspect the release's output schema or integration changes and the adapter in this table.
+2. Run the adapter's compatibility command with the candidate release, for example
+  \`vp run @pantoken/postcss#check:compatibility -- 8.5.29\`. The default command reads every
+  \`testedVersions\` entry from this registry; paired environments accept their companion flags.
+3. For feed-discovered candidates, use \`vp run downstream:test\`; failed attempts are retained in
+  \`scripts/release/downstream-compatibility.json\`. After a successful review, run
+  \`vp run downstream:bless --package @pantoken/name --version x.y.z\` to update the claim.
+4. Run a real host, compiler, or build-tool check at the minimum and new release. Remap the current
+  output format if necessary; do not add parallel legacy format emitters.
+5. Update \`scripts/release/target-compatibility.json\` only after the checks pass, then run
+  \`vp run sync:compatibility\`, regenerate English API docs, and add a changeset. Newer releases
+  remain pending until that reviewed change lands. Localized documentation is handled separately.
 
 ## Deprecations
 

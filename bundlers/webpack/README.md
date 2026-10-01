@@ -3,6 +3,13 @@
 A Webpack 5 plugin that emits the Instructure token stylesheet as a build asset (default
 `pantoken.css`), so you can link it from your HTML without importing the large package into a bundle.
 
+## Compatibility
+
+Verified with webpack 5.61.0 through 5.111.1 using real builds that emit a custom-named token
+stylesheet. Webpack 5.0.0 could not be verified on Node 26 because its internal MD4 hashing is
+unsupported by this host. See the [compatibility matrix](https://pantoken.app/compatibility) for
+exact tested releases.
+
 ## Install
 
 ```sh

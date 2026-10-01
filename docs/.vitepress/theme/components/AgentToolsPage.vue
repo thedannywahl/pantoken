@@ -162,6 +162,13 @@ const docsLinks = computed<LinkInfo[]>(() => [
     description: t.value.capabilitiesDescription,
   },
   {
+    id: "target-compatibility",
+    title: t.value.targetCompatibilityTitle,
+    href: "/target-compatibility.json",
+    value: "/target-compatibility.json",
+    description: t.value.targetCompatibilityDescription,
+  },
+  {
     id: "plugins",
     title: t.value.pluginsTitle,
     href: "/cdn-plugin-manifest.json",

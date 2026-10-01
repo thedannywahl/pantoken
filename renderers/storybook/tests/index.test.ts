@@ -1,4 +1,5 @@
 import { expect, test } from "vite-plus/test";
+import { checkCompatibility } from "../scripts/check-compatibility.ts";
 import { pantokenStorybookTheme } from "../src/index.ts";
 
 test("builds a ThemeVars object with concrete colours", () => {
@@ -13,4 +14,8 @@ test("builds a ThemeVars object with concrete colours", () => {
 
 test("dark mode sets base and resolves the dark palette", () => {
   expect(pantokenStorybookTheme("dark").base).toBe("dark");
+});
+
+test("rejects Storybook theming releases outside the checked major", async () => {
+  await expect(checkCompatibility("9.0.0")).rejects.toThrow("Invalid Storybook theming 8 release");
 });

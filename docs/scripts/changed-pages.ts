@@ -150,7 +150,10 @@ function addCatalogPages(params: {
   for (const reference of referencesForChangedCatalogEntries(before, after)) {
     if (surface === "docs.api" && reference.startsWith("api/"))
       addApiPage(pages, reference, locales);
-    else if (surface === "docs.guides" && reference.startsWith("guide/")) {
+    else if (
+      surface === "docs.guides" &&
+      (reference.startsWith("guide/") || reference === "compatibility.md")
+    ) {
       addGuidePage(pages, reference, locales);
     } else if (surface === "docs.home" && reference === "index.md") addHomePage(pages, locales);
     else return `Catalog ${path} changed non-page reference ${reference}; running full docs build.`;
@@ -182,7 +185,7 @@ export function resolveChangedDocs(
       };
     }
 
-    if (/^docs\/guide\/.+\.md$/u.test(path)) {
+    if (/^docs\/guide\/.+\.md$/u.test(path) || path === "docs/compatibility.md") {
       addSurface(surfaces, "docs.guides");
       addGuidePage(pages, path, locales);
       continue;

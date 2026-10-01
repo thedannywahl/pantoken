@@ -1,19 +1,23 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: pantoken\n"
-"PO-Revision-Date: 2026-09-23 03:41+0000\n"
+"PO-Revision-Date: 2026-10-01 01:49+0000\n"
 "Last-Translator: pantoken localization engine\n"
 "Language-Team: pantoken\n"
+"Language: und\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: und\n"
 
 #: docs/.vitepress/i18n.json#description
 #, no-c-format
 msgctxt "docs.chrome:description"
-msgid "Instructure design tokens and icons, reshaped for every platform and framework."
-msgstr "Instructure design tokens and icons, reshaped for every platform and framework."
+msgid ""
+"Instructure design tokens and icons, reshaped for every platform and "
+"framework."
+msgstr ""
+"Instructure design tokens and icons, reshaped for every platform and "
+"framework."
 
 #: docs/.vitepress/i18n.json#nav.guide
 #, no-c-format
@@ -348,8 +352,12 @@ msgstr "About the base reset"
 #: docs/.vitepress/i18n.json#cdnPicker.baseInfo
 #, no-c-format
 msgctxt "docs.chrome:cdnPicker.baseInfo"
-msgid "The opt-in global reset: box-sizing, the page surface, base text colour and font, color-scheme, and link defaults."
-msgstr "The opt-in global reset: box-sizing, the page surface, base text colour and font, color-scheme, and link defaults."
+msgid ""
+"The opt-in global reset: box-sizing, the page surface, base text colour and "
+"font, color-scheme, and link defaults."
+msgstr ""
+"The opt-in global reset: box-sizing, the page surface, base text colour and "
+"font, color-scheme, and link defaults."
 
 #: docs/.vitepress/i18n.json#cdnPicker.includeUtilities
 #, no-c-format
@@ -366,8 +374,12 @@ msgstr "About the utility classes"
 #: docs/.vitepress/i18n.json#cdnPicker.utilitiesInfo
 #, no-c-format
 msgctxt "docs.chrome:cdnPicker.utilitiesInfo"
-msgid "An opt-in layer of cross-cutting classes: a View primitive, spacing on the token scale, and semantic color overrides."
-msgstr "An opt-in layer of cross-cutting classes: a View primitive, spacing on the token scale, and semantic colour overrides."
+msgid ""
+"An opt-in layer of cross-cutting classes: a View primitive, spacing on the "
+"token scale, and semantic color overrides."
+msgstr ""
+"An opt-in layer of cross-cutting classes: a View primitive, spacing on the "
+"token scale, and semantic colour overrides."
 
 #: docs/.vitepress/i18n.json#cdnPicker.copy
 #, no-c-format
@@ -390,14 +402,20 @@ msgstr "Select one or more components to build a URL."
 #: docs/.vitepress/i18n.json#cdnPicker.fontsNote
 #, no-c-format
 msgctxt "docs.chrome:cdnPicker.fontsNote"
-msgid "Fonts load separately — add a <link> to @pantoken/components/fonts.css when you need them."
-msgstr "Fonts load separately — add a <link> to @pantoken/components/fonts.css when you need them."
+msgid ""
+"Fonts load separately — add a <link> to @pantoken/components/fonts.css when "
+"you need them."
+msgstr ""
+"Fonts load separately — add a <link> to @pantoken/components/fonts.css when "
+"you need them."
 
 #: docs/.vitepress/i18n.json#cdnPicker.iconsNote
 #, no-c-format
 msgctxt "docs.chrome:cdnPicker.iconsNote"
-msgid "component-icons.css is included because a selected component uses icons."
-msgstr "component-icons.css is included because a selected component uses icons."
+msgid ""
+"component-icons.css is included because a selected component uses icons."
+msgstr ""
+"component-icons.css is included because a selected component uses icons."
 
 #: docs/.vitepress/i18n.json#getStartedTabs.copied
 #, no-c-format
@@ -433,7 +451,9 @@ msgstr "Resume animation"
 #, fuzzy, no-c-format
 msgctxt "docs.chrome:getStartedTabs.agentPrompt"
 msgid "\"Set up pantoken in this project using create.pantoken.app/SKILL.md.\""
-msgstr "\"Set up pantoken (github.com/thedannywahl/pantoken) in this project using create.pantoken.app/SKILL.md.\""
+msgstr ""
+"\"Set up pantoken (github.com/thedannywahl/pantoken) in this project using "
+"create.pantoken.app/SKILL.md.\""
 
 #: docs/.vitepress/i18n.json#registryBrowser.title
 #, fuzzy, no-c-format
@@ -444,8 +464,14 @@ msgstr "Registry"
 #: docs/.vitepress/i18n.json#registryBrowser.subtitle
 #, no-c-format
 msgctxt "docs.chrome:registryBrowser.subtitle"
-msgid "Compatible components, themes, and behavior hooks conforming to the shadcn/ui registry specification. Add items directly to your shadcn/ui project via CLI."
-msgstr "Compatible components, themes, and behaviour hooks conforming to the shadcn/ui registry specification. Add items directly to your shadcn/ui project via CLI."
+msgid ""
+"Compatible components, themes, and behavior hooks conforming to the shadcn/"
+"ui registry specification. Add items directly to your shadcn/ui project via "
+"CLI."
+msgstr ""
+"Compatible components, themes, and behaviour hooks conforming to the shadcn/"
+"ui registry specification. Add items directly to your shadcn/ui project via "
+"CLI."
 
 #: docs/.vitepress/i18n.json#registryBrowser.tabAll
 #, no-c-format
@@ -540,8 +566,14 @@ msgstr "Canvas"
 #: docs/.vitepress/i18n.json#canvasRce.description
 #, no-c-format
 msgctxt "docs.chrome:canvasRce.description"
-msgid "A live preview of pantoken's Canvas LMS Rich Content Editor template: a TinyMCE-based editor with starter layouts, a live preview pane, and hand-editable theme.css/theme.js output."
-msgstr "A live preview of pantoken's Canvas LMS Rich Content Editor template: a TinyMCE-based editor with starter layouts, a live preview pane, and hand-editable theme.css/theme.js output."
+msgid ""
+"A live preview of pantoken's Canvas LMS Rich Content Editor template: a "
+"TinyMCE-based editor with starter layouts, a live preview pane, and hand-"
+"editable theme.css/theme.js output."
+msgstr ""
+"A live preview of pantoken's Canvas LMS Rich Content Editor template: a "
+"TinyMCE-based editor with starter layouts, a live preview pane, and hand-"
+"editable theme.css/theme.js output."
 
 #: docs/.vitepress/i18n.json#canvasRce.openInNewTab
 #, fuzzy, no-c-format
@@ -564,8 +596,12 @@ msgstr "Tools"
 #: docs/.vitepress/i18n.json#agentTools.subtitle
 #, no-c-format
 msgctxt "docs.chrome:agentTools.subtitle"
-msgid "Pick a Pantoken agent workflow, generate the command or launch URL, and give your assistant the files it needs to stop guessing."
-msgstr "Choose a Pantoken agent workflow, generate the command or launch URL, and give your assistant the files it needs to stop guessing."
+msgid ""
+"Pick a Pantoken agent workflow, generate the command or launch URL, and give "
+"your assistant the files it needs to stop guessing."
+msgstr ""
+"Choose a Pantoken agent workflow, generate the command or launch URL, and "
+"give your assistant the files it needs to stop guessing."
 
 #: docs/.vitepress/i18n.json#agentTools.providerLabel
 #, no-c-format
@@ -612,8 +648,10 @@ msgstr "Open in {{agent}}"
 #: docs/.vitepress/i18n.json#agentTools.openUnavailable
 #, no-c-format
 msgctxt "docs.chrome:agentTools.openUnavailable"
-msgid "This agent does not publish a stable launch URL. Use Copy for the CLI prompt."
-msgstr "This agent does not publish a stable launch URL. Use Copy for the CLI prompt."
+msgid ""
+"This agent does not publish a stable launch URL. Use Copy for the CLI prompt."
+msgstr ""
+"This agent does not publish a stable launch URL. Use Copy for the CLI prompt."
 
 #: docs/.vitepress/i18n.json#agentTools.tabBootstrap
 #, no-c-format
@@ -648,8 +686,12 @@ msgstr "Bootstrap a project"
 #: docs/.vitepress/i18n.json#agentTools.bootstrapDescription
 #, no-c-format
 msgctxt "docs.chrome:agentTools.bootstrapDescription"
-msgid "Scaffold a starter with Pantoken wired in and install the repo-local agent assets in the same pass."
-msgstr "Scaffold a starter with Pantoken wired in and install the repository-local agent assets in the same pass."
+msgid ""
+"Scaffold a starter with Pantoken wired in and install the repo-local agent "
+"assets in the same pass."
+msgstr ""
+"Scaffold a starter with Pantoken wired in and install the repository-local "
+"agent assets in the same pass."
 
 #: docs/.vitepress/i18n.json#agentTools.platformLabel
 #, fuzzy, no-c-format
@@ -672,8 +714,12 @@ msgstr "Add agent guidance to a repo"
 #: docs/.vitepress/i18n.json#agentTools.installDescription
 #, no-c-format
 msgctxt "docs.chrome:agentTools.installDescription"
-msgid "Install AGENTS.md, llms.txt, editor rules, and Claude skills into an existing project that already uses or is about to use Pantoken."
-msgstr "Install AGENTS.md, llms.txt, editor rules, and Claude skills into an existing project that already uses or is about to use Pantoken."
+msgid ""
+"Install AGENTS.md, llms.txt, editor rules, and Claude skills into an "
+"existing project that already uses or is about to use Pantoken."
+msgstr ""
+"Install AGENTS.md, llms.txt, editor rules, and Claude skills into an "
+"existing project that already uses or is about to use Pantoken."
 
 #: docs/.vitepress/i18n.json#agentTools.toolLabel
 #, no-c-format
@@ -696,8 +742,12 @@ msgstr "Registry"
 #: docs/.vitepress/i18n.json#agentTools.registryDescription
 #, no-c-format
 msgctxt "docs.chrome:agentTools.registryDescription"
-msgid "Point an agent at Pantoken's indexed registry so it can search, inspect, and add CSS-backed registry items instead of inventing package names."
-msgstr "Point an agent at Pantoken's indexed registry so it can search, inspect, and add CSS-backed registry items rather than inventing package names."
+msgid ""
+"Point an agent at Pantoken's indexed registry so it can search, inspect, and "
+"add CSS-backed registry items instead of inventing package names."
+msgstr ""
+"Point an agent at Pantoken's indexed registry so it can search, inspect, and "
+"add CSS-backed registry items rather than inventing package names."
 
 #: docs/.vitepress/i18n.json#agentTools.registryActionLabel
 #, no-c-format
@@ -720,32 +770,58 @@ msgstr "Agent-readable documentation"
 #: docs/.vitepress/i18n.json#agentTools.docsDescription
 #, no-c-format
 msgctxt "docs.chrome:agentTools.docsDescription"
-msgid "Pantoken publishes fetchable documentation and manifests for assistants that can browse URLs or read raw Markdown."
-msgstr "Pantoken publishes fetchable documentation and manifests for assistants that can browse URLs or read raw Markdown."
+msgid ""
+"Pantoken publishes fetchable documentation and manifests for assistants that "
+"can browse URLs or read raw Markdown."
+msgstr ""
+"Pantoken publishes fetchable documentation and manifests for assistants that "
+"can browse URLs or read raw Markdown."
 
 #: docs/.vitepress/i18n.json#agentTools.installPrompt
 #, no-c-format
 msgctxt "docs.chrome:agentTools.installPrompt"
-msgid "Install Pantoken agent guidance in this repository. Use {{command}}, then summarize the files written and when future agents should read them."
-msgstr "Install Pantoken agent guidance in this repository. Use {{command}}, then summarize the files written and when future agents should read them."
+msgid ""
+"Install Pantoken agent guidance in this repository. Use {{command}}, then "
+"summarize the files written and when future agents should read them."
+msgstr ""
+"Install Pantoken agent guidance in this repository. Use {{command}}, then "
+"summarize the files written and when future agents should read them."
 
 #: docs/.vitepress/i18n.json#agentTools.registryPrompt
 #, no-c-format
 msgctxt "docs.chrome:agentTools.registryPrompt"
-msgid "Use the Pantoken shadcn registry for this project. Fetch https://pantoken.app/r/registry.json, then run {{command}} if the project uses shadcn or has components.json. Registry items install CSS and metadata, not React components."
-msgstr "Use the Pantoken shadcn registry for this project. Fetch https://pantoken.app/r/registry.json, then run {{command}} if the project uses shadcn or has components.json. Registry items install CSS and metadata, not React components."
+msgid ""
+"Use the Pantoken shadcn registry for this project. Fetch https://"
+"pantoken.app/r/registry.json, then run {{command}} if the project uses "
+"shadcn or has components.json. Registry items install CSS and metadata, not "
+"React components."
+msgstr ""
+"Use the Pantoken shadcn registry for this project. Fetch https://"
+"pantoken.app/r/registry.json, then run {{command}} if the project uses "
+"shadcn or has components.json. Registry items install CSS and metadata, not "
+"React components."
 
 #: docs/.vitepress/i18n.json#agentTools.docsPrompt
 #, no-c-format
 msgctxt "docs.chrome:agentTools.docsPrompt"
-msgid "Fetch https://pantoken.app/llms.txt first. When a page is needed, prefer its raw Markdown URL by adding .md to the clean docs path, and use Pantoken manifests for component capabilities, CDN plugins, demos, and registry items."
-msgstr "Fetch https://pantoken.app/llms.txt first. When a page is needed, prefer its raw Markdown URL by adding .md to the clean docs path, and use Pantoken manifests for component capabilities, CDN plugins, demos, and registry items."
+msgid ""
+"Fetch https://pantoken.app/llms.txt first. When a page is needed, prefer its "
+"raw Markdown URL by adding .md to the clean docs path, and use Pantoken "
+"manifests for component capabilities, CDN plugins, demos, and registry items."
+msgstr ""
+"Fetch https://pantoken.app/llms.txt first. When a page is needed, prefer its "
+"raw Markdown URL by adding .md to the clean docs path, and use Pantoken "
+"manifests for component capabilities, CDN plugins, demos, and registry items."
 
 #: docs/.vitepress/i18n.json#agentTools.docsCommand
 #, no-c-format
 msgctxt "docs.chrome:agentTools.docsCommand"
-msgid "Fetch https://pantoken.app/llms.txt, then follow links to the pages and manifests relevant to this task."
-msgstr "Fetch https://pantoken.app/llms.txt, then follow links to the pages and manifests relevant to this task."
+msgid ""
+"Fetch https://pantoken.app/llms.txt, then follow links to the pages and "
+"manifests relevant to this task."
+msgstr ""
+"Fetch https://pantoken.app/llms.txt, then follow links to the pages and "
+"manifests relevant to this task."
 
 #: docs/.vitepress/i18n.json#agentTools.createDomainTitle
 #, no-c-format
@@ -756,8 +832,10 @@ msgstr "Bootstrap skill URL"
 #: docs/.vitepress/i18n.json#agentTools.createDomainDescription
 #, no-c-format
 msgctxt "docs.chrome:agentTools.createDomainDescription"
-msgid "The short public URL any URL-capable agent can fetch to set up Pantoken."
-msgstr "The short public URL any URL-capable agent can fetch to set up Pantoken."
+msgid ""
+"The short public URL any URL-capable agent can fetch to set up Pantoken."
+msgstr ""
+"The short public URL any URL-capable agent can fetch to set up Pantoken."
 
 #: docs/.vitepress/i18n.json#agentTools.llmsTitle
 #, no-c-format
@@ -769,7 +847,8 @@ msgstr "Site index"
 #, no-c-format
 msgctxt "docs.chrome:agentTools.llmsDescription"
 msgid "Canonical English documentation index for agents and LLM-aware clients."
-msgstr "Canonical English documentation index for agents and LLM-aware clients."
+msgstr ""
+"Canonical English documentation index for agents and LLM-aware clients."
 
 #: docs/.vitepress/i18n.json#agentTools.llmsFullTitle
 #, no-c-format
@@ -780,8 +859,10 @@ msgstr "Full site context"
 #: docs/.vitepress/i18n.json#agentTools.llmsFullDescription
 #, no-c-format
 msgctxt "docs.chrome:agentTools.llmsFullDescription"
-msgid "Expanded LLM context for agents that need the complete documentation set."
-msgstr "Expanded LLM context for agents that need the complete documentation set."
+msgid ""
+"Expanded LLM context for agents that need the complete documentation set."
+msgstr ""
+"Expanded LLM context for agents that need the complete documentation set."
 
 #: docs/.vitepress/i18n.json#agentTools.pageMdTitle
 #, no-c-format
@@ -807,6 +888,18 @@ msgctxt "docs.chrome:agentTools.registryManifestDescription"
 msgid "shadcn-compatible index of Pantoken CSS registry items."
 msgstr "shadcn-compatible index of Pantoken CSS registry items."
 
+#: docs/.vitepress/i18n.json#agentTools.targetCompatibilityTitle
+#, no-c-format
+msgctxt "docs.chrome:agentTools.targetCompatibilityTitle"
+msgid "Target compatibility"
+msgstr "Target compatibility"
+
+#: docs/.vitepress/i18n.json#agentTools.targetCompatibilityDescription
+#, no-c-format
+msgctxt "docs.chrome:agentTools.targetCompatibilityDescription"
+msgid "Verified host versions and tested environments for Pantoken adapters."
+msgstr "Verified host versions and tested environments for Pantoken adapters."
+
 #: docs/.vitepress/i18n.json#agentTools.capabilitiesTitle
 #, fuzzy, no-c-format
 msgctxt "docs.chrome:agentTools.capabilitiesTitle"
@@ -816,8 +909,12 @@ msgstr "Components"
 #: docs/.vitepress/i18n.json#agentTools.capabilitiesDescription
 #, no-c-format
 msgctxt "docs.chrome:agentTools.capabilitiesDescription"
-msgid "Machine-readable map of component CSS, JavaScript, icon, and dependency needs."
-msgstr "Machine-readable map of component CSS, JavaScript, icon, and dependency needs."
+msgid ""
+"Machine-readable map of component CSS, JavaScript, icon, and dependency "
+"needs."
+msgstr ""
+"Machine-readable map of component CSS, JavaScript, icon, and dependency "
+"needs."
 
 #: docs/.vitepress/i18n.json#agentTools.pluginsTitle
 #, no-c-format
@@ -942,8 +1039,12 @@ msgstr "PAGE NOT FOUND"
 #: docs/.vitepress/i18n.json#chrome.notFound.quote
 #, no-c-format
 msgctxt "docs.chrome:chrome.notFound.quote"
-msgid "But if you don't change your direction, and if you keep looking, you may end up where you are heading."
-msgstr "But if you don't change your direction, and if you keep looking, you may end up where you are heading."
+msgid ""
+"But if you don't change your direction, and if you keep looking, you may end "
+"up where you are heading."
+msgstr ""
+"But if you don't change your direction, and if you keep looking, you may end "
+"up where you are heading."
 
 #: docs/.vitepress/i18n.json#chrome.notFound.linkLabel
 #, no-c-format

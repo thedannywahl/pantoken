@@ -220,6 +220,14 @@
     "message": "shadcn-compatible index of Pantoken CSS registry items.",
     "translate": "always"
   },
+  "agentTools.targetCompatibilityTitle": {
+    "message": "Target compatibility",
+    "translate": "always"
+  },
+  "agentTools.targetCompatibilityDescription": {
+    "message": "Verified host versions and tested environments for Pantoken adapters.",
+    "translate": "always"
+  },
   "agentTools.capabilitiesTitle": { "message": "Component capabilities", "translate": "always" },
   "agentTools.capabilitiesDescription": {
     "message": "Machine-readable map of component CSS, JavaScript, icon, and dependency needs.",

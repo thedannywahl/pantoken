@@ -1,7 +1,7 @@
 {
   "name": "@pantoken/bootstrap",
   "version": "0.1.3",
-  "description": "Theme Bootstrap 5 with Instructure tokens: maps Bootstrap's --bs-* CSS variables to var(--instui-*).",
+  "description": "Bridge Bootstrap 5.2+ body and primary-button CSS variables to Instructure tokens.",
   "homepage": "https://pantoken.app",
   "bugs": "https://github.com/thedannywahl/pantoken/issues",
   "license": "MIT",
@@ -28,6 +28,7 @@
     "provenance": true
   },
   "scripts": {
+    "check:compatibility": "node scripts/check-compatibility.ts",
     "generate": "node scripts/generate.ts",
     "dev": "vp run generate && vp pack --watch",
     "test": "vp test",
@@ -38,6 +39,8 @@
     "@pantoken/tokens": "workspace:*",
     "@pantoken/utils": "workspace:*",
     "@types/node": "catalog:",
+    "bootstrap": "catalog:",
+    "postcss": "catalog:",
     "typescript": "catalog:",
     "vite": "catalog:",
     "vite-plus": "catalog:"

@@ -1,4 +1,5 @@
 import { expect, test } from "vite-plus/test";
+import { checkCompatibility } from "../scripts/check-compatibility.ts";
 import { machineName, toDrupalTheme } from "../src/index.ts";
 
 test("machineName sanitizes to lower_snake", () => {
@@ -21,4 +22,8 @@ test("emits the prose stylesheet and registers it in the library", () => {
 
   expect(byPath.get("instructure.libraries.yml")).toContain("css/pantoken-prose.css: {}");
   expect(byPath.get("css/pantoken-prose.css")).toContain(".pantoken-prose table");
+});
+
+test("rejects Drupal releases outside the checked core versions", async () => {
+  await expect(checkCompatibility("12.0.0")).rejects.toThrow("Unsupported Drupal release");
 });

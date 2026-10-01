@@ -1,0 +1,312 @@
+{
+  "$schema": "https://pantoken.app/schemas/target-compatibility.schema.json",
+  "@pantoken/next": {
+    "target": "Next.js",
+    "format": "Production build transpiling and rendering Instructure UI 11.7.7 with React 19.3.0",
+    "status": "verified",
+    "minimum": "16.0.0",
+    "testedThrough": "16.3.8",
+    "testedVersions": ["16.0.0", "16.3.7", "16.3.8"],
+    "testCommand": "vp run @pantoken/next#check:compatibility"
+  },
+  "@pantoken/panda": {
+    "target": "Panda CSS",
+    "format": "Panda token utility extraction from the Pantoken preset",
+    "status": "verified",
+    "minimum": "1.12.1",
+    "testedThrough": "2.0.0",
+    "testedVersions": ["1.12.1", "2.0.0"],
+    "testCommand": "vp run @pantoken/panda#check:compatibility"
+  },
+  "@pantoken/postcss": {
+    "target": "PostCSS",
+    "status": "verified",
+    "minimum": "8.0.0",
+    "testedThrough": "8.5.28",
+    "testedVersions": ["8.0.0", "8.0.9", "8.1.14", "8.2.15", "8.3.11", "8.4.49", "8.5.28"],
+    "testCommand": "vp run @pantoken/postcss#check:compatibility"
+  },
+  "@pantoken/tailwind": {
+    "target": "Tailwind CSS",
+    "status": "verified",
+    "minimum": "4.0.17",
+    "testedThrough": "4.3.3",
+    "testedVersions": ["4.0.17", "4.1.18", "4.2.4", "4.3.3"],
+    "testCommand": "vp run @pantoken/tailwind#check:compatibility"
+  },
+  "@pantoken/vite": {
+    "target": "Vite",
+    "status": "verified",
+    "minimum": "8.0.0",
+    "testedThrough": "8.3.1",
+    "testedVersions": ["8.0.0", "8.0.16", "8.1.5", "8.2.2", "8.3.1"],
+    "testCommand": "vp run @pantoken/vite#check:compatibility"
+  },
+  "@pantoken/webpack": {
+    "target": "webpack",
+    "format": "Emitted token CSS build asset",
+    "status": "verified",
+    "minimum": "5.61.0",
+    "testedThrough": "5.111.1",
+    "testedVersions": ["5.61.0", "5.76.0", "5.90.0", "5.111.1"],
+    "testCommand": "vp run @pantoken/webpack#check:compatibility"
+  },
+  "@pantoken/android": {
+    "target": "Android resources",
+    "format": "Generated colors, dimensions, and VectorDrawable compile and link with Android build-tools",
+    "status": "verified",
+    "minimum": "API 35 / build-tools 35.0.0",
+    "testedThrough": "API 35 / build-tools 35.0.0",
+    "testedVersions": ["API 35 / build-tools 35.0.0"],
+    "testCommand": "vp run @pantoken/android#check:compatibility"
+  },
+  "@pantoken/canvas-theme-editor": { "target": "Canvas Theme Editor", "status": "unverified" },
+  "@pantoken/compose": {
+    "target": "Jetpack Compose",
+    "format": "Generated Color and Dp token object compiles in an Android library module",
+    "status": "verified",
+    "minimum": "Kotlin 2.1.10 / Compose UI 1.8.2 / Android API 35",
+    "testedThrough": "Kotlin 2.1.10 / Compose UI 1.8.2 / Android API 35",
+    "testedVersions": ["Kotlin 2.1.10 / Compose UI 1.8.2 / Android API 35"],
+    "testCommand": "vp run @pantoken/compose#check:compatibility"
+  },
+  "@pantoken/drupal": {
+    "target": "Drupal themes",
+    "format": "Drupal core discovers generated theme; InfoParser and Symfony YAML accept metadata",
+    "status": "verified",
+    "minimum": "10.6.18",
+    "testedThrough": "11.3.2",
+    "testedVersions": ["10.6.18", "11.3.2"],
+    "testCommand": "vp run @pantoken/drupal#check:compatibility"
+  },
+  "@pantoken/email": { "target": "HTML email", "status": "unverified" },
+  "@pantoken/flutter": { "target": "Flutter", "status": "unverified" },
+  "@pantoken/hugo": {
+    "target": "Hugo",
+    "format": "Hugo Pipes builds the Pantoken token stylesheet",
+    "status": "verified",
+    "minimum": "0.165.0",
+    "testedThrough": "0.165.0",
+    "testedVersions": ["0.165.0"],
+    "testCommand": "vp run @pantoken/hugo#check:compatibility"
+  },
+  "@pantoken/jekyll": {
+    "target": "Jekyll",
+    "format": "Jekyll builds the generated Sass partial into site CSS",
+    "status": "verified",
+    "minimum": "4.4.1",
+    "testedThrough": "4.4.1",
+    "testedVersions": ["4.4.1"],
+    "testCommand": "vp run @pantoken/jekyll#check:compatibility"
+  },
+  "@pantoken/rust": {
+    "target": "Rust GUI frameworks",
+    "format": "Generated egui Color32 accessors and iced_core Color constants compile with the Rust toolchain",
+    "status": "verified",
+    "minimum": "1.95.0",
+    "testedThrough": "1.95.0",
+    "testedVersions": ["1.95.0"],
+    "testCommand": "vp run @pantoken/rust#check:compatibility"
+  },
+  "@pantoken/swift": {
+    "target": "Swift iOS",
+    "format": "UIKit SwiftPM module, runtime token check, and compiled Icons.xcassets",
+    "status": "environment-verified",
+    "testedEnvironments": [
+      "Xcode 27.0 (27A266a), Swift 6.4, iOS Simulator SDK/runtime 27.0, iPhone 18 Pro, arm64 iOS 15 deployment target"
+    ],
+    "limitations": "Runtime tested only on iOS Simulator 27.0; this does not establish an iOS 15 runtime floor. No watchOS or tvOS claim.",
+    "testCommand": "mise run verify:swift:runtime"
+  },
+  "@pantoken/vanilla": { "target": "Vanilla Forums", "status": "unverified" },
+  "@pantoken/wordpress": {
+    "target": "WordPress block themes",
+    "format": "theme.json v3",
+    "status": "verified",
+    "minimum": "6.6",
+    "testedThrough": "7.1.2",
+    "testedVersions": ["6.6", "6.7", "6.8", "6.9", "7.0", "7.1.2"],
+    "testCommand": "vp run @pantoken/wordpress#check:compatibility"
+  },
+  "@pantoken/angular": {
+    "target": "Angular",
+    "format": "CUSTOM_ELEMENTS_SCHEMA template compilation (Angular 16.2.12 / TS 5.1.6; Angular 22.2.0 / TS 6.0.3)",
+    "status": "verified",
+    "minimum": "16.2.12",
+    "testedThrough": "22.2.0",
+    "testedVersions": ["16.2.12", "22.2.0"],
+    "testCommand": "vp run @pantoken/angular#check:compatibility"
+  },
+  "@pantoken/astro": {
+    "target": "Astro / Starlight",
+    "format": "Built Starlight page with injected token stylesheet (Astro 5 and 7)",
+    "status": "verified",
+    "minimum": "0.35.0",
+    "testedThrough": "0.42.4",
+    "testedVersions": ["0.35.0", "0.42.4"],
+    "testCommand": "vp run @pantoken/astro#check:compatibility"
+  },
+  "@pantoken/bootstrap": {
+    "target": "Bootstrap",
+    "format": "CSS variables: body + primary button",
+    "status": "verified",
+    "minimum": "5.2.0",
+    "testedThrough": "5.3.8",
+    "testedVersions": ["5.2.0", "5.2.3", "5.3.8"],
+    "testCommand": "vp run @pantoken/bootstrap#check:compatibility"
+  },
+  "@pantoken/css-in-js": {
+    "target": "Emotion CSS-in-JS",
+    "format": "ThemeProvider SSR emits the Pantoken token variable",
+    "status": "verified",
+    "minimum": "11.14.0",
+    "testedThrough": "11.14.0",
+    "testedVersions": ["11.14.0"],
+    "testCommand": "vp run @pantoken/css-in-js#check:compatibility"
+  },
+  "@pantoken/docusaurus": {
+    "target": "Docusaurus theme-classic",
+    "format": "Infima CSS-variable bridge: primary and background",
+    "status": "verified",
+    "minimum": "3.0.0",
+    "testedThrough": "3.10.2",
+    "testedVersions": ["3.0.0", "3.4.0", "3.8.1", "3.10.2"],
+    "testCommand": "vp run @pantoken/docusaurus#check:compatibility"
+  },
+  "@pantoken/foundation": {
+    "target": "Foundation for Sites",
+    "format": "Concrete Sass settings + variable-backed CSS overlay",
+    "status": "verified",
+    "minimum": "6.1.2",
+    "testedThrough": "6.9.0",
+    "testedVersions": [
+      "6.1.2",
+      "6.2.4",
+      "6.3.1",
+      "6.4.3",
+      "6.5.3",
+      "6.6.3",
+      "6.7.5",
+      "6.8.1",
+      "6.9.0"
+    ],
+    "testCommand": "vp run @pantoken/foundation#check:compatibility"
+  },
+  "@pantoken/markdown-it": {
+    "target": "markdown-it",
+    "status": "verified",
+    "minimum": "14.0.0",
+    "testedThrough": "15.0.2",
+    "testedVersions": ["14.0.0", "14.1.1", "14.2.0", "14.3.2", "15.0.2"],
+    "testCommand": "vp run @pantoken/markdown-it#check:compatibility"
+  },
+  "@pantoken/mintlify": {
+    "target": "Mintlify docs.json",
+    "format": "Official CLI validates generated colors and background theme config",
+    "status": "verified",
+    "minimum": "4.0.1555",
+    "testedThrough": "4.0.1557",
+    "testedVersions": ["4.0.1555", "4.0.1557"],
+    "testCommand": "vp run @pantoken/mintlify#check:compatibility"
+  },
+  "@pantoken/mui": {
+    "target": "Material UI",
+    "format": "Concrete createTheme palettes (MUI 5, 6, 7, 9)",
+    "status": "verified",
+    "minimum": "5.0.0",
+    "testedThrough": "9.4.0",
+    "testedVersions": ["5.0.0", "5.18.0", "6.0.0", "6.5.0", "7.0.0", "7.3.11", "9.0.0", "9.4.0"],
+    "testCommand": "vp run @pantoken/mui#check:compatibility"
+  },
+  "@pantoken/pendo": { "target": "Pendo", "status": "unverified" },
+  "@pantoken/react": {
+    "target": "React",
+    "format": "SSR-rendered Icon custom element and token fallback",
+    "status": "verified",
+    "minimum": "19.3.0",
+    "testedThrough": "19.3.0",
+    "testedVersions": ["19.3.0"],
+    "testCommand": "vp run @pantoken/react#check:compatibility"
+  },
+  "@pantoken/react-markdown": {
+    "target": "react-markdown",
+    "format": "SSR-rendered InstUI heading, icon, and color swatch with React 19.3.0",
+    "status": "verified",
+    "minimum": "10.1.0",
+    "testedThrough": "10.1.0",
+    "testedVersions": ["10.1.0"],
+    "testCommand": "vp run @pantoken/react-markdown#check:compatibility"
+  },
+  "@pantoken/react-native": { "target": "React Native", "status": "unverified" },
+  "@pantoken/rehype": {
+    "target": "rehype",
+    "format": "HAST + raw SVG",
+    "status": "verified",
+    "minimum": "13.0.0",
+    "testedThrough": "13.0.2",
+    "testedVersions": ["13.0.0", "13.0.1", "13.0.2"],
+    "testCommand": "vp run @pantoken/rehype#check:compatibility"
+  },
+  "@pantoken/shadcn": {
+    "target": "shadcn/ui CSS variables",
+    "format": "Tailwind 4.3.3 compiles the Pantoken primary theme alias",
+    "status": "verified",
+    "minimum": "4.3.3",
+    "testedThrough": "4.3.3",
+    "testedVersions": ["4.3.3"],
+    "testCommand": "vp run @pantoken/shadcn#check:compatibility"
+  },
+  "@pantoken/storybook": {
+    "target": "Storybook theming",
+    "format": "Storybook ThemeVars constructor accepts light and dark Pantoken themes",
+    "status": "verified",
+    "minimum": "8.6.14",
+    "testedThrough": "8.6.14",
+    "testedVersions": ["8.6.14"],
+    "testCommand": "vp run @pantoken/storybook#check:compatibility"
+  },
+  "@pantoken/svelte": {
+    "target": "Svelte",
+    "format": "Icon action component compiles and SSR renders on Svelte 4 and 5",
+    "status": "verified",
+    "minimum": "4.2.20",
+    "testedThrough": "5.57.1",
+    "testedVersions": ["4.2.20", "5.57.1"],
+    "testCommand": "vp run @pantoken/svelte#check:compatibility"
+  },
+  "@pantoken/tinymce": {
+    "target": "TinyMCE PluginManager",
+    "format": "Pantoken plugin registration and callback initialization",
+    "status": "verified",
+    "minimum": "8.9.2",
+    "testedThrough": "8.9.2",
+    "testedVersions": ["8.9.2"],
+    "testCommand": "vp run @pantoken/tinymce#check:compatibility"
+  },
+  "@pantoken/vitepress": {
+    "target": "VitePress",
+    "format": "Built site CSS includes the Pantoken primary-brand bridge",
+    "status": "verified",
+    "minimum": "1.6.4",
+    "testedThrough": "1.6.4",
+    "testedVersions": ["1.6.4"],
+    "testCommand": "vp run @pantoken/vitepress#check:compatibility"
+  },
+  "@pantoken/vue": {
+    "target": "Vue",
+    "format": "Plugin installation, custom-element configuration, and SSR output",
+    "status": "verified",
+    "minimum": "3.0.0",
+    "testedThrough": "3.5.43",
+    "testedVersions": ["3.0.0", "3.5.43"],
+    "testCommand": "vp run @pantoken/vue#check:compatibility"
+  },
+  "@pantoken/web-components": {
+    "target": "Web Components",
+    "format": "Custom-element registration and button shadow output",
+    "status": "environment-verified",
+    "testedEnvironments": ["Node 26.10.0 with happy-dom 20.14.5"],
+    "limitations": "Real-browser rendering and interaction behavior are not verified.",
+    "testCommand": "vp run @pantoken/web-components#check:compatibility"
+  }
+}

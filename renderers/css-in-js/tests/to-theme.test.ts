@@ -1,4 +1,5 @@
 import { expect, test } from "vite-plus/test";
+import { checkCompatibility } from "../scripts/check-compatibility.ts";
 import { toStyledTheme, toThemeKey } from "../src/to-theme.ts";
 import type { Token } from "@pantoken/model";
 
@@ -45,4 +46,8 @@ test("resolves concrete values per mode when asked", () => {
   expect(light.colorBackgroundBase).toBe("#fff");
   const dark = toStyledTheme(fixture, { resolve: "dark" });
   expect(dark.colorBackgroundBase).toBe("#000");
+});
+
+test("rejects Emotion versions outside the checked major", async () => {
+  await expect(checkCompatibility("12.0.0")).rejects.toThrow("Invalid Emotion release");
 });

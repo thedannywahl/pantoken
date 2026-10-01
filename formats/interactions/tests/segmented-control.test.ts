@@ -1,0 +1,221 @@
+// @vitest-environment happy-dom
+import { afterEach, expect, test, vi } from "vite-plus/test";
+import { initSegmentedControl } from "../src/behaviors/segmented-control.ts";
+
+afterEach(() => {
+  document.body.innerHTML = "";
+  vi.restoreAllMocks();
+});
+
+function setup() {
+  document.body.innerHTML = `
+    <fieldset class="instui-segmented-control" aria-label="Course view">
+      <button class="overflow-start" type="button" aria-label="Previous" hidden></button>
+      <label><input type="radio" name="view" checked> Grid</label>
+      <label><input type="radio" name="view" disabled> Map</label>
+      <label><input type="radio" name="view"> List</label>
+      <button class="overflow-end" type="button" aria-label="Next" hidden></button>
+    </fieldset>`;
+  return {
+    host: document.querySelector<HTMLElement>(".instui-segmented-control")!,
+    radios: [...document.querySelectorAll<HTMLInputElement>("fieldset input")],
+    strip: document.querySelector<HTMLElement>("fieldset")!,
+    start: document.querySelector<HTMLButtonElement>(".overflow-start")!,
+    end: document.querySelector<HTMLButtonElement>(".overflow-end")!,
+  };
+}
+
+test("keeps native single selection and skips disabled segments with arrow keys", () => {
+  const { host, radios } = setup();
+  const handle = initSegmentedControl(host);
+  const changed = vi.fn();
+  radios[2].addEventListener("change", changed);
+  radios[0].dispatchEvent(
+    new KeyboardEvent("keydown", { key: "ArrowRight", bubbles: true, cancelable: true }),
+  );
+  expect(radios[2].checked).toBe(true);
+  expect(radios[0].checked).toBe(false);
+  expect(document.activeElement).toBe(radios[2]);
+  expect(changed).toHaveBeenCalledOnce();
+  expect(host.getAttribute("aria-label")).toBe("Course view");
+  handle.cleanup();
+});
+
+test("clicking an inactive segment leaves exactly one segment checked", () => {
+  const { host, radios } = setup();
+  initSegmentedControl(host);
+  radios[2].click();
+  expect(radios.filter((radio) => radio.checked)).toEqual([radios[2]]);
+});
+
+test("supports Home, End, Space, and Enter without duplicate change events", () => {
+  const { host, radios } = setup();
+  initSegmentedControl(host, { size: "sm" });
+  expect(host.classList.contains("-size-sm")).toBe(true);
+  radios[2].dispatchEvent(
+    new KeyboardEvent("keydown", { key: "Home", bubbles: true, cancelable: true }),
+  );
+  expect(radios[0].checked).toBe(true);
+  radios[0].dispatchEvent(
+    new KeyboardEvent("keydown", { key: "End", bubbles: true, cancelable: true }),
+  );
+  expect(radios[2].checked).toBe(true);
+  const change = vi.fn();
+  radios[2].addEventListener("change", change);
+  radios[2].dispatchEvent(
+    new KeyboardEvent("keydown", { key: " ", bubbles: true, cancelable: true }),
+  );
+  radios[2].dispatchEvent(
+    new KeyboardEvent("keydown", { key: "Enter", bubbles: true, cancelable: true }),
+  );
+  expect(change).not.toHaveBeenCalled();
+});
+
+test("supports viewport/track markup and only scrolls the track", () => {
+  document.body.innerHTML = `
+    <fieldset class="instui-segmented-control" aria-label="Course view">
+      <div class="viewport">
+        <button class="overflow-start" type="button" aria-label="Previous" hidden></button>
+        <div class="track">
+          <label><input type="radio" name="view" checked> Grid</label>
+          <label><input type="radio" name="view"> Map</label>
+          <label><input type="radio" name="view"> List</label>
+        </div>
+        <button class="overflow-end" type="button" aria-label="Next" hidden></button>
+      </div>
+    </fieldset>`;
+  const host = document.querySelector<HTMLElement>(".instui-segmented-control")!;
+  const track = document.querySelector<HTMLElement>(".track")!;
+  const start = document.querySelector<HTMLButtonElement>(".overflow-start")!;
+  const end = document.querySelector<HTMLButtonElement>(".overflow-end")!;
+  Object.defineProperty(track, "scrollWidth", { configurable: true, value: 300 });
+  Object.defineProperty(track, "clientWidth", { configurable: true, value: 100 });
+  Object.defineProperty(track, "scrollLeft", { configurable: true, writable: true, value: 0 });
+  Object.defineProperty(start, "offsetWidth", { configurable: true, value: 20 });
+  Object.defineProperty(end, "offsetWidth", { configurable: true, value: 20 });
+  Object.defineProperty(track, "scrollBy", {
+    configurable: true,
+    value: vi.fn((options) => {
+      track.scrollLeft = Number(options.left ?? 0);
+    }),
+  });
+  const handle = initSegmentedControl(host, { isOverflown: true });
+  expect(start.hidden).toBe(true);
+  expect(end.hidden).toBe(false);
+  end.click();
+  expect(track.scrollLeft).toBeGreaterThan(0);
+  handle.cleanup();
+});
+
+test("enables overflow arrows only when requested and measured content clips", () => {
+  const { host, strip, start, end } = setup();
+  Object.defineProperty(strip, "scrollWidth", { configurable: true, value: 300 });
+  Object.defineProperty(strip, "clientWidth", { configurable: true, value: 100 });
+  const rect = (left: number, right: number): DOMRect => ({ left, right }) as DOMRect;
+  vi.spyOn(strip, "getBoundingClientRect").mockReturnValue(rect(0, 100));
+  strip.querySelectorAll<HTMLElement>("label").forEach((segment, index) => {
+    vi.spyOn(segment, "getBoundingClientRect").mockReturnValue(rect(index * 80, index * 80 + 70));
+  });
+  const handle = initSegmentedControl(host, { isOverflown: true });
+  expect(start.hidden).toBe(true);
+  expect(end.hidden).toBe(false);
+  Object.defineProperty(strip, "scrollWidth", { configurable: true, value: 90 });
+  handle.refresh();
+  expect(start.hidden).toBe(true);
+  expect(end.hidden).toBe(true);
+  handle.cleanup();
+});
+
+test("measures overflow automatically when both controls are present", () => {
+  const { host, strip, end } = setup();
+  Object.defineProperty(strip, "scrollWidth", { configurable: true, value: 300 });
+  Object.defineProperty(strip, "clientWidth", { configurable: true, value: 100 });
+  vi.spyOn(strip, "getBoundingClientRect").mockReturnValue({ left: 0, right: 100 } as DOMRect);
+  strip.querySelectorAll<HTMLElement>("label").forEach((label, index) => {
+    vi.spyOn(label, "getBoundingClientRect").mockReturnValue({
+      left: index * 80,
+      right: index * 80 + 70,
+    } as DOMRect);
+  });
+  initSegmentedControl(host);
+  expect(end.hidden).toBe(false);
+});
+
+test("reserves only the visible edge and swaps controls at scroll boundaries", () => {
+  const { host, strip, start, end } = setup();
+  Object.defineProperty(strip, "scrollWidth", { configurable: true, value: 300 });
+  Object.defineProperty(strip, "clientWidth", { configurable: true, value: 100 });
+  Object.defineProperty(strip, "scrollLeft", { configurable: true, writable: true, value: 0 });
+  Object.defineProperty(start, "offsetWidth", { configurable: true, value: 20 });
+  Object.defineProperty(end, "offsetWidth", { configurable: true, value: 20 });
+  initSegmentedControl(host);
+  expect(start.hidden).toBe(true);
+  expect(end.hidden).toBe(false);
+  expect(strip.style.getPropertyValue("--pantoken-segmented-start-reserve")).toBe("0px");
+  expect(strip.style.getPropertyValue("--pantoken-segmented-end-reserve")).not.toBe("0px");
+
+  Object.defineProperty(strip, "scrollLeft", { configurable: true, writable: true, value: 200 });
+  strip.dispatchEvent(new Event("scroll"));
+  expect(start.hidden).toBe(false);
+  expect(end.hidden).toBe(true);
+  expect(strip.style.getPropertyValue("--pantoken-segmented-start-reserve")).not.toBe("0px");
+  expect(strip.style.getPropertyValue("--pantoken-segmented-end-reserve")).toBe("0px");
+});
+
+test("reuses one handle and removes keyboard listeners on cleanup", () => {
+  const { host, radios } = setup();
+  const handle = initSegmentedControl(host);
+  expect(initSegmentedControl(host)).toBe(handle);
+  handle.cleanup();
+  radios[0].dispatchEvent(new KeyboardEvent("keydown", { key: "End", bubbles: true }));
+  expect(radios[0].checked).toBe(true);
+});
+
+test("overflow arrows reveal the next clipped segment in each writing direction", () => {
+  const { host, strip, start, end } = setup();
+  Object.defineProperty(strip, "scrollWidth", { configurable: true, value: 300 });
+  Object.defineProperty(strip, "clientWidth", { configurable: true, value: 100 });
+  Object.defineProperty(start, "offsetWidth", { configurable: true, value: 20 });
+  Object.defineProperty(end, "offsetWidth", { configurable: true, value: 20 });
+  const rect = (left: number, right: number): DOMRect => ({ left, right }) as DOMRect;
+  vi.spyOn(strip, "getBoundingClientRect").mockReturnValue(rect(0, 100));
+  const items = [...strip.querySelectorAll<HTMLElement>("label")];
+  items.forEach((item, index) =>
+    vi.spyOn(item, "getBoundingClientRect").mockReturnValue(rect(index * 80 + 20, index * 80 + 70)),
+  );
+  const scrollBy = vi.fn();
+  strip.scrollBy = scrollBy;
+  const handle = initSegmentedControl(host, { isOverflown: true });
+  expect(start.hidden).toBe(true);
+  expect(end.hidden).toBe(false);
+  end.click();
+  expect(scrollBy).toHaveBeenCalledWith({ left: 70, behavior: "smooth" });
+
+  strip.style.direction = "rtl";
+  items.forEach((item, index) =>
+    vi.spyOn(item, "getBoundingClientRect").mockReturnValue(rect(30 - index * 80, 80 - index * 80)),
+  );
+  handle.refresh();
+  end.click();
+  expect(scrollBy).toHaveBeenLastCalledWith({ left: -50, behavior: "smooth" });
+  handle.cleanup();
+});
+
+test("DOM-ready entry registers an existing fieldset once", async () => {
+  const { host, radios } = setup();
+  await import("../src/components/segmented-control.ts");
+  document.dispatchEvent(new Event("DOMContentLoaded"));
+  radios[0].dispatchEvent(
+    new KeyboardEvent("keydown", { key: "End", bubbles: true, cancelable: true }),
+  );
+  expect(radios[2].checked).toBe(true);
+  expect(initSegmentedControl(host)).toBe(initSegmentedControl(host));
+});
+
+test("copies an icon class from a native input to its label painter", () => {
+  const { host } = setup();
+  const radio = host.querySelector<HTMLInputElement>("input")!;
+  radio.classList.add("-icon-grid-view");
+  initSegmentedControl(host);
+  expect(radio.closest("label")?.classList.contains("-icon-grid-view")).toBe(true);
+});

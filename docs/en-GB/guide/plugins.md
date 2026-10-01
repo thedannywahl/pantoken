@@ -1,9 +1,9 @@
 # Plugins
 
-A pantoken plugin extends the token or CSS output without forking a package. You build one using
+A pantoken plugin extends the token or CSS output without forking a package. You build one with
 `definePlugin` from `@pantoken/plugin-kit`, then pass it to `buildTokens` or `toCss`.
 
-## Create a plugin
+## Author a plugin
 
 Give `definePlugin` the hooks you implement. It returns a normal plugin, branded with the
 capabilities inferred from those hooks. A plugin can extend the IR (`tokens`, `icons`), the CSS
@@ -66,7 +66,100 @@ expect(unknownReferences(myBridgeCss, tokens)).toEqual([]);
   unused custom properties from a stylesheet.
 - `@pantoken/plugin-custom-theme-colors` — rebrands a page by setting one attribute
   (`data-pantoken-color`) to one of 13 palettes, or to `custom` for any brand hex. See
-  [Theme colours](#theme-colours).
+  [Theme colours](#theme-colors).
+- `@pantoken/plugin-custom-components` — token-backed custom controls including SegmentedControl
+  and SkeletonLoader.
+
+### Segmented control
+
+Use a segmented control for two to five related views or filters. Each option is a labelled native
+radio in one named group; mark one checked initially. Use tabs or a dropdown if the options won't fit
+comfortably, and use button groups for actions rather than choices. The `-size-md` style is the
+default, with `-size-sm` and `-size-lg` for tighter and more prominent contexts.
+
+Import `@pantoken/plugin-custom-components/segmented-control.css` for the control and its overflow
+buttons. Use a `-icon-*` class on a segment label when the segment needs a glyph; the interaction
+helper also promotes a `-icon-*` class from its native input to the label painter.
+Give the fieldset a descriptive `aria-label` or a visible legend. The helper preserves the native
+radio announcement, adds keyboard navigation, and optionally reveals one clipped segment per arrow
+press. Use logical start/end controls and accessible button labels in both directions:
+
+```html
+<fieldset class="instui-segmented-control" aria-label="Course view" data-overflown>
+  <div class="viewport">
+    <button class="overflow-start" type="button" aria-label="Previous views" hidden></button>
+    <div class="track">
+      <label><input type="radio" name="course-view" checked /> Grid</label>
+      <label><input type="radio" name="course-view" /> List</label>
+    </div>
+    <button class="overflow-end" type="button" aria-label="Next views" hidden></button>
+  </div>
+</fieldset>
+```
+
+Import `@pantoken/interactions/segmented-control.iife.js` for DOM-ready registration, or call
+`initSegmentedControl(fieldset, { size: "md", isOverflown: true })` from `@pantoken/interactions`
+and call `cleanup()` when removing it. The CSS and native radio choices work without JS; overflow
+arrows need the behaviour. The selected item uses the two-layer design shadow from the semantic
+drop-shadow colours; it is a distinct active-item shadow rather than an existing
+`--instui-elevation-*` composite. Overflow buttons use the upstream elevation3 component tokens
+through `--pantoken-segmented-overflow-shadow`.
+
+### Skeleton loading
+
+The `skeleton-loader.css` subpath styles one decorative Text, Avatar, or Image shape. Text accepts
+`-size-xxs` through `-size-xxl`; Avatar and Image are medium-sized. Each optional `.skeleton-row`
+adds one text line without changing the size. The CSS shimmer stops after three 1.5-second sweeps and
+stays static when the user prefers reduced motion. It works before JavaScript loads.
+
+Place shapes only where query-dependent content will appear, not over server-known navigation,
+filters, headings, or controls. A skeleton is not a progress meter or an action-busy state. Keep
+existing content visible during background refreshes; use a spinner or button busy state for actions.
+
+The parent application owns loading, loaded, empty, and error markup. Provide one empty status region
+per page and a separate empty alert in the server HTML, both **outside** the busy content region:
+
+```html
+<div class="instui-skeleton-loading">
+  <span class="instui-screen-reader-content" role="status" data-skeleton-status></span>
+  <span class="instui-screen-reader-content" role="alert" data-skeleton-error></span>
+  <section data-skeleton-region aria-busy="true">
+    <div class="instui-skeleton-loader -type-text -size-md" aria-hidden="true">
+      <div class="shape"></div>
+      <div class="skeleton-row">
+        <div class="shape"></div>
+      </div>
+    </div>
+  </section>
+</div>
+```
+
+Call the parent-level behaviour when the request state changes. It updates `aria-busy` and the two
+pre-existing announcements, but it never replaces content or moves focus:
+
+```ts
+import { initSkeletonLoading } from "@pantoken/interactions";
+
+const wrapper = document.querySelector<HTMLElement>(".instui-skeleton-loading")!;
+const loading = initSkeletonLoading(wrapper.querySelector<HTMLElement>("[data-skeleton-region]")!, {
+  status: wrapper.querySelector<HTMLElement>("[data-skeleton-status]")!,
+  error: wrapper.querySelector<HTMLElement>("[data-skeleton-error]")!,
+});
+
+loading.setLoading("Loading courses"); // announces after 400ms, unless loading finishes first
+loading.setLoaded("24 courses"); // swap in the real content separately
+// For an empty result, use setEmpty("No courses found"); for failure, setError("Couldn't load courses. Retry").
+loading.cleanup(); // when the owning region is removed
+```
+
+If using the per-component interactions bundle instead of the direct import, dispatch a
+`pantoken:skeleton-state` event on the `[data-skeleton-region]` element with
+`detail: { state: "loading" | "loaded" | "empty" | "error", message: string }`. Delay _showing_
+placeholders by 200–500ms for fast requests; the behaviour independently delays the loading
+announcement by 400ms. On passive page loads, leave focus where it is. Only move focus to a newly
+loaded result when the user's own action requested it. The status node announces results and empty
+states; the alert node announces failures. Do not combine `aria-busy`, `role="status"`, and
+`role="alert"` on one element.
 
 Lucide Lab's registry can be loaded lazily, then passed to the synchronous token hook:
 
@@ -87,7 +180,7 @@ ring (in `base.css` — every focusable gets it when pantoken owns the page), an
 fonts (Atkinson Hyperlegible Next: `base.css` applies `--instui-font-family-base`; the opt-in
 `@pantoken/components/fonts.css` loads the `@font-face` woff2s).
 
-## Theme colours
+## Theme colours {#theme-colors}
 
 `@pantoken/plugin-custom-theme-colors` emits one `[data-pantoken-color="…"]` block per palette
 (`navy`, `blue`, `green`, `red`, `orange`, `grey`, `plum`, `violet`, `stone`, `sky`, `honey`, `sea`,

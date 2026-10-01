@@ -39,6 +39,12 @@ pantoken generate android --out ./app/src/main --theme canvas --icons add,check
 Reference the values from layouts and themes as `@color/…` and `@dimen/…`. Use this package for
 Android View-system (XML) UIs; for Jetpack Compose, use `@pantoken/compose`.
 
+## Compatibility
+
+`vp run @pantoken/android#check:compatibility` compiles and links generated values and an optional
+VectorDrawable with Android API 35 / build-tools 35.0.0 using the official Android SDK container.
+This verifies resource syntax and linking, not runtime behavior on a device.
+
 ## API
 
 - **`generateAndroid(options): Promise<string[]>`** — emit XML for a named theme (from the vendored

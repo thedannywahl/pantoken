@@ -3,6 +3,12 @@
 An Instructure design-token preset for Panda CSS. Spread it into your Panda config to get Instructure
 colors, spacing, and radii as Panda tokens, with light and dark handled by Panda's `_dark` condition.
 
+## Compatibility
+
+Verified with real Panda builds on 1.12.1 and 2.0.0: each extracts a utility using a Pantoken brand
+token from the preset. See the [compatibility matrix](https://pantoken.app/compatibility) for the
+exact tested releases.
+
 ## Install
 
 ```sh

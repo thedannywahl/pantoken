@@ -1,5 +1,6 @@
 import { renderToStaticMarkup } from "react-dom/server";
 import { expect, test } from "vite-plus/test";
+import { checkCompatibility } from "../scripts/check-compatibility.ts";
 import { Icon, readToken } from "../src/index.tsx";
 
 test("Icon renders the instui-icon custom element with attributes", () => {
@@ -11,4 +12,8 @@ test("Icon renders the instui-icon custom element with attributes", () => {
 
 test("readToken returns the fallback on the server (no document)", () => {
   expect(readToken("--instui-color-background-brand", "#0374B5")).toBe("#0374B5");
+});
+
+test("rejects releases outside the checked React major", async () => {
+  await expect(checkCompatibility("20.0.0")).rejects.toThrow("Invalid React 19 release");
 });

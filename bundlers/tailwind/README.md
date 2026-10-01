@@ -12,6 +12,12 @@ npm i -D @pantoken/tailwind
 
 Also available as `pantoken/tailwind`.
 
+## Compatibility
+
+Verified with Tailwind CSS 4.0.17 through 4.3.3 by compiling utilities in each minor train.
+Tailwind 4.0.0 is not verified; newer releases also need review before the tested range expands.
+See the [compatibility matrix](https://pantoken.app/compatibility) for exact releases.
+
 ## Usage
 
 ```ts
@@ -20,14 +26,21 @@ import { pantokenPreset } from "@pantoken/tailwind";
 
 export default {
   presets: [pantokenPreset()],
-  content: ["./src/**/*.{ts,tsx}"],
 };
+```
+
+Load the JavaScript preset from your Tailwind v4 stylesheet:
+
+```css
+@import "tailwindcss";
+@config "./tailwind.config.ts";
+@source "./src";
 ```
 
 Then use utilities backed by the tokens:
 
 ```html
-<div class="bg-color-background-base p-space-md font-lato">…</div>
+<div class="bg-background-base p-space-md font-lato">…</div>
 ```
 
 Pair it with `@pantoken/css` (or `@pantoken/vite`) so the `--instui-*` custom properties are actually

@@ -18,7 +18,14 @@ const SAMPLE: Compatibility = {
       feeds: "token-ir",
     },
   },
-  consumers: [{ package: "@pantoken/css", path: "formats/css", governedBy: "token-ir" }],
+  consumers: [
+    {
+      package: "@pantoken/css",
+      path: "formats/css",
+      governedBy: "token-ir",
+      targetSupport: { target: "CSS", status: "unverified" },
+    },
+  ],
   deprecations: [],
 };
 

@@ -27,6 +27,7 @@
     "provenance": true
   },
   "scripts": {
+    "check:compatibility": "node scripts/check-compatibility.ts",
     "generate": "node scripts/generate.ts",
     "dev": "vp run generate && vp pack --watch",
     "test": "vp test",
@@ -38,8 +39,12 @@
     "@pantoken/utils": "workspace:*"
   },
   "devDependencies": {
+    "@emotion/react": "catalog:",
+    "@emotion/styled": "catalog:",
     "@pantoken/components": "workspace:*",
     "@types/node": "catalog:",
+    "react": "catalog:",
+    "react-dom": "catalog:",
     "typescript": "catalog:",
     "vite": "catalog:",
     "vite-plus": "catalog:"

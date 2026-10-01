@@ -21,10 +21,10 @@ const fixture: Token[] = [
   },
 ];
 
-test("egui format emits Color32 + f32, resolving references and filtering icons", () => {
+test("egui format emits Color32 accessors + f32 constants, resolving references and filtering icons", () => {
   const rs = toRust(fixture, { format: "egui" });
   expect(rs).toContain("use egui::Color32;");
-  expect(rs).toContain("pub const COLOR_BRAND: Color32 = Color32::from_rgb(3, 116, 181);");
+  expect(rs).toContain("pub fn color_brand() -> Color32 { Color32::from_rgb(3, 116, 181) }");
   expect(rs).toContain("pub const SPACING_MD: f32 = 16.0;");
   expect(rs).not.toContain("ICON_X");
 });
@@ -41,7 +41,7 @@ test("alpha is preserved (transparent, not opaque black)", () => {
     { name: "--instui-color-clear", syntax: "<color>", inherits: true, value: "#00000000" },
   ];
   expect(toRust(transparent, { format: "egui" })).toContain(
-    "Color32::from_rgba_unmultiplied(0, 0, 0, 0)",
+    "pub fn color_clear() -> Color32 { Color32::from_rgba_unmultiplied(0, 0, 0, 0) }",
   );
   expect(toRust(transparent, { format: "iced" })).toContain("a: 0.0 }");
 });

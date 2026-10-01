@@ -18,6 +18,9 @@
     "security:code": "vp run snyk:code",
     "prepare": "vp config && sh scripts/quality/restore-entire-hooks.sh"
   },
+  "dependencies": {
+    "ajv": "catalog:"
+  },
   "devDependencies": {
     "@arethetypeswrong/cli": "catalog:",
     "@changesets/cli": "catalog:",

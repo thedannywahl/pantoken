@@ -10,6 +10,10 @@ import { RULES } from "../../../formats/components/src/rules/index.ts";
 import { UTILITIES } from "../../../formats/components/src/utilities/index.ts";
 
 const CUSTOM_DATA_VERSION = 1.1;
+const HTML_CUSTOM_DATA_SCHEMA =
+  "https://raw.githubusercontent.com/microsoft/vscode-html-languageservice/main/docs/customData.schema.json";
+const CSS_CUSTOM_DATA_SCHEMA =
+  "https://raw.githubusercontent.com/microsoft/vscode-css-languageservice/main/docs/customData.schema.json";
 const PREFIX = "instui";
 const PREFIX_NS = `${PREFIX}-`;
 
@@ -19,6 +23,7 @@ interface CustomDataValue {
 }
 
 interface HtmlCustomData {
+  $schema: string;
   version: number;
   globalAttributes: Array<{
     name: string;
@@ -28,6 +33,7 @@ interface HtmlCustomData {
 }
 
 interface CssCustomData {
+  $schema: string;
   version: number;
   properties: Array<{
     name: string;
@@ -108,6 +114,7 @@ export function buildHtmlCustomData(
 ): HtmlCustomData {
   const values = collectClassValues(definitions);
   return {
+    $schema: HTML_CUSTOM_DATA_SCHEMA,
     version: CUSTOM_DATA_VERSION,
     globalAttributes: [
       {
@@ -132,6 +139,7 @@ export function buildCssCustomData(): CssCustomData {
     }));
 
   return {
+    $schema: CSS_CUSTOM_DATA_SCHEMA,
     version: CUSTOM_DATA_VERSION,
     properties,
     atDirectives: [],

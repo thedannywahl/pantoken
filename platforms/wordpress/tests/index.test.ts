@@ -30,7 +30,7 @@ const fixture: Token[] = [
 test("emits a v3 theme.json with palette, spacing, and font families", () => {
   const tj = toThemeJson(fixture);
   expect(tj.version).toBe(3);
-  expect(tj.$schema).toContain("schemas.wp.org");
+  expect(tj.$schema).toBe("https://schemas.wp.org/wp/6.6/theme.json");
 
   const brand = tj.settings.color.palette.find((p) => p.slug === "brand");
   expect(brand?.color).toBe("#0374B5"); // reference resolved

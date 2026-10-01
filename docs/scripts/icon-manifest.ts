@@ -40,6 +40,7 @@ type IconManifestEntry =
   | { source: "logos"; product: string; name: string; css: string };
 
 const CDN_BASE = "https://cdn.jsdelivr.net/npm";
+const SCHEMA = "https://pantoken.app/schemas/icon-manifest.schema.json";
 
 const readGenerated = <T>(generatedDir: string, file: string): T =>
   JSON.parse(readFileSync(resolve(generatedDir, file), "utf8")) as T;
@@ -50,7 +51,7 @@ export const buildIconManifest = (
   lucideLabIcons: readonly LucideLabIconEntry[],
   simpleIcons: readonly SimpleIconEntry[],
   pluginManifest: PluginManifest,
-): { description: string; icons: IconManifestEntry[] } => {
+): { $schema: string; description: string; icons: IconManifestEntry[] } => {
   const instui: IconManifestEntry[] = instuiIcons.map((icon) => ({
     css: `${CDN_BASE}/@pantoken/components/dist/icons/${icon.name}.css`,
     name: icon.name,
@@ -86,6 +87,7 @@ export const buildIconManifest = (
   );
 
   return {
+    $schema: SCHEMA,
     description:
       "pantoken icon/logo manifest. Each entry names its source " +
       "(instui | simple-icons | custom-icons | logos) and its exact per-item CDN CSS URL — " +

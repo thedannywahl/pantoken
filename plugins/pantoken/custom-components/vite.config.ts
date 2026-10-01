@@ -24,6 +24,8 @@ export default extendBase({
       banner: "generated/banner.css",
       "button-set": "generated/button-set.css",
       logo: "generated/logo.css",
+      "skeleton-loader": "generated/skeleton-loader.css",
+      "segmented-control": "generated/segmented-control.css",
     },
     css: { splitting: true, target: false, minify: true, modules: false, inject: false },
     exports: false,

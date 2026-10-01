@@ -10,6 +10,12 @@ pantoken-powered inline features:
 - **Color swatches** — standalone color values (`#03893D`, `rgb(...)`) render as a swatch plus code.
 - **GitHub alerts** — `> [!NOTE]` blockquotes become InstUI `Alert`s.
 
+## Compatibility
+
+Verified with react-markdown 10.1.0 and React 19.3.0 by server-rendering an InstUI heading, icon, and
+color swatch. See the [compatibility matrix](https://pantoken.app/compatibility) for the tested
+release.
+
 ## Install
 
 ```sh

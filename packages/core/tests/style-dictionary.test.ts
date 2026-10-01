@@ -24,6 +24,19 @@ test("resolveReferences picks the requested light-dark() mode", () => {
   expect(resolveReferences(fixture, "dark").get("--instui-color-bg")).toBe("#000000");
 });
 
+test("toStyleDictionary keeps all channels of a functional light-dark color", () => {
+  const tokens: Token[] = [
+    defineToken({
+      name: "--instui-color-shadow",
+      value: "light-dark(rgba(35,68,101,0.15), rgba(0,0,0,0.3))",
+    }),
+  ];
+  expect(toStyleDictionary(tokens, "light")["instui-color-shadow"]).toEqual({
+    value: "rgba(35,68,101,0.15)",
+    type: "color",
+  });
+});
+
 test("toStyleDictionary strips the -- prefix and maps types", () => {
   const sd = toStyleDictionary(fixture, "light");
   expect(sd["instui-color-brand"]).toEqual({ value: "#0374B5", type: "color" });

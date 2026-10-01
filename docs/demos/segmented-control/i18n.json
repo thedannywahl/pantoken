@@ -1,0 +1,14 @@
+{
+  "$schema": "https://pantoken.app/schemas/i18n.source.schema.json",
+  "text1": { "message": "Course view", "translate": "optional" },
+  "text2": { "message": "Overview", "translate": "optional" },
+  "text3": { "message": "Assignments", "translate": "optional" },
+  "text4": { "message": "Grades", "translate": "optional" },
+  "text5": { "message": "Results view", "translate": "optional" },
+  "text6": { "message": "Cards", "translate": "optional" },
+  "text7": { "message": "List", "translate": "optional" },
+  "text8": { "message": "Map", "translate": "optional" },
+  "text9": { "message": "Time period", "translate": "optional" },
+  "text10": { "message": "Week", "translate": "optional" },
+  "text11": { "message": "Month", "translate": "optional" }
+}

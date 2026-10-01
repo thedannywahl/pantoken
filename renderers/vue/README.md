@@ -3,6 +3,12 @@
 A Vue plugin over `@pantoken/web-components`. It registers the Instructure custom elements and tells
 Vue's compiler to treat `instui-*` tags as custom elements.
 
+## Compatibility
+
+Verified with Vue 3.0.0 and 3.5.43 using server-rendered apps that install `PantokenVue`, emit an
+`instui-icon`, and use the SSR-safe token fallback. See the
+[compatibility matrix](https://pantoken.app/compatibility) for exact tested releases.
+
 ## Install
 
 ```sh

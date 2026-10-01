@@ -25,6 +25,7 @@
   },
   "scripts": {
     "generate": "node scripts/generate.ts",
+    "check:compatibility": "vp run generate && node scripts/check-compatibility.ts && node scripts/check-host.ts",
     "dev": "vp pack --watch",
     "test": "vp run generate && vp test",
     "check": "vp check"
@@ -36,6 +37,8 @@
   "devDependencies": {
     "@pantoken/tokens": "workspace:*",
     "@types/node": "catalog:",
+    "ajv": "catalog:",
+    "ajv-draft-04": "catalog:",
     "typescript": "catalog:",
     "vite": "catalog:",
     "vite-plus": "catalog:"

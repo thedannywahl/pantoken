@@ -1,0 +1,168 @@
+/**
+ * @component skeleton-loader
+ * @summary Decorative placeholder for content that has not loaded yet.
+ * @selector .pfx-skeleton-loader
+ * @modifier -type-text — A text bar (default).
+ * @modifier -type-avatar — A round avatar placeholder, medium size only.
+ * @modifier -type-image — An image placeholder, medium size only.
+ * @modifier -size-xxs — Legend-sized text row.
+ * @modifier -size-xs — Extra-small text row.
+ * @modifier -size-sm — Small text row.
+ * @modifier -size-md — Medium text row (default).
+ * @modifier -size-lg — Large text row.
+ * @modifier -size-xl — Extra-large text row.
+ * @modifier -size-xxl — Largest text row.
+ * @part .shape — The clipped placeholder surface sized for the selected loader type.
+ * @part .skeleton-row — A repeated text-row wrapper that applies vertical spacing.
+ * @structure
+ * .pfx-skeleton-loader {
+ *   .shape {}
+ *   .skeleton-row:many {
+ *     .shape {}
+ *   }
+ * }
+ * @a11y Mark the decorative loader aria-hidden="true". Put aria-busy on the parent content region,
+ *   with an initially empty status and alert outside that region. Use initSkeletonLoading from the
+ *   interactions package to announce the parent's loading state. Shapes must not receive focus.
+ * @example
+ * ```html
+ * <div style="display: flex; align-items: center; gap: 1rem; max-inline-size: 24rem">
+ *   <div class="pfx-skeleton-loader -type-avatar" aria-hidden="true">
+ *     <div class="shape"></div>
+ *   </div>
+ *   <div style="flex: 1">
+ *     <div class="pfx-skeleton-loader -type-text -size-md" aria-hidden="true">
+ *       <div class="skeleton-row" style="inline-size: 45%"><div class="shape"></div></div>
+ *       <div class="skeleton-row" style="inline-size: 72%"><div class="shape"></div></div>
+ *     </div>
+ *   </div>
+ * </div>
+ * ```
+ */
+@property --pantoken-skeleton-sweep {
+  syntax: "<percentage>";
+  inherits: true;
+  initial-value: 0%;
+}
+
+@keyframes pantoken-skeleton-sweep {
+  to {
+    --pantoken-skeleton-sweep: 100%;
+  }
+}
+
+@scope (.pfx-skeleton-loader) {
+  & {
+    --pantoken-skeleton-height: var(--instui-component-skeleton-loader-text-height-md);
+    --pantoken-skeleton-padding: var(--instui-component-skeleton-loader-text-padding-md);
+    --pantoken-skeleton-radius: var(--instui-component-skeleton-loader-text-border-radius);
+    display: flex;
+    flex-direction: column;
+    animation: pantoken-skeleton-sweep var(--instui-component-skeleton-loader-duration)
+      cubic-bezier(var(--instui-component-skeleton-loader-bezier)) 3 forwards;
+
+    > .shape,
+    > .skeleton-row > .shape {
+      position: relative;
+      overflow: hidden;
+      block-size: var(--pantoken-skeleton-height);
+      background: var(--instui-component-skeleton-loader-background-color);
+      border-radius: var(--pantoken-skeleton-radius);
+    }
+
+    > .shape {
+      margin-block: var(--pantoken-skeleton-padding);
+    }
+
+    > .skeleton-row {
+      padding-block: var(--pantoken-skeleton-padding);
+    }
+
+    > .shape::before,
+    > .skeleton-row > .shape::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(
+        90deg,
+        transparent 20%,
+        var(--instui-component-skeleton-loader-shimmer-color) 50%,
+        transparent 80%
+      );
+      background-size: 200% 100%;
+      background-position: calc(100% - var(--pantoken-skeleton-sweep)) 0;
+    }
+
+    &.-size-xxs {
+      --pantoken-skeleton-height: var(--instui-component-skeleton-loader-text-height-xxs);
+      --pantoken-skeleton-padding: var(--instui-component-skeleton-loader-text-padding-xxs);
+    }
+
+    &.-size-xs {
+      --pantoken-skeleton-height: var(--instui-component-skeleton-loader-text-height-xs);
+      --pantoken-skeleton-padding: var(--instui-component-skeleton-loader-text-padding-xs);
+    }
+
+    &.-size-sm {
+      --pantoken-skeleton-height: var(--instui-component-skeleton-loader-text-height-sm);
+      --pantoken-skeleton-padding: var(--instui-component-skeleton-loader-text-padding-sm);
+    }
+
+    &.-size-lg {
+      --pantoken-skeleton-height: var(--instui-component-skeleton-loader-text-height-lg);
+      --pantoken-skeleton-padding: var(--instui-component-skeleton-loader-text-padding-lg);
+    }
+
+    &.-size-xl {
+      --pantoken-skeleton-height: var(--instui-component-skeleton-loader-text-height-xl);
+      --pantoken-skeleton-padding: var(--instui-component-skeleton-loader-text-padding-xl);
+    }
+
+    &.-size-xxl {
+      --pantoken-skeleton-height: var(--instui-component-skeleton-loader-text-height-xxl);
+      --pantoken-skeleton-padding: var(--instui-component-skeleton-loader-text-padding-xxl);
+    }
+
+    &.-size-md {
+      --pantoken-skeleton-height: var(--instui-component-skeleton-loader-text-height-md);
+      --pantoken-skeleton-padding: var(--instui-component-skeleton-loader-text-padding-md);
+    }
+
+    &.-type-text {
+      --pantoken-skeleton-radius: var(--instui-component-skeleton-loader-text-border-radius);
+    }
+
+    &.-type-avatar,
+    &.-type-image {
+      --pantoken-skeleton-padding: 0px;
+    }
+
+    &.-type-avatar {
+      --pantoken-skeleton-height: var(--instui-size-interactive-height-md);
+      --pantoken-skeleton-radius: var(--instui-component-skeleton-loader-avatar-border-radius);
+      inline-size: var(--pantoken-skeleton-height);
+    }
+
+    &.-type-image {
+      --pantoken-skeleton-radius: var(--instui-component-skeleton-loader-image-border-radius);
+
+      > .shape {
+        block-size: auto;
+        aspect-ratio: 16 / 9;
+      }
+    }
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  @scope (.pfx-skeleton-loader) {
+    & {
+      animation: none;
+
+      > .shape::before,
+      > .skeleton-row > .shape::before {
+        display: none;
+      }
+    }
+  }
+}

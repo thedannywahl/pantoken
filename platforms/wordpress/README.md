@@ -4,6 +4,12 @@ Emit Instructure design tokens as a WordPress block-theme `theme.json` — color
 sizes, and font families. Values are resolved to concrete, single-mode values (theme.json has no
 light/dark expression); icons are excluded.
 
+## Compatibility
+
+Emits `theme.json` v3 for WordPress block themes. Supported from WordPress 6.6 through the last
+verified release, 7.1.2. Newer releases need review before they're included. See the
+[compatibility matrix](https://pantoken.app/compatibility) for tested release trains.
+
 ## Install
 
 ```sh

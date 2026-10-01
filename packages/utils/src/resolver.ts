@@ -21,6 +21,29 @@ export const LIGHT_DARK_RE: RegExp = regex(LIGHT_DARK_SOURCE);
 
 const MAX_DEPTH = 12;
 
+function lightDarkBranches(value: string): [string, string] | undefined {
+  const trimmed = value.trim();
+  if (!trimmed.startsWith("light-dark(") || !trimmed.endsWith(")")) return undefined;
+  const content = trimmed.slice("light-dark(".length, -1);
+  let depth = 0;
+  let separator = -1;
+  for (let index = 0; index < content.length; index += 1) {
+    const char = content[index];
+    if (char === "(") depth += 1;
+    else if (char === ")") {
+      depth -= 1;
+      if (depth < 0) return undefined;
+    } else if (char === "," && depth === 0) {
+      if (separator !== -1) return undefined;
+      separator = index;
+    }
+  }
+  if (depth !== 0 || separator === -1) return undefined;
+  const light = content.slice(0, separator).trim();
+  const dark = content.slice(separator + 1).trim();
+  return light && dark ? [light, dark] : undefined;
+}
+
 /** Options for {@link makeResolver}. */
 export interface ResolveOptions {
   /** Collapse `light-dark()` to this branch; omit to keep `light-dark()` intact. */
@@ -92,8 +115,8 @@ export function makeResolver(
 
   const pickMode = (value: string): string => {
     if (!options.mode) return value;
-    const m = LIGHT_DARK_RE.exec(value.trim());
-    return m ? (options.mode === "light" ? m[1] : m[2]) : value;
+    const branches = lightDarkBranches(value);
+    return branches ? branches[options.mode === "light" ? 0 : 1] : value;
   };
 
   const expand = (value: string, depth: number): string => {

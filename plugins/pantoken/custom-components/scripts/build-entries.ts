@@ -13,6 +13,8 @@ import {
   buttonSetRules,
   cardRules,
   logoRules,
+  skeletonLoaderRules,
+  segmentedControlRules,
 } from "../src/components/index.ts";
 
 const opts = "instui-" as const;
@@ -25,6 +27,8 @@ const components: Array<[string, (prefix: string) => string]> = [
   ["banner", bannerRules],
   ["button-set", buttonSetRules],
   ["logo", logoRules],
+  ["skeleton-loader", skeletonLoaderRules],
+  ["segmented-control", segmentedControlRules],
 ];
 
 let count = 0;

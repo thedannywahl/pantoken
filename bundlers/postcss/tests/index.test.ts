@@ -1,6 +1,7 @@
 import postcss from "postcss";
 import { expect, test } from "vite-plus/test";
 import { pantoken } from "../src/index.ts";
+import { checkCompatibility } from "../scripts/check-compatibility.ts";
 
 test("expands @pantoken into the token stylesheet", async () => {
   const result = await postcss([pantoken()]).process("@pantoken;\n.a{color:red}", {
@@ -23,4 +24,8 @@ test("supports a custom at-rule name", async () => {
     from: undefined,
   });
   expect(result.css).toContain("--instui-");
+});
+
+test("rejects unsupported release strings before installing a target", async () => {
+  await expect(checkCompatibility("9.0.0")).rejects.toThrow("Invalid PostCSS 8 release");
 });

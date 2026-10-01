@@ -85,8 +85,13 @@ export default defineConfig({
     // `.markdownlint-cli2.yaml` already excludes this tree.
     // `ai/create-pantoken-app-site` is a separate git submodule (github.com/thedannywahl/
     // create-pantoken-app): its `index.html` is plain-text skill content wearing an `.html`
-    // extension only so GitHub Pages resolves it as the directory index, not real markup to format.
-    ignorePatterns: ["docs/api/**", "docs/*/api/**", "ai/create-pantoken-app-site/**"],
+    // extension only so the static host resolves it as the directory index, not real markup to format.
+    ignorePatterns: [
+      ".entire/settings.json",
+      "docs/api/**",
+      "docs/*/api/**",
+      "ai/create-pantoken-app-site/**",
+    ],
   },
   lint: {
     jsPlugins: [
@@ -201,6 +206,7 @@ export default defineConfig({
           "lint:cssdoc",
           "validate:generated:only",
           "gate:compatibility",
+          "gate:target-compatibility",
           "lint:markdown",
           "check:manypkg",
           "health:fallow",
@@ -229,6 +235,19 @@ export default defineConfig({
       "gate:compatibility": {
         command: "node scripts/release/check-compatibility.ts",
         dependsOn: ["build:all"],
+      },
+      "gate:target-compatibility": {
+        command: "node scripts/release/check-target-compatibility.ts",
+      },
+      // Networked downstream release monitoring belongs in the scheduled workflow, not ready:all.
+      "downstream:check": {
+        command: "node scripts/release/check-target-releases.ts",
+      },
+      "downstream:test": {
+        command: "node scripts/release/downstream.ts test",
+      },
+      "downstream:bless": {
+        command: "node scripts/release/downstream.ts bless",
       },
       // CSS/cssdoc linting needs `@pantoken/components`'s generated sheets (`src/generated/_records.css`,
       // the cssdoc sibling-record provider, and the `generated/*.css` sheets). They depend on `build:all`
@@ -549,10 +568,11 @@ export default defineConfig({
         command: "I18N_DRIFT_STRICT=1 vp run i18n:check:drift:all",
         cache: false,
       },
-      // Publishing must also validate generated API prose, which is not present in a clean checkout
-      // until the English API build runs.
+      // Publishing validates the complete English API tree; TypeDoc alone does not include CSS API
+      // pages, so CSS generation must finish before the drift check refreshes its source catalog.
       "gate:i18n": {
-        command: "vp run @pantoken/docs#docs:api:en:build && vp run i18n:check:drift:all",
+        command:
+          "vp run @pantoken/docs#docs:api:en:build && vp run @pantoken/docs#docs:api:css && vp run i18n:check:drift:all",
         dependsOn: ["build:all"],
       },
       "i18n:bundles:build": {

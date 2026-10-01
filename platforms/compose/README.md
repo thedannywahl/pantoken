@@ -35,6 +35,12 @@ A single Kotlin file (named after `className`) declaring a Compose object of `Co
 numeric constants. Reference them straight from composables. Use this for Compose UIs; for the
 Android View-system (XML) resources, use `@pantoken/android`.
 
+## Compatibility
+
+`vp run @pantoken/compose#check:compatibility` compiles the generated token object with Kotlin 2.1.10,
+Compose UI 1.8.2, Android Gradle Plugin 8.9.2, Gradle 8.14.2, and Android API 35. This verifies
+compile-time compatibility, not runtime rendering on a device.
+
 ## API
 
 - **`generateCompose(options): Promise<string>`** — emit Kotlin for a named theme (from the vendored

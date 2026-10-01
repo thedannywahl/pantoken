@@ -21,6 +21,7 @@ const docsRoot = join(import.meta.dirname, "..");
 const repoRoot = join(docsRoot, "..");
 const pluginsDir = join(repoRoot, "plugins", "pantoken");
 const assetsDir = join(docsRoot, "public", "demos-assets");
+const interactionsDist = join(repoRoot, "formats", "interactions", "dist", "interactions.iife.js");
 
 /** demos-asset sheet name → the plugin package directory that generates it (sheet basenames match).
  *  `transition`/`stacking` are tokens-only plugins now; their demo CSS ships inside
@@ -30,11 +31,14 @@ const PLUGIN_SHEETS = ["visual-debug", "custom-components", "logos"] as const;
 /** Copy each plugin's `generated/<name>.css` into `public/demos-assets/<name>.css`. Returns the paths. */
 export function stagePluginAssets(): string[] {
   mkdirSync(assetsDir, { recursive: true });
-  return PLUGIN_SHEETS.map((name) => {
+  const sheets = PLUGIN_SHEETS.map((name) => {
     const out = join(assetsDir, `${name}.css`);
     copyFileSync(join(pluginsDir, name, "generated", `${name}.css`), out);
     return out;
   });
+  const interactions = join(assetsDir, "interactions.iife.js");
+  copyFileSync(interactionsDist, interactions);
+  return [...sheets, interactions];
 }
 
 // Run when invoked directly (`node scripts/stage-plugin-assets.ts`) — the docs:dev watch path. When

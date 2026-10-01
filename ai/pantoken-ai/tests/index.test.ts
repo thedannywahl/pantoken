@@ -45,6 +45,23 @@ test("ships intent routing for apps, browser mockups, and sendable email", () =>
   expect(AGENTS_MD).toContain("pantoken generate email");
 });
 
+test("installed agent assets link to the published compatibility registry", () => {
+  const dir = mkdtempSync(join(tmpdir(), "pantoken-ai-compatibility-"));
+  installAgentAssets("all", dir);
+  for (const file of [
+    "AGENTS.md",
+    "llms.txt",
+    ".cursor/rules/pantoken.mdc",
+    ".github/copilot-instructions.md",
+    ".windsurf/rules/pantoken.md",
+  ]) {
+    expect(readFileSync(join(dir, file), "utf8")).toContain(
+      "https://pantoken.app/target-compatibility.json",
+    );
+  }
+  expect(readFileSync(join(dir, "AGENTS.md"), "utf8")).toContain("`$schema`");
+});
+
 test("'all' writes every asset, deduped", () => {
   const dir = mkdtempSync(join(tmpdir(), "pantoken-ai-all-"));
   const written = installAgentAssets("all", dir);

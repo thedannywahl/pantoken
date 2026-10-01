@@ -712,4 +712,8 @@ export const build = (): void => {
 };
 
 // Run only as a script (not when imported by tests, which exercise the exported helpers directly).
-if (process.argv[1] && fileURLToPath(import.meta.url) === process.argv[1]) build();
+if (process.argv[1] && fileURLToPath(import.meta.url) === process.argv[1]) {
+  build();
+  const { refreshApiPot } = await import("./refresh-api-pot.ts");
+  refreshApiPot({ force: true });
+}

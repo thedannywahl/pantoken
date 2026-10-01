@@ -3,6 +3,13 @@
 Angular helpers over `@pantoken/web-components`: register the Instructure custom elements once at
 bootstrap, and read resolved `--instui-*` token values at runtime.
 
+## Compatibility
+
+Verified with Angular 16.2.12 / TypeScript 5.1.6 and Angular 22.2.0 / TypeScript 6.0.3 by compiling
+a standalone component that uses `CUSTOM_ELEMENTS_SCHEMA` for `<instui-icon>`. The existing package
+tests cover registration and the server token fallback. See the
+[compatibility matrix](https://pantoken.app/compatibility) for the exact host pairs.
+
 ## Install
 
 ```sh

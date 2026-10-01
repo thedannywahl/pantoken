@@ -100,6 +100,1073 @@ jobs:
       - name: Typecheck
         run: vp check
 
+  foundation_changes:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    outputs:
+      foundation: ${{ steps.filter.outputs.foundation }}
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
+        with:
+          persist-credentials: false
+          fetch-depth: 0
+      - name: Detect Foundation support changes
+        id: filter
+        uses: dorny/paths-filter@ceb8a2b8f2d89434be7ff52d3de7ec3738c5cc9d # v4.0.3
+        with:
+          filters: |
+            foundation:
+              - 'renderers/foundation/**'
+              - 'scripts/quality/with-target-version.ts'
+              - 'scripts/release/target-compatibility.json'
+              - 'formats/tokens/**'
+              - 'formats/components/**'
+              - 'packages/utils/**'
+
+  foundation_compatibility:
+    needs: [build, foundation_changes]
+    if: needs.foundation_changes.outputs.foundation == 'true'
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
+        with:
+          persist-credentials: false
+      - name: Set up Vite+
+        uses: voidzero-dev/setup-vp@3754dd7dbdb32bd8f6d28b6043de13ad3a75f21f # v1.21.1
+        with:
+          cache: true
+          run-install: true
+      - name: Restore vp task cache
+        uses: actions/cache/restore@55cc8345863c7cc4c66a329aec7e433d2d1c52a9 # v6
+        with:
+          path: ${{ env.VP_TASK_CACHE }}
+          key: ${{ env.VP_CACHE_KEY_PREFIX }}${{ runner.os }}-${{ hashFiles('pnpm-lock.yaml', 'vite.config.ts') }}-${{ github.run_id }}-${{ github.run_attempt }}
+          restore-keys: |
+            ${{ env.VP_CACHE_KEY_PREFIX }}${{ runner.os }}-${{ hashFiles('pnpm-lock.yaml', 'vite.config.ts') }}-
+            ${{ env.VP_CACHE_KEY_PREFIX }}${{ runner.os }}-
+      - name: Materialize generated output
+        run: vp run -r build
+      - name: Verify Foundation releases
+        run: vp run @pantoken/foundation#check:compatibility
+
+  docusaurus_changes:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    outputs:
+      docusaurus: ${{ steps.filter.outputs.docusaurus }}
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
+        with:
+          persist-credentials: false
+          fetch-depth: 0
+      - name: Detect Docusaurus support changes
+        id: filter
+        uses: dorny/paths-filter@ceb8a2b8f2d89434be7ff52d3de7ec3738c5cc9d # v4.0.3
+        with:
+          filters: |
+            docusaurus:
+              - 'renderers/docusaurus/**'
+              - 'scripts/quality/with-target-version.ts'
+              - 'scripts/release/target-compatibility.json'
+              - 'formats/tokens/**'
+
+  docusaurus_compatibility:
+    needs: [build, docusaurus_changes]
+    if: needs.docusaurus_changes.outputs.docusaurus == 'true'
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
+        with:
+          persist-credentials: false
+      - name: Set up Vite+
+        uses: voidzero-dev/setup-vp@3754dd7dbdb32bd8f6d28b6043de13ad3a75f21f # v1.21.1
+        with:
+          cache: true
+          run-install: true
+      - name: Restore vp task cache
+        uses: actions/cache/restore@55cc8345863c7cc4c66a329aec7e433d2d1c52a9 # v6
+        with:
+          path: ${{ env.VP_TASK_CACHE }}
+          key: ${{ env.VP_CACHE_KEY_PREFIX }}${{ runner.os }}-${{ hashFiles('pnpm-lock.yaml', 'vite.config.ts') }}-${{ github.run_id }}-${{ github.run_attempt }}
+          restore-keys: |
+            ${{ env.VP_CACHE_KEY_PREFIX }}${{ runner.os }}-${{ hashFiles('pnpm-lock.yaml', 'vite.config.ts') }}-
+            ${{ env.VP_CACHE_KEY_PREFIX }}${{ runner.os }}-
+      - name: Materialize generated output
+        run: vp run -r build
+      - name: Verify Docusaurus releases
+        run: vp run @pantoken/docusaurus#check:compatibility
+
+  astro_changes:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    outputs:
+      astro: ${{ steps.filter.outputs.astro }}
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
+        with:
+          persist-credentials: false
+          fetch-depth: 0
+      - name: Detect Astro support changes
+        id: filter
+        uses: dorny/paths-filter@ceb8a2b8f2d89434be7ff52d3de7ec3738c5cc9d # v4.0.3
+        with:
+          filters: |
+            astro:
+              - 'renderers/astro/**'
+              - 'scripts/quality/with-target-version.ts'
+              - 'scripts/release/target-compatibility.json'
+              - 'formats/css/**'
+              - 'formats/tokens/**'
+
+  astro_compatibility:
+    needs: [build, astro_changes]
+    if: needs.astro_changes.outputs.astro == 'true'
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
+        with:
+          persist-credentials: false
+      - name: Set up Vite+
+        uses: voidzero-dev/setup-vp@3754dd7dbdb32bd8f6d28b6043de13ad3a75f21f # v1.21.1
+        with:
+          cache: true
+          run-install: true
+      - name: Restore vp task cache
+        uses: actions/cache/restore@55cc8345863c7cc4c66a329aec7e433d2d1c52a9 # v6
+        with:
+          path: ${{ env.VP_TASK_CACHE }}
+          key: ${{ env.VP_CACHE_KEY_PREFIX }}${{ runner.os }}-${{ hashFiles('pnpm-lock.yaml', 'vite.config.ts') }}-${{ github.run_id }}-${{ github.run_attempt }}
+          restore-keys: |
+            ${{ env.VP_CACHE_KEY_PREFIX }}${{ runner.os }}-${{ hashFiles('pnpm-lock.yaml', 'vite.config.ts') }}-
+            ${{ env.VP_CACHE_KEY_PREFIX }}${{ runner.os }}-
+      - name: Materialize generated output
+        run: vp run -r build
+      - name: Verify Astro and Starlight releases
+        run: vp run @pantoken/astro#check:compatibility
+
+  jekyll_changes:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    outputs:
+      jekyll: ${{ steps.filter.outputs.jekyll }}
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
+        with:
+          persist-credentials: false
+          fetch-depth: 0
+      - name: Detect Jekyll support changes
+        id: filter
+        uses: dorny/paths-filter@ceb8a2b8f2d89434be7ff52d3de7ec3738c5cc9d # v4.0.3
+        with:
+          filters: |
+            jekyll:
+              - 'platforms/jekyll/**'
+              - 'scripts/quality/with-target-version.ts'
+              - 'scripts/release/target-compatibility.json'
+              - 'formats/css/**'
+              - 'formats/scss/**'
+              - 'formats/components/**'
+
+  jekyll_compatibility:
+    needs: [build, jekyll_changes]
+    if: needs.jekyll_changes.outputs.jekyll == 'true'
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
+        with:
+          persist-credentials: false
+      - name: Set up Vite+
+        uses: voidzero-dev/setup-vp@3754dd7dbdb32bd8f6d28b6043de13ad3a75f21f # v1.21.1
+        with:
+          cache: true
+          run-install: true
+      - name: Restore vp task cache
+        uses: actions/cache/restore@55cc8345863c7cc4c66a329aec7e433d2d1c52a9 # v6
+        with:
+          path: ${{ env.VP_TASK_CACHE }}
+          key: ${{ env.VP_CACHE_KEY_PREFIX }}${{ runner.os }}-${{ hashFiles('pnpm-lock.yaml', 'vite.config.ts') }}-${{ github.run_id }}-${{ github.run_attempt }}
+          restore-keys: |
+            ${{ env.VP_CACHE_KEY_PREFIX }}${{ runner.os }}-${{ hashFiles('pnpm-lock.yaml', 'vite.config.ts') }}-
+            ${{ env.VP_CACHE_KEY_PREFIX }}${{ runner.os }}-
+      - name: Materialize generated output
+        run: vp run -r build
+      - name: Verify Jekyll site
+        run: vp run @pantoken/jekyll#check:compatibility
+
+  hugo_changes:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    outputs:
+      hugo: ${{ steps.filter.outputs.hugo }}
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
+        with:
+          persist-credentials: false
+          fetch-depth: 0
+      - name: Detect Hugo support changes
+        id: filter
+        uses: dorny/paths-filter@ceb8a2b8f2d89434be7ff52d3de7ec3738c5cc9d # v4.0.3
+        with:
+          filters: |
+            hugo:
+              - 'platforms/hugo/**'
+              - 'scripts/quality/with-target-version.ts'
+              - 'scripts/release/target-compatibility.json'
+              - 'formats/css/**'
+              - 'formats/scss/**'
+              - 'formats/components/**'
+
+  hugo_compatibility:
+    needs: [build, hugo_changes]
+    if: needs.hugo_changes.outputs.hugo == 'true'
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
+        with:
+          persist-credentials: false
+      - name: Set up Vite+
+        uses: voidzero-dev/setup-vp@3754dd7dbdb32bd8f6d28b6043de13ad3a75f21f # v1.21.1
+        with:
+          cache: true
+          run-install: true
+      - name: Restore vp task cache
+        uses: actions/cache/restore@55cc8345863c7cc4c66a329aec7e433d2d1c52a9 # v6
+        with:
+          path: ${{ env.VP_TASK_CACHE }}
+          key: ${{ env.VP_CACHE_KEY_PREFIX }}${{ runner.os }}-${{ hashFiles('pnpm-lock.yaml', 'vite.config.ts') }}-${{ github.run_id }}-${{ github.run_attempt }}
+          restore-keys: |
+            ${{ env.VP_CACHE_KEY_PREFIX }}${{ runner.os }}-${{ hashFiles('pnpm-lock.yaml', 'vite.config.ts') }}-
+            ${{ env.VP_CACHE_KEY_PREFIX }}${{ runner.os }}-
+      - name: Materialize generated output
+        run: vp run -r build
+      - name: Verify Hugo site
+        run: vp run @pantoken/hugo#check:compatibility
+
+  drupal_changes:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    outputs:
+      drupal: ${{ steps.filter.outputs.drupal }}
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
+        with:
+          persist-credentials: false
+          fetch-depth: 0
+      - name: Detect Drupal support changes
+        id: filter
+        uses: dorny/paths-filter@ceb8a2b8f2d89434be7ff52d3de7ec3738c5cc9d # v4.0.3
+        with:
+          filters: |
+            drupal:
+              - 'platforms/drupal/**'
+              - 'scripts/quality/with-target-version.ts'
+              - 'scripts/release/target-compatibility.json'
+              - 'formats/css/**'
+              - 'formats/components/**'
+
+  drupal_compatibility:
+    needs: [build, drupal_changes]
+    if: needs.drupal_changes.outputs.drupal == 'true'
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
+        with:
+          persist-credentials: false
+      - name: Set up Vite+
+        uses: voidzero-dev/setup-vp@3754dd7dbdb32bd8f6d28b6043de13ad3a75f21f # v1.21.1
+        with:
+          cache: true
+          run-install: true
+      - name: Restore vp task cache
+        uses: actions/cache/restore@55cc8345863c7cc4c66a329aec7e433d2d1c52a9 # v6
+        with:
+          path: ${{ env.VP_TASK_CACHE }}
+          key: ${{ env.VP_CACHE_KEY_PREFIX }}${{ runner.os }}-${{ hashFiles('pnpm-lock.yaml', 'vite.config.ts') }}-${{ github.run_id }}-${{ github.run_attempt }}
+          restore-keys: |
+            ${{ env.VP_CACHE_KEY_PREFIX }}${{ runner.os }}-${{ hashFiles('pnpm-lock.yaml', 'vite.config.ts') }}-
+            ${{ env.VP_CACHE_KEY_PREFIX }}${{ runner.os }}-
+      - name: Materialize generated output
+        run: vp run -r build
+      - name: Validate Drupal themes
+        run: vp run @pantoken/drupal#check:compatibility
+
+  web_components_changes:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    outputs:
+      web_components: ${{ steps.filter.outputs.web_components }}
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
+        with:
+          persist-credentials: false
+          fetch-depth: 0
+      - name: Detect Web Components support changes
+        id: filter
+        uses: dorny/paths-filter@ceb8a2b8f2d89434be7ff52d3de7ec3738c5cc9d # v4.0.3
+        with:
+          filters: |
+            web_components:
+              - 'renderers/web-components/**'
+              - 'scripts/release/target-compatibility.json'
+              - 'formats/components/**'
+              - 'formats/tokens/**'
+              - 'packages/utils/**'
+
+  web_components_compatibility:
+    needs: [build, web_components_changes]
+    if: needs.web_components_changes.outputs.web_components == 'true'
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
+        with:
+          persist-credentials: false
+      - name: Set up Vite+
+        uses: voidzero-dev/setup-vp@3754dd7dbdb32bd8f6d28b6043de13ad3a75f21f # v1.21.1
+        with:
+          cache: true
+          run-install: true
+      - name: Restore vp task cache
+        uses: actions/cache/restore@55cc8345863c7cc4c66a329aec7e433d2d1c52a9 # v6
+        with:
+          path: ${{ env.VP_TASK_CACHE }}
+          key: ${{ env.VP_CACHE_KEY_PREFIX }}${{ runner.os }}-${{ hashFiles('pnpm-lock.yaml', 'vite.config.ts') }}-${{ github.run_id }}-${{ github.run_attempt }}
+          restore-keys: |
+            ${{ env.VP_CACHE_KEY_PREFIX }}${{ runner.os }}-${{ hashFiles('pnpm-lock.yaml', 'vite.config.ts') }}-
+            ${{ env.VP_CACHE_KEY_PREFIX }}${{ runner.os }}-
+      - name: Materialize generated output
+        run: vp run -r build
+      - name: Verify custom-element environment
+        run: vp run @pantoken/web-components#check:compatibility
+
+  tinymce_changes:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    outputs:
+      tinymce: ${{ steps.filter.outputs.tinymce }}
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
+        with:
+          persist-credentials: false
+          fetch-depth: 0
+      - name: Detect TinyMCE support changes
+        id: filter
+        uses: dorny/paths-filter@ceb8a2b8f2d89434be7ff52d3de7ec3738c5cc9d # v4.0.3
+        with:
+          filters: |
+            tinymce:
+              - 'renderers/tinymce/**'
+              - 'scripts/quality/with-target-version.ts'
+              - 'scripts/release/target-compatibility.json'
+              - 'formats/components/**'
+
+  tinymce_compatibility:
+    needs: [build, tinymce_changes]
+    if: needs.tinymce_changes.outputs.tinymce == 'true'
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
+        with:
+          persist-credentials: false
+      - name: Set up Vite+
+        uses: voidzero-dev/setup-vp@3754dd7dbdb32bd8f6d28b6043de13ad3a75f21f # v1.21.1
+        with:
+          cache: true
+          run-install: true
+      - name: Restore vp task cache
+        uses: actions/cache/restore@55cc8345863c7cc4c66a329aec7e433d2d1c52a9 # v6
+        with:
+          path: ${{ env.VP_TASK_CACHE }}
+          key: ${{ env.VP_CACHE_KEY_PREFIX }}${{ runner.os }}-${{ hashFiles('pnpm-lock.yaml', 'vite.config.ts') }}-${{ github.run_id }}-${{ github.run_attempt }}
+          restore-keys: |
+            ${{ env.VP_CACHE_KEY_PREFIX }}${{ runner.os }}-${{ hashFiles('pnpm-lock.yaml', 'vite.config.ts') }}-
+            ${{ env.VP_CACHE_KEY_PREFIX }}${{ runner.os }}-
+      - name: Materialize generated output
+        run: vp run -r build
+      - name: Verify TinyMCE plugin registration
+        run: vp run @pantoken/tinymce#check:compatibility
+
+  shadcn_changes:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    outputs:
+      shadcn: ${{ steps.filter.outputs.shadcn }}
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
+        with:
+          persist-credentials: false
+          fetch-depth: 0
+      - name: Detect shadcn support changes
+        id: filter
+        uses: dorny/paths-filter@ceb8a2b8f2d89434be7ff52d3de7ec3738c5cc9d # v4.0.3
+        with:
+          filters: |
+            shadcn:
+              - 'renderers/shadcn/**'
+              - 'scripts/quality/with-target-version.ts'
+              - 'scripts/release/target-compatibility.json'
+              - 'formats/tokens/**'
+
+  shadcn_compatibility:
+    needs: [build, shadcn_changes]
+    if: needs.shadcn_changes.outputs.shadcn == 'true'
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
+        with:
+          persist-credentials: false
+      - name: Set up Vite+
+        uses: voidzero-dev/setup-vp@3754dd7dbdb32bd8f6d28b6043de13ad3a75f21f # v1.21.1
+        with:
+          cache: true
+          run-install: true
+      - name: Restore vp task cache
+        uses: actions/cache/restore@55cc8345863c7cc4c66a329aec7e433d2d1c52a9 # v6
+        with:
+          path: ${{ env.VP_TASK_CACHE }}
+          key: ${{ env.VP_CACHE_KEY_PREFIX }}${{ runner.os }}-${{ hashFiles('pnpm-lock.yaml', 'vite.config.ts') }}-${{ github.run_id }}-${{ github.run_attempt }}
+          restore-keys: |
+            ${{ env.VP_CACHE_KEY_PREFIX }}${{ runner.os }}-${{ hashFiles('pnpm-lock.yaml', 'vite.config.ts') }}-
+            ${{ env.VP_CACHE_KEY_PREFIX }}${{ runner.os }}-
+      - name: Materialize generated output
+        run: vp run -r build
+      - name: Verify shadcn theme aliases
+        run: vp run @pantoken/shadcn#check:compatibility
+
+  mintlify_changes:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    outputs:
+      mintlify: ${{ steps.filter.outputs.mintlify }}
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
+        with:
+          persist-credentials: false
+          fetch-depth: 0
+      - name: Detect Mintlify support changes
+        id: filter
+        uses: dorny/paths-filter@ceb8a2b8f2d89434be7ff52d3de7ec3738c5cc9d # v4.0.3
+        with:
+          filters: |
+            mintlify:
+              - 'renderers/mintlify/**'
+              - 'scripts/quality/with-target-version.ts'
+              - 'scripts/release/target-compatibility.json'
+              - 'formats/tokens/**'
+              - 'packages/utils/**'
+
+  mintlify_compatibility:
+    needs: [build, mintlify_changes]
+    if: needs.mintlify_changes.outputs.mintlify == 'true'
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
+        with:
+          persist-credentials: false
+      - name: Set up Vite+
+        uses: voidzero-dev/setup-vp@3754dd7dbdb32bd8f6d28b6043de13ad3a75f21f # v1.21.1
+        with:
+          cache: true
+          run-install: true
+      - name: Restore vp task cache
+        uses: actions/cache/restore@55cc8345863c7cc4c66a329aec7e433d2d1c52a9 # v6
+        with:
+          path: ${{ env.VP_TASK_CACHE }}
+          key: ${{ env.VP_CACHE_KEY_PREFIX }}${{ runner.os }}-${{ hashFiles('pnpm-lock.yaml', 'vite.config.ts') }}-${{ github.run_id }}-${{ github.run_attempt }}
+          restore-keys: |
+            ${{ env.VP_CACHE_KEY_PREFIX }}${{ runner.os }}-${{ hashFiles('pnpm-lock.yaml', 'vite.config.ts') }}-
+            ${{ env.VP_CACHE_KEY_PREFIX }}${{ runner.os }}-
+      - name: Materialize generated output
+        run: vp run -r build
+      - name: Verify Mintlify docs config
+        run: vp run @pantoken/mintlify#check:compatibility
+
+  css_in_js_changes:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    outputs:
+      css_in_js: ${{ steps.filter.outputs.css_in_js }}
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
+        with:
+          persist-credentials: false
+          fetch-depth: 0
+      - name: Detect CSS-in-JS support changes
+        id: filter
+        uses: dorny/paths-filter@ceb8a2b8f2d89434be7ff52d3de7ec3738c5cc9d # v4.0.3
+        with:
+          filters: |
+            css_in_js:
+              - 'renderers/css-in-js/**'
+              - 'scripts/quality/with-target-version.ts'
+              - 'scripts/release/target-compatibility.json'
+              - 'formats/tokens/**'
+              - 'packages/utils/**'
+
+  css_in_js_compatibility:
+    needs: [build, css_in_js_changes]
+    if: needs.css_in_js_changes.outputs.css_in_js == 'true'
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
+        with:
+          persist-credentials: false
+      - name: Set up Vite+
+        uses: voidzero-dev/setup-vp@3754dd7dbdb32bd8f6d28b6043de13ad3a75f21f # v1.21.1
+        with:
+          cache: true
+          run-install: true
+      - name: Restore vp task cache
+        uses: actions/cache/restore@55cc8345863c7cc4c66a329aec7e433d2d1c52a9 # v6
+        with:
+          path: ${{ env.VP_TASK_CACHE }}
+          key: ${{ env.VP_CACHE_KEY_PREFIX }}${{ runner.os }}-${{ hashFiles('pnpm-lock.yaml', 'vite.config.ts') }}-${{ github.run_id }}-${{ github.run_attempt }}
+          restore-keys: |
+            ${{ env.VP_CACHE_KEY_PREFIX }}${{ runner.os }}-${{ hashFiles('pnpm-lock.yaml', 'vite.config.ts') }}-
+            ${{ env.VP_CACHE_KEY_PREFIX }}${{ runner.os }}-
+      - name: Materialize generated output
+        run: vp run -r build
+      - name: Verify Emotion SSR
+        run: vp run @pantoken/css-in-js#check:compatibility
+
+  vitepress_changes:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    outputs:
+      vitepress: ${{ steps.filter.outputs.vitepress }}
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
+        with:
+          persist-credentials: false
+          fetch-depth: 0
+      - name: Detect VitePress support changes
+        id: filter
+        uses: dorny/paths-filter@ceb8a2b8f2d89434be7ff52d3de7ec3738c5cc9d # v4.0.3
+        with:
+          filters: |
+            vitepress:
+              - 'renderers/vitepress/**'
+              - 'scripts/quality/with-target-version.ts'
+              - 'scripts/release/target-compatibility.json'
+              - 'formats/tokens/**'
+
+  vitepress_compatibility:
+    needs: [build, vitepress_changes]
+    if: needs.vitepress_changes.outputs.vitepress == 'true'
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
+        with:
+          persist-credentials: false
+      - name: Set up Vite+
+        uses: voidzero-dev/setup-vp@3754dd7dbdb32bd8f6d28b6043de13ad3a75f21f # v1.21.1
+        with:
+          cache: true
+          run-install: true
+      - name: Restore vp task cache
+        uses: actions/cache/restore@55cc8345863c7cc4c66a329aec7e433d2d1c52a9 # v6
+        with:
+          path: ${{ env.VP_TASK_CACHE }}
+          key: ${{ env.VP_CACHE_KEY_PREFIX }}${{ runner.os }}-${{ hashFiles('pnpm-lock.yaml', 'vite.config.ts') }}-${{ github.run_id }}-${{ github.run_attempt }}
+          restore-keys: |
+            ${{ env.VP_CACHE_KEY_PREFIX }}${{ runner.os }}-${{ hashFiles('pnpm-lock.yaml', 'vite.config.ts') }}-
+            ${{ env.VP_CACHE_KEY_PREFIX }}${{ runner.os }}-
+      - name: Materialize generated output
+        run: vp run -r build
+      - name: Verify VitePress site
+        run: vp run @pantoken/vitepress#check:compatibility
+
+  panda_changes:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    outputs:
+      panda: ${{ steps.filter.outputs.panda }}
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
+        with:
+          persist-credentials: false
+          fetch-depth: 0
+      - name: Detect Panda support changes
+        id: filter
+        uses: dorny/paths-filter@ceb8a2b8f2d89434be7ff52d3de7ec3738c5cc9d # v4.0.3
+        with:
+          filters: |
+            panda:
+              - 'bundlers/panda/**'
+              - 'scripts/quality/with-target-version.ts'
+              - 'scripts/release/target-compatibility.json'
+              - 'formats/tokens/**'
+              - 'packages/utils/**'
+
+  panda_compatibility:
+    needs: [build, panda_changes]
+    if: needs.panda_changes.outputs.panda == 'true'
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
+        with:
+          persist-credentials: false
+      - name: Set up Vite+
+        uses: voidzero-dev/setup-vp@3754dd7dbdb32bd8f6d28b6043de13ad3a75f21f # v1.21.1
+        with:
+          cache: true
+          run-install: true
+      - name: Restore vp task cache
+        uses: actions/cache/restore@55cc8345863c7cc4c66a329aec7e433d2d1c52a9 # v6
+        with:
+          path: ${{ env.VP_TASK_CACHE }}
+          key: ${{ env.VP_CACHE_KEY_PREFIX }}${{ runner.os }}-${{ hashFiles('pnpm-lock.yaml', 'vite.config.ts') }}-${{ github.run_id }}-${{ github.run_attempt }}
+          restore-keys: |
+            ${{ env.VP_CACHE_KEY_PREFIX }}${{ runner.os }}-${{ hashFiles('pnpm-lock.yaml', 'vite.config.ts') }}-
+            ${{ env.VP_CACHE_KEY_PREFIX }}${{ runner.os }}-
+      - name: Materialize generated output
+        run: vp run -r build
+      - name: Verify Panda releases
+        run: vp run @pantoken/panda#check:compatibility
+
+  storybook_changes:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    outputs:
+      storybook: ${{ steps.filter.outputs.storybook }}
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
+        with:
+          persist-credentials: false
+          fetch-depth: 0
+      - name: Detect Storybook support changes
+        id: filter
+        uses: dorny/paths-filter@ceb8a2b8f2d89434be7ff52d3de7ec3738c5cc9d # v4.0.3
+        with:
+          filters: |
+            storybook:
+              - 'renderers/storybook/**'
+              - 'scripts/quality/with-target-version.ts'
+              - 'scripts/release/target-compatibility.json'
+              - 'formats/tokens/**'
+              - 'packages/utils/**'
+
+  storybook_compatibility:
+    needs: [build, storybook_changes]
+    if: needs.storybook_changes.outputs.storybook == 'true'
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
+        with:
+          persist-credentials: false
+      - name: Set up Vite+
+        uses: voidzero-dev/setup-vp@3754dd7dbdb32bd8f6d28b6043de13ad3a75f21f # v1.21.1
+        with:
+          cache: true
+          run-install: true
+      - name: Restore vp task cache
+        uses: actions/cache/restore@55cc8345863c7cc4c66a329aec7e433d2d1c52a9 # v6
+        with:
+          path: ${{ env.VP_TASK_CACHE }}
+          key: ${{ env.VP_CACHE_KEY_PREFIX }}${{ runner.os }}-${{ hashFiles('pnpm-lock.yaml', 'vite.config.ts') }}-${{ github.run_id }}-${{ github.run_attempt }}
+          restore-keys: |
+            ${{ env.VP_CACHE_KEY_PREFIX }}${{ runner.os }}-${{ hashFiles('pnpm-lock.yaml', 'vite.config.ts') }}-
+            ${{ env.VP_CACHE_KEY_PREFIX }}${{ runner.os }}-
+      - name: Materialize generated output
+        run: vp run -r build
+      - name: Verify Storybook themes
+        run: vp run @pantoken/storybook#check:compatibility
+
+  angular_changes:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    outputs:
+      angular: ${{ steps.filter.outputs.angular }}
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
+        with:
+          persist-credentials: false
+          fetch-depth: 0
+      - name: Detect Angular support changes
+        id: filter
+        uses: dorny/paths-filter@ceb8a2b8f2d89434be7ff52d3de7ec3738c5cc9d # v4.0.3
+        with:
+          filters: |
+            angular:
+              - 'renderers/angular/**'
+              - 'scripts/quality/with-target-version.ts'
+              - 'scripts/release/target-compatibility.json'
+              - 'formats/tokens/**'
+
+  angular_compatibility:
+    needs: [build, angular_changes]
+    if: needs.angular_changes.outputs.angular == 'true'
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
+        with:
+          persist-credentials: false
+      - name: Set up Vite+
+        uses: voidzero-dev/setup-vp@3754dd7dbdb32bd8f6d28b6043de13ad3a75f21f # v1.21.1
+        with:
+          cache: true
+          run-install: true
+      - name: Restore vp task cache
+        uses: actions/cache/restore@55cc8345863c7cc4c66a329aec7e433d2d1c52a9 # v6
+        with:
+          path: ${{ env.VP_TASK_CACHE }}
+          key: ${{ env.VP_CACHE_KEY_PREFIX }}${{ runner.os }}-${{ hashFiles('pnpm-lock.yaml', 'vite.config.ts') }}-${{ github.run_id }}-${{ github.run_attempt }}
+          restore-keys: |
+            ${{ env.VP_CACHE_KEY_PREFIX }}${{ runner.os }}-${{ hashFiles('pnpm-lock.yaml', 'vite.config.ts') }}-
+            ${{ env.VP_CACHE_KEY_PREFIX }}${{ runner.os }}-
+      - name: Materialize generated output
+        run: vp run -r build
+      - name: Verify Angular compiler releases
+        run: vp run @pantoken/angular#check:compatibility
+
+  svelte_changes:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    outputs:
+      svelte: ${{ steps.filter.outputs.svelte }}
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
+        with:
+          persist-credentials: false
+          fetch-depth: 0
+      - name: Detect Svelte support changes
+        id: filter
+        uses: dorny/paths-filter@ceb8a2b8f2d89434be7ff52d3de7ec3738c5cc9d # v4.0.3
+        with:
+          filters: |
+            svelte:
+              - 'renderers/svelte/**'
+              - 'scripts/quality/with-target-version.ts'
+              - 'scripts/release/target-compatibility.json'
+              - 'formats/tokens/**'
+
+  svelte_compatibility:
+    needs: [build, svelte_changes]
+    if: needs.svelte_changes.outputs.svelte == 'true'
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
+        with:
+          persist-credentials: false
+      - name: Set up Vite+
+        uses: voidzero-dev/setup-vp@3754dd7dbdb32bd8f6d28b6043de13ad3a75f21f # v1.21.1
+        with:
+          cache: true
+          run-install: true
+      - name: Restore vp task cache
+        uses: actions/cache/restore@55cc8345863c7cc4c66a329aec7e433d2d1c52a9 # v6
+        with:
+          path: ${{ env.VP_TASK_CACHE }}
+          key: ${{ env.VP_CACHE_KEY_PREFIX }}${{ runner.os }}-${{ hashFiles('pnpm-lock.yaml', 'vite.config.ts') }}-${{ github.run_id }}-${{ github.run_attempt }}
+          restore-keys: |
+            ${{ env.VP_CACHE_KEY_PREFIX }}${{ runner.os }}-${{ hashFiles('pnpm-lock.yaml', 'vite.config.ts') }}-
+            ${{ env.VP_CACHE_KEY_PREFIX }}${{ runner.os }}-
+      - name: Materialize generated output
+        run: vp run -r build
+      - name: Verify Svelte releases
+        run: vp run @pantoken/svelte#check:compatibility
+
+  react_markdown_changes:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    outputs:
+      react_markdown: ${{ steps.filter.outputs.react_markdown }}
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
+        with:
+          persist-credentials: false
+          fetch-depth: 0
+      - name: Detect react-markdown support changes
+        id: filter
+        uses: dorny/paths-filter@ceb8a2b8f2d89434be7ff52d3de7ec3738c5cc9d # v4.0.3
+        with:
+          filters: |
+            react_markdown:
+              - 'renderers/react-markdown/**'
+              - 'scripts/quality/with-target-version.ts'
+              - 'scripts/release/target-compatibility.json'
+              - 'formats/components/**'
+              - 'formats/tokens/**'
+
+  react_markdown_compatibility:
+    needs: [build, react_markdown_changes]
+    if: needs.react_markdown_changes.outputs.react_markdown == 'true'
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
+        with:
+          persist-credentials: false
+      - name: Set up Vite+
+        uses: voidzero-dev/setup-vp@3754dd7dbdb32bd8f6d28b6043de13ad3a75f21f # v1.21.1
+        with:
+          cache: true
+          run-install: true
+      - name: Restore vp task cache
+        uses: actions/cache/restore@55cc8345863c7cc4c66a329aec7e433d2d1c52a9 # v6
+        with:
+          path: ${{ env.VP_TASK_CACHE }}
+          key: ${{ env.VP_CACHE_KEY_PREFIX }}${{ runner.os }}-${{ hashFiles('pnpm-lock.yaml', 'vite.config.ts') }}-${{ github.run_id }}-${{ github.run_attempt }}
+          restore-keys: |
+            ${{ env.VP_CACHE_KEY_PREFIX }}${{ runner.os }}-${{ hashFiles('pnpm-lock.yaml', 'vite.config.ts') }}-
+            ${{ env.VP_CACHE_KEY_PREFIX }}${{ runner.os }}-
+      - name: Materialize generated output
+        run: vp run -r build
+      - name: Verify react-markdown SSR
+        run: vp run @pantoken/react-markdown#check:compatibility
+
+  vue_changes:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    outputs:
+      vue: ${{ steps.filter.outputs.vue }}
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
+        with:
+          persist-credentials: false
+          fetch-depth: 0
+      - name: Detect Vue support changes
+        id: filter
+        uses: dorny/paths-filter@ceb8a2b8f2d89434be7ff52d3de7ec3738c5cc9d # v4.0.3
+        with:
+          filters: |
+            vue:
+              - 'renderers/vue/**'
+              - 'scripts/quality/with-target-version.ts'
+              - 'scripts/release/target-compatibility.json'
+              - 'formats/tokens/**'
+
+  vue_compatibility:
+    needs: [build, vue_changes]
+    if: needs.vue_changes.outputs.vue == 'true'
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
+        with:
+          persist-credentials: false
+      - name: Set up Vite+
+        uses: voidzero-dev/setup-vp@3754dd7dbdb32bd8f6d28b6043de13ad3a75f21f # v1.21.1
+        with:
+          cache: true
+          run-install: true
+      - name: Restore vp task cache
+        uses: actions/cache/restore@55cc8345863c7cc4c66a329aec7e433d2d1c52a9 # v6
+        with:
+          path: ${{ env.VP_TASK_CACHE }}
+          key: ${{ env.VP_CACHE_KEY_PREFIX }}${{ runner.os }}-${{ hashFiles('pnpm-lock.yaml', 'vite.config.ts') }}-${{ github.run_id }}-${{ github.run_attempt }}
+          restore-keys: |
+            ${{ env.VP_CACHE_KEY_PREFIX }}${{ runner.os }}-${{ hashFiles('pnpm-lock.yaml', 'vite.config.ts') }}-
+            ${{ env.VP_CACHE_KEY_PREFIX }}${{ runner.os }}-
+      - name: Materialize generated output
+        run: vp run -r build
+      - name: Verify Vue releases
+        run: vp run @pantoken/vue#check:compatibility
+
+  react_changes:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    outputs:
+      react: ${{ steps.filter.outputs.react }}
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
+        with:
+          persist-credentials: false
+          fetch-depth: 0
+      - name: Detect React support changes
+        id: filter
+        uses: dorny/paths-filter@ceb8a2b8f2d89434be7ff52d3de7ec3738c5cc9d # v4.0.3
+        with:
+          filters: |
+            react:
+              - 'renderers/react/**'
+              - 'renderers/web-components/**'
+              - 'scripts/quality/with-target-version.ts'
+              - 'scripts/release/target-compatibility.json'
+              - 'formats/tokens/**'
+
+  react_compatibility:
+    needs: [build, react_changes]
+    if: needs.react_changes.outputs.react == 'true'
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
+        with:
+          persist-credentials: false
+      - name: Set up Vite+
+        uses: voidzero-dev/setup-vp@3754dd7dbdb32bd8f6d28b6043de13ad3a75f21f # v1.21.1
+        with:
+          cache: true
+          run-install: true
+      - name: Restore vp task cache
+        uses: actions/cache/restore@55cc8345863c7cc4c66a329aec7e433d2d1c52a9 # v6
+        with:
+          path: ${{ env.VP_TASK_CACHE }}
+          key: ${{ env.VP_CACHE_KEY_PREFIX }}${{ runner.os }}-${{ hashFiles('pnpm-lock.yaml', 'vite.config.ts') }}-${{ github.run_id }}-${{ github.run_attempt }}
+          restore-keys: |
+            ${{ env.VP_CACHE_KEY_PREFIX }}${{ runner.os }}-${{ hashFiles('pnpm-lock.yaml', 'vite.config.ts') }}-
+            ${{ env.VP_CACHE_KEY_PREFIX }}${{ runner.os }}-
+      - name: Materialize generated output
+        run: vp run -r build
+      - name: Verify React server rendering
+        run: vp run @pantoken/react#check:compatibility
+
+  next_changes:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    outputs:
+      next: ${{ steps.filter.outputs.next }}
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
+        with:
+          persist-credentials: false
+          fetch-depth: 0
+      - name: Detect Next support changes
+        id: filter
+        uses: dorny/paths-filter@ceb8a2b8f2d89434be7ff52d3de7ec3738c5cc9d # v4.0.3
+        with:
+          filters: |
+            next:
+              - 'bundlers/next/**'
+              - 'scripts/quality/with-target-version.ts'
+              - 'scripts/release/target-compatibility.json'
+              - 'formats/css/**'
+              - 'formats/tokens/**'
+
+  next_compatibility:
+    needs: [build, next_changes]
+    if: needs.next_changes.outputs.next == 'true'
+    runs-on: ubuntu-latest
+    timeout-minutes: 35
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
+        with:
+          persist-credentials: false
+      - name: Set up Vite+
+        uses: voidzero-dev/setup-vp@3754dd7dbdb32bd8f6d28b6043de13ad3a75f21f # v1.21.1
+        with:
+          cache: true
+          run-install: true
+      - name: Restore vp task cache
+        uses: actions/cache/restore@55cc8345863c7cc4c66a329aec7e433d2d1c52a9 # v6
+        with:
+          path: ${{ env.VP_TASK_CACHE }}
+          key: ${{ env.VP_CACHE_KEY_PREFIX }}${{ runner.os }}-${{ hashFiles('pnpm-lock.yaml', 'vite.config.ts') }}-${{ github.run_id }}-${{ github.run_attempt }}
+          restore-keys: |
+            ${{ env.VP_CACHE_KEY_PREFIX }}${{ runner.os }}-${{ hashFiles('pnpm-lock.yaml', 'vite.config.ts') }}-
+            ${{ env.VP_CACHE_KEY_PREFIX }}${{ runner.os }}-
+      - name: Materialize generated output
+        run: vp run -r build
+      - name: Verify Next releases
+        run: vp run @pantoken/next#check:compatibility
+
+  mui_changes:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    outputs:
+      mui: ${{ steps.filter.outputs.mui }}
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
+        with:
+          persist-credentials: false
+          fetch-depth: 0
+      - name: Detect MUI support changes
+        id: filter
+        uses: dorny/paths-filter@ceb8a2b8f2d89434be7ff52d3de7ec3738c5cc9d # v4.0.3
+        with:
+          filters: |
+            mui:
+              - 'renderers/mui/**'
+              - 'scripts/quality/with-target-version.ts'
+              - 'scripts/release/target-compatibility.json'
+              - 'formats/tokens/**'
+              - 'packages/utils/**'
+
+  mui_compatibility:
+    needs: [build, mui_changes]
+    if: needs.mui_changes.outputs.mui == 'true'
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
+        with:
+          persist-credentials: false
+      - name: Set up Vite+
+        uses: voidzero-dev/setup-vp@3754dd7dbdb32bd8f6d28b6043de13ad3a75f21f # v1.21.1
+        with:
+          cache: true
+          run-install: true
+      - name: Restore vp task cache
+        uses: actions/cache/restore@55cc8345863c7cc4c66a329aec7e433d2d1c52a9 # v6
+        with:
+          path: ${{ env.VP_TASK_CACHE }}
+          key: ${{ env.VP_CACHE_KEY_PREFIX }}${{ runner.os }}-${{ hashFiles('pnpm-lock.yaml', 'vite.config.ts') }}-${{ github.run_id }}-${{ github.run_attempt }}
+          restore-keys: |
+            ${{ env.VP_CACHE_KEY_PREFIX }}${{ runner.os }}-${{ hashFiles('pnpm-lock.yaml', 'vite.config.ts') }}-
+            ${{ env.VP_CACHE_KEY_PREFIX }}${{ runner.os }}-
+      - name: Materialize generated output
+        run: vp run -r build
+      - name: Verify MUI releases
+        run: vp run @pantoken/mui#check:compatibility
+
   # Continuous performance testing for the transform pipeline, run inside the CI gate so it reuses the
   # `build` job's cached task outputs instead of rebuilding from scratch. Advisory only — a CodSpeed
   # regression must never block merge, so failures here are swallowed with `continue-on-error`.
@@ -480,6 +1547,456 @@ jobs:
           name: upstream-drift-report
           path: tools/upstream-diff/generated
           retention-days: 7
+
+  wordpress_changes:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    outputs:
+      wordpress: ${{ steps.filter.outputs.wordpress }}
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
+        with:
+          persist-credentials: false
+          fetch-depth: 0
+      - name: Detect WordPress support changes
+        id: filter
+        uses: dorny/paths-filter@ceb8a2b8f2d89434be7ff52d3de7ec3738c5cc9d # v4.0.3
+        with:
+          filters: |
+            wordpress:
+              - 'platforms/wordpress/**'
+              - 'scripts/release/target-compatibility.json'
+              - 'formats/tokens/**'
+
+  wordpress_compatibility:
+    needs: [build, wordpress_changes]
+    if: needs.wordpress_changes.outputs.wordpress == 'true'
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
+        with:
+          persist-credentials: false
+      - name: Set up Vite+
+        uses: voidzero-dev/setup-vp@3754dd7dbdb32bd8f6d28b6043de13ad3a75f21f # v1.21.1
+        with:
+          cache: true
+          run-install: true
+      - name: Restore vp task cache
+        uses: actions/cache/restore@55cc8345863c7cc4c66a329aec7e433d2d1c52a9 # v6
+        with:
+          path: ${{ env.VP_TASK_CACHE }}
+          key: ${{ env.VP_CACHE_KEY_PREFIX }}${{ runner.os }}-${{ hashFiles('pnpm-lock.yaml', 'vite.config.ts') }}-${{ github.run_id }}-${{ github.run_attempt }}
+          restore-keys: |
+            ${{ env.VP_CACHE_KEY_PREFIX }}${{ runner.os }}-${{ hashFiles('pnpm-lock.yaml', 'vite.config.ts') }}-
+            ${{ env.VP_CACHE_KEY_PREFIX }}${{ runner.os }}-
+      - name: Materialize generated output
+        run: vp run -r build
+      - name: Verify WordPress releases
+        run: vp run @pantoken/wordpress#check:compatibility
+
+  swift_native_changes:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    outputs:
+      swift_native: ${{ steps.filter.outputs.swift_native }}
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
+        with:
+          persist-credentials: false
+          fetch-depth: 0
+      - name: Detect native Swift changes
+        id: filter
+        uses: dorny/paths-filter@ceb8a2b8f2d89434be7ff52d3de7ec3738c5cc9d # v4.0.3
+        with:
+          filters: |
+            swift_native:
+              - 'platforms/swift/**'
+              - 'packages/cli/**'
+              - 'packages/core/**'
+              - 'packages/utils/**'
+              - 'tools/sd-config/**'
+              - 'formats/tokens/**'
+              - 'mise.toml'
+
+  swift_native_compatibility:
+    needs: swift_native_changes
+    if: needs.swift_native_changes.outputs.swift_native == 'true'
+    runs-on: macos-latest
+    timeout-minutes: 35
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
+        with:
+          persist-credentials: false
+      - name: Set up Vite+
+        uses: voidzero-dev/setup-vp@3754dd7dbdb32bd8f6d28b6043de13ad3a75f21f # v1.21.1
+        with:
+          cache: true
+          run-install: true
+      - name: Install mise
+        run: brew install mise
+      - name: Verify generated Swift against iOS Simulator SDK
+        run: mise run verify:swift:host
+
+  postcss_changes:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    outputs:
+      postcss: ${{ steps.filter.outputs.postcss }}
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
+        with:
+          persist-credentials: false
+          fetch-depth: 0
+      - name: Detect PostCSS support changes
+        id: filter
+        uses: dorny/paths-filter@ceb8a2b8f2d89434be7ff52d3de7ec3738c5cc9d # v4.0.3
+        with:
+          filters: |
+            postcss:
+              - 'bundlers/postcss/**'
+              - 'scripts/quality/with-target-version.ts'
+              - 'scripts/release/target-compatibility.json'
+              - 'formats/css/**'
+              - 'formats/tokens/**'
+
+  postcss_compatibility:
+    needs: [build, postcss_changes]
+    if: needs.postcss_changes.outputs.postcss == 'true'
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
+        with:
+          persist-credentials: false
+      - name: Set up Vite+
+        uses: voidzero-dev/setup-vp@3754dd7dbdb32bd8f6d28b6043de13ad3a75f21f # v1.21.1
+        with:
+          cache: true
+          run-install: true
+      - name: Restore vp task cache
+        uses: actions/cache/restore@55cc8345863c7cc4c66a329aec7e433d2d1c52a9 # v6
+        with:
+          path: ${{ env.VP_TASK_CACHE }}
+          key: ${{ env.VP_CACHE_KEY_PREFIX }}${{ runner.os }}-${{ hashFiles('pnpm-lock.yaml', 'vite.config.ts') }}-${{ github.run_id }}-${{ github.run_attempt }}
+          restore-keys: |
+            ${{ env.VP_CACHE_KEY_PREFIX }}${{ runner.os }}-${{ hashFiles('pnpm-lock.yaml', 'vite.config.ts') }}-
+            ${{ env.VP_CACHE_KEY_PREFIX }}${{ runner.os }}-
+      - name: Materialize generated output
+        run: vp run -r build
+      - name: Verify PostCSS releases
+        run: vp run @pantoken/postcss#check:compatibility
+
+  markdown_it_changes:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    outputs:
+      markdown_it: ${{ steps.filter.outputs.markdown_it }}
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
+        with:
+          persist-credentials: false
+          fetch-depth: 0
+      - name: Detect markdown-it support changes
+        id: filter
+        uses: dorny/paths-filter@ceb8a2b8f2d89434be7ff52d3de7ec3738c5cc9d # v4.0.3
+        with:
+          filters: |
+            markdown_it:
+              - 'renderers/markdown-it/**'
+              - 'scripts/quality/with-target-version.ts'
+              - 'scripts/release/target-compatibility.json'
+              - 'formats/icons/**'
+              - 'formats/tokens/**'
+
+  markdown_it_compatibility:
+    needs: [build, markdown_it_changes]
+    if: needs.markdown_it_changes.outputs.markdown_it == 'true'
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
+        with:
+          persist-credentials: false
+      - name: Set up Vite+
+        uses: voidzero-dev/setup-vp@3754dd7dbdb32bd8f6d28b6043de13ad3a75f21f # v1.21.1
+        with:
+          cache: true
+          run-install: true
+      - name: Restore vp task cache
+        uses: actions/cache/restore@55cc8345863c7cc4c66a329aec7e433d2d1c52a9 # v6
+        with:
+          path: ${{ env.VP_TASK_CACHE }}
+          key: ${{ env.VP_CACHE_KEY_PREFIX }}${{ runner.os }}-${{ hashFiles('pnpm-lock.yaml', 'vite.config.ts') }}-${{ github.run_id }}-${{ github.run_attempt }}
+          restore-keys: |
+            ${{ env.VP_CACHE_KEY_PREFIX }}${{ runner.os }}-${{ hashFiles('pnpm-lock.yaml', 'vite.config.ts') }}-
+            ${{ env.VP_CACHE_KEY_PREFIX }}${{ runner.os }}-
+      - name: Materialize generated output
+        run: vp run -r build
+      - name: Verify markdown-it releases
+        run: vp run @pantoken/markdown-it#check:compatibility
+
+  vite_changes:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    outputs:
+      vite: ${{ steps.filter.outputs.vite }}
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
+        with:
+          persist-credentials: false
+          fetch-depth: 0
+      - name: Detect Vite support changes
+        id: filter
+        uses: dorny/paths-filter@ceb8a2b8f2d89434be7ff52d3de7ec3738c5cc9d # v4.0.3
+        with:
+          filters: |
+            vite:
+              - 'bundlers/vite/**'
+              - 'scripts/quality/with-target-version.ts'
+              - 'scripts/release/target-compatibility.json'
+              - 'formats/css/**'
+              - 'formats/tokens/**'
+
+  vite_compatibility:
+    needs: [build, vite_changes]
+    if: needs.vite_changes.outputs.vite == 'true'
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
+        with:
+          persist-credentials: false
+      - name: Set up Vite+
+        uses: voidzero-dev/setup-vp@3754dd7dbdb32bd8f6d28b6043de13ad3a75f21f # v1.21.1
+        with:
+          cache: true
+          run-install: true
+      - name: Restore vp task cache
+        uses: actions/cache/restore@55cc8345863c7cc4c66a329aec7e433d2d1c52a9 # v6
+        with:
+          path: ${{ env.VP_TASK_CACHE }}
+          key: ${{ env.VP_CACHE_KEY_PREFIX }}${{ runner.os }}-${{ hashFiles('pnpm-lock.yaml', 'vite.config.ts') }}-${{ github.run_id }}-${{ github.run_attempt }}
+          restore-keys: |
+            ${{ env.VP_CACHE_KEY_PREFIX }}${{ runner.os }}-${{ hashFiles('pnpm-lock.yaml', 'vite.config.ts') }}-
+            ${{ env.VP_CACHE_KEY_PREFIX }}${{ runner.os }}-
+      - name: Materialize generated output
+        run: vp run -r build
+      - name: Verify Vite releases
+        run: vp run @pantoken/vite#check:compatibility
+
+  webpack_changes:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    outputs:
+      webpack: ${{ steps.filter.outputs.webpack }}
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
+        with:
+          persist-credentials: false
+          fetch-depth: 0
+      - name: Detect webpack support changes
+        id: filter
+        uses: dorny/paths-filter@ceb8a2b8f2d89434be7ff52d3de7ec3738c5cc9d # v4.0.3
+        with:
+          filters: |
+            webpack:
+              - 'bundlers/webpack/**'
+              - 'scripts/quality/with-target-version.ts'
+              - 'scripts/release/target-compatibility.json'
+              - 'formats/css/**'
+              - 'formats/tokens/**'
+
+  webpack_compatibility:
+    needs: [build, webpack_changes]
+    if: needs.webpack_changes.outputs.webpack == 'true'
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
+        with:
+          persist-credentials: false
+      - name: Set up Vite+
+        uses: voidzero-dev/setup-vp@3754dd7dbdb32bd8f6d28b6043de13ad3a75f21f # v1.21.1
+        with:
+          cache: true
+          run-install: true
+      - name: Restore vp task cache
+        uses: actions/cache/restore@55cc8345863c7cc4c66a329aec7e433d2d1c52a9 # v6
+        with:
+          path: ${{ env.VP_TASK_CACHE }}
+          key: ${{ env.VP_CACHE_KEY_PREFIX }}${{ runner.os }}-${{ hashFiles('pnpm-lock.yaml', 'vite.config.ts') }}-${{ github.run_id }}-${{ github.run_attempt }}
+          restore-keys: |
+            ${{ env.VP_CACHE_KEY_PREFIX }}${{ runner.os }}-${{ hashFiles('pnpm-lock.yaml', 'vite.config.ts') }}-
+            ${{ env.VP_CACHE_KEY_PREFIX }}${{ runner.os }}-
+      - name: Materialize generated output
+        run: vp run -r build
+      - name: Verify webpack releases
+        run: vp run @pantoken/webpack#check:compatibility
+
+  tailwind_changes:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    outputs:
+      tailwind: ${{ steps.filter.outputs.tailwind }}
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
+        with:
+          persist-credentials: false
+          fetch-depth: 0
+      - name: Detect Tailwind support changes
+        id: filter
+        uses: dorny/paths-filter@ceb8a2b8f2d89434be7ff52d3de7ec3738c5cc9d # v4.0.3
+        with:
+          filters: |
+            tailwind:
+              - 'bundlers/tailwind/**'
+              - 'scripts/quality/with-target-version.ts'
+              - 'scripts/release/target-compatibility.json'
+              - 'formats/tokens/**'
+
+  tailwind_compatibility:
+    needs: [build, tailwind_changes]
+    if: needs.tailwind_changes.outputs.tailwind == 'true'
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
+        with:
+          persist-credentials: false
+      - name: Set up Vite+
+        uses: voidzero-dev/setup-vp@3754dd7dbdb32bd8f6d28b6043de13ad3a75f21f # v1.21.1
+        with:
+          cache: true
+          run-install: true
+      - name: Restore vp task cache
+        uses: actions/cache/restore@55cc8345863c7cc4c66a329aec7e433d2d1c52a9 # v6
+        with:
+          path: ${{ env.VP_TASK_CACHE }}
+          key: ${{ env.VP_CACHE_KEY_PREFIX }}${{ runner.os }}-${{ hashFiles('pnpm-lock.yaml', 'vite.config.ts') }}-${{ github.run_id }}-${{ github.run_attempt }}
+          restore-keys: |
+            ${{ env.VP_CACHE_KEY_PREFIX }}${{ runner.os }}-${{ hashFiles('pnpm-lock.yaml', 'vite.config.ts') }}-
+            ${{ env.VP_CACHE_KEY_PREFIX }}${{ runner.os }}-
+      - name: Materialize generated output
+        run: vp run -r build
+      - name: Verify Tailwind releases
+        run: vp run @pantoken/tailwind#check:compatibility
+
+  bootstrap_changes:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    outputs:
+      bootstrap: ${{ steps.filter.outputs.bootstrap }}
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
+        with:
+          persist-credentials: false
+          fetch-depth: 0
+      - name: Detect Bootstrap support changes
+        id: filter
+        uses: dorny/paths-filter@ceb8a2b8f2d89434be7ff52d3de7ec3738c5cc9d # v4.0.3
+        with:
+          filters: |
+            bootstrap:
+              - 'renderers/bootstrap/**'
+              - 'scripts/quality/with-target-version.ts'
+              - 'scripts/release/target-compatibility.json'
+              - 'formats/components/**'
+              - 'formats/tokens/**'
+
+  bootstrap_compatibility:
+    needs: [build, bootstrap_changes]
+    if: needs.bootstrap_changes.outputs.bootstrap == 'true'
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
+        with:
+          persist-credentials: false
+      - name: Set up Vite+
+        uses: voidzero-dev/setup-vp@3754dd7dbdb32bd8f6d28b6043de13ad3a75f21f # v1.21.1
+        with:
+          cache: true
+          run-install: true
+      - name: Restore vp task cache
+        uses: actions/cache/restore@55cc8345863c7cc4c66a329aec7e433d2d1c52a9 # v6
+        with:
+          path: ${{ env.VP_TASK_CACHE }}
+          key: ${{ env.VP_CACHE_KEY_PREFIX }}${{ runner.os }}-${{ hashFiles('pnpm-lock.yaml', 'vite.config.ts') }}-${{ github.run_id }}-${{ github.run_attempt }}
+          restore-keys: |
+            ${{ env.VP_CACHE_KEY_PREFIX }}${{ runner.os }}-${{ hashFiles('pnpm-lock.yaml', 'vite.config.ts') }}-
+            ${{ env.VP_CACHE_KEY_PREFIX }}${{ runner.os }}-
+      - name: Materialize generated output
+        run: vp run -r build
+      - name: Verify Bootstrap releases
+        run: vp run @pantoken/bootstrap#check:compatibility
+
+  rehype_changes:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    outputs:
+      rehype: ${{ steps.filter.outputs.rehype }}
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
+        with:
+          persist-credentials: false
+          fetch-depth: 0
+      - name: Detect rehype support changes
+        id: filter
+        uses: dorny/paths-filter@ceb8a2b8f2d89434be7ff52d3de7ec3738c5cc9d # v4.0.3
+        with:
+          filters: |
+            rehype:
+              - 'renderers/rehype/**'
+              - 'scripts/quality/with-target-version.ts'
+              - 'scripts/release/target-compatibility.json'
+              - 'formats/icons/**'
+              - 'formats/tokens/**'
+
+  rehype_compatibility:
+    needs: [build, rehype_changes]
+    if: needs.rehype_changes.outputs.rehype == 'true'
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
+        with:
+          persist-credentials: false
+      - name: Set up Vite+
+        uses: voidzero-dev/setup-vp@3754dd7dbdb32bd8f6d28b6043de13ad3a75f21f # v1.21.1
+        with:
+          cache: true
+          run-install: true
+      - name: Restore vp task cache
+        uses: actions/cache/restore@55cc8345863c7cc4c66a329aec7e433d2d1c52a9 # v6
+        with:
+          path: ${{ env.VP_TASK_CACHE }}
+          key: ${{ env.VP_CACHE_KEY_PREFIX }}${{ runner.os }}-${{ hashFiles('pnpm-lock.yaml', 'vite.config.ts') }}-${{ github.run_id }}-${{ github.run_attempt }}
+          restore-keys: |
+            ${{ env.VP_CACHE_KEY_PREFIX }}${{ runner.os }}-${{ hashFiles('pnpm-lock.yaml', 'vite.config.ts') }}-
+            ${{ env.VP_CACHE_KEY_PREFIX }}${{ runner.os }}-
+      - name: Materialize generated output
+        run: vp run -r build
+      - name: Verify rehype releases
+        run: vp run @pantoken/rehype#check:compatibility
 
   # Detect docs-relevant changes so PRs only pay for the docs build when the site could change. Runs on
   # both events (never skipped) so the `docs` job's `needs` is always satisfied.

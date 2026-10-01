@@ -1,0 +1,82 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://pantoken.app/schemas/target-compatibility.schema.json",
+  "title": "Pantoken target compatibility registry",
+  "description": "Curated evidence for each publishable platform, bundler, and renderer adapter.",
+  "type": "object",
+  "required": ["$schema"],
+  "properties": {
+    "$schema": { "const": "https://pantoken.app/schemas/target-compatibility.schema.json" }
+  },
+  "patternProperties": {
+    "^@pantoken/[^/]+$": {
+      "oneOf": [
+        { "$ref": "#/$defs/unverified" },
+        { "$ref": "#/$defs/notApplicable" },
+        { "$ref": "#/$defs/environmentVerified" },
+        { "$ref": "#/$defs/verified" }
+      ]
+    }
+  },
+  "additionalProperties": false,
+  "$defs": {
+    "unverified": {
+      "type": "object",
+      "required": ["target", "status"],
+      "properties": {
+        "target": { "type": "string", "minLength": 1 },
+        "format": { "type": "string", "minLength": 1 },
+        "status": { "const": "unverified" }
+      },
+      "additionalProperties": false
+    },
+    "notApplicable": {
+      "type": "object",
+      "required": ["target", "status", "reason"],
+      "properties": {
+        "target": { "type": "string", "minLength": 1 },
+        "format": { "type": "string", "minLength": 1 },
+        "status": { "const": "not-applicable" },
+        "reason": { "type": "string", "minLength": 1 }
+      },
+      "additionalProperties": false
+    },
+    "environmentVerified": {
+      "type": "object",
+      "required": ["target", "status", "testedEnvironments", "limitations", "testCommand"],
+      "properties": {
+        "target": { "type": "string", "minLength": 1 },
+        "format": { "type": "string", "minLength": 1 },
+        "status": { "const": "environment-verified" },
+        "testedEnvironments": {
+          "type": "array",
+          "minItems": 1,
+          "uniqueItems": true,
+          "items": { "type": "string", "minLength": 1 }
+        },
+        "limitations": { "type": "string", "minLength": 1 },
+        "testCommand": { "type": "string", "minLength": 1 }
+      },
+      "additionalProperties": false
+    },
+    "verified": {
+      "type": "object",
+      "required": ["target", "status", "minimum", "testedThrough", "testedVersions", "testCommand"],
+      "properties": {
+        "target": { "type": "string", "minLength": 1 },
+        "format": { "type": "string", "minLength": 1 },
+        "status": { "const": "verified" },
+        "minimum": { "type": "string", "minLength": 1 },
+        "testedThrough": { "type": "string", "minLength": 1 },
+        "testedVersions": {
+          "type": "array",
+          "minItems": 1,
+          "uniqueItems": true,
+          "items": { "type": "string", "minLength": 1 }
+        },
+        "testCommand": { "type": "string", "minLength": 1 }
+      },
+      "additionalProperties": false
+    }
+  }
+}

@@ -4,6 +4,12 @@ A rehype plugin that renders `:icon:` codes as inline SVG using the pantoken ico
 `rehype-instui-markdown` onto the shared `@pantoken/icons` manifest and resolves each code through a
 chain: plugin `rehype` resolvers first, then any explicit `resolve`, then the built-in set.
 
+## Compatibility
+
+Verified in a rehype 13.0.0–13.0.2 parse/render pipeline with `rehype-raw` 7.0.0 for SVG nodes.
+Other hosts or newer releases need separate review. See the
+[compatibility matrix](https://pantoken.app/compatibility) for exact tested releases.
+
 ## Install
 
 ```sh

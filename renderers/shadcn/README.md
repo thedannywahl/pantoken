@@ -37,6 +37,11 @@ The separate Tailwind v4 stylesheet emits `@theme inline` color aliases and shad
 configuration that reads the bridge variables as direct values without an `hsl(var(--x))` wrapper.
 Because the values are `var(--instui-*)` references, `@pantoken/css` must be present to define them.
 
+## Compatibility
+
+Verified with Tailwind 4.3.3 by compiling a `bg-primary` utility through the generated shadcn theme
+aliases. See the [compatibility matrix](https://pantoken.app/compatibility) for the tested release.
+
 ## API
 
 - **`toShadcnCss(options?): string`** — emit the shadcn → Instructure bridge CSS. Pass `{ selector }`

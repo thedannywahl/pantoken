@@ -4,6 +4,13 @@ Astro / Starlight integration for pantoken. `InstUI` is a Starlight plugin that 
 Instructure design tokens and icons as CSS into the page head. It ports the approach of
 `starlight-theme-instui` onto the shared `@pantoken/css` pipeline.
 
+## Compatibility
+
+Verified with real Starlight site builds for Starlight 0.35.0 / Astro 5.18.2 and Starlight 0.42.4
+/ Astro 7.3.5. Both generated pages contain the injected token stylesheet. These are tested pairs,
+not a claim that every combination in between is supported. See the
+[compatibility matrix](https://pantoken.app/compatibility) for exact versions.
+
 ## Install
 
 ```sh

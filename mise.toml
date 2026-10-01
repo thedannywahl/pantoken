@@ -1,44 +1,89 @@
-# mise — the polyglot toolchain + orchestration layer for pantoken.
-#
-# It pins the JS toolchain AND the native toolchains needed to build and verify generated output,
-# and gives one cross-language task runner. pnpm + vite-plus remain the source of truth for the JS
-# packages; mise sits on top for toolchains and native orchestration.
-
-[tools]
-node = "24"
-pnpm = "11.9.0"
-# Native toolchains are added as targets come online. Swift powers the v1 native proof; on macOS it
-# is provided by Xcode, and mise can manage it on Linux via the swift backend.
-# swift = "latest"
-# Planned: java + gradle (Compose), dart/flutter (Flutter), php + composer (Drupal).
+# mise coordinates native toolchains and checks; Vite+ manages the JS runtime and workspace.
+# Swift comes from Xcode on macOS. Add pinned native backends when other targets come online.
 
 [tasks.build]
 description = "Build every JS package"
-run = "pnpm run -r build"
+run = "vp run -r build"
 
 [tasks.test]
 description = "Test every JS package"
-run = "pnpm run -r test"
+run = "vp test"
 
 [tasks.check]
 description = "Lint + type-check every JS package"
-run = "pnpm run -r check"
+run = "vp check"
 
 [tasks.ready]
 description = "The single pass/fail gate (build + check + test)"
-run = "pnpm run ready"
+run = "vp run ready:all"
 
-[tasks."generate:swift"]
-description = "Emit the Swift package and compile it (native proof, end-to-end)"
-run = [
-  "node packages/cli/bin/pantoken.mjs generate swift --out ./native/swift --class PanTokens",
-  # Requires the Swift toolchain (Xcode on macOS, or `mise use swift` on Linux).
-  "swift build --package-path ./native/swift",
-]
+[tasks."scaffold:swift"]
+description = "Generate a SwiftPM token package at SWIFT_PACKAGE_OUT"
+depends = ["build"]
+run = '''
+set -eu
+: "${SWIFT_PACKAGE_OUT:?Set SWIFT_PACKAGE_OUT to the desired SwiftPM package directory}"
+node packages/cli/bin/pantoken.mjs generate swift --out "$SWIFT_PACKAGE_OUT" --class PanTokens
+'''
 
-# Umbrella for every native-platform generate+compile proof. Only Swift is wired today; add
-# `depends` entries here as gradle/dart/php toolchains and their own build-verify tasks land.
+[tasks."verify:swift:syntax"]
+description = "Generate Swift tokens and parse them with the local Swift compiler (not a host build)"
+depends = ["build"]
+run = '''
+set -eu
+native_tmp="$(mktemp -d "${TMPDIR:-/tmp}/pantoken-swift.XXXXXX")"
+trap 'rm -r -- "$native_tmp"' EXIT
+node packages/cli/bin/pantoken.mjs generate swift --out "$native_tmp/DesignTokens" --class PanTokens
+swiftc -frontend -parse "$native_tmp/DesignTokens/Sources/PanTokens/Tokens.swift"
+'''
+
+[tasks."verify:swift:host"]
+description = "Compile generated Swift against the iOS Simulator SDK with full Xcode"
+depends = ["build"]
+run = '''
+set -eu
+if [ ! -d /Applications/Xcode.app/Contents/Developer ]; then
+	printf '%s\n' 'Full Xcode is required for UIKit; use verify:swift:syntax for a portable check.' >&2
+	exit 1
+fi
+native_tmp="$(mktemp -d "${TMPDIR:-/tmp}/pantoken-swift.XXXXXX")"
+trap 'rm -r -- "$native_tmp"' EXIT
+node packages/cli/bin/pantoken.mjs generate swift --out "$native_tmp/DesignTokens" --class PanTokens
+ios_sdk="$(DEVELOPER_DIR=/Applications/Xcode.app/Contents/Developer xcrun --sdk iphonesimulator --show-sdk-path)"
+DEVELOPER_DIR=/Applications/Xcode.app/Contents/Developer xcrun --sdk iphonesimulator swiftc \
+	-parse-as-library -emit-module -module-name PanTokens \
+	-target arm64-apple-ios15.0-simulator -sdk "$ios_sdk" \
+	-emit-module-path "$native_tmp/PanTokens.swiftmodule" \
+	"$native_tmp/DesignTokens/Sources/PanTokens/Tokens.swift"
+'''
+
+[tasks."verify:swift:runtime"]
+description = "Build and run a disposable UIKit app on an iOS Simulator, including the optional icon asset catalog"
+depends = ["build"]
+run = "node platforms/swift/scripts/check-runtime.ts"
+
+[tasks."verify:rust"]
+description = "Compile generated egui and iced color modules with Rust 1.95"
+depends = ["build"]
+run = "node platforms/rust/scripts/check-compatibility.ts"
+
+[tasks."verify:android"]
+description = "Compile and link generated Android resources with API 35 build-tools"
+depends = ["build"]
+run = "node platforms/android/scripts/check-compatibility.ts"
+
+[tasks."verify:compose"]
+description = "Compile generated Compose Kotlin with Kotlin 2.1.10 and Android API 35"
+depends = ["build"]
+run = "node platforms/compose/scripts/check-compatibility.ts"
+
 [tasks."verify:native"]
-description = "Verify every native platform proof end-to-end (Swift today; more as toolchains land)"
-depends = ["generate:swift"]
+description = "Run Swift, Rust, Android, and Compose compatibility checks"
+depends = [
+  "verify:swift:syntax",
+  "verify:swift:runtime",
+  "verify:rust",
+  "verify:android",
+  "verify:compose",
+]
 run = "true"

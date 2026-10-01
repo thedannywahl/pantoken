@@ -9978,9 +9978,9 @@
   },
   "provenance": {
     "designTokens": {
-      "commit": "0a323b62c7486e65de57a06d70bdf0cdf209187f",
+      "commit": "c7f0deea242d692ae38d4baed0923a6eb251a7e5",
       "package": "@instructure/instructure-design-tokens",
-      "ref": "v2.0.0"
+      "ref": "v2.1.0"
     },
     "lucide": {
       "package": "lucide",
@@ -20606,6 +20606,193 @@
         "inherits": true,
         "syntax": "*",
         "value": "0.5rem"
+      },
+      "--instui-component-segmented-control-font-family": {
+        "inherits": true,
+        "refersTo": "--instui-font-family-base",
+        "syntax": "*",
+        "value": "var(--instui-font-family-base)"
+      },
+      "--instui-component-segmented-control-font-size-lg": {
+        "inherits": true,
+        "syntax": "*",
+        "value": "1.125rem"
+      },
+      "--instui-component-segmented-control-font-size-md": {
+        "inherits": true,
+        "refersTo": "--instui-font-size-text-base",
+        "syntax": "*",
+        "value": "var(--instui-font-size-text-base)"
+      },
+      "--instui-component-segmented-control-font-size-sm": {
+        "inherits": true,
+        "refersTo": "--instui-font-size-text-sm",
+        "syntax": "*",
+        "value": "var(--instui-font-size-text-sm)"
+      },
+      "--instui-component-segmented-control-font-weight": {
+        "inherits": true,
+        "refersTo": "--instui-font-weight-interactive",
+        "syntax": "*",
+        "value": "var(--instui-font-weight-interactive)"
+      },
+      "--instui-component-segmented-control-height-lg": {
+        "inherits": true,
+        "refersTo": "--instui-size-interactive-height-lg",
+        "syntax": "*",
+        "value": "var(--instui-size-interactive-height-lg)"
+      },
+      "--instui-component-segmented-control-height-md": {
+        "inherits": true,
+        "refersTo": "--instui-size-interactive-height-md",
+        "syntax": "*",
+        "value": "var(--instui-size-interactive-height-md)"
+      },
+      "--instui-component-segmented-control-height-sm": {
+        "inherits": true,
+        "refersTo": "--instui-size-interactive-height-sm",
+        "syntax": "*",
+        "value": "var(--instui-size-interactive-height-sm)"
+      },
+      "--instui-component-segmented-control-item-border-radius": {
+        "inherits": true,
+        "refersTo": "--instui-border-radius-interactive-base",
+        "syntax": "*",
+        "value": "var(--instui-border-radius-interactive-base)"
+      },
+      "--instui-component-segmented-control-item-gap-lg": {
+        "inherits": true,
+        "refersTo": "--instui-spacing-space-md",
+        "syntax": "*",
+        "value": "var(--instui-spacing-space-md)"
+      },
+      "--instui-component-segmented-control-item-gap-md": {
+        "inherits": true,
+        "refersTo": "--instui-spacing-space-sm",
+        "syntax": "*",
+        "value": "var(--instui-spacing-space-sm)"
+      },
+      "--instui-component-segmented-control-item-gap-sm": {
+        "inherits": true,
+        "refersTo": "--instui-spacing-space-xs",
+        "syntax": "*",
+        "value": "var(--instui-spacing-space-xs)"
+      },
+      "--instui-component-segmented-control-item-padding-horizontal-lg": {
+        "inherits": true,
+        "refersTo": "--instui-spacing-padding-interactive-horizontal-xl",
+        "syntax": "*",
+        "value": "var(--instui-spacing-padding-interactive-horizontal-xl)"
+      },
+      "--instui-component-segmented-control-item-padding-horizontal-md": {
+        "inherits": true,
+        "refersTo": "--instui-spacing-padding-interactive-horizontal-lg",
+        "syntax": "*",
+        "value": "var(--instui-spacing-padding-interactive-horizontal-lg)"
+      },
+      "--instui-component-segmented-control-item-padding-horizontal-sm": {
+        "inherits": true,
+        "refersTo": "--instui-spacing-padding-interactive-horizontal-md",
+        "syntax": "*",
+        "value": "var(--instui-spacing-padding-interactive-horizontal-md)"
+      },
+      "--instui-component-segmented-control-item-padding-horizontal-xs": {
+        "inherits": true,
+        "refersTo": "--instui-spacing-padding-interactive-horizontal-sm",
+        "syntax": "*",
+        "value": "var(--instui-spacing-padding-interactive-horizontal-sm)"
+      },
+      "--instui-component-segmented-control-line-height": {
+        "inherits": true,
+        "refersTo": "--instui-line-height-standalone-base",
+        "syntax": "*",
+        "value": "var(--instui-line-height-standalone-base)"
+      },
+      "--instui-component-segmented-control-selected-item-background-active-color": {
+        "inherits": true,
+        "syntax": "*",
+        "value": "hsl(from var(--instui-color-institutional-brand-button-primary-bgd) h s calc(l * 0.9))"
+      },
+      "--instui-component-segmented-control-selected-item-background-color": {
+        "inherits": true,
+        "refersTo": "--instui-color-institutional-brand-button-primary-bgd",
+        "syntax": "*",
+        "value": "var(--instui-color-institutional-brand-button-primary-bgd)"
+      },
+      "--instui-component-segmented-control-selected-item-background-disabled-color": {
+        "inherits": true,
+        "refersTo": "--instui-color-background-interactive-action-primary-disabled",
+        "syntax": "*",
+        "value": "var(--instui-color-background-interactive-action-primary-disabled)"
+      },
+      "--instui-component-segmented-control-selected-item-background-hover-color": {
+        "inherits": true,
+        "syntax": "*",
+        "value": "hsl(from var(--instui-color-institutional-brand-button-primary-bgd) h s calc(l * 0.9))"
+      },
+      "--instui-component-segmented-control-selected-item-text-color": {
+        "inherits": true,
+        "refersTo": "--instui-color-institutional-brand-button-primary-text",
+        "syntax": "*",
+        "value": "var(--instui-color-institutional-brand-button-primary-text)"
+      },
+      "--instui-component-segmented-control-selected-item-text-disabled-color": {
+        "inherits": true,
+        "refersTo": "--instui-color-text-interactive-action-primary-disabled",
+        "syntax": "*",
+        "value": "var(--instui-color-text-interactive-action-primary-disabled)"
+      },
+      "--instui-component-segmented-control-track-background-color": {
+        "inherits": true,
+        "refersTo": "--instui-color-institutional-brand-button-secondary-bgd",
+        "syntax": "*",
+        "value": "var(--instui-color-institutional-brand-button-secondary-bgd)"
+      },
+      "--instui-component-segmented-control-track-background-disabled-color": {
+        "inherits": true,
+        "refersTo": "--instui-color-background-interactive-action-secondary-disabled",
+        "syntax": "*",
+        "value": "var(--instui-color-background-interactive-action-secondary-disabled)"
+      },
+      "--instui-component-segmented-control-track-border-radius": {
+        "inherits": true,
+        "refersTo": "--instui-border-radius-xl",
+        "syntax": "*",
+        "value": "var(--instui-border-radius-xl)"
+      },
+      "--instui-component-segmented-control-track-gap": {
+        "inherits": true,
+        "refersTo": "--instui-spacing-space2xs",
+        "syntax": "*",
+        "value": "var(--instui-spacing-space2xs)"
+      },
+      "--instui-component-segmented-control-track-padding": {
+        "inherits": true,
+        "refersTo": "--instui-spacing-space-xs",
+        "syntax": "*",
+        "value": "var(--instui-spacing-space-xs)"
+      },
+      "--instui-component-segmented-control-unselected-item-background-active-color": {
+        "inherits": true,
+        "syntax": "*",
+        "value": "hsl(from var(--instui-color-institutional-brand-button-secondary-bgd) h s calc(l * 0.9))"
+      },
+      "--instui-component-segmented-control-unselected-item-background-hover-color": {
+        "inherits": true,
+        "syntax": "*",
+        "value": "hsl(from var(--instui-color-institutional-brand-button-secondary-bgd) h s calc(l * 0.9))"
+      },
+      "--instui-component-segmented-control-unselected-item-text-color": {
+        "inherits": true,
+        "refersTo": "--instui-color-institutional-brand-button-secondary-text",
+        "syntax": "*",
+        "value": "var(--instui-color-institutional-brand-button-secondary-text)"
+      },
+      "--instui-component-segmented-control-unselected-item-text-disabled-color": {
+        "inherits": true,
+        "refersTo": "--instui-color-text-interactive-action-secondary-disabled",
+        "syntax": "*",
+        "value": "var(--instui-color-text-interactive-action-secondary-disabled)"
       },
       "--instui-component-select-popover-border-width": {
         "inherits": true,
@@ -37469,6 +37656,193 @@
         "syntax": "*",
         "value": "0.5rem"
       },
+      "--instui-component-segmented-control-font-family": {
+        "inherits": true,
+        "refersTo": "--instui-font-family-base",
+        "syntax": "*",
+        "value": "var(--instui-font-family-base)"
+      },
+      "--instui-component-segmented-control-font-size-lg": {
+        "inherits": true,
+        "syntax": "*",
+        "value": "1.125rem"
+      },
+      "--instui-component-segmented-control-font-size-md": {
+        "inherits": true,
+        "refersTo": "--instui-font-size-text-base",
+        "syntax": "*",
+        "value": "var(--instui-font-size-text-base)"
+      },
+      "--instui-component-segmented-control-font-size-sm": {
+        "inherits": true,
+        "refersTo": "--instui-font-size-text-sm",
+        "syntax": "*",
+        "value": "var(--instui-font-size-text-sm)"
+      },
+      "--instui-component-segmented-control-font-weight": {
+        "inherits": true,
+        "refersTo": "--instui-font-weight-interactive",
+        "syntax": "*",
+        "value": "var(--instui-font-weight-interactive)"
+      },
+      "--instui-component-segmented-control-height-lg": {
+        "inherits": true,
+        "refersTo": "--instui-size-interactive-height-lg",
+        "syntax": "*",
+        "value": "var(--instui-size-interactive-height-lg)"
+      },
+      "--instui-component-segmented-control-height-md": {
+        "inherits": true,
+        "refersTo": "--instui-size-interactive-height-md",
+        "syntax": "*",
+        "value": "var(--instui-size-interactive-height-md)"
+      },
+      "--instui-component-segmented-control-height-sm": {
+        "inherits": true,
+        "refersTo": "--instui-size-interactive-height-sm",
+        "syntax": "*",
+        "value": "var(--instui-size-interactive-height-sm)"
+      },
+      "--instui-component-segmented-control-item-border-radius": {
+        "inherits": true,
+        "refersTo": "--instui-border-radius-interactive-base",
+        "syntax": "*",
+        "value": "var(--instui-border-radius-interactive-base)"
+      },
+      "--instui-component-segmented-control-item-gap-lg": {
+        "inherits": true,
+        "refersTo": "--instui-spacing-space-md",
+        "syntax": "*",
+        "value": "var(--instui-spacing-space-md)"
+      },
+      "--instui-component-segmented-control-item-gap-md": {
+        "inherits": true,
+        "refersTo": "--instui-spacing-space-sm",
+        "syntax": "*",
+        "value": "var(--instui-spacing-space-sm)"
+      },
+      "--instui-component-segmented-control-item-gap-sm": {
+        "inherits": true,
+        "refersTo": "--instui-spacing-space-xs",
+        "syntax": "*",
+        "value": "var(--instui-spacing-space-xs)"
+      },
+      "--instui-component-segmented-control-item-padding-horizontal-lg": {
+        "inherits": true,
+        "refersTo": "--instui-spacing-padding-interactive-horizontal-xl",
+        "syntax": "*",
+        "value": "var(--instui-spacing-padding-interactive-horizontal-xl)"
+      },
+      "--instui-component-segmented-control-item-padding-horizontal-md": {
+        "inherits": true,
+        "refersTo": "--instui-spacing-padding-interactive-horizontal-lg",
+        "syntax": "*",
+        "value": "var(--instui-spacing-padding-interactive-horizontal-lg)"
+      },
+      "--instui-component-segmented-control-item-padding-horizontal-sm": {
+        "inherits": true,
+        "refersTo": "--instui-spacing-padding-interactive-horizontal-md",
+        "syntax": "*",
+        "value": "var(--instui-spacing-padding-interactive-horizontal-md)"
+      },
+      "--instui-component-segmented-control-item-padding-horizontal-xs": {
+        "inherits": true,
+        "refersTo": "--instui-spacing-padding-interactive-horizontal-sm",
+        "syntax": "*",
+        "value": "var(--instui-spacing-padding-interactive-horizontal-sm)"
+      },
+      "--instui-component-segmented-control-line-height": {
+        "inherits": true,
+        "refersTo": "--instui-line-height-standalone-base",
+        "syntax": "*",
+        "value": "var(--instui-line-height-standalone-base)"
+      },
+      "--instui-component-segmented-control-selected-item-background-active-color": {
+        "inherits": true,
+        "syntax": "*",
+        "value": "hsl(from var(--instui-color-institutional-brand-button-primary-bgd) h s calc(l * 0.9))"
+      },
+      "--instui-component-segmented-control-selected-item-background-color": {
+        "inherits": true,
+        "refersTo": "--instui-color-institutional-brand-button-primary-bgd",
+        "syntax": "*",
+        "value": "var(--instui-color-institutional-brand-button-primary-bgd)"
+      },
+      "--instui-component-segmented-control-selected-item-background-disabled-color": {
+        "inherits": true,
+        "refersTo": "--instui-color-background-interactive-action-primary-disabled",
+        "syntax": "*",
+        "value": "var(--instui-color-background-interactive-action-primary-disabled)"
+      },
+      "--instui-component-segmented-control-selected-item-background-hover-color": {
+        "inherits": true,
+        "syntax": "*",
+        "value": "hsl(from var(--instui-color-institutional-brand-button-primary-bgd) h s calc(l * 0.9))"
+      },
+      "--instui-component-segmented-control-selected-item-text-color": {
+        "inherits": true,
+        "refersTo": "--instui-color-institutional-brand-button-primary-text",
+        "syntax": "*",
+        "value": "var(--instui-color-institutional-brand-button-primary-text)"
+      },
+      "--instui-component-segmented-control-selected-item-text-disabled-color": {
+        "inherits": true,
+        "refersTo": "--instui-color-text-interactive-action-primary-disabled",
+        "syntax": "*",
+        "value": "var(--instui-color-text-interactive-action-primary-disabled)"
+      },
+      "--instui-component-segmented-control-track-background-color": {
+        "inherits": true,
+        "refersTo": "--instui-color-institutional-brand-button-secondary-bgd",
+        "syntax": "*",
+        "value": "var(--instui-color-institutional-brand-button-secondary-bgd)"
+      },
+      "--instui-component-segmented-control-track-background-disabled-color": {
+        "inherits": true,
+        "refersTo": "--instui-color-background-interactive-action-secondary-disabled",
+        "syntax": "*",
+        "value": "var(--instui-color-background-interactive-action-secondary-disabled)"
+      },
+      "--instui-component-segmented-control-track-border-radius": {
+        "inherits": true,
+        "refersTo": "--instui-border-radius-xl",
+        "syntax": "*",
+        "value": "var(--instui-border-radius-xl)"
+      },
+      "--instui-component-segmented-control-track-gap": {
+        "inherits": true,
+        "refersTo": "--instui-spacing-space2xs",
+        "syntax": "*",
+        "value": "var(--instui-spacing-space2xs)"
+      },
+      "--instui-component-segmented-control-track-padding": {
+        "inherits": true,
+        "refersTo": "--instui-spacing-space-xs",
+        "syntax": "*",
+        "value": "var(--instui-spacing-space-xs)"
+      },
+      "--instui-component-segmented-control-unselected-item-background-active-color": {
+        "inherits": true,
+        "syntax": "*",
+        "value": "hsl(from var(--instui-color-institutional-brand-button-secondary-bgd) h s calc(l * 0.9))"
+      },
+      "--instui-component-segmented-control-unselected-item-background-hover-color": {
+        "inherits": true,
+        "syntax": "*",
+        "value": "hsl(from var(--instui-color-institutional-brand-button-secondary-bgd) h s calc(l * 0.9))"
+      },
+      "--instui-component-segmented-control-unselected-item-text-color": {
+        "inherits": true,
+        "refersTo": "--instui-color-institutional-brand-button-secondary-text",
+        "syntax": "*",
+        "value": "var(--instui-color-institutional-brand-button-secondary-text)"
+      },
+      "--instui-component-segmented-control-unselected-item-text-disabled-color": {
+        "inherits": true,
+        "refersTo": "--instui-color-text-interactive-action-secondary-disabled",
+        "syntax": "*",
+        "value": "var(--instui-color-text-interactive-action-secondary-disabled)"
+      },
       "--instui-component-select-popover-border-width": {
         "inherits": true,
         "refersTo": "--instui-border-width-sm",
@@ -45066,7 +45440,7 @@
         "inherits": true,
         "syntax": "*",
         "themed": true,
-        "value": "light-dark(var(--instui-primitive-color-grey-grey30), var(--instui-primitive-color-grey-grey150))"
+        "value": "light-dark(var(--instui-primitive-color-grey-grey40), var(--instui-primitive-color-grey-grey130))"
       },
       "--instui-color-background-interactive-action-primary-hover": {
         "inherits": true,
@@ -45558,7 +45932,7 @@
         "inherits": true,
         "syntax": "*",
         "themed": true,
-        "value": "light-dark(var(--instui-primitive-color-grey-grey60), var(--instui-primitive-color-grey-grey100))"
+        "value": "light-dark(var(--instui-primitive-color-grey-grey10), var(--instui-primitive-color-grey-grey170))"
       },
       "--instui-color-icon-interactive-action-primary-hover": {
         "inherits": true,
@@ -46104,7 +46478,7 @@
         "inherits": true,
         "syntax": "*",
         "themed": true,
-        "value": "light-dark(var(--instui-primitive-color-grey-grey30), var(--instui-primitive-color-grey-grey150))"
+        "value": "light-dark(var(--instui-primitive-color-grey-grey40), var(--instui-primitive-color-grey-grey130))"
       },
       "--instui-color-stroke-interactive-action-primary-hover": {
         "inherits": true,
@@ -46524,7 +46898,7 @@
         "inherits": true,
         "syntax": "*",
         "themed": true,
-        "value": "light-dark(var(--instui-primitive-color-grey-grey60), var(--instui-primitive-color-grey-grey100))"
+        "value": "light-dark(var(--instui-primitive-color-grey-grey10), var(--instui-primitive-color-grey-grey170))"
       },
       "--instui-color-text-interactive-action-primary-hover": {
         "inherits": true,
@@ -48065,13 +48439,13 @@
         "inherits": true,
         "syntax": "*",
         "themed": true,
-        "value": "hsl(from var(--instui-color-institutional-brand-button-primary-bgd) h s calc(l * 0.9))"
+        "value": "hsl(from var(--instui-color-institutional-brand-button-primary-bgd) h s calc(l * 0.85))"
       },
       "--instui-component-base-button-primary-active-border-color": {
         "inherits": true,
         "syntax": "*",
         "themed": true,
-        "value": "hsl(from var(--instui-color-institutional-brand-button-primary-bgd) h s calc(l * 0.9))"
+        "value": "hsl(from var(--instui-color-institutional-brand-button-primary-bgd) h s calc(l * 0.85))"
       },
       "--instui-component-base-button-primary-active-text-color": {
         "inherits": true,
@@ -48153,13 +48527,13 @@
         "inherits": true,
         "syntax": "*",
         "themed": true,
-        "value": "hsl(from var(--instui-color-institutional-brand-button-primary-bgd) h s calc(l * 0.9))"
+        "value": "hsl(from var(--instui-color-institutional-brand-button-primary-bgd) h s calc(l + (100 - l) * 0.2))"
       },
       "--instui-component-base-button-primary-hover-border-color": {
         "inherits": true,
         "syntax": "*",
         "themed": true,
-        "value": "hsl(from var(--instui-color-institutional-brand-button-primary-bgd) h s calc(l * 0.9))"
+        "value": "hsl(from var(--instui-color-institutional-brand-button-primary-bgd) h s calc(l + (100 - l) * 0.2))"
       },
       "--instui-component-base-button-primary-hover-box-shadow": {
         "inherits": true,
@@ -48297,7 +48671,7 @@
         "inherits": true,
         "syntax": "*",
         "themed": true,
-        "value": "hsl(from var(--instui-color-institutional-brand-button-secondary-bgd) h s calc(l * 0.9))"
+        "value": "hsl(from var(--instui-color-institutional-brand-button-secondary-bgd) h s calc(l * 0.85))"
       },
       "--instui-component-base-button-secondary-active-border-color": {
         "inherits": true,
@@ -48394,7 +48768,7 @@
         "inherits": true,
         "syntax": "*",
         "themed": true,
-        "value": "hsl(from var(--instui-color-institutional-brand-button-secondary-bgd) h s calc(l + (100 - l) * 0.1))"
+        "value": "hsl(from var(--instui-color-institutional-brand-button-secondary-bgd) h s calc(l + (100 - l) * 0.4))"
       },
       "--instui-component-base-button-secondary-hover-border-color": {
         "inherits": true,
@@ -54358,6 +54732,197 @@
         "inherits": true,
         "syntax": "*",
         "value": "0.5rem"
+      },
+      "--instui-component-segmented-control-font-family": {
+        "inherits": true,
+        "refersTo": "--instui-font-family-base",
+        "syntax": "*",
+        "value": "var(--instui-font-family-base)"
+      },
+      "--instui-component-segmented-control-font-size-lg": {
+        "inherits": true,
+        "syntax": "*",
+        "value": "1.125rem"
+      },
+      "--instui-component-segmented-control-font-size-md": {
+        "inherits": true,
+        "refersTo": "--instui-font-size-text-base",
+        "syntax": "*",
+        "value": "var(--instui-font-size-text-base)"
+      },
+      "--instui-component-segmented-control-font-size-sm": {
+        "inherits": true,
+        "refersTo": "--instui-font-size-text-sm",
+        "syntax": "*",
+        "value": "var(--instui-font-size-text-sm)"
+      },
+      "--instui-component-segmented-control-font-weight": {
+        "inherits": true,
+        "refersTo": "--instui-font-weight-interactive",
+        "syntax": "*",
+        "value": "var(--instui-font-weight-interactive)"
+      },
+      "--instui-component-segmented-control-height-lg": {
+        "inherits": true,
+        "refersTo": "--instui-size-interactive-height-lg",
+        "syntax": "*",
+        "value": "var(--instui-size-interactive-height-lg)"
+      },
+      "--instui-component-segmented-control-height-md": {
+        "inherits": true,
+        "refersTo": "--instui-size-interactive-height-md",
+        "syntax": "*",
+        "value": "var(--instui-size-interactive-height-md)"
+      },
+      "--instui-component-segmented-control-height-sm": {
+        "inherits": true,
+        "refersTo": "--instui-size-interactive-height-sm",
+        "syntax": "*",
+        "value": "var(--instui-size-interactive-height-sm)"
+      },
+      "--instui-component-segmented-control-item-border-radius": {
+        "inherits": true,
+        "refersTo": "--instui-border-radius-interactive-base",
+        "syntax": "*",
+        "value": "var(--instui-border-radius-interactive-base)"
+      },
+      "--instui-component-segmented-control-item-gap-lg": {
+        "inherits": true,
+        "refersTo": "--instui-spacing-space-md",
+        "syntax": "*",
+        "value": "var(--instui-spacing-space-md)"
+      },
+      "--instui-component-segmented-control-item-gap-md": {
+        "inherits": true,
+        "refersTo": "--instui-spacing-space-sm",
+        "syntax": "*",
+        "value": "var(--instui-spacing-space-sm)"
+      },
+      "--instui-component-segmented-control-item-gap-sm": {
+        "inherits": true,
+        "refersTo": "--instui-spacing-space-xs",
+        "syntax": "*",
+        "value": "var(--instui-spacing-space-xs)"
+      },
+      "--instui-component-segmented-control-item-padding-horizontal-lg": {
+        "inherits": true,
+        "refersTo": "--instui-spacing-padding-interactive-horizontal-xl",
+        "syntax": "*",
+        "value": "var(--instui-spacing-padding-interactive-horizontal-xl)"
+      },
+      "--instui-component-segmented-control-item-padding-horizontal-md": {
+        "inherits": true,
+        "refersTo": "--instui-spacing-padding-interactive-horizontal-lg",
+        "syntax": "*",
+        "value": "var(--instui-spacing-padding-interactive-horizontal-lg)"
+      },
+      "--instui-component-segmented-control-item-padding-horizontal-sm": {
+        "inherits": true,
+        "refersTo": "--instui-spacing-padding-interactive-horizontal-md",
+        "syntax": "*",
+        "value": "var(--instui-spacing-padding-interactive-horizontal-md)"
+      },
+      "--instui-component-segmented-control-item-padding-horizontal-xs": {
+        "inherits": true,
+        "refersTo": "--instui-spacing-padding-interactive-horizontal-sm",
+        "syntax": "*",
+        "value": "var(--instui-spacing-padding-interactive-horizontal-sm)"
+      },
+      "--instui-component-segmented-control-line-height": {
+        "inherits": true,
+        "refersTo": "--instui-line-height-standalone-base",
+        "syntax": "*",
+        "value": "var(--instui-line-height-standalone-base)"
+      },
+      "--instui-component-segmented-control-selected-item-background-active-color": {
+        "inherits": true,
+        "syntax": "*",
+        "themed": true,
+        "value": "hsl(from var(--instui-color-institutional-brand-button-primary-bgd) h s calc(l * 0.85))"
+      },
+      "--instui-component-segmented-control-selected-item-background-color": {
+        "inherits": true,
+        "refersTo": "--instui-color-institutional-brand-button-primary-bgd",
+        "syntax": "*",
+        "value": "var(--instui-color-institutional-brand-button-primary-bgd)"
+      },
+      "--instui-component-segmented-control-selected-item-background-disabled-color": {
+        "inherits": true,
+        "refersTo": "--instui-color-background-interactive-action-primary-disabled",
+        "syntax": "*",
+        "value": "var(--instui-color-background-interactive-action-primary-disabled)"
+      },
+      "--instui-component-segmented-control-selected-item-background-hover-color": {
+        "inherits": true,
+        "syntax": "*",
+        "themed": true,
+        "value": "hsl(from var(--instui-color-institutional-brand-button-primary-bgd) h s calc(l + (100 - l) * 0.2))"
+      },
+      "--instui-component-segmented-control-selected-item-text-color": {
+        "inherits": true,
+        "refersTo": "--instui-color-institutional-brand-button-primary-text",
+        "syntax": "*",
+        "value": "var(--instui-color-institutional-brand-button-primary-text)"
+      },
+      "--instui-component-segmented-control-selected-item-text-disabled-color": {
+        "inherits": true,
+        "refersTo": "--instui-color-text-interactive-action-primary-disabled",
+        "syntax": "*",
+        "value": "var(--instui-color-text-interactive-action-primary-disabled)"
+      },
+      "--instui-component-segmented-control-track-background-color": {
+        "inherits": true,
+        "refersTo": "--instui-color-institutional-brand-button-secondary-bgd",
+        "syntax": "*",
+        "value": "var(--instui-color-institutional-brand-button-secondary-bgd)"
+      },
+      "--instui-component-segmented-control-track-background-disabled-color": {
+        "inherits": true,
+        "refersTo": "--instui-color-background-interactive-action-secondary-disabled",
+        "syntax": "*",
+        "value": "var(--instui-color-background-interactive-action-secondary-disabled)"
+      },
+      "--instui-component-segmented-control-track-border-radius": {
+        "inherits": true,
+        "refersTo": "--instui-border-radius-xl",
+        "syntax": "*",
+        "value": "var(--instui-border-radius-xl)"
+      },
+      "--instui-component-segmented-control-track-gap": {
+        "inherits": true,
+        "refersTo": "--instui-spacing-space2xs",
+        "syntax": "*",
+        "value": "var(--instui-spacing-space2xs)"
+      },
+      "--instui-component-segmented-control-track-padding": {
+        "inherits": true,
+        "refersTo": "--instui-spacing-space-xs",
+        "syntax": "*",
+        "value": "var(--instui-spacing-space-xs)"
+      },
+      "--instui-component-segmented-control-unselected-item-background-active-color": {
+        "inherits": true,
+        "syntax": "*",
+        "themed": true,
+        "value": "hsl(from var(--instui-color-institutional-brand-button-secondary-bgd) h s calc(l * 0.85))"
+      },
+      "--instui-component-segmented-control-unselected-item-background-hover-color": {
+        "inherits": true,
+        "syntax": "*",
+        "themed": true,
+        "value": "hsl(from var(--instui-color-institutional-brand-button-secondary-bgd) h s calc(l + (100 - l) * 0.4))"
+      },
+      "--instui-component-segmented-control-unselected-item-text-color": {
+        "inherits": true,
+        "refersTo": "--instui-color-institutional-brand-button-secondary-text",
+        "syntax": "*",
+        "value": "var(--instui-color-institutional-brand-button-secondary-text)"
+      },
+      "--instui-component-segmented-control-unselected-item-text-disabled-color": {
+        "inherits": true,
+        "refersTo": "--instui-color-text-interactive-action-secondary-disabled",
+        "syntax": "*",
+        "value": "var(--instui-color-text-interactive-action-secondary-disabled)"
       },
       "--instui-component-select-popover-border-width": {
         "inherits": true,

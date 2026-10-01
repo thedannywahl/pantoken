@@ -1,19 +1,23 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: pantoken\n"
-"PO-Revision-Date: 2026-09-23 03:40+0000\n"
+"PO-Revision-Date: 2026-10-01 01:49+0000\n"
 "Last-Translator: pantoken localization engine\n"
 "Language-Team: pantoken\n"
+"Language: und\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: und\n"
 
 #: docs/.vitepress/i18n.json#description
 #, no-c-format
 msgctxt "docs.chrome:description"
-msgid "Instructure design tokens and icons, reshaped for every platform and framework."
-msgstr "Σημεία σχεδίασης (design tokens) και εικονίδια του Instructure, αναδιαμορφωμένα για κάθε πλατφόρμα και πλαίσιο εργασίας."
+msgid ""
+"Instructure design tokens and icons, reshaped for every platform and "
+"framework."
+msgstr ""
+"Σημεία σχεδίασης (design tokens) και εικονίδια του Instructure, "
+"αναδιαμορφωμένα για κάθε πλατφόρμα και πλαίσιο εργασίας."
 
 #: docs/.vitepress/i18n.json#nav.guide
 #, no-c-format
@@ -348,8 +352,13 @@ msgstr "Σχετικά με το base reset"
 #: docs/.vitepress/i18n.json#cdnPicker.baseInfo
 #, no-c-format
 msgctxt "docs.chrome:cdnPicker.baseInfo"
-msgid "The opt-in global reset: box-sizing, the page surface, base text colour and font, color-scheme, and link defaults."
-msgstr "Η προαιρετική παγκόσμια επαναφορά: box-sizing, η επιφάνεια της σελίδας, το βασικό χρώμα και γραμματοσειρά κειμένου, το color-scheme και οι προεπιλογές συνδέσμων."
+msgid ""
+"The opt-in global reset: box-sizing, the page surface, base text colour and "
+"font, color-scheme, and link defaults."
+msgstr ""
+"Η προαιρετική παγκόσμια επαναφορά: box-sizing, η επιφάνεια της σελίδας, το "
+"βασικό χρώμα και γραμματοσειρά κειμένου, το color-scheme και οι προεπιλογές "
+"συνδέσμων."
 
 #: docs/.vitepress/i18n.json#cdnPicker.includeUtilities
 #, no-c-format
@@ -366,8 +375,12 @@ msgstr "Σχετικά με τις βοηθητικές κλάσεις"
 #: docs/.vitepress/i18n.json#cdnPicker.utilitiesInfo
 #, no-c-format
 msgctxt "docs.chrome:cdnPicker.utilitiesInfo"
-msgid "An opt-in layer of cross-cutting classes: a View primitive, spacing on the token scale, and semantic color overrides."
-msgstr "Ένα προαιρετικό στρώμα γενικών κλάσεων: μια πρωτογενής View, αποστάσεις στη κλίμακα token και σημασιολογικές παρακάμψεις χρωμάτων."
+msgid ""
+"An opt-in layer of cross-cutting classes: a View primitive, spacing on the "
+"token scale, and semantic color overrides."
+msgstr ""
+"Ένα προαιρετικό στρώμα γενικών κλάσεων: μια πρωτογενής View, αποστάσεις στη "
+"κλίμακα token και σημασιολογικές παρακάμψεις χρωμάτων."
 
 #: docs/.vitepress/i18n.json#cdnPicker.copy
 #, no-c-format
@@ -390,14 +403,21 @@ msgstr "Επιλέξτε ένα ή περισσότερα συστατικά γ�
 #: docs/.vitepress/i18n.json#cdnPicker.fontsNote
 #, no-c-format
 msgctxt "docs.chrome:cdnPicker.fontsNote"
-msgid "Fonts load separately — add a <link> to @pantoken/components/fonts.css when you need them."
-msgstr "Οι γραμματοσειρές φορτώνουν ξεχωριστά — προσθέστε ένα <link> σε @pantoken/components/fonts.css όταν τις χρειάζεστε."
+msgid ""
+"Fonts load separately — add a <link> to @pantoken/components/fonts.css when "
+"you need them."
+msgstr ""
+"Οι γραμματοσειρές φορτώνουν ξεχωριστά — προσθέστε ένα <link> σε @pantoken/"
+"components/fonts.css όταν τις χρειάζεστε."
 
 #: docs/.vitepress/i18n.json#cdnPicker.iconsNote
 #, no-c-format
 msgctxt "docs.chrome:cdnPicker.iconsNote"
-msgid "component-icons.css is included because a selected component uses icons."
-msgstr "Το component-icons.css συμπεριλαμβάνεται επειδή ένα επιλεγμένο συστατικό χρησιμοποιεί εικονίδια."
+msgid ""
+"component-icons.css is included because a selected component uses icons."
+msgstr ""
+"Το component-icons.css συμπεριλαμβάνεται επειδή ένα επιλεγμένο συστατικό "
+"χρησιμοποιεί εικονίδια."
 
 #: docs/.vitepress/i18n.json#getStartedTabs.copied
 #, no-c-format
@@ -433,7 +453,9 @@ msgstr "Συνέχεια κινούμενων"
 #, fuzzy, no-c-format
 msgctxt "docs.chrome:getStartedTabs.agentPrompt"
 msgid "\"Set up pantoken in this project using create.pantoken.app/SKILL.md.\""
-msgstr "\"Ρυθμίστε το pantoken (github.com/thedannywahl/pantoken) σε αυτό το έργο χρησιμοποιώντας create.pantoken.app/SKILL.md.\""
+msgstr ""
+"\"Ρυθμίστε το pantoken (github.com/thedannywahl/pantoken) σε αυτό το έργο "
+"χρησιμοποιώντας create.pantoken.app/SKILL.md.\""
 
 #: docs/.vitepress/i18n.json#registryBrowser.title
 #, fuzzy, no-c-format
@@ -444,8 +466,14 @@ msgstr "Μητρώο"
 #: docs/.vitepress/i18n.json#registryBrowser.subtitle
 #, no-c-format
 msgctxt "docs.chrome:registryBrowser.subtitle"
-msgid "Compatible components, themes, and behavior hooks conforming to the shadcn/ui registry specification. Add items directly to your shadcn/ui project via CLI."
-msgstr "Συμβατά components, θέματα και hooks συμπεριφοράς που συμμορφώνονται με την προδιαγραφή registry του shadcn/ui. Προσθέστε στοιχεία απευθείας στο έργο shadcn/ui μέσω CLI."
+msgid ""
+"Compatible components, themes, and behavior hooks conforming to the shadcn/"
+"ui registry specification. Add items directly to your shadcn/ui project via "
+"CLI."
+msgstr ""
+"Συμβατά components, θέματα και hooks συμπεριφοράς που συμμορφώνονται με την "
+"προδιαγραφή registry του shadcn/ui. Προσθέστε στοιχεία απευθείας στο έργο "
+"shadcn/ui μέσω CLI."
 
 #: docs/.vitepress/i18n.json#registryBrowser.tabAll
 #, no-c-format
@@ -523,7 +551,8 @@ msgstr "JSON"
 #, no-c-format
 msgctxt "docs.chrome:registryBrowser.emptyTitle"
 msgid "No registry items match your search."
-msgstr "Δεν βρέθηκαν αντικείμενα στο registry που να ταιριάζουν στην αναζήτησή σας."
+msgstr ""
+"Δεν βρέθηκαν αντικείμενα στο registry που να ταιριάζουν στην αναζήτησή σας."
 
 #: docs/.vitepress/i18n.json#registryBrowser.emptyReset
 #, fuzzy, no-c-format
@@ -540,8 +569,15 @@ msgstr "Canvas"
 #: docs/.vitepress/i18n.json#canvasRce.description
 #, no-c-format
 msgctxt "docs.chrome:canvasRce.description"
-msgid "A live preview of pantoken's Canvas LMS Rich Content Editor template: a TinyMCE-based editor with starter layouts, a live preview pane, and hand-editable theme.css/theme.js output."
-msgstr "Προεπισκόπηση σε πραγματικό χρόνο του προτύπου Canvas LMS Rich Content Editor του pantoken: ένας επεξεργαστής βασισμένος σε TinyMCE με προκαθορισμένες διατάξεις, ένα πάνελ προεπισκόπησης σε πραγματικό χρόνο και έξοδο theme.css/theme.js που μπορεί να επεξεργαστεί χειροκίνητα."
+msgid ""
+"A live preview of pantoken's Canvas LMS Rich Content Editor template: a "
+"TinyMCE-based editor with starter layouts, a live preview pane, and hand-"
+"editable theme.css/theme.js output."
+msgstr ""
+"Προεπισκόπηση σε πραγματικό χρόνο του προτύπου Canvas LMS Rich Content "
+"Editor του pantoken: ένας επεξεργαστής βασισμένος σε TinyMCE με "
+"προκαθορισμένες διατάξεις, ένα πάνελ προεπισκόπησης σε πραγματικό χρόνο και "
+"έξοδο theme.css/theme.js που μπορεί να επεξεργαστεί χειροκίνητα."
 
 #: docs/.vitepress/i18n.json#canvasRce.openInNewTab
 #, fuzzy, no-c-format
@@ -564,8 +600,13 @@ msgstr "Εργαλεία"
 #: docs/.vitepress/i18n.json#agentTools.subtitle
 #, no-c-format
 msgctxt "docs.chrome:agentTools.subtitle"
-msgid "Pick a Pantoken agent workflow, generate the command or launch URL, and give your assistant the files it needs to stop guessing."
-msgstr "Επιλέξτε μια ροή εργασίας agent του Pantoken, δημιουργήστε την εντολή ή το URL εκκίνησης και δώστε στον βοηθό σας τα αρχεία που χρειάζεται για να σταματήσει να μαντεύει."
+msgid ""
+"Pick a Pantoken agent workflow, generate the command or launch URL, and give "
+"your assistant the files it needs to stop guessing."
+msgstr ""
+"Επιλέξτε μια ροή εργασίας agent του Pantoken, δημιουργήστε την εντολή ή το "
+"URL εκκίνησης και δώστε στον βοηθό σας τα αρχεία που χρειάζεται για να "
+"σταματήσει να μαντεύει."
 
 #: docs/.vitepress/i18n.json#agentTools.providerLabel
 #, no-c-format
@@ -612,8 +653,11 @@ msgstr "Άνοιγμα στο {{agent}}"
 #: docs/.vitepress/i18n.json#agentTools.openUnavailable
 #, no-c-format
 msgctxt "docs.chrome:agentTools.openUnavailable"
-msgid "This agent does not publish a stable launch URL. Use Copy for the CLI prompt."
-msgstr "Αυτός ο πράκτορας δεν δημοσιεύει σταθερό URL εκκίνησης. Χρησιμοποιήστε Αντιγραφή για το CLI prompt."
+msgid ""
+"This agent does not publish a stable launch URL. Use Copy for the CLI prompt."
+msgstr ""
+"Αυτός ο πράκτορας δεν δημοσιεύει σταθερό URL εκκίνησης. Χρησιμοποιήστε "
+"Αντιγραφή για το CLI prompt."
 
 #: docs/.vitepress/i18n.json#agentTools.tabBootstrap
 #, no-c-format
@@ -648,8 +692,12 @@ msgstr "Αρχικοποίηση (Bootstrap) ενός έργου"
 #: docs/.vitepress/i18n.json#agentTools.bootstrapDescription
 #, no-c-format
 msgctxt "docs.chrome:agentTools.bootstrapDescription"
-msgid "Scaffold a starter with Pantoken wired in and install the repo-local agent assets in the same pass."
-msgstr "Δημιουργήστε ένα starter scaffold με ενσωματωμένο Pantoken και εγκαταστήστε τα τοπικά assets του agent στο ίδιο βήμα."
+msgid ""
+"Scaffold a starter with Pantoken wired in and install the repo-local agent "
+"assets in the same pass."
+msgstr ""
+"Δημιουργήστε ένα starter scaffold με ενσωματωμένο Pantoken και εγκαταστήστε "
+"τα τοπικά assets του agent στο ίδιο βήμα."
 
 #: docs/.vitepress/i18n.json#agentTools.platformLabel
 #, fuzzy, no-c-format
@@ -672,8 +720,13 @@ msgstr "Προσθήκη οδηγιών agent σε ένα repository"
 #: docs/.vitepress/i18n.json#agentTools.installDescription
 #, no-c-format
 msgctxt "docs.chrome:agentTools.installDescription"
-msgid "Install AGENTS.md, llms.txt, editor rules, and Claude skills into an existing project that already uses or is about to use Pantoken."
-msgstr "Εγκαταστήστε το AGENTS.md, llms.txt, κανόνες editor και δεξιότητες Claude σε ένα υπάρχον έργο που ήδη χρησιμοποιεί ή πρόκειται να χρησιμοποιήσει το Pantoken."
+msgid ""
+"Install AGENTS.md, llms.txt, editor rules, and Claude skills into an "
+"existing project that already uses or is about to use Pantoken."
+msgstr ""
+"Εγκαταστήστε το AGENTS.md, llms.txt, κανόνες editor και δεξιότητες Claude σε "
+"ένα υπάρχον έργο που ήδη χρησιμοποιεί ή πρόκειται να χρησιμοποιήσει το "
+"Pantoken."
 
 #: docs/.vitepress/i18n.json#agentTools.toolLabel
 #, no-c-format
@@ -696,8 +749,13 @@ msgstr "Μητρώο"
 #: docs/.vitepress/i18n.json#agentTools.registryDescription
 #, no-c-format
 msgctxt "docs.chrome:agentTools.registryDescription"
-msgid "Point an agent at Pantoken's indexed registry so it can search, inspect, and add CSS-backed registry items instead of inventing package names."
-msgstr "Διευθύνετε έναν πράκτορα στο ευρετηριασμένο registry του Pantoken ώστε να μπορεί να αναζητά, να επιθεωρεί και να προσθέτει στοιχεία registry με υποστήριξη CSS αντί να εφευρίσκει ονόματα πακέτων."
+msgid ""
+"Point an agent at Pantoken's indexed registry so it can search, inspect, and "
+"add CSS-backed registry items instead of inventing package names."
+msgstr ""
+"Διευθύνετε έναν πράκτορα στο ευρετηριασμένο registry του Pantoken ώστε να "
+"μπορεί να αναζητά, να επιθεωρεί και να προσθέτει στοιχεία registry με "
+"υποστήριξη CSS αντί να εφευρίσκει ονόματα πακέτων."
 
 #: docs/.vitepress/i18n.json#agentTools.registryActionLabel
 #, no-c-format
@@ -720,32 +778,60 @@ msgstr "Τεκμηρίωση αναγνώσιμη από agents"
 #: docs/.vitepress/i18n.json#agentTools.docsDescription
 #, no-c-format
 msgctxt "docs.chrome:agentTools.docsDescription"
-msgid "Pantoken publishes fetchable documentation and manifests for assistants that can browse URLs or read raw Markdown."
-msgstr "Το Pantoken δημοσιεύει ανακτήσιμη τεκμηρίωση και manifests για βοηθούς που μπορούν να περιηγηθούν σε URL ή να διαβάσουν ακατέργαστο Markdown."
+msgid ""
+"Pantoken publishes fetchable documentation and manifests for assistants that "
+"can browse URLs or read raw Markdown."
+msgstr ""
+"Το Pantoken δημοσιεύει ανακτήσιμη τεκμηρίωση και manifests για βοηθούς που "
+"μπορούν να περιηγηθούν σε URL ή να διαβάσουν ακατέργαστο Markdown."
 
 #: docs/.vitepress/i18n.json#agentTools.installPrompt
 #, no-c-format
 msgctxt "docs.chrome:agentTools.installPrompt"
-msgid "Install Pantoken agent guidance in this repository. Use {{command}}, then summarize the files written and when future agents should read them."
-msgstr "Εγκαταστήστε τις οδηγίες agent του Pantoken σε αυτό το repository. Χρησιμοποιήστε {{command}}, στη συνέχεια συνοψίστε τα αρχεία που γράφτηκαν και πότε οι μελλοντικοί agents πρέπει να τα διαβάσουν."
+msgid ""
+"Install Pantoken agent guidance in this repository. Use {{command}}, then "
+"summarize the files written and when future agents should read them."
+msgstr ""
+"Εγκαταστήστε τις οδηγίες agent του Pantoken σε αυτό το repository. "
+"Χρησιμοποιήστε {{command}}, στη συνέχεια συνοψίστε τα αρχεία που γράφτηκαν "
+"και πότε οι μελλοντικοί agents πρέπει να τα διαβάσουν."
 
 #: docs/.vitepress/i18n.json#agentTools.registryPrompt
 #, no-c-format
 msgctxt "docs.chrome:agentTools.registryPrompt"
-msgid "Use the Pantoken shadcn registry for this project. Fetch https://pantoken.app/r/registry.json, then run {{command}} if the project uses shadcn or has components.json. Registry items install CSS and metadata, not React components."
-msgstr "Χρησιμοποιήστε το registry shadcn του Pantoken για αυτό το έργο. Φέρτε το https://pantoken.app/r/registry.json, στη συνέχεια εκτελέστε {{command}} εάν το έργο χρησιμοποιεί shadcn ή έχει components.json. Τα στοιχεία registry εγκαθιστούν CSS και metadata, όχι React components."
+msgid ""
+"Use the Pantoken shadcn registry for this project. Fetch https://"
+"pantoken.app/r/registry.json, then run {{command}} if the project uses "
+"shadcn or has components.json. Registry items install CSS and metadata, not "
+"React components."
+msgstr ""
+"Χρησιμοποιήστε το registry shadcn του Pantoken για αυτό το έργο. Φέρτε το "
+"https://pantoken.app/r/registry.json, στη συνέχεια εκτελέστε {{command}} εάν "
+"το έργο χρησιμοποιεί shadcn ή έχει components.json. Τα στοιχεία registry "
+"εγκαθιστούν CSS και metadata, όχι React components."
 
 #: docs/.vitepress/i18n.json#agentTools.docsPrompt
 #, no-c-format
 msgctxt "docs.chrome:agentTools.docsPrompt"
-msgid "Fetch https://pantoken.app/llms.txt first. When a page is needed, prefer its raw Markdown URL by adding .md to the clean docs path, and use Pantoken manifests for component capabilities, CDN plugins, demos, and registry items."
-msgstr "Φέρτε πρώτα το https://pantoken.app/llms.txt. Όταν χρειάζεται σελίδα, προτιμήστε το ωμό (raw) Markdown URL προσθέτοντας .md στην καθαρή διαδρομή τεκμηρίωσης, και χρησιμοποιήστε τα manifests του Pantoken για τις ικανότητες components, plugins CDN, demos και στοιχεία registry."
+msgid ""
+"Fetch https://pantoken.app/llms.txt first. When a page is needed, prefer its "
+"raw Markdown URL by adding .md to the clean docs path, and use Pantoken "
+"manifests for component capabilities, CDN plugins, demos, and registry items."
+msgstr ""
+"Φέρτε πρώτα το https://pantoken.app/llms.txt. Όταν χρειάζεται σελίδα, "
+"προτιμήστε το ωμό (raw) Markdown URL προσθέτοντας .md στην καθαρή διαδρομή "
+"τεκμηρίωσης, και χρησιμοποιήστε τα manifests του Pantoken για τις ικανότητες "
+"components, plugins CDN, demos και στοιχεία registry."
 
 #: docs/.vitepress/i18n.json#agentTools.docsCommand
 #, no-c-format
 msgctxt "docs.chrome:agentTools.docsCommand"
-msgid "Fetch https://pantoken.app/llms.txt, then follow links to the pages and manifests relevant to this task."
-msgstr "Φέρτε το https://pantoken.app/llms.txt, στη συνέχεια ακολουθήστε συνδέσμους προς τις σελίδες και τα manifests που σχετίζονται με αυτή την εργασία."
+msgid ""
+"Fetch https://pantoken.app/llms.txt, then follow links to the pages and "
+"manifests relevant to this task."
+msgstr ""
+"Φέρτε το https://pantoken.app/llms.txt, στη συνέχεια ακολουθήστε συνδέσμους "
+"προς τις σελίδες και τα manifests που σχετίζονται με αυτή την εργασία."
 
 #: docs/.vitepress/i18n.json#agentTools.createDomainTitle
 #, no-c-format
@@ -756,8 +842,11 @@ msgstr "URL δεξιότητας bootstrap"
 #: docs/.vitepress/i18n.json#agentTools.createDomainDescription
 #, no-c-format
 msgctxt "docs.chrome:agentTools.createDomainDescription"
-msgid "The short public URL any URL-capable agent can fetch to set up Pantoken."
-msgstr "Το σύντομο δημόσιο URL που κάθε πράκτορας με δυνατότητα ανάκτησης URL μπορεί να φέρει για να ρυθμίσει το Pantoken."
+msgid ""
+"The short public URL any URL-capable agent can fetch to set up Pantoken."
+msgstr ""
+"Το σύντομο δημόσιο URL που κάθε πράκτορας με δυνατότητα ανάκτησης URL μπορεί "
+"να φέρει για να ρυθμίσει το Pantoken."
 
 #: docs/.vitepress/i18n.json#agentTools.llmsTitle
 #, no-c-format
@@ -769,7 +858,9 @@ msgstr "Ευρετήριο ιστότοπου"
 #, no-c-format
 msgctxt "docs.chrome:agentTools.llmsDescription"
 msgid "Canonical English documentation index for agents and LLM-aware clients."
-msgstr "Κανoνικό αγγλικό ευρετήριο τεκμηρίωσης για agents και πελάτες με επίγνωση LLM."
+msgstr ""
+"Κανoνικό αγγλικό ευρετήριο τεκμηρίωσης για agents και πελάτες με επίγνωση "
+"LLM."
 
 #: docs/.vitepress/i18n.json#agentTools.llmsFullTitle
 #, no-c-format
@@ -780,8 +871,11 @@ msgstr "Πλήρες πλαίσιο ιστότοπου"
 #: docs/.vitepress/i18n.json#agentTools.llmsFullDescription
 #, no-c-format
 msgctxt "docs.chrome:agentTools.llmsFullDescription"
-msgid "Expanded LLM context for agents that need the complete documentation set."
-msgstr "Επεκταμένο πλαίσιο LLM για agents που χρειάζονται το πλήρες σύνολο τεκμηρίωσης."
+msgid ""
+"Expanded LLM context for agents that need the complete documentation set."
+msgstr ""
+"Επεκταμένο πλαίσιο LLM για agents που χρειάζονται το πλήρες σύνολο "
+"τεκμηρίωσης."
 
 #: docs/.vitepress/i18n.json#agentTools.pageMdTitle
 #, no-c-format
@@ -793,7 +887,9 @@ msgstr "Ακατέργαστες σελίδες Markdown"
 #, no-c-format
 msgctxt "docs.chrome:agentTools.pageMdDescription"
 msgid "Every docs HTML page advertises a raw Markdown alternate link."
-msgstr "Κάθε σελίδα τεκμηρίωσης HTML διαφημίζει έναν εναλλακτικό σύνδεσμο προς το ακατέργαστο Markdown."
+msgstr ""
+"Κάθε σελίδα τεκμηρίωσης HTML διαφημίζει έναν εναλλακτικό σύνδεσμο προς το "
+"ακατέργαστο Markdown."
 
 #: docs/.vitepress/i18n.json#agentTools.registryManifestTitle
 #, fuzzy, no-c-format
@@ -807,6 +903,20 @@ msgctxt "docs.chrome:agentTools.registryManifestDescription"
 msgid "shadcn-compatible index of Pantoken CSS registry items."
 msgstr "Δείκτης συμβατός με shadcn των στοιχείων registry CSS του Pantoken."
 
+#: docs/.vitepress/i18n.json#agentTools.targetCompatibilityTitle
+#, no-c-format
+msgctxt "docs.chrome:agentTools.targetCompatibilityTitle"
+msgid "Target compatibility"
+msgstr "Συμβατότητα στόχου"
+
+#: docs/.vitepress/i18n.json#agentTools.targetCompatibilityDescription
+#, no-c-format
+msgctxt "docs.chrome:agentTools.targetCompatibilityDescription"
+msgid "Verified host versions and tested environments for Pantoken adapters."
+msgstr ""
+"Επαληθευμένες εκδόσεις κεντρικών συστημάτων και δοκιμασμένα περιβάλλοντα για "
+"τους προσαρμογείς Pantoken."
+
 #: docs/.vitepress/i18n.json#agentTools.capabilitiesTitle
 #, fuzzy, no-c-format
 msgctxt "docs.chrome:agentTools.capabilitiesTitle"
@@ -816,8 +926,12 @@ msgstr "Συστατικά"
 #: docs/.vitepress/i18n.json#agentTools.capabilitiesDescription
 #, no-c-format
 msgctxt "docs.chrome:agentTools.capabilitiesDescription"
-msgid "Machine-readable map of component CSS, JavaScript, icon, and dependency needs."
-msgstr "Μηχανικά-αναγνώσιμος χάρτης των απαιτήσεων CSS, JavaScript, εικονιδίων και εξαρτήσεων των components."
+msgid ""
+"Machine-readable map of component CSS, JavaScript, icon, and dependency "
+"needs."
+msgstr ""
+"Μηχανικά-αναγνώσιμος χάρτης των απαιτήσεων CSS, JavaScript, εικονιδίων και "
+"εξαρτήσεων των components."
 
 #: docs/.vitepress/i18n.json#agentTools.pluginsTitle
 #, no-c-format
@@ -841,7 +955,9 @@ msgstr "Κατάλογος API"
 #, no-c-format
 msgctxt "docs.chrome:agentTools.apiCatalogDescription"
 msgid "Machine-readable linkset for Pantoken's agent-readable resources."
-msgstr "Μηχανικά-αναγνώσιμο σύνολο συνδέσμων για πόρους του Pantoken που είναι αναγνώσιμοι από agents."
+msgstr ""
+"Μηχανικά-αναγνώσιμο σύνολο συνδέσμων για πόρους του Pantoken που είναι "
+"αναγνώσιμοι από agents."
 
 #: docs/.vitepress/i18n.json#agentTools.vscodeCustomDataTitle
 #, no-c-format
@@ -853,7 +969,9 @@ msgstr "Προσαρμοσμένα δεδομένα VS Code"
 #, no-c-format
 msgctxt "docs.chrome:agentTools.vscodeCustomDataDescription"
 msgid "HTML classes and CSS custom properties for VS Code IntelliSense."
-msgstr "Κλάσεις HTML και προσαρμοσμένες ιδιότητες CSS για το IntelliSense του VS Code."
+msgstr ""
+"Κλάσεις HTML και προσαρμοσμένες ιδιότητες CSS για το IntelliSense του VS "
+"Code."
 
 #: docs/.vitepress/i18n.json#chrome.outlineLabel
 #, no-c-format
@@ -942,8 +1060,12 @@ msgstr "Η ΣΕΛΙΔΑ ΔΕΝ ΒΡΕΘΗΚΕ"
 #: docs/.vitepress/i18n.json#chrome.notFound.quote
 #, no-c-format
 msgctxt "docs.chrome:chrome.notFound.quote"
-msgid "But if you don't change your direction, and if you keep looking, you may end up where you are heading."
-msgstr "Αλλά αν δεν αλλάξετε την κατεύθυνσή σας, και αν συνεχίσετε να κοιτάζετε, μπορεί τελικά να καταλήξετε εκεί που κατευθύνεστε."
+msgid ""
+"But if you don't change your direction, and if you keep looking, you may end "
+"up where you are heading."
+msgstr ""
+"Αλλά αν δεν αλλάξετε την κατεύθυνσή σας, και αν συνεχίσετε να κοιτάζετε, "
+"μπορεί τελικά να καταλήξετε εκεί που κατευθύνεστε."
 
 #: docs/.vitepress/i18n.json#chrome.notFound.linkLabel
 #, no-c-format

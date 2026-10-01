@@ -144,6 +144,30 @@ test("publishes applicable plugin CSS without build-tool plugins", () => {
   expect(catalog.items.some(({ name }) => name === "tailwind")).toBe(false);
 });
 
+test("skeleton loader installs visual styles and its optional parent interaction package", () => {
+  const skeleton = buildRegistryCatalog().items.find(({ name }) => name === "skeleton-loader");
+  expect(skeleton?.type).toBe("registry:style");
+  expect(skeleton?.dependencies).toEqual([
+    "@pantoken/plugin-custom-components",
+    "@pantoken/interactions",
+  ]);
+  expect(skeleton?.css).toHaveProperty(
+    '@import "@pantoken/plugin-custom-components/skeleton-loader.css"',
+  );
+  expect(skeleton?.docs).toContain("initSkeletonLoading");
+});
+
+test("segmented control includes its scrolling behavior dependency", () => {
+  const segmented = buildRegistryCatalog().items.find(({ name }) => name === "segmented-control");
+  expect(segmented?.dependencies).toEqual([
+    "@pantoken/plugin-custom-components",
+    "@pantoken/interactions",
+  ]);
+  expect(segmented?.css).toHaveProperty(
+    '@import "@pantoken/plugin-custom-components/segmented-control.css"',
+  );
+});
+
 test("registry item names are unique", () => {
   const names = buildRegistryCatalog().items.map(({ name }) => name);
   expect(new Set(names).size).toBe(names.length);

@@ -2,6 +2,13 @@
 
 An Instructure theme object for runtime CSS-in-JS libraries. It works with anything that reads a theme from `props.theme` — Emotion, styled-components, and Stitches all share that convention. Keys are camelCased tokens; values are `var(--instui-*)` references by default, so light, dark, and high-contrast switching all flow through the CSS custom properties.
 
+## Compatibility
+
+Verified with Emotion 11.14.0 by server-rendering a styled component through `ThemeProvider` and
+checking the emitted style contains the Pantoken token variable. This tests the Emotion integration;
+styled-components and Stitches are not individually verified. See the
+[compatibility matrix](https://pantoken.app/compatibility) for the exact release.
+
 ## Install
 
 ```sh

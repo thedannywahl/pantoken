@@ -46,6 +46,9 @@
 
 - swift, android, compose, flutter, rust, wordpress, vanilla, drupal, jekyll, hugo — add
 	`--icons`, `--theme`, `--out`, and for rust `--format`.
+- Check https://pantoken.app/target-compatibility.json before claiming a supported host version;
+	its `$schema` field identifies the published schema. Verified releases and environments are
+	bounded evidence, not promises about newer versions.
 
 ## AI tooling for consumers
 

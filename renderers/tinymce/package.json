@@ -33,6 +33,7 @@
     "provenance": true
   },
   "scripts": {
+    "check:compatibility": "node scripts/check-compatibility.ts",
     "generate": "node scripts/generate.ts",
     "dev": "vp pack --watch",
     "extract": "node ../../tools/i18n-engine/bin/i18n.mjs --config ../../i18n.config.json extract tinymce.strings",
@@ -68,6 +69,7 @@
     "@codemirror/view": "catalog:",
     "@pantoken/utils": "workspace:*",
     "@types/node": "catalog:",
+    "happy-dom": "catalog:",
     "less": "catalog:",
     "postcss": "catalog:",
     "tinymce": "catalog:",

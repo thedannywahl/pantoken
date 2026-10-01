@@ -1,6 +1,11 @@
 import { renderToStaticMarkup } from "react-dom/server";
 import { expect, test } from "vite-plus/test";
+import { checkCompatibility } from "../scripts/check-compatibility.ts";
 import { InstuiMarkdown } from "../src/instui-markdown.tsx";
+
+test("compatibility probe renders the installed Markdown and InstUI pipeline", () => {
+  expect(checkCompatibility).not.toThrow();
+});
 
 test("renders a Markdown document through the InstUI pipeline", () => {
   const html = renderToStaticMarkup(

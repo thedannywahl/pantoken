@@ -207,7 +207,7 @@ const orchestrator = workspaceOrchestrator({
       dependents: [],
     },
     {
-      // Re-stage the same skill into the ai/create-pantoken-app-site/ submodule, which GitHub Pages
+      // Re-stage the same skill into the ai/create-pantoken-app-site/ submodule, which the static host
       // serves at create.pantoken.app. Only stages the submodule's working tree — committing and
       // pushing that repo is a separate, manual step. See stage-create-pantoken-app-domain.ts.
       name: "@pantoken/docs#create-pantoken-app-domain",
@@ -285,8 +285,8 @@ const localeEntries = Object.entries(LOCALE_THEMES) as [
 const rootLocaleOnly = process.env.DOCS_ROOT_LOCALE_ONLY === "1";
 
 // One locale per build. VitePress bakes a single `__ASSETS_DIR__` into the client router, so the only
-// way to keep any one directory under Netlify's 54,000-file cap is to build each locale separately
-// into `assets/<locale>/` and merge the outputs. Unset means "every locale in one build".
+// way to keep any one directory under static-host per-directory file caps is to build each locale
+// separately into `assets/<locale>/` and merge the outputs. Unset means "every locale in one build".
 const buildLocale = process.env.DOCS_LOCALE;
 const isLocaleScoped = buildLocale !== undefined;
 
@@ -495,6 +495,7 @@ const localesConfig = Object.fromEntries(
           getStartedTabs: locale.getStartedTabs,
           // Read by the shadcn/ui registry browser (RegistryBrowser.vue) via `useData().theme`.
           registryBrowser: locale.registryBrowser,
+          agentTools: locale.agentTools,
         },
       },
     ];
@@ -970,6 +971,7 @@ export default defineConfig({
               NON_ROOT_LOCALES.find((key) => relativePath.startsWith(`${key}/`)) ?? "root";
             const doc = buildExampleSrcdoc(html, {
               cssUrls,
+              scriptUrls: [`${base}demos-assets/interactions.iife.js`],
               card: !flags.has("-nocard"),
               dir: LOCALE_THEMES[locale].dir,
             });

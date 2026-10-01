@@ -1,4 +1,5 @@
 import { expect, test } from "vite-plus/test";
+import { checkCompatibility } from "../scripts/check-compatibility.ts";
 import { tokens } from "@pantoken/tokens";
 import { unknownReferences } from "@pantoken/utils";
 import { SHADCN_TO_INSTUI, toShadcnCss, toShadcnTailwindV4Css } from "../src/index.ts";
@@ -47,4 +48,8 @@ test("emits Tailwind v4 color aliases and the official derived radius scale", ()
   expect(css).toContain("--radius-lg: var(--radius);");
   expect(css).toContain("--radius-4xl: calc(var(--radius) * 2.6);");
   expect(css).not.toContain("--color-radius:");
+});
+
+test("rejects Tailwind releases outside the checked major", async () => {
+  await expect(checkCompatibility("5.0.0")).rejects.toThrow("Invalid Tailwind 4 release");
 });

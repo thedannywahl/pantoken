@@ -11,6 +11,9 @@ import {
 
 test("buildHtmlCustomData includes InstUI class and modifier tokens", { timeout: 15_000 }, () => {
   const htmlData = buildHtmlCustomData();
+  expect(htmlData.$schema).toBe(
+    "https://raw.githubusercontent.com/microsoft/vscode-html-languageservice/main/docs/customData.schema.json",
+  );
   const classAttribute = htmlData.globalAttributes.find((attribute) => attribute.name === "class");
   expect(classAttribute).toBeDefined();
 
@@ -23,6 +26,9 @@ test("buildHtmlCustomData includes InstUI class and modifier tokens", { timeout:
 
 test("buildCssCustomData includes pantoken token custom properties", () => {
   const cssData = buildCssCustomData();
+  expect(cssData.$schema).toBe(
+    "https://raw.githubusercontent.com/microsoft/vscode-css-languageservice/main/docs/customData.schema.json",
+  );
   expect(cssData.version).toBe(1.1);
   expect(cssData.properties.length).toBeGreaterThan(1000);
   expect(
@@ -59,10 +65,12 @@ test("emitCustomData writes html/css custom-data artifacts", () => {
     expect(entryCount).toBeGreaterThan(30);
 
     const htmlData = JSON.parse(readFileSync(htmlPath, "utf8")) as {
+      $schema: string;
       version: number;
       globalAttributes?: Array<{ name: string }>;
     };
     const cssData = JSON.parse(readFileSync(cssPath, "utf8")) as {
+      $schema: string;
       version: number;
       properties?: Array<{ name: string }>;
     };
@@ -72,8 +80,10 @@ test("emitCustomData writes html/css custom-data artifacts", () => {
     }>;
 
     expect(htmlData.version).toBe(1.1);
+    expect(htmlData.$schema).toContain("vscode-html-languageservice");
     expect(htmlData.globalAttributes?.some((attribute) => attribute.name === "class")).toBe(true);
     expect(cssData.version).toBe(1.1);
+    expect(cssData.$schema).toContain("vscode-css-languageservice");
     expect(
       cssData.properties?.some((property) => property.name === "--instui-color-background-brand"),
     ).toBe(true);

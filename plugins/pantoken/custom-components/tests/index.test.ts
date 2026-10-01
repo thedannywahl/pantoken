@@ -11,6 +11,8 @@ import {
   cardRules,
   customComponents,
   logoRules,
+  skeletonLoaderRules,
+  segmentedControlRules,
 } from "../src/index.ts";
 
 const cssOf = (plugin: ReturnType<typeof customComponents>): string => {
@@ -87,6 +89,80 @@ test("every custom component appears in the plugin css output", () => {
   expect(css).toContain(aiGradientRules());
   expect(css).toContain(logoRules());
   expect(css).toContain(buttonSetRules());
+  expect(css).toContain(skeletonLoaderRules());
+  expect(css).toContain(segmentedControlRules());
+});
+
+test("segmented control uses native radio states and the three upstream sizes", () => {
+  const css = segmentedControlRules();
+  expect(css).toContain(".instui-segmented-control");
+  expect(css).toContain("&:has(input:checked)");
+  expect(css).toContain("&:has(input:focus-visible)");
+  expect(css).toContain("&:has(input:disabled)");
+  expect(css).toContain("0 2px 4px 2px var(--instui-color-drop-shadow-shadow-color2)");
+  expect(css).toContain("0 1px 2px 0 var(--instui-color-drop-shadow-shadow-color1)");
+  expect(css).toContain("--instui-drop-shadow-y-elevation3-dropshadow2");
+  expect(css).toContain("--instui-drop-shadow-blur-elevation3-dropshadow1");
+  expect(css).not.toContain("--instui-elevation-depth1");
+  for (const size of ["sm", "md", "lg"]) {
+    expect(css).toContain(`--instui-component-segmented-control-height-${size}`);
+    expect(css).toContain(`--instui-component-segmented-control-font-size-${size}`);
+    expect(css).toContain(`--instui-component-segmented-control-item-padding-horizontal-${size}`);
+  }
+  expect(css).toContain(".overflow-start");
+  expect(css).toContain(".overflow-end");
+  expect(segmentedControlRules("my-")).toContain(".my-segmented-control");
+  expect(segmentedControlRules("")).toContain(".segmented-control {");
+});
+
+test("segmented control references only upstream or shared elevation/focus tokens", () => {
+  for (const theme of ["rebrand", "canvas", "canvasHighContrast"] as const) {
+    const drift = unknownReferences(segmentedControlRules(), byTheme(theme)).filter(
+      (name) => !name.startsWith("--instui-elevation-") && !name.startsWith("--instui-focus-"),
+    );
+    expect(drift).toEqual([]);
+  }
+});
+
+test("skeleton loader supports prefixing and all decorative variants", () => {
+  const css = skeletonLoaderRules();
+  expect(css).toContain(".instui-skeleton-loader");
+  expect(css).toContain(".skeleton-row");
+  expect(css).toContain("&.-type-text");
+  expect(css).toContain("&.-type-avatar");
+  expect(css).toContain("&.-type-image");
+  expect(css).toContain("::before");
+  expect(skeletonLoaderRules("my-")).toContain(".my-skeleton-loader");
+  expect(skeletonLoaderRules("")).toContain(".skeleton-loader {");
+});
+
+test("skeleton text rows use size-specific heights and internal leading", () => {
+  const css = skeletonLoaderRules();
+  expect(css).toContain("&.-size-md");
+  for (const size of ["xxs", "xs", "sm", "md", "lg", "xl", "xxl"]) {
+    expect(css).toContain(`--instui-component-skeleton-loader-text-height-${size}`);
+    expect(css).toContain(`--instui-component-skeleton-loader-text-padding-${size}`);
+  }
+  expect(css).toContain("padding-block: var(--pantoken-skeleton-padding)");
+  expect(css).toContain("margin-block: var(--pantoken-skeleton-padding)");
+  expect(css).not.toContain("row-gap:");
+});
+
+test("skeleton shimmer shares its phase, stops after three cycles, and respects reduced motion", () => {
+  const css = skeletonLoaderRules();
+  expect(css).toContain("inherits: true");
+  expect(css).toContain("--instui-component-skeleton-loader-duration");
+  expect(css).toContain("--instui-component-skeleton-loader-bezier");
+  expect(css).toContain("cubic-bezier(var(--instui-component-skeleton-loader-bezier)) 3 forwards");
+  expect(css).toContain("background-position: calc(100% - var(--pantoken-skeleton-sweep))");
+  expect(css).toContain("@media (prefers-reduced-motion: reduce)");
+  expect(css).toContain("animation: none");
+});
+
+test("skeleton loader references only available tokens in each theme", () => {
+  for (const theme of ["rebrand", "canvas", "canvasHighContrast"] as const) {
+    expect(unknownReferences(skeletonLoaderRules(), byTheme(theme))).toEqual([]);
+  }
 });
 
 test("buttonSetRules emits prefixed and unprefixed selectors", () => {

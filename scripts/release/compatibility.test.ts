@@ -1,7 +1,18 @@
-import { existsSync } from "node:fs";
+import { existsSync, readFileSync } from "node:fs";
 import path from "node:path";
 import { expect, test } from "vite-plus/test";
-import { buildCompatibility, type Compatibility, renderMarkdown } from "./compatibility.ts";
+import {
+  buildCompatibility,
+  type Compatibility,
+  renderMarkdown,
+  validateTargetRegistry,
+  validateTargetSupport,
+} from "./compatibility.ts";
+
+const registrySchema = JSON.parse(
+  readFileSync(new URL("./target-compatibility.schema.json", import.meta.url), "utf8"),
+) as object;
+const schemaUrl = "https://pantoken.app/schemas/target-compatibility.schema.json";
 
 const SAMPLE: Compatibility = {
   upstream: {
@@ -13,11 +24,17 @@ const SAMPLE: Compatibility = {
     "@instructure/ui-heading": { range: "^11.7.4", resolved: "11.7.4", feeds: "instui-react" },
   },
   consumers: [
-    { package: "@pantoken/css", path: "formats/css", governedBy: "token-ir" },
+    {
+      package: "@pantoken/css",
+      path: "formats/css",
+      governedBy: "token-ir",
+      targetSupport: { target: "CSS", status: "unverified" },
+    },
     {
       package: "@pantoken/react-markdown",
       path: "renderers/react-markdown",
       governedBy: "instui-react",
+      targetSupport: { target: "react-markdown", status: "unverified" },
     },
   ],
   deprecations: [],
@@ -28,15 +45,57 @@ test("renderMarkdown emits the section headings and upstream/consumer rows", () 
   expect(md.startsWith("# Compatibility")).toBe(true);
   expect(md).toContain("## Upstream sources");
   expect(md).toContain("## Consumers");
+  expect(md).toContain("## Reviewing target releases");
   expect(md).toContain("## Deprecations");
   expect(md).toContain("| `@instructure/ui-heading` | instui-react | `^11.7.4` | `11.7.4` |");
   expect(md).toContain(
-    "| `@pantoken/react-markdown` | `renderers/react-markdown` | instui-react |",
+    "| `@pantoken/react-markdown` | `renderers/react-markdown` | instui-react | react-markdown | — | Not yet verified |",
   );
 });
 
 test("renderMarkdown shows the empty-state when there are no deprecations", () => {
   expect(renderMarkdown(SAMPLE)).toContain("_No active token deprecations._");
+});
+
+test("renderMarkdown identifies the bounded, verified WordPress host range", () => {
+  const wordpress: Compatibility["consumers"][number] = {
+    package: "@pantoken/wordpress",
+    path: "platforms/wordpress",
+    governedBy: "token-ir",
+    targetSupport: {
+      target: "WordPress block themes",
+      format: "theme.json v3",
+      status: "verified",
+      minimum: "6.6",
+      testedThrough: "7.1.2",
+      testedVersions: ["6.6", "7.1.2"],
+      testCommand: "vp run @pantoken/wordpress#check:compatibility",
+    },
+  };
+  expect(renderMarkdown({ ...SAMPLE, consumers: [wordpress] })).toContain(
+    "WordPress block themes | theme.json v3 | `6.6` through `7.1.2` (verified)",
+  );
+});
+
+test("renderMarkdown labels a compiler check as environment evidence, not a host floor", () => {
+  const swift: Compatibility["consumers"][number] = {
+    package: "@pantoken/swift",
+    path: "platforms/swift",
+    governedBy: "token-ir",
+    targetSupport: {
+      target: "Swift iOS",
+      status: "environment-verified",
+      testedEnvironments: ["Xcode 27.0 / Swift 6.4 / iOS Simulator SDK 27.0"],
+      limitations: "No simulator runtime tested.",
+      testCommand: "mise run verify:swift:host",
+    },
+  };
+  const markdown = renderMarkdown({ ...SAMPLE, consumers: [swift] });
+  expect(markdown).toContain(
+    "Tested environment: `Xcode 27.0 / Swift 6.4 / iOS Simulator SDK 27.0`",
+  );
+  expect(markdown).toContain("No simulator runtime tested.");
+  expect(markdown).not.toContain("Minimum host version");
 });
 
 test("renderMarkdown renders a forwarded replacement and a frozen value", () => {
@@ -54,6 +113,104 @@ test("renderMarkdown renders a forwarded replacement and a frozen value", () => 
   });
   expect(md).toContain("| `--old-forward` | `1.4.0` | `1.6.0` | `var(--new)` |");
   expect(md).toContain("| `--old-frozen` | `1.4.0` | `1.6.0` | _frozen value_ |");
+});
+
+test("target support requires a record for every adapter", () => {
+  expect(() => validateTargetSupport(["@pantoken/wordpress"], {})).toThrow(
+    "Missing target support",
+  );
+  expect(() =>
+    validateTargetSupport([], {
+      "@pantoken/wordpress": { target: "WordPress", status: "unverified" },
+    }),
+  ).toThrow("Unknown target support");
+});
+
+test("published schema accepts every support status and strips metadata", () => {
+  const records = {
+    $schema: schemaUrl,
+    "@pantoken/email": { target: "Email", status: "unverified" },
+    "@pantoken/flutter": { target: "Flutter", status: "not-applicable", reason: "N/A" },
+    "@pantoken/swift": {
+      target: "Swift",
+      status: "environment-verified",
+      testedEnvironments: ["Xcode 27"],
+      limitations: "Simulator only",
+      testCommand: "vp run verify:swift:runtime",
+    },
+    "@pantoken/wordpress": {
+      target: "WordPress",
+      status: "verified",
+      minimum: "6.6",
+      testedThrough: "7.1",
+      testedVersions: ["6.6", "7.1"],
+      testCommand: "vp run verify:wordpress",
+    },
+  };
+  const support = validateTargetRegistry(records, registrySchema);
+  expect(Object.keys(support)).toHaveLength(4);
+  expect(support).not.toHaveProperty("$schema");
+  expect(() => validateTargetSupport(Object.keys(support), support)).not.toThrow();
+});
+
+test("published schema rejects missing or mismatched metadata and malformed records", () => {
+  const good = { $schema: schemaUrl, "@pantoken/email": { target: "Email", status: "unverified" } };
+  expect(() =>
+    validateTargetRegistry({ "@pantoken/email": good["@pantoken/email"] }, registrySchema),
+  ).toThrow();
+  expect(() =>
+    validateTargetRegistry({ ...good, $schema: "https://example.com/schema" }, registrySchema),
+  ).toThrow();
+  for (const record of [
+    { target: "Email", status: "unknown" },
+    { target: "Email", status: "verified", minimum: "6.6" },
+    { target: "Email", status: "unverified", extra: true },
+    { target: "Email", status: "unverified", format: 42 },
+  ]) {
+    expect(() =>
+      validateTargetRegistry({ ...good, "@pantoken/email": record }, registrySchema),
+    ).toThrow();
+  }
+});
+
+test("verified claims require a tested floor and latest release", () => {
+  const name = "@pantoken/wordpress";
+  const record = {
+    target: "WordPress block themes",
+    format: "theme.json v3",
+    status: "verified" as const,
+    minimum: "6.6",
+    testedThrough: "6.8",
+    testedVersions: ["6.6"],
+    testCommand: "vp test",
+  };
+  expect(() => validateTargetSupport([name], { [name]: record })).toThrow("Unsubstantiated");
+  expect(() =>
+    validateTargetSupport([name], { [name]: { ...record, testedVersions: ["6.6", "6.8"] } }),
+  ).not.toThrow();
+});
+
+test("not-applicable status requires a reason", () => {
+  expect(() =>
+    validateTargetSupport(["@pantoken/email"], {
+      "@pantoken/email": { target: "HTML email", status: "not-applicable", reason: "" },
+    }),
+  ).toThrow("Missing N/A reason");
+});
+
+test("environment evidence needs named toolchains and an explicit limitation", () => {
+  const name = "@pantoken/swift";
+  expect(() =>
+    validateTargetSupport([name], {
+      [name]: {
+        target: "Swift iOS",
+        status: "environment-verified",
+        testedEnvironments: [],
+        limitations: "Runtime not tested",
+        testCommand: "mise run verify:swift:host",
+      },
+    }),
+  ).toThrow("Unsubstantiated target environment claim");
 });
 
 // Integration: reads the repo's built provenance. Guarded so it no-ops before a build.
@@ -82,6 +239,14 @@ test.skipIf(!existsSync(metaPath))(
     expect(a.upstream.lucide?.feeds).toBe("icons");
     expect(a.upstream["@instructure/ui-heading"]?.feeds).toBe("instui-react");
     expect(a.consumers.length).toBeGreaterThan(0);
+    expect(a.consumers).toContainEqual(
+      expect.objectContaining({
+        package: "@pantoken/tailwind",
+        path: "bundlers/tailwind",
+        governedBy: "token-ir",
+        targetSupport: expect.objectContaining({ target: "Tailwind CSS" }),
+      }),
+    );
     expectWellFormedConsumers(a.consumers);
   },
 );

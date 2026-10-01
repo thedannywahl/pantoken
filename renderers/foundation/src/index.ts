@@ -1,10 +1,9 @@
 /**
- * `@pantoken/foundation` — theme Foundation for Sites with Instructure tokens.
+ * `@pantoken/foundation` — theme Foundation for Sites Sass output and common CSS classes.
  *
  * Foundation is Sass-first, so this package ships two layers. {@link toFoundationSettings} emits a
- * `_settings`-style Sass partial that points Foundation's setting variables at `var(--instui-*)`, so
- * a Sass build compiles the Instructure look while keeping runtime theming through the same custom
- * properties. {@link toFoundationCss} emits a thin CSS overlay that themes the common compiled
+ * `_settings`-style Sass partial with concrete light-mode rebrand values so Foundation's colour functions can
+ * compile. {@link toFoundationCss} emits a thin variable-backed CSS overlay that themes the common compiled
  * classes (`.button`, `.callout`, links) the same way — useful when you consume stock Foundation CSS
  * and just want to layer Instructure colors on top without recompiling.
  *
@@ -17,6 +16,10 @@
  * @module
  * @experimental
  */
+import { byTheme } from "@pantoken/tokens";
+import { resolveTokens } from "@pantoken/utils";
+
+const sassValues = resolveTokens(byTheme("rebrand"), { mode: "light" });
 
 /** Foundation for Sites setting variable → the Instructure token it resolves to. */
 export const FOUNDATION_TO_INSTUI: Readonly<Record<string, string>> = Object.freeze({
@@ -39,7 +42,8 @@ export interface ToFoundationSettingsOptions {
 }
 
 /**
- * Emit the Foundation Sass settings override. Load it before `@include foundation-everything`.
+ * Emit the Foundation Sass settings override. Import it before Foundation itself and
+ * `@include foundation-everything` so its palette is available to Sass.
  *
  * @param options - {@link ToFoundationSettingsOptions}.
  * @returns The Sass partial as a string.
@@ -51,10 +55,20 @@ export interface ToFoundationSettingsOptions {
  */
 export function toFoundationSettings(options: ToFoundationSettingsOptions = {}): string {
   const suffix = options.useDefault ? " !default" : "";
-  const lines = Object.entries(FOUNDATION_TO_INSTUI).map(
-    ([sassVar, instui]) => `${sassVar}: var(${instui})${suffix};`,
-  );
-  return `// Foundation for Sites settings themed with Instructure tokens (pantoken)\n${lines.join("\n")}\n`;
+  const valueFor = (instui: string): string => {
+    const value = sassValues.get(instui);
+    if (!value || value.includes("var(") || value.includes("light-dark(")) {
+      throw new Error(`Unresolved Foundation setting: ${instui}`);
+    }
+    return value;
+  };
+  const lines = Object.entries(FOUNDATION_TO_INSTUI).map(([sassVar, instui]) => {
+    return `${sassVar}: ${valueFor(instui)}${suffix};`;
+  });
+  const palette = ["primary", "secondary", "success", "warning", "alert"]
+    .map((name) => `  "${name}": ${valueFor(FOUNDATION_TO_INSTUI[`$${name}-color`])}`)
+    .join(",\n");
+  return `// Foundation for Sites settings themed with Instructure tokens (pantoken)\n$foundation-palette: (\n${palette}\n)${suffix};\n${lines.join("\n")}\n`;
 }
 
 /** Options for {@link toFoundationCss}. */

@@ -1,4 +1,5 @@
 import { expect, test } from "vite-plus/test";
+import { checkCompatibility } from "../scripts/check-compatibility.ts";
 import { PantokenVue, readToken } from "../src/index.ts";
 
 test("install marks instui-* tags as custom elements", () => {
@@ -10,4 +11,8 @@ test("install marks instui-* tags as custom elements", () => {
 
 test("readToken returns the fallback on the server", () => {
   expect(readToken("--instui-color-background-brand", "#0374B5")).toBe("#0374B5");
+});
+
+test("rejects releases outside the checked Vue major", async () => {
+  await expect(checkCompatibility("4.0.0")).rejects.toThrow("Invalid Vue 3 release");
 });

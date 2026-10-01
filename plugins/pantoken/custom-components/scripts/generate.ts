@@ -15,6 +15,8 @@ import {
   buttonSetRules,
   cardRules,
   logoRules,
+  skeletonLoaderRules,
+  segmentedControlRules,
 } from "../src/components/index.ts";
 
 const outDir = resolve(import.meta.dirname, "../generated");
@@ -26,6 +28,8 @@ const allInstui = [
   bannerRules("instui-"),
   buttonSetRules("instui-"),
   logoRules("instui-"),
+  skeletonLoaderRules("instui-"),
+  segmentedControlRules("instui-"),
 ].join("\n");
 const allPfx = [
   breakpointDeclarations(),
@@ -35,6 +39,8 @@ const allPfx = [
   bannerRules("pfx-"),
   buttonSetRules("pfx-"),
   logoRules("pfx-"),
+  skeletonLoaderRules("pfx-"),
+  segmentedControlRules("pfx-"),
 ].join("\n");
 mkdirSync(outDir, { recursive: true });
 writeFileSync(join(outDir, "custom-components.css"), `${allInstui}\n`);

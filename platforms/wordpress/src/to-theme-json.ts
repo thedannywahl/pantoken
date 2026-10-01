@@ -79,7 +79,7 @@ export function toThemeJson(tokens: readonly Token[], options: ToThemeJsonOption
   }
 
   return {
-    $schema: "https://schemas.wp.org/trunk/theme.json",
+    $schema: "https://schemas.wp.org/wp/6.6/theme.json",
     version: 3,
     settings: {
       color: { palette },

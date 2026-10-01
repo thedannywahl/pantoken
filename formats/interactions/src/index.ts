@@ -14,3 +14,5 @@ export * from "./behaviors/in-place-edit.js";
 export * from "./behaviors/truncate.js";
 export * from "./behaviors/responsive-overlay.js";
 export * from "./behaviors/tabs.js";
+export * from "./behaviors/skeleton-loader.js";
+export * from "./behaviors/segmented-control.js";

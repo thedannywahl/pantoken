@@ -1,9 +1,15 @@
 # @pantoken/foundation
 
-Theme [Foundation for Sites](https://get.foundation) with Instructure tokens. Foundation is
-Sass-first, so this package ships two layers: a `_settings` Sass override that points Foundation's
-setting variables at `var(--instui-*)`, and a thin CSS overlay that themes the common compiled
-classes the same way at runtime.
+Theme [Foundation for Sites](https://get.foundation) with Instructure tokens. The Sass settings
+partial supplies concrete light-mode rebrand colors that Foundation's color functions can compile.
+The separate CSS overlay uses `var(--instui-*)` to theme common compiled classes at runtime.
+
+## Compatibility
+
+Verified with Foundation for Sites 6.1.2 through 6.9.0: the Sass settings compile a primary button
+with the rebrand color, and the runtime overlay preserves Pantoken variables. Foundation 6.0.6 did
+not pass the primary-button check. See the [compatibility matrix](https://pantoken.app/compatibility)
+for exact tested releases.
 
 ## Install
 
@@ -15,16 +21,17 @@ Also available as `pantoken/foundation`.
 
 ## Usage
 
-Sass build — load the settings override before Foundation, alongside the base token CSS:
+Sass build — import the settings before Foundation so its palette is in scope:
 
 ```scss
-@use "@pantoken/foundation/settings.scss";
+@import "@pantoken/foundation/settings.scss";
 @import "foundation-sites/scss/foundation";
 @include foundation-everything;
 ```
 
 ```css
 @import "@pantoken/css/style.css";
+@import "@pantoken/foundation/theme.css";
 ```
 
 Stock CSS — layer the runtime overlay on top of compiled Foundation:

@@ -13,6 +13,9 @@
  * The module is Node-safe: element classes are defined inside {@link register}, a no-op when there
  * is no DOM, so importing during SSR or a build never touches `HTMLElement`.
  *
+ * Registration and shadow output are environment-verified with Happy DOM; real-browser behavior is
+ * not covered by that check.
+ *
  * @module
  * @alpha
  */

@@ -1,0 +1,201 @@
+/**
+ * @component segmented-control
+ * @summary A single-select row of compact view or filter options.
+ * @selector .pfx-segmented-control
+ * @remarks The selected segment uses a distinct active-item shadow; it does not match an existing
+ *   --instui-elevation-* composite. Overflow buttons use the upstream elevation3 component tokens.
+ * @modifier -size-lg — Large segments.
+ * @modifier -size-md — Medium segments (default).
+ * @modifier -size-sm — Small segments.
+ * @part viewport — Clips the segment row and anchors the overflow controls.
+ * @part track — Scrollable row containing the selectable segments.
+ * @part overflow-start — Scroll to the preceding hidden segment.
+ * @part overflow-end — Scroll to the following hidden segment.
+ * @structure
+ * fieldset.pfx-segmented-control {
+ *   .viewport {
+ *     button.overflow-start:optional {}
+ *     .track {
+ *       @component segmented-control.segment:one-or-more {}
+ *     }
+ *     button.overflow-end:optional {}
+ *   }
+ * }
+ * @a11y Use a labelled fieldset and one shared radio name with a checked default. Native radios
+ *   announce their checked state; overflow buttons need labels describing their scroll direction.
+ * @example
+ * ```html
+ * <fieldset class="pfx-segmented-control" aria-label="Course view">
+ *   <div class="viewport">
+ *     <button class="overflow-start" aria-label="Scroll to previous views" hidden></button>
+ *     <div class="track">
+ *       <label class="-icon-settings"><input type="radio" name="view" checked>Settings</label>
+ *       <label class="-icon-sliders-vertical"><input type="radio" name="view">Options</label>
+ *       <label class="-icon-wrench"><input type="radio" name="view">Config</label>
+ *       <label class="-icon-sliders-horizontal"><input type="radio" name="view">Utilities</label>
+ *       <label class="-icon-monitor-cog"><input type="radio" name="view">Preferences</label>
+ *       <label class="-icon-settings-2"><input type="radio" name="view">Feature flags</label>
+ *     </div>
+ *     <button class="overflow-end" aria-label="Scroll to next views" hidden></button>
+ *   </div>
+ * </fieldset>
+ * ```
+ */
+@scope (.pfx-segmented-control) {
+  & {
+    --pantoken-segmented-height: var(--instui-component-segmented-control-height-md);
+    --pantoken-segmented-font-size: var(--instui-component-segmented-control-font-size-md);
+    --pantoken-segmented-padding: var(
+      --instui-component-segmented-control-item-padding-horizontal-md
+    );
+    --pantoken-segmented-gap: var(--instui-component-segmented-control-item-gap-md);
+    --pantoken-segmented-selected-shadow:
+      0 2px 4px 2px var(--instui-color-drop-shadow-shadow-color2),
+      0 1px 2px 0 var(--instui-color-drop-shadow-shadow-color1);
+    --pantoken-segmented-overflow-shadow:
+      0 var(--instui-drop-shadow-y-elevation3-dropshadow2)
+        var(--instui-drop-shadow-blur-elevation3-dropshadow2)
+        var(--instui-drop-shadow-spread-elevation3-dropshadow2)
+        var(--instui-color-drop-shadow-shadow-color1),
+      0 var(--instui-drop-shadow-y-elevation3-dropshadow1)
+        var(--instui-drop-shadow-blur-elevation3-dropshadow1)
+        var(--instui-drop-shadow-spread-elevation3-dropshadow1)
+        var(--instui-color-drop-shadow-shadow-color2);
+    margin: 0;
+    border: 0;
+    min-inline-size: 0;
+    max-inline-size: 100%;
+    padding: 0;
+    font-family: var(--instui-component-segmented-control-font-family);
+    font-weight: var(--instui-component-segmented-control-font-weight);
+    font-size: var(--pantoken-segmented-font-size);
+    line-height: var(--instui-component-segmented-control-line-height);
+  }
+
+  & > .viewport {
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: var(--instui-component-segmented-control-track-gap);
+    box-sizing: border-box;
+    min-inline-size: 0;
+    max-inline-size: 100%;
+    margin: 0;
+    padding-block: var(--instui-component-segmented-control-track-padding);
+    padding-inline-start: calc(
+      var(--instui-component-segmented-control-track-padding) +
+        var(--pantoken-segmented-start-reserve, 0px)
+    );
+    padding-inline-end: calc(
+      var(--instui-component-segmented-control-track-padding) +
+        var(--pantoken-segmented-end-reserve, 0px)
+    );
+    border: 0;
+    border-radius: var(--instui-component-segmented-control-track-border-radius);
+    background: var(--instui-component-segmented-control-track-background-color);
+    overflow: hidden;
+  }
+
+  & > .viewport > .track {
+    display: flex;
+    align-items: center;
+    gap: var(--instui-component-segmented-control-track-gap);
+    min-inline-size: 0;
+    max-inline-size: 100%;
+    flex: 1 1 auto;
+    overflow-x: auto;
+    scrollbar-width: none;
+    padding-block: 0;
+    border-radius: var(--instui-component-segmented-control-track-border-radius);
+  }
+
+  & > .viewport > .track::-webkit-scrollbar {
+    display: none;
+  }
+
+  &.-size-lg {
+    --pantoken-segmented-height: var(--instui-component-segmented-control-height-lg);
+    --pantoken-segmented-font-size: var(--instui-component-segmented-control-font-size-lg);
+    --pantoken-segmented-padding: var(
+      --instui-component-segmented-control-item-padding-horizontal-lg
+    );
+    --pantoken-segmented-gap: var(--instui-component-segmented-control-item-gap-lg);
+  }
+
+  &.-size-md {
+    --pantoken-segmented-height: var(--instui-component-segmented-control-height-md);
+    --pantoken-segmented-font-size: var(--instui-component-segmented-control-font-size-md);
+    --pantoken-segmented-padding: var(
+      --instui-component-segmented-control-item-padding-horizontal-md
+    );
+    --pantoken-segmented-gap: var(--instui-component-segmented-control-item-gap-md);
+  }
+
+  &.-size-sm {
+    --pantoken-segmented-height: var(--instui-component-segmented-control-height-sm);
+    --pantoken-segmented-font-size: var(--instui-component-segmented-control-font-size-sm);
+    --pantoken-segmented-padding: var(
+      --instui-component-segmented-control-item-padding-horizontal-sm
+    );
+    --pantoken-segmented-gap: var(--instui-component-segmented-control-item-gap-sm);
+  }
+
+  &:disabled,
+  &[disabled] {
+    background: var(--instui-component-segmented-control-track-background-disabled-color);
+  }
+
+  & > .viewport > :is(.overflow-start, .overflow-end) {
+    position: absolute;
+    z-index: 2;
+    inline-size: var(--instui-component-base-button-medium-height);
+    block-size: var(--instui-component-base-button-medium-height);
+    border: var(--instui-border-width-sm) solid
+      var(--instui-color-stroke-interactive-action-primary-base);
+    border-radius: var(--instui-component-base-button-border-radius);
+    background: var(--instui-color-background-interactive-action-primary-base);
+    color: var(--instui-color-text-interactive-action-primary-base);
+    box-shadow: var(--pantoken-segmented-overflow-shadow);
+    cursor: pointer;
+    inset-block-start: 50%;
+    transform: translateY(-50%);
+  }
+
+  & > .viewport > .overflow-start {
+    inset-inline-start: var(--instui-component-segmented-control-track-padding);
+  }
+
+  & > .viewport > .overflow-end {
+    inset-inline-end: var(--instui-component-segmented-control-track-padding);
+  }
+
+  & > .viewport > .overflow-start::before,
+  & > .viewport > .overflow-end::before {
+    content: "";
+    display: block;
+    inline-size: 1rem;
+    block-size: 1rem;
+    margin: auto;
+    background: currentColor;
+    -webkit-mask: center / contain no-repeat;
+    mask: center / contain no-repeat;
+  }
+
+  & > .viewport > .overflow-start::before {
+    -webkit-mask-image: var(--instui-icon-chevron-left);
+    mask-image: var(--instui-icon-chevron-left);
+  }
+
+  & > .viewport > .overflow-end::before {
+    -webkit-mask-image: var(--instui-icon-chevron-right);
+    mask-image: var(--instui-icon-chevron-right);
+  }
+
+  &:dir(rtl) > .viewport > :is(.overflow-start, .overflow-end)::before {
+    transform: rotate(180deg);
+  }
+
+  & > .viewport > :is(.overflow-start, .overflow-end)[hidden] {
+    display: none;
+  }
+}
