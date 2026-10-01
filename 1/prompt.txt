@@ -1,0 +1,1986 @@
+these should be using the scope declaration like other components with properties and keyframes sitting outside the scope. and they should be using modern 2026 css like the other components.
+
+---
+
+* in the design spec "segments" is called "track"
+* semantically should the overflow-start button come first?
+* labels/inputs should be able to carry a `-icon-*` class like buttons do and use the glyph painter
+* the icon buttons are too permissive, they should just be `<button class="overflow-start" aria-label="Scroll to previous views"></button>` and the rest of the styles should be applied
+* selected items should have a shadow:
+segmentedControl/selectedItemShadow 0 2 4 2 semantic/color/dropShadow/shadowColor2 (#000000 15%), 0 1 2 0 semantic/color/dropShadow/shadowColor1 (#000000 30%)
+
+---
+
+the overflow scroll buttons should have elevation as well:
+sharedTokens/boxShadow/elevation3 0 2 3 0 semantic/color/dropShadow/shadowColor1 (#23446526) 0 6 10 4 semantic/color/dropShadow/shadowColor2 (#2344651A)
+
+this shadow should already be available via the elevation settings.  Let's also check if the active segment box shadow matches an existing elevation definition.
+
+---
+
+ignoring the design spec that calls for a track, can we flatten this to:
+```
+<fieldset>
+<button class="overflow-start">
+<label><input/>foo</label
+...
+<button class="overflow-end">
+</fieldset>
+```
+?
+
+---
+
+okay, let's do it, but also instead of .segment target `label` we don't need modifier classes when a specific element is required.
+
+---
+
+now breakout the label/inputs into a member definition (see format/components/list) for an example.
+
+---
+
+http://localhost:5173/api/css/segmented-control
+the interactions should already be loaded on the docs page automatically, so here are some issues:
+* clicking an inactive segment marks it as active, but does not inactivate the other segment(s) there should only be 1 active segment at a time
+* the width of the segments is > the width of the fieldset and so the overflow-end button should automatically appear.  the overflow-start button should automatically appear when the user scrolls to the right and some content is overflowing the inline-start of the box.
+use the built-in browser to investigate. the docs render   the `@example` documented here.
+
+---
+
+I ran `vpr generate && vpr docs:dev` and I still don't see the overflow controllers - should the buttons in the example not be carrying the hidden attribute?
+
+---
+
+but why did the toggle start working after the last fix?
+
+---
+
+okay, the buttons are now appearing however there is an issue with the container width:
+when it first renders the -end button is offset by about 100% of its width, when scrolling the track/wrapper has padding for ~100% width of the scrollbutton.
+when it first renders the -start button is not visible which is good, but then after scrolling and it becomes visible it is ~100% of its width inset and the track becomes wider by ~100% width of a button, continue using the browser to investigate, and if we have to add back a wrapper class for simlicity, that's fine.
+
+---
+
+okay, the buttons are now appearing however there is an issue with the container width:
+when it first renders the -end button is offset by about 100% of its width, when scrolling the track/wrapper has padding for ~100% width of the scrollbutton.
+when it first renders the -start button is not visible which is good, but then after scrolling and it becomes visible it is ~100% of its width inset and the track becomes wider by ~100% width of a button, continue using the browser to investigate, and if we have to add back a wrapper class for simlicity, that's fine.  this also means that scrolling to the end doesn't hide the -end button and scroll back to the start doesn't re-hide the -start button.
+
+---
+
+There's still a major issue as exemplified by these sequential screenshots:
+screenshot 1:
+* instui-segmented-control should have the same padding on the x axis as the y axis so that buttons/labels don't bleed to the edge
+* there is still a gap at the start of the track for the -start control even though it's not visible
+screenshot 2:
+* because there's no padding on x the "Settings" button bleeds to the edge
+* the -end button scrolled with the content
+* the -start button did not appear
+screenshot 3:
+* the -end control scrolls again, but then disappears because we're at the end of the content (good)
+* there's still a gap for the -end control
+* because the -start control never appeared we cannot scroll back.
+
+---
+
+still having several similar issues, go back to plan mode and instead of trying to force this implementation let's rethink both the semantic structure and the interaction for simplicity and functionality.  this has never been published so we can start from scratch.
+
+---
+
+Read-only research for a planning reset. Follow .entire/graph-agent.md first search if available; no edits. Investigate this repo's established patterns for radio groups, tabs, toggle groups, pagination/overflow, icon painter semantics, scoped CSS members, and interaction registration. Focus on alternatives for an unpublished segmented-control redesign: (A) semantic fieldset + direct radios + separate scroll viewport/controls, (B) role=radiogroup + buttons with aria-checked, (C) native radio fieldset without JS scrolling, or another repo-consistent option. Identify exact accessibility and layout constraints, what existing behavior can be reused, and likely browser failure modes from current fieldset-as-scroll-container. Return a concise recommendation, relevant absolute paths/symbols, and verification plan. Do not modify files.
+
+---
+
+here's a screenshot of the design spec from figma too if that helps.
+
+---
+
+Start implementation
+
+---
+
+I ran `vpr generate && vpr docs:dev` but it looks like it's the same version as before.
+
+---
+
+[Terminal af1f89d4-7b29-4711-ae1f-2a3802f7fa6d notification: command completed. The terminal has been cleaned up.]
+Terminal output:
+pantoken on release-compatibility ≡  ~17 |  +1 via  26.10.0 
+➜  git add -p docs/package.json
+diff --git a/docs/package.json b/docs/package.json
+index 90efb58af..07d1c78b7 100644
+--- a/docs/package.json
++++ b/docs/package.json
+@@ -38,7 +38,7 @@
+     "docs:changed-pages": "node scripts/changed-pages.ts",
+     "docs:assets": "node scripts/run-assets.ts",
+     "docs:og": "node scripts/gen-og.ts",
+-    "docs:dev": "vp run @pantoken/components#generate && vp run @pantoken/plugin-visual-debug#generate && vp run @pantoken/plugin-logos#generate && vp run @pantoken/plugin-primitives#generate && vp run @pantoken/plugin-custom-icons#generate && vp run @pantoken/plugin-custom-components#generate && vp run docs:assets && vp run docs:api:en && vp run docs:api:css && DOCS_LOCALE=root vitepress dev",
++    "docs:dev": "vp run @pantoken/components#generate && vp run @pantoken/plugin-visual-debug#generate && vp run @pantoken/plugin-logos#generate && vp run @pantoken/plugin-primitives#generate && vp run @pantoken/plugin-custom-icons#generate && vp run @pantoken/plugin-custom-components#generate && vp run @pantoken/interactions#build && vp run docs:assets && vp run docs:api:en && vp run docs:api:css && DOCS_LOCALE=root vitepress dev",
+     "docs:dev:all": "vp run docs:assets && vp run docs:api:locales && vp run docs:check:locales && vitepress dev",
+     "docs:build": "vp run docs:assets && vp run docs:api:en:build && vp run docs:api:css && DOCS_ROOT_LOCALE_ONLY=1 vitepress build",
+     "docs:build:deploy:partial": "vp run docs:assets && vp run docs:api:locales && DOCS_DIST_DIR=.vitepress/partial-dist node scripts/build-locales.ts",
+(1/2) Stage this hunk [y,n,q,a,d,k,K,j,J,g,/,e,p,P,?]? y
+@@ -90,6 +90,7 @@
+     "@pantoken/web-components": "workspace:*",
+     "@resvg/resvg-js": "catalog:",
+     "@types/node": "catalog:",
++    "ajv": "catalog:",
+     "codemirror": "catalog:",
+     "fflate": "catalog:",
+     "lucide": "catalog:",
+(2/2) Stage this hunk [y,n,q,a,d,K,J,g,/,e,p,P,?]? n
+
+---
+
+[Terminal b2fb59cc-f9bc-4af1-af55-bb0f542a2b9c notification: command completed. The terminal has been cleaned up.]
+Terminal output:
+pantoken on release-compatibility ↑1  ~16 via  26.10.0 
+➜  git reset --soft HEAD~1 && git restore --staged docs/package.json && git add -- .changeset/docs-dev-interactions.md && git add -p docs/package.json
+diff --git a/docs/package.json b/docs/package.json
+index 90efb58af..07d1c78b7 100644
+--- a/docs/package.json
++++ b/docs/package.json
+@@ -38,7 +38,7 @@
+     "docs:changed-pages": "node scripts/changed-pages.ts",
+     "docs:assets": "node scripts/run-assets.ts",
+     "docs:og": "node scripts/gen-og.ts",
+-    "docs:dev": "vp run @pantoken/components#generate && vp run @pantoken/plugin-visual-debug#generate && vp run @pantoken/plugin-logos#generate && vp run @pantoken/plugin-primitives#generate && vp run @pantoken/plugin-custom-icons#generate && vp run @pantoken/plugin-custom-components#generate && vp run docs:assets && vp run docs:api:en && vp run docs:api:css && DOCS_LOCALE=root vitepress dev",
++    "docs:dev": "vp run @pantoken/components#generate && vp run @pantoken/plugin-visual-debug#generate && vp run @pantoken/plugin-logos#generate && vp run @pantoken/plugin-primitives#generate && vp run @pantoken/plugin-custom-icons#generate && vp run @pantoken/plugin-custom-components#generate && vp run @pantoken/interactions#build && vp run docs:assets && vp run docs:api:en && vp run docs:api:css && DOCS_LOCALE=root vitepress dev",
+     "docs:dev:all": "vp run docs:assets && vp run docs:api:locales && vp run docs:check:locales && vitepress dev",
+     "docs:build": "vp run docs:assets && vp run docs:api:en:build && vp run docs:api:css && DOCS_ROOT_LOCALE_ONLY=1 vitepress build",
+     "docs:build:deploy:partial": "vp run docs:assets && vp run docs:api:locales && DOCS_DIST_DIR=.vitepress/partial-dist node scripts/build-locales.ts",
+(1/2) Stage this hunk [y,n,q,a,d,k,K,j,J,g,/,e,p,P,?]? y
+@@ -90,6 +90,7 @@
+     "@pantoken/web-components": "workspace:*",
+     "@resvg/resvg-js": "catalog:",
+     "@types/node": "catalog:",
++    "ajv": "catalog:",
+     "codemirror": "catalog:",
+     "fflate": "catalog:",
+     "lucide": "catalog:",
+(2/2) Stage this hunk [y,n,q,a,d,K,J,g,/,e,p,P,?]? n
+
+---
+
+[Terminal 9e855d92-8d08-4d12-a2e4-cdc62ec5dfa9 notification: command completed. The terminal has been cleaned up.]
+Terminal output:
+pantoken on release-compatibility ↑1  ~16 via  26.10.0 
+➜  git reset --soft HEAD~1 && git restore --staged docs/package.json && git add -- .changeset/docs-dev-interactions.md && git add -p docs/package.json
+diff --git a/docs/package.json b/docs/package.json
+index 90efb58af..07d1c78b7 100644
+--- a/docs/package.json
++++ b/docs/package.json
+@@ -38,7 +38,7 @@
+     "docs:changed-pages": "node scripts/changed-pages.ts",
+     "docs:assets": "node scripts/run-assets.ts",
+     "docs:og": "node scripts/gen-og.ts",
+-    "docs:dev": "vp run @pantoken/components#generate && vp run @pantoken/plugin-visual-debug#generate && vp run @pantoken/plugin-logos#generate && vp run @pantoken/plugin-primitives#generate && vp run @pantoken/plugin-custom-icons#generate && vp run @pantoken/plugin-custom-components#generate && vp run docs:assets && vp run docs:api:en && vp run docs:api:css && DOCS_LOCALE=root vitepress dev",
++    "docs:dev": "vp run @pantoken/components#generate && vp run @pantoken/plugin-visual-debug#generate && vp run @pantoken/plugin-logos#generate && vp run @pantoken/plugin-primitives#generate && vp run @pantoken/plugin-custom-icons#generate && vp run @pantoken/plugin-custom-components#generate && vp run @pantoken/interactions#build && vp run docs:assets && vp run docs:api:en && vp run docs:api:css && DOCS_LOCALE=root vitepress dev",
+     "docs:dev:all": "vp run docs:assets && vp run docs:api:locales && vp run docs:check:locales && vitepress dev",
+     "docs:build": "vp run docs:assets && vp run docs:api:en:build && vp run docs:api:css && DOCS_ROOT_LOCALE_ONLY=1 vitepress build",
+     "docs:build:deploy:partial": "vp run docs:assets && vp run docs:api:locales && DOCS_DIST_DIR=.vitepress/partial-dist node scripts/build-locales.ts",
+(1/2) Stage this hunk [y,n,q,a,d,k,K,j,J,g,/,e,p,P,?]? y
+@@ -90,6 +90,7 @@
+     "@pantoken/web-components": "workspace:*",
+     "@resvg/resvg-js": "catalog:",
+     "@types/node": "catalog:",
++    "ajv": "catalog:",
+     "codemirror": "catalog:",
+     "fflate": "catalog:",
+     "lucide": "catalog:",
+(2/2) Stage this hunk [y,n,q,a,d,K,J,g,/,e,p,P,?]? n
+
+---
+
+open the browser to http://localhost:5173/api/css/segmented-control and investigate, there are still issues afer another `vpr generate && vpr docs:dev`
+
+---
+
+vscode has a built-in browser, you don't have to use chrome devtools if it's not working for validation.
+
+---
+
+is it possible that `vpr docs:dev` is cacheing some dist?
+
+---
+
+actually open the vs code browser and click through that page, it's still not functioning/displaying correctly.
+
+---
+
+continue
+
+---
+
+use this browser window and click through and evaluate to find the issues.
+
+---
+
+I stopped my server, you do steps 1-4
+
+---
+
+```
+[plugin:vite:css] [postcss] /Users/dwahl/Scripts/pantoken/plugins/pantoken/custom-components/generated/custom-components.css:1311:1: Unclosed block
+```
+
+```
+/Users/dwahl/Scripts/pantoken/plugins/pantoken/custom-components/generated/custom-components.css:1311:0
+```
+
+```
+1309 |   * ```
+1310 |   */
+1311 |  @scope (.instui-segmented-control) {
+     |  ^
+1312 |    & {
+1313 |      --pantoken-segmented-height: var(--instui-component-segmented-control-height-md);
+```
+
+---
+
+[Terminal c850368c-d92f-4e06-b256-7276ff496956 notification: command completed with exit code 1. The terminal has been cleaned up.]
+Terminal output:
+[pantoken] rebrand: "--instui-component-top-nav-bar-layout-small-viewport-tray-fix-top-position" patched to "var(--instui-component-top-nav-bar-layout-small-viewport-height)" — known upstream issue
+[pantoken] rebrand: "--instui-component-text-content-quote-font-weight" patched to "500" — known upstream issue
+[pantoken] rebrand: added supplemental token "--instui-component-text-content-quote-font-style": "italic" (split from "--instui-component-text-content-quote-font-weight")
+[pantoken] rebrand: "--instui-component-skeleton-loader-bezier" maps to no known CSS property (unmodeled)
+[pantoken] rebrand: "--instui-component-skeleton-loader-motion" maps to no known CSS property (unmodeled)
+✓ rebrand: 4916 tokens
+[pantoken] canvas: "--instui-component-top-nav-bar-layout-small-viewport-tray-fix-top-position" patched to "var(--instui-component-top-nav-bar-layout-small-viewport-height)" — known upstream issue
+[pantoken] canvas: "--instui-component-text-content-quote-font-weight" patched to "500" — known upstream issue
+[pantoken] canvas: added supplemental token "--instui-component-text-content-quote-font-style": "italic" (split from "--instui-component-text-content-quote-font-weight")
+[pantoken] canvas: "--instui-component-skeleton-loader-bezier" maps to no known CSS property (unmodeled)
+[pantoken] canvas: "--instui-component-skeleton-loader-motion" maps to no known CSS property (unmodeled)
+✓ canvas: 4916 tokens
+[pantoken] canvasHighContrast: "--instui-component-top-nav-bar-layout-small-viewport-tray-fix-top-position" patched to "var(--instui-component-top-nav-bar-layout-small-viewport-height)" — known upstream issue
+[pantoken] canvasHighContrast: "--instui-component-text-content-quote-font-weight" patched to "500" — known upstream issue
+[pantoken] canvasHighContrast: added supplemental token "--instui-component-text-content-quote-font-style": "italic" (split from "--instui-component-text-content-quote-font-weight")
+[pantoken] canvasHighContrast: "--instui-component-skeleton-loader-bezier" maps to no known CSS property (unmodeled)
+[pantoken] canvasHighContrast: "--instui-component-skeleton-loader-motion" maps to no known CSS property (unmodeled)
+✓ canvasHighContrast: 4916 tokens
+✓ raw.json + meta.json (design-tokens v2.1.0@c7f0dee, ui-icons 11.7.7, lucide 1.48.0)
+
+~/formats/tokens$ vp pack ⊘ cache disabled
+ℹ entry: src/index.ts, src/raw.ts, src/meta.ts
+ℹ target: node22.18.0
+ℹ tsconfig: tsconfig.json
+ℹ Build start
+ℹ Cleaning 7 files
+ℹ dist/index.mjs          6.77 MB
+ℹ dist/raw.mjs            1.98 MB
+ℹ dist/meta.mjs           0.10 kB │ gzip: 0.10 kB
+ℹ dist/meta-Erw7QL8T.mjs  1.06 kB │ gzip: 0.55 kB
+ℹ dist/index.d.mts        1.75 kB │ gzip: 0.50 kB
+ℹ dist/meta.d.mts         1.23 kB │ gzip: 0.49 kB
+ℹ dist/raw.d.mts          0.47 kB │ gzip: 0.30 kB
+ℹ 7 files, total: 8.75 MB
+✔ Build complete in 97ms
+
+~/formats/components$ node scripts/component-styles.ts ⊘ cache disabled
+✓ components: wrote src/generated/component-styles.ts (156 stylesheets)
+
+~/formats/components$ node scripts/generate.ts ⊘ cache disabled
+✓ components: wrote base.css + components.css + component-icons.css (13 icons) + fonts.css + prose.css + select.css + icons.css + utilities.css
+
+~/plugins/pantoken/visual-debug$ node scripts/generate.ts ⊘ cache disabled
+✓ visual-debug: wrote visual-debug.css
+
+~/plugins/pantoken/logos$ node scripts/generate.ts ⊘ cache disabled
+✓ logos: 97 logos across 7 products (+ 97 per-logo and 7 per-product sheets)
+
+~/plugins/pantoken/primitives$ node scripts/generate.ts ⊘ cache disabled
+✓ primitives: wrote primitives.css (820 lines)
+
+~/plugins/pantoken/custom-icons$ node scripts/generate.ts ⊘ cache disabled
+✓ custom-icons: wrote 12 per-icon CSS files + custom-icons.css barrel
+
+~/plugins/pantoken/custom-components$ node scripts/component-styles.ts ⊘ cache disabled
+✓ custom-components: wrote /custom-components/src/generated/component-styles.ts (9 record(s))
+
+~/plugins/pantoken/custom-components$ node scripts/generate.ts ⊘ cache disabled
+✓ custom-components: wrote custom-components.css + _records.css
+
+~/formats/interactions$ node scripts/generate-components.ts ⊘ cache disabled
+✓ generated icon.ts
+✓ generated button.ts
+↷ skipped alert.ts (hand-authored)
+✓ generated badge.ts
+✓ generated pill.ts
+✓ generated tag.ts
+↷ skipped avatar.ts (hand-authored)
+✓ generated spinner.ts
+✓ generated progress.ts
+✓ generated metric.ts
+✓ generated rating.ts
+↷ skipped progress-circle.ts (hand-authored)
+✓ generated icon-button.ts
+✓ generated toggle-button.ts
+↷ skipped truncate.ts (hand-authored)
+✓ generated img.ts
+✓ generated side-nav-bar.ts
+✓ generated tree-browser.ts
+✓ generated calendar.ts
+↷ skipped tooltip.ts (hand-authored)
+↷ skipped modal.ts (hand-authored)
+✓ generated context-view.ts
+✓ generated popover.ts
+✓ generated tray.ts
+↷ skipped in-place-edit.ts (hand-authored)
+✓ generated drilldown.ts
+✓ generated pages.ts
+✓ generated drawer-layout.ts
+✓ generated date-input.ts
+✓ generated date-time-input.ts
+↷ skipped tabs.ts (hand-authored)
+↷ skipped skeleton-loader.ts (hand-authored)
+↷ skipped segmented-control.ts (hand-authored)
+
+✓ Generated 33 per-component interaction files
+
+~/formats/interactions$ node scripts/generate-capabilities.ts ⊘ cache disabled
+✓ interactions: wrote component-capabilities.json (10 both, 43 css-only, 7 js-only)
+
+~/formats/interactions$ vp fmt --write component-capabilities.json ⊘ cache disabled
+Finished in 198ms on 1 files using 10 threads.
+
+~/formats/interactions$ vp pack ⊘ cache disabled
+ℹ entry: src/index.ts, src/index.ts, src/components/close-button.ts, src/components/icon.ts, src/components/button.ts, src/components/alert.ts, src/components/badge.ts, src/components/pill.ts, src/components/tag.ts, src/components/avatar.ts, src/components/spinner.ts, src/components/progress.ts, src/components/metric.ts, src/components/rating.ts, src/components/progress-circle.ts, src/components/icon-button.ts, src/components/toggle-button.ts, src/components/truncate.ts, src/components/img.ts, src/components/side-nav-bar.ts, src/components/tree-browser.ts, src/components/calendar.ts, src/components/tooltip.ts, src/components/modal.ts, src/components/context-view.ts, src/components/popover.ts, src/components/tray.ts, src/components/in-place-edit.ts, src/components/drilldown.ts, src/components/pages.ts, src/components/drawer-layout.ts, src/components/date-input.ts, src/components/date-time-input.ts, src/components/tabs.ts, src/components/skeleton-loader.ts, src/components/segmented-control.ts
+ℹ target: node22.18.0
+ℹ tsconfig: tsconfig.json
+ℹ Build start
+ℹ Cleaning 116 files
+ℹ dist/index.mjs                        2.90 kB │ gzip: 1.19 kB
+ℹ dist/interactions.mjs                 1.19 kB │ gzip: 0.48 kB
+ℹ dist/avatar.mjs                       1.10 kB │ gzip: 0.64 kB
+ℹ dist/skeleton-loader.mjs              0.73 kB │ gzip: 0.36 kB
+ℹ dist/truncate.mjs                     0.69 kB │ gzip: 0.42 kB
+ℹ dist/in-place-edit.mjs                0.67 kB │ gzip: 0.41 kB
+ℹ dist/tooltip.mjs                      0.67 kB │ gzip: 0.36 kB
+ℹ dist/modal.mjs                        0.59 kB │ gzip: 0.35 kB
+ℹ dist/alert.mjs                        0.52 kB │ gzip: 0.34 kB
+ℹ dist/progress-circle.mjs              0.52 kB │ gzip: 0.31 kB
+ℹ dist/tabs.mjs                         0.46 kB │ gzip: 0.30 kB
+ℹ dist/segmented-control.mjs            0.45 kB │ gzip: 0.27 kB
+ℹ dist/date-time-input.mjs              0.45 kB │ gzip: 0.30 kB
+ℹ dist/drawer-layout.mjs                0.44 kB │ gzip: 0.29 kB
+ℹ dist/toggle-button.mjs                0.44 kB │ gzip: 0.29 kB
+ℹ dist/close-button.mjs                 0.43 kB │ gzip: 0.27 kB
+ℹ dist/icon-button.mjs                  0.43 kB │ gzip: 0.29 kB
+ℹ dist/date-input.mjs                   0.42 kB │ gzip: 0.29 kB
+ℹ dist/drilldown.mjs                    0.42 kB │ gzip: 0.29 kB
+ℹ dist/calendar.mjs                     0.42 kB │ gzip: 0.29 kB
+ℹ dist/button.mjs                       0.41 kB │ gzip: 0.28 kB
+ℹ dist/pages.mjs                        0.40 kB │ gzip: 0.28 kB
+ℹ dist/context-view.mjs                 0.39 kB │ gzip: 0.27 kB
+ℹ dist/tree-browser.mjs                 0.39 kB │ gzip: 0.27 kB
+ℹ dist/side-nav-bar.mjs                 0.39 kB │ gzip: 0.27 kB
+ℹ dist/progress.mjs                     0.37 kB │ gzip: 0.27 kB
+ℹ dist/popover.mjs                      0.37 kB │ gzip: 0.26 kB
+ℹ dist/spinner.mjs                      0.37 kB │ gzip: 0.26 kB
+ℹ dist/metric.mjs                       0.36 kB │ gzip: 0.26 kB
+ℹ dist/rating.mjs                       0.36 kB │ gzip: 0.26 kB
+ℹ dist/badge.mjs                        0.36 kB │ gzip: 0.26 kB
+ℹ dist/icon.mjs                         0.35 kB │ gzip: 0.26 kB
+ℹ dist/pill.mjs                         0.35 kB │ gzip: 0.26 kB
+ℹ dist/tray.mjs                         0.35 kB │ gzip: 0.26 kB
+ℹ dist/img.mjs                          0.35 kB │ gzip: 0.26 kB
+ℹ dist/tag.mjs                          0.35 kB │ gzip: 0.26 kB
+ℹ dist/segmented-control-DyQCnH1w.mjs   6.77 kB │ gzip: 2.01 kB
+ℹ dist/shared-CiHt9prt.mjs              5.00 kB │ gzip: 2.05 kB
+ℹ dist/remove-qKkQbgAk.mjs              2.46 kB │ gzip: 1.05 kB
+ℹ dist/truncate-lxz4kerF.mjs            2.04 kB │ gzip: 0.79 kB
+ℹ dist/tabs-C-jmB5Th.mjs                1.94 kB │ gzip: 0.76 kB
+ℹ dist/skeleton-loader-o0FvPmeB.mjs     1.93 kB │ gzip: 0.73 kB
+ℹ dist/tooltip-CB1dOtG0.mjs             1.44 kB │ gzip: 0.53 kB
+ℹ dist/close-button-s_-10oaC.mjs        1.36 kB │ gzip: 0.69 kB
+ℹ dist/in-place-edit-DOMfEjUW.mjs       1.35 kB │ gzip: 0.69 kB
+ℹ dist/progress-circle-BuatMVo0.mjs     1.20 kB │ gzip: 0.58 kB
+ℹ dist/modal-ZQezxuBs.mjs               1.18 kB │ gzip: 0.58 kB
+ℹ dist/interactions.d.mts              10.42 kB │ gzip: 3.50 kB
+ℹ dist/alert.d.mts                      0.01 kB │ gzip: 0.03 kB
+ℹ dist/avatar.d.mts                     0.01 kB │ gzip: 0.03 kB
+ℹ dist/badge.d.mts                      0.01 kB │ gzip: 0.03 kB
+ℹ dist/button.d.mts                     0.01 kB │ gzip: 0.03 kB
+ℹ dist/calendar.d.mts                   0.01 kB │ gzip: 0.03 kB
+ℹ dist/close-button.d.mts               0.01 kB │ gzip: 0.03 kB
+ℹ dist/context-view.d.mts               0.01 kB │ gzip: 0.03 kB
+ℹ dist/date-input.d.mts                 0.01 kB │ gzip: 0.03 kB
+ℹ dist/date-time-input.d.mts            0.01 kB │ gzip: 0.03 kB
+ℹ dist/drawer-layout.d.mts              0.01 kB │ gzip: 0.03 kB
+ℹ dist/drilldown.d.mts                  0.01 kB │ gzip: 0.03 kB
+ℹ dist/icon-button.d.mts                0.01 kB │ gzip: 0.03 kB
+ℹ dist/icon.d.mts                       0.01 kB │ gzip: 0.03 kB
+ℹ dist/img.d.mts                        0.01 kB │ gzip: 0.03 kB
+ℹ dist/in-place-edit.d.mts              0.01 kB │ gzip: 0.03 kB
+ℹ dist/metric.d.mts                     0.01 kB │ gzip: 0.03 kB
+ℹ dist/modal.d.mts                      0.01 kB │ gzip: 0.03 kB
+ℹ dist/pages.d.mts                      0.01 kB │ gzip: 0.03 kB
+ℹ dist/pill.d.mts                       0.01 kB │ gzip: 0.03 kB
+ℹ dist/popover.d.mts                    0.01 kB │ gzip: 0.03 kB
+ℹ dist/progress-circle.d.mts            0.01 kB │ gzip: 0.03 kB
+ℹ dist/progress.d.mts                   0.01 kB │ gzip: 0.03 kB
+ℹ dist/rating.d.mts                     0.01 kB │ gzip: 0.03 kB
+ℹ dist/segmented-control.d.mts          0.01 kB │ gzip: 0.03 kB
+ℹ dist/side-nav-bar.d.mts               0.01 kB │ gzip: 0.03 kB
+ℹ dist/skeleton-loader.d.mts            0.01 kB │ gzip: 0.03 kB
+ℹ dist/spinner.d.mts                    0.01 kB │ gzip: 0.03 kB
+ℹ dist/tabs.d.mts                       0.01 kB │ gzip: 0.03 kB
+ℹ dist/tag.d.mts                        0.01 kB │ gzip: 0.03 kB
+ℹ dist/toggle-button.d.mts              0.01 kB │ gzip: 0.03 kB
+ℹ dist/tooltip.d.mts                    0.01 kB │ gzip: 0.03 kB
+ℹ dist/tray.d.mts                       0.01 kB │ gzip: 0.03 kB
+ℹ dist/tree-browser.d.mts               0.01 kB │ gzip: 0.03 kB
+ℹ dist/truncate.d.mts                   0.01 kB │ gzip: 0.03 kB
+ℹ 82 files, total: 57.26 kB
+✔ Build complete in 83ms
+
+~/formats/interactions$ node scripts/build-iife.ts ⊘ cache disabled
+✓ interactions: wrote dist/interactions.iife.js
+✓ interactions: wrote 33 per-component .iife.js bundles
+
+~/docs$ node scripts/run-assets.ts ⊘ cache disabled
+📦 Generating docs assets: 18 tasks, concurrency 10
+✓ staged create-pantoken-app skill to public/create-pantoken-app.md
+✓ create-app-skill in 0.2s
+staged published manifest schemas to public/
+staged VS Code custom-data files to public/
+✓ vscode-custom-data in 0.2s
+✓ published-schemas in 0.2s
+✓ docs: wrote cdn-plugin-manifest.json (3 custom components, 4 other plugins, 12 custom icons, 7 logo products)
+staged i18n schemas to public/schemas/
+staged tinymce-save export schema to public/schemas/
+✓ cdn-plugin-manifest in 0.4s
+✓ tinymce-schema in 0.2s
+✓ i18n-schemas in 0.2s
+✓ lucide-lab: wrote 357 per-icon CSS files + lucide-lab.css barrel
+✓ lucide-lab in 0.6s
+staged API catalog with 85 npm package endpoints
+✓ docs: wrote cdn-icon-manifest-instui.json (1940 icons)
+staged target compatibility registry and schema to docs/public/
+✓ target-compatibility in 0.2s
+✓ api-catalog in 0.5s
+✓ docs: wrote cdn-icon-manifest-lucide-lab.json (357 icons)
+✓ docs: wrote cdn-icon-manifest-simple.json (3461 icons)
+✓ docs: wrote cdn-manifest.json (72 components, 11 use icons)
+✓ cdn-manifest in 1.0s
+✓ cdn-icon-manifest in 1.0s
+✓ site-themes: wrote site-themes.css (3 themes, 1989kb)
+✓ registry: wrote /Users/dwahl/Scripts/pantoken/docs/public/r/registry.json (82 items)
+✓ registry: wrote 82 item files to /Users/dwahl/Scripts/pantoken/docs/public/r
+✓ docs: wrote icon-manifest.json (5867 entries)
+✓ docs: refreshed public/component-capabilities.json from @pantoken/interactions
+✓ site-themes in 1.2s
+✓ icon-manifest in 0.2s
+✓ registry in 0.7s
+✓ staged 24 localized nav wordmarks → docs/public/
+✓ locale-logos in 1.5s
+✓ wrote social card → docs/public/og.png (1200×630, 56.2 KB)
+✓ wrote social card → docs/public/og-ar.png (1200×630, 46.9 KB)
+✓ wrote social card → docs/public/og-hy.png (1200×630, 60.3 KB)
+✓ wrote social card → docs/public/og-ca.png (1200×630, 57.4 KB)
+✓ wrote social card → docs/public/og-da.png (1200×630, 57.2 KB)
+✓ wrote social card → docs/public/og-nl.png (1200×630, 56.4 KB)
+✓ wrote social card → docs/public/og-en-AU.png (1200×630, 56.2 KB)
+✓ wrote social card → docs/public/og-en-CA.png (1200×630, 56.2 KB)
+✓ wrote social card → docs/public/og-en-GB.png (1200×630, 56.2 KB)
+✓ wrote social card → docs/public/og-fi.png (1200×630, 57.8 KB)
+✓ wrote social card → docs/public/og-fr.png (1200×630, 59.5 KB)
+✓ wrote social card → docs/public/og-fr-CA.png (1200×630, 60.4 KB)
+✓ wrote social card → docs/public/og-ga.png (1200×630, 58.3 KB)
+✓ wrote social card → docs/public/og-de.png (1200×630, 58.9 KB)
+✓ wrote social card → docs/public/og-el.png (1200×630, 71.3 KB)
+✓ wrote social card → docs/public/og-ht.png (1200×630, 53.5 KB)
+✓ wrote social card → docs/public/og-he.png (1200×630, 43.0 KB)
+✓ wrote social card → docs/public/og-hi.png (1200×630, 46.7 KB)
+✓ wrote social card → docs/public/og-hu.png (1200×630, 62.8 KB)
+✓ wrote social card → docs/public/og-is.png (1200×630, 57.3 KB)
+✓ wrote social card → docs/public/og-id.png (1200×630, 61.9 KB)
+✓ wrote social card → docs/public/og-it.png (1200×630, 59.0 KB)
+✓ wrote social card → docs/public/og-ja.png (1200×630, 62.1 KB)
+✓ wrote social card → docs/public/og-ko.png (1200×630, 48.9 KB)
+✓ wrote social card → docs/public/og-mi.png (1200×630, 66.4 KB)
+✓ wrote social card → docs/public/og-ms.png (1200×630, 60.3 KB)
+✓ wrote social card → docs/public/og-se.png (1200×630, 63.2 KB)
+✓ wrote social card → docs/public/og-nb.png (1200×630, 53.4 KB)
+✓ wrote social card → docs/public/og-nn.png (1200×630, 56.4 KB)
+✓ wrote social card → docs/public/og-fa.png (1200×630, 49.2 KB)
+✓ wrote social card → docs/public/og-pl.png (1200×630, 61.5 KB)
+✓ wrote social card → docs/public/og-pt.png (1200×630, 62.2 KB)
+✓ wrote social card → docs/public/og-pt-BR.png (1200×630, 60.7 KB)
+✓ wrote social card → docs/public/og-ru.png (1200×630, 73.2 KB)
+✓ wrote social card → docs/public/og-zh-Hans.png (1200×630, 55.6 KB)
+✓ wrote social card → docs/public/og-sl.png (1200×630, 58.9 KB)
+✓ wrote social card → docs/public/og-es.png (1200×630, 62.7 KB)
+✓ wrote social card → docs/public/og-sv.png (1200×630, 57.0 KB)
+✓ wrote social card → docs/public/og-th.png (1200×630, 57.0 KB)
+✓ wrote social card → docs/public/og-zh-Hant.png (1200×630, 59.9 KB)
+✓ wrote social card → docs/public/og-tr.png (1200×630, 59.2 KB)
+✓ wrote social card → docs/public/og-uk.png (1200×630, 68.7 KB)
+✓ wrote social card → docs/public/og-vi.png (1200×630, 68.2 KB)
+✓ wrote social card → docs/public/og-cy.png (1200×630, 54.4 KB)
+✓ og in 4.4s
+✓ staged demo runner, the shared token + plugin sheets, and 2906 demo(s) to public/
+✓ demos in 4.7s
+[plugin builtin:vite-reporter] 
+(!) Some chunks are larger than 500 kB after minification. Consider:
+- Using dynamic import() to code-split the application
+- Use build.rolldownOptions.output.codeSplitting to improve chunking: https://rolldown.rs/reference/OutputOptions.codeSplitting
+- Adjust chunk size limit for this warning via build.chunkSizeWarningLimit.
+[PLUGIN_TIMINGS] Plugin hooks ran for 3.6s of this 7.5s build (48%).
+The slowest hooks, timed inside each callback (the wait before a callback starts is excluded, the time it awaits is included):
+  - vite:build-import-analysis generateBundle (16%, 1.2s, 1 call)
+Additional hook time came from the hooks below and from hooks under 1s.
+2 hooks are listed without a time. Their calls overlapped, so the time inside one call includes work from other calls. To find their cost, profile the build with `node --cpu-prof`:
+  - vite:asset load (17 calls)
+  - vite:css transform (5933 calls)
+See https://rolldown.rs/reference/InputOptions.checks#plugintimings for more details.
+
+✓ canvas-rce in 15.9s
+✨ Docs assets ready in 16.4s
+
+~/docs$ node scripts/build-api-en.ts ⊘ cache disabled
+[info] Loaded plugin typedoc-plugin-markdown
+[info] Loaded plugin typedoc-vitepress-theme
+[info] Loaded plugin /Users/dwahl/Scripts/pantoken/plugins/typedoc/demo/dist/index.mjs
+[info] markdown generated at ./api
+✓ API badges: styled 829 markdown file(s)
+✓ API overview: wrote docs/api/index.md
+✓ API compatibility: updated 39 package pages
+
+~/docs$ node scripts/build-css-api.ts ⊘ cache disabled
+/Users/dwahl/Scripts/pantoken/node_modules/.pnpm/postcss@8.5.28/node_modules/postcss/lib/input.js:135
+      result = new CssSyntaxError(
+               ^
+
+CssSyntaxError: <css input>:1311:1: Unclosed block
+    at Input.error (/Users/dwahl/Scripts/pantoken/node_modules/.pnpm/postcss@8.5.28/node_modules/postcss/lib/input.js:135:16)
+    at Parser.unclosedBlock (/Users/dwahl/Scripts/pantoken/node_modules/.pnpm/postcss@8.5.28/node_modules/postcss/lib/parser.js:585:22)
+    at Parser.endFile (/Users/dwahl/Scripts/pantoken/node_modules/.pnpm/postcss@8.5.28/node_modules/postcss/lib/parser.js:342:35)
+    at Parser.parse (/Users/dwahl/Scripts/pantoken/node_modules/.pnpm/postcss@8.5.28/node_modules/postcss/lib/parser.js:486:10)
+    at parse (/Users/dwahl/Scripts/pantoken/node_modules/.pnpm/postcss@8.5.28/node_modules/postcss/lib/parse.js:11:12)
+    at parseCssDocs (file:///Users/dwahl/Scripts/pantoken/node_modules/.pnpm/@cssdoc+core@0.16.0/node_modules/@cssdoc/core/dist/index.mjs:833:15)
+    at indexPluginImports (file:///Users/dwahl/Scripts/pantoken/docs/scripts/build-css-api.ts:422:21)
+    at makeImportSnippet (file:///Users/dwahl/Scripts/pantoken/docs/scripts/build-css-api.ts:466:30)
+    at build (file:///Users/dwahl/Scripts/pantoken/docs/scripts/build-css-api.ts:669:25)
+    at file:///Users/dwahl/Scripts/pantoken/docs/scripts/build-css-api.ts:716:3 {
+  reason: 'Unclosed block',
+  source: '/**\n' +
+    ' * @declaration breakpoints\n' +
+    ' * @summary Extra-small viewport width for phone-sized previews.\n' +
+    ' * @cssproperty --instui-breakpoints-xs — Extra-small viewport width (20em / 320px).\n' +
+    ' * @usage @import "@pantoken/plugin-custom-components/custom-components.css";\n' +
+    ' */\n' +
+    ':root {\n' +
+    '  --instui-breakpoints-xs: 20em;\n' +
+    '}\n' +
+    '/**\n' +
+    ' * @component card\n' +
+    ' * @summary A surface container that accepts arbitrary content.\n' +
+    ' * @remarks\n' +
+    ' *   **Variant** controls how direct children are styled: `content` (default) leaves them\n' +
+    ' *   unstyled; `container` stacks them as bordered, padded sections. Padding scales with\n' +
+    ' *   viewport width and is the same across both variants.\n' +
+    ' *   **Size** is fully responsive — padding and border-radius step up automatically at 320px\n' +
+    ' *   (20rem) and 640px (40rem) via standard `min-width` media queries; no size class is needed.\n' +
+    ' *   Pair with `@pantoken/components` for heading, button, and other inline components.\n' +
+    ' * @sealed\n' +
+    ' * @annotations\n' +
+    ' * 1. `overflow: hidden` clips child content at the rounded corner and is required for @scope containment.\n' +
+    ' * 2. `flex-shrink: 0` prevents the card collapsing when placed in a flex row without an explicit width.\n' +
+    ' * 3. Sizing is purely responsive — `@media (min-width: 20rem)` applies md properties, `@media (min-width: 40rem)` applies lg; sm is the mobile-first default.\n' +
+    ' * 4. `-variant-container` targets direct children only so deeply nested elements are not affected.\n' +
+    ' * @modifier -variant-content — Standard content card; children are unstyled. Default when no variant is set.\n' +
+    ' * @modifier -variant-container — Container card; direct children become bordered, padded sections.\n' +
+    ' * @structure\n' +
+    ' * .instui-card {\n' +
+    ' *   slot {}\n' +
+    ' * }\n' +
+    ' * @a11y Use `<article>` as the card element when the card is a self-contained unit of content;\n' +
+    ' *   use `<section>` when grouped within a larger landmark. In `-variant-container`, prefer\n' +
+    ' *   `<section>` elements as direct children so each bordered region carries semantic meaning.\n' +
+    ' * @usage @import "@pantoken/plugin-custom-components/custom-components.css";\n' +
+    ' * @compat `@scope` is Baseline 2023 Newly Available; the card degrades to an unscoped flat stylesheet\n' +
+    ' *   in older browsers with no loss of visible styling.\n' +
+    ' * @related heading — Place directly in the card or inside a container section.\n' +
+    ' * @related button — Place directly in the card or inside a container section.\n' +
+    ' * @related img — Place directly in the card as a media region.\n' +
+    ' * @related badge — Place directly in the card as a status indicator.\n' +
+    ' * @see https://drafts.csswg.org/css-cascade-6/#scoping\n' +
+    ' * @example\n' +
+    ' * Content card -nocard\n' +
+    ' * ```html\n' +
+    ' * <article class="instui-card">\n' +
+    ' *   <h2 class="instui-heading -h3">Card title</h2>\n' +
+    ' *   <p>Content here.</p>\n' +
+    ' *   <button class="instui-button">Action</button>\n' +
+    ' * </article>\n' +
+    ' * ```\n' +
+    ' * Container card -nocard\n' +
+    ' * ```html\n' +
+    ' * <article class="instui-card -variant-container">\n' +
+    ' *   <section>First section</section>\n' +
+    ' *   <section>Second section</section>\n' +
+    ' * </article>\n' +
+    ' * ```\n' +
+    ' */\n' +
+    '.instui-card {\n' +
+    '  background: var(--instui-component-card-background-color);\n' +
+    '  border-radius: var(--instui-component-card-border-radius-base-sm);\n' +
+    '  box-shadow: var(--instui-elevation-card);\n' +
+    '  padding: var(--instui-component-card-padding-base-sm);\n' +
+    '  overflow: hidden;\n' +
+    '  /* @ref 1 */\n' +
+    '  flex-shrink: 0;\n' +
+    '  /* @ref 2 */\n' +
+    '}\n' +
+    '\n' +
+    '/* @ref 3 */\n' +
+    '@media (min-width: 20rem) {\n' +
+    '  .instui-card {\n' +
+    '    padding: var(--instui-component-card-padding-base-md);\n' +
+    '    border-radius: var(--instui-component-card-border-radius-base-md);\n' +
+    '  }\n' +
+    '}\n' +
+    '\n' +
+    '@media (min-width: 40rem) {\n' +
+    '  .instui-card {\n' +
+    '    padding: var(--instui-component-card-padding-base-lg);\n' +
+    '    border-radius: var(--instui-component-card-border-radius-base-lg);\n' +
+    '  }\n' +
+    '}\n' +
+    '\n' +
+    '/* content variant is the default; selector exists so cssdoc can verify the modifier */\n' +
+    '.instui-card.-variant-content {\n' +
+    '  --pantoken-card-type: content;\n' +
+    '}\n' +
+    '\n' +
+    '/* container variant: card is a flex column; gap between direct children */\n' +
+    '.instui-card.-variant-container {\n' +
+    '  display: flex;\n' +
+    '  flex-direction: column;\n' +
+    '  gap: var(--instui-component-shared-tokens-spacing-gap-cards-nested-containers-sm);\n' +
+    '}\n' +
+    '\n' +
+    '@media (min-width: 20rem) {\n' +
+    '  .instui-card.-variant-container {\n' +
+    '    gap: var(--instui-component-shared-tokens-spacing-gap-cards-nested-containers-md);\n' +
+    '  }\n' +
+    '}\n' +
+    '\n' +
+    '@media (min-width: 40rem) {\n' +
+    '  .instui-card.-variant-container {\n' +
+    '    gap: var(--instui-component-shared-tokens-spacing-gap-cards-nested-containers-lg);\n' +
+    '  }\n' +
+    '}\n' +
+    '\n' +
+    '@scope (.instui-card) {\n' +
+    '  :scope {\n' +
+    '    /* @ref 4 */\n' +
+    '    &.-variant-container > * {\n' +
+    '      padding: var(--instui-component-card-padding-nested-sm);\n' +
+    '      border: var(--instui-component-shared-tokens-stroke-width-sm) solid\n' +
+    '        var(--instui-component-card-nested-border-color);\n' +
+    '      border-radius: var(--instui-component-card-border-radius-nested-sm);\n' +
+    '    }\n' +
+    '\n' +
+    '    @media (min-width: 20rem) {\n' +
+    '      &.-variant-container > * {\n' +
+    '        padding: var(--instui-component-card-padding-nested-md);\n' +
+    '        border-radius: var(--instui-component-card-border-radius-nested-md);\n' +
+    '      }\n' +
+    '    }\n' +
+    '\n' +
+    '    @media (min-width: 40rem) {\n' +
+    '      &.-variant-container > * {\n' +
+    '        padding: var(--instui-component-card-padding-nested-lg);\n' +
+    '        border-radius: var(--instui-component-card-border-radius-nested-lg);\n' +
+    '      }\n' +
+    '    }\n' +
+    '  }\n' +
+    '}\n' +
+    '\n' +
+    '/**\n' +
+    ' * @component agent-shell\n' +
+    ' * @summary A surface container for AI agents.\n' +
+    ' * @sealed\n' +
+    ' * @structure\n' +
+    ' * .instui-agent-shell {\n' +
+    ' *   slot {}\n' +
+    ' * }\n' +
+    ' * @see https://www.figma.com/design/EmUrCpRWxboBTWEokGiBKP/Agent-Platform?node-id=1045-60738\n' +
+    ' * @example -nocard\n' +
+    ' * ```html\n' +
+    ' * <div class="instui-agent-shell --p-md">\n' +
+    ' *   <h2 class="instui-heading -variant-title-card-large">AI Agent</h2>\n' +
+    ' *   <p>Content here.</p>\n' +
+    ' *   <button class="instui-button">Action</button>\n' +
+    ' * </div>\n' +
+    ' * ```\n' +
+    ' */\n' +
+    '.instui-agent-shell {\n' +
+    '  min-width: 320px;\n' +
+    '  min-height: 500px;\n' +
+    '  border-radius: var(--instui-component-shared-tokens-border-radius-card-lg);\n' +
+    '  background-color: var(--instui-color-background-base);\n' +
+    '  /* gradient border via background-clip: padding-box on inner + border-box on outer */\n' +
+    '  background-image:\n' +
+    '    linear-gradient(var(--instui-color-background-base), var(--instui-color-background-base)),\n' +
+    '    linear-gradient(\n' +
+    '      var(--instui-color-stroke-ai-top-gradient),\n' +
+    '      var(--instui-color-stroke-ai-bottom-gradient)\n' +
+    '    );\n' +
+    '  background-origin: border-box;\n' +
+    '  background-clip: padding-box, border-box;\n' +
+    '  border: var(--instui-border-width-sm) solid transparent;\n' +
+    '}\n' +
+    '\n' +
+    '/**\n' +
+    ' * @utility ai-gradient\n' +
+    ' * @selector .--background-ai-horizontal\n' +
+    ' * @summary AI-accent gradient helpers intended for custom surfaces, not the shared InstUI contract.\n' +
+    ' * @global\n' +
+    ' * @modifier --border-color-ai — A transparent border framed by the shared AI gradient.\n' +
+    ' * @modifier --border-color-ai-horizontal — Direction-aware horizontal variant.\n' +
+    ' * @modifier --background-ai — Paint the element background with the shared AI gradient.\n' +
+    ' * @modifier --background-ai-horizontal — Direction-aware horizontal variant.\n' +
+    ' */\n' +
+    ':where(*) .--border-color-ai {\n' +
+    '  border: var(--instui-border-width-sm) solid transparent;\n' +
+    '  background-color: var(--instui-color-background-base);\n' +
+    '  background-image:\n' +
+    '    linear-gradient(var(--instui-color-background-base), var(--instui-color-background-base)),\n' +
+    '    linear-gradient(\n' +
+    '      var(--instui-color-stroke-ai-top-gradient),\n' +
+    '      var(--instui-color-stroke-ai-bottom-gradient)\n' +
+    '    );\n' +
+    '  background-origin: border-box;\n' +
+    '  background-clip: padding-box, border-box;\n' +
+    '}\n' +
+    '\n' +
+    ':where(*) .--border-color-ai-horizontal {\n' +
+    '  border: var(--instui-border-width-sm) solid transparent;\n' +
+    '  background-color: var(--instui-color-background-base);\n' +
+    '  background-image:\n' +
+    '    linear-gradient(var(--instui-color-background-base), var(--instui-color-background-base)),\n' +
+    '    linear-gradient(\n' +
+    '      to left,\n' +
+    '      var(--instui-color-stroke-ai-top-gradient),\n' +
+    '      var(--instui-color-stroke-ai-bottom-gradient)\n' +
+    '    );\n' +
+    '  background-origin: border-box;\n' +
+    '  background-clip: padding-box, border-box;\n' +
+    '}\n' +
+    '\n' +
+    ':where(*):dir(rtl) .--border-color-ai-horizontal {\n' +
+    '  background-image:\n' +
+    '    linear-gradient(var(--instui-color-background-base), var(--instui-color-background-base)),\n' +
+    '    linear-gradient(\n' +
+    '      to right,\n' +
+    '      var(--instui-color-stroke-ai-top-gradient),\n' +
+    '      var(--instui-color-stroke-ai-bottom-gradient)\n' +
+    '    );\n' +
+    '}\n' +
+    '\n' +
+    ':where(*) .--background-ai {\n' +
+    '  background-color: var(--instui-color-background-base);\n' +
+    '  background-image: linear-gradient(\n' +
+    '    var(--instui-color-stroke-ai-top-gradient),\n' +
+    '    var(--instui-color-stroke-ai-bottom-gradient)\n' +
+    '  );\n' +
+    '}\n' +
+    '\n' +
+    ':where(*) .--background-ai-horizontal {\n' +
+    '  background-color: var(--instui-color-background-base);\n' +
+    '  background-image: linear-gradient(\n' +
+    '    to left,\n' +
+    '    var(--instui-color-stroke-ai-top-gradient),\n' +
+    '    var(--instui-color-stroke-ai-bottom-gradient)\n' +
+    '  );\n' +
+    '}\n' +
+    '\n' +
+    ':where(*):dir(rtl) .--background-ai-horizontal {\n' +
+    '  background-image: linear-gradient(\n' +
+    '    to right,\n' +
+    '    var(--instui-color-stroke-ai-top-gradient),\n' +
+    '    var(--instui-color-stroke-ai-bottom-gradient)\n' +
+    '  );\n' +
+    '}\n' +
+    '\n' +
+    '/**\n' +
+    ' * @component banner\n' +
+    ' * @summary A dismissible, iconed message surface for page-level or in-context announcements.\n' +
+    ' * @remarks\n' +
+    ' *   **Size** controls padding and gap: `relaxed` (default) is roomier; `compact` tightens both.\n' +
+    ' *   **Color** sets the fill: bare (no modifier) is unfilled — border and icon only; `-color-violet`\n' +
+    ' *   and `-color-sea` add a tinted background plus a matching icon swatch.\n' +
+    ' * @selector .instui-banner\n' +
+    ' * @annotations\n' +
+    ' * 1. Banner renders an `info` glyph by default. Add `-icon-<name>` to swap it for any glyph from the shared icon set.\n' +
+    " * 2. The close button follows `alert`'s top-end positioning. It defaults to small; add a size modifier to override it.\n" +
+    ' * 3. A heading (`h1`–`h6`, or a bare `.instui-heading` with no `-level-*` modifier) styles as the\n' +
+    " *    banner's title, using title-card typography appropriate to the active size. Give an\n" +
+    ' *    `.instui-heading` a `-level-*` class to opt it out of this treatment.\n' +
+    ' * 4. Wrap banner actions in `.button-group`: buttons before the last default to the inline secondary\n' +
+    ' *    treatment, and the last button defaults to the inline primary treatment. Add a `-color-*`\n' +
+    ' *    modifier to a'... 51572 more characters,
+  line: 1311,
+  column: 1,
+  input: {
+    column: 1,
+    endColumn: undefined,
+    endLine: undefined,
+    endOffset: undefined,
+    line: 1311,
+    offset: 53225,
+    source: '/**\n' +
+      ' * @declaration breakpoints\n' +
+      ' * @summary Extra-small viewport width for phone-sized previews.\n' +
+      ' * @cssproperty --instui-breakpoints-xs — Extra-small viewport width (20em / 320px).\n' +
+      ' * @usage @import "@pantoken/plugin-custom-components/custom-components.css";\n' +
+      ' */\n' +
+      ':root {\n' +
+      '  --instui-breakpoints-xs: 20em;\n' +
+      '}\n' +
+      '/**\n' +
+      ' * @component card\n' +
+      ' * @summary A surface container that accepts arbitrary content.\n' +
+      ' * @remarks\n' +
+      ' *   **Variant** controls how direct children are styled: `content` (default) leaves them\n' +
+      ' *   unstyled; `container` stacks them as bordered, padded sections. Padding scales with\n' +
+      ' *   viewport width and is the same across both variants.\n' +
+      ' *   **Size** is fully responsive — padding and border-radius step up automatically at 320px\n' +
+      ' *   (20rem) and 640px (40rem) via standard `min-width` media queries; no size class is needed.\n' +
+      ' *   Pair with `@pantoken/components` for heading, button, and other inline components.\n' +
+      ' * @sealed\n' +
+      ' * @annotations\n' +
+      ' * 1. `overflow: hidden` clips child content at the rounded corner and is required for @scope containment.\n' +
+      ' * 2. `flex-shrink: 0` prevents the card collapsing when placed in a flex row without an explicit width.\n' +
+      ' * 3. Sizing is purely responsive — `@media (min-width: 20rem)` applies md properties, `@media (min-width: 40rem)` applies lg; sm is the mobile-first default.\n' +
+      ' * 4. `-variant-container` targets direct children only so deeply nested elements are not affected.\n' +
+      ' * @modifier -variant-content — Standard content card; children are unstyled. Default when no variant is set.\n' +
+      ' * @modifier -variant-container — Container card; direct children become bordered, padded sections.\n' +
+      ' * @structure\n' +
+      ' * .instui-card {\n' +
+      ' *   slot {}\n' +
+      ' * }\n' +
+      ' * @a11y Use `<article>` as the card element when the card is a self-contained unit of content;\n' +
+      ' *   use `<section>` when grouped within a larger landmark. In `-variant-container`, prefer\n' +
+      ' *   `<section>` elements as direct children so each bordered region carries semantic meaning.\n' +
+      ' * @usage @import "@pantoken/plugin-custom-components/custom-components.css";\n' +
+      ' * @compat `@scope` is Baseline 2023 Newly Available; the card degrades to an unscoped flat stylesheet\n' +
+      ' *   in older browsers with no loss of visible styling.\n' +
+      ' * @related heading — Place directly in the card or inside a container section.\n' +
+      ' * @related button — Place directly in the card or inside a container section.\n' +
+      ' * @related img — Place directly in the card as a media region.\n' +
+      ' * @related badge — Place directly in the card as a status indicator.\n' +
+      ' * @see https://drafts.csswg.org/css-cascade-6/#scoping\n' +
+      ' * @example\n' +
+      ' * Content card -nocard\n' +
+      ' * ```html\n' +
+      ' * <article class="instui-card">\n' +
+      ' *   <h2 class="instui-heading -h3">Card title</h2>\n' +
+      ' *   <p>Content here.</p>\n' +
+      ' *   <button class="instui-button">Action</button>\n' +
+      ' * </article>\n' +
+      ' * ```\n' +
+      ' * Container card -nocard\n' +
+      ' * ```html\n' +
+      ' * <article class="instui-card -variant-container">\n' +
+      ' *   <section>First section</section>\n' +
+      ' *   <section>Second section</section>\n' +
+      ' * </article>\n' +
+      ' * ```\n' +
+      ' */\n' +
+      '.instui-card {\n' +
+      '  background: var(--instui-component-card-background-color);\n' +
+      '  border-radius: var(--instui-component-card-border-radius-base-sm);\n' +
+      '  box-shadow: var(--instui-elevation-card);\n' +
+      '  padding: var(--instui-component-card-padding-base-sm);\n' +
+      '  overflow: hidden;\n' +
+      '  /* @ref 1 */\n' +
+      '  flex-shrink: 0;\n' +
+      '  /* @ref 2 */\n' +
+      '}\n' +
+      '\n' +
+      '/* @ref 3 */\n' +
+      '@media (min-width: 20rem) {\n' +
+      '  .instui-card {\n' +
+      '    padding: var(--instui-component-card-padding-base-md);\n' +
+      '    border-radius: var(--instui-component-card-border-radius-base-md);\n' +
+      '  }\n' +
+      '}\n' +
+      '\n' +
+      '@media (min-width: 40rem) {\n' +
+      '  .instui-card {\n' +
+      '    padding: var(--instui-component-card-padding-base-lg);\n' +
+      '    border-radius: var(--instui-component-card-border-radius-base-lg);\n' +
+      '  }\n' +
+      '}\n' +
+      '\n' +
+      '/* content variant is the default; selector exists so cssdoc can verify the modifier */\n' +
+      '.instui-card.-variant-content {\n' +
+      '  --pantoken-card-type: content;\n' +
+      '}\n' +
+      '\n' +
+      '/* container variant: card is a flex column; gap between direct children */\n' +
+      '.instui-card.-variant-container {\n' +
+      '  display: flex;\n' +
+      '  flex-direction: column;\n' +
+      '  gap: var(--instui-component-shared-tokens-spacing-gap-cards-nested-containers-sm);\n' +
+      '}\n' +
+      '\n' +
+      '@media (min-width: 20rem) {\n' +
+      '  .instui-card.-variant-container {\n' +
+      '    gap: var(--instui-component-shared-tokens-spacing-gap-cards-nested-containers-md);\n' +
+      '  }\n' +
+      '}\n' +
+      '\n' +
+      '@media (min-width: 40rem) {\n' +
+      '  .instui-card.-variant-container {\n' +
+      '    gap: var(--instui-component-shared-tokens-spacing-gap-cards-nested-containers-lg);\n' +
+      '  }\n' +
+      '}\n' +
+      '\n' +
+      '@scope (.instui-card) {\n' +
+      '  :scope {\n' +
+      '    /* @ref 4 */\n' +
+      '    &.-variant-container > * {\n' +
+      '      padding: var(--instui-component-card-padding-nested-sm);\n' +
+      '      border: var(--instui-component-shared-tokens-stroke-width-sm) solid\n' +
+      '        var(--instui-component-card-nested-border-color);\n' +
+      '      border-radius: var(--instui-component-card-border-radius-nested-sm);\n' +
+      '    }\n' +
+      '\n' +
+      '    @media (min-width: 20rem) {\n' +
+      '      &.-variant-container > * {\n' +
+      '        padding: var(--instui-component-card-padding-nested-md);\n' +
+      '        border-radius: var(--instui-component-card-border-radius-nested-md);\n' +
+      '      }\n' +
+      '    }\n' +
+      '\n' +
+      '    @media (min-width: 40rem) {\n' +
+      '      &.-variant-container > * {\n' +
+      '        padding: var(--instui-component-card-padding-nested-lg);\n' +
+      '        border-radius: var(--instui-component-card-border-radius-nested-lg);\n' +
+      '      }\n' +
+      '    }\n' +
+      '  }\n' +
+      '}\n' +
+      '\n' +
+      '/**\n' +
+      ' * @component agent-shell\n' +
+      ' * @summary A surface container for AI agents.\n' +
+      ' * @sealed\n' +
+      ' * @structure\n' +
+      ' * .instui-agent-shell {\n' +
+      ' *   slot {}\n' +
+      ' * }\n' +
+      ' * @see https://www.figma.com/design/EmUrCpRWxboBTWEokGiBKP/Agent-Platform?node-id=1045-60738\n' +
+      ' * @example -nocard\n' +
+      ' * ```html\n' +
+      ' * <div class="instui-agent-shell --p-md">\n' +
+      ' *   <h2 class="instui-heading -variant-title-card-large">AI Agent</h2>\n' +
+      ' *   <p>Content here.</p>\n' +
+      ' *   <button class="instui-button">Action</button>\n' +
+      ' * </div>\n' +
+      ' * ```\n' +
+      ' */\n' +
+      '.instui-agent-shell {\n' +
+      '  min-width: 320px;\n' +
+      '  min-height: 500px;\n' +
+      '  border-radius: var(--instui-component-shared-tokens-border-radius-card-lg);\n' +
+      '  background-color: var(--instui-color-background-base);\n' +
+      '  /* gradient border via background-clip: padding-box on inner + border-box on outer */\n' +
+      '  background-image:\n' +
+      '    linear-gradient(var(--instui-color-background-base), var(--instui-color-background-base)),\n' +
+      '    linear-gradient(\n' +
+      '      var(--instui-color-stroke-ai-top-gradient),\n' +
+      '      var(--instui-color-stroke-ai-bottom-gradient)\n' +
+      '    );\n' +
+      '  background-origin: border-box;\n' +
+      '  background-clip: padding-box, border-box;\n' +
+      '  border: var(--instui-border-width-sm) solid transparent;\n' +
+      '}\n' +
+      '\n' +
+      '/**\n' +
+      ' * @utility ai-gradient\n' +
+      ' * @selector .--background-ai-horizontal\n' +
+      ' * @summary AI-accent gradient helpers intended for custom surfaces, not the shared InstUI contract.\n' +
+      ' * @global\n' +
+      ' * @modifier --border-color-ai — A transparent border framed by the shared AI gradient.\n' +
+      ' * @modifier --border-color-ai-horizontal — Direction-aware horizontal variant.\n' +
+      ' * @modifier --background-ai — Paint the element background with the shared AI gradient.\n' +
+      ' * @modifier --background-ai-horizontal — Direction-aware horizontal variant.\n' +
+      ' */\n' +
+      ':where(*) .--border-color-ai {\n' +
+      '  border: var(--instui-border-width-sm) solid transparent;\n' +
+      '  background-color: var(--instui-color-background-base);\n' +
+      '  background-image:\n' +
+      '    linear-gradient(var(--instui-color-background-base), var(--instui-color-background-base)),\n' +
+      '    linear-gradient(\n' +
+      '      var(--instui-color-stroke-ai-top-gradient),\n' +
+      '      var(--instui-color-stroke-ai-bottom-gradient)\n' +
+      '    );\n' +
+      '  background-origin: border-box;\n' +
+      '  background-clip: padding-box, border-box;\n' +
+      '}\n' +
+      '\n' +
+      ':where(*) .--border-color-ai-horizontal {\n' +
+      '  border: var(--instui-border-width-sm) solid transparent;\n' +
+      '  background-color: var(--instui-color-background-base);\n' +
+      '  background-image:\n' +
+      '    linear-gradient(var(--instui-color-background-base), var(--instui-color-background-base)),\n' +
+      '    linear-gradient(\n' +
+      '      to left,\n' +
+      '      var(--instui-color-stroke-ai-top-gradient),\n' +
+      '      var(--instui-color-stroke-ai-bottom-gradient)\n' +
+      '    );\n' +
+      '  background-origin: border-box;\n' +
+      '  background-clip: padding-box, border-box;\n' +
+      '}\n' +
+      '\n' +
+      ':where(*):dir(rtl) .--border-color-ai-horizontal {\n' +
+      '  background-image:\n' +
+      '    linear-gradient(var(--instui-color-background-base), var(--instui-color-background-base)),\n' +
+      '    linear-gradient(\n' +
+      '      to right,\n' +
+      '      var(--instui-color-stroke-ai-top-gradient),\n' +
+      '      var(--instui-color-stroke-ai-bottom-gradient)\n' +
+      '    );\n' +
+      '}\n' +
+      '\n' +
+      ':where(*) .--background-ai {\n' +
+      '  background-color: var(--instui-color-background-base);\n' +
+      '  background-image: linear-gradient(\n' +
+      '    var(--instui-color-stroke-ai-top-gradient),\n' +
+      '    var(--instui-color-stroke-ai-bottom-gradient)\n' +
+      '  );\n' +
+      '}\n' +
+      '\n' +
+      ':where(*) .--background-ai-horizontal {\n' +
+      '  background-color: var(--instui-color-background-base);\n' +
+      '  background-image: linear-gradient(\n' +
+      '    to left,\n' +
+      '    var(--instui-color-stroke-ai-top-gradient),\n' +
+      '    var(--instui-color-stroke-ai-bottom-gradient)\n' +
+      '  );\n' +
+      '}\n' +
+      '\n' +
+      ':where(*):dir(rtl) .--background-ai-horizontal {\n' +
+      '  background-image: linear-gradient(\n' +
+      '    to right,\n' +
+      '    var(--instui-color-stroke-ai-top-gradient),\n' +
+      '    var(--instui-color-stroke-ai-bottom-gradient)\n' +
+      '  );\n' +
+      '}\n' +
+      '\n' +
+      '/**\n' +
+      ' * @component banner\n' +
+      ' * @summary A dismissible, iconed message surface for page-level or in-context announcements.\n' +
+      ' * @remarks\n' +
+      ' *   **Size** controls padding and gap: `relaxed` (default) is roomier; `compact` tightens both.\n' +
+      ' *   **Color** sets the fill: bare (no modifier) is unfilled — border and icon only; `-color-violet`\n' +
+      ' *   and `-color-sea` add a tinted background plus a matching icon swatch.\n' +
+      ' * @selector .instui-banner\n' +
+      ' * @annotations\n' +
+      ' * 1. Banner renders an `info` glyph by default. Add `-icon-<name>` to swap it for any glyph from the shared icon set.\n' +
+      " * 2. The close button follows `alert`'s top-end positioning. It defaults to small; add a size modifier to override it.\n" +
+      ' * 3. A heading (`h1`–`h6`, or a bare `.instui-heading` with no `-level-*` modifier) styles as the\n' +
+      " *    banner's title, using title-card typography appropriate to the active size. Give an\n" +
+      ' *    `.instui-heading` a `-level-*` class to opt it out of this treatment.\n' +
+      ' * 4. Wrap banner actions in `.button-group`: buttons before the last default to the inline secondary\n' +
+      ' *    treatment, and the last button defaults to the inline primary treatment. Add a `-color-*`\n' +
+      ' *    modifier to a'... 51572 more characters
+  }
+}
+
+Node.js v26.10.0
+
+---
+vp run: 0/28 cache hit (0%), 1 failed. (Run `vp run --last-details` for full details)
+
+---
+
+now the display is completely broken. the icon appears and then the radio button and then the label underneath it.
+
+---
+
+try again
+
+---
+
+this is looking a lot better, the only last tweak is for the -start and -end buttons to be inset in the track horizontally the same as the buttons so they don't bleed to the edge.
+
+---
+
+the clip on the viewport doesn't have the rounded borders, so the active/focused/hovered segment label has a vertical edge
+
+---
+
+[Terminal c12164cb-1d1f-46ee-b6e1-e015372c0be6 notification: command completed with exit code 134. The terminal has been cleaned up.]
+Terminal output:
+7:26:05 PM [vitepress] (client) page reload public/sv/demos/form-field-group.html
+7:26:05 PM [vitepress] (client) page reload public/sv/demos/form-field.html
+7:26:05 PM [vitepress] (client) page reload public/sv/demos/form-messages.html
+7:26:05 PM [vitepress] (client) page reload public/sv/demos/gap.html
+7:26:05 PM [vitepress] (client) page reload public/sv/demos/heading.html
+7:26:05 PM [vitepress] (client) page reload public/sv/demos/icon.html
+7:26:05 PM [vitepress] (client) page reload public/sv/demos/img.html
+7:26:05 PM [vitepress] (client) page reload public/sv/demos/in-place-edit.html
+7:26:05 PM [vitepress] (client) page reload public/sv/demos/layout.html
+7:26:05 PM [vitepress] (client) page reload public/sv/demos/link.html
+7:26:05 PM [vitepress] (client) page reload public/sv/demos/list.html
+7:26:05 PM [vitepress] (client) page reload public/sv/demos/mask.html
+7:26:05 PM [vitepress] (client) page reload public/sv/demos/menu.html
+7:26:05 PM [vitepress] (client) page reload public/sv/demos/metric.html
+7:26:05 PM [vitepress] (client) page reload public/sv/demos/modal.html
+7:26:05 PM [vitepress] (client) page reload public/sv/demos/number-input.html
+7:26:05 PM [vitepress] (client) page reload public/sv/demos/pagination.html
+7:26:05 PM [vitepress] (client) page reload public/sv/demos/pendo.html
+7:26:05 PM [vitepress] (client) page reload public/sv/demos/pill.html
+7:26:05 PM [vitepress] (client) page reload public/sv/demos/popover.html
+7:26:05 PM [vitepress] (client) page reload public/sv/demos/progress-circle.html
+7:26:05 PM [vitepress] (client) page reload public/sv/demos/progress.html
+7:26:05 PM [vitepress] (client) page reload public/sv/demos/prose.html
+7:26:05 PM [vitepress] (client) page reload public/sv/demos/radio-input-group.html
+7:26:05 PM [vitepress] (client) page reload public/sv/demos/radio.html
+7:26:05 PM [vitepress] (client) page reload public/sv/demos/range-input.html
+7:26:05 PM [vitepress] (client) page reload public/sv/demos/rating.html
+7:26:05 PM [vitepress] (client) page reload public/sv/demos/responsive.html
+7:26:05 PM [vitepress] (client) page reload public/sv/demos/screen-reader-content.html
+7:26:05 PM [vitepress] (client) page reload public/sv/demos/side-nav-bar.html
+7:26:05 PM [vitepress] (client) page reload public/sv/demos/simple-select.html
+7:26:05 PM [vitepress] (client) page reload public/sv/demos/spacing.html
+7:26:05 PM [vitepress] (client) page reload public/sv/demos/spinner.html
+7:26:05 PM [vitepress] (client) page reload public/sv/demos/table.html
+7:26:05 PM [vitepress] (client) page reload public/sv/demos/tabs.html
+7:26:05 PM [vitepress] (client) page reload public/sv/demos/tag.html
+7:26:05 PM [vitepress] (client) page reload public/sv/demos/text-area.html
+7:26:05 PM [vitepress] (client) page reload public/sv/demos/text-input.html
+7:26:05 PM [vitepress] (client) page reload public/sv/demos/text.html
+7:26:05 PM [vitepress] (client) page reload public/sv/demos/toggle-details.html
+7:26:05 PM [vitepress] (client) page reload public/sv/demos/toggle-group.html
+7:26:05 PM [vitepress] (client) page reload public/sv/demos/token-utilities.html
+7:26:05 PM [vitepress] (client) page reload public/sv/demos/tooltip.html
+7:26:05 PM [vitepress] (client) page reload public/sv/demos/tray.html
+7:26:05 PM [vitepress] (client) page reload public/sv/demos/tree-browser.html
+7:26:05 PM [vitepress] (client) page reload public/sv/demos/truncate.html
+7:26:05 PM [vitepress] (client) page reload public/sv/demos/view.html
+7:26:05 PM [vitepress] (client) page reload public/th/demos/alert.html
+7:26:05 PM [vitepress] (client) page reload public/th/demos/avatar.html
+7:26:05 PM [vitepress] (client) page reload public/th/demos/badge.html
+7:26:05 PM [vitepress] (client) page reload public/th/demos/base.html
+7:26:05 PM [vitepress] (client) page reload public/th/demos/billboard.html
+7:26:05 PM [vitepress] (client) page reload public/th/demos/breadcrumb.html
+7:26:05 PM [vitepress] (client) page reload public/th/demos/button.html
+7:26:05 PM [vitepress] (client) page reload public/th/demos/byline.html
+7:26:05 PM [vitepress] (client) page reload public/th/demos/calendar.html
+7:26:05 PM [vitepress] (client) page reload public/th/demos/checkbox.html
+7:26:05 PM [vitepress] (client) page reload public/th/demos/close-button.html
+7:26:05 PM [vitepress] (client) page reload public/th/demos/color-utilities.html
+7:26:05 PM [vitepress] (client) page reload public/es/demos/pendo.html
+7:26:05 PM [vitepress] (client) page reload public/th/demos/components.html
+7:26:05 PM [vitepress] (client) page reload public/th/demos/context-view.html
+7:26:05 PM [vitepress] (client) page reload public/es/demos/pill.html
+7:26:05 PM [vitepress] (client) page reload public/th/demos/date-time-inputs.html
+7:26:05 PM [vitepress] (client) page reload public/th/demos/drawer-layout.html
+7:26:05 PM [vitepress] (client) page reload public/th/demos/elevation.html
+7:26:05 PM [vitepress] (client) page reload public/es/demos/popover.html
+7:26:05 PM [vitepress] (client) page reload public/th/demos/file-drop.html
+7:26:05 PM [vitepress] (client) page reload public/es/demos/progress-circle.html
+7:26:05 PM [vitepress] (client) page reload public/es/demos/progress.html
+7:26:05 PM [vitepress] (client) page reload public/th/demos/focus-outline.html
+7:26:05 PM [vitepress] (client) page reload public/th/demos/form-field-group.html
+7:26:05 PM [vitepress] (client) page reload public/es/demos/prose.html
+7:26:05 PM [vitepress] (client) page reload public/th/demos/form-field.html
+7:26:05 PM [vitepress] (client) page reload public/es/demos/radio-input-group.html
+7:26:05 PM [vitepress] (client) page reload public/th/demos/form-messages.html
+7:26:05 PM [vitepress] (client) page reload public/es/demos/radio.html
+7:26:05 PM [vitepress] (client) page reload public/th/demos/gap.html
+7:26:05 PM [vitepress] (client) page reload public/es/demos/range-input.html
+7:26:05 PM [vitepress] (client) page reload public/th/demos/heading.html
+7:26:05 PM [vitepress] (client) page reload public/th/demos/icon.html
+7:26:05 PM [vitepress] (client) page reload public/th/demos/img.html
+7:26:05 PM [vitepress] (client) page reload public/th/demos/in-place-edit.html
+7:26:05 PM [vitepress] (client) page reload public/th/demos/layout.html
+7:26:05 PM [vitepress] (client) page reload public/th/demos/link.html
+7:26:05 PM [vitepress] (client) page reload public/th/demos/list.html
+7:26:05 PM [vitepress] (client) page reload public/th/demos/mask.html
+7:26:05 PM [vitepress] (client) page reload public/th/demos/menu.html
+7:26:05 PM [vitepress] (client) page reload public/th/demos/metric.html
+7:26:05 PM [vitepress] (client) page reload public/th/demos/modal.html
+7:26:05 PM [vitepress] (client) page reload public/th/demos/number-input.html
+7:26:05 PM [vitepress] (client) page reload public/th/demos/pagination.html
+7:26:05 PM [vitepress] (client) page reload public/th/demos/pendo.html
+7:26:05 PM [vitepress] (client) page reload public/th/demos/pill.html
+7:26:05 PM [vitepress] (client) page reload public/th/demos/popover.html
+7:26:05 PM [vitepress] (client) page reload public/th/demos/progress-circle.html
+7:26:05 PM [vitepress] (client) page reload public/th/demos/progress.html
+7:26:05 PM [vitepress] (client) page reload public/th/demos/prose.html
+7:26:05 PM [vitepress] (client) page reload public/th/demos/radio-input-group.html
+7:26:05 PM [vitepress] (client) page reload public/th/demos/radio.html
+7:26:05 PM [vitepress] (client) page reload public/th/demos/range-input.html
+7:26:05 PM [vitepress] (client) page reload public/th/demos/rating.html
+7:26:05 PM [vitepress] (client) page reload public/th/demos/responsive.html
+7:26:05 PM [vitepress] (client) page reload public/th/demos/screen-reader-content.html
+7:26:05 PM [vitepress] (client) page reload public/th/demos/side-nav-bar.html
+7:26:05 PM [vitepress] (client) page reload public/th/demos/simple-select.html
+7:26:05 PM [vitepress] (client) page reload public/th/demos/spacing.html
+7:26:05 PM [vitepress] (client) page reload public/th/demos/spinner.html
+7:26:05 PM [vitepress] (client) page reload public/th/demos/table.html
+7:26:05 PM [vitepress] (client) page reload public/th/demos/tabs.html
+7:26:05 PM [vitepress] (client) page reload public/th/demos/tag.html
+7:26:05 PM [vitepress] (client) page reload public/th/demos/text-area.html
+7:26:05 PM [vitepress] (client) page reload public/th/demos/text-input.html
+7:26:05 PM [vitepress] (client) page reload public/th/demos/text.html
+7:26:05 PM [vitepress] (client) page reload public/th/demos/toggle-details.html
+7:26:05 PM [vitepress] (client) page reload public/th/demos/toggle-group.html
+7:26:05 PM [vitepress] (client) page reload public/th/demos/token-utilities.html
+7:26:05 PM [vitepress] (client) page reload public/th/demos/tooltip.html
+7:26:05 PM [vitepress] (client) page reload public/th/demos/tray.html
+7:26:05 PM [vitepress] (client) page reload public/th/demos/tree-browser.html
+7:26:05 PM [vitepress] (client) page reload public/th/demos/truncate.html
+7:26:05 PM [vitepress] (client) page reload public/th/demos/view.html
+7:26:05 PM [vitepress] (client) page reload public/zh-Hant/demos/alert.html
+7:26:05 PM [vitepress] (client) page reload public/zh-Hant/demos/avatar.html
+7:26:05 PM [vitepress] (client) page reload public/zh-Hant/demos/badge.html
+7:26:05 PM [vitepress] (client) page reload public/zh-Hant/demos/base.html
+7:26:05 PM [vitepress] (client) page reload public/zh-Hant/demos/billboard.html
+7:26:05 PM [vitepress] (client) page reload public/zh-Hant/demos/breadcrumb.html
+7:26:05 PM [vitepress] (client) page reload public/zh-Hant/demos/button.html
+7:26:05 PM [vitepress] (client) page reload public/zh-Hant/demos/byline.html
+7:26:05 PM [vitepress] (client) page reload public/zh-Hant/demos/calendar.html
+7:26:05 PM [vitepress] (client) page reload public/zh-Hant/demos/checkbox.html
+7:26:05 PM [vitepress] (client) page reload public/zh-Hant/demos/close-button.html
+7:26:05 PM [vitepress] (client) page reload public/zh-Hant/demos/color-utilities.html
+7:26:05 PM [vitepress] (client) page reload public/th/demos/date-time-inputs.html
+7:26:05 PM [vitepress] (client) page reload public/th/demos/drawer-layout.html
+7:26:05 PM [vitepress] (client) page reload public/th/demos/elevation.html
+7:26:05 PM [vitepress] (client) page reload public/th/demos/file-drop.html
+7:26:05 PM [vitepress] (client) page reload public/th/demos/focus-outline.html
+7:26:05 PM [vitepress] (client) page reload public/zh-Hant/demos/components.html
+7:26:05 PM [vitepress] (client) page reload public/th/demos/form-field-group.html
+7:26:05 PM [vitepress] (client) page reload public/th/demos/form-field.html
+7:26:05 PM [vitepress] (client) page reload public/th/demos/form-messages.html
+7:26:05 PM [vitepress] (client) page reload public/th/demos/gap.html
+7:26:05 PM [vitepress] (client) page reload public/th/demos/heading.html
+7:26:05 PM [vitepress] (client) page reload public/zh-Hant/demos/context-view.html
+7:26:05 PM [vitepress] (client) page reload public/zh-Hant/demos/date-time-inputs.html
+7:26:05 PM [vitepress] (client) page reload public/zh-Hant/demos/drawer-layout.html
+7:26:05 PM [vitepress] (client) page reload public/th/demos/icon.html
+7:26:05 PM [vitepress] (client) page reload public/zh-Hant/demos/elevation.html
+7:26:05 PM [vitepress] (client) page reload public/th/demos/img.html
+7:26:05 PM [vitepress] (client) page reload public/th/demos/in-place-edit.html
+7:26:05 PM [vitepress] (client) page reload public/th/demos/layout.html
+7:26:05 PM [vitepress] (client) page reload public/th/demos/link.html
+7:26:05 PM [vitepress] (client) page reload public/th/demos/list.html
+7:26:05 PM [vitepress] (client) page reload public/th/demos/mask.html
+7:26:05 PM [vitepress] (client) page reload public/th/demos/menu.html
+7:26:05 PM [vitepress] (client) page reload public/th/demos/metric.html
+7:26:05 PM [vitepress] (client) page reload public/th/demos/modal.html
+7:26:05 PM [vitepress] (client) page reload public/zh-Hant/demos/file-drop.html
+7:26:05 PM [vitepress] (client) page reload public/zh-Hant/demos/focus-outline.html
+7:26:05 PM [vitepress] (client) page reload public/th/demos/number-input.html
+7:26:05 PM [vitepress] (client) page reload public/zh-Hant/demos/form-field-group.html
+7:26:05 PM [vitepress] (client) page reload public/th/demos/pagination.html
+7:26:05 PM [vitepress] (client) page reload public/zh-Hant/demos/form-field.html
+7:26:05 PM [vitepress] (client) page reload public/zh-Hant/demos/form-messages.html
+7:26:05 PM [vitepress] (client) page reload public/th/demos/pendo.html
+7:26:05 PM [vitepress] (client) page reload public/zh-Hant/demos/gap.html
+7:26:05 PM [vitepress] (client) page reload public/zh-Hant/demos/heading.html
+7:26:05 PM [vitepress] (client) page reload public/th/demos/pill.html
+7:26:05 PM [vitepress] (client) page reload public/zh-Hant/demos/icon.html
+7:26:05 PM [vitepress] (client) page reload public/zh-Hant/demos/img.html
+7:26:05 PM [vitepress] (client) page reload public/th/demos/popover.html
+7:26:05 PM [vitepress] (client) page reload public/zh-Hant/demos/in-place-edit.html
+7:26:05 PM [vitepress] (client) page reload public/zh-Hant/demos/layout.html
+7:26:05 PM [vitepress] (client) page reload public/th/demos/progress-circle.html
+7:26:05 PM [vitepress] (client) page reload public/th/demos/progress.html
+7:26:05 PM [vitepress] (client) page reload public/zh-Hant/demos/link.html
+7:26:05 PM [vitepress] (client) page reload public/th/demos/prose.html
+7:26:05 PM [vitepress] (client) page reload public/zh-Hant/demos/list.html
+7:26:05 PM [vitepress] (client) page reload public/zh-Hant/demos/mask.html
+7:26:05 PM [vitepress] (client) page reload public/th/demos/radio-input-group.html
+7:26:05 PM [vitepress] (client) page reload public/th/demos/radio.html
+7:26:05 PM [vitepress] (client) page reload public/th/demos/range-input.html
+7:26:05 PM [vitepress] (client) page reload public/th/demos/rating.html
+7:26:05 PM [vitepress] (client) page reload public/zh-Hant/demos/menu.html
+7:26:05 PM [vitepress] (client) page reload public/th/demos/responsive.html
+7:26:05 PM [vitepress] (client) page reload public/th/demos/screen-reader-content.html
+7:26:05 PM [vitepress] (client) page reload public/zh-Hant/demos/metric.html
+7:26:05 PM [vitepress] (client) page reload public/zh-Hant/demos/modal.html
+7:26:05 PM [vitepress] (client) page reload public/zh-Hant/demos/number-input.html
+7:26:05 PM [vitepress] (client) page reload public/zh-Hant/demos/pagination.html
+7:26:05 PM [vitepress] (client) page reload public/th/demos/side-nav-bar.html
+7:26:05 PM [vitepress] (client) page reload public/zh-Hant/demos/pendo.html
+7:26:05 PM [vitepress] (client) page reload public/th/demos/simple-select.html
+7:26:05 PM [vitepress] (client) page reload public/zh-Hant/demos/pill.html
+7:26:05 PM [vitepress] (client) page reload public/th/demos/spacing.html
+7:26:05 PM [vitepress] (client) page reload public/th/demos/spinner.html
+7:26:05 PM [vitepress] (client) page reload public/zh-Hant/demos/popover.html
+7:26:05 PM [vitepress] (client) page reload public/zh-Hant/demos/progress-circle.html
+7:26:05 PM [vitepress] (client) page reload public/zh-Hant/demos/progress.html
+7:26:05 PM [vitepress] (client) page reload public/zh-Hant/demos/prose.html
+7:26:05 PM [vitepress] (client) page reload public/zh-Hant/demos/radio-input-group.html
+7:26:05 PM [vitepress] (client) page reload public/th/demos/table.html
+7:26:05 PM [vitepress] (client) page reload public/zh-Hant/demos/radio.html
+7:26:05 PM [vitepress] (client) page reload public/th/demos/tabs.html
+7:26:05 PM [vitepress] (client) page reload public/zh-Hant/demos/range-input.html
+7:26:05 PM [vitepress] (client) page reload public/th/demos/tag.html
+7:26:05 PM [vitepress] (client) page reload public/zh-Hant/demos/rating.html
+7:26:05 PM [vitepress] (client) page reload public/th/demos/text-area.html
+7:26:05 PM [vitepress] (client) page reload public/zh-Hant/demos/responsive.html
+7:26:05 PM [vitepress] (client) page reload public/zh-Hant/demos/screen-reader-content.html
+7:26:05 PM [vitepress] (client) page reload public/zh-Hant/demos/side-nav-bar.html
+7:26:05 PM [vitepress] (client) page reload public/zh-Hant/demos/simple-select.html
+7:26:05 PM [vitepress] (client) page reload public/th/demos/text-input.html
+7:26:05 PM [vitepress] (client) page reload public/zh-Hant/demos/spacing.html
+7:26:05 PM [vitepress] (client) page reload public/zh-Hant/demos/spinner.html
+7:26:05 PM [vitepress] (client) page reload public/zh-Hant/demos/table.html
+7:26:05 PM [vitepress] (client) page reload public/th/demos/text.html
+7:26:05 PM [vitepress] (client) page reload public/zh-Hant/demos/tabs.html
+7:26:05 PM [vitepress] (client) page reload public/th/demos/text.html
+7:26:05 PM [vitepress] (client) page reload public/th/demos/toggle-details.html
+7:26:05 PM [vitepress] (client) page reload public/th/demos/toggle-group.html
+7:26:05 PM [vitepress] (client) page reload public/th/demos/token-utilities.html
+7:26:05 PM [vitepress] (client) page reload public/th/demos/tooltip.html
+7:26:05 PM [vitepress] (client) page reload public/th/demos/tray.html
+7:26:05 PM [vitepress] (client) page reload public/th/demos/tree-browser.html
+7:26:05 PM [vitepress] (client) page reload public/th/demos/truncate.html
+7:26:05 PM [vitepress] (client) page reload public/th/demos/view.html
+7:26:05 PM [vitepress] (client) page reload public/zh-Hant/demos/alert.html
+7:26:05 PM [vitepress] (client) page reload public/zh-Hant/demos/avatar.html
+7:26:05 PM [vitepress] (client) page reload public/zh-Hant/demos/badge.html
+7:26:05 PM [vitepress] (client) page reload public/zh-Hant/demos/base.html
+7:26:05 PM [vitepress] (client) page reload public/zh-Hant/demos/billboard.html
+7:26:05 PM [vitepress] (client) page reload public/zh-Hant/demos/breadcrumb.html
+7:26:05 PM [vitepress] (client) page reload public/zh-Hant/demos/button.html
+7:26:05 PM [vitepress] (client) page reload public/zh-Hant/demos/byline.html
+7:26:05 PM [vitepress] (client) page reload public/zh-Hant/demos/calendar.html
+7:26:05 PM [vitepress] (client) page reload public/zh-Hant/demos/checkbox.html
+7:26:05 PM [vitepress] (client) page reload public/zh-Hant/demos/close-button.html
+7:26:05 PM [vitepress] (client) page reload public/zh-Hant/demos/color-utilities.html
+7:26:05 PM [vitepress] (client) page reload public/zh-Hant/demos/components.html
+7:26:05 PM [vitepress] (client) page reload public/zh-Hant/demos/context-view.html
+7:26:05 PM [vitepress] (client) page reload public/zh-Hant/demos/date-time-inputs.html
+7:26:05 PM [vitepress] (client) page reload public/zh-Hant/demos/drawer-layout.html
+7:26:05 PM [vitepress] (client) page reload public/zh-Hant/demos/elevation.html
+7:26:05 PM [vitepress] (client) page reload public/zh-Hant/demos/file-drop.html
+7:26:05 PM [vitepress] (client) page reload public/zh-Hant/demos/focus-outline.html
+7:26:05 PM [vitepress] (client) page reload public/zh-Hant/demos/form-field-group.html
+7:26:05 PM [vitepress] (client) page reload public/zh-Hant/demos/form-field.html
+7:26:05 PM [vitepress] (client) page reload public/zh-Hant/demos/form-messages.html
+7:26:05 PM [vitepress] (client) page reload public/zh-Hant/demos/gap.html
+7:26:05 PM [vitepress] (client) page reload public/zh-Hant/demos/heading.html
+7:26:05 PM [vitepress] (client) page reload public/zh-Hant/demos/icon.html
+7:26:05 PM [vitepress] (client) page reload public/zh-Hant/demos/img.html
+7:26:05 PM [vitepress] (client) page reload public/zh-Hant/demos/in-place-edit.html
+7:26:05 PM [vitepress] (client) page reload public/zh-Hant/demos/layout.html
+7:26:05 PM [vitepress] (client) page reload public/zh-Hant/demos/link.html
+7:26:05 PM [vitepress] (client) page reload public/zh-Hant/demos/list.html
+7:26:05 PM [vitepress] (client) page reload public/zh-Hant/demos/mask.html
+7:26:05 PM [vitepress] (client) page reload public/zh-Hant/demos/menu.html
+7:26:05 PM [vitepress] (client) page reload public/zh-Hant/demos/metric.html
+7:26:05 PM [vitepress] (client) page reload public/zh-Hant/demos/modal.html
+7:26:05 PM [vitepress] (client) page reload public/zh-Hant/demos/number-input.html
+7:26:05 PM [vitepress] (client) page reload public/zh-Hant/demos/pagination.html
+7:26:05 PM [vitepress] (client) page reload public/zh-Hant/demos/pendo.html
+7:26:05 PM [vitepress] (client) page reload public/zh-Hant/demos/pill.html
+7:26:05 PM [vitepress] (client) page reload public/zh-Hant/demos/popover.html
+7:26:05 PM [vitepress] (client) page reload public/zh-Hant/demos/progress-circle.html
+7:26:05 PM [vitepress] (client) page reload public/zh-Hant/demos/progress.html
+7:26:05 PM [vitepress] (client) page reload public/zh-Hant/demos/prose.html
+7:26:05 PM [vitepress] (client) page reload public/zh-Hant/demos/radio-input-group.html
+7:26:05 PM [vitepress] (client) page reload public/zh-Hant/demos/radio.html
+7:26:05 PM [vitepress] (client) page reload public/tr/demos/rating.html
+7:26:05 PM [vitepress] (client) page reload public/zh-Hant/demos/range-input.html
+7:26:05 PM [vitepress] (client) page reload public/tr/demos/responsive.html
+7:26:05 PM [vitepress] (client) page reload public/tr/demos/screen-reader-content.html
+7:26:05 PM [vitepress] (client) page reload public/tr/demos/side-nav-bar.html
+7:26:05 PM [vitepress] (client) page reload public/tr/demos/simple-select.html
+7:26:05 PM [vitepress] (client) page reload public/zh-Hant/demos/rating.html
+7:26:05 PM [vitepress] (client) page reload public/tr/demos/spacing.html
+7:26:05 PM [vitepress] (client) page reload public/zh-Hant/demos/responsive.html
+7:26:05 PM [vitepress] (client) page reload public/tr/demos/spinner.html
+7:26:06 PM [vitepress] (client) page reload public/tr/demos/table.html
+7:26:06 PM [vitepress] (client) page reload public/zh-Hant/demos/screen-reader-content.html
+7:26:06 PM [vitepress] (client) page reload public/tr/demos/tabs.html
+7:26:06 PM [vitepress] (client) page reload public/zh-Hant/demos/side-nav-bar.html
+7:26:06 PM [vitepress] (client) page reload public/zh-Hant/demos/simple-select.html
+7:26:06 PM [vitepress] (client) page reload public/zh-Hant/demos/spacing.html
+7:26:06 PM [vitepress] (client) page reload public/tr/demos/tag.html
+7:26:06 PM [vitepress] (client) page reload public/zh-Hant/demos/spinner.html
+7:26:06 PM [vitepress] (client) page reload public/tr/demos/text-area.html
+7:26:06 PM [vitepress] (client) page reload public/tr/demos/text-input.html
+7:26:06 PM [vitepress] (client) page reload public/tr/demos/text.html
+7:26:06 PM [vitepress] (client) page reload public/tr/demos/toggle-details.html
+7:26:06 PM [vitepress] (client) page reload public/zh-Hant/demos/table.html
+7:26:06 PM [vitepress] (client) page reload public/tr/demos/toggle-group.html
+7:26:06 PM [vitepress] (client) page reload public/tr/demos/token-utilities.html
+7:26:06 PM [vitepress] (client) page reload public/zh-Hant/demos/tag.html
+7:26:06 PM [vitepress] (client) page reload public/tr/demos/tooltip.html
+7:26:06 PM [vitepress] (client) page reload public/zh-Hant/demos/text-area.html
+7:26:06 PM [vitepress] (client) page reload public/zh-Hant/demos/text-input.html
+7:26:06 PM [vitepress] (client) page reload public/zh-Hant/demos/text.html
+7:26:06 PM [vitepress] (client) page reload public/tr/demos/tray.html
+7:26:06 PM [vitepress] (client) page reload public/tr/demos/tree-browser.html
+7:26:06 PM [vitepress] (client) page reload public/tr/demos/truncate.html
+7:26:06 PM [vitepress] (client) page reload public/zh-Hant/demos/toggle-details.html
+7:26:06 PM [vitepress] (client) page reload public/tr/demos/view.html
+7:26:06 PM [vitepress] (client) page reload public/uk/demos/alert.html
+7:26:06 PM [vitepress] (client) page reload public/uk/demos/avatar.html
+7:26:06 PM [vitepress] (client) page reload public/uk/demos/badge.html
+7:26:06 PM [vitepress] (client) page reload public/uk/demos/base.html
+7:26:06 PM [vitepress] (client) page reload public/uk/demos/billboard.html
+7:26:06 PM [vitepress] (client) page reload public/uk/demos/breadcrumb.html
+7:26:06 PM [vitepress] (client) page reload public/zh-Hant/demos/toggle-group.html
+7:26:06 PM [vitepress] (client) page reload public/uk/demos/button.html
+7:26:06 PM [vitepress] (client) page reload public/uk/demos/byline.html
+7:26:06 PM [vitepress] (client) page reload public/uk/demos/calendar.html
+7:26:06 PM [vitepress] (client) page reload public/uk/demos/checkbox.html
+7:26:06 PM [vitepress] (client) page reload public/uk/demos/close-button.html
+7:26:06 PM [vitepress] (client) page reload public/uk/demos/color-utilities.html
+7:26:06 PM [vitepress] (client) page reload public/uk/demos/components.html
+7:26:06 PM [vitepress] (client) page reload public/zh-Hant/demos/token-utilities.html
+7:26:06 PM [vitepress] (client) page reload public/zh-Hant/demos/tooltip.html
+7:26:06 PM [vitepress] (client) page reload public/zh-Hant/demos/tray.html
+7:26:06 PM [vitepress] (client) page reload public/zh-Hant/demos/tree-browser.html
+7:26:06 PM [vitepress] (client) page reload public/zh-Hant/demos/truncate.html
+7:26:06 PM [vitepress] (client) page reload public/zh-Hant/demos/view.html
+7:26:06 PM [vitepress] (client) page reload public/uk/demos/context-view.html
+7:26:06 PM [vitepress] (client) page reload public/uk/demos/date-time-inputs.html
+7:26:06 PM [vitepress] (client) page reload public/uk/demos/drawer-layout.html
+7:26:06 PM [vitepress] (client) page reload public/tr/demos/alert.html
+7:26:06 PM [vitepress] (client) page reload public/tr/demos/avatar.html
+7:26:06 PM [vitepress] (client) page reload public/tr/demos/badge.html
+7:26:06 PM [vitepress] (client) page reload public/tr/demos/base.html
+7:26:06 PM [vitepress] (client) page reload public/uk/demos/elevation.html
+7:26:06 PM [vitepress] (client) page reload public/tr/demos/billboard.html
+7:26:06 PM [vitepress] (client) page reload public/tr/demos/breadcrumb.html
+7:26:06 PM [vitepress] (client) page reload public/uk/demos/file-drop.html
+7:26:06 PM [vitepress] (client) page reload public/tr/demos/button.html
+7:26:06 PM [vitepress] (client) page reload public/uk/demos/focus-outline.html
+7:26:06 PM [vitepress] (client) page reload public/tr/demos/byline.html
+7:26:06 PM [vitepress] (client) page reload public/uk/demos/form-field-group.html
+7:26:06 PM [vitepress] (client) page reload public/tr/demos/calendar.html
+7:26:06 PM [vitepress] (client) page reload public/uk/demos/form-field.html
+7:26:06 PM [vitepress] (client) page reload public/uk/demos/form-messages.html
+7:26:06 PM [vitepress] (client) page reload public/tr/demos/checkbox.html
+7:26:06 PM [vitepress] (client) page reload public/tr/demos/close-button.html
+7:26:06 PM [vitepress] (client) page reload public/uk/demos/gap.html
+7:26:06 PM [vitepress] (client) page reload public/tr/demos/color-utilities.html
+7:26:06 PM [vitepress] (client) page reload public/tr/demos/components.html
+7:26:06 PM [vitepress] (client) page reload public/uk/demos/heading.html
+7:26:06 PM [vitepress] (client) page reload public/uk/demos/icon.html
+7:26:06 PM [vitepress] (client) page reload public/uk/demos/img.html
+7:26:06 PM [vitepress] (client) page reload public/tr/demos/context-view.html
+7:26:06 PM [vitepress] (client) page reload public/uk/demos/in-place-edit.html
+7:26:06 PM [vitepress] (client) page reload public/uk/demos/layout.html
+7:26:06 PM [vitepress] (client) page reload public/uk/demos/link.html
+7:26:06 PM [vitepress] (client) page reload public/tr/demos/date-time-inputs.html
+7:26:06 PM [vitepress] (client) page reload public/uk/demos/list.html
+7:26:06 PM [vitepress] (client) page reload public/uk/demos/mask.html
+7:26:06 PM [vitepress] (client) page reload public/tr/demos/drawer-layout.html
+7:26:06 PM [vitepress] (client) page reload public/tr/demos/elevation.html
+7:26:06 PM [vitepress] (client) page reload public/uk/demos/menu.html
+7:26:06 PM [vitepress] (client) page reload public/tr/demos/file-drop.html
+7:26:06 PM [vitepress] (client) page reload public/uk/demos/metric.html
+7:26:06 PM [vitepress] (client) page reload public/uk/demos/modal.html
+7:26:06 PM [vitepress] (client) page reload public/tr/demos/focus-outline.html
+7:26:06 PM [vitepress] (client) page reload public/tr/demos/form-field-group.html
+7:26:06 PM [vitepress] (client) page reload public/uk/demos/number-input.html
+7:26:06 PM [vitepress] (client) page reload public/uk/demos/pagination.html
+7:26:06 PM [vitepress] (client) page reload public/tr/demos/form-field.html
+7:26:06 PM [vitepress] (client) page reload public/uk/demos/pendo.html
+7:26:06 PM [vitepress] (client) page reload public/tr/demos/form-messages.html
+7:26:06 PM [vitepress] (client) page reload public/tr/demos/gap.html
+7:26:06 PM [vitepress] (client) page reload public/tr/demos/heading.html
+7:26:06 PM [vitepress] (client) page reload public/uk/demos/pill.html
+7:26:06 PM [vitepress] (client) page reload public/tr/demos/icon.html
+7:26:06 PM [vitepress] (client) page reload public/uk/demos/popover.html
+7:26:06 PM [vitepress] (client) page reload public/tr/demos/img.html
+7:26:06 PM [vitepress] (client) page reload public/uk/demos/progress-circle.html
+7:26:06 PM [vitepress] (client) page reload public/tr/demos/in-place-edit.html
+7:26:06 PM [vitepress] (client) page reload public/uk/demos/progress.html
+7:26:06 PM [vitepress] (client) page reload public/tr/demos/layout.html
+7:26:06 PM [vitepress] (client) page reload public/uk/demos/prose.html
+7:26:06 PM [vitepress] (client) page reload public/tr/demos/link.html
+7:26:06 PM [vitepress] (client) page reload public/uk/demos/radio-input-group.html
+7:26:06 PM [vitepress] (client) page reload public/tr/demos/list.html
+7:26:06 PM [vitepress] (client) page reload public/uk/demos/radio.html
+7:26:06 PM [vitepress] (client) page reload public/tr/demos/mask.html
+7:26:06 PM [vitepress] (client) page reload public/uk/demos/range-input.html
+7:26:06 PM [vitepress] (client) page reload public/uk/demos/rating.html
+7:26:06 PM [vitepress] (client) page reload public/tr/demos/menu.html
+7:26:06 PM [vitepress] (client) page reload public/tr/demos/metric.html
+7:26:06 PM [vitepress] (client) page reload public/uk/demos/responsive.html
+7:26:06 PM [vitepress] (client) page reload public/tr/demos/modal.html
+7:26:06 PM [vitepress] (client) page reload public/uk/demos/screen-reader-content.html
+7:26:06 PM [vitepress] (client) page reload public/uk/demos/side-nav-bar.html
+7:26:06 PM [vitepress] (client) page reload public/tr/demos/number-input.html
+7:26:06 PM [vitepress] (client) page reload public/tr/demos/pagination.html
+7:26:06 PM [vitepress] (client) page reload public/uk/demos/simple-select.html
+7:26:06 PM [vitepress] (client) page reload public/uk/demos/spacing.html
+7:26:06 PM [vitepress] (client) page reload public/tr/demos/pendo.html
+7:26:06 PM [vitepress] (client) page reload public/tr/demos/pill.html
+7:26:06 PM [vitepress] (client) page reload public/tr/demos/popover.html
+7:26:06 PM [vitepress] (client) page reload public/uk/demos/spinner.html
+7:26:06 PM [vitepress] (client) page reload public/uk/demos/table.html
+7:26:06 PM [vitepress] (client) page reload public/uk/demos/tabs.html
+7:26:06 PM [vitepress] (client) page reload public/uk/demos/tag.html
+7:26:06 PM [vitepress] (client) page reload public/tr/demos/progress-circle.html
+7:26:06 PM [vitepress] (client) page reload public/uk/demos/text-area.html
+7:26:06 PM [vitepress] (client) page reload public/tr/demos/progress.html
+7:26:06 PM [vitepress] (client) page reload public/tr/demos/prose.html
+7:26:06 PM [vitepress] (client) page reload public/uk/demos/text-input.html
+7:26:06 PM [vitepress] (client) page reload public/uk/demos/text.html
+7:26:06 PM [vitepress] (client) page reload public/tr/demos/radio-input-group.html
+7:26:06 PM [vitepress] (client) page reload public/uk/demos/toggle-details.html
+7:26:06 PM [vitepress] (client) page reload public/tr/demos/radio.html
+7:26:06 PM [vitepress] (client) page reload public/tr/demos/range-input.html
+7:26:06 PM [vitepress] (client) page reload public/uk/demos/toggle-group.html
+✓ demo-snippets: staged 2906 demo(s) to public/demos/
+7:26:06 PM [vitepress] (client) page reload public/tr/demos/range-input.html
+7:26:06 PM [vitepress] (client) page reload public/tr/demos/rating.html
+7:26:06 PM [vitepress] (client) page reload public/tr/demos/responsive.html
+7:26:06 PM [vitepress] (client) page reload public/tr/demos/screen-reader-content.html
+7:26:06 PM [vitepress] (client) page reload public/tr/demos/side-nav-bar.html
+7:26:06 PM [vitepress] (client) page reload public/tr/demos/simple-select.html
+7:26:06 PM [vitepress] (client) page reload public/tr/demos/spacing.html
+7:26:06 PM [vitepress] (client) page reload public/tr/demos/spinner.html
+7:26:06 PM [vitepress] (client) page reload public/tr/demos/table.html
+7:26:06 PM [vitepress] (client) page reload public/tr/demos/tabs.html
+7:26:06 PM [vitepress] (client) page reload public/tr/demos/tag.html
+7:26:06 PM [vitepress] (client) page reload public/tr/demos/text-area.html
+7:26:06 PM [vitepress] (client) page reload public/tr/demos/text-input.html
+7:26:06 PM [vitepress] (client) page reload public/tr/demos/text.html
+7:26:06 PM [vitepress] (client) page reload public/tr/demos/toggle-details.html
+7:26:06 PM [vitepress] (client) page reload public/tr/demos/toggle-group.html
+7:26:06 PM [vitepress] (client) page reload public/vi/demos/avatar.html
+7:26:06 PM [vitepress] (client) page reload public/tr/demos/token-utilities.html
+7:26:06 PM [vitepress] (client) page reload public/tr/demos/tooltip.html
+7:26:06 PM [vitepress] (client) page reload public/vi/demos/badge.html
+7:26:06 PM [vitepress] (client) page reload public/tr/demos/tray.html
+7:26:06 PM [vitepress] (client) page reload public/vi/demos/base.html
+7:26:06 PM [vitepress] (client) page reload public/tr/demos/tree-browser.html
+7:26:06 PM [vitepress] (client) page reload public/vi/demos/billboard.html
+7:26:06 PM [vitepress] (client) page reload public/vi/demos/breadcrumb.html
+7:26:06 PM [vitepress] (client) page reload public/tr/demos/truncate.html
+7:26:06 PM [vitepress] (client) page reload public/vi/demos/button.html
+7:26:06 PM [vitepress] (client) page reload public/tr/demos/view.html
+7:26:06 PM [vitepress] (client) page reload public/uk/demos/alert.html
+7:26:06 PM [vitepress] (client) page reload public/uk/demos/avatar.html
+7:26:06 PM [vitepress] (client) page reload public/vi/demos/byline.html
+7:26:06 PM [vitepress] (client) page reload public/uk/demos/badge.html
+7:26:06 PM [vitepress] (client) page reload public/vi/demos/calendar.html
+7:26:06 PM [vitepress] (client) page reload public/uk/demos/base.html
+7:26:06 PM [vitepress] (client) page reload public/vi/demos/checkbox.html
+7:26:06 PM [vitepress] (client) page reload public/vi/demos/close-button.html
+7:26:06 PM [vitepress] (client) page reload public/uk/demos/billboard.html
+7:26:06 PM [vitepress] (client) page reload public/vi/demos/color-utilities.html
+7:26:06 PM [vitepress] (client) page reload public/vi/demos/components.html
+7:26:06 PM [vitepress] (client) page reload public/vi/demos/context-view.html
+7:26:06 PM [vitepress] (client) page reload public/uk/demos/breadcrumb.html
+7:26:06 PM [vitepress] (client) page reload public/vi/demos/date-time-inputs.html
+7:26:06 PM [vitepress] (client) page reload public/vi/demos/drawer-layout.html
+7:26:06 PM [vitepress] (client) page reload public/uk/demos/button.html
+7:26:06 PM [vitepress] (client) page reload public/vi/demos/elevation.html
+7:26:06 PM [vitepress] (client) page reload public/vi/demos/file-drop.html
+7:26:06 PM [vitepress] (client) page reload public/vi/demos/focus-outline.html
+7:26:06 PM [vitepress] (client) page reload public/uk/demos/byline.html
+7:26:06 PM [vitepress] (client) page reload public/uk/demos/calendar.html
+7:26:06 PM [vitepress] (client) page reload public/uk/demos/checkbox.html
+7:26:06 PM [vitepress] (client) page reload public/vi/demos/form-field-group.html
+7:26:06 PM [vitepress] (client) page reload public/uk/demos/close-button.html
+7:26:06 PM [vitepress] (client) page reload public/uk/demos/color-utilities.html
+7:26:06 PM [vitepress] (client) page reload public/uk/demos/components.html
+7:26:06 PM [vitepress] (client) page reload public/uk/demos/context-view.html
+7:26:06 PM [vitepress] (client) page reload public/vi/demos/form-field.html
+7:26:06 PM [vitepress] (client) page reload public/vi/demos/form-messages.html
+7:26:06 PM [vitepress] (client) page reload public/vi/demos/gap.html
+7:26:06 PM [vitepress] (client) page reload public/vi/demos/heading.html
+7:26:06 PM [vitepress] (client) page reload public/vi/demos/icon.html
+7:26:06 PM [vitepress] (client) page reload public/vi/demos/img.html
+7:26:06 PM [vitepress] (client) page reload public/vi/demos/in-place-edit.html
+7:26:06 PM [vitepress] (client) page reload public/vi/demos/layout.html
+7:26:06 PM [vitepress] (client) page reload public/vi/demos/link.html
+7:26:06 PM [vitepress] (client) page reload public/vi/demos/list.html
+7:26:06 PM [vitepress] (client) page reload public/vi/demos/mask.html
+7:26:06 PM [vitepress] (client) page reload public/uk/demos/date-time-inputs.html
+7:26:06 PM [vitepress] (client) page reload public/uk/demos/drawer-layout.html
+7:26:06 PM [vitepress] (client) page reload public/vi/demos/menu.html
+7:26:06 PM [vitepress] (client) page reload public/vi/demos/metric.html
+7:26:06 PM [vitepress] (client) page reload public/vi/demos/modal.html
+7:26:06 PM [vitepress] (client) page reload public/vi/demos/number-input.html
+7:26:06 PM [vitepress] (client) page reload public/uk/demos/elevation.html
+7:26:06 PM [vitepress] (client) page reload public/uk/demos/file-drop.html
+7:26:06 PM [vitepress] (client) page reload public/vi/demos/pagination.html
+7:26:06 PM [vitepress] (client) page reload public/uk/demos/focus-outline.html
+7:26:06 PM [vitepress] (client) page reload public/vi/demos/pendo.html
+7:26:06 PM [vitepress] (client) page reload public/uk/demos/form-field-group.html
+7:26:06 PM [vitepress] (client) page reload public/uk/demos/form-field.html
+7:26:06 PM [vitepress] (client) page reload public/vi/demos/pill.html
+7:26:06 PM [vitepress] (client) page reload public/uk/demos/form-messages.html
+7:26:06 PM [vitepress] (client) page reload public/uk/demos/gap.html
+7:26:06 PM [vitepress] (client) page reload public/uk/demos/heading.html
+7:26:06 PM [vitepress] (client) page reload public/uk/demos/icon.html
+7:26:06 PM [vitepress] (client) page reload public/vi/demos/popover.html
+7:26:06 PM [vitepress] (client) page reload public/uk/demos/img.html
+7:26:06 PM [vitepress] (client) page reload public/vi/demos/progress-circle.html
+7:26:06 PM [vitepress] (client) page reload public/uk/demos/in-place-edit.html
+7:26:06 PM [vitepress] (client) page reload public/vi/demos/progress.html
+7:26:06 PM [vitepress] (client) page reload public/uk/demos/layout.html
+7:26:06 PM [vitepress] (client) page reload public/uk/demos/link.html
+7:26:06 PM [vitepress] (client) page reload public/vi/demos/prose.html
+7:26:06 PM [vitepress] (client) page reload public/uk/demos/list.html
+7:26:06 PM [vitepress] (client) page reload public/uk/demos/mask.html
+7:26:06 PM [vitepress] (client) page reload public/uk/demos/menu.html
+7:26:06 PM [vitepress] (client) page reload public/uk/demos/metric.html
+7:26:06 PM [vitepress] (client) page reload public/uk/demos/modal.html
+7:26:06 PM [vitepress] (client) page reload public/uk/demos/number-input.html
+7:26:06 PM [vitepress] (client) page reload public/uk/demos/pagination.html
+7:26:06 PM [vitepress] (client) page reload public/vi/demos/radio-input-group.html
+7:26:06 PM [vitepress] (client) page reload public/uk/demos/pendo.html
+7:26:06 PM [vitepress] (client) page reload public/vi/demos/radio.html
+7:26:06 PM [vitepress] (client) page reload public/uk/demos/pill.html
+7:26:06 PM [vitepress] (client) page reload public/vi/demos/range-input.html
+7:26:06 PM [vitepress] (client) page reload public/vi/demos/rating.html
+7:26:06 PM [vitepress] (client) page reload public/vi/demos/responsive.html
+7:26:06 PM [vitepress] (client) page reload public/vi/demos/screen-reader-content.html
+7:26:06 PM [vitepress] (client) page reload public/vi/demos/side-nav-bar.html
+7:26:06 PM [vitepress] (client) page reload public/uk/demos/popover.html
+7:26:06 PM [vitepress] (client) page reload public/uk/demos/progress-circle.html
+7:26:06 PM [vitepress] (client) page reload public/uk/demos/progress.html
+7:26:06 PM [vitepress] (client) page reload public/uk/demos/prose.html
+7:26:06 PM [vitepress] (client) page reload public/uk/demos/radio-input-group.html
+7:26:06 PM [vitepress] (client) page reload public/uk/demos/radio.html
+7:26:06 PM [vitepress] (client) page reload public/uk/demos/range-input.html
+7:26:06 PM [vitepress] (client) page reload public/uk/demos/rating.html
+7:26:06 PM [vitepress] (client) page reload public/vi/demos/simple-select.html
+7:26:06 PM [vitepress] (client) page reload public/vi/demos/spacing.html
+7:26:06 PM [vitepress] (client) page reload public/uk/demos/responsive.html
+7:26:06 PM [vitepress] (client) page reload public/uk/demos/screen-reader-content.html
+7:26:06 PM [vitepress] (client) page reload public/uk/demos/side-nav-bar.html
+7:26:06 PM [vitepress] (client) page reload public/vi/demos/spinner.html
+7:26:06 PM [vitepress] (client) page reload public/uk/demos/simple-select.html
+7:26:06 PM [vitepress] (client) page reload public/vi/demos/table.html
+7:26:06 PM [vitepress] (client) page reload public/vi/demos/tabs.html
+7:26:06 PM [vitepress] (client) page reload public/vi/demos/tag.html
+7:26:06 PM [vitepress] (client) page reload public/vi/demos/text-area.html
+7:26:06 PM [vitepress] (client) page reload public/vi/demos/text-input.html
+7:26:06 PM [vitepress] (client) page reload public/vi/demos/text.html
+7:26:06 PM [vitepress] (client) page reload public/uk/demos/spacing.html
+7:26:06 PM [vitepress] (client) page reload public/vi/demos/toggle-details.html
+7:26:06 PM [vitepress] (client) page reload public/uk/demos/spinner.html
+7:26:06 PM [vitepress] (client) page reload public/vi/demos/toggle-group.html
+7:26:06 PM [vitepress] (client) page reload public/vi/demos/token-utilities.html
+7:26:06 PM [vitepress] (client) page reload public/vi/demos/tooltip.html
+7:26:06 PM [vitepress] (client) page reload public/uk/demos/table.html
+7:26:06 PM [vitepress] (client) page reload public/uk/demos/tabs.html
+7:26:06 PM [vitepress] (client) page reload public/uk/demos/tag.html
+7:26:06 PM [vitepress] (client) page reload public/vi/demos/tray.html
+7:26:06 PM [vitepress] (client) page reload public/uk/demos/text-area.html
+7:26:06 PM [vitepress] (client) page reload public/vi/demos/tree-browser.html
+7:26:06 PM [vitepress] (client) page reload public/vi/demos/truncate.html
+7:26:06 PM [vitepress] (client) page reload public/vi/demos/view.html
+7:26:06 PM [vitepress] (client) page reload public/uk/demos/text-input.html
+7:26:06 PM [vitepress] (client) page reload public/uk/demos/text.html
+7:26:06 PM [vitepress] (client) page reload public/cy/demos/alert.html
+7:26:06 PM [vitepress] (client) page reload public/cy/demos/avatar.html
+7:26:06 PM [vitepress] (client) page reload public/cy/demos/badge.html
+7:26:06 PM [vitepress] (client) page reload public/cy/demos/base.html
+7:26:06 PM [vitepress] (client) page reload public/cy/demos/billboard.html
+7:26:06 PM [vitepress] (client) page reload public/cy/demos/breadcrumb.html
+7:26:06 PM [vitepress] (client) page reload public/uk/demos/toggle-details.html
+7:26:06 PM [vitepress] (client) page reload public/cy/demos/button.html
+7:26:06 PM [vitepress] (client) page reload public/cy/demos/byline.html
+7:26:06 PM [vitepress] (client) page reload public/cy/demos/calendar.html
+7:26:06 PM [vitepress] (client) page reload public/cy/demos/checkbox.html
+7:26:06 PM [vitepress] (client) page reload public/cy/demos/close-button.html
+7:26:06 PM [vitepress] (client) page reload public/cy/demos/color-utilities.html
+7:26:06 PM [vitepress] (client) page reload public/cy/demos/components.html
+7:26:06 PM [vitepress] (client) page reload public/uk/demos/toggle-group.html
+7:26:06 PM [vitepress] (client) page reload public/cy/demos/context-view.html
+7:26:06 PM [vitepress] (client) page reload public/cy/demos/date-time-inputs.html
+7:26:06 PM [vitepress] (client) page reload public/cy/demos/drawer-layout.html
+7:26:06 PM [vitepress] (client) page reload public/cy/demos/elevation.html
+7:26:06 PM [vitepress] (client) page reload public/uk/demos/token-utilities.html
+7:26:06 PM [vitepress] (client) page reload public/cy/demos/file-drop.html
+7:26:06 PM [vitepress] (client) page reload public/cy/demos/focus-outline.html
+7:26:06 PM [vitepress] (client) page reload public/uk/demos/tooltip.html
+7:26:06 PM [vitepress] (client) page reload public/cy/demos/form-field-group.html
+7:26:06 PM [vitepress] (client) page reload public/cy/demos/form-field.html
+7:26:06 PM [vitepress] (client) page reload public/uk/demos/tray.html
+7:26:06 PM [vitepress] (client) page reload public/cy/demos/form-messages.html
+7:26:06 PM [vitepress] (client) page reload public/uk/demos/tree-browser.html
+7:26:06 PM [vitepress] (client) page reload public/uk/demos/truncate.html
+7:26:06 PM [vitepress] (client) page reload public/cy/demos/gap.html
+7:26:06 PM [vitepress] (client) page reload public/uk/demos/view.html
+7:26:06 PM [vitepress] (client) page reload public/cy/demos/heading.html
+7:26:06 PM [vitepress] (client) page reload public/cy/demos/icon.html
+7:26:06 PM [vitepress] (client) page reload public/vi/demos/alert.html
+7:26:06 PM [vitepress] (client) page reload public/cy/demos/img.html
+7:26:06 PM [vitepress] [orchestrator] @pantoken/docs#demo-snippets — done.
+7:26:06 PM [vitepress] (client) page reload public/vi/demos/avatar.html
+7:26:06 PM [vitepress] (client) page reload public/vi/demos/badge.html
+7:26:06 PM [vitepress] (client) page reload public/vi/demos/base.html
+7:26:06 PM [vitepress] (client) page reload public/vi/demos/billboard.html
+7:26:06 PM [vitepress] (client) page reload public/vi/demos/breadcrumb.html
+7:26:06 PM [vitepress] (client) page reload public/vi/demos/button.html
+7:26:06 PM [vitepress] (client) page reload public/vi/demos/byline.html
+7:26:06 PM [vitepress] (client) page reload public/vi/demos/calendar.html
+7:26:06 PM [vitepress] (client) page reload public/vi/demos/checkbox.html
+7:26:06 PM [vitepress] (client) page reload public/vi/demos/close-button.html
+7:26:06 PM [vitepress] (client) page reload public/vi/demos/color-utilities.html
+7:26:06 PM [vitepress] (client) page reload public/vi/demos/components.html
+7:26:06 PM [vitepress] (client) page reload public/vi/demos/context-view.html
+7:26:06 PM [vitepress] (client) page reload public/vi/demos/date-time-inputs.html
+7:26:06 PM [vitepress] (client) page reload public/vi/demos/drawer-layout.html
+7:26:06 PM [vitepress] (client) page reload public/vi/demos/elevation.html
+7:26:06 PM [vitepress] (client) page reload public/vi/demos/file-drop.html
+7:26:06 PM [vitepress] (client) page reload public/vi/demos/focus-outline.html
+7:26:06 PM [vitepress] (client) page reload public/vi/demos/form-field-group.html
+7:26:06 PM [vitepress] (client) page reload public/vi/demos/form-field.html
+7:26:06 PM [vitepress] (client) page reload public/vi/demos/form-messages.html
+7:26:06 PM [vitepress] (client) page reload public/vi/demos/gap.html
+7:26:06 PM [vitepress] (client) page reload public/vi/demos/heading.html
+7:26:06 PM [vitepress] (client) page reload public/vi/demos/icon.html
+7:26:06 PM [vitepress] (client) page reload public/vi/demos/img.html
+7:26:06 PM [vitepress] (client) page reload public/vi/demos/in-place-edit.html
+7:26:06 PM [vitepress] (client) page reload public/vi/demos/layout.html
+7:26:06 PM [vitepress] (client) page reload public/vi/demos/link.html
+7:26:06 PM [vitepress] (client) page reload public/vi/demos/list.html
+7:26:06 PM [vitepress] (client) page reload public/vi/demos/mask.html
+7:26:06 PM [vitepress] (client) page reload public/vi/demos/menu.html
+7:26:06 PM [vitepress] (client) page reload public/vi/demos/metric.html
+7:26:06 PM [vitepress] (client) page reload public/vi/demos/modal.html
+7:26:06 PM [vitepress] (client) page reload public/vi/demos/number-input.html
+7:26:06 PM [vitepress] (client) page reload public/vi/demos/pagination.html
+7:26:06 PM [vitepress] (client) page reload public/vi/demos/pendo.html
+7:26:06 PM [vitepress] (client) page reload public/vi/demos/pill.html
+7:26:06 PM [vitepress] (client) page reload public/vi/demos/popover.html
+7:26:06 PM [vitepress] (client) page reload public/vi/demos/progress-circle.html
+7:26:06 PM [vitepress] (client) page reload public/vi/demos/progress.html
+7:26:06 PM [vitepress] (client) page reload public/vi/demos/prose.html
+7:26:06 PM [vitepress] (client) page reload public/vi/demos/radio-input-group.html
+7:26:06 PM [vitepress] (client) page reload public/vi/demos/radio.html
+7:26:06 PM [vitepress] (client) page reload public/vi/demos/range-input.html
+7:26:06 PM [vitepress] (client) page reload public/vi/demos/rating.html
+7:26:06 PM [vitepress] (client) page reload public/vi/demos/responsive.html
+7:26:06 PM [vitepress] (client) page reload public/vi/demos/screen-reader-content.html
+7:26:06 PM [vitepress] (client) page reload public/vi/demos/side-nav-bar.html
+7:26:06 PM [vitepress] (client) page reload public/vi/demos/simple-select.html
+7:26:06 PM [vitepress] (client) page reload public/vi/demos/spacing.html
+7:26:06 PM [vitepress] (client) page reload public/vi/demos/spinner.html
+7:26:06 PM [vitepress] (client) page reload public/vi/demos/table.html
+7:26:06 PM [vitepress] (client) page reload public/vi/demos/tabs.html
+7:26:06 PM [vitepress] (client) page reload public/vi/demos/tag.html
+7:26:06 PM [vitepress] (client) page reload public/vi/demos/text-area.html
+7:26:06 PM [vitepress] (client) page reload public/vi/demos/text-input.html
+7:26:06 PM [vitepress] (client) page reload public/vi/demos/text.html
+7:26:06 PM [vitepress] (client) page reload public/vi/demos/toggle-details.html
+7:26:06 PM [vitepress] (client) page reload public/vi/demos/toggle-group.html
+7:26:06 PM [vitepress] (client) page reload public/vi/demos/token-utilities.html
+7:26:06 PM [vitepress] (client) page reload public/vi/demos/tooltip.html
+7:26:06 PM [vitepress] (client) page reload public/vi/demos/tray.html
+7:26:06 PM [vitepress] (client) page reload public/vi/demos/tree-browser.html
+7:26:06 PM [vitepress] (client) page reload public/vi/demos/truncate.html
+7:26:06 PM [vitepress] (client) page reload public/vi/demos/view.html
+7:26:06 PM [vitepress] (client) page reload public/cy/demos/alert.html
+7:26:06 PM [vitepress] (client) page reload public/cy/demos/avatar.html
+7:26:06 PM [vitepress] (client) page reload public/cy/demos/badge.html
+7:26:06 PM [vitepress] (client) page reload public/cy/demos/base.html
+7:26:06 PM [vitepress] (client) page reload public/cy/demos/billboard.html
+7:26:06 PM [vitepress] (client) page reload public/cy/demos/breadcrumb.html
+7:26:06 PM [vitepress] (client) page reload public/cy/demos/button.html
+7:26:06 PM [vitepress] (client) page reload public/cy/demos/byline.html
+7:26:06 PM [vitepress] (client) page reload public/cy/demos/calendar.html
+7:26:06 PM [vitepress] (client) page reload public/cy/demos/checkbox.html
+7:26:06 PM [vitepress] (client) page reload public/cy/demos/close-button.html
+7:26:06 PM [vitepress] (client) page reload public/cy/demos/color-utilities.html
+7:26:06 PM [vitepress] (client) page reload public/cy/demos/components.html
+7:26:06 PM [vitepress] (client) page reload public/cy/demos/context-view.html
+7:26:06 PM [vitepress] (client) page reload public/cy/demos/date-time-inputs.html
+7:26:06 PM [vitepress] (client) page reload public/cy/demos/drawer-layout.html
+7:26:06 PM [vitepress] (client) page reload public/cy/demos/elevation.html
+7:26:06 PM [vitepress] (client) page reload public/cy/demos/file-drop.html
+7:26:06 PM [vitepress] (client) page reload public/cy/demos/focus-outline.html
+7:26:06 PM [vitepress] (client) page reload public/cy/demos/form-field-group.html
+7:26:06 PM [vitepress] (client) page reload public/cy/demos/form-field.html
+7:26:06 PM [vitepress] (client) page reload public/cy/demos/form-messages.html
+7:26:06 PM [vitepress] (client) page reload public/cy/demos/gap.html
+7:26:06 PM [vitepress] (client) page reload public/cy/demos/heading.html
+7:26:06 PM [vitepress] (client) page reload public/cy/demos/icon.html
+7:26:06 PM [vitepress] (client) page reload public/cy/demos/img.html
+7:26:06 PM [vitepress] (client) page reload public/cy/demos/in-place-edit.html
+7:26:06 PM [vitepress] (client) page reload public/cy/demos/layout.html
+7:26:06 PM [vitepress] (client) page reload public/cy/demos/link.html
+7:26:06 PM [vitepress] (client) page reload public/cy/demos/list.html
+7:26:06 PM [vitepress] (client) page reload public/cy/demos/mask.html
+7:26:06 PM [vitepress] (client) page reload public/cy/demos/menu.html
+7:26:06 PM [vitepress] (client) page reload public/cy/demos/metric.html
+7:26:06 PM [vitepress] (client) page reload public/cy/demos/modal.html
+7:26:06 PM [vitepress] (client) page reload public/cy/demos/number-input.html
+7:26:06 PM [vitepress] (client) page reload public/cy/demos/pagination.html
+7:26:06 PM [vitepress] (client) page reload public/cy/demos/pendo.html
+7:26:06 PM [vitepress] (client) page reload public/cy/demos/pill.html
+7:26:06 PM [vitepress] (client) page reload public/cy/demos/popover.html
+7:26:06 PM [vitepress] (client) page reload public/cy/demos/progress-circle.html
+7:26:06 PM [vitepress] (client) page reload public/cy/demos/progress.html
+7:26:06 PM [vitepress] (client) page reload public/cy/demos/prose.html
+7:26:06 PM [vitepress] (client) page reload public/cy/demos/radio-input-group.html
+7:26:06 PM [vitepress] (client) page reload public/cy/demos/radio.html
+7:26:06 PM [vitepress] (client) page reload public/cy/demos/range-input.html
+7:26:06 PM [vitepress] (client) page reload public/cy/demos/rating.html
+7:26:06 PM [vitepress] (client) page reload public/cy/demos/responsive.html
+7:26:06 PM [vitepress] (client) page reload public/cy/demos/screen-reader-content.html
+7:26:06 PM [vitepress] (client) page reload public/cy/demos/side-nav-bar.html
+7:26:06 PM [vitepress] (client) page reload public/cy/demos/simple-select.html
+7:26:06 PM [vitepress] (client) page reload public/cy/demos/spacing.html
+7:26:06 PM [vitepress] (client) page reload public/cy/demos/spinner.html
+7:26:06 PM [vitepress] (client) page reload public/cy/demos/table.html
+7:26:06 PM [vitepress] (client) page reload public/cy/demos/tabs.html
+7:26:06 PM [vitepress] (client) page reload public/cy/demos/tag.html
+7:26:06 PM [vitepress] (client) page reload public/cy/demos/text-area.html
+7:26:06 PM [vitepress] (client) page reload public/cy/demos/text-input.html
+7:26:06 PM [vitepress] (client) page reload public/cy/demos/text.html
+7:26:06 PM [vitepress] (client) page reload public/cy/demos/toggle-details.html
+7:26:06 PM [vitepress] (client) page reload public/cy/demos/toggle-group.html
+7:26:06 PM [vitepress] (client) page reload public/cy/demos/token-utilities.html
+7:26:06 PM [vitepress] (client) page reload public/cy/demos/tooltip.html
+7:26:06 PM [vitepress] (client) page reload public/cy/demos/tray.html
+7:26:06 PM [vitepress] (client) page reload public/cy/demos/tree-browser.html
+7:26:06 PM [vitepress] (client) page reload public/cy/demos/truncate.html
+7:26:06 PM [vitepress] (client) page reload public/cy/demos/view.html
+✓ CSS API: wrote 109 record page(s) to api/css/ + merged the CSS section into the TypeDoc sidebar
+7:26:07 PM [vitepress] (client) hmr update /api/css/index.md
+7:26:07 PM [vitepress] (client) hmr update /api/css/segmented-control.md
+7:26:08 PM [vitepress] [orchestrator] @pantoken/docs#docs:api:css — done.
+7:26:44 PM [vitepress] 
+[orchestrator] @pantoken/plugin-custom-components#styles — building…
+✓ custom-components: wrote /custom-components/src/generated/component-styles.ts (9 record(s))
+7:26:44 PM [vitepress] [orchestrator] @pantoken/plugin-custom-components#styles — done.
+7:26:44 PM [vitepress] 
+[orchestrator] @pantoken/plugin-custom-components — building…
+✓ custom-components: wrote custom-components.css + _records.css
+7:26:44 PM [vitepress] [orchestrator] @pantoken/plugin-custom-components — done.
+7:26:44 PM [vitepress] (client) hmr update /@fs/Users/dwahl/Scripts/pantoken/plugins/pantoken/custom-components/generated/custom-components.css, /@fs/Users/dwahl/Scripts/pantoken/plugins/pantoken/custom-components/generated/custom-components.css?direct
+7:26:45 PM [vitepress] 
+[orchestrator] @pantoken/docs#docs:api:css — building…
+7:26:45 PM [vitepress] 
+[orchestrator] @pantoken/docs#plugin-assets — building…
+✓ plugin-assets: staged 4 sheet(s) to public/demos-assets/
+7:26:45 PM [vitepress] [orchestrator] @pantoken/docs#plugin-assets — done.
+7:26:45 PM [vitepress] (client) hmr update /@fs/Users/dwahl/Scripts/pantoken/plugins/pantoken/custom-components/generated/custom-components.css, /@fs/Users/dwahl/Scripts/pantoken/plugins/pantoken/custom-components/generated/custom-components.css?direct
+✓ CSS API: wrote 109 record page(s) to api/css/ + merged the CSS section into the TypeDoc sidebar
+7:26:46 PM [vitepress] (client) hmr update /api/css/segmented-control.md
+7:26:46 PM [vitepress] (client) hmr update /api/css/index.md
+7:26:47 PM [vitepress] [orchestrator] @pantoken/docs#docs:api:css — done.
+8:01:40 PM [vitepress] (client) hmr update /api/css/segmented-control.md
+8:01:40 PM [vitepress] (client) hmr update /api/css/index.md
+8:02:29 PM [vitepress] (client) hmr update /api/css/index.md (x2)
+8:02:29 PM [vitepress] (client) hmr update /api/css/segmented-control.md
+8:06:16 PM [vitepress] 
+[orchestrator] @pantoken/plugin-custom-components#styles — building…
+✓ custom-components: wrote /custom-components/src/generated/component-styles.ts (9 record(s))
+8:06:16 PM [vitepress] [orchestrator] @pantoken/plugin-custom-components#styles — done.
+8:06:16 PM [vitepress] 
+[orchestrator] @pantoken/plugin-custom-components — building…
+✓ custom-components: wrote custom-components.css + _records.css
+8:06:17 PM [vitepress] [orchestrator] @pantoken/plugin-custom-components — done.
+8:06:17 PM [vitepress] (client) hmr update /@fs/Users/dwahl/Scripts/pantoken/plugins/pantoken/custom-components/generated/custom-components.css, /@fs/Users/dwahl/Scripts/pantoken/plugins/pantoken/custom-components/generated/custom-components.css?direct
+8:06:17 PM [vitepress] 
+[orchestrator] @pantoken/docs#docs:api:css — building…
+8:06:17 PM [vitepress] 
+[orchestrator] @pantoken/docs#plugin-assets — building…
+✓ plugin-assets: staged 4 sheet(s) to public/demos-assets/
+8:06:17 PM [vitepress] [orchestrator] @pantoken/docs#plugin-assets — done.
+8:06:17 PM [vitepress] (client) hmr update /@fs/Users/dwahl/Scripts/pantoken/plugins/pantoken/custom-components/generated/custom-components.css, /@fs/Users/dwahl/Scripts/pantoken/plugins/pantoken/custom-components/generated/custom-components.css?direct
+✓ CSS API: wrote 109 record page(s) to api/css/ + merged the CSS section into the TypeDoc sidebar
+8:06:18 PM [vitepress] (client) hmr update /api/css/index.md
+8:06:18 PM [vitepress] (client) hmr update /api/css/segmented-control.md
+8:06:19 PM [vitepress] [orchestrator] @pantoken/docs#docs:api:css — done.
+8:06:19 PM [vitepress] 
+[orchestrator] @pantoken/plugin-custom-components#styles — building…
+✓ custom-components: wrote /custom-components/src/generated/component-styles.ts (9 record(s))
+8:06:19 PM [vitepress] [orchestrator] @pantoken/plugin-custom-components#styles — done.
+8:06:19 PM [vitepress] 
+[orchestrator] @pantoken/plugin-custom-components — building…
+✓ custom-components: wrote custom-components.css + _records.css
+8:06:20 PM [vitepress] [orchestrator] @pantoken/plugin-custom-components — done.
+8:06:20 PM [vitepress] (client) hmr update /@fs/Users/dwahl/Scripts/pantoken/plugins/pantoken/custom-components/generated/custom-components.css, /@fs/Users/dwahl/Scripts/pantoken/plugins/pantoken/custom-components/generated/custom-components.css?direct
+8:06:20 PM [vitepress] (client) hmr update /@fs/Users/dwahl/Scripts/pantoken/plugins/pantoken/custom-components/generated/custom-components.css, /@fs/Users/dwahl/Scripts/pantoken/plugins/pantoken/custom-components/generated/custom-components.css?direct (x2)
+8:06:20 PM [vitepress] 
+[orchestrator] @pantoken/docs#docs:api:css — building…
+8:06:20 PM [vitepress] 
+[orchestrator] @pantoken/docs#plugin-assets — building…
+✓ plugin-assets: staged 4 sheet(s) to public/demos-assets/
+8:06:20 PM [vitepress] [orchestrator] @pantoken/docs#plugin-assets — done.
+✓ CSS API: wrote 109 record page(s) to api/css/ + merged the CSS section into the TypeDoc sidebar
+8:06:20 PM [vitepress] (client) hmr update /api/css/index.md
+8:06:20 PM [vitepress] (client) hmr update /api/css/segmented-control.md
+8:06:21 PM [vitepress] [orchestrator] @pantoken/docs#docs:api:css — done.
+8:06:24 PM [vitepress] (client) hmr update /@fs/Users/dwahl/Scripts/pantoken/plugins/pantoken/custom-components/generated/custom-components.css, /@fs/Users/dwahl/Scripts/pantoken/plugins/pantoken/custom-components/generated/custom-components.css?direct
+8:06:24 PM [vitepress] (client) hmr update /@fs/Users/dwahl/Scripts/pantoken/plugins/pantoken/custom-components/generated/custom-components.css, /@fs/Users/dwahl/Scripts/pantoken/plugins/pantoken/custom-components/generated/custom-components.css?direct (x2)
+8:07:34 PM [vitepress] 
+[orchestrator] @pantoken/plugin-custom-components#styles — building…
+✓ custom-components: wrote /custom-components/src/generated/component-styles.ts (9 record(s))
+8:07:34 PM [vitepress] [orchestrator] @pantoken/plugin-custom-components#styles — done.
+8:07:35 PM [vitepress] 
+[orchestrator] @pantoken/plugin-custom-components — building…
+✓ custom-components: wrote custom-components.css + _records.css
+8:07:35 PM [vitepress] [orchestrator] @pantoken/plugin-custom-components — done.
+8:07:35 PM [vitepress] (client) hmr update /@fs/Users/dwahl/Scripts/pantoken/plugins/pantoken/custom-components/generated/custom-components.css, /@fs/Users/dwahl/Scripts/pantoken/plugins/pantoken/custom-components/generated/custom-components.css?direct
+8:07:35 PM [vitepress] 
+[orchestrator] @pantoken/docs#docs:api:css — building…
+8:07:35 PM [vitepress] 
+[orchestrator] @pantoken/docs#plugin-assets — building…
+8:07:35 PM [vitepress] (client) hmr update /@fs/Users/dwahl/Scripts/pantoken/plugins/pantoken/custom-components/generated/custom-components.css, /@fs/Users/dwahl/Scripts/pantoken/plugins/pantoken/custom-components/generated/custom-components.css?direct
+✓ plugin-assets: staged 4 sheet(s) to public/demos-assets/
+8:07:35 PM [vitepress] [orchestrator] @pantoken/docs#plugin-assets — done.
+✓ CSS API: wrote 109 record page(s) to api/css/ + merged the CSS section into the TypeDoc sidebar
+8:07:36 PM [vitepress] (client) hmr update /api/css/index.md
+8:07:36 PM [vitepress] (client) hmr update /api/css/segmented-control.md
+8:07:37 PM [vitepress] [orchestrator] @pantoken/docs#docs:api:css — done.
+
+<--- Last few GCs --->
+
+[36678:0xaf140c000] 19561871 ms: Scavenge 4006.6 (4077.7) -> 3979.4 (4080.0) MB, pooled: 0.0 MB, 3.72 / 0.00 ms (average mu = 0.361, current mu = 0.345) allocation failure; 
+[36678:0xaf140c000] 19564754 ms: Incremental Mark-Compact (reduce) 4005.7 (4080.4) -> 3929.6 (3992.7) MB, pooled: 0.0 MB, 366.16 / 0.00 ms (+ 2127.7 ms in 413 steps since start of marking, biggest step 11.5 ms, walltime since start of marking 2883 ms) (av
+FATAL ERROR: Ineffective mark-compacts near heap limit Allocation failed - JavaScript heap out of memory
+----- Native stack trace -----
+
+ 1: 0x104df9960 node::(anonymous namespace)::DefaultAbortHandler(char const*, char const*) [/Users/dwahl/.local/share/vite-plus/js_runtime/node/26.10.0/bin/node]
+ 2: 0x104df9bbc node::OOMErrorHandler(char const*, v8::OOMDetails const&) [/Users/dwahl/.local/share/vite-plus/js_runtime/node/26.10.0/bin/node]
+ 3: 0x10505a5e0 v8::internal::V8::FatalProcessOutOfMemory(v8::internal::Isolate*, char const*, v8::OOMDetails const&) [/Users/dwahl/.local/share/vite-plus/js_runtime/node/26.10.0/bin/node]
+ 4: 0x1052ba624 v8::internal::Heap::stack() [/Users/dwahl/.local/share/vite-plus/js_runtime/node/26.10.0/bin/node]
+ 5: 0x1052b88b8 v8::internal::Heap::CollectGarbage(v8::internal::AllocationSpace, v8::internal::GarbageCollectionReason, v8::GCCallbackFlags, v8::internal::PerformHeapLimitCheck, v8::internal::PerformIneffectiveMarkCompactCheck) [/Users/dwahl/.local/share/vite-plus/js_runtime/node/26.10.0/bin/node]
+ 6: 0x10520cf80 v8::internal::StackGuard::HandleInterrupts(v8::internal::StackGuard::InterruptLevel) [/Users/dwahl/.local/share/vite-plus/js_runtime/node/26.10.0/bin/node]
+ 7: 0x1056faed8 v8::internal::Runtime_HandleNoHeapWritesInterrupts(int, unsigned long*, v8::internal::Isolate*) [/Users/dwahl/.local/share/vite-plus/js_runtime/node/26.10.0/bin/node]
+ 8: 0x105dcccac Builtins_CEntry_Return1_ArgvOnStack_NoBuiltinExit [/Users/dwahl/.local/share/vite-plus/js_runtime/node/26.10.0/bin/node]
+ 9: 0x11aa0fa64 
+10: 0x11aa1cf48 
+11: 0x11b53a118 
+12: 0x11b1e8f50 
+13: 0x11aa1ef90 
+14: 0x105d26788 Builtins_JSEntryTrampoline [/Users/dwahl/.local/share/vite-plus/js_runtime/node/26.10.0/bin/node]
+15: 0x105d26478 Builtins_JSEntry [/Users/dwahl/.local/share/vite-plus/js_runtime/node/26.10.0/bin/node]
+16: 0x1051daed8 v8::internal::(anonymous namespace)::Invoke(v8::internal::Isolate*, v8::internal::(anonymous namespace)::InvokeParams const&) [/Users/dwahl/.local/share/vite-plus/js_runtime/node/26.10.0/bin/node]
+17: 0x1051da8ac v8::internal::Execution::Call(v8::internal::Isolate*, v8::internal::DirectHandle<v8::internal::Object>, v8::internal::DirectHandle<v8::internal::Object>, v8::base::Vector<v8::internal::DirectHandle<v8::internal::Object> const>) [/Users/dwahl/.local/share/vite-plus/js_runtime/node/26.10.0/bin/node]
+18: 0x10506ad70 v8::Function::Call(v8::Isolate*, v8::Local<v8::Context>, v8::Local<v8::Value>, int, v8::Local<v8::Value>*) [/Users/dwahl/.local/share/vite-plus/js_runtime/node/26.10.0/bin/node]
+19: 0x104cef550 node::InternalMakeCallback(node::Environment*, v8::Local<v8::Object>, v8::Local<v8::Object>, v8::Local<v8::Function>, int, v8::Local<v8::Value>*, node::async_context, v8::Local<v8::Value>) [/Users/dwahl/.local/share/vite-plus/js_runtime/node/26.10.0/bin/node]
+20: 0x104d0367c node::AsyncWrap::MakeCallback(v8::Local<v8::Function>, int, v8::Local<v8::Value>*) [/Users/dwahl/.local/share/vite-plus/js_runtime/node/26.10.0/bin/node]
+21: 0x104e007b4 node::fs::FSReqCallback::Resolve(v8::Local<v8::Value>) [/Users/dwahl/.local/share/vite-plus/js_runtime/node/26.10.0/bin/node]
+22: 0x104e029bc node::fs::AfterScanDir(uv_fs_s*) [/Users/dwahl/.local/share/vite-plus/js_runtime/node/26.10.0/bin/node]
+23: 0x104defd60 node::MakeLibuvRequestCallback<uv_fs_s, void (*)(uv_fs_s*)>::Wrapper(uv_fs_s*) [/Users/dwahl/.local/share/vite-plus/js_runtime/node/26.10.0/bin/node]
+24: 0x105d031c0 uv__work_done [/Users/dwahl/.local/share/vite-plus/js_runtime/node/26.10.0/bin/node]
+25: 0x105d06b88 uv__async_io [/Users/dwahl/.local/share/vite-plus/js_runtime/node/26.10.0/bin/node]
+26: 0x105d1b484 uv__io_poll [/Users/dwahl/.local/share/vite-plus/js_runtime/node/26.10.0/bin/node]
+27: 0x105d07448 uv_run [/Users/dwahl/.local/share/vite-plus/js_runtime/node/26.10.0/bin/node]
+28: 0x104cf083c node::SpinEventLoopInternal(node::Environment*) [/Users/dwahl/.local/share/vite-plus/js_runtime/node/26.10.0/bin/node]
+29: 0x10731e3fc node::NodeMainInstance::Run() (.cold.1) [/Users/dwahl/.local/share/vite-plus/js_runtime/node/26.10.0/bin/node]
+30: 0x104e459a0 node::NodeMainInstance::Run() [/Users/dwahl/.local/share/vite-plus/js_runtime/node/26.10.0/bin/node]
+31: 0x104db4c68 node::Start(int, char**) [/Users/dwahl/.local/share/vite-plus/js_runtime/node/26.10.0/bin/node]
+32: 0x18b5184e4 start [/usr/lib/dyld]
+[1]    36656 abort      npx vitepress dev --host 0.0.0.0 --strictPort --port 5173
