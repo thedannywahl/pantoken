@@ -18,7 +18,13 @@ describe("docs.guides PO migration", () => {
     for (const locale of locales) {
       const entries = parsePo(readFileSync(join(root, "l10n", locale, "docs.guides.po"), "utf8"));
       const translations = new Map(
-        entries.filter((entry) => !entry.obsolete).map((entry) => [entry.msgid, entry.msgstr]),
+        entries
+          .filter(
+            (entry) =>
+              !entry.obsolete &&
+              entry.references.some((reference) => reference.startsWith("guide/")),
+          )
+          .map((entry) => [entry.msgid, entry.msgstr]),
       );
       for (const file of files) {
         const source = readFileSync(join(root, "docs", file), "utf8");
