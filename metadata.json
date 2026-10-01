@@ -1,0 +1,45 @@
+{
+  "cli_version": "0.11.3",
+  "checkpoint_id": "01M3TH4DA2A0Z0XVJYMY05HNFE",
+  "strategy": "manual-commit",
+  "branch": "release-compatibility",
+  "checkpoints_count": 7,
+  "files_touched": [
+    ".changeset/skeleton-loader-explicit-defaults.md",
+    ".fallowrc.jsonc",
+    "docs/ar/guide/plugins.md",
+    "docs/demos/skeleton-loader/index.html",
+    "docs/guide/plugins.md",
+    "docs/package.json",
+    "formats/interactions/src/components/segmented-control.ts",
+    "formats/interactions/src/components/skeleton-loader.ts",
+    "formats/interactions/tests/segmented-control.test.ts",
+    "l10n/docs.api.pot",
+    "package.json",
+    "plugins/pantoken/custom-components/scripts/generate-model.test.ts",
+    "plugins/pantoken/custom-components/src/components/skeleton-loader/skeleton-loader.css",
+    "plugins/pantoken/custom-components/tests/index.test.ts",
+    "pnpm-lock.yaml",
+    "pnpm-workspace.yaml",
+    "renderers/css-in-js/package.json",
+    "renderers/mui/package.json",
+    "renderers/tinymce/package.json",
+    "renderers/vue/package.json"
+  ],
+  "sessions": [
+    {
+      "metadata": "/0/metadata.json",
+      "transcript": "/0/full.jsonl",
+      "compact_transcript": "/0/transcript.jsonl",
+      "content_hash": "/0/content_hash.txt",
+      "prompt": "/0/prompt.txt"
+    }
+  ],
+  "token_usage": {
+    "input_tokens": 0,
+    "cache_creation_tokens": 0,
+    "cache_read_tokens": 0,
+    "output_tokens": 0,
+    "api_call_count": 0
+  }
+}

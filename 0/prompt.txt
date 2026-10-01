@@ -1,0 +1,37 @@
+we need to address all the cssdoc warnings in this file, update tests and assertions to match.
+
+---
+
+the implicit modifiers should be explicitly declared in the docblock and in the styles.
+
+---
+
+they can be the implicit defaults still, but they can also be explicitly declared.
+
+---
+
+this structure seems overly complex / deep
+
+---
+
+no, I mean the whole thing, not just the documented structure. why do we need 3 depths?
+
+---
+
+continue
+
+---
+
+we can update the api / etc. because this has never been published yet, we can do a total teardown, etc.
+
+---
+
+is .shape where we chain the type modifier?
+
+---
+
+yes, cssdoc supports `members`
+
+---
+
+make this a more meaningful example, right now this just renders 3 identical full-width text rows.

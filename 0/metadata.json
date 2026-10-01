@@ -1,0 +1,184 @@
+{
+  "cli_version": "0.11.3",
+  "checkpoint_id": "01M3TH4DA2A0Z0XVJYMY05HNFE",
+  "session_id": "f388ea7e-f53f-4104-825e-abdcc29209b3",
+  "strategy": "manual-commit",
+  "created_at": "2026-10-01T01:26:46.840024Z",
+  "branch": "release-compatibility",
+  "checkpoints_count": 7,
+  "save_step_count": 6,
+  "files_touched": [
+    ".changeset/skeleton-loader-explicit-defaults.md",
+    ".fallowrc.jsonc",
+    "docs/ar/guide/plugins.md",
+    "docs/demos/skeleton-loader/index.html",
+    "docs/guide/plugins.md",
+    "docs/package.json",
+    "formats/interactions/src/components/segmented-control.ts",
+    "formats/interactions/src/components/skeleton-loader.ts",
+    "formats/interactions/tests/segmented-control.test.ts",
+    "l10n/docs.api.pot",
+    "package.json",
+    "plugins/pantoken/custom-components/scripts/generate-model.test.ts",
+    "plugins/pantoken/custom-components/src/components/skeleton-loader/skeleton-loader.css",
+    "plugins/pantoken/custom-components/tests/index.test.ts",
+    "pnpm-lock.yaml",
+    "pnpm-workspace.yaml",
+    "renderers/css-in-js/package.json",
+    "renderers/mui/package.json",
+    "renderers/tinymce/package.json",
+    "renderers/vue/package.json"
+  ],
+  "agent": "Copilot CLI",
+  "model": "",
+  "turn_id": "9088ca46598f",
+  "compact_transcript_start": 0,
+  "token_usage": {
+    "input_tokens": 0,
+    "cache_creation_tokens": 0,
+    "cache_read_tokens": 0,
+    "output_tokens": 0,
+    "api_call_count": 0
+  },
+  "session_metrics": {
+    "turn_count": 7
+  },
+  "initial_attribution": {
+    "calculated_at": "2026-10-01T01:26:46.831422Z",
+    "agent_lines": 0,
+    "agent_removed": 0,
+    "human_added": 33,
+    "human_modified": 144,
+    "human_removed": 0,
+    "total_committed": 62,
+    "total_lines_changed": 228,
+    "agent_percentage": 0,
+    "metric_version": 2
+  },
+  "prompt_attributions": [
+    {
+      "checkpoint_number": 1,
+      "user_lines_added": 7965,
+      "user_lines_removed": 146,
+      "agent_lines_added": 0,
+      "agent_lines_removed": 0,
+      "user_added_per_file": {
+        ".fallowrc.jsonc": 5,
+        "docs/ar/guide/plugins.md": 102,
+        "docs/package.json": 1,
+        "l10n/ar/docs.guides.po": 8,
+        "l10n/ca/docs.guides.po": 3760,
+        "l10n/docs.api.pot": 66,
+        "l10n/docs.guides.pot": 3,
+        "l10n/hy/docs.guides.po": 3693,
+        "package.json": 3,
+        "plugins/pantoken/custom-components/scripts/generate-model.test.ts": 5,
+        "plugins/pantoken/custom-components/src/components/skeleton-loader/skeleton-loader.css": 15,
+        "plugins/pantoken/custom-components/tests/index.test.ts": 2,
+        "pnpm-lock.yaml": 289,
+        "pnpm-workspace.yaml": 4,
+        "renderers/css-in-js/package.json": 4,
+        "renderers/mui/package.json": 3,
+        "renderers/tinymce/package.json": 1,
+        "renderers/vue/package.json": 1
+      },
+      "user_removed_per_file": {
+        ".fallowrc.jsonc": 5,
+        "docs/ar/guide/plugins.md": 34,
+        "formats/interactions/src/components/segmented-control.ts": 1,
+        "formats/interactions/src/components/skeleton-loader.ts": 1,
+        "l10n/ar/docs.guides.po": 3,
+        "l10n/ca/docs.guides.po": 23,
+        "l10n/docs.api.pot": 28,
+        "l10n/docs.guides.pot": 3,
+        "l10n/hy/docs.guides.po": 23,
+        "package.json": 1,
+        "plugins/pantoken/custom-components/scripts/generate-model.test.ts": 1,
+        "plugins/pantoken/custom-components/src/components/skeleton-loader/skeleton-loader.css": 17,
+        "plugins/pantoken/custom-components/tests/index.test.ts": 3,
+        "pnpm-lock.yaml": 3
+      }
+    },
+    {
+      "checkpoint_number": 2,
+      "user_lines_added": 14,
+      "user_lines_removed": 2,
+      "agent_lines_added": 7981,
+      "agent_lines_removed": 144,
+      "user_added_per_file": {
+        ".changeset/skeleton-loader-explicit-defaults.md": 1,
+        "l10n/docs.api.pot": 13
+      },
+      "user_removed_per_file": {
+        ".changeset/skeleton-loader-explicit-defaults.md": 1,
+        "l10n/docs.api.pot": 1
+      }
+    },
+    {
+      "checkpoint_number": 3,
+      "user_lines_added": 20,
+      "user_lines_removed": 24,
+      "agent_lines_added": 7988,
+      "agent_lines_removed": 143,
+      "user_added_per_file": {
+        ".changeset/skeleton-loader-explicit-defaults.md": 1,
+        "docs/ar/guide/plugins.md": 2,
+        "docs/demos/skeleton-loader/index.html": 5,
+        "docs/guide/plugins.md": 2,
+        "l10n/docs.api.pot": 1,
+        "plugins/pantoken/custom-components/src/components/skeleton-loader/skeleton-loader.css": 8,
+        "plugins/pantoken/custom-components/tests/index.test.ts": 1
+      },
+      "user_removed_per_file": {
+        ".changeset/skeleton-loader-explicit-defaults.md": 1,
+        "docs/ar/guide/plugins.md": 2,
+        "docs/demos/skeleton-loader/index.html": 5,
+        "docs/guide/plugins.md": 2,
+        "l10n/docs.api.pot": 7,
+        "plugins/pantoken/custom-components/src/components/skeleton-loader/skeleton-loader.css": 6,
+        "plugins/pantoken/custom-components/tests/index.test.ts": 1
+      }
+    },
+    {
+      "checkpoint_number": 4,
+      "user_lines_added": 1,
+      "user_lines_removed": 1,
+      "agent_lines_added": 7997,
+      "agent_lines_removed": 156,
+      "user_added_per_file": {
+        ".changeset/skeleton-loader-explicit-defaults.md": 1
+      },
+      "user_removed_per_file": {
+        ".changeset/skeleton-loader-explicit-defaults.md": 1
+      }
+    },
+    {
+      "checkpoint_number": 5,
+      "user_lines_added": 1,
+      "user_lines_removed": 1,
+      "agent_lines_added": 7997,
+      "agent_lines_removed": 156,
+      "user_added_per_file": {
+        ".changeset/skeleton-loader-explicit-defaults.md": 1
+      },
+      "user_removed_per_file": {
+        ".changeset/skeleton-loader-explicit-defaults.md": 1
+      }
+    },
+    {
+      "checkpoint_number": 6,
+      "user_lines_added": 14,
+      "user_lines_removed": 2,
+      "agent_lines_added": 7985,
+      "agent_lines_removed": 156,
+      "user_added_per_file": {
+        ".changeset/skeleton-loader-explicit-defaults.md": 1,
+        "l10n/docs.api.pot": 13
+      },
+      "user_removed_per_file": {
+        ".changeset/skeleton-loader-explicit-defaults.md": 1,
+        "l10n/docs.api.pot": 1
+      }
+    }
+  ]
+}
