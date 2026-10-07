@@ -1,0 +1,57 @@
+{
+  "cli_version": "0.11.4",
+  "checkpoint_id": "01M4BQZCM8TGQKFJGNG7GJN0D1",
+  "session_id": "7ac2cda1-eb46-47a7-9215-729fd5d6b1b3",
+  "strategy": "manual-commit",
+  "created_at": "2026-10-07T17:53:28.343918Z",
+  "branch": "instui-11.7.8",
+  "checkpoints_count": 2,
+  "save_step_count": 1,
+  "files_touched": [
+    ".changeset/tidy-rabbits-upgrade-instui.md",
+    "bundlers/next/README.md",
+    "bundlers/next/scripts/check-compatibility.ts",
+    "compatibility.json",
+    "docs/compatibility.md",
+    "l10n/docs.api.pot",
+    "pnpm-lock.yaml",
+    "pnpm-workspace.yaml",
+    "scripts/release/target-compatibility.json",
+    "tools/upstream-diff/baseline/manifest.json"
+  ],
+  "agent": "Copilot CLI",
+  "model": "",
+  "turn_id": "a9207c686645",
+  "compact_transcript_start": 0,
+  "token_usage": {
+    "input_tokens": 0,
+    "cache_creation_tokens": 0,
+    "cache_read_tokens": 0,
+    "output_tokens": 0,
+    "api_call_count": 0
+  },
+  "session_metrics": {
+    "turn_count": 2
+  },
+  "initial_attribution": {
+    "calculated_at": "2026-10-07T17:53:28.334305Z",
+    "agent_lines": 421,
+    "agent_removed": 426,
+    "human_added": 0,
+    "human_modified": 106,
+    "human_removed": 101,
+    "total_committed": 527,
+    "total_lines_changed": 1054,
+    "agent_percentage": 80.36053130929791,
+    "metric_version": 2
+  },
+  "prompt_attributions": [
+    {
+      "checkpoint_number": 1,
+      "user_lines_added": 0,
+      "user_lines_removed": 0,
+      "agent_lines_added": 0,
+      "agent_lines_removed": 0
+    }
+  ]
+}

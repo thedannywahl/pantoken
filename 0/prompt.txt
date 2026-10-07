@@ -1,0 +1,9 @@
+write a plan to update to instui 11.7.8, evaluate changes to consumers/components, and if necessary re-bless the output.
+
+---
+
+Read-only discovery for a plan; do NOT modify files. In /Users/dwahl/Scripts/pantoken, follow .entire/graph-agent.md: first run `entire graph search --repo . --profile full --query "Plan upgrading upstream InstUI to 11.7.8, identify consumed packages and component parity snapshots that may need re-blessing"` before grep or broad reads. Identify: where InstUI version/repo is pinned or fetched; how formats/components derives its component CSS/model and any expected or blessed fixtures/snapshots; affected consumers/packages/tests/docs; relevant scripts and exact focused verification commands. Read current nearby source and package scripts. Return concise evidence with exact workspace-relative paths, symbols, commands, and likely update steps. Highlight open decisions (e.g. full upstream component diff or only consumers that drift). No implementation.
+
+---
+
+Start implementation
