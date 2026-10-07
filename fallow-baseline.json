@@ -1,8 +1,8 @@
 {
   "schema_version": 2,
-  "fallow_version": "3.29.0",
-  "timestamp": "2026-10-01T19:09:36Z",
-  "git_sha": "962c640f0164554224c8e9eefed772c0f0567cb8",
+  "fallow_version": "3.32.0",
+  "timestamp": "2026-10-07T23:35:32Z",
+  "git_sha": "ba4f28bc3861240f0e4064c97d4c459395d551a8",
   "analysis_identity": {
     "mode": "syntactic",
     "semantic_schema_version": 1,
@@ -12,7 +12,7 @@
     "completeness": "complete"
   },
   "check": {
-    "total_issues": 6,
+    "total_issues": 7,
     "unused_files": 0,
     "unused_exports": 0,
     "unused_types": 0,
@@ -25,6 +25,7 @@
     "unprovided_injects": 0,
     "unrendered_components": 0,
     "unused_component_props": 0,
+    "absent_component_props": 0,
     "unused_component_emits": 0,
     "unused_component_inputs": 0,
     "unused_component_outputs": 0,
@@ -36,6 +37,7 @@
     "duplicate_exports": 0,
     "circular_dependencies": 0,
     "re_export_cycles": 0,
+    "package_cycles": 1,
     "type_only_dependencies": 0,
     "test_only_dependencies": 0,
     "dev_dependencies_in_production": 0,

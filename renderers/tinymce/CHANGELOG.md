@@ -1,5 +1,16 @@
 # @pantoken/tinymce
 
+## 0.6.1
+
+### Patch Changes
+
+- Updated dependencies [ba4f28b]
+- Updated dependencies [ba4f28b]
+  - @pantoken/plugin-layouts@0.5.3
+  - @pantoken/tokens@0.8.1
+  - @pantoken/components@2.0.2
+  - @pantoken/plugin-custom-components@0.7.0
+
 ## 0.6.0
 
 ### Minor Changes

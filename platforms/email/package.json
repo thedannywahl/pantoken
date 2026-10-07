@@ -1,6 +1,6 @@
 {
   "name": "@pantoken/email",
-  "version": "0.1.21",
+  "version": "0.1.22",
   "description": "Instructure design tokens and email-safe HTML generation with concrete inline values.",
   "homepage": "https://pantoken.app",
   "bugs": "https://github.com/thedannywahl/pantoken/issues",
