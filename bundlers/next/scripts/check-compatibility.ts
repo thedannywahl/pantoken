@@ -5,7 +5,7 @@ import { fileURLToPath } from "node:url";
 import { withTargetVersion } from "../../../scripts/quality/with-target-version.ts";
 import { commandTargetVersions } from "../../../scripts/release/target-versions.ts";
 
-const instructureVersion = "11.7.7";
+const instructureVersion = "11.7.8";
 
 /** Build a real Next app that renders an Instructure component through withPantoken's transpile list. */
 export async function checkCompatibility(version: string): Promise<void> {

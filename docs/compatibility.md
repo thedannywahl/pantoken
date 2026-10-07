@@ -16,22 +16,22 @@ package consumes. The `@instructure/ui-*` React packages are used only by
 | Package                                  | Feeds        | Range                                                 | Resolved              |
 | ---------------------------------------- | ------------ | ----------------------------------------------------- | --------------------- |
 | `@instructure/instructure-design-tokens` | token-ir     | `github:instructure/instructure-design-tokens#v2.1.0` | `v2.1.0@c7f0deea242d` |
-| `@instructure/ui-icons`                  | icons        | `^11.7.7`                                             | `11.7.7`              |
+| `@instructure/ui-icons`                  | icons        | `^11.7.8`                                             | `11.7.8`              |
 | `lucide`                                 | icons        | `^1.48.0`                                             | `1.48.0`              |
-| `@instructure/ui-heading`                | instui-react | `^11.7.7`                                             | `11.7.7`              |
-| `@instructure/ui-text`                   | instui-react | `^11.7.7`                                             | `11.7.7`              |
-| `@instructure/ui-link`                   | instui-react | `^11.7.7`                                             | `11.7.7`              |
-| `@instructure/ui-list`                   | instui-react | `^11.7.7`                                             | `11.7.7`              |
-| `@instructure/ui-table`                  | instui-react | `^11.7.7`                                             | `11.7.7`              |
-| `@instructure/ui-view`                   | instui-react | `^11.7.7`                                             | `11.7.7`              |
-| `@instructure/ui-img`                    | instui-react | `^11.7.7`                                             | `11.7.7`              |
-| `@instructure/ui-alerts`                 | instui-react | `^11.7.7`                                             | `11.7.7`              |
+| `@instructure/ui-heading`                | instui-react | `^11.7.8`                                             | `11.7.8`              |
+| `@instructure/ui-text`                   | instui-react | `^11.7.8`                                             | `11.7.8`              |
+| `@instructure/ui-link`                   | instui-react | `^11.7.8`                                             | `11.7.8`              |
+| `@instructure/ui-list`                   | instui-react | `^11.7.8`                                             | `11.7.8`              |
+| `@instructure/ui-table`                  | instui-react | `^11.7.8`                                             | `11.7.8`              |
+| `@instructure/ui-view`                   | instui-react | `^11.7.8`                                             | `11.7.8`              |
+| `@instructure/ui-img`                    | instui-react | `^11.7.8`                                             | `11.7.8`              |
+| `@instructure/ui-alerts`                 | instui-react | `^11.7.8`                                             | `11.7.8`              |
 
 ## Consumers
 
 | Package                         | Path                            | Governed by  | Target                   | Current format                                                                                      | Host versions                                                                                                                                                                                                                                               |
 | ------------------------------- | ------------------------------- | ------------ | ------------------------ | --------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `@pantoken/next`                | `bundlers/next`                 | token-ir     | Next.js                  | Production build transpiling and rendering Instructure UI 11.7.7 with React 19.3.0                  | `16.0.0` through `16.3.8` (verified)                                                                                                                                                                                                                        |
+| `@pantoken/next`                | `bundlers/next`                 | token-ir     | Next.js                  | Production build transpiling and rendering Instructure UI 11.7.8 with React 19.3.0                  | `16.0.0` through `16.3.8` (verified)                                                                                                                                                                                                                        |
 | `@pantoken/panda`               | `bundlers/panda`                | token-ir     | Panda CSS                | Panda token utility extraction from the Pantoken preset                                             | `1.12.1` through `2.0.0` (verified)                                                                                                                                                                                                                         |
 | `@pantoken/postcss`             | `bundlers/postcss`              | token-ir     | PostCSS                  | —                                                                                                   | `8.0.0` through `8.5.28` (verified)                                                                                                                                                                                                                         |
 | `@pantoken/tailwind`            | `bundlers/tailwind`             | token-ir     | Tailwind CSS             | —                                                                                                   | `4.0.17` through `4.3.3` (verified)                                                                                                                                                                                                                         |
