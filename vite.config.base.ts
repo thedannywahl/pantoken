@@ -34,7 +34,7 @@ const packInput = [{ auto: true }, { pattern: "!node_modules/.modules.yaml", bas
  * merges it structurally, so it only needs the right runtime shape.
  */
 const baseConfig = {
-  run: { tasks: { build: { input: packInput } } },
+  run: { tasks: { build: { cache: { input: packInput } } } },
   pack: {
     dts: true,
     // Cast avoids isolatedDeclarations needing to name unplugin's Plugin type here.
