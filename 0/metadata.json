@@ -1,0 +1,37 @@
+{
+  "cli_version": "0.11.4",
+  "checkpoint_id": "01M4C88SNRS265ND4X2E7W0MD9",
+  "session_id": "b06ada0e-f74c-4fe7-8ab5-bf8ffcb568ca",
+  "strategy": "manual-commit",
+  "created_at": "2026-10-07T22:38:13.104346Z",
+  "branch": "instui-11.7.8",
+  "checkpoints_count": 1,
+  "files_touched": [
+    ".changeset/fix-layout-locale-generation.md"
+  ],
+  "agent": "Copilot CLI",
+  "model": "",
+  "turn_id": "bac3f05c4bed",
+  "checkpoint_transcript_start": 364,
+  "transcript_lines_at_start": 364,
+  "compact_transcript_start": 54,
+  "token_usage": {
+    "input_tokens": 0,
+    "cache_creation_tokens": 0,
+    "cache_read_tokens": 0,
+    "output_tokens": 0,
+    "api_call_count": 0
+  },
+  "initial_attribution": {
+    "calculated_at": "2026-10-07T22:38:13.093586Z",
+    "agent_lines": 5,
+    "agent_removed": 0,
+    "human_added": 0,
+    "human_modified": 0,
+    "human_removed": 0,
+    "total_committed": 5,
+    "total_lines_changed": 5,
+    "agent_percentage": 100,
+    "metric_version": 2
+  }
+}
