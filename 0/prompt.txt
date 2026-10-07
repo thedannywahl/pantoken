@@ -1,0 +1,3 @@
+`/plugins/postcss/mangle-custom-props$` vp pack ○ cache miss: args changed, executing
+☔️ error the root package.json contains dependencies, this is disallowed as dependencies vs devDependencies in a private package does not affect anything and creates confusion.
+☔️ info the above errors may be fixable with yarn manypkg fix
