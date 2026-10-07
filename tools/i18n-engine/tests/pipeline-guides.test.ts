@@ -30,6 +30,9 @@ describe("docs.guides PO migration", () => {
       for (const file of files) {
         const source = readFileSync(join(root, "docs", file), "utf8");
         const translated = translations.get(source) ?? "";
+        if (translated !== "") {
+          expect(translated.endsWith("\n")).toBe(source.endsWith("\n"));
+        }
         expect(normalizeWholeFileMarkdown(translated === "" ? source : translated) + "\n").toBe(
           readFileSync(join(root, "docs", locale, file), "utf8"),
         );
