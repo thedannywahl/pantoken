@@ -1,0 +1,848 @@
+[Terminal cf475abd-42fb-4ff0-a56f-6f22391dbee5 notification: command completed. The terminal has been cleaned up.]
+Terminal output:
+          },
+          {
+            "name": "getIconCdnFile",
+            "is_type_only": false,
+            "reference_count": 3,
+            "referenced_by": [
+{
+  "imported_by": [
+    "docs/.vitepress/theme/components/AgentToolsPage.vue",
+    "docs/.vitepress/theme/components/AgentToolsPage.vue",
+    "docs/.vitepress/theme/components/AgentToolsPage.vue",
+    "docs/.vitepress/theme/components/AgentToolsPage.vue",
+    "docs/.vitepress/theme/components/ComponentsPicker.vue",
+    "docs/.vitepress/theme/components/GetStartedTabs.vue",
+    "docs/.vitepress/theme/components/GetStartedTabs.vue",
+    "docs/.vitepress/theme/components/GetStartedTabs.vue",
+    "docs/.vitepress/theme/components/GetStartedTabs.vue",
+    "docs/.vitepress/theme/components/GetStartedTabs.vue",
+    "docs/.vitepress/theme/components/GetStartedTabs.vue",
+    "docs/.vitepress/theme/components/GetStartedTabs.vue",
+    "docs/.vitepress/theme/components/GetStartedTabs.vue",
+    "docs/.vitepress/theme/components/GetStartedTabs.vue",
+    "docs/.vitepress/theme/pantoken.css",
+    "docs/.vitepress/theme/pantoken.css",
+    "docs/.vitepress/theme/pantoken.css",
+    "docs/.vitepress/theme/pantoken.css",
+    "docs/.vitepress/theme/pantoken.css",
+    "docs/.vitepress/theme/pantoken.css",
+    "docs/.vitepress/theme/pantoken.css",
+    "docs/.vitepress/theme/pantoken.css",
+    "docs/.vitepress/theme/pantoken.css",
+    "docs/.vitepress/theme/pantoken.css",
+    "docs/.vitepress/theme/pantoken.css",
+    "docs/.vitepress/theme/pantoken.css",
+    "docs/.vitepress/theme/pantoken.css",
+    "docs/.vitepress/theme/pantoken.css",
+    "docs/.vitepress/theme/pantoken.css",
+    "docs/.vitepress/theme/pantoken.css",
+    "docs/.vitepress/theme/pantoken.css",
+    "docs/.vitepress/theme/pantoken.css",
+    "docs/.vitepress/theme/pantoken.css",
+    "docs/.vitepress/theme/pantoken.css",
+    "docs/.vitepress/theme/pantoken.css",
+    "docs/.vitepress/theme/pantoken.css",
+    "docs/.vitepress/theme/pantoken.css",
+    "docs/.vitepress/theme/pantoken.css",
+    "docs/.vitepress/theme/pantoken.css",
+    "docs/.vitepress/theme/pantoken.css",
+    "docs/.vitepress/theme/pantoken.css",
+    "docs/.vitepress/theme/pantoken.css",
+    "docs/.vitepress/theme/pantoken.css",
+    "packages/pantoken/src/index.ts",
+    "packages/pantoken/src/simpleIcons.ts",
+    "renderers/markdown-it/tests/index.test.ts",
+    "renderers/rehype/tests/index.test.ts",
+    "renderers/tinymce/src/icons.ts"
+  ],
+  "unused_in": null
+}
+4:  "description": "Shared TinyMCE + CodeMirror editor integration for pantoken: content-CSS wiring, an Insert Template plugin, components/icons/logos pickers with dynamic @import injection, and CodeMirror HTML lint/autocomplete driven by cssdoc.",
+21:  "exports": {
+55:    "@pantoken/plugin-custom-icons": "workspace:*",
+59:    "@pantoken/plugin-simple-icons": "workspace:*",
+82:      "name": "--no-cache",
+2160:      "name": "audit-cache",
+2161:      "description": "Maintain reusable audit base-snapshot caches",
+6476:    "FALLOW_CACHE_DIR": "Directory for fallow's persistent analysis cache. Relative paths resolve from the project root and override cache.dir.",
+6477:    "FALLOW_CACHE_MAX_SIZE": "Extraction cache size cap in megabytes (default 256). Wins over the cache.maxSizeMb config field.",
+6487:    "FALLOW_AUDIT_CACHE_MAX_AGE_DAYS": "GC threshold in days for reusable audit base-snapshot caches (default 30; 0 disables the sweep).",
+6531:    "config_schema_note": "Full JSON Schema of the config file: every top-level key (rules, entry, ignorePatterns, ignoreFindings, workspaces, boundaries, duplicates, health, security, rulePacks, production, cache, ...) and its shape. entry declares entry points; ignorePatterns excludes files from analysis; ignoreFindings hides source-owned dead-code findings after analysis while keeping files in the module graph. fallow also auto-honors package.json exports/main/module for library public APIs.",
+pantoken on instui-11.7.8 ↑7  ?1 ~4 via  26.11.0 
+➜  vp exec fallow dead-code --no-cache --fail-on-issues --format compact && vp exec manypkg check
+VITE+ - The Unified Toolchain for the Web
+
+unused-dep:@pantoken/plugin-lucide-lab
+[X] Exit code 1: gate error-severity-findings (1 at or above error) failed. Under --fail-on-issues (also set by --ci), a rule set to "warn" also fails the run. To report findings without a failure, remove the flag and set the rules to "warn".
+pantoken on instui-11.7.8 ↑7  ?1 ~4 via  26.11.0 x 
+➜  vp exec fallow dead-code --format json | jq '{workspace_diagnostics,parse_errors,unresolved_imports}' | head -110 && vp exec fallow inspect --file renderers/tinymce/src/icons.ts --format json | jq '.evidence.trace_file.data.imports' && rg -n 'lucide-lab' plugins/pantoken/lucide-lab/package.json pnpm-lock.yaml | head -10
+[X] Exit code 1: gate error-severity-findings (1 at or above error) failed. To report a finding type without a failure, set its rule to "warn".
+{
+  "workspace_diagnostics": [
+    {
+      "path": ".",
+      "kind": "boundaries-not-configured",
+      "message": "No architecture boundaries are configured, so the boundary detector did not run and its violation counts are zero because nothing was measured. Add `boundaries` to the config, or set `boundary-violation` to off to state that the check is not wanted."
+    },
+    {
+      "path": ".",
+      "kind": "rule-packs-not-configured",
+      "message": "No rule packs are configured, so the policy detector did not run and its violation counts are zero because nothing was measured. Add `rulePacks` to the config, or set `policy-violation` to off to state that the check is not wanted."
+    }
+  ],
+  "parse_errors": null,
+  "unresolved_imports": []
+}
+null
+plugins/pantoken/lucide-lab/package.json:2:  "name": "@pantoken/plugin-lucide-lab",
+plugins/pantoken/lucide-lab/package.json:11:    "directory": "plugins/pantoken/lucide-lab"
+plugins/pantoken/lucide-lab/package.json:22:    "./lucide-lab.css": "./dist/lucide-lab.css",
+pnpm-lock.yaml:2413:  plugins/pantoken/lucide-lab:
+pnpm-lock.yaml:3451:      '@pantoken/plugin-lucide-lab':
+pnpm-lock.yaml:3453:        version: link:../../plugins/pantoken/lucide-lab
+pantoken on instui-11.7.8 ↑7  ?1 ~4 via  26.11.0 
+➜  vp exec fallow dead-code --no-cache --fail-on-issues --format compact && vp exec manypkg check
+VITE+ - The Unified Toolchain for the Web
+
+unused-dep:@pantoken/plugin-lucide-lab
+[X] Exit code 1: gate error-severity-findings (1 at or above error) failed. Under --fail-on-issues (also set by --ci), a rule set to "warn" also fails the run. To report findings without a failure, remove the flag and set the rules to "warn".
+pantoken on instui-11.7.8 ↑7  ?1 ~5 via  26.11.0 x 
+➜  vp exec fallow --version && vp view fallow version && vp exec fallow inspect --file renderers/tinymce/src/icons.ts --format json | jq '.evidence.trace_file.data | keys' && ls -l node_modules/@pantoken/plugin-lucide-lab/manifest.json plugins/pantoken/lucide-lab/dist/manifest.json && vp run @pantoken/plugin-lucide-lab#build
+VITE+ - The Unified Toolchain for the Web
+
+fallow 3.32.0
+verified: yes (cache hit at /Users/dwahl/Scripts/pantoken/node_modules/.pnpm/@fallow-cli+darwin-arm64@3.32.0/node_modules/@fallow-cli/darwin-arm64/.fallow-verified); fallow 3.32.0 signed
+3.32.0
+[
+  "_meta",
+  "exports",
+  "file",
+  "imported_by",
+  "imports_from",
+  "is_entry_point",
+  "is_reachable",
+  "kind",
+  "re_exports"
+]
+ls: node_modules/@pantoken/plugin-lucide-lab/manifest.json: No such file or directory
+ls: plugins/pantoken/lucide-lab/dist/manifest.json: No such file or directory
+pantoken on instui-11.7.8 ↑7  ?1 ~4 via  26.11.0 x 
+➜  vp run @pantoken/plugin-lucide-lab#build && vp exec fallow dead-code --no-cache --fail-on-issues --format compact && vp exec manypkg check
+VITE+ - The Unified Toolchain for the Web
+
+~/plugins/pantoken/lucide-lab$ node scripts/generate.ts ◉ cache hit, replaying
+✓ lucide-lab: wrote 357 per-icon CSS files + lucide-lab.css barrel
+
+~/plugins/pantoken/lucide-lab$ vp pack ○ cache miss: 'fallow-plugin-tooling-tests.json' added in workspace root, executing
+ℹ entry: src/index.ts, generated/lucide-lab.css
+ℹ target: node22.18.0
+ℹ tsconfig: ../../../tsconfig.json
+ℹ Build start
+ℹ dist/index.mjs         3.58 kB │ gzip:  1.62 kB
+ℹ dist/lucide-lab.css  301.41 kB │ gzip: 39.26 kB
+ℹ dist/index.d.mts       1.41 kB │ gzip:  0.62 kB
+ℹ 3 files, total: 306.39 kB
+✔ Build complete in 2316ms
+
+~/plugins/pantoken/lucide-lab$ node scripts/post-pack.ts
+✓ lucide-lab: copied per-icon CSS files to dist/icons/
+
+~/plugins/pantoken/lucide-lab$ node scripts/generate-manifest.ts ◉ cache hit, replaying
+✓ lucide-lab: wrote manifest.json (357 icon names)
+
+---
+vp run: 2/4 cache hit (50%), 708ms saved. @pantoken/plugin-lucide-lab#build not cached because it modified its input. (Run `vp run --last-details` for full details)
+VITE+ - The Unified Toolchain for the Web
+
+VITE+ - The Unified Toolchain for the Web
+
+☔️ success workspaces valid!
+pantoken on instui-11.7.8 ↑7  ?1 ~4 via  26.11.0 
+➜  vp check --fix package.json .fallowrc.jsonc fallow-plugin-tooling-tests.json && node scripts/quality/fallow-health-gate.ts && git --no-pager diff --stat && git status --short
+VITE+ - The Unified Toolchain for the Web
+
+pass: Formatting completed for checked files (1.2s)
+unused-dep:@pantoken/plugin-lucide-lab
+✗ fallow dead-code gate failed
+✓ fallow health: 92.2 (A)
+── Dependencies ─────────────────────────────────────
+
+● Unused dependencies (1)
+  @pantoken/plugin-lucide-lab (renderers/tinymce/package.json)
+  Listed in dependencies but never imported
+  https://fallow.tools/docs/explanations/dead-code/#unused-dependencies
+
+✗ fallow regression gate: findings grew beyond fallow-baseline.json
+✓ fallow duplication: within the .fallowrc threshold
+pantoken on instui-11.7.8 ↑7  ?1 ~4 via  26.11.0 x 
+➜  node scripts/quality/fallow-health-gate.ts && vp exec manypkg check
+✓ fallow dead-code: no error-severity findings
+✓ fallow health: 92.5 (A)
+✓ fallow regression: no growth vs baseline
+✓ fallow duplication: within the .fallowrc threshold
+VITE+ - The Unified Toolchain for the Web
+
+☔️ success workspaces valid!
+pantoken on instui-11.7.8 ↑7  ?1 ~5 via  26.11.0 
+➜  vp check --fix package.json .fallowrc.jsonc fallow-plugin-tooling-tests.json scripts/quality/fallow-health-gate.ts && node scripts/quality/fallow-health-gate.ts && git status --short && git add .fallowrc.jsonc fallow-plugin-tooling-tests.json package.json pnpm-lock.yaml && git commit .fallowrc.jsonc fallow-plugin-tooling-tests.json package.json pnpm-lock.yaml -m "fix(tooling): classify test roots and preserve private manifest rules" && git add scripts/quality/fallow-health-gate.ts && git commit scripts/quality/fallow-health-gate.ts -m "fix(quality): analyze current build outputs without stale graph cache"
+VITE+ - The Unified Toolchain for the Web
+
+pass: Formatting completed for checked files (3.4s)
+pass: Found no warnings, lint errors, or type errors in 1 file (2.8s, 10 threads)
+✓ fallow dead-code: no error-severity findings
+✓ fallow health: 92.5 (A)
+✓ fallow regression: no growth vs baseline
+✓ fallow duplication: within the .fallowrc threshold
+ M .fallowrc.jsonc
+ M l10n/docs.api.pot
+ M package.json
+ M pnpm-lock.yaml
+ M scripts/quality/fallow-health-gate.ts
+?? fallow-plugin-tooling-tests.json
+⋯ Backing up original state…
+✔ Done backing up original state (b8417f39b)!
+⋯ Running tasks for staged files…
+    * — 4 files
+      ⋯ vp check --fix
+
+✔ vp check --fix
+
+✔ Done running tasks for staged files!
+⋯ Staging changes from tasks…
+✔ Done staging changes from tasks!
+⋯ Cleaning up temporary files…
+✔ Done cleaning up temporary files!
+[instui-11.7.8 15ce16438] fix(tooling): classify test roots and preserve private manifest rules
+ 4 files changed, 11 insertions(+), 9 deletions(-)
+ create mode 100644 fallow-plugin-tooling-tests.json
+⋯ Backing up original state…
+✔ Done backing up original state (4c442ebb3)!
+⋯ Running tasks for staged files…
+    * — 1 file
+      ⋯ vp check --fix
+
+✔ vp check --fix
+
+✔ Done running tasks for staged files!
+⋯ Staging changes from tasks…
+✔ Done staging changes from tasks!
+⋯ Cleaning up temporary files…
+✔ Done cleaning up temporary files!
+[instui-11.7.8 1fa365c12] fix(quality): analyze current build outputs without stale graph cache
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+pantoken on instui-11.7.8 ↑9  ~1 via  26.11.0 
+➜  setopt PIPE_FAIL; vp run check:publish 2>&1 | tee /tmp/pantoken-pr200-publish-final.log | rg --line-buffered 'All good|No problems found|error|Error|ERROR|failed|vp run:|coverage|i18n lint|repository|^✓|^✗'
+$ node scripts/release/check-repository-metadata.ts ○ cache miss: 'package.json' modified, executing
+✓ 84 modules transformed.
+✓ built in 369ms
+✓ built generated/theme.css and generated/theme.js, and inlined them
+✓ generated icon.ts
+✓ generated button.ts
+✓ generated badge.ts
+✓ generated pill.ts
+✓ generated tag.ts
+✓ generated spinner.ts
+✓ generated progress.ts
+✓ generated metric.ts
+✓ generated rating.ts
+✓ generated icon-button.ts
+✓ generated toggle-button.ts
+✓ generated img.ts
+✓ generated side-nav-bar.ts
+✓ generated tree-browser.ts
+✓ generated calendar.ts
+✓ generated context-view.ts
+✓ generated popover.ts
+✓ generated tray.ts
+✓ generated drilldown.ts
+✓ generated pages.ts
+✓ generated drawer-layout.ts
+✓ generated date-input.ts
+✓ generated date-time-input.ts
+✓ Generated 33 per-component interaction files
+✓ interactions: wrote component-capabilities.json (10 both, 43 css-only, 7 js-only)
+✓ interactions: wrote dist/interactions.iife.js
+✓ interactions: wrote 33 per-component .iife.js bundles
+✓ visual-debug: wrote visual-debug.css
+✓ layouts: wrote /layouts/src/generated/component-styles.ts (7 record(s))
+✓ layouts: wrote /layouts/src/generated/layout-html.ts (10 HTML snippet(s))
+✓ layouts: wrote /layouts/src/generated/component-styles.ts (7 record(s))
+✓ layouts: wrote /layouts/src/generated/layout-html.ts (10 HTML snippet(s))
+✓ layouts: wrote raw + runtime layouts.css and 7 per-layout CSS files
+✓ layouts: emitted layouts.strings message bundles for 44 locales
+✓ simple-icons: wrote 3464 per-icon CSS files + simple-icons.css barrel
+✓ logos: 97 logos across 7 products (+ 97 per-logo and 7 per-product sheets)
+✓ custom-icons: wrote 12 per-icon CSS files + custom-icons.css barrel
+✓ layouts: wrote model.json (7 model entries)
+✓ custom-icons: copied per-icon CSS files to dist/icons/
+✓ lucide-lab: wrote 357 per-icon CSS files + lucide-lab.css barrel
+✓ inlined templates/cssdoc.jsonc
+✓ simple-icons: copied per-icon CSS files to dist/icons/
+✓ simple-icons: wrote manifest.json (3464 icon slugs)
+✓ rebrand: 4928 tokens
+✓ canvas: 4928 tokens
+✓ canvasHighContrast: 4928 tokens
+✓ raw.json + meta.json (design-tokens v2.1.0@c7f0dee, ui-icons 11.7.8, lucide 1.52.0)
+✓ wrote theme.json
+✓ dtcg rebrand
+✓ dtcg canvas
+✓ dtcg canvasHighContrast
+✓ wrote /Users/dwahl/Scripts/pantoken/formats/scss/generated/tokens.scss (178298 bytes)
+✓ wrote variables.json
+✓ lucide-lab: copied per-icon CSS files to dist/icons/
+✓ lucide-lab: wrote manifest.json (357 icon names)
+✓ custom-theme-colors: wrote root and scoped CSS
+✓ wrote /Users/dwahl/Scripts/pantoken/renderers/mintlify/generated/docs.json
+✓ wrote /Users/dwahl/Scripts/pantoken/formats/css/generated/style.css (1618327 bytes)
+✓ wrote /Users/dwahl/Scripts/pantoken/formats/css/generated/style.lean.css (292791 bytes)
+✓ wrote /Users/dwahl/Scripts/pantoken/formats/css/generated/style.rebrand.light.css (1596278 bytes)
+✓ wrote /Users/dwahl/Scripts/pantoken/formats/css/generated/style.rebrand.light.lean.css (270742 bytes)
+✓ wrote /Users/dwahl/Scripts/pantoken/formats/css/generated/style.canvas.css (1593498 bytes)
+✓ wrote /Users/dwahl/Scripts/pantoken/formats/css/generated/style.canvas.lean.css (267962 bytes)
+✓ wrote /Users/dwahl/Scripts/pantoken/formats/css/generated/style.canvas-high-contrast.css (1593535 bytes)
+✓ wrote /Users/dwahl/Scripts/pantoken/formats/css/generated/style.canvas-high-contrast.lean.css (267999 bytes)
+✓ wrote /Users/dwahl/Scripts/pantoken/formats/css/generated/properties.css (1544645 bytes)
+✓ wrote /Users/dwahl/Scripts/pantoken/formats/css/generated/properties.lean.css (90497 bytes)
+✓ wrote /Users/dwahl/Scripts/pantoken/formats/css/generated/scope.css (1951142 bytes)
+✓ wrote /Users/dwahl/Scripts/pantoken/formats/css/generated/scope.lean.css (496714 bytes)
+✓ wrote /Users/dwahl/Scripts/pantoken/formats/css/generated/schemes.css (343 bytes)
+✓ wrote /Users/dwahl/Scripts/pantoken/formats/less/generated/tokens.less (178298 bytes)
+✓ custom-components: wrote /custom-components/src/generated/component-styles.ts (9 record(s))
+✓ custom-components: wrote /custom-components/src/generated/component-styles.ts (9 record(s))
+✓ custom-components: wrote custom-components.css + _records.css
+✓ custom-components: wrote 7 per-component CSS files
+✓ custom-components: wrote model.json (10 model entries)
+✓ primitives: wrote primitives.css (820 lines)
+✓ wrote /Users/dwahl/Scripts/pantoken/formats/stylus/generated/tokens.styl (175324 bytes)
+✓ components: wrote src/generated/component-styles.ts (156 stylesheets)
+✓ components: wrote base.css + components.css + component-icons.css (13 icons) + fonts.css + prose.css + select.css + icons.css + utilities.css
+✓ components: wrote 72 per-component CSS files
+✓ components: wrote 12 per-utility CSS files
+✓ components: wrote 1952 per-icon CSS files to generated/icons/
+✓ components: copied icon CSS files to dist/icons/
+✓ components: wrote model.json (87 model entries)
+✓ wrote /Users/dwahl/Scripts/pantoken/renderers/css-in-js/generated/components.css
+✓ embedded 7 Pendo component CSS files
+✓ wrote /Users/dwahl/Scripts/pantoken/renderers/pendo/generated/global.css (90664 bytes)
+✓ wrote /Users/dwahl/Scripts/pantoken/renderers/vitepress/generated/custom.css
+✓ wrote /Users/dwahl/Scripts/pantoken/renderers/vitepress/generated/components.css
+✓ wrote /Users/dwahl/Scripts/pantoken/renderers/docusaurus/generated/custom.css
+✓ wrote /Users/dwahl/Scripts/pantoken/renderers/docusaurus/generated/components.css
+✓ wrote /Users/dwahl/Scripts/pantoken/renderers/bootstrap/generated/theme.css
+✓ wrote /Users/dwahl/Scripts/pantoken/renderers/bootstrap/generated/components.css
+✓ wrote /Users/dwahl/Scripts/pantoken/renderers/astro/generated/components.css
+✓ wrote /Users/dwahl/Scripts/pantoken/renderers/mui/generated/components.css
+✓ wrote /Users/dwahl/Scripts/pantoken/renderers/foundation/generated/_settings.scss
+✓ wrote /Users/dwahl/Scripts/pantoken/renderers/foundation/generated/theme.css
+✓ wrote /Users/dwahl/Scripts/pantoken/renderers/foundation/generated/components.css
+✓ wrote /Users/dwahl/Scripts/pantoken/renderers/storybook/generated/components.css
+✓ wrote /Users/dwahl/Scripts/pantoken/renderers/web-components/generated/components.css
+✓ web-components: wrote 8 per-record CSS files
+✓ wrote /Users/dwahl/Scripts/pantoken/renderers/shadcn/generated/theme.css
+✓ wrote /Users/dwahl/Scripts/pantoken/renderers/shadcn/generated/tailwind-v4.css
+✓ wrote /Users/dwahl/Scripts/pantoken/renderers/shadcn/generated/components.css
+✓ web-components: wrote dist/web-components.iife.js
+✓ web-components: wrote 31 per-element dist/*.iife.js files
+✓ wrote /Users/dwahl/Scripts/pantoken/renderers/angular/generated/components.css
+✓ wrote /Users/dwahl/Scripts/pantoken/renderers/react/generated/components.css
+✓ wrote /Users/dwahl/Scripts/pantoken/renderers/vue/generated/components.css
+✓ wrote /Users/dwahl/Scripts/pantoken/renderers/svelte/generated/components.css
+✓ scanned presets: 6 found
+✓ wrote /Users/dwahl/Scripts/pantoken/packages/scaffold/generated/preset-ledger.ts
+✓ inlined scaffold templates for 8 platforms
+✓ inlined 9 agent assets
+✓ inlined localized scaffold files for 44 locale(s)
+✓ compiled scaffold.json metadata for 1 platform(s)
+✓ emitted locale registry for 44 locales
+✓ flat-pantoken: synced 69 exports from @pantoken/pantoken
+All good!
+All good!
+All good!
+All good!
+All good!
+All good!
+All good!
+ No problems found
+All good!
+All good!
+All good!
+✓ API badges: styled 829 markdown file(s)
+✓ API overview: wrote docs/api/index.md
+✓ API compatibility: updated 39 package pages
+All good!
+All good!
+All good!
+All good!
+All good!
+ No problems found
+All good!
+✓ CSS API: wrote 109 record page(s) to api/css/ + merged the CSS section into the TypeDoc sidebar
+ No problems found
+All good!
+All good!
+All good!
+All good!
+ No problems found
+All good!
+✓ ui.strings: no translation drift
+✓ tinymce.strings: no translation drift
+✓ layouts.strings: no translation drift
+✓ cli.scaffold: no translation drift
+✓ scaffold.readme: no translation drift
+✓ cli.ai: no translation drift
+✓ @pantoken/docs: no translation drift
+All good!
+All good!
+All good!
+ No problems found
+All good!
+All good!
+All good!
+All good!
+ No problems found
+All good!
+All good!
+All good!
+All good!
+ No problems found
+All good!
+All good!
+All good!
+All good!
+All good!
+All good!
+ No problems found
+All good!
+All good!
+All good!
+All good!
+All good!
+ No problems found
+All good!
+All good!
+All good!
+All good!
+All good!
+All good!
+ No problems found
+All good!
+All good!
+All good!
+All good!
+All good!
+ No problems found
+All good!
+All good!
+All good!
+All good!
+All good!
+ No problems found
+All good!
+All good!
+All good!
+All good!
+All good!
+ No problems found
+All good!
+All good!
+All good!
+All good!
+All good!
+All good!
+ No problems found
+All good!
+All good!
+All good!
+All good!
+ No problems found
+All good!
+All good!
+All good!
+All good!
+All good!
+All good!
+ No problems found
+All good!
+All good!
+All good!
+All good!
+All good!
+All good!
+All good!
+All good!
+All good!
+All good!
+ No problems found
+All good!
+All good!
+All good!
+All good!
+All good!
+All good!
+ No problems found
+All good!
+ No problems found
+ No problems found
+^C
+ setopt PIPE_FAIL; vp run ready 2>&1 | tee /tmp/pantoken-pr200-ready-final.log | rg --line-buffered 'Tests|Test Files|Coverage|coverage|All files|pass:|ERROR|error|Error|FAIL|failed|success|vp run:|^✓|^✗|i18n lint'
+pantoken on instui-11.7.8 ↑9  ~1 via  26.11.0 x 
+➜  setopt PIPE_FAIL; vp run ready 2>&1 | tee /tmp/pantoken-pr200-ready-final.log
+ | rg --line-buffered 'Tests|Test Files|Coverage|coverage|All files|pass:|ERROR|error|Error|FAIL|failed|success|vp run:|^✓|^✗|i18n lint'
+Finding: **/*.md !node_modules !**/node_modules !dist !**/dist !coverage !**/coverage !**/style.css !**/generated !**/generated/** !docs/api !docs/api/** !docs/*/api !docs/*/api/** !docs/internal !docs/internal/** !.github/copilot-instructions.md !.changeset/*.md !**/CHANGELOG.md !.agents/skills !.agents/skills/** !agent/skills !agent/skills/** !.claude !.claude/**
+✓ target compatibility: every adapter check is connected to target-compatibility.json
+☔️ success workspaces valid!
+✓ 84 modules transformed.
+✓ built in 369ms
+✓ built generated/theme.css and generated/theme.js, and inlined them
+✓ generated icon.ts
+✓ generated button.ts
+✓ generated badge.ts
+✓ generated pill.ts
+✓ generated tag.ts
+✓ generated spinner.ts
+✓ generated progress.ts
+✓ generated metric.ts
+✓ generated rating.ts
+✓ generated icon-button.ts
+✓ generated toggle-button.ts
+✓ generated img.ts
+✓ generated side-nav-bar.ts
+✓ generated tree-browser.ts
+✓ generated calendar.ts
+✓ generated context-view.ts
+✓ generated popover.ts
+✓ generated tray.ts
+✓ generated drilldown.ts
+✓ generated pages.ts
+✓ generated drawer-layout.ts
+✓ generated date-input.ts
+✓ generated date-time-input.ts
+✓ Generated 33 per-component interaction files
+✓ interactions: wrote component-capabilities.json (10 both, 43 css-only, 7 js-only)
+✓ visual-debug: wrote visual-debug.css
+✓ layouts: wrote /layouts/src/generated/component-styles.ts (7 record(s))
+✓ layouts: wrote /layouts/src/generated/layout-html.ts (10 HTML snippet(s))
+✓ layouts: wrote /layouts/src/generated/component-styles.ts (7 record(s))
+✓ layouts: wrote /layouts/src/generated/layout-html.ts (10 HTML snippet(s))
+✓ layouts: wrote raw + runtime layouts.css and 7 per-layout CSS files
+✓ layouts: emitted layouts.strings message bundles for 44 locales
+✓ layouts: wrote model.json (7 model entries)
+✓ simple-icons: wrote 3464 per-icon CSS files + simple-icons.css barrel
+✓ logos: 97 logos across 7 products (+ 97 per-logo and 7 per-product sheets)
+✓ custom-icons: wrote 12 per-icon CSS files + custom-icons.css barrel
+✓ custom-icons: copied per-icon CSS files to dist/icons/
+✓ lucide-lab: wrote 357 per-icon CSS files + lucide-lab.css barrel
+✓ interactions: wrote dist/interactions.iife.js
+✓ simple-icons: copied per-icon CSS files to dist/icons/
+✓ simple-icons: wrote manifest.json (3464 icon slugs)
+✓ inlined templates/cssdoc.jsonc
+✓ interactions: wrote 33 per-component .iife.js bundles
+✓ rebrand: 4928 tokens
+✓ canvas: 4928 tokens
+✓ canvasHighContrast: 4928 tokens
+✓ raw.json + meta.json (design-tokens v2.1.0@c7f0dee, ui-icons 11.7.8, lucide 1.52.0)
+✓ wrote theme.json
+✓ wrote /Users/dwahl/Scripts/pantoken/formats/scss/generated/tokens.scss (178298 bytes)
+✓ dtcg rebrand
+✓ dtcg canvas
+✓ dtcg canvasHighContrast
+✓ wrote variables.json
+✓ lucide-lab: copied per-icon CSS files to dist/icons/
+✓ lucide-lab: wrote manifest.json (357 icon names)
+✓ custom-theme-colors: wrote root and scoped CSS
+✓ wrote /Users/dwahl/Scripts/pantoken/renderers/mintlify/generated/docs.json
+✓ wrote /Users/dwahl/Scripts/pantoken/formats/less/generated/tokens.less (178298 bytes)
+✓ custom-components: wrote /custom-components/src/generated/component-styles.ts (9 record(s))
+✓ custom-components: wrote /custom-components/src/generated/component-styles.ts (9 record(s))
+✓ custom-components: wrote custom-components.css + _records.css
+✓ custom-components: wrote 7 per-component CSS files
+✓ custom-components: wrote model.json (10 model entries)
+✓ primitives: wrote primitives.css (820 lines)
+✓ wrote /Users/dwahl/Scripts/pantoken/formats/css/generated/style.css (1618327 bytes)
+✓ wrote /Users/dwahl/Scripts/pantoken/formats/css/generated/style.lean.css (292791 bytes)
+✓ wrote /Users/dwahl/Scripts/pantoken/formats/css/generated/style.rebrand.light.css (1596278 bytes)
+✓ wrote /Users/dwahl/Scripts/pantoken/formats/css/generated/style.rebrand.light.lean.css (270742 bytes)
+✓ wrote /Users/dwahl/Scripts/pantoken/formats/css/generated/style.canvas.css (1593498 bytes)
+✓ wrote /Users/dwahl/Scripts/pantoken/formats/css/generated/style.canvas.lean.css (267962 bytes)
+✓ wrote /Users/dwahl/Scripts/pantoken/formats/css/generated/style.canvas-high-contrast.css (1593535 bytes)
+✓ wrote /Users/dwahl/Scripts/pantoken/formats/css/generated/style.canvas-high-contrast.lean.css (267999 bytes)
+✓ wrote /Users/dwahl/Scripts/pantoken/formats/css/generated/properties.css (1544645 bytes)
+✓ wrote /Users/dwahl/Scripts/pantoken/formats/css/generated/properties.lean.css (90497 bytes)
+✓ wrote /Users/dwahl/Scripts/pantoken/formats/css/generated/scope.css (1951142 bytes)
+✓ wrote /Users/dwahl/Scripts/pantoken/formats/css/generated/scope.lean.css (496714 bytes)
+✓ wrote /Users/dwahl/Scripts/pantoken/formats/css/generated/schemes.css (343 bytes)
+✓ components: wrote src/generated/component-styles.ts (156 stylesheets)
+✓ components: wrote base.css + components.css + component-icons.css (13 icons) + fonts.css + prose.css + select.css + icons.css + utilities.css
+✓ components: wrote 72 per-component CSS files
+✓ components: wrote 12 per-utility CSS files
+✓ components: wrote 1952 per-icon CSS files to generated/icons/
+✓ components: copied icon CSS files to dist/icons/
+✓ components: wrote model.json (87 model entries)
+✓ wrote /Users/dwahl/Scripts/pantoken/renderers/css-in-js/generated/components.css
+✓ embedded 7 Pendo component CSS files
+✓ wrote /Users/dwahl/Scripts/pantoken/renderers/pendo/generated/global.css (90664 bytes)
+✓ wrote /Users/dwahl/Scripts/pantoken/formats/stylus/generated/tokens.styl (175324 bytes)
+✓ wrote /Users/dwahl/Scripts/pantoken/renderers/vitepress/generated/custom.css
+✓ wrote /Users/dwahl/Scripts/pantoken/renderers/vitepress/generated/components.css
+✓ wrote /Users/dwahl/Scripts/pantoken/renderers/docusaurus/generated/custom.css
+✓ wrote /Users/dwahl/Scripts/pantoken/renderers/docusaurus/generated/components.css
+✓ wrote /Users/dwahl/Scripts/pantoken/renderers/bootstrap/generated/theme.css
+✓ wrote /Users/dwahl/Scripts/pantoken/renderers/bootstrap/generated/components.css
+✓ wrote /Users/dwahl/Scripts/pantoken/renderers/astro/generated/components.css
+✓ wrote /Users/dwahl/Scripts/pantoken/renderers/mui/generated/components.css
+✓ wrote /Users/dwahl/Scripts/pantoken/renderers/foundation/generated/_settings.scss
+✓ wrote /Users/dwahl/Scripts/pantoken/renderers/foundation/generated/theme.css
+✓ wrote /Users/dwahl/Scripts/pantoken/renderers/foundation/generated/components.css
+✓ wrote /Users/dwahl/Scripts/pantoken/renderers/storybook/generated/components.css
+✓ wrote /Users/dwahl/Scripts/pantoken/renderers/web-components/generated/components.css
+✓ web-components: wrote 8 per-record CSS files
+✓ wrote /Users/dwahl/Scripts/pantoken/renderers/shadcn/generated/theme.css
+✓ wrote /Users/dwahl/Scripts/pantoken/renderers/shadcn/generated/tailwind-v4.css
+✓ wrote /Users/dwahl/Scripts/pantoken/renderers/shadcn/generated/components.css
+✓ web-components: wrote dist/web-components.iife.js
+✓ web-components: wrote 31 per-element dist/*.iife.js files
+✓ wrote /Users/dwahl/Scripts/pantoken/renderers/angular/generated/components.css
+✓ wrote /Users/dwahl/Scripts/pantoken/renderers/react/generated/components.css
+✓ wrote /Users/dwahl/Scripts/pantoken/renderers/vue/generated/components.css
+✓ wrote /Users/dwahl/Scripts/pantoken/renderers/svelte/generated/components.css
+✓ scanned presets: 6 found
+✓ wrote /Users/dwahl/Scripts/pantoken/packages/scaffold/generated/preset-ledger.ts
+✓ inlined scaffold templates for 8 platforms
+✓ inlined 9 agent assets
+✓ inlined localized scaffold files for 44 locale(s)
+✓ compiled scaffold.json metadata for 1 platform(s)
+✓ emitted locale registry for 44 locales
+✓ flat-pantoken: synced 69 exports from @pantoken/pantoken
+✓ compatibility: manifest matches (11 upstream sources, 39 consumers).
+$ vp test --coverage
+✓ formats/css: generated/ has 13 file(s)
+✓ formats/scss: generated/ has 1 file(s)
+✓ formats/less: generated/ has 1 file(s)
+✓ formats/stylus: generated/ has 1 file(s)
+✓ formats/tokens: generated/ has 5 file(s)
+✓ formats/dtcg: generated/ has 3 file(s)
+✓ platforms/wordpress: generated/ has 1 file(s)
+✓ platforms/vanilla: generated/ has 1 file(s)
+✓ renderers/pendo: generated/ has 2 file(s)
+✓ renderers/bootstrap: generated/ has 2 file(s)
+✓ renderers/shadcn: generated/ has 3 file(s)
+✓ renderers/foundation: generated/ has 3 file(s)
+✓ renderers/docusaurus: generated/ has 2 file(s)
+✓ renderers/vitepress: generated/ has 2 file(s)
+✓ ai/pantoken-ai: generated/ has 45 file(s)
+✓ plugins/pantoken/primitives: generated/ has 1 file(s)
+✓ plugins/pantoken/visual-debug: generated/ has 1 file(s)
+✓ formats/components: ./base.css resolves to finalized ./dist/base.css
+✓ formats/components: ./components.css resolves to finalized ./dist/components.css
+✓ formats/components: ./component-icons.css resolves to finalized ./dist/component-icons.css
+      Coverage enabled with v8
+✓ formats/components: ./*.css resolves to 2060 finalized file(s) via ./dist/*.css
+✓ formats/components: ./icons/*.css resolves to 1967 finalized file(s) via ./dist/icons/*.css
+✓ formats/components: ./fonts.css resolves to finalized ./dist/fonts.css
+✓ formats/components: ./prose.css resolves to finalized ./dist/prose.css
+✓ formats/components: ./select.css resolves to finalized ./dist/select.css
+✓ formats/components: ./icons.css resolves to finalized ./dist/icons.css
+✓ formats/components: ./utilities.css resolves to finalized ./dist/utilities.css
+✓ formats/components: ./spacing.css resolves to finalized ./dist/utilities/spacing.css
+✓ formats/components: ./gap.css resolves to finalized ./dist/utilities/gap.css
+✓ formats/components: ./layout.css resolves to finalized ./dist/utilities/layout.css
+✓ formats/components: ./position.css resolves to finalized ./dist/utilities/position.css
+✓ formats/components: ./overflow.css resolves to finalized ./dist/utilities/overflow.css
+✓ formats/components: ./cursor.css resolves to finalized ./dist/utilities/cursor.css
+✓ formats/components: ./stacking.css resolves to finalized ./dist/utilities/stacking.css
+✓ formats/components: ./mask.css resolves to finalized ./dist/utilities/mask.css
+✓ formats/components: ./icon.css resolves to finalized ./dist/utilities/icon.css
+✓ formats/components: ./screen-reader-content.css resolves to finalized ./dist/utilities/screen-reader-content.css
+✓ formats/components: ./transition.css resolves to finalized ./dist/utilities/transition.css
+✓ formats/components: ./responsive.css resolves to finalized ./dist/utilities/responsive.css
+✓ formats/css: ./style.css resolves to finalized ./dist/style.css
+✓ formats/css: ./style.lean.css resolves to finalized ./dist/style.lean.css
+✓ formats/css: ./style.rebrand.light.css resolves to finalized ./dist/style.rebrand.light.css
+✓ formats/css: ./style.rebrand.light.lean.css resolves to finalized ./dist/style.rebrand.light.lean.css
+✓ formats/css: ./style.canvas.css resolves to finalized ./dist/style.canvas.css
+✓ formats/css: ./style.canvas.lean.css resolves to finalized ./dist/style.canvas.lean.css
+✓ formats/css: ./style.canvas-high-contrast.css resolves to finalized ./dist/style.canvas-high-contrast.css
+✓ formats/css: ./style.canvas-high-contrast.lean.css resolves to finalized ./dist/style.canvas-high-contrast.lean.css
+✓ formats/css: ./properties.css resolves to finalized ./dist/properties.css
+✓ formats/css: ./properties.lean.css resolves to finalized ./dist/properties.lean.css
+✓ formats/css: ./scope.css resolves to finalized ./dist/scope.css
+✓ formats/css: ./scope.lean.css resolves to finalized ./dist/scope.lean.css
+✓ formats/css: ./schemes.css resolves to finalized ./dist/schemes.css
+✓ plugins/pantoken/logos: ./logos.css resolves to finalized ./dist/logos.css
+✓ plugins/pantoken/logos: ./*.css resolves to 105 finalized file(s) via ./dist/*.css
+✓ plugins/pantoken/primitives: ./primitives.css resolves to finalized ./dist/primitives.css
+✓ plugins/pantoken/visual-debug: ./visual-debug.css resolves to finalized ./dist/visual-debug.css
+✓ renderers/angular: ./components.css resolves to finalized ./dist/components.css
+✓ renderers/astro: ./components.css resolves to finalized ./dist/components.css
+✓ renderers/bootstrap: ./theme.css resolves to finalized ./dist/theme.css
+✓ renderers/bootstrap: ./components.css resolves to finalized ./dist/components.css
+✓ renderers/css-in-js: ./components.css resolves to finalized ./dist/components.css
+✓ renderers/docusaurus: ./custom.css resolves to finalized ./dist/custom.css
+✓ renderers/docusaurus: ./components.css resolves to finalized ./dist/components.css
+✓ renderers/foundation: ./theme.css resolves to finalized ./dist/theme.css
+✓ renderers/foundation: ./components.css resolves to finalized ./dist/components.css
+✓ renderers/mui: ./components.css resolves to finalized ./dist/components.css
+✓ renderers/pendo: ./global.css resolves to finalized ./dist/global.css
+✓ renderers/react: ./components.css resolves to finalized ./dist/components.css
+✓ renderers/shadcn: ./theme.css resolves to finalized ./dist/theme.css
+✓ renderers/shadcn: ./tailwind-v4.css resolves to finalized ./dist/tailwind-v4.css
+✓ renderers/shadcn: ./components.css resolves to finalized ./dist/components.css
+✓ renderers/storybook: ./components.css resolves to finalized ./dist/components.css
+✓ renderers/svelte: ./components.css resolves to finalized ./dist/components.css
+✓ renderers/vitepress: ./custom.css resolves to finalized ./dist/custom.css
+✓ renderers/vitepress: ./components.css resolves to finalized ./dist/components.css
+✓ renderers/vue: ./components.css resolves to finalized ./dist/components.css
+✓ renderers/web-components: ./components.css resolves to finalized ./dist/components.css
+✓ renderers/web-components: ./*.css resolves to 9 finalized file(s) via ./dist/*.css
+✓ components: generated CSS retains cssdoc comments
+✓ components: finalized CSS strips cssdoc comments
+✓ packages/pantoken: html-custom-data.json is present and valid JSON
+✓ packages/pantoken: css-custom-data.json is present and valid JSON
+✓ packages/pantoken: model.json is present and valid JSON
+✓ fallow dead-code: no error-severity findings
+✓ cli generate swift: wrote 5 file(s)
+✓ cli generate android: wrote 3 file(s)
+✓ site-themes: wrote site-themes.css (3 themes, 1996kb)
+$ vp check ○ cache miss: 'typedoc' removed from 'coverage/lcov-report/plugins', executing
+✓ cli generate compose: wrote 1 file(s)
+✓ pantoken: wrote /tmp/pantoken-cli-XSyh82/Sources/PanTokens/Tokens.swift
+✓ pantoken: wrote /tmp/pantoken-cli-XSyh82/Package.swift (SwiftPM manifest stub)
+✓ pantoken: wrote /tmp/pantoken-cli-android-qCbAYJ/res/values/colors.xml
+✓ pantoken: wrote /tmp/pantoken-cli-android-qCbAYJ/res/values/dimens.xml
+✓ pantoken: wrote /tmp/pantoken-cli-inline-hHNlxd/output.html
+✓ cli generate flutter: wrote 3 file(s)
+✓ cli generate wordpress: wrote 1 file(s)
+✓ pantoken: wrote /tmp/pantoken-cli-email-guNSbw/output.html
+✓ pantoken: registered @pantoken in components.json
+✓ /tmp/pantoken-cli-create-u7V7DE/app/.gitignore
+✓ /tmp/pantoken-cli-create-u7V7DE/app/README.md
+✓ /tmp/pantoken-cli-create-u7V7DE/app/index.html
+✓ /tmp/pantoken-cli-create-u7V7DE/app/package.json
+✓ /tmp/pantoken-cli-create-u7V7DE/app/pnpm-workspace.yaml
+✓ /tmp/pantoken-cli-create-u7V7DE/app/tsconfig.json
+✓ /tmp/pantoken-cli-create-u7V7DE/app/vite.config.ts
+✓ /tmp/pantoken-cli-create-u7V7DE/app/.vscode/extensions.json
+✓ /tmp/pantoken-cli-create-u7V7DE/app/.vscode/settings.json
+✓ /tmp/pantoken-cli-create-u7V7DE/app/src/App.tsx
+✓ /tmp/pantoken-cli-create-u7V7DE/app/src/main.tsx
+✓ /tmp/pantoken-cli-create-u7V7DE/app/cssdoc.json
+✓ /tmp/pantoken-cli-create-u7V7DE/app/AGENTS.md
+✓ /tmp/pantoken-cli-create-u7V7DE/app/llms.txt
+✓ /tmp/pantoken-cli-create-u7V7DE/app/.cursor/rules/pantoken.mdc
+✓ /tmp/pantoken-cli-create-u7V7DE/app/.github/copilot-instructions.md
+✓ /tmp/pantoken-cli-create-u7V7DE/app/.windsurf/rules/pantoken.md
+✓ /tmp/pantoken-cli-create-u7V7DE/app/.claude/skills/init-pantoken/SKILL.md
+✓ /tmp/pantoken-cli-create-u7V7DE/app/.claude/skills/create-pantoken-app/SKILL.md
+✓ /tmp/pantoken-cli-create-u7V7DE/app/.claude/skills/create-pantoken-mockup/SKILL.md
+✓ /tmp/pantoken-cli-create-u7V7DE/app/.claude/skills/use-pantoken-registry/SKILL.md
+✓ pantoken: wrote /tmp/pantoken-cli-wordpress-2HSgGE/theme.json
+✓ pantoken: wrote /tmp/pantoken-cli-vanilla-D8NFRq/variables.json
+✓ pantoken: wrote /tmp/pantoken-cli-mintlify-n71qyK/docs.json
+✓ pantoken: wrote /tmp/pantoken-cli-pendo-4OpxBI/global.css
+pass: All 6805 files are correctly formatted (8376ms, 10 threads)
+✓ pantoken: wrote /tmp/pantoken-cli-compose-8JtoLR/PanTokens.kt
+✓ pantoken: wrote /tmp/pantoken-cli-flutter-GWoktr/pantokens.dart
+✓ pantoken: wrote /tmp/pantoken-cli-drupal-an6hs3/instructure.info.yml
+✓ pantoken: wrote /tmp/pantoken-cli-drupal-an6hs3/instructure.libraries.yml
+✓ pantoken: wrote /tmp/pantoken-cli-drupal-an6hs3/css/tokens.css
+✓ pantoken: wrote /tmp/pantoken-cli-drupal-an6hs3/css/pantoken-prose.css
+✓ pantoken: wrote /tmp/pantoken-cli-jekyll-pym36T/_sass/pantoken.scss
+✓ pantoken: wrote /tmp/pantoken-cli-jekyll-pym36T/assets/css/pantoken.css
+✓ pantoken: wrote /tmp/pantoken-cli-jekyll-pym36T/assets/css/pantoken-prose.css
+✓ pantoken: wrote /tmp/pantoken-cli-hugo-S8fuzH/assets/scss/_pantoken.scss
+✓ pantoken: wrote /tmp/pantoken-cli-hugo-S8fuzH/assets/css/pantoken.css
+✓ pantoken: wrote /tmp/pantoken-cli-hugo-S8fuzH/assets/css/pantoken-prose.css
+✓ cli generate vanilla: wrote 1 file(s)
+✓ pantoken: wrote /tmp/pantoken-cli-rust-jO5vP2/tokens.rs
+✓ pantoken: wrote /tmp/pantoken-cli-rust-iced-774cFL/theme.rs
+✓ pantoken: wrote /tmp/pantoken-cli-swatches-ase-FnIJpL/instructure.ase
+✓ pantoken: wrote /tmp/pantoken-cli-swatches-gpl-Tgo8UJ/instructure.gpl
+✓ pantoken: wrote /tmp/pantoken-cli-swatches-sketch-LgKcIa/instructure.sketchpalette
+✓ pantoken: wrote /tmp/pantoken-cli-swatches-svg-FNs7xA/instructure.svg
+✓ pantoken: wrote /tmp/pantoken-cli-swatches-default-EkUviU/instructure.ase
+✓ cli generate drupal: wrote 4 file(s)
+✓ hu: rendered in hu/api (0 translated, 4 cached)
+✓ hu: rendered in hu/api (0 translated, 4 cached)
+✓ hu: rendered in hu/api (0 translated, 4 cached)
+error: command-argument value 'not-a-real-platform' is invalid for argument 'platform'. Platform "not-a-real-platform" is not valid. Expected one of: angular, canvas-theme-editor, components, next, react, svelte, vue, web-components.
+✓ cli generate swatches: wrote 1 file(s)
+✓ cli generate rust: wrote 1 file(s)
+✓ docs: wrote cdn-plugin-manifest.json (3 custom components, 4 other plugins, 12 custom icons, 7 logo products)
+✓ Web Components: instui-button registered and shadow button rendered in Happy DOM
+✓ cli generate icon-font: wrote 4 file(s)
+✓ cli generate pendo: wrote 1 file(s)
+ ✓ tools/i18n-engine/tests/coverage.test.ts (6 tests) 11232ms
+   ✓ writeCoverageReport (6)
+   ✓ the deprecated -type-new-error alias mirrors -type-error in componentsCss 517ms
+✓ cli generate jekyll: wrote 3 file(s)
+stdout | docs/scripts/sync-assets.test.ts > syncAssets does not retry non-retryable upload errors
+stdout | docs/scripts/sync-assets.test.ts > syncAssets handles and throws on upload errors
+stdout | docs/scripts/sync-assets.test.ts > syncAssets records an error after exhausting retries on network errors
+stdout | docs/scripts/sync-assets.test.ts > syncAssets falls back to an empty error body when response.text() rejects
+✓ Asset sync complete: uploaded 0/1 files (0.0 MB), 1 unchanged, in 0s to bucket "pantoken-docs-assets".
+stdout | docs/scripts/sync-assets.test.ts > syncAssets stringifies non-Error rejections in the error report
+✓ cli generate hugo: wrote 3 file(s)
+✓ formats/css/style.css (generated): no dangling references
+✓ formats/css/style.css (finalized): no dangling references
+✓ renderers/pendo/global.css (generated): no dangling references
+✓ renderers/pendo/global.css (finalized): no dangling references
+✓ renderers/bootstrap/theme.css (generated): all token references resolve
+✓ renderers/bootstrap/theme.css (finalized): all token references resolve
+✓ renderers/shadcn/theme.css (generated): all token references resolve
+✓ renderers/shadcn/theme.css (finalized): all token references resolve
+✓ renderers/foundation/theme.css (generated): all token references resolve
+✓ renderers/foundation/theme.css (finalized): all token references resolve
+✓ renderers/foundation/_settings.scss (generated): all token references resolve
+✓ renderers/docusaurus/custom.css (generated): all token references resolve
+✓ renderers/docusaurus/custom.css (finalized): all token references resolve
+✓ renderers/vitepress/custom.css (generated): all token references resolve
+✓ renderers/vitepress/custom.css (finalized): all token references resolve
+✓ plugins/pantoken/primitives/primitives.css (generated): all token references resolve
+✓ plugins/pantoken/primitives/primitives.css (finalized): all token references resolve
+✓ plugins/pantoken/custom-components/custom-components.css (generated): all token references resolve
+✓ plugins/pantoken/custom-components/custom-components.css (finalized): all token references resolve
+✓ validate-generated: all checks passed
+✓ API compatibility: updated 39 package pages
+✓ API compatibility: updated 39 package pages
+pass: Found no warnings, lint errors, or type errors in 1850 files (17.7s, 10 threads)
+error: unknown command 'bogus-command'
+✓ docs: wrote icon-manifest.json (5 entries)
+✓ docs: refreshed public/component-capabilities.json from @pantoken/interactions
+✓ docs: wrote icon-manifest.json (5 entries)
+✓ docs: refreshed public/component-capabilities.json from @pantoken/interactions
+✓ generated locale bundles for: fr, hu
+✓ generated locale bundles for: hu
+✓ generated locale bundles for: en-AU
+ ✓ scripts/release/check-changeset-coverage.main.test.ts (5 tests) 71ms
+ ✓ packages/scaffold/tests/coverage-branches.test.ts (2 tests) 57ms
+✓ fallow health: 92.5 (A)
+✓ fallow regression: no growth vs baseline
+✓ fallow duplication: within the .fallowrc threshold
+✓ pantoken: wrote /tmp/pantoken-cli-iconfont-1vHwdE/Icons.ttf
+✓ pantoken: wrote /tmp/pantoken-cli-iconfont-1vHwdE/Icons.woff2
+✓ pantoken: wrote /tmp/pantoken-cli-iconfont-1vHwdE/icons.css
+✓ pantoken: wrote /tmp/pantoken-cli-iconfont-1vHwdE/codepoints.json
+Drift check failed with exit code 2
+stderr | scripts/i18n-drift-fix.test.ts > reports provider process errors and signals
+spawn failed
+stderr | scripts/i18n-drift-fix.test.ts > reports provider process errors and signals
+ ✓ packages/plugin-kit/tests/sandbox-error-paths.test.ts (2 tests) 24ms
+ ✓ scripts/release/check-changeset-coverage.test.ts (7 tests) 57ms
+✓ react-markdown 10.1.0: InstUI heading, icon and color swatch rendered through React SSR
+✓ i18n build-bundles: wrote 44 locale files
+gen-og: could not fetch Noto Sans (Error: HTTP 500)
+gen-og: could not fetch Noto Sans Arabic (Error: HTTP 500)
+ Test Files  374 passed (374)
+      Tests  2865 passed (2865)
+ % Coverage report from v8
+=============================== Coverage summary ===============================
+vp run: 137/179 cache hit (76%), 92.52s saved. @pantoken/plugin-custom-icons#build (and 12 more) not cached because they modified their inputs. (Run `vp run --last-details` for full details)
+
+---
+
+fail: ![codecov/patch](https://avatars.githubusercontent.com/in/254?s=40&v=4)
+
+#### [codecov/patch](https://github.com/thedannywahl/pantoken/pull/200/checks?check_run_id=113060667249)
+ — 75.00% of diff hit (target 85.00%)
