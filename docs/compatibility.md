@@ -17,7 +17,7 @@ package consumes. The `@instructure/ui-*` React packages are used only by
 | ---------------------------------------- | ------------ | ----------------------------------------------------- | --------------------- |
 | `@instructure/instructure-design-tokens` | token-ir     | `github:instructure/instructure-design-tokens#v2.1.0` | `v2.1.0@c7f0deea242d` |
 | `@instructure/ui-icons`                  | icons        | `^11.7.8`                                             | `11.7.8`              |
-| `lucide`                                 | icons        | `^1.48.0`                                             | `1.48.0`              |
+| `lucide`                                 | icons        | `^1.52.0`                                             | `1.52.0`              |
 | `@instructure/ui-heading`                | instui-react | `^11.7.8`                                             | `11.7.8`              |
 | `@instructure/ui-text`                   | instui-react | `^11.7.8`                                             | `11.7.8`              |
 | `@instructure/ui-link`                   | instui-react | `^11.7.8`                                             | `11.7.8`              |

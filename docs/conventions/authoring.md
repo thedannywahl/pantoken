@@ -81,9 +81,8 @@ export const foo = defineComponent({
   examples,
   structure,
   demo,
-  css: (p) =>
-    // prettier-ignore
-    css`…css body…`,
+  css: (p) => // prettier-ignore
+  css`…css body…`,
 });
 export const fooCss = foo.css;
 ```

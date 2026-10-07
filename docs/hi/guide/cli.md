@@ -20,21 +20,21 @@ Pantoken CSS styles and metadata, not React components.
 
 ## लक्ष्य
 
-| लक्ष्य      | आउटपुट                                                                                |
-| ----------- | ------------------------------------------------------------------------------------- |
+| लक्ष्य        | आउटपुट                                                                            |
+| ----------- | -------------------------------------------------------------------------------- |
 | `swift`     | `Sources/<name>` के अंतर्गत Swift स्रोत और एक `Package.swift` SwiftPM manifest स्टब.  |
-| `android`   | Android XML संसाधन फ़ाइलें.                                                           |
-| `compose`   | एक Jetpack Compose Kotlin फ़ाइल.                                                      |
-| `flutter`   | एक Flutter Dart फ़ाइल.                                                                |
-| `rust`      | egui (डिफ़ॉल्ट) या iced (`--format iced`) के लिए एक `tokens.rs`.                      |
-| `wordpress` | एक block-theme `theme.json`.                                                          |
-| `vanilla`   | एक Vanilla Forums `variables.json`.                                                   |
-| `drupal`    | Drupal थीम एसेट्स.                                                                    |
-| `jekyll`    | Jekyll साइट डेटा.                                                                     |
-| `hugo`      | Hugo साइट डेटा.                                                                       |
+| `android`   | Android XML संसाधन फ़ाइलें.                                                          |
+| `compose`   | एक Jetpack Compose Kotlin फ़ाइल.                                                  |
+| `flutter`   | एक Flutter Dart फ़ाइल.                                                            |
+| `rust`      | egui (डिफ़ॉल्ट) या iced (`--format iced`) के लिए एक `tokens.rs`.                    |
+| `wordpress` | एक block-theme `theme.json`.                                                     |
+| `vanilla`   | एक Vanilla Forums `variables.json`.                                              |
+| `drupal`    | Drupal थीम एसेट्स.                                                                 |
+| `jekyll`    | Jekyll साइट डेटा.                                                                 |
+| `hugo`      | Hugo साइट डेटा.                                                                   |
 | `swatches`  | Color swatches — `ase` (डिफ़ॉल्ट), `gpl`, `sketch`, या `svg` `--format` के माध्यम से। |
-| `icon-font` | एक आइकन वेब फ़ॉन्ट (TTF, WOFF2), इसका CSS, और एक codepoints मैप.                      |
-| `pendo`     | Pendo गाइड्स के लिए Instructure-स्टाइल्ड `global.css`.                                |
+| `icon-font` | एक आइकन वेब फ़ॉन्ट (TTF, WOFF2), इसका CSS, और एक codepoints मैप.                     |
+| `pendo`     | Pendo गाइड्स के लिए Instructure-स्टाइल्ड `global.css`.                               |
 
 ## सामान्य फ्लैग
 

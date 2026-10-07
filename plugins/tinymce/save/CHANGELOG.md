@@ -22,4 +22,4 @@
     removed from the markup) — copying still works, it just no longer tries to update a status
     message.
   - Fixed `/tools/canvas-rce/` (and `/tools/canvas-rce` with no trailing slash) 404ing in `vitepress
-dev` — only the exact `/tools/canvas-rce/index.html` URL used to resolve.
+    dev` — only the exact `/tools/canvas-rce/index.html` URL used to resolve.

@@ -614,7 +614,7 @@ reaches no pipeline.
   failures rotate to the next profile; exhausting the rotation fails the run **after** flushing
   translated units, and a re-run resumes from the flushed PO rather than restarting.
 - **The new coverage is real:** after migrating `docs.api`, assert `Congratulations! You're using the
-"success" color.` (`api/css/alert.md`) and `Your changes were saved.`
+  "success" color.` (`api/css/alert.md`) and `Your changes were saved.`
   (`api/renderers/web-components/src/variables/alert.md`) are translated in a target locale — both are
   English in `docs/ar/**` today.
 - **Transient render leaves no residue:** on a clean checkout, `i18n render` followed by `git status` is

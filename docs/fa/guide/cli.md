@@ -19,21 +19,21 @@ Pantoken CSS styles and metadata, not React components.
 
 ## اهداف
 
-| هدف         | خروجی                                                                              |
-| ----------- | ---------------------------------------------------------------------------------- |
+| هدف         | خروجی                                                                            |
+| ----------- | -------------------------------------------------------------------------------- |
 | `swift`     | کد Swift زیر `Sources/<name>` به‌علاوه یک شابلون manifest SwiftPM `Package.swift`. |
-| `android`   | فایل‌های منابع XML برای اندروید.                                                   |
-| `compose`   | یک فایل Kotlin برای Jetpack Compose.                                               |
-| `flutter`   | یک فایل Dart برای Flutter.                                                         |
-| `rust`      | یک `tokens.rs` برای egui (پیش‌فرض) یا iced (`--format iced`).                      |
-| `wordpress` | یک `theme.json` برای block-theme.                                                  |
-| `vanilla`   | یک `variables.json` برای Vanilla Forums.                                           |
-| `drupal`    | دارایی‌های تم Drupal.                                                              |
-| `jekyll`    | داده‌های سایت Jekyll.                                                              |
-| `hugo`      | داده‌های سایت Hugo.                                                                |
+| `android`   | فایل‌های منابع XML برای اندروید.                                                  |
+| `compose`   | یک فایل Kotlin برای Jetpack Compose.                                             |
+| `flutter`   | یک فایل Dart برای Flutter.                                                       |
+| `rust`      | یک `tokens.rs` برای egui (پیش‌فرض) یا iced (`--format iced`).                     |
+| `wordpress` | یک `theme.json` برای block-theme.                                                |
+| `vanilla`   | یک `variables.json` برای Vanilla Forums.                                         |
+| `drupal`    | دارایی‌های تم Drupal.                                                             |
+| `jekyll`    | داده‌های سایت Jekyll.                                                             |
+| `hugo`      | داده‌های سایت Hugo.                                                               |
 | `swatches`  | نمونه‌های رنگ — `ase` (پیش‌فرض)، `gpl`، `sketch`، یا `svg` از طریق `--format`.     |
-| `icon-font` | یک قلم وب آیکون (TTF, WOFF2)، CSS آن، و یک نقشه codepoints.                        |
-| `pendo`     | `global.css` با سبک Instructure برای راهنماهای Pendo.                              |
+| `icon-font` | یک قلم وب آیکون (TTF, WOFF2)، CSS آن، و یک نقشه codepoints.                      |
+| `pendo`     | `global.css` با سبک Instructure برای راهنماهای Pendo.                            |
 
 ## فلگ‌های معمول
 

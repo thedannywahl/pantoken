@@ -9,9 +9,8 @@ import { button as buttonRaw } from "../../generated/component-styles.ts";
  * The shared `AI_ICON_MASK` value requires runtime interpolation, so its rule is appended to the
  * `.css`-authored record (`button.css`) via {@link appendGenerated}.
  */
-const interpolatedRules = (p: string) =>
-  // prettier-ignore
-  css`
+const interpolatedRules = (p: string) => // prettier-ignore
+css`
 /* The ai glyph, added automatically to every AI button and painted in its own colour. */
 .${p}button.-color-ai::before,
 .${p}button.-color-ai-secondary::before {

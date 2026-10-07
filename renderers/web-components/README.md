@@ -38,10 +38,10 @@ inherited custom properties, so they pierce the shadow boundary — load `@panto
   `<instui-tag>`.
 - `<instui-avatar variant="blue|green|red|orange" size="sm|lg" shape="rectangle">`.
 - `<instui-spinner>`, `<instui-progress min="0" value-now="40" value-max="60" should-animate
-variant="success|danger" label="…">` — an arbitrary-scale bar; `value`/`max` remain supported
+  variant="success|danger" label="…">` — an arbitrary-scale bar; `value`/`max` remain supported
   shorthand attributes. It renders native `<progress>` when `min` is zero and `<meter>` otherwise.
 - `<instui-progress-circle value-now="40" value-max="60" should-animate animation-delay="500"
-label="…">` — an arbitrary-scale ring with the same native-element selection; `value`/`max` remain
+  label="…">` — an arbitrary-scale ring with the same native-element selection; `value`/`max` remain
   supported shorthand attributes.
 
 Alert timeout dismissal uses the shared `@pantoken/interactions` behavior. Load

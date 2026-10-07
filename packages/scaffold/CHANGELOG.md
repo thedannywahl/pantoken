@@ -131,7 +131,7 @@
     removed from the markup) — copying still works, it just no longer tries to update a status
     message.
   - Fixed `/tools/canvas-rce/` (and `/tools/canvas-rce` with no trailing slash) 404ing in `vitepress
-dev` — only the exact `/tools/canvas-rce/index.html` URL used to resolve.
+    dev` — only the exact `/tools/canvas-rce/index.html` URL used to resolve.
 
 - f475012: Fix two remaining canvas-theme-editor limitations: the locale switcher now actually swaps UI
   strings (title, description, labels, help modal) using real translations from the CLI's PO
@@ -281,7 +281,7 @@ dev` — only the exact `/tools/canvas-rce/index.html` URL used to resolve.
     `.-logo-<name>` and now carry `--pantoken-logo-aspect` derived from each logo's own SVG `viewBox`.
     `LogoMeta.width`/`height` now describe that natural `viewBox` size, not a rasterized display size.
   - `@pantoken/tinymce`'s logos picker inserts a mask-painted `<span class="instui-logo -logo-<name>"
-role="img" aria-label="…">` instead of a CDN-hosted `<img>`, using the same CSS asset-tracking
+    role="img" aria-label="…">` instead of a CDN-hosted `<img>`, using the same CSS asset-tracking
     (`trackAndInjectAsset`) the icons picker already relies on for Canvas RCE compatibility.
   - The Canvas theme editor scaffold template resolves the logo's `.css` export (not `.png`) for its
     local/offline preview mode, and re-syncs `-logo-*` classes found in loaded editor content the same
@@ -644,7 +644,7 @@ role="img" aria-label="…">` instead of a CDN-hosted `<img>`, using the same CS
 - 7d964ee: `canvas-theme-editor`'s `theme.css`/`theme.js` are now built with `@pantoken/canvas-theme-editor`'s
   `buildTheme()` at scaffold time instead of shipping a pre-baked jsDelivr/rebrand-light default. A
   new `--cdn <provider>` flag (also available programmatically via `scaffoldProject(platform, dir, {
-cdn })`) picks the CDN provider (`jsdelivr` [default], `unpkg`, `esmsh`) those two files are built
+  cdn })`) picks the CDN provider (`jsdelivr` [default], `unpkg`, `esmsh`) those two files are built
   for, alongside the existing `--theme`/`--theme-mode` flags.
 
   The scaffold's local preview is now a real Vite app (`npm run dev`/`build`/`preview`) instead of a
@@ -955,9 +955,9 @@ cdn })`) picks the CDN provider (`jsdelivr` [default], `unpkg`, `esmsh`) those t
 
   Also fixes a `spawnPrompt()` call-signature bug in both packages' `scripts/translate.ts`
   (was passing an options object as the second argument instead of `(command, args,
-prompt, context?)`), and an `isolatedDeclarations` build failure in each package's
+  prompt, context?)`), and an `isolatedDeclarations` build failure in each package's
   generated `locales/index.ts` (needed an explicit `Record<string, Record<string,
-string>>` type annotation on the generator template).
+  string>>` type annotation on the generator template).
 
 - 63e06cb: Moves the complete scaffold CLI catalog source into `packages/scaffold/src/i18n.json` and removes the duplicated `l10n/sources` snapshot. All entries, including template-derived strings, now use the `{message, translate}` schema.
 - 63e06cb: Removes the redundant inner `scaffold` and `.i18n` segments from scaffold template message keys. Catalog contexts remain qualified by `cli.scaffold`.

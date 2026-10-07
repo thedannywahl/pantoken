@@ -20,21 +20,21 @@ Pantoken CSS styles and metadata, not React components.
 
 ## الأهداف
 
-| الهدف       | المخرجات                                                                          |
-| ----------- | --------------------------------------------------------------------------------- |
+| الهدف       | المخرجات                                                                         |
+| ----------- | -------------------------------------------------------------------------------- |
 | `swift`     | مصدر Swift تحت `Sources/<name>` بالإضافة إلى نموذج تهيئة SwiftPM `Package.swift`. |
-| `android`   | ملفات موارد Android بصيغة XML.                                                    |
-| `compose`   | ملف Kotlin لـ Jetpack Compose.                                                    |
-| `flutter`   | ملف Dart لـ Flutter.                                                              |
+| `android`   | ملفات موارد Android بصيغة XML.                                                   |
+| `compose`   | ملف Kotlin لـ Jetpack Compose.                                                   |
+| `flutter`   | ملف Dart لـ Flutter.                                                             |
 | `rust`      | `tokens.rs` لـ egui (الافتراضي) أو iced (`--format iced`).                        |
-| `wordpress` | `theme.json` لكتلة القالب (block-theme).                                          |
-| `vanilla`   | `variables.json` لمنتديات Vanilla.                                                |
-| `drupal`    | أصول قالب Drupal.                                                                 |
-| `jekyll`    | بيانات موقع Jekyll.                                                               |
-| `hugo`      | بيانات موقع Hugo.                                                                 |
+| `wordpress` | `theme.json` لكتلة القالب (block-theme).                                         |
+| `vanilla`   | `variables.json` لمنتديات Vanilla.                                               |
+| `drupal`    | أصول قالب Drupal.                                                                |
+| `jekyll`    | بيانات موقع Jekyll.                                                              |
+| `hugo`      | بيانات موقع Hugo.                                                                |
 | `swatches`  | عينات ألوان — `ase` (الافتراضي)، `gpl`، `sketch`، أو `svg` عبر `--format`.        |
-| `icon-font` | خط أيقونات ويب (TTF, WOFF2)، ملف CSS خاص به، وخريطة نقاط الشيفرة (codepoints).    |
-| `pendo`     | `global.css` المصممة على نمط Instructure لمرشدات Pendo.                           |
+| `icon-font` | خط أيقونات ويب (TTF, WOFF2)، ملف CSS خاص به، وخريطة نقاط الشيفرة (codepoints).   |
+| `pendo`     | `global.css` المصممة على نمط Instructure لمرشدات Pendo.                          |
 
 ## الوسيطات الشائعة
 

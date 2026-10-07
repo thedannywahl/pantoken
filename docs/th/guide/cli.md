@@ -20,21 +20,21 @@ Pantoken CSS styles and metadata, not React components.
 
 ## เป้าหมาย
 
-| Target      | Output                                                                             |
-| ----------- | ---------------------------------------------------------------------------------- |
+| Target      | Output                                                                         |
+| ----------- | ------------------------------------------------------------------------------ |
 | `swift`     | โค้ด Swift ภายใต้ `Sources/<name>` พร้อมสตับ manifest SwiftPM แบบ `Package.swift`. |
-| `android`   | ไฟล์ทรัพยากร XML ของ Android.                                                      |
-| `compose`   | ไฟล์ Kotlin สำหรับ Jetpack Compose.                                                |
-| `flutter`   | ไฟล์ Dart สำหรับ Flutter.                                                          |
+| `android`   | ไฟล์ทรัพยากร XML ของ Android.                                                    |
+| `compose`   | ไฟล์ Kotlin สำหรับ Jetpack Compose.                                              |
+| `flutter`   | ไฟล์ Dart สำหรับ Flutter.                                                        |
 | `rust`      | `tokens.rs` สำหรับ egui (ค่าปริยาย) หรือ iced (`--format iced`).                   |
-| `wordpress` | `theme.json` แบบบล็อกธีม.                                                          |
-| `vanilla`   | `variables.json` ของ Vanilla Forums.                                               |
-| `drupal`    | แอสเซ็ตธีมของ Drupal.                                                              |
+| `wordpress` | `theme.json` แบบบล็อกธีม.                                                        |
+| `vanilla`   | `variables.json` ของ Vanilla Forums.                                           |
+| `drupal`    | แอสเซ็ตธีมของ Drupal.                                                            |
 | `jekyll`    | ข้อมูลไซต์สำหรับ Jekyll.                                                           |
 | `hugo`      | ข้อมูลไซต์สำหรับ Hugo.                                                             |
-| `swatches`  | ชุดสวอชสี — `ase` (ค่าปริยาย), `gpl`, `sketch`, หรือ `svg` ผ่าน `--format`.        |
-| `icon-font` | ฟอนต์ไอคอนเว็บ (TTF, WOFF2), ไฟล์ CSS ของมัน และแผนที่โค้ดพอยน์ทส์.                |
-| `pendo`     | `global.css` ในสไตล์ของ Instructure สำหรับคำแนะนำ Pendo.                           |
+| `swatches`  | ชุดสวอชสี — `ase` (ค่าปริยาย), `gpl`, `sketch`, หรือ `svg` ผ่าน `--format`.          |
+| `icon-font` | ฟอนต์ไอคอนเว็บ (TTF, WOFF2), ไฟล์ CSS ของมัน และแผนที่โค้ดพอยน์ทส์.                     |
+| `pendo`     | `global.css` ในสไตล์ของ Instructure สำหรับคำแนะนำ Pendo.                         |
 
 ## ออปชันทั่วไป
 
