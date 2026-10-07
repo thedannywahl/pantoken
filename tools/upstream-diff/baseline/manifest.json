@@ -298,6 +298,11 @@
       "source": "lucide",
       "viewBox": "0 0 24 24"
     },
+    "--instui-icon-armenian-dram": {
+      "hash": "b4c30c5b9ef13465",
+      "source": "lucide",
+      "viewBox": "0 0 24 24"
+    },
     "--instui-icon-arrow-big-down": {
       "bidirectional": true,
       "hash": "48c753d9386b13db",
@@ -738,6 +743,11 @@
     },
     "--instui-icon-bandage": {
       "hash": "8bb18227fce92d7b",
+      "source": "lucide",
+      "viewBox": "0 0 24 24"
+    },
+    "--instui-icon-bangladeshi-taka": {
+      "hash": "3fa9ca8eb69b001c",
       "source": "lucide",
       "viewBox": "0 0 24 24"
     },
@@ -3151,6 +3161,11 @@
       "source": "lucide",
       "viewBox": "0 0 24 24"
     },
+    "--instui-icon-door-closed-cog": {
+      "hash": "db0d301091fb8982",
+      "source": "lucide",
+      "viewBox": "0 0 24 24"
+    },
     "--instui-icon-door-closed-locked": {
       "hash": "f0f0ed78842432db",
       "source": "lucide",
@@ -4848,6 +4863,11 @@
       "source": "lucide",
       "viewBox": "0 0 24 24"
     },
+    "--instui-icon-kazakh-tenge": {
+      "hash": "987aa30f6016a18c",
+      "source": "lucide",
+      "viewBox": "0 0 24 24"
+    },
     "--instui-icon-key": {
       "hash": "b7a55fc0fbc1de21",
       "source": "lucide",
@@ -5024,6 +5044,11 @@
       "source": "lucide",
       "viewBox": "0 0 24 24"
     },
+    "--instui-icon-layout-grid-circles": {
+      "hash": "72268cd3aec14e4e",
+      "source": "lucide",
+      "viewBox": "0 0 24 24"
+    },
     "--instui-icon-layout-list": {
       "hash": "a967356b589140e9",
       "source": "lucide",
@@ -5067,6 +5092,11 @@
     },
     "--instui-icon-lens-convex": {
       "hash": "60719524f372cda4",
+      "source": "lucide",
+      "viewBox": "0 0 24 24"
+    },
+    "--instui-icon-letters": {
+      "hash": "7a2321634ffb901e",
       "source": "lucide",
       "viewBox": "0 0 24 24"
     },
@@ -6237,12 +6267,12 @@
       "viewBox": "0 0 24 24"
     },
     "--instui-icon-nut": {
-      "hash": "284072d355fc98bb",
+      "hash": "258940e97ddac045",
       "source": "lucide",
       "viewBox": "0 0 24 24"
     },
     "--instui-icon-nut-off": {
-      "hash": "f4a00a05879f7feb",
+      "hash": "3973e8daafb28b96",
       "source": "lucide",
       "viewBox": "0 0 24 24"
     },
@@ -6854,6 +6884,11 @@
       "source": "lucide",
       "viewBox": "0 0 24 24"
     },
+    "--instui-icon-printer-3d": {
+      "hash": "94fd0608b3cd5734",
+      "source": "lucide",
+      "viewBox": "0 0 24 24"
+    },
     "--instui-icon-printer-check": {
       "hash": "8e71afaa0a001655",
       "source": "lucide",
@@ -7264,6 +7299,11 @@
     },
     "--instui-icon-rss": {
       "hash": "e06f1d1a2be68ecf",
+      "source": "lucide",
+      "viewBox": "0 0 24 24"
+    },
+    "--instui-icon-rugby-ball": {
+      "hash": "0c48d97b14b7f0a5",
       "source": "lucide",
       "viewBox": "0 0 24 24"
     },
@@ -8882,6 +8922,23 @@
       "source": "lucide",
       "viewBox": "0 0 24 24"
     },
+    "--instui-icon-text-align-justify-center": {
+      "hash": "9cae99c01d1db413",
+      "source": "lucide",
+      "viewBox": "0 0 24 24"
+    },
+    "--instui-icon-text-align-justify-end": {
+      "bidirectional": true,
+      "hash": "ff686473f67e1e0a",
+      "source": "lucide",
+      "viewBox": "0 0 24 24"
+    },
+    "--instui-icon-text-align-justify-start": {
+      "bidirectional": true,
+      "hash": "7904940c046ecd0d",
+      "source": "lucide",
+      "viewBox": "0 0 24 24"
+    },
     "--instui-icon-text-align-start": {
       "bidirectional": true,
       "hash": "4c6e057034420e73",
@@ -9805,7 +9862,7 @@
       "viewBox": "0 0 24 24"
     },
     "--instui-icon-wifi-cog": {
-      "hash": "6e92c5dc699140eb",
+      "hash": "bfb715beb69bdacc",
       "source": "lucide",
       "viewBox": "0 0 24 24"
     },
@@ -9847,6 +9904,12 @@
     "--instui-icon-wind-arrow-down": {
       "bidirectional": true,
       "hash": "c7125486d6c29597",
+      "source": "lucide",
+      "viewBox": "0 0 24 24"
+    },
+    "--instui-icon-wind-arrow-up": {
+      "bidirectional": true,
+      "hash": "51139a2c6633bbfe",
       "source": "lucide",
       "viewBox": "0 0 24 24"
     },
@@ -9984,7 +10047,7 @@
     },
     "lucide": {
       "package": "lucide",
-      "resolved": "1.48.0"
+      "resolved": "1.52.0"
     },
     "uiIcons": {
       "package": "@instructure/ui-icons",
