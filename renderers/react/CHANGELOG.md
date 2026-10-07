@@ -1,5 +1,12 @@
 # CHANGELOG
 
+## 0.2.1
+
+### Patch Changes
+
+- @pantoken/scaffold-base@0.3.6
+  - @pantoken/web-components@0.7.3
+
 ## 0.2.0
 
 ### Minor Changes

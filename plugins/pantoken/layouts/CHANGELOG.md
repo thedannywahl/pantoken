@@ -1,5 +1,11 @@
 # @pantoken/plugin-layouts
 
+## 0.5.3
+
+### Patch Changes
+
+- ba4f28b: Resolve layout message-bundle locales from the shared i18n configuration instead of the web-components renderer, avoiding a renderer/scaffold dependency cycle during generation.
+
 ## 0.5.2
 
 ### Patch Changes

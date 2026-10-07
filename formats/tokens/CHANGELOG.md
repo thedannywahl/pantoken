@@ -1,5 +1,11 @@
 # CHANGELOG
 
+## 0.8.1
+
+### Patch Changes
+
+- ba4f28b: Update the recorded InstUI source to 11.7.8 and verify the Next.js adapter against the new release. Refresh the upstream baseline for Lucide 1.52.0, including 12 added icons and updated nut, nut-off, and wifi-cog glyphs. InstUI token and icon content is unchanged.
+
 ## 0.8.0
 
 ### Minor Changes

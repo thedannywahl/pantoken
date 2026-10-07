@@ -1,6 +1,6 @@
 {
   "name": "@pantoken/next",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "description": "Next.js adapter for pantoken: withPantoken() transpiles the Instructure UI ESM packages.",
   "homepage": "https://pantoken.app",
   "bugs": "https://github.com/thedannywahl/pantoken/issues",

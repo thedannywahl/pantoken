@@ -1,5 +1,12 @@
 # pantoken
 
+## 0.1.12
+
+### Patch Changes
+
+- @pantoken/pantoken@0.2.27
+  - @pantoken/cli@0.1.47
+
 ## 0.1.11
 
 ### Patch Changes
