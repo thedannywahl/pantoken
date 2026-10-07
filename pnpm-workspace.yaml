@@ -19,19 +19,19 @@ packages:
 catalogMode: prefer
 
 catalog:
-  "@types/node": ^26.6.3
+  "@types/node": ^26.6.4
   typescript: ^7.0.2
-  arkregex: ^0.0.8
-  vite: npm:@voidzero-dev/vite-plus-core@1.0.0-rc.0
-  vite-plus: 1.0.0-rc.0
+  arkregex: ^0.0.12
+  vite: npm:@voidzero-dev/vite-plus-core@1.1.0
+  vite-plus: 1.1.0
   # Upstream Instructure sources. The design-tokens repo is GitHub-only and versioned independently of
   # the 11.7.x line, so it's pinned to a release tag (its package.json version is unreliable — stuck at
   # 1.0.0 across tags — so the tag + resolved commit are the provenance the upgrade pipeline records).
   "@instructure/instructure-design-tokens": "github:instructure/instructure-design-tokens#v2.1.0"
   "@instructure/ui-icons": ^11.7.8
-  lucide: ^1.48.0
+  lucide: ^1.52.0
   # Native token transforms
-  style-dictionary: ^5.5.5
+  style-dictionary: ^5.6.0
   "@tokens-studio/sd-transforms": ^2.0.3
   # Rehype / unist
   unist-util-visit: ^5.1.0
@@ -43,7 +43,7 @@ catalog:
   # markdown-it integration
   markdown-it: ^15.0.2
   # Brand icons (plugin)
-  simple-icons: ^16.32.0
+  simple-icons: ^16.34.0
   # Lucide Lab icons (plugin)
   "@lucide/lab": ^0.7.0
   # React markdown integration
@@ -56,7 +56,7 @@ catalog:
   "@emotion/styled": ^11.14.1
   "@mui/material": ^9.4.0
   remark-gfm: ^4.0.1
-  postcss: ^8.5.28
+  postcss: ^8.5.29
   webpack-sources: ^3.6.0
   cheerio: ^1.2.0
   juice: ^12.2.0
@@ -85,26 +85,26 @@ catalog:
   "@commitlint/cli": ^21.2.3
   "@commitlint/config-conventional": ^21.2.3
   "@changesets/cli": ^3.0.3
-  "@vitest/coverage-v8": 5.0.1
+  "@vitest/coverage-v8": 5.0.3
   markdownlint-cli2: ^0.23.3
   "@manypkg/cli": ^0.25.1
-  fallow: ^3.29.0
+  fallow: ^3.32.0
   happy-dom: ^20.14.5
   dompurify: ^3.4.16
   snyk: ^1.1307.4
-  publint: ^0.3.24
+  publint: ^0.3.25
   "@arethetypeswrong/cli": ^0.18.5
   bumpp: ^12.2.1
   vitepress-plugin-mermaid: ^2.0.17
   mermaid: ^11.17.2
-  shiki: ^4.4.3
-  "@shikijs/langs": ^4.4.3
-  "@shikijs/themes": ^4.4.3
-  "@shikijs/types": ^4.4.3
+  shiki: ^4.5.0
+  "@shikijs/langs": ^4.5.0
+  "@shikijs/themes": ^4.5.0
+  "@shikijs/types": ^4.5.0
   vue: ^3.5.43
   "@vue/server-renderer": ^3.5.43
   vitepress: 2.0.0-alpha.20
-  oxc-minify: ^0.151.0
+  oxc-minify: ^0.153.0
   typedoc: ^0.28.20
   typedoc-plugin-markdown: ^4.13.1
   typedoc-vitepress-theme: ^1.1.4
@@ -124,9 +124,9 @@ catalog:
   # only for the linked cssdoc source and are now unused, kept harmless under `catalogMode: prefer`.
   ajv: ^8.20.0
   grammarkdown: ^3.3.2
-  stylelint: ^17.15.0
+  stylelint: ^17.16.0
   # Not ESLint deps: oxlint loads these two through its ESLint-compatible JS-plugin bridge.
-  eslint-plugin-tsdoc: ^0.5.3
+  eslint-plugin-tsdoc: ^0.5.4
   eslint-plugin-tsdoc-require-2: ^1.2.7
   postcss-value-parser: ^4.2.0
   css-tree: ^3.2.1
@@ -139,37 +139,37 @@ catalog:
   vscode-languageclient: ^10.1.0
   vscode-languageserver: ^10.1.0
   vscode-languageserver-textdocument: ^1.0.12
-  bingo-stratum: ^0.6.3
+  bingo-stratum: ^0.6.4
   zod: ^4.6.5
   # @pantoken/tinymce + canvas-theme-editor scaffold — tracks the current tinymce major, not
   # instructure/canvas-lms's own (older) production RCE version. v8's stricter DOMPurify
   # sanitization is stricter than canvas-lms's tinymce 5, which is an acceptable direction.
-  tinymce: ^8.9.2
+  tinymce: ^8.9.3
   tinymce-i18n: 26.9.21
   less: ^4.9.1
   codemirror: ^6.0.2
   "@codemirror/lang-html": ^6.4.12
-  "@codemirror/language": ^6.12.4
+  "@codemirror/language": ^6.13.1
   "@codemirror/lang-css": ^6.3.1
   "@codemirror/lang-javascript": ^6.2.5
   "@codemirror/lint": ^6.9.7
   "@codemirror/autocomplete": ^6.20.3
   fflate: ^0.8.3
   "@codemirror/state": ^6.7.6
-  "@codemirror/view": ^6.43.13
+  "@codemirror/view": ^6.43.14
   "@lezer/highlight": ^1.2.3
   prettier: ^3.9.9
-  vitest: 5.0.1
+  vitest: 5.0.3
   # Continuous performance testing — Tinybench runs inside Vitest's TypeScript host and reports to CodSpeed.
   # Swap back to @codspeed/vitest-plugin when CodSpeedHQ/codspeed-node#86 is released.
   "@codspeed/tinybench-plugin": ^5.7.1
-  tinybench: ^6.2.0
+  tinybench: ^6.2.1
   ajv-draft-04: ^1.0.0
   rehype: ^13.0.2
   rehype-raw: ^7.0.0
   bootstrap: ^5.3.8
   foundation-sites: ^6.9.0
-  sass: ^1.105.0
+  sass: ^1.105.1
 overrides:
   vite@*: "catalog:"
   # next 16.2.10 (auto-installed as @pantoken/next's optional peer) has 3 High CVEs; 16.2.11 patches
