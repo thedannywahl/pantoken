@@ -8,8 +8,13 @@
  */
 import { mkdirSync, writeFileSync } from "node:fs";
 import { join, resolve } from "node:path";
-import { generateMessageBundles, loadConfig } from "@pantoken/i18n-engine";
-import { LOCALES } from "../../../../renderers/web-components/src/lib/locales.ts";
+import {
+  generateMessageBundles,
+  knownLocales,
+  loadConfig,
+  localesForSpace,
+  resolveLocaleStatus,
+} from "@pantoken/i18n-engine";
 import { runtimeCss } from "../src/lib/runtime-css.ts";
 import { wrapperRules } from "../src/layouts/wrapper/wrapper.ts";
 import { calloutRules } from "../src/layouts/callout/callout.ts";
@@ -47,13 +52,13 @@ console.log(
   `✓ layouts: wrote raw + runtime layouts.css and ${layouts.length} per-layout CSS files`,
 );
 
-generateMessageBundles(
-  loadConfig(resolve(root, "../../../i18n.config.json")),
-  resolve(root, "../../.."),
-  "layouts.strings",
-  Object.keys(LOCALES),
-  outDir,
+const configDir = resolve(root, "../../..");
+const config = loadConfig(join(configDir, "i18n.config.json"));
+const locales = localesForSpace(
+  knownLocales(config, configDir).filter(
+    (locale) => !resolveLocaleStatus(config.locales, locale).excluded,
+  ),
+  config.spaces["layouts.strings"].locales,
 );
-console.log(
-  `✓ layouts: emitted layouts.strings message bundles for ${Object.keys(LOCALES).length} locales`,
-);
+generateMessageBundles(config, configDir, "layouts.strings", locales, outDir);
+console.log(`✓ layouts: emitted layouts.strings message bundles for ${locales.length} locales`);
