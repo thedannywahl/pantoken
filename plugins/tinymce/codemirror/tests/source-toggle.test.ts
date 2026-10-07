@@ -1,7 +1,7 @@
 /**
  * @vitest-environment happy-dom
  */
-import { expect, test, vi } from "vite-plus/test";
+import { afterEach, beforeEach, expect, test, vi } from "vite-plus/test";
 import { EditorView } from "codemirror";
 import {
   createSourceTogglePlugin,
@@ -10,6 +10,32 @@ import {
   SOURCE_TOGGLE_STATUSBAR_NAME,
   SOURCE_TOGGLE_TOOLBAR_NAME,
 } from "../src/index.js";
+
+const selectionTimers = new Set<ReturnType<typeof setTimeout>>();
+
+beforeEach(() => {
+  const dispatchEvent = document.dispatchEvent.bind(document);
+  vi.spyOn(document, "dispatchEvent").mockImplementation((event) => {
+    if (event.type !== "selectionchange") return dispatchEvent(event);
+    const timer = setTimeout(() => {
+      selectionTimers.delete(timer);
+      dispatchEvent(event);
+    }, 0);
+    selectionTimers.add(timer);
+    return true;
+  });
+});
+
+afterEach(async () => {
+  await new Promise((resolve) => setTimeout(resolve, 0));
+  for (const element of document.querySelectorAll<HTMLElement>(".cm-editor")) {
+    EditorView.findFromDOM(element)?.destroy();
+  }
+  for (const timer of selectionTimers) clearTimeout(timer);
+  selectionTimers.clear();
+  document.body.replaceChildren();
+  vi.restoreAllMocks();
+});
 
 /** A minimal `Editor`-shaped stub backed by a real happy-dom element, so
  * `contentAreaContainer.insertAdjacentElement` has a real parent to attach to. */
