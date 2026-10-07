@@ -228,7 +228,7 @@
     source text) — every translated string was diffed against its source cache and confirmed
     byte-identical before the old cache was deleted.
   - `renderers/web-components/scripts/translate.ts` and `check-drift.ts` are deleted. `pnpm
-translate`/`pnpm check:drift` now run the real `i18n` CLI (`i18n translate/check ui.strings`)
+    translate`/`pnpm check:drift` now run the real `i18n` CLI (`i18n translate/check ui.strings`)
     against the root `i18n.config.json`.
   - `packages/i18n/scripts/build-bundles.ts` now reads resolved strings via
     `resolveMessagesForLocale()` from `@pantoken/i18n-engine` instead of the deleted cache directory.

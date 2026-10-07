@@ -520,9 +520,9 @@
 
   Also fixes a `spawnPrompt()` call-signature bug in both packages' `scripts/translate.ts`
   (was passing an options object as the second argument instead of `(command, args,
-prompt, context?)`), and an `isolatedDeclarations` build failure in each package's
+  prompt, context?)`), and an `isolatedDeclarations` build failure in each package's
   generated `locales/index.ts` (needed an explicit `Record<string, Record<string,
-string>>` type annotation on the generator template).
+  string>>` type annotation on the generator template).
 
 - 7d964ee: feat(scaffold): detect `vp`/`vpx` and drive "Next steps" from per-template `scaffold.json`
 
@@ -624,7 +624,7 @@ string>>` type annotation on the generator template).
   CLI: the platform list is now `components` (alias `html`), `react`, `vue`, `svelte`,
   `web-components`, `angular` (the stale `next`/pre-Bingo `html`-only list is gone), the CLI
   invocation is `npx pantoken-ai scaffold <platform>`, and the flat `npx create-pantoken-app
-<platform>` alias is documented alongside `npx @pantoken/scaffold <platform>` for scaffolding
+  <platform>` alias is documented alongside `npx @pantoken/scaffold <platform>` for scaffolding
   without the agent assets.
 - Updated dependencies [8aa88bb]
 - Updated dependencies [8aa88bb]

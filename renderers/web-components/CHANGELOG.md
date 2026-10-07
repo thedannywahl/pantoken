@@ -197,7 +197,7 @@
     source text) — every translated string was diffed against its source cache and confirmed
     byte-identical before the old cache was deleted.
   - `renderers/web-components/scripts/translate.ts` and `check-drift.ts` are deleted. `pnpm
-translate`/`pnpm check:drift` now run the real `i18n` CLI (`i18n translate/check ui.strings`)
+    translate`/`pnpm check:drift` now run the real `i18n` CLI (`i18n translate/check ui.strings`)
     against the root `i18n.config.json`.
   - `packages/i18n/scripts/build-bundles.ts` now reads resolved strings via
     `resolveMessagesForLocale()` from `@pantoken/i18n-engine` instead of the deleted cache directory.
@@ -477,7 +477,7 @@ translate`/`pnpm check:drift` now run the real `i18n` CLI (`i18n translate/check
 - b2566cc: Republish with internal dependencies resolved to real semver instead of the literal `workspace:*`
   protocol string. Every previously published version of this package shipped with that bug (found by
   `scripts/release/audit-workspace-protocol.ts`), because the release pipeline packed with `npm
-pack`/`npm publish`, which doesn't understand pnpm's `workspace:` protocol; it now packs with
+  pack`/`npm publish`, which doesn't understand pnpm's `workspace:` protocol; it now packs with
   `pnpm pack` first, which resolves it. No functional change beyond the dependency ranges themselves.
 - Updated dependencies [b2566cc]
   - @pantoken/components@0.5.1

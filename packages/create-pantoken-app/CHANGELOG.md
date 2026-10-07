@@ -283,9 +283,9 @@
 
   Also fixes a `spawnPrompt()` call-signature bug in both packages' `scripts/translate.ts`
   (was passing an options object as the second argument instead of `(command, args,
-prompt, context?)`), and an `isolatedDeclarations` build failure in each package's
+  prompt, context?)`), and an `isolatedDeclarations` build failure in each package's
   generated `locales/index.ts` (needed an explicit `Record<string, Record<string,
-string>>` type annotation on the generator template).
+  string>>` type annotation on the generator template).
 
 - Updated dependencies [63e06cb]
 - Updated dependencies [7d964ee]
@@ -354,7 +354,7 @@ string>>` type annotation on the generator template).
 ### Minor Changes
 
 - 8aa88bb: Add `create-pantoken-app`, a flat-name npm alias for `@pantoken/scaffold` so `npm create
-pantoken-app` (and `npm init pantoken-app`) work the way npm's `create-*` convention expects.
+  pantoken-app` (and `npm init pantoken-app`) work the way npm's `create-*` convention expects.
   Same CLI and platforms as `npx @pantoken/scaffold <platform>`.
 
 ### Patch Changes

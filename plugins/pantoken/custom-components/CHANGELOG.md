@@ -52,7 +52,7 @@
     `.-logo-<name>` and now carry `--pantoken-logo-aspect` derived from each logo's own SVG `viewBox`.
     `LogoMeta.width`/`height` now describe that natural `viewBox` size, not a rasterized display size.
   - `@pantoken/tinymce`'s logos picker inserts a mask-painted `<span class="instui-logo -logo-<name>"
-role="img" aria-label="…">` instead of a CDN-hosted `<img>`, using the same CSS asset-tracking
+    role="img" aria-label="…">` instead of a CDN-hosted `<img>`, using the same CSS asset-tracking
     (`trackAndInjectAsset`) the icons picker already relies on for Canvas RCE compatibility.
   - The Canvas theme editor scaffold template resolves the logo's `.css` export (not `.png`) for its
     local/offline preview mode, and re-syncs `-logo-*` classes found in loaded editor content the same
@@ -192,7 +192,7 @@ role="img" aria-label="…">` instead of a CDN-hosted `<img>`, using the same CS
 - b2566cc: Republish with internal dependencies resolved to real semver instead of the literal `workspace:*`
   protocol string. Every previously published version of this package shipped with that bug (found by
   `scripts/release/audit-workspace-protocol.ts`), because the release pipeline packed with `npm
-pack`/`npm publish`, which doesn't understand pnpm's `workspace:` protocol; it now packs with
+  pack`/`npm publish`, which doesn't understand pnpm's `workspace:` protocol; it now packs with
   `pnpm pack` first, which resolves it. No functional change beyond the dependency ranges themselves.
 - Updated dependencies [b2566cc]
   - @pantoken/plugin-kit@0.2.2

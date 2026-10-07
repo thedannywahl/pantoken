@@ -6,53 +6,53 @@
       "feeds": "token-ir"
     },
     "@instructure/ui-icons": {
-      "range": "^11.7.7",
-      "resolved": "11.7.7",
+      "range": "^11.7.8",
+      "resolved": "11.7.8",
       "feeds": "icons"
     },
     "lucide": {
-      "range": "^1.48.0",
-      "resolved": "1.48.0",
+      "range": "^1.52.0",
+      "resolved": "1.52.0",
       "feeds": "icons"
     },
     "@instructure/ui-heading": {
-      "range": "^11.7.7",
-      "resolved": "11.7.7",
+      "range": "^11.7.8",
+      "resolved": "11.7.8",
       "feeds": "instui-react"
     },
     "@instructure/ui-text": {
-      "range": "^11.7.7",
-      "resolved": "11.7.7",
+      "range": "^11.7.8",
+      "resolved": "11.7.8",
       "feeds": "instui-react"
     },
     "@instructure/ui-link": {
-      "range": "^11.7.7",
-      "resolved": "11.7.7",
+      "range": "^11.7.8",
+      "resolved": "11.7.8",
       "feeds": "instui-react"
     },
     "@instructure/ui-list": {
-      "range": "^11.7.7",
-      "resolved": "11.7.7",
+      "range": "^11.7.8",
+      "resolved": "11.7.8",
       "feeds": "instui-react"
     },
     "@instructure/ui-table": {
-      "range": "^11.7.7",
-      "resolved": "11.7.7",
+      "range": "^11.7.8",
+      "resolved": "11.7.8",
       "feeds": "instui-react"
     },
     "@instructure/ui-view": {
-      "range": "^11.7.7",
-      "resolved": "11.7.7",
+      "range": "^11.7.8",
+      "resolved": "11.7.8",
       "feeds": "instui-react"
     },
     "@instructure/ui-img": {
-      "range": "^11.7.7",
-      "resolved": "11.7.7",
+      "range": "^11.7.8",
+      "resolved": "11.7.8",
       "feeds": "instui-react"
     },
     "@instructure/ui-alerts": {
-      "range": "^11.7.7",
-      "resolved": "11.7.7",
+      "range": "^11.7.8",
+      "resolved": "11.7.8",
       "feeds": "instui-react"
     }
   },
@@ -63,7 +63,7 @@
       "governedBy": "token-ir",
       "targetSupport": {
         "target": "Next.js",
-        "format": "Production build transpiling and rendering Instructure UI 11.7.7 with React 19.3.0",
+        "format": "Production build transpiling and rendering Instructure UI 11.7.8 with React 19.3.0",
         "status": "verified",
         "minimum": "16.0.0",
         "testedThrough": "16.3.8",

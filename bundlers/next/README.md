@@ -6,7 +6,7 @@ merges them into `transpilePackages` so they build without extra setup.
 ## Compatibility
 
 Verified with production builds on Next 16.0.0 and 16.3.7, transpiling and statically rendering
-`@instructure/ui-buttons` 11.7.7 with React 19.3.0. The probe uses the webpack builder; it does not
+`@instructure/ui-buttons` 11.7.8 with React 19.3.0. The probe uses the webpack builder; it does not
 claim compatibility with Turbopack. See the [compatibility matrix](https://pantoken.app/compatibility)
 for exact releases.
 

@@ -3,7 +3,7 @@
 ## Use the `vp` toolchain, never pnpm directly
 
 - `vp` / `vpr` / `vpx` are **global** bins. Run tasks via `vp run <task>`, execute bins via `vp exec
-[-F <glob>] <bin>`.
+  [-F <glob>] <bin>`.
 - **Package scripts must never shell out to `pnpm`.** CI (`.github/workflows/docs.yml`) provides `vp`
   via `voidzero-dev/setup-vp` but **not** `pnpm` on PATH, so a `pnpm run …` inside any script breaks
   the docs deploy with `pnpm: command not found`. Local dev has pnpm, so a top-level `pnpm run X` is
@@ -154,7 +154,7 @@ set a custom `i18nRouting`).
   minutes to a few seconds. Override by editing the task or exporting your own
   `DOCS_TRANSLATION_COMMAND_ARGS` before a direct `node scripts/…` run (`DOCS_TRANSLATION_COMMAND`
   overrides the `claude` binary itself). Either task logs progress (`… N/M labels + prose blocks
-translated`) and saves the memory after **each** chunk, so it's resumable — a kill or crash keeps
+  translated`) and saves the memory after **each** chunk, so it's resumable — a kill or crash keeps
   completed chunks and a re-run serves them from cache.
 - **The cold pass is generation-bound, so it runs chunks concurrently.** Once MCP is stripped, the
   wall-clock cost is the model streaming translations, not startup — so `ClaudeCodeTranslationAdapter`

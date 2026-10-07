@@ -11,9 +11,8 @@ import { globalModifierSelector } from "@pantoken/utils";
 /** The layout utility — composable, global `display` and `text-align` classes. */
 export const layout: Definition = defineUtility({
   name: "layout",
-  css: (p) =>
-    // prettier-ignore
-    css`/**
+  css: (p) => // prettier-ignore
+  css`/**
  * @utility layout
  * @selector .--display-flex
  * @global

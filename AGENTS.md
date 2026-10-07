@@ -70,7 +70,7 @@ Owner of `@pantoken/components` (the semantic RSCSS CSS API) and its InstUI-pari
 - Never name a modifier with a `-icon-` substring unless it's a real glyph — the generic
   `[class*="-icon-"]::before` painter will render a broken square on it.
 - Per component, update the record, the drift-checked test, the guide, and a demo; then `vp check
---fix`, tests, `check:publish`, and `lint:markdown`. Browser-verify visual changes.
+  --fix`, tests, `check:publish`, and `lint:markdown`. Browser-verify visual changes.
 - Full authoring rules live in `docs/conventions/authoring.md`.
 
 ## Interactions

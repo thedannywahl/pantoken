@@ -86,7 +86,7 @@
   `buildTokens` moved off the main `@pantoken/core` entry onto a new `@pantoken/core/build` subpath.
   It was the only export needing `@instructure/instructure-design-tokens` (a `github:`-protocol,
   "exotic" dependency), but every consumer of the main entry — including `platforms/{android,compose,
-flutter,rust,swift}` via `@pantoken/pantoken` — pulled it in transitively, since the package bundled
+  flutter,rust,swift}` via `@pantoken/pantoken` — pulled it in transitively, since the package bundled
   to a single file. That made the exotic dependency a subdependency for anyone installing
   `create-pantoken-app` or `@pantoken/pantoken`, which pnpm's `blockExoticSubdeps` policy rejects
   (`ERR_PNPM_EXOTIC_SUBDEP`).
@@ -173,7 +173,7 @@ flutter,rust,swift}` via `@pantoken/pantoken` — pulled it in transitively, sin
 - b2566cc: Republish with internal dependencies resolved to real semver instead of the literal `workspace:*`
   protocol string. Every previously published version of this package shipped with that bug (found by
   `scripts/release/audit-workspace-protocol.ts`), because the release pipeline packed with `npm
-pack`/`npm publish`, which doesn't understand pnpm's `workspace:` protocol; it now packs with
+  pack`/`npm publish`, which doesn't understand pnpm's `workspace:` protocol; it now packs with
   `pnpm pack` first, which resolves it. No functional change beyond the dependency ranges themselves.
 - Updated dependencies [b2566cc]
   - @pantoken/plugin-kit@0.2.2

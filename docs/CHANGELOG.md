@@ -92,7 +92,7 @@
     removed from the markup) — copying still works, it just no longer tries to update a status
     message.
   - Fixed `/tools/canvas-rce/` (and `/tools/canvas-rce` with no trailing slash) 404ing in `vitepress
-dev` — only the exact `/tools/canvas-rce/index.html` URL used to resolve.
+    dev` — only the exact `/tools/canvas-rce/index.html` URL used to resolve.
 
 - f475012: Apply the docs toolbar color selection inside the embedded Canvas RCE iframe so its pantoken chrome and live preview follow the selected `data-pantoken-color` scheme.
 - f475012: Add a "Canvas RCE" utility page (`/guide/canvas-rce`) alongside the CDN Picker and Agent Tools
@@ -353,7 +353,7 @@ dev` — only the exact `/tools/canvas-rce/index.html` URL used to resolve.
 ### Patch Changes
 
 - 7d964ee: The "Get started" widget's agent-shell prompt (`"Fetch create.pantoken.app/SKILL.md and follow
-it…"`) is now a translatable UI string (`GetStartedTabsStrings.agentPrompt` in `get-started.ts` /
+  it…"`) is now a translatable UI string (`GetStartedTabsStrings.agentPrompt` in `get-started.ts` /
   `i18n.ts`) instead of a hardcoded English constant in `GetStartedTabs.vue`, so it goes through the
   same `translate-chrome.ts` pipeline as the rest of the widget's chrome.
 - 7d964ee: Fix the agent view's line wrapping: it used `display: flex; flex-wrap: wrap`, which wraps whole
@@ -418,7 +418,7 @@ it…"`) is now a translatable UI string (`GetStartedTabsStrings.agentPrompt` in
   `LOCALES`) and all `config.ts` usages accordingly.
 - 7d964ee: Fixed a real translation-corruption bug: TypeDoc renders a generic type as several separately
   backtick-wrapped tokens joined by bare escaped angle brackets (e.g. `` `Readonly`\<`Record`\<`string`,
-`string`\>\> ``). That glue sat outside any masked code span and reached the AI adapter unprotected,
+  `string`\>\> ``). That glue sat outside any masked code span and reached the AI adapter unprotected,
   which sometimes duplicated/mangled the brackets. `AiTranslationAdapter` now masks every `\<`/`\>`
   sequence globally before any prompt is sent, in `translateMarkdown`, `translateText`, and the batch
   path.

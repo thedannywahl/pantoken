@@ -91,7 +91,7 @@
     `.-logo-<name>` and now carry `--pantoken-logo-aspect` derived from each logo's own SVG `viewBox`.
     `LogoMeta.width`/`height` now describe that natural `viewBox` size, not a rasterized display size.
   - `@pantoken/tinymce`'s logos picker inserts a mask-painted `<span class="instui-logo -logo-<name>"
-role="img" aria-label="…">` instead of a CDN-hosted `<img>`, using the same CSS asset-tracking
+    role="img" aria-label="…">` instead of a CDN-hosted `<img>`, using the same CSS asset-tracking
     (`trackAndInjectAsset`) the icons picker already relies on for Canvas RCE compatibility.
   - The Canvas theme editor scaffold template resolves the logo's `.css` export (not `.png`) for its
     local/offline preview mode, and re-syncs `-logo-*` classes found in loaded editor content the same

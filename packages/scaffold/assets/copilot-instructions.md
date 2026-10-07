@@ -5,7 +5,7 @@ When styling this project, use pantoken components, icons and tokens.
 - First distinguish a maintained application from a standalone artifact. For a single HTML mockup
   or sendable email, follow the `create-pantoken-mockup` skill instead of scaffolding a project.
 - In a shadcn project, discover CSS items with `shadcn search @pantoken`, inspect with `shadcn view
-@pantoken/<item>`, and install with `shadcn add @pantoken/<item>`. These are styles and metadata,
+  @pantoken/<item>`, and install with `shadcn add @pantoken/<item>`. These are styles and metadata,
   not React components. `@pantoken/shadcn` is only the CSS-variable bridge.
 
 - Tokens are CSS custom properties `--instui-<group>-<name>` (e.g. `--instui-color-background-brand`).
@@ -24,7 +24,7 @@ When styling this project, use pantoken components, icons and tokens.
   `change` value in the consuming application.
 - Tailwind: `pantokenPreset()` from `@pantoken/tailwind`.
 - Native / CMS/site/design targets: `npx pantoken generate
-<swift|android|compose|flutter|rust|wordpress|vanilla|drupal|swatches|icon-font|pendo|mintlify|jekyll|hugo>`.
+  <swift|android|compose|flutter|rust|wordpress|vanilla|drupal|swatches|icon-font|pendo|mintlify|jekyll|hugo>`.
 - Check the [target compatibility registry](https://pantoken.app/target-compatibility.json) before recommending a host version. Its
   `$schema` field links the schema; tested versions and environments do not imply future support.
 - For InstUI React components use `@instructure/ui-*`; pantoken is the token/icon layer. Use
