@@ -1,0 +1,733 @@
+[Terminal 48f19816-5b9a-42d2-b0ac-72791a782800 notification: command completed. The terminal has been cleaned up.]
+Terminal output:
+act group keys, glob patterns, and `!`-prefixed negations. Values can be comma-separated or repeated. Project-level sections are not filtered. Supported by `fallow health` only
+
+      --performance
+          Show pipeline performance timing breakdown
+
+      --explain
+          Include metric definitions and rule descriptions in output
+
+      --explain-skipped
+          Show per-pattern counts for skipped files: default duplicate ignores on dupes and audit, built-in discovery ignores on check, dead-code, audit and the default run
+
+      --summary
+          Show only category counts without individual items
+
+      --ci
+          CI mode: equivalent to --format sarif --fail-on-issues --quiet
+
+      --fail-on-issues
+          Exit with code 1 if issues are found
+
+      --sarif-file <PATH>
+          Write SARIF output to a file (in addition to the primary --format output). Used by bare `fallow`, `dead-code` and `security`. The path must resolve inside the project root, its Git work tree, the CI workspace or a temp directory
+
+  -o, --output-file <PATH>
+          Write the report to a file instead of stdout, for any --format (no ANSI codes). Useful on large projects where the terminal scrollback truncates the top. Progress and the confirmation stay on stderr. The path must resolve inside the project root, its Git work tree, the CI workspace or a temp directory
+
+      --report-path-prefix <PREFIX>
+          Prefix prepended to every path in the CI-facing formats (`github-annotations`, `github-summary`, `codeclimate`, `pr-comment-github`, `pr-comment-gitlab`, `review-github`, `review-gitlab`). CI platforms address files by repository-root-relative path, so when the analyzed project lives in a subdirectory (e.g. `packages/app/`), paths need that offset. fallow detects the offset via the git toplevel automatically; this flag overrides the detection. Pass an empty string to disable rebasing and emit paths relative to `--root`
+          
+          [alias: --annotations-path-prefix]
+
+      --fail-on-regression
+          Fail if issue count increased beyond tolerance compared to a regression baseline.
+          
+          With `list --entry-weight`, fail when the eager source bytes of an entry grew beyond the tolerance. Without this flag that comparison is report-only.
+
+      --fail-on-stale-baseline
+          Exit with code 1 if a loaded --baseline has entries that match nothing in this run.
+          
+          Stricter than the default advisory warning: any stale entry fails, not just a quarter of the baseline. Applies in every output format. The verdict reaches a machine consumer as `gate_outcomes["stale-baseline"]`, which is published with or without this flag; the flag decides only whether that entry is `enforced`, and the exit code plus one stderr line. Inert when no baseline is loaded, on runs narrowed to part of the project (including production mode), which cannot judge a whole-project baseline, and under `health --report-only`, which never fails a run; such a run prints why it stood down instead of passing quietly. `fallow audit` always analyzes only changed files, so the gate never fires there.
+
+      --fail-on-baseline-growth
+          Exit with code 1 if a loaded baseline has a key that the same file at the base ref does not have.
+          
+          Makes a committed baseline shrink-only. A change that adds a finding and re-saves the baseline in the same commit passes `--baseline` and `--fail-on-stale-baseline`; this gate fails it and lists each new key per category on stderr. A renamed file or a moved line gives a new key, so it counts as growth. The base ref is `--baseline-base`, else the `fallow audit` base: `--changed-since` / `--base`, then `FALLOW_AUDIT_BASE`, then the merge-base with the upstream or the remote default branch. A baseline that the base ref does not have is a new baseline and passes with a note. A base ref that git cannot resolve (for example in a shallow clone) exits 2. Applies to `dead-code`, `dupes`, `health`, `audit` and the bare run, and reaches a machine consumer as `gate_outcomes["baseline-growth"]`.
+
+      --baseline-base <REF>
+          The git ref that --fail-on-baseline-growth compares the baseline with.
+          
+          Defaults to the `fallow audit` base resolution. Needs --fail-on-baseline-growth.
+
+      --fail-on-parse-error
+          Exit with code 1 if fallow could not parse a source file cleanly.
+          
+          Arms the `parse-error` gate: a file with a `source-parse-degraded` entry in `workspace_diagnostics[]` fails the run, and the gate entry in `gate_outcomes["parse-error"]` names each such file. Off by default, because the parser also rejects valid syntax that is newer than the parser. Applies to `dead-code`, `health`, `audit` and the bare run, in every output format. The `failOnParseError` config key arms the same gate. `health --report-only` never fails a run.
+
+      --tolerance <TOLERANCE>
+          Allowed issue count increase before a regression is flagged.
+          
+          With `list --entry-weight`, the value is the allowed growth of eager source bytes per entry: a byte count such as `1024`, or a percentage such as `5%`.
+          
+          [default: 0]
+
+      --regression-baseline <PATH>
+          Path to the regression baseline file
+
+      --save-regression-baseline [<PATH>]
+          Save the current issue counts as a regression baseline. Omit PATH to update regression.baseline in the discovered fallow config, or create .fallowrc.json when none exists. Provide PATH to write a standalone file; PATH must resolve inside the project root, its Git work tree, the CI workspace or a temp directory
+
+      --dupes-mode <DUPES_MODE>
+          Override duplication detection mode in combined mode
+          
+          [possible values: strict, mild, weak, semantic]
+
+      --dupes-near
+          Enable function-scoped near-miss clone detection in combined mode
+
+      --dupes-threshold <DUPES_THRESHOLD>
+          Override duplication threshold in combined mode
+
+      --dupes-min-tokens <DUPES_MIN_TOKENS>
+          Override the minimum token count for clones in combined mode
+
+      --dupes-min-lines <DUPES_MIN_LINES>
+          Override the minimum line count for clones in combined mode
+
+      --dupes-min-occurrences <DUPES_MIN_OCCURRENCES>
+          Override the minimum clone occurrences in combined mode (must be >= 2)
+
+      --dupes-skip-local
+          Only report cross-directory duplicates in combined mode
+
+      --dupes-cross-language
+          Enable cross-language duplicate detection in combined mode
+
+      --dupes-ignore-imports
+          Exclude module wiring from duplicate detection in combined mode (default). Pass `--dupes-no-ignore-imports` to count it again
+
+      --dupes-no-ignore-imports
+          Count module wiring as clone candidates in combined mode (opt out of the default exclusion)
+
+      --dupes-ignore-symlinks
+          Omit clone instances whose path is a symlink, or lies under a symlinked directory, in combined mode
+
+      --dupes-no-ignore-symlinks
+          Report symlinked clone instances in combined mode (opt out of a config `duplicates.ignoreSymlinks: true`)
+
+      --include-entry-exports
+          Report unused exports in entry files instead of auto-marking them as used
+
+      --type-aware
+          Opt in to TypeScript semantic analysis for project-wide symbol evidence. This does not emit compiler diagnostics or typed lint findings
+
+      --no-type-aware
+          Disable TypeScript semantic analysis even when `typeAware.enabled` or `FALLOW_TYPE_AWARE` opts in, keeping this run fully syntactic
+
+      --type-aware-project <PATH>
+          TypeScript project config to use for type-aware analysis (repeatable)
+
+      --type-aware-require <TYPE_AWARE_REQUIRE>
+          Decide whether incomplete type-aware analysis is advisory or gating
+
+          Possible values:
+          - best-effort: Keep conservative findings and report semantic gaps
+          - complete:    Fail the quality gate when a requested semantic query is incomplete
+
+  -h, --help
+          Print help (see a summary with '-h')
+tools/i18n-engine/src/locales.ts
+20:export function knownLocales(config: I18nConfig, configDir: string): string[] {
+107:export function localesForSpace(
+5:    "ui.strings",
+9:    "layouts.strings",
+28:    "tiers": {
+39:      "ui.strings": { "source": "block", "primary": "block", "secondary": "block" },
+43:      "layouts.strings": { "source": "block", "primary": "block", "secondary": "block" },
+63:    "ui.strings": {
+85:    "layouts.strings": {
+pantoken on instui-11.7.8 ↑3 via  26.11.0 
+➜  vp run @pantoken/plugin-layouts#generate && vp exec fallow dead-code --fail-on-issues --format compact
+VITE+ - The Unified Toolchain for the Web
+
+~/plugins/pantoken/layouts$ node scripts/component-styles.ts ◉ cache hit, replaying
+✓ layouts: wrote /layouts/src/generated/component-styles.ts (7 record(s))
+✓ layouts: wrote /layouts/src/generated/layout-html.ts (10 HTML snippet(s))
+
+~/plugins/pantoken/layouts$ node scripts/generate.ts ○ cache miss: 'plugins/pantoken/layouts/scripts/generate.ts' modified, executing
+✓ layouts: wrote raw + runtime layouts.css and 7 per-layout CSS files
+✓ layouts: emitted layouts.strings message bundles for 44 locales
+
+---
+vp run: 1/2 cache hit (50%), 82ms saved. (Run `vp run --last-details` for full details)
+VITE+ - The Unified Toolchain for the Web
+
+dev-dep-in-prod:ajv
+dev-dep-in-prod:snyk
+[X] Exit code 1: gate error-severity-findings (2 at or above error) failed. Under --fail-on-issues (also set by --ci), a rule set to "warn" also fails the run. To report findings without a failure, remove the flag and set the rules to "warn".
+pantoken on instui-11.7.8 ↑3  ~1 via  26.11.0 x 
+➜  node --input-type=module <<'NODE'
+import { readFileSync } from 'node:fs';
+const schema = JSON.parse(readFileSync('node_modules/fallow/schema.json', 'utf8'));
+for (const [key, value] of Object.entries(schema.properties)) {
+  if (/entry|dev|prod|override|workspace/i.test(key)) console.log(key, JSON.stringify(value));
+}
+NODE
+vp exec fallow dead-code --dev-deps-in-prod --format json | head -120
+entry {"description":"An array of project-root-relative glob patterns whose matching files are seeded as manual entry points, on top of the framework and package.json entries fallow discovers automatically, so their transitive imports are not reported as unused. Set it (e.g. `[\"src/main.ts\"]`) when a file is a real runtime root that no plugin or manifest declares; patterns are validated at load and matched against discovered files.","type":"array","items":{"type":"string"},"default":[]}
+workspaces {"description":"Monorepo workspace configuration. `patterns` adds workspace package roots beyond manifest discovery; `changedSince` maps exact project-root-relative workspace roots to Git baseline refs. A global changed-since request overrides those per-package baselines.","anyOf":[{"$ref":"#/$defs/WorkspaceConfig"},{"type":"null"}],"default":null}
+ignoreDependencyOverrides {"description":"A list of rules that suppress `unused-dependency-override` and `misconfigured-dependency-override` findings for pnpm `overrides` entries; config-only, matched against the override's target package. Each entry needs a `package` (exact match) plus an optional `source` to scope the suppression to `\"pnpm-workspace.yaml\"` or `\"package.json\"`.","type":"array","items":{"$ref":"#/$defs/IgnoreDependencyOverrideRule"}}
+production {"description":"Enables production mode, which excludes test/spec/story/dev files from discovery and forces `unused-dev-dependencies` and `unused-optional-dependencies` to `off`. Accepts a boolean (default false) applied to all analyses, or a per-analysis object `{ deadCode?, health?, dupes? }` (each boolean, default false) that scopes production mode to individual analyses in combined `fallow` and `fallow audit`. Set it to analyze only shipped code; the `--production`/`--no-production` and `--production-{dead-code,health,dupes}` CLI flags and `FALLOW_PRODUCTION*` env vars override this value (CLI flags win, then per-analysis env, then global env, then config).","$ref":"#/$defs/ProductionConfig","default":false}
+overrides {"description":"An ordered list of per-file rule-severity overrides: each entry re-severities specific analysis rules for files its globs match, layered on top of the top-level `rules` defaults. Set to relax or tighten rules for a subset of paths (e.g. downgrade unused-exports to warn under a generated directory); each entry has `files` (glob-pattern array) and `rules` (a partial per-rule severity map of error/warn/off). Entries apply in list order and a file matched by several entries takes every matching entry's overrides (later entries win on conflict); inter-file rules (duplicate-exports, circular-dependencies, re-export-cycle) have no effect in an override (fallow warns during analysis and points to the right mechanism: top-level `ignoreExports` for duplicate-exports, a file-level `// fallow-ignore-file` comment for the others).","type":"array","items":{"$ref":"#/$defs/ConfigOverride"},"default":[]}
+includeEntryExports {"description":"When true, exports of entry-point files are subject to unused-export detection instead of being auto-credited as used, so a typo'd or stray export in a framework route or package entry (e.g. meatdata for metadata) is flagged; plugin used_exports allowlists are still honored. Boolean, defaults to false; the CLI flag --include-entry-exports applies the same behavior for one run.","type":"boolean","default":false}
+{"error":true,"message":"error: unexpected argument '--dev-deps-in-prod' found\n\n  tip: to pass '--dev-deps-in-prod' as a value, use '-- --dev-deps-in-prod'\n\nUsage: fallow dead-code [OPTIONS] [PATH]\n\nFor more information, try '--help'.","exit_code":2}
+pantoken on instui-11.7.8 ↑3  ~1 via  26.11.0 x 
+➜  vp exec fallow dead-code --fail-on-issues --format compact
+VITE+ - The Unified Toolchain for the Web
+
+Error: unknown field `externalPlugins`, expected one of `$schema`, `minimumVersion`, `extends`, `entry`, `ignorePatterns`, `ignoreFindings`, `framework`, `workspaces`, `ignoreDependencies`, `ignoreCommandEntries`, `ignoreUnresolvedImports`, `ignoreExports`, `ignoreCatalogReferences`, `ignoreDependencyOverrides`, `ignoreExportsUsedInFile`, `ignoreDecorators`, `usedClassMembers`, `duplicates`, `similarCode`, `health`, `typeAware`, `rules`, `unusedComponentProps`, `circularDependencies`, `boundaries`, `flags`, `security`, `fix`, `resolve`, `production`, `plugins`, `rulePacks`, `dynamicallyLoaded`, `overrides`, `codeowners`, `publicPackages`, `regression`, `audit`, `sealed`, `includeEntryExports`, `autoImports`, `failOnParseError`, `cache` in /Users/dwahl/Scripts/pantoken/.fallowrc.jsonc
+pantoken on instui-11.7.8 ↑3  ~2 via  26.11.0 x 
+➜  node --input-type=module <<'NODE'
+import {readFileSync} from 'node:fs';
+const schema = JSON.parse(readFileSync('node_modules/fallow/schema.json','utf8'));
+console.log(JSON.stringify(schema.properties.plugins, null, 2));
+console.log(JSON.stringify(schema.$defs.PluginConfig, null, 2));
+NODE
+{
+  "description": "List of paths (relative to the project root, must resolve within it) to external plugin definition files or directories in JSONC/JSON/TOML, loaded in addition to the auto-discovered `.fallow/plugins/` directory and root `fallow-plugin-*` files. Set it to load plugin definitions kept outside those default locations; a path resolving outside the project root is skipped with a `tracing::warn`, and paths listed here are searched before the auto-discovered locations (first occurrence of a plugin name wins).",
+  "type": "array",
+  "items": {
+    "type": "string"
+  },
+  "default": []
+}
+undefined
+pantoken on instui-11.7.8 ↑3  ~2 via  26.11.0 
+➜  vp exec fallow dead-code --fail-on-issues --format compact
+VITE+ - The Unified Toolchain for the Web
+
+   0.126487333s  WARN Cache was built under different extraction config, rebuilding from cold
+⠴ fallow: loading module graph cache... (0s)                                       0.588679417s  WARN Graph cache decoded but not reused: resolver, entry points, or plugins changed
+dev-dep-in-prod:ajv
+[X] Exit code 1: gate error-severity-findings (1 at or above error) failed. Under --fail-on-issues (also set by --ci), a rule set to "warn" also fails the run. To report findings without a failure, remove the flag and set the rules to "warn".
+pantoken on instui-11.7.8 ↑3  ~2 via  26.11.0 x 
+➜  vp exec fallow dead-code --format json | jq 'with_entries(select(.key|test("dev|prod")))' && rg -n 'compatibility\.ts|snyk-code-gate' --glob '*.ts' scripts tools packages plugins renderers | head -55 && git --no-pager diff --stat
+{
+  "unused_dev_dependencies": [],
+  "dev_dependencies_in_production": [
+    {
+      "package_name": "ajv",
+      "path": "package.json",
+      "line": 31,
+      "finding_id": "dc1:dev-dependency-in-production:52d67dbced660f55",
+      "actions": [
+        {
+          "type": "move-to-prod",
+          "auto_fixable": false,
+          "description": "Move to dependencies if the deployment installs them (production code imports this)",
+          "note": "A production-only install (`pnpm install --prod`) omits devDependencies, so an import resolved at runtime breaks. A build that inlines the package into its output resolves nothing at runtime, and moving it there can instead make the deployment require an install it did not need"
+        },
+        {
+          "type": "add-to-config",
+          "auto_fixable": false,
+          "description": "Add \"ajv\" to ignoreDependencies in fallow config",
+          "config_key": "ignoreDependencies",
+          "value": "ajv",
+          "value_schema": "https://raw.githubusercontent.com/fallow-rs/fallow/main/schema.json#/properties/ignoreDependencies/items"
+        }
+      ],
+      "effective_severity": "warn"
+    }
+  ]
+}
+scripts/release/compatibility.ts:4: * writer (`generate-compatibility.ts`) and the gate (`check-compatibility.ts`) share one source of
+scripts/release/check-target-compatibility.test.ts:39:    if (file.endsWith("check-compatibility.ts") && fixture) return fixture.source ?? "";
+scripts/release/check-target-compatibility.test.ts:45:    if (file.endsWith("/check-compatibility.ts") && fixture?.checkCompatibility) return {};
+scripts/release/check-target-compatibility.test.ts:81:  await import("./check-target-compatibility.ts");
+scripts/release/check-target-compatibility.test.ts:114:  await import("./check-target-compatibility.ts");
+renderers/astro/tests/index.test.ts:3:import { checkCompatibility } from "../scripts/check-compatibility.ts";
+renderers/vue/tests/index.test.ts:2:import { checkCompatibility } from "../scripts/check-compatibility.ts";
+renderers/mintlify/tests/index.test.ts:2:import { checkCompatibility } from "../scripts/check-compatibility.ts";
+scripts/release/check-compatibility.ts:11:import { buildCompatibility, type Compatibility } from "./compatibility.ts";
+renderers/angular/tests/index.test.ts:2:import { checkCompatibility } from "../scripts/check-compatibility.ts";
+renderers/mui/tests/index.test.ts:2:import { checkCompatibility } from "../scripts/check-compatibility.ts";
+scripts/release/check-compatibility.test.ts:2:import type { Compatibility } from "./compatibility.ts";
+scripts/release/check-compatibility.test.ts:8:vi.mock("./compatibility.ts", async (importActual) => {
+scripts/release/check-compatibility.test.ts:9:  const actual = await importActual<typeof import("./compatibility.ts")>();
+scripts/release/check-compatibility.test.ts:61:  await import("./check-compatibility.ts");
+scripts/release/check-compatibility.test.ts:71:  await import("./check-compatibility.ts");
+scripts/release/check-compatibility.test.ts:81:  await import("./check-compatibility.ts");
+renderers/docusaurus/tests/index.test.ts:4:import { checkCompatibility } from "../scripts/check-compatibility.ts";
+renderers/foundation/tests/index.test.ts:5:import { checkCompatibility } from "../scripts/check-compatibility.ts";
+renderers/markdown-it/tests/index.test.ts:5:import { checkCompatibility } from "../scripts/check-compatibility.ts";
+renderers/vitepress/tests/index.test.ts:2:import { checkCompatibility } from "../scripts/check-compatibility.ts";
+renderers/bootstrap/tests/index.test.ts:5:import { checkCompatibility } from "../scripts/check-compatibility.ts";
+scripts/release/compatibility.test.ts:10:} from "./compatibility.ts";
+renderers/rehype/tests/index.test.ts:4:import { checkCompatibility } from "../scripts/check-compatibility.ts";
+scripts/release/generate-compatibility.test.ts:2:import type { Compatibility } from "./compatibility.ts";
+scripts/release/generate-compatibility.test.ts:8:vi.mock("./compatibility.ts", async (importActual) => {
+scripts/release/generate-compatibility.test.ts:9:  const actual = await importActual<typeof import("./compatibility.ts")>();
+scripts/release/generate-compatibility.test.ts:51:  await import("./generate-compatibility.ts");
+scripts/release/generate-compatibility.test.ts:72:  await import("./generate-compatibility.ts");
+scripts/release/check-target-releases.ts:3:import type { Compatibility, ConsumerEntry } from "./compatibility.ts";
+scripts/release/check-target-compatibility.ts:32:      .stat(path.join(directory, "scripts/check-compatibility.ts"))
+scripts/release/check-target-compatibility.ts:34:      ? path.join(directory, "scripts/check-compatibility.ts")
+renderers/shadcn/tests/index.test.ts:2:import { checkCompatibility } from "../scripts/check-compatibility.ts";
+scripts/release/check-target-releases.test.ts:3:import type { ConsumerEntry } from "./compatibility.ts";
+renderers/svelte/tests/index.test.ts:2:import { checkCompatibility } from "../scripts/check-compatibility.ts";
+renderers/storybook/tests/index.test.ts:2:import { checkCompatibility } from "../scripts/check-compatibility.ts";
+scripts/release/generate-compatibility.ts:11:import { buildCompatibility, renderMarkdown } from "./compatibility.ts";
+scripts/release/target-versions.ts:3:import type { TargetSupport } from "./compatibility.ts";
+scripts/release/downstream.ts:49:  if (packageJson.scripts?.["check:compatibility"] !== "node scripts/check-compatibility.ts") {
+scripts/release/downstream.ts:54:  const result = spawnSync(process.execPath, ["scripts/check-compatibility.ts", version], {
+scripts/release/downstream.test.ts:2:import type { TargetSupport } from "./compatibility.ts";
+scripts/release/downstream.test.ts:65:        scripts: { "check:compatibility": "node scripts/check-compatibility.ts" },
+scripts/quality/snyk-code-gate.test.ts:29:} = await import("./snyk-code-gate.ts");
+renderers/web-components/tests/index.test.ts:2:import { checkCompatibility } from "../scripts/check-compatibility.ts";
+renderers/css-in-js/tests/to-theme.test.ts:2:import { checkCompatibility } from "../scripts/check-compatibility.ts";
+renderers/tinymce/tests/pantoken.test.ts:5:import { checkCompatibility } from "../scripts/check-compatibility.ts";
+ .fallowrc.jsonc                              |  2 --
+ plugins/pantoken/layouts/scripts/generate.ts | 25 ++++++++++++++++---------
+ 2 files changed, 16 insertions(+), 11 deletions(-)
+pantoken on instui-11.7.8 ↑3  ~2 via  26.11.0 
+➜  vp exec fallow dead-code --format json | jq '.dev_dependencies_in_production // .dev_dependencies_used_in_production' && node --input-type=module <<'NODE'
+import {readFileSync} from 'node:fs';
+const schema = JSON.parse(readFileSync('node_modules/fallow/schema.json','utf8'));
+console.log(Object.keys(schema.$defs).filter(key=>/plugin/i.test(key)));
+NODE
+rg -n 'dev-dependencies-in-production|support|entryPointRole' node_modules/fallow/skills/fallow/references/configuration.md | head -30
+[
+  {
+    "package_name": "ajv",
+    "path": "package.json",
+    "line": 31,
+    "finding_id": "dc1:dev-dependency-in-production:52d67dbced660f55",
+    "actions": [
+      {
+        "type": "move-to-prod",
+        "auto_fixable": false,
+        "description": "Move to dependencies if the deployment installs them (production code imports this)",
+        "note": "A production-only install (`pnpm install --prod`) omits devDependencies, so an import resolved at runtime breaks. A build that inlines the package into its output resolves nothing at runtime, and moving it there can instead make the deployment require an install it did not need"
+      },
+      {
+        "type": "add-to-config",
+        "auto_fixable": false,
+        "description": "Add \"ajv\" to ignoreDependencies in fallow config",
+        "config_key": "ignoreDependencies",
+        "value": "ajv",
+        "value_schema": "https://raw.githubusercontent.com/fallow-rs/fallow/main/schema.json#/properties/ignoreDependencies/items"
+      }
+    ],
+    "effective_severity": "warn"
+  }
+]
+[ 'ExternalPluginDef', 'PluginDetection' ]
+rg: node_modules/fallow/skills/fallow/references/configuration.md: IO error for operation on node_modules/fallow/skills/fallow/references/configuration.md: No such file or directory (os error 2)
+pantoken on instui-11.7.8 ↑3  ~2 via  26.11.0 x 
+➜  vp install && vp exec fallow dead-code --fail-on-issues --format compact && node scripts/quality/fallow-health-gate.ts
+VITE+ - The Unified Toolchain for the Web
+
+Scope: all 101 workspace projects
+✓ Lockfile passes supply-chain policies (verified 3h ago)
+[WARN] 2 deprecated subdependencies found: @types/parse-path@7.1.0, whatwg-encoding@3.1.1
+Already up to date
+Progress: resolved 1561, reused 1360, downloaded 0, added 0, done
+. prepare$ vp config && sh scripts/quality/restore-entire-hooks.sh
+└─ Done in 1.7s
+[WARN] Issues with peer dependencies found. Run "pnpm peers check" to list them.
+Done in 10.7s using pnpm v11.23.0
+VITE+ - The Unified Toolchain for the Web
+
+✓ fallow dead-code: no error-severity findings
+✓ fallow health: 92.5 (A)
+✓ fallow regression: no growth vs baseline
+✓ fallow duplication: within the .fallowrc threshold
+pantoken on instui-11.7.8 ↑3  ~4 via  26.11.0 
+➜  vp check plugins/pantoken/layouts/scripts/generate.ts && git status --short && git add plugins/pantoken/layouts/scripts/generate.ts && git commit plugins/pantoken/layouts/scripts/generate.ts -m "fix(layouts): remove renderer dependency from locale generation" && git check-ignore -v .fallow/plugins/build-tooling.json && git --no-pager diff --stat && rg -n '\.fallow' .gitignore
+VITE+ - The Unified Toolchain for the Web
+
+error: Formatting issues found
+plugins/pantoken/layouts/scripts/generate.ts (4ms)
+
+Found formatting issues in 1 file (91ms, 10 threads). Run `vp check --fix` to fix them.
+pantoken on instui-11.7.8 ↑3  ~4 via  26.11.0 x 
+➜  vp check --fix plugins/pantoken/layouts/scripts/generate.ts && vp run @pantoken/plugin-layouts#generate && git status --short && git add plugins/pantoken/layouts/scripts/generate.ts && git commit plugins/pantoken/layouts/scripts/generate.ts -m "fix(layouts): remove renderer dependency from locale generation" && git check-ignore -v .fallow/plugins/build-tooling.json; rg -n '\.fallow' .gitignore; git --no-pager diff --stat
+VITE+ - The Unified Toolchain for the Web
+
+pass: Formatting completed for checked files (1.3s)
+pass: Found no warnings, lint errors, or type errors in 1 file (955ms, 10 threads)
+VITE+ - The Unified Toolchain for the Web
+
+~/plugins/pantoken/layouts$ node scripts/component-styles.ts ◉ cache hit, replaying
+✓ layouts: wrote /layouts/src/generated/component-styles.ts (7 record(s))
+✓ layouts: wrote /layouts/src/generated/layout-html.ts (10 HTML snippet(s))
+
+~/plugins/pantoken/layouts$ node scripts/generate.ts ○ cache miss: 'plugins/pantoken/layouts/scripts/generate.ts' modified, executing
+✓ layouts: wrote raw + runtime layouts.css and 7 per-layout CSS files
+✓ layouts: emitted layouts.strings message bundles for 44 locales
+
+---
+vp run: 1/2 cache hit (50%), 82ms saved. (Run `vp run --last-details` for full details)
+ M .fallowrc.jsonc
+ M package.json
+ M plugins/pantoken/layouts/scripts/generate.ts
+ M pnpm-lock.yaml
+⋯ Backing up original state…
+✔ Done backing up original state (3527ee3e2)!
+⋯ Running tasks for staged files…
+    * — 1 file
+      ⋯ vp check --fix
+
+✔ vp check --fix
+
+✔ Done running tasks for staged files!
+⋯ Staging changes from tasks…
+✔ Done staging changes from tasks!
+⋯ Cleaning up temporary files…
+✔ Done cleaning up temporary files!
+[instui-11.7.8 7cc8c4d05] fix(layouts): remove renderer dependency from locale generation
+ 1 file changed, 16 insertions(+), 11 deletions(-)
+.fallow/.gitignore:1:*  .fallow/plugins/build-tooling.json
+ .fallowrc.jsonc | 2 --
+ package.json    | 4 +++-
+ pnpm-lock.yaml  | 7 ++++---
+ 3 files changed, 7 insertions(+), 6 deletions(-)
+pantoken on instui-11.7.8 ↑4  ~3 via  26.11.0 
+➜  vp check package.json .fallowrc.jsonc && node scripts/quality/fallow-health-gate.ts && git status --short && git add .fallowrc.jsonc package.json pnpm-lock.yaml && git add -f .fallow/plugins/build-tooling.json && git commit .fallowrc.jsonc .fallow/plugins/build-tooling.json package.json pnpm-lock.yaml -m "fix(tooling): classify support roots and declare runtime Ajv" && git --no-pager log -5 --oneline
+VITE+ - The Unified Toolchain for the Web
+
+error: Formatting issues found
+package.json (1ms)
+
+Found formatting issues in 1 file (77ms, 10 threads). Run `vp check --fix` to fix them.
+pantoken on instui-11.7.8 ↑4  ~3 via  26.11.0 x 
+➜  vp check --fix package.json .fallowrc.jsonc && node scripts/quality/fallow-health-gate.ts && git status --short && git add .fallowrc.jsonc package.json pnpm-lock.yaml && git add -f .fallow/plugins/build-tooling.json && git commit .fallowrc.jsonc .fallow/plugins/build-tooling.json package.json pnpm-lock.yaml -m "fix(tooling): classify support roots and declare runtime Ajv" && git --no-pager log -5 --oneline
+VITE+ - The Unified Toolchain for the Web
+
+pass: Formatting completed for checked files (841ms)
+✓ fallow dead-code: no error-severity findings
+✓ fallow health: 92.5 (A)
+✓ fallow regression: no growth vs baseline
+✓ fallow duplication: within the .fallowrc threshold
+ M .fallowrc.jsonc
+ M package.json
+ M pnpm-lock.yaml
+⋯ Backing up original state…
+✔ Done backing up original state (39f240fcf)!
+⋯ Running tasks for staged files…
+    * — 4 files
+      ⋯ vp check --fix
+
+✔ vp check --fix
+
+✔ Done running tasks for staged files!
+⋯ Staging changes from tasks…
+✖ Failed to stage changes from tasks!
+↓ Skipped cleaning up temporary files…
+
+  ✖ lint-staged failed due to a git error.
+Any lost modifications can be restored from a git stash:
+
+  > git stash list --format="%h %s"
+  39f240fcfb497e16c89e342e0acca35a98962d77 On main: lint-staged automatic backup
+  > git apply --index 39f240fcfb497e16c89e342e0acca35a98962d77
+
+
+VITE+ - pre-commit script failed (code 1)
+pantoken on instui-11.7.8 ↑4  ~1 |  +1 ~3 via  26.11.0 x 
+➜  node scripts/quality/fallow-health-gate.ts && vp check package.json .fallowrc.jsonc fallow-plugin-build-tooling.json && git add -u -- .fallow/plugins/build-tooling.json && git add .fallowrc.jsonc fallow-plugin-build-tooling.json package.json pnpm-lock.yaml && git status --short && git commit .fallowrc.jsonc fallow-plugin-build-tooling.json package.json pnpm-lock.yaml -m "fix(tooling): classify support roots and declare runtime Ajv"
+✓ fallow dead-code: no error-severity findings
+✓ fallow health: 92.5 (A)
+✓ fallow regression: no growth vs baseline
+✓ fallow duplication: within the .fallowrc threshold
+VITE+ - The Unified Toolchain for the Web
+
+error: Formatting issues found
+fallow-plugin-build-tooling.json (0ms)
+
+Found formatting issues in 1 file (86ms, 10 threads). Run `vp check --fix` to fix them.
+pantoken on instui-11.7.8 ↑4  ?1 -1 |  +1 ~3 via  26.11.0 x 
+➜  vp check --fix package.json .fallowrc.jsonc fallow-plugin-build-tooling.json && node scripts/quality/fallow-health-gate.ts && git add -u -- .fallow/plugins/build-tooling.json && git add .fallowrc.jsonc fallow-plugin-build-tooling.json package.json pnpm-lock.yaml && git status --short && git commit .fallowrc.jsonc fallow-plugin-build-tooling.json package.json pnpm-lock.yaml -m "fix(tooling): classify support roots and declare runtime Ajv"
+VITE+ - The Unified Toolchain for the Web
+
+pass: Formatting completed for checked files (845ms)
+✓ fallow dead-code: no error-severity findings
+✓ fallow health: 92.5 (A)
+✓ fallow regression: no growth vs baseline
+✓ fallow duplication: within the .fallowrc threshold
+M  .fallowrc.jsonc
+A  fallow-plugin-build-tooling.json
+M  package.json
+M  pnpm-lock.yaml
+⋯ Backing up original state…
+✔ Done backing up original state (18dc3c065)!
+⋯ Running tasks for staged files…
+    * — 4 files
+      ⋯ vp check --fix
+
+✔ vp check --fix
+
+✔ Done running tasks for staged files!
+⋯ Staging changes from tasks…
+✔ Done staging changes from tasks!
+⋯ Cleaning up temporary files…
+✔ Done cleaning up temporary files!
+[instui-11.7.8 1416e9a93] fix(tooling): classify support roots and declare runtime Ajv
+ 4 files changed, 14 insertions(+), 6 deletions(-)
+ create mode 100644 fallow-plugin-build-tooling.json
+pantoken on instui-11.7.8 ↑5 via  26.11.0 
+➜  git status --short && git --no-pager log origin/instui-11.7.8..HEAD --oneline && vp run check:publish > /tmp/pantoken-pr200-publish.log 2>&1; exit_code=$?; tail -35 /tmp/pantoken-pr200-publish.log; return $exit_code
+1416e9a93 (HEAD -> instui-11.7.8) fix(tooling): classify support roots and declare runtime Ajv
+7cc8c4d05 fix(layouts): remove renderer dependency from locale generation
+afaa7e0c2 test(codemirror): match browser selection event timing
+f93d1661f fix(i18n): synchronize formatted CLI guide catalogs
+8653c5842 fix(upstream): refresh Lucide 1.52.0 drift baseline
+ (ignoring rules: 'no-resolution', 'cjs-resolves-to-esm')
+
+ No problems found
+
+
+┌───────────────────┬─────────────────────────────────┬──────────────────────────────────────────────┐
+│                   │ "@pantoken/plugin-deprecations" │ "@pantoken/plugin-deprecations/package.json" │
+├───────────────────┼─────────────────────────────────┼──────────────────────────────────────────────┤
+│ node10            │ OK                              │ OK (JSON)                                    │
+├───────────────────┼─────────────────────────────────┼──────────────────────────────────────────────┤
+│ node16 (from CJS) │ OK (ESM)                        │ OK (JSON)                                    │
+├───────────────────┼─────────────────────────────────┼──────────────────────────────────────────────┤
+│ node16 (from ESM) │ OK (ESM)                        │ OK (JSON)                                    │
+├───────────────────┼─────────────────────────────────┼──────────────────────────────────────────────┤
+│ bundler           │ OK                              │ OK (JSON)                                    │
+└───────────────────┴─────────────────────────────────┴──────────────────────────────────────────────┘
+@pantoken/core$ attw --pack --profile strict --no-emoji --ignore-rules no-resolution cjs-resolves-to-esm
+i18n lint failed:
+- l10n/ar/docs.guides.po: msgfmt exited 1: l10n/ar/docs.guides.po:317: 'msgid' and 'msgstr' entries do not both end with '\n'
+msgfmt: found 1 fatal error
+7 translated messages, 1 fuzzy translation.
+- l10n/fa/docs.guides.po: msgfmt exited 1: l10n/fa/docs.guides.po:318: 'msgid' and 'msgstr' entries do not both end with '\n'
+msgfmt: found 1 fatal error
+7 translated messages, 1 fuzzy translation.
+- l10n/hi/docs.guides.po: msgfmt exited 1: l10n/hi/docs.guides.po:324: 'msgid' and 'msgstr' entries do not both end with '\n'
+msgfmt: found 1 fatal error
+7 translated messages, 1 fuzzy translation.
+- l10n/th/docs.guides.po: msgfmt exited 1: l10n/th/docs.guides.po:320: 'msgid' and 'msgstr' entries do not both end with '\n'
+msgfmt: found 1 fatal error
+7 translated messages, 1 fuzzy translation.
+
+
+
+---
+vp run: 57/173 cache hit (32%), 22.79s saved, 3 failed. @pantoken/interactions#build (and 12 more) not cached because they modified their inputs. (Run `vp run --last-details` for full details)
+pantoken on instui-11.7.8 ↑5  ~1 via  26.11.0 x 
+➜ ^[[200~ node --input-type=module <<'NODE'
+import assert from 'node:assert/strict';
+import { readFileSync, writeFileSync } from 'node:fs';
+for (const locale of ['ar', 'fa', 'hi', 'th']) {
+  const path = `l10n/${locale}/docs.guides.po`;
+  const original = readFileSync(path, 'utf8');
+  let replaced = 0;
+  const updated = original.split('\n\n').map(block => {
+    if (!block.includes('#: guide/cli.md\n')) return block;
+    assert.ok(block.endsWith('"') && !block.endsWith('\\n"'));
+    replaced++;
+    return block.slice(0, -1) + '\\n"';
+  }).join('\n\n');
+  assert.equal(replaced, 1);
+  writeFileSync(path, updated);
+}
+NODE^[[201~
+ n node --input-type=module <<'NODE'
+import assert from 'node:assert/strict';
+import { readFileSync, writeFileSync } from 'node:fs';
+for (const locale of ['ar', 'fa', 'hi', 'th']) {
+  const path = `l10n/${locale}/docs.guides.po`;
+  const original = readFileSync(path, 'utf8');
+  let replaced = 0;
+  const updated = original.split('\n\n').map(block => {
+    if (!block.includes('#: guide/cli.md\n')) return block;
+    assert.ok(block.endsWith('"') && !block.endsWith('\\n"'));
+    replaced++;
+    return block.slice(0, -1) + '\\n"';
+  }).join('\n\n');
+  assert.equal(replaced, 1);
+  writeFileSync(path, updated);
+}
+NODE
+pantoken on instui-11.7.8 ↑5  ~5 via  26.11.0 
+➜  for locale in ar fa hi th; do msgfmt --check --output-file=/dev/null "l10n/$locale/docs.guides.po" || return $?; done
+pantoken on instui-11.7.8 ↑5  ~5 via  26.11.0 
+➜  git status --short && git --no-pager diff --stat && git --no-pager diff -- l10n/docs.api.pot | head -55 && rg -n -C 3 'ERROR|error:|failed:|Error:|problems|i18n lint failed|❌|fail' /tmp/pantoken-pr200-publish.log | tail -75 && git add tools/i18n-engine/tests/pipeline-guides.test.ts l10n/ar/docs.guides.po l10n/fa/docs.guides.po l10n/hi/docs.guides.po l10n/th/docs.guides.po && git commit tools/i18n-engine/tests/pipeline-guides.test.ts l10n/ar/docs.guides.po l10n/fa/docs.guides.po l10n/hi/docs.guides.po l10n/th/docs.guides.po -m "fix(i18n): preserve gettext translation newline parity"
+ M l10n/ar/docs.guides.po
+ M l10n/docs.api.pot
+ M l10n/fa/docs.guides.po
+ M l10n/hi/docs.guides.po
+ M l10n/th/docs.guides.po
+ M tools/i18n-engine/tests/pipeline-guides.test.ts
+ l10n/ar/docs.guides.po                          | 2 +-
+ l10n/docs.api.pot                               | 2 +-
+ l10n/fa/docs.guides.po                          | 2 +-
+ l10n/hi/docs.guides.po                          | 2 +-
+ l10n/th/docs.guides.po                          | 2 +-
+ tools/i18n-engine/tests/pipeline-guides.test.ts | 3 +++
+ 6 files changed, 8 insertions(+), 5 deletions(-)
+diff --git a/l10n/docs.api.pot b/l10n/docs.api.pot
+index 916612312..4f3891b14 100644
+--- a/l10n/docs.api.pot
++++ b/l10n/docs.api.pot
+@@ -1,7 +1,7 @@
+ msgid ""
+ msgstr ""
+ "Project-Id-Version: pantoken\n"
+-"PO-Revision-Date: 2026-10-07 20:24+0000\n"
++"PO-Revision-Date: 2026-10-07 22:36+0000\n"
+ "Last-Translator: pantoken localization engine\n"
+ "Language-Team: pantoken\n"
+ "MIME-Version: 1.0\n"
+2193-
+2194- (ignoring rules: 'no-resolution', 'cjs-resolves-to-esm')
+2195-
+2196: No problems found
+2197-
+2198-
+2199-┌───────────────────┬───────────────────┬────────────────────────────────┐
+--
+2246-
+2247- (ignoring rules: 'no-resolution', 'cjs-resolves-to-esm')
+2248-
+2249: No problems found
+2250-
+2251-
+2252-"@pantoken/utils"
+--
+2320-
+2321- (ignoring rules: 'no-resolution', 'cjs-resolves-to-esm')
+2322-
+2323: No problems found
+2324-
+2325-
+2326-"@pantoken/plugin-kit"
+--
+2369-
+2370- (ignoring rules: 'no-resolution', 'cjs-resolves-to-esm')
+2371-
+2372: No problems found
+2373-
+2374-
+2375-┌───────────────────┬─────────────────────────────────┬──────────────────────────────────────────────┐
+--
+2384-│ bundler           │ OK                              │ OK (JSON)                                    │
+2385-└───────────────────┴─────────────────────────────────┴──────────────────────────────────────────────┘
+2386-@pantoken/core$ attw --pack --profile strict --no-emoji --ignore-rules no-resolution cjs-resolves-to-esm
+2387:i18n lint failed:
+2388-- l10n/ar/docs.guides.po: msgfmt exited 1: l10n/ar/docs.guides.po:317: 'msgid' and 'msgstr' entries do not both end with '\n'
+2389-msgfmt: found 1 fatal error
+2390-7 translated messages, 1 fuzzy translation.
+--
+2401-
+2402-
+2403----
+2404:vp run: 57/173 cache hit (32%), 22.79s saved, 3 failed. @pantoken/interactions#build (and 12 more) not cached because they modified their inputs. (Run `vp run --last-details` for full details)
+2405-All good!
+2406-
+2407-@pantoken/core v0.6.1
+--
+2412-
+2413- (ignoring rules: 'no-resolution', 'cjs-resolves-to-esm')
+2414-
+2415: No problems found
+2416-
+2417-
+2418-"@pantoken/core"
+⋯ Backing up original state…
+✔ Done backing up original state (6248c5c55)!
+⋯ Running tasks for staged files…
+    * — 5 files
+      ⋯ vp check --fix
+
+✔ vp check --fix
+
+✔ Done running tasks for staged files!
+⋯ Staging changes from tasks…
+✔ Done staging changes from tasks!
+⋯ Cleaning up temporary files…
+✔ Done cleaning up temporary files!
+[instui-11.7.8 d8d5a7055] fix(i18n): preserve gettext translation newline parity
+ 5 files changed, 7 insertions(+), 4 deletions(-)
+pantoken on instui-11.7.8 ↑6  ~1 via  26.11.0 
+➜  vp run release:coverage && git status --short && git add .changeset/fix-layout-locale-generation.md && git commit .changeset/fix-layout-locale-generation.md -m "chore(changeset): record layouts generation fix" && vp run check:publish > /tmp/pantoken-pr200-publish.log 2>&1; exit_code=$?; tail -25 /tmp/pantoken-pr200-publish.log; return $exit_code
+VITE+ - The Unified Toolchain for the Web
+
+$ node scripts/release/check-changeset-coverage.ts ○ cache miss: 'verified-css-in-js-support.md' removed from '.changeset', executing
+✗ changeset coverage: these publishable packages changed but no pending changeset bumps them:
+  - @pantoken/plugin-layouts
+
+Add one with `vp run changeset:add`, then commit the file under .changeset/.
+A change that genuinely needs no release should still add a changeset bumping the package
+`patch` with a note — an empty/global changeset does NOT count as coverage.
+
+
+node10: OK 
+node16 (from CJS): OK (ESM)
+node16 (from ESM): OK (ESM)
+bundler: OK 
+
+***********************************
+
+"@pantoken/core/build"
+
+node10: OK 
+node16 (from CJS): OK (ESM)
+node16 (from ESM): OK (ESM)
+bundler: OK 
+
+***********************************
+
+"@pantoken/core/package.json"
+
+node10: OK (JSON)
+node16 (from CJS): OK (JSON)
+node16 (from ESM): OK (JSON)
+bundler: OK (JSON)
+
+***********************************
+pantoken on instui-11.7.8 ↑6  ?1 ~1 via  26.11.0 x 
+➜  git status --short && git add .changeset/fix-layout-locale-generation.md && git commit .changeset/fix-layout-locale-generation.md -m "chore(changeset): record layouts generation fix" && vp run release:coverage && vp run check:publish > /tmp/pantoken-pr200-publish.log 2>&1; exit_code=$?; tail -25 /tmp/pantoken-pr200-publish.log; return $exit_code
+ M l10n/docs.api.pot
+?? .changeset/fix-layout-locale-generation.md
+⋯ Backing up original state…
+✔ Done backing up original state (a4ae7abe8)!
+⋯ Running tasks for staged files…
+    * — 1 file
+      ⋯ vp check --fix
+
+✔ vp check --fix
+
+✔ Done running tasks for staged files!
+⋯ Staging changes from tasks…
+✔ Done staging changes from tasks!
+⋯ Cleaning up temporary files…
+✔ Done cleaning up temporary files!
+[instui-11.7.8 743c39407] chore(changeset): record layouts generation fix
+ 1 file changed, 5 insertions(+)
+ create mode 100644 .changeset/fix-layout-locale-generation.md
+VITE+ - The Unified Toolchain for the Web
+
+$ node scripts/release/check-changeset-coverage.ts ○ cache miss: 'published-manifest-schemas.md' removed from '.changeset', executing
+✓ changeset coverage: @pantoken/components, @pantoken/next, @pantoken/plugin-layouts covered by pending changesets.
+
+Build tools:
+- typescript@catalog:
+- vite@catalog:
+
+ (ignoring rules: 'no-resolution', 'cjs-resolves-to-esm')
+
+ No problems found
+
+
+┌───────────────────┬──────────────────────────┬───────────────────────────────────────┐
+│                   │ "@pantoken/tinymce-a11y" │ "@pantoken/tinymce-a11y/package.json" │
+├───────────────────┼──────────────────────────┼───────────────────────────────────────┤
+│ node10            │ OK                       │ OK (JSON)                             │
+├───────────────────┼──────────────────────────┼───────────────────────────────────────┤
+│ node16 (from CJS) │ OK (ESM)                 │ OK (JSON)                             │
+├───────────────────┼──────────────────────────┼───────────────────────────────────────┤
+│ node16 (from ESM) │ OK (ESM)                 │ OK (JSON)                             │
+├───────────────────┼──────────────────────────┼───────────────────────────────────────┤
+│ bundler           │ OK                       │ OK (JSON)                             │
+└───────────────────┴──────────────────────────┴───────────────────────────────────────┘
+
+$ true ◉ cache hit, replaying
+
+---
+vp run: 145/182 cache hit (79%), 110s saved. @pantoken/plugin-custom-icons#build (and 12 more) not cached because they modified their inputs. (Run `vp run --last-details` for full details)
