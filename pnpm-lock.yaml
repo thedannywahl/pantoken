@@ -551,10 +551,6 @@ overrides:
 importers:
 
   .:
-    dependencies:
-      ajv:
-        specifier: 'catalog:'
-        version: 8.20.0
     devDependencies:
       '@arethetypeswrong/cli':
         specifier: 'catalog:'
@@ -583,6 +579,9 @@ importers:
       '@vitest/coverage-v8':
         specifier: 'catalog:'
         version: 5.0.3(@vitest/browser@5.0.3)(vitest@5.0.3)
+      ajv:
+        specifier: 'catalog:'
+        version: 8.20.0
       eslint-plugin-tsdoc:
         specifier: 'catalog:'
         version: 0.5.4(eslint@10.9.1(jiti@2.6.1)(supports-color@10.2.2))(supports-color@10.2.2)(typescript@5.6.1-rc)
