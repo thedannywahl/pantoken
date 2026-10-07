@@ -28,7 +28,7 @@ const FALLOW = existsSync(BIN) ? BIN : "fallow";
 
 /** Run a fallow subcommand, returning its exit status and captured stdout. */
 function fallow(args: string[]): { status: number; stdout: string } {
-  const result = spawnSync(FALLOW, args, { encoding: "utf8", cwd: ROOT });
+  const result = spawnSync(FALLOW, ["--no-cache", ...args], { encoding: "utf8", cwd: ROOT });
   if (result.error) throw result.error;
   return { status: result.status ?? 1, stdout: result.stdout ?? "" };
 }
