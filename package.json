@@ -18,6 +18,9 @@
     "security:code": "vp run snyk:code",
     "prepare": "vp config && sh scripts/quality/restore-entire-hooks.sh"
   },
+  "dependencies": {
+    "ajv": "catalog:"
+  },
   "devDependencies": {
     "@arethetypeswrong/cli": "catalog:",
     "@changesets/cli": "catalog:",
@@ -28,7 +31,6 @@
     "@cssdoc/cli": "catalog:",
     "@manypkg/cli": "catalog:",
     "@vitest/coverage-v8": "catalog:",
-    "ajv": "catalog:",
     "eslint-plugin-tsdoc": "catalog:",
     "eslint-plugin-tsdoc-require-2": "catalog:",
     "fallow": "catalog:",

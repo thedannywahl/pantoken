@@ -1,0 +1,7 @@
+{
+  "$schema": "https://raw.githubusercontent.com/fallow-rs/fallow/main/plugin-schema.json",
+  "name": "pantoken-build-tooling",
+  "enablers": ["vite-plus"],
+  "entryPoints": ["scripts/**/*.ts", "**/scripts/**/*.ts"],
+  "entryPointRole": "support"
+}

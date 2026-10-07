@@ -27,8 +27,6 @@
   // Without these, fallow sees the whole scripts/release/* and tools/* graphs as unreachable and
   // reports them (and their exports) as dead.
   "entry": [
-    "scripts/**/*.ts",
-    "**/scripts/**/*.ts",
     "docs/**/*.{test,spec}.ts",
     "tools/*/index.ts",
     "tools/*/src/index.ts",
