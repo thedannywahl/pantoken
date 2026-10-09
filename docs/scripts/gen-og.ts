@@ -61,6 +61,7 @@ const RING_2 = "#0065b3";
 const RING_3 = "#0090ff"; // brightest ring + brand-blue accent
 const WHITE = "#ffffff";
 const MUTED = "#aab0b5"; // desaturated blue for the supporting line
+const GRADIENT_END = "#dcecff";
 const URL_FILL = WHITE;
 
 // The theme background anchors three concentric circles at a corner of a 374×160 field (radii
@@ -259,8 +260,20 @@ function renderCard(
   }, []);
   const footerY =
     TAGLINE_START_Y + (taglineLines.length - 1) * TAGLINE_LINE_HEIGHT + FOOTER_GAP_AFTER_LAST_LINE;
+  const gradientStartX = layout.anchorX;
+  const gradientEndX = layout.rtl ? WIDTH - 880 : 880;
 
   const svg = `<svg xmlns="http://www.w3.org/2000/svg" width="${WIDTH}" height="${HEIGHT}" viewBox="0 0 ${WIDTH} ${HEIGHT}">
+  <defs>
+    <linearGradient id="headline-gradient" gradientUnits="userSpaceOnUse" x1="${gradientStartX}" y1="0" x2="${gradientEndX}" y2="0">
+      <stop stop-color="${HEADER}" />
+      <stop offset="1" stop-color="${GRADIENT_END}" />
+    </linearGradient>
+    <linearGradient id="support-gradient" gradientUnits="userSpaceOnUse" x1="${gradientStartX}" y1="0" x2="${gradientEndX}" y2="0">
+      <stop stop-color="${MUTED}" />
+      <stop offset="1" stop-color="${GRADIENT_END}" />
+    </linearGradient>
+  </defs>
   <rect width="${WIDTH}" height="${HEIGHT}" fill="${NAVY}" />
   ${ring(200, RING_1, layout.ringCx)}
   ${ring(140, RING_2, layout.ringCx)}
@@ -278,7 +291,7 @@ function renderCard(
     y: 388,
     fontSize: HEADLINE_FONT_SIZE,
     fontWeight: 700,
-    fill: HEADER,
+    fill: "url(#headline-gradient)",
     avgCharWidth: headlineAdvance,
     maxWidth: MAX_TEXT_WIDTH,
     fontFamily: fonts.family,
@@ -294,7 +307,7 @@ function renderCard(
         y: TAGLINE_START_Y + index * TAGLINE_LINE_HEIGHT,
         fontSize: TAGLINE_FONT_SIZE,
         fontWeight: 500,
-        fill: MUTED,
+        fill: "url(#support-gradient)",
         avgCharWidth: taglineAdvance,
         maxWidth: MAX_TEXT_WIDTH,
         fontFamily: fonts.family,
