@@ -1,0 +1,2 @@
+there's a new og file svg & png that needs to be incorporated back into the gen-og script in ~/Desktop/og
+it's primarily text gradients on the prose to maintain accessibility contrast.
