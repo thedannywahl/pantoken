@@ -1,5 +1,11 @@
 # CHANGELOG
 
+## 0.6.1
+
+### Patch Changes
+
+- 5343d2b: Restore the social-card text gradients used to keep the headline and supporting copy legible over the background rings.
+
 ## 0.6.0
 
 ### Minor Changes
