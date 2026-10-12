@@ -1,0 +1,48 @@
+{
+  "cli_version": "0.11.4",
+  "checkpoint_id": "01M4RM0NXHPA2YY3Y2AT8F5YC7",
+  "session_id": "cf0f61c6-f2b1-4ad7-b809-919e9eedf316",
+  "strategy": "manual-commit",
+  "created_at": "2026-10-12T17:54:23.048252Z",
+  "branch": "deps-up",
+  "checkpoints_count": 1,
+  "save_step_count": 1,
+  "files_touched": [
+    "vite.config.base.ts"
+  ],
+  "agent": "Copilot CLI",
+  "model": "",
+  "turn_id": "4615ebb0925c",
+  "compact_transcript_start": 0,
+  "token_usage": {
+    "input_tokens": 0,
+    "cache_creation_tokens": 0,
+    "cache_read_tokens": 0,
+    "output_tokens": 0,
+    "api_call_count": 0
+  },
+  "session_metrics": {
+    "turn_count": 1
+  },
+  "initial_attribution": {
+    "calculated_at": "2026-10-12T17:54:23.042632Z",
+    "agent_lines": 0,
+    "agent_removed": 1,
+    "human_added": 0,
+    "human_modified": 0,
+    "human_removed": 0,
+    "total_committed": 0,
+    "total_lines_changed": 1,
+    "agent_percentage": 100,
+    "metric_version": 2
+  },
+  "prompt_attributions": [
+    {
+      "checkpoint_number": 1,
+      "user_lines_added": 0,
+      "user_lines_removed": 0,
+      "agent_lines_added": 0,
+      "agent_lines_removed": 0
+    }
+  ]
+}
