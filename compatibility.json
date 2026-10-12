@@ -11,8 +11,8 @@
       "feeds": "icons"
     },
     "lucide": {
-      "range": "^1.52.0",
-      "resolved": "1.52.0",
+      "range": "^1.55.0",
+      "resolved": "1.55.0",
       "feeds": "icons"
     },
     "@instructure/ui-heading": {
@@ -80,8 +80,8 @@
         "format": "Panda token utility extraction from the Pantoken preset",
         "status": "verified",
         "minimum": "1.12.1",
-        "testedThrough": "2.0.0",
-        "testedVersions": ["1.12.1", "2.0.0"],
+        "testedThrough": "2.1.1",
+        "testedVersions": ["1.12.1", "2.0.0", "2.1.1"],
         "testCommand": "vp run @pantoken/panda#check:compatibility"
       }
     },
