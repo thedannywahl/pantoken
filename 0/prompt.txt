@@ -1,0 +1,1 @@
+is the `@pantoken/ai` package up-to-date with the new inline-styles usage directions?
