@@ -15,6 +15,7 @@ test("reads the verified versions from the target registry", () => {
     "8.3.11",
     "8.4.49",
     "8.5.28",
+    "8.5.29",
   ]);
 });
 
@@ -33,6 +34,6 @@ test("rejects unverified targets", () => {
 test("reads support records directly from the compatibility registry", () => {
   expect(targetSupport("@pantoken/postcss")).toMatchObject({
     status: "verified",
-    testedThrough: "8.5.28",
+    testedThrough: "8.5.29",
   });
 });
