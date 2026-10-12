@@ -151,8 +151,8 @@
     "format": "Built Starlight page with injected token stylesheet (Astro 5 and 7)",
     "status": "verified",
     "minimum": "0.35.0",
-    "testedThrough": "0.42.4",
-    "testedVersions": ["0.35.0", "0.42.4"],
+    "testedThrough": "0.42.5",
+    "testedVersions": ["0.35.0", "0.42.4", "0.42.5"],
     "testCommand": "vp run @pantoken/astro#check:compatibility"
   },
   "@pantoken/bootstrap": {
