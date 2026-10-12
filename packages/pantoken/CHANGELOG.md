@@ -1,5 +1,23 @@
 # CHANGELOG
 
+## 0.2.28
+
+### Patch Changes
+
+- Updated dependencies [5f67abb]
+- Updated dependencies [5f67abb]
+- Updated dependencies [5f67abb]
+- Updated dependencies [5f67abb]
+- Updated dependencies [5f67abb]
+- Updated dependencies [5f67abb]
+  - @pantoken/angular@0.2.2
+  - @pantoken/mintlify@0.2.2
+  - @pantoken/panda@0.2.2
+  - @pantoken/postcss@0.2.2
+  - @pantoken/astro@0.2.2
+  - @pantoken/vite@0.2.2
+  - @pantoken/cli@0.1.48
+
 ## 0.2.27
 
 ### Patch Changes
