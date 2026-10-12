@@ -1,5 +1,11 @@
 # CHANGELOG
 
+## 0.2.2
+
+### Patch Changes
+
+- 5f67abb: Verify compatibility with Mintlify CLI 4.0.1591.
+
 ## 0.2.1
 
 ### Patch Changes

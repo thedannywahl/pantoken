@@ -1,5 +1,13 @@
 # CHANGELOG
 
+## 0.1.48
+
+### Patch Changes
+
+- Updated dependencies [5f67abb]
+  - @pantoken/mintlify@0.2.2
+  - @pantoken/scaffold@1.6.1
+
 ## 0.1.47
 
 ### Patch Changes

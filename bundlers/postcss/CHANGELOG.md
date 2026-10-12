@@ -1,5 +1,11 @@
 # CHANGELOG
 
+## 0.2.2
+
+### Patch Changes
+
+- 5f67abb: Verify compatibility with PostCSS 8.5.29.
+
 ## 0.2.1
 
 ### Patch Changes
