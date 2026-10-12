@@ -3,11 +3,15 @@ import { existsSync, mkdirSync, readFileSync, readdirSync, writeFileSync } from 
 import { join } from "node:path";
 import { fileURLToPath } from "node:url";
 import { withTargetVersion } from "../../../scripts/quality/with-target-version.ts";
-import { commandTargetVersions } from "../../../scripts/release/target-versions.ts";
+import {
+  commandTargetArgs,
+  commandTargetVersions,
+} from "../../../scripts/release/target-versions.ts";
 
 const companions = [
   { starlight: "0.35.0", astro: "5.18.2" },
   { starlight: "0.42.4", astro: "7.3.5" },
+  { starlight: "0.42.5", astro: "7.3.5" },
 ];
 
 /** Build a disposable Starlight site and inspect the generated head stylesheet. */
@@ -77,7 +81,7 @@ export default defineConfig({ site: "https://example.com", integrations: [starli
 }
 
 if (process.argv[1] === fileURLToPath(import.meta.url)) {
-  const args = process.argv.slice(2);
+  const args = commandTargetArgs();
   if (args.length > 0) {
     if (args.length !== 4 || args[0] !== "--version" || args[2] !== "--astro") {
       throw new Error("Use --version <starlight> --astro <astro>");

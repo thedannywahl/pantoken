@@ -29,9 +29,14 @@ export function targetVersions(packageName: string, candidates: readonly string[
   return [...versions.testedVersions];
 }
 
+/** Read candidate arguments, removing the separator forwarded by `vp run`. */
+export function commandTargetArgs(args: readonly string[] = process.argv.slice(2)): string[] {
+  return [...(args[0] === "--" ? args.slice(1) : args)];
+}
+
 /** Read explicit command-line candidates, falling back to the registry's tested versions. */
 export function commandTargetVersions(packageName: string): string[] {
-  return targetVersions(packageName, process.argv.slice(2));
+  return targetVersions(packageName, commandTargetArgs());
 }
 
 /** Return the recorded environment evidence for an environment-verified adapter. */

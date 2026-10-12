@@ -19,7 +19,7 @@ packages:
 catalogMode: prefer
 
 catalog:
-  "@types/node": ^26.6.4
+  "@types/node": ^26.6.5
   typescript: ^7.0.2
   arkregex: ^0.0.12
   vite: npm:@voidzero-dev/vite-plus-core@1.1.0
@@ -29,9 +29,9 @@ catalog:
   # 1.0.0 across tags — so the tag + resolved commit are the provenance the upgrade pipeline records).
   "@instructure/instructure-design-tokens": "github:instructure/instructure-design-tokens#v2.1.0"
   "@instructure/ui-icons": ^11.7.8
-  lucide: ^1.52.0
+  lucide: ^1.55.0
   # Native token transforms
-  style-dictionary: ^5.6.0
+  style-dictionary: ^5.6.1
   "@tokens-studio/sd-transforms": ^2.0.3
   # Rehype / unist
   unist-util-visit: ^5.1.0
@@ -39,11 +39,11 @@ catalog:
   unified: ^11.0.5
   remark-parse: ^11.0.0
   # Localization-engine MF2 messages (Phase 3)
-  messageformat: ^4.0.0
+  messageformat: ^4.1.0
   # markdown-it integration
   markdown-it: ^15.0.2
   # Brand icons (plugin)
-  simple-icons: ^16.34.0
+  simple-icons: ^16.35.0
   # Lucide Lab icons (plugin)
   "@lucide/lab": ^0.7.0
   # React markdown integration
@@ -54,7 +54,7 @@ catalog:
   react-markdown: ^10.1.0
   "@emotion/react": ^11.14.0
   "@emotion/styled": ^11.14.1
-  "@mui/material": ^9.4.0
+  "@mui/material": ^9.5.0
   remark-gfm: ^4.0.1
   postcss: ^8.5.29
   webpack-sources: ^3.6.0
@@ -88,10 +88,10 @@ catalog:
   "@vitest/coverage-v8": 5.0.3
   markdownlint-cli2: ^0.23.3
   "@manypkg/cli": ^0.25.1
-  fallow: ^3.32.0
-  happy-dom: ^20.14.5
-  dompurify: ^3.4.16
-  snyk: ^1.1307.4
+  fallow: ^3.33.1
+  happy-dom: ^20.14.6
+  dompurify: ^3.4.17
+  snyk: ^1.1308.0
   publint: ^0.3.25
   "@arethetypeswrong/cli": ^0.18.5
   bumpp: ^12.2.1
@@ -116,10 +116,10 @@ catalog:
   "@bomb.sh/tab": ^0.0.22
   # @cssdoc/* toolchain — @cssdoc/markdown arrives transitively
   # via @cssdoc/typedoc; the entries below are pantoken's direct dependencies.
-  "@cssdoc/cli": ^0.16.0
-  "@cssdoc/core": ^0.16.0
-  "@cssdoc/config": ^0.16.0
-  "@cssdoc/typedoc": ^0.16.0
+  "@cssdoc/cli": ^0.16.2
+  "@cssdoc/core": ^0.16.2
+  "@cssdoc/config": ^0.16.2
+  "@cssdoc/typedoc": ^0.16.2
   # Transitive deps that pantoken also uses directly (the stylelint config); the rest were mirrored
   # only for the linked cssdoc source and are now unused, kept harmless under `catalogMode: prefer`.
   ajv: ^8.20.0
@@ -139,8 +139,8 @@ catalog:
   vscode-languageclient: ^10.1.0
   vscode-languageserver: ^10.1.0
   vscode-languageserver-textdocument: ^1.0.12
-  bingo-stratum: ^0.6.4
-  zod: ^4.6.5
+  bingo-stratum: ^0.8.0
+  zod: ^4.6.7
   # @pantoken/tinymce + canvas-theme-editor scaffold — tracks the current tinymce major, not
   # instructure/canvas-lms's own (older) production RCE version. v8's stricter DOMPurify
   # sanitization is stricter than canvas-lms's tinymce 5, which is an acceptable direction.
@@ -158,12 +158,12 @@ catalog:
   "@codemirror/state": ^6.7.6
   "@codemirror/view": ^6.43.14
   "@lezer/highlight": ^1.2.3
-  prettier: ^3.9.9
+  prettier: ^3.9.10
   vitest: 5.0.3
   # Continuous performance testing — Tinybench runs inside Vitest's TypeScript host and reports to CodSpeed.
   # Swap back to @codspeed/vitest-plugin when CodSpeedHQ/codspeed-node#86 is released.
   "@codspeed/tinybench-plugin": ^5.7.1
-  tinybench: ^6.2.1
+  tinybench: ^6.2.2
   ajv-draft-04: ^1.0.0
   rehype: ^13.0.2
   rehype-raw: ^7.0.0

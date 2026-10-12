@@ -14,16 +14,25 @@
     "format": "Panda token utility extraction from the Pantoken preset",
     "status": "verified",
     "minimum": "1.12.1",
-    "testedThrough": "2.0.0",
-    "testedVersions": ["1.12.1", "2.0.0"],
+    "testedThrough": "2.1.1",
+    "testedVersions": ["1.12.1", "2.0.0", "2.1.1"],
     "testCommand": "vp run @pantoken/panda#check:compatibility"
   },
   "@pantoken/postcss": {
     "target": "PostCSS",
     "status": "verified",
     "minimum": "8.0.0",
-    "testedThrough": "8.5.28",
-    "testedVersions": ["8.0.0", "8.0.9", "8.1.14", "8.2.15", "8.3.11", "8.4.49", "8.5.28"],
+    "testedThrough": "8.5.29",
+    "testedVersions": [
+      "8.0.0",
+      "8.0.9",
+      "8.1.14",
+      "8.2.15",
+      "8.3.11",
+      "8.4.49",
+      "8.5.28",
+      "8.5.29"
+    ],
     "testCommand": "vp run @pantoken/postcss#check:compatibility"
   },
   "@pantoken/tailwind": {
@@ -38,8 +47,8 @@
     "target": "Vite",
     "status": "verified",
     "minimum": "8.0.0",
-    "testedThrough": "8.3.1",
-    "testedVersions": ["8.0.0", "8.0.16", "8.1.5", "8.2.2", "8.3.1"],
+    "testedThrough": "8.3.2",
+    "testedVersions": ["8.0.0", "8.0.16", "8.1.5", "8.2.2", "8.3.1", "8.3.2"],
     "testCommand": "vp run @pantoken/vite#check:compatibility"
   },
   "@pantoken/webpack": {
@@ -130,11 +139,11 @@
   },
   "@pantoken/angular": {
     "target": "Angular",
-    "format": "CUSTOM_ELEMENTS_SCHEMA template compilation (Angular 16.2.12 / TS 5.1.6; Angular 22.2.0 / TS 6.0.3)",
+    "format": "CUSTOM_ELEMENTS_SCHEMA template compilation (Angular 16.2.12 / TS 5.1.6; Angular 22.2.0 and 22.2.1 / TS 6.0.3)",
     "status": "verified",
     "minimum": "16.2.12",
-    "testedThrough": "22.2.0",
-    "testedVersions": ["16.2.12", "22.2.0"],
+    "testedThrough": "22.2.1",
+    "testedVersions": ["16.2.12", "22.2.0", "22.2.1"],
     "testCommand": "vp run @pantoken/angular#check:compatibility"
   },
   "@pantoken/astro": {
@@ -142,8 +151,8 @@
     "format": "Built Starlight page with injected token stylesheet (Astro 5 and 7)",
     "status": "verified",
     "minimum": "0.35.0",
-    "testedThrough": "0.42.4",
-    "testedVersions": ["0.35.0", "0.42.4"],
+    "testedThrough": "0.42.5",
+    "testedVersions": ["0.35.0", "0.42.4", "0.42.5"],
     "testCommand": "vp run @pantoken/astro#check:compatibility"
   },
   "@pantoken/bootstrap": {
@@ -205,8 +214,8 @@
     "format": "Official CLI validates generated colors and background theme config",
     "status": "verified",
     "minimum": "4.0.1555",
-    "testedThrough": "4.0.1557",
-    "testedVersions": ["4.0.1555", "4.0.1557"],
+    "testedThrough": "4.0.1591",
+    "testedVersions": ["4.0.1555", "4.0.1557", "4.0.1591"],
     "testCommand": "vp run @pantoken/mintlify#check:compatibility"
   },
   "@pantoken/mui": {

@@ -4379,6 +4379,11 @@
       "source": "lucide",
       "viewBox": "0 0 24 24"
     },
+    "--instui-icon-groceries": {
+      "hash": "82e3f0ab871ba732",
+      "source": "lucide",
+      "viewBox": "0 0 24 24"
+    },
     "--instui-icon-group": {
       "hash": "e5d026b9fb266951",
       "source": "lucide",
@@ -4446,6 +4451,12 @@
     },
     "--instui-icon-handbag": {
       "hash": "41d0d473f20dd0ca",
+      "source": "lucide",
+      "viewBox": "0 0 24 24"
+    },
+    "--instui-icon-handle-bottom-right": {
+      "bidirectional": true,
+      "hash": "362a1bbe57416862",
       "source": "lucide",
       "viewBox": "0 0 24 24"
     },
@@ -4612,6 +4623,11 @@
     },
     "--instui-icon-highlighter": {
       "hash": "a2515130bc8ed984",
+      "source": "lucide",
+      "viewBox": "0 0 24 24"
+    },
+    "--instui-icon-hiking-stick": {
+      "hash": "ffa2c638d42e5dd0",
       "source": "lucide",
       "viewBox": "0 0 24 24"
     },
@@ -5085,6 +5101,11 @@
       "source": "lucide",
       "viewBox": "0 0 24 24"
     },
+    "--instui-icon-lens": {
+      "hash": "a4d795bc91764dce",
+      "source": "lucide",
+      "viewBox": "0 0 24 24"
+    },
     "--instui-icon-lens-concave": {
       "hash": "7011373dc8e28189",
       "source": "lucide",
@@ -5455,6 +5476,11 @@
     },
     "--instui-icon-mail-clock": {
       "hash": "e067e0d891a1681b",
+      "source": "lucide",
+      "viewBox": "0 0 24 24"
+    },
+    "--instui-icon-mail-dot": {
+      "hash": "d35e794468b1f502",
       "source": "lucide",
       "viewBox": "0 0 24 24"
     },
@@ -6580,7 +6606,7 @@
       "viewBox": "0 0 24 24"
     },
     "--instui-icon-pen-tool": {
-      "hash": "87686bc3ec9574cd",
+      "hash": "c63dca0c6d5b1ceb",
       "source": "lucide",
       "viewBox": "0 0 24 24"
     },
@@ -6657,6 +6683,11 @@
     },
     "--instui-icon-phone-incoming": {
       "hash": "b37b7898e17fe667",
+      "source": "lucide",
+      "viewBox": "0 0 24 24"
+    },
+    "--instui-icon-phone-log": {
+      "hash": "9f80c157641af387",
       "source": "lucide",
       "viewBox": "0 0 24 24"
     },
@@ -7328,7 +7359,7 @@
       "viewBox": "0 0 24 24"
     },
     "--instui-icon-salad": {
-      "hash": "3d79b8800871886f",
+      "hash": "9196052fc9b8f4ee",
       "source": "lucide",
       "viewBox": "0 0 24 24"
     },
@@ -7472,6 +7503,11 @@
       "source": "lucide",
       "viewBox": "0 0 24 24"
     },
+    "--instui-icon-scratch-blocks": {
+      "hash": "112d11c54aa90067",
+      "source": "lucide",
+      "viewBox": "0 0 24 24"
+    },
     "--instui-icon-screen-share": {
       "hash": "cd4b7f1a09f2c21a",
       "source": "lucide",
@@ -7479,6 +7515,11 @@
     },
     "--instui-icon-screen-share-off": {
       "hash": "edfcbab09bdc2e75",
+      "source": "lucide",
+      "viewBox": "0 0 24 24"
+    },
+    "--instui-icon-screw": {
+      "hash": "02c7560e1b6131be",
       "source": "lucide",
       "viewBox": "0 0 24 24"
     },
@@ -7661,6 +7702,11 @@
     },
     "--instui-icon-shield-half": {
       "hash": "2a7d15de9cbda6f8",
+      "source": "lucide",
+      "viewBox": "0 0 24 24"
+    },
+    "--instui-icon-shield-house": {
+      "hash": "d2fc782d2d53577a",
       "source": "lucide",
       "viewBox": "0 0 24 24"
     },
@@ -7923,7 +7969,7 @@
       "viewBox": "0 0 24 24"
     },
     "--instui-icon-soup": {
-      "hash": "b62d7704660dc5a2",
+      "hash": "e1dfe71aa1115356",
       "source": "lucide",
       "viewBox": "0 0 24 24"
     },
@@ -9117,7 +9163,7 @@
       "viewBox": "0 0 24 24"
     },
     "--instui-icon-tool-case": {
-      "hash": "cf38ecfe7270b9fe",
+      "hash": "435d201eef30d3be",
       "source": "lucide",
       "viewBox": "0 0 24 24"
     },
@@ -9871,6 +9917,11 @@
       "source": "lucide",
       "viewBox": "0 0 24 24"
     },
+    "--instui-icon-wifi-lock": {
+      "hash": "111a0674682229a7",
+      "source": "lucide",
+      "viewBox": "0 0 24 24"
+    },
     "--instui-icon-wifi-low": {
       "hash": "85ed4234591539da",
       "source": "lucide",
@@ -10047,7 +10098,7 @@
     },
     "lucide": {
       "package": "lucide",
-      "resolved": "1.52.0"
+      "resolved": "1.55.0"
     },
     "uiIcons": {
       "package": "@instructure/ui-icons",

@@ -3,11 +3,15 @@ import { readFileSync, writeFileSync } from "node:fs";
 import { join } from "node:path";
 import { fileURLToPath } from "node:url";
 import { withTargetVersion } from "../../../scripts/quality/with-target-version.ts";
-import { commandTargetVersions } from "../../../scripts/release/target-versions.ts";
+import {
+  commandTargetArgs,
+  commandTargetVersions,
+} from "../../../scripts/release/target-versions.ts";
 
 const companions = [
   { angular: "16.2.12", typescript: "5.1.6", zone: "0.13.3" },
   { angular: "22.2.0", typescript: "6.0.3", zone: "0.16.0" },
+  { angular: "22.2.1", typescript: "6.0.3", zone: "0.16.0" },
 ];
 
 /** Compile a standalone Angular component using the custom-element schema in its template. */
@@ -73,7 +77,7 @@ export class AppComponent {}
 }
 
 if (process.argv[1] === fileURLToPath(import.meta.url)) {
-  const args = process.argv.slice(2);
+  const args = commandTargetArgs();
   if (args.length > 0) {
     if (
       args.length !== 6 ||
