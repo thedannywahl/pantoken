@@ -1,5 +1,10 @@
 import { expect, test } from "vite-plus/test";
-import { targetSupport, targetVersions } from "./target-versions.ts";
+import { commandTargetArgs, targetSupport, targetVersions } from "./target-versions.ts";
+
+test("strips the vp run separator from explicit candidate arguments", () => {
+  expect(commandTargetArgs(["--", "8.5.29"])).toEqual(["8.5.29"]);
+  expect(commandTargetArgs(["--version", "22.2.1"])).toEqual(["--version", "22.2.1"]);
+});
 
 test("reads the verified versions from the target registry", () => {
   expect(targetVersions("@pantoken/postcss")).toEqual([
