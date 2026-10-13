@@ -1,0 +1,2 @@
+the formatter may remove the spaces:
+("&>.button-group") and both are valid css.
