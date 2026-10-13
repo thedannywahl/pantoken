@@ -6,19 +6,25 @@
  * @modifier -icon-* — Render a trigger glyph icon next to the tooltip bubble.
  * @part .tip — The bubble; `-placement-*` sets its side.
  * @a11y Point the trigger at the bubble with aria-describedby and give the bubble role="tooltip".
- * @example
+ * @example -canvas-rce
  * ```html
  * <span class="pfx-tooltip" aria-describedby="tt-1">
  *   <span class="pfx-icon -icon-info"></span>
  *   <span class="tip" id="tt-1" role="tooltip">Default placement is top</span>
  * </span>
  * ```
- * @example
+ * @example -automatica11y
  * ```html
- * \3c !-- automatica11y: tooltip -->
  * <span class="pfx-tooltip">
  *   <button class="pfx-button" type="button" aria-describedby="help-tip" data-a11y-trigger>Help</button>
  *   <span class="tip" id="help-tip" role="tooltip" data-a11y-root>Find answers to common questions.</span>
+ * </span>
+ * ```
+ * @example -docs
+ * ```html
+ * <span class="pfx-tooltip">
+ *   <button class="pfx-button" type="button" aria-describedby="placement-tip">Placement</button>
+ *   <span class="tip -placement-bottom" id="placement-tip" role="tooltip">This tooltip appears below.</span>
  * </span>
  * ```
  * @structure
