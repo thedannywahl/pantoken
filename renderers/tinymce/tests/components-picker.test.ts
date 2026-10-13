@@ -262,7 +262,7 @@ test("component example is written into the CodeMirror doc while the source view
   expect(insertContent).not.toHaveBeenCalled();
 });
 
-test("component example inserts only the HTML from a fenced example", () => {
+test("component insertion uses the first example and ignores later accessibility examples", () => {
   const editor = createMockEditor();
   const plugin = createComponentsPlugin({
     model: [
@@ -273,6 +273,7 @@ test("component example inserts only the HTML from a fenced example", () => {
         description: "A surface container for editor content.",
         examples: [
           '-nocard ```html\n<div class="instui-editor-card --p-md">\n  <p>Content here.</p>\n</div>\n```',
+          '```html\n<!-- automatica11y: card -->\n<div class="instui-editor-card" data-a11y-root>Audit fixture.</div>\n```',
         ],
         modifiers: [],
       },

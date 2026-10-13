@@ -25,6 +25,14 @@
  *     <span class="pfx-form-field-message -type-error">Enter a valid email address.</span>
  *   </div>
  * </label>
+ * @example
+ * ```html
+ * \3c !-- automatica11y: form-field -->
+ * <label class="pfx-form-field">
+ *   <span class="label">Email address</span>
+ *   <span class="controls"><input class="pfx-text-input" type="email" autocomplete="email" required data-a11y-trigger data-a11y-root></span>
+ * </label>
+ * ```
  * @structure
  * .pfx-form-field {
  *   .label {}

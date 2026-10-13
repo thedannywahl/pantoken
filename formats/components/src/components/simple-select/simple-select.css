@@ -19,6 +19,17 @@
  *   <option>Orange</option>
  *   <option>Pear</option>
  * </select>
+ * @example
+ * ```html
+ * \3c !-- automatica11y: combobox -->
+ * <label>Fruit
+ *   <select class="pfx-simple-select" data-a11y-trigger data-a11y-root>
+ *     <option value="">Choose a fruit</option>
+ *     <option value="apple">Apple</option>
+ *     <option value="orange">Orange</option>
+ *   </select>
+ * </label>
+ * ```
  * @structure
  * .pfx-simple-select {
  *   option {}

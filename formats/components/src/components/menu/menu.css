@@ -19,6 +19,15 @@
  *   <div class="item">Delete</div>
  * </div>
  * ```
+ * @example -nocard
+ * ```html
+ * \3c !-- automatica11y: menu -->
+ * <button class="pfx-button" popovertarget="actions-menu" data-a11y-trigger>Actions</button>
+ * <div class="pfx-menu" id="actions-menu" popover="auto" role="menu" aria-label="Actions" data-a11y-root>
+ *   <button class="item" role="menuitem">Edit</button>
+ *   <button class="item" role="menuitem">Delete</button>
+ * </div>
+ * ```
  * @related tree-browser — Both present nested, selectable entries.
  * @related simple-select — A select's dropdown reuses this menu surface.
  */

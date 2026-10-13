@@ -24,6 +24,16 @@
  *     <button class="pfx-button">Close</button>
  *   </div>
  * </dialog>
+ * @example
+ * ```html
+ * \3c !-- automatica11y: dialog -->
+ * <button class="pfx-button" command="--show" commandfor="account-dialog" data-a11y-trigger>Open account details</button>
+ * <dialog class="pfx-modal -size-sm" id="account-dialog" aria-labelledby="account-dialog-title" data-a11y-root>
+ *   <div class="header" id="account-dialog-title"><strong>Account details</strong></div>
+ *   <div class="body">Review your account information.</div>
+ *   <div class="footer"><button class="pfx-button" command="--close" commandfor="account-dialog">Close</button></div>
+ * </dialog>
+ * ```
  * @structure
  * .pfx-modal {
  *   .header {}

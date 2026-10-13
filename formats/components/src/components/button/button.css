@@ -36,6 +36,11 @@
  *   <button class="pfx-button -color-secondary">Secondary</button>
  * </div>
  * ```
+ * @example
+ * ```html
+ * \3c !-- automatica11y: button -->
+ * <button class="pfx-button" data-a11y-trigger data-a11y-root>Save</button>
+ * ```
  * @wrapper pfx-button-group
  * @structure
  * A group wrapper lays out adjacent buttons with the shared button gap.

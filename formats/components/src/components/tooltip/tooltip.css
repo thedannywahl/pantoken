@@ -13,6 +13,14 @@
  *   <span class="tip" id="tt-1" role="tooltip">Default placement is top</span>
  * </span>
  * ```
+ * @example
+ * ```html
+ * \3c !-- automatica11y: tooltip -->
+ * <span class="pfx-tooltip">
+ *   <button class="pfx-button" type="button" aria-describedby="help-tip" data-a11y-trigger>Help</button>
+ *   <span class="tip" id="help-tip" role="tooltip" data-a11y-root>Find answers to common questions.</span>
+ * </span>
+ * ```
  * @structure
  * .pfx-tooltip {
  *   [class*="-icon-"]:optional {}
