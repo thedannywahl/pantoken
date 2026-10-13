@@ -67,3 +67,11 @@ test("does not use the legacy example comment as an Automatica11y fallback", () 
     docs: [0],
   });
 });
+
+test("does not treat audience-like text in an unfenced example body as metadata", () => {
+  expect(resolveExampleTargets(['<p class="-docs">The -automatica11y option</p>'])).toEqual({
+    automatica11y: [],
+    canvasRce: [0],
+    docs: [0],
+  });
+});

@@ -19,10 +19,12 @@ function audienceFlags(example: string): Set<ExampleAudience> {
   const metadata = fenceStart < 0 ? example : example.slice(0, fenceStart);
   const fenceInfo =
     fenceStart < 0 ? "" : (example.slice(fenceStart + 3).split(/\r?\n/u, 1)[0] ?? "");
+  const metadataTokens = metadata.trim().split(/\s+/u).filter(Boolean);
+  const metadataIsFlags = metadataTokens.every((token) => /^-[a-z][a-z0-9-]*$/u.test(token));
   const flags = new Set<ExampleAudience>();
 
-  for (const token of `${metadata}\n${fenceInfo}`.match(/(?:^|\s)-[a-z][a-z0-9-]*/gu) ?? []) {
-    const audience = AUDIENCE_FLAGS.get(token.trim());
+  for (const token of [...(metadataIsFlags ? metadataTokens : []), ...fenceInfo.split(/\s+/u)]) {
+    const audience = AUDIENCE_FLAGS.get(token);
     if (audience) flags.add(audience);
   }
 
