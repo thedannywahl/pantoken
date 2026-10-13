@@ -1205,7 +1205,7 @@ jobs:
         timeout-minutes: 12
         with:
           mode: walltime
-          run: VP_NODE_VERSION=22.18.0 vp test --run --config vite.bench.config.ts
+          run: VP_NODE_VERSION=22.18.0 vp test bench --run --config vite.bench.config.ts --dir bench
 
   coverage:
     needs: build
