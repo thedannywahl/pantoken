@@ -3460,6 +3460,9 @@ importers:
       '@pantoken/tokens':
         specifier: workspace:*
         version: link:../../formats/tokens
+      '@pantoken/utils':
+        specifier: workspace:*
+        version: link:../../packages/utils
     devDependencies:
       '@codemirror/autocomplete':
         specifier: 'catalog:'
@@ -3479,9 +3482,6 @@ importers:
       '@codemirror/view':
         specifier: 'catalog:'
         version: 6.43.14
-      '@pantoken/utils':
-        specifier: workspace:*
-        version: link:../../packages/utils
       '@types/node':
         specifier: 'catalog:'
         version: 26.6.5
@@ -3643,6 +3643,10 @@ importers:
         version: 1.1.0(@arethetypeswrong/core@0.18.5)(@types/node@26.6.5)(@vitest/coverage-v8@5.0.3)(@vitest/ui@5.0.3)(happy-dom@20.14.6)(jiti@2.6.1)(less@4.9.1(supports-color@10.2.2))(publint@0.3.25)(sass@1.105.1)(svelte@5.57.2(@typescript-eslint/types@8.71.1))(terser@5.51.2)(typescript@7.0.2)(yaml@2.9.1)
 
   tools/demo:
+    dependencies:
+      '@pantoken/utils':
+        specifier: workspace:*
+        version: link:../../packages/utils
     devDependencies:
       '@shikijs/langs':
         specifier: 'catalog:'

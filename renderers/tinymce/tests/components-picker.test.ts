@@ -272,8 +272,9 @@ test("component insertion uses the first example and ignores later accessibility
         kind: "custom-component",
         description: "A surface container for editor content.",
         examples: [
-          '-nocard ```html\n<div class="instui-editor-card --p-md">\n  <p>Content here.</p>\n</div>\n```',
-          '```html\n<!-- automatica11y: card -->\n<div class="instui-editor-card" data-a11y-root>Audit fixture.</div>\n```',
+          '-canvas-rce\n```html\n<div class="instui-editor-card --p-md">\n  <p>Content here.</p>\n</div>\n```',
+          '-automatica11y\n```html\n<div class="instui-editor-card" data-a11y-root>Audit fixture.</div>\n```',
+          '-docs\n```html\n<div class="instui-editor-card">Documentation example.</div>\n```',
         ],
         modifiers: [],
       },
@@ -295,4 +296,31 @@ test("component insertion uses the first example and ignores later accessibility
   expect(insertContent).toHaveBeenCalledWith(
     '<div class="instui-editor-card --p-md">\n  <p>Content here.</p>\n</div>',
   );
+});
+
+test("component insertion strips audience flags from an unfenced example", () => {
+  const editor = createMockEditor();
+  const plugin = createComponentsPlugin({
+    model: [
+      {
+        name: "editor-link",
+        className: ".instui-editor-link",
+        kind: "custom-component",
+        examples: ['-canvas-rce\n<a class="instui-link" href="#">Read more</a>'],
+        modifiers: [],
+      },
+    ] as any,
+    currentAssets: [],
+  });
+
+  plugin(editor);
+  (editor.ui.registry.addButton as any).mock.calls[0][1].onAction();
+  const dialogConfig = (editor.windowManager.open as any).mock.calls[0][0];
+  dialogConfig.onSubmit({
+    getData: vi.fn().mockReturnValue({ component: "editor-link" }),
+    close: vi.fn(),
+  });
+
+  const insertContent = (editor as unknown as Record<string, unknown>).insertContent;
+  expect(insertContent).toHaveBeenCalledWith('<a class="instui-link" href="#">Read more</a>');
 });

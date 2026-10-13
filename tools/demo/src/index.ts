@@ -21,6 +21,8 @@
  *
  * @module
  */
+import { resolveExampleTargets } from "@pantoken/utils/example-targets";
+
 /** Minimal renderer-rule shape this plugin needs, independent of any specific markdown-it major
  * version — vitepress bundles its own copy that can differ from the repo's catalog version. */
 type RendererRule = (tokens: any, index: number, options: any, env: any, self: any) => string;
@@ -513,9 +515,30 @@ export function demoMarkdownIt(md: MarkdownItLike, options: DemoMarkdownItOption
   // string, and strip them from the heading so they don't appear in the rendered title.
   if (options.liveExample) {
     md.core.ruler.push("live_example_flags", (state: { tokens: unknown[] }) => {
-      migrateLiveExampleFlags(
-        state.tokens as Array<{ type: string; info: string; content?: string }>,
+      const tokens = state.tokens as Array<{
+        type: string;
+        info: string;
+        content?: string;
+        hidden?: boolean;
+        children?: Array<{ type: string; content: string }>;
+      }>;
+      migrateLiveExampleFlags(tokens);
+      const fences = tokens.flatMap((token, index) =>
+        token.type === "fence" && token.info.trimStart().startsWith("html")
+          ? [{ token, index }]
+          : [],
       );
+      const selection = resolveExampleTargets(
+        fences.map(({ token }) => `\`\`\`${token.info}\n${token.content ?? ""}\n\`\`\``),
+      );
+      const docsExamples = new Set(selection.docs);
+
+      fences.forEach(({ token, index }, exampleIndex) => {
+        if (docsExamples.has(exampleIndex)) return;
+        if (!token.info.split(/\s+/u).includes("-noshow")) token.info += " -noshow";
+        const heading = findPreviousHeadingInline(tokens, index);
+        if (heading) hideHeading(tokens, heading.inlineIndex);
+      });
     });
   }
 

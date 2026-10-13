@@ -237,6 +237,50 @@ test("liveExample seams a preview onto html fences on matching pages, skipping o
   expect(overlay).toBe("<pre><dialog open>Hi</dialog></pre>");
 });
 
+test("audience flags route unassigned examples to Canvas first and docs afterward", () => {
+  const coreRules: Array<[string, (state: { tokens: unknown[] }) => void]> = [];
+  const md = {
+    core: {
+      ruler: {
+        push: (name: string, fn: (state: { tokens: unknown[] }) => void) =>
+          coreRules.push([name, fn]),
+      },
+    },
+    renderer: {
+      rules: {
+        fence: (tokens: { info: string; content: string }[], index: number) =>
+          `<pre>${tokens[index].content}</pre>`,
+      },
+    },
+  };
+  const previews: string[] = [];
+  demoMarkdownIt(md as unknown as Parameters<typeof demoMarkdownIt>[0], {
+    liveExample: {
+      match: () => true,
+      wrap: (html) => {
+        previews.push(html);
+        return `<preview>${html}</preview>`;
+      },
+    },
+  });
+  const [, rule] = coreRules[0];
+  const fences = [
+    { type: "fence", info: "html", content: "Canvas fallback" },
+    { type: "fence", info: "html -automatica11y", content: "Accessibility fixture" },
+    { type: "fence", info: "html", content: "Docs fallback" },
+  ];
+
+  rule({ tokens: fences });
+
+  expect(fences[0].info).toContain("-noshow");
+  expect(fences[1].info).toContain("-noshow");
+  expect(fences[2].info).not.toContain("-noshow");
+  expect(md.renderer.rules.fence(fences, 0)).toBe("");
+  expect(md.renderer.rules.fence(fences, 1)).toBe("");
+  expect(md.renderer.rules.fence(fences, 2)).toContain("<preview>Docs fallback</preview>");
+  expect(previews).toEqual(["Docs fallback"]);
+});
+
 test("live_example_flags core rule strips -flags from heading and migrates them to fence info", () => {
   const coreRules: Array<[string, (state: { tokens: unknown[] }) => void]> = [];
   const md = {
