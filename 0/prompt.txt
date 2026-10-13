@@ -1,0 +1,7 @@
+there was an issue where we upgraded to vitest v5, but codspeed didn't support it and now v6.0.0 of codspeed has been released so we can remove our workaround and/or update to v5 of vitest:
+https://github.com/CodSpeedHQ/codspeed-node/pull/86
+I just don't remember the details, so research first.
+
+---
+
+begin

@@ -1,0 +1,88 @@
+{
+  "cli_version": "0.11.4",
+  "checkpoint_id": "01M4V888VY5NF9HS74KZYJR4D1",
+  "session_id": "c8130168-b70c-485b-bfc5-aecb41c0dbd8",
+  "strategy": "manual-commit",
+  "created_at": "2026-10-13T18:26:32.676124Z",
+  "branch": "automatica11y",
+  "checkpoints_count": 2,
+  "save_step_count": 2,
+  "files_touched": [
+    ".github/workflows/ci.yml",
+    "bench/core.bench.ts",
+    "bench/docs.bench.ts",
+    "bench/formats.bench.ts",
+    "bench/run-bench.ts",
+    "bench/utils.bench.ts",
+    "package.json",
+    "pnpm-lock.yaml",
+    "pnpm-workspace.yaml",
+    "vite.bench.config.ts"
+  ],
+  "agent": "Copilot CLI",
+  "model": "",
+  "turn_id": "7ef4bb295b42",
+  "compact_transcript_start": 0,
+  "token_usage": {
+    "input_tokens": 0,
+    "cache_creation_tokens": 0,
+    "cache_read_tokens": 0,
+    "output_tokens": 0,
+    "api_call_count": 0
+  },
+  "session_metrics": {
+    "turn_count": 2
+  },
+  "initial_attribution": {
+    "calculated_at": "2026-10-13T18:26:32.668914Z",
+    "agent_lines": 151,
+    "agent_removed": 201,
+    "human_added": 0,
+    "human_modified": 0,
+    "human_removed": 0,
+    "total_committed": 151,
+    "total_lines_changed": 352,
+    "agent_percentage": 100,
+    "metric_version": 2
+  },
+  "prompt_attributions": [
+    {
+      "checkpoint_number": 1,
+      "user_lines_added": 122,
+      "user_lines_removed": 192,
+      "agent_lines_added": 0,
+      "agent_lines_removed": 0,
+      "user_added_per_file": {
+        "formats/components/src/components/alert/alert.css": 24,
+        "formats/components/src/components/button/button.css": 68,
+        "formats/components/src/components/form-field/form-field.css": 4,
+        "formats/components/src/components/link/link.css": 1,
+        "formats/components/src/components/menu/menu.css": 1,
+        "formats/components/src/components/modal/modal.css": 2,
+        "formats/components/src/components/simple-select/simple-select.css": 2,
+        "formats/components/src/components/tabs/tabs.css": 4,
+        "formats/components/src/components/toggle-details/toggle-details.css": 12,
+        "formats/components/src/components/tooltip/tooltip.css": 4
+      },
+      "user_removed_per_file": {
+        "formats/components/src/components/alert/alert.css": 39,
+        "formats/components/src/components/button/button.css": 121,
+        "formats/components/src/components/form-field/form-field.css": 4,
+        "formats/components/src/components/link/link.css": 1,
+        "formats/components/src/components/menu/menu.css": 1,
+        "formats/components/src/components/modal/modal.css": 3,
+        "formats/components/src/components/simple-select/simple-select.css": 3,
+        "formats/components/src/components/tabs/tabs.css": 4,
+        "formats/components/src/components/toggle-details/toggle-details.css": 12,
+        "formats/components/src/components/tooltip/tooltip.css": 4
+      }
+    },
+    {
+      "checkpoint_number": 2,
+      "user_lines_added": 0,
+      "user_lines_removed": 0,
+      "agent_lines_added": 0,
+      "agent_lines_removed": 0
+    }
+  ]
+}
