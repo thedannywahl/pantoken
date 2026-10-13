@@ -1,0 +1,13 @@
+we have `-nocard` as a flag, can we add `-automatica11y` and `-canvas-rce` and `-docs` as flags as well? and then do some automatic resolution if none of them are provided or only some of them are provided. for example -canvas-rce ?? [0]
+
+---
+
+Read-only exploration; do not edit. Start with `entire graph search --repo . --profile full --query "How cssdoc example flags are parsed and resolved for docs, Canvas RCE insertion, Automatica11y fixtures, and defaults"`. Then inspect focused source for cssdoc @example flag parsing, docs live example fence flags (currently -nocard), Canvas RCE/picker example selection, and current modifications in the user's listed component CSS files. Determine whether @cssdoc/core exposes flag metadata or embeds flags with examples; identify a clean shared resolution abstraction and fallback semantics. Report exact paths/symbols, existing user edits to preserve, and uncertainties. If terminal is unavailable report that and use search/read tools. Do not edit.
+
+---
+
+Read-only only. Execute the repo-mandated first locator command exactly: `entire graph search --repo . --profile full --query "How cssdoc example flags are parsed and resolved for docs, Canvas RCE insertion, Automatica11y fixture selection, and defaults"`. If available, read top-hit source and report exact paths/functions. No edits.
+
+---
+
+ignore
