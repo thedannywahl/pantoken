@@ -1,0 +1,58 @@
+{
+  "cli_version": "0.11.4",
+  "checkpoint_id": "01M4V05MDZJWPEAD94TKTS9Y8P",
+  "session_id": "de33d9bd-2409-44a4-ab13-d7a40ce615a9",
+  "strategy": "manual-commit",
+  "created_at": "2026-10-13T16:05:17.227844Z",
+  "branch": "automatica11y",
+  "checkpoints_count": 2,
+  "files_touched": [
+    ".changeset/accessibility-examples.md",
+    "formats/components/src/components/alert/alert.css",
+    "formats/components/src/components/button/button.css",
+    "formats/components/src/components/form-field/form-field.css",
+    "formats/components/src/components/link/link.css",
+    "formats/components/src/components/menu/menu.css",
+    "formats/components/src/components/modal/modal.css",
+    "formats/components/src/components/simple-select/simple-select.css",
+    "formats/components/src/components/tabs/tabs.css",
+    "formats/components/src/components/toggle-details/toggle-details.css",
+    "formats/components/src/components/tooltip/tooltip.css",
+    "renderers/tinymce/tests/components-picker.test.ts"
+  ],
+  "agent": "Copilot CLI",
+  "model": "",
+  "turn_id": "400d8e19f12d",
+  "compact_transcript_start": 0,
+  "token_usage": {
+    "input_tokens": 0,
+    "cache_creation_tokens": 0,
+    "cache_read_tokens": 0,
+    "output_tokens": 0,
+    "api_call_count": 0
+  },
+  "session_metrics": {
+    "turn_count": 2
+  },
+  "initial_attribution": {
+    "calculated_at": "2026-10-13T16:05:17.214896Z",
+    "agent_lines": 98,
+    "agent_removed": 1,
+    "human_added": 0,
+    "human_modified": 0,
+    "human_removed": 0,
+    "total_committed": 98,
+    "total_lines_changed": 99,
+    "agent_percentage": 100,
+    "metric_version": 2
+  },
+  "prompt_attributions": [
+    {
+      "checkpoint_number": 1,
+      "user_lines_added": 0,
+      "user_lines_removed": 0,
+      "agent_lines_added": 0,
+      "agent_lines_removed": 0
+    }
+  ]
+}

@@ -1,0 +1,18 @@
+for formats/components + interactions, we can use the cssdoc examples to integrate accessibility testing with https://automatica11y.dev
+
+---
+
+Read-only discovery only; do not edit files. Start with the mandatory first repo search: `entire graph search --repo . --profile full --query "Integrate automated accessibility testing for formats/components and formats/interactions using cssdoc examples and Automatica11y"`. Then inspect only the highest-value nearby results and relevant package-local README/package.json/tests/scripts, focusing on (1) how cssdoc examples are authored, parsed/rendered or consumed, (2) package test runners/environments for formats/components and formats/interactions, (3) whether there are already browser/e2e/accessibility tests. Return concise findings with exact repo-relative paths, key symbols/scripts, likely integration seams, and ambiguities the user needs to decide. Mention any graph/search constraints. Do not implement.
+
+---
+
+we can also update our cssdoc examples for each relevant component, for example we could add a distinct automatica11y example since they're just markdown, or we could make a first simple example for automatica11y testing and for the canvas-rce component insertion, and then following robust examples can be ignored.
+use incremental conventional commits and changesets as you work.
+
+---
+
+Read-only discovery only; do not edit. Start by attempting the repo-mandated locator `entire graph search --repo . --profile full --query "How cssdoc examples are consumed by Canvas RCE component insertion and can serve as Automatica11y accessibility fixtures"`. If command execution is unavailable, say so and use focused semantic search/reads. Determine precisely how Canvas RCE loads/selects cssdoc examples for component insertion (especially ordering and example distinctions), and whether any current examples have metadata/tagging that could identify an Automatica11y fixture. Inspect the closest relevant source and tests only. Report exact paths/functions, current selection behavior, changes likely required, and any ambiguity.
+
+---
+
+Start implementation
