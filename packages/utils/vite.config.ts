@@ -7,6 +7,7 @@ export default extendBase({
       index: "src/index.ts",
       "token-syntax": "src/token-syntax.ts",
       scope: "src/scope.ts",
+      "example-targets": "src/example-targets.ts",
     },
     // Exports are hand-managed so the css-tree-backed token-syntax entry stays out of the main
     // barrel's dist file — bundling it there would pull css-tree's runtime JSON require into every
