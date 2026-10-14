@@ -1,0 +1,936 @@
+instui 11.7.10 was released, go through the release notes and make a plan to upgrade and bless. One thing to note is that card is now an official component, so we need to move it from plugins/custom-components to formats/components.
+
+---
+
+Read-only research only; do not edit files. In /Users/dwahl/Scripts/pantoken, discover the repo's current InstUI upstream version pin and its upgrade/bless workflow, including exact commands/scripts, tests/golden files likely involved, and how components/custom components are moved into formats/components. Follow repository instructions: first use `entire graph search --repo . --profile full --query "Plan upgrading InstUI to 11.7.10 and bless upstream component changes, including moving card from plugins/custom-components to formats/components"` before broad searches or reads; consult AGENTS.md / CLAUDE.md context if applicable. Report concrete file paths, relevant symbols/commands, likely sequencing, and any blockers or risks. Do not modify anything.
+
+---
+
+Start implementation
+
+---
+
+can we migrate the docs translations too so I don't have to re-translate the card docs?
+
+---
+
+did we add the new ai variant to the spinner?
+
+---
+
+[Terminal 37388a56-6da9-4749-88a6-15926573267b notification: command completed with exit code 130. The terminal has been cleaned up.]
+Terminal output:
+ Test Files  1 failed (1)
+      Tests  1 failed | 2 passed (3)
+   Start at  10:04:13
+   Duration  2.23s (transform 65%, import 32%, tests 2%)
+
+components on automatica11y ≡  ?3 ~45 -1 via  26.11.0 x 
+➜  rg -n -C 3 'Test Files|Tests |FAIL|Error:|passed|failed|card:' '/Users/dwahl/Library/Application Support/Code/User/workspaceStorage/feb8ba7430110a7a83217f1ebf2f56fe/GitHub.copilot-chat/chat-session-resources/40176a06-fb6c-45d1-bda5-66466b6723ac/REDACTED/content.txt'
+6-
+7- RUN  v5.0.3 /Users/dwahl/Scripts/pantoken/formats/components
+8-
+9: ❯ tests/components/card.test.ts (3 tests | 1 failed) 40ms
+10-   × card supports official base and nested variants with deprecated legacy vari
+11-ants 11ms
+12-
+13:⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯ Failed Tests 1 ⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯
+14-
+15: FAIL  tests/components/card.test.ts > card supports official base and nested va
+16-riants with deprecated legacy variants
+17:AssertionError: expected '/* InstUI card (@pantoken/components)…' to contain '.-
+18-variant-base'
+19-
+20-- Expected
+--
+178-+
+179-+ /* Legacy direct-child markup remains responsive while consumers move to the o
+180-fficial wrapper. */
+181:+ .instui-card:not(:has(> .content)) {
+182-+   background: var(--instui-component-card-background-color);
+183-+   border-radius: var(--instui-component-card-border-radius-base-sm);
+184-+   box-shadow: var(--instui-elevation-card);
+--
+188-+ }
+189-+
+190-+ @media (min-width: 20rem) {
+191:+   .instui-card:not(:has(> .content)) {
+192-+     padding: var(--instui-component-card-padding-base-md);
+193-+     border-radius: var(--instui-component-card-border-radius-base-md);
+194-+   }
+195-+ }
+196-+
+197-+ @media (min-width: 40rem) {
+198:+   .instui-card:not(:has(> .content)) {
+199-+     padding: var(--instui-component-card-padding-base-lg);
+200-+     border-radius: var(--instui-component-card-border-radius-base-lg);
+201-+   }
+--
+250-⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/1]⎯
+251-
+252-
+253: Test Files  1 failed (1)
+254:      Tests  1 failed | 2 passed (3)
+255-   Start at  10:04:13
+256-   Duration  2.23s (transform 65%, import 32%, tests 2%)
+257-
+components on automatica11y ≡  ?3 ~45 -1 via  26.11.0 
+➜  cd ../formats/components && node scripts/component-styles.ts && vp test run tests/components/card.test.ts
+cd: no such file or directory: ../formats/components
+components on automatica11y ≡  ?3 ~45 -1 via  26.11.0 x 
+➜  node scripts/component-styles.ts && vp test run tests/components/card.test.ts 
+✓ components: wrote src/generated/component-styles.ts (158 stylesheets)
+VITE+ - The Unified Toolchain for the Web
+
+note: You are running `vp test` as a Vite+ built-in command. If you meant to run the test npm script, use `vpr test` instead.
+
+ RUN  v5.0.3 /Users/dwahl/Scripts/pantoken/formats/components
+
+
+ Test Files  1 passed (1)
+      Tests  3 passed (3)
+   Start at  10:04:42
+   Duration  1.55s (transform 60%, import 38%, tests 2%)
+
+components on automatica11y ≡  ?3 ~45 -1 via  26.11.0 
+➜  node scripts/component-styles.ts && vp test run tests/components/card.test.ts 
+✓ components: wrote src/generated/component-styles.ts (158 stylesheets)
+VITE+ - The Unified Toolchain for the Web
+
+note: You are running `vp test` as a Vite+ built-in command. If you meant to run the test npm script, use `vpr test` instead.
+
+ RUN  v5.0.3 /Users/dwahl/Scripts/pantoken/formats/components
+
+
+ Test Files  1 passed (1)
+      Tests  3 passed (3)
+   Start at  10:05:41
+   Duration  1.79s (transform 61%, import 37%, tests 2%)
+
+components on automatica11y ≡  ?3 ~48 -1 via  26.11.0 
+➜  vp test run
+VITE+ - The Unified Toolchain for the Web
+
+note: You are running `vp test` as a Vite+ built-in command. If you meant to run the test npm script, use `vpr test` instead.
+
+ RUN  v5.0.3 /Users/dwahl/Scripts/pantoken/formats/components
+
+
+ Test Files  55 passed (55)
+      Tests  280 passed (280)
+   Start at  10:05:49
+   Duration  11.25s (import 79%, tests 11%, transform 10%)
+
+    Isolate  55 workers spawned · ~145ms startup each (spawn + environment, per file)
+             at least ~742ms faster with isolate: false — reuses workers across files instead of one per file
+
+components on automatica11y ≡  ?3 ~48 -1 via  26.11.0 
+➜  vp pack
+VITE+ - The Unified Toolchain for the Web
+
+ℹ entry: src/index.ts, src/scaffold-preset.ts, generated/base.css, generated/components.css, generated/component-icons.css, generated/alert.css, generated/avatar.css, generated/badge.css, generated/billboard.css, generated/breadcrumb.css, generated/breadcrumb.link.css, generated/button.css, generated/byline.css, generated/calendar.css, generated/calendar.day.css, generated/checkbox.css, generated/close-button.css, generated/context-view.css, generated/drawer-layout.content.css, generated/drawer-layout.css, generated/drawer-layout.handle.css, generated/drawer-layout.tray.css, generated/file-drop.css, generated/form-field-group.css, generated/form-field-messages.css, generated/form-field.css, generated/heading.css, generated/img.css, generated/in-place-edit.css, generated/input-group.css, generated/link.css, generated/list.css, generated/list.item.css, generated/mask.css, generated/menu.css, generated/menu.group.css, generated/menu.item.css, generated/menu.separator.css, generated/metric.css, generated/modal.body.css, generated/modal.css, generated/modal.footer.css, generated/modal.header.css, generated/number-input.css, generated/pagination.css, generated/pagination.page.css, generated/pill.css, generated/popover.css, generated/progress-circle.css, generated/progress.css, generated/radio-input-group.css, generated/radio.css, generated/range-input.css, generated/rating.css, generated/side-nav-bar.css, generated/side-nav-bar.item.css, generated/simple-select.css, generated/spinner.css, generated/table.body.css, generated/table.cell.css, generated/table.col-header.css, generated/table.css, generated/table.head.css, generated/table.row-header.css, generated/table.row.css, generated/tabs.css, generated/tabs.panel.css, generated/tabs.tab.css, generated/tag.css, generated/text-area.css, generated/text-input.css, generated/text.css, generated/toggle-details.css, generated/toggle-group.css, generated/tooltip.css, generated/tray.css, generated/tree-browser.css, generated/view.css, generated/utilities/cursor.css, generated/utilities/gap.css, generated/utilities/icon.css, generated/utilities/layout.css, generated/utilities/mask.css, generated/utilities/overflow.css, generated/utilities/position.css, generated/utilities/responsive.css, generated/utilities/screen-reader-content.css, generated/utilities/spacing.css, generated/utilities/stacking.css, generated/utilities/transition.css, generated/fonts.css, generated/prose.css, generated/select.css, generated/icons.css, generated/utilities.css
+ℹ target: node22.18.0
+ℹ tsconfig: tsconfig.json
+ℹ Build start
+ℹ Cleaning 98 files
+ℹ dist/index.mjs                              1.10 MB
+ℹ dist/scaffold-preset.mjs                    0.34 kB │ gzip:  0.23 kB
+ℹ dist/icons.css                              1.45 MB
+ℹ dist/components.css                       169.51 kB │ gzip: 19.45 kB
+ℹ dist/utilities.css                         81.46 kB │ gzip:  8.51 kB
+ℹ dist/utilities/spacing.css                 37.86 kB │ gzip:  3.21 kB
+ℹ dist/button.css                            20.21 kB │ gzip:  2.44 kB
+ℹ dist/utilities/responsive.css              12.92 kB │ gzip:  1.49 kB
+ℹ dist/alert.css                              9.66 kB │ gzip:  1.51 kB
+ℹ dist/avatar.css                             7.96 kB │ gzip:  0.95 kB
+ℹ dist/radio.css                              7.88 kB │ gzip:  1.12 kB
+ℹ dist/checkbox.css                           7.28 kB │ gzip:  1.20 kB
+ℹ dist/component-icons.css                    6.07 kB │ gzip:  0.77 kB
+ℹ dist/progress-circle.css                    5.79 kB │ gzip:  0.96 kB
+ℹ dist/billboard.css                          5.40 kB │ gzip:  0.78 kB
+ℹ dist/prose.css                              4.93 kB │ gzip:  0.93 kB
+ℹ dist/number-input.css                       4.87 kB │ gzip:  0.94 kB
+ℹ dist/pill.css                               4.19 kB │ gzip:  0.66 kB
+ℹ dist/range-input.css                        4.06 kB │ gzip:  0.71 kB
+ℹ dist/simple-select.css                      4.05 kB │ gzip:  0.74 kB
+ℹ dist/context-view.css                       3.81 kB │ gzip:  0.71 kB
+ℹ dist/progress.css                           3.62 kB │ gzip:  0.84 kB
+ℹ dist/text.css                               3.58 kB │ gzip:  0.60 kB
+ℹ dist/input-group.css                        3.49 kB │ gzip:  0.64 kB
+ℹ dist/view.css                               3.15 kB │ gzip:  0.67 kB
+ℹ dist/fonts.css                              3.03 kB │ gzip:  0.31 kB
+ℹ dist/text-input.css                         2.99 kB │ gzip:  0.48 kB
+ℹ dist/heading.css                            2.93 kB │ gzip:  0.50 kB
+ℹ dist/link.css                               2.90 kB │ gzip:  0.61 kB
+ℹ dist/tree-browser.css                       2.63 kB │ gzip:  0.59 kB
+ℹ dist/badge.css                              2.28 kB │ gzip:  0.63 kB
+ℹ dist/text-area.css                          2.17 kB │ gzip:  0.46 kB
+ℹ dist/spinner.css                            2.14 kB │ gzip:  0.45 kB
+ℹ dist/form-field.css                         2.14 kB │ gzip:  0.51 kB
+ℹ dist/breadcrumb.link.css                    2.13 kB │ gzip:  0.51 kB
+ℹ dist/toggle-group.css                       2.12 kB │ gzip:  0.55 kB
+ℹ dist/tray.css                               2.11 kB │ gzip:  0.55 kB
+ℹ dist/tag.css                                2.11 kB │ gzip:  0.45 kB
+ℹ dist/tabs.tab.css                           2.09 kB │ gzip:  0.55 kB
+ℹ dist/toggle-details.css                     1.99 kB │ gzip:  0.51 kB
+ℹ dist/select.css                             1.88 kB │ gzip:  0.62 kB
+ℹ dist/base.css                               1.87 kB │ gzip:  0.52 kB
+ℹ dist/close-button.css                       1.77 kB │ gzip:  0.48 kB
+ℹ dist/form-field-group.css                   1.64 kB │ gzip:  0.53 kB
+ℹ dist/pagination.css                         1.53 kB │ gzip:  0.54 kB
+ℹ dist/list.item.css                          1.52 kB │ gzip:  0.31 kB
+ℹ dist/modal.css                              1.48 kB │ gzip:  0.46 kB
+ℹ dist/drawer-layout.tray.css                 1.44 kB │ gzip:  0.43 kB
+ℹ dist/form-field-messages.css                1.41 kB │ gzip:  0.47 kB
+ℹ dist/utilities/transition.css               1.39 kB │ gzip:  0.35 kB
+ℹ dist/byline.css                             1.37 kB │ gzip:  0.36 kB
+ℹ dist/tooltip.css                            1.24 kB │ gzip:  0.49 kB
+ℹ dist/menu.item.css                          1.22 kB │ gzip:  0.34 kB
+ℹ dist/pagination.page.css                    1.17 kB │ gzip:  0.38 kB
+ℹ dist/side-nav-bar.item.css                  1.09 kB │ gzip:  0.35 kB
+ℹ dist/popover.css                            1.08 kB │ gzip:  0.43 kB
+ℹ dist/radio-input-group.css                  1.06 kB │ gzip:  0.40 kB
+ℹ dist/list.css                               1.03 kB │ gzip:  0.28 kB
+ℹ dist/utilities/gap.css                      1.01 kB │ gzip:  0.22 kB
+ℹ dist/breadcrumb.css                         1.00 kB │ gzip:  0.26 kB
+ℹ dist/metric.css                             0.95 kB │ gzip:  0.28 kB
+ℹ dist/calendar.css                           0.93 kB │ gzip:  0.33 kB
+ℹ dist/rating.css                             0.92 kB │ gzip:  0.26 kB
+ℹ dist/calendar.day.css                       0.88 kB │ gzip:  0.25 kB
+ℹ dist/utilities/overflow.css                 0.86 kB │ gzip:  0.16 kB
+ℹ dist/utilities/layout.css                   0.82 kB │ gzip:  0.17 kB
+ℹ dist/in-place-edit.css                      0.78 kB │ gzip:  0.31 kB
+ℹ dist/table.row-header.css                   0.72 kB │ gzip:  0.25 kB
+ℹ dist/file-drop.css                          0.69 kB │ gzip:  0.26 kB
+ℹ dist/modal.footer.css                       0.66 kB │ gzip:  0.20 kB
+ℹ dist/img.css                                0.65 kB │ gzip:  0.26 kB
+ℹ dist/tabs.panel.css                         0.65 kB │ gzip:  0.23 kB
+ℹ dist/table.css                              0.59 kB │ gzip:  0.25 kB
+ℹ dist/side-nav-bar.css                       0.56 kB │ gzip:  0.25 kB
+ℹ dist/utilities/cursor.css                   0.56 kB │ gzip:  0.14 kB
+ℹ dist/modal.header.css                       0.54 kB │ gzip:  0.18 kB
+ℹ dist/table.cell.css                         0.54 kB │ gzip:  0.22 kB
+ℹ dist/table.col-header.css                   0.52 kB │ gzip:  0.20 kB
+ℹ dist/table.row.css                          0.50 kB │ gzip:  0.21 kB
+ℹ dist/utilities/stacking.css                 0.43 kB │ gzip:  0.14 kB
+ℹ dist/menu.group.css                         0.43 kB │ gzip:  0.17 kB
+ℹ dist/utilities/position.css                 0.41 kB │ gzip:  0.12 kB
+ℹ dist/modal.body.css                         0.38 kB │ gzip:  0.20 kB
+ℹ dist/drawer-layout.css                      0.36 kB │ gzip:  0.23 kB
+ℹ dist/utilities/mask.css                     0.36 kB │ gzip:  0.20 kB
+ℹ dist/drawer-layout.content.css              0.34 kB │ gzip:  0.20 kB
+ℹ dist/menu.css                               0.34 kB │ gzip:  0.17 kB
+ℹ dist/utilities/icon.css                     0.33 kB │ gzip:  0.22 kB
+ℹ dist/tabs.css                               0.32 kB │ gzip:  0.20 kB
+ℹ dist/menu.separator.css                     0.28 kB │ gzip:  0.14 kB
+ℹ dist/table.head.css                         0.26 kB │ gzip:  0.20 kB
+ℹ dist/mask.css                               0.24 kB │ gzip:  0.19 kB
+ℹ dist/drawer-layout.handle.css               0.22 kB │ gzip:  0.17 kB
+ℹ dist/utilities/screen-reader-content.css    0.20 kB │ gzip:  0.17 kB
+ℹ dist/table.body.css                         0.06 kB │ gzip:  0.08 kB
+ℹ dist/index.d.mts                           26.24 kB │ gzip:  4.97 kB
+ℹ dist/scaffold-preset.d.mts                  0.27 kB │ gzip:  0.20 kB
+ℹ 97 files, total: 3.07 MB
+✔ Build complete in 361ms
+components on automatica11y ≡  ?3 ~48 -1 via  26.11.0 
+➜  cd ../../plugins/pantoken/custom-components && node scripts/component-styles.ts && node scripts/generate.ts && node scripts/build-entries.ts && vp test run tests/index.test.ts -t card
+✓ custom-components: wrote /custom-components/src/generated/component-styles.ts (8 record(s))
+✓ custom-components: wrote custom-components.css + _records.css
+✓ custom-components: wrote 7 per-component CSS files
+VITE+ - The Unified Toolchain for the Web
+
+note: You are running `vp test` as a Vite+ built-in command. If you meant to run the test npm script, use `vpr test` instead.
+
+ RUN  v5.0.3 /Users/dwahl/Scripts/pantoken/plugins/pantoken/custom-components
+
+
+ Test Files  1 passed (1)
+      Tests  4 passed | 35 skipped (39)
+   Start at  10:06:23
+   Duration  1.47s (transform 61%, import 36%, tests 3%)
+
+custom-components on automatica11y ≡  ?3 ~48 -1 via  26.11.0 
+➜  rg --files docs | rg '/api/css/card\.md$' | wc -l && git status --short -- 'docs/*/api/css/card.md' && rg -n '@pantoken/plugin-custom-components/custom-components\.css|-variant-container|-variant-content' docs/hu/api/css/card.md docs/de/api/css/card.md
+rg: docs: IO error for operation on docs: No such file or directory (os error 2)
+       0
+warning: could not open directory 'plugins/pantoken/custom-components/docs/': No such file or directory
+rg: docs/hu/api/css/card.md: No such file or directory (os error 2)
+rg: docs/de/api/css/card.md: No such file or directory (os error 2)
+custom-components on automatica11y ≡  ?3 ~48 -1 via  26.11.0 x 
+➜  cd ../../../ && rg --files docs | rg '/api/css/card\.md$' | wc -l && git status --short -- 'docs/*/api/css/card.md' && rg -n '@pantoken/plugin-custom-components/custom-components\.css|-variant-container|-variant-content' docs/hu/api/css/card.md docs/de/api/css/card.md
+       0
+docs/de/api/css/card.md
+15:  verwende `<section>`, wenn sie innerhalb eines größeren Landmark-Bereichs gruppiert ist. In `-variant-container` bevorzugen
+20:@import "@pantoken/plugin-custom-components/custom-components.css";
+23:@import "@pantoken/plugin-custom-components/custom-components.css";
+38:<article class="instui-card -variant-container">
+66:| `.-variant-container` | Container-Karte; direkte Kinder werden zu abgegrenzten, gepolsterten Abschnitten. |
+67:| `.-variant-content` | Standard-Inhaltskarte; Kinder sind ungestylt. Standard, wenn keine Variante gesetzt ist. |
+
+docs/hu/api/css/card.md
+9:Használja a `<article>` elemet kártyaelemként, ha a kártya önálló tartalmi egység; használjon `<section>`-t, ha egy nagyobb szemantikai területen belül van csoportosítva. A `-variant-container`-ben részesítse előnyben, hogy a közvetlen gyermekeik `<section>` elemek legyenek, így minden keretezett régió szemantikus jelentést hordoz.
+13:@import "@pantoken/plugin-custom-components/custom-components.css";
+16:@import "@pantoken/plugin-custom-components/custom-components.css";
+31:<article class="instui-card -variant-container">
+59:| `.-variant-container` | Konténer kártya; a közvetlen gyermekelemek keretezett, belső párnázottsággal rendelkező szakaszokká válnak. |
+60:| `.-variant-content` | Standard tartalmi kártya; a gyermekelemek nincsenek stilizálva. Alapértelmezett, ha nincs variáns beállítva. |
+pantoken on automatica11y ≡  ?3 ~48 -1 via  26.11.0 
+➜  printf '%s\n' docs/*/api/css/card.md | wc -l && git status --short -- 'docs/*/api/css/card.md'
+      43
+pantoken on automatica11y ≡  ?3 ~48 -1 via  26.11.0 
+➜  perl -pi -e 's/\Q@pantoken/plugin-custom-components/custom-components.css\E/@pantoken\/components\/components.css/g' docs/*/api/css/card.md
+Backslash found where operator expected at -e line 1, near "css\"
+Backslash found where operator expected at -e line 1, near "@pantoken\"
+        (Missing operator before \?)
+Unknown regexp modifier "/t" at -e line 1, at end of line
+syntax error at -e line 1, near "css\"
+Execution of -e aborted due to compilation errors.
+pantoken on automatica11y ≡  ?3 ~48 -1 via  26.11.0 x 
+➜  perl -pi -e 's|\@pantoken/plugin-custom-components/custom-components\.css|\@pantoken/components/components.css|g' docs/*/api/css/card.md
+pantoken on automatica11y ≡  ?3 ~48 -1 via  26.11.0 
+➜  printf 'card pages: '; printf '%s\n' docs/*/api/css/card.md | wc -l; printf 'old imports: '; rg -l '@pantoken/plugin-custom-components/custom-components\.css' docs/*/api/css/card.md | wc -l; printf 'new imports: '; rg -l '@pantoken/components/components\.css' docs/*/api/css/card.md | wc -l
+card pages:       43
+old imports:        0
+new imports:       43
+pantoken on automatica11y ≡  ?3 ~48 -1 via  26.11.0 
+➜  git diff --stat -- 'docs/*/api/css/card.md' && git status --short -- 'docs/*/api/css/card.md'
+pantoken on automatica11y ≡  ?3 ~48 -1 via  26.11.0 
+➜  git check-ignore docs/hu/api/css/card.md l10n/hu/docs.api.po || true
+docs/hu/api/css/card.md
+pantoken on automatica11y ≡  ?3 ~48 -1 via  26.11.0 
+➜  cd docs && vp test run scripts/build-css-api.test.ts
+VITE+ - The Unified Toolchain for the Web
+
+
+ RUN  v5.0.3 /Users/dwahl/Scripts/pantoken/docs
+
+
+ Test Files  1 passed (1)
+      Tests  42 passed (42)
+   Start at  10:11:04
+   Duration  1.75s (import 67%, transform 31%, tests 2%)
+
+docs on automatica11y ≡  ?3 ~50 -1 via  26.11.0 
+➜  vp run docs:api:css
+VITE+ - The Unified Toolchain for the Web
+
+~/docs$ node scripts/build-css-api.ts
+✓ CSS API: wrote 110 record page(s) to api/css/ + merged the CSS section into the TypeDoc sidebar
+
+---
+vp run: @pantoken/docs#docs:api:css not cached because it modified its input. (Run `vp run --last-details` for full details)
+docs on automatica11y ≡  ?3 ~50 -1 via  26.11.0 
+➜  git status --short -- l10n docs/*/api/css/card.md docs/api/css/card.md docs/api/typedoc-sidebar.json
+zsh: no matches found: docs/*/api/css/card.md
+docs on automatica11y ≡  ?3 ~50 -1 via  26.11.0 x 
+➜  cd ../formats/components && node scripts/component-styles.ts && vp test run tests/components/card.test.ts
+✓ components: wrote src/generated/component-styles.ts (158 stylesheets)
+VITE+ - The Unified Toolchain for the Web
+
+note: You are running `vp test` as a Vite+ built-in command. If you meant to run the test npm script, use `vpr test` instead.
+
+ RUN  v5.0.3 /Users/dwahl/Scripts/pantoken/formats/components
+
+
+ Test Files  1 passed (1)
+      Tests  3 passed (3)
+   Start at  10:12:11
+   Duration  2.29s (transform 63%, import 35%, tests 2%)
+
+components on automatica11y ≡  ?3 ~50 -1 via  26.11.0 
+➜  node scripts/component-styles.ts && vp pack
+✓ components: wrote src/generated/component-styles.ts (158 stylesheets)
+VITE+ - The Unified Toolchain for the Web
+
+ℹ entry: src/index.ts, src/scaffold-preset.ts, generated/base.css, generated/components.css, generated/component-icons.css, generated/alert.css, generated/avatar.css, generated/badge.css, generated/billboard.css, generated/breadcrumb.css, generated/breadcrumb.link.css, generated/button.css, generated/byline.css, generated/calendar.css, generated/calendar.day.css, generated/checkbox.css, generated/close-button.css, generated/context-view.css, generated/drawer-layout.content.css, generated/drawer-layout.css, generated/drawer-layout.handle.css, generated/drawer-layout.tray.css, generated/file-drop.css, generated/form-field-group.css, generated/form-field-messages.css, generated/form-field.css, generated/heading.css, generated/img.css, generated/in-place-edit.css, generated/input-group.css, generated/link.css, generated/list.css, generated/list.item.css, generated/mask.css, generated/menu.css, generated/menu.group.css, generated/menu.item.css, generated/menu.separator.css, generated/metric.css, generated/modal.body.css, generated/modal.css, generated/modal.footer.css, generated/modal.header.css, generated/number-input.css, generated/pagination.css, generated/pagination.page.css, generated/pill.css, generated/popover.css, generated/progress-circle.css, generated/progress.css, generated/radio-input-group.css, generated/radio.css, generated/range-input.css, generated/rating.css, generated/side-nav-bar.css, generated/side-nav-bar.item.css, generated/simple-select.css, generated/spinner.css, generated/table.body.css, generated/table.cell.css, generated/table.col-header.css, generated/table.css, generated/table.head.css, generated/table.row-header.css, generated/table.row.css, generated/tabs.css, generated/tabs.panel.css, generated/tabs.tab.css, generated/tag.css, generated/text-area.css, generated/text-input.css, generated/text.css, generated/toggle-details.css, generated/toggle-group.css, generated/tooltip.css, generated/tray.css, generated/tree-browser.css, generated/view.css, generated/utilities/cursor.css, generated/utilities/gap.css, generated/utilities/icon.css, generated/utilities/layout.css, generated/utilities/mask.css, generated/utilities/overflow.css, generated/utilities/position.css, generated/utilities/responsive.css, generated/utilities/screen-reader-content.css, generated/utilities/spacing.css, generated/utilities/stacking.css, generated/utilities/transition.css, generated/fonts.css, generated/prose.css, generated/select.css, generated/icons.css, generated/utilities.css
+ℹ target: node22.18.0
+ℹ tsconfig: tsconfig.json
+ℹ Build start
+ℹ Cleaning 98 files
+ℹ dist/index.mjs                              1.10 MB
+ℹ dist/scaffold-preset.mjs                    0.34 kB │ gzip:  0.23 kB
+ℹ dist/icons.css                              1.45 MB
+ℹ dist/components.css                       169.51 kB │ gzip: 19.45 kB
+ℹ dist/utilities.css                         81.46 kB │ gzip:  8.51 kB
+ℹ dist/utilities/spacing.css                 37.86 kB │ gzip:  3.21 kB
+ℹ dist/button.css                            20.21 kB │ gzip:  2.44 kB
+ℹ dist/utilities/responsive.css              12.92 kB │ gzip:  1.49 kB
+ℹ dist/alert.css                              9.66 kB │ gzip:  1.51 kB
+ℹ dist/avatar.css                             7.96 kB │ gzip:  0.95 kB
+ℹ dist/radio.css                              7.88 kB │ gzip:  1.12 kB
+ℹ dist/checkbox.css                           7.28 kB │ gzip:  1.20 kB
+ℹ dist/component-icons.css                    6.07 kB │ gzip:  0.77 kB
+ℹ dist/progress-circle.css                    5.79 kB │ gzip:  0.96 kB
+ℹ dist/billboard.css                          5.40 kB │ gzip:  0.78 kB
+ℹ dist/prose.css                              4.93 kB │ gzip:  0.93 kB
+ℹ dist/number-input.css                       4.87 kB │ gzip:  0.94 kB
+ℹ dist/pill.css                               4.19 kB │ gzip:  0.66 kB
+ℹ dist/range-input.css                        4.06 kB │ gzip:  0.71 kB
+ℹ dist/simple-select.css                      4.05 kB │ gzip:  0.74 kB
+ℹ dist/context-view.css                       3.81 kB │ gzip:  0.71 kB
+ℹ dist/progress.css                           3.62 kB │ gzip:  0.84 kB
+ℹ dist/text.css                               3.58 kB │ gzip:  0.60 kB
+ℹ dist/input-group.css                        3.49 kB │ gzip:  0.64 kB
+ℹ dist/view.css                               3.15 kB │ gzip:  0.67 kB
+ℹ dist/fonts.css                              3.03 kB │ gzip:  0.31 kB
+ℹ dist/text-input.css                         2.99 kB │ gzip:  0.48 kB
+ℹ dist/heading.css                            2.93 kB │ gzip:  0.50 kB
+ℹ dist/link.css                               2.90 kB │ gzip:  0.61 kB
+ℹ dist/tree-browser.css                       2.63 kB │ gzip:  0.59 kB
+ℹ dist/badge.css                              2.28 kB │ gzip:  0.63 kB
+ℹ dist/text-area.css                          2.17 kB │ gzip:  0.46 kB
+ℹ dist/spinner.css                            2.14 kB │ gzip:  0.45 kB
+ℹ dist/form-field.css                         2.14 kB │ gzip:  0.51 kB
+ℹ dist/breadcrumb.link.css                    2.13 kB │ gzip:  0.51 kB
+ℹ dist/toggle-group.css                       2.12 kB │ gzip:  0.55 kB
+ℹ dist/tray.css                               2.11 kB │ gzip:  0.55 kB
+ℹ dist/tag.css                                2.11 kB │ gzip:  0.45 kB
+ℹ dist/tabs.tab.css                           2.09 kB │ gzip:  0.55 kB
+ℹ dist/toggle-details.css                     1.99 kB │ gzip:  0.51 kB
+ℹ dist/select.css                             1.88 kB │ gzip:  0.62 kB
+ℹ dist/base.css                               1.87 kB │ gzip:  0.52 kB
+ℹ dist/close-button.css                       1.77 kB │ gzip:  0.48 kB
+ℹ dist/form-field-group.css                   1.64 kB │ gzip:  0.53 kB
+ℹ dist/pagination.css                         1.53 kB │ gzip:  0.54 kB
+ℹ dist/list.item.css                          1.52 kB │ gzip:  0.31 kB
+ℹ dist/modal.css                              1.48 kB │ gzip:  0.46 kB
+ℹ dist/drawer-layout.tray.css                 1.44 kB │ gzip:  0.43 kB
+ℹ dist/form-field-messages.css                1.41 kB │ gzip:  0.47 kB
+ℹ dist/utilities/transition.css               1.39 kB │ gzip:  0.35 kB
+ℹ dist/byline.css                             1.37 kB │ gzip:  0.36 kB
+ℹ dist/tooltip.css                            1.24 kB │ gzip:  0.49 kB
+ℹ dist/menu.item.css                          1.22 kB │ gzip:  0.34 kB
+ℹ dist/pagination.page.css                    1.17 kB │ gzip:  0.38 kB
+ℹ dist/side-nav-bar.item.css                  1.09 kB │ gzip:  0.35 kB
+ℹ dist/popover.css                            1.08 kB │ gzip:  0.43 kB
+ℹ dist/radio-input-group.css                  1.06 kB │ gzip:  0.40 kB
+ℹ dist/list.css                               1.03 kB │ gzip:  0.28 kB
+ℹ dist/utilities/gap.css                      1.01 kB │ gzip:  0.22 kB
+ℹ dist/breadcrumb.css                         1.00 kB │ gzip:  0.26 kB
+ℹ dist/metric.css                             0.95 kB │ gzip:  0.28 kB
+ℹ dist/calendar.css                           0.93 kB │ gzip:  0.33 kB
+ℹ dist/rating.css                             0.92 kB │ gzip:  0.26 kB
+ℹ dist/calendar.day.css                       0.88 kB │ gzip:  0.25 kB
+ℹ dist/utilities/overflow.css                 0.86 kB │ gzip:  0.16 kB
+ℹ dist/utilities/layout.css                   0.82 kB │ gzip:  0.17 kB
+ℹ dist/in-place-edit.css                      0.78 kB │ gzip:  0.31 kB
+ℹ dist/table.row-header.css                   0.72 kB │ gzip:  0.25 kB
+ℹ dist/file-drop.css                          0.69 kB │ gzip:  0.26 kB
+ℹ dist/modal.footer.css                       0.66 kB │ gzip:  0.20 kB
+ℹ dist/img.css                                0.65 kB │ gzip:  0.26 kB
+ℹ dist/tabs.panel.css                         0.65 kB │ gzip:  0.23 kB
+ℹ dist/table.css                              0.59 kB │ gzip:  0.25 kB
+ℹ dist/side-nav-bar.css                       0.56 kB │ gzip:  0.25 kB
+ℹ dist/utilities/cursor.css                   0.56 kB │ gzip:  0.14 kB
+ℹ dist/modal.header.css                       0.54 kB │ gzip:  0.18 kB
+ℹ dist/table.cell.css                         0.54 kB │ gzip:  0.22 kB
+ℹ dist/table.col-header.css                   0.52 kB │ gzip:  0.20 kB
+ℹ dist/table.row.css                          0.50 kB │ gzip:  0.21 kB
+ℹ dist/utilities/stacking.css                 0.43 kB │ gzip:  0.14 kB
+ℹ dist/menu.group.css                         0.43 kB │ gzip:  0.17 kB
+ℹ dist/utilities/position.css                 0.41 kB │ gzip:  0.12 kB
+ℹ dist/modal.body.css                         0.38 kB │ gzip:  0.20 kB
+ℹ dist/drawer-layout.css                      0.36 kB │ gzip:  0.23 kB
+ℹ dist/utilities/mask.css                     0.36 kB │ gzip:  0.20 kB
+ℹ dist/drawer-layout.content.css              0.34 kB │ gzip:  0.20 kB
+ℹ dist/menu.css                               0.34 kB │ gzip:  0.17 kB
+ℹ dist/utilities/icon.css                     0.33 kB │ gzip:  0.22 kB
+ℹ dist/tabs.css                               0.32 kB │ gzip:  0.20 kB
+ℹ dist/menu.separator.css                     0.28 kB │ gzip:  0.14 kB
+ℹ dist/table.head.css                         0.26 kB │ gzip:  0.20 kB
+ℹ dist/mask.css                               0.24 kB │ gzip:  0.19 kB
+ℹ dist/drawer-layout.handle.css               0.22 kB │ gzip:  0.17 kB
+ℹ dist/utilities/screen-reader-content.css    0.20 kB │ gzip:  0.17 kB
+ℹ dist/table.body.css                         0.06 kB │ gzip:  0.08 kB
+ℹ dist/index.d.mts                           26.24 kB │ gzip:  4.97 kB
+ℹ dist/scaffold-preset.d.mts                  0.27 kB │ gzip:  0.20 kB
+ℹ 97 files, total: 3.07 MB
+✔ Build complete in 217ms
+components on automatica11y ≡  ?4 ~50 -1 via  26.11.0 
+➜  cd ../../tools/demo && vp pack
+VITE+ - The Unified Toolchain for the Web
+
+ℹ entry: src/index.ts
+ℹ target: node22.18.0
+ℹ tsconfig: tsconfig.json
+ℹ Build start
+ℹ Cleaning 12 files
+ℹ dist/index.mjs    16.88 kB │ gzip: 5.78 kB
+ℹ dist/index.d.mts   8.23 kB │ gzip: 3.15 kB
+ℹ 2 files, total: 25.11 kB
+✔ Build complete in 43ms
+demo on automatica11y ≡  ?4 ~50 -1 via  26.11.0 
+➜  cd ../../packages/scaffold && node scripts/generate.ts
+✓ inlined scaffold templates for 8 platforms
+✓ inlined 9 agent assets
+✓ inlined localized scaffold files for 44 locale(s)
+✓ compiled scaffold.json metadata for 1 platform(s)
+✓ emitted locale registry for 44 locales
+scaffold on automatica11y ≡  ?4 ~50 -1 via  26.11.0 
+➜  cd ../.. && vp run @pantoken/docs#docs:assets
+VITE+ - The Unified Toolchain for the Web
+
+~/docs$ node scripts/run-assets.ts ○ cache miss: args changed, executing
+📦 Generating docs assets: 18 tasks, concurrency 10
+staged published manifest schemas to public/
+✓ published-schemas in 0.1s
+staged VS Code custom-data files to public/
+✓ lucide-lab: wrote 357 per-icon CSS files + lucide-lab.css barrel
+✓ vscode-custom-data in 0.3s
+✓ lucide-lab in 0.3s
+✓ staged create-pantoken-app skill to public/create-pantoken-app.md
+✓ create-app-skill in 0.4s
+staged i18n schemas to public/schemas/
+staged tinymce-save export schema to public/schemas/
+✓ tinymce-schema in 0.1s
+✓ i18n-schemas in 0.1s
+staged target compatibility registry and schema to docs/public/
+✓ target-compatibility in 0.1s
+staged API catalog with 85 npm package endpoints
+✓ api-catalog in 0.3s
+✓ docs: wrote cdn-plugin-manifest.json (2 custom components, 4 other plugins, 12 custom icons, 7 logo products)
+✓ cdn-plugin-manifest in 0.5s
+✓ docs: wrote cdn-icon-manifest-instui.json (1962 icons)
+✓ docs: wrote cdn-icon-manifest-lucide-lab.json (357 icons)
+✓ site-themes: wrote site-themes.css (3 themes, 2004kb)
+✓ site-themes in 0.6s
+✓ docs: wrote cdn-icon-manifest-simple.json (3466 icons)
+✓ cdn-icon-manifest in 0.6s
+✓ registry: wrote /Users/dwahl/Scripts/pantoken/docs/public/r/registry.json (82 items)
+✓ registry: wrote 82 item files to /Users/dwahl/Scripts/pantoken/docs/public/r
+✓ registry in 0.2s
+✓ docs: wrote cdn-manifest.json (73 components, 11 use icons)
+✓ cdn-manifest in 0.7s
+✓ staged 24 localized nav wordmarks → docs/public/
+✓ locale-logos in 0.7s
+✓ docs: wrote icon-manifest.json (5894 entries)
+✓ docs: refreshed public/component-capabilities.json from @pantoken/interactions
+✓ icon-manifest in 0.1s
+✓ wrote social card → docs/public/og.png (1200×630, 76.4 KB)
+✓ wrote social card → docs/public/og-ar.png (1200×630, 62.6 KB)
+✓ wrote social card → docs/public/og-hy.png (1200×630, 74.6 KB)
+✓ wrote social card → docs/public/og-ca.png (1200×630, 77.5 KB)
+✓ wrote social card → docs/public/og-da.png (1200×630, 76.6 KB)
+✓ wrote social card → docs/public/og-nl.png (1200×630, 76.3 KB)
+✓ wrote social card → docs/public/og-en-AU.png (1200×630, 76.4 KB)
+✓ wrote social card → docs/public/og-en-CA.png (1200×630, 76.4 KB)
+✓ wrote social card → docs/public/og-en-GB.png (1200×630, 76.4 KB)
+✓ wrote social card → docs/public/og-fi.png (1200×630, 76.6 KB)
+✓ wrote social card → docs/public/og-fr.png (1200×630, 80.6 KB)
+⚠ @pantoken/demo runner is not built (run `vp run @pantoken/demo#build`); demos won't render.
+✓ wrote social card → docs/public/og-fr-CA.png (1200×630, 82.3 KB)
+✓ wrote social card → docs/public/og-ga.png (1200×630, 76.6 KB)
+✓ wrote social card → docs/public/og-de.png (1200×630, 78.5 KB)
+✓ wrote social card → docs/public/og-el.png (1200×630, 97.9 KB)
+✓ wrote social card → docs/public/og-ht.png (1200×630, 72.7 KB)
+✓ wrote social card → docs/public/og-he.png (1200×630, 54.2 KB)
+✓ wrote social card → docs/public/og-hi.png (1200×630, 59.8 KB)
+✓ wrote social card → docs/public/og-hu.png (1200×630, 85.8 KB)
+✓ wrote social card → docs/public/og-is.png (1200×630, 75.6 KB)
+✓ wrote social card → docs/public/og-id.png (1200×630, 83.4 KB)
+✓ wrote social card → docs/public/og-it.png (1200×630, 78.1 KB)
+✓ wrote social card → docs/public/og-ja.png (1200×630, 80.7 KB)
+✓ wrote social card → docs/public/og-ko.png (1200×630, 57.6 KB)
+✓ wrote social card → docs/public/og-mi.png (1200×630, 88.8 KB)
+✓ wrote social card → docs/public/og-ms.png (1200×630, 80.4 KB)
+✓ wrote social card → docs/public/og-se.png (1200×630, 84.8 KB)
+✓ wrote social card → docs/public/og-nb.png (1200×630, 70.9 KB)
+✓ wrote social card → docs/public/og-nn.png (1200×630, 75.3 KB)
+✓ wrote social card → docs/public/og-fa.png (1200×630, 66.7 KB)
+✓ wrote social card → docs/public/og-pl.png (1200×630, 84.9 KB)
+✓ wrote social card → docs/public/og-pt.png (1200×630, 85.2 KB)
+✓ wrote social card → docs/public/og-pt-BR.png (1200×630, 84.0 KB)
+✓ wrote social card → docs/public/og-ru.png (1200×630, 94.8 KB)
+✓ wrote social card → docs/public/og-zh-Hans.png (1200×630, 70.9 KB)
+✓ wrote social card → docs/public/og-sl.png (1200×630, 79.8 KB)
+✓ wrote social card → docs/public/og-es.png (1200×630, 86.7 KB)
+✓ wrote social card → docs/public/og-sv.png (1200×630, 75.6 KB)
+✓ wrote social card → docs/public/og-th.png (1200×630, 75.6 KB)
+✓ wrote social card → docs/public/og-zh-Hant.png (1200×630, 77.0 KB)
+✓ wrote social card → docs/public/og-tr.png (1200×630, 78.3 KB)
+✓ wrote social card → docs/public/og-uk.png (1200×630, 89.0 KB)
+✓ wrote social card → docs/public/og-vi.png (1200×630, 89.2 KB)
+✓ wrote social card → docs/public/og-cy.png (1200×630, 73.3 KB)
+✓ og in 2.4s
+✓ staged demo runner, the shared token + plugin sheets, and 2906 demo(s) to public/
+✓ demos in 2.7s
+✗ Build failed in 1.16s
+node:internal/modules/run_main:111
+    triggerUncaughtException(
+    ^
+
+Build failed with 18 errors:
+
+[UNLOADABLE_DEPENDENCY] Could not load .vitepress/cache/canvas-rce-src/node_modules/@pantoken/components/dist/icons/app-window-mac.css
+      ╭─[ .vitepress/cache/canvas-rce-src/src/main.ts:3968:8 ]
+      │
+ 3968 │ import "@pantoken/components/icons/app-window-mac.css";
+      │        ───────────────────────┬───────────────────────  
+      │                               ╰───────────────────────── No such file or directory (os error 2)
+──────╯
+
+[UNLOADABLE_DEPENDENCY] Could not load .vitepress/cache/canvas-rce-src/node_modules/@pantoken/components/dist/icons/download.css
+      ╭─[ .vitepress/cache/canvas-rce-src/src/main.ts:3971:8 ]
+      │
+ 3971 │ import "@pantoken/components/icons/download.css";
+      │        ────────────────────┬────────────────────  
+      │                            ╰────────────────────── No such file or directory (os error 2)
+──────╯
+
+[UNLOADABLE_DEPENDENCY] Could not load .vitepress/cache/canvas-rce-src/node_modules/@pantoken/components/dist/icons/columns-2.css
+      ╭─[ .vitepress/cache/canvas-rce-src/src/main.ts:3976:8 ]
+      │
+ 3976 │ import "@pantoken/components/icons/columns-2.css";
+      │        ─────────────────────┬────────────────────  
+      │                             ╰────────────────────── No such file or directory (os error 2)
+──────╯
+
+[UNLOADABLE_DEPENDENCY] Could not load .vitepress/cache/canvas-rce-src/node_modules/@pantoken/components/dist/icons/tablet.css
+      ╭─[ .vitepress/cache/canvas-rce-src/src/main.ts:3978:8 ]
+      │
+ 3978 │ import "@pantoken/components/icons/tablet.css";
+      │        ───────────────────┬───────────────────  
+      │                           ╰───────────────────── No such file or directory (os error 2)
+──────╯
+
+[UNLOADABLE_DEPENDENCY] Could not load .vitepress/cache/canvas-rce-src/node_modules/@pantoken/components/dist/icons/x.css
+      ╭─[ .vitepress/cache/canvas-rce-src/src/main.ts:3969:8 ]
+      │
+ 3969 │ import "@pantoken/components/icons/x.css";
+      │        ─────────────────┬────────────────  
+      │                         ╰────────────────── No such file or directory (os error 2)
+──────╯
+
+...
+    at aggregateBindingErrorsIntoJsError (file:///Users/dwahl/Scripts/pantoken/node_modules/.pnpm/@voidzero-dev+vite-plus-core@1.1.0_@arethetypeswrong+core@0.18.5_@types+node@26.6.5_jit_0203713b3a84c1230a5b7a40a4f8dd11/node_modules/@voidzero-dev/vite-plus-core/dist/rolldown/shared/error-Bj1xBdEY.mjs:49:18)
+    at unwrapBindingResult (file:///Users/dwahl/Scripts/pantoken/node_modules/.pnpm/@voidzero-dev+vite-plus-core@1.1.0_@arethetypeswrong+core@0.18.5_@types+node@26.6.5_jit_0203713b3a84c1230a5b7a40a4f8dd11/node_modules/@voidzero-dev/vite-plus-core/dist/rolldown/shared/error-Bj1xBdEY.mjs:19:128)
+    at #build (file:///Users/dwahl/Scripts/pantoken/node_modules/.pnpm/@voidzero-dev+vite-plus-core@1.1.0_@arethetypeswrong+core@0.18.5_@types+node@26.6.5_jit_0203713b3a84c1230a5b7a40a4f8dd11/node_modules/@voidzero-dev/vite-plus-core/dist/rolldown/shared/rolldown-BCQsxZbq.mjs:133:34)
+    at async buildEnvironment (file:///Users/dwahl/Scripts/pantoken/node_modules/.pnpm/@voidzero-dev+vite-plus-core@1.1.0_@arethetypeswrong+core@0.18.5_@types+node@26.6.5_jit_0203713b3a84c1230a5b7a40a4f8dd11/node_modules/@voidzero-dev/vite-plus-core/dist/vite/node/chunks/node.js:40017:66)
+    at async Object.build (file:///Users/dwahl/Scripts/pantoken/node_modules/.pnpm/@voidzero-dev+vite-plus-core@1.1.0_@arethetypeswrong+core@0.18.5_@types+node@26.6.5_jit_0203713b3a84c1230a5b7a40a4f8dd11/node_modules/@voidzero-dev/vite-plus-core/dist/vite/node/chunks/node.js:40438:19)
+    at async file:///Users/dwahl/Scripts/pantoken/docs/scripts/build-canvas-rce.ts:93:1 {
+  errors: [Getter/Setter]
+}
+
+Node.js v26.11.1
+✗ canvas-rce (scripts/build-canvas-rce.ts) exited 1
+
+pantoken on automatica11y ≡  ?4 ~50 -1 via  26.11.0 x 
+➜  vp run @pantoken/docs#docs:api:css
+VITE+ - The Unified Toolchain for the Web
+
+~/docs$ node scripts/build-css-api.ts
+✓ CSS API: wrote 110 record page(s) to api/css/ + merged the CSS section into the TypeDoc sidebar
+
+---
+vp run: @pantoken/docs#docs:api:css not cached because it modified its input. (Run `vp run --last-details` for full details)
+pantoken on automatica11y ≡  ?4 ~50 -1 via  26.11.0 
+➜  rg -n 'customComponents|card|Card' 'docs/public/cdn-plugin-manifest.json' 'docs/public/r/card.json' 'docs/public/r/registry.json'
+docs/public/r/card.json
+3:  "name": "card",
+5:  "title": "Card",
+6:  "description": "Instructure Card component styled with semantic .instui-card classes.",
+15:    "@import \"@pantoken/components/card.css\"": {}
+17:  "docs": "Apply `class=\"instui-card\"` to semantic HTML. See https://pantoken.app/api/css/components/card.",
+22:    "className": "instui-card",
+
+docs/public/cdn-plugin-manifest.json
+3:  "customComponents": [
+
+docs/public/r/registry.json
+101:      "name": "card",
+103:      "title": "Card",
+104:      "description": "Instructure Card component styled with semantic .instui-card classes.",
+113:        "@import \"@pantoken/components/card.css\"": {}
+115:      "docs": "Apply `class=\"instui-card\"` to semantic HTML. See https://pantoken.app/api/css/components/card.",
+120:        "className": "instui-card",
+pantoken on automatica11y ≡  ?4 ~50 -1 via  26.11.0 
+➜  rg -n 'Generating docs assets|✓ .* in |Docs assets ready|✗' '/Users/dwahl/Library/Application Support/Code/User/workspaceStorage/feb8ba7430110a7a83217f1ebf2f56fe/GitHub.copilot-chat/chat-session-resources/40176a06-fb6c-45d1-bda5-66466b6723ac/REDACTED/content.txt'
+4:📦 Generating docs assets: 18 tasks, concurrency 10
+6:✓ published-schemas in 0.1s
+9:✓ vscode-custom-data in 0.3s
+10:✓ lucide-lab in 0.3s
+12:✓ create-app-skill in 0.4s
+15:✓ tinymce-schema in 0.1s
+16:✓ i18n-schemas in 0.1s
+18:✓ target-compatibility in 0.1s
+20:✓ api-catalog in 0.3s
+23:✓ cdn-plugin-manifest in 0.5s
+27:✓ site-themes in 0.6s
+29:✓ cdn-icon-manifest in 0.6s
+33:✓ registry in 0.2s
+35:✓ cdn-manifest in 0.7s
+37:✓ locale-logos in 0.7s
+40:✓ icon-manifest in 0.1s
+87:✓ og in 2.4s
+90:✓ demos in 2.7s
+91:✗ Build failed in 1.16s
+175:✗ canvas-rce (scripts/build-canvas-rce.ts) exited 1
+pantoken on automatica11y ≡  ?4 ~50 -1 via  26.11.0 
+➜  git check-ignore docs/hu/api/css/card.md; git status --short -- docs/hu/api/css/card.md l10n/hu/docs.api.po
+docs/hu/api/css/card.md
+pantoken on automatica11y ≡  ?4 ~50 -1 via  26.11.0 
+➜  cd formats/components && node scripts/component-styles.ts && vp test run tests/components/card.test.ts
+✓ components: wrote src/generated/component-styles.ts (158 stylesheets)
+VITE+ - The Unified Toolchain for the Web
+
+note: You are running `vp test` as a Vite+ built-in command. If you meant to run the test npm script, use `vpr test` instead.
+
+ RUN  v5.0.3 /Users/dwahl/Scripts/pantoken/formats/components
+
+
+ Test Files  1 passed (1)
+      Tests  3 passed (3)
+   Start at  10:15:06
+   Duration  1.39s (transform 62%, import 35%, tests 2%)
+
+components on automatica11y ≡  ?4 ~50 -1 via  26.11.0 
+➜  vp run @pantoken/components#build
+VITE+ - The Unified Toolchain for the Web
+
+~/plugins/postcss/theme-custom-media$ vp pack ○ cache miss: 'pnpm-workspace.yaml' modified, executing
+ℹ entry: src/index.ts
+ℹ target: node22.18.0
+ℹ tsconfig: ../../../tsconfig.json
+ℹ Build start
+ℹ Cleaning 2 files
+warn: TypeScript 7.0 does not yet have a stable API and is experimental. Some options will be unavailable.
+ℹ Emit types with typescript@7.0.2
+ℹ dist/index.mjs    5.03 kB │ gzip: 2.08 kB
+ℹ dist/index.d.mts  0.87 kB │ gzip: 0.46 kB
+ℹ 2 files, total: 5.90 kB
+✔ Build complete in 2241ms
+
+~/formats/components$ node scripts/component-styles.ts ○ cache miss: 'card' added in 'formats/components/src/components', executing
+✓ components: wrote src/generated/component-styles.ts (158 stylesheets)
+
+~/formats/components$ node scripts/generate.ts ○ cache miss: 'formats/components/src/index.ts' modified, executing
+✓ components: wrote base.css + components.css + component-icons.css (13 icons) + fonts.css + prose.css + select.css + icons.css + utilities.css
+
+~/formats/components$ node scripts/build-entries.ts ○ cache miss: 'formats/components/src/components/index.ts' modified, executing
+✓ components: wrote 73 per-component CSS files
+✓ components: wrote 12 per-utility CSS files
+
+~/formats/components$ node scripts/build-icon-entries.ts ◉ cache hit, replaying
+✓ components: wrote 1962 per-icon CSS files to generated/icons/
+
+~/formats/components$ vp pack ○ cache miss: args changed, executing
+ℹ entry: src/index.ts, src/scaffold-preset.ts, generated/base.css, generated/components.css, generated/component-icons.css, generated/alert.css, generated/avatar.css, generated/badge.css, generated/billboard.css, generated/breadcrumb.css, generated/breadcrumb.link.css, generated/button.css, generated/byline.css, generated/calendar.css, generated/calendar.day.css, generated/card.css, generated/checkbox.css, generated/close-button.css, generated/context-view.css, generated/drawer-layout.content.css, generated/drawer-layout.css, generated/drawer-layout.handle.css, generated/drawer-layout.tray.css, generated/file-drop.css, generated/form-field-group.css, generated/form-field-messages.css, generated/form-field.css, generated/heading.css, generated/img.css, generated/in-place-edit.css, generated/input-group.css, generated/link.css, generated/list.css, generated/list.item.css, generated/mask.css, generated/menu.css, generated/menu.group.css, generated/menu.item.css, generated/menu.separator.css, generated/metric.css, generated/modal.body.css, generated/modal.css, generated/modal.footer.css, generated/modal.header.css, generated/number-input.css, generated/pagination.css, generated/pagination.page.css, generated/pill.css, generated/popover.css, generated/progress-circle.css, generated/progress.css, generated/radio-input-group.css, generated/radio.css, generated/range-input.css, generated/rating.css, generated/side-nav-bar.css, generated/side-nav-bar.item.css, generated/simple-select.css, generated/spinner.css, generated/table.body.css, generated/table.cell.css, generated/table.col-header.css, generated/table.css, generated/table.head.css, generated/table.row-header.css, generated/table.row.css, generated/tabs.css, generated/tabs.panel.css, generated/tabs.tab.css, generated/tag.css, generated/text-area.css, generated/text-input.css, generated/text.css, generated/toggle-details.css, generated/toggle-group.css, generated/tooltip.css, generated/tray.css, generated/tree-browser.css, generated/view.css, generated/utilities/cursor.css, generated/utilities/gap.css, generated/utilities/icon.css, generated/utilities/layout.css, generated/utilities/mask.css, generated/utilities/overflow.css, generated/utilities/position.css, generated/utilities/responsive.css, generated/utilities/screen-reader-content.css, generated/utilities/spacing.css, generated/utilities/stacking.css, generated/utilities/transition.css, generated/fonts.css, generated/prose.css, generated/select.css, generated/icons.css, generated/utilities.css
+ℹ target: node22.18.0
+ℹ tsconfig: tsconfig.json
+ℹ Build start
+ℹ Cleaning 98 files
+ℹ dist/index.mjs                              1.10 MB
+ℹ dist/scaffold-preset.mjs                    0.34 kB │ gzip:  0.23 kB
+ℹ dist/icons.css                              1.45 MB
+ℹ dist/components.css                       171.24 kB │ gzip: 19.57 kB
+ℹ dist/utilities.css                         81.46 kB │ gzip:  8.51 kB
+ℹ dist/utilities/spacing.css                 37.86 kB │ gzip:  3.21 kB
+ℹ dist/button.css                            20.21 kB │ gzip:  2.44 kB
+ℹ dist/utilities/responsive.css              12.92 kB │ gzip:  1.49 kB
+ℹ dist/alert.css                              9.66 kB │ gzip:  1.51 kB
+ℹ dist/avatar.css                             7.96 kB │ gzip:  0.95 kB
+ℹ dist/radio.css                              7.88 kB │ gzip:  1.12 kB
+ℹ dist/checkbox.css                           7.28 kB │ gzip:  1.20 kB
+ℹ dist/component-icons.css                    6.07 kB │ gzip:  0.77 kB
+ℹ dist/progress-circle.css                    5.79 kB │ gzip:  0.96 kB
+ℹ dist/billboard.css                          5.40 kB │ gzip:  0.78 kB
+ℹ dist/prose.css                              4.93 kB │ gzip:  0.93 kB
+ℹ dist/number-input.css                       4.87 kB │ gzip:  0.94 kB
+ℹ dist/card.css                               4.65 kB │ gzip:  0.53 kB
+ℹ dist/pill.css                               4.19 kB │ gzip:  0.66 kB
+ℹ dist/range-input.css                        4.06 kB │ gzip:  0.71 kB
+ℹ dist/simple-select.css                      4.05 kB │ gzip:  0.74 kB
+ℹ dist/context-view.css                       3.81 kB │ gzip:  0.71 kB
+ℹ dist/progress.css                           3.62 kB │ gzip:  0.84 kB
+ℹ dist/text.css                               3.58 kB │ gzip:  0.60 kB
+ℹ dist/input-group.css                        3.49 kB │ gzip:  0.64 kB
+ℹ dist/view.css                               3.15 kB │ gzip:  0.67 kB
+ℹ dist/fonts.css                              3.03 kB │ gzip:  0.31 kB
+ℹ dist/text-input.css                         2.99 kB │ gzip:  0.48 kB
+ℹ dist/heading.css                            2.93 kB │ gzip:  0.50 kB
+ℹ dist/link.css                               2.90 kB │ gzip:  0.61 kB
+ℹ dist/tree-browser.css                       2.63 kB │ gzip:  0.59 kB
+ℹ dist/badge.css                              2.28 kB │ gzip:  0.63 kB
+ℹ dist/text-area.css                          2.17 kB │ gzip:  0.46 kB
+ℹ dist/spinner.css                            2.14 kB │ gzip:  0.45 kB
+ℹ dist/form-field.css                         2.14 kB │ gzip:  0.51 kB
+ℹ dist/breadcrumb.link.css                    2.13 kB │ gzip:  0.51 kB
+ℹ dist/toggle-group.css                       2.12 kB │ gzip:  0.55 kB
+ℹ dist/tray.css                               2.11 kB │ gzip:  0.55 kB
+ℹ dist/tag.css                                2.11 kB │ gzip:  0.45 kB
+ℹ dist/tabs.tab.css                           2.09 kB │ gzip:  0.55 kB
+ℹ dist/toggle-details.css                     1.99 kB │ gzip:  0.51 kB
+ℹ dist/select.css                             1.88 kB │ gzip:  0.62 kB
+ℹ dist/base.css                               1.87 kB │ gzip:  0.52 kB
+ℹ dist/close-button.css                       1.77 kB │ gzip:  0.48 kB
+ℹ dist/form-field-group.css                   1.64 kB │ gzip:  0.53 kB
+ℹ dist/pagination.css                         1.53 kB │ gzip:  0.54 kB
+ℹ dist/list.item.css                          1.52 kB │ gzip:  0.31 kB
+ℹ dist/modal.css                              1.48 kB │ gzip:  0.46 kB
+ℹ dist/drawer-layout.tray.css                 1.44 kB │ gzip:  0.43 kB
+ℹ dist/form-field-messages.css                1.41 kB │ gzip:  0.47 kB
+ℹ dist/utilities/transition.css               1.39 kB │ gzip:  0.35 kB
+ℹ dist/byline.css                             1.37 kB │ gzip:  0.36 kB
+ℹ dist/tooltip.css                            1.24 kB │ gzip:  0.49 kB
+ℹ dist/menu.item.css                          1.22 kB │ gzip:  0.34 kB
+ℹ dist/pagination.page.css                    1.17 kB │ gzip:  0.38 kB
+ℹ dist/side-nav-bar.item.css                  1.09 kB │ gzip:  0.35 kB
+ℹ dist/popover.css                            1.08 kB │ gzip:  0.43 kB
+ℹ dist/radio-input-group.css                  1.06 kB │ gzip:  0.40 kB
+ℹ dist/list.css                               1.03 kB │ gzip:  0.28 kB
+ℹ dist/utilities/gap.css                      1.01 kB │ gzip:  0.22 kB
+ℹ dist/breadcrumb.css                         1.00 kB │ gzip:  0.26 kB
+ℹ dist/metric.css                             0.95 kB │ gzip:  0.28 kB
+ℹ dist/calendar.css                           0.93 kB │ gzip:  0.33 kB
+ℹ dist/rating.css                             0.92 kB │ gzip:  0.26 kB
+ℹ dist/calendar.day.css                       0.88 kB │ gzip:  0.25 kB
+ℹ dist/utilities/overflow.css                 0.86 kB │ gzip:  0.16 kB
+ℹ dist/utilities/layout.css                   0.82 kB │ gzip:  0.17 kB
+ℹ dist/in-place-edit.css                      0.78 kB │ gzip:  0.31 kB
+ℹ dist/table.row-header.css                   0.72 kB │ gzip:  0.25 kB
+ℹ dist/file-drop.css                          0.69 kB │ gzip:  0.26 kB
+ℹ dist/modal.footer.css                       0.66 kB │ gzip:  0.20 kB
+ℹ dist/img.css                                0.65 kB │ gzip:  0.26 kB
+ℹ dist/tabs.panel.css                         0.65 kB │ gzip:  0.23 kB
+ℹ dist/table.css                              0.59 kB │ gzip:  0.25 kB
+ℹ dist/side-nav-bar.css                       0.56 kB │ gzip:  0.25 kB
+ℹ dist/utilities/cursor.css                   0.56 kB │ gzip:  0.14 kB
+ℹ dist/modal.header.css                       0.54 kB │ gzip:  0.18 kB
+ℹ dist/table.cell.css                         0.54 kB │ gzip:  0.22 kB
+ℹ dist/table.col-header.css                   0.52 kB │ gzip:  0.20 kB
+ℹ dist/table.row.css                          0.50 kB │ gzip:  0.21 kB
+ℹ dist/utilities/stacking.css                 0.43 kB │ gzip:  0.14 kB
+ℹ dist/menu.group.css                         0.43 kB │ gzip:  0.17 kB
+ℹ dist/utilities/position.css                 0.41 kB │ gzip:  0.12 kB
+ℹ dist/modal.body.css                         0.38 kB │ gzip:  0.20 kB
+ℹ dist/drawer-layout.css                      0.36 kB │ gzip:  0.23 kB
+ℹ dist/utilities/mask.css                     0.36 kB │ gzip:  0.20 kB
+ℹ dist/drawer-layout.content.css              0.34 kB │ gzip:  0.20 kB
+ℹ dist/menu.css                               0.34 kB │ gzip:  0.17 kB
+ℹ dist/utilities/icon.css                     0.33 kB │ gzip:  0.22 kB
+ℹ dist/tabs.css                               0.32 kB │ gzip:  0.20 kB
+ℹ dist/menu.separator.css                     0.28 kB │ gzip:  0.14 kB
+ℹ dist/table.head.css                         0.26 kB │ gzip:  0.20 kB
+ℹ dist/mask.css                               0.24 kB │ gzip:  0.19 kB
+ℹ dist/drawer-layout.handle.css               0.22 kB │ gzip:  0.17 kB
+ℹ dist/utilities/screen-reader-content.css    0.20 kB │ gzip:  0.17 kB
+ℹ dist/table.body.css                         0.06 kB │ gzip:  0.08 kB
+ℹ dist/index.d.mts                           26.24 kB │ gzip:  4.97 kB
+ℹ dist/scaffold-preset.d.mts                  0.27 kB │ gzip:  0.20 kB
+ℹ 98 files, total: 3.07 MB
+✔ Build complete in 857ms
+
+~/formats/components$ node scripts/post-pack.ts
+✓ components: copied icon CSS files to dist/icons/
+
+~/formats/components$ node scripts/generate-model.ts ○ cache miss: 'formats/components/generated/components.css' modified, executing
+✓ components: wrote model.json (88 model entries)
+
+---
+vp run: 1/8 cache hit (12%), 402ms saved. @pantoken/components#build (and 1 more) not cached because they modified their inputs. (Run `vp run --last-details` for full details)
+components on automatica11y ≡  ?4 ~50 -1 via  26.11.0 
+➜  rg -n 'components: wrote|components: copied|Build complete|failed|Error:' '/Users/dwahl/Library/Application Support/Code/User/workspaceStorage/feb8ba7430110a7a83217f1ebf2f56fe/GitHub.copilot-chat/chat-session-resources/40176a06-fb6c-45d1-bda5-66466b6723ac/REDACTED/content.txt'
+16:✔ Build complete in 2241ms
+20:✓ components: wrote src/generated/component-styles.ts (158 stylesheets)
+24:✓ components: wrote base.css + components.css + component-icons.css (13 icons) +
+29:✓ components: wrote 73 per-component CSS files
+30:✓ components: wrote 12 per-utility CSS files
+33:✓ components: wrote 1962 per-icon CSS files to generated/icons/
+171:✔ Build complete in 857ms
+174:✓ components: copied icon CSS files to dist/icons/
+178:✓ components: wrote model.json (88 model entries)
+components on automatica11y ≡  ?4 ~50 -1 via  26.11.0 
+➜  vp run build:all
+VITE+ - The Unified Toolchain for the Web
+
+---
+
+add/update the changeset
+
+---
+
+translations are actively being written, just wait for them to finish.
+
+---
+
+when running docs translations, every run re-translates these strings (and they don't get translated, they are the same in root locale and destination locale):
+```
+    ar/api/css/file-drop.md: 13 glossary, 11 prose (11 cached, 0 translated)
+  ! [ar] cached prose translation for "CA" looks untranslated; retranslating
+  ! [ar] cached prose translation for "NY" looks untranslated; retranslating
+  ! [ar] cached prose translation for "TX" looks untranslated; retranslating
+  ! [ar] prose unit looks untranslated (identical to source), not cached: "CA"
+  ! [ar] prose unit looks untranslated (identical to source), not cached: "NY"
+  ! [ar] prose unit looks untranslated (identical to source), not cached: "TX"
+      ar/api/css/alert.md: 34 glossary, 32 prose (30 cached, 2 translated)
+  ! [ar] cached prose translation for "LH" looks untranslated; retranslating
+  ! [ar] cached prose translation for "AI" looks untranslated; retranslating
+  ! [ar] prose unit looks untranslated (identical to source), not cached: "LH"
+  ! [ar] prose unit looks untranslated (identical to source), not cached: "AI"
+  ```
+  how do we mark those strings as translated/don't need to be translated/same in both languages?
+
+---
+
+that example is arabic - but it does it for every locale.
+
+---
+
+you're stuck in an interactive shell, stop and re-run the exact command.
+
+---
+
+the po files are generated by translations, so it should be in the root pot file I think. there's docs translations that need to happen anyways, so update the root.
+
+---
+
+add a changeset for docs- we still have changelogs for private packages.
+
+---
+
+couple more strings:
+```
+    ar/api/renderers/web-components/src/variables/ar.md: 2 glossary, 1 prose (1 cached, 0 translated)
+  ! [ar] cached prose translation for "JS" looks untranslated; retranslating
+  ! [ar] cached prose translation for "AB" looks untranslated; retranslating
+  ! [ar] prose unit looks untranslated (identical to source), not cached: "JS"
+  ! [ar] prose unit looks untranslated (identical to source), not cached: "AB"
+```
+
+---
+
+check these strings too. they may need to be translated or not, but htey haven't been in many passes:
+```
+  ! [nl] cached prose translation for "Filters" looks untranslated; retranslating
+  ! [nl] prose unit looks untranslated (identical to source), not cached: "Filters"
+    nl/api/css/tray.md: 18 glossary, 23 prose (23 cached, 1 translated)
+  ! [nl] cached prose translation for " Syllabus.pdf" looks untranslated; retranslating
+  ! [nl] cached prose translation for " Week 1" looks untranslated; retranslating
+  ! [nl] prose unit looks untranslated (identical to source), not cached: " Syllabus.pdf"
+  ! [nl] prose unit looks untranslated (identical to source), not cached: " Week 1"
+```
+and they may vary by language if the translation is the same as it is in English.
+
+---
+
+and this one:
+```
+    ga/api/css/card.md: 15 glossary, 14 prose (11 cached, 5 translated)
+  ! [ga] cached prose translation for "Checkbox\n" looks untranslated; retranslating
+  ! [ga] prose unit looks untranslated (identical to source), not cached: "Checkbox\n"
+```
+
+---
+
+and these:
+```
+    de/api/css/alert.md: 34 glossary, 32 prose (30 cached, 3 translated)
+  ! [de] cached prose translation for "Dr. Nguyen Van Thoc" looks untranslated; retranslating
+  ! [de] cached prose translation for "Miguel Sanchez" looks untranslated; retranslating
+  ! [de] cached prose translation for "Miguel" looks untranslated; retranslating
+  ! [de] cached prose translation for "Sanchez" looks untranslated; retranslating
+  ! [de] prose unit looks untranslated (identical to source), not cached: "Dr. Nguyen Van Thoc"
+  ! [de] prose unit looks untranslated (identical to source), not cached: "Miguel Sanchez"
+  ! [de] prose unit looks untranslated (identical to source), not cached: "Miguel"
+  ! [de] prose unit looks untranslated (identical to source), not cached: "Sanchez"
+```
