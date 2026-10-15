@@ -1,0 +1,872 @@
+[Terminal 08d1bb40-9ed9-4bed-8356-332826e2c632 notification: command may be waiting for input — assess the output below.]
+This note is not a signal to end the turn — pick one of the actions below and continue.
+  1. If the output clearly ends with a non-secret input prompt (Continue? (y/n), Enter selection, etc. — a normal shell prompt like `$` or `#` does NOT count), determine the answer and immediately call send_to_terminal with id="08d1bb40-9ed9-4bed-8356-332826e2c632" (which returns the next few lines of output). Repeat one prompt at a time. Never guess passwords, passphrases, tokens, or other secrets — if the prompt requires a secret you do not have, inform the user and stop.
+  2. If the command may still be producing output or the shell prompt has not returned, call get_terminal_output with id="08d1bb40-9ed9-4bed-8356-332826e2c632" to continue polling.
+Terminal output:
+✓ built in 61ms
+
+~/formats/icons$ vp pack ○ cache miss: 'formats/icons/package.json' modified, executing
+~/packages/scaffold-base$ node scripts/generate.ts ○ cache miss: 'packages/scaffold-base/package.json' modified, executing
+~/plugins/pantoken/deprecations$ vp pack ○ cache miss: 'plugins/pantoken/deprecations/package.json' modified, executing
+~/tools/cssdoc-model$ vp pack ◉ cache hit, replaying
+ℹ entry: src/index.ts
+ℹ tsconfig: tsconfig.json
+ℹ Build start
+ℹ Cleaning 2 files
+ℹ dist/index.mjs    1.53 kB │ gzip: 0.79 kB
+ℹ dist/index.d.mts  1.10 kB │ gzip: 0.58 kB
+ℹ 2 files, total: 2.63 kB
+✔ Build complete in 31ms
+
+~/packages/core$ vp pack ○ cache miss: 'packages/core/package.json' modified, executing
+✓ inlined templates/cssdoc.jsonc
+
+~/packages/scaffold-base$ vp pack ○ cache miss: 'packages/scaffold-base/package.json' modified, executing
+ℹ entry: src/index.ts
+ℹ target: node22.18.0
+ℹ tsconfig: tsconfig.json
+ℹ Build start
+ℹ Cleaning 2 files
+ℹ entry: src/index.ts
+ℹ target: node22.18.0
+ℹ tsconfig: tsconfig.json
+ℹ Build start
+ℹ dist/index.mjs    3.51 kB │ gzip: 1.43 kB
+ℹ dist/index.d.mts  3.27 kB │ gzip: 1.27 kB
+ℹ 2 files, total: 6.77 kB
+✔ Build complete in 41ms
+ℹ Cleaning 2 files
+ℹ entry: src/index.ts, src/build.ts
+ℹ target: node22.18.0
+ℹ tsconfig: tsconfig.json
+ℹ Build start
+
+~/plugins/postcss/props-minify$ vp pack ◉ cache hit, replaying
+ℹ entry: src/index.ts
+ℹ target: node22.18.0
+ℹ tsconfig: ../../../tsconfig.json
+ℹ Build start
+ℹ Cleaning 2 files
+ℹ dist/index.mjs    3.14 kB │ gzip: 1.15 kB
+ℹ dist/index.d.mts  2.56 kB │ gzip: 0.98 kB
+ℹ 2 files, total: 5.70 kB
+✔ Build complete in 2045ms
+
+~/packages/utils$ vp pack ○ cache miss: 'packages/utils/package.json' modified, executing
+ℹ Cleaning 6 files
+ℹ dist/index.mjs             11.48 kB │ gzip:  4.17 kB
+ℹ dist/build.mjs              7.48 kB │ gzip:  2.65 kB
+ℹ dist/color-fITOppR-.mjs    30.03 kB │ gzip: 10.37 kB
+ℹ dist/index.d.mts           16.30 kB │ gzip:  5.05 kB
+ℹ dist/build.d.mts            2.71 kB │ gzip:  1.12 kB
+ℹ dist/model-Cv8zrNsl.d.mts   3.77 kB │ gzip:  1.21 kB
+ℹ 6 files, total: 71.75 kB
+✔ Build complete in 51ms
+
+ℹ dist/index.mjs    4.69 kB │ gzip: 1.94 kB
+ℹ dist/index.d.mts  2.41 kB │ gzip: 0.99 kB
+ℹ 2 files, total: 7.10 kB
+✔ Build complete in 42ms
+~/packages/model$ vp pack ◉ cache hit, replaying
+ℹ entry: src/index.ts
+ℹ target: node22.18.0
+ℹ tsconfig: tsconfig.json
+ℹ Build start
+ℹ Cleaning 2 files
+ℹ dist/index.mjs    1.10 kB │ gzip: 0.57 kB
+ℹ dist/index.d.mts  8.11 kB │ gzip: 3.04 kB
+ℹ 2 files, total: 9.21 kB
+✔ Build complete in 55ms
+
+
+~/plugins/postcss/theme-custom-media$ vp pack ○ cache miss: 'plugins/postcss/theme-custom-media/node_modules/@pantoken/tokens/package.json' modified, executing
+ℹ entry: src/index.ts
+ℹ target: node22.18.0
+ℹ tsconfig: tsconfig.json
+ℹ Build start
+ℹ Cleaning 2 files
+ℹ dist/index.mjs    8.59 kB │ gzip: 3.40 kB
+ℹ dist/index.d.mts  1.91 kB │ gzip: 0.87 kB
+ℹ 2 files, total: 10.50 kB
+✔ Build complete in 75ms
+
+ℹ entry: src/index.ts, src/token-syntax.ts, src/scope.ts, src/example-targets.ts
+ℹ target: node22.18.0
+ℹ tsconfig: ../../tsconfig.json
+ℹ Build start
+ℹ Cleaning 8 files
+ℹ entry: src/index.ts
+ℹ target: node22.18.0
+ℹ tsconfig: ../../../tsconfig.json
+ℹ Build start
+ℹ Cleaning 2 files
+ℹ dist/index.mjs    5.03 kB │ gzip: 2.08 kB
+ℹ dist/index.d.mts  0.87 kB │ gzip: 0.46 kB
+ℹ 2 files, total: 5.90 kB
+✔ Build complete in 2484ms
+
+ℹ dist/index.mjs              22.36 kB │ gzip: 7.04 kB
+ℹ dist/token-syntax.mjs       12.11 kB │ gzip: 4.34 kB
+ℹ dist/scope.mjs               3.58 kB │ gzip: 1.31 kB
+ℹ dist/example-targets.mjs     1.95 kB │ gzip: 0.78 kB
+ℹ dist/index.d.mts            17.75 kB │ gzip: 5.53 kB
+ℹ dist/token-syntax.d.mts      6.55 kB │ gzip: 2.70 kB
+ℹ dist/scope.d.mts             3.24 kB │ gzip: 1.11 kB
+ℹ dist/example-targets.d.mts   0.54 kB │ gzip: 0.31 kB
+ℹ 8 files, total: 68.07 kB
+[PLUGIN_TIMINGS] JavaScript callbacks ran for 4.4s of this 4.4s build (100%).
+The slowest callbacks, timed inside each callback (the wait before a callback starts is excluded, the time it awaits is included):
+  - plugin rolldown-plugin-dts:generate load (98%, 4.4s, 12 calls)
+Additional callback time came from the callbacks below and from callbacks under 1s.
+2 callbacks are listed without a time. Their calls overlapped, so the time inside one call includes work from other calls. To find their cost, profile the build with `node --cpu-prof`:
+  - plugin rolldown-plugin-dts:resolver resolveId (52 calls)
+  - plugin rolldown-plugin-dts:fake-js transform (12 calls)
+See https://rolldown.rs/reference/InputOptions.checks#bundlertimings for more details.
+
+✔ Build complete in 4510ms
+
+~/formats/tokens$ node scripts/generate.ts ○ cache miss: untracked env config changed, executing
+[pantoken] rebrand: "--instui-component-top-nav-bar-layout-small-viewport-tray-fix-top-position" patched to "var(--instui-component-top-nav-bar-layout-small-viewport-height)" — known upstream issue
+[pantoken] rebrand: "--instui-component-text-content-quote-font-weight" patched to "500" — known upstream issue
+[pantoken] rebrand: added supplemental token "--instui-component-text-content-quote-font-style": "italic" (split from "--instui-component-text-content-quote-font-weight")
+[pantoken] rebrand: "--instui-component-skeleton-loader-bezier" maps to no known CSS property (unmodeled)
+[pantoken] rebrand: "--instui-component-skeleton-loader-motion" maps to no known CSS property (unmodeled)
+✓ rebrand: 4951 tokens
+[pantoken] canvas: "--instui-component-top-nav-bar-layout-small-viewport-tray-fix-top-position" patched to "var(--instui-component-top-nav-bar-layout-small-viewport-height)" — known upstream issue
+[pantoken] canvas: "--instui-component-text-content-quote-font-weight" patched to "500" — known upstream issue
+[pantoken] canvas: added supplemental token "--instui-component-text-content-quote-font-style": "italic" (split from "--instui-component-text-content-quote-font-weight")
+[pantoken] canvas: "--instui-component-skeleton-loader-bezier" maps to no known CSS property (unmodeled)
+[pantoken] canvas: "--instui-component-skeleton-loader-motion" maps to no known CSS property (unmodeled)
+✓ canvas: 4951 tokens
+[pantoken] canvasHighContrast: "--instui-component-top-nav-bar-layout-small-viewport-tray-fix-top-position" patched to "var(--instui-component-top-nav-bar-layout-small-viewport-height)" — known upstream issue
+[pantoken] canvasHighContrast: "--instui-component-text-content-quote-font-weight" patched to "500" — known upstream issue
+[pantoken] canvasHighContrast: added supplemental token "--instui-component-text-content-quote-font-style": "italic" (split from "--instui-component-text-content-quote-font-weight")
+[pantoken] canvasHighContrast: "--instui-component-skeleton-loader-bezier" maps to no known CSS property (unmodeled)
+[pantoken] canvasHighContrast: "--instui-component-skeleton-loader-motion" maps to no known CSS property (unmodeled)
+✓ canvasHighContrast: 4951 tokens
+✓ raw.json + meta.json (design-tokens v2.1.0@c7f0dee, ui-icons 11.7.10, lucide 1.57.0)
+
+~/formats/tokens$ vp pack ○ cache miss: 'formats/tokens/package.json' modified, executing
+ℹ entry: src/index.ts, src/raw.ts, src/meta.ts
+ℹ target: node22.18.0
+ℹ tsconfig: tsconfig.json
+ℹ Build start
+ℹ Cleaning 7 files
+ℹ dist/index.mjs          6.86 MB
+ℹ dist/raw.mjs            1.98 MB
+ℹ dist/meta.mjs           0.07 kB │ gzip: 0.08 kB
+ℹ dist/meta-gwcnmVzx.mjs  1.07 kB │ gzip: 0.55 kB
+ℹ dist/index.d.mts        1.75 kB │ gzip: 0.50 kB
+ℹ dist/meta.d.mts         1.23 kB │ gzip: 0.49 kB
+ℹ dist/raw.d.mts          0.47 kB │ gzip: 0.30 kB
+ℹ 7 files, total: 8.85 MB
+✔ Build complete in 100ms
+
+~/formats/components$ node scripts/component-styles.ts ○ cache miss: 'postcss.js' removed from 'node_modules/.pnpm/postcss@8.5.29/node_modules/postcss/lib', executing
+✓ components: wrote src/generated/component-styles.ts (158 stylesheets)
+
+~/formats/components$ node scripts/generate.ts ○ cache miss: 'node_modules' removed from 'node_modules/.pnpm/nanoid@3.3.19', executing
+✓ components: wrote base.css + components.css + component-icons.css (13 icons) + fonts.css + prose.css + select.css + icons.css + utilities.css
+
+~/plugins/pantoken/visual-debug$ node scripts/generate.ts ○ cache miss: 'plugins/pantoken/visual-debug/node_modules/@pantoken/plugin-kit/package.json' modified, executing
+✓ visual-debug: wrote visual-debug.css
+
+~/plugins/pantoken/logos$ node scripts/generate.ts ○ cache miss: 'plugins/pantoken/logos/package.json' modified, executing
+✓ logos: 97 logos across 7 products (+ 97 per-logo and 7 per-product sheets)
+
+~/plugins/pantoken/primitives$ node scripts/generate.ts ○ cache miss: 'plugins/pantoken/primitives/node_modules/@pantoken/tokens/package.json' modified, executing
+✓ primitives: wrote primitives.css (820 lines)
+
+~/plugins/pantoken/custom-icons$ node scripts/generate.ts ○ cache miss: 'plugins/pantoken/custom-icons/package.json' modified, executing
+✓ custom-icons: wrote 12 per-icon CSS files + custom-icons.css barrel
+
+~/plugins/pantoken/custom-components$ node scripts/component-styles.ts ○ cache miss: 'plugins/pantoken/custom-components/package.json' modified, executing
+✓ custom-components: wrote /custom-components/src/generated/component-styles.ts (8 record(s))
+
+~/plugins/pantoken/custom-components$ node scripts/generate.ts ○ cache miss: 'formats/components/node_modules/@pantoken/tokens/package.json' modified, executing
+✓ custom-components: wrote custom-components.css + _records.css
+
+~/formats/interactions$ node scripts/generate-components.ts ○ cache miss: 'formats/interactions/package.json' modified, executing
+✓ generated icon.ts
+✓ generated button.ts
+↷ skipped alert.ts (hand-authored)
+✓ generated badge.ts
+✓ generated pill.ts
+✓ generated tag.ts
+↷ skipped avatar.ts (hand-authored)
+✓ generated spinner.ts
+✓ generated progress.ts
+✓ generated metric.ts
+✓ generated rating.ts
+↷ skipped progress-circle.ts (hand-authored)
+✓ generated icon-button.ts
+✓ generated toggle-button.ts
+↷ skipped truncate.ts (hand-authored)
+✓ generated img.ts
+✓ generated side-nav-bar.ts
+✓ generated tree-browser.ts
+✓ generated calendar.ts
+↷ skipped tooltip.ts (hand-authored)
+↷ skipped modal.ts (hand-authored)
+✓ generated context-view.ts
+✓ generated popover.ts
+✓ generated tray.ts
+↷ skipped in-place-edit.ts (hand-authored)
+✓ generated drilldown.ts
+✓ generated pages.ts
+✓ generated drawer-layout.ts
+✓ generated date-input.ts
+✓ generated date-time-input.ts
+↷ skipped tabs.ts (hand-authored)
+↷ skipped skeleton-loader.ts (hand-authored)
+↷ skipped segmented-control.ts (hand-authored)
+
+✓ Generated 33 per-component interaction files
+
+~/formats/interactions$ node scripts/generate-capabilities.ts ○ cache miss: 'formats/interactions/package.json' modified, executing
+✓ interactions: wrote component-capabilities.json (10 both, 44 css-only, 7 js-only)
+
+~/formats/interactions$ vp fmt --write component-capabilities.json ○ cache miss: untracked env config changed, executing
+Finished in 188ms on 1 files using 10 threads.
+
+~/formats/interactions$ vp pack ○ cache miss: 'formats/interactions/package.json' modified, executing
+ℹ entry: src/index.ts, src/index.ts, src/components/close-button.ts, src/components/icon.ts, src/components/button.ts, src/components/alert.ts, src/components/badge.ts, src/components/pill.ts, src/components/tag.ts, src/components/avatar.ts, src/components/spinner.ts, src/components/progress.ts, src/components/metric.ts, src/components/rating.ts, src/components/progress-circle.ts, src/components/icon-button.ts, src/components/toggle-button.ts, src/components/truncate.ts, src/components/img.ts, src/components/side-nav-bar.ts, src/components/tree-browser.ts, src/components/calendar.ts, src/components/tooltip.ts, src/components/modal.ts, src/components/context-view.ts, src/components/popover.ts, src/components/tray.ts, src/components/in-place-edit.ts, src/components/drilldown.ts, src/components/pages.ts, src/components/drawer-layout.ts, src/components/date-input.ts, src/components/date-time-input.ts, src/components/tabs.ts, src/components/skeleton-loader.ts, src/components/segmented-control.ts
+ℹ target: node22.18.0
+ℹ tsconfig: tsconfig.json
+ℹ Build start
+ℹ Cleaning 116 files
+ℹ dist/index.mjs                        2.90 kB │ gzip: 1.19 kB
+ℹ dist/interactions.mjs                 1.19 kB │ gzip: 0.48 kB
+ℹ dist/avatar.mjs                       1.10 kB │ gzip: 0.64 kB
+ℹ dist/skeleton-loader.mjs              0.73 kB │ gzip: 0.36 kB
+ℹ dist/truncate.mjs                     0.69 kB │ gzip: 0.42 kB
+ℹ dist/in-place-edit.mjs                0.67 kB │ gzip: 0.41 kB
+ℹ dist/tooltip.mjs                      0.67 kB │ gzip: 0.36 kB
+ℹ dist/modal.mjs                        0.59 kB │ gzip: 0.35 kB
+ℹ dist/alert.mjs                        0.52 kB │ gzip: 0.34 kB
+ℹ dist/progress-circle.mjs              0.52 kB │ gzip: 0.31 kB
+ℹ dist/tabs.mjs                         0.46 kB │ gzip: 0.30 kB
+ℹ dist/segmented-control.mjs            0.45 kB │ gzip: 0.27 kB
+ℹ dist/date-time-input.mjs              0.45 kB │ gzip: 0.30 kB
+ℹ dist/drawer-layout.mjs                0.44 kB │ gzip: 0.29 kB
+ℹ dist/toggle-button.mjs                0.44 kB │ gzip: 0.29 kB
+ℹ dist/close-button.mjs                 0.43 kB │ gzip: 0.27 kB
+ℹ dist/icon-button.mjs                  0.43 kB │ gzip: 0.29 kB
+ℹ dist/date-input.mjs                   0.42 kB │ gzip: 0.29 kB
+ℹ dist/drilldown.mjs                    0.42 kB │ gzip: 0.29 kB
+ℹ dist/calendar.mjs                     0.42 kB │ gzip: 0.29 kB
+ℹ dist/button.mjs                       0.41 kB │ gzip: 0.28 kB
+ℹ dist/pages.mjs                        0.40 kB │ gzip: 0.28 kB
+ℹ dist/context-view.mjs                 0.39 kB │ gzip: 0.27 kB
+ℹ dist/tree-browser.mjs                 0.39 kB │ gzip: 0.27 kB
+ℹ dist/side-nav-bar.mjs                 0.39 kB │ gzip: 0.27 kB
+ℹ dist/progress.mjs                     0.37 kB │ gzip: 0.27 kB
+ℹ dist/popover.mjs                      0.37 kB │ gzip: 0.26 kB
+ℹ dist/spinner.mjs                      0.37 kB │ gzip: 0.26 kB
+ℹ dist/metric.mjs                       0.36 kB │ gzip: 0.26 kB
+ℹ dist/rating.mjs                       0.36 kB │ gzip: 0.26 kB
+ℹ dist/badge.mjs                        0.36 kB │ gzip: 0.26 kB
+ℹ dist/icon.mjs                         0.35 kB │ gzip: 0.26 kB
+ℹ dist/pill.mjs                         0.35 kB │ gzip: 0.26 kB
+ℹ dist/tray.mjs                         0.35 kB │ gzip: 0.26 kB
+ℹ dist/img.mjs                          0.35 kB │ gzip: 0.26 kB
+ℹ dist/tag.mjs                          0.35 kB │ gzip: 0.26 kB
+ℹ dist/segmented-control-DyQCnH1w.mjs   6.77 kB │ gzip: 2.01 kB
+ℹ dist/shared-CiHt9prt.mjs              5.00 kB │ gzip: 2.05 kB
+ℹ dist/remove-qKkQbgAk.mjs              2.46 kB │ gzip: 1.05 kB
+ℹ dist/truncate-lxz4kerF.mjs            2.04 kB │ gzip: 0.79 kB
+ℹ dist/tabs-C-jmB5Th.mjs                1.94 kB │ gzip: 0.76 kB
+ℹ dist/skeleton-loader-o0FvPmeB.mjs     1.93 kB │ gzip: 0.73 kB
+ℹ dist/tooltip-CB1dOtG0.mjs             1.44 kB │ gzip: 0.53 kB
+ℹ dist/close-button-s_-10oaC.mjs        1.36 kB │ gzip: 0.69 kB
+ℹ dist/in-place-edit-DOMfEjUW.mjs       1.35 kB │ gzip: 0.69 kB
+ℹ dist/progress-circle-BuatMVo0.mjs     1.20 kB │ gzip: 0.58 kB
+ℹ dist/modal-ZQezxuBs.mjs               1.18 kB │ gzip: 0.58 kB
+ℹ dist/interactions.d.mts              10.42 kB │ gzip: 3.50 kB
+ℹ dist/alert.d.mts                      0.01 kB │ gzip: 0.03 kB
+ℹ dist/avatar.d.mts                     0.01 kB │ gzip: 0.03 kB
+ℹ dist/badge.d.mts                      0.01 kB │ gzip: 0.03 kB
+ℹ dist/button.d.mts                     0.01 kB │ gzip: 0.03 kB
+ℹ dist/calendar.d.mts                   0.01 kB │ gzip: 0.03 kB
+ℹ dist/close-button.d.mts               0.01 kB │ gzip: 0.03 kB
+ℹ dist/context-view.d.mts               0.01 kB │ gzip: 0.03 kB
+ℹ dist/date-input.d.mts                 0.01 kB │ gzip: 0.03 kB
+ℹ dist/date-time-input.d.mts            0.01 kB │ gzip: 0.03 kB
+ℹ dist/drawer-layout.d.mts              0.01 kB │ gzip: 0.03 kB
+ℹ dist/drilldown.d.mts                  0.01 kB │ gzip: 0.03 kB
+ℹ dist/icon-button.d.mts                0.01 kB │ gzip: 0.03 kB
+ℹ dist/icon.d.mts                       0.01 kB │ gzip: 0.03 kB
+ℹ dist/img.d.mts                        0.01 kB │ gzip: 0.03 kB
+ℹ dist/in-place-edit.d.mts              0.01 kB │ gzip: 0.03 kB
+ℹ dist/metric.d.mts                     0.01 kB │ gzip: 0.03 kB
+ℹ dist/modal.d.mts                      0.01 kB │ gzip: 0.03 kB
+ℹ dist/pages.d.mts                      0.01 kB │ gzip: 0.03 kB
+ℹ dist/pill.d.mts                       0.01 kB │ gzip: 0.03 kB
+ℹ dist/popover.d.mts                    0.01 kB │ gzip: 0.03 kB
+ℹ dist/progress-circle.d.mts            0.01 kB │ gzip: 0.03 kB
+ℹ dist/progress.d.mts                   0.01 kB │ gzip: 0.03 kB
+ℹ dist/rating.d.mts                     0.01 kB │ gzip: 0.03 kB
+ℹ dist/segmented-control.d.mts          0.01 kB │ gzip: 0.03 kB
+ℹ dist/side-nav-bar.d.mts               0.01 kB │ gzip: 0.03 kB
+ℹ dist/skeleton-loader.d.mts            0.01 kB │ gzip: 0.03 kB
+ℹ dist/spinner.d.mts                    0.01 kB │ gzip: 0.03 kB
+ℹ dist/tabs.d.mts                       0.01 kB │ gzip: 0.03 kB
+ℹ dist/tag.d.mts                        0.01 kB │ gzip: 0.03 kB
+ℹ dist/toggle-button.d.mts              0.01 kB │ gzip: 0.03 kB
+ℹ dist/tooltip.d.mts                    0.01 kB │ gzip: 0.03 kB
+ℹ dist/tray.d.mts                       0.01 kB │ gzip: 0.03 kB
+ℹ dist/tree-browser.d.mts               0.01 kB │ gzip: 0.03 kB
+ℹ dist/truncate.d.mts                   0.01 kB │ gzip: 0.03 kB
+ℹ 82 files, total: 57.26 kB
+✔ Build complete in 119ms
+
+~/formats/interactions$ node scripts/build-iife.ts
+✓ interactions: wrote dist/interactions.iife.js
+✓ interactions: wrote 33 per-component .iife.js bundles
+
+~/docs$ node scripts/run-assets.ts ○ cache miss: args changed, executing
+📦 Generating docs assets: 18 tasks, concurrency 10
+staged published manifest schemas to public/
+✓ published-schemas in 0.2s
+✓ staged create-pantoken-app skill to public/create-pantoken-app.md
+✓ create-app-skill in 0.3s
+staged VS Code custom-data files to public/
+✓ vscode-custom-data in 0.3s
+✓ lucide-lab: wrote 357 per-icon CSS files + lucide-lab.css barrel
+✓ lucide-lab in 0.4s
+staged i18n schemas to public/schemas/
+✓ i18n-schemas in 0.1s
+✓ docs: wrote cdn-icon-manifest-instui.json (1975 icons)
+staged tinymce-save export schema to public/schemas/
+✓ tinymce-schema in 0.2s
+staged target compatibility registry and schema to docs/public/
+✓ target-compatibility in 0.2s
+✓ docs: wrote cdn-icon-manifest-lucide-lab.json (357 icons)
+staged API catalog with 85 npm package endpoints
+✓ docs: wrote cdn-plugin-manifest.json (2 custom components, 4 other plugins, 12 custom icons, 7 logo products)
+✓ api-catalog in 0.4s
+✓ cdn-plugin-manifest in 0.6s
+✓ docs: wrote cdn-icon-manifest-simple.json (3466 icons)
+✓ cdn-icon-manifest in 0.6s
+✓ site-themes: wrote site-themes.css (3 themes, 2015kb)
+✓ site-themes in 0.7s
+✓ registry: wrote /Users/dwahl/Scripts/pantoken/docs/public/r/registry.json (82 items)
+✓ registry: wrote 82 item files to /Users/dwahl/Scripts/pantoken/docs/public/r
+✓ registry in 0.2s
+✓ docs: wrote icon-manifest.json (5907 entries)
+✓ docs: refreshed public/component-capabilities.json from @pantoken/interactions
+✓ icon-manifest in 0.1s
+✓ docs: wrote cdn-manifest.json (73 components, 11 use icons)
+✓ cdn-manifest in 0.8s
+✓ staged 24 localized nav wordmarks → docs/public/
+✓ locale-logos in 0.8s
+✓ wrote social card → docs/public/og.png (1200×630, 76.4 KB)
+✓ wrote social card → docs/public/og-ar.png (1200×630, 62.6 KB)
+✓ wrote social card → docs/public/og-hy.png (1200×630, 74.6 KB)
+✓ wrote social card → docs/public/og-ca.png (1200×630, 77.5 KB)
+✓ wrote social card → docs/public/og-da.png (1200×630, 76.6 KB)
+✓ wrote social card → docs/public/og-nl.png (1200×630, 76.3 KB)
+✓ wrote social card → docs/public/og-en-AU.png (1200×630, 76.4 KB)
+✓ wrote social card → docs/public/og-en-CA.png (1200×630, 76.4 KB)
+✓ wrote social card → docs/public/og-en-GB.png (1200×630, 76.4 KB)
+✓ wrote social card → docs/public/og-fi.png (1200×630, 76.6 KB)
+✓ wrote social card → docs/public/og-fr.png (1200×630, 80.6 KB)
+✓ wrote social card → docs/public/og-fr-CA.png (1200×630, 82.3 KB)
+✓ wrote social card → docs/public/og-ga.png (1200×630, 76.6 KB)
+✓ wrote social card → docs/public/og-de.png (1200×630, 78.5 KB)
+✓ wrote social card → docs/public/og-el.png (1200×630, 97.9 KB)
+✓ wrote social card → docs/public/og-ht.png (1200×630, 72.7 KB)
+✓ wrote social card → docs/public/og-he.png (1200×630, 54.2 KB)
+✓ wrote social card → docs/public/og-hi.png (1200×630, 59.8 KB)
+✓ wrote social card → docs/public/og-hu.png (1200×630, 85.8 KB)
+✓ wrote social card → docs/public/og-is.png (1200×630, 75.6 KB)
+✓ wrote social card → docs/public/og-id.png (1200×630, 83.4 KB)
+✓ wrote social card → docs/public/og-it.png (1200×630, 78.1 KB)
+✓ wrote social card → docs/public/og-ja.png (1200×630, 80.7 KB)
+✓ wrote social card → docs/public/og-ko.png (1200×630, 57.6 KB)
+✓ wrote social card → docs/public/og-mi.png (1200×630, 88.8 KB)
+✓ wrote social card → docs/public/og-ms.png (1200×630, 80.4 KB)
+✓ wrote social card → docs/public/og-se.png (1200×630, 84.8 KB)
+✓ wrote social card → docs/public/og-nb.png (1200×630, 70.9 KB)
+✓ wrote social card → docs/public/og-nn.png (1200×630, 75.3 KB)
+✓ wrote social card → docs/public/og-fa.png (1200×630, 66.7 KB)
+✓ wrote social card → docs/public/og-pl.png (1200×630, 84.9 KB)
+✓ wrote social card → docs/public/og-pt.png (1200×630, 85.2 KB)
+✓ wrote social card → docs/public/og-pt-BR.png (1200×630, 84.0 KB)
+✓ wrote social card → docs/public/og-ru.png (1200×630, 94.8 KB)
+✓ wrote social card → docs/public/og-zh-Hans.png (1200×630, 70.9 KB)
+✓ wrote social card → docs/public/og-sl.png (1200×630, 79.8 KB)
+✓ wrote social card → docs/public/og-es.png (1200×630, 86.7 KB)
+✓ wrote social card → docs/public/og-sv.png (1200×630, 75.6 KB)
+✓ wrote social card → docs/public/og-th.png (1200×630, 75.6 KB)
+✓ wrote social card → docs/public/og-zh-Hant.png (1200×630, 77.0 KB)
+✓ wrote social card → docs/public/og-tr.png (1200×630, 78.3 KB)
+✓ wrote social card → docs/public/og-uk.png (1200×630, 89.0 KB)
+✓ wrote social card → docs/public/og-vi.png (1200×630, 89.2 KB)
+✓ wrote social card → docs/public/og-cy.png (1200×630, 73.3 KB)
+✓ og in 3.7s
+✓ staged demo runner, the shared token + plugin sheets, and 2906 demo(s) to public/
+✓ demos in 4.4s
+[plugin builtin:vite-reporter] 
+(!) Some chunks are larger than 500 kB after minification. Consider:
+- Using dynamic import() to code-split the application
+- Use build.rolldownOptions.output.codeSplitting to improve chunking: https://rolldown.rs/reference/OutputOptions.codeSplitting
+- Adjust chunk size limit for this warning via build.chunkSizeWarningLimit.
+✓ canvas-rce in 13.3s
+✨ Docs assets ready in 13.9s
+
+~/docs$ node scripts/build-api-en.ts
+[info] Loaded plugin typedoc-plugin-markdown
+[info] Loaded plugin typedoc-vitepress-theme
+[info] Loaded plugin /Users/dwahl/Scripts/pantoken/plugins/typedoc/demo/dist/index.mjs
+[info] markdown generated at ./api
+✓ API badges: styled 831 markdown file(s)
+✓ API overview: wrote docs/api/index.md
+✓ API compatibility: updated 39 package pages
+
+~/docs$ node scripts/build-css-api.ts
+✓ CSS API: wrote 110 record page(s) to api/css/ + merged the CSS section into the TypeDoc sidebar
+
+~/docs$ DOCS_LOCALE=root vitepress dev
+llmstxt »   vitepress-plugin-llms initialized (client build) with workDir: /Users/dwahl/Scripts/pantoken/docs
+llmstxt »   Dev server configured for serving plain text docs for LLMs
+llmstxt »   Build started, file collection cleared
+2:09:56 PM [vitepress] (client) Re-optimizing dependencies because lockfile has changed
+
+  vitepress 2.0.0-alpha.20  (using vite 8.3.4)
+
+  ➜  Local:   http://localhost:5173/
+  ➜  Network: use --host to expose
+2:09:58 PM [vitepress] (client) [optimizer] scanning dependencies...
+2:10:05 PM [vitepress] 
+[orchestrator] @pantoken/docs#api:en — building…
+2:10:05 PM [vitepress] 
+[orchestrator] @pantoken/scaffold#generate — building…
+✓ inlined scaffold templates for 8 platforms
+✓ inlined 9 agent assets
+✓ inlined localized scaffold files for 44 locale(s)
+✓ compiled scaffold.json metadata for 1 platform(s)
+[info] Loaded plugin typedoc-plugin-markdown
+[info] Loaded plugin typedoc-vitepress-theme
+[info] Loaded plugin /Users/dwahl/Scripts/pantoken/plugins/typedoc/demo/dist/index.mjs
+✓ emitted locale registry for 44 locales
+2:10:06 PM [vitepress] [orchestrator] @pantoken/scaffold#generate — done.
+2:10:06 PM [vitepress] 
+[orchestrator] @pantoken/docs#canvas-rce — building…
+[info] markdown generated at ./api
+✓ API badges: styled 831 markdown file(s)
+✓ API overview: wrote docs/api/index.md
+✓ API compatibility: updated 39 package pages
+2:10:23 PM [vitepress] [orchestrator] @pantoken/docs#api:en — done.
+[plugin builtin:vite-reporter] 
+(!) Some chunks are larger than 500 kB after minification. Consider:
+- Using dynamic import() to code-split the application
+- Use build.rolldownOptions.output.codeSplitting to improve chunking: https://rolldown.rs/reference/OutputOptions.codeSplitting
+- Adjust chunk size limit for this warning via build.chunkSizeWarningLimit.
+2:10:36 PM [vitepress] (client) page reload public/tools/canvas-rce/index.html
+2:10:41 PM [vitepress] (client) page reload public/tools/canvas-rce/index.html
+2:10:41 PM [vitepress] (client) page reload public/tools/canvas-rce/index.html
+2:10:41 PM [vitepress] [orchestrator] @pantoken/docs#canvas-rce — done.
+2:10:43 PM [vitepress] (client) page reload public/tools/canvas-rce/index.html
+2:11:08 PM [vitepress] (client) dependency optimized: mermaid
+2:11:09 PM [vitepress] (client) [optimizer] bundling dependencies...
+2:11:10 PM [vitepress] (client) dependencies optimized: arkregex, messageformat, shiki
+2:11:10 PM [vitepress] (client) optimized dependencies changed. reloading
+2:11:44 PM [vitepress] 
+[orchestrator] @pantoken/docs#api:en — building…
+2:11:44 PM [vitepress] 
+[orchestrator] @pantoken/scaffold#generate — building…
+✓ inlined scaffold templates for 8 platforms
+✓ inlined 9 agent assets
+✓ inlined localized scaffold files for 44 locale(s)
+✓ compiled scaffold.json metadata for 1 platform(s)
+✓ emitted locale registry for 44 locales
+2:11:45 PM [vitepress] (client) hmr update /.vitepress/theme/components/AgentToolsPage.vue
+2:11:45 PM [vitepress] [orchestrator] @pantoken/scaffold#generate — done.
+2:11:45 PM [vitepress] 
+[orchestrator] @pantoken/docs#canvas-rce — building…
+[info] Loaded plugin typedoc-plugin-markdown
+[info] Loaded plugin typedoc-vitepress-theme
+[info] Loaded plugin /Users/dwahl/Scripts/pantoken/plugins/typedoc/demo/dist/index.mjs
+[info] markdown generated at ./api
+✓ API badges: styled 831 markdown file(s)
+✓ API overview: wrote docs/api/index.md
+✓ API compatibility: updated 39 package pages
+2:12:00 PM [vitepress] [orchestrator] @pantoken/docs#api:en — done.
+[plugin builtin:vite-reporter] 
+(!) Some chunks are larger than 500 kB after minification. Consider:
+- Using dynamic import() to code-split the application
+- Use build.rolldownOptions.output.codeSplitting to improve chunking: https://rolldown.rs/reference/OutputOptions.codeSplitting
+- Adjust chunk size limit for this warning via build.chunkSizeWarningLimit.
+[PLUGIN_TIMINGS] JavaScript callbacks ran for 4.5s of this 8.2s build (55%).
+The slowest callbacks, timed inside each callback (the wait before a callback starts is excluded, the time it awaits is included):
+  - plugin vite:prepare-out-dir renderStart (18%, 1.4s, 1 call)
+Additional callback time came from the callbacks below and from callbacks under 1s.
+2 callbacks are listed without a time. Their calls overlapped, so the time inside one call includes work from other calls. To find their cost, profile the build with `node --cpu-prof`:
+  - plugin vite:asset load (17 calls)
+  - plugin vite:css transform (5982 calls)
+See https://rolldown.rs/reference/InputOptions.checks#bundlertimings for more details.
+
+2:12:10 PM [vitepress] (client) page reload public/tools/canvas-rce/index.html
+2:12:15 PM [vitepress] (client) page reload public/tools/canvas-rce/index.html
+2:12:15 PM [vitepress] (client) page reload public/tools/canvas-rce/index.html
+2:12:15 PM [vitepress] [orchestrator] @pantoken/docs#canvas-rce — done.
+2:12:17 PM [vitepress] (client) page reload public/tools/canvas-rce/index.html
+2:12:18 PM [vitepress] (client) page reload public/tools/canvas-rce/index.html
+2:12:49 PM [vitepress] 
+[orchestrator] @pantoken/scaffold#generate — building…
+✓ inlined scaffold templates for 8 platforms
+✓ inlined 9 agent assets
+✓ inlined localized scaffold files for 44 locale(s)
+✓ compiled scaffold.json metadata for 1 platform(s)
+✓ emitted locale registry for 44 locales
+2:12:50 PM [vitepress] [orchestrator] @pantoken/scaffold#generate — done.
+2:12:50 PM [vitepress] (client) hmr update /.vitepress/theme/components/AgentToolsPage.vue
+2:12:51 PM [vitepress] 
+[orchestrator] @pantoken/docs#canvas-rce — building…
+2:13:08 PM [vitepress] (client) page reload public/tools/canvas-rce/index.html
+2:13:08 PM [vitepress] (client) page reload public/tools/canvas-rce/index.html
+[plugin builtin:vite-reporter] 
+(!) Some chunks are larger than 500 kB after minification. Consider:
+- Using dynamic import() to code-split the application
+- Use build.rolldownOptions.output.codeSplitting to improve chunking: https://rolldown.rs/reference/OutputOptions.codeSplitting
+- Adjust chunk size limit for this warning via build.chunkSizeWarningLimit.
+[PLUGIN_TIMINGS] JavaScript callbacks ran for 4.2s of this 7.0s build (60%).
+The slowest callbacks, timed inside each callback (the wait before a callback starts is excluded, the time it awaits is included):
+  - plugin vite:prepare-out-dir renderStart (33%, 2.3s, 1 call)
+Additional callback time came from the callbacks below and from callbacks under 1s.
+2 callbacks are listed without a time. Their calls overlapped, so the time inside one call includes work from other calls. To find their cost, profile the build with `node --cpu-prof`:
+  - plugin vite:asset load (17 calls)
+  - plugin vite:css transform (5982 calls)
+See https://rolldown.rs/reference/InputOptions.checks#bundlertimings for more details.
+
+2:13:11 PM [vitepress] (client) page reload public/tools/canvas-rce/index.html
+2:13:11 PM [vitepress] (client) page reload public/tools/canvas-rce/index.html
+2:13:11 PM [vitepress] [orchestrator] @pantoken/docs#canvas-rce — done.
+2:13:11 PM [vitepress] (client) page reload public/tools/canvas-rce/index.html
+2:13:16 PM [vitepress] (client) hmr update /.vitepress/theme/components/AgentToolsPage.vue
+2:14:11 PM [vitepress] (client) page reload public/tools/canvas-rce/index.html
+2:14:11 PM [vitepress] (client) page reload public/tools/canvas-rce/index.html
+2:14:14 PM [vitepress] (client) page reload public/tools/canvas-rce/index.html
+2:14:14 PM [vitepress] (client) page reload public/tools/canvas-rce/index.html
+2:14:14 PM [vitepress] (client) page reload public/tools/canvas-rce/index.html
+2:15:01 PM [vitepress] 
+[orchestrator] @pantoken/docs#api:en — building…
+[info] Loaded plugin typedoc-plugin-markdown
+[info] Loaded plugin typedoc-vitepress-theme
+[info] Loaded plugin /Users/dwahl/Scripts/pantoken/plugins/typedoc/demo/dist/index.mjs
+[info] markdown generated at ./api
+✓ API badges: styled 831 markdown file(s)
+✓ API overview: wrote docs/api/index.md
+✓ API compatibility: updated 39 package pages
+2:15:07 PM [vitepress] [orchestrator] @pantoken/docs#api:en — done.
+2:15:33 PM [vitepress] (client) page reload public/tools/canvas-rce/index.html
+2:15:37 PM [vitepress] (client) page reload public/tools/canvas-rce/index.html
+2:15:37 PM [vitepress] (client) page reload public/tools/canvas-rce/index.html
+2:15:40 PM [vitepress] (client) page reload public/tools/canvas-rce/index.html
+2:15:42 PM [vitepress] (client) page reload public/tools/canvas-rce/index.html
+2:16:20 PM [vitepress] 
+[orchestrator] @pantoken/scaffold#generate — building…
+✓ inlined scaffold templates for 8 platforms
+✓ inlined 9 agent assets
+✓ inlined localized scaffold files for 44 locale(s)
+✓ compiled scaffold.json metadata for 1 platform(s)
+✓ emitted locale registry for 44 locales
+2:16:21 PM [vitepress] [orchestrator] @pantoken/scaffold#generate — done.
+2:16:22 PM [vitepress] 
+[orchestrator] @pantoken/docs#canvas-rce — building…
+2:16:22 PM [vitepress] (client) hmr update /.vitepress/theme/components/AgentToolsPage.vue
+2:16:29 PM [vitepress] (client) hmr update /.vitepress/theme/components/GetStartedTabs.vue?vue&type=style&index=0&lang.css
+2:16:29 PM [vitepress] (client) hmr update /.vitepress/theme/components/GetStartedTabs.vue?vue&type=style&index=0&lang.css
+2:16:29 PM [vitepress] (client) hmr update /.vitepress/theme/components/GetStartedTabs.vue?vue&type=style&index=0&lang.css
+2:16:30 PM [vitepress] (client) page reload public/tools/canvas-rce/index.html
+2:16:30 PM [vitepress] (client) page reload public/tools/canvas-rce/index.html
+2:16:31 PM [vitepress] (client) hmr update /.vitepress/theme/components/AgentToolsPage.vue
+[plugin builtin:vite-reporter] 
+(!) Some chunks are larger than 500 kB after minification. Consider:
+- Using dynamic import() to code-split the application
+- Use build.rolldownOptions.output.codeSplitting to improve chunking: https://rolldown.rs/reference/OutputOptions.codeSplitting
+- Adjust chunk size limit for this warning via build.chunkSizeWarningLimit.
+[PLUGIN_TIMINGS] JavaScript callbacks ran for 2.3s of this 5.5s build (43%).
+2 callbacks are listed without a time. Their calls overlapped, so the time inside one call includes work from other calls. To find their cost, profile the build with `node --cpu-prof`:
+  - plugin vite:asset load (17 calls)
+  - plugin vite:css transform (5982 calls)
+See https://rolldown.rs/reference/InputOptions.checks#bundlertimings for more details.
+
+2:16:33 PM [vitepress] (client) page reload public/tools/canvas-rce/index.html
+2:16:33 PM [vitepress] (client) page reload public/tools/canvas-rce/index.html
+2:16:33 PM [vitepress] (client) page reload public/tools/canvas-rce/index.html
+2:16:33 PM [vitepress] [orchestrator] @pantoken/docs#canvas-rce — done.
+2:16:40 PM [vitepress] (client) page reload public/tools/canvas-rce/index.html
+2:16:40 PM [vitepress] (client) page reload public/tools/canvas-rce/index.html
+2:16:41 PM [vitepress] (client) page reload public/tools/canvas-rce/index.html
+2:16:41 PM [vitepress] (client) page reload public/tools/canvas-rce/index.html
+2:16:42 PM [vitepress] (client) page reload public/tools/canvas-rce/index.html
+2:17:40 PM [vitepress] 
+[orchestrator] @pantoken/plugin-custom-components#styles — building…
+2:17:40 PM [vitepress] 
+[orchestrator] @pantoken/docs#api:en — building…
+✓ custom-components: wrote /custom-components/src/generated/component-styles.ts (8 record(s))
+2:17:40 PM [vitepress] [orchestrator] @pantoken/plugin-custom-components#styles — done.
+2:17:41 PM [vitepress] 
+[orchestrator] @pantoken/plugin-custom-components — building…
+✓ custom-components: wrote custom-components.css + _records.css
+2:17:41 PM [vitepress] [orchestrator] @pantoken/plugin-custom-components — done.
+2:17:41 PM [vitepress] (client) hmr update /@fs/Users/dwahl/Scripts/pantoken/plugins/pantoken/custom-components/generated/custom-components.css
+[info] Loaded plugin typedoc-plugin-markdown
+[info] Loaded plugin typedoc-vitepress-theme
+[info] Loaded plugin /Users/dwahl/Scripts/pantoken/plugins/typedoc/demo/dist/index.mjs
+2:17:41 PM [vitepress] 
+[orchestrator] @pantoken/docs#docs:api:css — building…
+2:17:41 PM [vitepress] 
+[orchestrator] @pantoken/docs#plugin-assets — building…
+✓ plugin-assets: staged 4 sheet(s) to public/demos-assets/
+2:17:41 PM [vitepress] [orchestrator] @pantoken/docs#plugin-assets — done.
+2:17:41 PM [vitepress] (client) hmr update /@fs/Users/dwahl/Scripts/pantoken/plugins/pantoken/custom-components/generated/custom-components.css
+✓ CSS API: wrote 110 record page(s) to api/css/ + merged the CSS section into the TypeDoc sidebar
+2:17:44 PM [vitepress] [orchestrator] @pantoken/docs#docs:api:css — done.
+[info] markdown generated at ./api
+✓ API badges: styled 831 markdown file(s)
+✓ API overview: wrote docs/api/index.md
+✓ API compatibility: updated 39 package pages
+2:17:47 PM [vitepress] [orchestrator] @pantoken/docs#api:en — done.
+2:17:50 PM [vitepress] (client) hmr update /@fs/Users/dwahl/Scripts/pantoken/plugins/pantoken/custom-components/generated/custom-components.css
+2:17:50 PM [vitepress] (client) hmr update /@fs/Users/dwahl/Scripts/pantoken/plugins/pantoken/custom-components/generated/custom-components.css
+2:18:02 PM [vitepress] (client) hmr update /.vitepress/theme/components/GetStartedTabs.vue?vue&type=style&index=0&lang.css
+2:18:04 PM [vitepress] (client) hmr update /@fs/Users/dwahl/Scripts/pantoken/plugins/pantoken/custom-components/generated/custom-components.css
+2:18:04 PM [vitepress] (client) hmr update /@fs/Users/dwahl/Scripts/pantoken/plugins/pantoken/custom-components/generated/custom-components.css
+2:18:04 PM [vitepress] (client) hmr update /@fs/Users/dwahl/Scripts/pantoken/plugins/pantoken/custom-components/generated/custom-components.css
+2:18:11 PM [vitepress] (client) hmr update /.vitepress/theme/components/GetStartedTabs.vue?vue&type=style&index=0&lang.css
+2:18:13 PM [vitepress] (client) hmr update /@fs/Users/dwahl/Scripts/pantoken/plugins/pantoken/custom-components/generated/custom-components.css
+2:18:17 PM [vitepress] 
+[orchestrator] @pantoken/plugin-custom-components#styles — building…
+2:18:17 PM [vitepress] 
+[orchestrator] @pantoken/docs#api:en — building…
+✓ custom-components: wrote /custom-components/src/generated/component-styles.ts (8 record(s))
+[info] Loaded plugin typedoc-plugin-markdown
+[info] Loaded plugin typedoc-vitepress-theme
+[info] Loaded plugin /Users/dwahl/Scripts/pantoken/plugins/typedoc/demo/dist/index.mjs
+2:18:18 PM [vitepress] [orchestrator] @pantoken/plugin-custom-components#styles — done.
+2:18:18 PM [vitepress] 
+[orchestrator] @pantoken/plugin-custom-components — building…
+✓ custom-components: wrote custom-components.css + _records.css
+2:18:18 PM [vitepress] [orchestrator] @pantoken/plugin-custom-components — done.
+2:18:18 PM [vitepress] (client) hmr update /@fs/Users/dwahl/Scripts/pantoken/plugins/pantoken/custom-components/generated/custom-components.css
+2:18:18 PM [vitepress] (client) hmr update /@fs/Users/dwahl/Scripts/pantoken/plugins/pantoken/custom-components/generated/custom-components.css
+2:18:18 PM [vitepress] 
+[orchestrator] @pantoken/docs#docs:api:css — building…
+2:18:18 PM [vitepress] 
+[orchestrator] @pantoken/docs#plugin-assets — building…
+✓ plugin-assets: staged 4 sheet(s) to public/demos-assets/
+2:18:18 PM [vitepress] [orchestrator] @pantoken/docs#plugin-assets — done.
+✓ CSS API: wrote 110 record page(s) to api/css/ + merged the CSS section into the TypeDoc sidebar
+[info] markdown generated at ./api
+2:18:23 PM [vitepress] [orchestrator] @pantoken/docs#docs:api:css — done.
+✓ API badges: styled 831 markdown file(s)
+✓ API overview: wrote docs/api/index.md
+✓ API compatibility: updated 39 package pages
+2:18:24 PM [vitepress] [orchestrator] @pantoken/docs#api:en — done.
+2:18:40 PM [vitepress] 
+[orchestrator] @pantoken/plugin-logos — building…
+✓ logos: 97 logos across 7 products (+ 97 per-logo and 7 per-product sheets)
+2:18:45 PM [vitepress] [orchestrator] @pantoken/plugin-logos — done.
+2:18:46 PM [vitepress] 
+[orchestrator] @pantoken/docs#docs:api:css — building…
+✓ CSS API: wrote 110 record page(s) to api/css/ + merged the CSS section into the TypeDoc sidebar
+2:18:49 PM [vitepress] [orchestrator] @pantoken/docs#docs:api:css — done.
+2:19:11 PM [vitepress] 
+[orchestrator] @pantoken/docs#api:en — building…
+2:19:11 PM [vitepress] 
+[orchestrator] @pantoken/scaffold#generate — building…
+✓ inlined scaffold templates for 8 platforms
+✓ inlined 9 agent assets
+✓ inlined localized scaffold files for 44 locale(s)
+✓ compiled scaffold.json metadata for 1 platform(s)
+✓ emitted locale registry for 44 locales
+[info] Loaded plugin typedoc-plugin-markdown
+2:19:11 PM [vitepress] [orchestrator] @pantoken/scaffold#generate — done.
+[info] Loaded plugin typedoc-vitepress-theme
+[info] Loaded plugin /Users/dwahl/Scripts/pantoken/plugins/typedoc/demo/dist/index.mjs
+2:19:11 PM [vitepress] (client) hmr update /.vitepress/theme/components/AgentToolsPage.vue
+2:19:11 PM [vitepress] 
+[orchestrator] @pantoken/docs#canvas-rce — building…
+[info] markdown generated at ./api
+✓ API badges: styled 831 markdown file(s)
+✓ API overview: wrote docs/api/index.md
+✓ API compatibility: updated 39 package pages
+2:19:20 PM [vitepress] [orchestrator] @pantoken/docs#api:en — done.
+2:19:24 PM [vitepress] (client) page reload public/tools/canvas-rce/index.html
+[plugin builtin:vite-reporter] 
+(!) Some chunks are larger than 500 kB after minification. Consider:
+- Using dynamic import() to code-split the application
+- Use build.rolldownOptions.output.codeSplitting to improve chunking: https://rolldown.rs/reference/OutputOptions.codeSplitting
+- Adjust chunk size limit for this warning via build.chunkSizeWarningLimit.
+[PLUGIN_TIMINGS] JavaScript callbacks ran for 3.0s of this 6.2s build (48%).
+The slowest callbacks, timed inside each callback (the wait before a callback starts is excluded, the time it awaits is included):
+  - plugin vite:prepare-out-dir renderStart (17%, 1.1s, 1 call)
+Additional callback time came from the callbacks below and from callbacks under 1s.
+2 callbacks are listed without a time. Their calls overlapped, so the time inside one call includes work from other calls. To find their cost, profile the build with `node --cpu-prof`:
+  - plugin vite:asset load (17 calls)
+  - plugin vite:css transform (5982 calls)
+See https://rolldown.rs/reference/InputOptions.checks#bundlertimings for more details.
+
+2:19:29 PM [vitepress] (client) page reload public/tools/canvas-rce/index.html
+2:19:29 PM [vitepress] (client) hmr update /.vitepress/theme/components/AgentToolsPage.vue
+2:19:29 PM [vitepress] (client) page reload public/tools/canvas-rce/index.html
+2:19:29 PM [vitepress] (client) page reload public/tools/canvas-rce/index.html
+2:19:29 PM [vitepress] [orchestrator] @pantoken/docs#canvas-rce — done.
+2:19:34 PM [vitepress] (client) page reload public/tools/canvas-rce/index.html
+2:19:56 PM [vitepress] 
+[orchestrator] @pantoken/scaffold#generate — building…
+✓ inlined scaffold templates for 8 platforms
+✓ inlined 9 agent assets
+✓ inlined localized scaffold files for 44 locale(s)
+✓ compiled scaffold.json metadata for 1 platform(s)
+2:19:57 PM [vitepress] (client) hmr update /.vitepress/theme/components/AgentToolsPage.vue
+✓ emitted locale registry for 44 locales
+2:19:57 PM [vitepress] [orchestrator] @pantoken/scaffold#generate — done.
+2:19:57 PM [vitepress] 
+[orchestrator] @pantoken/docs#canvas-rce — building…
+2:20:06 PM [vitepress] (client) page reload public/tools/canvas-rce/index.html
+2:20:06 PM [vitepress] (client) page reload public/tools/canvas-rce/index.html
+[plugin builtin:vite-reporter] 
+(!) Some chunks are larger than 500 kB after minification. Consider:
+- Using dynamic import() to code-split the application
+- Use build.rolldownOptions.output.codeSplitting to improve chunking: https://rolldown.rs/reference/OutputOptions.codeSplitting
+- Adjust chunk size limit for this warning via build.chunkSizeWarningLimit.
+[PLUGIN_TIMINGS] JavaScript callbacks ran for 2.0s of this 4.4s build (47%).
+2 callbacks are listed without a time. Their calls overlapped, so the time inside one call includes work from other calls. To find their cost, profile the build with `node --cpu-prof`:
+  - plugin vite:asset load (17 calls)
+  - plugin vite:css transform (5982 calls)
+See https://rolldown.rs/reference/InputOptions.checks#bundlertimings for more details.
+
+2:20:08 PM [vitepress] (client) page reload public/tools/canvas-rce/index.html
+2:20:08 PM [vitepress] (client) page reload public/tools/canvas-rce/index.html
+2:20:08 PM [vitepress] [orchestrator] @pantoken/docs#canvas-rce — done.
+2:20:08 PM [vitepress] (client) page reload public/tools/canvas-rce/index.html
+2:20:18 PM [vitepress] 
+[orchestrator] @pantoken/docs#api:en — building…
+2:20:18 PM [vitepress] 
+[orchestrator] @pantoken/scaffold#generate — building…
+✓ inlined scaffold templates for 8 platforms
+✓ inlined 9 agent assets
+✓ inlined localized scaffold files for 44 locale(s)
+✓ compiled scaffold.json metadata for 1 platform(s)
+[info] Loaded plugin typedoc-plugin-markdown
+✓ emitted locale registry for 44 locales
+[info] Loaded plugin typedoc-vitepress-theme
+[info] Loaded plugin /Users/dwahl/Scripts/pantoken/plugins/typedoc/demo/dist/index.mjs
+2:20:19 PM [vitepress] [orchestrator] @pantoken/scaffold#generate — done.
+2:20:19 PM [vitepress] (client) hmr update /.vitepress/theme/components/AgentToolsPage.vue
+2:20:20 PM [vitepress] 
+[orchestrator] @pantoken/docs#canvas-rce — building…
+[info] markdown generated at ./api
+✓ API badges: styled 831 markdown file(s)
+✓ API overview: wrote docs/api/index.md
+✓ API compatibility: updated 39 package pages
+2:20:28 PM [vitepress] [orchestrator] @pantoken/docs#api:en — done.
+2:20:30 PM [vitepress] (client) page reload public/tools/canvas-rce/index.html
+2:20:32 PM [vitepress] (client) hmr update /.vitepress/theme/components/AgentToolsPage.vue
+[plugin builtin:vite-reporter] 
+(!) Some chunks are larger than 500 kB after minification. Consider:
+- Using dynamic import() to code-split the application
+- Use build.rolldownOptions.output.codeSplitting to improve chunking: https://rolldown.rs/reference/OutputOptions.codeSplitting
+- Adjust chunk size limit for this warning via build.chunkSizeWarningLimit.
+[PLUGIN_TIMINGS] JavaScript callbacks ran for 3.0s of this 6.6s build (45%).
+2 callbacks are listed without a time. Their calls overlapped, so the time inside one call includes work from other calls. To find their cost, profile the build with `node --cpu-prof`:
+  - plugin vite:asset load (17 calls)
+  - plugin vite:css transform (5982 calls)
+See https://rolldown.rs/reference/InputOptions.checks#bundlertimings for more details.
+
+2:20:36 PM [vitepress] [orchestrator] @pantoken/docs#canvas-rce — done.
+2:20:38 PM [vitepress] (client) page reload public/tools/canvas-rce/index.html
+2:20:38 PM [vitepress] (client) page reload public/tools/canvas-rce/index.html
+2:20:38 PM [vitepress] (client) page reload public/tools/canvas-rce/index.html
+2:20:40 PM [vitepress] (client) hmr update /.vitepress/theme/components/AgentToolsPage.vue
+2:20:41 PM [vitepress] (client) page reload public/tools/canvas-rce/index.html
+2:20:42 PM [vitepress] (client) page reload public/tools/canvas-rce/index.html
+2:20:45 PM [vitepress] (client) page reload public/tools/canvas-rce/index.html
+2:20:45 PM [vitepress] (client) page reload public/tools/canvas-rce/index.html
+2:20:52 PM [vitepress] (client) page reload public/tools/canvas-rce/index.html
+2:21:16 PM [vitepress] 
+[orchestrator] @pantoken/docs#api:en — building…
+2:21:16 PM [vitepress] 
+[orchestrator] @pantoken/scaffold#generate — building…
+✓ inlined scaffold templates for 8 platforms
+✓ inlined 9 agent assets
+[info] Loaded plugin typedoc-plugin-markdown
+[info] Loaded plugin typedoc-vitepress-theme
+[info] Loaded plugin /Users/dwahl/Scripts/pantoken/plugins/typedoc/demo/dist/index.mjs
+✓ inlined localized scaffold files for 44 locale(s)
+✓ compiled scaffold.json metadata for 1 platform(s)
+✓ emitted locale registry for 44 locales
+2:21:17 PM [vitepress] [orchestrator] @pantoken/scaffold#generate — done.
+2:21:17 PM [vitepress] (client) hmr update /.vitepress/theme/components/AgentToolsPage.vue
+2:21:17 PM [vitepress] 
+[orchestrator] @pantoken/docs#canvas-rce — building…
+2:21:21 PM [vitepress] 
+[orchestrator] @pantoken/scaffold#generate — building…
+[info] markdown generated at ./api
+✓ API badges: styled 831 markdown file(s)
+✓ API overview: wrote docs/api/index.md
+✓ API compatibility: updated 39 package pages
+✓ inlined scaffold templates for 8 platforms
+✓ inlined 9 agent assets
+✓ inlined localized scaffold files for 44 locale(s)
+✓ compiled scaffold.json metadata for 1 platform(s)
+✓ emitted locale registry for 44 locales
+2:21:25 PM [vitepress] (client) hmr update /.vitepress/theme/components/AgentToolsPage.vue
+2:21:25 PM [vitepress] [orchestrator] @pantoken/docs#api:en — done.
+2:21:25 PM [vitepress] [orchestrator] @pantoken/scaffold#generate — done.
+2:21:29 PM [vitepress] (client) page reload public/tools/canvas-rce/index.html
+[plugin builtin:vite-reporter] 
+(!) Some chunks are larger than 500 kB after minification. Consider:
+- Using dynamic import() to code-split the application
+- Use build.rolldownOptions.output.codeSplitting to improve chunking: https://rolldown.rs/reference/OutputOptions.codeSplitting
+- Adjust chunk size limit for this warning via build.chunkSizeWarningLimit.
+[PLUGIN_TIMINGS] JavaScript callbacks ran for 3.6s of this 7.3s build (49%).
+The slowest callbacks, timed inside each callback (the wait before a callback starts is excluded, the time it awaits is included):
+  - plugin vite:prepare-out-dir renderStart (16%, 1.2s, 1 call)
+Additional callback time came from the callbacks below and from callbacks under 1s.
+2 callbacks are listed without a time. Their calls overlapped, so the time inside one call includes work from other calls. To find their cost, profile the build with `node --cpu-prof`:
+  - plugin vite:asset load (17 calls)
+  - plugin vite:css transform (5982 calls)
+See https://rolldown.rs/reference/InputOptions.checks#bundlertimings for more details.
+
+2:21:37 PM [vitepress] (client) page reload public/tools/canvas-rce/index.html
+2:21:37 PM [vitepress] (client) page reload public/tools/canvas-rce/index.html
+2:21:37 PM [vitepress] [orchestrator] @pantoken/docs#canvas-rce — done.
+2:21:37 PM [vitepress] 
+[orchestrator] @pantoken/docs#canvas-rce — building…
+2:21:42 PM [vitepress] (client) page reload public/tools/canvas-rce/index.html
+2:21:49 PM [vitepress] (client) page reload public/tools/canvas-rce/index.html
+[plugin builtin:vite-reporter] 
+(!) Some chunks are larger than 500 kB after minification. Consider:
+- Using dynamic import() to code-split the application
+- Use build.rolldownOptions.output.codeSplitting to improve chunking: https://rolldown.rs/reference/OutputOptions.codeSplitting
+- Adjust chunk size limit for this warning via build.chunkSizeWarningLimit.
+[PLUGIN_TIMINGS] JavaScript callbacks ran for 2.5s of this 5.1s build (49%).
+The slowest callbacks, timed inside each callback (the wait before a callback starts is excluded, the time it awaits is included):
+  - plugin vite:prepare-out-dir renderStart (23%, 1.2s, 1 call)
+Additional callback time came from the callbacks below and from callbacks under 1s.
+2 callbacks are listed without a time. Their calls overlapped, so the time inside one call includes work from other calls. To find their cost, profile the build with `node --cpu-prof`:
+  - plugin vite:asset load (17 calls)
+  - plugin vite:css transform (5982 calls)
+See https://rolldown.rs/reference/InputOptions.checks#bundlertimings for more details.
+
+2:21:52 PM [vitepress] (client) page reload public/tools/canvas-rce/index.html
+2:21:52 PM [vitepress] [orchestrator] @pantoken/docs#canvas-rce — done.
+2:21:53 PM [vitepress] (client) page reload public/tools/canvas-rce/index.html
+2:22:02 PM [vitepress] (client) page reload public/tools/canvas-rce/index.html
+2:22:02 PM [vitepress] (client) page reload public/tools/canvas-rce/index.html
+2:22:19 PM [vitepress] 
+[orchestrator] @pantoken/scaffold#generate — building…
+✓ inlined scaffold templates for 8 platforms
+✓ inlined 9 agent assets
+✓ inlined localized scaffold files for 44 locale(s)
+✓ compiled scaffold.json metadata for 1 platform(s)
+✓ emitted locale registry for 44 locales
+2:22:20 PM [vitepress] [orchestrator] @pantoken/scaffold#generate — done.
+2:22:20 PM [vitepress] (client) hmr update /.vitepress/theme/components/AgentToolsPage.vue
+2:22:20 PM [vitepress] 
+[orchestrator] @pantoken/docs#canvas-rce — building…
