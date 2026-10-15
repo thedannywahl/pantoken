@@ -32701,3 +32701,9 @@ msgstr "Target: TinyMCE PluginManager. Current format: `Pantoken plugin registra
 msgctxt "docs.api:text"
 msgid "frameTargetOrigin"
 msgstr "frameTargetOrigin"
+
+#: formats/scope/src/functions/frameTargetOrigin.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Resolve a theme-message target. Only explicitly sandboxed, opaque `srcdoc` frames permit `\"*\"`;\nother opaque or malformed URLs are rejected. Frame messages must not contain confidential data."
+msgstr "Rieđgut theme-message-miidda. Dás galgá goitšat ovddas sandboksejade, opakkin `srcdoc`-frammajit geavahusat `\"*\"`; eará opakka dahje huvvosen URL:at leat dálvtesteaddjit. Frammamelihkušuvnnat ii galgá leat bidjat ruovttoluotta dáid dilliin."
