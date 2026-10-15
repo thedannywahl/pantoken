@@ -1,0 +1,9 @@
+investigate and rememdiate those issuess.
+
+---
+
+downloads are supported, it's saving to ~/Downloads
+
+---
+
+snyk is now auth'd.
