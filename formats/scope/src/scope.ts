@@ -95,17 +95,28 @@ function defaultStorage(): CreateScopeOptions["storage"] {
 }
 
 /**
- * The origin to post to for `frame`. A `srcdoc` frame has an opaque origin that can only be
- * addressed as `"*"`; anything with a real `src` gets its concrete origin so the message cannot
- * leak to a navigated-away document.
+ * Resolve a theme-message target. Only explicitly sandboxed, opaque `srcdoc` frames permit `"*"`;
+ * other opaque or malformed URLs are rejected. Frame messages must not contain confidential data.
  */
-function frameOrigin(frame: HTMLIFrameElement): string {
-  if (!frame.hasAttribute("src")) return "*";
+export function frameTargetOrigin(frame: HTMLIFrameElement): string | undefined {
+  const location = frame.ownerDocument.location;
+  if (frame.hasAttribute("srcdoc")) return srcdocTargetOrigin(frame);
+  const source = frame.getAttribute("src") || "about:blank";
+  if (source === "about:blank") return location.origin;
   try {
-    return new URL(frame.src, frame.ownerDocument.location.href).origin;
+    const origin = new URL(source, location.href).origin;
+    return origin === "null" ? undefined : origin;
   } catch {
-    return frame.ownerDocument.location.origin;
+    return undefined;
   }
+}
+
+function srcdocTargetOrigin(frame: HTMLIFrameElement): string {
+  const sandbox = frame.getAttribute("sandbox");
+  if (sandbox === null) return frame.ownerDocument.location.origin;
+  if (sandbox.split(/\s+/u).includes("allow-same-origin"))
+    return frame.ownerDocument.location.origin;
+  return "*";
 }
 
 const FIELDS = {
@@ -188,8 +199,10 @@ export function createScope(element: HTMLElement, options: CreateScopeOptions = 
   };
 
   const post = (frame: HTMLIFrameElement): void => {
+    const origin = frameTargetOrigin(frame);
+    if (origin === undefined) return;
     const message: ScopeMessage = { type: "pantoken-scope", instanceId, ...config };
-    frame.contentWindow?.postMessage(message, frameOrigin(frame));
+    frame.contentWindow?.postMessage(message, origin);
   };
 
   const broadcast = (): void => {
