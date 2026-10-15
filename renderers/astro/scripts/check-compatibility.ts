@@ -12,6 +12,7 @@ const companions = [
   { starlight: "0.35.0", astro: "5.18.2" },
   { starlight: "0.42.4", astro: "7.3.5" },
   { starlight: "0.42.5", astro: "7.3.5" },
+  { starlight: "0.42.6", astro: "7.3.5" },
 ];
 
 /** Build a disposable Starlight site and inspect the generated head stylesheet. */
