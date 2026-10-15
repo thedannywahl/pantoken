@@ -1,0 +1,1 @@
+investigate issues #205 through #214 for compatibility reviews one at a time, adding incremental conventional commits and changesets where necessary, and then we should re-bless the compatibility matrix.
