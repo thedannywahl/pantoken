@@ -252,7 +252,7 @@ describe("generated logos.css", () => {
     expect(css).toContain('url("data:image/svg+xml;base64,');
   });
 
-  test("emits a -logo-* glyph class with the viewBox aspect ratio, not the -icon-* painter", async () => {
+  test("emits aspect-aware logo glyphs with icon aliases and color-preserving paint metadata", async () => {
     vi.resetModules();
     vi.clearAllMocks();
     vi.spyOn(console, "log").mockImplementation(() => {});
@@ -265,9 +265,10 @@ describe("generated logos.css", () => {
 
     const css = writtenContent("logos.css");
     expect(css).toContain(
-      ".-logo-canvas-horizontal-color { --pantoken-glyph: var(--instui-logo-canvas-horizontal-color); --pantoken-logo-aspect: 310 / 79; }",
+      ".-logo-canvas-horizontal-color, .-icon-canvas-horizontal-color { --pantoken-glyph: var(--instui-logo-canvas-horizontal-color); --pantoken-logo-aspect: 310 / 79;",
     );
-    expect(css).not.toContain(".-icon-canvas-horizontal-color");
+    expect(css).toContain("--pantoken-logo-image: var(--pantoken-glyph)");
+    expect(css).toContain("--pantoken-logo-mask: none");
   });
 
   test("emits @property registrations for typed token docs", async () => {
