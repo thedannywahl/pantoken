@@ -62,6 +62,7 @@
   },
   "includeDarkModeLabel": { "message": "Include dark mode", "translate": "always" },
   "includeInteractionsLabel": { "message": "Include interactions", "translate": "always" },
+  "previewResetLabel": { "message": "Reset preview", "translate": "always" },
   "colorLabel": { "message": "Color scheme", "translate": "always" },
   "colorNavyLabel": { "message": "Navy", "translate": "always" },
   "colorBlueLabel": { "message": "Blue", "translate": "always" },

@@ -1,10 +1,48 @@
+/// <reference lib="dom" />
 // @vitest-environment happy-dom
-import { expect, test } from "vite-plus/test";
+import { expect, test, vi } from "vite-plus/test";
 import { readFileSync } from "node:fs";
 import { resolve } from "node:path";
 import { componentNeedsInteractions } from "../templates/canvas-theme-editor/src/component-availability.ts";
 import { InlineDocument } from "../templates/canvas-theme-editor/src/inline-document.ts";
+import { trackPreviewChanges } from "../templates/canvas-theme-editor/src/preview-state.ts";
 import { inlineHtml } from "../../../formats/inline-styles/src/inline-html.ts";
+
+test("preview dirty tracking ignores outer layout and detects dismissal and restoration", async () => {
+  const root = document.createElement("div");
+  root.innerHTML = '<div class="instui-banner">Message</div>';
+  document.body.append(root);
+  const changed = vi.fn();
+  const stop = trackPreviewChanges(root, changed);
+  expect(changed).toHaveBeenLastCalledWith(false);
+  document.body.style.height = "500px";
+  expect(changed).toHaveBeenCalledTimes(1);
+  root.querySelector("div")!.remove();
+  await vi.waitFor(() => expect(changed).toHaveBeenLastCalledWith(true));
+  root.innerHTML = '<div class="instui-banner">Message</div>';
+  await vi.waitFor(() => expect(changed).toHaveBeenLastCalledWith(false));
+  stop();
+  root.remove();
+  document.body.style.removeProperty("height");
+});
+
+test("preview dirty tracking includes property-only control changes", () => {
+  const root = document.createElement("div");
+  root.innerHTML = '<input type="checkbox">';
+  const changed = vi.fn();
+  const stop = trackPreviewChanges(root, changed);
+  const input = root.querySelector("input")!;
+  input.checked = true;
+  input.dispatchEvent(new Event("change", { bubbles: true }));
+  expect(changed).toHaveBeenLastCalledWith(true);
+  input.checked = false;
+  input.dispatchEvent(new Event("change", { bubbles: true }));
+  expect(changed).toHaveBeenLastCalledWith(false);
+  stop();
+  input.checked = true;
+  input.dispatchEvent(new Event("change", { bubbles: true }));
+  expect(changed).toHaveBeenLastCalledWith(false);
+});
 import componentCapabilities from "../../../formats/interactions/component-capabilities.json" with { type: "json" };
 
 test("only the published JS requirement tier is unavailable, not optional enhancements", () => {

@@ -166,6 +166,19 @@
             >{{previewSchemeToggleLabel}}</span
           >
         </button>
+        <button
+          type="button"
+          id="preview-reset"
+          class="instui-button instui-tooltip -size-sm -color-tertiary -icon-rotate-ccw -without-background -without-border"
+          aria-label="{{previewResetLabel}}"
+          aria-describedby="preview-reset-tip"
+          disabled
+        >
+          <span class="instui-screen-reader-content">{{previewResetLabel}}</span>
+          <span class="tip -placement-bottom" id="preview-reset-tip" role="tooltip"
+            >{{previewResetLabel}}</span
+          >
+        </button>
       </div>
       <iframe id="preview" title="{{previewFrameTitle}}"></iframe>
       <div class="preview-footer">

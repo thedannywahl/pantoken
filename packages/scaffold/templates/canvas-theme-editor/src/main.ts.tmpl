@@ -27,6 +27,7 @@ import "@pantoken/components/icons/maximize.css"; // app.html's preview-fullscre
 import "@pantoken/components/icons/minimize.css"; // app.html's preview-fullscreen-toggle, on state
 import "@pantoken/components/icons/moon.css"; // app.html's preview-scheme-toggle, light state
 import "@pantoken/components/icons/sun.css"; // app.html's preview-scheme-toggle, dark state
+import "@pantoken/components/icons/rotate-ccw.css";
 import adaptiveTokensCss from "@pantoken/css/style.lean.css?inline";
 import rebrandLightTokensCss from "@pantoken/css/style.rebrand.light.lean.css?inline";
 import canvasTokensCss from "@pantoken/css/style.canvas.lean.css?inline";
@@ -51,6 +52,7 @@ import localInteractionsJs from "@pantoken/interactions/interactions.iife.js?raw
 import componentCapabilities from "@pantoken/interactions/component-capabilities.json";
 import { componentNeedsInteractions } from "./component-availability.ts";
 import { InlineDocument } from "./inline-document.ts";
+import { trackPreviewChanges } from "./preview-state.ts";
 // A resolved asset URL for a real <script> tag — a dynamic import() of a pure side-effect module
 // from a "sideEffects": false package can get tree-shaken out of a production bundle.
 import interactionsIifeUrl from "@pantoken/interactions/interactions.iife.js?url";
@@ -1020,6 +1022,28 @@ const includeInteractionsCheckbox = document.querySelector<HTMLInputElement>("#i
 includeInteractionsCheckbox.checked = preferences.includeInteractions !== false;
 const previewSchemeToggle = document.querySelector<HTMLButtonElement>("#preview-scheme-toggle")!;
 const previewFrame = document.querySelector<HTMLIFrameElement>("#preview")!;
+const previewResetButton = document.querySelector<HTMLButtonElement>("#preview-reset")!;
+let latestPreviewSrcdoc = "";
+let previewDirty = false;
+let previewLoading = true;
+let stopPreviewTracking: (() => void) | undefined;
+
+function syncPreviewResetAvailability(): void {
+  previewResetButton.disabled = !includeInteractionsCheckbox.checked || previewLoading || !previewDirty;
+}
+
+function loadPreviewDocument(source: string): void {
+  stopPreviewTracking?.();
+  previewLoading = true;
+  previewDirty = false;
+  syncPreviewResetAvailability();
+  latestPreviewSrcdoc = source;
+  previewFrame.srcdoc = source;
+}
+
+previewResetButton.addEventListener("click", () => {
+  if (!previewResetButton.disabled && latestPreviewSrcdoc) loadPreviewDocument(latestPreviewSrcdoc);
+});
 const previewPane = document.querySelector<HTMLElement>(".preview-pane")!;
 const downloadCss = document.querySelector<HTMLAnchorElement>("#download-theme-css")!;
 const downloadJs = document.querySelector<HTMLAnchorElement>("#download-theme-js")!;
@@ -1777,6 +1801,7 @@ includeDarkModeCheckbox.addEventListener("change", () => {
 });
 
 includeInteractionsCheckbox.addEventListener("change", () => {
+  syncPreviewResetAvailability();
   void refreshAll();
   persistPreferences();
 });
@@ -1822,14 +1847,14 @@ function updatePreview(theme: { css: string; js: string }): void {
     selectedTheme === "rebrand" && includeDarkModeCheckbox.checked && previewDarkOverride
       ? "dark"
       : "light";
-  previewFrame.srcdoc = `<!doctype html><html data-pantoken-boundary data-pantoken-instance="${EDITOR_INSTANCE}-preview" data-pantoken-theme="${selectedTheme}" data-pantoken-scheme="${previewScheme}" data-pantoken-color="${selectedColor}" style="color-scheme:${previewScheme}"><head><style>${themeCss}
+  loadPreviewDocument(`<!doctype html><html data-pantoken-boundary data-pantoken-instance="${EDITOR_INSTANCE}-preview" data-pantoken-theme="${selectedTheme}" data-pantoken-scheme="${previewScheme}" data-pantoken-color="${selectedColor}" style="color-scheme:${previewScheme}"><head><style>${themeCss}
 ${CUSTOM_THEME_COLORS_CSS}</style><style>#wrapper{padding:32px;}#content{padding:36px 48px 48px;min-height:20rem;margin:0 auto;border-radius:12px;}@media not all and (min-width: 768px) {
   #wrapper{padding:24px;}#content{padding-left:12px;padding-right:12px;min-height:16rem;border-radius:8px;}</style></head><body>
     <div id="wrapper" class="instui-view"><div id="content" class="${contentClass}" style="max-width: ${CANVAS_CONTENT_MAX_WIDTH};">
       ${getNormalizedEditorHtml()}
     </div></div>
     <script>${themeJs}</script>
-  </body></html>`;
+  </body></html>`);
 }
 const debouncedUpdatePreview = debounce(() => void refreshAll(), 300);
 
@@ -1876,6 +1901,7 @@ function handlePreviewLinkClick(event: MouseEvent): void {
 }
 
 previewFrame.addEventListener("load", () => {
+  stopPreviewTracking?.();
   previewResizeObserver?.disconnect();
   previewMutationObserver?.disconnect();
   resizePreviewFrame();
@@ -1886,6 +1912,18 @@ previewFrame.addEventListener("load", () => {
   previewResizeObserver.observe(root);
   previewMutationObserver = new MutationObserver(resizePreviewFrame);
   previewMutationObserver.observe(root, { childList: true, subtree: true, attributes: true });
+  const loadedDocument = previewFrame.contentDocument;
+  requestAnimationFrame(() => requestAnimationFrame(() => {
+    if (previewFrame.contentDocument !== loadedDocument) return;
+    const content = loadedDocument?.querySelector<HTMLElement>("#content");
+    previewLoading = false;
+    if (content) stopPreviewTracking = trackPreviewChanges(content, (dirty) => {
+      if (previewFrame.contentDocument !== loadedDocument) return;
+      previewDirty = dirty;
+      syncPreviewResetAvailability();
+    });
+    syncPreviewResetAvailability();
+  }));
 });
 
 function buildDownloadFiles(theme: { css: string; js: string }): {
