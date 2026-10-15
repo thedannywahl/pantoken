@@ -1,0 +1,37 @@
+{
+  "cli_version": "0.11.5",
+  "checkpoint_id": "01M50KCB69R50EY0D1CX6G80GT",
+  "strategy": "manual-commit",
+  "branch": "canvas-rce2",
+  "checkpoints_count": 2,
+  "files_touched": [
+    ".changeset/fix-canvas-component-assets.md",
+    "docs/scripts/build-canvas-rce.ts",
+    "packages/scaffold/templates/canvas-theme-editor/src/main.ts.tmpl",
+    "platforms/canvas-theme-editor/src/build-theme.ts",
+    "plugins/pantoken/logos/scripts/generate.ts",
+    "renderers/tinymce/src/content-css.ts",
+    "renderers/tinymce/src/logos.ts",
+    "renderers/tinymce/src/plugins/components.ts",
+    "renderers/tinymce/tests/components-picker.test.ts",
+    "renderers/tinymce/tests/content-css.test.ts",
+    "renderers/tinymce/tests/glyph-assets.test.ts",
+    "renderers/tinymce/tests/logos-picker.test.ts"
+  ],
+  "sessions": [
+    {
+      "metadata": "/0/metadata.json",
+      "transcript": "/0/full.jsonl",
+      "compact_transcript": "/0/transcript.jsonl",
+      "content_hash": "/0/content_hash.txt",
+      "prompt": "/0/prompt.txt"
+    }
+  ],
+  "token_usage": {
+    "input_tokens": 0,
+    "cache_creation_tokens": 0,
+    "cache_read_tokens": 0,
+    "output_tokens": 0,
+    "api_call_count": 0
+  }
+}

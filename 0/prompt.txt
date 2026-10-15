@@ -1,0 +1,251 @@
+starting with: https://pantoken.app/tools/canvas-rce/
+which is in platforms/canvas-theme-editor and embedded in /docs:
+ERRORS
+* on page load console error:
+```
+downloadable font: download failed (font-family: "Atkinson Hyperlegible Next" style:normal weight:500 width:100 src index:0): status=2152398850 source: [https://pantoken.app/tools/canvas-rce/assets/REDACTED.woff2](https://pantoken.app/tools/canvas-rce/assets/REDACTED.woff2)
+```
+settting provider to None and then inserting a compoent (banner) console errors:
+```
+Layout was forced before the page was fully loaded. If stylesheets are not yet loaded this may cause a flash of unstyled content. srcdoc
+Layout was forced before the page was fully loaded. If stylesheets are not yet loaded this may cause a flash of unstyled content. srcdoc
+Layout was forced before the page was fully loaded. If stylesheets are not yet loaded this may cause a flash of unstyled content. srcdoc
+Layout was forced before the page was fully loaded. If stylesheets are not yet loaded this may cause a flash of unstyled content. srcdoc
+XHR GET
+https://cdn.jsdelivr.net/npm/@pantoken/components/dist/banner.css
+[HTTP/3 404  749ms]
+GET
+https://cdn.jsdelivr.net/npm/@pantoken/components/dist/banner.css
+NS_ERROR_CORRUPTED_CONTENT
+XHR GET
+https://cdn.jsdelivr.net/npm/@pantoken/components/dist/banner.css
+[HTTP/3 404  450ms]
+Unable to build the selected theme Error: Unable to inline @pantoken/components/dist/banner.css: 404
+    bkt https://pantoken.app/tools/canvas-rce/assets/index-CU5Lo9P-.js:1037
+    bkt https://pantoken.app/tools/canvas-rce/assets/index-CU5Lo9P-.js:1037
+    Akt https://pantoken.app/tools/canvas-rce/assets/index-CU5Lo9P-.js:1040
+    Z9 https://pantoken.app/tools/canvas-rce/assets/index-CU5Lo9P-.js:1052
+    VOt https://pantoken.app/tools/canvas-rce/assets/index-CU5Lo9P-.js:1035
+    b7 https://pantoken.app/tools/canvas-rce/assets/index-CU5Lo9P-.js:835
+    onSubmit https://pantoken.app/tools/canvas-rce/assets/index-CU5Lo9P-.js:835
+    XJ https://pantoken.app/tools/canvas-rce/assets/index-CU5Lo9P-.js:580
+    r https://pantoken.app/tools/canvas-rce/assets/index-CU5Lo9P-.js:580
+    i https://pantoken.app/tools/canvas-rce/assets/index-CU5Lo9P-.js:580
+    each https://pantoken.app/tools/canvas-rce/assets/index-CU5Lo9P-.js:547
+    i https://pantoken.app/tools/canvas-rce/assets/index-CU5Lo9P-.js:580
+    r https://pantoken.app/tools/canvas-rce/assets/index-CU5Lo9P-.js:580
+    R_ https://pantoken.app/tools/canvas-rce/assets/index-CU5Lo9P-.js:570
+    E https://pantoken.app/tools/canvas-rce/assets/index-CU5Lo9P-.js:547
+    JC https://pantoken.app/tools/canvas-rce/assets/index-CU5Lo9P-.js:573
+    fold https://pantoken.app/tools/canvas-rce/assets/index-CU5Lo9P-.js:547
+    JC https://pantoken.app/tools/canvas-rce/assets/index-CU5Lo9P-.js:573
+    YC https://pantoken.app/tools/canvas-rce/assets/index-CU5Lo9P-.js:573
+    QC https://pantoken.app/tools/canvas-rce/assets/index-CU5Lo9P-.js:573
+    triggerEvent https://pantoken.app/tools/canvas-rce/assets/index-CU5Lo9P-.js:575
+    Gl https://pantoken.app/tools/canvas-rce/assets/index-CU5Lo9P-.js:556
+    Yl https://pantoken.app/tools/canvas-rce/assets/index-CU5Lo9P-.js:557
+    triggerEvent https://pantoken.app/tools/canvas-rce/assets/index-CU5Lo9P-.js:575
+    Xf https://pantoken.app/tools/canvas-rce/assets/index-CU5Lo9P-.js:562
+    Kf https://pantoken.app/tools/canvas-rce/assets/index-CU5Lo9P-.js:562
+    JB https://pantoken.app/tools/canvas-rce/assets/index-CU5Lo9P-.js:578
+    aw https://pantoken.app/tools/canvas-rce/assets/index-CU5Lo9P-.js:575
+    run https://pantoken.app/tools/canvas-rce/assets/index-CU5Lo9P-.js:562
+    P https://pantoken.app/tools/canvas-rce/assets/index-CU5Lo9P-.js:547
+    run https://pantoken.app/tools/canvas-rce/assets/index-CU5Lo9P-.js:562
+    R_ https://pantoken.app/tools/canvas-rce/assets/index-CU5Lo9P-.js:570
+    E https://pantoken.app/tools/canvas-rce/assets/index-CU5Lo9P-.js:547
+    JC https://pantoken.app/tools/canvas-rce/assets/index-CU5Lo9P-.js:573
+    fold https://pantoken.app/tools/canvas-rce/assets/index-CU5Lo9P-.js:547
+    JC https://pantoken.app/tools/canvas-rce/assets/index-CU5Lo9P-.js:573
+    YC https://pantoken.app/tools/canvas-rce/assets/index-CU5Lo9P-.js:573
+    QC https://pantoken.app/tools/canvas-rce/assets/index-CU5Lo9P-.js:573
+    triggerEvent https://pantoken.app/tools/canvas-rce/assets/index-CU5Lo9P-.js:575
+    Gl https://pantoken.app/tools/canvas-rce/assets/index-CU5Lo9P-.js:556
+    Yl https://pantoken.app/tools/canvas-rce/assets/index-CU5Lo9P-.js:557
+    triggerEvent https://pantoken.app/tools/canvas-rce/assets/index-CU5Lo9P-.js:575
+    Xf https://pantoken.app/tools/canvas-rce/assets/index-CU5Lo9P-.js:562
+    Kf https://pantoken.app/tools/canvas-rce/assets/index-CU5Lo9P-.js:562
+    Jf https://pantoken.app/tools/canvas-rce/assets/index-CU5Lo9P-.js:562
+    e https://pantoken.app/tools/canvas-rce/assets/index-CU5Lo9P-.js:575
+    run https://pantoken.app/tools/canvas-rce/assets/index-CU5Lo9P-.js:562
+    P https://pantoken.app/tools/canvas-rce/assets/index-CU5Lo9P-.js:547
+    run https://pantoken.app/tools/canvas-rce/assets/index-CU5Lo9P-.js:562
+    R_ https://pantoken.app/tools/canvas-rce/assets/index-CU5Lo9P-.js:570
+    E https://pantoken.app/tools/canvas-rce/assets/index-CU5Lo9P-.js:547
+    JC https://pantoken.app/tools/canvas-rce/assets/index-CU5Lo9P-.js:573
+    fold https://pantoken.app/tools/canvas-rce/assets/index-CU5Lo9P-.js:547
+    JC https://pantoken.app/tools/canvas-rce/assets/index-CU5Lo9P-.js:573
+    YC https://pantoken.app/tools/canvas-rce/assets/index-CU5Lo9P-.js:573
+    QC https://pantoken.app/tools/canvas-rce/assets/index-CU5Lo9P-.js:573
+    wee https://pantoken.app/tools/canvas-rce/assets/index-CU5Lo9P-.js:573
+    triggerEvent https://pantoken.app/tools/canvas-rce/assets/index-CU5Lo9P-.js:575
+    Gl https://pantoken.app/tools/canvas-rce/assets/index-CU5Lo9P-.js:556
+    Yl https://pantoken.app/tools/canvas-rce/assets/index-CU5Lo9P-.js:557
+    triggerEvent https://pantoken.app/tools/canvas-rce/assets/index-CU5Lo9P-.js:575
+    a https://pantoken.app/tools/canvas-rce/assets/index-CU5Lo9P-.js:573
+    Ir https://pantoken.app/tools/canvas-rce/assets/index-CU5Lo9P-.js:549
+    Lr https://pantoken.app/tools/canvas-rce/assets/index-CU5Lo9P-.js:549
+    Rr https://pantoken.app/tools/canvas-rce/assets/index-CU5Lo9P-.js:549
+    Hr https://pantoken.app/tools/canvas-rce/assets/index-CU5Lo9P-.js:549
+    a https://pantoken.app/tools/canvas-rce/assets/index-CU5Lo9P-.js:573
+    N https://pantoken.app/tools/canvas-rce/assets/index-CU5Lo9P-.js:547
+    GC https://pantoken.app/tools/canvas-rce/assets/index-CU5Lo9P-.js:573
+    rw https://pantoken.app/tools/canvas-rce/assets/index-CU5Lo9P-.js:575
+    E https://pantoken.app/tools/canvas-rce/assets/index-CU5Lo9P-.js:580
+    renderUI https://pantoken.app/tools/canvas-rce/assets/index-CU5Lo9P-.js:580
+    a https://pantoken.app/tools/canvas-rce/assets/index-CU5Lo9P-.js:580
+    rae https://pantoken.app/tools/canvas-rce/assets/index-CU5Lo9P-.js:543
+    oae https://pantoken.app/tools/canvas-rce/assets/index-CU5Lo9P-.js:543
+    cae https://pantoken.app/tools/canvas-rce/assets/index-CU5Lo9P-.js:543
+    r https://pantoken.app/tools/canvas-rce/assets/index-CU5Lo9P-.js:543
+    promise callback*vae https://pantoken.app/tools/canvas-rce/assets/index-CU5Lo9P-.js:543
+    bae https://pantoken.app/tools/canvas-rce/assets/index-CU5Lo9P-.js:543
+    render https://pantoken.app/tools/canvas-rce/assets/index-CU5Lo9P-.js:545
+    d https://pantoken.app/tools/canvas-rce/assets/index-CU5Lo9P-.js:545
+    l https://pantoken.app/tools/canvas-rce/assets/index-CU5Lo9P-.js:545
+    Zt https://pantoken.app/tools/canvas-rce/assets/index-CU5Lo9P-.js:500
+    l https://pantoken.app/tools/canvas-rce/assets/index-CU5Lo9P-.js:545
+    executeHandlers https://pantoken.app/tools/canvas-rce/assets/index-CU5Lo9P-.js:501
+    s https://pantoken.app/tools/canvas-rce/assets/index-CU5Lo9P-.js:501
+    o https://pantoken.app/tools/canvas-rce/assets/index-CU5Lo9P-.js:501
+    Gl https://pantoken.app/tools/canvas-rce/assets/index-CU5Lo9P-.js:501
+    bind https://pantoken.app/tools/canvas-rce/assets/index-CU5Lo9P-.js:501
+    Ve https://pantoken.app/tools/canvas-rce/assets/index-CU5Lo9P-.js:501
+    init https://pantoken.app/tools/canvas-rce/assets/index-CU5Lo9P-.js:545
+    <anonymous> https://pantoken.app/tools/canvas-rce/assets/index-CU5Lo9P-.js:1052
+    promise callback* https://pantoken.app/tools/canvas-rce/assets/index-CU5Lo9P-.js:1052
+index-CU5Lo9P-.js:1052:631
+Unable to build the selected theme Error: Unable to inline @pantoken/components/dist/banner.css: 404
+    bkt https://pantoken.app/tools/canvas-rce/assets/index-CU5Lo9P-.js:1037
+    bkt https://pantoken.app/tools/canvas-rce/assets/index-CU5Lo9P-.js:1037
+    Akt https://pantoken.app/tools/canvas-rce/assets/index-CU5Lo9P-.js:1040
+    Z9 https://pantoken.app/tools/canvas-rce/assets/index-CU5Lo9P-.js:1052
+    Y9 https://pantoken.app/tools/canvas-rce/assets/index-CU5Lo9P-.js:1050
+    n https://pantoken.app/tools/canvas-rce/assets/index-CU5Lo9P-.js:1041
+    setTimeout handler*$kt/< https://pantoken.app/tools/canvas-rce/assets/index-CU5Lo9P-.js:1041
+    setup https://pantoken.app/tools/canvas-rce/assets/index-CU5Lo9P-.js:1052
+    dispatch https://pantoken.app/tools/canvas-rce/assets/index-CU5Lo9P-.js:545
+    dispatch https://pantoken.app/tools/canvas-rce/assets/index-CU5Lo9P-.js:545
+    eN https://pantoken.app/tools/canvas-rce/assets/index-CU5Lo9P-.js:532
+    add https://pantoken.app/tools/canvas-rce/assets/index-CU5Lo9P-.js:532
+    Tte https://pantoken.app/tools/canvas-rce/assets/index-CU5Lo9P-.js:532
+    add https://pantoken.app/tools/canvas-rce/assets/index-CU5Lo9P-.js:537
+    i https://pantoken.app/tools/canvas-rce/assets/index-CU5Lo9P-.js:537
+    lI https://pantoken.app/tools/canvas-rce/assets/index-CU5Lo9P-.js:537
+    dispatch https://pantoken.app/tools/canvas-rce/assets/index-CU5Lo9P-.js:545
+    dispatch https://pantoken.app/tools/canvas-rce/assets/index-CU5Lo9P-.js:545
+    execCommand https://pantoken.app/tools/canvas-rce/assets/index-CU5Lo9P-.js:545
+    execCommand https://pantoken.app/tools/canvas-rce/assets/index-CU5Lo9P-.js:545
+    insertContent https://pantoken.app/tools/canvas-rce/assets/index-CU5Lo9P-.js:545
+    T7 https://pantoken.app/tools/canvas-rce/assets/index-CU5Lo9P-.js:835
+    onSubmit https://pantoken.app/tools/canvas-rce/assets/index-CU5Lo9P-.js:835
+    XJ https://pantoken.app/tools/canvas-rce/assets/index-CU5Lo9P-.js:580
+    r https://pantoken.app/tools/canvas-rce/assets/index-CU5Lo9P-.js:580
+    i https://pantoken.app/tools/canvas-rce/assets/index-CU5Lo9P-.js:580
+    each https://pantoken.app/tools/canvas-rce/assets/index-CU5Lo9P-.js:547
+    i https://pantoken.app/tools/canvas-rce/assets/index-CU5Lo9P-.js:580
+    r https://pantoken.app/tools/canvas-rce/assets/index-CU5Lo9P-.js:580
+    R_ https://pantoken.app/tools/canvas-rce/assets/index-CU5Lo9P-.js:570
+    E https://pantoken.app/tools/canvas-rce/assets/index-CU5Lo9P-.js:547
+    JC https://pantoken.app/tools/canvas-rce/assets/index-CU5Lo9P-.js:573
+    fold https://pantoken.app/tools/canvas-rce/assets/index-CU5Lo9P-.js:547
+    JC https://pantoken.app/tools/canvas-rce/assets/index-CU5Lo9P-.js:573
+    YC https://pantoken.app/tools/canvas-rce/assets/index-CU5Lo9P-.js:573
+    QC https://pantoken.app/tools/canvas-rce/assets/index-CU5Lo9P-.js:573
+index-CU5Lo9P-.js:1052:631
+The resource from “https://cdn.jsdelivr.net/npm/@pantoken/components/dist/banner.css” was blocked due to MIME type (“text/plain”) mismatch (X-Content-Type-Options: nosniff). canvas-rce
+This site appears to use a scroll-linked positioning effect. This may not work well with asynchronous panning; see https://firefox-source-docs.mozilla.org/performance/scroll-linked_effects.html for further details and to join the discussion on related tools and features! canvas-rce
+```
+* the icon for the inserted banner is a black square glyph (all providers), either the glyph isn't loading correctly, or it's not being dynamically added to the page css in the background.
+* the inserted banner component doesn't render its background/border and the close button placement isn't correct - almost like its specific stylesheet didn't get added.
+* In the logo picker everything is rendered as 'currentColor' and when they get inserted they are only in currentColor. they should be rendering in their default color schemes and we have added 'currentColor' variants that are supposed to be the text color.
+* when using esm.sh and toggling to html view in TinyMCE the follow console error appears:
+```
+GET
+https://esm.sh/@pantoken/components@2.1.0/dist/banner.css?raw
+NS_ERROR_DOM_NETWORK_ERR
+
+	
+GET
+	https://esm.sh/@pantoken/components@2.1.0/dist/banner.css?raw=
+Status
+404
+VersionHTTP/3
+Transferred325 B (0 B size)
+Referrer Policystrict-origin-when-cross-origin
+DNS ResolutionSystem
+
+    	
+    access-control-allow-origin
+    	*
+    age
+    	1978
+    cache-control
+    	public, max-age=31536000, immutable
+    cf-cache-status
+    	HIT
+    cf-ray
+    	a4b150180f5fcba4-LAX
+    content-length
+    	14
+    content-type
+    	text/plain; charset=utf-8
+    date
+    	Thu, 15 Oct 2026 19:43:28 GMT
+    priority
+    	u=2,i=?0
+    server
+    	cloudflare
+    server-timing
+    	cfExtPri
+    	
+    Accept
+    	text/css,*/*;q=0.1
+    Accept-Encoding
+    	gzip, deflate, br, zstd
+    Accept-Language
+    	en-US,en;q=0.9
+    Cache-Control
+    	no-cache
+    Connection
+    	keep-alive
+    DNT
+    	1
+    Host
+    	esm.sh
+    Pragma
+    	no-cache
+    Priority
+    	u=2
+    Referer
+    	https://pantoken.app/
+    Sec-Fetch-Dest
+    	style
+    Sec-Fetch-Mode
+    	no-cors
+    Sec-Fetch-Site
+    	cross-site
+    Sec-Fetch-Storage-Access
+    	none
+    TE
+    	trailers
+    User-Agent
+    	Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:158.0) Gecko/20100101 Firefox/158.0
+```
+ENHANCEMENTS
+* CDN Provider None (inline) can be renamed to "None" and keep the same functionality, inject the css in the background theme editor stylesheet.
+* add a new option to the CDN Provider list: "Inline" which uses formats/inline-styles instead of formats/components, toggling between them should toggle the underlying css and html while preserving the semantics of the component structure.
+* Add a new option (on by default) underneath the Include Dark Mode checkbox "Include interactions"
+* this should dynamically enable/disable the inclusion of the interactions javascript in the export and in the preview.  If possible, it should adjust the list of available components in the tinymce pantoken components pick list to remove those that require javascript.
+
+---
+
+Read-only planning research in /Users/dwahl/Scripts/pantoken. User reports deployed https://pantoken.app/tools/canvas-rce/: missing AtkinsonHyperlegibleNext-Medium hashed font; banner CSS requests @pantoken/components/dist/banner.css 404 on jsdelivr and esm.sh @2.1.0; missing banner style and icon black square. Plan fixes plus provider None label and new Inline provider using formats/inline-styles, include interactions checkbox default true for preview/export. Focus your area on platforms/canvas-theme-editor buildTheme, CDN paths, fonts, docs embedding/build deployment. First read .entire/graph-agent.md and .agents/skills/using-entire/SKILL.md, follow graph search first if shell available. Check Entire status/history if tools permit; explicitly report unavailability rather than invent. No writes, installs, or implementation. Return concrete file paths/symbols/line numbers, root-cause evidence vs hypotheses, relevant tests and specific validation commands; docs instructions relevant. Identify public API constraints, asset exports, interactions behavior and inline conversion opportunities. Keep research bounded to these paths and direct dependencies. Tools may lack terminal; use targeted semantic/text search if commands impossible.
+
+---
+
+this should be incremental conventional commits and you can test it with `vpr docs:dev` to run through the live site with the builtin browser or the external browser. I haven't started a dev server, so you can.
+
+---
+
+Start implementation
