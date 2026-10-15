@@ -1,0 +1,31 @@
+{
+  "cli_version": "0.11.5",
+  "checkpoint_id": "01M4ZZRFBV44GP52X8B3M0EF5E",
+  "session_id": "09210353-6014-4195-b1be-8d8a02d2eb33",
+  "strategy": "manual-commit",
+  "created_at": "2026-10-15T14:34:18.125958Z",
+  "branch": "automatica11y",
+  "checkpoints_count": 1,
+  "files_touched": [
+    ".changeset/cute-camels-watch.md",
+    "compatibility.json",
+    "docs/compatibility.md",
+    "scripts/release/target-compatibility.json"
+  ],
+  "agent": "Copilot CLI",
+  "model": "",
+  "turn_id": "1f513f7d52a7",
+  "checkpoint_transcript_start": 510,
+  "transcript_lines_at_start": 510,
+  "compact_transcript_start": 78,
+  "token_usage": {
+    "input_tokens": 0,
+    "cache_creation_tokens": 0,
+    "cache_read_tokens": 0,
+    "output_tokens": 0,
+    "api_call_count": 0
+  },
+  "session_metrics": {
+    "turn_count": 4
+  }
+}
