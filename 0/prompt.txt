@@ -1,0 +1,30 @@
+there are some strings that get called every time we run translation as looking untranslated because they match the source string, we either need to mark them as the same in both or investigate why they're not translating. this occurs in nearly every language, but sometimes it's a latin vs non-latin split:
+```
+    fr/api/css/drawer-layout.content.md: 13 glossary, 5 prose (5 cached, 0 translated)
+  ! [fr] cached prose translation for "Navigation" looks untranslated; retranslating
+  ! [fr] prose unit looks untranslated (identical to source), not cached: "Navigation"
+      fr-CA/api/css/calendar.day.md: 9 glossary, 4 prose (4 cached, 0 translated)
+  ! [fr-CA] cached prose translation for "Sa" looks untranslated; retranslating
+  ! [fr-CA] prose unit looks untranslated (identical to source), not cached: "Sa"
+      is/api/css/calendar.day.md: 9 glossary, 4 prose (4 cached, 0 translated)
+  ! [is] cached prose translation for "Su" looks untranslated; retranslating
+  ! [is] prose unit looks untranslated (identical to source), not cached: "Su"
+      id/api/css/pagination.page.md: 11 glossary, 2 prose (2 cached, 0 translated)
+  ! [id] cached prose translation for "Pastel" looks untranslated; retranslating
+  ! [id] prose unit looks untranslated (identical to source), not cached: "Pastel"
+  id/api/renderers/web-components/src/variables/tr.md: 2 glossary, 1 prose (1 cached, 0 translated)
+  ! [id] cached prose translation for "Menu" looks untranslated; retranslating
+  ! [id] prose unit looks untranslated (identical to source), not cached: "Menu"
+```
+
+---
+
+another string to investigate (all locales):
+```
+    vi/api/css/card.md: 15 glossary, 14 prose (16 cached, 0 translated)
+  ! [vi] cached prose translation for "Checkbox\n" looks untranslated; retranslating
+  ```
+
+---
+
+let's fix the catalog mismatch. we should be using the version bundled with vite-plus 1.2.0
