@@ -69,7 +69,7 @@
     mask: var(--instui-icon-circle-check) center / contain no-repeat;
   }
 
-  /* fallow-ignore-next-line css-duplicate-block -- clip pattern required inline for individual importability */
+  /* fallow-ignore-next-line css-duplicate-block, code-duplication -- clip pattern required inline for individual importability */
   &.-type-screenreader-only {
     position: absolute;
     inline-size: 1px;

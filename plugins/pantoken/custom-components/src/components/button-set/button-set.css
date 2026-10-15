@@ -208,6 +208,7 @@
  * child button can inherit them from the group; a button's own -color-ai(-secondary) class still
  * wins via button.css's higher-specificity same-element rule.
  */
+/* fallow-ignore-next-line code-duplication -- group-owned AI defaults must match standalone core buttons without adding child classes */
 .pfx-button-set.-color-ai > .pfx-button:not([class*="-color-"]) {
   color: var(--instui-color-text-interactive-action-ai-base);
   border-color: transparent;
@@ -226,6 +227,7 @@
       border-box;
 }
 
+/* fallow-ignore-next-line code-duplication -- AI hover tokens intentionally match the core button contract */
 .pfx-button-set.-color-ai > .pfx-button:not([class*="-color-"]):hover {
   color: var(--instui-color-text-interactive-action-ai-hover);
   background:
@@ -243,6 +245,7 @@
       border-box;
 }
 
+/* fallow-ignore-next-line code-duplication -- AI active tokens intentionally match the core button contract */
 .pfx-button-set.-color-ai > .pfx-button:not([class*="-color-"]):active {
   color: var(--instui-color-text-interactive-action-ai-active);
   background:
@@ -295,6 +298,7 @@
   color: transparent;
 }
 
+/* fallow-ignore-next-line code-duplication -- the group-owned secondary AI border uses the core button's masked-gradient technique */
 .pfx-button-set.-color-ai-secondary > .pfx-button:not([class*="-color-"])::after {
   content: "";
   position: absolute;
@@ -404,6 +408,7 @@
   padding-inline: var(--instui-component-base-button-small-padding-horizontal);
 }
 
+/* fallow-ignore-next-line code-duplication -- small icon-only buttons share the shape test, not the dimensions, of larger variants */
 .pfx-button-set.-size-sm
   > .pfx-button:not([class*="-size-"]):is(
     .-shape-square,
@@ -419,6 +424,7 @@
   padding-inline: var(--instui-component-base-button-medium-padding-horizontal);
 }
 
+/* fallow-ignore-next-line code-duplication -- medium icon-only buttons need their own size-token rule */
 .pfx-button-set.-size-md
   > .pfx-button:not([class*="-size-"]):is(
     .-shape-square,

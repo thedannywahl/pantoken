@@ -25,16 +25,7 @@
  *   ✓ ar: rendered in docs/ar/api (3,534 translated, 1,265 cached)
  *   ✨ All API locales complete!
  */
-import {
-  cpSync,
-  existsSync,
-  mkdirSync,
-  readdirSync,
-  readFileSync,
-  rmSync,
-  statSync,
-  writeFileSync,
-} from "node:fs";
+import { cpSync, existsSync, mkdirSync, readFileSync, rmSync, writeFileSync } from "node:fs";
 import { dirname, join, relative } from "node:path";
 import { spawnSync } from "node:child_process";
 import { NON_ROOT_LOCALES, parseRequestedLocales } from "../.vitepress/i18n.ts";
@@ -59,6 +50,7 @@ import {
   translateUnits,
 } from "./translation-memory.ts";
 import { GLOSSARY_TERMS } from "./glossary.ts";
+import { readPartialPages, walkFiles } from "./lib/files.ts";
 
 const docsRoot = join(import.meta.dirname, "..");
 const enApiDir = join(docsRoot, "api");
@@ -66,14 +58,9 @@ const apiDirFor = (locale: string): string => join(docsRoot, locale, "api");
 const locales = parseRequestedLocales(process.env.DOCS_TRANSLATION_LOCALE, NON_ROOT_LOCALES);
 const GLOSSARY_TEXT = new Set(GLOSSARY_TERMS.map(({ term }) => term));
 
-const readPartialPages = (): Set<string> | undefined => {
-  const path = process.env.DOCS_CHANGED_PAGES_FILE;
-  if (!path || !existsSync(path)) return undefined;
-  const parsed = JSON.parse(readFileSync(path, "utf8")) as string[];
-  return new Set(parsed.map((page) => page.split("\\").join("/")));
-};
-
-const partialPages = readPartialPages();
+const partialPages = existsSync(process.env.DOCS_CHANGED_PAGES_FILE ?? "")
+  ? readPartialPages()
+  : undefined;
 const partialApiPagesFor = (locale: string): Set<string> | undefined => {
   if (!partialPages) return undefined;
   const prefix = `${locale}/api/`;
@@ -94,21 +81,28 @@ const isIdentifierChar = (char: string): boolean =>
 
 const isIdentifierSegmentChar = (char: string): boolean => isIdentifierChar(char) || char === "-";
 
+const isIdentifierStart = (char: string): boolean =>
+  isAsciiLetter(char) || char === "_" || char === "$";
+
+const identifierEnd = (
+  value: string,
+  start: number,
+  accepts: (char: string) => boolean,
+): number => {
+  let index = start;
+  while (index < value.length && accepts(value[index])) index += 1;
+  return index;
+};
+
 const isCodeShapedIdentifier = (value: string): boolean => {
-  if (value.length === 0 || (!isAsciiLetter(value[0]) && value[0] !== "_" && value[0] !== "$")) {
-    return false;
-  }
-  let index = 1;
-  while (index < value.length && isIdentifierChar(value[index])) index += 1;
-  while (index < value.length && (value[index] === "." || value[index] === "-")) {
-    index += 1;
-    const segmentStart = index;
-    while (index < value.length && isIdentifierSegmentChar(value[index])) index += 1;
+  if (!isIdentifierStart(value[0])) return false;
+  let index = identifierEnd(value, 1, isIdentifierChar);
+  while ([".", "-"].includes(value[index])) {
+    const segmentStart = index + 1;
+    index = identifierEnd(value, segmentStart, isIdentifierSegmentChar);
     if (index === segmentStart) return false;
   }
-  if (value.slice(index, index + 2) === "()") index += 2;
-  if (value[index] === "?") index += 1;
-  return index === value.length;
+  return /^(?:\(\))?\??$/u.test(value.slice(index));
 };
 
 /**
@@ -144,24 +138,6 @@ const run = (command: string, args: string[]): void => {
   if (result.status !== 0) {
     throw new Error(`${command} ${args.join(" ")} failed with exit code ${result.status ?? -1}`);
   }
-};
-
-const walkFiles = (dir: string): string[] => {
-  if (!existsSync(dir)) {
-    return [];
-  }
-
-  const files: string[] = [];
-  for (const name of readdirSync(dir)) {
-    const fullPath = join(dir, name);
-    const stat = statSync(fullPath);
-    if (stat.isDirectory()) {
-      files.push(...walkFiles(fullPath));
-    } else {
-      files.push(fullPath);
-    }
-  }
-  return files;
 };
 
 type SidebarItem = {
@@ -267,6 +243,18 @@ const cloneApiForLocale = (localeApiDir: string): void => {
   cpSync(enApiDir, localeApiDir, { recursive: true });
 };
 
+const translateGlossaryUnits = async (
+  units: ReturnType<typeof collectUnits>,
+  glossary: GlossaryTranslationAdapter,
+): Promise<Map<string, string>> => {
+  const sources = new Set(
+    units.filter((unit) => unit.kind === "glossary").map((unit) => unit.text),
+  );
+  const translated = new Map<string, string>();
+  for (const source of sources) translated.set(source, await glossary.translateText(source));
+  return translated;
+};
+
 /**
  * Segment each cloned HU markdown file into prose / deterministic-glossary / verbatim blocks, then
  * rewrite it translated in place. Prose is batched + cached through the selected adapter; headings,
@@ -302,12 +290,7 @@ const translateMarkdownFiles = async (
     const fileUnits = collectUnits(segments);
 
     // Translate glossary terms for this file
-    const glossaryText = new Map<string, string>();
-    for (const unit of fileUnits) {
-      if (unit.kind === "glossary" && !glossaryText.has(unit.text)) {
-        glossaryText.set(unit.text, await glossary.translateText(unit.text));
-      }
-    }
+    const glossaryText = await translateGlossaryUnits(fileUnits, glossary);
     totalGlossaryTerms += glossaryText.size;
 
     // Translate prose units for this file

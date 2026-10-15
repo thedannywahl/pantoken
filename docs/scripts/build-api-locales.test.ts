@@ -336,6 +336,27 @@ test("build surfaces a generation failure as a non-zero exit code", async () => 
   expect(errSpy).toHaveBeenCalled();
 });
 
+test.each([
+  ["foo--", true],
+  ["foo.bar-baz()?", true],
+  ["$token", true],
+  ["_token", true],
+  ["foo.9-part", true],
+  ["foo-bar.baz()", true],
+  ["", false],
+  ["foo.", false],
+  ["foo-", false],
+  ["9foo", false],
+  ["foo()()", false],
+  ["foo??", false],
+  ["foo.()", false],
+  ["foo()bar", false],
+] as const)("classifies identifier boundary %j as verbatim: %s", async (source, expected) => {
+  const { isRequiredVerbatimApiUnit } = await import("./build-api-locales.ts");
+
+  expect(isRequiredVerbatimApiUnit(source)).toBe(expected);
+});
+
 test("keeps API identifiers and code-shaped prose verbatim", async () => {
   const { isRequiredVerbatimApiUnit } = await import("./build-api-locales.ts");
 

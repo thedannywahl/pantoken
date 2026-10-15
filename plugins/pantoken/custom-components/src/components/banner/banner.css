@@ -249,14 +249,15 @@
       padding-inline: var(--instui-component-base-button-small-padding-horizontal);
     }
 
-    /* fallow-ignore-next-line code-duplication */
-    > .pfx-button:not([class*="-color-"]),
-    > .button-group > .pfx-button:not(:has(+ .pfx-button)):not([class*="-color-"]) {
+    >.pfx-button:not([class*="-color-"]),
+    /* fallow-ignore-next-line code-duplication -- standalone banner actions intentionally match the core primary-button token contract */
+    >.button-group>.pfx-button:not(:has(+ .pfx-button)):not([class*="-color-"]) {
       background: var(--instui-color-background-interactive-action-primary-base);
       border-color: var(--instui-color-stroke-interactive-action-primary-base);
       color: var(--instui-color-text-interactive-action-primary-base);
 
       &:focus,
+      /* fallow-ignore-next-line code-duplication -- standalone banner actions retain the core primary-button states */
       &:hover {
         background: var(--instui-color-background-interactive-action-primary-hover);
         border-color: var(--instui-color-stroke-interactive-action-primary-hover);

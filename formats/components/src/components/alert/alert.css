@@ -180,7 +180,7 @@
   }
 
   /* screenReaderOnly: announced to assistive tech, but visually hidden. */
-  /* fallow-ignore-next-line css-duplicate-block -- screenReaderOnly is a public Alert prop; declarations cannot be extracted without breaking the component API */
+  /* fallow-ignore-next-line css-duplicate-block, code-duplication -- screenReaderOnly is a public Alert prop; declarations cannot be extracted without breaking the component API */
   &.-screen-reader-only {
     position: absolute;
     inline-size: 1px;

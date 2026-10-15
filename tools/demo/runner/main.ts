@@ -22,17 +22,18 @@ const params = new URLSearchParams(location.search);
 const cssUrls = (params.get("css") ?? "").split(",").filter(Boolean);
 const srcUrl = params.get("src");
 const mount = document.getElementById("runner");
+const serializedLabels = params.get("labels") ?? "{}";
+
+const isHostLabel = ([key, value]: [string, unknown]): boolean =>
+  typeof value === "string" && ["result", "html", "css", "js"].includes(key);
 
 /** The host's localized view-tab labels (`&labels=`), keeping only string values it actually sent. */
 const hostLabels = ((): Partial<Record<PartKey | "result", string>> => {
   try {
-    const raw: unknown = JSON.parse(params.get("labels") ?? "{}");
+    const raw: unknown = JSON.parse(serializedLabels);
     if (!raw || typeof raw !== "object") return {};
     return Object.fromEntries(
-      Object.entries(raw as Record<string, unknown>).filter(
-        ([key, value]) =>
-          typeof value === "string" && ["result", "html", "css", "js"].includes(key),
-      ),
+      Object.entries(raw as Record<string, unknown>).filter(isHostLabel),
     ) as Partial<Record<PartKey | "result", string>>;
   } catch {
     return {};
@@ -62,7 +63,7 @@ let hostScheme: "light" | "dark" | null = null;
 function isDark(): boolean {
   if (hostScheme) return hostScheme === "dark";
   try {
-    if (window.parent && window.parent !== window) {
+    if (window.parent !== window) {
       return window.parent.document.documentElement.classList.contains("dark");
     }
   } catch {
@@ -626,6 +627,10 @@ function isTrustedOrigin(origin: string): boolean {
   return origin === HOST_ORIGIN || origin === location.origin || origin === "null";
 }
 
+function setHostScheme(mode: string | undefined): void {
+  if (mode === "light" || mode === "dark") hostScheme = mode;
+}
+
 /** Message handlers keyed by `type`; each validates its own payload so the dispatcher stays flat. */
 const MESSAGE_HANDLERS: Record<string, (ctx: RunnerCtx, data: DemoMessage) => void> = {
   "pantoken-demo-scheme": (ctx) => {
@@ -634,7 +639,7 @@ const MESSAGE_HANDLERS: Record<string, (ctx: RunnerCtx, data: DemoMessage) => vo
   },
   "pantoken-demo-theme": (ctx, data) => {
     // The host's scheme is authoritative; it knows which instance owns this frame.
-    if (data.mode === "light" || data.mode === "dark") hostScheme = data.mode;
+    setHostScheme(data.mode);
     if (typeof data.theme === "string") setTheme(ctx, data.theme);
     if (typeof data.color === "string") setColor(ctx, data.color, data.customScale);
     ctx.resolveTheme?.();

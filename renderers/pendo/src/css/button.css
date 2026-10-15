@@ -47,6 +47,7 @@
     border-color: var(--instui-color-stroke-interactive-action-primary-base);
     color: var(--instui-color-text-interactive-action-primary-base);
 
+    /* fallow-ignore-next-line code-duplication -- Pendo's standalone selectors reproduce the core primary-button states */
     &:hover {
       background: var(--instui-color-background-interactive-action-primary-hover);
       border-color: var(--instui-color-stroke-interactive-action-primary-hover);
@@ -226,6 +227,7 @@
       border-color: var(--instui-color-stroke-interactive-action-primary-base);
       color: var(--instui-color-text-interactive-action-primary-base);
 
+      /* fallow-ignore-next-line code-duplication -- warning alerts must restore the primary states over the inverse palette */
       &:hover {
         background: var(--instui-color-background-interactive-action-primary-hover);
         border-color: var(--instui-color-stroke-interactive-action-primary-hover);
