@@ -312,10 +312,10 @@ since the runner writes the scale into a generated `srcdoc` attribute.
 
 ## Common implementation weaknesses and countermeasures
 
-| Canvas authoring control    | Evidence                                                                                                                                                                                                                                                                                           |
-| --------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Local inline conversion     | The shared inliner transforms supplied HTML/CSS without fetching resources, escapes stylesheet markup boundaries, and retains the existing trusted-author boundary. Provider round-trip tests cover generated versus authored declarations and removal of editor tracking attributes from exports. |
-| Optional generated behavior | Include interactions controls only Pantoken's generated preview/export scripts. It does not disable custom author JavaScript, native behavior, or the app shell.                                                                                                                                   |
+| Canvas authoring control    | Evidence                                                                                                                                                                                                                                                                                                   |
+| --------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Local inline conversion     | The generic inliner does not fetch resources. Browser snapshots use a script-disabled iframe and bounded glyph canvases; author images/CSS can still request resources. Tests cover authored/generated declarations and nodes, scoped resolution, and removal of private tracking attributes from exports. |
+| Optional generated behavior | Include interactions controls generated Pantoken scripts outside Inline. Portable Inline disables generated/custom preview JavaScript and materializes static visuals; the app shell remains active.                                                                                                       |
 
 | Weakness                              | Countermeasure                                                                                                                                                                                                                                                                                                                                                                                                                |
 | ------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -405,8 +405,9 @@ The following risks remain or are deliberately outside the security claim:
     or isolated from other scripts on the same origin. Restoring custom JavaScript reactivates it in
     the Canvas editor's existing preview context. Schema validation prevents malformed records from
     being applied, but does not sanitize intentionally authored active content.
-    Inline conversion does not change this trust boundary, and disabling generated interactions is
-    not a sandbox for custom scripts or authored active content.
+    Inline conversion does not change this trust boundary. Its temporary snapshot frame disables
+    scripts, but referenced author resources may still access the network; the generic interactions
+    toggle in other providers is not a sandbox for custom scripts or authored active content.
 11. **Agent transcript scanning.** Entire's checkpoint transcripts are dense with structural UUIDs,
     which GitHub's legacy npm-token detector matches whenever the keyword `npm` appears nearby. In
     an npm monorepo that fires constantly and blocks the checkpoint push, so

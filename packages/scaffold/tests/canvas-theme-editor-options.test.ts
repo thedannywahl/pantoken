@@ -135,3 +135,39 @@ test("inline history recovers earlier undo snapshots and preserves newly inserte
     '<p class="text">First<strong>New</strong></p>',
   );
 });
+
+test("async snapshots remove generated visuals from canonical content but keep them in exports", async () => {
+  const state = new InlineDocument();
+  const rendered = await state.renderAsync('<p style="color: red">Author</p>', "", async (html) => {
+    const root = document.createElement("template");
+    root.innerHTML = html;
+    const paragraph = root.content.querySelector("p")!;
+    paragraph.style.padding = "12px";
+    const glyph = document.createElement("span");
+    glyph.setAttribute("data-pantoken-inline-generated", "::before");
+    glyph.setAttribute("aria-hidden", "true");
+    glyph.textContent = "Glyph";
+    paragraph.prepend(glyph);
+    return root.innerHTML;
+  });
+  expect(state.canonical(rendered)).toBe('<p style="color: red;">Author</p>');
+  expect(state.export(rendered)).toContain("Glyph");
+  expect(state.export(rendered)).not.toContain("data-pantoken-inline");
+});
+
+test("portable Inline forces light/static settings and isolates preview and downloads", () => {
+  const main = readFileSync(
+    resolve(import.meta.dirname, "../templates/canvas-theme-editor/src/main.ts.tmpl"),
+    "utf8",
+  );
+  expect(main).toContain('import("@pantoken/inline-styles/browser")');
+  expect(main).toContain("includeInteractionsCheckbox.disabled = inline");
+  expect(main).toContain(
+    "includeDarkModeCheckbox.disabled = !supportsDarkMode || providerSelect.value === INLINE_PROVIDER_ID",
+  );
+  expect(main).toContain(
+    'if (providerSelect.value === INLINE_PROVIDER_ID) return { css: "", js: "" }',
+  );
+  expect(main).toContain("preferredInteractions:");
+  expect(main).toContain("preferredMode:");
+});

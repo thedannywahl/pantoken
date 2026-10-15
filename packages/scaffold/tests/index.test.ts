@@ -104,8 +104,9 @@ test("canvas-theme-editor is a known, template-only platform (no preset)", async
   );
   expect(main).toContain("editorSkinStyle.textContent = css.skin;");
   expect(main).toContain(
-    'editorContentStyle.textContent = [tokensCss, LOCAL_COMPONENT_CSS, css.content, PREVIEW_SCHEME_FORCE_CSS].join("\\n");',
+    "editorContentStyle.textContent = [tokensCss, LOCAL_COMPONENT_CSS, css.content, PREVIEW_SCHEME_FORCE_CSS,",
   );
+  expect(main).toContain('data-pantoken-inline-generated="::before"');
   expect(main).toContain("editorContentStyle.ownerDocument !== editorDocument");
   expect(main).not.toContain("editorSkinLink?.remove()");
   expect(main).not.toContain("editorContentLink?.remove()");

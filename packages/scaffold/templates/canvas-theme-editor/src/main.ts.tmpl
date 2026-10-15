@@ -709,11 +709,15 @@ function applyEditorTheme(editor: Editor | undefined): void {
   const tokensCss = selectedTheme === "canvas" ? canvasTokensCss
     : selectedTheme === "canvasHighContrast" ? canvasHighContrastTokensCss
     : includeDarkModeCheckbox.checked ? adaptiveTokensCss : rebrandLightTokensCss;
-  editorContentStyle.textContent = [tokensCss, LOCAL_COMPONENT_CSS, css.content, PREVIEW_SCHEME_FORCE_CSS].join("\n");
+  editorContentStyle.textContent = [tokensCss, LOCAL_COMPONENT_CSS, css.content, PREVIEW_SCHEME_FORCE_CSS,
+    ':has(> [data-pantoken-inline-generated="::before"])::before, :has(> [data-pantoken-inline-generated="::after"])::after { content: none !important; }',
+  ].join("\n");
   // The content CSS's dark rules key off this attribute on the iframe's own root, which doesn't
   // inherit it from the host document.
   editorDocument.documentElement.dataset.pantokenScheme =
-    document.documentElement.dataset.pantokenScheme;
+    providerSelect.value === INLINE_PROVIDER_ID ? "light" : document.documentElement.dataset.pantokenScheme;
+  if (providerSelect.value === INLINE_PROVIDER_ID) editorDocument.documentElement.style.colorScheme = "light";
+  else editorDocument.documentElement.style.removeProperty("color-scheme");
 }
 
 /** Temporarily overrides the editing iframe's scheme so the a11y checker can test contrast under
@@ -1020,6 +1024,9 @@ const includeDarkModeRow = document.getElementById("include-dark-mode-row")!;
 const includeDarkModeCheckbox = document.querySelector<HTMLInputElement>("#include-dark-mode")!;
 const includeInteractionsCheckbox = document.querySelector<HTMLInputElement>("#include-interactions")!;
 includeInteractionsCheckbox.checked = preferences.includeInteractions !== false;
+let rememberedInteractions = includeInteractionsCheckbox.checked;
+let rememberedDarkMode = false;
+let previousProvider = providerSelect.value;
 const previewSchemeToggle = document.querySelector<HTMLButtonElement>("#preview-scheme-toggle")!;
 const previewFrame = document.querySelector<HTMLIFrameElement>("#preview")!;
 const previewResetButton = document.querySelector<HTMLButtonElement>("#preview-reset")!;
@@ -1070,6 +1077,8 @@ interface CanvasThemePreset {
   readonly mode: ThemeMode;
   readonly cdnProvider: string;
   readonly includeInteractions?: boolean;
+  readonly preferredInteractions?: boolean;
+  readonly preferredMode?: ThemeMode;
   readonly customCss: string;
   readonly customJs: string;
   readonly editorHtml: string;
@@ -1216,11 +1225,14 @@ async function syncInlineProvider(theme: { css: string }): Promise<void> {
     return;
   }
   const canonical = inlineDocument.canonical(current);
-  const css = [theme.css, cssEditorView.state.doc.toString()].join("\n");
+  const css = [theme.css, cssEditorView.state.doc.toString(), ':root { color-scheme: light; } :where(body > [data-pantoken-color]) { background-color: var(--instui-color-background-container, #fff); }'].join("\n");
   if (inlineRendered && canonical === lastInlineHtml && css === lastInlineCss) return;
-  const { inlineHtml } = await import("@pantoken/inline-styles/html");
+  const { inlineHtmlInBrowser } = await import("@pantoken/inline-styles/browser");
   if (providerSelect.value !== INLINE_PROVIDER_ID || getEditorHtml() !== current) return;
-  const rendered = inlineDocument.render(current, css, (html, stylesheet) => inlineHtml(html, stylesheet, { inlineCustomProperties: false }));
+  const rendered = await inlineDocument.renderAsync(normalizeEditorHtml(current, selectedColor), css, (html, stylesheet) => inlineHtmlInBrowser(html, stylesheet, {
+    rootAttributes: { "data-pantoken-theme": selectedTheme, "data-pantoken-color": selectedColor, "data-pantoken-scheme": "light" },
+  }));
+  if (providerSelect.value !== INLINE_PROVIDER_ID || getEditorHtml() !== current) return;
   inlineRendered = true;
   replaceProviderHtml(rendered);
   lastInlineHtml = inlineDocument.canonical(getEditorHtml());
@@ -1276,6 +1288,8 @@ function captureCanvasThemePreset(): CanvasThemePreset {
     mode: includeDarkModeCheckbox.checked ? "adaptive" : "light",
     cdnProvider: providerSelect.value,
     includeInteractions: includeInteractionsCheckbox.checked,
+    preferredInteractions: providerSelect.value === INLINE_PROVIDER_ID ? rememberedInteractions : includeInteractionsCheckbox.checked,
+    preferredMode: (providerSelect.value === INLINE_PROVIDER_ID ? rememberedDarkMode : includeDarkModeCheckbox.checked) ? "adaptive" : "light",
     customCss: cssEditorView.state.doc.toString(),
     customJs: jsEditorView.state.doc.toString(),
     editorHtml: normalizeEditorHtml(inlineDocument.canonical(getEditorHtml()), selectedColor),
@@ -1308,6 +1322,8 @@ function isCanvasThemePreset(value: unknown): value is CanvasThemePreset {
     isThemeMode(preset.mode) &&
     isCdnProvider(preset.cdnProvider) &&
     (preset.includeInteractions === undefined || typeof preset.includeInteractions === "boolean") &&
+    (preset.preferredInteractions === undefined || typeof preset.preferredInteractions === "boolean") &&
+    (preset.preferredMode === undefined || isThemeMode(preset.preferredMode)) &&
     typeof preset.customCss === "string" &&
     typeof preset.customJs === "string" &&
     typeof preset.editorHtml === "string"
@@ -1326,8 +1342,12 @@ function resetCanvasThemePreset(): void {
   if (themeButton) selectToggleButton(themeButtons, themeButton);
   includeDarkModeCheckbox.checked = false;
   includeInteractionsCheckbox.checked = true;
+  rememberedInteractions = true;
+  rememberedDarkMode = false;
   syncDarkModeAvailability();
   providerSelect.value = isLocalPreview ? LOCAL_PROVIDER_ID : DEFAULT_CDN_PROVIDER_ID;
+  previousProvider = providerSelect.value;
+  syncProviderPolicy();
   selectThemeColor("navy");
   setCustomColor(DEFAULT_CUSTOM_COLOR);
   replaceEditorDocument(cssEditorView, "");
@@ -1358,8 +1378,11 @@ function restoreCanvasThemePreset(preset: CanvasThemePreset): void {
   if (themeButton) selectToggleButton(themeButtons, themeButton);
   includeDarkModeCheckbox.checked = preset.mode === "adaptive";
   includeInteractionsCheckbox.checked = preset.includeInteractions !== false;
-  syncDarkModeAvailability();
+  rememberedInteractions = preset.preferredInteractions ?? preset.includeInteractions !== false;
+  rememberedDarkMode = (preset.preferredMode ?? preset.mode) === "adaptive";
   providerSelect.value = preset.cdnProvider;
+  previousProvider = preset.cdnProvider;
+  syncProviderPolicy();
   selectThemeColor(preset.color);
   setCustomColor(preset.customColor ?? DEFAULT_CUSTOM_COLOR);
   replaceEditorDocument(cssEditorView, preset.customCss);
@@ -1436,9 +1459,28 @@ function selectToggleButton(buttons: NodeListOf<HTMLButtonElement>, target: HTML
 function syncDarkModeAvailability(): void {
   const supportsDarkMode = selectedTheme === "rebrand";
   includeDarkModeRow.hidden = !supportsDarkMode;
-  includeDarkModeCheckbox.disabled = !supportsDarkMode;
-  if (!supportsDarkMode) includeDarkModeCheckbox.checked = false;
+  includeDarkModeCheckbox.disabled = !supportsDarkMode || providerSelect.value === INLINE_PROVIDER_ID;
+  if (includeDarkModeCheckbox.disabled) includeDarkModeCheckbox.checked = false;
   syncPreviewSchemeToggleAvailability();
+}
+
+function syncProviderPolicy(): void {
+  const inline = providerSelect.value === INLINE_PROVIDER_ID;
+  if (inline) {
+    if (previousProvider !== INLINE_PROVIDER_ID) {
+      rememberedInteractions = includeInteractionsCheckbox.checked;
+      rememberedDarkMode = includeDarkModeCheckbox.checked;
+    }
+    includeInteractionsCheckbox.checked = false;
+    includeDarkModeCheckbox.checked = false;
+  } else if (previousProvider === INLINE_PROVIDER_ID) {
+    includeInteractionsCheckbox.checked = rememberedInteractions;
+    includeDarkModeCheckbox.checked = rememberedDarkMode;
+  }
+  includeInteractionsCheckbox.disabled = inline;
+  previousProvider = providerSelect.value;
+  syncDarkModeAvailability();
+  syncPreviewResetAvailability();
 }
 
 /** The preview's own light/dark switch only makes sense once "include dark mode" is on. */
@@ -1789,6 +1831,7 @@ function persistPreferences(): void {
     previewFullscreen: previewPane.classList.contains("-fullscreen"),
     cdnProvider: providerSelect.value,
     includeInteractions: includeInteractionsCheckbox.checked,
+    ...(providerSelect.value === INLINE_PROVIDER_ID ? { includeInteractions: rememberedInteractions } : {}),
     tinymceConfig: mergedTinymceConfig,
   });
 }
@@ -1829,10 +1872,13 @@ function updatePreview(theme: { css: string; js: string }): void {
   // Canvas's own theme already frames the RCE content area — the picker's border would double up.
   previewFrame.style.borderColor =
     selectedTheme === "canvas" || selectedTheme === "canvasHighContrast" ? "transparent" : "";
-  const themeCss = [theme.css, PREVIEW_SCHEME_FORCE_CSS, cssEditorView.state.doc.toString()]
+  const portable = providerSelect.value === INLINE_PROVIDER_ID;
+  if (portable) previewFrame.setAttribute("sandbox", "allow-same-origin");
+  else previewFrame.removeAttribute("sandbox");
+  const themeCss = (portable ? [] : [theme.css, PREVIEW_SCHEME_FORCE_CSS, cssEditorView.state.doc.toString()])
     .filter(Boolean)
     .join("\n");
-  const themeJs = [theme.js, jsEditorView.state.doc.toString()]
+  const themeJs = (portable ? [] : [theme.js, jsEditorView.state.doc.toString()])
     .filter(Boolean)
     .join("\n");
   // Elevation is a rebrand-only affordance — Canvas's own themes don't use drop-shadow surfaces.
@@ -1848,12 +1894,12 @@ function updatePreview(theme: { css: string; js: string }): void {
       ? "dark"
       : "light";
   loadPreviewDocument(`<!doctype html><html data-pantoken-boundary data-pantoken-instance="${EDITOR_INSTANCE}-preview" data-pantoken-theme="${selectedTheme}" data-pantoken-scheme="${previewScheme}" data-pantoken-color="${selectedColor}" style="color-scheme:${previewScheme}"><head><style>${themeCss}
-${CUSTOM_THEME_COLORS_CSS}</style><style>#wrapper{padding:32px;}#content{padding:36px 48px 48px;min-height:20rem;margin:0 auto;border-radius:12px;}@media not all and (min-width: 768px) {
+${portable ? "" : CUSTOM_THEME_COLORS_CSS}</style><style>html{background:#fff}#wrapper{padding:32px;}#content{padding:36px 48px 48px;min-height:20rem;margin:0 auto;border-radius:12px;}@media not all and (min-width: 768px) {
   #wrapper{padding:24px;}#content{padding-left:12px;padding-right:12px;min-height:16rem;border-radius:8px;}</style></head><body>
     <div id="wrapper" class="instui-view"><div id="content" class="${contentClass}" style="max-width: ${CANVAS_CONTENT_MAX_WIDTH};">
       ${getNormalizedEditorHtml()}
     </div></div>
-    <script>${themeJs}</script>
+    ${portable ? "" : "<script>" + themeJs + "</script>"}
   </body></html>`);
 }
 const debouncedUpdatePreview = debounce(() => void refreshAll(), 300);
@@ -1931,6 +1977,7 @@ function buildDownloadFiles(theme: { css: string; js: string }): {
   js: string;
 } {
   const { css: presetCss, js: presetJs } = theme;
+  if (providerSelect.value === INLINE_PROVIDER_ID) return { css: "", js: "" };
   return {
     css: [presetCss, cssEditorView.state.doc.toString()].filter(Boolean).join("\n"),
     js: [presetJs, jsEditorView.state.doc.toString()].filter(Boolean).join("\n"),
@@ -2001,6 +2048,8 @@ const jsEditorView = createEditor(
 );
 
 providerSelect.addEventListener("change", () => {
+  syncProviderPolicy();
+  applyEditorTheme(activeEditor);
   if (activeEditor) retargetContentStylesheets(activeEditor, buildSelectedAssetUrl);
   void refreshAll();
   persistPreferences();
@@ -2120,6 +2169,7 @@ void registerPantokenPlugin.then(async () => {
     })
     .then((editors: Editor[]) => {
       activeEditor = editors[0];
+      syncProviderPolicy();
       try {
         const saved = sessionStorage.getItem(SESSION_DRAFT_KEY);
         if (saved) {

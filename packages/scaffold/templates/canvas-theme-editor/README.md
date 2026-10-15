@@ -64,14 +64,19 @@ This opens a Vite dev server with:
 **None** embeds component CSS in `theme.css`. **Inline** uses `@pantoken/inline-styles` to add
 element styles to the editor HTML, including source view and copied/downloaded content. Switching
 back preserves component classes, structure, and edits while removing generated inline declarations.
-Inline still needs `theme.css` for tokens, fonts, pseudo-elements, interactive states, and media
-queries; it does not bypass Canvas's HTML sanitizer.
+Inline exports resolved, light-only element styles and real static glyph markup. It doesn't need
+`theme.css` or `theme.js`; the preview deliberately loads neither. Include dark mode and Include
+interactions are turned off and disabled in Inline, with their prior choices restored when leaving
+it. Packaged glyphs become PNG images, and missing custom fonts use the declared system fallbacks.
+Canvas can still filter HTML, data images, and CSS properties, so verify the saved page there.
 
 **Include interactions** defaults on. Turning it off omits Pantoken's behavior JavaScript from the
 preview and downloads and hides new component insertions that require it. Existing content remains.
 The list uses the CDN picker's tiers: no-JS and JS-enhancement components remain available; only
 JS-requirement components are hidden.
 The switch does not disable the editor's controls, custom JavaScript, or native browser behavior.
+Inline is an exception: its portable preview and downloads omit custom JavaScript too, while the
+JS tab's authored text is preserved for other providers. CSS overrides participate in conversion.
 
 ### Named presets
 

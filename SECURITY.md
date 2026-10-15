@@ -49,10 +49,13 @@ pantoken is a design-token transformation and distribution system. It converts I
   a browser-initiated user selection flow; they do not contact the network. Opening a preset
   containing custom JavaScript intentionally executes that code in the host editor's existing
   preview context.
-- The Canvas editor's Inline provider converts trusted author HTML and CSS locally with the shared
-  inliner; conversion does not fetch resources or sanitize content. Its companion theme stylesheet
-  still supplies tokens and browser-only rules. Turning off Include interactions omits generated
-  Pantoken scripts, not custom JavaScript, native behavior, or active content in authored HTML.
+- The Canvas editor's Inline provider snapshots trusted author HTML and CSS in a temporary
+  script-disabled iframe. Packaged data-image glyphs are rasterized to bounded PNG canvases; author
+  images and CSS resources may still need network access. Portable Inline is light-only, suppresses
+  generated and custom preview JavaScript, and strips scripts/event attributes from its snapshot.
+  This is not a general sanitizer or a guarantee that Canvas preserves every CSS property or data
+  image. Other providers' Include interactions switch suppresses generated Pantoken scripts only;
+  custom JavaScript and native browser behavior remain author-controlled.
 - The public shadcn registry is an HTTPS distribution channel for package dependencies, CSS
   configuration, and usage metadata. Registry schema validation checks structure, not code quality
   or project suitability. Inspect an item with `shadcn view`, review the resulting diff, and pin

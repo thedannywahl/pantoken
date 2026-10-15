@@ -14,6 +14,8 @@ export class InlineDocument {
   canonical(html: string): string {
     const fragment = document.createElement("template");
     fragment.innerHTML = html;
+    for (const element of fragment.content.querySelectorAll("[data-pantoken-inline-generated]"))
+      element.remove();
     for (const element of fragment.content.querySelectorAll<HTMLElement>(`[${INLINE_ID}]`)) {
       const snapshot = this.snapshots.get(element.getAttribute(INLINE_ID)!);
       if (snapshot) {
@@ -45,6 +47,21 @@ export class InlineDocument {
 
   /** Render canonical HTML using the shared inliner, recording only generated styles. */
   render(html: string, css: string, inline: (html: string, css: string) => string): string {
+    const prepared = this.prepare(html);
+    return this.capture(inline(prepared.html, css), prepared.snapshots);
+  }
+
+  /** Render a static browser snapshot without losing canonical authored styles or structure. */
+  async renderAsync(
+    html: string,
+    css: string,
+    inline: (html: string, css: string) => Promise<string>,
+  ): Promise<string> {
+    const prepared = this.prepare(html);
+    return this.capture(await inline(prepared.html, css), prepared.snapshots);
+  }
+
+  private prepare(html: string): { html: string; snapshots: Map<string, StyleSnapshot> } {
     const fragment = document.createElement("template");
     fragment.innerHTML = this.canonical(html);
     const snapshots = new Map(this.snapshots);
@@ -53,8 +70,12 @@ export class InlineDocument {
       element.setAttribute(INLINE_ID, id);
       snapshots.set(id, { authored: element.getAttribute("style") ?? "", generated: "" });
     }
+    return { html: fragment.innerHTML, snapshots };
+  }
+
+  private capture(html: string, snapshots: Map<string, StyleSnapshot>): string {
     const result = document.createElement("template");
-    result.innerHTML = inline(fragment.innerHTML, css);
+    result.innerHTML = html;
     for (const style of result.content.querySelectorAll("style")) style.remove();
     for (const element of result.content.querySelectorAll<HTMLElement>(`[${INLINE_ID}]`)) {
       const snapshot = snapshots.get(element.getAttribute(INLINE_ID)!);
@@ -70,6 +91,8 @@ export class InlineDocument {
     fragment.innerHTML = html;
     for (const element of fragment.content.querySelectorAll(`[${INLINE_ID}]`))
       element.removeAttribute(INLINE_ID);
+    for (const element of fragment.content.querySelectorAll("[data-pantoken-inline-generated]"))
+      element.removeAttribute("data-pantoken-inline-generated");
     return fragment.innerHTML;
   }
 }
