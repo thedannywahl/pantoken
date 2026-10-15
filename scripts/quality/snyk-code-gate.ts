@@ -15,6 +15,7 @@
  * @module
  */
 import { spawnSync } from "node:child_process";
+import { readFileSync } from "node:fs";
 import { createRequire } from "node:module";
 import path from "node:path";
 
@@ -32,12 +33,27 @@ export interface SarifResult {
 }
 
 /**
- * Findings accepted as false positives, matched by rule id + file path. A match is downgraded to a
+ * Reviewed intentional findings, matched by rule, file, and exact source call. A match becomes a
  * warning instead of blocking. Snyk's own ignore flow (inline `deepcode ignore`, `.snyk`) needs a
  * git remote it can detect, which isn't available in a git worktree where the pre-push gate runs — so
  * acceptances live here, in-repo and reviewable, and work in every environment.
  */
-const ACCEPTED: { rule: string; path: string; reason: string }[] = [];
+const ACCEPTED: { rule: string; path: string; source: string; reason: string }[] = [
+  {
+    rule: "javascript/HttpToHttps",
+    path: "tools/translation-adapters/src/shim.ts",
+    source: "const server = createServer((req: IncomingMessage, res: ServerResponse) => {",
+    reason:
+      "HTTP is confined to IPv4 loopback; browser Origin and unexpected Host headers are rejected. See ASSURANCE.md T-22.",
+  },
+  {
+    rule: "javascript/TooPermissiveCorsPostMessage",
+    path: "formats/scope/src/scope.ts",
+    source: "frame.contentWindow?.postMessage(message, origin);",
+    reason:
+      "Only sandboxed opaque srcdoc previews require wildcard delivery of public presentation settings. See ASSURANCE.md T-23.",
+  },
+];
 
 /** A finding's location as `path:line`, or `?` when absent. */
 export function locationOf(result: SarifResult): string {
@@ -84,10 +100,28 @@ export function parseSarifOutput(stdout: string): SarifResult[] {
   }
 }
 
-/** Whether a finding is on the accepted-false-positive allowlist. */
+function matchesReviewedSource(filePath: string, line: number, source: string): boolean {
+  try {
+    const lines = readFileSync(path.join(ROOT, filePath), "utf8").split(/\r?\n/u);
+    return lines[line - 1]?.trim() === source;
+  } catch {
+    return false;
+  }
+}
+
+/** Whether a finding matches a reviewed rule, file, and exact reported source call. */
 export function isAccepted(result: SarifResult): boolean {
   const filePath = locationOf(result).split(":")[0];
-  return ACCEPTED.some((a) => a.rule === result.ruleId && a.path === filePath);
+  const acceptance = ACCEPTED.find(
+    (entry) => entry.rule === result.ruleId && entry.path === filePath,
+  );
+  if (!acceptance) return false;
+  const location = result.locations?.find(
+    (entry) => entry.physicalLocation?.artifactLocation?.uri === filePath,
+  );
+  const line = location?.physicalLocation?.region?.startLine;
+  if (line === undefined) return false;
+  return matchesReviewedSource(acceptance.path, line, acceptance.source);
 }
 
 /** Whether a finding is medium severity or worse (blocking). */
@@ -154,7 +188,7 @@ export function checkResults(
 
   const message =
     advisory.length > 0
-      ? `✓ snyk code: no medium-or-worse findings (${advisory.length} low/informational warned above)`
+      ? `✓ snyk code: no blocking medium-or-worse findings (${advisory.length} advisories reported above)`
       : "✓ snyk code: no findings at or above low severity";
   return { message, code: 0 };
 }
