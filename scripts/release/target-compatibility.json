@@ -14,8 +14,8 @@
     "format": "Panda token utility extraction from the Pantoken preset",
     "status": "verified",
     "minimum": "1.12.1",
-    "testedThrough": "2.1.1",
-    "testedVersions": ["1.12.1", "2.0.0", "2.1.1"],
+    "testedThrough": "2.2.0",
+    "testedVersions": ["1.12.1", "2.0.0", "2.1.1", "2.2.0"],
     "testCommand": "vp run @pantoken/panda#check:compatibility"
   },
   "@pantoken/postcss": {
