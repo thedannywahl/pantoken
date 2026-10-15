@@ -1,0 +1,24 @@
+back to plan mode, continuing with incremental conventional commits and changesets:
+
+* in the preview pane next to the light/dark buttons we need a 'reset' button icon: `rotate-ccw` so if a user does something with an interaction like dismiss, they can reset without having to refresh teh page or update the editor. it should be disabled with 'include interactions' is off.  ideally it would be disabled if they haven't mutated the page either.
+* the inline-styles format should have two ways of working:
+  * inline the var reference
+  * inline the resolved value
+we need to make that change and then switch the canvas-rce to the resolved value, i.e. `gap: 0.75rem;`- we want this to work in Canvas pages where the user has no access to the theme editor to inject global styles or javascript.
+* the injected iframe editor preview `body.mce-content-body` should be background-color instui-container, but it's unset and getting the parent html's background-page.
+
+---
+
+Read-only PLANNING research for /Users/dwahl/Scripts/pantoken. User wants formats/inline-styles TWO modes: inline var reference OR resolved value; Canvas RCE Inline provider must switch to RESOLVED values e.g. gap:0.75rem, intended to paste into Canvas without Theme Editor global CSS/JS access. Current inline-html.ts uses Juice resolveCSSVariables false default and inlineCustomProperties:false used in scaffold, and flattenScopes. Need inspect ACTUAL installed Juice variable resolution capability, CSS var inheritance/fallback/scoping/light-dark/calc/@property behavior and interaction with stripping custom property decls. Inspect tests, shared InlineDocument state, actual built pantoken component/token CSS, icon/logo pseudos/sanitizer limits and fonts/media states. Form evidence-based recommendation on resolve mode and HTML-only portability, particularly no pseudo-element rules without theme.css. Does existing Juice resolveCSSVariables:true suffice or need browser computed-style normalization/staged resolution? Need clear options to ask user, minimal reusable API changes, Node/browser compatibility and verification matrix. Read relevant instructions (.entire/graph-agent.md using-entire) before finding source; if required terminal unavailable disclose. No writes, generators, installs, servers. Return concrete file/symbol/line anchors, cheap discriminating checks (read-only probes allowed), tests, commit sequence. Don't overpromise full JS component functionality in Canvas where scripts stripped.
+
+---
+
+Read-only planning probe, no code edits. In /Users/dwahl/Scripts/pantoken, test existing formats/inline-styles/src/inline-html.ts resolveCSSVariables:true actual behavior with Node inline module command (not writing files), if terminal available. Need disconfirm broad claim Juice cannot resolve inherited variables. Cases: :root chain --gap-base:.25rem; --gap:calc(var(--gap-base)*3); .banner{gap:var(--gap)}; ancestor custom var inherited; descendant override; var fallback; same with inlineCustomProperties:false; real @pantoken tokens plus built banner CSS under full HTML doc vs fragment. Also read actual Juice resolve implementation as needed. Return concrete output limits and recommended minimum fix; no implementation, no files/memory writes. Tools might not include terminal; then report no probes possible, identify exact source behavior only. Don't claim browser resolver is required without evidence.
+
+---
+
+Read-only tiny follow-up for planning. Need verify actual token user calls instui-container for editor iframe background: inspect formats/components base background CSS, scaffold app.css surface aliases, tokens metadata themes (not guess names), and renderers/tinymce skin/content tests. Return exact CSS custom property and owner recommendation: minimal shared content-skin rule body.mce-content-body background container for all light/dark themes, not dark page; whether using CSS var vs generated literal appropriate given standalone TinyMCE published skin contract. No writes/memory files/generators. Don't invent new giant LESS token pipeline if existing shared LESS content import provides sensible home. Cite lines and existing test filenames.
+
+---
+
+Start implementation
