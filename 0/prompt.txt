@@ -1,0 +1,6 @@
+which hook is failing `git push`
+
+---
+
+we need to update fallow to ignore .i18n/, .worktrees/, coverage/
+and if we have a temporary coverage report we should clear it out.
