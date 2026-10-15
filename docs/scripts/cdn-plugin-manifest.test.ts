@@ -19,7 +19,7 @@ test("publishes the plugin manifest for both the docs UI and external agents", a
   expect(manifest.$schema).toBe("https://pantoken.app/schemas/cdn-plugin-manifest.schema.json");
   const validate = new Ajv2020({ strict: false, validateFormats: false }).compile(schema);
   expect(validate(manifest), JSON.stringify(validate.errors)).toBe(true);
-  expect(manifest.customComponents).toContainEqual({ name: "card" });
+  expect(manifest.customComponents).not.toContainEqual({ name: "card" });
   expect(manifest.layouts).toContainEqual({ name: "hero" });
   expect(manifest.otherPlugins).toContainEqual(expect.objectContaining({ key: "theme-colors" }));
   expect(manifest.simpleIcons.pkg).toBe("@pantoken/plugin-simple-icons");

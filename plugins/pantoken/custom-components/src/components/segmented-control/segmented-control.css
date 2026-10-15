@@ -40,6 +40,18 @@
  *   </div>
  * </fieldset>
  * ```
+ * @example -automatica11y -nocard
+ * ```html
+ * <fieldset class="pfx-segmented-control" aria-label="Course view" data-a11y-root>
+ *   <div class="viewport">
+ *     <div class="track">
+ *       <label><input type="radio" name="course-view" value="overview" checked data-a11y-trigger>Overview</label>
+ *       <label><input type="radio" name="course-view" value="grades">Grades</label>
+ *       <label><input type="radio" name="course-view" value="people">People</label>
+ *     </div>
+ *   </div>
+ * </fieldset>
+ * ```
  */
 @scope (.pfx-segmented-control) {
   & {

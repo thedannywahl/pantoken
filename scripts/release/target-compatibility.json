@@ -2,11 +2,11 @@
   "$schema": "https://pantoken.app/schemas/target-compatibility.schema.json",
   "@pantoken/next": {
     "target": "Next.js",
-    "format": "Production build transpiling and rendering Instructure UI 11.7.8 with React 19.3.0",
+    "format": "Production build transpiling and rendering Instructure UI 11.7.10 with React 19.3.0",
     "status": "verified",
     "minimum": "16.0.0",
-    "testedThrough": "16.3.8",
-    "testedVersions": ["16.0.0", "16.3.7", "16.3.8"],
+    "testedThrough": "16.4.0",
+    "testedVersions": ["16.0.0", "16.3.7", "16.3.8", "16.4.0"],
     "testCommand": "vp run @pantoken/next#check:compatibility"
   },
   "@pantoken/panda": {
@@ -14,8 +14,8 @@
     "format": "Panda token utility extraction from the Pantoken preset",
     "status": "verified",
     "minimum": "1.12.1",
-    "testedThrough": "2.1.1",
-    "testedVersions": ["1.12.1", "2.0.0", "2.1.1"],
+    "testedThrough": "2.2.0",
+    "testedVersions": ["1.12.1", "2.0.0", "2.1.1", "2.2.0"],
     "testCommand": "vp run @pantoken/panda#check:compatibility"
   },
   "@pantoken/postcss": {
@@ -47,8 +47,8 @@
     "target": "Vite",
     "status": "verified",
     "minimum": "8.0.0",
-    "testedThrough": "8.3.2",
-    "testedVersions": ["8.0.0", "8.0.16", "8.1.5", "8.2.2", "8.3.1", "8.3.2"],
+    "testedThrough": "8.3.4",
+    "testedVersions": ["8.0.0", "8.0.16", "8.1.5", "8.2.2", "8.3.1", "8.3.2", "8.3.4"],
     "testCommand": "vp run @pantoken/vite#check:compatibility"
   },
   "@pantoken/webpack": {
@@ -133,17 +133,17 @@
     "format": "theme.json v3",
     "status": "verified",
     "minimum": "6.6",
-    "testedThrough": "7.1.2",
-    "testedVersions": ["6.6", "6.7", "6.8", "6.9", "7.0", "7.1.2"],
+    "testedThrough": "7.1.3",
+    "testedVersions": ["6.6", "6.7", "6.8", "6.9", "7.0", "7.1.2", "7.1.3"],
     "testCommand": "vp run @pantoken/wordpress#check:compatibility"
   },
   "@pantoken/angular": {
     "target": "Angular",
-    "format": "CUSTOM_ELEMENTS_SCHEMA template compilation (Angular 16.2.12 / TS 5.1.6; Angular 22.2.0 and 22.2.1 / TS 6.0.3)",
+    "format": "CUSTOM_ELEMENTS_SCHEMA template compilation (Angular 16.2.12 / TS 5.1.6; Angular 22.2.0, 22.2.1, and 22.2.2 / TS 6.0.3)",
     "status": "verified",
     "minimum": "16.2.12",
-    "testedThrough": "22.2.1",
-    "testedVersions": ["16.2.12", "22.2.0", "22.2.1"],
+    "testedThrough": "22.2.2",
+    "testedVersions": ["16.2.12", "22.2.0", "22.2.1", "22.2.2"],
     "testCommand": "vp run @pantoken/angular#check:compatibility"
   },
   "@pantoken/astro": {
@@ -151,8 +151,8 @@
     "format": "Built Starlight page with injected token stylesheet (Astro 5 and 7)",
     "status": "verified",
     "minimum": "0.35.0",
-    "testedThrough": "0.42.5",
-    "testedVersions": ["0.35.0", "0.42.4", "0.42.5"],
+    "testedThrough": "0.42.6",
+    "testedVersions": ["0.35.0", "0.42.4", "0.42.5", "0.42.6"],
     "testCommand": "vp run @pantoken/astro#check:compatibility"
   },
   "@pantoken/bootstrap": {
@@ -214,8 +214,8 @@
     "format": "Official CLI validates generated colors and background theme config",
     "status": "verified",
     "minimum": "4.0.1555",
-    "testedThrough": "4.0.1591",
-    "testedVersions": ["4.0.1555", "4.0.1557", "4.0.1591"],
+    "testedThrough": "4.0.1614",
+    "testedVersions": ["4.0.1555", "4.0.1557", "4.0.1591", "4.0.1614"],
     "testCommand": "vp run @pantoken/mintlify#check:compatibility"
   },
   "@pantoken/mui": {
@@ -223,8 +223,18 @@
     "format": "Concrete createTheme palettes (MUI 5, 6, 7, 9)",
     "status": "verified",
     "minimum": "5.0.0",
-    "testedThrough": "9.4.0",
-    "testedVersions": ["5.0.0", "5.18.0", "6.0.0", "6.5.0", "7.0.0", "7.3.11", "9.0.0", "9.4.0"],
+    "testedThrough": "9.5.0",
+    "testedVersions": [
+      "5.0.0",
+      "5.18.0",
+      "6.0.0",
+      "6.5.0",
+      "7.0.0",
+      "7.3.11",
+      "9.0.0",
+      "9.4.0",
+      "9.5.0"
+    ],
     "testCommand": "vp run @pantoken/mui#check:compatibility"
   },
   "@pantoken/pendo": { "target": "Pendo", "status": "unverified" },
@@ -279,8 +289,8 @@
     "format": "Icon action component compiles and SSR renders on Svelte 4 and 5",
     "status": "verified",
     "minimum": "4.2.20",
-    "testedThrough": "5.57.1",
-    "testedVersions": ["4.2.20", "5.57.1"],
+    "testedThrough": "5.57.2",
+    "testedVersions": ["4.2.20", "5.57.1", "5.57.2"],
     "testCommand": "vp run @pantoken/svelte#check:compatibility"
   },
   "@pantoken/tinymce": {
@@ -288,8 +298,8 @@
     "format": "Pantoken plugin registration and callback initialization",
     "status": "verified",
     "minimum": "8.9.2",
-    "testedThrough": "8.9.2",
-    "testedVersions": ["8.9.2"],
+    "testedThrough": "8.9.3",
+    "testedVersions": ["8.9.2", "8.9.3"],
     "testCommand": "vp run @pantoken/tinymce#check:compatibility"
   },
   "@pantoken/vitepress": {

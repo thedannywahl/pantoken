@@ -12,8 +12,16 @@
  * @modifier -size-lg — Large.
  * @cssstate disabled
  * @a11y Mark a disabled link with `aria-disabled="true"`.
- * @example
+ * @example -canvas-rce
  * <a class="pfx-link" href="#">A styled link</a>
+ * @example -automatica11y
+ * ```html
+ * <a class="pfx-link" href="#account-settings" data-a11y-trigger data-a11y-root>Account settings</a>
+ * ```
+ * @example -docs
+ * ```html
+ * <p>Read the <a class="pfx-link -inline" href="#accessibility">accessibility guide</a>.</p>
+ * ```
  * @related breadcrumb — A breadcrumb trail is built from links; also its small-screen fallback (pair with the `responsive` utility to swap Breadcrumb for a Link below ~768px).
  */
 @scope (.pfx-link) {

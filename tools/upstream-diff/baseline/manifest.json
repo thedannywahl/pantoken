@@ -883,6 +883,11 @@
       "source": "lucide",
       "viewBox": "0 0 24 24"
     },
+    "--instui-icon-belarusian-ruble": {
+      "hash": "33f723b28bd8e44d",
+      "source": "lucide",
+      "viewBox": "0 0 24 24"
+    },
     "--instui-icon-bell": {
       "hash": "e710c626d3a2fe42",
       "source": "lucide",
@@ -1470,6 +1475,12 @@
     },
     "--instui-icon-calendar-check-2": {
       "hash": "f0cebe8bf8e6f969",
+      "source": "lucide",
+      "viewBox": "0 0 24 24"
+    },
+    "--instui-icon-calendar-chevrons-left": {
+      "bidirectional": true,
+      "hash": "a5e87e4a785c2981",
       "source": "lucide",
       "viewBox": "0 0 24 24"
     },
@@ -2161,6 +2172,11 @@
     "--instui-icon-circle-fading-arrow-up": {
       "bidirectional": true,
       "hash": "c649025197fc867f",
+      "source": "lucide",
+      "viewBox": "0 0 24 24"
+    },
+    "--instui-icon-circle-fading-play": {
+      "hash": "01c427853075ff1c",
       "source": "lucide",
       "viewBox": "0 0 24 24"
     },
@@ -2864,6 +2880,11 @@
     },
     "--instui-icon-cpu": {
       "hash": "6ec476070655e9c9",
+      "source": "lucide",
+      "viewBox": "0 0 24 24"
+    },
+    "--instui-icon-cpu-ai": {
+      "hash": "a14f10ffb51a0901",
       "source": "lucide",
       "viewBox": "0 0 24 24"
     },
@@ -4029,6 +4050,16 @@
       "source": "lucide",
       "viewBox": "0 0 24 24"
     },
+    "--instui-icon-folder-user": {
+      "hash": "12e517abddc6b3a1",
+      "source": "lucide",
+      "viewBox": "0 0 24 24"
+    },
+    "--instui-icon-folder-users": {
+      "hash": "299e5fcbaf539613",
+      "source": "lucide",
+      "viewBox": "0 0 24 24"
+    },
     "--instui-icon-folder-x": {
       "hash": "f356ae41785ebb8a",
       "source": "lucide",
@@ -4334,6 +4365,11 @@
       "source": "lucide",
       "viewBox": "0 0 24 24"
     },
+    "--instui-icon-graph-star": {
+      "hash": "77b7c4e4954e3ca2",
+      "source": "lucide",
+      "viewBox": "0 0 24 24"
+    },
     "--instui-icon-grid-2x2": {
       "hash": "4b4f053fd1c413aa",
       "source": "lucide",
@@ -4391,6 +4427,11 @@
     },
     "--instui-icon-guitar": {
       "hash": "2f17fbec034ea387",
+      "source": "lucide",
+      "viewBox": "0 0 24 24"
+    },
+    "--instui-icon-guitar-electric": {
+      "hash": "a2d0028e22f7fd33",
       "source": "lucide",
       "viewBox": "0 0 24 24"
     },
@@ -5747,6 +5788,11 @@
       "source": "lucide",
       "viewBox": "0 0 24 24"
     },
+    "--instui-icon-message-circle-text": {
+      "hash": "4646f7d49d65a863",
+      "source": "lucide",
+      "viewBox": "0 0 24 24"
+    },
     "--instui-icon-message-circle-warning": {
       "hash": "bf141337a2bb49bb",
       "source": "lucide",
@@ -6648,6 +6694,11 @@
     },
     "--instui-icon-percent": {
       "hash": "6b2c5a5169c94966",
+      "source": "lucide",
+      "viewBox": "0 0 24 24"
+    },
+    "--instui-icon-perfume-bottle": {
+      "hash": "7369d021c32067aa",
       "source": "lucide",
       "viewBox": "0 0 24 24"
     },
@@ -7612,6 +7663,11 @@
     },
     "--instui-icon-server-crash": {
       "hash": "d6e1eabde95cf619",
+      "source": "lucide",
+      "viewBox": "0 0 24 24"
+    },
+    "--instui-icon-server-nas": {
+      "hash": "d1e4601f0e30895c",
       "source": "lucide",
       "viewBox": "0 0 24 24"
     },
@@ -9624,8 +9680,18 @@
       "source": "lucide",
       "viewBox": "0 0 24 24"
     },
+    "--instui-icon-users-collaboration": {
+      "hash": "fbfe2e261a7e148e",
+      "source": "lucide",
+      "viewBox": "0 0 24 24"
+    },
     "--instui-icon-users-round": {
       "hash": "646d09bc13601ca3",
+      "source": "lucide",
+      "viewBox": "0 0 24 24"
+    },
+    "--instui-icon-users-round-collaboration": {
+      "hash": "ba17da694c29177c",
       "source": "lucide",
       "viewBox": "0 0 24 24"
     },
@@ -10098,11 +10164,11 @@
     },
     "lucide": {
       "package": "lucide",
-      "resolved": "1.55.0"
+      "resolved": "1.57.0"
     },
     "uiIcons": {
       "package": "@instructure/ui-icons",
-      "resolved": "11.7.8"
+      "resolved": "11.7.10"
     }
   },
   "themes": {

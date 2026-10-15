@@ -7,7 +7,6 @@
 import { mkdirSync, writeFileSync } from "node:fs";
 import { resolve } from "node:path";
 import {
-  cardRules,
   agentShellRules,
   bannerRules,
 } from "../../plugins/pantoken/custom-components/src/components/index.ts";
@@ -23,7 +22,6 @@ mkdirSync(publicDir, { recursive: true });
 // ── Custom components ────────────────────────────────────────────────────────
 // Mirrors the `[name, rules]` tuple `scripts/build-entries.ts` uses to emit per-component sheets.
 const customComponents = [
-  ["card", cardRules],
   ["agent-shell", agentShellRules],
   ["banner", bannerRules],
 ].map(([name]) => ({ name }));

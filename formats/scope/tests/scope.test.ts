@@ -1,6 +1,6 @@
 // @vitest-environment happy-dom
 import { expect, test } from "vite-plus/test";
-import { createScope, getScope } from "../src/scope.ts";
+import { createScope, frameTargetOrigin, getScope } from "../src/scope.ts";
 import { resolveScope } from "../src/resolve.ts";
 import { ensureProperties, hasProperties } from "../src/inject.ts";
 import { observeScope } from "../src/observe.ts";
@@ -188,6 +188,42 @@ test("attached frames are messaged; detached ones are not", () => {
   detach();
   scope.set({ theme: "canvas" });
   expect(posted).toHaveLength(2);
+  scope.destroy();
+});
+
+test.each([
+  [{}, "same-origin"],
+  [{ src: "about:blank" }, "same-origin"],
+  [{ src: "/play/index.html" }, "same-origin"],
+  [{ src: "https://example.com/runner" }, "https://example.com"],
+  [{ src: "https://[" }, undefined],
+  [{ src: "data:text/html,preview" }, undefined],
+  [{ srcdoc: "preview" }, "same-origin"],
+  [{ srcdoc: "preview", sandbox: "allow-scripts allow-same-origin" }, "same-origin"],
+  [{ srcdoc: "preview", sandbox: "allow-scripts" }, "*"],
+  [{ srcdoc: "preview", sandbox: "" }, "*"],
+  [{ srcdoc: "preview", sandbox: "allow-scripts", src: "https://example.com/ignored" }, "*"],
+] as const)("restricts theme-message targets for %j", (attributes, expected) => {
+  const frame = document.createElement("iframe");
+  for (const [name, value] of Object.entries(attributes)) frame.setAttribute(name, value);
+
+  const origin = expected === "same-origin" ? document.location.origin : expected;
+  expect(frameTargetOrigin(frame)).toBe(origin);
+});
+
+test("does not post scope state to an unsupported opaque frame URL", () => {
+  const scope = createScope(fresh(), { theme: "canvas", persist: false });
+  const frame = document.createElement("iframe");
+  frame.src = "data:text/html,preview";
+  const posted: unknown[] = [];
+  Object.defineProperty(frame, "contentWindow", {
+    value: { postMessage: (message: unknown) => posted.push(message) },
+  });
+
+  scope.attachFrame(frame);
+  scope.set({ theme: "rebrand" });
+
+  expect(posted).toEqual([]);
   scope.destroy();
 });
 

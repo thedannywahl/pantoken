@@ -14,7 +14,7 @@
  * site (VitePress chrome via the `@pantoken/vitepress` bridge, the live `@example` blocks, and — over
  * postMessage — the embedded demos).
  */
-import { createScope, type PantokenScope } from "@pantoken/scope";
+import { createScope, frameTargetOrigin, type PantokenScope } from "@pantoken/scope";
 import {
   applyCustomColorStyle,
   customScaleValues,
@@ -224,23 +224,6 @@ export function customColorPayload(color: PantokenColor): {
 let rememberedDark: boolean | null = null;
 
 /**
- * The postMessage target origin for a demo frame: a srcdoc-only frame (no `src`, e.g. an inline
- * `.css-example` preview) is sandboxed without `allow-same-origin`, so it has an opaque origin — no
- * concrete origin string can ever match it, only "*". A frame with a real `src` (the `/play` runner)
- * gets that origin-scoped target instead, so the theme post is delivered only to that runner and
- * never leaks to a frame at a different origin.
- */
-function themeTargetOrigin(frame: HTMLIFrameElement): string {
-  if (!frame.hasAttribute("src")) return "*";
-  try {
-    return new URL(frame.src, window.location.href).origin;
-  } catch {
-    // Malformed src — fall back to our own origin (same-origin runner is the common case).
-    return window.location.origin;
-  }
-}
-
-/**
  * The demo frames this instance owns: those inside its scope element, minus any sitting inside a
  * *different* instance's scope. Without that second filter an embedded preview's own frames would be
  * re-themed by the docs chrome, which is the collision this whole mechanism exists to stop.
@@ -262,7 +245,8 @@ export function broadcastTheme(
 ): void {
   if (typeof document === "undefined") return;
   for (const frame of ownedFrames()) {
-    // deepcode ignore TooPermissiveCorsPostMessage: "*" only targets opaque-origin sandboxed frames (no concrete origin can match); a real-src frame gets its own origin, and the payload is a non-sensitive theme name.
+    const origin = frameTargetOrigin(frame);
+    if (origin === undefined) continue;
     frame.contentWindow?.postMessage(
       {
         type: "pantoken-demo-theme",
@@ -272,7 +256,7 @@ export function broadcastTheme(
         ...customColorPayload(color),
         mode: getActiveScheme(),
       },
-      themeTargetOrigin(frame),
+      origin,
     );
   }
 }
@@ -281,6 +265,8 @@ export function broadcastTheme(
 export function broadcastColor(color: PantokenColor): void {
   if (typeof document === "undefined") return;
   for (const frame of ownedFrames()) {
+    const origin = frameTargetOrigin(frame);
+    if (origin === undefined) continue;
     frame.contentWindow?.postMessage(
       {
         type: "pantoken-demo-color",
@@ -288,7 +274,7 @@ export function broadcastColor(color: PantokenColor): void {
         color,
         ...customColorPayload(color),
       },
-      themeTargetOrigin(frame),
+      origin,
     );
   }
 }

@@ -41,6 +41,9 @@
   // barrel exposes `formats/scss`'s and `formats/dtcg`'s `Mode` together. `vitest bench` discovers the
   // files, so nothing here needs to be reachable from the module graph.
   "ignorePatterns": [
+    ".i18n/**",
+    ".worktrees/**",
+    "coverage/**",
     "bench/**",
     // VitePress dev pre-bundles dependencies here. The folder is gitignored cache output, not source.
     "docs/.vitepress/cache/**",

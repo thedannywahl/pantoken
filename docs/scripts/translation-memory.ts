@@ -120,33 +120,43 @@ export class TranslationMemory {
   }
 
   set(kind: string, source: string, translation: string, options?: { verbatim?: boolean }): void {
-    if (this._poByKey && this._poEntries) {
-      const aligned = alignTrailingNewline(source, translation);
-      const key = `docs.api:${kind}\0${source}`;
-      const existing = this._poByKey.get(key);
-      if (existing) {
-        existing.msgstr = aligned;
-        if (options?.verbatim === true && !existing.flags.includes(VERBATIM_FLAG)) {
-          existing.flags = [...existing.flags, VERBATIM_FLAG];
-        }
-      } else {
-        const entry: PoEntry = {
-          msgid: source,
-          msgstr: aligned,
-          msgctxt: `docs.api:${kind}`,
-          references: [],
-          flags: options?.verbatim === true ? [VERBATIM_FLAG] : [],
-          fuzzy: false,
-          obsolete: false,
-        };
-        this._poEntries.push(entry);
-        this._poByKey.set(key, entry);
-      }
+    const verbatim = options?.verbatim === true;
+    if (this._poByKey) {
+      this.setPoTranslation(kind, source, translation, verbatim);
     } else {
       this._mem!.set(keyFor(kind, source), translation);
-      if (options?.verbatim === true) this._mem!.set(verbatimKey(kind, source), "1");
+      if (verbatim) this._mem!.set(verbatimKey(kind, source), "1");
     }
     this.misses++;
+  }
+
+  private setPoTranslation(
+    kind: string,
+    source: string,
+    translation: string,
+    verbatim: boolean,
+  ): void {
+    const key = `docs.api:${kind}\0${source}`;
+    let entry = this._poByKey!.get(key);
+    if (!entry) {
+      entry = {
+        msgid: source,
+        msgstr: "",
+        msgctxt: `docs.api:${kind}`,
+        references: [],
+        flags: [],
+        fuzzy: false,
+        obsolete: false,
+      };
+      this._poEntries!.push(entry);
+      this._poByKey!.set(key, entry);
+    }
+    entry.msgstr = alignTrailingNewline(source, translation);
+    entry.fuzzy = false;
+    const flags = new Set(entry.flags);
+    flags.delete("fuzzy");
+    if (verbatim) flags.add(VERBATIM_FLAG);
+    entry.flags = [...flags];
   }
 
   /** True when the stored translation for `source` was deliberately accepted as identical to English. */
@@ -226,6 +236,44 @@ function translationContext(unit: TranslationUnit, options: TranslateOptions): s
   return context === "" ? "" : ` [${context}]`;
 }
 
+function storeRequiredVerbatim(memory: TranslationMemory, unit: TranslationUnit): void {
+  const cached = memory.get(unit.kind, unit.source);
+  if (cached !== unit.source || !memory.isVerbatim(unit.kind, unit.source)) {
+    memory.set(unit.kind, unit.source, unit.source, { verbatim: true });
+  }
+}
+
+function isApprovedCacheValue(
+  memory: TranslationMemory,
+  unit: TranslationUnit,
+  cached: string,
+  options: TranslateOptions,
+): boolean {
+  return (
+    allowsVerbatim(unit.source, options) ||
+    memory.isVerbatim(unit.kind, unit.source) ||
+    !isPassthroughTranslation(unit.source, cached)
+  );
+}
+
+function cachedTranslation(
+  memory: TranslationMemory,
+  unit: TranslationUnit,
+  options: TranslateOptions,
+): string | undefined {
+  const cached = memory.get(unit.kind, unit.source);
+  if (cached === undefined) return undefined;
+  if (isApprovedCacheValue(memory, unit, cached, options)) return cached;
+  console.warn(
+    `  !${translationContext(unit, options)} cached ${unit.kind} translation for ${JSON.stringify(unit.source.slice(0, 40))} looks untranslated; retranslating`,
+  );
+  return undefined;
+}
+
+function autosaveMemory(memory: TranslationMemory, options: TranslateOptions): void {
+  if (options.autosave) memory.save();
+}
+
 /**
  * Serve cache hits straight into `result` and return the deduped misses — one unit per unseen content
  * key, so an identical string (e.g. a repeated sidebar label) translates once. With `force`, every
@@ -242,28 +290,32 @@ function diffAgainstCache(
   for (const unit of units) {
     const key = keyFor(unit.kind, unit.source);
     if (options.requiredVerbatimSources?.has(unit.source) === true) {
-      const cached = memory.get(unit.kind, unit.source);
-      if (cached !== unit.source) memory.set(unit.kind, unit.source, unit.source);
+      storeRequiredVerbatim(memory, unit);
       result.set(key, unit.source);
       continue;
     }
-    if (!force) {
-      const cached = memory.get(unit.kind, unit.source);
-      const isVerbatim =
-        allowsVerbatim(unit.source, options) || memory.isVerbatim(unit.kind, unit.source);
-      if (cached !== undefined && (isVerbatim || !isPassthroughTranslation(unit.source, cached))) {
-        result.set(key, cached);
-        continue;
-      }
-      if (cached !== undefined) {
-        console.warn(
-          `  !${translationContext(unit, options)} cached ${unit.kind} translation for ${JSON.stringify(unit.source.slice(0, 40))} looks untranslated; retranslating`,
-        );
-      }
+    const cached = force ? undefined : cachedTranslation(memory, unit, options);
+    if (cached !== undefined) {
+      result.set(key, cached);
+      continue;
     }
     if (!unique.has(key)) unique.set(key, unit);
   }
   return [...unique.values()];
+}
+
+async function translateMarkdownUnit(
+  adapter: TranslationAdapter,
+  unit: TranslationUnit,
+  options: TranslateOptions,
+): Promise<string | undefined> {
+  const translated = await adapter.translateMarkdown(unit.source, unit.filePath ?? "");
+  if (allowsVerbatim(unit.source, options)) return translated;
+  if (!isPassthroughTranslation(unit.source, translated)) return translated;
+  console.warn(
+    `  ! skipped ${unit.filePath ?? "a markdown unit"}: looks untranslated (identical to source), will retry next run`,
+  );
+  return undefined;
 }
 
 /** Translate each markdown miss per-file into `memory`/`result`; log and skip individual failures. */
@@ -278,19 +330,11 @@ async function translateMarkdownMisses(
   // A single file's failure is logged and skipped rather than aborting the whole run.
   for (const [index, unit] of markdownMisses.entries()) {
     try {
-      const translated = await adapter.translateMarkdown(unit.source, unit.filePath ?? "");
-      if (
-        !allowsVerbatim(unit.source, options) &&
-        isPassthroughTranslation(unit.source, translated)
-      ) {
-        console.warn(
-          `  ! skipped ${unit.filePath ?? "a markdown unit"}: looks untranslated (identical to source), will retry next run`,
-        );
-        continue;
-      }
+      const translated = await translateMarkdownUnit(adapter, unit, options);
+      if (translated === undefined) continue;
       memory.set("markdown", unit.source, translated);
       result.set(keyFor("markdown", unit.source), translated);
-      if (options.autosave) memory.save();
+      autosaveMemory(memory, options);
       // Markdown misses are per-file network round-trips (slow); log each one so long
       // runs don't sit silently — unlike the batched text/prose path, there's no other
       // progress signal until the whole file set for a locale finishes.
@@ -303,6 +347,28 @@ async function translateMarkdownMisses(
       );
     }
   }
+}
+
+function persistBatchUnit(
+  memory: TranslationMemory,
+  result: Map<string, string>,
+  unit: TranslationUnit,
+  value: string,
+  options: TranslateOptions,
+  adapterProducedChanges: boolean,
+): boolean {
+  const id = keyFor(unit.kind, unit.source);
+  const verbatim = isPassthroughTranslation(unit.source, value);
+  if (!adapterProducedChanges && !allowsVerbatim(unit.source, options) && verbatim) {
+    console.warn(
+      `  !${translationContext(unit, options)} ${unit.kind} unit looks untranslated (identical to source), not cached: ${JSON.stringify(unit.source.slice(0, 40))}`,
+    );
+    result.set(id, unit.source);
+    return false;
+  }
+  memory.set(unit.kind, unit.source, value, { verbatim });
+  result.set(id, value);
+  return true;
 }
 
 /**
@@ -334,30 +400,17 @@ async function translateBatchableMisses(
         const unit = byId.get(id);
         return unit !== undefined && !isPassthroughTranslation(unit.source, value);
       });
-    let added = 0;
-    for (const [id, value] of Object.entries(partial)) {
+    const added = Object.entries(partial).reduce((count, [id, value]) => {
       const unit = byId.get(id);
-      if (unit === undefined || consumed.has(id)) continue;
+      if (unit === undefined || consumed.has(id)) return count;
       consumed.add(id);
-      if (
-        !adapterProducedChanges &&
-        !allowsVerbatim(unit.source, options) &&
-        isPassthroughTranslation(unit.source, value)
-      ) {
-        console.warn(
-          `  !${translationContext(unit, options)} ${unit.kind} unit looks untranslated (identical to source), not cached: ${JSON.stringify(unit.source.slice(0, 40))}`,
-        );
-        result.set(id, unit.source);
-        continue; // not cached — stays a miss, retried next run
-      }
-      memory.set(unit.kind, unit.source, value, {
-        verbatim: isPassthroughTranslation(unit.source, value),
-      });
-      result.set(id, value);
-      added += 1;
-    }
+      return (
+        count +
+        Number(persistBatchUnit(memory, result, unit, value, options, adapterProducedChanges))
+      );
+    }, 0);
     if (added === 0) return; // e.g. the final sweep re-seeing an already-persisted chunk
-    if (options.autosave) memory.save();
+    autosaveMemory(memory, options);
     if (items.length > 1) {
       console.log(`  … ${consumed.size}/${items.length} labels + prose blocks translated`);
     }

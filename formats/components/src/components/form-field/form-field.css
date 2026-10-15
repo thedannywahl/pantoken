@@ -16,7 +16,7 @@
  * @pseudo ::after — Renders the decorative required-field asterisk after the label text when the field is required.
  * @accessibility The `<label>` element wraps the control, so the label text names it natively; the required asterisk is decorative and should be hidden from assistive tech (aria-hidden), and the error message surfaces once the control is `:user-invalid` or you add the `-invalid` class.
  * @compat Contains its element styles with the CSS `@scope` at-rule; needs a recent Chromium, Firefox, or Safari.
- * @example
+ * @example -canvas-rce
  * <label class="pfx-form-field">
  *   <span class="label">Email address</span>
  *   <span class="controls"><input class="pfx-text-input" type="email" placeholder="you@example.com"></span>
@@ -25,6 +25,20 @@
  *     <span class="pfx-form-field-message -type-error">Enter a valid email address.</span>
  *   </div>
  * </label>
+ * @example -automatica11y
+ * ```html
+ * <label class="pfx-form-field">
+ *   <span class="label">Email address</span>
+ *   <span class="controls"><input class="pfx-text-input" type="email" autocomplete="email" required data-a11y-trigger data-a11y-root></span>
+ * </label>
+ * ```
+ * @example -docs
+ * ```html
+ * <label class="pfx-form-field">
+ *   <span class="label">Display name</span>
+ *   <span class="controls"><input class="pfx-text-input" type="text" autocomplete="nickname"></span>
+ * </label>
+ * ```
  * @structure
  * .pfx-form-field {
  *   .label {}

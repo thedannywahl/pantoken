@@ -1,5 +1,13 @@
 # CHANGELOG
 
+## 0.2.1
+
+### Patch Changes
+
+- c91395a: Verify WordPress 7.1.3 schema compatibility and color, spacing, and typography presets on a real host.
+- Updated dependencies [c91395a]
+  - @pantoken/utils@1.3.0
+
 ## 0.2.0
 
 ### Minor Changes

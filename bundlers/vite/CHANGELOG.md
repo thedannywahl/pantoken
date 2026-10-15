@@ -1,5 +1,15 @@
 # CHANGELOG
 
+## 0.2.3
+
+### Patch Changes
+
+- c91395a: Verify Vite 8.3.4 virtual modules and injected stylesheet production compatibility.
+- Updated dependencies [c91395a]
+- Updated dependencies [c91395a]
+  - @pantoken/tokens@0.8.2
+  - @pantoken/css@0.4.4
+
 ## 0.2.2
 
 ### Patch Changes

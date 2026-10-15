@@ -434,20 +434,18 @@ function generateImportSnippet(
   pluginImportByName: Map<string, string>,
   recordSheet: Map<string, string>,
 ): string | undefined {
-  const pluginImport = pluginImportByName.get(entry.name);
-  if (pluginImport) return `@import "${pluginImport}";`;
-
   const sheet = recordSheet.get(entry.name);
-  if (!sheet) return undefined;
-
-  if (entry.kind === "component") {
+  if (sheet && entry.kind === "component") {
     return [
       `@import "@pantoken/components/${sheet}";`,
       `@import "@pantoken/components/${entry.name}.css";`,
     ].join("\n");
   }
 
-  return `@import "@pantoken/components/${sheet}";`;
+  const pluginImport = pluginImportByName.get(entry.name);
+  if (pluginImport) return `@import "${pluginImport}";`;
+
+  return sheet ? `@import "@pantoken/components/${sheet}";` : undefined;
 }
 
 /**

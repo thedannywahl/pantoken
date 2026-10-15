@@ -1,5 +1,11 @@
 # CHANGELOG
 
+## 0.2.2
+
+### Patch Changes
+
+- @pantoken/css@0.4.4
+
 ## 0.2.1
 
 ### Patch Changes

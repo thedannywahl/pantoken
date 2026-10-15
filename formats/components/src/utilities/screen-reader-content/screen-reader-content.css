@@ -8,6 +8,13 @@
  * <a class="instui-link" href="#examples" target="_blank">example</a>
  * <span class="instui-screen-reader-content">Opens in a new window</span>
  * ```
+ * @example -automatica11y
+ * ```html
+ * <a class="pfx-link" href="#settings" data-a11y-root data-a11y-trigger>
+ *   <span class="pfx-icon -icon-settings" aria-hidden="true"></span>
+ *   <span class="pfx-screen-reader-content">Open settings</span>
+ * </a>
+ * ```
  */
 @scope (.pfx-screen-reader-content) {
   & {

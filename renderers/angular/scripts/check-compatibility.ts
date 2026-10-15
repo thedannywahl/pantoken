@@ -12,6 +12,7 @@ const companions = [
   { angular: "16.2.12", typescript: "5.1.6", zone: "0.13.3" },
   { angular: "22.2.0", typescript: "6.0.3", zone: "0.16.0" },
   { angular: "22.2.1", typescript: "6.0.3", zone: "0.16.0" },
+  { angular: "22.2.2", typescript: "6.0.3", zone: "0.16.0" },
 ];
 
 /** Compile a standalone Angular component using the custom-element schema in its template. */

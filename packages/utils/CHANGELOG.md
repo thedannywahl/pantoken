@@ -1,5 +1,11 @@
 # CHANGELOG
 
+## 1.3.0
+
+### Minor Changes
+
+- c91395a: Export a shared cssdoc example audience resolver.
+
 ## 1.2.1
 
 ### Patch Changes

@@ -366,6 +366,7 @@ describe("createSavePlugin", () => {
     const click = vi.fn();
     const createObjectURL = vi.spyOn(URL, "createObjectURL").mockReturnValue(url as never);
     const revoke = vi.spyOn(URL, "revokeObjectURL").mockImplementation(() => undefined);
+    const append = vi.spyOn(document.body, "append");
     const anchor = {
       click,
       remove: vi.fn(),
@@ -380,6 +381,9 @@ describe("createSavePlugin", () => {
     command(target, EXPORT_COMMAND)();
     expect(createObjectURL).toHaveBeenCalledTimes(1);
     expect(click).toHaveBeenCalledTimes(1);
+    expect(append).not.toHaveBeenCalled();
+    expect(anchor.href).toBe(url);
+    expect(anchor.download).toBe("exported.json");
     await vi.waitFor(() => expect(revoke).toHaveBeenCalledWith(url));
 
     const payload = {

@@ -52,7 +52,7 @@ supported out of the box; each theme CSS file sets vars at `:root`.
    For raw decoded SVG markup/data instead of a custom element, use `@pantoken/icons` (`getIcon("arrow-left")`).
 
 After selecting a base package, also consider `@pantoken/plugin-layouts` (app-shell layout) and
-`@pantoken/plugin-custom-components` (extra components) when using `@pantoken/components`.
+`@pantoken/plugin-custom-components` (additional components such as banner and agent-shell) when using `@pantoken/components`.
 
 **Web (CSS / JS):**
 
@@ -65,7 +65,7 @@ After selecting a base package, also consider `@pantoken/plugin-layouts` (app-sh
   `@pantoken/components` into an app-shell structure. Use alongside `@pantoken/components` when
   bootstrapping a full page layout.
 - `@pantoken/plugin-custom-components` — additional cssdoc-documented components beyond the core set
-  (currently `card`, `banner`, `agent-shell`). Use alongside `@pantoken/components` for extra component patterns.
+  (currently `banner`, `agent-shell`). Card is part of `@pantoken/components`.
 - `@pantoken/css` — all tokens emitted as `--instui-*` CSS custom-property (`var()`) declarations, with
   no class-based components. `import "@pantoken/css/inject"` (side-effect) or
   `import { css } from "@pantoken/css"`. Reach for this when you're building your own component styles

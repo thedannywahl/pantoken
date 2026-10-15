@@ -35,7 +35,7 @@ export type { ResolvedScope, Scheme, ScopeConfig } from "./contract.ts";
 
 export { resolveInstance, resolveScheme, resolveScope } from "./resolve.ts";
 
-export { connectScope, createScope, getScope } from "./scope.ts";
+export { connectScope, createScope, frameTargetOrigin, getScope } from "./scope.ts";
 export type {
   ConnectScopeOptions,
   CreateScopeOptions,

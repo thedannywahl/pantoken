@@ -135,9 +135,10 @@ test("base and themes install their required CSS in dependency order", () => {
 test("publishes applicable plugin CSS without build-tool plugins", () => {
   const catalog = buildRegistryCatalog();
   const card = catalog.items.find(({ name }) => name === "card");
+  expect(card?.dependencies).toEqual(["@pantoken/components"]);
+  expect(card?.css).toHaveProperty('@import "@pantoken/components/card.css"');
   const hero = catalog.items.find(({ name }) => name === "hero");
   const logos = catalog.items.find(({ name }) => name === "logo-canvas");
-  expect(card?.css).toHaveProperty('@import "@pantoken/plugin-custom-components/card.css"');
   expect(hero?.css).toHaveProperty('@import "@pantoken/plugin-layouts/hero.css"');
   expect(logos?.css).toHaveProperty('@import "@pantoken/plugin-logos/canvas.css"');
   expect(catalog.items.some(({ name }) => name === "vite")).toBe(false);

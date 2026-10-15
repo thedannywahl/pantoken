@@ -26,12 +26,12 @@ test("buildExampleSrcdoc defaults to dir=ltr, and honors an rtl override", () =>
   expect(rtl).toContain('<html dir="rtl">');
 });
 
-test("buildExampleSrcdoc wraps in .instui-card by default, and omits it when card is false", () => {
+test("buildExampleSrcdoc wraps in .pantoken-demo-card by default, and omits it when card is false", () => {
   const withCard = buildExampleSrcdoc("<button>Save</button>", { cssUrls: [] });
-  expect(withCard).toContain('<div class="instui-card"><button>Save</button></div>');
+  expect(withCard).toContain('<div class="pantoken-demo-card"><button>Save</button></div>');
 
   const withoutCard = buildExampleSrcdoc("<button>Save</button>", { cssUrls: [], card: false });
-  expect(withoutCard).not.toContain("instui-card");
+  expect(withoutCard).not.toContain("pantoken-demo-card");
   expect(withoutCard).toContain("<button>Save</button>");
 });
 

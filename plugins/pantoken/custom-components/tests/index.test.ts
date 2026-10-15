@@ -78,7 +78,8 @@ test("container variant adds border and responsive gap/border-radius to direct c
 test("@scope block contains container-variant direct-child rules", () => {
   const css = cssOf(customComponents());
   expect(css).toContain("@scope (.instui-card)");
-  expect(css).toMatch(/&\.-variant-container\s*>\s*\*/u);
+  expect(css).toMatch(/&\.-variant-container\s*>\s*:not\(\.content\)/u);
+  expect(css).toMatch(/&\.-variant-container\s*>\s*\.content\s*>\s*\*/u);
 });
 
 test("every custom component appears in the plugin css output", () => {
@@ -385,7 +386,7 @@ test("banner pins a small close button at the top end and reserves content space
 });
 
 test("banner keeps elevation absent and defaults button-group actions to inline styles", () => {
-  const css = bannerRules("instui-");
+  const css = bannerRules("instui-").replace(/\/\*[\s\S]*?\*\//gu, "");
   expect(css).not.toContain("box-shadow:");
   expect(css).toMatch(
     />\s*\.instui-button:not\(\[class\*="-color-"\]\),\s*>\s*\.button-group\s*>\s*\.instui-button:not\(:has\(\+ \.instui-button\)\):not\(\[class\*="-color-"\]\)\s*\{/u,

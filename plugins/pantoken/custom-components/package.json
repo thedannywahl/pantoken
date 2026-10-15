@@ -1,7 +1,7 @@
 {
   "name": "@pantoken/plugin-custom-components",
-  "version": "0.7.0",
-  "description": "pantoken plugin: custom component layouts for downstream consumers — a card and more, documented with cssdoc.",
+  "version": "0.7.1",
+  "description": "pantoken plugin: additional custom components for downstream consumers, documented with cssdoc.",
   "homepage": "https://pantoken.app",
   "bugs": "https://github.com/thedannywahl/pantoken/issues",
   "license": "MIT",
@@ -34,6 +34,7 @@
     "check": "vp run generate && vp check"
   },
   "dependencies": {
+    "@pantoken/components": "workspace:*",
     "@pantoken/model": "workspace:*",
     "@pantoken/plugin-kit": "workspace:*"
   },

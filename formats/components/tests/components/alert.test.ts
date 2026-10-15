@@ -42,7 +42,7 @@ test("alert supports token-backed floating and inline status treatments", () => 
   // A direct singleton and a two-button group form action rows. Unmodified actions become
   // primary or secondary by position; authored button modifiers opt out.
   expect(css).toContain("inline-size: fit-content");
-  expect(css).toContain("& > .button-group");
+  expect(css).toMatch(/&\s*>\s*\.button-group/u);
   expect(css).toContain("display: flex");
   expect(css).toContain("--instui-component-shared-tokens-spacing-general-space-md");
   expect(css).toContain("--instui-component-shared-tokens-spacing-gap-buttons");

@@ -16,13 +16,27 @@
  * @pseudo ::backdrop — Dims the page behind the dialog as its mask, and frosts it under `-blur`.
  * @accessibility Open the native `<dialog>` with `showModal()` for modal semantics and Esc-to-close, and name it with `aria-labelledby` pointing at the `.header`.
  * @compat Styles a native <dialog> and its `::backdrop`; the top-layer rendering and backdrop styling need a browser that supports the dialog element.
- * @example
+ * @example -canvas-rce
  * <dialog class="pfx-modal -size-sm" id="modal-sm">
  *   <div class="header"><strong>Small</strong></div>
  *   <div class="body"><code>-size-sm</code> — a narrow modal.</div>
  *   <div class="footer">
  *     <button class="pfx-button">Close</button>
  *   </div>
+ * </dialog>
+ * @example -automatica11y
+ * ```html
+ * <button class="pfx-button" command="--show" commandfor="account-dialog" data-a11y-trigger>Open account details</button>
+ * <dialog class="pfx-modal -size-sm" id="account-dialog" aria-labelledby="account-dialog-title" data-a11y-root>
+ *   <div class="header" id="account-dialog-title"><strong>Account details</strong></div>
+ *   <div class="body">Review your account information.</div>
+ *   <div class="footer"><button class="pfx-button" command="--close" commandfor="account-dialog">Close</button></div>
+ * </dialog>
+ * ```
+ * @example -docs
+ * <dialog class="pfx-modal -size-lg" aria-labelledby="details-title">
+ *   <div class="header" id="details-title"><strong>More information</strong></div>
+ *   <div class="body">This example shows the large modal surface.</div>
  * </dialog>
  * @structure
  * .pfx-modal {

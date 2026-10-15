@@ -1,5 +1,31 @@
 # CHANGELOG
 
+## 0.1.49
+
+### Patch Changes
+
+- Updated dependencies [c91395a]
+- Updated dependencies [c91395a]
+- Updated dependencies [c91395a]
+- Updated dependencies [c91395a]
+  - @pantoken/wordpress@0.2.1
+  - @pantoken/scaffold@1.6.2
+  - @pantoken/tokens@0.8.2
+  - @pantoken/mintlify@0.2.3
+  - @pantoken/icon-font@0.1.25
+  - @pantoken/drupal@0.2.2
+  - @pantoken/email@0.1.23
+  - @pantoken/hugo@0.2.2
+  - @pantoken/jekyll@0.2.2
+  - @pantoken/pendo@0.4.13
+  - @pantoken/swatches@0.1.22
+  - @pantoken/rust@0.1.24
+  - @pantoken/vanilla@0.1.18
+  - @pantoken/android@0.1.26
+  - @pantoken/compose@0.1.26
+  - @pantoken/flutter@0.1.26
+  - @pantoken/swift@0.1.26
+
 ## 0.1.48
 
 ### Patch Changes

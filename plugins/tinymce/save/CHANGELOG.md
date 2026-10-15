@@ -1,5 +1,11 @@
 # @pantoken/tinymce-save
 
+## 0.2.1
+
+### Patch Changes
+
+- c91395a: Constrain iframe theme-message targets to concrete origins, except explicitly sandboxed opaque srcdoc previews. Skip malformed and unsupported opaque frame URLs, and keep preset-export download links out of the live document.
+
 ## 0.2.0
 
 ### Minor Changes

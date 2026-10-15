@@ -1,5 +1,16 @@
 # CHANGELOG
 
+## 0.2.3
+
+### Patch Changes
+
+- c91395a: Verify Panda CSS 2.2.0 preset token utility extraction compatibility.
+- Updated dependencies [c91395a]
+- Updated dependencies [c91395a]
+- Updated dependencies [c91395a]
+  - @pantoken/utils@1.3.0
+  - @pantoken/tokens@0.8.2
+
 ## 0.2.2
 
 ### Patch Changes

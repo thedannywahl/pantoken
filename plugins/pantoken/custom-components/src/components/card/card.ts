@@ -1,10 +1,8 @@
-import { SENTINEL } from "../../lib/sentinel.ts";
-import { card as cardRaw } from "../../generated/component-styles.ts";
+import { cardCss } from "@pantoken/components";
 
 /**
- * Build the card layout CSS (doc comment + rules), substituting `prefix` for the `pfx-` sentinel.
- * Defaults to `"instui-"` for the shipped stylesheet; pass `""` for an unprefixed build.
+ * @deprecated Import `cardCss` from `@pantoken/components` instead.
  */
 export function cardRules(prefix = "instui-"): string {
-  return cardRaw.replaceAll(SENTINEL, prefix);
+  return cardCss({ prefix: prefix.endsWith("-") ? prefix.slice(0, -1) : prefix });
 }

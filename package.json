@@ -22,7 +22,7 @@
     "@arethetypeswrong/cli": "catalog:",
     "@changesets/cli": "catalog:",
     "@codecov/vite-plugin": "catalog:",
-    "@codspeed/tinybench-plugin": "catalog:",
+    "@codspeed/vitest-plugin": "catalog:",
     "@commitlint/cli": "catalog:",
     "@commitlint/config-conventional": "catalog:",
     "@cssdoc/cli": "catalog:",

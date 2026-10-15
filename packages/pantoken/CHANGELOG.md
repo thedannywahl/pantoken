@@ -1,5 +1,88 @@
 # CHANGELOG
 
+## 0.2.29
+
+### Patch Changes
+
+- Updated dependencies [c91395a]
+- Updated dependencies [c91395a]
+- Updated dependencies [c91395a]
+- Updated dependencies [c91395a]
+- Updated dependencies [c91395a]
+- Updated dependencies [c91395a]
+- Updated dependencies [c91395a]
+- Updated dependencies [c91395a]
+- Updated dependencies [c91395a]
+- Updated dependencies [c91395a]
+- Updated dependencies [c91395a]
+- Updated dependencies [c91395a]
+- Updated dependencies [c91395a]
+- Updated dependencies [c91395a]
+- Updated dependencies [c91395a]
+- Updated dependencies [c91395a]
+- Updated dependencies [c91395a]
+  - @pantoken/components@2.1.0
+  - @pantoken/plugin-custom-components@0.7.1
+  - @pantoken/plugin-layouts@0.5.4
+  - @pantoken/wordpress@0.2.1
+  - @pantoken/vite@0.2.3
+  - @pantoken/scope@0.4.4
+  - @pantoken/panda@0.2.3
+  - @pantoken/astro@0.2.3
+  - @pantoken/angular@0.2.3
+  - @pantoken/tinymce@0.6.2
+  - @pantoken/next@0.2.2
+  - @pantoken/tokens@0.8.2
+  - @pantoken/mui@0.2.2
+  - @pantoken/svelte@0.2.2
+  - @pantoken/mintlify@0.2.3
+  - @pantoken/icons@0.3.4
+  - @pantoken/drupal@0.2.2
+  - @pantoken/email@0.1.23
+  - @pantoken/hugo@0.2.2
+  - @pantoken/jekyll@0.2.2
+  - @pantoken/bootstrap@0.2.0
+  - @pantoken/css-in-js@0.2.2
+  - @pantoken/docusaurus@0.2.0
+  - @pantoken/foundation@0.2.2
+  - @pantoken/pendo@0.4.13
+  - @pantoken/react@0.2.2
+  - @pantoken/shadcn@0.3.0
+  - @pantoken/storybook@0.2.2
+  - @pantoken/vitepress@0.3.0
+  - @pantoken/vue@0.2.2
+  - @pantoken/web-components@0.7.4
+  - @pantoken/cli@0.1.49
+  - @pantoken/figma@0.1.18
+  - @pantoken/swatches@0.1.22
+  - @pantoken/css@0.4.4
+  - @pantoken/dtcg@0.1.19
+  - @pantoken/interactions@0.5.1
+  - @pantoken/less@0.1.22
+  - @pantoken/scss@0.1.22
+  - @pantoken/stylus@0.1.22
+  - @pantoken/vanilla@0.1.18
+  - @pantoken/plugin-primitives@1.0.7
+  - @pantoken/react-native@0.1.22
+  - @pantoken/tailwind@0.2.2
+  - @pantoken/android@0.1.26
+  - @pantoken/compose@0.1.26
+  - @pantoken/flutter@0.1.26
+  - @pantoken/swift@0.1.26
+  - @pantoken/plugin-custom-theme-colors@0.3.4
+  - @pantoken/plugin-stacking@1.0.12
+  - @pantoken/plugin-theme-custom-media@0.2.11
+  - @pantoken/markdown-it@0.2.2
+  - @pantoken/react-markdown@0.2.2
+  - @pantoken/rehype@0.2.2
+  - @pantoken/postcss@0.2.3
+  - @pantoken/webpack@0.2.2
+  - @pantoken/plugin-custom-icons@0.3.15
+  - @pantoken/plugin-logos@0.5.4
+  - @pantoken/plugin-simple-icons@0.3.13
+  - @pantoken/plugin-transition@1.0.10
+  - @pantoken/plugin-visual-debug@0.1.21
+
 ## 0.2.28
 
 ### Patch Changes

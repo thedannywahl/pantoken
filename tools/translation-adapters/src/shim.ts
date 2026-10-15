@@ -155,13 +155,37 @@ export function createChatCompletionsHandler(
   };
 }
 
-/** The ~100-line HTTP server: `POST /v1/chat/completions`, everything else 404s. */
-export function createShimServer(options: RunShimOptions): Server {
+/** A local translation server whose listening address cannot be widened by callers. */
+export interface ShimServer {
+  /** Listen on an ephemeral or specified TCP port, always on IPv4 loopback. */
+  listen(port: number, callback?: () => void): void;
+  /** Report the bound loopback address. */
+  address(): ReturnType<Server["address"]>;
+  /** Stop accepting requests and close the local listener. */
+  close(callback?: (error?: Error) => void): void;
+}
+
+function isLocalShimRequest(request: IncomingMessage): boolean {
+  if (request.headers.origin !== undefined) return false;
+  const port = String(request.socket.localPort);
+  return new Set([`127.0.0.1:${port}`, `localhost:${port}`]).has(request.headers.host ?? "");
+}
+
+function sendShimError(response: ServerResponse, statusCode: number, message: string): void {
+  response.writeHead(statusCode, { "content-type": "application/json" });
+  response.end(JSON.stringify({ error: { message } }));
+}
+
+/** Serve a loopback-only CLI translation endpoint, rejecting browser-origin requests. */
+export function createShimServer(options: RunShimOptions): ShimServer {
   const handleChatCompletions = createChatCompletionsHandler(options);
-  return createServer((req: IncomingMessage, res: ServerResponse) => {
+  const server = createServer((req: IncomingMessage, res: ServerResponse) => {
+    if (!isLocalShimRequest(req)) {
+      sendShimError(res, 403, "local CLI requests only");
+      return;
+    }
     if (req.method !== "POST" || req.url !== "/v1/chat/completions") {
-      res.writeHead(404, { "content-type": "application/json" });
-      res.end(JSON.stringify({ error: { message: "not found" } }));
+      sendShimError(res, 404, "not found");
       return;
     }
     let body = "";
@@ -183,4 +207,16 @@ export function createShimServer(options: RunShimOptions): Server {
       })();
     });
   });
+  return {
+    listen(port, callback) {
+      if (!Number.isInteger(port) || port < 0 || port > 65535) {
+        throw new RangeError("The shim requires a TCP port between 0 and 65535");
+      }
+      server.listen(port, "127.0.0.1", callback);
+    },
+    address: () => server.address(),
+    close(callback) {
+      server.close(callback);
+    },
+  };
 }
