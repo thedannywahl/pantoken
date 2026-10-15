@@ -1,0 +1,35 @@
+{
+  "cli_version": "0.11.5",
+  "checkpoint_id": "01M50TTR65YPGGNVZ4ZW2MKEZA",
+  "session_id": "9d22c6d7-9630-408e-808a-0f7a6ff2422b",
+  "strategy": "manual-commit",
+  "created_at": "2026-10-15T22:27:24.807925Z",
+  "branch": "canvas-rce2",
+  "checkpoints_count": 1,
+  "files_touched": [
+    ".changeset/browser-static-inline.md",
+    "formats/inline-styles/README.md",
+    "formats/inline-styles/package.json",
+    "formats/inline-styles/src/browser.ts",
+    "formats/inline-styles/src/inline-html.ts",
+    "formats/inline-styles/tests/inline-html.test.ts",
+    "formats/inline-styles/vite.config.ts",
+    "pnpm-lock.yaml"
+  ],
+  "agent": "Copilot CLI",
+  "model": "",
+  "turn_id": "2b0167246560",
+  "checkpoint_transcript_start": 2008,
+  "transcript_lines_at_start": 2008,
+  "compact_transcript_start": 321,
+  "token_usage": {
+    "input_tokens": 0,
+    "cache_creation_tokens": 0,
+    "cache_read_tokens": 0,
+    "output_tokens": 0,
+    "api_call_count": 0
+  },
+  "session_metrics": {
+    "turn_count": 3
+  }
+}

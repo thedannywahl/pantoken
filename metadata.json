@@ -1,0 +1,33 @@
+{
+  "cli_version": "0.11.5",
+  "checkpoint_id": "01M50TTR65YPGGNVZ4ZW2MKEZA",
+  "strategy": "manual-commit",
+  "branch": "canvas-rce2",
+  "checkpoints_count": 1,
+  "files_touched": [
+    ".changeset/browser-static-inline.md",
+    "formats/inline-styles/README.md",
+    "formats/inline-styles/package.json",
+    "formats/inline-styles/src/browser.ts",
+    "formats/inline-styles/src/inline-html.ts",
+    "formats/inline-styles/tests/inline-html.test.ts",
+    "formats/inline-styles/vite.config.ts",
+    "pnpm-lock.yaml"
+  ],
+  "sessions": [
+    {
+      "metadata": "/0/metadata.json",
+      "transcript": "/0/full.jsonl",
+      "compact_transcript": "/0/transcript.jsonl",
+      "content_hash": "/0/content_hash.txt",
+      "prompt": ""
+    }
+  ],
+  "token_usage": {
+    "input_tokens": 0,
+    "cache_creation_tokens": 0,
+    "cache_read_tokens": 0,
+    "output_tokens": 0,
+    "api_call_count": 0
+  }
+}
