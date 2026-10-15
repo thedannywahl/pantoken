@@ -301,9 +301,11 @@ describe("makeSourceResolver", () => {
 });
 
 describe("makeImportSnippet", () => {
-  const COMPONENTS_CSS = "/**\n * @component button\n */\n.button { color: red; }\n";
+  const COMPONENTS_CSS =
+    "/**\n * @component button\n */\n.button { color: red; }\n/**\n * @component card\n */\n.card {}\n";
   const UTILITIES_CSS = "/**\n * @utility view\n */\n.view { display: block; }\n";
-  const PLUGIN_CSS = "/**\n * @rule zstack\n */\n.zstack { z-index: 1; }\n";
+  const PLUGIN_CSS =
+    "/**\n * @rule zstack\n */\n.zstack { z-index: 1; }\n/**\n * @component card\n */\n.card {}\n";
   const pluginDefs = [
     {
       pkg: "plugins/pantoken/stacking",
@@ -325,6 +327,14 @@ describe("makeImportSnippet", () => {
   test("a plugin record's import wins", () => {
     expect(build()(asEntry("zstack", "rule"))).toBe(
       '@import "@pantoken/plugin-stacking/stacking.css";',
+    );
+  });
+  test("the core component import wins when a legacy plugin exports the same record", () => {
+    expect(build()(asEntry("card", "component"))).toBe(
+      [
+        '@import "@pantoken/components/components.css";',
+        '@import "@pantoken/components/card.css";',
+      ].join("\n"),
     );
   });
   test("a component gets both the sheet import and its per-component subpath", () => {

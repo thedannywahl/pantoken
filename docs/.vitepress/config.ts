@@ -16,6 +16,7 @@ import { partitionApiSidebar } from "./api-sidebar.js";
 import { LOCALE_THEMES, NON_LATIN_LOCALES, NON_ROOT_LOCALES, type DocsLocale } from "./i18n.js";
 import { mermaidPlugin } from "./plugins/vitepress-mermaid/index.js";
 import { tokenValuePreview } from "./plugins/token-value-preview/index.js";
+import { readPartialPages } from "../scripts/lib/files.ts";
 
 // Absolute path to a repo-relative location, from docs/.vitepress/.
 const at = (relative: string): string =>
@@ -298,13 +299,6 @@ const isActiveLocale = (localeKey: DocsLocale): boolean =>
   !isLocaleScoped || localeKey === buildLocale;
 
 const docsRoot = at("docs");
-
-const readPartialPages = (): Set<string> | undefined => {
-  const path = process.env.DOCS_CHANGED_PAGES_FILE;
-  if (!path) return undefined;
-  const parsed = JSON.parse(readFileSync(path, "utf8")) as string[];
-  return new Set(parsed.map((page) => page.split("\\").join("/")));
-};
 
 const walkMarkdown = (dir: string, prefix = ""): string[] => {
   const files: string[] = [];

@@ -33,7 +33,7 @@ const styleItem = (options: {
 export function buildPluginRegistryItems(): RegistryItem[] {
   const items: RegistryItem[] = [];
 
-  for (const name of ["card", "banner", "agent-shell", "skeleton-loader", "segmented-control"]) {
+  for (const name of ["banner", "agent-shell", "skeleton-loader", "segmented-control"]) {
     items.push(
       styleItem({
         name,

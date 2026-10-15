@@ -7,6 +7,10 @@
  * @a11y A logo is meaningful, not decorative — give the host element `role="img"` and an `aria-label` naming the product; never mark it `aria-hidden`.
  * @example
  * <span class="instui-logo -logo-canvas-horizontal-color" role="img" aria-label="Canvas logo"></span>
+ * @example -automatica11y
+ * ```html
+ * <span class="pfx-logo -logo-canvas-horizontal-color" role="img" aria-label="Canvas logo" data-a11y-root></span>
+ * ```
  */
 @scope (.pfx-logo) {
   & {

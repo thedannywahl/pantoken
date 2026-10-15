@@ -12,13 +12,33 @@
  * @modifier -size-lg — Large.
  * @pseudo ::placeholder — The placeholder text, in a muted color that shifts on hover.
  * @cssstate disabled
- * @example
+ * @example -canvas-rce
  * <select class="pfx-simple-select">
  *   <option>Choose a fruit…</option>
  *   <option>Apple</option>
  *   <option>Orange</option>
  *   <option>Pear</option>
  * </select>
+ * @example -automatica11y
+ * ```html
+ * <label>Fruit
+ *   <select class="pfx-simple-select" data-a11y-trigger data-a11y-root>
+ *     <option value="">Choose a fruit</option>
+ *     <option value="apple">Apple</option>
+ *     <option value="orange">Orange</option>
+ *   </select>
+ * </label>
+ * ```
+ * @example -docs
+ * ```html
+ * <label>Preferred contact method
+ *   <select class="pfx-simple-select">
+ *     <option value="email" selected>Email</option>
+ *     <option value="phone">Phone</option>
+ *     <option value="none">No contact</option>
+ *   </select>
+ * </label>
+ * ```
  * @structure
  * .pfx-simple-select {
  *   option {}

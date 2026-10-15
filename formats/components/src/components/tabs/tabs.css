@@ -6,7 +6,7 @@
  * @modifier -overflow-scroll — Keep the tab list on one line and let it scroll horizontally instead of wrapping, hiding the scrollbar.
  * @part .list — The row of tabs.
  * @a11y Wire the tab list with role="tablist", each tab with role="tab" and aria-selected, and each panel with role="tabpanel".
- * @example
+ * @example -canvas-rce
  * ```html
  * <div class="pfx-tabs">
  *   <div class="list" role="tablist" aria-label="Default tabs">
@@ -19,6 +19,27 @@
  *   <div class="panel" id="details-panel" role="tabpanel" hidden>The Details tab's content shows here.</div>
  *   <div class="panel" id="disabled-panel" role="tabpanel" hidden>The Disabled tab's content won't be visible.</div>
  *   <div class="panel" id="history-panel" role="tabpanel" hidden>The History tab's content shows here.</div>
+ * </div>
+ * ```
+ * @example -automatica11y
+ * ```html
+ * <div class="pfx-tabs" data-a11y-root>
+ *   <div class="list" role="tablist" aria-label="Account settings">
+ *     <button class="tab -selected" id="profile-tab" role="tab" aria-selected="true" aria-controls="profile-panel" tabindex="0" data-a11y-trigger>Profile</button>
+ *     <button class="tab" id="security-tab" role="tab" aria-selected="false" aria-controls="security-panel" tabindex="-1">Security</button>
+ *   </div>
+ *   <div class="panel" id="profile-panel" role="tabpanel" aria-labelledby="profile-tab">Profile settings</div>
+ *   <div class="panel" id="security-panel" role="tabpanel" aria-labelledby="security-tab" hidden>Security settings</div>
+ * </div>
+ * ```
+ * @example -docs
+ * ```html
+ * <div class="pfx-tabs -variant-secondary">
+ *   <div class="list" role="tablist" aria-label="Project views">
+ *     <button class="tab -selected" role="tab" aria-selected="true">Overview</button>
+ *     <button class="tab" role="tab" aria-selected="false">Activity</button>
+ *   </div>
+ *   <div class="panel" role="tabpanel">Project overview</div>
  * </div>
  * ```
  * @structure

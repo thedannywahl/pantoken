@@ -1205,7 +1205,7 @@ jobs:
         timeout-minutes: 12
         with:
           mode: walltime
-          run: VP_NODE_VERSION=22.18.0 vp test --run --config vite.bench.config.ts
+          run: VP_NODE_VERSION=22.18.0 vp test bench --run --config vite.bench.config.ts --dir bench
 
   coverage:
     needs: build
@@ -1240,6 +1240,8 @@ jobs:
       # step is what makes them actually assert.
       - name: Generate English API documentation
         run: vp run @pantoken/docs#docs:api:en
+      - name: Generate docs theme curve
+        run: node docs/scripts/site-themes.ts
       # One full run with coverage, on PRs and main alike. v8 instruments in-flight, so this costs
       # barely more than a bare `vp test` — and a second, uninstrumented full run in its own job cost a
       # whole extra checkout, install, and build. The 85% threshold floor (vite.config.ts) fails the run.

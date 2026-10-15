@@ -210,6 +210,7 @@ describe("createShimServer", () => {
     close = () => new Promise((res) => server.close(() => res()));
     const address = server.address();
     if (address === null || typeof address === "string") throw new Error("expected a port");
+    expect(address.address).toBe("127.0.0.1");
 
     const res = await fetch(`http://127.0.0.1:${String(address.port)}/v1/chat/completions`, {
       method: "POST",
@@ -220,6 +221,48 @@ describe("createShimServer", () => {
     const body = (await res.json()) as { choices: [{ message: { content: string } }] };
     expect(body.choices[0].message.content).toBe("translated: hola");
   });
+
+  test.each([
+    { origin: "https://attacker.example" },
+    { origin: "null" },
+    { host: "attacker.example" },
+  ])("rejects non-CLI or unexpected-host requests: %j", async (headers) => {
+    const promptFn = vi.fn<PromptFn>();
+    const server = createShimServer({ profiles: PROFILES, breaker: breaker(), promptFn });
+    await new Promise<void>((resolve) => server.listen(0, resolve));
+    close = () => new Promise((resolve) => server.close(() => resolve()));
+    const address = server.address();
+    if (address === null || typeof address === "string") throw new Error("expected a port");
+
+    const { request } = await import("node:http");
+    const response = await new Promise<import("node:http").IncomingMessage>((resolve, reject) => {
+      const pending = request(
+        `http://127.0.0.1:${String(address.port)}/v1/chat/completions`,
+        { method: "POST", headers: { "content-type": "application/json", ...headers } },
+        resolve,
+      );
+      pending.on("error", reject);
+      pending.end(JSON.stringify({ messages: [{ role: "user", content: "must not run" }] }));
+    });
+    response.resume();
+
+    expect(response.statusCode).toBe(403);
+    expect(promptFn).not.toHaveBeenCalled();
+  });
+
+  test.each([-1, 65536, 1.5, Number.NaN, "0.0.0.0"])(
+    "rejects an invalid listen port %j",
+    (port) => {
+      const server = createShimServer({
+        profiles: PROFILES,
+        breaker: breaker(),
+        promptFn: vi.fn(),
+      });
+
+      expect(() => server.listen(port as number)).toThrow(RangeError);
+      expect(server.address()).toBeNull();
+    },
+  );
 
   test("404s any other route", async () => {
     const promptFn: PromptFn = async () => "unused";

@@ -55,6 +55,31 @@ test("walkMarkdownFiles returns [] when the directory is absent", async () => {
   expect(walkMarkdownFiles("/missing")).toEqual([]);
 });
 
+test("readPartialPages normalizes separators and deduplicates page paths", async () => {
+  const { readPartialPages } = await import("./lib/files.ts");
+  readFileSync.mockReturnValue(JSON.stringify(["guide\\cli.md", "guide/cli.md", "api/index.md"]));
+
+  expect(readPartialPages("/pages.json")).toEqual(new Set(["guide/cli.md", "api/index.md"]));
+  expect(readFileSync).toHaveBeenCalledWith("/pages.json", "utf8");
+});
+
+test("readPartialPages leaves an unconfigured allowlist unset", async () => {
+  const { readPartialPages } = await import("./lib/files.ts");
+
+  expect(readPartialPages("")).toBeUndefined();
+  expect(readFileSync).not.toHaveBeenCalled();
+});
+
+test("readPartialPages rejects malformed or unreadable allowlists", async () => {
+  const { readPartialPages } = await import("./lib/files.ts");
+  readFileSync.mockReturnValue("{");
+  expect(() => readPartialPages("/pages.json")).toThrow(SyntaxError);
+  readFileSync.mockImplementation(() => {
+    throw new Error("missing allowlist");
+  });
+  expect(() => readPartialPages("/missing.json")).toThrow("missing allowlist");
+});
+
 test("styleBadges rewrites standalone badge markers into spans", async () => {
   const { styleBadges } = await import("./style-api-badges.ts");
 

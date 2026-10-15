@@ -7,6 +7,13 @@
  * @accessibility The glyph is decorative, so mark it `aria-hidden="true"`; give it a `role` or label only when the icon conveys meaning on its own.
  * @example
  * <span class="instui-icon -icon-megaphone" aria-hidden="true"></span>
+ * @example -automatica11y
+ * ```html
+ * <button class="pfx-button" data-a11y-root data-a11y-trigger>
+ *   <span class="pfx-icon -icon-search" aria-hidden="true"></span>
+ *   Search
+ * </button>
+ * ```
  */
 @scope (.pfx-icon) {
   & {

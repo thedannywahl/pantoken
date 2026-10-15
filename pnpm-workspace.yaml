@@ -22,14 +22,14 @@ catalog:
   "@types/node": ^26.6.5
   typescript: ^7.0.2
   arkregex: ^0.0.12
-  vite: npm:@voidzero-dev/vite-plus-core@1.1.0
-  vite-plus: 1.1.0
+  vite: npm:@voidzero-dev/vite-plus-core@1.2.0
+  vite-plus: 1.2.0
   # Upstream Instructure sources. The design-tokens repo is GitHub-only and versioned independently of
   # the 11.7.x line, so it's pinned to a release tag (its package.json version is unreliable — stuck at
   # 1.0.0 across tags — so the tag + resolved commit are the provenance the upgrade pipeline records).
   "@instructure/instructure-design-tokens": "github:instructure/instructure-design-tokens#v2.1.0"
-  "@instructure/ui-icons": ^11.7.8
-  lucide: ^1.55.0
+  "@instructure/ui-icons": ^11.7.10
+  lucide: ^1.57.0
   # Native token transforms
   style-dictionary: ^5.6.1
   "@tokens-studio/sd-transforms": ^2.0.3
@@ -47,8 +47,8 @@ catalog:
   # Lucide Lab icons (plugin)
   "@lucide/lab": ^0.7.0
   # React markdown integration
-  react: ^19.3.0
-  react-dom: ^19.3.0
+  react: ^19.3.1
+  react-dom: ^19.3.1
   "@types/react": ^19.3.0
   "@types/react-dom": ^19.3.0
   react-markdown: ^10.1.0
@@ -56,7 +56,7 @@ catalog:
   "@emotion/styled": ^11.14.1
   "@mui/material": ^9.5.0
   remark-gfm: ^4.0.1
-  postcss: ^8.5.29
+  postcss: ^8.5.30
   webpack-sources: ^3.6.0
   cheerio: ^1.2.0
   juice: ^12.2.0
@@ -68,14 +68,14 @@ catalog:
   svg2ttf: ^6.1.0
   ttf2woff2: ^8.0.1
   "@mdx-js/react": ^3.1.1
-  "@instructure/ui-heading": ^11.7.8
-  "@instructure/ui-text": ^11.7.8
-  "@instructure/ui-link": ^11.7.8
-  "@instructure/ui-list": ^11.7.8
-  "@instructure/ui-table": ^11.7.8
-  "@instructure/ui-view": ^11.7.8
-  "@instructure/ui-img": ^11.7.8
-  "@instructure/ui-alerts": ^11.7.8
+  "@instructure/ui-heading": ^11.7.10
+  "@instructure/ui-text": ^11.7.10
+  "@instructure/ui-link": ^11.7.10
+  "@instructure/ui-list": ^11.7.10
+  "@instructure/ui-table": ^11.7.10
+  "@instructure/ui-view": ^11.7.10
+  "@instructure/ui-img": ^11.7.10
+  "@instructure/ui-alerts": ^11.7.10
   core-js: ^3.50.0
   # Property-based testing
   fast-check: ^4.10.2
@@ -85,13 +85,13 @@ catalog:
   "@commitlint/cli": ^21.2.3
   "@commitlint/config-conventional": ^21.2.3
   "@changesets/cli": ^3.0.3
-  "@vitest/coverage-v8": 5.0.3
+  "@vitest/coverage-v8": 5.0.4
   markdownlint-cli2: ^0.23.3
   "@manypkg/cli": ^0.25.1
   fallow: ^3.33.1
   happy-dom: ^20.14.6
   dompurify: ^3.4.17
-  snyk: ^1.1308.0
+  snyk: ^1.1308.1
   publint: ^0.3.25
   "@arethetypeswrong/cli": ^0.18.5
   bumpp: ^12.2.1
@@ -101,12 +101,12 @@ catalog:
   "@shikijs/langs": ^4.5.0
   "@shikijs/themes": ^4.5.0
   "@shikijs/types": ^4.5.0
-  vue: ^3.5.43
-  "@vue/server-renderer": ^3.5.43
+  vue: ^3.5.44
+  "@vue/server-renderer": ^3.5.44
   vitepress: 2.0.0-alpha.20
   oxc-minify: ^0.153.0
   typedoc: ^0.28.20
-  typedoc-plugin-markdown: ^4.13.1
+  typedoc-plugin-markdown: ^4.14.0
   typedoc-vitepress-theme: ^1.1.4
   vitepress-plugin-llms: ^1.14.0
   # CLI framework (commander-based scaffolding CLI rebuild)
@@ -144,7 +144,7 @@ catalog:
   # @pantoken/tinymce + canvas-theme-editor scaffold — tracks the current tinymce major, not
   # instructure/canvas-lms's own (older) production RCE version. v8's stricter DOMPurify
   # sanitization is stricter than canvas-lms's tinymce 5, which is an acceptable direction.
-  tinymce: ^8.9.3
+  tinymce: ^8.10.0
   tinymce-i18n: 26.9.21
   less: ^4.9.1
   codemirror: ^6.0.2
@@ -159,10 +159,9 @@ catalog:
   "@codemirror/view": ^6.43.14
   "@lezer/highlight": ^1.2.3
   prettier: ^3.9.10
-  vitest: 5.0.3
-  # Continuous performance testing — Tinybench runs inside Vitest's TypeScript host and reports to CodSpeed.
-  # Swap back to @codspeed/vitest-plugin when CodSpeedHQ/codspeed-node#86 is released.
-  "@codspeed/tinybench-plugin": ^5.7.1
+  vitest: 5.0.4
+  # Continuous performance testing through Vitest's native benchmark provider.
+  "@codspeed/vitest-plugin": ^6.0.1
   tinybench: ^6.2.2
   ajv-draft-04: ^1.0.0
   rehype: ^13.0.2

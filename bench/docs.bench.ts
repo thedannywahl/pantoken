@@ -4,7 +4,6 @@
 // too slow and too noisy to measure on a shared runner, so guard the hot paths instead — an
 // algorithmic regression here is what turns a long build into an intractable one.
 import { test, describe } from "vite-plus/test";
-import { runBench } from "./run-bench.ts";
 import {
   collectUnits,
   reassemble,
@@ -113,79 +112,79 @@ const sitemapOf = (locale: string, pages: number): string =>
 const sitemapDocuments = [sitemapOf("root", 900), sitemapOf("hu", 900), sitemapOf("root", 900)];
 
 describe("segmentMarkdown", () => {
-  test("cssdoc component page", async () => {
-    await runBench("segmentMarkdown: cssdoc page", () => {
+  test("cssdoc component page", async ({ bench }) => {
+    await bench("segmentMarkdown: cssdoc page", () => {
       segmentMarkdown(CSSDOC_PAGE);
-    });
+    }).run();
   });
 
-  test("typedoc function page", async () => {
-    await runBench("segmentMarkdown: typedoc page", () => {
+  test("typedoc function page", async ({ bench }) => {
+    await bench("segmentMarkdown: typedoc page", () => {
       segmentMarkdown(TYPEDOC_PAGE);
-    });
+    }).run();
   });
 });
 
 describe("collectUnits", () => {
-  test("cssdoc component page", async () => {
-    await runBench("collectUnits: cssdoc page", () => {
+  test("cssdoc component page", async ({ bench }) => {
+    await bench("collectUnits: cssdoc page", () => {
       collectUnits(cssdocSegments);
-    });
+    }).run();
   });
 });
 
 describe("reassemble", () => {
-  test("cssdoc component page", async () => {
-    await runBench("reassemble: cssdoc page", () => {
+  test("cssdoc component page", async ({ bench }) => {
+    await bench("reassemble: cssdoc page", () => {
       reassemble(cssdocSegments, identityResolve);
-    });
+    }).run();
   });
 
-  test("typedoc function page", async () => {
-    await runBench("reassemble: typedoc page", () => {
+  test("typedoc function page", async ({ bench }) => {
+    await bench("reassemble: typedoc page", () => {
       reassemble(typedocSegments, identityResolve);
-    });
+    }).run();
   });
 });
 
 describe("translation memory", () => {
-  test("keyFor (sha-256 cache key)", async () => {
-    await runBench("keyFor: prose unit", () => {
+  test("keyFor (sha-256 cache key)", async ({ bench }) => {
+    await bench("keyFor: prose unit", () => {
       keyFor("prose", "Wrap a Next.js config so the Instructure UI packages are transpiled.");
-    });
+    }).run();
   });
 
-  test("alignTrailingNewline", async () => {
-    await runBench("alignTrailingNewline: prose unit", () => {
+  test("alignTrailingNewline", async ({ bench }) => {
+    await bench("alignTrailingNewline: prose unit", () => {
       alignTrailingNewline("Source text.\n", "Translated text.");
-    });
+    }).run();
   });
 });
 
 describe("css api syntax resolution", () => {
-  test("inferSyntax (all value shapes)", async () => {
-    await runBench("inferSyntax: mixed values", () => {
+  test("inferSyntax (all value shapes)", async ({ bench }) => {
+    await bench("inferSyntax: mixed values", () => {
       for (const value of TOKEN_VALUES) inferSyntax(value);
-    });
+    }).run();
   });
 
-  test("syntaxFromChain (miss on empty index)", async () => {
-    await runBench("syntaxFromChain: unresolved token", () => {
+  test("syntaxFromChain (miss on empty index)", async ({ bench }) => {
+    await bench("syntaxFromChain: unresolved token", () => {
       syntaxFromChain("--instui-color-primary", new Map());
-    });
+    }).run();
   });
 
-  test("resolveSyntax (full fallback chain)", async () => {
-    await runBench("resolveSyntax: property-name fallback", () => {
+  test("resolveSyntax (full fallback chain)", async ({ bench }) => {
+    await bench("resolveSyntax: property-name fallback", () => {
       resolveSyntax("--instui-font-family-base", new Map(), new Map(), (value) => value);
-    });
+    }).run();
   });
 });
 
 describe("sitemap merge", () => {
-  test("three locale documents, 900 pages each", async () => {
-    await runBench("mergeSitemapUrls: 3 documents", () => {
+  test("three locale documents, 900 pages each", async ({ bench }) => {
+    await bench("mergeSitemapUrls: 3 documents", () => {
       renderSitemap(mergeSitemapUrls(sitemapDocuments));
-    });
+    }).run();
   });
 });

@@ -64,7 +64,7 @@ copyFileSync(
   join(assets, "site-themes.css"),
 );
 
-// `.instui-card` — the surface the /demos and the CSS-API live examples share. A static asset
+// `.pantoken-demo-card` — the surface the /demos and the CSS-API live examples share. A static asset
 // (tools/demo/assets/card.css); the host page imports it directly, and the runner loads the same file.
 copyFileSync(require.resolve("@pantoken/demo/card.css"), join(assets, "card.css"));
 

@@ -193,9 +193,7 @@ function downloadBlob(blob: Blob, filename: string): void {
   const anchor = document.createElement("a");
   anchor.href = objectUrl;
   anchor.download = filename;
-  document.body.append(anchor);
   anchor.click();
-  anchor.remove();
   setTimeout(() => URL.revokeObjectURL(objectUrl), 0);
 }
 

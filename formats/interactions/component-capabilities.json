@@ -47,6 +47,11 @@
       "css": "https://cdn.jsdelivr.net/npm/@pantoken/components/dist/calendar.css"
     },
     {
+      "name": "card",
+      "type": "css-only",
+      "css": "https://cdn.jsdelivr.net/npm/@pantoken/components/dist/card.css"
+    },
+    {
       "name": "checkbox",
       "type": "css-only",
       "needsIcons": true,

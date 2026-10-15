@@ -6,6 +6,7 @@
  */
 import type { Editor } from "tinymce";
 import type { CdnFile } from "@pantoken/cdn";
+import { resolveExampleTargets } from "@pantoken/utils/example-targets";
 import type { CssDocEntry } from "../cssdoc/model.js";
 import type { MissingAssetHandler } from "../types.js";
 import { trackAndInjectAsset } from "../content-css.js";
@@ -60,8 +61,9 @@ const COMPONENT_PICKER_EXCLUDED_COMPONENTS = new Set([
 ]);
 
 function normalizeExample(example: string): string {
-  const fencedHtml = example.match(/```(?:html)?\s*([\s\S]*?)```/iu);
-  return (fencedHtml?.[1] ?? example).trim();
+  const fencedHtml = example.match(/```(?:html(?:\s+-[a-z][a-z0-9-]*)*)?\s*\r?\n([\s\S]*?)```/iu);
+  const markup = fencedHtml?.[1] ?? example.replace(/^(?:\s*-[a-z][a-z0-9-]*\s*)+\r?\n/u, "");
+  return markup.trim();
 }
 
 /**
@@ -170,9 +172,13 @@ function openComponentsDialog(
       const selectedName = data.component;
       const component = components.find((c) => c.name === selectedName);
 
-      if (component && component.examples.length > 0) {
-        // Insert the first example.
-        const html = normalizeExample(component.examples[0]);
+      if (component) {
+        const exampleIndex = resolveExampleTargets(component.examples).canvasRce[0];
+        if (exampleIndex === undefined) {
+          api.close();
+          return;
+        }
+        const html = normalizeExample(component.examples[exampleIndex]);
         insertHtml(editor, html);
 
         // If this component has a CSS file, inject it into the content area.

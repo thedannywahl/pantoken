@@ -1,7 +1,6 @@
 /**
- * Emit `generated/layouts.css` — the card layout CSS with the `pfx-` sentinel replaced by `instui-`.
- * The cssdoc `@layout card` doc comment ships as part of `src/components/card/card.css`; `cardRules("instui-")`
- * produces the full sheet (comment + rules) ready for the docs parser and the published stylesheet.
+ * Emit the custom-components stylesheet, retaining the deprecated Card compatibility alias alongside
+ * the plugin-owned records. Card's canonical source and API live in `@pantoken/components`.
  *
  * Run after `scripts/component-styles.ts` (which generates `src/generated/component-styles.ts`).
  */

@@ -13,6 +13,15 @@
  * - Use `<blockquote>` semantically for the quote
  * - Ensure attribution is clear and associated with the quote
  * - If using images, provide alt text
+ * @example -automatica11y -nocard
+ * ```html
+ * <div class="pfx-testimonial" data-a11y-root>
+ *   <blockquote class="pfx-content">
+ *     <p class="pfx-quote">The course helped me understand the material.</p>
+ *     <footer><p class="pfx-author">Jordan Lee</p><p class="pfx-title">Student</p></footer>
+ *   </blockquote>
+ * </div>
+ * ```
  * @selector div[class~="pfx-testimonial"]
  * @part .pfx-avatar - Optional author profile image.
  * @part .pfx-content - Container for quote and attribution.

@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: pantoken\n"
-"PO-Revision-Date: 2026-10-12 18:47+0000\n"
+"PO-Revision-Date: 2026-10-15 15:04+0000\n"
 "Last-Translator: pantoken localization engine\n"
 "Language-Team: pantoken\n"
 "MIME-Version: 1.0\n"
@@ -206,7 +206,7 @@ msgstr ""
 #: bundlers/next/src/index.md
 #, no-c-format
 msgctxt "docs.api:prose"
-msgid "Target: Next.js. Current format: `Production build transpiling and rendering Instructure UI 11.7.8 with React 19.3.0`. Minimum host version: `16.0.0`. Tested through `16.3.8`. Newer releases require review."
+msgid "Target: Next.js. Current format: `Production build transpiling and rendering Instructure UI 11.7.10 with React 19.3.0`. Minimum host version: `16.0.0`. Tested through `16.4.0`. Newer releases require review."
 msgstr ""
 
 #: bundlers/next/src/index.md
@@ -319,7 +319,7 @@ msgstr ""
 #: bundlers/panda/src/index.md
 #, no-c-format
 msgctxt "docs.api:prose"
-msgid "Target: Panda CSS. Current format: `Panda token utility extraction from the Pantoken preset`. Minimum host version: `1.12.1`. Tested through `2.1.1`. Newer releases require review."
+msgid "Target: Panda CSS. Current format: `Panda token utility extraction from the Pantoken preset`. Minimum host version: `1.12.1`. Tested through `2.2.0`. Newer releases require review."
 msgstr ""
 
 #: bundlers/panda/src/index.md
@@ -557,7 +557,7 @@ msgstr ""
 #: bundlers/vite/src/index.md
 #, no-c-format
 msgctxt "docs.api:prose"
-msgid "Target: Vite. Minimum host version: `8.0.0`. Tested through `8.3.2`. Newer releases require review."
+msgid "Target: Vite. Minimum host version: `8.0.0`. Tested through `8.3.4`. Newer releases require review."
 msgstr ""
 
 #: bundlers/vite/src/index.md
@@ -658,6 +658,7 @@ msgstr ""
 
 #: css/agent-shell.md
 #: css/card.md
+#: css/card.md
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "Content here."
@@ -740,6 +741,12 @@ msgstr ""
 #: css/alert.md
 #, no-c-format
 msgctxt "docs.api:prose"
+msgid "Settings saved."
+msgstr ""
+
+#: css/alert.md
+#, no-c-format
+msgctxt "docs.api:prose"
 msgid "\n  An alert with the default info color, and a custom icon.\n"
 msgstr ""
 
@@ -764,6 +771,7 @@ msgstr ""
 #: css/alert.md
 #: css/banner.md
 #: css/button-set.md
+#: css/button.md
 #: renderers/web-components/src/variables/modal.md
 #, no-c-format
 msgctxt "docs.api:prose"
@@ -774,6 +782,12 @@ msgstr ""
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "\n  Watch out! You're using the \"warning\" color.\n  "
+msgstr ""
+
+#: css/alert.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Save settings"
 msgstr ""
 
 #: css/alert.md
@@ -928,13 +942,13 @@ msgid "Give an image avatar a meaningful `alt` (the person's name), not a generi
 msgstr ""
 
 #: css/avatar.md
-#, no-c-format
+#, no-c-format, pantoken-verbatim
 msgctxt "docs.api:prose"
 msgid "LH"
 msgstr ""
 
 #: css/avatar.md
-#, no-c-format
+#, no-c-format, pantoken-verbatim
 msgctxt "docs.api:prose"
 msgid "AI"
 msgstr ""
@@ -1382,7 +1396,6 @@ msgstr ""
 
 #: css/banner.md
 #: css/breakpoints.md
-#: css/card.md
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "@import \"@pantoken/plugin-custom-components/custom-components.css\";"
@@ -1410,6 +1423,12 @@ msgstr ""
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "\n  This is a sea-colored banner with compact spacing.\n"
+msgstr ""
+
+#: css/banner.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Profile changes saved."
 msgstr ""
 
 #: css/banner.md
@@ -1760,6 +1779,12 @@ msgstr ""
 #: css/button-set.md
 #, no-c-format
 msgctxt "docs.api:prose"
+msgid "Use a labelled group for related actions; when buttons represent a toggle choice, expose each state with aria-pressed. Give icon-only buttons an accessible name."
+msgstr ""
+
+#: css/button-set.md
+#, no-c-format
+msgctxt "docs.api:prose"
 msgid "Left"
 msgstr ""
 
@@ -1767,6 +1792,20 @@ msgstr ""
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "Right"
+msgstr ""
+
+#: css/button-set.md
+#: css/button-set.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Week"
+msgstr ""
+
+#: css/button-set.md
+#: css/button-set.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Month"
 msgstr ""
 
 #: css/button-set.md
@@ -1779,18 +1818,6 @@ msgstr ""
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "Day"
-msgstr ""
-
-#: css/button-set.md
-#, no-c-format
-msgctxt "docs.api:prose"
-msgid "Week"
-msgstr ""
-
-#: css/button-set.md
-#, no-c-format
-msgctxt "docs.api:prose"
-msgid "Month"
 msgstr ""
 
 #: css/button-set.md
@@ -1949,6 +1976,21 @@ msgstr ""
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "Secondary"
+msgstr ""
+
+#: css/button.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Save"
+msgstr ""
+
+#: css/button.md
+#: css/menu.md
+#: css/menu.md
+#: renderers/web-components/src/variables/button.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Delete"
 msgstr ""
 
 #: css/button.md
@@ -2300,6 +2342,12 @@ msgstr ""
 #: css/callout.md
 #, no-c-format
 msgctxt "docs.api:prose"
+msgid "Your draft was saved."
+msgstr ""
+
+#: css/callout.md
+#, no-c-format
+msgctxt "docs.api:prose"
 msgid "Alert message content"
 msgstr ""
 
@@ -2318,13 +2366,19 @@ msgstr ""
 #: css/card.md
 #, no-c-format
 msgctxt "docs.api:prose"
-msgid "`.instui-card` — A surface container that accepts arbitrary content."
+msgid "`.instui-card` · <span class=\"instui-pill -color-success pantoken-doc-tag\">stable</span> — A surface container that accepts arbitrary content."
 msgstr ""
 
 #: css/card.md
 #, no-c-format
 msgctxt "docs.api:prose"
-msgid "**Variant** controls how direct children are styled: `content` (default) leaves them\n  unstyled; `container` stacks them as bordered, padded sections. Padding scales with\n  viewport width and is the same across both variants.\n  **Size** is fully responsive — padding and border-radius step up automatically at 320px\n  (20rem) and 640px (40rem) via standard `min-width` media queries; no size class is needed.\n  Pair with `@pantoken/components` for heading, button, and other inline components."
+msgid "`base` is the default elevated surface. Use `nested` for a bordered card inside a base card. Padding and corner radii scale with the Card's own width; legacy markup without a `.content` wrapper uses viewport breakpoints."
+msgstr ""
+
+#: css/card.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "**Source:** [card.css](https://github.com/thedannywahl/pantoken/blob/main/formats/components/src/components/card/card.css)"
 msgstr ""
 
 #: css/card.md
@@ -2336,9 +2390,16 @@ msgstr ""
 #: css/card.md
 #, no-c-format
 msgctxt "docs.api:prose"
+msgid "@import \"@pantoken/components/components.css\";"
+msgstr ""
+
+#: css/card.md
+#, no-c-format
+msgctxt "docs.api:prose"
 msgid "Content card -nocard"
 msgstr ""
 
+#: css/card.md
 #: css/card.md
 #, no-c-format
 msgctxt "docs.api:prose"
@@ -2366,31 +2427,13 @@ msgstr ""
 #: css/card.md
 #, no-c-format
 msgctxt "docs.api:prose"
-msgid "Container card; direct children become bordered, padded sections."
-msgstr ""
-
-#: css/card.md
-#, no-c-format
-msgctxt "docs.api:prose"
 msgid "Standard content card; children are unstyled. Default when no variant is set."
 msgstr ""
 
 #: css/card.md
 #, no-c-format
 msgctxt "docs.api:prose"
-msgid "- `@scope` is Baseline 2023 Newly Available; the card degrades to an unscoped flat stylesheet\n  in older browsers with no loss of visible styling."
-msgstr ""
-
-#: css/card.md
-#, no-c-format
-msgctxt "docs.api:prose"
-msgid "- [heading](/api/css/heading.md) — Place directly in the card or inside a container section.\n- [button](/api/css/button.md) — Place directly in the card or inside a container section.\n- [img](/api/css/img.md) — Place directly in the card as a media region.\n- [badge](/api/css/badge.md) — Place directly in the card as a status indicator."
-msgstr ""
-
-#: css/card.md
-#, no-c-format
-msgctxt "docs.api:prose"
-msgid "- https://drafts.csswg.org/css-cascade-6/#scoping"
+msgid "Border-only surface for a card inside a base card."
 msgstr ""
 
 #: css/checkbox.md
@@ -3069,19 +3112,19 @@ msgid "State"
 msgstr ""
 
 #: css/form-field-group.md
-#, no-c-format
+#, no-c-format, pantoken-verbatim
 msgctxt "docs.api:prose"
 msgid "CA"
 msgstr ""
 
 #: css/form-field-group.md
-#, no-c-format
+#, no-c-format, pantoken-verbatim
 msgctxt "docs.api:prose"
 msgid "NY"
 msgstr ""
 
 #: css/form-field-group.md
-#, no-c-format
+#, no-c-format, pantoken-verbatim
 msgctxt "docs.api:prose"
 msgid "TX"
 msgstr ""
@@ -3283,9 +3326,26 @@ msgid "The `<label>` element wraps the control, so the label text names it nativ
 msgstr ""
 
 #: css/form-field.md
+#: css/link.md
+#: css/modal.md
+#: css/simple-select.md
+#: css/toggle-details.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "-canvas-rce\n"
+msgstr ""
+
+#: css/form-field.md
+#: css/form-field.md
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "Email address"
+msgstr ""
+
+#: css/form-field.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Display name"
 msgstr ""
 
 #: css/form-field.md
@@ -3569,6 +3629,24 @@ msgstr ""
 #: css/hero.md
 #, no-c-format
 msgctxt "docs.api:prose"
+msgid "Explore your course"
+msgstr ""
+
+#: css/hero.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Find materials and upcoming work."
+msgstr ""
+
+#: css/hero.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "View course content"
+msgstr ""
+
+#: css/hero.md
+#, no-c-format
+msgctxt "docs.api:prose"
 msgid "Hero subtitle content"
 msgstr ""
 
@@ -3630,6 +3708,12 @@ msgstr ""
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "The glyph is decorative, so mark it `aria-hidden=\"true\"`; give it a `role` or label only when the icon conveys meaning on its own."
+msgstr ""
+
+#: css/icon.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "\n  Search\n"
 msgstr ""
 
 #: css/icon.md
@@ -3830,6 +3914,7 @@ msgctxt "docs.api:prose"
 msgid "A day cell (InstUI `Calendar.Day`); `-today`, `-selected`, and `-outside-month` mark its state."
 msgstr ""
 
+#: css/index.md
 #: css/index.md
 #, no-c-format
 msgctxt "docs.api:prose"
@@ -4528,6 +4613,24 @@ msgstr ""
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "A styled link"
+msgstr ""
+
+#: css/link.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Account settings"
+msgstr ""
+
+#: css/link.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Read the "
+msgstr ""
+
+#: css/link.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "accessibility guide"
 msgstr ""
 
 #: css/link.md
@@ -5284,11 +5387,13 @@ msgid "**Source:** [group.css](https://github.com/thedannywahl/pantoken/blob/mai
 msgstr ""
 
 #: css/menu.md
+#: css/menu.md
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "Actions"
 msgstr ""
 
+#: css/menu.md
 #: css/menu.md
 #, no-c-format
 msgctxt "docs.api:prose"
@@ -5302,10 +5407,21 @@ msgid "Duplicate"
 msgstr ""
 
 #: css/menu.md
-#: renderers/web-components/src/variables/button.md
 #, no-c-format
 msgctxt "docs.api:prose"
-msgid "Delete"
+msgid "View"
+msgstr ""
+
+#: css/menu.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "List"
+msgstr ""
+
+#: css/menu.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Grid"
 msgstr ""
 
 #: css/menu.md
@@ -5442,9 +5558,47 @@ msgid " — a narrow modal."
 msgstr ""
 
 #: css/modal.md
+#: css/modal.md
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "Close"
+msgstr ""
+
+#: css/modal.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Open account details"
+msgstr ""
+
+#: css/modal.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Account details"
+msgstr ""
+
+#: css/modal.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Review your account information."
+msgstr ""
+
+#: css/modal.md
+#: css/toggle-details.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "-docs\n"
+msgstr ""
+
+#: css/modal.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "More information"
+msgstr ""
+
+#: css/modal.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "This example shows the large modal surface."
 msgstr ""
 
 #: css/modal.md
@@ -5703,6 +5857,31 @@ msgstr ""
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "- Map the main content area to a `<main>` landmark\n- Give the sidebar `role=\"navigation\"` or `role=\"complementary\"` as appropriate\n- Ensure landmark regions have distinct aria-labels"
+msgstr ""
+
+#: css/page-layout.md
+#: css/wrapper.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Course overview"
+msgstr ""
+
+#: css/page-layout.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Assignments"
+msgstr ""
+
+#: css/page-layout.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Upcoming work appears here."
+msgstr ""
+
+#: css/page-layout.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Course resources"
 msgstr ""
 
 #: css/page-layout.md
@@ -6115,6 +6294,7 @@ msgid "\n  Uploading Document: "
 msgstr ""
 
 #: css/progress-circle.md
+#: css/rubric-note.md
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "Score"
@@ -7201,6 +7381,48 @@ msgstr ""
 #: css/rubric-note.md
 #, no-c-format
 msgctxt "docs.api:prose"
+msgid "Writing rubric"
+msgstr ""
+
+#: css/rubric-note.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Research paper criteria"
+msgstr ""
+
+#: css/rubric-note.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Criterion"
+msgstr ""
+
+#: css/rubric-note.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Description"
+msgstr ""
+
+#: css/rubric-note.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Evidence"
+msgstr ""
+
+#: css/rubric-note.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "4 of 4"
+msgstr ""
+
+#: css/rubric-note.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Sources support the central claim."
+msgstr ""
+
+#: css/rubric-note.md
+#, no-c-format
+msgctxt "docs.api:prose"
 msgid "Container for rubric criteria rows."
 msgstr ""
 
@@ -7264,6 +7486,12 @@ msgctxt "docs.api:prose"
 msgid "Opens in a new window"
 msgstr ""
 
+#: css/screen-reader-content.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Open settings"
+msgstr ""
+
 #: css/segmented-control.md
 #, no-c-format
 msgctxt "docs.api:prose"
@@ -7319,6 +7547,26 @@ msgstr ""
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "Feature flags"
+msgstr ""
+
+#: css/segmented-control.md
+#: css/tabs.md
+#: css/tabs.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Overview"
+msgstr ""
+
+#: css/segmented-control.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Grades"
+msgstr ""
+
+#: css/segmented-control.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "People"
 msgstr ""
 
 #: css/segmented-control.md
@@ -7478,11 +7726,13 @@ msgid "Choose a fruit…"
 msgstr ""
 
 #: css/simple-select.md
+#: css/simple-select.md
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "Apple"
 msgstr ""
 
+#: css/simple-select.md
 #: css/simple-select.md
 #, no-c-format
 msgctxt "docs.api:prose"
@@ -7493,6 +7743,42 @@ msgstr ""
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "Pear"
+msgstr ""
+
+#: css/simple-select.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Fruit\n  "
+msgstr ""
+
+#: css/simple-select.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Choose a fruit"
+msgstr ""
+
+#: css/simple-select.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Preferred contact method\n  "
+msgstr ""
+
+#: css/simple-select.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Email"
+msgstr ""
+
+#: css/simple-select.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Phone"
+msgstr ""
+
+#: css/simple-select.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "No contact"
 msgstr ""
 
 #: css/simple-select.md
@@ -7913,12 +8199,6 @@ msgid "Wire the tab list with role=\"tablist\", each tab with role=\"tab\" and a
 msgstr ""
 
 #: css/tabs.md
-#, no-c-format
-msgctxt "docs.api:prose"
-msgid "Overview"
-msgstr ""
-
-#: css/tabs.md
 #: renderers/web-components/src/variables/button.md
 #: renderers/web-components/src/variables/contextView.md
 #, no-c-format
@@ -7960,6 +8240,43 @@ msgstr ""
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "The History tab's content shows here."
+msgstr ""
+
+#: css/tabs.md
+#: renderers/web-components/src/variables/drilldown.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Profile"
+msgstr ""
+
+#: css/tabs.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Security"
+msgstr ""
+
+#: css/tabs.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Profile settings"
+msgstr ""
+
+#: css/tabs.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Security settings"
+msgstr ""
+
+#: css/tabs.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Activity"
+msgstr ""
+
+#: css/tabs.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Project overview"
 msgstr ""
 
 #: css/tabs.md
@@ -8110,6 +8427,24 @@ msgstr ""
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "- Use `<blockquote>` semantically for the quote\n- Ensure attribution is clear and associated with the quote\n- If using images, provide alt text"
+msgstr ""
+
+#: css/testimonial.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "The course helped me understand the material."
+msgstr ""
+
+#: css/testimonial.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Jordan Lee"
+msgstr ""
+
+#: css/testimonial.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Student"
 msgstr ""
 
 #: css/testimonial.md
@@ -8395,6 +8730,7 @@ msgid "**Source:** [toggle-details.css](https://github.com/thedannywahl/pantoken
 msgstr ""
 
 #: css/toggle-details.md
+#: css/toggle-details.md
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "What ships in this package?"
@@ -8404,6 +8740,24 @@ msgstr ""
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "\n  Class-based component styles, built from the Instructure tokens, plus a prose layer.\n"
+msgstr ""
+
+#: css/toggle-details.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "\n  Class-based component styles and a prose layer.\n"
+msgstr ""
+
+#: css/toggle-details.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Keyboard support"
+msgstr ""
+
+#: css/toggle-details.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "\n  The native disclosure control supports keyboard interaction.\n"
 msgstr ""
 
 #: css/toggle-details.md
@@ -8501,6 +8855,30 @@ msgstr ""
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "Default placement is top"
+msgstr ""
+
+#: css/tooltip.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Help"
+msgstr ""
+
+#: css/tooltip.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Find answers to common questions."
+msgstr ""
+
+#: css/tooltip.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Placement"
+msgstr ""
+
+#: css/tooltip.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "This tooltip appears below."
 msgstr ""
 
 #: css/tooltip.md
@@ -8878,6 +9256,30 @@ msgstr ""
 #: css/two-column.md
 #, no-c-format
 msgctxt "docs.api:prose"
+msgid "Course details"
+msgstr ""
+
+#: css/two-column.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Review the course schedule."
+msgstr ""
+
+#: css/two-column.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Course work"
+msgstr ""
+
+#: css/two-column.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "See upcoming assignments."
+msgstr ""
+
+#: css/two-column.md
+#, no-c-format
+msgctxt "docs.api:prose"
 msgid "Optional visual divider between columns."
 msgstr ""
 
@@ -9161,6 +9563,30 @@ msgstr ""
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "- Map the main content area to a &lt;main&gt; landmark with a skip-nav link so keyboard users can bypass GlobalNav\n- Give ContentTabList role=\"navigation\" with a distinct aria-label such as \"Page navigation\" — separate from GlobalNav's landmark\n- Give TrailingContentArea role=\"complementary\" with a descriptive aria-label that reflects its content, such as \"Student details\"\n- Give each UtilityPanel a distinct aria-label: \"AI assistant\", \"Notifications\", or \"Filters\"\n- When a UtilityPanel opens, move focus into the panel; when it closes, return focus to the trigger that opened it"
+msgstr ""
+
+#: css/wrapper.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Canvas"
+msgstr ""
+
+#: css/wrapper.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Course home"
+msgstr ""
+
+#: css/wrapper.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Course materials appear here."
+msgstr ""
+
+#: css/wrapper.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Signed in as Jordan Lee"
 msgstr ""
 
 #: css/wrapper.md
@@ -9902,6 +10328,12 @@ msgstr ""
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "Standalone `calendar.day` stylesheet."
+msgstr ""
+
+#: formats/components/src/variables/cardCss.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Standalone Card stylesheet with support for a custom class prefix."
 msgstr ""
 
 #: formats/components/src/variables/checkboxCss.md
@@ -11633,6 +12065,12 @@ msgstr ""
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "`true` when this call performed the injection."
+msgstr ""
+
+#: formats/scope/src/functions/frameTargetOrigin.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Resolve a theme-message target. Only explicitly sandboxed, opaque `srcdoc` frames permit `\"*\"`;\nother opaque or malformed URLs are rejected. Frame messages must not contain confidential data."
 msgstr ""
 
 #: formats/scope/src/functions/getScope.md
@@ -14636,7 +15074,7 @@ msgstr ""
 #: platforms/wordpress/src/index.md
 #, no-c-format
 msgctxt "docs.api:prose"
-msgid "Target: WordPress block themes. Current format: `theme.json v3`. Minimum host version: `6.6`. Tested through `7.1.2`. Newer releases require review."
+msgid "Target: WordPress block themes. Current format: `theme.json v3`. Minimum host version: `6.6`. Tested through `7.1.3`. Newer releases require review."
 msgstr ""
 
 #: platforms/wordpress/src/index.md
@@ -14823,7 +15261,6 @@ msgid "A CSS color: a literal (`#1d354f`, `rebeccapurple`), a `var(--token)`, or
 msgstr ""
 
 #: plugins/pantoken/custom-components/src/functions/agentShellRules.md
-#: plugins/pantoken/custom-components/src/functions/cardRules.md
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "Build the card layout CSS (doc comment + rules), substituting `prefix` for the `pfx-` sentinel.\nDefaults to `\"instui-\"` for the shipped stylesheet; pass `\"\"` for an unprefixed build."
@@ -14851,6 +15288,12 @@ msgstr ""
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "Build the button-set layout CSS (doc comment + rules), substituting `prefix` for the `pfx-`\nsentinel. Defaults to `\"instui-\"` for the shipped stylesheet; pass `\"\"` for an unprefixed build."
+msgstr ""
+
+#: plugins/pantoken/custom-components/src/functions/cardRules.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Import `cardCss` from `@pantoken/components` instead."
 msgstr ""
 
 #: plugins/pantoken/custom-components/src/functions/customComponents.md
@@ -16881,7 +17324,7 @@ msgstr ""
 #: renderers/angular/src/index.md
 #, no-c-format
 msgctxt "docs.api:prose"
-msgid "Target: Angular. Current format: `CUSTOM_ELEMENTS_SCHEMA template compilation (Angular 16.2.12 / TS 5.1.6; Angular 22.2.0 and 22.2.1 / TS 6.0.3)`. Minimum host version: `16.2.12`. Tested through `22.2.1`. Newer releases require review."
+msgid "Target: Angular. Current format: `CUSTOM_ELEMENTS_SCHEMA template compilation (Angular 16.2.12 / TS 5.1.6; Angular 22.2.0, 22.2.1, and 22.2.2 / TS 6.0.3)`. Minimum host version: `16.2.12`. Tested through `22.2.2`. Newer releases require review."
 msgstr ""
 
 #: renderers/angular/src/index.md
@@ -16923,7 +17366,7 @@ msgstr ""
 #: renderers/astro/src/index.md
 #, no-c-format
 msgctxt "docs.api:prose"
-msgid "Target: Astro / Starlight. Current format: `Built Starlight page with injected token stylesheet (Astro 5 and 7)`. Minimum host version: `0.35.0`. Tested through `0.42.5`. Newer releases require review."
+msgid "Target: Astro / Starlight. Current format: `Built Starlight page with injected token stylesheet (Astro 5 and 7)`. Minimum host version: `0.35.0`. Tested through `0.42.6`. Newer releases require review."
 msgstr ""
 
 #: renderers/astro/src/index.md
@@ -17388,7 +17831,7 @@ msgstr ""
 #: renderers/mintlify/src/index.md
 #, no-c-format
 msgctxt "docs.api:prose"
-msgid "Target: Mintlify docs.json. Current format: `Official CLI validates generated colors and background theme config`. Minimum host version: `4.0.1555`. Tested through `4.0.1591`. Newer releases require review."
+msgid "Target: Mintlify docs.json. Current format: `Official CLI validates generated colors and background theme config`. Minimum host version: `4.0.1555`. Tested through `4.0.1614`. Newer releases require review."
 msgstr ""
 
 #: renderers/mintlify/src/index.md
@@ -17472,7 +17915,7 @@ msgstr ""
 #: renderers/mui/src/index.md
 #, no-c-format
 msgctxt "docs.api:prose"
-msgid "Target: Material UI. Current format: `Concrete createTheme palettes (MUI 5, 6, 7, 9)`. Minimum host version: `5.0.0`. Tested through `9.4.0`. Newer releases require review."
+msgid "Target: Material UI. Current format: `Concrete createTheme palettes (MUI 5, 6, 7, 9)`. Minimum host version: `5.0.0`. Tested through `9.5.0`. Newer releases require review."
 msgstr ""
 
 #: renderers/mui/src/index.md
@@ -18198,7 +18641,7 @@ msgstr ""
 #: renderers/svelte/src/index.md
 #, no-c-format
 msgctxt "docs.api:prose"
-msgid "Target: Svelte. Current format: `Icon action component compiles and SSR renders on Svelte 4 and 5`. Minimum host version: `4.2.20`. Tested through `5.57.1`. Newer releases require review."
+msgid "Target: Svelte. Current format: `Icon action component compiles and SSR renders on Svelte 4 and 5`. Minimum host version: `4.2.20`. Tested through `5.57.2`. Newer releases require review."
 msgstr ""
 
 #: renderers/svelte/src/index.md
@@ -18492,7 +18935,7 @@ msgstr ""
 #: renderers/tinymce/src/index.md
 #, no-c-format
 msgctxt "docs.api:prose"
-msgid "Target: TinyMCE PluginManager. Current format: `Pantoken plugin registration and callback initialization`. Minimum host version: `8.9.2`. Tested through `8.9.2`. Newer releases require review."
+msgid "Target: TinyMCE PluginManager. Current format: `Pantoken plugin registration and callback initialization`. Minimum host version: `8.9.2`. Tested through `8.9.3`. Newer releases require review."
 msgstr ""
 
 #: renderers/tinymce/src/interfaces/ContentClassesPluginOptions.md
@@ -19510,13 +19953,13 @@ msgid "`<instui-avatar>` — a circular (or rectangular) avatar. `variant` maps 
 msgstr ""
 
 #: renderers/web-components/src/variables/avatar.md
-#, no-c-format
+#, no-c-format, pantoken-verbatim
 msgctxt "docs.api:prose"
 msgid "JS"
 msgstr ""
 
 #: renderers/web-components/src/variables/avatar.md
-#, no-c-format
+#, no-c-format, pantoken-verbatim
 msgctxt "docs.api:prose"
 msgid "AB"
 msgstr ""
@@ -19622,12 +20065,6 @@ msgstr ""
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "`<instui-drilldown>` — a stateful, multi-level menu over the menu styles. Each level is a light-DOM\n`[data-page=\"id\"]` whose inner `.item`s are cloned into a shadow `.instui-menu`; an item with\n`data-goto=\"id\"` descends to that page and a synthesized Back row (or any `[data-back]` item)\nreturns. The light DOM is the data source only — with no `<slot>` it never renders, so shadow CSS\nfully styles each panel. The `active` attribute reflects the current page and can be set to\nnavigate; a bubbling `navigate` event (`detail.page`) fires on every move. Drivable from light DOM\nvia Invoker Commands: `<button command=\"--goto\" commandfor=\"dd-id\" data-page=\"…\">` descends and\n`<button command=\"--back\" commandfor=\"dd-id\">` returns."
-msgstr ""
-
-#: renderers/web-components/src/variables/drilldown.md
-#, no-c-format
-msgctxt "docs.api:prose"
-msgid "Profile"
 msgstr ""
 
 #: renderers/web-components/src/variables/el.md
@@ -20322,7 +20759,7 @@ msgstr ""
 #: tools/demo/src/interfaces/ExampleSrcdocOptions.md
 #, no-c-format
 msgctxt "docs.api:prose"
-msgid "Wrap `html` in the shared `.instui-card` surface (default `true`)."
+msgid "Wrap `html` in the shared `.pantoken-demo-card` surface (default `true`)."
 msgstr ""
 
 #: tools/demo/src/interfaces/ExampleSrcdocOptions.md

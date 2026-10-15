@@ -34,6 +34,13 @@ pantoken is a design-token transformation and distribution system. It converts I
 - The CLI validates `--theme`, `--class`, and `--format` inputs against allowlists at parse time; unknown flags are rejected immediately. The CLI warns when the output path escapes the current working directory but still writes to the caller-selected location.
 - `@pantoken/plugin-custom-theme-colors` accepts an arbitrary brand color for its `custom` scale (as the Canvas theme editor's Custom swatch does). Only `#rgb`/`#rrggbb` is accepted, and anything else throws a `TypeError`. The generated CSS contains only derived `#rrggbb` values, never the raw input string. Posted `customScale`/`customColor` values in demo and editor frames are dropped unless every entry is a plain hex.
 - Repository translation sources are trusted input. Entries marked `verbatim: "required"` bypass external translation adapters and are copied exactly into locale caches; `allow` only permits a model response to match the source.
+- The CLI translation HTTP shim can listen only on `127.0.0.1`. It rejects browser `Origin`
+  headers and unexpected `Host` headers before invoking a provider. It is an unencrypted local
+  development endpoint, not a remote service or an authentication boundary against local processes.
+- Scope and docs theme broadcasts use concrete iframe origins. Wildcard delivery is limited to
+  explicitly sandboxed `srcdoc` previews without `allow-same-origin`; malformed and other opaque
+  frame URLs are skipped. These messages carry public presentation settings, never credentials or
+  confidential application state.
 - `@pantoken/tinymce-save` persists trusted author snapshots in origin-local localStorage. Presets
   may contain HTML, CSS, JavaScript, and host application state; they are schema-validated before
   restoration but are not sanitized. localStorage is not secret or synchronized storage, and other
@@ -106,6 +113,9 @@ know what's in place:
   enabled. Snyk scans both dependencies (`snyk test`) and source code for vulnerabilities
   (`snyk code`, SAST); because Snyk has no GitHub App here, the SAST scan gates locally at push time
   rather than in CI.
+  Reviewed loopback-HTTP and opaque-preview messaging findings remain visible as advisories. Each
+  acceptance matches the Snyk rule, repository path, and exact reported source call; other call
+  sites and changed calls are not accepted automatically.
 
 ### Verifying releases
 

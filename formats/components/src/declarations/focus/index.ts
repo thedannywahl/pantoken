@@ -48,6 +48,10 @@ const FOCUS_DOC = css`/**
  * @a11y Every focusable element gets a \`:focus-visible\` outline ring so keyboard users can see what's focused.
  * @example
  * <button class="instui-button -focus-color-danger">Delete</button>
+ * @example -automatica11y
+ * \`\`\`html
+ * <button class="pfx-button -focus-color-danger" data-a11y-root data-a11y-trigger>Delete</button>
+ * \`\`\`
  * @demo self:focus-outline
  */`;
 

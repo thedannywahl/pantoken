@@ -58,7 +58,8 @@
     "@pantoken/plugin-lucide-lab": "workspace:*",
     "@pantoken/plugin-simple-icons": "workspace:*",
     "@pantoken/tinymce-codemirror": "workspace:*",
-    "@pantoken/tokens": "workspace:*"
+    "@pantoken/tokens": "workspace:*",
+    "@pantoken/utils": "workspace:*"
   },
   "devDependencies": {
     "@codemirror/autocomplete": "catalog:",
@@ -67,7 +68,6 @@
     "@codemirror/lint": "catalog:",
     "@codemirror/state": "catalog:",
     "@codemirror/view": "catalog:",
-    "@pantoken/utils": "workspace:*",
     "@types/node": "catalog:",
     "happy-dom": "catalog:",
     "less": "catalog:",

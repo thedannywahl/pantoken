@@ -1,6 +1,7 @@
-import { existsSync, readdirSync, readFileSync, statSync, writeFileSync } from "node:fs";
+import { readFileSync, writeFileSync } from "node:fs";
 import { join } from "node:path";
 import { BADGE_CLASS_BY_LABEL } from "./api-badge-classes.ts";
+import { walkFiles } from "./lib/files.ts";
 
 const docsRoot = join(import.meta.dirname, "..");
 const apiRoot = join(docsRoot, "api");
@@ -9,20 +10,7 @@ const BADGE_LABELS = Object.keys(BADGE_CLASS_BY_LABEL) as (keyof typeof BADGE_CL
 
 /** Recursively collect every `.md` file under `dir` (returns `[]` when `dir` doesn't exist). */
 export const walkMarkdownFiles = (dir: string): string[] => {
-  if (!existsSync(dir)) return [];
-
-  const files: string[] = [];
-  for (const name of readdirSync(dir)) {
-    const fullPath = join(dir, name);
-    const stat = statSync(fullPath);
-    if (stat.isDirectory()) {
-      files.push(...walkMarkdownFiles(fullPath));
-    } else if (fullPath.endsWith(".md")) {
-      files.push(fullPath);
-    }
-  }
-
-  return files;
+  return walkFiles(dir).filter((path) => path.endsWith(".md"));
 };
 
 /**

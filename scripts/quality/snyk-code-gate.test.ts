@@ -1,4 +1,5 @@
 import { expect, test, vi, beforeEach } from "vite-plus/test";
+import { readFileSync } from "node:fs";
 
 // Mock process.exit to prevent the module from exiting during tests
 vi.spyOn(process, "exit").mockImplementation((() => undefined) as never);
@@ -89,6 +90,36 @@ test("isAccepted returns false when finding is not on allowlist", () => {
   expect(isAccepted(result)).toBe(false);
 });
 
+test.each([
+  [
+    "javascript/HttpToHttps",
+    "tools/translation-adapters/src/shim.ts",
+    "const server = createServer((req: IncomingMessage, res: ServerResponse) => {",
+  ],
+  [
+    "javascript/TooPermissiveCorsPostMessage",
+    "formats/scope/src/scope.ts",
+    "frame.contentWindow?.postMessage(message, origin);",
+  ],
+])("accepts only the reviewed call for %s", (ruleId, filePath, source) => {
+  const lines = readFileSync(new URL(`../../${filePath}`, import.meta.url), "utf8").split(/\r?\n/u);
+  const line = lines.findIndex((value) => value.trim() === source) + 1;
+  expect(line).toBeGreaterThan(0);
+  const finding = (path: string, startLine?: number) => ({
+    level: "warning",
+    ruleId,
+    locations: [{ physicalLocation: { artifactLocation: { uri: path }, region: { startLine } } }],
+  });
+  const reviewed = finding(filePath, line);
+
+  expect(isAccepted(reviewed)).toBe(true);
+  expect(isAccepted(finding(filePath, line + 1))).toBe(false);
+  expect(isAccepted(finding(filePath))).toBe(false);
+  expect(isAccepted(finding("src/unreviewed.ts", line))).toBe(false);
+  expect(isAccepted({ ...reviewed, ruleId: "javascript/UnreviewedRule" })).toBe(false);
+  expect(processResults([reviewed])).toEqual({ blocking: [], advisory: [reviewed] });
+});
+
 test("parseSarifOutput extracts results from valid SARIF JSON", () => {
   const sarifOutput = '{"runs":[{"results":[{"level":"error","message":{"text":"test"}}]}]}';
   const results = parseSarifOutput(sarifOutput);
@@ -143,6 +174,9 @@ test("checkResults returns exit code 0 when no blocking findings", () => {
   const results = [{ level: "note", ruleId: "rule1", locations: [] }];
   const exit = checkResults(results);
   expect(exit?.code).toBe(0);
+  expect(exit?.message).toContain(
+    "no blocking medium-or-worse findings (1 advisories reported above)",
+  );
   warnSpy.mockRestore();
 });
 

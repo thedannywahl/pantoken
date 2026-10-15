@@ -13,6 +13,12 @@
  * - Ensure the alert role is properly applied (role="alert" or role="status")
  * - Use semantic color contrast that meets WCAG AA standards
  * - Don't rely on color alone to convey meaning
+ * @example -automatica11y -nocard
+ * ```html
+ * <div class="pfx-callout" role="status" data-a11y-root>
+ *   <span class="pfx-content">Your draft was saved.</span>
+ * </div>
+ * ```
  * @selector div[class~="pfx-callout"]
  * @part .pfx-icon - Optional icon to the left of the content.
  * @part .pfx-content - Container for the text content.

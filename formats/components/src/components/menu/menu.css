@@ -9,7 +9,7 @@
  *   .item:many {}
  *   .separator:optional {}
  * }
- * @example -nocard
+ * @example -canvas-rce -nocard
  * ```html
  * <div class="pfx-menu">
  *   <div class="group">Actions</div>
@@ -17,6 +17,22 @@
  *   <div class="item -active">Duplicate</div>
  *   <div class="separator"></div>
  *   <div class="item">Delete</div>
+ * </div>
+ * ```
+ * @example -automatica11y -nocard
+ * ```html
+ * <button class="pfx-button" popovertarget="actions-menu" data-a11y-trigger>Actions</button>
+ * <div class="pfx-menu" id="actions-menu" popover="auto" role="menu" aria-label="Actions" data-a11y-root>
+ *   <button class="item" role="menuitem">Edit</button>
+ *   <button class="item" role="menuitem">Delete</button>
+ * </div>
+ * ```
+ * @example -docs -nocard
+ * ```html
+ * <div class="pfx-menu">
+ *   <div class="group">View</div>
+ *   <div class="item">List</div>
+ *   <div class="item -active">Grid</div>
  * </div>
  * ```
  * @related tree-browser — Both present nested, selectable entries.
