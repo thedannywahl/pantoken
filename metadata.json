@@ -1,0 +1,37 @@
+{
+  "cli_version": "0.11.5",
+  "checkpoint_id": "01M50M5ZQBQ2KKT0Q89PKF4VH4",
+  "strategy": "manual-commit",
+  "branch": "canvas-rce2",
+  "checkpoints_count": 2,
+  "files_touched": [
+    ".changeset/canvas-inline-provider.md",
+    "ASSURANCE.md",
+    "SECURITY.md",
+    "docs/package.json",
+    "packages/scaffold/templates/canvas-theme-editor/README.md",
+    "packages/scaffold/templates/canvas-theme-editor/package.json",
+    "packages/scaffold/templates/canvas-theme-editor/src/i18n.json",
+    "packages/scaffold/templates/canvas-theme-editor/src/inline-document.ts",
+    "packages/scaffold/templates/canvas-theme-editor/src/main.ts.tmpl",
+    "packages/scaffold/tests/canvas-theme-editor-options.test.ts",
+    "pnpm-lock.yaml",
+    "renderers/tinymce/tests/components-picker.test.ts"
+  ],
+  "sessions": [
+    {
+      "metadata": "/0/metadata.json",
+      "transcript": "/0/full.jsonl",
+      "compact_transcript": "/0/transcript.jsonl",
+      "content_hash": "/0/content_hash.txt",
+      "prompt": ""
+    }
+  ],
+  "token_usage": {
+    "input_tokens": 0,
+    "cache_creation_tokens": 0,
+    "cache_read_tokens": 0,
+    "output_tokens": 0,
+    "api_call_count": 0
+  }
+}
