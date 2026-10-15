@@ -1,0 +1,28 @@
+{
+  "cli_version": "0.11.5",
+  "checkpoint_id": "01M4ZZSMC5B168KEDMW61Z2V25",
+  "session_id": "e7c7d37f-3a39-4cf7-b0ba-0b8afde456e2",
+  "strategy": "manual-commit",
+  "created_at": "2026-10-15T14:34:56.076023Z",
+  "branch": "automatica11y",
+  "checkpoints_count": 1,
+  "files_touched": [
+    ".changeset/brave-animals-sleep.md",
+    "compatibility.json",
+    "docs/compatibility.md",
+    "scripts/release/target-compatibility.json"
+  ],
+  "agent": "Copilot CLI",
+  "model": "",
+  "turn_id": "edc0f13fd824",
+  "checkpoint_transcript_start": 117,
+  "transcript_lines_at_start": 117,
+  "compact_transcript_start": 15,
+  "token_usage": {
+    "input_tokens": 0,
+    "cache_creation_tokens": 0,
+    "cache_read_tokens": 0,
+    "output_tokens": 0,
+    "api_call_count": 0
+  }
+}
