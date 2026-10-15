@@ -1,6 +1,6 @@
 {
   "name": "@pantoken/tinymce-save",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "description": "TinyMCE named preset management with local browser storage.",
   "homepage": "https://pantoken.app",
   "bugs": "https://github.com/thedannywahl/pantoken/issues",

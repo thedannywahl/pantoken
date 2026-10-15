@@ -1,5 +1,13 @@
 # CHANGELOG
 
+## 0.2.2
+
+### Patch Changes
+
+- c91395a: Verify Svelte 5.57.2 compilation and server rendering of the Pantoken icon action component.
+- @pantoken/web-components@0.7.4
+  - @pantoken/scaffold-base@0.3.7
+
 ## 0.2.1
 
 ### Patch Changes

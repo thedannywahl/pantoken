@@ -1,5 +1,23 @@
 # CHANGELOG
 
+## 2.1.0
+
+### Minor Changes
+
+- c91395a: Upgrade InstUI to 11.7.10 and bless the unchanged token/icon content with updated ui-icons provenance. Promote Card to `@pantoken/components` with the official `base`/`nested` variants and container-width sizing, while retaining the custom-components CSS and `cardRules` APIs as deprecated aliases. Keep Card's existing localized API pages and translations, migrating their stylesheet imports without retranslation; mark locale-specific identical API prose as verbatim to avoid repeat translation attempts. Update scaffold guidance and the Next compatibility record.
+
+### Patch Changes
+
+- c91395a: Add focused accessibility examples for component testing.
+- c91395a: Add accessibility-suite examples for semantic components and layouts.
+- c91395a: Label component examples for docs, Canvas RCE, and Automatica11y consumers.
+- Updated dependencies [c91395a]
+- Updated dependencies [c91395a]
+- Updated dependencies [c91395a]
+  - @pantoken/utils@1.3.0
+  - @pantoken/tokens@0.8.2
+  - @pantoken/scaffold-base@0.3.7
+
 ## 2.0.2
 
 ### Patch Changes

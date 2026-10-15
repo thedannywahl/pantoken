@@ -1,5 +1,15 @@
 # CHANGELOG
 
+## 0.2.3
+
+### Patch Changes
+
+- c91395a: Verify Starlight 0.42.6 with Astro 7.3.5 and retain the tested companion pairing for repeatable site builds.
+- Updated dependencies [c91395a]
+- Updated dependencies [c91395a]
+  - @pantoken/tokens@0.8.2
+  - @pantoken/css@0.4.4
+
 ## 0.2.2
 
 ### Patch Changes

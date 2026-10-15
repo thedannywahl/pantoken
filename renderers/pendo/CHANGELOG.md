@@ -1,5 +1,18 @@
 # CHANGELOG
 
+## 0.4.13
+
+### Patch Changes
+
+- Updated dependencies [c91395a]
+- Updated dependencies [c91395a]
+- Updated dependencies [c91395a]
+- Updated dependencies [c91395a]
+- Updated dependencies [c91395a]
+  - @pantoken/components@2.1.0
+  - @pantoken/tokens@0.8.2
+  - @pantoken/css@0.4.4
+
 ## 0.4.12
 
 ### Patch Changes

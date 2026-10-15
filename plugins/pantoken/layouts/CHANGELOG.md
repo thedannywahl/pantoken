@@ -1,5 +1,12 @@
 # @pantoken/plugin-layouts
 
+## 0.5.4
+
+### Patch Changes
+
+- c91395a: Add accessibility-suite examples for semantic components and layouts.
+- @pantoken/plugin-kit@0.3.5
+
 ## 0.5.3
 
 ### Patch Changes

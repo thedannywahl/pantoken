@@ -1,5 +1,12 @@
 # @pantoken/interactions
 
+## 0.5.1
+
+### Patch Changes
+
+- Updated dependencies [c91395a]
+  - @pantoken/utils@1.3.0
+
 ## 0.5.0
 
 ### Minor Changes

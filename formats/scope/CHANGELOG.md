@@ -1,5 +1,13 @@
 # @pantoken/scope
 
+## 0.4.4
+
+### Patch Changes
+
+- c91395a: Constrain iframe theme-message targets to concrete origins, except explicitly sandboxed opaque srcdoc previews. Skip malformed and unsupported opaque frame URLs, and keep preset-export download links out of the live document.
+- Updated dependencies [c91395a]
+  - @pantoken/utils@1.3.0
+
 ## 0.4.3
 
 ### Patch Changes

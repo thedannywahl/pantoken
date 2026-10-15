@@ -1,5 +1,20 @@
 # CHANGELOG
 
+## 0.1.23
+
+### Patch Changes
+
+- Updated dependencies [c91395a]
+- Updated dependencies [c91395a]
+- Updated dependencies [c91395a]
+- Updated dependencies [c91395a]
+- Updated dependencies [c91395a]
+- Updated dependencies [c91395a]
+  - @pantoken/components@2.1.0
+  - @pantoken/utils@1.3.0
+  - @pantoken/tokens@0.8.2
+  - @pantoken/plugin-custom-theme-colors@0.3.4
+
 ## 0.1.22
 
 ### Patch Changes
