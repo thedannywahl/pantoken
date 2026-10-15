@@ -69,6 +69,8 @@ queries; it does not bypass Canvas's HTML sanitizer.
 
 **Include interactions** defaults on. Turning it off omits Pantoken's behavior JavaScript from the
 preview and downloads and hides new component insertions that require it. Existing content remains.
+The list uses the CDN picker's tiers: no-JS and JS-enhancement components remain available; only
+JS-requirement components are hidden.
 The switch does not disable the editor's controls, custom JavaScript, or native browser behavior.
 
 ### Named presets

@@ -5,8 +5,9 @@ import { resolve } from "node:path";
 import { componentNeedsInteractions } from "../templates/canvas-theme-editor/src/component-availability.ts";
 import { InlineDocument } from "../templates/canvas-theme-editor/src/inline-document.ts";
 import { inlineHtml } from "../../../formats/inline-styles/src/inline-html.ts";
+import componentCapabilities from "../../../formats/interactions/component-capabilities.json" with { type: "json" };
 
-test("components with direct, nested, or transitive behavior are unavailable without interactions", () => {
+test("only the published JS requirement tier is unavailable, not optional enhancements", () => {
   const entries = [
     {
       name: "banner",
@@ -20,13 +21,32 @@ test("components with direct, nested, or transitive behavior are unavailable wit
   const capabilities = [
     { name: "close-button", type: "both" },
     { name: "compound", type: "css-only", requires: ["close-button"] },
+    { name: "banner", type: "js-only" },
   ];
-  expect(entries.map((entry) => componentNeedsInteractions(entry, entries, capabilities))).toEqual([
-    true,
+  expect(entries.map((entry) => componentNeedsInteractions(entry, capabilities))).toEqual([
     true,
     false,
-    true,
+    false,
+    false,
   ]);
+});
+
+test("interactions-off availability matches the CDN picker's none, enhancement, and requirement tiers", () => {
+  for (const capability of componentCapabilities.components) {
+    const entry = { name: capability.name, className: `.instui-${capability.name}` };
+    expect(
+      componentNeedsInteractions(entry, componentCapabilities.components),
+      capability.name,
+    ).toBe(capability.type === "js-only");
+  }
+  const enhancement = { name: "enhanced", className: ".instui-enhanced" };
+  const banner = {
+    name: "banner",
+    className: ".instui-banner",
+    examples: ['<div class="instui-enhanced"></div>'],
+  };
+  expect(componentNeedsInteractions(banner, [{ name: "enhanced", type: "both" }])).toBe(false);
+  expect(componentNeedsInteractions(enhancement, [{ name: "enhanced", type: "both" }])).toBe(false);
 });
 
 test("interactions are default-on, persisted, and only suppress generated behavior", () => {
