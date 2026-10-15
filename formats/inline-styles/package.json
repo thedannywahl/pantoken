@@ -34,7 +34,8 @@
   },
   "dependencies": {
     "juice": "catalog:",
-    "postcss": "catalog:"
+    "postcss": "catalog:",
+    "postcss-value-parser": "catalog:"
   },
   "devDependencies": {
     "@types/node": "catalog:",

@@ -37,6 +37,13 @@ const html = inlineHtml('<button class="action">Save</button>', ".action { color
 declarations. HTML may also contain its own `<style>` blocks; pass additional CSS as the second
 argument when needed.
 
+Reference mode is the default and preserves expressions such as `gap: var(--gap)`. For literal
+values, pass `{ resolveCSSVariables: true }` and supply the token declarations in the stylesheet
+or document. Resolution happens before custom-property declarations are omitted, including when
+`inlineCustomProperties` is false. Circular token definitions are rejected in resolved mode.
+Variable substitution does not make pseudo-elements, media queries, or scripts portable as element
+styles; consumers producing standalone content must handle those separately.
+
 ## CLI
 
 Use the hoisted `pantoken` CLI to inline an HTML file:
@@ -48,6 +55,12 @@ pantoken generate inline -i page.html -o page.inlined.html
 The target accepts `-i, --input <file>`, `-o, --output <file>`, and optional `--css <file>`. For
 pantoken-aware, email-compatible output, use `pantoken generate email` from `@pantoken/cli` and
 `@pantoken/email`.
+
+The standalone `pantoken-inline` command also accepts `--variables reference|resolved`:
+
+```sh
+pantoken-inline --input page.html --css theme.css --output page.inlined.html --variables resolved
+```
 
 ## API
 

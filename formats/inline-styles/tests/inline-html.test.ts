@@ -18,6 +18,28 @@ test("preserves CSS variables for runtime theme overrides", () => {
   expect(result).toContain("var(--brand)");
 });
 
+test("resolves inherited token values before omitting custom-property declarations", () => {
+  const result = inlineHtml(
+    '<html><body><div class="parent"><p class="child">Text</p></div></body></html>',
+    ":root { --gap: .75rem; } .parent { --color: red; } .child { gap: var(--gap); color: var(--color); padding: var(--missing, 1rem); }",
+    { resolveCSSVariables: true, inlineCustomProperties: false },
+  );
+  expect(result).toContain("gap: .75rem");
+  expect(result).toContain("color: red");
+  expect(result).toContain("padding: 1rem");
+  expect(result).not.toContain("var(");
+  expect(result).not.toContain("--gap:");
+});
+
+test("resolved mode rejects circular definitions without changing reference mode", () => {
+  const css =
+    ":root { --first: var(--second); --second: var(--first); } p { color: var(--first); }";
+  expect(() => inlineHtml("<p>Text</p>", css, { resolveCSSVariables: true })).toThrow(
+    "Circular CSS variable",
+  );
+  expect(inlineHtml("<p>Text</p>", css)).toContain("var(--first)");
+});
+
 test("does not let CSS close the temporary style element", () => {
   const result = inlineHtml("<div></div>", "/* </style><script>attack()</script> */");
 
