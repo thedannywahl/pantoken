@@ -298,8 +298,8 @@
     "format": "Pantoken plugin registration and callback initialization",
     "status": "verified",
     "minimum": "8.9.2",
-    "testedThrough": "8.9.2",
-    "testedVersions": ["8.9.2"],
+    "testedThrough": "8.9.3",
+    "testedVersions": ["8.9.2", "8.9.3"],
     "testCommand": "vp run @pantoken/tinymce#check:compatibility"
   },
   "@pantoken/vitepress": {
