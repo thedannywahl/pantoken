@@ -1,0 +1,34 @@
+{
+  "cli_version": "0.11.5",
+  "checkpoint_id": "01M502ZZ88WFZA3XTK16Q7S07S",
+  "strategy": "manual-commit",
+  "branch": "automatica11y",
+  "checkpoints_count": 1,
+  "files_touched": [
+    "ASSURANCE.md",
+    "SECURITY.md",
+    "docs/.vitepress/theme/theme.ts",
+    "plugins/tinymce/save/src/index.ts",
+    "plugins/tinymce/save/tests/index.test.ts",
+    "scripts/quality/snyk-code-gate.test.ts",
+    "scripts/quality/snyk-code-gate.ts",
+    "tools/translation-adapters/src/shim.ts",
+    "tools/translation-adapters/tests/shim.test.ts"
+  ],
+  "sessions": [
+    {
+      "metadata": "/0/metadata.json",
+      "transcript": "/0/full.jsonl",
+      "compact_transcript": "/0/transcript.jsonl",
+      "content_hash": "/0/content_hash.txt",
+      "prompt": "/0/prompt.txt"
+    }
+  ],
+  "token_usage": {
+    "input_tokens": 0,
+    "cache_creation_tokens": 0,
+    "cache_read_tokens": 0,
+    "output_tokens": 0,
+    "api_call_count": 0
+  }
+}
