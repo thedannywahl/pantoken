@@ -1,0 +1,722 @@
+how did we develop the list of available components when interactions is off? it should match the ones on the CDN picker: none, js enhancement, js requirement.  we should be hiding js requirement components.
+
+[Terminal 08d1bb40-9ed9-4bed-8356-332826e2c632 notification: command may be waiting for input — assess the output below.]
+This note is not a signal to end the turn — pick one of the actions below and continue.
+  1. If the output clearly ends with a non-secret input prompt (Continue? (y/n), Enter selection, etc. — a normal shell prompt like `$` or `#` does NOT count), determine the answer and immediately call send_to_terminal with id="08d1bb40-9ed9-4bed-8356-332826e2c632" (which returns the next few lines of output). Repeat one prompt at a time. Never guess passwords, passphrases, tokens, or other secrets — if the prompt requires a secret you do not have, inform the user and stop.
+  2. If the command may still be producing output or the shell prompt has not returned, call get_terminal_output with id="08d1bb40-9ed9-4bed-8356-332826e2c632" to continue polling.
+Terminal output:
+[info] markdown generated at ./api
+✓ API badges: styled 831 markdown file(s)
+✓ API overview: wrote docs/api/index.md
+✓ API compatibility: updated 39 package pages
+2:17:47 PM [vitepress] [orchestrator] @pantoken/docs#api:en — done.
+2:17:50 PM [vitepress] (client) hmr update /@fs/Users/dwahl/Scripts/pantoken/plugins/pantoken/custom-components/generated/custom-components.css
+2:17:50 PM [vitepress] (client) hmr update /@fs/Users/dwahl/Scripts/pantoken/plugins/pantoken/custom-components/generated/custom-components.css
+2:18:02 PM [vitepress] (client) hmr update /.vitepress/theme/components/GetStartedTabs.vue?vue&type=style&index=0&lang.css
+2:18:04 PM [vitepress] (client) hmr update /@fs/Users/dwahl/Scripts/pantoken/plugins/pantoken/custom-components/generated/custom-components.css
+2:18:04 PM [vitepress] (client) hmr update /@fs/Users/dwahl/Scripts/pantoken/plugins/pantoken/custom-components/generated/custom-components.css
+2:18:04 PM [vitepress] (client) hmr update /@fs/Users/dwahl/Scripts/pantoken/plugins/pantoken/custom-components/generated/custom-components.css
+2:18:11 PM [vitepress] (client) hmr update /.vitepress/theme/components/GetStartedTabs.vue?vue&type=style&index=0&lang.css
+2:18:13 PM [vitepress] (client) hmr update /@fs/Users/dwahl/Scripts/pantoken/plugins/pantoken/custom-components/generated/custom-components.css
+2:18:17 PM [vitepress] 
+[orchestrator] @pantoken/plugin-custom-components#styles — building…
+2:18:17 PM [vitepress] 
+[orchestrator] @pantoken/docs#api:en — building…
+✓ custom-components: wrote /custom-components/src/generated/component-styles.ts (8 record(s))
+[info] Loaded plugin typedoc-plugin-markdown
+[info] Loaded plugin typedoc-vitepress-theme
+[info] Loaded plugin /Users/dwahl/Scripts/pantoken/plugins/typedoc/demo/dist/index.mjs
+2:18:18 PM [vitepress] [orchestrator] @pantoken/plugin-custom-components#styles — done.
+2:18:18 PM [vitepress] 
+[orchestrator] @pantoken/plugin-custom-components — building…
+✓ custom-components: wrote custom-components.css + _records.css
+2:18:18 PM [vitepress] [orchestrator] @pantoken/plugin-custom-components — done.
+2:18:18 PM [vitepress] (client) hmr update /@fs/Users/dwahl/Scripts/pantoken/plugins/pantoken/custom-components/generated/custom-components.css
+2:18:18 PM [vitepress] (client) hmr update /@fs/Users/dwahl/Scripts/pantoken/plugins/pantoken/custom-components/generated/custom-components.css
+2:18:18 PM [vitepress] 
+[orchestrator] @pantoken/docs#docs:api:css — building…
+2:18:18 PM [vitepress] 
+[orchestrator] @pantoken/docs#plugin-assets — building…
+✓ plugin-assets: staged 4 sheet(s) to public/demos-assets/
+2:18:18 PM [vitepress] [orchestrator] @pantoken/docs#plugin-assets — done.
+✓ CSS API: wrote 110 record page(s) to api/css/ + merged the CSS section into the TypeDoc sidebar
+[info] markdown generated at ./api
+2:18:23 PM [vitepress] [orchestrator] @pantoken/docs#docs:api:css — done.
+✓ API badges: styled 831 markdown file(s)
+✓ API overview: wrote docs/api/index.md
+✓ API compatibility: updated 39 package pages
+2:18:24 PM [vitepress] [orchestrator] @pantoken/docs#api:en — done.
+2:18:40 PM [vitepress] 
+[orchestrator] @pantoken/plugin-logos — building…
+✓ logos: 97 logos across 7 products (+ 97 per-logo and 7 per-product sheets)
+2:18:45 PM [vitepress] [orchestrator] @pantoken/plugin-logos — done.
+2:18:46 PM [vitepress] 
+[orchestrator] @pantoken/docs#docs:api:css — building…
+✓ CSS API: wrote 110 record page(s) to api/css/ + merged the CSS section into the TypeDoc sidebar
+2:18:49 PM [vitepress] [orchestrator] @pantoken/docs#docs:api:css — done.
+2:19:11 PM [vitepress] 
+[orchestrator] @pantoken/docs#api:en — building…
+2:19:11 PM [vitepress] 
+[orchestrator] @pantoken/scaffold#generate — building…
+✓ inlined scaffold templates for 8 platforms
+✓ inlined 9 agent assets
+✓ inlined localized scaffold files for 44 locale(s)
+✓ compiled scaffold.json metadata for 1 platform(s)
+✓ emitted locale registry for 44 locales
+[info] Loaded plugin typedoc-plugin-markdown
+2:19:11 PM [vitepress] [orchestrator] @pantoken/scaffold#generate — done.
+[info] Loaded plugin typedoc-vitepress-theme
+[info] Loaded plugin /Users/dwahl/Scripts/pantoken/plugins/typedoc/demo/dist/index.mjs
+2:19:11 PM [vitepress] (client) hmr update /.vitepress/theme/components/AgentToolsPage.vue
+2:19:11 PM [vitepress] 
+[orchestrator] @pantoken/docs#canvas-rce — building…
+[info] markdown generated at ./api
+✓ API badges: styled 831 markdown file(s)
+✓ API overview: wrote docs/api/index.md
+✓ API compatibility: updated 39 package pages
+2:19:20 PM [vitepress] [orchestrator] @pantoken/docs#api:en — done.
+2:19:24 PM [vitepress] (client) page reload public/tools/canvas-rce/index.html
+[plugin builtin:vite-reporter] 
+(!) Some chunks are larger than 500 kB after minification. Consider:
+- Using dynamic import() to code-split the application
+- Use build.rolldownOptions.output.codeSplitting to improve chunking: https://rolldown.rs/reference/OutputOptions.codeSplitting
+- Adjust chunk size limit for this warning via build.chunkSizeWarningLimit.
+[PLUGIN_TIMINGS] JavaScript callbacks ran for 3.0s of this 6.2s build (48%).
+The slowest callbacks, timed inside each callback (the wait before a callback starts is excluded, the time it awaits is included):
+  - plugin vite:prepare-out-dir renderStart (17%, 1.1s, 1 call)
+Additional callback time came from the callbacks below and from callbacks under 1s.
+2 callbacks are listed without a time. Their calls overlapped, so the time inside one call includes work from other calls. To find their cost, profile the build with `node --cpu-prof`:
+  - plugin vite:asset load (17 calls)
+  - plugin vite:css transform (5982 calls)
+See https://rolldown.rs/reference/InputOptions.checks#bundlertimings for more details.
+
+2:19:29 PM [vitepress] (client) page reload public/tools/canvas-rce/index.html
+2:19:29 PM [vitepress] (client) hmr update /.vitepress/theme/components/AgentToolsPage.vue
+2:19:29 PM [vitepress] (client) page reload public/tools/canvas-rce/index.html
+2:19:29 PM [vitepress] (client) page reload public/tools/canvas-rce/index.html
+2:19:29 PM [vitepress] [orchestrator] @pantoken/docs#canvas-rce — done.
+2:19:34 PM [vitepress] (client) page reload public/tools/canvas-rce/index.html
+2:19:56 PM [vitepress] 
+[orchestrator] @pantoken/scaffold#generate — building…
+✓ inlined scaffold templates for 8 platforms
+✓ inlined 9 agent assets
+✓ inlined localized scaffold files for 44 locale(s)
+✓ compiled scaffold.json metadata for 1 platform(s)
+2:19:57 PM [vitepress] (client) hmr update /.vitepress/theme/components/AgentToolsPage.vue
+✓ emitted locale registry for 44 locales
+2:19:57 PM [vitepress] [orchestrator] @pantoken/scaffold#generate — done.
+2:19:57 PM [vitepress] 
+[orchestrator] @pantoken/docs#canvas-rce — building…
+2:20:06 PM [vitepress] (client) page reload public/tools/canvas-rce/index.html
+2:20:06 PM [vitepress] (client) page reload public/tools/canvas-rce/index.html
+[plugin builtin:vite-reporter] 
+(!) Some chunks are larger than 500 kB after minification. Consider:
+- Using dynamic import() to code-split the application
+- Use build.rolldownOptions.output.codeSplitting to improve chunking: https://rolldown.rs/reference/OutputOptions.codeSplitting
+- Adjust chunk size limit for this warning via build.chunkSizeWarningLimit.
+[PLUGIN_TIMINGS] JavaScript callbacks ran for 2.0s of this 4.4s build (47%).
+2 callbacks are listed without a time. Their calls overlapped, so the time inside one call includes work from other calls. To find their cost, profile the build with `node --cpu-prof`:
+  - plugin vite:asset load (17 calls)
+  - plugin vite:css transform (5982 calls)
+See https://rolldown.rs/reference/InputOptions.checks#bundlertimings for more details.
+
+2:20:08 PM [vitepress] (client) page reload public/tools/canvas-rce/index.html
+2:20:08 PM [vitepress] (client) page reload public/tools/canvas-rce/index.html
+2:20:08 PM [vitepress] [orchestrator] @pantoken/docs#canvas-rce — done.
+2:20:08 PM [vitepress] (client) page reload public/tools/canvas-rce/index.html
+2:20:18 PM [vitepress] 
+[orchestrator] @pantoken/docs#api:en — building…
+2:20:18 PM [vitepress] 
+[orchestrator] @pantoken/scaffold#generate — building…
+✓ inlined scaffold templates for 8 platforms
+✓ inlined 9 agent assets
+✓ inlined localized scaffold files for 44 locale(s)
+✓ compiled scaffold.json metadata for 1 platform(s)
+[info] Loaded plugin typedoc-plugin-markdown
+✓ emitted locale registry for 44 locales
+[info] Loaded plugin typedoc-vitepress-theme
+[info] Loaded plugin /Users/dwahl/Scripts/pantoken/plugins/typedoc/demo/dist/index.mjs
+2:20:19 PM [vitepress] [orchestrator] @pantoken/scaffold#generate — done.
+2:20:19 PM [vitepress] (client) hmr update /.vitepress/theme/components/AgentToolsPage.vue
+2:20:20 PM [vitepress] 
+[orchestrator] @pantoken/docs#canvas-rce — building…
+[info] markdown generated at ./api
+✓ API badges: styled 831 markdown file(s)
+✓ API overview: wrote docs/api/index.md
+✓ API compatibility: updated 39 package pages
+2:20:28 PM [vitepress] [orchestrator] @pantoken/docs#api:en — done.
+2:20:30 PM [vitepress] (client) page reload public/tools/canvas-rce/index.html
+2:20:32 PM [vitepress] (client) hmr update /.vitepress/theme/components/AgentToolsPage.vue
+[plugin builtin:vite-reporter] 
+(!) Some chunks are larger than 500 kB after minification. Consider:
+- Using dynamic import() to code-split the application
+- Use build.rolldownOptions.output.codeSplitting to improve chunking: https://rolldown.rs/reference/OutputOptions.codeSplitting
+- Adjust chunk size limit for this warning via build.chunkSizeWarningLimit.
+[PLUGIN_TIMINGS] JavaScript callbacks ran for 3.0s of this 6.6s build (45%).
+2 callbacks are listed without a time. Their calls overlapped, so the time inside one call includes work from other calls. To find their cost, profile the build with `node --cpu-prof`:
+  - plugin vite:asset load (17 calls)
+  - plugin vite:css transform (5982 calls)
+See https://rolldown.rs/reference/InputOptions.checks#bundlertimings for more details.
+
+2:20:36 PM [vitepress] [orchestrator] @pantoken/docs#canvas-rce — done.
+2:20:38 PM [vitepress] (client) page reload public/tools/canvas-rce/index.html
+2:20:38 PM [vitepress] (client) page reload public/tools/canvas-rce/index.html
+2:20:38 PM [vitepress] (client) page reload public/tools/canvas-rce/index.html
+2:20:40 PM [vitepress] (client) hmr update /.vitepress/theme/components/AgentToolsPage.vue
+2:20:41 PM [vitepress] (client) page reload public/tools/canvas-rce/index.html
+2:20:42 PM [vitepress] (client) page reload public/tools/canvas-rce/index.html
+2:20:45 PM [vitepress] (client) page reload public/tools/canvas-rce/index.html
+2:20:45 PM [vitepress] (client) page reload public/tools/canvas-rce/index.html
+2:20:52 PM [vitepress] (client) page reload public/tools/canvas-rce/index.html
+2:21:16 PM [vitepress] 
+[orchestrator] @pantoken/docs#api:en — building…
+2:21:16 PM [vitepress] 
+[orchestrator] @pantoken/scaffold#generate — building…
+✓ inlined scaffold templates for 8 platforms
+✓ inlined 9 agent assets
+[info] Loaded plugin typedoc-plugin-markdown
+[info] Loaded plugin typedoc-vitepress-theme
+[info] Loaded plugin /Users/dwahl/Scripts/pantoken/plugins/typedoc/demo/dist/index.mjs
+✓ inlined localized scaffold files for 44 locale(s)
+✓ compiled scaffold.json metadata for 1 platform(s)
+✓ emitted locale registry for 44 locales
+2:21:17 PM [vitepress] [orchestrator] @pantoken/scaffold#generate — done.
+2:21:17 PM [vitepress] (client) hmr update /.vitepress/theme/components/AgentToolsPage.vue
+2:21:17 PM [vitepress] 
+[orchestrator] @pantoken/docs#canvas-rce — building…
+2:21:21 PM [vitepress] 
+[orchestrator] @pantoken/scaffold#generate — building…
+[info] markdown generated at ./api
+✓ API badges: styled 831 markdown file(s)
+✓ API overview: wrote docs/api/index.md
+✓ API compatibility: updated 39 package pages
+✓ inlined scaffold templates for 8 platforms
+✓ inlined 9 agent assets
+✓ inlined localized scaffold files for 44 locale(s)
+✓ compiled scaffold.json metadata for 1 platform(s)
+✓ emitted locale registry for 44 locales
+2:21:25 PM [vitepress] (client) hmr update /.vitepress/theme/components/AgentToolsPage.vue
+2:21:25 PM [vitepress] [orchestrator] @pantoken/docs#api:en — done.
+2:21:25 PM [vitepress] [orchestrator] @pantoken/scaffold#generate — done.
+2:21:29 PM [vitepress] (client) page reload public/tools/canvas-rce/index.html
+[plugin builtin:vite-reporter] 
+(!) Some chunks are larger than 500 kB after minification. Consider:
+- Using dynamic import() to code-split the application
+- Use build.rolldownOptions.output.codeSplitting to improve chunking: https://rolldown.rs/reference/OutputOptions.codeSplitting
+- Adjust chunk size limit for this warning via build.chunkSizeWarningLimit.
+[PLUGIN_TIMINGS] JavaScript callbacks ran for 3.6s of this 7.3s build (49%).
+The slowest callbacks, timed inside each callback (the wait before a callback starts is excluded, the time it awaits is included):
+  - plugin vite:prepare-out-dir renderStart (16%, 1.2s, 1 call)
+Additional callback time came from the callbacks below and from callbacks under 1s.
+2 callbacks are listed without a time. Their calls overlapped, so the time inside one call includes work from other calls. To find their cost, profile the build with `node --cpu-prof`:
+  - plugin vite:asset load (17 calls)
+  - plugin vite:css transform (5982 calls)
+See https://rolldown.rs/reference/InputOptions.checks#bundlertimings for more details.
+
+2:21:37 PM [vitepress] (client) page reload public/tools/canvas-rce/index.html
+2:21:37 PM [vitepress] (client) page reload public/tools/canvas-rce/index.html
+2:21:37 PM [vitepress] [orchestrator] @pantoken/docs#canvas-rce — done.
+2:21:37 PM [vitepress] 
+[orchestrator] @pantoken/docs#canvas-rce — building…
+2:21:42 PM [vitepress] (client) page reload public/tools/canvas-rce/index.html
+2:21:49 PM [vitepress] (client) page reload public/tools/canvas-rce/index.html
+[plugin builtin:vite-reporter] 
+(!) Some chunks are larger than 500 kB after minification. Consider:
+- Using dynamic import() to code-split the application
+- Use build.rolldownOptions.output.codeSplitting to improve chunking: https://rolldown.rs/reference/OutputOptions.codeSplitting
+- Adjust chunk size limit for this warning via build.chunkSizeWarningLimit.
+[PLUGIN_TIMINGS] JavaScript callbacks ran for 2.5s of this 5.1s build (49%).
+The slowest callbacks, timed inside each callback (the wait before a callback starts is excluded, the time it awaits is included):
+  - plugin vite:prepare-out-dir renderStart (23%, 1.2s, 1 call)
+Additional callback time came from the callbacks below and from callbacks under 1s.
+2 callbacks are listed without a time. Their calls overlapped, so the time inside one call includes work from other calls. To find their cost, profile the build with `node --cpu-prof`:
+  - plugin vite:asset load (17 calls)
+  - plugin vite:css transform (5982 calls)
+See https://rolldown.rs/reference/InputOptions.checks#bundlertimings for more details.
+
+2:21:52 PM [vitepress] (client) page reload public/tools/canvas-rce/index.html
+2:21:52 PM [vitepress] [orchestrator] @pantoken/docs#canvas-rce — done.
+2:21:53 PM [vitepress] (client) page reload public/tools/canvas-rce/index.html
+2:22:02 PM [vitepress] (client) page reload public/tools/canvas-rce/index.html
+2:22:02 PM [vitepress] (client) page reload public/tools/canvas-rce/index.html
+2:22:19 PM [vitepress] 
+[orchestrator] @pantoken/scaffold#generate — building…
+✓ inlined scaffold templates for 8 platforms
+✓ inlined 9 agent assets
+✓ inlined localized scaffold files for 44 locale(s)
+✓ compiled scaffold.json metadata for 1 platform(s)
+✓ emitted locale registry for 44 locales
+2:22:20 PM [vitepress] [orchestrator] @pantoken/scaffold#generate — done.
+2:22:20 PM [vitepress] (client) hmr update /.vitepress/theme/components/AgentToolsPage.vue
+2:22:20 PM [vitepress] 
+[orchestrator] @pantoken/docs#canvas-rce — building…
+2:22:29 PM [vitepress] (client) page reload public/tools/canvas-rce/index.html
+2:22:29 PM [vitepress] (client) page reload public/tools/canvas-rce/index.html
+[plugin builtin:vite-reporter] 
+(!) Some chunks are larger than 500 kB after minification. Consider:
+- Using dynamic import() to code-split the application
+- Use build.rolldownOptions.output.codeSplitting to improve chunking: https://rolldown.rs/reference/OutputOptions.codeSplitting
+- Adjust chunk size limit for this warning via build.chunkSizeWarningLimit.
+[PLUGIN_TIMINGS] JavaScript callbacks ran for 2.1s of this 4.7s build (46%).
+2 callbacks are listed without a time. Their calls overlapped, so the time inside one call includes work from other calls. To find their cost, profile the build with `node --cpu-prof`:
+  - plugin vite:asset load (17 calls)
+  - plugin vite:css transform (5982 calls)
+See https://rolldown.rs/reference/InputOptions.checks#bundlertimings for more details.
+
+2:22:31 PM [vitepress] [orchestrator] @pantoken/docs#canvas-rce — done.
+2:22:32 PM [vitepress] (client) page reload public/tools/canvas-rce/index.html
+2:22:32 PM [vitepress] (client) page reload public/tools/canvas-rce/index.html
+2:22:32 PM [vitepress] (client) page reload public/tools/canvas-rce/index.html
+2:23:04 PM [vitepress] 
+[orchestrator] @pantoken/scaffold#generate — building…
+✓ inlined scaffold templates for 8 platforms
+✓ inlined 9 agent assets
+✓ inlined localized scaffold files for 44 locale(s)
+✓ compiled scaffold.json metadata for 1 platform(s)
+✓ emitted locale registry for 44 locales
+2:23:05 PM [vitepress] [orchestrator] @pantoken/scaffold#generate — done.
+2:23:05 PM [vitepress] (client) hmr update /.vitepress/theme/components/AgentToolsPage.vue
+2:23:05 PM [vitepress] 
+[orchestrator] @pantoken/docs#canvas-rce — building…
+2:23:14 PM [vitepress] (client) page reload public/tools/canvas-rce/index.html
+2:23:14 PM [vitepress] (client) page reload public/tools/canvas-rce/index.html
+[plugin builtin:vite-reporter] 
+(!) Some chunks are larger than 500 kB after minification. Consider:
+- Using dynamic import() to code-split the application
+- Use build.rolldownOptions.output.codeSplitting to improve chunking: https://rolldown.rs/reference/OutputOptions.codeSplitting
+- Adjust chunk size limit for this warning via build.chunkSizeWarningLimit.
+✗ Build failed in 5.15s
+[PLUGIN_TIMINGS] JavaScript callbacks ran for 2.3s of this 5.1s build (46%).
+2 callbacks are listed without a time. Their calls overlapped, so the time inside one call includes work from other calls. To find their cost, profile the build with `node --cpu-prof`:
+  - plugin vite:asset load (17 calls)
+  - plugin vite:css transform (5982 calls)
+See https://rolldown.rs/reference/InputOptions.checks#bundlertimings for more details.
+
+node:internal/modules/run_main:111
+    triggerUncaughtException(
+    ^
+
+Build failed with 1 error:
+
+Error: [vite+]: Rolldown failed to resolve import "@pantoken/inline-styles/html" from "/Users/dwahl/Scripts/pantoken/docs/.vitepress/cache/canvas-rce-src/src/main.ts".
+This is most likely unintended because it can break your application at runtime.
+If you do want to externalize this module explicitly add it to
+`build.rolldownOptions.external`
+    at viteLog (file:///Users/dwahl/Scripts/pantoken/node_modules/.pnpm/@voidzero-dev+vite-plus-core@1.2.0_@arethetypeswrong+core@0.18.5_@types+node@26.6.5_jit_719390e6bea34b9252c291e26979d467/node_modules/@voidzero-dev/vite-plus-core/dist/vite/node/chunks/node.js:40173:57)
+    at onRollupLog (file:///Users/dwahl/Scripts/pantoken/node_modules/.pnpm/@voidzero-dev+vite-plus-core@1.2.0_@arethetypeswrong+core@0.18.5_@types+node@26.6.5_jit_719390e6bea34b9252c291e26979d467/node_modules/@voidzero-dev/vite-plus-core/dist/vite/node/chunks/node.js:40206:7)
+    at onLog (file:///Users/dwahl/Scripts/pantoken/node_modules/.pnpm/@voidzero-dev+vite-plus-core@1.2.0_@arethetypeswrong+core@0.18.5_@types+node@26.6.5_jit_719390e6bea34b9252c291e26979d467/node_modules/@voidzero-dev/vite-plus-core/dist/vite/node/chunks/node.js:39966:4)
+    at file:///Users/dwahl/Scripts/pantoken/node_modules/.pnpm/@voidzero-dev+vite-plus-core@1.2.0_@arethetypeswrong+core@0.18.5_@types+node@26.6.5_jit_719390e6bea34b9252c291e26979d467/node_modules/@voidzero-dev/vite-plus-core/dist/rolldown/shared/create-bundler-option-1AEe_J0o.mjs:48:26
+    at logger (file:///Users/dwahl/Scripts/pantoken/node_modules/.pnpm/@voidzero-dev+vite-plus-core@1.2.0_@arethetypeswrong+core@0.18.5_@types+node@26.6.5_jit_719390e6bea34b9252c291e26979d467/node_modules/@voidzero-dev/vite-plus-core/dist/rolldown/shared/create-bundler-option-1AEe_J0o.mjs:39:3)
+    at aggregateBindingErrorsIntoJsError (file:///Users/dwahl/Scripts/pantoken/node_modules/.pnpm/@voidzero-dev+vite-plus-core@1.2.0_@arethetypeswrong+core@0.18.5_@types+node@26.6.5_jit_719390e6bea34b9252c291e26979d467/node_modules/@voidzero-dev/vite-plus-core/dist/rolldown/shared/error-Dsqzw0Oa.mjs:49:18)
+    at unwrapBindingResult (file:///Users/dwahl/Scripts/pantoken/node_modules/.pnpm/@voidzero-dev+vite-plus-core@1.2.0_@arethetypeswrong+core@0.18.5_@types+node@26.6.5_jit_719390e6bea34b9252c291e26979d467/node_modules/@voidzero-dev/vite-plus-core/dist/rolldown/shared/error-Dsqzw0Oa.mjs:19:128)
+    at #build (file:///Users/dwahl/Scripts/pantoken/node_modules/.pnpm/@voidzero-dev+vite-plus-core@1.2.0_@arethetypeswrong+core@0.18.5_@types+node@26.6.5_jit_719390e6bea34b9252c291e26979d467/node_modules/@voidzero-dev/vite-plus-core/dist/rolldown/shared/rolldown-C8QomUuX.mjs:133:34)
+    at async buildEnvironment (file:///Users/dwahl/Scripts/pantoken/node_modules/.pnpm/@voidzero-dev+vite-plus-core@1.2.0_@arethetypeswrong+core@0.18.5_@types+node@26.6.5_jit_719390e6bea34b9252c291e26979d467/node_modules/@voidzero-dev/vite-plus-core/dist/vite/node/chunks/node.js:40080:66)
+    at async Object.build (file:///Users/dwahl/Scripts/pantoken/node_modules/.pnpm/@voidzero-dev+vite-plus-core@1.2.0_@arethetypeswrong+core@0.18.5_@types+node@26.6.5_jit_719390e6bea34b9252c291e26979d467/node_modules/@voidzero-dev/vite-plus-core/dist/vite/node/chunks/node.js:40501:19)
+    at async file:///Users/dwahl/Scripts/pantoken/docs/scripts/build-canvas-rce.ts:94:1 {
+  errors: [Getter/Setter]
+}
+
+Node.js v26.12.0
+2:23:16 PM [vitepress] (client) page reload public/tools/canvas-rce/index.html
+2:23:16 PM [vitepress] [orchestrator] @pantoken/docs#canvas-rce — build failed (exit 1).
+2:23:16 PM [vitepress] (client) page reload public/tools/canvas-rce/index.html
+2:23:16 PM [vitepress] (client) page reload public/tools/canvas-rce/index.html
+2:23:24 PM [vitepress] (client) hmr update /.vitepress/theme/components/AgentToolsPage.vue
+2:23:31 PM [vitepress] (client) page reload public/tools/canvas-rce/index.html
+2:23:31 PM [vitepress] (client) page reload public/tools/canvas-rce/index.html
+2:23:33 PM [vitepress] (client) page reload public/tools/canvas-rce/index.html
+2:23:33 PM [vitepress] (client) page reload public/tools/canvas-rce/index.html
+2:23:33 PM [vitepress] (client) page reload public/tools/canvas-rce/index.html
+2:24:15 PM [vitepress] 
+[orchestrator] @pantoken/scaffold#generate — building…
+✓ inlined scaffold templates for 8 platforms
+✓ inlined 9 agent assets
+✓ inlined localized scaffold files for 44 locale(s)
+✓ compiled scaffold.json metadata for 1 platform(s)
+✓ emitted locale registry for 44 locales
+2:24:16 PM [vitepress] [orchestrator] @pantoken/scaffold#generate — done.
+2:24:16 PM [vitepress] (client) hmr update /.vitepress/theme/components/AgentToolsPage.vue
+2:24:16 PM [vitepress] 
+[orchestrator] @pantoken/docs#canvas-rce — building…
+2:24:32 PM [vitepress] (client) hmr update /.vitepress/theme/components/AgentToolsPage.vue
+✗ Build failed in 2.48s
+node:internal/modules/run_main:111
+    triggerUncaughtException(
+    ^
+
+Build failed with 377 errors:
+
+[UNLOADABLE_DEPENDENCY] Could not load .vitepress/cache/canvas-rce-src/node_modules/@pantoken/plugin-simple-icons/dist/icons/alfred.css?transform-only
+   ╭─[ .vitepress/cache/canvas-rce-src/node_modules/@pantoken/plugin-simple-icons/dist/icons/alfred.css?url:1:8 ]
+   │
+ 1 │ import "/Users/dwahl/Scripts/pantoken/docs/.vitepress/cache/canvas-rce-src/node_modules/@pantoken/plugin-simple-icons/dist/icons/alfred.css?transform-only";export default "__VITE_CSS_URL__2f55736572732f647761686c2f536372697074732f70616e746f6b656e2f646f63732f2e7669746570726573732f63616368652f63616e7661732d7263652d7372632f6e6f64655f6d6f64756c65732f4070616e746f6b656e2f706c7567696e2d73696d706c652d69636f6e732f646973742f69636f6e732f616c667265642e6373733f7472616e73666f726d2d6f6e6c79__"
+   │        ──────────────────────────────────────────────────────────────────────────┬─────────────────────────────────────────────────────────────────────────  
+   │                                                                                  ╰─────────────────────────────────────────────────────────────────────────── No such file or directory (os error 2)
+───╯
+
+[UNLOADABLE_DEPENDENCY] Could not load .vitepress/cache/canvas-rce-src/node_modules/@pantoken/plugin-custom-components/dist/banner.css?transform-only
+   ╭─[ .vitepress/cache/canvas-rce-src/node_modules/@pantoken/plugin-custom-components/dist/banner.css?url:1:8 ]
+   │
+ 1 │ import "/Users/dwahl/Scripts/pantoken/docs/.vitepress/cache/canvas-rce-src/node_modules/@pantoken/plugin-custom-components/dist/banner.css?transform-only";export default "__VITE_CSS_URL__2f55736572732f647761686c2f536372697074732f70616e746f6b656e2f646f63732f2e7669746570726573732f63616368652f63616e7661732d7263652d7372632f6e6f64655f6d6f64756c65732f4070616e746f6b656e2f706c7567696e2d637573746f6d2d636f6d706f6e656e74732f646973742f62616e6e65722e6373733f7472616e73666f726d2d6f6e6c79__"
+   │        ─────────────────────────────────────────────────────────────────────────┬─────────────────────────────────────────────────────────────────────────  
+   │                                                                                 ╰─────────────────────────────────────────────────────────────────────────── No such file or directory (os error 2)
+───╯
+
+[UNLOADABLE_DEPENDENCY] Could not load .vitepress/cache/canvas-rce-src/node_modules/@pantoken/plugin-simple-icons/dist/icons/akiflow.css?transform-only
+   ╭─[ .vitepress/cache/canvas-rce-src/node_modules/@pantoken/plugin-simple-icons/dist/icons/akiflow.css?url:1:8 ]
+   │
+ 1 │ import "/Users/dwahl/Scripts/pantoken/docs/.vitepress/cache/canvas-rce-src/node_modules/@pantoken/plugin-simple-icons/dist/icons/akiflow.css?transform-only";export default "__VITE_CSS_URL__2f55736572732f647761686c2f536372697074732f70616e746f6b656e2f646f63732f2e7669746570726573732f63616368652f63616e7661732d7263652d7372632f6e6f64655f6d6f64756c65732f4070616e746f6b656e2f706c7567696e2d73696d706c652d69636f6e732f646973742f69636f6e732f616b69666c6f772e6373733f7472616e73666f726d2d6f6e6c79__"
+   │        ──────────────────────────────────────────────────────────────────────────┬──────────────────────────────────────────────────────────────────────────  
+   │                                                                                  ╰──────────────────────────────────────────────────────────────────────────── No such file or directory (os error 2)
+───╯
+
+[UNLOADABLE_DEPENDENCY] Could not load .vitepress/cache/canvas-rce-src/node_modules/@pantoken/plugin-simple-icons/dist/icons/algorand.css?transform-only
+   ╭─[ .vitepress/cache/canvas-rce-src/node_modules/@pantoken/plugin-simple-icons/dist/icons/algorand.css?url:1:8 ]
+   │
+ 1 │ import "/Users/dwahl/Scripts/pantoken/docs/.vitepress/cache/canvas-rce-src/node_modules/@pantoken/plugin-simple-icons/dist/icons/algorand.css?transform-only";export default "__VITE_CSS_URL__2f55736572732f647761686c2f536372697074732f70616e746f6b656e2f646f63732f2e7669746570726573732f63616368652f63616e7661732d7263652d7372632f6e6f64655f6d6f64756c65732f4070616e746f6b656e2f706c7567696e2d73696d706c652d69636f6e732f646973742f69636f6e732f616c676f72616e642e6373733f7472616e73666f726d2d6f6e6c79__"
+   │        ───────────────────────────────────────────────────────────────────────────┬──────────────────────────────────────────────────────────────────────────  
+   │                                                                                   ╰──────────────────────────────────────────────────────────────────────────── No such file or directory (os error 2)
+───╯
+
+[UNLOADABLE_DEPENDENCY] Could not load .vitepress/cache/canvas-rce-src/node_modules/@pantoken/plugin-simple-icons/dist/icons/fsharp.css?transform-only
+   ╭─[ .vitepress/cache/canvas-rce-src/node_modules/@pantoken/plugin-simple-icons/dist/icons/fsharp.css?url:1:8 ]
+   │
+ 1 │ import "/Users/dwahl/Scripts/pantoken/docs/.vitepress/cache/canvas-rce-src/node_modules/@pantoken/plugin-simple-icons/dist/icons/fsharp.css?transform-only";export default "__VITE_CSS_URL__2f55736572732f647761686c2f536372697074732f70616e746f6b656e2f646f63732f2e7669746570726573732f63616368652f63616e7661732d7263652d7372632f6e6f64655f6d6f64756c65732f4070616e746f6b656e2f706c7567696e2d73696d706c652d69636f6e732f646973742f69636f6e732f6673686172702e6373733f7472616e73666f726d2d6f6e6c79__"
+   │        ──────────────────────────────────────────────────────────────────────────┬─────────────────────────────────────────────────────────────────────────  
+   │                                                                                  ╰─────────────────────────────────────────────────────────────────────────── No such file or directory (os error 2)
+───╯
+
+...
+    at aggregateBindingErrorsIntoJsError (file:///Users/dwahl/Scripts/pantoken/node_modules/.pnpm/@voidzero-dev+vite-plus-core@1.2.0_@arethetypeswrong+core@0.18.5_@types+node@26.6.5_jit_719390e6bea34b9252c291e26979d467/node_modules/@voidzero-dev/vite-plus-core/dist/rolldown/shared/error-Dsqzw0Oa.mjs:49:18)
+    at unwrapBindingResult (file:///Users/dwahl/Scripts/pantoken/node_modules/.pnpm/@voidzero-dev+vite-plus-core@1.2.0_@arethetypeswrong+core@0.18.5_@types+node@26.6.5_jit_719390e6bea34b9252c291e26979d467/node_modules/@voidzero-dev/vite-plus-core/dist/rolldown/shared/error-Dsqzw0Oa.mjs:19:128)
+    at #build (file:///Users/dwahl/Scripts/pantoken/node_modules/.pnpm/@voidzero-dev+vite-plus-core@1.2.0_@arethetypeswrong+core@0.18.5_@types+node@26.6.5_jit_719390e6bea34b9252c291e26979d467/node_modules/@voidzero-dev/vite-plus-core/dist/rolldown/shared/rolldown-C8QomUuX.mjs:133:34)
+    at async buildEnvironment (file:///Users/dwahl/Scripts/pantoken/node_modules/.pnpm/@voidzero-dev+vite-plus-core@1.2.0_@arethetypeswrong+core@0.18.5_@types+node@26.6.5_jit_719390e6bea34b9252c291e26979d467/node_modules/@voidzero-dev/vite-plus-core/dist/vite/node/chunks/node.js:40080:66)
+    at async Object.build (file:///Users/dwahl/Scripts/pantoken/node_modules/.pnpm/@voidzero-dev+vite-plus-core@1.2.0_@arethetypeswrong+core@0.18.5_@types+node@26.6.5_jit_719390e6bea34b9252c291e26979d467/node_modules/@voidzero-dev/vite-plus-core/dist/vite/node/chunks/node.js:40501:19)
+    at async file:///Users/dwahl/Scripts/pantoken/docs/scripts/build-canvas-rce.ts:94:1 {
+  errors: [Getter/Setter]
+}
+
+Node.js v26.12.0
+2:24:34 PM [vitepress] [orchestrator] @pantoken/docs#canvas-rce — build failed (exit 1).
+2:24:44 PM [vitepress] (client) page reload public/tools/canvas-rce/index.html
+2:24:44 PM [vitepress] (client) page reload public/tools/canvas-rce/index.html
+2:24:47 PM [vitepress] (client) page reload public/tools/canvas-rce/index.html
+2:24:47 PM [vitepress] (client) page reload public/tools/canvas-rce/index.html
+2:24:47 PM [vitepress] (client) page reload public/tools/canvas-rce/index.html
+2:26:27 PM [vitepress] 
+[orchestrator] @pantoken/scaffold#generate — building…
+✓ inlined scaffold templates for 8 platforms
+✓ inlined 9 agent assets
+✓ inlined localized scaffold files for 44 locale(s)
+✓ compiled scaffold.json metadata for 1 platform(s)
+✓ emitted locale registry for 44 locales
+2:26:29 PM [vitepress] [orchestrator] @pantoken/scaffold#generate — done.
+2:26:29 PM [vitepress] (client) hmr update /.vitepress/theme/components/AgentToolsPage.vue
+2:26:29 PM [vitepress] 
+[orchestrator] @pantoken/docs#canvas-rce — building…
+2:26:34 PM [vitepress] 
+[orchestrator] @pantoken/scaffold#generate — building…
+✓ inlined scaffold templates for 8 platforms
+✓ inlined 9 agent assets
+2:26:35 PM [vitepress] (client) hmr update /.vitepress/theme/components/AgentToolsPage.vue
+✓ inlined localized scaffold files for 44 locale(s)
+✓ compiled scaffold.json metadata for 1 platform(s)
+✓ emitted locale registry for 44 locales
+2:26:35 PM [vitepress] [orchestrator] @pantoken/scaffold#generate — done.
+2:26:39 PM [vitepress] (client) page reload public/tools/canvas-rce/index.html
+2:26:39 PM [vitepress] (client) page reload public/tools/canvas-rce/index.html
+[plugin builtin:vite-reporter] 
+(!) Some chunks are larger than 500 kB after minification. Consider:
+- Using dynamic import() to code-split the application
+- Use build.rolldownOptions.output.codeSplitting to improve chunking: https://rolldown.rs/reference/OutputOptions.codeSplitting
+- Adjust chunk size limit for this warning via build.chunkSizeWarningLimit.
+[PLUGIN_TIMINGS] JavaScript callbacks ran for 3.4s of this 6.8s build (50%).
+The slowest callbacks, timed inside each callback (the wait before a callback starts is excluded, the time it awaits is included):
+  - plugin vite:prepare-out-dir renderStart (16%, 1.1s, 1 call)
+Additional callback time came from the callbacks below and from callbacks under 1s.
+2 callbacks are listed without a time. Their calls overlapped, so the time inside one call includes work from other calls. To find their cost, profile the build with `node --cpu-prof`:
+  - plugin vite:asset load (17 calls)
+  - plugin vite:css transform (5982 calls)
+See https://rolldown.rs/reference/InputOptions.checks#bundlertimings for more details.
+
+2:26:43 PM [vitepress] (client) page reload public/tools/canvas-rce/index.html
+2:26:43 PM [vitepress] [orchestrator] @pantoken/docs#canvas-rce — done.
+2:26:43 PM [vitepress] 
+[orchestrator] @pantoken/docs#canvas-rce — building…
+2:26:43 PM [vitepress] (client) page reload public/tools/canvas-rce/index.html
+2:26:43 PM [vitepress] (client) page reload public/tools/canvas-rce/index.html
+2:26:53 PM [vitepress] (client) page reload public/tools/canvas-rce/index.html
+2:26:53 PM [vitepress] (client) page reload public/tools/canvas-rce/index.html
+[plugin builtin:vite-reporter] 
+(!) Some chunks are larger than 500 kB after minification. Consider:
+- Using dynamic import() to code-split the application
+- Use build.rolldownOptions.output.codeSplitting to improve chunking: https://rolldown.rs/reference/OutputOptions.codeSplitting
+- Adjust chunk size limit for this warning via build.chunkSizeWarningLimit.
+[PLUGIN_TIMINGS] JavaScript callbacks ran for 2.3s of this 5.0s build (47%).
+2 callbacks are listed without a time. Their calls overlapped, so the time inside one call includes work from other calls. To find their cost, profile the build with `node --cpu-prof`:
+  - plugin vite:asset load (17 calls)
+  - plugin vite:css transform (5982 calls)
+See https://rolldown.rs/reference/InputOptions.checks#bundlertimings for more details.
+
+2:26:56 PM [vitepress] (client) page reload public/tools/canvas-rce/index.html
+2:26:56 PM [vitepress] (client) page reload public/tools/canvas-rce/index.html
+2:26:56 PM [vitepress] [orchestrator] @pantoken/docs#canvas-rce — done.
+2:26:56 PM [vitepress] (client) page reload public/tools/canvas-rce/index.html
+2:27:09 PM [vitepress] 
+[orchestrator] @pantoken/scaffold#generate — building…
+✓ inlined scaffold templates for 8 platforms
+✓ inlined 9 agent assets
+✓ inlined localized scaffold files for 44 locale(s)
+✓ compiled scaffold.json metadata for 1 platform(s)
+2:27:13 PM [vitepress] (client) hmr update /.vitepress/theme/components/AgentToolsPage.vue
+✓ emitted locale registry for 44 locales
+2:27:13 PM [vitepress] [orchestrator] @pantoken/scaffold#generate — done.
+2:27:13 PM [vitepress] 
+[orchestrator] @pantoken/docs#canvas-rce — building…
+2:27:28 PM [vitepress] (client) page reload public/tools/canvas-rce/index.html
+2:27:28 PM [vitepress] (client) page reload public/tools/canvas-rce/index.html
+[plugin builtin:vite-reporter] 
+(!) Some chunks are larger than 500 kB after minification. Consider:
+- Using dynamic import() to code-split the application
+- Use build.rolldownOptions.output.codeSplitting to improve chunking: https://rolldown.rs/reference/OutputOptions.codeSplitting
+- Adjust chunk size limit for this warning via build.chunkSizeWarningLimit.
+[PLUGIN_TIMINGS] JavaScript callbacks ran for 2.0s of this 4.8s build (41%).
+2 callbacks are listed without a time. Their calls overlapped, so the time inside one call includes work from other calls. To find their cost, profile the build with `node --cpu-prof`:
+  - plugin vite:asset load (17 calls)
+  - plugin vite:css transform (5982 calls)
+See https://rolldown.rs/reference/InputOptions.checks#bundlertimings for more details.
+
+2:27:31 PM [vitepress] (client) page reload public/tools/canvas-rce/index.html
+2:27:31 PM [vitepress] (client) page reload public/tools/canvas-rce/index.html
+2:27:31 PM [vitepress] (client) page reload public/tools/canvas-rce/index.html
+2:27:31 PM [vitepress] [orchestrator] @pantoken/docs#canvas-rce — done.
+2:31:03 PM [vitepress] 
+[orchestrator] @pantoken/scaffold#generate — building…
+✓ inlined scaffold templates for 8 platforms
+✓ inlined 9 agent assets
+✓ inlined localized scaffold files for 44 locale(s)
+✓ compiled scaffold.json metadata for 1 platform(s)
+2:31:05 PM [vitepress] (client) hmr update /.vitepress/theme/components/AgentToolsPage.vue
+✓ emitted locale registry for 44 locales
+2:31:05 PM [vitepress] [orchestrator] @pantoken/scaffold#generate — done.
+2:31:05 PM [vitepress] 
+[orchestrator] @pantoken/docs#canvas-rce — building…
+2:31:17 PM [vitepress] (client) page reload public/tools/canvas-rce/index.html
+2:31:17 PM [vitepress] (client) page reload public/tools/canvas-rce/index.html
+[plugin builtin:vite-reporter] 
+(!) Some chunks are larger than 500 kB after minification. Consider:
+- Using dynamic import() to code-split the application
+- Use build.rolldownOptions.output.codeSplitting to improve chunking: https://rolldown.rs/reference/OutputOptions.codeSplitting
+- Adjust chunk size limit for this warning via build.chunkSizeWarningLimit.
+[PLUGIN_TIMINGS] JavaScript callbacks ran for 2.5s of this 5.3s build (48%).
+2 callbacks are listed without a time. Their calls overlapped, so the time inside one call includes work from other calls. To find their cost, profile the build with `node --cpu-prof`:
+  - plugin vite:asset load (17 calls)
+  - plugin vite:css transform (5982 calls)
+See https://rolldown.rs/reference/InputOptions.checks#bundlertimings for more details.
+
+2:31:20 PM [vitepress] (client) page reload public/tools/canvas-rce/index.html
+2:31:20 PM [vitepress] (client) page reload public/tools/canvas-rce/index.html
+2:31:20 PM [vitepress] [orchestrator] @pantoken/docs#canvas-rce — done.
+2:31:20 PM [vitepress] (client) page reload public/tools/canvas-rce/index.html
+2:31:26 PM [vitepress] (client) hmr update /.vitepress/theme/components/CdnPickerPage.vue, /.vitepress/theme/components/PickerThemeControls.vue, /.vitepress/theme/components/IconPicker.vue, /.vitepress/theme/components/ComponentsPicker.vue, /.vitepress/theme/components/WebComponentsPicker.vue
+2:31:30 PM [vitepress] (client) hmr update /.vitepress/theme/components/CdnPickerPage.vue, /.vitepress/theme/components/PickerThemeControls.vue, /.vitepress/theme/components/IconPicker.vue, /.vitepress/theme/components/ComponentsPicker.vue, /.vitepress/theme/components/WebComponentsPicker.vue
+2:31:30 PM [vitepress] (client) hmr update /.vitepress/theme/components/CdnPickerPage.vue, /.vitepress/theme/components/PickerThemeControls.vue, /.vitepress/theme/components/IconPicker.vue, /.vitepress/theme/components/ComponentsPicker.vue, /.vitepress/theme/components/WebComponentsPicker.vue
+2:31:30 PM [vitepress] (client) hmr update /@fs/Users/dwahl/Scripts/pantoken/plugins/vitepress/side-bar-toggle/dist/style.css
+2:31:33 PM [vitepress] (client) page reload /Users/dwahl/Scripts/pantoken/packages/utils/dist/index.mjs
+2:31:33 PM [vitepress] (client) page reload /Users/dwahl/Scripts/pantoken/packages/utils/dist/scope.mjs
+2:31:36 PM [vitepress] (client) page reload /Users/dwahl/Scripts/pantoken/packages/utils/dist/index.mjs
+2:31:36 PM [vitepress] (client) page reload /Users/dwahl/Scripts/pantoken/packages/utils/dist/index.mjs
+2:31:36 PM [vitepress] (client) page reload /Users/dwahl/Scripts/pantoken/packages/utils/dist/scope.mjs
+2:31:36 PM [vitepress] (client) page reload /Users/dwahl/Scripts/pantoken/packages/utils/dist/scope.mjs
+2:31:41 PM [vitepress] (client) hmr update /.vitepress/theme/components/ComponentsPicker.vue
+2:31:41 PM [vitepress] (client) hmr update /.vitepress/theme/components/ComponentsPicker.vue
+2:31:41 PM [vitepress] (client) page reload /Users/dwahl/Scripts/pantoken/formats/interactions/dist/close-button-s_-10oaC.mjs
+2:31:41 PM [vitepress] (client) page reload /Users/dwahl/Scripts/pantoken/formats/interactions/dist/in-place-edit-DOMfEjUW.mjs
+2:31:41 PM [vitepress] (client) page reload /Users/dwahl/Scripts/pantoken/formats/interactions/dist/index.mjs
+2:31:41 PM [vitepress] (client) page reload /Users/dwahl/Scripts/pantoken/formats/interactions/dist/modal-ZQezxuBs.mjs
+2:31:41 PM [vitepress] (client) page reload /Users/dwahl/Scripts/pantoken/formats/interactions/dist/progress-circle-BuatMVo0.mjs
+2:31:41 PM [vitepress] (client) page reload /Users/dwahl/Scripts/pantoken/formats/interactions/dist/remove-qKkQbgAk.mjs
+2:31:41 PM [vitepress] (client) page reload /Users/dwahl/Scripts/pantoken/formats/interactions/dist/segmented-control-DyQCnH1w.mjs
+2:31:41 PM [vitepress] (client) page reload /Users/dwahl/Scripts/pantoken/formats/interactions/dist/shared-CiHt9prt.mjs
+2:31:41 PM [vitepress] (client) page reload /Users/dwahl/Scripts/pantoken/formats/interactions/dist/skeleton-loader-o0FvPmeB.mjs
+2:31:41 PM [vitepress] (client) page reload /Users/dwahl/Scripts/pantoken/formats/interactions/dist/tabs-C-jmB5Th.mjs
+2:31:41 PM [vitepress] (client) page reload /Users/dwahl/Scripts/pantoken/formats/interactions/dist/tooltip-CB1dOtG0.mjs
+2:31:41 PM [vitepress] (client) page reload /Users/dwahl/Scripts/pantoken/formats/interactions/dist/truncate-lxz4kerF.mjs
+2:31:42 PM [vitepress] (client) page reload /Users/dwahl/Scripts/pantoken/formats/scope/dist/index.mjs
+2:31:42 PM [vitepress] (client) page reload /Users/dwahl/Scripts/pantoken/formats/scope/dist/src-DNi2jYE5.mjs
+2:31:55 PM [vitepress] 
+[orchestrator] @pantoken/plugin-layouts — building…
+2:31:56 PM [vitepress] (client) hmr update /.vitepress/theme/components/GetStartedTabs.vue?vue&type=style&index=0&lang.css
+2:31:56 PM [vitepress] (client) hmr update /.vitepress/theme/components/GetStartedTabs.vue?vue&type=style&index=0&lang.css
+2:31:56 PM [vitepress] (client) hmr update /.vitepress/theme/components/GetStartedTabs.vue?vue&type=style&index=0&lang.css
+2:31:56 PM [vitepress] (client) hmr update /@fs/Users/dwahl/Scripts/pantoken/plugins/pantoken/custom-icons/generated/custom-icons.css
+2:31:57 PM [vitepress] (client) hmr update /@fs/Users/dwahl/Scripts/pantoken/plugins/pantoken/lucide-lab/generated/lucide-lab.css
+✓ layouts: wrote raw + runtime layouts.css and 7 per-layout CSS files
+✓ layouts: emitted layouts.strings message bundles for 44 locales
+2:31:57 PM [vitepress] [orchestrator] @pantoken/plugin-layouts — done.
+2:31:57 PM [vitepress] 
+[orchestrator] @pantoken/plugin-layouts — building…
+2:31:57 PM [vitepress] 
+[orchestrator] @pantoken/docs#docs:api:css — building…
+✓ layouts: wrote raw + runtime layouts.css and 7 per-layout CSS files
+✓ layouts: emitted layouts.strings message bundles for 44 locales
+2:31:58 PM [vitepress] [orchestrator] @pantoken/plugin-layouts — done.
+2:31:58 PM [vitepress] (client) hmr update /.vitepress/theme/pantoken.css
+2:31:58 PM [vitepress] (client) hmr update /.vitepress/theme/pantoken.css
+2:31:58 PM [vitepress] (client) hmr update /.vitepress/theme/pantoken.css
+2:31:58 PM [vitepress] (client) hmr update /.vitepress/theme/pantoken.css
+2:31:58 PM [vitepress] (client) hmr update /.vitepress/theme/components/GetStartedTabs.vue?vue&type=style&index=0&lang.css
+2:31:58 PM [vitepress] (client) hmr update /.vitepress/theme/components/AgentToolsPage.vue?vue&type=style&index=0&lang.css, /.vitepress/theme/components/GetStartedTabs.vue?vue&type=style&index=0&lang.css
+2:31:58 PM [vitepress] (client) hmr update /.vitepress/theme/components/AgentToolsPage.vue?vue&type=style&index=0&lang.css, /.vitepress/theme/components/GetStartedTabs.vue?vue&type=style&index=0&lang.css
+2:31:58 PM [vitepress] (client) hmr update /.vitepress/theme/components/GetStartedTabs.vue?vue&type=style&index=0&lang.css
+2:31:58 PM [vitepress] (client) hmr update /.vitepress/theme/pantoken.css
+2:31:58 PM [vitepress] (client) hmr update /.vitepress/theme/pantoken.css
+2:31:58 PM [vitepress] (client) hmr update /.vitepress/theme/pantoken.css
+2:31:58 PM [vitepress] (client) hmr update /.vitepress/theme/components/AgentToolsPage.vue?vue&type=style&index=0&lang.css, /.vitepress/theme/components/GetStartedTabs.vue?vue&type=style&index=0&lang.css
+2:31:58 PM [vitepress] (client) hmr update /.vitepress/theme/components/AgentToolsPage.vue?vue&type=style&index=0&lang.css, /.vitepress/theme/components/GetStartedTabs.vue?vue&type=style&index=0&lang.css
+2:31:58 PM [vitepress] (client) hmr update /.vitepress/theme/pantoken.css
+2:31:58 PM [vitepress] (client) hmr update /.vitepress/theme/pantoken.css
+2:31:58 PM [vitepress] (client) hmr update /.vitepress/theme/pantoken.css
+2:31:58 PM [vitepress] (client) hmr update /.vitepress/theme/pantoken.css
+2:31:58 PM [vitepress] (client) hmr update /.vitepress/theme/components/ComponentsPicker.vue?vue&type=style&index=0&lang.css
+2:31:58 PM [vitepress] (client) hmr update /.vitepress/theme/pantoken.css
+2:31:58 PM [vitepress] (client) hmr update /.vitepress/theme/pantoken.css
+2:31:58 PM [vitepress] (client) hmr update /.vitepress/theme/pantoken.css
+2:31:58 PM [vitepress] (client) hmr update /.vitepress/theme/components/GetStartedTabs.vue?vue&type=style&index=0&lang.css
+2:31:58 PM [vitepress] (client) hmr update /.vitepress/theme/components/GetStartedTabs.vue?vue&type=style&index=0&lang.css
+2:31:58 PM [vitepress] (client) hmr update /.vitepress/theme/pantoken.css
+2:31:59 PM [vitepress] (client) hmr update /.vitepress/theme/components/AgentToolsPage.vue?vue&type=style&index=0&lang.css
+2:31:59 PM [vitepress] (client) hmr update /.vitepress/theme/pantoken.css
+2:31:59 PM [vitepress] (client) hmr update /.vitepress/theme/pantoken.css
+2:31:59 PM [vitepress] (client) hmr update /.vitepress/theme/pantoken.css
+2:31:59 PM [vitepress] (client) hmr update /.vitepress/theme/components/AgentToolsPage.vue?vue&type=style&index=0&lang.css, /.vitepress/theme/components/GetStartedTabs.vue?vue&type=style&index=0&lang.css
+2:31:59 PM [vitepress] (client) hmr update /.vitepress/theme/components/AgentToolsPage.vue?vue&type=style&index=0&lang.css, /.vitepress/theme/components/GetStartedTabs.vue?vue&type=style&index=0&lang.css
+2:31:59 PM [vitepress] (client) hmr update /.vitepress/theme/components/GetStartedTabs.vue?vue&type=style&index=0&lang.css
+2:31:59 PM [vitepress] (client) hmr update /.vitepress/theme/pantoken.css
+2:31:59 PM [vitepress] (client) hmr update /.vitepress/theme/pantoken.css
+2:31:59 PM [vitepress] (client) hmr update /.vitepress/theme/pantoken.css
+2:31:59 PM [vitepress] (client) hmr update /.vitepress/theme/pantoken.css
+2:31:59 PM [vitepress] (client) hmr update /.vitepress/theme/pantoken.css
+2:31:59 PM [vitepress] (client) hmr update /.vitepress/theme/pantoken.css
+2:31:59 PM [vitepress] (client) hmr update /.vitepress/theme/pantoken.css
+2:31:59 PM [vitepress] (client) hmr update /.vitepress/theme/pantoken.css
+2:31:59 PM [vitepress] (client) hmr update /.vitepress/theme/pantoken.css
+2:31:59 PM [vitepress] (client) hmr update /.vitepress/theme/pantoken.css
+2:31:59 PM [vitepress] (client) hmr update /.vitepress/theme/pantoken.css
+2:31:59 PM [vitepress] (client) hmr update /.vitepress/theme/pantoken.css
+2:31:59 PM [vitepress] (client) hmr update /.vitepress/theme/components/GetStartedTabs.vue?vue&type=style&index=0&lang.css
+2:31:59 PM [vitepress] (client) hmr update /.vitepress/theme/components/GetStartedTabs.vue?vue&type=style&index=0&lang.css
+2:32:00 PM [vitepress] (client) hmr update /.vitepress/theme/components/AgentToolsPage.vue?vue&type=style&index=0&lang.css, /.vitepress/theme/components/GetStartedTabs.vue?vue&type=style&index=0&lang.css
+2:32:00 PM [vitepress] (client) hmr update /.vitepress/theme/components/AgentToolsPage.vue?vue&type=style&index=0&lang.css, /.vitepress/theme/components/GetStartedTabs.vue?vue&type=style&index=0&lang.css
+2:32:00 PM [vitepress] (client) hmr update /.vitepress/theme/components/AgentToolsPage.vue?vue&type=style&index=0&lang.css, /.vitepress/theme/components/GetStartedTabs.vue?vue&type=style&index=0&lang.css
+2:32:00 PM [vitepress] (client) hmr update /.vitepress/theme/components/AgentToolsPage.vue?vue&type=style&index=0&lang.css, /.vitepress/theme/components/GetStartedTabs.vue?vue&type=style&index=0&lang.css
+2:32:00 PM [vitepress] (client) hmr update /.vitepress/theme/pantoken.css
+2:32:00 PM [vitepress] (client) hmr update /.vitepress/theme/pantoken.css
+2:32:00 PM [vitepress] (client) hmr update /.vitepress/theme/pantoken.css
+2:32:00 PM [vitepress] (client) hmr update /.vitepress/theme/pantoken.css
+2:32:00 PM [vitepress] (client) hmr update /.vitepress/theme/pantoken.css
+2:32:00 PM [vitepress] (client) hmr update /.vitepress/theme/pantoken.css
+2:32:00 PM [vitepress] (client) hmr update /.vitepress/theme/pantoken.css
+2:32:00 PM [vitepress] (client) hmr update /.vitepress/theme/pantoken.css
+2:32:00 PM [vitepress] (client) hmr update /.vitepress/theme/pantoken.css
+2:32:00 PM [vitepress] (client) hmr update /.vitepress/theme/pantoken.css
+2:32:00 PM [vitepress] (client) hmr update /.vitepress/theme/components/ComponentsPicker.vue?vue&type=style&index=0&lang.css
+2:32:00 PM [vitepress] (client) hmr update /.vitepress/theme/pantoken.css
+2:32:00 PM [vitepress] (client) hmr update /.vitepress/theme/components/ComponentsPicker.vue?vue&type=style&index=0&lang.css
+2:32:00 PM [vitepress] (client) hmr update /.vitepress/theme/components/GetStartedTabs.vue?vue&type=style&index=0&lang.css
+2:32:00 PM [vitepress] (client) hmr update /.vitepress/theme/components/GetStartedTabs.vue?vue&type=style&index=0&lang.css
+2:32:00 PM [vitepress] (client) hmr update /.vitepress/theme/components/AgentToolsPage.vue?vue&type=style&index=0&lang.css, /.vitepress/theme/components/GetStartedTabs.vue?vue&type=style&index=0&lang.css
+2:32:00 PM [vitepress] (client) hmr update /.vitepress/theme/components/AgentToolsPage.vue?vue&type=style&index=0&lang.css, /.vitepress/theme/components/GetStartedTabs.vue?vue&type=style&index=0&lang.css
+2:32:00 PM [vitepress] (client) hmr update /.vitepress/theme/pantoken.css
+2:32:00 PM [vitepress] (client) hmr update /.vitepress/theme/pantoken.css
+2:32:00 PM [vitepress] (client) hmr update /.vitepress/theme/pantoken.css
+2:32:00 PM [vitepress] (client) hmr update /.vitepress/theme/pantoken.css
+2:32:00 PM [vitepress] (client) hmr update /.vitepress/theme/components/AgentToolsPage.vue?vue&type=style&index=0&lang.css, /.vitepress/theme/components/GetStartedTabs.vue?vue&type=style&index=0&lang.css
+2:32:00 PM [vitepress] (client) hmr update /.vitepress/theme/components/AgentToolsPage.vue?vue&type=style&index=0&lang.css, /.vitepress/theme/components/GetStartedTabs.vue?vue&type=style&index=0&lang.css
+2:32:00 PM [vitepress] (client) hmr update /.vitepress/theme/components/GetStartedTabs.vue?vue&type=style&index=0&lang.css
+2:32:00 PM [vitepress] (client) hmr update /.vitepress/theme/components/GetStartedTabs.vue?vue&type=style&index=0&lang.css
+2:32:00 PM [vitepress] (client) hmr update /.vitepress/theme/pantoken.css
+2:32:00 PM [vitepress] (client) hmr update /.vitepress/theme/pantoken.css
+2:32:00 PM [vitepress] (client) hmr update /.vitepress/theme/pantoken.css
+2:32:00 PM [vitepress] (client) hmr update /.vitepress/theme/pantoken.css
+2:32:00 PM [vitepress] (client) hmr update /.vitepress/theme/pantoken.css
+2:32:00 PM [vitepress] (client) hmr update /.vitepress/theme/pantoken.css
+✓ CSS API: wrote 110 record page(s) to api/css/ + merged the CSS section into the TypeDoc sidebar
+2:32:01 PM [vitepress] (client) hmr update /.vitepress/theme/pantoken.css
+2:32:01 PM [vitepress] (client) hmr update /.vitepress/theme/pantoken.css
+2:32:01 PM [vitepress] (client) hmr update /.vitepress/theme/pantoken.css
+2:32:01 PM [vitepress] (client) hmr update /.vitepress/theme/pantoken.css
+2:32:01 PM [vitepress] (client) hmr update /.vitepress/theme/pantoken.css
+2:32:01 PM [vitepress] (client) hmr update /.vitepress/theme/pantoken.css
+2:32:01 PM [vitepress] (client) hmr update /.vitepress/theme/pantoken.css
+2:32:01 PM [vitepress] (client) hmr update /.vitepress/theme/pantoken.css
+2:32:02 PM [vitepress] (client) hmr update /.vitepress/theme/pantoken.css
+2:32:02 PM [vitepress] (client) hmr update /.vitepress/theme/pantoken.css
+2:32:02 PM [vitepress] (client) hmr update /.vitepress/theme/components/GetStartedTabs.vue?vue&type=style&index=0&lang.css
+2:32:02 PM [vitepress] (client) hmr update /.vitepress/theme/pantoken.css
+2:32:02 PM [vitepress] (client) hmr update /.vitepress/theme/pantoken.css
+2:32:02 PM [vitepress] (client) hmr update /.vitepress/theme/pantoken.css
+2:32:02 PM [vitepress] (client) hmr update /.vitepress/theme/pantoken.css
+2:32:02 PM [vitepress] (client) hmr update /.vitepress/theme/pantoken.css
+2:32:02 PM [vitepress] (client) hmr update /.vitepress/theme/pantoken.css
+2:32:03 PM [vitepress] (client) hmr update /.vitepress/theme/pantoken.css
+2:32:03 PM [vitepress] (client) hmr update /.vitepress/theme/pantoken.css
+2:32:03 PM [vitepress] (client) hmr update /.vitepress/theme/components/GetStartedTabs.vue?vue&type=style&index=0&lang.css
+2:32:03 PM [vitepress] (client) hmr update /.vitepress/theme/components/GetStartedTabs.vue?vue&type=style&index=0&lang.css
+2:32:05 PM [vitepress] (client) hmr update /.vitepress/theme/pantoken.css
+2:32:05 PM [vitepress] (client) hmr update /.vitepress/theme/pantoken.css
+2:32:05 PM [vitepress] (client) hmr update /.vitepress/theme/pantoken.css
+2:32:05 PM [vitepress] (client) hmr update /.vitepress/theme/pantoken.css
+2:32:05 PM [vitepress] (client) hmr update /.vitepress/theme/pantoken.css
+2:32:05 PM [vitepress] (client) hmr update /.vitepress/theme/pantoken.css
+2:32:05 PM [vitepress] (client) hmr update /.vitepress/theme/pantoken.css
+2:32:05 PM [vitepress] (client) hmr update /.vitepress/theme/pantoken.css
+2:32:05 PM [vitepress] (client) hmr update /.vitepress/theme/pantoken.css
+2:32:05 PM [vitepress] (client) hmr update /.vitepress/theme/pantoken.css
+2:32:05 PM [vitepress] (client) hmr update /.vitepress/theme/pantoken.css
+2:32:05 PM [vitepress] (client) hmr update /.vitepress/theme/pantoken.css
+2:32:05 PM [vitepress] (client) hmr update /.vitepress/theme/pantoken.css
+2:32:05 PM [vitepress] (client) hmr update /.vitepress/theme/pantoken.css
+2:32:05 PM [vitepress] (client) hmr update /.vitepress/theme/pantoken.css
+2:32:05 PM [vitepress] (client) hmr update /.vitepress/theme/pantoken.css
+2:32:05 PM [vitepress] (client) hmr update /.vitepress/theme/pantoken.css
+2:32:10 PM [vitepress] 
+[orchestrator] @pantoken/docs#site-themes — building…
+2:32:10 PM [vitepress] (client) page reload /Users/dwahl/Scripts/pantoken/formats/tokens/dist/index.mjs
+✓ site-themes: wrote site-themes.css (3 themes, 2015kb)
+2:32:12 PM [vitepress] (client) hmr update /.vitepress/theme/generated/site-themes.css
+2:32:12 PM [vitepress] (client) page reload .vitepress/theme/generated/custom-color-curve.json
+2:32:12 PM [vitepress] [orchestrator] @pantoken/docs#site-themes — done.
+2:32:13 PM [vitepress] [orchestrator] @pantoken/docs#docs:api:css — done.
+2:32:13 PM [vitepress] 
+[orchestrator] @pantoken/docs#docs:api:css — building…
+2:32:15 PM [vitepress] (client) page reload /Users/dwahl/Scripts/pantoken/plugins/pantoken/custom-theme-colors/dist/scale.mjs
+2:32:15 PM [vitepress] (client) page reload /Users/dwahl/Scripts/pantoken/plugins/pantoken/custom-theme-colors/dist/scale.mjs
+2:32:15 PM [vitepress] (client) page reload /Users/dwahl/Scripts/pantoken/plugins/pantoken/custom-theme-colors/dist/scale.mjs
+✓ CSS API: wrote 110 record page(s) to api/css/ + merged the CSS section into the TypeDoc sidebar
+2:32:21 PM [vitepress] (client) page reload /Users/dwahl/Scripts/pantoken/formats/icons/dist/index.mjs
+2:32:22 PM [vitepress] [orchestrator] @pantoken/docs#docs:api:css — done.
+2:32:29 PM [vitepress] (client) hmr update /@fs/Users/dwahl/Scripts/pantoken/formats/components/generated/icons.css
+2:32:29 PM [vitepress] (client) hmr update /@fs/Users/dwahl/Scripts/pantoken/formats/components/generated/icons.css
+2:32:29 PM [vitepress] (client) hmr update /@fs/Users/dwahl/Scripts/pantoken/formats/components/generated/utilities.css
+2:32:29 PM [vitepress] (client) hmr update /@fs/Users/dwahl/Scripts/pantoken/formats/components/generated/icons.css
+2:32:29 PM [vitepress] (client) hmr update /@fs/Users/dwahl/Scripts/pantoken/formats/components/generated/utilities.css
+2:32:30 PM [vitepress] (client) hmr update /@fs/Users/dwahl/Scripts/pantoken/formats/components/dist/fonts.css
+2:32:30 PM [vitepress] (client) page reload /Users/dwahl/Scripts/pantoken/formats/components/dist/index.mjs
+2:32:31 PM [vitepress] (client) page reload /Users/dwahl/Scripts/pantoken/formats/components/dist/index.mjs
+2:32:31 PM [vitepress] (client) page reload /Users/dwahl/Scripts/pantoken/formats/components/dist/index.mjs
+2:32:31 PM [vitepress] (client) hmr update /@fs/Users/dwahl/Scripts/pantoken/formats/components/dist/fonts.css
+2:32:31 PM [vitepress] (client) hmr update /@fs/Users/dwahl/Scripts/pantoken/formats/components/dist/fonts.css
+2:32:33 PM [vitepress] (client) hmr update /@fs/Users/dwahl/Scripts/pantoken/renderers/vitepress/dist/custom.css
+2:32:33 PM [vitepress] (client) hmr update /@fs/Users/dwahl/Scripts/pantoken/renderers/vitepress/dist/components.css
+2:32:36 PM [vitepress] (client) hmr update /@fs/Users/dwahl/Scripts/pantoken/renderers/vitepress/dist/components.css
+2:32:36 PM [vitepress] (client) hmr update /@fs/Users/dwahl/Scripts/pantoken/renderers/vitepress/dist/components.css
+2:32:36 PM [vitepress] (client) hmr update /@fs/Users/dwahl/Scripts/pantoken/renderers/vitepress/dist/custom.css
+2:32:36 PM [vitepress] (client) hmr update /@fs/Users/dwahl/Scripts/pantoken/renderers/vitepress/dist/custom.css
+2:32:37 PM [vitepress] (client) hmr update /@fs/Users/dwahl/Scripts/pantoken/renderers/vitepress/dist/custom.css
+2:32:44 PM [vitepress] (client) hmr update /@fs/Users/dwahl/Scripts/pantoken/plugins/pantoken/custom-components/generated/custom-components.css
+2:32:44 PM [vitepress] (client) hmr update /@fs/Users/dwahl/Scripts/pantoken/plugins/pantoken/custom-components/generated/custom-components.css
+2:32:44 PM [vitepress] (client) hmr update /@fs/Users/dwahl/Scripts/pantoken/plugins/pantoken/custom-components/generated/custom-components.css
+2:33:00 PM [vitepress] (client) hmr update /.vitepress/theme/components/AgentToolsPage.vue
+2:33:14 PM [vitepress] (client) hmr update /.vitepress/theme/generated/site-themes.css
+2:33:14 PM [vitepress] (client) page reload .vitepress/theme/generated/custom-color-curve.json
