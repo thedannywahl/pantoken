@@ -7,7 +7,7 @@
 [![fallow health](https://raw.githubusercontent.com/thedannywahl/pantoken/badges/fallow-badge.svg)](https://docs.fallow.tools/integrations/badges)
 [![OpenSSF Scorecard](https://api.securityscorecards.dev/projects/github.com/thedannywahl/pantoken/badge)](https://securityscorecards.dev/viewer/?uri=github.com/thedannywahl/pantoken)
 [![OpenSSF Best Practices](https://www.bestpractices.dev/projects/13875/badge)](https://www.bestpractices.dev/projects/13875)
-[![Entire](https://raw.githubusercontent.com/thedannywahl/pantoken/badges/entire-badge.svg)](https://entire.io/gh/thedannywahl/pantoken)
+[![Entire](https://raw.githubusercontent.com/thedannywahl/pantoken/badges/entire-badge.svg)](https://entire.io/gh/thedannywahl/pantoken) [![automatica11y badge](https://img.shields.io/badge/automatica11y-E665B4?logo=data:image/svg%2Bxml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0Ij48ZyBmaWxsPSJub25lIiBzdHJva2U9IndoaXRlIiBzdHJva2Utd2lkdGg9IjIiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCI%2BPGNpcmNsZSBjeD0iMTIiIGN5PSIxMiIgcj0iMTAiLz48cGF0aCBkPSJtNy41NyA5LjU2IDQuNDggMS40OSA0LjQ3LTEuNDlNMTIuMDUgMTEuMDV2Mi45OW0tMi4yNCA0LjQ4IDIuMjQtNC40OCAyLjIzIDQuNDgiLz48L2c%2BPGNpcmNsZSBjeD0iMTIiIGN5PSI2LjQ4NSIgcj0iMiIgZmlsbD0id2hpdGUiLz48L3N2Zz4%3D)](https://automatica11y.dev)
 
 ![Pantoken: Instructure design tokens and icons, reshaped for every platform.](https://pantoken.app/og.png)
 
