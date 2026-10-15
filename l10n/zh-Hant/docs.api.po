@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: pantoken\n"
-"PO-Revision-Date: 2026-10-12 19:24+0000\n"
+"PO-Revision-Date: 2026-10-14 23:15+0000\n"
 "Last-Translator: pantoken localization engine\n"
 "Language-Team: pantoken\n"
 "MIME-Version: 1.0\n"
@@ -319,7 +319,7 @@ msgid "[toPandaPreset](functions/toPandaPreset.md) converts any IR; [pantokenPre
 msgstr "[toPandaPreset](functions/toPandaPreset.md) 將任何 IR 轉換；[pantokenPreset](variables/pantokenPreset.md) 是現成的 `rebrand` 預設。\n將它展開到你的 `panda.config.ts` `presets` 中，且 `_dark` 條件會自動追蹤 pantoken 的\n`light-dark()` 代幣。"
 
 #: bundlers/panda/src/index.md
-#, no-c-format
+#, no-c-format, pantoken-verbatim
 msgctxt "docs.api:prose"
 msgid "**panda.config.ts**"
 msgstr "**panda.config.ts**"
@@ -629,7 +629,7 @@ msgid "Action"
 msgstr "操作"
 
 #: css/agent-shell.md
-#, no-c-format
+#, no-c-format, pantoken-verbatim
 msgctxt "docs.api:prose"
 msgid "- https://www.figma.com/design/EmUrCpRWxboBTWEokGiBKP/Agent-Platform?node-id=1045-60738"
 msgstr "- https://www.figma.com/design/EmUrCpRWxboBTWEokGiBKP/Agent-Platform?node-id=1045-60738"
@@ -641,7 +641,7 @@ msgid "`.--background-ai-horizontal` — AI-accent gradient helpers intended for
 msgstr "`.--background-ai-horizontal` — 用於自訂表面（非共享 InstUI 合約）的 AI 強調漸層輔助工具。"
 
 #: css/ai-gradient.md
-#, fuzzy, no-c-format
+#, fuzzy, no-c-format, pantoken-verbatim
 msgctxt "docs.api:prose"
 msgid "**Source:** [index.ts](https://github.com/thedannywahl/pantoken/blob/main/formats/components/src/utilities/ai-gradient/index.ts)"
 msgstr "**Source:** [index.ts](https://github.com/thedannywahl/pantoken/blob/main/formats/components/src/utilities/ai-gradient/index.ts)"
@@ -677,7 +677,7 @@ msgid "Floating is the default, with an elevated coloured surface and on-colour 
 msgstr "預設為浮動（Floating），具有帶色澤的提升表面和同色系操作。`-inline` 使用淡色表面、無陰影、狀態色圖示、標準關閉按鈕、主要操作與第三等級的次要操作。單一直接操作按鈕會在未換行的文字後方成列；將兩個操作包在 `.button-group` 中，會先成為次要然後主要。任一按鈕修飾器會使此自動樣式分配失效。直接的關閉按鈕預設為 small；加入尺寸修飾器以覆寫。"
 
 #: css/alert.md
-#, no-c-format
+#, no-c-format, pantoken-verbatim
 msgctxt "docs.api:prose"
 msgid "**Source:** [alert.css](https://github.com/thedannywahl/pantoken/blob/main/formats/components/src/components/alert/alert.css)"
 msgstr "**Source:** [alert.css](https://github.com/thedannywahl/pantoken/blob/main/formats/components/src/components/alert/alert.css)"
@@ -858,7 +858,7 @@ msgid "By default the palette colour tints the initials on a transparent surface
 msgstr "預設情況下，調色盤顏色會為透明背景上的縮寫上色；`-has-inverse-color` 會以該顏色填滿背景，並將縮寫置於同色上。`-color-ai` 變體則恆定以紫色→海色漸層填滿。若要顯示完整名稱，請將其放在內容中（以保留於無障礙樹中），並為緊湊視覺加上 `data-initials=\"XX\"` —— 真正會被螢幕閱讀器朗讀的是完整文字。若沒有 `data-initials`，溢出的內容會直接硬性裁切（不會顯示省略號）；如需精確以單一首字母裁切，將其包在 `.name`，或拆成 `.first-name`/`.last-name` 以呈現兩個被裁切的字母（任一半可省略，另一半仍會置中）。"
 
 #: css/avatar.md
-#, no-c-format
+#, no-c-format, pantoken-verbatim
 msgctxt "docs.api:prose"
 msgid "**Source:** [avatar.css](https://github.com/thedannywahl/pantoken/blob/main/formats/components/src/components/avatar/avatar.css)"
 msgstr "**Source:** [avatar.css](https://github.com/thedannywahl/pantoken/blob/main/formats/components/src/components/avatar/avatar.css)"
@@ -877,13 +877,13 @@ msgid "Give an image avatar a meaningful `alt` (the person's name), not a generi
 msgstr "為影像頭像提供有意義的 `alt`（該人的姓名），而不是通用的 \"avatar\"；對於只有姓名縮寫的頭像，應優先使用真實姓名內容（純文字、data-initials、.name 或 .first-name/.last-name），而不是預先縮寫的字母，讓輔助技術能讀出真實姓名。"
 
 #: css/avatar.md
-#, no-c-format
+#, no-c-format, pantoken-verbatim
 msgctxt "docs.api:prose"
 msgid "LH"
 msgstr "LH"
 
 #: css/avatar.md
-#, no-c-format
+#, no-c-format, pantoken-verbatim
 msgctxt "docs.api:prose"
 msgid "AI"
 msgstr "AI"
@@ -1095,7 +1095,7 @@ msgid "Optional (pairs with .first-name): wraps the family name, clipped to its 
 msgstr "可選（與 .first-name 搭配）：將姓氏包裹，並截斷為首字母。"
 
 #: css/avatar.md
-#, no-c-format
+#, no-c-format, pantoken-verbatim
 msgctxt "docs.api:prose"
 msgid "Optional: wrap the full name to clip it to a single leading letter without data-initials or JS."
 msgstr "Optional: wrap the full name to clip it to a single leading letter without data-initials or JS."
@@ -1119,7 +1119,7 @@ msgid "To place a badge over a target, wrap both in a `.instui-badge-wrapper` (t
 msgstr "要將徽章置於目標之上，將兩者包在 `.instui-badge-wrapper`（定位錨）中，並使用 `-placement-*` 修飾器固定徽章。"
 
 #: css/badge.md
-#, no-c-format
+#, no-c-format, pantoken-verbatim
 msgctxt "docs.api:prose"
 msgid "**Source:** [badge.css](https://github.com/thedannywahl/pantoken/blob/main/formats/components/src/components/badge/badge.css)"
 msgstr "**Source:** [badge.css](https://github.com/thedannywahl/pantoken/blob/main/formats/components/src/components/badge/badge.css)"
@@ -1143,7 +1143,7 @@ msgid "An attention/error count."
 msgstr "注意/錯誤計數。"
 
 #: css/badge.md
-#, no-c-format
+#, no-c-format, pantoken-verbatim
 msgctxt "docs.api:prose"
 msgid "On-dark: a light chip with dark text."
 msgstr "On-dark: a light chip with dark text."
@@ -1257,7 +1257,7 @@ msgid "Add `role=\"status\"` (or `role=\"alert\"` for urgent messages) so assist
 msgstr "加入 `role=\"status\"`（或針對緊急訊息使用 `role=\"alert\"`），以便輔助技術宣告該橫幅；將裝飾性圖示標記為 `aria-hidden=\"true\"`，並為關閉按鈕提供 `aria-label`。"
 
 #: css/banner.md css/breakpoints.md css/card.md
-#, no-c-format
+#, no-c-format, pantoken-verbatim
 msgctxt "docs.api:prose"
 msgid "@import \"@pantoken/plugin-custom-components/custom-components.css\";"
 msgstr "@import \"@pantoken/plugin-custom-components/custom-components.css\";"
@@ -1335,7 +1335,7 @@ msgid "`*` — The opt-in global reset: `box-sizing`, the page surface, base tex
 msgstr "`*` — 選擇性全域重置：`box-sizing`、頁面表面、基礎文字顏色與字型、`color-scheme`，以及連結預設值。"
 
 #: css/base.md
-#, no-c-format
+#, no-c-format, pantoken-verbatim
 msgctxt "docs.api:prose"
 msgid "**Source:** [base.css](https://github.com/thedannywahl/pantoken/blob/main/formats/components/src/rules/base/base.css)"
 msgstr "**Source:** [base.css](https://github.com/thedannywahl/pantoken/blob/main/formats/components/src/rules/base/base.css)"
@@ -1371,7 +1371,7 @@ msgid "The `.hero`/`.heading`/`.message` parts are composed by the consumer's ma
 msgstr "`.hero`/`.heading`/`.message` 的部分由使用者的標記 (markup) 組成，並非強制結構；`-clickable` 只加入懸停樣式，因此真正的點擊目標仍需 `tabindex` 與鍵盤處理器。"
 
 #: css/billboard.md
-#, no-c-format
+#, no-c-format, pantoken-verbatim
 msgctxt "docs.api:prose"
 msgid "**Source:** [billboard.css](https://github.com/thedannywahl/pantoken/blob/main/formats/components/src/components/billboard/billboard.css)"
 msgstr "**Source:** [billboard.css](https://github.com/thedannywahl/pantoken/blob/main/formats/components/src/components/billboard/billboard.css)"
@@ -1407,7 +1407,7 @@ msgid "Long-form alias of {@link -size-lg}."
 msgstr "為 {@link -size-lg} 的長格式別名。"
 
 #: css/billboard.md
-#, no-c-format
+#, no-c-format, pantoken-verbatim
 msgctxt "docs.api:prose"
 msgid "Large: roomier spacing with larger heading, message, and hero icon."
 msgstr "Large: roomier spacing with larger heading, message, and hero icon."
@@ -1425,7 +1425,7 @@ msgid "Long-form alias of {@link -size-md}."
 msgstr "為 {@link -size-md} 的長格式別名。"
 
 #: css/billboard.md
-#, no-c-format
+#, no-c-format, pantoken-verbatim
 msgctxt "docs.api:prose"
 msgid "Small: tighter spacing with smaller heading, message, and hero icon."
 msgstr "Small: tighter spacing with smaller heading, message, and hero icon."
@@ -1527,7 +1527,7 @@ msgid "Automatically collapses to a back arrow on small screens. Use `breadcrumb
 msgstr "在小螢幕上會自動摺疊為返回箭頭。對每個麵包屑使用 `breadcrumb.link`。"
 
 #: css/breadcrumb.md
-#, no-c-format
+#, no-c-format, pantoken-verbatim
 msgctxt "docs.api:prose"
 msgid "**Source:** [breadcrumb.css](https://github.com/thedannywahl/pantoken/blob/main/formats/components/src/components/breadcrumb/breadcrumb.css)"
 msgstr "**Source:** [breadcrumb.css](https://github.com/thedannywahl/pantoken/blob/main/formats/components/src/components/breadcrumb/breadcrumb.css)"
@@ -1791,7 +1791,7 @@ msgid "The AI variants layer two gradients — a padding-box fill and a border-b
 msgstr "AI 變體為其框架圖層套用兩道漸層——一個 padding-box 填色和一個 border-box 描邊；而 `-color-ai-secondary` 無法同時繪製漸層文字與填色，故其預設中心保持透明，僅在懸停或按下時填滿。`-without-background` 在懸停與按下時產生低不透明度、略微變暗的品牌洗色，而非使用原始的懸停背景代幣（那樣會造成同色背景上同色文字不可見）。此外會設置自身的圖示/標籤 `gap` 與水平 `padding`；串接 `-gap-*`/`-p-*`/`-padding-*` 的間距工具修飾詞會覆寫這些內建值。可選的 `.instui-button-group` 包裝器對應 Figma 的 `.buttonGroup` 並管理相鄰按鈕的間距。"
 
 #: css/button.md
-#, no-c-format
+#, no-c-format, pantoken-verbatim
 msgctxt "docs.api:prose"
 msgid "**Source:** [button.css](https://github.com/thedannywahl/pantoken/blob/main/formats/components/src/components/button/button.css)"
 msgstr "**Source:** [button.css](https://github.com/thedannywahl/pantoken/blob/main/formats/components/src/components/button/button.css)"
@@ -1953,7 +1953,7 @@ msgid "Sets its own `gap` between the figure and the text block; chaining a `-ga
 msgstr "在圖片與文字區塊之間設定其自身的 `gap`；串接 `-gap-*` 的間距實用修飾符會覆蓋該內建值。"
 
 #: css/byline.md
-#, no-c-format
+#, no-c-format, pantoken-verbatim
 msgctxt "docs.api:prose"
 msgid "**Source:** [byline.css](https://github.com/thedannywahl/pantoken/blob/main/formats/components/src/components/byline/byline.css)"
 msgstr "**Source:** [byline.css](https://github.com/thedannywahl/pantoken/blob/main/formats/components/src/components/byline/byline.css)"
@@ -2049,7 +2049,7 @@ msgid "See the `calendar.day` member for the individual day cells."
 msgstr "有關單獨的日期儲存格，請參見 `calendar.day` 成員。"
 
 #: css/calendar.md
-#, no-c-format
+#, no-c-format, pantoken-verbatim
 msgctxt "docs.api:prose"
 msgid "**Source:** [calendar.css](https://github.com/thedannywahl/pantoken/blob/main/formats/components/src/components/calendar/calendar.css)"
 msgstr "**Source:** [calendar.css](https://github.com/thedannywahl/pantoken/blob/main/formats/components/src/components/calendar/calendar.css)"
@@ -2265,7 +2265,7 @@ msgid "Set `el.indeterminate = true` in JavaScript to show the mixed-state dash;
 msgstr "在 JavaScript 中設置 `el.indeterminate = true` 可顯示不確定狀態的短橫；已勾選的勾號會根據填充自動調整對比—深色填充為白色，淺色填充為近黑色。它也會在控制項與其標籤之間設定預設的 `gap`；鏈接一個 `-gap-*` 間距實用程式修飾子可覆蓋該內建值。"
 
 #: css/checkbox.md
-#, no-c-format
+#, no-c-format, pantoken-verbatim
 msgctxt "docs.api:prose"
 msgid "**Source:** [checkbox.css](https://github.com/thedannywahl/pantoken/blob/main/formats/components/src/components/checkbox/checkbox.css)"
 msgstr "**Source:** [checkbox.css](https://github.com/thedannywahl/pantoken/blob/main/formats/components/src/components/checkbox/checkbox.css)"
@@ -2405,7 +2405,7 @@ msgid "Always renders as an icon-only control with no visible label, so an `aria
 msgstr "始終以僅圖示的控制項呈現，沒有可見標籤，因此必須提供 `aria-label`，不可選；可與 `button` 的 `-without-background` 「ghost」變體比較，該變體保留文字標籤。"
 
 #: css/close-button.md
-#, no-c-format
+#, no-c-format, pantoken-verbatim
 msgctxt "docs.api:prose"
 msgid "**Source:** [close-button.css](https://github.com/thedannywahl/pantoken/blob/main/formats/components/src/components/close-button/close-button.css)"
 msgstr "**Source:** [close-button.css](https://github.com/thedannywahl/pantoken/blob/main/formats/components/src/components/close-button/close-button.css)"
@@ -2441,7 +2441,7 @@ msgid "`.--text-danger` — Semantic colour utilities: `.--bg-<name>`, `.--text-
 msgstr "`.--text-danger` — 語義色彩工具：`.--bg-<name>`、`.--text-<name>`（別名為 `.--color-<name>`）以及 `.--border-<name>`，用於精選語義調色盤。這些每一項也都有組件附加的別名修飾符（例如在任一 `.instui-<component>` 上使用 `-bg-danger`）。"
 
 #: css/color.md
-#, no-c-format
+#, no-c-format, pantoken-verbatim
 msgctxt "docs.api:prose"
 msgid "**Source:** [generate.ts](https://github.com/thedannywahl/pantoken/blob/main/formats/components/scripts/generate.ts)"
 msgstr "**Source:** [generate.ts](https://github.com/thedannywahl/pantoken/blob/main/formats/components/scripts/generate.ts)"
@@ -2495,7 +2495,7 @@ msgid "The caret is two stacked `::before`/`::after` triangles (border then fill
 msgstr "尖角由兩個堆疊的 `::before`/`::after` 三角形（先邊框再填充）構成，能在匹配的表面上正確顯示；作為 `[popover]` 時需要與 `popover` 相同的 open/`popovertarget` 配線，但與 `tooltip` 不同，會在外部點擊或按 Escape 時關閉。"
 
 #: css/context-view.md
-#, no-c-format
+#, no-c-format, pantoken-verbatim
 msgctxt "docs.api:prose"
 msgid "**Source:** [context-view.css](https://github.com/thedannywahl/pantoken/blob/main/formats/components/src/components/context-view/context-view.css)"
 msgstr "**Source:** [context-view.css](https://github.com/thedannywahl/pantoken/blob/main/formats/components/src/components/context-view/context-view.css)"
@@ -2567,55 +2567,55 @@ msgid "`.--cursor-pointer` — `cursor` as a composable, global class — `.--cu
 msgstr "`.--cursor-pointer` — 將 `cursor` 作為可組合的全域類別 — `.--cursor-<value>` — 可單獨使用或串接至任何組件（`.instui-button.--cursor-pointer`）。"
 
 #: css/cursor.md
-#, no-c-format
+#, no-c-format, pantoken-verbatim
 msgctxt "docs.api:prose"
 msgid "**Source:** [index.ts](https://github.com/thedannywahl/pantoken/blob/main/formats/components/src/utilities/cursor/index.ts)"
 msgstr "**Source:** [index.ts](https://github.com/thedannywahl/pantoken/blob/main/formats/components/src/utilities/cursor/index.ts)"
 
 #: css/cursor.md css/view.md
-#, no-c-format
+#, no-c-format, pantoken-verbatim
 msgctxt "docs.api:prose"
 msgid "cursor: auto."
 msgstr "cursor: auto."
 
 #: css/cursor.md css/view.md
-#, no-c-format
+#, no-c-format, pantoken-verbatim
 msgctxt "docs.api:prose"
 msgid "cursor: default."
 msgstr "cursor: default."
 
 #: css/cursor.md css/view.md
-#, no-c-format
+#, no-c-format, pantoken-verbatim
 msgctxt "docs.api:prose"
 msgid "cursor: grab."
 msgstr "cursor: grab."
 
 #: css/cursor.md css/view.md
-#, no-c-format
+#, no-c-format, pantoken-verbatim
 msgctxt "docs.api:prose"
 msgid "cursor: move."
 msgstr "cursor: move."
 
 #: css/cursor.md css/view.md
-#, no-c-format
+#, no-c-format, pantoken-verbatim
 msgctxt "docs.api:prose"
 msgid "cursor: not-allowed."
 msgstr "cursor: not-allowed."
 
 #: css/cursor.md css/view.md
-#, no-c-format
+#, no-c-format, pantoken-verbatim
 msgctxt "docs.api:prose"
 msgid "cursor: pointer."
 msgstr "cursor: pointer."
 
 #: css/cursor.md css/view.md
-#, no-c-format
+#, no-c-format, pantoken-verbatim
 msgctxt "docs.api:prose"
 msgid "cursor: text."
 msgstr "cursor: text."
 
 #: css/cursor.md css/view.md
-#, no-c-format
+#, no-c-format, pantoken-verbatim
 msgctxt "docs.api:prose"
 msgid "cursor: wait."
 msgstr "cursor: wait."
@@ -2663,7 +2663,7 @@ msgid "`-placement-end` and the default (start) both use `flex-direction`/`inset
 msgstr "`-placement-end` 與預設（start）都使用 `flex-direction`/`inset-inline-*` 邏輯屬性，而非 `left`/`right`，因此抽屜的側邊會自動遵循 `direction`/`dir=\"rtl\"` — 不需要額外的 RTL 規則。"
 
 #: css/drawer-layout.md
-#, no-c-format
+#, no-c-format, pantoken-verbatim
 msgctxt "docs.api:prose"
 msgid "**Source:** [drawer-layout.css](https://github.com/thedannywahl/pantoken/blob/main/formats/components/src/components/drawer-layout/drawer-layout.css)"
 msgstr "**Source:** [drawer-layout.css](https://github.com/thedannywahl/pantoken/blob/main/formats/components/src/components/drawer-layout/drawer-layout.css)"
@@ -2796,7 +2796,7 @@ msgid "The `-hover`/`-accepted`/`-rejected` classes are purely visual — actual
 msgstr "這些 `-hover`/`-accepted`/`-rejected` 類別僅為視覺呈現 — 真正的拖放偵測與檔案驗證需由消費者的 JS 在包裹的原生輸入周圍接上實作。"
 
 #: css/file-drop.md
-#, no-c-format
+#, no-c-format, pantoken-verbatim
 msgctxt "docs.api:prose"
 msgid "**Source:** [file-drop.css](https://github.com/thedannywahl/pantoken/blob/main/formats/components/src/components/file-drop/file-drop.css)"
 msgstr "**Source:** [file-drop.css](https://github.com/thedannywahl/pantoken/blob/main/formats/components/src/components/file-drop/file-drop.css)"
@@ -2862,7 +2862,7 @@ msgid "Sets its own `gap` between fields, tunable with the `-col-spacing-*`/`-ro
 msgstr "在欄位間設定其自身的 `gap`，可透過下方的 `-col-spacing-*`/`-row-spacing-*` 修飾子調整 — 優先使用它們，而非串接通用的 `-gap-*` 間距工具修飾子，因為後者會直接覆寫內建值。"
 
 #: css/form-field-group.md
-#, no-c-format
+#, no-c-format, pantoken-verbatim
 msgctxt "docs.api:prose"
 msgid "**Source:** [form-field-group.css](https://github.com/thedannywahl/pantoken/blob/main/formats/components/src/components/form-field-group/form-field-group.css)"
 msgstr "**Source:** [form-field-group.css](https://github.com/thedannywahl/pantoken/blob/main/formats/components/src/components/form-field-group/form-field-group.css)"
@@ -2904,19 +2904,19 @@ msgid "State"
 msgstr "州"
 
 #: css/form-field-group.md
-#, no-c-format
+#, no-c-format, pantoken-verbatim
 msgctxt "docs.api:prose"
 msgid "CA"
 msgstr "CA"
 
 #: css/form-field-group.md
-#, no-c-format
+#, no-c-format, pantoken-verbatim
 msgctxt "docs.api:prose"
 msgid "NY"
 msgstr "NY"
 
 #: css/form-field-group.md
-#, no-c-format
+#, no-c-format, pantoken-verbatim
 msgctxt "docs.api:prose"
 msgid "TX"
 msgstr "TX"
@@ -3048,7 +3048,7 @@ msgid "Sets its own `gap` between stacked messages; chaining a `-gap-*` spacing 
 msgstr "在堆疊訊息之間設定其自身的 `gap`；串接 `-gap-*` 間距工具修飾子會覆蓋該內建值。"
 
 #: css/form-field-messages.md
-#, no-c-format
+#, no-c-format, pantoken-verbatim
 msgctxt "docs.api:prose"
 msgid "**Source:** [form-field-messages.css](https://github.com/thedannywahl/pantoken/blob/main/formats/components/src/components/form-field-messages/form-field-messages.css)"
 msgstr "**Source:** [form-field-messages.css](https://github.com/thedannywahl/pantoken/blob/main/formats/components/src/components/form-field-messages/form-field-messages.css)"
@@ -3102,7 +3102,7 @@ msgid "An error message stays hidden until the field's control is `:user-invalid
 msgstr "錯誤訊息會隱藏，直到欄位的控制項為 `:user-invalid`（使用者互動後）或你加入 `-invalid` 類別。使用 `-layout-inline` 可將標籤置於控制項旁，使用 `-layout-stacked` 可將標籤置於上方。此元件也會在標籤、控制項與訊息之間設定自己的 `gap`；串接 `-gap-*` 間距工具修飾器會覆寫該內建值。"
 
 #: css/form-field.md
-#, no-c-format
+#, no-c-format, pantoken-verbatim
 msgctxt "docs.api:prose"
 msgid "**Source:** [form-field.css](https://github.com/thedannywahl/pantoken/blob/main/formats/components/src/components/form-field/form-field.css)"
 msgstr "**Source:** [form-field.css](https://github.com/thedannywahl/pantoken/blob/main/formats/components/src/components/form-field/form-field.css)"
@@ -3192,7 +3192,7 @@ msgid "`.--gap-md` — Flex/grid `gap` utilities on the spacing scale, short (`-
 msgstr "`.--gap-md` — 在間距刻度上的 Flex/grid `gap` 工具，短寫（`--gap-sm`）或長寫（`--gap-small`）。可單獨使用或串接到任何元件（`.instui-view.--gap-sm`）— 已從組件專用 token 設定自己 `gap` 的元件可能會被覆寫。"
 
 #: css/gap.md
-#, no-c-format
+#, no-c-format, pantoken-verbatim
 msgctxt "docs.api:prose"
 msgid "**Source:** [index.ts](https://github.com/thedannywahl/pantoken/blob/main/formats/components/src/utilities/gap/index.ts)"
 msgstr "**Source:** [index.ts](https://github.com/thedannywahl/pantoken/blob/main/formats/components/src/utilities/gap/index.ts)"
@@ -3234,7 +3234,7 @@ msgid "The `-variant-*` presets override a `-level-*`'s font-size and font-weigh
 msgstr "`-variant-*` 預設會覆蓋 `-level-*` 的字體大小與字重，因此每個元素應僅結合來自同一字體家族的其中一種。"
 
 #: css/heading.md
-#, no-c-format
+#, no-c-format, pantoken-verbatim
 msgctxt "docs.api:prose"
 msgid "**Source:** [heading.css](https://github.com/thedannywahl/pantoken/blob/main/formats/components/src/components/heading/heading.css)"
 msgstr "**Source:** [heading.css](https://github.com/thedannywahl/pantoken/blob/main/formats/components/src/components/heading/heading.css)"
@@ -3450,7 +3450,7 @@ msgid "`.instui-icon` — The icon system: `.instui-icon` sizing plus the shared
 msgstr "`.instui-icon` — 圖示系統：`.instui-icon` 的尺寸設定，加上共用的 `-icon-<name>` 繪製器，會在任何元素之前於 `currentColor` 中遮罩字形。"
 
 #: css/icon.md
-#, no-c-format
+#, no-c-format, pantoken-verbatim
 msgctxt "docs.api:prose"
 msgid "**Source:** [icon.css](https://github.com/thedannywahl/pantoken/blob/main/formats/components/src/utilities/icon/icon.css)"
 msgstr "**Source:** [icon.css](https://github.com/thedannywahl/pantoken/blob/main/formats/components/src/utilities/icon/icon.css)"
@@ -3486,7 +3486,7 @@ msgid "Effects compose through the shared `--pantoken-img-filter` custom propert
 msgstr "效果透過共用的 `--pantoken-img-filter` 自訂屬性合成，因此 `-with-grayscale` 與 `-with-blur` 可以同時套用；而 `-constrain-*` 裁切修飾子則要求使用者明確為盒子指定大小。"
 
 #: css/img.md
-#, no-c-format
+#, no-c-format, pantoken-verbatim
 msgctxt "docs.api:prose"
 msgid "**Source:** [img.css](https://github.com/thedannywahl/pantoken/blob/main/formats/components/src/components/img/img.css)"
 msgstr "**Source:** [img.css](https://github.com/thedannywahl/pantoken/blob/main/formats/components/src/components/img/img.css)"
@@ -3546,7 +3546,7 @@ msgid "The input chrome only appears while focused; `-readonly` suppresses both 
 msgstr "輸入外觀僅在聚焦時顯示；`-readonly` 會抑制懸停與聚焦交互，讓該元素始終呈現為純內聯文字。"
 
 #: css/in-place-edit.md
-#, no-c-format
+#, no-c-format, pantoken-verbatim
 msgctxt "docs.api:prose"
 msgid "**Source:** [in-place-edit.css](https://github.com/thedannywahl/pantoken/blob/main/formats/components/src/components/in-place-edit/in-place-edit.css)"
 msgstr "**Source:** [in-place-edit.css](https://github.com/thedannywahl/pantoken/blob/main/formats/components/src/components/in-place-edit/in-place-edit.css)"
@@ -4224,7 +4224,7 @@ msgid "Wraps the same field chrome as `text-input` with icon slots either side o
 msgstr "包裝與 `text-input` 相同的欄位外觀，左右兩側都有圖示插槽；只有當群組內容否則會溢到第二行時才需要 `-should-not-wrap`。"
 
 #: css/input-group.md
-#, no-c-format
+#, no-c-format, pantoken-verbatim
 msgctxt "docs.api:prose"
 msgid "**Source:** [input-group.css](https://github.com/thedannywahl/pantoken/blob/main/formats/components/src/components/input-group/input-group.css)"
 msgstr "**Source:** [input-group.css](https://github.com/thedannywahl/pantoken/blob/main/formats/components/src/components/input-group/input-group.css)"
@@ -4280,7 +4280,7 @@ msgid "`.--display-flex` — Display and text-align utilities — `.--display-<v
 msgstr "`.--display-flex` — 顯示及文字對齊工具 — `.--display-<value>` 與 `.--text-align-<value>` — 作為可組合的全域類別，可單獨使用或串接於任何元件上。"
 
 #: css/layout.md
-#, no-c-format
+#, no-c-format, pantoken-verbatim
 msgctxt "docs.api:prose"
 msgid "**Source:** [index.ts](https://github.com/thedannywahl/pantoken/blob/main/formats/components/src/utilities/layout/index.ts)"
 msgstr "**Source:** [index.ts](https://github.com/thedannywahl/pantoken/blob/main/formats/components/src/utilities/layout/index.ts)"
@@ -4316,7 +4316,7 @@ msgid "Sets its own responsive `gap` between an icon and its text (`-size-sm`/`-
 msgstr "在圖示與文字之間設置其響應式的 `gap`（`-size-sm`/`-size-lg` 可調整其尺寸）；串接 `-gap-*` 的間距工具修飾符會覆寫該內建值。"
 
 #: css/link.md
-#, no-c-format
+#, no-c-format, pantoken-verbatim
 msgctxt "docs.api:prose"
 msgid "**Source:** [link.css](https://github.com/thedannywahl/pantoken/blob/main/formats/components/src/components/link/link.css)"
 msgstr "**Source:** [link.css](https://github.com/thedannywahl/pantoken/blob/main/formats/components/src/components/link/link.css)"
@@ -4418,7 +4418,7 @@ msgid "Sets its own `padding-inline-start` for list indentation; chaining a `-p*
 msgstr "為清單縮排設定其自身的 `padding-inline-start`；串接 `-p*`/`-padding*` 間距實用修改器會覆蓋該內建值。個別項目請參見 `list.item` 成員。"
 
 #: css/list.md
-#, no-c-format
+#, no-c-format, pantoken-verbatim
 msgctxt "docs.api:prose"
 msgid "**Source:** [list.css](https://github.com/thedannywahl/pantoken/blob/main/formats/components/src/components/list/list.css)"
 msgstr "**Source:** [list.css](https://github.com/thedannywahl/pantoken/blob/main/formats/components/src/components/list/list.css)"
@@ -4964,7 +4964,7 @@ msgid "`.instui-mask` — An in-flow overlay that fills its positioned parent an
 msgstr "`.instui-mask` — 一種流程內覆層，填滿其已定位的父容器並將內容置中 — 例如卡片上的載入指示器。對於模態視窗（modal），建議使用原生的 `<dialog>`（其 `::backdrop` 即為遮罩）。這些 modifier 每一個也都可全域使用（獨立或串接到其他元件）— 參見 `mask` 全域工具。"
 
 #: css/mask.md
-#, no-c-format
+#, no-c-format, pantoken-verbatim
 msgctxt "docs.api:prose"
 msgid "**Source:** [mask.css](https://github.com/thedannywahl/pantoken/blob/main/formats/components/src/components/mask/mask.css)"
 msgstr "**Source:** [mask.css](https://github.com/thedannywahl/pantoken/blob/main/formats/components/src/components/mask/mask.css)"
@@ -4988,7 +4988,7 @@ msgid "`.--mask-overlay` — A global, dual copy of the `mask` component's overl
 msgstr "`.--mask-overlay` — 全域的成對複製 `mask` 元件的 overlay 修飾子 — `--mask-overlay`, `--mask-fullscreen`, `--mask-blur` — 可直接使用或串接於任意元件上，無需包裹在 `.instui-mask` 元素中。"
 
 #: css/maskglobal.md
-#, no-c-format
+#, no-c-format, pantoken-verbatim
 msgctxt "docs.api:prose"
 msgid "**Source:** [index.ts](https://github.com/thedannywahl/pantoken/blob/main/formats/components/src/utilities/mask/index.ts)"
 msgstr "**Source:** [index.ts](https://github.com/thedannywahl/pantoken/blob/main/formats/components/src/utilities/mask/index.ts)"
@@ -5054,7 +5054,7 @@ msgid "Compose entries as `.item` (see the `menu.item` member), label a section 
 msgstr "以 `.item` 組成條目（參見 `menu.item` 成員）、用 `.group` 標記區段（參見 `menu.group`），並使用 `.separator` 將區段分隔（參見 `menu.separator`）。"
 
 #: css/menu.md
-#, no-c-format
+#, no-c-format, pantoken-verbatim
 msgctxt "docs.api:prose"
 msgid "**Source:** [group.css](https://github.com/thedannywahl/pantoken/blob/main/formats/components/src/components/menu/members/group/group.css)"
 msgstr "**Source:** [group.css](https://github.com/thedannywahl/pantoken/blob/main/formats/components/src/components/menu/members/group/group.css)"
@@ -5108,7 +5108,7 @@ msgid "Sets its own `gap` between the value and label, and its own horizontal `p
 msgstr "在數值與標籤之間設定其自己的 `gap`，並設定其自己的水平 `padding`；串接 `-gap-*`/`-p-*`/`-padding-*` 間距工具修飾符會覆蓋那些內建值。"
 
 #: css/metric.md
-#, no-c-format
+#, no-c-format, pantoken-verbatim
 msgctxt "docs.api:prose"
 msgid "**Source:** [metric.css](https://github.com/thedannywahl/pantoken/blob/main/formats/components/src/components/metric/metric.css)"
 msgstr "**Source:** [metric.css](https://github.com/thedannywahl/pantoken/blob/main/formats/components/src/components/metric/metric.css)"
@@ -5192,7 +5192,7 @@ msgid "See the `modal.header`, `modal.body`, and `modal.footer` members for the 
 msgstr "請參閱 `modal.header`、`modal.body` 與 `modal.footer` 成員以了解各個部分。"
 
 #: css/modal.md
-#, no-c-format
+#, no-c-format, pantoken-verbatim
 msgctxt "docs.api:prose"
 msgid "**Source:** [body.css](https://github.com/thedannywahl/pantoken/blob/main/formats/components/src/components/modal/members/body/body.css)"
 msgstr "**Source:** [body.css](https://github.com/thedannywahl/pantoken/blob/main/formats/components/src/components/modal/members/body/body.css)"
@@ -5312,7 +5312,7 @@ msgid "The `.arrows` buttons are `aria-hidden` and purely presentational — inc
 msgstr "`.arrows` 按鈕是 `aria-hidden`，僅作為展示用 — 點擊時增減值的行為由使用者的 JS 來連接實作。"
 
 #: css/number-input.md
-#, no-c-format
+#, no-c-format, pantoken-verbatim
 msgctxt "docs.api:prose"
 msgid "**Source:** [number-input.css](https://github.com/thedannywahl/pantoken/blob/main/formats/components/src/components/number-input/number-input.css)"
 msgstr "**Source:** [number-input.css](https://github.com/thedannywahl/pantoken/blob/main/formats/components/src/components/number-input/number-input.css)"
@@ -5368,67 +5368,67 @@ msgid "`.--overflow-x-hidden` — `overflow-x`/`overflow-y` as composable, globa
 msgstr "`.--overflow-x-hidden` — `overflow-x`/`overflow-y` 作為可組合的全域類別 — `.--overflow-x-<value>` / `.--overflow-y-<value>` — 可單獨使用或串接於任何元件。"
 
 #: css/overflow.md
-#, no-c-format
+#, no-c-format, pantoken-verbatim
 msgctxt "docs.api:prose"
 msgid "**Source:** [index.ts](https://github.com/thedannywahl/pantoken/blob/main/formats/components/src/utilities/overflow/index.ts)"
 msgstr "**Source:** [index.ts](https://github.com/thedannywahl/pantoken/blob/main/formats/components/src/utilities/overflow/index.ts)"
 
 #: css/overflow.md css/view.md
-#, no-c-format
+#, no-c-format, pantoken-verbatim
 msgctxt "docs.api:prose"
 msgid "overflow-x: auto."
 msgstr "overflow-x: auto."
 
 #: css/overflow.md css/view.md
-#, no-c-format
+#, no-c-format, pantoken-verbatim
 msgctxt "docs.api:prose"
 msgid "overflow-x: clip."
 msgstr "overflow-x: clip."
 
 #: css/overflow.md css/view.md
-#, no-c-format
+#, no-c-format, pantoken-verbatim
 msgctxt "docs.api:prose"
 msgid "overflow-x: hidden."
 msgstr "overflow-x: hidden."
 
 #: css/overflow.md css/view.md
-#, no-c-format
+#, no-c-format, pantoken-verbatim
 msgctxt "docs.api:prose"
 msgid "overflow-x: scroll."
 msgstr "overflow-x: scroll."
 
 #: css/overflow.md css/view.md
-#, no-c-format
+#, no-c-format, pantoken-verbatim
 msgctxt "docs.api:prose"
 msgid "overflow-x: visible."
 msgstr "overflow-x: visible."
 
 #: css/overflow.md css/view.md
-#, no-c-format
+#, no-c-format, pantoken-verbatim
 msgctxt "docs.api:prose"
 msgid "overflow-y: auto."
 msgstr "overflow-y: auto."
 
 #: css/overflow.md css/view.md
-#, no-c-format
+#, no-c-format, pantoken-verbatim
 msgctxt "docs.api:prose"
 msgid "overflow-y: clip."
 msgstr "overflow-y: clip."
 
 #: css/overflow.md css/view.md
-#, no-c-format
+#, no-c-format, pantoken-verbatim
 msgctxt "docs.api:prose"
 msgid "overflow-y: hidden."
 msgstr "overflow-y: hidden."
 
 #: css/overflow.md css/view.md
-#, no-c-format
+#, no-c-format, pantoken-verbatim
 msgctxt "docs.api:prose"
 msgid "overflow-y: scroll."
 msgstr "overflow-y: scroll."
 
 #: css/overflow.md css/view.md
-#, no-c-format
+#, no-c-format, pantoken-verbatim
 msgctxt "docs.api:prose"
 msgid "overflow-y: visible."
 msgstr "overflow-y: visible."
@@ -5506,7 +5506,7 @@ msgid "See the `pagination.page` member for the individual page controls."
 msgstr "個別分頁控制請參見 `pagination.page` 成員。"
 
 #: css/pagination.md
-#, no-c-format
+#, no-c-format, pantoken-verbatim
 msgctxt "docs.api:prose"
 msgid "**Source:** [page.css](https://github.com/thedannywahl/pantoken/blob/main/formats/components/src/components/pagination/members/page/page.css)"
 msgstr "**Source:** [page.css](https://github.com/thedannywahl/pantoken/blob/main/formats/components/src/components/pagination/members/page/page.css)"
@@ -5572,7 +5572,7 @@ msgid "Unlike `badge`, which shows a count, or `tag`, which is removable, the pi
 msgstr "與顯示數量的 `badge` 或可移除的 `tag` 不同，pill 是靜態的狀態標籤；其前導圖示為遮罩處理的 `::before`，而非 `<img>`。"
 
 #: css/pill.md
-#, no-c-format
+#, no-c-format, pantoken-verbatim
 msgctxt "docs.api:prose"
 msgid "**Source:** [pill.css](https://github.com/thedannywahl/pantoken/blob/main/formats/components/src/components/pill/pill.css)"
 msgstr "**Source:** [pill.css](https://github.com/thedannywahl/pantoken/blob/main/formats/components/src/components/pill/pill.css)"
@@ -5734,7 +5734,7 @@ msgid "Anchor positioning is Chromium-only; the `@supports` guard means `-placem
 msgstr "錨點定位僅限 Chromium；有了 `@supports` 的保護，`-placement-*` 在其他環境會靜默失效，且使用者代理會將快顯置於頂層並置中，而不是發生錯誤。"
 
 #: css/popover.md
-#, no-c-format
+#, no-c-format, pantoken-verbatim
 msgctxt "docs.api:prose"
 msgid "**Source:** [popover.css](https://github.com/thedannywahl/pantoken/blob/main/formats/components/src/components/popover/popover.css)"
 msgstr "**Source:** [popover.css](https://github.com/thedannywahl/pantoken/blob/main/formats/components/src/components/popover/popover.css)"
@@ -5776,37 +5776,37 @@ msgid "`.--position-relative` — `position` as a composable, global class — `
 msgstr "`.--position-relative` — 將 `position` 當作可組合的全域類別 — `.--position-<value>` — 可單獨使用或串接於任何元件 (`.instui-button.--position-relative`)。"
 
 #: css/position.md
-#, no-c-format
+#, no-c-format, pantoken-verbatim
 msgctxt "docs.api:prose"
 msgid "**Source:** [index.ts](https://github.com/thedannywahl/pantoken/blob/main/formats/components/src/utilities/position/index.ts)"
 msgstr "**Source:** [index.ts](https://github.com/thedannywahl/pantoken/blob/main/formats/components/src/utilities/position/index.ts)"
 
 #: css/position.md css/view.md
-#, no-c-format
+#, no-c-format, pantoken-verbatim
 msgctxt "docs.api:prose"
 msgid "position: absolute."
 msgstr "position: absolute."
 
 #: css/position.md css/view.md
-#, no-c-format
+#, no-c-format, pantoken-verbatim
 msgctxt "docs.api:prose"
 msgid "position: fixed."
 msgstr "position: fixed."
 
 #: css/position.md css/view.md
-#, no-c-format
+#, no-c-format, pantoken-verbatim
 msgctxt "docs.api:prose"
 msgid "position: relative."
 msgstr "position: relative."
 
 #: css/position.md css/view.md
-#, no-c-format
+#, no-c-format, pantoken-verbatim
 msgctxt "docs.api:prose"
 msgid "position: static."
 msgstr "position: static."
 
 #: css/position.md css/view.md
-#, no-c-format
+#, no-c-format, pantoken-verbatim
 msgctxt "docs.api:prose"
 msgid "position: sticky."
 msgstr "position: sticky."
@@ -5842,7 +5842,7 @@ msgid "The ring is a `conic-gradient` donut painted on `::before` and clipped wi
 msgstr "此環是一個繪製在 `::before` 上並以放射狀漸層遮罩裁切的 `conic-gradient` 甜甜圈；由 `--value` 除以 `--value-max` 決定弧度。加入 `-should-animate` 並載入互動入口以在掛載時從零開始動畫。InstUI 無不確定（indeterminate）狀態；`:indeterminate` 是 pantoken 的最佳猜測（原生 `<progress>` 沒有 `value` 屬性），以固定弧度旋轉環並隱藏 `.value`，因為沒有可顯示的實際數值。`<meter>` 沒有不確定狀態，因此不受影響。"
 
 #: css/progress-circle.md
-#, no-c-format
+#, no-c-format, pantoken-verbatim
 msgctxt "docs.api:prose"
 msgid "**Source:** [progress-circle.css](https://github.com/thedannywahl/pantoken/blob/main/formats/components/src/components/progress-circle/progress-circle.css)"
 msgstr "**Source:** [progress-circle.css](https://github.com/thedannywahl/pantoken/blob/main/formats/components/src/components/progress-circle/progress-circle.css)"
@@ -6016,7 +6016,7 @@ msgid "`.value` is a sibling of `.bar`, both children of the root — mirroring 
 msgstr "`.value` 與 `.bar` 為同級（皆為根節點的子項）——類似 progress-circle 如何在其內部嵌套自己的 `.value` 部分。InstUI 沒有不確定狀態；`:indeterminate` 是 pantoken 的推測實作（原生 `<progress>` 缺少 `value` 屬性），會將 `.bar` 動畫化為滑動區段並隱藏 `.value`，因為沒有可顯示的有意義數值。`<meter>` 沒有不確定狀態，因此不受影響。"
 
 #: css/progress.md
-#, no-c-format
+#, no-c-format, pantoken-verbatim
 msgctxt "docs.api:prose"
 msgid "**Source:** [progress.css](https://github.com/thedannywahl/pantoken/blob/main/formats/components/src/components/progress/progress.css)"
 msgstr "**Source:** [progress.css](https://github.com/thedannywahl/pantoken/blob/main/formats/components/src/components/progress/progress.css)"
@@ -6082,7 +6082,7 @@ msgid "`:where(body)` — Typographic defaults for raw HTML — headings, paragr
 msgstr "`:where(body)` — 原始 HTML 的排版預設 — 標題、段落、清單、連結與程式碼 — 在每處匯入時會自動套用（預設為 `:where(body)`）；若要改為針對不同的內容根目錄，請傳入 `options.scope`（例如 `.vp-doc`）。"
 
 #: css/prose.md
-#, no-c-format
+#, no-c-format, pantoken-verbatim
 msgctxt "docs.api:prose"
 msgid "**Source:** [index.ts](https://github.com/thedannywahl/pantoken/blob/main/formats/components/src/rules/prose/index.ts)"
 msgstr "**Source:** [index.ts](https://github.com/thedannywahl/pantoken/blob/main/formats/components/src/rules/prose/index.ts)"
@@ -6118,7 +6118,7 @@ msgid "Sets its own `gap` between radios; chaining a `-gap-*` spacing utility mo
 msgstr "在 radios 間設定其自身的 `gap`；串接 `-gap-*` 間距工具修飾符會覆蓋該內建值。"
 
 #: css/radio-input-group.md
-#, no-c-format
+#, no-c-format, pantoken-verbatim
 msgctxt "docs.api:prose"
 msgid "**Source:** [radio-input-group.css](https://github.com/thedannywahl/pantoken/blob/main/formats/components/src/components/radio-input-group/radio-input-group.css)"
 msgstr "**Source:** [radio-input-group.css](https://github.com/thedannywahl/pantoken/blob/main/formats/components/src/components/radio-input-group/radio-input-group.css)"
@@ -6190,7 +6190,7 @@ msgid "Sets its own `gap` between the control and its label; chaining a `-gap-*`
 msgstr "在控制項與其標籤之間設置自身的 `gap`；串接 `-gap-*` 間距工具修飾符會覆寫該內建值。"
 
 #: css/radio.md
-#, no-c-format
+#, no-c-format, pantoken-verbatim
 msgctxt "docs.api:prose"
 msgid "**Source:** [radio.css](https://github.com/thedannywahl/pantoken/blob/main/formats/components/src/components/radio/radio.css)"
 msgstr "**Source:** [radio.css](https://github.com/thedannywahl/pantoken/blob/main/formats/components/src/components/radio/radio.css)"
@@ -6268,7 +6268,7 @@ msgid "Each vendor thumb/track pseudo-element needs its own separate rule — gr
 msgstr "每個廠商的 thumb/track 偽元素需要各自的獨立規則 — 將它們放在同一個選擇器列表中，會在不識別其他廠商偽元素的瀏覽器中使整個規則失效。"
 
 #: css/range-input.md
-#, no-c-format
+#, no-c-format, pantoken-verbatim
 msgctxt "docs.api:prose"
 msgid "**Source:** [range-input.css](https://github.com/thedannywahl/pantoken/blob/main/formats/components/src/components/range-input/range-input.css)"
 msgstr "**Source:** [range-input.css](https://github.com/thedannywahl/pantoken/blob/main/formats/components/src/components/range-input/range-input.css)"
@@ -6304,7 +6304,7 @@ msgid "Sets its own `gap` between star glyphs; chaining a `-gap-*` spacing utili
 msgstr "在星形字元之間設定其自己的 `gap`；串接 `-gap-*` 間距工具類修飾符會覆寫該內建值。"
 
 #: css/rating.md
-#, no-c-format
+#, no-c-format, pantoken-verbatim
 msgctxt "docs.api:prose"
 msgid "**Source:** [rating.css](https://github.com/thedannywahl/pantoken/blob/main/formats/components/src/components/rating/rating.css)"
 msgstr "**Source:** [rating.css](https://github.com/thedannywahl/pantoken/blob/main/formats/components/src/components/rating/rating.css)"
@@ -6340,7 +6340,7 @@ msgid "`.instui-hidden-max-<bp>`/`-hidden-min-<bp>` hide by viewport width; `.in
 msgstr "`.instui-hidden-max-<bp>`/`-hidden-min-<bp>` 依視窗寬度隱藏；`.instui-show-max-<bp>`/`-show-min-<bp>` 則相反（預設隱藏，僅在範圍內透過 `display: revert` 顯示）；`-cq-` 變體改為對祖先的 `.instui-container` 寬度作出反應，而非視窗。刻度等級 `xs`/`sm`/`md`/`lg`/`xl`（來源於 IR 的 tray-width 元件 token）各別有一個長形式別名（`x-small`–`x-large`）和一個裝置名稱（`mobile`/`phablet`/`tablet`/`laptop`/`desktop`）— 兩者皆已不建議使用，改以短名稱為主 — 以及未縮放的主題化 `content`/`content-full-width` 等級（主要內容區的最大寬度）。"
 
 #: css/responsive.md
-#, no-c-format
+#, no-c-format, pantoken-verbatim
 msgctxt "docs.api:prose"
 msgid "**Source:** [index.ts](https://github.com/thedannywahl/pantoken/blob/main/formats/components/src/utilities/responsive/index.ts)"
 msgstr "**Source:** [index.ts](https://github.com/thedannywahl/pantoken/blob/main/formats/components/src/utilities/responsive/index.ts)"
@@ -6976,7 +6976,7 @@ msgid "`.instui-screen-reader-content` — Visually hides content while keeping 
 msgstr "`.instui-screen-reader-content` — 在視覺上隱藏內容，但仍保留供輔助技術使用（標準 clip 模式）。"
 
 #: css/screen-reader-content.md
-#, no-c-format
+#, no-c-format, pantoken-verbatim
 msgctxt "docs.api:prose"
 msgid "**Source:** [screen-reader-content.css](https://github.com/thedannywahl/pantoken/blob/main/formats/components/src/utilities/screen-reader-content/screen-reader-content.css)"
 msgstr "**Source:** [screen-reader-content.css](https://github.com/thedannywahl/pantoken/blob/main/formats/components/src/utilities/screen-reader-content/screen-reader-content.css)"
@@ -7036,7 +7036,7 @@ msgid "Sets its own `gap` between nav items and its own `padding`; chaining a `-
 msgstr "在導覽項目之間以及自身的 `padding` 之間設定其自己的 `gap`；串接 `-gap-*`/`-p-*`/`-padding-*` 的間距實用修飾子會覆寫那些內建值。個別導覽項目請參見 `side-nav-bar.item` 成員。"
 
 #: css/side-nav-bar.md
-#, no-c-format
+#, no-c-format, pantoken-verbatim
 msgctxt "docs.api:prose"
 msgid "**Source:** [item.css](https://github.com/thedannywahl/pantoken/blob/main/formats/components/src/components/side-nav-bar/members/item/item.css)"
 msgstr "**Source:** [item.css](https://github.com/thedannywahl/pantoken/blob/main/formats/components/src/components/side-nav-bar/members/item/item.css)"
@@ -7090,7 +7090,7 @@ msgid "Wraps a plain native `<select>` with no custom dropdown/menu markup, so b
 msgstr "包裝一個原生的 `<select>`（無自訂下拉/選單標記），因此瀏覽器原生的選項呈現與鍵盤行為保持不變；它與 `text-input` 共用欄位外觀（field chrome）。"
 
 #: css/simple-select.md
-#, no-c-format
+#, no-c-format, pantoken-verbatim
 msgctxt "docs.api:prose"
 msgid "**Source:** [select.css](https://github.com/thedannywahl/pantoken/blob/main/formats/components/src/components/select/select.css)"
 msgstr "**Source:** [select.css](https://github.com/thedannywahl/pantoken/blob/main/formats/components/src/components/select/select.css)"
@@ -7138,7 +7138,7 @@ msgid "`.--p-md` — Margin and padding utilities — `.--m<side>-<step>` / `.--
 msgstr "`.--p-md` — 邊距與內距工具 — 在間距刻度上使用 `.--m<side>-<step>` / `.--margin-<side>-<step>` 與 `.--p<side>-<step>` / `.--padding-<side>-<step>`（側邊：`t`/`b`/`s`/`e`/`x`/`y`，或不設，支援短寫或完整長寫拼法 — 例如 `--mb-sm` 與 `--margin-bottom-small` 為相同規則；邊距也接受 `auto`）。可直接使用或串接於任何元件（例如 `class=\"instui-view --mb-sm\"`）。"
 
 #: css/spacing.md
-#, no-c-format
+#, no-c-format, pantoken-verbatim
 msgctxt "docs.api:prose"
 msgid "**Source:** [index.ts](https://github.com/thedannywahl/pantoken/blob/main/formats/components/src/utilities/spacing/index.ts)"
 msgstr "**Source:** [index.ts](https://github.com/thedannywahl/pantoken/blob/main/formats/components/src/utilities/spacing/index.ts)"
@@ -7180,7 +7180,7 @@ msgid "`-color-inverse` only repaints the animated top border segment, not the w
 msgstr "`-color-inverse` 只會重繪動畫的頂部邊框片段，而不是整個軌道，因此在深色卡片上仍能正確顯示，無需單獨的軌道顏色。AI 變體會將環替換為置中的 `ai-spinner` 字形，同時保持相同的尺寸比例。"
 
 #: css/spinner.md
-#, no-c-format
+#, no-c-format, pantoken-verbatim
 msgctxt "docs.api:prose"
 msgid "**Source:** [spinner.css](https://github.com/thedannywahl/pantoken/blob/main/formats/components/src/components/spinner/spinner.css)"
 msgstr "**Source:** [spinner.css](https://github.com/thedannywahl/pantoken/blob/main/formats/components/src/components/spinner/spinner.css)"
@@ -7234,7 +7234,7 @@ msgid "`.--stack-topmost` — z-index depth utilities — `.--stack-<level>` (`d
 msgstr "`.--stack-topmost` — z-index 深度工具 — `.--stack-<level>`（`deepest`, `below`, `above`, `topmost`）— 可單獨使用或鏈接到任何元件，使圖層以可預測的方式堆疊，而非以手動微調的數值。"
 
 #: css/stacking.md
-#, no-c-format
+#, no-c-format, pantoken-verbatim
 msgctxt "docs.api:prose"
 msgid "**Source:** [index.ts](https://github.com/thedannywahl/pantoken/blob/main/formats/components/src/utilities/stacking/index.ts)"
 msgstr "**Source:** [index.ts](https://github.com/thedannywahl/pantoken/blob/main/formats/components/src/utilities/stacking/index.ts)"
@@ -7324,7 +7324,7 @@ msgid "For `-layout-stacked`, pure CSS can't pull each column header's text into
 msgstr "對於 `-layout-stacked`，純 CSS 無法將每個欄位標題的文字拉入其儲存格，因此需為每個儲存格提供 `data-label`，堆疊卡片則藉由 `::before` 顯示。個別部分請參見 `table.head`、`table.body`、`table.row`、`table.cell`、`table.col-header` 與 `table.row-header` 成員。"
 
 #: css/table.md
-#, no-c-format
+#, no-c-format, pantoken-verbatim
 msgctxt "docs.api:prose"
 msgid "**Source:** [body.css](https://github.com/thedannywahl/pantoken/blob/main/formats/components/src/components/table/members/body/body.css)"
 msgstr "**Source:** [body.css](https://github.com/thedannywahl/pantoken/blob/main/formats/components/src/components/table/members/body/body.css)"
@@ -7438,7 +7438,7 @@ msgid "See the `tabs.tab` and `tabs.panel` members for the individual tab button
 msgstr "請參見 `tabs.tab` 與 `tabs.panel` 成員，了解各個分頁按鈕及其內容面板。"
 
 #: css/tabs.md
-#, no-c-format
+#, no-c-format, pantoken-verbatim
 msgctxt "docs.api:prose"
 msgid "**Source:** [panel.css](https://github.com/thedannywahl/pantoken/blob/main/formats/components/src/components/tabs/members/panel/panel.css)"
 msgstr "**Source:** [panel.css](https://github.com/thedannywahl/pantoken/blob/main/formats/components/src/components/tabs/members/panel/panel.css)"
@@ -7559,7 +7559,7 @@ msgid "Sets its own horizontal `padding` (`-size-sm`/`-size-lg` scale it); chain
 msgstr "設定其自身的水平 `padding`（由 `-size-sm`/`-size-lg` 調整）；串接 `-p-*`/`-padding-*` 的間距工具修飾符會覆寫該內建值。"
 
 #: css/tag.md
-#, no-c-format
+#, no-c-format, pantoken-verbatim
 msgctxt "docs.api:prose"
 msgid "**Source:** [tag.css](https://github.com/thedannywahl/pantoken/blob/main/formats/components/src/components/tag/tag.css)"
 msgstr "**Source:** [tag.css](https://github.com/thedannywahl/pantoken/blob/main/formats/components/src/components/tag/tag.css)"
@@ -7691,7 +7691,7 @@ msgid "Shares its border, background, and focus states with `text-input` and `si
 msgstr "與 `text-input` 和 `simple-select` 共用邊框、背景與聚焦狀態；只有 `resize: vertical` 和較高的最小高度是其獨有的。"
 
 #: css/text-area.md
-#, no-c-format
+#, no-c-format, pantoken-verbatim
 msgctxt "docs.api:prose"
 msgid "**Source:** [text-area.css](https://github.com/thedannywahl/pantoken/blob/main/formats/components/src/components/text-area/text-area.css)"
 msgstr "**Source:** [text-area.css](https://github.com/thedannywahl/pantoken/blob/main/formats/components/src/components/text-area/text-area.css)"
@@ -7715,7 +7715,7 @@ msgid "Shares its border, background, and state chrome with `text-area`, `simple
 msgstr "與 `text-area`、`simple-select`、`number-input` 和 `input-group` 共用邊框、背景與狀態 chrome；對於 `date`/`time`/`datetime-local` 類型，瀏覽器會提供自己的選擇器介面，本樣式表不會為其套用樣式。"
 
 #: css/text-input.md
-#, no-c-format
+#, no-c-format, pantoken-verbatim
 msgctxt "docs.api:prose"
 msgid "**Source:** [text-input.css](https://github.com/thedannywahl/pantoken/blob/main/formats/components/src/components/text-input/text-input.css)"
 msgstr "**Source:** [text-input.css](https://github.com/thedannywahl/pantoken/blob/main/formats/components/src/components/text-input/text-input.css)"
@@ -7739,7 +7739,7 @@ msgid "The `-variant-*` presets and the `-color-*`/`-size-*`/`-weight-*` modifie
 msgstr "`-variant-*` 預設集與 `-color-*`/`-size-*`/`-weight-*` 修飾子都可在同一元素上組合；與 `heading` 不同，它不會呈現任何隱含的語意層級。"
 
 #: css/text.md
-#, no-c-format
+#, no-c-format, pantoken-verbatim
 msgctxt "docs.api:prose"
 msgid "**Source:** [text.css](https://github.com/thedannywahl/pantoken/blob/main/formats/components/src/components/text/text.css)"
 msgstr "**Source:** [text.css](https://github.com/thedannywahl/pantoken/blob/main/formats/components/src/components/text/text.css)"
@@ -7925,7 +7925,7 @@ msgid "Built on the native `<details>` element, so the browser drives open and c
 msgstr "建立在原生 `<details>` 元素之上，因此由瀏覽器處理展開/收合與鍵盤支援；CSS 只隱藏預設標記並提供旋轉箭頭。"
 
 #: css/toggle-details.md
-#, no-c-format
+#, no-c-format, pantoken-verbatim
 msgctxt "docs.api:prose"
 msgid "**Source:** [toggle-details.css](https://github.com/thedannywahl/pantoken/blob/main/formats/components/src/components/toggle-details/toggle-details.css)"
 msgstr "**Source:** [toggle-details.css](https://github.com/thedannywahl/pantoken/blob/main/formats/components/src/components/toggle-details/toggle-details.css)"
@@ -7979,7 +7979,7 @@ msgid "Built on the same native `<details>` foundation as toggle-details; put th
 msgstr "建立於與 toggle-details 相同的原生 `<details>` 基座；將 `<summary>` 放在前面，使其成為可點擊的標頭列，其餘為可摺疊內容。"
 
 #: css/toggle-group.md
-#, no-c-format
+#, no-c-format, pantoken-verbatim
 msgctxt "docs.api:prose"
 msgid "**Source:** [toggle-group.css](https://github.com/thedannywahl/pantoken/blob/main/formats/components/src/components/toggle-group/toggle-group.css)"
 msgstr "**Source:** [toggle-group.css](https://github.com/thedannywahl/pantoken/blob/main/formats/components/src/components/toggle-group/toggle-group.css)"
@@ -8021,7 +8021,7 @@ msgid "Toggling is pure CSS (`:hover`/`:focus-within`), so the bubble only reach
 msgstr "切換純屬 CSS（`:hover`/`:focus-within`），因此該氣泡只能透過可聚焦的觸發器讓鍵盤使用者使用；與 `popover` 不同，無法被取消且非點擊觸發。"
 
 #: css/tooltip.md
-#, no-c-format
+#, no-c-format, pantoken-verbatim
 msgctxt "docs.api:prose"
 msgid "**Source:** [tooltip.css](https://github.com/thedannywahl/pantoken/blob/main/formats/components/src/components/tooltip/tooltip.css)"
 msgstr "**Source:** [tooltip.css](https://github.com/thedannywahl/pantoken/blob/main/formats/components/src/components/tooltip/tooltip.css)"
@@ -8063,7 +8063,7 @@ msgid "`.instui-transition.-transition-fade-entering` — Animation state classe
 msgstr "`.instui-transition.-transition-fade-entering` — 適用於 `Transition` 元件的動畫狀態類別 — `.instui-transition` 與狀態類別（`-transition-fade-entering`, `-transition-scale-exited` 等）— 可單獨使用或串接到任何元件上。"
 
 #: css/transition.md
-#, no-c-format
+#, no-c-format, pantoken-verbatim
 msgctxt "docs.api:prose"
 msgid "**Source:** [transition.css](https://github.com/thedannywahl/pantoken/blob/main/formats/components/src/utilities/transition/transition.css)"
 msgstr "**Source:** [transition.css](https://github.com/thedannywahl/pantoken/blob/main/formats/components/src/utilities/transition/transition.css)"
@@ -8105,7 +8105,7 @@ msgid "Start/end placements resolve against `inset-inline` (logical, direction-a
 msgstr "起始/結束的放置相對於 `inset-inline` 解算（邏輯化、具方向感）；當位於祖先 `[dir=\"rtl\"]` 之下時，滑入轉換會自動鏡像，因此右到左佈局不需要額外標記。"
 
 #: css/tray.md
-#, no-c-format
+#, no-c-format, pantoken-verbatim
 msgctxt "docs.api:prose"
 msgid "**Source:** [tray.css](https://github.com/thedannywahl/pantoken/blob/main/formats/components/src/components/tray/tray.css)"
 msgstr "**Source:** [tray.css](https://github.com/thedannywahl/pantoken/blob/main/formats/components/src/components/tray/tray.css)"
@@ -8183,7 +8183,7 @@ msgid "Each collection is a native `<details>`; nesting them inside one another 
 msgstr "每個集合都是原生的 `<details>`；將它們互相巢狀即可構成樹，瀏覽器會處理每個分支的展開與收合。"
 
 #: css/tree-browser.md
-#, no-c-format
+#, no-c-format, pantoken-verbatim
 msgctxt "docs.api:prose"
 msgid "**Source:** [tree-browser.css](https://github.com/thedannywahl/pantoken/blob/main/formats/components/src/components/tree-browser/tree-browser.css)"
 msgstr "**Source:** [tree-browser.css](https://github.com/thedannywahl/pantoken/blob/main/formats/components/src/components/tree-browser/tree-browser.css)"
@@ -8267,7 +8267,7 @@ msgid "The base class uses `display: -webkit-box` and reads the `--lines` custom
 msgstr "基底類使用 `display: -webkit-box`，並讀取 `--lines` 自訂屬性以在結尾顯示省略號前將文字限制為固定行數。"
 
 #: css/truncate.md
-#, no-c-format
+#, no-c-format, pantoken-verbatim
 msgctxt "docs.api:prose"
 msgid "**Source:** [index.ts](https://github.com/thedannywahl/pantoken/blob/main/formats/components/src/utilities/truncate/index.ts)"
 msgstr "**Source:** [index.ts](https://github.com/thedannywahl/pantoken/blob/main/formats/components/src/utilities/truncate/index.ts)"
@@ -8435,7 +8435,7 @@ msgid "`.instui-view` — The View primitive: a neutral box with key-value modif
 msgstr "`.instui-view` — View 原語件：一個中性方盒，提供背景、邊框、圓角、陰影、顯示、定位、溢出與游標等鍵值修飾器。這些修飾器均可全域使用（裸用，或鏈接於任何其它元件）— 參見 `background`/`border`/`shadow`/`display`/`position`/`overflow`/`cursor` 工具。"
 
 #: css/view.md
-#, no-c-format
+#, no-c-format, pantoken-verbatim
 msgctxt "docs.api:prose"
 msgid "**Source:** [view.css](https://github.com/thedannywahl/pantoken/blob/main/formats/components/src/components/view/view.css)"
 msgstr "**Source:** [view.css](https://github.com/thedannywahl/pantoken/blob/main/formats/components/src/components/view/view.css)"
@@ -8591,37 +8591,37 @@ msgid "Small solid border in the base stroke colour."
 msgstr "小型實線邊框，使用基底描邊顏色。"
 
 #: css/view.md
-#, no-c-format
+#, no-c-format, pantoken-verbatim
 msgctxt "docs.api:prose"
 msgid "display: block."
 msgstr "display: block."
 
 #: css/view.md
-#, no-c-format
+#, no-c-format, pantoken-verbatim
 msgctxt "docs.api:prose"
 msgid "display: flex."
 msgstr "display: flex."
 
 #: css/view.md
-#, no-c-format
+#, no-c-format, pantoken-verbatim
 msgctxt "docs.api:prose"
 msgid "display: inline."
 msgstr "display: inline."
 
 #: css/view.md
-#, no-c-format
+#, no-c-format, pantoken-verbatim
 msgctxt "docs.api:prose"
 msgid "display: inline-block."
 msgstr "display: inline-block."
 
 #: css/view.md
-#, no-c-format
+#, no-c-format, pantoken-verbatim
 msgctxt "docs.api:prose"
 msgid "display: inline-flex."
 msgstr "display: inline-flex."
 
 #: css/view.md
-#, no-c-format
+#, no-c-format, pantoken-verbatim
 msgctxt "docs.api:prose"
 msgid "display: none."
 msgstr "display: none."
@@ -9243,7 +9243,7 @@ msgstr "Build the icon-glyph stylesheet: one `.&lt;prefix&gt;-icon-&lt;name&gt;`
 #: renderers/web-components/src/functions/formatList.md
 #: renderers/web-components/src/functions/registerLocalized.md
 #: renderers/web-components/src/interfaces/LocaleSet.md
-#, no-c-format
+#, no-c-format, pantoken-verbatim
 msgctxt "docs.api:prose"
 msgid "readonly `string`[]"
 msgstr "readonly `string`[]"
@@ -11804,19 +11804,19 @@ msgid "Output format, for targets that support several (e.g. `swatches --format 
 msgstr "輸出格式，適用於支援多種格式的目標（例如 `swatches --format ase`）。"
 
 #: packages/cli/src/interfaces/CliArgs.md
-#, no-c-format
+#, no-c-format, pantoken-verbatim
 msgctxt "docs.api:prose"
 msgid "Pendo: skip `@scope` wrapping (`--no-scope`)."
 msgstr "Pendo: skip `@scope` wrapping (`--no-scope`)."
 
 #: packages/cli/src/interfaces/CliArgs.md
-#, no-c-format
+#, no-c-format, pantoken-verbatim
 msgctxt "docs.api:prose"
 msgid "Pendo: skip `!important` (`--no-important`)."
 msgstr "Pendo: skip `!important` (`--no-important`)."
 
 #: packages/cli/src/interfaces/CliArgs.md
-#, no-c-format
+#, no-c-format, pantoken-verbatim
 msgctxt "docs.api:prose"
 msgid "Pendo: skip token pruning (`--no-prune`)."
 msgstr "Pendo: skip token pruning (`--no-prune`)."
@@ -16292,7 +16292,7 @@ msgid "A Starlight plugin that injects the pantoken stylesheet into the page hea
 msgstr "一個會將 pantoken 的樣式表注入到頁面 head 中的 Starlight 外掛。"
 
 #: renderers/astro/src/functions/InstUI.md
-#, no-c-format
+#, no-c-format, pantoken-verbatim
 msgctxt "docs.api:prose"
 msgid "**astro.config.mjs**"
 msgstr "**astro.config.mjs**"
@@ -16461,7 +16461,7 @@ msgid "Works with any library that reads a theme from `props.theme` — Emotion,
 msgstr "與任何從 `props.theme` 讀取主題的函式庫相容 — Emotion、styled-components 以及\nStitches 都遵循此慣例。[pantokenTheme](variables/pantokenTheme.md) 是現成的 `rebrand` 物件，\n以 var() 為基礎，因此明/暗模式切換可經由 `@pantoken/css` 傳遞。[toStyledTheme](functions/toStyledTheme.md) 可從任一 IR 建構\n一個主題（也可使用 `{ resolve }` 將具體值烘焙進去）。"
 
 #: renderers/css-in-js/src/index.md
-#, no-c-format
+#, no-c-format, pantoken-verbatim
 msgctxt "docs.api:prose"
 msgid "**styled-components**"
 msgstr "**styled-components**"
@@ -16997,7 +16997,7 @@ msgid "Render Markdown with Instructure UI element mappings and pantoken icon/co
 msgstr "使用 Instructure UI 的元素對應以及 pantoken 的圖示/顏色代幣來呈現 Markdown。"
 
 #: renderers/react-markdown/src/functions/InstuiMarkdown.md
-#, no-c-format
+#, no-c-format, pantoken-verbatim
 msgctxt "docs.api:prose"
 msgid "**Basic**"
 msgstr "**Basic**"
@@ -18771,13 +18771,13 @@ msgid "`<instui-avatar>` — a circular (or rectangular) avatar. `variant` maps 
 msgstr "`&lt;instui-avatar&gt;` — a circular (or rectangular) avatar. `variant` maps to `-color-&lt;variant&gt;`,\n`size` to `-size-&lt;size&gt;`, and `shape=\"rectangle\"` to `-shape-rectangle`; slotted content is the\ninitials, or an `&lt;img&gt;` (use an absolute/CDN `src`) to show a photo."
 
 #: renderers/web-components/src/variables/avatar.md
-#, no-c-format
+#, no-c-format, pantoken-verbatim
 msgctxt "docs.api:prose"
 msgid "JS"
 msgstr "JS"
 
 #: renderers/web-components/src/variables/avatar.md
-#, no-c-format
+#, no-c-format, pantoken-verbatim
 msgctxt "docs.api:prose"
 msgid "AB"
 msgstr "AB"
@@ -20301,6 +20301,7 @@ msgstr "一個可在懸停時顯示的「檢視全螢幕」按鈕，覆蓋在示
 #~ msgid "## Tokens consumed"
 #~ msgstr "## 已使用的代幣"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "Token"
 #~ msgstr "Token"
@@ -26535,10 +26536,12 @@ msgstr "一個可在懸停時顯示的「檢視全螢幕」按鈕，覆蓋在示
 #~ msgid "# Variable: FULLSCREEN\\_BUTTON\\_HTML"
 #~ msgstr "# 變數: FULLSCREEN\\_BUTTON\\_HTML"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "tools"
 #~ msgstr "tools"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "aggregate"
 #~ msgstr "aggregate"
@@ -26547,10 +26550,12 @@ msgstr "一個可在懸停時顯示的「檢視全螢幕」按鈕，覆蓋在示
 #~ msgid "Interfaces"
 #~ msgstr "介面"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "Target"
 #~ msgstr "Target"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "AggregateOptions"
 #~ msgstr "AggregateOptions"
@@ -26559,30 +26564,37 @@ msgstr "一個可在懸停時顯示的「檢視全螢幕」按鈕，覆蓋在示
 #~ msgid "Functions"
 #~ msgstr "函式"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "discoverTargets"
 #~ msgstr "discoverTargets"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "demo"
 #~ msgstr "demo"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "ResolveOptions"
 #~ msgstr "ResolveOptions"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "ResolvedDemo"
 #~ msgstr "ResolvedDemo"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "LiveExampleOptions"
 #~ msgstr "LiveExampleOptions"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "DemoMarkdownItOptions"
 #~ msgstr "DemoMarkdownItOptions"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "ExampleSrcdocOptions"
 #~ msgstr "ExampleSrcdocOptions"
@@ -26591,34 +26603,42 @@ msgstr "一個可在懸停時顯示的「檢視全螢幕」按鈕，覆蓋在示
 #~ msgid "Variables"
 #~ msgstr "變數"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "FULLSCREEN_BUTTON_HTML"
 #~ msgstr "FULLSCREEN_BUTTON_HTML"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "resolveDemo"
 #~ msgstr "resolveDemo"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "renderDemoFigure"
 #~ msgstr "renderDemoFigure"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "demoMarkdownIt"
 #~ msgstr "demoMarkdownIt"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "escapeSrcdoc"
 #~ msgstr "escapeSrcdoc"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "buildExampleSrcdoc"
 #~ msgstr "buildExampleSrcdoc"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "ai"
 #~ msgstr "ai"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "pantoken-ai"
 #~ msgstr "pantoken-ai"
@@ -26627,10 +26647,12 @@ msgstr "一個可在懸停時顯示的「檢視全螢幕」按鈕，覆蓋在示
 #~ msgid "Type Aliases"
 #~ msgstr "型別別名"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "AgentTool"
 #~ msgstr "AgentTool"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "ScaffoldPlatform"
 #~ msgstr "ScaffoldPlatform"
@@ -26639,1254 +26661,1567 @@ msgstr "一個可在懸停時顯示的「檢視全螢幕」按鈕，覆蓋在示
 #~ msgid "ASSETS"
 #~ msgstr "ASSETS"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "AGENTS_MD"
 #~ msgstr "AGENTS_MD"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "LLMS_TXT"
 #~ msgstr "LLMS_TXT"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "AGENT_TOOLS"
 #~ msgstr "AGENT_TOOLS"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "SCAFFOLD_PLATFORMS"
 #~ msgstr "SCAFFOLD_PLATFORMS"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "installAgentAssets"
 #~ msgstr "installAgentAssets"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "scaffoldAndInit"
 #~ msgstr "scaffoldAndInit"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "isScaffoldPlatform"
 #~ msgstr "isScaffoldPlatform"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "scaffoldProject"
 #~ msgstr "scaffoldProject"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "platforms"
 #~ msgstr "platforms"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "android"
 #~ msgstr "android"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "GenerateAndroidOptions"
 #~ msgstr "GenerateAndroidOptions"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "toAndroid"
 #~ msgstr "toAndroid"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "generateAndroid"
 #~ msgstr "generateAndroid"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "canvas-theme-editor"
 #~ msgstr "canvas-theme-editor"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "ThemeStrings"
 #~ msgstr "ThemeStrings"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "BuildThemeOptions"
 #~ msgstr "BuildThemeOptions"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "CdnFile"
 #~ msgstr "CdnFile"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "CdnProvider"
 #~ msgstr "CdnProvider"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "ThemeVariant"
 #~ msgstr "ThemeVariant"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "ThemeMode"
 #~ msgstr "ThemeMode"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "THEME_CSS"
 #~ msgstr "THEME_CSS"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "THEME_JS"
 #~ msgstr "THEME_JS"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "ENGLISH_THEME_STRINGS"
 #~ msgstr "ENGLISH_THEME_STRINGS"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "DEFAULT_THEME_CSS_ASSETS"
 #~ msgstr "DEFAULT_THEME_CSS_ASSETS"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "DEFAULT_THEME_FONT_ASSETS"
 #~ msgstr "DEFAULT_THEME_FONT_ASSETS"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "DEFAULT_THEME_JS_ASSETS"
 #~ msgstr "DEFAULT_THEME_JS_ASSETS"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "CDN_PROVIDERS"
 #~ msgstr "CDN_PROVIDERS"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "DEFAULT_CDN_PROVIDER_ID"
 #~ msgstr "DEFAULT_CDN_PROVIDER_ID"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "defaultThemeCssAssets"
 #~ msgstr "defaultThemeCssAssets"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "buildThemeCss"
 #~ msgstr "buildThemeCss"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "buildThemeJs"
 #~ msgstr "buildThemeJs"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "buildTheme"
 #~ msgstr "buildTheme"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "compose"
 #~ msgstr "compose"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "GenerateComposeOptions"
 #~ msgstr "GenerateComposeOptions"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "toCompose"
 #~ msgstr "toCompose"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "generateCompose"
 #~ msgstr "generateCompose"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "drupal"
 #~ msgstr "drupal"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "DrupalFile"
 #~ msgstr "DrupalFile"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "ToDrupalThemeOptions"
 #~ msgstr "ToDrupalThemeOptions"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "machineName"
 #~ msgstr "machineName"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "toDrupalTheme"
 #~ msgstr "toDrupalTheme"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "email"
 #~ msgstr "email"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "dark"
 #~ msgstr "dark"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "emailTokens"
 #~ msgstr "emailTokens"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "flutter"
 #~ msgstr "flutter"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "GenerateFlutterOptions"
 #~ msgstr "GenerateFlutterOptions"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "toFlutter"
 #~ msgstr "toFlutter"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "generateFlutter"
 #~ msgstr "generateFlutter"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "hugo"
 #~ msgstr "hugo"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "HugoFile"
 #~ msgstr "HugoFile"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "toHugoAssets"
 #~ msgstr "toHugoAssets"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "jekyll"
 #~ msgstr "jekyll"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "JekyllFile"
 #~ msgstr "JekyllFile"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "toJekyllAssets"
 #~ msgstr "toJekyllAssets"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "rust"
 #~ msgstr "rust"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "RustOptions"
 #~ msgstr "RustOptions"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "RustFormat"
 #~ msgstr "RustFormat"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "toRust"
 #~ msgstr "toRust"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "generateRust"
 #~ msgstr "generateRust"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "swift"
 #~ msgstr "swift"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "GenerateSwiftOptions"
 #~ msgstr "GenerateSwiftOptions"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "toSwift"
 #~ msgstr "toSwift"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "generateSwift"
 #~ msgstr "generateSwift"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "vanilla"
 #~ msgstr "vanilla"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "ToVanillaOptions"
 #~ msgstr "ToVanillaOptions"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "Mode"
 #~ msgstr "Mode"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "variables"
 #~ msgstr "variables"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "VANILLA_TO_INSTUI"
 #~ msgstr "VANILLA_TO_INSTUI"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "toVanillaVariables"
 #~ msgstr "toVanillaVariables"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "wordpress"
 #~ msgstr "wordpress"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "ThemeJson"
 #~ msgstr "ThemeJson"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "ToThemeJsonOptions"
 #~ msgstr "ToThemeJsonOptions"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "themeJson"
 #~ msgstr "themeJson"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "toThemeJson"
 #~ msgstr "toThemeJson"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "renderers"
 #~ msgstr "renderers"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "angular"
 #~ msgstr "angular"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "registerPantokenElements"
 #~ msgstr "registerPantokenElements"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "readToken"
 #~ msgstr "readToken"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "register"
 #~ msgstr "register"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "astro"
 #~ msgstr "astro"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "HeadEntry"
 #~ msgstr "HeadEntry"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "StarlightPluginLike"
 #~ msgstr "StarlightPluginLike"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "InstUIOptions"
 #~ msgstr "InstUIOptions"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "pantokenCss"
 #~ msgstr "pantokenCss"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "InstUI"
 #~ msgstr "InstUI"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "bootstrap"
 #~ msgstr "bootstrap"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "ToBootstrapCssOptions"
 #~ msgstr "ToBootstrapCssOptions"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "BOOTSTRAP_TO_INSTUI"
 #~ msgstr "BOOTSTRAP_TO_INSTUI"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "bootstrapCss"
 #~ msgstr "bootstrapCss"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "toBootstrapCss"
 #~ msgstr "toBootstrapCss"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "css-in-js"
 #~ msgstr "css-in-js"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "ToStyledThemeOptions"
 #~ msgstr "ToStyledThemeOptions"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "StyledTheme"
 #~ msgstr "StyledTheme"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "pantokenTheme"
 #~ msgstr "pantokenTheme"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "toThemeKey"
 #~ msgstr "toThemeKey"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "toStyledTheme"
 #~ msgstr "toStyledTheme"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "docusaurus"
 #~ msgstr "docusaurus"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "ToDocusaurusCssOptions"
 #~ msgstr "ToDocusaurusCssOptions"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "INFIMA_TO_INSTUI"
 #~ msgstr "INFIMA_TO_INSTUI"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "docusaurusCss"
 #~ msgstr "docusaurusCss"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "toDocusaurusCss"
 #~ msgstr "toDocusaurusCss"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "foundation"
 #~ msgstr "foundation"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "ToFoundationSettingsOptions"
 #~ msgstr "ToFoundationSettingsOptions"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "ToFoundationCssOptions"
 #~ msgstr "ToFoundationCssOptions"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "FOUNDATION_TO_INSTUI"
 #~ msgstr "FOUNDATION_TO_INSTUI"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "foundationSettings"
 #~ msgstr "foundationSettings"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "foundationCss"
 #~ msgstr "foundationCss"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "toFoundationSettings"
 #~ msgstr "toFoundationSettings"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "toFoundationCss"
 #~ msgstr "toFoundationCss"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "markdown-it"
 #~ msgstr "markdown-it"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "MarkdownItOptions"
 #~ msgstr "MarkdownItOptions"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "PROSE_CLASS"
 #~ msgstr "PROSE_CLASS"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "pantokenMarkdownIt"
 #~ msgstr "pantokenMarkdownIt"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "mintlify"
 #~ msgstr "mintlify"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "MintlifyColors"
 #~ msgstr "MintlifyColors"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "MintlifyBackground"
 #~ msgstr "MintlifyBackground"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "MintlifyTheme"
 #~ msgstr "MintlifyTheme"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "docsJson"
 #~ msgstr "docsJson"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "toMintlifyConfig"
 #~ msgstr "toMintlifyConfig"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "mui"
 #~ msgstr "mui"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "MuiPaletteColor"
 #~ msgstr "MuiPaletteColor"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "PantokenThemeOptions"
 #~ msgstr "PantokenThemeOptions"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "lightTheme"
 #~ msgstr "lightTheme"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "darkTheme"
 #~ msgstr "darkTheme"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "toMuiTheme"
 #~ msgstr "toMuiTheme"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "pendo"
 #~ msgstr "pendo"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "BuildPendoCssOptions"
 #~ msgstr "BuildPendoCssOptions"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "AddScopeOptions"
 #~ msgstr "AddScopeOptions"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "pendoCss"
 #~ msgstr "pendoCss"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "LAYER_ORDER"
 #~ msgstr "LAYER_ORDER"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "COMPONENTS"
 #~ msgstr "COMPONENTS"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "addImportant"
 #~ msgstr "addImportant"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "addScope"
 #~ msgstr "addScope"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "buildPendoCss"
 #~ msgstr "buildPendoCss"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "react"
 #~ msgstr "react"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "IconProps"
 #~ msgstr "IconProps"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "TokenProviderProps"
 #~ msgstr "TokenProviderProps"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "useToken"
 #~ msgstr "useToken"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "Icon"
 #~ msgstr "Icon"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "TokenProvider"
 #~ msgstr "TokenProvider"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "react-markdown"
 #~ msgstr "react-markdown"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "InstuiMarkdownRenderOptions"
 #~ msgstr "InstuiMarkdownRenderOptions"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "InstuiMarkdownProps"
 #~ msgstr "InstuiMarkdownProps"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "AlertMarker"
 #~ msgstr "AlertMarker"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "instuiMarkdownComponents"
 #~ msgstr "instuiMarkdownComponents"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "createInstuiMarkdownComponents"
 #~ msgstr "createInstuiMarkdownComponents"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "buildIconResolver"
 #~ msgstr "buildIconResolver"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "parseAlertMarker"
 #~ msgstr "parseAlertMarker"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "isColorValue"
 #~ msgstr "isColorValue"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "rehypeColorCodes"
 #~ msgstr "rehypeColorCodes"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "rehypeGithubAlerts"
 #~ msgstr "rehypeGithubAlerts"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "InstuiMarkdown"
 #~ msgstr "InstuiMarkdown"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "react-native"
 #~ msgstr "react-native"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "RNTokenValue"
 #~ msgstr "RNTokenValue"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "tokensForScheme"
 #~ msgstr "tokensForScheme"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "rehype"
 #~ msgstr "rehype"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "RehypeOptions"
 #~ msgstr "RehypeOptions"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "rehypePantokenIcons"
 #~ msgstr "rehypePantokenIcons"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "shadcn"
 #~ msgstr "shadcn"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "ToShadcnCssOptions"
 #~ msgstr "ToShadcnCssOptions"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "shadcnCss"
 #~ msgstr "shadcnCss"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "SHADCN_TO_INSTUI"
 #~ msgstr "SHADCN_TO_INSTUI"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "toShadcnCss"
 #~ msgstr "toShadcnCss"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "storybook"
 #~ msgstr "storybook"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "StorybookTheme"
 #~ msgstr "StorybookTheme"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "pantokenStorybookTheme"
 #~ msgstr "pantokenStorybookTheme"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "svelte"
 #~ msgstr "svelte"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "ActionResult"
 #~ msgstr "ActionResult"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "icon"
 #~ msgstr "icon"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "registerLocalized"
 #~ msgstr "registerLocalized"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "tinymce"
 #~ msgstr "tinymce"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "CssDocEntry"
 #~ msgstr "CssDocEntry"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "PageLayout"
 #~ msgstr "PageLayout"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "LogoMeta"
 #~ msgstr "LogoMeta"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "TaggedIcon"
 #~ msgstr "TaggedIcon"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "LayoutsPluginOptions"
 #~ msgstr "LayoutsPluginOptions"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "Product"
 #~ msgstr "Product"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "pageLayouts"
 #~ msgstr "pageLayouts"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "logos"
 #~ msgstr "logos"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "products"
 #~ msgstr "products"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "LAYOUTS_PLUGIN_NAME"
 #~ msgstr "LAYOUTS_PLUGIN_NAME"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "LAYOUTS_TOOLBAR_NAME"
 #~ msgstr "LAYOUTS_TOOLBAR_NAME"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "pantokenHtmlCompletion"
 #~ msgstr "pantokenHtmlCompletion"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "pantokenHtmlLinter"
 #~ msgstr "pantokenHtmlLinter"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "pantokenContentCssUrls"
 #~ msgstr "pantokenContentCssUrls"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "injectContentStylesheet"
 #~ msgstr "injectContentStylesheet"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "findEntry"
 #~ msgstr "findEntry"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "listComponents"
 #~ msgstr "listComponents"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "listUtilities"
 #~ msgstr "listUtilities"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "getModifierSuggestions"
 #~ msgstr "getModifierSuggestions"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "validateClassToken"
 #~ msgstr "validateClassToken"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "loadAllIcons"
 #~ msgstr "loadAllIcons"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "getIconCdnFile"
 #~ msgstr "getIconCdnFile"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "createComponentsPlugin"
 #~ msgstr "createComponentsPlugin"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "createIconsPlugin"
 #~ msgstr "createIconsPlugin"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "createLayoutsPlugin"
 #~ msgstr "createLayoutsPlugin"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "createLogosPlugin"
 #~ msgstr "createLogosPlugin"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "createTemplatesPlugin"
 #~ msgstr "createTemplatesPlugin"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "vitepress"
 #~ msgstr "vitepress"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "ToVitePressCssOptions"
 #~ msgstr "ToVitePressCssOptions"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "VITEPRESS_TO_INSTUI"
 #~ msgstr "VITEPRESS_TO_INSTUI"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "vue"
 #~ msgstr "vue"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "PantokenVue"
 #~ msgstr "PantokenVue"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "iconSvg"
 #~ msgstr "iconSvg"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "web-components"
 #~ msgstr "web-components"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "CommandEventish"
 #~ msgstr "CommandEventish"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "LocaleSet"
 #~ msgstr "LocaleSet"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "ElementRegistry"
 #~ msgstr "ElementRegistry"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "RegisterContext"
 #~ msgstr "RegisterContext"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "ElementDefinition"
 #~ msgstr "ElementDefinition"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "LocaleInfo"
 #~ msgstr "LocaleInfo"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "RegisterContextOptions"
 #~ msgstr "RegisterContextOptions"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "WebComponentStrings"
 #~ msgstr "WebComponentStrings"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "LocaleBundle"
 #~ msgstr "LocaleBundle"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "alert"
 #~ msgstr "alert"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "avatar"
 #~ msgstr "avatar"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "badge"
 #~ msgstr "badge"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "button"
 #~ msgstr "button"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "calendar"
 #~ msgstr "calendar"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "contextView"
 #~ msgstr "contextView"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "dateInput"
 #~ msgstr "dateInput"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "dateTimeInput"
 #~ msgstr "dateTimeInput"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "drawerLayout"
 #~ msgstr "drawerLayout"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "drilldown"
 #~ msgstr "drilldown"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "iconButton"
 #~ msgstr "iconButton"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "img"
 #~ msgstr "img"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "inPlaceEdit"
 #~ msgstr "inPlaceEdit"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "DEFINITIONS"
 #~ msgstr "DEFINITIONS"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "metric"
 #~ msgstr "metric"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "modal"
 #~ msgstr "modal"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "pages"
 #~ msgstr "pages"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "pill"
 #~ msgstr "pill"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "popover"
 #~ msgstr "popover"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "progressCircle"
 #~ msgstr "progressCircle"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "progress"
 #~ msgstr "progress"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "rating"
 #~ msgstr "rating"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "sideNavBar"
 #~ msgstr "sideNavBar"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "spinner"
 #~ msgstr "spinner"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "tag"
 #~ msgstr "tag"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "toggleButton"
 #~ msgstr "toggleButton"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "tooltip"
 #~ msgstr "tooltip"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "tray"
 #~ msgstr "tray"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "treeBrowser"
 #~ msgstr "treeBrowser"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "truncate"
 #~ msgstr "truncate"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "ELEMENTS"
 #~ msgstr "ELEMENTS"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "NESTED_DEPS"
 #~ msgstr "NESTED_DEPS"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "ICON_ELEMENTS"
 #~ msgstr "ICON_ELEMENTS"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "LOCALES"
 #~ msgstr "LOCALES"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "DEFAULT_PREFIX"
 #~ msgstr "DEFAULT_PREFIX"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "ENGLISH_STRINGS"
 #~ msgstr "ENGLISH_STRINGS"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "ar"
 #~ msgstr "ar"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "ca"
 #~ msgstr "ca"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "cy"
 #~ msgstr "cy"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "da"
 #~ msgstr "da"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "de"
 #~ msgstr "de"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "el"
 #~ msgstr "el"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "enAU"
 #~ msgstr "enAU"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "enCA"
 #~ msgstr "enCA"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "enGB"
 #~ msgstr "enGB"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "en"
 #~ msgstr "en"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "es"
 #~ msgstr "es"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "fa"
 #~ msgstr "fa"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "fi"
 #~ msgstr "fi"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "frCA"
 #~ msgstr "frCA"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "fr"
 #~ msgstr "fr"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "ga"
 #~ msgstr "ga"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "he"
 #~ msgstr "he"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "hi"
 #~ msgstr "hi"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "ht"
 #~ msgstr "ht"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "hu"
 #~ msgstr "hu"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "hy"
 #~ msgstr "hy"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "id"
 #~ msgstr "id"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "is"
 #~ msgstr "is"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "it"
 #~ msgstr "it"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "ja"
 #~ msgstr "ja"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "ko"
 #~ msgstr "ko"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "mi"
 #~ msgstr "mi"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "ms"
 #~ msgstr "ms"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "nb"
 #~ msgstr "nb"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "nl"
 #~ msgstr "nl"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "nn"
 #~ msgstr "nn"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "pl"
 #~ msgstr "pl"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "ptBR"
 #~ msgstr "ptBR"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "pt"
 #~ msgstr "pt"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "ru"
 #~ msgstr "ru"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "se"
 #~ msgstr "se"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "sl"
 #~ msgstr "sl"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "sv"
 #~ msgstr "sv"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "th"
 #~ msgstr "th"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "tr"
 #~ msgstr "tr"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "uk"
 #~ msgstr "uk"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "vi"
 #~ msgstr "vi"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "zhHans"
 #~ msgstr "zhHans"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "zhHant"
 #~ msgstr "zhHant"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "getDir"
 #~ msgstr "getDir"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "createLocaleSet"
 #~ msgstr "createLocaleSet"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "noopIconSvg"
 #~ msgstr "noopIconSvg"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "buildRegisterContext"
 #~ msgstr "buildRegisterContext"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "formatMessage"
 #~ msgstr "formatMessage"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "isolate"
 #~ msgstr "isolate"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "formatNumber"
 #~ msgstr "formatNumber"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "formatDate"
 #~ msgstr "formatDate"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "formatList"
 #~ msgstr "formatList"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "formatRelativeTime"
 #~ msgstr "formatRelativeTime"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "resolveFirstDay"
 #~ msgstr "resolveFirstDay"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "makeStrings"
 #~ msgstr "makeStrings"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "defineBundle"
 #~ msgstr "defineBundle"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "packages"
 #~ msgstr "packages"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "cli"
 #~ msgstr "cli"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "CliArgs"
 #~ msgstr "CliArgs"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "parseArgs"
 #~ msgstr "parseArgs"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "run"
 #~ msgstr "run"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "core"
 #~ msgstr "core"
@@ -27895,82 +28230,102 @@ msgstr "一個可在懸停時顯示的「檢視全螢幕」按鈕，覆蓋在示
 #~ msgid "BuildTokensOptions"
 #~ msgstr "BuildTokensOptions"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "VectorDrawableOptions"
 #~ msgstr "VectorDrawableOptions"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "AssetFile"
 #~ msgstr "AssetFile"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "CollectIconsOptions"
 #~ msgstr "CollectIconsOptions"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "IconToken"
 #~ msgstr "IconToken"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "IconLayer"
 #~ msgstr "IconLayer"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "Leaf"
 #~ msgstr "Leaf"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "SdLeaf"
 #~ msgstr "SdLeaf"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "TokenModify"
 #~ msgstr "TokenModify"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "TokenMeta"
 #~ msgstr "TokenMeta"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "TokenInput"
 #~ msgstr "TokenInput"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "IconEntry"
 #~ msgstr "IconEntry"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "CssContribution"
 #~ msgstr "CssContribution"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "TokenHookContext"
 #~ msgstr "TokenHookContext"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "IconHookContext"
 #~ msgstr "IconHookContext"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "CssHookContext"
 #~ msgstr "CssHookContext"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "RehypeHookContext"
 #~ msgstr "RehypeHookContext"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "PantokenPlugin"
 #~ msgstr "PantokenPlugin"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "Theme"
 #~ msgstr "Theme"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "IconResolver"
 #~ msgstr "IconResolver"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "ICON_COLOR_SPECIAL_VALUES"
 #~ msgstr "ICON_COLOR_SPECIAL_VALUES"
@@ -27979,1058 +28334,1322 @@ msgstr "一個可在懸停時顯示的「檢視全螢幕」按鈕，覆蓋在示
 #~ msgid "buildTokens"
 #~ msgstr "buildTokens"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "applyModify"
 #~ msgstr "applyModify"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "decodeIconSvg"
 #~ msgstr "decodeIconSvg"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "getIconSvgs"
 #~ msgstr "getIconSvgs"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "toVectorDrawable"
 #~ msgstr "toVectorDrawable"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "toXcodeImageset"
 #~ msgstr "toXcodeImageset"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "flutterIconManifest"
 #~ msgstr "flutterIconManifest"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "collectIcons"
 #~ msgstr "collectIcons"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "defineToken"
 #~ msgstr "defineToken"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "dedupeByName"
 #~ msgstr "dedupeByName"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "runTokenPlugins"
 #~ msgstr "runTokenPlugins"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "runIconPlugins"
 #~ msgstr "runIconPlugins"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "collectLeaves"
 #~ msgstr "collectLeaves"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "referenceToVarName"
 #~ msgstr "referenceToVarName"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "resolveValue"
 #~ msgstr "resolveValue"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "varName"
 #~ msgstr "varName"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "resolveReferences"
 #~ msgstr "resolveReferences"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "toStyleDictionary"
 #~ msgstr "toStyleDictionary"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "toKebab"
 #~ msgstr "toKebab"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "cssSyntaxForValue"
 #~ msgstr "cssSyntaxForValue"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "isContextual"
 #~ msgstr "isContextual"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "model"
 #~ msgstr "model"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "DeprecationEntry"
 #~ msgstr "DeprecationEntry"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "DeprecationLedger"
 #~ msgstr "DeprecationLedger"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "PropertyRule"
 #~ msgstr "PropertyRule"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "UpstreamRef"
 #~ msgstr "UpstreamRef"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "plugin-kit"
 #~ msgstr "plugin-kit"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "Stage"
 #~ msgstr "Stage"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "definePlugin"
 #~ msgstr "definePlugin"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "isFactoried"
 #~ msgstr "isFactoried"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "validatePlugin"
 #~ msgstr "validatePlugin"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "capabilitiesOf"
 #~ msgstr "capabilitiesOf"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "checkPlugins"
 #~ msgstr "checkPlugins"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "extendPlugin"
 #~ msgstr "extendPlugin"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "mergePlugin"
 #~ msgstr "mergePlugin"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "makeResolver"
 #~ msgstr "makeResolver"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "resolveTokens"
 #~ msgstr "resolveTokens"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "utils"
 #~ msgstr "utils"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "Rgba"
 #~ msgstr "Rgba"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "SpacingStep"
 #~ msgstr "SpacingStep"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "UtilityOptions"
 #~ msgstr "UtilityOptions"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "ColorUtilityNames"
 #~ msgstr "ColorUtilityNames"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "TokenUtilityGroup"
 #~ msgstr "TokenUtilityGroup"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "ColorUtilityEntry"
 #~ msgstr "ColorUtilityEntry"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "ELEVATION_NAMES"
 #~ msgstr "ELEVATION_NAMES"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "FOCUSABLE_SELECTOR"
 #~ msgstr "FOCUSABLE_SELECTOR"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "VAR_RE"
 #~ msgstr "VAR_RE"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "LIGHT_DARK_RE"
 #~ msgstr "LIGHT_DARK_RE"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "SPACING_STEPS"
 #~ msgstr "SPACING_STEPS"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "SPACING_AUTO_STEP"
 #~ msgstr "SPACING_AUTO_STEP"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "camelCase"
 #~ msgstr "camelCase"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "parseHexColor"
 #~ msgstr "parseHexColor"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "elevationDeclarations"
 #~ msgstr "elevationDeclarations"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "focusOutlineDeclarations"
 #~ msgstr "focusOutlineDeclarations"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "focusOutlineRules"
 #~ msgstr "focusOutlineRules"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "extractInstuiRefs"
 #~ msgstr "extractInstuiRefs"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "tokenNames"
 #~ msgstr "tokenNames"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "unknownReferences"
 #~ msgstr "unknownReferences"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "danglingReferences"
 #~ msgstr "danglingReferences"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "sanitizeSvg"
 #~ msgstr "sanitizeSvg"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "globalModifierSelector"
 #~ msgstr "globalModifierSelector"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "colorUtilitiesCss"
 #~ msgstr "colorUtilitiesCss"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "tokenUtilitiesCss"
 #~ msgstr "tokenUtilitiesCss"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "formats"
 #~ msgstr "formats"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "components"
 #~ msgstr "components"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "ComponentOptions"
 #~ msgstr "ComponentOptions"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "ProseOptions"
 #~ msgstr "ProseOptions"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "IconGlyphsOptions"
 #~ msgstr "IconGlyphsOptions"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "alertCss"
 #~ msgstr "alertCss"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "avatarCss"
 #~ msgstr "avatarCss"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "badgeCss"
 #~ msgstr "badgeCss"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "billboardCss"
 #~ msgstr "billboardCss"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "breadcrumbCss"
 #~ msgstr "breadcrumbCss"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "breadcrumbLinkCss"
 #~ msgstr "breadcrumbLinkCss"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "buttonCss"
 #~ msgstr "buttonCss"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "bylineCss"
 #~ msgstr "bylineCss"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "calendarCss"
 #~ msgstr "calendarCss"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "calendarDayCss"
 #~ msgstr "calendarDayCss"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "checkboxCss"
 #~ msgstr "checkboxCss"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "closeButtonCss"
 #~ msgstr "closeButtonCss"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "contextViewCss"
 #~ msgstr "contextViewCss"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "drawerLayoutCss"
 #~ msgstr "drawerLayoutCss"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "drawerLayoutContentCss"
 #~ msgstr "drawerLayoutContentCss"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "drawerLayoutTrayCss"
 #~ msgstr "drawerLayoutTrayCss"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "fileDropCss"
 #~ msgstr "fileDropCss"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "formFieldGroupCss"
 #~ msgstr "formFieldGroupCss"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "formFieldMessagesCss"
 #~ msgstr "formFieldMessagesCss"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "formFieldCss"
 #~ msgstr "formFieldCss"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "headingCss"
 #~ msgstr "headingCss"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "imgCss"
 #~ msgstr "imgCss"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "inPlaceEditCss"
 #~ msgstr "inPlaceEditCss"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "inputGroupCss"
 #~ msgstr "inputGroupCss"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "linkCss"
 #~ msgstr "linkCss"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "listCss"
 #~ msgstr "listCss"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "listItemCss"
 #~ msgstr "listItemCss"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "maskCss"
 #~ msgstr "maskCss"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "menuCss"
 #~ msgstr "menuCss"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "menuGroupCss"
 #~ msgstr "menuGroupCss"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "menuItemCss"
 #~ msgstr "menuItemCss"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "menuSeparatorCss"
 #~ msgstr "menuSeparatorCss"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "metricCss"
 #~ msgstr "metricCss"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "modalCss"
 #~ msgstr "modalCss"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "modalBodyCss"
 #~ msgstr "modalBodyCss"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "modalFooterCss"
 #~ msgstr "modalFooterCss"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "modalHeaderCss"
 #~ msgstr "modalHeaderCss"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "numberInputCss"
 #~ msgstr "numberInputCss"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "paginationCss"
 #~ msgstr "paginationCss"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "paginationPageCss"
 #~ msgstr "paginationPageCss"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "pillCss"
 #~ msgstr "pillCss"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "popoverCss"
 #~ msgstr "popoverCss"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "progressCircleCss"
 #~ msgstr "progressCircleCss"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "progressCss"
 #~ msgstr "progressCss"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "radioInputGroupCss"
 #~ msgstr "radioInputGroupCss"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "radioCss"
 #~ msgstr "radioCss"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "rangeInputCss"
 #~ msgstr "rangeInputCss"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "ratingCss"
 #~ msgstr "ratingCss"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "sideNavBarCss"
 #~ msgstr "sideNavBarCss"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "sideNavBarItemCss"
 #~ msgstr "sideNavBarItemCss"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "simpleSelectCss"
 #~ msgstr "simpleSelectCss"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "spinnerCss"
 #~ msgstr "spinnerCss"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "tableCss"
 #~ msgstr "tableCss"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "tableBodyCss"
 #~ msgstr "tableBodyCss"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "tableCellCss"
 #~ msgstr "tableCellCss"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "tableColHeaderCss"
 #~ msgstr "tableColHeaderCss"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "tableHeadCss"
 #~ msgstr "tableHeadCss"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "tableRowHeaderCss"
 #~ msgstr "tableRowHeaderCss"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "tableRowCss"
 #~ msgstr "tableRowCss"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "tabsCss"
 #~ msgstr "tabsCss"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "tabsPanelCss"
 #~ msgstr "tabsPanelCss"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "tabsTabCss"
 #~ msgstr "tabsTabCss"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "tagCss"
 #~ msgstr "tagCss"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "textAreaCss"
 #~ msgstr "textAreaCss"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "textInputCss"
 #~ msgstr "textInputCss"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "textCss"
 #~ msgstr "textCss"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "toggleDetailsCss"
 #~ msgstr "toggleDetailsCss"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "toggleGroupCss"
 #~ msgstr "toggleGroupCss"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "tooltipCss"
 #~ msgstr "tooltipCss"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "trayCss"
 #~ msgstr "trayCss"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "treeBrowserCss"
 #~ msgstr "treeBrowserCss"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "viewCss"
 #~ msgstr "viewCss"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "cursorUtilitiesCss"
 #~ msgstr "cursorUtilitiesCss"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "gapCss"
 #~ msgstr "gapCss"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "iconCss"
 #~ msgstr "iconCss"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "layoutUtilitiesCss"
 #~ msgstr "layoutUtilitiesCss"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "maskUtilityCss"
 #~ msgstr "maskUtilityCss"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "overflowUtilitiesCss"
 #~ msgstr "overflowUtilitiesCss"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "positionUtilitiesCss"
 #~ msgstr "positionUtilitiesCss"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "responsiveUtilitiesCss"
 #~ msgstr "responsiveUtilitiesCss"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "screenReaderContentCss"
 #~ msgstr "screenReaderContentCss"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "spacingUtilitiesCss"
 #~ msgstr "spacingUtilitiesCss"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "stackingUtilityCss"
 #~ msgstr "stackingUtilityCss"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "transitionCss"
 #~ msgstr "transitionCss"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "truncateCss"
 #~ msgstr "truncateCss"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "visualDebugCss"
 #~ msgstr "visualDebugCss"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "selectCss"
 #~ msgstr "selectCss"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "elevationCss"
 #~ msgstr "elevationCss"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "focusOutlineCss"
 #~ msgstr "focusOutlineCss"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "baseCss"
 #~ msgstr "baseCss"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "componentsCss"
 #~ msgstr "componentsCss"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "proseCss"
 #~ msgstr "proseCss"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "iconGlyphsCss"
 #~ msgstr "iconGlyphsCss"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "css"
 #~ msgstr "css"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "CssSection"
 #~ msgstr "CssSection"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "ToCssOptions"
 #~ msgstr "ToCssOptions"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "leanCss"
 #~ msgstr "leanCss"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "buildCssFile"
 #~ msgstr "buildCssFile"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "toCss"
 #~ msgstr "toCss"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "dtcg"
 #~ msgstr "dtcg"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "DtcgNode"
 #~ msgstr "DtcgNode"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "themes"
 #~ msgstr "themes"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "byTheme"
 #~ msgstr "byTheme"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "toDtcg"
 #~ msgstr "toDtcg"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "icon-font"
 #~ msgstr "icon-font"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "IconFontResult"
 #~ msgstr "IconFontResult"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "GlyphPath"
 #~ msgstr "GlyphPath"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "buildIconFont"
 #~ msgstr "buildIconFont"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "svgToGlyphPath"
 #~ msgstr "svgToGlyphPath"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "icons"
 #~ msgstr "icons"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "PantokenIcon"
 #~ msgstr "PantokenIcon"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "IconResolverChainOptions"
 #~ msgstr "IconResolverChainOptions"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "iconsByName"
 #~ msgstr "iconsByName"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "resolve"
 #~ msgstr "resolve"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "getIcon"
 #~ msgstr "getIcon"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "buildIconResolverChain"
 #~ msgstr "buildIconResolverChain"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "interactions"
 #~ msgstr "interactions"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "ProgressCircleOptions"
 #~ msgstr "ProgressCircleOptions"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "ProgressCircleHandle"
 #~ msgstr "ProgressCircleHandle"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "RemoveOptions"
 #~ msgstr "RemoveOptions"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "RemoveHandle"
 #~ msgstr "RemoveHandle"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "TooltipOptions"
 #~ msgstr "TooltipOptions"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "TooltipHandle"
 #~ msgstr "TooltipHandle"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "TruncateAutoOptions"
 #~ msgstr "TruncateAutoOptions"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "TruncateAutoHandle"
 #~ msgstr "TruncateAutoHandle"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "CommandHandler"
 #~ msgstr "CommandHandler"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "OnCommand"
 #~ msgstr "OnCommand"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "SPACING_ATTRS"
 #~ msgstr "SPACING_ATTRS"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "initCloseButton"
 #~ msgstr "initCloseButton"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "initInPlaceEdit"
 #~ msgstr "initInPlaceEdit"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "initModal"
 #~ msgstr "initModal"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "initProgressCircle"
 #~ msgstr "initProgressCircle"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "initRemove"
 #~ msgstr "initRemove"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "initResponsiveOverlay"
 #~ msgstr "initResponsiveOverlay"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "initTooltip"
 #~ msgstr "initTooltip"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "syncTruncateAutoLines"
 #~ msgstr "syncTruncateAutoLines"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "initTruncateAuto"
 #~ msgstr "initTruncateAuto"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "makeOnCommand"
 #~ msgstr "makeOnCommand"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "syncInvoker"
 #~ msgstr "syncInvoker"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "resolveSpace"
 #~ msgstr "resolveSpace"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "spacingValue"
 #~ msgstr "spacingValue"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "applySpacing"
 #~ msgstr "applySpacing"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "less"
 #~ msgstr "less"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "ToLessOptions"
 #~ msgstr "ToLessOptions"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "toLess"
 #~ msgstr "toLess"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "scss"
 #~ msgstr "scss"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "ToScssOptions"
 #~ msgstr "ToScssOptions"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "toScss"
 #~ msgstr "toScss"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "stylus"
 #~ msgstr "stylus"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "ToStylusOptions"
 #~ msgstr "ToStylusOptions"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "toStylus"
 #~ msgstr "toStylus"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "tokens"
 #~ msgstr "tokens"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "rebrandTokens"
 #~ msgstr "rebrandTokens"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "canvasTokens"
 #~ msgstr "canvasTokens"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "canvasHighContrastTokens"
 #~ msgstr "canvasHighContrastTokens"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "design"
 #~ msgstr "design"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "figma"
 #~ msgstr "figma"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "FigmaColor"
 #~ msgstr "FigmaColor"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "FigmaVariable"
 #~ msgstr "FigmaVariable"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "FigmaVariablesPayload"
 #~ msgstr "FigmaVariablesPayload"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "ToFigmaOptions"
 #~ msgstr "ToFigmaOptions"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "toFigmaColor"
 #~ msgstr "toFigmaColor"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "toFigmaVariables"
 #~ msgstr "toFigmaVariables"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "swatches"
 #~ msgstr "swatches"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "ToGplOptions"
 #~ msgstr "ToGplOptions"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "Swatch"
 #~ msgstr "Swatch"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "Rgb"
 #~ msgstr "Rgb"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "SketchPalette"
 #~ msgstr "SketchPalette"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "ToSvgOptions"
 #~ msgstr "ToSvgOptions"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "toAse"
 #~ msgstr "toAse"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "toGpl"
 #~ msgstr "toGpl"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "hexToRgb"
 #~ msgstr "hexToRgb"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "toSwatches"
 #~ msgstr "toSwatches"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "toSketchPalette"
 #~ msgstr "toSketchPalette"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "toSvg"
 #~ msgstr "toSvg"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "bundlers"
 #~ msgstr "bundlers"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "next"
 #~ msgstr "next"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "NextConfigLike"
 #~ msgstr "NextConfigLike"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "WithPantokenOptions"
 #~ msgstr "WithPantokenOptions"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "INSTUI_TRANSPILE_PACKAGES"
 #~ msgstr "INSTUI_TRANSPILE_PACKAGES"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "withPantoken"
 #~ msgstr "withPantoken"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "panda"
 #~ msgstr "panda"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "PandaToken"
 #~ msgstr "PandaToken"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "PandaSemanticToken"
 #~ msgstr "PandaSemanticToken"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "PandaPreset"
 #~ msgstr "PandaPreset"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "PandaCategory"
 #~ msgstr "PandaCategory"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "pantokenPreset"
 #~ msgstr "pantokenPreset"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "toPandaPreset"
 #~ msgstr "toPandaPreset"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "postcss"
 #~ msgstr "postcss"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "PantokenPostcssOptions"
 #~ msgstr "PantokenPostcssOptions"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "pantoken"
 #~ msgstr "pantoken"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "tailwind"
 #~ msgstr "tailwind"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "TailwindPreset"
 #~ msgstr "TailwindPreset"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "PantokenPresetOptions"
 #~ msgstr "PantokenPresetOptions"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "vite"
 #~ msgstr "vite"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "PantokenViteOptions"
 #~ msgstr "PantokenViteOptions"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "webpack"
 #~ msgstr "webpack"
@@ -29039,358 +29658,447 @@ msgstr "一個可在懸停時顯示的「檢視全螢幕」按鈕，覆蓋在示
 #~ msgid "Classes"
 #~ msgstr "類別"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "PantokenWebpackPlugin"
 #~ msgstr "PantokenWebpackPlugin"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "PantokenWebpackOptions"
 #~ msgstr "PantokenWebpackOptions"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "plugins"
 #~ msgstr "plugins"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "colors"
 #~ msgstr "colors"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "CssColor"
 #~ msgstr "CssColor"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "alpha"
 #~ msgstr "alpha"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "darken"
 #~ msgstr "darken"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "lighten"
 #~ msgstr "lighten"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "overlayColors"
 #~ msgstr "overlayColors"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "onColor"
 #~ msgstr "onColor"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "custom-components"
 #~ msgstr "custom-components"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "CustomComponentsOptions"
 #~ msgstr "CustomComponentsOptions"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "bannerRules"
 #~ msgstr "bannerRules"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "cardRules"
 #~ msgstr "cardRules"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "customComponents"
 #~ msgstr "customComponents"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "custom-icons"
 #~ msgstr "custom-icons"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "CustomIcon"
 #~ msgstr "CustomIcon"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "CustomIconsOptions"
 #~ msgstr "CustomIconsOptions"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "customIcons"
 #~ msgstr "customIcons"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "deprecations"
 #~ msgstr "deprecations"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "UpstreamVersions"
 #~ msgstr "UpstreamVersions"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "ParsedRef"
 #~ msgstr "ParsedRef"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "shimValue"
 #~ msgstr "shimValue"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "shimEntries"
 #~ msgstr "shimEntries"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "ledgerCovers"
 #~ msgstr "ledgerCovers"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "parseUpstreamRef"
 #~ msgstr "parseUpstreamRef"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "compareVersions"
 #~ msgstr "compareVersions"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "dueForRemoval"
 #~ msgstr "dueForRemoval"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "describeLifecycle"
 #~ msgstr "describeLifecycle"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "deprecationShims"
 #~ msgstr "deprecationShims"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "layouts"
 #~ msgstr "layouts"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "LayoutsOptions"
 #~ msgstr "LayoutsOptions"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "wrapperRules"
 #~ msgstr "wrapperRules"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "LogosOptions"
 #~ msgstr "LogosOptions"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "LogoLayout"
 #~ msgstr "LogoLayout"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "LogoColorMode"
 #~ msgstr "LogoColorMode"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "logosCss"
 #~ msgstr "logosCss"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "getLogoSvg"
 #~ msgstr "getLogoSvg"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "getLogoDataUri"
 #~ msgstr "getLogoDataUri"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "logosPlugin"
 #~ msgstr "logosPlugin"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "primitives"
 #~ msgstr "primitives"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "PrimitiveTokenNames"
 #~ msgstr "PrimitiveTokenNames"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "PrimitivesOptions"
 #~ msgstr "PrimitivesOptions"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "primitivesCss"
 #~ msgstr "primitivesCss"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "simple-icons"
 #~ msgstr "simple-icons"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "SimpleIcon"
 #~ msgstr "SimpleIcon"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "SimpleIconsOptions"
 #~ msgstr "SimpleIconsOptions"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "SimpleIconsRegistry"
 #~ msgstr "SimpleIconsRegistry"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "toExportName"
 #~ msgstr "toExportName"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "defaultRegistry"
 #~ msgstr "defaultRegistry"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "simpleIcons"
 #~ msgstr "simpleIcons"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "stacking"
 #~ msgstr "stacking"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "StackingOptions"
 #~ msgstr "StackingOptions"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "STACKING_LEVELS"
 #~ msgstr "STACKING_LEVELS"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "transition"
 #~ msgstr "transition"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "TransitionOptions"
 #~ msgstr "TransitionOptions"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "visual-debug"
 #~ msgstr "visual-debug"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "VisualDebugOptions"
 #~ msgstr "VisualDebugOptions"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "VISUAL_DEBUG_RULES"
 #~ msgstr "VISUAL_DEBUG_RULES"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "visualDebugRules"
 #~ msgstr "visualDebugRules"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "visualDebug"
 #~ msgstr "visualDebug"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "flatten-property"
 #~ msgstr "flatten-property"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "FlattenPropertyOptions"
 #~ msgstr "FlattenPropertyOptions"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "flattenProperty"
 #~ msgstr "flattenProperty"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "mangle-custom-props"
 #~ msgstr "mangle-custom-props"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "MangleCustomPropsOptions"
 #~ msgstr "MangleCustomPropsOptions"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "MangleMethod"
 #~ msgstr "MangleMethod"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "mangleCustomProps"
 #~ msgstr "mangleCustomProps"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "props-minify"
 #~ msgstr "props-minify"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "PropsMinifyOptions"
 #~ msgstr "PropsMinifyOptions"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "pruneCustomProps"
 #~ msgstr "pruneCustomProps"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "applyMinify"
 #~ msgstr "applyMinify"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "prune-custom-props"
 #~ msgstr "prune-custom-props"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "theme-custom-media"
 #~ msgstr "theme-custom-media"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "ThemeCustomMediaOptions"
 #~ msgstr "ThemeCustomMediaOptions"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "themeCustomMedia"
 #~ msgstr "themeCustomMedia"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "typedoc"
 #~ msgstr "typedoc"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "DEMO_TAG"
 #~ msgstr "DEMO_TAG"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "DEMO_FENCE"
 #~ msgstr "DEMO_FENCE"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "toDemoFence"
 #~ msgstr "toDemoFence"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "rewriteComment"
 #~ msgstr "rewriteComment"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "load"
 #~ msgstr "load"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "workspace-orchestrator"
 #~ msgstr "workspace-orchestrator"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "UpstreamNode"
 #~ msgstr "UpstreamNode"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "FileServerEntry"
 #~ msgstr "FileServerEntry"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "OrchestratorOptions"
 #~ msgstr "OrchestratorOptions"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "matchesFilters"
 #~ msgstr "matchesFilters"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "workspaceOrchestrator"
 #~ msgstr "workspaceOrchestrator"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "CSS"
 #~ msgstr "CSS"
@@ -29403,210 +30111,262 @@ msgstr "一個可在懸停時顯示的「檢視全螢幕」按鈕，覆蓋在示
 #~ msgid "Components"
 #~ msgstr "元件"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "agent-shell"
 #~ msgstr "agent-shell"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "banner"
 #~ msgstr "banner"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "billboard"
 #~ msgstr "billboard"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "breadcrumb"
 #~ msgstr "breadcrumb"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "link"
 #~ msgstr "link"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "byline"
 #~ msgstr "byline"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "card"
 #~ msgstr "card"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "close-button"
 #~ msgstr "close-button"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "context-view"
 #~ msgstr "context-view"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "drawer-layout"
 #~ msgstr "drawer-layout"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "content"
 #~ msgstr "content"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "file-drop"
 #~ msgstr "file-drop"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "form-field"
 #~ msgstr "form-field"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "form-field-group"
 #~ msgstr "form-field-group"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "form-field-messages"
 #~ msgstr "form-field-messages"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "heading"
 #~ msgstr "heading"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "in-place-edit"
 #~ msgstr "in-place-edit"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "input-group"
 #~ msgstr "input-group"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "list"
 #~ msgstr "list"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "item"
 #~ msgstr "item"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "mask"
 #~ msgstr "mask"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "menu"
 #~ msgstr "menu"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "group"
 #~ msgstr "group"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "separator"
 #~ msgstr "separator"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "body"
 #~ msgstr "body"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "footer"
 #~ msgstr "footer"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "header"
 #~ msgstr "header"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "number-input"
 #~ msgstr "number-input"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "pagination"
 #~ msgstr "pagination"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "page"
 #~ msgstr "page"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "progress-circle"
 #~ msgstr "progress-circle"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "radio"
 #~ msgstr "radio"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "radio-input-group"
 #~ msgstr "radio-input-group"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "range-input"
 #~ msgstr "range-input"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "side-nav-bar"
 #~ msgstr "side-nav-bar"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "simple-select"
 #~ msgstr "simple-select"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "table"
 #~ msgstr "table"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "cell"
 #~ msgstr "cell"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "col-header"
 #~ msgstr "col-header"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "head"
 #~ msgstr "head"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "row"
 #~ msgstr "row"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "row-header"
 #~ msgstr "row-header"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "tabs"
 #~ msgstr "tabs"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "panel"
 #~ msgstr "panel"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "tab"
 #~ msgstr "tab"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "text"
 #~ msgstr "text"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "text-area"
 #~ msgstr "text-area"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "text-input"
 #~ msgstr "text-input"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "toggle-details"
 #~ msgstr "toggle-details"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "toggle-group"
 #~ msgstr "toggle-group"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "tree-browser"
 #~ msgstr "tree-browser"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "view"
 #~ msgstr "view"
@@ -29615,42 +30375,52 @@ msgstr "一個可在懸停時顯示的「檢視全螢幕」按鈕，覆蓋在示
 #~ msgid "Utilities"
 #~ msgstr "工具"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "color"
 #~ msgstr "color"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "cursor"
 #~ msgstr "cursor"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "gap"
 #~ msgstr "gap"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "layout"
 #~ msgstr "layout"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "maskglobal"
 #~ msgstr "maskglobal"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "overflow"
 #~ msgstr "overflow"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "position"
 #~ msgstr "position"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "responsive"
 #~ msgstr "responsive"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "screen-reader-content"
 #~ msgstr "screen-reader-content"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "spacing"
 #~ msgstr "spacing"
@@ -29659,42 +30429,52 @@ msgstr "一個可在懸停時顯示的「檢視全螢幕」按鈕，覆蓋在示
 #~ msgid "Rules"
 #~ msgstr "規則"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "base"
 #~ msgstr "base"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "prose"
 #~ msgstr "prose"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "Plugins"
 #~ msgstr "Plugins"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "callout"
 #~ msgstr "callout"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "hero"
 #~ msgstr "hero"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "page-layout"
 #~ msgstr "page-layout"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "rubric-note"
 #~ msgstr "rubric-note"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "testimonial"
 #~ msgstr "testimonial"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "two-column"
 #~ msgstr "two-column"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "wrapper"
 #~ msgstr "wrapper"
@@ -29963,546 +30743,682 @@ msgstr "一個可在懸停時顯示的「檢視全螢幕」按鈕，覆蓋在示
 #~ msgid "Experimental"
 #~ msgstr "實驗性"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "LogoLang"
 #~ msgstr "LogoLang"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "BuildIconFontOptions"
 #~ msgstr "BuildIconFontOptions"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "RunnerLabels"
 #~ msgstr "RunnerLabels"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "shadcnTailwindV4Css"
 #~ msgstr "shadcnTailwindV4Css"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "toShadcnTailwindV4Css"
 #~ msgstr "toShadcnTailwindV4Css"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "PageLayoutImagePlaceholder"
 #~ msgstr "PageLayoutImagePlaceholder"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "ContentClassesPluginOptions"
 #~ msgstr "ContentClassesPluginOptions"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "LayoutImageAttributes"
 #~ msgstr "LayoutImageAttributes"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "PantokenPluginOptions"
 #~ msgstr "PantokenPluginOptions"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "TinymceStrings"
 #~ msgstr "TinymceStrings"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "PantokenFontSize"
 #~ msgstr "PantokenFontSize"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "LayoutImageResolver"
 #~ msgstr "LayoutImageResolver"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "PANTOKEN_ICON_PACK_NAME"
 #~ msgstr "PANTOKEN_ICON_PACK_NAME"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "ICON_SOURCES"
 #~ msgstr "ICON_SOURCES"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "SOURCE_LABELS"
 #~ msgstr "SOURCE_LABELS"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "CONTENT_CLASSES_PLUGIN_NAME"
 #~ msgstr "CONTENT_CLASSES_PLUGIN_NAME"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "PANTOKEN_COMMANDS"
 #~ msgstr "PANTOKEN_COMMANDS"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "FULLSCREEN_FOOTER_PLUGIN_NAME"
 #~ msgstr "FULLSCREEN_FOOTER_PLUGIN_NAME"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "FULLSCREEN_FOOTER_STATUSBAR_NAME"
 #~ msgstr "FULLSCREEN_FOOTER_STATUSBAR_NAME"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "ICONS_COMMAND"
 #~ msgstr "ICONS_COMMAND"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "DEFAULT_ICON_TRIGGER"
 #~ msgstr "DEFAULT_ICON_TRIGGER"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "PANTOKEN_PLUGIN_NAME"
 #~ msgstr "PANTOKEN_PLUGIN_NAME"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "PANTOKEN_TOOLBAR_NAME"
 #~ msgstr "PANTOKEN_TOOLBAR_NAME"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "PANTOKEN_ICON"
 #~ msgstr "PANTOKEN_ICON"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "SEARCHREPLACE_FOOTER_PLUGIN_NAME"
 #~ msgstr "SEARCHREPLACE_FOOTER_PLUGIN_NAME"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "SEARCHREPLACE_FOOTER_STATUSBAR_NAME"
 #~ msgstr "SEARCHREPLACE_FOOTER_STATUSBAR_NAME"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "SUP_SUB_PLUGIN_NAME"
 #~ msgstr "SUP_SUB_PLUGIN_NAME"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "SUP_SUB_TOOLBAR_NAME"
 #~ msgstr "SUP_SUB_TOOLBAR_NAME"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "pageTemplates"
 #~ msgstr "pageTemplates"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "VISUALBLOCKS_FOOTER_PLUGIN_NAME"
 #~ msgstr "VISUALBLOCKS_FOOTER_PLUGIN_NAME"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "VISUALBLOCKS_FOOTER_STATUSBAR_NAME"
 #~ msgstr "VISUALBLOCKS_FOOTER_STATUSBAR_NAME"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "TINYMCE_STRINGS"
 #~ msgstr "TINYMCE_STRINGS"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "registerPantokenIconPack"
 #~ msgstr "registerPantokenIconPack"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "getUsedIconCdnFiles"
 #~ msgstr "getUsedIconCdnFiles"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "humanizeIconName"
 #~ msgstr "humanizeIconName"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "buildIconMarkup"
 #~ msgstr "buildIconMarkup"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "getIconImageSrc"
 #~ msgstr "getIconImageSrc"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "filterIcons"
 #~ msgstr "filterIcons"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "createContentClassesPlugin"
 #~ msgstr "createContentClassesPlugin"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "createFullscreenFooterPlugin"
 #~ msgstr "createFullscreenFooterPlugin"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "materializeLayout"
 #~ msgstr "materializeLayout"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "createPantokenPlugin"
 #~ msgstr "createPantokenPlugin"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "createSearchReplaceFooterPlugin"
 #~ msgstr "createSearchReplaceFooterPlugin"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "createSupSubPlugin"
 #~ msgstr "createSupSubPlugin"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "createVisualBlocksFooterPlugin"
 #~ msgstr "createVisualBlocksFooterPlugin"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "ensureComponentsJsonRegistry"
 #~ msgstr "ensureComponentsJsonRegistry"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "resolveRegistryItemNames"
 #~ msgstr "resolveRegistryItemNames"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "runAdd"
 #~ msgstr "runAdd"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "runCreate"
 #~ msgstr "runCreate"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "Scheme"
 #~ msgstr "Scheme"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "THEME_ATTR"
 #~ msgstr "THEME_ATTR"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "SCHEME_ATTR"
 #~ msgstr "SCHEME_ATTR"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "COLOR_ATTR"
 #~ msgstr "COLOR_ATTR"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "BOUNDARY_ATTR"
 #~ msgstr "BOUNDARY_ATTR"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "INSTANCE_ATTR"
 #~ msgstr "INSTANCE_ATTR"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "SCOPE_ATTRS"
 #~ msgstr "SCOPE_ATTRS"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "SCOPE_LAYERS"
 #~ msgstr "SCOPE_LAYERS"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "BOUNDARY_CLASS"
 #~ msgstr "BOUNDARY_CLASS"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "isScheme"
 #~ msgstr "isScheme"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "themeClass"
 #~ msgstr "themeClass"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "schemeClass"
 #~ msgstr "schemeClass"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "colorClass"
 #~ msgstr "colorClass"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "themeScopeSelector"
 #~ msgstr "themeScopeSelector"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "schemeScopeSelector"
 #~ msgstr "schemeScopeSelector"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "colorScopeSelector"
 #~ msgstr "colorScopeSelector"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "themeScopeSelectors"
 #~ msgstr "themeScopeSelectors"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "schemeScopeSelectors"
 #~ msgstr "schemeScopeSelectors"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "colorScopeSelectors"
 #~ msgstr "colorScopeSelectors"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "aiGradientCss"
 #~ msgstr "aiGradientCss"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "ScopedCssOptions"
 #~ msgstr "ScopedCssOptions"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "MultiScopeCssOptions"
 #~ msgstr "MultiScopeCssOptions"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "CssEmitTarget"
 #~ msgstr "CssEmitTarget"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "LAYERS"
 #~ msgstr "LAYERS"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "layerOrderCss"
 #~ msgstr "layerOrderCss"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "propertiesCss"
 #~ msgstr "propertiesCss"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "scopedThemeCss"
 #~ msgstr "scopedThemeCss"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "scopedSchemeCss"
 #~ msgstr "scopedSchemeCss"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "schemesCss"
 #~ msgstr "schemesCss"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "multiScopeCss"
 #~ msgstr "multiScopeCss"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "lightBranch"
 #~ msgstr "lightBranch"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "darkBranch"
 #~ msgstr "darkBranch"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "schemeOverrideTokens"
 #~ msgstr "schemeOverrideTokens"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "themedTokens"
 #~ msgstr "themedTokens"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "lucideIcons"
 #~ msgstr "lucideIcons"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "TabsHandle"
 #~ msgstr "TabsHandle"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "initTabs"
 #~ msgstr "initTabs"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "scope"
 #~ msgstr "scope"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "ScopeConfig"
 #~ msgstr "ScopeConfig"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "ResolvedScope"
 #~ msgstr "ResolvedScope"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "ScopeMessage"
 #~ msgstr "ScopeMessage"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "CreateScopeOptions"
 #~ msgstr "CreateScopeOptions"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "PantokenScope"
 #~ msgstr "PantokenScope"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "ConnectScopeOptions"
 #~ msgstr "ConnectScopeOptions"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "DEFAULT_INSTANCE"
 #~ msgstr "DEFAULT_INSTANCE"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "ensureProperties"
 #~ msgstr "ensureProperties"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "hasProperties"
 #~ msgstr "hasProperties"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "observeScope"
 #~ msgstr "observeScope"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "resolveScope"
 #~ msgstr "resolveScope"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "resolveInstance"
 #~ msgstr "resolveInstance"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "resolveScheme"
 #~ msgstr "resolveScheme"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "getScope"
 #~ msgstr "getScope"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "createScope"
 #~ msgstr "createScope"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "connectScope"
 #~ msgstr "connectScope"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "agentShellRules"
 #~ msgstr "agentShellRules"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "aiGradientRules"
 #~ msgstr "aiGradientRules"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "custom-theme-colors"
 #~ msgstr "custom-theme-colors"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "CustomThemeColorsOptions"
 #~ msgstr "CustomThemeColorsOptions"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "CustomThemeColorsCssOptions"
 #~ msgstr "CustomThemeColorsCssOptions"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "PantokenColorNamespace"
 #~ msgstr "PantokenColorNamespace"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "COLOR_KEYS"
 #~ msgstr "COLOR_KEYS"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "customThemeColorsCss"
 #~ msgstr "customThemeColorsCss"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "customThemeColors"
 #~ msgstr "customThemeColors"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "pageLayoutTemplates"
 #~ msgstr "pageLayoutTemplates"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "calloutRules"
 #~ msgstr "calloutRules"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "calloutTemplate"
 #~ msgstr "calloutTemplate"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "heroRules"
 #~ msgstr "heroRules"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "heroTemplate"
 #~ msgstr "heroTemplate"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "pageLayoutRules"
 #~ msgstr "pageLayoutRules"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "pageLayoutTemplate"
 #~ msgstr "pageLayoutTemplate"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "rubricNoteRules"
 #~ msgstr "rubricNoteRules"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "rubricNoteTemplate"
 #~ msgstr "rubricNoteTemplate"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "testimonialRules"
 #~ msgstr "testimonialRules"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "testimonialTemplate"
 #~ msgstr "testimonialTemplate"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "twoColumnRules"
 #~ msgstr "twoColumnRules"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "twoColumnTemplate"
 #~ msgstr "twoColumnTemplate"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "wrapperTemplate"
 #~ msgstr "wrapperTemplate"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "renderPageLayout"
 #~ msgstr "renderPageLayout"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "getLogoMeta"
 #~ msgstr "getLogoMeta"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "lucide-lab"
 #~ msgstr "lucide-lab"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "LucideLabOptions"
 #~ msgstr "LucideLabOptions"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "LucideLabNode"
 #~ msgstr "LucideLabNode"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "LucideLabRegistry"
 #~ msgstr "LucideLabRegistry"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "svgOf"
 #~ msgstr "svgOf"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "lucideLab"
 #~ msgstr "lucideLab"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "checkbox"
 #~ msgstr "checkbox"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:text"
 #~ msgid "ai-gradient"
 #~ msgstr "ai-gradient"
@@ -30715,206 +31631,257 @@ msgctxt "docs.api:prose"
 msgid "Browser script URLs to load after the example markup (interaction bundles, when needed)."
 msgstr "在範例標記之後要載入的瀏覽器腳本 URL（互動套件，必要時)。"
 
+#, pantoken-verbatim
 msgctxt "docs.api:text"
 msgid "EmailCssOptions"
 msgstr "EmailCssOptions"
 
+#, pantoken-verbatim
 msgctxt "docs.api:text"
 msgid "InlineEmailHtmlOptions"
 msgstr "InlineEmailHtmlOptions"
 
+#, pantoken-verbatim
 msgctxt "docs.api:text"
 msgid "EmailClient"
 msgstr "EmailClient"
 
+#, pantoken-verbatim
 msgctxt "docs.api:text"
 msgid "light"
 msgstr "light"
 
+#, pantoken-verbatim
 msgctxt "docs.api:text"
 msgid "inlineEmailHtml"
 msgstr "inlineEmailHtml"
 
+#, pantoken-verbatim
 msgctxt "docs.api:text"
 msgid "GlyphSyncTarget"
 msgstr "GlyphSyncTarget"
 
+#, pantoken-verbatim
 msgctxt "docs.api:text"
 msgid "PRODUCT_LABELS"
 msgstr "PRODUCT_LABELS"
 
+#, pantoken-verbatim
 msgctxt "docs.api:text"
 msgid "retargetContentStylesheets"
 msgstr "retargetContentStylesheets"
 
+#, pantoken-verbatim
 msgctxt "docs.api:text"
 msgid "normalizeGlyphHtml"
 msgstr "normalizeGlyphHtml"
 
+#, pantoken-verbatim
 msgctxt "docs.api:text"
 msgid "injectUsedGlyphAssets"
 msgstr "injectUsedGlyphAssets"
 
+#, pantoken-verbatim
 msgctxt "docs.api:text"
 msgid "registerGlyphSync"
 msgstr "registerGlyphSync"
 
+#, pantoken-verbatim
 msgctxt "docs.api:text"
 msgid "logoVariantLabel"
 msgstr "logoVariantLabel"
 
+#, pantoken-verbatim
 msgctxt "docs.api:text"
 msgid "filterLogos"
 msgstr "filterLogos"
 
+#, pantoken-verbatim
 msgctxt "docs.api:text"
 msgid "getLogoCdnFile"
 msgstr "getLogoCdnFile"
 
+#, pantoken-verbatim
 msgctxt "docs.api:text"
 msgid "buildLogoMarkup"
 msgstr "buildLogoMarkup"
 
+#, pantoken-verbatim
 msgctxt "docs.api:text"
 msgid "getUsedLogoCdnFiles"
 msgstr "getUsedLogoCdnFiles"
 
+#, pantoken-verbatim
 msgctxt "docs.api:text"
 msgid "modifyExpression"
 msgstr "modifyExpression"
 
+#, pantoken-verbatim
 msgctxt "docs.api:text"
 msgid "inline-styles"
 msgstr "inline-styles"
 
+#, pantoken-verbatim
 msgctxt "docs.api:text"
 msgid "InlineHtmlOptions"
 msgstr "InlineHtmlOptions"
 
+#, pantoken-verbatim
 msgctxt "docs.api:text"
 msgid "inlineHtml"
 msgstr "inlineHtml"
 
+#, pantoken-verbatim
 msgctxt "docs.api:text"
 msgid "InPlaceEditOptions"
 msgstr "InPlaceEditOptions"
 
+#, pantoken-verbatim
 msgctxt "docs.api:text"
 msgid "SegmentedControlOptions"
 msgstr "SegmentedControlOptions"
 
+#, pantoken-verbatim
 msgctxt "docs.api:text"
 msgid "SegmentedControlHandle"
 msgstr "SegmentedControlHandle"
 
+#, pantoken-verbatim
 msgctxt "docs.api:text"
 msgid "SkeletonLoadingState"
 msgstr "SkeletonLoadingState"
 
+#, pantoken-verbatim
 msgctxt "docs.api:text"
 msgid "SkeletonLoadingOptions"
 msgstr "SkeletonLoadingOptions"
 
+#, pantoken-verbatim
 msgctxt "docs.api:text"
 msgid "SkeletonLoadingHandle"
 msgstr "SkeletonLoadingHandle"
 
+#, pantoken-verbatim
 msgctxt "docs.api:text"
 msgid "InPlaceEditInputType"
 msgstr "InPlaceEditInputType"
 
+#, pantoken-verbatim
 msgctxt "docs.api:text"
 msgid "initSegmentedControl"
 msgstr "initSegmentedControl"
 
+#, pantoken-verbatim
 msgctxt "docs.api:text"
 msgid "initSkeletonLoading"
 msgstr "initSkeletonLoading"
 
+#, pantoken-verbatim
 msgctxt "docs.api:text"
 msgid "buttonSetRules"
 msgstr "buttonSetRules"
 
+#, pantoken-verbatim
 msgctxt "docs.api:text"
 msgid "logoRules"
 msgstr "logoRules"
 
+#, pantoken-verbatim
 msgctxt "docs.api:text"
 msgid "segmentedControlRules"
 msgstr "segmentedControlRules"
 
+#, pantoken-verbatim
 msgctxt "docs.api:text"
 msgid "skeletonLoaderRules"
 msgstr "skeletonLoaderRules"
 
+#, pantoken-verbatim
 msgctxt "docs.api:text"
 msgid "breakpointDeclarations"
 msgstr "breakpointDeclarations"
 
+#, pantoken-verbatim
 msgctxt "docs.api:text"
 msgid "ReferenceCurve"
 msgstr "ReferenceCurve"
 
+#, pantoken-verbatim
 msgctxt "docs.api:text"
 msgid "CustomColorScale"
 msgstr "CustomColorScale"
 
+#, pantoken-verbatim
 msgctxt "docs.api:text"
 msgid "CustomColorCssOptions"
 msgstr "CustomColorCssOptions"
 
+#, pantoken-verbatim
 msgctxt "docs.api:text"
 msgid "CUSTOM_COLOR_KEY"
 msgstr "CUSTOM_COLOR_KEY"
 
+#, pantoken-verbatim
 msgctxt "docs.api:text"
 msgid "isHexColor"
 msgstr "isHexColor"
 
+#, pantoken-verbatim
 msgctxt "docs.api:text"
 msgid "deriveScale"
 msgstr "deriveScale"
 
+#, pantoken-verbatim
 msgctxt "docs.api:text"
 msgid "customColorReferenceCurve"
 msgstr "customColorReferenceCurve"
 
+#, pantoken-verbatim
 msgctxt "docs.api:text"
 msgid "deriveCustomColorScale"
 msgstr "deriveCustomColorScale"
 
+#, pantoken-verbatim
 msgctxt "docs.api:text"
 msgid "customColorCss"
 msgstr "customColorCss"
 
+#, pantoken-verbatim
 msgctxt "docs.api:text"
 msgid "customColorRemapCss"
 msgstr "customColorRemapCss"
 
+#, pantoken-verbatim
 msgctxt "docs.api:text"
 msgid "button-set"
 msgstr "button-set"
 
+#, pantoken-verbatim
 msgctxt "docs.api:text"
 msgid "day"
 msgstr "day"
 
+#, pantoken-verbatim
 msgctxt "docs.api:text"
 msgid "segmented-control"
 msgstr "segmented-control"
 
+#, pantoken-verbatim
 msgctxt "docs.api:text"
 msgid "segment"
 msgstr "segment"
 
+#, pantoken-verbatim
 msgctxt "docs.api:text"
 msgid "skeleton-loader"
 msgstr "skeleton-loader"
 
+#, pantoken-verbatim
 msgctxt "docs.api:text"
 msgid "logo"
 msgstr "logo"
 
+#, pantoken-verbatim
 msgctxt "docs.api:text"
 msgid "breakpoints"
 msgstr "breakpoints"
@@ -30931,6 +31898,7 @@ msgctxt "docs.api:prose"
 msgid "Target: PostCSS. Minimum host version: `8.0.0`. Tested through `8.5.28`. Newer releases require review."
 msgstr "Target: PostCSS. Minimum host version: `8.0.0`. Tested through `8.5.28`. Newer releases require review."
 
+#, pantoken-verbatim
 msgctxt "docs.api:prose"
 msgid "Target: Tailwind CSS. Minimum host version: `4.0.17`. Tested through `4.3.3`. Newer releases require review."
 msgstr "Target: Tailwind CSS. Minimum host version: `4.0.17`. Tested through `4.3.3`. Newer releases require review."
@@ -30939,54 +31907,67 @@ msgctxt "docs.api:prose"
 msgid "Target: Vite. Minimum host version: `8.0.0`. Tested through `8.3.1`. Newer releases require review."
 msgstr "Target: Vite. Minimum host version: `8.0.0`. Tested through `8.3.1`. Newer releases require review."
 
+#, pantoken-verbatim
 msgctxt "docs.api:prose"
 msgid "Target: webpack. Current format: `Emitted token CSS build asset`. Minimum host version: `5.61.0`. Tested through `5.111.1`. Newer releases require review."
 msgstr "Target: webpack. Current format: `Emitted token CSS build asset`. Minimum host version: `5.61.0`. Tested through `5.111.1`. Newer releases require review."
 
+#, pantoken-verbatim
 msgctxt "docs.api:prose"
 msgid "Target: Android resources. Current format: `Generated colors, dimensions, and VectorDrawable compile and link with Android build-tools`. Minimum host version: `API 35 / build-tools 35.0.0`. Tested through `API 35 / build-tools 35.0.0`. Newer releases require review."
 msgstr "Target: Android resources. Current format: `Generated colors, dimensions, and VectorDrawable compile and link with Android build-tools`. Minimum host version: `API 35 / build-tools 35.0.0`. Tested through `API 35 / build-tools 35.0.0`. Newer releases require review."
 
+#, pantoken-verbatim
 msgctxt "docs.api:prose"
 msgid "Target: Canvas Theme Editor. Host compatibility has not yet been verified."
 msgstr "Target: Canvas Theme Editor. Host compatibility has not yet been verified."
 
+#, pantoken-verbatim
 msgctxt "docs.api:prose"
 msgid "Target: Jetpack Compose. Current format: `Generated Color and Dp token object compiles in an Android library module`. Minimum host version: `Kotlin 2.1.10 / Compose UI 1.8.2 / Android API 35`. Tested through `Kotlin 2.1.10 / Compose UI 1.8.2 / Android API 35`. Newer releases require review."
 msgstr "Target: Jetpack Compose. Current format: `Generated Color and Dp token object compiles in an Android library module`. Minimum host version: `Kotlin 2.1.10 / Compose UI 1.8.2 / Android API 35`. Tested through `Kotlin 2.1.10 / Compose UI 1.8.2 / Android API 35`. Newer releases require review."
 
+#, pantoken-verbatim
 msgctxt "docs.api:prose"
 msgid "Target: Drupal themes. Current format: `Drupal core discovers generated theme; InfoParser and Symfony YAML accept metadata`. Minimum host version: `10.6.18`. Tested through `11.3.2`. Newer releases require review."
 msgstr "Target: Drupal themes. Current format: `Drupal core discovers generated theme; InfoParser and Symfony YAML accept metadata`. Minimum host version: `10.6.18`. Tested through `11.3.2`. Newer releases require review."
 
+#, pantoken-verbatim
 msgctxt "docs.api:prose"
 msgid "Target: HTML email. Host compatibility has not yet been verified."
 msgstr "Target: HTML email. Host compatibility has not yet been verified."
 
+#, pantoken-verbatim
 msgctxt "docs.api:prose"
 msgid "Target: Flutter. Host compatibility has not yet been verified."
 msgstr "Target: Flutter. Host compatibility has not yet been verified."
 
+#, pantoken-verbatim
 msgctxt "docs.api:prose"
 msgid "Target: Hugo. Current format: `Hugo Pipes builds the Pantoken token stylesheet`. Minimum host version: `0.165.0`. Tested through `0.165.0`. Newer releases require review."
 msgstr "Target: Hugo. Current format: `Hugo Pipes builds the Pantoken token stylesheet`. Minimum host version: `0.165.0`. Tested through `0.165.0`. Newer releases require review."
 
+#, pantoken-verbatim
 msgctxt "docs.api:prose"
 msgid "Target: Jekyll. Current format: `Jekyll builds the generated Sass partial into site CSS`. Minimum host version: `4.4.1`. Tested through `4.4.1`. Newer releases require review."
 msgstr "Target: Jekyll. Current format: `Jekyll builds the generated Sass partial into site CSS`. Minimum host version: `4.4.1`. Tested through `4.4.1`. Newer releases require review."
 
+#, pantoken-verbatim
 msgctxt "docs.api:prose"
 msgid "Target: Rust GUI frameworks. Current format: `Generated egui Color32 accessors and iced_core Color constants compile with the Rust toolchain`. Minimum host version: `1.95.0`. Tested through `1.95.0`. Newer releases require review."
 msgstr "Target: Rust GUI frameworks. Current format: `Generated egui Color32 accessors and iced_core Color constants compile with the Rust toolchain`. Minimum host version: `1.95.0`. Tested through `1.95.0`. Newer releases require review."
 
+#, pantoken-verbatim
 msgctxt "docs.api:prose"
 msgid "Target: Swift iOS. Current format: `UIKit SwiftPM module, runtime token check, and compiled Icons.xcassets`. Tested environment: `Xcode 27.0 (27A266a), Swift 6.4, iOS Simulator SDK/runtime 27.0, iPhone 18 Pro, arm64 iOS 15 deployment target`. Runtime tested only on iOS Simulator 27.0; this does not establish an iOS 15 runtime floor. No watchOS or tvOS claim."
 msgstr "Target: Swift iOS. Current format: `UIKit SwiftPM module, runtime token check, and compiled Icons.xcassets`. Tested environment: `Xcode 27.0 (27A266a), Swift 6.4, iOS Simulator SDK/runtime 27.0, iPhone 18 Pro, arm64 iOS 15 deployment target`. Runtime tested only on iOS Simulator 27.0; this does not establish an iOS 15 runtime floor. No watchOS or tvOS claim."
 
+#, pantoken-verbatim
 msgctxt "docs.api:prose"
 msgid "Target: Vanilla Forums. Host compatibility has not yet been verified."
 msgstr "Target: Vanilla Forums. Host compatibility has not yet been verified."
 
+#, pantoken-verbatim
 msgctxt "docs.api:prose"
 msgid "Target: WordPress block themes. Current format: `theme.json v3`. Minimum host version: `6.6`. Tested through `7.1.2`. Newer releases require review."
 msgstr "Target: WordPress block themes. Current format: `theme.json v3`. Minimum host version: `6.6`. Tested through `7.1.2`. Newer releases require review."
@@ -30999,22 +31980,27 @@ msgctxt "docs.api:prose"
 msgid "Target: Astro / Starlight. Current format: `Built Starlight page with injected token stylesheet (Astro 5 and 7)`. Minimum host version: `0.35.0`. Tested through `0.42.4`. Newer releases require review."
 msgstr "Target: Astro / Starlight. Current format: `Built Starlight page with injected token stylesheet (Astro 5 and 7)`. Minimum host version: `0.35.0`. Tested through `0.42.4`. Newer releases require review."
 
+#, pantoken-verbatim
 msgctxt "docs.api:prose"
 msgid "Target: Bootstrap. Current format: `CSS variables: body + primary button`. Minimum host version: `5.2.0`. Tested through `5.3.8`. Newer releases require review."
 msgstr "Target: Bootstrap. Current format: `CSS variables: body + primary button`. Minimum host version: `5.2.0`. Tested through `5.3.8`. Newer releases require review."
 
+#, pantoken-verbatim
 msgctxt "docs.api:prose"
 msgid "Target: Emotion CSS-in-JS. Current format: `ThemeProvider SSR emits the Pantoken token variable`. Minimum host version: `11.14.0`. Tested through `11.14.0`. Newer releases require review."
 msgstr "Target: Emotion CSS-in-JS. Current format: `ThemeProvider SSR emits the Pantoken token variable`. Minimum host version: `11.14.0`. Tested through `11.14.0`. Newer releases require review."
 
+#, pantoken-verbatim
 msgctxt "docs.api:prose"
 msgid "Target: Docusaurus theme-classic. Current format: `Infima CSS-variable bridge: primary and background`. Minimum host version: `3.0.0`. Tested through `3.10.2`. Newer releases require review."
 msgstr "Target: Docusaurus theme-classic. Current format: `Infima CSS-variable bridge: primary and background`. Minimum host version: `3.0.0`. Tested through `3.10.2`. Newer releases require review."
 
+#, pantoken-verbatim
 msgctxt "docs.api:prose"
 msgid "Target: Foundation for Sites. Current format: `Concrete Sass settings + variable-backed CSS overlay`. Minimum host version: `6.1.2`. Tested through `6.9.0`. Newer releases require review."
 msgstr "Target: Foundation for Sites. Current format: `Concrete Sass settings + variable-backed CSS overlay`. Minimum host version: `6.1.2`. Tested through `6.9.0`. Newer releases require review."
 
+#, pantoken-verbatim
 msgctxt "docs.api:prose"
 msgid "Target: markdown-it. Minimum host version: `14.0.0`. Tested through `15.0.2`. Newer releases require review."
 msgstr "Target: markdown-it. Minimum host version: `14.0.0`. Tested through `15.0.2`. Newer releases require review."
@@ -31023,54 +32009,67 @@ msgctxt "docs.api:prose"
 msgid "Target: Mintlify docs.json. Current format: `Official CLI validates generated colors and background theme config`. Minimum host version: `4.0.1555`. Tested through `4.0.1557`. Newer releases require review."
 msgstr "Target: Mintlify docs.json. Current format: `Official CLI validates generated colors and background theme config`. Minimum host version: `4.0.1555`. Tested through `4.0.1557`. Newer releases require review."
 
+#, pantoken-verbatim
 msgctxt "docs.api:prose"
 msgid "Target: Material UI. Current format: `Concrete createTheme palettes (MUI 5, 6, 7, 9)`. Minimum host version: `5.0.0`. Tested through `9.4.0`. Newer releases require review."
 msgstr "Target: Material UI. Current format: `Concrete createTheme palettes (MUI 5, 6, 7, 9)`. Minimum host version: `5.0.0`. Tested through `9.4.0`. Newer releases require review."
 
+#, pantoken-verbatim
 msgctxt "docs.api:prose"
 msgid "Target: Pendo. Host compatibility has not yet been verified."
 msgstr "Target: Pendo. Host compatibility has not yet been verified."
 
+#, pantoken-verbatim
 msgctxt "docs.api:prose"
 msgid "Target: React. Current format: `SSR-rendered Icon custom element and token fallback`. Minimum host version: `19.3.0`. Tested through `19.3.0`. Newer releases require review."
 msgstr "Target: React. Current format: `SSR-rendered Icon custom element and token fallback`. Minimum host version: `19.3.0`. Tested through `19.3.0`. Newer releases require review."
 
+#, pantoken-verbatim
 msgctxt "docs.api:prose"
 msgid "Target: react-markdown. Current format: `SSR-rendered InstUI heading, icon, and color swatch with React 19.3.0`. Minimum host version: `10.1.0`. Tested through `10.1.0`. Newer releases require review."
 msgstr "Target: react-markdown. Current format: `SSR-rendered InstUI heading, icon, and color swatch with React 19.3.0`. Minimum host version: `10.1.0`. Tested through `10.1.0`. Newer releases require review."
 
+#, pantoken-verbatim
 msgctxt "docs.api:prose"
 msgid "Target: React Native. Host compatibility has not yet been verified."
 msgstr "Target: React Native. Host compatibility has not yet been verified."
 
+#, pantoken-verbatim
 msgctxt "docs.api:prose"
 msgid "Target: rehype. Current format: `HAST + raw SVG`. Minimum host version: `13.0.0`. Tested through `13.0.2`. Newer releases require review."
 msgstr "Target: rehype. Current format: `HAST + raw SVG`. Minimum host version: `13.0.0`. Tested through `13.0.2`. Newer releases require review."
 
+#, pantoken-verbatim
 msgctxt "docs.api:prose"
 msgid "Target: shadcn/ui CSS variables. Current format: `Tailwind 4.3.3 compiles the Pantoken primary theme alias`. Minimum host version: `4.3.3`. Tested through `4.3.3`. Newer releases require review."
 msgstr "Target: shadcn/ui CSS variables. Current format: `Tailwind 4.3.3 compiles the Pantoken primary theme alias`. Minimum host version: `4.3.3`. Tested through `4.3.3`. Newer releases require review."
 
+#, pantoken-verbatim
 msgctxt "docs.api:prose"
 msgid "Target: Storybook theming. Current format: `Storybook ThemeVars constructor accepts light and dark Pantoken themes`. Minimum host version: `8.6.14`. Tested through `8.6.14`. Newer releases require review."
 msgstr "Target: Storybook theming. Current format: `Storybook ThemeVars constructor accepts light and dark Pantoken themes`. Minimum host version: `8.6.14`. Tested through `8.6.14`. Newer releases require review."
 
+#, pantoken-verbatim
 msgctxt "docs.api:prose"
 msgid "Target: Svelte. Current format: `Icon action component compiles and SSR renders on Svelte 4 and 5`. Minimum host version: `4.2.20`. Tested through `5.57.1`. Newer releases require review."
 msgstr "Target: Svelte. Current format: `Icon action component compiles and SSR renders on Svelte 4 and 5`. Minimum host version: `4.2.20`. Tested through `5.57.1`. Newer releases require review."
 
+#, pantoken-verbatim
 msgctxt "docs.api:prose"
 msgid "Target: TinyMCE PluginManager. Current format: `Pantoken plugin registration and callback initialization`. Minimum host version: `8.9.2`. Tested through `8.9.2`. Newer releases require review."
 msgstr "Target: TinyMCE PluginManager. Current format: `Pantoken plugin registration and callback initialization`. Minimum host version: `8.9.2`. Tested through `8.9.2`. Newer releases require review."
 
+#, pantoken-verbatim
 msgctxt "docs.api:prose"
 msgid "Target: VitePress. Current format: `Built site CSS includes the Pantoken primary-brand bridge`. Minimum host version: `1.6.4`. Tested through `1.6.4`. Newer releases require review."
 msgstr "Target: VitePress. Current format: `Built site CSS includes the Pantoken primary-brand bridge`. Minimum host version: `1.6.4`. Tested through `1.6.4`. Newer releases require review."
 
+#, pantoken-verbatim
 msgctxt "docs.api:prose"
 msgid "Target: Vue. Current format: `Plugin installation, custom-element configuration, and SSR output`. Minimum host version: `3.0.0`. Tested through `3.5.43`. Newer releases require review."
 msgstr "Target: Vue. Current format: `Plugin installation, custom-element configuration, and SSR output`. Minimum host version: `3.0.0`. Tested through `3.5.43`. Newer releases require review."
 
+#, pantoken-verbatim
 msgctxt "docs.api:prose"
 msgid "Target: Web Components. Current format: `Custom-element registration and button shadow output`. Tested environment: `Node 26.10.0 with happy-dom 20.14.5`. Real-browser rendering and interaction behavior are not verified."
 msgstr "Target: Web Components. Current format: `Custom-element registration and button shadow output`. Tested environment: `Node 26.10.0 with happy-dom 20.14.5`. Real-browser rendering and interaction behavior are not verified."
@@ -31079,26 +32078,348 @@ msgctxt "docs.api:prose"
 msgid "Target: Next.js. Current format: `Production build transpiling and rendering Instructure UI 11.7.8 with React 19.3.0`. Minimum host version: `16.0.0`. Tested through `16.3.8`. Newer releases require review."
 msgstr "Target: Next.js. Current format: `Production build transpiling and rendering Instructure UI 11.7.8 with React 19.3.0`. Minimum host version: `16.0.0`. Tested through `16.3.8`. Newer releases require review."
 
+#, pantoken-verbatim
 msgctxt "docs.api:prose"
 msgid "Target: Panda CSS. Current format: `Panda token utility extraction from the Pantoken preset`. Minimum host version: `1.12.1`. Tested through `2.1.1`. Newer releases require review."
 msgstr "Target: Panda CSS. Current format: `Panda token utility extraction from the Pantoken preset`. Minimum host version: `1.12.1`. Tested through `2.1.1`. Newer releases require review."
 
+#, pantoken-verbatim
 msgctxt "docs.api:prose"
 msgid "Target: PostCSS. Minimum host version: `8.0.0`. Tested through `8.5.29`. Newer releases require review."
 msgstr "Target: PostCSS. Minimum host version: `8.0.0`. Tested through `8.5.29`. Newer releases require review."
 
+#, pantoken-verbatim
 msgctxt "docs.api:prose"
 msgid "Target: Vite. Minimum host version: `8.0.0`. Tested through `8.3.2`. Newer releases require review."
 msgstr "Target: Vite. Minimum host version: `8.0.0`. Tested through `8.3.2`. Newer releases require review."
 
+#, pantoken-verbatim
 msgctxt "docs.api:prose"
 msgid "Target: Angular. Current format: `CUSTOM_ELEMENTS_SCHEMA template compilation (Angular 16.2.12 / TS 5.1.6; Angular 22.2.0 and 22.2.1 / TS 6.0.3)`. Minimum host version: `16.2.12`. Tested through `22.2.1`. Newer releases require review."
 msgstr "Target: Angular. Current format: `CUSTOM_ELEMENTS_SCHEMA template compilation (Angular 16.2.12 / TS 5.1.6; Angular 22.2.0 and 22.2.1 / TS 6.0.3)`. Minimum host version: `16.2.12`. Tested through `22.2.1`. Newer releases require review."
 
+#, pantoken-verbatim
 msgctxt "docs.api:prose"
 msgid "Target: Astro / Starlight. Current format: `Built Starlight page with injected token stylesheet (Astro 5 and 7)`. Minimum host version: `0.35.0`. Tested through `0.42.5`. Newer releases require review."
 msgstr "Target: Astro / Starlight. Current format: `Built Starlight page with injected token stylesheet (Astro 5 and 7)`. Minimum host version: `0.35.0`. Tested through `0.42.5`. Newer releases require review."
 
+#, pantoken-verbatim
 msgctxt "docs.api:prose"
 msgid "Target: Mintlify docs.json. Current format: `Official CLI validates generated colors and background theme config`. Minimum host version: `4.0.1555`. Tested through `4.0.1591`. Newer releases require review."
 msgstr "Target: Mintlify docs.json. Current format: `Official CLI validates generated colors and background theme config`. Minimum host version: `4.0.1555`. Tested through `4.0.1591`. Newer releases require review."
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "Target: Next.js. Current format: `Production build transpiling and rendering Instructure UI 11.7.10 with React 19.3.0`. Minimum host version: `16.0.0`. Tested through `16.3.8`. Newer releases require review."
+msgstr "Target: Next.js. Current format: `Production build transpiling and rendering Instructure UI 11.7.10 with React 19.3.0`. Minimum host version: `16.0.0`. Tested through `16.3.8`. Newer releases require review."
+
+msgctxt "docs.api:prose"
+msgid "Settings saved."
+msgstr "設定已儲存。"
+
+msgctxt "docs.api:prose"
+msgid "Save settings"
+msgstr "儲存設定"
+
+msgctxt "docs.api:prose"
+msgid "Profile changes saved."
+msgstr "個人資料變更已儲存。"
+
+msgctxt "docs.api:prose"
+msgid "Use a labelled group for related actions; when buttons represent a toggle choice, expose each state with aria-pressed. Give icon-only buttons an accessible name."
+msgstr "對於相關操作，使用有標籤的群組；當按鈕表示切換選項時，使用 aria-pressed 將每個狀態揭露出來。為僅含圖示的按鈕提供可存取名稱。"
+
+msgctxt "docs.api:prose"
+msgid "Save"
+msgstr "儲存"
+
+msgctxt "docs.api:prose"
+msgid "Your draft was saved."
+msgstr "您的草稿已儲存。"
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "**Source:** [card.css](https://github.com/thedannywahl/pantoken/blob/main/formats/components/src/components/card/card.css)"
+msgstr "**Source:** [card.css](https://github.com/thedannywahl/pantoken/blob/main/formats/components/src/components/card/card.css)"
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "@import \"@pantoken/components/components.css\";"
+msgstr "@import \"@pantoken/components/components.css\";"
+
+msgctxt "docs.api:prose"
+msgid "`.instui-card` · <span class=\"instui-pill -color-success pantoken-doc-tag\">stable</span> — A surface container that accepts arbitrary content."
+msgstr "`.instui-card` · <span class=\"instui-pill -color-success pantoken-doc-tag\">stable</span> — 可容納任意內容的表面容器。"
+
+msgctxt "docs.api:prose"
+msgid "`base` is the default elevated surface. Use `nested` for a bordered card inside a base card. Padding and corner radii scale with the Card's own width; legacy markup without a `.content` wrapper uses viewport breakpoints."
+msgstr "`base` 是預設的浮起表面。使用 `nested` 在基底卡片內作為有邊框的卡片。內邊距和圓角會隨 Card 本身的寬度縮放；沒有 `.content` 包裹的舊有標記會使用視窗斷點。"
+
+msgctxt "docs.api:prose"
+msgid "Border-only surface for a card inside a base card."
+msgstr "僅邊框的表面，用於基底卡片內的卡片。"
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "-canvas-rce\n"
+msgstr "-canvas-rce\n"
+
+msgctxt "docs.api:prose"
+msgid "Display name"
+msgstr "顯示名稱"
+
+msgctxt "docs.api:prose"
+msgid "Explore your course"
+msgstr "探索你的課程"
+
+msgctxt "docs.api:prose"
+msgid "Find materials and upcoming work."
+msgstr "尋找教材與即將到來的作業。"
+
+msgctxt "docs.api:prose"
+msgid "View course content"
+msgstr "檢視課程內容"
+
+msgctxt "docs.api:prose"
+msgid "\n  Search\n"
+msgstr "\n  搜尋\n"
+
+msgctxt "docs.api:prose"
+msgid "Account settings"
+msgstr "帳戶設定"
+
+msgctxt "docs.api:prose"
+msgid "Read the "
+msgstr "閱讀 "
+
+msgctxt "docs.api:prose"
+msgid "accessibility guide"
+msgstr "無障礙指南"
+
+msgctxt "docs.api:prose"
+msgid "View"
+msgstr "檢視"
+
+msgctxt "docs.api:prose"
+msgid "List"
+msgstr "列表"
+
+msgctxt "docs.api:prose"
+msgid "Grid"
+msgstr "網格"
+
+msgctxt "docs.api:prose"
+msgid "Open account details"
+msgstr "查看帳戶詳細資料"
+
+msgctxt "docs.api:prose"
+msgid "Account details"
+msgstr "帳戶詳細資料"
+
+msgctxt "docs.api:prose"
+msgid "Review your account information."
+msgstr "檢視您的帳戶資訊。"
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "-docs\n"
+msgstr "-docs\n"
+
+msgctxt "docs.api:prose"
+msgid "More information"
+msgstr "更多資訊"
+
+msgctxt "docs.api:prose"
+msgid "This example shows the large modal surface."
+msgstr "此範例顯示大型模態視窗。"
+
+msgctxt "docs.api:prose"
+msgid "Course overview"
+msgstr "課程總覽"
+
+msgctxt "docs.api:prose"
+msgid "Assignments"
+msgstr "作業"
+
+msgctxt "docs.api:prose"
+msgid "Upcoming work appears here."
+msgstr "即將進行的工作會顯示在這裡。"
+
+msgctxt "docs.api:prose"
+msgid "Course resources"
+msgstr "課程資源"
+
+msgctxt "docs.api:prose"
+msgid "Writing rubric"
+msgstr "寫作評分規準"
+
+msgctxt "docs.api:prose"
+msgid "Research paper criteria"
+msgstr "研究論文評分標準"
+
+msgctxt "docs.api:prose"
+msgid "Criterion"
+msgstr "評分準則"
+
+msgctxt "docs.api:prose"
+msgid "Description"
+msgstr "描述"
+
+msgctxt "docs.api:prose"
+msgid "Evidence"
+msgstr "證據"
+
+msgctxt "docs.api:prose"
+msgid "4 of 4"
+msgstr "4（滿分4）"
+
+msgctxt "docs.api:prose"
+msgid "Sources support the central claim."
+msgstr "來源支持主要論點。"
+
+msgctxt "docs.api:prose"
+msgid "Open settings"
+msgstr "開啟設定"
+
+msgctxt "docs.api:prose"
+msgid "Grades"
+msgstr "成績"
+
+msgctxt "docs.api:prose"
+msgid "People"
+msgstr "人員"
+
+msgctxt "docs.api:prose"
+msgid "Fruit\n  "
+msgstr "水果\n  "
+
+msgctxt "docs.api:prose"
+msgid "Choose a fruit"
+msgstr "選擇一種水果"
+
+msgctxt "docs.api:prose"
+msgid "Preferred contact method\n  "
+msgstr "偏好聯絡方式\n  "
+
+msgctxt "docs.api:prose"
+msgid "Email"
+msgstr "電子郵件"
+
+msgctxt "docs.api:prose"
+msgid "Phone"
+msgstr "電話"
+
+msgctxt "docs.api:prose"
+msgid "No contact"
+msgstr "不聯絡"
+
+msgctxt "docs.api:prose"
+msgid "Security"
+msgstr "安全性"
+
+msgctxt "docs.api:prose"
+msgid "Profile settings"
+msgstr "個人檔案設定"
+
+msgctxt "docs.api:prose"
+msgid "Security settings"
+msgstr "安全性設定"
+
+msgctxt "docs.api:prose"
+msgid "Activity"
+msgstr "活動"
+
+msgctxt "docs.api:prose"
+msgid "Project overview"
+msgstr "專案總覽"
+
+msgctxt "docs.api:prose"
+msgid "The course helped me understand the material."
+msgstr "這門課幫助我理解了教材。"
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "Jordan Lee"
+msgstr "Jordan Lee"
+
+msgctxt "docs.api:prose"
+msgid "Student"
+msgstr "學生"
+
+msgctxt "docs.api:prose"
+msgid "\n  Class-based component styles and a prose layer.\n"
+msgstr "\n  以類別為基礎的元件樣式與段落樣式層.\n"
+
+msgctxt "docs.api:prose"
+msgid "Keyboard support"
+msgstr "鍵盤支援"
+
+msgctxt "docs.api:prose"
+msgid "\n  The native disclosure control supports keyboard interaction.\n"
+msgstr "\n  原生的展開/收合控制元件支援鍵盤互動.\n"
+
+msgctxt "docs.api:prose"
+msgid "Help"
+msgstr "說明"
+
+msgctxt "docs.api:prose"
+msgid "Find answers to common questions."
+msgstr "尋找常見問題的答案。"
+
+msgctxt "docs.api:prose"
+msgid "Placement"
+msgstr "位置"
+
+msgctxt "docs.api:prose"
+msgid "This tooltip appears below."
+msgstr "此工具提示顯示在下方。"
+
+msgctxt "docs.api:prose"
+msgid "Course details"
+msgstr "課程詳細資訊"
+
+msgctxt "docs.api:prose"
+msgid "Review the course schedule."
+msgstr "檢閱課程時程。"
+
+msgctxt "docs.api:prose"
+msgid "Course work"
+msgstr "課程作業"
+
+msgctxt "docs.api:prose"
+msgid "See upcoming assignments."
+msgstr "查看即將到來的作業。"
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "Canvas"
+msgstr "Canvas"
+
+msgctxt "docs.api:prose"
+msgid "Course home"
+msgstr "課程首頁"
+
+msgctxt "docs.api:prose"
+msgid "Course materials appear here."
+msgstr "課程教材會顯示在此。"
+
+msgctxt "docs.api:prose"
+msgid "Signed in as Jordan Lee"
+msgstr "已登入：Jordan Lee"
+
+msgctxt "docs.api:prose"
+msgid "Standalone Card stylesheet with support for a custom class prefix."
+msgstr "獨立的 Card 樣式表，支援自訂類別前綴。"
+
+msgctxt "docs.api:prose"
+msgid "Import `cardCss` from `@pantoken/components` instead."
+msgstr "匯入 `cardCss` 從 `@pantoken/components` 取而代之."
+
+msgctxt "docs.api:prose"
+msgid "Wrap `html` in the shared `.pantoken-demo-card` surface (default `true`)."
+msgstr "將 `html` 包裝在共用 `.pantoken-demo-card` 表面 (預設 `true`)."
+
+#, pantoken-verbatim
+msgctxt "docs.api:text"
+msgid "cardCss"
+msgstr "cardCss"

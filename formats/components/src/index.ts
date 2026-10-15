@@ -75,6 +75,7 @@ export {
 
 // ── Components ──────────────────────────────────────────────────────────────
 export { buttonCss } from "./components/button/index.ts";
+export { cardCss } from "./components/card/index.ts";
 export { alertCss } from "./components/alert/index.ts";
 export { badgeCss } from "./components/badge/index.ts";
 export { pillCss } from "./components/pill/index.ts";

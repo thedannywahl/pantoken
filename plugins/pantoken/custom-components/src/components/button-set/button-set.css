@@ -30,6 +30,7 @@
  * @modifier -without-background — Default every unmodified child to no fill.
  * @modifier -without-border — Default every unmodified child to no border.
  * @modifier -display-block — Lay every unmodified child out full-width.
+ * @a11y Use a labelled group for related actions; when buttons represent a toggle choice, expose each state with aria-pressed. Give icon-only buttons an accessible name.
  * @structure
  * .pfx-button-set {
  *   @component button:one-or-more {}
@@ -39,6 +40,13 @@
  * <div class="pfx-button-set -size-sm -toggle">
  *   <button class="pfx-button">Left</button>
  *   <button class="pfx-button">Right</button>
+ * </div>
+ * ```
+ * @example -automatica11y -nocard
+ * ```html
+ * <div class="pfx-button-set -toggle" role="group" aria-label="Calendar view" data-a11y-root>
+ *   <button class="pfx-button" aria-pressed="true" data-a11y-trigger>Week</button>
+ *   <button class="pfx-button" aria-pressed="false">Month</button>
  * </div>
  * ```
  * ### Per-button override

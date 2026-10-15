@@ -13,6 +13,17 @@
  * - Map the main content area to a `<main>` landmark
  * - Give the sidebar `role="navigation"` or `role="complementary"` as appropriate
  * - Ensure landmark regions have distinct aria-labels
+ * @example -automatica11y -nocard
+ * ```html
+ * <div class="pfx-page-layout" data-a11y-root>
+ *   <header class="pfx-header"><h1>Course overview</h1></header>
+ *   <div class="pfx-body">
+ *     <nav class="pfx-sidebar" aria-label="Course navigation"><a href="#assignments" data-a11y-trigger>Assignments</a></nav>
+ *     <main class="pfx-main" slot="content"><h2 id="assignments">Assignments</h2><p>Upcoming work appears here.</p></main>
+ *   </div>
+ *   <footer class="pfx-footer">Course resources</footer>
+ * </div>
+ * ```
  * @selector div[class~="pfx-page-layout"]
  * @part .pfx-header - Top header region.
  * @part .pfx-body - Main body containing sidebar and content.

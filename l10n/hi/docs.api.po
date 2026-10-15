@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: pantoken\n"
-"PO-Revision-Date: 2026-10-14 21:16+0000\n"
+"PO-Revision-Date: 2026-10-15 13:59+0000\n"
 "Last-Translator: pantoken localization engine\n"
 "Language-Team: pantoken\n"
 "MIME-Version: 1.0\n"
@@ -2280,7 +2280,7 @@ msgstr "एक नेटिव `<input type=\"checkbox\">` `:checked`, `:indeter
 #, fuzzy, no-c-format
 msgctxt "docs.api:prose"
 msgid "Checkbox\n"
-msgstr "checkbox"
+msgstr "चेकबॉक्स\n"
 
 #: css/checkbox.md
 #, fuzzy, no-c-format

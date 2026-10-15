@@ -126,6 +126,8 @@ export class TranslationMemory {
       const existing = this._poByKey.get(key);
       if (existing) {
         existing.msgstr = aligned;
+        existing.fuzzy = false;
+        existing.flags = existing.flags.filter((flag) => flag !== "fuzzy");
         if (options?.verbatim === true && !existing.flags.includes(VERBATIM_FLAG)) {
           existing.flags = [...existing.flags, VERBATIM_FLAG];
         }
@@ -243,7 +245,8 @@ function diffAgainstCache(
     const key = keyFor(unit.kind, unit.source);
     if (options.requiredVerbatimSources?.has(unit.source) === true) {
       const cached = memory.get(unit.kind, unit.source);
-      if (cached !== unit.source) memory.set(unit.kind, unit.source, unit.source);
+      if (cached !== unit.source || !memory.isVerbatim(unit.kind, unit.source))
+        memory.set(unit.kind, unit.source, unit.source, { verbatim: true });
       result.set(key, unit.source);
       continue;
     }

@@ -146,6 +146,12 @@ set a custom `i18nRouting`).
   units _did_ change is cached and stamped `pantoken-verbatim` in the PO catalog, so it isn't
   re-flagged and re-paid for on every run. A batch that comes back wholly unchanged still fails the
   guard — that's the shape of a silently broken adapter.
+- **Approve known identity labels per locale.** `LOCALE_VERBATIM_API_PROSE` in
+  `docs/scripts/refresh-api-pot.ts` records verified cognates and weekday abbreviations, so they
+  don't depend on another string changing in the same batch. Never exempt all Latin-script locales:
+  ordinary labels such as "Checkbox" still need translation. The targeted API catalog fixer retries
+  fuzzy and unapproved source-identical entries, not just empty entries, and successful translations
+  clear their fuzzy flag.
 - **Running the cold pass.** Each `claude -p` call cold-starts a full agent, and the dominant cost is
   the per-call bootstrap — loading MCP servers, plugins, and project settings — not the translation
   itself (it dwarfs even a small model's inference). So the `:claude` tasks pass

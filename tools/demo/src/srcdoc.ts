@@ -20,7 +20,7 @@ export interface ExampleSrcdocOptions {
   cssUrls: readonly string[];
   /** Browser script URLs to load after the example markup (interaction bundles, when needed). */
   scriptUrls?: readonly string[];
-  /** Wrap `html` in the shared `.instui-card` surface (default `true`). */
+  /** Wrap `html` in the shared `.pantoken-demo-card` surface (default `true`). */
   card?: boolean;
   /** Text direction for the isolated document's `<html>` (default `"ltr"`) — a srcdoc never inherits it from the embedding page. */
   dir?: "ltr" | "rtl";
@@ -86,7 +86,7 @@ export function buildExampleSrcdoc(html: string, options: ExampleSrcdocOptions):
   const scripts = (options.scriptUrls ?? [])
     .map((src) => `<script src="${src}"></script>`)
     .join("");
-  const body = options.card === false ? html : `<div class="instui-card">${html}</div>`;
+  const body = options.card === false ? html : `<div class="pantoken-demo-card">${html}</div>`;
   return (
     `<!doctype html><html dir="${options.dir ?? "ltr"}"><head><meta charset="utf-8">${links}` +
     `<style>body{padding:var(--instui-spacing-space-md, 1rem);margin:0}</style></head>` +

@@ -21,6 +21,7 @@ const EXPECTED = [
   "breadcrumbCss",
   "breadcrumbLinkCss",
   "buttonCss",
+  "cardCss",
   "bylineCss",
   "calendarCss",
   "calendarDayCss",

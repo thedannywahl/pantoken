@@ -38,6 +38,16 @@
  *   </div>
  * </div>
  * ```
+ * @example -automatica11y -nocard
+ * ```html
+ * <section aria-label="Profile details" aria-busy="true" data-a11y-root>
+ *   <div class="pfx-skeleton-loader -type-text" aria-hidden="true">
+ *     <div class="skeleton-row"><div class="shape"></div></div>
+ *     <div class="skeleton-row"><div class="shape"></div></div>
+ *   </div>
+ * </section>
+ * <p role="status" aria-live="polite"></p>
+ * ```
  */
 @property --pantoken-skeleton-sweep {
   syntax: "<percentage>";

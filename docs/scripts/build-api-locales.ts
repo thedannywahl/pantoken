@@ -38,8 +38,13 @@ import {
 import { dirname, join, relative } from "node:path";
 import { spawnSync } from "node:child_process";
 import { NON_ROOT_LOCALES, parseRequestedLocales } from "../.vitepress/i18n.ts";
+import { parsePo } from "@pantoken/i18n-engine";
 import { GlossaryTranslationAdapter, createTranslationAdapter } from "./api-translation.ts";
-import { refreshApiPot } from "./refresh-api-pot.ts";
+import {
+  LOCALE_VERBATIM_API_PROSE,
+  PANTOKEN_VERBATIM_FLAG,
+  refreshApiPot,
+} from "./refresh-api-pot.ts";
 import {
   type Resolve,
   collectUnits,
@@ -275,6 +280,7 @@ const translateMarkdownFiles = async (
   adapter: ReturnType<typeof createTranslationAdapter>,
   memory: TranslationMemory,
   locale: string,
+  potVerbatimSources: ReadonlySet<string>,
 ): Promise<{
   glossaryTerms: number;
   proseBlocks: number;
@@ -319,7 +325,11 @@ const translateMarkdownFiles = async (
       autosave: true,
       locale,
       defaultVerbatim: { allow: ["en*"] },
-      requiredVerbatimSources: requiredVerbatimSources(protectedProseUnits),
+      requiredVerbatimSources: new Set([
+        ...requiredVerbatimSources(protectedProseUnits),
+        ...potVerbatimSources,
+        ...(LOCALE_VERBATIM_API_PROSE.get(locale) ?? []),
+      ]),
     });
 
     const fileProseTranslated = memory.misses - beforeMisses;
@@ -430,7 +440,10 @@ const translateSidebars = async (
 };
 
 /** Clone + translate the EN API tree into one locale's directory. */
-const buildLocale = async (locale: string): Promise<void> => {
+const buildLocale = async (
+  locale: string,
+  potVerbatimSources: ReadonlySet<string>,
+): Promise<void> => {
   const adapter = createTranslationAdapter(locale);
   const memory = TranslationMemory.load(locale, "api");
   const localeApiDir = apiDirFor(locale);
@@ -455,6 +468,7 @@ const buildLocale = async (locale: string): Promise<void> => {
     adapter,
     memory,
     locale,
+    potVerbatimSources,
   );
 
   console.log(
@@ -502,9 +516,14 @@ const build = async (): Promise<void> => {
   await (await import("./write-api-compatibility.ts")).writeApiCompatibility();
   refreshApiPot({ force: true });
 
-  for (const locale of locales) {
-    await buildLocale(locale);
-  }
+  const potPath = join(docsRoot, "..", "l10n", "docs.api.pot");
+  const potVerbatimSources = new Set(
+    parsePo(readFileSync(potPath, "utf8"))
+      .filter((entry) => entry.flags.includes(PANTOKEN_VERBATIM_FLAG))
+      .map((entry) => entry.msgid),
+  );
+
+  for (const locale of locales) await buildLocale(locale, potVerbatimSources);
 
   console.log(`✨ API locale build complete for ${locales.join(", ")}`);
 };

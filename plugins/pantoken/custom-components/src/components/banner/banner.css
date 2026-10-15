@@ -60,6 +60,14 @@
  *   This is a sea-colored banner with compact spacing.
  * </div>
  * ```
+ * @example -automatica11y -nocard
+ * ```html
+ * <div class="pfx-banner" role="status" data-a11y-root>
+ *   <span class="pfx-icon -icon-checkmark" aria-hidden="true"></span>
+ *   <span>Profile changes saved.</span>
+ *   <button class="pfx-close-button" aria-label="Dismiss notification" data-a11y-trigger></button>
+ * </div>
+ * ```
  * @related alert — A non-dismissible, status-coloured counterpart for inline messages.
  * @related close-button — The dismiss control a banner may include.
  * @todo revisit when the banner tokens land upstream, much of this is hand-roled from figma

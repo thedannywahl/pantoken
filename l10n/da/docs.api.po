@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: pantoken\n"
-"PO-Revision-Date: 2026-10-14 20:07+0000\n"
+"PO-Revision-Date: 2026-10-15 13:54+0000\n"
 "Last-Translator: pantoken localization engine\n"
 "Language-Team: pantoken\n"
 "MIME-Version: 1.0\n"
@@ -889,25 +889,25 @@ msgid "AI"
 msgstr "AI"
 
 #: css/avatar.md
-#, no-c-format
+#, no-c-format, pantoken-verbatim
 msgctxt "docs.api:prose"
 msgid "Dr. Nguyen Van Thoc"
 msgstr "Dr. Nguyen Van Thoc"
 
 #: css/avatar.md
-#, no-c-format
+#, no-c-format, pantoken-verbatim
 msgctxt "docs.api:prose"
 msgid "Miguel Sanchez"
 msgstr "Miguel Sanchez"
 
 #: css/avatar.md
-#, no-c-format
+#, no-c-format, pantoken-verbatim
 msgctxt "docs.api:prose"
 msgid "Miguel"
 msgstr "Miguel"
 
 #: css/avatar.md
-#, no-c-format
+#, no-c-format, pantoken-verbatim
 msgctxt "docs.api:prose"
 msgid "Sanchez"
 msgstr "Sanchez"

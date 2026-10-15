@@ -1,0 +1,203 @@
+/**
+ * @component card
+ * @summary A surface container that accepts arbitrary content.
+ * @remarks `base` is the default elevated surface. Use `nested` for a bordered card inside a base card. Padding and corner radii scale with the Card's own width; legacy markup without a `.content` wrapper uses viewport breakpoints.
+ * @selector .pfx-card
+ * @modifier -variant-base — Standard content card; children are unstyled. Default when no variant is set.
+ * @modifier -variant-nested — Border-only surface for a card inside a base card.
+ * @modifier -variant-content — @deprecated {@link -variant-base}
+ * @modifier -variant-container — @deprecated {@link -variant-nested}
+ * @a11y Use `<article>` as the card element when the card is a self-contained unit of content;
+ *   use `<section>` when grouped within a larger landmark. In `-variant-container`, prefer
+ *   `<section>` elements as direct children so each bordered region carries semantic meaning.
+ * @usage @import "@pantoken/components/components.css";
+ * @example
+ * Content card -nocard
+ * ```html
+ * <article class="pfx-card -variant-base">
+ *   <div class="content">
+ *     <h2>Card title</h2>
+ *     <p>Content here.</p>
+ *   </div>
+ * </article>
+ * ```
+ * @example
+ * Container card -nocard
+ * ```html
+ * <article class="pfx-card -variant-base">
+ *   <div class="content">
+ *     <section class="pfx-card -variant-nested">
+ *       <div class="content">First section</div>
+ *     </section>
+ *     <section class="pfx-card -variant-nested">
+ *       <div class="content">Second section</div>
+ *     </section>
+ *   </div>
+ * </article>
+ * ```
+ * @example -automatica11y -nocard
+ * ```html
+ * <article class="pfx-card" data-a11y-root>
+ *   <div class="content">
+ *     <h2>Card title</h2>
+ *     <p>Content here.</p>
+ *     <button class="pfx-button" data-a11y-trigger>Action</button>
+ *   </div>
+ * </article>
+ * ```
+ * @sealed
+ * @stable
+ */
+.pfx-card {
+  container-type: inline-size;
+  inline-size: 100%;
+}
+
+.pfx-card > .content {
+  background: var(--instui-component-card-background-color);
+  border-radius: var(--instui-component-card-border-radius-base-sm);
+  box-shadow: var(--instui-elevation-card);
+  padding: var(--instui-component-card-padding-base-sm);
+  overflow: hidden;
+  flex-shrink: 0;
+}
+
+.pfx-card.-variant-base > .content {
+  background: var(--instui-component-card-background-color);
+  border: 0;
+  box-shadow: var(--instui-elevation-card);
+}
+
+@container (width >=20rem) {
+  .pfx-card > .content {
+    padding: var(--instui-component-card-padding-base-md);
+    border-radius: var(--instui-component-card-border-radius-base-md);
+  }
+}
+
+@container (width >=40rem) {
+  .pfx-card > .content {
+    padding: var(--instui-component-card-padding-base-lg);
+    border-radius: var(--instui-component-card-border-radius-base-lg);
+  }
+}
+
+.pfx-card.-variant-nested > .content {
+  background: transparent;
+  border: var(--instui-component-shared-tokens-stroke-width-sm) solid
+    var(--instui-component-card-nested-border-color);
+  box-shadow: none;
+  padding: var(--instui-component-card-padding-nested-sm);
+  border-radius: var(--instui-component-card-border-radius-nested-sm);
+}
+
+@container (width >=20rem) {
+  .pfx-card.-variant-nested > .content {
+    padding: var(--instui-component-card-padding-nested-md);
+    border-radius: var(--instui-component-card-border-radius-nested-md);
+  }
+}
+
+@container (width >=40rem) {
+  .pfx-card.-variant-nested > .content {
+    padding: var(--instui-component-card-padding-nested-lg);
+    border-radius: var(--instui-component-card-border-radius-nested-lg);
+  }
+}
+
+.pfx-card.-variant-container > .content {
+  display: flex;
+  flex-direction: column;
+  gap: var(--instui-component-shared-tokens-spacing-gap-cards-nested-containers-sm);
+}
+
+@container (width >=20rem) {
+  .pfx-card.-variant-container > .content {
+    gap: var(--instui-component-shared-tokens-spacing-gap-cards-nested-containers-md);
+  }
+}
+
+@container (width >=40rem) {
+  .pfx-card.-variant-container > .content {
+    gap: var(--instui-component-shared-tokens-spacing-gap-cards-nested-containers-lg);
+  }
+}
+
+@scope (.pfx-card) {
+  :scope {
+    &.-variant-container > :not(.content),
+    &.-variant-container > .content > * {
+      padding: var(--instui-component-card-padding-nested-sm);
+      border: var(--instui-component-shared-tokens-stroke-width-sm) solid
+        var(--instui-component-card-nested-border-color);
+      border-radius: var(--instui-component-card-border-radius-nested-sm);
+    }
+
+    @container (width >=20rem) {
+      &.-variant-container > :not(.content),
+      &.-variant-container > .content > * {
+        padding: var(--instui-component-card-padding-nested-md);
+        border-radius: var(--instui-component-card-border-radius-nested-md);
+      }
+    }
+
+    @container (width >=40rem) {
+      &.-variant-container > :not(.content),
+      &.-variant-container > .content > * {
+        padding: var(--instui-component-card-padding-nested-lg);
+        border-radius: var(--instui-component-card-border-radius-nested-lg);
+      }
+    }
+  }
+}
+
+/* Legacy direct-child markup remains responsive while consumers move to the official wrapper. */
+.pfx-card:not(:has(> .content)) {
+  background: var(--instui-component-card-background-color);
+  border-radius: var(--instui-component-card-border-radius-base-sm);
+  box-shadow: var(--instui-elevation-card);
+  padding: var(--instui-component-card-padding-base-sm);
+  overflow: hidden;
+  flex-shrink: 0;
+}
+
+@media (min-width: 20rem) {
+  .pfx-card:not(:has(> .content)) {
+    padding: var(--instui-component-card-padding-base-md);
+    border-radius: var(--instui-component-card-border-radius-base-md);
+  }
+}
+
+@media (min-width: 40rem) {
+  .pfx-card:not(:has(> .content)) {
+    padding: var(--instui-component-card-padding-base-lg);
+    border-radius: var(--instui-component-card-border-radius-base-lg);
+  }
+}
+
+.pfx-card.-variant-nested:not(:has(> .content)) {
+  background: transparent;
+  border: var(--instui-component-shared-tokens-stroke-width-sm) solid
+    var(--instui-component-card-nested-border-color);
+  box-shadow: none;
+  padding: var(--instui-component-card-padding-nested-sm);
+  border-radius: var(--instui-component-card-border-radius-nested-sm);
+}
+
+.pfx-card.-variant-container:not(:has(> .content)) {
+  display: flex;
+  flex-direction: column;
+  gap: var(--instui-component-shared-tokens-spacing-gap-cards-nested-containers-sm);
+}
+
+@media (min-width: 20rem) {
+  .pfx-card.-variant-container:not(:has(> .content)) {
+    gap: var(--instui-component-shared-tokens-spacing-gap-cards-nested-containers-md);
+  }
+}
+
+@media (min-width: 40rem) {
+  .pfx-card.-variant-container:not(:has(> .content)) {
+    gap: var(--instui-component-shared-tokens-spacing-gap-cards-nested-containers-lg);
+  }
+}

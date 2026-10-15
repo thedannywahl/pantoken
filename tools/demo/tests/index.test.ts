@@ -189,7 +189,7 @@ test("liveExample seams a preview onto html fences on matching pages, skipping o
     liveExample: {
       match: (relativePath) => /(^|\/)api\/css\//.test(relativePath),
       wrap: (html) =>
-        `<div class="css-example">\n<div class="instui-card">\n${html}\n</div>\n</div>`,
+        `<div class="css-example">\n<div class="pantoken-demo-card">\n${html}\n</div>\n</div>`,
     },
   });
   const render = md.renderer.rules.fence;
@@ -204,7 +204,7 @@ test("liveExample seams a preview onto html fences on matching pages, skipping o
   );
   expect(onPage).toContain("<pre><button>Hi</button></pre>");
   expect(onPage).toContain('<div class="css-example">');
-  expect(onPage).toContain('<div class="instui-card">');
+  expect(onPage).toContain('<div class="pantoken-demo-card">');
 
   // A cloned locale page (hu/api/css/…) matches too.
   const onLocale = render(

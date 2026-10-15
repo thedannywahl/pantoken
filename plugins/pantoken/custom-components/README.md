@@ -5,7 +5,7 @@ Custom, cssdoc-documented component rules for downstream consumers.
 This package currently ships:
 
 - An extra-small `--instui-breakpoints-xs: 20em` declaration in the aggregate stylesheet
-- `card` rules (the plugin output)
+- `cardRules(prefix?)` and `card.css` as deprecated compatibility aliases; use `cardCss` from `@pantoken/components`
 - `banner` rules (the plugin output)
 - `agent-shell` rules (the plugin output)
 - `button-set` rules (the plugin output)
@@ -46,7 +46,7 @@ import "@pantoken/plugin-custom-components/card.css";
 
 - `customComponents(options?)` — returns a CSS plugin with `position: "append" | "prepend"`.
 - `breakpointDeclarations()` — returns the extra-small viewport token declaration.
-- `cardRules(prefix?)` — returns the card rules as CSS text.
+- `cardRules(prefix?)` — deprecated alias for the `@pantoken/components` Card stylesheet.
 - `bannerRules(prefix?)` — returns the banner rules as CSS text.
 - `agentShellRules(prefix?)` — returns the agent-shell rules as CSS text.
 - `buttonSetRules(prefix?)` — returns the button-set rules as CSS text.

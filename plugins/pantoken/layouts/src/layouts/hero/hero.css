@@ -13,6 +13,16 @@
  * - Ensure the title is in an `<h1>` tag for semantic structure
  * - If using background images, provide sufficient color contrast for text
  * - Avoid autoplay on video or animation that could distract from content
+ * @example -automatica11y -nocard
+ * ```html
+ * <div class="pfx-hero" data-a11y-root>
+ *   <div class="pfx-content">
+ *     <h1 class="pfx-title">Explore your course</h1>
+ *     <p class="pfx-subtitle">Find materials and upcoming work.</p>
+ *     <a class="pfx-button" href="#course-content" data-a11y-trigger>View course content</a>
+ *   </div>
+ * </div>
+ * ```
  * @selector div[class~="pfx-hero"]
  * @part .pfx-background - Optional background layer (image or gradient).
  * @part .pfx-overlay - Optional semi-transparent overlay for text contrast.

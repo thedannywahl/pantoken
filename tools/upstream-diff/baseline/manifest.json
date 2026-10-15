@@ -10102,7 +10102,7 @@
     },
     "uiIcons": {
       "package": "@instructure/ui-icons",
-      "resolved": "11.7.8"
+      "resolved": "11.7.10"
     }
   },
   "themes": {

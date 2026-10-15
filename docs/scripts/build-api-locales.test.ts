@@ -18,6 +18,24 @@ const spawnSync = vi.fn<() => { status: number }>();
 const spawn = vi.fn();
 const refreshApiPot = vi.fn();
 const writeApiCompatibility = vi.fn();
+const PANTOKEN_VERBATIM_FLAG = "pantoken-verbatim";
+const LOCALE_VERBATIM_API_PROSE = new Map([
+  [
+    "nl",
+    [
+      "Filters",
+      " Syllabus.pdf",
+      " Week 1",
+      "Miguel Sanchez",
+      "Miguel",
+      "Sanchez",
+      "Dr. Nguyen Van Thoc",
+    ],
+  ],
+  ["se", [" Syllabus.pdf", "Miguel Sanchez", "Miguel", "Sanchez", "Dr. Nguyen Van Thoc"]],
+  ["de", ["Dr. Nguyen Van Thoc"]],
+  ["fi", ["Miguel Sanchez", "Miguel", "Sanchez"]],
+]);
 
 vi.mock("node:fs", () => ({
   cpSync,
@@ -31,7 +49,11 @@ vi.mock("node:fs", () => ({
   writeFileSync,
 }));
 vi.mock("node:child_process", () => ({ spawnSync, spawn }));
-vi.mock("./refresh-api-pot.ts", () => ({ refreshApiPot }));
+vi.mock("./refresh-api-pot.ts", () => ({
+  refreshApiPot,
+  PANTOKEN_VERBATIM_FLAG,
+  LOCALE_VERBATIM_API_PROSE,
+}));
 vi.mock("./write-api-compatibility.ts", () => ({ writeApiCompatibility }));
 // One target locale keeps the loop (and the fixtures below, which only model a HU tree) deterministic.
 vi.mock("../.vitepress/i18n.ts", () => ({
@@ -44,6 +66,8 @@ const MARKDOWN = [
   "# button",
   "",
   "A short description of the button component.",
+  "",
+  "CA",
   "",
   "## Usage",
   "",
@@ -63,6 +87,13 @@ const MARKDOWN = [
 const SIDEBAR = JSON.stringify([
   { text: "Overview", link: "/api/index.md", items: [{ text: "Functions", link: "/api/fn.md" }] },
 ]);
+const POT = [
+  "#, no-c-format, pantoken-verbatim",
+  'msgctxt "docs.api:prose"',
+  'msgid "CA"',
+  'msgstr ""',
+  "",
+].join("\n");
 const PAGES_FILE = "/tmp/pantoken-docs-pages.json";
 
 // segment-markdown/translation-memory are deterministic and fs-free for the surface we touch, but must
@@ -90,10 +121,11 @@ beforeAll(async () => {
       Usage: "Használat",
       Overview: "Áttekintés",
       Functions: "Függvények",
+      CA: "CA",
       Primary: "Elsődleges",
       Secondary: "Másodlagos",
     }).flatMap(([source, translation]) => {
-      const kind = source === "Primary" || source === "Secondary" ? "prose" : "text";
+      const kind = ["Primary", "Secondary", "CA"].includes(source) ? "prose" : "text";
       return [`msgctxt "docs.api:${kind}"`, `msgid "${source}"`, `msgstr "${translation}"`, ""];
     }),
   ].join("\n");
@@ -118,6 +150,7 @@ beforeEach(() => {
   statSync.mockReturnValue({ isDirectory: () => false });
   readFileSync.mockImplementation((path) => {
     if (path === PAGES_FILE) return JSON.stringify(["hu/api/index.md"]);
+    if (path.endsWith("docs.api.pot")) return POT;
     if (path.endsWith("docs.api.po")) return GLOSSARY_PO;
     return path.endsWith("typedoc-sidebar.json") ? SIDEBAR : MARKDOWN;
   });
@@ -163,6 +196,7 @@ test("build localizes markdown headings, prose, and sidebars, then logs the summ
   expect(md).toBeDefined();
   expect(md).toContain(`## ${glossaryEntryFor("Usage")}`);
   expect(md).toContain("Regular prose describing how to use the component.");
+  expect(md).toContain("\nCA\n");
   expect(md).toContain('<button class="instui-button" aria-label="Primary">Elsődleges</button>');
   expect(md).toContain('<button class="instui-button -color-secondary">Másodlagos</button>');
 
@@ -186,6 +220,7 @@ test("build localizes markdown headings, prose, and sidebars, then logs the summ
   expect(sidebarSummary).toContain("2 labels");
   expect(summary).toMatch(/\(\d+ cached, \d+ translated\)/);
   expect(process.exitCode).toBeUndefined();
+  expect(writtenTo("docs.api.po")).toContain("pantoken-verbatim");
 }, 20000); // dynamic import of build-api-locales.ts can exceed the default 5s under full-suite load
 
 test("partial mode skips API generation when no API pages changed", async () => {
@@ -205,6 +240,59 @@ test("partial mode skips API generation when no API pages changed", async () => 
   expect(logSpy.mock.calls.map((c: unknown[]) => String(c[0])).join("\n")).toContain(
     "skipping API locale build",
   );
+});
+
+test("locale-specific identity prose is limited to locales whose translation is English", async () => {
+  const { LOCALE_VERBATIM_API_PROSE } =
+    await vi.importActual<typeof import("./refresh-api-pot.ts")>("./refresh-api-pot.ts");
+
+  expect(LOCALE_VERBATIM_API_PROSE.get("nl")).toEqual(
+    expect.arrayContaining([
+      "Filters",
+      " Syllabus.pdf",
+      " Week 1",
+      "Miguel Sanchez",
+      "Miguel",
+      "Sanchez",
+      "Dr. Nguyen Van Thoc",
+    ]),
+  );
+  expect(LOCALE_VERBATIM_API_PROSE.get("se")).toEqual([
+    " Syllabus.pdf",
+    "Miguel Sanchez",
+    "Miguel",
+    "Sanchez",
+    "Dr. Nguyen Van Thoc",
+  ]);
+  expect(LOCALE_VERBATIM_API_PROSE.get("de")).toContain("Dr. Nguyen Van Thoc");
+  expect(LOCALE_VERBATIM_API_PROSE.get("fi")).toContain("Miguel");
+  expect(LOCALE_VERBATIM_API_PROSE.get("fi")).not.toContain("Dr. Nguyen Van Thoc");
+  expect(LOCALE_VERBATIM_API_PROSE.get("ja")).toBeUndefined();
+});
+
+test.each([
+  ["Navigation", ["de", "fr", "fr-CA"]],
+  ["Sa", ["de", "fr", "fr-CA", "ga", "ht"]],
+  ["Su", ["fi", "is"]],
+  ["Mo", ["de"]],
+  ["Fr", ["de"]],
+  ["Pastel", ["cy", "es", "fr", "fr-CA", "id", "ms", "nl", "pt", "pt-BR", "tr"]],
+  ["Menu", ["da", "fr", "fr-CA", "id", "ms", "nl", "pl", "pt", "pt-BR"]],
+  ["Design", ["da", "nb", "pt", "pt-BR", "sv"]],
+  ["link", ["da", "de", "pt", "pt-BR"]],
+  ["Guides", ["fr", "fr-CA"]],
+  ["General", ["ca", "es"]],
+  ["Dashboard", ["nl"]],
+] as const)("approves %s only in its matching locales", async (source, locales) => {
+  const { LOCALE_VERBATIM_API_PROSE } =
+    await vi.importActual<typeof import("./refresh-api-pot.ts")>("./refresh-api-pot.ts");
+
+  const approvedLocales = [...LOCALE_VERBATIM_API_PROSE]
+    .filter(([, sources]) => sources.includes(source))
+    .map(([locale]) => locale)
+    .sort();
+
+  expect(approvedLocales).toEqual([...locales].sort());
 });
 
 test("partial mode translates only allowlisted locale API markdown", async () => {

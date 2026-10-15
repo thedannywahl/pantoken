@@ -13,6 +13,19 @@
  * - Use table semantics if displaying a true rubric with rows and columns
  * - Ensure score indicators are not color-only
  * - Provide descriptive labels for each category
+ * @example -automatica11y -nocard
+ * ```html
+ * <div class="pfx-rubric-note" aria-labelledby="writing-rubric-title" data-a11y-root>
+ *   <h2 class="pfx-header" id="writing-rubric-title">Writing rubric</h2>
+ *   <table>
+ *     <caption>Research paper criteria</caption>
+ *     <thead><tr><th scope="col">Criterion</th><th scope="col">Score</th><th scope="col">Description</th></tr></thead>
+ *     <tbody class="pfx-criteria">
+ *       <tr class="pfx-row"><th class="pfx-name" scope="row">Evidence</th><td class="pfx-score">4 of 4</td><td class="pfx-description">Sources support the central claim.</td></tr>
+ *     </tbody>
+ *   </table>
+ * </div>
+ * ```
  * @selector div[class~="pfx-rubric-note"]
  * @part .pfx-header - Header with title and metadata.
  * @part .pfx-criteria - Container for rubric criteria rows.

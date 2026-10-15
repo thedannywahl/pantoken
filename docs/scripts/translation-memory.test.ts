@@ -466,6 +466,32 @@ test("translateUnits accepts an API PO cognate without a verbatim flag", async (
   expect(result.get(keyFor("text", "Interfaces"))).toBe("Interfaces");
 });
 
+test("accepted API prose replaces a fuzzy echo and clears its review flag", async () => {
+  existsSync.mockReturnValue(true);
+  readFileSync.mockReturnValue(
+    '#, fuzzy, no-c-format\nmsgctxt "docs.api:prose"\nmsgid "Checkbox\\n"\nmsgstr "checkbox"\n',
+  );
+  const memory = TranslationMemory.load("vi", "api");
+  const translateBatch = vi.fn((items: readonly { id: string; text: string }[]) =>
+    Promise.resolve({ [items[0].id]: "translated checkbox" }),
+  );
+
+  await translateUnits(
+    adapter({ translateBatch }),
+    memory,
+    [{ kind: "prose", source: "Checkbox\n" }],
+    { locale: "vi" },
+  );
+  existsSync.mockReturnValue(false);
+  memory.save();
+
+  const catalog = String(writeFileSync.mock.calls[0][1]);
+  expect(catalog).toContain('msgstr "translated checkbox\\n"');
+  expect(catalog).toContain("no-c-format");
+  expect(catalog).not.toContain("fuzzy");
+  expect(catalog).not.toContain("pantoken-verbatim");
+});
+
 test("translateUnits retranslates a cached hit that matches its source instead of serving it", async () => {
   const key = keyFor("text", "Home");
   existsSync.mockReturnValue(true);

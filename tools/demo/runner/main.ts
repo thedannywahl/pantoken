@@ -121,13 +121,14 @@ function dedent(text: string): string {
   return lines.map((line) => line.slice(min)).join("\n");
 }
 
-/** The demos wrap their markup in a staging `<div class="instui-card">` so the preview sits on a card,
+/** The demos wrap their markup in a staging `<div class="pantoken-demo-card">` so the preview sits on a card,
  * like the docs' `@example` previews. That wrapper is page staging, not part of the component's own
  * markup, so strip it (and de-indent) for the code view — the result still renders the full source. */
 function stripCardWrapper(html: string): string {
-  const match = /^<div\s+class="instui-card(?:\s+[^"]*)?"\s*>\n?([\s\S]*?)\n?<\/div>\s*$/i.exec(
-    html.trim(),
-  );
+  const match =
+    /^<div\s+class="pantoken-demo-card(?:\s+[^"]*)?"\s*>\n?([\s\S]*?)\n?<\/div>\s*$/i.exec(
+      html.trim(),
+    );
   return match ? dedent(match[1]) : html;
 }
 

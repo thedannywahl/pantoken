@@ -21,6 +21,7 @@ import { button } from "./button/index.ts";
 import { byline } from "./byline/index.ts";
 import { calendar } from "./calendar/index.ts";
 import { calendarDay } from "./calendar/members/day/index.ts";
+import { card } from "./card/index.ts";
 import { checkbox } from "./checkbox/index.ts";
 import { closeButton } from "./close-button/index.ts";
 import { contextView } from "./context-view/index.ts";
@@ -87,6 +88,7 @@ import { view } from "./view/index.ts";
 /** Every component (+ the two in-sheet utilities) in `componentsCss()`'s exact concat order. */
 export const COMPONENTS: readonly Definition[] = [
   button,
+  card,
   alert,
   badge,
   pill,

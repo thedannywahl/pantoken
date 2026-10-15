@@ -16,6 +16,22 @@
  * - Give TrailingContentArea role="complementary" with a descriptive aria-label that reflects its content, such as "Student details"
  * - Give each UtilityPanel a distinct aria-label: "AI assistant", "Notifications", or "Filters"
  * - When a UtilityPanel opens, move focus into the panel; when it closes, return focus to the trigger that opened it
+ * @example -automatica11y -nocard
+ * ```html
+ * <body class="pfx-display-flex" data-a11y-root>
+ *   <nav class="pfx-side-nav-bar" aria-label="Global navigation"><a href="#overview">Canvas</a></nav>
+ *   <div class="container">
+ *     <header class="header">
+ *       <div class="top"><nav aria-label="Page navigation"><a href="#overview" data-a11y-trigger>Course home</a></nav></div>
+ *       <div class="info"><h1 class="title" id="course-title">Course overview</h1></div>
+ *     </header>
+ *     <div class="content">
+ *       <main class="main" aria-labelledby="course-title"><p>Course materials appear here.</p></main>
+ *       <aside class="trailing" aria-label="Student details">Signed in as Jordan Lee</aside>
+ *     </div>
+ *   </div>
+ * </body>
+ * ```
  * @selector body[class~="pfx-display-flex"]
  * @part .container - Main page column that holds header and content.
  * @part .header - Header region inside the container column.
