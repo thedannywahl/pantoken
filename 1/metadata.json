@@ -1,0 +1,33 @@
+{
+  "cli_version": "0.11.5",
+  "checkpoint_id": "01M502ZZ88WFZA3XTK16Q7S07S",
+  "session_id": "e7c7d37f-3a39-4cf7-b0ba-0b8afde456e2",
+  "strategy": "manual-commit",
+  "created_at": "2026-10-15T15:30:49.87482Z",
+  "branch": "automatica11y",
+  "checkpoints_count": 1,
+  "save_step_count": 1,
+  "files_touched": [
+    "docs/.vitepress/theme/theme.ts",
+    "plugins/tinymce/save/src/index.ts",
+    "plugins/tinymce/save/tests/index.test.ts",
+    "tools/translation-adapters/src/shim.ts",
+    "tools/translation-adapters/tests/shim.test.ts"
+  ],
+  "agent": "Copilot CLI",
+  "model": "",
+  "turn_id": "370fcd625d0e",
+  "checkpoint_transcript_start": 346,
+  "transcript_lines_at_start": 346,
+  "compact_transcript_start": 48,
+  "token_usage": {
+    "input_tokens": 0,
+    "cache_creation_tokens": 0,
+    "cache_read_tokens": 0,
+    "output_tokens": 0,
+    "api_call_count": 0
+  },
+  "session_metrics": {
+    "turn_count": 1
+  }
+}
