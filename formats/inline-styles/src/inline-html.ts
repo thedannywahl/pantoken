@@ -1,5 +1,6 @@
 import juice from "juice";
 import { flattenScopes } from "./flatten-scopes.ts";
+import postcss from "postcss";
 
 /** Options for inlining a stylesheet into an HTML document. */
 export interface InlineHtmlOptions {
@@ -7,12 +8,22 @@ export interface InlineHtmlOptions {
   preserveFallbacks?: boolean;
   /** Resolve custom-property references against declarations in the document. */
   resolveCSSVariables?: boolean;
+  /** Inline custom-property declarations. Disable when a companion theme stylesheet supplies them. */
+  inlineCustomProperties?: boolean;
 }
 
 /** Inline CSS rules into matching HTML elements without fetching external resources. */
 export function inlineHtml(html: string, css: string, options: InlineHtmlOptions = {}): string {
   const { preserveFallbacks = true, resolveCSSVariables = false } = options;
-  const safeCss = flattenScopes(css).replace(/</gu, "\\3C ");
+  let flatCss = flattenScopes(css);
+  if (options.inlineCustomProperties === false) {
+    const root = postcss.parse(flatCss);
+    root.walkDecls((declaration) => {
+      if (declaration.prop.startsWith("--")) declaration.remove();
+    });
+    flatCss = root.toString();
+  }
+  const safeCss = flatCss.replace(/</gu, "\\3C ");
   return juice(`<style>${safeCss}</style>${html}`, {
     preserveContainerQueries: preserveFallbacks,
     preserveFontFaces: preserveFallbacks,

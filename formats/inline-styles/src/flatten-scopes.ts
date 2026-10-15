@@ -58,7 +58,9 @@ function combineSelectors(parents: string[], children: string): string {
   return splitSelectors(children)
     .flatMap((child) =>
       parents.map((parent) =>
-        child.includes("&") ? child.replaceAll("&", parent) : `${parent} ${child}`,
+        child.includes("&") || /:scope\b/u.test(child)
+          ? child.replaceAll(/&|:scope\b/gu, parent)
+          : `${parent} ${child}`,
       ),
     )
     .join(", ");

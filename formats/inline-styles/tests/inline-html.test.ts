@@ -32,6 +32,17 @@ test("flattens scoped component rules before inlining", () => {
   expect(result).toContain(".action:hover");
 });
 
+test("inlines :scope roots and leaves theme token declarations in the companion stylesheet", () => {
+  const result = inlineHtml(
+    '<div class="banner">News</div>',
+    ":root { --color: red; } @scope (.banner) { :scope { background: var(--color); } }",
+    { inlineCustomProperties: false },
+  );
+  expect(result).toContain("background: var(--color)");
+  expect(result).not.toContain('style="--color');
+  expect(flattenScopes("@scope (.banner) { :scope > p { color: red; } }")).toContain(".banner > p");
+});
+
 test("keeps commas inside scoped selector functions and attribute values", () => {
   const css = String.raw`@scope (.card, :is(.primary, .secondary), [data-label="a,b"], [data-path="a\,b"]) { button { color: red; } }`;
 
