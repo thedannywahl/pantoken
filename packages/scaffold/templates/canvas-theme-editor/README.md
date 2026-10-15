@@ -59,6 +59,18 @@ This opens a Vite dev server with:
   package** saves `canvas-theme.zip`, containing that same `index.html` plus the current
   `theme.css` and `theme.js`, including anything added in the CSS and JS tabs.
 
+### Provider and behavior options
+
+**None** embeds component CSS in `theme.css`. **Inline** uses `@pantoken/inline-styles` to add
+element styles to the editor HTML, including source view and copied/downloaded content. Switching
+back preserves component classes, structure, and edits while removing generated inline declarations.
+Inline still needs `theme.css` for tokens, fonts, pseudo-elements, interactive states, and media
+queries; it does not bypass Canvas's HTML sanitizer.
+
+**Include interactions** defaults on. Turning it off omits Pantoken's behavior JavaScript from the
+preview and downloads and hides new component insertions that require it. Existing content remains.
+The switch does not disable the editor's controls, custom JavaScript, or native browser behavior.
+
 ### Named presets
 
 The TinyMCE **Presets** menu provides **Save**, **Save as...**, **Open...**, and **Delete...**. A

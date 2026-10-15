@@ -47,7 +47,8 @@
     "translate": "never"
   },
   "cdnProviderLabel": { "message": "CDN provider", "translate": "always" },
-  "localProviderLabel": { "message": "None (inline)", "translate": "always" },
+  "localProviderLabel": { "message": "None", "translate": "always" },
+  "inlineProviderLabel": { "message": "Inline", "translate": "always" },
   "cdnSectionLabel": { "message": "CDN", "translate": "never" },
   "themeLabel": { "message": "Theme", "translate": "always" },
   "appearanceLabel": { "message": "Appearance", "translate": "always" },

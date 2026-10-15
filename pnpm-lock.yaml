@@ -873,6 +873,9 @@ importers:
       '@pantoken/i18n-engine':
         specifier: workspace:*
         version: link:../tools/i18n-engine
+      '@pantoken/inline-styles':
+        specifier: workspace:*
+        version: link:../formats/inline-styles
       '@pantoken/interactions':
         specifier: workspace:*
         version: link:../formats/interactions

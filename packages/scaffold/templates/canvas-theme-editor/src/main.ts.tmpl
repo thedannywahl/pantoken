@@ -50,6 +50,7 @@ const localFontsCss = fontsCss.replace(/\.\.\/assets\/fonts\/([^"\s)]+\.woff2)/g
 import localInteractionsJs from "@pantoken/interactions/interactions.iife.js?raw";
 import componentCapabilities from "@pantoken/interactions/component-capabilities.json";
 import { componentNeedsInteractions } from "./component-availability.ts";
+import { InlineDocument } from "./inline-document.ts";
 // A resolved asset URL for a real <script> tag — a dynamic import() of a pure side-effect module
 // from a "sideEffects": false package can get tree-shaken out of a production bundle.
 import interactionsIifeUrl from "@pantoken/interactions/interactions.iife.js?url";
@@ -215,6 +216,12 @@ let previewPopupStylePairs: Array<{
   clone: HTMLStyleElement;
 }> = [];
 const LOCAL_PROVIDER_ID = "none";
+const INLINE_PROVIDER_ID = "inline";
+const inlineDocument = new InlineDocument();
+let inlineRendered = false;
+let applyingInline = false;
+let lastInlineHtml = "";
+let lastInlineCss = "";
 // `import.meta.env.DEV` is baked in at build time, so it's `false` for any `vite build` output —
 // including docs' Canvas RCE preview, which is always built for production yet only ever served on
 // localhost. Fall back to a hostname check so a local, non-CDN preview is detected either way.
@@ -653,7 +660,7 @@ const localAssetUrls = import.meta.glob<string>(
 );
 
 function buildSelectedAssetUrl(file: CdnFile): string {
-  if (providerSelect.value !== LOCAL_PROVIDER_ID) {
+  if (![LOCAL_PROVIDER_ID, INLINE_PROVIDER_ID].includes(providerSelect.value)) {
     return buildFileUrl(file, providerSelect.value);
   }
   const localUrl = localAssetUrls[`/node_modules/${file.package}/${file.path}`];
@@ -941,6 +948,7 @@ tinymce.PluginManager.add(
       pantokenHtmlCompletion({ model: [...listComponents(), ...listUtilities()] as any }),
     ],
     onChange: () => {
+      if (applyingInline) return;
       syncThemeColorFromEditor();
       if (syncIconAssetsFromEditor()) void refreshAll();
       debouncedUpdatePreview();
@@ -970,6 +978,10 @@ const localProviderOption = document.createElement("option");
 localProviderOption.value = LOCAL_PROVIDER_ID;
 localProviderOption.textContent = activeStrings.localProviderLabel;
 providerSelect.append(localProviderOption);
+const inlineProviderOption = document.createElement("option");
+inlineProviderOption.value = INLINE_PROVIDER_ID;
+inlineProviderOption.textContent = activeStrings.inlineProviderLabel;
+providerSelect.append(inlineProviderOption);
 for (const [id, provider] of Object.entries(CDN_PROVIDERS)) {
   const option = document.createElement("option");
   option.value = id;
@@ -1153,7 +1165,41 @@ function getEditorHtml(): string {
 }
 
 function getNormalizedEditorHtml(): string {
-  return normalizeEditorHtml(getEditorHtml(), selectedColor);
+  return inlineDocument.export(normalizeEditorHtml(getEditorHtml(), selectedColor));
+}
+
+function replaceProviderHtml(content: string): void {
+  if (!activeEditor) return;
+  const sourceToggle = activeEditor.plugins[SOURCE_TOGGLE_PLUGIN_NAME] as SourceTogglePluginApi | undefined;
+  applyingInline = true;
+  try {
+    const bookmark = activeEditor.selection.getBookmark();
+    activeEditor.undoManager.ignore(() => activeEditor!.setContent(content));
+    if (sourceToggle?.isSourceMode()) sourceToggle.replaceAll(content);
+    else activeEditor.selection.moveToBookmark(bookmark);
+  } finally {
+    applyingInline = false;
+  }
+}
+
+async function syncInlineProvider(theme: { css: string }): Promise<void> {
+  const current = getEditorHtml();
+  if (providerSelect.value !== INLINE_PROVIDER_ID) {
+    if (inlineRendered) replaceProviderHtml(inlineDocument.canonical(current));
+    inlineRendered = false;
+    lastInlineHtml = "";
+    return;
+  }
+  const canonical = inlineDocument.canonical(current);
+  const css = [theme.css, cssEditorView.state.doc.toString()].join("\n");
+  if (inlineRendered && canonical === lastInlineHtml && css === lastInlineCss) return;
+  const { inlineHtml } = await import("@pantoken/inline-styles/html");
+  if (providerSelect.value !== INLINE_PROVIDER_ID || getEditorHtml() !== current) return;
+  const rendered = inlineDocument.render(current, css, (html, stylesheet) => inlineHtml(html, stylesheet, { inlineCustomProperties: false }));
+  inlineRendered = true;
+  replaceProviderHtml(rendered);
+  lastInlineHtml = inlineDocument.canonical(getEditorHtml());
+  lastInlineCss = css;
 }
 
 function assetKey(asset: CdnFile): string {
@@ -1207,7 +1253,7 @@ function captureCanvasThemePreset(): CanvasThemePreset {
     includeInteractions: includeInteractionsCheckbox.checked,
     customCss: cssEditorView.state.doc.toString(),
     customJs: jsEditorView.state.doc.toString(),
-    editorHtml: getNormalizedEditorHtml(),
+    editorHtml: normalizeEditorHtml(inlineDocument.canonical(getEditorHtml()), selectedColor),
   };
 }
 
@@ -1222,7 +1268,7 @@ function isThemeMode(value: unknown): value is ThemeMode {
 function isCdnProvider(value: unknown): value is string {
   return (
     typeof value === "string" &&
-    (Object.hasOwn(CDN_PROVIDERS, value) || value === LOCAL_PROVIDER_ID)
+    (Object.hasOwn(CDN_PROVIDERS, value) || value === LOCAL_PROVIDER_ID || value === INLINE_PROVIDER_ID)
   );
 }
 
@@ -1248,6 +1294,8 @@ function replaceEditorDocument(view: EditorView, content: string): void {
 }
 
 function resetCanvasThemePreset(): void {
+  inlineRendered = false;
+  lastInlineHtml = "";
   selectedTheme = "rebrand";
   const themeButton = [...themeButtons].find((button) => button.dataset.theme === selectedTheme);
   if (themeButton) selectToggleButton(themeButtons, themeButton);
@@ -1277,6 +1325,8 @@ function resetCanvasThemePreset(): void {
 
 function restoreCanvasThemePreset(preset: CanvasThemePreset): void {
   if (!activeEditor || !isCanvasThemePreset(preset)) throw new TypeError("invalid-preset");
+  inlineRendered = false;
+  lastInlineHtml = "";
 
   selectedTheme = preset.theme;
   const themeButton = [...themeButtons].find((button) => button.dataset.theme === preset.theme);
@@ -1319,7 +1369,7 @@ function currentSelection(): { provider: string; theme: ThemeVariant; mode: Them
 async function buildCurrentTheme(): Promise<{ css: string; js: string }> {
   const selection = currentSelection();
   const customCss = selectedCustomColorCss();
-  if (selection.provider !== LOCAL_PROVIDER_ID) {
+  if (![LOCAL_PROVIDER_ID, INLINE_PROVIDER_ID].includes(selection.provider)) {
     const theme = buildTheme({
       ...selection,
       js: includeInteractionsCheckbox.checked ? undefined : [],
@@ -1887,6 +1937,8 @@ async function refreshAll(): Promise<void> {
   try {
     const theme = await buildCurrentTheme();
     if (generation !== refreshGeneration) return;
+    await syncInlineProvider(theme);
+    if (generation !== refreshGeneration) return;
     updatePreview(theme);
     updateDownloads(theme);
   } catch (error) {
@@ -2020,6 +2072,7 @@ void registerPantokenPlugin.then(async () => {
       quickbars_image_toolbar: "alignleft aligncenter alignright | image",
       setup(editor: Editor): void {
         editor.on("input change Undo Redo SetContent", () => {
+          if (applyingInline) return;
           syncThemeColorFromEditor();
           if (syncIconAssetsFromEditor()) void refreshAll();
           debouncedUpdatePreview();
