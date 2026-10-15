@@ -1,0 +1,4 @@
+okay, now we're going to extend our example flags which the component selector users to insert html.
+-canvas-rce: interactions
+-canvas-rce-no-interactions: interactions disabled.
+that way we can appropriately insert a banner or an alert or or or... for components with "both" for example, a banner with a close button, or a banner without a close button.
