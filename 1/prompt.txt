@@ -1,0 +1,1 @@
+go through formats/components/src/* for other areas that may need automatica11y examples for testing like we added to formats/components/src/components and go through plugins/pantoken/* the same.
