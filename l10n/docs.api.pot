@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: pantoken\n"
-"PO-Revision-Date: 2026-10-15 15:04+0000\n"
+"PO-Revision-Date: 2026-10-15 20:42+0000\n"
 "Last-Translator: pantoken localization engine\n"
 "Language-Team: pantoken\n"
 "MIME-Version: 1.0\n"
@@ -747,6 +747,12 @@ msgstr ""
 #: css/alert.md
 #, no-c-format
 msgctxt "docs.api:prose"
+msgid "\n  Settings saved.\n  "
+msgstr ""
+
+#: css/alert.md
+#, no-c-format
+msgctxt "docs.api:prose"
 msgid "\n  An alert with the default info color, and a custom icon.\n"
 msgstr ""
 
@@ -1402,11 +1408,13 @@ msgid "@import \"@pantoken/plugin-custom-components/custom-components.css\";"
 msgstr ""
 
 #: css/banner.md
+#: css/banner.md
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "New feature"
 msgstr ""
 
+#: css/banner.md
 #: css/banner.md
 #, no-c-format
 msgctxt "docs.api:prose"
@@ -4350,7 +4358,7 @@ msgstr ""
 #: css/index.md
 #, no-c-format
 msgctxt "docs.api:prose"
-msgid "The logo system: `.instui-logo` sizing plus the shared `-logo-<name>` painter that masks a product logo (in `currentColor`) before any element, preserving the logo's own aspect ratio instead of a fixed 1:1 box."
+msgid "The logo system preserves each product logo's colors and aspect ratio. Explicit current-color variants inherit the text color."
 msgstr ""
 
 #: css/index.md
@@ -4793,7 +4801,7 @@ msgstr ""
 #: css/logo.md
 #, no-c-format
 msgctxt "docs.api:prose"
-msgid "`.instui-logo` — The logo system: `.instui-logo` sizing plus the shared `-logo-<name>` painter that masks a product logo (in `currentColor`) before any element, preserving the logo's own aspect ratio instead of a fixed 1:1 box."
+msgid "`.instui-logo` — The logo system preserves each product logo's colors and aspect ratio. Explicit current-color variants inherit the text color."
 msgstr ""
 
 #: css/logo.md
@@ -11458,6 +11466,12 @@ msgstr ""
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "Resolve custom-property references against declarations in the document."
+msgstr ""
+
+#: formats/inline-styles/src/interfaces/InlineHtmlOptions.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Inline custom-property declarations. Disable when a companion theme stylesheet supplies them."
 msgstr ""
 
 #: formats/interactions/src/functions/applySpacing.md

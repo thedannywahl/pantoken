@@ -96,6 +96,15 @@ export const fooCss = foo.css;
 - Add the record to its bucket `index.ts`. For `COMPONENTS` the order is **load-bearing** — it matches
   the `componentsCss()` concat order, not alphabetical.
 
+## Example Audiences
+
+Use `-canvas-rce` for the HTML inserted when Include interactions is enabled, and
+`-canvas-rce-no-interactions` for its static counterpart when interactions are disabled. For
+example, a banner or alert can include a close button in the first example and omit it in the
+second. The selector reads the current setting at insertion time and leaves existing content alone.
+Components without the new flag retain their previous example fallback. Add `-docs` to examples
+that should also render in documentation; `-automatica11y` remains independent.
+
 ## The modifier convention (key-value RSCSS compound)
 
 - Modifiers are `.${p}<comp>.-<prop>-<val>`, aligned to InstUI prop names

@@ -30,9 +30,17 @@
  * @cssproperty --pantoken-alert-icon-bg <color> — The coloured status-bar fill behind the glyph; each `-color-*` variant sets its own.
  * @cssproperty --timeout <integer> — Milliseconds before automatic dismissal; `0` disables it. Requires the alert interaction bundle.
  * @accessibility For an important message, add `role="alert"` or an `aria-live` region so assistive tech announces it; the dismiss control is a labelled close button (the `.pfx-close-button` in the example carries `aria-label="Close"`).
- * @example -canvas-rce -nocard
+ * @example -canvas-rce-no-interactions -nocard
  * ```html
  * <div class="pfx-alert" role="status">Settings saved.</div>
+ * ```
+ * @example -canvas-rce -nocard
+ * ```html
+ * <div class="pfx-alert" role="status">
+ *   Settings saved.
+ *   <button class="pfx-close-button" aria-label="Close"></button>
+ * </div>
+ *
  * ```
  * @example -docs -nocard
  * ```html

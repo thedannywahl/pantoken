@@ -881,6 +881,7 @@ const registerPantokenPlugin = (async () => {
         currentAssets,
         onMissingAsset,
         buildAssetUrl: buildSelectedAssetUrl,
+        includeInteractions: () => includeInteractionsCheckbox.checked,
         isAvailable: (entry) => includeInteractionsCheckbox.checked || !componentNeedsInteractions(entry, componentCapabilities.components),
       },
       icons: {

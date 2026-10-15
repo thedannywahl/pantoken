@@ -1,5 +1,9 @@
 /** Consumer supported by a cssdoc example's audience flag. */
-export type ExampleAudience = "automatica11y" | "canvas-rce" | "docs";
+export type ExampleAudience =
+  | "automatica11y"
+  | "canvas-rce"
+  | "canvas-rce-no-interactions"
+  | "docs";
 
 /** Example indexes selected for each cssdoc consumer. */
 export interface ExampleTargetSelection {
@@ -11,6 +15,7 @@ export interface ExampleTargetSelection {
 const AUDIENCE_FLAGS = new Map<string, ExampleAudience>([
   ["-automatica11y", "automatica11y"],
   ["-canvas-rce", "canvas-rce"],
+  ["-canvas-rce-no-interactions", "canvas-rce-no-interactions"],
   ["-docs", "docs"],
 ]);
 
@@ -32,15 +37,22 @@ function audienceFlags(example: string): Set<ExampleAudience> {
 }
 
 /** Resolve example indexes for each consumer while preserving the pre-flag defaults. */
-export function resolveExampleTargets(examples: readonly string[]): ExampleTargetSelection {
+export function resolveExampleTargets(
+  examples: readonly string[],
+  options: { interactions?: boolean } = {},
+): ExampleTargetSelection {
   const flags = examples.map(audienceFlags);
   const explicit = (audience: ExampleAudience): number[] =>
     flags.flatMap((exampleFlags, index) => (exampleFlags.has(audience) ? [index] : []));
   const automatica11y = explicit("automatica11y");
-  const canvasRce = explicit("canvas-rce");
+  const withoutInteractions = explicit("canvas-rce-no-interactions");
+  const canvasRce =
+    options.interactions === false && withoutInteractions.length > 0
+      ? withoutInteractions
+      : explicit("canvas-rce");
   const docs = explicit("docs");
 
-  if (automatica11y.length + canvasRce.length + docs.length === 0) {
+  if (flags.every((exampleFlags) => exampleFlags.size === 0)) {
     return {
       automatica11y: [],
       canvasRce: examples.length === 0 ? [] : [0],

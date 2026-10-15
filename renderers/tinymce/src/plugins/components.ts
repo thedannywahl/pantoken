@@ -28,6 +28,8 @@ export interface ComponentsPickerOptions {
   registerUi?: boolean;
   /** Evaluated each time the picker opens, without changing existing editor content. */
   isAvailable?: (entry: CssDocEntry) => boolean;
+  /** Read at insertion time to select the matching Canvas example. Defaults to enabled. */
+  includeInteractions?: () => boolean;
 }
 
 /** Command that opens the components picker. */
@@ -183,7 +185,9 @@ function openComponentsDialog(
       const component = components.find((c) => c.name === selectedName);
 
       if (component) {
-        const exampleIndex = resolveExampleTargets(component.examples).canvasRce[0];
+        const exampleIndex = resolveExampleTargets(component.examples, {
+          interactions: options.includeInteractions?.() ?? true,
+        }).canvasRce[0];
         if (exampleIndex === undefined) {
           api.close();
           return;

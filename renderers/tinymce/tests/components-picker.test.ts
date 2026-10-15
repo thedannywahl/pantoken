@@ -4,6 +4,8 @@
 import { expect, test, vi } from "vite-plus/test";
 import type { Editor } from "tinymce";
 import { createComponentsPlugin } from "../src/plugins/components.js";
+import coreModel from "@pantoken/components/model.json" with { type: "json" };
+import customModel from "@pantoken/plugin-custom-components/model.json" with { type: "json" };
 
 // Mock editor object
 function createMockEditor(): Editor {
@@ -377,3 +379,62 @@ test("component insertion strips audience flags from an unfenced example", () =>
   const insertContent = (editor as unknown as Record<string, unknown>).insertContent;
   expect(insertContent).toHaveBeenCalledWith('<a class="instui-link" href="#">Read more</a>');
 });
+
+test("insertion reads the current interactions option and selects the matching example", () => {
+  const editor = createMockEditor();
+  let interactions = true;
+  createComponentsPlugin({
+    model: [
+      {
+        name: "banner",
+        className: ".instui-banner",
+        kind: "component",
+        modifiers: [],
+        examples: [
+          '-canvas-rce\n```html\n<div class="instui-banner">News<button class="instui-close-button" aria-label="Close"></button></div>\n```',
+          '```html -canvas-rce-no-interactions\n<div class="instui-banner">News</div>\n```',
+        ],
+      },
+    ] as any,
+    currentAssets: [],
+    includeInteractions: () => interactions,
+  })(editor);
+  const open = (editor.ui.registry.addButton as any).mock.calls[0][1].onAction;
+  for (const enabled of [true, false, true]) {
+    interactions = enabled;
+    open();
+    const dialog = (editor.windowManager.open as any).mock.lastCall[0];
+    dialog.onSubmit({ getData: () => ({ component: "banner" }), close: vi.fn() });
+    const inserted = (editor.insertContent as any).mock.lastCall[0];
+    expect(inserted.includes("instui-close-button")).toBe(enabled);
+    expect(inserted).not.toContain("-canvas-rce");
+    expect(inserted).toContain('class="instui-banner"');
+  }
+});
+
+test.each(["banner", "alert"])(
+  "authored %s examples omit dismissal when interactions are disabled",
+  (name) => {
+    const editor = createMockEditor();
+    const entry = [...coreModel, ...customModel].find((component) => component.name === name)!;
+    let interactions = true;
+    createComponentsPlugin({
+      model: [entry] as any,
+      currentAssets: [],
+      includeInteractions: () => interactions,
+    })(editor);
+    const open = (editor.ui.registry.addButton as any).mock.calls[0][1].onAction;
+    for (const enabled of [true, false]) {
+      interactions = enabled;
+      open();
+      (editor.windowManager.open as any).mock.lastCall[0].onSubmit({
+        getData: () => ({ component: name }),
+        close: vi.fn(),
+      });
+      const inserted = (editor.insertContent as any).mock.lastCall[0];
+      expect(inserted.includes("instui-close-button")).toBe(enabled);
+      expect(inserted).toContain(`instui-${name}`);
+      expect(inserted).not.toContain("-canvas-rce");
+    }
+  },
+);
