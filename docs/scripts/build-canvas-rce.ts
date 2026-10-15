@@ -39,6 +39,7 @@ await scaffoldProject("canvas-theme-editor", renderDir, {
 // package.json too, because the app entry also imports package subpaths through each export map.
 const localIconPackages: Record<string, string> = {
   "@pantoken/components": join(repoRoot, "formats/components"),
+  "@pantoken/plugin-custom-components": join(repoRoot, "plugins/pantoken/custom-components"),
   "@pantoken/plugin-custom-icons": join(repoRoot, "plugins/pantoken/custom-icons"),
   "@pantoken/plugin-logos": join(repoRoot, "plugins/pantoken/logos"),
   "@pantoken/plugin-simple-icons": join(repoRoot, "plugins/pantoken/simple-icons"),

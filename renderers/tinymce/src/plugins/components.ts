@@ -6,6 +6,7 @@
  */
 import type { Editor } from "tinymce";
 import type { CdnFile } from "@pantoken/cdn";
+import customComponentsModel from "@pantoken/plugin-custom-components/model.json" with { type: "json" };
 import { resolveExampleTargets } from "@pantoken/utils/example-targets";
 import type { CssDocEntry } from "../cssdoc/model.js";
 import type { MissingAssetHandler } from "../types.js";
@@ -59,6 +60,8 @@ const COMPONENT_PICKER_EXCLUDED_COMPONENTS = new Set([
   "text-input",
   "tray",
 ]);
+
+const customComponentNames = new Set(customComponentsModel.map((entry) => entry.name));
 
 function normalizeExample(example: string): string {
   const fencedHtml = example.match(/```(?:html(?:\s+-[a-z][a-z0-9-]*)*)?\s*\r?\n([\s\S]*?)```/iu);
@@ -183,7 +186,10 @@ function openComponentsDialog(
 
         // If this component has a CSS file, inject it into the content area.
         const cssFile: CdnFile = {
-          package: "@pantoken/components",
+          package:
+            component.kind === "custom-component" || customComponentNames.has(component.name)
+              ? "@pantoken/plugin-custom-components"
+              : "@pantoken/components",
           path: `dist/${component.name}.css`,
         };
         trackAndInjectAsset(editor, cssFile, options);

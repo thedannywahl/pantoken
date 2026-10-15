@@ -4,6 +4,7 @@ import {
   injectContentStylesheet,
   pantokenContentCssUrls,
   retargetContentStylesheets,
+  trackAndInjectAsset,
 } from "../src/content-css.js";
 
 const STYLESHEET_URL = "data:text/css,body%7B%7D";
@@ -14,6 +15,22 @@ test("pantokenContentCssUrls delegates to buildFileUrls", () => {
     "unpkg",
   );
   expect(urls).toEqual(["https://unpkg.com/@pantoken/components/dist/base.css"]);
+});
+
+test("asset tracking distinguishes equal paths in different packages", () => {
+  const editor = fakeEditor() as unknown as Parameters<typeof injectContentStylesheet>[0];
+  const target = {
+    currentAssets: [] as { package: string; path: string }[],
+    buildAssetUrl: () => STYLESHEET_URL,
+  };
+  trackAndInjectAsset(editor, { package: "@pantoken/components", path: "dist/button.css" }, target);
+  trackAndInjectAsset(
+    editor,
+    { package: "@pantoken/plugin-custom-components", path: "dist/button.css" },
+    target,
+  );
+  expect(target.currentAssets).toHaveLength(2);
+  expect(editor.getDoc().head.querySelectorAll("link")).toHaveLength(2);
 });
 
 /** A minimal `Editor`-shaped stub backed by a real happy-dom document. */

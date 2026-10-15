@@ -181,7 +181,7 @@ const uriByName = new Map(logos.map((l) => [l.name, `url("${dataUri(svgs[l.name]
 // `--pantoken-logo-aspect` instead of assuming a 1:1 box), so e.g. `-logo-canvas-icon-reversed` masks
 // `--instui-logo-canvas-icon-reversed` in `currentColor`, sized by that logo's own `viewBox` aspect ratio.
 const glyphRule = (l: LogoMeta): string =>
-  `.-logo-${l.name} { --pantoken-glyph: var(--instui-logo-${l.name}); --pantoken-logo-aspect: ${l.width} / ${l.height}; }`;
+  `.-logo-${l.name}, .-icon-${l.name} { --pantoken-glyph: var(--instui-logo-${l.name}); --pantoken-logo-aspect: ${l.width} / ${l.height}; }`;
 
 const logosCss = [
   "/* Instructure product logos as image tokens (pantoken logos plugin) — generated, do not edit. */",

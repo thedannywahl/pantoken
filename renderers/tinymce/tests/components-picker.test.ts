@@ -104,7 +104,7 @@ test("picker lists eligible components and custom components without a search fi
       {
         name: "agent-shell",
         className: ".instui-agent-shell",
-        kind: "custom-component",
+        kind: "component",
         examples: [],
       },
       {
@@ -236,6 +236,37 @@ test("component example is inserted into editor", () => {
   // Verify insertContent was called with the example HTML.
   const insertContent = (editor as unknown as Record<string, unknown>).insertContent;
   expect(insertContent).toHaveBeenCalledWith('<button class="instui-button">Click me</button>');
+});
+
+test("custom components load their owning package through the selected provider", () => {
+  const editor = createMockEditor();
+  const currentAssets = [] as any[];
+  const buildAssetUrl = vi.fn(() => "/local/banner.css");
+  createComponentsPlugin({
+    model: [
+      {
+        name: "banner",
+        className: ".instui-banner",
+        kind: "custom-component",
+        examples: ['<div class="instui-banner">Announcement</div>'],
+        modifiers: [],
+      },
+    ] as any,
+    currentAssets,
+    buildAssetUrl,
+  })(editor);
+  (editor.ui.registry.addButton as any).mock.calls[0][1].onAction();
+  (editor.windowManager.open as any).mock.calls[0][0].onSubmit({
+    getData: () => ({ component: "banner" }),
+    close: vi.fn(),
+  });
+  expect(currentAssets).toEqual([
+    { package: "@pantoken/plugin-custom-components", path: "dist/banner.css" },
+  ]);
+  expect(buildAssetUrl).toHaveBeenCalledWith(currentAssets[0]);
+  expect(editor.getDoc().head.querySelector("link")?.getAttribute("href")).toBe(
+    "/local/banner.css",
+  );
 });
 
 test("component example is written into the CodeMirror doc while the source view is active", () => {

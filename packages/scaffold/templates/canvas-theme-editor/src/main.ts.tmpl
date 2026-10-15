@@ -37,6 +37,7 @@ import componentsCss from "@pantoken/components/components.css?inline";
 import utilitiesCss from "@pantoken/components/utilities.css?inline";
 import fontsCss from "@pantoken/components/fonts.css?inline";
 import logoPainterCss from "@pantoken/plugin-custom-components/logo.css?inline";
+import customComponentsCss from "@pantoken/plugin-custom-components/custom-components.css?inline";
 const fontAssetUrls = import.meta.glob<string>(
   "/node_modules/@pantoken/components/assets/fonts/**/*.woff2",
   { eager: true, query: "?url", import: "default" },
@@ -120,6 +121,7 @@ import {
   getUsedIconCdnFiles,
   getLogoCdnFile,
   getUsedLogoCdnFiles,
+  injectContentStylesheet,
   listComponents,
   listUtilities,
   loadAllIcons,
@@ -220,6 +222,7 @@ const LOCAL_COMPONENT_CSS = [
   baseCss,
   componentIconsCss,
   componentsCss,
+  customComponentsCss,
   utilitiesCss,
   logoPainterCss,
   CUSTOM_THEME_COLORS_CSS,
@@ -642,7 +645,7 @@ let refreshGeneration = 0;
 const localAssetUrls = import.meta.glob<string>(
   [
     "/node_modules/@pantoken/components/dist/icons/*.css",
-    "/node_modules/@pantoken/plugin-{logos,simple-icons,lucide-lab,custom-icons}/dist/**/*.css",
+    "/node_modules/@pantoken/plugin-{logos,simple-icons,lucide-lab,custom-icons,custom-components}/dist/**/*.css",
   ],
   { eager: true, import: "default", query: "?url" },
 );
@@ -692,7 +695,10 @@ function applyEditorTheme(editor: Editor | undefined): void {
     editorContentStyle = editorDocument.createElement("style");
     editorDocument.head.append(editorContentStyle);
   }
-  editorContentStyle.textContent = [css.content, PREVIEW_SCHEME_FORCE_CSS].join("\n");
+  const tokensCss = selectedTheme === "canvas" ? canvasTokensCss
+    : selectedTheme === "canvasHighContrast" ? canvasHighContrastTokensCss
+    : includeDarkModeCheckbox.checked ? adaptiveTokensCss : rebrandLightTokensCss;
+  editorContentStyle.textContent = [tokensCss, LOCAL_COMPONENT_CSS, css.content, PREVIEW_SCHEME_FORCE_CSS].join("\n");
   // The content CSS's dark rules key off this attribute on the iframe's own root, which doesn't
   // inherit it from the host document.
   editorDocument.documentElement.dataset.pantokenScheme =
@@ -865,6 +871,7 @@ const registerPantokenPlugin = (async () => {
         model: componentModel as any,
         currentAssets,
         onMissingAsset,
+        buildAssetUrl: buildSelectedAssetUrl,
       },
       icons: {
         icons: allIcons,
@@ -1148,18 +1155,19 @@ function assetKey(asset: CdnFile): string {
 }
 
 async function inlineAssetCss(assets: readonly CdnFile[]): Promise<string[]> {
+  const urls = assets.map(buildSelectedAssetUrl);
   await Promise.all(
-    assets.map(async (asset) => {
-      const key = assetKey(asset);
+    assets.map(async (asset, index) => {
+      const key = urls[index];
       if (inlineAssetContents.has(key)) return;
-      const response = await fetch(buildSelectedAssetUrl(asset));
+      const response = await fetch(key);
       if (!response.ok) {
         throw new Error(`Unable to inline ${asset.package}/${asset.path}: ${response.status}`);
       }
       inlineAssetContents.set(key, await response.text());
     }),
   );
-  return assets.map((asset) => inlineAssetContents.get(assetKey(asset))!);
+  return urls.map((url) => inlineAssetContents.get(url)!);
 }
 
 function syncIconAssetsFromEditor(): boolean {
@@ -1171,6 +1179,11 @@ function syncIconAssetsFromEditor(): boolean {
   );
   const usedIconAssets = getUsedIconCdnFiles(content, availableIcons, currentAssets);
   const usedLogoAssets = getUsedLogoCdnFiles(content, logos);
+  if (activeEditor) {
+    for (const asset of [...usedIconAssets, ...usedLogoAssets]) {
+      injectContentStylesheet(activeEditor, buildSelectedAssetUrl(asset), asset);
+    }
+  }
   const nextAssets = [...nonSyncedAssets, ...usedIconAssets, ...usedLogoAssets];
   const changed = currentAssets.map(assetKey).join("\n") !== nextAssets.map(assetKey).join("\n");
   if (changed) currentAssets.splice(0, currentAssets.length, ...nextAssets);
