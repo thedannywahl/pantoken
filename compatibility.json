@@ -291,8 +291,8 @@
         "format": "theme.json v3",
         "status": "verified",
         "minimum": "6.6",
-        "testedThrough": "7.1.2",
-        "testedVersions": ["6.6", "6.7", "6.8", "6.9", "7.0", "7.1.2"],
+        "testedThrough": "7.1.3",
+        "testedVersions": ["6.6", "6.7", "6.8", "6.9", "7.0", "7.1.2", "7.1.3"],
         "testCommand": "vp run @pantoken/wordpress#check:compatibility"
       }
     },
