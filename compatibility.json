@@ -302,11 +302,11 @@
       "governedBy": "token-ir",
       "targetSupport": {
         "target": "Angular",
-        "format": "CUSTOM_ELEMENTS_SCHEMA template compilation (Angular 16.2.12 / TS 5.1.6; Angular 22.2.0 and 22.2.1 / TS 6.0.3)",
+        "format": "CUSTOM_ELEMENTS_SCHEMA template compilation (Angular 16.2.12 / TS 5.1.6; Angular 22.2.0, 22.2.1, and 22.2.2 / TS 6.0.3)",
         "status": "verified",
         "minimum": "16.2.12",
-        "testedThrough": "22.2.1",
-        "testedVersions": ["16.2.12", "22.2.0", "22.2.1"],
+        "testedThrough": "22.2.2",
+        "testedVersions": ["16.2.12", "22.2.0", "22.2.1", "22.2.2"],
         "testCommand": "vp run @pantoken/angular#check:compatibility"
       }
     },
