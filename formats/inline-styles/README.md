@@ -44,6 +44,24 @@ or document. Resolution happens before custom-property declarations are omitted,
 Variable substitution does not make pseudo-elements, media queries, or scripts portable as element
 styles; consumers producing standalone content must handle those separately.
 
+## Static Browser Snapshots
+
+`inlineHtmlInBrowser` from `@pantoken/inline-styles/browser` finishes static HTML using the browser's
+computed cascade. It resolves element declarations, copies inherited typography, and materializes
+supported pseudo-element visuals as real markup. Packaged data-image glyphs become PNG images,
+including color-tinted masks. The browser helper uses a temporary script-disabled iframe and does
+not execute authored scripts or event attributes. Referenced author images may still need network
+access. Responsive and interactive behavior is frozen rather than converted to JavaScript.
+
+```ts
+import { inlineHtmlInBrowser } from "@pantoken/inline-styles/browser";
+
+const html = await inlineHtmlInBrowser(content, completeThemeCss);
+```
+
+The snapshot is light-only. Verify the resulting fragment against the destination's HTML sanitizer;
+inlining is not a sanitizer or a guarantee that every host accepts data images and CSS properties.
+
 ## CLI
 
 Use the hoisted `pantoken` CLI to inline an HTML file:

@@ -6,6 +6,7 @@ export default extendBase({
     entry: {
       index: "src/index.ts",
       html: "src/inline-html.ts",
+      browser: "src/browser.ts",
       cli: "src/cli.ts",
     },
     exports: false,

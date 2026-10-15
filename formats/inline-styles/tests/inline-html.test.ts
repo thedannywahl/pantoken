@@ -40,6 +40,29 @@ test("resolved mode rejects circular definitions without changing reference mode
   expect(inlineHtml("<p>Text</p>", css)).toContain("var(--first)");
 });
 
+test("resolved mode computes inherited variables before scoped remapping", () => {
+  const result = inlineHtml(
+    '<html><body><div class="remap"><p>Text</p></div></body></html>',
+    ":root { --blue: blue; --navy: var(--blue); } .remap { --blue: var(--navy); color: var(--blue); }",
+    { resolveCSSVariables: true, inlineCustomProperties: false },
+  );
+  expect(result).toContain("color: blue");
+  expect(result).not.toContain("var(");
+});
+
+test("resolved variables preserve important declarations and inherited fallbacks", () => {
+  const result = inlineHtml(
+    '<div class="value">Text</div>',
+    ".value { --color: red !important; --color: blue; color: var(--color); padding: var(--missing, calc(1rem + 2px)); }",
+    { resolveCSSVariables: true },
+  );
+  expect(result).toContain("color: red;");
+  expect(result).toContain("padding: calc(1rem + 2px);");
+  expect(() =>
+    inlineHtml("<p>Text</p>", "p { gap: var(--missing); }", { resolveCSSVariables: true }),
+  ).toThrow("Unresolved CSS value");
+});
+
 test("does not let CSS close the temporary style element", () => {
   const result = inlineHtml("<div></div>", "/* </style><script>attack()</script> */");
 
