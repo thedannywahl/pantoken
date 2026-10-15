@@ -96,6 +96,25 @@ test("toolbar button opens dialog when clicked", () => {
   expect(editor.windowManager.open).toHaveBeenCalled();
 });
 
+test("availability is reevaluated each time the picker opens", () => {
+  const editor = createMockEditor();
+  let available = false;
+  createComponentsPlugin({
+    model: mockModel as any,
+    currentAssets: [],
+    isAvailable: () => available,
+  })(editor);
+  const open = (editor.ui.registry.addButton as any).mock.calls[0][1].onAction;
+  open();
+  expect((editor.windowManager.open as any).mock.calls[0][0].body.items[0].items).toEqual([]);
+  expect((editor.windowManager.open as any).mock.calls[0][0].buttons[0].enabled).toBe(false);
+  available = true;
+  open();
+  expect((editor.windowManager.open as any).mock.calls[1][0].body.items[0].items).toEqual([
+    { text: "button", value: "button" },
+  ]);
+});
+
 test("picker lists eligible components and custom components without a search field", () => {
   const editor = createMockEditor();
   const plugin = createComponentsPlugin({

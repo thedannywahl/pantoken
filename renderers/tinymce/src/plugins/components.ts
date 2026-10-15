@@ -26,6 +26,8 @@ export interface ComponentsPickerOptions {
   buildAssetUrl?: (file: CdnFile) => string;
   /** Register this picker's standalone toolbar button and menu item. */
   registerUi?: boolean;
+  /** Evaluated each time the picker opens, without changing existing editor content. */
+  isAvailable?: (entry: CssDocEntry) => boolean;
 }
 
 /** Command that opens the components picker. */
@@ -85,8 +87,12 @@ export function createComponentsPlugin(options: ComponentsPickerOptions): (edito
   return function pantokenComponentsPlugin(editor: Editor) {
     const strings = getEditorStrings(editor);
     // Build a list of available components.
-    const componentList = buildComponentList(options.model);
-    const openDialog = (): void => openComponentsDialog(editor, componentList, options);
+    const openDialog = (): void =>
+      openComponentsDialog(
+        editor,
+        buildComponentList(options.model.filter((entry) => options.isAvailable?.(entry) ?? true)),
+        options,
+      );
     registerComponentModifierToolbar(editor, options.model);
 
     if (options.registerUi === false) {
@@ -164,6 +170,7 @@ function openComponentsDialog(
         text: strings.insertButton,
         type: "submit",
         primary: true,
+        enabled: components.length > 0,
       },
       {
         text: strings.cancelButton,

@@ -7,6 +7,7 @@ export interface StoredPreferences {
   previewWidth: "large" | "medium" | "small" | number;
   previewFullscreen: boolean;
   cdnProvider: string;
+  includeInteractions?: boolean;
   tinymceConfig?: Record<string, unknown>;
 }
 
