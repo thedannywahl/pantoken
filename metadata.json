@@ -3,9 +3,10 @@
   "checkpoint_id": "01M4ZZ854VWAFE17QW7CNVV8Z3",
   "strategy": "manual-commit",
   "branch": "automatica11y",
-  "checkpoints_count": 3,
+  "checkpoints_count": 12,
   "files_touched": [
     ".changeset/accessibility-fixtures.md",
+    ".changeset/instui-card.md",
     ".changeset/locale-identity-labels.md",
     "bundlers/next/README.md",
     "bundlers/next/scripts/check-compatibility.ts",
@@ -196,6 +197,13 @@
       "compact_transcript": "/1/transcript.jsonl",
       "content_hash": "/1/content_hash.txt",
       "prompt": "/1/prompt.txt"
+    },
+    {
+      "metadata": "/2/metadata.json",
+      "transcript": "/2/full.jsonl",
+      "compact_transcript": "/2/transcript.jsonl",
+      "content_hash": "/2/content_hash.txt",
+      "prompt": "/2/prompt.txt"
     }
   ],
   "token_usage": {
