@@ -43,9 +43,13 @@ ${ROOT} .instui-logo[class*="-logo-"]::before {
   display: block;
   inline-size: 100%;
   block-size: 100%;
-  background: currentColor;
-  -webkit-mask: var(--pantoken-glyph) center / contain no-repeat;
-  mask: var(--pantoken-glyph) center / contain no-repeat;
+  background: var(--pantoken-logo-fill, transparent);
+  background-image: var(--pantoken-logo-image, var(--pantoken-glyph));
+  background-position: center;
+  background-size: contain;
+  background-repeat: no-repeat;
+  -webkit-mask: var(--pantoken-logo-mask, none) center / contain no-repeat;
+  mask: var(--pantoken-logo-mask, none) center / contain no-repeat;
 }
 .${LOGO_PICKER_CLASS}__caption {
   line-height: 1.2;
