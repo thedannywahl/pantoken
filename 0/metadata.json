@@ -1,0 +1,27 @@
+{
+  "cli_version": "0.11.5",
+  "checkpoint_id": "01M505HTVC8NDS8W0K907JB0R9",
+  "session_id": "58eebdd8-48b1-4ca7-80b4-20b9d2e60f14",
+  "strategy": "manual-commit",
+  "created_at": "2026-10-15T16:15:31.901311Z",
+  "branch": "automatica11y",
+  "checkpoints_count": 1,
+  "files_touched": [
+    ".changeset/repair-coverage-inputs.md",
+    ".github/workflows/ci.yml",
+    "plugins/pantoken/custom-components/tests/index.test.ts"
+  ],
+  "agent": "Copilot CLI",
+  "model": "",
+  "turn_id": "161b7f041c62",
+  "checkpoint_transcript_start": 133,
+  "transcript_lines_at_start": 133,
+  "compact_transcript_start": 17,
+  "token_usage": {
+    "input_tokens": 0,
+    "cache_creation_tokens": 0,
+    "cache_read_tokens": 0,
+    "output_tokens": 0,
+    "api_call_count": 0
+  }
+}
