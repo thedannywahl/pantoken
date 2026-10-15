@@ -1,5 +1,16 @@
 # CHANGELOG
 
+## 0.3.4
+
+### Patch Changes
+
+- c91395a: Include the 13 new Lucide 1.57.0 icons and synchronize the reviewed upstream baseline.
+- Updated dependencies [c91395a]
+- Updated dependencies [c91395a]
+- Updated dependencies [c91395a]
+  - @pantoken/utils@1.3.0
+  - @pantoken/tokens@0.8.2
+
 ## 0.3.3
 
 ### Patch Changes

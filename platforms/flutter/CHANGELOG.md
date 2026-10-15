@@ -1,5 +1,14 @@
 # CHANGELOG
 
+## 0.1.26
+
+### Patch Changes
+
+- Updated dependencies [c91395a]
+- Updated dependencies [c91395a]
+  - @pantoken/tokens@0.8.2
+  - @pantoken/core@0.6.2
+
 ## 0.1.25
 
 ### Patch Changes

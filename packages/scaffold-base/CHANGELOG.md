@@ -1,5 +1,12 @@
 # @pantoken/scaffold-base
 
+## 0.3.7
+
+### Patch Changes
+
+- Updated dependencies [c91395a]
+  - @pantoken/plugin-layouts@0.5.4
+
 ## 0.3.6
 
 ### Patch Changes

@@ -1,5 +1,13 @@
 # CHANGELOG
 
+## 0.2.3
+
+### Patch Changes
+
+- c91395a: Verify Angular 22.2.2 CUSTOM_ELEMENTS_SCHEMA compilation with TypeScript 6.0.3 and zone.js 0.16.0.
+- @pantoken/web-components@0.7.4
+  - @pantoken/scaffold-base@0.3.7
+
 ## 0.2.2
 
 ### Patch Changes

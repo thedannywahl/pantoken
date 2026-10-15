@@ -1,5 +1,27 @@
 # @pantoken/tinymce
 
+## 0.6.2
+
+### Patch Changes
+
+- c91395a: Route CSS examples to docs and Canvas RCE according to audience flags.
+- c91395a: Verify TinyMCE 8.9.3 PluginManager registration and Pantoken plugin callback initialization.
+- Updated dependencies [c91395a]
+- Updated dependencies [c91395a]
+- Updated dependencies [c91395a]
+- Updated dependencies [c91395a]
+- Updated dependencies [c91395a]
+- Updated dependencies [c91395a]
+  - @pantoken/components@2.1.0
+  - @pantoken/plugin-custom-components@0.7.1
+  - @pantoken/plugin-layouts@0.5.4
+  - @pantoken/utils@1.3.0
+  - @pantoken/tokens@0.8.2
+  - @pantoken/plugin-custom-icons@0.3.15
+  - @pantoken/plugin-logos@0.5.4
+  - @pantoken/plugin-lucide-lab@0.4.3
+  - @pantoken/plugin-simple-icons@0.3.13
+
 ## 0.6.1
 
 ### Patch Changes
