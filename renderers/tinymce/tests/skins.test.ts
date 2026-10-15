@@ -23,6 +23,18 @@ test("paints icon and logo glyphs in every content stylesheet", () => {
   }
 });
 
+test("every editable body has an explicit container surface with a standalone fallback", () => {
+  for (const file of SKIN_FILES.filter((file) => file.endsWith("content.css"))) {
+    const css = readFileSync(resolve(generatedRoot, file), "utf8");
+    expect(css, file).toMatch(
+      /body\.mce-content-body\s*\{\s*background-color: var\(--instui-color-background-container, #[a-f\d]+\)/iu,
+    );
+  }
+  const nextGen = readFileSync(resolve(generatedRoot, "next-gen/content.css"), "utf8");
+  expect(nextGen).toMatch(/:root\[data-pantoken-scheme="dark"\] body\.mce-content-body/u);
+  expect(nextGen).not.toContain("background-color: #171b21");
+});
+
 test("keeps dark mode in Next Gen only", () => {
   const nextGenUi = readFileSync(resolve(generatedRoot, "next-gen/skin.css"), "utf8");
   expect(nextGenUi).toContain(':root[data-pantoken-scheme="dark"]');
