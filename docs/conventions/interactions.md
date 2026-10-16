@@ -89,6 +89,15 @@ export function initModal(
 
 ## Shared helpers
 
+### Close-button targets
+
+`initCloseButton` uses `data-close-target` when present, or the nearest dialog, popover,
+`[data-dismissible]`, `[open]`, `.instui-alert`, or `.instui-banner` ancestor. Native
+`popovertarget` and `commandfor` controls keep their browser-provided behavior. Alert and banner
+close buttons use `initRemove` to fire a cancelable, bubbling `dismiss` event, fade out, and remove
+the message. Prevent the event to keep the message mounted, or add `-transition-none` to remove it
+without a fade. Other non-native targets retain their `open`-attribute and `close`-event behavior.
+
 ### `resolveSpace(keyword: string): string`
 
 Converts InstUI spacing keywords (`xs`, `sm`, `md`, `lg`, `xl`) to computed pixel values from CSS custom properties.

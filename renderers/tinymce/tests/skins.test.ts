@@ -23,11 +23,11 @@ test("paints icon and logo glyphs in every content stylesheet", () => {
   }
 });
 
-test("every editable body has an explicit container surface with a standalone fallback", () => {
+test("every editable document overrides the base reset with a container surface and fallback", () => {
   for (const file of SKIN_FILES.filter((file) => file.endsWith("content.css"))) {
     const css = readFileSync(resolve(generatedRoot, file), "utf8");
     expect(css, file).toMatch(
-      /body\.mce-content-body\s*\{\s*background-color: var\(--instui-color-background-container, #[a-f\d]+\)/iu,
+      /(?:^|\n)html,\s*body\.mce-content-body\s*\{\s*background-color: var\(--instui-color-background-container, #[a-f\d]+\)/iu,
     );
   }
   const nextGen = readFileSync(resolve(generatedRoot, "next-gen/content.css"), "utf8");

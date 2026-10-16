@@ -459,12 +459,7 @@ function setupStandaloneAppShell(): void {
     if (appearance === "light") option.classList.add("is-selected");
     option.addEventListener("click", () => {
       applyAppearance(appearance);
-      // The editor content and the live preview both default to following the app's own
-      // appearance — only guide mode (via `applyParentTheme`) did this before; tools mode's own
-      // shell toggle left both stuck on their prior scheme until a tray/preview control changed.
       applyEditorTheme(activeEditor);
-      syncPreviewSchemeToAppearance(appearance);
-      void refreshAll();
       themeMenu.removeAttribute("open");
     });
     appearanceGroup.append(option);
@@ -708,16 +703,16 @@ function applyEditorTheme(editor: Editor | undefined): void {
   }
   const tokensCss = selectedTheme === "canvas" ? canvasTokensCss
     : selectedTheme === "canvasHighContrast" ? canvasHighContrastTokensCss
-    : includeDarkModeCheckbox.checked ? adaptiveTokensCss : rebrandLightTokensCss;
+    : adaptiveTokensCss;
   editorContentStyle.textContent = [tokensCss, LOCAL_COMPONENT_CSS, css.content, PREVIEW_SCHEME_FORCE_CSS,
+    'body.mce-content-body > [data-pantoken-color] { background-color: var(--instui-color-background-container) !important; }',
     ':has(> [data-pantoken-inline-generated="::before"])::before, :has(> [data-pantoken-inline-generated="::after"])::after { content: none !important; }',
   ].join("\n");
   // The content CSS's dark rules key off this attribute on the iframe's own root, which doesn't
   // inherit it from the host document.
-  editorDocument.documentElement.dataset.pantokenScheme =
-    providerSelect.value === INLINE_PROVIDER_ID ? "light" : document.documentElement.dataset.pantokenScheme;
-  if (providerSelect.value === INLINE_PROVIDER_ID) editorDocument.documentElement.style.colorScheme = "light";
-  else editorDocument.documentElement.style.removeProperty("color-scheme");
+  const scheme = document.documentElement.dataset.pantokenScheme === "dark" ? "dark" : "light";
+  editorDocument.documentElement.dataset.pantokenScheme = scheme;
+  editorDocument.documentElement.style.colorScheme = scheme;
 }
 
 /** Temporarily overrides the editing iframe's scheme so the a11y checker can test contrast under
@@ -725,6 +720,7 @@ function applyEditorTheme(editor: Editor | undefined): void {
 function forceEditorColorScheme(scheme: A11yColorScheme): void {
   if (!activeEditor) return;
   activeEditor.getDoc().documentElement.dataset.pantokenScheme = scheme;
+  activeEditor.getDoc().documentElement.style.colorScheme = scheme;
 }
 
 function getEditorColorScheme(): A11yColorScheme {
@@ -795,7 +791,6 @@ function applyParentTheme(theme: ThemeVariant, mode: "light" | "dark"): void {
   const themeButton = [...themeButtons].find((button) => button.dataset.theme === theme);
   if (themeButton) selectToggleButton(themeButtons, themeButton);
   syncDarkModeAvailability();
-  syncPreviewSchemeToAppearance(mode);
   applyEditorTheme(activeEditor);
   void refreshAll();
   syncPreviewPopupChrome();
@@ -1633,17 +1628,6 @@ if (typeof selectedPreviewWidth === "number") {
 let previewDarkOverride = false;
 syncDarkModeAvailability();
 
-/** Makes the preview's own light/dark display follow an app-wide appearance change (its "include
- * dark mode" export checkbox stays untouched); the user can still flip it back independently
- * afterward via `previewSchemeToggle`. No-op while the current theme has no dark preview to show. */
-function syncPreviewSchemeToAppearance(mode: "light" | "dark"): void {
-  if (!includeDarkModeCheckbox.checked) return;
-  previewDarkOverride = mode === "dark";
-  previewSchemeToggle.setAttribute("aria-pressed", String(previewDarkOverride));
-  previewSchemeToggle.classList.toggle("-icon-moon", !previewDarkOverride);
-  previewSchemeToggle.classList.toggle("-icon-sun", previewDarkOverride);
-}
-
 previewSchemeToggle.addEventListener("click", () => {
   previewDarkOverride = !previewDarkOverride;
   previewSchemeToggle.setAttribute("aria-pressed", String(previewDarkOverride));
@@ -1875,10 +1859,18 @@ function updatePreview(theme: { css: string; js: string }): void {
   const portable = providerSelect.value === INLINE_PROVIDER_ID;
   if (portable) previewFrame.setAttribute("sandbox", "allow-same-origin");
   else previewFrame.removeAttribute("sandbox");
-  const themeCss = (portable ? [] : [theme.css, PREVIEW_SCHEME_FORCE_CSS, cssEditorView.state.doc.toString()])
+  const previewTokensCss = selectedTheme === "canvas" ? canvasTokensCss
+    : selectedTheme === "canvasHighContrast" ? canvasHighContrastTokensCss
+    : adaptiveTokensCss;
+  const previewFrameCss = `@scope (:root) to (#content > *) {
+${baseCss}
+${componentsCss}
+${utilitiesCss}
+}`;
+  const themeCss = (portable ? [previewTokensCss, PREVIEW_SCHEME_FORCE_CSS] : [theme.css, PREVIEW_SCHEME_FORCE_CSS, cssEditorView.state.doc.toString()])
     .filter(Boolean)
     .join("\n");
-  const themeJs = (portable ? [] : [theme.js, jsEditorView.state.doc.toString()])
+  const themeJs = (portable ? [] : [includeInteractionsCheckbox.checked ? localInteractionsJs : "", jsEditorView.state.doc.toString()])
     .filter(Boolean)
     .join("\n");
   // Elevation is a rebrand-only affordance — Canvas's own themes don't use drop-shadow surfaces.
@@ -1893,8 +1885,9 @@ function updatePreview(theme: { css: string; js: string }): void {
     selectedTheme === "rebrand" && includeDarkModeCheckbox.checked && previewDarkOverride
       ? "dark"
       : "light";
-  loadPreviewDocument(`<!doctype html><html data-pantoken-boundary data-pantoken-instance="${EDITOR_INSTANCE}-preview" data-pantoken-theme="${selectedTheme}" data-pantoken-scheme="${previewScheme}" data-pantoken-color="${selectedColor}" style="color-scheme:${previewScheme}"><head><style>${themeCss}
-${portable ? "" : CUSTOM_THEME_COLORS_CSS}</style><style>html{background:#fff}#wrapper{padding:32px;}#content{padding:36px 48px 48px;min-height:20rem;margin:0 auto;border-radius:12px;}@media not all and (min-width: 768px) {
+  loadPreviewDocument(`<!doctype html><html data-pantoken-boundary data-pantoken-instance="${EDITOR_INSTANCE}-preview" data-pantoken-theme="${selectedTheme}" data-pantoken-scheme="${previewScheme}" data-pantoken-color="${selectedColor}" style="color-scheme:${previewScheme}"><head><style>${previewFrameCss}
+${themeCss}
+${portable ? "" : CUSTOM_THEME_COLORS_CSS}</style><style>html{background:var(--instui-color-background-page)}#wrapper{padding:32px;}#content{padding:36px 48px 48px;min-height:20rem;margin:0 auto;border-radius:12px;}@media not all and (min-width: 768px) {
   #wrapper{padding:24px;}#content{padding-left:12px;padding-right:12px;min-height:16rem;border-radius:8px;}</style></head><body>
     <div id="wrapper" class="instui-view"><div id="content" class="${contentClass}" style="max-width: ${CANVAS_CONTENT_MAX_WIDTH};">
       ${getNormalizedEditorHtml()}
@@ -1976,8 +1969,9 @@ function buildDownloadFiles(theme: { css: string; js: string }): {
   css: string;
   js: string;
 } {
-  const { css: presetCss, js: presetJs } = theme;
-  if (providerSelect.value === INLINE_PROVIDER_ID) return { css: "", js: "" };
+  const { css: presetCss, js: presetJs } = providerSelect.value === INLINE_PROVIDER_ID
+    ? { css: "", js: "" }
+    : theme;
   return {
     css: [presetCss, cssEditorView.state.doc.toString()].filter(Boolean).join("\n"),
     js: [presetJs, jsEditorView.state.doc.toString()].filter(Boolean).join("\n"),
@@ -1990,10 +1984,15 @@ function updateDownloads(theme: { css: string; js: string }): void {
   const files = buildDownloadFiles(theme);
   if (cssObjectUrl) URL.revokeObjectURL(cssObjectUrl);
   if (jsObjectUrl) URL.revokeObjectURL(jsObjectUrl);
-  cssObjectUrl = URL.createObjectURL(new Blob([files.css], { type: "text/css" }));
-  jsObjectUrl = URL.createObjectURL(new Blob([files.js], { type: "text/javascript" }));
-  downloadCss.href = cssObjectUrl;
-  downloadJs.href = jsObjectUrl;
+  cssObjectUrl = files.css.trim() ? URL.createObjectURL(new Blob([files.css], { type: "text/css" })) : "";
+  jsObjectUrl = files.js.trim() ? URL.createObjectURL(new Blob([files.js], { type: "text/javascript" })) : "";
+  for (const [link, objectUrl] of [[downloadCss, cssObjectUrl], [downloadJs, jsObjectUrl]] as const) {
+    if (objectUrl) link.href = objectUrl;
+    else link.removeAttribute("href");
+    link.setAttribute("aria-disabled", String(!objectUrl));
+    link.tabIndex = objectUrl ? 0 : -1;
+    link.style.color = objectUrl ? "" : "var(--instui-color-text-interactive-disabled-base)";
+  }
 }
 
 function downloadBlob(blob: Blob, filename: string): void {

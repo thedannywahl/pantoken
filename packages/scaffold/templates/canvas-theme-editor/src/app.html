@@ -491,12 +491,25 @@
     <div class="panel" role="tabpanel" id="panel-css" hidden aria-labelledby="tab-css">
       <p>{{cssPanelHintLabel}}</p>
       <div id="css-editor" class="code-editor"></div>
-      <p><a id="download-theme-css" download="theme.css">{{downloadCssLabel}}</a></p>
+      <p>
+        <a
+          id="download-theme-css"
+          role="link"
+          aria-disabled="true"
+          tabindex="-1"
+          download="theme.css"
+          >{{downloadCssLabel}}</a
+        >
+      </p>
     </div>
     <div class="panel" role="tabpanel" id="panel-js" hidden aria-labelledby="tab-js">
       <p>{{jsPanelHintLabel}}</p>
       <div id="js-editor" class="code-editor"></div>
-      <p><a id="download-theme-js" download="theme.js">{{downloadJsLabel}}</a></p>
+      <p>
+        <a id="download-theme-js" role="link" aria-disabled="true" tabindex="-1" download="theme.js"
+          >{{downloadJsLabel}}</a
+        >
+      </p>
     </div>
   </div>
 </div>
