@@ -1,5 +1,15 @@
 # @pantoken/plugin-custom-components
 
+## 0.7.2
+
+### Patch Changes
+
+- 8ef5ec9: Add the canvas-rce-no-interactions example audience. The Canvas component picker selects interactive or static examples from the current Include interactions setting, with dismissible and static banner and alert variants.
+- 8ef5ec9: Preserve logo variant colors in the shared painter and TinyMCE picker. Only explicit current-color variants inherit the text color.
+- Updated dependencies [8ef5ec9]
+  - @pantoken/components@2.1.1
+  - @pantoken/plugin-kit@0.3.6
+
 ## 0.7.1
 
 ### Patch Changes

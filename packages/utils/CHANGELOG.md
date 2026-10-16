@@ -1,5 +1,11 @@
 # CHANGELOG
 
+## 1.4.0
+
+### Minor Changes
+
+- 8ef5ec9: Add the canvas-rce-no-interactions example audience. The Canvas component picker selects interactive or static examples from the current Include interactions setting, with dismissible and static banner and alert variants.
+
 ## 1.3.0
 
 ### Minor Changes

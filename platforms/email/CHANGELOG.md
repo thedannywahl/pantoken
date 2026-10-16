@@ -1,5 +1,19 @@
 # CHANGELOG
 
+## 0.1.24
+
+### Patch Changes
+
+- Updated dependencies [8ef5ec9]
+- Updated dependencies [8ef5ec9]
+- Updated dependencies [8ef5ec9]
+- Updated dependencies [8ef5ec9]
+  - @pantoken/inline-styles@0.2.0
+  - @pantoken/utils@1.4.0
+  - @pantoken/components@2.1.1
+  - @pantoken/tokens@0.8.2
+  - @pantoken/plugin-custom-theme-colors@0.3.5
+
 ## 0.1.23
 
 ### Patch Changes

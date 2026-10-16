@@ -1,5 +1,12 @@
 # CHANGELOG
 
+## 0.2.3
+
+### Patch Changes
+
+- @pantoken/icons@0.3.5
+  - @pantoken/rehype@0.2.3
+
 ## 0.2.2
 
 ### Patch Changes

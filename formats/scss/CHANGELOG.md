@@ -1,5 +1,13 @@
 # CHANGELOG
 
+## 0.1.23
+
+### Patch Changes
+
+- Updated dependencies [8ef5ec9]
+  - @pantoken/utils@1.4.0
+  - @pantoken/tokens@0.8.2
+
 ## 0.1.22
 
 ### Patch Changes

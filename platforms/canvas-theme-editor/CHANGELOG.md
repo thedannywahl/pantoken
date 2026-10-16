@@ -1,5 +1,11 @@
 # @pantoken/canvas-theme-editor
 
+## 0.3.2
+
+### Patch Changes
+
+- 8ef5ec9: Resolve custom component styles from their owning package, include them in Canvas themes, and load logo-backed component glyphs in the editor and preview.
+
 ## 0.3.1
 
 ### Patch Changes

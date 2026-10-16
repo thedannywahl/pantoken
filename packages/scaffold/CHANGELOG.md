@@ -1,5 +1,28 @@
 # @pantoken/scaffold
 
+## 1.7.0
+
+### Minor Changes
+
+- 8ef5ec9: Add an Inline provider using the shared CSS inliner, with reversible component HTML, source-view styles, and canonical preset storage. Rename the existing stylesheet-embedding provider to None.
+- 8ef5ec9: Add a default-on Include interactions control to the Canvas editor. Disable generated preview/export behavior and hide new JS-dependent component insertions without removing existing content.
+- 8ef5ec9: Make Inline output light-only and static, disable interactions/dark controls while remembering previous choices, and render previews without theme CSS or scripts. Preserve canonical authored content when reversing generated styles and glyph markup.
+- 8ef5ec9: Add a Reset preview icon that restores interacted content without changing the editor. It is disabled until preview content changes and whenever interactions are off.
+
+### Patch Changes
+
+- 8ef5ec9: Add the canvas-rce-no-interactions example audience. The Canvas component picker selects interactive or static examples from the current Include interactions setting, with dismissible and static banner and alert variants.
+- 8ef5ec9: Match the CDN picker when interactions are disabled: keep components with no JavaScript or optional JavaScript enhancements, and hide only the JavaScript requirement tier.
+- 8ef5ec9: Disable empty theme CSS and JavaScript downloads independently, and retain user-entered CSS and JavaScript in downloads when the Inline provider is selected.
+- 8ef5ec9: Resolve custom component styles from their owning package, include them in Canvas themes, and load logo-backed component glyphs in the editor and preview.
+- 8ef5ec9: Preserve the preview page's surface, elevation, and base layout with the Inline provider, independently of authored content styles.
+- 8ef5ec9: Initialize included interactions in the authored-content preview using the bundled runtime, independently of CDN availability. Keep interaction scripts disabled for the Inline provider.
+- 8ef5ec9: Use the container background for TinyMCE's iframe root and inner color wrapper, and keep the editing iframe in sync with the theme editor's light/dark appearance, independently of preview and export settings.
+
+  Keep the preview iframe on the page background token, including with the inline provider.
+
+  Keep the preview's light/dark toggle independent of topnav and embedding-page appearance changes.
+
 ## 1.6.2
 
 ### Patch Changes
