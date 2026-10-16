@@ -179,7 +179,7 @@ test("canvas-theme-editor is a known, template-only platform (no preset)", async
   expect(main).toContain("activeEditor.resetContent(editorHtml);");
   expect(main).toContain("sourceToggle.replaceAll(editorHtml)");
   expect(main).toContain('selector: "",');
-  expect(main).toContain("<head><style>${themeCss}");
+  expect(main).toContain("<head><style>${previewFrameCss}\n${themeCss}");
   expect(main).not.toContain('<html data-pantoken-color="${selectedColor}">');
   expect(appHtml).toContain('<div data-pantoken-color="navy"><p></p></div>');
   expect(main).toContain('autosave_interval: "30s"');
