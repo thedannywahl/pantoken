@@ -1,0 +1,4 @@
+```
+packages/scaffold/tests/index.test.ts > canvas-theme-editor is a known, template-only platform (no preset)
+```
+fails in CI, in vestigate remediate, and push a fix.
