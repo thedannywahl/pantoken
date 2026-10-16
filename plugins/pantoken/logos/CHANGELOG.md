@@ -1,5 +1,13 @@
 # CHANGELOG
 
+## 0.5.5
+
+### Patch Changes
+
+- 8ef5ec9: Resolve custom component styles from their owning package, include them in Canvas themes, and load logo-backed component glyphs in the editor and preview.
+- 8ef5ec9: Preserve logo variant colors in the shared painter and TinyMCE picker. Only explicit current-color variants inherit the text color.
+- @pantoken/plugin-kit@0.3.6
+
 ## 0.5.4
 
 ### Patch Changes

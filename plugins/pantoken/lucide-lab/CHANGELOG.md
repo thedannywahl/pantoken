@@ -1,5 +1,11 @@
 # @pantoken/plugin-lucide-lab
 
+## 0.4.4
+
+### Patch Changes
+
+- @pantoken/plugin-kit@0.3.6
+
 ## 0.4.3
 
 ### Patch Changes

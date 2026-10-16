@@ -1,5 +1,11 @@
 # CHANGELOG
 
+## 0.3.15
+
+### Patch Changes
+
+- @pantoken/plugin-kit@0.3.6
+
 ## 0.3.14
 
 ### Patch Changes

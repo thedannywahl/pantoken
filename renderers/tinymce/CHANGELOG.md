@@ -1,5 +1,36 @@
 # @pantoken/tinymce
 
+## 0.7.0
+
+### Minor Changes
+
+- 8ef5ec9: Add the canvas-rce-no-interactions example audience. The Canvas component picker selects interactive or static examples from the current Include interactions setting, with dismissible and static banner and alert variants.
+- 8ef5ec9: Add a default-on Include interactions control to the Canvas editor. Disable generated preview/export behavior and hide new JS-dependent component insertions without removing existing content.
+
+### Patch Changes
+
+- 8ef5ec9: Paint editable iframe bodies with the container surface across all themes, including token-derived fallbacks when a host does not load token stylesheets.
+- 8ef5ec9: Resolve custom component styles from their owning package, include them in Canvas themes, and load logo-backed component glyphs in the editor and preview.
+- 8ef5ec9: Preserve logo variant colors in the shared painter and TinyMCE picker. Only explicit current-color variants inherit the text color.
+- 8ef5ec9: Use the container background for TinyMCE's iframe root and inner color wrapper, and keep the editing iframe in sync with the theme editor's light/dark appearance, independently of preview and export settings.
+
+  Keep the preview iframe on the page background token, including with the inline provider.
+
+  Keep the preview's light/dark toggle independent of topnav and embedding-page appearance changes.
+
+- Updated dependencies [8ef5ec9]
+- Updated dependencies [8ef5ec9]
+- Updated dependencies [8ef5ec9]
+  - @pantoken/utils@1.4.0
+  - @pantoken/components@2.1.1
+  - @pantoken/plugin-custom-components@0.7.2
+  - @pantoken/plugin-logos@0.5.5
+  - @pantoken/tokens@0.8.2
+  - @pantoken/plugin-custom-icons@0.3.16
+  - @pantoken/plugin-layouts@0.5.5
+  - @pantoken/plugin-lucide-lab@0.4.4
+  - @pantoken/plugin-simple-icons@0.3.14
+
 ## 0.6.2
 
 ### Patch Changes

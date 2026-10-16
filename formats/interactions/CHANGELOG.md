@@ -1,5 +1,13 @@
 # @pantoken/interactions
 
+## 0.5.2
+
+### Patch Changes
+
+- 8ef5ec9: Make close buttons dismiss their nearest Alert or Banner using the shared cancelable dismissal and fade-out behavior, without requiring extra targeting attributes. Preserve dialog, popover, and explicit-target handling.
+- Updated dependencies [8ef5ec9]
+  - @pantoken/utils@1.4.0
+
 ## 0.5.1
 
 ### Patch Changes

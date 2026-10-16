@@ -1,5 +1,15 @@
 # CHANGELOG
 
+## 2.1.1
+
+### Patch Changes
+
+- 8ef5ec9: Add the canvas-rce-no-interactions example audience. The Canvas component picker selects interactive or static examples from the current Include interactions setting, with dismissible and static banner and alert variants.
+- Updated dependencies [8ef5ec9]
+  - @pantoken/utils@1.4.0
+  - @pantoken/tokens@0.8.2
+  - @pantoken/scaffold-base@0.3.8
+
 ## 2.1.0
 
 ### Minor Changes

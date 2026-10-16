@@ -1,5 +1,14 @@
 # CHANGELOG
 
+## 0.2.3
+
+### Patch Changes
+
+- Updated dependencies [8ef5ec9]
+  - @pantoken/components@2.1.1
+  - @pantoken/css@0.4.5
+  - @pantoken/scss@0.1.23
+
 ## 0.2.2
 
 ### Patch Changes
