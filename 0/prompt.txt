@@ -1,0 +1,38 @@
+the tinymce editor iframe html background color should be (--instui-color-background-base) but it's currently getting `:where(html)` from pantoken base.css, we need to override it for this iframe. and also I think the light/dark switcher for the theme editor is not applying to the tinymce editor injected iframe, it stays in light mode regardless of the pantoken-color-scheme.
+http://localhost:5173/tools/canvas-rce/
+
+`#editor_ifr > html`
+
+---
+
+I meanted to say `--instui-color-background-container`
+
+---
+
+that looks better but the inner element shoul be the same color too- but it's still white.
+
+---
+
+it should NOT have changed the background of the other iframe `#preview` which is now fixed at white. that iframe background should be `--instui-color-background-page` still.
+
+---
+
+they are now co-mingled again.
+the topnav theme switcher between light/dark and color schemes should change everything on the page EXCEPT the preview.  The preview should stay in light mode until the preview wrapper's light/dark toggle is set to dark.
+A user may want the authoring interface in dark mode, but test authored content in the preview in light mode.
+
+---
+
+the 'Download theme.css' and 'Download theme.js' buttons in the tray should be disabled if there's no background css or js we're collecting and nothing in the user input area in the tray. this would occur if interactions toggle is off and the CDN is set to 'Inline'
+
+---
+
+using CDN provider inline breaks the "card" wrapper in the preview iframe around the `#content`.  You can visually compare changing it between "none" and "inline" when the theme is set to "next gen" in the tray.  The wrapper is not user content - it's a preview of the page where the content will be embedded.
+
+---
+
+when interactions are included they should be registered in the preview so users can test interactivity like clicking a close button or switching tabs.
+
+---
+
+close button on Alert and Banner doesn't work in the preview, other interactions do, it could be an upstream issue, we need to investigate and remediate.
