@@ -4,6 +4,12 @@
 
 @import "../pantoken-icons.less";
 @import "../pantoken-logos.less";
+@import "src/less/generated/canvas-high-contrast-tokens";
+
+html,
+body.mce-content-body {
+  background-color: var(--instui-color-background-container, @content-background-color);
+}
 
 body {
   font-family:

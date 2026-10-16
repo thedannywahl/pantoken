@@ -82,7 +82,7 @@ export function trackAndInjectAsset(
     buildAssetUrl?: (file: CdnFile) => string;
   },
 ): void {
-  if (!target.currentAssets.find((a) => a.path === cssFile.path)) {
+  if (!target.currentAssets.find((asset) => assetKey(asset) === assetKey(cssFile))) {
     target.currentAssets.push(cssFile);
     target.onMissingAsset?.(cssFile);
   }

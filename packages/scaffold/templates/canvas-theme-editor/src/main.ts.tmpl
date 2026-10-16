@@ -27,6 +27,7 @@ import "@pantoken/components/icons/maximize.css"; // app.html's preview-fullscre
 import "@pantoken/components/icons/minimize.css"; // app.html's preview-fullscreen-toggle, on state
 import "@pantoken/components/icons/moon.css"; // app.html's preview-scheme-toggle, light state
 import "@pantoken/components/icons/sun.css"; // app.html's preview-scheme-toggle, dark state
+import "@pantoken/components/icons/rotate-ccw.css";
 import adaptiveTokensCss from "@pantoken/css/style.lean.css?inline";
 import rebrandLightTokensCss from "@pantoken/css/style.rebrand.light.lean.css?inline";
 import canvasTokensCss from "@pantoken/css/style.canvas.lean.css?inline";
@@ -37,6 +38,7 @@ import componentsCss from "@pantoken/components/components.css?inline";
 import utilitiesCss from "@pantoken/components/utilities.css?inline";
 import fontsCss from "@pantoken/components/fonts.css?inline";
 import logoPainterCss from "@pantoken/plugin-custom-components/logo.css?inline";
+import customComponentsCss from "@pantoken/plugin-custom-components/custom-components.css?inline";
 const fontAssetUrls = import.meta.glob<string>(
   "/node_modules/@pantoken/components/assets/fonts/**/*.woff2",
   { eager: true, query: "?url", import: "default" },
@@ -47,6 +49,10 @@ const localFontsCss = fontsCss.replace(/\.\.\/assets\/fonts\/([^"\s)]+\.woff2)/g
   return url;
 });
 import localInteractionsJs from "@pantoken/interactions/interactions.iife.js?raw";
+import componentCapabilities from "@pantoken/interactions/component-capabilities.json";
+import { componentNeedsInteractions } from "./component-availability.ts";
+import { InlineDocument } from "./inline-document.ts";
+import { trackPreviewChanges } from "./preview-state.ts";
 // A resolved asset URL for a real <script> tag — a dynamic import() of a pure side-effect module
 // from a "sideEffects": false package can get tree-shaken out of a production bundle.
 import interactionsIifeUrl from "@pantoken/interactions/interactions.iife.js?url";
@@ -120,6 +126,7 @@ import {
   getUsedIconCdnFiles,
   getLogoCdnFile,
   getUsedLogoCdnFiles,
+  injectContentStylesheet,
   listComponents,
   listUtilities,
   loadAllIcons,
@@ -211,6 +218,12 @@ let previewPopupStylePairs: Array<{
   clone: HTMLStyleElement;
 }> = [];
 const LOCAL_PROVIDER_ID = "none";
+const INLINE_PROVIDER_ID = "inline";
+const inlineDocument = new InlineDocument();
+let inlineRendered = false;
+let applyingInline = false;
+let lastInlineHtml = "";
+let lastInlineCss = "";
 // `import.meta.env.DEV` is baked in at build time, so it's `false` for any `vite build` output —
 // including docs' Canvas RCE preview, which is always built for production yet only ever served on
 // localhost. Fall back to a hostname check so a local, non-CDN preview is detected either way.
@@ -220,6 +233,7 @@ const LOCAL_COMPONENT_CSS = [
   baseCss,
   componentIconsCss,
   componentsCss,
+  customComponentsCss,
   utilitiesCss,
   logoPainterCss,
   CUSTOM_THEME_COLORS_CSS,
@@ -445,12 +459,7 @@ function setupStandaloneAppShell(): void {
     if (appearance === "light") option.classList.add("is-selected");
     option.addEventListener("click", () => {
       applyAppearance(appearance);
-      // The editor content and the live preview both default to following the app's own
-      // appearance — only guide mode (via `applyParentTheme`) did this before; tools mode's own
-      // shell toggle left both stuck on their prior scheme until a tray/preview control changed.
       applyEditorTheme(activeEditor);
-      syncPreviewSchemeToAppearance(appearance);
-      void refreshAll();
       themeMenu.removeAttribute("open");
     });
     appearanceGroup.append(option);
@@ -642,13 +651,13 @@ let refreshGeneration = 0;
 const localAssetUrls = import.meta.glob<string>(
   [
     "/node_modules/@pantoken/components/dist/icons/*.css",
-    "/node_modules/@pantoken/plugin-{logos,simple-icons,lucide-lab,custom-icons}/dist/**/*.css",
+    "/node_modules/@pantoken/plugin-{logos,simple-icons,lucide-lab,custom-icons,custom-components}/dist/**/*.css",
   ],
   { eager: true, import: "default", query: "?url" },
 );
 
 function buildSelectedAssetUrl(file: CdnFile): string {
-  if (providerSelect.value !== LOCAL_PROVIDER_ID) {
+  if (![LOCAL_PROVIDER_ID, INLINE_PROVIDER_ID].includes(providerSelect.value)) {
     return buildFileUrl(file, providerSelect.value);
   }
   const localUrl = localAssetUrls[`/node_modules/${file.package}/${file.path}`];
@@ -692,11 +701,18 @@ function applyEditorTheme(editor: Editor | undefined): void {
     editorContentStyle = editorDocument.createElement("style");
     editorDocument.head.append(editorContentStyle);
   }
-  editorContentStyle.textContent = [css.content, PREVIEW_SCHEME_FORCE_CSS].join("\n");
+  const tokensCss = selectedTheme === "canvas" ? canvasTokensCss
+    : selectedTheme === "canvasHighContrast" ? canvasHighContrastTokensCss
+    : adaptiveTokensCss;
+  editorContentStyle.textContent = [tokensCss, LOCAL_COMPONENT_CSS, css.content, PREVIEW_SCHEME_FORCE_CSS,
+    'body.mce-content-body > [data-pantoken-color] { background-color: var(--instui-color-background-container) !important; }',
+    ':has(> [data-pantoken-inline-generated="::before"])::before, :has(> [data-pantoken-inline-generated="::after"])::after { content: none !important; }',
+  ].join("\n");
   // The content CSS's dark rules key off this attribute on the iframe's own root, which doesn't
   // inherit it from the host document.
-  editorDocument.documentElement.dataset.pantokenScheme =
-    document.documentElement.dataset.pantokenScheme;
+  const scheme = document.documentElement.dataset.pantokenScheme === "dark" ? "dark" : "light";
+  editorDocument.documentElement.dataset.pantokenScheme = scheme;
+  editorDocument.documentElement.style.colorScheme = scheme;
 }
 
 /** Temporarily overrides the editing iframe's scheme so the a11y checker can test contrast under
@@ -704,6 +720,7 @@ function applyEditorTheme(editor: Editor | undefined): void {
 function forceEditorColorScheme(scheme: A11yColorScheme): void {
   if (!activeEditor) return;
   activeEditor.getDoc().documentElement.dataset.pantokenScheme = scheme;
+  activeEditor.getDoc().documentElement.style.colorScheme = scheme;
 }
 
 function getEditorColorScheme(): A11yColorScheme {
@@ -774,7 +791,6 @@ function applyParentTheme(theme: ThemeVariant, mode: "light" | "dark"): void {
   const themeButton = [...themeButtons].find((button) => button.dataset.theme === theme);
   if (themeButton) selectToggleButton(themeButtons, themeButton);
   syncDarkModeAvailability();
-  syncPreviewSchemeToAppearance(mode);
   applyEditorTheme(activeEditor);
   void refreshAll();
   syncPreviewPopupChrome();
@@ -865,6 +881,9 @@ const registerPantokenPlugin = (async () => {
         model: componentModel as any,
         currentAssets,
         onMissingAsset,
+        buildAssetUrl: buildSelectedAssetUrl,
+        includeInteractions: () => includeInteractionsCheckbox.checked,
+        isAvailable: (entry) => includeInteractionsCheckbox.checked || !componentNeedsInteractions(entry, componentCapabilities.components),
       },
       icons: {
         icons: allIcons,
@@ -931,6 +950,7 @@ tinymce.PluginManager.add(
       pantokenHtmlCompletion({ model: [...listComponents(), ...listUtilities()] as any }),
     ],
     onChange: () => {
+      if (applyingInline) return;
       syncThemeColorFromEditor();
       if (syncIconAssetsFromEditor()) void refreshAll();
       debouncedUpdatePreview();
@@ -960,6 +980,10 @@ const localProviderOption = document.createElement("option");
 localProviderOption.value = LOCAL_PROVIDER_ID;
 localProviderOption.textContent = activeStrings.localProviderLabel;
 providerSelect.append(localProviderOption);
+const inlineProviderOption = document.createElement("option");
+inlineProviderOption.value = INLINE_PROVIDER_ID;
+inlineProviderOption.textContent = activeStrings.inlineProviderLabel;
+providerSelect.append(inlineProviderOption);
 for (const [id, provider] of Object.entries(CDN_PROVIDERS)) {
   const option = document.createElement("option");
   option.value = id;
@@ -993,8 +1017,35 @@ const previewWidthButtons = document.querySelectorAll<HTMLButtonElement>(
 const previewWidthValue = document.querySelector<HTMLElement>("#preview-width-value")!;
 const includeDarkModeRow = document.getElementById("include-dark-mode-row")!;
 const includeDarkModeCheckbox = document.querySelector<HTMLInputElement>("#include-dark-mode")!;
+const includeInteractionsCheckbox = document.querySelector<HTMLInputElement>("#include-interactions")!;
+includeInteractionsCheckbox.checked = preferences.includeInteractions !== false;
+let rememberedInteractions = includeInteractionsCheckbox.checked;
+let rememberedDarkMode = false;
+let previousProvider = providerSelect.value;
 const previewSchemeToggle = document.querySelector<HTMLButtonElement>("#preview-scheme-toggle")!;
 const previewFrame = document.querySelector<HTMLIFrameElement>("#preview")!;
+const previewResetButton = document.querySelector<HTMLButtonElement>("#preview-reset")!;
+let latestPreviewSrcdoc = "";
+let previewDirty = false;
+let previewLoading = true;
+let stopPreviewTracking: (() => void) | undefined;
+
+function syncPreviewResetAvailability(): void {
+  previewResetButton.disabled = !includeInteractionsCheckbox.checked || previewLoading || !previewDirty;
+}
+
+function loadPreviewDocument(source: string): void {
+  stopPreviewTracking?.();
+  previewLoading = true;
+  previewDirty = false;
+  syncPreviewResetAvailability();
+  latestPreviewSrcdoc = source;
+  previewFrame.srcdoc = source;
+}
+
+previewResetButton.addEventListener("click", () => {
+  if (!previewResetButton.disabled && latestPreviewSrcdoc) loadPreviewDocument(latestPreviewSrcdoc);
+});
 const previewPane = document.querySelector<HTMLElement>(".preview-pane")!;
 const downloadCss = document.querySelector<HTMLAnchorElement>("#download-theme-css")!;
 const downloadJs = document.querySelector<HTMLAnchorElement>("#download-theme-js")!;
@@ -1020,6 +1071,9 @@ interface CanvasThemePreset {
   readonly customColor?: string;
   readonly mode: ThemeMode;
   readonly cdnProvider: string;
+  readonly includeInteractions?: boolean;
+  readonly preferredInteractions?: boolean;
+  readonly preferredMode?: ThemeMode;
   readonly customCss: string;
   readonly customJs: string;
   readonly editorHtml: string;
@@ -1140,7 +1194,44 @@ function getEditorHtml(): string {
 }
 
 function getNormalizedEditorHtml(): string {
-  return normalizeEditorHtml(getEditorHtml(), selectedColor);
+  return inlineDocument.export(normalizeEditorHtml(getEditorHtml(), selectedColor));
+}
+
+function replaceProviderHtml(content: string): void {
+  if (!activeEditor) return;
+  const sourceToggle = activeEditor.plugins[SOURCE_TOGGLE_PLUGIN_NAME] as SourceTogglePluginApi | undefined;
+  applyingInline = true;
+  try {
+    const bookmark = activeEditor.selection.getBookmark();
+    activeEditor.undoManager.ignore(() => activeEditor!.setContent(content));
+    if (sourceToggle?.isSourceMode()) sourceToggle.replaceAll(content);
+    else activeEditor.selection.moveToBookmark(bookmark);
+  } finally {
+    applyingInline = false;
+  }
+}
+
+async function syncInlineProvider(theme: { css: string }): Promise<void> {
+  const current = getEditorHtml();
+  if (providerSelect.value !== INLINE_PROVIDER_ID) {
+    if (inlineRendered) replaceProviderHtml(inlineDocument.canonical(current));
+    inlineRendered = false;
+    lastInlineHtml = "";
+    return;
+  }
+  const canonical = inlineDocument.canonical(current);
+  const css = [theme.css, cssEditorView.state.doc.toString(), ':root { color-scheme: light; } :where(body > [data-pantoken-color]) { background-color: var(--instui-color-background-container, #fff); }'].join("\n");
+  if (inlineRendered && canonical === lastInlineHtml && css === lastInlineCss) return;
+  const { inlineHtmlInBrowser } = await import("@pantoken/inline-styles/browser");
+  if (providerSelect.value !== INLINE_PROVIDER_ID || getEditorHtml() !== current) return;
+  const rendered = await inlineDocument.renderAsync(normalizeEditorHtml(current, selectedColor), css, (html, stylesheet) => inlineHtmlInBrowser(html, stylesheet, {
+    rootAttributes: { "data-pantoken-theme": selectedTheme, "data-pantoken-color": selectedColor, "data-pantoken-scheme": "light" },
+  }));
+  if (providerSelect.value !== INLINE_PROVIDER_ID || getEditorHtml() !== current) return;
+  inlineRendered = true;
+  replaceProviderHtml(rendered);
+  lastInlineHtml = inlineDocument.canonical(getEditorHtml());
+  lastInlineCss = css;
 }
 
 function assetKey(asset: CdnFile): string {
@@ -1148,18 +1239,19 @@ function assetKey(asset: CdnFile): string {
 }
 
 async function inlineAssetCss(assets: readonly CdnFile[]): Promise<string[]> {
+  const urls = assets.map(buildSelectedAssetUrl);
   await Promise.all(
-    assets.map(async (asset) => {
-      const key = assetKey(asset);
+    assets.map(async (asset, index) => {
+      const key = urls[index];
       if (inlineAssetContents.has(key)) return;
-      const response = await fetch(buildSelectedAssetUrl(asset));
+      const response = await fetch(key);
       if (!response.ok) {
         throw new Error(`Unable to inline ${asset.package}/${asset.path}: ${response.status}`);
       }
       inlineAssetContents.set(key, await response.text());
     }),
   );
-  return assets.map((asset) => inlineAssetContents.get(assetKey(asset))!);
+  return urls.map((url) => inlineAssetContents.get(url)!);
 }
 
 function syncIconAssetsFromEditor(): boolean {
@@ -1171,6 +1263,11 @@ function syncIconAssetsFromEditor(): boolean {
   );
   const usedIconAssets = getUsedIconCdnFiles(content, availableIcons, currentAssets);
   const usedLogoAssets = getUsedLogoCdnFiles(content, logos);
+  if (activeEditor) {
+    for (const asset of [...usedIconAssets, ...usedLogoAssets]) {
+      injectContentStylesheet(activeEditor, buildSelectedAssetUrl(asset), asset);
+    }
+  }
   const nextAssets = [...nonSyncedAssets, ...usedIconAssets, ...usedLogoAssets];
   const changed = currentAssets.map(assetKey).join("\n") !== nextAssets.map(assetKey).join("\n");
   if (changed) currentAssets.splice(0, currentAssets.length, ...nextAssets);
@@ -1185,9 +1282,12 @@ function captureCanvasThemePreset(): CanvasThemePreset {
     customColor: selectedCustomColor,
     mode: includeDarkModeCheckbox.checked ? "adaptive" : "light",
     cdnProvider: providerSelect.value,
+    includeInteractions: includeInteractionsCheckbox.checked,
+    preferredInteractions: providerSelect.value === INLINE_PROVIDER_ID ? rememberedInteractions : includeInteractionsCheckbox.checked,
+    preferredMode: (providerSelect.value === INLINE_PROVIDER_ID ? rememberedDarkMode : includeDarkModeCheckbox.checked) ? "adaptive" : "light",
     customCss: cssEditorView.state.doc.toString(),
     customJs: jsEditorView.state.doc.toString(),
-    editorHtml: getNormalizedEditorHtml(),
+    editorHtml: normalizeEditorHtml(inlineDocument.canonical(getEditorHtml()), selectedColor),
   };
 }
 
@@ -1202,7 +1302,7 @@ function isThemeMode(value: unknown): value is ThemeMode {
 function isCdnProvider(value: unknown): value is string {
   return (
     typeof value === "string" &&
-    (Object.hasOwn(CDN_PROVIDERS, value) || value === LOCAL_PROVIDER_ID)
+    (Object.hasOwn(CDN_PROVIDERS, value) || value === LOCAL_PROVIDER_ID || value === INLINE_PROVIDER_ID)
   );
 }
 
@@ -1216,6 +1316,9 @@ function isCanvasThemePreset(value: unknown): value is CanvasThemePreset {
     (preset.customColor === undefined || isHexColor(preset.customColor)) &&
     isThemeMode(preset.mode) &&
     isCdnProvider(preset.cdnProvider) &&
+    (preset.includeInteractions === undefined || typeof preset.includeInteractions === "boolean") &&
+    (preset.preferredInteractions === undefined || typeof preset.preferredInteractions === "boolean") &&
+    (preset.preferredMode === undefined || isThemeMode(preset.preferredMode)) &&
     typeof preset.customCss === "string" &&
     typeof preset.customJs === "string" &&
     typeof preset.editorHtml === "string"
@@ -1227,12 +1330,19 @@ function replaceEditorDocument(view: EditorView, content: string): void {
 }
 
 function resetCanvasThemePreset(): void {
+  inlineRendered = false;
+  lastInlineHtml = "";
   selectedTheme = "rebrand";
   const themeButton = [...themeButtons].find((button) => button.dataset.theme === selectedTheme);
   if (themeButton) selectToggleButton(themeButtons, themeButton);
   includeDarkModeCheckbox.checked = false;
+  includeInteractionsCheckbox.checked = true;
+  rememberedInteractions = true;
+  rememberedDarkMode = false;
   syncDarkModeAvailability();
   providerSelect.value = isLocalPreview ? LOCAL_PROVIDER_ID : DEFAULT_CDN_PROVIDER_ID;
+  previousProvider = providerSelect.value;
+  syncProviderPolicy();
   selectThemeColor("navy");
   setCustomColor(DEFAULT_CUSTOM_COLOR);
   replaceEditorDocument(cssEditorView, "");
@@ -1255,13 +1365,19 @@ function resetCanvasThemePreset(): void {
 
 function restoreCanvasThemePreset(preset: CanvasThemePreset): void {
   if (!activeEditor || !isCanvasThemePreset(preset)) throw new TypeError("invalid-preset");
+  inlineRendered = false;
+  lastInlineHtml = "";
 
   selectedTheme = preset.theme;
   const themeButton = [...themeButtons].find((button) => button.dataset.theme === preset.theme);
   if (themeButton) selectToggleButton(themeButtons, themeButton);
   includeDarkModeCheckbox.checked = preset.mode === "adaptive";
-  syncDarkModeAvailability();
+  includeInteractionsCheckbox.checked = preset.includeInteractions !== false;
+  rememberedInteractions = preset.preferredInteractions ?? preset.includeInteractions !== false;
+  rememberedDarkMode = (preset.preferredMode ?? preset.mode) === "adaptive";
   providerSelect.value = preset.cdnProvider;
+  previousProvider = preset.cdnProvider;
+  syncProviderPolicy();
   selectThemeColor(preset.color);
   setCustomColor(preset.customColor ?? DEFAULT_CUSTOM_COLOR);
   replaceEditorDocument(cssEditorView, preset.customCss);
@@ -1296,9 +1412,10 @@ function currentSelection(): { provider: string; theme: ThemeVariant; mode: Them
 async function buildCurrentTheme(): Promise<{ css: string; js: string }> {
   const selection = currentSelection();
   const customCss = selectedCustomColorCss();
-  if (selection.provider !== LOCAL_PROVIDER_ID) {
+  if (![LOCAL_PROVIDER_ID, INLINE_PROVIDER_ID].includes(selection.provider)) {
     const theme = buildTheme({
       ...selection,
+      js: includeInteractionsCheckbox.checked ? undefined : [],
       css: [...defaultThemeCssAssets(selection.theme, selection.mode), ...currentAssets],
     });
     return { ...theme, css: [theme.css, customCss].filter(Boolean).join("\n") };
@@ -1315,7 +1432,7 @@ async function buildCurrentTheme(): Promise<{ css: string; js: string }> {
   const dynamicCss = await inlineAssetCss(currentAssets);
   return {
     css: [tokensCss, LOCAL_COMPONENT_CSS, ...dynamicCss, customCss].filter(Boolean).join("\n"),
-    js: localInteractionsJs,
+    js: includeInteractionsCheckbox.checked ? localInteractionsJs : "",
   };
 }
 
@@ -1337,9 +1454,28 @@ function selectToggleButton(buttons: NodeListOf<HTMLButtonElement>, target: HTML
 function syncDarkModeAvailability(): void {
   const supportsDarkMode = selectedTheme === "rebrand";
   includeDarkModeRow.hidden = !supportsDarkMode;
-  includeDarkModeCheckbox.disabled = !supportsDarkMode;
-  if (!supportsDarkMode) includeDarkModeCheckbox.checked = false;
+  includeDarkModeCheckbox.disabled = !supportsDarkMode || providerSelect.value === INLINE_PROVIDER_ID;
+  if (includeDarkModeCheckbox.disabled) includeDarkModeCheckbox.checked = false;
   syncPreviewSchemeToggleAvailability();
+}
+
+function syncProviderPolicy(): void {
+  const inline = providerSelect.value === INLINE_PROVIDER_ID;
+  if (inline) {
+    if (previousProvider !== INLINE_PROVIDER_ID) {
+      rememberedInteractions = includeInteractionsCheckbox.checked;
+      rememberedDarkMode = includeDarkModeCheckbox.checked;
+    }
+    includeInteractionsCheckbox.checked = false;
+    includeDarkModeCheckbox.checked = false;
+  } else if (previousProvider === INLINE_PROVIDER_ID) {
+    includeInteractionsCheckbox.checked = rememberedInteractions;
+    includeDarkModeCheckbox.checked = rememberedDarkMode;
+  }
+  includeInteractionsCheckbox.disabled = inline;
+  previousProvider = providerSelect.value;
+  syncDarkModeAvailability();
+  syncPreviewResetAvailability();
 }
 
 /** The preview's own light/dark switch only makes sense once "include dark mode" is on. */
@@ -1491,17 +1627,6 @@ if (typeof selectedPreviewWidth === "number") {
 
 let previewDarkOverride = false;
 syncDarkModeAvailability();
-
-/** Makes the preview's own light/dark display follow an app-wide appearance change (its "include
- * dark mode" export checkbox stays untouched); the user can still flip it back independently
- * afterward via `previewSchemeToggle`. No-op while the current theme has no dark preview to show. */
-function syncPreviewSchemeToAppearance(mode: "light" | "dark"): void {
-  if (!includeDarkModeCheckbox.checked) return;
-  previewDarkOverride = mode === "dark";
-  previewSchemeToggle.setAttribute("aria-pressed", String(previewDarkOverride));
-  previewSchemeToggle.classList.toggle("-icon-moon", !previewDarkOverride);
-  previewSchemeToggle.classList.toggle("-icon-sun", previewDarkOverride);
-}
 
 previewSchemeToggle.addEventListener("click", () => {
   previewDarkOverride = !previewDarkOverride;
@@ -1689,6 +1814,8 @@ function persistPreferences(): void {
     previewWidth: selectedPreviewWidth,
     previewFullscreen: previewPane.classList.contains("-fullscreen"),
     cdnProvider: providerSelect.value,
+    includeInteractions: includeInteractionsCheckbox.checked,
+    ...(providerSelect.value === INLINE_PROVIDER_ID ? { includeInteractions: rememberedInteractions } : {}),
     tinymceConfig: mergedTinymceConfig,
   });
 }
@@ -1696,7 +1823,14 @@ function persistPreferences(): void {
 
 includeDarkModeCheckbox.addEventListener("change", () => {
   syncPreviewSchemeToggleAvailability();
+  applyEditorTheme(activeEditor);
   void refreshAll();
+});
+
+includeInteractionsCheckbox.addEventListener("change", () => {
+  syncPreviewResetAvailability();
+  void refreshAll();
+  persistPreferences();
 });
 
 /** Debounce helper — the preview pane only needs to refresh a beat after typing settles. */
@@ -1722,10 +1856,21 @@ function updatePreview(theme: { css: string; js: string }): void {
   // Canvas's own theme already frames the RCE content area — the picker's border would double up.
   previewFrame.style.borderColor =
     selectedTheme === "canvas" || selectedTheme === "canvasHighContrast" ? "transparent" : "";
-  const themeCss = [theme.css, PREVIEW_SCHEME_FORCE_CSS, cssEditorView.state.doc.toString()]
+  const portable = providerSelect.value === INLINE_PROVIDER_ID;
+  if (portable) previewFrame.setAttribute("sandbox", "allow-same-origin");
+  else previewFrame.removeAttribute("sandbox");
+  const previewTokensCss = selectedTheme === "canvas" ? canvasTokensCss
+    : selectedTheme === "canvasHighContrast" ? canvasHighContrastTokensCss
+    : adaptiveTokensCss;
+  const previewFrameCss = `@scope (:root) to (#content > *) {
+${baseCss}
+${componentsCss}
+${utilitiesCss}
+}`;
+  const themeCss = (portable ? [previewTokensCss, PREVIEW_SCHEME_FORCE_CSS] : [theme.css, PREVIEW_SCHEME_FORCE_CSS, cssEditorView.state.doc.toString()])
     .filter(Boolean)
     .join("\n");
-  const themeJs = [theme.js, jsEditorView.state.doc.toString()]
+  const themeJs = (portable ? [] : [includeInteractionsCheckbox.checked ? localInteractionsJs : "", jsEditorView.state.doc.toString()])
     .filter(Boolean)
     .join("\n");
   // Elevation is a rebrand-only affordance — Canvas's own themes don't use drop-shadow surfaces.
@@ -1740,14 +1885,15 @@ function updatePreview(theme: { css: string; js: string }): void {
     selectedTheme === "rebrand" && includeDarkModeCheckbox.checked && previewDarkOverride
       ? "dark"
       : "light";
-  previewFrame.srcdoc = `<!doctype html><html data-pantoken-boundary data-pantoken-instance="${EDITOR_INSTANCE}-preview" data-pantoken-theme="${selectedTheme}" data-pantoken-scheme="${previewScheme}" data-pantoken-color="${selectedColor}" style="color-scheme:${previewScheme}"><head><style>${themeCss}
-${CUSTOM_THEME_COLORS_CSS}</style><style>#wrapper{padding:32px;}#content{padding:36px 48px 48px;min-height:20rem;margin:0 auto;border-radius:12px;}@media not all and (min-width: 768px) {
+  loadPreviewDocument(`<!doctype html><html data-pantoken-boundary data-pantoken-instance="${EDITOR_INSTANCE}-preview" data-pantoken-theme="${selectedTheme}" data-pantoken-scheme="${previewScheme}" data-pantoken-color="${selectedColor}" style="color-scheme:${previewScheme}"><head><style>${previewFrameCss}
+${themeCss}
+${portable ? "" : CUSTOM_THEME_COLORS_CSS}</style><style>html{background:var(--instui-color-background-page)}#wrapper{padding:32px;}#content{padding:36px 48px 48px;min-height:20rem;margin:0 auto;border-radius:12px;}@media not all and (min-width: 768px) {
   #wrapper{padding:24px;}#content{padding-left:12px;padding-right:12px;min-height:16rem;border-radius:8px;}</style></head><body>
     <div id="wrapper" class="instui-view"><div id="content" class="${contentClass}" style="max-width: ${CANVAS_CONTENT_MAX_WIDTH};">
       ${getNormalizedEditorHtml()}
     </div></div>
-    <script>${themeJs}</script>
-  </body></html>`;
+    ${portable ? "" : "<script>" + themeJs + "</script>"}
+  </body></html>`);
 }
 const debouncedUpdatePreview = debounce(() => void refreshAll(), 300);
 
@@ -1794,6 +1940,7 @@ function handlePreviewLinkClick(event: MouseEvent): void {
 }
 
 previewFrame.addEventListener("load", () => {
+  stopPreviewTracking?.();
   previewResizeObserver?.disconnect();
   previewMutationObserver?.disconnect();
   resizePreviewFrame();
@@ -1804,13 +1951,27 @@ previewFrame.addEventListener("load", () => {
   previewResizeObserver.observe(root);
   previewMutationObserver = new MutationObserver(resizePreviewFrame);
   previewMutationObserver.observe(root, { childList: true, subtree: true, attributes: true });
+  const loadedDocument = previewFrame.contentDocument;
+  requestAnimationFrame(() => requestAnimationFrame(() => {
+    if (previewFrame.contentDocument !== loadedDocument) return;
+    const content = loadedDocument?.querySelector<HTMLElement>("#content");
+    previewLoading = false;
+    if (content) stopPreviewTracking = trackPreviewChanges(content, (dirty) => {
+      if (previewFrame.contentDocument !== loadedDocument) return;
+      previewDirty = dirty;
+      syncPreviewResetAvailability();
+    });
+    syncPreviewResetAvailability();
+  }));
 });
 
 function buildDownloadFiles(theme: { css: string; js: string }): {
   css: string;
   js: string;
 } {
-  const { css: presetCss, js: presetJs } = theme;
+  const { css: presetCss, js: presetJs } = providerSelect.value === INLINE_PROVIDER_ID
+    ? { css: "", js: "" }
+    : theme;
   return {
     css: [presetCss, cssEditorView.state.doc.toString()].filter(Boolean).join("\n"),
     js: [presetJs, jsEditorView.state.doc.toString()].filter(Boolean).join("\n"),
@@ -1823,10 +1984,15 @@ function updateDownloads(theme: { css: string; js: string }): void {
   const files = buildDownloadFiles(theme);
   if (cssObjectUrl) URL.revokeObjectURL(cssObjectUrl);
   if (jsObjectUrl) URL.revokeObjectURL(jsObjectUrl);
-  cssObjectUrl = URL.createObjectURL(new Blob([files.css], { type: "text/css" }));
-  jsObjectUrl = URL.createObjectURL(new Blob([files.js], { type: "text/javascript" }));
-  downloadCss.href = cssObjectUrl;
-  downloadJs.href = jsObjectUrl;
+  cssObjectUrl = files.css.trim() ? URL.createObjectURL(new Blob([files.css], { type: "text/css" })) : "";
+  jsObjectUrl = files.js.trim() ? URL.createObjectURL(new Blob([files.js], { type: "text/javascript" })) : "";
+  for (const [link, objectUrl] of [[downloadCss, cssObjectUrl], [downloadJs, jsObjectUrl]] as const) {
+    if (objectUrl) link.href = objectUrl;
+    else link.removeAttribute("href");
+    link.setAttribute("aria-disabled", String(!objectUrl));
+    link.tabIndex = objectUrl ? 0 : -1;
+    link.style.color = objectUrl ? "" : "var(--instui-color-text-interactive-disabled-base)";
+  }
 }
 
 function downloadBlob(blob: Blob, filename: string): void {
@@ -1856,6 +2022,8 @@ async function refreshAll(): Promise<void> {
   try {
     const theme = await buildCurrentTheme();
     if (generation !== refreshGeneration) return;
+    await syncInlineProvider(theme);
+    if (generation !== refreshGeneration) return;
     updatePreview(theme);
     updateDownloads(theme);
   } catch (error) {
@@ -1879,6 +2047,8 @@ const jsEditorView = createEditor(
 );
 
 providerSelect.addEventListener("change", () => {
+  syncProviderPolicy();
+  applyEditorTheme(activeEditor);
   if (activeEditor) retargetContentStylesheets(activeEditor, buildSelectedAssetUrl);
   void refreshAll();
   persistPreferences();
@@ -1989,6 +2159,7 @@ void registerPantokenPlugin.then(async () => {
       quickbars_image_toolbar: "alignleft aligncenter alignright | image",
       setup(editor: Editor): void {
         editor.on("input change Undo Redo SetContent", () => {
+          if (applyingInline) return;
           syncThemeColorFromEditor();
           if (syncIconAssetsFromEditor()) void refreshAll();
           debouncedUpdatePreview();
@@ -1997,6 +2168,7 @@ void registerPantokenPlugin.then(async () => {
     })
     .then((editors: Editor[]) => {
       activeEditor = editors[0];
+      syncProviderPolicy();
       try {
         const saved = sessionStorage.getItem(SESSION_DRAFT_KEY);
         if (saved) {

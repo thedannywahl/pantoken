@@ -21,6 +21,7 @@ export const SKIN_FILES = [
 
 const LESS_TOKEN_VARIABLES = [
   ["background-color", "--instui-color-background-base"],
+  ["content-background-color", "--instui-color-background-container"],
   ["base-value", "--instui-font-size-text-base"],
   ["color-black", "--instui-color-text-base"],
   ["color-tint", "--instui-color-background-brand"],

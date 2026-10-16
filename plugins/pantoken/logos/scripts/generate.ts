@@ -180,8 +180,10 @@ const uriByName = new Map(logos.map((l) => [l.name, `url("${dataUri(svgs[l.name]
 // mask technique as the `icon` utility in `@pantoken/components`, but the `-logo-<name>` painter reads
 // `--pantoken-logo-aspect` instead of assuming a 1:1 box), so e.g. `-logo-canvas-icon-reversed` masks
 // `--instui-logo-canvas-icon-reversed` in `currentColor`, sized by that logo's own `viewBox` aspect ratio.
-const glyphRule = (l: LogoMeta): string =>
-  `.-logo-${l.name} { --pantoken-glyph: var(--instui-logo-${l.name}); --pantoken-logo-aspect: ${l.width} / ${l.height}; }`;
+const glyphRule = (logo: LogoMeta): string => {
+  const currentColor = logo.colorMode === "current-color";
+  return `.-logo-${logo.name}, .-icon-${logo.name} { --pantoken-glyph: var(--instui-logo-${logo.name}); --pantoken-logo-aspect: ${logo.width} / ${logo.height}; --pantoken-logo-image: ${currentColor ? "none" : "var(--pantoken-glyph)"}; --pantoken-logo-mask: ${currentColor ? "var(--pantoken-glyph)" : "none"}; --pantoken-logo-fill: ${currentColor ? "currentColor" : "transparent"}; }`;
+};
 
 const logosCss = [
   "/* Instructure product logos as image tokens (pantoken logos plugin) — generated, do not edit. */",

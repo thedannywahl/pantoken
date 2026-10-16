@@ -166,6 +166,19 @@
             >{{previewSchemeToggleLabel}}</span
           >
         </button>
+        <button
+          type="button"
+          id="preview-reset"
+          class="instui-button instui-tooltip -size-sm -color-tertiary -icon-rotate-ccw -without-background -without-border"
+          aria-label="{{previewResetLabel}}"
+          aria-describedby="preview-reset-tip"
+          disabled
+        >
+          <span class="instui-screen-reader-content">{{previewResetLabel}}</span>
+          <span class="tip -placement-bottom" id="preview-reset-tip" role="tooltip"
+            >{{previewResetLabel}}</span
+          >
+        </button>
       </div>
       <iframe id="preview" title="{{previewFrameTitle}}"></iframe>
       <div class="preview-footer">
@@ -462,6 +475,10 @@
           <input type="checkbox" id="include-dark-mode" />
           {{includeDarkModeLabel}}
         </label>
+        <label class="instui-checkbox -variant-toggle">
+          <input type="checkbox" id="include-interactions" checked />
+          {{includeInteractionsLabel}}
+        </label>
       </div>
       <div class="config-section">
         <span class="instui-heading -level-h3">{{cdnSectionLabel}}</span>
@@ -474,12 +491,25 @@
     <div class="panel" role="tabpanel" id="panel-css" hidden aria-labelledby="tab-css">
       <p>{{cssPanelHintLabel}}</p>
       <div id="css-editor" class="code-editor"></div>
-      <p><a id="download-theme-css" download="theme.css">{{downloadCssLabel}}</a></p>
+      <p>
+        <a
+          id="download-theme-css"
+          role="link"
+          aria-disabled="true"
+          tabindex="-1"
+          download="theme.css"
+          >{{downloadCssLabel}}</a
+        >
+      </p>
     </div>
     <div class="panel" role="tabpanel" id="panel-js" hidden aria-labelledby="tab-js">
       <p>{{jsPanelHintLabel}}</p>
       <div id="js-editor" class="code-editor"></div>
-      <p><a id="download-theme-js" download="theme.js">{{downloadJsLabel}}</a></p>
+      <p>
+        <a id="download-theme-js" role="link" aria-disabled="true" tabindex="-1" download="theme.js"
+          >{{downloadJsLabel}}</a
+        >
+      </p>
     </div>
   </div>
 </div>

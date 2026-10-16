@@ -18,6 +18,51 @@ test("preserves CSS variables for runtime theme overrides", () => {
   expect(result).toContain("var(--brand)");
 });
 
+test("resolves inherited token values before omitting custom-property declarations", () => {
+  const result = inlineHtml(
+    '<html><body><div class="parent"><p class="child">Text</p></div></body></html>',
+    ":root { --gap: .75rem; } .parent { --color: red; } .child { gap: var(--gap); color: var(--color); padding: var(--missing, 1rem); }",
+    { resolveCSSVariables: true, inlineCustomProperties: false },
+  );
+  expect(result).toContain("gap: .75rem");
+  expect(result).toContain("color: red");
+  expect(result).toContain("padding: 1rem");
+  expect(result).not.toContain("var(");
+  expect(result).not.toContain("--gap:");
+});
+
+test("resolved mode rejects circular definitions without changing reference mode", () => {
+  const css =
+    ":root { --first: var(--second); --second: var(--first); } p { color: var(--first); }";
+  expect(() => inlineHtml("<p>Text</p>", css, { resolveCSSVariables: true })).toThrow(
+    "Circular CSS variable",
+  );
+  expect(inlineHtml("<p>Text</p>", css)).toContain("var(--first)");
+});
+
+test("resolved mode computes inherited variables before scoped remapping", () => {
+  const result = inlineHtml(
+    '<html><body><div class="remap"><p>Text</p></div></body></html>',
+    ":root { --blue: blue; --navy: var(--blue); } .remap { --blue: var(--navy); color: var(--blue); }",
+    { resolveCSSVariables: true, inlineCustomProperties: false },
+  );
+  expect(result).toContain("color: blue");
+  expect(result).not.toContain("var(");
+});
+
+test("resolved variables preserve important declarations and inherited fallbacks", () => {
+  const result = inlineHtml(
+    '<div class="value">Text</div>',
+    ".value { --color: red !important; --color: blue; color: var(--color); padding: var(--missing, calc(1rem + 2px)); }",
+    { resolveCSSVariables: true },
+  );
+  expect(result).toContain("color: red;");
+  expect(result).toContain("padding: calc(1rem + 2px);");
+  expect(() =>
+    inlineHtml("<p>Text</p>", "p { gap: var(--missing); }", { resolveCSSVariables: true }),
+  ).toThrow("Unresolved CSS value");
+});
+
 test("does not let CSS close the temporary style element", () => {
   const result = inlineHtml("<div></div>", "/* </style><script>attack()</script> */");
 
@@ -30,6 +75,17 @@ test("flattens scoped component rules before inlining", () => {
 
   expect(result).toContain('style="color: red;"');
   expect(result).toContain(".action:hover");
+});
+
+test("inlines :scope roots and leaves theme token declarations in the companion stylesheet", () => {
+  const result = inlineHtml(
+    '<div class="banner">News</div>',
+    ":root { --color: red; } @scope (.banner) { :scope { background: var(--color); } }",
+    { inlineCustomProperties: false },
+  );
+  expect(result).toContain("background: var(--color)");
+  expect(result).not.toContain('style="--color');
+  expect(flattenScopes("@scope (.banner) { :scope > p { color: red; } }")).toContain(".banner > p");
 });
 
 test("keeps commas inside scoped selector functions and attribute values", () => {

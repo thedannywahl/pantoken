@@ -433,6 +433,9 @@ catalogs:
     postcss:
       specifier: ^8.5.30
       version: 8.5.30
+    postcss-value-parser:
+      specifier: ^4.2.0
+      version: 4.2.0
     prettier:
       specifier: ^3.9.10
       version: 3.9.10
@@ -873,6 +876,9 @@ importers:
       '@pantoken/i18n-engine':
         specifier: workspace:*
         version: link:../tools/i18n-engine
+      '@pantoken/inline-styles':
+        specifier: workspace:*
+        version: link:../formats/inline-styles
       '@pantoken/interactions':
         specifier: workspace:*
         version: link:../formats/interactions
@@ -1205,12 +1211,18 @@ importers:
 
   formats/inline-styles:
     dependencies:
+      cheerio:
+        specifier: 1.2.0
+        version: 1.2.0
       juice:
         specifier: 'catalog:'
         version: 12.2.0
       postcss:
         specifier: 'catalog:'
         version: 8.5.30
+      postcss-value-parser:
+        specifier: 'catalog:'
+        version: 4.2.0
     devDependencies:
       '@types/node':
         specifier: 'catalog:'

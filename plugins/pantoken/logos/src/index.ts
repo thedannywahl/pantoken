@@ -33,6 +33,7 @@ export type LogoLayout = "horizontal" | "icon" | "icon-single-dot" | "icon-three
 /** A logo color treatment. */
 export type LogoColorMode =
   | "color"
+  | "current-color"
   | "dark"
   | "full-color"
   | "full-color-bg"

@@ -47,7 +47,8 @@
     "translate": "never"
   },
   "cdnProviderLabel": { "message": "CDN provider", "translate": "always" },
-  "localProviderLabel": { "message": "None (inline)", "translate": "always" },
+  "localProviderLabel": { "message": "None", "translate": "always" },
+  "inlineProviderLabel": { "message": "Inline", "translate": "always" },
   "cdnSectionLabel": { "message": "CDN", "translate": "never" },
   "themeLabel": { "message": "Theme", "translate": "always" },
   "appearanceLabel": { "message": "Appearance", "translate": "always" },
@@ -60,6 +61,8 @@
     "translate": "optional"
   },
   "includeDarkModeLabel": { "message": "Include dark mode", "translate": "always" },
+  "includeInteractionsLabel": { "message": "Include interactions", "translate": "always" },
+  "previewResetLabel": { "message": "Reset preview", "translate": "always" },
   "colorLabel": { "message": "Color scheme", "translate": "always" },
   "colorNavyLabel": { "message": "Navy", "translate": "always" },
   "colorBlueLabel": { "message": "Blue", "translate": "always" },

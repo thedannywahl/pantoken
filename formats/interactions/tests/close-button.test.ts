@@ -1,8 +1,9 @@
 // @vitest-environment happy-dom
-import { afterEach, expect, test } from "vite-plus/test";
+import { afterEach, expect, test, vi } from "vite-plus/test";
 import { initCloseButton } from "../src/behaviors/close-button.ts";
 
 afterEach(() => {
+  vi.useRealTimers();
   document.body.innerHTML = "";
 });
 
@@ -56,6 +57,59 @@ test("skips wiring when popovertarget is present (native handles it)", () => {
   btn.click();
   // No custom handler wired — native popover API owns it; panel stays open in test env
   expect(panel.hasAttribute("open")).toBe(true);
+});
+
+test.each(["alert", "banner"])("dismisses the documented %s close-button markup", (component) => {
+  vi.useFakeTimers();
+  document.body.innerHTML = `
+    <div id="message" class="instui-${component}" role="status">
+      Saved.
+      <button class="instui-close-button" aria-label="Close"></button>
+    </div>
+  `;
+  const message = document.getElementById("message")!;
+  const closeButton = message.querySelector<HTMLButtonElement>("button")!;
+  const dismissed = vi.fn();
+  message.addEventListener("dismiss", dismissed);
+  initCloseButton(closeButton);
+  closeButton.click();
+  expect(dismissed).toHaveBeenCalledOnce();
+  expect(message.classList.contains("-fade-exiting")).toBe(true);
+  vi.runAllTimers();
+  expect(message.isConnected).toBe(false);
+});
+
+test.each(["alert", "banner"])("allows canceling %s close-button dismissal", (component) => {
+  vi.useFakeTimers();
+  document.body.innerHTML = `
+    <div id="message" class="instui-${component}">
+      <button class="instui-close-button" aria-label="Close"></button>
+    </div>
+  `;
+  const message = document.getElementById("message")!;
+  message.addEventListener("dismiss", (event) => event.preventDefault());
+  const closeButton = message.querySelector<HTMLButtonElement>("button")!;
+  initCloseButton(closeButton);
+  closeButton.click();
+  vi.runAllTimers();
+  expect(message.isConnected).toBe(true);
+  expect(message.classList.contains("-fade-exiting")).toBe(false);
+});
+
+test("dismisses a nested message without closing its containing dialog", () => {
+  document.body.innerHTML = `
+    <dialog open>
+      <div class="instui-alert -transition-none">
+        <button class="instui-close-button" aria-label="Close"></button>
+      </div>
+    </dialog>
+  `;
+  const dialog = document.querySelector("dialog")!;
+  const closeButton = document.querySelector<HTMLButtonElement>("button")!;
+  initCloseButton(closeButton);
+  closeButton.click();
+  expect(document.querySelector(".instui-alert")).toBeNull();
+  expect(dialog.hasAttribute("open")).toBe(true);
 });
 
 test("does nothing when no dismissible ancestor is found", () => {

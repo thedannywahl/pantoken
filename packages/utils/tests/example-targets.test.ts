@@ -1,6 +1,28 @@
 import { expect, test } from "vite-plus/test";
 import { resolveExampleTargets } from "../src/example-targets.ts";
 
+test("Canvas routes explicit examples by interactions state without changing docs selection", () => {
+  const examples = [
+    "-canvas-rce\n```html\n<div>With close button</div>\n```",
+    "```html -canvas-rce-no-interactions\n<div>Static</div>\n```",
+    "-docs\n```html\n<div>Docs</div>\n```",
+  ];
+  expect(resolveExampleTargets(examples)).toEqual({ automatica11y: [], canvasRce: [0], docs: [2] });
+  expect(resolveExampleTargets(examples, { interactions: false })).toEqual({
+    automatica11y: [],
+    canvasRce: [1],
+    docs: [2],
+  });
+  expect(
+    resolveExampleTargets(["-canvas-rce\n```html\n<div>Legacy</div>\n```"], { interactions: false })
+      .canvasRce,
+  ).toEqual([0]);
+  expect(
+    resolveExampleTargets(["-canvas-rce-no-interactions\n```html\n<div>Static only</div>\n```"])
+      .canvasRce,
+  ).toEqual([]);
+});
+
 test("keeps existing Canvas and docs behavior when there are no audience flags", () => {
   expect(resolveExampleTargets(["first", "-nocard\n```html\nsecond\n```"])).toEqual({
     automatica11y: [],

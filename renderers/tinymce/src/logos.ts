@@ -85,6 +85,8 @@ export function getUsedLogoCdnFiles(
     for (const className of element.classList) {
       if (className.startsWith("-logo-") && className.length > "-logo-".length) {
         usedNames.add(className.slice("-logo-".length));
+      } else if (className.startsWith("-icon-") && byName.has(className.slice(6))) {
+        usedNames.add(className.slice(6));
       }
     }
   }

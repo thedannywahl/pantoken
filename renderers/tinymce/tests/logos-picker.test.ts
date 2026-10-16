@@ -177,7 +177,7 @@ test("tabs list All plus each product that has a logo, in the given order", () =
   ]);
 });
 
-test("tiles preview the mask-painted glyph with a variant caption", () => {
+test("tiles preview the glyph with a variant caption", () => {
   const editor = createMockEditor();
   createLogosPlugin({ logos: mockLogos, products: mockProducts, currentAssets: [] })(editor);
   const { root } = openPicker(editor);

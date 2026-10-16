@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: pantoken\n"
-"PO-Revision-Date: 2026-10-15 15:05+0000\n"
+"PO-Revision-Date: 2026-10-16 01:51+0000\n"
 "Last-Translator: pantoken localization engine\n"
 "Language-Team: pantoken\n"
 "MIME-Version: 1.0\n"
@@ -204,6 +204,12 @@ msgid "**Transpile extra InstUI packages**"
 msgstr "**Transpila paquets extra d'InstUI**"
 
 #: bundlers/next/src/index.md
+#, no-c-format, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "Target: Next.js. Current format: `Production build transpiling and rendering Instructure UI 11.7.10 with React 19.3.0`. Minimum host version: `16.0.0`. Tested through `16.4.0`. Newer releases require review."
+msgstr "Target: Next.js. Current format: `Production build transpiling and rendering Instructure UI 11.7.10 with React 19.3.0`. Minimum host version: `16.0.0`. Tested through `16.4.0`. Newer releases require review."
+
+#: bundlers/next/src/index.md
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "`@pantoken/next` — a Next.js config adapter."
@@ -307,6 +313,12 @@ msgid "**Build a preset from a custom IR**"
 msgstr "**Construeix un preajust a partir d'una IR personalitzada**"
 
 #: bundlers/panda/src/index.md
+#, no-c-format, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "Target: Panda CSS. Current format: `Panda token utility extraction from the Pantoken preset`. Minimum host version: `1.12.1`. Tested through `2.2.0`. Newer releases require review."
+msgstr "Target: Panda CSS. Current format: `Panda token utility extraction from the Pantoken preset`. Minimum host version: `1.12.1`. Tested through `2.2.0`. Newer releases require review."
+
+#: bundlers/panda/src/index.md
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "`@pantoken/panda` — an Instructure design-token preset for Panda CSS."
@@ -365,6 +377,12 @@ msgstr "El preset Panda `rebrand` preparat."
 msgctxt "docs.api:prose"
 msgid "**Spread it into panda.config.ts**"
 msgstr "**Espandiu-lo a panda.config.ts**"
+
+#: bundlers/postcss/src/index.md
+#, no-c-format, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "Target: PostCSS. Minimum host version: `8.0.0`. Tested through `8.5.29`. Newer releases require review."
+msgstr "Target: PostCSS. Minimum host version: `8.0.0`. Tested through `8.5.29`. Newer releases require review."
 
 #: bundlers/postcss/src/index.md
 #, no-c-format
@@ -461,6 +479,12 @@ msgid "**Also expose the primitive palette under a primitive- prefix**"
 msgstr "**Exponeu també la paleta primitiva sota un prefix primitiu-**"
 
 #: bundlers/tailwind/src/index.md
+#, no-c-format, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "Target: Tailwind CSS. Minimum host version: `4.0.17`. Tested through `4.3.3`. Newer releases require review."
+msgstr "Target: Tailwind CSS. Minimum host version: `4.0.17`. Tested through `4.3.3`. Newer releases require review."
+
+#: bundlers/tailwind/src/index.md
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "`@pantoken/tailwind` — a Tailwind CSS preset that maps Instructure design tokens into the theme."
@@ -469,8 +493,8 @@ msgstr "`@pantoken/tailwind` — un preset de Tailwind CSS que mapeja tokens de 
 #: bundlers/tailwind/src/index.md
 #, no-c-format
 msgctxt "docs.api:prose"
-msgid "Every token is exposed as a `var(--instui-*)` reference (not a concrete value), so Tailwind\nutilities like `bg-color-background-base` theme through the same CSS custom properties that\n`@pantoken/css` emits — light/dark and high-contrast all keep working."
-msgstr "Cada token s'exposa com a referència `var(--instui-*)` (no com a valor concret), de manera que les utilitats de Tailwind com `bg-color-background-base` es temitzen a través de les mateixes propietats personalitzades de CSS que `@pantoken/css` emet — la llum/obscuritat i el contrast alt continuen funcionant."
+msgid "Every token is exposed as a `var(--instui-*)` reference (not a concrete value), so Tailwind\nutilities like `bg-background-base` theme through the same CSS custom properties that\n`@pantoken/css` emits — light/dark and high-contrast all keep working."
+msgstr "Cada token s'exposa com una `var(--instui-*)` reference (no un valor concret), de manera que les utilitats de Tailwind\n com `bg-background-base` apliquen la temàtica mitjançant les mateixes propietats CSS personalitzades que\n`@pantoken/css` emet — el mode clar/fosc i l'alt contrast continuen funcionant."
 
 #: bundlers/tailwind/src/index.md
 #, no-c-format
@@ -527,6 +551,12 @@ msgid "**Consume the virtual modules in app code**"
 msgstr "**Consumiu els mòduls virtuals en el codi de l'aplicació**"
 
 #: bundlers/vite/src/index.md
+#, no-c-format, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "Target: Vite. Minimum host version: `8.0.0`. Tested through `8.3.4`. Newer releases require review."
+msgstr "Target: Vite. Minimum host version: `8.0.0`. Tested through `8.3.4`. Newer releases require review."
+
+#: bundlers/vite/src/index.md
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "`@pantoken/vite` — a Vite plugin for pantoken."
@@ -579,6 +609,12 @@ msgstr "**Emeteu pantoken.css des del vostre webpack.config.js**"
 msgctxt "docs.api:prose"
 msgid "**Rename the emitted asset**"
 msgstr "**Canvieu el nom de l'actiu emès**"
+
+#: bundlers/webpack/src/index.md
+#, no-c-format, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "Target: webpack. Current format: `Emitted token CSS build asset`. Minimum host version: `5.61.0`. Tested through `5.111.1`. Newer releases require review."
+msgstr "Target: webpack. Current format: `Emitted token CSS build asset`. Minimum host version: `5.61.0`. Tested through `5.111.1`. Newer releases require review."
 
 #: bundlers/webpack/src/index.md
 #, no-c-format
@@ -1224,6 +1260,12 @@ msgctxt "docs.api:prose"
 msgid "Standalone `calendar.day` stylesheet."
 msgstr "Full d'estils `calendar.day` autònom."
 
+#: formats/components/src/variables/cardCss.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Standalone Card stylesheet with support for a custom class prefix."
+msgstr "Full d'estils independent per a Card amb suport per a un prefix de classe personalitzat."
+
 #: formats/components/src/variables/checkboxCss.md
 #, no-c-format
 msgctxt "docs.api:prose"
@@ -1704,6 +1746,12 @@ msgctxt "docs.api:prose"
 msgid "The dark branch of a `light-dark()` value, or `null` when the value isn't one."
 msgstr "La branca fosca d'un `light-dark()` value, o `null` quan el valor no en és un."
 
+#: formats/css/src/functions/layerOrderCss.md
+#, fuzzy, no-c-format
+msgctxt "docs.api:prose"
+msgid "`string`\narning pantoken-doc-tag\">Beta</span>"
+msgstr "<span class=\"instui-pill -color-warning pantoken-doc-tag\">Beta</span>"
+
 #: formats/css/src/functions/lightBranch.md
 #, no-c-format
 msgctxt "docs.api:prose"
@@ -1833,6 +1881,12 @@ msgstr "`@pantoken/css` — emet tokens de disseny d'Instructure com a CSS tipif
 msgctxt "docs.api:prose"
 msgid "[toCss](functions/toCss.md) turns any token IR into CSS; [css](variables/css.md) is the ready-made `rebrand` stylesheet and\n[leanCss](variables/leanCss.md) is a lean variant that drops the full `--instui-icon-*` set (the ~1,777 icon data-URIs\nthat dominate the sheet) for CDN/embed delivery — ~a sixth the size over the wire. Both carry the\nelevation + focus-outline foundation (composite custom properties whose pure builders live in\n`@pantoken/utils`), so a component sheet resolves its shadows and focus ring against the token sheet\nalone. A DOM side-effect entry lives at `@pantoken/css/inject`; static files at\n`@pantoken/css/style.css` and `@pantoken/css/style.lean.css`."
 msgstr "[toCss](functions/toCss.md) converteix qualsevol IR de token en CSS; [css](variables/css.md) és la fulla d'estil `rebrand` ja preparada i [leanCss](variables/leanCss.md) és una variant lleugera que abandona el conjunt complet de `--instui-icon-*` (els ~1.777 data-URIs d'icona que dominen la fulla) per a la lliurament de CDN/embed — aproximadament la sisena part de la mida per cable. Tots dos porten la base d'elevació + contorn de focus (propietats personalitzades compostes els quals constructors purs viuen a `@pantoken/utils`), de manera que una fulla de component resol les seves ombres i anell de focus contra la fulla de token sola. Una entrada d'efecte secundari DOM viu a `@pantoken/css/inject`; fitxers estàtics a `@pantoken/css/style.css` i `@pantoken/css/style.lean.css`."
+
+#: formats/css/src/index.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Renames and re-exports [css](variables/css.md)\n## default"
+msgstr "Renombra i re-exporta [css](variables/css.md)\n## per defecte"
 
 #: formats/css/src/index.md
 #, no-c-format
@@ -2347,6 +2401,12 @@ msgctxt "docs.api:prose"
 msgid "Resolve custom-property references against declarations in the document."
 msgstr "Resoldre les referències de propietats personalitzades en funció de les declaracions del document."
 
+#: formats/inline-styles/src/interfaces/InlineHtmlOptions.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Inline custom-property declarations. Disable when a companion theme stylesheet supplies them."
+msgstr "Declaracions de propietats personalitzades en línia. Desactiveu-les quan una fulla d'estils de tema complementària les proporcioni."
+
 #: formats/interactions/src/functions/applySpacing.md
 #, no-c-format
 msgctxt "docs.api:prose"
@@ -2430,6 +2490,18 @@ msgstr "El temps d'espera és una opció de mil·lisegons explícita o la propie
 msgctxt "docs.api:prose"
 msgid "Wire open/close commands plus width-based responsive overlay switching onto a host: any\ncollapsible side panel (e.g. a drawer's tray) can import this interaction rather than each\ncomponent reimplementing it."
 msgstr "Connecta comandos d'obrir/tancar més canvi de capa de superposició responsiu basat en amplada a un host: qualsevol panell lateral col·lapsible (per exemple, la safata d'un calaix) pot importar aquesta interacció en lloc que cada component la reimplementi."
+
+#: formats/interactions/src/functions/initSegmentedControl.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Enhance a labelled native radio group with keyboard navigation and optional overflow controls."
+msgstr "Millorar un grup natiu de ràdio etiquetat amb navegació per teclat i controls opcionals de desbordament."
+
+#: formats/interactions/src/functions/initSkeletonLoading.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Bind the parent content region to SSR-provided status and error announcements."
+msgstr "Vincular la regió de contingut pare a les notificacions d'estat i d'error proporcionades per SSR."
 
 #: formats/interactions/src/functions/initTabs.md
 #, no-c-format
@@ -2708,6 +2780,36 @@ msgctxt "docs.api:prose"
 msgid "Exit treatment. Defaults to `\"fade\"`, matching InstUI Alert."
 msgstr "Tractament de sortida. Per defecte a `\"fade\"`, coincidint amb InstUI Alert."
 
+#: formats/interactions/src/interfaces/SegmentedControlHandle.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Detach the segmented-control listeners and observers."
+msgstr "Desconnecta els listeners i observadors del segmented-control."
+
+#: formats/interactions/src/interfaces/SegmentedControlOptions.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Segmented control options; the medium size is the CSS default."
+msgstr "Opcions del control segmentat; la mida mitjana és la predeterminada del CSS."
+
+#: formats/interactions/src/interfaces/SkeletonLoadingHandle.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Control parent-level loading semantics without touching decorative skeleton shapes."
+msgstr "Controla la semàntica de càrrega a nivell de l'element pare sense tocar les formes esquelètiques decoratives."
+
+#: formats/interactions/src/interfaces/SkeletonLoadingOptions.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Pre-rendered announcement elements must be outside the busy content region."
+msgstr "Els elements d'anunci pre-renderitzats han d'estar fora de la regió de contingut ocupada."
+
+#: formats/interactions/src/interfaces/SkeletonLoadingState.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "State update sent to an auto-registered skeleton loading region."
+msgstr "Actualització d'estat enviada a una regió de càrrega amb esquelet auto-registrada."
+
 #: formats/interactions/src/interfaces/TabsHandle.md
 #, fuzzy, no-c-format
 msgctxt "docs.api:prose"
@@ -2908,6 +3010,12 @@ msgstr "`id` distingeix fulls no relacionats; `doc` pren per defecte el document
 msgctxt "docs.api:prose"
 msgid "`true` when this call performed the injection."
 msgstr "`true` quan aquesta crida va realitzar la injecció."
+
+#: formats/scope/src/functions/frameTargetOrigin.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Resolve a theme-message target. Only explicitly sandboxed, opaque `srcdoc` frames permit `\"*\"`;\nother opaque or malformed URLs are rejected. Frame messages must not contain confidential data."
+msgstr "Resol un objectiu de missatge de tema. Només els marcs explícitament aïllats i opacs `srcdoc` permeten `\"*\"`;\naltres URL opacs o malformades són rebutjades. Els missatges de marc no han de contenir dades confidencials."
 
 #: formats/scope/src/functions/getScope.md
 #, no-c-format
@@ -4992,6 +5100,12 @@ msgid "**Dark mode with icon VectorDrawables**"
 msgstr "**Mode fosc amb VectorDrawables d'icones**"
 
 #: platforms/android/src/index.md
+#, no-c-format, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "Target: Android resources. Current format: `Generated colors, dimensions, and VectorDrawable compile and link with Android build-tools`. Minimum host version: `API 35 / build-tools 35.0.0`. Tested through `API 35 / build-tools 35.0.0`. Newer releases require review."
+msgstr "Target: Android resources. Current format: `Generated colors, dimensions, and VectorDrawable compile and link with Android build-tools`. Minimum host version: `API 35 / build-tools 35.0.0`. Tested through `API 35 / build-tools 35.0.0`. Newer releases require review."
+
+#: platforms/android/src/index.md
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "`@pantoken/android` — emit Instructure design tokens as Android resource XML."
@@ -5065,6 +5179,12 @@ msgstr "Construir contingut theme.js per a la selecció de proveïdor/actiu dona
 msgctxt "docs.api:prose"
 msgid "The component-style sheets for a given theme/mode pair (token sheet plus the constant set)."
 msgstr "Els full d'estils de component per a un parell tema/mode donat (full de tokens més el conjunt constant)."
+
+#: platforms/canvas-theme-editor/src/index.md
+#, no-c-format, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "Target: Canvas Theme Editor. Host compatibility has not yet been verified."
+msgstr "Target: Canvas Theme Editor. Host compatibility has not yet been verified."
 
 #: platforms/canvas-theme-editor/src/index.md
 #, no-c-format
@@ -5277,6 +5397,12 @@ msgid "**Dark mode with a custom object name**"
 msgstr "**Mode fosc amb un nom d'objecte personalitzat**"
 
 #: platforms/compose/src/index.md
+#, no-c-format, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "Target: Jetpack Compose. Current format: `Generated Color and Dp token object compiles in an Android library module`. Minimum host version: `Kotlin 2.1.10 / Compose UI 1.8.2 / Android API 35`. Tested through `Kotlin 2.1.10 / Compose UI 1.8.2 / Android API 35`. Newer releases require review."
+msgstr "Target: Jetpack Compose. Current format: `Generated Color and Dp token object compiles in an Android library module`. Minimum host version: `Kotlin 2.1.10 / Compose UI 1.8.2 / Android API 35`. Tested through `Kotlin 2.1.10 / Compose UI 1.8.2 / Android API 35`. Newer releases require review."
+
+#: platforms/compose/src/index.md
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "`@pantoken/compose` — emit Instructure design tokens as Jetpack Compose (Kotlin), via Style\nDictionary. It flattens the IR to concrete, single-mode values and keeps the natively-typed\ntokens (colours, dimensions, numbers)."
@@ -5331,6 +5457,12 @@ msgid "**Build a sub-theme on top of a base theme**"
 msgstr "**Construeix un subtema sobre un tema base**"
 
 #: platforms/drupal/src/index.md
+#, no-c-format, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "Target: Drupal themes. Current format: `Drupal core discovers generated theme; InfoParser and Symfony YAML accept metadata`. Minimum host version: `10.6.18`. Tested through `11.3.2`. Newer releases require review."
+msgstr "Target: Drupal themes. Current format: `Drupal core discovers generated theme; InfoParser and Symfony YAML accept metadata`. Minimum host version: `10.6.18`. Tested through `11.3.2`. Newer releases require review."
+
+#: platforms/drupal/src/index.md
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "`@pantoken/drupal` — emit an Instructure-themed Drupal sub-theme."
@@ -5383,6 +5515,12 @@ msgstr "**Incrusta un token en una cel·la de correu (mode clar)**"
 msgctxt "docs.api:prose"
 msgid "Inline resolved pantoken tokens and component CSS into HTML email markup."
 msgstr "Inserir en línia els tokens pantoken resolts i el CSS de components al marcat HTML del correu electrònic."
+
+#: platforms/email/src/index.md
+#, no-c-format, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "Target: HTML email. Host compatibility has not yet been verified."
+msgstr "Target: HTML email. Host compatibility has not yet been verified."
 
 #: platforms/email/src/index.md
 #, no-c-format
@@ -5518,6 +5656,12 @@ msgid "**Dark mode with SVG icon assets and manifest**"
 msgstr "**Mode fosc amb actius d'icona SVG i manifest**"
 
 #: platforms/flutter/src/index.md
+#, no-c-format, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "Target: Flutter. Host compatibility has not yet been verified."
+msgstr "Target: Flutter. Host compatibility has not yet been verified."
+
+#: platforms/flutter/src/index.md
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "`@pantoken/flutter` — emit Instructure design tokens as Flutter (Dart), via Style Dictionary. It\nflattens the IR to concrete, single-mode values and keeps the natively-typed tokens."
@@ -5567,6 +5711,12 @@ msgid "**Write the assets under a site root**"
 msgstr "**Escriviu els actius sota l'arrel d'un lloc**"
 
 #: platforms/hugo/src/index.md
+#, no-c-format, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "Target: Hugo. Current format: `Hugo Pipes builds the Pantoken token stylesheet`. Minimum host version: `0.165.0`. Tested through `0.165.0`. Newer releases require review."
+msgstr "Target: Hugo. Current format: `Hugo Pipes builds the Pantoken token stylesheet`. Minimum host version: `0.165.0`. Tested through `0.165.0`. Newer releases require review."
+
+#: platforms/hugo/src/index.md
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "`@pantoken/hugo` — emit the Instructure token stylesheet for a Hugo site."
@@ -5596,6 +5746,12 @@ msgstr "Construir els fitxers d'actius de token per a un lloc Jekyll (camins rel
 msgctxt "docs.api:prose"
 msgid "The Sass partial (`_sass/pantoken.scss`), the plain stylesheet\n(`assets/css/pantoken.css`), and the prose stylesheet (`assets/css/pantoken-prose.css`)."
 msgstr "La parcial Sass (`_sass/pantoken.scss`), la fulla d'estils plana\n(`assets/css/pantoken.css`), i la fulla d'estils de prosa (`assets/css/pantoken-prose.css`)."
+
+#: platforms/jekyll/src/index.md
+#, no-c-format, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "Target: Jekyll. Current format: `Jekyll builds the generated Sass partial into site CSS`. Minimum host version: `4.4.1`. Tested through `4.4.1`. Newer releases require review."
+msgstr "Target: Jekyll. Current format: `Jekyll builds the generated Sass partial into site CSS`. Minimum host version: `4.4.1`. Tested through `4.4.1`. Newer releases require review."
 
 #: platforms/jekyll/src/index.md
 #, no-c-format
@@ -5638,6 +5794,12 @@ msgstr "**egui (Color32), el format per defecte**"
 msgctxt "docs.api:prose"
 msgid "**iced (Color), dark mode**"
 msgstr "**iced (Color), mode fosc**"
+
+#: platforms/rust/src/index.md
+#, no-c-format, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "Target: Rust GUI frameworks. Current format: `Generated egui Color32 accessors and iced_core Color constants compile with the Rust toolchain`. Minimum host version: `1.95.0`. Tested through `1.95.0`. Newer releases require review."
+msgstr "Target: Rust GUI frameworks. Current format: `Generated egui Color32 accessors and iced_core Color constants compile with the Rust toolchain`. Minimum host version: `1.95.0`. Tested through `1.95.0`. Newer releases require review."
 
 #: platforms/rust/src/index.md
 #, no-c-format
@@ -5701,6 +5863,12 @@ msgid "**Dark mode with a custom class name and an asset catalog**"
 msgstr "**Mode fosc amb un nom de classe personalitzat i un catàleg d'actius**"
 
 #: platforms/swift/src/index.md
+#, no-c-format, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "Target: Swift iOS. Current format: `UIKit SwiftPM module, runtime token check, and compiled Icons.xcassets`. Tested environment: `Xcode 27.0 (27A266a), Swift 6.4, iOS Simulator SDK/runtime 27.0, iPhone 18 Pro, arm64 iOS 15 deployment target`. Runtime tested only on iOS Simulator 27.0; this does not establish an iOS 15 runtime floor. No watchOS or tvOS claim."
+msgstr "Target: Swift iOS. Current format: `UIKit SwiftPM module, runtime token check, and compiled Icons.xcassets`. Tested environment: `Xcode 27.0 (27A266a), Swift 6.4, iOS Simulator SDK/runtime 27.0, iPhone 18 Pro, arm64 iOS 15 deployment target`. Runtime tested only on iOS Simulator 27.0; this does not establish an iOS 15 runtime floor. No watchOS or tvOS claim."
+
+#: platforms/swift/src/index.md
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "`@pantoken/swift` — emit Instructure design tokens as Swift via Style Dictionary."
@@ -5711,6 +5879,12 @@ msgstr "`@pantoken/swift` — emetre tokens de disseny de l'Instructure com Swif
 msgctxt "docs.api:prose"
 msgid "This is pantoken's native proof: it flattens the IR to concrete, single-mode values\n(`@pantoken/core`'s `toStyleDictionary`), keeps the natively-typed tokens (colours, dimensions,\nnumbers), and hands them to `@pantoken/sd-config`. Swapping `platform` to `flutter`/`compose`\nreuses the same path."
 msgstr "Aquesta és la prova native de pantoken: aplatana l'IR a valors concrets de mode únic\n(`@pantoken/core`'s `toStyleDictionary`), mantén els tokens natiu-tipats (colors, dimensions,\nnúmeros), i els lliura a `@pantoken/sd-config`. Canviar `platform` a `flutter`/`compose`\nreutilitza el mateix camí."
+
+#: platforms/swift/src/index.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "The generated Swift uses UIKit and targets iOS. `mise run verify:swift:syntax` only parses its\nsource; `mise run verify:swift:host` needs full Xcode and the iOS Simulator SDK to type-check it."
+msgstr "El Swift generat utilitza UIKit i s'orienta a iOS. `mise run verify:swift:syntax` només analitza la seva\nsource; `mise run verify:swift:host` requereix Xcode complet i l'iOS Simulator SDK per comprovar els tipus."
 
 #: platforms/swift/src/index.md
 #, no-c-format
@@ -5759,6 +5933,12 @@ msgstr "L'objecte de variables imbricades per PUT a l'actiu `variables.json` del
 msgctxt "docs.api:prose"
 msgid "**Convert an IR to the nested variables object**"
 msgstr "**Convertir un IR a l'objecte de variables imbricades**"
+
+#: platforms/vanilla/src/index.md
+#, no-c-format, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "Target: Vanilla Forums. Host compatibility has not yet been verified."
+msgstr "Target: Vanilla Forums. Host compatibility has not yet been verified."
 
 #: platforms/vanilla/src/index.md
 #, no-c-format
@@ -5825,6 +6005,12 @@ msgstr "Un document `theme.json`."
 msgctxt "docs.api:prose"
 msgid "**Convert an IR to a light-mode theme.json**"
 msgstr "**Converteix un IR a un theme.json en mode clar**"
+
+#: platforms/wordpress/src/index.md
+#, no-c-format, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "Target: WordPress block themes. Current format: `theme.json v3`. Minimum host version: `6.6`. Tested through `7.1.3`. Newer releases require review."
+msgstr "Target: WordPress block themes. Current format: `theme.json v3`. Minimum host version: `6.6`. Tested through `7.1.3`. Newer releases require review."
 
 #: platforms/wordpress/src/index.md
 #, no-c-format
@@ -6010,7 +6196,6 @@ msgid "A CSS color: a literal (`#1d354f`, `rebeccapurple`), a `var(--token)`, or
 msgstr "Un color CSS: un literal (`#1d354f`, `rebeccapurple`), un `var(--token)`, o un resultat d'ajudant imbricat."
 
 #: plugins/pantoken/custom-components/src/functions/agentShellRules.md
-#: plugins/pantoken/custom-components/src/functions/cardRules.md
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "Build the card layout CSS (doc comment + rules), substituting `prefix` for the `pfx-` sentinel.\nDefaults to `\"instui-\"` for the shipped stylesheet; pass `\"\"` for an unprefixed build."
@@ -6040,6 +6225,12 @@ msgctxt "docs.api:prose"
 msgid "Build the button-set layout CSS (doc comment + rules), substituting `prefix` for the `pfx-`\nsentinel. Defaults to `\"instui-\"` for the shipped stylesheet; pass `\"\"` for an unprefixed build."
 msgstr "Construeix el CSS de disposició de bàner (comentari de doc + regles), substituint `prefix` per la sentinella `pfx-`.\nPer defecte `\"instui-\"` per a la fulla d'estils enviada; passeu `\"\"` per a una construcció sense prefix."
 
+#: plugins/pantoken/custom-components/src/functions/cardRules.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Import `cardCss` from `@pantoken/components` instead."
+msgstr "Importa `cardCss` des de `@pantoken/components` en lloc."
+
 #: plugins/pantoken/custom-components/src/functions/customComponents.md
 #, no-c-format
 msgctxt "docs.api:prose"
@@ -6060,6 +6251,18 @@ msgstr "Un [PantokenPlugin](../../../../../packages/core/src/interfaces/Pantoken
 msgctxt "docs.api:prose"
 msgid "Build the logo utility CSS as an aspect-ratio-aware mask painter for `@pantoken/plugin-logos`'\n`-logo-<name>` glyph classes, substituting `prefix` for the `pfx-` sentinel."
 msgstr "Construeix el CSS d'utilitat del logotip com a pintor de màscara conscient de la relació d'aspecte per a classes de glifs `@pantoken/plugin-logos`'\n`-logo-<name>`, substituint `prefix` pel centinella `pfx-`."
+
+#: plugins/pantoken/custom-components/src/functions/segmentedControlRules.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Build segmented-control CSS, replacing the component prefix sentinel."
+msgstr "Genera el CSS de segmented-control, substituint el marcador de prefix del component."
+
+#: plugins/pantoken/custom-components/src/functions/skeletonLoaderRules.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Build the skeleton loader CSS, replacing the component prefix sentinel."
+msgstr "Construeix el CSS del carregador d'esquelet, substituint la sentinella del prefix del component."
 
 #: plugins/pantoken/custom-components/src/index.md
 #, no-c-format
@@ -8054,6 +8257,12 @@ msgid "Register the pantoken custom elements (call once during app bootstrap)."
 msgstr "Registri els elements personalitzats de pantoken (crideu una vegada durant l'inici de l'aplicació)."
 
 #: renderers/angular/src/index.md
+#, no-c-format, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "Target: Angular. Current format: `CUSTOM_ELEMENTS_SCHEMA template compilation (Angular 16.2.12 / TS 5.1.6; Angular 22.2.0, 22.2.1, and 22.2.2 / TS 6.0.3)`. Minimum host version: `16.2.12`. Tested through `22.2.2`. Newer releases require review."
+msgstr "Target: Angular. Current format: `CUSTOM_ELEMENTS_SCHEMA template compilation (Angular 16.2.12 / TS 5.1.6; Angular 22.2.0, 22.2.1, and 22.2.2 / TS 6.0.3)`. Minimum host version: `16.2.12`. Tested through `22.2.2`. Newer releases require review."
+
+#: renderers/angular/src/index.md
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "`@pantoken/angular` — Angular helpers over `@pantoken/web-components`."
@@ -8088,6 +8297,12 @@ msgstr "**astro.config.mjs**"
 msgctxt "docs.api:prose"
 msgid "Build the pantoken stylesheet for a theme (with optional plugin CSS). Exposed for direct use."
 msgstr "Construeix l'full d'estils de pantoken per a un tema (amb CSS del plugin opcional). Exposat per a ús directe."
+
+#: renderers/astro/src/index.md
+#, no-c-format, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "Target: Astro / Starlight. Current format: `Built Starlight page with injected token stylesheet (Astro 5 and 7)`. Minimum host version: `0.35.0`. Tested through `0.42.6`. Newer releases require review."
+msgstr "Target: Astro / Starlight. Current format: `Built Starlight page with injected token stylesheet (Astro 5 and 7)`. Minimum host version: `0.35.0`. Tested through `0.42.6`. Newer releases require review."
 
 #: renderers/astro/src/index.md
 #, no-c-format
@@ -8158,16 +8373,22 @@ msgid "**Scope to Bootstrap's theme attribute**"
 msgstr "**Abast al atribut de tema de Bootstrap**"
 
 #: renderers/bootstrap/src/index.md
-#, no-c-format
+#, no-c-format, pantoken-verbatim
 msgctxt "docs.api:prose"
-msgid "`@pantoken/bootstrap` — theme Bootstrap 5 with Instructure tokens."
-msgstr "`@pantoken/bootstrap` — tema Bootstrap 5 amb tokens d'Instructure."
+msgid "Target: Bootstrap. Current format: `CSS variables: body + primary button`. Minimum host version: `5.2.0`. Tested through `5.3.8`. Newer releases require review."
+msgstr "Target: Bootstrap. Current format: `CSS variables: body + primary button`. Minimum host version: `5.2.0`. Tested through `5.3.8`. Newer releases require review."
 
 #: renderers/bootstrap/src/index.md
 #, no-c-format
 msgctxt "docs.api:prose"
-msgid "Points Bootstrap's `--bs-*` CSS variables at `var(--instui-*)`. Drop it in alongside\n`@pantoken/css` and Bootstrap components adopt the Instructure look while keeping theming through\nthe same custom properties."
-msgstr "Apunta les variables CSS `--bs-*` de Bootstrap a `var(--instui-*)`. Posa-la juntament amb\n`@pantoken/css` i els components de Bootstrap adopten l'aspecte d'Instructure mentre es mantenen els temes\nper mitjà de les mateixes propietats personalitzades."
+msgid "`@pantoken/bootstrap` — theme Bootstrap 5.2+ body variables and primary buttons with Instructure tokens."
+msgstr "`@pantoken/bootstrap` — variables del cos i botons primaris del tema Bootstrap 5.2+ amb tokens d'Instructure."
+
+#: renderers/bootstrap/src/index.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Points body and primary-button `--bs-*` CSS variables at `var(--instui-*)`. Load it after\nBootstrap and `@pantoken/css`; other component variants retain their Bootstrap defaults."
+msgstr "Apunta les variables CSS del cos i del botó primari `--bs-*` a `var(--instui-*)`. Carrega-ho després de\nBootstrap i `@pantoken/css`; altres variants de components mantenen els seus valors predeterminats de Bootstrap."
 
 #: renderers/bootstrap/src/index.md
 #, no-c-format
@@ -8235,6 +8456,12 @@ msgid "Turn `--instui-color-background-brand` into `colorBackgroundBrand`."
 msgstr "Converteix `--instui-color-background-brand` a `colorBackgroundBrand`."
 
 #: renderers/css-in-js/src/index.md
+#, no-c-format, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "Target: Emotion CSS-in-JS. Current format: `ThemeProvider SSR emits the Pantoken token variable`. Minimum host version: `11.14.0`. Tested through `11.14.0`. Newer releases require review."
+msgstr "Target: Emotion CSS-in-JS. Current format: `ThemeProvider SSR emits the Pantoken token variable`. Minimum host version: `11.14.0`. Tested through `11.14.0`. Newer releases require review."
+
+#: renderers/css-in-js/src/index.md
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "`@pantoken/css-in-js` — an Instructure theme object for runtime CSS-in-JS libraries."
@@ -8289,6 +8516,12 @@ msgid "Emit the Infima → Instructure CSS-variable bridge."
 msgstr "Emet el pont de variable CSS de Infima → Instructure."
 
 #: renderers/docusaurus/src/index.md
+#, no-c-format, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "Target: Docusaurus theme-classic. Current format: `Infima CSS-variable bridge: primary and background`. Minimum host version: `3.0.0`. Tested through `3.10.2`. Newer releases require review."
+msgstr "Target: Docusaurus theme-classic. Current format: `Infima CSS-variable bridge: primary and background`. Minimum host version: `3.0.0`. Tested through `3.10.2`. Newer releases require review."
+
+#: renderers/docusaurus/src/index.md
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "`@pantoken/docusaurus` — theme a Docusaurus site with Instructure tokens."
@@ -8339,8 +8572,8 @@ msgstr "**Abast de la superposició a un contenidor**"
 #: renderers/foundation/src/functions/toFoundationSettings.md
 #, no-c-format
 msgctxt "docs.api:prose"
-msgid "Emit the Foundation Sass settings override. Load it before `@include foundation-everything`."
-msgstr "Emet l'invalidació de la configuració Sass de Foundation. Carrega-la abans de `@include foundation-everything`."
+msgid "Emit the Foundation Sass settings override. Import it before Foundation itself and\n`@include foundation-everything` so its palette is available to Sass."
+msgstr "Genera la substitució de la configuració de Foundation Sass. Importa'l abans de Foundation mateix i\n`@include foundation-everything` perquè la seva paleta estigui disponible per a Sass."
 
 #: renderers/foundation/src/functions/toFoundationSettings.md
 #, no-c-format
@@ -8355,16 +8588,22 @@ msgid "**Let consumer settings still win**"
 msgstr "**Deixa que la configuració del consumidor segueixi guanyant**"
 
 #: renderers/foundation/src/index.md
-#, no-c-format
+#, no-c-format, pantoken-verbatim
 msgctxt "docs.api:prose"
-msgid "`@pantoken/foundation` — theme Foundation for Sites with Instructure tokens."
-msgstr "`@pantoken/foundation` — tema Foundation for Sites amb tokens d'Instructure."
+msgid "Target: Foundation for Sites. Current format: `Concrete Sass settings + variable-backed CSS overlay`. Minimum host version: `6.1.2`. Tested through `6.9.0`. Newer releases require review."
+msgstr "Target: Foundation for Sites. Current format: `Concrete Sass settings + variable-backed CSS overlay`. Minimum host version: `6.1.2`. Tested through `6.9.0`. Newer releases require review."
 
 #: renderers/foundation/src/index.md
 #, no-c-format
 msgctxt "docs.api:prose"
-msgid "Foundation is Sass-first, so this package ships two layers. [toFoundationSettings](functions/toFoundationSettings.md) emits a\n`_settings`-style Sass partial that points Foundation's setting variables at `var(--instui-*)`, so\na Sass build compiles the Instructure look while keeping runtime theming through the same custom\nproperties. [toFoundationCss](functions/toFoundationCss.md) emits a thin CSS overlay that themes the common compiled\nclasses (`.button`, `.callout`, links) the same way — useful when you consume stock Foundation CSS\nand just want to layer Instructure colors on top without recompiling."
-msgstr "Foundation és primer en Sass, per tant aquest paquet té dues capes. [toFoundationSettings](functions/toFoundationSettings.md) emet una\nparticella Sass d'estil `_settings` que dirigeix les variables de configuració de Foundation a `var(--instui-*)`, per tant\nuna compilació Sass compila el look d'Instructure mantenint la temàtica en temps d'execució a través de les mateixes propietats personalitzades.\n[toFoundationCss](functions/toFoundationCss.md) emet una superposició CSS fina que temàtitza les classes comunes compilades\n(`.button`, `.callout`, enllaços) de la mateixa manera — útil quan consums CSS de Foundation estàndard\ni només vols superposar colors d'Instructure al damunt sense recompilar."
+msgid "`@pantoken/foundation` — theme Foundation for Sites Sass output and common CSS classes."
+msgstr "`@pantoken/foundation` — tema Foundation for Sites sortida Sass i classes CSS comunes."
+
+#: renderers/foundation/src/index.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Foundation is Sass-first, so this package ships two layers. [toFoundationSettings](functions/toFoundationSettings.md) emits a\n`_settings`-style Sass partial with concrete light-mode rebrand values so Foundation's colour functions can\ncompile. [toFoundationCss](functions/toFoundationCss.md) emits a thin variable-backed CSS overlay that themes the common compiled\nclasses (`.button`, `.callout`, links) the same way — useful when you consume stock Foundation CSS\nand just want to layer Instructure colors on top without recompiling."
+msgstr "Foundation està pensat per a Sass, així que aquest paquet inclou dues capes. [toFoundationSettings](functions/toFoundationSettings.md) emet un\n`_settings`-style partial Sass amb valors concrets de rebrand en mode clar perquè les funcions de color de Foundation puguin\ncompilar. [toFoundationCss](functions/toFoundationCss.md) emet una fina superposició CSS basada en variables que tematitza les classes compilades comunes\n (`.button`, `.callout`, enllaços) de la mateixa manera — útil quan fas servir el CSS estàndard de Foundation\n i només vols superposar els colors d'Instructure a sobre sense recompilar."
 
 #: renderers/foundation/src/index.md
 #, no-c-format
@@ -8433,6 +8672,12 @@ msgstr "La instància de markdown-it."
 msgctxt "docs.api:prose"
 msgid "**Compose a brand-icon plugin's resolver**"
 msgstr "**Compon el resolvedor d'un connector de marca-icona**"
+
+#: renderers/markdown-it/src/index.md
+#, no-c-format, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "Target: markdown-it. Minimum host version: `14.0.0`. Tested through `15.0.2`. Newer releases require review."
+msgstr "Target: markdown-it. Minimum host version: `14.0.0`. Tested through `15.0.2`. Newer releases require review."
 
 #: renderers/markdown-it/src/index.md
 #, no-c-format
@@ -8519,6 +8764,12 @@ msgid "The `colors` + `background` keys to merge into a Mintlify `docs.json`."
 msgstr "Les claus `colors` + `background` per fusionar en una `docs.json` de Mintlify."
 
 #: renderers/mintlify/src/index.md
+#, no-c-format, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "Target: Mintlify docs.json. Current format: `Official CLI validates generated colors and background theme config`. Minimum host version: `4.0.1555`. Tested through `4.0.1614`. Newer releases require review."
+msgstr "Target: Mintlify docs.json. Current format: `Official CLI validates generated colors and background theme config`. Minimum host version: `4.0.1555`. Tested through `4.0.1614`. Newer releases require review."
+
+#: renderers/mintlify/src/index.md
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "`@pantoken/mintlify` — theme a Mintlify docs site with Instructure tokens."
@@ -8597,6 +8848,12 @@ msgid "**Per-brand, per-mode theme**"
 msgstr "**Temàtica per marca, per mode**"
 
 #: renderers/mui/src/index.md
+#, no-c-format, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "Target: Material UI. Current format: `Concrete createTheme palettes (MUI 5, 6, 7, 9)`. Minimum host version: `5.0.0`. Tested through `9.5.0`. Newer releases require review."
+msgstr "Target: Material UI. Current format: `Concrete createTheme palettes (MUI 5, 6, 7, 9)`. Minimum host version: `5.0.0`. Tested through `9.5.0`. Newer releases require review."
+
+#: renderers/mui/src/index.md
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "`@pantoken/mui` — theme MUI (Material UI) with Instructure tokens."
@@ -8661,6 +8918,12 @@ msgstr "**Construcció per defecte de redisseny de marca (amb abast, !important,
 msgctxt "docs.api:prose"
 msgid "**Canvas theme, unscoped, keep the full token set**"
 msgstr "**Tema de Canvas, sense abast, manté el conjunt complet de tokens**"
+
+#: renderers/pendo/src/index.md
+#, no-c-format, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "Target: Pendo. Host compatibility has not yet been verified."
+msgstr "Target: Pendo. Host compatibility has not yet been verified."
 
 #: renderers/pendo/src/index.md
 #, no-c-format
@@ -8843,6 +9106,12 @@ msgid "A rehype plugin that tags GitHub-alert blockquotes: it detects a `[!NOTE]
 msgstr "Un plugin rehype que marca les blockquotes d'alerta de GitHub: detecta un marcador de tipus `[!NOTE]` al\nprincip d'una blockquote, el registra com a `data-alert=\"note\"` i elimina el text del marcador. El component React\n`blockquote` llavors renderitza un `Alert` d'InstUI."
 
 #: renderers/react-markdown/src/index.md
+#, no-c-format, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "Target: react-markdown. Current format: `SSR-rendered InstUI heading, icon, and color swatch with React 19.3.0`. Minimum host version: `10.1.0`. Tested through `10.1.0`. Newer releases require review."
+msgstr "Target: react-markdown. Current format: `SSR-rendered InstUI heading, icon, and color swatch with React 19.3.0`. Minimum host version: `10.1.0`. Tested through `10.1.0`. Newer releases require review."
+
+#: renderers/react-markdown/src/index.md
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "`@pantoken/react-markdown` — render Markdown with Instructure UI components and pantoken icons."
@@ -8993,6 +9262,12 @@ msgid "Select the token object for a colour scheme (pair with RN's `useColorSche
 msgstr "Seleccionar l'objecte de token per a un esquema de color (parella amb `useColorScheme` de RN)."
 
 #: renderers/react-native/src/index.md
+#, no-c-format, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "Target: React Native. Host compatibility has not yet been verified."
+msgstr "Target: React Native. Host compatibility has not yet been verified."
+
+#: renderers/react-native/src/index.md
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "`@pantoken/react-native` — Instructure design tokens as React Native `StyleSheet`-friendly\nobjects. React Native has no CSS variables, so tokens are fully resolved to concrete values:\ncolours stay hex strings, dimensions become numbers (dp), and icons are excluded."
@@ -9039,6 +9314,12 @@ msgstr "Llegeix un valor de token resolt del document. Retorna `fallback` al ser
 msgctxt "docs.api:prose"
 msgid "React hook returning a resolved `--instui-*` token value (re-reads on `name` change)."
 msgstr "Hook de React que retorna un valor de token `--instui-*` resolt (rellegeix en canvi `name`)."
+
+#: renderers/react/src/index.md
+#, no-c-format, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "Target: React. Current format: `SSR-rendered Icon custom element and token fallback`. Minimum host version: `19.3.0`. Tested through `19.3.0`. Newer releases require review."
+msgstr "Target: React. Current format: `SSR-rendered Icon custom element and token fallback`. Minimum host version: `19.3.0`. Tested through `19.3.0`. Newer releases require review."
 
 #: renderers/react/src/index.md
 #, no-c-format
@@ -9102,6 +9383,12 @@ msgid "**Built-in icon set**"
 msgstr "**Conjunt d'icones integrat**"
 
 #: renderers/rehype/src/index.md
+#, no-c-format, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "Target: rehype. Current format: `HAST + raw SVG`. Minimum host version: `13.0.0`. Tested through `13.0.2`. Newer releases require review."
+msgstr "Target: rehype. Current format: `HAST + raw SVG`. Minimum host version: `13.0.0`. Tested through `13.0.2`. Newer releases require review."
+
+#: renderers/rehype/src/index.md
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "`@pantoken/rehype` — render `:icon:` codes as inline SVG."
@@ -9142,6 +9429,12 @@ msgstr "Emetre el pont de variable CSS shadcn → Instructure."
 msgctxt "docs.api:prose"
 msgid "Emit Tailwind v4 aliases for the shadcn theme variables and derived radius scale."
 msgstr "Emet àlies de Tailwind v4 per a les variables del tema shadcn i l'escala de radi derivada."
+
+#: renderers/shadcn/src/index.md
+#, no-c-format, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "Target: shadcn/ui CSS variables. Current format: `Tailwind 4.3.3 compiles the Pantoken primary theme alias`. Minimum host version: `4.3.3`. Tested through `4.3.3`. Newer releases require review."
+msgstr "Target: shadcn/ui CSS variables. Current format: `Tailwind 4.3.3 compiles the Pantoken primary theme alias`. Minimum host version: `4.3.3`. Tested through `4.3.3`. Newer releases require review."
 
 #: renderers/shadcn/src/index.md
 #, no-c-format
@@ -9196,6 +9489,12 @@ msgstr "`\"light\"` o `\"dark\"` (per defecte `\"light\"`)."
 msgctxt "docs.api:prose"
 msgid "A `ThemeVars`-shaped object."
 msgstr "Un objecte amb forma de `ThemeVars`."
+
+#: renderers/storybook/src/index.md
+#, no-c-format, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "Target: Storybook theming. Current format: `Storybook ThemeVars constructor accepts light and dark Pantoken themes`. Minimum host version: `8.6.14`. Tested through `8.6.14`. Newer releases require review."
+msgstr "Target: Storybook theming. Current format: `Storybook ThemeVars constructor accepts light and dark Pantoken themes`. Minimum host version: `8.6.14`. Tested through `8.6.14`. Newer releases require review."
 
 #: renderers/storybook/src/index.md
 #, no-c-format
@@ -9271,6 +9570,12 @@ msgstr "El registre per a definir (per defecte a `globalThis.customElements`)."
 msgctxt "docs.api:prose"
 msgid "Passed through to `register()` (e.g. `prefix`, `only`)."
 msgstr "Passa a través de `register()` (p. ex. `prefix`, `only`)."
+
+#: renderers/svelte/src/index.md
+#, no-c-format, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "Target: Svelte. Current format: `Icon action component compiles and SSR renders on Svelte 4 and 5`. Minimum host version: `4.2.20`. Tested through `5.57.2`. Newer releases require review."
+msgstr "Target: Svelte. Current format: `Icon action component compiles and SSR renders on Svelte 4 and 5`. Minimum host version: `4.2.20`. Tested through `5.57.2`. Newer releases require review."
 
 #: renderers/svelte/src/index.md
 #, no-c-format
@@ -9386,6 +9691,18 @@ msgctxt "docs.api:prose"
 msgid "readonly [`TaggedIcon`](../interfaces/TaggedIcon.md)[]"
 msgstr "només de lectura [`Token`](../interfaces/Token.md)[]"
 
+#: renderers/tinymce/src/functions/filterLogos.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Logos under `product` (all when omitted) whose name, product, or variant matches `query`."
+msgstr "Logotips sota `product` (tots quan s'ometin) el nom, producte o variant dels quals coincideixi amb `query`."
+
+#: renderers/tinymce/src/functions/filterLogos.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "readonly [`LogoMeta`](../interfaces/LogoMeta.md)[]"
+msgstr "readonly [`LogoMeta`](../interfaces/LogoMeta.md)[]"
+
 #: renderers/tinymce/src/functions/findEntry.md
 #, no-c-format
 msgctxt "docs.api:prose"
@@ -9449,8 +9766,14 @@ msgstr "Converteix un slug d'icona amb guions en una etiqueta llegible, p. ex., 
 #: renderers/tinymce/src/functions/injectContentStylesheet.md
 #, no-c-format
 msgctxt "docs.api:prose"
-msgid "Appends a `<link rel=\"stylesheet\">` to the editor's content document `<head>` at runtime.\nIdempotent per URL — calling this twice with the same `url` is a no-op the second time."
-msgstr "Afegeix una `<link rel=\"stylesheet\">` al document de contingut de l'editor `&lt;head&gt;` en temps d'execució.\nIdempotent per URL — cridar-ho dues vegades amb el mateix `url` és una no-op la segona vegada."
+msgid "Appends a `<link rel=\"stylesheet\">` to the editor's content document `<head>` at runtime.\nIdempotent per URL — calling this twice with the same `url` is a no-op the second time. Pass the\n`file` the URL resolves so [retargetContentStylesheets](retargetContentStylesheets.md) can re-point it later; a tagged\nlink is idempotent per file instead, and a new URL for the same file updates it in place."
+msgstr "Afegeix un `<link rel=\"stylesheet\">` al document de contingut de l'editor `<head>` en temps d'execució.\nIdempotent per URL — cridar això dos cops amb el mateix `url` és una no-operació el segon cop. Passeu el \n`file` a on es resol el URL perquè [retargetContentStylesheets](retargetContentStylesheets.md) pugui tornar a apuntar-lo més tard; un enllaç etiquetat és idempotent per fitxer en comptes d'això, i un nou URL per al mateix fitxer l'actualitza al seu lloc."
+
+#: renderers/tinymce/src/functions/injectUsedGlyphAssets.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Inject the stylesheet of every glyph `resolve` finds in the editor body."
+msgstr "Injecta el full d'estils de tots els glifs que `resolve` troba al cos de l'editor."
 
 #: renderers/tinymce/src/functions/listComponents.md
 #, no-c-format
@@ -9470,11 +9793,23 @@ msgctxt "docs.api:prose"
 msgid "Load and merge all available icons from both sources.\nReturns a sorted array tagged with the source package."
 msgstr "Carrega i fusiona totes les icones disponibles de les dues fonts.\nRetorna una matriu ordenada etiquetada amb el paquet de font."
 
+#: renderers/tinymce/src/functions/logoVariantLabel.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "A tile caption for a logo variant, e.g. `\"horizontal · full color · ar\"`."
+msgstr "Un peu de foto per a una variant de logotip, p. ex. `\"horizontal · full color · ar\"`."
+
 #: renderers/tinymce/src/functions/materializeLayout.md
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "Materialize declared layout image slots without embedding a provider URL in the layout."
 msgstr "Materialitza els espais d'imatge declarats del layout sense incrustar una URL del proveïdor al layout."
+
+#: renderers/tinymce/src/functions/normalizeGlyphHtml.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Give every empty glyph span in `html` the non-editable, ZWSP-filled shape the pickers insert."
+msgstr "Dóna a cada span de glif buit a `html` la forma no editable i plena de ZWSP que insereixen els selectors."
 
 #: renderers/tinymce/src/functions/pantokenContentCssUrls.md
 #, no-c-format
@@ -9506,17 +9841,35 @@ msgctxt "docs.api:prose"
 msgid "Usage:\n  new EditorView({\n    extensions: [\n      basicSetup,\n      html(),\n      pantokenHtmlLinter({ model }),\n    ],\n  });"
 msgstr "Ús:\n  new EditorView({\n    extensions: [\n      basicSetup,\n      html(),\n      pantokenHtmlLinter({ model }),\n    ],\n  });"
 
+#: renderers/tinymce/src/functions/registerGlyphSync.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Normalize incoming glyph markup and inject stylesheets for glyphs however they arrive."
+msgstr "Normalitza el marcatat de glifs entrants i injecta fulls d'estil per als glifs independentment de com arribin."
+
 #: renderers/tinymce/src/functions/registerPantokenIconPack.md
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "Register a TinyMCE icon pack whose complete key set mirrors the installed default pack while\nevery rendered glyph comes from Pantoken's InstUI/Lucide icon tokens."
 msgstr "Registra un paquet d'icones de TinyMCE el conjunt complet de claus del qual reflecteix el paquet predeterminat instal·lat mentre\ncada glif renderitzat prové dels tokens d'icona InstUI/Lucide de Pantoken."
 
+#: renderers/tinymce/src/functions/retargetContentStylesheets.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Re-resolve every tagged stylesheet in the content document, e.g. after a CDN provider switch."
+msgstr "Torna a resoldre cada full d'estils etiquetat al document de contingut, p. ex. després d'un canvi de proveïdor de CDN."
+
 #: renderers/tinymce/src/functions/validateClassToken.md
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "Validate a pantoken class token (e.g., \"instui-button\", \"instui-button.-color-primary\").\nReturns an array of validation errors (empty if valid)."
 msgstr "Valida un token de classe de pantoken (p. ex., \"instui-button\", \"instui-button.-color-primary\").\nRetorna una matriu d'errors de validació (buida si és vàlid)."
+
+#: renderers/tinymce/src/index.md
+#, no-c-format, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "Target: TinyMCE PluginManager. Current format: `Pantoken plugin registration and callback initialization`. Minimum host version: `8.9.2`. Tested through `8.9.3`. Newer releases require review."
+msgstr "Target: TinyMCE PluginManager. Current format: `Pantoken plugin registration and callback initialization`. Minimum host version: `8.9.2`. Tested through `8.9.3`. Newer releases require review."
 
 #: renderers/tinymce/src/interfaces/ContentClassesPluginOptions.md
 #, fuzzy, no-c-format
@@ -9794,6 +10147,12 @@ msgctxt "docs.api:prose"
 msgid "Content of registered custom (block) tags, keyed by tag name without its `@`. Populated only for\ntags added via configuration; unregistered unknown tags are ignored. Absent when none were found."
 msgstr "Contingut de les etiquetes personalitzades (bloc) registrades, clau pel nom de l'etiqueta sense la seva `@`. Poblat només per\netiquetes afegides via configuració; les etiquetes desconegudes no registrades s'ignoren. Absent quan no es va trobar cap."
 
+#: renderers/tinymce/src/interfaces/GlyphSyncTarget.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Where [registerGlyphSync](../functions/registerGlyphSync.md) tracks and resolves the stylesheets it injects."
+msgstr "On [registerGlyphSync](../functions/registerGlyphSync.md) fa el seguiment i resol les fulles d'estils que injecta."
+
 #: renderers/tinymce/src/interfaces/LayoutImageAttributes.md
 #, no-c-format
 msgctxt "docs.api:prose"
@@ -9951,6 +10310,12 @@ msgctxt "docs.api:prose"
 msgid "Toolbar menu-button name to pass in TinyMCE's `toolbar` init option."
 msgstr "El nom del connector a passar a les opcions d'inicialització `plugins`/`toolbar` de TinyMCE."
 
+#: renderers/tinymce/src/variables/PRODUCT_LABELS.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Brand names shown on the logos picker's tabs — proper nouns, so never translated."
+msgstr "Noms de marca mostrats a les pestanyes del selector de logotips — noms propis, de manera que mai no es tradueixen."
+
 #: renderers/tinymce/src/variables/SOURCE_LABELS.md
 #, no-c-format
 msgctxt "docs.api:prose"
@@ -9968,6 +10333,12 @@ msgstr "Valors per defecte en anglès per a les cadenes d'interfície d'integrac
 msgctxt "docs.api:prose"
 msgid "The bundled page layouts exposed through the template picker."
 msgstr "Les disposicions de pàgina agrupades exposades mitjançant el selector de plantilles."
+
+#: renderers/vitepress/src/index.md
+#, no-c-format, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "Target: VitePress. Current format: `Built site CSS includes the Pantoken primary-brand bridge`. Minimum host version: `1.6.4`. Tested through `1.6.4`. Newer releases require review."
+msgstr "Target: VitePress. Current format: `Built site CSS includes the Pantoken primary-brand bridge`. Minimum host version: `1.6.4`. Tested through `1.6.4`. Newer releases require review."
 
 #: renderers/vitepress/src/index.md
 #, no-c-format
@@ -10013,6 +10384,12 @@ msgstr "El nom de la icona (p. ex. `arrow-left`)."
 msgctxt "docs.api:prose"
 msgid "The resolver (defaults to the built-in pantoken icon set)."
 msgstr "El resolutor (per defecte del conjunt d'icones pantoken integrat)."
+
+#: renderers/vue/src/index.md
+#, no-c-format, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "Target: Vue. Current format: `Plugin installation, custom-element configuration, and SSR output`. Minimum host version: `3.0.0`. Tested through `3.5.43`. Newer releases require review."
+msgstr "Target: Vue. Current format: `Plugin installation, custom-element configuration, and SSR output`. Minimum host version: `3.0.0`. Tested through `3.5.43`. Newer releases require review."
 
 #: renderers/vue/src/index.md
 #, no-c-format
@@ -10166,6 +10543,12 @@ msgid "First day of week as a JS `Date.getDay()` index (0=Sunday … 6=Saturday)
 msgstr "Primer dia de la setmana com a índex `Date.getDay()` de JS (0=diumenge … 6=dissabte)."
 
 #: renderers/web-components/src/index.md
+#, no-c-format, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "Target: Web Components. Current format: `Custom-element registration and button shadow output`. Tested environment: `Node 26.10.0 with happy-dom 20.14.5`. Real-browser rendering and interaction behavior are not verified."
+msgstr "Target: Web Components. Current format: `Custom-element registration and button shadow output`. Tested environment: `Node 26.10.0 with happy-dom 20.14.5`. Real-browser rendering and interaction behavior are not verified."
+
+#: renderers/web-components/src/index.md
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "`@pantoken/web-components` — framework-agnostic custom elements for Instructure UI."
@@ -10188,6 +10571,12 @@ msgstr "Per a les cadenes d'interfície localitzades (etiquetes de navegació de
 msgctxt "docs.api:prose"
 msgid "The module is Node-safe: element classes are defined inside [register](functions/register.md), a no-op when there\nis no DOM, so importing during SSR or a build never touches `HTMLElement`."
 msgstr "El mòdul és segur per a Node: les classes d'elements es defineixen dins [register](functions/register.md), una no-op quan no hi ha DOM, de manera que importar durant SSR o una construcció mai no toca `HTMLElement`."
+
+#: renderers/web-components/src/index.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Registration and shadow output are environment-verified with Happy DOM; real-browser behavior is\nnot covered by that check."
+msgstr "El registre i la sortida shadow estan verificats per l'entorn amb Happy DOM; el comportament en un navegador real està\nno cobert per aquesta comprovació."
 
 #: renderers/web-components/src/interfaces/ElementDefinition.md
 #, no-c-format
@@ -11346,8 +11735,14 @@ msgstr "URLs de full d'estil per carregar al `&lt;head&gt;` de l'iframe (tokens,
 #: tools/demo/src/interfaces/ExampleSrcdocOptions.md
 #, no-c-format
 msgctxt "docs.api:prose"
-msgid "Wrap `html` in the shared `.instui-card` surface (default `true`)."
-msgstr "Embolicar `html` en la superfície `.instui-card` compartida (per defecte `true`)."
+msgid "Browser script URLs to load after the example markup (interaction bundles, when needed)."
+msgstr "URL dels scripts del navegador per carregar després del marc d'exemple (paquets d'interacció, quan cal)."
+
+#: tools/demo/src/interfaces/ExampleSrcdocOptions.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Wrap `html` in the shared `.pantoken-demo-card` surface (default `true`)."
+msgstr "Envolta `html` a la superfície compartida `.pantoken-demo-card` (per defecte `true`)."
 
 #: tools/demo/src/interfaces/ExampleSrcdocOptions.md
 #, no-c-format
@@ -11441,6 +11836,46 @@ msgstr "Un botó \"veure a pantalla completa\" sobre el qual es pot passar el ra
 
 #, no-c-format
 #~ msgctxt "docs.api:prose"
+#~ msgid "Every token is exposed as a `var(--instui-*)` reference (not a concrete value), so Tailwind\nutilities like `bg-color-background-base` theme through the same CSS custom properties that\n`@pantoken/css` emits — light/dark and high-contrast all keep working."
+#~ msgstr "Cada token s'exposa com a referència `var(--instui-*)` (no com a valor concret), de manera que les utilitats de Tailwind com `bg-color-background-base` es temitzen a través de les mateixes propietats personalitzades de CSS que `@pantoken/css` emet — la llum/obscuritat i el contrast alt continuen funcionant."
+
+#, no-c-format
+#~ msgctxt "docs.api:prose"
+#~ msgid "`@pantoken/bootstrap` — theme Bootstrap 5 with Instructure tokens."
+#~ msgstr "`@pantoken/bootstrap` — tema Bootstrap 5 amb tokens d'Instructure."
+
+#, no-c-format
+#~ msgctxt "docs.api:prose"
+#~ msgid "Points Bootstrap's `--bs-*` CSS variables at `var(--instui-*)`. Drop it in alongside\n`@pantoken/css` and Bootstrap components adopt the Instructure look while keeping theming through\nthe same custom properties."
+#~ msgstr "Apunta les variables CSS `--bs-*` de Bootstrap a `var(--instui-*)`. Posa-la juntament amb\n`@pantoken/css` i els components de Bootstrap adopten l'aspecte d'Instructure mentre es mantenen els temes\nper mitjà de les mateixes propietats personalitzades."
+
+#, no-c-format
+#~ msgctxt "docs.api:prose"
+#~ msgid "Emit the Foundation Sass settings override. Load it before `@include foundation-everything`."
+#~ msgstr "Emet l'invalidació de la configuració Sass de Foundation. Carrega-la abans de `@include foundation-everything`."
+
+#, no-c-format
+#~ msgctxt "docs.api:prose"
+#~ msgid "`@pantoken/foundation` — theme Foundation for Sites with Instructure tokens."
+#~ msgstr "`@pantoken/foundation` — tema Foundation for Sites amb tokens d'Instructure."
+
+#, no-c-format
+#~ msgctxt "docs.api:prose"
+#~ msgid "Foundation is Sass-first, so this package ships two layers. [toFoundationSettings](functions/toFoundationSettings.md) emits a\n`_settings`-style Sass partial that points Foundation's setting variables at `var(--instui-*)`, so\na Sass build compiles the Instructure look while keeping runtime theming through the same custom\nproperties. [toFoundationCss](functions/toFoundationCss.md) emits a thin CSS overlay that themes the common compiled\nclasses (`.button`, `.callout`, links) the same way — useful when you consume stock Foundation CSS\nand just want to layer Instructure colors on top without recompiling."
+#~ msgstr "Foundation és primer en Sass, per tant aquest paquet té dues capes. [toFoundationSettings](functions/toFoundationSettings.md) emet una\nparticella Sass d'estil `_settings` que dirigeix les variables de configuració de Foundation a `var(--instui-*)`, per tant\nuna compilació Sass compila el look d'Instructure mantenint la temàtica en temps d'execució a través de les mateixes propietats personalitzades.\n[toFoundationCss](functions/toFoundationCss.md) emet una superposició CSS fina que temàtitza les classes comunes compilades\n(`.button`, `.callout`, enllaços) de la mateixa manera — útil quan consums CSS de Foundation estàndard\ni només vols superposar colors d'Instructure al damunt sense recompilar."
+
+#, no-c-format
+#~ msgctxt "docs.api:prose"
+#~ msgid "Appends a `<link rel=\"stylesheet\">` to the editor's content document `<head>` at runtime.\nIdempotent per URL — calling this twice with the same `url` is a no-op the second time."
+#~ msgstr "Afegeix una `<link rel=\"stylesheet\">` al document de contingut de l'editor `&lt;head&gt;` en temps d'execució.\nIdempotent per URL — cridar-ho dues vegades amb el mateix `url` és una no-op la segona vegada."
+
+#, no-c-format
+#~ msgctxt "docs.api:prose"
+#~ msgid "Wrap `html` in the shared `.instui-card` surface (default `true`)."
+#~ msgstr "Embolicar `html` en la superfície `.instui-card` compartida (per defecte `true`)."
+
+#, no-c-format
+#~ msgctxt "docs.api:prose"
 #~ msgid "`.instui-agent-shell` — A surface container for AI agents."
 #~ msgstr "`.instui-agent-shell` — Un contenidor de superfície per a agents de IA."
 
@@ -11469,7 +11904,7 @@ msgstr "Un botó \"veure a pantalla completa\" sobre el qual es pot passar el ra
 #~ msgid "`.--background-ai-horizontal` — AI-accent gradient helpers intended for custom surfaces, not the shared InstUI contract."
 #~ msgstr "`.--background-ai-horizontal` — Ajuts de degradat amb accent d'IA pensats per a superfícies personalitzades, no per al contracte compartit d'InstUI."
 
-#, fuzzy, no-c-format, pantoken-verbatim
+#, no-c-format, pantoken-verbatim
 #~ msgctxt "docs.api:prose"
 #~ msgid "**Source:** [index.ts](https://github.com/thedannywahl/pantoken/blob/main/formats/components/src/utilities/ai-gradient/index.ts)"
 #~ msgstr "**Source:** [index.ts](https://github.com/thedannywahl/pantoken/blob/main/formats/components/src/utilities/ai-gradient/index.ts)"
@@ -11669,22 +12104,22 @@ msgstr "Un botó \"veure a pantalla completa\" sobre el qual es pot passar el ra
 #~ msgid "AI"
 #~ msgstr "AI"
 
-#, no-c-format, pantoken-verbatim
+#, no-c-format
 #~ msgctxt "docs.api:prose"
 #~ msgid "Dr. Nguyen Van Thoc"
 #~ msgstr "Dr. Nguyen Van Thoc"
 
-#, no-c-format, pantoken-verbatim
+#, no-c-format
 #~ msgctxt "docs.api:prose"
 #~ msgid "Miguel Sanchez"
 #~ msgstr "Miguel Sanchez"
 
-#, no-c-format, pantoken-verbatim
+#, no-c-format
 #~ msgctxt "docs.api:prose"
 #~ msgid "Miguel"
 #~ msgstr "Miguel"
 
-#, no-c-format, pantoken-verbatim
+#, no-c-format
 #~ msgctxt "docs.api:prose"
 #~ msgid "Sanchez"
 #~ msgstr "Sanchez"
@@ -19303,11 +19738,6 @@ msgstr "Un botó \"veure a pantalla completa\" sobre el qual es pot passar el ra
 #~ msgctxt "docs.api:text"
 #~ msgid "# Function: baseCss()"
 #~ msgstr "# Funció: baseCss()"
-
-#, no-c-format
-#~ msgctxt "docs.api:text"
-#~ msgid "<span class=\"instui-pill -color-warning pantoken-doc-tag\">Beta</span>"
-#~ msgstr "<span class=\"instui-pill -color-warning pantoken-doc-tag\">Beta</span>"
 
 #, no-c-format
 #~ msgctxt "docs.api:text"
@@ -29977,1107 +30407,788 @@ msgstr "Un botó \"veure a pantalla completa\" sobre el qual es pot passar el ra
 #~ msgstr "ai-gradient"
 
 #, pantoken-verbatim
-msgctxt "docs.api:text"
-msgid "EmailCssOptions"
-msgstr "EmailCssOptions"
+#~ msgctxt "docs.api:text"
+#~ msgid "EmailCssOptions"
+#~ msgstr "EmailCssOptions"
 
 #, pantoken-verbatim
-msgctxt "docs.api:text"
-msgid "InlineEmailHtmlOptions"
-msgstr "InlineEmailHtmlOptions"
+#~ msgctxt "docs.api:text"
+#~ msgid "InlineEmailHtmlOptions"
+#~ msgstr "InlineEmailHtmlOptions"
 
 #, pantoken-verbatim
-msgctxt "docs.api:text"
-msgid "EmailClient"
-msgstr "EmailClient"
+#~ msgctxt "docs.api:text"
+#~ msgid "EmailClient"
+#~ msgstr "EmailClient"
 
 #, pantoken-verbatim
-msgctxt "docs.api:text"
-msgid "light"
-msgstr "light"
+#~ msgctxt "docs.api:text"
+#~ msgid "light"
+#~ msgstr "light"
 
 #, pantoken-verbatim
-msgctxt "docs.api:text"
-msgid "inlineEmailHtml"
-msgstr "inlineEmailHtml"
+#~ msgctxt "docs.api:text"
+#~ msgid "inlineEmailHtml"
+#~ msgstr "inlineEmailHtml"
 
 #, pantoken-verbatim
-msgctxt "docs.api:text"
-msgid "GlyphSyncTarget"
-msgstr "GlyphSyncTarget"
+#~ msgctxt "docs.api:text"
+#~ msgid "GlyphSyncTarget"
+#~ msgstr "GlyphSyncTarget"
 
 #, pantoken-verbatim
-msgctxt "docs.api:text"
-msgid "PRODUCT_LABELS"
-msgstr "PRODUCT_LABELS"
+#~ msgctxt "docs.api:text"
+#~ msgid "PRODUCT_LABELS"
+#~ msgstr "PRODUCT_LABELS"
 
 #, pantoken-verbatim
-msgctxt "docs.api:text"
-msgid "retargetContentStylesheets"
-msgstr "retargetContentStylesheets"
+#~ msgctxt "docs.api:text"
+#~ msgid "retargetContentStylesheets"
+#~ msgstr "retargetContentStylesheets"
 
 #, pantoken-verbatim
-msgctxt "docs.api:text"
-msgid "normalizeGlyphHtml"
-msgstr "normalizeGlyphHtml"
+#~ msgctxt "docs.api:text"
+#~ msgid "normalizeGlyphHtml"
+#~ msgstr "normalizeGlyphHtml"
 
 #, pantoken-verbatim
-msgctxt "docs.api:text"
-msgid "injectUsedGlyphAssets"
-msgstr "injectUsedGlyphAssets"
+#~ msgctxt "docs.api:text"
+#~ msgid "injectUsedGlyphAssets"
+#~ msgstr "injectUsedGlyphAssets"
 
 #, pantoken-verbatim
-msgctxt "docs.api:text"
-msgid "registerGlyphSync"
-msgstr "registerGlyphSync"
+#~ msgctxt "docs.api:text"
+#~ msgid "registerGlyphSync"
+#~ msgstr "registerGlyphSync"
 
 #, pantoken-verbatim
-msgctxt "docs.api:text"
-msgid "logoVariantLabel"
-msgstr "logoVariantLabel"
+#~ msgctxt "docs.api:text"
+#~ msgid "logoVariantLabel"
+#~ msgstr "logoVariantLabel"
 
 #, pantoken-verbatim
-msgctxt "docs.api:text"
-msgid "filterLogos"
-msgstr "filterLogos"
+#~ msgctxt "docs.api:text"
+#~ msgid "filterLogos"
+#~ msgstr "filterLogos"
 
 #, pantoken-verbatim
-msgctxt "docs.api:text"
-msgid "getLogoCdnFile"
-msgstr "getLogoCdnFile"
+#~ msgctxt "docs.api:text"
+#~ msgid "getLogoCdnFile"
+#~ msgstr "getLogoCdnFile"
 
 #, pantoken-verbatim
-msgctxt "docs.api:text"
-msgid "buildLogoMarkup"
-msgstr "buildLogoMarkup"
+#~ msgctxt "docs.api:text"
+#~ msgid "buildLogoMarkup"
+#~ msgstr "buildLogoMarkup"
 
 #, pantoken-verbatim
-msgctxt "docs.api:text"
-msgid "getUsedLogoCdnFiles"
-msgstr "getUsedLogoCdnFiles"
+#~ msgctxt "docs.api:text"
+#~ msgid "getUsedLogoCdnFiles"
+#~ msgstr "getUsedLogoCdnFiles"
 
 #, pantoken-verbatim
-msgctxt "docs.api:text"
-msgid "modifyExpression"
-msgstr "modifyExpression"
+#~ msgctxt "docs.api:text"
+#~ msgid "modifyExpression"
+#~ msgstr "modifyExpression"
 
 #, pantoken-verbatim
-msgctxt "docs.api:text"
-msgid "inline-styles"
-msgstr "inline-styles"
+#~ msgctxt "docs.api:text"
+#~ msgid "inline-styles"
+#~ msgstr "inline-styles"
 
 #, pantoken-verbatim
-msgctxt "docs.api:text"
-msgid "InlineHtmlOptions"
-msgstr "InlineHtmlOptions"
+#~ msgctxt "docs.api:text"
+#~ msgid "InlineHtmlOptions"
+#~ msgstr "InlineHtmlOptions"
 
 #, pantoken-verbatim
-msgctxt "docs.api:text"
-msgid "inlineHtml"
-msgstr "inlineHtml"
+#~ msgctxt "docs.api:text"
+#~ msgid "inlineHtml"
+#~ msgstr "inlineHtml"
 
 #, pantoken-verbatim
-msgctxt "docs.api:text"
-msgid "InPlaceEditOptions"
-msgstr "InPlaceEditOptions"
+#~ msgctxt "docs.api:text"
+#~ msgid "InPlaceEditOptions"
+#~ msgstr "InPlaceEditOptions"
 
 #, pantoken-verbatim
-msgctxt "docs.api:text"
-msgid "InPlaceEditInputType"
-msgstr "InPlaceEditInputType"
+#~ msgctxt "docs.api:text"
+#~ msgid "InPlaceEditInputType"
+#~ msgstr "InPlaceEditInputType"
 
 #, pantoken-verbatim
-msgctxt "docs.api:text"
-msgid "buttonSetRules"
-msgstr "buttonSetRules"
+#~ msgctxt "docs.api:text"
+#~ msgid "buttonSetRules"
+#~ msgstr "buttonSetRules"
 
 #, pantoken-verbatim
-msgctxt "docs.api:text"
-msgid "logoRules"
-msgstr "logoRules"
+#~ msgctxt "docs.api:text"
+#~ msgid "logoRules"
+#~ msgstr "logoRules"
 
 #, pantoken-verbatim
-msgctxt "docs.api:text"
-msgid "breakpointDeclarations"
-msgstr "breakpointDeclarations"
+#~ msgctxt "docs.api:text"
+#~ msgid "breakpointDeclarations"
+#~ msgstr "breakpointDeclarations"
 
 #, pantoken-verbatim
-msgctxt "docs.api:text"
-msgid "ReferenceCurve"
-msgstr "ReferenceCurve"
+#~ msgctxt "docs.api:text"
+#~ msgid "ReferenceCurve"
+#~ msgstr "ReferenceCurve"
 
 #, pantoken-verbatim
-msgctxt "docs.api:text"
-msgid "CustomColorScale"
-msgstr "CustomColorScale"
+#~ msgctxt "docs.api:text"
+#~ msgid "CustomColorScale"
+#~ msgstr "CustomColorScale"
 
 #, pantoken-verbatim
-msgctxt "docs.api:text"
-msgid "CustomColorCssOptions"
-msgstr "CustomColorCssOptions"
+#~ msgctxt "docs.api:text"
+#~ msgid "CustomColorCssOptions"
+#~ msgstr "CustomColorCssOptions"
 
 #, pantoken-verbatim
-msgctxt "docs.api:text"
-msgid "CUSTOM_COLOR_KEY"
-msgstr "CUSTOM_COLOR_KEY"
+#~ msgctxt "docs.api:text"
+#~ msgid "CUSTOM_COLOR_KEY"
+#~ msgstr "CUSTOM_COLOR_KEY"
 
 #, pantoken-verbatim
-msgctxt "docs.api:text"
-msgid "isHexColor"
-msgstr "isHexColor"
+#~ msgctxt "docs.api:text"
+#~ msgid "isHexColor"
+#~ msgstr "isHexColor"
 
 #, pantoken-verbatim
-msgctxt "docs.api:text"
-msgid "deriveScale"
-msgstr "deriveScale"
+#~ msgctxt "docs.api:text"
+#~ msgid "deriveScale"
+#~ msgstr "deriveScale"
 
 #, pantoken-verbatim
-msgctxt "docs.api:text"
-msgid "customColorReferenceCurve"
-msgstr "customColorReferenceCurve"
+#~ msgctxt "docs.api:text"
+#~ msgid "customColorReferenceCurve"
+#~ msgstr "customColorReferenceCurve"
 
 #, pantoken-verbatim
-msgctxt "docs.api:text"
-msgid "deriveCustomColorScale"
-msgstr "deriveCustomColorScale"
+#~ msgctxt "docs.api:text"
+#~ msgid "deriveCustomColorScale"
+#~ msgstr "deriveCustomColorScale"
 
 #, pantoken-verbatim
-msgctxt "docs.api:text"
-msgid "customColorCss"
-msgstr "customColorCss"
+#~ msgctxt "docs.api:text"
+#~ msgid "customColorCss"
+#~ msgstr "customColorCss"
 
 #, pantoken-verbatim
-msgctxt "docs.api:text"
-msgid "customColorRemapCss"
-msgstr "customColorRemapCss"
+#~ msgctxt "docs.api:text"
+#~ msgid "customColorRemapCss"
+#~ msgstr "customColorRemapCss"
 
 #, pantoken-verbatim
-msgctxt "docs.api:text"
-msgid "button-set"
-msgstr "button-set"
+#~ msgctxt "docs.api:text"
+#~ msgid "button-set"
+#~ msgstr "button-set"
 
 #, pantoken-verbatim
-msgctxt "docs.api:text"
-msgid "day"
-msgstr "day"
+#~ msgctxt "docs.api:text"
+#~ msgid "day"
+#~ msgstr "day"
 
 #, pantoken-verbatim
-msgctxt "docs.api:text"
-msgid "logo"
-msgstr "logo"
+#~ msgctxt "docs.api:text"
+#~ msgid "logo"
+#~ msgstr "logo"
 
 #, pantoken-verbatim
-msgctxt "docs.api:text"
-msgid "breakpoints"
-msgstr "breakpoints"
+#~ msgctxt "docs.api:text"
+#~ msgid "breakpoints"
+#~ msgstr "breakpoints"
 
-msgctxt "docs.api:prose"
-msgid "Logos under `product` (all when omitted) whose name, product, or variant matches `query`."
-msgstr "Logotips sota `product` (tots quan s'ometin) el nom, producte o variant dels quals coincideixi amb `query`."
-
-#, pantoken-verbatim
-msgctxt "docs.api:prose"
-msgid "readonly [`LogoMeta`](../interfaces/LogoMeta.md)[]"
-msgstr "readonly [`LogoMeta`](../interfaces/LogoMeta.md)[]"
-
-msgctxt "docs.api:prose"
-msgid "Appends a `<link rel=\"stylesheet\">` to the editor's content document `<head>` at runtime.\nIdempotent per URL — calling this twice with the same `url` is a no-op the second time. Pass the\n`file` the URL resolves so [retargetContentStylesheets](retargetContentStylesheets.md) can re-point it later; a tagged\nlink is idempotent per file instead, and a new URL for the same file updates it in place."
-msgstr "Afegeix un `<link rel=\"stylesheet\">` al document de contingut de l'editor `<head>` en temps d'execució.\nIdempotent per URL — cridar això dos cops amb el mateix `url` és una no-operació el segon cop. Passeu el \n`file` a on es resol el URL perquè [retargetContentStylesheets](retargetContentStylesheets.md) pugui tornar a apuntar-lo més tard; un enllaç etiquetat és idempotent per fitxer en comptes d'això, i un nou URL per al mateix fitxer l'actualitza al seu lloc."
-
-msgctxt "docs.api:prose"
-msgid "Inject the stylesheet of every glyph `resolve` finds in the editor body."
-msgstr "Injecta el full d'estils de tots els glifs que `resolve` troba al cos de l'editor."
-
-msgctxt "docs.api:prose"
-msgid "A tile caption for a logo variant, e.g. `\"horizontal · full color · ar\"`."
-msgstr "Un peu de foto per a una variant de logotip, p. ex. `\"horizontal · full color · ar\"`."
-
-msgctxt "docs.api:prose"
-msgid "Give every empty glyph span in `html` the non-editable, ZWSP-filled shape the pickers insert."
-msgstr "Dóna a cada span de glif buit a `html` la forma no editable i plena de ZWSP que insereixen els selectors."
-
-msgctxt "docs.api:prose"
-msgid "Normalize incoming glyph markup and inject stylesheets for glyphs however they arrive."
-msgstr "Normalitza el marcatat de glifs entrants i injecta fulls d'estil per als glifs independentment de com arribin."
-
-msgctxt "docs.api:prose"
-msgid "Re-resolve every tagged stylesheet in the content document, e.g. after a CDN provider switch."
-msgstr "Torna a resoldre cada full d'estils etiquetat al document de contingut, p. ex. després d'un canvi de proveïdor de CDN."
-
-msgctxt "docs.api:prose"
-msgid "Where [registerGlyphSync](../functions/registerGlyphSync.md) tracks and resolves the stylesheets it injects."
-msgstr "On [registerGlyphSync](../functions/registerGlyphSync.md) fa el seguiment i resol les fulles d'estils que injecta."
-
-msgctxt "docs.api:prose"
-msgid "The logos picker no longer renders product/layout/color-mode selects."
-msgstr "El selector de logotips ja no mostra els selectors de producte/disposició/modo de color."
-
-msgctxt "docs.api:prose"
-msgid "Brand names shown on the logos picker's tabs — proper nouns, so never translated."
-msgstr "Noms de marca mostrats a les pestanyes del selector de logotips — noms propis, de manera que mai no es tradueixen."
-
-msgctxt "docs.api:prose"
-msgid "Every token is exposed as a `var(--instui-*)` reference (not a concrete value), so Tailwind\nutilities like `bg-background-base` theme through the same CSS custom properties that\n`@pantoken/css` emits — light/dark and high-contrast all keep working."
-msgstr "Cada token s'exposa com una `var(--instui-*)` reference (no un valor concret), de manera que les utilitats de Tailwind\n com `bg-background-base` apliquen la temàtica mitjançant les mateixes propietats CSS personalitzades que\n`@pantoken/css` emet — el mode clar/fosc i l'alt contrast continuen funcionant."
-
-msgctxt "docs.api:prose"
-msgid "A single-select row of compact view or filter options."
-msgstr "Una fila d'opcions compactes de vista o de filtre amb selecció única."
-
-msgctxt "docs.api:prose"
-msgid "A selectable segmented-control label and its native radio input."
-msgstr "Una etiqueta de control segmentat seleccionable i la seva entrada de ràdio nativa."
-
-msgctxt "docs.api:prose"
-msgid "Decorative placeholder for content that has not loaded yet."
-msgstr "Marcador decoratiu per a contingut que encara no s'ha carregat."
-
-msgctxt "docs.api:prose"
-msgid "`.instui-segmented-control` — A single-select row of compact view or filter options."
-msgstr "`.instui-segmented-control` — Una fila d'elecció única d'opcions de vista compacta o de filtre."
-
-msgctxt "docs.api:prose"
-msgid "The selected segment uses a distinct active-item shadow; it does not match an existing\n  --instui-elevation-* composite. Overflow buttons use the upstream elevation3 component tokens."
-msgstr "El segment seleccionat utilitza una ombra d'element actiu diferent; no coincideix amb un existing\n  --instui-elevation-* composite. Els botons d'overflow utilitzen els tokens del component elevation3 upstream."
-
-msgctxt "docs.api:prose"
-msgid "Use a labelled fieldset and one shared radio name with a checked default. Native radios\n  announce their checked state; overflow buttons need labels describing their scroll direction."
-msgstr "Utilitzeu un fieldset etiquetat i un nom de radio compartit amb un valor per defecte marcat. Els radios natius\n  anuncien el seu estat marcat; els botons d'overflow necessiten etiquetes que descriguin la seva direcció de desplaçament."
-
-msgctxt "docs.api:prose"
-msgid "Config"
-msgstr "Configuració"
-
-msgctxt "docs.api:prose"
-msgid "Utilities"
-msgstr "Utilitats"
-
-msgctxt "docs.api:prose"
-msgid "Preferences"
-msgstr "Preferències"
-
-msgctxt "docs.api:prose"
-msgid "Feature flags"
-msgstr "Indicadors de funció"
-
-msgctxt "docs.api:prose"
-msgid "Large segments."
-msgstr "Segments grans."
-
-msgctxt "docs.api:prose"
-msgid "Medium segments (default)."
-msgstr "Segments mitjans (per defecte)."
-
-msgctxt "docs.api:prose"
-msgid "Small segments."
-msgstr "Segments petits."
-
-msgctxt "docs.api:prose"
-msgid "Scroll to the following hidden segment."
-msgstr "Desplaça't al segment ocult següent."
-
-msgctxt "docs.api:prose"
-msgid "Scroll to the preceding hidden segment."
-msgstr "Desplaça't al segment ocult anterior."
-
-msgctxt "docs.api:prose"
-msgid "Scrollable row containing the selectable segments."
-msgstr "Fila desplaçable que conté els segments seleccionables."
-
-msgctxt "docs.api:prose"
-msgid "Clips the segment row and anchors the overflow controls."
-msgstr "Talla la fila de segments i ancla els controls d'overflow."
-
-msgctxt "docs.api:prose"
-msgid "`.instui-segmented-control` — A selectable segmented-control label and its native radio input."
-msgstr "`.instui-segmented-control` — Una etiqueta de control segmentat seleccionable i la seva entrada de ràdio nativa."
-
-msgctxt "docs.api:prose"
-msgid "A `-icon-*` class may live on the label or its native input; the interaction helper\n  promotes input classes to the label so the shared glyph painter can render it."
-msgstr "Una `-icon-*` class pot residir a l'etiqueta o al seu input natiu; l'ajudant d'interacció\n  promou les classes de l'input cap a l'etiqueta perquè el pintor compartit de glifs pugui representar-lo."
-
-msgctxt "docs.api:prose"
-msgid "Keep the native radio in the label so checked, focus, disabled, and keyboard semantics remain available."
-msgstr "Mantingueu l'element de ràdio natiu dins de l'etiqueta perquè els estats marcat, enfocat, desactivat i les semàntiques del teclat continuïn disponibles."
-
-msgctxt "docs.api:prose"
-msgid "`.instui-skeleton-loader` — Decorative placeholder for content that has not loaded yet."
-msgstr "`.instui-skeleton-loader` — Placeholder decoratiu per a contingut que encara no s'ha carregat."
-
-msgctxt "docs.api:prose"
-msgid "Mark the decorative loader aria-hidden=\"true\". Put aria-busy on the parent content region,\n  with an initially empty status and alert outside that region. Use initSkeletonLoading from the\n  interactions package to announce the parent's loading state. Shapes must not receive focus."
-msgstr "Marqueu el carregador decoratiu aria-hidden=\"true\". Poseu aria-busy a la regió de contingut pare,\n  amb un estat inicialment buit i una alerta fora d'aquesta regió. Feu servir initSkeletonLoading del paquet d'interaccions\n  per anunciar l'estat de càrrega del pare. Les formes no han de rebre el focus."
-
-msgctxt "docs.api:prose"
-msgid "Large text row."
-msgstr "Fila de text gran."
-
-msgctxt "docs.api:prose"
-msgid "Medium text row (default)."
-msgstr "Fila de text mitjana (predeterminada)."
-
-msgctxt "docs.api:prose"
-msgid "Small text row."
-msgstr "Fila de text petita."
-
-msgctxt "docs.api:prose"
-msgid "Extra-large text row."
-msgstr "Fila de text extra-gran."
-
-msgctxt "docs.api:prose"
-msgid "Extra-small text row."
-msgstr "Fila de text extra-petita."
+#~ msgctxt "docs.api:prose"
+#~ msgid "The logos picker no longer renders product/layout/color-mode selects."
+#~ msgstr "El selector de logotips ja no mostra els selectors de producte/disposició/modo de color."
 
-msgctxt "docs.api:prose"
-msgid "Largest text row."
-msgstr "Fila de text més gran."
-
-msgctxt "docs.api:prose"
-msgid "Legend-sized text row."
-msgstr "Fila de text de mida de llegenda."
-
-msgctxt "docs.api:prose"
-msgid "A round avatar placeholder, medium size only."
-msgstr "Un espai reservat d'avatar rodó, només mida mitjana."
-
-msgctxt "docs.api:prose"
-msgid "An image placeholder, medium size only."
-msgstr "Un espai reservat d'imatge, només mida mitjana."
-
-msgctxt "docs.api:prose"
-msgid "A text bar (default)."
-msgstr "Una barra de text (predeterminada)."
-
-msgctxt "docs.api:prose"
-msgid "The clipped placeholder surface sized for the selected loader type."
-msgstr "La superfície del marcador retallada amb la mida per al tipus de carregador seleccionat."
-
-msgctxt "docs.api:prose"
-msgid "A repeated text-row wrapper that applies vertical spacing."
-msgstr "Un embolcall de fila de text repetida que aplica espaiat vertical."
-
-msgctxt "docs.api:prose"
-msgid "Enhance a labelled native radio group with keyboard navigation and optional overflow controls."
-msgstr "Millorar un grup natiu de ràdio etiquetat amb navegació per teclat i controls opcionals de desbordament."
-
-msgctxt "docs.api:prose"
-msgid "Bind the parent content region to SSR-provided status and error announcements."
-msgstr "Vincular la regió de contingut pare a les notificacions d'estat i d'error proporcionades per SSR."
-
-msgctxt "docs.api:prose"
-msgid "Detach the segmented-control listeners and observers."
-msgstr "Desconnecta els listeners i observadors del segmented-control."
-
-msgctxt "docs.api:prose"
-msgid "Segmented control options; the medium size is the CSS default."
-msgstr "Opcions del control segmentat; la mida mitjana és la predeterminada del CSS."
-
-msgctxt "docs.api:prose"
-msgid "Control parent-level loading semantics without touching decorative skeleton shapes."
-msgstr "Controla la semàntica de càrrega a nivell de l'element pare sense tocar les formes esquelètiques decoratives."
-
-msgctxt "docs.api:prose"
-msgid "Pre-rendered announcement elements must be outside the busy content region."
-msgstr "Els elements d'anunci pre-renderitzats han d'estar fora de la regió de contingut ocupada."
-
-msgctxt "docs.api:prose"
-msgid "State update sent to an auto-registered skeleton loading region."
-msgstr "Actualització d'estat enviada a una regió de càrrega amb esquelet auto-registrada."
-
-msgctxt "docs.api:prose"
-msgid "The generated Swift uses UIKit and targets iOS. `mise run verify:swift:syntax` only parses its\nsource; `mise run verify:swift:host` needs full Xcode and the iOS Simulator SDK to type-check it."
-msgstr "El Swift generat utilitza UIKit i s'orienta a iOS. `mise run verify:swift:syntax` només analitza la seva\nsource; `mise run verify:swift:host` requereix Xcode complet i l'iOS Simulator SDK per comprovar els tipus."
-
-msgctxt "docs.api:prose"
-msgid "Build segmented-control CSS, replacing the component prefix sentinel."
-msgstr "Genera el CSS de segmented-control, substituint el marcador de prefix del component."
-
-msgctxt "docs.api:prose"
-msgid "Build the skeleton loader CSS, replacing the component prefix sentinel."
-msgstr "Construeix el CSS del carregador d'esquelet, substituint la sentinella del prefix del component."
-
-msgctxt "docs.api:prose"
-msgid "`@pantoken/bootstrap` — theme Bootstrap 5.2+ body variables and primary buttons with Instructure tokens."
-msgstr "`@pantoken/bootstrap` — variables del cos i botons primaris del tema Bootstrap 5.2+ amb tokens d'Instructure."
-
-msgctxt "docs.api:prose"
-msgid "Points body and primary-button `--bs-*` CSS variables at `var(--instui-*)`. Load it after\nBootstrap and `@pantoken/css`; other component variants retain their Bootstrap defaults."
-msgstr "Apunta les variables CSS del cos i del botó primari `--bs-*` a `var(--instui-*)`. Carrega-ho després de\nBootstrap i `@pantoken/css`; altres variants de components mantenen els seus valors predeterminats de Bootstrap."
-
-msgctxt "docs.api:prose"
-msgid "Emit the Foundation Sass settings override. Import it before Foundation itself and\n`@include foundation-everything` so its palette is available to Sass."
-msgstr "Genera la substitució de la configuració de Foundation Sass. Importa'l abans de Foundation mateix i\n`@include foundation-everything` perquè la seva paleta estigui disponible per a Sass."
+#~ msgctxt "docs.api:prose"
+#~ msgid "A single-select row of compact view or filter options."
+#~ msgstr "Una fila d'opcions compactes de vista o de filtre amb selecció única."
 
-msgctxt "docs.api:prose"
-msgid "`@pantoken/foundation` — theme Foundation for Sites Sass output and common CSS classes."
-msgstr "`@pantoken/foundation` — tema Foundation for Sites sortida Sass i classes CSS comunes."
-
-msgctxt "docs.api:prose"
-msgid "Foundation is Sass-first, so this package ships two layers. [toFoundationSettings](functions/toFoundationSettings.md) emits a\n`_settings`-style Sass partial with concrete light-mode rebrand values so Foundation's colour functions can\ncompile. [toFoundationCss](functions/toFoundationCss.md) emits a thin variable-backed CSS overlay that themes the common compiled\nclasses (`.button`, `.callout`, links) the same way — useful when you consume stock Foundation CSS\nand just want to layer Instructure colors on top without recompiling."
-msgstr "Foundation està pensat per a Sass, així que aquest paquet inclou dues capes. [toFoundationSettings](functions/toFoundationSettings.md) emet un\n`_settings`-style partial Sass amb valors concrets de rebrand en mode clar perquè les funcions de color de Foundation puguin\ncompilar. [toFoundationCss](functions/toFoundationCss.md) emet una fina superposició CSS basada en variables que tematitza les classes compilades comunes\n (`.button`, `.callout`, enllaços) de la mateixa manera — útil quan fas servir el CSS estàndard de Foundation\n i només vols superposar els colors d'Instructure a sobre sense recompilar."
-
-msgctxt "docs.api:prose"
-msgid "Registration and shadow output are environment-verified with Happy DOM; real-browser behavior is\nnot covered by that check."
-msgstr "El registre i la sortida shadow estan verificats per l'entorn amb Happy DOM; el comportament en un navegador real està\nno cobert per aquesta comprovació."
-
-msgctxt "docs.api:prose"
-msgid "Browser script URLs to load after the example markup (interaction bundles, when needed)."
-msgstr "URL dels scripts del navegador per carregar després del marc d'exemple (paquets d'interacció, quan cal)."
+#~ msgctxt "docs.api:prose"
+#~ msgid "A selectable segmented-control label and its native radio input."
+#~ msgstr "Una etiqueta de control segmentat seleccionable i la seva entrada de ràdio nativa."
 
-#, pantoken-verbatim
-msgctxt "docs.api:text"
-msgid "SegmentedControlOptions"
-msgstr "SegmentedControlOptions"
+#~ msgctxt "docs.api:prose"
+#~ msgid "Decorative placeholder for content that has not loaded yet."
+#~ msgstr "Marcador decoratiu per a contingut que encara no s'ha carregat."
 
-#, pantoken-verbatim
-msgctxt "docs.api:text"
-msgid "SegmentedControlHandle"
-msgstr "SegmentedControlHandle"
+#~ msgctxt "docs.api:prose"
+#~ msgid "`.instui-segmented-control` — A single-select row of compact view or filter options."
+#~ msgstr "`.instui-segmented-control` — Una fila d'elecció única d'opcions de vista compacta o de filtre."
 
-#, pantoken-verbatim
-msgctxt "docs.api:text"
-msgid "SkeletonLoadingState"
-msgstr "SkeletonLoadingState"
+#~ msgctxt "docs.api:prose"
+#~ msgid "The selected segment uses a distinct active-item shadow; it does not match an existing\n  --instui-elevation-* composite. Overflow buttons use the upstream elevation3 component tokens."
+#~ msgstr "El segment seleccionat utilitza una ombra d'element actiu diferent; no coincideix amb un existing\n  --instui-elevation-* composite. Els botons d'overflow utilitzen els tokens del component elevation3 upstream."
 
-#, pantoken-verbatim
-msgctxt "docs.api:text"
-msgid "SkeletonLoadingOptions"
-msgstr "SkeletonLoadingOptions"
+#~ msgctxt "docs.api:prose"
+#~ msgid "Use a labelled fieldset and one shared radio name with a checked default. Native radios\n  announce their checked state; overflow buttons need labels describing their scroll direction."
+#~ msgstr "Utilitzeu un fieldset etiquetat i un nom de radio compartit amb un valor per defecte marcat. Els radios natius\n  anuncien el seu estat marcat; els botons d'overflow necessiten etiquetes que descriguin la seva direcció de desplaçament."
 
-#, pantoken-verbatim
-msgctxt "docs.api:text"
-msgid "SkeletonLoadingHandle"
-msgstr "SkeletonLoadingHandle"
+#~ msgctxt "docs.api:prose"
+#~ msgid "Config"
+#~ msgstr "Configuració"
 
-#, pantoken-verbatim
-msgctxt "docs.api:text"
-msgid "initSegmentedControl"
-msgstr "initSegmentedControl"
+#~ msgctxt "docs.api:prose"
+#~ msgid "Utilities"
+#~ msgstr "Utilitats"
 
-#, pantoken-verbatim
-msgctxt "docs.api:text"
-msgid "initSkeletonLoading"
-msgstr "initSkeletonLoading"
+#~ msgctxt "docs.api:prose"
+#~ msgid "Preferences"
+#~ msgstr "Preferències"
 
-#, pantoken-verbatim
-msgctxt "docs.api:text"
-msgid "segmentedControlRules"
-msgstr "segmentedControlRules"
+#~ msgctxt "docs.api:prose"
+#~ msgid "Feature flags"
+#~ msgstr "Indicadors de funció"
 
-#, pantoken-verbatim
-msgctxt "docs.api:text"
-msgid "skeletonLoaderRules"
-msgstr "skeletonLoaderRules"
+#~ msgctxt "docs.api:prose"
+#~ msgid "Large segments."
+#~ msgstr "Segments grans."
 
-#, pantoken-verbatim
-msgctxt "docs.api:text"
-msgid "segmented-control"
-msgstr "segmented-control"
+#~ msgctxt "docs.api:prose"
+#~ msgid "Medium segments (default)."
+#~ msgstr "Segments mitjans (per defecte)."
 
-#, pantoken-verbatim
-msgctxt "docs.api:text"
-msgid "segment"
-msgstr "segment"
+#~ msgctxt "docs.api:prose"
+#~ msgid "Small segments."
+#~ msgstr "Segments petits."
 
-#, pantoken-verbatim
-msgctxt "docs.api:text"
-msgid "skeleton-loader"
-msgstr "skeleton-loader"
+#~ msgctxt "docs.api:prose"
+#~ msgid "Scroll to the following hidden segment."
+#~ msgstr "Desplaça't al segment ocult següent."
 
-msgctxt "docs.api:prose"
-msgid "Target: Next.js. Current format: `Production build transpiling and rendering Instructure UI 11.7.7 with React 19.3.0`. Minimum host version: `16.0.0`. Tested through `16.3.8`. Newer releases require review."
-msgstr "Target: Next.js. Current format: `Production build transpiling and rendering Instructure UI 11.7.7 with React 19.3.0`. Minimum host version: `16.0.0`. Tested through `16.3.8`. Newer releases require review."
+#~ msgctxt "docs.api:prose"
+#~ msgid "Scroll to the preceding hidden segment."
+#~ msgstr "Desplaça't al segment ocult anterior."
 
-msgctxt "docs.api:prose"
-msgid "Target: Panda CSS. Current format: `Panda token utility extraction from the Pantoken preset`. Minimum host version: `1.12.1`. Tested through `2.0.0`. Newer releases require review."
-msgstr "Target: Panda CSS. Current format: `Panda token utility extraction from the Pantoken preset`. Minimum host version: `1.12.1`. Tested through `2.0.0`. Newer releases require review."
+#~ msgctxt "docs.api:prose"
+#~ msgid "Scrollable row containing the selectable segments."
+#~ msgstr "Fila desplaçable que conté els segments seleccionables."
 
-msgctxt "docs.api:prose"
-msgid "Target: PostCSS. Minimum host version: `8.0.0`. Tested through `8.5.28`. Newer releases require review."
-msgstr "Target: PostCSS. Minimum host version: `8.0.0`. Tested through `8.5.28`. Newer releases require review."
+#~ msgctxt "docs.api:prose"
+#~ msgid "Clips the segment row and anchors the overflow controls."
+#~ msgstr "Talla la fila de segments i ancla els controls d'overflow."
 
-#, pantoken-verbatim
-msgctxt "docs.api:prose"
-msgid "Target: Tailwind CSS. Minimum host version: `4.0.17`. Tested through `4.3.3`. Newer releases require review."
-msgstr "Target: Tailwind CSS. Minimum host version: `4.0.17`. Tested through `4.3.3`. Newer releases require review."
+#~ msgctxt "docs.api:prose"
+#~ msgid "`.instui-segmented-control` — A selectable segmented-control label and its native radio input."
+#~ msgstr "`.instui-segmented-control` — Una etiqueta de control segmentat seleccionable i la seva entrada de ràdio nativa."
 
-msgctxt "docs.api:prose"
-msgid "Target: Vite. Minimum host version: `8.0.0`. Tested through `8.3.1`. Newer releases require review."
-msgstr "Target: Vite. Minimum host version: `8.0.0`. Tested through `8.3.1`. Newer releases require review."
+#~ msgctxt "docs.api:prose"
+#~ msgid "A `-icon-*` class may live on the label or its native input; the interaction helper\n  promotes input classes to the label so the shared glyph painter can render it."
+#~ msgstr "Una `-icon-*` class pot residir a l'etiqueta o al seu input natiu; l'ajudant d'interacció\n  promou les classes de l'input cap a l'etiqueta perquè el pintor compartit de glifs pugui representar-lo."
 
-#, pantoken-verbatim
-msgctxt "docs.api:prose"
-msgid "Target: webpack. Current format: `Emitted token CSS build asset`. Minimum host version: `5.61.0`. Tested through `5.111.1`. Newer releases require review."
-msgstr "Target: webpack. Current format: `Emitted token CSS build asset`. Minimum host version: `5.61.0`. Tested through `5.111.1`. Newer releases require review."
+#~ msgctxt "docs.api:prose"
+#~ msgid "Keep the native radio in the label so checked, focus, disabled, and keyboard semantics remain available."
+#~ msgstr "Mantingueu l'element de ràdio natiu dins de l'etiqueta perquè els estats marcat, enfocat, desactivat i les semàntiques del teclat continuïn disponibles."
 
-#, pantoken-verbatim
-msgctxt "docs.api:prose"
-msgid "Target: Android resources. Current format: `Generated colors, dimensions, and VectorDrawable compile and link with Android build-tools`. Minimum host version: `API 35 / build-tools 35.0.0`. Tested through `API 35 / build-tools 35.0.0`. Newer releases require review."
-msgstr "Target: Android resources. Current format: `Generated colors, dimensions, and VectorDrawable compile and link with Android build-tools`. Minimum host version: `API 35 / build-tools 35.0.0`. Tested through `API 35 / build-tools 35.0.0`. Newer releases require review."
+#~ msgctxt "docs.api:prose"
+#~ msgid "`.instui-skeleton-loader` — Decorative placeholder for content that has not loaded yet."
+#~ msgstr "`.instui-skeleton-loader` — Placeholder decoratiu per a contingut que encara no s'ha carregat."
 
-#, pantoken-verbatim
-msgctxt "docs.api:prose"
-msgid "Target: Canvas Theme Editor. Host compatibility has not yet been verified."
-msgstr "Target: Canvas Theme Editor. Host compatibility has not yet been verified."
+#~ msgctxt "docs.api:prose"
+#~ msgid "Mark the decorative loader aria-hidden=\"true\". Put aria-busy on the parent content region,\n  with an initially empty status and alert outside that region. Use initSkeletonLoading from the\n  interactions package to announce the parent's loading state. Shapes must not receive focus."
+#~ msgstr "Marqueu el carregador decoratiu aria-hidden=\"true\". Poseu aria-busy a la regió de contingut pare,\n  amb un estat inicialment buit i una alerta fora d'aquesta regió. Feu servir initSkeletonLoading del paquet d'interaccions\n  per anunciar l'estat de càrrega del pare. Les formes no han de rebre el focus."
 
-#, pantoken-verbatim
-msgctxt "docs.api:prose"
-msgid "Target: Jetpack Compose. Current format: `Generated Color and Dp token object compiles in an Android library module`. Minimum host version: `Kotlin 2.1.10 / Compose UI 1.8.2 / Android API 35`. Tested through `Kotlin 2.1.10 / Compose UI 1.8.2 / Android API 35`. Newer releases require review."
-msgstr "Target: Jetpack Compose. Current format: `Generated Color and Dp token object compiles in an Android library module`. Minimum host version: `Kotlin 2.1.10 / Compose UI 1.8.2 / Android API 35`. Tested through `Kotlin 2.1.10 / Compose UI 1.8.2 / Android API 35`. Newer releases require review."
+#~ msgctxt "docs.api:prose"
+#~ msgid "Large text row."
+#~ msgstr "Fila de text gran."
 
-#, pantoken-verbatim
-msgctxt "docs.api:prose"
-msgid "Target: Drupal themes. Current format: `Drupal core discovers generated theme; InfoParser and Symfony YAML accept metadata`. Minimum host version: `10.6.18`. Tested through `11.3.2`. Newer releases require review."
-msgstr "Target: Drupal themes. Current format: `Drupal core discovers generated theme; InfoParser and Symfony YAML accept metadata`. Minimum host version: `10.6.18`. Tested through `11.3.2`. Newer releases require review."
+#~ msgctxt "docs.api:prose"
+#~ msgid "Medium text row (default)."
+#~ msgstr "Fila de text mitjana (predeterminada)."
 
-#, pantoken-verbatim
-msgctxt "docs.api:prose"
-msgid "Target: HTML email. Host compatibility has not yet been verified."
-msgstr "Target: HTML email. Host compatibility has not yet been verified."
+#~ msgctxt "docs.api:prose"
+#~ msgid "Small text row."
+#~ msgstr "Fila de text petita."
 
-#, pantoken-verbatim
-msgctxt "docs.api:prose"
-msgid "Target: Flutter. Host compatibility has not yet been verified."
-msgstr "Target: Flutter. Host compatibility has not yet been verified."
+#~ msgctxt "docs.api:prose"
+#~ msgid "Extra-large text row."
+#~ msgstr "Fila de text extra-gran."
 
-#, pantoken-verbatim
-msgctxt "docs.api:prose"
-msgid "Target: Hugo. Current format: `Hugo Pipes builds the Pantoken token stylesheet`. Minimum host version: `0.165.0`. Tested through `0.165.0`. Newer releases require review."
-msgstr "Target: Hugo. Current format: `Hugo Pipes builds the Pantoken token stylesheet`. Minimum host version: `0.165.0`. Tested through `0.165.0`. Newer releases require review."
+#~ msgctxt "docs.api:prose"
+#~ msgid "Extra-small text row."
+#~ msgstr "Fila de text extra-petita."
 
-#, pantoken-verbatim
-msgctxt "docs.api:prose"
-msgid "Target: Jekyll. Current format: `Jekyll builds the generated Sass partial into site CSS`. Minimum host version: `4.4.1`. Tested through `4.4.1`. Newer releases require review."
-msgstr "Target: Jekyll. Current format: `Jekyll builds the generated Sass partial into site CSS`. Minimum host version: `4.4.1`. Tested through `4.4.1`. Newer releases require review."
+#~ msgctxt "docs.api:prose"
+#~ msgid "Largest text row."
+#~ msgstr "Fila de text més gran."
 
-#, pantoken-verbatim
-msgctxt "docs.api:prose"
-msgid "Target: Rust GUI frameworks. Current format: `Generated egui Color32 accessors and iced_core Color constants compile with the Rust toolchain`. Minimum host version: `1.95.0`. Tested through `1.95.0`. Newer releases require review."
-msgstr "Target: Rust GUI frameworks. Current format: `Generated egui Color32 accessors and iced_core Color constants compile with the Rust toolchain`. Minimum host version: `1.95.0`. Tested through `1.95.0`. Newer releases require review."
+#~ msgctxt "docs.api:prose"
+#~ msgid "Legend-sized text row."
+#~ msgstr "Fila de text de mida de llegenda."
 
-#, pantoken-verbatim
-msgctxt "docs.api:prose"
-msgid "Target: Swift iOS. Current format: `UIKit SwiftPM module, runtime token check, and compiled Icons.xcassets`. Tested environment: `Xcode 27.0 (27A266a), Swift 6.4, iOS Simulator SDK/runtime 27.0, iPhone 18 Pro, arm64 iOS 15 deployment target`. Runtime tested only on iOS Simulator 27.0; this does not establish an iOS 15 runtime floor. No watchOS or tvOS claim."
-msgstr "Target: Swift iOS. Current format: `UIKit SwiftPM module, runtime token check, and compiled Icons.xcassets`. Tested environment: `Xcode 27.0 (27A266a), Swift 6.4, iOS Simulator SDK/runtime 27.0, iPhone 18 Pro, arm64 iOS 15 deployment target`. Runtime tested only on iOS Simulator 27.0; this does not establish an iOS 15 runtime floor. No watchOS or tvOS claim."
+#~ msgctxt "docs.api:prose"
+#~ msgid "A round avatar placeholder, medium size only."
+#~ msgstr "Un espai reservat d'avatar rodó, només mida mitjana."
 
-#, pantoken-verbatim
-msgctxt "docs.api:prose"
-msgid "Target: Vanilla Forums. Host compatibility has not yet been verified."
-msgstr "Target: Vanilla Forums. Host compatibility has not yet been verified."
+#~ msgctxt "docs.api:prose"
+#~ msgid "An image placeholder, medium size only."
+#~ msgstr "Un espai reservat d'imatge, només mida mitjana."
 
-#, pantoken-verbatim
-msgctxt "docs.api:prose"
-msgid "Target: WordPress block themes. Current format: `theme.json v3`. Minimum host version: `6.6`. Tested through `7.1.2`. Newer releases require review."
-msgstr "Target: WordPress block themes. Current format: `theme.json v3`. Minimum host version: `6.6`. Tested through `7.1.2`. Newer releases require review."
+#~ msgctxt "docs.api:prose"
+#~ msgid "A text bar (default)."
+#~ msgstr "Una barra de text (predeterminada)."
 
-msgctxt "docs.api:prose"
-msgid "Target: Angular. Current format: `CUSTOM_ELEMENTS_SCHEMA template compilation (Angular 16.2.12 / TS 5.1.6; Angular 22.2.0 / TS 6.0.3)`. Minimum host version: `16.2.12`. Tested through `22.2.0`. Newer releases require review."
-msgstr "Target: Angular. Current format: `CUSTOM_ELEMENTS_SCHEMA template compilation (Angular 16.2.12 / TS 5.1.6; Angular 22.2.0 / TS 6.0.3)`. Minimum host version: `16.2.12`. Tested through `22.2.0`. Newer releases require review."
+#~ msgctxt "docs.api:prose"
+#~ msgid "The clipped placeholder surface sized for the selected loader type."
+#~ msgstr "La superfície del marcador retallada amb la mida per al tipus de carregador seleccionat."
 
-msgctxt "docs.api:prose"
-msgid "Target: Astro / Starlight. Current format: `Built Starlight page with injected token stylesheet (Astro 5 and 7)`. Minimum host version: `0.35.0`. Tested through `0.42.4`. Newer releases require review."
-msgstr "Target: Astro / Starlight. Current format: `Built Starlight page with injected token stylesheet (Astro 5 and 7)`. Minimum host version: `0.35.0`. Tested through `0.42.4`. Newer releases require review."
+#~ msgctxt "docs.api:prose"
+#~ msgid "A repeated text-row wrapper that applies vertical spacing."
+#~ msgstr "Un embolcall de fila de text repetida que aplica espaiat vertical."
 
 #, pantoken-verbatim
-msgctxt "docs.api:prose"
-msgid "Target: Bootstrap. Current format: `CSS variables: body + primary button`. Minimum host version: `5.2.0`. Tested through `5.3.8`. Newer releases require review."
-msgstr "Target: Bootstrap. Current format: `CSS variables: body + primary button`. Minimum host version: `5.2.0`. Tested through `5.3.8`. Newer releases require review."
+#~ msgctxt "docs.api:text"
+#~ msgid "SegmentedControlOptions"
+#~ msgstr "SegmentedControlOptions"
 
 #, pantoken-verbatim
-msgctxt "docs.api:prose"
-msgid "Target: Emotion CSS-in-JS. Current format: `ThemeProvider SSR emits the Pantoken token variable`. Minimum host version: `11.14.0`. Tested through `11.14.0`. Newer releases require review."
-msgstr "Target: Emotion CSS-in-JS. Current format: `ThemeProvider SSR emits the Pantoken token variable`. Minimum host version: `11.14.0`. Tested through `11.14.0`. Newer releases require review."
+#~ msgctxt "docs.api:text"
+#~ msgid "SegmentedControlHandle"
+#~ msgstr "SegmentedControlHandle"
 
 #, pantoken-verbatim
-msgctxt "docs.api:prose"
-msgid "Target: Docusaurus theme-classic. Current format: `Infima CSS-variable bridge: primary and background`. Minimum host version: `3.0.0`. Tested through `3.10.2`. Newer releases require review."
-msgstr "Target: Docusaurus theme-classic. Current format: `Infima CSS-variable bridge: primary and background`. Minimum host version: `3.0.0`. Tested through `3.10.2`. Newer releases require review."
+#~ msgctxt "docs.api:text"
+#~ msgid "SkeletonLoadingState"
+#~ msgstr "SkeletonLoadingState"
 
 #, pantoken-verbatim
-msgctxt "docs.api:prose"
-msgid "Target: Foundation for Sites. Current format: `Concrete Sass settings + variable-backed CSS overlay`. Minimum host version: `6.1.2`. Tested through `6.9.0`. Newer releases require review."
-msgstr "Target: Foundation for Sites. Current format: `Concrete Sass settings + variable-backed CSS overlay`. Minimum host version: `6.1.2`. Tested through `6.9.0`. Newer releases require review."
+#~ msgctxt "docs.api:text"
+#~ msgid "SkeletonLoadingOptions"
+#~ msgstr "SkeletonLoadingOptions"
 
 #, pantoken-verbatim
-msgctxt "docs.api:prose"
-msgid "Target: markdown-it. Minimum host version: `14.0.0`. Tested through `15.0.2`. Newer releases require review."
-msgstr "Target: markdown-it. Minimum host version: `14.0.0`. Tested through `15.0.2`. Newer releases require review."
+#~ msgctxt "docs.api:text"
+#~ msgid "SkeletonLoadingHandle"
+#~ msgstr "SkeletonLoadingHandle"
 
-msgctxt "docs.api:prose"
-msgid "Target: Mintlify docs.json. Current format: `Official CLI validates generated colors and background theme config`. Minimum host version: `4.0.1555`. Tested through `4.0.1557`. Newer releases require review."
-msgstr "Target: Mintlify docs.json. Current format: `Official CLI validates generated colors and background theme config`. Minimum host version: `4.0.1555`. Tested through `4.0.1557`. Newer releases require review."
-
 #, pantoken-verbatim
-msgctxt "docs.api:prose"
-msgid "Target: Material UI. Current format: `Concrete createTheme palettes (MUI 5, 6, 7, 9)`. Minimum host version: `5.0.0`. Tested through `9.4.0`. Newer releases require review."
-msgstr "Target: Material UI. Current format: `Concrete createTheme palettes (MUI 5, 6, 7, 9)`. Minimum host version: `5.0.0`. Tested through `9.4.0`. Newer releases require review."
+#~ msgctxt "docs.api:text"
+#~ msgid "initSegmentedControl"
+#~ msgstr "initSegmentedControl"
 
 #, pantoken-verbatim
-msgctxt "docs.api:prose"
-msgid "Target: Pendo. Host compatibility has not yet been verified."
-msgstr "Target: Pendo. Host compatibility has not yet been verified."
+#~ msgctxt "docs.api:text"
+#~ msgid "initSkeletonLoading"
+#~ msgstr "initSkeletonLoading"
 
 #, pantoken-verbatim
-msgctxt "docs.api:prose"
-msgid "Target: React. Current format: `SSR-rendered Icon custom element and token fallback`. Minimum host version: `19.3.0`. Tested through `19.3.0`. Newer releases require review."
-msgstr "Target: React. Current format: `SSR-rendered Icon custom element and token fallback`. Minimum host version: `19.3.0`. Tested through `19.3.0`. Newer releases require review."
+#~ msgctxt "docs.api:text"
+#~ msgid "segmentedControlRules"
+#~ msgstr "segmentedControlRules"
 
 #, pantoken-verbatim
-msgctxt "docs.api:prose"
-msgid "Target: react-markdown. Current format: `SSR-rendered InstUI heading, icon, and color swatch with React 19.3.0`. Minimum host version: `10.1.0`. Tested through `10.1.0`. Newer releases require review."
-msgstr "Target: react-markdown. Current format: `SSR-rendered InstUI heading, icon, and color swatch with React 19.3.0`. Minimum host version: `10.1.0`. Tested through `10.1.0`. Newer releases require review."
+#~ msgctxt "docs.api:text"
+#~ msgid "skeletonLoaderRules"
+#~ msgstr "skeletonLoaderRules"
 
 #, pantoken-verbatim
-msgctxt "docs.api:prose"
-msgid "Target: React Native. Host compatibility has not yet been verified."
-msgstr "Target: React Native. Host compatibility has not yet been verified."
+#~ msgctxt "docs.api:text"
+#~ msgid "segmented-control"
+#~ msgstr "segmented-control"
 
 #, pantoken-verbatim
-msgctxt "docs.api:prose"
-msgid "Target: rehype. Current format: `HAST + raw SVG`. Minimum host version: `13.0.0`. Tested through `13.0.2`. Newer releases require review."
-msgstr "Target: rehype. Current format: `HAST + raw SVG`. Minimum host version: `13.0.0`. Tested through `13.0.2`. Newer releases require review."
+#~ msgctxt "docs.api:text"
+#~ msgid "segment"
+#~ msgstr "segment"
 
 #, pantoken-verbatim
-msgctxt "docs.api:prose"
-msgid "Target: shadcn/ui CSS variables. Current format: `Tailwind 4.3.3 compiles the Pantoken primary theme alias`. Minimum host version: `4.3.3`. Tested through `4.3.3`. Newer releases require review."
-msgstr "Target: shadcn/ui CSS variables. Current format: `Tailwind 4.3.3 compiles the Pantoken primary theme alias`. Minimum host version: `4.3.3`. Tested through `4.3.3`. Newer releases require review."
+#~ msgctxt "docs.api:text"
+#~ msgid "skeleton-loader"
+#~ msgstr "skeleton-loader"
 
-#, pantoken-verbatim
-msgctxt "docs.api:prose"
-msgid "Target: Storybook theming. Current format: `Storybook ThemeVars constructor accepts light and dark Pantoken themes`. Minimum host version: `8.6.14`. Tested through `8.6.14`. Newer releases require review."
-msgstr "Target: Storybook theming. Current format: `Storybook ThemeVars constructor accepts light and dark Pantoken themes`. Minimum host version: `8.6.14`. Tested through `8.6.14`. Newer releases require review."
+#~ msgctxt "docs.api:prose"
+#~ msgid "Target: Next.js. Current format: `Production build transpiling and rendering Instructure UI 11.7.7 with React 19.3.0`. Minimum host version: `16.0.0`. Tested through `16.3.8`. Newer releases require review."
+#~ msgstr "Target: Next.js. Current format: `Production build transpiling and rendering Instructure UI 11.7.7 with React 19.3.0`. Minimum host version: `16.0.0`. Tested through `16.3.8`. Newer releases require review."
 
-#, pantoken-verbatim
-msgctxt "docs.api:prose"
-msgid "Target: Svelte. Current format: `Icon action component compiles and SSR renders on Svelte 4 and 5`. Minimum host version: `4.2.20`. Tested through `5.57.1`. Newer releases require review."
-msgstr "Target: Svelte. Current format: `Icon action component compiles and SSR renders on Svelte 4 and 5`. Minimum host version: `4.2.20`. Tested through `5.57.1`. Newer releases require review."
+#~ msgctxt "docs.api:prose"
+#~ msgid "Target: Panda CSS. Current format: `Panda token utility extraction from the Pantoken preset`. Minimum host version: `1.12.1`. Tested through `2.0.0`. Newer releases require review."
+#~ msgstr "Target: Panda CSS. Current format: `Panda token utility extraction from the Pantoken preset`. Minimum host version: `1.12.1`. Tested through `2.0.0`. Newer releases require review."
 
-#, pantoken-verbatim
-msgctxt "docs.api:prose"
-msgid "Target: TinyMCE PluginManager. Current format: `Pantoken plugin registration and callback initialization`. Minimum host version: `8.9.2`. Tested through `8.9.2`. Newer releases require review."
-msgstr "Target: TinyMCE PluginManager. Current format: `Pantoken plugin registration and callback initialization`. Minimum host version: `8.9.2`. Tested through `8.9.2`. Newer releases require review."
+#~ msgctxt "docs.api:prose"
+#~ msgid "Target: PostCSS. Minimum host version: `8.0.0`. Tested through `8.5.28`. Newer releases require review."
+#~ msgstr "Target: PostCSS. Minimum host version: `8.0.0`. Tested through `8.5.28`. Newer releases require review."
 
-#, pantoken-verbatim
-msgctxt "docs.api:prose"
-msgid "Target: VitePress. Current format: `Built site CSS includes the Pantoken primary-brand bridge`. Minimum host version: `1.6.4`. Tested through `1.6.4`. Newer releases require review."
-msgstr "Target: VitePress. Current format: `Built site CSS includes the Pantoken primary-brand bridge`. Minimum host version: `1.6.4`. Tested through `1.6.4`. Newer releases require review."
+#~ msgctxt "docs.api:prose"
+#~ msgid "Target: Vite. Minimum host version: `8.0.0`. Tested through `8.3.1`. Newer releases require review."
+#~ msgstr "Target: Vite. Minimum host version: `8.0.0`. Tested through `8.3.1`. Newer releases require review."
 
-#, pantoken-verbatim
-msgctxt "docs.api:prose"
-msgid "Target: Vue. Current format: `Plugin installation, custom-element configuration, and SSR output`. Minimum host version: `3.0.0`. Tested through `3.5.43`. Newer releases require review."
-msgstr "Target: Vue. Current format: `Plugin installation, custom-element configuration, and SSR output`. Minimum host version: `3.0.0`. Tested through `3.5.43`. Newer releases require review."
+#~ msgctxt "docs.api:prose"
+#~ msgid "Target: WordPress block themes. Current format: `theme.json v3`. Minimum host version: `6.6`. Tested through `7.1.2`. Newer releases require review."
+#~ msgstr "Target: WordPress block themes. Current format: `theme.json v3`. Minimum host version: `6.6`. Tested through `7.1.2`. Newer releases require review."
 
-#, pantoken-verbatim
-msgctxt "docs.api:prose"
-msgid "Target: Web Components. Current format: `Custom-element registration and button shadow output`. Tested environment: `Node 26.10.0 with happy-dom 20.14.5`. Real-browser rendering and interaction behavior are not verified."
-msgstr "Target: Web Components. Current format: `Custom-element registration and button shadow output`. Tested environment: `Node 26.10.0 with happy-dom 20.14.5`. Real-browser rendering and interaction behavior are not verified."
+#~ msgctxt "docs.api:prose"
+#~ msgid "Target: Angular. Current format: `CUSTOM_ELEMENTS_SCHEMA template compilation (Angular 16.2.12 / TS 5.1.6; Angular 22.2.0 / TS 6.0.3)`. Minimum host version: `16.2.12`. Tested through `22.2.0`. Newer releases require review."
+#~ msgstr "Target: Angular. Current format: `CUSTOM_ELEMENTS_SCHEMA template compilation (Angular 16.2.12 / TS 5.1.6; Angular 22.2.0 / TS 6.0.3)`. Minimum host version: `16.2.12`. Tested through `22.2.0`. Newer releases require review."
 
-msgctxt "docs.api:prose"
-msgid "Target: Next.js. Current format: `Production build transpiling and rendering Instructure UI 11.7.8 with React 19.3.0`. Minimum host version: `16.0.0`. Tested through `16.3.8`. Newer releases require review."
-msgstr "Target: Next.js. Current format: `Production build transpiling and rendering Instructure UI 11.7.8 with React 19.3.0`. Minimum host version: `16.0.0`. Tested through `16.3.8`. Newer releases require review."
+#~ msgctxt "docs.api:prose"
+#~ msgid "Target: Astro / Starlight. Current format: `Built Starlight page with injected token stylesheet (Astro 5 and 7)`. Minimum host version: `0.35.0`. Tested through `0.42.4`. Newer releases require review."
+#~ msgstr "Target: Astro / Starlight. Current format: `Built Starlight page with injected token stylesheet (Astro 5 and 7)`. Minimum host version: `0.35.0`. Tested through `0.42.4`. Newer releases require review."
 
-#, pantoken-verbatim
-msgctxt "docs.api:prose"
-msgid "Target: Panda CSS. Current format: `Panda token utility extraction from the Pantoken preset`. Minimum host version: `1.12.1`. Tested through `2.1.1`. Newer releases require review."
-msgstr "Target: Panda CSS. Current format: `Panda token utility extraction from the Pantoken preset`. Minimum host version: `1.12.1`. Tested through `2.1.1`. Newer releases require review."
+#~ msgctxt "docs.api:prose"
+#~ msgid "Target: Mintlify docs.json. Current format: `Official CLI validates generated colors and background theme config`. Minimum host version: `4.0.1555`. Tested through `4.0.1557`. Newer releases require review."
+#~ msgstr "Target: Mintlify docs.json. Current format: `Official CLI validates generated colors and background theme config`. Minimum host version: `4.0.1555`. Tested through `4.0.1557`. Newer releases require review."
 
-#, pantoken-verbatim
-msgctxt "docs.api:prose"
-msgid "Target: PostCSS. Minimum host version: `8.0.0`. Tested through `8.5.29`. Newer releases require review."
-msgstr "Target: PostCSS. Minimum host version: `8.0.0`. Tested through `8.5.29`. Newer releases require review."
+#~ msgctxt "docs.api:prose"
+#~ msgid "Target: Material UI. Current format: `Concrete createTheme palettes (MUI 5, 6, 7, 9)`. Minimum host version: `5.0.0`. Tested through `9.4.0`. Newer releases require review."
+#~ msgstr "Target: Material UI. Current format: `Concrete createTheme palettes (MUI 5, 6, 7, 9)`. Minimum host version: `5.0.0`. Tested through `9.4.0`. Newer releases require review."
 
-#, pantoken-verbatim
-msgctxt "docs.api:prose"
-msgid "Target: Vite. Minimum host version: `8.0.0`. Tested through `8.3.2`. Newer releases require review."
-msgstr "Target: Vite. Minimum host version: `8.0.0`. Tested through `8.3.2`. Newer releases require review."
+#~ msgctxt "docs.api:prose"
+#~ msgid "Target: Svelte. Current format: `Icon action component compiles and SSR renders on Svelte 4 and 5`. Minimum host version: `4.2.20`. Tested through `5.57.1`. Newer releases require review."
+#~ msgstr "Target: Svelte. Current format: `Icon action component compiles and SSR renders on Svelte 4 and 5`. Minimum host version: `4.2.20`. Tested through `5.57.1`. Newer releases require review."
 
-#, pantoken-verbatim
-msgctxt "docs.api:prose"
-msgid "Target: Angular. Current format: `CUSTOM_ELEMENTS_SCHEMA template compilation (Angular 16.2.12 / TS 5.1.6; Angular 22.2.0 and 22.2.1 / TS 6.0.3)`. Minimum host version: `16.2.12`. Tested through `22.2.1`. Newer releases require review."
-msgstr "Target: Angular. Current format: `CUSTOM_ELEMENTS_SCHEMA template compilation (Angular 16.2.12 / TS 5.1.6; Angular 22.2.0 and 22.2.1 / TS 6.0.3)`. Minimum host version: `16.2.12`. Tested through `22.2.1`. Newer releases require review."
+#~ msgctxt "docs.api:prose"
+#~ msgid "Target: TinyMCE PluginManager. Current format: `Pantoken plugin registration and callback initialization`. Minimum host version: `8.9.2`. Tested through `8.9.2`. Newer releases require review."
+#~ msgstr "Target: TinyMCE PluginManager. Current format: `Pantoken plugin registration and callback initialization`. Minimum host version: `8.9.2`. Tested through `8.9.2`. Newer releases require review."
 
-#, pantoken-verbatim
-msgctxt "docs.api:prose"
-msgid "Target: Astro / Starlight. Current format: `Built Starlight page with injected token stylesheet (Astro 5 and 7)`. Minimum host version: `0.35.0`. Tested through `0.42.5`. Newer releases require review."
-msgstr "Target: Astro / Starlight. Current format: `Built Starlight page with injected token stylesheet (Astro 5 and 7)`. Minimum host version: `0.35.0`. Tested through `0.42.5`. Newer releases require review."
+#~ msgctxt "docs.api:prose"
+#~ msgid "Target: Next.js. Current format: `Production build transpiling and rendering Instructure UI 11.7.8 with React 19.3.0`. Minimum host version: `16.0.0`. Tested through `16.3.8`. Newer releases require review."
+#~ msgstr "Target: Next.js. Current format: `Production build transpiling and rendering Instructure UI 11.7.8 with React 19.3.0`. Minimum host version: `16.0.0`. Tested through `16.3.8`. Newer releases require review."
 
-#, pantoken-verbatim
-msgctxt "docs.api:prose"
-msgid "Target: Mintlify docs.json. Current format: `Official CLI validates generated colors and background theme config`. Minimum host version: `4.0.1555`. Tested through `4.0.1591`. Newer releases require review."
-msgstr "Target: Mintlify docs.json. Current format: `Official CLI validates generated colors and background theme config`. Minimum host version: `4.0.1555`. Tested through `4.0.1591`. Newer releases require review."
+#~ msgctxt "docs.api:prose"
+#~ msgid "Target: Panda CSS. Current format: `Panda token utility extraction from the Pantoken preset`. Minimum host version: `1.12.1`. Tested through `2.1.1`. Newer releases require review."
+#~ msgstr "Target: Panda CSS. Current format: `Panda token utility extraction from the Pantoken preset`. Minimum host version: `1.12.1`. Tested through `2.1.1`. Newer releases require review."
 
-#, pantoken-verbatim
-msgctxt "docs.api:prose"
-msgid "Target: Next.js. Current format: `Production build transpiling and rendering Instructure UI 11.7.10 with React 19.3.0`. Minimum host version: `16.0.0`. Tested through `16.3.8`. Newer releases require review."
-msgstr "Target: Next.js. Current format: `Production build transpiling and rendering Instructure UI 11.7.10 with React 19.3.0`. Minimum host version: `16.0.0`. Tested through `16.3.8`. Newer releases require review."
+#~ msgctxt "docs.api:prose"
+#~ msgid "Target: Vite. Minimum host version: `8.0.0`. Tested through `8.3.2`. Newer releases require review."
+#~ msgstr "Target: Vite. Minimum host version: `8.0.0`. Tested through `8.3.2`. Newer releases require review."
 
-msgctxt "docs.api:prose"
-msgid "Settings saved."
-msgstr "Configuració desada."
+#~ msgctxt "docs.api:prose"
+#~ msgid "Target: Angular. Current format: `CUSTOM_ELEMENTS_SCHEMA template compilation (Angular 16.2.12 / TS 5.1.6; Angular 22.2.0 and 22.2.1 / TS 6.0.3)`. Minimum host version: `16.2.12`. Tested through `22.2.1`. Newer releases require review."
+#~ msgstr "Target: Angular. Current format: `CUSTOM_ELEMENTS_SCHEMA template compilation (Angular 16.2.12 / TS 5.1.6; Angular 22.2.0 and 22.2.1 / TS 6.0.3)`. Minimum host version: `16.2.12`. Tested through `22.2.1`. Newer releases require review."
 
-msgctxt "docs.api:prose"
-msgid "Save settings"
-msgstr "Desa la configuració"
+#~ msgctxt "docs.api:prose"
+#~ msgid "Target: Astro / Starlight. Current format: `Built Starlight page with injected token stylesheet (Astro 5 and 7)`. Minimum host version: `0.35.0`. Tested through `0.42.5`. Newer releases require review."
+#~ msgstr "Target: Astro / Starlight. Current format: `Built Starlight page with injected token stylesheet (Astro 5 and 7)`. Minimum host version: `0.35.0`. Tested through `0.42.5`. Newer releases require review."
 
-msgctxt "docs.api:prose"
-msgid "Profile changes saved."
-msgstr "Canvis del perfil desats."
+#~ msgctxt "docs.api:prose"
+#~ msgid "Target: Mintlify docs.json. Current format: `Official CLI validates generated colors and background theme config`. Minimum host version: `4.0.1555`. Tested through `4.0.1591`. Newer releases require review."
+#~ msgstr "Target: Mintlify docs.json. Current format: `Official CLI validates generated colors and background theme config`. Minimum host version: `4.0.1555`. Tested through `4.0.1591`. Newer releases require review."
 
-msgctxt "docs.api:prose"
-msgid "Use a labelled group for related actions; when buttons represent a toggle choice, expose each state with aria-pressed. Give icon-only buttons an accessible name."
-msgstr "Utilitza un grup etiquetat per a accions relacionades; quan els botons representin una opció d'alternança, exposa cada estat amb aria-pressed. Dona als botons només amb icona un nom accessible."
+#~ msgctxt "docs.api:prose"
+#~ msgid "Target: Next.js. Current format: `Production build transpiling and rendering Instructure UI 11.7.10 with React 19.3.0`. Minimum host version: `16.0.0`. Tested through `16.3.8`. Newer releases require review."
+#~ msgstr "Target: Next.js. Current format: `Production build transpiling and rendering Instructure UI 11.7.10 with React 19.3.0`. Minimum host version: `16.0.0`. Tested through `16.3.8`. Newer releases require review."
 
-msgctxt "docs.api:prose"
-msgid "Save"
-msgstr "Desa"
+#~ msgctxt "docs.api:prose"
+#~ msgid "Settings saved."
+#~ msgstr "Configuració desada."
 
-msgctxt "docs.api:prose"
-msgid "Your draft was saved."
-msgstr "L'esborrany s'ha desat."
+#~ msgctxt "docs.api:prose"
+#~ msgid "Save settings"
+#~ msgstr "Desa la configuració"
 
-#, pantoken-verbatim
-msgctxt "docs.api:prose"
-msgid "**Source:** [card.css](https://github.com/thedannywahl/pantoken/blob/main/formats/components/src/components/card/card.css)"
-msgstr "**Source:** [card.css](https://github.com/thedannywahl/pantoken/blob/main/formats/components/src/components/card/card.css)"
+#~ msgctxt "docs.api:prose"
+#~ msgid "Profile changes saved."
+#~ msgstr "Canvis del perfil desats."
 
-#, pantoken-verbatim
-msgctxt "docs.api:prose"
-msgid "@import \"@pantoken/components/components.css\";"
-msgstr "@import \"@pantoken/components/components.css\";"
+#~ msgctxt "docs.api:prose"
+#~ msgid "Use a labelled group for related actions; when buttons represent a toggle choice, expose each state with aria-pressed. Give icon-only buttons an accessible name."
+#~ msgstr "Utilitza un grup etiquetat per a accions relacionades; quan els botons representin una opció d'alternança, exposa cada estat amb aria-pressed. Dona als botons només amb icona un nom accessible."
 
-msgctxt "docs.api:prose"
-msgid "`.instui-card` · <span class=\"instui-pill -color-success pantoken-doc-tag\">stable</span> — A surface container that accepts arbitrary content."
-msgstr "`.instui-card` · <span class=\"instui-pill -color-success pantoken-doc-tag\">stable</span> — Un contenidor de superfície que accepta contingut arbitrari."
+#~ msgctxt "docs.api:prose"
+#~ msgid "Save"
+#~ msgstr "Desa"
 
-msgctxt "docs.api:prose"
-msgid "`base` is the default elevated surface. Use `nested` for a bordered card inside a base card. Padding and corner radii scale with the Card's own width; legacy markup without a `.content` wrapper uses viewport breakpoints."
-msgstr "`base` és la superfície elevada per defecte. Utilitza `nested` per a una targeta amb vora dins d'una targeta base. El padding i els radis de cantonada s'ajusten a l'amplada de la pròpia Card; el marcatge antic sense un `.content` wrapper utilitza punts d'interrupció de la finestra de visualització."
+#~ msgctxt "docs.api:prose"
+#~ msgid "Your draft was saved."
+#~ msgstr "L'esborrany s'ha desat."
 
 #, pantoken-verbatim
-msgctxt "docs.api:prose"
-msgid "Border-only surface for a card inside a base card."
-msgstr "Border-only surface for a card inside a base card."
+#~ msgctxt "docs.api:prose"
+#~ msgid "**Source:** [card.css](https://github.com/thedannywahl/pantoken/blob/main/formats/components/src/components/card/card.css)"
+#~ msgstr "**Source:** [card.css](https://github.com/thedannywahl/pantoken/blob/main/formats/components/src/components/card/card.css)"
 
 #, pantoken-verbatim
-msgctxt "docs.api:prose"
-msgid "-canvas-rce\n"
-msgstr "-canvas-rce\n"
-
-msgctxt "docs.api:prose"
-msgid "Display name"
-msgstr "Nom per mostrar"
-
-msgctxt "docs.api:prose"
-msgid "Explore your course"
-msgstr "Explora el teu curs"
+#~ msgctxt "docs.api:prose"
+#~ msgid "@import \"@pantoken/components/components.css\";"
+#~ msgstr "@import \"@pantoken/components/components.css\";"
 
-msgctxt "docs.api:prose"
-msgid "Find materials and upcoming work."
-msgstr "Troba materials i treballs propers."
-
-msgctxt "docs.api:prose"
-msgid "View course content"
-msgstr "Visualitza el contingut del curs"
-
-msgctxt "docs.api:prose"
-msgid "\n  Search\n"
-msgstr "\n  Cerca\n"
+#~ msgctxt "docs.api:prose"
+#~ msgid "`.instui-card` · <span class=\"instui-pill -color-success pantoken-doc-tag\">stable</span> — A surface container that accepts arbitrary content."
+#~ msgstr "`.instui-card` · <span class=\"instui-pill -color-success pantoken-doc-tag\">stable</span> — Un contenidor de superfície que accepta contingut arbitrari."
 
-msgctxt "docs.api:prose"
-msgid "Account settings"
-msgstr "Configuració del compte"
+#~ msgctxt "docs.api:prose"
+#~ msgid "`base` is the default elevated surface. Use `nested` for a bordered card inside a base card. Padding and corner radii scale with the Card's own width; legacy markup without a `.content` wrapper uses viewport breakpoints."
+#~ msgstr "`base` és la superfície elevada per defecte. Utilitza `nested` per a una targeta amb vora dins d'una targeta base. El padding i els radis de cantonada s'ajusten a l'amplada de la pròpia Card; el marcatge antic sense un `.content` wrapper utilitza punts d'interrupció de la finestra de visualització."
 
-msgctxt "docs.api:prose"
-msgid "Read the "
-msgstr "Llegiu la "
+#~ msgctxt "docs.api:prose"
+#~ msgid "Border-only surface for a card inside a base card."
+#~ msgstr "Superfície només amb contorn per a una targeta dins d'una targeta base."
 
-msgctxt "docs.api:prose"
-msgid "accessibility guide"
-msgstr "guia d'accessibilitat"
+#~ msgctxt "docs.api:prose"
+#~ msgid "-canvas-rce\n"
+#~ msgstr "-canvas-rce\n"
 
-msgctxt "docs.api:prose"
-msgid "View"
-msgstr "Vista"
+#~ msgctxt "docs.api:prose"
+#~ msgid "Display name"
+#~ msgstr "Nom per mostrar"
 
-msgctxt "docs.api:prose"
-msgid "List"
-msgstr "Llista"
+#~ msgctxt "docs.api:prose"
+#~ msgid "Explore your course"
+#~ msgstr "Explora el teu curs"
 
-msgctxt "docs.api:prose"
-msgid "Grid"
-msgstr "Graella"
+#~ msgctxt "docs.api:prose"
+#~ msgid "Find materials and upcoming work."
+#~ msgstr "Troba materials i treballs propers."
 
-msgctxt "docs.api:prose"
-msgid "Open account details"
-msgstr "Obrir detalls del compte"
+#~ msgctxt "docs.api:prose"
+#~ msgid "View course content"
+#~ msgstr "Visualitza el contingut del curs"
 
-msgctxt "docs.api:prose"
-msgid "Account details"
-msgstr "Detalls del compte"
+#~ msgctxt "docs.api:prose"
+#~ msgid "\n  Search\n"
+#~ msgstr "\n  Cerca\n"
 
-msgctxt "docs.api:prose"
-msgid "Review your account information."
-msgstr "Revisa la informació del teu compte."
+#~ msgctxt "docs.api:prose"
+#~ msgid "Account settings"
+#~ msgstr "Configuració del compte"
 
-#, pantoken-verbatim
-msgctxt "docs.api:prose"
-msgid "-docs\n"
-msgstr "-docs\n"
+#~ msgctxt "docs.api:prose"
+#~ msgid "Read the "
+#~ msgstr "Llegiu la "
 
-msgctxt "docs.api:prose"
-msgid "More information"
-msgstr "Més informació"
+#~ msgctxt "docs.api:prose"
+#~ msgid "accessibility guide"
+#~ msgstr "guia d'accessibilitat"
 
-msgctxt "docs.api:prose"
-msgid "This example shows the large modal surface."
-msgstr "Aquest exemple mostra la gran superfície modal."
+#~ msgctxt "docs.api:prose"
+#~ msgid "View"
+#~ msgstr "Vista"
 
-msgctxt "docs.api:prose"
-msgid "Course overview"
-msgstr "Visió general del curs"
+#~ msgctxt "docs.api:prose"
+#~ msgid "List"
+#~ msgstr "Llista"
 
-msgctxt "docs.api:prose"
-msgid "Assignments"
-msgstr "Tasques"
+#~ msgctxt "docs.api:prose"
+#~ msgid "Grid"
+#~ msgstr "Graella"
 
-msgctxt "docs.api:prose"
-msgid "Upcoming work appears here."
-msgstr "Les tasques pròximes apareixen aquí."
+#~ msgctxt "docs.api:prose"
+#~ msgid "Open account details"
+#~ msgstr "Obrir detalls del compte"
 
-msgctxt "docs.api:prose"
-msgid "Course resources"
-msgstr "Recursos del curs"
+#~ msgctxt "docs.api:prose"
+#~ msgid "Account details"
+#~ msgstr "Detalls del compte"
 
-msgctxt "docs.api:prose"
-msgid "Writing rubric"
-msgstr "Rúbrica d'escriptura"
+#~ msgctxt "docs.api:prose"
+#~ msgid "Review your account information."
+#~ msgstr "Revisa la informació del teu compte."
 
-msgctxt "docs.api:prose"
-msgid "Research paper criteria"
-msgstr "Criteris del treball de recerca"
+#~ msgctxt "docs.api:prose"
+#~ msgid "-docs\n"
+#~ msgstr "-docs\n"
 
-msgctxt "docs.api:prose"
-msgid "Criterion"
-msgstr "Criteri"
+#~ msgctxt "docs.api:prose"
+#~ msgid "More information"
+#~ msgstr "Més informació"
 
-msgctxt "docs.api:prose"
-msgid "Description"
-msgstr "Descripció"
+#~ msgctxt "docs.api:prose"
+#~ msgid "This example shows the large modal surface."
+#~ msgstr "Aquest exemple mostra la gran superfície modal."
 
-msgctxt "docs.api:prose"
-msgid "Evidence"
-msgstr "Evidència"
+#~ msgctxt "docs.api:prose"
+#~ msgid "Course overview"
+#~ msgstr "Visió general del curs"
 
-msgctxt "docs.api:prose"
-msgid "4 of 4"
-msgstr "4 de 4"
+#~ msgctxt "docs.api:prose"
+#~ msgid "Assignments"
+#~ msgstr "Tasques"
 
-msgctxt "docs.api:prose"
-msgid "Sources support the central claim."
-msgstr "Les fonts donen suport a l'afirmació central."
+#~ msgctxt "docs.api:prose"
+#~ msgid "Upcoming work appears here."
+#~ msgstr "Les tasques pròximes apareixen aquí."
 
-msgctxt "docs.api:prose"
-msgid "Open settings"
-msgstr "Obrir la configuració"
+#~ msgctxt "docs.api:prose"
+#~ msgid "Course resources"
+#~ msgstr "Recursos del curs"
 
-msgctxt "docs.api:prose"
-msgid "Grades"
-msgstr "Notes"
+#~ msgctxt "docs.api:prose"
+#~ msgid "Writing rubric"
+#~ msgstr "Rúbrica d'escriptura"
 
-msgctxt "docs.api:prose"
-msgid "People"
-msgstr "Persones"
+#~ msgctxt "docs.api:prose"
+#~ msgid "Research paper criteria"
+#~ msgstr "Criteris del treball de recerca"
 
-msgctxt "docs.api:prose"
-msgid "Fruit\n  "
-msgstr "Fruita\n  "
+#~ msgctxt "docs.api:prose"
+#~ msgid "Criterion"
+#~ msgstr "Criteri"
 
-msgctxt "docs.api:prose"
-msgid "Choose a fruit"
-msgstr "Tria una fruita"
+#~ msgctxt "docs.api:prose"
+#~ msgid "Description"
+#~ msgstr "Descripció"
 
-msgctxt "docs.api:prose"
-msgid "Preferred contact method\n  "
-msgstr "Mètode de contacte preferit\n  "
+#~ msgctxt "docs.api:prose"
+#~ msgid "Evidence"
+#~ msgstr "Evidència"
 
-msgctxt "docs.api:prose"
-msgid "Email"
-msgstr "Correu electrònic"
+#~ msgctxt "docs.api:prose"
+#~ msgid "4 of 4"
+#~ msgstr "4 de 4"
 
-msgctxt "docs.api:prose"
-msgid "Phone"
-msgstr "Telèfon"
+#~ msgctxt "docs.api:prose"
+#~ msgid "Sources support the central claim."
+#~ msgstr "Les fonts donen suport a l'afirmació central."
 
-msgctxt "docs.api:prose"
-msgid "No contact"
-msgstr "Cap contacte"
+#~ msgctxt "docs.api:prose"
+#~ msgid "Open settings"
+#~ msgstr "Obrir la configuració"
 
-msgctxt "docs.api:prose"
-msgid "Security"
-msgstr "Seguretat"
+#~ msgctxt "docs.api:prose"
+#~ msgid "Grades"
+#~ msgstr "Notes"
 
-msgctxt "docs.api:prose"
-msgid "Profile settings"
-msgstr "Configuració del perfil"
+#~ msgctxt "docs.api:prose"
+#~ msgid "People"
+#~ msgstr "Persones"
 
-msgctxt "docs.api:prose"
-msgid "Security settings"
-msgstr "Configuració de seguretat"
+#~ msgctxt "docs.api:prose"
+#~ msgid "Fruit\n  "
+#~ msgstr "Fruita\n  "
 
-msgctxt "docs.api:prose"
-msgid "Activity"
-msgstr "Activitat"
+#~ msgctxt "docs.api:prose"
+#~ msgid "Choose a fruit"
+#~ msgstr "Tria una fruita"
 
-msgctxt "docs.api:prose"
-msgid "Project overview"
-msgstr "Visió general del projecte"
+#~ msgctxt "docs.api:prose"
+#~ msgid "Preferred contact method\n  "
+#~ msgstr "Mètode de contacte preferit\n  "
 
-msgctxt "docs.api:prose"
-msgid "The course helped me understand the material."
-msgstr "El curs m'ha ajudat a comprendre el material."
+#~ msgctxt "docs.api:prose"
+#~ msgid "Email"
+#~ msgstr "Correu electrònic"
 
-#, pantoken-verbatim
-msgctxt "docs.api:prose"
-msgid "Jordan Lee"
-msgstr "Jordan Lee"
+#~ msgctxt "docs.api:prose"
+#~ msgid "Phone"
+#~ msgstr "Telèfon"
 
-msgctxt "docs.api:prose"
-msgid "Student"
-msgstr "Estudiant"
+#~ msgctxt "docs.api:prose"
+#~ msgid "No contact"
+#~ msgstr "Cap contacte"
 
-msgctxt "docs.api:prose"
-msgid "\n  Class-based component styles and a prose layer.\n"
-msgstr "\n  Estils de components basats en classes i una capa de prosa.\n"
+#~ msgctxt "docs.api:prose"
+#~ msgid "Security"
+#~ msgstr "Seguretat"
 
-msgctxt "docs.api:prose"
-msgid "Keyboard support"
-msgstr "Suport de teclat"
+#~ msgctxt "docs.api:prose"
+#~ msgid "Profile settings"
+#~ msgstr "Configuració del perfil"
 
-msgctxt "docs.api:prose"
-msgid "\n  The native disclosure control supports keyboard interaction.\n"
-msgstr "\n  El control nadiu de revelació admet la interacció amb el teclat.\n"
+#~ msgctxt "docs.api:prose"
+#~ msgid "Security settings"
+#~ msgstr "Configuració de seguretat"
 
-msgctxt "docs.api:prose"
-msgid "Help"
-msgstr "Ajuda"
+#~ msgctxt "docs.api:prose"
+#~ msgid "Activity"
+#~ msgstr "Activitat"
 
-msgctxt "docs.api:prose"
-msgid "Find answers to common questions."
-msgstr "Troba respostes a preguntes freqüents."
+#~ msgctxt "docs.api:prose"
+#~ msgid "Project overview"
+#~ msgstr "Visió general del projecte"
 
-msgctxt "docs.api:prose"
-msgid "Placement"
-msgstr "Posició"
+#~ msgctxt "docs.api:prose"
+#~ msgid "The course helped me understand the material."
+#~ msgstr "El curs m'ha ajudat a comprendre el material."
 
-msgctxt "docs.api:prose"
-msgid "This tooltip appears below."
-msgstr "Aquest consell emergent apareix a sota."
+#~ msgctxt "docs.api:prose"
+#~ msgid "Jordan Lee"
+#~ msgstr "Jordan Lee"
 
-msgctxt "docs.api:prose"
-msgid "Course details"
-msgstr "Detalls del curs"
+#~ msgctxt "docs.api:prose"
+#~ msgid "Student"
+#~ msgstr "Estudiant"
 
-msgctxt "docs.api:prose"
-msgid "Review the course schedule."
-msgstr "Consulta el calendari del curs."
+#~ msgctxt "docs.api:prose"
+#~ msgid "\n  Class-based component styles and a prose layer.\n"
+#~ msgstr "\n  Estils de components basats en classes i una capa de prosa.\n"
 
-msgctxt "docs.api:prose"
-msgid "Course work"
-msgstr "Treball del curs"
+#~ msgctxt "docs.api:prose"
+#~ msgid "Keyboard support"
+#~ msgstr "Suport de teclat"
 
-msgctxt "docs.api:prose"
-msgid "See upcoming assignments."
-msgstr "Consulta les tasques pròximes."
+#~ msgctxt "docs.api:prose"
+#~ msgid "\n  The native disclosure control supports keyboard interaction.\n"
+#~ msgstr "\n  El control nadiu de revelació admet la interacció amb el teclat.\n"
 
-#, pantoken-verbatim
-msgctxt "docs.api:prose"
-msgid "Canvas"
-msgstr "Canvas"
+#~ msgctxt "docs.api:prose"
+#~ msgid "Help"
+#~ msgstr "Ajuda"
 
-msgctxt "docs.api:prose"
-msgid "Course home"
-msgstr "Inici del curs"
+#~ msgctxt "docs.api:prose"
+#~ msgid "Find answers to common questions."
+#~ msgstr "Troba respostes a preguntes freqüents."
 
-msgctxt "docs.api:prose"
-msgid "Course materials appear here."
-msgstr "Els materials del curs apareixen aquí."
+#~ msgctxt "docs.api:prose"
+#~ msgid "Placement"
+#~ msgstr "Posició"
 
-msgctxt "docs.api:prose"
-msgid "Signed in as Jordan Lee"
-msgstr "Connectat com a Jordan Lee"
+#~ msgctxt "docs.api:prose"
+#~ msgid "This tooltip appears below."
+#~ msgstr "Aquest consell emergent apareix a sota."
 
-msgctxt "docs.api:prose"
-msgid "Standalone Card stylesheet with support for a custom class prefix."
-msgstr "Full d'estils independent per a Card amb suport per a un prefix de classe personalitzat."
+#~ msgctxt "docs.api:prose"
+#~ msgid "Course details"
+#~ msgstr "Detalls del curs"
 
-msgctxt "docs.api:prose"
-msgid "Import `cardCss` from `@pantoken/components` instead."
-msgstr "Importa `cardCss` des de `@pantoken/components` en lloc."
+#~ msgctxt "docs.api:prose"
+#~ msgid "Review the course schedule."
+#~ msgstr "Consulta el calendari del curs."
 
-msgctxt "docs.api:prose"
-msgid "Wrap `html` in the shared `.pantoken-demo-card` surface (default `true`)."
-msgstr "Envolta `html` a la superfície compartida `.pantoken-demo-card` (per defecte `true`)."
+#~ msgctxt "docs.api:prose"
+#~ msgid "Course work"
+#~ msgstr "Treball del curs"
 
-#, pantoken-verbatim
-msgctxt "docs.api:text"
-msgid "cardCss"
-msgstr "cardCss"
+#~ msgctxt "docs.api:prose"
+#~ msgid "See upcoming assignments."
+#~ msgstr "Consulta les tasques pròximes."
 
-#, pantoken-verbatim
-msgctxt "docs.api:prose"
-msgid "Target: Next.js. Current format: `Production build transpiling and rendering Instructure UI 11.7.10 with React 19.3.0`. Minimum host version: `16.0.0`. Tested through `16.4.0`. Newer releases require review."
-msgstr "Target: Next.js. Current format: `Production build transpiling and rendering Instructure UI 11.7.10 with React 19.3.0`. Minimum host version: `16.0.0`. Tested through `16.4.0`. Newer releases require review."
+#~ msgctxt "docs.api:prose"
+#~ msgid "Canvas"
+#~ msgstr "Canvas"
 
-#, pantoken-verbatim
-msgctxt "docs.api:prose"
-msgid "Target: Panda CSS. Current format: `Panda token utility extraction from the Pantoken preset`. Minimum host version: `1.12.1`. Tested through `2.2.0`. Newer releases require review."
-msgstr "Target: Panda CSS. Current format: `Panda token utility extraction from the Pantoken preset`. Minimum host version: `1.12.1`. Tested through `2.2.0`. Newer releases require review."
+#~ msgctxt "docs.api:prose"
+#~ msgid "Course home"
+#~ msgstr "Inici del curs"
 
-#, pantoken-verbatim
-msgctxt "docs.api:prose"
-msgid "Target: Vite. Minimum host version: `8.0.0`. Tested through `8.3.4`. Newer releases require review."
-msgstr "Target: Vite. Minimum host version: `8.0.0`. Tested through `8.3.4`. Newer releases require review."
+#~ msgctxt "docs.api:prose"
+#~ msgid "Course materials appear here."
+#~ msgstr "Els materials del curs apareixen aquí."
 
-msgctxt "docs.api:prose"
-msgid "Resolve a theme-message target. Only explicitly sandboxed, opaque `srcdoc` frames permit `\"*\"`;\nother opaque or malformed URLs are rejected. Frame messages must not contain confidential data."
-msgstr "Resol un objectiu de missatge de tema. Només els marcs explícitament aïllats i opacs `srcdoc` permeten `\"*\"`;\naltres URL opacs o malformades són rebutjades. Els missatges de marc no han de contenir dades confidencials."
+#~ msgctxt "docs.api:prose"
+#~ msgid "Signed in as Jordan Lee"
+#~ msgstr "Connectat com a Jordan Lee"
 
 #, pantoken-verbatim
-msgctxt "docs.api:prose"
-msgid "Target: WordPress block themes. Current format: `theme.json v3`. Minimum host version: `6.6`. Tested through `7.1.3`. Newer releases require review."
-msgstr "Target: WordPress block themes. Current format: `theme.json v3`. Minimum host version: `6.6`. Tested through `7.1.3`. Newer releases require review."
+#~ msgctxt "docs.api:text"
+#~ msgid "cardCss"
+#~ msgstr "cardCss"
 
 #, pantoken-verbatim
-msgctxt "docs.api:prose"
-msgid "Target: Angular. Current format: `CUSTOM_ELEMENTS_SCHEMA template compilation (Angular 16.2.12 / TS 5.1.6; Angular 22.2.0, 22.2.1, and 22.2.2 / TS 6.0.3)`. Minimum host version: `16.2.12`. Tested through `22.2.2`. Newer releases require review."
-msgstr "Target: Angular. Current format: `CUSTOM_ELEMENTS_SCHEMA template compilation (Angular 16.2.12 / TS 5.1.6; Angular 22.2.0, 22.2.1, and 22.2.2 / TS 6.0.3)`. Minimum host version: `16.2.12`. Tested through `22.2.2`. Newer releases require review."
+#~ msgctxt "docs.api:text"
+#~ msgid "frameTargetOrigin"
+#~ msgstr "frameTargetOrigin"
 
-#, pantoken-verbatim
 msgctxt "docs.api:prose"
-msgid "Target: Astro / Starlight. Current format: `Built Starlight page with injected token stylesheet (Astro 5 and 7)`. Minimum host version: `0.35.0`. Tested through `0.42.6`. Newer releases require review."
-msgstr "Target: Astro / Starlight. Current format: `Built Starlight page with injected token stylesheet (Astro 5 and 7)`. Minimum host version: `0.35.0`. Tested through `0.42.6`. Newer releases require review."
+msgid "\n  Settings saved.\n  "
+msgstr "\n  Configuració desada.\n  "
 
-#, pantoken-verbatim
 msgctxt "docs.api:prose"
-msgid "Target: Mintlify docs.json. Current format: `Official CLI validates generated colors and background theme config`. Minimum host version: `4.0.1555`. Tested through `4.0.1614`. Newer releases require review."
-msgstr "Target: Mintlify docs.json. Current format: `Official CLI validates generated colors and background theme config`. Minimum host version: `4.0.1555`. Tested through `4.0.1614`. Newer releases require review."
+msgid "The logo system preserves each product logo's colors and aspect ratio. Explicit current-color variants inherit the text color."
+msgstr "El sistema de logotips preserva els colors i la relació d'aspecte de cada logotip de producte. Les variants explícites amb current-color hereten el color del text."
 
-#, pantoken-verbatim
 msgctxt "docs.api:prose"
-msgid "Target: Material UI. Current format: `Concrete createTheme palettes (MUI 5, 6, 7, 9)`. Minimum host version: `5.0.0`. Tested through `9.5.0`. Newer releases require review."
-msgstr "Target: Material UI. Current format: `Concrete createTheme palettes (MUI 5, 6, 7, 9)`. Minimum host version: `5.0.0`. Tested through `9.5.0`. Newer releases require review."
+msgid "`.instui-logo` — The logo system preserves each product logo's colors and aspect ratio. Explicit current-color variants inherit the text color."
+msgstr "`.instui-logo` — El sistema de logotips conserva els colors i la relació d'aspecte de cada logotip de producte. Les variants explícites current-color hereten el color del text."
 
-#, pantoken-verbatim
 msgctxt "docs.api:prose"
-msgid "Target: Svelte. Current format: `Icon action component compiles and SSR renders on Svelte 4 and 5`. Minimum host version: `4.2.20`. Tested through `5.57.2`. Newer releases require review."
-msgstr "Target: Svelte. Current format: `Icon action component compiles and SSR renders on Svelte 4 and 5`. Minimum host version: `4.2.20`. Tested through `5.57.2`. Newer releases require review."
+msgid "Target resolution (first match wins):\n1. `data-close-target=\"id\"` — dismiss the element with that id\n2. `popovertarget` / `commandfor` — skip; native browser handles it\n3. walk up to the nearest `<dialog>`, `[popover]`, `[data-dismissible]`, `[open]`, alert, or banner"
+msgstr "Resolució de la destinació (guanya la primera coincidència):\n1. `data-close-target=\"id\"` — descarta l'element amb aquesta id\n2. `popovertarget` / `commandfor` — salta; el navegador natiu s'encarrega\n3. ascendint fins al `<dialog>`, `[popover]`, `[data-dismissible]`, `[open]`, alerta o bàner"
 
-#, pantoken-verbatim
 msgctxt "docs.api:prose"
-msgid "Target: TinyMCE PluginManager. Current format: `Pantoken plugin registration and callback initialization`. Minimum host version: `8.9.2`. Tested through `8.9.3`. Newer releases require review."
-msgstr "Target: TinyMCE PluginManager. Current format: `Pantoken plugin registration and callback initialization`. Minimum host version: `8.9.2`. Tested through `8.9.3`. Newer releases require review."
-
-#, pantoken-verbatim
-msgctxt "docs.api:text"
-msgid "frameTargetOrigin"
-msgstr "frameTargetOrigin"
+msgid "Dismiss strategy:\n- `<dialog>` → `dialog.close()`\n- `[popover]` → `el.hidePopover()`\n- `.instui-alert` or `.instui-banner` → cancelable `dismiss` event, then fade out and remove\n- `[data-dismissible]` or `[open]` → remove open attr + fire bubbling `close`"
+msgstr "Estratègia de tancament:\n- `<dialog>` → `dialog.close()`\n- `[popover]` → `el.hidePopover()`\n- `.instui-alert` o `.instui-banner` → esdeveniment cancel·lable `dismiss`, després es difumina i s'elimina\n- `[data-dismissible]` o `[open]` → eliminar l'atribut open + disparar l'esdeveniment de burbleig `close`"

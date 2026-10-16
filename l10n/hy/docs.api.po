@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: pantoken\n"
-"PO-Revision-Date: 2026-10-15 15:04+0000\n"
+"PO-Revision-Date: 2026-10-16 01:49+0000\n"
 "Last-Translator: pantoken localization engine\n"
 "Language-Team: pantoken\n"
 "MIME-Version: 1.0\n"
@@ -204,6 +204,12 @@ msgid "**Transpile extra InstUI packages**"
 msgstr "**Կոդավազգային թարգմանել լրացուցիչ InstUI փաթեթներ:**"
 
 #: bundlers/next/src/index.md
+#, no-c-format, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "Target: Next.js. Current format: `Production build transpiling and rendering Instructure UI 11.7.10 with React 19.3.0`. Minimum host version: `16.0.0`. Tested through `16.4.0`. Newer releases require review."
+msgstr "Target: Next.js. Current format: `Production build transpiling and rendering Instructure UI 11.7.10 with React 19.3.0`. Minimum host version: `16.0.0`. Tested through `16.4.0`. Newer releases require review."
+
+#: bundlers/next/src/index.md
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "`@pantoken/next` — a Next.js config adapter."
@@ -307,6 +313,12 @@ msgid "**Build a preset from a custom IR**"
 msgstr "**Կառուցել preset custom IR-ից:**"
 
 #: bundlers/panda/src/index.md
+#, no-c-format, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "Target: Panda CSS. Current format: `Panda token utility extraction from the Pantoken preset`. Minimum host version: `1.12.1`. Tested through `2.2.0`. Newer releases require review."
+msgstr "Target: Panda CSS. Current format: `Panda token utility extraction from the Pantoken preset`. Minimum host version: `1.12.1`. Tested through `2.2.0`. Newer releases require review."
+
+#: bundlers/panda/src/index.md
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "`@pantoken/panda` — an Instructure design-token preset for Panda CSS."
@@ -365,6 +377,12 @@ msgstr "Պատրաստի `rebrand` Panda նախածանց:"
 msgctxt "docs.api:prose"
 msgid "**Spread it into panda.config.ts**"
 msgstr "**Ներգրավել այն panda.config.ts-ի մեջ**"
+
+#: bundlers/postcss/src/index.md
+#, no-c-format, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "Target: PostCSS. Minimum host version: `8.0.0`. Tested through `8.5.29`. Newer releases require review."
+msgstr "Target: PostCSS. Minimum host version: `8.0.0`. Tested through `8.5.29`. Newer releases require review."
 
 #: bundlers/postcss/src/index.md
 #, no-c-format
@@ -461,6 +479,12 @@ msgid "**Also expose the primitive palette under a primitive- prefix**"
 msgstr "**Նաև բացահայտեք պարզունակ պալիտրան primitive- նախածանցի տակ**"
 
 #: bundlers/tailwind/src/index.md
+#, no-c-format, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "Target: Tailwind CSS. Minimum host version: `4.0.17`. Tested through `4.3.3`. Newer releases require review."
+msgstr "Target: Tailwind CSS. Minimum host version: `4.0.17`. Tested through `4.3.3`. Newer releases require review."
+
+#: bundlers/tailwind/src/index.md
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "`@pantoken/tailwind` — a Tailwind CSS preset that maps Instructure design tokens into the theme."
@@ -469,8 +493,8 @@ msgstr "`@pantoken/tailwind` — Tailwind CSS-ի նախադրյալ, որը Inst
 #: bundlers/tailwind/src/index.md
 #, no-c-format
 msgctxt "docs.api:prose"
-msgid "Every token is exposed as a `var(--instui-*)` reference (not a concrete value), so Tailwind\nutilities like `bg-color-background-base` theme through the same CSS custom properties that\n`@pantoken/css` emits — light/dark and high-contrast all keep working."
-msgstr "Յուրաքանչյուր token մատչելի է որպես `var(--instui-*)` հղում (չէ որ կոնկրետ արժեք), այնպես որ Tailwind\nօգտակարությունները, ինչպիսիք են `bg-color-background-base`, անցնում են նույն CSS custom properties-ների միջոցով, որոնք\n`@pantoken/css`-ը արձակում է — լուսային/մութ ռեժիմն ու բարձր հակադրությունը շարունակում են աշխատել."
+msgid "Every token is exposed as a `var(--instui-*)` reference (not a concrete value), so Tailwind\nutilities like `bg-background-base` theme through the same CSS custom properties that\n`@pantoken/css` emits — light/dark and high-contrast all keep working."
+msgstr "Յուրաքանչյուր token բացահայտվում է որպես `var(--instui-*)` հղում (ոչ կոնկրետ արժեք), այդ պատճառով Tailwind\n կոմպոնենտները, ինչպիսիք են `bg-background-base`, թեման են վերահեռափոխում նույն CSS հատուկ հատկությունների միջոցով, որոնք \n`@pantoken/css` արտահայտում են — լուսով/մութով և բարձր կոնտրաստով ռեժիմները շարունակում են գործել):"
 
 #: bundlers/tailwind/src/index.md
 #, no-c-format
@@ -527,6 +551,12 @@ msgid "**Consume the virtual modules in app code**"
 msgstr "**Կօգտագործել վիրտուալ մոդուլները app code-ում**"
 
 #: bundlers/vite/src/index.md
+#, no-c-format, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "Target: Vite. Minimum host version: `8.0.0`. Tested through `8.3.4`. Newer releases require review."
+msgstr "Target: Vite. Minimum host version: `8.0.0`. Tested through `8.3.4`. Newer releases require review."
+
+#: bundlers/vite/src/index.md
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "`@pantoken/vite` — a Vite plugin for pantoken."
@@ -579,6 +609,12 @@ msgstr "**Արտանետել pantoken.css ձեր webpack.config.js-ից**"
 msgctxt "docs.api:prose"
 msgid "**Rename the emitted asset**"
 msgstr "**Վերանվանել արտանետված asset-ը**"
+
+#: bundlers/webpack/src/index.md
+#, no-c-format, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "Target: webpack. Current format: `Emitted token CSS build asset`. Minimum host version: `5.61.0`. Tested through `5.111.1`. Newer releases require review."
+msgstr "Target: webpack. Current format: `Emitted token CSS build asset`. Minimum host version: `5.61.0`. Tested through `5.111.1`. Newer releases require review."
 
 #: bundlers/webpack/src/index.md
 #, no-c-format
@@ -1224,6 +1260,12 @@ msgctxt "docs.api:prose"
 msgid "Standalone `calendar.day` stylesheet."
 msgstr "Առանձին `calendar.day` ոճաթերթ։"
 
+#: formats/components/src/variables/cardCss.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Standalone Card stylesheet with support for a custom class prefix."
+msgstr "Standalone Card stylesheet՝ աջակցությամբ հարմարեցված դասի նախածանցի."
+
 #: formats/components/src/variables/checkboxCss.md
 #, no-c-format
 msgctxt "docs.api:prose"
@@ -1704,6 +1746,12 @@ msgctxt "docs.api:prose"
 msgid "The dark branch of a `light-dark()` value, or `null` when the value isn't one."
 msgstr "Մութ ճյուղը `light-dark()` արժեքի, կամ `null` երբ արժեքը այդպիսին չէ։"
 
+#: formats/css/src/functions/layerOrderCss.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "`string`\narning pantoken-doc-tag\">Beta</span>"
+msgstr "`string`\nԶգուշացում pantoken-doc-tag\">Beta</span>"
+
 #: formats/css/src/functions/lightBranch.md
 #, no-c-format
 msgctxt "docs.api:prose"
@@ -1833,6 +1881,12 @@ msgstr "`@pantoken/css` — արտադրում է Instructure-ի դիզայնի 
 msgctxt "docs.api:prose"
 msgid "[toCss](functions/toCss.md) turns any token IR into CSS; [css](variables/css.md) is the ready-made `rebrand` stylesheet and\n[leanCss](variables/leanCss.md) is a lean variant that drops the full `--instui-icon-*` set (the ~1,777 icon data-URIs\nthat dominate the sheet) for CDN/embed delivery — ~a sixth the size over the wire. Both carry the\nelevation + focus-outline foundation (composite custom properties whose pure builders live in\n`@pantoken/utils`), so a component sheet resolves its shadows and focus ring against the token sheet\nalone. A DOM side-effect entry lives at `@pantoken/css/inject`; static files at\n`@pantoken/css/style.css` and `@pantoken/css/style.lean.css`."
 msgstr "[toCss](functions/toCss.md) ցանկացած token IR-ը վերածում է CSS-ի; [css](variables/css.md) պատրաստի `rebrand` ոճաթերթն է, իսկ\n[leanCss](variables/leanCss.md) նրբազգաց տարբերակն է, որը հանում է ամբողջ `--instui-icon-*` հավաքը (մոտ՝ 1,777 ինկոնների data-URI-ները,\nորոնք գերիշխում են թերթը) CDN/embed առաքման համար — վեբով մոտ վեցերորդ մասը: Երկուսն էլ ունեն\nelevation + focus-outline հիմնադրամը (կոմպոզիտով կազմավորված ծավալային custom հատկություններ whose պարզ կառուցողները գտնվում են\n`@pantoken/utils`), այնպես որ կոմպոնենտի ոճաթերթը միայն տոկենների թերթի դեմ է լուծում իր ստվերներն ու ֆոկուսի օղակը։ DOM կողմնակի ազդեցության մուտքը տեղակայված է `@pantoken/css/inject`; ստատիկ ֆայլերը՝\n`@pantoken/css/style.css` և `@pantoken/css/style.lean.css`."
+
+#: formats/css/src/index.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Renames and re-exports [css](variables/css.md)\n## default"
+msgstr "Վերանվանվում և վերաարտահանվում է [css](variables/css.md)\n## ստանդարտ"
 
 #: formats/css/src/index.md
 #, no-c-format
@@ -2347,6 +2401,12 @@ msgctxt "docs.api:prose"
 msgid "Resolve custom-property references against declarations in the document."
 msgstr "Լուծել custom-property հղումները՝ հիմնվելով փաստաթղթում եղած հայտարարությունների վրա."
 
+#: formats/inline-styles/src/interfaces/InlineHtmlOptions.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Inline custom-property declarations. Disable when a companion theme stylesheet supplies them."
+msgstr "Տողային սեփականության հայտարարություններ։ Անջատեք, երբ ուղեկցող թեմայի ոճաթերթը դրանք տրամադրում է."
+
 #: formats/interactions/src/functions/applySpacing.md
 #, no-c-format
 msgctxt "docs.api:prose"
@@ -2430,6 +2490,18 @@ msgstr "Ժամանակաչափը կարող է լինել հստակ միլիվ�
 msgctxt "docs.api:prose"
 msgid "Wire open/close commands plus width-based responsive overlay switching onto a host: any\ncollapsible side panel (e.g. a drawer's tray) can import this interaction rather than each\ncomponent reimplementing it."
 msgstr "Միացնել բաց/փակ հրամանները և լայնության հիման վրա պատասխանող օվերլեյի ավտոմատ փոխարկումը հոստի վրա. ցանկացած քողարկվող կողային վահանակ (օրինակ՝ drawer-ի տրեյ) կարող է ներկրել այս փոխազդեցությունը՝ փոխարենը այն յուրաքանչյուր կոմպոնենտով առանձին իրականացնելու։"
+
+#: formats/interactions/src/functions/initSegmentedControl.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Enhance a labelled native radio group with keyboard navigation and optional overflow controls."
+msgstr "Բարելավել լեյբլավորված բնիկ ռադիո խումբը՝ հավելելով ստեղնաշարի միջոցով նավիգացիա և ցանկության դեպքում overflow կառավարման հնարավորություններ։"
+
+#: formats/interactions/src/functions/initSkeletonLoading.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Bind the parent content region to SSR-provided status and error announcements."
+msgstr "Փոխկապակցել ծնողական բովանդակության տարածքը SSR-ի կողմից տրամադրվող կարգավիճակի և սխալների հայտարարությունների հետ։"
 
 #: formats/interactions/src/functions/initTabs.md
 #, no-c-format
@@ -2708,6 +2780,36 @@ msgctxt "docs.api:prose"
 msgid "Exit treatment. Defaults to `\"fade\"`, matching InstUI Alert."
 msgstr "Ելքի վերաբերումը։ Լռելյայն՝ `\"fade\"`, համընկնում է InstUI Alert-ի հետ։"
 
+#: formats/interactions/src/interfaces/SegmentedControlHandle.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Detach the segmented-control listeners and observers."
+msgstr "Հեռացնել segmented-control-ի լսողներն ու դիտորդները."
+
+#: formats/interactions/src/interfaces/SegmentedControlOptions.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Segmented control options; the medium size is the CSS default."
+msgstr "Բաժանված վերահսկման ընտրանքներ; միջին չափը CSS‑ի ստանդարտն է."
+
+#: formats/interactions/src/interfaces/SkeletonLoadingHandle.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Control parent-level loading semantics without touching decorative skeleton shapes."
+msgstr "Կառավարեք ծնողական մակարդակի բեռնման սեմանտիկան՝ առանց որևէ միջամտության զարդարիչ «skeleton» ձևերին։"
+
+#: formats/interactions/src/interfaces/SkeletonLoadingOptions.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Pre-rendered announcement elements must be outside the busy content region."
+msgstr "Նախօրոք նախապատրաստված հայտարարության տարրերը պետք է գտնվեն զբաղված բովանդակության տարածքից դուրս։"
+
+#: formats/interactions/src/interfaces/SkeletonLoadingState.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "State update sent to an auto-registered skeleton loading region."
+msgstr "Կարգավիճակի թարմացում ուղարկվել է ավտոմատ түрде գրանցված skeleton բեռնման գոտուն։"
+
 #: formats/interactions/src/interfaces/TabsHandle.md
 #, fuzzy, no-c-format
 msgctxt "docs.api:prose"
@@ -2908,6 +3010,12 @@ msgstr "`id` առանձնացնում է անհամ կապվող թերթիկն�
 msgctxt "docs.api:prose"
 msgid "`true` when this call performed the injection."
 msgstr "`true`՝ երբ այս կանչը իրականացրեց ներարկումը."
+
+#: formats/scope/src/functions/frameTargetOrigin.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Resolve a theme-message target. Only explicitly sandboxed, opaque `srcdoc` frames permit `\"*\"`;\nother opaque or malformed URLs are rejected. Frame messages must not contain confidential data."
+msgstr "Պարզել թեմայի հաղորդագրության թիրախը. Միայն հստակորեն sandbox-ացված, ոչ թափանցիկ `srcdoc` շրջանակները թույլատրում են `\"*\"`;\nայլ ոչ թափանցիկ կամ սխալ ձևավորված URL-ները մերժվում են. Ֆրեյմ հաղորդագրությունները չպետք է պարունակեն գաղտնի տվյալներ."
 
 #: formats/scope/src/functions/getScope.md
 #, no-c-format
@@ -4992,6 +5100,12 @@ msgid "**Dark mode with icon VectorDrawables**"
 msgstr "**Մութ ռեժիմ՝ իկոններով VectorDrawables**"
 
 #: platforms/android/src/index.md
+#, no-c-format, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "Target: Android resources. Current format: `Generated colors, dimensions, and VectorDrawable compile and link with Android build-tools`. Minimum host version: `API 35 / build-tools 35.0.0`. Tested through `API 35 / build-tools 35.0.0`. Newer releases require review."
+msgstr "Target: Android resources. Current format: `Generated colors, dimensions, and VectorDrawable compile and link with Android build-tools`. Minimum host version: `API 35 / build-tools 35.0.0`. Tested through `API 35 / build-tools 35.0.0`. Newer releases require review."
+
+#: platforms/android/src/index.md
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "`@pantoken/android` — emit Instructure design tokens as Android resource XML."
@@ -5065,6 +5179,12 @@ msgstr "Կառուցել theme.js բովանդակություն՝ տրված մ
 msgctxt "docs.api:prose"
 msgid "The component-style sheets for a given theme/mode pair (token sheet plus the constant set)."
 msgstr "Տվյալ թեմա/ռեժիմ զույգի կոմպոնենտային ոճաթերթերը (տոկենի թերթիկը և կոնստանտների հավաքածուն)."
+
+#: platforms/canvas-theme-editor/src/index.md
+#, no-c-format, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "Target: Canvas Theme Editor. Host compatibility has not yet been verified."
+msgstr "Target: Canvas Theme Editor. Host compatibility has not yet been verified."
 
 #: platforms/canvas-theme-editor/src/index.md
 #, no-c-format
@@ -5277,6 +5397,12 @@ msgid "**Dark mode with a custom object name**"
 msgstr "**Մութ ռեժիմ՝ հատուկ օբյեկտի անվամբ**"
 
 #: platforms/compose/src/index.md
+#, no-c-format, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "Target: Jetpack Compose. Current format: `Generated Color and Dp token object compiles in an Android library module`. Minimum host version: `Kotlin 2.1.10 / Compose UI 1.8.2 / Android API 35`. Tested through `Kotlin 2.1.10 / Compose UI 1.8.2 / Android API 35`. Newer releases require review."
+msgstr "Target: Jetpack Compose. Current format: `Generated Color and Dp token object compiles in an Android library module`. Minimum host version: `Kotlin 2.1.10 / Compose UI 1.8.2 / Android API 35`. Tested through `Kotlin 2.1.10 / Compose UI 1.8.2 / Android API 35`. Newer releases require review."
+
+#: platforms/compose/src/index.md
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "`@pantoken/compose` — emit Instructure design tokens as Jetpack Compose (Kotlin), via Style\nDictionary. It flattens the IR to concrete, single-mode values and keeps the natively-typed\ntokens (colours, dimensions, numbers)."
@@ -5331,6 +5457,12 @@ msgid "**Build a sub-theme on top of a base theme**"
 msgstr "**Ստեղծել ենթաթեմ՝ հիմքային թեմայի վրա**"
 
 #: platforms/drupal/src/index.md
+#, no-c-format, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "Target: Drupal themes. Current format: `Drupal core discovers generated theme; InfoParser and Symfony YAML accept metadata`. Minimum host version: `10.6.18`. Tested through `11.3.2`. Newer releases require review."
+msgstr "Target: Drupal themes. Current format: `Drupal core discovers generated theme; InfoParser and Symfony YAML accept metadata`. Minimum host version: `10.6.18`. Tested through `11.3.2`. Newer releases require review."
+
+#: platforms/drupal/src/index.md
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "`@pantoken/drupal` — emit an Instructure-themed Drupal sub-theme."
@@ -5383,6 +5515,12 @@ msgstr "**Տոկենը տեղադրել էլփոստի բջիջում (լույ�
 msgctxt "docs.api:prose"
 msgid "Inline resolved pantoken tokens and component CSS into HTML email markup."
 msgstr "Ներդնել լուծված pantoken տոկեններն ու component CSS-ը HTML էլփոստի մարկափում."
+
+#: platforms/email/src/index.md
+#, no-c-format, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "Target: HTML email. Host compatibility has not yet been verified."
+msgstr "Target: HTML email. Host compatibility has not yet been verified."
 
 #: platforms/email/src/index.md
 #, no-c-format
@@ -5518,6 +5656,12 @@ msgid "**Dark mode with SVG icon assets and manifest**"
 msgstr "**Մութ ռեժիմ SVG պատկերակի ակտիվներով և մանիֆեստով**"
 
 #: platforms/flutter/src/index.md
+#, no-c-format, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "Target: Flutter. Host compatibility has not yet been verified."
+msgstr "Target: Flutter. Host compatibility has not yet been verified."
+
+#: platforms/flutter/src/index.md
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "`@pantoken/flutter` — emit Instructure design tokens as Flutter (Dart), via Style Dictionary. It\nflattens the IR to concrete, single-mode values and keeps the natively-typed tokens."
@@ -5567,6 +5711,12 @@ msgid "**Write the assets under a site root**"
 msgstr "**Գրել ակտիվները կայքի root-ի տակ**"
 
 #: platforms/hugo/src/index.md
+#, no-c-format, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "Target: Hugo. Current format: `Hugo Pipes builds the Pantoken token stylesheet`. Minimum host version: `0.165.0`. Tested through `0.165.0`. Newer releases require review."
+msgstr "Target: Hugo. Current format: `Hugo Pipes builds the Pantoken token stylesheet`. Minimum host version: `0.165.0`. Tested through `0.165.0`. Newer releases require review."
+
+#: platforms/hugo/src/index.md
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "`@pantoken/hugo` — emit the Instructure token stylesheet for a Hugo site."
@@ -5596,6 +5746,12 @@ msgstr "Կառուցել թոկենային ակտիվ ֆայլերը Jekyll կ�
 msgctxt "docs.api:prose"
 msgid "The Sass partial (`_sass/pantoken.scss`), the plain stylesheet\n(`assets/css/pantoken.css`), and the prose stylesheet (`assets/css/pantoken-prose.css`)."
 msgstr "Sass մասնակի (`_sass/pantoken.scss`), պարզ ոճի թերթ\n(`assets/css/pantoken.css`), և արձակ ոճի թերթ (`assets/css/pantoken-prose.css`):"
+
+#: platforms/jekyll/src/index.md
+#, no-c-format, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "Target: Jekyll. Current format: `Jekyll builds the generated Sass partial into site CSS`. Minimum host version: `4.4.1`. Tested through `4.4.1`. Newer releases require review."
+msgstr "Target: Jekyll. Current format: `Jekyll builds the generated Sass partial into site CSS`. Minimum host version: `4.4.1`. Tested through `4.4.1`. Newer releases require review."
 
 #: platforms/jekyll/src/index.md
 #, no-c-format
@@ -5638,6 +5794,12 @@ msgstr "**egui (Color32), կանխադրված ձևաչափ**"
 msgctxt "docs.api:prose"
 msgid "**iced (Color), dark mode**"
 msgstr "**iced (Color), մուգ ռեժիմ**"
+
+#: platforms/rust/src/index.md
+#, no-c-format, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "Target: Rust GUI frameworks. Current format: `Generated egui Color32 accessors and iced_core Color constants compile with the Rust toolchain`. Minimum host version: `1.95.0`. Tested through `1.95.0`. Newer releases require review."
+msgstr "Target: Rust GUI frameworks. Current format: `Generated egui Color32 accessors and iced_core Color constants compile with the Rust toolchain`. Minimum host version: `1.95.0`. Tested through `1.95.0`. Newer releases require review."
 
 #: platforms/rust/src/index.md
 #, no-c-format
@@ -5701,6 +5863,12 @@ msgid "**Dark mode with a custom class name and an asset catalog**"
 msgstr "**Մուգ ռեժիմ՝ հատուկ դասի անվամբ և ռեսուրսների կատալոգով**"
 
 #: platforms/swift/src/index.md
+#, no-c-format, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "Target: Swift iOS. Current format: `UIKit SwiftPM module, runtime token check, and compiled Icons.xcassets`. Tested environment: `Xcode 27.0 (27A266a), Swift 6.4, iOS Simulator SDK/runtime 27.0, iPhone 18 Pro, arm64 iOS 15 deployment target`. Runtime tested only on iOS Simulator 27.0; this does not establish an iOS 15 runtime floor. No watchOS or tvOS claim."
+msgstr "Target: Swift iOS. Current format: `UIKit SwiftPM module, runtime token check, and compiled Icons.xcassets`. Tested environment: `Xcode 27.0 (27A266a), Swift 6.4, iOS Simulator SDK/runtime 27.0, iPhone 18 Pro, arm64 iOS 15 deployment target`. Runtime tested only on iOS Simulator 27.0; this does not establish an iOS 15 runtime floor. No watchOS or tvOS claim."
+
+#: platforms/swift/src/index.md
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "`@pantoken/swift` — emit Instructure design tokens as Swift via Style Dictionary."
@@ -5711,6 +5879,12 @@ msgstr "`@pantoken/swift` — արտահանել Instructure-ի դիզայնի t
 msgctxt "docs.api:prose"
 msgid "This is pantoken's native proof: it flattens the IR to concrete, single-mode values\n(`@pantoken/core`'s `toStyleDictionary`), keeps the natively-typed tokens (colours, dimensions,\nnumbers), and hands them to `@pantoken/sd-config`. Swapping `platform` to `flutter`/`compose`\nreuses the same path."
 msgstr "Սա pantoken-ի բնիկ ապացույցն է. այն հարթեցնում է IR-ը կոնկրետ, միակ ռեժիմի արժեքների՝\n(`@pantoken/core`-ի `toStyleDictionary`), պահպանում է բնիկ տիպավորված token-ները (գույներ, չափեր,\nթվեր), և փոխանցում դրանք `@pantoken/sd-config`-ին. `platform`-ը փոխարինելով `flutter`/`compose`-ով\nվերօգտագործում է նույն ճանապարհը."
+
+#: platforms/swift/src/index.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "The generated Swift uses UIKit and targets iOS. `mise run verify:swift:syntax` only parses its\nsource; `mise run verify:swift:host` needs full Xcode and the iOS Simulator SDK to type-check it."
+msgstr "Ստեղծված Swift-ը օգտագործում է UIKit և թիրախավորում է iOS. `mise run verify:swift:syntax` միայն վերլուծում է դրա\nաղբյուրը; `mise run verify:swift:host` պահանջում է ամբողջական Xcode և iOS Simulator SDK՝ տիպերի ստուգման համար."
 
 #: platforms/swift/src/index.md
 #, no-c-format
@@ -5759,6 +5933,12 @@ msgstr "Ներդրված փոփոխականների օբյեկտը, որը պե�
 msgctxt "docs.api:prose"
 msgid "**Convert an IR to the nested variables object**"
 msgstr "**IR-ը փոխարկել ներդրված փոփոխականների օբյեկտի**"
+
+#: platforms/vanilla/src/index.md
+#, no-c-format, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "Target: Vanilla Forums. Host compatibility has not yet been verified."
+msgstr "Target: Vanilla Forums. Host compatibility has not yet been verified."
 
 #: platforms/vanilla/src/index.md
 #, no-c-format
@@ -5825,6 +6005,12 @@ msgstr "Մի `theme.json` փաստաթուղթ։"
 msgctxt "docs.api:prose"
 msgid "**Convert an IR to a light-mode theme.json**"
 msgstr "**IR-ը վերածել light-mode theme.json-ի**"
+
+#: platforms/wordpress/src/index.md
+#, no-c-format, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "Target: WordPress block themes. Current format: `theme.json v3`. Minimum host version: `6.6`. Tested through `7.1.3`. Newer releases require review."
+msgstr "Target: WordPress block themes. Current format: `theme.json v3`. Minimum host version: `6.6`. Tested through `7.1.3`. Newer releases require review."
 
 #: platforms/wordpress/src/index.md
 #, no-c-format
@@ -6010,7 +6196,6 @@ msgid "A CSS color: a literal (`#1d354f`, `rebeccapurple`), a `var(--token)`, or
 msgstr "CSS գույն` բառացի (`#1d354f`, `rebeccapurple`), `var(--token)`, կամ ներակցված օգնականի արդյունք։"
 
 #: plugins/pantoken/custom-components/src/functions/agentShellRules.md
-#: plugins/pantoken/custom-components/src/functions/cardRules.md
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "Build the card layout CSS (doc comment + rules), substituting `prefix` for the `pfx-` sentinel.\nDefaults to `\"instui-\"` for the shipped stylesheet; pass `\"\"` for an unprefixed build."
@@ -6040,6 +6225,12 @@ msgctxt "docs.api:prose"
 msgid "Build the button-set layout CSS (doc comment + rules), substituting `prefix` for the `pfx-`\nsentinel. Defaults to `\"instui-\"` for the shipped stylesheet; pass `\"\"` for an unprefixed build."
 msgstr "Կառուցեք բաբկա դրվածքի CSS (doc մեկնաբանություն + կանոններ), փոխարինելով `prefix`-ը `pfx-` վճվածի համար։ Լռելյայն `\"instui-\"` առաքվածի ոճային թերթի համար; փոխանցեք `\"\"`-ը առանց նախածանցի կառուցման համար։"
 
+#: plugins/pantoken/custom-components/src/functions/cardRules.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Import `cardCss` from `@pantoken/components` instead."
+msgstr "Ներմուծել `cardCss` ից `@pantoken/components` փոխարեն."
+
 #: plugins/pantoken/custom-components/src/functions/customComponents.md
 #, no-c-format
 msgctxt "docs.api:prose"
@@ -6060,6 +6251,18 @@ msgstr "Մի [PantokenPlugin](../../../../../packages/core/src/interfaces/Pantok
 msgctxt "docs.api:prose"
 msgid "Build the logo utility CSS as an aspect-ratio-aware mask painter for `@pantoken/plugin-logos`'\n`-logo-<name>` glyph classes, substituting `prefix` for the `pfx-` sentinel."
 msgstr "Կառուցեք լոգոյի օժանդակ CSS-ը որպես հարաբերակցության (aspect-ratio) նկատմամբ զգայուն քողարկման ներկիչ (mask painter) `@pantoken/plugin-logos`'\n`-logo-<name>` գլիֆային դասերի համար՝ փոխարինելով `prefix`-ը `pfx-` պահապանով (sentinel):"
+
+#: plugins/pantoken/custom-components/src/functions/segmentedControlRules.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Build segmented-control CSS, replacing the component prefix sentinel."
+msgstr "Կառուցել segmented-control-ի CSS-ը, փոխարինելով կոմպոնենտի նախածանցի նշիչը։"
+
+#: plugins/pantoken/custom-components/src/functions/skeletonLoaderRules.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Build the skeleton loader CSS, replacing the component prefix sentinel."
+msgstr "Ստեղծել skeleton loader-ի CSS‑ը՝ փոխարինելով կոմպոնենտի նախածանցի նշիչը։"
 
 #: plugins/pantoken/custom-components/src/index.md
 #, no-c-format
@@ -8054,6 +8257,12 @@ msgid "Register the pantoken custom elements (call once during app bootstrap)."
 msgstr "Գրանցել pantoken custom elements-ները (կանչել մեկ անգամ app bootstrap-ի ընթացքում):"
 
 #: renderers/angular/src/index.md
+#, no-c-format, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "Target: Angular. Current format: `CUSTOM_ELEMENTS_SCHEMA template compilation (Angular 16.2.12 / TS 5.1.6; Angular 22.2.0, 22.2.1, and 22.2.2 / TS 6.0.3)`. Minimum host version: `16.2.12`. Tested through `22.2.2`. Newer releases require review."
+msgstr "Target: Angular. Current format: `CUSTOM_ELEMENTS_SCHEMA template compilation (Angular 16.2.12 / TS 5.1.6; Angular 22.2.0, 22.2.1, and 22.2.2 / TS 6.0.3)`. Minimum host version: `16.2.12`. Tested through `22.2.2`. Newer releases require review."
+
+#: renderers/angular/src/index.md
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "`@pantoken/angular` — Angular helpers over `@pantoken/web-components`."
@@ -8088,6 +8297,12 @@ msgstr "**astro.config.mjs**"
 msgctxt "docs.api:prose"
 msgid "Build the pantoken stylesheet for a theme (with optional plugin CSS). Exposed for direct use."
 msgstr "Կառուցել pantoken ոճային թերթը թեմայի համար (ընտրովի խրտնակ CSS ունեցող): Բացահայտ ուղղակի օգտագործման համար:"
+
+#: renderers/astro/src/index.md
+#, no-c-format, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "Target: Astro / Starlight. Current format: `Built Starlight page with injected token stylesheet (Astro 5 and 7)`. Minimum host version: `0.35.0`. Tested through `0.42.6`. Newer releases require review."
+msgstr "Target: Astro / Starlight. Current format: `Built Starlight page with injected token stylesheet (Astro 5 and 7)`. Minimum host version: `0.35.0`. Tested through `0.42.6`. Newer releases require review."
 
 #: renderers/astro/src/index.md
 #, no-c-format
@@ -8158,16 +8373,22 @@ msgid "**Scope to Bootstrap's theme attribute**"
 msgstr "**Bootstrap-ի թեմայի հատկանիշով շրջանակ**"
 
 #: renderers/bootstrap/src/index.md
-#, no-c-format
+#, no-c-format, pantoken-verbatim
 msgctxt "docs.api:prose"
-msgid "`@pantoken/bootstrap` — theme Bootstrap 5 with Instructure tokens."
-msgstr "`@pantoken/bootstrap` — Bootstrap 5 թեմա՝ Instructure տոկեններով."
+msgid "Target: Bootstrap. Current format: `CSS variables: body + primary button`. Minimum host version: `5.2.0`. Tested through `5.3.8`. Newer releases require review."
+msgstr "Target: Bootstrap. Current format: `CSS variables: body + primary button`. Minimum host version: `5.2.0`. Tested through `5.3.8`. Newer releases require review."
 
 #: renderers/bootstrap/src/index.md
 #, no-c-format
 msgctxt "docs.api:prose"
-msgid "Points Bootstrap's `--bs-*` CSS variables at `var(--instui-*)`. Drop it in alongside\n`@pantoken/css` and Bootstrap components adopt the Instructure look while keeping theming through\nthe same custom properties."
-msgstr "`--bs-*` CSS փոփոխականները ուղղված են `var(--instui-*)`-ին. Դրեք այն կողք-կողքի\n`@pantoken/css`-ի հետ, և Bootstrap կոմպոնենտները կստանան Instructure-ի տեսքը՝ պահպանելով թեմայի հարմարեցումը նույն հարմարեցված հատկությունների միջոցով."
+msgid "`@pantoken/bootstrap` — theme Bootstrap 5.2+ body variables and primary buttons with Instructure tokens."
+msgstr "`@pantoken/bootstrap` — Bootstrap 5.2+ թեմայի body փոփոխականներ և primary կոճակներ՝ Instructure տոկեններով."
+
+#: renderers/bootstrap/src/index.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Points body and primary-button `--bs-*` CSS variables at `var(--instui-*)`. Load it after\nBootstrap and `@pantoken/css`; other component variants retain their Bootstrap defaults."
+msgstr "Points body and primary-button `--bs-*` CSS փոփոխականները տեղակայված են `var(--instui-*)`. Լցնել այն `Bootstrap\n-ից և `@pantoken/css`-ից հետո`; մյուս կոմպոնենտների տարբերակները պահպանում են իրենց Bootstrap-ի կանխադրվածները."
 
 #: renderers/bootstrap/src/index.md
 #, no-c-format
@@ -8235,6 +8456,12 @@ msgid "Turn `--instui-color-background-brand` into `colorBackgroundBrand`."
 msgstr "Փոխեք `--instui-color-background-brand`-ը `colorBackgroundBrand`-ի։"
 
 #: renderers/css-in-js/src/index.md
+#, no-c-format, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "Target: Emotion CSS-in-JS. Current format: `ThemeProvider SSR emits the Pantoken token variable`. Minimum host version: `11.14.0`. Tested through `11.14.0`. Newer releases require review."
+msgstr "Target: Emotion CSS-in-JS. Current format: `ThemeProvider SSR emits the Pantoken token variable`. Minimum host version: `11.14.0`. Tested through `11.14.0`. Newer releases require review."
+
+#: renderers/css-in-js/src/index.md
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "`@pantoken/css-in-js` — an Instructure theme object for runtime CSS-in-JS libraries."
@@ -8289,6 +8516,12 @@ msgid "Emit the Infima → Instructure CSS-variable bridge."
 msgstr "Արձակել Infima → Instructure CSS-փոփոխական կամուրջ:"
 
 #: renderers/docusaurus/src/index.md
+#, no-c-format, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "Target: Docusaurus theme-classic. Current format: `Infima CSS-variable bridge: primary and background`. Minimum host version: `3.0.0`. Tested through `3.10.2`. Newer releases require review."
+msgstr "Target: Docusaurus theme-classic. Current format: `Infima CSS-variable bridge: primary and background`. Minimum host version: `3.0.0`. Tested through `3.10.2`. Newer releases require review."
+
+#: renderers/docusaurus/src/index.md
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "`@pantoken/docusaurus` — theme a Docusaurus site with Instructure tokens."
@@ -8339,8 +8572,8 @@ msgstr "**Սահմանափակել շերտը կոնտեյների վրա**"
 #: renderers/foundation/src/functions/toFoundationSettings.md
 #, no-c-format
 msgctxt "docs.api:prose"
-msgid "Emit the Foundation Sass settings override. Load it before `@include foundation-everything`."
-msgstr "Արտահանեք Foundation-ի Sass կարգավորումների փոխարինիչը։ Լցրեք այն `@include foundation-everything`-ից առաջ։"
+msgid "Emit the Foundation Sass settings override. Import it before Foundation itself and\n`@include foundation-everything` so its palette is available to Sass."
+msgstr "Արտահանիր Foundation-ի Sass կարգավորումներն էլ ավելի վերակապը (override): Ներմուծիր այն Foundation-ի ինքը նախքան և\n`@include foundation-everything` այնպես որ նրա գույների պալիտրան հասանելի լինի Sass‑ին."
 
 #: renderers/foundation/src/functions/toFoundationSettings.md
 #, no-c-format
@@ -8355,16 +8588,22 @@ msgid "**Let consumer settings still win**"
 msgstr "**Թող սպառողի կարգավորումները դեռ էլ հաղթեն**"
 
 #: renderers/foundation/src/index.md
-#, no-c-format
+#, no-c-format, pantoken-verbatim
 msgctxt "docs.api:prose"
-msgid "`@pantoken/foundation` — theme Foundation for Sites with Instructure tokens."
-msgstr "`@pantoken/foundation` — Foundation for Sites թեմա՝ Instructure token-ներով."
+msgid "Target: Foundation for Sites. Current format: `Concrete Sass settings + variable-backed CSS overlay`. Minimum host version: `6.1.2`. Tested through `6.9.0`. Newer releases require review."
+msgstr "Target: Foundation for Sites. Current format: `Concrete Sass settings + variable-backed CSS overlay`. Minimum host version: `6.1.2`. Tested through `6.9.0`. Newer releases require review."
 
 #: renderers/foundation/src/index.md
 #, no-c-format
 msgctxt "docs.api:prose"
-msgid "Foundation is Sass-first, so this package ships two layers. [toFoundationSettings](functions/toFoundationSettings.md) emits a\n`_settings`-style Sass partial that points Foundation's setting variables at `var(--instui-*)`, so\na Sass build compiles the Instructure look while keeping runtime theming through the same custom\nproperties. [toFoundationCss](functions/toFoundationCss.md) emits a thin CSS overlay that themes the common compiled\nclasses (`.button`, `.callout`, links) the same way — useful when you consume stock Foundation CSS\nand just want to layer Instructure colors on top without recompiling."
-msgstr "Foundation-ը նախընտրաբար Sass-ֆուստ է, այդ պատճառով այս փաթեթը տեղափոխում է երկու շերտ: [toFoundationSettings](functions/toFoundationSettings.md)-ը արտածում է `_settings`-ճաշակի Sass մասը, որը Foundation-ի setting փոփոխականները ուղղորդում է `var(--instui-*)`-ին, այնպես որ Sass-շենքը համատեղում է Instructure տեսքն՝ պահելով runtime թեմայումը նույն custom properties-ի միջոցով. [toFoundationCss](functions/toFoundationCss.md)-ը արտածում է նիհար CSS օվերլեյ, որը նույն կերպ թեմավորում է հաճախակի կոմպիլացված դասերը (`.button`, `.callout`, links) — օգտակար է այն դեպքում երբ օգտագործում եք stock Foundation CSS և ուզում եք պարզապես վերաթողարկել Instructure գույները առանց կրկնակի կոմպայլի:"
+msgid "`@pantoken/foundation` — theme Foundation for Sites Sass output and common CSS classes."
+msgstr "`@pantoken/foundation` — թեմա՝ Foundation for Sites-ի Sass-ի ելք և ընդհանուր CSS դասեր."
+
+#: renderers/foundation/src/index.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Foundation is Sass-first, so this package ships two layers. [toFoundationSettings](functions/toFoundationSettings.md) emits a\n`_settings`-style Sass partial with concrete light-mode rebrand values so Foundation's colour functions can\ncompile. [toFoundationCss](functions/toFoundationCss.md) emits a thin variable-backed CSS overlay that themes the common compiled\nclasses (`.button`, `.callout`, links) the same way — useful when you consume stock Foundation CSS\nand just want to layer Instructure colors on top without recompiling."
+msgstr "Foundation-ը առաջին հերթին հենված է Sass-ի վրա, ուստի այս փաթեթը տրամադրում է երկու շերտ։ [toFoundationSettings](functions/toFoundationSettings.md) արտադրում է \n`_settings`-ճանաչագրված Sass partial կոնկրետ light-mode ռեբրենդավորման արժեքներով, որպեսզի Foundation-ի գույնի ֆունկցիաները կարողանան \ncompile։ [toFoundationCss](functions/toFoundationCss.md) արտադրում է նուրբ, փոփոխականներով ապահովված CSS օվերլեյ, որը թեմավորում է ընդհանուր կոմպիլացված \nclasses (`.button`, `.callout`, links) նույն կերպ) — օգտակար է, երբ օգտագործում եք stock Foundation CSS\n և պարզապես ցանկանում եք վերին շերտով կիրառել Instructure գույները առանց կրկնակի կոմպիլացնելու անհրաժեշտության։"
 
 #: renderers/foundation/src/index.md
 #, no-c-format
@@ -8433,6 +8672,12 @@ msgstr "Markdown-it օրինակ:"
 msgctxt "docs.api:prose"
 msgid "**Compose a brand-icon plugin's resolver**"
 msgstr "**Կազմել բրենդ-պատկերի plugin-ի լուծիչ**"
+
+#: renderers/markdown-it/src/index.md
+#, no-c-format, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "Target: markdown-it. Minimum host version: `14.0.0`. Tested through `15.0.2`. Newer releases require review."
+msgstr "Target: markdown-it. Minimum host version: `14.0.0`. Tested through `15.0.2`. Newer releases require review."
 
 #: renderers/markdown-it/src/index.md
 #, no-c-format
@@ -8519,6 +8764,12 @@ msgid "The `colors` + `background` keys to merge into a Mintlify `docs.json`."
 msgstr "`colors` + `background` ստեղները միաձուլել Mintlify `docs.json`-ի մեջ:"
 
 #: renderers/mintlify/src/index.md
+#, no-c-format, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "Target: Mintlify docs.json. Current format: `Official CLI validates generated colors and background theme config`. Minimum host version: `4.0.1555`. Tested through `4.0.1614`. Newer releases require review."
+msgstr "Target: Mintlify docs.json. Current format: `Official CLI validates generated colors and background theme config`. Minimum host version: `4.0.1555`. Tested through `4.0.1614`. Newer releases require review."
+
+#: renderers/mintlify/src/index.md
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "`@pantoken/mintlify` — theme a Mintlify docs site with Instructure tokens."
@@ -8597,6 +8848,12 @@ msgid "**Per-brand, per-mode theme**"
 msgstr "**Բրենդի և ռեժիմի համապատասխան թեմա**"
 
 #: renderers/mui/src/index.md
+#, no-c-format, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "Target: Material UI. Current format: `Concrete createTheme palettes (MUI 5, 6, 7, 9)`. Minimum host version: `5.0.0`. Tested through `9.5.0`. Newer releases require review."
+msgstr "Target: Material UI. Current format: `Concrete createTheme palettes (MUI 5, 6, 7, 9)`. Minimum host version: `5.0.0`. Tested through `9.5.0`. Newer releases require review."
+
+#: renderers/mui/src/index.md
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "`@pantoken/mui` — theme MUI (Material UI) with Instructure tokens."
@@ -8661,6 +8918,12 @@ msgstr "**Լռակյացի վերաբրենդավորման կառուցում (
 msgctxt "docs.api:prose"
 msgid "**Canvas theme, unscoped, keep the full token set**"
 msgstr "**Canvas թեմա, անտիրույթային, պահել ամբողջ թոկեն հավաքածուն**"
+
+#: renderers/pendo/src/index.md
+#, no-c-format, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "Target: Pendo. Host compatibility has not yet been verified."
+msgstr "Target: Pendo. Host compatibility has not yet been verified."
 
 #: renderers/pendo/src/index.md
 #, no-c-format
@@ -8843,6 +9106,12 @@ msgid "A rehype plugin that tags GitHub-alert blockquotes: it detects a `[!NOTE]
 msgstr "Rehype plugin, որը պիտակավորում է GitHub-alert blockquote-ներ: այն հայտնաբերում է `[!NOTE]`-style պիտակ blockquote-ի\nսկզբում, այն գրանցում է որպես `data-alert=\"note\"`, և ջնջում է պիտակի տեքստը։ React\n`blockquote` բաղադրիչ ապա render անում է InstUI `Alert`։"
 
 #: renderers/react-markdown/src/index.md
+#, no-c-format, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "Target: react-markdown. Current format: `SSR-rendered InstUI heading, icon, and color swatch with React 19.3.0`. Minimum host version: `10.1.0`. Tested through `10.1.0`. Newer releases require review."
+msgstr "Target: react-markdown. Current format: `SSR-rendered InstUI heading, icon, and color swatch with React 19.3.0`. Minimum host version: `10.1.0`. Tested through `10.1.0`. Newer releases require review."
+
+#: renderers/react-markdown/src/index.md
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "`@pantoken/react-markdown` — render Markdown with Instructure UI components and pantoken icons."
@@ -8993,6 +9262,12 @@ msgid "Select the token object for a colour scheme (pair with RN's `useColorSche
 msgstr "Ընտրել մեջբերում օբյեկտ գույնի սխեմայի համար (զույգ RN's `useColorScheme`-ի հետ)։"
 
 #: renderers/react-native/src/index.md
+#, no-c-format, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "Target: React Native. Host compatibility has not yet been verified."
+msgstr "Target: React Native. Host compatibility has not yet been verified."
+
+#: renderers/react-native/src/index.md
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "`@pantoken/react-native` — Instructure design tokens as React Native `StyleSheet`-friendly\nobjects. React Native has no CSS variables, so tokens are fully resolved to concrete values:\ncolours stay hex strings, dimensions become numbers (dp), and icons are excluded."
@@ -9039,6 +9314,12 @@ msgstr "Պարզված տոկենի արժեքը կարդում է փաստաթ�
 msgctxt "docs.api:prose"
 msgid "React hook returning a resolved `--instui-*` token value (re-reads on `name` change)."
 msgstr "React կեռիկ, որ վերադարձնում է լուծված `--instui-*` թոկեն արժեքը (վերալից `name` փոփոխության ժամանակ):"
+
+#: renderers/react/src/index.md
+#, no-c-format, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "Target: React. Current format: `SSR-rendered Icon custom element and token fallback`. Minimum host version: `19.3.0`. Tested through `19.3.0`. Newer releases require review."
+msgstr "Target: React. Current format: `SSR-rendered Icon custom element and token fallback`. Minimum host version: `19.3.0`. Tested through `19.3.0`. Newer releases require review."
 
 #: renderers/react/src/index.md
 #, no-c-format
@@ -9102,6 +9383,12 @@ msgid "**Built-in icon set**"
 msgstr "**Ներկառուցված պատկերակների հավաքածու**"
 
 #: renderers/rehype/src/index.md
+#, no-c-format, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "Target: rehype. Current format: `HAST + raw SVG`. Minimum host version: `13.0.0`. Tested through `13.0.2`. Newer releases require review."
+msgstr "Target: rehype. Current format: `HAST + raw SVG`. Minimum host version: `13.0.0`. Tested through `13.0.2`. Newer releases require review."
+
+#: renderers/rehype/src/index.md
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "`@pantoken/rehype` — render `:icon:` codes as inline SVG."
@@ -9142,6 +9429,12 @@ msgstr "Արձակել shadcn → Instructure CSS-variable կամուրջ։"
 msgctxt "docs.api:prose"
 msgid "Emit Tailwind v4 aliases for the shadcn theme variables and derived radius scale."
 msgstr "Գեներացնել Tailwind v4 aliases՝ shadcn թեմայի փոփոխականների և հաշվարկված ռադիուսի սանդղակի համար."
+
+#: renderers/shadcn/src/index.md
+#, no-c-format, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "Target: shadcn/ui CSS variables. Current format: `Tailwind 4.3.3 compiles the Pantoken primary theme alias`. Minimum host version: `4.3.3`. Tested through `4.3.3`. Newer releases require review."
+msgstr "Target: shadcn/ui CSS variables. Current format: `Tailwind 4.3.3 compiles the Pantoken primary theme alias`. Minimum host version: `4.3.3`. Tested through `4.3.3`. Newer releases require review."
 
 #: renderers/shadcn/src/index.md
 #, no-c-format
@@ -9196,6 +9489,12 @@ msgstr "`\"light\"` կամ `\"dark\"` (նախնական `\"light\"`)."
 msgctxt "docs.api:prose"
 msgid "A `ThemeVars`-shaped object."
 msgstr "Օբյեկտ՝ `ThemeVars` տեսքով."
+
+#: renderers/storybook/src/index.md
+#, no-c-format, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "Target: Storybook theming. Current format: `Storybook ThemeVars constructor accepts light and dark Pantoken themes`. Minimum host version: `8.6.14`. Tested through `8.6.14`. Newer releases require review."
+msgstr "Target: Storybook theming. Current format: `Storybook ThemeVars constructor accepts light and dark Pantoken themes`. Minimum host version: `8.6.14`. Tested through `8.6.14`. Newer releases require review."
 
 #: renderers/storybook/src/index.md
 #, no-c-format
@@ -9271,6 +9570,12 @@ msgstr "Ռեգիստրը, որում սահմանումը կատարվում է 
 msgctxt "docs.api:prose"
 msgid "Passed through to `register()` (e.g. `prefix`, `only`)."
 msgstr "Արտահարվում է `register()`-ին (օր.՝ `prefix`, `only`)."
+
+#: renderers/svelte/src/index.md
+#, no-c-format, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "Target: Svelte. Current format: `Icon action component compiles and SSR renders on Svelte 4 and 5`. Minimum host version: `4.2.20`. Tested through `5.57.2`. Newer releases require review."
+msgstr "Target: Svelte. Current format: `Icon action component compiles and SSR renders on Svelte 4 and 5`. Minimum host version: `4.2.20`. Tested through `5.57.2`. Newer releases require review."
 
 #: renderers/svelte/src/index.md
 #, no-c-format
@@ -9386,6 +9691,18 @@ msgctxt "docs.api:prose"
 msgid "readonly [`TaggedIcon`](../interfaces/TaggedIcon.md)[]"
 msgstr "միայն ընթերցման [`Token`](../interfaces/Token.md)[]"
 
+#: renderers/tinymce/src/functions/filterLogos.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Logos under `product` (all when omitted) whose name, product, or variant matches `query`."
+msgstr "Լոգոներ `product` ներքո (բոլորը, երբ բաց թողնվի), որոնց անվանումը, արտադրանքը կամ տարբերակը համապատասխանում է `query`-ին:"
+
+#: renderers/tinymce/src/functions/filterLogos.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "readonly [`LogoMeta`](../interfaces/LogoMeta.md)[]"
+msgstr "միայն ընթերցվող [`LogoMeta`](../interfaces/LogoMeta.md)[]"
+
 #: renderers/tinymce/src/functions/findEntry.md
 #, no-c-format
 msgctxt "docs.api:prose"
@@ -9449,8 +9766,14 @@ msgstr "Փոխել շեշտաձևված (hyphenated) պատկերակային sl
 #: renderers/tinymce/src/functions/injectContentStylesheet.md
 #, no-c-format
 msgctxt "docs.api:prose"
-msgid "Appends a `<link rel=\"stylesheet\">` to the editor's content document `<head>` at runtime.\nIdempotent per URL — calling this twice with the same `url` is a no-op the second time."
-msgstr "Ավելացնում է `<link rel=\"stylesheet\">` խմբագրի բովանդակ փաստաթղթին `&lt;head&gt;` գործարկման ժամանակ:\nIdempotent մեկ URL-ի համար — այս կանչը երկու անգամ միևնույն `url`-ով երկրորդ անգամ գործողություն չ:"
+msgid "Appends a `<link rel=\"stylesheet\">` to the editor's content document `<head>` at runtime.\nIdempotent per URL — calling this twice with the same `url` is a no-op the second time. Pass the\n`file` the URL resolves so [retargetContentStylesheets](retargetContentStylesheets.md) can re-point it later; a tagged\nlink is idempotent per file instead, and a new URL for the same file updates it in place."
+msgstr "Ավելացնում է `<link rel=\"stylesheet\">` խմբագրիչի բովանդակության փաստաթղթին `<head>` աշխատանքի ընթացքում։\nԻդեմպոտենտ է ըստ URL-ի — նույն `url`-ով կրկնակի կանչելը երկրորդ անգամ ոչ մի գործողություն չի կատարում։ Փոխանցեք \n`file`, որը URL-ը լուծում է, որպեսզի [retargetContentStylesheets](retargetContentStylesheets.md)-ը կարողանա ավելի ուշ այն վերահասցեագրել. նշված հղումը փոխարենը իդեմպոտենտ է ըստ ֆայլի, և նույն ֆայլի համար նոր URL-ը թարմացնում է այն տեղում։"
+
+#: renderers/tinymce/src/functions/injectUsedGlyphAssets.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Inject the stylesheet of every glyph `resolve` finds in the editor body."
+msgstr "Ներարկել յուրաքանչյուր նշանագրի ոճաթերթը, որը `resolve`-ը գտնում է խմբագրի մարմնում:"
 
 #: renderers/tinymce/src/functions/listComponents.md
 #, no-c-format
@@ -9470,11 +9793,23 @@ msgctxt "docs.api:prose"
 msgid "Load and merge all available icons from both sources.\nReturns a sorted array tagged with the source package."
 msgstr "Բեռնեք և միավորեք երկու աղբյուրներից բոլոր διαθέσιմիտ պատկերակները։\nՎերադարձի՝ կարգավորված զանգված՝ նշագրված աղբյուրի փաթեթով։"
 
+#: renderers/tinymce/src/functions/logoVariantLabel.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "A tile caption for a logo variant, e.g. `\"horizontal · full color · ar\"`."
+msgstr "Սալիկի ստորագրություն լոգոյի տարբերակի համար, օրինակ՝ `\"horizontal · full color · ar\"`:"
+
 #: renderers/tinymce/src/functions/materializeLayout.md
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "Materialize declared layout image slots without embedding a provider URL in the layout."
 msgstr "Մատերիալիզացնել հայտարարված layout նկարների slot-ները առանց պրովայդեր URL-ն ուղարկելու դասավորության մեջ։"
+
+#: renderers/tinymce/src/functions/normalizeGlyphHtml.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Give every empty glyph span in `html` the non-editable, ZWSP-filled shape the pickers insert."
+msgstr "Տվեք `html`-ում գտնվող յուրաքանչյուր դատարկ glyph span-ին չխմբագրվող, ZWSP-ով լցված ձևը, որն տեղադրում են ընտրիչները (pickers):"
 
 #: renderers/tinymce/src/functions/pantokenContentCssUrls.md
 #, no-c-format
@@ -9506,17 +9841,35 @@ msgctxt "docs.api:prose"
 msgid "Usage:\n  new EditorView({\n    extensions: [\n      basicSetup,\n      html(),\n      pantokenHtmlLinter({ model }),\n    ],\n  });"
 msgstr "Օգտագործում:\n  new EditorView({\n    extensions: [\n      basicSetup,\n      html(),\n      pantokenHtmlLinter({ model }),\n    ],\n  });"
 
+#: renderers/tinymce/src/functions/registerGlyphSync.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Normalize incoming glyph markup and inject stylesheets for glyphs however they arrive."
+msgstr "Նորմալացնել մուտքային գլիֆի նշագրումը և ներարկել ոճաթերթեր գլիֆների համար՝ անկախ դրանց ստացման եղանակից:"
+
 #: renderers/tinymce/src/functions/registerPantokenIconPack.md
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "Register a TinyMCE icon pack whose complete key set mirrors the installed default pack while\nevery rendered glyph comes from Pantoken's InstUI/Lucide icon tokens."
 msgstr "Գրանցեք TinyMCE իկոնների փաթեթ, որի ամբողջական բանալիների հավաքը համընկնում է տեղադրված լռելյայն փաթեթի հետ while\nevery rendered glyph comes from Pantoken's InstUI/Lucide icon tokens."
 
+#: renderers/tinymce/src/functions/retargetContentStylesheets.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Re-resolve every tagged stylesheet in the content document, e.g. after a CDN provider switch."
+msgstr "Վերալուծել բովանդակության փաստաթղթի յուրաքանչյուր նշված ոճաթերթ, օրինակ՝ CDN մատակարարի փոփոխությունից հետո:"
+
 #: renderers/tinymce/src/functions/validateClassToken.md
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "Validate a pantoken class token (e.g., \"instui-button\", \"instui-button.-color-primary\").\nReturns an array of validation errors (empty if valid)."
 msgstr "Ստուգել pantoken դասային token (օր.՝ \"instui-button\", \"instui-button.-color-primary\"):\nվերադարձնում է ստուգման սխալների զանգված (դատարկ, եթե վավեր):"
+
+#: renderers/tinymce/src/index.md
+#, no-c-format, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "Target: TinyMCE PluginManager. Current format: `Pantoken plugin registration and callback initialization`. Minimum host version: `8.9.2`. Tested through `8.9.3`. Newer releases require review."
+msgstr "Target: TinyMCE PluginManager. Current format: `Pantoken plugin registration and callback initialization`. Minimum host version: `8.9.2`. Tested through `8.9.3`. Newer releases require review."
 
 #: renderers/tinymce/src/interfaces/ContentClassesPluginOptions.md
 #, fuzzy, no-c-format
@@ -9794,6 +10147,12 @@ msgctxt "docs.api:prose"
 msgid "Content of registered custom (block) tags, keyed by tag name without its `@`. Populated only for\ntags added via configuration; unregistered unknown tags are ignored. Absent when none were found."
 msgstr "Գրանցված հարմարեցված (բլոկ) թեգերի բովանդակությունը, բանալի է թեգի անվամբ՝ առանց նրա `@`. Լցվում է միայն կոնֆիգուրացիայով ավելացված\nթեգերի համար; չգրանցված, անծանոթ թեգերը անտեսվում են. Առկա չէ, եթե ոչինչ չի գտնվել."
 
+#: renderers/tinymce/src/interfaces/GlyphSyncTarget.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Where [registerGlyphSync](../functions/registerGlyphSync.md) tracks and resolves the stylesheets it injects."
+msgstr "Որտեղ [registerGlyphSync](../functions/registerGlyphSync.md) հետևում և լուծում է իր կողմից ներարկված ոճաթերթերը:"
+
 #: renderers/tinymce/src/interfaces/LayoutImageAttributes.md
 #, no-c-format
 msgctxt "docs.api:prose"
@@ -9951,6 +10310,12 @@ msgctxt "docs.api:prose"
 msgid "Toolbar menu-button name to pass in TinyMCE's `toolbar` init option."
 msgstr "Լցվածքի անունը, որ հարկ է փոխանցել TinyMCE-ի `plugins`/`toolbar` նախասկզբի ընտրանքներում:"
 
+#: renderers/tinymce/src/variables/PRODUCT_LABELS.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Brand names shown on the logos picker's tabs — proper nouns, so never translated."
+msgstr "Լոգոների ընտրության ներդիրներում ցուցադրվող ապրանքանիշերի անվանումները՝ հատուկ անուններ են, ուստի երբեք չեն թարգմանվում:"
+
 #: renderers/tinymce/src/variables/SOURCE_LABELS.md
 #, no-c-format
 msgctxt "docs.api:prose"
@@ -9968,6 +10333,12 @@ msgstr "TinyMCE ինտեգրման UI տողերի անգլերեն լռելյա
 msgctxt "docs.api:prose"
 msgid "The bundled page layouts exposed through the template picker."
 msgstr "Փաթեթավորված էջի դասավորություններ, որոնք մատչելի են template ընտրիչի միջոցով։"
+
+#: renderers/vitepress/src/index.md
+#, no-c-format, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "Target: VitePress. Current format: `Built site CSS includes the Pantoken primary-brand bridge`. Minimum host version: `1.6.4`. Tested through `1.6.4`. Newer releases require review."
+msgstr "Target: VitePress. Current format: `Built site CSS includes the Pantoken primary-brand bridge`. Minimum host version: `1.6.4`. Tested through `1.6.4`. Newer releases require review."
 
 #: renderers/vitepress/src/index.md
 #, no-c-format
@@ -10013,6 +10384,12 @@ msgstr "Պատկերանիշի անունը (օր. `arrow-left`)."
 msgctxt "docs.api:prose"
 msgid "The resolver (defaults to the built-in pantoken icon set)."
 msgstr "Վերացուցիչը (ստանդարտորեն օգտագործում է ներշնչված pantoken պատկերանիշների հավաքածուն)."
+
+#: renderers/vue/src/index.md
+#, no-c-format, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "Target: Vue. Current format: `Plugin installation, custom-element configuration, and SSR output`. Minimum host version: `3.0.0`. Tested through `3.5.43`. Newer releases require review."
+msgstr "Target: Vue. Current format: `Plugin installation, custom-element configuration, and SSR output`. Minimum host version: `3.0.0`. Tested through `3.5.43`. Newer releases require review."
 
 #: renderers/vue/src/index.md
 #, no-c-format
@@ -10166,6 +10543,12 @@ msgid "First day of week as a JS `Date.getDay()` index (0=Sunday … 6=Saturday)
 msgstr "Շաբաթի առաջին օրը JS `Date.getDay()` ինդեքսի հետ (0=Կիրակի … 6=Շաբաթ):"
 
 #: renderers/web-components/src/index.md
+#, no-c-format, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "Target: Web Components. Current format: `Custom-element registration and button shadow output`. Tested environment: `Node 26.10.0 with happy-dom 20.14.5`. Real-browser rendering and interaction behavior are not verified."
+msgstr "Target: Web Components. Current format: `Custom-element registration and button shadow output`. Tested environment: `Node 26.10.0 with happy-dom 20.14.5`. Real-browser rendering and interaction behavior are not verified."
+
+#: renderers/web-components/src/index.md
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "`@pantoken/web-components` — framework-agnostic custom elements for Instructure UI."
@@ -10188,6 +10571,12 @@ msgstr "Լոկալացված UI տողերի համար (calendar nav labels, da
 msgctxt "docs.api:prose"
 msgid "The module is Node-safe: element classes are defined inside [register](functions/register.md), a no-op when there\nis no DOM, so importing during SSR or a build never touches `HTMLElement`."
 msgstr "Մոդուլը Node-անվտանգ է. տարրերի դասերը սահմանված են [register](functions/register.md)-ի ներսում, որը առանց գործողության է, երբ DOM չկա, ուստի SSR կամ build-ի ընթացքում ներմուծումը երբեք չի շոշափում `HTMLElement`-ը։"
+
+#: renderers/web-components/src/index.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Registration and shadow output are environment-verified with Happy DOM; real-browser behavior is\nnot covered by that check."
+msgstr "Գրանցումը և ստվերային ելքը շրջակա միջավայրով վավերացվել են Happy DOM-ով; իրական զննարկչային վարքագիծը\nայդ ստուգմամբ չի ընդգրկվում։"
 
 #: renderers/web-components/src/interfaces/ElementDefinition.md
 #, no-c-format
@@ -11346,8 +11735,14 @@ msgstr "Սթայլշիթերի (stylesheet) URL-ներ, որոնք պետք է �
 #: tools/demo/src/interfaces/ExampleSrcdocOptions.md
 #, no-c-format
 msgctxt "docs.api:prose"
-msgid "Wrap `html` in the shared `.instui-card` surface (default `true`)."
-msgstr "Փաթեթավորել `html`-ը ընդհանուր `.instui-card` մակերևույթի մեջ (նախորոշված `true`)."
+msgid "Browser script URLs to load after the example markup (interaction bundles, when needed)."
+msgstr "Օրինակային նշագրումից հետո բեռնելու համար բրաուզերի սկրիպտների URL-ներ (ինտերակցիայի փաթեթներ, երբ անհրաժեշտ է)."
+
+#: tools/demo/src/interfaces/ExampleSrcdocOptions.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Wrap `html` in the shared `.pantoken-demo-card` surface (default `true`)."
+msgstr "Փաթաթեք `html` ընդհանուր `.pantoken-demo-card` մակերեսում (ստանդարտ `true`)."
 
 #: tools/demo/src/interfaces/ExampleSrcdocOptions.md
 #, no-c-format
@@ -11441,6 +11836,46 @@ msgstr "Շարժական «դիտել ամբողջ էկրանում» կոճակ
 
 #, no-c-format
 #~ msgctxt "docs.api:prose"
+#~ msgid "Every token is exposed as a `var(--instui-*)` reference (not a concrete value), so Tailwind\nutilities like `bg-color-background-base` theme through the same CSS custom properties that\n`@pantoken/css` emits — light/dark and high-contrast all keep working."
+#~ msgstr "Յուրաքանչյուր token մատչելի է որպես `var(--instui-*)` հղում (չէ որ կոնկրետ արժեք), այնպես որ Tailwind\nօգտակարությունները, ինչպիսիք են `bg-color-background-base`, անցնում են նույն CSS custom properties-ների միջոցով, որոնք\n`@pantoken/css`-ը արձակում է — լուսային/մութ ռեժիմն ու բարձր հակադրությունը շարունակում են աշխատել."
+
+#, no-c-format
+#~ msgctxt "docs.api:prose"
+#~ msgid "`@pantoken/bootstrap` — theme Bootstrap 5 with Instructure tokens."
+#~ msgstr "`@pantoken/bootstrap` — Bootstrap 5 թեմա՝ Instructure տոկեններով."
+
+#, no-c-format
+#~ msgctxt "docs.api:prose"
+#~ msgid "Points Bootstrap's `--bs-*` CSS variables at `var(--instui-*)`. Drop it in alongside\n`@pantoken/css` and Bootstrap components adopt the Instructure look while keeping theming through\nthe same custom properties."
+#~ msgstr "`--bs-*` CSS փոփոխականները ուղղված են `var(--instui-*)`-ին. Դրեք այն կողք-կողքի\n`@pantoken/css`-ի հետ, և Bootstrap կոմպոնենտները կստանան Instructure-ի տեսքը՝ պահպանելով թեմայի հարմարեցումը նույն հարմարեցված հատկությունների միջոցով."
+
+#, no-c-format
+#~ msgctxt "docs.api:prose"
+#~ msgid "Emit the Foundation Sass settings override. Load it before `@include foundation-everything`."
+#~ msgstr "Արտահանեք Foundation-ի Sass կարգավորումների փոխարինիչը։ Լցրեք այն `@include foundation-everything`-ից առաջ։"
+
+#, no-c-format
+#~ msgctxt "docs.api:prose"
+#~ msgid "`@pantoken/foundation` — theme Foundation for Sites with Instructure tokens."
+#~ msgstr "`@pantoken/foundation` — Foundation for Sites թեմա՝ Instructure token-ներով."
+
+#, no-c-format
+#~ msgctxt "docs.api:prose"
+#~ msgid "Foundation is Sass-first, so this package ships two layers. [toFoundationSettings](functions/toFoundationSettings.md) emits a\n`_settings`-style Sass partial that points Foundation's setting variables at `var(--instui-*)`, so\na Sass build compiles the Instructure look while keeping runtime theming through the same custom\nproperties. [toFoundationCss](functions/toFoundationCss.md) emits a thin CSS overlay that themes the common compiled\nclasses (`.button`, `.callout`, links) the same way — useful when you consume stock Foundation CSS\nand just want to layer Instructure colors on top without recompiling."
+#~ msgstr "Foundation-ը նախընտրաբար Sass-ֆուստ է, այդ պատճառով այս փաթեթը տեղափոխում է երկու շերտ: [toFoundationSettings](functions/toFoundationSettings.md)-ը արտածում է `_settings`-ճաշակի Sass մասը, որը Foundation-ի setting փոփոխականները ուղղորդում է `var(--instui-*)`-ին, այնպես որ Sass-շենքը համատեղում է Instructure տեսքն՝ պահելով runtime թեմայումը նույն custom properties-ի միջոցով. [toFoundationCss](functions/toFoundationCss.md)-ը արտածում է նիհար CSS օվերլեյ, որը նույն կերպ թեմավորում է հաճախակի կոմպիլացված դասերը (`.button`, `.callout`, links) — օգտակար է այն դեպքում երբ օգտագործում եք stock Foundation CSS և ուզում եք պարզապես վերաթողարկել Instructure գույները առանց կրկնակի կոմպայլի:"
+
+#, no-c-format
+#~ msgctxt "docs.api:prose"
+#~ msgid "Appends a `<link rel=\"stylesheet\">` to the editor's content document `<head>` at runtime.\nIdempotent per URL — calling this twice with the same `url` is a no-op the second time."
+#~ msgstr "Ավելացնում է `<link rel=\"stylesheet\">` խմբագրի բովանդակ փաստաթղթին `&lt;head&gt;` գործարկման ժամանակ:\nIdempotent մեկ URL-ի համար — այս կանչը երկու անգամ միևնույն `url`-ով երկրորդ անգամ գործողություն չ:"
+
+#, no-c-format
+#~ msgctxt "docs.api:prose"
+#~ msgid "Wrap `html` in the shared `.instui-card` surface (default `true`)."
+#~ msgstr "Փաթեթավորել `html`-ը ընդհանուր `.instui-card` մակերևույթի մեջ (նախորոշված `true`)."
+
+#, no-c-format
+#~ msgctxt "docs.api:prose"
 #~ msgid "`.instui-agent-shell` — A surface container for AI agents."
 #~ msgstr "`.instui-agent-shell` — AI agents-ների համար մակերեսի container:"
 
@@ -11469,7 +11904,7 @@ msgstr "Շարժական «դիտել ամբողջ էկրանում» կոճակ
 #~ msgid "`.--background-ai-horizontal` — AI-accent gradient helpers intended for custom surfaces, not the shared InstUI contract."
 #~ msgstr "`.--background-ai-horizontal` — AI-խթանիչ գրաֆիկները նախատեսված են հարմարեցված մակերեսների համար, ոչ թե ընդհանուր InstUI պայմանագրի համար։"
 
-#, fuzzy, no-c-format, pantoken-verbatim
+#, no-c-format, pantoken-verbatim
 #~ msgctxt "docs.api:prose"
 #~ msgid "**Source:** [index.ts](https://github.com/thedannywahl/pantoken/blob/main/formats/components/src/utilities/ai-gradient/index.ts)"
 #~ msgstr "**Source:** [index.ts](https://github.com/thedannywahl/pantoken/blob/main/formats/components/src/utilities/ai-gradient/index.ts)"
@@ -18973,11 +19408,6 @@ msgstr "Շարժական «դիտել ամբողջ էկրանում» կոճակ
 #~ msgctxt "docs.api:text"
 #~ msgid "# Function: baseCss()"
 #~ msgstr "# Ֆունկցիա: baseCss()"
-
-#, no-c-format
-#~ msgctxt "docs.api:text"
-#~ msgid "<span class=\"instui-pill -color-warning pantoken-doc-tag\">Beta</span>"
-#~ msgstr "<span class=\"instui-pill -color-warning pantoken-doc-tag\">Բետա</span>"
 
 #, no-c-format
 #~ msgctxt "docs.api:text"
@@ -26722,1112 +27152,792 @@ msgstr "Շարժական «դիտել ամբողջ էկրանում» կոճակ
 #~ msgstr "ai-gradient"
 
 #, pantoken-verbatim
-msgctxt "docs.api:text"
-msgid "EmailCssOptions"
-msgstr "EmailCssOptions"
+#~ msgctxt "docs.api:text"
+#~ msgid "EmailCssOptions"
+#~ msgstr "EmailCssOptions"
 
 #, pantoken-verbatim
-msgctxt "docs.api:text"
-msgid "InlineEmailHtmlOptions"
-msgstr "InlineEmailHtmlOptions"
+#~ msgctxt "docs.api:text"
+#~ msgid "InlineEmailHtmlOptions"
+#~ msgstr "InlineEmailHtmlOptions"
 
 #, pantoken-verbatim
-msgctxt "docs.api:text"
-msgid "EmailClient"
-msgstr "EmailClient"
+#~ msgctxt "docs.api:text"
+#~ msgid "EmailClient"
+#~ msgstr "EmailClient"
 
 #, pantoken-verbatim
-msgctxt "docs.api:text"
-msgid "light"
-msgstr "light"
+#~ msgctxt "docs.api:text"
+#~ msgid "light"
+#~ msgstr "light"
 
 #, pantoken-verbatim
-msgctxt "docs.api:text"
-msgid "inlineEmailHtml"
-msgstr "inlineEmailHtml"
+#~ msgctxt "docs.api:text"
+#~ msgid "inlineEmailHtml"
+#~ msgstr "inlineEmailHtml"
 
 #, pantoken-verbatim
-msgctxt "docs.api:text"
-msgid "GlyphSyncTarget"
-msgstr "GlyphSyncTarget"
+#~ msgctxt "docs.api:text"
+#~ msgid "GlyphSyncTarget"
+#~ msgstr "GlyphSyncTarget"
 
 #, pantoken-verbatim
-msgctxt "docs.api:text"
-msgid "PRODUCT_LABELS"
-msgstr "PRODUCT_LABELS"
+#~ msgctxt "docs.api:text"
+#~ msgid "PRODUCT_LABELS"
+#~ msgstr "PRODUCT_LABELS"
 
 #, pantoken-verbatim
-msgctxt "docs.api:text"
-msgid "retargetContentStylesheets"
-msgstr "retargetContentStylesheets"
+#~ msgctxt "docs.api:text"
+#~ msgid "retargetContentStylesheets"
+#~ msgstr "retargetContentStylesheets"
 
 #, pantoken-verbatim
-msgctxt "docs.api:text"
-msgid "normalizeGlyphHtml"
-msgstr "normalizeGlyphHtml"
+#~ msgctxt "docs.api:text"
+#~ msgid "normalizeGlyphHtml"
+#~ msgstr "normalizeGlyphHtml"
 
 #, pantoken-verbatim
-msgctxt "docs.api:text"
-msgid "injectUsedGlyphAssets"
-msgstr "injectUsedGlyphAssets"
+#~ msgctxt "docs.api:text"
+#~ msgid "injectUsedGlyphAssets"
+#~ msgstr "injectUsedGlyphAssets"
 
 #, pantoken-verbatim
-msgctxt "docs.api:text"
-msgid "registerGlyphSync"
-msgstr "registerGlyphSync"
+#~ msgctxt "docs.api:text"
+#~ msgid "registerGlyphSync"
+#~ msgstr "registerGlyphSync"
 
 #, pantoken-verbatim
-msgctxt "docs.api:text"
-msgid "logoVariantLabel"
-msgstr "logoVariantLabel"
+#~ msgctxt "docs.api:text"
+#~ msgid "logoVariantLabel"
+#~ msgstr "logoVariantLabel"
 
 #, pantoken-verbatim
-msgctxt "docs.api:text"
-msgid "filterLogos"
-msgstr "filterLogos"
+#~ msgctxt "docs.api:text"
+#~ msgid "filterLogos"
+#~ msgstr "filterLogos"
 
 #, pantoken-verbatim
-msgctxt "docs.api:text"
-msgid "getLogoCdnFile"
-msgstr "getLogoCdnFile"
+#~ msgctxt "docs.api:text"
+#~ msgid "getLogoCdnFile"
+#~ msgstr "getLogoCdnFile"
 
 #, pantoken-verbatim
-msgctxt "docs.api:text"
-msgid "buildLogoMarkup"
-msgstr "buildLogoMarkup"
+#~ msgctxt "docs.api:text"
+#~ msgid "buildLogoMarkup"
+#~ msgstr "buildLogoMarkup"
 
 #, pantoken-verbatim
-msgctxt "docs.api:text"
-msgid "getUsedLogoCdnFiles"
-msgstr "getUsedLogoCdnFiles"
+#~ msgctxt "docs.api:text"
+#~ msgid "getUsedLogoCdnFiles"
+#~ msgstr "getUsedLogoCdnFiles"
 
 #, pantoken-verbatim
-msgctxt "docs.api:text"
-msgid "modifyExpression"
-msgstr "modifyExpression"
+#~ msgctxt "docs.api:text"
+#~ msgid "modifyExpression"
+#~ msgstr "modifyExpression"
 
 #, pantoken-verbatim
-msgctxt "docs.api:text"
-msgid "inline-styles"
-msgstr "inline-styles"
+#~ msgctxt "docs.api:text"
+#~ msgid "inline-styles"
+#~ msgstr "inline-styles"
 
 #, pantoken-verbatim
-msgctxt "docs.api:text"
-msgid "InlineHtmlOptions"
-msgstr "InlineHtmlOptions"
+#~ msgctxt "docs.api:text"
+#~ msgid "InlineHtmlOptions"
+#~ msgstr "InlineHtmlOptions"
 
 #, pantoken-verbatim
-msgctxt "docs.api:text"
-msgid "inlineHtml"
-msgstr "inlineHtml"
+#~ msgctxt "docs.api:text"
+#~ msgid "inlineHtml"
+#~ msgstr "inlineHtml"
 
 #, pantoken-verbatim
-msgctxt "docs.api:text"
-msgid "InPlaceEditOptions"
-msgstr "InPlaceEditOptions"
+#~ msgctxt "docs.api:text"
+#~ msgid "InPlaceEditOptions"
+#~ msgstr "InPlaceEditOptions"
 
 #, pantoken-verbatim
-msgctxt "docs.api:text"
-msgid "InPlaceEditInputType"
-msgstr "InPlaceEditInputType"
+#~ msgctxt "docs.api:text"
+#~ msgid "InPlaceEditInputType"
+#~ msgstr "InPlaceEditInputType"
 
 #, pantoken-verbatim
-msgctxt "docs.api:text"
-msgid "buttonSetRules"
-msgstr "buttonSetRules"
+#~ msgctxt "docs.api:text"
+#~ msgid "buttonSetRules"
+#~ msgstr "buttonSetRules"
 
 #, pantoken-verbatim
-msgctxt "docs.api:text"
-msgid "logoRules"
-msgstr "logoRules"
+#~ msgctxt "docs.api:text"
+#~ msgid "logoRules"
+#~ msgstr "logoRules"
 
 #, pantoken-verbatim
-msgctxt "docs.api:text"
-msgid "breakpointDeclarations"
-msgstr "breakpointDeclarations"
+#~ msgctxt "docs.api:text"
+#~ msgid "breakpointDeclarations"
+#~ msgstr "breakpointDeclarations"
 
 #, pantoken-verbatim
-msgctxt "docs.api:text"
-msgid "ReferenceCurve"
-msgstr "ReferenceCurve"
+#~ msgctxt "docs.api:text"
+#~ msgid "ReferenceCurve"
+#~ msgstr "ReferenceCurve"
 
 #, pantoken-verbatim
-msgctxt "docs.api:text"
-msgid "CustomColorScale"
-msgstr "CustomColorScale"
+#~ msgctxt "docs.api:text"
+#~ msgid "CustomColorScale"
+#~ msgstr "CustomColorScale"
 
 #, pantoken-verbatim
-msgctxt "docs.api:text"
-msgid "CustomColorCssOptions"
-msgstr "CustomColorCssOptions"
+#~ msgctxt "docs.api:text"
+#~ msgid "CustomColorCssOptions"
+#~ msgstr "CustomColorCssOptions"
 
 #, pantoken-verbatim
-msgctxt "docs.api:text"
-msgid "CUSTOM_COLOR_KEY"
-msgstr "CUSTOM_COLOR_KEY"
+#~ msgctxt "docs.api:text"
+#~ msgid "CUSTOM_COLOR_KEY"
+#~ msgstr "CUSTOM_COLOR_KEY"
 
 #, pantoken-verbatim
-msgctxt "docs.api:text"
-msgid "isHexColor"
-msgstr "isHexColor"
+#~ msgctxt "docs.api:text"
+#~ msgid "isHexColor"
+#~ msgstr "isHexColor"
 
 #, pantoken-verbatim
-msgctxt "docs.api:text"
-msgid "deriveScale"
-msgstr "deriveScale"
+#~ msgctxt "docs.api:text"
+#~ msgid "deriveScale"
+#~ msgstr "deriveScale"
 
 #, pantoken-verbatim
-msgctxt "docs.api:text"
-msgid "customColorReferenceCurve"
-msgstr "customColorReferenceCurve"
+#~ msgctxt "docs.api:text"
+#~ msgid "customColorReferenceCurve"
+#~ msgstr "customColorReferenceCurve"
 
 #, pantoken-verbatim
-msgctxt "docs.api:text"
-msgid "deriveCustomColorScale"
-msgstr "deriveCustomColorScale"
+#~ msgctxt "docs.api:text"
+#~ msgid "deriveCustomColorScale"
+#~ msgstr "deriveCustomColorScale"
 
 #, pantoken-verbatim
-msgctxt "docs.api:text"
-msgid "customColorCss"
-msgstr "customColorCss"
+#~ msgctxt "docs.api:text"
+#~ msgid "customColorCss"
+#~ msgstr "customColorCss"
 
 #, pantoken-verbatim
-msgctxt "docs.api:text"
-msgid "customColorRemapCss"
-msgstr "customColorRemapCss"
+#~ msgctxt "docs.api:text"
+#~ msgid "customColorRemapCss"
+#~ msgstr "customColorRemapCss"
 
 #, pantoken-verbatim
-msgctxt "docs.api:text"
-msgid "button-set"
-msgstr "button-set"
+#~ msgctxt "docs.api:text"
+#~ msgid "button-set"
+#~ msgstr "button-set"
 
 #, pantoken-verbatim
-msgctxt "docs.api:text"
-msgid "day"
-msgstr "day"
+#~ msgctxt "docs.api:text"
+#~ msgid "day"
+#~ msgstr "day"
 
 #, pantoken-verbatim
-msgctxt "docs.api:text"
-msgid "logo"
-msgstr "logo"
+#~ msgctxt "docs.api:text"
+#~ msgid "logo"
+#~ msgstr "logo"
 
 #, pantoken-verbatim
-msgctxt "docs.api:text"
-msgid "breakpoints"
-msgstr "breakpoints"
+#~ msgctxt "docs.api:text"
+#~ msgid "breakpoints"
+#~ msgstr "breakpoints"
 
-msgctxt "docs.api:prose"
-msgid "Logos under `product` (all when omitted) whose name, product, or variant matches `query`."
-msgstr "Լոգոներ `product` ներքո (բոլորը, երբ բաց թողնվի), որոնց անվանումը, արտադրանքը կամ տարբերակը համապատասխանում է `query`-ին:"
-
-#, pantoken-verbatim
-msgctxt "docs.api:prose"
-msgid "readonly [`LogoMeta`](../interfaces/LogoMeta.md)[]"
-msgstr "readonly [`LogoMeta`](../interfaces/LogoMeta.md)[]"
-
-msgctxt "docs.api:prose"
-msgid "Appends a `<link rel=\"stylesheet\">` to the editor's content document `<head>` at runtime.\nIdempotent per URL — calling this twice with the same `url` is a no-op the second time. Pass the\n`file` the URL resolves so [retargetContentStylesheets](retargetContentStylesheets.md) can re-point it later; a tagged\nlink is idempotent per file instead, and a new URL for the same file updates it in place."
-msgstr "Ավելացնում է `<link rel=\"stylesheet\">` խմբագրիչի բովանդակության փաստաթղթին `<head>` աշխատանքի ընթացքում։\nԻդեմպոտենտ է ըստ URL-ի — նույն `url`-ով կրկնակի կանչելը երկրորդ անգամ ոչ մի գործողություն չի կատարում։ Փոխանցեք \n`file`, որը URL-ը լուծում է, որպեսզի [retargetContentStylesheets](retargetContentStylesheets.md)-ը կարողանա ավելի ուշ այն վերահասցեագրել. նշված հղումը փոխարենը իդեմպոտենտ է ըստ ֆայլի, և նույն ֆայլի համար նոր URL-ը թարմացնում է այն տեղում։"
-
-msgctxt "docs.api:prose"
-msgid "Inject the stylesheet of every glyph `resolve` finds in the editor body."
-msgstr "Ներարկել յուրաքանչյուր նշանագրի ոճաթերթը, որը `resolve`-ը գտնում է խմբագրի մարմնում:"
-
-msgctxt "docs.api:prose"
-msgid "A tile caption for a logo variant, e.g. `\"horizontal · full color · ar\"`."
-msgstr "Սալիկի ստորագրություն լոգոյի տարբերակի համար, օրինակ՝ `\"horizontal · full color · ar\"`:"
-
-msgctxt "docs.api:prose"
-msgid "Give every empty glyph span in `html` the non-editable, ZWSP-filled shape the pickers insert."
-msgstr "Տվեք `html`-ում գտնվող յուրաքանչյուր դատարկ glyph span-ին չխմբագրվող, ZWSP-ով լցված ձևը, որն տեղադրում են ընտրիչները (pickers):"
-
-msgctxt "docs.api:prose"
-msgid "Normalize incoming glyph markup and inject stylesheets for glyphs however they arrive."
-msgstr "Նորմալացնել մուտքային գլիֆի նշագրումը և ներարկել ոճաթերթեր գլիֆների համար՝ անկախ դրանց ստացման եղանակից:"
-
-msgctxt "docs.api:prose"
-msgid "Re-resolve every tagged stylesheet in the content document, e.g. after a CDN provider switch."
-msgstr "Վերալուծել բովանդակության փաստաթղթի յուրաքանչյուր նշված ոճաթերթ, օրինակ՝ CDN մատակարարի փոփոխությունից հետո:"
-
-msgctxt "docs.api:prose"
-msgid "Where [registerGlyphSync](../functions/registerGlyphSync.md) tracks and resolves the stylesheets it injects."
-msgstr "Որտեղ [registerGlyphSync](../functions/registerGlyphSync.md) հետևում և լուծում է իր կողմից ներարկված ոճաթերթերը:"
-
-msgctxt "docs.api:prose"
-msgid "The logos picker no longer renders product/layout/color-mode selects."
-msgstr "Logos picker-ն այլևս չի ցուցադրում product/layout/color-mode ընտրիչները:"
-
-msgctxt "docs.api:prose"
-msgid "Brand names shown on the logos picker's tabs — proper nouns, so never translated."
-msgstr "Լոգոների ընտրության ներդիրներում ցուցադրվող ապրանքանիշերի անվանումները՝ հատուկ անուններ են, ուստի երբեք չեն թարգմանվում:"
-
-msgctxt "docs.api:prose"
-msgid "Every token is exposed as a `var(--instui-*)` reference (not a concrete value), so Tailwind\nutilities like `bg-background-base` theme through the same CSS custom properties that\n`@pantoken/css` emits — light/dark and high-contrast all keep working."
-msgstr "Յուրաքանչյուր token բացահայտվում է որպես `var(--instui-*)` հղում (ոչ կոնկրետ արժեք), այդ պատճառով Tailwind\n կոմպոնենտները, ինչպիսիք են `bg-background-base`, թեման են վերահեռափոխում նույն CSS հատուկ հատկությունների միջոցով, որոնք \n`@pantoken/css` արտահայտում են — լուսով/մութով և բարձր կոնտրաստով ռեժիմները շարունակում են գործել):"
-
-msgctxt "docs.api:prose"
-msgid "A single-select row of compact view or filter options."
-msgstr "Մի ընտրելի տող՝ կոմպակտ դիտման կամ ֆիլտրի ընտրանքների համար."
-
-msgctxt "docs.api:prose"
-msgid "A selectable segmented-control label and its native radio input."
-msgstr "Ընտրելի հատվածացված կառավարման պիտակն ու նրա բնիկ ռադիո էլեմենտը."
-
-msgctxt "docs.api:prose"
-msgid "Decorative placeholder for content that has not loaded yet."
-msgstr "Զարդարիչ տեղակայում այն պարունակության համար, որը դեռ չի բեռնվել."
-
-msgctxt "docs.api:prose"
-msgid "@import \"@pantoken/plugin-custom-components/segmented-control.css\";"
-msgstr "@import \"@pantoken/plugin-custom-components/segmented-control.css\";"
-
-msgctxt "docs.api:prose"
-msgid "`.instui-segmented-control` — A single-select row of compact view or filter options."
-msgstr "`.instui-segmented-control` — մեկընտրական տող կոմպակտ դիտման կամ ֆիլտրի տարբերակների համար."
-
-#, pantoken-verbatim
-msgctxt "docs.api:prose"
-msgid "The selected segment uses a distinct active-item shadow; it does not match an existing\n  --instui-elevation-* composite. Overflow buttons use the upstream elevation3 component tokens."
-msgstr "The selected segment uses a distinct active-item shadow; it does not match an existing\n  --instui-elevation-* composite. Overflow buttons use the upstream elevation3 component tokens."
-
-msgctxt "docs.api:prose"
-msgid "Use a labelled fieldset and one shared radio name with a checked default. Native radios\n  announce their checked state; overflow buttons need labels describing their scroll direction."
-msgstr "Օգտագործեք պիտակավորված fieldset և մեկ համօգտագործվող radio name՝ նշված կանխադրվածով։ Native radios\n հայտնում են իրենց նշված վիճակը; overflow կոճակներին անհրաժեշտ են պիտակներ, որոնք նկարագրում են սքրոլի ուղղությունը."
-
-msgctxt "docs.api:prose"
-msgid "Config"
-msgstr "Կարգավորումներ"
-
-msgctxt "docs.api:prose"
-msgid "Utilities"
-msgstr "Օգտակար գործիքներ"
-
-msgctxt "docs.api:prose"
-msgid "Preferences"
-msgstr "Նախապատվություններ"
-
-msgctxt "docs.api:prose"
-msgid "Feature flags"
-msgstr "Հատկությունների դրոշակներ"
-
-msgctxt "docs.api:prose"
-msgid "Large segments."
-msgstr "Մեծ հատվածներ."
-
-msgctxt "docs.api:prose"
-msgid "Medium segments (default)."
-msgstr "Միջին հատվածներ (default)."
-
-msgctxt "docs.api:prose"
-msgid "Small segments."
-msgstr "Փոքր հատվածներ."
-
-msgctxt "docs.api:prose"
-msgid "Scroll to the following hidden segment."
-msgstr "Սքրոլ անել մինչև հետևյալ թաքնված հատվածը."
-
-msgctxt "docs.api:prose"
-msgid "Scroll to the preceding hidden segment."
-msgstr "Սքրոլ անել մինչև նախորդ թաքնված հատվածը."
-
-msgctxt "docs.api:prose"
-msgid "`.instui-segmented-control` — A selectable segmented-control label and its native radio input."
-msgstr "`.instui-segmented-control` — Ընտրելի հատվածային վերահսկիչի (segmented-control) պիտակ և նրա բնիկ ռադիո մուտքը."
-
-msgctxt "docs.api:prose"
-msgid "A `-icon-*` class may live on the label or its native input; the interaction helper\n  promotes input classes to the label so the shared glyph painter can render it."
-msgstr "Մի `-icon-*` դասը կարող է տեղակայվել պիտակի վրա կամ նրա բնիկ ինպուտի վրա; միջգործնական օգնականը\n  տեղափոխում է ինպուտի դասերը պիտակի վրա, որպեսզի համընդհանուր գլիֆ-նկարչը կարողանա դրանք նկարել."
-
-msgctxt "docs.api:prose"
-msgid "Keep the native radio in the label so checked, focus, disabled, and keyboard semantics remain available."
-msgstr "Պահեք բնիկ ռադիոն պիտակի մեջ, որպեսզի checked, focus, disabled և keyboard սեմանտիկան մնան հասանելի."
-
-msgctxt "docs.api:prose"
-msgid "`.instui-skeleton-loader` — Decorative placeholder for content that has not loaded yet."
-msgstr "`.instui-skeleton-loader` — Զարդարիչ պահակ՝ այն բովանդակության համար, որը դեռ չի բեռնվել։"
-
-#, pantoken-verbatim
-msgctxt "docs.api:prose"
-msgid "Mark the decorative loader aria-hidden=\"true\". Put aria-busy on the parent content region,\n  with an initially empty status and alert outside that region. Use initSkeletonLoading from the\n  interactions package to announce the parent's loading state. Shapes must not receive focus."
-msgstr "Mark the decorative loader aria-hidden=\"true\". Put aria-busy on the parent content region,\n  with an initially empty status and alert outside that region. Use initSkeletonLoading from the\n  interactions package to announce the parent's loading state. Shapes must not receive focus."
-
-msgctxt "docs.api:prose"
-msgid "Large text row."
-msgstr "Մեծ տեքստային տող։"
-
-msgctxt "docs.api:prose"
-msgid "Medium text row (default)."
-msgstr "Միջին տեքստային տող (ստանդարտ)."
-
-msgctxt "docs.api:prose"
-msgid "Small text row."
-msgstr "Փոքր տեքստային տող։"
-
-msgctxt "docs.api:prose"
-msgid "Extra-large text row."
-msgstr "Շատ մեծ տեքստային տող։"
-
-msgctxt "docs.api:prose"
-msgid "Extra-small text row."
-msgstr "Շատ փոքր տեքստային տող։"
+#~ msgctxt "docs.api:prose"
+#~ msgid "The logos picker no longer renders product/layout/color-mode selects."
+#~ msgstr "Logos picker-ն այլևս չի ցուցադրում product/layout/color-mode ընտրիչները:"
 
-msgctxt "docs.api:prose"
-msgid "Largest text row."
-msgstr "Ամենամեծ տեքստային տող։"
-
-msgctxt "docs.api:prose"
-msgid "Legend-sized text row."
-msgstr "Տեքստային տող՝ լեգենդի չափի։"
-
-msgctxt "docs.api:prose"
-msgid "A round avatar placeholder, medium size only."
-msgstr "Շրջանաձև avatar-ի պահեստամաս, միայն միջին չափսով։"
-
-msgctxt "docs.api:prose"
-msgid "An image placeholder, medium size only."
-msgstr "Պատկերի պահեստամաս, միայն միջին չափսով։"
-
-msgctxt "docs.api:prose"
-msgid "A text bar (default)."
-msgstr "Տեքստային գոտի (նախնական)."
-
-msgctxt "docs.api:prose"
-msgid "The clipped placeholder surface sized for the selected loader type."
-msgstr "Կլիպացված պահեստային մակերես, չափված ընտրված loader տեսակի համար։"
-
-msgctxt "docs.api:prose"
-msgid "A repeated text-row wrapper that applies vertical spacing."
-msgstr "Կրկնվող տեքստային տողերի պարուրիչ, որը կիրառում է ուղղահայաց բացատներ։"
-
-msgctxt "docs.api:prose"
-msgid "Enhance a labelled native radio group with keyboard navigation and optional overflow controls."
-msgstr "Բարելավել լեյբլավորված բնիկ ռադիո խումբը՝ հավելելով ստեղնաշարի միջոցով նավիգացիա և ցանկության դեպքում overflow կառավարման հնարավորություններ։"
-
-msgctxt "docs.api:prose"
-msgid "Bind the parent content region to SSR-provided status and error announcements."
-msgstr "Փոխկապակցել ծնողական բովանդակության տարածքը SSR-ի կողմից տրամադրվող կարգավիճակի և սխալների հայտարարությունների հետ։"
-
-msgctxt "docs.api:prose"
-msgid "Detach the segmented-control listeners and observers."
-msgstr "Հեռացնել segmented-control-ի լսողներն ու դիտորդները."
+#~ msgctxt "docs.api:prose"
+#~ msgid "A single-select row of compact view or filter options."
+#~ msgstr "Մի ընտրելի տող՝ կոմպակտ դիտման կամ ֆիլտրի ընտրանքների համար."
 
-msgctxt "docs.api:prose"
-msgid "Segmented control options; the medium size is the CSS default."
-msgstr "Բաժանված վերահսկման ընտրանքներ; միջին չափը CSS‑ի ստանդարտն է."
-
-msgctxt "docs.api:prose"
-msgid "Control parent-level loading semantics without touching decorative skeleton shapes."
-msgstr "Կառավարեք ծնողական մակարդակի բեռնման սեմանտիկան՝ առանց որևէ միջամտության զարդարիչ «skeleton» ձևերին։"
-
-msgctxt "docs.api:prose"
-msgid "Pre-rendered announcement elements must be outside the busy content region."
-msgstr "Նախօրոք նախապատրաստված հայտարարության տարրերը պետք է գտնվեն զբաղված բովանդակության տարածքից դուրս։"
-
-msgctxt "docs.api:prose"
-msgid "State update sent to an auto-registered skeleton loading region."
-msgstr "Կարգավիճակի թարմացում ուղարկվել է ավտոմատ түрде գրանցված skeleton բեռնման գոտուն։"
-
-msgctxt "docs.api:prose"
-msgid "The generated Swift uses UIKit and targets iOS. `mise run verify:swift:syntax` only parses its\nsource; `mise run verify:swift:host` needs full Xcode and the iOS Simulator SDK to type-check it."
-msgstr "Ստեղծված Swift-ը օգտագործում է UIKit և թիրախավորում է iOS. `mise run verify:swift:syntax` միայն վերլուծում է դրա\nաղբյուրը; `mise run verify:swift:host` պահանջում է ամբողջական Xcode և iOS Simulator SDK՝ տիպերի ստուգման համար."
-
-msgctxt "docs.api:prose"
-msgid "Build segmented-control CSS, replacing the component prefix sentinel."
-msgstr "Կառուցել segmented-control-ի CSS-ը, փոխարինելով կոմպոնենտի նախածանցի նշիչը։"
-
-msgctxt "docs.api:prose"
-msgid "Build the skeleton loader CSS, replacing the component prefix sentinel."
-msgstr "Ստեղծել skeleton loader-ի CSS‑ը՝ փոխարինելով կոմպոնենտի նախածանցի նշիչը։"
-
-msgctxt "docs.api:prose"
-msgid "`@pantoken/bootstrap` — theme Bootstrap 5.2+ body variables and primary buttons with Instructure tokens."
-msgstr "`@pantoken/bootstrap` — Bootstrap 5.2+ թեմայի body փոփոխականներ և primary կոճակներ՝ Instructure տոկեններով."
+#~ msgctxt "docs.api:prose"
+#~ msgid "A selectable segmented-control label and its native radio input."
+#~ msgstr "Ընտրելի հատվածացված կառավարման պիտակն ու նրա բնիկ ռադիո էլեմենտը."
 
-msgctxt "docs.api:prose"
-msgid "Points body and primary-button `--bs-*` CSS variables at `var(--instui-*)`. Load it after\nBootstrap and `@pantoken/css`; other component variants retain their Bootstrap defaults."
-msgstr "Points body and primary-button `--bs-*` CSS փոփոխականները տեղակայված են `var(--instui-*)`. Լցնել այն `Bootstrap\n-ից և `@pantoken/css`-ից հետո`; մյուս կոմպոնենտների տարբերակները պահպանում են իրենց Bootstrap-ի կանխադրվածները."
-
-msgctxt "docs.api:prose"
-msgid "Emit the Foundation Sass settings override. Import it before Foundation itself and\n`@include foundation-everything` so its palette is available to Sass."
-msgstr "Արտահանիր Foundation-ի Sass կարգավորումներն էլ ավելի վերակապը (override): Ներմուծիր այն Foundation-ի ինքը նախքան և\n`@include foundation-everything` այնպես որ նրա գույների պալիտրան հասանելի լինի Sass‑ին."
-
-msgctxt "docs.api:prose"
-msgid "`@pantoken/foundation` — theme Foundation for Sites Sass output and common CSS classes."
-msgstr "`@pantoken/foundation` — թեմա՝ Foundation for Sites-ի Sass-ի ելք և ընդհանուր CSS դասեր."
+#~ msgctxt "docs.api:prose"
+#~ msgid "Decorative placeholder for content that has not loaded yet."
+#~ msgstr "Զարդարիչ տեղակայում այն պարունակության համար, որը դեռ չի բեռնվել."
 
-msgctxt "docs.api:prose"
-msgid "Foundation is Sass-first, so this package ships two layers. [toFoundationSettings](functions/toFoundationSettings.md) emits a\n`_settings`-style Sass partial with concrete light-mode rebrand values so Foundation's colour functions can\ncompile. [toFoundationCss](functions/toFoundationCss.md) emits a thin variable-backed CSS overlay that themes the common compiled\nclasses (`.button`, `.callout`, links) the same way — useful when you consume stock Foundation CSS\nand just want to layer Instructure colors on top without recompiling."
-msgstr "Foundation-ը առաջին հերթին հենված է Sass-ի վրա, ուստի այս փաթեթը տրամադրում է երկու շերտ։ [toFoundationSettings](functions/toFoundationSettings.md) արտադրում է \n`_settings`-ճանաչագրված Sass partial կոնկրետ light-mode ռեբրենդավորման արժեքներով, որպեսզի Foundation-ի գույնի ֆունկցիաները կարողանան \ncompile։ [toFoundationCss](functions/toFoundationCss.md) արտադրում է նուրբ, փոփոխականներով ապահովված CSS օվերլեյ, որը թեմավորում է ընդհանուր կոմպիլացված \nclasses (`.button`, `.callout`, links) նույն կերպ) — օգտակար է, երբ օգտագործում եք stock Foundation CSS\n և պարզապես ցանկանում եք վերին շերտով կիրառել Instructure գույները առանց կրկնակի կոմպիլացնելու անհրաժեշտության։"
+#~ msgctxt "docs.api:prose"
+#~ msgid "@import \"@pantoken/plugin-custom-components/segmented-control.css\";"
+#~ msgstr "@import \"@pantoken/plugin-custom-components/segmented-control.css\";"
 
-msgctxt "docs.api:prose"
-msgid "Registration and shadow output are environment-verified with Happy DOM; real-browser behavior is\nnot covered by that check."
-msgstr "Գրանցումը և ստվերային ելքը շրջակա միջավայրով վավերացվել են Happy DOM-ով; իրական զննարկչային վարքագիծը\nայդ ստուգմամբ չի ընդգրկվում։"
+#~ msgctxt "docs.api:prose"
+#~ msgid "`.instui-segmented-control` — A single-select row of compact view or filter options."
+#~ msgstr "`.instui-segmented-control` — մեկընտրական տող կոմպակտ դիտման կամ ֆիլտրի տարբերակների համար."
 
-msgctxt "docs.api:prose"
-msgid "Browser script URLs to load after the example markup (interaction bundles, when needed)."
-msgstr "Օրինակային նշագրումից հետո բեռնելու համար բրաուզերի սկրիպտների URL-ներ (ինտերակցիայի փաթեթներ, երբ անհրաժեշտ է)."
+#~ msgctxt "docs.api:prose"
+#~ msgid "The selected segment uses a distinct active-item shadow; it does not match an existing\n  --instui-elevation-* composite. Overflow buttons use the upstream elevation3 component tokens."
+#~ msgstr "Ընտրված հատվածը օգտագործում է առանձին active-item ստվեր; այն չի համապատասխանում առկա\n  --instui-elevation-* կոմպոզիտին։ Overflow կոճակները օգտագործում են upstream elevation3 կոմպոնենտի տոքնները."
 
-#, pantoken-verbatim
-msgctxt "docs.api:text"
-msgid "SegmentedControlOptions"
-msgstr "SegmentedControlOptions"
+#~ msgctxt "docs.api:prose"
+#~ msgid "Use a labelled fieldset and one shared radio name with a checked default. Native radios\n  announce their checked state; overflow buttons need labels describing their scroll direction."
+#~ msgstr "Օգտագործեք պիտակավորված fieldset և մեկ համօգտագործվող radio name՝ նշված կանխադրվածով։ Native radios\n հայտնում են իրենց նշված վիճակը; overflow կոճակներին անհրաժեշտ են պիտակներ, որոնք նկարագրում են սքրոլի ուղղությունը."
 
-#, pantoken-verbatim
-msgctxt "docs.api:text"
-msgid "SegmentedControlHandle"
-msgstr "SegmentedControlHandle"
+#~ msgctxt "docs.api:prose"
+#~ msgid "Config"
+#~ msgstr "Կարգավորումներ"
 
-#, pantoken-verbatim
-msgctxt "docs.api:text"
-msgid "SkeletonLoadingState"
-msgstr "SkeletonLoadingState"
+#~ msgctxt "docs.api:prose"
+#~ msgid "Utilities"
+#~ msgstr "Օգտակար գործիքներ"
 
-#, pantoken-verbatim
-msgctxt "docs.api:text"
-msgid "SkeletonLoadingOptions"
-msgstr "SkeletonLoadingOptions"
+#~ msgctxt "docs.api:prose"
+#~ msgid "Preferences"
+#~ msgstr "Նախապատվություններ"
 
-#, pantoken-verbatim
-msgctxt "docs.api:text"
-msgid "SkeletonLoadingHandle"
-msgstr "SkeletonLoadingHandle"
+#~ msgctxt "docs.api:prose"
+#~ msgid "Feature flags"
+#~ msgstr "Հատկությունների դրոշակներ"
 
-#, pantoken-verbatim
-msgctxt "docs.api:text"
-msgid "initSegmentedControl"
-msgstr "initSegmentedControl"
+#~ msgctxt "docs.api:prose"
+#~ msgid "Large segments."
+#~ msgstr "Մեծ հատվածներ."
 
-#, pantoken-verbatim
-msgctxt "docs.api:text"
-msgid "initSkeletonLoading"
-msgstr "initSkeletonLoading"
+#~ msgctxt "docs.api:prose"
+#~ msgid "Medium segments (default)."
+#~ msgstr "Միջին հատվածներ (default)."
 
-#, pantoken-verbatim
-msgctxt "docs.api:text"
-msgid "segmentedControlRules"
-msgstr "segmentedControlRules"
+#~ msgctxt "docs.api:prose"
+#~ msgid "Small segments."
+#~ msgstr "Փոքր հատվածներ."
 
-#, pantoken-verbatim
-msgctxt "docs.api:text"
-msgid "skeletonLoaderRules"
-msgstr "skeletonLoaderRules"
+#~ msgctxt "docs.api:prose"
+#~ msgid "Scroll to the following hidden segment."
+#~ msgstr "Սքրոլ անել մինչև հետևյալ թաքնված հատվածը."
 
-#, pantoken-verbatim
-msgctxt "docs.api:text"
-msgid "segmented-control"
-msgstr "segmented-control"
+#~ msgctxt "docs.api:prose"
+#~ msgid "Scroll to the preceding hidden segment."
+#~ msgstr "Սքրոլ անել մինչև նախորդ թաքնված հատվածը."
 
-#, pantoken-verbatim
-msgctxt "docs.api:text"
-msgid "segment"
-msgstr "segment"
+#~ msgctxt "docs.api:prose"
+#~ msgid "`.instui-segmented-control` — A selectable segmented-control label and its native radio input."
+#~ msgstr "`.instui-segmented-control` — Ընտրելի հատվածային վերահսկիչի (segmented-control) պիտակ և նրա բնիկ ռադիո մուտքը."
 
-#, pantoken-verbatim
-msgctxt "docs.api:text"
-msgid "skeleton-loader"
-msgstr "skeleton-loader"
+#~ msgctxt "docs.api:prose"
+#~ msgid "A `-icon-*` class may live on the label or its native input; the interaction helper\n  promotes input classes to the label so the shared glyph painter can render it."
+#~ msgstr "Մի `-icon-*` դասը կարող է տեղակայվել պիտակի վրա կամ նրա բնիկ ինպուտի վրա; միջգործնական օգնականը\n  տեղափոխում է ինպուտի դասերը պիտակի վրա, որպեսզի համընդհանուր գլիֆ-նկարչը կարողանա դրանք նկարել."
 
-msgctxt "docs.api:prose"
-msgid "Scrollable row containing the selectable segments."
-msgstr "Սքրոլվող տող, որը պարունակում է ընտրելի հատվածները."
+#~ msgctxt "docs.api:prose"
+#~ msgid "Keep the native radio in the label so checked, focus, disabled, and keyboard semantics remain available."
+#~ msgstr "Պահեք բնիկ ռադիոն պիտակի մեջ, որպեսզի checked, focus, disabled և keyboard սեմանտիկան մնան հասանելի."
 
-msgctxt "docs.api:prose"
-msgid "Clips the segment row and anchors the overflow controls."
-msgstr "Կտրում է հատվածների տողը և ամրացնում է overflow կառավարման տարրերը."
+#~ msgctxt "docs.api:prose"
+#~ msgid "`.instui-skeleton-loader` — Decorative placeholder for content that has not loaded yet."
+#~ msgstr "`.instui-skeleton-loader` — Զարդարիչ պահակ՝ այն բովանդակության համար, որը դեռ չի բեռնվել։"
 
-msgctxt "docs.api:prose"
-msgid "Target: Next.js. Current format: `Production build transpiling and rendering Instructure UI 11.7.7 with React 19.3.0`. Minimum host version: `16.0.0`. Tested through `16.3.8`. Newer releases require review."
-msgstr "Target: Next.js. Current format: `Production build transpiling and rendering Instructure UI 11.7.7 with React 19.3.0`. Minimum host version: `16.0.0`. Tested through `16.3.8`. Newer releases require review."
+#~ msgctxt "docs.api:prose"
+#~ msgid "Mark the decorative loader aria-hidden=\"true\". Put aria-busy on the parent content region,\n  with an initially empty status and alert outside that region. Use initSkeletonLoading from the\n  interactions package to announce the parent's loading state. Shapes must not receive focus."
+#~ msgstr "Մարկացրեք դեկորատիվ լոադերը aria-hidden=\"true\"։ Տեղադրեք aria-busy ծնողական պարունակության շրջանում,\n  սկզբում դատարկ վիճակով և ազդարարությունը դրան դուրս։ Օգտագործեք initSkeletonLoading-ը` the\n  interactions փաթեթից՝ ծնողի լոդավորման վիճակը հայտարարելու համար։ Ձևերը չպետք է ստանան ֆոկուս։"
 
-msgctxt "docs.api:prose"
-msgid "Target: Panda CSS. Current format: `Panda token utility extraction from the Pantoken preset`. Minimum host version: `1.12.1`. Tested through `2.0.0`. Newer releases require review."
-msgstr "Target: Panda CSS. Current format: `Panda token utility extraction from the Pantoken preset`. Minimum host version: `1.12.1`. Tested through `2.0.0`. Newer releases require review."
+#~ msgctxt "docs.api:prose"
+#~ msgid "Large text row."
+#~ msgstr "Մեծ տեքստային տող։"
 
-msgctxt "docs.api:prose"
-msgid "Target: PostCSS. Minimum host version: `8.0.0`. Tested through `8.5.28`. Newer releases require review."
-msgstr "Target: PostCSS. Minimum host version: `8.0.0`. Tested through `8.5.28`. Newer releases require review."
+#~ msgctxt "docs.api:prose"
+#~ msgid "Medium text row (default)."
+#~ msgstr "Միջին տեքստային տող (ստանդարտ)."
 
-#, pantoken-verbatim
-msgctxt "docs.api:prose"
-msgid "Target: Tailwind CSS. Minimum host version: `4.0.17`. Tested through `4.3.3`. Newer releases require review."
-msgstr "Target: Tailwind CSS. Minimum host version: `4.0.17`. Tested through `4.3.3`. Newer releases require review."
+#~ msgctxt "docs.api:prose"
+#~ msgid "Small text row."
+#~ msgstr "Փոքր տեքստային տող։"
 
-msgctxt "docs.api:prose"
-msgid "Target: Vite. Minimum host version: `8.0.0`. Tested through `8.3.1`. Newer releases require review."
-msgstr "Target: Vite. Minimum host version: `8.0.0`. Tested through `8.3.1`. Newer releases require review."
+#~ msgctxt "docs.api:prose"
+#~ msgid "Extra-large text row."
+#~ msgstr "Շատ մեծ տեքստային տող։"
 
-#, pantoken-verbatim
-msgctxt "docs.api:prose"
-msgid "Target: webpack. Current format: `Emitted token CSS build asset`. Minimum host version: `5.61.0`. Tested through `5.111.1`. Newer releases require review."
-msgstr "Target: webpack. Current format: `Emitted token CSS build asset`. Minimum host version: `5.61.0`. Tested through `5.111.1`. Newer releases require review."
+#~ msgctxt "docs.api:prose"
+#~ msgid "Extra-small text row."
+#~ msgstr "Շատ փոքր տեքստային տող։"
 
-#, pantoken-verbatim
-msgctxt "docs.api:prose"
-msgid "Target: Android resources. Current format: `Generated colors, dimensions, and VectorDrawable compile and link with Android build-tools`. Minimum host version: `API 35 / build-tools 35.0.0`. Tested through `API 35 / build-tools 35.0.0`. Newer releases require review."
-msgstr "Target: Android resources. Current format: `Generated colors, dimensions, and VectorDrawable compile and link with Android build-tools`. Minimum host version: `API 35 / build-tools 35.0.0`. Tested through `API 35 / build-tools 35.0.0`. Newer releases require review."
+#~ msgctxt "docs.api:prose"
+#~ msgid "Largest text row."
+#~ msgstr "Ամենամեծ տեքստային տող։"
 
-#, pantoken-verbatim
-msgctxt "docs.api:prose"
-msgid "Target: Canvas Theme Editor. Host compatibility has not yet been verified."
-msgstr "Target: Canvas Theme Editor. Host compatibility has not yet been verified."
+#~ msgctxt "docs.api:prose"
+#~ msgid "Legend-sized text row."
+#~ msgstr "Տեքստային տող՝ լեգենդի չափի։"
 
-#, pantoken-verbatim
-msgctxt "docs.api:prose"
-msgid "Target: Jetpack Compose. Current format: `Generated Color and Dp token object compiles in an Android library module`. Minimum host version: `Kotlin 2.1.10 / Compose UI 1.8.2 / Android API 35`. Tested through `Kotlin 2.1.10 / Compose UI 1.8.2 / Android API 35`. Newer releases require review."
-msgstr "Target: Jetpack Compose. Current format: `Generated Color and Dp token object compiles in an Android library module`. Minimum host version: `Kotlin 2.1.10 / Compose UI 1.8.2 / Android API 35`. Tested through `Kotlin 2.1.10 / Compose UI 1.8.2 / Android API 35`. Newer releases require review."
+#~ msgctxt "docs.api:prose"
+#~ msgid "A round avatar placeholder, medium size only."
+#~ msgstr "Շրջանաձև avatar-ի պահեստամաս, միայն միջին չափսով։"
 
-#, pantoken-verbatim
-msgctxt "docs.api:prose"
-msgid "Target: Drupal themes. Current format: `Drupal core discovers generated theme; InfoParser and Symfony YAML accept metadata`. Minimum host version: `10.6.18`. Tested through `11.3.2`. Newer releases require review."
-msgstr "Target: Drupal themes. Current format: `Drupal core discovers generated theme; InfoParser and Symfony YAML accept metadata`. Minimum host version: `10.6.18`. Tested through `11.3.2`. Newer releases require review."
+#~ msgctxt "docs.api:prose"
+#~ msgid "An image placeholder, medium size only."
+#~ msgstr "Պատկերի պահեստամաս, միայն միջին չափսով։"
 
-#, pantoken-verbatim
-msgctxt "docs.api:prose"
-msgid "Target: HTML email. Host compatibility has not yet been verified."
-msgstr "Target: HTML email. Host compatibility has not yet been verified."
+#~ msgctxt "docs.api:prose"
+#~ msgid "A text bar (default)."
+#~ msgstr "Տեքստային գոտի (նախնական)."
 
-#, pantoken-verbatim
-msgctxt "docs.api:prose"
-msgid "Target: Flutter. Host compatibility has not yet been verified."
-msgstr "Target: Flutter. Host compatibility has not yet been verified."
+#~ msgctxt "docs.api:prose"
+#~ msgid "The clipped placeholder surface sized for the selected loader type."
+#~ msgstr "Կլիպացված պահեստային մակերես, չափված ընտրված loader տեսակի համար։"
 
-#, pantoken-verbatim
-msgctxt "docs.api:prose"
-msgid "Target: Hugo. Current format: `Hugo Pipes builds the Pantoken token stylesheet`. Minimum host version: `0.165.0`. Tested through `0.165.0`. Newer releases require review."
-msgstr "Target: Hugo. Current format: `Hugo Pipes builds the Pantoken token stylesheet`. Minimum host version: `0.165.0`. Tested through `0.165.0`. Newer releases require review."
+#~ msgctxt "docs.api:prose"
+#~ msgid "A repeated text-row wrapper that applies vertical spacing."
+#~ msgstr "Կրկնվող տեքստային տողերի պարուրիչ, որը կիրառում է ուղղահայաց բացատներ։"
 
 #, pantoken-verbatim
-msgctxt "docs.api:prose"
-msgid "Target: Jekyll. Current format: `Jekyll builds the generated Sass partial into site CSS`. Minimum host version: `4.4.1`. Tested through `4.4.1`. Newer releases require review."
-msgstr "Target: Jekyll. Current format: `Jekyll builds the generated Sass partial into site CSS`. Minimum host version: `4.4.1`. Tested through `4.4.1`. Newer releases require review."
+#~ msgctxt "docs.api:text"
+#~ msgid "SegmentedControlOptions"
+#~ msgstr "SegmentedControlOptions"
 
 #, pantoken-verbatim
-msgctxt "docs.api:prose"
-msgid "Target: Rust GUI frameworks. Current format: `Generated egui Color32 accessors and iced_core Color constants compile with the Rust toolchain`. Minimum host version: `1.95.0`. Tested through `1.95.0`. Newer releases require review."
-msgstr "Target: Rust GUI frameworks. Current format: `Generated egui Color32 accessors and iced_core Color constants compile with the Rust toolchain`. Minimum host version: `1.95.0`. Tested through `1.95.0`. Newer releases require review."
+#~ msgctxt "docs.api:text"
+#~ msgid "SegmentedControlHandle"
+#~ msgstr "SegmentedControlHandle"
 
 #, pantoken-verbatim
-msgctxt "docs.api:prose"
-msgid "Target: Swift iOS. Current format: `UIKit SwiftPM module, runtime token check, and compiled Icons.xcassets`. Tested environment: `Xcode 27.0 (27A266a), Swift 6.4, iOS Simulator SDK/runtime 27.0, iPhone 18 Pro, arm64 iOS 15 deployment target`. Runtime tested only on iOS Simulator 27.0; this does not establish an iOS 15 runtime floor. No watchOS or tvOS claim."
-msgstr "Target: Swift iOS. Current format: `UIKit SwiftPM module, runtime token check, and compiled Icons.xcassets`. Tested environment: `Xcode 27.0 (27A266a), Swift 6.4, iOS Simulator SDK/runtime 27.0, iPhone 18 Pro, arm64 iOS 15 deployment target`. Runtime tested only on iOS Simulator 27.0; this does not establish an iOS 15 runtime floor. No watchOS or tvOS claim."
+#~ msgctxt "docs.api:text"
+#~ msgid "SkeletonLoadingState"
+#~ msgstr "SkeletonLoadingState"
 
 #, pantoken-verbatim
-msgctxt "docs.api:prose"
-msgid "Target: Vanilla Forums. Host compatibility has not yet been verified."
-msgstr "Target: Vanilla Forums. Host compatibility has not yet been verified."
+#~ msgctxt "docs.api:text"
+#~ msgid "SkeletonLoadingOptions"
+#~ msgstr "SkeletonLoadingOptions"
 
 #, pantoken-verbatim
-msgctxt "docs.api:prose"
-msgid "Target: WordPress block themes. Current format: `theme.json v3`. Minimum host version: `6.6`. Tested through `7.1.2`. Newer releases require review."
-msgstr "Target: WordPress block themes. Current format: `theme.json v3`. Minimum host version: `6.6`. Tested through `7.1.2`. Newer releases require review."
+#~ msgctxt "docs.api:text"
+#~ msgid "SkeletonLoadingHandle"
+#~ msgstr "SkeletonLoadingHandle"
 
-msgctxt "docs.api:prose"
-msgid "Target: Angular. Current format: `CUSTOM_ELEMENTS_SCHEMA template compilation (Angular 16.2.12 / TS 5.1.6; Angular 22.2.0 / TS 6.0.3)`. Minimum host version: `16.2.12`. Tested through `22.2.0`. Newer releases require review."
-msgstr "Target: Angular. Current format: `CUSTOM_ELEMENTS_SCHEMA template compilation (Angular 16.2.12 / TS 5.1.6; Angular 22.2.0 / TS 6.0.3)`. Minimum host version: `16.2.12`. Tested through `22.2.0`. Newer releases require review."
-
-msgctxt "docs.api:prose"
-msgid "Target: Astro / Starlight. Current format: `Built Starlight page with injected token stylesheet (Astro 5 and 7)`. Minimum host version: `0.35.0`. Tested through `0.42.4`. Newer releases require review."
-msgstr "Target: Astro / Starlight. Current format: `Built Starlight page with injected token stylesheet (Astro 5 and 7)`. Minimum host version: `0.35.0`. Tested through `0.42.4`. Newer releases require review."
-
 #, pantoken-verbatim
-msgctxt "docs.api:prose"
-msgid "Target: Bootstrap. Current format: `CSS variables: body + primary button`. Minimum host version: `5.2.0`. Tested through `5.3.8`. Newer releases require review."
-msgstr "Target: Bootstrap. Current format: `CSS variables: body + primary button`. Minimum host version: `5.2.0`. Tested through `5.3.8`. Newer releases require review."
+#~ msgctxt "docs.api:text"
+#~ msgid "initSegmentedControl"
+#~ msgstr "initSegmentedControl"
 
 #, pantoken-verbatim
-msgctxt "docs.api:prose"
-msgid "Target: Emotion CSS-in-JS. Current format: `ThemeProvider SSR emits the Pantoken token variable`. Minimum host version: `11.14.0`. Tested through `11.14.0`. Newer releases require review."
-msgstr "Target: Emotion CSS-in-JS. Current format: `ThemeProvider SSR emits the Pantoken token variable`. Minimum host version: `11.14.0`. Tested through `11.14.0`. Newer releases require review."
+#~ msgctxt "docs.api:text"
+#~ msgid "initSkeletonLoading"
+#~ msgstr "initSkeletonLoading"
 
 #, pantoken-verbatim
-msgctxt "docs.api:prose"
-msgid "Target: Docusaurus theme-classic. Current format: `Infima CSS-variable bridge: primary and background`. Minimum host version: `3.0.0`. Tested through `3.10.2`. Newer releases require review."
-msgstr "Target: Docusaurus theme-classic. Current format: `Infima CSS-variable bridge: primary and background`. Minimum host version: `3.0.0`. Tested through `3.10.2`. Newer releases require review."
+#~ msgctxt "docs.api:text"
+#~ msgid "segmentedControlRules"
+#~ msgstr "segmentedControlRules"
 
 #, pantoken-verbatim
-msgctxt "docs.api:prose"
-msgid "Target: Foundation for Sites. Current format: `Concrete Sass settings + variable-backed CSS overlay`. Minimum host version: `6.1.2`. Tested through `6.9.0`. Newer releases require review."
-msgstr "Target: Foundation for Sites. Current format: `Concrete Sass settings + variable-backed CSS overlay`. Minimum host version: `6.1.2`. Tested through `6.9.0`. Newer releases require review."
+#~ msgctxt "docs.api:text"
+#~ msgid "skeletonLoaderRules"
+#~ msgstr "skeletonLoaderRules"
 
 #, pantoken-verbatim
-msgctxt "docs.api:prose"
-msgid "Target: markdown-it. Minimum host version: `14.0.0`. Tested through `15.0.2`. Newer releases require review."
-msgstr "Target: markdown-it. Minimum host version: `14.0.0`. Tested through `15.0.2`. Newer releases require review."
-
-msgctxt "docs.api:prose"
-msgid "Target: Mintlify docs.json. Current format: `Official CLI validates generated colors and background theme config`. Minimum host version: `4.0.1555`. Tested through `4.0.1557`. Newer releases require review."
-msgstr "Target: Mintlify docs.json. Current format: `Official CLI validates generated colors and background theme config`. Minimum host version: `4.0.1555`. Tested through `4.0.1557`. Newer releases require review."
+#~ msgctxt "docs.api:text"
+#~ msgid "segmented-control"
+#~ msgstr "segmented-control"
 
 #, pantoken-verbatim
-msgctxt "docs.api:prose"
-msgid "Target: Material UI. Current format: `Concrete createTheme palettes (MUI 5, 6, 7, 9)`. Minimum host version: `5.0.0`. Tested through `9.4.0`. Newer releases require review."
-msgstr "Target: Material UI. Current format: `Concrete createTheme palettes (MUI 5, 6, 7, 9)`. Minimum host version: `5.0.0`. Tested through `9.4.0`. Newer releases require review."
+#~ msgctxt "docs.api:text"
+#~ msgid "segment"
+#~ msgstr "segment"
 
 #, pantoken-verbatim
-msgctxt "docs.api:prose"
-msgid "Target: Pendo. Host compatibility has not yet been verified."
-msgstr "Target: Pendo. Host compatibility has not yet been verified."
+#~ msgctxt "docs.api:text"
+#~ msgid "skeleton-loader"
+#~ msgstr "skeleton-loader"
 
-#, pantoken-verbatim
-msgctxt "docs.api:prose"
-msgid "Target: React. Current format: `SSR-rendered Icon custom element and token fallback`. Minimum host version: `19.3.0`. Tested through `19.3.0`. Newer releases require review."
-msgstr "Target: React. Current format: `SSR-rendered Icon custom element and token fallback`. Minimum host version: `19.3.0`. Tested through `19.3.0`. Newer releases require review."
+#~ msgctxt "docs.api:prose"
+#~ msgid "Scrollable row containing the selectable segments."
+#~ msgstr "Սքրոլվող տող, որը պարունակում է ընտրելի հատվածները."
 
-#, pantoken-verbatim
-msgctxt "docs.api:prose"
-msgid "Target: react-markdown. Current format: `SSR-rendered InstUI heading, icon, and color swatch with React 19.3.0`. Minimum host version: `10.1.0`. Tested through `10.1.0`. Newer releases require review."
-msgstr "Target: react-markdown. Current format: `SSR-rendered InstUI heading, icon, and color swatch with React 19.3.0`. Minimum host version: `10.1.0`. Tested through `10.1.0`. Newer releases require review."
+#~ msgctxt "docs.api:prose"
+#~ msgid "Clips the segment row and anchors the overflow controls."
+#~ msgstr "Կտրում է հատվածների տողը և ամրացնում է overflow կառավարման տարրերը."
 
-#, pantoken-verbatim
-msgctxt "docs.api:prose"
-msgid "Target: React Native. Host compatibility has not yet been verified."
-msgstr "Target: React Native. Host compatibility has not yet been verified."
+#~ msgctxt "docs.api:prose"
+#~ msgid "Target: Next.js. Current format: `Production build transpiling and rendering Instructure UI 11.7.7 with React 19.3.0`. Minimum host version: `16.0.0`. Tested through `16.3.8`. Newer releases require review."
+#~ msgstr "Target: Next.js. Current format: `Production build transpiling and rendering Instructure UI 11.7.7 with React 19.3.0`. Minimum host version: `16.0.0`. Tested through `16.3.8`. Newer releases require review."
 
-#, pantoken-verbatim
-msgctxt "docs.api:prose"
-msgid "Target: rehype. Current format: `HAST + raw SVG`. Minimum host version: `13.0.0`. Tested through `13.0.2`. Newer releases require review."
-msgstr "Target: rehype. Current format: `HAST + raw SVG`. Minimum host version: `13.0.0`. Tested through `13.0.2`. Newer releases require review."
+#~ msgctxt "docs.api:prose"
+#~ msgid "Target: Panda CSS. Current format: `Panda token utility extraction from the Pantoken preset`. Minimum host version: `1.12.1`. Tested through `2.0.0`. Newer releases require review."
+#~ msgstr "Target: Panda CSS. Current format: `Panda token utility extraction from the Pantoken preset`. Minimum host version: `1.12.1`. Tested through `2.0.0`. Newer releases require review."
 
-#, pantoken-verbatim
-msgctxt "docs.api:prose"
-msgid "Target: shadcn/ui CSS variables. Current format: `Tailwind 4.3.3 compiles the Pantoken primary theme alias`. Minimum host version: `4.3.3`. Tested through `4.3.3`. Newer releases require review."
-msgstr "Target: shadcn/ui CSS variables. Current format: `Tailwind 4.3.3 compiles the Pantoken primary theme alias`. Minimum host version: `4.3.3`. Tested through `4.3.3`. Newer releases require review."
+#~ msgctxt "docs.api:prose"
+#~ msgid "Target: PostCSS. Minimum host version: `8.0.0`. Tested through `8.5.28`. Newer releases require review."
+#~ msgstr "Target: PostCSS. Minimum host version: `8.0.0`. Tested through `8.5.28`. Newer releases require review."
 
-#, pantoken-verbatim
-msgctxt "docs.api:prose"
-msgid "Target: Storybook theming. Current format: `Storybook ThemeVars constructor accepts light and dark Pantoken themes`. Minimum host version: `8.6.14`. Tested through `8.6.14`. Newer releases require review."
-msgstr "Target: Storybook theming. Current format: `Storybook ThemeVars constructor accepts light and dark Pantoken themes`. Minimum host version: `8.6.14`. Tested through `8.6.14`. Newer releases require review."
+#~ msgctxt "docs.api:prose"
+#~ msgid "Target: Vite. Minimum host version: `8.0.0`. Tested through `8.3.1`. Newer releases require review."
+#~ msgstr "Target: Vite. Minimum host version: `8.0.0`. Tested through `8.3.1`. Newer releases require review."
 
-#, pantoken-verbatim
-msgctxt "docs.api:prose"
-msgid "Target: Svelte. Current format: `Icon action component compiles and SSR renders on Svelte 4 and 5`. Minimum host version: `4.2.20`. Tested through `5.57.1`. Newer releases require review."
-msgstr "Target: Svelte. Current format: `Icon action component compiles and SSR renders on Svelte 4 and 5`. Minimum host version: `4.2.20`. Tested through `5.57.1`. Newer releases require review."
+#~ msgctxt "docs.api:prose"
+#~ msgid "Target: WordPress block themes. Current format: `theme.json v3`. Minimum host version: `6.6`. Tested through `7.1.2`. Newer releases require review."
+#~ msgstr "Target: WordPress block themes. Current format: `theme.json v3`. Minimum host version: `6.6`. Tested through `7.1.2`. Newer releases require review."
 
-#, pantoken-verbatim
-msgctxt "docs.api:prose"
-msgid "Target: TinyMCE PluginManager. Current format: `Pantoken plugin registration and callback initialization`. Minimum host version: `8.9.2`. Tested through `8.9.2`. Newer releases require review."
-msgstr "Target: TinyMCE PluginManager. Current format: `Pantoken plugin registration and callback initialization`. Minimum host version: `8.9.2`. Tested through `8.9.2`. Newer releases require review."
+#~ msgctxt "docs.api:prose"
+#~ msgid "Target: Angular. Current format: `CUSTOM_ELEMENTS_SCHEMA template compilation (Angular 16.2.12 / TS 5.1.6; Angular 22.2.0 / TS 6.0.3)`. Minimum host version: `16.2.12`. Tested through `22.2.0`. Newer releases require review."
+#~ msgstr "Target: Angular. Current format: `CUSTOM_ELEMENTS_SCHEMA template compilation (Angular 16.2.12 / TS 5.1.6; Angular 22.2.0 / TS 6.0.3)`. Minimum host version: `16.2.12`. Tested through `22.2.0`. Newer releases require review."
 
-#, pantoken-verbatim
-msgctxt "docs.api:prose"
-msgid "Target: VitePress. Current format: `Built site CSS includes the Pantoken primary-brand bridge`. Minimum host version: `1.6.4`. Tested through `1.6.4`. Newer releases require review."
-msgstr "Target: VitePress. Current format: `Built site CSS includes the Pantoken primary-brand bridge`. Minimum host version: `1.6.4`. Tested through `1.6.4`. Newer releases require review."
+#~ msgctxt "docs.api:prose"
+#~ msgid "Target: Astro / Starlight. Current format: `Built Starlight page with injected token stylesheet (Astro 5 and 7)`. Minimum host version: `0.35.0`. Tested through `0.42.4`. Newer releases require review."
+#~ msgstr "Target: Astro / Starlight. Current format: `Built Starlight page with injected token stylesheet (Astro 5 and 7)`. Minimum host version: `0.35.0`. Tested through `0.42.4`. Newer releases require review."
 
-#, pantoken-verbatim
-msgctxt "docs.api:prose"
-msgid "Target: Vue. Current format: `Plugin installation, custom-element configuration, and SSR output`. Minimum host version: `3.0.0`. Tested through `3.5.43`. Newer releases require review."
-msgstr "Target: Vue. Current format: `Plugin installation, custom-element configuration, and SSR output`. Minimum host version: `3.0.0`. Tested through `3.5.43`. Newer releases require review."
+#~ msgctxt "docs.api:prose"
+#~ msgid "Target: Mintlify docs.json. Current format: `Official CLI validates generated colors and background theme config`. Minimum host version: `4.0.1555`. Tested through `4.0.1557`. Newer releases require review."
+#~ msgstr "Target: Mintlify docs.json. Current format: `Official CLI validates generated colors and background theme config`. Minimum host version: `4.0.1555`. Tested through `4.0.1557`. Newer releases require review."
 
-#, pantoken-verbatim
-msgctxt "docs.api:prose"
-msgid "Target: Web Components. Current format: `Custom-element registration and button shadow output`. Tested environment: `Node 26.10.0 with happy-dom 20.14.5`. Real-browser rendering and interaction behavior are not verified."
-msgstr "Target: Web Components. Current format: `Custom-element registration and button shadow output`. Tested environment: `Node 26.10.0 with happy-dom 20.14.5`. Real-browser rendering and interaction behavior are not verified."
+#~ msgctxt "docs.api:prose"
+#~ msgid "Target: Material UI. Current format: `Concrete createTheme palettes (MUI 5, 6, 7, 9)`. Minimum host version: `5.0.0`. Tested through `9.4.0`. Newer releases require review."
+#~ msgstr "Target: Material UI. Current format: `Concrete createTheme palettes (MUI 5, 6, 7, 9)`. Minimum host version: `5.0.0`. Tested through `9.4.0`. Newer releases require review."
 
-msgctxt "docs.api:prose"
-msgid "Target: Next.js. Current format: `Production build transpiling and rendering Instructure UI 11.7.8 with React 19.3.0`. Minimum host version: `16.0.0`. Tested through `16.3.8`. Newer releases require review."
-msgstr "Target: Next.js. Current format: `Production build transpiling and rendering Instructure UI 11.7.8 with React 19.3.0`. Minimum host version: `16.0.0`. Tested through `16.3.8`. Newer releases require review."
+#~ msgctxt "docs.api:prose"
+#~ msgid "Target: Svelte. Current format: `Icon action component compiles and SSR renders on Svelte 4 and 5`. Minimum host version: `4.2.20`. Tested through `5.57.1`. Newer releases require review."
+#~ msgstr "Target: Svelte. Current format: `Icon action component compiles and SSR renders on Svelte 4 and 5`. Minimum host version: `4.2.20`. Tested through `5.57.1`. Newer releases require review."
 
-#, pantoken-verbatim
-msgctxt "docs.api:prose"
-msgid "Target: Panda CSS. Current format: `Panda token utility extraction from the Pantoken preset`. Minimum host version: `1.12.1`. Tested through `2.1.1`. Newer releases require review."
-msgstr "Target: Panda CSS. Current format: `Panda token utility extraction from the Pantoken preset`. Minimum host version: `1.12.1`. Tested through `2.1.1`. Newer releases require review."
+#~ msgctxt "docs.api:prose"
+#~ msgid "Target: TinyMCE PluginManager. Current format: `Pantoken plugin registration and callback initialization`. Minimum host version: `8.9.2`. Tested through `8.9.2`. Newer releases require review."
+#~ msgstr "Target: TinyMCE PluginManager. Current format: `Pantoken plugin registration and callback initialization`. Minimum host version: `8.9.2`. Tested through `8.9.2`. Newer releases require review."
 
-#, pantoken-verbatim
-msgctxt "docs.api:prose"
-msgid "Target: PostCSS. Minimum host version: `8.0.0`. Tested through `8.5.29`. Newer releases require review."
-msgstr "Target: PostCSS. Minimum host version: `8.0.0`. Tested through `8.5.29`. Newer releases require review."
+#~ msgctxt "docs.api:prose"
+#~ msgid "Target: Next.js. Current format: `Production build transpiling and rendering Instructure UI 11.7.8 with React 19.3.0`. Minimum host version: `16.0.0`. Tested through `16.3.8`. Newer releases require review."
+#~ msgstr "Target: Next.js. Current format: `Production build transpiling and rendering Instructure UI 11.7.8 with React 19.3.0`. Minimum host version: `16.0.0`. Tested through `16.3.8`. Newer releases require review."
 
-#, pantoken-verbatim
-msgctxt "docs.api:prose"
-msgid "Target: Vite. Minimum host version: `8.0.0`. Tested through `8.3.2`. Newer releases require review."
-msgstr "Target: Vite. Minimum host version: `8.0.0`. Tested through `8.3.2`. Newer releases require review."
+#~ msgctxt "docs.api:prose"
+#~ msgid "Target: Panda CSS. Current format: `Panda token utility extraction from the Pantoken preset`. Minimum host version: `1.12.1`. Tested through `2.1.1`. Newer releases require review."
+#~ msgstr "Target: Panda CSS. Current format: `Panda token utility extraction from the Pantoken preset`. Minimum host version: `1.12.1`. Tested through `2.1.1`. Newer releases require review."
 
-#, pantoken-verbatim
-msgctxt "docs.api:prose"
-msgid "Target: Angular. Current format: `CUSTOM_ELEMENTS_SCHEMA template compilation (Angular 16.2.12 / TS 5.1.6; Angular 22.2.0 and 22.2.1 / TS 6.0.3)`. Minimum host version: `16.2.12`. Tested through `22.2.1`. Newer releases require review."
-msgstr "Target: Angular. Current format: `CUSTOM_ELEMENTS_SCHEMA template compilation (Angular 16.2.12 / TS 5.1.6; Angular 22.2.0 and 22.2.1 / TS 6.0.3)`. Minimum host version: `16.2.12`. Tested through `22.2.1`. Newer releases require review."
+#~ msgctxt "docs.api:prose"
+#~ msgid "Target: Vite. Minimum host version: `8.0.0`. Tested through `8.3.2`. Newer releases require review."
+#~ msgstr "Target: Vite. Minimum host version: `8.0.0`. Tested through `8.3.2`. Newer releases require review."
 
-#, pantoken-verbatim
-msgctxt "docs.api:prose"
-msgid "Target: Astro / Starlight. Current format: `Built Starlight page with injected token stylesheet (Astro 5 and 7)`. Minimum host version: `0.35.0`. Tested through `0.42.5`. Newer releases require review."
-msgstr "Target: Astro / Starlight. Current format: `Built Starlight page with injected token stylesheet (Astro 5 and 7)`. Minimum host version: `0.35.0`. Tested through `0.42.5`. Newer releases require review."
+#~ msgctxt "docs.api:prose"
+#~ msgid "Target: Angular. Current format: `CUSTOM_ELEMENTS_SCHEMA template compilation (Angular 16.2.12 / TS 5.1.6; Angular 22.2.0 and 22.2.1 / TS 6.0.3)`. Minimum host version: `16.2.12`. Tested through `22.2.1`. Newer releases require review."
+#~ msgstr "Target: Angular. Current format: `CUSTOM_ELEMENTS_SCHEMA template compilation (Angular 16.2.12 / TS 5.1.6; Angular 22.2.0 and 22.2.1 / TS 6.0.3)`. Minimum host version: `16.2.12`. Tested through `22.2.1`. Newer releases require review."
 
-#, pantoken-verbatim
-msgctxt "docs.api:prose"
-msgid "Target: Mintlify docs.json. Current format: `Official CLI validates generated colors and background theme config`. Minimum host version: `4.0.1555`. Tested through `4.0.1591`. Newer releases require review."
-msgstr "Target: Mintlify docs.json. Current format: `Official CLI validates generated colors and background theme config`. Minimum host version: `4.0.1555`. Tested through `4.0.1591`. Newer releases require review."
+#~ msgctxt "docs.api:prose"
+#~ msgid "Target: Astro / Starlight. Current format: `Built Starlight page with injected token stylesheet (Astro 5 and 7)`. Minimum host version: `0.35.0`. Tested through `0.42.5`. Newer releases require review."
+#~ msgstr "Target: Astro / Starlight. Current format: `Built Starlight page with injected token stylesheet (Astro 5 and 7)`. Minimum host version: `0.35.0`. Tested through `0.42.5`. Newer releases require review."
 
-#, pantoken-verbatim
-msgctxt "docs.api:prose"
-msgid "Target: Next.js. Current format: `Production build transpiling and rendering Instructure UI 11.7.10 with React 19.3.0`. Minimum host version: `16.0.0`. Tested through `16.3.8`. Newer releases require review."
-msgstr "Target: Next.js. Current format: `Production build transpiling and rendering Instructure UI 11.7.10 with React 19.3.0`. Minimum host version: `16.0.0`. Tested through `16.3.8`. Newer releases require review."
+#~ msgctxt "docs.api:prose"
+#~ msgid "Target: Mintlify docs.json. Current format: `Official CLI validates generated colors and background theme config`. Minimum host version: `4.0.1555`. Tested through `4.0.1591`. Newer releases require review."
+#~ msgstr "Target: Mintlify docs.json. Current format: `Official CLI validates generated colors and background theme config`. Minimum host version: `4.0.1555`. Tested through `4.0.1591`. Newer releases require review."
 
-msgctxt "docs.api:prose"
-msgid "Settings saved."
-msgstr "Կարգավորումները պահպանվել են."
+#~ msgctxt "docs.api:prose"
+#~ msgid "Target: Next.js. Current format: `Production build transpiling and rendering Instructure UI 11.7.10 with React 19.3.0`. Minimum host version: `16.0.0`. Tested through `16.3.8`. Newer releases require review."
+#~ msgstr "Target: Next.js. Current format: `Production build transpiling and rendering Instructure UI 11.7.10 with React 19.3.0`. Minimum host version: `16.0.0`. Tested through `16.3.8`. Newer releases require review."
 
-msgctxt "docs.api:prose"
-msgid "Save settings"
-msgstr "Պահպանել կարգավորումները"
+#~ msgctxt "docs.api:prose"
+#~ msgid "Settings saved."
+#~ msgstr "Կարգավորումները պահպանվել են."
 
-msgctxt "docs.api:prose"
-msgid "Profile changes saved."
-msgstr "Պրոֆիլի փոփոխությունները պահպանվել են."
+#~ msgctxt "docs.api:prose"
+#~ msgid "Save settings"
+#~ msgstr "Պահպանել կարգավորումները"
 
-msgctxt "docs.api:prose"
-msgid "Use a labelled group for related actions; when buttons represent a toggle choice, expose each state with aria-pressed. Give icon-only buttons an accessible name."
-msgstr "Կապակցված գործողությունների համար օգտագործեք պիտակավորված խմբաքանակ; երբ կոՃակները ներկայացնում են միացման/անջատման ընտրություն, յուրաքանչյուր վիճակը ցուցադրեք aria-pressed-ով։ Տվեք միայն պատկերակով կոճակներին մատչելի անուն։"
+#~ msgctxt "docs.api:prose"
+#~ msgid "Profile changes saved."
+#~ msgstr "Պրոֆիլի փոփոխությունները պահպանվել են."
 
-msgctxt "docs.api:prose"
-msgid "Save"
-msgstr "Պահպանել"
+#~ msgctxt "docs.api:prose"
+#~ msgid "Use a labelled group for related actions; when buttons represent a toggle choice, expose each state with aria-pressed. Give icon-only buttons an accessible name."
+#~ msgstr "Կապակցված գործողությունների համար օգտագործեք պիտակավորված խմբաքանակ; երբ կոՃակները ներկայացնում են միացման/անջատման ընտրություն, յուրաքանչյուր վիճակը ցուցադրեք aria-pressed-ով։ Տվեք միայն պատկերակով կոճակներին մատչելի անուն։"
 
-msgctxt "docs.api:prose"
-msgid "Your draft was saved."
-msgstr "Ձեր նախնական տարբերակը պահպանվեց."
+#~ msgctxt "docs.api:prose"
+#~ msgid "Save"
+#~ msgstr "Պահպանել"
 
-#, pantoken-verbatim
-msgctxt "docs.api:prose"
-msgid "**Source:** [card.css](https://github.com/thedannywahl/pantoken/blob/main/formats/components/src/components/card/card.css)"
-msgstr "**Source:** [card.css](https://github.com/thedannywahl/pantoken/blob/main/formats/components/src/components/card/card.css)"
+#~ msgctxt "docs.api:prose"
+#~ msgid "Your draft was saved."
+#~ msgstr "Ձեր նախնական տարբերակը պահպանվեց."
 
 #, pantoken-verbatim
-msgctxt "docs.api:prose"
-msgid "@import \"@pantoken/components/components.css\";"
-msgstr "@import \"@pantoken/components/components.css\";"
-
-msgctxt "docs.api:prose"
-msgid "`.instui-card` · <span class=\"instui-pill -color-success pantoken-doc-tag\">stable</span> — A surface container that accepts arbitrary content."
-msgstr "`.instui-card` · <span class=\"instui-pill -color-success pantoken-doc-tag\">stable</span> — մակերեսային կոնտեյներ, որը ընդունում է ցանկացած բովանդակություն."
-
-msgctxt "docs.api:prose"
-msgid "`base` is the default elevated surface. Use `nested` for a bordered card inside a base card. Padding and corner radii scale with the Card's own width; legacy markup without a `.content` wrapper uses viewport breakpoints."
-msgstr "`base` հանդիսանում է ստանդարտ բարձրացված մակերեսը։ Օգտագործեք `nested`՝ հիմքային քարտի ներսում գտնվող եզրով քարտի համար։ Լցոնումները և անկյունային շառավիղները մասշտաբվում են Քարտի սեփական լայնության համաձայն; առանց `.content` պարունակող հին մարկափը օգտագործում է դիտադաշտի ընդմիջումները (viewport breakpoints)."
-
-msgctxt "docs.api:prose"
-msgid "Border-only surface for a card inside a base card."
-msgstr "Միայն եզրով մակերես՝ հիմնային քարտի ներսում գտնվող քարտի համար."
+#~ msgctxt "docs.api:prose"
+#~ msgid "**Source:** [card.css](https://github.com/thedannywahl/pantoken/blob/main/formats/components/src/components/card/card.css)"
+#~ msgstr "**Source:** [card.css](https://github.com/thedannywahl/pantoken/blob/main/formats/components/src/components/card/card.css)"
 
 #, pantoken-verbatim
-msgctxt "docs.api:prose"
-msgid "-canvas-rce\n"
-msgstr "-canvas-rce\n"
-
-msgctxt "docs.api:prose"
-msgid "Display name"
-msgstr "Ցուցադրվող անուն"
-
-msgctxt "docs.api:prose"
-msgid "Explore your course"
-msgstr "Ուսումնասիրեք ձեր դասընթացը"
-
-msgctxt "docs.api:prose"
-msgid "Find materials and upcoming work."
-msgstr "Գտնեք նյութեր և առաջիկա աշխատանքներ։"
-
-msgctxt "docs.api:prose"
-msgid "View course content"
-msgstr "Դիտել դասընթացի պարունակությունը"
+#~ msgctxt "docs.api:prose"
+#~ msgid "@import \"@pantoken/components/components.css\";"
+#~ msgstr "@import \"@pantoken/components/components.css\";"
 
-msgctxt "docs.api:prose"
-msgid "\n  Search\n"
-msgstr "\n  Փնտրել\n"
+#~ msgctxt "docs.api:prose"
+#~ msgid "`.instui-card` · <span class=\"instui-pill -color-success pantoken-doc-tag\">stable</span> — A surface container that accepts arbitrary content."
+#~ msgstr "`.instui-card` · <span class=\"instui-pill -color-success pantoken-doc-tag\">stable</span> — մակերեսային կոնտեյներ, որը ընդունում է ցանկացած բովանդակություն."
 
-msgctxt "docs.api:prose"
-msgid "Account settings"
-msgstr "Հաշվի կարգավորումներ"
+#~ msgctxt "docs.api:prose"
+#~ msgid "`base` is the default elevated surface. Use `nested` for a bordered card inside a base card. Padding and corner radii scale with the Card's own width; legacy markup without a `.content` wrapper uses viewport breakpoints."
+#~ msgstr "`base` հանդիսանում է ստանդարտ բարձրացված մակերեսը։ Օգտագործեք `nested`՝ հիմքային քարտի ներսում գտնվող եզրով քարտի համար։ Լցոնումները և անկյունային շառավիղները մասշտաբվում են Քարտի սեփական լայնության համաձայն; առանց `.content` պարունակող հին մարկափը օգտագործում է դիտադաշտի ընդմիջումները (viewport breakpoints)."
 
-msgctxt "docs.api:prose"
-msgid "Read the "
-msgstr "Կարդացեք "
+#~ msgctxt "docs.api:prose"
+#~ msgid "Border-only surface for a card inside a base card."
+#~ msgstr "Միայն եզրով մակերես՝ հիմնային քարտի ներսում գտնվող քարտի համար."
 
-msgctxt "docs.api:prose"
-msgid "accessibility guide"
-msgstr "հասանելիության ուղեցույց"
+#~ msgctxt "docs.api:prose"
+#~ msgid "-canvas-rce\n"
+#~ msgstr "-canvas-rce\n"
 
-msgctxt "docs.api:prose"
-msgid "View"
-msgstr "Դիտում"
+#~ msgctxt "docs.api:prose"
+#~ msgid "Display name"
+#~ msgstr "Ցուցադրվող անուն"
 
-msgctxt "docs.api:prose"
-msgid "List"
-msgstr "Ցուցակ"
+#~ msgctxt "docs.api:prose"
+#~ msgid "Explore your course"
+#~ msgstr "Ուսումնասիրեք ձեր դասընթացը"
 
-msgctxt "docs.api:prose"
-msgid "Grid"
-msgstr "Ցանց"
+#~ msgctxt "docs.api:prose"
+#~ msgid "Find materials and upcoming work."
+#~ msgstr "Գտնեք նյութեր և առաջիկա աշխատանքներ։"
 
-msgctxt "docs.api:prose"
-msgid "Open account details"
-msgstr "Բացել հաշվի մանրամասները"
+#~ msgctxt "docs.api:prose"
+#~ msgid "View course content"
+#~ msgstr "Դիտել դասընթացի պարունակությունը"
 
-msgctxt "docs.api:prose"
-msgid "Account details"
-msgstr "Հաշվի մանրամասները"
+#~ msgctxt "docs.api:prose"
+#~ msgid "\n  Search\n"
+#~ msgstr "\n  Փնտրել\n"
 
-msgctxt "docs.api:prose"
-msgid "Review your account information."
-msgstr "Ստուգեք ձեր հաշվի տեղեկությունները."
+#~ msgctxt "docs.api:prose"
+#~ msgid "Account settings"
+#~ msgstr "Հաշվի կարգավորումներ"
 
-#, pantoken-verbatim
-msgctxt "docs.api:prose"
-msgid "-docs\n"
-msgstr "-docs\n"
+#~ msgctxt "docs.api:prose"
+#~ msgid "Read the "
+#~ msgstr "Կարդացեք "
 
-msgctxt "docs.api:prose"
-msgid "More information"
-msgstr "Լրացուցիչ տեղեկություններ"
+#~ msgctxt "docs.api:prose"
+#~ msgid "accessibility guide"
+#~ msgstr "հասանելիության ուղեցույց"
 
-msgctxt "docs.api:prose"
-msgid "This example shows the large modal surface."
-msgstr "Այս օրինակն ցույց է տալիս մեծ մոդալ մակերեսը."
+#~ msgctxt "docs.api:prose"
+#~ msgid "View"
+#~ msgstr "Դիտում"
 
-msgctxt "docs.api:prose"
-msgid "Course overview"
-msgstr "Կուրսի ակնարկ"
+#~ msgctxt "docs.api:prose"
+#~ msgid "List"
+#~ msgstr "Ցուցակ"
 
-msgctxt "docs.api:prose"
-msgid "Assignments"
-msgstr "Առաջադրանքներ"
+#~ msgctxt "docs.api:prose"
+#~ msgid "Grid"
+#~ msgstr "Ցանց"
 
-msgctxt "docs.api:prose"
-msgid "Upcoming work appears here."
-msgstr "Մոտալուտ աշխատանքը կհայտնվի այստեղ։"
+#~ msgctxt "docs.api:prose"
+#~ msgid "Open account details"
+#~ msgstr "Բացել հաշվի մանրամասները"
 
-msgctxt "docs.api:prose"
-msgid "Course resources"
-msgstr "Կուրսի ռեսուրսներ"
+#~ msgctxt "docs.api:prose"
+#~ msgid "Account details"
+#~ msgstr "Հաշվի մանրամասները"
 
-msgctxt "docs.api:prose"
-msgid "Writing rubric"
-msgstr "Գրավոր工作的 գնահատման չափանիշներ"
+#~ msgctxt "docs.api:prose"
+#~ msgid "Review your account information."
+#~ msgstr "Ստուգեք ձեր հաշվի տեղեկությունները."
 
-msgctxt "docs.api:prose"
-msgid "Research paper criteria"
-msgstr "Գիտական հոդվածի չափանիշներ"
+#~ msgctxt "docs.api:prose"
+#~ msgid "-docs\n"
+#~ msgstr "-docs\n"
 
-msgctxt "docs.api:prose"
-msgid "Criterion"
-msgstr "Չափանիշ"
+#~ msgctxt "docs.api:prose"
+#~ msgid "More information"
+#~ msgstr "Լրացուցիչ տեղեկություններ"
 
-msgctxt "docs.api:prose"
-msgid "Description"
-msgstr "Նկարագրություն"
+#~ msgctxt "docs.api:prose"
+#~ msgid "This example shows the large modal surface."
+#~ msgstr "Այս օրինակն ցույց է տալիս մեծ մոդալ մակերեսը."
 
-msgctxt "docs.api:prose"
-msgid "Evidence"
-msgstr "Ապացույց"
+#~ msgctxt "docs.api:prose"
+#~ msgid "Course overview"
+#~ msgstr "Կուրսի ակնարկ"
 
-msgctxt "docs.api:prose"
-msgid "4 of 4"
-msgstr "4-ից 4"
+#~ msgctxt "docs.api:prose"
+#~ msgid "Assignments"
+#~ msgstr "Առաջադրանքներ"
 
-msgctxt "docs.api:prose"
-msgid "Sources support the central claim."
-msgstr "Աղբյուրները աջակցում են հիմնական պնդմանը."
+#~ msgctxt "docs.api:prose"
+#~ msgid "Upcoming work appears here."
+#~ msgstr "Մոտալուտ աշխատանքը կհայտնվի այստեղ։"
 
-msgctxt "docs.api:prose"
-msgid "Open settings"
-msgstr "Բացել կարգավորումները"
+#~ msgctxt "docs.api:prose"
+#~ msgid "Course resources"
+#~ msgstr "Կուրսի ռեսուրսներ"
 
-msgctxt "docs.api:prose"
-msgid "Grades"
-msgstr "Գնահատականներ"
+#~ msgctxt "docs.api:prose"
+#~ msgid "Writing rubric"
+#~ msgstr "Գրավոր工作的 գնահատման չափանիշներ"
 
-msgctxt "docs.api:prose"
-msgid "People"
-msgstr "Մարդիկ"
+#~ msgctxt "docs.api:prose"
+#~ msgid "Research paper criteria"
+#~ msgstr "Գիտական հոդվածի չափանիշներ"
 
-msgctxt "docs.api:prose"
-msgid "Fruit\n  "
-msgstr "Մրգ\n  "
+#~ msgctxt "docs.api:prose"
+#~ msgid "Criterion"
+#~ msgstr "Չափանիշ"
 
-msgctxt "docs.api:prose"
-msgid "Choose a fruit"
-msgstr "Ընտրեք մի մրգ"
+#~ msgctxt "docs.api:prose"
+#~ msgid "Description"
+#~ msgstr "Նկարագրություն"
 
-msgctxt "docs.api:prose"
-msgid "Preferred contact method\n  "
-msgstr "Նախընտրելի կապի եղանակը\n  "
+#~ msgctxt "docs.api:prose"
+#~ msgid "Evidence"
+#~ msgstr "Ապացույց"
 
-msgctxt "docs.api:prose"
-msgid "Email"
-msgstr "Էլ. փոստ"
+#~ msgctxt "docs.api:prose"
+#~ msgid "4 of 4"
+#~ msgstr "4-ից 4"
 
-msgctxt "docs.api:prose"
-msgid "Phone"
-msgstr "Հեռախոս"
+#~ msgctxt "docs.api:prose"
+#~ msgid "Sources support the central claim."
+#~ msgstr "Աղբյուրները աջակցում են հիմնական պնդմանը."
 
-msgctxt "docs.api:prose"
-msgid "No contact"
-msgstr "Առանց կապի"
+#~ msgctxt "docs.api:prose"
+#~ msgid "Open settings"
+#~ msgstr "Բացել կարգավորումները"
 
-msgctxt "docs.api:prose"
-msgid "Security"
-msgstr "Անվտանգություն"
+#~ msgctxt "docs.api:prose"
+#~ msgid "Grades"
+#~ msgstr "Գնահատականներ"
 
-msgctxt "docs.api:prose"
-msgid "Profile settings"
-msgstr "Պрофիլի կարգավորումներ"
+#~ msgctxt "docs.api:prose"
+#~ msgid "People"
+#~ msgstr "Մարդիկ"
 
-msgctxt "docs.api:prose"
-msgid "Security settings"
-msgstr "Անվտանգության կարգավորումներ"
+#~ msgctxt "docs.api:prose"
+#~ msgid "Fruit\n  "
+#~ msgstr "Մրգ\n  "
 
-msgctxt "docs.api:prose"
-msgid "Activity"
-msgstr "Գործունեություն"
+#~ msgctxt "docs.api:prose"
+#~ msgid "Choose a fruit"
+#~ msgstr "Ընտրեք մի մրգ"
 
-msgctxt "docs.api:prose"
-msgid "Project overview"
-msgstr "Նախագծի ակնարկ"
+#~ msgctxt "docs.api:prose"
+#~ msgid "Preferred contact method\n  "
+#~ msgstr "Նախընտրելի կապի եղանակը\n  "
 
-msgctxt "docs.api:prose"
-msgid "The course helped me understand the material."
-msgstr "Դասընթացը ինձ օգնեց նյութը հասկանալ."
+#~ msgctxt "docs.api:prose"
+#~ msgid "Email"
+#~ msgstr "Էլ. փոստ"
 
-#, pantoken-verbatim
-msgctxt "docs.api:prose"
-msgid "Jordan Lee"
-msgstr "Jordan Lee"
+#~ msgctxt "docs.api:prose"
+#~ msgid "Phone"
+#~ msgstr "Հեռախոս"
 
-msgctxt "docs.api:prose"
-msgid "Student"
-msgstr "Ուսանող"
+#~ msgctxt "docs.api:prose"
+#~ msgid "No contact"
+#~ msgstr "Առանց կապի"
 
-msgctxt "docs.api:prose"
-msgid "\n  Class-based component styles and a prose layer.\n"
-msgstr "\n  Դասերի վրա հիմնված բաղադրիչների ոճեր և տեքստային շերտ.\n"
+#~ msgctxt "docs.api:prose"
+#~ msgid "Security"
+#~ msgstr "Անվտանգություն"
 
-msgctxt "docs.api:prose"
-msgid "Keyboard support"
-msgstr "Ստեղնաշարի աջակցություն"
+#~ msgctxt "docs.api:prose"
+#~ msgid "Profile settings"
+#~ msgstr "Պрофիլի կարգավորումներ"
 
-msgctxt "docs.api:prose"
-msgid "\n  The native disclosure control supports keyboard interaction.\n"
-msgstr "\n  Բնիկ disclosure կառավարիչը աջակցում է ստեղնաշարի փոխազդեցությանը.\n"
+#~ msgctxt "docs.api:prose"
+#~ msgid "Security settings"
+#~ msgstr "Անվտանգության կարգավորումներ"
 
-msgctxt "docs.api:prose"
-msgid "Help"
-msgstr "Օգնություն"
+#~ msgctxt "docs.api:prose"
+#~ msgid "Activity"
+#~ msgstr "Գործունեություն"
 
-msgctxt "docs.api:prose"
-msgid "Find answers to common questions."
-msgstr "Գտեք պատասխաններ հաճախ հանդիպող հարցերին։"
+#~ msgctxt "docs.api:prose"
+#~ msgid "Project overview"
+#~ msgstr "Նախագծի ակնարկ"
 
-msgctxt "docs.api:prose"
-msgid "Placement"
-msgstr "Տեղադրում"
+#~ msgctxt "docs.api:prose"
+#~ msgid "The course helped me understand the material."
+#~ msgstr "Դասընթացը ինձ օգնեց նյութը հասկանալ."
 
-msgctxt "docs.api:prose"
-msgid "This tooltip appears below."
-msgstr "Այս հուշող տեքստը հայտնվում է ներքևում։"
+#~ msgctxt "docs.api:prose"
+#~ msgid "Jordan Lee"
+#~ msgstr "Jordan Lee"
 
-msgctxt "docs.api:prose"
-msgid "Course details"
-msgstr "Դասընթացի մանրամասներ"
+#~ msgctxt "docs.api:prose"
+#~ msgid "Student"
+#~ msgstr "Ուսանող"
 
-msgctxt "docs.api:prose"
-msgid "Review the course schedule."
-msgstr "Ստուգեք դասընթացի ժամանակացույցը."
+#~ msgctxt "docs.api:prose"
+#~ msgid "\n  Class-based component styles and a prose layer.\n"
+#~ msgstr "\n  Դասերի վրա հիմնված բաղադրիչների ոճեր և տեքստային շերտ.\n"
 
-msgctxt "docs.api:prose"
-msgid "Course work"
-msgstr "Դասային աշխատանք"
+#~ msgctxt "docs.api:prose"
+#~ msgid "Keyboard support"
+#~ msgstr "Ստեղնաշարի աջակցություն"
 
-msgctxt "docs.api:prose"
-msgid "See upcoming assignments."
-msgstr "Տես առաջիկա հանձնարարությունները."
+#~ msgctxt "docs.api:prose"
+#~ msgid "\n  The native disclosure control supports keyboard interaction.\n"
+#~ msgstr "\n  Բնիկ disclosure կառավարիչը աջակցում է ստեղնաշարի փոխազդեցությանը.\n"
 
-#, pantoken-verbatim
-msgctxt "docs.api:prose"
-msgid "Canvas"
-msgstr "Canvas"
+#~ msgctxt "docs.api:prose"
+#~ msgid "Help"
+#~ msgstr "Օգնություն"
 
-msgctxt "docs.api:prose"
-msgid "Course home"
-msgstr "Դասընթացի գլխավոր էջ"
+#~ msgctxt "docs.api:prose"
+#~ msgid "Find answers to common questions."
+#~ msgstr "Գտեք պատասխաններ հաճախ հանդիպող հարցերին։"
 
-msgctxt "docs.api:prose"
-msgid "Course materials appear here."
-msgstr "Դասընթացի նյութերը կհայտնվեն այստեղ։"
+#~ msgctxt "docs.api:prose"
+#~ msgid "Placement"
+#~ msgstr "Տեղադրում"
 
-msgctxt "docs.api:prose"
-msgid "Signed in as Jordan Lee"
-msgstr "Մուտք է կատարվել որպես Jordan Lee"
+#~ msgctxt "docs.api:prose"
+#~ msgid "This tooltip appears below."
+#~ msgstr "Այս հուշող տեքստը հայտնվում է ներքևում։"
 
-msgctxt "docs.api:prose"
-msgid "Standalone Card stylesheet with support for a custom class prefix."
-msgstr "Standalone Card stylesheet՝ աջակցությամբ հարմարեցված դասի նախածանցի."
+#~ msgctxt "docs.api:prose"
+#~ msgid "Course details"
+#~ msgstr "Դասընթացի մանրամասներ"
 
-msgctxt "docs.api:prose"
-msgid "Import `cardCss` from `@pantoken/components` instead."
-msgstr "Ներմուծել `cardCss` ից `@pantoken/components` փոխարեն."
+#~ msgctxt "docs.api:prose"
+#~ msgid "Review the course schedule."
+#~ msgstr "Ստուգեք դասընթացի ժամանակացույցը."
 
-msgctxt "docs.api:prose"
-msgid "Wrap `html` in the shared `.pantoken-demo-card` surface (default `true`)."
-msgstr "Փաթաթեք `html` ընդհանուր `.pantoken-demo-card` մակերեսում (ստանդարտ `true`)."
+#~ msgctxt "docs.api:prose"
+#~ msgid "Course work"
+#~ msgstr "Դասային աշխատանք"
 
-#, pantoken-verbatim
-msgctxt "docs.api:text"
-msgid "cardCss"
-msgstr "cardCss"
+#~ msgctxt "docs.api:prose"
+#~ msgid "See upcoming assignments."
+#~ msgstr "Տես առաջիկա հանձնարարությունները."
 
-#, pantoken-verbatim
-msgctxt "docs.api:prose"
-msgid "Target: Next.js. Current format: `Production build transpiling and rendering Instructure UI 11.7.10 with React 19.3.0`. Minimum host version: `16.0.0`. Tested through `16.4.0`. Newer releases require review."
-msgstr "Target: Next.js. Current format: `Production build transpiling and rendering Instructure UI 11.7.10 with React 19.3.0`. Minimum host version: `16.0.0`. Tested through `16.4.0`. Newer releases require review."
+#~ msgctxt "docs.api:prose"
+#~ msgid "Canvas"
+#~ msgstr "Կանվաս"
 
-#, pantoken-verbatim
-msgctxt "docs.api:prose"
-msgid "Target: Panda CSS. Current format: `Panda token utility extraction from the Pantoken preset`. Minimum host version: `1.12.1`. Tested through `2.2.0`. Newer releases require review."
-msgstr "Target: Panda CSS. Current format: `Panda token utility extraction from the Pantoken preset`. Minimum host version: `1.12.1`. Tested through `2.2.0`. Newer releases require review."
+#~ msgctxt "docs.api:prose"
+#~ msgid "Course home"
+#~ msgstr "Դասընթացի գլխավոր էջ"
 
-#, pantoken-verbatim
-msgctxt "docs.api:prose"
-msgid "Target: Vite. Minimum host version: `8.0.0`. Tested through `8.3.4`. Newer releases require review."
-msgstr "Target: Vite. Minimum host version: `8.0.0`. Tested through `8.3.4`. Newer releases require review."
+#~ msgctxt "docs.api:prose"
+#~ msgid "Course materials appear here."
+#~ msgstr "Դասընթացի նյութերը կհայտնվեն այստեղ։"
 
-msgctxt "docs.api:prose"
-msgid "Resolve a theme-message target. Only explicitly sandboxed, opaque `srcdoc` frames permit `\"*\"`;\nother opaque or malformed URLs are rejected. Frame messages must not contain confidential data."
-msgstr "Պարզել թեմայի հաղորդագրության թիրախը. Միայն հստակորեն sandbox-ացված, ոչ թափանցիկ `srcdoc` շրջանակները թույլատրում են `\"*\"`;\nայլ ոչ թափանցիկ կամ սխալ ձևավորված URL-ները մերժվում են. Ֆրեյմ հաղորդագրությունները չպետք է պարունակեն գաղտնի տվյալներ."
+#~ msgctxt "docs.api:prose"
+#~ msgid "Signed in as Jordan Lee"
+#~ msgstr "Մուտք է կատարվել որպես Jordan Lee"
 
 #, pantoken-verbatim
-msgctxt "docs.api:prose"
-msgid "Target: WordPress block themes. Current format: `theme.json v3`. Minimum host version: `6.6`. Tested through `7.1.3`. Newer releases require review."
-msgstr "Target: WordPress block themes. Current format: `theme.json v3`. Minimum host version: `6.6`. Tested through `7.1.3`. Newer releases require review."
+#~ msgctxt "docs.api:text"
+#~ msgid "cardCss"
+#~ msgstr "cardCss"
 
 #, pantoken-verbatim
-msgctxt "docs.api:prose"
-msgid "Target: Angular. Current format: `CUSTOM_ELEMENTS_SCHEMA template compilation (Angular 16.2.12 / TS 5.1.6; Angular 22.2.0, 22.2.1, and 22.2.2 / TS 6.0.3)`. Minimum host version: `16.2.12`. Tested through `22.2.2`. Newer releases require review."
-msgstr "Target: Angular. Current format: `CUSTOM_ELEMENTS_SCHEMA template compilation (Angular 16.2.12 / TS 5.1.6; Angular 22.2.0, 22.2.1, and 22.2.2 / TS 6.0.3)`. Minimum host version: `16.2.12`. Tested through `22.2.2`. Newer releases require review."
+#~ msgctxt "docs.api:text"
+#~ msgid "frameTargetOrigin"
+#~ msgstr "frameTargetOrigin"
 
-#, pantoken-verbatim
 msgctxt "docs.api:prose"
-msgid "Target: Astro / Starlight. Current format: `Built Starlight page with injected token stylesheet (Astro 5 and 7)`. Minimum host version: `0.35.0`. Tested through `0.42.6`. Newer releases require review."
-msgstr "Target: Astro / Starlight. Current format: `Built Starlight page with injected token stylesheet (Astro 5 and 7)`. Minimum host version: `0.35.0`. Tested through `0.42.6`. Newer releases require review."
+msgid "\n  Settings saved.\n  "
+msgstr "\n  Պահվել է կարգավորումները.\n  "
 
-#, pantoken-verbatim
 msgctxt "docs.api:prose"
-msgid "Target: Mintlify docs.json. Current format: `Official CLI validates generated colors and background theme config`. Minimum host version: `4.0.1555`. Tested through `4.0.1614`. Newer releases require review."
-msgstr "Target: Mintlify docs.json. Current format: `Official CLI validates generated colors and background theme config`. Minimum host version: `4.0.1555`. Tested through `4.0.1614`. Newer releases require review."
+msgid "The logo system preserves each product logo's colors and aspect ratio. Explicit current-color variants inherit the text color."
+msgstr "Լոգոտիպերի համակարգն ապահովում է յուրաքանչյուր արտադրանքի լոգոյի գույների և կողմերի հարաբերակցության պահպանումը։ Հստակ `current-color` տարբերակները ժառանգում են տեքստի գույնը։"
 
-#, pantoken-verbatim
 msgctxt "docs.api:prose"
-msgid "Target: Material UI. Current format: `Concrete createTheme palettes (MUI 5, 6, 7, 9)`. Minimum host version: `5.0.0`. Tested through `9.5.0`. Newer releases require review."
-msgstr "Target: Material UI. Current format: `Concrete createTheme palettes (MUI 5, 6, 7, 9)`. Minimum host version: `5.0.0`. Tested through `9.5.0`. Newer releases require review."
+msgid "`.instui-logo` — The logo system preserves each product logo's colors and aspect ratio. Explicit current-color variants inherit the text color."
+msgstr "`.instui-logo` — Լոգոտիպերի համակարգը պահպանում է յուրաքանչյուր ապրանքի լոգոյի գույները և կողմերի հարաբերակցությունը։ Բացահայտ current-color տարբերակները ժառանգում են տեքստի գույնը։"
 
-#, pantoken-verbatim
 msgctxt "docs.api:prose"
-msgid "Target: Svelte. Current format: `Icon action component compiles and SSR renders on Svelte 4 and 5`. Minimum host version: `4.2.20`. Tested through `5.57.2`. Newer releases require review."
-msgstr "Target: Svelte. Current format: `Icon action component compiles and SSR renders on Svelte 4 and 5`. Minimum host version: `4.2.20`. Tested through `5.57.2`. Newer releases require review."
+msgid "Target resolution (first match wins):\n1. `data-close-target=\"id\"` — dismiss the element with that id\n2. `popovertarget` / `commandfor` — skip; native browser handles it\n3. walk up to the nearest `<dialog>`, `[popover]`, `[data-dismissible]`, `[open]`, alert, or banner"
+msgstr "Target resolution (առաջին համապատասխանությունն է վճիռը):\n1. `data-close-target=\"id\"` — հեռացնել այդ id-ով տարրը\n2. `popovertarget` / `commandfor` — անտեսել; նատիվ բրաուզերը դա կառավարում է\n3. քայլել մինչև ամենամոտ `<dialog>`, `[popover]`, `[data-dismissible]`, `[open]`, ահազանգ (alert) կամ տողատախտակ (banner)"
 
-#, pantoken-verbatim
 msgctxt "docs.api:prose"
-msgid "Target: TinyMCE PluginManager. Current format: `Pantoken plugin registration and callback initialization`. Minimum host version: `8.9.2`. Tested through `8.9.3`. Newer releases require review."
-msgstr "Target: TinyMCE PluginManager. Current format: `Pantoken plugin registration and callback initialization`. Minimum host version: `8.9.2`. Tested through `8.9.3`. Newer releases require review."
-
-#, pantoken-verbatim
-msgctxt "docs.api:text"
-msgid "frameTargetOrigin"
-msgstr "frameTargetOrigin"
+msgid "Dismiss strategy:\n- `<dialog>` → `dialog.close()`\n- `[popover]` → `el.hidePopover()`\n- `.instui-alert` or `.instui-banner` → cancelable `dismiss` event, then fade out and remove\n- `[data-dismissible]` or `[open]` → remove open attr + fire bubbling `close`"
+msgstr "Dismiss strategy:\n- `<dialog>` → `dialog.close()`\n- `[popover]` → `el.hidePopover()`\n- `.instui-alert` կամ `.instui-banner` → հնարավոր է չեղարկել `dismiss` իրադարձությունը, ապա աստիճանաբար թափանցիկ դարձնել և դուրս հանել\n- `[data-dismissible]` կամ `[open]` → հեռացնել open հատկանիշը + արձակել բխող `close`"

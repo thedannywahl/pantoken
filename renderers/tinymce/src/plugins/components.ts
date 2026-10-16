@@ -6,6 +6,7 @@
  */
 import type { Editor } from "tinymce";
 import type { CdnFile } from "@pantoken/cdn";
+import customComponentsModel from "@pantoken/plugin-custom-components/model.json" with { type: "json" };
 import { resolveExampleTargets } from "@pantoken/utils/example-targets";
 import type { CssDocEntry } from "../cssdoc/model.js";
 import type { MissingAssetHandler } from "../types.js";
@@ -25,6 +26,10 @@ export interface ComponentsPickerOptions {
   buildAssetUrl?: (file: CdnFile) => string;
   /** Register this picker's standalone toolbar button and menu item. */
   registerUi?: boolean;
+  /** Evaluated each time the picker opens, without changing existing editor content. */
+  isAvailable?: (entry: CssDocEntry) => boolean;
+  /** Read at insertion time to select the matching Canvas example. Defaults to enabled. */
+  includeInteractions?: () => boolean;
 }
 
 /** Command that opens the components picker. */
@@ -60,6 +65,8 @@ const COMPONENT_PICKER_EXCLUDED_COMPONENTS = new Set([
   "tray",
 ]);
 
+const customComponentNames = new Set(customComponentsModel.map((entry) => entry.name));
+
 function normalizeExample(example: string): string {
   const fencedHtml = example.match(/```(?:html(?:\s+-[a-z][a-z0-9-]*)*)?\s*\r?\n([\s\S]*?)```/iu);
   const markup = fencedHtml?.[1] ?? example.replace(/^(?:\s*-[a-z][a-z0-9-]*\s*)+\r?\n/u, "");
@@ -82,8 +89,12 @@ export function createComponentsPlugin(options: ComponentsPickerOptions): (edito
   return function pantokenComponentsPlugin(editor: Editor) {
     const strings = getEditorStrings(editor);
     // Build a list of available components.
-    const componentList = buildComponentList(options.model);
-    const openDialog = (): void => openComponentsDialog(editor, componentList, options);
+    const openDialog = (): void =>
+      openComponentsDialog(
+        editor,
+        buildComponentList(options.model.filter((entry) => options.isAvailable?.(entry) ?? true)),
+        options,
+      );
     registerComponentModifierToolbar(editor, options.model);
 
     if (options.registerUi === false) {
@@ -161,6 +172,7 @@ function openComponentsDialog(
         text: strings.insertButton,
         type: "submit",
         primary: true,
+        enabled: components.length > 0,
       },
       {
         text: strings.cancelButton,
@@ -173,7 +185,9 @@ function openComponentsDialog(
       const component = components.find((c) => c.name === selectedName);
 
       if (component) {
-        const exampleIndex = resolveExampleTargets(component.examples).canvasRce[0];
+        const exampleIndex = resolveExampleTargets(component.examples, {
+          interactions: options.includeInteractions?.() ?? true,
+        }).canvasRce[0];
         if (exampleIndex === undefined) {
           api.close();
           return;
@@ -183,7 +197,10 @@ function openComponentsDialog(
 
         // If this component has a CSS file, inject it into the content area.
         const cssFile: CdnFile = {
-          package: "@pantoken/components",
+          package:
+            component.kind === "custom-component" || customComponentNames.has(component.name)
+              ? "@pantoken/plugin-custom-components"
+              : "@pantoken/components",
           path: `dist/${component.name}.css`,
         };
         trackAndInjectAsset(editor, cssFile, options);

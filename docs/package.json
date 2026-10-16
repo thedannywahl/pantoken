@@ -62,6 +62,7 @@
     "@pantoken/css": "workspace:*",
     "@pantoken/demo": "workspace:*",
     "@pantoken/i18n-engine": "workspace:*",
+    "@pantoken/inline-styles": "workspace:*",
     "@pantoken/interactions": "workspace:*",
     "@pantoken/pantoken": "workspace:*",
     "@pantoken/pendo": "workspace:*",

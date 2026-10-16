@@ -71,7 +71,7 @@ test("canvas-theme-editor is a known, template-only platform (no preset)", async
   expect(main).toContain("const onMissingAsset = () => void refreshAll();");
   expect(main).toContain('"/node_modules/@pantoken/components/dist/icons/*.css",');
   expect(main).toContain(
-    '"/node_modules/@pantoken/plugin-{logos,simple-icons,lucide-lab,custom-icons}/dist/**/*.css",',
+    '"/node_modules/@pantoken/plugin-{logos,simple-icons,lucide-lab,custom-icons,custom-components}/dist/**/*.css",',
   );
   expect(main).toContain("buildFileUrl(file, providerSelect.value)");
   expect(main).toContain("buildAssetUrl: buildSelectedAssetUrl");
@@ -84,12 +84,15 @@ test("canvas-theme-editor is a known, template-only platform (no preset)", async
   expect(main).toContain("localProviderOption.value = LOCAL_PROVIDER_ID;");
   expect(main).toContain("async function inlineAssetCss");
   expect(main).toContain("const dynamicCss = await inlineAssetCss(currentAssets);");
-  expect(main).toContain("await fetch(buildSelectedAssetUrl(asset))");
+  expect(main).toContain("const urls = assets.map(buildSelectedAssetUrl);");
+  expect(main).toContain("await fetch(key)");
   expect(main).toContain(
     'import logoPainterCss from "@pantoken/plugin-custom-components/logo.css?inline";',
   );
   expect(main).toMatch(/const LOCAL_COMPONENT_CSS = \[[^\]]*logoPainterCss,/);
-  expect(main).toContain("if (selection.provider !== LOCAL_PROVIDER_ID) {");
+  expect(main).toContain(
+    "if (![LOCAL_PROVIDER_ID, INLINE_PROVIDER_ID].includes(selection.provider)) {",
+  );
   expect(main).toContain("let refreshGeneration = 0;");
   expect(main).toContain("providerSelect.value = LOCAL_PROVIDER_ID;");
   for (const theme of ["next-gen", "canvas", "canvas-high-contrast"]) {
@@ -101,8 +104,9 @@ test("canvas-theme-editor is a known, template-only platform (no preset)", async
   );
   expect(main).toContain("editorSkinStyle.textContent = css.skin;");
   expect(main).toContain(
-    'editorContentStyle.textContent = [css.content, PREVIEW_SCHEME_FORCE_CSS].join("\\n");',
+    "editorContentStyle.textContent = [tokensCss, LOCAL_COMPONENT_CSS, css.content, PREVIEW_SCHEME_FORCE_CSS,",
   );
+  expect(main).toContain('data-pantoken-inline-generated="::before"');
   expect(main).toContain("editorContentStyle.ownerDocument !== editorDocument");
   expect(main).not.toContain("editorSkinLink?.remove()");
   expect(main).not.toContain("editorContentLink?.remove()");
@@ -175,7 +179,7 @@ test("canvas-theme-editor is a known, template-only platform (no preset)", async
   expect(main).toContain("activeEditor.resetContent(editorHtml);");
   expect(main).toContain("sourceToggle.replaceAll(editorHtml)");
   expect(main).toContain('selector: "",');
-  expect(main).toContain("<head><style>${themeCss}");
+  expect(main).toContain("<head><style>${previewFrameCss}\n${themeCss}");
   expect(main).not.toContain('<html data-pantoken-color="${selectedColor}">');
   expect(appHtml).toContain('<div data-pantoken-color="navy"><p></p></div>');
   expect(main).toContain('autosave_interval: "30s"');

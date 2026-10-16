@@ -12,6 +12,7 @@ export async function runCli(args: string[] = process.argv.slice(2)): Promise<vo
       input: { type: "string", short: "i" },
       output: { type: "string", short: "o" },
       css: { type: "string", short: "c" },
+      variables: { type: "string", default: "reference" },
       help: { type: "boolean", short: "h" },
     },
     allowPositionals: false,
@@ -20,13 +21,18 @@ export async function runCli(args: string[] = process.argv.slice(2)): Promise<vo
 
   if (help) {
     process.stdout.write(
-      "Usage: pantoken-inline [--css <file>] [--input <file>] [--output <file>]\n",
+      "Usage: pantoken-inline [--css <file>] [--input <file>] [--output <file>] [--variables reference|resolved]\n",
     );
     return;
   }
+  if (parsed.values.variables !== "reference" && parsed.values.variables !== "resolved") {
+    throw new TypeError("--variables must be reference or resolved");
+  }
   const html = input ? await readFile(input, "utf8") : await readStdin();
   const extraCss = css ? await readFile(css, "utf8") : undefined;
-  const result = inlineHtml(html, extraCss ?? "");
+  const result = inlineHtml(html, extraCss ?? "", {
+    resolveCSSVariables: parsed.values.variables === "resolved",
+  });
 
   if (output) {
     await writeFile(output, result);

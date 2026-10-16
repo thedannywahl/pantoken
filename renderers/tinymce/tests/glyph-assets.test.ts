@@ -28,6 +28,14 @@ test("normalizeGlyphHtml returns glyph-free or already-normalized html unchanged
   expect(normalizeGlyphHtml(icon, document)).toBe(icon);
 });
 
+test("logo glyphs used as component icons resolve their own stylesheet", () => {
+  const root = document.createElement("div");
+  root.innerHTML = '<div class="instui-banner -icon-canvas-icon-reversed"></div>';
+  expect(getUsedLogoCdnFiles(root)).toEqual([
+    { package: "@pantoken/plugin-logos", path: "dist/canvas-icon-reversed.css" },
+  ]);
+});
+
 function fakeEditor() {
   const doc = document.implementation.createHTMLDocument("");
   const handlers = new Map<string, Array<(event: any) => void>>();

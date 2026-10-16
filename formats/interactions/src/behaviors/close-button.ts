@@ -1,14 +1,17 @@
+import { initRemove } from "./remove.js";
+
 /**
  * Wire a close button to dismiss its target.
  *
  * Target resolution (first match wins):
  * 1. `data-close-target="id"` — dismiss the element with that id
  * 2. `popovertarget` / `commandfor` — skip; native browser handles it
- * 3. walk up to the nearest `<dialog>`, `[popover]`, or `[data-dismissible]`
+ * 3. walk up to the nearest `<dialog>`, `[popover]`, `[data-dismissible]`, `[open]`, alert, or banner
  *
  * Dismiss strategy:
  * - `<dialog>` → `dialog.close()`
  * - `[popover]` → `el.hidePopover()`
+ * - `.instui-alert` or `.instui-banner` → cancelable `dismiss` event, then fade out and remove
  * - `[data-dismissible]` or `[open]` → remove open attr + fire bubbling `close`
  */
 export function initCloseButton(btn: HTMLElement): void {
@@ -24,7 +27,9 @@ export function initCloseButton(btn: HTMLElement): void {
 
     const target = targetId
       ? byId(targetId)
-      : btn.closest<HTMLElement>("dialog, [popover], [data-dismissible], [open]");
+      : btn.closest<HTMLElement>(
+          "dialog, [popover], [data-dismissible], [open], .instui-alert, .instui-banner",
+        );
 
     if (!target) return;
 
@@ -32,6 +37,8 @@ export function initCloseButton(btn: HTMLElement): void {
       target.close();
     } else if (target.hasAttribute("popover")) {
       (target as HTMLElement & { hidePopover?(): void }).hidePopover?.();
+    } else if (target.matches(".instui-alert, .instui-banner")) {
+      initRemove(target, { timeout: 0 }).dismiss();
     } else {
       target.removeAttribute("open");
       target.dispatchEvent(new CustomEvent("close", { bubbles: true, composed: true }));

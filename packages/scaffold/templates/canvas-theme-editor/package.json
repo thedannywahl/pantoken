@@ -13,6 +13,7 @@
     "@pantoken/cdn": "latest",
     "@pantoken/components": "latest",
     "@pantoken/css": "latest",
+    "@pantoken/inline-styles": "latest",
     "@pantoken/interactions": "latest",
     "@pantoken/plugin-custom-components": "latest",
     "@pantoken/plugin-custom-icons": "latest",

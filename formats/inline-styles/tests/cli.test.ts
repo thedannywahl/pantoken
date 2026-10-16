@@ -28,6 +28,12 @@ test("CLI rejects unsupported options", async () => {
   await expect(runCli(["--theme", "unknown"])).rejects.toThrow("Unknown option '--theme'");
 });
 
+test("CLI validates the variable mode", async () => {
+  await expect(runCli(["--variables", "unknown"])).rejects.toThrow(
+    "--variables must be reference or resolved",
+  );
+});
+
 test("CLI reads HTML from stdin and writes to stdout", async () => {
   const stdin = vi
     .spyOn(process, "stdin", "get")
@@ -52,6 +58,24 @@ test("CLI prints help when invoked", async () => {
     await runCli(["--help"]);
     expect(stdout).toHaveBeenCalledWith(expect.stringContaining("Usage: pantoken-inline"));
   } finally {
+    stdout.mockRestore();
+  }
+});
+
+test("CLI resolves variable values when explicitly requested", async () => {
+  const stdin = vi
+    .spyOn(process, "stdin", "get")
+    .mockReturnValue(
+      Readable.from([
+        '<style>:root { --gap: .75rem; } .action { gap: var(--gap); }</style><div class="action">Save</div>',
+      ]) as typeof process.stdin,
+    );
+  const stdout = vi.spyOn(process.stdout, "write").mockImplementation(() => true);
+  try {
+    await runCli(["--variables", "resolved"]);
+    expect(stdout).toHaveBeenCalledWith(expect.stringContaining("gap: .75rem"));
+  } finally {
+    stdin.mockRestore();
     stdout.mockRestore();
   }
 });

@@ -5,6 +5,10 @@
   overflow-x: hidden;
 }
 
+#preview-scheme-toggle {
+  margin-inline-start: auto;
+}
+
 :where(html) {
   background-color: light-dark(
     var(--instui-color-background-container),

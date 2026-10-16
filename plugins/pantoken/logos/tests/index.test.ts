@@ -47,6 +47,18 @@ test("logos.css defines image tokens", () => {
   expect(logosCss).toContain('url("data:image/svg+xml;base64,');
 });
 
+test("logo painter metadata preserves color except for explicit current-color variants", () => {
+  for (const logo of logos) {
+    const rule = logosCss.split(`.-logo-${logo.name},`)[1]?.split("}")[0];
+    expect(rule).toContain(
+      `--pantoken-logo-image: ${logo.colorMode === "current-color" ? "none" : "var(--pantoken-glyph)"}`,
+    );
+    expect(rule).toContain(
+      `--pantoken-logo-mask: ${logo.colorMode === "current-color" ? "var(--pantoken-glyph)" : "none"}`,
+    );
+  }
+});
+
 test("logo metadata carries a positive width/height for every logo", () => {
   for (const logo of logos) {
     expect(logo.width).toBeGreaterThan(0);
