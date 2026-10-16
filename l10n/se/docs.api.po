@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: pantoken\n"
-"PO-Revision-Date: 2026-10-15 15:17+0000\n"
+"PO-Revision-Date: 2026-10-16 02:22+0000\n"
 "Last-Translator: pantoken localization engine\n"
 "Language-Team: pantoken\n"
 "MIME-Version: 1.0\n"
@@ -206,8 +206,8 @@ msgstr "**Transpilerat eará InstUI-pakážat**"
 #: bundlers/next/src/index.md
 #, no-c-format, pantoken-verbatim
 msgctxt "docs.api:prose"
-msgid "Target: Next.js. Current format: `Production build transpiling and rendering Instructure UI 11.7.10 with React 19.3.0`. Minimum host version: `16.0.0`. Tested through `16.3.8`. Newer releases require review."
-msgstr "Target: Next.js. Current format: `Production build transpiling and rendering Instructure UI 11.7.10 with React 19.3.0`. Minimum host version: `16.0.0`. Tested through `16.3.8`. Newer releases require review."
+msgid "Target: Next.js. Current format: `Production build transpiling and rendering Instructure UI 11.7.10 with React 19.3.0`. Minimum host version: `16.0.0`. Tested through `16.4.0`. Newer releases require review."
+msgstr "Target: Next.js. Current format: `Production build transpiling and rendering Instructure UI 11.7.10 with React 19.3.0`. Minimum host version: `16.0.0`. Tested through `16.4.0`. Newer releases require review."
 
 #: bundlers/next/src/index.md
 #, no-c-format
@@ -315,8 +315,8 @@ msgstr "**Geavahit preset muhtun IR:st**"
 #: bundlers/panda/src/index.md
 #, no-c-format, pantoken-verbatim
 msgctxt "docs.api:prose"
-msgid "Target: Panda CSS. Current format: `Panda token utility extraction from the Pantoken preset`. Minimum host version: `1.12.1`. Tested through `2.1.1`. Newer releases require review."
-msgstr "Target: Panda CSS. Current format: `Panda token utility extraction from the Pantoken preset`. Minimum host version: `1.12.1`. Tested through `2.1.1`. Newer releases require review."
+msgid "Target: Panda CSS. Current format: `Panda token utility extraction from the Pantoken preset`. Minimum host version: `1.12.1`. Tested through `2.2.0`. Newer releases require review."
+msgstr "Target: Panda CSS. Current format: `Panda token utility extraction from the Pantoken preset`. Minimum host version: `1.12.1`. Tested through `2.2.0`. Newer releases require review."
 
 #: bundlers/panda/src/index.md
 #, no-c-format
@@ -553,8 +553,8 @@ msgstr "**Gávdno virutála moduldat app-kódas**"
 #: bundlers/vite/src/index.md
 #, no-c-format, pantoken-verbatim
 msgctxt "docs.api:prose"
-msgid "Target: Vite. Minimum host version: `8.0.0`. Tested through `8.3.2`. Newer releases require review."
-msgstr "Target: Vite. Minimum host version: `8.0.0`. Tested through `8.3.2`. Newer releases require review."
+msgid "Target: Vite. Minimum host version: `8.0.0`. Tested through `8.3.4`. Newer releases require review."
+msgstr "Target: Vite. Minimum host version: `8.0.0`. Tested through `8.3.4`. Newer releases require review."
 
 #: bundlers/vite/src/index.md
 #, no-c-format
@@ -677,7 +677,7 @@ msgid "`.--background-ai-horizontal` — AI-accent gradient helpers intended for
 msgstr "`.--background-ai-horizontal` — AI-akkentu gradienta dihtii maid leat mii bures surface-ovdalvuođaid, ii dieđe InstUI bargguávdnasis."
 
 #: css/ai-gradient.md
-#, fuzzy, no-c-format, pantoken-verbatim
+#, no-c-format, pantoken-verbatim
 msgctxt "docs.api:prose"
 msgid "**Source:** [index.ts](https://github.com/thedannywahl/pantoken/blob/main/formats/components/src/utilities/ai-gradient/index.ts)"
 msgstr "**Source:** [index.ts](https://github.com/thedannywahl/pantoken/blob/main/formats/components/src/utilities/ai-gradient/index.ts)"
@@ -735,6 +735,12 @@ msgstr "Mii buorre čalbmiheapmi, addet `role=\"alert\"` dahje `aria-live` regio
 msgctxt "docs.api:prose"
 msgid "Settings saved."
 msgstr "### settings"
+
+#: css/alert.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "\n  Settings saved.\n  "
+msgstr "\n  Seadjuheapmi geavahit.\n  "
 
 #: css/alert.md
 #, fuzzy, no-c-format
@@ -2139,7 +2145,7 @@ msgid "March 2026"
 msgstr "mars 2026"
 
 #: css/calendar.md
-#, no-c-format, pantoken-verbatim
+#, no-c-format
 msgctxt "docs.api:prose"
 msgid "Su"
 msgstr "Su"
@@ -2163,19 +2169,19 @@ msgid "We"
 msgstr "Mii"
 
 #: css/calendar.md
-#, no-c-format, pantoken-verbatim
+#, no-c-format
 msgctxt "docs.api:prose"
 msgid "Th"
 msgstr "Th"
 
 #: css/calendar.md
-#, no-c-format, pantoken-verbatim
+#, no-c-format
 msgctxt "docs.api:prose"
 msgid "Fr"
 msgstr "Fr"
 
 #: css/calendar.md
-#, no-c-format, pantoken-verbatim
+#, no-c-format
 msgctxt "docs.api:prose"
 msgid "Sa"
 msgstr "Sa"
@@ -2976,7 +2982,7 @@ msgid "State"
 msgstr "Státusa"
 
 #: css/form-field-group.md
-#, fuzzy, no-c-format, pantoken-verbatim
+#, no-c-format, pantoken-verbatim
 msgctxt "docs.api:prose"
 msgid "CA"
 msgstr "CA"
@@ -3187,7 +3193,7 @@ msgstr "`<label>` elementta vuođđá kontrolla, nu lábelteksta namma dáhttu n
 
 #: css/form-field.md css/link.md css/modal.md css/simple-select.md
 #: css/toggle-details.md
-#, no-c-format, pantoken-verbatim
+#, no-c-format
 msgctxt "docs.api:prose"
 msgid "-canvas-rce\n"
 msgstr "-canvas-rce\n"
@@ -4201,10 +4207,10 @@ msgid "Display and text-align utilities — `.--display-<value>` and `.--text-al
 msgstr "Display ja text-align utilitetat — `.--display-<value>` ja `.--text-align-<value>` — komposabála, globála classaid, usáldo bare dahje chained otná buot komponentta."
 
 #: css/index.md
-#, fuzzy, no-c-format
+#, no-c-format
 msgctxt "docs.api:prose"
-msgid "The logo system: `.instui-logo` sizing plus the shared `-logo-<name>` painter that masks a product logo (in `currentColor`) before any element, preserving the logo's own aspect ratio instead of a fixed 1:1 box."
-msgstr "Ikona systeama: `.instui-icon` sizing ja shared `-icon-<name>` painter mii maskere glyph (in `currentColor`) ennen buot elementta."
+msgid "The logo system preserves each product logo's colors and aspect ratio. Explicit current-color variants inherit the text color."
+msgstr "Logosysttima šaddá dihte buresvuohta ja produktalogon logoa fargat ja aspektarágga. Explicit 'current-color' variantaid válddáit texta fargu."
 
 #: css/index.md
 #, no-c-format
@@ -4635,10 +4641,10 @@ msgid "Remove markers and padding."
 msgstr "Rievdat merkalašat ja padding."
 
 #: css/logo.md
-#, fuzzy, no-c-format
+#, no-c-format
 msgctxt "docs.api:prose"
-msgid "`.instui-logo` — The logo system: `.instui-logo` sizing plus the shared `-logo-<name>` painter that masks a product logo (in `currentColor`) before any element, preserving the logo's own aspect ratio instead of a fixed 1:1 box."
-msgstr "`.instui-icon` — Ikonasysteama: `.instui-icon` sizeheapmi ja ovddabeaivvi `-icon-<name>` mállára mii maskerevva glyph (in `currentColor`) gos leatjuvvon elementta fas."
+msgid "`.instui-logo` — The logo system preserves each product logo's colors and aspect ratio. Explicit current-color variants inherit the text color."
+msgstr ""
 
 #: css/logo.md
 #, no-c-format
@@ -11217,6 +11223,12 @@ msgctxt "docs.api:prose"
 msgid "Resolve custom-property references against declarations in the document."
 msgstr "Rievdnet custom-property-viessot dokumentas deklarašuvnnaidein."
 
+#: formats/inline-styles/src/interfaces/InlineHtmlOptions.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Inline custom-property declarations. Disable when a companion theme stylesheet supplies them."
+msgstr "Sisvuokta custom-property-deklarášuvnnat. Disablisat go daid leat dannejuvvon theme-stylesheeti maid čuovvut."
+
 #: formats/interactions/src/functions/applySpacing.md
 #, no-c-format
 msgctxt "docs.api:prose"
@@ -11789,13 +11801,13 @@ msgstr "Destruktiva aktivvostuva."
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "Create a scope rooted at `element`."
-msgstr "Create a scope rooted at `element`."
+msgstr "Oažžu skopma šaddan `element`."
 
 #: formats/scope/src/functions/createScope.md
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "**Two independent themes on one page**"
-msgstr "**Two independent themes on one page**"
+msgstr "**Guokte ovddasvuođa tevdnodat gaskkas sáhka**"
 
 #: formats/scope/src/functions/ensureProperties.md
 #, no-c-format
@@ -11820,6 +11832,12 @@ msgstr "`id` geahččaluvvo eai bargguvuoddji bálvaliid; `doc` geavahuvvo dáb�
 msgctxt "docs.api:prose"
 msgid "`true` when this call performed the injection."
 msgstr "`true` go das gaskavuođa dahká injectejuvvon."
+
+#: formats/scope/src/functions/frameTargetOrigin.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Resolve a theme-message target. Only explicitly sandboxed, opaque `srcdoc` frames permit `\"*\"`;\nother opaque or malformed URLs are rejected. Frame messages must not contain confidential data."
+msgstr "Rieđgut theme-message-miidda. Dás galgá goitšat ovddas sandboksejade, opakkin `srcdoc`-frammajit geavahusat `\"*\"`; eará opakka dahje huvvosen URL:at leat dálvtesteaddjit. Frammamelihkušuvnnat ii galgá leat bidjat ruovttoluotta dáid dilliin."
 
 #: formats/scope/src/functions/getScope.md
 #, no-c-format
@@ -14813,8 +14831,8 @@ msgstr "**Gevrret IR light-mode theme.json:ksi**"
 #: platforms/wordpress/src/index.md
 #, no-c-format, pantoken-verbatim
 msgctxt "docs.api:prose"
-msgid "Target: WordPress block themes. Current format: `theme.json v3`. Minimum host version: `6.6`. Tested through `7.1.2`. Newer releases require review."
-msgstr "Target: WordPress block themes. Current format: `theme.json v3`. Minimum host version: `6.6`. Tested through `7.1.2`. Newer releases require review."
+msgid "Target: WordPress block themes. Current format: `theme.json v3`. Minimum host version: `6.6`. Tested through `7.1.3`. Newer releases require review."
+msgstr "Target: WordPress block themes. Current format: `theme.json v3`. Minimum host version: `6.6`. Tested through `7.1.3`. Newer releases require review."
 
 #: platforms/wordpress/src/index.md
 #, no-c-format
@@ -17063,8 +17081,8 @@ msgstr "Registrere pantokenin persovnnalaš elementat (geahččit okta guhkkin a
 #: renderers/angular/src/index.md
 #, no-c-format, pantoken-verbatim
 msgctxt "docs.api:prose"
-msgid "Target: Angular. Current format: `CUSTOM_ELEMENTS_SCHEMA template compilation (Angular 16.2.12 / TS 5.1.6; Angular 22.2.0 and 22.2.1 / TS 6.0.3)`. Minimum host version: `16.2.12`. Tested through `22.2.1`. Newer releases require review."
-msgstr "Target: Angular. Current format: `CUSTOM_ELEMENTS_SCHEMA template compilation (Angular 16.2.12 / TS 5.1.6; Angular 22.2.0 and 22.2.1 / TS 6.0.3)`. Minimum host version: `16.2.12`. Tested through `22.2.1`. Newer releases require review."
+msgid "Target: Angular. Current format: `CUSTOM_ELEMENTS_SCHEMA template compilation (Angular 16.2.12 / TS 5.1.6; Angular 22.2.0, 22.2.1, and 22.2.2 / TS 6.0.3)`. Minimum host version: `16.2.12`. Tested through `22.2.2`. Newer releases require review."
+msgstr "Target: Angular. Current format: `CUSTOM_ELEMENTS_SCHEMA template compilation (Angular 16.2.12 / TS 5.1.6; Angular 22.2.0, 22.2.1, and 22.2.2 / TS 6.0.3)`. Minimum host version: `16.2.12`. Tested through `22.2.2`. Newer releases require review."
 
 #: renderers/angular/src/index.md
 #, no-c-format
@@ -17105,8 +17123,8 @@ msgstr "Bođi pantoken-styliheetta theme-ii (plugin CSS sáhttá váldit). Leat 
 #: renderers/astro/src/index.md
 #, no-c-format, pantoken-verbatim
 msgctxt "docs.api:prose"
-msgid "Target: Astro / Starlight. Current format: `Built Starlight page with injected token stylesheet (Astro 5 and 7)`. Minimum host version: `0.35.0`. Tested through `0.42.5`. Newer releases require review."
-msgstr "Target: Astro / Starlight. Current format: `Built Starlight page with injected token stylesheet (Astro 5 and 7)`. Minimum host version: `0.35.0`. Tested through `0.42.5`. Newer releases require review."
+msgid "Target: Astro / Starlight. Current format: `Built Starlight page with injected token stylesheet (Astro 5 and 7)`. Minimum host version: `0.35.0`. Tested through `0.42.6`. Newer releases require review."
+msgstr "Target: Astro / Starlight. Current format: `Built Starlight page with injected token stylesheet (Astro 5 and 7)`. Minimum host version: `0.35.0`. Tested through `0.42.6`. Newer releases require review."
 
 #: renderers/astro/src/index.md
 #, no-c-format
@@ -17570,8 +17588,8 @@ msgstr "`colors` + `background` girjjit mii fertejit Mintlify `docs.json`:s"
 #: renderers/mintlify/src/index.md
 #, no-c-format, pantoken-verbatim
 msgctxt "docs.api:prose"
-msgid "Target: Mintlify docs.json. Current format: `Official CLI validates generated colors and background theme config`. Minimum host version: `4.0.1555`. Tested through `4.0.1591`. Newer releases require review."
-msgstr "Target: Mintlify docs.json. Current format: `Official CLI validates generated colors and background theme config`. Minimum host version: `4.0.1555`. Tested through `4.0.1591`. Newer releases require review."
+msgid "Target: Mintlify docs.json. Current format: `Official CLI validates generated colors and background theme config`. Minimum host version: `4.0.1555`. Tested through `4.0.1614`. Newer releases require review."
+msgstr "Target: Mintlify docs.json. Current format: `Official CLI validates generated colors and background theme config`. Minimum host version: `4.0.1555`. Tested through `4.0.1614`. Newer releases require review."
 
 #: renderers/mintlify/src/index.md
 #, no-c-format
@@ -17654,8 +17672,8 @@ msgstr "**Bárkuid ja režimmaid tema**"
 #: renderers/mui/src/index.md
 #, no-c-format, pantoken-verbatim
 msgctxt "docs.api:prose"
-msgid "Target: Material UI. Current format: `Concrete createTheme palettes (MUI 5, 6, 7, 9)`. Minimum host version: `5.0.0`. Tested through `9.4.0`. Newer releases require review."
-msgstr "Target: Material UI. Current format: `Concrete createTheme palettes (MUI 5, 6, 7, 9)`. Minimum host version: `5.0.0`. Tested through `9.4.0`. Newer releases require review."
+msgid "Target: Material UI. Current format: `Concrete createTheme palettes (MUI 5, 6, 7, 9)`. Minimum host version: `5.0.0`. Tested through `9.5.0`. Newer releases require review."
+msgstr "Target: Material UI. Current format: `Concrete createTheme palettes (MUI 5, 6, 7, 9)`. Minimum host version: `5.0.0`. Tested through `9.5.0`. Newer releases require review."
 
 #: renderers/mui/src/index.md
 #, no-c-format
@@ -18378,8 +18396,8 @@ msgstr "Lávttu dál `register()`-bohcci (dás lea `prefix`, `only`)."
 #: renderers/svelte/src/index.md
 #, no-c-format, pantoken-verbatim
 msgctxt "docs.api:prose"
-msgid "Target: Svelte. Current format: `Icon action component compiles and SSR renders on Svelte 4 and 5`. Minimum host version: `4.2.20`. Tested through `5.57.1`. Newer releases require review."
-msgstr "Target: Svelte. Current format: `Icon action component compiles and SSR renders on Svelte 4 and 5`. Minimum host version: `4.2.20`. Tested through `5.57.1`. Newer releases require review."
+msgid "Target: Svelte. Current format: `Icon action component compiles and SSR renders on Svelte 4 and 5`. Minimum host version: `4.2.20`. Tested through `5.57.2`. Newer releases require review."
+msgstr "Target: Svelte. Current format: `Icon action component compiles and SSR renders on Svelte 4 and 5`. Minimum host version: `4.2.20`. Tested through `5.57.2`. Newer releases require review."
 
 #: renderers/svelte/src/index.md
 #, no-c-format
@@ -18672,8 +18690,8 @@ msgstr "Váldit pantoken-klasse tokena (muhto: \"instui-button\", \"instui-butto
 #: renderers/tinymce/src/index.md
 #, no-c-format, pantoken-verbatim
 msgctxt "docs.api:prose"
-msgid "Target: TinyMCE PluginManager. Current format: `Pantoken plugin registration and callback initialization`. Minimum host version: `8.9.2`. Tested through `8.9.2`. Newer releases require review."
-msgstr "Target: TinyMCE PluginManager. Current format: `Pantoken plugin registration and callback initialization`. Minimum host version: `8.9.2`. Tested through `8.9.2`. Newer releases require review."
+msgid "Target: TinyMCE PluginManager. Current format: `Pantoken plugin registration and callback initialization`. Minimum host version: `8.9.2`. Tested through `8.9.3`. Newer releases require review."
+msgstr "Target: TinyMCE PluginManager. Current format: `Pantoken plugin registration and callback initialization`. Minimum host version: `8.9.2`. Tested through `8.9.3`. Newer releases require review."
 
 #: renderers/tinymce/src/interfaces/ContentClassesPluginOptions.md
 #, fuzzy, no-c-format
@@ -20455,7 +20473,7 @@ msgstr "Stylesheet‑URL:s mii runner injektee (runnerin chrome ja bures rendere
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "Localized [RunnerLabels](RunnerLabels.md) for the runner's view tabs, forwarded in the runner URL."
-msgstr "Localized [RunnerLabels](RunnerLabels.md) for the runner's view tabs, forwarded in the runner URL."
+msgstr "Lokálašuvvon [RunnerLabels](RunnerLabels.md) runnera näkku-tabbái, ja geavahit runner URL:is."
 
 #: tools/demo/src/interfaces/DemoMarkdownItOptions.md
 #, no-c-format
@@ -20588,6 +20606,76 @@ msgstr "Stylus gaskavuođa jienasta."
 msgctxt "docs.api:prose"
 msgid "A hoverable \"view fullscreen\" button, overlaid on a demo/example frame the same way VitePress's own\ncode-block \"copy\" button reveals on hover. Purely markup — wire a delegated click handler in your\nhost page (`button.closest(...).querySelector(\"iframe\")?.requestFullscreen()`; see the pantoken docs\ntheme for the reference wiring) and style the reveal-on-hover with `@pantoken/demo/demo.css`."
 msgstr "Hoverejuvvon \"view fullscreen\"-buktá, mii lámmá demonstrasuvnna/daemma frammas sama mátki nagu VitePressin code-block \"copy\"-buktá lávkká hoveris. Nu ahtešuvvan markup — gáibidit delegerejuvvan click-handler host-sivvvii (`button.closest(...).querySelector(\"iframe\")?.requestFullscreen()`; muitalit pantoken dokumentašuvnna thema referenssaheaddjin) ja stailát reveal-on-hover dál `@pantoken/demo/demo.css`."
+
+#, fuzzy, no-c-format
+#~ msgctxt "docs.api:prose"
+#~ msgid "`string`\narning pantoken-doc-tag\">Beta</span>"
+#~ msgstr "<span class=\"instui-pill -color-warning pantoken-doc-tag\">Behta</span>"
+
+#, fuzzy, no-c-format
+#~ msgctxt "docs.api:prose"
+#~ msgid "Renames and re-exports [css](variables/css.md)\n## default"
+#~ msgstr "Nammahusa ja re-exports [css](variables/css.md)"
+
+#, no-c-format
+#~ msgctxt "docs.api:prose"
+#~ msgid "Target: Next.js. Current format: `Production build transpiling and rendering Instructure UI 11.7.10 with React 19.3.0`. Minimum host version: `16.0.0`. Tested through `16.3.8`. Newer releases require review."
+#~ msgstr "Target: Next.js. Current format: `Production build transpiling and rendering Instructure UI 11.7.10 with React 19.3.0`. Minimum host version: `16.0.0`. Tested through `16.3.8`. Newer releases require review."
+
+#, no-c-format
+#~ msgctxt "docs.api:prose"
+#~ msgid "Target: Panda CSS. Current format: `Panda token utility extraction from the Pantoken preset`. Minimum host version: `1.12.1`. Tested through `2.1.1`. Newer releases require review."
+#~ msgstr "Target: Panda CSS. Current format: `Panda token utility extraction from the Pantoken preset`. Minimum host version: `1.12.1`. Tested through `2.1.1`. Newer releases require review."
+
+#, no-c-format
+#~ msgctxt "docs.api:prose"
+#~ msgid "Target: Vite. Minimum host version: `8.0.0`. Tested through `8.3.2`. Newer releases require review."
+#~ msgstr "Target: Vite. Minimum host version: `8.0.0`. Tested through `8.3.2`. Newer releases require review."
+
+#, fuzzy, no-c-format
+#~ msgctxt "docs.api:prose"
+#~ msgid "The logo system: `.instui-logo` sizing plus the shared `-logo-<name>` painter that masks a product logo (in `currentColor`) before any element, preserving the logo's own aspect ratio instead of a fixed 1:1 box."
+#~ msgstr "Ikona systeama: `.instui-icon` sizing ja shared `-icon-<name>` painter mii maskere glyph (in `currentColor`) ennen buot elementta."
+
+#, fuzzy, no-c-format
+#~ msgctxt "docs.api:prose"
+#~ msgid "`.instui-logo` — The logo system: `.instui-logo` sizing plus the shared `-logo-<name>` painter that masks a product logo (in `currentColor`) before any element, preserving the logo's own aspect ratio instead of a fixed 1:1 box."
+#~ msgstr "`.instui-icon` — Ikonasysteama: `.instui-icon` sizeheapmi ja ovddabeaivvi `-icon-<name>` mállára mii maskerevva glyph (in `currentColor`) gos leatjuvvon elementta fas."
+
+#, no-c-format
+#~ msgctxt "docs.api:prose"
+#~ msgid "Target: WordPress block themes. Current format: `theme.json v3`. Minimum host version: `6.6`. Tested through `7.1.2`. Newer releases require review."
+#~ msgstr "Target: WordPress block themes. Current format: `theme.json v3`. Minimum host version: `6.6`. Tested through `7.1.2`. Newer releases require review."
+
+#, no-c-format
+#~ msgctxt "docs.api:prose"
+#~ msgid "Target: Angular. Current format: `CUSTOM_ELEMENTS_SCHEMA template compilation (Angular 16.2.12 / TS 5.1.6; Angular 22.2.0 and 22.2.1 / TS 6.0.3)`. Minimum host version: `16.2.12`. Tested through `22.2.1`. Newer releases require review."
+#~ msgstr "Target: Angular. Current format: `CUSTOM_ELEMENTS_SCHEMA template compilation (Angular 16.2.12 / TS 5.1.6; Angular 22.2.0 and 22.2.1 / TS 6.0.3)`. Minimum host version: `16.2.12`. Tested through `22.2.1`. Newer releases require review."
+
+#, no-c-format
+#~ msgctxt "docs.api:prose"
+#~ msgid "Target: Astro / Starlight. Current format: `Built Starlight page with injected token stylesheet (Astro 5 and 7)`. Minimum host version: `0.35.0`. Tested through `0.42.5`. Newer releases require review."
+#~ msgstr "Target: Astro / Starlight. Current format: `Built Starlight page with injected token stylesheet (Astro 5 and 7)`. Minimum host version: `0.35.0`. Tested through `0.42.5`. Newer releases require review."
+
+#, no-c-format
+#~ msgctxt "docs.api:prose"
+#~ msgid "Target: Mintlify docs.json. Current format: `Official CLI validates generated colors and background theme config`. Minimum host version: `4.0.1555`. Tested through `4.0.1591`. Newer releases require review."
+#~ msgstr "Target: Mintlify docs.json. Current format: `Official CLI validates generated colors and background theme config`. Minimum host version: `4.0.1555`. Tested through `4.0.1591`. Newer releases require review."
+
+#, no-c-format
+#~ msgctxt "docs.api:prose"
+#~ msgid "Target: Material UI. Current format: `Concrete createTheme palettes (MUI 5, 6, 7, 9)`. Minimum host version: `5.0.0`. Tested through `9.4.0`. Newer releases require review."
+#~ msgstr "Target: Material UI. Current format: `Concrete createTheme palettes (MUI 5, 6, 7, 9)`. Minimum host version: `5.0.0`. Tested through `9.4.0`. Newer releases require review."
+
+#, no-c-format
+#~ msgctxt "docs.api:prose"
+#~ msgid "Target: Svelte. Current format: `Icon action component compiles and SSR renders on Svelte 4 and 5`. Minimum host version: `4.2.20`. Tested through `5.57.1`. Newer releases require review."
+#~ msgstr "Target: Svelte. Current format: `Icon action component compiles and SSR renders on Svelte 4 and 5`. Minimum host version: `4.2.20`. Tested through `5.57.1`. Newer releases require review."
+
+#, no-c-format
+#~ msgctxt "docs.api:prose"
+#~ msgid "Target: TinyMCE PluginManager. Current format: `Pantoken plugin registration and callback initialization`. Minimum host version: `8.9.2`. Tested through `8.9.2`. Newer releases require review."
+#~ msgstr "Target: TinyMCE PluginManager. Current format: `Pantoken plugin registration and callback initialization`. Minimum host version: `8.9.2`. Tested through `8.9.2`. Newer releases require review."
 
 #, no-c-format
 #~ msgctxt "docs.api:prose"
@@ -21708,11 +21796,6 @@ msgstr "Hoverejuvvon \"view fullscreen\"-buktá, mii lámmá demonstrasuvnna/dae
 #~ msgctxt "docs.api:text"
 #~ msgid "# Function: baseCss()"
 #~ msgstr "# Fušla: baseCss()"
-
-#, no-c-format
-#~ msgctxt "docs.api:text"
-#~ msgid "<span class=\"instui-pill -color-warning pantoken-doc-tag\">Beta</span>"
-#~ msgstr "<span class=\"instui-pill -color-warning pantoken-doc-tag\">Behta</span>"
 
 #, no-c-format
 #~ msgctxt "docs.api:text"
@@ -32643,67 +32726,11 @@ msgstr "Hoverejuvvon \"view fullscreen\"-buktá, mii lámmá demonstrasuvnna/dae
 #~ msgstr "cardCss"
 
 #, pantoken-verbatim
-msgctxt "docs.api:text"
-msgid "email"
-msgstr "email"
+#~ msgctxt "docs.api:text"
+#~ msgid "email"
+#~ msgstr "email"
 
 #, pantoken-verbatim
-msgctxt "docs.api:prose"
-msgid "Target: Next.js. Current format: `Production build transpiling and rendering Instructure UI 11.7.10 with React 19.3.0`. Minimum host version: `16.0.0`. Tested through `16.4.0`. Newer releases require review."
-msgstr "Target: Next.js. Current format: `Production build transpiling and rendering Instructure UI 11.7.10 with React 19.3.0`. Minimum host version: `16.0.0`. Tested through `16.4.0`. Newer releases require review."
-
-#, pantoken-verbatim
-msgctxt "docs.api:prose"
-msgid "Target: Panda CSS. Current format: `Panda token utility extraction from the Pantoken preset`. Minimum host version: `1.12.1`. Tested through `2.2.0`. Newer releases require review."
-msgstr "Target: Panda CSS. Current format: `Panda token utility extraction from the Pantoken preset`. Minimum host version: `1.12.1`. Tested through `2.2.0`. Newer releases require review."
-
-#, pantoken-verbatim
-msgctxt "docs.api:prose"
-msgid "Target: Vite. Minimum host version: `8.0.0`. Tested through `8.3.4`. Newer releases require review."
-msgstr "Target: Vite. Minimum host version: `8.0.0`. Tested through `8.3.4`. Newer releases require review."
-
-#, pantoken-verbatim
-msgctxt "docs.api:prose"
-msgid "Target: WordPress block themes. Current format: `theme.json v3`. Minimum host version: `6.6`. Tested through `7.1.3`. Newer releases require review."
-msgstr "Target: WordPress block themes. Current format: `theme.json v3`. Minimum host version: `6.6`. Tested through `7.1.3`. Newer releases require review."
-
-#, pantoken-verbatim
-msgctxt "docs.api:prose"
-msgid "Target: Angular. Current format: `CUSTOM_ELEMENTS_SCHEMA template compilation (Angular 16.2.12 / TS 5.1.6; Angular 22.2.0, 22.2.1, and 22.2.2 / TS 6.0.3)`. Minimum host version: `16.2.12`. Tested through `22.2.2`. Newer releases require review."
-msgstr "Target: Angular. Current format: `CUSTOM_ELEMENTS_SCHEMA template compilation (Angular 16.2.12 / TS 5.1.6; Angular 22.2.0, 22.2.1, and 22.2.2 / TS 6.0.3)`. Minimum host version: `16.2.12`. Tested through `22.2.2`. Newer releases require review."
-
-#, pantoken-verbatim
-msgctxt "docs.api:prose"
-msgid "Target: Astro / Starlight. Current format: `Built Starlight page with injected token stylesheet (Astro 5 and 7)`. Minimum host version: `0.35.0`. Tested through `0.42.6`. Newer releases require review."
-msgstr "Target: Astro / Starlight. Current format: `Built Starlight page with injected token stylesheet (Astro 5 and 7)`. Minimum host version: `0.35.0`. Tested through `0.42.6`. Newer releases require review."
-
-#, pantoken-verbatim
-msgctxt "docs.api:prose"
-msgid "Target: Mintlify docs.json. Current format: `Official CLI validates generated colors and background theme config`. Minimum host version: `4.0.1555`. Tested through `4.0.1614`. Newer releases require review."
-msgstr "Target: Mintlify docs.json. Current format: `Official CLI validates generated colors and background theme config`. Minimum host version: `4.0.1555`. Tested through `4.0.1614`. Newer releases require review."
-
-#, pantoken-verbatim
-msgctxt "docs.api:prose"
-msgid "Target: Material UI. Current format: `Concrete createTheme palettes (MUI 5, 6, 7, 9)`. Minimum host version: `5.0.0`. Tested through `9.5.0`. Newer releases require review."
-msgstr "Target: Material UI. Current format: `Concrete createTheme palettes (MUI 5, 6, 7, 9)`. Minimum host version: `5.0.0`. Tested through `9.5.0`. Newer releases require review."
-
-#, pantoken-verbatim
-msgctxt "docs.api:prose"
-msgid "Target: Svelte. Current format: `Icon action component compiles and SSR renders on Svelte 4 and 5`. Minimum host version: `4.2.20`. Tested through `5.57.2`. Newer releases require review."
-msgstr "Target: Svelte. Current format: `Icon action component compiles and SSR renders on Svelte 4 and 5`. Minimum host version: `4.2.20`. Tested through `5.57.2`. Newer releases require review."
-
-#, pantoken-verbatim
-msgctxt "docs.api:prose"
-msgid "Target: TinyMCE PluginManager. Current format: `Pantoken plugin registration and callback initialization`. Minimum host version: `8.9.2`. Tested through `8.9.3`. Newer releases require review."
-msgstr "Target: TinyMCE PluginManager. Current format: `Pantoken plugin registration and callback initialization`. Minimum host version: `8.9.2`. Tested through `8.9.3`. Newer releases require review."
-
-#, pantoken-verbatim
-msgctxt "docs.api:text"
-msgid "frameTargetOrigin"
-msgstr "frameTargetOrigin"
-
-#: formats/scope/src/functions/frameTargetOrigin.md
-#, no-c-format
-msgctxt "docs.api:prose"
-msgid "Resolve a theme-message target. Only explicitly sandboxed, opaque `srcdoc` frames permit `\"*\"`;\nother opaque or malformed URLs are rejected. Frame messages must not contain confidential data."
-msgstr "Rieđgut theme-message-miidda. Dás galgá goitšat ovddas sandboksejade, opakkin `srcdoc`-frammajit geavahusat `\"*\"`; eará opakka dahje huvvosen URL:at leat dálvtesteaddjit. Frammamelihkušuvnnat ii galgá leat bidjat ruovttoluotta dáid dilliin."
+#~ msgctxt "docs.api:text"
+#~ msgid "frameTargetOrigin"
+#~ msgstr "frameTargetOrigin"

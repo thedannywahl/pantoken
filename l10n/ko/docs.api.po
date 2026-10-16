@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: pantoken\n"
-"PO-Revision-Date: 2026-10-16 00:01+0000\n"
+"PO-Revision-Date: 2026-10-16 02:15+0000\n"
 "Last-Translator: pantoken localization engine\n"
 "Language-Team: pantoken\n"
 "MIME-Version: 1.0\n"
@@ -31180,3 +31180,11 @@ msgstr "로고 시스템은 각 제품 로고의 색상과 종횡비를 유지�
 msgctxt "docs.api:prose"
 msgid "`.instui-logo` — The logo system preserves each product logo's colors and aspect ratio. Explicit current-color variants inherit the text color."
 msgstr "`.instui-logo` — 로고 시스템은 각 제품 로고의 색상과 종횡비를 보존합니다. 명시적인 current-color 변형은 텍스트 색상을 상속합니다."
+
+msgctxt "docs.api:prose"
+msgid "Target resolution (first match wins):\n1. `data-close-target=\"id\"` — dismiss the element with that id\n2. `popovertarget` / `commandfor` — skip; native browser handles it\n3. walk up to the nearest `<dialog>`, `[popover]`, `[data-dismissible]`, `[open]`, alert, or banner"
+msgstr "대상 해석(첫 일치 우선):\n1. `data-close-target=\"id\"` — 해당 id를 가진 요소 닫기\n2. `popovertarget` / `commandfor` — 건너뜀; 기본 브라우저가 처리함\n3. 가장 가까운 `<dialog>`, `[popover]`, `[data-dismissible]`, `[open]`, alert 또는 banner까지 올라가기"
+
+msgctxt "docs.api:prose"
+msgid "Dismiss strategy:\n- `<dialog>` → `dialog.close()`\n- `[popover]` → `el.hidePopover()`\n- `.instui-alert` or `.instui-banner` → cancelable `dismiss` event, then fade out and remove\n- `[data-dismissible]` or `[open]` → remove open attr + fire bubbling `close`"
+msgstr "닫기 전략:\n- `<dialog>` → `dialog.close()`\n- `[popover]` → `el.hidePopover()`\n- `.instui-alert` 또는 `.instui-banner` → 취소 가능`dismiss` 이벤트, 그런 다음 페이드아웃 후 제거\n- `[data-dismissible]` 또는 `[open]` → open 속성 제거 + 버블링`close`"

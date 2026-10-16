@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: pantoken\n"
-"PO-Revision-Date: 2026-10-16 00:34+0000\n"
+"PO-Revision-Date: 2026-10-16 02:37+0000\n"
 "Last-Translator: pantoken localization engine\n"
 "Language-Team: pantoken\n"
 "MIME-Version: 1.0\n"
@@ -31093,7 +31093,7 @@ msgstr "ปุ่ม \"ดูแบบเต็มจอ\" ที่แสดง
 
 #~ msgctxt "docs.api:prose"
 #~ msgid "Jordan Lee"
-#~ msgstr "Jordan Lee"
+#~ msgstr "จอร์แดน ลี"
 
 #~ msgctxt "docs.api:prose"
 #~ msgid "Student"
@@ -31180,3 +31180,11 @@ msgstr "ระบบโลโก้จะรักษาสีและอัต
 msgctxt "docs.api:prose"
 msgid "`.instui-logo` — The logo system preserves each product logo's colors and aspect ratio. Explicit current-color variants inherit the text color."
 msgstr "`.instui-logo` — ระบบโลโก้จะรักษาสีและอัตราส่วนของโลโก้ของแต่ละผลิตภัณฑ์ไว้ รูปแบบที่ระบุเป็น current-color จะสืบทอดสีของข้อความ"
+
+msgctxt "docs.api:prose"
+msgid "Target resolution (first match wins):\n1. `data-close-target=\"id\"` — dismiss the element with that id\n2. `popovertarget` / `commandfor` — skip; native browser handles it\n3. walk up to the nearest `<dialog>`, `[popover]`, `[data-dismissible]`, `[open]`, alert, or banner"
+msgstr "การแก้เป้าหมาย (การจับคู่ครั้งแรกชนะ):\n1. `data-close-target=\"id\"` — ยกเลิกองค์ประกอบที่มี id นั้น\n2. `popovertarget` / `commandfor` — ข้าม; เบราว์เซอร์ในเครื่องจัดการให้\n3. เดินขึ้นไปยัง `<dialog>`, `[popover]`, `[data-dismissible]`, `[open]`, การแจ้งเตือน, หรือ แบนเนอร์"
+
+msgctxt "docs.api:prose"
+msgid "Dismiss strategy:\n- `<dialog>` → `dialog.close()`\n- `[popover]` → `el.hidePopover()`\n- `.instui-alert` or `.instui-banner` → cancelable `dismiss` event, then fade out and remove\n- `[data-dismissible]` or `[open]` → remove open attr + fire bubbling `close`"
+msgstr "กลยุทธ์การปิด:\n- `<dialog>` → `dialog.close()`\n- `[popover]` → `el.hidePopover()`\n- `.instui-alert` หรือ `.instui-banner` → ยกเลิกได้ `dismiss` เหตุการณ์, จากนั้นค่อย ๆ จางและลบออก\n- `[data-dismissible]` หรือ `[open]` → เอาแอตทริบิวต์ open ออก + ส่งอีเวนต์แบบ bubbling `close`"

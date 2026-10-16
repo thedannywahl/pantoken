@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: pantoken\n"
-"PO-Revision-Date: 2026-10-15 23:41+0000\n"
+"PO-Revision-Date: 2026-10-16 02:02+0000\n"
 "Last-Translator: pantoken localization engine\n"
 "Language-Team: pantoken\n"
 "MIME-Version: 1.0\n"
@@ -31195,3 +31195,11 @@ msgstr "Coinníonn an córas lógónna dathanna agus cóimheas gné gach lógó 
 msgctxt "docs.api:prose"
 msgid "`.instui-logo` — The logo system preserves each product logo's colors and aspect ratio. Explicit current-color variants inherit the text color."
 msgstr "`.instui-logo` — Coinníonn an córas lógónna dathanna agus cóimheas gné gach lógó táirge. Oidhreachtíonn éagsúlachtaí soiléirithe 'current-color' dath an téacs."
+
+msgctxt "docs.api:prose"
+msgid "Target resolution (first match wins):\n1. `data-close-target=\"id\"` — dismiss the element with that id\n2. `popovertarget` / `commandfor` — skip; native browser handles it\n3. walk up to the nearest `<dialog>`, `[popover]`, `[data-dismissible]`, `[open]`, alert, or banner"
+msgstr "Réiteach sprioc (máistreacht an chéad chomhoiriúnaithe):\n1. `data-close-target=\"id\"` — diúltú don eilimint leis an id sin\n2. `popovertarget` / `commandfor` — scipeáil; déanann an brabhsálaí dúchais é a láimhseáil\n3. siúl suas go dtí an `<dialog>`, `[popover]`, `[data-dismissible]`, `[open]`, foláireamh, nó banna"
+
+msgctxt "docs.api:prose"
+msgid "Dismiss strategy:\n- `<dialog>` → `dialog.close()`\n- `[popover]` → `el.hidePopover()`\n- `.instui-alert` or `.instui-banner` → cancelable `dismiss` event, then fade out and remove\n- `[data-dismissible]` or `[open]` → remove open attr + fire bubbling `close`"
+msgstr "Straitéis diúltaithe:\n- `<dialog>` → `dialog.close()`\n- `[popover]` → `el.hidePopover()`\n- `.instui-alert` nó `.instui-banner` → imeacht inábaltaithe le cealú `dismiss` ócáid, ansin doiléiriú agus bainéil/ sracadh agus bain\n- `[data-dismissible]` nó `[open]` → bain an t-aiste oscailte + sruthlaigh `close`"

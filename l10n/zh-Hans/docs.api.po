@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: pantoken\n"
-"PO-Revision-Date: 2026-10-16 00:26+0000\n"
+"PO-Revision-Date: 2026-10-16 02:33+0000\n"
 "Last-Translator: pantoken localization engine\n"
 "Language-Team: pantoken\n"
 "MIME-Version: 1.0\n"
@@ -31180,3 +31180,11 @@ msgstr "徽标系统保留每个产品徽标的颜色和纵横比。显式的 cu
 msgctxt "docs.api:prose"
 msgid "`.instui-logo` — The logo system preserves each product logo's colors and aspect ratio. Explicit current-color variants inherit the text color."
 msgstr "`.instui-logo` — 徽标系统保留每个产品徽标的颜色和宽高比。显式的 current-color 变体会继承文本颜色。"
+
+msgctxt "docs.api:prose"
+msgid "Target resolution (first match wins):\n1. `data-close-target=\"id\"` — dismiss the element with that id\n2. `popovertarget` / `commandfor` — skip; native browser handles it\n3. walk up to the nearest `<dialog>`, `[popover]`, `[data-dismissible]`, `[open]`, alert, or banner"
+msgstr "目标解析（先匹配者生效):\n1. `data-close-target=\"id\"` — 移除具有该 id 的元素\n2. `popovertarget` / `commandfor` — 跳过；由原生浏览器处理\n3. 向上查找最近的 `<dialog>`, `[popover]`, `[data-dismissible]`, `[open]`, alert 或 banner"
+
+msgctxt "docs.api:prose"
+msgid "Dismiss strategy:\n- `<dialog>` → `dialog.close()`\n- `[popover]` → `el.hidePopover()`\n- `.instui-alert` or `.instui-banner` → cancelable `dismiss` event, then fade out and remove\n- `[data-dismissible]` or `[open]` → remove open attr + fire bubbling `close`"
+msgstr "取消策略：\n- `<dialog>` → `dialog.close()`\n- `[popover]` → `el.hidePopover()`\n- `.instui-alert` or `.instui-banner` → 可取消的 `dismiss` 事件，然后淡出并移除\n- `[data-dismissible]` or `[open]` → 移除 open 属性 + 触发冒泡 `close`"

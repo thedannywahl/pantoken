@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: pantoken\n"
-"PO-Revision-Date: 2026-10-15 23:59+0000\n"
+"PO-Revision-Date: 2026-10-16 02:14+0000\n"
 "Last-Translator: pantoken localization engine\n"
 "Language-Team: pantoken\n"
 "MIME-Version: 1.0\n"
@@ -31093,7 +31093,7 @@ msgstr "ホバー可能な「全画面表示」ボタン。VitePress の code-bl
 
 #~ msgctxt "docs.api:prose"
 #~ msgid "Jordan Lee"
-#~ msgstr "Jordan Lee"
+#~ msgstr "ジョーダン・リー"
 
 #~ msgctxt "docs.api:prose"
 #~ msgid "Student"
@@ -31180,3 +31180,11 @@ msgstr "ロゴシステムは各製品ロゴの色とアスペクト比を保持
 msgctxt "docs.api:prose"
 msgid "`.instui-logo` — The logo system preserves each product logo's colors and aspect ratio. Explicit current-color variants inherit the text color."
 msgstr "`.instui-logo` — ロゴシステムは各製品ロゴの色とアスペクト比を保持します。明示的な current-color バリアントはテキストの色を継承します。"
+
+msgctxt "docs.api:prose"
+msgid "Target resolution (first match wins):\n1. `data-close-target=\"id\"` — dismiss the element with that id\n2. `popovertarget` / `commandfor` — skip; native browser handles it\n3. walk up to the nearest `<dialog>`, `[popover]`, `[data-dismissible]`, `[open]`, alert, or banner"
+msgstr "ターゲット解決（最初に一致したものが優先):\n1. `data-close-target=\"id\"` — その id を持つ要素を破棄する\n2. `popovertarget` / `commandfor` — スキップ；ネイティブブラウザが処理する\n3. 最も近い `<dialog>`, `[popover]`, `[data-dismissible]`, `[open]`, アラート、またはバナー）"
+
+msgctxt "docs.api:prose"
+msgid "Dismiss strategy:\n- `<dialog>` → `dialog.close()`\n- `[popover]` → `el.hidePopover()`\n- `.instui-alert` or `.instui-banner` → cancelable `dismiss` event, then fade out and remove\n- `[data-dismissible]` or `[open]` → remove open attr + fire bubbling `close`"
+msgstr "破棄戦略:\n- `<dialog>` → `dialog.close()`\n- `[popover]` → `el.hidePopover()`\n- `.instui-alert` or `.instui-banner` → キャンセル可能な `dismiss` イベント、その後フェードアウトして削除\n- `[data-dismissible]` または `[open]` → open 属性を削除 + バブリングする `close`"

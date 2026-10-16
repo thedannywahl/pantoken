@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: pantoken\n"
-"PO-Revision-Date: 2026-10-16 00:16+0000\n"
+"PO-Revision-Date: 2026-10-16 02:26+0000\n"
 "Last-Translator: pantoken localization engine\n"
 "Language-Team: pantoken\n"
 "MIME-Version: 1.0\n"
@@ -31180,3 +31180,11 @@ msgstr "سیستم لوگو رنگ‌ها و نسبت تصویر هر لوگوی
 msgctxt "docs.api:prose"
 msgid "`.instui-logo` — The logo system preserves each product logo's colors and aspect ratio. Explicit current-color variants inherit the text color."
 msgstr "`.instui-logo` — سامانهٔ لوگو رنگ‌ها و نسبت تصویر هر لوگوی محصول را حفظ می‌کند. واریانت‌های صریحِ «رنگِ فعلی» رنگِ متن را به ارث می‌برند."
+
+msgctxt "docs.api:prose"
+msgid "Target resolution (first match wins):\n1. `data-close-target=\"id\"` — dismiss the element with that id\n2. `popovertarget` / `commandfor` — skip; native browser handles it\n3. walk up to the nearest `<dialog>`, `[popover]`, `[data-dismissible]`, `[open]`, alert, or banner"
+msgstr "هدف حل‌وفصل (اولین تطابق برنده است):\n1. `data-close-target=\"id\"` — عنصر با آن شناسه را ببندید\n2. `popovertarget` / `commandfor` — رد شود؛ مرورگر بومی آن را مدیریت می‌کند\n3. تا نزدیک‌ترین `<dialog>`, `[popover]`, `[data-dismissible]`, `[open]`, هشدار، یا بنر حرکت کنید"
+
+msgctxt "docs.api:prose"
+msgid "Dismiss strategy:\n- `<dialog>` → `dialog.close()`\n- `[popover]` → `el.hidePopover()`\n- `.instui-alert` or `.instui-banner` → cancelable `dismiss` event, then fade out and remove\n- `[data-dismissible]` or `[open]` → remove open attr + fire bubbling `close`"
+msgstr "استراتژی بستن:\n- `<dialog>` → `dialog.close()`\n- `[popover]` → `el.hidePopover()`\n- `.instui-alert` یا `.instui-banner` → رویداد قابل‌لغو `dismiss` را فراخوانی کنید، سپس محو شده و حذف شود\n- `[data-dismissible]` یا `[open]` → علامت open را حذف کنید + رویداد `close` را بعَد از حبابی‌شدن (bubbling) شلیک کنید"

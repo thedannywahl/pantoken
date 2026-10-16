@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: pantoken\n"
-"PO-Revision-Date: 2026-10-15 23:58+0000\n"
+"PO-Revision-Date: 2026-10-16 02:13+0000\n"
 "Last-Translator: pantoken localization engine\n"
 "Language-Team: pantoken\n"
 "MIME-Version: 1.0\n"
@@ -30915,6 +30915,7 @@ msgstr "Un pulsante hoverable \"visualizza a schermo intero\", sovrapposto a un 
 #~ msgid "Border-only surface for a card inside a base card."
 #~ msgstr "Superficie solo con bordo per una card all'interno di una card base."
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:prose"
 #~ msgid "-canvas-rce\n"
 #~ msgstr "-canvas-rce\n"
@@ -31057,7 +31058,7 @@ msgstr "Un pulsante hoverable \"visualizza a schermo intero\", sovrapposto a un 
 
 #~ msgctxt "docs.api:prose"
 #~ msgid "Email"
-#~ msgstr "Email"
+#~ msgstr "Posta elettronica"
 
 #~ msgctxt "docs.api:prose"
 #~ msgid "Phone"
@@ -31180,3 +31181,11 @@ msgstr "Il sistema dei loghi preserva i colori e il rapporto d'aspetto di ogni l
 msgctxt "docs.api:prose"
 msgid "`.instui-logo` — The logo system preserves each product logo's colors and aspect ratio. Explicit current-color variants inherit the text color."
 msgstr "`.instui-logo` — Il sistema dei loghi preserva i colori e il rapporto d'aspetto di ciascun logo di prodotto. Le varianti esplicite a colore corrente ereditano il colore del testo."
+
+msgctxt "docs.api:prose"
+msgid "Target resolution (first match wins):\n1. `data-close-target=\"id\"` — dismiss the element with that id\n2. `popovertarget` / `commandfor` — skip; native browser handles it\n3. walk up to the nearest `<dialog>`, `[popover]`, `[data-dismissible]`, `[open]`, alert, or banner"
+msgstr "Risoluzione del target (viene scelto il primo riscontro):\n1. `data-close-target=\"id\"` — rimuovere l'elemento con quell'id\n2. `popovertarget` / `commandfor` — saltare; il browser nativo lo gestisce\n3. risalire fino al più vicino `<dialog>`, `[popover]`, `[data-dismissible]`, `[open]`, alert, o banner"
+
+msgctxt "docs.api:prose"
+msgid "Dismiss strategy:\n- `<dialog>` → `dialog.close()`\n- `[popover]` → `el.hidePopover()`\n- `.instui-alert` or `.instui-banner` → cancelable `dismiss` event, then fade out and remove\n- `[data-dismissible]` or `[open]` → remove open attr + fire bubbling `close`"
+msgstr "Strategia di chiusura:\n- `<dialog>` → `dialog.close()`\n- `[popover]` → `el.hidePopover()`\n- `.instui-alert` or `.instui-banner` → evento annullabile `dismiss`, poi dissolvi e rimuovi\n- `[data-dismissible]` o `[open]` → rimuovere l'attributo open + attivare l'evento di propagazione `close`"

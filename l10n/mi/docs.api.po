@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: pantoken\n"
-"PO-Revision-Date: 2026-10-16 00:03+0000\n"
+"PO-Revision-Date: 2026-10-16 02:16+0000\n"
 "Last-Translator: pantoken localization engine\n"
 "Language-Team: pantoken\n"
 "MIME-Version: 1.0\n"
@@ -31180,3 +31180,11 @@ msgstr "Ka tiakina e te pūnaha tohu ngā tae me te ōrau ā-āhua o ia tohu hua
 msgctxt "docs.api:prose"
 msgid "`.instui-logo` — The logo system preserves each product logo's colors and aspect ratio. Explicit current-color variants inherit the text color."
 msgstr "`.instui-logo` — Ko te pūnaha tohu e tiaki ana i ngā tae me te aspect ratio o ia tohu hua. Ko ngā rerekētanga current-color kua tautuhia ka whakawhiwhia ki te tae o te kuputuhi."
+
+msgctxt "docs.api:prose"
+msgid "Target resolution (first match wins):\n1. `data-close-target=\"id\"` — dismiss the element with that id\n2. `popovertarget` / `commandfor` — skip; native browser handles it\n3. walk up to the nearest `<dialog>`, `[popover]`, `[data-dismissible]`, `[open]`, alert, or banner"
+msgstr "Whakatau whāinga (ka toa te hototahi tuatahi):\n1. `data-close-target=\"id\"` — whakakorea te waahanga me taua id\n2. `popovertarget` / `commandfor` — whakawātea; ko te kaitirotiro taketake te whakahaere\n3. hīkoi ki runga ki te `<dialog>`, `[popover]`, `[data-dismissible]`, `[open]`, pānui, rānei hautanga"
+
+msgctxt "docs.api:prose"
+msgid "Dismiss strategy:\n- `<dialog>` → `dialog.close()`\n- `[popover]` → `el.hidePopover()`\n- `.instui-alert` or `.instui-banner` → cancelable `dismiss` event, then fade out and remove\n- `[data-dismissible]` or `[open]` → remove open attr + fire bubbling `close`"
+msgstr "Rautaki whakakore:\n- `<dialog>` → `dialog.close()`\n- `[popover]` → `el.hidePopover()`\n- `.instui-alert` or `.instui-banner` → ka taea te whakakore i te `dismiss` kaupapa, katahi ka whakakāhore ka tango\n- `[data-dismissible]` or `[open]` → tangohia te āhuatanga tuwhera + whakarewahia te `close` e piata ana"
