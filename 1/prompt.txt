@@ -1,0 +1,12 @@
+I need a zsh one-liner for this:
+```
+vpr i18n extract scaffold.readme && i18n translate scaffold.readme && i18n render scaffold.readme
+```
+because i18n isn't a bin.
+
+---
+
+```
+(no AI provider configured — pass --provider or set I18N_TRANSLATION_COMMAND)
+```
+we need to pass copilot.
