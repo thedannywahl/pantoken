@@ -105,10 +105,18 @@ know what's in place:
   for a few days.
 - **Pinned actions.** CI workflows pin third-party GitHub Actions to commit SHAs, and Renovate keeps
   those pins current (as digests).
-- **Target release review.** A scheduled workflow checks WordPress and declared npm peers for stable
-  releases and opens review issues with `issues: write` permission. Feed data is never executed or
-  accepted as a compatibility claim; the supported-version record changes only after integration
-  checks and a reviewed PR. Other targets require manual release monitoring.
+- **Test-gated weekly maintenance.** Monday Renovate proposals include major updates and the
+  GitHub-hosted design-token tag. Candidate builds and target integration checks run without
+  repository-write credentials in disposable worktrees. A separate publisher verifies immutable
+  base/proposal refs, allowed paths, manifest invariants, and protected CI/Changeset checks before
+  enabling auto-merge. Failed candidates remain in a separate, non-merging draft with individual
+  issues. Tests, not release-feed data, establish compatibility claims.
+- **Bounded support lifetimes.** Verified downstream targets retain the latest two released stable
+  majors; incompatible older majors can retire early, but infrastructure failures cannot withdraw
+  support. Removed upstream tokens freeze their prior theme-specific values and expire after two
+  upstream minors or the next major, whichever comes first. Existing earlier deadlines remain.
+  Automated tests do not establish visual equivalence or guarantee dependency safety. Unrecognized
+  failures remain excluded for investigation rather than being treated as compatible.
 - **Pinned build-time downloads.** The only asset the build fetches outside the package manager is the
   set of Noto script fonts the documentation social cards render in. Those come from URLs pinned to a
   single `google/fonts` commit and are checked against recorded SHA-256 digests before use; a

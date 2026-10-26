@@ -175,6 +175,15 @@ Security-relevant entry points include:
 
 ## Trust boundaries
 
+### Weekly maintenance controls
+
+| Threat                                                                               | Control                                                                                                                                                                                                                                  | Evidence                                                                                                                                               |
+| ------------------------------------------------------------------------------------ | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| A dependency proposal acquires repository-write credentials during execution.        | Candidate commands receive a credential-filtered environment; the publication job checks out trusted base code, does not install candidate dependencies, and accepts only bounded file handoffs tied to immutable base/proposal SHAs.    | `scripts/release/weekly-maintenance.ts`, `scripts/release/weekly-maintenance.test.ts`, `.github/workflows/renovate.yml`                                |
+| A stale or unrelated artifact is pushed by automation.                               | Publication rejects stale refs, path traversal, unexpected paths, workflow content outside the original proposal, and manifest script/version/export changes; branch updates are non-forced.                                             | `scripts/release/maintenance-publication.ts`, `scripts/release/maintenance-publication.test.ts`                                                        |
+| A release feed manufactures supported versions or an outage removes working support. | Numeric stable releases need age evidence and explicit version-specific checks. Missing evidence and infrastructure errors block claim changes. Failed candidates stay outside the passing PR, with separate issues and a blocked draft. | `scripts/release/release-candidates.ts`, `scripts/release/support-policy.ts`, their co-located tests                                                   |
+| An impersonated release PR bypasses Changeset coverage.                              | The exemption and auto-merge validate the exact branch, base, repository, title, and expected actor. The guard and adapter compatibility checks join the required CI aggregate.                                                          | `.github/workflows/changeset-check.yml`, `.github/workflows/guard-release-automation.yml`, `.github/workflows/ci.yml`, `.github/workflows/release.yml` |
+
 ### TB-1: Upstream source to Pantoken transformation
 
 The upstream design-token and icon packages are external inputs. Pantoken trusts the selected
@@ -360,6 +369,13 @@ The principal continuous evidence is:
 ## Residual risks and limitations
 
 The following risks remain or are deliberately outside the security claim:
+
+- **Automated maintenance evidence.** Compatibility tests do not establish visual equivalence,
+  upstream intent, or absence of malicious dependency behavior. Disposable worktrees and sanitized
+  environments are not a process sandbox. Test failures that cannot be positively identified as
+  compatibility assertions retain existing support rather than automatically dropping it. Bot
+  token scopes, protected required checks, and npm trusted-publisher settings need live validation
+  at rollout; unit fixtures and workflow linting do not prove the entire GitHub event chain.
 
 1. **Trusted transformation inputs.** Token values, configuration, plugins, Markdown, and raw HTML
    can produce active CSS, JavaScript, markup, or source code. Pantoken does not sanitize
