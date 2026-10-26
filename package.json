@@ -40,7 +40,8 @@
     "tinybench": "catalog:",
     "vite": "catalog:",
     "vite-plus": "catalog:",
-    "vitest": "catalog:"
+    "vitest": "catalog:",
+    "yaml": "catalog:"
   },
   "devEngines": {
     "packageManager": {
