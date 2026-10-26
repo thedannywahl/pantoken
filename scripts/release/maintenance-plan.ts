@@ -41,7 +41,7 @@ export function safeMaintenancePath(file: string): string {
 /** Normalize Renovate's JSON metadata without interpolating dependency data into a shell. */
 export function parseMaintenanceUpgrades(input: unknown): MaintenanceUpgrade[] {
   if (!Array.isArray(input)) throw new Error("Renovate proposal must be an array");
-  return input.map((raw: unknown) => {
+  const upgrades = input.map((raw: unknown) => {
     if (!raw || typeof raw !== "object") throw new Error("Invalid Renovate proposal");
     const record = raw as Record<string, unknown>;
     for (const key of ["depName", "packageFile", "manager", "newValue"]) {
@@ -61,6 +61,7 @@ export function parseMaintenanceUpgrades(input: unknown): MaintenanceUpgrade[] {
       ...(record.newDigest === undefined ? {} : { newDigest: record.newDigest as string }),
     };
   });
+  return [...new Map(upgrades.map((upgrade) => [JSON.stringify(upgrade), upgrade])).values()];
 }
 
 /** Stable identifiers for retries and issue reconciliation. */

@@ -19,6 +19,7 @@ import { prepareLifecycle, type ThemeSnapshot } from "../../tools/upstream-diff/
 import { runAsMain } from "./cli.ts";
 import { validateMaintenanceManifest } from "./maintenance-publication.ts";
 import type { TargetSupport } from "./compatibility.ts";
+import { npmTargets } from "./check-target-releases.ts";
 import { selectReleaseCandidates, targetReleaseHistory } from "./release-candidates.ts";
 import {
   applySupportPolicy,
@@ -300,7 +301,15 @@ export async function prepareMaintenance(
     for (const file of changed) {
       if (
         file !== maintenanceProposalPath &&
+        file !== ".renovate/verified-targets.json" &&
         file !== "pnpm-lock.yaml" &&
+        file !== registryFile &&
+        file !== ledgerFile &&
+        file !== knownIssuesFile &&
+        file !== "compatibility.json" &&
+        file !== "docs/compatibility.md" &&
+        file !== "tools/upstream-diff/baseline/manifest.json" &&
+        !/^\.changeset\/weekly-[a-f0-9]{20}\.md$/u.test(file) &&
         !upgrades.some((upgrade) => upgrade.packageFile === file)
       )
         throw new Error(`Proposal has unrelated edits: ${file}`);
@@ -373,6 +382,17 @@ export async function prepareMaintenance(
         const notes = candidates.map(
           (upgrade) => `Update ${upgrade.depName} to ${upgrade.newValue}.`,
         );
+        if (!final) {
+          for (const candidate of candidates) {
+            const version = candidate.newValue.replace(/^[~^]/u, "");
+            if (!/^\d+\.\d+\.\d+$/u.test(version)) continue;
+            for (const [name, target] of Object.entries(npmTargets)) {
+              const support = originalRegistry[name];
+              if (target === candidate.depName && support?.status === "verified")
+                adapterCheck(directory, support, version);
+            }
+          }
+        }
         for (const [name, history] of final ? histories : []) {
           const support = originalRegistry[name];
           if (support.status !== "verified") continue;
@@ -405,7 +425,7 @@ export async function prepareMaintenance(
               const manifestFile = `${pkg.path}/package.json`;
               const manifest = readJson<Record<string, unknown>>(directory, manifestFile);
               const peers = manifest.peerDependencies as Record<string, string> | undefined;
-              const target = (await import("./check-target-releases.ts")).npmTargets[name];
+              const target = npmTargets[name];
               if (peers && target && target in peers) {
                 peers[target] = [
                   ...new Set(
@@ -462,6 +482,13 @@ export async function prepareMaintenance(
             requireMaintenanceBump(bumps, output.name, breakingMaintenanceBump(output));
           else if (old && lifecycle.added.length && old.hash !== output.hash)
             requireMaintenanceBump(bumps, output.name, "minor");
+        }
+        if (JSON.stringify(lifecycle.ledger) !== JSON.stringify(oldLedger)) {
+          requireMaintenanceBump(bumps, "@pantoken/tokens", "patch");
+          if (lifecycle.added.length)
+            notes.push(`Freeze deprecated upstream tokens: ${lifecycle.added.join(", ")}.`);
+          if (lifecycle.retired.length)
+            notes.push(`Retire expired compatibility shims: ${lifecycle.retired.join(", ")}.`);
         }
         const changeset = renderMaintenanceChangeset(bumps, notes);
         if (changeset)

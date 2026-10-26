@@ -75,6 +75,7 @@ test("keeps coupled dependency families atomic", () => {
 
 test("rejects malformed or traversing metadata and keeps retry IDs stable", () => {
   expect(parseMaintenanceUpgrades([upgrade])).toEqual([upgrade]);
+  expect(parseMaintenanceUpgrades([upgrade, upgrade])).toEqual([upgrade]);
   expect(() => parseMaintenanceUpgrades({})).toThrow("array");
   expect(() => parseMaintenanceUpgrades([{ ...upgrade, newValue: undefined }])).toThrow("newValue");
   for (const path of ["../package.json", "/etc/passwd", "a/../b", "a\\b", "-unsafe;command"])

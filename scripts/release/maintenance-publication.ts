@@ -72,6 +72,11 @@ export function validateMaintenanceResult(
         typeof failure.error === "string" &&
         Array.isArray(failure.upgrades),
     );
+    for (const upgrade of failure.upgrades)
+      assert.ok(
+        result.upgrades.some((original) => JSON.stringify(original) === JSON.stringify(upgrade)),
+        "Unproposed failed update",
+      );
   }
   let bytes = 0;
   for (const [file, content] of Object.entries(result.files)) {
@@ -124,8 +129,11 @@ export function validateMaintenanceManifest(before: string, after: string): void
   );
 }
 
-async function main(): Promise<void> {
-  const [action, file, base, proposal] = process.argv.slice(2);
+/** Publish a validated maintenance artifact or reconcile evidence already merged to main. */
+export async function publishMaintenance(
+  args: readonly string[] = process.argv.slice(2),
+): Promise<void> {
+  const [action, file, base, proposal] = args;
   const repository = process.env.GITHUB_REPOSITORY;
   const token = process.env.GH_TOKEN;
   assert.ok(repository && /^[\w.-]+\/[\w.-]+$/u.test(repository), "Repository identity required");
@@ -149,7 +157,6 @@ async function main(): Promise<void> {
     return payload as T;
   };
   const prefix = `repos/${repository}`;
-  const actor = (await api<{ login: string }>("user")).login;
   const defaultBranch = (await api<{ default_branch: string }>(prefix)).default_branch;
   assert.equal(defaultBranch, "main", "Maintenance only supports the protected main release flow");
   const issues: Array<{
@@ -166,10 +173,7 @@ async function main(): Promise<void> {
   if (action === "reconcile") {
     const evidence = JSON.parse(readFileSync(file, "utf8")) as Record<string, string[]>;
     for (const issue of issues) {
-      const match =
-        /^Compatibility (?:review|failure): (@pantoken\/[a-z-]+) \/ (\d+\.\d+(?:\.\d+)?)$/u.exec(
-          issue.title,
-        );
+      const match = /^Compatibility (?:review|failure): (.+) \/ (.+)$/u.exec(issue.title);
       if (match && evidence[match[1]]?.includes(match[2])) {
         await api(`${prefix}/issues/${issue.number}/comments`, "POST", {
           body: `Verified ${match[2]} in the merged maintenance evidence on main: https://github.com/${repository}/blob/main/.renovate/verified-targets.json`,
@@ -182,6 +186,7 @@ async function main(): Promise<void> {
     }
     return;
   }
+  const actor = (await api<{ login: string }>("user")).login;
   assert.equal(
     action,
     "publish",
@@ -272,6 +277,7 @@ async function main(): Promise<void> {
       message: title,
       tree,
       parents: [parent],
+      author: { name: "Pantoken Renovate", email: "pantoken-renovate@users.noreply.github.com" },
     });
     if (pr)
       await api(`${prefix}/git/refs/heads/${head}`, "PATCH", { sha: commit.sha, force: false });
@@ -292,8 +298,16 @@ async function main(): Promise<void> {
   const hasChanges = Object.keys(passingFiles).length > 0;
   let passingCommit = base;
   if (hasChanges) {
+    const mergedEvidence = structuredClone(result.evidence);
+    for (const upgrade of result.accepted) {
+      mergedEvidence[upgrade.depName] = [
+        ...new Set([...(mergedEvidence[upgrade.depName] ?? []), upgrade.newValue]),
+      ];
+    }
     passingFiles[".renovate/verified-targets.json"] =
-      `${JSON.stringify(result.evidence, null, 2)}\n`;
+      `${JSON.stringify(mergedEvidence, null, 2)}\n`;
+    passingFiles[".renovate/weekly-upgrades.json"] =
+      `${JSON.stringify(result.accepted, null, 2)}\n`;
     const tree = await writeTree(base, passingFiles);
     const pr = await publish(
       branch,
@@ -366,4 +380,4 @@ async function main(): Promise<void> {
   }
 }
 
-runAsMain(import.meta.url, main);
+runAsMain(import.meta.url, publishMaintenance);
