@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: pantoken\n"
-"PO-Revision-Date: 2026-10-16 02:02+0000\n"
+"PO-Revision-Date: 2026-10-26 23:31+0000\n"
 "Last-Translator: pantoken localization engine\n"
 "Language-Team: pantoken\n"
 "MIME-Version: 1.0\n"
@@ -31203,3 +31203,20 @@ msgstr "Réiteach sprioc (máistreacht an chéad chomhoiriúnaithe):\n1. `data-c
 msgctxt "docs.api:prose"
 msgid "Dismiss strategy:\n- `<dialog>` → `dialog.close()`\n- `[popover]` → `el.hidePopover()`\n- `.instui-alert` or `.instui-banner` → cancelable `dismiss` event, then fade out and remove\n- `[data-dismissible]` or `[open]` → remove open attr + fire bubbling `close`"
 msgstr "Straitéis diúltaithe:\n- `<dialog>` → `dialog.close()`\n- `[popover]` → `el.hidePopover()`\n- `.instui-alert` nó `.instui-banner` → imeacht inábaltaithe le cealú `dismiss` ócáid, ansin doiléiriú agus bainéil/ sracadh agus bain\n- `[data-dismissible]` nó `[open]` → bain an t-aiste oscailte + sruthlaigh `close`"
+
+msgctxt "docs.api:prose"
+msgid "Preserve a removed token's literal value and registration separately for each theme."
+msgstr "Coimeád luach litriúil agus clárúchán an tócain a baineadh ar leithligh do gach téama."
+
+msgctxt "docs.api:prose"
+msgid "The default two-minor deadline; next-major adoption is enforced independently."
+msgstr "An sprioc réamhshocraithe dhá-bhige; bíonn glacadh ar an sprioc-leagan eile i bhfeidhm go neamhspleách."
+
+msgctxt "docs.api:prose"
+msgid "The resolved Lucide release, required when retiring a Lucide shim."
+msgstr "An leagan Lucide réitithe, ar a bhfuil gá ann nuair a chealuitear shim Lucide."
+
+#, pantoken-verbatim
+msgctxt "docs.api:text"
+msgid "removalDeadline"
+msgstr "removalDeadline"

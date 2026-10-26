@@ -31196,3 +31196,12 @@ msgstr "为每个主题分别保留已删除令牌的字面值和注册。"
 msgctxt "docs.api:prose"
 msgid "The default two-minor deadline; next-major adoption is enforced independently."
 msgstr "默认的两个小版本期限；下一个主要版本采用是独立强制的。"
+
+msgctxt "docs.api:prose"
+msgid "The resolved Lucide release, required when retiring a Lucide shim."
+msgstr "在停用 Lucide shim 时所需的已解决的 Lucide 发布版本。"
+
+#, pantoken-verbatim
+msgctxt "docs.api:text"
+msgid "removalDeadline"
+msgstr "removalDeadline"

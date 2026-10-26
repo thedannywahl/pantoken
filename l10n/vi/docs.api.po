@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: pantoken\n"
-"PO-Revision-Date: 2026-10-16 02:42+0000\n"
+"PO-Revision-Date: 2026-10-26 23:48+0000\n"
 "Last-Translator: pantoken localization engine\n"
 "Language-Team: pantoken\n"
 "MIME-Version: 1.0\n"
@@ -31189,3 +31189,20 @@ msgstr "Giải quyết mục tiêu (khớp đầu tiên thắng):\n1. `data-clos
 msgctxt "docs.api:prose"
 msgid "Dismiss strategy:\n- `<dialog>` → `dialog.close()`\n- `[popover]` → `el.hidePopover()`\n- `.instui-alert` or `.instui-banner` → cancelable `dismiss` event, then fade out and remove\n- `[data-dismissible]` or `[open]` → remove open attr + fire bubbling `close`"
 msgstr "Chiến lược đóng:\n- `<dialog>` → `dialog.close()`\n- `[popover]` → `el.hidePopover()`\n- `.instui-alert` or `.instui-banner` → sự kiện có thể hủy `dismiss`, sau đó mờ dần và loại bỏ\n- `[data-dismissible]` or `[open]` → xóa thuộc tính open + phát sự kiện lan truyền `close`"
+
+msgctxt "docs.api:prose"
+msgid "Preserve a removed token's literal value and registration separately for each theme."
+msgstr "Bảo tồn giá trị ký tự của token đã xóa và đăng ký riêng biệt cho mỗi chủ đề."
+
+msgctxt "docs.api:prose"
+msgid "The default two-minor deadline; next-major adoption is enforced independently."
+msgstr "Thời hạn hai phụ mặc định; việc áp dụng phiên bản chính tiếp theo được thực thi độc lập."
+
+msgctxt "docs.api:prose"
+msgid "The resolved Lucide release, required when retiring a Lucide shim."
+msgstr "Bản phát hành Lucide được phân giải, cần thiết khi loại bỏ Lucide shim."
+
+#, pantoken-verbatim
+msgctxt "docs.api:text"
+msgid "removalDeadline"
+msgstr "removalDeadline"

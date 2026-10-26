@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: pantoken\n"
-"PO-Revision-Date: 2026-10-16 02:14+0000\n"
+"PO-Revision-Date: 2026-10-26 23:35+0000\n"
 "Last-Translator: pantoken localization engine\n"
 "Language-Team: pantoken\n"
 "MIME-Version: 1.0\n"
@@ -31188,3 +31188,20 @@ msgstr "ターゲット解決（最初に一致したものが優先):\n1. `data
 msgctxt "docs.api:prose"
 msgid "Dismiss strategy:\n- `<dialog>` → `dialog.close()`\n- `[popover]` → `el.hidePopover()`\n- `.instui-alert` or `.instui-banner` → cancelable `dismiss` event, then fade out and remove\n- `[data-dismissible]` or `[open]` → remove open attr + fire bubbling `close`"
 msgstr "破棄戦略:\n- `<dialog>` → `dialog.close()`\n- `[popover]` → `el.hidePopover()`\n- `.instui-alert` or `.instui-banner` → キャンセル可能な `dismiss` イベント、その後フェードアウトして削除\n- `[data-dismissible]` または `[open]` → open 属性を削除 + バブリングする `close`"
+
+msgctxt "docs.api:prose"
+msgid "Preserve a removed token's literal value and registration separately for each theme."
+msgstr "削除されたトークンのリテラル値と登録を各テーマごとに個別に保持する。"
+
+msgctxt "docs.api:prose"
+msgid "The default two-minor deadline; next-major adoption is enforced independently."
+msgstr "デフォルトの2マイナーデッドライン; 次のメジャー採用は独立して強制されます。"
+
+msgctxt "docs.api:prose"
+msgid "The resolved Lucide release, required when retiring a Lucide shim."
+msgstr "Lucideシムを廃止する際に必要な、解決されたLucideリリース。"
+
+#, pantoken-verbatim
+msgctxt "docs.api:text"
+msgid "removalDeadline"
+msgstr "removalDeadline"

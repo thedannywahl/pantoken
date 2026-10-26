@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: pantoken\n"
-"PO-Revision-Date: 2026-10-16 02:08+0000\n"
+"PO-Revision-Date: 2026-10-26 23:33+0000\n"
 "Last-Translator: pantoken localization engine\n"
 "Language-Team: pantoken\n"
 "MIME-Version: 1.0\n"
@@ -31188,3 +31188,20 @@ msgstr "लक्षित समाधान (पहला मेल जीत�
 msgctxt "docs.api:prose"
 msgid "Dismiss strategy:\n- `<dialog>` → `dialog.close()`\n- `[popover]` → `el.hidePopover()`\n- `.instui-alert` or `.instui-banner` → cancelable `dismiss` event, then fade out and remove\n- `[data-dismissible]` or `[open]` → remove open attr + fire bubbling `close`"
 msgstr "खारिज करने की रणनीति:\n- `<dialog>` → `dialog.close()`\n- `[popover]` → `el.hidePopover()`\n- `.instui-alert` या `.instui-banner` → रद्द करने योग्य `dismiss` इवेंट, फिर धीरे-धीरे गायब कर के हटाएँ\n- `[data-dismissible]` या `[open]` → open एट्रिब्यूट हटाएँ + बबलिंग `close` फायर करें"
+
+msgctxt "docs.api:prose"
+msgid "Preserve a removed token's literal value and registration separately for each theme."
+msgstr "हटाए गए टोकन के शाब्दिक मान और पंजीकरण को प्रत्येक थीम के लिए अलग से संरक्षित करें।"
+
+msgctxt "docs.api:prose"
+msgid "The default two-minor deadline; next-major adoption is enforced independently."
+msgstr "डिफ़ॉल्ट टू-माइनर समय सीमा; अगली-मेजर अपनाना स्वतंत्र रूप से लागू किया जाता है।"
+
+msgctxt "docs.api:prose"
+msgid "The resolved Lucide release, required when retiring a Lucide shim."
+msgstr "समाधान किया गया Lucide रिलीज, Lucide शिम को सेवानिवृत्त करते समय आवश्यक।"
+
+#, pantoken-verbatim
+msgctxt "docs.api:text"
+msgid "removalDeadline"
+msgstr "removalDeadline"

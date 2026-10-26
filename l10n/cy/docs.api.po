@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: pantoken\n"
-"PO-Revision-Date: 2026-10-16 02:44+0000\n"
+"PO-Revision-Date: 2026-10-26 23:48+0000\n"
 "Last-Translator: pantoken localization engine\n"
 "Language-Team: pantoken\n"
 "MIME-Version: 1.0\n"
@@ -31188,3 +31188,20 @@ msgstr "Datrysiad targed (mae'r gêm gyntaf yn ennill):\n1. `data-close-target=\
 msgctxt "docs.api:prose"
 msgid "Dismiss strategy:\n- `<dialog>` → `dialog.close()`\n- `[popover]` → `el.hidePopover()`\n- `.instui-alert` or `.instui-banner` → cancelable `dismiss` event, then fade out and remove\n- `[data-dismissible]` or `[open]` → remove open attr + fire bubbling `close`"
 msgstr "Strategaeth diddymu:\n- `<dialog>` → `dialog.close()`\n- `[popover]` → `el.hidePopover()`\n- `.instui-alert` neu `.instui-banner` → digwyddiad y gellir ei ganslo`dismiss`, yna diflannu ac adalw\n- `[data-dismissible]` neu `[open]` → dileu'r attr open + tanio digwyddiad sy'n bwrw i fyny (bubbling)`close`"
+
+msgctxt "docs.api:prose"
+msgid "Preserve a removed token's literal value and registration separately for each theme."
+msgstr "Cadwch werth llythrennol y tocyn wedi'i dynnu a'r cofrestriad ar wahân ar gyfer pob thema."
+
+msgctxt "docs.api:prose"
+msgid "The default two-minor deadline; next-major adoption is enforced independently."
+msgstr "Y terfyn amser arferol dwy-lefel; mae mabwysiadu'r brif fersiwn nesaf yn cael ei orfodi'n annibynnol."
+
+msgctxt "docs.api:prose"
+msgid "The resolved Lucide release, required when retiring a Lucide shim."
+msgstr "Y rhyddhad Lucide wedi'i ddatrys, sy'n ofynnol wrth ymddeol o shim Lucide."
+
+#, pantoken-verbatim
+msgctxt "docs.api:text"
+msgid "removalDeadline"
+msgstr "removalDeadline"

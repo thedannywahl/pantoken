@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: pantoken\n"
-"PO-Revision-Date: 2026-10-16 02:06+0000\n"
+"PO-Revision-Date: 2026-10-26 23:33+0000\n"
 "Last-Translator: pantoken localization engine\n"
 "Language-Team: pantoken\n"
 "MIME-Version: 1.0\n"
@@ -31188,3 +31188,20 @@ msgstr "פתרון היעד (ההתאמה הראשונה מנצחת):\n1. `data-
 msgctxt "docs.api:prose"
 msgid "Dismiss strategy:\n- `<dialog>` → `dialog.close()`\n- `[popover]` → `el.hidePopover()`\n- `.instui-alert` or `.instui-banner` → cancelable `dismiss` event, then fade out and remove\n- `[data-dismissible]` or `[open]` → remove open attr + fire bubbling `close`"
 msgstr "אסטרטגיית דחייה:\n- `<dialog>` → `dialog.close()`\n- `[popover]` → `el.hidePopover()`\n- `.instui-alert` או `.instui-banner` → אירוע שניתן לבטלו `dismiss`, ואז לדעוך ולהסיר\n- `[data-dismissible]` או `[open]` → הסר את המאפיין open + הפעל אירוע מתפשט `close`"
+
+msgctxt "docs.api:prose"
+msgid "Preserve a removed token's literal value and registration separately for each theme."
+msgstr "שמור על הערך המילולי של אסימון מוסר וההרשמה שלו בנפרד לכל ערכה."
+
+msgctxt "docs.api:prose"
+msgid "The default two-minor deadline; next-major adoption is enforced independently."
+msgstr "דדליין ברירת-המחדל של שני מינוריים; אימוץ next-major מוטל באופן עצמאי."
+
+msgctxt "docs.api:prose"
+msgid "The resolved Lucide release, required when retiring a Lucide shim."
+msgstr "הוצאת Lucide שפתורה, נדרשת בעת פרישה של Lucide shim."
+
+#, pantoken-verbatim
+msgctxt "docs.api:text"
+msgid "removalDeadline"
+msgstr "removalDeadline"
