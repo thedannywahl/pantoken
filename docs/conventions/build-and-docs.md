@@ -34,10 +34,11 @@
   skips them.
 - **Commit messages are conventional-commit-linted** locally by the `.vite-hooks/commit-msg` hook
   (`vp exec commitlint --edit`) and in CI by the `commitlint` job.
-- Release automation uses Changesets and package-tag workflows in
+- Release automation uses Changesets on pushes to `main` in
   `.github/workflows/release.yml`. That workflow verifies a clean build/typecheck/test + `gate:repository`,
   then scopes the pack-heavy `publint`/`attw` gates to exactly the publish set (the full `ready` already
-  ran on the merge-to-main the tag points at).
+  ran on the merge-to-main commit). Weekly Renovate proposals are prepared and partitioned by
+  `.github/workflows/renovate.yml`; only the final tested passing branch enables auto-merge.
 - Use `pnpm run release:version` to apply package changelog/version updates, then
   `vp run release:changelog:root` to rebuild the strict chronological root `CHANGELOG.md` before
   creating package tags.
@@ -47,6 +48,43 @@
 
 See `docs/internal/release-strategy.md` for the runbook, dist-tag mapping, prerelease flow, and npm
 organization governance model.
+
+## Weekly maintenance
+
+`.github/workflows/renovate.yml` runs self-hosted Renovate Monday at 06:00 UTC, with a manual
+dispatch for retries. One draft proposal groups dependency updates, including majors, GitHub
+Actions, and the GitHub-only Instructure design-token tag. The existing five-day maturity delay
+still applies. Native standalone lockfile-maintenance PRs are disabled; the coordinator refreshes
+the lockfile and downstream support even on weeks without manifest bumps.
+
+`scripts/release/weekly-maintenance.ts` tests coupled candidate groups in disposable worktrees
+without repository-write credentials. It runs explicit owning-adapter checks for framework bumps,
+prepares frozen upstream deprecations, blesses the baseline, regenerates compatibility files, and
+creates deterministic package Changesets. The final combined tree passes `vp run ready` and
+`vp run check:publish`; final-head PR CI must pass again before GitHub auto-merges it.
+
+Downstream support retains the current and previous released stable major. Older majors age out
+even when passing; a compatibility assertion can drop the previous major early. Infrastructure
+errors and missing evidence never withdraw support. Adding support gets a minor; support-floor
+increases and public shim removals are breaking (minor during 0.x, major from 1.0). Compatible
+dependency/output refreshes get patches; Actions-only changes do not invent package releases.
+
+Removed upstream tokens freeze complete prior-build values separately for each theme, including
+removed icon artwork. Automation does not infer replacements. Shims retire at the earlier of two
+upstream minor increments or the next upstream major; existing earlier deadlines remain valid.
+
+`scripts/release/maintenance-publication.ts` uses trusted base code to validate the bounded handoff,
+immutable refs, allowed paths, and manifest invariants before pushing. Failures get individual
+deduplicated issues and a separate draft containing failed updates. That draft cannot pass the
+automation guard. Exact-version issues close only after matching evidence merges to `main`.
+
+Rollout needs `RELEASE_PAT` with repository Contents, Pull requests, Issues, and workflow-update
+permissions; candidate execution never receives it. Set `RELEASE_ACTOR` if the token's login
+differs from the repository owner. Require `ci-gate`, `changeset-gate`, and existing security and
+coverage checks, enable auto-merge, and avoid competing hosted Renovate processing. Do not grant
+an administrative bypass. Verify the maintenance merge, authenticated Changesets version PR,
+OIDC publish, immutable release attestations, and docs deployment request in a controlled run;
+local tests and workflow linting do not prove the live GitHub event chain.
 
 ## Linting CSS
 

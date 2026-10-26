@@ -17,3 +17,12 @@ same change. That surfaces every token and icon delta in the PR diff and in the 
 
 Reference integrity (dangling / unknown `var()` refs) is gated separately by
 `@pantoken/validate-generated`, so this tool stays focused on token and icon drift.
+
+Weekly maintenance prepares deprecations before blessing. `lifecycle.ts` compares full base-build
+snapshots, resolves removed references to literals, and preserves each theme's registration and
+removed icon artwork. It never guesses a replacement or freezes an unresolved reference. New shims
+retire after two upstream minor increments or the next upstream major, whichever comes first;
+existing earlier deadlines remain valid. Missing or ambiguous source evidence excludes the update.
+
+The final baseline still has to satisfy the independent drift and reference gates. Automatically
+passing tests do not establish visual equivalence; the classified change report remains reviewable.

@@ -1,24 +1,32 @@
 {
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
   "extends": ["config:recommended", ":dependencyDashboard", "helpers:pinGitHubActionDigests"],
-  "schedule": ["before 9am on monday"],
+  "schedule": ["* * * * 1"],
+  "timezone": "Etc/UTC",
   "labels": ["dependencies"],
-  "prConcurrentLimit": 10,
+  "prConcurrentLimit": 1,
   "minimumReleaseAge": "5 days",
+  "draftPR": true,
+  "automerge": false,
+  "branchTopic": "weekly-maintenance",
+  "prHourlyLimit": 0,
+  "separateMajorMinor": false,
+  "groupSingleUpdates": true,
+  "postUpgradeTasks": {
+    "commands": ["node scripts/release/capture-maintenance.ts"],
+    "dataFileTemplate": "{{{toJSON upgrades}}}",
+    "fileFilters": [".renovate/weekly-upgrades.json"],
+    "executionMode": "branch"
+  },
   "packageRules": [
     {
-      "description": "Group non-major bumps into one PR to keep the ~73-package workspace manageable.",
-      "matchUpdateTypes": ["minor", "patch", "pin", "digest"],
-      "groupName": "non-major dependencies"
-    },
-    {
-      "description": "Group all GitHub Actions bumps (kept SHA-pinned via helpers:pinGitHubActionDigests).",
-      "matchManagers": ["github-actions"],
-      "groupName": "github-actions"
+      "description": "Propose all update types together; pantoken validates and partitions candidates before auto-merge.",
+      "matchPackageNames": ["*"],
+      "groupName": "weekly maintenance",
+      "separateMajorMinor": false
     }
   ],
   "lockFileMaintenance": {
-    "enabled": true,
-    "schedule": ["before 9am on monday"]
+    "enabled": false
   }
 }

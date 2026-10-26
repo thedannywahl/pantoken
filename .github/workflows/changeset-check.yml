@@ -70,7 +70,8 @@ jobs:
       # the changesets, which the check would otherwise trip); skipping the step keeps this required
       # check green there.
       - name: Require a changeset for each changed publishable package
-        if: ${{ !startsWith(github.head_ref, 'changeset-release/') }}
+        if: >-
+          ${{ !(github.head_ref == 'changeset-release/main' && github.event.pull_request.base.ref == 'main' && github.event.pull_request.head.repo.full_name == github.repository && github.event.pull_request.title == 'chore: version packages' && github.event.pull_request.user.login == (vars.RELEASE_ACTOR || github.repository_owner)) }}
         env:
           CHANGESET_BASE: ${{ github.base_ref }}
         run: vp run release:coverage

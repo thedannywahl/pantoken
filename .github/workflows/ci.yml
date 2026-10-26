@@ -45,6 +45,12 @@ env:
   VP_CACHE_KEY_PREFIX: vp-taskcache-
 
 jobs:
+  automation-guard:
+    if: github.event_name == 'pull_request'
+    uses: ./.github/workflows/guard-release-automation.yml
+    permissions:
+      pull-requests: read
+
   build:
     runs-on: ubuntu-latest
     timeout-minutes: 30
@@ -2135,6 +2141,37 @@ jobs:
     needs:
       [
         build,
+        automation-guard,
+        foundation_compatibility,
+        docusaurus_compatibility,
+        astro_compatibility,
+        jekyll_compatibility,
+        hugo_compatibility,
+        drupal_compatibility,
+        web_components_compatibility,
+        tinymce_compatibility,
+        shadcn_compatibility,
+        mintlify_compatibility,
+        css_in_js_compatibility,
+        vitepress_compatibility,
+        panda_compatibility,
+        storybook_compatibility,
+        angular_compatibility,
+        svelte_compatibility,
+        react_markdown_compatibility,
+        vue_compatibility,
+        react_compatibility,
+        next_compatibility,
+        mui_compatibility,
+        wordpress_compatibility,
+        swift_native_compatibility,
+        postcss_compatibility,
+        markdown_it_compatibility,
+        vite_compatibility,
+        webpack_compatibility,
+        tailwind_compatibility,
+        bootstrap_compatibility,
+        rehype_compatibility,
         typecheck,
         coverage,
         fallow,
