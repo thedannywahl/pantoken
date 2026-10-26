@@ -25,7 +25,7 @@
  * @beta
  */
 import { definePlugin } from "@pantoken/plugin-kit";
-import type { DeprecationEntry, DeprecationLedger, PantokenPlugin } from "@pantoken/model";
+import type { DeprecationEntry, DeprecationLedger, PantokenPlugin, Theme } from "@pantoken/model";
 import { defineToken } from "@pantoken/model";
 
 /** The current resolved version of each upstream tier (from `@pantoken/tokens` provenance). */
@@ -34,17 +34,20 @@ export interface UpstreamVersions {
   ui: string;
   /** `@instructure/instructure-design-tokens` pinned ref, e.g. `"v1.5.0"`. */
   designTokens: string;
+  /** The resolved Lucide release, required when retiring a Lucide shim. */
+  lucide?: string;
 }
 
 /** A parsed `<tier>@<version>` upstream reference. */
 export interface ParsedRef {
-  tier: "ui" | "design-tokens";
+  tier: "ui" | "design-tokens" | "lucide";
   version: number[];
 }
 
 /** The shim value for an entry: `var(replacement)`, the frozen literal, or `undefined` if neither. */
-export function shimValue(entry: DeprecationEntry): string | undefined {
+export function shimValue(entry: DeprecationEntry, theme: Theme = "rebrand"): string | undefined {
   if (entry.replacement) return `var(${entry.replacement})`;
+  if (entry.frozen) return entry.frozen[theme].value;
   if (entry.value) return entry.value;
   return undefined;
 }
@@ -64,14 +67,17 @@ export function parseUpstreamRef(ref: string): ParsedRef | undefined {
   const at = ref.indexOf("@");
   if (at <= 0) return undefined;
   const tier = ref.slice(0, at);
-  if (tier !== "ui" && tier !== "design-tokens") return undefined;
-  const version = ref
-    .slice(at + 1)
-    .replace(/^v/u, "")
-    .split(".")
-    .map((part) => Number.parseInt(part, 10))
-    .filter((n) => !Number.isNaN(n));
-  return version.length ? { tier, version } : undefined;
+  if (tier !== "ui" && tier !== "design-tokens" && tier !== "lucide") return undefined;
+  const raw = ref.slice(at + 1).replace(/^v/u, "");
+  if (!/^\d+\.\d+(?:\.\d+)?$/u.test(raw)) return undefined;
+  return { tier, version: raw.split(".").map(Number) };
+}
+
+/** The default two-minor deadline; next-major adoption is enforced independently. */
+export function removalDeadline(deprecatedIn: string): string {
+  const parsed = parseUpstreamRef(deprecatedIn);
+  if (!parsed) throw new Error(`Invalid upstream deprecation reference: ${deprecatedIn}`);
+  return `${parsed.tier}@${parsed.version[0]}.${parsed.version[1] + 2}.0`;
 }
 
 /** Compare two dotted version arrays: negative if `a < b`, 0 if equal, positive if `a > b`. */
@@ -98,13 +104,22 @@ export function dueForRemoval(
 ): DeprecationEntry[] {
   return ledger.entries.filter((entry) => {
     const parsed = parseUpstreamRef(entry.removeIn);
-    if (!parsed) return false;
-    const currentRaw = parsed.tier === "ui" ? current.ui : current.designTokens;
-    const parsedCurrent = currentRaw
-      .replace(/^v/u, "")
-      .split(".")
-      .map((p) => Number.parseInt(p, 10));
-    return compareVersions(parsedCurrent, parsed.version) >= 0;
+    const deprecated = parseUpstreamRef(entry.deprecatedIn);
+    if (!parsed || !deprecated || parsed.tier !== deprecated.tier) {
+      throw new Error(`Invalid deprecation lifecycle for ${entry.token}`);
+    }
+    const currentRaw =
+      parsed.tier === "ui"
+        ? current.ui
+        : parsed.tier === "lucide"
+          ? current.lucide
+          : current.designTokens;
+    const parsedCurrent = currentRaw && parseUpstreamRef(`${parsed.tier}@${currentRaw}`);
+    if (!parsedCurrent) throw new Error(`Missing stable upstream version for ${parsed.tier}`);
+    return (
+      compareVersions(parsedCurrent.version, parsed.version) >= 0 ||
+      parsedCurrent.version[0] > deprecated.version[0]
+    );
   });
 }
 
@@ -124,22 +139,26 @@ export function deprecationShims(ledger: DeprecationLedger): PantokenPlugin {
   const entries = shimEntries(ledger);
   return definePlugin({
     name: "@pantoken/plugin-deprecations",
-    tokens: ({ tokens }) => [
+    tokens: ({ tokens, theme }) => [
       ...tokens,
-      ...entries.map((entry) =>
-        defineToken({
-          name: entry.token,
-          value: shimValue(entry) as string,
-          meta: {
-            deprecated: {
-              ...(entry.replacement ? { replacement: entry.replacement } : {}),
-              deprecatedIn: entry.deprecatedIn,
-              removeIn: entry.removeIn,
-              ...(entry.note ? { note: entry.note } : {}),
+      ...entries
+        .filter((entry) => !tokens.some((token) => token.name === entry.token))
+        .map((entry) =>
+          defineToken({
+            ...entry.frozen?.[theme],
+            name: entry.token,
+            value: shimValue(entry, theme) as string,
+            meta: {
+              ...entry.frozen?.[theme].meta,
+              deprecated: {
+                ...(entry.replacement ? { replacement: entry.replacement } : {}),
+                deprecatedIn: entry.deprecatedIn,
+                removeIn: entry.removeIn,
+                ...(entry.note ? { note: entry.note } : {}),
+              },
             },
-          },
-        }),
-      ),
+          }),
+        ),
     ],
   });
 }

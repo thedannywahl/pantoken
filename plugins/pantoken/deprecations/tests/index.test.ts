@@ -7,6 +7,7 @@ import {
   dueForRemoval,
   ledgerCovers,
   parseUpstreamRef,
+  removalDeadline,
   shimEntries,
   shimValue,
 } from "../src/index.ts";
@@ -94,4 +95,83 @@ test("describeLifecycle renders a one-line summary", () => {
   expect(describeLifecycle(ledger.entries[0])).toBe(
     "deprecated in design-tokens@v1.5.0, removed in design-tokens@v1.6.0 (use `--instui-line-height-paragraph-base`)",
   );
+});
+
+test("expires at two minors or the next major, preserving earlier authored deadlines", () => {
+  expect(removalDeadline("design-tokens@v2.9.4")).toBe("design-tokens@2.11.0");
+  const entry = {
+    token: "--old",
+    deprecatedIn: "design-tokens@2.9.4",
+    removeIn: removalDeadline("design-tokens@2.9.4"),
+    value: "1",
+  };
+  const lifecycle = { version: 1, entries: [entry] };
+  expect(dueForRemoval(lifecycle, { ui: "11.7.4", designTokens: "2.10.9" })).toEqual([]);
+  expect(dueForRemoval(lifecycle, { ui: "11.7.4", designTokens: "2.11.0" })).toEqual([entry]);
+  expect(dueForRemoval(lifecycle, { ui: "11.7.4", designTokens: "3.0.0" })).toEqual([entry]);
+  expect(dueForRemoval(ledger, { ui: "11.7.4", designTokens: "1.6.0" })).toHaveLength(2);
+});
+
+test("rejects malformed or unavailable provenance instead of retaining shims silently", () => {
+  expect(parseUpstreamRef("ui@1.2.3-beta")).toBeUndefined();
+  expect(parseUpstreamRef("ui@1.invalid.3")).toBeUndefined();
+  expect(() => removalDeadline("unknown@1.2.3")).toThrow("Invalid upstream");
+  expect(() =>
+    dueForRemoval(
+      {
+        version: 1,
+        entries: [
+          {
+            token: "--bad",
+            deprecatedIn: "ui@1.2.3",
+            removeIn: "bad",
+          },
+        ],
+      },
+      { ui: "1.3.0", designTokens: "2.0.0" },
+    ),
+  ).toThrow("Invalid deprecation");
+  const lucide = { token: "--icon", deprecatedIn: "lucide@1.1.0", removeIn: "lucide@1.3.0" };
+  expect(() =>
+    dueForRemoval(
+      { version: 1, entries: [lucide] },
+      {
+        ui: "11.7.4",
+        designTokens: "2.0.0",
+      },
+    ),
+  ).toThrow("Missing stable");
+  expect(
+    dueForRemoval(
+      { version: 1, entries: [lucide] },
+      {
+        ui: "11.7.4",
+        designTokens: "2.0.0",
+        lucide: "2.0.0",
+      },
+    ),
+  ).toEqual([lucide]);
+});
+
+test("preserves theme-specific values and registration without shadowing a restored live token", () => {
+  const frozen = {
+    ...ledger.entries[1],
+    token: "--frozen",
+    value: undefined,
+    frozen: {
+      rebrand: { value: "#ffffff", syntax: "<color>", inherits: false, themed: true },
+      canvas: { value: "#000000", syntax: "<color>", inherits: false, themed: true },
+      canvasHighContrast: { value: "#ff0000", syntax: "<color>", inherits: false, themed: true },
+    },
+  };
+  const plugin = deprecationShims({ version: 1, entries: [frozen] });
+  expect(plugin.tokens?.({ tokens: [], theme: "canvas" })?.[0]).toMatchObject({
+    value: "#000000",
+    syntax: "<color>",
+    inherits: false,
+    themed: true,
+    meta: { deprecated: { deprecatedIn: frozen.deprecatedIn } },
+  });
+  const live = { name: "--frozen", value: "#123456", syntax: "<color>", inherits: true };
+  expect(plugin.tokens?.({ tokens: [live], theme: "canvas" })).toEqual([live]);
 });
