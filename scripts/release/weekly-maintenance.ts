@@ -532,8 +532,11 @@ export async function prepareMaintenance(
   }
 }
 
-async function main(): Promise<void> {
-  const [action, ...args] = process.argv.slice(2);
+/** Dispatch the metadata and immutable preparation CLI without running on import. */
+export async function runWeeklyMaintenance(
+  input: readonly string[] = process.argv.slice(2),
+): Promise<void> {
+  const [action, ...args] = input;
   if (action === "capture") {
     const dataFile = process.env.RENOVATE_POST_UPGRADE_COMMAND_DATA_FILE;
     if (!dataFile) throw new Error("Renovate proposal metadata is required");
@@ -552,4 +555,4 @@ async function main(): Promise<void> {
   throw new Error("Usage: weekly-maintenance.ts <capture|prepare>");
 }
 
-runAsMain(import.meta.url, main);
+runAsMain(import.meta.url, runWeeklyMaintenance);

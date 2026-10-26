@@ -12,7 +12,12 @@ import {
 } from "node:fs";
 import { tmpdir } from "node:os";
 import { dirname, join, relative } from "node:path";
-import { partitionMaintenance, prepareMaintenance } from "./weekly-maintenance.ts";
+import {
+  partitionMaintenance,
+  prepareMaintenance,
+  runWeeklyMaintenance,
+} from "./weekly-maintenance.ts";
+import { captureMaintenance } from "./capture-maintenance.ts";
 import type { MaintenanceUpgrade } from "./maintenance-plan.ts";
 import { targetReleaseHistory } from "./release-candidates.ts";
 
@@ -71,7 +76,10 @@ test("empty and all-failed batches never invent passing evidence; retries have s
   expect((await partitionMaintenance([upgrade("a")], validate)).failures).toEqual(first.failures);
 });
 
-function fixture(proposals: MaintenanceUpgrade[] = []) {
+function fixture(
+  proposals: MaintenanceUpgrade[] = [],
+  adapterFailures: Record<string, string> = {},
+) {
   const directory = mkdtempSync(join(tmpdir(), "pantoken-weekly-test-"));
   temporary.push(directory);
   const files: Record<string, string> = {
@@ -132,6 +140,16 @@ function fixture(proposals: MaintenanceUpgrade[] = []) {
     options: { cwd: string; env: NodeJS.ProcessEnv },
   ) => {
     commands.push({ executable, args, ...options });
+    if (args[0] === "scripts/check-compatibility.ts" && adapterFailures[args[1]]) {
+      return {
+        status: 1,
+        stdout: "",
+        stderr: adapterFailures[args[1]],
+        pid: 0,
+        output: [],
+        signal: null,
+      };
+    }
     let stdout = "";
     if (executable === "git" && args[0] === "show") {
       const file = args[1].slice(args[1].indexOf(":") + 1);
@@ -205,4 +223,60 @@ test("applies explicit dependency proposals and revalidates the final combined t
 test("rejects mutable refs before making worktrees or spawning candidate commands", async () => {
   await expect(prepareMaintenance("main", "renovate/proposal")).rejects.toThrow("immutable");
   expect(spawnSync).not.toHaveBeenCalled();
+});
+
+test("captures raw metadata without candidate dependencies and rejects malformed input", () => {
+  const directory = mkdtempSync(join(tmpdir(), "pantoken-capture-test-"));
+  temporary.push(directory);
+  const input = join(directory, "input.json");
+  const output = join(directory, "nested", "upgrades.json");
+  writeFileSync(input, JSON.stringify([upgrade("react")]));
+  captureMaintenance(input, output);
+  expect(JSON.parse(readFileSync(output, "utf8"))).toEqual([upgrade("react")]);
+  expect(() => captureMaintenance("", output)).toThrow("provide proposal metadata");
+  writeFileSync(input, "{}");
+  expect(() => captureMaintenance(input, output)).toThrow("array");
+});
+
+test("retires an assertion-failing previous major without trying backward compatibility fixes", async () => {
+  fixture([], { "19.0.0": "AssertionError: old-major rendering failed" });
+  const base = "a".repeat(40);
+  const result = await prepareMaintenance(base, base);
+  expect(result.evidence["@pantoken/react"]).toEqual(["20.0.0"]);
+  expect(result.files["scripts/release/target-compatibility.json"]).toContain(
+    '"minimum": "20.0.0"',
+  );
+});
+
+test("excludes a failing new target version while retaining passing recorded support", async () => {
+  fixture([], { "20.0.0": "AssertionError: current-major integration failed" });
+  const base = "a".repeat(40);
+  const result = await prepareMaintenance(base, base);
+  expect(result.evidence["@pantoken/react"]).toBeUndefined();
+  expect(result.failures[0]).toMatchObject({ package: "@pantoken/react", version: "20.0.0" });
+  expect(
+    JSON.parse(result.files["scripts/release/target-compatibility.json"]!)["@pantoken/react"]
+      .minimum,
+  ).toBe("18.0.0");
+});
+
+test("records release-feed outages without changing recorded support", async () => {
+  fixture();
+  vi.mocked(targetReleaseHistory).mockRejectedValue(new Error("HTTP 503"));
+  const base = "a".repeat(40);
+  const result = await prepareMaintenance(base, base);
+  expect(result.failures[0]).toMatchObject({ version: "discovery", error: "HTTP 503" });
+  expect(result.evidence).toEqual({});
+});
+
+test("CLI validates preparation arguments and writes the immutable result handoff", async () => {
+  fixture();
+  await expect(runWeeklyMaintenance(["unknown"])).rejects.toThrow("Usage");
+  await expect(runWeeklyMaintenance(["prepare"])).rejects.toThrow("Usage");
+  const directory = mkdtempSync(join(tmpdir(), "pantoken-handoff-test-"));
+  temporary.push(directory);
+  const output = join(directory, "result.json");
+  const base = "a".repeat(40);
+  await runWeeklyMaintenance(["prepare", base, base, output]);
+  expect(JSON.parse(readFileSync(output, "utf8"))).toMatchObject({ base, proposal: base });
 });
