@@ -145,6 +145,10 @@ know what's in place:
   set of Noto script fonts the documentation social cards render in. Those come from URLs pinned to a
   single `google/fonts` commit and are checked against recorded SHA-256 digests before use; a
   mismatched or unreachable download is discarded rather than cached.
+- **Example metadata parsing.** TinyMCE insertion and accessibility audit tooling share a
+  forward-only scanner for leading example flags. Long or malformed flag sequences do not trigger
+  regex backtracking; each consumer retains its own fence and markup handling. This is not HTML
+  sanitization: authored component examples remain trusted content.
 - **Editor language assets.** TinyMCE community packs are installed through the lockfile-backed
   `tinymce-i18n` dependency and bundled with the scaffold's editor. Locale changes don't load
   executable translations from a third-party CDN; the packs follow TinyMCE's licensing terms.

@@ -7,7 +7,7 @@
 import type { Editor } from "tinymce";
 import type { CdnFile } from "@pantoken/cdn";
 import customComponentsModel from "@pantoken/plugin-custom-components/model.json" with { type: "json" };
-import { resolveExampleTargets } from "@pantoken/utils/example-targets";
+import { resolveExampleTargets, stripExampleMetadata } from "@pantoken/utils/example-targets";
 import type { CssDocEntry } from "../cssdoc/model.js";
 import type { MissingAssetHandler } from "../types.js";
 import { trackAndInjectAsset } from "../content-css.js";
@@ -68,9 +68,20 @@ const COMPONENT_PICKER_EXCLUDED_COMPONENTS = new Set([
 const customComponentNames = new Set(customComponentsModel.map((entry) => entry.name));
 
 function normalizeExample(example: string): string {
-  const fencedHtml = example.match(/```(?:html(?:\s+-[a-z][a-z0-9-]*)*)?\s*\r?\n([\s\S]*?)```/iu);
-  const markup = fencedHtml?.[1] ?? example.replace(/^(?:\s*-[a-z][a-z0-9-]*\s*)+\r?\n/u, "");
-  return markup.trim();
+  for (const opening of example.matchAll(/```([^\n`]*)\n/gu)) {
+    const bodyStart = opening.index + opening[0].length;
+    const info = opening[1]!.trim().split(/\s+/u);
+    if (
+      info[0] === "" ||
+      (info[0]?.toLowerCase() === "html" &&
+        info.slice(1).every((token) => /^-[a-z][a-z0-9-]*$/iu.test(token)))
+    ) {
+      const end = example.indexOf("```", bodyStart);
+      if (end < 0) break;
+      return example.slice(bodyStart, end).trim();
+    }
+  }
+  return stripExampleMetadata(example, true).trim();
 }
 
 /**

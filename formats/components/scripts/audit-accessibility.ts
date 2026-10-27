@@ -8,7 +8,7 @@ import { cpSync, mkdirSync, readFileSync, writeFileSync } from "node:fs";
 import { dirname, join, resolve } from "node:path";
 import { fileURLToPath } from "node:url";
 import { parseCssDocs, type CssDocEntry } from "@cssdoc/core";
-import { resolveExampleTargets } from "@pantoken/utils/example-targets";
+import { resolveExampleTargets, stripExampleMetadata } from "@pantoken/utils/example-targets";
 import { Window } from "happy-dom";
 import { COMPONENTS } from "../src/components/index.ts";
 import { focus } from "../src/declarations/focus/index.ts";
@@ -78,7 +78,7 @@ export function exampleHtml(example: string): string {
   const fences = [...example.matchAll(/```html[^\n]*\n([\s\S]*?)```/gu)];
   const markup = fences.length
     ? fences.map((match) => match[1]).join("\n")
-    : example.replace(/^(?:-[a-z][a-z0-9-]*[ \t]*)+\r?\n/u, "");
+    : stripExampleMetadata(example);
   const window = new Window();
   window.document.body.innerHTML = markup;
   for (const element of window.document.querySelectorAll("[class]")) {
@@ -127,7 +127,15 @@ export function expandCases(examples: readonly AuditExample[]): AuditCase[] {
 
 /** Use the production IIFE bundles for any interactive classes in a fixture. */
 export function behaviorNames(html: string): string[] {
-  const candidates = ["modal", "tabs", "tooltip", "close-button", "in-place-edit", "drawer-layout"];
+  const candidates = [
+    "modal",
+    "tabs",
+    "tooltip",
+    "close-button",
+    "in-place-edit",
+    "drawer-layout",
+    "tree-browser",
+  ];
   return candidates.filter((name) =>
     new RegExp(`class="[^"]*\\binstui-${name}\\b`, "u").test(html),
   );

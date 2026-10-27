@@ -4,6 +4,7 @@
 import { expect, test, vi } from "vite-plus/test";
 import type { Editor } from "tinymce";
 import { createComponentsPlugin } from "../src/plugins/components.js";
+import { findEntry } from "../src/cssdoc/model.js";
 import coreModel from "@pantoken/components/model.json" with { type: "json" };
 import customModel from "@pantoken/plugin-custom-components/model.json" with { type: "json" };
 
@@ -379,6 +380,33 @@ test("component insertion strips audience flags from an unfenced example", () =>
   const insertContent = (editor as unknown as Record<string, unknown>).insertContent;
   expect(insertContent).toHaveBeenCalledWith('<a class="instui-link" href="#">Read more</a>');
 });
+
+test.each([
+  ["-canvas-rce -docs\r\n<p>Content</p>", "<p>Content</p>"],
+  ["```HTML -canvas-rce\r\n<p>Content</p>\r\n```", "<p>Content</p>"],
+  ["```\n<p>Content</p>\n```", "<p>Content</p>"],
+  ["-canvas-rce\n```html\n<p>Unclosed</p>", "```html\n<p>Unclosed</p>"],
+  ["-a".repeat(50_000), "-a".repeat(50_000)],
+  ["-a ".repeat(50_000) + "!", "-a ".repeat(50_000) + "!"],
+])(
+  "normalizes example wrappers with bounded parsing: %#",
+  (example, expected) => {
+    const editor = createMockEditor();
+    const button = findEntry("button");
+    expect(button).toBeDefined();
+    if (!button) throw new Error("Missing button fixture");
+    createComponentsPlugin({
+      model: [{ ...button, examples: [example] }],
+      currentAssets: [],
+    })(editor);
+    (editor.ui.registry.addButton as any).mock.calls[0][1].onAction();
+    const dialog = (editor.windowManager.open as any).mock.calls[0][0];
+    dialog.onSubmit({ getData: () => ({ component: "button" }), close: vi.fn() });
+    const insertContent = (editor as unknown as Record<string, unknown>).insertContent;
+    expect(insertContent).toHaveBeenCalledWith(expected);
+  },
+  2_000,
+);
 
 test("insertion reads the current interactions option and selects the matching example", () => {
   const editor = createMockEditor();

@@ -179,6 +179,15 @@ Security-relevant entry points include:
 
 ## Trust boundaries
 
+### Example metadata parsing
+
+TinyMCE insertion and accessibility audit tooling use the shared, Node-free
+`stripExampleMetadata` scanner in `packages/utils/src/example-targets.ts` for leading flag headers
+(T-5). The scanner advances through each token once, preserving each consumer's whitespace rules
+without overlapping repeated regex groups. Regression tests exercise long malformed headers in
+the helper and both consumer paths. This bounds metadata parsing, not arbitrary HTML processing;
+component examples remain trusted authored HTML.
+
 ### Weekly maintenance controls
 
 The optional required `renovate-policy` commit status adds automation-specific merge restrictions
