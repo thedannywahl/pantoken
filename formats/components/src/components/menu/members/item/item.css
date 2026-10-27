@@ -25,39 +25,61 @@
  */
 @scope (.pfx-menu) {
   :scope {
-    > .item {
+    > .item,
+    > [role="group"] > .item {
+      appearance: none;
+      box-sizing: border-box;
       display: block;
+      inline-size: 100%;
+      margin: 0;
+      border: 0;
+      border-radius: 0;
       padding: var(--instui-component-menu-item-padding-vertical)
         var(--instui-component-menu-item-padding-horizontal);
+      background: var(--instui-component-menu-item-background);
       color: var(--instui-component-menu-item-label-color);
       font-family: var(--instui-component-menu-item-font-family);
       font-size: var(--instui-component-menu-item-font-size);
       font-weight: var(--instui-component-menu-item-font-weight);
       line-height: var(--instui-component-menu-item-line-height);
+      text-align: start;
       cursor: pointer;
     }
 
     /* A disabled item (InstUI Menu.Item `disabled`): muted, non-interactive. */
-    > .item.-disabled {
+    > .item.-disabled,
+    > .item[aria-disabled="true"],
+    > .item:disabled,
+    > [role="group"] > .item.-disabled,
+    > [role="group"] > .item[aria-disabled="true"],
+    > [role="group"] > .item:disabled {
       opacity: var(--instui-opacity-disabled);
       pointer-events: none;
       cursor: not-allowed;
     }
 
     > .item:hover,
-    > .item.-highlighted {
+    > .item:focus-visible,
+    > .item.-highlighted,
+    > [role="group"] > .item:hover,
+    > [role="group"] > .item:focus-visible,
+    > [role="group"] > .item.-highlighted {
       background: var(--instui-component-menu-item-highlighted-background);
       color: var(--instui-component-menu-item-highlighted-label-color);
     }
 
     > .item.-active,
-    > .item[aria-checked="true"] {
+    > .item[aria-checked="true"],
+    > [role="group"] > .item.-active,
+    > [role="group"] > .item[aria-checked="true"] {
       background: var(--instui-component-menu-item-active-background);
       color: var(--instui-component-menu-item-active-label-color);
     }
 
     > .item.-active:hover,
-    > .item[aria-checked="true"]:hover {
+    > .item[aria-checked="true"]:hover,
+    > [role="group"] > .item.-active:hover,
+    > [role="group"] > .item[aria-checked="true"]:hover {
       background: var(--instui-component-menu-item-selected-highlighted-background);
     }
 
@@ -67,8 +89,19 @@
     }
 
     > .item:hover .item-info,
-    > .item.-highlighted .item-info {
+    > .item:focus-visible .item-info,
+    > .item.-highlighted .item-info,
+    > [role="group"] > .item:hover .item-info,
+    > [role="group"] > .item:focus-visible .item-info,
+    > [role="group"] > .item.-highlighted .item-info {
       color: var(--instui-component-menu-item-highlighted-label-info-color);
+    }
+
+    > .item.-active .item-info,
+    > .item[aria-checked="true"] .item-info,
+    > [role="group"] > .item.-active .item-info,
+    > [role="group"] > .item[aria-checked="true"] .item-info {
+      color: inherit;
     }
   }
 }

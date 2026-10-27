@@ -11,7 +11,8 @@
  * ```html
  * <button class="pfx-button" type="button" popovertarget="actions-menu" aria-haspopup="menu" aria-controls="actions-menu" aria-expanded="false" data-a11y-trigger>Actions</button>
  * <div class="pfx-menu" id="actions-menu" popover="auto" role="menu" aria-label="Actions" data-menu-navigation data-a11y-root>
- *   <div class="group" role="group" aria-label="Editing">
+ *   <div role="group" aria-labelledby="editing-actions-label">
+ *     <div class="group" id="editing-actions-label">Editing</div>
  *     <button class="item" type="button" role="menuitem">Edit</button>
  *     <button class="item" type="button" role="menuitem">Delete</button>
  *   </div>
@@ -20,7 +21,8 @@
  */
 @scope (.pfx-menu) {
   :scope {
-    > .group {
+    > .group,
+    > [role="group"] > .group {
       padding: var(--instui-component-menu-group-padding-vertical)
         var(--instui-component-menu-group-padding-horizontal);
       background: var(--instui-component-menu-group-background);

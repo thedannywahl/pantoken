@@ -2,6 +2,7 @@ import { expect, test } from "vite-plus/test";
 import { parseCssDocs } from "@cssdoc/core";
 import { Window } from "happy-dom";
 import { readFileSync } from "node:fs";
+import { norm } from "./_css.ts";
 import { menu } from "../src/components/menu/index.ts";
 import { menuItem } from "../src/components/menu/members/item/index.ts";
 import { menuGroup } from "../src/components/menu/members/group/index.ts";
@@ -48,4 +49,22 @@ test("the localized menu demo uses the same opt-in production contract", () => {
   expect(html).toContain('popovertarget="demo-menu"');
   expect(html.match(/role="menuitem"/gu)).toHaveLength(3);
   expect(menu.rules("instui-")).toContain("@demo self:menu");
+});
+
+test("native and grouped menu items use token backgrounds instead of platform button paint", () => {
+  const css = norm(menuItem.css({ prefix: "instui" }));
+  for (const declaration of [
+    "appearance: none",
+    "box-sizing: border-box",
+    "background: var(--instui-component-menu-item-background)",
+    "border: 0",
+    "text-align: start",
+  ])
+    expect(css).toContain(declaration);
+  expect(css).toContain('> [role="group"] > .item');
+  expect(css).toContain('> [role="group"] > .item:focus-visible');
+  expect(css).toContain('> .item[aria-disabled="true"]');
+  expect(css).toContain('> .item[aria-checked="true"] .item-info');
+  expect(css).toContain("color: inherit");
+  expect(norm(menuGroup.css({ prefix: "instui" }))).toContain('> [role="group"] > .group');
 });
