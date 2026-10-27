@@ -205,6 +205,9 @@ settings:
 
 catalogs:
   default:
+    acorn:
+      specifier: ^8.19.0
+      version: 8.19.0
     '@arethetypeswrong/cli':
       specifier: ^0.18.5
       version: 0.18.5
@@ -558,6 +561,9 @@ importers:
 
   .:
     devDependencies:
+      acorn:
+        specifier: "catalog:"
+        version: 8.19.0
       '@arethetypeswrong/cli':
         specifier: 'catalog:'
         version: 0.18.5
