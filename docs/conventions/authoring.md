@@ -119,8 +119,22 @@ Use `vp run audit:components --record button` for a focused reproduction.
 
 The page suite runs both axe-core and IBM Equal Access against WCAG 2.2 AA, conditions checks, and
 **simulated** screen-reader checks. Page audits don't exercise archetype-specific interactions or
-computed checks. Closed surfaces aren't evidence that their hidden contents passed. Findings are
+computed checks. Page fixtures expand dialogs, native popovers, and disclosures and focus tooltip
+triggers so their expanded surfaces are measured; npm fixtures preserve authored initial states
+for interaction checks.
+Closed surfaces aren't evidence that their hidden contents passed. Findings are
 advisory; failed targets, missing fixtures/assets, and incomplete execution are errors.
+
+The same command also runs authored npm fixtures for button, link, dialog (modal), menu, tabs,
+form-field, accordion (toggle-details), tooltip, and live-region (alert). These fixtures reuse the
+tagged examples and actual production interactions, with all five audit tiers enabled. There is no
+claimed combobox or chart coverage. A native template or generated guess never counts as a tested
+Pantoken component. Read gaps and undetermined computed results separately from violations.
+
+The npm suite packs the current workspace dependency closure locally with `vp pm pack`; it doesn't
+test the last published version instead. Its fixture wrappers inline supplementary built styles,
+fonts, and behavior bundles only to reproduce the production cascade in the tool's HTML harness.
+They don't implement replacement widget behavior.
 
 These automated results do not establish that the page meets WCAG; manual review is still needed.
 

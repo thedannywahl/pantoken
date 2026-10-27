@@ -3,7 +3,7 @@
  * incomplete execution is an error. Run through the uncached accessibility task.
  * @module
  */
-import { spawnSync } from "node:child_process";
+import { spawn, spawnSync } from "node:child_process";
 import { cpSync, mkdirSync, readFileSync, writeFileSync } from "node:fs";
 import { dirname, join, resolve } from "node:path";
 import { fileURLToPath } from "node:url";
@@ -12,6 +12,10 @@ import { resolveExampleTargets } from "@pantoken/utils/example-targets";
 import { Window } from "happy-dom";
 import { COMPONENTS } from "../src/components/index.ts";
 import { focus } from "../src/declarations/focus/index.ts";
+import {
+  loadWorkspacePackages,
+  type WorkspacePackages,
+} from "../../../scripts/release/workspace-packages.ts";
 
 const packageRoot = resolve(import.meta.dirname, "..");
 const repositoryRoot = resolve(packageRoot, "../..");
@@ -40,7 +44,21 @@ export interface AuditEvidence {
   expected: string[];
   completed: string[];
   error?: string;
+  gaps?: number;
 }
+
+/** Semantic archetypes supported by automatica11y, mapped to actual authored records. */
+export const ARCHETYPES: Readonly<Record<string, string>> = {
+  button: "button",
+  link: "link",
+  dialog: "modal",
+  menu: "menu",
+  tabs: "tabs",
+  "form-field": "form-field",
+  accordion: "toggle-details",
+  tooltip: "tooltip",
+  "live-region": "alert",
+};
 
 /** Normalize only class tokens in trusted authored HTML, never text or script contents. */
 export function exampleHtml(example: string): string {
@@ -126,6 +144,13 @@ ${styles.map((path) => `<link rel="stylesheet" href="../assets/${path}">`).join(
 ${behaviorNames(item.html)
   .map((name) => `<script src="../assets/interactions/${name}.iife.js"></script>`)
   .join("\n")}
+<script>
+// The page suite measures expanded surfaces; npm fixtures retain their initial state.
+for (const dialog of document.querySelectorAll("dialog")) if (!dialog.open) dialog.showModal();
+for (const popover of document.querySelectorAll("[popover]")) popover.showPopover();
+for (const details of document.querySelectorAll("details")) details.open = true;
+document.querySelector(".instui-tooltip [data-a11y-trigger]")?.focus();
+</script>
 </body></html>\n`;
 }
 
@@ -139,6 +164,7 @@ export function completedTargets(value: unknown, expected: readonly string[]): s
   ) {
     throw new Error("Invalid results.json: missing targets");
   }
+
   const completed: string[] = [];
   for (const target of value.targets) {
     if (!target || typeof target !== "object" || typeof target.id !== "string")
@@ -156,11 +182,65 @@ export function completedTargets(value: unknown, expected: readonly string[]): s
   return completed;
 }
 
+/** Keep undetermined/not-testable coverage separate and reject nested execution errors. */
+export function inspectChecks(value: unknown): number {
+  if (!value || typeof value !== "object") return 0;
+  if (
+    ("status" in value && value.status === "failed") ||
+    ("result" in value && value.result === "error")
+  ) {
+    throw new Error(
+      `Audit check failed: ${"reason" in value ? String(value.reason) : "see original report"}`,
+    );
+  }
+  const gap =
+    ("status" in value && ["gap", "not-testable", "skipped"].includes(String(value.status))) ||
+    ("result" in value && value.result === "undetermined");
+  return (
+    Number(gap) +
+    Object.values(value).reduce<number>((sum, child: unknown) => sum + inspectChecks(child), 0)
+  );
+}
+
+/** Require authored npm provenance instead of accepting a native template or generated guess. */
+export function authoredTargets(
+  value: unknown,
+  expected: readonly string[],
+  archetype: string,
+): string[] {
+  const completed = completedTargets(value, expected);
+  if (!value || typeof value !== "object" || !("targets" in value) || !Array.isArray(value.targets))
+    throw new Error("Missing npm targets");
+  for (const target of value.targets) {
+    const result = target.archetypes?.[archetype];
+    if (result?.status !== "ran" || result?.fixture?.source !== "authored") {
+      throw new Error(`Target ${target.id}: ${archetype} didn't run an authored fixture`);
+    }
+  }
+  return completed;
+}
+
 /** Run a subprocess without a shell and preserve errors, including launch failures. */
 export function execute(command: string, args: string[], cwd: string = packageRoot): void {
   const result = spawnSync(command, args, { cwd, stdio: "inherit", timeout: 1_800_000 });
   if (result.error) throw result.error;
   if (result.status !== 0) throw new Error(`${command} exited ${result.status ?? result.signal}`);
+}
+
+/** Run report batches asynchronously with explicit launch and exit failures. */
+export function executeAsync(
+  command: string,
+  args: string[],
+  cwd: string = packageRoot,
+): Promise<void> {
+  return new Promise((resolveCommand, reject) => {
+    const child = spawn(command, args, { cwd, stdio: "inherit", timeout: 1_800_000 });
+    child.once("error", reject);
+    child.once("exit", (code, signal) => {
+      if (code === 0) resolveCommand();
+      else reject(new Error(`${command} exited ${code ?? signal}`));
+    });
+  });
 }
 
 /** Keep a human-readable index alongside the tool's unmodified reports. */
@@ -178,14 +258,16 @@ export function writeIndex(
     "",
     `Expected page cases: ${cases.length}. Completed targets: ${evidence.reduce((sum, item) => sum + item.completed.length, 0)}.`,
     "",
-    "| Suite | Completed / expected | Evidence | Error |",
-    "| --- | --- | --- | --- |",
+    "| Suite | Completed / expected | Gaps / undetermined | Evidence | Error |",
+    "| --- | --- | --- | --- | --- |",
     ...evidence.map(
       (item) =>
-        `| ${item.directory} | ${item.completed.length} / ${item.expected.length} | [Report](${item.directory}/report.md), [results](${item.directory}/results.json) | ${item.error ? escapeText(item.error).replaceAll("|", "\\|") : "None"} |`,
+        `| ${item.directory} | ${item.completed.length} / ${item.expected.length} | ${item.gaps ?? "Not measured"} | [Report](${item.directory}/report.md), [results](${item.directory}/results.json) | ${item.error ? escapeText(item.error).replaceAll("|", "\\|") : "None"} |`,
     ),
     "",
-    "Page targets run rules, conditions, and simulated screen-reader checks. They don't run archetype interaction or computed checks.",
+    "Page targets run rules, conditions, and simulated screen-reader checks. Authored npm archetypes additionally run interaction and computed checks.",
+    "Page fixtures expand dialogs, native popovers, and disclosures and focus tooltip triggers. Npm fixtures preserve authored initial states and exercise production behavior.",
+    `Supported npm archetypes: ${Object.keys(ARCHETYPES).join(", ")}. No documented combobox or chart contract is claimed.`,
     "Hidden/closed surfaces and unsupported checks aren't passes. Read the original reports for gaps, warnings, and engine-specific findings.",
     "Meaningful alt text, context, cognitive load, real focus/reading order, and real screen readers still need manual review.",
   ];
@@ -193,18 +275,19 @@ export function writeIndex(
 }
 
 /** Execute one report-producing invocation and validate its exact result inventory. */
-export function auditInvocation(
+export async function auditInvocation(
   out: string,
   directory: string,
   targets: string[],
   options: string[],
-  run: typeof execute = execute,
-): AuditEvidence {
+  run: (command: string, args: string[], cwd?: string) => void | Promise<void> = executeAsync,
+  archetype?: string,
+): Promise<AuditEvidence> {
   const expected = targets.map((target) => target.slice(0, target.indexOf("=")));
   const evidence: AuditEvidence = { directory, expected, completed: [] };
   const destination = join(out, directory);
   try {
-    run(process.execPath, [
+    await run(process.execPath, [
       cli,
       targets.length === 1 ? "audit" : "compare",
       ...targets,
@@ -219,10 +302,21 @@ export function auditInvocation(
       ...options,
     ]);
     readFileSync(join(destination, "report.md"), "utf8");
-    evidence.completed = completedTargets(
-      JSON.parse(readFileSync(join(destination, "results.json"), "utf8")),
-      expected,
-    );
+    const results: unknown = JSON.parse(readFileSync(join(destination, "results.json"), "utf8"));
+    if (
+      results &&
+      typeof results === "object" &&
+      "targets" in results &&
+      Array.isArray(results.targets)
+    ) {
+      evidence.gaps = results.targets.reduce(
+        (sum: number, target) => sum + inspectChecks(target.archetypes),
+        0,
+      );
+    }
+    evidence.completed = archetype
+      ? authoredTargets(results, expected, archetype)
+      : completedTargets(results, expected);
   } catch (error) {
     evidence.error = error instanceof Error ? error.message : String(error);
     console.error(`Audit ${directory} incomplete: ${evidence.error}`);
@@ -230,12 +324,167 @@ export function auditInvocation(
   return evidence;
 }
 
+/** Pack the local runtime dependency closure with workspace/catalog protocols resolved. */
+export function packAuditPackages(
+  out: string,
+  workspace: WorkspacePackages,
+  run: typeof execute = execute,
+): string[] {
+  const required = new Set<string>();
+  const visit = (name: string): void => {
+    if (required.has(name)) return;
+    const pkg = workspace.byName.get(name);
+    if (!pkg) throw new Error(`Missing local audit dependency: ${name}`);
+    required.add(name);
+    for (const dependency of pkg.workspaceDeps) visit(dependency);
+  };
+  for (const name of ["@pantoken/components", "@pantoken/css", "@pantoken/interactions"])
+    visit(name);
+  const packs = join(out, "packs");
+  mkdirSync(packs, { recursive: true });
+  const options: string[] = [];
+  for (const name of required) {
+    const pkg = workspace.byName.get(name)!;
+    const destination = join(packs, `${name.replaceAll("/", "-").replaceAll("@", "")}.tgz`);
+    run("vp", ["pm", "pack", "--out", destination], join(workspace.rootDir, pkg.path));
+    readFileSync(destination);
+    options.push("--local-package", `${name}=${destination}`);
+  }
+  return options;
+}
+
+/** Inline supplementary built assets so the npm fixture uses the same cascade and local fonts. */
+export function renderNpmFixture(item: AuditCase, assets: string): string {
+  const styles = [
+    "tokens/schemes.css",
+    "components/base.css",
+    "components/utilities.css",
+    "components/icons.css",
+    "components/fonts.css",
+  ]
+    .map((path) => {
+      const file = join(assets, path);
+      return readFileSync(file, "utf8").replace(
+        /url\((["']?)([^)"']+\.woff2)\1\)/gu,
+        (_all, _quote: string, url: string) =>
+          `url("data:font/woff2;base64,${readFileSync(resolve(dirname(file), url)).toString("base64")}")`,
+      );
+    })
+    .join("\n");
+  const scripts = behaviorNames(item.html)
+    .map(
+      (name) =>
+        `<script>${readFileSync(join(assets, "interactions", `${name}.iife.js`), "utf8").replaceAll("</script", "<\\/script")}</script>`,
+    )
+    .join("\n");
+  return `<style>${styles}</style>
+  <script>
+  document.documentElement.lang = "en";
+  document.documentElement.dataset.pantokenTheme = ${JSON.stringify(item.theme)};
+  document.documentElement.dataset.pantokenScheme = ${JSON.stringify(item.scheme)};
+  document.documentElement.style.colorScheme = ${JSON.stringify(item.scheme)};
+  </script>
+  ${item.html}
+  ${scripts}\n`;
+}
+
+/** Append authored npm archetype evidence to an existing page suite without modifying tool reports. */
+export async function runNpmAudits(
+  out: string,
+  record?: string,
+  run: typeof execute = execute,
+  workspace?: WorkspacePackages,
+): Promise<void> {
+  const definitions = [...COMPONENTS, focus];
+  const entries = definitions.flatMap((definition) => parseCssDocs(definition.rules("instui-")));
+  const examples = collectExamples(
+    entries,
+    Object.values(ARCHETYPES).filter((name) => !record || name === record),
+  );
+  const cases = expandCases(examples);
+  const coverage: { cases: AuditCase[]; evidence: AuditEvidence[] } = JSON.parse(
+    readFileSync(join(out, "coverage.json"), "utf8"),
+  );
+  const archetypes = Object.entries(ARCHETYPES).filter(([, name]) => !record || name === record);
+  const planned = archetypes.map(([archetype, name]) => ({
+    directory: `npm-${archetype}`,
+    expected: cases.filter((item) => item.record === name).map((item) => `npm-${item.id}`),
+    completed: [] as string[],
+    error: "Not run",
+  }));
+  const start = coverage.evidence.length;
+  coverage.evidence.push(...planned);
+  try {
+    writeIndex(out, coverage.evidence, coverage.cases);
+    if (!cases.length) return;
+    const packages = packAuditPackages(out, workspace ?? (await loadWorkspacePackages()), run);
+    const companions = packages
+      .filter((option) => option !== "--local-package")
+      .map((option) => option.slice(0, option.indexOf("=")))
+      .filter((name) => name !== "@pantoken/components" && name !== "@pantoken/css");
+    const mapping: Record<string, Record<string, { fixture: string }>> = {};
+    for (const item of cases) {
+      const archetype = Object.keys(ARCHETYPES).find((key) => ARCHETYPES[key] === item.record)!;
+      const id = `npm-${item.id}`;
+      const directory = join(out, "fixtures", id);
+      mkdirSync(directory, { recursive: true });
+      const fixture = join(directory, `${archetype}.html`);
+      writeFileSync(fixture, renderNpmFixture(item, join(out, "assets")));
+      mapping[id] = { [archetype]: { fixture } };
+    }
+    const mappingFile = join(out, "mapping.json");
+    writeFileSync(mappingFile, `${JSON.stringify(mapping, null, 2)}\n`);
+    for (let offset = 0; offset < archetypes.length; offset += 2) {
+      await Promise.all(
+        archetypes.slice(offset, offset + 2).map(async ([archetype, name], localIndex) => {
+          const index = offset + localIndex;
+          const targets = cases
+            .filter((item) => item.record === name)
+            .map(
+              (item) =>
+                `npm-${item.id}=npm:@pantoken/components/components.css,@pantoken/css/scope.css,${companions.join(",")}`,
+            );
+          coverage.evidence[start + index] = await auditInvocation(
+            out,
+            `npm-${archetype}`,
+            targets,
+            [
+              "--tiers",
+              "rules,interactions,computed,conditions,vsr",
+              "--archetypes",
+              archetype,
+              "--no-generate",
+              "--mapping",
+              mappingFile,
+              ...packages,
+            ],
+            run === execute ? executeAsync : run,
+            archetype,
+          );
+          writeIndex(out, coverage.evidence, coverage.cases);
+        }),
+      );
+      if (coverage.evidence.slice(start, start + offset + 2).some((item) => item.error)) break;
+    }
+  } catch (error) {
+    coverage.evidence.push({
+      directory: "npm-setup",
+      expected: [],
+      completed: [],
+      error: String(error),
+    });
+  } finally {
+    writeIndex(out, coverage.evidence, coverage.cases);
+  }
+  if (coverage.evidence.some((item) => item.error))
+    throw new Error(`Incomplete npm accessibility audit; see ${out}`);
+}
 /** Build the complete page suite and retain its original reports in a unique local directory. */
-export function runPageAudits(
+export async function runPageAudits(
   record?: string,
   run: typeof execute = execute,
   root: string = repositoryRoot,
-): string {
+): Promise<string> {
   const definitions = [...COMPONENTS, focus];
   if (record && !definitions.some((entry) => entry.name === record))
     throw new Error(`Unknown record: ${record}`);
@@ -269,19 +518,24 @@ export function runPageAudits(
     writeIndex(out, evidence, cases);
     run(process.execPath, [cli, "--version"]);
     run(process.execPath, [cli, "doctor"]);
-    for (const [index, group] of groups.entries()) {
-      const targets = cases
-        .filter((item) => `${item.theme}-${item.scheme}` === group)
-        .map((item) => `${item.id}=${join(out, "pages", `${item.id}.html`)}`);
-      evidence[index] = auditInvocation(
-        out,
-        `pages-${group}`,
-        targets,
-        ["--tiers", "rules,conditions,vsr"],
-        run,
+    for (let offset = 0; offset < groups.length; offset += 2) {
+      await Promise.all(
+        groups.slice(offset, offset + 2).map(async (group, localIndex) => {
+          const index = offset + localIndex;
+          const targets = cases
+            .filter((item) => `${item.theme}-${item.scheme}` === group)
+            .map((item) => `${item.id}=${join(out, "pages", `${item.id}.html`)}`);
+          evidence[index] = await auditInvocation(
+            out,
+            `pages-${group}`,
+            targets,
+            ["--tiers", "rules,conditions,vsr"],
+            run === execute ? executeAsync : run,
+          );
+          writeIndex(out, evidence, cases);
+        }),
       );
-      writeIndex(out, evidence, cases);
-      if (evidence[index]!.error) break;
+      if (evidence.slice(0, offset + 2).some((item) => item.error)) break;
     }
   } catch (error) {
     evidence.push({ directory: "setup", expected: [], completed: [], error: String(error) });
@@ -299,7 +553,8 @@ if (process.argv[1] && resolve(process.argv[1]) === fileURLToPath(import.meta.ur
     const args = process.argv.slice(2);
     if (args.length && (args.length !== 2 || args[0] !== "--record"))
       throw new Error("Usage: audit-accessibility.ts [--record <name>]");
-    runPageAudits(args[1]);
+    const out = await runPageAudits(args[1]);
+    await runNpmAudits(out, args[1]);
   } catch (error) {
     console.error(error);
     process.exitCode = 1;

@@ -5,16 +5,23 @@ import { afterEach, expect, test, vi } from "vite-plus/test";
 import { parseCssDocs } from "@cssdoc/core";
 import {
   auditInvocation,
+  authoredTargets,
   behaviorNames,
   collectExamples,
   completedTargets,
   exampleHtml,
   execute,
+  executeAsync,
+  inspectChecks,
   expandCases,
   renderPage,
   runPageAudits,
+  runNpmAudits,
+  packAuditPackages,
+  renderNpmFixture,
   writeIndex,
 } from "../scripts/audit-accessibility.ts";
+import type { WorkspacePackages } from "../../../scripts/release/workspace-packages.ts";
 
 const directories: string[] = [];
 const temp = (): string => {
@@ -79,6 +86,10 @@ test("expands exactly six unique cases per example and loads local production as
   ])
     expect(page).toContain(asset);
   expect(page).not.toContain("https://");
+  expect(page).toContain("dialog.showModal()");
+  expect(page).toContain("popover.showPopover()");
+  expect(page).toContain("details.open = true");
+  expect(page).toContain('document.querySelector(".instui-tooltip [data-a11y-trigger]")?.focus()');
   expect(behaviorNames('<div class="instui-tabs"></div>')).toEqual(["tabs"]);
   expect(behaviorNames("<p>instui-tabs</p>")).toEqual([]);
 });
@@ -103,7 +114,7 @@ test("checks exact completed coverage without interpreting violations as failure
     expect(() => completedTargets(invalid, ["button"])).toThrow();
   }
 });
-test("retains original evidence, uses installed CLI, and doesn't add violation fail flags", () => {
+test("retains original evidence, uses installed CLI, and doesn't add violation fail flags", async () => {
   const out = temp();
   const run = vi.fn((_command: string, args: string[]) => {
     const dir = args[args.indexOf("--out") + 1]!;
@@ -114,27 +125,32 @@ test("retains original evidence, uses installed CLI, and doesn't add violation f
       JSON.stringify({ targets: [{ id: "button", status: "ran" }] }),
     );
   });
-  expect(auditInvocation(out, "sample", ["button=/case.html"], ["--tiers", "rules"], run)).toEqual({
+  expect(
+    await auditInvocation(out, "sample", ["button=/case.html"], ["--tiers", "rules"], run),
+  ).toEqual({
     directory: "sample",
     expected: ["button"],
     completed: ["button"],
+    gaps: 0,
   });
   expect(run.mock.calls[0]![0]).toBe(process.execPath);
   expect(run.mock.calls[0]![1]).toContain("audit");
   expect(run.mock.calls[0]![1].join(" ")).not.toContain("--fail");
   expect(readFileSync(join(out, "sample/report.md"), "utf8")).toBe("Original report");
 });
-test("makes subprocess and missing-report errors visible, including multi-target invocations", () => {
+test("makes subprocess and missing-report errors visible, including multi-target invocations", async () => {
   const out = temp();
   vi.spyOn(console, "error").mockImplementation(() => {});
   const run = vi.fn(() => {
     throw new Error("Browser unavailable");
   });
-  const result = auditInvocation(out, "broken", ["a=/a.html", "b=/b.html"], [], run);
+  const result = await auditInvocation(out, "broken", ["a=/a.html", "b=/b.html"], [], run);
   expect(result.error).toBe("Browser unavailable");
   expect(result.completed).toEqual([]);
   expect(run.mock.calls[0]).toBeDefined();
-  expect(auditInvocation(out, "missing", ["a=/a.html"], [], () => {}).error).toContain("ENOENT");
+  expect((await auditInvocation(out, "missing", ["a=/a.html"], [], () => {})).error).toContain(
+    "ENOENT",
+  );
   expect(console.error).toHaveBeenCalled();
 });
 test("executes without a shell and rejects failed or missing subprocesses", () => {
@@ -142,7 +158,7 @@ test("executes without a shell and rejects failed or missing subprocesses", () =
   expect(() => execute(process.execPath, ["-e", "process.exit(3)"], temp())).toThrow("exited 3");
   expect(() => execute(join(temp(), "does-not-exist"), [])).toThrow();
 });
-test("writes a coverage index with separate errors and the automated-coverage caveat", () => {
+test("writes a coverage index with separate errors and the automated-coverage caveat", async () => {
   const out = temp();
   writeIndex(
     out,
@@ -158,12 +174,12 @@ test("writes a coverage index with separate errors and the automated-coverage ca
   expect(JSON.parse(readFileSync(join(out, "coverage.json"), "utf8")).evidence[0].error).toBe(
     "missing | target",
   );
-  expect(() => runPageAudits("not-a-component")).toThrow("Unknown record");
+  await expect(runPageAudits("not-a-component")).rejects.toThrow("Unknown record");
 });
 
 test.each(["success", "setup failure", "audit failure"])(
   "orchestrates retained page evidence: %s",
-  (outcome) => {
+  async (outcome) => {
     const root = temp();
     for (const path of [
       "formats/components/dist",
@@ -189,8 +205,12 @@ test.each(["success", "setup failure", "audit failure"])(
       writeFileSync(join(directory, "report.md"), "Original");
       writeFileSync(join(directory, "results.json"), JSON.stringify({ targets }));
     });
-    if (outcome === "success") expect(runPageAudits("button", run, root)).toContain("a11y-report");
-    else expect(() => runPageAudits("button", run, root)).toThrow("Incomplete accessibility audit");
+    if (outcome === "success")
+      expect(await runPageAudits("button", run, root)).toContain("a11y-report");
+    else
+      await expect(runPageAudits("button", run, root)).rejects.toThrow(
+        "Incomplete accessibility audit",
+      );
     const output = join(root, "a11y-report", readdirSync(join(root, "a11y-report"))[0]!);
     const coverage = JSON.parse(readFileSync(join(output, "coverage.json"), "utf8"));
     expect(coverage.cases).toHaveLength(6);
@@ -199,5 +219,166 @@ test.each(["success", "setup failure", "audit failure"])(
         coverage.evidence.every((item: { completed: string[] }) => item.completed.length === 1),
       ).toBe(true);
     else expect(readFileSync(join(output, "index.md"), "utf8")).toContain("Not run");
+  },
+);
+
+const workspace = (root: string): WorkspacePackages => {
+  const packages = ["components", "css", "interactions", "utils"].map((name) => ({
+    name: `@pantoken/${name}`,
+    path: `formats/${name}`,
+    version: "1.0.0",
+    private: false,
+    workspaceDeps: new Set(name === "utils" ? [] : ["@pantoken/utils"]),
+  }));
+  return { rootDir: root, packages, byName: new Map(packages.map((pkg) => [pkg.name, pkg])) };
+};
+test("packs every local runtime dependency once through the workspace-aware package manager", () => {
+  const root = temp();
+  const run = vi.fn((_command: string, args: string[]) =>
+    writeFileSync(args[args.indexOf("--out") + 1]!, "tarball"),
+  );
+  const options = packAuditPackages(root, workspace(root), run);
+  expect(options.filter((option) => option === "--local-package")).toHaveLength(4);
+  expect(run.mock.calls).toHaveLength(4);
+  expect(run.mock.calls[0]![0]).toBe("vp");
+  expect(options.join(" ")).toContain("@pantoken/utils=");
+  const missing = workspace(root);
+  missing.byName.delete("@pantoken/utils");
+  expect(() => packAuditPackages(root, missing, run)).toThrow("Missing local audit dependency");
+});
+
+test("rejects asynchronous subprocess launch and exit failures", async () => {
+  await executeAsync(process.execPath, ["-e", ""], temp());
+  await expect(executeAsync(process.execPath, ["-e", "process.exit(4)"], temp())).rejects.toThrow(
+    "exited 4",
+  );
+  await expect(executeAsync(join(temp(), "missing"), [])).rejects.toThrow();
+});
+
+test("reports coverage gaps without merging them with failed checks or violations", () => {
+  expect(
+    inspectChecks({
+      tiers: [
+        { status: "not-testable" },
+        { result: "undetermined" },
+        { status: "gap" },
+        { status: "skipped" },
+      ],
+    }),
+  ).toBe(4);
+  expect(inspectChecks({ result: "fail", status: "ran", violations: [] })).toBe(0);
+  expect(() =>
+    inspectChecks({ engines: { axe: { status: "failed", reason: "Engine error" } } }),
+  ).toThrow("Engine error");
+  expect(() => inspectChecks({ result: "error" })).toThrow("Audit check failed");
+});
+test("rejects native templates, generated guesses, and npm archetype gaps", () => {
+  const target = {
+    id: "sample",
+    status: "ran",
+    archetypes: { button: { status: "ran", fixture: { source: "authored" } } },
+  };
+  expect(authoredTargets({ targets: [target] }, ["sample"], "button")).toEqual(["sample"]);
+  for (const source of ["template", "generated", "none"]) {
+    expect(() =>
+      authoredTargets(
+        {
+          targets: [{ ...target, archetypes: { button: { status: "ran", fixture: { source } } } }],
+        },
+        ["sample"],
+        "button",
+      ),
+    ).toThrow("authored fixture");
+  }
+  expect(() => authoredTargets({ targets: [target] }, ["sample"], "dialog")).toThrow(
+    "authored fixture",
+  );
+  expect(() => authoredTargets(null, [], "button")).toThrow();
+});
+test("inlines only built supplementary styles, local fonts, and production behavior", () => {
+  const root = temp();
+  for (const folder of ["tokens", "components", "assets", "interactions"])
+    mkdirSync(join(root, folder));
+  for (const file of [
+    "tokens/schemes.css",
+    "components/base.css",
+    "components/utilities.css",
+    "components/icons.css",
+  ])
+    writeFileSync(join(root, file), "/* built */");
+  writeFileSync(join(root, "assets/font.woff2"), "local-font");
+  writeFileSync(join(root, "components/fonts.css"), '@font-face{src:url("../assets/font.woff2")}');
+  writeFileSync(join(root, "interactions/modal.iife.js"), "window.production = true;");
+  const html = renderNpmFixture(
+    {
+      ...expandCases([
+        { record: "modal", index: 0, html: '<dialog class="instui-modal">Details</dialog>' },
+      ])[0]!,
+      scheme: "dark",
+    },
+    root,
+  );
+  expect(html).toContain("data:font/woff2;base64,");
+  expect(html).toContain("window.production = true");
+  expect(html).toContain('style.colorScheme = "dark"');
+  expect(html).toContain('dataset.pantokenTheme = "rebrand"');
+  expect(html).not.toContain("https://");
+  expect(html).not.toContain("dialog.showModal()");
+  expect(html).not.toContain("popover.showPopover()");
+  expect(html).not.toContain("details.open = true");
+});
+test.each(["success", "pack failure", "fixture gap", "no archetype"])(
+  "appends npm evidence: %s",
+  async (outcome) => {
+    const root = temp();
+    for (const folder of ["assets/tokens", "assets/components"])
+      mkdirSync(join(root, folder), { recursive: true });
+    for (const file of [
+      "tokens/schemes.css",
+      "components/base.css",
+      "components/utilities.css",
+      "components/icons.css",
+      "components/fonts.css",
+    ])
+      writeFileSync(join(root, "assets", file), "/* built */");
+    writeIndex(root, [], []);
+    vi.spyOn(console, "error").mockImplementation(() => {});
+    const run = vi.fn((_command: string, args: string[]) => {
+      if (args.includes("pack")) {
+        if (outcome === "pack failure") throw new Error("Pack failed");
+        writeFileSync(args[args.indexOf("--out") + 1]!, "tarball");
+        return;
+      }
+      const destination = args[args.indexOf("--out") + 1]!;
+      const targets = args.slice(2, args.indexOf("--wcag")).map((spec) => ({
+        id: spec.split("=")[0],
+        status: "ran",
+        archetypes: {
+          button: {
+            status: outcome === "fixture gap" ? "gap" : "ran",
+            fixture: { source: "authored" },
+          },
+        },
+      }));
+      mkdirSync(destination, { recursive: true });
+      writeFileSync(join(destination, "report.md"), "Original npm report");
+      writeFileSync(join(destination, "results.json"), JSON.stringify({ targets }));
+    });
+    const action = runNpmAudits(
+      root,
+      outcome === "no archetype" ? "text" : "button",
+      run,
+      workspace(root),
+    );
+    if (outcome === "success" || outcome === "no archetype") await action;
+    else await expect(action).rejects.toThrow("Incomplete npm accessibility audit");
+    const coverage = JSON.parse(readFileSync(join(root, "coverage.json"), "utf8"));
+    if (outcome === "success") {
+      expect(coverage.evidence[0].completed).toHaveLength(6);
+      const mapping = JSON.parse(readFileSync(join(root, "mapping.json"), "utf8"));
+      expect(Object.keys(mapping)).toHaveLength(6);
+      expect(run.mock.calls.at(-1)![1]).toContain("--no-generate");
+    } else if (outcome === "no archetype") expect(run).not.toHaveBeenCalled();
+    else expect(coverage.evidence.some((item: { error?: string }) => item.error)).toBe(true);
   },
 );
