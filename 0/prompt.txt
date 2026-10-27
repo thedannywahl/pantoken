@@ -1,0 +1,204 @@
+we're going to tighten and streamline release automation:
+* `~/Scripts/automatica11y/` is a good reference, but it is not as robust as pantoken architecturally.
+* we're currently opening issues for Compatibility reviews
+* we should every Monday have renovate create a renovate PR with those changes that automatically runs through the test suite and does everything from upstream blessing to downstream deprecations and updating compatibility files.
+* the update check should also include the github/instructure/instructure-design-tokens dependency
+* that PR should include relevant generated changesets and auto-merge, which in turn creates the changeset release PRs that auto-merge.
+
+---
+
+Read-only planning research. Inspect /Users/dwahl/Scripts/pantoken release/CI/change-coverage/auto-merge workflows and compare /Users/dwahl/Scripts/automatica11y Renovate/release automation. Read relevant local instructions first. Follow graph instructions when tools available; parent has no terminal execution, if same limitation disclose and use bounded file reads/list tools. No edits/install. User wants Monday Renovate PR including compatibility/upstream changes, generated changesets, auto-merge, then Changesets release PRs auto-merge. Focus workflow event chain, tokens/auth identity, required checks/path filters, trusted publish/provenance and safe automerge gates. Identify exact file paths/function names and reference templates worth reusing vs shortcomings. Return concrete findings, validation commands, repo settings/secrets requiring live verification, major ambiguities.
+
+---
+
+work in incremental conventional commits and changesets, ignoring other changes in the branch as other agents are working.
+
+---
+
+Start implementation
+
+---
+
+you are stuck in an interactive shell:
+```
+(node:80121) MaxListenersExceededWarning: Possible EventEmitter memory leak detected. 11 error listeners added to [WriteStream]. MaxListeners is 10. Use emitter.setMaxListeners() to increase limit
+(Use `node --trace-warnings ...` to show where the warning was created)
+? Choose which packages to build (Press <space> to select, <a> to toggle all, <i
+> to invert selection)
+❯○ core-js-pure
+ ○ dtrace-provider
+ ○ protobufjs
+ ○ re2
+ ```
+
+---
+
+[Terminal 0979b2d7-7826-44d5-b851-cede0ec56535 notification: command completed. The terminal has been cleaned up.]
+Terminal output:
+pantoken on renovate/261026 ↑7  ?1 ~14 via  24.22.1 
+➜  vp test scripts/release/weekly-maintenance.test.ts && vp check --fix scripts/release/weekly-maintenance.ts
+VITE+ - The Unified Toolchain for the Web
+
+
+ RUN  v5.0.4 /Users/dwahl/Scripts/pantoken
+
+
+ Test Files  1 passed (1)
+      Tests  6 passed (6)
+   Start at  17:25:36
+   Duration  277ms (tests 55%, transform 19%, import 19%, setup 5%, worker 1%)
+
+VITE+ - The Unified Toolchain for the Web
+
+pass: Formatting completed for checked files (2.3s)
+pass: Found no warnings, lint errors, or type errors in 1 file (2.0s, 10 threads)
+pantoken on renovate/261026 ↑7  ?1 ~14 via  24.22.1 
+➜  tail -22 /tmp/pantoken-maintenance-api-locales.log && git status --short && rg -n 'snyk:code|command:' scripts/quality/snyk-code.ts vite.config.ts | tail -18 
+    da/api/packages/core/src/interfaces/IconEntry.md: 8 glossary, 6 prose (6 cached, 0 translated)
+    da/api/packages/core/src/interfaces/IconHookContext.md: 5 glossary, 2 prose (2 cached, 0 translated)
+    da/api/packages/core/src/interfaces/IconLayer.md: 5 glossary, 1 prose (1 cached, 0 translated)
+    da/api/packages/core/src/interfaces/IconToken.md: 6 glossary, 1 prose (1 cached, 0 translated)
+    da/api/packages/core/src/interfaces/Leaf.md: 8 glossary, 1 prose (1 cached, 0 translated)
+    da/api/packages/core/src/interfaces/PantokenPlugin.md: 13 glossary, 7 prose (7 cached, 0 translated)
+    da/api/packages/core/src/interfaces/RehypeHookContext.md: 4 glossary, 1 prose (1 cached, 0 translated)
+    da/api/packages/core/src/interfaces/SdLeaf.md: 5 glossary, 1 prose (1 cached, 0 translated)
+    da/api/packages/core/src/interfaces/Token.md: 11 glossary, 9 prose (9 cached, 0 translated)
+    da/api/packages/core/src/interfaces/TokenHookContext.md: 5 glossary, 1 prose (1 cached, 0 translated)
+    da/api/packages/core/src/interfaces/TokenInput.md: 11 glossary, 1 prose (1 cached, 0 translated)
+    da/api/packages/core/src/interfaces/TokenMeta.md: 13 glossary, 7 prose (7 cached, 0 translated)
+    da/api/packages/core/src/interfaces/TokenModify.md: 6 glossary, 4 prose (4 cached, 0 translated)
+    da/api/packages/core/src/interfaces/VectorDrawableOptions.md: 4 glossary, 2 prose (2 cached, 0 translated)
+    da/api/packages/core/src/type-aliases/IconResolver.md: 5 glossary, 1 prose (1 cached, 0 translated)
+    da/api/packages/core/src/type-aliases/Mode.md: 2 glossary, 1 prose (1 cached, 0 translated)
+    da/api/packages/core/src/type-aliases/Theme.md: 2 glossary, 1 prose (1 cached, 0 translated)
+    da/api/packages/core/src/variables/ICON_COLOR_SPECIAL_VALUES.md: 3 glossary, 2 prose (2 cached, 0 translated)
+    da/api/packages/model/src/functions/defineToken.md: 6 glossary, 1 prose (1 cached, 0 translated)
+    da/api/packages/model/src/index.md: 5 glossary, 2 prose (2 cached, 0 translated)
+    da/api/packages/model/src/interfaces/CssContribution.md: 8 glossary, 6 prose (6 cached, 0 translated)
+    da/api/packages/model/src/interfaces/CssHookContext.md: 5 glossary, 1 prose (1 cached, 0 translated)
+ M .github/workflows/changeset-check.yml
+ M .github/workflows/ci.yml
+ M .github/workflows/guard-release-automation.yml
+ M .github/workflows/release.yml
+ M .github/workflows/target-releases.yml
+ M docs/conventions/build-and-docs.md
+ M l10n/ar/docs.api.po
+ M l10n/ca/docs.api.po
+ M l10n/docs.api.pot
+ M l10n/hy/docs.api.po
+ M renovate.json
+ M scripts/release/maintenance-publication.test.ts
+ M scripts/release/maintenance-publication.ts
+ M scripts/release/weekly-maintenance.ts
+?? .github/workflows/renovate.yml
+rg: scripts/quality/snyk-code.ts: No such file or directory (os error 2)
+vite.config.ts:553:        command:
+vite.config.ts:562:        command:
+vite.config.ts:568:        command: "I18N_DRIFT_STRICT=1 vp run i18n:check:drift:all",
+vite.config.ts:574:        command:
+vite.config.ts:579:        command: "vp run @pantoken/web-components#generate",
+vite.config.ts:583:        command: "vpx changeset",
+vite.config.ts:587:        command: "vpx changeset status --verbose",
+vite.config.ts:590:        command: "node scripts/release/check-changeset-coverage.ts",
+vite.config.ts:606:        command:
+vite.config.ts:610:        command: "node scripts/release/publish-npm.ts",
+vite.config.ts:613:        command: "vpx changeset pre enter next",
+vite.config.ts:616:        command: "vpx changeset pre exit",
+vite.config.ts:623:        command: "node scripts/release/check-repository-metadata.ts",
+vite.config.ts:628:        command: "node scripts/release/sync-repository-metadata.ts",
+vite.config.ts:631:        command:
+vite.config.ts:636:        command:
+vite.config.ts:641:        command: "true",
+vite.config.ts:647:        command: "vp run @pantoken/scaffold#scaffold:dev",
+pantoken on renovate/261026 ↑7  ?1 ~14 via  24.22.1 x 
+➜  rg -n 'skipped|expired|401|error|translated\)' /tmp/pantoken-maintenance-api-locales.log | tail -18 && ps -axo pid,ppid,command | rg 'build-api-locales.ts|claude.*haiku' | head -15
+4009:    da/api/plugins/pantoken/custom-theme-colors/src/functions/deriveScale.md: 6 glossary, 4 prose (4 cached, 0 translated)
+4010:    da/api/plugins/pantoken/custom-theme-colors/src/functions/isHexColor.md: 5 glossary, 3 prose (3 cached, 0 translated)
+4011:    da/api/plugins/pantoken/custom-theme-colors/src/functions/parseHexColor.md: 6 glossary, 4 prose (4 cached, 0 translated)
+4012:    da/api/plugins/pantoken/custom-theme-colors/src/index.md: 9 glossary, 3 prose (3 cached, 0 translated)
+4013:    da/api/plugins/pantoken/custom-theme-colors/src/interfaces/CustomColorCssOptions.md: 5 glossary, 3 prose (3 cached, 0 translated)
+4014:    da/api/plugins/pantoken/custom-theme-colors/src/interfaces/CustomColorScale.md: 6 glossary, 4 prose (4 cached, 0 translated)
+4015:    da/api/plugins/pantoken/custom-theme-colors/src/interfaces/CustomThemeColorsCssOptions.md: 6 glossary, 4 prose (4 cached, 0 translated)
+4016:    da/api/plugins/pantoken/custom-theme-colors/src/interfaces/CustomThemeColorsOptions.md: 7 glossary, 5 prose (5 cached, 0 translated)
+4017:    da/api/plugins/pantoken/custom-theme-colors/src/interfaces/ReferenceCurve.md: 6 glossary, 1 prose (1 cached, 0 translated)
+4018:    da/api/plugins/pantoken/custom-theme-colors/src/type-aliases/PantokenColorNamespace.md: 2 glossary, 1 prose (1 cached, 0 translated)
+4019:    da/api/plugins/pantoken/custom-theme-colors/src/variables/COLOR_KEYS.md: 2 glossary, 1 prose (1 cached, 0 translated)
+4020:    da/api/plugins/pantoken/custom-theme-colors/src/variables/CUSTOM_COLOR_KEY.md: 2 glossary, 1 prose (1 cached, 0 translated)
+4021:    da/api/plugins/pantoken/deprecations/src/functions/compareVersions.md: 6 glossary, 1 prose (1 cached, 0 translated)
+4022:    da/api/plugins/pantoken/deprecations/src/functions/deprecationShims.md: 5 glossary, 3 prose (3 cached, 0 translated)
+4023:    da/api/plugins/pantoken/deprecations/src/functions/describeLifecycle.md: 5 glossary, 1 prose (1 cached, 0 translated)
+4024:    da/api/plugins/pantoken/deprecations/src/functions/dueForRemoval.md: 6 glossary, 4 prose (4 cached, 0 translated)
+4025:    da/api/plugins/pantoken/deprecations/src/functions/ledgerCovers.md: 6 glossary, 1 prose (1 cached, 0 translated)
+4026:    da/api/plugins/pantoken/deprecations/src/functions/parseUpstreamRef.md: 5 glossary, 1 prose (1 cached, 0 translated)
+ 7707  6769 rg build-api-locales.ts|claude.*haiku
+pantoken on renovate/261026 ↑7  ?1 ~15 via  24.22.1 
+➜  git diff --stat -- 'l10n/*/docs.api.po' && git diff -- l10n/ar/docs.api.po | head -75
+ l10n/ar/docs.api.po | 19 ++++++++++++++++++-
+ l10n/ca/docs.api.po | 21 +++++++++++++++++++--
+ l10n/da/docs.api.po | 10 +++++++++-
+ l10n/hy/docs.api.po | 19 ++++++++++++++++++-
+ 4 files changed, 64 insertions(+), 5 deletions(-)
+diff --git a/l10n/ar/docs.api.po b/l10n/ar/docs.api.po
+index 660f8024b..1fc357978 100644
+--- a/l10n/ar/docs.api.po
++++ b/l10n/ar/docs.api.po
+@@ -1,7 +1,7 @@
+ msgid ""
+ msgstr ""
+ "Project-Id-Version: pantoken\n"
+-"PO-Revision-Date: 2026-10-16 01:48+0000\n"
++"PO-Revision-Date: 2026-10-26 23:21+0000\n"
+ "Last-Translator: pantoken localization engine\n"
+ "Language-Team: pantoken\n"
+ "MIME-Version: 1.0\n"
+@@ -39867,3 +39867,20 @@ msgstr "حل الهدف (يفوز أول تطابق):\n1. `data-close-target=\"i
+ msgctxt "docs.api:prose"
+ msgid "Dismiss strategy:\n- `<dialog>` → `dialog.close()`\n- `[popover]` → `el.hidePopover()`\n- `.instui-alert` or `.instui-banner` → cancelable `dismiss` event, then fade out and remove\n- `[data-dismissible]` or `[open]` → remove open attr + fire bubbling `close`"
+ msgstr "استراتيجية الإغلاق:\n- `<dialog>` → `dialog.close()`\n- `[popover]` → `el.hidePopover()`\n- `.instui-alert` or `.instui-banner` → قابل للإلغاء `dismiss` حدث، ثم يتلاشى ويُزال\n- `[data-dismissible]` or `[open]` → إزالة السمة open + إطلاق حدث فقاعي `close`"
++
++msgctxt "docs.api:prose"
++msgid "Preserve a removed token's literal value and registration separately for each theme."
++msgstr "الحفاظ على القيمة الحرفية لرمز محذوف وتسجيله بشكل منفصل لكل مظهر."
++
++msgctxt "docs.api:prose"
++msgid "The default two-minor deadline; next-major adoption is enforced independently."
++msgstr "الحد الافتراضي لإصدارين ثانويين؛ يتم فرض اعتماد الإصدار الرئيسي التالي بشكل مستقل."
++
++msgctxt "docs.api:prose"
++msgid "The resolved Lucide release, required when retiring a Lucide shim."
++msgstr "إصدار Lucide المحدد المطلوب عند إيقاف تشغيل shim Lucide."
++
++#, pantoken-verbatim
++msgctxt "docs.api:text"
++msgid "removalDeadline"
++msgstr "removalDeadline"
+pantoken on renovate/261026 ↑7  ?1 ~15 via  24.22.1 
+➜  CI=true DOCS_CHANGED_PAGES_FILE=/tmp/pantoken-maintenance-api-pages.json DOCS_TRANSLATION_ADAPTER=ai DOCS_TRANSLATION_CONCURRENCY=8 DOCS_TRANSLATION_COMMAND_ARGS='--model claude-haiku-4-5-20251001 --effort low --strict-mcp-config --setting-sources user' node docs/scripts/build-api-locales.ts > /tmp/pantoken-maintenance-api-locales.log 2>&1
+
+---
+
+on instructure design tokens we probably need a separate issue/scaffolded PR for:
+* new tokens that don't map to an existing component (should get added to plugins/pantoken/custom-components)
+* new variant tokens that map to an existing component (should get added to components or custom-components whereever appropriate)
+if we can automatically update changed reference tokens in our map then we should but if we can't then we need to list those too.
+on instui if a release adds a new component and it exists in plugins/pantoken/custom-components then we should move it to formats/components and keep the alias in custom-components like we would for deprecated tokens.  This is the "blessed" path for moving from "tokens exist, but the component doesn't upstream" to "tokens and component exist upstream" where we can actually validate.
+For examples of the above:
+tokens v2.3.0 adds "Stepper" but it doesn't exist in instui yet -> becomes a custom component
+tokens v2.2.0 adds imageCard variant to Card component -> update components/card
+instui v11.7.10 added Card component, move from custom-components to formats/components (we already did this)
+
+---
+
+can all of this be triggered manually in github?
+
+---
+
+fix it.
+
+---
+
+let's add branch protection rules for renovate-related PRs
+
+---
+
+also give me the instructions to add to github rulesets
