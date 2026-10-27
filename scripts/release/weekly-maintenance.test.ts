@@ -12,6 +12,7 @@ import {
 } from "node:fs";
 import { tmpdir } from "node:os";
 import { dirname, join, relative } from "node:path";
+import { parse as parseYaml } from "yaml";
 import {
   partitionMaintenance,
   prepareMaintenance,
@@ -40,6 +41,39 @@ const upgrade = (depName: string): MaintenanceUpgrade => ({
   packageFile: "pnpm-workspace.yaml",
   currentValue: "1.0.0",
   newValue: "2.0.0",
+});
+
+test("manual dispatch overrides only Renovate scheduling while scheduled runs retain the repository policy", () => {
+  const workflow = parseYaml(
+    readFileSync(join(import.meta.dirname, "../../.github/workflows/renovate.yml"), "utf8"),
+  ) as {
+    on: { workflow_dispatch: unknown; schedule: Array<{ cron: string }> };
+    jobs: { propose: { steps: Array<{ name: string; env?: Record<string, string> }> } };
+  };
+  const config = JSON.parse(
+    readFileSync(join(import.meta.dirname, "../../renovate.json"), "utf8"),
+  ) as {
+    schedule: string[];
+    minimumReleaseAge: string;
+    draftPR: boolean;
+    automerge: boolean;
+  };
+  const override = workflow.jobs.propose.steps.find((step) => step.name === "Run Renovate")?.env
+    ?.RENOVATE_FORCE;
+  expect(override).toBe(
+    "${{ github.event_name == 'workflow_dispatch' && '{\"schedule\":[\"at any time\"]}' || '{}' }}",
+  );
+  const values = [...override!.matchAll(/'([^']*)'/gu)].map((match) => match[1]);
+  expect(JSON.parse(values[1])).toEqual({ schedule: ["at any time"] });
+  expect(JSON.parse(values[2])).toEqual({});
+  expect(workflow.on).toHaveProperty("workflow_dispatch");
+  expect(workflow.on.schedule).toEqual([{ cron: "0 6 * * 1" }]);
+  expect(config).toMatchObject({
+    schedule: ["* * * * 1"],
+    minimumReleaseAge: "5 days",
+    draftPR: true,
+    automerge: false,
+  });
 });
 
 test("keeps passing updates and records one failure per excluded coupled candidate", async () => {
