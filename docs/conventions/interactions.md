@@ -79,6 +79,15 @@ cancels pending timers without moving focus. It stays dismissed until both point
 leave; the next entry can reopen it. `cancelAndHide()` uses the same dismissal policy.
 `cleanup()` removes listeners/timers and restores the original marker and show class.
 
+For initialized tooltips, `-placement-*` is a preferred side, not a guarantee: the helper tries
+the opposite side, then another side that fits, and clamps the bubble into the viewport. Text wraps
+to a viewport-bounded width. Resize, scrolling, content changes, and direction changes update
+the position. Cleanup also restores the original positioning styles. The bubble stays in its
+wrapper, so viewport fitting doesn't escape clipping ancestors. Keep tooltips concise; oversized
+content may still exceed the viewport, and long or interactive content belongs in a popover.
+Diagonal pointer travel uses a bounded corridor toward the bubble without intercepting clicks.
+Moving away or leaving the corridor ends hover, subject to the configured hide delay.
+
 Use a named, focusable trigger with `aria-describedby` pointing at the bubble's stable ID and
 `role="tooltip"` on the bubble. Keep tooltip content noninteractive; use a popover for links,
 buttons, or other controls. The web component uses the same visibility and dismissal behavior,

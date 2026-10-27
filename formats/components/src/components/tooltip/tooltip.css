@@ -4,7 +4,7 @@
  * @summary A hover and focus tooltip bubble, positionable on any side.
  * @remarks Load `@pantoken/interactions/tooltip.iife.js` for managed delays, Escape dismissal, and combined pointer/focus state. Without JavaScript, hover/focus remains a fallback without Escape or delay guarantees. Use a popover for interactive content.
  * @modifier -icon-* — Render a trigger glyph icon next to the tooltip bubble.
- * @part .tip — The bubble; `-placement-*` sets its side.
+ * @part .tip — The bubble; `-placement-*` sets its preferred side. Initialized tooltips flip/clamp to fit the viewport.
  * @a11y Use a named, focusable trigger with aria-describedby pointing at the role="tooltip" bubble. Keep the content noninteractive. Initialized tooltips stay dismissed after Escape until both pointer and focus leave; the next entry can reopen them.
  * @demo self:tooltip
  * @example -canvas-rce
@@ -49,7 +49,15 @@
 
     > .tip {
       position: absolute;
+      box-sizing: border-box;
       inline-size: max-content;
+      max-inline-size: min(
+        24rem,
+        var(
+          --pantoken-tooltip-viewport-inline-size,
+          calc(100vw - 2 * var(--instui-spacing-space-xs))
+        )
+      );
       z-index: 1;
       inset-block-end: 100%;
       inset-inline-start: 50%;
@@ -62,7 +70,8 @@
       font-family: var(--instui-component-tooltip-font-family);
       font-size: var(--instui-component-tooltip-font-size);
       font-weight: var(--instui-component-tooltip-font-weight);
-      white-space: nowrap;
+      white-space: normal;
+      overflow-wrap: anywhere;
       opacity: 0;
       visibility: hidden;
       pointer-events: auto;
@@ -124,6 +133,30 @@
           block-size: auto;
         }
       }
+    }
+
+    > .tip[data-tooltip-side="top"]::before {
+      inset: 100% 0 auto;
+      width: auto;
+      height: var(--pantoken-tooltip-gap, var(--instui-spacing-space-xs));
+    }
+
+    > .tip[data-tooltip-side="bottom"]::before {
+      inset: auto 0 100%;
+      width: auto;
+      height: var(--pantoken-tooltip-gap, var(--instui-spacing-space-xs));
+    }
+
+    > .tip[data-tooltip-side="left"]::before {
+      inset: 0 auto 0 100%;
+      width: var(--pantoken-tooltip-gap, var(--instui-spacing-space-xs));
+      height: auto;
+    }
+
+    > .tip[data-tooltip-side="right"]::before {
+      inset: 0 100% 0 auto;
+      width: var(--pantoken-tooltip-gap, var(--instui-spacing-space-xs));
+      height: auto;
     }
 
     &:not([data-tooltip-managed]):hover > .tip,
