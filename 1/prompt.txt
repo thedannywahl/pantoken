@@ -1,0 +1,5 @@
+the component-accessibility workflow is failing in CI, investigate and remediate with incremental conventional commits and changesets where necessary, ignoring other agents working in the repo: https://github.com/thedannywahl/pantoken/actions/runs/40591517167/job/122497515993?pr=239
+
+---
+
+the component-accessibility workflow is failing in CI, investigate and remediate with incremental conventional commits and changesets where necessary, ignoring other agents working in the repo: https://github.com/thedannywahl/pantoken/actions/runs/40591517167/job/122497515993?pr=239

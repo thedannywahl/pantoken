@@ -3,8 +3,11 @@
   "checkpoint_id": "01M5ZSTWWJYYDESVR3E52Y39T6",
   "strategy": "manual-commit",
   "branch": "add-automatica11y",
-  "checkpoints_count": 4,
-  "files_touched": null,
+  "checkpoints_count": 5,
+  "files_touched": [
+    "docs/conventions/build-and-docs.md",
+    "formats/components/vite.config.ts"
+  ],
   "sessions": [
     {
       "metadata": "/0/metadata.json",
@@ -12,6 +15,13 @@
       "compact_transcript": "/0/transcript.jsonl",
       "content_hash": "/0/content_hash.txt",
       "prompt": "/0/prompt.txt"
+    },
+    {
+      "metadata": "/1/metadata.json",
+      "transcript": "/1/full.jsonl",
+      "compact_transcript": "/1/transcript.jsonl",
+      "content_hash": "/1/content_hash.txt",
+      "prompt": "/1/prompt.txt"
     }
   ],
   "token_usage": {
@@ -22,7 +32,7 @@
     "api_call_count": 0
   },
   "redaction": {
-    "replacements": 86194,
+    "replacements": 93312,
     "layers": {
       "betterleaks": 0,
       "connection_string": 0,
@@ -30,16 +40,16 @@
       "credential_value": 0,
       "credentialed_uri": 0,
       "custom": 0,
-      "entropy": 232677,
+      "entropy": 264059,
       "goredact": 0,
-      "key_context": 1,
-      "pii": 121,
+      "key_context": 4,
+      "pii": 122,
       "provider_token": 0,
       "shell_stdin": 0
     },
     "custom_rules_active": 2,
     "pii": {
-      "EMAIL": 121,
+      "EMAIL": 122,
       "IP": 0,
       "PHONE": 0
     }
