@@ -54,6 +54,11 @@ only through `file://` URLs.
 
 ## The gate
 
+Social-card builds use only vendored brand and Noto fonts. Noto signatures and SHA-256 digests are
+checked before use; the renderer never downloads replacement fonts or writes a font cache.
+See the [font provenance and update procedure](../assets/fonts/noto/README.md) when updating
+upstream faces or their SIL OFL notices.
+
 - `pnpm run ready` — the pass/fail gate. It's a `vp` task DAG (`ready:all`), not a serial chain:
   `build:all` runs once, then `check:all` (`vp check`), `test:all` (`vp run -r test`), `lint:css`,
   `lint:cssdoc`, `validate:generated:only`, and `lint:markdown` fan out concurrently. Everything that reads

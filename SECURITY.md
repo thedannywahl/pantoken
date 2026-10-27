@@ -141,10 +141,11 @@ know what's in place:
   policy job has commit-status write permission, never release
   credentials or content-write permission. Ruleset activation must follow deployment of the status
   workflow so existing PRs do not wait indefinitely for an unavailable check.
-- **Pinned build-time downloads.** The only asset the build fetches outside the package manager is the
-  set of Noto script fonts the documentation social cards render in. Those come from URLs pinned to a
-  single `google/fonts` commit and are checked against recorded SHA-256 digests before use; a
-  mismatched or unreachable download is discarded rather than cached.
+- **Vendored social-card fonts.** Noto script fonts and each family's upstream SIL OFL license are
+  tracked in the repository with their pinned `google/fonts` revision and SHA-256 digests.
+  The renderer verifies signatures and digests before use and never downloads fonts or writes a
+  font cache. Missing or invalid faces produce a warning and Latin-text fallback; unexpected
+  filesystem errors fail the build. Upstream font and license updates still require review.
 - **Example metadata parsing.** TinyMCE insertion and accessibility audit tooling share a
   forward-only scanner for leading example flags. Long or malformed flag sequences do not trigger
   regex backtracking; each consumer retains its own fence and markup handling. This is not HTML
