@@ -63,6 +63,13 @@ test("drawer-layout auto-switches to overlay mode via a container query, without
   );
 });
 
+test("the automatic content width reset keeps the base rule's scope proximity", () => {
+  const css = drawerLayoutContentCss({ prefix: "instui" });
+  expect(css).toMatch(
+    /@container pantoken-drawer-layout \(max-width: 64em\) \{\s*:scope > \.content \{\s*min-inline-size: 0;\s*\}\s*\}\s*\}\s*$/,
+  );
+});
+
 test('placement uses only logical (inline-*) properties, never left/right, so it flips correctly under dir="rtl"', () => {
   const css =
     drawerLayoutCss({ prefix: "instui" }) +
