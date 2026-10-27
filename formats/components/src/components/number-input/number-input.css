@@ -1,7 +1,7 @@
 /**
  * @component number-input
  * @summary A number-input facade with a +/- spinner column.
- * @remarks The `.arrows` buttons are `aria-hidden` and purely presentational — incrementing/decrementing the value on click is the consumer's JS to wire up.
+ * @remarks The `.arrows` buttons are redundant pointer controls, hidden from assistive technology and excluded from sequential keyboard focus. Consumers wire pointer activation and keep focus on the input; the native number input provides keyboard increment/decrement.
  * @selector .pfx-number-input
  * @modifier -disabled — Disabled state.
  * @modifier -invalid — Invalid (error) state.
@@ -15,14 +15,14 @@
  * @pseudo ::before — The masked chevron glyph on each spinner button: up to increment, down on `.down`.
  * @pseudo ::placeholder — The placeholder text of the inner input, in a muted color.
  * @cssstate disabled
- * @accessibility Put the accessible name on the `<input>` (e.g. `aria-label`) so the field owns the value; the +/- spinner buttons are decorative and marked `aria-hidden="true"`.
+ * @accessibility Name the native `<input type="number">` so it owns the value and keyboard controls. Mark redundant arrow buttons with both `aria-hidden="true"` and `tabindex="-1"`; never leave an assistive-technology-hidden button in the tab order.
  * @example -canvas-rce -docs
  * ```html
  * <span class="pfx-number-input">
  *   <input id="qty" type="number" value="1" aria-label="Quantity">
  *   <span class="arrows">
- *     <button type="button" id="up" aria-hidden="true"></button>
- *     <button class="down" type="button" id="down" aria-hidden="true"></button>
+ *     <button type="button" id="up" aria-hidden="true" tabindex="-1"></button>
+ *     <button class="down" type="button" id="down" aria-hidden="true" tabindex="-1"></button>
  *   </span>
  * </span>
  * ```
@@ -41,8 +41,8 @@
  * <span class="pfx-number-input">
  *   <input id="qty" type="number" value="1" aria-label="Quantity">
  *   <span class="arrows">
- *     <button type="button" id="up" aria-hidden="true"></button>
- *     <button class="down" type="button" id="down" aria-hidden="true"></button>
+ *     <button type="button" id="up" aria-hidden="true" tabindex="-1"></button>
+ *     <button class="down" type="button" id="down" aria-hidden="true" tabindex="-1"></button>
  *   </span>
  * </span>
  * ```
