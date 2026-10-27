@@ -1,5 +1,12 @@
 # CHANGELOG
 
+## 0.6.3
+
+### Patch Changes
+
+- 82a255a: Translate the theme-preserving deprecation snapshot and lifecycle API additions
+  across the supported documentation locales.
+
 ## 0.6.2
 
 ### Patch Changes

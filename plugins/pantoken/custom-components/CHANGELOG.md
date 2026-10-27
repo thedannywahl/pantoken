@@ -1,5 +1,14 @@
 # @pantoken/plugin-custom-components
 
+## 0.7.3
+
+### Patch Changes
+
+- Updated dependencies [82a255a]
+  - @pantoken/model@0.6.0
+  - @pantoken/plugin-kit@0.3.7
+  - @pantoken/components@2.1.2
+
 ## 0.7.2
 
 ### Patch Changes

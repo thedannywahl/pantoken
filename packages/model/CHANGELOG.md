@@ -1,5 +1,13 @@
 # CHANGELOG
 
+## 0.6.0
+
+### Minor Changes
+
+- 82a255a: Preserve removed token values and registration metadata separately for each theme.
+  Support Lucide deprecation provenance and expire shims at the earlier authored
+  minor deadline or the next upstream major, without shadowing restored live tokens.
+
 ## 0.5.0
 
 ### Minor Changes

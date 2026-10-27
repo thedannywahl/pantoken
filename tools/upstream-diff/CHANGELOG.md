@@ -1,5 +1,19 @@
 # CHANGELOG
 
+## 0.2.0
+
+### Minor Changes
+
+- 82a255a: Prepare deterministic deprecation ledgers from complete base-build snapshots,
+  preserving theme values and removed icon data before upstream blessing.
+
+### Patch Changes
+
+- Updated dependencies [82a255a]
+  - @pantoken/model@0.6.0
+  - @pantoken/plugin-deprecations@0.4.0
+  - @pantoken/tokens@0.8.3
+
 ## 0.1.22
 
 ### Patch Changes

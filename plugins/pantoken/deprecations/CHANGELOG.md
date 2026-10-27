@@ -1,5 +1,19 @@
 # CHANGELOG
 
+## 0.4.0
+
+### Minor Changes
+
+- 82a255a: Preserve removed token values and registration metadata separately for each theme.
+  Support Lucide deprecation provenance and expire shims at the earlier authored
+  minor deadline or the next upstream major, without shadowing restored live tokens.
+
+### Patch Changes
+
+- Updated dependencies [82a255a]
+  - @pantoken/model@0.6.0
+  - @pantoken/plugin-kit@0.3.7
+
 ## 0.3.15
 
 ### Patch Changes

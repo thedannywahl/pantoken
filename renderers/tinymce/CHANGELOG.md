@@ -1,5 +1,19 @@
 # @pantoken/tinymce
 
+## 0.7.1
+
+### Patch Changes
+
+- @pantoken/tokens@0.8.3
+  - @pantoken/utils@1.4.1
+  - @pantoken/plugin-custom-components@0.7.3
+  - @pantoken/plugin-custom-icons@0.3.17
+  - @pantoken/plugin-layouts@0.5.6
+  - @pantoken/plugin-logos@0.5.6
+  - @pantoken/plugin-lucide-lab@0.4.5
+  - @pantoken/plugin-simple-icons@0.3.15
+  - @pantoken/components@2.1.2
+
 ## 0.7.0
 
 ### Minor Changes

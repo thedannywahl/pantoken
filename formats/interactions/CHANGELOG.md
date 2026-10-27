@@ -1,5 +1,11 @@
 # @pantoken/interactions
 
+## 0.5.3
+
+### Patch Changes
+
+- @pantoken/utils@1.4.1
+
 ## 0.5.2
 
 ### Patch Changes

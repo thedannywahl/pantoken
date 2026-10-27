@@ -1,5 +1,13 @@
 # CHANGELOG
 
+## 2.1.2
+
+### Patch Changes
+
+- @pantoken/tokens@0.8.3
+  - @pantoken/utils@1.4.1
+  - @pantoken/scaffold-base@0.3.9
+
 ## 2.1.1
 
 ### Patch Changes
