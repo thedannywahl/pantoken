@@ -1,5 +1,70 @@
 # CHANGELOG
 
+## 0.2.31
+
+### Patch Changes
+
+- @pantoken/panda@0.2.5
+  - @pantoken/tailwind@0.2.3
+  - @pantoken/figma@0.1.20
+  - @pantoken/swatches@0.1.24
+  - @pantoken/css@0.4.6
+  - @pantoken/dtcg@0.1.21
+  - @pantoken/icons@0.3.6
+  - @pantoken/less@0.1.24
+  - @pantoken/scss@0.1.24
+  - @pantoken/stylus@0.1.24
+  - @pantoken/tokens@0.8.3
+  - @pantoken/cli@0.1.51
+  - @pantoken/android@0.1.28
+  - @pantoken/compose@0.1.28
+  - @pantoken/email@0.1.25
+  - @pantoken/flutter@0.1.28
+  - @pantoken/swift@0.1.28
+  - @pantoken/vanilla@0.1.20
+  - @pantoken/wordpress@0.2.3
+  - @pantoken/plugin-custom-components@0.7.3
+  - @pantoken/plugin-custom-icons@0.3.17
+  - @pantoken/plugin-custom-theme-colors@0.3.6
+  - @pantoken/plugin-layouts@0.5.6
+  - @pantoken/plugin-logos@0.5.6
+  - @pantoken/plugin-simple-icons@0.3.15
+  - @pantoken/plugin-stacking@1.0.14
+  - @pantoken/plugin-transition@1.0.12
+  - @pantoken/plugin-visual-debug@0.1.23
+  - @pantoken/astro@0.2.5
+  - @pantoken/css-in-js@0.2.4
+  - @pantoken/markdown-it@0.2.4
+  - @pantoken/mintlify@0.2.5
+  - @pantoken/mui@0.2.4
+  - @pantoken/pendo@0.4.15
+  - @pantoken/react-markdown@0.2.4
+  - @pantoken/react-native@0.1.24
+  - @pantoken/rehype@0.2.4
+  - @pantoken/storybook@0.2.4
+  - @pantoken/web-components@0.7.6
+  - @pantoken/postcss@0.2.5
+  - @pantoken/vite@0.2.5
+  - @pantoken/webpack@0.2.4
+  - @pantoken/drupal@0.2.4
+  - @pantoken/hugo@0.2.4
+  - @pantoken/jekyll@0.2.4
+  - @pantoken/components@2.1.2
+  - @pantoken/plugin-primitives@1.0.9
+  - @pantoken/plugin-theme-custom-media@0.2.12
+  - @pantoken/bootstrap@0.2.0
+  - @pantoken/docusaurus@0.2.0
+  - @pantoken/foundation@0.2.4
+  - @pantoken/shadcn@0.3.0
+  - @pantoken/tinymce@0.7.1
+  - @pantoken/vitepress@0.3.0
+  - @pantoken/interactions@0.5.3
+  - @pantoken/scope@0.4.6
+  - @pantoken/angular@0.2.5
+  - @pantoken/react@0.2.4
+  - @pantoken/svelte@0.2.4
+  - @pantoken/vue@0.2.4
+
 ## 0.2.30
 
 ### Patch Changes

@@ -1,5 +1,11 @@
 # CHANGELOG
 
+## 0.2.12
+
+### Patch Changes
+
+- @pantoken/tokens@0.8.3
+
 ## 0.2.11
 
 ### Patch Changes

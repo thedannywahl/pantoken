@@ -1,5 +1,11 @@
 # CHANGELOG
 
+## 1.0.9
+
+### Patch Changes
+
+- @pantoken/utils@1.4.1
+
 ## 1.0.8
 
 ### Patch Changes

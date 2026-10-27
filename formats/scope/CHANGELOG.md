@@ -1,5 +1,11 @@
 # @pantoken/scope
 
+## 0.4.6
+
+### Patch Changes
+
+- @pantoken/utils@1.4.1
+
 ## 0.4.5
 
 ### Patch Changes
