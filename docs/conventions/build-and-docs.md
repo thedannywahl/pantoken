@@ -86,9 +86,47 @@ an administrative bypass. Verify the maintenance merge, authenticated Changesets
 OIDC publish, immutable release attestations, and docs deployment request in a controlled run;
 local tests and workflow linting do not prove the live GitHub event chain.
 
-## Linting CSS
+## GitHub Ruleset Setup
 
-### Upstream Component Follow-Up
+GitHub branch rules match the destination branch, not the PR author or source branch. Extend
+the existing `main` ruleset rather than applying a blanket update/force-push restriction to
+`renovate/*`, which Renovate needs to rebase.
+
+1. Merge `.github/workflows/renovate-policy.yml` and `scripts/release/renovate-policy.ts` into
+   `main` first. The policy executes trusted base-branch code, never candidate code, and posts
+   the `renovate-policy` commit status directly on the current PR head SHA.
+2. Open or synchronize a PR targeting `main` and wait for `Renovate merge policy` to report.
+   Do not require the status before this first run; otherwise every open PR can be stranded
+   waiting for a workflow that is not available on the default branch yet.
+3. In repository **Settings > Rules > Rulesets**, edit the existing **main** branch ruleset.
+   Keep enforcement **Active** and target **Default branch** (or `refs/heads/main`).
+4. Under **Require status checks to pass**, keep `ci-gate`, `changeset-gate`, and `codecov/patch`.
+   Add **renovate-policy**, selecting **GitHub Actions** as the expected source. Require branches
+   to be up to date before merging. Do not select the workflow job label
+   `Evaluate trusted automation policy`; the required status context is `renovate-policy`.
+5. Keep **Require a pull request before merging**, **Require conversation resolution**, and
+   **Squash** as the allowed merge method. Keep the global required-approval count at **0** so
+   passing weekly-maintenance and Changesets PRs can auto-merge. The new policy separately requires
+   approval for component follow-ups; raising the global count would block the automatic chain.
+6. Preserve **Block force pushes**, **Restrict deletions**, the existing **85% code coverage** and
+   **5% maximum coverage drop**, **CodeQL medium-or-higher security alerts / errors**, and
+   **Code quality: errors** rules on `main`. Do not add a bot/admin bypass around these gates.
+7. Leave repository **Settings > General > Allow auto-merge** enabled. Under
+   **Settings > Secrets and variables > Actions > Variables**, set `RELEASE_ACTOR` and
+   `RENOVATE_ACTOR` only if their token/App logins differ from the repository owner. They must
+   match the real PR authors, not display names. `RENOVATE_ACTOR` otherwise inherits `RELEASE_ACTOR`.
+8. Verify a normal feature PR passes, an incorrect author on a reserved automation branch fails,
+   `maintenance/failed-updates` fails, and `maintenance/component-reviews` requires a human
+   maintainer other than its author to approve its current commit. New commits and dismissed
+   approvals must invalidate that permission; component follow-ups must have auto-merge disabled.
+
+If the automation PAT belongs to the only human maintainer, that person cannot approve their own
+component-review PR. Use a separate bot identity or another maintainer's review rather than
+weakening the rule. The workflow token has read access plus commit-status write permission only;
+it receives no `RELEASE_PAT` and cannot push source or publish packages. Existing rulesets remain
+unchanged until an administrator follows these activation steps.
+
+## Upstream Component Follow-Up
 
 Weekly maintenance also produces a separate `maintenance/component-reviews` draft and deduplicated
 issues for new component token families, new tokens/variants on existing components, unresolved
@@ -107,6 +145,8 @@ component directory and replacing the custom function with a functional deprecat
 following `cardRules` and `cardCss`. The patch records the upstream adoption and alias retirement
 boundaries. Registry order, exports, focused drift tests, guides, demos, browser verification, and
 actual InstUI parity remain mandatory human-reviewed work before applying and merging it.
+
+## Linting CSS
 
 Root `stylelint.config.js` runs error-only core CSS rules; anchor-positioning props are ignored and
 `@scope` is allowed. `lint:cssdoc` runs `@cssdoc/cli` with `--max-warnings 0` over the same

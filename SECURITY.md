@@ -111,6 +111,12 @@ know what's in place:
   base/proposal refs, allowed paths, manifest invariants, and protected CI/Changeset checks before
   enabling auto-merge. Failed candidates remain in a separate, non-merging draft with individual
   issues. Tests, not release-feed data, establish compatibility claims.
+- **Maintenance file and request integrity.** Output hashing and changed-file collection inspect
+  and read the same no-follow file descriptor, rejecting symlinks and non-regular files. This is
+  not filesystem isolation against ancestor-directory changes or in-place writes. The publisher
+  resolves artifact paths against immutable GitHub trees and requests content by validated blob
+  SHA, never by interpolating artifact paths into URLs. Truncated trees, symlink entries, and HTTP
+  redirects fail publication.
 - **Bounded support lifetimes.** Verified downstream targets retain the latest two released stable
   majors; incompatible older majors can retire early, but infrastructure failures cannot withdraw
   support. Removed upstream tokens freeze their prior theme-specific values and expire after two
@@ -123,6 +129,12 @@ know what's in place:
   custom-to-canonical promotions produce human-reviewed issues/scaffold drafts, never automatic
   component implementations. Promotion patches are published as text and are not applied by the
   write-enabled publication job.
+- **Automation merge policy.** The `renovate-policy` required commit status verifies same-repository
+  bot identities and reserved branches, blocks failed-maintenance branches, and requires a separate
+  human maintainer's current-commit approval for component follow-ups. Its workflow reads trusted
+  base-branch policy code and has read access plus commit-status write permission, never release
+  credentials or content-write permission. Ruleset activation must follow deployment of the status
+  workflow so existing PRs do not wait indefinitely for an unavailable check.
 - **Pinned build-time downloads.** The only asset the build fetches outside the package manager is the
   set of Noto script fonts the documentation social cards render in. Those come from URLs pinned to a
   single `google/fonts` commit and are checked against recorded SHA-256 digests before use; a
