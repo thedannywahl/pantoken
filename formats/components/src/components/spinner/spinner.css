@@ -11,7 +11,7 @@
  * @modifier -color-ai-on-color — Rotating on-colour AI star for a coloured or dark surface.
  * @animation pantoken-spinner-rotate — Rotates the ring, or the AI star at the slower 2.25-second cadence.
  * @a11y Give the spinner role="status" and an aria-label so screen readers announce it as a live loading status.
- * @example
+ * @example -canvas-rce -docs
  * ```html
  * <span class="pfx-spinner" role="status" aria-label="Loading"></span>
  * ```
@@ -22,6 +22,14 @@
  * </div>
  * ```
  * @demo self:spinner
+ * @example -automatica11y
+ * ```html
+ * <span class="pfx-spinner" role="status" aria-label="Loading"></span>
+ * 
+ * <div class="pfx-view pfx-card -background-primary-inverse">
+ *   <span class="pfx-spinner -color-inverse" role="status" aria-label="Loading"></span>
+ * </div>
+ * ```
  */
 @keyframes pantoken-spinner-rotate {
   to {

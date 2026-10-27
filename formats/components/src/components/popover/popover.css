@@ -8,11 +8,13 @@
  * @modifier -placement-start — Sit at the start (inline-start) of the anchor.
  * @modifier -placement-end — Sit at the end (inline-end) of the anchor.
  * @compat Uses CSS anchor positioning (`position-anchor`/`position-area`) and the native `[popover]` API, both Chromium-only today; an `@supports` guard keeps the placement inert elsewhere, where the UA centres the popover in the top layer.
- * @example
+ * @example -canvas-rce -docs
+ * ```html
  * <div class="pfx-popover -placement-bottom" id="pop-1">
  *   <div class="pfx-heading -level-h4">Share this page</div>
  *   <p class="pfx-text -size-sm">A popover is a lightweight surface anchored to a trigger. This one uses the native <code>popover</code> attribute.</p>
  * </div>
+ * ```
  * @structure
  * .pfx-popover {
  *   .pfx-heading {}
@@ -22,6 +24,13 @@
  * }
  * @related tooltip — A tooltip is a smaller, hover- or focus-triggered anchored surface.
  * @related context-view — Context view is a related anchored surface with a pointer.
+ * @example -automatica11y
+ * ```html
+ * <div class="pfx-popover -placement-bottom" id="pop-1">
+ *   <div class="pfx-heading -level-h4">Share this page</div>
+ *   <p class="pfx-text -size-sm">A popover is a lightweight surface anchored to a trigger. This one uses the native <code>popover</code> attribute.</p>
+ * </div>
+ * ```
  */
 @scope (.pfx-popover) {
   & {

@@ -21,7 +21,8 @@
  * @pseudo ::after — Renders the decorative required-field asterisk after the legend text when the group is required.
  * @accessibility Renders a native `<fieldset>` with a `<legend>`, so the legend text names the whole group for assistive tech.
  * @compat The `-layout-aligned` mode uses CSS subgrid behind an `@supports` guard; where subgrid is unsupported, the fields fall back to their own stacked layout.
- * @example
+ * @example -canvas-rce -docs
+ * ```html
  * <fieldset class="pfx-form-field-group -layout-columns -col-spacing-medium">
  *   <legend>Shipping address</legend>
  *   <label class="pfx-form-field">
@@ -50,6 +51,7 @@
  *     <span class="pfx-form-field-message -type-hint">All fields are used for delivery only.</span>
  *   </div>
  * </fieldset>
+ * ```
  * @structure
  * .pfx-form-field-group.-layout-columns.-col-spacing-medium {
  *   legend {}
@@ -58,6 +60,37 @@
  * }
  * @related form-field — The single field this group repeats.
  * @related radio-input-group — Groups radio inputs under a legend.
+ * @example -automatica11y
+ * ```html
+ * <fieldset class="pfx-form-field-group -layout-columns -col-spacing-medium">
+ *   <legend>Shipping address</legend>
+ *   <label class="pfx-form-field">
+ *     <span class="label">First name</span>
+ *     <span class="controls"><input class="pfx-text-input"></span>
+ *   </label>
+ *   <label class="pfx-form-field">
+ *     <span class="label">Last name</span>
+ *     <span class="controls"><input class="pfx-text-input"></span>
+ *   </label>
+ *   <label class="pfx-form-field">
+ *     <span class="label">City</span>
+ *     <span class="controls"><input class="pfx-text-input"></span>
+ *   </label>
+ *   <label class="pfx-form-field">
+ *     <span class="label">State</span>
+ *     <span class="controls">
+ *       <select class="pfx-simple-select">
+ *         <option>CA</option>
+ *         <option>NY</option>
+ *         <option>TX</option>
+ *       </select>
+ *     </span>
+ *   </label>
+ *   <div class="pfx-form-field-messages">
+ *     <span class="pfx-form-field-message -type-hint">All fields are used for delivery only.</span>
+ *   </div>
+ * </fieldset>
+ * ```
  */
 @scope (.pfx-form-field-group) {
   & {

@@ -16,7 +16,8 @@
  * @pseudo ::placeholder — The placeholder text of the inner input, in a muted color.
  * @cssstate disabled
  * @accessibility Put the accessible name on the `<input>` (e.g. `aria-label`) so the field owns the value; the +/- spinner buttons are decorative and marked `aria-hidden="true"`.
- * @example
+ * @example -canvas-rce -docs
+ * ```html
  * <span class="pfx-number-input">
  *   <input id="qty" type="number" value="1" aria-label="Quantity">
  *   <span class="arrows">
@@ -24,6 +25,7 @@
  *     <button class="down" type="button" id="down" aria-hidden="true"></button>
  *   </span>
  * </span>
+ * ```
  * @structure
  * .pfx-number-input {
  *   input {}
@@ -34,6 +36,16 @@
  * }
  * @related text-input — Shares the same input facade chrome.
  * @related range-input — Another numeric input control.
+ * @example -automatica11y
+ * ```html
+ * <span class="pfx-number-input">
+ *   <input id="qty" type="number" value="1" aria-label="Quantity">
+ *   <span class="arrows">
+ *     <button type="button" id="up" aria-hidden="true"></button>
+ *     <button class="down" type="button" id="down" aria-hidden="true"></button>
+ *   </span>
+ * </span>
+ * ```
  */
 @scope (.pfx-number-input) {
   & {

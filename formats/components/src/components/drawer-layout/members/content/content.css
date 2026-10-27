@@ -14,7 +14,15 @@
  *     slot {}
  *   }
  * }
- * @example
+ * @example -canvas-rce -docs
+ * ```html
+ * <div class="pfx-drawer-layout">
+ *   <div class="content" role="region">
+ *     <p class="pfx-text">Tray content</p>
+ *   </div>
+ * </div>
+ * ```
+ * @example -automatica11y
  * ```html
  * <div class="pfx-drawer-layout">
  *   <div class="content" role="region">

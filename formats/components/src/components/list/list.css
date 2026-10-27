@@ -12,12 +12,22 @@
  * .pfx-list {
  *   li:many {}
  * }
- * @example
+ * @example -canvas-rce -docs
+ * ```html
  * <ul class="pfx-list">
  *   <li>First item</li>
  *   <li>Second item</li>
  *   <li>Third item</li>
  * </ul>
+ * ```
+ * @example -automatica11y
+ * ```html
+ * <ul class="pfx-list">
+ *   <li>First item</li>
+ *   <li>Second item</li>
+ *   <li>Third item</li>
+ * </ul>
+ * ```
  */
 @scope (.pfx-list) {
   & {

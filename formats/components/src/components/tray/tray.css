@@ -15,7 +15,7 @@
  * @compat Opens with the native `[popover]` API and `@starting-style`; the slide-in sits behind an `@supports (transition-behavior: allow-discrete)` guard, so browsers without it still open the tray, just without the slide.
  * @remarks Start/end placements resolve against `inset-inline` (logical, direction-aware); the slide-in transform mirrors automatically under an ancestor `[dir="rtl"]`, so no extra markup is needed for right-to-left layouts.
  * @accessibility The tray is a dialog or popover surface, so name it with `aria-label` or `aria-labelledby`, and its close control carries an `aria-label` (the `.pfx-close-button` in the example uses `aria-label="Close"`).
- * @example
+ * @example -canvas-rce -docs
  * ```html
  * <div class="pfx-tray -placement-end -size-sm">
  *   <span class="pfx-heading -level-h3">Filters</span>
@@ -30,6 +30,14 @@
  * }
  * @related modal — The same dismissible overlay pattern, centred instead of edge-pinned.
  * @related popover — The generic top-layer surface this builds on.
+ * @example -automatica11y
+ * ```html
+ * <div class="pfx-tray -placement-end -size-sm">
+ *   <span class="pfx-heading -level-h3">Filters</span>
+ *   <p class="-size-sm">A tray slides in from the start edge and fills the viewport height.</p>
+ * </div>
+ * <button class="pfx-button -toggle">toggle tray</button>
+ * ```
  */
 @scope (.pfx-tray) {
   & {

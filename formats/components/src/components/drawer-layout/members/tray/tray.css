@@ -11,7 +11,7 @@
  * @remarks Positioning uses `inset-inline-start`/`inset-inline` (never `left`/`right`), so `-placement-end` docks to the true trailing edge in both LTR and RTL.
  * @accessibility If used as navigation, wrap links in a semantic `<nav>` and provide an accessible name.
  * @related drawer-layout.content — The primary pane that flexes alongside this member.
- * @example
+ * @example -canvas-rce -docs
  * ```html
  * <div class="pfx-drawer-layout" open>
  *   <aside class="tray" aria-label="Course navigation">
@@ -26,6 +26,15 @@
  *     slot {}
  *   }
  * }
+ * @example -automatica11y
+ * ```html
+ * <div class="pfx-drawer-layout" open>
+ *   <aside class="tray" aria-label="Course navigation">
+ *     <a class="pfx-link" href="#">Modules</a>
+ *   </aside>
+ *   <main class="content" role="region">Main content</main>
+ * </div>
+ * ```
  */
 
 @scope (.pfx-drawer-layout) {

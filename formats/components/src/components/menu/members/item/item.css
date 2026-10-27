@@ -14,6 +14,14 @@
  *     .item-info {}
  *   }
  * }
+ * @example -automatica11y
+ * ```html
+ * <button class="pfx-button" popovertarget="actions-menu" data-a11y-trigger>Actions</button>
+ * <div class="pfx-menu" id="actions-menu" popover="auto" role="menu" aria-label="Actions" data-a11y-root>
+ *   <button class="item" role="menuitem">Edit</button>
+ *   <button class="item" role="menuitem">Delete</button>
+ * </div>
+ * ```
  */
 @scope (.pfx-menu) {
   :scope {

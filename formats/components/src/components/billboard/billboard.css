@@ -14,7 +14,7 @@
  * @part .heading — The billboard heading.
  * @part .message — The supporting message.
  * @compat Contains its element styles with the CSS `@scope` at-rule; needs a recent Chromium, Firefox, or Safari.
- * @example
+ * @example -canvas-rce -docs
  * ```html
  * <div class="pfx-billboard -size-md -clickable" tabindex="0">
  *   <span class="hero -icon-inbox"></span>
@@ -29,6 +29,14 @@
  *   .message {}
  * }
  * @todo `instructure-design-tokens` is missing several values defined in the `Billboard` component, so we hardcode them here for now. When the tokens are added, we should remove the hardcoded values and use the tokens instead.
+ * @example -automatica11y
+ * ```html
+ * <div class="pfx-billboard -size-md -clickable" tabindex="0">
+ *   <span class="hero -icon-inbox"></span>
+ *   <div class="heading">No items yet</div>
+ *   <div class="message">Create your first item to get started.</div>
+ * </div>
+ * ```
  */
 .pfx-billboard {
   display: block;

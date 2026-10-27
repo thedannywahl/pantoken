@@ -20,7 +20,7 @@
  * @modifier -color-stone — Stone accent status.
  * @modifier -icon-* — A leading glyph from the icon set (e.g. `-icon-check`), painted before the label.
  * @pseudo ::before — The leading icon glyph, sized and spaced to the pill.
- * @example
+ * @example -canvas-rce -docs
  * ```html
  * <div class="pfx-view --display-flex --gap-md">
  *   <span class="instui-pill -color-success -icon-check">Published</span>
@@ -33,6 +33,17 @@
  * ```
  * @related badge — A badge is the count or notification counterpart.
  * @related tag — A tag is the removable, form-oriented counterpart.
+ * @example -automatica11y
+ * ```html
+ * <div class="pfx-view --display-flex --gap-md">
+ *   <span class="pfx-pill -color-success -icon-check">Published</span>
+ *   <span class="pfx-pill">Draft</span>
+ *   <span class="pfx-pill -color-info">In review</span>
+ *   <span class="pfx-pill -color-warning">Stale</span>
+ *   <span class="pfx-pill -color-danger">Blocked</span>
+ *   <span class="pfx-pill -color-violet">Pastel</span>
+ * </div>
+ * ```
  */
 @scope (.pfx-pill) {
   & {

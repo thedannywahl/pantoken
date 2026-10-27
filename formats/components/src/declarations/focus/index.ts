@@ -50,7 +50,7 @@ const FOCUS_DOC = css`/**
  * <button class="instui-button -focus-color-danger">Delete</button>
  * @example -automatica11y
  * \`\`\`html
- * <button class="pfx-button -focus-color-danger" data-a11y-root data-a11y-trigger>Delete</button>
+ * <button class="instui-button -focus-color-danger" data-a11y-root data-a11y-trigger>Delete</button>
  * \`\`\`
  * @demo self:focus-outline
  */`;

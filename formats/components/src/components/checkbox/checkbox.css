@@ -24,7 +24,7 @@
  * @cssstate indeterminate
  * @cssstate disabled
  * @accessibility A native `<input type="checkbox">` drives `:checked`, `:indeterminate`, and `:disabled`; set `el.indeterminate = true` in JavaScript for the mixed state, and note that `-readonly` is styling only since checkboxes have no native readonly attribute.
- * @example
+ * @example -canvas-rce -docs
  * ```html
  * <label class="pfx-checkbox --display-block --mb-sm">
  *   <input type="checkbox" checked>Checkbox
@@ -34,6 +34,15 @@
  * </label>
  * ```
  * @related radio — The single-select counterpart.
+ * @example -automatica11y
+ * ```html
+ * <label class="pfx-checkbox --display-block --mb-sm">
+ *   <input type="checkbox" checked>Checkbox
+ * </label>
+ * <label class="pfx-checkbox -variant-toggle">
+ *   <input type="checkbox">Toggle
+ * </label>
+ * ```
  */
 .pfx-checkbox {
   display: inline-flex;

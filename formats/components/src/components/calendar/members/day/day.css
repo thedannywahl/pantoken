@@ -12,6 +12,10 @@
  *     .day {}
  *   }
  * }
+ * @example -automatica11y
+ * ```html
+ * <div class="pfx-calendar" aria-label="March 2026"><div class="nav"><strong>March 2026</strong></div><div class="grid"><span class="weekday">Sunday</span><span class="day">1</span><span class="day -today">8</span><span class="day -selected">15</span></div></div>
+ * ```
  */
 @scope (.pfx-calendar) {
   .day {

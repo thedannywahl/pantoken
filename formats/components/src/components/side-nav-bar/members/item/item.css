@@ -13,6 +13,27 @@
  *     .label {}
  *   }
  * }
+ * @example -automatica11y
+ * ```html
+ * <nav class="pfx-side-nav-bar" aria-label="Primary">
+ *   <a class="item -selected" href="#">
+ *     <span class="pfx-icon -icon-house"></span>
+ *     <span class="label">Home</span>
+ *   </a>
+ *   <a class="item" href="#">
+ *     <span class="pfx-icon -icon-inbox"></span>
+ *     <span class="label">Inbox</span>
+ *   </a>
+ *   <a class="item" href="#">
+ *     <span class="pfx-icon -icon-calendar"></span>
+ *     <span class="label">Calendar</span>
+ *   </a>
+ *   <a class="item" href="#">
+ *     <span class="pfx-icon -icon-settings"></span>
+ *     <span class="label">Settings</span>
+ *   </a>
+ * </nav>
+ * ```
  */
 @scope (.pfx-side-nav-bar) {
   :scope {

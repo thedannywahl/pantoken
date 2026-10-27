@@ -31,7 +31,7 @@
  * @modifier -size-sm — Small.
  * @modifier -size-lg — Large.
  * @modifier -size-xl — Extra large.
- * @example
+ * @example -canvas-rce -docs
  * ```html
  * <span class="pfx-text -size-xs --display-block">x-small text</span>
  * <span class="pfx-text -size-sm --display-block">small text</span>
@@ -42,6 +42,13 @@
  * @related truncate — Clips this text to one line or a set number of lines.
  * @stable
  * @sealed
+ * @example -automatica11y
+ * ```html
+ * <span class="pfx-text -size-xs --display-block">x-small text</span>
+ * <span class="pfx-text -size-sm --display-block">small text</span>
+ * <span class="pfx-text -variant-content-quote --display-block">Quoted text</span>
+ * <span class="pfx-text -color-ai-highlight">AI highlight text</span>
+ * ```
  */
 @scope (.pfx-text) {
   & {

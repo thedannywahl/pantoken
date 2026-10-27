@@ -32,7 +32,7 @@
  * @part .first-name — Optional (pairs with .last-name): wraps the given name, clipped to its leading letter.
  * @part .last-name — Optional (pairs with .first-name): wraps the family name, clipped to its leading letter.
  * @a11y Give an image avatar a meaningful `alt` (the person's name), not a generic "avatar"; for initials-only avatars, prefer real name content (bare text, data-initials, .name, or .first-name/.last-name) over pre-abbreviated letters, so assistive tech announces the real name.
- * @example
+ * @example -canvas-rce -docs
  * ```html
  * <span class="pfx-avatar --me-sm">LH</span>
  * <span class="pfx-avatar -color-ai --me-sm">AI</span>
@@ -51,6 +51,14 @@
  * @related byline — Can host an avatar as its leading hero figure.
  * @sealed
  * @stable
+ * @example -automatica11y
+ * ```html
+ * <span class="pfx-avatar --me-sm">LH</span>
+ * <span class="pfx-avatar -color-ai --me-sm">AI</span>
+ * <span class="pfx-avatar --me-sm" data-initials="NV">Dr. Nguyen Van Thoc</span>
+ * <span class="pfx-avatar"><span class="name">Miguel Sanchez</span></span>
+ * <span class="pfx-avatar"><span class="first-name">Miguel</span> <span class="last-name">Sanchez</span></span>
+ * ```
  */
 @scope (.pfx-avatar) {
   :scope {

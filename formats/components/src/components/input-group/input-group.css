@@ -15,12 +15,18 @@
  * @part .after — The trailing content slot.
  * @pseudo ::placeholder — The placeholder text of the inner input, in a muted color.
  * @cssstate disabled
- * @example
+ * @example -canvas-rce -docs
+ * ```html
  * <span class="pfx-input-group">
  *   <span class="before">@</span>
  *   <input type="text" placeholder="username">
  * </span>
+ * ```
  * @related text-input — Wraps a text input, adding leading and trailing icon slots.
+ * @example -automatica11y
+ * ```html
+ * <label>Username <span class="pfx-input-group"><span class="before">@</span><input type="text" autocomplete="username"></span></label>
+ * ```
  */
 @scope (.pfx-input-group) {
   & {

@@ -12,7 +12,7 @@
  * @part .description — The supporting body text.
  * @remarks Sets its own `gap` between the figure and the text block; chaining a `-gap-*` spacing utility modifier overrides that built-in value.
  * @compat Contains its element styles with the CSS `@scope` at-rule; needs a recent Chromium, Firefox, or Safari.
- * @example
+ * @example -canvas-rce -docs
  * ```html
  * <div class="pfx-byline -size-md">
  *   <span class="pfx-icon -icon-megaphone"></span>
@@ -30,6 +30,16 @@
  *     .description {}
  *   }
  * }
+ * @example -automatica11y
+ * ```html
+ * <div class="pfx-byline -size-md">
+ *   <span class="pfx-icon -icon-megaphone"></span>
+ *   <div>
+ *     <div class="title">What's new</div>
+ *     <div class="description">The figure can be any leading visual — an icon, an avatar, or an image.</div>
+ *   </div>
+ * </div>
+ * ```
  */
 @scope (.pfx-byline) {
   :scope {

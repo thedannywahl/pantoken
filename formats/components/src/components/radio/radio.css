@@ -17,10 +17,16 @@
  * @cssstate checked
  * @cssstate disabled
  * @accessibility A native `<input type="radio">` drives `:checked` and `:disabled`; `-readonly` is styling only, since radios have no native readonly attribute.
- * @example
+ * @example -canvas-rce -docs
+ * ```html
  * <label class="pfx-radio"><input type="radio" name="r" checked> Option A</label>
+ * ```
  * @related checkbox — The multi-select counterpart to a single-select radio.
  * @related radio-input-group — Collects radios into one single-select fieldset.
+ * @example -automatica11y
+ * ```html
+ * <label class="pfx-radio"><input type="radio" name="r" checked> Option A</label>
+ * ```
  */
 @scope (.pfx-radio) {
   & {

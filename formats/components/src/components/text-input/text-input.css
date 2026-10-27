@@ -12,7 +12,7 @@
  * @modifier -size-lg — Large.
  * @pseudo ::placeholder — The placeholder text, in a muted color that shifts on hover.
  * @cssstate disabled
- * @example
+ * @example -canvas-rce -docs
  * ```html
  * <input class="pfx-text-input" placeholder="Default">
  * ```
@@ -20,6 +20,10 @@
  * @related number-input — The numeric-entry input sharing this chrome.
  * @related simple-select — The native select sharing this field chrome.
  * @related input-group — Wraps this input with leading and trailing slots.
+ * @example -automatica11y
+ * ```html
+ * <label>Display name <input class="pfx-text-input" autocomplete="nickname"></label>
+ * ```
  */
 @scope (.pfx-text-input) {
   & {

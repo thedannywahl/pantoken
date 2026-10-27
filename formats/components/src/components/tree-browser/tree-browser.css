@@ -10,7 +10,8 @@
  * @pseudo ::before — Draws each collection's disclosure chevron, a masked glyph that rotates to point down when the branch is open.
  * @cssstate open
  * @a11y Mark the root with role="tree" and each nested list with role="group".
- * @example
+ * @example -canvas-rce -docs
+ * ```html
  * <div class="pfx-tree-browser" role="tree">
  *   <details open>
  *     <summary><span class="pfx-icon -icon-folder"></span> Course files</summary>
@@ -37,6 +38,7 @@
  *     </ul>
  *   </details>
  * </div>
+ * ```
  * @structure
  * .pfx-tree-browser {
  *   details {
@@ -53,6 +55,35 @@
  *   }
  * }
  * @related menu — Both present nested, selectable entries.
+ * @example -automatica11y
+ * ```html
+ * <div class="pfx-tree-browser" role="tree">
+ *   <details open>
+ *     <summary><span class="pfx-icon -icon-folder"></span> Course files</summary>
+ *     <ul role="group">
+ *       <li>
+ *         <a class="item" href="#"><span class="pfx-icon -icon-file-text"></span> Syllabus.pdf</a>
+ *       </li>
+ *       <li>
+ *         <details>
+ *           <summary><span class="pfx-icon -icon-folder"></span> Week 1</summary>
+ *           <ul role="group">
+ *             <li>
+ *               <a class="item -selected" href="#"><span class="pfx-icon -icon-file-text"></span> Reading.pdf</a>
+ *             </li>
+ *             <li>
+ *               <a class="item" href="#"><span class="pfx-icon -icon-file-text"></span> Slides.pptx</a>
+ *             </li>
+ *           </ul>
+ *         </details>
+ *       </li>
+ *       <li>
+ *         <a class="item" href="#"><span class="pfx-icon -icon-file-text"></span> Rubric.docx</a>
+ *       </li>
+ *     </ul>
+ *   </details>
+ * </div>
+ * ```
  */
 @scope (.pfx-tree-browser) {
   & {

@@ -18,6 +18,19 @@
  * }
  * @sealed
  * @stable
+ * @example -automatica11y
+ * ```html
+ * <nav class="pfx-breadcrumb" aria-label="Breadcrumb">
+ *   <ol>
+ *     <li>
+ *       <a class="-icon-house" href="#">Home</a>
+ *     </li>
+ *     <li><a href="#">Guides</a></li>
+ *     <li><a href="#">Components</a></li>
+ *     <li aria-current="page">Breadcrumb</li>
+ *   </ol>
+ * </nav>
+ * ```
  */
 
 @scope (.pfx-breadcrumb) {

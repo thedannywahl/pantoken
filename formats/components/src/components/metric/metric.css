@@ -8,7 +8,7 @@
  * @modifier -text-align-end — End-align the value and label.
  * @part .value — The large metric number.
  * @part .label — The caption beneath the value.
- * @example
+ * @example -canvas-rce -docs
  * ```html
  * <div class="pfx-metric">
  *   <span class="value">1,284</span>
@@ -20,6 +20,13 @@
  *   .value {}
  *   .label {}
  * }
+ * @example -automatica11y
+ * ```html
+ * <div class="pfx-metric">
+ *   <span class="value">1,284</span>
+ *   <span class="label">Active users</span>
+ * </div>
+ * ```
  */
 @scope (.pfx-metric) {
   :scope {

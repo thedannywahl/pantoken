@@ -15,7 +15,7 @@
  * @remarks `-placement-end` and the default (start) both use `flex-direction`/`inset-inline-*` logical properties, not `left`/`right`, so the tray's side follows `direction`/`dir="rtl"` automatically — no separate RTL rules are needed.
  * @accessibility When the tray acts as navigation, label it with an accessible heading or `aria-label`. Give `.content` `role="region"` (InstUI's DrawerLayout convention) and name it with `aria-label`/`aria-labelledby` when context alone doesn't identify it.
  * @compat The `drawer-layout.tray`/`drawer-layout.content` members switch to overlay mode automatically via a `@container` query once this element's inline-size drops below tray-width + `--pantoken-bp-md`. The `@pantoken/interactions` behavior additionally toggles `[should-overlay-tray]`/`.-should-overlay-tray` (a manual override) and emits `overlaytraychange` for apps that need the change as an event.
- * @example
+ * @example -canvas-rce -docs
  * ```html
  * <div class="pfx-drawer-layout" id="drawer" open>
  *   <aside class="tray">Navigation</aside>
@@ -29,6 +29,13 @@
  * }
  * @related tray — A standalone edge overlay; this layout keeps tray and content in the same flow.
  * @related context-view — A smaller anchored surface for contextual actions and detail.
+ * @example -automatica11y
+ * ```html
+ * <div class="pfx-drawer-layout" id="drawer" open>
+ *   <aside class="tray">Navigation</aside>
+ *   <main class="content" role="region">Main content</main>
+ * </div>
+ * ```
  */
 
 @scope (.pfx-drawer-layout) {
