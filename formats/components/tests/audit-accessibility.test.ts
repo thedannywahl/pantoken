@@ -86,6 +86,9 @@ test("expands exactly six unique cases per example and loads local production as
   ])
     expect(page).toContain(asset);
   expect(page).not.toContain("https://");
+  expect(page).not.toContain("../assets");
+  expect(page).toContain('href="assets/tokens/scope.css"');
+  expect(page).toContain('src="assets/interactions/modal.iife.js"');
   expect(page).toContain("dialog.showModal()");
   expect(page).toContain("popover.showPopover()");
   expect(page).toContain("details.open = true");
@@ -214,6 +217,12 @@ test.each(["success", "setup failure", "audit failure"])(
     const output = join(root, "a11y-report", readdirSync(join(root, "a11y-report"))[0]!);
     const coverage = JSON.parse(readFileSync(join(output, "coverage.json"), "utf8"));
     expect(coverage.cases).toHaveLength(6);
+    expect(readdirSync(join(output, "pages", "assets"))).toEqual([
+      "assets",
+      "components",
+      "interactions",
+      "tokens",
+    ]);
     if (outcome === "success")
       expect(
         coverage.evidence.every((item: { completed: string[] }) => item.completed.length === 1),
@@ -331,7 +340,7 @@ test.each(["success", "pack failure", "fixture gap", "no archetype"])(
   "appends npm evidence: %s",
   async (outcome) => {
     const root = temp();
-    for (const folder of ["assets/tokens", "assets/components"])
+    for (const folder of ["pages/assets/tokens", "pages/assets/components"])
       mkdirSync(join(root, folder), { recursive: true });
     for (const file of [
       "tokens/schemes.css",
@@ -340,7 +349,7 @@ test.each(["success", "pack failure", "fixture gap", "no archetype"])(
       "components/icons.css",
       "components/fonts.css",
     ])
-      writeFileSync(join(root, "assets", file), "/* built */");
+      writeFileSync(join(root, "pages", "assets", file), "/* built */");
     writeIndex(root, [], []);
     vi.spyOn(console, "error").mockImplementation(() => {});
     const run = vi.fn((_command: string, args: string[]) => {

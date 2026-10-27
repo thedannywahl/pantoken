@@ -138,11 +138,11 @@ export function renderPage(item: AuditCase): string {
 <html lang="en" data-pantoken-theme="${item.theme}" data-pantoken-scheme="${item.scheme}" style="color-scheme:${item.scheme}">
 <head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
 <title>${escapeText(item.id)}</title>
-${styles.map((path) => `<link rel="stylesheet" href="../assets/${path}">`).join("\n")}
+${styles.map((path) => `<link rel="stylesheet" href="assets/${path}">`).join("\n")}
 <style>body{padding:1rem}</style></head>
 <body><main aria-label="${escapeText(item.record)} example">${item.html}</main>
 ${behaviorNames(item.html)
-  .map((name) => `<script src="../assets/interactions/${name}.iife.js"></script>`)
+  .map((name) => `<script src="assets/interactions/${name}.iife.js"></script>`)
   .join("\n")}
 <script>
 // The page suite measures expanded surfaces; npm fixtures retain their initial state.
@@ -429,7 +429,7 @@ export async function runNpmAudits(
       const directory = join(out, "fixtures", id);
       mkdirSync(directory, { recursive: true });
       const fixture = join(directory, `${archetype}.html`);
-      writeFileSync(fixture, renderNpmFixture(item, join(out, "assets")));
+      writeFileSync(fixture, renderNpmFixture(item, join(out, "pages", "assets")));
       mapping[id] = { [archetype]: { fixture } };
     }
     const mappingFile = join(out, "mapping.json");
@@ -496,7 +496,7 @@ export async function runPageAudits(
   const cases = expandCases(examples);
   const out = join(root, "a11y-report", new Date().toISOString().replaceAll(":", "-"));
   mkdirSync(join(out, "pages"), { recursive: true });
-  const assets = join(out, "assets");
+  const assets = join(out, "pages", "assets");
   for (const [source, destination] of [
     ["formats/components/dist", "components"],
     ["formats/components/assets", "assets"],

@@ -37,6 +37,9 @@ The job always attempts to publish a summary and upload `component-accessibility
 with 14-day retention. Download that artifact to follow the index's relative report links.
 The complete matrix is browser-intensive: it runs at most two report batches at once, and CI
 allows up to two hours. Original audit reports are excluded from contributor Markdown linting.
+Generated pages and their assets share the `pages/` directory: automatica11y's local HTTP server
+serves only the HTML file's containing directory. Verify styles over that HTTP boundary, not
+only through `file://` URLs.
 
 ## The gate
 
