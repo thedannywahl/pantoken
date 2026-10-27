@@ -2,7 +2,7 @@
  * @component pill
  * @selector .pfx-pill
  * @summary A compact status label; add a leading glyph with the shared `-icon-<name>` form.
- * @remarks Unlike `badge`, which shows a count, or `tag`, which is removable, the pill is a static status label; its leading glyph is a masked `::before`, not an `<img>`.
+ * @remarks Unlike `badge`, which shows a count, or `tag`, which is removable, the pill is a static status label; its leading glyph is a masked `::before`, not an `<img>`. Let groups wrap with `flex-wrap: wrap` on their container so compact labels reflow on narrow screens.
  * @modifier -size-x-small — The smallest pill size.
  * @modifier -size-medium — The medium pill size.
  * @modifier -size-large — The largest pill size.
@@ -22,7 +22,7 @@
  * @pseudo ::before — The leading icon glyph, sized and spaced to the pill.
  * @example -canvas-rce -docs
  * ```html
- * <div class="pfx-view --display-flex --gap-md">
+ * <div class="pfx-view --display-flex --gap-md" style="flex-wrap: wrap">
  *   <span class="instui-pill -color-success -icon-check">Published</span>
  *   <span class="instui-pill">Draft</span>
  *   <span class="instui-pill -color-info">In review</span>
@@ -35,7 +35,7 @@
  * @related tag — A tag is the removable, form-oriented counterpart.
  * @example -automatica11y
  * ```html
- * <div class="pfx-view --display-flex --gap-md">
+ * <div class="pfx-view --display-flex --gap-md" style="flex-wrap: wrap">
  *   <span class="pfx-pill -color-success -icon-check">Published</span>
  *   <span class="pfx-pill">Draft</span>
  *   <span class="pfx-pill -color-info">In review</span>

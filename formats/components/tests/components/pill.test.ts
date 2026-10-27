@@ -44,3 +44,12 @@ test("pill supports status and accent backgrounds", () => {
   expect(css).toContain("var(--instui-component-pill-plum-background-color)");
   expect(css).toContain("var(--instui-component-pill-stone-border-color)");
 });
+
+test("pill documentation and audit groups wrap without changing compact pill sizing", () => {
+  const css = pillCss({ prefix: "instui" });
+  expect(
+    css.match(/class="instui-view --display-flex --gap-md" style="flex-wrap: wrap"/g),
+  ).toHaveLength(2);
+  expect(css).toContain("height: var(--instui-component-pill-height);");
+  expect(css).toContain("max-width: var(--instui-component-pill-max-width);");
+});

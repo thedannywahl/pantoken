@@ -78,3 +78,12 @@ test("the localized tooltip demo uses named buttons and stable bubble descriptio
     }
   });
 });
+
+test("the localized pill demo lets the group wrap while preserving every status", () => {
+  withDemo("pill", ({ document }) => {
+    const pills = [...document.querySelectorAll(".instui-pill")];
+    expect(pills).toHaveLength(5);
+    expect(pills.every((pill) => pill.textContent?.trim())).toBe(true);
+    expect(pills[0].parentElement?.getAttribute("style")).toContain("flex-wrap: wrap");
+  });
+});
