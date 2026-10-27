@@ -87,6 +87,8 @@ function githubFixture(
     draft?: boolean;
     proposalHead?: string;
     graphError?: boolean;
+    tree?: Array<{ path: string; type: string; sha: string; mode: string }>;
+    truncated?: boolean;
   } = {},
 ) {
   const directory = mkdtempSync(join(tmpdir(), "pantoken-publication-test-"));
@@ -95,12 +97,17 @@ function githubFixture(
   writeFileSync(file, JSON.stringify(result));
   vi.stubEnv("GITHUB_REPOSITORY", "example/pantoken");
   vi.stubEnv("GH_TOKEN", "test-token");
-  const calls: Array<{ endpoint: string; method: string; body: Record<string, unknown> }> = [];
+  const calls: Array<{
+    endpoint: string;
+    method: string;
+    body: Record<string, unknown>;
+    redirect?: RequestRedirect;
+  }> = [];
   const fetcher = vi.fn(async (url: string, init: RequestInit) => {
     const endpoint = url.replace("https://api.github.com/", "");
     const method = init.method ?? "GET";
     const body = typeof init.body === "string" ? JSON.parse(init.body) : {};
-    calls.push({ endpoint, method, body });
+    calls.push({ endpoint, method, body, redirect: init.redirect });
     let response: unknown = {};
     if (endpoint === "user") response = { login: "maintainer" };
     else if (endpoint === "repos/example/pantoken") response = { default_branch: "main" };
@@ -144,7 +151,20 @@ function githubFixture(
       ];
     else if (endpoint.endsWith("/issues") && method === "POST")
       response = { number: 42, title: body.title, body: body.body };
-    else if (endpoint.includes("/contents/"))
+    else if (endpoint.includes("/git/trees/") && method === "GET")
+      response = {
+        truncated: options.truncated ?? false,
+        tree: options.tree ?? [
+          {
+            path: "pnpm-workspace.yaml",
+            type: "blob",
+            sha: "d".repeat(40),
+            mode: "100644",
+          },
+          { path: "pnpm-lock.yaml", type: "blob", sha: "e".repeat(40), mode: "100644" },
+        ],
+      };
+    else if (endpoint.includes("/git/blobs/"))
       response = {
         encoding: "base64",
         content: Buffer.from('{"dependencies":{"react":"^20.0.0"}}').toString("base64"),
@@ -235,6 +255,97 @@ test("records failures in individual issues and a separate draft without auto-me
   expect(pr?.body).toMatchObject({ head: "maintenance/failed-updates", draft: true });
   expect(String(pr?.body.body)).toContain("issues/42");
   expect(fixture.calls.some((call) => call.endpoint === "graphql")).toBe(false);
+});
+
+test("resolves artifact paths through immutable repository trees and fetches only blob SHAs", async () => {
+  const upgrade = {
+    depName: "react",
+    newValue: "^20.0.0",
+    manager: "npm",
+    packageFile: "pnpm-workspace.yaml",
+  };
+  const fixture = githubFixture({
+    ...artifact(),
+    files: {},
+    upgrades: [upgrade],
+    failures: [
+      {
+        id: "f".repeat(20),
+        package: "react",
+        version: "^20.0.0",
+        error: "SSR failed",
+        upgrades: [upgrade],
+      },
+    ],
+  });
+  await publishMaintenance(["publish", fixture.file, base, proposal]);
+  expect(fixture.calls.filter((call) => call.endpoint.includes("/git/trees/"))).toHaveLength(1);
+  expect(fixture.calls.filter((call) => call.endpoint.includes("/git/blobs/"))).toEqual([
+    expect.objectContaining({ endpoint: `repos/example/pantoken/git/blobs/${"d".repeat(40)}` }),
+    expect.objectContaining({ endpoint: `repos/example/pantoken/git/blobs/${"e".repeat(40)}` }),
+  ]);
+  expect(fixture.calls.every((call) => call.redirect === "error")).toBe(true);
+  expect(fixture.calls.some((call) => call.endpoint.includes("pnpm-workspace.yaml"))).toBe(false);
+});
+
+test("fails closed for missing files, symlinks, invalid blob SHAs, and truncated trees", async () => {
+  for (const options of [
+    { tree: [] },
+    {
+      tree: [{ path: "package.json", type: "blob", sha: "d".repeat(40), mode: "120000" }],
+    },
+    { tree: [{ path: "package.json", type: "blob", sha: "../other", mode: "100644" }] },
+    { truncated: true },
+  ]) {
+    const fixture = githubFixture(
+      { ...artifact(), files: { "package.json": '{"dependencies":{"react":"^20.0.0"}}' } },
+      options,
+    );
+    await expect(publishMaintenance(["publish", fixture.file, base, proposal])).rejects.toThrow();
+    expect(fixture.calls.some((call) => call.endpoint.includes("/git/blobs/"))).toBe(false);
+    expect(fixture.calls.some((call) => call.method !== "GET")).toBe(false);
+  }
+});
+
+test("compares dependency manifests with the base blob before writing a tree", async () => {
+  const fixture = githubFixture(
+    { ...artifact(), files: { "package.json": '{"dependencies":{"react":"^21.0.0"}}' } },
+    { tree: [{ path: "package.json", type: "blob", sha: "d".repeat(40), mode: "100644" }] },
+  );
+  await publishMaintenance(["publish", fixture.file, base, proposal]);
+  expect(fixture.calls).toContainEqual(
+    expect.objectContaining({ endpoint: `repos/example/pantoken/git/trees/${base}?recursive=1` }),
+  );
+  expect(
+    fixture.calls.some((call) => call.endpoint.endsWith("/git/trees") && call.method === "POST"),
+  ).toBe(true);
+});
+
+test("rejects workflow content that differs from the proposal blob", async () => {
+  const upgrade = {
+    depName: "actions/checkout",
+    newValue: "v7",
+    manager: "github-actions",
+    packageFile: ".github/workflows/ci.yml",
+  };
+  const fixture = githubFixture(
+    {
+      ...artifact(),
+      upgrades: [upgrade],
+      accepted: [upgrade],
+      files: { [upgrade.packageFile]: "unexpected workflow content" },
+    },
+    { tree: [{ path: upgrade.packageFile, type: "blob", sha: "d".repeat(40), mode: "100644" }] },
+  );
+  await expect(publishMaintenance(["publish", fixture.file, base, proposal])).rejects.toThrow(
+    "Workflow edits must exactly match",
+  );
+  expect(fixture.calls).toContainEqual(
+    expect.objectContaining({
+      endpoint: `repos/example/pantoken/git/trees/${proposal}?recursive=1`,
+    }),
+  );
+  expect(fixture.calls.some((call) => call.method !== "GET")).toBe(false);
 });
 
 test("closes exact dependency failure versions after merge, including range-prefixed proposals", async () => {

@@ -1,11 +1,13 @@
 import { spawnSync } from "node:child_process";
 import { createHash } from "node:crypto";
 import {
-  existsSync,
+  closeSync,
+  constants,
+  fstatSync,
   globSync,
-  lstatSync,
   mkdirSync,
   mkdtempSync,
+  openSync,
   readFileSync,
   readdirSync,
   rmSync,
@@ -146,6 +148,15 @@ function versions(directory: string) {
   };
 }
 
+function openMaintenancePath(location: string): number | null {
+  try {
+    return openSync(location, constants.O_RDONLY | constants.O_NOFOLLOW | constants.O_NONBLOCK);
+  } catch (error) {
+    if (error instanceof Error && "code" in error && error.code === "ENOENT") return null;
+    throw error;
+  }
+}
+
 function packageOutputs(directory: string): PackageOutput[] {
   const workspace = parse(readFileSync(join(directory, "pnpm-workspace.yaml"), "utf8")) as {
     packages: string[];
@@ -173,12 +184,19 @@ function packageOutputs(directory: string): PackageOutput[] {
     const digest = createHash("sha256");
     const visit = (relative: string): void => {
       const location = join(directory, relative);
-      if (!existsSync(location)) return;
-      if (lstatSync(location).isSymbolicLink())
-        throw new Error(`Unexpected output symlink: ${relative}`);
-      if (lstatSync(location).isDirectory()) {
-        for (const child of readdirSync(location).sort()) visit(`${relative}/${child}`);
-      } else if (!relative.endsWith(".map")) digest.update(relative).update(readFileSync(location));
+      const fd = openMaintenancePath(location);
+      if (fd === null) return;
+      try {
+        const stat = fstatSync(fd);
+        if (stat.isDirectory()) {
+          for (const child of readdirSync(location).sort()) visit(`${relative}/${child}`);
+        } else {
+          if (!stat.isFile()) throw new Error(`Unexpected output file type: ${relative}`);
+          if (!relative.endsWith(".map")) digest.update(relative).update(readFileSync(fd));
+        }
+      } finally {
+        closeSync(fd);
+      }
     };
     visit(`${path}/dist`);
     return {
@@ -207,9 +225,14 @@ function collectedFiles(directory: string, base: string): Record<string, string 
     [...new Set(names)].sort().map((file) => {
       safeMaintenancePath(file);
       const location = join(directory, file);
-      if (existsSync(location) && lstatSync(location).isSymbolicLink())
-        throw new Error(`Unexpected changed symlink: ${file}`);
-      return [file, existsSync(location) ? readFileSync(location, "utf8") : null];
+      const fd = openMaintenancePath(location);
+      if (fd === null) return [file, null];
+      try {
+        if (!fstatSync(fd).isFile()) throw new Error(`Unexpected changed file type: ${file}`);
+        return [file, readFileSync(fd, "utf8")];
+      } finally {
+        closeSync(fd);
+      }
     }),
   );
 }

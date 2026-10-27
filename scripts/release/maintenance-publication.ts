@@ -193,6 +193,7 @@ export async function publishMaintenance(
   const api = async <T>(endpoint: string, method = "GET", body?: unknown): Promise<T> => {
     const response = await fetch(`https://api.github.com/${endpoint}`, {
       method,
+      redirect: "error",
       signal: AbortSignal.timeout(30_000),
       headers: {
         Authorization: `Bearer ${token}`,
@@ -251,9 +252,25 @@ export async function publishMaintenance(
     base,
     "Main advanced during preparation; rerun against the new base",
   );
+  const trees = new Map<string, Array<{ path: string; type: string; sha: string; mode: string }>>();
   const content = async (path: string, ref: string): Promise<string> => {
+    let tree = trees.get(ref);
+    if (!tree) {
+      const response = await api<{ tree: NonNullable<typeof tree>; truncated: boolean }>(
+        `${prefix}/git/trees/${ref}?recursive=1`,
+      );
+      assert.equal(response.truncated, false, "Cannot validate a truncated repository tree");
+      tree = response.tree;
+      trees.set(ref, tree);
+    }
+    const entry = tree.find((entry) => entry.path === path);
+    assert.ok(
+      entry?.type === "blob" && (entry.mode === "100644" || entry.mode === "100755"),
+      `Missing regular repository file: ${path}`,
+    );
+    assert.match(entry.sha, /^[a-f0-9]{40}$/u, "Invalid repository blob SHA");
     const file = await api<{ content: string; encoding: string }>(
-      `${prefix}/contents/${path}?ref=${ref}`,
+      `${prefix}/git/blobs/${entry.sha}`,
     );
     assert.equal(file.encoding, "base64");
     return Buffer.from(file.content, "base64").toString("utf8");

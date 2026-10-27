@@ -2,12 +2,16 @@ import { afterEach, expect, test, vi } from "vite-plus/test";
 import { spawnSync } from "node:child_process";
 import {
   cpSync,
+  closeSync,
   existsSync,
+  fstatSync,
   mkdirSync,
   mkdtempSync,
+  openSync,
   readFileSync,
   readdirSync,
   rmSync,
+  symlinkSync,
   writeFileSync,
 } from "node:fs";
 import { tmpdir } from "node:os";
@@ -23,6 +27,15 @@ import type { MaintenanceUpgrade } from "./maintenance-plan.ts";
 import { targetReleaseHistory } from "./release-candidates.ts";
 
 vi.mock("node:child_process", () => ({ spawnSync: vi.fn() }));
+vi.mock("node:fs", async (original) => {
+  const fs = await original<typeof import("node:fs")>();
+  return {
+    ...fs,
+    openSync: vi.fn(fs.openSync),
+    readFileSync: vi.fn(fs.readFileSync),
+    closeSync: vi.fn(fs.closeSync),
+  };
+});
 vi.mock("./release-candidates.ts", async (original) => ({
   ...(await original<typeof import("./release-candidates.ts")>()),
   targetReleaseHistory: vi.fn(),
@@ -217,8 +230,102 @@ function fixture(
     }
     return { status: 0, stdout: stdout ?? "", stderr: "", pid: 0, output: [], signal: null };
   }) as unknown as typeof spawnSync);
-  return { trees, commands };
+  return { directory, trees, commands };
 }
+
+test("hashes the opened file even when its pathname is replaced, and closes its descriptor", async () => {
+  fixture();
+  const fs = await vi.importActual<typeof import("node:fs")>("node:fs");
+  let descriptor: number | undefined;
+  vi.mocked(openSync).mockImplementation((path, flags, mode) => {
+    const fd = fs.openSync(path, flags, mode);
+    if (descriptor === undefined && String(path).endsWith("/dist/index.mjs")) {
+      descriptor = fd;
+      rmSync(path);
+      writeFileSync(path, "replacement");
+    }
+    return fd;
+  });
+  const base = "a".repeat(40);
+  await prepareMaintenance(base, base);
+  const read = vi.mocked(readFileSync).mock.calls.findIndex(([file]) => file === descriptor);
+  expect(read).toBeGreaterThanOrEqual(0);
+  expect(vi.mocked(readFileSync).mock.results[read].value.toString()).toBe("react");
+  expect(closeSync).toHaveBeenCalledWith(descriptor);
+  expect(() => fstatSync(descriptor!)).toThrow(/EBADF/u);
+});
+
+test.each(["dist", "dist/index.mjs"])("rejects output symlinks at %s", async (path) => {
+  const state = fixture();
+  const destination = join(state.directory, "renderers/react", path);
+  rmSync(destination, { recursive: true });
+  symlinkSync(
+    path === "dist" ? state.directory : join(state.directory, "package.json"),
+    destination,
+  );
+  const base = "a".repeat(40);
+  await expect(prepareMaintenance(base, base)).rejects.toThrow(/ELOOP/u);
+  expect(state.trees.every((tree) => !existsSync(tree))).toBe(true);
+});
+
+test("allows absent dist output without hiding other filesystem errors", async () => {
+  const state = fixture();
+  rmSync(join(state.directory, "renderers/react/dist"), { recursive: true });
+  const base = "a".repeat(40);
+  await expect(prepareMaintenance(base, base)).resolves.toHaveProperty("base", base);
+  vi.mocked(openSync).mockImplementation(() => {
+    throw Object.assign(new Error("access denied"), { code: "EACCES" });
+  });
+  await expect(prepareMaintenance(base, base)).rejects.toThrow("access denied");
+});
+
+test("rejects changed-file symlinks instead of reading their target", async () => {
+  fixture();
+  const spawn = vi.mocked(spawnSync).getMockImplementation()!;
+  vi.mocked(spawnSync).mockImplementation((...args) => {
+    const result = spawn(...args);
+    if (args[1]?.[0] === "ls-files") {
+      const options = args[2] as { cwd: string };
+      const path = join(options.cwd, "compatibility.json");
+      rmSync(path);
+      symlinkSync("pnpm-workspace.yaml", path);
+      return { ...result, stdout: "compatibility.json" };
+    }
+    return result;
+  });
+  const base = "a".repeat(40);
+  await expect(prepareMaintenance(base, base)).rejects.toThrow(/ELOOP/u);
+});
+
+test("collects from the opened descriptor and records deleted files as null", async () => {
+  fixture();
+  const fs = await vi.importActual<typeof import("node:fs")>("node:fs");
+  let descriptor: number | undefined;
+  let ready = false;
+  vi.mocked(openSync).mockImplementation((path, flags, mode) => {
+    const fd = fs.openSync(path, flags, mode);
+    if (ready && descriptor === undefined && String(path).endsWith("/compatibility.json")) {
+      descriptor = fd;
+      rmSync(path);
+      writeFileSync(path, "replacement");
+    }
+    return fd;
+  });
+  const spawn = vi.mocked(spawnSync).getMockImplementation()!;
+  vi.mocked(spawnSync).mockImplementation((...args) => {
+    const result = spawn(...args);
+    if (args[1]?.[0] === "run" && args[1][1] === "ready") ready = true;
+    return args[1]?.[0] === "ls-files"
+      ? { ...result, stdout: "compatibility.json\n.changeset/deleted.md" }
+      : result;
+  });
+  const base = "a".repeat(40);
+  const result = await prepareMaintenance(base, base);
+  expect(result.files["compatibility.json"]).toBe("{}");
+  expect(result.files[".changeset/deleted.md"]).toBeNull();
+  expect(closeSync).toHaveBeenCalledWith(descriptor);
+  expect(() => fstatSync(descriptor!)).toThrow(/EBADF/u);
+});
 
 test("prepares downstream-only support, breaking Changesets, and removes every owned worktree", async () => {
   const state = fixture();
