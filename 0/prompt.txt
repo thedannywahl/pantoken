@@ -1,0 +1,27 @@
+github security bot findings, add commits and push when resolved:
+[scripts/release/weekly-maintenance.ts](https://github.com/thedannywahl/pantoken/pull/237/files/b61a04c28dd83d9270fb5cd757f99b65c1cd269b#diff-d3c092b959294a2de24fe89f000004b04d66468deaa44a9bd7f8b96c7cbb12b4)
+### CodeQL / Potential file system race condition
+
+The file may have changed since it [was checked](https://github.com/thedannywahl/pantoken/pull/1).
+
+The file may have changed since it [was checked](https://github.com/thedannywahl/pantoken/pull/2).
+
+[scripts/release/maintenance-publication.ts](https://github.com/thedannywahl/pantoken/pull/237/files/b61a04c28dd83d9270fb5cd757f99b65c1cd269b#diff-7f6e4516b8ee30b07c281bd651da68b18568b0ddf2bd883d44d84614ece24df4)
+### CodeQL / File data in outbound network request
+
+Outbound network request depends on [file data](https://github.com/thedannywahl/pantoken/pull/1).
+
+---
+
+github security bot findings, add commits and push when resolved:
+[scripts/release/weekly-maintenance.ts](https://github.com/thedannywahl/pantoken/pull/237/files/b61a04c28dd83d9270fb5cd757f99b65c1cd269b#diff-d3c092b959294a2de24fe89f000004b04d66468deaa44a9bd7f8b96c7cbb12b4)
+### CodeQL / Potential file system race condition
+
+The file may have changed since it [was checked](https://github.com/thedannywahl/pantoken/pull/1).
+
+The file may have changed since it [was checked](https://github.com/thedannywahl/pantoken/pull/2).
+
+[scripts/release/maintenance-publication.ts](https://github.com/thedannywahl/pantoken/pull/237/files/b61a04c28dd83d9270fb5cd757f99b65c1cd269b#diff-7f6e4516b8ee30b07c281bd651da68b18568b0ddf2bd883d44d84614ece24df4)
+### CodeQL / File data in outbound network request
+
+Outbound network request depends on [file data](https://github.com/thedannywahl/pantoken/pull/1).
