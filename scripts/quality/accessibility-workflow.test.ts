@@ -7,9 +7,15 @@ const root = resolve(import.meta.dirname, "../..");
 const workflow = parse(readFileSync(resolve(root, ".github/workflows/ci.yml"), "utf8"));
 const job = workflow.jobs["component-accessibility"];
 
+test("keeps retained tool reports outside contributor Markdown linting", () => {
+  const config = parse(readFileSync(resolve(root, ".markdownlint-cli2.yaml"), "utf8"));
+  expect(config.ignores).toContain("a11y-report");
+  expect(config.ignores).toContain("a11y-report/**");
+});
+
 test("keeps component audits advisory and outside the required CI aggregate", () => {
   expect(job["continue-on-error"]).toBe(true);
-  expect(job["timeout-minutes"]).toBeGreaterThan(0);
+  expect(job["timeout-minutes"]).toBe(120);
   expect(job.needs).toBe("build");
   expect(workflow.jobs["ci-gate"].needs).not.toContain("component-accessibility");
   expect(job.permissions).toEqual({ contents: "read" });

@@ -35,6 +35,8 @@ The `component-accessibility` CI job runs this command after the build and stays
 `ci-gate`. It's advisory even when setup or execution fails; such a failure isn't a clean audit.
 The job always attempts to publish a summary and upload `component-accessibility` evidence
 with 14-day retention. Download that artifact to follow the index's relative report links.
+The complete matrix is browser-intensive: it runs at most two report batches at once, and CI
+allows up to two hours. Original audit reports are excluded from contributor Markdown linting.
 
 ## The gate
 
