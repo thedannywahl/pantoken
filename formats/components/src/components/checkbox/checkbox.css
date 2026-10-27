@@ -23,7 +23,7 @@
  * @cssstate checked
  * @cssstate indeterminate
  * @cssstate disabled
- * @accessibility A native `<input type="checkbox">` drives `:checked`, `:indeterminate`, and `:disabled`; set `el.indeterminate = true` in JavaScript for the mixed state, and note that `-readonly` is styling only since checkboxes have no native readonly attribute.
+ * @accessibility Wrap the native `<input type="checkbox">` and its visible text in a `<label>` to supply its accessible name. The input drives `:checked`, `:indeterminate`, and `:disabled`; set `el.indeterminate = true` in JavaScript for the mixed state. `-readonly` is styling only since checkboxes have no native readonly attribute.
  * @example -canvas-rce -docs
  * ```html
  * <label class="pfx-checkbox --display-block --mb-sm">
