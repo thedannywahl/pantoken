@@ -27,6 +27,14 @@ Each run retains the tool's original Markdown and JSON reports and a coverage in
 `a11y-report/<run>/`. The command returns an error for infrastructure failures; accessibility
 violations alone don't fail it. Keep axe and IBM findings separate, and read incomplete and
 needs-review results rather than treating an empty violations list as a verdict.
+The npm archetype suite retains its authored fixture mapping and local package tarballs alongside
+the reports. These tarballs are test inputs, not release artifacts. Each theme/scheme case uses
+the same semantic example. Keep the report's authored-fixture provenance and browser warnings.
+
+The `component-accessibility` CI job runs this command after the build and stays outside
+`ci-gate`. It's advisory even when setup or execution fails; such a failure isn't a clean audit.
+The job always attempts to publish a summary and upload `component-accessibility` evidence
+with 14-day retention. Download that artifact to follow the index's relative report links.
 
 ## The gate
 
