@@ -31765,3 +31765,20 @@ msgstr "Hoverejuvvon \"view fullscreen\"-buktá, mii lámmá demonstrasuvnna/dae
 #~ msgctxt "docs.api:text"
 #~ msgid "frameTargetOrigin"
 #~ msgstr "frameTargetOrigin"
+
+msgctxt "docs.api:prose"
+msgid "Preserve a removed token's literal value and registration separately for each theme."
+msgstr "Golla forigešuvvon tokena literála árvi ja registrereapmi earmežit juohke fievrruide."
+
+msgctxt "docs.api:prose"
+msgid "The default two-minor deadline; next-major adoption is enforced independently."
+msgstr "Standárdalaš guokte-lahkkeguođa-vahkki; maŋŋel-máŋga diekkájeapme gávajeduvvo iešguđege."
+
+msgctxt "docs.api:prose"
+msgid "The resolved Lucide release, required when retiring a Lucide shim."
+msgstr "Vahkka Lucide release, maid lea njeakaduvvon go maŋŋebealde Lucide shim."
+
+#, pantoken-verbatim
+msgctxt "docs.api:text"
+msgid "removalDeadline"
+msgstr "removalDeadline"

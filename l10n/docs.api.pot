@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: pantoken\n"
-"PO-Revision-Date: 2026-10-16 01:47+0000\n"
+"PO-Revision-Date: 2026-10-26 23:49+0000\n"
 "Last-Translator: pantoken localization engine\n"
 "Language-Team: pantoken\n"
 "MIME-Version: 1.0\n"
@@ -13603,6 +13603,12 @@ msgstr ""
 #: packages/model/src/interfaces/DeprecationEntry.md
 #, no-c-format
 msgctxt "docs.api:prose"
+msgid "Preserve a removed token's literal value and registration separately for each theme."
+msgstr ""
+
+#: packages/model/src/interfaces/DeprecationEntry.md
+#, no-c-format
+msgctxt "docs.api:prose"
 msgid "A human note rendered in the compatibility docs and the changelog."
 msgstr ""
 
@@ -15804,6 +15810,12 @@ msgctxt "docs.api:prose"
 msgid "Parse a `<tier>@<version>` ref (version may lead with `v`). Returns `undefined` if malformed."
 msgstr ""
 
+#: plugins/pantoken/deprecations/src/functions/removalDeadline.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "The default two-minor deadline; next-major adoption is enforced independently."
+msgstr ""
+
 #: plugins/pantoken/deprecations/src/functions/shimEntries.md
 #, no-c-format
 msgctxt "docs.api:prose"
@@ -15862,6 +15874,12 @@ msgstr ""
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "`@instructure/instructure-design-tokens` pinned ref, e.g. `\"v1.5.0\"`."
+msgstr ""
+
+#: plugins/pantoken/deprecations/src/interfaces/UpstreamVersions.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "The resolved Lucide release, required when retiring a Lucide shim."
 msgstr ""
 
 #: plugins/pantoken/layouts/src/functions/calloutRules.md

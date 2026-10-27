@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: pantoken\n"
-"PO-Revision-Date: 2026-10-16 01:57+0000\n"
+"PO-Revision-Date: 2026-10-26 23:28+0000\n"
 "Last-Translator: pantoken localization engine\n"
 "Language-Team: pantoken\n"
 "MIME-Version: 1.0\n"
@@ -31188,3 +31188,20 @@ msgstr "Kohteen ratkaisu (ensimmäinen osuma voittaa):\n1. `data-close-target=\"
 msgctxt "docs.api:prose"
 msgid "Dismiss strategy:\n- `<dialog>` → `dialog.close()`\n- `[popover]` → `el.hidePopover()`\n- `.instui-alert` or `.instui-banner` → cancelable `dismiss` event, then fade out and remove\n- `[data-dismissible]` or `[open]` → remove open attr + fire bubbling `close`"
 msgstr "Sulkemisstrategia:\n- `<dialog>` → `dialog.close()`\n- `[popover]` → `el.hidePopover()`\n- `.instui-alert` tai `.instui-banner` → peruutettavissa oleva `dismiss` -tapahtuma, sitten häivytä ja poista\n- `[data-dismissible]` tai `[open]` → poista open-attribuutti + laukaise kupliva `close`"
+
+msgctxt "docs.api:prose"
+msgid "Preserve a removed token's literal value and registration separately for each theme."
+msgstr "Säilytä poistetun tokenin kirjaimellinen arvo ja rekisteröinti erikseen jokaiselle teemalle."
+
+msgctxt "docs.api:prose"
+msgid "The default two-minor deadline; next-major adoption is enforced independently."
+msgstr "Kahden pienen version oletusääräaika; seuraavan pääversion käyttöönotto on pakotettu itsenäisesti."
+
+msgctxt "docs.api:prose"
+msgid "The resolved Lucide release, required when retiring a Lucide shim."
+msgstr "Ratkaistu Lucide-julkaisu, jota vaaditaan Lucide-shimia poistettaessa."
+
+#, pantoken-verbatim
+msgctxt "docs.api:text"
+msgid "removalDeadline"
+msgstr "removalDeadline"

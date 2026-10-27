@@ -4,7 +4,8 @@ import type { Compatibility, ConsumerEntry } from "./compatibility.ts";
 import { targetSupport } from "./target-versions.ts";
 
 const root = join(import.meta.dirname, "../..");
-const npmTargets: Record<string, string> = {
+/** npm release sources keyed by the adapter that verifies them. */
+export const npmTargets: Record<string, string> = {
   "@pantoken/next": "next",
   "@pantoken/panda": "@pandacss/dev",
   "@pantoken/postcss": "postcss",
@@ -30,10 +31,12 @@ const npmTargets: Record<string, string> = {
   "@pantoken/vue": "vue",
   "@pantoken/vitepress": "vitepress",
 };
-const composerTargets: Record<string, string> = {
+/** Composer release sources keyed by the adapter that verifies them. */
+export const composerTargets: Record<string, string> = {
   "@pantoken/drupal": "drupal/core",
 };
-const githubTargets: Record<string, string> = {
+/** GitHub release repositories keyed by the adapter that verifies them. */
+export const githubTargets: Record<string, string> = {
   "@pantoken/hugo": "gohugoio/hugo",
   "@pantoken/jekyll": "jekyll/jekyll",
 };
@@ -171,20 +174,28 @@ export async function publishIssues(pending: readonly PendingRelease[]): Promise
 }
 
 /** Find all adapters with a known feed and an uncovered stable release. */
+export async function discoverTargetReleases(
+  consumers: readonly ConsumerEntry[],
+): Promise<PendingRelease[]> {
+  const pending: PendingRelease[] = [];
+  for (const consumer of consumers) {
+    const release = await pendingRelease(consumer);
+    if (release) pending.push(release);
+  }
+  return pending;
+}
+
+/** Discover updates against the latest committed target support records. */
 export async function pendingTargetReleases(): Promise<PendingRelease[]> {
   const { consumers } = JSON.parse(
     readFileSync(join(root, "compatibility.json"), "utf8"),
   ) as Compatibility;
-  const pending: PendingRelease[] = [];
-  for (const consumer of consumers) {
-    if (!(consumer.package in npmTargets) && consumer.package !== "@pantoken/wordpress") continue;
-    const release = await pendingRelease({
+  return discoverTargetReleases(
+    consumers.map((consumer) => ({
       ...consumer,
       targetSupport: targetSupport(consumer.package),
-    });
-    if (release) pending.push(release);
-  }
-  return pending;
+    })),
+  );
 }
 
 /** Check all adapters with a known feed and flag unsupported stable releases for review. */

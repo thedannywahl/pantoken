@@ -1,5 +1,10 @@
 import { afterEach, expect, test, vi } from "vite-plus/test";
-import { isNewer, pendingRelease, publishIssues } from "./check-target-releases.ts";
+import {
+  discoverTargetReleases,
+  isNewer,
+  pendingRelease,
+  publishIssues,
+} from "./check-target-releases.ts";
 import type { ConsumerEntry } from "./compatibility.ts";
 
 afterEach(() => {
@@ -21,6 +26,27 @@ const wordpress: ConsumerEntry = {
     testCommand: "vp run @pantoken/wordpress#check:compatibility",
   },
 };
+
+test("discovery includes Composer and GitHub targets and ignores unknown feeds", async () => {
+  const fetcher = vi.fn(async (url: string) => ({
+    ok: true,
+    json: async () =>
+      url.includes("packagist")
+        ? { packages: { "drupal/core": [{ version: "12.0.0-beta.1" }, { version: "12.0.0" }] } }
+        : { tag_name: "v12.0.0" },
+  }));
+  vi.stubGlobal("fetch", fetcher);
+  const consumers = ["drupal", "hugo", "jekyll", "unknown"].map((name) => ({
+    ...wordpress,
+    package: `@pantoken/${name}`,
+  }));
+  expect((await discoverTargetReleases(consumers)).map((release) => release.package)).toEqual([
+    "@pantoken/drupal",
+    "@pantoken/hugo",
+    "@pantoken/jekyll",
+  ]);
+  expect(fetcher).toHaveBeenCalledTimes(3);
+});
 
 test("compares numeric release trains without treating prereleases as supported", () => {
   expect(isNewer("7.2", "7.1.2")).toBe(true);

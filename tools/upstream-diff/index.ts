@@ -51,6 +51,7 @@ const ledger = JSON.parse(readFileSync(ledgerPath, "utf8")) as DeprecationLedger
 const currentUpstream = {
   ui: provenance.uiIcons.resolved,
   designTokens: provenance.designTokens.ref,
+  lucide: provenance.lucide.resolved,
 };
 
 /** Deprecations whose `removeIn` upstream minor the current build has reached — shims to retire now. */

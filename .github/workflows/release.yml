@@ -240,7 +240,16 @@ jobs:
         env:
           GH_TOKEN: ${{ secrets.RELEASE_PAT }}
           PR: ${{ steps.changesets.outputs['pr-number'] }}
-        run: gh pr merge "$PR" --squash --auto --repo "$GITHUB_REPOSITORY"
+          RELEASE_ACTOR: ${{ vars.RELEASE_ACTOR || github.repository_owner }}
+        run: |
+          actual=$(gh api "repos/$GITHUB_REPOSITORY/pulls/$PR" --jq '[.head.repo.full_name,.head.ref,.base.ref,.user.login,.title] | join("|")')
+          expected="$GITHUB_REPOSITORY|changeset-release/main|main|$RELEASE_ACTOR|chore: version packages"
+          if [[ "$actual" != "$expected" ]]; then
+            echo "::error::Refusing auto-merge outside the authenticated release flow."
+            exit 1
+          fi
+          sha=$(gh api "repos/$GITHUB_REPOSITORY/pulls/$PR" --jq '.head.sha')
+          gh pr merge "$PR" --squash --auto --match-head-commit "$sha" --repo "$GITHUB_REPOSITORY"
 
       # Attach SLSA provenance to each new GitHub release so Scorecard's Signed-Releases check detects
       # signing. publish-npm.ts packs each published package into $RUNNER_TEMP/pantoken-packs/*.tgz and

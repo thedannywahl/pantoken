@@ -34,10 +34,11 @@
   skips them.
 - **Commit messages are conventional-commit-linted** locally by the `.vite-hooks/commit-msg` hook
   (`vp exec commitlint --edit`) and in CI by the `commitlint` job.
-- Release automation uses Changesets and package-tag workflows in
+- Release automation uses Changesets on pushes to `main` in
   `.github/workflows/release.yml`. That workflow verifies a clean build/typecheck/test + `gate:repository`,
   then scopes the pack-heavy `publint`/`attw` gates to exactly the publish set (the full `ready` already
-  ran on the merge-to-main the tag points at).
+  ran on the merge-to-main commit). Weekly Renovate proposals are prepared and partitioned by
+  `.github/workflows/renovate.yml`; only the final tested passing branch enables auto-merge.
 - Use `pnpm run release:version` to apply package changelog/version updates, then
   `vp run release:changelog:root` to rebuild the strict chronological root `CHANGELOG.md` before
   creating package tags.
@@ -47,6 +48,103 @@
 
 See `docs/internal/release-strategy.md` for the runbook, dist-tag mapping, prerelease flow, and npm
 organization governance model.
+
+## Weekly maintenance
+
+`.github/workflows/renovate.yml` runs self-hosted Renovate Monday at 06:00 UTC, with a manual
+dispatch for retries. One draft proposal groups dependency updates, including majors, GitHub
+Actions, and the GitHub-only Instructure design-token tag. The existing five-day maturity delay
+still applies. Native standalone lockfile-maintenance PRs are disabled; the coordinator refreshes
+the lockfile and downstream support even on weeks without manifest bumps.
+
+`scripts/release/weekly-maintenance.ts` tests coupled candidate groups in disposable worktrees
+without repository-write credentials. It runs explicit owning-adapter checks for framework bumps,
+prepares frozen upstream deprecations, blesses the baseline, regenerates compatibility files, and
+creates deterministic package Changesets. The final combined tree passes `vp run ready` and
+`vp run check:publish`; final-head PR CI must pass again before GitHub auto-merges it.
+
+Downstream support retains the current and previous released stable major. Older majors age out
+even when passing; a compatibility assertion can drop the previous major early. Infrastructure
+errors and missing evidence never withdraw support. Adding support gets a minor; support-floor
+increases and public shim removals are breaking (minor during 0.x, major from 1.0). Compatible
+dependency/output refreshes get patches; Actions-only changes do not invent package releases.
+
+Removed upstream tokens freeze complete prior-build values separately for each theme, including
+removed icon artwork. Automation does not infer replacements. Shims retire at the earlier of two
+upstream minor increments or the next upstream major; existing earlier deadlines remain valid.
+
+`scripts/release/maintenance-publication.ts` uses trusted base code to validate the bounded handoff,
+immutable refs, allowed paths, and manifest invariants before pushing. Failures get individual
+deduplicated issues and a separate draft containing failed updates. That draft cannot pass the
+automation guard. Exact-version issues close only after matching evidence merges to `main`.
+
+Rollout needs `RELEASE_PAT` with repository Contents, Pull requests, Issues, and workflow-update
+permissions; candidate execution never receives it. Set `RELEASE_ACTOR` if the token's login
+differs from the repository owner. Require `ci-gate`, `changeset-gate`, and existing security and
+coverage checks, enable auto-merge, and avoid competing hosted Renovate processing. Do not grant
+an administrative bypass. Verify the maintenance merge, authenticated Changesets version PR,
+OIDC publish, immutable release attestations, and docs deployment request in a controlled run;
+local tests and workflow linting do not prove the live GitHub event chain.
+
+## GitHub Ruleset Setup
+
+GitHub branch rules match the destination branch, not the PR author or source branch. Extend
+the existing `main` ruleset rather than applying a blanket update/force-push restriction to
+`renovate/*`, which Renovate needs to rebase.
+
+1. Merge `.github/workflows/renovate-policy.yml` and `scripts/release/renovate-policy.ts` into
+   `main` first. The policy executes trusted base-branch code, never candidate code, and posts
+   the `renovate-policy` commit status directly on the current PR head SHA.
+2. Open or synchronize a PR targeting `main` and wait for `Renovate merge policy` to report.
+   Do not require the status before this first run; otherwise every open PR can be stranded
+   waiting for a workflow that is not available on the default branch yet.
+3. In repository **Settings > Rules > Rulesets**, edit the existing **main** branch ruleset.
+   Keep enforcement **Active** and target **Default branch** (or `refs/heads/main`).
+4. Under **Require status checks to pass**, keep `ci-gate`, `changeset-gate`, and `codecov/patch`.
+   Add **renovate-policy**, selecting **GitHub Actions** as the expected source. Require branches
+   to be up to date before merging. Do not select the workflow job label
+   `Evaluate trusted automation policy`; the required status context is `renovate-policy`.
+5. Keep **Require a pull request before merging**, **Require conversation resolution**, and
+   **Squash** as the allowed merge method. Keep the global required-approval count at **0** so
+   passing weekly-maintenance and Changesets PRs can auto-merge. The new policy separately requires
+   approval for component follow-ups; raising the global count would block the automatic chain.
+6. Preserve **Block force pushes**, **Restrict deletions**, the existing **85% code coverage** and
+   **5% maximum coverage drop**, **CodeQL medium-or-higher security alerts / errors**, and
+   **Code quality: errors** rules on `main`. Do not add a bot/admin bypass around these gates.
+7. Leave repository **Settings > General > Allow auto-merge** enabled. Under
+   **Settings > Secrets and variables > Actions > Variables**, set `RELEASE_ACTOR` and
+   `RENOVATE_ACTOR` only if their token/App logins differ from the repository owner. They must
+   match the real PR authors, not display names. `RENOVATE_ACTOR` otherwise inherits `RELEASE_ACTOR`.
+8. Verify a normal feature PR passes, an incorrect author on a reserved automation branch fails,
+   `maintenance/failed-updates` fails, and `maintenance/component-reviews` requires a human
+   maintainer other than its author to approve its current commit. New commits and dismissed
+   approvals must invalidate that permission; component follow-ups must have auto-merge disabled.
+
+If the automation PAT belongs to the only human maintainer, that person cannot approve their own
+component-review PR. Use a separate bot identity or another maintainer's review rather than
+weakening the rule. The workflow token has read access plus commit-status write permission only;
+it receives no `RELEASE_PAT` and cannot push source or publish packages. Existing rulesets remain
+unchanged until an administrator follows these activation steps.
+
+## Upstream Component Follow-Up
+
+Weekly maintenance also produces a separate `maintenance/component-reviews` draft and deduplicated
+issues for new component token families, new tokens/variants on existing components, unresolved
+reference-map changes, and custom components newly exported by InstUI. These authoring tasks do
+not auto-merge with dependency updates. Raw token families and source directories determine
+ownership: token-only components go to `plugins/pantoken/custom-components`; existing canonical
+components, such as Card, retain their owner under `formats/components`.
+
+Stable token names follow changed upstream references through the existing core resolver when
+registration and target evidence agree. Ambiguous changes list their before/after references and
+themes for manual mapping review. A failed version-pinned InstUI export lookup is itself reported;
+automation never treats a token's existence as proof of upstream component availability.
+
+For promotions, the draft includes an unapplied patch moving the custom CSS into the canonical
+component directory and replacing the custom function with a functional deprecated forwarder,
+following `cardRules` and `cardCss`. The patch records the upstream adoption and alias retirement
+boundaries. Registry order, exports, focused drift tests, guides, demos, browser verification, and
+actual InstUI parity remain mandatory human-reviewed work before applying and merging it.
 
 ## Linting CSS
 

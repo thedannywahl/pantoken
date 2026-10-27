@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: pantoken\n"
-"PO-Revision-Date: 2026-10-16 01:51+0000\n"
+"PO-Revision-Date: 2026-10-26 23:24+0000\n"
 "Last-Translator: pantoken localization engine\n"
 "Language-Team: pantoken\n"
 "MIME-Version: 1.0\n"
@@ -31192,3 +31192,20 @@ msgstr "Resolució de la destinació (guanya la primera coincidència):\n1. `dat
 msgctxt "docs.api:prose"
 msgid "Dismiss strategy:\n- `<dialog>` → `dialog.close()`\n- `[popover]` → `el.hidePopover()`\n- `.instui-alert` or `.instui-banner` → cancelable `dismiss` event, then fade out and remove\n- `[data-dismissible]` or `[open]` → remove open attr + fire bubbling `close`"
 msgstr "Estratègia de tancament:\n- `<dialog>` → `dialog.close()`\n- `[popover]` → `el.hidePopover()`\n- `.instui-alert` o `.instui-banner` → esdeveniment cancel·lable `dismiss`, després es difumina i s'elimina\n- `[data-dismissible]` o `[open]` → eliminar l'atribut open + disparar l'esdeveniment de burbleig `close`"
+
+msgctxt "docs.api:prose"
+msgid "Preserve a removed token's literal value and registration separately for each theme."
+msgstr "Preserva el valor literal d'un token eliminat i el registre separadament per a cada tema."
+
+msgctxt "docs.api:prose"
+msgid "The default two-minor deadline; next-major adoption is enforced independently."
+msgstr "La data límit per defecte de dues versions menors; l'adopció de la següent versió major s'imposa de forma independent."
+
+msgctxt "docs.api:prose"
+msgid "The resolved Lucide release, required when retiring a Lucide shim."
+msgstr "La versió resuelta de Lucide, necessària en retirar una Lucide shim."
+
+#, pantoken-verbatim
+msgctxt "docs.api:text"
+msgid "removalDeadline"
+msgstr "removalDeadline"

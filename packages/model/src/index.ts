@@ -68,6 +68,8 @@ export interface DeprecationEntry {
   replacement?: string;
   /** Freeze the shim to a literal (the token's last-known value) when there's no replacement. */
   value?: string;
+  /** Preserve a removed token's literal value and registration separately for each theme. */
+  frozen?: Record<Theme, Pick<Token, "value" | "syntax" | "inherits" | "themed" | "meta">>;
   /** A human note rendered in the compatibility docs and the changelog. */
   note?: string;
 }
