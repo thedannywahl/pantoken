@@ -96,10 +96,17 @@ test("expands exactly six unique cases per example and loads local production as
   expect(page).toContain('document.querySelector(".instui-tooltip [data-a11y-trigger]")?.focus()');
   expect(page).toContain('[role="treeitem"][aria-expanded="false"]');
   expect(page).toContain('row.querySelector(".item")?.click()');
+  expect(page).toContain(
+    ".instui-form-field[data-native-validation] input[data-a11y-trigger][required]",
+  );
+  expect(page).toContain("control.checkValidity()");
   expect(behaviorNames('<div class="instui-tabs"></div>')).toEqual(["tabs"]);
   expect(behaviorNames('<div class="instui-tree-browser" role="tree"></div>')).toEqual([
     "tree-browser",
   ]);
+  expect(behaviorNames('<label class="instui-form-field" data-native-validation></label>')).toEqual(
+    ["form-field"],
+  );
   expect(behaviorNames("<p>instui-tabs</p>")).toEqual([]);
 });
 test("checks exact completed coverage without interpreting violations as failures", () => {
@@ -536,7 +543,7 @@ test.each(["success", "pack failure", "fixture gap", "no archetype", "full inven
       "components/fonts.css",
     ])
       writeFileSync(join(root, "pages", "assets", file), "/* built */");
-    for (const name of ["modal", "tabs", "tooltip", "close-button"])
+    for (const name of ["modal", "tabs", "tooltip", "close-button", "form-field"])
       writeFileSync(join(root, "pages", "assets", "interactions", `${name}.iife.js`), "");
     writeIndex(root, [], []);
     vi.spyOn(console, "error").mockImplementation(() => {});

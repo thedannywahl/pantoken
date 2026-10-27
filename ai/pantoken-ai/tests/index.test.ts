@@ -62,7 +62,7 @@ test("installed agent assets link to the published compatibility registry", () =
   expect(readFileSync(join(dir, "AGENTS.md"), "utf8")).toContain("`$schema`");
 });
 
-test("installed usage assets describe tree behavior and shadow-region naming", () => {
+test("installed usage assets describe tree behavior, shadow names, and opt-in validation", () => {
   const dir = mkdtempSync(join(tmpdir(), "pantoken-ai-tree-"));
   try {
     installAgentAssets("all", dir);
@@ -78,6 +78,8 @@ test("installed usage assets describe tree behavior and shadow-region naming", (
       expect(content).toContain("disclosures");
       expect(content).toContain("tray-label");
       expect(content).toContain("content-label");
+      expect(content).toContain("initFormField");
+      expect(content).toContain("data-native-validation");
     }
   } finally {
     rmSync(dir, { recursive: true, force: true });

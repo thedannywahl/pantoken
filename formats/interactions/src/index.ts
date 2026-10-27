@@ -17,3 +17,4 @@ export * from "./behaviors/tabs.js";
 export * from "./behaviors/skeleton-loader.js";
 export * from "./behaviors/segmented-control.js";
 export * from "./behaviors/tree-browser.js";
+export * from "./behaviors/form-field.js";

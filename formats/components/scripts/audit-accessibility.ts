@@ -144,6 +144,7 @@ export function behaviorNames(html: string): string[] {
     "in-place-edit",
     "drawer-layout",
     "tree-browser",
+    "form-field",
   ];
   return candidates.filter((name) =>
     new RegExp(`class="[^"]*\\binstui-${name}\\b`, "u").test(html),
@@ -183,6 +184,10 @@ document.querySelector(".instui-tooltip [data-a11y-trigger]")?.focus();
 document.addEventListener("DOMContentLoaded", () => {
   for (const row of document.querySelectorAll('.instui-tree-browser [role="treeitem"][aria-expanded="false"]')) {
     row.querySelector(".item")?.click();
+  }
+  for (const control of document.querySelectorAll('.instui-form-field[data-native-validation] input[data-a11y-trigger][required]')) {
+    control.value = "";
+    control.checkValidity();
   }
 });
 </script>
@@ -381,7 +386,7 @@ export function writeIndex(
     ),
     "",
     "Page targets run rules, conditions, and simulated screen-reader checks. Authored npm archetypes additionally run interaction and computed checks.",
-    "Page fixtures expand dialogs, native popovers, disclosures, and ARIA-tree collections and focus tooltip triggers. Npm fixtures preserve authored initial states and exercise production behavior.",
+    "Page fixtures expand dialogs, native popovers, disclosures, and ARIA-tree collections, reveal required form-field errors through native validation, and focus tooltip triggers. Npm fixtures preserve authored initial states and exercise production behavior.",
     `Supported npm archetypes: ${Object.keys(ARCHETYPES).join(", ")}. No documented combobox or chart contract is claimed.`,
     "Hidden/closed surfaces and unsupported checks aren't passes. Read the original reports for gaps, warnings, and engine-specific findings.",
     "Coverage notices are diagnostic entries, not unique defects. They can overlap explicit gaps/undetermined checks; don't add these counts together.",

@@ -89,6 +89,29 @@ export function initModal(
 
 ## Shared helpers
 
+### Opt-in native form validation
+
+`initFormField(host, control, error)` uses a native input, select, or textarea's constraints and
+`setCustomValidity()` result; it doesn't choose validation rules or error text. Supply a separate
+error element inside the field, with nonempty text and a stable, unique ID.
+
+The helper keeps untouched fields quiet. Blur, a native `invalid` event, or `handle.validate()`
+reveals and associates an invalid field's error through `aria-describedby` and sets `aria-invalid`.
+Afterward, input events revalidate, preserving hint references and removing the error when corrected.
+Form reset returns the field to pristine state; canceled resets keep the current state. Cleanup
+removes listeners and restores the initial ARIA attributes, invalid modifier, and error visibility.
+Reinitialize after changing the error ID or moving the control to another form.
+
+For automatic initialization, load `form-field.iife.js` (or the combined IIFE) and add
+`data-native-validation` to `.instui-form-field`. Each opted-in field needs exactly one native
+control and one `.instui-form-field-message.-type-error` (or `-type-new-error`) with an ID.
+Without that marker, application-owned validation stays untouched. There's no form-field custom
+element to wire; consumers can call the same helper within their own DOM.
+
+Client-side constraints aren't a security boundary. Applications still validate submitted values
+on the server. An error element's `hidden` attribute takes precedence over the field's CSS
+error-display rules.
+
 ### Close-button targets
 
 `initCloseButton` uses `data-close-target` when present, or the nearest dialog, popover,

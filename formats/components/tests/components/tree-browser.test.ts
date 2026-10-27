@@ -39,7 +39,7 @@ test("tree-browser examples use named focusable treeitems and production behavio
     expect(group?.getAttribute("role")).toBe("group");
     expect(branch.contains(group!)).toBe(false);
   }
-  expect(css).toContain("@pantoken/interactions/tree-browser.js");
+  expect(css).toContain("@pantoken/interactions/tree-browser.iife.js");
   expect(css).toContain('[role="treeitem"][aria-expanded="true"] > .item::before');
   expect(css).toContain("prefers-reduced-motion");
   void window.happyDOM.abort();

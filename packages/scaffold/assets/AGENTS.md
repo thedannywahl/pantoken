@@ -139,6 +139,9 @@ component registry.
   with `aria-owns`. Native details/summary disclosures remain a CSS-only alternative without tree roles.
 - **Drawer layout:** Give `<instui-drawer-layout>` nonempty `tray-label` and `content-label`
   attributes to name its shadow-DOM regions. Labels on slotted content don't name those panes.
+- **Form validation:** Native validation is opt-in via `initFormField(host, control, error)` or
+  `data-native-validation` plus `form-field.iife.js`. Supply a separate error with a unique ID.
+  CSS alone doesn't synchronize error associations; client-side checks don't replace server validation.
 - **Tailwind:** add `pantokenPreset()` to `presets` and import `@pantoken/css`.
 - **Native app:** `npx pantoken generate swift --out ./ios/Tokens --icons arrow-left,check-mark`.
 - **Rust app:** `npx pantoken generate rust --out ./src/tokens.rs --format egui`.

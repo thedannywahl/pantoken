@@ -35,6 +35,7 @@ const ALL_COMPONENTS = [
   "tabs",
   "skeleton-loader",
   "segmented-control",
+  "form-field",
 ];
 
 // Components that require command event handling

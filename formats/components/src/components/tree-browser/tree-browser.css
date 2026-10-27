@@ -9,7 +9,7 @@
  * @part .item — A leaf entry in the tree.
  * @pseudo ::before — Draws each collection's disclosure chevron, a masked glyph that rotates to point down when the branch is open.
  * @cssstate open
- * @a11y Name the `role="tree"` root, use focusable `role="treeitem"` nodes, and associate each collection with its `role="group"` via `aria-owns`. Load `@pantoken/interactions/tree-browser.js` for one tab stop and synchronized expansion. Add `aria-selected` to opt into single selection; focus alone doesn't select.
+ * @a11y Name the `role="tree"` root, use focusable `role="treeitem"` nodes, and associate each collection with its `role="group"` via `aria-owns`. Load `@pantoken/interactions/tree-browser.iife.js` for one tab stop and synchronized expansion. Add `aria-selected` to opt into single selection; focus alone doesn't select.
  * @example -canvas-rce -docs
  * ```html
  * <div class="pfx-tree-browser" role="tree" aria-label="Course files">

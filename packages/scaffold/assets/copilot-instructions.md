@@ -27,6 +27,9 @@ When styling this project, use pantoken components, icons and tokens.
   Native details/summary disclosures can use the CSS without claiming tree roles.
 - Give `<instui-drawer-layout>` nonempty `tray-label` and `content-label` attributes to name its
   shadow-DOM regions. Labels on slotted content don't name those panes.
+- Native form validation is opt-in through `initFormField(host, control, error)` or
+  `data-native-validation` plus `form-field.iife.js`. Supply a separate error with a unique ID.
+  CSS alone doesn't synchronize error associations; server-side validation is still required.
 - Tailwind: `pantokenPreset()` from `@pantoken/tailwind`.
 - Native / CMS/site/design targets: `npx pantoken generate
   <swift|android|compose|flutter|rust|wordpress|vanilla|drupal|swatches|icon-font|pendo|mintlify|jekyll|hugo>`.

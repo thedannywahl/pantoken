@@ -37,6 +37,11 @@ pantoken is a design-token transformation and distribution system. It converts I
 - SkeletonLoader's parent loading-region helper accepts application-supplied state events and announcement labels. It writes labels as text, not HTML, and requires initially empty status and error elements outside the busy region in the application's server-rendered markup. It does not sanitize application content or control which results the application renders.
 - DrawerLayout's `tray-label` and `content-label` values become `aria-label` attribute strings on
   its shadow regions, not parsed HTML. Applications must supply descriptive, nonempty names.
+- FormField's opt-in native-validation helper checks browser constraint validity and associates an
+  authored error by ID. It requires the control and a separate, named error with message text inside
+  the host, preserves hint references, and doesn't parse messages as HTML. Applications own the
+  rules, message content, and server-side validation; client-side validity isn't an authorization
+  or input-sanitization boundary.
 - TreeBrowser's application-supplied `aria-owns` references must identify groups inside the same
   tree that don't contain the owning row. The behavior rejects missing, external, and non-group
   references and excludes nested-tree events. This scopes DOM updates; it doesn't sanitize markup

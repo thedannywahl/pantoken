@@ -132,6 +132,7 @@ Security-relevant entry points include:
 - Public JavaScript APIs that accept token arrays, plugin objects, options, Markdown trees, and HTML
   fragments.
 - Browser component attributes and CSS custom properties consumed by interaction helpers.
+- Opt-in native FormField constraints and authored error elements with stable IDs.
 - Parent loading-region state events and announcement labels consumed by the SkeletonLoader interaction helper.
 - CLI arguments and caller-selected output paths.
 - Documentation demo specifications and generated iframe attributes.
@@ -375,6 +376,7 @@ since the runner writes the scale into a generated `srcdoc` attribute.
 | Malformed browser numeric input       | Alert timeouts and ProgressCircle delays accept only finite values; Progress web-component values clamp between zero and a positive maximum; the Canvas preview width accepts only positive safe integers.                                                                                                                                                                                                                    |
 | Cross-tree DOM updates                | TreeBrowser resolves owned groups by ID and rejects missing, external, non-group references and groups containing their owning row. Events from nested trees are excluded from the parent behavior. Regression tests cover invalid ownership and scoped keyboard handling.                                                                                                                                                    |
 | Browser label interpretation          | DrawerLayout copies pane labels into `aria-label` through `setAttribute`, not HTML parsing. Regression tests verify that markup-like label text doesn't create elements.                                                                                                                                                                                                                                                      |
+| Form validation ownership             | Native FormField validation is opt-in. The helper requires contained controls and separate error elements with nonempty IDs and text, preserves hint references, and uses attribute strings rather than HTML parsing. Tests cover invalid references, cleanup, native validity, and reset cancellation.                                                                                                                       |
 | Malformed or missing generated output | Build-before-test ordering, generated-output validation, reference-integrity checks, package export checks, and failure aggregation.                                                                                                                                                                                                                                                                                          |
 | Dependency vulnerabilities            | Renovate and Dependabot monitoring, a dependency release-age delay, Snyk dependency scanning, CodeQL, and OpenSSF Scorecard.                                                                                                                                                                                                                                                                                                  |
 | Release tampering                     | npm registry signatures, Sigstore provenance, npm OIDC trusted publishing, GitHub immutable releases, and public verification instructions.                                                                                                                                                                                                                                                                                   |
@@ -419,6 +421,11 @@ The following risks remain or are deliberately outside the security claim:
 - **Drawer landmark names.** Applications supply nonempty tray and content labels. DrawerLayout
   writes labels through `setAttribute`, not HTML parsing; tests cover literal markup-like text.
   This prevents label text from creating elements, but doesn't sanitize slotted content.
+
+- **Native form validation.** Browser constraints and `setCustomValidity()` are application-owned.
+  Opt-in FormField behavior manages presentation and ARIA associations, not server validation,
+  authorization, or sanitization. Error IDs must stay unique; reinitialize after changing IDs or
+  moving a control to another form. Real assistive-technology review remains necessary.
 
 - **Automated maintenance evidence.** Compatibility tests do not establish visual equivalence,
   upstream intent, or absence of malicious dependency behavior. Disposable worktrees and sanitized

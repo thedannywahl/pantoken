@@ -100,8 +100,9 @@
     },
     {
       "name": "form-field",
-      "type": "css-only",
-      "css": "https://cdn.jsdelivr.net/npm/@pantoken/components/dist/form-field.css"
+      "type": "both",
+      "css": "https://cdn.jsdelivr.net/npm/@pantoken/components/dist/form-field.css",
+      "js": "https://cdn.jsdelivr.net/npm/@pantoken/interactions/dist/form-field.iife.js"
     },
     {
       "name": "form-field-group",
