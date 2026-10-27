@@ -1,15 +1,18 @@
 /**
  * @component tooltip
  * @selector .pfx-tooltip
- * @summary A CSS hover and focus tooltip bubble, positionable on any side.
- * @remarks Toggling is pure CSS (`:hover`/`:focus-within`), so the bubble only reaches keyboard users through a focusable trigger; unlike `popover`, it isn't dismissible or click-triggered.
+ * @summary A hover and focus tooltip bubble, positionable on any side.
+ * @remarks Load `@pantoken/interactions/tooltip.iife.js` for managed delays, Escape dismissal, and combined pointer/focus state. Without JavaScript, hover/focus remains a fallback without Escape or delay guarantees. Use a popover for interactive content.
  * @modifier -icon-* — Render a trigger glyph icon next to the tooltip bubble.
  * @part .tip — The bubble; `-placement-*` sets its side.
- * @a11y Point the trigger at the bubble with aria-describedby and give the bubble role="tooltip".
+ * @a11y Use a named, focusable trigger with aria-describedby pointing at the role="tooltip" bubble. Keep the content noninteractive. Initialized tooltips stay dismissed after Escape until both pointer and focus leave; the next entry can reopen them.
+ * @demo self:tooltip
  * @example -canvas-rce
  * ```html
- * <span class="pfx-tooltip" aria-describedby="tt-1">
- *   <span class="pfx-icon -icon-info"></span>
+ * <span class="pfx-tooltip">
+ *   <button class="pfx-icon-button" type="button" aria-label="Information" aria-describedby="tt-1">
+ *     <span class="pfx-icon -icon-info" aria-hidden="true"></span>
+ *   </button>
  *   <span class="tip" id="tt-1" role="tooltip">Default placement is top</span>
  * </span>
  * ```
@@ -62,8 +65,17 @@
       white-space: nowrap;
       opacity: 0;
       visibility: hidden;
-      pointer-events: none;
+      pointer-events: auto;
       transition: opacity 0.15s ease;
+
+      /* Bridge the visual gap so moving from trigger to bubble doesn't leave the wrapper. */
+      &::before {
+        content: "";
+        position: absolute;
+        inset-inline: 0;
+        inset-block-start: 100%;
+        block-size: var(--instui-spacing-space-xs);
+      }
 
       /* translateX is physical while the inset is logical, so RTL needs the opposite sign to stay centered. */
       &:dir(rtl) {
@@ -75,6 +87,10 @@
       &.-placement-bottom {
         inset-block: 100% auto;
         margin-block: var(--instui-spacing-space-xs) 0;
+
+        &::before {
+          inset-block: auto 100%;
+        }
       }
 
       &.-placement-start {
@@ -84,6 +100,13 @@
         transform: translateY(-50%);
         margin: 0;
         margin-inline-end: var(--instui-spacing-space-xs);
+
+        &::before {
+          inset-block: 0;
+          inset-inline: 100% auto;
+          inline-size: var(--instui-spacing-space-xs);
+          block-size: auto;
+        }
       }
 
       &.-placement-end {
@@ -93,12 +116,19 @@
         transform: translateY(-50%);
         margin: 0;
         margin-inline-start: var(--instui-spacing-space-xs);
+
+        &::before {
+          inset-block: 0;
+          inset-inline: auto 100%;
+          inline-size: var(--instui-spacing-space-xs);
+          block-size: auto;
+        }
       }
     }
 
-    /* Show on hover or keyboard focus of the trigger. */
-    &:hover > .tip,
-    &:focus-within > .tip {
+    &:not([data-tooltip-managed]):hover > .tip,
+    &:not([data-tooltip-managed]):focus-within > .tip,
+    &[data-tooltip-managed] > .tip.-show {
       opacity: 1;
       visibility: visible;
     }

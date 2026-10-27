@@ -65,6 +65,27 @@ can't clear a newer open state; separate hosts still receive a bubbling `close` 
 
 ## Shared helpers
 
+### Progressively enhanced tooltips
+
+`initTooltip(wrapper, tip, { showDelay, hideDelay })` owns visibility once initialized.
+The production `tooltip.iife.js` initializes `.instui-tooltip` wrappers automatically; don't
+initialize the same wrapper twice. CSS-only hover/focus remains a no-JavaScript fallback, without
+Escape or delay guarantees. The helper manages `data-tooltip-managed` on the wrapper and `-show`
+on the bubble; applications shouldn't author the managed marker.
+
+Pointer hover and keyboard focus independently keep the bubble open. Moving onto the bubble
+across its visual gap doesn't close it. Escape anywhere in the owner document dismisses it and
+cancels pending timers without moving focus. It stays dismissed until both pointer and focus
+leave; the next entry can reopen it. `cancelAndHide()` uses the same dismissal policy.
+`cleanup()` removes listeners/timers and restores the original marker and show class.
+
+Use a named, focusable trigger with `aria-describedby` pointing at the bubble's stable ID and
+`role="tooltip"` on the bubble. Keep tooltip content noninteractive; use a popover for links,
+buttons, or other controls. The web component uses the same visibility and dismissal behavior,
+including slotted-trigger focus and `show-delay`/`hide-delay` attributes.
+Web-component attribute updates preserve the current visibility/dismissal state; delay changes
+apply to the next transition without restarting an already pending timer.
+
 ### Opt-in ARIA menus
 
 `initMenu(menu, button)` wires a vertical, single-level native popover with `role="menu"` and its

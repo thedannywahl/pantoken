@@ -62,3 +62,19 @@ test("the localized form demo separates native validation from the authored inva
     expect(invalid.closest("[data-native-validation]")).toBeNull();
   });
 });
+
+test("the localized tooltip demo uses named buttons and stable bubble descriptions", () => {
+  withDemo("tooltip", ({ document }) => {
+    const wrappers = [...document.querySelectorAll(".instui-tooltip")];
+    expect(wrappers).toHaveLength(3);
+    for (const wrapper of wrappers) {
+      const button = wrapper.querySelector("button")!;
+      expect(button.type).toBe("button");
+      expect(button.getAttribute("aria-label") ?? button.textContent?.trim()).toBeTruthy();
+      const tip = document.getElementById(button.getAttribute("aria-describedby")!)!;
+      expect(wrapper.contains(tip)).toBe(true);
+      expect(tip.getAttribute("role")).toBe("tooltip");
+      expect(button.contains(tip)).toBe(false);
+    }
+  });
+});

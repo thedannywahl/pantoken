@@ -138,6 +138,14 @@
       "cy": "optional"
     }
   },
+  "text5": {
+    "message": "Information",
+    "translate": "always"
+  },
+  "text6": {
+    "message": "Notifications",
+    "translate": "always"
+  },
   "text4": {
     "message": "Placement end",
     "translate": {
