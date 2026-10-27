@@ -1,0 +1,54 @@
+{
+  "cli_version": "0.12.2",
+  "checkpoint_id": "01M5YZXAHJHGC09914HVQWZKQ8",
+  "strategy": "manual-commit",
+  "branch": "add-automatica11y",
+  "checkpoints_count": 1,
+  "files_touched": [
+    "formats/components/src/components/menu/members/group/group.css",
+    "formats/components/src/components/menu/members/separator/separator.css",
+    "formats/components/src/components/progress-circle/progress-circle.css",
+    "formats/components/src/components/progress/progress.css",
+    "formats/components/src/declarations/focus/index.ts",
+    "formats/components/tests/audit-examples.test.ts"
+  ],
+  "sessions": [
+    {
+      "metadata": "/0/metadata.json",
+      "transcript": "/0/full.jsonl",
+      "compact_transcript": "/0/transcript.jsonl",
+      "content_hash": "/0/content_hash.txt",
+      "prompt": ""
+    }
+  ],
+  "token_usage": {
+    "input_tokens": 0,
+    "cache_creation_tokens": 0,
+    "cache_read_tokens": 0,
+    "output_tokens": 0,
+    "api_call_count": 0
+  },
+  "redaction": {
+    "replacements": 17041,
+    "layers": {
+      "betterleaks": 0,
+      "connection_string": 0,
+      "credential_key": 0,
+      "credential_value": 0,
+      "credentialed_uri": 0,
+      "custom": 0,
+      "entropy": 55878,
+      "goredact": 0,
+      "key_context": 1,
+      "pii": 9,
+      "provider_token": 0,
+      "shell_stdin": 0
+    },
+    "custom_rules_active": 2,
+    "pii": {
+      "EMAIL": 9,
+      "IP": 0,
+      "PHONE": 0
+    }
+  }
+}
