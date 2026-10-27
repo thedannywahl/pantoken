@@ -1,27 +1,44 @@
 <div class="instui-card">
   <div style="display: flex; flex-direction: column; gap: 24px; max-width: 520px">
-    <!-- Required via the native `required` attribute — the asterisk shows with no extra class. The
-         error message below stays hidden until the field is :user-invalid (blur it empty to see it). -->
-    <label class="instui-form-field">
-      <span class="label">{{text1}}</span>
+    <!-- The opt-in helper associates the authored error after a native validation attempt or blur. -->
+    <label class="instui-form-field" data-native-validation>
+      <span class="label" id="demo-email-label">{{text1}}</span>
       <span class="controls">
-        <input class="instui-text-input" type="email" required placeholder="you@example.com" />
+        <input
+          class="instui-text-input"
+          type="email"
+          required
+          autocomplete="email"
+          placeholder="you@example.com"
+          aria-labelledby="demo-email-label"
+          aria-describedby="demo-email-hint"
+        />
       </span>
-      <div class="instui-form-field-messages">
-        <span class="instui-form-field-message -type-hint">{{text2}}</span>
-        <span class="instui-form-field-message -type-error">{{text3}}</span>
-      </div>
+      <span class="instui-form-field-messages">
+        <span class="instui-form-field-message -type-hint" id="demo-email-hint">{{text2}}</span>
+        <span class="instui-form-field-message -type-error" id="demo-email-error" hidden
+          >{{text3}}</span
+        >
+      </span>
     </label>
 
     <!-- Explicit error state: `-invalid` on the field reveals the error message + red control border. -->
     <label class="instui-form-field -invalid">
-      <span class="label">{{text4}}</span>
+      <span class="label" id="demo-username-label">{{text4}}</span>
       <span class="controls">
-        <input class="instui-text-input -invalid" value="a" />
+        <input
+          class="instui-text-input -invalid"
+          value="a"
+          aria-labelledby="demo-username-label"
+          aria-invalid="true"
+          aria-describedby="demo-username-error"
+        />
       </span>
-      <div class="instui-form-field-messages">
-        <span class="instui-form-field-message -type-error">{{text5}}</span>
-      </div>
+      <span class="instui-form-field-messages">
+        <span class="instui-form-field-message -type-error" id="demo-username-error"
+          >{{text5}}</span
+        >
+      </span>
     </label>
 
     <!-- Inline layout: label beside the control -->
