@@ -134,6 +134,9 @@ component registry.
 - **Icons anywhere:** `npm i @pantoken/web-components`, `import "@pantoken/web-components";`, then
   `<instui-icon name="check-mark"></instui-icon>`.
 - **Component behaviors (vanilla JS):** `npm i @pantoken/interactions`, then import `initModal`, `initTooltip`, `initInPlaceEdit`, or `initCloseButton` to wire behaviors. For CDN/IIFE: link `@pantoken/interactions/dist/interactions.iife.js` and check `component-capabilities.json` for per-component `.iife.js` entry points.
+- **Tree browser:** ARIA trees need `initTreeBrowser` or the `tree-browser.iife.js` entry point,
+  not CSS alone. Name the tree, use focusable treeitems, and connect collection rows to their groups
+  with `aria-owns`. Native details/summary disclosures remain a CSS-only alternative without tree roles.
 - **Tailwind:** add `pantokenPreset()` to `presets` and import `@pantoken/css`.
 - **Native app:** `npx pantoken generate swift --out ./ios/Tokens --icons arrow-left,check-mark`.
 - **Rust app:** `npx pantoken generate rust --out ./src/tokens.rs --format egui`.

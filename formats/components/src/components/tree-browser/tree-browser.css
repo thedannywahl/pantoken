@@ -1,87 +1,69 @@
 /**
  * @component tree-browser
  * @selector .pfx-tree-browser
- * @summary A disclosure tree of nested collections and leaf items, with rotating chevrons.
- * @remarks Each collection is a native `<details>`; nesting them inside one another builds the tree, and the browser handles opening and closing every branch.
+ * @summary A tree of nested collections and leaf items, with rotating chevrons.
+ * @remarks Load the tree-browser interaction bundle for ARIA-tree keyboard navigation and expansion. Native `<details>` markup remains a CSS-only disclosure fallback; don't give that fallback ARIA-tree roles.
  * @modifier -icon-* — Render folder/file glyph icons in summaries and leaf items.
  * @modifier -size-sm — Small.
  * @modifier -size-lg — Large.
  * @part .item — A leaf entry in the tree.
  * @pseudo ::before — Draws each collection's disclosure chevron, a masked glyph that rotates to point down when the branch is open.
  * @cssstate open
- * @a11y Mark the root with role="tree" and each nested list with role="group".
+ * @a11y Name the `role="tree"` root, use focusable `role="treeitem"` nodes, and associate each collection with its `role="group"` via `aria-owns`. Load `@pantoken/interactions/tree-browser.js` for one tab stop and synchronized expansion. Add `aria-selected` to opt into single selection; focus alone doesn't select.
  * @example -canvas-rce -docs
  * ```html
- * <div class="pfx-tree-browser" role="tree">
- *   <details open>
- *     <summary><span class="pfx-icon -icon-folder"></span> Course files</summary>
- *     <ul role="group">
- *       <li>
- *         <a class="item" href="#"><span class="pfx-icon -icon-file-text"></span> Syllabus.pdf</a>
- *       </li>
- *       <li>
- *         <details>
- *           <summary><span class="pfx-icon -icon-folder"></span> Week 1</summary>
- *           <ul role="group">
- *             <li>
- *               <a class="item -selected" href="#"><span class="pfx-icon -icon-file-text"></span> Reading.pdf</a>
- *             </li>
- *             <li>
- *               <a class="item" href="#"><span class="pfx-icon -icon-file-text"></span> Slides.pptx</a>
- *             </li>
- *           </ul>
- *         </details>
- *       </li>
- *       <li>
- *         <a class="item" href="#"><span class="pfx-icon -icon-file-text"></span> Rubric.docx</a>
- *       </li>
- *     </ul>
- *   </details>
+ * <div class="pfx-tree-browser" role="tree" aria-label="Course files">
+ *   <div role="none">
+ *     <div role="treeitem" tabindex="0" aria-expanded="true" aria-labelledby="course-tree-label" aria-owns="course-tree-group">
+ *       <span class="item" id="course-tree-label"><span class="pfx-icon -icon-folder" aria-hidden="true"></span> Course files</span>
+ *     </div>
+ *     <div role="group" id="course-tree-group">
+ *       <a class="item" role="treeitem" tabindex="-1" href="#syllabus">Syllabus.pdf</a>
+ *       <div role="none">
+ *         <div role="treeitem" tabindex="-1" aria-expanded="false" aria-labelledby="week-tree-label" aria-owns="week-tree-group">
+ *           <span class="item" id="week-tree-label"><span class="pfx-icon -icon-folder" aria-hidden="true"></span> Week 1</span>
+ *         </div>
+ *         <div role="group" id="week-tree-group" hidden>
+ *           <a class="item" role="treeitem" tabindex="-1" href="#reading">Reading.pdf</a>
+ *           <a class="item" role="treeitem" tabindex="-1" href="#slides">Slides.pptx</a>
+ *         </div>
+ *       </div>
+ *       <a class="item" role="treeitem" tabindex="-1" href="#rubric">Rubric.docx</a>
+ *     </div>
+ *   </div>
  * </div>
  * ```
  * @structure
  * .pfx-tree-browser {
- *   details {
- *     summary {
- *       [class*="-icon-"]:optional {}
+ *   [role="none"] {
+ *     [role="treeitem"] {
+ *       .item {}
  *     }
- *     ul {
- *       li {
- *         .item {
- *           [class*="-icon-"]:optional {}
- *         }
- *       }
- *     }
+ *     [role="group"]:optional {}
  *   }
  * }
  * @related menu — Both present nested, selectable entries.
  * @example -automatica11y
  * ```html
- * <div class="pfx-tree-browser" role="tree">
- *   <details open>
- *     <summary><span class="pfx-icon -icon-folder"></span> Course files</summary>
- *     <ul role="group">
- *       <li>
- *         <a class="item" href="#"><span class="pfx-icon -icon-file-text"></span> Syllabus.pdf</a>
- *       </li>
- *       <li>
- *         <details>
- *           <summary><span class="pfx-icon -icon-folder"></span> Week 1</summary>
- *           <ul role="group">
- *             <li>
- *               <a class="item -selected" href="#"><span class="pfx-icon -icon-file-text"></span> Reading.pdf</a>
- *             </li>
- *             <li>
- *               <a class="item" href="#"><span class="pfx-icon -icon-file-text"></span> Slides.pptx</a>
- *             </li>
- *           </ul>
- *         </details>
- *       </li>
- *       <li>
- *         <a class="item" href="#"><span class="pfx-icon -icon-file-text"></span> Rubric.docx</a>
- *       </li>
- *     </ul>
- *   </details>
+ * <div class="pfx-tree-browser" role="tree" aria-label="Course files">
+ *   <div role="none">
+ *     <div role="treeitem" tabindex="0" aria-expanded="true" aria-labelledby="course-tree-label" aria-owns="course-tree-group">
+ *       <span class="item" id="course-tree-label"><span class="pfx-icon -icon-folder" aria-hidden="true"></span> Course files</span>
+ *     </div>
+ *     <div role="group" id="course-tree-group">
+ *       <a class="item" role="treeitem" tabindex="-1" href="#syllabus">Syllabus.pdf</a>
+ *       <div role="none">
+ *         <div role="treeitem" tabindex="-1" aria-expanded="false" aria-labelledby="week-tree-label" aria-owns="week-tree-group">
+ *           <span class="item" id="week-tree-label"><span class="pfx-icon -icon-folder" aria-hidden="true"></span> Week 1</span>
+ *         </div>
+ *         <div role="group" id="week-tree-group" hidden>
+ *           <a class="item" role="treeitem" tabindex="-1" href="#reading">Reading.pdf</a>
+ *           <a class="item" role="treeitem" tabindex="-1" href="#slides">Slides.pptx</a>
+ *         </div>
+ *       </div>
+ *       <a class="item" role="treeitem" tabindex="-1" href="#rubric">Rubric.docx</a>
+ *     </div>
+ *   </div>
  * </div>
  * ```
  */
@@ -117,7 +99,8 @@
   }
 
   /* The disclosure chevron rotates open (same technique as toggle-details). */
-  & details > summary::before {
+  & details > summary::before,
+  & [role="treeitem"][aria-expanded] > .item::before {
     content: "";
     flex: none;
     inline-size: 1em;
@@ -132,6 +115,18 @@
     transform: rotate(90deg);
   }
 
+  & [role="treeitem"][aria-expanded="true"] > .item::before {
+    transform: rotate(90deg);
+  }
+
+  & [role="treeitem"][aria-expanded] > .item:dir(rtl)::before {
+    transform: rotate(180deg);
+  }
+
+  & [role="treeitem"][aria-expanded="true"] > .item:dir(rtl)::before {
+    transform: rotate(90deg);
+  }
+
   & details > summary:hover,
   & .item:hover {
     background: var(--instui-component-tree-browser-tree-button-hover-background-color);
@@ -139,13 +134,16 @@
   }
 
   & details > summary.-selected,
+  & [role="treeitem"][aria-selected="true"] > .item,
+  & .item[aria-selected="true"],
   & .item.-selected {
     background: var(--instui-component-tree-browser-tree-button-selected-background-color);
     color: var(--instui-component-tree-browser-tree-button-selected-text-color);
   }
 
   /* Nested lists indent; the leaf list carries no bullets. */
-  & ul {
+  & ul,
+  & [role="group"] {
     margin: 0;
     padding-inline-start: var(--instui-component-tree-browser-tree-collection-base-spacing-medium);
     list-style: none;
@@ -161,5 +159,12 @@
   &.-size-lg .item {
     padding: var(--instui-component-tree-browser-tree-button-base-spacing-large);
     font-size: var(--instui-component-tree-browser-tree-button-name-font-size-large);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    & details > summary::before,
+    & [role="treeitem"][aria-expanded] > .item::before {
+      transition: none;
+    }
   }
 }

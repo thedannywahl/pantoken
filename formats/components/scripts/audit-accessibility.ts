@@ -180,6 +180,11 @@ for (const dialog of document.querySelectorAll("dialog")) if (!dialog.open) dial
 for (const popover of document.querySelectorAll("[popover]")) popover.showPopover();
 for (const details of document.querySelectorAll("details")) details.open = true;
 document.querySelector(".instui-tooltip [data-a11y-trigger]")?.focus();
+document.addEventListener("DOMContentLoaded", () => {
+  for (const row of document.querySelectorAll('.instui-tree-browser [role="treeitem"][aria-expanded="false"]')) {
+    row.querySelector(".item")?.click();
+  }
+});
 </script>
 </body></html>\n`;
 }
@@ -376,7 +381,7 @@ export function writeIndex(
     ),
     "",
     "Page targets run rules, conditions, and simulated screen-reader checks. Authored npm archetypes additionally run interaction and computed checks.",
-    "Page fixtures expand dialogs, native popovers, and disclosures and focus tooltip triggers. Npm fixtures preserve authored initial states and exercise production behavior.",
+    "Page fixtures expand dialogs, native popovers, disclosures, and ARIA-tree collections and focus tooltip triggers. Npm fixtures preserve authored initial states and exercise production behavior.",
     `Supported npm archetypes: ${Object.keys(ARCHETYPES).join(", ")}. No documented combobox or chart contract is claimed.`,
     "Hidden/closed surfaces and unsupported checks aren't passes. Read the original reports for gaps, warnings, and engine-specific findings.",
     "Coverage notices are diagnostic entries, not unique defects. They can overlap explicit gaps/undetermined checks; don't add these counts together.",

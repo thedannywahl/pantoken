@@ -1,4 +1,4 @@
-import { existsSync, mkdtempSync, readFileSync } from "node:fs";
+import { existsSync, mkdtempSync, readFileSync, rmSync } from "node:fs";
 import { tmpdir } from "node:os";
 import { join } from "node:path";
 import { expect, test } from "vite-plus/test";
@@ -60,6 +60,26 @@ test("installed agent assets link to the published compatibility registry", () =
     );
   }
   expect(readFileSync(join(dir, "AGENTS.md"), "utf8")).toContain("`$schema`");
+});
+
+test("installed usage assets distinguish ARIA-tree behavior from CSS-only disclosures", () => {
+  const dir = mkdtempSync(join(tmpdir(), "pantoken-ai-tree-"));
+  try {
+    installAgentAssets("all", dir);
+    for (const file of [
+      "AGENTS.md",
+      "llms.txt",
+      ".cursor/rules/pantoken.mdc",
+      ".github/copilot-instructions.md",
+    ]) {
+      const content = readFileSync(join(dir, file), "utf8");
+      expect(content).toContain("initTreeBrowser");
+      expect(content).toContain("aria-owns");
+      expect(content).toContain("disclosures");
+    }
+  } finally {
+    rmSync(dir, { recursive: true, force: true });
+  }
 });
 
 test("'all' writes every asset, deduped", () => {

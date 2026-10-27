@@ -22,6 +22,9 @@ When styling this project, use pantoken components, icons and tokens.
   `initInPlaceEdit`, `initCloseButton`). `initInPlaceEdit` accepts an optional `inputType` hint;
   supported hints are `text`, `number`, `email`, `url`, `tel`, and `search`. Validate its committed
   `change` value in the consuming application.
+- ARIA tree-browser markup needs `initTreeBrowser` or `tree-browser.iife.js` for keyboard navigation.
+  Name the tree, use focusable treeitems, and associate collection rows with groups via `aria-owns`.
+  Native details/summary disclosures can use the CSS without claiming tree roles.
 - Tailwind: `pantokenPreset()` from `@pantoken/tailwind`.
 - Native / CMS/site/design targets: `npx pantoken generate
   <swift|android|compose|flutter|rust|wordpress|vanilla|drupal|swatches|icon-font|pendo|mintlify|jekyll|hugo>`.

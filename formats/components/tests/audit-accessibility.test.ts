@@ -94,7 +94,12 @@ test("expands exactly six unique cases per example and loads local production as
   expect(page).toContain("popover.showPopover()");
   expect(page).toContain("details.open = true");
   expect(page).toContain('document.querySelector(".instui-tooltip [data-a11y-trigger]")?.focus()');
+  expect(page).toContain('[role="treeitem"][aria-expanded="false"]');
+  expect(page).toContain('row.querySelector(".item")?.click()');
   expect(behaviorNames('<div class="instui-tabs"></div>')).toEqual(["tabs"]);
+  expect(behaviorNames('<div class="instui-tree-browser" role="tree"></div>')).toEqual([
+    "tree-browser",
+  ]);
   expect(behaviorNames("<p>instui-tabs</p>")).toEqual([]);
 });
 test("checks exact completed coverage without interpreting violations as failures", () => {

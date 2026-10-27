@@ -319,9 +319,10 @@
     },
     {
       "name": "tree-browser",
-      "type": "css-only",
+      "type": "both",
       "needsIcons": true,
-      "css": "https://cdn.jsdelivr.net/npm/@pantoken/components/dist/tree-browser.css"
+      "css": "https://cdn.jsdelivr.net/npm/@pantoken/components/dist/tree-browser.css",
+      "js": "https://cdn.jsdelivr.net/npm/@pantoken/interactions/dist/tree-browser.iife.js"
     },
     {
       "name": "truncate",

@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: pantoken\n"
-"PO-Revision-Date: 2026-10-27 18:05+0000\n"
+"PO-Revision-Date: 2026-10-27 19:29+0000\n"
 "Last-Translator: pantoken localization engine\n"
 "Language-Team: pantoken\n"
 "MIME-Version: 1.0\n"
@@ -928,6 +928,7 @@ msgstr ""
 #: css/skeleton-loader.md
 #: css/tabs.md
 #: css/tooltip.md
+#: css/tree-browser.md
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "This component's CSS renders and works on its own; pair it with `@pantoken/interactions` to add the interactive behavior. See the [modifier table below](#modifiers)."
@@ -4255,7 +4256,7 @@ msgstr ""
 #: css/index.md
 #, no-c-format
 msgctxt "docs.api:prose"
-msgid "A disclosure tree of nested collections and leaf items, with rotating chevrons."
+msgid "A tree of nested collections and leaf items, with rotating chevrons."
 msgstr ""
 
 #: css/index.md
@@ -8772,13 +8773,13 @@ msgstr ""
 #: css/tree-browser.md
 #, no-c-format
 msgctxt "docs.api:prose"
-msgid "`.instui-tree-browser` — A disclosure tree of nested collections and leaf items, with rotating chevrons."
+msgid "`.instui-tree-browser` — A tree of nested collections and leaf items, with rotating chevrons."
 msgstr ""
 
 #: css/tree-browser.md
 #, no-c-format
 msgctxt "docs.api:prose"
-msgid "Each collection is a native `<details>`; nesting them inside one another builds the tree, and the browser handles opening and closing every branch."
+msgid "Load the tree-browser interaction bundle for ARIA-tree keyboard navigation and expansion. Native `<details>` markup remains a CSS-only disclosure fallback; don't give that fallback ARIA-tree roles."
 msgstr ""
 
 #: css/tree-browser.md
@@ -8790,7 +8791,7 @@ msgstr ""
 #: css/tree-browser.md
 #, no-c-format
 msgctxt "docs.api:prose"
-msgid "Mark the root with role=\"tree\" and each nested list with role=\"group\"."
+msgid "Name the `role=\"tree\"` root, use focusable `role=\"treeitem\"` nodes, and associate each collection with its `role=\"group\"` via `aria-owns`. Load `@pantoken/interactions/tree-browser.js` for one tab stop and synchronized expansion. Add `aria-selected` to opt into single selection; focus alone doesn't select."
 msgstr ""
 
 #: css/tree-browser.md
@@ -8800,9 +8801,10 @@ msgid " Course files"
 msgstr ""
 
 #: css/tree-browser.md
+#: renderers/web-components/src/variables/treeBrowser.md
 #, no-c-format
 msgctxt "docs.api:prose"
-msgid " Syllabus.pdf"
+msgid "Syllabus.pdf"
 msgstr ""
 
 #: css/tree-browser.md
@@ -8814,19 +8816,19 @@ msgstr ""
 #: css/tree-browser.md
 #, no-c-format
 msgctxt "docs.api:prose"
-msgid " Reading.pdf"
+msgid "Reading.pdf"
 msgstr ""
 
 #: css/tree-browser.md
 #, no-c-format
 msgctxt "docs.api:prose"
-msgid " Slides.pptx"
+msgid "Slides.pptx"
 msgstr ""
 
 #: css/tree-browser.md
 #, no-c-format
 msgctxt "docs.api:prose"
-msgid " Rubric.docx"
+msgid "Rubric.docx"
 msgstr ""
 
 #: css/tree-browser.md
@@ -11288,6 +11290,12 @@ msgctxt "docs.api:prose"
 msgid "  CSS:  wrapper = .instui-tooltip element, tip = its .tip child\n  WC:   wrapper = shadow .instui-tooltip, tip = shadow .tip"
 msgstr ""
 
+#: formats/interactions/src/functions/initTreeBrowser.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Wire ARIA-tree navigation and expansion, with single selection opt-in via `aria-selected`."
+msgstr ""
+
 #: formats/interactions/src/functions/initTruncateAuto.md
 #, no-c-format
 msgctxt "docs.api:prose"
@@ -11605,6 +11613,12 @@ msgstr ""
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "Options for show/hide timing."
+msgstr ""
+
+#: formats/interactions/src/interfaces/TreeBrowserHandle.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Listeners installed by [initTreeBrowser](../functions/initTreeBrowser.md)."
 msgstr ""
 
 #: formats/interactions/src/interfaces/TruncateAutoHandle.md
@@ -20240,7 +20254,7 @@ msgstr ""
 #: renderers/web-components/src/variables/treeBrowser.md
 #, no-c-format
 msgctxt "docs.api:prose"
-msgid "`<instui-tree-browser>` — the styled shell of a collapsible tree, with `role=\"tree\"`. The consumer\nslots the tree markup."
+msgid "`<instui-tree-browser>` — an ARIA tree with shared keyboard navigation and expansion.\nName the host and slot `treeitem`/`group` markup. Load the component stylesheet for slotted items."
 msgstr ""
 
 #: renderers/web-components/src/variables/truncate.md

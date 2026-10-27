@@ -119,6 +119,29 @@ applySpacing(el, ["margin", "padding"]);
 // el with margin="md" padding="sm" → inline styles set
 ```
 
+### Tree browser
+
+The tree-browser interaction follows InstUI's application-tree contract: a named `role="tree"`
+root owns focusable `role="treeitem"` nodes, and collections own `role="group"` containers.
+Load `@pantoken/interactions/tree-browser.js` (or its CDN IIFE) for CSS trees. The web component
+delegates to the same `initTreeBrowser` behavior and exposes the tree role on the host so its
+accessible name and slotted items stay in one DOM tree. Load the component stylesheet for slotted
+item visuals; the shadow shell and `tree-browser` part remain available.
+
+The behavior maintains one tab stop, skips hidden/disabled entries, supports Up/Down (also j/k),
+Home/End, RTL-aware Left/Right expansion, and Enter/Space activation. Focus doesn't select.
+Selection is off by default; supplying `aria-selected` opts into single selection. Pointer
+activation expands collections; keyboard activation selects instead when selection is enabled.
+Native `<details>` disclosure markup keeps its CSS-only styling, but isn't an ARIA tree and mustn't
+claim tree/group roles without treeitems and keyboard behavior. Clean up and reinitialize the
+manual behavior after replacing tree markup.
+
+The authored examples use the [W3C navigation-tree pattern](https://www.w3.org/WAI/ARIA/apg/patterns/treeview/examples/treeview-navigation/):
+each collection row references a sibling group with `aria-owns`. This preserves the accessible
+hierarchy while keeping the collection's visible label separate from descendant item labels.
+Both owned sibling groups and directly nested groups work with the behavior. Owned groups must
+be inside the same tree, have a unique ID, and not contain their owning row.
+
 ## Authoring IIFE entry points
 
 ### Auto-generation
