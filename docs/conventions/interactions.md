@@ -65,6 +65,37 @@ can't clear a newer open state; separate hosts still receive a bubbling `close` 
 
 ## Shared helpers
 
+### Opt-in ARIA menus
+
+`initMenu(menu, button)` wires a vertical, single-level native popover with `role="menu"` and its
+native `button[popovertarget]`. Both elements must be connected in the same document or shadow
+root, with a stable menu ID. For automatic initialization, add `data-menu-navigation` to
+`.instui-menu` and load `menu.iife.js` or the combined IIFE. Exactly one native popover button
+must target each opted-in menu. Unmarked menus remain application-owned; there's no menu custom
+element to register.
+
+Enter/Space use the button's native popover activation. Arrow Down opens at the first item; Arrow
+Up opens at the last. Opening focuses an item and synchronizes `aria-expanded`, `aria-haspopup`,
+and `aria-controls`. Within the menu, Up/Down wrap, Home/End reach the ends, and printable
+characters cycle to the next label starting with that character. Vertical navigation is the same
+in RTL. Escape dismisses and returns focus; Tab/Shift+Tab dismiss without canceling normal
+sequential navigation. Native outside-click dismissal doesn't steal the new focus.
+
+Use `menuitem` for commands, `menuitemcheckbox`/`menuitemradio` with `aria-checked` for checked
+actions, and `separator` for dividers. Applications own click actions and checked state. Enter
+and pointer activation dismiss; Space on a checkable item keeps the menu open. Cancel a click
+with `preventDefault()` to keep it open. Application focus changes aren't overwritten.
+ARIA-disabled items remain focusable but cannot activate; native-disabled, hidden, and inert
+items are skipped. A CSS `-disabled` modifier alone doesn't convey disabled semantics.
+
+Submenus, menubars, and horizontal menus aren't supported. Cleanup removes listeners and restores
+the original trigger ARIA attributes and item tab indices. Reinitialize after changing IDs,
+trigger relationships, or the menu's semantic structure. Menu behavior isn't an authorization
+boundary: applications must authorize every action independently.
+
+The keyboard contract follows the [APG menu button](https://www.w3.org/WAI/ARIA/apg/patterns/menu-button/)
+and [menu](https://www.w3.org/WAI/ARIA/apg/patterns/menubar/) patterns.
+
 ### Opt-in native form validation
 
 `initFormField(host, control, error)` uses a native input, select, or textarea's constraints and

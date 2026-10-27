@@ -142,6 +142,9 @@ component registry.
 - **Form validation:** Native validation is opt-in via `initFormField(host, control, error)` or
   `data-native-validation` plus `form-field.iife.js`. Supply a separate error with a unique ID.
   CSS alone doesn't synchronize error associations; client-side checks don't replace server validation.
+- **Menus:** Use `initMenu(menu, button)` or `data-menu-navigation` plus `menu.iife.js` for vertical,
+  single-level native popover menus. Applications own actions and checked state; use `aria-disabled`
+  for disabled items. Submenus and menubars aren't supported; CSS alone doesn't supply ARIA keyboard behavior.
 - **Tailwind:** add `pantokenPreset()` to `presets` and import `@pantoken/css`.
 - **Native app:** `npx pantoken generate swift --out ./ios/Tokens --icons arrow-left,check-mark`.
 - **Rust app:** `npx pantoken generate rust --out ./src/tokens.rs --format egui`.

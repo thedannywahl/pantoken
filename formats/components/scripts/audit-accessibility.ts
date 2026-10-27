@@ -145,6 +145,7 @@ export function behaviorNames(html: string): string[] {
     "drawer-layout",
     "tree-browser",
     "form-field",
+    "menu",
   ];
   return candidates.filter((name) =>
     new RegExp(`class="[^"]*\\binstui-${name}\\b`, "u").test(html),

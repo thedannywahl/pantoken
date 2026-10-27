@@ -9,11 +9,11 @@
  * }
  * @example -automatica11y
  * ```html
- * <button class="pfx-button" popovertarget="actions-menu" data-a11y-trigger>Actions</button>
- * <div class="pfx-menu" id="actions-menu" popover="auto" role="menu" aria-label="Actions" data-a11y-root>
- *   <button class="item" role="menuitem">Edit</button>
+ * <button class="pfx-button" type="button" popovertarget="actions-menu" aria-haspopup="menu" aria-controls="actions-menu" aria-expanded="false" data-a11y-trigger>Actions</button>
+ * <div class="pfx-menu" id="actions-menu" popover="auto" role="menu" aria-label="Actions" data-menu-navigation data-a11y-root>
+ *   <button class="item" type="button" role="menuitem">Edit</button>
  *   <div class="separator" role="separator"></div>
- *   <button class="item" role="menuitem">Delete</button>
+ *   <button class="item" type="button" role="menuitem">Delete</button>
  * </div>
  * ```
  */

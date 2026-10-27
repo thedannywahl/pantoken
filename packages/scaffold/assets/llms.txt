@@ -30,6 +30,9 @@
 - Form validation: opt into `initFormField(host, control, error)` or `data-native-validation` plus
 	`form-field.iife.js`, with a separate error and unique ID. CSS alone doesn't synchronize error
 	associations; client-side checks don't replace server validation.
+- Menus: opt into `initMenu(menu, button)` or `data-menu-navigation` plus `menu.iife.js` for
+	vertical, single-level native popover menus. Applications own actions and checked state;
+	disabled items need `aria-disabled`. Submenus and menubars aren't supported.
 - shadcn registry: `shadcn search @pantoken`, `shadcn view @pantoken/<item>`, then `shadcn add
 	@pantoken/<item>`. Items install CSS/packages and usage metadata, not React components.
 - Standalone browser mockups: use the CDN guide, component capability manifest, demos, and optional

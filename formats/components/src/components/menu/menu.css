@@ -3,6 +3,8 @@
  * @selector .pfx-menu
  * @summary A dropdown surface of items, groups, and separators.
  * @remarks Compose entries as `.item` (see the `menu.item` member), label a section with `.group` (see `menu.group`), and divide sections with `.separator` (see `menu.separator`).
+ * @remarks Keyboard navigation is opt-in: add `data-menu-navigation` to a vertical native popover with `role="menu"` and load `@pantoken/interactions/menu.iife.js`, or call `initMenu(menu, button)`. Use one native `button[popovertarget]`. The behavior handles focus, arrows, Home/End, initial-character search, Escape, and activation; applications own actions and checked state. Submenus and menubars aren't supported.
+ * @accessibility Name the menu and button. Use `menuitem` for actions, `menuitemcheckbox`/`menuitemradio` with `aria-checked` for checked actions, and `separator` for dividers. Add `aria-disabled="true"` to disabled items; a CSS modifier alone doesn't convey disabled state. ARIA-disabled entries remain focusable but cannot activate; native-disabled and hidden entries are skipped.
  * @structure
  * .pfx-menu {
  *   .group:optional {}
@@ -10,6 +12,24 @@
  *   .separator:optional {}
  * }
  * @example -canvas-rce -nocard
+ * ```html
+ * <button class="pfx-button" type="button" popovertarget="canvas-actions-menu" aria-haspopup="menu" aria-controls="canvas-actions-menu" aria-expanded="false">Actions</button>
+ * <div class="pfx-menu" id="canvas-actions-menu" popover="auto" role="menu" aria-label="Actions" data-menu-navigation>
+ *   <button class="item" type="button" role="menuitem">Edit</button>
+ *   <button class="item" type="button" role="menuitem">Duplicate</button>
+ *   <div class="separator" role="separator"></div>
+ *   <button class="item -disabled" type="button" role="menuitem" aria-disabled="true">Delete</button>
+ * </div>
+ * ```
+ * @example -automatica11y -nocard
+ * ```html
+ * <button class="pfx-button" type="button" popovertarget="actions-menu" aria-haspopup="menu" aria-controls="actions-menu" aria-expanded="false" data-a11y-trigger>Actions</button>
+ * <div class="pfx-menu" id="actions-menu" popover="auto" role="menu" aria-label="Actions" data-menu-navigation data-a11y-root>
+ *   <button class="item" type="button" role="menuitem">Edit</button>
+ *   <button class="item" type="button" role="menuitem">Delete</button>
+ * </div>
+ * ```
+ * @example -canvas-rce-no-interactions -nocard
  * ```html
  * <div class="pfx-menu">
  *   <div class="group">Actions</div>
@@ -19,24 +39,17 @@
  *   <div class="item">Delete</div>
  * </div>
  * ```
- * @example -automatica11y -nocard
- * ```html
- * <button class="pfx-button" popovertarget="actions-menu" data-a11y-trigger>Actions</button>
- * <div class="pfx-menu" id="actions-menu" popover="auto" role="menu" aria-label="Actions" data-a11y-root>
- *   <button class="item" role="menuitem">Edit</button>
- *   <button class="item" role="menuitem">Delete</button>
- * </div>
- * ```
  * @example -docs -nocard
  * ```html
- * <div class="pfx-menu">
- *   <div class="group">View</div>
- *   <div class="item">List</div>
- *   <div class="item -active">Grid</div>
+ * <button class="pfx-button" type="button" popovertarget="docs-actions-menu" aria-haspopup="menu" aria-controls="docs-actions-menu" aria-expanded="false">Actions</button>
+ * <div class="pfx-menu" id="docs-actions-menu" popover="auto" role="menu" aria-label="Actions" data-menu-navigation>
+ *   <button class="item" type="button" role="menuitem">Edit</button>
+ *   <button class="item" type="button" role="menuitem">Delete</button>
  * </div>
  * ```
  * @related tree-browser — Both present nested, selectable entries.
  * @related simple-select — A select's dropdown reuses this menu surface.
+ * @demo self:menu
  */
 @scope (.pfx-menu) {
   & {

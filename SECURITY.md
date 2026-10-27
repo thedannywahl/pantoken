@@ -42,6 +42,10 @@ pantoken is a design-token transformation and distribution system. It converts I
   the host, preserves hint references, and doesn't parse messages as HTML. Applications own the
   rules, message content, and server-side validation; client-side validity isn't an authorization
   or input-sanitization boundary.
+- Menu navigation is opt-in and accepts a connected native popover and its button in the same root.
+  It excludes nested-menu events and blocks ARIA-disabled activation in a menu capture listener.
+  Those presentation controls aren't authorization: applications own action effects, checked state,
+  and permission checks. Menu IDs and trigger relationships must remain stable.
 - TreeBrowser's application-supplied `aria-owns` references must identify groups inside the same
   tree that don't contain the owning row. The behavior rejects missing, external, and non-group
   references and excludes nested-tree events. This scopes DOM updates; it doesn't sanitize markup

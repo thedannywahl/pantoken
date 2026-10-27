@@ -7,7 +7,7 @@
  * @modifier -highlighted — Highlighted background/text (keyboard focus or hover).
  * @modifier -active — Active/checked highlight; same styling as `[aria-checked="true"]`.
  * @part .item-info — Secondary info text within the item.
- * @a11y Mark a checked item with `aria-checked="true"` (same styling as `-active`).
+ * @a11y Checked actions use `menuitemcheckbox` or `menuitemradio` with `aria-checked`; applications update that state on activation. Pair `-disabled` with `aria-disabled="true"` or native `disabled`, not the CSS class alone. Opt-in menu navigation keeps ARIA-disabled items reachable but prevents their activation.
  * @structure
  * @component menu {
  *   .item {
@@ -16,10 +16,10 @@
  * }
  * @example -automatica11y
  * ```html
- * <button class="pfx-button" popovertarget="actions-menu" data-a11y-trigger>Actions</button>
- * <div class="pfx-menu" id="actions-menu" popover="auto" role="menu" aria-label="Actions" data-a11y-root>
- *   <button class="item" role="menuitem">Edit</button>
- *   <button class="item" role="menuitem">Delete</button>
+ * <button class="pfx-button" type="button" popovertarget="actions-menu" aria-haspopup="menu" aria-controls="actions-menu" aria-expanded="false" data-a11y-trigger>Actions</button>
+ * <div class="pfx-menu" id="actions-menu" popover="auto" role="menu" aria-label="Actions" data-menu-navigation data-a11y-root>
+ *   <button class="item" type="button" role="menuitem">Edit</button>
+ *   <button class="item" type="button" role="menuitem">Delete</button>
  * </div>
  * ```
  */

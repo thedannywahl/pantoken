@@ -80,6 +80,8 @@ test("installed usage assets describe tree behavior, shadow names, and opt-in va
       expect(content).toContain("content-label");
       expect(content).toContain("initFormField");
       expect(content).toContain("data-native-validation");
+      expect(content).toContain("initMenu");
+      expect(content).toContain("data-menu-navigation");
     }
   } finally {
     rmSync(dir, { recursive: true, force: true });

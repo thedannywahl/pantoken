@@ -30,6 +30,9 @@ When styling this project, use pantoken components, icons and tokens.
 - Native form validation is opt-in through `initFormField(host, control, error)` or
   `data-native-validation` plus `form-field.iife.js`. Supply a separate error with a unique ID.
   CSS alone doesn't synchronize error associations; server-side validation is still required.
+- ARIA menu keyboard behavior is opt-in via `initMenu(menu, button)` or `data-menu-navigation`
+  plus `menu.iife.js`. Use a vertical, single-level native popover and its button. Applications own
+  actions and checked state; disabled items need `aria-disabled`. Submenus and menubars aren't supported.
 - Tailwind: `pantokenPreset()` from `@pantoken/tailwind`.
 - Native / CMS/site/design targets: `npx pantoken generate
   <swift|android|compose|flutter|rust|wordpress|vanilla|drupal|swatches|icon-font|pendo|mintlify|jekyll|hugo>`.

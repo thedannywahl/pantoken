@@ -43,10 +43,12 @@ const ALL_COMPONENTS = [
   "skeleton-loader",
   "segmented-control",
   "form-field",
+  "menu",
 ];
 
 // Components with hand-authored entry points — the generator skips these.
 const BEHAVIORAL_COMPONENTS = new Set([
+  "menu",
   "form-field",
   "tree-browser",
   "alert",

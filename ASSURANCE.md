@@ -133,6 +133,7 @@ Security-relevant entry points include:
   fragments.
 - Browser component attributes and CSS custom properties consumed by interaction helpers.
 - Opt-in native FormField constraints and authored error elements with stable IDs.
+- Opt-in ARIA menu roles, item state, and native popover-button references.
 - Parent loading-region state events and announcement labels consumed by the SkeletonLoader interaction helper.
 - CLI arguments and caller-selected output paths.
 - Documentation demo specifications and generated iframe attributes.
@@ -377,6 +378,7 @@ since the runner writes the scale into a generated `srcdoc` attribute.
 | Cross-tree DOM updates                | TreeBrowser resolves owned groups by ID and rejects missing, external, non-group references and groups containing their owning row. Events from nested trees are excluded from the parent behavior. Regression tests cover invalid ownership and scoped keyboard handling.                                                                                                                                                    |
 | Browser label interpretation          | DrawerLayout copies pane labels into `aria-label` through `setAttribute`, not HTML parsing. Regression tests verify that markup-like label text doesn't create elements.                                                                                                                                                                                                                                                      |
 | Form validation ownership             | Native FormField validation is opt-in. The helper requires contained controls and separate error elements with nonempty IDs and text, preserves hint references, and uses attribute strings rather than HTML parsing. Tests cover invalid references, cleanup, native validity, and reset cancellation.                                                                                                                       |
+| Menu activation scope                 | Opt-in menu navigation requires a connected native popover and its button in the same root. Nested-menu events are excluded, ARIA-disabled activation is blocked in a menu capture listener, and checked state remains application-owned. Tests cover scoped events, invalid targets, focus, and cleanup.                                                                                                                     |
 | Malformed or missing generated output | Build-before-test ordering, generated-output validation, reference-integrity checks, package export checks, and failure aggregation.                                                                                                                                                                                                                                                                                          |
 | Dependency vulnerabilities            | Renovate and Dependabot monitoring, a dependency release-age delay, Snyk dependency scanning, CodeQL, and OpenSSF Scorecard.                                                                                                                                                                                                                                                                                                  |
 | Release tampering                     | npm registry signatures, Sigstore provenance, npm OIDC trusted publishing, GitHub immutable releases, and public verification instructions.                                                                                                                                                                                                                                                                                   |
@@ -426,6 +428,10 @@ The following risks remain or are deliberately outside the security claim:
   Opt-in FormField behavior manages presentation and ARIA associations, not server validation,
   authorization, or sanitization. Error IDs must stay unique; reinitialize after changing IDs or
   moving a control to another form. Real assistive-technology review remains necessary.
+
+- **Menu actions.** Menu navigation handles focus and presentation, not action authorization.
+  Applications own click effects and checked state, must use stable IDs and correct roles, and must
+  authorize actions independently. Submenus and menubars aren't implemented by this helper.
 
 - **Automated maintenance evidence.** Compatibility tests do not establish visual equivalence,
   upstream intent, or absence of malicious dependency behavior. Disposable worktrees and sanitized

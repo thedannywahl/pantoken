@@ -107,6 +107,7 @@ test("expands exactly six unique cases per example and loads local production as
   expect(behaviorNames('<label class="instui-form-field" data-native-validation></label>')).toEqual(
     ["form-field"],
   );
+  expect(behaviorNames('<div class="instui-menu" data-menu-navigation></div>')).toEqual(["menu"]);
   expect(behaviorNames("<p>instui-tabs</p>")).toEqual([]);
 });
 test("checks exact completed coverage without interpreting violations as failures", () => {
@@ -543,7 +544,7 @@ test.each(["success", "pack failure", "fixture gap", "no archetype", "full inven
       "components/fonts.css",
     ])
       writeFileSync(join(root, "pages", "assets", file), "/* built */");
-    for (const name of ["modal", "tabs", "tooltip", "close-button", "form-field"])
+    for (const name of ["modal", "tabs", "tooltip", "close-button", "form-field", "menu"])
       writeFileSync(join(root, "pages", "assets", "interactions", `${name}.iife.js`), "");
     writeIndex(root, [], []);
     vi.spyOn(console, "error").mockImplementation(() => {});

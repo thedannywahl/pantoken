@@ -158,8 +158,9 @@
     },
     {
       "name": "menu",
-      "type": "css-only",
-      "css": "https://cdn.jsdelivr.net/npm/@pantoken/components/dist/menu.css"
+      "type": "both",
+      "css": "https://cdn.jsdelivr.net/npm/@pantoken/components/dist/menu.css",
+      "js": "https://cdn.jsdelivr.net/npm/@pantoken/interactions/dist/menu.iife.js"
     },
     {
       "name": "metric",
