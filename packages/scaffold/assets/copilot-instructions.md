@@ -25,6 +25,8 @@ When styling this project, use pantoken components, icons and tokens.
 - ARIA tree-browser markup needs `initTreeBrowser` or `tree-browser.iife.js` for keyboard navigation.
   Name the tree, use focusable treeitems, and associate collection rows with groups via `aria-owns`.
   Native details/summary disclosures can use the CSS without claiming tree roles.
+- Give `<instui-drawer-layout>` nonempty `tray-label` and `content-label` attributes to name its
+  shadow-DOM regions. Labels on slotted content don't name those panes.
 - Tailwind: `pantokenPreset()` from `@pantoken/tailwind`.
 - Native / CMS/site/design targets: `npx pantoken generate
   <swift|android|compose|flutter|rust|wordpress|vanilla|drupal|swatches|icon-font|pendo|mintlify|jekyll|hugo>`.

@@ -137,6 +137,8 @@ component registry.
 - **Tree browser:** ARIA trees need `initTreeBrowser` or the `tree-browser.iife.js` entry point,
   not CSS alone. Name the tree, use focusable treeitems, and connect collection rows to their groups
   with `aria-owns`. Native details/summary disclosures remain a CSS-only alternative without tree roles.
+- **Drawer layout:** Give `<instui-drawer-layout>` nonempty `tray-label` and `content-label`
+  attributes to name its shadow-DOM regions. Labels on slotted content don't name those panes.
 - **Tailwind:** add `pantokenPreset()` to `presets` and import `@pantoken/css`.
 - **Native app:** `npx pantoken generate swift --out ./ios/Tokens --icons arrow-left,check-mark`.
 - **Rust app:** `npx pantoken generate rust --out ./src/tokens.rs --format egui`.

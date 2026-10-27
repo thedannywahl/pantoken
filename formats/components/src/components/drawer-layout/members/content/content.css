@@ -7,7 +7,7 @@
  * @remarks `overflow: auto` keeps the tray and content independently scrollable.
  * @remarks Once the parent's inline-size drops below `64em` (`16em` tray width + `48em` breakpoint), a `@container` query on the parent's `pantoken-drawer-layout` container drops this member's `min-inline-size` to `0` automatically, matching the manual `[should-overlay-tray]` override.
  * @related drawer-layout.tray — The adjacent panel in the same flex row.
- * @accessibility Carry `role="region"` (InstUI's DrawerLayout convention) and name it with `aria-label`/`aria-labelledby` when context alone doesn't identify it.
+ * @accessibility Use a `div` with `role="region"` (InstUI's DrawerLayout convention) and always name it with `aria-label` or `aria-labelledby`.
  * @structure
  * @scope (@component drawer-layout) {
  *   .content {
@@ -17,7 +17,7 @@
  * @example -canvas-rce -docs
  * ```html
  * <div class="pfx-drawer-layout">
- *   <div class="content" role="region">
+ *   <div class="content" role="region" aria-label="Course content">
  *     <p class="pfx-text">Tray content</p>
  *   </div>
  * </div>
@@ -25,7 +25,7 @@
  * @example -automatica11y
  * ```html
  * <div class="pfx-drawer-layout">
- *   <div class="content" role="region">
+ *   <div class="content" role="region" aria-label="Course content">
  *     <p class="pfx-text">Tray content</p>
  *   </div>
  * </div>

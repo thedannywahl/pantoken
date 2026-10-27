@@ -59,6 +59,11 @@ date/datetime pickers. The consistent declarative layer is the **Invoker Command
 - `instui-popover`/`instui-tray`/`instui-context-view`: already native `[popover]`, so the built-in
   `command="toggle-popover"` works with no code.
 
+Drawer-layout keeps InstUI-style regions for its tray and content. Supply nonempty `tray-label`
+and `content-label` attributes on the host; they name the corresponding shadow-DOM panes and
+update when the attributes change. A label on a slotted heading or navigation element doesn't
+name its containing shadow region. Name any additional slotted landmarks separately.
+
 A shared `onCommand(target, handler)` helper adds the `command` listener and, when the API is absent
 (`!("command" in HTMLButtonElement.prototype)`), falls back to a click delegate reading the same
 attributes. It listens on `target.getRootNode()` so it covers a light-DOM host (document) and the

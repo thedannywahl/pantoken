@@ -14,10 +14,10 @@
  * @example -canvas-rce -docs
  * ```html
  * <div class="pfx-drawer-layout" open>
- *   <aside class="tray" aria-label="Course navigation">
+ *   <div class="tray" role="region" aria-label="Course panel">
  *     <a class="pfx-link" href="#">Modules</a>
- *   </aside>
- *   <main class="content" role="region">Main content</main>
+ *   </div>
+ *   <div class="content" role="region" aria-label="Course content">Main content</div>
  * </div>
  * ```
  * @structure
@@ -29,10 +29,10 @@
  * @example -automatica11y
  * ```html
  * <div class="pfx-drawer-layout" open>
- *   <aside class="tray" aria-label="Course navigation">
+ *   <div class="tray" role="region" aria-label="Course panel">
  *     <a class="pfx-link" href="#">Modules</a>
- *   </aside>
- *   <main class="content" role="region">Main content</main>
+ *   </div>
+ *   <div class="content" role="region" aria-label="Course content">Main content</div>
  * </div>
  * ```
  */

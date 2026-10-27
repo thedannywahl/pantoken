@@ -8,10 +8,10 @@
  * @cssstate open — The tray shows; without it the tray is hidden.
  * @cssstate should-overlay-tray — The tray overlays content instead of shrinking it.
  * @slot tray — The drawer panel's content. The default slot holds the main content beside it.
- * @accessibility The tray only renders while the host carries the `open` attribute. The content pane carries `role="region"` (InstUI's DrawerLayout convention); name it with `aria-label`/`aria-labelledby` when context alone doesn't identify it.
+ * @accessibility The tray is hidden while the host lacks `open`. Both panes are `div` regions; supply nonempty `tray-label` and `content-label` attributes on the host to name them.
  * @example
- * <instui-drawer-layout open placement="start">
- *   <nav slot="tray">Navigation</nav>
+ * <instui-drawer-layout open placement="start" tray-label="Course panel" content-label="Course content">
+ *   <nav slot="tray" aria-label="Course sections">Navigation</nav>
  *   <article>Main content</article>
  * </instui-drawer-layout>
  */

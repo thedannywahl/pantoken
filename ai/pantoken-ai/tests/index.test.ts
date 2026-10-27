@@ -62,7 +62,7 @@ test("installed agent assets link to the published compatibility registry", () =
   expect(readFileSync(join(dir, "AGENTS.md"), "utf8")).toContain("`$schema`");
 });
 
-test("installed usage assets distinguish ARIA-tree behavior from CSS-only disclosures", () => {
+test("installed usage assets describe tree behavior and shadow-region naming", () => {
   const dir = mkdtempSync(join(tmpdir(), "pantoken-ai-tree-"));
   try {
     installAgentAssets("all", dir);
@@ -76,6 +76,8 @@ test("installed usage assets distinguish ARIA-tree behavior from CSS-only disclo
       expect(content).toContain("initTreeBrowser");
       expect(content).toContain("aria-owns");
       expect(content).toContain("disclosures");
+      expect(content).toContain("tray-label");
+      expect(content).toContain("content-label");
     }
   } finally {
     rmSync(dir, { recursive: true, force: true });
