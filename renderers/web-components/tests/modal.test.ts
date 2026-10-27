@@ -1,10 +1,20 @@
 // @vitest-environment happy-dom
-import { afterEach, expect, test } from "vite-plus/test";
+import { afterEach, beforeEach, expect, test, vi } from "vite-plus/test";
 import { register } from "../src/index.ts";
 
 register();
+beforeEach(() => {
+  // happy-dom doesn't implement :modal; wrapper dialogs only open through showModal().
+  vi.spyOn(HTMLDialogElement.prototype, "matches").mockImplementation(function (
+    this: HTMLDialogElement,
+    selector,
+  ) {
+    return selector === ":modal" ? this.open : Element.prototype.matches.call(this, selector);
+  });
+});
 afterEach(() => {
   document.body.innerHTML = "";
+  vi.restoreAllMocks();
 });
 
 function modal(attrs = ""): { el: HTMLElement; dialog: HTMLDialogElement } {
@@ -83,4 +93,16 @@ test("syncOpen is idempotent: re-setting open while already shown does not throw
   const { el, dialog } = modal("open");
   expect(() => el.setAttribute("open", "")).not.toThrow();
   expect(dialog.open).toBe(true);
+});
+
+test("a queued native close event doesn't clear a reopened host", () => {
+  const { el, dialog } = modal("open");
+  dialog.close();
+  el.setAttribute("open", "");
+  const closed = vi.fn();
+  el.addEventListener("close", closed);
+  dialog.dispatchEvent(new Event("close"));
+  expect(el.hasAttribute("open")).toBe(true);
+  expect(dialog.open).toBe(true);
+  expect(closed).toHaveBeenCalledTimes(1);
 });

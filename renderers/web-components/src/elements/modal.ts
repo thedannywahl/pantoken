@@ -5,7 +5,7 @@ import type { ElementDefinition } from "../lib/context.ts";
 /**
  * `<instui-modal>` — a real `<dialog>`, so it gets focus trapping, Escape-to-close, and a
  * `::backdrop` for free. The `open` attribute drives `showModal()`/`close()`; a native dismissal
- * (Escape or a backdrop click) reflects back to the attribute and re-fires as a bubbling `close`
+ * (such as Escape) reflects back to the attribute and re-fires as a bubbling `close`
  * event. Drivable from light DOM via Invoker Commands — a
  * `<button command="--show|--close|--toggle" commandfor="modal-id">` toggles it by id. Content goes
  * in the default slot.

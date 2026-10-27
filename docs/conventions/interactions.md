@@ -44,48 +44,24 @@ export function initMyBehavior(
 ### Example: Modal behavior
 
 ```typescript
-/**
- * Wire up modal state sync between host `open` attribute and `<dialog>` methods.
- * Listens for `--show`, `--close`, `--toggle` commands routed via `onCommand`.
- * When host is the dialog (CSS case), no re-dispatch; when host is wrapper (web
- * component case), re-dispatch `close` event so the host element sees it.
- *
- * @param host — Element that owns the `open` attribute
- * @param dialog — `<dialog>` to call showModal() / close() on
- * @param onCommand — Command router (e.g., ctx.onCommand in web components)
- */
-export function initModal(
-  host: Element,
-  dialog: HTMLDialogElement,
-  onCommand?: (cmd: string, detail?: unknown) => void,
-) {
-  const handleCommand = (cmd: string) => {
-    switch (cmd) {
-      case "--show":
-        host.setAttribute("open", "");
-        break;
-      case "--close":
-        host.removeAttribute("open");
-        break;
-      case "--toggle":
-        host.hasAttribute("open") ? host.removeAttribute("open") : host.setAttribute("open", "");
-        break;
-    }
-  };
+import { initModal, makeOnCommand } from "@pantoken/interactions";
 
-  if (onCommand) {
-    onCommand("--show", undefined);
-    // ... more command handling
-  }
-
-  // Return cleanup (IIFE bundles call this on unload)
-  return {
-    cleanup: () => {
-      /* remove listeners */
-    },
-  };
+const dialog = document.querySelector<HTMLDialogElement>("dialog.instui-modal");
+if (dialog) {
+  const onCommand = makeOnCommand("command" in HTMLButtonElement.prototype);
+  initModal(dialog, dialog, onCommand);
 }
 ```
+
+For CSS, the host and dialog are the same element. Web components pass a separate host and its
+shadow dialog. The production IIFE wires CSS dialogs automatically; don't initialize them twice.
+Commands call native methods before reflecting attributes, so opening enters the top layer and
+closing preserves native focus return. Initial or externally added `open` attributes are promoted
+from nonmodal display to `showModal()`. Removing `open` calls native `close()` even if the browser
+still considers the dialog modal.
+
+Native Escape/cancel policy stays with the browser and application listeners. A queued close event
+can't clear a newer open state; separate hosts still receive a bubbling `close` notification.
 
 ## Shared helpers
 

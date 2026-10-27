@@ -3,6 +3,7 @@
  * @selector .pfx-modal
  * @summary A dialog surface (works on a native <dialog>); header/body/footer parts.
  * @remarks On a native <dialog>, `showModal()` puts the modal in the top layer and its `::backdrop` becomes the mask, so no z-index is needed. An `<img>` alone in `.body` goes full-bleed.
+ * @remarks Load `@pantoken/interactions/modal.iife.js` to wire `--show`, `--close`, and `--toggle` commands. It synchronizes `open` through native modal methods, including initially open dialogs; CSS alone doesn't provide modal activation.
  * @element dialog
  * @modifier -size-sm — A narrow modal.
  * @modifier -size-lg — A wide modal.
