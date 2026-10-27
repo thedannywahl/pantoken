@@ -2,10 +2,24 @@ import { readFileSync } from "node:fs";
 import { resolve } from "node:path";
 import { expect, test } from "vite-plus/test";
 import { parse } from "yaml";
+import componentsConfig from "../../formats/components/vite.config.ts";
+import rootConfig from "../../vite.config.ts";
 
 const root = resolve(import.meta.dirname, "../..");
 const workflow = parse(readFileSync(resolve(root, ".github/workflows/ci.yml"), "utf8"));
 const job = workflow.jobs["component-accessibility"];
+
+test("restores the complete workspace build graph before running an uncached audit", () => {
+  const audit = componentsConfig.run?.tasks?.["audit:accessibility"];
+  expect(audit).toMatchObject({
+    command: "node scripts/audit-accessibility.ts",
+    cache: false,
+    dependsOn: ["pantoken-root#build:all"],
+  });
+  expect(rootConfig.run?.tasks?.["build:all"]).toMatchObject({
+    command: "vp run -r build",
+  });
+});
 
 test("keeps retained tool reports outside contributor Markdown linting", () => {
   const config = parse(readFileSync(resolve(root, ".markdownlint-cli2.yaml"), "utf8"));
