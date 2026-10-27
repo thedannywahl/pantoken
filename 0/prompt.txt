@@ -1,0 +1,5 @@
+I want to add automatica11y from npm as a dev tool for auditing the css in formats/components.
+
+---
+
+work in incremental conventional commits with changesets and test coverage.
