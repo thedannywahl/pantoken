@@ -66,7 +66,7 @@ export default extendBase({
       "audit:accessibility": {
         command: "node scripts/audit-accessibility.ts",
         cache: false,
-        dependsOn: ["build", "@pantoken/css#build", "@pantoken/interactions#build"],
+        dependsOn: ["pantoken-root#build:all"],
       },
       build: {
         command: [

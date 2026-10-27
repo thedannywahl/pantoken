@@ -17,6 +17,10 @@
 `vp run audit:components` is an explicit, uncached audit task, separate from `ready`. It uses the
 catalog-backed automatica11y development dependency, current local package builds, and authored
 component examples. It doesn't send examples to a remote audit service.
+The task first runs the shared `build:all` prerequisite, restoring the complete workspace build
+graph in dependency order. A fresh checkout or restored CI task cache doesn't contain package
+outputs until those tasks run; building only components, CSS, and interactions can leave their
+build-time workspace dependencies missing.
 
 The tool requires Chrome or Chromium. Check setup with
 `vp exec -F @pantoken/components automatica11y doctor`. If a browser is missing, explicitly opt into
