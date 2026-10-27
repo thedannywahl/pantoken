@@ -9,6 +9,7 @@ import {
   behaviorNames,
   collectExamples,
   completedTargets,
+  collectCoverage,
   exampleHtml,
   execute,
   executeAsync,
@@ -135,6 +136,7 @@ test("retains original evidence, uses installed CLI, and doesn't add violation f
     expected: ["button"],
     completed: ["button"],
     gaps: 0,
+    coverage: { notices: ["button: no executable configurations"], configurations: [] },
   });
   expect(run.mock.calls[0]![0]).toBe(process.execPath);
   expect(run.mock.calls[0]![1]).toContain("audit");
@@ -280,6 +282,181 @@ test("reports coverage gaps without merging them with failed checks or violation
     inspectChecks({ engines: { axe: { status: "failed", reason: "Engine error" } } }),
   ).toThrow("Engine error");
   expect(() => inspectChecks({ result: "error" })).toThrow("Audit check failed");
+});
+
+const requestedTiers = ["rules", "interactions", "computed", "conditions", "vsr"];
+const dialogResults = () => {
+  const targets = Array.from({ length: 6 }, (_, index) => ({
+    id: `dialog-${index}`,
+    status: "ran",
+    archetypes: {
+      dialog: {
+        status: "ran",
+        fixture: { source: "authored" },
+        configs: [
+          {
+            state: "closed",
+            tiers: Object.fromEntries(requestedTiers.map((tier) => [tier, { status: "ran" }])),
+          },
+          { state: "open", tiers: { rules: { status: "ran" }, vsr: { status: "ran" } } },
+        ],
+      },
+    },
+    summary: { gaps: [], notTestable: [] },
+  }));
+  const coverage = targets.flatMap(({ id }) =>
+    ["interactions", "computed", "conditions"].map(
+      (tier) => `${id}/dialog/1/${tier}: missing requested tier`,
+    ),
+  );
+  return { targets, outcome: { status: "passed", coverage } };
+};
+
+test("retains 18 original supplemental-state notices without double counting derived gaps", () => {
+  const results = dialogResults();
+  const coverage = collectCoverage(results, requestedTiers);
+  expect(coverage.notices).toEqual(results.outcome.coverage);
+  expect(coverage.configurations).toHaveLength(12);
+  expect(coverage.configurations[1]).toEqual({
+    target: "dialog-0",
+    archetype: "dialog",
+    index: 1,
+    state: "open",
+    tiers: {
+      rules: "ran",
+      interactions: "missing",
+      computed: "missing",
+      conditions: "missing",
+      vsr: "ran",
+    },
+  });
+  expect(collectCoverage({ targets: results.targets }, requestedTiers)).toEqual(coverage);
+});
+
+test("preserves summary limitations, original notices, and not-testable tier notes separately", () => {
+  const coverage = collectCoverage(
+    {
+      outcome: { coverage: ["example: original notice"] },
+      targets: [
+        {
+          id: "example",
+          summary: { gaps: ["fixture gap"], notTestable: ["closed shadow root"] },
+          archetypes: {
+            page: {
+              configs: [
+                {
+                  state: "expanded",
+                  tiers: {
+                    rules: { status: "not-testable", reason: "no DOM" },
+                    vsr: { status: "ran", notTestable: ["open shadow root"] },
+                    computed: { status: "not-applicable" },
+                  },
+                },
+              ],
+            },
+          },
+        },
+      ],
+    },
+    ["rules", "vsr", "computed"],
+  );
+  expect(coverage.notices).toEqual([
+    "example: original notice",
+    "example: fixture gap",
+    "example: closed shadow root",
+    "example/page/0/rules: no DOM",
+    "example/page/0/vsr: open shadow root",
+  ]);
+  expect(coverage.configurations[0]!.tiers.computed).toBe("not-applicable");
+});
+
+test("reports missing configurations and rejects malformed coverage data", () => {
+  expect(
+    collectCoverage({ targets: [{ id: "empty", archetypes: {} }] }, requestedTiers).notices,
+  ).toEqual(["empty: no executable configurations"]);
+  for (const value of [
+    null,
+    {},
+    { outcome: { coverage: "invalid" } },
+    { outcome: { coverage: [42] } },
+    { targets: [{ id: 1 }] },
+    { targets: [{ id: "x", summary: { gaps: {} } }] },
+    { targets: [{ id: "x", archetypes: { dialog: { configs: {} } } }] },
+    { targets: [{ id: "x", archetypes: { dialog: { status: "gap", reason: {} } } }] },
+    { targets: [{ id: "x", archetypes: { dialog: { configs: [null] } } }] },
+    { targets: [{ id: "x", archetypes: { dialog: { configs: [{}] } } }] },
+  ])
+    expect(() => collectCoverage(value, requestedTiers)).toThrow("Invalid");
+});
+
+test("keeps skipped, gap, and unreported statuses explicit without treating inapplicable tiers as gaps", () => {
+  const coverage = collectCoverage(
+    {
+      targets: [
+        {
+          id: "sample",
+          archetypes: {
+            dialog: {
+              status: "gap",
+              configs: [
+                {
+                  tiers: {
+                    rules: { status: "skipped" },
+                    computed: {},
+                    vsr: { status: "not-applicable" },
+                  },
+                },
+              ],
+            },
+            menu: { status: "gap", reason: "missing fixture" },
+          },
+        },
+      ],
+    },
+    [],
+  );
+  expect(coverage.notices).toEqual([
+    "sample/dialog: fixture gap",
+    "sample/dialog/0/rules: skipped",
+    "sample/dialog/0/computed: missing status",
+    "sample/menu: missing fixture",
+  ]);
+  expect(coverage.configurations[0]!.state).toBe("Not reported");
+});
+
+test("indexes supplemental-state coverage without changing originals or failing advisory findings", async () => {
+  const out = temp();
+  const original = JSON.stringify(dialogResults());
+  const result = await auditInvocation(
+    out,
+    "npm-dialog",
+    dialogResults().targets.map(({ id }) => `${id}=npm:example`),
+    ["--tiers", requestedTiers.join(",")],
+    (_command, args) => {
+      const directory = args[args.indexOf("--out") + 1]!;
+      mkdirSync(directory);
+      writeFileSync(join(directory, "report.md"), "Original report");
+      writeFileSync(join(directory, "results.json"), original);
+    },
+    "dialog",
+  );
+  expect(result.error).toBeUndefined();
+  expect(result.completed).toHaveLength(6);
+  expect(result.gaps).toBe(0);
+  expect(result.coverage?.notices).toHaveLength(18);
+  writeIndex(out, [result], []);
+  const markdown = readFileSync(join(out, "index.md"), "utf8");
+  expect(markdown).toContain("Coverage notices");
+  expect(markdown).toContain("| npm-dialog | 6 / 6 | 0 | 18 |");
+  expect(markdown).toContain("dialog-0/dialog/1/interactions: missing requested tier");
+  expect(markdown).toContain("open");
+  expect(markdown).toContain("interactions: missing");
+  expect(markdown).toContain("not unique defects");
+  expect(JSON.parse(readFileSync(join(out, "coverage.json"), "utf8")).evidence[0].coverage).toEqual(
+    result.coverage,
+  );
+  expect(readFileSync(join(out, "npm-dialog/results.json"), "utf8")).toBe(original);
+  expect(readFileSync(join(out, "npm-dialog/report.md"), "utf8")).toBe("Original report");
 });
 test("rejects native templates, generated guesses, and npm archetype gaps", () => {
   const target = {

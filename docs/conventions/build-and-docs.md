@@ -27,6 +27,15 @@ Each run retains the tool's original Markdown and JSON reports and a coverage in
 `a11y-report/<run>/`. The command returns an error for infrastructure failures; accessibility
 violations alone don't fail it. Keep axe and IBM findings separate, and read incomplete and
 needs-review results rather than treating an empty violations list as a verdict.
+The index separates explicit gaps/undetermined checks from coverage notices and lists tier
+execution per target, archetype, and state. Notices preserve `outcome.coverage`, summary gaps,
+and not-testable notes, with missing requested tiers derived when absent from the tool's outcome.
+Notices can overlap explicit gap counts; they aren't unique defects, and the counts aren't additive.
+Target completion doesn't mean every requested tier ran in every state. In automatica11y 0.11.0,
+supplemental npm states run rules and simulated VSR only. Interaction, computed, and condition
+checks run on fresh pages and are attached to the initial configuration. Missing supplemental tiers
+remain visible limitations, not passes or infrastructure errors. Nested execution errors still fail
+the command. Original reports stay unchanged.
 The npm archetype suite retains its authored fixture mapping and local package tarballs alongside
 the reports. These tarballs are test inputs, not release artifacts. Each theme/scheme case uses
 the same semantic example. Keep the report's authored-fixture provenance and browser warnings.

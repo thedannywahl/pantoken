@@ -45,6 +45,19 @@ export interface AuditEvidence {
   completed: string[];
   error?: string;
   gaps?: number;
+  coverage?: AuditCoverage;
+}
+
+/** Per-state tier execution and diagnostic notices, separate from engine findings. */
+export interface AuditCoverage {
+  notices: string[];
+  configurations: {
+    target: string;
+    archetype: string;
+    index: number;
+    state: string;
+    tiers: Record<string, string>;
+  }[];
 }
 
 /** Semantic archetypes supported by automatica11y, mapped to actual authored records. */
@@ -202,6 +215,86 @@ export function inspectChecks(value: unknown): number {
   );
 }
 
+function coverageObject(value: unknown): Record<string, unknown> {
+  if (!value || typeof value !== "object" || Array.isArray(value))
+    throw new Error("Invalid coverage object in results.json");
+  return Object.fromEntries(Object.entries(value));
+}
+
+function coverageStrings(value: unknown): string[] {
+  if (value === undefined) return [];
+  if (!Array.isArray(value) || !value.every((item): item is string => typeof item === "string"))
+    throw new Error("Invalid coverage notices in results.json");
+  return value;
+}
+
+function coverageReason(value: unknown, fallback: string): string {
+  if (value === undefined || value === null) return fallback;
+  if (typeof value !== "string") throw new Error("Invalid coverage reason");
+  return value;
+}
+
+/** Retain original notices and expose requested tier coverage for every configuration. */
+export function collectCoverage(value: unknown, requested: readonly string[]): AuditCoverage {
+  const results = coverageObject(value);
+  const notices = new Set(
+    coverageStrings(
+      results.outcome === undefined ? undefined : coverageObject(results.outcome).coverage,
+    ),
+  );
+  const configurations: AuditCoverage["configurations"] = [];
+  if (!Array.isArray(results.targets)) throw new Error("Invalid coverage targets");
+  for (const rawTarget of results.targets) {
+    const target = coverageObject(rawTarget);
+    if (typeof target.id !== "string") throw new Error("Invalid coverage target ID");
+    const summary = target.summary === undefined ? {} : coverageObject(target.summary);
+    for (const reason of [
+      ...coverageStrings(summary.gaps),
+      ...coverageStrings(summary.notTestable),
+    ])
+      notices.add(`${target.id}: ${reason}`);
+    const start = configurations.length;
+    for (const [name, rawArchetype] of Object.entries(
+      target.archetypes === undefined ? {} : coverageObject(target.archetypes),
+    )) {
+      const archetype = coverageObject(rawArchetype);
+      if (archetype.status === "gap")
+        notices.add(`${target.id}/${name}: ${coverageReason(archetype.reason, "fixture gap")}`);
+      if (archetype.configs !== undefined && !Array.isArray(archetype.configs))
+        throw new Error("Invalid coverage configurations");
+      for (const [index, rawConfig] of (archetype.configs ?? []).entries()) {
+        const config = coverageObject(rawConfig);
+        const tiers = coverageObject(config.tiers);
+        const statuses: Record<string, string> = {};
+        for (const tierName of new Set([...requested, ...Object.keys(tiers)])) {
+          const location = `${target.id}/${name}/${index}/${tierName}`;
+          if (tiers[tierName] === undefined) {
+            statuses[tierName] = "missing";
+            notices.add(`${location}: missing requested tier`);
+            continue;
+          }
+          const tier = coverageObject(tiers[tierName]);
+          const status = typeof tier.status === "string" ? tier.status : "missing status";
+          statuses[tierName] = status;
+          if (["gap", "not-testable", "skipped", "failed", "missing status"].includes(status))
+            notices.add(`${location}: ${coverageReason(tier.reason, status)}`);
+          for (const reason of coverageStrings(tier.notTestable))
+            notices.add(`${location}: ${reason}`);
+        }
+        configurations.push({
+          target: target.id,
+          archetype: name,
+          index,
+          state: typeof config.state === "string" ? config.state : "Not reported",
+          tiers: statuses,
+        });
+      }
+    }
+    if (configurations.length === start) notices.add(`${target.id}: no executable configurations`);
+  }
+  return { notices: [...notices], configurations };
+}
+
 /** Require authored npm provenance instead of accepting a native template or generated guess. */
 export function authoredTargets(
   value: unknown,
@@ -258,17 +351,49 @@ export function writeIndex(
     "",
     `Expected page cases: ${cases.length}. Completed targets: ${evidence.reduce((sum, item) => sum + item.completed.length, 0)}.`,
     "",
-    "| Suite | Completed / expected | Gaps / undetermined | Evidence | Error |",
-    "| --- | --- | --- | --- | --- |",
+    "| Suite | Completed / expected | Explicit gaps / undetermined | Coverage notices | Evidence | Error |",
+    "| --- | --- | --- | --- | --- | --- |",
     ...evidence.map(
       (item) =>
-        `| ${item.directory} | ${item.completed.length} / ${item.expected.length} | ${item.gaps ?? "Not measured"} | [Report](${item.directory}/report.md), [results](${item.directory}/results.json) | ${item.error ? escapeText(item.error).replaceAll("|", "\\|") : "None"} |`,
+        `| ${item.directory} | ${item.completed.length} / ${item.expected.length} | ${item.gaps ?? "Not measured"} | ${item.coverage?.notices.length ?? "Not measured"} | [Report](${item.directory}/report.md), [results](${item.directory}/results.json) | ${item.error ? escapeText(item.error).replaceAll("|", "\\|") : "None"} |`,
     ),
     "",
     "Page targets run rules, conditions, and simulated screen-reader checks. Authored npm archetypes additionally run interaction and computed checks.",
     "Page fixtures expand dialogs, native popovers, and disclosures and focus tooltip triggers. Npm fixtures preserve authored initial states and exercise production behavior.",
     `Supported npm archetypes: ${Object.keys(ARCHETYPES).join(", ")}. No documented combobox or chart contract is claimed.`,
     "Hidden/closed surfaces and unsupported checks aren't passes. Read the original reports for gaps, warnings, and engine-specific findings.",
+    "Coverage notices are diagnostic entries, not unique defects. They can overlap explicit gaps/undetermined checks; don't add these counts together.",
+    "Target completion doesn't imply every requested tier ran in every state. Supplemental npm states in automatica11y 0.11.0 run rules/VSR only; interaction, computed, and condition checks use fresh pages and are attached to the initial configuration.",
+    "",
+    ...evidence.flatMap((item) => {
+      if (!item.coverage) return [];
+      const cell = (text: string): string =>
+        escapeText(text).replaceAll("|", "\\|").replaceAll("\n", " ");
+      return [
+        `## ${item.directory}`,
+        "",
+        "### Coverage notices",
+        "",
+        ...(item.coverage.notices.length
+          ? item.coverage.notices.map((notice) => `- ${cell(notice)}`)
+          : ["No coverage notices reported. See per-state tier execution below."]),
+        "",
+        "### Per-state tier execution",
+        "",
+        "| Target | Archetype | Configuration | State | Tiers |",
+        "| --- | --- | --- | --- | --- |",
+        ...item.coverage.configurations.map(
+          (config) =>
+            `| ${cell(config.target)} | ${cell(config.archetype)} | ${config.index} | ${cell(config.state)} | ${cell(
+              Object.entries(config.tiers)
+                .map(([name, status]) => `${name}: ${status}`)
+                .join(", "),
+            )} |`,
+        ),
+        ...(item.coverage.configurations.length ? [] : ["No configuration coverage reported."]),
+        "",
+      ];
+    }),
     "Meaningful alt text, context, cognitive load, real focus/reading order, and real screen readers still need manual review.",
   ];
   writeFileSync(join(out, "index.md"), `${lines.join("\n")}\n`);
@@ -317,6 +442,11 @@ export async function auditInvocation(
     evidence.completed = archetype
       ? authoredTargets(results, expected, archetype)
       : completedTargets(results, expected);
+    const tiersIndex = options.indexOf("--tiers");
+    evidence.coverage = collectCoverage(
+      results,
+      tiersIndex < 0 ? [] : options[tiersIndex + 1]!.split(","),
+    );
   } catch (error) {
     evidence.error = error instanceof Error ? error.message : String(error);
     console.error(`Audit ${directory} incomplete: ${evidence.error}`);
