@@ -28,6 +28,7 @@ import {
   reassembleDemoHtml,
   segmentDemoHtml,
 } from "./segment-demo-html.ts";
+import { resolveExampleTargets } from "@pantoken/utils/example-targets";
 
 /** How a translatable segment is handled: cheap `glossary` substitution or real `prose` translation. */
 export type TranslationKind = "glossary" | "prose";
@@ -244,7 +245,13 @@ export function segmentMarkdown(md: string): Segment[] {
       const start = index;
       index = scanFence(lines, start);
       const hasClosingFence = index > start + 1 && FENCE.test(lines[index - 1]);
-      if (HTML_FENCE.test(line) && hasClosingFence) {
+      let previous = start - 1;
+      while (previous >= 0 && lines[previous].trim() === "") previous -= 1;
+      const metadata =
+        previous >= 0 && isFlagOnly(lines[previous].trim()) ? `${lines[previous]}\n` : "";
+      const audience = resolveExampleTargets([metadata + lines.slice(start, index).join("\n")]);
+      const auditOnly = audience.automatica11y.length > 0 && audience.docs.length === 0;
+      if (HTML_FENCE.test(line) && hasClosingFence && !auditOnly) {
         segments.push({
           kind: "html",
           opening: lines[start],
@@ -269,6 +276,13 @@ export function segmentMarkdown(md: string): Segment[] {
       const start = index;
       index = scanBlankRun(lines, start);
       segments.push({ kind: "preserve", text: lines.slice(start, index).join("\n") });
+      continue;
+    }
+
+    if (isFlagOnly(line.trim())) {
+      flush();
+      segments.push({ kind: "preserve", text: line });
+      index += 1;
       continue;
     }
 

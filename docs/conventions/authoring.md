@@ -122,6 +122,8 @@ The page suite runs both axe-core and IBM Equal Access against WCAG 2.2 AA, cond
 computed checks. Page fixtures expand dialogs, native popovers, and disclosures and focus tooltip
 triggers so their expanded surfaces are measured; npm fixtures preserve authored initial states
 for interaction checks.
+Audit-only fixture text stays verbatim in generated API sources and doesn't enter translation
+catalogs; add `-docs` only when the example should also appear in documentation.
 Closed surfaces aren't evidence that their hidden contents passed. Findings are
 advisory; failed targets, missing fixtures/assets, and incomplete execution are errors.
 

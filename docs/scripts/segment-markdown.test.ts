@@ -225,6 +225,27 @@ describe("classification", () => {
   test("multiple -flag tokens on one line are also preserved", () => {
     expect(find(segmentMarkdown("-nocard -noshow\n"), "-nocard -noshow").kind).toBe("preserve");
   });
+
+  test.each(["-automatica11y", "-automatica11y -canvas-rce"])(
+    "keeps %s fixture text outside the translation catalog",
+    (flags) => {
+      const page = `${flags}\n\`\`\`html\n<label>Audit-only label<input></label>\n\`\`\`\n`;
+      const segments = segmentMarkdown(page);
+      expect(collectUnits(segments)).toEqual([]);
+      expect(reassemble(segments, identity)).toBe(page);
+    },
+  );
+
+  test("still translates examples shared with docs and separates flags from captions", () => {
+    const page =
+      "-automatica11y -docs\n```html\n<button>Visible label</button>\n```\n\n-canvas-rce -docs\n### Nested label\n```html\n<label>Another label</label>\n```\n";
+    const segments = segmentMarkdown(page);
+    const units = collectUnits(segments);
+    expect(units.map((unit) => unit.text)).toContain("Visible label");
+    expect(units.map((unit) => unit.text)).toContain("Another label");
+    expect(units.some((unit) => unit.text.includes("-canvas-rce"))).toBe(false);
+    expect(reassemble(segments, identity)).toBe(page);
+  });
 });
 
 describe("the js-requirement callout", () => {

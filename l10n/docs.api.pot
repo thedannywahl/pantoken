@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: pantoken\n"
-"PO-Revision-Date: 2026-10-26 23:49+0000\n"
+"PO-Revision-Date: 2026-10-27 18:05+0000\n"
 "Last-Translator: pantoken localization engine\n"
 "Language-Team: pantoken\n"
 "MIME-Version: 1.0\n"
@@ -658,14 +658,12 @@ msgstr ""
 
 #: css/agent-shell.md
 #: css/card.md
-#: css/card.md
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "Content here."
 msgstr ""
 
 #: css/agent-shell.md
-#: css/card.md
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "Action"
@@ -788,12 +786,6 @@ msgstr ""
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "\n  Watch out! You're using the \"warning\" color.\n  "
-msgstr ""
-
-#: css/alert.md
-#, no-c-format
-msgctxt "docs.api:prose"
-msgid "Save settings"
 msgstr ""
 
 #: css/alert.md
@@ -1436,12 +1428,6 @@ msgstr ""
 #: css/banner.md
 #, no-c-format
 msgctxt "docs.api:prose"
-msgid "Profile changes saved."
-msgstr ""
-
-#: css/banner.md
-#, no-c-format
-msgctxt "docs.api:prose"
 msgid "Sea-tinted background and icon swatch."
 msgstr ""
 
@@ -1803,20 +1789,6 @@ msgid "Right"
 msgstr ""
 
 #: css/button-set.md
-#: css/button-set.md
-#, no-c-format
-msgctxt "docs.api:prose"
-msgid "Week"
-msgstr ""
-
-#: css/button-set.md
-#: css/button-set.md
-#, no-c-format
-msgctxt "docs.api:prose"
-msgid "Month"
-msgstr ""
-
-#: css/button-set.md
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "Confirm"
@@ -1826,6 +1798,18 @@ msgstr ""
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "Day"
+msgstr ""
+
+#: css/button-set.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Week"
+msgstr ""
+
+#: css/button-set.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Month"
 msgstr ""
 
 #: css/button-set.md
@@ -1987,13 +1971,6 @@ msgid "Secondary"
 msgstr ""
 
 #: css/button.md
-#, no-c-format
-msgctxt "docs.api:prose"
-msgid "Save"
-msgstr ""
-
-#: css/button.md
-#: css/menu.md
 #: css/menu.md
 #: renderers/web-components/src/variables/button.md
 #, no-c-format
@@ -2350,12 +2327,6 @@ msgstr ""
 #: css/callout.md
 #, no-c-format
 msgctxt "docs.api:prose"
-msgid "Your draft was saved."
-msgstr ""
-
-#: css/callout.md
-#, no-c-format
-msgctxt "docs.api:prose"
 msgid "Alert message content"
 msgstr ""
 
@@ -2407,7 +2378,6 @@ msgctxt "docs.api:prose"
 msgid "Content card -nocard"
 msgstr ""
 
-#: css/card.md
 #: css/card.md
 #, no-c-format
 msgctxt "docs.api:prose"
@@ -3344,7 +3314,6 @@ msgid "-canvas-rce\n"
 msgstr ""
 
 #: css/form-field.md
-#: css/form-field.md
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "Email address"
@@ -3637,24 +3606,6 @@ msgstr ""
 #: css/hero.md
 #, no-c-format
 msgctxt "docs.api:prose"
-msgid "Explore your course"
-msgstr ""
-
-#: css/hero.md
-#, no-c-format
-msgctxt "docs.api:prose"
-msgid "Find materials and upcoming work."
-msgstr ""
-
-#: css/hero.md
-#, no-c-format
-msgctxt "docs.api:prose"
-msgid "View course content"
-msgstr ""
-
-#: css/hero.md
-#, no-c-format
-msgctxt "docs.api:prose"
 msgid "Hero subtitle content"
 msgstr ""
 
@@ -3716,12 +3667,6 @@ msgstr ""
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "The glyph is decorative, so mark it `aria-hidden=\"true\"`; give it a `role` or label only when the icon conveys meaning on its own."
-msgstr ""
-
-#: css/icon.md
-#, no-c-format
-msgctxt "docs.api:prose"
-msgid "\n  Search\n"
 msgstr ""
 
 #: css/icon.md
@@ -4626,12 +4571,6 @@ msgstr ""
 #: css/link.md
 #, no-c-format
 msgctxt "docs.api:prose"
-msgid "Account settings"
-msgstr ""
-
-#: css/link.md
-#, no-c-format
-msgctxt "docs.api:prose"
 msgid "Read the "
 msgstr ""
 
@@ -5395,13 +5334,11 @@ msgid "**Source:** [group.css](https://github.com/thedannywahl/pantoken/blob/mai
 msgstr ""
 
 #: css/menu.md
-#: css/menu.md
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "Actions"
 msgstr ""
 
-#: css/menu.md
 #: css/menu.md
 #, no-c-format
 msgctxt "docs.api:prose"
@@ -5566,28 +5503,9 @@ msgid " — a narrow modal."
 msgstr ""
 
 #: css/modal.md
-#: css/modal.md
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "Close"
-msgstr ""
-
-#: css/modal.md
-#, no-c-format
-msgctxt "docs.api:prose"
-msgid "Open account details"
-msgstr ""
-
-#: css/modal.md
-#, no-c-format
-msgctxt "docs.api:prose"
-msgid "Account details"
-msgstr ""
-
-#: css/modal.md
-#, no-c-format
-msgctxt "docs.api:prose"
-msgid "Review your account information."
 msgstr ""
 
 #: css/modal.md
@@ -5865,31 +5783,6 @@ msgstr ""
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "- Map the main content area to a `<main>` landmark\n- Give the sidebar `role=\"navigation\"` or `role=\"complementary\"` as appropriate\n- Ensure landmark regions have distinct aria-labels"
-msgstr ""
-
-#: css/page-layout.md
-#: css/wrapper.md
-#, no-c-format
-msgctxt "docs.api:prose"
-msgid "Course overview"
-msgstr ""
-
-#: css/page-layout.md
-#, no-c-format
-msgctxt "docs.api:prose"
-msgid "Assignments"
-msgstr ""
-
-#: css/page-layout.md
-#, no-c-format
-msgctxt "docs.api:prose"
-msgid "Upcoming work appears here."
-msgstr ""
-
-#: css/page-layout.md
-#, no-c-format
-msgctxt "docs.api:prose"
-msgid "Course resources"
 msgstr ""
 
 #: css/page-layout.md
@@ -6295,14 +6188,6 @@ msgid "Use native `<progress>` for a zero-based task completion range and `<mete
 msgstr ""
 
 #: css/progress-circle.md
-#: css/progress.md
-#, no-c-format
-msgctxt "docs.api:prose"
-msgid "\n  Uploading Document: "
-msgstr ""
-
-#: css/progress-circle.md
-#: css/rubric-note.md
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "Score"
@@ -7389,48 +7274,6 @@ msgstr ""
 #: css/rubric-note.md
 #, no-c-format
 msgctxt "docs.api:prose"
-msgid "Writing rubric"
-msgstr ""
-
-#: css/rubric-note.md
-#, no-c-format
-msgctxt "docs.api:prose"
-msgid "Research paper criteria"
-msgstr ""
-
-#: css/rubric-note.md
-#, no-c-format
-msgctxt "docs.api:prose"
-msgid "Criterion"
-msgstr ""
-
-#: css/rubric-note.md
-#, no-c-format
-msgctxt "docs.api:prose"
-msgid "Description"
-msgstr ""
-
-#: css/rubric-note.md
-#, no-c-format
-msgctxt "docs.api:prose"
-msgid "Evidence"
-msgstr ""
-
-#: css/rubric-note.md
-#, no-c-format
-msgctxt "docs.api:prose"
-msgid "4 of 4"
-msgstr ""
-
-#: css/rubric-note.md
-#, no-c-format
-msgctxt "docs.api:prose"
-msgid "Sources support the central claim."
-msgstr ""
-
-#: css/rubric-note.md
-#, no-c-format
-msgctxt "docs.api:prose"
 msgid "Container for rubric criteria rows."
 msgstr ""
 
@@ -7494,12 +7337,6 @@ msgctxt "docs.api:prose"
 msgid "Opens in a new window"
 msgstr ""
 
-#: css/screen-reader-content.md
-#, no-c-format
-msgctxt "docs.api:prose"
-msgid "Open settings"
-msgstr ""
-
 #: css/segmented-control.md
 #, no-c-format
 msgctxt "docs.api:prose"
@@ -7555,26 +7392,6 @@ msgstr ""
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "Feature flags"
-msgstr ""
-
-#: css/segmented-control.md
-#: css/tabs.md
-#: css/tabs.md
-#, no-c-format
-msgctxt "docs.api:prose"
-msgid "Overview"
-msgstr ""
-
-#: css/segmented-control.md
-#, no-c-format
-msgctxt "docs.api:prose"
-msgid "Grades"
-msgstr ""
-
-#: css/segmented-control.md
-#, no-c-format
-msgctxt "docs.api:prose"
-msgid "People"
 msgstr ""
 
 #: css/segmented-control.md
@@ -7734,13 +7551,11 @@ msgid "Choose a fruit…"
 msgstr ""
 
 #: css/simple-select.md
-#: css/simple-select.md
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "Apple"
 msgstr ""
 
-#: css/simple-select.md
 #: css/simple-select.md
 #, no-c-format
 msgctxt "docs.api:prose"
@@ -7751,18 +7566,6 @@ msgstr ""
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "Pear"
-msgstr ""
-
-#: css/simple-select.md
-#, no-c-format
-msgctxt "docs.api:prose"
-msgid "Fruit\n  "
-msgstr ""
-
-#: css/simple-select.md
-#, no-c-format
-msgctxt "docs.api:prose"
-msgid "Choose a fruit"
 msgstr ""
 
 #: css/simple-select.md
@@ -8207,6 +8010,13 @@ msgid "Wire the tab list with role=\"tablist\", each tab with role=\"tab\" and a
 msgstr ""
 
 #: css/tabs.md
+#: css/tabs.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Overview"
+msgstr ""
+
+#: css/tabs.md
 #: renderers/web-components/src/variables/button.md
 #: renderers/web-components/src/variables/contextView.md
 #, no-c-format
@@ -8248,31 +8058,6 @@ msgstr ""
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "The History tab's content shows here."
-msgstr ""
-
-#: css/tabs.md
-#: renderers/web-components/src/variables/drilldown.md
-#, no-c-format
-msgctxt "docs.api:prose"
-msgid "Profile"
-msgstr ""
-
-#: css/tabs.md
-#, no-c-format
-msgctxt "docs.api:prose"
-msgid "Security"
-msgstr ""
-
-#: css/tabs.md
-#, no-c-format
-msgctxt "docs.api:prose"
-msgid "Profile settings"
-msgstr ""
-
-#: css/tabs.md
-#, no-c-format
-msgctxt "docs.api:prose"
-msgid "Security settings"
 msgstr ""
 
 #: css/tabs.md
@@ -8435,24 +8220,6 @@ msgstr ""
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "- Use `<blockquote>` semantically for the quote\n- Ensure attribution is clear and associated with the quote\n- If using images, provide alt text"
-msgstr ""
-
-#: css/testimonial.md
-#, no-c-format
-msgctxt "docs.api:prose"
-msgid "The course helped me understand the material."
-msgstr ""
-
-#: css/testimonial.md
-#, no-c-format
-msgctxt "docs.api:prose"
-msgid "Jordan Lee"
-msgstr ""
-
-#: css/testimonial.md
-#, no-c-format
-msgctxt "docs.api:prose"
-msgid "Student"
 msgstr ""
 
 #: css/testimonial.md
@@ -8738,7 +8505,6 @@ msgid "**Source:** [toggle-details.css](https://github.com/thedannywahl/pantoken
 msgstr ""
 
 #: css/toggle-details.md
-#: css/toggle-details.md
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "What ships in this package?"
@@ -8748,12 +8514,6 @@ msgstr ""
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "\n  Class-based component styles, built from the Instructure tokens, plus a prose layer.\n"
-msgstr ""
-
-#: css/toggle-details.md
-#, no-c-format
-msgctxt "docs.api:prose"
-msgid "\n  Class-based component styles and a prose layer.\n"
 msgstr ""
 
 #: css/toggle-details.md
@@ -8863,18 +8623,6 @@ msgstr ""
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "Default placement is top"
-msgstr ""
-
-#: css/tooltip.md
-#, no-c-format
-msgctxt "docs.api:prose"
-msgid "Help"
-msgstr ""
-
-#: css/tooltip.md
-#, no-c-format
-msgctxt "docs.api:prose"
-msgid "Find answers to common questions."
 msgstr ""
 
 #: css/tooltip.md
@@ -9264,30 +9012,6 @@ msgstr ""
 #: css/two-column.md
 #, no-c-format
 msgctxt "docs.api:prose"
-msgid "Course details"
-msgstr ""
-
-#: css/two-column.md
-#, no-c-format
-msgctxt "docs.api:prose"
-msgid "Review the course schedule."
-msgstr ""
-
-#: css/two-column.md
-#, no-c-format
-msgctxt "docs.api:prose"
-msgid "Course work"
-msgstr ""
-
-#: css/two-column.md
-#, no-c-format
-msgctxt "docs.api:prose"
-msgid "See upcoming assignments."
-msgstr ""
-
-#: css/two-column.md
-#, no-c-format
-msgctxt "docs.api:prose"
 msgid "Optional visual divider between columns."
 msgstr ""
 
@@ -9571,30 +9295,6 @@ msgstr ""
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "- Map the main content area to a &lt;main&gt; landmark with a skip-nav link so keyboard users can bypass GlobalNav\n- Give ContentTabList role=\"navigation\" with a distinct aria-label such as \"Page navigation\" — separate from GlobalNav's landmark\n- Give TrailingContentArea role=\"complementary\" with a descriptive aria-label that reflects its content, such as \"Student details\"\n- Give each UtilityPanel a distinct aria-label: \"AI assistant\", \"Notifications\", or \"Filters\"\n- When a UtilityPanel opens, move focus into the panel; when it closes, return focus to the trigger that opened it"
-msgstr ""
-
-#: css/wrapper.md
-#, no-c-format
-msgctxt "docs.api:prose"
-msgid "Canvas"
-msgstr ""
-
-#: css/wrapper.md
-#, no-c-format
-msgctxt "docs.api:prose"
-msgid "Course home"
-msgstr ""
-
-#: css/wrapper.md
-#, no-c-format
-msgctxt "docs.api:prose"
-msgid "Course materials appear here."
-msgstr ""
-
-#: css/wrapper.md
-#, no-c-format
-msgctxt "docs.api:prose"
-msgid "Signed in as Jordan Lee"
 msgstr ""
 
 #: css/wrapper.md
@@ -20097,6 +19797,12 @@ msgstr ""
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "`<instui-drilldown>` — a stateful, multi-level menu over the menu styles. Each level is a light-DOM\n`[data-page=\"id\"]` whose inner `.item`s are cloned into a shadow `.instui-menu`; an item with\n`data-goto=\"id\"` descends to that page and a synthesized Back row (or any `[data-back]` item)\nreturns. The light DOM is the data source only — with no `<slot>` it never renders, so shadow CSS\nfully styles each panel. The `active` attribute reflects the current page and can be set to\nnavigate; a bubbling `navigate` event (`detail.page`) fires on every move. Drivable from light DOM\nvia Invoker Commands: `<button command=\"--goto\" commandfor=\"dd-id\" data-page=\"…\">` descends and\n`<button command=\"--back\" commandfor=\"dd-id\">` returns."
+msgstr ""
+
+#: renderers/web-components/src/variables/drilldown.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Profile"
 msgstr ""
 
 #: renderers/web-components/src/variables/el.md
