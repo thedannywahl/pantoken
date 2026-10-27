@@ -1,0 +1,233 @@
+[[PLAN]] security findings to address:
+# Dangerous-Workflow #152
+.github/workflows/renovate-policy.yml:35
+Dangerous-Workflow
+
+  
+
+  
+    score is 0: untrusted code checkout '${ github.event.pull_request.base.sha }'
+
+Remediation tip: Avoid the dangerous workflow patterns.
+
+See [this post](https://securitylab.github.com/research/github-actions-preventing-pwn-requests/) for information on avoiding untrusted code checkouts.
+
+Avoid the dangerous workflow patterns. See this [post](https://securitylab.github.com/research/github-actions-preventing-pwn-requests/) for information on avoiding untrusted code checkouts. See this [document](https://docs.github.com/en/actions/security-guides/security-hardening-for-github-actions#understanding-the-risk-of-script-injections) for information on avoiding and mitigating the risk of script injections.
+
+# Inefficient regular expression #148
+renderers/tinymce/src/plugins/components.ts:72
+Inefficient regular expression
+This part of the regular expression may cause exponential backtracking on strings starting with '-a' and containing many repetitions of ' -a'. 
+
+# Token-Permissions #151
+.github/workflows/renovate-policy.yml:23
+oken-Permissions
+
+  
+
+  
+    score is 9: topLevel 'statuses' permission set to 'write'
+
+Remediation tip: Visit [https://app.stepsecurity.io/secureworkflow](https://app.stepsecurity.io/secureworkflow/github.com/thedannywahl/pantoken/renovate-policy.yml/main?enable=permissions).
+
+Tick the 'Restrict permissions for GITHUB_TOKEN'
+
+Untick other options
+
+NOTE: If you want to resolve multiple issues at once, you can visit [https://app.stepsecurity.io/securerepo](https://app.stepsecurity.io/securerepo) instead.
+
+- Set top-level permissions as `read-all` or `contents: read` as described in GitHub's [documentation](https://docs.github.com/en/actions/reference/workflow-syntax-for-github-actions#permissions).
+
+- Set any required write permissions at the job-level. Only set the permissions required for that job; do not set `permissions: write-all` at the job level.
+
+- To help determine the permissions needed for your workflows, you may use [StepSecurity's online tool](https://app.stepsecurity.io/secureworkflow/) by ticking the "Restrict permissions for GITHUB_TOKEN". You may also tick the "Pin actions to a full length commit SHA" to fix issues found by the Pinned-dependencies check.
+
+# Network data written to file #133
+docs/scripts/lib/og-fonts.ts:209
+Rule js/http-to-file-access
+            [is not supported by Copilot Autofix for CodeQL](https://docs.github.com/code-security/code-scanning/managing-your-code-scanning-configuration/codeql-query-suites#query-lists-for-the-default-query-suites)
+Network data written to file
+Write to file system depends on Untrusted data. 
+Storing user-controlled data on the local file system without further validation allows arbitrary file upload, and may be an indication of malicious backdoor code that has been implanted into an otherwise trusted code base.
+
+---
+
+[[PLAN]] security findings to address:
+# Dangerous-Workflow #152
+.github/workflows/renovate-policy.yml:35
+Dangerous-Workflow
+
+  
+
+  
+    score is 0: untrusted code checkout '${ github.event.pull_request.base.sha }'
+
+Remediation tip: Avoid the dangerous workflow patterns.
+
+See [this post](https://securitylab.github.com/research/github-actions-preventing-pwn-requests/) for information on avoiding untrusted code checkouts.
+
+Avoid the dangerous workflow patterns. See this [post](https://securitylab.github.com/research/github-actions-preventing-pwn-requests/) for information on avoiding untrusted code checkouts. See this [document](https://docs.github.com/en/actions/security-guides/security-hardening-for-github-actions#understanding-the-risk-of-script-injections) for information on avoiding and mitigating the risk of script injections.
+
+# Inefficient regular expression #148
+renderers/tinymce/src/plugins/components.ts:72
+Inefficient regular expression
+This part of the regular expression may cause exponential backtracking on strings starting with '-a' and containing many repetitions of ' -a'. 
+
+# Token-Permissions #151
+.github/workflows/renovate-policy.yml:23
+oken-Permissions
+
+  
+
+  
+    score is 9: topLevel 'statuses' permission set to 'write'
+
+Remediation tip: Visit [https://app.stepsecurity.io/secureworkflow](https://app.stepsecurity.io/secureworkflow/github.com/thedannywahl/pantoken/renovate-policy.yml/main?enable=permissions).
+
+Tick the 'Restrict permissions for GITHUB_TOKEN'
+
+Untick other options
+
+NOTE: If you want to resolve multiple issues at once, you can visit [https://app.stepsecurity.io/securerepo](https://app.stepsecurity.io/securerepo) instead.
+
+- Set top-level permissions as `read-all` or `contents: read` as described in GitHub's [documentation](https://docs.github.com/en/actions/reference/workflow-syntax-for-github-actions#permissions).
+
+- Set any required write permissions at the job-level. Only set the permissions required for that job; do not set `permissions: write-all` at the job level.
+
+- To help determine the permissions needed for your workflows, you may use [StepSecurity's online tool](https://app.stepsecurity.io/secureworkflow/) by ticking the "Restrict permissions for GITHUB_TOKEN". You may also tick the "Pin actions to a full length commit SHA" to fix issues found by the Pinned-dependencies check.
+
+# Network data written to file #133
+docs/scripts/lib/og-fonts.ts:209
+Rule js/http-to-file-access
+            [is not supported by Copilot Autofix for CodeQL](https://docs.github.com/code-security/code-scanning/managing-your-code-scanning-configuration/codeql-query-suites#query-lists-for-the-default-query-suites)
+Network data written to file
+Write to file system depends on Untrusted data. 
+Storing user-controlled data on the local file system without further validation allows arbitrary file upload, and may be an indication of malicious backdoor code that has been implanted into an otherwise trusted code base.
+
+---
+
+[[PLAN]] one more to add:
+[formats/components/scripts/audit-accessibility.ts](https://github.com/thedannywahl/pantoken/pull/239/files/33739d868765ea5bcfc406df0028b0a0f1b0ea41#diff-3cee74561bd6d0b3cf401e0301c8bd4266aa2b6ce28a9f7a47511eff49a27f5e)
+```
+[](https://github.com/thedannywahl/pantoken/pull/239/files/33739d868765ea5bcfc406df0028b0a0f1b0ea41#diff-3cee74561bd6d0b3cf401e0301c8bd4266aa2b6ce28a9f7a47511eff49a27f5e)
+
+        
+      
+
+        
+          
+  
+    
+      
+    
+    
+          
+
+              
+
+              
+
+            
+                const fences = [...example.matchAll(/```html[^\n]*\n([\s\S]*?)```/gu)];
+
+            
+          
+          
+
+              
+
+              
+
+            
+                const markup = fences.length
+
+            
+          
+          
+
+              
+
+              
+
+            
+                  ? fences.map((match) => match[1]).join("\n")
+
+            
+          
+          
+
+              
+
+              
+
+            
+                  : example.replace(/^(?:-[a-z][a-z0-9-]*[ \t]*)+\r?\n/u, "");
+```
+
+This part of the regular expression may cause exponential backtracking on strings starting with '-a' and containing many repetitions of '-a'.
+
+Work using incremental conventional commits and changesets for affected packages.
+
+---
+
+[[PLAN]] one more to add:
+[formats/components/scripts/audit-accessibility.ts](https://github.com/thedannywahl/pantoken/pull/239/files/33739d868765ea5bcfc406df0028b0a0f1b0ea41#diff-3cee74561bd6d0b3cf401e0301c8bd4266aa2b6ce28a9f7a47511eff49a27f5e)
+```
+[](https://github.com/thedannywahl/pantoken/pull/239/files/33739d868765ea5bcfc406df0028b0a0f1b0ea41#diff-3cee74561bd6d0b3cf401e0301c8bd4266aa2b6ce28a9f7a47511eff49a27f5e)
+
+        
+      
+
+        
+          
+  
+    
+      
+    
+    
+          
+
+              
+
+              
+
+            
+                const fences = [...example.matchAll(/```html[^\n]*\n([\s\S]*?)```/gu)];
+
+            
+          
+          
+
+              
+
+              
+
+            
+                const markup = fences.length
+
+            
+          
+          
+
+              
+
+              
+
+            
+                  ? fences.map((match) => match[1]).join("\n")
+
+            
+          
+          
+
+              
+
+              
+
+            
+                  : example.replace(/^(?:-[a-z][a-z0-9-]*[ \t]*)+\r?\n/u, "");
+```
+
+This part of the regular expression may cause exponential backtracking on strings starting with '-a' and containing many repetitions of '-a'.
+
+Work using incremental conventional commits and changesets for affected packages.
