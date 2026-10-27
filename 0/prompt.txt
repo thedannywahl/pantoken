@@ -1,0 +1,17 @@
+give me an overview of what we did and where we are
+
+---
+
+give me an overview of what we did and where we are
+
+---
+
+1. can we use `gh` to test the actions locally?
+3. we need to fix concurrency and snyk is now available.
+2. this should be a separate plan after 1 and 3 are done.
+
+---
+
+1. can we use `gh` to test the actions locally?
+3. we need to fix concurrency and snyk is now available.
+2. this should be a separate plan after 1 and 3 are done.
