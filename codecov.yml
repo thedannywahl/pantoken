@@ -28,7 +28,8 @@ flag_management:
         # limited by V8 async callback attribution) shouldn't block PRs that are otherwise well-tested.
         threshold: 5%
       - type: patch
-        target: auto
+        target: 85%
+        threshold: 1%
 # One component per meaningful package group; component_ids are stable — never rename.
 component_management:
   default_rules:
