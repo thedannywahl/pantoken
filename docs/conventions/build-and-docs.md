@@ -30,6 +30,8 @@ needs-review results rather than treating an empty violations list as a verdict.
 The npm archetype suite retains its authored fixture mapping and local package tarballs alongside
 the reports. These tarballs are test inputs, not release artifacts. Each theme/scheme case uses
 the same semantic example. Keep the report's authored-fixture provenance and browser warnings.
+Each npm report batch gets its own mapping; automatica11y rejects mapping entries for targets
+outside that invocation.
 
 The `component-accessibility` CI job runs this command after the build and stays outside
 `ci-gate`. It's advisory even when setup or execution fails; such a failure isn't a clean audit.

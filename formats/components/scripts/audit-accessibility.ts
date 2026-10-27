@@ -432,8 +432,6 @@ export async function runNpmAudits(
       writeFileSync(fixture, renderNpmFixture(item, join(out, "pages", "assets")));
       mapping[id] = { [archetype]: { fixture } };
     }
-    const mappingFile = join(out, "mapping.json");
-    writeFileSync(mappingFile, `${JSON.stringify(mapping, null, 2)}\n`);
     for (let offset = 0; offset < archetypes.length; offset += 2) {
       await Promise.all(
         archetypes.slice(offset, offset + 2).map(async ([archetype, name], localIndex) => {
@@ -444,6 +442,20 @@ export async function runNpmAudits(
               (item) =>
                 `npm-${item.id}=npm:@pantoken/components/components.css,@pantoken/css/scope.css,${companions.join(",")}`,
             );
+          const mappingFile = join(out, `mapping-${archetype}.json`);
+          writeFileSync(
+            mappingFile,
+            `${JSON.stringify(
+              Object.fromEntries(
+                targets.map((target) => {
+                  const id = target.slice(0, target.indexOf("="));
+                  return [id, mapping[id]];
+                }),
+              ),
+              null,
+              2,
+            )}\n`,
+          );
           coverage.evidence[start + index] = await auditInvocation(
             out,
             `npm-${archetype}`,

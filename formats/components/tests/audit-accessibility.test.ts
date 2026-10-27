@@ -336,11 +336,15 @@ test("inlines only built supplementary styles, local fonts, and production behav
   expect(html).not.toContain("popover.showPopover()");
   expect(html).not.toContain("details.open = true");
 });
-test.each(["success", "pack failure", "fixture gap", "no archetype"])(
+test.each(["success", "pack failure", "fixture gap", "no archetype", "full inventory"])(
   "appends npm evidence: %s",
   async (outcome) => {
     const root = temp();
-    for (const folder of ["pages/assets/tokens", "pages/assets/components"])
+    for (const folder of [
+      "pages/assets/tokens",
+      "pages/assets/components",
+      "pages/assets/interactions",
+    ])
       mkdirSync(join(root, folder), { recursive: true });
     for (const file of [
       "tokens/schemes.css",
@@ -350,6 +354,8 @@ test.each(["success", "pack failure", "fixture gap", "no archetype"])(
       "components/fonts.css",
     ])
       writeFileSync(join(root, "pages", "assets", file), "/* built */");
+    for (const name of ["modal", "tabs", "tooltip", "close-button"])
+      writeFileSync(join(root, "pages", "assets", "interactions", `${name}.iife.js`), "");
     writeIndex(root, [], []);
     vi.spyOn(console, "error").mockImplementation(() => {});
     const run = vi.fn((_command: string, args: string[]) => {
@@ -359,34 +365,43 @@ test.each(["success", "pack failure", "fixture gap", "no archetype"])(
         return;
       }
       const destination = args[args.indexOf("--out") + 1]!;
+      const archetype = args[args.indexOf("--archetypes") + 1]!;
       const targets = args.slice(2, args.indexOf("--wcag")).map((spec) => ({
         id: spec.split("=")[0],
         status: "ran",
         archetypes: {
-          button: {
+          [archetype]: {
             status: outcome === "fixture gap" ? "gap" : "ran",
             fixture: { source: "authored" },
           },
         },
       }));
+      const mapping = JSON.parse(readFileSync(args[args.indexOf("--mapping") + 1]!, "utf8"));
+      expect(Object.keys(mapping).sort()).toEqual(targets.map((target) => target.id).sort());
       mkdirSync(destination, { recursive: true });
       writeFileSync(join(destination, "report.md"), "Original npm report");
       writeFileSync(join(destination, "results.json"), JSON.stringify({ targets }));
     });
     const action = runNpmAudits(
       root,
-      outcome === "no archetype" ? "text" : "button",
+      outcome === "full inventory" ? undefined : outcome === "no archetype" ? "text" : "button",
       run,
       workspace(root),
     );
-    if (outcome === "success" || outcome === "no archetype") await action;
+    if (outcome === "success" || outcome === "no archetype" || outcome === "full inventory")
+      await action;
     else await expect(action).rejects.toThrow("Incomplete npm accessibility audit");
     const coverage = JSON.parse(readFileSync(join(root, "coverage.json"), "utf8"));
     if (outcome === "success") {
       expect(coverage.evidence[0].completed).toHaveLength(6);
-      const mapping = JSON.parse(readFileSync(join(root, "mapping.json"), "utf8"));
+      const mapping = JSON.parse(readFileSync(join(root, "mapping-button.json"), "utf8"));
       expect(Object.keys(mapping)).toHaveLength(6);
       expect(run.mock.calls.at(-1)![1]).toContain("--no-generate");
+    } else if (outcome === "full inventory") {
+      expect(coverage.evidence).toHaveLength(9);
+      expect(
+        coverage.evidence.flatMap((item: { completed: string[] }) => item.completed),
+      ).toHaveLength(54);
     } else if (outcome === "no archetype") expect(run).not.toHaveBeenCalled();
     else expect(coverage.evidence.some((item: { error?: string }) => item.error)).toBe(true);
   },
