@@ -40,6 +40,25 @@ export function supportCandidates(support: VerifiedSupport, releases: readonly s
 }
 
 /** Apply a two-major support window only after all retained checks have explicit outcomes. */
+export function retireAgedSupport(
+  support: VerifiedSupport,
+  releases: readonly string[],
+): VerifiedSupport {
+  const allowed = new Set(supportCandidates(support, releases));
+  const testedVersions = support.testedVersions
+    .filter((version) => allowed.has(version))
+    .sort(compareReleases);
+  if (!testedVersions.length)
+    throw new Error("No verified releases remain inside the current support window");
+  return {
+    ...support,
+    minimum: testedVersions[0],
+    testedThrough: testedVersions.at(-1)!,
+    testedVersions,
+  };
+}
+
+/** Apply a two-major support window only after all retained checks have explicit outcomes. */
 export function applySupportPolicy(
   support: VerifiedSupport,
   releases: readonly string[],

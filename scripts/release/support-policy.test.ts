@@ -3,6 +3,7 @@ import {
   applySupportPolicy,
   compareReleases,
   supportCandidates,
+  retireAgedSupport,
   type VerifiedSupport,
   type VersionEvidence,
 } from "./support-policy.ts";
@@ -28,6 +29,15 @@ test("ages out older majors even when they previously passed", () => {
     testedThrough: "3.1.0",
     testedVersions: ["2.0.0", "2.1.0", "3.0.0", "3.1.0"],
   });
+});
+
+test("retirement preserves only already-tested releases when the new candidate fails", () => {
+  expect(retireAgedSupport(support, releases)).toMatchObject({
+    minimum: "2.0.0",
+    testedThrough: "3.0.0",
+    testedVersions: ["2.0.0", "2.1.0", "3.0.0"],
+  });
+  expect(() => retireAgedSupport(support, ["4.0.0", "5.0.0"])).toThrow("No verified releases");
 });
 
 test("drops the whole previous major on a compatibility failure", () => {

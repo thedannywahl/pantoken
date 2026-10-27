@@ -25,6 +25,7 @@ import {
   applySupportPolicy,
   compareReleases,
   supportCandidates,
+  retireAgedSupport,
   type VersionEvidence,
 } from "./support-policy.ts";
 import {
@@ -449,10 +450,49 @@ export async function prepareMaintenance(
               error: error instanceof Error ? error.message : String(error),
               upgrades: [],
             });
-            for (const version of support.testedVersions) adapterCheck(directory, support, version);
+            const retained =
+              history instanceof Error ? support : retireAgedSupport(support, history);
+            for (const version of retained.testedVersions)
+              adapterCheck(directory, support, version);
+            registry[name] = retained;
+            if (retained.minimum !== support.minimum) {
+              const pkg = oldOutputs.find((entry) => entry.name === name)!;
+              requireMaintenanceBump(bumps, name, breakingMaintenanceBump(pkg));
+              notes.push(
+                `${name}: retire aged-out majors; retained verified support starts at ${retained.minimum}.`,
+              );
+            }
           }
         }
         writeFiles(directory, { [registryFile]: `${JSON.stringify(registry, null, 2)}\n` });
+        for (const [name, support] of Object.entries(registry)) {
+          const previous = originalRegistry[name];
+          if (
+            support.status !== "verified" ||
+            previous?.status !== "verified" ||
+            support.minimum === previous.minimum
+          )
+            continue;
+          const pkg = oldOutputs.find((entry) => entry.name === name)!;
+          const file = `${pkg.path}/package.json`;
+          const manifest = readJson<Record<string, unknown>>(directory, file);
+          const peers = manifest.peerDependencies as Record<string, string> | undefined;
+          const target = npmTargets[name];
+          if (peers && target && target in peers) {
+            const majors = [
+              ...new Set(support.testedVersions.map((version) => Number(version.split(".")[0]))),
+            ];
+            peers[target] = majors
+              .map((major) => {
+                const floor = support.testedVersions.find(
+                  (version) => Number(version.split(".")[0]) === major,
+                )!;
+                return `>=${floor} <${major + 1}.0.0`;
+              })
+              .join(" || ");
+            writeFiles(directory, { [file]: `${JSON.stringify(manifest, null, 2)}\n` });
+          }
+        }
         command(directory, "vp", ["run", "sync:compatibility"]);
         const outputs = packageOutputs(directory);
         const affectedPaths: string[] = [];

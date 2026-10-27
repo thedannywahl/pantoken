@@ -248,7 +248,7 @@ test("retires an assertion-failing previous major without trying backward compat
   );
 });
 
-test("excludes a failing new target version while retaining passing recorded support", async () => {
+test("excludes a failing new target but still retires aged-out majors", async () => {
   fixture([], { "20.0.0": "AssertionError: current-major integration failed" });
   const base = "a".repeat(40);
   const result = await prepareMaintenance(base, base);
@@ -257,7 +257,10 @@ test("excludes a failing new target version while retaining passing recorded sup
   expect(
     JSON.parse(result.files["scripts/release/target-compatibility.json"]!)["@pantoken/react"]
       .minimum,
-  ).toBe("18.0.0");
+  ).toBe("19.0.0");
+  expect(
+    JSON.parse(result.files["renderers/react/package.json"]!).peerDependencies.react,
+  ).not.toContain("18");
 });
 
 test("records release-feed outages without changing recorded support", async () => {
