@@ -75,10 +75,19 @@ export const ARCHETYPES: Readonly<Record<string, string>> = {
 
 /** Normalize only class tokens in trusted authored HTML, never text or script contents. */
 export function exampleHtml(example: string): string {
-  const fences = [...example.matchAll(/```html[^\n]*\n([\s\S]*?)```/gu)];
-  const markup = fences.length
-    ? fences.map((match) => match[1]).join("\n")
-    : stripExampleMetadata(example);
+  const fences: string[] = [];
+  let cursor = 0;
+  while (cursor < example.length) {
+    const start = example.indexOf("```html", cursor);
+    if (start < 0) break;
+    const newline = example.indexOf("\n", start + 7);
+    if (newline < 0) break;
+    const end = example.indexOf("```", newline + 1);
+    if (end < 0) break;
+    fences.push(example.slice(newline + 1, end));
+    cursor = end + 3;
+  }
+  const markup = fences.length ? fences.join("\n") : stripExampleMetadata(example);
   const window = new Window();
   window.document.body.innerHTML = markup;
   for (const element of window.document.querySelectorAll("[class]")) {

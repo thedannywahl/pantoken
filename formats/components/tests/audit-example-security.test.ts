@@ -25,3 +25,8 @@ test("handles malformed and unterminated flag headers without backtracking", () 
     expect(html).toBe(`${prefix}<p>Content</p>`);
   }
 }, 2_000);
+
+test("handles many incomplete fence headers in a single pass", () => {
+  const prefix = "```html ".repeat(50_000);
+  expect(exampleHtml(`${prefix}<p>Content</p>`)).toBe(`${prefix}<p>Content</p>`);
+}, 2_000);

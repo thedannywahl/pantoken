@@ -385,9 +385,13 @@ test.each([
   ["-canvas-rce -docs\r\n<p>Content</p>", "<p>Content</p>"],
   ["```HTML -canvas-rce\r\n<p>Content</p>\r\n```", "<p>Content</p>"],
   ["```\n<p>Content</p>\n```", "<p>Content</p>"],
+  ["```html\n-canvas-rce\n-docs\n<p>Content</p>\n```", "<p>Content</p>"],
+  ["``` \n \r\n<p>Content</p>\n```", "<p>Content</p>"],
+  ["```html\n-a!<p>Content</p>```", "-a!<p>Content</p>"],
   ["-canvas-rce\n```html\n<p>Unclosed</p>", "```html\n<p>Unclosed</p>"],
   ["-a".repeat(50_000), "-a".repeat(50_000)],
   ["-a ".repeat(50_000) + "!", "-a ".repeat(50_000) + "!"],
+  ["```html ".repeat(50_000) + "!", "```html ".repeat(50_000) + "!"],
 ])(
   "normalizes example wrappers with bounded parsing: %#",
   (example, expected) => {
