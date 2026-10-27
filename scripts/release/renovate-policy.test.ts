@@ -1,10 +1,32 @@
 import { afterEach, expect, test, vi } from "vite-plus/test";
+import { readFileSync } from "node:fs";
+import { parse } from "yaml";
 import {
   automationPolicy,
   runAutomationPolicy,
   type AutomationPullRequest,
   type AutomationReview,
 } from "./renovate-policy.ts";
+
+test("runs only trusted main policy with job-scoped status authority", () => {
+  const workflow = parse(
+    readFileSync(new URL("../../.github/workflows/renovate-policy.yml", import.meta.url), "utf8"),
+  );
+  expect(workflow.permissions).toEqual({ contents: "read" });
+  const job = workflow.jobs.policy;
+  expect(job.permissions).toEqual({
+    contents: "read",
+    "pull-requests": "read",
+    statuses: "write",
+  });
+  const checkout = job.steps.find((step: { uses?: string }) =>
+    step.uses?.startsWith("actions/checkout@"),
+  );
+  expect(checkout.with).toEqual({ ref: "refs/heads/main", "persist-credentials": false });
+  expect(job.steps.at(-1).run).toBe("node scripts/release/renovate-policy.ts");
+  expect(workflow.on.pull_request_target.branches).toEqual(["main"]);
+  expect(workflow.on.pull_request_review.types).toEqual(["submitted", "edited", "dismissed"]);
+});
 
 afterEach(() => {
   vi.unstubAllEnvs();

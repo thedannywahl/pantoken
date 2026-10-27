@@ -185,8 +185,9 @@ The optional required `renovate-policy` commit status adds automation-specific m
 without granting bot bypass rights or preventing legitimate bot rebases. Reserved PRs must match
 their configured identity, same-repository origin, branch, and `main` target. Failed-update branches
 remain blocked. Component follow-ups need a non-author human maintainer's approval on the exact
-current head and cannot use auto-merge. The workflow checks out only trusted base policy and posts
-its result on the PR head with commit-status write permission, not repository-content write access.
+current head and cannot use auto-merge. The workflow checks out the fixed `refs/heads/main` policy,
+never a PR-selected ref. Workflow permissions are read-only; the policy job alone posts its result
+on the PR head with commit-status write permission, not repository-content write access.
 Evidence: `scripts/release/renovate-policy.ts`, its tests, and
 `.github/workflows/renovate-policy.yml`. The ruleset administrator must activate this required
 context after its first successful deployed run; until then the new status is advisory.

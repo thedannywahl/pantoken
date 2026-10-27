@@ -137,7 +137,8 @@ know what's in place:
 - **Automation merge policy.** The `renovate-policy` required commit status verifies same-repository
   bot identities and reserved branches, blocks failed-maintenance branches, and requires a separate
   human maintainer's current-commit approval for component follow-ups. Its workflow reads trusted
-  base-branch policy code and has read access plus commit-status write permission, never release
+  policy code from the fixed `refs/heads/main` ref. Workflow permissions are read-only; only the
+  policy job has commit-status write permission, never release
   credentials or content-write permission. Ruleset activation must follow deployment of the status
   workflow so existing PRs do not wait indefinitely for an unavailable check.
 - **Pinned build-time downloads.** The only asset the build fetches outside the package manager is the
