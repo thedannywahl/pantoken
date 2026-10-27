@@ -50,6 +50,9 @@ only through `file://` URLs.
   `lint:cssdoc`, `validate:generated:only`, and `lint:markdown` fan out concurrently. Everything that reads
   generated output depends on `build:all`, so generation happens exactly once (no concurrent codegen
   race). Must pass before you're done.
+- Vitest defaults to at most two workers, including coverage runs launched through the task DAG.
+  This bounds test-process contention without increasing timeouts or skipping tests. For an explicit
+  standalone override on a larger machine, use `vp test --maxWorkers=<count>`.
 - `pnpm run check:publish` — the publish gate (`gate:publish`): `gate:repository` (asserts every
   publishable manifest has the `repository.url` npm OIDC provenance needs), `gate:publint`, and
   `gate:attw`. Publint/attw depend on `build:all`; the repository check is a pure manifest read.
