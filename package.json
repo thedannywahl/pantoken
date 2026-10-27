@@ -5,6 +5,7 @@
   "type": "module",
   "scripts": {
     "ready": "vp run ready:all",
+    "audit:components": "vp run @pantoken/components#audit:accessibility",
     "generate": "vp run -r build",
     "validate:generated": "vp run generate && vp run validate:generated:only",
     "docs:dev": "vp run @pantoken/demo#build && vp run @pantoken/docs#docs:dev",

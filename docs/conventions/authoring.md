@@ -105,6 +105,25 @@ second. The selector reads the current setting at insertion time and leaves exis
 Components without the new flag retain their previous example fallback. Add `-docs` to examples
 that should also render in documentation; `-automatica11y` remains independent.
 
+### Accessibility audit examples
+
+Every record in the component registry, including member records, has an explicit
+`@example -automatica11y` block. The audit never falls back to Canvas or docs examples. Keep a
+member's required parent markup in its example, and give controls real labels and ID relationships.
+Use fenced HTML so audience flags remain metadata, not visible page content.
+
+Run `vp run audit:components` from the repository root. It builds local styles and behavior bundles,
+then tests each example separately in all three themes, light and dark. Reports and the coverage
+inventory live under the gitignored `a11y-report/<run>/` directory; open `index.md` first.
+Use `vp run audit:components --record button` for a focused reproduction.
+
+The page suite runs both axe-core and IBM Equal Access against WCAG 2.2 AA, conditions checks, and
+**simulated** screen-reader checks. Page audits don't exercise archetype-specific interactions or
+computed checks. Closed surfaces aren't evidence that their hidden contents passed. Findings are
+advisory; failed targets, missing fixtures/assets, and incomplete execution are errors.
+
+These automated results do not establish that the page meets WCAG; manual review is still needed.
+
 ## The modifier convention (key-value RSCSS compound)
 
 - Modifiers are `.${p}<comp>.-<prop>-<val>`, aligned to InstUI prop names

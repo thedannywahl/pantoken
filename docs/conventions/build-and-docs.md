@@ -12,6 +12,22 @@
   correctness; cssdoc owns documentation comments. `lint:css` and `lint:cssdoc` run in `ready`, and
   both are wired into the `vite.config.ts` staged hook.
 
+## Local component accessibility reports
+
+`vp run audit:components` is an explicit, uncached audit task, separate from `ready`. It uses the
+catalog-backed automatica11y development dependency, current local package builds, and authored
+component examples. It doesn't send examples to a remote audit service.
+
+The tool requires Chrome or Chromium. Check setup with
+`vp exec -F @pantoken/components automatica11y doctor`. If a browser is missing, explicitly opt into
+its download with `vp exec -F @pantoken/components automatica11y doctor --install-browser`.
+Don't bypass an outdated-browser warning without understanding its effect on results.
+
+Each run retains the tool's original Markdown and JSON reports and a coverage index in
+`a11y-report/<run>/`. The command returns an error for infrastructure failures; accessibility
+violations alone don't fail it. Keep axe and IBM findings separate, and read incomplete and
+needs-review results rather than treating an empty violations list as a verdict.
+
 ## The gate
 
 - `pnpm run ready` — the pass/fail gate. It's a `vp` task DAG (`ready:all`), not a serial chain:

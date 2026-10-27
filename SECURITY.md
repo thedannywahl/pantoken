@@ -24,6 +24,11 @@ pantoken is a design-token transformation and distribution system. It converts I
 
 ### Security boundaries and limitations
 
+- Component accessibility audits execute trusted repository examples and locally built browser
+  bundles through automatica11y and Chrome/Chromium. They aren't a sandbox for untrusted fixtures
+  or a sanitizer. Reports may contain example markup and simulated screen-reader output; don't put
+  secrets in examples. Automated accessibility findings aren't a security or WCAG attestation.
+
 - Token values, plugin implementations, configuration files, Markdown, HTML, and other caller-provided content must be treated as trusted input unless the relevant package explicitly documents otherwise.
 - pantoken emitters transform input into CSS, JavaScript, JSON, markup, or platform source. They are not a general-purpose sanitizer for untrusted input. Passing attacker-controlled values to an emitter or plugin may produce unsafe output, including CSS, markup, or code injection.
 - Generated stylesheets, components, and framework integrations do not provide an application security boundary. Applications remain responsible for authentication, authorization, output encoding, Content Security Policy, browser security, and safe handling of user content.

@@ -78,6 +78,10 @@ The authoritative architecture description is
 
 ## Assets to protect
 
+Contributor accessibility tooling runs trusted authored examples in a local browser, using
+lockfile-pinned automatica11y and locally built styles and scripts. Its reports are advisory evidence,
+not security controls or a WCAG certification. Fixtures must not contain credentials or private data.
+
 The security-relevant assets are:
 
 - The integrity of the source repository and release workflow.
@@ -340,10 +344,11 @@ since the runner writes the scale into a generated `srcdoc` attribute.
 
 ## Common implementation weaknesses and countermeasures
 
-| Canvas authoring control    | Evidence                                                                                                                                                                                                                                                                                                   |
-| --------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Local inline conversion     | The generic inliner does not fetch resources. Browser snapshots use a script-disabled iframe and bounded glyph canvases; author images/CSS can still request resources. Tests cover authored/generated declarations and nodes, scoped resolution, and removal of private tracking attributes from exports. |
-| Optional generated behavior | Include interactions controls generated Pantoken scripts outside Inline. Portable Inline disables generated/custom preview JavaScript and materializes static visuals; the app shell remains active.                                                                                                       |
+| Canvas authoring control         | Evidence                                                                                                                                                                                                                                                                                                   |
+| -------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Local inline conversion          | The generic inliner does not fetch resources. Browser snapshots use a script-disabled iframe and bounded glyph canvases; author images/CSS can still request resources. Tests cover authored/generated declarations and nodes, scoped resolution, and removal of private tracking attributes from exports. |
+| Optional generated behavior      | Include interactions controls generated Pantoken scripts outside Inline. Portable Inline disables generated/custom preview JavaScript and materializes static visuals; the app shell remains active.                                                                                                       |
+| Contributor accessibility audits | Local built assets and explicitly tagged examples define coverage; subprocess argument arrays avoid shell interpolation. Missing targets and reports fail execution rather than appearing clean.                                                                                                           |
 
 | Weakness                              | Countermeasure                                                                                                                                                                                                                                                                                                                                                                                                                |
 | ------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -388,6 +393,11 @@ The principal continuous evidence is:
 ## Residual risks and limitations
 
 The following risks remain or are deliberately outside the security claim:
+
+- **Accessibility fixture execution.** Audit examples and their production behavior scripts execute
+  in Chrome/Chromium with local-process privileges. They are trusted repository code, not isolated
+  untrusted content. Audit reports may contain authored markup. Accessibility findings, conditions
+  checks, and simulated screen-reader output don't prove security or WCAG conformance.
 
 - **Automated maintenance evidence.** Compatibility tests do not establish visual equivalence,
   upstream intent, or absence of malicious dependency behavior. Disposable worktrees and sanitized

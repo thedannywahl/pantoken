@@ -81,6 +81,7 @@ docs/internal/
 
 # Test coverage output
 coverage/
+a11y-report/
 
 # Local i18n coverage reports
 .i18n/

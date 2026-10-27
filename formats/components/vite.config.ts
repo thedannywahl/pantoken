@@ -63,6 +63,11 @@ export default extendBase({
   },
   run: {
     tasks: {
+      "audit:accessibility": {
+        command: "node scripts/audit-accessibility.ts",
+        cache: false,
+        dependsOn: ["build", "@pantoken/css#build", "@pantoken/interactions#build"],
+      },
       build: {
         command: [
           "vp run @pantoken/plugin-theme-custom-media#build",
