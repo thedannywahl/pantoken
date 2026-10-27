@@ -2,6 +2,7 @@ import assert from "node:assert/strict";
 import { readFileSync } from "node:fs";
 import type { MaintenanceResult } from "./weekly-maintenance.ts";
 import { runAsMain } from "./cli.ts";
+import { renderComponentReview } from "./component-reviews.ts";
 
 const branch = "renovate/weekly-maintenance";
 const failureBranch = "maintenance/failed-updates";
@@ -37,6 +38,57 @@ export function validateMaintenanceResult(
   assert.ok(
     result.evidence && typeof result.evidence === "object" && !Array.isArray(result.evidence),
   );
+  if (result.componentReviews !== undefined) {
+    assert.ok(Array.isArray(result.componentReviews));
+    for (const review of result.componentReviews) {
+      assert.match(review.id, /^[a-f0-9]{20}$/u);
+      assert.match(review.component, /^[a-z][a-z0-9-]*$/u);
+      assert.ok(
+        review.scaffold === undefined ||
+          (typeof review.scaffold === "string" && Buffer.byteLength(review.scaffold) <= 256 * 1024),
+      );
+      assert.ok(
+        [
+          "new-component",
+          "component-tokens",
+          "reference-change",
+          "promote-component",
+          "inventory-unavailable",
+        ].includes(review.kind),
+      );
+      assert.ok(
+        Array.isArray(review.tokens) &&
+          review.tokens.every(
+            (token) => typeof token === "string" && /^--[a-z0-9-]+$/u.test(token),
+          ),
+      );
+      assert.ok(
+        Array.isArray(review.references) &&
+          review.references.every(
+            (reference) =>
+              typeof reference.token === "string" &&
+              typeof reference.theme === "string" &&
+              (reference.before === undefined || typeof reference.before === "string") &&
+              (reference.after === undefined || typeof reference.after === "string"),
+          ),
+      );
+      assert.ok(
+        typeof review.destination === "string" &&
+          (/^(?:formats\/components|plugins\/pantoken\/custom-components)\/src\/components\/[a-z][a-z0-9-]*$/u.test(
+            review.destination,
+          ) ||
+            (review.kind === "reference-change" &&
+              review.destination === "packages/core/src/resolve.ts")),
+      );
+      assert.ok(review.upstream === null || typeof review.upstream === "boolean");
+      assert.ok(
+        review.references.every(
+          (reference) =>
+            reference.automatic === undefined || typeof reference.automatic === "boolean",
+        ),
+      );
+    }
+  }
   for (const [name, versions] of Object.entries(result.evidence)) {
     assert.match(name, /^@pantoken\/[a-z-]+$/u);
     assert.ok(
@@ -374,6 +426,40 @@ export async function publishMaintenance(
       await writeTree(passingCommit, failedFiles),
       "chore(deps): track failed maintenance updates",
       `Failed candidate updates, never auto-merged.\n\n${issueLinks.join("\n")}`,
+      true,
+      existing?.head.sha ?? base,
+    );
+  }
+  const reviews = (result.componentReviews ?? []).filter(
+    (review) =>
+      review.kind !== "reference-change" ||
+      review.references.some((reference) => !reference.automatic),
+  );
+  if (reviews.length) {
+    const files: Record<string, string> = {};
+    const links: string[] = [];
+    for (const review of reviews) {
+      const marker = `<!-- pantoken-component-review:${review.id} -->`;
+      const title = `Component review: ${review.kind} / ${review.component}`;
+      const body = `${marker}\n\n${renderComponentReview(review)}`;
+      let issue = issues.find((candidate) => candidate.body?.includes(marker));
+      if (issue) await api(`${prefix}/issues/${issue.number}`, "PATCH", { title, body });
+      else {
+        issue = await api<(typeof issues)[number]>(`${prefix}/issues`, "POST", { title, body });
+        issues.push(issue);
+      }
+      links.push(`- https://github.com/${repository}/issues/${issue.number}`);
+      files[`.renovate/component-reviews/${review.id}.md`] = `${renderComponentReview(review)}\n`;
+      if (review.scaffold)
+        files[`.renovate/component-reviews/${review.id}.patch`] = review.scaffold;
+    }
+    const head = "maintenance/component-reviews";
+    const existing = pullRequests.find((pr) => pr.head.ref === head);
+    await publish(
+      head,
+      await writeTree(passingCommit, files),
+      "chore(components): scaffold upstream component reviews",
+      `Human-reviewed component implementation scaffolds. No auto-merge.\n\n${links.join("\n")}`,
       true,
       existing?.head.sha ?? base,
     );

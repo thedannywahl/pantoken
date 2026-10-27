@@ -20,6 +20,12 @@ import { runAsMain } from "./cli.ts";
 import { validateMaintenanceManifest } from "./maintenance-publication.ts";
 import type { TargetSupport } from "./compatibility.ts";
 import { npmTargets } from "./check-target-releases.ts";
+import {
+  collectComponentInventory,
+  componentReviews,
+  promotionScaffold,
+  type ComponentReview,
+} from "./component-reviews.ts";
 import { selectReleaseCandidates, targetReleaseHistory } from "./release-candidates.ts";
 import {
   applySupportPolicy,
@@ -55,6 +61,7 @@ export interface MaintenanceResult {
   failures: MaintenanceFailure[];
   files: Record<string, string | null>;
   evidence: Record<string, string[]>;
+  componentReviews?: ComponentReview[];
 }
 
 interface PackageOutput {
@@ -548,7 +555,26 @@ export async function prepareMaintenance(
           if (affectedPaths.length)
             command(directory, "vp", ["test", ...affectedPaths, "--passWithNoTests"]);
         }
-        prepared = { failures, files: collectedFiles(directory, base), evidence };
+        const currentVersions = versions(directory);
+        const upstreamChanged = oldVersions.ui !== currentVersions.ui;
+        const reviews =
+          final && (upstreamChanged || oldVersions.designTokens !== currentVersions.designTokens)
+            ? componentReviews(
+                oldSnapshot,
+                snapshot(directory),
+                await collectComponentInventory(directory, currentVersions.ui, upstreamChanged),
+              )
+            : [];
+        for (const review of reviews) {
+          if (review.kind === "promote-component")
+            review.scaffold = promotionScaffold(directory, review.component, currentVersions.ui);
+        }
+        prepared = {
+          failures,
+          files: collectedFiles(directory, base),
+          evidence,
+          componentReviews: reviews,
+        };
       } finally {
         command(root, "git", ["worktree", "remove", "--force", directory]);
         worktrees.splice(worktrees.indexOf(directory), 1);

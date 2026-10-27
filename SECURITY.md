@@ -117,6 +117,12 @@ know what's in place:
   upstream minors or the next major, whichever comes first. Existing earlier deadlines remain.
   Automated tests do not establish visual equivalence or guarantee dependency safety. Unrecognized
   failures remain excluded for investigation rather than being treated as compatible.
+- **Component follow-up evidence.** Component review automation statically parses the ES export
+  entry from a fixed HTTPS endpoint pinned to the adopted InstUI version. It does not import or
+  execute the downloaded JavaScript. Missing evidence, ambiguous references, variants, and proposed
+  custom-to-canonical promotions produce human-reviewed issues/scaffold drafts, never automatic
+  component implementations. Promotion patches are published as text and are not applied by the
+  write-enabled publication job.
 - **Pinned build-time downloads.** The only asset the build fetches outside the package manager is the
   set of Noto script fonts the documentation social cards render in. Those come from URLs pinned to a
   single `google/fonts` commit and are checked against recorded SHA-256 digests before use; a

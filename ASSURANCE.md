@@ -177,6 +177,14 @@ Security-relevant entry points include:
 
 ### Weekly maintenance controls
 
+Component follow-up adds one fixed, version-pinned upstream export lookup in the credential-free
+preparation job. Acorn parses the returned ES module without executing it. Lookup/parser failures
+produce an inventory-review finding. The publisher validates component identifiers, paths, and
+bounded patch text, and writes review artifacts only under `.renovate/component-reviews`; it does
+not apply candidate-authored source patches. Component availability, variants, CSS behavior, and
+alias retirement still require human validation. Evidence: `scripts/release/component-reviews.ts`
+and its co-located tests, plus the publisher's separate-draft regression test.
+
 | Threat                                                                               | Control                                                                                                                                                                                                                                  | Evidence                                                                                                                                               |
 | ------------------------------------------------------------------------------------ | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------ |
 | A dependency proposal acquires repository-write credentials during execution.        | Candidate commands receive a credential-filtered environment; the publication job checks out trusted base code, does not install candidate dependencies, and accepts only bounded file handoffs tied to immutable base/proposal SHAs.    | `scripts/release/weekly-maintenance.ts`, `scripts/release/weekly-maintenance.test.ts`, `.github/workflows/renovate.yml`                                |

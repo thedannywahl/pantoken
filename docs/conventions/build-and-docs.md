@@ -88,6 +88,26 @@ local tests and workflow linting do not prove the live GitHub event chain.
 
 ## Linting CSS
 
+### Upstream Component Follow-Up
+
+Weekly maintenance also produces a separate `maintenance/component-reviews` draft and deduplicated
+issues for new component token families, new tokens/variants on existing components, unresolved
+reference-map changes, and custom components newly exported by InstUI. These authoring tasks do
+not auto-merge with dependency updates. Raw token families and source directories determine
+ownership: token-only components go to `plugins/pantoken/custom-components`; existing canonical
+components, such as Card, retain their owner under `formats/components`.
+
+Stable token names follow changed upstream references through the existing core resolver when
+registration and target evidence agree. Ambiguous changes list their before/after references and
+themes for manual mapping review. A failed version-pinned InstUI export lookup is itself reported;
+automation never treats a token's existence as proof of upstream component availability.
+
+For promotions, the draft includes an unapplied patch moving the custom CSS into the canonical
+component directory and replacing the custom function with a functional deprecated forwarder,
+following `cardRules` and `cardCss`. The patch records the upstream adoption and alias retirement
+boundaries. Registry order, exports, focused drift tests, guides, demos, browser verification, and
+actual InstUI parity remain mandatory human-reviewed work before applying and merging it.
+
 Root `stylelint.config.js` runs error-only core CSS rules; anchor-positioning props are ignored and
 `@scope` is allowed. `lint:cssdoc` runs `@cssdoc/cli` with `--max-warnings 0` over the same
 web-components sources and generated components CSS, making it the single cssdoc lint instance.

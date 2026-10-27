@@ -2,6 +2,7 @@ import { afterEach, expect, test, vi } from "vite-plus/test";
 import { mkdtempSync, rmSync, writeFileSync } from "node:fs";
 import { tmpdir } from "node:os";
 import { join } from "node:path";
+import { componentReviews } from "./component-reviews.ts";
 import {
   publishMaintenance,
   validateMaintenanceManifest,
@@ -254,4 +255,33 @@ test("closes exact dependency failure versions after merge, including range-pref
   expect(
     fixture.calls.some((call) => call.endpoint.endsWith("/issues/32") && call.method === "PATCH"),
   ).toBe(false);
+});
+
+test("publishes component promotion issues and an independent scaffold draft without auto-merge", async () => {
+  const empty = { rebrand: [], canvas: [], canvasHighContrast: [] };
+  const reviews = componentReviews(empty, empty, {
+    core: [],
+    custom: ["card"],
+    upstream: ["card"],
+  });
+  const fixture = githubFixture({ ...artifact(), files: {}, componentReviews: reviews });
+  await publishMaintenance(["publish", fixture.file, base, proposal]);
+  expect(
+    fixture.calls.some(
+      (call) =>
+        call.endpoint.endsWith("/issues") &&
+        String(call.body.title).includes("promote-component / card"),
+    ),
+  ).toBe(true);
+  const pr = fixture.calls.find(
+    (call) => call.endpoint.endsWith("/pulls") && call.method === "POST",
+  );
+  expect(pr?.body).toMatchObject({ head: "maintenance/component-reviews", draft: true });
+  expect(String(pr?.body.body)).toContain("issues/42");
+  expect(fixture.calls.some((call) => call.endpoint === "graphql")).toBe(false);
+  expect(
+    fixture.calls.some((call) =>
+      String(call.body.content).includes("functional deprecated forwarder"),
+    ),
+  ).toBe(true);
 });
