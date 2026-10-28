@@ -256,6 +256,22 @@ div[class*="language-"]:has(+ .css-example-frame) > pre {
    prose. Scoped to `.pantoken-doc-tag`, so real `.instui-pill` previews in a `.css-example` are untouched. */
 .vp-doc .instui-pill.pantoken-doc-tag {
   vertical-align: middle;
+  white-space: nowrap;
+}
+
+/* Accessibility audit tables: the check name may wrap anywhere; its WCAG criteria sit on their own line. */
+.vp-doc .pantoken-a11y-check,
+.vp-doc .pantoken-a11y-criteria {
+  display: block;
+}
+
+.vp-doc .pantoken-a11y-check {
+  overflow-wrap: anywhere;
+}
+
+.vp-doc .pantoken-a11y-criteria {
+  font-size: 0.875em;
+  opacity: 0.8;
 }
 
 /* `@interaction` modifier markers in CSS API tables use the same badge treatment as deprecated/alias,

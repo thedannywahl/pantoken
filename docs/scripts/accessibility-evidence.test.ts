@@ -182,10 +182,10 @@ test("renders provenance, separate findings, missing coverage, and escaped data 
     "| Conditions | Rebrand (light) | Rebrand (dark) | Canvas | Canvas High Contrast |",
   );
   expect(md).toContain(
-    '| reflow (WCAG 1.4.10) | <span class="instui-pill -color-danger pantoken-doc-tag">Fail</span> |',
+    '| <span class="pantoken-a11y-check">reflow</span><span class="pantoken-a11y-criteria">WCAG 2.2 1.4.10</span> | <span class="instui-pill -color-danger pantoken-doc-tag">Fail</span> |',
   );
   expect(md).toContain(
-    '| spacing | <span class="instui-pill -color-warning pantoken-doc-tag">Needs review</span> |',
+    '| <span class="pantoken-a11y-check">spacing</span> | <span class="instui-pill -color-warning pantoken-doc-tag">Needs review</span> |',
   );
   expect(md).toContain('<span class="instui-pill pantoken-doc-tag">Not applicable</span>');
   expect(md).toContain('| Announcements | <span class="instui-pill -color-warning');

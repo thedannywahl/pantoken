@@ -63,7 +63,8 @@ Canvas dark cases as historical evidence; don't count those cases as supported p
 Generated component pages append the audit to the record's **Accessibility** section, without a
 separate header, so it follows the authored `@accessibility` (or `@a11y`) guidance. The audit is
 one table per tier (conditions, interactions, computed styles) plus a simulated screen-reader
-table. Rows are checks with their WCAG success criteria; columns are the supported theme/scheme
+table. Rows are checks (name, then `WCAG 2.2` and the success criteria on a second line; the name
+may wrap, pills never do); columns are the supported theme/scheme
 pairs, and each cell is an `instui-pill` (Pass, Fail, Needs review, Not applicable, or Not tested).
 A cell takes the worst result across the page and npm evidence for that column. Every record
 needs that tag; a record without one still gets a bare **Accessibility** section, but a test fails.

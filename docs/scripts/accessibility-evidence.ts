@@ -398,9 +398,11 @@ function tierTable(
     const criteria = rows
       .flatMap((row) => row.details.filter((d) => d.tier === tier && d.name === name))
       .flatMap((detail) => detail.criteria);
-    const heading = criteria.length
-      ? `${cell(name)} (WCAG ${[...new Set(criteria)].map(cell).join(", ")})`
-      : cell(name);
+    const heading = `<span class="pantoken-a11y-check">${cell(name)}</span>${
+      criteria.length
+        ? `<span class="pantoken-a11y-criteria">WCAG 2.2 ${[...new Set(criteria)].map(cell).join(", ")}</span>`
+        : ""
+    }`;
     const cells = AUDIT_MATRIX.map((item) =>
       pill(
         worst(
