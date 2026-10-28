@@ -351,19 +351,18 @@ function cell(value: string): string {
 
 const TIERS = ["conditions", "interactions", "computed"] as const;
 
-type Status = "pass" | "fail" | "review" | "na" | "untested";
+type Status = "pass" | "fail" | "review" | "na";
 
-const PILL: Record<Status, { color: string; label: () => string }> = {
-  pass: { color: "-color-success", label: () => text.pass },
-  fail: { color: "-color-danger", label: () => text.fail },
-  review: { color: "-color-warning", label: () => text.review },
-  na: { color: "", label: () => text.notApplicable },
-  untested: { color: "", label: () => text.notTested },
+const PILL: Record<Status, { color: string; icon: string; label: () => string }> = {
+  pass: { color: "-color-success", icon: "-icon-check", label: () => text.pass },
+  fail: { color: "-color-danger", icon: "-icon-x", label: () => text.fail },
+  review: { color: "-color-warning", icon: "-icon-circle-alert", label: () => text.review },
+  na: { color: "", icon: "-icon-minus", label: () => text.notApplicable },
 };
 
 function pill(status: Status): string {
-  const { color, label } = PILL[status];
-  return `<span class="${["instui-pill", color, "pantoken-doc-tag"].filter(Boolean).join(" ")}">${label()}</span>`;
+  const { color, icon, label } = PILL[status];
+  return `<span class="${["instui-pill", color, icon, "pantoken-doc-tag"].filter(Boolean).join(" ")}">${label()}</span>`;
 }
 
 function tierLabel(tier: (typeof TIERS)[number]): string {
@@ -381,7 +380,7 @@ function worst(counts: readonly Counts[]): Status {
   if (total("fail")) return "fail";
   if (total("undetermined")) return "review";
   if (total("pass")) return "pass";
-  return total("not-applicable") ? "na" : "untested";
+  return total("not-applicable") ? "na" : "review";
 }
 
 function tierTable(
@@ -421,7 +420,7 @@ function tierTable(
 function screenReaderTable(rows: readonly AccessibilityEvidence[]): string[] {
   const cells = AUDIT_MATRIX.map((item) => {
     const matching = rows.filter((row) => row.theme === item.theme && row.scheme === item.scheme);
-    if (!matching.some((row) => (row.tiers.vsr?.ran ?? 0) > 0)) return pill("untested");
+    if (!matching.some((row) => (row.tiers.vsr?.ran ?? 0) > 0)) return pill("review");
     return pill(matching.some((row) => row.flags > 0) ? "review" : "pass");
   });
   return [

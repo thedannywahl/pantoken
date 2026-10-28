@@ -98,7 +98,7 @@ test("keeps missing supplemental npm tiers visible instead of turning them into 
   expect(snapshot.records.button![0]!.tiers.interactions).toEqual({ missing: 1 });
   const md = accessibilitySection("button", snapshot);
   expect(md).not.toContain("| Interactions |");
-  expect(md).toContain("Not tested");
+  expect(md).toContain("Manual review needed");
 });
 
 test("excludes historical Canvas dark cases without modifying original evidence", () => {
@@ -182,12 +182,14 @@ test("renders provenance, separate findings, missing coverage, and escaped data 
     "| Conditions | Rebrand (light) | Rebrand (dark) | Canvas | Canvas High Contrast |",
   );
   expect(md).toContain(
-    '| <span class="pantoken-a11y-check">reflow</span><span class="pantoken-a11y-criteria">WCAG 2.2 1.4.10</span> | <span class="instui-pill -color-danger pantoken-doc-tag">Fail</span> |',
+    '| <span class="pantoken-a11y-check">reflow</span><span class="pantoken-a11y-criteria">WCAG 2.2 1.4.10</span> | <span class="instui-pill -color-danger -icon-x pantoken-doc-tag">Fail</span> |',
   );
   expect(md).toContain(
-    '| <span class="pantoken-a11y-check">spacing</span> | <span class="instui-pill -color-warning pantoken-doc-tag">Needs review</span> |',
+    '| <span class="pantoken-a11y-check">spacing</span> | <span class="instui-pill -color-warning -icon-circle-alert pantoken-doc-tag">Manual review needed</span> |',
   );
-  expect(md).toContain('<span class="instui-pill pantoken-doc-tag">Not applicable</span>');
+  expect(md).toContain(
+    '<span class="instui-pill -icon-minus pantoken-doc-tag">Not applicable</span>',
+  );
   expect(md).toContain('| Announcements | <span class="instui-pill -color-warning');
   expect(md).not.toContain("axe-core");
   expect(md).not.toContain("IBM");
