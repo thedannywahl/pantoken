@@ -3,7 +3,7 @@
   "checkpoint_id": "01M61N8EF6SSG3QB9JYB5HJM6Y",
   "strategy": "manual-commit",
   "branch": "add-automatica11y",
-  "checkpoints_count": 2,
+  "checkpoints_count": 3,
   "files_touched": [
     ".changeset/calm-deserts-tease.md",
     "docs/conventions/build-and-docs.md",
@@ -25,17 +25,24 @@
       "compact_transcript": "/1/transcript.jsonl",
       "content_hash": "/1/content_hash.txt",
       "prompt": "/1/prompt.txt"
+    },
+    {
+      "metadata": "/2/metadata.json",
+      "transcript": "/2/full.jsonl",
+      "compact_transcript": "/2/transcript.jsonl",
+      "content_hash": "/2/content_hash.txt",
+      "prompt": "/2/prompt.txt"
     }
   ],
   "token_usage": {
-    "input_tokens": 0,
-    "cache_creation_tokens": 0,
-    "cache_read_tokens": 0,
-    "output_tokens": 0,
-    "api_call_count": 0
+    "input_tokens": 5507682,
+    "cache_creation_tokens": 277657,
+    "cache_read_tokens": 5229861,
+    "output_tokens": 33189,
+    "api_call_count": 64
   },
   "redaction": {
-    "replacements": 5116,
+    "replacements": 47379,
     "layers": {
       "betterleaks": 0,
       "connection_string": 0,
@@ -43,16 +50,16 @@
       "credential_value": 0,
       "credentialed_uri": 0,
       "custom": 0,
-      "entropy": 23710,
+      "entropy": 159135,
       "goredact": 0,
-      "key_context": 0,
-      "pii": 0,
+      "key_context": 3,
+      "pii": 129,
       "provider_token": 0,
       "shell_stdin": 0
     },
     "custom_rules_active": 2,
     "pii": {
-      "EMAIL": 0,
+      "EMAIL": 129,
       "IP": 0,
       "PHONE": 0
     }
