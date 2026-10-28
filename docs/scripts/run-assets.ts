@@ -45,6 +45,7 @@ export const ASSET_TASKS: readonly AssetTask[] = [
   { name: "target-compatibility", script: "scripts/stage-target-compatibility.ts" },
   { name: "registry", script: "scripts/generate-registry.ts" },
   { name: "canvas-rce", script: "scripts/build-canvas-rce.ts" },
+  { name: "accessibility", script: "scripts/accessibility-refresh.ts" },
   { name: "demos", script: "scripts/demos.ts", dependsOn: ["site-themes"] },
   {
     name: "icon-manifest",

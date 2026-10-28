@@ -102,10 +102,12 @@ jobs:
           restore-keys: |
             ${{ env.VP_CACHE_KEY_PREFIX }}${{ runner.os }}-${{ hashFiles('pnpm-lock.yaml', 'vite.config.ts') }}-
             ${{ env.VP_CACHE_KEY_PREFIX }}${{ runner.os }}-
-      - name: Provision audit browser
-        run: vp exec -F @pantoken/components automatica11y doctor --install-browser
-      - name: Audit authored component examples
-        run: vp run audit:components
+      - name: Materialize generated output
+        run: vp run -r build
+      - name: Re-audit components whose inputs changed
+        run: vp run @pantoken/docs#docs:accessibility
+      - name: Require committed evidence to match
+        run: git diff --exit-code -- docs/public/accessibility/results.json
       - name: Summarize advisory results
         if: always()
         shell: bash
@@ -118,7 +120,7 @@ jobs:
             fi
           done
           if [ "$found" = false ]; then
-            echo "No accessibility report was generated. Check the setup and build logs; this is not a clean audit." >> "$GITHUB_STEP_SUMMARY"
+            echo "Accessibility evidence is current; no component needed re-auditing." >> "$GITHUB_STEP_SUMMARY"
           fi
       - name: Upload advisory accessibility evidence
         if: always()

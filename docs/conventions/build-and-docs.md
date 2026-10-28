@@ -20,9 +20,31 @@ CSS generation also declares both runtime and development workspace builds as pr
 its generator imports `@pantoken/plugin-props-minify` from development dependencies. Keep these
 prerequisites on the generator task so standalone generation and docs startup use the same order.
 
+## Accessibility evidence in the docs build
+
+The docs build keeps the checked-in evidence (`docs/public/accessibility/results.json`) current, so
+the `## Accessibility` tables on each CSS API page match the code that ships. The `accessibility`
+asset task (`docs/scripts/accessibility-refresh.ts`, run by `docs:assets`) fingerprints every audited
+record from its CSS and examples, built stylesheet and behavior script, and the inputs every page
+shares (tokens, base, focus, elevation, the automatica11y version, and the audit harness). It
+re-audits only records whose fingerprint differs from the one stored in the snapshot and merges the
+results back, so an unchanged tree is a fast no-op.
+
+- `vp run @pantoken/docs#docs:accessibility` refreshes stale records. `--check` (via
+  `docs:accessibility:check`) reports them without auditing; `--all` re-audits everything; `--adopt`
+  stamps current fingerprints onto existing evidence when you know the inputs didn't change the results.
+- Commit the updated snapshot with the change that caused it. The `component-accessibility` CI job
+  re-audits stale records and fails when the committed snapshot differs.
+- On CI (or with `DOCS_ACCESSIBILITY_INSTALL_BROWSER=1`) the refresh provisions the audit browser
+  when it needs one. `docs:dev` sets `DOCS_ACCESSIBILITY_AUDIT=skip` so a dev server never starts an audit.
+- The tables are raw HTML in the generated page. The segmenter classifies them as `audit` blocks, so
+  their visible text (headings, pill labels, details) enters `l10n/docs.api.pot` through the normal API
+  translation pipeline while markup and `<code>` selectors stay verbatim. The fixed labels live in
+  `ACCESSIBILITY_AUDIT_STRINGS` in `docs/.vitepress/i18n.ts`.
+
 ## Local component accessibility reports
 
-`vp run audit:components` is an explicit, uncached audit task, separate from `ready`. It uses the
+`vp run audit:components` is an explicit, uncached full audit task, separate from `ready` (the docs build re-audits only stale records; see above). It uses the
 catalog-backed automatica11y development dependency, current local package builds, and authored
 component examples. It doesn't send examples to a remote audit service.
 The task first runs the shared `build:all` prerequisite, restoring the complete workspace build

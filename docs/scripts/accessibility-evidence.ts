@@ -1,7 +1,6 @@
 import { createHash } from "node:crypto";
 import { readFileSync, writeFileSync } from "node:fs";
-import { basename, join, resolve } from "node:path";
-import { fileURLToPath } from "node:url";
+import { basename, join } from "node:path";
 import { AUDIT_MATRIX } from "../../formats/components/scripts/audit-matrix.ts";
 import { ACCESSIBILITY_AUDIT_STRINGS as text } from "../.vitepress/i18n.ts";
 
@@ -47,6 +46,8 @@ export interface AccessibilityEvidence {
 export interface AccessibilitySnapshot {
   schema: 1;
   records: Record<string, AccessibilityEvidence[]>;
+  /** Content fingerprint each record was last audited at; a mismatch marks it stale. */
+  fingerprints?: Record<string, string>;
 }
 
 function object(value: unknown): Record<string, unknown> {
@@ -101,6 +102,13 @@ export function loadAccessibilitySnapshot(value: unknown): AccessibilitySnapshot
   if (raw.schema !== 1) throw new Error("Unsupported accessibility snapshot schema");
   return {
     schema: 1,
+    ...(raw.fingerprints
+      ? {
+          fingerprints: Object.fromEntries(
+            Object.entries(object(raw.fingerprints)).map(([key, value]) => [key, string(value)]),
+          ),
+        }
+      : {}),
     records: Object.fromEntries(
       Object.entries(object(raw.records)).map(([name, values]) => [
         name,
@@ -627,13 +635,35 @@ export function annotateAccessibility(
   });
 }
 
-if (process.argv[1] && resolve(process.argv[1]) === fileURLToPath(import.meta.url)) {
-  if (process.argv.length !== 3)
-    throw new Error("Usage: node docs/scripts/accessibility-evidence.ts <audit-run-directory>");
-  const snapshot = importAccessibilityRun(resolve(process.argv[2]!));
-  const destination = join(import.meta.dirname, "../public/accessibility/results.json");
-  writeFileSync(destination, JSON.stringify(snapshot, null, 2) + "\n");
-  console.log(
-    `Wrote accessibility evidence for ${Object.keys(snapshot.records).length} records: ${destination}`,
-  );
+/**
+ * Fold a (possibly partial) audit run into the checked-in snapshot. Records the run covered are
+ * replaced and stamped with their current fingerprint; records that no longer exist are dropped.
+ */
+export function mergeAccessibilityRun(
+  existing: AccessibilitySnapshot | undefined,
+  run: AccessibilitySnapshot,
+  fingerprints: Readonly<Record<string, string>>,
+): AccessibilitySnapshot {
+  const current = new Set(Object.keys(fingerprints));
+  const records = { ...existing?.records, ...run.records };
+  const stamped = { ...existing?.fingerprints };
+  for (const name of Object.keys(run.records)) stamped[name] = fingerprints[name]!;
+  for (const name of Object.keys(records)) {
+    if (current.has(name)) continue;
+    delete records[name];
+    delete stamped[name];
+  }
+  const sort = <T>(value: Record<string, T>): Record<string, T> =>
+    Object.fromEntries(Object.entries(value).sort(([a], [b]) => a.localeCompare(b)));
+  return { schema: 1, records: sort(records), fingerprints: sort(stamped) };
+}
+
+/** Records whose evidence is missing or was produced from different inputs than the current ones. */
+export function staleRecords(
+  snapshot: AccessibilitySnapshot | undefined,
+  fingerprints: Readonly<Record<string, string>>,
+): string[] {
+  return Object.entries(fingerprints)
+    .filter(([name, value]) => !snapshot?.records[name] || snapshot.fingerprints?.[name] !== value)
+    .map(([name]) => name);
 }

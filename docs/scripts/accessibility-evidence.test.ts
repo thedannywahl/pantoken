@@ -8,6 +8,8 @@ import {
   annotateAccessibility,
   importAccessibilityRun,
   loadAccessibilitySnapshot,
+  mergeAccessibilityRun,
+  staleRecords,
 } from "./accessibility-evidence.ts";
 import snapshotJson from "../public/accessibility/results.json" with { type: "json" };
 
@@ -296,4 +298,30 @@ test("checked-in evidence has supported coverage and retains real review/failure
   expect(snapshot.records["agent-shell"]).toHaveLength(4);
   expect(snapshot.records["ai-gradient"]).toHaveLength(4);
   expect(snapshot.records.truncate).toHaveLength(4);
+});
+
+test("stale records are those missing evidence or audited at another fingerprint", () => {
+  const snapshot = { ...loadAccessibilitySnapshot(snapshotJson) };
+  const [first, second] = Object.keys(snapshot.records);
+  snapshot.fingerprints = { [first!]: "a", [second!]: "b" };
+  expect(staleRecords(snapshot, { [first!]: "a", [second!]: "changed", brandNew: "c" })).toEqual([
+    second,
+    "brandNew",
+  ]);
+  expect(staleRecords(undefined, { [first!]: "a" })).toEqual([first]);
+});
+
+test("merging a partial run replaces only its records and drops removed ones", () => {
+  const snapshot = loadAccessibilitySnapshot(snapshotJson);
+  const [keep, replace, remove] = Object.keys(snapshot.records);
+  const run = { schema: 1 as const, records: { [replace!]: [] } };
+  const merged = mergeAccessibilityRun(
+    { ...snapshot, fingerprints: { [keep!]: "old", [remove!]: "old", [replace!]: "old" } },
+    run,
+    { [keep!]: "new", [replace!]: "new" },
+  );
+  expect(merged.records[keep!]).toBe(snapshot.records[keep!]);
+  expect(merged.records[replace!]).toEqual([]);
+  expect(merged.records[remove!]).toBeUndefined();
+  expect(merged.fingerprints).toEqual({ [keep!]: "old", [replace!]: "new" });
 });
