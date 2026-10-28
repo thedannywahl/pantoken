@@ -3,7 +3,7 @@ import { numberInputCss } from "../../src/index.ts";
 import { numberInput } from "../../src/components/number-input/index.ts";
 import { validate } from "../_validate.ts";
 import { parseCssDocs } from "@cssdoc/core";
-import { Window } from "happy-dom";
+import { Window, type HTMLButtonElement } from "happy-dom";
 import { exampleHtml } from "../../scripts/audit-accessibility.ts";
 
 test("number-input: emits exactly one well-formed cssdoc record with no token drift", () => {
@@ -27,15 +27,28 @@ test("number-input examples keep redundant hidden arrows out of the tab order", 
     const window = new Window();
     try {
       window.document.body.innerHTML = exampleHtml(example);
-      const input = window.document.querySelector("input")!;
-      expect(input.type).toBe("number");
-      expect(input.getAttribute("aria-label")).toBeTruthy();
-      expect(input.tabIndex).toBe(0);
-      const arrows = [...window.document.querySelectorAll(".arrows button")];
-      expect(arrows).toHaveLength(2);
-      for (const arrow of arrows) {
-        expect(arrow.getAttribute("aria-hidden")).toBe("true");
-        expect(arrow.getAttribute("tabindex")).toBe("-1");
+      const facades = [...window.document.querySelectorAll(".instui-number-input")];
+      expect(facades.length).toBeGreaterThan(0);
+      for (const facade of facades) {
+        const inputs = [...facade.querySelectorAll("input")];
+        expect(inputs).toHaveLength(1);
+        const input = inputs[0]!;
+        expect(input.type).toBe("number");
+        const label =
+          input.getAttribute("aria-label")?.trim() ||
+          [...(input.labels ?? [])]
+            .map((element) => element.textContent.trim())
+            .join(" ")
+            .trim();
+        expect(label).toBeTruthy();
+        if (!input.disabled) expect(input.tabIndex).toBe(0);
+        const arrows = [...facade.querySelectorAll<HTMLButtonElement>(".arrows button")];
+        expect(arrows).toHaveLength(2);
+        for (const arrow of arrows) {
+          expect(arrow.getAttribute("aria-hidden")).toBe("true");
+          expect(arrow.getAttribute("tabindex")).toBe("-1");
+          expect(arrow.disabled).toBe(input.disabled || input.readOnly);
+        }
       }
     } finally {
       void window.happyDOM.abort();
