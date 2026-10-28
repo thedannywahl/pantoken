@@ -1,0 +1,75 @@
+~/formats/interactions$ node scripts/build-iife.ts
+ℹ entry: src/index.ts
+ℹ target: node22.18.0
+ℹ tsconfig: ../../../tsconfig.json
+ℹ Build start
+ℹ Cleaning 2 files
+✗ Build failed in 32ms
+node:internal/modules/run_main:111
+    triggerUncaughtException(
+    ^
+
+Build failed with 1 error:
+
+Error: [vite+]: Rolldown failed to resolve import "@pantoken/utils" from "/Users/dwahl/Scripts/pantoken/formats/interactions/src/shared/index.ts".
+This is most likely unintended because it can break your application at runtime.
+If you do want to externalize this module explicitly add it to
+`build.rolldownOptions.external`
+    at viteLog (file:///Users/dwahl/Scripts/pantoken/node_modules/.pnpm/@voidzero-dev+vite-plus-core@1.2.0_@arethetypeswrong+core@0.18.5_@types+node@26.6.5_esb_e4dc29e8e762ec80de3190e1dd814f96/node_modules/@voidzero-dev/vite-plus-core/dist/vite/node/chunks/node.js:40173:57)
+    at onRollupLog (file:///Users/dwahl/Scripts/pantoken/node_modules/.pnpm/@voidzero-dev+vite-plus-core@1.2.0_@arethetypeswrong+core@0.18.5_@types+node@26.6.5_esb_e4dc29e8e762ec80de3190e1dd814f96/node_modules/@voidzero-dev/vite-plus-core/dist/vite/node/chunks/node.js:40206:7)
+    at onLog (file:///Users/dwahl/Scripts/pantoken/node_modules/.pnpm/@voidzero-dev+vite-plus-core@1.2.0_@arethetypeswrong+core@0.18.5_@types+node@26.6.5_esb_e4dc29e8e762ec80de3190e1dd814f96/node_modules/@voidzero-dev/vite-plus-core/dist/vite/node/chunks/node.js:39966:4)
+    at file:///Users/dwahl/Scripts/pantoken/node_modules/.pnpm/@voidzero-dev+vite-plus-core@1.2.0_@arethetypeswrong+core@0.18.5_@types+node@26.6.5_esb_e4dc29e8e762ec80de3190e1dd814f96/node_modules/@voidzero-dev/vite-plus-core/dist/rolldown/shared/create-bundler-option-1AEe_J0o.mjs:48:26
+    at logger (file:///Users/dwahl/Scripts/pantoken/node_modules/.pnpm/@voidzero-dev+vite-plus-core@1.2.0_@arethetypeswrong+core@0.18.5_@types+node@26.6.5_esb_e4dc29e8e762ec80de3190e1dd814f96/node_modules/@voidzero-dev/vite-plus-core/dist/rolldown/shared/create-bundler-option-1AEe_J0o.mjs:39:3)
+    at aggregateBindingErrorsIntoJsError (file:///Users/dwahl/Scripts/pantoken/node_modules/.pnpm/@voidzero-dev+vite-plus-core@1.2.0_@arethetypeswrong+core@0.18.5_@types+node@26.6.5_esb_e4dc29e8e762ec80de3190e1dd814f96/node_modules/@voidzero-dev/vite-plus-core/dist/rolldown/shared/error-Dsqzw0Oa.mjs:49:18)
+    at unwrapBindingResult (file:///Users/dwahl/Scripts/pantoken/node_modules/.pnpm/@voidzero-dev+vite-plus-core@1.2.0_@arethetypeswrong+core@0.18.5_@types+node@26.6.5_esb_e4dc29e8e762ec80de3190e1dd814f96/node_modules/@voidzero-dev/vite-plus-core/dist/rolldown/shared/error-Dsqzw0Oa.mjs:19:128)
+    at #build (file:///Users/dwahl/Scripts/pantoken/node_modules/.pnpm/@voidzero-dev+vite-plus-core@1.2.0_@arethetypeswrong+core@0.18.5_@types+node@26.6.5_esb_e4dc29e8e762ec80de3190e1dd814f96/node_modules/@voidzero-dev/vite-plus-core/dist/rolldown/shared/rolldown-C8QomUuX.mjs:133:34)
+    at async buildEnvironment (file:///Users/dwahl/Scripts/pantoken/node_modules/.pnpm/@voidzero-dev+vite-plus-core@1.2.0_@arethetypeswrong+core@0.18.5_@types+node@26.6.5_esb_e4dc29e8e762ec80de3190e1dd814f96/node_modules/@voidzero-dev/vite-plus-core/dist/vite/node/chunks/node.js:40080:66)
+    at async Object.build (file:///Users/dwahl/Scripts/pantoken/node_modules/.pnpm/@voidzero-dev+vite-plus-core@1.2.0_@arethetypeswrong+core@0.18.5_@types+node@26.6.5_esb_e4dc29e8e762ec80de3190e1dd814f96/node_modules/@voidzero-dev/vite-plus-core/dist/vite/node/chunks/node.js:40501:19)
+    at async file:///Users/dwahl/Scripts/pantoken/formats/interactions/scripts/build-iife.ts:78:1 {
+  errors: [Getter/Setter]
+}
+
+Node.js v26.12.1
+
+---
+
+~/formats/interactions$ node scripts/build-iife.ts
+ℹ entry: src/index.ts
+ℹ target: node22.18.0
+ℹ tsconfig: ../../../tsconfig.json
+ℹ Build start
+ℹ Cleaning 2 files
+✗ Build failed in 32ms
+node:internal/modules/run_main:111
+    triggerUncaughtException(
+    ^
+
+Build failed with 1 error:
+
+Error: [vite+]: Rolldown failed to resolve import "@pantoken/utils" from "/Users/dwahl/Scripts/pantoken/formats/interactions/src/shared/index.ts".
+This is most likely unintended because it can break your application at runtime.
+If you do want to externalize this module explicitly add it to
+`build.rolldownOptions.external`
+    at viteLog (file:///Users/dwahl/Scripts/pantoken/node_modules/.pnpm/@voidzero-dev+vite-plus-core@1.2.0_@arethetypeswrong+core@0.18.5_@types+node@26.6.5_esb_e4dc29e8e762ec80de3190e1dd814f96/node_modules/@voidzero-dev/vite-plus-core/dist/vite/node/chunks/node.js:40173:57)
+    at onRollupLog (file:///Users/dwahl/Scripts/pantoken/node_modules/.pnpm/@voidzero-dev+vite-plus-core@1.2.0_@arethetypeswrong+core@0.18.5_@types+node@26.6.5_esb_e4dc29e8e762ec80de3190e1dd814f96/node_modules/@voidzero-dev/vite-plus-core/dist/vite/node/chunks/node.js:40206:7)
+    at onLog (file:///Users/dwahl/Scripts/pantoken/node_modules/.pnpm/@voidzero-dev+vite-plus-core@1.2.0_@arethetypeswrong+core@0.18.5_@types+node@26.6.5_esb_e4dc29e8e762ec80de3190e1dd814f96/node_modules/@voidzero-dev/vite-plus-core/dist/vite/node/chunks/node.js:39966:4)
+    at file:///Users/dwahl/Scripts/pantoken/node_modules/.pnpm/@voidzero-dev+vite-plus-core@1.2.0_@arethetypeswrong+core@0.18.5_@types+node@26.6.5_esb_e4dc29e8e762ec80de3190e1dd814f96/node_modules/@voidzero-dev/vite-plus-core/dist/rolldown/shared/create-bundler-option-1AEe_J0o.mjs:48:26
+    at logger (file:///Users/dwahl/Scripts/pantoken/node_modules/.pnpm/@voidzero-dev+vite-plus-core@1.2.0_@arethetypeswrong+core@0.18.5_@types+node@26.6.5_esb_e4dc29e8e762ec80de3190e1dd814f96/node_modules/@voidzero-dev/vite-plus-core/dist/rolldown/shared/create-bundler-option-1AEe_J0o.mjs:39:3)
+    at aggregateBindingErrorsIntoJsError (file:///Users/dwahl/Scripts/pantoken/node_modules/.pnpm/@voidzero-dev+vite-plus-core@1.2.0_@arethetypeswrong+core@0.18.5_@types+node@26.6.5_esb_e4dc29e8e762ec80de3190e1dd814f96/node_modules/@voidzero-dev/vite-plus-core/dist/rolldown/shared/error-Dsqzw0Oa.mjs:49:18)
+    at unwrapBindingResult (file:///Users/dwahl/Scripts/pantoken/node_modules/.pnpm/@voidzero-dev+vite-plus-core@1.2.0_@arethetypeswrong+core@0.18.5_@types+node@26.6.5_esb_e4dc29e8e762ec80de3190e1dd814f96/node_modules/@voidzero-dev/vite-plus-core/dist/rolldown/shared/error-Dsqzw0Oa.mjs:19:128)
+    at #build (file:///Users/dwahl/Scripts/pantoken/node_modules/.pnpm/@voidzero-dev+vite-plus-core@1.2.0_@arethetypeswrong+core@0.18.5_@types+node@26.6.5_esb_e4dc29e8e762ec80de3190e1dd814f96/node_modules/@voidzero-dev/vite-plus-core/dist/rolldown/shared/rolldown-C8QomUuX.mjs:133:34)
+    at async buildEnvironment (file:///Users/dwahl/Scripts/pantoken/node_modules/.pnpm/@voidzero-dev+vite-plus-core@1.2.0_@arethetypeswrong+core@0.18.5_@types+node@26.6.5_esb_e4dc29e8e762ec80de3190e1dd814f96/node_modules/@voidzero-dev/vite-plus-core/dist/vite/node/chunks/node.js:40080:66)
+    at async Object.build (file:///Users/dwahl/Scripts/pantoken/node_modules/.pnpm/@voidzero-dev+vite-plus-core@1.2.0_@arethetypeswrong+core@0.18.5_@types+node@26.6.5_esb_e4dc29e8e762ec80de3190e1dd814f96/node_modules/@voidzero-dev/vite-plus-core/dist/vite/node/chunks/node.js:40501:19)
+    at async file:///Users/dwahl/Scripts/pantoken/formats/interactions/scripts/build-iife.ts:78:1 {
+  errors: [Getter/Setter]
+}
+
+Node.js v26.12.1
+
+---
+
+I'm running `vpr docs:dev` and getting that error.
+
+---
+
+I'm running `vpr docs:dev` and getting that error.
