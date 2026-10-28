@@ -1,0 +1,69 @@
+change the "Manual review needed" to "Review needed"
+
+---
+
+change the "Manual review needed" to "Review needed"
+
+---
+
+for avatar the results table says color-contrast needs manual review, my hunch is because either:
+we don't have an `-automatica11y` flag on the cssdoc OR it is testing this example but the -color-ai variant is causing issues b/c of its gradient.
+if it's the latter we should be able to include that in the details of the needs review section.
+
+---
+
+for avatar the results table says color-contrast needs manual review, my hunch is because either:
+we don't have an `-automatica11y` flag on the cssdoc OR it is testing this example but the -color-ai variant is causing issues b/c of its gradient.
+if it's the latter we should be able to include that in the details of the needs review section.
+
+---
+
+we don't need to assume the reason, but it should be clear to the user that it's the -color-ai variant that needs review if the others don't have issues.  This should be true of ALL of them.
+
+---
+
+we don't need to assume the reason, but it should be clear to the user that it's the -color-ai variant that needs review if the others don't have issues.  This should be true of ALL of them.
+
+---
+
+the affected should be a list and it should be properly backticked or a code block.
+
+---
+
+the affected should be a list and it should be properly backticked or a code block.
+
+---
+
+now, we should be able to derive from the code that throws the needs review which part or modifier or area of the cssdoc / example caused it instead of passing all the content back.
+
+---
+
+now, we should be able to derive from the code that throws the needs review which part or modifier or area of the cssdoc / example caused it instead of passing all the content back.
+
+---
+
+>  Doing that is possible but would tie the importer to the component records. Say if you want it.
+what does this mean?
+
+---
+
+>  Doing that is possible but would tie the importer to the component records. Say if you want it.
+what does this mean?
+
+---
+
+agent-shell says accessibility not audited. all components should be audited.
+
+---
+
+agent-shell says accessibility not audited. all components should be audited.
+
+---
+
+layout plugin doesn't need to be covered.
+for both components and custom-components go through the utilities, declarations, etc. and add those audits where applicable.
+
+---
+
+layout plugin doesn't need to be covered.
+for both components and custom-components go through the utilities, declarations, etc. and add those audits where applicable.
