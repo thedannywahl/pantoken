@@ -23,7 +23,8 @@ type-only imports are fine (erased at build); value imports belong in build scri
 
 ## `register()` and the tag prefix
 
-`register(target?, { prefix })`. A prefix is **always** applied because a custom-element name must
+`register(target?, { prefix })`. The `prefix` option is typed `string` — `null` is a type error, unlike
+`@pantoken/components`, where `prefix: null` opts out. A prefix is **always** applied because a custom-element name must
 contain a hyphen (`<icon>` is invalid). A non-empty string wins (`{prefix:"x"}` → `<x-icon>`); anything
 falsy or whitespace falls back to `DEFAULT_PREFIX = "instui"` — it never drops elements. Implementation
 is low-churn: internal code keeps its canonical `instui-<base>` literals, and `register` shadows the

@@ -92,6 +92,7 @@ function variantClass(name: string, host: HTMLElement): string {
 
 /** Resolve the tag prefix: a non-empty string wins; anything empty/nullish falls back to `instui`. */
 function resolvePrefix(prefix: string | null | undefined): string {
+  // Typed `string | undefined` publicly; the null/empty guard protects untyped JS callers.
   return typeof prefix === "string" && prefix.trim() !== "" ? prefix : DEFAULT_PREFIX;
 }
 
@@ -174,7 +175,8 @@ function makeWrapper(registry: ElementRegistry): RegisterContext["wrapper"] {
  * makes sense at the `register()` call site — `buildRegisterContext`'s callers decide their own
  * element subset directly). */
 export interface RegisterContextOptions {
-  prefix?: string | null;
+  /** Custom-element tag prefix (`"x"` → `<x-icon>`). Never null or empty: tags need a hyphen, so JS callers passing one fall back to `instui`. */
+  prefix?: string;
   locale?: string;
   strings?: Partial<WebComponentStrings>;
   dir?: "ltr" | "rtl";
