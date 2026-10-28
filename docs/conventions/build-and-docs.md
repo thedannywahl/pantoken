@@ -67,7 +67,7 @@ table. axe reports only failed and needs-review rules, so its table lists those 
 WCAG criteria; a listed rule with no finding in a column that ran axe shows Pass. IBM Equal Access
 results aren't rendered because they don't align to WCAG. Rows are checks (name, then `WCAG 2.2` and the success criteria on a second line; the name
 may wrap, pills never do); columns are the supported theme/scheme
-pairs, and each cell is an `instui-pill` with an icon (Pass, Fail, Not applicable, or Manual review needed; missing or undetermined results always show the last so they're never read as passes). A check that's Not applicable in every column is omitted, and so is a table with no remaining rows.
+pairs, and each cell is an `instui-pill` with an icon (Pass, Fail, Not applicable, or Review needed; missing or undetermined results always show the last so they're never read as passes). A check that's Not applicable in every column is omitted, and so is a table with no remaining rows.
 A cell takes the worst result across the page and npm evidence for that column. A row that fails or
 needs manual review spans two table rows: the label cell uses `rowspan="2"` and a second row spans
 every theme column with the tool's explanation (columns with identical text share one paragraph).

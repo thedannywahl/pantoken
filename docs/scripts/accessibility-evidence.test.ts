@@ -98,7 +98,7 @@ test("keeps missing supplemental npm tiers visible instead of turning them into 
   expect(snapshot.records.button![0]!.tiers.interactions).toEqual({ missing: 1 });
   const md = accessibilitySection("button", snapshot);
   expect(md).not.toContain("| Interactions |");
-  expect(md).toContain("Manual review needed");
+  expect(md).toContain("Review needed");
 });
 
 test("excludes historical Canvas dark cases without modifying original evidence", () => {
@@ -186,7 +186,7 @@ test("renders provenance, separate findings, missing coverage, and escaped data 
     '<tr><th scope="row" rowspan="2"><span class="pantoken-a11y-check">reflow</span><span class="pantoken-a11y-criteria">WCAG 2.2 1.4.10</span></th><td><span class="instui-pill -color-danger -icon-x pantoken-doc-tag">Fail</span></td>',
   );
   expect(md).toContain(
-    '<tr><th scope="row" rowspan="2"><span class="pantoken-a11y-check">spacing</span></th><td><span class="instui-pill -color-warning -icon-circle-alert pantoken-doc-tag">Manual review needed</span></td>',
+    '<tr><th scope="row" rowspan="2"><span class="pantoken-a11y-check">spacing</span></th><td><span class="instui-pill -color-warning -icon-circle-alert pantoken-doc-tag">Review needed</span></td>',
   );
   expect(md).toContain('<td colspan="4" class="pantoken-a11y-details">');
   expect(md).toContain("<strong>Rebrand (light):</strong> Overflow &lt;script&gt;");

@@ -13,7 +13,7 @@ export const ACCESSIBILITY_AUDIT_STRINGS = {
     "Not audited: no checked-in evidence covers this record. Results from other components don't establish coverage for this one.",
   pass: "Pass",
   fail: "Fail",
-  review: "Manual review needed",
+  review: "Review needed",
   notApplicable: "Not applicable",
   rules: "Rules (axe-core)",
   conditions: "Conditions",
