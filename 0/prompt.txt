@@ -1,0 +1,5 @@
+Are interactions hard-coding `instui` or do they support prefix swapping? both component and web-components allow a user-defined prefix that gets swapped from the `PFX` sentinel - instui being the default.
+
+---
+
+Are interactions hard-coding `instui` or do they support prefix swapping? both component and web-components allow a user-defined prefix that gets swapped from the `PFX` sentinel - instui being the default.
