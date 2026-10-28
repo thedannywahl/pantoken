@@ -136,7 +136,7 @@ that should also render in documentation; `-automatica11y` remains independent.
 
 Every record in the component registry, including member records, has an explicit
 `@example -automatica11y` block. The audit never falls back to Canvas or docs examples. Keep a
-member's required parent markup in its example, and give controls real labels and ID relationships.
+member's required parent markup in its example, and give controls real labels and ID relationships. Include only markup the component owns or requires: a bare container audits as an empty container with its accessible name, so findings on slotted content don't get attributed to it.
 Use fenced HTML so audience flags remain metadata, not visible page content.
 
 Run `vp run audit:components` from the repository root. It builds local styles and behavior bundles,

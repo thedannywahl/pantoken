@@ -7,9 +7,8 @@
         "theme": "rebrand",
         "scheme": "light",
         "source": "page",
-        "run": "2026-10-28T19-13-50.594Z",
-        "date": "2026-10-28T19:30:41.019Z",
-        "digest": "37cc1e46cfbf0a03d19d0aaedfcbf216162a621d9e293e5d9c315de0401cde54",
+        "run": "2026-10-28T20-28-26.767Z",
+        "date": "2026-10-28T20:28:40.885Z",
         "tools": {
           "node": "26.13.0",
           "automatica11y": "0.11.0",
@@ -20,8 +19,12 @@
           "guidepup-vsr": "0.33.0",
           "chromium": "156.0.8078.48"
         },
+        "digest": "a7759cc7f127f4767265822acbab98d88c345754b467d32af447f58ca9f328bb",
+        "warnings": [],
+        "notices": [
+          "agent-shell-1-rebrand-light/page/0/conditions/more-contrast-respected: undetermined: The page changes under prefers-contrast: more, but no visible text was measurable."
+        ],
         "configurations": 1,
-        "flags": 0,
         "tiers": {
           "rules": {
             "ran": 1
@@ -33,25 +36,31 @@
             "ran": 1
           }
         },
+        "axe": {
+          "violations": 0,
+          "reviews": 0,
+          "reviewRules": {},
+          "violationRules": {}
+        },
+        "ibm": {
+          "violations": 0,
+          "reviews": 3,
+          "reviewRules": {
+            "html_skipnav_exists": 1,
+            "style_color_misuse": 1,
+            "style_highcontrast_visible": 1
+          },
+          "violationRules": {}
+        },
         "checks": {
           "conditions": {
-            "not-applicable": 4,
+            "not-applicable": 5,
             "undetermined": 1,
-            "pass": 2,
-            "fail": 1
+            "fail": 1,
+            "pass": 1
           }
         },
         "details": [
-          {
-            "tier": "rules",
-            "name": "color-contrast",
-            "criteria": ["1.4.3"],
-            "counts": {
-              "undetermined": 1
-            },
-            "notes": ["Elements must meet minimum color contrast ratio thresholds"],
-            "elements": ["#agent-shell-title", "p"]
-          },
           {
             "tier": "conditions",
             "name": "reduced-motion-respected",
@@ -80,7 +89,7 @@
               "undetermined": 1
             },
             "notes": [
-              "All one measured piece of text pass with more contrast. two other pieces can't be reduced to one color. \"AI Agent\" can't be measured because a background image or gradient sits behind it."
+              "The page changes under prefers-contrast: more, but no visible text was measurable."
             ],
             "elements": []
           },
@@ -109,7 +118,7 @@
             "name": "forced-colors-focus-visible",
             "criteria": ["1.4.11", "2.4.7"],
             "counts": {
-              "pass": 1
+              "not-applicable": 1
             },
             "notes": [],
             "elements": []
@@ -122,7 +131,7 @@
               "fail": 1
             },
             "notes": [
-              "In a 320px window, the page scrolls sideways (it is 336px wide in a 320px window), and three elements reach past the right edge: section.instui-agent-shell ends at 336px; h2#agent-shell-title ends at 323px; p ends at 323px. WCAG 1.4.10 Reflow (level AA) exempts two-dimensional content such as data tables and maps, so a person should judge whether that applies."
+              "In a 320px window, the page scrolls sideways (it is 336px wide in a 320px window), and one element reaches past the right edge: section.instui-agent-shell ends at 336px. WCAG 1.4.10 Reflow (level AA) exempts two-dimensional content such as data tables and maps, so a person should judge whether that applies."
             ],
             "elements": []
           },
@@ -147,44 +156,19 @@
             "elements": []
           }
         ],
-        "axe": {
-          "violations": 0,
-          "reviews": 1,
-          "reviewRules": {
-            "color-contrast": 1
-          },
-          "violationRules": {}
-        },
-        "ibm": {
-          "violations": 0,
-          "reviews": 6,
-          "reviewRules": {
-            "html_skipnav_exists": 1,
-            "img_alt_background": 1,
-            "style_color_misuse": 1,
-            "style_focus_visible": 1,
-            "style_highcontrast_visible": 1,
-            "text_contrast_sufficient": 1
-          },
-          "violationRules": {}
-        },
+        "flags": 0,
         "findings": [
-          "more-contrast-respected (undetermined): All one measured piece of text pass with more contrast. two other pieces can't be reduced to one color. \"AI Agent\" can't be measured because a background image or gradient sits behind it.",
-          "reflow-at-320px (fail): In a 320px window, the page scrolls sideways (it is 336px wide in a 320px window), and three elements reach past the right edge: section.instui-agent-shell ends at 336px; h2#agent-shell-title ends at 323px; p ends at 323px. WCAG 1.4.10 Reflow (level AA) exempts two-dimensional content such as data tables and maps, so a person should judge whether that applies."
-        ],
-        "notices": [
-          "agent-shell-1-rebrand-light/page/0/conditions/more-contrast-respected: undetermined: All one measured piece of text pass with more contrast. two other pieces can't be reduced to one color. \"AI Agent\" can't be measured because a background image or gradient sits behind it."
-        ],
-        "warnings": []
+          "more-contrast-respected (undetermined): The page changes under prefers-contrast: more, but no visible text was measurable.",
+          "reflow-at-320px (fail): In a 320px window, the page scrolls sideways (it is 336px wide in a 320px window), and one element reaches past the right edge: section.instui-agent-shell ends at 336px. WCAG 1.4.10 Reflow (level AA) exempts two-dimensional content such as data tables and maps, so a person should judge whether that applies."
+        ]
       },
       {
         "target": "agent-shell-1-rebrand-dark",
         "theme": "rebrand",
         "scheme": "dark",
         "source": "page",
-        "run": "2026-10-28T19-13-50.594Z",
-        "date": "2026-10-28T19:30:45.114Z",
-        "digest": "b54dbfb5cf8e76499c184e49338d14d6d8e7bc37f8188734337dbac4937cef9c",
+        "run": "2026-10-28T20-28-26.767Z",
+        "date": "2026-10-28T20:28:40.496Z",
         "tools": {
           "node": "26.13.0",
           "automatica11y": "0.11.0",
@@ -195,8 +179,12 @@
           "guidepup-vsr": "0.33.0",
           "chromium": "156.0.8078.48"
         },
+        "digest": "cde503d65c110d78abcf03619aa75ddba8f2f6870000c7d75ce7f5bd6410e8b1",
+        "warnings": [],
+        "notices": [
+          "agent-shell-1-rebrand-dark/page/0/conditions/more-contrast-respected: undetermined: The page changes under prefers-contrast: more, but no visible text was measurable."
+        ],
         "configurations": 1,
-        "flags": 0,
         "tiers": {
           "rules": {
             "ran": 1
@@ -208,25 +196,31 @@
             "ran": 1
           }
         },
+        "axe": {
+          "violations": 0,
+          "reviews": 0,
+          "reviewRules": {},
+          "violationRules": {}
+        },
+        "ibm": {
+          "violations": 0,
+          "reviews": 3,
+          "reviewRules": {
+            "html_skipnav_exists": 1,
+            "style_color_misuse": 1,
+            "style_highcontrast_visible": 1
+          },
+          "violationRules": {}
+        },
         "checks": {
           "conditions": {
-            "not-applicable": 4,
+            "not-applicable": 5,
             "undetermined": 1,
-            "pass": 2,
-            "fail": 1
+            "fail": 1,
+            "pass": 1
           }
         },
         "details": [
-          {
-            "tier": "rules",
-            "name": "color-contrast",
-            "criteria": ["1.4.3"],
-            "counts": {
-              "undetermined": 1
-            },
-            "notes": ["Elements must meet minimum color contrast ratio thresholds"],
-            "elements": ["#agent-shell-title", "p"]
-          },
           {
             "tier": "conditions",
             "name": "reduced-motion-respected",
@@ -255,7 +249,7 @@
               "undetermined": 1
             },
             "notes": [
-              "All one measured piece of text pass with more contrast. two other pieces can't be reduced to one color. \"AI Agent\" can't be measured because a background image or gradient sits behind it."
+              "The page changes under prefers-contrast: more, but no visible text was measurable."
             ],
             "elements": []
           },
@@ -284,7 +278,7 @@
             "name": "forced-colors-focus-visible",
             "criteria": ["1.4.11", "2.4.7"],
             "counts": {
-              "pass": 1
+              "not-applicable": 1
             },
             "notes": [],
             "elements": []
@@ -297,7 +291,7 @@
               "fail": 1
             },
             "notes": [
-              "In a 320px window, the page scrolls sideways (it is 336px wide in a 320px window), and three elements reach past the right edge: section.instui-agent-shell ends at 336px; h2#agent-shell-title ends at 323px; p ends at 323px. WCAG 1.4.10 Reflow (level AA) exempts two-dimensional content such as data tables and maps, so a person should judge whether that applies."
+              "In a 320px window, the page scrolls sideways (it is 336px wide in a 320px window), and one element reaches past the right edge: section.instui-agent-shell ends at 336px. WCAG 1.4.10 Reflow (level AA) exempts two-dimensional content such as data tables and maps, so a person should judge whether that applies."
             ],
             "elements": []
           },
@@ -322,44 +316,19 @@
             "elements": []
           }
         ],
-        "axe": {
-          "violations": 0,
-          "reviews": 1,
-          "reviewRules": {
-            "color-contrast": 1
-          },
-          "violationRules": {}
-        },
-        "ibm": {
-          "violations": 0,
-          "reviews": 6,
-          "reviewRules": {
-            "html_skipnav_exists": 1,
-            "img_alt_background": 1,
-            "style_color_misuse": 1,
-            "style_focus_visible": 1,
-            "style_highcontrast_visible": 1,
-            "text_contrast_sufficient": 1
-          },
-          "violationRules": {}
-        },
+        "flags": 0,
         "findings": [
-          "more-contrast-respected (undetermined): All one measured piece of text pass with more contrast. two other pieces can't be reduced to one color. \"AI Agent\" can't be measured because a background image or gradient sits behind it.",
-          "reflow-at-320px (fail): In a 320px window, the page scrolls sideways (it is 336px wide in a 320px window), and three elements reach past the right edge: section.instui-agent-shell ends at 336px; h2#agent-shell-title ends at 323px; p ends at 323px. WCAG 1.4.10 Reflow (level AA) exempts two-dimensional content such as data tables and maps, so a person should judge whether that applies."
-        ],
-        "notices": [
-          "agent-shell-1-rebrand-dark/page/0/conditions/more-contrast-respected: undetermined: All one measured piece of text pass with more contrast. two other pieces can't be reduced to one color. \"AI Agent\" can't be measured because a background image or gradient sits behind it."
-        ],
-        "warnings": []
+          "more-contrast-respected (undetermined): The page changes under prefers-contrast: more, but no visible text was measurable.",
+          "reflow-at-320px (fail): In a 320px window, the page scrolls sideways (it is 336px wide in a 320px window), and one element reaches past the right edge: section.instui-agent-shell ends at 336px. WCAG 1.4.10 Reflow (level AA) exempts two-dimensional content such as data tables and maps, so a person should judge whether that applies."
+        ]
       },
       {
         "target": "agent-shell-1-canvas-light",
         "theme": "canvas",
         "scheme": "light",
         "source": "page",
-        "run": "2026-10-28T19-13-50.594Z",
-        "date": "2026-10-28T19:45:33.622Z",
-        "digest": "89184217ca37ec82749ac98e276a31533036f9e445b76761148a842c967d0e85",
+        "run": "2026-10-28T20-28-26.767Z",
+        "date": "2026-10-28T20:28:56.184Z",
         "tools": {
           "node": "26.13.0",
           "automatica11y": "0.11.0",
@@ -370,8 +339,12 @@
           "guidepup-vsr": "0.33.0",
           "chromium": "156.0.8078.48"
         },
+        "digest": "6d22194dbe77075a68fbdd20f912cac1be25b78a228de5210b3a07649644bbc8",
+        "warnings": [],
+        "notices": [
+          "agent-shell-1-canvas-light/page/0/conditions/more-contrast-respected: undetermined: The page changes under prefers-contrast: more, but no visible text was measurable."
+        ],
         "configurations": 1,
-        "flags": 0,
         "tiers": {
           "rules": {
             "ran": 1
@@ -383,25 +356,31 @@
             "ran": 1
           }
         },
+        "axe": {
+          "violations": 0,
+          "reviews": 0,
+          "reviewRules": {},
+          "violationRules": {}
+        },
+        "ibm": {
+          "violations": 0,
+          "reviews": 3,
+          "reviewRules": {
+            "html_skipnav_exists": 1,
+            "style_color_misuse": 1,
+            "style_highcontrast_visible": 1
+          },
+          "violationRules": {}
+        },
         "checks": {
           "conditions": {
-            "not-applicable": 4,
+            "not-applicable": 5,
             "undetermined": 1,
-            "pass": 2,
-            "fail": 1
+            "fail": 1,
+            "pass": 1
           }
         },
         "details": [
-          {
-            "tier": "rules",
-            "name": "color-contrast",
-            "criteria": ["1.4.3"],
-            "counts": {
-              "undetermined": 1
-            },
-            "notes": ["Elements must meet minimum color contrast ratio thresholds"],
-            "elements": ["#agent-shell-title", "p"]
-          },
           {
             "tier": "conditions",
             "name": "reduced-motion-respected",
@@ -430,7 +409,7 @@
               "undetermined": 1
             },
             "notes": [
-              "All one measured piece of text pass with more contrast. two other pieces can't be reduced to one color. \"AI Agent\" can't be measured because a background image or gradient sits behind it."
+              "The page changes under prefers-contrast: more, but no visible text was measurable."
             ],
             "elements": []
           },
@@ -459,7 +438,7 @@
             "name": "forced-colors-focus-visible",
             "criteria": ["1.4.11", "2.4.7"],
             "counts": {
-              "pass": 1
+              "not-applicable": 1
             },
             "notes": [],
             "elements": []
@@ -472,7 +451,7 @@
               "fail": 1
             },
             "notes": [
-              "In a 320px window, the page scrolls sideways (it is 336px wide in a 320px window), and three elements reach past the right edge: section.instui-agent-shell ends at 336px; h2#agent-shell-title ends at 323px; p ends at 323px. WCAG 1.4.10 Reflow (level AA) exempts two-dimensional content such as data tables and maps, so a person should judge whether that applies."
+              "In a 320px window, the page scrolls sideways (it is 336px wide in a 320px window), and one element reaches past the right edge: section.instui-agent-shell ends at 336px. WCAG 1.4.10 Reflow (level AA) exempts two-dimensional content such as data tables and maps, so a person should judge whether that applies."
             ],
             "elements": []
           },
@@ -497,44 +476,19 @@
             "elements": []
           }
         ],
-        "axe": {
-          "violations": 0,
-          "reviews": 1,
-          "reviewRules": {
-            "color-contrast": 1
-          },
-          "violationRules": {}
-        },
-        "ibm": {
-          "violations": 0,
-          "reviews": 6,
-          "reviewRules": {
-            "html_skipnav_exists": 1,
-            "img_alt_background": 1,
-            "style_color_misuse": 1,
-            "style_focus_visible": 1,
-            "style_highcontrast_visible": 1,
-            "text_contrast_sufficient": 1
-          },
-          "violationRules": {}
-        },
+        "flags": 0,
         "findings": [
-          "more-contrast-respected (undetermined): All one measured piece of text pass with more contrast. two other pieces can't be reduced to one color. \"AI Agent\" can't be measured because a background image or gradient sits behind it.",
-          "reflow-at-320px (fail): In a 320px window, the page scrolls sideways (it is 336px wide in a 320px window), and three elements reach past the right edge: section.instui-agent-shell ends at 336px; h2#agent-shell-title ends at 323px; p ends at 323px. WCAG 1.4.10 Reflow (level AA) exempts two-dimensional content such as data tables and maps, so a person should judge whether that applies."
-        ],
-        "notices": [
-          "agent-shell-1-canvas-light/page/0/conditions/more-contrast-respected: undetermined: All one measured piece of text pass with more contrast. two other pieces can't be reduced to one color. \"AI Agent\" can't be measured because a background image or gradient sits behind it."
-        ],
-        "warnings": []
+          "more-contrast-respected (undetermined): The page changes under prefers-contrast: more, but no visible text was measurable.",
+          "reflow-at-320px (fail): In a 320px window, the page scrolls sideways (it is 336px wide in a 320px window), and one element reaches past the right edge: section.instui-agent-shell ends at 336px. WCAG 1.4.10 Reflow (level AA) exempts two-dimensional content such as data tables and maps, so a person should judge whether that applies."
+        ]
       },
       {
         "target": "agent-shell-1-canvashighcontrast-light",
         "theme": "canvasHighContrast",
         "scheme": "light",
         "source": "page",
-        "run": "2026-10-28T19-13-50.594Z",
-        "date": "2026-10-28T19:45:30.519Z",
-        "digest": "a9aedad7b0bd400d809256e765007225bf553a145c7961f8baed9d860901ef74",
+        "run": "2026-10-28T20-28-26.767Z",
+        "date": "2026-10-28T20:28:55.871Z",
         "tools": {
           "node": "26.13.0",
           "automatica11y": "0.11.0",
@@ -545,8 +499,12 @@
           "guidepup-vsr": "0.33.0",
           "chromium": "156.0.8078.48"
         },
+        "digest": "c1623e077cefcb605a98a3fdc3a9969f6be5c720f09085d1f50530b0ee9574b7",
+        "warnings": [],
+        "notices": [
+          "agent-shell-1-canvashighcontrast-light/page/0/conditions/more-contrast-respected: undetermined: The page changes under prefers-contrast: more, but no visible text was measurable."
+        ],
         "configurations": 1,
-        "flags": 0,
         "tiers": {
           "rules": {
             "ran": 1
@@ -558,25 +516,31 @@
             "ran": 1
           }
         },
+        "axe": {
+          "violations": 0,
+          "reviews": 0,
+          "reviewRules": {},
+          "violationRules": {}
+        },
+        "ibm": {
+          "violations": 0,
+          "reviews": 3,
+          "reviewRules": {
+            "html_skipnav_exists": 1,
+            "style_color_misuse": 1,
+            "style_highcontrast_visible": 1
+          },
+          "violationRules": {}
+        },
         "checks": {
           "conditions": {
-            "not-applicable": 4,
+            "not-applicable": 5,
             "undetermined": 1,
-            "pass": 2,
-            "fail": 1
+            "fail": 1,
+            "pass": 1
           }
         },
         "details": [
-          {
-            "tier": "rules",
-            "name": "color-contrast",
-            "criteria": ["1.4.3"],
-            "counts": {
-              "undetermined": 1
-            },
-            "notes": ["Elements must meet minimum color contrast ratio thresholds"],
-            "elements": ["#agent-shell-title", "p"]
-          },
           {
             "tier": "conditions",
             "name": "reduced-motion-respected",
@@ -605,7 +569,7 @@
               "undetermined": 1
             },
             "notes": [
-              "All one measured piece of text pass with more contrast. two other pieces can't be reduced to one color. \"AI Agent\" can't be measured because a background image or gradient sits behind it."
+              "The page changes under prefers-contrast: more, but no visible text was measurable."
             ],
             "elements": []
           },
@@ -634,7 +598,7 @@
             "name": "forced-colors-focus-visible",
             "criteria": ["1.4.11", "2.4.7"],
             "counts": {
-              "pass": 1
+              "not-applicable": 1
             },
             "notes": [],
             "elements": []
@@ -647,7 +611,7 @@
               "fail": 1
             },
             "notes": [
-              "In a 320px window, the page scrolls sideways (it is 336px wide in a 320px window), and three elements reach past the right edge: section.instui-agent-shell ends at 336px; h2#agent-shell-title ends at 323px; p ends at 323px. WCAG 1.4.10 Reflow (level AA) exempts two-dimensional content such as data tables and maps, so a person should judge whether that applies."
+              "In a 320px window, the page scrolls sideways (it is 336px wide in a 320px window), and one element reaches past the right edge: section.instui-agent-shell ends at 336px. WCAG 1.4.10 Reflow (level AA) exempts two-dimensional content such as data tables and maps, so a person should judge whether that applies."
             ],
             "elements": []
           },
@@ -672,35 +636,11 @@
             "elements": []
           }
         ],
-        "axe": {
-          "violations": 0,
-          "reviews": 1,
-          "reviewRules": {
-            "color-contrast": 1
-          },
-          "violationRules": {}
-        },
-        "ibm": {
-          "violations": 0,
-          "reviews": 6,
-          "reviewRules": {
-            "html_skipnav_exists": 1,
-            "img_alt_background": 1,
-            "style_color_misuse": 1,
-            "style_focus_visible": 1,
-            "style_highcontrast_visible": 1,
-            "text_contrast_sufficient": 1
-          },
-          "violationRules": {}
-        },
+        "flags": 0,
         "findings": [
-          "more-contrast-respected (undetermined): All one measured piece of text pass with more contrast. two other pieces can't be reduced to one color. \"AI Agent\" can't be measured because a background image or gradient sits behind it.",
-          "reflow-at-320px (fail): In a 320px window, the page scrolls sideways (it is 336px wide in a 320px window), and three elements reach past the right edge: section.instui-agent-shell ends at 336px; h2#agent-shell-title ends at 323px; p ends at 323px. WCAG 1.4.10 Reflow (level AA) exempts two-dimensional content such as data tables and maps, so a person should judge whether that applies."
-        ],
-        "notices": [
-          "agent-shell-1-canvashighcontrast-light/page/0/conditions/more-contrast-respected: undetermined: All one measured piece of text pass with more contrast. two other pieces can't be reduced to one color. \"AI Agent\" can't be measured because a background image or gradient sits behind it."
-        ],
-        "warnings": []
+          "more-contrast-respected (undetermined): The page changes under prefers-contrast: more, but no visible text was measurable.",
+          "reflow-at-320px (fail): In a 320px window, the page scrolls sideways (it is 336px wide in a 320px window), and one element reaches past the right edge: section.instui-agent-shell ends at 336px. WCAG 1.4.10 Reflow (level AA) exempts two-dimensional content such as data tables and maps, so a person should judge whether that applies."
+        ]
       }
     ],
     "ai-gradient": [
@@ -3837,6 +3777,7 @@
         "source": "page",
         "run": "2026-10-28T20-10-06.430Z",
         "date": "2026-10-28T20:11:19.331Z",
+        "digest": "232a627ac0ee14e38f1583b6bedf75aff10634b8ae2ea2cb7c47d9065c680431",
         "tools": {
           "node": "26.13.0",
           "automatica11y": "0.11.0",
@@ -3847,10 +3788,8 @@
           "guidepup-vsr": "0.33.0",
           "chromium": "156.0.8078.48"
         },
-        "digest": "232a627ac0ee14e38f1583b6bedf75aff10634b8ae2ea2cb7c47d9065c680431",
-        "warnings": [],
-        "notices": [],
         "configurations": 1,
+        "flags": 0,
         "tiers": {
           "rules": {
             "ran": 1
@@ -3861,23 +3800,6 @@
           "vsr": {
             "ran": 1
           }
-        },
-        "axe": {
-          "violations": 0,
-          "reviews": 0,
-          "reviewRules": {},
-          "violationRules": {}
-        },
-        "ibm": {
-          "violations": 0,
-          "reviews": 4,
-          "reviewRules": {
-            "html_skipnav_exists": 1,
-            "style_color_misuse": 1,
-            "style_focus_visible": 1,
-            "style_highcontrast_visible": 1
-          },
-          "violationRules": {}
         },
         "checks": {
           "conditions": {
@@ -3977,8 +3899,26 @@
             "elements": []
           }
         ],
-        "flags": 0,
-        "findings": []
+        "axe": {
+          "violations": 0,
+          "reviews": 0,
+          "reviewRules": {},
+          "violationRules": {}
+        },
+        "ibm": {
+          "violations": 0,
+          "reviews": 4,
+          "reviewRules": {
+            "html_skipnav_exists": 1,
+            "style_color_misuse": 1,
+            "style_focus_visible": 1,
+            "style_highcontrast_visible": 1
+          },
+          "violationRules": {}
+        },
+        "findings": [],
+        "notices": [],
+        "warnings": []
       },
       {
         "target": "badge-1-rebrand-dark",
@@ -3987,6 +3927,7 @@
         "source": "page",
         "run": "2026-10-28T20-10-06.430Z",
         "date": "2026-10-28T20:11:20.348Z",
+        "digest": "65decba24366e3761b20f896b3e528d8ff35358eb734fa8ded064ba62dc532e8",
         "tools": {
           "node": "26.13.0",
           "automatica11y": "0.11.0",
@@ -3997,10 +3938,8 @@
           "guidepup-vsr": "0.33.0",
           "chromium": "156.0.8078.48"
         },
-        "digest": "65decba24366e3761b20f896b3e528d8ff35358eb734fa8ded064ba62dc532e8",
-        "warnings": [],
-        "notices": [],
         "configurations": 1,
+        "flags": 0,
         "tiers": {
           "rules": {
             "ran": 1
@@ -4011,23 +3950,6 @@
           "vsr": {
             "ran": 1
           }
-        },
-        "axe": {
-          "violations": 0,
-          "reviews": 0,
-          "reviewRules": {},
-          "violationRules": {}
-        },
-        "ibm": {
-          "violations": 0,
-          "reviews": 4,
-          "reviewRules": {
-            "html_skipnav_exists": 1,
-            "style_color_misuse": 1,
-            "style_focus_visible": 1,
-            "style_highcontrast_visible": 1
-          },
-          "violationRules": {}
         },
         "checks": {
           "conditions": {
@@ -4127,8 +4049,26 @@
             "elements": []
           }
         ],
-        "flags": 0,
-        "findings": []
+        "axe": {
+          "violations": 0,
+          "reviews": 0,
+          "reviewRules": {},
+          "violationRules": {}
+        },
+        "ibm": {
+          "violations": 0,
+          "reviews": 4,
+          "reviewRules": {
+            "html_skipnav_exists": 1,
+            "style_color_misuse": 1,
+            "style_focus_visible": 1,
+            "style_highcontrast_visible": 1
+          },
+          "violationRules": {}
+        },
+        "findings": [],
+        "notices": [],
+        "warnings": []
       },
       {
         "target": "badge-1-canvas-light",
@@ -4137,6 +4077,7 @@
         "source": "page",
         "run": "2026-10-28T20-10-06.430Z",
         "date": "2026-10-28T20:12:21.239Z",
+        "digest": "50ac51e3795af1458e3e9253945585396ef5d967649c95af02ae7c6960fc297c",
         "tools": {
           "node": "26.13.0",
           "automatica11y": "0.11.0",
@@ -4147,10 +4088,8 @@
           "guidepup-vsr": "0.33.0",
           "chromium": "156.0.8078.48"
         },
-        "digest": "50ac51e3795af1458e3e9253945585396ef5d967649c95af02ae7c6960fc297c",
-        "warnings": [],
-        "notices": [],
         "configurations": 1,
+        "flags": 0,
         "tiers": {
           "rules": {
             "ran": 1
@@ -4161,23 +4100,6 @@
           "vsr": {
             "ran": 1
           }
-        },
-        "axe": {
-          "violations": 0,
-          "reviews": 0,
-          "reviewRules": {},
-          "violationRules": {}
-        },
-        "ibm": {
-          "violations": 0,
-          "reviews": 4,
-          "reviewRules": {
-            "html_skipnav_exists": 1,
-            "style_color_misuse": 1,
-            "style_focus_visible": 1,
-            "style_highcontrast_visible": 1
-          },
-          "violationRules": {}
         },
         "checks": {
           "conditions": {
@@ -4277,8 +4199,26 @@
             "elements": []
           }
         ],
-        "flags": 0,
-        "findings": []
+        "axe": {
+          "violations": 0,
+          "reviews": 0,
+          "reviewRules": {},
+          "violationRules": {}
+        },
+        "ibm": {
+          "violations": 0,
+          "reviews": 4,
+          "reviewRules": {
+            "html_skipnav_exists": 1,
+            "style_color_misuse": 1,
+            "style_focus_visible": 1,
+            "style_highcontrast_visible": 1
+          },
+          "violationRules": {}
+        },
+        "findings": [],
+        "notices": [],
+        "warnings": []
       },
       {
         "target": "badge-1-canvashighcontrast-light",
@@ -4287,6 +4227,7 @@
         "source": "page",
         "run": "2026-10-28T20-10-06.430Z",
         "date": "2026-10-28T20:12:19.559Z",
+        "digest": "56eec5c81c304ceff7392a4a9183cf528cbbe9b26124355e4d46a415b8fe3ad2",
         "tools": {
           "node": "26.13.0",
           "automatica11y": "0.11.0",
@@ -4297,10 +4238,8 @@
           "guidepup-vsr": "0.33.0",
           "chromium": "156.0.8078.48"
         },
-        "digest": "56eec5c81c304ceff7392a4a9183cf528cbbe9b26124355e4d46a415b8fe3ad2",
-        "warnings": [],
-        "notices": [],
         "configurations": 1,
+        "flags": 0,
         "tiers": {
           "rules": {
             "ran": 1
@@ -4311,23 +4250,6 @@
           "vsr": {
             "ran": 1
           }
-        },
-        "axe": {
-          "violations": 0,
-          "reviews": 0,
-          "reviewRules": {},
-          "violationRules": {}
-        },
-        "ibm": {
-          "violations": 0,
-          "reviews": 4,
-          "reviewRules": {
-            "html_skipnav_exists": 1,
-            "style_color_misuse": 1,
-            "style_focus_visible": 1,
-            "style_highcontrast_visible": 1
-          },
-          "violationRules": {}
         },
         "checks": {
           "conditions": {
@@ -4427,8 +4349,26 @@
             "elements": []
           }
         ],
-        "flags": 0,
-        "findings": []
+        "axe": {
+          "violations": 0,
+          "reviews": 0,
+          "reviewRules": {},
+          "violationRules": {}
+        },
+        "ibm": {
+          "violations": 0,
+          "reviews": 4,
+          "reviewRules": {
+            "html_skipnav_exists": 1,
+            "style_color_misuse": 1,
+            "style_focus_visible": 1,
+            "style_highcontrast_visible": 1
+          },
+          "violationRules": {}
+        },
+        "findings": [],
+        "notices": [],
+        "warnings": []
       }
     ],
     "banner": [
@@ -66901,6 +66841,7 @@
         "source": "page",
         "run": "2026-10-28T20-10-06.430Z",
         "date": "2026-10-28T20:11:19.331Z",
+        "digest": "232a627ac0ee14e38f1583b6bedf75aff10634b8ae2ea2cb7c47d9065c680431",
         "tools": {
           "node": "26.13.0",
           "automatica11y": "0.11.0",
@@ -66911,10 +66852,8 @@
           "guidepup-vsr": "0.33.0",
           "chromium": "156.0.8078.48"
         },
-        "digest": "232a627ac0ee14e38f1583b6bedf75aff10634b8ae2ea2cb7c47d9065c680431",
-        "warnings": [],
-        "notices": [],
         "configurations": 1,
+        "flags": 0,
         "tiers": {
           "rules": {
             "ran": 1
@@ -66925,22 +66864,6 @@
           "vsr": {
             "ran": 1
           }
-        },
-        "axe": {
-          "violations": 0,
-          "reviews": 0,
-          "reviewRules": {},
-          "violationRules": {}
-        },
-        "ibm": {
-          "violations": 0,
-          "reviews": 3,
-          "reviewRules": {
-            "html_skipnav_exists": 1,
-            "style_color_misuse": 1,
-            "style_highcontrast_visible": 1
-          },
-          "violationRules": {}
         },
         "checks": {
           "conditions": {
@@ -67043,10 +66966,27 @@
             "elements": []
           }
         ],
-        "flags": 0,
+        "axe": {
+          "violations": 0,
+          "reviews": 0,
+          "reviewRules": {},
+          "violationRules": {}
+        },
+        "ibm": {
+          "violations": 0,
+          "reviews": 3,
+          "reviewRules": {
+            "html_skipnav_exists": 1,
+            "style_color_misuse": 1,
+            "style_highcontrast_visible": 1
+          },
+          "violationRules": {}
+        },
         "findings": [
           "text-spacing-no-clipping (fail): With line height 1.5, letter spacing 0.12em, word spacing 0.16em, and paragraph spacing 2em, text in one element gets cut off: p.--truncate (\"Quarterly planning notes for t\"). Overlapping text isn't checked."
-        ]
+        ],
+        "notices": [],
+        "warnings": []
       },
       {
         "target": "truncate-1-rebrand-dark",
@@ -67055,6 +66995,7 @@
         "source": "page",
         "run": "2026-10-28T20-10-06.430Z",
         "date": "2026-10-28T20:11:20.348Z",
+        "digest": "65decba24366e3761b20f896b3e528d8ff35358eb734fa8ded064ba62dc532e8",
         "tools": {
           "node": "26.13.0",
           "automatica11y": "0.11.0",
@@ -67065,10 +67006,8 @@
           "guidepup-vsr": "0.33.0",
           "chromium": "156.0.8078.48"
         },
-        "digest": "65decba24366e3761b20f896b3e528d8ff35358eb734fa8ded064ba62dc532e8",
-        "warnings": [],
-        "notices": [],
         "configurations": 1,
+        "flags": 0,
         "tiers": {
           "rules": {
             "ran": 1
@@ -67079,22 +67018,6 @@
           "vsr": {
             "ran": 1
           }
-        },
-        "axe": {
-          "violations": 0,
-          "reviews": 0,
-          "reviewRules": {},
-          "violationRules": {}
-        },
-        "ibm": {
-          "violations": 0,
-          "reviews": 3,
-          "reviewRules": {
-            "html_skipnav_exists": 1,
-            "style_color_misuse": 1,
-            "style_highcontrast_visible": 1
-          },
-          "violationRules": {}
         },
         "checks": {
           "conditions": {
@@ -67197,10 +67120,27 @@
             "elements": []
           }
         ],
-        "flags": 0,
+        "axe": {
+          "violations": 0,
+          "reviews": 0,
+          "reviewRules": {},
+          "violationRules": {}
+        },
+        "ibm": {
+          "violations": 0,
+          "reviews": 3,
+          "reviewRules": {
+            "html_skipnav_exists": 1,
+            "style_color_misuse": 1,
+            "style_highcontrast_visible": 1
+          },
+          "violationRules": {}
+        },
         "findings": [
           "text-spacing-no-clipping (fail): With line height 1.5, letter spacing 0.12em, word spacing 0.16em, and paragraph spacing 2em, text in one element gets cut off: p.--truncate (\"Quarterly planning notes for t\"). Overlapping text isn't checked."
-        ]
+        ],
+        "notices": [],
+        "warnings": []
       },
       {
         "target": "truncate-1-canvas-light",
@@ -67209,6 +67149,7 @@
         "source": "page",
         "run": "2026-10-28T20-10-06.430Z",
         "date": "2026-10-28T20:12:21.239Z",
+        "digest": "50ac51e3795af1458e3e9253945585396ef5d967649c95af02ae7c6960fc297c",
         "tools": {
           "node": "26.13.0",
           "automatica11y": "0.11.0",
@@ -67219,10 +67160,8 @@
           "guidepup-vsr": "0.33.0",
           "chromium": "156.0.8078.48"
         },
-        "digest": "50ac51e3795af1458e3e9253945585396ef5d967649c95af02ae7c6960fc297c",
-        "warnings": [],
-        "notices": [],
         "configurations": 1,
+        "flags": 0,
         "tiers": {
           "rules": {
             "ran": 1
@@ -67233,22 +67172,6 @@
           "vsr": {
             "ran": 1
           }
-        },
-        "axe": {
-          "violations": 0,
-          "reviews": 0,
-          "reviewRules": {},
-          "violationRules": {}
-        },
-        "ibm": {
-          "violations": 0,
-          "reviews": 3,
-          "reviewRules": {
-            "html_skipnav_exists": 1,
-            "style_color_misuse": 1,
-            "style_highcontrast_visible": 1
-          },
-          "violationRules": {}
         },
         "checks": {
           "conditions": {
@@ -67351,10 +67274,27 @@
             "elements": []
           }
         ],
-        "flags": 0,
+        "axe": {
+          "violations": 0,
+          "reviews": 0,
+          "reviewRules": {},
+          "violationRules": {}
+        },
+        "ibm": {
+          "violations": 0,
+          "reviews": 3,
+          "reviewRules": {
+            "html_skipnav_exists": 1,
+            "style_color_misuse": 1,
+            "style_highcontrast_visible": 1
+          },
+          "violationRules": {}
+        },
         "findings": [
           "text-spacing-no-clipping (fail): With line height 1.5, letter spacing 0.12em, word spacing 0.16em, and paragraph spacing 2em, text in one element gets cut off: p.--truncate (\"Quarterly planning notes for t\"). Overlapping text isn't checked."
-        ]
+        ],
+        "notices": [],
+        "warnings": []
       },
       {
         "target": "truncate-1-canvashighcontrast-light",
@@ -67363,6 +67303,7 @@
         "source": "page",
         "run": "2026-10-28T20-10-06.430Z",
         "date": "2026-10-28T20:12:19.559Z",
+        "digest": "56eec5c81c304ceff7392a4a9183cf528cbbe9b26124355e4d46a415b8fe3ad2",
         "tools": {
           "node": "26.13.0",
           "automatica11y": "0.11.0",
@@ -67373,10 +67314,8 @@
           "guidepup-vsr": "0.33.0",
           "chromium": "156.0.8078.48"
         },
-        "digest": "56eec5c81c304ceff7392a4a9183cf528cbbe9b26124355e4d46a415b8fe3ad2",
-        "warnings": [],
-        "notices": [],
         "configurations": 1,
+        "flags": 0,
         "tiers": {
           "rules": {
             "ran": 1
@@ -67387,22 +67326,6 @@
           "vsr": {
             "ran": 1
           }
-        },
-        "axe": {
-          "violations": 0,
-          "reviews": 0,
-          "reviewRules": {},
-          "violationRules": {}
-        },
-        "ibm": {
-          "violations": 0,
-          "reviews": 3,
-          "reviewRules": {
-            "html_skipnav_exists": 1,
-            "style_color_misuse": 1,
-            "style_highcontrast_visible": 1
-          },
-          "violationRules": {}
         },
         "checks": {
           "conditions": {
@@ -67505,10 +67428,27 @@
             "elements": []
           }
         ],
-        "flags": 0,
+        "axe": {
+          "violations": 0,
+          "reviews": 0,
+          "reviewRules": {},
+          "violationRules": {}
+        },
+        "ibm": {
+          "violations": 0,
+          "reviews": 3,
+          "reviewRules": {
+            "html_skipnav_exists": 1,
+            "style_color_misuse": 1,
+            "style_highcontrast_visible": 1
+          },
+          "violationRules": {}
+        },
         "findings": [
           "text-spacing-no-clipping (fail): With line height 1.5, letter spacing 0.12em, word spacing 0.16em, and paragraph spacing 2em, text in one element gets cut off: p.--truncate (\"Quarterly planning notes for t\"). Overlapping text isn't checked."
-        ]
+        ],
+        "notices": [],
+        "warnings": []
       }
     ],
     "view": [
@@ -68709,7 +68649,7 @@
     ]
   },
   "fingerprints": {
-    "agent-shell": "4d5d43a394e4cf95",
+    "agent-shell": "70d3d36686052f50",
     "ai-gradient": "2aff07bd05a8cbdd",
     "alert": "d3d41fd533f19a7a",
     "avatar": "e8b0c01a8f1a8047",
