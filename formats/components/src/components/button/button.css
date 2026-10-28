@@ -38,7 +38,39 @@
  * ```
  * @example -automatica11y
  * ```html
- * <button class="pfx-button" data-a11y-trigger data-a11y-root>Save</button>
+ * <div data-a11y-root>
+ *   <div><button class="pfx-button -color-primary -size-sm" type="button" data-a11y-trigger>Save draft</button></div>
+ *   <div><button class="pfx-button -color-secondary -size-md" type="button">Preview draft</button></div>
+ *   <div><button class="pfx-button -color-tertiary -size-lg" type="button">View history</button></div>
+ *   <div><button class="pfx-button -color-success" type="button">Publish</button></div>
+ *   <div><button class="pfx-button -color-danger" type="button">Delete draft</button></div>
+ *   <div><button class="pfx-button -color-ai" type="button">Summarize notes</button></div>
+ *   <div><button class="pfx-button -color-ai-secondary" type="button">Suggest a title</button></div>
+ *   <div><button class="pfx-button -color-primary" type="button" disabled>Save unavailable</button></div>
+ *   <div><button class="pfx-button -color-secondary" type="button" disabled>Preview unavailable</button></div>
+ *   <div><button class="pfx-button -color-tertiary" type="button" disabled>History unavailable</button></div>
+ *   <div><button class="pfx-button -color-success" type="button" disabled>Publish unavailable</button></div>
+ *   <div><button class="pfx-button -color-danger" type="button" disabled>Delete unavailable</button></div>
+ *   <div><button class="pfx-button -color-ai" type="button" disabled>Summary unavailable</button></div>
+ *   <div><button class="pfx-button -color-ai-secondary" type="button" disabled>Suggestion unavailable</button></div>
+ *   <div><button class="pfx-button" type="button" aria-disabled="true">Saving draft</button></div>
+ *   <div><button class="pfx-button -toggle" type="button" aria-pressed="false">Pin draft</button></div>
+ *   <div><button class="pfx-button -toggle" type="button" aria-pressed="true">Pin notes</button></div>
+ *   <div><button class="pfx-button -condensed" type="button">More actions</button></div>
+ *   <div><button class="pfx-button -without-background" type="button">Discard changes</button></div>
+ *   <div><button class="pfx-button -without-border" type="button">Continue</button></div>
+ *   <div><button class="pfx-button -color-ai-secondary -without-border" type="button">Suggest edits</button></div>
+ *   <div><button class="pfx-button -shape-square -icon-plus" type="button" aria-label="Add draft"></button></div>
+ *   <div><button class="pfx-button -shape-circle -icon-plus" type="button" aria-label="Add note"></button></div>
+ *   <div><button class="pfx-button -icon-arrow-right" type="button">Next draft</button></div>
+ *   <div><button class="pfx-button -display-block" type="button">Submit draft</button></div>
+ *   <div class="--bg-accent-blue --p-md">
+ *     <div><button class="pfx-button -color-primary -on-color" type="button">Save on brand</button></div>
+ *     <div><button class="pfx-button -color-secondary -on-color" type="button">Preview on brand</button></div>
+ *     <div><button class="pfx-button -color-primary -on-color" type="button" disabled>Save unavailable on brand</button></div>
+ *     <div><button class="pfx-button -color-secondary -on-color" type="button" disabled>Preview unavailable on brand</button></div>
+ *   </div>
+ * </div>
  * ```
  * @example -docs
  * ```html

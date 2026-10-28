@@ -95,8 +95,22 @@
  * ```
  * @example -automatica11y -nocard
  * ```html
- * <button class="pfx-button" type="button" id="save-settings" data-a11y-trigger>Save settings</button>
- * <div class="pfx-alert -inline" id="save-status" role="status" aria-live="polite" aria-atomic="true" data-a11y-root></div>
+ * <div data-a11y-root>
+ *   <button type="button" id="save-settings" data-a11y-trigger>Save settings</button>
+ *   <div class="pfx-alert -inline --mb-md" id="save-status" role="status" aria-live="polite" aria-atomic="true"></div>
+ *   <div class="pfx-alert -color-info --mb-md" role="status">Your export is ready.</div>
+ *   <div class="pfx-alert -color-success --mb-md" role="status">Settings saved.</div>
+ *   <div class="pfx-alert -color-warning --mb-md" role="alert">Your session expires soon.</div>
+ *   <div class="pfx-alert -color-danger --mb-md" role="alert">The upload failed.</div>
+ *   <div class="pfx-alert -color-info -inline --mb-md" role="status">An update is available.</div>
+ *   <div class="pfx-alert -color-success -inline --mb-md" role="status">Your changes are published.</div>
+ *   <div class="pfx-alert -color-warning -inline --mb-md" role="alert">Save your work before leaving.</div>
+ *   <div class="pfx-alert -color-danger -inline --mb-md" role="alert">Check the file and try again.</div>
+ *   <div class="pfx-alert -icon-megaphone --mb-md" role="status">Registration opens tomorrow.</div>
+ *   <div class="pfx-alert -icon-megaphone -inline --mb-md" role="status">Registration is now open.</div>
+ *   <div class="pfx-alert -screen-reader-only" role="status">All changes saved.</div>
+ *   <div class="pfx-alert -timeout" role="status">A copy was saved automatically.</div>
+ * </div>
  * <script>
  * document.getElementById("save-settings").addEventListener("click", () => {
  *   document.getElementById("save-status").textContent = "Settings saved.";

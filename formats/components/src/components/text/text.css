@@ -45,10 +45,38 @@
  * @sealed
  * @example -automatica11y
  * ```html
- * <span class="pfx-text -size-xs --display-block">x-small text</span>
- * <span class="pfx-text -size-sm --display-block">small text</span>
- * <span class="pfx-text -variant-content-quote --display-block">Quoted text</span>
- * <span class="pfx-text -color-ai-highlight">AI highlight text</span>
+ * <p class="pfx-text -size-xs">Updated today.</p>
+ * <p class="pfx-text -size-sm">Last edited by Lee.</p>
+ * <p class="pfx-text">Your course is ready.</p>
+ * <p class="pfx-text -size-lg">Welcome to the course.</p>
+ * <p class="pfx-text -size-xl">Start learning today.</p>
+ * <p class="pfx-text -color-primary">Required reading.</p>
+ * <p class="pfx-text -color-secondary">Optional reading.</p>
+ * <p class="pfx-text -color-brand">Course overview.</p>
+ * <p class="pfx-text -color-success">Submission received.</p>
+ * <p class="pfx-text -color-warning">The deadline is approaching.</p>
+ * <p class="pfx-text -color-danger">The upload failed.</p>
+ * <p class="pfx-text -color-ai-highlight">Suggested summary.</p>
+ * <div class="--bg-inverse --p-md">
+ *   <p class="pfx-text -color-primary-inverse">Course announcement.</p>
+ *   <p class="pfx-text -color-secondary-inverse">Posted this morning.</p>
+ * </div>
+ * <div class="--bg-accent-blue --p-md">
+ *   <p class="pfx-text -color-primary-on">Enrollment is open.</p>
+ *   <p class="pfx-text -color-secondary-on">Choose your next course.</p>
+ * </div>
+ * <p class="pfx-text -weight-bold"><strong>Save before leaving.</strong></p>
+ * <p class="pfx-text -style-italic"><em>Please review your answers.</em></p>
+ * <p class="pfx-text -transform-uppercase">New lesson</p>
+ * <p class="pfx-text -transform-lowercase">COURSE NOTES</p>
+ * <p class="pfx-text -transform-capitalize">weekly reading list</p>
+ * <p class="pfx-text -variant-description-page">Explore the course materials.</p>
+ * <p class="pfx-text -variant-description-section">Read this week's notes.</p>
+ * <p class="pfx-text -variant-content">The lesson begins with a short introduction.</p>
+ * <p class="pfx-text -variant-content-important"><strong>Bring your notes.</strong></p>
+ * <blockquote class="pfx-text -variant-content-quote">Learning takes practice.</blockquote>
+ * <p class="pfx-text -variant-content-small">Updated on Monday.</p>
+ * <p class="pfx-text -variant-legend">Figure 1: Course timeline.</p>
  * ```
  */
 @scope (.pfx-text) {

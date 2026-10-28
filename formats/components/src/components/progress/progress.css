@@ -69,12 +69,27 @@
  * @sealed
  * @example -automatica11y
  * ```html
- * <label>
- *   Uploading Document: <progress class="pfx-progress -color-brand" value="70">70%</progress>
- * </label>
- * 
- * <label for="storage-used">Storage used</label>
- * <meter id="storage-used" class="pfx-progress -color-warning" min="20" value="40" max="60">50%</meter>
+ * <div><label>Uploading notes <progress class="pfx-progress -color-brand -size-xs" value="70" max="100">70%</progress></label></div>
+ * <div><label>Preparing files <progress class="pfx-progress -color-info -size-sm" value="40" max="100">40%</progress></label></div>
+ * <div><label>Reviews complete <progress class="pfx-progress -color-success -size-md" value="100" max="100">100%</progress></label></div>
+ * <div><label>Storage used <progress class="pfx-progress -color-warning -size-lg" value="85" max="100">85%</progress></label></div>
+ * <div><label>Failed transfers <progress class="pfx-progress -color-danger" value="20" max="100">20%</progress></label></div>
+ * <div><label>Starting upload <progress class="pfx-progress" value="0" max="100">0%</progress></label></div>
+ * <div><label>Finding files <progress class="pfx-progress">Working</progress></label></div>
+ * <label for="audit-storage-used">Storage quota</label>
+ * <meter id="audit-storage-used" class="pfx-progress -color-warning" min="20" value="40" max="60">40 of 60</meter>
+ * <div class="--bg-inverse --text-inverse --p-md">
+ *   <label>Background upload <progress class="pfx-progress -color-primary-inverse" value="60" max="100">60%</progress></label>
+ *   <label>Archive upload <progress class="pfx-progress -color-inverse" value="30" max="100">30%</progress></label>
+ * </div>
+ * <p id="audit-progress-label">Processing documents</p>
+ * <div class="pfx-progress -should-animate" role="progressbar" aria-labelledby="audit-progress-label" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100" style="--value: 50; --max: 100">
+ *   <span class="bar"></span><span class="value">50%</span>
+ * </div>
+ * <p id="audit-progress-inside-label">Preparing download</p>
+ * <div class="pfx-progress -size-lg -render-value-inside" role="progressbar" aria-labelledby="audit-progress-inside-label" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100" style="--value: 70; --max: 100">
+ *   <span class="bar"></span><span class="value">70%</span>
+ * </div>
  * ```
  */
 /* Not an InstUI concept: a best guess so a <progress> missing its value attribute (or fed a bad

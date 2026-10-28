@@ -38,10 +38,18 @@
  * @demo self:badge
  * @example -automatica11y
  * ```html
- * <span class="pfx-badge-wrapper">
- *   <button class="pfx-button">Inbox</button>
- *   <span class="pfx-badge -placement-top-end">4</span>
- * </span>
+ * <div><span class="pfx-badge -standalone" role="img" aria-label="4 unread messages">4</span></div>
+ * <div><span class="pfx-badge -standalone -color-success" role="img" aria-label="2 completed reviews">2</span></div>
+ * <div><span class="pfx-badge -standalone -color-danger" role="img" aria-label="3 failed uploads">3</span></div>
+ * <div class="--bg-dark --p-md"><span class="pfx-badge -standalone -color-inverse" role="img" aria-label="5 new notices">5</span></div>
+ * <div><span class="pfx-badge -standalone -type-notification" role="img" aria-label="New message"></span></div>
+ * <div><span class="pfx-badge -standalone -pulse" role="img" aria-label="1 pending invitation">1</span></div>
+ * <div class="--p-md"><span class="pfx-badge-wrapper --p-sm">Unread messages<span class="pfx-badge -placement-top-start" role="img" aria-label="4 unread">4</span></span></div>
+ * <div class="--p-md"><span class="pfx-badge-wrapper --p-sm">Unread messages<span class="pfx-badge -placement-top-end" role="img" aria-label="4 unread">4</span></span></div>
+ * <div class="--p-md"><span class="pfx-badge-wrapper --p-sm">Unread messages<span class="pfx-badge -placement-bottom-start" role="img" aria-label="4 unread">4</span></span></div>
+ * <div class="--p-md"><span class="pfx-badge-wrapper --p-sm">Unread messages<span class="pfx-badge -placement-bottom-end" role="img" aria-label="4 unread">4</span></span></div>
+ * <div class="--p-md"><span class="pfx-badge-wrapper --p-sm">Unread messages<span class="pfx-badge -placement-start-center" role="img" aria-label="4 unread">4</span></span></div>
+ * <div class="--p-md"><span class="pfx-badge-wrapper --p-sm">Unread messages<span class="pfx-badge -placement-end-center" role="img" aria-label="4 unread">4</span></span></div>
  * ```
  */
 @keyframes pantoken-badge-pulse {

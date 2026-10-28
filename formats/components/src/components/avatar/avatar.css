@@ -54,11 +54,26 @@
  * @stable
  * @example -automatica11y
  * ```html
- * <span class="pfx-avatar --me-sm">LH</span>
- * <span class="pfx-avatar -color-ai --me-sm">AI</span>
- * <span class="pfx-avatar --me-sm" data-initials="NV">Dr. Nguyen Van Thoc</span>
- * <span class="pfx-avatar"><span class="name">Miguel Sanchez</span></span>
- * <span class="pfx-avatar"><span class="first-name">Miguel</span> <span class="last-name">Sanchez</span></span>
+ * <div><span class="pfx-avatar -color-blue -size-2xs" data-initials="LH">Lee Harper</span></div>
+ * <div><span class="pfx-avatar -color-green -size-xs" data-initials="MS">Miguel Sanchez</span></div>
+ * <div><span class="pfx-avatar -color-grey -size-sm" data-initials="NV">Nguyen Van Thoc</span></div>
+ * <div><span class="pfx-avatar -color-orange -size-md" data-initials="AP">Amira Patel</span></div>
+ * <div><span class="pfx-avatar -color-red -size-lg" data-initials="JR">Jordan Rivera</span></div>
+ * <div><span class="pfx-avatar -color-ai -size-xl" data-initials="SK">Sam Kim</span></div>
+ * <div><span class="pfx-avatar -size-2xl -shape-rectangle" data-initials="CJ">Casey Jones</span></div>
+ * <div><span class="pfx-avatar -color-blue -has-inverse-color" data-initials="LH">Lee Harper</span></div>
+ * <div><span class="pfx-avatar -color-green -has-inverse-color" data-initials="MS">Miguel Sanchez</span></div>
+ * <div><span class="pfx-avatar -color-grey -has-inverse-color" data-initials="NV">Nguyen Van Thoc</span></div>
+ * <div><span class="pfx-avatar -color-orange -has-inverse-color" data-initials="AP">Amira Patel</span></div>
+ * <div><span class="pfx-avatar -color-red -has-inverse-color" data-initials="JR">Jordan Rivera</span></div>
+ * <div><span class="pfx-avatar">Lee Harper</span></div>
+ * <div><span class="pfx-avatar -show-border-never" data-initials="MS">Miguel Sanchez</span></div>
+ * <div><span class="pfx-avatar"><span class="name">Amira Patel</span></span></div>
+ * <div><span class="pfx-avatar"><span class="first-name">Miguel</span> <span class="last-name">Sanchez</span></span></div>
+ * <div><span class="pfx-avatar"><span class="first-name">Jordan</span></span></div>
+ * <div><span class="pfx-avatar"><span class="last-name">Rivera</span></span></div>
+ * <div><span class="pfx-avatar"><img alt="Lee Harper" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' fill='%23dce5ef'/%3E%3Ccircle cx='32' cy='24' r='12' fill='%23394755'/%3E%3Cpath d='M8 64a24 24 0 0 1 48 0' fill='%23394755'/%3E%3C/svg%3E"></span></div>
+ * <div><span class="pfx-avatar -shape-rectangle -show-border-always"><img alt="Miguel Sanchez" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' fill='%23dce5ef'/%3E%3Ccircle cx='32' cy='24' r='12' fill='%23394755'/%3E%3Cpath d='M8 64a24 24 0 0 1 48 0' fill='%23394755'/%3E%3C/svg%3E"></span></div>
  * ```
  */
 @scope (.pfx-avatar) {

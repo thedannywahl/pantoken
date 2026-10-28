@@ -25,10 +25,25 @@
  * @demo self:spinner
  * @example -automatica11y
  * ```html
- * <span class="pfx-spinner" role="status" aria-label="Loading"></span>
- * 
- * <div class="pfx-view pfx-card -background-primary-inverse">
- *   <span class="pfx-spinner -color-inverse" role="status" aria-label="Loading"></span>
+ * <div><span class="pfx-spinner -size-xs" role="status" aria-label="Loading thumbnail"></span></div>
+ * <div><span class="pfx-spinner -size-sm" role="status" aria-label="Loading profile"></span></div>
+ * <div><span class="pfx-spinner" role="status" aria-label="Loading course"></span></div>
+ * <div><span class="pfx-spinner -size-lg" role="status" aria-label="Loading dashboard"></span></div>
+ * <div><span class="pfx-spinner -color-ai -size-xs" role="status" aria-label="Suggesting a tag"></span></div>
+ * <div><span class="pfx-spinner -color-ai -size-sm" role="status" aria-label="Suggesting a title"></span></div>
+ * <div><span class="pfx-spinner -color-ai" role="status" aria-label="Preparing a summary"></span></div>
+ * <div><span class="pfx-spinner -color-ai -size-lg" role="status" aria-label="Preparing a study plan"></span></div>
+ * <div class="--bg-dark --p-md">
+ *   <div><span class="pfx-spinner -color-inverse -size-xs" role="status" aria-label="Loading archive thumbnail"></span></div>
+ *   <div><span class="pfx-spinner -color-inverse -size-sm" role="status" aria-label="Loading archive profile"></span></div>
+ *   <div><span class="pfx-spinner -color-inverse" role="status" aria-label="Loading archive"></span></div>
+ *   <div><span class="pfx-spinner -color-inverse -size-lg" role="status" aria-label="Loading archive dashboard"></span></div>
+ * </div>
+ * <div class="--bg-accent-blue --p-md">
+ *   <div><span class="pfx-spinner -color-ai-on-color -size-xs" role="status" aria-label="Suggesting an archive tag"></span></div>
+ *   <div><span class="pfx-spinner -color-ai-on-color -size-sm" role="status" aria-label="Suggesting an archive title"></span></div>
+ *   <div><span class="pfx-spinner -color-ai-on-color" role="status" aria-label="Summarizing the archive"></span></div>
+ *   <div><span class="pfx-spinner -color-ai-on-color -size-lg" role="status" aria-label="Preparing an archive study plan"></span></div>
  * </div>
  * ```
  */

@@ -36,14 +36,18 @@
  * @related tag — A tag is the removable, form-oriented counterpart.
  * @example -automatica11y
  * ```html
- * <div class="pfx-view --display-flex --gap-md" style="flex-wrap: wrap">
- *   <span class="pfx-pill -color-success -icon-check">Published</span>
- *   <span class="pfx-pill">Draft</span>
- *   <span class="pfx-pill -color-info">In review</span>
- *   <span class="pfx-pill -color-warning">Stale</span>
- *   <span class="pfx-pill -color-danger">Blocked</span>
- *   <span class="pfx-pill -color-violet">Pastel</span>
- * </div>
+ * <div><span class="pfx-pill -color-neutral -size-x-small -icon-check">Draft checked</span></div>
+ * <div><span class="pfx-pill -color-info -size-medium -icon-check">Review checked</span></div>
+ * <div><span class="pfx-pill -color-success -size-large -icon-check">Published</span></div>
+ * <div><span class="pfx-pill -color-warning">Needs review</span></div>
+ * <div><span class="pfx-pill -color-danger">Blocked</span></div>
+ * <div><span class="pfx-pill -color-plum">Plum team</span></div>
+ * <div><span class="pfx-pill -color-aurora">Aurora team</span></div>
+ * <div><span class="pfx-pill -color-sky">Sky team</span></div>
+ * <div><span class="pfx-pill -color-orange">Orange team</span></div>
+ * <div><span class="pfx-pill -color-violet">Violet team</span></div>
+ * <div><span class="pfx-pill -color-sea">Sea team</span></div>
+ * <div><span class="pfx-pill -color-stone">Stone team</span></div>
  * ```
  */
 @scope (.pfx-pill) {

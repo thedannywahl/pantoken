@@ -67,9 +67,53 @@
  * ```
  * @example -automatica11y
  * ```html
- * <div class="pfx-view -background-secondary -border-radius-medium -shadow-resting">
- *   A card-like surface.
+ * <div class="pfx-view -background-primary --p-md">Primary surface.</div>
+ * <div class="pfx-view -background-secondary --p-md">Secondary surface.</div>
+ * <div class="pfx-view -background-primary-inverse --text-inverse --p-md">Inverse surface.</div>
+ * <div class="pfx-view -background-brand --text-inverse --p-md">Brand surface.</div>
+ * <div class="pfx-view -background-info --text-on-color --p-md">Information surface.</div>
+ * <div class="pfx-view -background-alert --text-on-color --p-md">Alert surface.</div>
+ * <div class="pfx-view -background-success --text-on-color --p-md">Success surface.</div>
+ * <div class="pfx-view -background-danger --text-on-color --p-md">Danger surface.</div>
+ * <div class="pfx-view -background-warning --p-md"><button type="button">Review warning</button></div>
+ * <div class="pfx-view -background-transparent --p-md">Transparent surface.</div>
+ * <div class="pfx-view -border-radius-small -border-width-small -border-color-primary --p-md">Small border and corners.</div>
+ * <div class="pfx-view -border-radius-medium -border-width-medium -border-color-brand --p-md">Medium border and corners.</div>
+ * <div class="pfx-view -border-radius-large -border-width-large -border-color-success --p-md">Large border and corners.</div>
+ * <div class="pfx-view -border-radius-circle -border-width-small -border-color-info --p-md">Circular corners.</div>
+ * <div class="pfx-view -border-radius-pill -border-width-small -border-color-warning --p-md">Pill corners.</div>
+ * <div class="pfx-view -border-width-small -border-color-danger --p-md">Danger border.</div>
+ * <div class="pfx-view -shadow-resting --p-md --mb-md">Resting elevation.</div>
+ * <div class="pfx-view -shadow-above --p-md --mb-md">Above elevation.</div>
+ * <div class="pfx-view -shadow-topmost --p-md --mb-md">Topmost elevation.</div>
+ * <div class="pfx-view -display-block">Block content.</div>
+ * <div><span class="pfx-view -display-inline-block">Inline block content.</span></div>
+ * <p><span class="pfx-view -display-inline">Inline content.</span></p>
+ * <div class="pfx-view -display-flex">Flexible content.</div>
+ * <div><span class="pfx-view -display-inline-flex">Inline flexible content.</span></div>
+ * <div class="pfx-view -display-none">This optional panel is closed.</div>
+ * <div class="pfx-view -position-static">Static content.</div>
+ * <div class="pfx-view -position-relative">Relative content.</div>
+ * <div style="position: relative; min-height: 3rem">
+ *   <div class="pfx-view -position-absolute" style="inset-block-start: 0; inset-inline-start: 0">Anchored content.</div>
  * </div>
+ * <div style="transform: translateZ(0); min-height: 3rem">
+ *   <div class="pfx-view -position-fixed" style="inset-block-start: 0; inset-inline-start: 0">Fixed content.</div>
+ * </div>
+ * <div class="pfx-view -position-sticky">Sticky content.</div>
+ * <div class="pfx-view -overflow-x-visible -overflow-y-visible">Visible overflow.</div>
+ * <div class="pfx-view -overflow-x-hidden -overflow-y-hidden">Hidden overflow.</div>
+ * <div class="pfx-view -overflow-x-auto -overflow-y-auto">Automatic overflow.</div>
+ * <div class="pfx-view -overflow-x-scroll -overflow-y-scroll" tabindex="0" role="region" aria-label="Scrollable course notes">Scrollable notes.</div>
+ * <div class="pfx-view -overflow-x-clip -overflow-y-clip">Clipped overflow.</div>
+ * <div class="pfx-view -cursor-auto">Automatic cursor.</div>
+ * <div class="pfx-view -cursor-default">Default cursor.</div>
+ * <button class="pfx-view -cursor-pointer" type="button">Open notes</button>
+ * <button class="pfx-view -cursor-not-allowed" type="button" disabled>Notes unavailable</button>
+ * <p class="pfx-view -cursor-text">Select this text.</p>
+ * <div class="pfx-view -cursor-move">Move cursor preview.</div>
+ * <div class="pfx-view -cursor-grab">Grab cursor preview.</div>
+ * <div class="pfx-view -cursor-wait" aria-busy="true">Loading notes.</div>
  * ```
  */
 @scope (.pfx-view) {

@@ -68,12 +68,26 @@
  * @sealed
  * @example -automatica11y
  * ```html
- * <label>
- *   Uploading Document: <progress class="pfx-progress-circle -size-sm" value="70">70%</progress>
- * </label>
- * 
- * <label for="score">Score</label>
- * <meter id="score" class="pfx-progress-circle -color-success" min="20" value="40" max="60">50%</meter>
+ * <div><label>Uploading notes <progress class="pfx-progress-circle -color-brand -size-xs" value="70" max="100" style="--value: 70">70%</progress></label></div>
+ * <div><label>Preparing files <progress class="pfx-progress-circle -color-info -size-sm" value="40" max="100" style="--value: 40">40%</progress></label></div>
+ * <div><label>Reviews complete <progress class="pfx-progress-circle -color-success -size-md" value="100" max="100" style="--value: 100">100%</progress></label></div>
+ * <div><label>Storage used <progress class="pfx-progress-circle -color-warning -size-lg" value="85" max="100" style="--value: 85">85%</progress></label></div>
+ * <div><label>Failed transfers <progress class="pfx-progress-circle -color-danger" value="20" max="100" style="--value: 20">20%</progress></label></div>
+ * <div><label>Starting upload <progress class="pfx-progress-circle" value="0" max="100">0%</progress></label></div>
+ * <div><label>Finding files <progress class="pfx-progress-circle">Working</progress></label></div>
+ * <label for="audit-review-score">Review score</label>
+ * <meter id="audit-review-score" class="pfx-progress-circle -color-success" min="20" value="40" max="60" style="--min: 20; --value: 40; --max: 60">40 of 60</meter>
+ * <div class="--bg-inverse --text-inverse --p-md">
+ *   <label>Background upload <progress class="pfx-progress-circle -color-primary-inverse -color-brand" value="60" max="100" style="--value: 60">60%</progress></label>
+ *   <label>Preparing archive <progress class="pfx-progress-circle -color-primary-inverse -color-info" value="40" max="100" style="--value: 40">40%</progress></label>
+ *   <label>Archive ready <progress class="pfx-progress-circle -color-primary-inverse -color-success" value="100" max="100" style="--value: 100">100%</progress></label>
+ *   <label>Archive quota <progress class="pfx-progress-circle -color-primary-inverse -color-warning" value="85" max="100" style="--value: 85">85%</progress></label>
+ *   <label>Archive failures <progress class="pfx-progress-circle -color-primary-inverse -color-danger" value="20" max="100" style="--value: 20">20%</progress></label>
+ * </div>
+ * <p id="audit-circle-label">Processing documents</p>
+ * <div class="pfx-progress-circle -should-animate" role="progressbar" aria-labelledby="audit-circle-label" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100" style="--value: 50">
+ *   <span class="value">50%</span>
+ * </div>
  * ```
  */
 

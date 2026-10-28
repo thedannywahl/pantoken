@@ -29,7 +29,24 @@
  * @related text — Body typography for non-heading text.
  * @example -automatica11y
  * ```html
- * <h2 class="pfx-heading -level-h2">Account details</h2>
+ * <h1 class="pfx-heading -level-h1">Course overview</h1>
+ * <h2 class="pfx-heading -level-h2">Getting started</h2>
+ * <h3 class="pfx-heading -level-h3">Your first lesson</h3>
+ * <h4 class="pfx-heading -level-h4">Required reading</h4>
+ * <h5 class="pfx-heading -level-h5">Reading notes</h5>
+ * <h6 class="pfx-heading -level-h6">Further details</h6>
+ * <h2 class="pfx-heading -color-primary">Course details</h2>
+ * <h2 class="pfx-heading -color-secondary">Optional activities</h2>
+ * <h2 class="pfx-heading -color-ai">Suggested study plan</h2>
+ * <div class="--bg-inverse --p-md"><h2 class="pfx-heading -color-primary-inverse">Course announcement</h2></div>
+ * <h2 class="pfx-heading -border-top">Schedule</h2>
+ * <h2 class="pfx-heading -border-bottom">Assignments</h2>
+ * <h2 class="pfx-heading -variant-title-page">Course home</h2>
+ * <h2 class="pfx-heading -variant-title-section">Weekly materials</h2>
+ * <h3 class="pfx-heading -variant-title-card-regular">Lesson resources</h3>
+ * <h3 class="pfx-heading -variant-title-card-mini">Quick links</h3>
+ * <h3 class="pfx-heading -variant-title-card-section">Practice exercises</h3>
+ * <h3 class="pfx-heading -variant-label">Learning objectives</h3>
  * ```
  */
 @scope (.pfx-heading) {
