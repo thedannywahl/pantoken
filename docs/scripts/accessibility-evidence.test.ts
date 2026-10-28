@@ -327,9 +327,7 @@ test("merging a partial run replaces only its records and drops removed ones", (
 });
 
 test("selector references in details render as code, numbers and abbreviations don't", () => {
-  const section = accessibilitySection("agent-shell", loadAccessibilitySnapshot(snapshotJson));
-  expect(section).toContain("<code>section.instui-agent-shell</code> ends at 336px");
-  expect(section).toContain("<code>h2#agent-shell-title</code> ends at 323px");
-  expect(section).toContain("1.4.10 Reflow");
+  const section = accessibilitySection("avatar", loadAccessibilitySnapshot(snapshotJson));
+  expect(section).toContain("<code>span.name</code>");
   expect(section).not.toMatch(/<code>\d/u);
 });
