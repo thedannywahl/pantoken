@@ -4,10 +4,11 @@
 
 import { applySpacing } from "../shared/index.js";
 import { initInitials } from "../behaviors/initials.js";
+import { sel } from "../shared/prefix.js";
 
 // Initialize on page load
 function initavatar() {
-  for (const el of document.querySelectorAll<HTMLElement>(".instui-avatar")) {
+  for (const el of document.querySelectorAll<HTMLElement>(sel(".pfx-avatar"))) {
     applySpacing(el);
     initInitials(el);
   }

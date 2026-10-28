@@ -1,8 +1,9 @@
 /* c8 ignore file */
 import { initSkeletonLoading } from "../behaviors/skeleton-loader.js";
+import { sel } from "../shared/prefix.js";
 
 function initSkeletonLoadingRegions(): void {
-  for (const wrapper of document.querySelectorAll<HTMLElement>(".instui-skeleton-loading")) {
+  for (const wrapper of document.querySelectorAll<HTMLElement>(sel(".pfx-skeleton-loading"))) {
     const busyRegion = wrapper.querySelector<HTMLElement>("[data-skeleton-region]");
     const status = wrapper.querySelector<HTMLElement>("[data-skeleton-status]");
     const error = wrapper.querySelector<HTMLElement>("[data-skeleton-error]");

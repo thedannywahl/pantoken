@@ -82,7 +82,7 @@ function toCamelCase(name: string): string {
 }
 
 function toClassName(name: string): string {
-  return `instui-${name}`;
+  return `pfx-${name}`;
 }
 
 const componentsDir = resolve(import.meta.dirname, "../src/components");
@@ -99,7 +99,7 @@ for (const component of ALL_COMPONENTS) {
   let content = `// fallow-ignore-file unused-file\n`;
   content += `/* c8 ignore file */ // side-effect module, tested via behavior functions and IIFE bundles\n`;
   content += `// Per-component interaction entry point for ${component}\n\n`;
-  content += `import { applySpacing } from "../shared/index.js";\n`;
+  content += `import { applySpacing } from "../shared/index.js";\nimport { sel } from "../shared/prefix.js";\n`;
 
   if (isCommandComponent) {
     content += `import { syncInvoker } from "../shared/index.js";\n`;
@@ -108,7 +108,7 @@ for (const component of ALL_COMPONENTS) {
   content += `\n`;
   content += `// Initialize on page load\n`;
   content += `function init${toCamelCase(component)}() {\n`;
-  content += `  for (const el of document.querySelectorAll(".${className}")) {\n`;
+  content += `  for (const el of document.querySelectorAll(sel(".${className}"))) {\n`;
   content += `    applySpacing(el as HTMLElement);\n`;
 
   if (isCommandComponent) {

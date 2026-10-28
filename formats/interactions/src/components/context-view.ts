@@ -3,10 +3,11 @@
 // Per-component interaction entry point for context-view
 
 import { applySpacing } from "../shared/index.js";
+import { sel } from "../shared/prefix.js";
 
 // Initialize on page load
 function initcontextView() {
-  for (const el of document.querySelectorAll(".instui-context-view")) {
+  for (const el of document.querySelectorAll(sel(".pfx-context-view"))) {
     applySpacing(el as HTMLElement);
   }
 }

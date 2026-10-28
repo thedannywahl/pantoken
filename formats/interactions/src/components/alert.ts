@@ -4,13 +4,15 @@
 
 import { applySpacing } from "../shared/index.js";
 import { initRemove } from "../behaviors/remove.js";
+import { PREFIX, sel } from "../shared/prefix.js";
 
 // Initialize on page load
 function initAlert() {
-  for (const el of document.querySelectorAll<HTMLElement>(".instui-alert")) {
+  for (const el of document.querySelectorAll<HTMLElement>(sel(".pfx-alert"))) {
     applySpacing(el);
     initRemove(el, {
-      transition: el.classList.contains("instui-transition") ? "fade" : "none",
+      prefix: PREFIX,
+      transition: el.classList.contains(sel("pfx-transition")) ? "fade" : "none",
     });
   }
 }

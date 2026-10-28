@@ -3,10 +3,11 @@
 // Per-component interaction entry point for side-nav-bar
 
 import { applySpacing } from "../shared/index.js";
+import { sel } from "../shared/prefix.js";
 
 // Initialize on page load
 function initsideNavBar() {
-  for (const el of document.querySelectorAll(".instui-side-nav-bar")) {
+  for (const el of document.querySelectorAll(sel(".pfx-side-nav-bar"))) {
     applySpacing(el as HTMLElement);
   }
 }

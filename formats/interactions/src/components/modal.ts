@@ -2,11 +2,12 @@
 /* c8 ignore file */ // side-effect module, tested via behavior functions and IIFE bundles
 import { makeOnCommand } from "../shared/index.js";
 import { initModal } from "../behaviors/modal.js";
+import { sel } from "../shared/prefix.js";
 
 function initModalComponents(): void {
   const invokerSupported = "command" in (HTMLButtonElement.prototype as object);
   const onCommand = makeOnCommand(invokerSupported);
-  for (const dialog of document.querySelectorAll<HTMLDialogElement>("dialog.instui-modal")) {
+  for (const dialog of document.querySelectorAll<HTMLDialogElement>(sel("dialog.pfx-modal"))) {
     initModal(dialog, dialog, onCommand);
   }
 }

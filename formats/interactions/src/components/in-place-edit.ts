@@ -2,6 +2,7 @@
 /* c8 ignore file */ // side-effect module, tested via behavior functions and IIFE bundles
 import { initInPlaceEdit } from "../behaviors/in-place-edit.js";
 import type { InPlaceEditInputType } from "../behaviors/in-place-edit.js";
+import { sel } from "../shared/prefix.js";
 
 const INPUT_TYPES = new Set<InPlaceEditInputType>([
   "text",
@@ -13,7 +14,7 @@ const INPUT_TYPES = new Set<InPlaceEditInputType>([
 ]);
 
 function initInPlaceEditComponents(): void {
-  for (const el of document.querySelectorAll<HTMLElement>(".instui-in-place-edit")) {
+  for (const el of document.querySelectorAll<HTMLElement>(sel(".pfx-in-place-edit"))) {
     const inputType = el.dataset.inputType as InPlaceEditInputType | undefined;
     // For CSS usage the element IS contenteditable; it's also the dispatch target
     initInPlaceEdit(el, el, {

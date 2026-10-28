@@ -3,10 +3,11 @@
 // Per-component interaction entry point for metric
 
 import { applySpacing } from "../shared/index.js";
+import { sel } from "../shared/prefix.js";
 
 // Initialize on page load
 function initmetric() {
-  for (const el of document.querySelectorAll(".instui-metric")) {
+  for (const el of document.querySelectorAll(sel(".pfx-metric"))) {
     applySpacing(el as HTMLElement);
   }
 }

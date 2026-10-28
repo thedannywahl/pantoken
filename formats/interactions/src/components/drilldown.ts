@@ -3,11 +3,12 @@
 // Per-component interaction entry point for drilldown
 
 import { applySpacing } from "../shared/index.js";
+import { sel } from "../shared/prefix.js";
 import { syncInvoker } from "../shared/index.js";
 
 // Initialize on page load
 function initdrilldown() {
-  for (const el of document.querySelectorAll(".instui-drilldown")) {
+  for (const el of document.querySelectorAll(sel(".pfx-drilldown"))) {
     applySpacing(el as HTMLElement);
     syncInvoker(el as HTMLElement);
   }

@@ -3,11 +3,12 @@
 // Per-component interaction entry point for toggle-button
 
 import { applySpacing } from "../shared/index.js";
+import { sel } from "../shared/prefix.js";
 import { syncInvoker } from "../shared/index.js";
 
 // Initialize on page load
 function inittoggleButton() {
-  for (const el of document.querySelectorAll(".instui-toggle-button")) {
+  for (const el of document.querySelectorAll(sel(".pfx-toggle-button"))) {
     applySpacing(el as HTMLElement);
     syncInvoker(el as HTMLElement);
   }

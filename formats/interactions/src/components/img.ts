@@ -3,10 +3,11 @@
 // Per-component interaction entry point for img
 
 import { applySpacing } from "../shared/index.js";
+import { sel } from "../shared/prefix.js";
 
 // Initialize on page load
 function initimg() {
-  for (const el of document.querySelectorAll(".instui-img")) {
+  for (const el of document.querySelectorAll(sel(".pfx-img"))) {
     applySpacing(el as HTMLElement);
   }
 }
