@@ -15,6 +15,7 @@ export const ACCESSIBILITY_AUDIT_STRINGS = {
   fail: "Fail",
   review: "Manual review needed",
   notApplicable: "Not applicable",
+  rules: "Rules (axe-core)",
   conditions: "Conditions",
   interactions: "Interactions",
   computed: "Computed styles",

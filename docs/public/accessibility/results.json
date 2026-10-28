@@ -1511,6 +1511,14 @@
         },
         "details": [
           {
+            "tier": "rules",
+            "name": "color-contrast",
+            "criteria": ["1.4.3"],
+            "counts": {
+              "undetermined": 1
+            }
+          },
+          {
             "tier": "conditions",
             "name": "reduced-motion-respected",
             "criteria": ["2.3.3", "2.2.2"],
@@ -1643,6 +1651,14 @@
           }
         },
         "details": [
+          {
+            "tier": "rules",
+            "name": "color-contrast",
+            "criteria": ["1.4.3"],
+            "counts": {
+              "undetermined": 1
+            }
+          },
           {
             "tier": "conditions",
             "name": "reduced-motion-respected",
@@ -1777,6 +1793,14 @@
         },
         "details": [
           {
+            "tier": "rules",
+            "name": "color-contrast",
+            "criteria": ["1.4.3"],
+            "counts": {
+              "undetermined": 1
+            }
+          },
+          {
             "tier": "conditions",
             "name": "reduced-motion-respected",
             "criteria": ["2.3.3", "2.2.2"],
@@ -1909,6 +1933,14 @@
           }
         },
         "details": [
+          {
+            "tier": "rules",
+            "name": "color-contrast",
+            "criteria": ["1.4.3"],
+            "counts": {
+              "undetermined": 1
+            }
+          },
           {
             "tier": "conditions",
             "name": "reduced-motion-respected",
@@ -5579,6 +5611,14 @@
         },
         "details": [
           {
+            "tier": "rules",
+            "name": "color-contrast",
+            "criteria": ["1.4.3"],
+            "counts": {
+              "undetermined": 1
+            }
+          },
+          {
             "tier": "conditions",
             "name": "reduced-motion-respected",
             "criteria": ["2.3.3", "2.2.2"],
@@ -5704,6 +5744,14 @@
           }
         },
         "details": [
+          {
+            "tier": "rules",
+            "name": "color-contrast",
+            "criteria": ["1.4.3"],
+            "counts": {
+              "undetermined": 1
+            }
+          },
           {
             "tier": "conditions",
             "name": "reduced-motion-respected",
@@ -5834,6 +5882,22 @@
         },
         "details": [
           {
+            "tier": "rules",
+            "name": "aria-prohibited-attr",
+            "criteria": ["4.1.2"],
+            "counts": {
+              "undetermined": 1
+            }
+          },
+          {
+            "tier": "rules",
+            "name": "color-contrast",
+            "criteria": ["1.4.3"],
+            "counts": {
+              "undetermined": 1
+            }
+          },
+          {
             "tier": "conditions",
             "name": "reduced-motion-respected",
             "criteria": ["2.3.3", "2.2.2"],
@@ -5960,6 +6024,22 @@
           }
         },
         "details": [
+          {
+            "tier": "rules",
+            "name": "aria-prohibited-attr",
+            "criteria": ["4.1.2"],
+            "counts": {
+              "undetermined": 1
+            }
+          },
+          {
+            "tier": "rules",
+            "name": "color-contrast",
+            "criteria": ["1.4.3"],
+            "counts": {
+              "undetermined": 1
+            }
+          },
           {
             "tier": "conditions",
             "name": "reduced-motion-respected",
@@ -6088,6 +6168,22 @@
         },
         "details": [
           {
+            "tier": "rules",
+            "name": "aria-prohibited-attr",
+            "criteria": ["4.1.2"],
+            "counts": {
+              "undetermined": 1
+            }
+          },
+          {
+            "tier": "rules",
+            "name": "color-contrast",
+            "criteria": ["1.4.3"],
+            "counts": {
+              "undetermined": 1
+            }
+          },
+          {
             "tier": "conditions",
             "name": "reduced-motion-respected",
             "criteria": ["2.3.3", "2.2.2"],
@@ -6214,6 +6310,22 @@
           }
         },
         "details": [
+          {
+            "tier": "rules",
+            "name": "aria-prohibited-attr",
+            "criteria": ["4.1.2"],
+            "counts": {
+              "undetermined": 1
+            }
+          },
+          {
+            "tier": "rules",
+            "name": "color-contrast",
+            "criteria": ["1.4.3"],
+            "counts": {
+              "undetermined": 1
+            }
+          },
           {
             "tier": "conditions",
             "name": "reduced-motion-respected",
@@ -6344,6 +6456,22 @@
         },
         "details": [
           {
+            "tier": "rules",
+            "name": "aria-prohibited-attr",
+            "criteria": ["4.1.2"],
+            "counts": {
+              "undetermined": 1
+            }
+          },
+          {
+            "tier": "rules",
+            "name": "color-contrast",
+            "criteria": ["1.4.3"],
+            "counts": {
+              "undetermined": 1
+            }
+          },
+          {
             "tier": "conditions",
             "name": "reduced-motion-respected",
             "criteria": ["2.3.3", "2.2.2"],
@@ -6470,6 +6598,22 @@
           }
         },
         "details": [
+          {
+            "tier": "rules",
+            "name": "aria-prohibited-attr",
+            "criteria": ["4.1.2"],
+            "counts": {
+              "undetermined": 1
+            }
+          },
+          {
+            "tier": "rules",
+            "name": "color-contrast",
+            "criteria": ["1.4.3"],
+            "counts": {
+              "undetermined": 1
+            }
+          },
           {
             "tier": "conditions",
             "name": "reduced-motion-respected",
@@ -6598,6 +6742,22 @@
         },
         "details": [
           {
+            "tier": "rules",
+            "name": "aria-prohibited-attr",
+            "criteria": ["4.1.2"],
+            "counts": {
+              "undetermined": 1
+            }
+          },
+          {
+            "tier": "rules",
+            "name": "color-contrast",
+            "criteria": ["1.4.3"],
+            "counts": {
+              "undetermined": 1
+            }
+          },
+          {
             "tier": "conditions",
             "name": "reduced-motion-respected",
             "criteria": ["2.3.3", "2.2.2"],
@@ -6724,6 +6884,22 @@
           }
         },
         "details": [
+          {
+            "tier": "rules",
+            "name": "aria-prohibited-attr",
+            "criteria": ["4.1.2"],
+            "counts": {
+              "undetermined": 1
+            }
+          },
+          {
+            "tier": "rules",
+            "name": "color-contrast",
+            "criteria": ["1.4.3"],
+            "counts": {
+              "undetermined": 1
+            }
+          },
           {
             "tier": "conditions",
             "name": "reduced-motion-respected",
@@ -12240,6 +12416,14 @@
         },
         "details": [
           {
+            "tier": "rules",
+            "name": "color-contrast",
+            "criteria": ["1.4.3"],
+            "counts": {
+              "undetermined": 1
+            }
+          },
+          {
             "tier": "conditions",
             "name": "reduced-motion-respected",
             "criteria": ["2.3.3", "2.2.2"],
@@ -12441,6 +12625,14 @@
         },
         "details": [
           {
+            "tier": "rules",
+            "name": "color-contrast",
+            "criteria": ["1.4.3"],
+            "counts": {
+              "undetermined": 1
+            }
+          },
+          {
             "tier": "conditions",
             "name": "reduced-motion-respected",
             "criteria": ["2.3.3", "2.2.2"],
@@ -12635,6 +12827,14 @@
         },
         "details": [
           {
+            "tier": "rules",
+            "name": "color-contrast",
+            "criteria": ["1.4.3"],
+            "counts": {
+              "undetermined": 1
+            }
+          },
+          {
             "tier": "conditions",
             "name": "reduced-motion-respected",
             "criteria": ["2.3.3", "2.2.2"],
@@ -12762,6 +12962,14 @@
           }
         },
         "details": [
+          {
+            "tier": "rules",
+            "name": "color-contrast",
+            "criteria": ["1.4.3"],
+            "counts": {
+              "undetermined": 1
+            }
+          },
           {
             "tier": "conditions",
             "name": "reduced-motion-respected",
@@ -12891,6 +13099,14 @@
         },
         "details": [
           {
+            "tier": "rules",
+            "name": "color-contrast",
+            "criteria": ["1.4.3"],
+            "counts": {
+              "undetermined": 1
+            }
+          },
+          {
             "tier": "conditions",
             "name": "reduced-motion-respected",
             "criteria": ["2.3.3", "2.2.2"],
@@ -13018,6 +13234,14 @@
           }
         },
         "details": [
+          {
+            "tier": "rules",
+            "name": "color-contrast",
+            "criteria": ["1.4.3"],
+            "counts": {
+              "undetermined": 1
+            }
+          },
           {
             "tier": "conditions",
             "name": "reduced-motion-respected",
@@ -18904,6 +19128,14 @@
         },
         "details": [
           {
+            "tier": "rules",
+            "name": "aria-valid-attr-value",
+            "criteria": ["4.1.2"],
+            "counts": {
+              "undetermined": 1
+            }
+          },
+          {
             "tier": "conditions",
             "name": "reduced-motion-respected",
             "criteria": ["2.3.3", "2.2.2"],
@@ -19030,6 +19262,14 @@
           }
         },
         "details": [
+          {
+            "tier": "rules",
+            "name": "aria-valid-attr-value",
+            "criteria": ["4.1.2"],
+            "counts": {
+              "undetermined": 1
+            }
+          },
           {
             "tier": "conditions",
             "name": "reduced-motion-respected",
@@ -19158,6 +19398,14 @@
         },
         "details": [
           {
+            "tier": "rules",
+            "name": "aria-valid-attr-value",
+            "criteria": ["4.1.2"],
+            "counts": {
+              "undetermined": 1
+            }
+          },
+          {
             "tier": "conditions",
             "name": "reduced-motion-respected",
             "criteria": ["2.3.3", "2.2.2"],
@@ -19284,6 +19532,14 @@
           }
         },
         "details": [
+          {
+            "tier": "rules",
+            "name": "aria-valid-attr-value",
+            "criteria": ["4.1.2"],
+            "counts": {
+              "undetermined": 1
+            }
+          },
           {
             "tier": "conditions",
             "name": "reduced-motion-respected",
@@ -19432,6 +19688,14 @@
           }
         },
         "details": [
+          {
+            "tier": "rules",
+            "name": "aria-valid-attr-value",
+            "criteria": ["4.1.2"],
+            "counts": {
+              "undetermined": 2
+            }
+          },
           {
             "tier": "conditions",
             "name": "reduced-motion-respected",
@@ -19653,6 +19917,14 @@
         },
         "details": [
           {
+            "tier": "rules",
+            "name": "aria-valid-attr-value",
+            "criteria": ["4.1.2"],
+            "counts": {
+              "undetermined": 2
+            }
+          },
+          {
             "tier": "conditions",
             "name": "reduced-motion-respected",
             "criteria": ["2.3.3", "2.2.2"],
@@ -19872,6 +20144,14 @@
           }
         },
         "details": [
+          {
+            "tier": "rules",
+            "name": "aria-valid-attr-value",
+            "criteria": ["4.1.2"],
+            "counts": {
+              "undetermined": 2
+            }
+          },
           {
             "tier": "conditions",
             "name": "reduced-motion-respected",
@@ -20093,6 +20373,14 @@
         },
         "details": [
           {
+            "tier": "rules",
+            "name": "aria-valid-attr-value",
+            "criteria": ["4.1.2"],
+            "counts": {
+              "undetermined": 2
+            }
+          },
+          {
             "tier": "conditions",
             "name": "reduced-motion-respected",
             "criteria": ["2.3.3", "2.2.2"],
@@ -20294,6 +20582,14 @@
         },
         "details": [
           {
+            "tier": "rules",
+            "name": "aria-valid-attr-value",
+            "criteria": ["4.1.2"],
+            "counts": {
+              "undetermined": 1
+            }
+          },
+          {
             "tier": "conditions",
             "name": "reduced-motion-respected",
             "criteria": ["2.3.3", "2.2.2"],
@@ -20420,6 +20716,14 @@
           }
         },
         "details": [
+          {
+            "tier": "rules",
+            "name": "aria-valid-attr-value",
+            "criteria": ["4.1.2"],
+            "counts": {
+              "undetermined": 1
+            }
+          },
           {
             "tier": "conditions",
             "name": "reduced-motion-respected",
@@ -20549,6 +20853,14 @@
         },
         "details": [
           {
+            "tier": "rules",
+            "name": "aria-valid-attr-value",
+            "criteria": ["4.1.2"],
+            "counts": {
+              "undetermined": 1
+            }
+          },
+          {
             "tier": "conditions",
             "name": "reduced-motion-respected",
             "criteria": ["2.3.3", "2.2.2"],
@@ -20676,6 +20988,14 @@
           }
         },
         "details": [
+          {
+            "tier": "rules",
+            "name": "aria-valid-attr-value",
+            "criteria": ["4.1.2"],
+            "counts": {
+              "undetermined": 1
+            }
+          },
           {
             "tier": "conditions",
             "name": "reduced-motion-respected",
@@ -20806,6 +21126,14 @@
         },
         "details": [
           {
+            "tier": "rules",
+            "name": "aria-valid-attr-value",
+            "criteria": ["4.1.2"],
+            "counts": {
+              "undetermined": 1
+            }
+          },
+          {
             "tier": "conditions",
             "name": "reduced-motion-respected",
             "criteria": ["2.3.3", "2.2.2"],
@@ -20932,6 +21260,14 @@
           }
         },
         "details": [
+          {
+            "tier": "rules",
+            "name": "aria-valid-attr-value",
+            "criteria": ["4.1.2"],
+            "counts": {
+              "undetermined": 1
+            }
+          },
           {
             "tier": "conditions",
             "name": "reduced-motion-respected",
@@ -21060,6 +21396,14 @@
         },
         "details": [
           {
+            "tier": "rules",
+            "name": "aria-valid-attr-value",
+            "criteria": ["4.1.2"],
+            "counts": {
+              "undetermined": 1
+            }
+          },
+          {
             "tier": "conditions",
             "name": "reduced-motion-respected",
             "criteria": ["2.3.3", "2.2.2"],
@@ -21186,6 +21530,14 @@
           }
         },
         "details": [
+          {
+            "tier": "rules",
+            "name": "aria-valid-attr-value",
+            "criteria": ["4.1.2"],
+            "counts": {
+              "undetermined": 1
+            }
+          },
           {
             "tier": "conditions",
             "name": "reduced-motion-respected",
@@ -21317,6 +21669,14 @@
         },
         "details": [
           {
+            "tier": "rules",
+            "name": "aria-valid-attr-value",
+            "criteria": ["4.1.2"],
+            "counts": {
+              "undetermined": 1
+            }
+          },
+          {
             "tier": "conditions",
             "name": "reduced-motion-respected",
             "criteria": ["2.3.3", "2.2.2"],
@@ -21444,6 +21804,14 @@
           }
         },
         "details": [
+          {
+            "tier": "rules",
+            "name": "aria-valid-attr-value",
+            "criteria": ["4.1.2"],
+            "counts": {
+              "undetermined": 1
+            }
+          },
           {
             "tier": "conditions",
             "name": "reduced-motion-respected",
@@ -21573,6 +21941,14 @@
         },
         "details": [
           {
+            "tier": "rules",
+            "name": "aria-valid-attr-value",
+            "criteria": ["4.1.2"],
+            "counts": {
+              "undetermined": 1
+            }
+          },
+          {
             "tier": "conditions",
             "name": "reduced-motion-respected",
             "criteria": ["2.3.3", "2.2.2"],
@@ -21700,6 +22076,14 @@
           }
         },
         "details": [
+          {
+            "tier": "rules",
+            "name": "aria-valid-attr-value",
+            "criteria": ["4.1.2"],
+            "counts": {
+              "undetermined": 1
+            }
+          },
           {
             "tier": "conditions",
             "name": "reduced-motion-respected",
@@ -32227,6 +32611,14 @@
         },
         "details": [
           {
+            "tier": "rules",
+            "name": "color-contrast",
+            "criteria": ["1.4.3"],
+            "counts": {
+              "undetermined": 1
+            }
+          },
+          {
             "tier": "conditions",
             "name": "reduced-motion-respected",
             "criteria": ["2.3.3", "2.2.2"],
@@ -32354,6 +32746,14 @@
           }
         },
         "details": [
+          {
+            "tier": "rules",
+            "name": "color-contrast",
+            "criteria": ["1.4.3"],
+            "counts": {
+              "undetermined": 1
+            }
+          },
           {
             "tier": "conditions",
             "name": "reduced-motion-respected",
@@ -32483,6 +32883,14 @@
         },
         "details": [
           {
+            "tier": "rules",
+            "name": "color-contrast",
+            "criteria": ["1.4.3"],
+            "counts": {
+              "undetermined": 1
+            }
+          },
+          {
             "tier": "conditions",
             "name": "reduced-motion-respected",
             "criteria": ["2.3.3", "2.2.2"],
@@ -32610,6 +33018,14 @@
           }
         },
         "details": [
+          {
+            "tier": "rules",
+            "name": "color-contrast",
+            "criteria": ["1.4.3"],
+            "counts": {
+              "undetermined": 1
+            }
+          },
           {
             "tier": "conditions",
             "name": "reduced-motion-respected",

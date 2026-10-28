@@ -167,6 +167,30 @@ function engine(value: unknown): Engine {
   return { violations: violations.length, reviews: reviews.length, reviewRules, violationRules };
 }
 
+/** Record each axe finding as a WCAG-aligned check (violation → fail, incomplete → undetermined). */
+function addAxeDetails(row: AccessibilityEvidence, axe: Record<string, unknown>): void {
+  for (const [key, result] of [
+    ["violations", "fail"],
+    ["incomplete", "undetermined"],
+  ] as const) {
+    for (const finding of array(axe[key])) {
+      const item = object(finding);
+      const name = string(item.id ?? item.ruleId);
+      let detail = row.details.find((d) => d.tier === "rules" && d.name === name);
+      if (!detail) {
+        detail = {
+          tier: "rules",
+          name,
+          criteria: array(item.wcag ?? []).map(string),
+          counts: {},
+        };
+        row.details.push(detail);
+      }
+      increment(detail.counts, result);
+    }
+  }
+}
+
 function addEngine(total: Engine, next: Engine): void {
   total.violations += next.violations;
   total.reviews += next.reviews;
@@ -218,6 +242,7 @@ function readTarget(
           const engines = object(tier.engines);
           addEngine(row.axe, engine(engines.axe));
           addEngine(row.ibm, engine(engines.ibm));
+          addAxeDetails(row, object(engines.axe));
         } else if (name === "vsr" && tier?.status === "ran") {
           row.flags += array(tier.flags).length;
         } else if (tier?.status === "ran") {
@@ -349,7 +374,7 @@ function cell(value: string): string {
     .replaceAll("\n", " ");
 }
 
-const TIERS = ["conditions", "interactions", "computed"] as const;
+const TIERS = ["rules", "conditions", "interactions", "computed"] as const;
 
 type Status = "pass" | "fail" | "review" | "na";
 
@@ -402,14 +427,16 @@ function tierTable(
         ? `<span class="pantoken-a11y-criteria">WCAG 2.2 ${[...new Set(criteria)].map(cell).join(", ")}</span>`
         : ""
     }`;
-    const statuses = AUDIT_MATRIX.map((item) =>
-      worst(
-        rows
-          .filter((row) => row.theme === item.theme && row.scheme === item.scheme)
-          .flatMap((row) => row.details.filter((d) => d.tier === tier && d.name === name))
-          .map((detail) => detail.counts),
-      ),
-    );
+    const statuses = AUDIT_MATRIX.map((item) => {
+      const matching = rows.filter((row) => row.theme === item.theme && row.scheme === item.scheme);
+      const counts = matching
+        .flatMap((row) => row.details.filter((d) => d.tier === tier && d.name === name))
+        .map((detail) => detail.counts);
+      // axe reports only findings, so a rule with none in a column that ran axe passed there.
+      if (tier === "rules" && !counts.length && matching.some((row) => row.tiers.rules?.ran))
+        return "pass";
+      return worst(counts);
+    });
     if (statuses.every((status) => status === "na")) continue;
     out.push(`| ${heading} | ${statuses.map(pill).join(" | ")} |`);
   }

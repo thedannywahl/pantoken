@@ -191,7 +191,11 @@ test("renders provenance, separate findings, missing coverage, and escaped data 
     '<span class="instui-pill -icon-minus pantoken-doc-tag">Not applicable</span>',
   );
   expect(md).toContain('| Announcements | <span class="instui-pill -color-warning');
-  expect(md).not.toContain("axe-core");
+  expect(md).toContain("| Rules (axe-core) | Rebrand (light)");
+  expect(md).toContain(
+    '| <span class="pantoken-a11y-check">example-violation</span> | <span class="instui-pill -color-danger -icon-x pantoken-doc-tag">Fail</span> |',
+  );
+  expect(md).toContain('<span class="pantoken-a11y-check">example-review</span>');
   expect(md).not.toContain("IBM");
   expect(md).not.toContain("exact source revision");
   expect(md).not.toContain("Historical automated evidence");
