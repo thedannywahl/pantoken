@@ -9,7 +9,6 @@ import { loadConfig, resolveMessagesForLocale, resolveTier } from "@pantoken/i18
 
 /** Generated CSS API prose enters the existing glossary/prose API translation pipeline. */
 export const ACCESSIBILITY_AUDIT_STRINGS = {
-  heading: "Accessibility audit",
   notAudited:
     "Not audited: no checked-in evidence covers this record. Results from other components don't establish coverage for this one.",
   snapshot:

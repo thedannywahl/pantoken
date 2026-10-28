@@ -7,6 +7,13 @@ import { focus } from "../src/declarations/focus/index.ts";
 
 const records = [...COMPONENTS, focus];
 
+test.each(records)("documents accessibility guidance for $name", (record) => {
+  const entry = parseCssDocs(record.rules("instui-")).find(
+    (candidate) => candidate.name === record.name,
+  );
+  expect(entry?.accessibility?.trim(), record.name).toBeTruthy();
+});
+
 test.each(records)("authors an explicit audit example for $name", (record) => {
   const entries = parseCssDocs(record.rules("instui-"));
   const entry = entries.find((candidate) => candidate.name === record.name);

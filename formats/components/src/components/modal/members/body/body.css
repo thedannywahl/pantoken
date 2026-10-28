@@ -2,6 +2,7 @@
  * @component modal.body
  * @memberOf modal
  * @selector .body
+ * @a11y Place the body inside the dialog that the header labels, and give a lone full-bleed `<img>` alt text.
  * @summary The content region (InstUI `Modal.Body`); a lone `<img>` goes full-bleed.
  * @remarks The parent `modal`'s `-overflow-fit`, `-density-compact`, and `-color-inverse` modifiers restyle this member — see `modal`'s own doc for those modifiers.
  * @structure

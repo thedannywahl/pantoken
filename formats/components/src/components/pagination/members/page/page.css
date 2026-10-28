@@ -2,6 +2,7 @@
  * @component pagination.page
  * @memberOf pagination
  * @selector .page
+ * @a11y Mark the current page with `aria-current="page"`, give each page an accessible name that includes the page number, and wrap the set in a `<nav>` with an `aria-label`.
  * @summary A page link or button (InstUI `Pagination.Page`); the current page carries `[aria-current]`.
  * @modifier -current — The current page; same styling as `[aria-current]`.
  * @cssstate current

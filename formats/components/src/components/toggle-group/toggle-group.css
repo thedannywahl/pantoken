@@ -1,6 +1,7 @@
 /**
  * @component toggle-group
  * @selector .pfx-toggle-group
+ * @a11y Built on native `<details>`, which exposes the expanded state and toggles with Enter and Space; keep the `<summary>` first and give it descriptive text.
  * @summary A bordered disclosure built on `<details>`: a chevron summary row and collapsible content.
  * @remarks Built on the same native `<details>` foundation as toggle-details; put the `<summary>` first so it becomes the clickable header row and the rest is the collapsible content.
  * @modifier -without-border — Remove the border.

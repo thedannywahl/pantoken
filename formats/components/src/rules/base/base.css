@@ -1,6 +1,7 @@
 /**
  * @rule base
  * @selector *
+ * @a11y It sets the page surface, text color, and `color-scheme` so native controls follow the active light or dark scheme; keep links distinguishable from surrounding text by more than color alone.
  * @summary The opt-in global reset: `box-sizing`, the page surface, base text colour and font, `color-scheme`, and link defaults.
  * @pseudo ::before — Included in the universal `box-sizing: border-box` reset so its generated box sizes predictably.
  * @pseudo ::after — Included in the universal `box-sizing: border-box` reset so its generated box sizes predictably.

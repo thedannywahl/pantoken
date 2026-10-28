@@ -1,6 +1,7 @@
 /**
  * @component pill
  * @selector .pfx-pill
+ * @a11y The status colors are visual only, so state the status in the label text or a visually hidden label. The leading glyph is a masked `::before` and isn't announced.
  * @summary A compact status label; add a leading glyph with the shared `-icon-<name>` form.
  * @remarks Unlike `badge`, which shows a count, or `tag`, which is removable, the pill is a static status label; its leading glyph is a masked `::before`, not an `<img>`. Let groups wrap with `flex-wrap: wrap` on their container so compact labels reflow on narrow screens.
  * @modifier -size-x-small — The smallest pill size.

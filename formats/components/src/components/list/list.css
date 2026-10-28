@@ -1,6 +1,7 @@
 /**
  * @component list
  * @selector .pfx-list
+ * @a11y Use a real `<ul>` or `<ol>` with `<li>` children. Removing markers with `-unstyled` can make some screen readers drop the list semantics, so add `role="list"` when the list structure matters.
  * @summary A list with token-driven item spacing.
  * @remarks Sets its own `padding-inline-start` for list indentation; chaining a `-p*`/`-padding*` spacing utility modifier overrides that built-in value. See the `list.item` member for the individual items.
  * @modifier -inline — Lay items out inline (horizontal).

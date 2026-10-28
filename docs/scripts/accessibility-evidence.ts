@@ -325,10 +325,10 @@ function sum(
   return rows.reduce((total, row) => total + row[field][key], 0);
 }
 
-/** Render facts, gaps, and provenance without a combined score or conformance claim. */
+/** Render facts, gaps, and provenance, without a heading, for the Accessibility section. */
 export function accessibilitySection(name: string, snapshot: AccessibilitySnapshot): string {
   const rows = Object.hasOwn(snapshot.records, name) ? snapshot.records[name] : undefined;
-  const lines = ["## " + text.heading, ""];
+  const lines: string[] = [];
   if (!rows?.length) return [...lines, text.notAudited, "", text.caveat, ""].join("\n");
   for (const warning of new Set(rows.flatMap((row) => row.warnings)))
     lines.push(`> ${cell(warning)}`, "");
@@ -408,7 +408,10 @@ export function accessibilitySection(name: string, snapshot: AccessibilitySnapsh
   return lines.join("\n");
 }
 
-/** Insert once before consumed tokens, or before related links/end when no token table exists. */
+/**
+ * Append the audit to the end of the page's `## Accessibility` section, creating that section before
+ * consumed tokens (or related links/end) when the record has no `@accessibility` block.
+ */
 export function annotateAccessibility(
   entries: readonly { name: string; kind: string }[],
   pages: readonly string[],
@@ -424,11 +427,23 @@ export function annotateAccessibility(
       "",
     );
     const section = `<!-- accessibility-audit:start -->\n${accessibilitySection(entry.name, snapshot)}\n<!-- accessibility-audit:end -->\n\n`;
-    const position = md.search(/^## (?:Tokens consumed|See also)\s*$/mu);
-    md =
-      position === -1
-        ? `${md.trimEnd()}\n\n${section}`
-        : `${md.slice(0, position)}${section}${md.slice(position)}`;
+    const heading = /^## Accessibility\s*$/mu.exec(md);
+    const next = (from: number): number => {
+      const match = /^## /mu.exec(md.slice(from));
+      return match ? from + match.index : -1;
+    };
+    if (heading) {
+      const end = next(heading.index + heading[0].length);
+      const head = end === -1 ? md.trimEnd() : md.slice(0, end).trimEnd();
+      md = `${head}\n\n${section}${end === -1 ? "" : md.slice(end)}`;
+    } else {
+      const position = md.search(/^## (?:Tokens consumed|See also)\s*$/mu);
+      const created = `## Accessibility\n\n${section}`;
+      md =
+        position === -1
+          ? `${md.trimEnd()}\n\n${created}`
+          : `${md.slice(0, position)}${created}${md.slice(position)}`;
+    }
     writeFileSync(path, md);
   });
 }

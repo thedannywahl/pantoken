@@ -2,6 +2,7 @@
  * @component modal.footer
  * @memberOf modal
  * @selector .footer
+ * @a11y Use real buttons in a logical focus order after the body, and include a visible dismiss action so keyboard users can close the dialog.
  * @summary The actions row (InstUI `Modal.Footer`).
  * @remarks The parent `modal`'s `-density-compact` and `-color-inverse` modifiers restyle this member — see `modal`'s own doc for those modifiers.
  * @structure

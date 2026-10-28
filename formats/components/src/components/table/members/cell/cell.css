@@ -2,6 +2,7 @@
  * @component table.cell
  * @memberOf table
  * @selector td
+ * @a11y Use a native `<td>`. In `-layout-stacked` the column label is generated content that assistive technology may not announce reliably, so keep the column relationship available, for example with `headers`.
  * @summary A data cell (InstUI `Table.Cell`).
  * @remarks The parent `table`'s `-layout-stacked` modifier stacks this member as a block and labels it via `::before` — see `table`'s own doc for that modifier.
  * @structure

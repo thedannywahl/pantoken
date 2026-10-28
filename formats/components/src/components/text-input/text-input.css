@@ -1,5 +1,6 @@
 /**
  * @component text-input
+ * @a11y Associate the field with a visible `<label>`, use `aria-invalid` and `disabled` for state, and explain errors in text, not border color alone. Date and time types use the browser's own picker and keyboard support.
  * @summary A styled native `<input>` — including `date`, `time`, and `datetime-local`, where the browser supplies the picker — with validation states and sizes.
  * @remarks Shares its border, background, and state chrome with `text-area`, `simple-select`, `number-input`, and `input-group`; for `date`/`time`/`datetime-local` types the browser supplies its own picker UI, which this stylesheet doesn't style.
  * @selector .pfx-text-input

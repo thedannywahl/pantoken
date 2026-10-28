@@ -2,6 +2,7 @@
  * @component menu.group
  * @memberOf menu
  * @selector .group
+ * @a11y Wrap the grouped items in an element with `role="group"` and point `aria-labelledby` at the group heading so assistive technology announces the group name.
  * @summary A labelled group heading (InstUI `Menu.Group`/`Menu.ItemGroup`).
  * @structure
  * @component menu {

@@ -2,6 +2,7 @@
  * @component table.body
  * @memberOf table
  * @selector tbody
+ * @a11y Use a native `<tbody>` so row and cell relationships are exposed. The parent's `-layout-stacked` changes `display`, which can drop table semantics in some browsers, so add explicit table roles when you use it.
  * @summary The table's data row group (InstUI `Table.Body`).
  * @remarks The parent `table`'s `-layout-stacked` modifier restyles this member — see `table`'s own doc for that modifier.
  * @structure

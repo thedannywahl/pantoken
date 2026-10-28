@@ -2,6 +2,7 @@
  * @component calendar.day
  * @memberOf calendar
  * @selector .day
+ * @a11y Mirror `-selected` with `aria-selected` and mark today with `aria-current="date"`; give each day a full-date accessible name, since the day number alone is ambiguous.
  * @summary A day cell (InstUI `Calendar.Day`); `-today`, `-selected`, and `-outside-month` mark its state.
  * @modifier -today — Today's date.
  * @modifier -selected — The selected date.

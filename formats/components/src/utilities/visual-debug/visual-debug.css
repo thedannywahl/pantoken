@@ -2,6 +2,7 @@
  * @utility visual-debug
  * @selector .-with-visual-debug
  * @global
+ * @a11y It's a development aid; remove it from production, since the outlines can obscure content and aren't part of the accessible interface.
  * @summary A layout-debugging outline: compound `.-with-visual-debug` onto any element to outline the box and its immediate children, so a layout's structure is visible at a glance.
  * @cssproperty --pantoken-visual-debug-color — The outline colour (default a bright magenta); retint it to change every debug outline.
  * @example

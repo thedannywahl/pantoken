@@ -60,7 +60,9 @@ Canvas dark cases as historical evidence; don't count those cases as supported p
 
 ### Results on component API pages
 
-Generated component pages include an **Accessibility audit** section before **Tokens consumed**.
+Generated component pages append the audit to the record's **Accessibility** section, without a
+separate header, so it follows the authored `@accessibility` (or `@a11y`) guidance. Every record
+needs that tag; a record without one still gets a bare **Accessibility** section, but a test fails.
 The docs build reads a checked-in snapshot at `docs/public/accessibility/results.json`; it doesn't
 run a browser or select whichever local audit happens to be newest. A component without evidence
 shows **Not audited**, including plugin components outside the core audit inventory.

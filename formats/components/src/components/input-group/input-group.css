@@ -1,5 +1,6 @@
 /**
  * @component input-group
+ * @a11y Label the inner input with a real `<label>`. Mark purely visual icons in `.before` and `.after` with `aria-hidden="true"`, and convey `-invalid` and `-success` states in text, not color alone.
  * @summary A facade around a text input with leading and trailing icon slots.
  * @remarks Wraps the same field chrome as `text-input` with icon slots either side of it; `-should-not-wrap` is only needed when the group's contents would otherwise overflow onto a second line.
  * @selector .pfx-input-group

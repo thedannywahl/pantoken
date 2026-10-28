@@ -1,6 +1,7 @@
 /**
  * @component text
  * @selector .pfx-text
+ * @a11y It sets appearance only and renders no semantics, so use `<p>`, `<strong>`, `<em>`, and similar elements for meaning, and check contrast of each `-color-*` against its background, especially the inverse colors.
  * @summary Body-text typography with size, weight, colour, and style modifiers.
  * @remarks The `-variant-*` presets and the `-color-*`/`-size-*`/`-weight-*` modifiers all compose on the same element; unlike `heading`, it renders no implicit semantic level.
  * @modifier -color-brand — Brand text colour.

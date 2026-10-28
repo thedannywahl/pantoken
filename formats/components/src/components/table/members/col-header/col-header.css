@@ -2,6 +2,7 @@
  * @component table.col-header
  * @memberOf table
  * @selector th
+ * @a11y Use `<th scope="col">` so each column header is associated with the cells beneath it.
  * @summary A column-header cell (InstUI `Table.ColHeader`); the default `th` styling, overridden by `table.row-header` for `th[scope="row"]`.
  * @structure
  * @component table {

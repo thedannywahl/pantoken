@@ -2,6 +2,7 @@
  * @component list.item
  * @memberOf list
  * @selector .pfx-list > li
+ * @a11y Keep each item a direct `<li>` child of the list so it stays in the list's accessibility tree; delimiters and markers are visual only.
  * @summary A list item (InstUI `List.Item`).
  * @remarks The parent `list`'s `-size-sm`/`-size-lg`, `-ordered`, and `-delimiter-solid`/`-delimiter-dashed` modifiers restyle this member — see `list`'s own doc for those modifiers.
  * @pseudo ::marker — Renders the list bullet or ordered-list number.

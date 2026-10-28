@@ -1,5 +1,6 @@
 /**
  * @component view
+ * @a11y It's a neutral box with no semantics, so use semantic elements or ARIA roles for meaning and keep sufficient contrast between its background, border, and content.
  * @summary The View primitive: a neutral box with key-value modifiers for background, border, radius, shadow, display, position, overflow, and cursor. Every one of these modifiers is also available globally (bare, or chained onto any other component) — see the `background`/`border`/`shadow`/`display`/`position`/`overflow`/`cursor` utilities.
  * @selector .pfx-view
  * @modifier -background-primary — Primary surface background.

@@ -3,6 +3,7 @@
  * @selector .pfx-transition.-transition-fade-entering
  * @modifier -transition-* — Transition type/state class toggled by runtime (`fade|scale|slide-*` + `entering|entered|exiting|exited`).
  * @global
+ * @a11y The classes only animate, so provide a `prefers-reduced-motion` alternative for large movement and don't convey essential state through the transition alone.
  * @summary Animation state classes for the `Transition` component — `.instui-transition` and state classes (`-transition-fade-entering`, `-transition-scale-exited`, etc.) — usable bare or chained onto any component.
  * @cssproperty --duration — Animation duration (default `300ms`); override to speed up or slow down every transition state.
  * @cssproperty --timing — Animation timing function (default `ease-in-out`).

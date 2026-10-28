@@ -2,6 +2,7 @@
  * @component tabs.panel
  * @memberOf tabs
  * @selector .panel
+ * @a11y Give each panel `role="tabpanel"` and an `aria-labelledby` that references its tab, and keep inactive panels `hidden`.
  * @summary The content panel for a tab (InstUI `Tabs.Panel`).
  * @cssstate hidden
  * @structure

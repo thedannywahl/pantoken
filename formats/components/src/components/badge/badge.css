@@ -1,6 +1,7 @@
 /**
  * @component badge
  * @selector .pfx-badge
+ * @a11y The count or dot is visual only, so don't rely on color to carry its meaning; put the status in text, such as visually hidden text or an `aria-label` on the target it decorates.
  * @summary A small count or status dot placed over a target's corner.
  * @modifier -color-success — A positive/complete count.
  * @modifier -color-danger — An attention/error count.

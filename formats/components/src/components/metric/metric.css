@@ -1,6 +1,7 @@
 /**
  * @component metric
  * @selector .pfx-metric
+ * @a11y The `.value` and `.label` are separate elements, so keep them adjacent in source order to read together, and don't convey meaning through size alone.
  * @summary A labelled statistic — a large value over a caption.
  * @remarks Sets its own `gap` between the value and label, and its own horizontal `padding`; chaining a `-gap-*`/`-p-*`/`-padding-*` spacing utility modifier overrides those built-in values.
  * @modifier -text-align-start — Start-align the value and label.

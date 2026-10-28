@@ -1,5 +1,6 @@
 /**
  * @component simple-select
+ * @a11y It's a native `<select>`, so role, keyboard support, and option announcement come from the browser; associate it with a visible `<label>` and convey errors in text, not color alone.
  * @summary A styled native `<select>` with a caret, matching the text-input states and sizes.
  * @remarks Wraps a plain native `<select>` with no custom dropdown/menu markup, so browser-native option rendering and keyboard behavior apply as-is; it shares its field chrome with `text-input`.
  * @selector .pfx-simple-select

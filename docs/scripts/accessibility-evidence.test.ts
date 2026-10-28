@@ -192,7 +192,7 @@ test("renders provenance, separate findings, missing coverage, and escaped data 
   );
 });
 
-test("annotates before consumed tokens, is idempotent, and doesn't borrow another record's evidence", () => {
+test("creates the Accessibility section before consumed tokens, is idempotent, and doesn't borrow another record's evidence", () => {
   const input = fixture();
   const snapshot = importAccessibilityRun(input.directory);
   const page = join(input.directory, "page.md");
@@ -202,10 +202,35 @@ test("annotates before consumed tokens, is idempotent, and doesn't borrow anothe
   const first = readFileSync(page, "utf8");
   expect(first).toContain("Not audited");
   expect(first).not.toContain("| axe-core |");
-  expect(first.indexOf("## Accessibility audit")).toBeLessThan(first.indexOf("## Tokens consumed"));
+  expect(first).not.toContain("## Accessibility audit");
+  expect(first.indexOf("## Accessibility\n")).toBeLessThan(first.indexOf("## Tokens consumed"));
   annotateAccessibility(entries, [page], snapshot);
   expect(readFileSync(page, "utf8")).toBe(first);
   expect(accessibilitySection("toString", snapshot)).toContain("Not audited");
+});
+
+test("appends the audit to an authored Accessibility section without a second header", () => {
+  const input = fixture();
+  const snapshot = importAccessibilityRun(input.directory);
+  const page = join(input.directory, "page.md");
+  writeFileSync(
+    page,
+    "# CSS: button\n\n## Conditions\n\nC\n\n## Accessibility\n\nAuthored guidance.\n\n## Tokens consumed\n\nTokens\n",
+  );
+  const entries = [{ name: "button", kind: "component" }];
+  annotateAccessibility(entries, [page], snapshot);
+  const first = readFileSync(page, "utf8");
+  expect(first.match(/^## Accessibility\s*$/gmu)).toHaveLength(1);
+  expect(first).not.toContain("## Accessibility audit");
+  expect(first.indexOf("Authored guidance.")).toBeLessThan(first.indexOf("| axe-core |"));
+  expect(first.indexOf("| axe-core |")).toBeLessThan(first.indexOf("## Tokens consumed"));
+  annotateAccessibility(entries, [page], snapshot);
+  expect(readFileSync(page, "utf8")).toBe(first);
+  writeFileSync(page, "# CSS: button\n\n## Accessibility\n\nLast section.\n");
+  annotateAccessibility(entries, [page], snapshot);
+  expect(readFileSync(page, "utf8")).toMatch(
+    /Last section\.\n\n<!-- accessibility-audit:start -->/u,
+  );
 });
 
 test("handles pages without tokens and skips unrelated unaudited utilities", () => {
@@ -214,14 +239,14 @@ test("handles pages without tokens and skips unrelated unaudited utilities", () 
   writeFileSync(page, "# CSS: button\n\n## See also\n");
   const snapshot = importAccessibilityRun(input.directory);
   annotateAccessibility([{ name: "button", kind: "component" }], [page], snapshot);
-  expect(readFileSync(page, "utf8").indexOf("## Accessibility audit")).toBeLessThan(
+  expect(readFileSync(page, "utf8").indexOf("## Accessibility\n")).toBeLessThan(
     readFileSync(page, "utf8").indexOf("## See also"),
   );
   writeFileSync(page, "# Rule\n");
   annotateAccessibility([{ name: "base", kind: "rule" }], [page], snapshot);
   expect(readFileSync(page, "utf8")).toBe("# Rule\n");
   annotateAccessibility([{ name: "button", kind: "component" }], [page], snapshot);
-  expect(readFileSync(page, "utf8")).toContain("## Accessibility audit");
+  expect(readFileSync(page, "utf8")).toContain("## Accessibility\n");
   expect(() =>
     annotateAccessibility([{ name: "button", kind: "component" }], [], snapshot),
   ).toThrow("Missing CSS API page");

@@ -2,6 +2,7 @@
  * @component menu.separator
  * @memberOf menu
  * @selector .separator
+ * @a11y Give the divider `role="separator"` so assistive technology can announce the break between items; without it the rule is purely decorative.
  * @summary A divider rule between items (InstUI `Menu.Separator`).
  * @structure
  * @component menu {

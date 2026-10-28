@@ -1,5 +1,6 @@
 /**
  * @component text-area
+ * @a11y Associate the field with a visible `<label>`, use `aria-invalid` and `disabled` for state, and explain errors in text, not border color alone.
  * @summary A styled, resizable native `<textarea>` with the same states and sizes as the text input.
  * @remarks Shares its border, background, and focus states with `text-input` and `simple-select`; only `resize: vertical` and the taller minimum height are unique to it.
  * @selector .pfx-text-area

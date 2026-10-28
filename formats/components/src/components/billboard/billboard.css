@@ -1,5 +1,6 @@
 /**
  * @component billboard
+ * @a11y Render the `.heading` as a real heading element. A `-clickable` billboard only gains hover styling, so give it `tabindex="0"`, an appropriate role, and a keyboard handler.
  * @summary A large empty-state or call-to-action block: a hero icon or image, a heading, and a message.
  * @remarks The `.hero`/`.heading`/`.message` parts are composed by the consumer's markup, not enforced structure; `-clickable` only adds hover styling, so a real click target still needs `tabindex` and a keyboard handler.
  * @modifier -clickable — Interactive (clickable) styling with hover feedback.

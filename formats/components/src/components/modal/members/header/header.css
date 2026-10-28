@@ -2,6 +2,7 @@
  * @component modal.header
  * @memberOf modal
  * @selector .header
+ * @a11y Render the title as a real heading and point the dialog's `aria-labelledby` at it so the dialog is announced with its name.
  * @summary The title row (InstUI `Modal.Header`).
  * @remarks The parent `modal`'s `-density-compact` and `-color-inverse` modifiers restyle this member — see `modal`'s own doc for those modifiers.
  * @structure

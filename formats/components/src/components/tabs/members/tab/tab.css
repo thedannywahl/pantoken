@@ -2,6 +2,7 @@
  * @component tabs.tab
  * @memberOf tabs
  * @selector .tab
+ * @a11y Use `role="tab"` inside a `role="tablist"`, mirror `-selected` with `aria-selected`, point `aria-controls` at the panel, and mark a disabled tab with `aria-disabled` or the native `disabled`.
  * @summary A single tab button (InstUI `Tabs.Tab`, configured via the parent `Tabs`'s tab list); `-selected` marks the active one.
  * @modifier -selected — The active tab; same styling as `[aria-selected="true"]`.
  * @modifier -disabled — Non-interactive; same styling as `[aria-disabled="true"]`/`:disabled`.
