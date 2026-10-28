@@ -12,7 +12,7 @@ export function ns(prefix: string): string {
   return prefix ? `${prefix}-` : "";
 }
 
-/** Swap every {@link SENTINEL} in `text` for the namespace of `prefix`. */
+/** Swap every `pfx-` sentinel in `text` for the namespace of `prefix` (default `"instui"`). */
 export function withPrefix(text: string, prefix: string = DEFAULT_PREFIX): string {
   return text.split(SENTINEL).join(ns(prefix));
 }
