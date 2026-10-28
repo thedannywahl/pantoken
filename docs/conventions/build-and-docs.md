@@ -50,6 +50,35 @@ The supported matrix has four combinations: rebrand light/dark, Canvas light, an
 Contrast light. Canvas themes don't support dark mode. Older raw reports retain their unsupported
 Canvas dark cases as historical evidence; don't count those cases as supported product coverage.
 
+### Results on component API pages
+
+Generated component pages include an **Accessibility audit** section before **Tokens consumed**.
+The docs build reads a checked-in snapshot at `docs/public/accessibility/results.json`; it doesn't
+run a browser or select whichever local audit happens to be newest. A component without evidence
+shows **Not audited**, including plugin components outside the core audit inventory.
+
+Refresh that snapshot explicitly from a complete audit run at the repository root:
+
+```sh
+vp exec node docs/scripts/accessibility-evidence.ts a11y-report/<run>
+vp run @pantoken/docs#docs:api:css
+```
+
+Commit the snapshot with the implementation and Changeset. The importer validates expected target
+inventories and execution, retains separate axe/IBM counts, review rule IDs, condition failures,
+undetermined results, simulated flags, missing tiers, browser warnings, dates, tool versions, and
+SHA-256 digests of the original results files. It excludes historical unsupported Canvas dark
+cases without editing raw evidence. The download is a compact summary, not the original tool report.
+Keep the original `a11y-report/<run>/` files or CI artifact for investigation.
+
+The current snapshot comes from `2026-10-28T02-50-41.851Z`. Its page assets predate the final
+forced-color painter fixes, and that run didn't record an exact source revision. The API section
+labels it historical evidence, not verification of the current code. Refreshing evidence is explicit;
+a code change alone doesn't update or validate these results. Never turn missing evidence into a
+pass or publish a combined engine score. Page/npm evidence and supplemental-state coverage differ.
+Static section strings live in `docs/.vitepress/i18n.ts`; generated prose uses the existing API
+glossary/prose translation pipeline. Translation synchronization is still required before merging.
+
 The `component-accessibility` CI job runs this command after the build and stays outside
 `ci-gate`. It's advisory even when setup or execution fails; such a failure isn't a clean audit.
 The job always attempts to publish a summary and upload `component-accessibility` evidence

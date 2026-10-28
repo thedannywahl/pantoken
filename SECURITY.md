@@ -28,6 +28,9 @@ pantoken is a design-token transformation and distribution system. It converts I
   bundles through automatica11y and Chrome/Chromium. They aren't a sandbox for untrusted fixtures
   or a sanitizer. Reports may contain example markup and simulated screen-reader output; don't put
   secrets in examples. Automated accessibility findings aren't a security or WCAG attestation.
+  API documentation publishes an explicitly imported, reviewed summary from local reports.
+  The importer validates inventories and counts and escapes report-derived Markdown text; it isn't
+  an untrusted-report upload service. Snapshots can lag source changes and aren't build attestations.
 
 - Token values, plugin implementations, configuration files, Markdown, HTML, and other caller-provided content must be treated as trusted input unless the relevant package explicitly documents otherwise.
 - pantoken emitters transform input into CSS, JavaScript, JSON, markup, or platform source. They are not a general-purpose sanitizer for untrusted input. Passing attacker-controlled values to an emitter or plugin may produce unsafe output, including CSS, markup, or code injection.

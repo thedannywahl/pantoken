@@ -7,6 +7,40 @@ import type { GetStartedTabsStrings } from "./theme/get-started.ts";
 import type { RegistryBrowserStrings } from "./theme/registry.ts";
 import { loadConfig, resolveMessagesForLocale, resolveTier } from "@pantoken/i18n-engine";
 
+/** Generated CSS API prose enters the existing glossary/prose API translation pipeline. */
+export const ACCESSIBILITY_AUDIT_STRINGS = {
+  heading: "Accessibility audit",
+  notAudited:
+    "Not audited: no checked-in evidence covers this record. Results from other components don't establish coverage for this one.",
+  snapshot:
+    "Historical automated evidence for authored examples, not a verdict on this component or verification of the current code. Settings: WCAG 2.2 AA. Library accessibility option: n/a.",
+  supported:
+    "Supported schemes: rebrand light/dark, Canvas light, and Canvas High Contrast light. Unsupported historical Canvas dark cases are excluded.",
+  provenance:
+    "The original run didn't record an exact source revision. Later fixes aren't included unless the evidence is refreshed. Dates, tool versions, original run IDs, and results-file SHA-256 digests are retained in the downloadable evidence.",
+  download: "Download audit evidence (JSON)",
+  theme: "Theme",
+  scheme: "Scheme",
+  evidence: "Evidence",
+  configurations: "Configurations",
+  tiers: "Tier execution",
+  page: "Authored page",
+  npm: "Authored npm fixture",
+  engine: "Engine",
+  violations: "Violations",
+  reviews: "Needs review",
+  reviewNote:
+    "Engine counts are separate and may overlap. Review entries need human assessment; zero violations isn't a conformance claim.",
+  checks: "Checks",
+  simulatedFlags: "Simulated screen-reader flags",
+  limitations:
+    "Page and npm evidence aren't equivalent. Missing tiers, undetermined checks, and not-applicable results aren't passes. Supplemental npm states may lack interaction, computed, and condition checks. Simulated screen-reader output isn't real assistive technology. Automated checks can't judge meaningful labels, reading order in real use, all visual overlap, or JavaScript-driven motion.",
+  details: "Evidence details and review items",
+  tools: "Tools",
+  caveat:
+    "These automated results do not establish that the page meets WCAG; manual review is still needed.",
+} as const;
+
 /**
  * Every locale the docs site builds: `root` (English) plus every non-`en` locale from
  * `@pantoken/web-components`'s `LOCALES` (44 BCP47 tags — `en` is dropped since `root` already covers

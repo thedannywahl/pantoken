@@ -45,6 +45,8 @@ docs/.vitepress/build-timings.json
 docs/public/
 !docs/public/
 docs/public/*
+!docs/public/accessibility/
+!docs/public/accessibility/results.json
 !docs/public/logo-dark.svg
 !docs/public/logo-light.svg
 # Static (non-generated) site assets: favicons and the home-page feature icons. Nothing regenerates

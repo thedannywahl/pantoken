@@ -25,6 +25,8 @@ import { makeResolver, unknownReferences } from "@pantoken/utils";
 import { BESPOKE_SYNTAX } from "@pantoken/utils/token-syntax";
 import capabilities from "@pantoken/interactions/component-capabilities.json" with { type: "json" };
 import { BADGE_CLASS_BY_LABEL } from "./api-badge-classes.ts";
+import accessibilitySnapshot from "../public/accessibility/results.json" with { type: "json" };
+import { annotateAccessibility, loadAccessibilitySnapshot } from "./accessibility-evidence.ts";
 
 const docsRoot = join(import.meta.dirname, "..");
 
@@ -696,6 +698,7 @@ export const build = (): void => {
 
   writeCssIndexBlurb(outSubdir);
   annotateJsRequirement(entries, pages);
+  annotateAccessibility(entries, pages, loadAccessibilitySnapshot(accessibilitySnapshot));
 
   // `@cssdoc/markdown` keeps `@example` as a plain code fence (generic — it can't assume the host loads
   // the component CSS). Our docs do, so `demoMarkdownIt` seams a live preview onto each fence at compile

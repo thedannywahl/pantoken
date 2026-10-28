@@ -29,6 +29,11 @@ vi.mock("@pantoken/utils", () => ({ makeResolver, unknownReferences, BESPOKE_SYN
 vi.mock("@cssdoc/config", () => ({
   CssDocConfigFile: { loadForFolder: () => ({ toConfiguration: () => ({}) }) },
 }));
+const annotateAccessibility = vi.fn();
+vi.mock("./accessibility-evidence.ts", () => ({
+  annotateAccessibility,
+  loadAccessibilitySnapshot: (value: unknown) => value,
+}));
 
 let logSpy: ReturnType<typeof vi.spyOn>;
 
@@ -77,6 +82,7 @@ test("build wires the sheets into emitCssApi and writes the index blurb", async 
   // The index-blurb prepend wrote the index.md back.
   expect(writeFileSync).toHaveBeenCalled();
   expect(logSpy.mock.calls.flat().map(String).join("\n")).toContain("CSS API: wrote");
+  expect(annotateAccessibility).toHaveBeenCalledOnce();
 });
 
 test("build throws when the sheets reference an unknown token", async () => {
