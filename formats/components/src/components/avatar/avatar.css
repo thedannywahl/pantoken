@@ -32,6 +32,7 @@
  * @part .first-name — Optional (pairs with .last-name): wraps the given name, clipped to its leading letter.
  * @part .last-name — Optional (pairs with .first-name): wraps the family name, clipped to its leading letter.
  * @a11y Give an image avatar a meaningful `alt` (the person's name), not a generic "avatar"; for initials-only avatars, prefer real name content (bare text, data-initials, .name, or .first-name/.last-name) over pre-abbreviated letters, so assistive tech announces the real name.
+ * @a11y The name parts intentionally clip full names to leading letters. Keep the full text in the markup; when identifying text must also be visible, show the full name alongside the avatar.
  * @example -canvas-rce -docs
  * ```html
  * <span class="pfx-avatar --me-sm">LH</span>
