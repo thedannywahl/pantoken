@@ -1,0 +1,91 @@
+still failing:
+Statistics:   13 tasks • 9 cache hits • 4 cache misses • 4 failed
+Performance:  69% cache hit rate, 11.68s saved in total
+
+Task Details:
+────────────────────────────────────────────────
+  [1] @pantoken/demo#build: ~/tools/demo$ vp pack ✓
+      → Cache hit - output replayed - 1.06s saved
+  ·······················································
+  [2] @pantoken/demo#build: ~/tools/demo$ vp build -c vite.runner.config.ts ✓
+      → Cache hit - output replayed - 1.90s saved
+  ·······················································
+  [3] @pantoken/cssdoc-model#build: ~/tools/cssdoc-model$ vp pack ✓
+      → Cache hit - output replayed - 1.98s saved
+  ·······················································
+  [4] @pantoken/scaffold-base#generate: ~/packages/scaffold-base$ node scripts/generate.ts ✓
+      → Cache hit - output replayed - 163ms saved
+  ·······················································
+  [5] @pantoken/scaffold-base#build: ~/packages/scaffold-base$ vp pack ✓
+      → Cache hit - output replayed - 1.70s saved
+  ·······················································
+  [6] @pantoken/core#build: ~/packages/core$ vp pack ✓
+      → Cache hit - output replayed - 1.16s saved
+  ·······················································
+  [7] @pantoken/model#build: ~/packages/model$ vp pack ✓
+      → Cache hit - output replayed - 1.97s saved
+  ·······················································
+  [8] @pantoken/plugin-deprecations#build: ~/plugins/pantoken/deprecations$ vp pack ✓
+      → Cache hit - output replayed - 1.04s saved
+  ·······················································
+  [9] @pantoken/icons#build: ~/formats/icons$ vp pack ✓
+      → Cache hit - output replayed - 707ms saved
+  ·······················································
+  [10] @pantoken/css#generate: ~/formats/css$ node scripts/generate.ts ✗ (exit code: 1)
+      → Cache miss: 'index.mjs' removed from 'formats/css/node_modules/@pantoken/plugin-props-minify/dist'
+  ·······················································
+  [11] @pantoken/plugin-theme-custom-media#build: ~/plugins/postcss/theme-custom-media$ vp pack ✗ (exit code: 137)
+      → Cache miss: 'accessibility-evidence.ts.html' removed from 'coverage/lcov-report'
+  ·······················································
+  [12] @pantoken/utils#build: ~/packages/utils$ vp pack ✗ (exit code: 137)
+      → Cache miss: 'build-config.test.ts' added in 'formats/interactions/tests'
+  ·······················································
+  [13] @pantoken/plugin-props-minify#build: ~/plugins/postcss/props-minify$ vp pack ✗ (exit code: 137)
+      → Cache miss: 'index.d.mts' removed from 'plugins/postcss/theme-custom-media/dist'
+
+---
+
+still failing:
+Statistics:   13 tasks • 9 cache hits • 4 cache misses • 4 failed
+Performance:  69% cache hit rate, 11.68s saved in total
+
+Task Details:
+────────────────────────────────────────────────
+  [1] @pantoken/demo#build: ~/tools/demo$ vp pack ✓
+      → Cache hit - output replayed - 1.06s saved
+  ·······················································
+  [2] @pantoken/demo#build: ~/tools/demo$ vp build -c vite.runner.config.ts ✓
+      → Cache hit - output replayed - 1.90s saved
+  ·······················································
+  [3] @pantoken/cssdoc-model#build: ~/tools/cssdoc-model$ vp pack ✓
+      → Cache hit - output replayed - 1.98s saved
+  ·······················································
+  [4] @pantoken/scaffold-base#generate: ~/packages/scaffold-base$ node scripts/generate.ts ✓
+      → Cache hit - output replayed - 163ms saved
+  ·······················································
+  [5] @pantoken/scaffold-base#build: ~/packages/scaffold-base$ vp pack ✓
+      → Cache hit - output replayed - 1.70s saved
+  ·······················································
+  [6] @pantoken/core#build: ~/packages/core$ vp pack ✓
+      → Cache hit - output replayed - 1.16s saved
+  ·······················································
+  [7] @pantoken/model#build: ~/packages/model$ vp pack ✓
+      → Cache hit - output replayed - 1.97s saved
+  ·······················································
+  [8] @pantoken/plugin-deprecations#build: ~/plugins/pantoken/deprecations$ vp pack ✓
+      → Cache hit - output replayed - 1.04s saved
+  ·······················································
+  [9] @pantoken/icons#build: ~/formats/icons$ vp pack ✓
+      → Cache hit - output replayed - 707ms saved
+  ·······················································
+  [10] @pantoken/css#generate: ~/formats/css$ node scripts/generate.ts ✗ (exit code: 1)
+      → Cache miss: 'index.mjs' removed from 'formats/css/node_modules/@pantoken/plugin-props-minify/dist'
+  ·······················································
+  [11] @pantoken/plugin-theme-custom-media#build: ~/plugins/postcss/theme-custom-media$ vp pack ✗ (exit code: 137)
+      → Cache miss: 'accessibility-evidence.ts.html' removed from 'coverage/lcov-report'
+  ·······················································
+  [12] @pantoken/utils#build: ~/packages/utils$ vp pack ✗ (exit code: 137)
+      → Cache miss: 'build-config.test.ts' added in 'formats/interactions/tests'
+  ·······················································
+  [13] @pantoken/plugin-props-minify#build: ~/plugins/postcss/props-minify$ vp pack ✗ (exit code: 137)
+      → Cache miss: 'index.d.mts' removed from 'plugins/postcss/theme-custom-media/dist'
