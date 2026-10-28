@@ -226,6 +226,20 @@ Add your behavior to the skip list if you're hand-authoring:
 const SKIP = ["modal", "tooltip", "in-place-edit", "close-button"];
 ```
 
+### Class prefix
+
+Entry points never hard-code `instui-`. Author selectors with the `pfx-` sentinel (`.pfx-button`) and
+resolve them through `sel()` from `src/shared/prefix.ts`, which swaps the sentinel for the active
+prefix at runtime (`""` yields an unprefixed `.button`). The IIFE reads its prefix from the loading
+script's `data-prefix` attribute, then `globalThis.PANTOKEN_PREFIX`, then the `instui` default:
+
+```html
+<script src=".../interactions.iife.js" data-prefix="acme"></script>
+```
+
+Behaviors that touch prefixed classes (`initCloseButton`, `initRemove`) take a `prefix` option
+instead. Token custom properties (`--instui-*`) aren't prefix-swapped, matching `@pantoken/components`.
+
 ### Hand-authored entries
 
 For behaviors that need custom entry logic:

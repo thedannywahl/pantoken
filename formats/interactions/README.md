@@ -27,6 +27,20 @@ Each bundle auto-initializes on load:
 <button class="instui-button" margin="md">Click me</button>
 ```
 
+## Custom class prefix
+
+If you built `@pantoken/components` with a custom prefix (or none), tell the bundle with
+`data-prefix` on its script tag, or set `window.PANTOKEN_PREFIX` before it loads. An empty value
+means unprefixed classes. Manual APIs such as `initCloseButton` and `initRemove` take a `prefix`
+option.
+
+```html
+<script
+  src="https://cdn.jsdelivr.net/npm/@pantoken/interactions/dist/button.iife.js"
+  data-prefix="acme"
+></script>
+```
+
 ## Interactions
 
 - **Spacing**: Applies InstUI spacing keywords (e.g., `margin="md"`, `padding="sm"`) to elements
