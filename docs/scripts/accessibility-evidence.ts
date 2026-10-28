@@ -192,7 +192,14 @@ function addAxeDetails(row: AccessibilityEvidence, axe: Record<string, unknown>)
       }
       increment(detail.counts, result);
       const help = typeof item.help === "string" ? item.help : "";
-      if (help && !detail.notes.includes(help)) detail.notes.push(help);
+      const selectors = array(item.nodes ?? [])
+        .map((node) => object(node).selector)
+        .filter((selector): selector is string => typeof selector === "string")
+        .slice(0, 3);
+      const note = [help, selectors.length ? `Affected: ${selectors.join(", ")}` : ""]
+        .filter(Boolean)
+        .join(". ");
+      if (note && !detail.notes.includes(note)) detail.notes.push(note);
     }
   }
 }

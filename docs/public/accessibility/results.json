@@ -1705,7 +1705,9 @@
             "counts": {
               "undetermined": 1
             },
-            "notes": ["Elements must meet minimum color contrast ratio thresholds"]
+            "notes": [
+              "Elements must meet minimum color contrast ratio thresholds. Affected: .-color-ai"
+            ]
           },
           {
             "tier": "conditions",
@@ -1868,7 +1870,9 @@
             "counts": {
               "undetermined": 1
             },
-            "notes": ["Elements must meet minimum color contrast ratio thresholds"]
+            "notes": [
+              "Elements must meet minimum color contrast ratio thresholds. Affected: .-color-ai"
+            ]
           },
           {
             "tier": "conditions",
@@ -2031,7 +2035,9 @@
             "counts": {
               "undetermined": 1
             },
-            "notes": ["Elements must meet minimum color contrast ratio thresholds"]
+            "notes": [
+              "Elements must meet minimum color contrast ratio thresholds. Affected: .-color-ai"
+            ]
           },
           {
             "tier": "conditions",
@@ -2194,7 +2200,9 @@
             "counts": {
               "undetermined": 1
             },
-            "notes": ["Elements must meet minimum color contrast ratio thresholds"]
+            "notes": [
+              "Elements must meet minimum color contrast ratio thresholds. Affected: .-color-ai"
+            ]
           },
           {
             "tier": "conditions",
@@ -6367,7 +6375,9 @@
             "counts": {
               "undetermined": 1
             },
-            "notes": ["Elements must meet minimum color contrast ratio thresholds"]
+            "notes": [
+              "Elements must meet minimum color contrast ratio thresholds. Affected: .title"
+            ]
           },
           {
             "tier": "conditions",
@@ -6519,7 +6529,9 @@
             "counts": {
               "undetermined": 1
             },
-            "notes": ["Elements must meet minimum color contrast ratio thresholds"]
+            "notes": [
+              "Elements must meet minimum color contrast ratio thresholds. Affected: .title"
+            ]
           },
           {
             "tier": "conditions",
@@ -6674,7 +6686,9 @@
             "counts": {
               "undetermined": 1
             },
-            "notes": ["Elements must only use permitted ARIA attributes"]
+            "notes": [
+              "Elements must only use permitted ARIA attributes. Affected: .instui-calendar"
+            ]
           },
           {
             "tier": "rules",
@@ -6683,7 +6697,9 @@
             "counts": {
               "undetermined": 1
             },
-            "notes": ["Elements must meet minimum color contrast ratio thresholds"]
+            "notes": [
+              "Elements must meet minimum color contrast ratio thresholds. Affected: .weekday"
+            ]
           },
           {
             "tier": "conditions",
@@ -6836,7 +6852,9 @@
             "counts": {
               "undetermined": 1
             },
-            "notes": ["Elements must only use permitted ARIA attributes"]
+            "notes": [
+              "Elements must only use permitted ARIA attributes. Affected: .instui-calendar"
+            ]
           },
           {
             "tier": "rules",
@@ -6845,7 +6863,9 @@
             "counts": {
               "undetermined": 1
             },
-            "notes": ["Elements must meet minimum color contrast ratio thresholds"]
+            "notes": [
+              "Elements must meet minimum color contrast ratio thresholds. Affected: .weekday"
+            ]
           },
           {
             "tier": "conditions",
@@ -6998,7 +7018,9 @@
             "counts": {
               "undetermined": 1
             },
-            "notes": ["Elements must only use permitted ARIA attributes"]
+            "notes": [
+              "Elements must only use permitted ARIA attributes. Affected: .instui-calendar"
+            ]
           },
           {
             "tier": "rules",
@@ -7007,7 +7029,9 @@
             "counts": {
               "undetermined": 1
             },
-            "notes": ["Elements must meet minimum color contrast ratio thresholds"]
+            "notes": [
+              "Elements must meet minimum color contrast ratio thresholds. Affected: .weekday"
+            ]
           },
           {
             "tier": "conditions",
@@ -7160,7 +7184,9 @@
             "counts": {
               "undetermined": 1
             },
-            "notes": ["Elements must only use permitted ARIA attributes"]
+            "notes": [
+              "Elements must only use permitted ARIA attributes. Affected: .instui-calendar"
+            ]
           },
           {
             "tier": "rules",
@@ -7169,7 +7195,9 @@
             "counts": {
               "undetermined": 1
             },
-            "notes": ["Elements must meet minimum color contrast ratio thresholds"]
+            "notes": [
+              "Elements must meet minimum color contrast ratio thresholds. Affected: .weekday"
+            ]
           },
           {
             "tier": "conditions",
@@ -7324,7 +7352,9 @@
             "counts": {
               "undetermined": 1
             },
-            "notes": ["Elements must only use permitted ARIA attributes"]
+            "notes": [
+              "Elements must only use permitted ARIA attributes. Affected: .instui-calendar"
+            ]
           },
           {
             "tier": "rules",
@@ -7333,7 +7363,9 @@
             "counts": {
               "undetermined": 1
             },
-            "notes": ["Elements must meet minimum color contrast ratio thresholds"]
+            "notes": [
+              "Elements must meet minimum color contrast ratio thresholds. Affected: .weekday"
+            ]
           },
           {
             "tier": "conditions",
@@ -7486,7 +7518,9 @@
             "counts": {
               "undetermined": 1
             },
-            "notes": ["Elements must only use permitted ARIA attributes"]
+            "notes": [
+              "Elements must only use permitted ARIA attributes. Affected: .instui-calendar"
+            ]
           },
           {
             "tier": "rules",
@@ -7495,7 +7529,9 @@
             "counts": {
               "undetermined": 1
             },
-            "notes": ["Elements must meet minimum color contrast ratio thresholds"]
+            "notes": [
+              "Elements must meet minimum color contrast ratio thresholds. Affected: .weekday"
+            ]
           },
           {
             "tier": "conditions",
@@ -7648,7 +7684,9 @@
             "counts": {
               "undetermined": 1
             },
-            "notes": ["Elements must only use permitted ARIA attributes"]
+            "notes": [
+              "Elements must only use permitted ARIA attributes. Affected: .instui-calendar"
+            ]
           },
           {
             "tier": "rules",
@@ -7657,7 +7695,9 @@
             "counts": {
               "undetermined": 1
             },
-            "notes": ["Elements must meet minimum color contrast ratio thresholds"]
+            "notes": [
+              "Elements must meet minimum color contrast ratio thresholds. Affected: .weekday"
+            ]
           },
           {
             "tier": "conditions",
@@ -7810,7 +7850,9 @@
             "counts": {
               "undetermined": 1
             },
-            "notes": ["Elements must only use permitted ARIA attributes"]
+            "notes": [
+              "Elements must only use permitted ARIA attributes. Affected: .instui-calendar"
+            ]
           },
           {
             "tier": "rules",
@@ -7819,7 +7861,9 @@
             "counts": {
               "undetermined": 1
             },
-            "notes": ["Elements must meet minimum color contrast ratio thresholds"]
+            "notes": [
+              "Elements must meet minimum color contrast ratio thresholds. Affected: .weekday"
+            ]
           },
           {
             "tier": "conditions",
@@ -14090,7 +14134,9 @@
             "counts": {
               "undetermined": 1
             },
-            "notes": ["Elements must meet minimum color contrast ratio thresholds"]
+            "notes": [
+              "Elements must meet minimum color contrast ratio thresholds. Affected: #audit-email-label"
+            ]
           },
           {
             "tier": "conditions",
@@ -14325,7 +14371,9 @@
             "counts": {
               "undetermined": 1
             },
-            "notes": ["Elements must meet minimum color contrast ratio thresholds"]
+            "notes": [
+              "Elements must meet minimum color contrast ratio thresholds. Affected: #audit-email-label"
+            ]
           },
           {
             "tier": "conditions",
@@ -14553,7 +14601,9 @@
             "counts": {
               "undetermined": 1
             },
-            "notes": ["Elements must meet minimum color contrast ratio thresholds"]
+            "notes": [
+              "Elements must meet minimum color contrast ratio thresholds. Affected: select"
+            ]
           },
           {
             "tier": "conditions",
@@ -14707,7 +14757,9 @@
             "counts": {
               "undetermined": 1
             },
-            "notes": ["Elements must meet minimum color contrast ratio thresholds"]
+            "notes": [
+              "Elements must meet minimum color contrast ratio thresholds. Affected: select"
+            ]
           },
           {
             "tier": "conditions",
@@ -14861,7 +14913,9 @@
             "counts": {
               "undetermined": 1
             },
-            "notes": ["Elements must meet minimum color contrast ratio thresholds"]
+            "notes": [
+              "Elements must meet minimum color contrast ratio thresholds. Affected: select"
+            ]
           },
           {
             "tier": "conditions",
@@ -15015,7 +15069,9 @@
             "counts": {
               "undetermined": 1
             },
-            "notes": ["Elements must meet minimum color contrast ratio thresholds"]
+            "notes": [
+              "Elements must meet minimum color contrast ratio thresholds. Affected: select"
+            ]
           },
           {
             "tier": "conditions",
@@ -21706,7 +21762,7 @@
             "counts": {
               "undetermined": 1
             },
-            "notes": ["ARIA attributes must conform to valid values"]
+            "notes": ["ARIA attributes must conform to valid values. Affected: .instui-button"]
           },
           {
             "tier": "conditions",
@@ -21859,7 +21915,7 @@
             "counts": {
               "undetermined": 1
             },
-            "notes": ["ARIA attributes must conform to valid values"]
+            "notes": ["ARIA attributes must conform to valid values. Affected: .instui-button"]
           },
           {
             "tier": "conditions",
@@ -22012,7 +22068,7 @@
             "counts": {
               "undetermined": 1
             },
-            "notes": ["ARIA attributes must conform to valid values"]
+            "notes": ["ARIA attributes must conform to valid values. Affected: .instui-button"]
           },
           {
             "tier": "conditions",
@@ -22165,7 +22221,7 @@
             "counts": {
               "undetermined": 1
             },
-            "notes": ["ARIA attributes must conform to valid values"]
+            "notes": ["ARIA attributes must conform to valid values. Affected: .instui-button"]
           },
           {
             "tier": "conditions",
@@ -22339,7 +22395,7 @@
             "counts": {
               "undetermined": 2
             },
-            "notes": ["ARIA attributes must conform to valid values"]
+            "notes": ["ARIA attributes must conform to valid values. Affected: .instui-button"]
           },
           {
             "tier": "conditions",
@@ -22594,7 +22650,7 @@
             "counts": {
               "undetermined": 2
             },
-            "notes": ["ARIA attributes must conform to valid values"]
+            "notes": ["ARIA attributes must conform to valid values. Affected: .instui-button"]
           },
           {
             "tier": "conditions",
@@ -22849,7 +22905,7 @@
             "counts": {
               "undetermined": 2
             },
-            "notes": ["ARIA attributes must conform to valid values"]
+            "notes": ["ARIA attributes must conform to valid values. Affected: .instui-button"]
           },
           {
             "tier": "conditions",
@@ -23104,7 +23160,7 @@
             "counts": {
               "undetermined": 2
             },
-            "notes": ["ARIA attributes must conform to valid values"]
+            "notes": ["ARIA attributes must conform to valid values. Affected: .instui-button"]
           },
           {
             "tier": "conditions",
@@ -23340,7 +23396,7 @@
             "counts": {
               "undetermined": 1
             },
-            "notes": ["ARIA attributes must conform to valid values"]
+            "notes": ["ARIA attributes must conform to valid values. Affected: .instui-button"]
           },
           {
             "tier": "conditions",
@@ -23493,7 +23549,7 @@
             "counts": {
               "undetermined": 1
             },
-            "notes": ["ARIA attributes must conform to valid values"]
+            "notes": ["ARIA attributes must conform to valid values. Affected: .instui-button"]
           },
           {
             "tier": "conditions",
@@ -23647,7 +23703,7 @@
             "counts": {
               "undetermined": 1
             },
-            "notes": ["ARIA attributes must conform to valid values"]
+            "notes": ["ARIA attributes must conform to valid values. Affected: .instui-button"]
           },
           {
             "tier": "conditions",
@@ -23801,7 +23857,7 @@
             "counts": {
               "undetermined": 1
             },
-            "notes": ["ARIA attributes must conform to valid values"]
+            "notes": ["ARIA attributes must conform to valid values. Affected: .instui-button"]
           },
           {
             "tier": "conditions",
@@ -23956,7 +24012,7 @@
             "counts": {
               "undetermined": 1
             },
-            "notes": ["ARIA attributes must conform to valid values"]
+            "notes": ["ARIA attributes must conform to valid values. Affected: .instui-button"]
           },
           {
             "tier": "conditions",
@@ -24109,7 +24165,7 @@
             "counts": {
               "undetermined": 1
             },
-            "notes": ["ARIA attributes must conform to valid values"]
+            "notes": ["ARIA attributes must conform to valid values. Affected: .instui-button"]
           },
           {
             "tier": "conditions",
@@ -24262,7 +24318,7 @@
             "counts": {
               "undetermined": 1
             },
-            "notes": ["ARIA attributes must conform to valid values"]
+            "notes": ["ARIA attributes must conform to valid values. Affected: .instui-button"]
           },
           {
             "tier": "conditions",
@@ -24415,7 +24471,7 @@
             "counts": {
               "undetermined": 1
             },
-            "notes": ["ARIA attributes must conform to valid values"]
+            "notes": ["ARIA attributes must conform to valid values. Affected: .instui-button"]
           },
           {
             "tier": "conditions",
@@ -24571,7 +24627,7 @@
             "counts": {
               "undetermined": 1
             },
-            "notes": ["ARIA attributes must conform to valid values"]
+            "notes": ["ARIA attributes must conform to valid values. Affected: .instui-button"]
           },
           {
             "tier": "conditions",
@@ -24725,7 +24781,7 @@
             "counts": {
               "undetermined": 1
             },
-            "notes": ["ARIA attributes must conform to valid values"]
+            "notes": ["ARIA attributes must conform to valid values. Affected: .instui-button"]
           },
           {
             "tier": "conditions",
@@ -24879,7 +24935,7 @@
             "counts": {
               "undetermined": 1
             },
-            "notes": ["ARIA attributes must conform to valid values"]
+            "notes": ["ARIA attributes must conform to valid values. Affected: .instui-button"]
           },
           {
             "tier": "conditions",
@@ -25033,7 +25089,7 @@
             "counts": {
               "undetermined": 1
             },
-            "notes": ["ARIA attributes must conform to valid values"]
+            "notes": ["ARIA attributes must conform to valid values. Affected: .instui-button"]
           },
           {
             "tier": "conditions",
@@ -36993,7 +37049,9 @@
             "counts": {
               "undetermined": 1
             },
-            "notes": ["Elements must meet minimum color contrast ratio thresholds"]
+            "notes": [
+              "Elements must meet minimum color contrast ratio thresholds. Affected: select"
+            ]
           },
           {
             "tier": "conditions",
@@ -37147,7 +37205,9 @@
             "counts": {
               "undetermined": 1
             },
-            "notes": ["Elements must meet minimum color contrast ratio thresholds"]
+            "notes": [
+              "Elements must meet minimum color contrast ratio thresholds. Affected: select"
+            ]
           },
           {
             "tier": "conditions",
@@ -37301,7 +37361,9 @@
             "counts": {
               "undetermined": 1
             },
-            "notes": ["Elements must meet minimum color contrast ratio thresholds"]
+            "notes": [
+              "Elements must meet minimum color contrast ratio thresholds. Affected: select"
+            ]
           },
           {
             "tier": "conditions",
@@ -37455,7 +37517,9 @@
             "counts": {
               "undetermined": 1
             },
-            "notes": ["Elements must meet minimum color contrast ratio thresholds"]
+            "notes": [
+              "Elements must meet minimum color contrast ratio thresholds. Affected: select"
+            ]
           },
           {
             "tier": "conditions",
