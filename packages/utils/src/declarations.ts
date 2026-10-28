@@ -138,5 +138,10 @@ export function focusOutlineRules(selector: string = FOCUSABLE_SELECTOR): string
     `  border-radius: var(--instui-focus-outline-radius);`,
     `}`,
     `:where(.-without-focus-animation) { transition: none; }`,
+    `@media (forced-colors: active) {`,
+    `  :where(${selector}) { outline-style: none; }`,
+    `  :where(${selector}):where(:focus-visible),`,
+    `  :where(.-focus-within):where(:focus-within) { outline-style: var(--instui-focus-outline-style); }`,
+    `}`,
   ].join("\n");
 }
