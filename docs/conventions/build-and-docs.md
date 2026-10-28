@@ -46,6 +46,10 @@ the same semantic example. Keep the report's authored-fixture provenance and bro
 Each npm report batch gets its own mapping; automatica11y rejects mapping entries for targets
 outside that invocation.
 
+The supported matrix has four combinations: rebrand light/dark, Canvas light, and Canvas High
+Contrast light. Canvas themes don't support dark mode. Older raw reports retain their unsupported
+Canvas dark cases as historical evidence; don't count those cases as supported product coverage.
+
 The `component-accessibility` CI job runs this command after the build and stays outside
 `ci-gate`. It's advisory even when setup or execution fails; such a failure isn't a clean audit.
 The job always attempts to publish a summary and upload `component-accessibility` evidence

@@ -12,6 +12,7 @@ import { resolveExampleTargets, stripExampleMetadata } from "@pantoken/utils/exa
 import { Window } from "happy-dom";
 import { COMPONENTS } from "../src/components/index.ts";
 import { focus } from "../src/declarations/focus/index.ts";
+import { AUDIT_MATRIX } from "./audit-matrix.ts";
 import {
   loadWorkspacePackages,
   type WorkspacePackages,
@@ -120,17 +121,15 @@ export function collectExamples(
   return examples;
 }
 
-/** Expand every example over all shipped themes and both explicitly forced schemes. */
+/** Expand every example over supported theme/scheme combinations. */
 export function expandCases(examples: readonly AuditExample[]): AuditCase[] {
-  return ["rebrand", "canvas", "canvasHighContrast"].flatMap((theme) =>
-    (["light", "dark"] as const).flatMap((scheme) =>
-      examples.map((example) => ({
-        ...example,
-        id: `${example.record}-${example.index}-${theme}-${scheme}`.toLowerCase(),
-        theme,
-        scheme,
-      })),
-    ),
+  return AUDIT_MATRIX.flatMap(({ theme, scheme }) =>
+    examples.map((example) => ({
+      ...example,
+      id: `${example.record}-${example.index}-${theme}-${scheme}`.toLowerCase(),
+      theme,
+      scheme,
+    })),
   );
 }
 

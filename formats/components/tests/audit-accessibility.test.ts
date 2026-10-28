@@ -60,17 +60,15 @@ test("requires unique records, explicit examples, and valid markup", () => {
     "Missing -automatica11y",
   );
 });
-test("expands exactly six unique cases per example and loads local production assets", () => {
+test("expands only four supported theme/scheme cases and loads local production assets", () => {
   const cases = expandCases(collectExamples(entry(), ["button"]));
-  expect(cases).toHaveLength(6);
-  expect(new Set(cases.map((item) => item.id)).size).toBe(6);
+  expect(cases).toHaveLength(4);
+  expect(new Set(cases.map((item) => item.id)).size).toBe(4);
   expect(cases.map((item) => `${item.theme}:${item.scheme}`)).toEqual([
     "rebrand:light",
     "rebrand:dark",
     "canvas:light",
-    "canvas:dark",
     "canvasHighContrast:light",
-    "canvasHighContrast:dark",
   ]);
   const page = renderPage({ ...cases[0]!, html: '<dialog class="instui-modal">Content</dialog>' });
   expect(page).toContain('data-pantoken-theme="rebrand"');
@@ -231,7 +229,7 @@ test.each(["success", "setup failure", "audit failure"])(
       );
     const output = join(root, "a11y-report", readdirSync(join(root, "a11y-report"))[0]!);
     const coverage = JSON.parse(readFileSync(join(output, "coverage.json"), "utf8"));
-    expect(coverage.cases).toHaveLength(6);
+    expect(coverage.cases).toHaveLength(4);
     expect(readdirSync(join(output, "pages", "assets"))).toEqual([
       "assets",
       "components",
@@ -583,15 +581,15 @@ test.each(["success", "pack failure", "fixture gap", "no archetype", "full inven
     else await expect(action).rejects.toThrow("Incomplete npm accessibility audit");
     const coverage = JSON.parse(readFileSync(join(root, "coverage.json"), "utf8"));
     if (outcome === "success") {
-      expect(coverage.evidence[0].completed).toHaveLength(6);
+      expect(coverage.evidence[0].completed).toHaveLength(4);
       const mapping = JSON.parse(readFileSync(join(root, "mapping-button.json"), "utf8"));
-      expect(Object.keys(mapping)).toHaveLength(6);
+      expect(Object.keys(mapping)).toHaveLength(4);
       expect(run.mock.calls.at(-1)![1]).toContain("--no-generate");
     } else if (outcome === "full inventory") {
       expect(coverage.evidence).toHaveLength(9);
       expect(
         coverage.evidence.flatMap((item: { completed: string[] }) => item.completed),
-      ).toHaveLength(54);
+      ).toHaveLength(36);
     } else if (outcome === "no archetype") expect(run).not.toHaveBeenCalled();
     else expect(coverage.evidence.some((item: { error?: string }) => item.error)).toBe(true);
   },
