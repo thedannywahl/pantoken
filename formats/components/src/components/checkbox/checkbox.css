@@ -36,12 +36,23 @@
  * @related radio — The single-select counterpart.
  * @example -automatica11y
  * ```html
- * <label class="pfx-checkbox --display-block --mb-sm">
- *   <input type="checkbox" checked>Checkbox
- * </label>
- * <label class="pfx-checkbox -variant-toggle">
- *   <input type="checkbox">Toggle
- * </label>
+ * <p><label class="pfx-checkbox"><input type="checkbox">Unchecked checkbox</label></p>
+ * <p><label class="pfx-checkbox -label-placement-end"><input type="checkbox" checked>Checked checkbox, label after</label></p>
+ * <p><label class="pfx-checkbox -size-sm -label-placement-start"><input type="checkbox" checked>Small checkbox, label before</label></p>
+ * <p><label class="pfx-checkbox -size-lg -label-placement-top"><input type="checkbox" checked>Large checkbox, label above</label></p>
+ * <p><label class="pfx-checkbox"><input id="audit-checkbox-mixed" type="checkbox">Partially selected checkbox</label></p>
+ * <p><label class="pfx-checkbox"><input type="checkbox" disabled>Disabled unchecked checkbox</label></p>
+ * <p><label class="pfx-checkbox"><input type="checkbox" checked disabled>Disabled checked checkbox</label></p>
+ * <p><label class="pfx-checkbox -readonly"><input type="checkbox" checked disabled>Locked checkbox (disabled because native checkboxes have no readonly state)</label></p>
+ * <p><label class="pfx-checkbox -invalid -required"><input type="checkbox" required aria-invalid="true" aria-describedby="audit-checkbox-error">Accept the terms (required)<span class="asterisk" aria-hidden="true">*</span></label></p>
+ * <p id="audit-checkbox-error">Accept the terms before continuing.</p>
+ * <p><label class="pfx-checkbox -variant-toggle"><input type="checkbox">Toggle off</label></p>
+ * <p><label class="pfx-checkbox -variant-toggle"><input type="checkbox" checked>Toggle on</label></p>
+ * <p><label class="pfx-checkbox -variant-toggle -size-sm"><input type="checkbox" checked>Small toggle on</label></p>
+ * <p><label class="pfx-checkbox -variant-toggle -size-lg"><input type="checkbox" checked>Large toggle on</label></p>
+ * <p><label class="pfx-checkbox -variant-toggle"><input type="checkbox" disabled>Disabled toggle off</label></p>
+ * <p><label class="pfx-checkbox -variant-toggle"><input type="checkbox" checked disabled>Disabled toggle on</label></p>
+ * <script>document.getElementById("audit-checkbox-mixed").indeterminate = true;</script>
  * ```
  */
 .pfx-checkbox {

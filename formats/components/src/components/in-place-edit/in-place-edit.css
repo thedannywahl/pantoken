@@ -13,7 +13,8 @@
  * @demo self:in-place-edit
  * @example -automatica11y
  * ```html
- * <span class="pfx-in-place-edit" contenteditable="true" role="textbox" aria-label="Project name">Untitled</span>
+ * <p><span id="audit-project-label">Project name</span>: <span class="pfx-in-place-edit" contenteditable="true" role="textbox" aria-labelledby="audit-project-label">Untitled</span></p>
+ * <p><span id="audit-project-locked-label">Locked project name</span>: <span class="pfx-in-place-edit -readonly" contenteditable="false" role="textbox" aria-readonly="true" aria-labelledby="audit-project-locked-label">Published project</span></p>
  * ```
  */
 @scope (.pfx-in-place-edit) {

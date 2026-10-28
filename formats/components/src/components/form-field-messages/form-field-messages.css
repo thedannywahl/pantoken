@@ -21,9 +21,18 @@
  * @related form-field — Wraps a label, controls, and these messages.
  * @example -automatica11y
  * ```html
+ * <p><label for="audit-message-hint-input">Contact email</label><input id="audit-message-hint-input" class="pfx-text-input" type="email" aria-describedby="audit-message-hint audit-message-screenreader"></p>
  * <div class="pfx-form-field-messages">
- *   <span class="pfx-form-field-message -type-hint">We'll never share it.</span>
- *   <span class="pfx-form-field-message -type-error">Enter a valid email address.</span>
+ *   <span class="pfx-form-field-message -type-hint" id="audit-message-hint">We'll never share your email address.</span>
+ *   <span class="pfx-form-field-message -type-screenreader-only" id="audit-message-screenreader">Use an address you check regularly.</span>
+ * </div>
+ * <p><label for="audit-message-error-input">Email needing correction</label><input id="audit-message-error-input" class="pfx-text-input -invalid" type="email" value="not-an-email" aria-invalid="true" aria-describedby="audit-message-error"></p>
+ * <div class="pfx-form-field-messages">
+ *   <span class="pfx-form-field-message -type-error" id="audit-message-error">Enter a valid email address.</span>
+ * </div>
+ * <p><label for="audit-message-success-input">Validated email</label><input id="audit-message-success-input" class="pfx-text-input -success" type="email" value="alex@example.com" aria-describedby="audit-message-success"></p>
+ * <div class="pfx-form-field-messages">
+ *   <span class="pfx-form-field-message -type-success" id="audit-message-success">Email address accepted.</span>
  * </div>
  * ```
  */

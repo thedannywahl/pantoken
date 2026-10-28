@@ -20,7 +20,15 @@
  * @related text-input — The single-line counterpart with the same states and sizes.
  * @example -automatica11y
  * ```html
- * <label>Comment <textarea class="pfx-text-area" placeholder="Write a comment"></textarea></label>
+ * <p><label>Small comment <textarea class="pfx-text-area -size-sm" placeholder="Write a comment"></textarea></label></p>
+ * <p><label>Medium comment <textarea class="pfx-text-area -size-md">A draft comment.</textarea></label></p>
+ * <p><label>Large comment <textarea class="pfx-text-area -size-lg">A draft comment.</textarea></label></p>
+ * <p><label>Disabled comment <textarea class="pfx-text-area -disabled" disabled>A saved comment.</textarea></label></p>
+ * <p><label>Read-only comment <textarea class="pfx-text-area -readonly" readonly>A saved comment.</textarea></label></p>
+ * <p><label>Required comment <textarea class="pfx-text-area -invalid" required aria-invalid="true" aria-describedby="audit-text-area-error"></textarea></label></p>
+ * <p id="audit-text-area-error">Enter a comment before continuing.</p>
+ * <p><label>Validated comment <textarea class="pfx-text-area -success" aria-describedby="audit-text-area-success">Ready to submit.</textarea></label></p>
+ * <p id="audit-text-area-success">Comment accepted.</p>
  * ```
  */
 @scope (.pfx-text-area) {

@@ -36,6 +36,35 @@
  *     <span class="pfx-form-field-message -type-error" id="audit-email-error" hidden>Enter a valid email address.</span>
  *   </span>
  * </label>
+ * <label class="pfx-form-field -layout-stacked">
+ *   <span class="label" id="audit-field-stacked-label">Stacked name</span>
+ *   <span class="controls"><input class="pfx-text-input" aria-labelledby="audit-field-stacked-label"></span>
+ * </label>
+ * <label class="pfx-form-field -layout-inline -label-align-start -v-align-top">
+ *   <span class="label" id="audit-field-top-label">Top label</span>
+ *   <span class="controls"><textarea class="pfx-text-area" aria-labelledby="audit-field-top-label">An inline field with a taller control.</textarea></span>
+ * </label>
+ * <label class="pfx-form-field -layout-inline -label-align-end -v-align-bottom">
+ *   <span class="label" id="audit-field-bottom-label">End label</span>
+ *   <span class="controls"><textarea class="pfx-text-area" aria-labelledby="audit-field-bottom-label">Bottom-aligned control.</textarea></span>
+ * </label>
+ * <label class="pfx-form-field -layout-inline">
+ *   <span class="label" id="audit-field-middle-label">Center label</span>
+ *   <span class="controls"><input class="pfx-text-input" aria-labelledby="audit-field-middle-label"></span>
+ * </label>
+ * <p><label class="pfx-form-field -inline">
+ *   <span class="label" id="audit-field-inline-label">Intrinsic field</span>
+ *   <span class="controls"><input class="pfx-text-input" aria-labelledby="audit-field-inline-label"></span>
+ * </label></p>
+ * <label class="pfx-form-field -invalid">
+ *   <span class="label" id="audit-field-invalid-label">Required name</span>
+ *   <span class="controls"><input class="pfx-text-input -invalid" required aria-invalid="true" aria-labelledby="audit-field-invalid-label" aria-describedby="audit-field-error"></span>
+ *   <span class="pfx-form-field-messages"><span class="pfx-form-field-message -type-error" id="audit-field-error">Enter a name.</span></span>
+ * </label>
+ * <label class="pfx-form-field -readonly">
+ *   <span class="label" id="audit-field-readonly-label">Read-only name</span>
+ *   <span class="controls"><input class="pfx-text-input -readonly" readonly value="Alex" aria-labelledby="audit-field-readonly-label"></span>
+ * </label>
  * ```
  * @example -docs
  * ```html

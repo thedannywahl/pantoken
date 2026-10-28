@@ -17,7 +17,14 @@
  * @demo self:tag
  * @example -automatica11y
  * ```html
- * <span class="pfx-tag -size-sm">small</span>
+ * <p><span class="pfx-tag -size-sm">Small tag</span></p>
+ * <p><span class="pfx-tag">Medium tag</span></p>
+ * <p><span class="pfx-tag -size-lg">Large tag</span></p>
+ * <p><button class="pfx-tag -inline -size-sm" type="button" aria-label="Remove small Biology tag">Biology</button></p>
+ * <p><button class="pfx-tag -inline" type="button" aria-label="Remove medium Chemistry tag">Chemistry</button></p>
+ * <p><button class="pfx-tag -inline -size-lg" type="button" aria-label="Remove large Physics tag">Physics</button></p>
+ * <p><span class="pfx-tag -readonly">Read-only tag</span></p>
+ * <p><span class="pfx-tag -inline -readonly">Read-only inline tag</span></p>
  * ```
  */
 @scope (.pfx-tag) {

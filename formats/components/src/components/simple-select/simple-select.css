@@ -22,13 +22,22 @@
  * </select>
  * @example -automatica11y
  * ```html
- * <label>Fruit
- *   <select class="pfx-simple-select" data-a11y-trigger data-a11y-root>
+ * <p><label>Small fruit selector
+ *   <select class="pfx-simple-select -size-sm" data-a11y-trigger data-a11y-root>
  *     <option value="">Choose a fruit</option>
  *     <option value="apple">Apple</option>
  *     <option value="orange">Orange</option>
  *   </select>
- * </label>
+ * </label></p>
+ * <p><label>Medium fruit selector <select class="pfx-simple-select -size-md"><option>Apple</option><option>Orange</option></select></label></p>
+ * <p><label>Large fruit selector <select class="pfx-simple-select -size-lg"><option>Apple</option><option>Orange</option></select></label></p>
+ * <p><label>Disabled fruit selector <select class="pfx-simple-select -disabled" disabled><option>Apple</option></select></label></p>
+ * <p><label>Locked fruit selection <select class="pfx-simple-select -readonly" disabled aria-describedby="audit-select-locked"><option>Apple</option></select></label></p>
+ * <p id="audit-select-locked">This selection is locked. Native selects don't support readonly, so this control is disabled.</p>
+ * <p><label>Required fruit <select class="pfx-simple-select -invalid" required aria-invalid="true" aria-describedby="audit-select-error"><option value="">Choose a fruit</option><option value="apple">Apple</option></select></label></p>
+ * <p id="audit-select-error">Choose a fruit before continuing.</p>
+ * <p><label>Validated fruit <select class="pfx-simple-select -success" aria-describedby="audit-select-success"><option>Orange</option><option>Apple</option></select></label></p>
+ * <p id="audit-select-success">Fruit selection accepted.</p>
  * ```
  * @example -docs
  * ```html

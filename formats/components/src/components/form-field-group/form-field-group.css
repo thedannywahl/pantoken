@@ -62,33 +62,38 @@
  * @related radio-input-group — Groups radio inputs under a legend.
  * @example -automatica11y
  * ```html
- * <fieldset class="pfx-form-field-group -layout-columns -col-spacing-medium">
- *   <legend>Shipping address</legend>
+ * <fieldset class="pfx-form-field-group">
+ *   <legend>Stacked fields</legend>
  *   <label class="pfx-form-field">
- *     <span class="label">First name</span>
+ *     <span class="label">Name</span>
  *     <span class="controls"><input class="pfx-text-input"></span>
  *   </label>
+ * </fieldset>
+ * <fieldset class="pfx-form-field-group -layout-columns -col-spacing-none -row-spacing-none -v-align-top">
+ *   <legend>Columns without gaps</legend>
+ *   <label class="pfx-form-field"><span class="label">City</span><span class="controls"><input class="pfx-text-input"></span></label>
+ *   <label class="pfx-form-field"><span class="label">Region</span><span class="controls"><input class="pfx-text-input"></span></label>
+ * </fieldset>
+ * <fieldset class="pfx-form-field-group -layout-inline -col-spacing-small -row-spacing-small -v-align-middle">
+ *   <legend>Inline fields with small gaps</legend>
+ *   <label class="pfx-form-field"><span class="label">Town</span><span class="controls"><input class="pfx-text-input"></span></label>
+ *   <label class="pfx-form-field"><span class="label">Area</span><span class="controls"><textarea class="pfx-text-area"></textarea></span></label>
+ * </fieldset>
+ * <fieldset class="pfx-form-field-group -layout-columns -col-spacing-medium -row-spacing-medium -v-align-bottom">
+ *   <legend>Columns with medium gaps</legend>
+ *   <label class="pfx-form-field"><span class="label">City</span><span class="controls"><input class="pfx-text-input"></span></label>
+ *   <label class="pfx-form-field"><span class="label">Area</span><span class="controls"><textarea class="pfx-text-area"></textarea></span></label>
+ * </fieldset>
+ * <fieldset class="pfx-form-field-group -layout-aligned -col-spacing-large -row-spacing-large -required">
+ *   <legend>Aligned required fields</legend>
  *   <label class="pfx-form-field">
- *     <span class="label">Last name</span>
- *     <span class="controls"><input class="pfx-text-input"></span>
+ *     <span class="label">Name</span>
+ *     <span class="controls"><input class="pfx-text-input" required value="Alex"></span>
  *   </label>
  *   <label class="pfx-form-field">
  *     <span class="label">City</span>
- *     <span class="controls"><input class="pfx-text-input"></span>
+ *     <span class="controls"><input class="pfx-text-input" required value="Denver"></span>
  *   </label>
- *   <label class="pfx-form-field">
- *     <span class="label">State</span>
- *     <span class="controls">
- *       <select class="pfx-simple-select">
- *         <option>CA</option>
- *         <option>NY</option>
- *         <option>TX</option>
- *       </select>
- *     </span>
- *   </label>
- *   <div class="pfx-form-field-messages">
- *     <span class="pfx-form-field-message -type-hint">All fields are used for delivery only.</span>
- *   </div>
  * </fieldset>
  * ```
  */

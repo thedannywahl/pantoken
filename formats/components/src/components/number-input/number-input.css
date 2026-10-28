@@ -38,13 +38,36 @@
  * @related range-input — Another numeric input control.
  * @example -automatica11y
  * ```html
- * <span class="pfx-number-input">
- *   <input id="qty" type="number" value="1" aria-label="Quantity">
- *   <span class="arrows">
- *     <button type="button" id="up" aria-hidden="true" tabindex="-1"></button>
- *     <button class="down" type="button" id="down" aria-hidden="true" tabindex="-1"></button>
- *   </span>
- * </span>
+ * <p><label for="audit-qty-small">Small quantity</label><span class="pfx-number-input -size-sm">
+ *   <input id="audit-qty-small" type="number" min="0" max="10" value="1">
+ *   <span class="arrows"><button type="button" aria-hidden="true" tabindex="-1"></button><button class="down" type="button" aria-hidden="true" tabindex="-1"></button></span>
+ * </span></p>
+ * <p><label for="audit-qty-medium">Medium quantity</label><span class="pfx-number-input -size-md">
+ *   <input id="audit-qty-medium" type="number" min="0" max="10" value="2">
+ *   <span class="arrows"><button type="button" aria-hidden="true" tabindex="-1"></button><button class="down" type="button" aria-hidden="true" tabindex="-1"></button></span>
+ * </span></p>
+ * <p><label for="audit-qty-large">Large quantity</label><span class="pfx-number-input -size-lg">
+ *   <input id="audit-qty-large" type="number" min="0" max="10" value="3">
+ *   <span class="arrows"><button type="button" aria-hidden="true" tabindex="-1"></button><button class="down" type="button" aria-hidden="true" tabindex="-1"></button></span>
+ * </span></p>
+ * <p><label for="audit-qty-disabled">Disabled quantity</label><span class="pfx-number-input -disabled">
+ *   <input id="audit-qty-disabled" type="number" value="4" disabled>
+ *   <span class="arrows"><button type="button" disabled aria-hidden="true" tabindex="-1"></button><button class="down" type="button" disabled aria-hidden="true" tabindex="-1"></button></span>
+ * </span></p>
+ * <p><label for="audit-qty-readonly">Read-only quantity</label><span class="pfx-number-input -readonly">
+ *   <input id="audit-qty-readonly" type="number" value="5" readonly>
+ *   <span class="arrows"><button type="button" disabled aria-hidden="true" tabindex="-1"></button><button class="down" type="button" disabled aria-hidden="true" tabindex="-1"></button></span>
+ * </span></p>
+ * <p><label for="audit-qty-invalid">Required quantity</label><span class="pfx-number-input -invalid">
+ *   <input id="audit-qty-invalid" type="number" min="1" max="10" value="0" required aria-invalid="true" aria-describedby="audit-qty-error">
+ *   <span class="arrows"><button type="button" aria-hidden="true" tabindex="-1"></button><button class="down" type="button" aria-hidden="true" tabindex="-1"></button></span>
+ * </span></p>
+ * <p id="audit-qty-error">Quantity must be between 1 and 10.</p>
+ * <p><label for="audit-qty-success">Validated quantity</label><span class="pfx-number-input -success">
+ *   <input id="audit-qty-success" type="number" min="1" max="10" value="6" aria-describedby="audit-qty-valid">
+ *   <span class="arrows"><button type="button" aria-hidden="true" tabindex="-1"></button><button class="down" type="button" aria-hidden="true" tabindex="-1"></button></span>
+ * </span></p>
+ * <p id="audit-qty-valid">Quantity accepted.</p>
  * ```
  */
 @scope (.pfx-number-input) {

@@ -23,7 +23,18 @@
  * @related input-group — Wraps this input with leading and trailing slots.
  * @example -automatica11y
  * ```html
- * <label>Display name <input class="pfx-text-input" autocomplete="nickname"></label>
+ * <p><label>Small display name <input class="pfx-text-input -size-sm" autocomplete="nickname" placeholder="Display name"></label></p>
+ * <p><label>Medium display name <input class="pfx-text-input -size-md" value="Alex" autocomplete="nickname"></label></p>
+ * <p><label>Large display name <input class="pfx-text-input -size-lg" value="Alex" autocomplete="nickname"></label></p>
+ * <p><label>Disabled display name <input class="pfx-text-input -disabled" value="Alex" disabled></label></p>
+ * <p><label>Read-only display name <input class="pfx-text-input -readonly" value="Alex" readonly></label></p>
+ * <p><label>Email needing correction <input class="pfx-text-input -invalid" type="email" required value="not-an-email" aria-invalid="true" aria-describedby="audit-text-input-error"></label></p>
+ * <p id="audit-text-input-error">Enter a valid email address.</p>
+ * <p><label>Validated email <input class="pfx-text-input -success" type="email" value="alex@example.com" aria-describedby="audit-text-input-success"></label></p>
+ * <p id="audit-text-input-success">Email address accepted.</p>
+ * <p><label>Start date <input class="pfx-text-input" type="date" value="2026-10-28"></label></p>
+ * <p><label>Start time <input class="pfx-text-input" type="time" value="09:30"></label></p>
+ * <p><label>Appointment <input class="pfx-text-input" type="datetime-local" value="2026-10-28T09:30"></label></p>
  * ```
  */
 @scope (.pfx-text-input) {
