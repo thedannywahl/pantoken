@@ -56,6 +56,7 @@ export default extendBase({
   run: {
     tasks: {
       build: {
+        dependsOn: [{ task: "build", from: "dependencies" }],
         command: [
           "node scripts/generate-components.ts",
           "node scripts/generate-capabilities.ts",

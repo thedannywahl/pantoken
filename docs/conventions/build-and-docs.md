@@ -12,6 +12,11 @@
   correctness; cssdoc owns documentation comments. `lint:css` and `lint:cssdoc` run in `ready`, and
   both are wired into the `vite.config.ts` staged hook.
 
+`vpr docs:dev` builds interactions before staging its browser bundles. The interactions build task
+declares its workspace dependencies' builds as prerequisites, so `@pantoken/utils` is built even
+when its `dist` output is missing. Run `vp run @pantoken/interactions#build` rather than invoking
+`scripts/build-iife.ts` directly when prerequisites haven't been built.
+
 ## Local component accessibility reports
 
 `vp run audit:components` is an explicit, uncached audit task, separate from `ready`. It uses the
