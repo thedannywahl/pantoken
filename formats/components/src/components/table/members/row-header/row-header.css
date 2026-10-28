@@ -14,8 +14,9 @@
  * }
  * @example -automatica11y
  * ```html
+ * <div class="pfx-view --overflow-x-auto -focus-position-inset -without-focus-animation" role="region" aria-labelledby="table-row-header-caption" tabindex="0">
  * <table class="pfx-table -hover">
- *   <caption>Top-rated films</caption>
+ *   <caption id="table-row-header-caption">Top-rated films</caption>
  *   <thead>
  *     <tr>
  *       <th scope="col">Rank</th>
@@ -45,6 +46,7 @@
  *     </tr>
  *   </tbody>
  * </table>
+ * </div>
  * ```
  */
 /* A row-header cell (th scope=row) — styled from the row-header tokens, not the column-header ones. */

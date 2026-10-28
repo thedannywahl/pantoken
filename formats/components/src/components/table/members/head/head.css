@@ -10,8 +10,9 @@
  * }
  * @example -automatica11y
  * ```html
+ * <div class="pfx-view --overflow-x-auto -focus-position-inset -without-focus-animation" role="region" aria-labelledby="table-head-caption" tabindex="0">
  * <table class="pfx-table -hover">
- *   <caption>Top-rated films</caption>
+ *   <caption id="table-head-caption">Top-rated films</caption>
  *   <thead>
  *     <tr>
  *       <th scope="col">Rank</th>
@@ -41,6 +42,7 @@
  *     </tr>
  *   </tbody>
  * </table>
+ * </div>
  * ```
  */
 .pfx-table thead {

@@ -87,3 +87,21 @@ test("the localized pill demo lets the group wrap while preserving every status"
     expect(pills[0].parentElement?.getAttribute("style")).toContain("flex-wrap: wrap");
   });
 });
+
+test("the localized table demo provides named scrolling and matching responsive cell labels", () => {
+  withDemo("table", ({ document }) => {
+    const region = document.querySelector('[role="region"][tabindex="0"]')!;
+    const caption = document.getElementById(region.getAttribute("aria-labelledby")!)!;
+    expect(region.contains(caption)).toBe(true);
+    expect(caption.textContent?.trim()).toBeTruthy();
+    expect(region.classList.contains("--overflow-x-auto")).toBe(true);
+    expect(region.classList.contains("-without-focus-animation")).toBe(true);
+    const table = document.querySelector(".instui-table.-layout-responsive")!;
+    expect(table.parentElement?.classList.contains("instui-container")).toBe(true);
+    const headings = [...table.querySelectorAll('thead th[scope="col"]')].map((cell) =>
+      cell.textContent?.trim(),
+    );
+    for (const row of table.querySelectorAll("tbody tr"))
+      expect([...row.children].map((cell) => cell.getAttribute("data-label"))).toEqual(headings);
+  });
+});

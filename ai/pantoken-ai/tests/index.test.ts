@@ -82,6 +82,10 @@ test("installed usage assets describe tree behavior, shadow names, and opt-in va
       expect(content).toContain("data-native-validation");
       expect(content).toContain("initMenu");
       expect(content).toContain("data-menu-navigation");
+      expect(content).toContain("-layout-responsive");
+      expect(content).toContain("instui-container");
+      expect(content).toContain("data-label");
+      expect(content).toContain("--overflow-x-auto");
     }
   } finally {
     rmSync(dir, { recursive: true, force: true });

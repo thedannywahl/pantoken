@@ -12,8 +12,9 @@
  * }
  * @example -automatica11y
  * ```html
+ * <div class="pfx-view --overflow-x-auto -focus-position-inset -without-focus-animation" role="region" aria-labelledby="table-row-caption" tabindex="0">
  * <table class="pfx-table -hover">
- *   <caption>Top-rated films</caption>
+ *   <caption id="table-row-caption">Top-rated films</caption>
  *   <thead>
  *     <tr>
  *       <th scope="col">Rank</th>
@@ -43,6 +44,7 @@
  *     </tr>
  *   </tbody>
  * </table>
+ * </div>
  * ```
  */
 /* The row separator is a single border on the ROW (InstUI puts it there), so it's uniform across the

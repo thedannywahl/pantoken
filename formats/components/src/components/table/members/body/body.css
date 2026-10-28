@@ -10,8 +10,9 @@
  * }
  * @example -automatica11y
  * ```html
+ * <div class="pfx-view --overflow-x-auto -focus-position-inset -without-focus-animation" role="region" aria-labelledby="table-body-caption" tabindex="0">
  * <table class="pfx-table -hover">
- *   <caption>Top-rated films</caption>
+ *   <caption id="table-body-caption">Top-rated films</caption>
  *   <thead>
  *     <tr>
  *       <th scope="col">Rank</th>
@@ -41,6 +42,7 @@
  *     </tr>
  *   </tbody>
  * </table>
+ * </div>
  * ```
  */
 /* layout="stacked": each row becomes a card; the body itself just stops being a table row-group box. */

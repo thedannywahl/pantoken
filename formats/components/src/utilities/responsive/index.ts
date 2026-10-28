@@ -13,16 +13,10 @@
  *
  * @module
  */
-import { tokens } from "@pantoken/tokens";
 import { defineUtility, type Definition } from "../../lib/define.ts";
 import { css } from "../../lib/css.ts";
 import type { ComponentTheme } from "../../lib/helpers.ts";
-
-const emValue = (tokenName: string): string => {
-  const match = /^([\d.]+)em$/u.exec(tokens.find((t) => t.name === tokenName)?.value ?? "");
-  if (!match) throw new Error(`@pantoken/tokens: missing or non-em token "${tokenName}"`);
-  return `${match[1]}em`;
-};
+import { breakpointEm } from "../../lib/breakpoints.ts";
 
 /** Short name, long-form spelling, and device name for each responsive breakpoint tier. */
 const SCALE_TIERS: readonly [short: string, long: string, device: string][] = [
@@ -40,7 +34,7 @@ const XS_BREAKPOINT_EM = "20em";
 const scaleBreakpoints = (): [string[], string][] =>
   SCALE_TIERS.map(([short, long, device]) => [
     [short, long, device],
-    short === "xs" ? XS_BREAKPOINT_EM : emValue(`--instui-breakpoints-${short}`),
+    short === "xs" ? XS_BREAKPOINT_EM : breakpointEm(`--instui-breakpoints-${short}`),
   ]);
 
 /** The main content area's max-width, in em, per theme — hand-authored (not in the token IR). */

@@ -33,6 +33,10 @@
 - Menus: opt into `initMenu(menu, button)` or `data-menu-navigation` plus `menu.iife.js` for
 	vertical, single-level native popover menus. Applications own actions and checked state;
 	disabled items need `aria-disabled`. Submenus and menubars aren't supported.
+- Tables: `-layout-responsive` inside an `instui-container` (with `utilities.css`) stacks below
+	the canonical `md` container breakpoint without JavaScript. Match localized `data-label` values
+	to column headers and retain native header associations. Alternatively, retain columns in a
+	named, keyboard-focusable `--overflow-x-auto` region with a visible focus outline.
 - shadcn registry: `shadcn search @pantoken`, `shadcn view @pantoken/<item>`, then `shadcn add
 	@pantoken/<item>`. Items install CSS/packages and usage metadata, not React components.
 - Standalone browser mockups: use the CDN guide, component capability manifest, demos, and optional
