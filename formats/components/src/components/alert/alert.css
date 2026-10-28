@@ -95,9 +95,9 @@
  * ```
  * @example -automatica11y -nocard
  * ```html
- * <div data-a11y-root>
+ * <div>
  *   <button type="button" id="save-settings" data-a11y-trigger>Save settings</button>
- *   <div class="pfx-alert -inline --mb-md" id="save-status" role="status" aria-live="polite" aria-atomic="true"></div>
+ *   <div class="pfx-alert -inline --mb-md" id="save-status" role="status" aria-live="polite" aria-atomic="true" data-a11y-root></div>
  *   <div class="pfx-alert -color-info --mb-md" role="status">Your export is ready.</div>
  *   <div class="pfx-alert -color-success --mb-md" role="status">Settings saved.</div>
  *   <div class="pfx-alert -color-warning --mb-md" role="alert">Your session expires soon.</div>

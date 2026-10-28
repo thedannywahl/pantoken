@@ -38,8 +38,8 @@
  * ```
  * @example -automatica11y
  * ```html
- * <div data-a11y-root>
- *   <div><button class="pfx-button -color-primary -size-sm" type="button" data-a11y-trigger>Save draft</button></div>
+ * <div>
+ *   <div><button class="pfx-button -color-primary -size-sm" type="button" data-a11y-trigger data-a11y-root>Save draft</button></div>
  *   <div><button class="pfx-button -color-secondary -size-md" type="button">Preview draft</button></div>
  *   <div><button class="pfx-button -color-tertiary -size-lg" type="button">View history</button></div>
  *   <div><button class="pfx-button -color-success" type="button">Publish</button></div>
