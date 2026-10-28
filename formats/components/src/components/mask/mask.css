@@ -16,9 +16,14 @@
  * @example -automatica11y
  * ```html
  * <div style="position: relative; min-height: 100px"><div class="pfx-mask" role="region" aria-label="Default loading mask"></div></div>
+ * ```
+ * @example -automatica11y
+ * ```html
  * <div style="position: relative; min-height: 100px"><div class="pfx-mask -blur" role="region" aria-label="Blurred loading mask"></div></div>
- * \3c !-- Keep fullscreen chrome in flow so it doesn't cover the other surfaces. -->
- * <div class="pfx-mask -fullscreen" role="region" aria-label="Fullscreen loading mask" style="position: relative; min-height: 100px"></div>
+ * ```
+ * @example -automatica11y
+ * ```html
+ * <div class="pfx-mask -fullscreen" role="region" aria-label="Fullscreen loading mask"></div>
  * ```
  */
 /* An in-flow overlay for non-modal cases (e.g. a spinner over a card). For a modal, prefer a native

@@ -5,7 +5,7 @@ import { Window } from "happy-dom";
 import { COMPONENTS } from "../src/components/index.ts";
 import { focus } from "../src/declarations/focus/index.ts";
 import { CORE_AUDIT_EXTRAS, PLUGIN_AUDIT_RECORDS } from "../scripts/audit-plugin-components.ts";
-import { exampleHtml } from "../scripts/audit-accessibility.ts";
+import { ARCHETYPES, exampleHtml } from "../scripts/audit-accessibility.ts";
 
 const records = [...COMPONENTS, focus, ...CORE_AUDIT_EXTRAS];
 
@@ -34,15 +34,42 @@ test.each([...records, ...PLUGIN_AUDIT_RECORDS])(
     expect(entry, record.name).toBeDefined();
     const examples = entry!.examples;
     const selected = resolveExampleTargets(examples).automatica11y;
-    expect(selected.length, record.name).toBe(1);
+    if (/^(?:modal(?:\.|$)|tray$|mask$|popover$|tooltip$)/u.test(record.name))
+      expect(selected.length, record.name).toBeGreaterThan(0);
+    else expect(selected.length, record.name).toBe(1);
     for (const index of selected) {
       const example = examples[index]!;
+      expect(
+        example,
+        `${record.name}: keep rationale outside audit fences; CSS parsing escapes HTML comments`,
+      ).not.toMatch(/<!--|\\3c\s*!-/u);
       const fences = [...example.matchAll(/```html[^\n]*\n([\s\S]*?)```/gu)];
       expect(fences.length, record.name).toBeGreaterThan(0);
       const window = new Window();
       window.document.body.innerHTML = exampleHtml(example);
       expect(window.document.body.children.length, record.name).toBeGreaterThan(0);
+      expect(
+        window.document.querySelectorAll("dialog").length,
+        `${record.name}: isolate dialogs so modal promotion cannot obscure other variants`,
+      ).toBeLessThanOrEqual(1);
       expect(window.document.querySelector('[class*="pfx-"]'), record.name).toBeNull();
+      if (Object.values(ARCHETYPES).includes(record.name)) {
+        expect(window.document.querySelectorAll("[data-a11y-trigger]"), record.name).toHaveLength(
+          1,
+        );
+        const roots = window.document.querySelectorAll("[data-a11y-root]");
+        expect(roots, record.name).toHaveLength(1);
+        const root = roots[0]!;
+        if (record.name === "tooltip") {
+          expect(root.getAttribute("role"), record.name).toBe("tooltip");
+          expect(root.closest(".instui-tooltip"), record.name).not.toBeNull();
+        } else {
+          expect(
+            root.classList.contains(`instui-${record.name}`),
+            `${record.name}: npm checks must target the component, not a fixture wrapper`,
+          ).toBe(true);
+        }
+      }
       const ids = [...window.document.querySelectorAll("[id]")].map((node) => node.id);
       expect(new Set(ids).size, record.name).toBe(ids.length);
       for (const element of window.document.querySelectorAll(
@@ -56,29 +83,26 @@ test.each([...records, ...PLUGIN_AUDIT_RECORDS])(
             ).not.toBeNull();
           }
         }
-        for (const control of window.document.querySelectorAll(
-          'input:not([type="hidden"]), select, textarea',
-        )) {
-          const label = [...window.document.querySelectorAll("label")].some(
-            (element) =>
-              element.contains(control) || (control.id && element.htmlFor === control.id),
-          );
-          expect(
-            Boolean(
-              label ||
-              control.getAttribute("aria-label") ||
-              control.getAttribute("aria-labelledby"),
-            ),
-            `${record.name}: unnamed ${control.outerHTML}`,
-          ).toBe(true);
-        }
-        expect(
-          window.document.querySelector(
-            'input[type="checkbox"][readonly], input[type="radio"][readonly], select[readonly]',
-          ),
-          `${record.name}: readonly is not supported on checkboxes, radios, or selects`,
-        ).toBeNull();
       }
+      for (const control of window.document.querySelectorAll(
+        'input:not([type="hidden"]), select, textarea',
+      )) {
+        const label = [...window.document.querySelectorAll("label")].some(
+          (element) => element.contains(control) || (control.id && element.htmlFor === control.id),
+        );
+        expect(
+          Boolean(
+            label || control.getAttribute("aria-label") || control.getAttribute("aria-labelledby"),
+          ),
+          `${record.name}: unnamed ${control.outerHTML}`,
+        ).toBe(true);
+      }
+      expect(
+        window.document.querySelector(
+          'input[type="checkbox"][readonly], input[type="radio"][readonly], select[readonly]',
+        ),
+        `${record.name}: readonly is not supported on checkboxes, radios, or selects`,
+      ).toBeNull();
       if (record.name.startsWith("table.")) {
         expect(window.document.querySelector("table.instui-table"), record.name).not.toBeNull();
       }

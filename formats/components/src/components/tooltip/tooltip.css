@@ -18,7 +18,6 @@
  * ```
  * @example -automatica11y
  * ```html
- * \3c !-- Vertical clearance separates simultaneously expanded bubbles without changing their width or reflow. -->
  * <p style="padding-block: 3rem">
  * <span class="pfx-tooltip">
  *   <button type="button" aria-describedby="help-tip" data-a11y-trigger>Help</button>

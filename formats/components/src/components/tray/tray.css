@@ -32,15 +32,43 @@
  * @related popover — The generic top-layer surface this builds on.
  * @example -automatica11y
  * ```html
- * \3c !-- Static surfaces stay in flow so every tray's chrome is measurable without covering another variant. -->
- * <div class="pfx-tray -placement-start -size-xs" role="region" aria-label="Extra small start tray" style="position: relative; inset: auto; min-block-size: 6rem"></div>
- * <div class="pfx-tray -placement-start -size-sm" role="region" aria-label="Small start tray" style="position: relative; inset: auto; min-block-size: 6rem"></div>
- * <div class="pfx-tray -placement-start -size-md" role="region" aria-label="Medium start tray" style="position: relative; inset: auto; min-block-size: 6rem"></div>
- * <div class="pfx-tray -placement-start -size-lg" role="region" aria-label="Large start tray" style="position: relative; inset: auto; min-block-size: 6rem"></div>
- * <div class="pfx-tray -placement-start -size-xl" role="region" aria-label="Extra large start tray" style="position: relative; inset: auto; min-block-size: 6rem"></div>
- * <div class="pfx-tray -placement-end" role="region" aria-label="End tray" style="position: relative; inset: auto; min-block-size: 6rem"></div>
- * <div class="pfx-tray -placement-top" role="region" aria-label="Top tray" style="position: relative; inset: auto; min-block-size: 6rem"></div>
- * <div class="pfx-tray -placement-bottom" role="region" aria-label="Bottom tray" style="position: relative; inset: auto; min-block-size: 6rem"></div>
+ * <button type="button" popovertarget="tray-xs" data-a11y-trigger>Open extra small tray</button>
+ * <div class="pfx-tray -placement-start -size-xs" id="tray-xs" popover="auto" role="dialog" aria-label="Extra small start tray" data-a11y-root><button type="button" popovertarget="tray-xs" popovertargetaction="hide">Close</button></div>
+ * ```
+ * @example -automatica11y
+ * ```html
+ * <button type="button" popovertarget="tray-sm" data-a11y-trigger>Open small tray</button>
+ * <div class="pfx-tray -placement-start -size-sm" id="tray-sm" popover="auto" role="dialog" aria-label="Small start tray" data-a11y-root><button type="button" popovertarget="tray-sm" popovertargetaction="hide">Close</button></div>
+ * ```
+ * @example -automatica11y
+ * ```html
+ * <button type="button" popovertarget="tray-md" data-a11y-trigger>Open medium tray</button>
+ * <div class="pfx-tray -placement-start -size-md" id="tray-md" popover="auto" role="dialog" aria-label="Medium start tray" data-a11y-root><button type="button" popovertarget="tray-md" popovertargetaction="hide">Close</button></div>
+ * ```
+ * @example -automatica11y
+ * ```html
+ * <button type="button" popovertarget="tray-lg" data-a11y-trigger>Open large tray</button>
+ * <div class="pfx-tray -placement-start -size-lg" id="tray-lg" popover="auto" role="dialog" aria-label="Large start tray" data-a11y-root><button type="button" popovertarget="tray-lg" popovertargetaction="hide">Close</button></div>
+ * ```
+ * @example -automatica11y
+ * ```html
+ * <button type="button" popovertarget="tray-xl" data-a11y-trigger>Open extra large tray</button>
+ * <div class="pfx-tray -placement-start -size-xl" id="tray-xl" popover="auto" role="dialog" aria-label="Extra large start tray" data-a11y-root><button type="button" popovertarget="tray-xl" popovertargetaction="hide">Close</button></div>
+ * ```
+ * @example -automatica11y
+ * ```html
+ * <button type="button" popovertarget="tray-end" data-a11y-trigger>Open end tray</button>
+ * <div class="pfx-tray -placement-end" id="tray-end" popover="auto" role="dialog" aria-label="End tray" data-a11y-root><button type="button" popovertarget="tray-end" popovertargetaction="hide">Close</button></div>
+ * ```
+ * @example -automatica11y
+ * ```html
+ * <button type="button" popovertarget="tray-top" data-a11y-trigger>Open top tray</button>
+ * <div class="pfx-tray -placement-top" id="tray-top" popover="auto" role="dialog" aria-label="Top tray" data-a11y-root><button type="button" popovertarget="tray-top" popovertargetaction="hide">Close</button></div>
+ * ```
+ * @example -automatica11y
+ * ```html
+ * <button type="button" popovertarget="tray-bottom" data-a11y-trigger>Open bottom tray</button>
+ * <div class="pfx-tray -placement-bottom" id="tray-bottom" popover="auto" role="dialog" aria-label="Bottom tray" data-a11y-root><button type="button" popovertarget="tray-bottom" popovertargetaction="hide">Close</button></div>
  * ```
  */
 @scope (.pfx-tray) {

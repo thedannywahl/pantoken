@@ -14,11 +14,19 @@
  * @example -automatica11y
  * ```html
  * <button type="button" command="--show" commandfor="account-dialog" data-a11y-trigger>Open account details</button>
- * <dialog class="pfx-modal" id="account-dialog" aria-label="Account details" data-a11y-root open style="position: relative; inset: auto">
+ * <dialog class="pfx-modal" id="account-dialog" aria-label="Account details" data-a11y-root>
  *   <div class="footer"><button type="button" command="--close" commandfor="account-dialog">Close</button></div>
  * </dialog>
- * <dialog class="pfx-modal -density-compact" aria-label="Compact footer" open style="position: relative; inset: auto"><div class="footer"></div></dialog>
- * <dialog class="pfx-modal -color-inverse" aria-label="Inverse footer" open style="position: relative; inset: auto"><div class="footer"></div></dialog>
+ * ```
+ * @example -automatica11y
+ * ```html
+ * <button type="button" command="--show" commandfor="compact-footer-dialog" data-a11y-trigger>Open compact footer</button>
+ * <dialog class="pfx-modal -density-compact" id="compact-footer-dialog" aria-label="Compact footer" data-a11y-root><div class="footer"><button type="button" command="--close" commandfor="compact-footer-dialog">Close</button></div></dialog>
+ * ```
+ * @example -automatica11y
+ * ```html
+ * <button type="button" command="--show" commandfor="inverse-footer-dialog" data-a11y-trigger>Open inverse footer</button>
+ * <dialog class="pfx-modal -color-inverse" id="inverse-footer-dialog" aria-label="Inverse footer" data-a11y-root><div class="footer"><button type="button" command="--close" commandfor="inverse-footer-dialog">Close</button></div></dialog>
  * ```
  */
 @scope (.pfx-modal) {

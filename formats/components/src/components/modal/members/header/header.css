@@ -14,13 +14,21 @@
  * @example -automatica11y
  * ```html
  * <button type="button" command="--show" commandfor="account-dialog" data-a11y-trigger>Open account details</button>
- * <dialog class="pfx-modal" id="account-dialog" aria-labelledby="account-dialog-title" data-a11y-root open style="position: relative; inset: auto">
+ * <dialog class="pfx-modal" id="account-dialog" aria-labelledby="account-dialog-title" data-a11y-root>
  *   <div class="header" id="account-dialog-title"><strong>Account details</strong></div>
  *   <div class="body"></div>
  *   <div class="footer"><button type="button" command="--close" commandfor="account-dialog">Close</button></div>
  * </dialog>
- * <dialog class="pfx-modal -density-compact" aria-labelledby="compact-header" open style="position: relative; inset: auto"><div class="header" id="compact-header">Compact header</div></dialog>
- * <dialog class="pfx-modal -color-inverse" aria-labelledby="inverse-header" open style="position: relative; inset: auto"><div class="header" id="inverse-header">Inverse header</div></dialog>
+ * ```
+ * @example -automatica11y
+ * ```html
+ * <button type="button" command="--show" commandfor="compact-header-dialog" data-a11y-trigger>Open compact header</button>
+ * <dialog class="pfx-modal -density-compact" id="compact-header-dialog" aria-labelledby="compact-header" data-a11y-root><div class="header" id="compact-header">Compact header</div><div class="footer"><button type="button" command="--close" commandfor="compact-header-dialog">Close</button></div></dialog>
+ * ```
+ * @example -automatica11y
+ * ```html
+ * <button type="button" command="--show" commandfor="inverse-header-dialog" data-a11y-trigger>Open inverse header</button>
+ * <dialog class="pfx-modal -color-inverse" id="inverse-header-dialog" aria-labelledby="inverse-header" data-a11y-root><div class="header" id="inverse-header">Inverse header</div><div class="footer"><button type="button" command="--close" commandfor="inverse-header-dialog">Close</button></div></dialog>
  * ```
  */
 @scope (.pfx-modal) {

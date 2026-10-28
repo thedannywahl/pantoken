@@ -140,15 +140,18 @@ member's required parent markup in its example, and give controls real labels an
 Use fenced HTML so audience flags remain metadata, not visible page content.
 
 Keep one audit example per record, with distinct visual variants together: canonical colors, sizes,
-and supported states. Don't duplicate deprecated aliases or build a Cartesian product of every
-modifier. Include meaningful labels, selected and unselected choices, and native `disabled`,
+and supported states. Use separate audit examples for modal dialogs and other overlays whose
+variants would obscure one another. Each example runs in its own page, with production behavior
+enabled. Don't duplicate deprecated aliases or build a Cartesian product of every modifier.
+Include meaningful labels, selected and unselected choices, and native `disabled`,
 `readonly`, or `aria-invalid` semantics where the component supports them. Use the intended surface
 for inverse/on-color treatments, without overriding the component's tested colors. Keep decorative
 content hidden from assistive technology and preserve required parent/member structures.
 
-Stack independent cases in normal document flow instead of forcing a wide row. Expanded dialog
-variants can use `open` so they remain measurable without one modal hiding the others. Static state
-markup is not evidence that hover, keyboard interaction, focus movement, or announcements work:
+Stack independent cases in normal document flow instead of forcing a wide row. Don't override an
+overlay's position or size just to fit several variants in one page: production modal behavior
+promotes authored `open` dialogs to the top layer, where later dialogs obscure earlier ones.
+Static state markup is not evidence that hover, keyboard interaction, focus movement, or announcements work:
 those still need interaction checks and manual testing. Don't remove a supported variant or add a
 fixture-only CSS fix to make the audit pass.
 

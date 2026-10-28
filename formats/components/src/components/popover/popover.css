@@ -27,15 +27,23 @@
  * @related context-view — Context view is a related anchored surface with a pointer.
  * @example -automatica11y
  * ```html
- * \3c !-- Manual popovers can stay expanded together; each trigger supplies a separate named anchor. -->
  * <p><button type="button" popovertarget="popover-top" style="anchor-name: --audit-popover-top">Top popover</button></p>
- * <div class="pfx-popover -placement-top" id="popover-top" popover="manual" role="region" aria-label="Top popover" style="position-anchor: --audit-popover-top"></div>
+ * <div class="pfx-popover -placement-top" id="popover-top" popover="auto" role="region" aria-label="Top popover" style="position-anchor: --audit-popover-top"></div>
+ * ```
+ * @example -automatica11y
+ * ```html
  * <p><button type="button" popovertarget="popover-bottom" style="anchor-name: --audit-popover-bottom">Bottom popover</button></p>
- * <div class="pfx-popover -placement-bottom" id="popover-bottom" popover="manual" role="region" aria-label="Bottom popover" style="position-anchor: --audit-popover-bottom"></div>
+ * <div class="pfx-popover -placement-bottom" id="popover-bottom" popover="auto" role="region" aria-label="Bottom popover" style="position-anchor: --audit-popover-bottom"></div>
+ * ```
+ * @example -automatica11y
+ * ```html
  * <p><button type="button" popovertarget="popover-start" style="anchor-name: --audit-popover-start">Start popover</button></p>
- * <div class="pfx-popover -placement-start" id="popover-start" popover="manual" role="region" aria-label="Start popover" style="position-anchor: --audit-popover-start"></div>
+ * <div class="pfx-popover -placement-start" id="popover-start" popover="auto" role="region" aria-label="Start popover" style="position-anchor: --audit-popover-start"></div>
+ * ```
+ * @example -automatica11y
+ * ```html
  * <p><button type="button" popovertarget="popover-end" style="anchor-name: --audit-popover-end">End popover</button></p>
- * <div class="pfx-popover -placement-end" id="popover-end" popover="manual" role="region" aria-label="End popover" style="position-anchor: --audit-popover-end"></div>
+ * <div class="pfx-popover -placement-end" id="popover-end" popover="auto" role="region" aria-label="End popover" style="position-anchor: --audit-popover-end"></div>
  * ```
  */
 @scope (.pfx-popover) {

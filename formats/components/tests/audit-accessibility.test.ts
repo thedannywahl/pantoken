@@ -599,6 +599,10 @@ test.each(["success", "pack failure", "fixture gap", "no archetype", "full inven
       expect(coverage.evidence).toHaveLength(9);
       expect(
         coverage.evidence.flatMap((item: { completed: string[] }) => item.completed),
+      ).toHaveLength(68);
+      expect(
+        coverage.evidence.find((item: { directory: string }) => item.directory === "npm-dialog")
+          .completed,
       ).toHaveLength(36);
     } else if (outcome === "no archetype") expect(run).not.toHaveBeenCalled();
     else expect(coverage.evidence.some((item: { error?: string }) => item.error)).toBe(true);

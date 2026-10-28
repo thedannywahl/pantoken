@@ -13,7 +13,7 @@ test("mask: emits exactly one well-formed cssdoc record with no token drift", ()
 
 test("mask docs preserve loading feedback and the audit isolates every empty mask surface", () => {
   const [record] = parseCssDocs(maskCss({ prefix: "instui" }));
-  expect(record.examples).toHaveLength(2);
+  expect(record.examples).toHaveLength(4);
   const targets = resolveExampleTargets(record.examples);
   for (const [index, example] of record.examples.entries()) {
     const window = new Window();
@@ -22,9 +22,7 @@ test("mask docs preserve loading feedback and the audit isolates every empty mas
       if (targets.automatica11y.includes(index)) {
         expect(window.document.querySelector(".instui-spinner")).toBeNull();
         const masks = [...window.document.querySelectorAll(".instui-mask")];
-        expect(masks).toHaveLength(3);
-        expect(masks.some((mask) => mask.classList.contains("-blur"))).toBe(true);
-        expect(masks.some((mask) => mask.classList.contains("-fullscreen"))).toBe(true);
+        expect(masks).toHaveLength(1);
         for (const mask of masks) {
           expect(mask.children).toHaveLength(0);
           expect(mask.getAttribute("aria-label")).toBeTruthy();
