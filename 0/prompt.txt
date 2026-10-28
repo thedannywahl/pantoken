@@ -1,0 +1,77 @@
+give me an overview of what we did and where we are
+
+---
+
+give me an overview of what we did and where we are
+
+---
+
+1. can we use `gh` to test the actions locally?
+3. we need to fix concurrency and snyk is now available.
+2. this should be a separate plan after 1 and 3 are done.
+
+---
+
+1. can we use `gh` to test the actions locally?
+3. we need to fix concurrency and snyk is now available.
+2. this should be a separate plan after 1 and 3 are done.
+
+---
+
+HTTP 404: workflow ci.yml not found on the default branch (https://api.github.com/repos/thedannywahl/automatica11y/actions/workflows/ci.yml)
+
+---
+
+HTTP 404: workflow ci.yml not found on the default branch (https://api.github.com/repos/thedannywahl/automatica11y/actions/workflows/ci.yml)
+
+---
+
+✓ Created workflow_dispatch event for ci.yml at add-automatica11y
+https://github.com/thedannywahl/pantoken/actions/runs/40562948018
+
+To see the created workflow run, try: gh run view 40562948018
+To see runs for this workflow, try: gh run list --workflow="ci.yml"
+
+---
+
+✓ Created workflow_dispatch event for ci.yml at add-automatica11y
+https://github.com/thedannywahl/pantoken/actions/runs/40562948018
+
+To see the created workflow run, try: gh run view 40562948018
+To see runs for this workflow, try: gh run list --workflow="ci.yml"
+
+---
+
+CI will take a while, start on writing the accessibility remediation plan.
+
+---
+
+CI will take a while, start on writing the accessibility remediation plan.
+
+---
+
+start with 0, and let me know when it's done, then move one.
+
+---
+
+start with 0, and let me know when it's done, then move one.
+
+---
+
+<system_notification>
+Shell command "Rebuild audit prerequisites and run the complete page/npm accessibility matrix" (shellId: full-accessibility-matrix) has completed successfully.
+</system_notification>
+
+---
+
+<system_notification>
+Shell command "Rebuild audit prerequisites and run the complete page/npm accessibility matrix" (shellId: full-accessibility-matrix) has completed successfully.
+</system_notification>
+
+---
+
+continue with the expanded library-wide preference work. and any other issues.
+
+---
+
+continue with the expanded library-wide preference work. and any other issues.
