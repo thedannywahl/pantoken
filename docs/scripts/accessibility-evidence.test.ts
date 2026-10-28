@@ -285,7 +285,7 @@ test("handles pages without tokens and skips unrelated unaudited utilities", () 
 
 test("checked-in evidence has supported coverage and retains real review/failure gaps", () => {
   const snapshot = loadAccessibilitySnapshot(snapshotJson);
-  expect(Object.keys(snapshot.records)).toHaveLength(76);
+  expect(Object.keys(snapshot.records)).toHaveLength(82);
   expect(snapshot.records.badge).toHaveLength(4);
   expect(snapshot.records.alert).toHaveLength(8);
   expect(snapshot.records.badge!.every((row) => (row.checks.conditions?.fail ?? 0) === 0)).toBe(
@@ -293,5 +293,6 @@ test("checked-in evidence has supported coverage and retains real review/failure
   );
   expect(snapshot.records.avatar!.some((row) => (row.checks.conditions?.fail ?? 0) > 0)).toBe(true);
   expect(snapshot.records.alert!.some((row) => (row.checks.conditions?.fail ?? 0) > 0)).toBe(true);
-  expect(snapshot.records["agent-shell"]).toBeUndefined();
+  expect(snapshot.records["agent-shell"]).toHaveLength(4);
+  expect(snapshot.records["ai-gradient"]).toBeUndefined();
 });
