@@ -1,0 +1,13 @@
+web components user-facing APIs should support a custom prefix, but they shouldn't be able to set it to null as web-components require a `<prefix>-` on components.
+
+---
+
+web components user-facing APIs should support a custom prefix, but they shouldn't be able to set it to null as web-components require a `<prefix>-` on components.
+
+---
+
+[warning] The comment for formats/interactions/src.withPrefix links to "SENTINEL" which was resolved but is not included in the documentation. To fix this warning export it or add { "@pantoken/interactions": { "SENTINEL": "#" }} to the externalSymbolLinkMappings option
+
+---
+
+[warning] The comment for formats/interactions/src.withPrefix links to "SENTINEL" which was resolved but is not included in the documentation. To fix this warning export it or add { "@pantoken/interactions": { "SENTINEL": "#" }} to the externalSymbolLinkMappings option
