@@ -192,11 +192,17 @@ function addAxeDetails(row: AccessibilityEvidence, axe: Record<string, unknown>)
       }
       increment(detail.counts, result);
       const help = typeof item.help === "string" ? item.help : "";
-      const selectors = array(item.nodes ?? [])
-        .map((node) => object(node).selector)
-        .filter((selector): selector is string => typeof selector === "string")
+      const elements = array(item.nodes ?? [])
+        .map((node) => {
+          const found = object(node);
+          const markup = typeof found.html === "string" ? found.html : "";
+          const source = markup || (typeof found.selector === "string" ? found.selector : "");
+          const compact = source.replace(/\s+/g, " ").trim();
+          return compact.length > 120 ? `${compact.slice(0, 117)}...` : compact;
+        })
+        .filter(Boolean)
         .slice(0, 3);
-      const note = [help, selectors.length ? `Affected: ${selectors.join(", ")}` : ""]
+      const note = [help, elements.length ? `Affected: ${elements.join(" · ")}` : ""]
         .filter(Boolean)
         .join(". ");
       if (note && !detail.notes.includes(note)) detail.notes.push(note);
