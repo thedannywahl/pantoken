@@ -26,6 +26,15 @@ const cli = join(
   "bin/automatica11y.js",
 );
 
+/** A record name, several, or nothing for the whole suite. */
+export type RecordSelection = string | readonly string[] | undefined;
+
+/** Whether `name` is part of `selection`; an empty selection means everything. */
+export function isSelected(selection: RecordSelection, name: string): boolean {
+  if (selection === undefined) return true;
+  return typeof selection === "string" ? selection === name : selection.includes(name);
+}
+
 /** Every explicitly selected, authored example. */
 export interface AuditExample {
   record: string;
@@ -550,7 +559,7 @@ export function renderNpmFixture(item: AuditCase, assets: string): string {
 /** Append authored npm archetype evidence to an existing page suite without modifying tool reports. */
 export async function runNpmAudits(
   out: string,
-  record?: string,
+  record?: RecordSelection,
   run: typeof execute = execute,
   workspace?: WorkspacePackages,
 ): Promise<void> {
@@ -558,13 +567,13 @@ export async function runNpmAudits(
   const entries = definitions.flatMap((definition) => parseCssDocs(definition.rules("instui-")));
   const examples = collectExamples(
     entries,
-    Object.values(ARCHETYPES).filter((name) => !record || name === record),
+    Object.values(ARCHETYPES).filter((name) => isSelected(record, name)),
   );
   const cases = expandCases(examples);
   const coverage: { cases: AuditCase[]; evidence: AuditEvidence[] } = JSON.parse(
     readFileSync(join(out, "coverage.json"), "utf8"),
   );
-  const archetypes = Object.entries(ARCHETYPES).filter(([, name]) => !record || name === record);
+  const archetypes = Object.entries(ARCHETYPES).filter(([, name]) => isSelected(record, name));
   const planned = archetypes.map(([archetype, name]) => ({
     directory: `npm-${archetype}`,
     expected: cases.filter((item) => item.record === name).map((item) => `npm-${item.id}`),
@@ -652,17 +661,18 @@ export async function runNpmAudits(
 }
 /** Build the complete page suite and retain its original reports in a unique local directory. */
 export async function runPageAudits(
-  record?: string,
+  record?: RecordSelection,
   run: typeof execute = execute,
   root: string = repositoryRoot,
 ): Promise<string> {
   const definitions = auditRecords();
-  if (record && !definitions.some((entry) => entry.name === record))
-    throw new Error(`Unknown record: ${record}`);
+  for (const name of [record ?? []].flat())
+    if (!definitions.some((entry) => entry.name === name))
+      throw new Error(`Unknown record: ${name}`);
   const entries = definitions.flatMap((definition) => parseCssDocs(definition.rules("instui-")));
   const examples = collectExamples(
     entries,
-    definitions.filter((entry) => !record || entry.name === record).map((entry) => entry.name),
+    definitions.filter((entry) => isSelected(record, entry.name)).map((entry) => entry.name),
   );
   const cases = expandCases(examples);
   const out = join(root, "a11y-report", new Date().toISOString().replaceAll(":", "-"));
@@ -723,10 +733,12 @@ export async function runPageAudits(
 if (process.argv[1] && resolve(process.argv[1]) === fileURLToPath(import.meta.url)) {
   try {
     const args = process.argv.slice(2);
-    if (args.length && (args.length !== 2 || args[0] !== "--record"))
-      throw new Error("Usage: audit-accessibility.ts [--record <name>]");
-    const out = await runPageAudits(args[1]);
-    await runNpmAudits(out, args[1]);
+    const names = args.filter((_, index) => index % 2 === 1);
+    if (args.length % 2 || args.some((arg, index) => index % 2 === 0 && arg !== "--record"))
+      throw new Error("Usage: audit-accessibility.ts [--record <name>]...");
+    const selection = names.length ? names : undefined;
+    const out = await runPageAudits(selection);
+    await runNpmAudits(out, selection);
   } catch (error) {
     console.error(error);
     process.exitCode = 1;
