@@ -296,6 +296,19 @@ div[class*="language-"]:has(+ .css-example-frame) > pre {
   margin-block-start: 0.5em;
 }
 
+.vp-doc table.pantoken-a11y-table td.pantoken-a11y-details ul {
+  margin: 0.25em 0 0;
+  padding-inline-start: 1.25em;
+}
+
+.vp-doc table.pantoken-a11y-table td.pantoken-a11y-details li {
+  margin: 0;
+}
+
+.vp-doc table.pantoken-a11y-table td.pantoken-a11y-details code {
+  overflow-wrap: anywhere;
+}
+
 /* `@interaction` modifier markers in CSS API tables use the same badge treatment as deprecated/alias,
    but with an interaction-specific violet accent text colour. */
 .vp-doc .instui-pill.pantoken-doc-tag.pantoken-doc-tag-interaction {

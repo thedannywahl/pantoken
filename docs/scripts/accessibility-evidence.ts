@@ -16,6 +16,8 @@ export interface CheckDetail {
   counts: Counts;
   /** Distinct explanations for fail/undetermined results; empty when everything passed. */
   notes: string[];
+  /** Markup of the elements axe flagged, shown as a code list under the notes. */
+  elements: string[];
 }
 
 /** One authored target, preserving page/npm evidence and missing per-state tiers separately. */
@@ -138,6 +140,7 @@ export function loadAccessibilitySnapshot(value: unknown): AccessibilitySnapshot
                 criteria: array(detail.criteria).map(string),
                 counts: counts(detail.counts),
                 notes: array(detail.notes ?? []).map(string),
+                elements: array(detail.elements ?? []).map(string),
               };
             }),
             axe: storedEngine(row.axe),
@@ -187,6 +190,7 @@ function addAxeDetails(row: AccessibilityEvidence, axe: Record<string, unknown>)
           criteria: array(item.wcag ?? []).map(string),
           counts: {},
           notes: [],
+          elements: [],
         };
         row.details.push(detail);
       }
@@ -202,10 +206,9 @@ function addAxeDetails(row: AccessibilityEvidence, axe: Record<string, unknown>)
         })
         .filter(Boolean)
         .slice(0, 3);
-      const note = [help, elements.length ? `Affected: ${elements.join(" · ")}` : ""]
-        .filter(Boolean)
-        .join(". ");
-      if (note && !detail.notes.includes(note)) detail.notes.push(note);
+      if (help && !detail.notes.includes(help)) detail.notes.push(help);
+      for (const element of elements)
+        if (!detail.elements.includes(element)) detail.elements.push(element);
     }
   }
 }
@@ -267,7 +270,14 @@ function readTarget(
           row.flags += flags.length;
           let detail = row.details.find((item) => item.tier === "vsr");
           if (!detail) {
-            detail = { tier: "vsr", name: "announcements", criteria: [], counts: {}, notes: [] };
+            detail = {
+              tier: "vsr",
+              name: "announcements",
+              criteria: [],
+              counts: {},
+              notes: [],
+              elements: [],
+            };
             row.details.push(detail);
           }
           increment(detail.counts, flags.length ? "undetermined" : "pass");
@@ -291,6 +301,7 @@ function readTarget(
                 criteria: array(check.criteria ?? []).map(string),
                 counts: {},
                 notes: [],
+                elements: [],
               };
               row.details.push(detail);
             }
@@ -460,23 +471,34 @@ const matrixHeader = (label: string): string =>
 /** The explanation row spanning every column; columns with identical notes share one paragraph. */
 function detailRow(
   notes: readonly (readonly string[] | undefined)[],
+  elements: readonly (readonly string[] | undefined)[],
   statuses: readonly Status[],
 ): string {
-  const groups = new Map<string, number[]>();
+  const groups = new Map<
+    string,
+    { columns: number[]; note: string; elements: readonly string[] }
+  >();
   statuses.forEach((status, index) => {
     if (status !== "fail" && status !== "review") return;
-    const text_ = (notes[index]?.length ? notes[index] : [text.noResult]).join(" ");
-    groups.set(text_, [...(groups.get(text_) ?? []), index]);
+    const note = (notes[index]?.length ? notes[index] : [text.noResult]).join(" ");
+    const list = elements[index] ?? [];
+    const key = JSON.stringify([note, list]);
+    const group = groups.get(key) ?? { columns: [], note, elements: list };
+    group.columns.push(index);
+    groups.set(key, group);
   });
-  const all = [...groups.values()].flat().length === AUDIT_MATRIX.length && groups.size === 1;
-  const body = [...groups]
-    .map(([note, columns]) => {
+  const all = groups.size === 1 && [...groups.values()][0]!.columns.length === AUDIT_MATRIX.length;
+  const body = [...groups.values()]
+    .map(({ columns, note, elements: list }) => {
       const label = all
         ? ""
         : `<strong>${columns
             .map((i) => html(columnLabel(AUDIT_MATRIX[i]!.theme, AUDIT_MATRIX[i]!.scheme)))
             .join(", ")}:</strong> `;
-      return `<p>${label}${html(note)}</p>`;
+      const items = list.length
+        ? `<ul>${list.map((item) => `<li><code>${html(item)}</code></li>`).join("")}</ul>`
+        : "";
+      return `<p>${label}${html(note)}</p>${items}`;
     })
     .join("");
   return `<tr><td colspan="${AUDIT_MATRIX.length}" class="pantoken-a11y-details">${body}</td></tr>`;
@@ -521,12 +543,15 @@ function tierTable(
     const notes = AUDIT_MATRIX.map((item) => [
       ...new Set(found(item).flatMap((detail) => detail.notes)),
     ]);
+    const elements = AUDIT_MATRIX.map((item) => [
+      ...new Set(found(item).flatMap((detail) => detail.elements)),
+    ]);
     body.push(
       `<tr><th scope="row"${flagged ? ' rowspan="2"' : ""}>${heading}</th>${statuses
         .map((status) => `<td>${pill(status)}</td>`)
         .join("")}</tr>`,
     );
-    if (flagged) body.push(detailRow(notes, statuses));
+    if (flagged) body.push(detailRow(notes, elements, statuses));
   }
   if (!body.length) return [];
   return [
