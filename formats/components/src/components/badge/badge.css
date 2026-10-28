@@ -119,7 +119,9 @@
       inset: 0;
       border: var(--instui-border-width-md) solid var(--pantoken-badge-accent);
       border-radius: inherit;
-      animation: pantoken-badge-pulse 1.2s ease-out infinite;
+      @media (prefers-reduced-motion: no-preference) {
+        animation: pantoken-badge-pulse 1.2s ease-out infinite;
+      }
     }
 
     /* Placement: position the badge over a `.badge-wrapper` target. InstUI's countOffset is 0.5rem. */

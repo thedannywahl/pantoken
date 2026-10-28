@@ -23,9 +23,11 @@
 
 @scope (.pfx-transition) {
   & {
-    transition:
-      opacity var(--duration) var(--timing),
-      transform var(--duration) var(--timing);
+    @media (prefers-reduced-motion: no-preference) {
+      transition:
+        opacity var(--duration) var(--timing),
+        transform var(--duration) var(--timing);
+    }
   }
 
   &.-transition-fade-exiting,

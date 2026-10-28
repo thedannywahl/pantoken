@@ -4,7 +4,50 @@ import { initRemove } from "../src/behaviors/remove.ts";
 
 afterEach(() => {
   vi.useRealTimers();
+  vi.restoreAllMocks();
   document.body.innerHTML = "";
+});
+
+test("reduced motion removes immediately without changing the dismissal timeout", () => {
+  vi.useFakeTimers();
+  const media = window.matchMedia("(prefers-reduced-motion: reduce)");
+  vi.spyOn(media, "matches", "get").mockReturnValue(true);
+  vi.spyOn(window, "matchMedia").mockReturnValue(media);
+  const alert = document.body.appendChild(document.createElement("div"));
+  initRemove(alert, { timeout: 50 });
+  vi.advanceTimersByTime(49);
+  expect(alert.isConnected).toBe(true);
+  vi.advanceTimersByTime(1);
+  expect(alert.isConnected).toBe(false);
+  expect(vi.getTimerCount()).toBe(0);
+});
+
+test("enabling reduced motion finishes a pending fade and cleanup detaches the listener", () => {
+  vi.useFakeTimers();
+  const media = window.matchMedia("(prefers-reduced-motion: reduce)");
+  const matches = vi.spyOn(media, "matches", "get").mockReturnValue(false);
+  vi.spyOn(window, "matchMedia").mockReturnValue(media);
+  const detach = vi.spyOn(media, "removeEventListener");
+  const alert = document.body.appendChild(document.createElement("div"));
+  initRemove(alert).dismiss();
+  expect(alert.isConnected).toBe(true);
+  matches.mockReturnValue(true);
+  media.dispatchEvent(new Event("change"));
+  expect(alert.isConnected).toBe(false);
+  expect(vi.getTimerCount()).toBe(0);
+  expect(detach).toHaveBeenCalledWith("change", expect.any(Function));
+});
+
+test("a reduced-motion dismissal remains cancelable", () => {
+  const media = window.matchMedia("(prefers-reduced-motion: reduce)");
+  vi.spyOn(media, "matches", "get").mockReturnValue(true);
+  vi.spyOn(window, "matchMedia").mockReturnValue(media);
+  const alert = document.body.appendChild(document.createElement("div"));
+  alert.addEventListener("dismiss", (event) => event.preventDefault());
+  const handle = initRemove(alert);
+  handle.dismiss();
+  expect(alert.isConnected).toBe(true);
+  handle.cleanup();
 });
 
 test("reads --timeout as milliseconds, dispatches dismiss, and fades before removal", () => {

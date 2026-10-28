@@ -15,7 +15,9 @@ test("progress bar meter colours are distinct semantic backgrounds on the root, 
     /&:is\(\.-color-success,\s*\.-meter-color-success\)\s*>\s*\.bar\s*\{\s*background:\s*var\(--instui-color-background-success\)/u,
   );
   expect(css).toContain("var(--instui-color-background-error)");
-  expect(css).toMatch(/&\.-should-animate\s*>\s*\.bar\s*\{\s*transition:\s*all\s*0\.5s/u);
+  expect(css).toMatch(
+    /&\.-should-animate\s*>\s*\.bar\s*\{\s*@media \(prefers-reduced-motion: no-preference\)\s*\{\s*transition:\s*all\s*0\.5s/u,
+  );
   expect(css).toContain("--value: var(--value-now)");
   expect(css).toContain("--min: 0");
   expect(css).toContain("--max: var(--value-max)");

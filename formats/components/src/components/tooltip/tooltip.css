@@ -75,7 +75,9 @@
       opacity: 0;
       visibility: hidden;
       pointer-events: auto;
-      transition: opacity 0.15s ease;
+      @media (prefers-reduced-motion: no-preference) {
+        transition: opacity 0.15s ease;
+      }
 
       /* Bridge the visual gap so moving from trigger to bubble doesn't leave the wrapper. */
       &::before {

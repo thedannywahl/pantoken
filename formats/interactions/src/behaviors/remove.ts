@@ -1,3 +1,5 @@
+import { motionPreference } from "../lib/motion.ts";
+
 /** Options for a timeout-based removal. */
 export interface RemoveOptions {
   /** Milliseconds before dismissal. Defaults to the target's computed `--timeout`. */
@@ -48,6 +50,10 @@ export function initRemove(target: HTMLElement, options: RemoveOptions = {}): Re
   let fallback: ReturnType<typeof setTimeout> | undefined;
   let transitionEnd: ((event: TransitionEvent) => void) | undefined;
   let removed = false;
+  const motion = motionPreference(target);
+  const onMotion = (): void => {
+    if (motion?.matches && transitionEnd) remove();
+  };
 
   if (transition === "fade") {
     target.classList.add("instui-transition", "-fade-entered");
@@ -57,6 +63,7 @@ export function initRemove(target: HTMLElement, options: RemoveOptions = {}): Re
     clearTimeout(timer);
     clearTimeout(fallback);
     if (transitionEnd) target.removeEventListener("transitionend", transitionEnd);
+    motion?.removeEventListener("change", onMotion);
   };
 
   const remove = (): void => {
@@ -75,7 +82,7 @@ export function initRemove(target: HTMLElement, options: RemoveOptions = {}): Re
     });
     if (!target.dispatchEvent(event)) return;
 
-    if (transition === "none") {
+    if (transition === "none" || motion?.matches) {
       remove();
       return;
     }
@@ -90,6 +97,7 @@ export function initRemove(target: HTMLElement, options: RemoveOptions = {}): Re
   };
 
   if (Number.isFinite(timeout) && timeout > 0) timer = setTimeout(dismiss, timeout);
+  motion?.addEventListener("change", onMotion);
 
   return { cleanup, dismiss };
 }

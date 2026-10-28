@@ -54,9 +54,11 @@
     border-radius: 50%;
     background: var(--instui-component-radio-input-background-color);
     cursor: pointer;
-    transition:
-      border-color 0.15s ease,
-      background-color 0.15s ease;
+    @media (prefers-reduced-motion: no-preference) {
+      transition:
+        border-color 0.15s ease,
+        background-color 0.15s ease;
+    }
   }
 
   &:not(.-variant-toggle):not(.-toggle) input[type="radio"]::before {
@@ -72,7 +74,9 @@
     border-radius: 50%;
     background: var(--instui-component-radio-input-border-selected-color);
     transform: scale(0);
-    transition: transform 0.1s ease;
+    @media (prefers-reduced-motion: no-preference) {
+      transition: transform 0.1s ease;
+    }
   }
 
   &:not(.-variant-toggle):not(.-toggle) input[type="radio"]:hover {
@@ -173,9 +177,11 @@
     text-transform: uppercase;
     white-space: nowrap;
     cursor: pointer;
-    transition:
-      background-color 0.15s ease,
-      color 0.15s ease;
+    @media (prefers-reduced-motion: no-preference) {
+      transition:
+        background-color 0.15s ease,
+        color 0.15s ease;
+    }
   }
 
   /* Clip the native control (still focusable + in the a11y tree); the label is the button. */

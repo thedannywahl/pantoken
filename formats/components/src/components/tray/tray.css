@@ -116,10 +116,12 @@
     &[popover] {
       --tray-slide-x: -100%;
       --tray-slide-y: 0%;
-      transition:
-        transform 0.2s ease,
-        overlay 0.2s allow-discrete,
-        display 0.2s allow-discrete;
+      @media (prefers-reduced-motion: no-preference) {
+        transition:
+          transform 0.2s ease,
+          overlay 0.2s allow-discrete,
+          display 0.2s allow-discrete;
+      }
       transform: translate(0, 0);
     }
 

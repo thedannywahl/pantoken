@@ -158,7 +158,9 @@
   &:indeterminate > .bar {
     position: absolute;
     width: 40%;
-    animation: pantoken-progress-indeterminate 1.4s ease-in-out infinite;
+    @media (prefers-reduced-motion: no-preference) {
+      animation: pantoken-progress-indeterminate 1.4s ease-in-out infinite;
+    }
   }
 
   &:indeterminate > .value {
@@ -213,6 +215,8 @@
 
   /* Mount/value transition — the interactions layer toggles `-should-animate` on value changes. */
   &.-should-animate > .bar {
-    transition: all 0.5s;
+    @media (prefers-reduced-motion: no-preference) {
+      transition: all 0.5s;
+    }
   }
 }

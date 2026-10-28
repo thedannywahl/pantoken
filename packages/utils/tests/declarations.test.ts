@@ -63,3 +63,11 @@ test("forced colors remove the resting outline and restore keyboard and focus-wi
     expect(forced).not.toContain("forced-color-adjust");
   }
 });
+
+test("focus transitions stop automatically for default and custom selectors under reduced motion", () => {
+  for (const selector of [FOCUSABLE_SELECTOR, ".my-widget"]) {
+    expect(focusOutlineRules(selector)).toContain(
+      `@media (prefers-reduced-motion: reduce) {\n  :where(${selector}), :where(.-focus-within) { transition: none; }\n}`,
+    );
+  }
+});

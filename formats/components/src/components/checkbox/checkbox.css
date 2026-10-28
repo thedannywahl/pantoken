@@ -88,9 +88,11 @@
   background: var(--instui-component-checkbox-background-color);
   cursor: pointer;
 
-  transition:
-    background-color 0.15s ease,
-    border-color 0.15s ease;
+  @media (prefers-reduced-motion: no-preference) {
+    transition:
+      background-color 0.15s ease,
+      border-color 0.15s ease;
+  }
 }
 
 .pfx-checkbox:not(.pfx-checkbox.-variant-toggle) input[type="checkbox"]::before {
@@ -106,7 +108,9 @@
   -webkit-mask: var(--pantoken-cb-glyph);
   mask: var(--pantoken-cb-glyph);
   transform: scale(0);
-  transition: transform 0.1s ease;
+  @media (prefers-reduced-motion: no-preference) {
+    transition: transform 0.1s ease;
+  }
 }
 
 .pfx-checkbox:not(.pfx-checkbox.-variant-toggle) input[type="checkbox"]:hover {
@@ -211,7 +215,9 @@
      track uses the neutral muted background; the handle position and on-color signal the state. */
   background: var(--instui-color-background-muted);
   cursor: pointer;
-  transition: background-color 0.15s ease;
+  @media (prefers-reduced-motion: no-preference) {
+    transition: background-color 0.15s ease;
+  }
 }
 
 .pfx-checkbox.-variant-toggle input[type="checkbox"]::before {
@@ -226,7 +232,9 @@
   border-radius: 50%;
   border: var(--pantoken-toggle-bw) solid var(--instui-color-stroke-base);
   background: var(--instui-component-radio-input-toggle-handle-text);
-  transition: inset-inline-start 0.15s ease;
+  @media (prefers-reduced-motion: no-preference) {
+    transition: inset-inline-start 0.15s ease;
+  }
 }
 
 /* A state glyph riding on the handle: an X when off, a check when on, in the track color. */
@@ -241,7 +249,9 @@
   background: var(--instui-color-text-muted);
   -webkit-mask: var(--instui-icon-x) center / 58% no-repeat;
   mask: var(--instui-icon-x) center / 58% no-repeat;
-  transition: inset-inline-start 0.15s ease;
+  @media (prefers-reduced-motion: no-preference) {
+    transition: inset-inline-start 0.15s ease;
+  }
 }
 
 .pfx-checkbox.-variant-toggle input[type="checkbox"]:checked {

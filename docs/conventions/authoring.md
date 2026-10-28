@@ -5,6 +5,13 @@ CSS. Each documented record is one file; the bucket `index.ts` is a barrel + reg
 
 ## Source layout
 
+User preferences are intrinsic behavior, not modifiers. Gate decorative transitions and animations
+with `prefers-reduced-motion: no-preference` in each record so standalone sheets and shadow styles
+follow the same policy. Keep loading and progress indicators visible when animation stops, and
+apply state changes immediately. Interaction behaviors must also respect the live preference:
+don't smooth-scroll, delay removal for a skipped fade, or hide progress behind a mount animation.
+Do not shorten loading timeouts or cancel announcements in the name of reducing motion.
+
 - `src/components/<name>/index.ts` + `<name>.css` (`COMPONENTS` registry).
 - `src/components/<name>/members/<member>/index.ts` + `<member>.css` — a promoted sub-component (see
   "Sub-components (`@memberOf`)" below).
