@@ -1,0 +1,5 @@
+when there's a failure, or a Mnaual review required then the label for that row should stretch across two rows, and there should be a second row that spans all the brands that includes the details. for example Alert's forced-colors-focus-visible fails across all themes.
+
+---
+
+when there's a failure, or a Mnaual review required then the label for that row should stretch across two rows, and there should be a second row that spans all the brands that includes the details. for example Alert's forced-colors-focus-visible fails across all themes.
