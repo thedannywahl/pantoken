@@ -1,0 +1,56 @@
+{
+  "cli_version": "0.12.2",
+  "checkpoint_id": "01M61D8X5R6TXT7KC3X8014H66",
+  "session_id": "0bfd124c-7c1a-40a9-8ba1-7018fcbc9acc",
+  "strategy": "manual-commit",
+  "created_at": "2026-10-28T14:05:24.696601Z",
+  "branch": "add-automatica11y",
+  "checkpoints_count": 1,
+  "save_step_count": 1,
+  "files_touched": [
+    ".changeset/cuddly-apples-greet.md",
+    "docs/conventions/build-and-docs.md",
+    "formats/css/package.json",
+    "formats/css/vite.config.ts",
+    "scripts/quality/docs-startup.test.ts"
+  ],
+  "agent": "Copilot CLI",
+  "model": "claude-sonnet-5.5",
+  "turn_id": "3bcf54faad28",
+  "checkpoint_transcript_start": 321,
+  "transcript_lines_at_start": 321,
+  "compact_transcript_start": 28,
+  "token_usage": {
+    "input_tokens": 0,
+    "cache_creation_tokens": 0,
+    "cache_read_tokens": 0,
+    "output_tokens": 0,
+    "api_call_count": 0
+  },
+  "redaction": {
+    "replacements": 63,
+    "layers": {
+      "betterleaks": 0,
+      "connection_string": 0,
+      "credential_key": 0,
+      "credential_value": 0,
+      "credentialed_uri": 0,
+      "custom": 0,
+      "entropy": 966,
+      "goredact": 0,
+      "key_context": 0,
+      "pii": 0,
+      "provider_token": 0,
+      "shell_stdin": 0
+    },
+    "custom_rules_active": 2,
+    "pii": {
+      "EMAIL": 0,
+      "IP": 0,
+      "PHONE": 0
+    }
+  },
+  "session_metrics": {
+    "turn_count": 2
+  }
+}

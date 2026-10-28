@@ -1,0 +1,5 @@
+web components user-facing APIs should support a custom prefix, but they shouldn't be able to set it to null as web-components require a `<prefix>-` on components.
+
+---
+
+web components user-facing APIs should support a custom prefix, but they shouldn't be able to set it to null as web-components require a `<prefix>-` on components.
