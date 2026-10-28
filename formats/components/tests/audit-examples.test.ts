@@ -4,8 +4,19 @@ import { resolveExampleTargets } from "@pantoken/utils/example-targets";
 import { Window } from "happy-dom";
 import { COMPONENTS } from "../src/components/index.ts";
 import { focus } from "../src/declarations/focus/index.ts";
+import { PLUGIN_AUDIT_RECORDS } from "../scripts/audit-plugin-components.ts";
 
 const records = [...COMPONENTS, focus];
+
+test.each(PLUGIN_AUDIT_RECORDS)("documents and audits the plugin component $name", (record) => {
+  const entry = parseCssDocs(record.rules("instui-")).find(
+    (candidate) => candidate.name === record.name,
+  );
+  expect(entry?.accessibility?.trim(), record.name).toBeTruthy();
+  expect(resolveExampleTargets(entry!.examples).automatica11y.length, record.name).toBeGreaterThan(
+    0,
+  );
+});
 
 test.each(records)("documents accessibility guidance for $name", (record) => {
   const entry = parseCssDocs(record.rules("instui-")).find(

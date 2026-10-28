@@ -13,6 +13,7 @@ import { Window } from "happy-dom";
 import { COMPONENTS } from "../src/components/index.ts";
 import { focus } from "../src/declarations/focus/index.ts";
 import { AUDIT_MATRIX } from "./audit-matrix.ts";
+import { PLUGIN_AUDIT_RECORDS, PLUGIN_STYLESHEET } from "./audit-plugin-components.ts";
 import {
   loadWorkspacePackages,
   type WorkspacePackages,
@@ -161,6 +162,7 @@ export function renderPage(item: AuditCase): string {
     "tokens/schemes.css",
     "components/base.css",
     "components/components.css",
+    PLUGIN_STYLESHEET,
     "components/utilities.css",
     "components/icons.css",
     "components/fonts.css",
@@ -654,7 +656,7 @@ export async function runPageAudits(
   run: typeof execute = execute,
   root: string = repositoryRoot,
 ): Promise<string> {
-  const definitions = [...COMPONENTS, focus];
+  const definitions = [...COMPONENTS, focus, ...PLUGIN_AUDIT_RECORDS];
   if (record && !definitions.some((entry) => entry.name === record))
     throw new Error(`Unknown record: ${record}`);
   const entries = definitions.flatMap((definition) => parseCssDocs(definition.rules("instui-")));
@@ -671,6 +673,7 @@ export async function runPageAudits(
     ["formats/components/assets", "assets"],
     ["formats/css/dist", "tokens"],
     ["formats/interactions/dist", "interactions"],
+    ["plugins/pantoken/custom-components/dist", "custom-components"],
   ])
     cpSync(join(root, source), join(assets, destination), { recursive: true });
   for (const item of cases) writeFileSync(join(out, "pages", `${item.id}.html`), renderPage(item));

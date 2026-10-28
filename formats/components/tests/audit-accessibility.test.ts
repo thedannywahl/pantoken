@@ -202,6 +202,7 @@ test.each(["success", "setup failure", "audit failure"])(
       "formats/components/assets",
       "formats/css/dist",
       "formats/interactions/dist",
+      "plugins/pantoken/custom-components/dist",
     ]) {
       mkdirSync(join(root, path), { recursive: true });
     }
@@ -233,6 +234,7 @@ test.each(["success", "setup failure", "audit failure"])(
     expect(readdirSync(join(output, "pages", "assets"))).toEqual([
       "assets",
       "components",
+      "custom-components",
       "interactions",
       "tokens",
     ]);
