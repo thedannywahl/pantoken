@@ -83,7 +83,8 @@ Keep the original `a11y-report/<run>/` files or CI artifact for investigation.
 
 The current snapshot comes from `2026-10-28T02-50-41.851Z`. Its page assets predate the final
 forced-color painter fixes, and that run didn't record an exact source revision. The API section
-no longer carries a preamble about that; the provenance stays in the downloadable evidence. It's
+shows only summary tables and the manual-review caveat; it has no preamble, download link, or
+per-run details. The full provenance stays in `results.json`. It's
 historical evidence, not verification of the current code. Refreshing evidence is explicit;
 a code change alone doesn't update or validate these results. Never turn missing evidence into a
 pass or publish a combined engine score. Page/npm evidence and supplemental-state coverage differ.

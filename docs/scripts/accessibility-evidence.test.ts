@@ -182,9 +182,11 @@ test("renders provenance, separate findings, missing coverage, and escaped data 
   expect(md).not.toContain("Historical automated evidence");
   expect(md).not.toContain("Supported schemes");
   expect(md).toContain("These automated results do not establish");
-  expect(md).toContain("example-violation");
+  expect(md).not.toContain("Evidence details");
+  expect(md).not.toContain("results.json");
+  expect(md).not.toContain("isn't equivalent");
   expect(md.indexOf("Outdated browser")).toBeLessThan(md.indexOf("| Theme"));
-  expect(md).toContain("&lt;script&gt;");
+  expect(md).not.toContain("Overflow");
   expect(md).not.toContain("<script>");
   expect(md).not.toContain("[x](javascript:");
   expect(md).not.toContain("score");

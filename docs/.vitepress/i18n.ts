@@ -11,7 +11,6 @@ import { loadConfig, resolveMessagesForLocale, resolveTier } from "@pantoken/i18
 export const ACCESSIBILITY_AUDIT_STRINGS = {
   notAudited:
     "Not audited: no checked-in evidence covers this record. Results from other components don't establish coverage for this one.",
-  download: "Download audit evidence (JSON)",
   theme: "Theme",
   scheme: "Scheme",
   evidence: "Evidence",
@@ -26,10 +25,6 @@ export const ACCESSIBILITY_AUDIT_STRINGS = {
     "Engine counts are separate and may overlap. Review entries need human assessment; zero violations isn't a conformance claim.",
   checks: "Checks",
   simulatedFlags: "Simulated screen-reader flags",
-  limitations:
-    "Page and npm evidence aren't equivalent. Missing tiers, undetermined checks, and not-applicable results aren't passes. Supplemental npm states may lack interaction, computed, and condition checks. Simulated screen-reader output isn't real assistive technology. Automated checks can't judge meaningful labels, reading order in real use, all visual overlap, or JavaScript-driven motion.",
-  details: "Evidence details and review items",
-  tools: "Tools",
   caveat:
     "These automated results do not establish that the page meets WCAG; manual review is still needed.",
 } as const;

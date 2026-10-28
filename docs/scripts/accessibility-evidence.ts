@@ -333,8 +333,6 @@ export function accessibilitySection(name: string, snapshot: AccessibilitySnapsh
   for (const warning of new Set(rows.flatMap((row) => row.warnings)))
     lines.push(`> ${cell(warning)}`, "");
   lines.push(
-    `[${text.download}](/accessibility/results.json)`,
-    "",
     `| ${text.theme} | ${text.scheme} | ${text.evidence} | ${text.configurations} | ${text.tiers} |`,
     "| --- | --- | --- | ---: | --- |",
   );
@@ -377,28 +375,9 @@ export function accessibilitySection(name: string, snapshot: AccessibilitySnapsh
     "",
     `${text.simulatedFlags}: ${rows.reduce((total, row) => total + row.flags, 0)}.`,
     "",
-    text.limitations,
-    "",
-    "### " + text.details,
+    text.caveat,
     "",
   );
-  for (const row of rows) {
-    lines.push(
-      `- ${cell(row.target)} (${cell(row.date)}). ${cell(row.run)}.`,
-      `  - ${text.tools}: ${Object.entries(row.tools)
-        .map(([name, version]) => `${cell(name)} ${cell(version)}`)
-        .join(", ")}.`,
-    );
-    for (const engine of ["axe", "ibm"] as const) {
-      for (const [rule, count] of Object.entries(row[engine].violationRules))
-        lines.push(`  - ${engine}: ${cell(rule)} (${text.violations}: ${count}).`);
-      for (const [rule, count] of Object.entries(row[engine].reviewRules))
-        lines.push(`  - ${engine}: ${cell(rule)} (${text.reviews}: ${count}).`);
-    }
-    for (const detail of [...row.findings, ...new Set(row.notices)])
-      lines.push(`  - ${cell(detail)}`);
-  }
-  lines.push("", text.caveat, "");
   return lines.join("\n");
 }
 
