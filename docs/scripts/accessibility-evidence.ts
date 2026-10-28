@@ -196,16 +196,18 @@ function addAxeDetails(row: AccessibilityEvidence, axe: Record<string, unknown>)
       }
       increment(detail.counts, result);
       const help = typeof item.help === "string" ? item.help : "";
+      // axe's selector is the shortest unique one, so it names the modifier (`.-color-ai`) or part
+      // (`.weekday`) that differs from the passing siblings rather than the whole example.
       const elements = array(item.nodes ?? [])
         .map((node) => {
           const found = object(node);
+          const selector = typeof found.selector === "string" ? found.selector.trim() : "";
+          if (selector) return selector.length > 80 ? `${selector.slice(0, 77)}...` : selector;
           const markup = typeof found.html === "string" ? found.html : "";
-          const source = markup || (typeof found.selector === "string" ? found.selector : "");
-          const compact = source.replace(/\s+/g, " ").trim();
-          return compact.length > 120 ? `${compact.slice(0, 117)}...` : compact;
+          return /^<([a-z][\w-]*)/i.exec(markup)?.[1] ?? "";
         })
         .filter(Boolean)
-        .slice(0, 3);
+        .slice(0, 5);
       if (help && !detail.notes.includes(help)) detail.notes.push(help);
       for (const element of elements)
         if (!detail.elements.includes(element)) detail.elements.push(element);

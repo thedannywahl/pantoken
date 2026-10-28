@@ -1822,7 +1822,7 @@
               "undetermined": 1
             },
             "notes": ["Elements must meet minimum color contrast ratio thresholds"],
-            "elements": ["<span class=\"instui-avatar -color-ai --me-sm\">AI</span>"]
+            "elements": [".-color-ai"]
           },
           {
             "tier": "conditions",
@@ -1995,7 +1995,7 @@
               "undetermined": 1
             },
             "notes": ["Elements must meet minimum color contrast ratio thresholds"],
-            "elements": ["<span class=\"instui-avatar -color-ai --me-sm\">AI</span>"]
+            "elements": [".-color-ai"]
           },
           {
             "tier": "conditions",
@@ -2168,7 +2168,7 @@
               "undetermined": 1
             },
             "notes": ["Elements must meet minimum color contrast ratio thresholds"],
-            "elements": ["<span class=\"instui-avatar -color-ai --me-sm\">AI</span>"]
+            "elements": [".-color-ai"]
           },
           {
             "tier": "conditions",
@@ -2341,7 +2341,7 @@
               "undetermined": 1
             },
             "notes": ["Elements must meet minimum color contrast ratio thresholds"],
-            "elements": ["<span class=\"instui-avatar -color-ai --me-sm\">AI</span>"]
+            "elements": [".-color-ai"]
           },
           {
             "tier": "conditions",
@@ -6790,7 +6790,7 @@
               "undetermined": 1
             },
             "notes": ["Elements must meet minimum color contrast ratio thresholds"],
-            "elements": ["<div class=\"title\">What's new</div>"]
+            "elements": [".title"]
           },
           {
             "tier": "conditions",
@@ -6952,7 +6952,7 @@
               "undetermined": 1
             },
             "notes": ["Elements must meet minimum color contrast ratio thresholds"],
-            "elements": ["<div class=\"title\">What's new</div>"]
+            "elements": [".title"]
           },
           {
             "tier": "conditions",
@@ -7117,9 +7117,7 @@
               "undetermined": 1
             },
             "notes": ["Elements must only use permitted ARIA attributes"],
-            "elements": [
-              "<div class=\"instui-calendar\" aria-label=\"March 2026\"><div class=\"nav\"><strong>March 2026</strong></div><div class=\"gr..."
-            ]
+            "elements": [".instui-calendar"]
           },
           {
             "tier": "rules",
@@ -7129,7 +7127,7 @@
               "undetermined": 1
             },
             "notes": ["Elements must meet minimum color contrast ratio thresholds"],
-            "elements": ["<span class=\"weekday\">Sunday</span>"]
+            "elements": [".weekday"]
           },
           {
             "tier": "conditions",
@@ -7292,9 +7290,7 @@
               "undetermined": 1
             },
             "notes": ["Elements must only use permitted ARIA attributes"],
-            "elements": [
-              "<div class=\"instui-calendar\" aria-label=\"March 2026\"><div class=\"nav\"><strong>March 2026</strong></div><div class=\"gr..."
-            ]
+            "elements": [".instui-calendar"]
           },
           {
             "tier": "rules",
@@ -7304,7 +7300,7 @@
               "undetermined": 1
             },
             "notes": ["Elements must meet minimum color contrast ratio thresholds"],
-            "elements": ["<span class=\"weekday\">Sunday</span>"]
+            "elements": [".weekday"]
           },
           {
             "tier": "conditions",
@@ -7467,9 +7463,7 @@
               "undetermined": 1
             },
             "notes": ["Elements must only use permitted ARIA attributes"],
-            "elements": [
-              "<div class=\"instui-calendar\" aria-label=\"March 2026\"><div class=\"nav\"><strong>March 2026</strong></div><div class=\"gr..."
-            ]
+            "elements": [".instui-calendar"]
           },
           {
             "tier": "rules",
@@ -7479,7 +7473,7 @@
               "undetermined": 1
             },
             "notes": ["Elements must meet minimum color contrast ratio thresholds"],
-            "elements": ["<span class=\"weekday\">Sunday</span>"]
+            "elements": [".weekday"]
           },
           {
             "tier": "conditions",
@@ -7642,9 +7636,7 @@
               "undetermined": 1
             },
             "notes": ["Elements must only use permitted ARIA attributes"],
-            "elements": [
-              "<div class=\"instui-calendar\" aria-label=\"March 2026\"><div class=\"nav\"><strong>March 2026</strong></div><div class=\"gr..."
-            ]
+            "elements": [".instui-calendar"]
           },
           {
             "tier": "rules",
@@ -7654,7 +7646,7 @@
               "undetermined": 1
             },
             "notes": ["Elements must meet minimum color contrast ratio thresholds"],
-            "elements": ["<span class=\"weekday\">Sunday</span>"]
+            "elements": [".weekday"]
           },
           {
             "tier": "conditions",
@@ -7819,9 +7811,7 @@
               "undetermined": 1
             },
             "notes": ["Elements must only use permitted ARIA attributes"],
-            "elements": [
-              "<div class=\"instui-calendar\" aria-label=\"March 2026\"><div class=\"nav\"><strong>March 2026</strong></div><div class=\"gr..."
-            ]
+            "elements": [".instui-calendar"]
           },
           {
             "tier": "rules",
@@ -7831,7 +7821,7 @@
               "undetermined": 1
             },
             "notes": ["Elements must meet minimum color contrast ratio thresholds"],
-            "elements": ["<span class=\"weekday\">Sunday</span>"]
+            "elements": [".weekday"]
           },
           {
             "tier": "conditions",
@@ -7994,9 +7984,7 @@
               "undetermined": 1
             },
             "notes": ["Elements must only use permitted ARIA attributes"],
-            "elements": [
-              "<div class=\"instui-calendar\" aria-label=\"March 2026\"><div class=\"nav\"><strong>March 2026</strong></div><div class=\"gr..."
-            ]
+            "elements": [".instui-calendar"]
           },
           {
             "tier": "rules",
@@ -8006,7 +7994,7 @@
               "undetermined": 1
             },
             "notes": ["Elements must meet minimum color contrast ratio thresholds"],
-            "elements": ["<span class=\"weekday\">Sunday</span>"]
+            "elements": [".weekday"]
           },
           {
             "tier": "conditions",
@@ -8169,9 +8157,7 @@
               "undetermined": 1
             },
             "notes": ["Elements must only use permitted ARIA attributes"],
-            "elements": [
-              "<div class=\"instui-calendar\" aria-label=\"March 2026\"><div class=\"nav\"><strong>March 2026</strong></div><div class=\"gr..."
-            ]
+            "elements": [".instui-calendar"]
           },
           {
             "tier": "rules",
@@ -8181,7 +8167,7 @@
               "undetermined": 1
             },
             "notes": ["Elements must meet minimum color contrast ratio thresholds"],
-            "elements": ["<span class=\"weekday\">Sunday</span>"]
+            "elements": [".weekday"]
           },
           {
             "tier": "conditions",
@@ -8344,9 +8330,7 @@
               "undetermined": 1
             },
             "notes": ["Elements must only use permitted ARIA attributes"],
-            "elements": [
-              "<div class=\"instui-calendar\" aria-label=\"March 2026\"><div class=\"nav\"><strong>March 2026</strong></div><div class=\"gr..."
-            ]
+            "elements": [".instui-calendar"]
           },
           {
             "tier": "rules",
@@ -8356,7 +8340,7 @@
               "undetermined": 1
             },
             "notes": ["Elements must meet minimum color contrast ratio thresholds"],
-            "elements": ["<span class=\"weekday\">Sunday</span>"]
+            "elements": [".weekday"]
           },
           {
             "tier": "conditions",
@@ -15031,7 +15015,7 @@
               "undetermined": 1
             },
             "notes": ["Elements must meet minimum color contrast ratio thresholds"],
-            "elements": ["<span class=\"label\" id=\"audit-email-label\">Email address</span>"]
+            "elements": ["#audit-email-label"]
           },
           {
             "tier": "conditions",
@@ -15284,7 +15268,7 @@
               "undetermined": 1
             },
             "notes": ["Elements must meet minimum color contrast ratio thresholds"],
-            "elements": ["<span class=\"label\" id=\"audit-email-label\">Email address</span>"]
+            "elements": ["#audit-email-label"]
           },
           {
             "tier": "conditions",
@@ -15530,9 +15514,7 @@
               "undetermined": 1
             },
             "notes": ["Elements must meet minimum color contrast ratio thresholds"],
-            "elements": [
-              "<select class=\"instui-simple-select\"> <option>CA</option> <option>NY</option> <option>TX</option> </select>"
-            ]
+            "elements": ["select"]
           },
           {
             "tier": "conditions",
@@ -15696,9 +15678,7 @@
               "undetermined": 1
             },
             "notes": ["Elements must meet minimum color contrast ratio thresholds"],
-            "elements": [
-              "<select class=\"instui-simple-select\"> <option>CA</option> <option>NY</option> <option>TX</option> </select>"
-            ]
+            "elements": ["select"]
           },
           {
             "tier": "conditions",
@@ -15862,9 +15842,7 @@
               "undetermined": 1
             },
             "notes": ["Elements must meet minimum color contrast ratio thresholds"],
-            "elements": [
-              "<select class=\"instui-simple-select\"> <option>CA</option> <option>NY</option> <option>TX</option> </select>"
-            ]
+            "elements": ["select"]
           },
           {
             "tier": "conditions",
@@ -16028,9 +16006,7 @@
               "undetermined": 1
             },
             "notes": ["Elements must meet minimum color contrast ratio thresholds"],
-            "elements": [
-              "<select class=\"instui-simple-select\"> <option>CA</option> <option>NY</option> <option>TX</option> </select>"
-            ]
+            "elements": ["select"]
           },
           {
             "tier": "conditions",
@@ -23159,9 +23135,7 @@
               "undetermined": 1
             },
             "notes": ["ARIA attributes must conform to valid values"],
-            "elements": [
-              "<button class=\"instui-button\" type=\"button\" popovertarget=\"actions-menu\" aria-haspopup=\"menu\" aria-controls=\"actions-..."
-            ]
+            "elements": [".instui-button"]
           },
           {
             "tier": "conditions",
@@ -23324,9 +23298,7 @@
               "undetermined": 1
             },
             "notes": ["ARIA attributes must conform to valid values"],
-            "elements": [
-              "<button class=\"instui-button\" type=\"button\" popovertarget=\"actions-menu\" aria-haspopup=\"menu\" aria-controls=\"actions-..."
-            ]
+            "elements": [".instui-button"]
           },
           {
             "tier": "conditions",
@@ -23489,9 +23461,7 @@
               "undetermined": 1
             },
             "notes": ["ARIA attributes must conform to valid values"],
-            "elements": [
-              "<button class=\"instui-button\" type=\"button\" popovertarget=\"actions-menu\" aria-haspopup=\"menu\" aria-controls=\"actions-..."
-            ]
+            "elements": [".instui-button"]
           },
           {
             "tier": "conditions",
@@ -23654,9 +23624,7 @@
               "undetermined": 1
             },
             "notes": ["ARIA attributes must conform to valid values"],
-            "elements": [
-              "<button class=\"instui-button\" type=\"button\" popovertarget=\"actions-menu\" aria-haspopup=\"menu\" aria-controls=\"actions-..."
-            ]
+            "elements": [".instui-button"]
           },
           {
             "tier": "conditions",
@@ -23840,9 +23808,7 @@
               "undetermined": 2
             },
             "notes": ["ARIA attributes must conform to valid values"],
-            "elements": [
-              "<button class=\"instui-button\" type=\"button\" popovertarget=\"actions-menu\" aria-haspopup=\"menu\" aria-controls=\"actions-..."
-            ]
+            "elements": [".instui-button"]
           },
           {
             "tier": "conditions",
@@ -24116,9 +24082,7 @@
               "undetermined": 2
             },
             "notes": ["ARIA attributes must conform to valid values"],
-            "elements": [
-              "<button class=\"instui-button\" type=\"button\" popovertarget=\"actions-menu\" aria-haspopup=\"menu\" aria-controls=\"actions-..."
-            ]
+            "elements": [".instui-button"]
           },
           {
             "tier": "conditions",
@@ -24392,9 +24356,7 @@
               "undetermined": 2
             },
             "notes": ["ARIA attributes must conform to valid values"],
-            "elements": [
-              "<button class=\"instui-button\" type=\"button\" popovertarget=\"actions-menu\" aria-haspopup=\"menu\" aria-controls=\"actions-..."
-            ]
+            "elements": [".instui-button"]
           },
           {
             "tier": "conditions",
@@ -24668,9 +24630,7 @@
               "undetermined": 2
             },
             "notes": ["ARIA attributes must conform to valid values"],
-            "elements": [
-              "<button class=\"instui-button\" type=\"button\" popovertarget=\"actions-menu\" aria-haspopup=\"menu\" aria-controls=\"actions-..."
-            ]
+            "elements": [".instui-button"]
           },
           {
             "tier": "conditions",
@@ -24925,9 +24885,7 @@
               "undetermined": 1
             },
             "notes": ["ARIA attributes must conform to valid values"],
-            "elements": [
-              "<button class=\"instui-button\" type=\"button\" popovertarget=\"actions-menu\" aria-haspopup=\"menu\" aria-controls=\"actions-..."
-            ]
+            "elements": [".instui-button"]
           },
           {
             "tier": "conditions",
@@ -25090,9 +25048,7 @@
               "undetermined": 1
             },
             "notes": ["ARIA attributes must conform to valid values"],
-            "elements": [
-              "<button class=\"instui-button\" type=\"button\" popovertarget=\"actions-menu\" aria-haspopup=\"menu\" aria-controls=\"actions-..."
-            ]
+            "elements": [".instui-button"]
           },
           {
             "tier": "conditions",
@@ -25256,9 +25212,7 @@
               "undetermined": 1
             },
             "notes": ["ARIA attributes must conform to valid values"],
-            "elements": [
-              "<button class=\"instui-button\" type=\"button\" popovertarget=\"actions-menu\" aria-haspopup=\"menu\" aria-controls=\"actions-..."
-            ]
+            "elements": [".instui-button"]
           },
           {
             "tier": "conditions",
@@ -25422,9 +25376,7 @@
               "undetermined": 1
             },
             "notes": ["ARIA attributes must conform to valid values"],
-            "elements": [
-              "<button class=\"instui-button\" type=\"button\" popovertarget=\"actions-menu\" aria-haspopup=\"menu\" aria-controls=\"actions-..."
-            ]
+            "elements": [".instui-button"]
           },
           {
             "tier": "conditions",
@@ -25589,9 +25541,7 @@
               "undetermined": 1
             },
             "notes": ["ARIA attributes must conform to valid values"],
-            "elements": [
-              "<button class=\"instui-button\" type=\"button\" popovertarget=\"actions-menu\" aria-haspopup=\"menu\" aria-controls=\"actions-..."
-            ]
+            "elements": [".instui-button"]
           },
           {
             "tier": "conditions",
@@ -25754,9 +25704,7 @@
               "undetermined": 1
             },
             "notes": ["ARIA attributes must conform to valid values"],
-            "elements": [
-              "<button class=\"instui-button\" type=\"button\" popovertarget=\"actions-menu\" aria-haspopup=\"menu\" aria-controls=\"actions-..."
-            ]
+            "elements": [".instui-button"]
           },
           {
             "tier": "conditions",
@@ -25919,9 +25867,7 @@
               "undetermined": 1
             },
             "notes": ["ARIA attributes must conform to valid values"],
-            "elements": [
-              "<button class=\"instui-button\" type=\"button\" popovertarget=\"actions-menu\" aria-haspopup=\"menu\" aria-controls=\"actions-..."
-            ]
+            "elements": [".instui-button"]
           },
           {
             "tier": "conditions",
@@ -26084,9 +26030,7 @@
               "undetermined": 1
             },
             "notes": ["ARIA attributes must conform to valid values"],
-            "elements": [
-              "<button class=\"instui-button\" type=\"button\" popovertarget=\"actions-menu\" aria-haspopup=\"menu\" aria-controls=\"actions-..."
-            ]
+            "elements": [".instui-button"]
           },
           {
             "tier": "conditions",
@@ -26252,9 +26196,7 @@
               "undetermined": 1
             },
             "notes": ["ARIA attributes must conform to valid values"],
-            "elements": [
-              "<button class=\"instui-button\" type=\"button\" popovertarget=\"actions-menu\" aria-haspopup=\"menu\" aria-controls=\"actions-..."
-            ]
+            "elements": [".instui-button"]
           },
           {
             "tier": "conditions",
@@ -26418,9 +26360,7 @@
               "undetermined": 1
             },
             "notes": ["ARIA attributes must conform to valid values"],
-            "elements": [
-              "<button class=\"instui-button\" type=\"button\" popovertarget=\"actions-menu\" aria-haspopup=\"menu\" aria-controls=\"actions-..."
-            ]
+            "elements": [".instui-button"]
           },
           {
             "tier": "conditions",
@@ -26584,9 +26524,7 @@
               "undetermined": 1
             },
             "notes": ["ARIA attributes must conform to valid values"],
-            "elements": [
-              "<button class=\"instui-button\" type=\"button\" popovertarget=\"actions-menu\" aria-haspopup=\"menu\" aria-controls=\"actions-..."
-            ]
+            "elements": [".instui-button"]
           },
           {
             "tier": "conditions",
@@ -26750,9 +26688,7 @@
               "undetermined": 1
             },
             "notes": ["ARIA attributes must conform to valid values"],
-            "elements": [
-              "<button class=\"instui-button\" type=\"button\" popovertarget=\"actions-menu\" aria-haspopup=\"menu\" aria-controls=\"actions-..."
-            ]
+            "elements": [".instui-button"]
           },
           {
             "tier": "conditions",
@@ -39482,9 +39418,7 @@
               "undetermined": 1
             },
             "notes": ["Elements must meet minimum color contrast ratio thresholds"],
-            "elements": [
-              "<select class=\"instui-simple-select\" data-a11y-trigger=\"\" data-a11y-root=\"\"> <option value=\"\">Choose a fruit</option>..."
-            ]
+            "elements": ["select"]
           },
           {
             "tier": "conditions",
@@ -39648,9 +39582,7 @@
               "undetermined": 1
             },
             "notes": ["Elements must meet minimum color contrast ratio thresholds"],
-            "elements": [
-              "<select class=\"instui-simple-select\" data-a11y-trigger=\"\" data-a11y-root=\"\"> <option value=\"\">Choose a fruit</option>..."
-            ]
+            "elements": ["select"]
           },
           {
             "tier": "conditions",
@@ -39814,9 +39746,7 @@
               "undetermined": 1
             },
             "notes": ["Elements must meet minimum color contrast ratio thresholds"],
-            "elements": [
-              "<select class=\"instui-simple-select\" data-a11y-trigger=\"\" data-a11y-root=\"\"> <option value=\"\">Choose a fruit</option>..."
-            ]
+            "elements": ["select"]
           },
           {
             "tier": "conditions",
@@ -39980,9 +39910,7 @@
               "undetermined": 1
             },
             "notes": ["Elements must meet minimum color contrast ratio thresholds"],
-            "elements": [
-              "<select class=\"instui-simple-select\" data-a11y-trigger=\"\" data-a11y-root=\"\"> <option value=\"\">Choose a fruit</option>..."
-            ]
+            "elements": ["select"]
           },
           {
             "tier": "conditions",
