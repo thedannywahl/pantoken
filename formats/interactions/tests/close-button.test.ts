@@ -118,3 +118,18 @@ test("does nothing when no dismissible ancestor is found", () => {
   initCloseButton(btn);
   expect(() => btn.click()).not.toThrow();
 });
+
+test.each([
+  ["instui", undefined],
+  ["x", "x"],
+  ["", ""],
+])("dismisses the nearest alert for the %j prefix", (prefix, option) => {
+  const cls = prefix ? `${prefix}-alert` : "alert";
+  document.body.innerHTML = `<div id="a" class="${cls}"><button id="btn">Close</button></div>`;
+  const alert = document.getElementById("a") as HTMLElement;
+  const seen = vi.fn();
+  alert.addEventListener("dismiss", seen);
+  initCloseButton(document.getElementById("btn") as HTMLElement, { prefix: option });
+  (document.getElementById("btn") as HTMLElement).click();
+  expect(seen).toHaveBeenCalledOnce();
+});

@@ -1,4 +1,11 @@
+import { DEFAULT_PREFIX, withPrefix } from "../shared/prefix.js";
 import { initRemove } from "./remove.js";
+
+/** Options for {@link initCloseButton}. */
+export interface CloseButtonOptions {
+  /** Class prefix for the alert/banner hosts. Defaults to `"instui"`; `""` means unprefixed. */
+  prefix?: string;
+}
 
 /**
  * Wire a close button to dismiss its target.
@@ -11,10 +18,12 @@ import { initRemove } from "./remove.js";
  * Dismiss strategy:
  * - `<dialog>` → `dialog.close()`
  * - `[popover]` → `el.hidePopover()`
- * - `.instui-alert` or `.instui-banner` → cancelable `dismiss` event, then fade out and remove
+ * - `.instui-alert` or `.instui-banner` (per `options.prefix`) → cancelable `dismiss` event, then fade out and remove
  * - `[data-dismissible]` or `[open]` → remove open attr + fire bubbling `close`
  */
-export function initCloseButton(btn: HTMLElement): void {
+export function initCloseButton(btn: HTMLElement, options: CloseButtonOptions = {}): void {
+  const prefix = options.prefix ?? DEFAULT_PREFIX;
+  const dismissible = withPrefix(".pfx-alert, .pfx-banner", prefix);
   if (btn.hasAttribute("popovertarget") || btn.hasAttribute("commandfor")) return;
 
   btn.addEventListener("click", () => {
@@ -27,9 +36,7 @@ export function initCloseButton(btn: HTMLElement): void {
 
     const target = targetId
       ? byId(targetId)
-      : btn.closest<HTMLElement>(
-          "dialog, [popover], [data-dismissible], [open], .instui-alert, .instui-banner",
-        );
+      : btn.closest<HTMLElement>(`dialog, [popover], [data-dismissible], [open], ${dismissible}`);
 
     if (!target) return;
 
@@ -37,7 +44,7 @@ export function initCloseButton(btn: HTMLElement): void {
       target.close();
     } else if (target.hasAttribute("popover")) {
       (target as HTMLElement & { hidePopover?(): void }).hidePopover?.();
-    } else if (target.matches(".instui-alert, .instui-banner")) {
+    } else if (target.matches(dismissible)) {
       initRemove(target, { timeout: 0 }).dismiss();
     } else {
       target.removeAttribute("open");

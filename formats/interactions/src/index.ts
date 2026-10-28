@@ -5,6 +5,7 @@
  */
 
 export * from "./shared/index.js";
+export { ns, withPrefix } from "./shared/prefix.js";
 export * from "./behaviors/close-button.js";
 export * from "./behaviors/remove.js";
 export * from "./behaviors/progress-circle.js";

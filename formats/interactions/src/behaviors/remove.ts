@@ -1,4 +1,5 @@
 import { motionPreference } from "../lib/motion.ts";
+import { DEFAULT_PREFIX, withPrefix } from "../shared/prefix.js";
 
 /** Options for a timeout-based removal. */
 export interface RemoveOptions {
@@ -6,6 +7,8 @@ export interface RemoveOptions {
   timeout?: number;
   /** Exit treatment. Defaults to `"fade"`, matching InstUI Alert. */
   transition?: "fade" | "none";
+  /** Class prefix for the `transition` utility. Defaults to `"instui"`; `""` means unprefixed. */
+  prefix?: string;
 }
 
 /** Handle returned by {@link initRemove}. */
@@ -56,7 +59,10 @@ export function initRemove(target: HTMLElement, options: RemoveOptions = {}): Re
   };
 
   if (transition === "fade") {
-    target.classList.add("instui-transition", "-fade-entered");
+    target.classList.add(
+      withPrefix("pfx-transition", options.prefix ?? DEFAULT_PREFIX),
+      "-fade-entered",
+    );
   }
 
   const cleanup = (): void => {

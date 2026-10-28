@@ -122,3 +122,14 @@ test("cleanup cancels a pending dismissal", () => {
   vi.runAllTimers();
   expect(alert.isConnected).toBe(true);
 });
+
+test("fade uses the instui transition class by default and honors a custom or empty prefix", () => {
+  const make = (options?: { prefix?: string }) => {
+    const el = document.body.appendChild(document.createElement("div"));
+    initRemove(el, options);
+    return el;
+  };
+  expect(make().classList.contains("instui-transition")).toBe(true);
+  expect(make({ prefix: "x" }).classList.contains("x-transition")).toBe(true);
+  expect(make({ prefix: "" }).classList.contains("transition")).toBe(true);
+});
