@@ -31,7 +31,10 @@ export const maskUtility: Definition = defineUtility({
  */
 ${base} { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; background: var(--instui-component-mask-background-color); }
 ${fullscreen} { position: fixed; z-index: 999; }
-${blur} { backdrop-filter: blur(0.5rem); }`;
+${blur} { backdrop-filter: blur(0.5rem); }
+@media (prefers-reduced-transparency: reduce) {
+  ${blur} { backdrop-filter: none; }
+}`;
   },
 });
 

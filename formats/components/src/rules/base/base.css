@@ -18,8 +18,13 @@
   box-sizing: border-box;
 }
 
+@layer pantoken.base {
+  :where(html) {
+    color-scheme: light dark;
+  }
+}
+
 :where(html) {
-  color-scheme: light dark;
   background: var(--instui-color-background-page);
   color: var(--instui-color-text-base);
   font-family: var(--instui-font-family-base);

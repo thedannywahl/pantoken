@@ -238,6 +238,11 @@
   &.-variant-toggle:has(input:disabled) {
     opacity: 0.5;
     cursor: not-allowed;
+
+    @media (prefers-reduced-transparency: reduce) {
+      opacity: 1;
+      color: var(--instui-component-radio-input-label-disabled-color);
+    }
   }
 
   &.-variant-toggle.-size-sm {

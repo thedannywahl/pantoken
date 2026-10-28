@@ -3,7 +3,7 @@
 `@pantoken/components` is the semantic RSCSS CSS API — a parameterized generator, not hand-written
 CSS. Each documented record is one file; the bucket `index.ts` is a barrel + registry, not a monolith.
 
-## Source layout
+## Automatic user preferences
 
 User preferences are intrinsic behavior, not modifiers. Gate decorative transitions and animations
 with `prefers-reduced-motion: no-preference` in each record so standalone sheets and shadow styles
@@ -11,6 +11,19 @@ follow the same policy. Keep loading and progress indicators visible when animat
 apply state changes immediately. Interaction behaviors must also respect the live preference:
 don't smooth-scroll, delay removal for a skipped fade, or hide progress behind a mount animation.
 Do not shorten loading timeouts or cancel announcements in the name of reducing motion.
+
+Token sheets handle color preferences in the active theme's scope. `prefers-contrast: more`
+strengthens nonzero border widths and focus rings; `less` removes decorative elevation color without
+reducing text contrast. Keep semantic text/status colors and explicit light/dark pins intact.
+Links gain an underline in more-contrast mode, including normally unstyled links.
+
+Reduced transparency composites translucent surface tokens over an opaque semantic background.
+Remove backdrop blur in that mode, and use opaque muted colors rather than whole-control opacity for
+disabled states. Keep intentionally empty backgrounds, image effects, and visibility transitions:
+they aren't interchangeable with translucent component chrome. New surface expressions need coverage
+in the token preference generator and a real-browser check.
+
+## Source layout
 
 - `src/components/<name>/index.ts` + `<name>.css` (`COMPONENTS` registry).
 - `src/components/<name>/members/<member>/index.ts` + `<member>.css` — a promoted sub-component (see

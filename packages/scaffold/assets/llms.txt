@@ -16,6 +16,11 @@
 	`@pantoken/plugin-custom-components` (additional components like `banner` and `agent-shell`). Card is included in `@pantoken/components`.
 - Web CSS from raw tokens (no components): `@pantoken/css` — `import "@pantoken/css/inject"` defines all `--instui-*` properties.
 - Tokens as data: `@pantoken/tokens` — `import { tokens, byTheme } from "@pantoken/tokens"`.
+- User preferences are automatic, not opt-in variants: `prefers-reduced-motion`, `prefers-contrast`,
+	`prefers-reduced-transparency`, and forced colors. Keep loading and disabled cues visible. More
+	contrast strengthens boundaries; less removes decorative shadows without lowering text contrast.
+	Ready token sheets follow the system; explicit `data-pantoken-scheme` light/dark pins win.
+	For nested themes, load `properties.css` once plus `scope.css` and set `data-pantoken-theme`.
 - Icons: `@pantoken/icons` for raw decoded SVG markup/data (`getIcon("arrow-left")`), or
 	`@pantoken/web-components` for a drop-in `<instui-icon>` custom element.
 - Component behaviors (vanilla JS): `@pantoken/interactions` — `initModal`, `initTooltip`,

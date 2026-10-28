@@ -65,6 +65,14 @@
       text-decoration: underline;
     }
 
+    @media (prefers-contrast: more) {
+      a:any-link {
+        text-decoration-line: underline;
+        text-decoration-thickness: max(2px, 0.1em);
+        text-underline-offset: 0.15em;
+      }
+    }
+
     li:not(:last-child) {
       color: var(--instui-color-text-muted);
     }

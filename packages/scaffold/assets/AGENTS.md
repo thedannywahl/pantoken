@@ -36,9 +36,16 @@ Tokens are CSS custom properties named `--instui-<group>-<name>` (e.g.
 
 To activate a non-default theme, pass `--theme canvas` to the CLI or use `byTheme("canvas")` from
 `@pantoken/tokens`. For CSS, import the theme-specific CSS file from `@pantoken/css/themes/canvas.css`.
-To scope a theme to a subtree rather than the whole page, wrap that subtree in an element and apply
-the theme CSS file or `byTheme()` output scoped to that element's selector. Nested theming is not
-supported out of the box; each theme CSS file sets vars at `:root`.
+For nested themes, load `@pantoken/css/properties.css` once and `@pantoken/css/scope.css`, then use
+`data-pantoken-theme` or its `--pantoken-theme-*` class twin on each subtree. Ready-made token sheets
+follow the system color scheme; explicit `data-pantoken-scheme` or `--pantoken-scheme-*` light/dark
+pins remain authoritative, including on the document root.
+
+Component user preferences are automatic, not variants or opt-ins. Respect `prefers-reduced-motion`,
+`prefers-contrast`, `prefers-reduced-transparency`, and forced colors. More contrast strengthens
+boundaries without switching themes; less removes decorative shadows without lowering text contrast.
+Reduced transparency makes chrome opaque and removes backdrop blur. Keep loading indicators and
+disabled-state cues visible. Don't add enabling classes or disable these media queries.
 
 ## Pick the right package
 

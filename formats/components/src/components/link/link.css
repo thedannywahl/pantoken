@@ -114,3 +114,11 @@
   color: var(--instui-component-link-unstyled-text-color);
   text-decoration: none;
 }
+
+@media (prefers-contrast: more) {
+  .pfx-link:any-link {
+    text-decoration-line: underline;
+    text-decoration-thickness: max(2px, 0.1em);
+    text-underline-offset: 0.15em;
+  }
+}

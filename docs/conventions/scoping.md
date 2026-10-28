@@ -65,7 +65,17 @@ Invariant tokens go in the shared base once. **Varying tokens are repeated in fu
 block.** A test asserts the blocks declare identical token sets — that parity is the nesting-safety
 invariant, and breaking it reintroduces the bug silently.
 
+Compare resolved dependencies as well as authored expressions. An alias can have identical spelling
+in all themes but point to different colors. It must still be declared on each theme root: otherwise
+a nested theme inherits the outer root's already-computed alias.
+
 ## Color schemes
+
+Ready-made token sheets follow the system scheme automatically, even without the optional component
+base reset. The default lives in `pantoken.base`; explicit light/dark attributes or class twins live
+in the later `pantoken.scheme` layer and remain authoritative, including on the document root.
+Nested scopes inherit the nearest pin. Shadow content inherits the host's scheme rather than choosing
+its own.
 
 `color-scheme` is an ordinary inherited CSS property, so one rule keyed to the scope selector
 resolves `light-dark()` for everything below it:
@@ -92,24 +102,42 @@ _consuming descendant's_ inherited `color-scheme`, not the element the token was
 browser-verified by `formats/css/tests/manual/scope-test.html`. Re-run that page after any change to
 the scoped emitters; unit tests can only check the emitted strings, not the cascade.
 
+## Contrast and transparency preferences
+
+These policies apply automatically in the current token scope, including standalone component sheets
+and shadow content consuming the tokens:
+
+- `prefers-contrast: more` gives nonzero token-based borders a minimum width of 2px and focus rings
+  a minimum width of 3px. Text, semantic status colors, and the active theme's palette stay unchanged.
+  Component links and breadcrumb links gain underlines.
+- `prefers-contrast: less` makes decorative drop-shadow colors transparent. Text contrast, control
+  boundaries, and focus cues aren't reduced.
+- `prefers-reduced-transparency: reduce` composites translucent surface tokens over an opaque,
+  theme-aware background. The tint keeps its brand references. Masks and modal backdrops remove
+  blur; disabled controls use opaque muted text rather than fading the whole control.
+
+These are preference responses, not a substitute for checking text contrast, selected states,
+keyboard focus, forced colors, and nested themes in the consuming application.
+
 ## Sizing
 
 Measured over the three shipped themes, lean (no icons):
 
-|                                                         | bytes | gzip |
-| ------------------------------------------------------- | ----: | ---: |
-| `style.lean.css` (one theme)                            | 285 K | 25 K |
-| `properties.lean.css` + `scope.lean.css` (three themes) | 572 K | 47 K |
-| `schemes.css`                                           |   343 |  143 |
+|                                                         |   bytes |   gzip |
+| ------------------------------------------------------- | ------: | -----: |
+| `style.lean.css` (one theme)                            | 284,896 | 25,811 |
+| `properties.lean.css` + `scope.lean.css` (three themes) | 745,252 | 59,475 |
+| `schemes.css`                                           |     280 |    112 |
 
-Of 2,921 tokens, only **786 vary across themes** — the other 73% are emitted once, in the shared base
-block and the `@property` registrations. The repetition that remains is irreducible: custom
+Of 2,973 non-icon tokens, **1,653 vary across themes**, including aliases with theme-dependent
+references. The other 44% are shared in the base block and `@property` registrations. The repetition
+that remains is necessary: custom
 properties resolve by inheritance, not by lookup, so values that differ per subtree must physically
 exist on each subtree's root.
 
-Emitting complete theme blocks rather than diffs is close to free, and the reason is worth knowing:
-`canvas` already differs from `rebrand` in 764 of those 786 tokens, and `canvasHighContrast` in 785.
-The diff _is_ the full set. Completeness buys nesting safety for 1–3%.
+Comparing only the literal values would identify 790 varying tokens but miss aliases whose resolved
+values differ. The larger scoped sheet keeps those aliases local and includes the automatic preference
+rules. The sizes above are a build snapshot, not a fixed budget.
 
 ## The runtime
 

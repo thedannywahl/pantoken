@@ -79,6 +79,10 @@
   &[is="dialog"].-blur::backdrop,
   dialog&.-blur::backdrop {
     backdrop-filter: blur(0.5rem);
+
+    @media (prefers-reduced-transparency: reduce) {
+      backdrop-filter: none;
+    }
   }
 
   &.-size-sm {

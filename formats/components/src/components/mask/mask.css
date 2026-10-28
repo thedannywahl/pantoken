@@ -38,5 +38,9 @@
 
   &.-blur {
     backdrop-filter: blur(0.5rem);
+
+    @media (prefers-reduced-transparency: reduce) {
+      backdrop-filter: none;
+    }
   }
 }

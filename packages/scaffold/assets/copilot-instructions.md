@@ -14,6 +14,11 @@ When styling this project, use pantoken components, icons and tokens.
   token name must be verified against `@pantoken/tokens` and provide a placeholder like
   `--instui-<group>-<name>` with a comment noting it needs confirmation.
 - Web app: `import "@pantoken/css/inject";` to define the properties.
+- User preferences are automatic, not opt-in variants: `prefers-reduced-motion`, `prefers-contrast`,
+  `prefers-reduced-transparency`, and forced colors. Preserve static loading feedback and disabled
+  cues. More contrast strengthens boundaries; less removes decorative shadows without reducing text
+  contrast. Ready token sheets follow the system scheme; explicit `data-pantoken-scheme` light/dark
+  pins win. Use `properties.css` plus `scope.css` for nested themes, not multiple root theme sheets.
 - Icons: `@pantoken/web-components` (`<instui-icon name="…">`) or `@pantoken/react` (`<Icon>`).
 - InstUI-look CSS components (no framework dependency): `@pantoken/components`
   (`components.css`, `base.css`, `prose.css`, `utilities.css`, `fonts.css`) — class-based markup

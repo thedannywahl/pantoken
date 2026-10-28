@@ -65,6 +65,11 @@
     opacity: 0.5;
     font-weight: normal;
     cursor: default;
+
+    @media (prefers-reduced-transparency: reduce) {
+      opacity: 1;
+      color: var(--instui-color-text-muted);
+    }
   }
 
   /* Secondary variant (the parent tabs's `-variant-secondary`): rounded "folder" tabs; the selected

@@ -91,6 +91,10 @@
       background: transparent;
       opacity: var(--instui-opacity-disabled);
       cursor: not-allowed;
+
+      @media (prefers-reduced-transparency: reduce) {
+        opacity: 1;
+      }
     }
 
     /* The truncation ellipsis — inert text. */

@@ -6,6 +6,7 @@
  */
 import { checkPlugins } from "@pantoken/plugin-kit";
 import { buildCssFile } from "./emit.ts";
+import { systemSchemeCss, tokenPreferenceCss } from "./preferences.ts";
 import type { CssContribution, PantokenPlugin, PropertyRule, Token } from "@pantoken/model";
 
 /** True when a value cannot be a typed `@property` initial-value (`var()` / `light-dark()`). */
@@ -111,7 +112,17 @@ export function toCss(tokens: readonly Token[], options: ToCssOptions = {}): str
     appendContribution(c, prepends, appends, { scope, emit, declareAll });
   }
 
-  return [...prepends, css, ...appends].filter(Boolean).join("\n\n");
+  return [
+    emit !== "properties" && tokens.some((token) => token.name.startsWith("--instui-"))
+      ? systemSchemeCss()
+      : "",
+    ...prepends,
+    css,
+    ...appends,
+    emit !== "properties" ? tokenPreferenceCss(tokens, scope, layer) : "",
+  ]
+    .filter(Boolean)
+    .join("\n\n");
 }
 
 function appendContribution(

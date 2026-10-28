@@ -2,6 +2,8 @@ import { expect, test } from "vite-plus/test";
 import { foundationPlugin } from "../src/foundation.ts";
 import { capabilitiesOf } from "@pantoken/plugin-kit";
 import type { CssHookContext } from "@pantoken/model";
+import { css, leanCss } from "../src/index.ts";
+import { multiScopeCss, propertiesCss } from "../src/scoped.ts";
 
 test("foundationPlugin has the correct name", () => {
   expect(foundationPlugin.name).toBe("pantoken-foundation");
@@ -28,4 +30,22 @@ test("foundationPlugin.css() returns elevation and focus-outline custom properti
   const declarationNames = declarations?.map(([name]) => name);
   expect(declarationNames?.some((name) => name.includes("elevation"))).toBe(true);
   expect(declarationNames?.some((name) => name.includes("focus-outline"))).toBe(true);
+});
+
+test("ready token foundations follow the system without the base reset and remain below scheme pins", () => {
+  for (const sheet of [
+    css,
+    leanCss,
+    multiScopeCss({
+      themes: ["rebrand", "canvas", "canvasHighContrast"],
+      defaultTheme: "rebrand",
+      includeIcons: false,
+      plugins: [foundationPlugin],
+    }),
+  ]) {
+    expect(sheet).toContain(
+      "@layer pantoken.base {\n  :where(:root) { color-scheme: light dark; }\n}",
+    );
+  }
+  expect(propertiesCss("rebrand", { plugins: [foundationPlugin] })).not.toContain("color-scheme:");
 });

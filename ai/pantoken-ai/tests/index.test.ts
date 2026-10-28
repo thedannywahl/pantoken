@@ -86,6 +86,11 @@ test("installed usage assets describe tree behavior, shadow names, and opt-in va
       expect(content).toContain("instui-container");
       expect(content).toContain("data-label");
       expect(content).toContain("--overflow-x-auto");
+      expect(content).toContain("prefers-reduced-motion");
+      expect(content).toContain("prefers-contrast");
+      expect(content).toContain("prefers-reduced-transparency");
+      expect(content).toContain("data-pantoken-scheme");
+      expect(content).toContain("scope.css");
     }
   } finally {
     rmSync(dir, { recursive: true, force: true });

@@ -56,6 +56,11 @@
       opacity: var(--instui-opacity-disabled);
       pointer-events: none;
       cursor: not-allowed;
+
+      @media (prefers-reduced-transparency: reduce) {
+        opacity: 1;
+        color: var(--instui-color-text-muted);
+      }
     }
 
     > .item:hover,

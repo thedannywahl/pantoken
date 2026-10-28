@@ -4,7 +4,7 @@
  * @summary A styled range slider with an inverse value bubble.
  * @remarks Each vendor thumb/track pseudo-element needs its own separate rule — grouping them in one selector list would invalidate the whole rule in browsers that don't recognize the other vendor's pseudo.
  * @pseudo ::before — Draws the value bubble's caret, a small triangle pointing back toward the track.
- * @accessibility The control is a native `<input type="range">`; give it an accessible name with `aria-label` or an associated `<label>`.
+ * @accessibility The control is a native `<input type="range">`; give it an accessible name with `aria-label` or an associated `<label>`. Forced colors use a system-color outline because the thumb's box-shadow focus ring doesn't survive that mode.
  * @example -canvas-rce -docs
  * ```html
  * <input class="pfx-range-input" id="r1" type="range" value="30">
@@ -81,6 +81,11 @@
 
   &:focus-visible {
     outline: none;
+
+    @media (forced-colors: active) {
+      outline: var(--instui-focus-outline-width) solid Highlight;
+      outline-offset: var(--instui-focus-outline-offset);
+    }
   }
 
   &:focus-visible::-webkit-slider-thumb {
