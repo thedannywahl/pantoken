@@ -41,6 +41,7 @@ function fixture(source: "page" | "npm" = "page", scheme = "light", theme = "reb
         checks: [
           {
             name: "reflow",
+            criteria: ["1.4.10"],
             result: "fail",
             detail: 'Overflow <script>alert("x")</script> | [x](javascript:alert(1))',
           },
@@ -95,7 +96,9 @@ test("keeps missing supplemental npm tiers visible instead of turning them into 
   const input = fixture("npm");
   const snapshot = importAccessibilityRun(input.directory);
   expect(snapshot.records.button![0]!.tiers.interactions).toEqual({ missing: 1 });
-  expect(accessibilitySection("button", snapshot)).toContain("interactions: missing 1");
+  const md = accessibilitySection("button", snapshot);
+  expect(md).not.toContain("| Interactions |");
+  expect(md).toContain("Not tested");
 });
 
 test("excludes historical Canvas dark cases without modifying original evidence", () => {
@@ -175,9 +178,19 @@ test("doesn't confuse inherited object keys with record or rule evidence", () =>
 
 test("renders provenance, separate findings, missing coverage, and escaped data without a score", () => {
   const md = accessibilitySection("button", importAccessibilityRun(fixture().directory));
-  expect(md).toContain("| axe-core | 1 | 1 |");
-  expect(md).toContain("| IBM Equal Access | 0 | 1 |");
-  expect(md).toContain("| conditions | 1 | 1 | 1 | 1 |");
+  expect(md).toContain(
+    "| Conditions | Rebrand (light) | Rebrand (dark) | Canvas | Canvas High Contrast |",
+  );
+  expect(md).toContain(
+    '| reflow (WCAG 1.4.10) | <span class="instui-pill -color-danger pantoken-doc-tag">Fail</span> |',
+  );
+  expect(md).toContain(
+    '| spacing | <span class="instui-pill -color-warning pantoken-doc-tag">Needs review</span> |',
+  );
+  expect(md).toContain('<span class="instui-pill pantoken-doc-tag">Not applicable</span>');
+  expect(md).toContain('| Announcements | <span class="instui-pill -color-warning');
+  expect(md).not.toContain("axe-core");
+  expect(md).not.toContain("IBM");
   expect(md).not.toContain("exact source revision");
   expect(md).not.toContain("Historical automated evidence");
   expect(md).not.toContain("Supported schemes");
@@ -185,7 +198,7 @@ test("renders provenance, separate findings, missing coverage, and escaped data 
   expect(md).not.toContain("Evidence details");
   expect(md).not.toContain("results.json");
   expect(md).not.toContain("isn't equivalent");
-  expect(md.indexOf("Outdated browser")).toBeLessThan(md.indexOf("| Theme"));
+  expect(md.indexOf("Outdated browser")).toBeLessThan(md.indexOf("| Conditions"));
   expect(md).not.toContain("Overflow");
   expect(md).not.toContain("<script>");
   expect(md).not.toContain("[x](javascript:");
@@ -205,7 +218,7 @@ test("creates the Accessibility section before consumed tokens, is idempotent, a
   annotateAccessibility(entries, [page], snapshot);
   const first = readFileSync(page, "utf8");
   expect(first).toContain("Not audited");
-  expect(first).not.toContain("| axe-core |");
+  expect(first).not.toContain("| Conditions |");
   expect(first).not.toContain("## Accessibility audit");
   expect(first.indexOf("## Accessibility\n")).toBeLessThan(first.indexOf("## Tokens consumed"));
   annotateAccessibility(entries, [page], snapshot);
@@ -226,8 +239,8 @@ test("appends the audit to an authored Accessibility section without a second he
   const first = readFileSync(page, "utf8");
   expect(first.match(/^## Accessibility\s*$/gmu)).toHaveLength(1);
   expect(first).not.toContain("## Accessibility audit");
-  expect(first.indexOf("Authored guidance.")).toBeLessThan(first.indexOf("| axe-core |"));
-  expect(first.indexOf("| axe-core |")).toBeLessThan(first.indexOf("## Tokens consumed"));
+  expect(first.indexOf("Authored guidance.")).toBeLessThan(first.indexOf("| Conditions |"));
+  expect(first.indexOf("| Conditions |")).toBeLessThan(first.indexOf("## Tokens consumed"));
   annotateAccessibility(entries, [page], snapshot);
   expect(readFileSync(page, "utf8")).toBe(first);
   writeFileSync(page, "# CSS: button\n\n## Accessibility\n\nLast section.\n");

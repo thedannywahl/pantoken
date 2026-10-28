@@ -61,7 +61,11 @@ Canvas dark cases as historical evidence; don't count those cases as supported p
 ### Results on component API pages
 
 Generated component pages append the audit to the record's **Accessibility** section, without a
-separate header, so it follows the authored `@accessibility` (or `@a11y`) guidance. Every record
+separate header, so it follows the authored `@accessibility` (or `@a11y`) guidance. The audit is
+one table per tier (conditions, interactions, computed styles) plus a simulated screen-reader
+table. Rows are checks with their WCAG success criteria; columns are the supported theme/scheme
+pairs, and each cell is an `instui-pill` (Pass, Fail, Needs review, Not applicable, or Not tested).
+A cell takes the worst result across the page and npm evidence for that column. Every record
 needs that tag; a record without one still gets a bare **Accessibility** section, but a test fails.
 The docs build reads a checked-in snapshot at `docs/public/accessibility/results.json`; it doesn't
 run a browser or select whichever local audit happens to be newest. A component without evidence
@@ -75,10 +79,11 @@ vp run @pantoken/docs#docs:api:css
 ```
 
 Commit the snapshot with the implementation and Changeset. The importer validates expected target
-inventories and execution, retains separate axe/IBM counts, review rule IDs, condition failures,
+inventories and execution, retains per-check results with their WCAG criteria, condition failures,
 undetermined results, simulated flags, missing tiers, browser warnings, dates, tool versions, and
-SHA-256 digests of the original results files. It excludes historical unsupported Canvas dark
-cases without editing raw evidence. The download is a compact summary, not the original tool report.
+SHA-256 digests of the original results files. It still stores axe/IBM counts in the snapshot but the
+API section doesn't show them. It excludes historical unsupported Canvas dark
+cases without editing raw evidence. The snapshot is a compact summary, not the original tool report.
 Keep the original `a11y-report/<run>/` files or CI artifact for investigation.
 
 The current snapshot comes from `2026-10-28T02-50-41.851Z`. Its page assets predate the final

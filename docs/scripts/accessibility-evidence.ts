@@ -8,6 +8,14 @@ import { ACCESSIBILITY_AUDIT_STRINGS as text } from "../.vitepress/i18n.ts";
 type Counts = Record<string, number>;
 type Engine = { violations: number; reviews: number; reviewRules: Counts; violationRules: Counts };
 
+/** Aggregated result counts for one named check in one tier of one target. */
+export interface CheckDetail {
+  tier: string;
+  name: string;
+  criteria: string[];
+  counts: Counts;
+}
+
 /** One authored target, preserving page/npm evidence and missing per-state tiers separately. */
 export interface AccessibilityEvidence {
   target: string;
@@ -23,6 +31,8 @@ export interface AccessibilityEvidence {
   axe: Engine;
   ibm: Engine;
   checks: Record<string, Counts>;
+  /** Per-check results with the WCAG success criteria each check covers. */
+  details: CheckDetail[];
   flags: number;
   findings: string[];
   notices: string[];
@@ -118,6 +128,15 @@ export function loadAccessibilitySnapshot(value: unknown): AccessibilitySnapshot
             checks: Object.fromEntries(
               Object.entries(object(row.checks)).map(([key, value]) => [key, counts(value)]),
             ),
+            details: array(row.details ?? []).map((value): CheckDetail => {
+              const detail = object(value);
+              return {
+                tier: string(detail.tier),
+                name: string(detail.name),
+                criteria: array(detail.criteria).map(string),
+                counts: counts(detail.counts),
+              };
+            }),
             axe: storedEngine(row.axe),
             ibm: storedEngine(row.ibm),
             findings: array(row.findings).map(string),
@@ -161,7 +180,7 @@ function readTarget(
   value: unknown,
   metadata: Omit<
     AccessibilityEvidence,
-    "configurations" | "tiers" | "axe" | "ibm" | "checks" | "flags" | "findings"
+    "configurations" | "tiers" | "axe" | "ibm" | "checks" | "details" | "flags" | "findings"
   >,
 ): AccessibilityEvidence {
   const target = object(value);
@@ -174,6 +193,7 @@ function readTarget(
     axe: { violations: 0, reviews: 0, reviewRules: {}, violationRules: {} },
     ibm: { violations: 0, reviews: 0, reviewRules: {}, violationRules: {} },
     checks: {},
+    details: [],
     flags: 0,
     findings: [],
   };
@@ -207,6 +227,18 @@ function readTarget(
             if (!["pass", "fail", "not-applicable", "undetermined"].includes(result))
               throw new Error(`Unexpected check result: ${result}`);
             increment((row.checks[name] ??= {}), result);
+            const checkName = string(check.name);
+            let detail = row.details.find((item) => item.tier === name && item.name === checkName);
+            if (!detail) {
+              detail = {
+                tier: name,
+                name: checkName,
+                criteria: array(check.criteria ?? []).map(string),
+                counts: {},
+              };
+              row.details.push(detail);
+            }
+            increment(detail.counts, result);
             if (result === "fail" || result === "undetermined")
               row.findings.push(`${string(check.name)} (${result}): ${string(check.detail)}`);
           }
@@ -317,12 +349,85 @@ function cell(value: string): string {
     .replaceAll("\n", " ");
 }
 
-function sum(
+const TIERS = ["conditions", "interactions", "computed"] as const;
+
+type Status = "pass" | "fail" | "review" | "na" | "untested";
+
+const PILL: Record<Status, { color: string; label: () => string }> = {
+  pass: { color: "-color-success", label: () => text.pass },
+  fail: { color: "-color-danger", label: () => text.fail },
+  review: { color: "-color-warning", label: () => text.review },
+  na: { color: "", label: () => text.notApplicable },
+  untested: { color: "", label: () => text.notTested },
+};
+
+function pill(status: Status): string {
+  const { color, label } = PILL[status];
+  return `<span class="${["instui-pill", color, "pantoken-doc-tag"].filter(Boolean).join(" ")}">${label()}</span>`;
+}
+
+function tierLabel(tier: (typeof TIERS)[number]): string {
+  return text[tier];
+}
+
+/** The matrix column a row belongs to; Canvas variants drop the redundant "light". */
+function columnLabel(theme: string, scheme: string): string {
+  const key = `${theme}/${scheme}` as keyof typeof text.columns;
+  return Object.hasOwn(text.columns, key) ? text.columns[key] : `${cell(theme)} (${cell(scheme)})`;
+}
+
+function worst(counts: readonly Counts[]): Status {
+  const total = (key: string): number => counts.reduce((sum, item) => sum + (item[key] ?? 0), 0);
+  if (total("fail")) return "fail";
+  if (total("undetermined")) return "review";
+  if (total("pass")) return "pass";
+  return total("not-applicable") ? "na" : "untested";
+}
+
+function tierTable(
+  tier: string,
+  label: string,
+  names: readonly string[],
   rows: readonly AccessibilityEvidence[],
-  field: "axe" | "ibm",
-  key: "violations" | "reviews",
-): number {
-  return rows.reduce((total, row) => total + row[field][key], 0);
+): string[] {
+  const out = [
+    `| ${label} | ${AUDIT_MATRIX.map((item) => columnLabel(item.theme, item.scheme)).join(" | ")} |`,
+    `| --- |${AUDIT_MATRIX.map(() => " --- |").join("")}`,
+  ];
+  for (const name of names) {
+    const criteria = rows
+      .flatMap((row) => row.details.filter((d) => d.tier === tier && d.name === name))
+      .flatMap((detail) => detail.criteria);
+    const heading = criteria.length
+      ? `${cell(name)} (WCAG ${[...new Set(criteria)].map(cell).join(", ")})`
+      : cell(name);
+    const cells = AUDIT_MATRIX.map((item) =>
+      pill(
+        worst(
+          rows
+            .filter((row) => row.theme === item.theme && row.scheme === item.scheme)
+            .flatMap((row) => row.details.filter((d) => d.tier === tier && d.name === name))
+            .map((detail) => detail.counts),
+        ),
+      ),
+    );
+    out.push(`| ${heading} | ${cells.join(" | ")} |`);
+  }
+  return [...out, ""];
+}
+
+function screenReaderTable(rows: readonly AccessibilityEvidence[]): string[] {
+  const cells = AUDIT_MATRIX.map((item) => {
+    const matching = rows.filter((row) => row.theme === item.theme && row.scheme === item.scheme);
+    if (!matching.some((row) => (row.tiers.vsr?.ran ?? 0) > 0)) return pill("untested");
+    return pill(matching.some((row) => row.flags > 0) ? "review" : "pass");
+  });
+  return [
+    `| ${text.screenReader} | ${AUDIT_MATRIX.map((item) => columnLabel(item.theme, item.scheme)).join(" | ")} |`,
+    `| --- |${AUDIT_MATRIX.map(() => " --- |").join("")}`,
+    `| ${text.announcements} | ${cells.join(" | ")} |`,
+    "",
+  ];
 }
 
 /** Render facts, gaps, and provenance, without a heading, for the Accessibility section. */
@@ -332,52 +437,16 @@ export function accessibilitySection(name: string, snapshot: AccessibilitySnapsh
   if (!rows?.length) return [...lines, text.notAudited, "", text.caveat, ""].join("\n");
   for (const warning of new Set(rows.flatMap((row) => row.warnings)))
     lines.push(`> ${cell(warning)}`, "");
-  lines.push(
-    `| ${text.theme} | ${text.scheme} | ${text.evidence} | ${text.configurations} | ${text.tiers} |`,
-    "| --- | --- | --- | ---: | --- |",
-  );
-  for (const row of rows) {
-    const tiers = Object.entries(row.tiers)
-      .map(
-        ([name, counts]) =>
-          `${name}: ${Object.entries(counts)
-            .map(([status, count]) => `${status} ${count}`)
-            .join(", ")}`,
-      )
-      .join("; ");
-    lines.push(
-      `| ${cell(row.theme)} | ${cell(row.scheme)} | ${row.source === "page" ? text.page : text.npm} | ${row.configurations} | ${cell(tiers)} |`,
-    );
+  for (const tier of TIERS) {
+    const names = [
+      ...new Set(
+        rows.flatMap((row) => row.details.filter((d) => d.tier === tier).map((d) => d.name)),
+      ),
+    ].sort();
+    if (!names.length) continue;
+    lines.push(...tierTable(tier, tierLabel(tier), names, rows));
   }
-  lines.push(
-    "",
-    `| ${text.engine} | ${text.violations} | ${text.reviews} |`,
-    "| --- | ---: | ---: |",
-    `| axe-core | ${sum(rows, "axe", "violations")} | ${sum(rows, "axe", "reviews")} |`,
-    `| IBM Equal Access | ${sum(rows, "ibm", "violations")} | ${sum(rows, "ibm", "reviews")} |`,
-    "",
-    text.reviewNote,
-    "",
-    `| ${text.checks} | pass | fail | not-applicable | undetermined |`,
-    "| --- | ---: | ---: | ---: | ---: |",
-  );
-  for (const tier of ["conditions", "interactions", "computed"]) {
-    const counts: Counts = {};
-    for (const row of rows)
-      for (const [result, count] of Object.entries(row.checks[tier] ?? {}))
-        increment(counts, result, count);
-    if (Object.keys(counts).length)
-      lines.push(
-        `| ${tier} | ${counts.pass ?? 0} | ${counts.fail ?? 0} | ${counts["not-applicable"] ?? 0} | ${counts.undetermined ?? 0} |`,
-      );
-  }
-  lines.push(
-    "",
-    `${text.simulatedFlags}: ${rows.reduce((total, row) => total + row.flags, 0)}.`,
-    "",
-    text.caveat,
-    "",
-  );
+  lines.push(...screenReaderTable(rows), text.caveat, "");
   return lines.join("\n");
 }
 

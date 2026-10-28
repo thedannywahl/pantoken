@@ -11,20 +11,22 @@ import { loadConfig, resolveMessagesForLocale, resolveTier } from "@pantoken/i18
 export const ACCESSIBILITY_AUDIT_STRINGS = {
   notAudited:
     "Not audited: no checked-in evidence covers this record. Results from other components don't establish coverage for this one.",
-  theme: "Theme",
-  scheme: "Scheme",
-  evidence: "Evidence",
-  configurations: "Configurations",
-  tiers: "Tier execution",
-  page: "Authored page",
-  npm: "Authored npm fixture",
-  engine: "Engine",
-  violations: "Violations",
-  reviews: "Needs review",
-  reviewNote:
-    "Engine counts are separate and may overlap. Review entries need human assessment; zero violations isn't a conformance claim.",
-  checks: "Checks",
-  simulatedFlags: "Simulated screen-reader flags",
+  pass: "Pass",
+  fail: "Fail",
+  review: "Needs review",
+  notApplicable: "Not applicable",
+  notTested: "Not tested",
+  conditions: "Conditions",
+  interactions: "Interactions",
+  computed: "Computed styles",
+  screenReader: "Screen reader (simulated)",
+  announcements: "Announcements",
+  columns: {
+    "rebrand/light": "Rebrand (light)",
+    "rebrand/dark": "Rebrand (dark)",
+    "canvas/light": "Canvas",
+    "canvasHighContrast/light": "Canvas High Contrast",
+  },
   caveat:
     "These automated results do not establish that the page meets WCAG; manual review is still needed.",
 } as const;
