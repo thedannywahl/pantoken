@@ -88,6 +88,7 @@ const find = (segments: Segment[], needle: string): Segment => {
       s.kind !== "callout" &&
       s.kind !== "prompt" &&
       s.kind !== "html" &&
+      s.kind !== "audit" &&
       s.text.includes(needle),
   );
   expect(match.length, `exactly one segment contains ${JSON.stringify(needle)}`).toBe(1);
@@ -364,3 +365,26 @@ describe("tables", () => {
 function renderOne(segment: Segment, resolve: (t: string, k: TranslationKind) => string): string {
   return reassemble([segment], resolve);
 }
+
+describe("accessibility audit tables", () => {
+  const table = [
+    "<!-- accessibility-audit:start -->",
+    '<table class="pantoken-a11y-table">',
+    '<tr><th scope="row"><span class="pantoken-a11y-check">color-contrast</span></th><td><span class="instui-pill pantoken-doc-tag">Fail</span></td></tr>',
+    "<tr><td><p><strong>Rebrand (light):</strong> Text <code>.-color-ai</code> is too faint.</p></td></tr>",
+    "</table>",
+    "<!-- accessibility-audit:end -->",
+  ].join("\n");
+
+  test("translates visible text, not markup or code", () => {
+    const segments = segmentMarkdown(table);
+    expect(segments.map((segment) => segment.kind)).toEqual(["audit"]);
+    const texts = collectUnits(segments).map((unit) => unit.text);
+    expect(texts).toContain("Fail");
+    expect(texts).toContain(" Text ");
+    expect(texts).not.toContain(".-color-ai");
+    const out = reassemble(segments, (text) => (text === "Fail" ? "Hiba" : text));
+    expect(out).toContain(">Hiba</span>");
+    expect(out.replace("Hiba", "Fail")).toBe(table);
+  });
+});

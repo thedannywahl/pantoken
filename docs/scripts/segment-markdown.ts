@@ -45,6 +45,8 @@ export type Segment =
   | { kind: "preserve"; text: string }
   | { kind: "prompt"; opening: string; body: string; closing: string }
   | { kind: "html"; opening: string; body: DemoSegment[]; closing: string }
+  /** The generated accessibility-audit table: visible text translates, markup and `<code>` stay. */
+  | { kind: "audit"; body: DemoSegment[] }
   | { kind: "glossary"; text: string }
   | { kind: "prose"; text: string }
   | {
@@ -170,6 +172,9 @@ const classifyBlock = (lines: string[]): Segment => {
 
   const callout = classifyJsCallout(lines);
   if (callout) return callout;
+
+  if (text.includes('class="pantoken-a11y-table"'))
+    return { kind: "audit", body: segmentDemoHtml(text) };
 
   // Headings and stability-badge pills → deterministic glossary. The glossary no-ops on identifiers
   // (`### options?`) and on words it doesn't know, so routing every heading here is safe.
@@ -338,6 +343,12 @@ export function collectUnits(segments: readonly Segment[]): TranslatableUnit[] {
       units.push(...collectTableUnits(segment));
       continue;
     }
+    if (segment.kind === "audit") {
+      units.push(
+        ...collectDemoUnits(segment.body).map((text) => ({ text, kind: "prose" as const })),
+      );
+      continue;
+    }
     if (segment.kind === "callout") {
       units.push({ text: segment.label, kind: "glossary" }, { text: segment.note, kind: "prose" });
     }
@@ -362,6 +373,8 @@ const renderSegment = (segment: Segment, resolve: Resolve): string => {
         reassembleDemoHtml(segment.body, (text) => resolve(text, "prose")),
         segment.closing,
       ].join("\n");
+    case "audit":
+      return reassembleDemoHtml(segment.body, (text) => resolve(text, "prose"));
     case "glossary":
     case "prose":
       return resolve(segment.text, segment.kind);
