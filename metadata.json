@@ -3,9 +3,50 @@
   "checkpoint_id": "01M61G11TWM1EJ80W21EA1F098",
   "strategy": "manual-commit",
   "branch": "add-automatica11y",
-  "checkpoints_count": 1,
+  "checkpoints_count": 2,
   "files_touched": [
-    "formats/components/src/components/select/select.css"
+    ".changeset/accessibility-audit-section.md",
+    "docs/.vitepress/i18n.ts",
+    "docs/conventions/build-and-docs.md",
+    "docs/scripts/accessibility-evidence.ts",
+    "formats/components/src/components/badge/badge.css",
+    "formats/components/src/components/billboard/billboard.css",
+    "formats/components/src/components/byline/byline.css",
+    "formats/components/src/components/calendar/members/day/day.css",
+    "formats/components/src/components/context-view/context-view.css",
+    "formats/components/src/components/input-group/input-group.css",
+    "formats/components/src/components/list/list.css",
+    "formats/components/src/components/list/members/item/item.css",
+    "formats/components/src/components/menu/members/group/group.css",
+    "formats/components/src/components/menu/members/separator/separator.css",
+    "formats/components/src/components/metric/metric.css",
+    "formats/components/src/components/modal/members/body/body.css",
+    "formats/components/src/components/modal/members/footer/footer.css",
+    "formats/components/src/components/modal/members/header/header.css",
+    "formats/components/src/components/pagination/members/page/page.css",
+    "formats/components/src/components/pill/pill.css",
+    "formats/components/src/components/popover/popover.css",
+    "formats/components/src/components/select/select.css",
+    "formats/components/src/components/side-nav-bar/members/item/item.css",
+    "formats/components/src/components/simple-select/simple-select.css",
+    "formats/components/src/components/table/members/body/body.css",
+    "formats/components/src/components/table/members/cell/cell.css",
+    "formats/components/src/components/table/members/col-header/col-header.css",
+    "formats/components/src/components/table/members/head/head.css",
+    "formats/components/src/components/table/members/row-header/row-header.css",
+    "formats/components/src/components/table/members/row/row.css",
+    "formats/components/src/components/tabs/members/panel/panel.css",
+    "formats/components/src/components/tabs/members/tab/tab.css",
+    "formats/components/src/components/tag/tag.css",
+    "formats/components/src/components/text-area/text-area.css",
+    "formats/components/src/components/text-input/text-input.css",
+    "formats/components/src/components/text/text.css",
+    "formats/components/src/components/toggle-group/toggle-group.css",
+    "formats/components/src/components/view/view.css",
+    "formats/components/src/rules/base/base.css",
+    "formats/components/src/utilities/transition/transition.css",
+    "formats/components/src/utilities/visual-debug/visual-debug.css",
+    "formats/components/tests/audit-examples.test.ts"
   ],
   "sessions": [
     {
@@ -14,6 +55,13 @@
       "compact_transcript": "/0/transcript.jsonl",
       "content_hash": "/0/content_hash.txt",
       "prompt": "/0/prompt.txt"
+    },
+    {
+      "metadata": "/1/metadata.json",
+      "transcript": "/1/full.jsonl",
+      "compact_transcript": "/1/transcript.jsonl",
+      "content_hash": "/1/content_hash.txt",
+      "prompt": "/1/prompt.txt"
     }
   ],
   "token_usage": {
@@ -24,7 +72,7 @@
     "api_call_count": 0
   },
   "redaction": {
-    "replacements": 133744,
+    "replacements": 159098,
     "layers": {
       "betterleaks": 0,
       "connection_string": 0,
@@ -32,16 +80,16 @@
       "credential_value": 0,
       "credentialed_uri": 0,
       "custom": 0,
-      "entropy": 349449,
+      "entropy": 430229,
       "goredact": 0,
-      "key_context": 1,
-      "pii": 122,
+      "key_context": 4,
+      "pii": 123,
       "provider_token": 0,
       "shell_stdin": 0
     },
     "custom_rules_active": 2,
     "pii": {
-      "EMAIL": 122,
+      "EMAIL": 123,
       "IP": 0,
       "PHONE": 0
     }

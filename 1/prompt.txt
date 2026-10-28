@@ -1,0 +1,5 @@
+some components already have a cssdoc `@accessibility` or `@a11y` comment block. The accessibility content (without the header) should be appended to that block. for components without an accessibility block we should add it so it gets appended correctly.
+
+---
+
+some components already have a cssdoc `@accessibility` or `@a11y` comment block. The accessibility content (without the header) should be appended to that block. for components without an accessibility block we should add it so it gets appended correctly.
