@@ -8,7 +8,6 @@
   "providers": [{ "path": "./formats/components/generated/utilities.css" }],
   "render": {
     "sectionOrder": [
-      "accessibility",
       "usage",
       "demo",
       "examples",
@@ -24,6 +23,7 @@
       "animations",
       "layers",
       "conditions",
+      "accessibility",
       "tokensConsumed",
       "compat",
       "subcomponents",
