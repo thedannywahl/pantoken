@@ -4,9 +4,9 @@ import { resolveExampleTargets } from "@pantoken/utils/example-targets";
 import { Window } from "happy-dom";
 import { COMPONENTS } from "../src/components/index.ts";
 import { focus } from "../src/declarations/focus/index.ts";
-import { PLUGIN_AUDIT_RECORDS } from "../scripts/audit-plugin-components.ts";
+import { CORE_AUDIT_EXTRAS, PLUGIN_AUDIT_RECORDS } from "../scripts/audit-plugin-components.ts";
 
-const records = [...COMPONENTS, focus];
+const records = [...COMPONENTS, focus, ...CORE_AUDIT_EXTRAS];
 
 test.each(PLUGIN_AUDIT_RECORDS)("documents and audits the plugin component $name", (record) => {
   const entry = parseCssDocs(record.rules("instui-")).find(

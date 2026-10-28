@@ -6,6 +6,10 @@
  * @pseudo ::before — Included in the universal `box-sizing: border-box` reset so its generated box sizes predictably.
  * @pseudo ::after — Included in the universal `box-sizing: border-box` reset so its generated box sizes predictably.
  * @pseudo ::selection — Tints highlighted text with a translucent primary navigation colour.
+ * @example -automatica11y
+ * ```html
+ * <p>Read the <a href="#guide">accessibility guide</a> for details.</p>
+ * ```
  * @example
  * <html>
  *   <body>

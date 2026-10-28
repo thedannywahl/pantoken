@@ -20,6 +20,14 @@ export const layout: Definition = defineUtility({
  * @modifier --display-flex — Sets \`display: flex\`.
  * @modifier --display-* — Display utilities: \`block\`, \`inline-block\`, \`inline\`, \`flex\`, \`inline-flex\`, and \`none\`.
  * @modifier --text-align-* — Text-alignment utilities: \`start\`, \`center\`, \`end\`, and \`justify\`.
+ * @a11y \`--display-none\` removes an element from the accessibility tree as well as the screen, so use it only for content nobody needs. Flex and grid layout can't reorder content for assistive tech; keep the DOM order meaningful, and don't center or justify long passages of text.
+ * @example -automatica11y
+ * \`\`\`html
+ * <div class="--display-flex --text-align-center">
+ *   <span>Course</span>
+ *   <span>Grades</span>
+ * </div>
+ * \`\`\`
  * @example
  * <div class="--display-flex --text-align-center">
  *   <span>One</span>

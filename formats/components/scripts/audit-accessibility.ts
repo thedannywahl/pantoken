@@ -13,7 +13,7 @@ import { Window } from "happy-dom";
 import { COMPONENTS } from "../src/components/index.ts";
 import { focus } from "../src/declarations/focus/index.ts";
 import { AUDIT_MATRIX } from "./audit-matrix.ts";
-import { PLUGIN_AUDIT_RECORDS, PLUGIN_STYLESHEET } from "./audit-plugin-components.ts";
+import { auditRecords, PLUGIN_STYLESHEET } from "./audit-plugin-components.ts";
 import {
   loadWorkspacePackages,
   type WorkspacePackages,
@@ -656,7 +656,7 @@ export async function runPageAudits(
   run: typeof execute = execute,
   root: string = repositoryRoot,
 ): Promise<string> {
-  const definitions = [...COMPONENTS, focus, ...PLUGIN_AUDIT_RECORDS];
+  const definitions = auditRecords();
   if (record && !definitions.some((entry) => entry.name === record))
     throw new Error(`Unknown record: ${record}`);
   const entries = definitions.flatMap((definition) => parseCssDocs(definition.rules("instui-")));

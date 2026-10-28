@@ -38,6 +38,14 @@ export const gap: Definition = defineUtility({
  * @modifier --gap-md — Applies the medium spacing token as the gap.
  * @modifier --gap-* — Gap utilities across short and long spacing-step spellings.
  * @demo self:gap
+ * @a11y A gap changes spacing only; reading and focus order still follow the DOM. Keep gaps between interactive controls large enough to meet WCAG 2.5.8 target spacing.
+ * @example -automatica11y
+ * \`\`\`html
+ * <div class="--display-flex --gap-sm">
+ *   <button class="instui-button">Save</button>
+ *   <button class="instui-button">Cancel</button>
+ * </div>
+ * \`\`\`
  * @example
  * <div class="--display-flex --gap-sm">
  *   <span>One</span>

@@ -26,6 +26,14 @@ export const maskUtility: Definition = defineUtility({
  * @modifier --mask-overlay — The full mask overlay (position, centring, background).
  * @modifier --mask-fullscreen — Fixed to the viewport, covering it at a high z-index.
  * @modifier --mask-blur — Blur what's behind the mask with a backdrop-filter.
+ * @a11y A mask covers content visually but doesn't block assistive tech or the keyboard: make the covered region \`inert\` (or mark it \`aria-busy\`), keep the mask's own message as real text, and don't hide the focus indicator behind it.
+ * @example -automatica11y
+ * \`\`\`html
+ * <div class="--position-relative" style="min-block-size: 4rem">
+ *   <p>Gradebook</p>
+ *   <div class="--mask-overlay" role="status">Loading grades…</div>
+ * </div>
+ * \`\`\`
  * @example
  * <button class="instui-button --mask-overlay">…</button>
  */

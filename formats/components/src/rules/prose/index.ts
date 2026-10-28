@@ -16,6 +16,14 @@ const PROSE_DOC = css`/**
  * @rule prose
  * @selector :where(body)
  * @summary Typographic defaults for raw HTML — headings, paragraphs, lists, links, and code — applied automatically wherever it's imported (default \`:where(body)\`); pass \`options.scope\` to target a different content root instead (e.g. \`.vp-doc\`).
+ * @a11y The defaults keep headings in a logical order and links underlined with an interactive colour, so they don't rely on colour alone. Don't skip heading levels for visual size, and don't remove the link underline without another cue.
+ * @example -automatica11y
+ * \`\`\`html
+ * <article>
+ *   <h2>Release notes</h2>
+ *   <p>Body copy with a <a href="#notes">link</a>.</p>
+ * </article>
+ * \`\`\`
  * @example
  * <article>
  *   <h2>Release notes</h2>

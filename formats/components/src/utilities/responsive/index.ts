@@ -180,6 +180,12 @@ export const responsive: Definition = defineUtility({
  * @global
  * @summary Viewport- or container-width show/hide classes across a themed breakpoint scale.
  * @remarks \`.instui-hidden-max-<bp>\`/\`-hidden-min-<bp>\` hide by viewport width; \`.instui-show-max-<bp>\`/\`-show-min-<bp>\` are the inverse (hidden by default, shown only inside the range via \`display: revert\`); the \`-cq-\` variants react to a \`.instui-container\` ancestor's width instead, not the viewport's. Scale tiers \`sm\`/\`md\`/\`lg\`/\`xl\` mirror the IR's canonical breakpoint tokens, with a Pantoken-defined \`xs\` extension at \`20em\`; each is aliased to a long-form spelling (\`x-small\`\u2013\`x-large\`) and a device name (\`mobile\`/\`phablet\`/\`tablet\`/\`laptop\`/\`desktop\`) \u2014 both deprecated in favor of the short name \u2014 plus the unscaled, themed \`content\`/\`content-full-width\` tiers (the main content area's max-width).
+ * @a11y Hiding content at a breakpoint also hides it from assistive tech, so don't hide the only way to complete a task, and keep the shown and hidden versions equivalent in meaning.
+ * @example -automatica11y
+ * \`\`\`html
+ * <p class="instui-hidden-max-sm">The full course description appears on larger screens.</p>
+ * <p class="instui-show-min-sm">The full course description appears on larger screens.</p>
+ * \`\`\`
  * @example
  * <div class="instui-hidden-max-sm">Hidden at or below the small breakpoint.</div>
  * <div class="instui-show-min-sm">Shown only at or above the small breakpoint.</div>
