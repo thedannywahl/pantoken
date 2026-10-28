@@ -1,0 +1,63 @@
+{
+  "cli_version": "0.12.2",
+  "checkpoint_id": "01M625K8RETAAGZDH4CQEDNKET",
+  "session_id": "cf8db52f-0f27-4d51-8f45-3f9af32eb056",
+  "strategy": "manual-commit",
+  "created_at": "2026-10-28T21:10:33.786911Z",
+  "branch": "add-automatica11y",
+  "checkpoints_count": 2,
+  "save_step_count": 1,
+  "files_touched": [
+    "formats/components/src/components/checkbox/checkbox.css",
+    "formats/components/src/components/file-drop/file-drop.css",
+    "formats/components/src/components/form-field-group/form-field-group.css",
+    "formats/components/src/components/form-field-messages/form-field-messages.css",
+    "formats/components/src/components/form-field/form-field.css",
+    "formats/components/src/components/in-place-edit/in-place-edit.css",
+    "formats/components/src/components/input-group/input-group.css",
+    "formats/components/src/components/number-input/number-input.css",
+    "formats/components/src/components/radio/radio.css",
+    "formats/components/src/components/range-input/range-input.css",
+    "formats/components/src/components/simple-select/simple-select.css",
+    "formats/components/src/components/tag/tag.css",
+    "formats/components/src/components/text-area/text-area.css",
+    "formats/components/src/components/text-input/text-input.css"
+  ],
+  "agent": "Copilot CLI",
+  "model": "claude-sonnet-5.5",
+  "turn_id": "7cc28fbf6622",
+  "compact_transcript_start": 0,
+  "token_usage": {
+    "input_tokens": 0,
+    "cache_creation_tokens": 0,
+    "cache_read_tokens": 0,
+    "output_tokens": 0,
+    "api_call_count": 0
+  },
+  "redaction": {
+    "replacements": 67640,
+    "layers": {
+      "betterleaks": 0,
+      "connection_string": 0,
+      "credential_key": 0,
+      "credential_value": 0,
+      "credentialed_uri": 0,
+      "custom": 0,
+      "entropy": 221282,
+      "goredact": 0,
+      "key_context": 4,
+      "pii": 54,
+      "provider_token": 0,
+      "shell_stdin": 0
+    },
+    "custom_rules_active": 2,
+    "pii": {
+      "EMAIL": 54,
+      "IP": 0,
+      "PHONE": 0
+    }
+  },
+  "session_metrics": {
+    "turn_count": 24
+  }
+}
