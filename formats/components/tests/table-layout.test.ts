@@ -2,6 +2,7 @@ import { expect, test } from "vite-plus/test";
 import { tokens } from "@pantoken/tokens";
 import { parseCssDocs } from "@cssdoc/core";
 import { Window } from "happy-dom";
+import { resolveExampleTargets } from "@pantoken/utils/example-targets";
 import { exampleHtml } from "../scripts/audit-accessibility.ts";
 import { breakpointEm } from "../src/lib/breakpoints.ts";
 import { withResponsiveTableLayout } from "../src/lib/table-layout.ts";
@@ -72,7 +73,7 @@ test("unrelated styles and negative modifier tests aren't cloned", () => {
   expect(withResponsiveTableLayout(css)).toBe(css);
 });
 
-test("every table example preserves native headers in a named keyboard-scrollable region", () => {
+test("table docs preserve named scroll regions while audits isolate native table layouts", () => {
   for (const render of [
     tableCss,
     tableHeadCss,
@@ -84,29 +85,40 @@ test("every table example preserves native headers in a named keyboard-scrollabl
   ]) {
     const [record] = parseCssDocs(render({ prefix: "instui" }));
     expect(record.examples.length).toBeGreaterThan(0);
-    for (const example of record.examples) {
+    const auditTargets = resolveExampleTargets(record.examples).automatica11y;
+    for (const [index, example] of record.examples.entries()) {
       const window = new Window();
       try {
         const { document } = window;
         document.body.innerHTML = exampleHtml(example);
-        const region = document.querySelector('[role="region"][tabindex="0"]')!;
-        expect(region.classList.contains("--overflow-x-auto")).toBe(true);
-        expect(region.classList.contains("-without-focus-animation")).toBe(true);
-        const table = region.querySelector("table")!;
-        expect(table.caption?.id).toBe(region.getAttribute("aria-labelledby"));
+        const audit = auditTargets.includes(index);
+        const region = document.querySelector('[role="region"][tabindex="0"]');
+        if (audit) {
+          expect(region).toBeNull();
+          expect(document.querySelector(".instui-view")).toBeNull();
+          expect(document.querySelector(".instui-table.-layout-stacked")).not.toBeNull();
+          expect(document.querySelector(".instui-table.-layout-responsive")).not.toBeNull();
+        } else {
+          expect(region?.classList.contains("--overflow-x-auto")).toBe(true);
+          expect(region?.classList.contains("-without-focus-animation")).toBe(true);
+        }
+        const table = document.querySelector("table")!;
+        if (!audit) expect(table.caption?.id).toBe(region?.getAttribute("aria-labelledby"));
         expect(table.caption?.textContent?.trim()).toBeTruthy();
         const headings = table.querySelectorAll('thead th[scope="col"]');
         expect(headings.length).toBeGreaterThanOrEqual(3);
         expect(table.querySelectorAll("tbody td")).toHaveLength(9);
         for (const row of table.querySelectorAll("tbody tr"))
           expect(row.children).toHaveLength(headings.length);
-        const responsive = document.querySelector(".instui-table.-layout-responsive");
-        if (responsive) {
-          expect(responsive.parentElement?.classList.contains("instui-container")).toBe(true);
-          const headings = [...responsive.querySelectorAll('thead th[scope="col"]')].map((cell) =>
+        for (const variant of document.querySelectorAll(
+          ".instui-table.-layout-responsive, .instui-table.-layout-stacked",
+        )) {
+          if (variant.classList.contains("-layout-responsive"))
+            expect(variant.parentElement?.classList.contains("instui-container")).toBe(true);
+          const headings = [...variant.querySelectorAll('thead th[scope="col"]')].map((cell) =>
             cell.textContent?.trim(),
           );
-          for (const row of responsive.querySelectorAll("tbody tr"))
+          for (const row of variant.querySelectorAll("tbody tr"))
             expect([...row.children].map((cell) => cell.getAttribute("data-label"))).toEqual(
               headings,
             );

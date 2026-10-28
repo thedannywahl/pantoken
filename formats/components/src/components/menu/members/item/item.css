@@ -16,10 +16,13 @@
  * }
  * @example -automatica11y
  * ```html
- * <button class="pfx-button" type="button" popovertarget="actions-menu" aria-haspopup="menu" aria-controls="actions-menu" aria-expanded="false" data-a11y-trigger>Actions</button>
+ * <button type="button" popovertarget="actions-menu" aria-haspopup="menu" aria-controls="actions-menu" aria-expanded="false" data-a11y-trigger>Actions</button>
  * <div class="pfx-menu" id="actions-menu" popover="auto" role="menu" aria-label="Actions" data-menu-navigation data-a11y-root>
  *   <button class="item" type="button" role="menuitem">Edit</button>
  *   <button class="item" type="button" role="menuitem">Delete</button>
+ *   <button class="item -disabled" type="button" role="menuitem" disabled>Archive</button>
+ *   <button class="item -highlighted" type="button" role="menuitem">Duplicate</button>
+ *   <button class="item -active" type="button" role="menuitemcheckbox" aria-checked="true">Show details</button>
  * </div>
  * ```
  */

@@ -48,13 +48,13 @@
  * <div class="pfx-tree-browser" role="tree" aria-label="Course files">
  *   <div role="none">
  *     <div role="treeitem" tabindex="0" aria-expanded="true" aria-labelledby="course-tree-label" aria-owns="course-tree-group">
- *       <span class="item" id="course-tree-label"><span class="pfx-icon -icon-folder" aria-hidden="true"></span> Course files</span>
+ *       <span class="item" id="course-tree-label"><span class="-icon-folder" aria-hidden="true"></span> Course files</span>
  *     </div>
  *     <div role="group" id="course-tree-group">
- *       <a class="item" role="treeitem" tabindex="-1" href="#syllabus">Syllabus.pdf</a>
+ *       <a class="item -selected" role="treeitem" aria-selected="true" tabindex="-1" href="#syllabus">Syllabus.pdf</a>
  *       <div role="none">
  *         <div role="treeitem" tabindex="-1" aria-expanded="false" aria-labelledby="week-tree-label" aria-owns="week-tree-group">
- *           <span class="item" id="week-tree-label"><span class="pfx-icon -icon-folder" aria-hidden="true"></span> Week 1</span>
+ *           <span class="item" id="week-tree-label"><span class="-icon-folder" aria-hidden="true"></span> Week 1</span>
  *         </div>
  *         <div role="group" id="week-tree-group" hidden>
  *           <a class="item" role="treeitem" tabindex="-1" href="#reading">Reading.pdf</a>
@@ -64,6 +64,14 @@
  *       <a class="item" role="treeitem" tabindex="-1" href="#rubric">Rubric.docx</a>
  *     </div>
  *   </div>
+ * </div>
+ * <div class="pfx-tree-browser -size-sm" role="tree" aria-label="Small course files">
+ *   <div role="treeitem" tabindex="0" aria-expanded="true" aria-labelledby="small-tree-label" aria-owns="small-tree-group"><span class="item" id="small-tree-label"><span class="-icon-folder" aria-hidden="true"></span> Course files</span></div>
+ *   <div role="group" id="small-tree-group"><a class="item" role="treeitem" tabindex="-1" href="#small-syllabus">Syllabus.pdf</a><a class="item -selected" role="treeitem" aria-selected="true" tabindex="-1" href="#small-rubric">Rubric.docx</a></div>
+ * </div>
+ * <div class="pfx-tree-browser -size-lg" role="tree" aria-label="Large course files">
+ *   <div role="treeitem" tabindex="0" aria-expanded="true" aria-labelledby="large-tree-label" aria-owns="large-tree-group"><span class="item" id="large-tree-label"><span class="-icon-folder" aria-hidden="true"></span> Course files</span></div>
+ *   <div role="group" id="large-tree-group"><a class="item" role="treeitem" tabindex="-1" href="#large-syllabus">Syllabus.pdf</a><a class="item -selected" role="treeitem" aria-selected="true" tabindex="-1" href="#large-rubric">Rubric.docx</a></div>
  * </div>
  * ```
  */

@@ -19,8 +19,11 @@
  * ```html
  * <details class="pfx-toggle-details" data-a11y-root>
  *   <summary data-a11y-trigger>What ships in this package?</summary>
- *   Class-based component styles and a prose layer.
  * </details>
+ * <details class="pfx-toggle-details -size-sm" open><summary>Small disclosure</summary></details>
+ * <details class="pfx-toggle-details -size-lg" open><summary>Large disclosure</summary></details>
+ * <details class="pfx-toggle-details -variant-filled" open><summary>Filled disclosure</summary></details>
+ * <details class="pfx-toggle-details -chevron-end" open><summary>End-chevron disclosure</summary></details>
  * ```
  * @example -docs
  * <details class="pfx-toggle-details -variant-filled">

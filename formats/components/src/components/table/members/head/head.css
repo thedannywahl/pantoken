@@ -11,7 +11,6 @@
  * }
  * @example -automatica11y
  * ```html
- * <div class="pfx-view --overflow-x-auto -focus-position-inset -without-focus-animation" role="region" aria-labelledby="table-head-caption" tabindex="0">
  * <table class="pfx-table -hover">
  *   <caption id="table-head-caption">Top-rated films</caption>
  *   <thead>
@@ -43,7 +42,8 @@
  *     </tr>
  *   </tbody>
  * </table>
- * </div>
+ * <table class="pfx-table -layout-stacked"><caption>Stacked head</caption><thead><tr><th scope="col">Title</th><th scope="col">Rating</th></tr></thead><tbody><tr><th scope="row" data-label="Title">The Godfather</th><td data-label="Rating">9.2</td></tr></tbody></table>
+ * <div class="pfx-container"><table class="pfx-table -layout-responsive"><caption>Responsive head</caption><thead><tr><th scope="col">Title</th><th scope="col">Rating</th></tr></thead><tbody><tr><th scope="row" data-label="Title">The Godfather</th><td data-label="Rating">9.2</td></tr></tbody></table></div>
  * ```
  */
 .pfx-table thead {

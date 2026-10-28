@@ -32,11 +32,15 @@
  * @related popover — The generic top-layer surface this builds on.
  * @example -automatica11y
  * ```html
- * <div class="pfx-tray -placement-end -size-sm">
- *   <span class="pfx-heading -level-h3">Filters</span>
- *   <p class="-size-sm">A tray slides in from the start edge and fills the viewport height.</p>
- * </div>
- * <button class="pfx-button -toggle">toggle tray</button>
+ * \3c !-- Static surfaces stay in flow so every tray's chrome is measurable without covering another variant. -->
+ * <div class="pfx-tray -placement-start -size-xs" role="region" aria-label="Extra small start tray" style="position: relative; inset: auto; min-block-size: 6rem"></div>
+ * <div class="pfx-tray -placement-start -size-sm" role="region" aria-label="Small start tray" style="position: relative; inset: auto; min-block-size: 6rem"></div>
+ * <div class="pfx-tray -placement-start -size-md" role="region" aria-label="Medium start tray" style="position: relative; inset: auto; min-block-size: 6rem"></div>
+ * <div class="pfx-tray -placement-start -size-lg" role="region" aria-label="Large start tray" style="position: relative; inset: auto; min-block-size: 6rem"></div>
+ * <div class="pfx-tray -placement-start -size-xl" role="region" aria-label="Extra large start tray" style="position: relative; inset: auto; min-block-size: 6rem"></div>
+ * <div class="pfx-tray -placement-end" role="region" aria-label="End tray" style="position: relative; inset: auto; min-block-size: 6rem"></div>
+ * <div class="pfx-tray -placement-top" role="region" aria-label="Top tray" style="position: relative; inset: auto; min-block-size: 6rem"></div>
+ * <div class="pfx-tray -placement-bottom" role="region" aria-label="Bottom tray" style="position: relative; inset: auto; min-block-size: 6rem"></div>
  * ```
  */
 @scope (.pfx-tray) {

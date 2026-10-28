@@ -23,10 +23,9 @@
  * }
  * @example -automatica11y
  * ```html
- * <div class="pfx-metric">
- *   <span class="value">1,284</span>
- *   <span class="label">Active users</span>
- * </div>
+ * <div class="pfx-metric -text-align-start"><span class="value">1,284</span><span class="label">Start-aligned users</span></div>
+ * <div class="pfx-metric -text-align-center"><span class="value">1,284</span><span class="label">Centered users</span></div>
+ * <div class="pfx-metric -text-align-end"><span class="value">1,284</span><span class="label">End-aligned users</span></div>
  * ```
  */
 @scope (.pfx-metric) {

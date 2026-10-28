@@ -10,7 +10,7 @@
  * }
  * @example -automatica11y
  * ```html
- * <button class="pfx-button" type="button" popovertarget="actions-menu" aria-haspopup="menu" aria-controls="actions-menu" aria-expanded="false" data-a11y-trigger>Actions</button>
+ * <button type="button" popovertarget="actions-menu" aria-haspopup="menu" aria-controls="actions-menu" aria-expanded="false" data-a11y-trigger>Actions</button>
  * <div class="pfx-menu" id="actions-menu" popover="auto" role="menu" aria-label="Actions" data-menu-navigation data-a11y-root>
  *   <div role="group" aria-labelledby="editing-actions-label">
  *     <div class="group" id="editing-actions-label">Editing</div>

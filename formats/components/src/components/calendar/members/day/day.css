@@ -15,7 +15,17 @@
  * }
  * @example -automatica11y
  * ```html
- * <div class="pfx-calendar" aria-label="March 2026"><div class="nav"><strong>March 2026</strong></div><div class="grid"><span class="weekday">Sunday</span><span class="day">1</span><span class="day -today">8</span><span class="day -selected">15</span></div></div>
+ * <div class="pfx-calendar">
+ *   <div class="nav"><strong>March 2026</strong></div>
+ *   <div class="grid" role="table" aria-label="March 2026 day states">
+ *     <div role="row" style="display: contents">
+ *       <span class="day" role="cell" aria-label="March 1, 2026">1</span>
+ *       <span class="day -today" role="cell" aria-current="date" aria-label="March 2, 2026">2</span>
+ *       <span class="day -selected" role="cell" aria-label="March 3, 2026, selected">3</span>
+ *       <span class="day -outside-month" role="cell" aria-label="February 28, 2026">28</span>
+ *     </div>
+ *   </div>
+ * </div>
  * ```
  */
 @scope (.pfx-calendar) {

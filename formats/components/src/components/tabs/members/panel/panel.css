@@ -16,8 +16,8 @@
  *     <button class="tab -selected" id="profile-tab" role="tab" aria-selected="true" aria-controls="profile-panel" tabindex="0" data-a11y-trigger>Profile</button>
  *     <button class="tab" id="security-tab" role="tab" aria-selected="false" aria-controls="security-panel" tabindex="-1">Security</button>
  *   </div>
- *   <div class="panel" id="profile-panel" role="tabpanel" aria-labelledby="profile-tab">Profile settings</div>
- *   <div class="panel" id="security-panel" role="tabpanel" aria-labelledby="security-tab" hidden>Security settings</div>
+ *   <div class="panel" id="profile-panel" role="tabpanel" aria-labelledby="profile-tab"></div>
+ *   <div class="panel" id="security-panel" role="tabpanel" aria-labelledby="security-tab" hidden></div>
  * </div>
  * ```
  */

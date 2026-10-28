@@ -59,7 +59,27 @@
  * }
  * @example -automatica11y
  * ```html
- * <div class="pfx-calendar" aria-label="March 2026"><div class="nav"><strong>March 2026</strong></div><div class="grid"><span class="weekday">Sunday</span><span class="day">1</span><span class="day -today">8</span><span class="day -selected">15</span></div></div>
+ * <div class="pfx-calendar">
+ *   <div class="nav"><strong>March 2026</strong></div>
+ *   <div class="grid" role="table" aria-label="March 2026">
+ *     <div role="row" style="display: contents">
+ *       <span class="weekday" role="columnheader">Su</span><span class="weekday" role="columnheader">Mo</span><span class="weekday" role="columnheader">Tu</span><span class="weekday" role="columnheader">We</span><span class="weekday" role="columnheader">Th</span><span class="weekday" role="columnheader">Fr</span><span class="weekday" role="columnheader">Sa</span>
+ *     </div>
+ *     <div role="row" style="display: contents">
+ *       <span class="day" role="cell" aria-label="March 1, 2026">1</span>
+ *       <span class="day -today" role="cell" aria-current="date" aria-label="March 2, 2026">2</span>
+ *       <span class="day -selected" role="cell" aria-label="March 3, 2026, selected">3</span>
+ *       <span class="day" role="cell" aria-label="March 4, 2026">4</span>
+ *       <span class="day" role="cell" aria-label="March 5, 2026">5</span>
+ *       <span class="day" role="cell" aria-label="March 6, 2026">6</span>
+ *       <span class="day" role="cell" aria-label="March 7, 2026">7</span>
+ *     </div>
+ *     <div role="row" style="display: contents">
+ *       <span class="day" role="cell" aria-label="March 29, 2026">29</span><span class="day" role="cell" aria-label="March 30, 2026">30</span><span class="day" role="cell" aria-label="March 31, 2026">31</span>
+ *       <span class="day -outside-month" role="cell" aria-label="April 1, 2026">1</span><span class="day -outside-month" role="cell" aria-label="April 2, 2026">2</span><span class="day -outside-month" role="cell" aria-label="April 3, 2026">3</span><span class="day -outside-month" role="cell" aria-label="April 4, 2026">4</span>
+ *     </div>
+ *   </div>
+ * </div>
  * ```
  */
 .pfx-calendar {

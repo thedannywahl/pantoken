@@ -33,13 +33,12 @@
  * }
  * @example -automatica11y
  * ```html
- * <div class="pfx-byline -size-md">
- *   <span class="pfx-icon -icon-megaphone"></span>
- *   <div>
- *     <div class="title">What's new</div>
- *     <div class="description">The figure can be any leading visual — an icon, an avatar, or an image.</div>
- *   </div>
- * </div>
+ * <div class="pfx-byline -size-sm -align-content-center"><span class="-icon-megaphone" aria-hidden="true"></span><div><h2 class="title">Small centered byline</h2><div class="description">Latest course updates.</div></div></div>
+ * <div class="pfx-byline -size-md -align-content-center"><span class="-icon-megaphone" aria-hidden="true"></span><div><h2 class="title">Medium centered byline</h2><div class="description">Latest course updates.</div></div></div>
+ * <div class="pfx-byline -size-lg -align-content-center"><span class="-icon-megaphone" aria-hidden="true"></span><div><h2 class="title">Large centered byline</h2><div class="description">Latest course updates.</div></div></div>
+ * <div class="pfx-byline -size-sm -align-content-top"><span class="-icon-megaphone" aria-hidden="true"></span><div><h2 class="title">Small top-aligned byline</h2><div class="description">Latest course updates.</div></div></div>
+ * <div class="pfx-byline -size-md -align-content-top"><span class="-icon-megaphone" aria-hidden="true"></span><div><h2 class="title">Medium top-aligned byline</h2><div class="description">Latest course updates.</div></div></div>
+ * <div class="pfx-byline -size-lg -align-content-top"><span class="-icon-megaphone" aria-hidden="true"></span><div><h2 class="title">Large top-aligned byline</h2><div class="description">Latest course updates.</div></div></div>
  * ```
  */
 @scope (.pfx-byline) {

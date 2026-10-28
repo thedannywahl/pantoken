@@ -24,10 +24,11 @@
  * @related toggle-details — The single, unbordered form of the same disclosure.
  * @example -automatica11y
  * ```html
- * <details class="pfx-toggle-group" open>
- *   <summary>Advanced settings</summary>
- *   <div>These options are revealed when the group is expanded. The header row carries a chevron that rotates on open, and the content sits below a divider.</div>
- * </details>
+ * <details class="pfx-toggle-group" open><summary>Default group</summary><div></div></details>
+ * <details class="pfx-toggle-group -size-sm" open><summary>Small group</summary><div></div></details>
+ * <details class="pfx-toggle-group -size-lg" open><summary>Large group</summary><div></div></details>
+ * <details class="pfx-toggle-group -without-border" open><summary>Borderless group</summary><div></div></details>
+ * <details class="pfx-toggle-group"><summary>Initially collapsed group</summary><div></div></details>
  * ```
  */
 @scope (.pfx-toggle-group) {

@@ -27,7 +27,14 @@ test.each([menu, menuItem, menuGroup, menuSeparator])(
       expect(trigger.getAttribute("aria-controls")).toBe(root.id);
       expect(trigger.getAttribute("aria-haspopup")).toBe("menu");
       expect(trigger.getAttribute("aria-expanded")).toBe("false");
-      expect(root.querySelectorAll('[role="menuitem"]')).toHaveLength(2);
+      expect(root.querySelectorAll('[role="menuitem"]')).toHaveLength(
+        record.name === "menu.item" ? 4 : 2,
+      );
+      if (record.name === "menu.item") {
+        expect(root.querySelector(".item.-disabled")?.hasAttribute("disabled")).toBe(true);
+        expect(root.querySelector(".item.-active")?.getAttribute("aria-checked")).toBe("true");
+        expect(root.querySelector(".item.-highlighted")).not.toBeNull();
+      }
       for (const button of window.document.querySelectorAll("button"))
         expect(button.type).toBe("button");
       for (const separator of root.querySelectorAll('[role="separator"]'))

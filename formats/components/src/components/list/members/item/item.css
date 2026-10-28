@@ -15,11 +15,12 @@
  * }
  * @example -automatica11y
  * ```html
- * <ul class="pfx-list">
- *   <li>First item</li>
- *   <li>Second item</li>
- *   <li>Third item</li>
- * </ul>
+ * <ul class="pfx-list -size-sm"><li>Small first item</li><li>Small second item</li></ul>
+ * <ul class="pfx-list -size-md"><li>Medium first item</li><li>Medium second item</li></ul>
+ * <ul class="pfx-list -size-lg"><li>Large first item</li><li>Large second item</li></ul>
+ * <ul class="pfx-list -delimiter-solid"><li>Solid first item</li><li>Solid second item</li></ul>
+ * <ul class="pfx-list -delimiter-dashed"><li>Dashed first item</li><li>Dashed second item</li></ul>
+ * <ol class="pfx-list -ordered"><li>Ordered first item</li><li>Ordered second item</li></ol>
  * ```
  */
 

@@ -21,8 +21,16 @@
  * }
  * @example -automatica11y
  * ```html
+ * <span class="pfx-rating" role="img" aria-label="2 out of 3 stars">
+ *   <span class="-icon-star-solid" aria-hidden="true"></span> <span class="-icon-star-solid" aria-hidden="true"></span> <span class="-icon-star" aria-hidden="true"></span>
+ *   <span class="label">2/3</span>
+ * </span>
  * <span class="pfx-rating -size-sm" role="img" aria-label="2 out of 3 stars">
- *   <span class="pfx-icon -icon-star-solid"></span> <span class="pfx-icon -icon-star-solid"></span> <span class="pfx-icon -icon-star"></span>
+ *   <span class="-icon-star-solid" aria-hidden="true"></span> <span class="-icon-star-solid" aria-hidden="true"></span> <span class="-icon-star" aria-hidden="true"></span>
+ *   <span class="label">2/3</span>
+ * </span>
+ * <span class="pfx-rating -size-lg" role="img" aria-label="2 out of 3 stars">
+ *   <span class="-icon-star-solid" aria-hidden="true"></span> <span class="-icon-star-solid" aria-hidden="true"></span> <span class="-icon-star" aria-hidden="true"></span>
  *   <span class="label">2/3</span>
  * </span>
  * ```

@@ -30,16 +30,9 @@
  * @stable
  * @example -automatica11y
  * ```html
- * <nav class="pfx-breadcrumb" aria-label="Breadcrumb">
- *   <ol>
- *     <li>
- *       <a class="-icon-house" href="#">Home</a>
- *     </li>
- *     <li><a href="#">Guides</a></li>
- *     <li><a href="#">Components</a></li>
- *     <li aria-current="page">Breadcrumb</li>
- *   </ol>
- * </nav>
+ * <nav class="pfx-breadcrumb -size-sm" aria-label="Small breadcrumb"><ol><li><a href="#home">Home</a></li><li aria-current="page">Guides</li></ol></nav>
+ * <nav class="pfx-breadcrumb -size-md" aria-label="Medium breadcrumb"><ol><li><a href="#home">Home</a></li><li aria-current="page">Guides</li></ol></nav>
+ * <nav class="pfx-breadcrumb -size-lg" aria-label="Large breadcrumb"><ol><li><a href="#home">Home</a></li><li aria-current="page">Guides</li></ol></nav>
  * ```
  */
 @scope (.pfx-breadcrumb) {

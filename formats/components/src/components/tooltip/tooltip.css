@@ -18,10 +18,16 @@
  * ```
  * @example -automatica11y
  * ```html
+ * \3c !-- Vertical clearance separates simultaneously expanded bubbles without changing their width or reflow. -->
+ * <p style="padding-block: 3rem">
  * <span class="pfx-tooltip">
- *   <button class="pfx-button" type="button" aria-describedby="help-tip" data-a11y-trigger>Help</button>
- *   <span class="tip" id="help-tip" role="tooltip" data-a11y-root>Find answers to common questions.</span>
+ *   <button type="button" aria-describedby="help-tip" data-a11y-trigger>Help</button>
+ *   <span class="tip -show" id="help-tip" role="tooltip" data-a11y-root>Find answers.</span>
  * </span>
+ * </p>
+ * <p style="padding-block: 3rem"><span class="pfx-tooltip"><button type="button" aria-describedby="bottom-tip">Bottom help</button><span class="tip -placement-bottom -show" id="bottom-tip" role="tooltip">Find answers.</span></span></p>
+ * <p style="padding-block: 3rem"><span class="pfx-tooltip"><button type="button" aria-describedby="start-tip">Start help</button><span class="tip -placement-start -show" id="start-tip" role="tooltip">Find answers.</span></span></p>
+ * <p style="padding-block: 3rem"><span class="pfx-tooltip"><button type="button" aria-describedby="end-tip">End help</button><span class="tip -placement-end -show" id="end-tip" role="tooltip">Find answers.</span></span></p>
  * ```
  * @example -docs
  * ```html

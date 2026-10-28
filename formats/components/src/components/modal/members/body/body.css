@@ -13,12 +13,14 @@
  * }
  * @example -automatica11y
  * ```html
- * <button class="pfx-button" command="--show" commandfor="account-dialog" data-a11y-trigger>Open account details</button>
- * <dialog class="pfx-modal -size-sm" id="account-dialog" aria-labelledby="account-dialog-title" data-a11y-root>
- *   <div class="header" id="account-dialog-title"><strong>Account details</strong></div>
- *   <div class="body">Review your account information.</div>
- *   <div class="footer"><button class="pfx-button" command="--close" commandfor="account-dialog">Close</button></div>
+ * <button type="button" command="--show" commandfor="account-dialog" data-a11y-trigger>Open account details</button>
+ * <dialog class="pfx-modal" id="account-dialog" aria-label="Account details" data-a11y-root open style="position: relative; inset: auto">
+ *   <div class="body"></div>
+ *   <div class="footer"><button type="button" command="--close" commandfor="account-dialog">Close</button></div>
  * </dialog>
+ * <dialog class="pfx-modal -density-compact" aria-label="Compact body" open style="position: relative; inset: auto"><div class="body"></div></dialog>
+ * <dialog class="pfx-modal -color-inverse" aria-label="Inverse body" open style="position: relative; inset: auto"><div class="body"></div></dialog>
+ * <dialog class="pfx-modal -overflow-fit" aria-label="Viewport-fit body" open style="position: relative; inset: auto"><div class="body"></div></dialog>
  * ```
  */
 @scope (.pfx-modal) {

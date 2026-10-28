@@ -27,12 +27,21 @@
  * </dialog>
  * @example -automatica11y
  * ```html
- * <button class="pfx-button" command="--show" commandfor="account-dialog" data-a11y-trigger>Open account details</button>
- * <dialog class="pfx-modal -size-sm" id="account-dialog" aria-labelledby="account-dialog-title" data-a11y-root>
- *   <div class="header" id="account-dialog-title"><strong>Account details</strong></div>
- *   <div class="body">Review your account information.</div>
- *   <div class="footer"><button class="pfx-button" command="--close" commandfor="account-dialog">Close</button></div>
+ * \3c !-- Non-modal, in-flow dialogs keep every surface measurable; backdrop and focus trapping need interaction checks. -->
+ * <button type="button" command="--show" commandfor="account-dialog" data-a11y-trigger>Open account details</button>
+ * <dialog class="pfx-modal -size-sm" id="account-dialog" aria-labelledby="account-dialog-title" data-a11y-root open style="position: relative; inset: auto">
+ *   <div class="header" id="account-dialog-title"><strong>Small account dialog</strong></div>
+ *   <div class="body"></div>
+ *   <div class="footer"><button type="button" command="--close" commandfor="account-dialog">Close</button></div>
  * </dialog>
+ * <dialog class="pfx-modal" aria-labelledby="modal-default-title" open style="position: relative; inset: auto"><div class="header" id="modal-default-title">Default dialog</div><div class="body"></div><div class="footer"></div></dialog>
+ * <dialog class="pfx-modal -size-lg" aria-labelledby="modal-large-title" open style="position: relative; inset: auto"><div class="header" id="modal-large-title">Large dialog</div><div class="body"></div><div class="footer"></div></dialog>
+ * <dialog class="pfx-modal -size-auto" aria-labelledby="modal-auto-title" open style="position: relative; inset: auto"><div class="header" id="modal-auto-title">Auto-sized dialog</div><div class="body"></div><div class="footer"></div></dialog>
+ * <dialog class="pfx-modal -size-fullscreen" aria-labelledby="modal-full-title" open style="position: relative; inset: auto"><div class="header" id="modal-full-title">Fullscreen dialog chrome</div><div class="body"></div><div class="footer"></div></dialog>
+ * <dialog class="pfx-modal -density-compact" aria-labelledby="modal-compact-title" open style="position: relative; inset: auto"><div class="header" id="modal-compact-title">Compact dialog</div><div class="body"></div><div class="footer"></div></dialog>
+ * <dialog class="pfx-modal -color-inverse" aria-labelledby="modal-inverse-title" open style="position: relative; inset: auto"><div class="header" id="modal-inverse-title">Inverse dialog</div><div class="body"></div><div class="footer"></div></dialog>
+ * <dialog class="pfx-modal -overflow-fit" aria-labelledby="modal-fit-title" open style="position: relative; inset: auto"><div class="header" id="modal-fit-title">Viewport-fit dialog</div><div class="body"></div><div class="footer"></div></dialog>
+ * <dialog class="pfx-modal -blur" aria-labelledby="modal-blur-title" open style="position: relative; inset: auto"><div class="header" id="modal-blur-title">Blur-backdrop dialog chrome</div><div class="body"></div><div class="footer"></div></dialog>
  * ```
  * @example -docs
  * <dialog class="pfx-modal -size-lg" aria-labelledby="details-title">

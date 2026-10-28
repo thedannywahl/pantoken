@@ -15,7 +15,7 @@
  * <nav class="pfx-pagination" aria-label="Pagination">
  *   <button class="arrow" type="button" aria-label="First page" disabled><span class="pfx-icon -icon-chevrons-left"></span></button>
  *   <button class="arrow" type="button" aria-label="Previous page" disabled><span class="pfx-icon -icon-chevron-left"></span></button>
- *   <a class="page" href="#" aria-current="page">1</a>
+ *   <a class="page -current" href="#" aria-current="page">1</a>
  *   <a class="page" href="#">2</a>
  *   <a class="page" href="#">3</a>
  *   <span class="ellipsis">…</span>
