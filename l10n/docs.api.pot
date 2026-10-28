@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: pantoken\n"
-"PO-Revision-Date: 2026-10-27 19:29+0000\n"
+"PO-Revision-Date: 2026-10-28 16:19+0000\n"
 "Last-Translator: pantoken localization engine\n"
 "Language-Team: pantoken\n"
 "MIME-Version: 1.0\n"
@@ -670,6 +670,92 @@ msgid "Action"
 msgstr ""
 
 #: css/agent-shell.md
+#: css/alert.md
+#: css/avatar.md
+#: css/badge.md
+#: css/banner.md
+#: css/billboard.md
+#: css/breadcrumb.link.md
+#: css/breadcrumb.md
+#: css/button-set.md
+#: css/button.md
+#: css/byline.md
+#: css/calendar.day.md
+#: css/calendar.md
+#: css/card.md
+#: css/checkbox.md
+#: css/close-button.md
+#: css/context-view.md
+#: css/drawer-layout.content.md
+#: css/drawer-layout.md
+#: css/drawer-layout.tray.md
+#: css/file-drop.md
+#: css/form-field-group.md
+#: css/form-field-messages.md
+#: css/form-field.md
+#: css/heading.md
+#: css/icon.md
+#: css/img.md
+#: css/in-place-edit.md
+#: css/input-group.md
+#: css/link.md
+#: css/list.item.md
+#: css/list.md
+#: css/mask.md
+#: css/menu.group.md
+#: css/menu.item.md
+#: css/menu.md
+#: css/menu.separator.md
+#: css/metric.md
+#: css/modal.body.md
+#: css/modal.footer.md
+#: css/modal.header.md
+#: css/modal.md
+#: css/number-input.md
+#: css/pagination.md
+#: css/pagination.page.md
+#: css/pill.md
+#: css/popover.md
+#: css/progress-circle.md
+#: css/progress.md
+#: css/radio-input-group.md
+#: css/radio.md
+#: css/range-input.md
+#: css/rating.md
+#: css/screen-reader-content.md
+#: css/segmented-control.md
+#: css/segmented-control.segment.md
+#: css/side-nav-bar.item.md
+#: css/side-nav-bar.md
+#: css/simple-select.md
+#: css/skeleton-loader.md
+#: css/spinner.md
+#: css/table.body.md
+#: css/table.cell.md
+#: css/table.col-header.md
+#: css/table.head.md
+#: css/table.md
+#: css/table.row-header.md
+#: css/table.row.md
+#: css/tabs.md
+#: css/tabs.panel.md
+#: css/tabs.tab.md
+#: css/tag.md
+#: css/text-area.md
+#: css/text-input.md
+#: css/text.md
+#: css/toggle-details.md
+#: css/toggle-group.md
+#: css/tooltip.md
+#: css/tray.md
+#: css/tree-browser.md
+#: css/view.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "These automated results do not establish that the page meets WCAG; manual review is still needed."
+msgstr ""
+
+#: css/agent-shell.md
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "- https://www.figma.com/design/EmUrCpRWxboBTWEokGiBKP/Agent-Platform?node-id=1045-60738"
@@ -728,12 +814,6 @@ msgstr ""
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "This component's CSS renders and works on its own; pair it with `@pantoken/interactions` to add the interactive behavior. Its `-timeout` modifier is driven by that behavior. See the [modifier table below](#modifiers)."
-msgstr ""
-
-#: css/alert.md
-#, no-c-format
-msgctxt "docs.api:prose"
-msgid "For an important message, add `role=\"alert\"` or an `aria-live` region so assistive tech announces it; the dismiss control is a labelled close button (the `.instui-close-button` in the example carries `aria-label=\"Close\"`)."
 msgstr ""
 
 #: css/alert.md
@@ -899,6 +979,12 @@ msgstr ""
 #: css/alert.md
 #, no-c-format
 msgctxt "docs.api:prose"
+msgid "For an important message, add `role=\"alert\"` or an `aria-live` region so assistive tech announces it; the dismiss control is a labelled close button (the `.instui-close-button` in the example carries `aria-label=\"Close\"`)."
+msgstr ""
+
+#: css/alert.md
+#, no-c-format
+msgctxt "docs.api:prose"
 msgid "- [close-button](/api/css/close-button.md) — The dismiss control an alert may include."
 msgstr ""
 
@@ -922,7 +1008,9 @@ msgstr ""
 
 #: css/avatar.md
 #: css/close-button.md
+#: css/form-field.md
 #: css/in-place-edit.md
+#: css/menu.md
 #: css/modal.md
 #: css/segmented-control.md
 #: css/skeleton-loader.md
@@ -932,12 +1020,6 @@ msgstr ""
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "This component's CSS renders and works on its own; pair it with `@pantoken/interactions` to add the interactive behavior. See the [modifier table below](#modifiers)."
-msgstr ""
-
-#: css/avatar.md
-#, no-c-format
-msgctxt "docs.api:prose"
-msgid "Give an image avatar a meaningful `alt` (the person's name), not a generic \"avatar\"; for initials-only avatars, prefer real name content (bare text, data-initials, .name, or .first-name/.last-name) over pre-abbreviated letters, so assistive tech announces the real name."
 msgstr ""
 
 #: css/avatar.md
@@ -1239,6 +1321,12 @@ msgstr ""
 #: css/avatar.md
 #, no-c-format
 msgctxt "docs.api:prose"
+msgid "The name parts intentionally clip full names to leading letters. Keep the full text in the markup; when identifying text must also be visible, show the full name alongside the avatar."
+msgstr ""
+
+#: css/avatar.md
+#, no-c-format
+msgctxt "docs.api:prose"
 msgid "- [byline](/api/css/byline.md) — Can host an avatar as its leading hero figure."
 msgstr ""
 
@@ -1372,6 +1460,12 @@ msgstr ""
 #: css/badge.md
 #, no-c-format
 msgctxt "docs.api:prose"
+msgid "The count or dot is visual only, so don't rely on color to carry its meaning; put the status in text, such as visually hidden text or an `aria-label` on the target it decorates."
+msgstr ""
+
+#: css/badge.md
+#, no-c-format
+msgctxt "docs.api:prose"
 msgid "- [pill](/api/css/pill.md) — The inline label-chip counterpart."
 msgstr ""
 
@@ -1385,12 +1479,6 @@ msgstr ""
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "**Size** controls padding and gap: `relaxed` (default) is roomier; `compact` tightens both.\n  **Color** sets the fill: bare (no modifier) is unfilled — border and icon only; `-color-violet`\n  and `-color-sea` add a tinted background plus a matching icon swatch."
-msgstr ""
-
-#: css/banner.md
-#, no-c-format
-msgctxt "docs.api:prose"
-msgid "Add `role=\"status\"` (or `role=\"alert\"` for urgent messages) so assistive tech announces the\n  banner; mark a decorative icon `aria-hidden=\"true\"` and give the close button an `aria-label`."
 msgstr ""
 
 #: css/banner.md
@@ -1465,6 +1553,12 @@ msgstr ""
 #: css/banner.md
 #, no-c-format
 msgctxt "docs.api:prose"
+msgid "Add `role=\"status\"` (or `role=\"alert\"` for urgent messages) so assistive tech announces the\n  banner; mark a decorative icon `aria-hidden=\"true\"` and give the close button an `aria-label`."
+msgstr ""
+
+#: css/banner.md
+#, no-c-format
+msgctxt "docs.api:prose"
 msgid "- [alert](/api/css/alert.md) — A non-dismissible, status-coloured counterpart for inline messages.\n- [close-button](/api/css/close-button.md) — The dismiss control a banner may include."
 msgstr ""
 
@@ -1497,6 +1591,12 @@ msgstr ""
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "Tints highlighted text with a translucent primary navigation colour."
+msgstr ""
+
+#: css/base.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "It sets the page surface, text color, and `color-scheme` so native controls follow the active light or dark scheme; keep links distinguishable from surrounding text by more than color alone."
 msgstr ""
 
 #: css/billboard.md
@@ -1596,6 +1696,12 @@ msgid "The supporting message."
 msgstr ""
 
 #: css/billboard.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Render the `.heading` as a real heading element. A `-clickable` billboard only gains hover styling, so give it `tabindex=\"0\"`, an appropriate role, and a keyboard handler."
+msgstr ""
+
+#: css/billboard.md
 #: css/byline.md
 #: css/form-field.md
 #, no-c-format
@@ -1613,12 +1719,6 @@ msgstr ""
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "The parent `breadcrumb`'s `-size-sm`/`-size-lg` modifiers adjust this member's separator spacing — see `breadcrumb`'s own doc for those modifiers."
-msgstr ""
-
-#: css/breadcrumb.link.md
-#, no-c-format
-msgctxt "docs.api:prose"
-msgid "Mark the current page's crumb with `aria-current=\"page\"` — on its `<a>` if it's a link, otherwise on the `<li>` itself."
 msgstr ""
 
 #: css/breadcrumb.link.md
@@ -1662,6 +1762,12 @@ msgctxt "docs.api:prose"
 msgid "Collapses the trail, showing only the previous crumb and a back arrow."
 msgstr ""
 
+#: css/breadcrumb.link.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Mark the current page's crumb with `aria-current=\"page\"` — on its `<a>` if it's a link, otherwise on the `<li>` itself."
+msgstr ""
+
 #: css/breadcrumb.md
 #, no-c-format
 msgctxt "docs.api:prose"
@@ -1678,12 +1784,6 @@ msgstr ""
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "**Source:** [breadcrumb.css](https://github.com/thedannywahl/pantoken/blob/main/formats/components/src/components/breadcrumb/breadcrumb.css)"
-msgstr ""
-
-#: css/breadcrumb.md
-#, no-c-format
-msgctxt "docs.api:prose"
-msgid "Wrap the `<ol>` in a `<nav aria-label>` landmark; mark the current page's crumb with `aria-current=\"page\"`."
 msgstr ""
 
 #: css/breadcrumb.md
@@ -1747,6 +1847,12 @@ msgctxt "docs.api:prose"
 msgid "Small. @affects breadcrumb.link — Scales the crumb separator's spacing to match. Long-form alias of `-size-sm`."
 msgstr ""
 
+#: css/breadcrumb.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Wrap the `<ol>` in a `<nav aria-label>` landmark; mark the current page's crumb with `aria-current=\"page\"`."
+msgstr ""
+
 #: css/breakpoints.md
 #, no-c-format
 msgctxt "docs.api:prose"
@@ -1769,12 +1875,6 @@ msgstr ""
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "Its own chained modifiers (`-color-*`, `-size-*`, `-shape-*`, `-toggle`, `-condensed`,\n  `-without-background`, `-without-border`, `-display-block`) set a default for every child\n  `.instui-button` that doesn't carry its own modifier in that same category — a button's own\n  modifier class always wins over the group's default. `-icon-*` is always per-button; it's\n  never read from the group. Deprecated button aliases (`-ghost`, `-color-primary-inverse`)\n  aren't supported as group-level modifiers — use their canonical replacements\n  (`-color-tertiary`, `-on-color`) instead. Each join shows a single 1px seam in the buttons'\n  own border color (solid fills, whose border matches the fill, tint it with the label color).\n  `-without-seam` is group-only: it hides that seam so the buttons read as\n  one continuous control."
-msgstr ""
-
-#: css/button-set.md
-#, no-c-format
-msgctxt "docs.api:prose"
-msgid "Use a labelled group for related actions; when buttons represent a toggle choice, expose each state with aria-pressed. Give icon-only buttons an accessible name."
 msgstr ""
 
 #: css/button-set.md
@@ -1932,6 +2032,12 @@ msgstr ""
 #: css/button-set.md
 #, no-c-format
 msgctxt "docs.api:prose"
+msgid "Use a labelled group for related actions; when buttons represent a toggle choice, expose each state with aria-pressed. Give icon-only buttons an accessible name."
+msgstr ""
+
+#: css/button-set.md
+#, no-c-format
+msgctxt "docs.api:prose"
 msgid "- [button](/api/css/button.md) — The child control this wraps."
 msgstr ""
 
@@ -1956,12 +2062,6 @@ msgstr ""
 #: css/button.md
 #, no-c-format
 msgctxt "docs.api:prose"
-msgid "Drive the `-toggle` variant's pressed state with `aria-pressed`, and mark a disabled button with `aria-disabled` (or the native `disabled`)."
-msgstr ""
-
-#: css/button.md
-#, no-c-format
-msgctxt "docs.api:prose"
 msgid "Primary"
 msgstr ""
 
@@ -1972,6 +2072,8 @@ msgid "Secondary"
 msgstr ""
 
 #: css/button.md
+#: css/menu.md
+#: css/menu.md
 #: css/menu.md
 #: renderers/web-components/src/variables/button.md
 #, no-c-format
@@ -2104,6 +2206,12 @@ msgstr ""
 #: css/button.md
 #, no-c-format
 msgctxt "docs.api:prose"
+msgid "Drive the `-toggle` variant's pressed state with `aria-pressed`, and mark a disabled button with `aria-disabled` (or the native `disabled`)."
+msgstr ""
+
+#: css/button.md
+#, no-c-format
+msgctxt "docs.api:prose"
 msgid "- [close-button](/api/css/close-button.md) — The icon-only dismiss button."
 msgstr ""
 
@@ -2181,6 +2289,12 @@ msgctxt "docs.api:prose"
 msgid "The heading text."
 msgstr ""
 
+#: css/byline.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Give an informative hero image alt text and mark a decorative one with an empty `alt` or `aria-hidden=\"true\"`. Use a real heading element for the `.title` when it belongs in the document outline."
+msgstr ""
+
 #: css/calendar.day.md
 #, no-c-format
 msgctxt "docs.api:prose"
@@ -2205,6 +2319,12 @@ msgctxt "docs.api:prose"
 msgid "Today's date."
 msgstr ""
 
+#: css/calendar.day.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Mirror `-selected` with `aria-selected` and mark today with `aria-current=\"date\"`; give each day a full-date accessible name, since the day number alone is ambiguous."
+msgstr ""
+
 #: css/calendar.md
 #, no-c-format
 msgctxt "docs.api:prose"
@@ -2221,12 +2341,6 @@ msgstr ""
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "**Source:** [calendar.css](https://github.com/thedannywahl/pantoken/blob/main/formats/components/src/components/calendar/calendar.css)"
-msgstr ""
-
-#: css/calendar.md
-#, no-c-format
-msgctxt "docs.api:prose"
-msgid "Expose the grid with `role=\"table\"` and a descriptive `aria-label`, and give each navigation button its own `aria-label`."
 msgstr ""
 
 #: css/calendar.md
@@ -2295,6 +2409,12 @@ msgctxt "docs.api:prose"
 msgid "A weekday column header."
 msgstr ""
 
+#: css/calendar.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Expose the grid with `role=\"table\"` and a descriptive `aria-label`, and give each navigation button its own `aria-label`."
+msgstr ""
+
 #: css/callout.md
 #, no-c-format
 msgctxt "docs.api:prose"
@@ -2322,12 +2442,6 @@ msgstr ""
 #: css/callout.md
 #, no-c-format
 msgctxt "docs.api:prose"
-msgid "- Ensure the alert role is properly applied (role=\"alert\" or role=\"status\")\n- Use semantic color contrast that meets WCAG AA standards\n- Don't rely on color alone to convey meaning"
-msgstr ""
-
-#: css/callout.md
-#, no-c-format
-msgctxt "docs.api:prose"
 msgid "Alert message content"
 msgstr ""
 
@@ -2341,6 +2455,12 @@ msgstr ""
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "Optional icon to the left of the content."
+msgstr ""
+
+#: css/callout.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "- Ensure the alert role is properly applied (role=\"alert\" or role=\"status\")\n- Use semantic color contrast that meets WCAG AA standards\n- Don't rely on color alone to convey meaning"
 msgstr ""
 
 #: css/card.md
@@ -2359,12 +2479,6 @@ msgstr ""
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "**Source:** [card.css](https://github.com/thedannywahl/pantoken/blob/main/formats/components/src/components/card/card.css)"
-msgstr ""
-
-#: css/card.md
-#, no-c-format
-msgctxt "docs.api:prose"
-msgid "Use `<article>` as the card element when the card is a self-contained unit of content;\n  use `<section>` when grouped within a larger landmark. In `-variant-container`, prefer\n  `<section>` elements as direct children so each bordered region carries semantic meaning."
 msgstr ""
 
 #: css/card.md
@@ -2415,6 +2529,12 @@ msgctxt "docs.api:prose"
 msgid "Border-only surface for a card inside a base card."
 msgstr ""
 
+#: css/card.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Use `<article>` as the card element when the card is a self-contained unit of content;\n  use `<section>` when grouped within a larger landmark. In `-variant-container`, prefer\n  `<section>` elements as direct children so each bordered region carries semantic meaning."
+msgstr ""
+
 #: css/checkbox.md
 #, no-c-format
 msgctxt "docs.api:prose"
@@ -2431,12 +2551,6 @@ msgstr ""
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "**Source:** [checkbox.css](https://github.com/thedannywahl/pantoken/blob/main/formats/components/src/components/checkbox/checkbox.css)"
-msgstr ""
-
-#: css/checkbox.md
-#, no-c-format
-msgctxt "docs.api:prose"
-msgid "A native `<input type=\"checkbox\">` drives `:checked`, `:indeterminate`, and `:disabled`; set `el.indeterminate = true` in JavaScript for the mixed state, and note that `-readonly` is styling only since checkboxes have no native readonly attribute."
 msgstr ""
 
 #: css/checkbox.md
@@ -2563,6 +2677,12 @@ msgstr ""
 #: css/checkbox.md
 #, no-c-format
 msgctxt "docs.api:prose"
+msgid "Wrap the native `<input type=\"checkbox\">` and its visible text in a `<label>` to supply its accessible name. The input drives `:checked`, `:indeterminate`, and `:disabled`; set `el.indeterminate = true` in JavaScript for the mixed state. `-readonly` is styling only since checkboxes have no native readonly attribute."
+msgstr ""
+
+#: css/checkbox.md
+#, no-c-format
+msgctxt "docs.api:prose"
 msgid "- [radio](/api/css/radio.md) — The single-select counterpart."
 msgstr ""
 
@@ -2587,12 +2707,6 @@ msgstr ""
 #: css/close-button.md
 #, no-c-format
 msgctxt "docs.api:prose"
-msgid "Give the icon-only button an `aria-label` (e.g. \"Close\"), and mark a disabled button with `aria-disabled` (or the native `disabled`)."
-msgstr ""
-
-#: css/close-button.md
-#, no-c-format
-msgctxt "docs.api:prose"
 msgid "For a close button placed on a coloured (non-neutral) surface."
 msgstr ""
 
@@ -2600,6 +2714,12 @@ msgstr ""
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "The × glyph, masked in `currentColor`."
+msgstr ""
+
+#: css/close-button.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Give the icon-only button an `aria-label` (e.g. \"Close\"), and mark a disabled button with `aria-disabled` (or the native `disabled`)."
 msgstr ""
 
 #: css/close-button.md
@@ -2729,6 +2849,12 @@ msgstr ""
 #: css/context-view.md
 #, no-c-format
 msgctxt "docs.api:prose"
+msgid "Connect the trigger with `popovertarget` so the open state is exposed, and keep the native Escape and outside-click dismissal. The caret is decorative; the callout's content isn't announced unless the trigger references it, for example with `aria-describedby`."
+msgstr ""
+
+#: css/context-view.md
+#, no-c-format
+msgctxt "docs.api:prose"
 msgid "- Uses CSS anchor positioning (`position-anchor`, `position-area`, `position-try-fallbacks`) and the native `[popover]` API behind an `@supports` guard; needs a recent Chromium or Safari, and falls back to a UA-centred popover elsewhere."
 msgstr ""
 
@@ -2815,19 +2941,19 @@ msgstr ""
 #: css/drawer-layout.content.md
 #, no-c-format
 msgctxt "docs.api:prose"
-msgid "Once the parent's inline-size drops below `64em` (`16em` tray width + `48em` breakpoint), a `@container` query on the parent's `pantoken-drawer-layout` container drops this member's `min-inline-size` to `0` automatically, matching the manual `[should-overlay-tray]` override."
-msgstr ""
-
-#: css/drawer-layout.content.md
-#, no-c-format
-msgctxt "docs.api:prose"
-msgid "Carry `role=\"region\"` (InstUI's DrawerLayout convention) and name it with `aria-label`/`aria-labelledby` when context alone doesn't identify it."
+msgid "Once the parent's inline-size drops below `64em` (`16em` tray width + `48em` breakpoint), a `@container` query on the parent's `pantoken-drawer-layout` container drops this member's `min-inline-size` to `0` automatically, matching the manual `[should-overlay-tray]` override. This also applies when the tray is closed or absent."
 msgstr ""
 
 #: css/drawer-layout.content.md
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "Tray content"
+msgstr ""
+
+#: css/drawer-layout.content.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Use a `div` with `role=\"region\"` (InstUI's DrawerLayout convention) and always name it with `aria-label` or `aria-labelledby`."
 msgstr ""
 
 #: css/drawer-layout.content.md
@@ -2852,12 +2978,6 @@ msgstr ""
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "**Source:** [drawer-layout.css](https://github.com/thedannywahl/pantoken/blob/main/formats/components/src/components/drawer-layout/drawer-layout.css)"
-msgstr ""
-
-#: css/drawer-layout.md
-#, no-c-format
-msgctxt "docs.api:prose"
-msgid "When the tray acts as navigation, label it with an accessible heading or `aria-label`. Give `.content` `role=\"region\"` (InstUI's DrawerLayout convention) and name it with `aria-label`/`aria-labelledby` when context alone doesn't identify it."
 msgstr ""
 
 #: css/drawer-layout.md
@@ -2913,6 +3033,12 @@ msgstr ""
 #: css/drawer-layout.md
 #, no-c-format
 msgctxt "docs.api:prose"
+msgid "Name every region with `aria-label` or `aria-labelledby`. Use `div` for InstUI-style regions, not `<main role=\"region\">`. When the tray acts as navigation, use a named `<nav>` or place one inside the tray."
+msgstr ""
+
+#: css/drawer-layout.md
+#, no-c-format
+msgctxt "docs.api:prose"
 msgid "- The `drawer-layout.tray`/`drawer-layout.content` members switch to overlay mode automatically via a `@container` query once this element's inline-size drops below tray-width + `--pantoken-bp-md`. The `@pantoken/interactions` behavior additionally toggles `[should-overlay-tray]`/`.-should-overlay-tray` (a manual override) and emits `overlaytraychange` for apps that need the change as an event."
 msgstr ""
 
@@ -2932,12 +3058,6 @@ msgstr ""
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "Positioning uses `inset-inline-start`/`inset-inline` (never `left`/`right`), so `-placement-end` docks to the true trailing edge in both LTR and RTL."
-msgstr ""
-
-#: css/drawer-layout.tray.md
-#, no-c-format
-msgctxt "docs.api:prose"
-msgid "If used as navigation, wrap links in a semantic `<nav>` and provide an accessible name."
 msgstr ""
 
 #: css/drawer-layout.tray.md
@@ -2967,6 +3087,12 @@ msgstr ""
 #: css/drawer-layout.tray.md
 #, no-c-format
 msgctxt "docs.api:prose"
+msgid "If used as navigation, wrap links in a semantic `<nav>` and provide an accessible name."
+msgstr ""
+
+#: css/drawer-layout.tray.md
+#, no-c-format
+msgctxt "docs.api:prose"
 msgid "- [drawer-layout.content](/api/css/drawer-layout.content.md) — The primary pane that flexes alongside this member."
 msgstr ""
 
@@ -2986,12 +3112,6 @@ msgstr ""
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "**Source:** [file-drop.css](https://github.com/thedannywahl/pantoken/blob/main/formats/components/src/components/file-drop/file-drop.css)"
-msgstr ""
-
-#: css/file-drop.md
-#, no-c-format
-msgctxt "docs.api:prose"
-msgid "Wrap a native `<input type=\"file\">` in the `<label>` drop zone so it stays a real, labelled file control that the keyboard and assistive tech can operate."
 msgstr ""
 
 #: css/file-drop.md
@@ -3036,6 +3156,12 @@ msgctxt "docs.api:prose"
 msgid "Drag state for a rejected file."
 msgstr ""
 
+#: css/file-drop.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Wrap a native `<input type=\"file\">` in the `<label>` drop zone so it stays a real, labelled file control that the keyboard and assistive tech can operate."
+msgstr ""
+
 #: css/form-field-group.md
 #, no-c-format
 msgctxt "docs.api:prose"
@@ -3052,12 +3178,6 @@ msgstr ""
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "**Source:** [form-field-group.css](https://github.com/thedannywahl/pantoken/blob/main/formats/components/src/components/form-field-group/form-field-group.css)"
-msgstr ""
-
-#: css/form-field-group.md
-#, no-c-format
-msgctxt "docs.api:prose"
-msgid "Renders a native `<fieldset>` with a `<legend>`, so the legend text names the whole group for assistive tech."
 msgstr ""
 
 #: css/form-field-group.md
@@ -3215,6 +3335,12 @@ msgstr ""
 #: css/form-field-group.md
 #, no-c-format
 msgctxt "docs.api:prose"
+msgid "Renders a native `<fieldset>` with a `<legend>`, so the legend text names the whole group for assistive tech."
+msgstr ""
+
+#: css/form-field-group.md
+#, no-c-format
+msgctxt "docs.api:prose"
 msgid "- The `-layout-aligned` mode uses CSS subgrid behind an `@supports` guard; where subgrid is unsupported, the fields fall back to their own stacked layout."
 msgstr ""
 
@@ -3243,12 +3369,6 @@ msgid "**Source:** [form-field-messages.css](https://github.com/thedannywahl/pan
 msgstr ""
 
 #: css/form-field-messages.md
-#, no-c-format
-msgctxt "docs.api:prose"
-msgid "A `-type-screenreader-only` message is visually hidden but stays in the accessibility tree, so it's still announced; pair error and success messages with the field via aria-describedby so assistive tech reads them with the control."
-msgstr ""
-
-#: css/form-field-messages.md
 #: css/form-field.md
 #, no-c-format
 msgctxt "docs.api:prose"
@@ -3256,6 +3376,7 @@ msgid "We'll never share it."
 msgstr ""
 
 #: css/form-field-messages.md
+#: css/form-field.md
 #: css/form-field.md
 #, no-c-format
 msgctxt "docs.api:prose"
@@ -3277,6 +3398,12 @@ msgstr ""
 #: css/form-field-messages.md
 #, no-c-format
 msgctxt "docs.api:prose"
+msgid "A `-type-screenreader-only` message is visually hidden but stays in the accessibility tree, so it's still announced; pair error and success messages with the field via aria-describedby so assistive tech reads them with the control."
+msgstr ""
+
+#: css/form-field-messages.md
+#, no-c-format
+msgctxt "docs.api:prose"
 msgid "- [form-field](/api/css/form-field.md) — Wraps a label, controls, and these messages."
 msgstr ""
 
@@ -3289,19 +3416,13 @@ msgstr ""
 #: css/form-field.md
 #, no-c-format
 msgctxt "docs.api:prose"
-msgid "An error message stays hidden until the field's control is `:user-invalid` (after the user interacts) or you add the `-invalid` class. Use `-layout-inline` to put the label beside the controls and `-layout-stacked` to put it above. Also sets its own `gap` between the label, controls, and messages; chaining a `-gap-*` spacing utility modifier overrides that built-in value."
+msgid "Native validation is opt-in: add `data-native-validation` and load `@pantoken/interactions/form-field.iife.js`, or call `initFormField(host, control, error)`. Supply exactly one native control and one error message with a stable, unique ID. The behavior associates the error after blur or a native validation attempt and removes it when corrected; CSS alone doesn't synchronize ARIA."
 msgstr ""
 
 #: css/form-field.md
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "**Source:** [form-field.css](https://github.com/thedannywahl/pantoken/blob/main/formats/components/src/components/form-field/form-field.css)"
-msgstr ""
-
-#: css/form-field.md
-#, no-c-format
-msgctxt "docs.api:prose"
-msgid "The `<label>` element wraps the control, so the label text names it natively; the required asterisk is decorative and should be hidden from assistive tech (aria-hidden), and the error message surfaces once the control is `:user-invalid` or you add the `-invalid` class."
 msgstr ""
 
 #: css/form-field.md
@@ -3315,6 +3436,7 @@ msgid "-canvas-rce\n"
 msgstr ""
 
 #: css/form-field.md
+#: css/form-field.md
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "Email address"
@@ -3324,6 +3446,12 @@ msgstr ""
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "Display name"
+msgstr ""
+
+#: css/form-field.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Use your work email."
 msgstr ""
 
 #: css/form-field.md
@@ -3389,6 +3517,12 @@ msgstr ""
 #: css/form-field.md
 #, no-c-format
 msgctxt "docs.api:prose"
+msgid "A wrapping `<label>` names the control. When it also contains messages, use `aria-labelledby` to identify just the visible label text and `aria-describedby` for hints. Associate visible validation errors and synchronize `aria-invalid` in application code or with the opt-in native validation behavior; the decorative required asterisk isn't an accessible-name substitute."
+msgstr ""
+
+#: css/form-field.md
+#, no-c-format
+msgctxt "docs.api:prose"
 msgid "- [form-field-messages](/api/css/form-field-messages.md) — Renders the field's hint, error, and success messages.\n- [form-field-group](/api/css/form-field-group.md) — Groups related fields under a shared legend."
 msgstr ""
 
@@ -3446,12 +3580,6 @@ msgstr ""
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "**Source:** [heading.css](https://github.com/thedannywahl/pantoken/blob/main/formats/components/src/components/heading/heading.css)"
-msgstr ""
-
-#: css/heading.md
-#, no-c-format
-msgctxt "docs.api:prose"
-msgid "These classes set the visual level only, so render a real `<h1>`–`<h6>` (or use `role=\"heading\"` with `aria-level`) to convey the heading level."
 msgstr ""
 
 #: css/heading.md
@@ -3571,6 +3699,12 @@ msgstr ""
 #: css/heading.md
 #, no-c-format
 msgctxt "docs.api:prose"
+msgid "These classes set the visual level only, so render a real `<h1>`–`<h6>` (or use `role=\"heading\"` with `aria-level`) to convey the heading level."
+msgstr ""
+
+#: css/heading.md
+#, no-c-format
+msgctxt "docs.api:prose"
 msgid "- [text](/api/css/text.md) — Body typography for non-heading text."
 msgstr ""
 
@@ -3596,12 +3730,6 @@ msgstr ""
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "- Building a simple page header — use Page-Layout instead\n- The hero competes with critical content — prioritize readability"
-msgstr ""
-
-#: css/hero.md
-#, no-c-format
-msgctxt "docs.api:prose"
-msgid "- Ensure the title is in an `<h1>` tag for semantic structure\n- If using background images, provide sufficient color contrast for text\n- Avoid autoplay on video or animation that could distract from content"
 msgstr ""
 
 #: css/hero.md
@@ -3652,6 +3780,12 @@ msgctxt "docs.api:prose"
 msgid "Main hero title (typically `<h1>`)."
 msgstr ""
 
+#: css/hero.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "- Ensure the title is in an `<h1>` tag for semantic structure\n- If using background images, provide sufficient color contrast for text\n- Avoid autoplay on video or animation that could distract from content"
+msgstr ""
+
 #: css/icon.md
 #, no-c-format
 msgctxt "docs.api:prose"
@@ -3667,12 +3801,6 @@ msgstr ""
 #: css/icon.md
 #, no-c-format
 msgctxt "docs.api:prose"
-msgid "The glyph is decorative, so mark it `aria-hidden=\"true\"`; give it a `role` or label only when the icon conveys meaning on its own."
-msgstr ""
-
-#: css/icon.md
-#, no-c-format
-msgctxt "docs.api:prose"
 msgid "Set the glyph token (`--pantoken-glyph`) and render it via the shared painter (for example `-icon-search`)."
 msgstr ""
 
@@ -3680,6 +3808,12 @@ msgstr ""
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "The glyph itself: a 1em box masked from `--pantoken-glyph` and filled with `currentColor`."
+msgstr ""
+
+#: css/icon.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "The glyph is decorative, so mark it `aria-hidden=\"true\"`; give it a `role` or label only when the icon conveys meaning on its own."
 msgstr ""
 
 #: css/img.md
@@ -3698,12 +3832,6 @@ msgstr ""
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "**Source:** [img.css](https://github.com/thedannywahl/pantoken/blob/main/formats/components/src/components/img/img.css)"
-msgstr ""
-
-#: css/img.md
-#, no-c-format
-msgctxt "docs.api:prose"
-msgid "Provide meaningful `alt` text that describes the image, and use an empty `alt=\"\"` for purely decorative images so assistive tech skips them."
 msgstr ""
 
 #: css/img.md
@@ -3742,6 +3870,12 @@ msgctxt "docs.api:prose"
 msgid "filter &lt;filter-value-list&gt; \\| none — The composed CSS filter on the image; the effect modifiers set it, and you can override it for a custom filter."
 msgstr ""
 
+#: css/img.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Provide meaningful `alt` text that describes the image, and use an empty `alt=\"\"` for purely decorative images so assistive tech skips them."
+msgstr ""
+
 #: css/in-place-edit.md
 #, no-c-format
 msgctxt "docs.api:prose"
@@ -3763,12 +3897,6 @@ msgstr ""
 #: css/in-place-edit.md
 #, no-c-format
 msgctxt "docs.api:prose"
-msgid "Give the editable element `role=\"textbox\"` and an accessible name (`aria-label`)."
-msgstr ""
-
-#: css/in-place-edit.md
-#, no-c-format
-msgctxt "docs.api:prose"
 msgid "Untitled"
 msgstr ""
 
@@ -3776,6 +3904,12 @@ msgstr ""
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "Shown inline but not editable (no hover/focus affordance)."
+msgstr ""
+
+#: css/in-place-edit.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Give the editable element `role=\"textbox\"` and an accessible name (`aria-label`)."
 msgstr ""
 
 #: css/in-place-edit.md
@@ -4244,7 +4378,7 @@ msgstr ""
 #: css/index.md
 #, no-c-format
 msgctxt "docs.api:prose"
-msgid "A CSS hover and focus tooltip bubble, positionable on any side."
+msgid "A hover and focus tooltip bubble, positionable on any side."
 msgstr ""
 
 #: css/index.md
@@ -4506,6 +4640,12 @@ msgstr ""
 #: css/input-group.md
 #, no-c-format
 msgctxt "docs.api:prose"
+msgid "Label the inner input with a real `<label>`. Mark purely visual icons in `.before` and `.after` with `aria-hidden=\"true\"`, and convey `-invalid` and `-success` states in text, not color alone."
+msgstr ""
+
+#: css/input-group.md
+#, no-c-format
+msgctxt "docs.api:prose"
 msgid "- [text-input](/api/css/text-input.md) — Wraps a text input, adding leading and trailing icon slots."
 msgstr ""
 
@@ -4560,12 +4700,6 @@ msgstr ""
 #: css/link.md
 #, no-c-format
 msgctxt "docs.api:prose"
-msgid "Mark a disabled link with `aria-disabled=\"true\"`."
-msgstr ""
-
-#: css/link.md
-#, no-c-format
-msgctxt "docs.api:prose"
 msgid "A styled link"
 msgstr ""
 
@@ -4615,6 +4749,12 @@ msgstr ""
 #: css/link.md
 #, no-c-format
 msgctxt "docs.api:prose"
+msgid "Mark a disabled link with `aria-disabled=\"true\"`."
+msgstr ""
+
+#: css/link.md
+#, no-c-format
+msgctxt "docs.api:prose"
 msgid "- [breadcrumb](/api/css/breadcrumb.md) — A breadcrumb trail is built from links; also its small-screen fallback (pair with the `responsive` utility to swap Breadcrumb for a Link below ~768px)."
 msgstr ""
 
@@ -4652,6 +4792,12 @@ msgstr ""
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "Renders the list bullet or ordered-list number."
+msgstr ""
+
+#: css/list.item.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Keep each item a direct `<li>` child of the list so it stays in the list's accessibility tree; delimiters and markers are visual only."
 msgstr ""
 
 #: css/list.md
@@ -4738,6 +4884,12 @@ msgctxt "docs.api:prose"
 msgid "Remove markers and padding."
 msgstr ""
 
+#: css/list.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Use a real `<ul>` or `<ol>` with `<li>` children. Removing markers with `-unstyled` can make some screen readers drop the list semantics, so add `role=\"list\"` when the list structure matters."
+msgstr ""
+
 #: css/logo.md
 #, no-c-format
 msgctxt "docs.api:prose"
@@ -4747,13 +4899,13 @@ msgstr ""
 #: css/logo.md
 #, no-c-format
 msgctxt "docs.api:prose"
-msgid "A logo is meaningful, not decorative — give the host element `role=\"img\"` and an `aria-label` naming the product; never mark it `aria-hidden`."
+msgid "Set the glyph token (`--pantoken-glyph`) and its aspect ratio (`--pantoken-logo-aspect`), then render both via the shared painter (for example `-logo-canvas-horizontal-color`, from `@pantoken/plugin-logos`)."
 msgstr ""
 
 #: css/logo.md
 #, no-c-format
 msgctxt "docs.api:prose"
-msgid "Set the glyph token (`--pantoken-glyph`) and its aspect ratio (`--pantoken-logo-aspect`), then render both via the shared painter (for example `-logo-canvas-horizontal-color`, from `@pantoken/plugin-logos`)."
+msgid "A logo is meaningful, not decorative — give the host element `role=\"img\"` and an `aria-label` naming the product; never mark it `aria-hidden`."
 msgstr ""
 
 #: css/logos.md
@@ -5256,6 +5408,12 @@ msgctxt "docs.api:prose"
 msgid "Fixed to the viewport, covering it at a high z-index."
 msgstr ""
 
+#: css/mask.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "A contained spinner honors reduced motion without hiding the overlay or loading indicator. Keep its status role and meaningful loading label."
+msgstr ""
+
 #: css/maskglobal.md
 #, no-c-format
 msgctxt "docs.api:prose"
@@ -5280,16 +5438,16 @@ msgctxt "docs.api:prose"
 msgid "`.group` — A labelled group heading (InstUI `Menu.Group`/`Menu.ItemGroup`)."
 msgstr ""
 
-#: css/menu.item.md
+#: css/menu.group.md
 #, no-c-format
 msgctxt "docs.api:prose"
-msgid "`.item` — A menu entry (InstUI `Menu.Item`); add -disabled, -highlighted, or -active/[aria-checked]."
+msgid "Wrap the grouped items in an element with `role=\"group\"` and point `aria-labelledby` at the group heading so assistive technology announces the group name."
 msgstr ""
 
 #: css/menu.item.md
 #, no-c-format
 msgctxt "docs.api:prose"
-msgid "Mark a checked item with `aria-checked=\"true\"` (same styling as `-active`)."
+msgid "`.item` — A menu entry (InstUI `Menu.Item`); add -disabled, -highlighted, or -active/[aria-checked]."
 msgstr ""
 
 #: css/menu.item.md
@@ -5316,6 +5474,12 @@ msgctxt "docs.api:prose"
 msgid "Secondary info text within the item."
 msgstr ""
 
+#: css/menu.item.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Checked actions use `menuitemcheckbox` or `menuitemradio` with `aria-checked`; applications update that state on activation. Pair `-disabled` with `aria-disabled=\"true\"` or native `disabled`, not the CSS class alone. Opt-in menu navigation keeps ARIA-disabled items reachable but prevents their activation."
+msgstr ""
+
 #: css/menu.md
 #, no-c-format
 msgctxt "docs.api:prose"
@@ -5325,7 +5489,7 @@ msgstr ""
 #: css/menu.md
 #, no-c-format
 msgctxt "docs.api:prose"
-msgid "Compose entries as `.item` (see the `menu.item` member), label a section with `.group` (see `menu.group`), and divide sections with `.separator` (see `menu.separator`)."
+msgid "Keyboard navigation is opt-in: add `data-menu-navigation` to a vertical native popover with `role=\"menu\"` and load `@pantoken/interactions/menu.iife.js`, or call `initMenu(menu, button)`. Use one native `button[popovertarget]`. The behavior handles focus, arrows, Home/End, initial-character search, Escape, and activation; applications own actions and checked state. Submenus and menubars aren't supported."
 msgstr ""
 
 #: css/menu.md
@@ -5335,17 +5499,22 @@ msgid "**Source:** [group.css](https://github.com/thedannywahl/pantoken/blob/mai
 msgstr ""
 
 #: css/menu.md
+#: css/menu.md
+#: css/menu.md
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "Actions"
 msgstr ""
 
 #: css/menu.md
+#: css/menu.md
+#: css/menu.md
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "Edit"
 msgstr ""
 
+#: css/menu.md
 #: css/menu.md
 #, no-c-format
 msgctxt "docs.api:prose"
@@ -5355,19 +5524,7 @@ msgstr ""
 #: css/menu.md
 #, no-c-format
 msgctxt "docs.api:prose"
-msgid "View"
-msgstr ""
-
-#: css/menu.md
-#, no-c-format
-msgctxt "docs.api:prose"
-msgid "List"
-msgstr ""
-
-#: css/menu.md
-#, no-c-format
-msgctxt "docs.api:prose"
-msgid "Grid"
+msgid "Name the menu and button. Use `menuitem` for actions, `menuitemcheckbox`/`menuitemradio` with `aria-checked` for checked actions, and `separator` for dividers. Add `aria-disabled=\"true\"` to disabled items; a CSS modifier alone doesn't convey disabled state. ARIA-disabled entries remain focusable but cannot activate; native-disabled and hidden entries are skipped."
 msgstr ""
 
 #: css/menu.md
@@ -5380,6 +5537,12 @@ msgstr ""
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "`.separator` — A divider rule between items (InstUI `Menu.Separator`)."
+msgstr ""
+
+#: css/menu.separator.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Give the divider `role=\"separator\"` so assistive technology can announce the break between items; without it the rule is purely decorative."
 msgstr ""
 
 #: css/metric.md
@@ -5436,6 +5599,12 @@ msgctxt "docs.api:prose"
 msgid "The large metric number."
 msgstr ""
 
+#: css/metric.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "The `.value` and `.label` are separate elements, so keep them adjacent in source order to read together, and don't convey meaning through size alone."
+msgstr ""
+
 #: css/modal.body.md
 #, no-c-format
 msgctxt "docs.api:prose"
@@ -5446,6 +5615,12 @@ msgstr ""
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "The parent `modal`'s `-overflow-fit`, `-density-compact`, and `-color-inverse` modifiers restyle this member — see `modal`'s own doc for those modifiers."
+msgstr ""
+
+#: css/modal.body.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Place the body inside the dialog that the header labels, and give a lone full-bleed `<img>` alt text."
 msgstr ""
 
 #: css/modal.footer.md
@@ -5461,10 +5636,22 @@ msgctxt "docs.api:prose"
 msgid "The parent `modal`'s `-density-compact` and `-color-inverse` modifiers restyle this member — see `modal`'s own doc for those modifiers."
 msgstr ""
 
+#: css/modal.footer.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Use real buttons in a logical focus order after the body, and include a visible dismiss action so keyboard users can close the dialog."
+msgstr ""
+
 #: css/modal.header.md
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "`.header` — The title row (InstUI `Modal.Header`)."
+msgstr ""
+
+#: css/modal.header.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Render the title as a real heading and point the dialog's `aria-labelledby` at it so the dialog is announced with its name."
 msgstr ""
 
 #: css/modal.md
@@ -5483,12 +5670,6 @@ msgstr ""
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "**Source:** [body.css](https://github.com/thedannywahl/pantoken/blob/main/formats/components/src/components/modal/members/body/body.css)"
-msgstr ""
-
-#: css/modal.md
-#, no-c-format
-msgctxt "docs.api:prose"
-msgid "Open the native `<dialog>` with `showModal()` for modal semantics and Esc-to-close, and name it with `aria-labelledby` pointing at the `.header`."
 msgstr ""
 
 #: css/modal.md
@@ -5597,6 +5778,12 @@ msgstr ""
 #: css/modal.md
 #, no-c-format
 msgctxt "docs.api:prose"
+msgid "Open the native `<dialog>` with `showModal()` for modal semantics and Esc-to-close, and name it with `aria-labelledby` pointing at the `.header`."
+msgstr ""
+
+#: css/modal.md
+#, no-c-format
+msgctxt "docs.api:prose"
 msgid "- Styles a native &lt;dialog&gt; and its `::backdrop`; the top-layer rendering and backdrop styling need a browser that supports the dialog element."
 msgstr ""
 
@@ -5615,19 +5802,13 @@ msgstr ""
 #: css/number-input.md
 #, no-c-format
 msgctxt "docs.api:prose"
-msgid "The `.arrows` buttons are `aria-hidden` and purely presentational — incrementing/decrementing the value on click is the consumer's JS to wire up."
+msgid "The `.arrows` buttons are redundant pointer controls, hidden from assistive technology and excluded from sequential keyboard focus. Consumers wire pointer activation and keep focus on the input; the native number input provides keyboard increment/decrement."
 msgstr ""
 
 #: css/number-input.md
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "**Source:** [number-input.css](https://github.com/thedannywahl/pantoken/blob/main/formats/components/src/components/number-input/number-input.css)"
-msgstr ""
-
-#: css/number-input.md
-#, no-c-format
-msgctxt "docs.api:prose"
-msgid "Put the accessible name on the `<input>` (e.g. `aria-label`) so the field owns the value; the +/- spinner buttons are decorative and marked `aria-hidden=\"true\"`."
 msgstr ""
 
 #: css/number-input.md
@@ -5666,6 +5847,12 @@ msgstr ""
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "The masked chevron glyph on each spinner button: up to increment, down on `.down`."
+msgstr ""
+
+#: css/number-input.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Name the native `<input type=\"number\">` so it owns the value and keyboard controls. Mark redundant arrow buttons with both `aria-hidden=\"true\"` and `tabindex=\"-1\"`; never leave an assistive-technology-hidden button in the tab order."
 msgstr ""
 
 #: css/number-input.md
@@ -5783,12 +5970,6 @@ msgstr ""
 #: css/page-layout.md
 #, no-c-format
 msgctxt "docs.api:prose"
-msgid "- Map the main content area to a `<main>` landmark\n- Give the sidebar `role=\"navigation\"` or `role=\"complementary\"` as appropriate\n- Ensure landmark regions have distinct aria-labels"
-msgstr ""
-
-#: css/page-layout.md
-#, no-c-format
-msgctxt "docs.api:prose"
 msgid "Main body containing sidebar and content."
 msgstr ""
 
@@ -5816,6 +5997,12 @@ msgctxt "docs.api:prose"
 msgid "Left navigation or auxiliary column."
 msgstr ""
 
+#: css/page-layout.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "- Map the main content area to a `<main>` landmark\n- Give the sidebar `role=\"navigation\"` or `role=\"complementary\"` as appropriate\n- Ensure landmark regions have distinct aria-labels"
+msgstr ""
+
 #: css/pagination.md
 #, no-c-format
 msgctxt "docs.api:prose"
@@ -5832,12 +6019,6 @@ msgstr ""
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "**Source:** [page.css](https://github.com/thedannywahl/pantoken/blob/main/formats/components/src/components/pagination/members/page/page.css)"
-msgstr ""
-
-#: css/pagination.md
-#, no-c-format
-msgctxt "docs.api:prose"
-msgid "Label the `<nav>` with aria-label, mark the current page with aria-current=\"page\", give each arrow an aria-label, and disable end arrows with disabled or aria-disabled=\"true\"."
 msgstr ""
 
 #: css/pagination.md
@@ -5870,6 +6051,12 @@ msgctxt "docs.api:prose"
 msgid "The label for the page-number input (input variant)."
 msgstr ""
 
+#: css/pagination.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Label the `<nav>` with aria-label, mark the current page with aria-current=\"page\", give each arrow an aria-label, and disable end arrows with disabled or aria-disabled=\"true\"."
+msgstr ""
+
 #: css/pagination.page.md
 #, no-c-format
 msgctxt "docs.api:prose"
@@ -5882,6 +6069,12 @@ msgctxt "docs.api:prose"
 msgid "The current page; same styling as `[aria-current]`."
 msgstr ""
 
+#: css/pagination.page.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Mark the current page with `aria-current=\"page\"`, give each page an accessible name that includes the page number, and wrap the set in a `<nav>` with an `aria-label`."
+msgstr ""
+
 #: css/pill.md
 #, no-c-format
 msgctxt "docs.api:prose"
@@ -5891,7 +6084,7 @@ msgstr ""
 #: css/pill.md
 #, no-c-format
 msgctxt "docs.api:prose"
-msgid "Unlike `badge`, which shows a count, or `tag`, which is removable, the pill is a static status label; its leading glyph is a masked `::before`, not an `<img>`."
+msgid "Unlike `badge`, which shows a count, or `tag`, which is removable, the pill is a static status label; its leading glyph is a masked `::before`, not an `<img>`. Let groups wrap with `flex-wrap: wrap` on their container so compact labels reflow on narrow screens."
 msgstr ""
 
 #: css/pill.md
@@ -6041,6 +6234,12 @@ msgstr ""
 #: css/pill.md
 #, no-c-format
 msgctxt "docs.api:prose"
+msgid "The status colors are visual only, so state the status in the label text or a visually hidden label. The leading glyph is a masked `::before` and isn't announced."
+msgstr ""
+
+#: css/pill.md
+#, no-c-format
+msgctxt "docs.api:prose"
 msgid "- [badge](/api/css/badge.md) — A badge is the count or notification counterpart.\n- [tag](/api/css/tag.md) — A tag is the removable, form-oriented counterpart."
 msgstr ""
 
@@ -6078,6 +6277,12 @@ msgstr ""
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid " attribute."
+msgstr ""
+
+#: css/popover.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Wire the trigger with `popovertarget` so the expanded state is exposed. A native popover closes on Escape and outside click but doesn't move focus, so move focus into interactive content when the popover opens."
 msgstr ""
 
 #: css/popover.md
@@ -6179,13 +6384,6 @@ msgstr ""
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "This component's CSS renders and works on its own; pair it with `@pantoken/interactions` to add the interactive behavior. Its `-should-animate` modifier is driven by that behavior. See the [modifier table below](#modifiers)."
-msgstr ""
-
-#: css/progress-circle.md
-#: css/progress.md
-#, no-c-format
-msgctxt "docs.api:prose"
-msgid "Use native `<progress>` for a zero-based task completion range and `<meter>` when the minimum is non-zero. Give either element an accessible name by nesting it in `<label>` or associating a separate `<label>` through matching `for` and `id` values."
 msgstr ""
 
 #: css/progress-circle.md
@@ -6327,6 +6525,13 @@ msgid "@alias Alias for `--value`."
 msgstr ""
 
 #: css/progress-circle.md
+#: css/progress.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Use native `<progress>` for a zero-based task completion range and `<meter>` when the minimum is non-zero. Give either element an accessible name by nesting it in `<label>` or associating a separate `<label>` through matching `for` and `id` values."
+msgstr ""
+
+#: css/progress-circle.md
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "- Registers the numeric progress properties with `@property` and paints with CSS `mask` and `conic-gradient`; where custom-property transitions are unsupported the ring still renders but won't animate."
@@ -6347,7 +6552,7 @@ msgstr ""
 #: css/progress.md
 #, no-c-format
 msgctxt "docs.api:prose"
-msgid "`.value` is a sibling of `.bar`, both children of the root — mirroring how progress-circle nests its own `.value` part. InstUI has no indeterminate state; `:indeterminate` is a pantoken-only best guess (native `<progress>` without a `value` attribute), animating `.bar` as a sliding segment and hiding `.value` since there's no meaningful number to show. `<meter>` has no indeterminate state, so it's unaffected."
+msgid "`.value` is a sibling of `.bar`, both children of the root — mirroring how progress-circle nests its own `.value` part. Native `<progress>` and `<meter>` use vendor value parts with the same semantic fill. InstUI has no indeterminate state; `:indeterminate` is a pantoken-only best guess (native `<progress>` without a `value` attribute), using a CSS-owned sliding segment and hiding `.value` since there's no meaningful number to show. Reduced motion keeps a static segment; `<meter>` has no indeterminate state."
 msgstr ""
 
 #: css/progress.md
@@ -6383,13 +6588,25 @@ msgstr ""
 #: css/progress.md
 #, no-c-format
 msgctxt "docs.api:prose"
-msgid "Custom, not part of InstUI. Applies only to a native `<progress>` missing its `value` attribute; animates `.bar` as a sliding segment and hides `.value`."
+msgid "Custom, not part of InstUI. Applies only to a native `<progress>` missing its `value` attribute; draws a sliding segment on `::before` and hides `.value`."
 msgstr ""
 
 #: css/progress.md
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "Draws the track's bottom rule as its own layer over the meter, so the full border and the bottom border stay independent across themes."
+msgstr ""
+
+#: css/progress.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Draws the native indeterminate segment without relying on the browser's built-in animation."
+msgstr ""
+
+#: css/progress.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "The native value part and `.bar` fill; the -color-* modifiers set it."
 msgstr ""
 
 #: css/progress.md
@@ -6461,13 +6678,6 @@ msgstr ""
 #: css/radio-input-group.md
 #, no-c-format
 msgctxt "docs.api:prose"
-msgid "Renders a native `<fieldset>` with a `<legend>` that names the group; the child radios share one `name`, so only one can be selected at a time."
-msgstr ""
-
-#: css/radio-input-group.md
-#: css/radio-input-group.md
-#, no-c-format
-msgctxt "docs.api:prose"
 msgid "T-shirt size"
 msgstr ""
 
@@ -6495,6 +6705,12 @@ msgstr ""
 #: css/radio-input-group.md
 #, no-c-format
 msgctxt "docs.api:prose"
+msgid "Sweatshirt size"
+msgstr ""
+
+#: css/radio-input-group.md
+#, no-c-format
+msgctxt "docs.api:prose"
 msgid "Lay the radios out in columns."
 msgstr ""
 
@@ -6508,6 +6724,12 @@ msgstr ""
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "Lay the child toggles out as a segmented control (only the selected segment fills)."
+msgstr ""
+
+#: css/radio-input-group.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Use a native `<fieldset>` with a `<legend>` that names the group. Radios within a group share one `name`; independent groups need distinct names and legends so selecting one group's radio doesn't clear another group's selection."
 msgstr ""
 
 #: css/radio-input-group.md
@@ -6532,12 +6754,6 @@ msgstr ""
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "**Source:** [radio.css](https://github.com/thedannywahl/pantoken/blob/main/formats/components/src/components/radio/radio.css)"
-msgstr ""
-
-#: css/radio.md
-#, no-c-format
-msgctxt "docs.api:prose"
-msgid "A native `<input type=\"radio\">` drives `:checked` and `:disabled`; `-readonly` is styling only, since radios have no native readonly attribute."
 msgstr ""
 
 #: css/radio.md
@@ -6591,6 +6807,12 @@ msgstr ""
 #: css/radio.md
 #, no-c-format
 msgctxt "docs.api:prose"
+msgid "A native `<input type=\"radio\">` drives `:checked` and `:disabled`; `-readonly` is styling only, since radios have no native readonly attribute."
+msgstr ""
+
+#: css/radio.md
+#, no-c-format
+msgctxt "docs.api:prose"
 msgid "- [checkbox](/api/css/checkbox.md) — The multi-select counterpart to a single-select radio.\n- [radio-input-group](/api/css/radio-input-group.md) — Collects radios into one single-select fieldset."
 msgstr ""
 
@@ -6615,13 +6837,13 @@ msgstr ""
 #: css/range-input.md
 #, no-c-format
 msgctxt "docs.api:prose"
-msgid "The control is a native `<input type=\"range\">`; give it an accessible name with `aria-label` or an associated `<label>`."
+msgid "Draws the value bubble's caret, a small triangle pointing back toward the track."
 msgstr ""
 
 #: css/range-input.md
 #, no-c-format
 msgctxt "docs.api:prose"
-msgid "Draws the value bubble's caret, a small triangle pointing back toward the track."
+msgid "The control is a native `<input type=\"range\">`; give it an accessible name with `aria-label` or an associated `<label>`. Forced colors use a system-color outline because the thumb's box-shadow focus ring doesn't survive that mode."
 msgstr ""
 
 #: css/range-input.md
@@ -6651,12 +6873,6 @@ msgstr ""
 #: css/rating.md
 #, no-c-format
 msgctxt "docs.api:prose"
-msgid "Give it role=\"img\" and an aria-label stating the rating, since the stars are icon glyphs."
-msgstr ""
-
-#: css/rating.md
-#, no-c-format
-msgctxt "docs.api:prose"
 msgid "Render star glyphs with icon classes (for example, `-icon-star-solid`)."
 msgstr ""
 
@@ -6664,6 +6880,12 @@ msgstr ""
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "The numeric label, e.g. \"3/5\"."
+msgstr ""
+
+#: css/rating.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Give it role=\"img\" and an aria-label stating the rating, since the stars are icon glyphs."
 msgstr ""
 
 #: css/responsive.md
@@ -7269,12 +7491,6 @@ msgstr ""
 #: css/rubric-note.md
 #, no-c-format
 msgctxt "docs.api:prose"
-msgid "- Use table semantics if displaying a true rubric with rows and columns\n- Ensure score indicators are not color-only\n- Provide descriptive labels for each category"
-msgstr ""
-
-#: css/rubric-note.md
-#, no-c-format
-msgctxt "docs.api:prose"
 msgid "Container for rubric criteria rows."
 msgstr ""
 
@@ -7308,6 +7524,12 @@ msgctxt "docs.api:prose"
 msgid "Score indicator or badge."
 msgstr ""
 
+#: css/rubric-note.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "- Use table semantics if displaying a true rubric with rows and columns\n- Ensure score indicators are not color-only\n- Provide descriptive labels for each category"
+msgstr ""
+
 #: css/screen-reader-content.md
 #, no-c-format
 msgctxt "docs.api:prose"
@@ -7323,12 +7545,6 @@ msgstr ""
 #: css/screen-reader-content.md
 #, no-c-format
 msgctxt "docs.api:prose"
-msgid "Keeps text in the accessibility tree for screen readers while removing it from the visual layout."
-msgstr ""
-
-#: css/screen-reader-content.md
-#, no-c-format
-msgctxt "docs.api:prose"
 msgid "example"
 msgstr ""
 
@@ -7336,6 +7552,12 @@ msgstr ""
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "Opens in a new window"
+msgstr ""
+
+#: css/screen-reader-content.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Keeps text in the accessibility tree for screen readers while removing it from the visual layout."
 msgstr ""
 
 #: css/segmented-control.md
@@ -7348,12 +7570,6 @@ msgstr ""
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "The selected segment uses a distinct active-item shadow; it does not match an existing\n  --instui-elevation-* composite. Overflow buttons use the upstream elevation3 component tokens."
-msgstr ""
-
-#: css/segmented-control.md
-#, no-c-format
-msgctxt "docs.api:prose"
-msgid "Use a labelled fieldset and one shared radio name with a checked default. Native radios\n  announce their checked state; overflow buttons need labels describing their scroll direction."
 msgstr ""
 
 #: css/segmented-control.md
@@ -7437,6 +7653,12 @@ msgctxt "docs.api:prose"
 msgid "Clips the segment row and anchors the overflow controls."
 msgstr ""
 
+#: css/segmented-control.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Use a labelled fieldset and one shared radio name with a checked default. Native radios\n  announce their checked state; overflow buttons need labels describing their scroll direction."
+msgstr ""
+
 #: css/segmented-control.segment.md
 #, no-c-format
 msgctxt "docs.api:prose"
@@ -7479,6 +7701,12 @@ msgctxt "docs.api:prose"
 msgid "The item's text label; hidden when the rail is minimized."
 msgstr ""
 
+#: css/side-nav-bar.item.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Mark the active entry with `aria-current=\"page\"` as well as `-selected`, and keep an accessible name, such as `aria-label`, when the parent's `-minimized` modifier hides the `.label`."
+msgstr ""
+
 #: css/side-nav-bar.md
 #, no-c-format
 msgctxt "docs.api:prose"
@@ -7495,12 +7723,6 @@ msgstr ""
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "**Source:** [item.css](https://github.com/thedannywahl/pantoken/blob/main/formats/components/src/components/side-nav-bar/members/item/item.css)"
-msgstr ""
-
-#: css/side-nav-bar.md
-#, no-c-format
-msgctxt "docs.api:prose"
-msgid "Label the `<nav>` with aria-label so it's announced as a named navigation landmark."
 msgstr ""
 
 #: css/side-nav-bar.md
@@ -7525,6 +7747,12 @@ msgstr ""
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "The nav item's text label."
+msgstr ""
+
+#: css/side-nav-bar.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Label the `<nav>` with aria-label so it's announced as a named navigation landmark."
 msgstr ""
 
 #: css/simple-select.md
@@ -7604,6 +7832,12 @@ msgstr ""
 #: css/simple-select.md
 #, no-c-format
 msgctxt "docs.api:prose"
+msgid "It's a native `<select>`, so role, keyboard support, and option announcement come from the browser; associate it with a visible `<label>` and convey errors in text, not color alone."
+msgstr ""
+
+#: css/simple-select.md
+#, no-c-format
+msgctxt "docs.api:prose"
 msgid "- [text-input](/api/css/text-input.md) — Shares the same field chrome, states, and sizes.\n- [menu](/api/css/menu.md) — The dropdown surface a richer select reuses."
 msgstr ""
 
@@ -7611,12 +7845,6 @@ msgstr ""
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "`.instui-skeleton-loader` — Decorative placeholder for content that has not loaded yet."
-msgstr ""
-
-#: css/skeleton-loader.md
-#, no-c-format
-msgctxt "docs.api:prose"
-msgid "Mark the decorative loader aria-hidden=\"true\". Put aria-busy on the parent content region,\n  with an initially empty status and alert outside that region. Use initSkeletonLoading from the\n  interactions package to announce the parent's loading state. Shapes must not receive focus."
 msgstr ""
 
 #: css/skeleton-loader.md
@@ -7691,6 +7919,12 @@ msgctxt "docs.api:prose"
 msgid "A repeated text-row wrapper that applies vertical spacing."
 msgstr ""
 
+#: css/skeleton-loader.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Mark the decorative loader aria-hidden=\"true\". Put aria-busy on the parent content region,\n  with an initially empty status and alert outside that region. Use initSkeletonLoading from the\n  interactions package to announce the parent's loading state. Shapes must not receive focus."
+msgstr ""
+
 #: css/spacing.md
 #, no-c-format
 msgctxt "docs.api:prose"
@@ -7748,12 +7982,6 @@ msgstr ""
 #: css/spinner.md
 #, no-c-format
 msgctxt "docs.api:prose"
-msgid "Give the spinner role=\"status\" and an aria-label so screen readers announce it as a live loading status."
-msgstr ""
-
-#: css/spinner.md
-#, no-c-format
-msgctxt "docs.api:prose"
 msgid "Rotating AI-gradient star."
 msgstr ""
 
@@ -7785,6 +8013,12 @@ msgstr ""
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "Rotates the ring, or the AI star at the slower 2.25-second cadence."
+msgstr ""
+
+#: css/spinner.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "With reduced motion enabled, the ring or AI glyph remains visible without rotation; keep the loading status and label while work is pending."
 msgstr ""
 
 #: css/stacking.md
@@ -7841,6 +8075,12 @@ msgctxt "docs.api:prose"
 msgid "The parent `table`'s `-layout-stacked` modifier restyles this member — see `table`'s own doc for that modifier."
 msgstr ""
 
+#: css/table.body.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Use a native `<tbody>` so row and cell relationships are exposed. The parent's `-layout-stacked` changes `display`, which can drop table semantics in some browsers, so add explicit table roles when you use it."
+msgstr ""
+
 #: css/table.cell.md
 #, no-c-format
 msgctxt "docs.api:prose"
@@ -7854,10 +8094,22 @@ msgctxt "docs.api:prose"
 msgid "The parent `table`'s `-layout-stacked` modifier stacks this member as a block and labels it via `::before` — see `table`'s own doc for that modifier."
 msgstr ""
 
+#: css/table.cell.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Use a native `<td>`. In `-layout-stacked` the column label is generated content that assistive technology may not announce reliably, so keep the column relationship available, for example with `headers`."
+msgstr ""
+
 #: css/table.col-header.md
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "`th` — A column-header cell (InstUI `Table.ColHeader`); the default `th` styling, overridden by `table.row-header` for `th[scope=\"row\"]`."
+msgstr ""
+
+#: css/table.col-header.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Use `<th scope=\"col\">` so each column header is associated with the cells beneath it."
 msgstr ""
 
 #: css/table.head.md
@@ -7872,6 +8124,12 @@ msgctxt "docs.api:prose"
 msgid "The parent `table`'s `-layout-stacked` modifier visually hides this member (its column titles surface per-cell instead) — see `table`'s own doc for that modifier."
 msgstr ""
 
+#: css/table.head.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Use a native `<thead>`. `-layout-stacked` hides it visually, so keep it in the DOM, not `display: none`, to preserve column names for assistive technology."
+msgstr ""
+
 #: css/table.md
 #, no-c-format
 msgctxt "docs.api:prose"
@@ -7881,19 +8139,13 @@ msgstr ""
 #: css/table.md
 #, no-c-format
 msgctxt "docs.api:prose"
-msgid "For `-layout-stacked`, pure CSS can't pull each column header's text into its cell, so give every cell a `data-label` and the stacked card shows it via `::before`. See the `table.head`, `table.body`, `table.row`, `table.cell`, `table.col-header`, and `table.row-header` members for the individual parts."
+msgid "For tables that must retain their columns, use a named, keyboard-focusable `--overflow-x-auto` container instead. Use `-without-focus-animation` for an immediately visible focus outline and the caption to name the region."
 msgstr ""
 
 #: css/table.md
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "**Source:** [body.css](https://github.com/thedannywahl/pantoken/blob/main/formats/components/src/components/table/members/body/body.css)"
-msgstr ""
-
-#: css/table.md
-#, no-c-format
-msgctxt "docs.api:prose"
-msgid "Label the table with a `<caption>`, mark column headers `<th scope=\"col\">` and row headers `<th scope=\"row\">`, and in `-layout-stacked` give every cell a `data-label` since the header row is visually hidden."
 msgstr ""
 
 #: css/table.md
@@ -7947,6 +8199,12 @@ msgstr ""
 #: css/table.md
 #, no-c-format
 msgctxt "docs.api:prose"
+msgid "Responsive film ratings"
+msgstr ""
+
+#: css/table.md
+#, no-c-format
+msgctxt "docs.api:prose"
 msgid "Highlight rows on hover. @affects table.row — Reserves and colours the row's hover border."
 msgstr ""
 
@@ -7954,6 +8212,12 @@ msgstr ""
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "Fixed table layout (equal-width columns)."
+msgstr ""
+
+#: css/table.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Use stacked cards below the canonical `md` container breakpoint; preserve columns at and above it. Requires per-cell `data-label` values and a size-container ancestor. @affects table.head @affects table.body @affects table.row @affects table.cell @affects table.col-header @affects table.row-header — Applies the existing stacked presentation only in a narrow container."
 msgstr ""
 
 #: css/table.md
@@ -7968,10 +8232,22 @@ msgctxt "docs.api:prose"
 msgid "An optional table caption."
 msgstr ""
 
+#: css/table.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Label the table with a `<caption>`, mark column headers `<th scope=\"col\">` and row headers `<th scope=\"row\">`, and in stacked or responsive layouts give every cell a localized `data-label` matching its column header. Keep the native header associations; visible generated labels don't replace them. Name scroll regions and provide keyboard access without trapping focus."
+msgstr ""
+
 #: css/table.row-header.md
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "`th[scope=\"row\"]` — A row-header cell (InstUI `Table.RowHeader`); styled from the row-header tokens, not the column-header ones."
+msgstr ""
+
+#: css/table.row-header.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Use `<th scope=\"row\">` so the cell names its row for assistive technology."
 msgstr ""
 
 #: css/table.row.md
@@ -7984,6 +8260,12 @@ msgstr ""
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "The parent `table`'s `-hover` and `-layout-stacked` modifiers restyle this member — see `table`'s own doc for those modifiers."
+msgstr ""
+
+#: css/table.row.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Use a native `<tr>`. The `-hover` styling is visual only, so give a clickable row a real control rather than relying on the highlight."
 msgstr ""
 
 #: css/tabs.md
@@ -8002,12 +8284,6 @@ msgstr ""
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "**Source:** [panel.css](https://github.com/thedannywahl/pantoken/blob/main/formats/components/src/components/tabs/members/panel/panel.css)"
-msgstr ""
-
-#: css/tabs.md
-#, no-c-format
-msgctxt "docs.api:prose"
-msgid "Wire the tab list with role=\"tablist\", each tab with role=\"tab\" and aria-selected, and each panel with role=\"tabpanel\"."
 msgstr ""
 
 #: css/tabs.md
@@ -8091,10 +8367,22 @@ msgctxt "docs.api:prose"
 msgid "The row of tabs."
 msgstr ""
 
+#: css/tabs.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Wire the tab list with role=\"tablist\", each tab with role=\"tab\" and aria-selected, and each panel with role=\"tabpanel\"."
+msgstr ""
+
 #: css/tabs.panel.md
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "`.panel` — The content panel for a tab (InstUI `Tabs.Panel`)."
+msgstr ""
+
+#: css/tabs.panel.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Give each panel `role=\"tabpanel\"` and an `aria-labelledby` that references its tab, and keep inactive panels `hidden`."
 msgstr ""
 
 #: css/tabs.tab.md
@@ -8119,6 +8407,12 @@ msgstr ""
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "The active tab; same styling as `[aria-selected=\"true\"]`."
+msgstr ""
+
+#: css/tabs.tab.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Use `role=\"tab\"` inside a `role=\"tablist\"`, mirror `-selected` with `aria-selected`, point `aria-controls` at the panel, and mark a disabled tab with `aria-disabled` or the native `disabled`."
 msgstr ""
 
 #: css/tag.md
@@ -8190,6 +8484,12 @@ msgstr ""
 #: css/tag.md
 #, no-c-format
 msgctxt "docs.api:prose"
+msgid "Don't rely on color alone to distinguish tags. Give a removable tag's dismiss control an accessible name that includes the tag text, for example `aria-label=\"Remove Biology\"`."
+msgstr ""
+
+#: css/tag.md
+#, no-c-format
+msgctxt "docs.api:prose"
 msgid "- [pill](/api/css/pill.md) — The read-only label-chip counterpart."
 msgstr ""
 
@@ -8215,12 +8515,6 @@ msgstr ""
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "- Displaying inline quotes in body text — use a blockquote element instead\n- The statement is the main focus — use Hero or Card instead"
-msgstr ""
-
-#: css/testimonial.md
-#, no-c-format
-msgctxt "docs.api:prose"
-msgid "- Use `<blockquote>` semantically for the quote\n- Ensure attribution is clear and associated with the quote\n- If using images, provide alt text"
 msgstr ""
 
 #: css/testimonial.md
@@ -8253,6 +8547,12 @@ msgctxt "docs.api:prose"
 msgid "Optional author title or affiliation."
 msgstr ""
 
+#: css/testimonial.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "- Use `<blockquote>` semantically for the quote\n- Ensure attribution is clear and associated with the quote\n- If using images, provide alt text"
+msgstr ""
+
 #: css/text-area.md
 #, no-c-format
 msgctxt "docs.api:prose"
@@ -8269,6 +8569,12 @@ msgstr ""
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "**Source:** [text-area.css](https://github.com/thedannywahl/pantoken/blob/main/formats/components/src/components/text-area/text-area.css)"
+msgstr ""
+
+#: css/text-area.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Associate the field with a visible `<label>`, use `aria-invalid` and `disabled` for state, and explain errors in text, not border color alone."
 msgstr ""
 
 #: css/text-area.md
@@ -8293,6 +8599,12 @@ msgstr ""
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "**Source:** [text-input.css](https://github.com/thedannywahl/pantoken/blob/main/formats/components/src/components/text-input/text-input.css)"
+msgstr ""
+
+#: css/text-input.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Associate the field with a visible `<label>`, use `aria-invalid` and `disabled` for state, and explain errors in text, not border color alone. Date and time types use the browser's own picker and keyboard support."
 msgstr ""
 
 #: css/text-input.md
@@ -8484,6 +8796,12 @@ msgstr ""
 #: css/text.md
 #, no-c-format
 msgctxt "docs.api:prose"
+msgid "It sets appearance only and renders no semantics, so use `<p>`, `<strong>`, `<em>`, and similar elements for meaning, and check contrast of each `-color-*` against its background, especially the inverse colors."
+msgstr ""
+
+#: css/text.md
+#, no-c-format
+msgctxt "docs.api:prose"
 msgid "- [heading](/api/css/heading.md) — Typography for headings rather than body text.\n- [truncate](/api/css/truncate.md) — Clips this text to one line or a set number of lines."
 msgstr ""
 
@@ -8550,6 +8868,12 @@ msgstr ""
 #: css/toggle-details.md
 #, no-c-format
 msgctxt "docs.api:prose"
+msgid "With reduced motion enabled, the chevron changes direction immediately; native disclosure state and keyboard operation remain unchanged."
+msgstr ""
+
+#: css/toggle-details.md
+#, no-c-format
+msgctxt "docs.api:prose"
 msgid "- [toggle-group](/api/css/toggle-group.md) — The bordered, grouped form of the same disclosure."
 msgstr ""
 
@@ -8593,31 +8917,31 @@ msgstr ""
 #: css/toggle-group.md
 #, no-c-format
 msgctxt "docs.api:prose"
+msgid "Built on native `<details>`, which exposes the expanded state and toggles with Enter and Space; keep the `<summary>` first and give it descriptive text."
+msgstr ""
+
+#: css/toggle-group.md
+#, no-c-format
+msgctxt "docs.api:prose"
 msgid "- [toggle-details](/api/css/toggle-details.md) — The single, unbordered form of the same disclosure."
 msgstr ""
 
 #: css/tooltip.md
 #, no-c-format
 msgctxt "docs.api:prose"
-msgid "`.instui-tooltip` — A CSS hover and focus tooltip bubble, positionable on any side."
+msgid "`.instui-tooltip` — A hover and focus tooltip bubble, positionable on any side."
 msgstr ""
 
 #: css/tooltip.md
 #, no-c-format
 msgctxt "docs.api:prose"
-msgid "Toggling is pure CSS (`:hover`/`:focus-within`), so the bubble only reaches keyboard users through a focusable trigger; unlike `popover`, it isn't dismissible or click-triggered."
+msgid "Load `@pantoken/interactions/tooltip.iife.js` for managed delays, Escape dismissal, and combined pointer/focus state. Without JavaScript, hover/focus remains a fallback without Escape or delay guarantees. Use a popover for interactive content."
 msgstr ""
 
 #: css/tooltip.md
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "**Source:** [tooltip.css](https://github.com/thedannywahl/pantoken/blob/main/formats/components/src/components/tooltip/tooltip.css)"
-msgstr ""
-
-#: css/tooltip.md
-#, no-c-format
-msgctxt "docs.api:prose"
-msgid "Point the trigger at the bubble with aria-describedby and give the bubble role=\"tooltip\"."
 msgstr ""
 
 #: css/tooltip.md
@@ -8647,7 +8971,13 @@ msgstr ""
 #: css/tooltip.md
 #, no-c-format
 msgctxt "docs.api:prose"
-msgid "The bubble; `-placement-*` sets its side."
+msgid "The bubble; `-placement-*` sets its preferred side. Initialized tooltips flip/clamp to fit the viewport."
+msgstr ""
+
+#: css/tooltip.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Use a named, focusable trigger with aria-describedby pointing at the role=\"tooltip\" bubble. Keep the content noninteractive. Initialized tooltips stay dismissed after Escape until both pointer and focus leave; the next entry can reopen them."
 msgstr ""
 
 #: css/tooltip.md
@@ -8692,6 +9022,12 @@ msgctxt "docs.api:prose"
 msgid "Animation timing function (default `ease-in-out`)."
 msgstr ""
 
+#: css/transition.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "The classes only animate, so provide a `prefers-reduced-motion` alternative for large movement and don't convey essential state through the transition alone."
+msgstr ""
+
 #: css/tray.md
 #, no-c-format
 msgctxt "docs.api:prose"
@@ -8708,12 +9044,6 @@ msgstr ""
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "**Source:** [tray.css](https://github.com/thedannywahl/pantoken/blob/main/formats/components/src/components/tray/tray.css)"
-msgstr ""
-
-#: css/tray.md
-#, no-c-format
-msgctxt "docs.api:prose"
-msgid "The tray is a dialog or popover surface, so name it with `aria-label` or `aria-labelledby`, and its close control carries an `aria-label` (the `.instui-close-button` in the example uses `aria-label=\"Close\"`)."
 msgstr ""
 
 #: css/tray.md
@@ -8761,6 +9091,12 @@ msgstr ""
 #: css/tray.md
 #, no-c-format
 msgctxt "docs.api:prose"
+msgid "The tray is a dialog or popover surface, so name it with `aria-label` or `aria-labelledby`, and its close control carries an `aria-label` (the `.instui-close-button` in the example uses `aria-label=\"Close\"`)."
+msgstr ""
+
+#: css/tray.md
+#, no-c-format
+msgctxt "docs.api:prose"
 msgid "- Opens with the native `[popover]` API and `@starting-style`; the slide-in sits behind an `@supports (transition-behavior: allow-discrete)` guard, so browsers without it still open the tray, just without the slide."
 msgstr ""
 
@@ -8786,12 +9122,6 @@ msgstr ""
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "**Source:** [tree-browser.css](https://github.com/thedannywahl/pantoken/blob/main/formats/components/src/components/tree-browser/tree-browser.css)"
-msgstr ""
-
-#: css/tree-browser.md
-#, no-c-format
-msgctxt "docs.api:prose"
-msgid "Name the `role=\"tree\"` root, use focusable `role=\"treeitem\"` nodes, and associate each collection with its `role=\"group\"` via `aria-owns`. Load `@pantoken/interactions/tree-browser.js` for one tab stop and synchronized expansion. Add `aria-selected` to opt into single selection; focus alone doesn't select."
 msgstr ""
 
 #: css/tree-browser.md
@@ -8847,6 +9177,12 @@ msgstr ""
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "Draws each collection's disclosure chevron, a masked glyph that rotates to point down when the branch is open."
+msgstr ""
+
+#: css/tree-browser.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Name the `role=\"tree\"` root, use focusable `role=\"treeitem\"` nodes, and associate each collection with its `role=\"group\"` via `aria-owns`. Load `@pantoken/interactions/tree-browser.iife.js` for one tab stop and synchronized expansion. Add `aria-selected` to opt into single selection; focus alone doesn't select."
 msgstr ""
 
 #: css/tree-browser.md
@@ -9008,12 +9344,6 @@ msgstr ""
 #: css/two-column.md
 #, no-c-format
 msgctxt "docs.api:prose"
-msgid "- Ensure both columns are perceivable and usable on narrow viewports\n- Use semantic landmarks (e.g., `<section>`) to wrap column content\n- Maintain sufficient space and contrast between columns"
-msgstr ""
-
-#: css/two-column.md
-#, no-c-format
-msgctxt "docs.api:prose"
 msgid "Optional visual divider between columns."
 msgstr ""
 
@@ -9027,6 +9357,12 @@ msgstr ""
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "Right column content area."
+msgstr ""
+
+#: css/two-column.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "- Ensure both columns are perceivable and usable on narrow viewports\n- Use semantic landmarks (e.g., `<section>`) to wrap column content\n- Maintain sufficient space and contrast between columns"
 msgstr ""
 
 #: css/view.md
@@ -9245,6 +9581,12 @@ msgctxt "docs.api:prose"
 msgid "Topmost elevation shadow."
 msgstr ""
 
+#: css/view.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "It's a neutral box with no semantics, so use semantic elements or ARIA roles for meaning and keep sufficient contrast between its background, border, and content."
+msgstr ""
+
 #: css/visual-debug.md
 #, no-c-format
 msgctxt "docs.api:prose"
@@ -9291,12 +9633,6 @@ msgstr ""
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "- Building a Modal, Tray, or Drawer — those have their own layout containers\n- Wrapping a sub-section of a page — Wrapper contains the full page, not a region"
-msgstr ""
-
-#: css/wrapper.md
-#, no-c-format
-msgctxt "docs.api:prose"
-msgid "- Map the main content area to a &lt;main&gt; landmark with a skip-nav link so keyboard users can bypass GlobalNav\n- Give ContentTabList role=\"navigation\" with a distinct aria-label such as \"Page navigation\" — separate from GlobalNav's landmark\n- Give TrailingContentArea role=\"complementary\" with a descriptive aria-label that reflects its content, such as \"Student details\"\n- Give each UtilityPanel a distinct aria-label: \"AI assistant\", \"Notifications\", or \"Filters\"\n- When a UtilityPanel opens, move focus into the panel; when it closes, return focus to the trigger that opened it"
 msgstr ""
 
 #: css/wrapper.md
@@ -9417,6 +9753,12 @@ msgstr ""
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "Utility actions at the end of the top row."
+msgstr ""
+
+#: css/wrapper.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "- Map the main content area to a &lt;main&gt; landmark with a skip-nav link so keyboard users can bypass GlobalNav\n- Give ContentTabList role=\"navigation\" with a distinct aria-label such as \"Page navigation\" — separate from GlobalNav's landmark\n- Give TrailingContentArea role=\"complementary\" with a descriptive aria-label that reflects its content, such as \"Student details\"\n- Give each UtilityPanel a distinct aria-label: \"AI assistant\", \"Notifications\", or \"Filters\"\n- When a UtilityPanel opens, move focus into the panel; when it closes, return focus to the trigger that opened it"
 msgstr ""
 
 #: design/figma/src/functions/toFigmaColor.md
@@ -11203,7 +11545,13 @@ msgstr ""
 #: formats/interactions/src/functions/initCloseButton.md
 #, no-c-format
 msgctxt "docs.api:prose"
-msgid "Dismiss strategy:\n- `<dialog>` → `dialog.close()`\n- `[popover]` → `el.hidePopover()`\n- `.instui-alert` or `.instui-banner` → cancelable `dismiss` event, then fade out and remove\n- `[data-dismissible]` or `[open]` → remove open attr + fire bubbling `close`"
+msgid "Dismiss strategy:\n- `<dialog>` → `dialog.close()`\n- `[popover]` → `el.hidePopover()`\n- `.instui-alert` or `.instui-banner` (per `options.prefix`) → cancelable `dismiss` event, then fade out and remove\n- `[data-dismissible]` or `[open]` → remove open attr + fire bubbling `close`"
+msgstr ""
+
+#: formats/interactions/src/functions/initFormField.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Associate an authored error after blur, native invalid events, or explicit validation.\nUntouched fields stay quiet; edited fields revalidate after the first validation attempt.\nPreserves hint references and uses native constraints, including `setCustomValidity()`.\nThe host must contain the control and a separate, named error element with message text.\nClean up and reinitialize after moving controls between forms or changing error IDs."
 msgstr ""
 
 #: formats/interactions/src/functions/initInPlaceEdit.md
@@ -11216,6 +11564,12 @@ msgstr ""
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "  CSS:  host = .instui-in-place-edit element (which IS contenteditable)\n  WC:   host = shadow .instui-in-place-edit span"
+msgstr ""
+
+#: formats/interactions/src/functions/initMenu.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Wire a vertical, single-level ARIA menu and its native popover button.\nArrow keys wrap; Home/End and initial-character search move focus. Escape returns\nfocus to the button; Tab closes without canceling normal sequential navigation.\nApplications own click actions and checked state. Space activates checkable items\nwithout closing; Enter and pointer activation close unless the click is canceled."
 msgstr ""
 
 #: formats/interactions/src/functions/initModal.md
@@ -11281,7 +11635,7 @@ msgstr ""
 #: formats/interactions/src/functions/initTooltip.md
 #, no-c-format
 msgctxt "docs.api:prose"
-msgid "Wire hover/focus show-hide with delay onto a tooltip wrapper and its tip\nbubble. Returns a cleanup function for use in web component disconnectedCallback."
+msgid "Own tooltip visibility after initialization, retaining CSS hover/focus as a no-JS fallback.\nPointer and focus are independent reasons to stay open; Escape dismisses until both leave."
 msgstr ""
 
 #: formats/interactions/src/functions/initTooltip.md
@@ -11314,6 +11668,12 @@ msgctxt "docs.api:prose"
 msgid "Build the `command`-event router: forward a target's `command` events to a handler, and where the\nInvoker Commands API is missing, delegate matching `commandfor` clicks across the target's tree."
 msgstr ""
 
+#: formats/interactions/src/functions/ns.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "The class namespace for a prefix: `\"instui\"` → `\"instui-\"`, `\"\"` → `\"\"` (unprefixed)."
+msgstr ""
+
 #: formats/interactions/src/functions/resolveSpace.md
 #, no-c-format
 msgctxt "docs.api:prose"
@@ -11338,10 +11698,28 @@ msgctxt "docs.api:prose"
 msgid "Compute and apply a numeric `--lines` value from available height."
 msgstr ""
 
+#: formats/interactions/src/functions/withPrefix.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Swap every `pfx-` sentinel in `text` for the namespace of `prefix` (default `\"instui\"`)."
+msgstr ""
+
 #: formats/interactions/src/index.md
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "`@pantoken/interactions` - per-component interaction bundles for InstUI components."
+msgstr ""
+
+#: formats/interactions/src/interfaces/CloseButtonOptions.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Options for [initCloseButton](../functions/initCloseButton.md)."
+msgstr ""
+
+#: formats/interactions/src/interfaces/CloseButtonOptions.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Class prefix for the alert/banner hosts. Defaults to `\"instui\"`; `\"\"` means unprefixed."
 msgstr ""
 
 #: formats/interactions/src/interfaces/CommandEventish.md
@@ -11477,6 +11855,24 @@ msgctxt "docs.api:prose"
 msgid "The **`stopPropagation()`** method of the Event interface prevents further propagation of the current event in the capturing and bubbling phases. It does not, however, prevent any default behaviors from occurring; for instance, clicks on links are still processed. If you want to stop those behaviors, see the preventDefault() method. It also does not prevent propagation to other event-handlers of the current element. If you want to stop those, see stopImmediatePropagation()."
 msgstr ""
 
+#: formats/interactions/src/interfaces/FormFieldHandle.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Native validation controls and listener cleanup."
+msgstr ""
+
+#: formats/interactions/src/interfaces/FormFieldHandle.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Show the current native validation result without moving focus or changing the value."
+msgstr ""
+
+#: formats/interactions/src/interfaces/FormFieldHandle.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Remove listeners and restore the initial accessibility and error-visibility state."
+msgstr ""
+
 #: formats/interactions/src/interfaces/InPlaceEditOptions.md
 #, no-c-format
 msgctxt "docs.api:prose"
@@ -11487,6 +11883,12 @@ msgstr ""
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "Selects a text-like editing hint for the input surface; it does not validate."
+msgstr ""
+
+#: formats/interactions/src/interfaces/MenuHandle.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Listeners and attribute restoration installed by [initMenu](../functions/initMenu.md)."
 msgstr ""
 
 #: formats/interactions/src/interfaces/ProgressCircleHandle.md
@@ -11555,6 +11957,12 @@ msgctxt "docs.api:prose"
 msgid "Exit treatment. Defaults to `\"fade\"`, matching InstUI Alert."
 msgstr ""
 
+#: formats/interactions/src/interfaces/RemoveOptions.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Class prefix for the `transition` utility. Defaults to `\"instui\"`; `\"\"` means unprefixed."
+msgstr ""
+
 #: formats/interactions/src/interfaces/SegmentedControlHandle.md
 #, no-c-format
 msgctxt "docs.api:prose"
@@ -11600,13 +12008,13 @@ msgstr ""
 #: formats/interactions/src/interfaces/TooltipHandle.md
 #, no-c-format
 msgctxt "docs.api:prose"
-msgid "Remove all event listeners and cancel any pending timer."
+msgid "Remove listeners/timers and restore the original managed marker and show class."
 msgstr ""
 
 #: formats/interactions/src/interfaces/TooltipHandle.md
 #, no-c-format
 msgctxt "docs.api:prose"
-msgid "Immediately cancel any pending show timer and remove `-show`."
+msgid "Dismiss until both pointer and focus leave, canceling pending timers."
 msgstr ""
 
 #: formats/interactions/src/interfaces/TooltipOptions.md
@@ -11661,6 +12069,12 @@ msgstr ""
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "Callback invoked when a `command` event (or fallback click) resolves to a target."
+msgstr ""
+
+#: formats/interactions/src/type-aliases/FormFieldControl.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Native controls supported by [initFormField](../functions/initFormField.md)."
 msgstr ""
 
 #: formats/interactions/src/type-aliases/InPlaceEditInputType.md
@@ -19572,6 +19986,12 @@ msgctxt "docs.api:prose"
 msgid "The options `register()` and [buildRegisterContext](../functions/buildRegisterContext.md) share (everything but `only`, which only\nmakes sense at the `register()` call site — `buildRegisterContext`'s callers decide their own\nelement subset directly)."
 msgstr ""
 
+#: renderers/web-components/src/interfaces/RegisterContextOptions.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Custom-element tag prefix (`\"x\"` → `<x-icon>`). Never null or empty: tags need a hyphen, so JS callers passing one fall back to `instui`."
+msgstr ""
+
 #: renderers/web-components/src/interfaces/WebComponentStrings.md
 #, no-c-format
 msgctxt "docs.api:prose"
@@ -19798,7 +20218,7 @@ msgstr ""
 #: renderers/web-components/src/variables/drawerLayout.md
 #, no-c-format
 msgctxt "docs.api:prose"
-msgid "The content pane carries `role=\"region\"`, matching InstUI's DrawerLayout; label it with `aria-label`/`aria-labelledby` when the surrounding context doesn't already name it."
+msgid "Both panes are `div` regions, matching InstUI's inline DrawerLayout. Supply nonempty `tray-label` and `content-label` attributes to name them; labels on the host or slotted content don't name the shadow-DOM regions."
 msgstr ""
 
 #: renderers/web-components/src/variables/drawerLayout.md
@@ -19984,7 +20404,7 @@ msgstr ""
 #: renderers/web-components/src/variables/modal.md
 #, no-c-format
 msgctxt "docs.api:prose"
-msgid "`<instui-modal>` — a real `<dialog>`, so it gets focus trapping, Escape-to-close, and a\n`::backdrop` for free. The `open` attribute drives `showModal()`/`close()`; a native dismissal\n(Escape or a backdrop click) reflects back to the attribute and re-fires as a bubbling `close`\nevent. Drivable from light DOM via Invoker Commands — a\n`<button command=\"--show|--close|--toggle\" commandfor=\"modal-id\">` toggles it by id. Content goes\nin the default slot."
+msgid "`<instui-modal>` — a real `<dialog>`, so it gets focus trapping, Escape-to-close, and a\n`::backdrop` for free. The `open` attribute drives `showModal()`/`close()`; a native dismissal\n(such as Escape) reflects back to the attribute and re-fires as a bubbling `close`\nevent. Drivable from light DOM via Invoker Commands — a\n`<button command=\"--show|--close|--toggle\" commandfor=\"modal-id\">` toggles it by id. Content goes\nin the default slot."
 msgstr ""
 
 #: renderers/web-components/src/variables/modal.md
@@ -20158,7 +20578,7 @@ msgstr ""
 #: renderers/web-components/src/variables/spinner.md
 #, no-c-format
 msgctxt "docs.api:prose"
-msgid "`<instui-spinner>` — a loading spinner with `role=\"status\"`. `variant=\"ai\"` and\n`variant=\"ai-on-color\"` select the rotating AI star; size and colour follow the CSS tokens."
+msgid "`<instui-spinner>` — a loading spinner with `role=\"status\"`. `variant=\"ai\"` and\n`variant=\"ai-on-color\"` select the rotating AI star; size and colour follow the CSS tokens.\nReduced motion keeps the ring or glyph visible without rotation."
 msgstr ""
 
 #: renderers/web-components/src/variables/sv.md
@@ -20224,7 +20644,7 @@ msgstr ""
 #: renderers/web-components/src/variables/tooltip.md
 #, no-c-format
 msgctxt "docs.api:prose"
-msgid "`<instui-tooltip>` — wraps a slotted trigger and shows a `.tip` bubble (from the `tip` attribute)\non hover/focus. `placement` maps to `-placement-<value>` (e.g. `bottom`, `end`); `show-delay` and\n`hide-delay` (ms, default 0) gate the reveal/hide, and Escape dismisses it. JS owns the timing:\na `.-show`-gated `!important` override neutralizes the pure-CSS `:hover`/`:focus-within` auto-show\nso the delay actually applies."
+msgid "`<instui-tooltip>` — wraps a slotted trigger and shows a `.tip` bubble (from the `tip` attribute)\non hover/focus. `placement` maps to `-placement-<value>` (e.g. `bottom`, `end`); `show-delay` and\n`hide-delay` (ms, default 0) gate the reveal/hide. Shared behavior owns visibility; Escape\ndismisses until both pointer and focus leave. Tooltip content is noninteractive."
 msgstr ""
 
 #: renderers/web-components/src/variables/tooltip.md

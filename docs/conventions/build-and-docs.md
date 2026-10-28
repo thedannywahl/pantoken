@@ -321,6 +321,10 @@ translation half is already incremental: `TranslationMemory` serves unchanged st
 (Magyar, `/hu/…`) — a symmetric prefix swap that VitePress's default routing already handles (don't
 set a custom `i18nRouting`).
 
+- **Consumed-token types come from pantoken.** `docs/scripts/build-css-api.ts` supplies cssdoc's
+  `resolveToken` hook with display types and resolved values. Color functions, including
+  `color-mix()`, display as `<color>`; border-style tokens display as `<line-style>`.
+  These display types don't change the IR's `@property` registration syntax.
 - **Translation layer is `docs/.vitepress/i18n.ts`.** `LOCALE_THEMES[locale]` holds every localizable
   UI string (nav/sidebar labels, `editText`, the theme selector, VitePress chrome labels, and local
   search). `config.ts` expands these into per-locale `themeConfig` (search is the exception — it lives
