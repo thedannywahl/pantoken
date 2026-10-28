@@ -178,24 +178,34 @@ test("doesn't confuse inherited object keys with record or rule evidence", () =>
 
 test("renders provenance, separate findings, missing coverage, and escaped data without a score", () => {
   const md = accessibilitySection("button", importAccessibilityRun(fixture().directory));
+  expect(md).toContain('<table class="pantoken-a11y-table">');
   expect(md).toContain(
-    "| Conditions | Rebrand (light) | Rebrand (dark) | Canvas | Canvas High Contrast |",
+    '<thead><tr><th scope="col">Conditions</th><th scope="col">Rebrand (light)</th><th scope="col">Rebrand (dark)</th><th scope="col">Canvas</th><th scope="col">Canvas High Contrast</th></tr></thead>',
   );
   expect(md).toContain(
-    '| <span class="pantoken-a11y-check">reflow</span><span class="pantoken-a11y-criteria">WCAG 2.2 1.4.10</span> | <span class="instui-pill -color-danger -icon-x pantoken-doc-tag">Fail</span> |',
+    '<tr><th scope="row" rowspan="2"><span class="pantoken-a11y-check">reflow</span><span class="pantoken-a11y-criteria">WCAG 2.2 1.4.10</span></th><td><span class="instui-pill -color-danger -icon-x pantoken-doc-tag">Fail</span></td>',
   );
   expect(md).toContain(
-    '| <span class="pantoken-a11y-check">spacing</span> | <span class="instui-pill -color-warning -icon-circle-alert pantoken-doc-tag">Manual review needed</span> |',
+    '<tr><th scope="row" rowspan="2"><span class="pantoken-a11y-check">spacing</span></th><td><span class="instui-pill -color-warning -icon-circle-alert pantoken-doc-tag">Manual review needed</span></td>',
+  );
+  expect(md).toContain('<td colspan="4" class="pantoken-a11y-details">');
+  expect(md).toContain("<strong>Rebrand (light):</strong> Overflow &lt;script&gt;");
+  expect(md).toContain("No measurable text");
+  expect(md).toContain(
+    '<tr><th scope="row" rowspan="2"><span class="pantoken-a11y-check">contrast</span></th><td><span class="instui-pill -color-success -icon-check pantoken-doc-tag">Pass</span></td>',
+  );
+  expect(md).toContain(
+    "<strong>Rebrand (dark), Canvas, Canvas High Contrast:</strong> No result was recorded",
   );
   expect(md).toContain(
     '<span class="instui-pill -icon-minus pantoken-doc-tag">Not applicable</span>',
   );
-  expect(md).toContain('| Announcements | <span class="instui-pill -color-warning');
-  expect(md).toContain("| Rules (axe-core) | Rebrand (light)");
-  expect(md).toContain(
-    '| <span class="pantoken-a11y-check">example-violation</span> | <span class="instui-pill -color-danger -icon-x pantoken-doc-tag">Fail</span> |',
-  );
+  expect(md).toContain('<span class="pantoken-a11y-check">Announcements</span>');
+  expect(md).toContain('<th scope="col">Rules (axe-core)</th>');
+  expect(md).toContain('<span class="pantoken-a11y-check">example-violation</span>');
   expect(md).toContain('<span class="pantoken-a11y-check">example-review</span>');
+  expect(md).not.toMatch(/^\|/mu);
+  expect(md).not.toMatch(/\n\n(?=<tr|<\/tr|<td|<th)/u);
   expect(md).not.toContain("IBM");
   expect(md).not.toContain("exact source revision");
   expect(md).not.toContain("Historical automated evidence");
@@ -204,10 +214,8 @@ test("renders provenance, separate findings, missing coverage, and escaped data 
   expect(md).not.toContain("Evidence details");
   expect(md).not.toContain("results.json");
   expect(md).not.toContain("isn't equivalent");
-  expect(md.indexOf("Outdated browser")).toBeLessThan(md.indexOf("| Conditions"));
-  expect(md).not.toContain("Overflow");
+  expect(md.indexOf("Outdated browser")).toBeLessThan(md.indexOf("<table"));
   expect(md).not.toContain("<script>");
-  expect(md).not.toContain("[x](javascript:");
   expect(md).not.toContain("score");
   const units = collectUnits(segmentMarkdown(md));
   expect(units.some((unit) => unit.text.includes("These automated results do not establish"))).toBe(
@@ -224,7 +232,7 @@ test("creates the Accessibility section before consumed tokens, is idempotent, a
   annotateAccessibility(entries, [page], snapshot);
   const first = readFileSync(page, "utf8");
   expect(first).toContain("Not audited");
-  expect(first).not.toContain("| Conditions |");
+  expect(first).not.toContain("<table");
   expect(first).not.toContain("## Accessibility audit");
   expect(first.indexOf("## Accessibility\n")).toBeLessThan(first.indexOf("## Tokens consumed"));
   annotateAccessibility(entries, [page], snapshot);
@@ -245,8 +253,8 @@ test("appends the audit to an authored Accessibility section without a second he
   const first = readFileSync(page, "utf8");
   expect(first.match(/^## Accessibility\s*$/gmu)).toHaveLength(1);
   expect(first).not.toContain("## Accessibility audit");
-  expect(first.indexOf("Authored guidance.")).toBeLessThan(first.indexOf("| Conditions |"));
-  expect(first.indexOf("| Conditions |")).toBeLessThan(first.indexOf("## Tokens consumed"));
+  expect(first.indexOf("Authored guidance.")).toBeLessThan(first.indexOf("<table"));
+  expect(first.indexOf("<table")).toBeLessThan(first.indexOf("## Tokens consumed"));
   annotateAccessibility(entries, [page], snapshot);
   expect(readFileSync(page, "utf8")).toBe(first);
   writeFileSync(page, "# CSS: button\n\n## Accessibility\n\nLast section.\n");

@@ -21,6 +21,7 @@ export const ACCESSIBILITY_AUDIT_STRINGS = {
   computed: "Computed styles",
   screenReader: "Screen reader (simulated)",
   announcements: "Announcements",
+  noResult: "No result was recorded for this check; test it manually.",
   columns: {
     "rebrand/light": "Rebrand (light)",
     "rebrand/dark": "Rebrand (dark)",

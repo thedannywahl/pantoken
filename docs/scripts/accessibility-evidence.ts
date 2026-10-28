@@ -14,6 +14,8 @@ export interface CheckDetail {
   name: string;
   criteria: string[];
   counts: Counts;
+  /** Distinct explanations for fail/undetermined results; empty when everything passed. */
+  notes: string[];
 }
 
 /** One authored target, preserving page/npm evidence and missing per-state tiers separately. */
@@ -135,6 +137,7 @@ export function loadAccessibilitySnapshot(value: unknown): AccessibilitySnapshot
                 name: string(detail.name),
                 criteria: array(detail.criteria).map(string),
                 counts: counts(detail.counts),
+                notes: array(detail.notes ?? []).map(string),
               };
             }),
             axe: storedEngine(row.axe),
@@ -183,10 +186,13 @@ function addAxeDetails(row: AccessibilityEvidence, axe: Record<string, unknown>)
           name,
           criteria: array(item.wcag ?? []).map(string),
           counts: {},
+          notes: [],
         };
         row.details.push(detail);
       }
       increment(detail.counts, result);
+      const help = typeof item.help === "string" ? item.help : "";
+      if (help && !detail.notes.includes(help)) detail.notes.push(help);
     }
   }
 }
@@ -244,7 +250,18 @@ function readTarget(
           addEngine(row.ibm, engine(engines.ibm));
           addAxeDetails(row, object(engines.axe));
         } else if (name === "vsr" && tier?.status === "ran") {
-          row.flags += array(tier.flags).length;
+          const flags = array(tier.flags).map(object);
+          row.flags += flags.length;
+          let detail = row.details.find((item) => item.tier === "vsr");
+          if (!detail) {
+            detail = { tier: "vsr", name: "announcements", criteria: [], counts: {}, notes: [] };
+            row.details.push(detail);
+          }
+          increment(detail.counts, flags.length ? "undetermined" : "pass");
+          for (const flag of flags) {
+            const note = [flag.type, flag.phrase].filter((v) => typeof v === "string").join(": ");
+            if (note && !detail.notes.includes(note)) detail.notes.push(note);
+          }
         } else if (tier?.status === "ran") {
           for (const rawCheck of array(tier.checks)) {
             const check = object(rawCheck);
@@ -260,12 +277,16 @@ function readTarget(
                 name: checkName,
                 criteria: array(check.criteria ?? []).map(string),
                 counts: {},
+                notes: [],
               };
               row.details.push(detail);
             }
             increment(detail.counts, result);
-            if (result === "fail" || result === "undetermined")
-              row.findings.push(`${string(check.name)} (${result}): ${string(check.detail)}`);
+            if (result === "fail" || result === "undetermined") {
+              const note = string(check.detail);
+              if (!detail.notes.includes(note)) detail.notes.push(note);
+              row.findings.push(`${string(check.name)} (${result}): ${note}`);
+            }
           }
         }
       }
@@ -408,51 +429,100 @@ function worst(counts: readonly Counts[]): Status {
   return total("not-applicable") ? "na" : "review";
 }
 
+/** Escape text for a raw HTML block: markdown escapes would show literally, and `{` would reach Vue. */
+function html(value: string): string {
+  return value
+    .replaceAll("&", "&amp;")
+    .replaceAll("<", "&lt;")
+    .replaceAll(">", "&gt;")
+    .replaceAll("{", "&#123;")
+    .replaceAll("}", "&#125;");
+}
+
+const matrixHeader = (label: string): string =>
+  `<thead><tr><th scope="col">${html(label)}</th>${AUDIT_MATRIX.map(
+    (item) => `<th scope="col">${html(columnLabel(item.theme, item.scheme))}</th>`,
+  ).join("")}</tr></thead>`;
+
+/** The explanation row spanning every column; columns with identical notes share one paragraph. */
+function detailRow(
+  notes: readonly (readonly string[] | undefined)[],
+  statuses: readonly Status[],
+): string {
+  const groups = new Map<string, number[]>();
+  statuses.forEach((status, index) => {
+    if (status !== "fail" && status !== "review") return;
+    const text_ = (notes[index]?.length ? notes[index] : [text.noResult]).join(" ");
+    groups.set(text_, [...(groups.get(text_) ?? []), index]);
+  });
+  const all = [...groups.values()].flat().length === AUDIT_MATRIX.length && groups.size === 1;
+  const body = [...groups]
+    .map(([note, columns]) => {
+      const label = all
+        ? ""
+        : `<strong>${columns
+            .map((i) => html(columnLabel(AUDIT_MATRIX[i]!.theme, AUDIT_MATRIX[i]!.scheme)))
+            .join(", ")}:</strong> `;
+      return `<p>${label}${html(note)}</p>`;
+    })
+    .join("");
+  return `<tr><td colspan="${AUDIT_MATRIX.length}" class="pantoken-a11y-details">${body}</td></tr>`;
+}
+
 function tierTable(
   tier: string,
   label: string,
   names: readonly string[],
   rows: readonly AccessibilityEvidence[],
 ): string[] {
-  const out = [
-    `| ${label} | ${AUDIT_MATRIX.map((item) => columnLabel(item.theme, item.scheme)).join(" | ")} |`,
-    `| --- |${AUDIT_MATRIX.map(() => " --- |").join("")}`,
-  ];
+  const body: string[] = [];
   for (const name of names) {
+    const found = (item: { theme: string; scheme: string }) =>
+      rows
+        .filter((row) => row.theme === item.theme && row.scheme === item.scheme)
+        .flatMap((row) => row.details.filter((d) => d.tier === tier && d.name === name));
     const criteria = rows
       .flatMap((row) => row.details.filter((d) => d.tier === tier && d.name === name))
       .flatMap((detail) => detail.criteria);
-    const heading = `<span class="pantoken-a11y-check">${cell(name)}</span>${
+    const display = tier === "vsr" ? text.announcements : name;
+    const heading = `<span class="pantoken-a11y-check">${html(display)}</span>${
       criteria.length
-        ? `<span class="pantoken-a11y-criteria">WCAG 2.2 ${[...new Set(criteria)].map(cell).join(", ")}</span>`
+        ? `<span class="pantoken-a11y-criteria">WCAG 2.2 ${[...new Set(criteria)].map(html).join(", ")}</span>`
         : ""
     }`;
-    const statuses = AUDIT_MATRIX.map((item) => {
-      const matching = rows.filter((row) => row.theme === item.theme && row.scheme === item.scheme);
-      const counts = matching
-        .flatMap((row) => row.details.filter((d) => d.tier === tier && d.name === name))
-        .map((detail) => detail.counts);
+    const statuses = AUDIT_MATRIX.map((item): Status => {
+      const details = found(item);
       // axe reports only findings, so a rule with none in a column that ran axe passed there.
-      if (tier === "rules" && !counts.length && matching.some((row) => row.tiers.rules?.ran))
+      if (
+        tier === "rules" &&
+        !details.length &&
+        rows.some(
+          (row) => row.theme === item.theme && row.scheme === item.scheme && row.tiers.rules?.ran,
+        )
+      )
         return "pass";
-      return worst(counts);
+      return worst(details.map((detail) => detail.counts));
     });
     if (statuses.every((status) => status === "na")) continue;
-    out.push(`| ${heading} | ${statuses.map(pill).join(" | ")} |`);
+    const flagged = statuses.some((status) => status === "fail" || status === "review");
+    const notes = AUDIT_MATRIX.map((item) => [
+      ...new Set(found(item).flatMap((detail) => detail.notes)),
+    ]);
+    body.push(
+      `<tr><th scope="row"${flagged ? ' rowspan="2"' : ""}>${heading}</th>${statuses
+        .map((status) => `<td>${pill(status)}</td>`)
+        .join("")}</tr>`,
+    );
+    if (flagged) body.push(detailRow(notes, statuses));
   }
-  return out.length > 2 ? [...out, ""] : [];
-}
-
-function screenReaderTable(rows: readonly AccessibilityEvidence[]): string[] {
-  const cells = AUDIT_MATRIX.map((item) => {
-    const matching = rows.filter((row) => row.theme === item.theme && row.scheme === item.scheme);
-    if (!matching.some((row) => (row.tiers.vsr?.ran ?? 0) > 0)) return pill("review");
-    return pill(matching.some((row) => row.flags > 0) ? "review" : "pass");
-  });
+  if (!body.length) return [];
   return [
-    `| ${text.screenReader} | ${AUDIT_MATRIX.map((item) => columnLabel(item.theme, item.scheme)).join(" | ")} |`,
-    `| --- |${AUDIT_MATRIX.map(() => " --- |").join("")}`,
-    `| ${text.announcements} | ${cells.join(" | ")} |`,
+    '<table class="pantoken-a11y-table">',
+    matrixHeader(label),
+    "<tbody>",
+    ...body,
+    "</tbody>",
+    "</table>",
     "",
   ];
 }
@@ -473,7 +543,7 @@ export function accessibilitySection(name: string, snapshot: AccessibilitySnapsh
     if (!names.length) continue;
     lines.push(...tierTable(tier, tierLabel(tier), names, rows));
   }
-  lines.push(...screenReaderTable(rows), text.caveat, "");
+  lines.push(...tierTable("vsr", text.screenReader, ["announcements"], rows), text.caveat, "");
   return lines.join("\n");
 }
 
