@@ -105,3 +105,17 @@ test("the localized table demo provides named scrolling and matching responsive 
       expect([...row.children].map((cell) => cell.getAttribute("data-label"))).toEqual(headings);
   });
 });
+
+test("spinner and mask demos keep named loading statuses when their animation is reduced", () => {
+  for (const name of ["spinner", "mask"]) {
+    withDemo(name, ({ document }) => {
+      const spinners = [...document.querySelectorAll(".instui-spinner")];
+      expect(spinners.length).toBeGreaterThan(0);
+      for (const spinner of spinners) {
+        expect(spinner.getAttribute("role")).toBe("status");
+        expect(spinner.getAttribute("aria-label")?.trim()).toBeTruthy();
+        expect(spinner.closest('[hidden], [aria-hidden="true"]')).toBeNull();
+      }
+    });
+  }
+});

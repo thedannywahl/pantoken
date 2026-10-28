@@ -21,3 +21,11 @@ test("spinner has sizes, inverse, and AI variants", () => {
   expect(css).toContain("var(--instui-color-icon-on-color)");
   expect(css).toContain("animation-duration: 2.25s");
 });
+
+test("spinner retains its visible ring or glyph without rotation under reduced motion", () => {
+  const css = spinnerCss({ prefix: "instui" });
+  expect(css).toMatch(/@media \(prefers-reduced-motion: reduce\)\s*\{\s*animation: none;\s*\}/u);
+  expect(css).toContain("animation: pantoken-spinner-rotate 0.8s linear infinite");
+  expect(css).toContain("border-top-color: var(--instui-component-spinner-color)");
+  expect(css).toContain("mask: var(--instui-icon-ai-spinner)");
+});

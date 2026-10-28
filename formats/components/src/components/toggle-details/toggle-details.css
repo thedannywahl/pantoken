@@ -3,6 +3,7 @@
  * @selector .pfx-toggle-details
  * @summary A styled native `<details>` disclosure with a rotating chevron.
  * @remarks Built on the native `<details>` element, so the browser drives open and close plus keyboard support; the CSS only hides the default marker and supplies the rotating chevron.
+ * @a11y With reduced motion enabled, the chevron changes direction immediately; native disclosure state and keyboard operation remain unchanged.
  * @modifier -variant-filled — Filled (surface) variant.
  * @modifier -chevron-end — Place the chevron after the summary.
  * @modifier -size-sm — Small.
@@ -69,6 +70,12 @@
 
   &[open] > summary::before {
     transform: rotate(90deg);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    & > summary::before {
+      transition: none;
+    }
   }
 
   /* iconPosition="end" (named -chevron-end, NOT -icon-position-end — a "-icon-" class would collide with the
