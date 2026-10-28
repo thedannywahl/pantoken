@@ -333,12 +333,6 @@ export function accessibilitySection(name: string, snapshot: AccessibilitySnapsh
   for (const warning of new Set(rows.flatMap((row) => row.warnings)))
     lines.push(`> ${cell(warning)}`, "");
   lines.push(
-    text.snapshot,
-    "",
-    text.supported,
-    "",
-    text.provenance,
-    "",
     `[${text.download}](/accessibility/results.json)`,
     "",
     `| ${text.theme} | ${text.scheme} | ${text.evidence} | ${text.configurations} | ${text.tiers} |`,

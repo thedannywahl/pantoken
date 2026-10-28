@@ -178,7 +178,9 @@ test("renders provenance, separate findings, missing coverage, and escaped data 
   expect(md).toContain("| axe-core | 1 | 1 |");
   expect(md).toContain("| IBM Equal Access | 0 | 1 |");
   expect(md).toContain("| conditions | 1 | 1 | 1 | 1 |");
-  expect(md).toContain("exact source revision");
+  expect(md).not.toContain("exact source revision");
+  expect(md).not.toContain("Historical automated evidence");
+  expect(md).not.toContain("Supported schemes");
   expect(md).toContain("These automated results do not establish");
   expect(md).toContain("example-violation");
   expect(md.indexOf("Outdated browser")).toBeLessThan(md.indexOf("| Theme"));

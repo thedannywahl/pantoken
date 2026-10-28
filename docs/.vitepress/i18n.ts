@@ -11,12 +11,6 @@ import { loadConfig, resolveMessagesForLocale, resolveTier } from "@pantoken/i18
 export const ACCESSIBILITY_AUDIT_STRINGS = {
   notAudited:
     "Not audited: no checked-in evidence covers this record. Results from other components don't establish coverage for this one.",
-  snapshot:
-    "Historical automated evidence for authored examples, not a verdict on this component or verification of the current code. Settings: WCAG 2.2 AA. Library accessibility option: n/a.",
-  supported:
-    "Supported schemes: rebrand light/dark, Canvas light, and Canvas High Contrast light. Unsupported historical Canvas dark cases are excluded.",
-  provenance:
-    "The original run didn't record an exact source revision. Later fixes aren't included unless the evidence is refreshed. Dates, tool versions, original run IDs, and results-file SHA-256 digests are retained in the downloadable evidence.",
   download: "Download audit evidence (JSON)",
   theme: "Theme",
   scheme: "Scheme",
