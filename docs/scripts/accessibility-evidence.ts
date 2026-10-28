@@ -463,6 +463,22 @@ function worst(counts: readonly Counts[]): Status {
   return total("not-applicable") ? "na" : "review";
 }
 
+/** A CSS selector reference in prose: `section.card`, `h2#title`, `p.--truncate`, or `.-color-ai`. */
+const SELECTOR = /(?<![\w`.#-])(?:[a-z][a-z0-9-]*)?(?:[.#][A-Za-z_-][\w-]*)+(?![\w-])/gu;
+const NOT_SELECTORS = new Set(["e.g", "i.e"]);
+
+/** Escape prose for a raw HTML block, wrapping selector references in `<code>`. */
+function htmlWithCode(value: string): string {
+  let out = "";
+  let last = 0;
+  for (const match of value.matchAll(SELECTOR)) {
+    if (NOT_SELECTORS.has(match[0])) continue;
+    out += `${html(value.slice(last, match.index))}<code>${html(match[0])}</code>`;
+    last = match.index + match[0].length;
+  }
+  return out + html(value.slice(last));
+}
+
 /** Escape text for a raw HTML block: markdown escapes would show literally, and `{` would reach Vue. */
 function html(value: string): string {
   return value
@@ -508,7 +524,7 @@ function detailRow(
       const items = list.length
         ? `<ul>${list.map((item) => `<li><code>${html(item)}</code></li>`).join("")}</ul>`
         : "";
-      return `<p>${label}${html(note)}</p>${items}`;
+      return `<p>${label}${htmlWithCode(note)}</p>${items}`;
     })
     .join("");
   return `<tr><td colspan="${AUDIT_MATRIX.length}" class="pantoken-a11y-details">${body}</td></tr>`;

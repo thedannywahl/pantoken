@@ -325,3 +325,11 @@ test("merging a partial run replaces only its records and drops removed ones", (
   expect(merged.records[remove!]).toBeUndefined();
   expect(merged.fingerprints).toEqual({ [keep!]: "old", [replace!]: "new" });
 });
+
+test("selector references in details render as code, numbers and abbreviations don't", () => {
+  const section = accessibilitySection("agent-shell", loadAccessibilitySnapshot(snapshotJson));
+  expect(section).toContain("<code>section.instui-agent-shell</code> ends at 336px");
+  expect(section).toContain("<code>h2#agent-shell-title</code> ends at 323px");
+  expect(section).toContain("1.4.10 Reflow");
+  expect(section).not.toMatch(/<code>\d/u);
+});
