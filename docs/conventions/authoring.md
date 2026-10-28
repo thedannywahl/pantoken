@@ -23,6 +23,13 @@ disabled states. Keep intentionally empty backgrounds, image effects, and visibi
 they aren't interchangeable with translucent component chrome. New surface expressions need coverage
 in the token preference generator and a real-browser check.
 
+In forced colors, keep browser adjustment on surrounding components and text. Masked glyphs can use
+`forced-color-adjust: preserve-parent-color` on the painter itself, with system-color fills. Give
+gradient text a solid system-color fallback, and keep selected states visible without shadows.
+Native progress needs authored value parts and a CSS-owned indeterminate segment: suppressing CSS
+animations alone doesn't stop the browser's built-in loading animation. Check actual rendered pixels,
+native range semantics, and live preference changes, including RTL.
+
 ## Source layout
 
 - `src/components/<name>/index.ts` + `<name>.css` (`COMPONENTS` registry).

@@ -636,6 +636,36 @@
   &.-color-ai-secondary.-without-border::after {
     display: none;
   }
+
+  @media (forced-colors: active) {
+    &.-color-ai-secondary {
+      &,
+      &:is(:hover, :active, :disabled, [aria-disabled="true"]) {
+        background: none;
+        color: ButtonText;
+        -webkit-text-fill-color: currentColor;
+      }
+
+      &:is(:disabled, [aria-disabled="true"]) {
+        color: GrayText;
+      }
+    }
+
+    &:is(.-color-ai, .-color-ai-secondary) {
+      &::before,
+      &:is(:disabled, [aria-disabled="true"])::before,
+      &:is([class^="-icon-"], [class*=" -icon-"])::before {
+        forced-color-adjust: preserve-parent-color;
+        background: currentColor;
+      }
+    }
+
+    &.-color-ai-secondary::after,
+    &:is([class^="-icon-"], [class*=" -icon-"])::before {
+      forced-color-adjust: preserve-parent-color;
+      background: currentColor;
+    }
+  }
 }
 
 .pfx-button-group {

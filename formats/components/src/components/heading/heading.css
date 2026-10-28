@@ -125,6 +125,11 @@
     background-clip: text;
     -webkit-text-fill-color: transparent;
     color: transparent;
+    @media (forced-colors: active) {
+      background: none;
+      color: CanvasText;
+      -webkit-text-fill-color: currentColor;
+    }
   }
 
   &.-border-bottom {

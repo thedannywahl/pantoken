@@ -2,7 +2,7 @@
  * @component progress
  * @selector .pfx-progress
  * @summary A determinate progress bar with a coloured meter, sizes, and an optional value label.
- * @remarks `.value` is a sibling of `.bar`, both children of the root — mirroring how progress-circle nests its own `.value` part. InstUI has no indeterminate state; `:indeterminate` is a pantoken-only best guess (native `<progress>` without a `value` attribute), animating `.bar` as a sliding segment and hiding `.value` since there's no meaningful number to show. `<meter>` has no indeterminate state, so it's unaffected.
+ * @remarks `.value` is a sibling of `.bar`, both children of the root — mirroring how progress-circle nests its own `.value` part. Native `<progress>` and `<meter>` use vendor value parts with the same semantic fill. InstUI has no indeterminate state; `:indeterminate` is a pantoken-only best guess (native `<progress>` without a `value` attribute), using a CSS-owned sliding segment and hiding `.value` since there's no meaningful number to show. Reduced motion keeps a static segment; `<meter>` has no indeterminate state.
  * @element progress, meter
  * @modifier -color-brand — Brand meter colour.
  * @modifier -color-info — Informational meter colour.
@@ -26,12 +26,14 @@
  * @part .bar — The filled meter bar.
  * @part .value — The value text beside the bar.
  * @pseudo ::after — Draws the track's bottom rule as its own layer over the meter, so the full border and the bottom border stay independent across themes.
- * @pseudo :indeterminate — Custom, not part of InstUI. Applies only to a native `<progress>` missing its `value` attribute; animates `.bar` as a sliding segment and hides `.value`.
+ * @pseudo ::before — Draws the native indeterminate segment without relying on the browser's built-in animation.
+ * @pseudo :indeterminate — Custom, not part of InstUI. Applies only to a native `<progress>` missing its `value` attribute; draws a sliding segment on `::before` and hides `.value`.
  * @cssproperty --value <number> — The current progress value.
  * @cssproperty --value-now <number> — @alias Alias for `--value`.
  * @cssproperty --min <number> — The minimum meter value (default `0`).
  * @cssproperty --max <number> — The maximum progress value (default `100`).
  * @cssproperty --value-max <number> — @alias {@link --max} The maximum progress value (default `100`).
+ * @cssproperty --pantoken-progress-fill <color> — The native value part and `.bar` fill; the -color-* modifiers set it.
  * @accessibility Use native `<progress>` for a zero-based task completion range and `<meter>` when the minimum is non-zero. Give either element an accessible name by nesting it in `<label>` or associating a separate `<label>` through matching `for` and `id` values.
  * @compat Scopes the meter part rules with the `@scope` at-rule; browsers without `@scope` support ignore those scoped rules.
  * @example -canvas-rce -docs
@@ -79,16 +81,17 @@
    --value) reads as loading rather than rendering a broken 0%-width bar. */
 @keyframes pantoken-progress-indeterminate {
   0% {
-    left: -40%;
+    inset-inline-start: -40%;
   }
 
   100% {
-    left: 100%;
+    inset-inline-start: 100%;
   }
 }
 
 @scope (.pfx-progress) {
   & {
+    --pantoken-progress-fill: var(--instui-color-background-brand);
     --value: var(--value-now);
     --min: 0;
     --max: var(--value-max);
@@ -102,6 +105,57 @@
       var(--instui-component-progress-bar-border-color);
     border-radius: var(--instui-component-progress-bar-border-radius);
     overflow: hidden;
+  }
+
+  &:is(progress, meter) {
+    appearance: none;
+  }
+
+  &::-webkit-progress-bar {
+    background: transparent;
+    border-radius: var(--instui-component-progress-bar-border-radius);
+  }
+
+  &::-webkit-progress-value {
+    background: var(--pantoken-progress-fill);
+    border-radius: var(--instui-component-progress-bar-border-radius);
+    @media (forced-colors: active) {
+      forced-color-adjust: preserve-parent-color;
+      background: Highlight;
+    }
+  }
+
+  &::-moz-progress-bar {
+    background: var(--pantoken-progress-fill);
+    border-radius: var(--instui-component-progress-bar-border-radius);
+    @media (forced-colors: active) {
+      forced-color-adjust: preserve-parent-color;
+      background: Highlight;
+    }
+  }
+
+  &::-webkit-meter-bar {
+    background: transparent;
+    border: 0;
+    box-shadow: none;
+  }
+
+  &::-webkit-meter-optimum-value,
+  &::-webkit-meter-suboptimum-value,
+  &::-webkit-meter-even-less-good-value {
+    background: var(--pantoken-progress-fill);
+    @media (forced-colors: active) {
+      forced-color-adjust: preserve-parent-color;
+      background: Highlight;
+    }
+  }
+
+  &::-moz-meter-bar {
+    background: var(--pantoken-progress-fill);
+    @media (forced-colors: active) {
+      forced-color-adjust: preserve-parent-color;
+      background: Highlight;
+    }
   }
 
   /* InstUI layers a distinct bottom rule (trackBottomBorderColor) over the meter, separate from the full
@@ -136,8 +190,12 @@
   & > .bar {
     height: 100%;
     width: clamp(0%, calc((var(--value) - var(--min)) / (var(--max) - var(--min)) * 100%), 100%);
-    background: var(--instui-color-background-brand);
+    background: var(--pantoken-progress-fill);
     border-radius: var(--instui-component-progress-bar-border-radius);
+    @media (forced-colors: active) {
+      forced-color-adjust: preserve-parent-color;
+      background: Highlight;
+    }
   }
 
   & > .value {
@@ -155,9 +213,18 @@
   }
 
   /* :indeterminate only matches a valueless <progress>; <meter> always requires a value. */
-  &:indeterminate > .bar {
+  &:indeterminate > .bar,
+  &:indeterminate::before {
+    content: "";
     position: absolute;
+    inset-block: 0;
+    inset-inline-start: 0;
     width: 40%;
+    background: var(--pantoken-progress-fill);
+    @media (forced-colors: active) {
+      forced-color-adjust: preserve-parent-color;
+      background: Highlight;
+    }
     @media (prefers-reduced-motion: no-preference) {
       animation: pantoken-progress-indeterminate 1.4s ease-in-out infinite;
     }
@@ -168,30 +235,31 @@
   }
 
   /* Color modifiers paired with deprecated meter-color aliases via :is(). */
-  &:is(.-color-brand, .-meter-color-brand) > .bar {
-    background: var(--instui-color-background-brand);
+  &:is(.-color-brand, .-meter-color-brand) {
+    --pantoken-progress-fill: var(--instui-color-background-brand);
   }
 
-  &:is(.-color-info, .-meter-color-info) > .bar {
-    background: var(--instui-color-background-info);
+  &:is(.-color-info, .-meter-color-info) {
+    --pantoken-progress-fill: var(--instui-color-background-info);
   }
 
-  &:is(.-color-success, .-meter-color-success) > .bar {
-    background: var(--instui-color-background-success);
+  &:is(.-color-success, .-meter-color-success) {
+    --pantoken-progress-fill: var(--instui-color-background-success);
   }
 
-  &:is(.-color-warning, .-meter-color-warning, .-meter-color-alert) > .bar {
-    background: var(--instui-color-background-warning);
+  &:is(.-color-warning, .-meter-color-warning, .-meter-color-alert) {
+    --pantoken-progress-fill: var(--instui-color-background-warning);
   }
 
-  &:is(.-color-danger, .-meter-color-danger) > .bar {
-    background: var(--instui-color-background-error);
+  &:is(.-color-danger, .-meter-color-danger) {
+    --pantoken-progress-fill: var(--instui-color-background-error);
   }
 
   /* color="primary-inverse": the on-dark scheme. It's a distinct axis from meterColor and overrides it —
      InstUI's inverse meter tokens all collapse to background-base — so it comes AFTER the meter rules and
      wins at equal specificity. Pair it with a dark surface. */
   &.-color-primary-inverse {
+    --pantoken-progress-fill: var(--instui-component-progress-bar-meter-color-brand-inverse);
     background: var(--instui-component-progress-bar-track-color-inverse);
     border-color: var(--instui-component-progress-bar-border-color-inverse);
     color: var(--instui-component-progress-bar-text-color-inverse);
@@ -199,10 +267,6 @@
 
   &.-color-primary-inverse::after {
     background: var(--instui-component-progress-bar-track-bottom-border-color-inverse);
-  }
-
-  &.-color-primary-inverse > .bar {
-    background: var(--instui-component-progress-bar-meter-color-brand-inverse);
   }
 
   &.-render-value-inside > .value {

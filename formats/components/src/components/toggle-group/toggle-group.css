@@ -64,6 +64,9 @@
     background: currentColor;
     -webkit-mask: var(--instui-icon-chevron-right) center / contain no-repeat;
     mask: var(--instui-icon-chevron-right) center / contain no-repeat;
+    @media (forced-colors: active) {
+      forced-color-adjust: preserve-parent-color;
+    }
     @media (prefers-reduced-motion: no-preference) {
       transition: transform 0.2s ease;
     }

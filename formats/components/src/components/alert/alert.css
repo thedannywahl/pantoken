@@ -179,6 +179,10 @@
     background: var(--pantoken-alert-icon-color);
     -webkit-mask: var(--pantoken-alert-glyph) center / 0.833rem no-repeat;
     mask: var(--pantoken-alert-glyph) center / 0.833rem no-repeat;
+    @media (forced-colors: active) {
+      forced-color-adjust: preserve-parent-color;
+      background: currentColor;
+    }
   }
 
   &:has(> .pfx-close-button) {

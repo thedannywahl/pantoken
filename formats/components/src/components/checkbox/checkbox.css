@@ -107,6 +107,10 @@
   );
   -webkit-mask: var(--pantoken-cb-glyph);
   mask: var(--pantoken-cb-glyph);
+  @media (forced-colors: active) {
+    forced-color-adjust: preserve-parent-color;
+    background: currentColor;
+  }
   transform: scale(0);
   @media (prefers-reduced-motion: no-preference) {
     transition: transform 0.1s ease;
@@ -215,6 +219,9 @@
      track uses the neutral muted background; the handle position and on-color signal the state. */
   background: var(--instui-color-background-muted);
   cursor: pointer;
+  @media (forced-colors: active) {
+    border: var(--pantoken-toggle-bw) solid ButtonText;
+  }
   @media (prefers-reduced-motion: no-preference) {
     transition: background-color 0.15s ease;
   }
@@ -249,6 +256,10 @@
   background: var(--instui-color-text-muted);
   -webkit-mask: var(--instui-icon-x) center / 58% no-repeat;
   mask: var(--instui-icon-x) center / 58% no-repeat;
+  @media (forced-colors: active) {
+    forced-color-adjust: preserve-parent-color;
+    background: currentColor;
+  }
   @media (prefers-reduced-motion: no-preference) {
     transition: inset-inline-start 0.15s ease;
   }
@@ -268,4 +279,7 @@
   background: var(--instui-component-radio-input-toggle-background-success);
   -webkit-mask: var(--instui-icon-check) center / 58% no-repeat;
   mask: var(--instui-icon-check) center / 58% no-repeat;
+  @media (forced-colors: active) {
+    background: currentColor;
+  }
 }

@@ -74,6 +74,14 @@
       background: var(--instui-color-icon-on-color);
     }
 
+    @media (forced-colors: active) {
+      &.-color-ai,
+      &.-color-ai-on-color {
+        forced-color-adjust: preserve-parent-color;
+        background: currentColor;
+      }
+    }
+
     @media (prefers-reduced-motion: reduce) {
       animation: none;
     }

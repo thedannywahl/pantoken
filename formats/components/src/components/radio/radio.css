@@ -73,6 +73,10 @@
     );
     border-radius: 50%;
     background: var(--instui-component-radio-input-border-selected-color);
+    @media (forced-colors: active) {
+      forced-color-adjust: preserve-parent-color;
+      background: currentColor;
+    }
     transform: scale(0);
     @media (prefers-reduced-motion: no-preference) {
       transition: transform 0.1s ease;
@@ -218,6 +222,9 @@
     background: var(--pantoken-rt-fill);
     color: var(--instui-component-radio-input-toggle-handle-text);
     box-shadow: var(--instui-elevation-depth1);
+    @media (forced-colors: active) {
+      outline: 2px solid Highlight;
+    }
   }
 
   /* Focus: underline the label and draw a ring offset just outside the pill (the InstUI focus facade). */

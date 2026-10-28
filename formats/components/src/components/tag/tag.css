@@ -78,6 +78,14 @@
     background: var(--instui-component-tag-inline-icon-hover-color);
   }
 
+  @media (forced-colors: active) {
+    &.-inline::after,
+    &.-inline:hover::after {
+      forced-color-adjust: preserve-parent-color;
+      background: currentColor;
+    }
+  }
+
   /* readOnly (InstUI): a static tag — no hover affordance, and the dismiss glyph is dropped. */
   &.-readonly {
     cursor: default;

@@ -424,9 +424,11 @@ test("new components render their key tokens", () => {
 
 test("progress bar keeps the deprecated -meter-color-* aliases (incl. alert→warning)", () => {
   const css = componentsCss({ prefix: "instui" });
-  expect(css).toMatch(/&:is\(\.-color-success,\s*\.-meter-color-success\)\s*>\s*\.bar\s*\{/u);
   expect(css).toMatch(
-    /&:is\(\.-color-warning,\s*\.-meter-color-warning,\s*\.-meter-color-alert\)\s*>\s*\.bar\s*\{/u,
+    /&:is\(\.-color-success,\s*\.-meter-color-success\)\s*\{\s*--pantoken-progress-fill:\s*var\(--instui-color-background-success\)/u,
+  );
+  expect(css).toMatch(
+    /&:is\(\.-color-warning,\s*\.-meter-color-warning,\s*\.-meter-color-alert\)\s*\{\s*--pantoken-progress-fill:\s*var\(--instui-color-background-warning\)/u,
   );
   expect(css).toMatch(/&:is\(\.-color-success,\s*\.-meter-color-success\)/u);
 });

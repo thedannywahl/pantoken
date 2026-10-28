@@ -138,6 +138,26 @@
   }
 
   /* The ring is a masked conic donut on ::before; the value sits in the hole. */
+  &:is(progress, meter) {
+    appearance: none;
+  }
+
+  &::-webkit-progress-bar,
+  &::-webkit-progress-value,
+  &::-webkit-meter-bar,
+  &::-webkit-meter-optimum-value,
+  &::-webkit-meter-suboptimum-value,
+  &::-webkit-meter-even-less-good-value {
+    background: transparent;
+    border: 0;
+    box-shadow: none;
+  }
+
+  &::-moz-progress-bar,
+  &::-moz-meter-bar {
+    background: transparent;
+  }
+
   &::before {
     content: "";
     position: absolute;
@@ -154,6 +174,11 @@
       #000 0
     );
     mask: radial-gradient(farthest-side, #0000 calc(100% - var(--pantoken-pc-stroke)), #000 0);
+    @media (forced-colors: active) {
+      forced-color-adjust: preserve-parent-color;
+      --pantoken-pc-fill: CanvasText;
+      --pantoken-pc-track: Canvas;
+    }
     @media (prefers-reduced-motion: no-preference) {
       transition:
         opacity 0.5s 0.2s,
