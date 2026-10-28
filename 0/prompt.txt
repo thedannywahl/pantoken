@@ -1,0 +1,69 @@
+~/formats/interactions$ vp fmt --write component-capabilities.json ○ cache miss: untracked env config changed, executing
+node:internal/modules/esm/resolve:241
+    throw new ERR_MODULE_NOT_FOUND(
+          ^
+
+Error [ERR_MODULE_NOT_FOUND]: Cannot find module '/Users/dwahl/Scripts/pantoken/packages/core/node_modules/@pantoken/plugin-kit/dist/index.mjs' imported from /Users/dwahl/Scripts/pantoken/packages/core/dist/color-fITOppR-.mjs
+    at finalizeResolution (node:internal/modules/esm/resolve:241:11)
+    at moduleResolve (node:internal/modules/esm/resolve:846:10)
+    at defaultResolve (node:internal/modules/esm/resolve:973:11)
+    at #cachedDefaultResolve (node:internal/modules/esm/loader:708:20)
+    at #resolveAndMaybeBlockOnLoaderThread (node:internal/modules/esm/loader:728:38)
+    at ModuleLoader.resolveSync (node:internal/modules/esm/loader:766:56)
+    at #resolve (node:internal/modules/esm/loader:690:17)
+    at ModuleLoader.getOrCreateModuleJob (node:internal/modules/esm/loader:610:35)
+    at ModuleJob.syncLink (node:internal/modules/esm/module_job:277:33)
+    at ModuleJob.link (node:internal/modules/esm/module_job:389:17) {
+  code: 'ERR_MODULE_NOT_FOUND',
+  url: 'file:///Users/dwahl/Scripts/pantoken/packages/core/node_modules/@pantoken/plugin-kit/dist/index.mjs'
+}
+
+Node.js v26.12.1
+
+---
+
+~/formats/interactions$ vp fmt --write component-capabilities.json ○ cache miss: untracked env config changed, executing
+node:internal/modules/esm/resolve:241
+    throw new ERR_MODULE_NOT_FOUND(
+          ^
+
+Error [ERR_MODULE_NOT_FOUND]: Cannot find module '/Users/dwahl/Scripts/pantoken/packages/core/node_modules/@pantoken/plugin-kit/dist/index.mjs' imported from /Users/dwahl/Scripts/pantoken/packages/core/dist/color-fITOppR-.mjs
+    at finalizeResolution (node:internal/modules/esm/resolve:241:11)
+    at moduleResolve (node:internal/modules/esm/resolve:846:10)
+    at defaultResolve (node:internal/modules/esm/resolve:973:11)
+    at #cachedDefaultResolve (node:internal/modules/esm/loader:708:20)
+    at #resolveAndMaybeBlockOnLoaderThread (node:internal/modules/esm/loader:728:38)
+    at ModuleLoader.resolveSync (node:internal/modules/esm/loader:766:56)
+    at #resolve (node:internal/modules/esm/loader:690:17)
+    at ModuleLoader.getOrCreateModuleJob (node:internal/modules/esm/loader:610:35)
+    at ModuleJob.syncLink (node:internal/modules/esm/module_job:277:33)
+    at ModuleJob.link (node:internal/modules/esm/module_job:389:17) {
+  code: 'ERR_MODULE_NOT_FOUND',
+  url: 'file:///Users/dwahl/Scripts/pantoken/packages/core/node_modules/@pantoken/plugin-kit/dist/index.mjs'
+}
+
+Node.js v26.12.1
+
+---
+
+now we're going to work on the actual audit contents.
+we're going to remove the entire preamble:
+```
+Historical automated evidence for authored examples, not a verdict on this component or verification of the current code. Settings: WCAG 2.2 AA. Library accessibility option: n/a.
+
+Supported schemes: rebrand light/dark, Canvas light, and Canvas High Contrast light. Unsupported historical Canvas dark cases are excluded.
+
+The original run didn't record an exact source revision. Later fixes aren't included unless the evidence is refreshed. Dates, tool versions, original run IDs, and results-file SHA-256 digests are retained in the downloadable evidence.
+```
+
+---
+
+now we're going to work on the actual audit contents.
+we're going to remove the entire preamble:
+```
+Historical automated evidence for authored examples, not a verdict on this component or verification of the current code. Settings: WCAG 2.2 AA. Library accessibility option: n/a.
+
+Supported schemes: rebrand light/dark, Canvas light, and Canvas High Contrast light. Unsupported historical Canvas dark cases are excluded.
+
+The original run didn't record an exact source revision. Later fixes aren't included unless the evidence is refreshed. Dates, tool versions, original run IDs, and results-file SHA-256 digests are retained in the downloadable evidence.
+```
