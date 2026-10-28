@@ -70,9 +70,36 @@
  * @example -automatica11y -nocard
  * ```html
  * <div class="pfx-banner" role="status" data-a11y-root>
- *   <span class="pfx-icon -icon-checkmark" aria-hidden="true"></span>
- *   <span>Profile changes saved.</span>
+ *   <h2>Profile changes saved</h2>
+ *   <span>Your changes are available.</span>
+ *   <div class="button-group">
+ *     <button class="pfx-button">Undo</button>
+ *     <button class="pfx-button">View</button>
+ *   </div>
  *   <button class="pfx-close-button" aria-label="Dismiss notification" data-a11y-trigger></button>
+ * </div>
+ * <div class="pfx-banner -color-violet -size-relaxed" role="status">
+ *   <h2>Violet notification</h2>
+ *   <span>Your changes are available.</span>
+ *   <button class="pfx-button">View</button>
+ * </div>
+ * <div class="pfx-banner -color-violet -size-compact" role="status">
+ *   <h2>Compact violet notification</h2>
+ *   <span>Your changes are available.</span>
+ *   <button class="pfx-close-button" aria-label="Dismiss compact violet notification"></button>
+ * </div>
+ * <div class="pfx-banner -color-sea -size-relaxed" role="status">
+ *   <h2>Sea notification</h2>
+ *   <span>Your changes are available.</span>
+ *   <button class="pfx-close-button" aria-label="Dismiss sea notification"></button>
+ * </div>
+ * <div class="pfx-banner -color-sea -size-compact" role="status">
+ *   <h2>Compact sea notification</h2>
+ *   <span>Your changes are available.</span>
+ *   <div class="button-group">
+ *     <button class="pfx-button">Undo</button>
+ *     <button class="pfx-button">View</button>
+ *   </div>
  * </div>
  * ```
  * @related alert — A non-dismissible, status-coloured counterpart for inline messages.

@@ -98,6 +98,8 @@ test("expands only four supported theme/scheme cases and loads local production 
     ".instui-form-field[data-native-validation] input[data-a11y-trigger][required]",
   );
   expect(page).toContain("control.checkValidity()");
+  const logoPage = renderPage({ ...cases[0]!, record: "logo" });
+  expect(logoPage).toContain('href="assets/logos/canvas-horizontal-color.css"');
   expect(behaviorNames('<div class="instui-tabs"></div>')).toEqual(["tabs"]);
   expect(behaviorNames('<div class="instui-tree-browser" role="tree"></div>')).toEqual([
     "tree-browser",
@@ -203,6 +205,7 @@ test.each(["success", "setup failure", "audit failure"])(
       "formats/css/dist",
       "formats/interactions/dist",
       "plugins/pantoken/custom-components/dist",
+      "plugins/pantoken/logos/dist",
     ]) {
       mkdirSync(join(root, path), { recursive: true });
     }
@@ -236,6 +239,7 @@ test.each(["success", "setup failure", "audit failure"])(
       "components",
       "custom-components",
       "interactions",
+      "logos",
       "tokens",
     ]);
     if (outcome === "success")

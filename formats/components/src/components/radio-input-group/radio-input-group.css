@@ -39,17 +39,26 @@
  * @example -automatica11y
  * ```html
  * <fieldset class="pfx-radio-input-group">
- *   <legend>T-shirt size</legend>
- *   <label class="pfx-radio"><input type="radio" name="shirt-size" checked> Small</label>
- *   <label class="pfx-radio"><input type="radio" name="shirt-size"> Medium</label>
- *   <label class="pfx-radio"><input type="radio" name="shirt-size"> Large</label>
+ *   <legend>Stacked sizes</legend>
+ *   <label class="pfx-radio"><input type="radio" name="audit-shirt-size" value="sm" checked>Small</label>
+ *   <label class="pfx-radio"><input type="radio" name="audit-shirt-size" value="md">Medium</label>
+ *   <label class="pfx-radio"><input type="radio" name="audit-shirt-size" value="lg" disabled>Large unavailable</label>
  * </fieldset>
- * 
+ * <fieldset class="pfx-radio-input-group -layout-columns">
+ *   <legend>Column sizes</legend>
+ *   <label class="pfx-radio"><input type="radio" name="audit-column-size" value="sm" checked>Small</label>
+ *   <label class="pfx-radio"><input type="radio" name="audit-column-size" value="md">Medium</label>
+ * </fieldset>
+ * <fieldset class="pfx-radio-input-group -layout-inline -required">
+ *   <legend>Required inline size</legend>
+ *   <label class="pfx-radio"><input type="radio" name="audit-inline-size" value="sm" required checked>Small</label>
+ *   <label class="pfx-radio"><input type="radio" name="audit-inline-size" value="md" required>Medium</label>
+ * </fieldset>
  * <fieldset class="pfx-radio-input-group -variant-toggle">
- *   <legend>Sweatshirt size</legend>
- *   <label class="pfx-radio -variant-toggle"><input type="radio" name="sweatshirt-size" checked> Small</label>
- *   <label class="pfx-radio -variant-toggle"><input type="radio" name="sweatshirt-size"> Medium</label>
- *   <label class="pfx-radio -variant-toggle"><input type="radio" name="sweatshirt-size"> Large</label>
+ *   <legend>Toggle sizes</legend>
+ *   <label class="pfx-radio -variant-toggle"><input type="radio" name="audit-toggle-size" value="sm" checked>Small</label>
+ *   <label class="pfx-radio -variant-toggle"><input type="radio" name="audit-toggle-size" value="md">Medium</label>
+ *   <label class="pfx-radio -variant-toggle"><input type="radio" name="audit-toggle-size" value="lg" disabled>Large</label>
  * </fieldset>
  * ```
  */

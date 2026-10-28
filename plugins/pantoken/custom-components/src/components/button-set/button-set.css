@@ -48,6 +48,59 @@
  *   <button class="pfx-button" aria-pressed="true" data-a11y-trigger>Week</button>
  *   <button class="pfx-button" aria-pressed="false">Month</button>
  * </div>
+ * <div class="pfx-button-set -color-primary" role="group" aria-label="Primary actions">
+ *   <button class="pfx-button">Save</button><button class="pfx-button" disabled>Send</button>
+ * </div>
+ * <div class="pfx-button-set -color-secondary" role="group" aria-label="Secondary actions">
+ *   <button class="pfx-button">Save</button><button class="pfx-button" aria-disabled="true">Send</button>
+ * </div>
+ * <div class="pfx-button-set -color-tertiary" role="group" aria-label="Tertiary actions">
+ *   <button class="pfx-button">Save</button><button class="pfx-button" disabled>Send</button>
+ * </div>
+ * <div class="pfx-button-set -color-danger" role="group" aria-label="Destructive actions">
+ *   <button class="pfx-button">Delete</button><button class="pfx-button" disabled>Remove</button>
+ * </div>
+ * <div class="pfx-button-set -color-success" role="group" aria-label="Success actions">
+ *   <button class="pfx-button">Approve</button><button class="pfx-button" disabled>Accept</button>
+ * </div>
+ * <div class="pfx-button-set -color-ai" role="group" aria-label="AI actions">
+ *   <button class="pfx-button">Draft</button><button class="pfx-button" disabled>Rewrite</button>
+ * </div>
+ * <div class="pfx-button-set -color-ai-secondary" role="group" aria-label="Secondary AI actions">
+ *   <button class="pfx-button">Draft</button><button class="pfx-button" disabled>Rewrite</button>
+ * </div>
+ * <div style="background: var(--instui-color-background-brand)">
+ *   <div class="pfx-button-set -on-color" role="group" aria-label="On-color actions">
+ *     <button class="pfx-button">Save</button><button class="pfx-button" disabled>Send</button>
+ *   </div>
+ * </div>
+ * <div class="pfx-button-set -size-sm" role="group" aria-label="Small actions">
+ *   <button class="pfx-button">Day</button><button class="pfx-button">Week</button>
+ * </div>
+ * <div class="pfx-button-set -size-md" role="group" aria-label="Medium actions">
+ *   <button class="pfx-button">Day</button><button class="pfx-button">Week</button>
+ * </div>
+ * <div class="pfx-button-set -size-lg" role="group" aria-label="Large actions">
+ *   <button class="pfx-button">Day</button><button class="pfx-button">Week</button>
+ * </div>
+ * <div class="pfx-button-set -shape-circle" role="group" aria-label="Circular actions">
+ *   <button class="pfx-button -icon-plus" aria-label="Add"></button><button class="pfx-button -icon-x" aria-label="Remove"></button>
+ * </div>
+ * <div class="pfx-button-set -shape-square" role="group" aria-label="Square actions">
+ *   <button class="pfx-button -icon-plus" aria-label="Add"></button><button class="pfx-button -icon-x" aria-label="Remove"></button>
+ * </div>
+ * <div class="pfx-button-set -condensed" role="group" aria-label="Condensed actions">
+ *   <button class="pfx-button">Day</button><button class="pfx-button">Week</button>
+ * </div>
+ * <div class="pfx-button-set -without-background" role="group" aria-label="Unfilled actions">
+ *   <button class="pfx-button">Day</button><button class="pfx-button">Week</button>
+ * </div>
+ * <div class="pfx-button-set -without-border" role="group" aria-label="Borderless actions">
+ *   <button class="pfx-button">Day</button><button class="pfx-button">Week</button>
+ * </div>
+ * <div class="pfx-button-set -display-block" role="group" aria-label="Full-width actions">
+ *   <button class="pfx-button">Day</button><button class="pfx-button">Week</button>
+ * </div>
  * ```
  * ### Per-button override
  * ```html

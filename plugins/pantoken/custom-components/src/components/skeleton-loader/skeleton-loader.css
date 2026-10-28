@@ -41,12 +41,21 @@
  * @example -automatica11y -nocard
  * ```html
  * <section aria-label="Profile details" aria-busy="true" data-a11y-root>
- *   <div class="pfx-skeleton-loader -type-text" aria-hidden="true">
+ *   <div class="pfx-skeleton-loader -type-text -size-md" aria-hidden="true">
  *     <div class="skeleton-row"><div class="shape"></div></div>
  *     <div class="skeleton-row"><div class="shape"></div></div>
  *   </div>
+ *   <div class="pfx-skeleton-loader -type-text -size-xxs" aria-hidden="true"><div class="shape"></div></div>
+ *   <div class="pfx-skeleton-loader -type-text -size-xs" aria-hidden="true"><div class="shape"></div></div>
+ *   <div class="pfx-skeleton-loader -type-text -size-sm" aria-hidden="true"><div class="shape"></div></div>
+ *   <div class="pfx-skeleton-loader -type-text -size-lg" aria-hidden="true"><div class="shape"></div></div>
+ *   <div class="pfx-skeleton-loader -type-text -size-xl" aria-hidden="true"><div class="shape"></div></div>
+ *   <div class="pfx-skeleton-loader -type-text -size-xxl" aria-hidden="true"><div class="shape"></div></div>
+ *   <div class="pfx-skeleton-loader -type-avatar" aria-hidden="true"><div class="shape"></div></div>
+ *   <div class="pfx-skeleton-loader -type-image" aria-hidden="true"><div class="shape"></div></div>
  * </section>
  * <p role="status" aria-live="polite"></p>
+ * <p role="alert"></p>
  * ```
  */
 @property --pantoken-skeleton-sweep {

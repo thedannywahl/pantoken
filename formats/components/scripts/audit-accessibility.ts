@@ -175,6 +175,7 @@ export function renderPage(item: AuditCase): string {
     "components/utilities.css",
     "components/icons.css",
     "components/fonts.css",
+    ...(item.record === "logo" ? ["logos/canvas-horizontal-color.css"] : []),
   ];
   return `<!doctype html>
 <html lang="en" data-pantoken-theme="${item.theme}" data-pantoken-scheme="${item.scheme}" style="color-scheme:${item.scheme}">
@@ -684,6 +685,7 @@ export async function runPageAudits(
     ["formats/css/dist", "tokens"],
     ["formats/interactions/dist", "interactions"],
     ["plugins/pantoken/custom-components/dist", "custom-components"],
+    ["plugins/pantoken/logos/dist", "logos"],
   ])
     cpSync(join(root, source), join(assets, destination), { recursive: true });
   for (const item of cases) writeFileSync(join(out, "pages", `${item.id}.html`), renderPage(item));
