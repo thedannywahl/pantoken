@@ -1,0 +1,7 @@
+I'm not sure if this is a pantoken or a cssdoc concern. in the "tokens consumed" table for tokens that are `color-mix()` the 'Type' column is blank "—" but MDN declares it as `<color-mix()>`
+and border-style is the same, but MDN says `<line-style>`
+
+---
+
+I'm not sure if this is a pantoken or a cssdoc concern. in the "tokens consumed" table for tokens that are `color-mix()` the 'Type' column is blank "—" but MDN declares it as `<color-mix()>`
+and border-style is the same, but MDN says `<line-style>`

@@ -3,8 +3,12 @@
   "checkpoint_id": "01M61N8EF6SSG3QB9JYB5HJM6Y",
   "strategy": "manual-commit",
   "branch": "add-automatica11y",
-  "checkpoints_count": 1,
+  "checkpoints_count": 2,
   "files_touched": [
+    ".changeset/calm-deserts-tease.md",
+    "docs/conventions/build-and-docs.md",
+    "docs/scripts/build-css-api.test.ts",
+    "docs/scripts/build-css-api.ts",
     "l10n/docs.api.pot"
   ],
   "sessions": [
@@ -14,6 +18,13 @@
       "compact_transcript": "/0/transcript.jsonl",
       "content_hash": "/0/content_hash.txt",
       "prompt": "/0/prompt.txt"
+    },
+    {
+      "metadata": "/1/metadata.json",
+      "transcript": "/1/full.jsonl",
+      "compact_transcript": "/1/transcript.jsonl",
+      "content_hash": "/1/content_hash.txt",
+      "prompt": "/1/prompt.txt"
     }
   ],
   "token_usage": {
@@ -24,7 +35,7 @@
     "api_call_count": 0
   },
   "redaction": {
-    "replacements": 380,
+    "replacements": 5116,
     "layers": {
       "betterleaks": 0,
       "connection_string": 0,
@@ -32,7 +43,7 @@
       "credential_value": 0,
       "credentialed_uri": 0,
       "custom": 0,
-      "entropy": 1358,
+      "entropy": 23710,
       "goredact": 0,
       "key_context": 0,
       "pii": 0,

@@ -1,0 +1,54 @@
+{
+  "cli_version": "0.12.2",
+  "checkpoint_id": "01M61N8EF6SSG3QB9JYB5HJM6Y",
+  "session_id": "5eeb9725-a087-4565-a654-52c3fb169bb6",
+  "strategy": "manual-commit",
+  "created_at": "2026-10-28T16:25:00.723851Z",
+  "branch": "add-automatica11y",
+  "checkpoints_count": 1,
+  "save_step_count": 1,
+  "files_touched": [
+    ".changeset/calm-deserts-tease.md",
+    "docs/conventions/build-and-docs.md",
+    "docs/scripts/build-css-api.test.ts",
+    "docs/scripts/build-css-api.ts",
+    "l10n/docs.api.pot"
+  ],
+  "agent": "Copilot CLI",
+  "model": "gpt-6.1-sol",
+  "turn_id": "1df09787f270",
+  "compact_transcript_start": 0,
+  "token_usage": {
+    "input_tokens": 0,
+    "cache_creation_tokens": 0,
+    "cache_read_tokens": 0,
+    "output_tokens": 0,
+    "api_call_count": 0
+  },
+  "redaction": {
+    "replacements": 4736,
+    "layers": {
+      "betterleaks": 0,
+      "connection_string": 0,
+      "credential_key": 0,
+      "credential_value": 0,
+      "credentialed_uri": 0,
+      "custom": 0,
+      "entropy": 22352,
+      "goredact": 0,
+      "key_context": 0,
+      "pii": 0,
+      "provider_token": 0,
+      "shell_stdin": 0
+    },
+    "custom_rules_active": 2,
+    "pii": {
+      "EMAIL": 0,
+      "IP": 0,
+      "PHONE": 0
+    }
+  },
+  "session_metrics": {
+    "turn_count": 1
+  }
+}
