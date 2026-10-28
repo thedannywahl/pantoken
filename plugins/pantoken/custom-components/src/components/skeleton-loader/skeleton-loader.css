@@ -40,7 +40,8 @@
  * ```
  * @example -automatica11y -nocard
  * ```html
- * <section aria-label="Profile details" aria-busy="true" data-a11y-root>
+ * <div class="pfx-skeleton-loading">
+ * <section aria-label="Profile details" aria-busy="true" data-skeleton-region data-a11y-root>
  *   <div class="pfx-skeleton-loader -type-text -size-md" aria-hidden="true">
  *     <div class="skeleton-row"><div class="shape"></div></div>
  *     <div class="skeleton-row"><div class="shape"></div></div>
@@ -54,8 +55,9 @@
  *   <div class="pfx-skeleton-loader -type-avatar" aria-hidden="true"><div class="shape"></div></div>
  *   <div class="pfx-skeleton-loader -type-image" aria-hidden="true"><div class="shape"></div></div>
  * </section>
- * <p role="status" aria-live="polite"></p>
- * <p role="alert"></p>
+ * <p role="status" aria-live="polite" data-skeleton-status></p>
+ * <p role="alert" data-skeleton-error></p>
+ * </div>
  * ```
  */
 @property --pantoken-skeleton-sweep {

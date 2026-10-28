@@ -10,10 +10,10 @@
  * ```
  * @example -automatica11y
  * ```html
- * <a class="pfx-link" href="#settings" data-a11y-root data-a11y-trigger>
- *   <span class="pfx-icon -icon-settings" aria-hidden="true"></span>
+ * <button data-a11y-root data-a11y-trigger>
+ *   <span aria-hidden="true">+</span>
  *   <span class="pfx-screen-reader-content">Open settings</span>
- * </a>
+ * </button>
  * ```
  */
 @scope (.pfx-screen-reader-content) {

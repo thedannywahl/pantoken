@@ -34,7 +34,7 @@ test.each([...records, ...PLUGIN_AUDIT_RECORDS])(
     expect(entry, record.name).toBeDefined();
     const examples = entry!.examples;
     const selected = resolveExampleTargets(examples).automatica11y;
-    expect(selected.length, record.name).toBeGreaterThan(0);
+    expect(selected.length, record.name).toBe(1);
     for (const index of selected) {
       const example = examples[index]!;
       const fences = [...example.matchAll(/```html[^\n]*\n([\s\S]*?)```/gu)];
@@ -56,6 +56,28 @@ test.each([...records, ...PLUGIN_AUDIT_RECORDS])(
             ).not.toBeNull();
           }
         }
+        for (const control of window.document.querySelectorAll(
+          'input:not([type="hidden"]), select, textarea',
+        )) {
+          const label = [...window.document.querySelectorAll("label")].some(
+            (element) =>
+              element.contains(control) || (control.id && element.htmlFor === control.id),
+          );
+          expect(
+            Boolean(
+              label ||
+              control.getAttribute("aria-label") ||
+              control.getAttribute("aria-labelledby"),
+            ),
+            `${record.name}: unnamed ${control.outerHTML}`,
+          ).toBe(true);
+        }
+        expect(
+          window.document.querySelector(
+            'input[type="checkbox"][readonly], input[type="radio"][readonly], select[readonly]',
+          ),
+          `${record.name}: readonly is not supported on checkboxes, radios, or selects`,
+        ).toBeNull();
       }
       if (record.name.startsWith("table.")) {
         expect(window.document.querySelector("table.instui-table"), record.name).not.toBeNull();
@@ -65,26 +87,37 @@ test.each([...records, ...PLUGIN_AUDIT_RECORDS])(
   },
 );
 
-test.each(
-  PLUGIN_AUDIT_RECORDS.filter((record) =>
-    ["banner", "button-set", "segmented-control", "skeleton-loader"].includes(record.name),
-  ),
-)("covers every canonical visual modifier for the plugin $name", (record) => {
-  const entry = parseCssDocs(record.rules("instui-")).find((item) => item.name === record.name)!;
-  const markup = resolveExampleTargets(entry.examples)
-    .automatica11y.map((index) => exampleHtml(entry.examples[index]!))
-    .join("\n");
-  const window = new Window();
-  window.document.body.innerHTML = markup;
-  const classes = new Set(
-    [...window.document.querySelectorAll("[class]")].flatMap((element) => [...element.classList]),
-  );
-  for (const modifier of entry.modifiers) {
-    if (modifier.pattern || modifier.alias) continue;
-    expect(classes.has(modifier.name), `${record.name}: ${modifier.name}`).toBe(true);
-  }
-  void window.happyDOM.abort();
-});
+test.each([...records, ...PLUGIN_AUDIT_RECORDS])(
+  "covers canonical color, size, and state modifiers for $name",
+  (record) => {
+    const entry = parseCssDocs(record.rules("instui-")).find((item) => item.name === record.name)!;
+    const markup = resolveExampleTargets(entry.examples)
+      .automatica11y.map((index) => exampleHtml(entry.examples[index]!))
+      .join("\n");
+    const window = new Window();
+    window.document.body.innerHTML = markup;
+    const classes = new Set(
+      [...window.document.querySelectorAll("[class]")].flatMap((element) => [...element.classList]),
+    );
+    for (const modifier of entry.modifiers) {
+      if (
+        modifier.pattern ||
+        modifier.alias ||
+        modifier.deprecated ||
+        modifier.description?.includes("Long-form alias of")
+      )
+        continue;
+      if (
+        !/^-(?:(?:color|size|variant|type|shape|focus-color|focus-position)-|(?:disabled|readonly|invalid|selected|active|open|on-color|toggle|condensed|focus-within|without-focus-animation)$)/u.test(
+          modifier.name,
+        )
+      )
+        continue;
+      expect(classes.has(modifier.name), `${record.name}: ${modifier.name}`).toBe(true);
+    }
+    void window.happyDOM.abort();
+  },
+);
 
 test.each(COMPONENTS.filter((record) => record.kind === "component" && !record.name.includes(".")))(
   "keeps documentation and Canvas examples available for $name",

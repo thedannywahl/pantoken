@@ -51,7 +51,15 @@ const FOCUS_DOC = css`/**
  * <button class="instui-button -focus-color-danger">Delete</button>
  * @example -automatica11y
  * \`\`\`html
- * <button class="instui-button -focus-color-danger" data-a11y-root data-a11y-trigger>Delete</button>
+ * <button data-a11y-root data-a11y-trigger>Default focus</button>
+ * <button class="-focus-color-danger">Danger focus</button>
+ * <button class="-focus-color-success">Success focus</button>
+ * <div style="background: var(--instui-color-background-brand)">
+ *   <button class="-focus-color-inverse">Inverse focus</button>
+ * </div>
+ * <button class="-focus-position-inset">Inset focus</button>
+ * <div class="-focus-within"><button>Focus within</button></div>
+ * <button class="-without-focus-animation">Focus without animation</button>
  * \`\`\`
  * @demo self:focus-outline
  */`;

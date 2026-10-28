@@ -44,11 +44,16 @@
  * ```html
  * <fieldset class="pfx-segmented-control" aria-label="Course view" data-a11y-root>
  *   <div class="viewport">
+ *     <button class="overflow-start" aria-label="Scroll to previous views" hidden></button>
  *     <div class="track">
  *       <label><input type="radio" name="course-view" value="overview" checked data-a11y-trigger>Overview</label>
  *       <label><input type="radio" name="course-view" value="grades">Grades</label>
  *       <label><input type="radio" name="course-view" value="people" disabled>People</label>
+ *       <label><input type="radio" name="course-view" value="assignments">Assignments</label>
+ *       <label><input type="radio" name="course-view" value="discussions">Discussions</label>
+ *       <label><input type="radio" name="course-view" value="settings">Settings</label>
  *     </div>
+ *     <button class="overflow-end" aria-label="Scroll to next views" hidden></button>
  *   </div>
  * </fieldset>
  * <fieldset class="pfx-segmented-control -size-sm" aria-label="Small course view">

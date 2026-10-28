@@ -109,6 +109,10 @@ test("expands only four supported theme/scheme cases and loads local production 
   );
   expect(behaviorNames('<div class="instui-menu" data-menu-navigation></div>')).toEqual(["menu"]);
   expect(behaviorNames("<p>instui-tabs</p>")).toEqual([]);
+  expect(behaviorNames('<fieldset class="instui-segmented-control"></fieldset>')).toEqual([
+    "segmented-control",
+  ]);
+  expect(behaviorNames('<div class="instui-skeleton-loader"></div>')).toEqual(["skeleton-loader"]);
 });
 test("checks exact completed coverage without interpreting violations as failures", () => {
   expect(

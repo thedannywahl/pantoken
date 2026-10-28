@@ -139,6 +139,19 @@ Every record in the component registry, including member records, has an explici
 member's required parent markup in its example, and give controls real labels and ID relationships. Include only markup the component owns or requires: a bare container audits as an empty container with its accessible name, so findings on slotted content don't get attributed to it.
 Use fenced HTML so audience flags remain metadata, not visible page content.
 
+Keep one audit example per record, with distinct visual variants together: canonical colors, sizes,
+and supported states. Don't duplicate deprecated aliases or build a Cartesian product of every
+modifier. Include meaningful labels, selected and unselected choices, and native `disabled`,
+`readonly`, or `aria-invalid` semantics where the component supports them. Use the intended surface
+for inverse/on-color treatments, without overriding the component's tested colors. Keep decorative
+content hidden from assistive technology and preserve required parent/member structures.
+
+Stack independent cases in normal document flow instead of forcing a wide row. Expanded dialog
+variants can use `open` so they remain measurable without one modal hiding the others. Static state
+markup is not evidence that hover, keyboard interaction, focus movement, or announcements work:
+those still need interaction checks and manual testing. Don't remove a supported variant or add a
+fixture-only CSS fix to make the audit pass.
+
 Run `vp run audit:components` from the repository root. It builds local styles and behavior bundles,
 then tests each example separately in all three themes, light and dark. Reports and the coverage
 inventory live under the gitignored `a11y-report/<run>/` directory; open `index.md` first.

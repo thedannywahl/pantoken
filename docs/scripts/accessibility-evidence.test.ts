@@ -327,7 +327,19 @@ test("merging a partial run replaces only its records and drops removed ones", (
 });
 
 test("selector references in details render as code, numbers and abbreviations don't", () => {
-  const section = accessibilitySection("avatar", loadAccessibilitySnapshot(snapshotJson));
+  const snapshot = importAccessibilityRun(fixture().directory);
+  snapshot.records.button![0]!.details = [
+    {
+      tier: "conditions",
+      name: "text-spacing",
+      criteria: ["1.4.12"],
+      counts: { fail: 1 },
+      notes: ["Text in span.name gets cut off at 1.5 line height, e.g. after changing spacing."],
+      elements: [],
+    },
+  ];
+  const section = accessibilitySection("button", snapshot);
   expect(section).toContain("<code>span.name</code>");
+  expect(section).toContain("1.5 line height, e.g.");
   expect(section).not.toMatch(/<code>\d/u);
 });
