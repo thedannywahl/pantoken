@@ -65,7 +65,7 @@ separate header, so it follows the authored `@accessibility` (or `@a11y`) guidan
 one table per tier (conditions, interactions, computed styles) plus a simulated screen-reader
 table. Rows are checks (name, then `WCAG 2.2` and the success criteria on a second line; the name
 may wrap, pills never do); columns are the supported theme/scheme
-pairs, and each cell is an `instui-pill` with an icon (Pass, Fail, Not applicable, or Manual review needed; missing or undetermined results always show the last so they're never read as passes).
+pairs, and each cell is an `instui-pill` with an icon (Pass, Fail, Not applicable, or Manual review needed; missing or undetermined results always show the last so they're never read as passes). A check that's Not applicable in every column is omitted, and so is a table with no remaining rows.
 A cell takes the worst result across the page and npm evidence for that column. Every record
 needs that tag; a record without one still gets a bare **Accessibility** section, but a test fails.
 The docs build reads a checked-in snapshot at `docs/public/accessibility/results.json`; it doesn't

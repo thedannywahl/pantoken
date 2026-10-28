@@ -402,19 +402,18 @@ function tierTable(
         ? `<span class="pantoken-a11y-criteria">WCAG 2.2 ${[...new Set(criteria)].map(cell).join(", ")}</span>`
         : ""
     }`;
-    const cells = AUDIT_MATRIX.map((item) =>
-      pill(
-        worst(
-          rows
-            .filter((row) => row.theme === item.theme && row.scheme === item.scheme)
-            .flatMap((row) => row.details.filter((d) => d.tier === tier && d.name === name))
-            .map((detail) => detail.counts),
-        ),
+    const statuses = AUDIT_MATRIX.map((item) =>
+      worst(
+        rows
+          .filter((row) => row.theme === item.theme && row.scheme === item.scheme)
+          .flatMap((row) => row.details.filter((d) => d.tier === tier && d.name === name))
+          .map((detail) => detail.counts),
       ),
     );
-    out.push(`| ${heading} | ${cells.join(" | ")} |`);
+    if (statuses.every((status) => status === "na")) continue;
+    out.push(`| ${heading} | ${statuses.map(pill).join(" | ")} |`);
   }
-  return [...out, ""];
+  return out.length > 2 ? [...out, ""] : [];
 }
 
 function screenReaderTable(rows: readonly AccessibilityEvidence[]): string[] {
