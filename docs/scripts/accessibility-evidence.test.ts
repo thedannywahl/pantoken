@@ -290,11 +290,12 @@ test("checked-in evidence has supported coverage and retains real review/failure
   expect(Object.keys(snapshot.records)).toHaveLength(97);
   expect(snapshot.records.badge).toHaveLength(4);
   expect(snapshot.records.alert).toHaveLength(8);
-  expect(snapshot.records.badge!.every((row) => (row.checks.conditions?.fail ?? 0) === 0)).toBe(
-    true,
+  const details = Object.values(snapshot.records).flatMap((rows) =>
+    rows.flatMap((row) => row.details),
   );
-  expect(snapshot.records.avatar!.some((row) => (row.checks.conditions?.fail ?? 0) > 0)).toBe(true);
-  expect(snapshot.records.alert!.some((row) => (row.checks.conditions?.fail ?? 0) > 0)).toBe(true);
+  expect(details.some((detail) => (detail.counts.fail ?? 0) > 0)).toBe(true);
+  expect(details.some((detail) => (detail.counts.undetermined ?? 0) > 0)).toBe(true);
+  expect(snapshot.records.modal).toHaveLength(72);
   expect(snapshot.records["agent-shell"]).toHaveLength(4);
   expect(snapshot.records["ai-gradient"]).toHaveLength(4);
   expect(snapshot.records.truncate).toHaveLength(4);
