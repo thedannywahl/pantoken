@@ -1,0 +1,5 @@
+CI on pr 239 is failing, we need to investigate and remediate with incremental conventional commits. prefer remediating over suppressing.  Ignore any failures around translations I'll handle those separately.
+
+---
+
+CI on pr 239 is failing, we need to investigate and remediate with incremental conventional commits. prefer remediating over suppressing.  Ignore any failures around translations I'll handle those separately.
