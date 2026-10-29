@@ -147,10 +147,11 @@ export default defineConfig({
       // gates fan out concurrently. `command: "true"` makes it a pure aggregator whose only job is to
       // pull its `dependsOn` (the root `ready` script is `vp run ready:all` — a task and a package.json
       // script may not share a name). Everything that needs generated output funnels through `build:all`,
-      // the single generation path, so no two nodes run the component codegen at once (a `vp run -r build`
-      // and a bare `@pantoken/components#generate` writing the same `generated/` dir would race).
+      // the single generation path, so no two nodes run the component codegen at once. Serialize the
+      // recursive build as well: concurrently replayed task outputs can invalidate another package's
+      // workspace dependency while its generator is importing it.
       "build:all": {
-        command: "vp run -r build",
+        command: "vp run -r --concurrency-limit 1 build",
       },
       "check:all": {
         command: "node docs/scripts/site-themes.ts && vp check",

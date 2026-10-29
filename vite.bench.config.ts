@@ -2,7 +2,7 @@
 // never touches the ordinary `vp test` / `vp check` passes. Run it explicitly:
 // `vp test bench --run --config vite.bench.config.ts --dir bench` (CI wraps that in the CodSpeed action).
 // The benchmarks import package sources directly, exactly as the unit tests do, but the `@pantoken/*`
-// specifiers those sources use resolve to built `dist/`, so `vp run -r build` must run first.
+// specifiers those sources use resolve to built `dist/`, so `vp run -r --concurrency-limit 1 build` must run first.
 import { defineConfig } from "vite-plus";
 import codspeedPlugin from "@codspeed/vitest-plugin";
 

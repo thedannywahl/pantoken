@@ -6,7 +6,7 @@
   "scripts": {
     "ready": "vp run ready:all",
     "audit:components": "vp run @pantoken/components#audit:accessibility",
-    "generate": "vp run -r build",
+    "generate": "vp run -r --concurrency-limit 1 build",
     "validate:generated": "vp run generate && vp run validate:generated:only",
     "docs:dev": "vp run @pantoken/demo#build && vp run @pantoken/docs#docs:dev",
     "docs:build": "vp run @pantoken/docs#docs:build",

@@ -4,7 +4,7 @@ import { expect, test } from "vite-plus/test";
 
 // The localization runtime ships to the browser (see CLAUDE.md) — the built bundle must never reference
 // a `node:*` builtin, even transitively through a dependency like `messageformat`. Requires
-// `vp pack` (or a full `vp run -r build`, as CI always does) to have run first; skips locally with
+// `vp pack` (or a full `vp run -r --concurrency-limit 1 build`, as CI always does) to have run first; skips locally with
 // a clear reason rather than a confusing ENOENT if dist/ hasn't been built yet.
 test("the built dist/index.mjs has no node:* imports", () => {
   const distPath = join(import.meta.dirname, "..", "dist", "index.mjs");

@@ -17,7 +17,7 @@ test("restores the complete workspace build graph before running an uncached aud
     dependsOn: ["pantoken-root#build:all"],
   });
   expect(rootConfig.run?.tasks?.["build:all"]).toMatchObject({
-    command: "vp run -r build",
+    command: "vp run -r --concurrency-limit 1 build",
   });
 });
 
@@ -51,11 +51,12 @@ test("retains evidence and summaries even after an audit failure", () => {
   expect(upload.with.path).toBe("a11y-report/");
   expect(summary.if).toBe("always()");
   expect(summary.run).toContain("not a clean audit");
+  expect(summary.run).toContain("steps.audit.outcome");
+  expect(summary.run).toContain("steps.evidence.outcome");
   expect(summary.run).toContain("GITHUB_STEP_SUMMARY");
-  expect(job.steps.some((step: { run?: string }) => step.run === "vp run audit:components")).toBe(
-    true,
-  );
   expect(
-    job.steps.some((step: { run?: string }) => step.run?.includes("doctor --install-browser")),
+    job.steps.some(
+      (step: { run?: string }) => step.run === "vp run @pantoken/docs#docs:accessibility",
+    ),
   ).toBe(true);
 });

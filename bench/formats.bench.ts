@@ -1,5 +1,5 @@
 // Benchmarks for the emitters that turn the token IR into shippable files. These run on every
-// `vp run -r build` and again for every theme variant, so they are the bulk of generation time:
+// `vp run -r --concurrency-limit 1 build` and again for every theme variant, so they are the bulk of generation time:
 // `toCss` walks the IR twice (typed `@property` registrations plus scoped declarations), while
 // `toScss` and `toDtcg` each flatten the whole reference graph before emitting.
 import { test, describe } from "vite-plus/test";

@@ -39,7 +39,7 @@ vp install
    sources whose `@pantoken/*` specifiers resolve to built `dist/`:
 
    ```sh
-   vp run -r build
+   vp run -r --concurrency-limit 1 build
    vp test --run --config vite.bench.config.ts
    ```
 

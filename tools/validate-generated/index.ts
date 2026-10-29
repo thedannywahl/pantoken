@@ -1,5 +1,5 @@
 /**
- * Validate pantoken's generated output. Run after the workspace is built (`vp run -r build`), so
+ * Validate pantoken's generated output. Run after the workspace is built (`vp run -r --concurrency-limit 1 build`), so
  * every package's `generate`/`embed` step has already written its `generated/` dir. This is the
  * pantoken analog of a `validateTokens` drift gate: it fails if any generator produced nothing, if
  * the `pantoken` CLI can't emit a supported target, if a generated stylesheet references an
