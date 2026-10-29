@@ -9222,8 +9222,8 @@
         "theme": "rebrand",
         "scheme": "light",
         "source": "page",
-        "run": "2026-10-29T03-15-35.218Z",
-        "date": "2026-10-29T03:40:34.657Z",
+        "run": "2026-10-29T17-08-32.858Z",
+        "date": "2026-10-29T17:09:03.165Z",
         "tools": {
           "node": "26.13.0",
           "automatica11y": "0.11.0",
@@ -9232,9 +9232,9 @@
           "playwright-core": "1.64.1",
           "esbuild": "0.28.2",
           "guidepup-vsr": "0.33.0",
-          "chromium": "156.0.8078.47"
+          "chromium": "156.0.8078.48"
         },
-        "digest": "5b3f80cbeddda396a9baf2627330f488b2e9da052d84ff6a5186418ef61724f2",
+        "digest": "7109368af833f94994627b580e20cb63f7dfce098e5dc0a1704c494fbd233fbb",
         "warnings": [],
         "notices": [],
         "configurations": 1,
@@ -9250,34 +9250,51 @@
           }
         },
         "axe": {
-          "violations": 0,
+          "violations": 1,
           "reviews": 1,
           "reviewRules": {
             "color-contrast": 1
           },
-          "violationRules": {}
+          "violationRules": {
+            "target-size": 1
+          }
         },
         "ibm": {
           "violations": 0,
-          "reviews": 6,
+          "reviews": 7,
           "reviewRules": {
             "html_skipnav_exists": 1,
             "img_alt_background": 1,
             "input_label_visible": 1,
             "style_color_misuse": 1,
             "style_focus_visible": 1,
-            "style_highcontrast_visible": 1
+            "style_highcontrast_visible": 1,
+            "target_spacing_sufficient": 1
           },
           "violationRules": {}
         },
         "checks": {
           "conditions": {
-            "pass": 4,
-            "not-applicable": 2,
-            "fail": 2
+            "not-applicable": 3,
+            "fail": 2,
+            "pass": 3
           }
         },
         "details": [
+          {
+            "tier": "rules",
+            "name": "target-size",
+            "criteria": ["2.5.8"],
+            "counts": {
+              "fail": 1
+            },
+            "notes": ["All touch targets must be 24px large, or leave sufficient space"],
+            "elements": [
+              ".-color-primary[aria-label=\"Save actions\"][role=\"group\"]:nth-child(19) > .-wi...",
+              ".-color-primary[aria-label=\"Save actions\"][role=\"group\"]:nth-child(22) > .-wi...",
+              "button[aria-label=\"More add actions\"]"
+            ]
+          },
           {
             "tier": "rules",
             "name": "color-contrast",
@@ -9296,7 +9313,7 @@
             "name": "reduced-motion-respected",
             "criteria": ["2.3.3", "2.2.2"],
             "counts": {
-              "pass": 1
+              "not-applicable": 1
             },
             "notes": [],
             "elements": []
@@ -9397,8 +9414,8 @@
         "theme": "rebrand",
         "scheme": "dark",
         "source": "page",
-        "run": "2026-10-29T03-15-35.218Z",
-        "date": "2026-10-29T03:40:41.948Z",
+        "run": "2026-10-29T17-08-32.858Z",
+        "date": "2026-10-29T17:09:02.819Z",
         "tools": {
           "node": "26.13.0",
           "automatica11y": "0.11.0",
@@ -9407,9 +9424,9 @@
           "playwright-core": "1.64.1",
           "esbuild": "0.28.2",
           "guidepup-vsr": "0.33.0",
-          "chromium": "156.0.8078.47"
+          "chromium": "156.0.8078.48"
         },
-        "digest": "28ace2ac65235011799f9d9e1cfb9eb2c40a6bb565d04f44e7b2c7d697c36b14",
+        "digest": "d9c612321e6d52c153bec1476b4e3aab073ab7cf42193e75ff296b04728c8d72",
         "warnings": [],
         "notices": [],
         "configurations": 1,
@@ -9425,34 +9442,51 @@
           }
         },
         "axe": {
-          "violations": 0,
+          "violations": 1,
           "reviews": 1,
           "reviewRules": {
             "color-contrast": 1
           },
-          "violationRules": {}
+          "violationRules": {
+            "target-size": 1
+          }
         },
         "ibm": {
           "violations": 0,
-          "reviews": 6,
+          "reviews": 7,
           "reviewRules": {
             "html_skipnav_exists": 1,
             "img_alt_background": 1,
             "input_label_visible": 1,
             "style_color_misuse": 1,
             "style_focus_visible": 1,
-            "style_highcontrast_visible": 1
+            "style_highcontrast_visible": 1,
+            "target_spacing_sufficient": 1
           },
           "violationRules": {}
         },
         "checks": {
           "conditions": {
-            "not-applicable": 3,
-            "fail": 2,
-            "pass": 3
+            "pass": 4,
+            "not-applicable": 2,
+            "fail": 2
           }
         },
         "details": [
+          {
+            "tier": "rules",
+            "name": "target-size",
+            "criteria": ["2.5.8"],
+            "counts": {
+              "fail": 1
+            },
+            "notes": ["All touch targets must be 24px large, or leave sufficient space"],
+            "elements": [
+              ".-color-primary[aria-label=\"Save actions\"][role=\"group\"]:nth-child(19) > .-wi...",
+              ".-color-primary[aria-label=\"Save actions\"][role=\"group\"]:nth-child(22) > .-wi...",
+              "button[aria-label=\"More add actions\"]"
+            ]
+          },
           {
             "tier": "rules",
             "name": "color-contrast",
@@ -9471,7 +9505,7 @@
             "name": "reduced-motion-respected",
             "criteria": ["2.3.3", "2.2.2"],
             "counts": {
-              "not-applicable": 1
+              "pass": 1
             },
             "notes": [],
             "elements": []
@@ -9572,8 +9606,8 @@
         "theme": "canvas",
         "scheme": "light",
         "source": "page",
-        "run": "2026-10-29T03-15-35.218Z",
-        "date": "2026-10-29T04:04:27.012Z",
+        "run": "2026-10-29T17-08-32.858Z",
+        "date": "2026-10-29T17:09:24.796Z",
         "tools": {
           "node": "26.13.0",
           "automatica11y": "0.11.0",
@@ -9582,9 +9616,9 @@
           "playwright-core": "1.64.1",
           "esbuild": "0.28.2",
           "guidepup-vsr": "0.33.0",
-          "chromium": "156.0.8078.47"
+          "chromium": "156.0.8078.48"
         },
-        "digest": "f462387815fc61fe780cdd0cad8e71f2826fb775ea47ea4e6fdc5e25105946c7",
+        "digest": "145562187f529e70cf504fefe7bd96c8ed25beff2c65c8d90a4c4d5dd2360d83",
         "warnings": [],
         "notices": [],
         "configurations": 1,
@@ -9600,23 +9634,26 @@
           }
         },
         "axe": {
-          "violations": 0,
+          "violations": 1,
           "reviews": 1,
           "reviewRules": {
             "color-contrast": 1
           },
-          "violationRules": {}
+          "violationRules": {
+            "target-size": 1
+          }
         },
         "ibm": {
           "violations": 0,
-          "reviews": 6,
+          "reviews": 7,
           "reviewRules": {
             "html_skipnav_exists": 1,
             "img_alt_background": 1,
             "input_label_visible": 1,
             "style_color_misuse": 1,
             "style_focus_visible": 1,
-            "style_highcontrast_visible": 1
+            "style_highcontrast_visible": 1,
+            "target_spacing_sufficient": 1
           },
           "violationRules": {}
         },
@@ -9628,6 +9665,20 @@
           }
         },
         "details": [
+          {
+            "tier": "rules",
+            "name": "target-size",
+            "criteria": ["2.5.8"],
+            "counts": {
+              "fail": 1
+            },
+            "notes": ["All touch targets must be 24px large, or leave sufficient space"],
+            "elements": [
+              ".-color-primary[aria-label=\"Save actions\"][role=\"group\"]:nth-child(19) > .-wi...",
+              ".-color-primary[aria-label=\"Save actions\"][role=\"group\"]:nth-child(22) > .-wi...",
+              "button[aria-label=\"More add actions\"]"
+            ]
+          },
           {
             "tier": "rules",
             "name": "color-contrast",
@@ -9747,8 +9798,8 @@
         "theme": "canvasHighContrast",
         "scheme": "light",
         "source": "page",
-        "run": "2026-10-29T03-15-35.218Z",
-        "date": "2026-10-29T04:04:31.194Z",
+        "run": "2026-10-29T17-08-32.858Z",
+        "date": "2026-10-29T17:09:25.233Z",
         "tools": {
           "node": "26.13.0",
           "automatica11y": "0.11.0",
@@ -9757,9 +9808,9 @@
           "playwright-core": "1.64.1",
           "esbuild": "0.28.2",
           "guidepup-vsr": "0.33.0",
-          "chromium": "156.0.8078.47"
+          "chromium": "156.0.8078.48"
         },
-        "digest": "38be5ce5dc32d24aaac0a8fb57c35ecaeb27e56d475d105cb3cb6e5fbc45e484",
+        "digest": "937fda2b4ecf3562634ad452ed85db1a21dcf632cf08e45cc2393953db0f54df",
         "warnings": [],
         "notices": [],
         "configurations": 1,
@@ -9775,23 +9826,26 @@
           }
         },
         "axe": {
-          "violations": 0,
+          "violations": 1,
           "reviews": 1,
           "reviewRules": {
             "color-contrast": 1
           },
-          "violationRules": {}
+          "violationRules": {
+            "target-size": 1
+          }
         },
         "ibm": {
           "violations": 0,
-          "reviews": 6,
+          "reviews": 7,
           "reviewRules": {
             "html_skipnav_exists": 1,
             "img_alt_background": 1,
             "input_label_visible": 1,
             "style_color_misuse": 1,
             "style_focus_visible": 1,
-            "style_highcontrast_visible": 1
+            "style_highcontrast_visible": 1,
+            "target_spacing_sufficient": 1
           },
           "violationRules": {}
         },
@@ -9803,6 +9857,20 @@
           }
         },
         "details": [
+          {
+            "tier": "rules",
+            "name": "target-size",
+            "criteria": ["2.5.8"],
+            "counts": {
+              "fail": 1
+            },
+            "notes": ["All touch targets must be 24px large, or leave sufficient space"],
+            "elements": [
+              ".-color-primary[aria-label=\"Save actions\"][role=\"group\"]:nth-child(19) > .-wi...",
+              ".-color-primary[aria-label=\"Save actions\"][role=\"group\"]:nth-child(22) > .-wi...",
+              "button[aria-label=\"More add actions\"]"
+            ]
+          },
           {
             "tier": "rules",
             "name": "color-contrast",
@@ -94429,7 +94497,7 @@
     "breadcrumb": "497f4eae7135430b",
     "breadcrumb.link": "3c885acace0dd25a",
     "button": "5a0afbe6e89ceac2",
-    "button-set": "6cfd1d42a69eace6",
+    "button-set": "1f348f70420d02a6",
     "byline": "ac7f22a263abc945",
     "calendar": "8ad2a8750eb32b96",
     "calendar.day": "efe32590f419aa99",

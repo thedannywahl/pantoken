@@ -42,6 +42,41 @@ Or import one component:
 import "@pantoken/plugin-custom-components/card.css";
 ```
 
+### Split-action button set
+
+Use `-width-half` on an individual icon-only dropdown trigger inside a button
+set. The main action can have a text label or be a square icon-only button:
+
+```html
+<div class="instui-button-set -color-primary" role="group" aria-label="Save actions">
+  <button class="instui-button" type="button">Save changes</button>
+  <button
+    class="instui-button -width-half -icon-chevron-down"
+    type="button"
+    aria-label="More save actions"
+  ></button>
+</div>
+```
+
+Load the token, base, button, shared icon painter (`@pantoken/components/icon.css`),
+and icon glyph styles alongside `button-set.css`. The main
+action stays content-sized; the trigger keeps the full height but has half the
+standard square width: 16x32px (small), 20x40px (medium), or 24x48px (large).
+For example, a medium square icon action is 40x40px beside a 20x40px trigger.
+Set `-size-sm`, `-size-md`, or `-size-lg` on the group to size both buttons. A
+button's own size modifier overrides the group default.
+
+Apply `-width-half` to the child button, not the set. It also narrows a child
+that has `-shape-square`; other buttons remain unchanged. These are narrow
+pointer targets. At small and medium sizes, a flush half-width trigger doesn't
+meet WCAG 2.2's 24px minimum target width without an applicable exception.
+Prefer large sizing (24x48px triggers) or full square buttons when that minimum
+is required.
+
+This example shows layout only. To open a dropdown, connect the icon-only button
+to your menu implementation and provide its popup semantics, expanded state,
+keyboard interaction, and focus management.
+
 ## API
 
 - `customComponents(options?)` — returns a CSS plugin with `position: "append" | "prepend"`.

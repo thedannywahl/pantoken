@@ -11,6 +11,8 @@
  *   own border color (solid fills, whose border matches the fill, tint it with the label color).
  *   `-without-seam` is group-only: it hides that seam so the buttons read as
  *   one continuous control.
+ *   Put `-width-half` on an individual icon-only child button for a split-action
+ *   trigger with half the standard square width and the full button height.
  * @modifier -without-seam — Hide the 1px seam between buttons.
  * @modifier -color-primary — Default every unmodified child to the primary color.
  * @modifier -color-secondary — Default every unmodified child to the secondary color.
@@ -30,7 +32,7 @@
  * @modifier -without-background — Default every unmodified child to no fill.
  * @modifier -without-border — Default every unmodified child to no border.
  * @modifier -display-block — Lay every unmodified child out full-width.
- * @a11y Use a labelled group for related actions; when buttons represent a toggle choice, expose each state with aria-pressed. Give icon-only buttons an accessible name.
+ * @a11y Use a labelled group for related actions; when buttons represent a toggle choice, expose each state with aria-pressed. Give icon-only buttons an accessible name. Half-width triggers are narrow targets (16px, 20px, or 24px at the standard sizes); ensure sufficient target spacing or use a full-width square button for touch interfaces.
  * @structure
  * .pfx-button-set {
  *   @component button:one-or-more {}
@@ -101,6 +103,10 @@
  * <div class="pfx-button-set -display-block" role="group" aria-label="Full-width actions">
  *   <button class="pfx-button">Day</button><button class="pfx-button">Week</button>
  * </div>
+ * <div class="pfx-button-set -color-primary" role="group" aria-label="Save actions">
+ *   <button class="pfx-button" type="button">Save changes</button>
+ *   <button class="pfx-button -width-half -icon-chevron-down" type="button" aria-label="More save actions"></button>
+ * </div>
  * ```
  * ### Per-button override
  * ```html
@@ -115,6 +121,23 @@
  *   <button class="pfx-button">Day</button>
  *   <button class="pfx-button">Week</button>
  *   <button class="pfx-button">Month</button>
+ * </div>
+ * ```
+ * ### Split action
+ * Put `-width-half` on only the icon-only trigger to give it half the standard
+ * square button's width, keeping the full height. The main action can have a text
+ * label or be an icon-only square button. Group sizes and per-button size
+ * overrides apply; the width isn't a fraction of the main action. Give the icon-only
+ * button an accessible name. This example shows layout only: wire the trigger
+ * to a real menu and manage its expanded state and focus in your application.
+ * ```html
+ * <div class="pfx-button-set -color-primary" role="group" aria-label="Save actions">
+ *   <button class="pfx-button" type="button">Save changes</button>
+ *   <button class="pfx-button -width-half -icon-chevron-down" type="button" aria-label="More save actions"></button>
+ * </div>
+ * <div class="pfx-button-set -size-md" role="group" aria-label="Add actions">
+ *   <button class="pfx-button -shape-square -icon-plus" type="button" aria-label="Add"></button>
+ *   <button class="pfx-button -width-half -icon-chevron-down" type="button" aria-label="More add actions"></button>
  * </div>
  * ```
  * @related button — The child control this wraps.
@@ -552,6 +575,38 @@
 .pfx-button-set.-display-block > .pfx-button:not(.-display-block) {
   display: flex;
   width: 100%;
+}
+
+/* Outrank the button's tooltip-aware icon-only selectors as well as group defaults. */
+.pfx-button-set.pfx-button-set > .pfx-button.pfx-button.pfx-button.-width-half {
+  inline-size: calc(var(--instui-component-base-button-medium-height) / 2);
+  aspect-ratio: auto;
+  padding-inline: 0;
+  gap: 0;
+}
+
+.pfx-button-set.pfx-button-set.-size-sm
+  > .pfx-button.pfx-button.pfx-button.-width-half:not([class*="-size-"]),
+.pfx-button-set.pfx-button-set > .pfx-button.pfx-button.pfx-button.-width-half.-size-sm {
+  inline-size: calc(var(--instui-component-base-button-small-height) / 2);
+}
+
+.pfx-button-set.pfx-button-set.-size-md
+  > .pfx-button.pfx-button.pfx-button.-width-half:not([class*="-size-"]),
+.pfx-button-set.pfx-button-set > .pfx-button.pfx-button.pfx-button.-width-half.-size-md {
+  inline-size: calc(var(--instui-component-base-button-medium-height) / 2);
+}
+
+.pfx-button-set.pfx-button-set.-size-lg
+  > .pfx-button.pfx-button.pfx-button.-width-half:not([class*="-size-"]),
+.pfx-button-set.pfx-button-set > .pfx-button.pfx-button.pfx-button.-width-half.-size-lg {
+  inline-size: calc(var(--instui-component-base-button-large-height) / 2);
+}
+
+.pfx-button-set.pfx-button-set > .pfx-button.pfx-button.pfx-button.-width-half::before {
+  inline-size: min(1em, 100%);
+  block-size: 1em;
+  margin-inline-end: 0;
 }
 
 /* Solid fills (bare, primary, danger, success) paint their border in the fill color, so tint the
