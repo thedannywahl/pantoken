@@ -94,7 +94,7 @@ test("uses the Copilot provider environment for a scoped docs fix", async () => 
   expect((homeCall?.[2] as { env: NodeJS.ProcessEnv } | undefined)?.env).toMatchObject({
     DOCS_TRANSLATION_ADAPTER: "ai",
     DOCS_TRANSLATION_COMMAND: expect.stringContaining("copilot-wrapper.sh"),
-    DOCS_TRANSLATION_COMMAND_ARGS: "--model gpt-5-mini --effort low",
+    DOCS_TRANSLATION_COMMAND_ARGS: "--model auto",
     DOCS_TRANSLATION_LOCALE: "fr",
   });
 });
