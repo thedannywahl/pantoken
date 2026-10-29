@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: pantoken\n"
-"PO-Revision-Date: 2026-10-26 23:45+0000\n"
+"PO-Revision-Date: 2026-10-29 17:34+0000\n"
 "Last-Translator: pantoken localization engine\n"
 "Language-Team: pantoken\n"
 "MIME-Version: 1.0\n"
@@ -30915,6 +30915,7 @@ msgstr "En hovringsbar \"visa i helskärm\"-knapp, överlagrad på en demo/exemp
 #~ msgid "Border-only surface for a card inside a base card."
 #~ msgstr "Endast kantad yta för ett kort inuti ett bas-kort."
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:prose"
 #~ msgid "-canvas-rce\n"
 #~ msgstr "-canvas-rce\n"
@@ -30975,6 +30976,7 @@ msgstr "En hovringsbar \"visa i helskärm\"-knapp, överlagrad på en demo/exemp
 #~ msgid "Review your account information."
 #~ msgstr "Granska din kontoinformation."
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:prose"
 #~ msgid "-docs\n"
 #~ msgstr "-docs\n"
@@ -31143,6 +31145,7 @@ msgstr "En hovringsbar \"visa i helskärm\"-knapp, överlagrad på en demo/exemp
 #~ msgid "See upcoming assignments."
 #~ msgstr "Se kommande uppgifter."
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:prose"
 #~ msgid "Canvas"
 #~ msgstr "Canvas"
@@ -31205,3 +31208,1192 @@ msgstr "Den lösta Lucide-versionen, som krävs när en Lucide-shim dras in."
 msgctxt "docs.api:text"
 msgid "removalDeadline"
 msgstr "removalDeadline"
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "more-contrast-respected"
+msgstr "more-contrast-respected"
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "reflow-at-320px"
+msgstr "reflow-at-320px"
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "Fail"
+msgstr "Fail"
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "text-spacing-no-clipping"
+msgstr "text-spacing-no-clipping"
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "Pass"
+msgstr "Pass"
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "Announcements"
+msgstr "Announcements"
+
+msgctxt "docs.api:prose"
+msgid "The shell is a plain container with no role of its own. Give it a landmark or group name (for example `role=\"region\"` with an `aria-label`, or a heading) so assistive tech can find the agent surface, and keep its content in reading order."
+msgstr "Skalet är en vanlig behållare utan egen roll. Ge det ett landmärkes- eller gruppnamn (till exempel `role=\"region\"` med ett `aria-label`, eller en rubrik) så att hjälpmedel kan hitta agentytan, och se till att innehållet följer läsordningen."
+
+msgctxt "docs.api:prose"
+msgid "Conditions"
+msgstr "Villkor"
+
+msgctxt "docs.api:prose"
+msgid "Rebrand (light)"
+msgstr "Omprofilering (ljus)"
+
+msgctxt "docs.api:prose"
+msgid "Rebrand (dark)"
+msgstr "Omprofilering (mörk)"
+
+msgctxt "docs.api:prose"
+msgid "Canvas High Contrast"
+msgstr "Canvas med hög kontrast"
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "WCAG 2.2 1.4.3, 1.4.6"
+msgstr "WCAG 2.2 1.4.3, 1.4.6"
+
+msgctxt "docs.api:prose"
+msgid "Review needed"
+msgstr "Granskning behövs"
+
+msgctxt "docs.api:prose"
+msgid "The page changes under prefers-contrast: more, but no visible text was measurable."
+msgstr "Sidan ändras när prefers-contrast: more är aktivt, men ingen synlig text kunde mätas."
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "WCAG 2.2 1.4.10"
+msgstr "WCAG 2.2 1.4.10"
+
+msgctxt "docs.api:prose"
+msgid "In a 320px window, the page scrolls sideways (it is 336px wide in a 320px window), and one element reaches past the right edge: "
+msgstr "I ett 320 px brett fönster går det att rulla sidan i sidled (den är 336 px bred i ett 320 px brett fönster), och ett element sträcker sig förbi den högra kanten: "
+
+msgctxt "docs.api:prose"
+msgid " ends at 336px. WCAG 1.4.10 Reflow (level AA) exempts two-dimensional content such as data tables and maps, so a person should judge whether that applies."
+msgstr " slutar vid 336 px. WCAG 1.4.10 Reflow (nivå AA) undantar tvådimensionellt innehåll, till exempel datatabeller och kartor, så en person bör bedöma om det gäller här."
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "WCAG 2.2 1.4.12"
+msgstr "WCAG 2.2 1.4.12"
+
+msgctxt "docs.api:prose"
+msgid "Screen reader (simulated)"
+msgstr "Skärmläsare (simulerad)"
+
+msgctxt "docs.api:prose"
+msgid "These automated results do not establish that the page meets WCAG; manual review is still needed."
+msgstr "Dessa automatiserade resultat fastställer inte att sidan uppfyller WCAG; manuell granskning behövs fortfarande."
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "color-contrast"
+msgstr "color-contrast"
+
+msgctxt "docs.api:prose"
+msgid "Rules (axe-core)"
+msgstr "Regler (axe-core)"
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "WCAG 2.2 1.4.3"
+msgstr "WCAG 2.2 1.4.3"
+
+msgctxt "docs.api:prose"
+msgid "Elements must meet minimum color contrast ratio thresholds"
+msgstr "Element måste uppfylla minimikraven för färgkontrast"
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "forced-colors-focus-visible"
+msgstr "forced-colors-focus-visible"
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "less-contrast-stays-readable"
+msgstr "less-contrast-stays-readable"
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "reduced-motion-respected"
+msgstr "reduced-motion-respected"
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "Interactions"
+msgstr "Interactions"
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "focus-indicator-visible"
+msgstr "focus-indicator-visible"
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "focus-stays-on-trigger"
+msgstr "focus-stays-on-trigger"
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "live-politeness-fits-role"
+msgstr "live-politeness-fits-role"
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "message-has-text"
+msgstr "message-has-text"
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "message-in-live-region"
+msgstr "message-in-live-region"
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "no-focus-trap"
+msgstr "no-focus-trap"
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "region-exists-before-message"
+msgstr "region-exists-before-message"
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "trigger-reachable-by-tab"
+msgstr "trigger-reachable-by-tab"
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "message-text-contrast"
+msgstr "message-text-contrast"
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "WCAG 2.2 1.4.11, 2.4.7"
+msgstr "WCAG 2.2 1.4.11, 2.4.7"
+
+msgctxt "docs.api:prose"
+msgid "Not applicable"
+msgstr "Inte tillämpligt"
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "WCAG 2.2 2.3.3, 2.2.2"
+msgstr "WCAG 2.2 2.3.3, 2.2.2"
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "WCAG 2.2 2.4.7"
+msgstr "WCAG 2.2 2.4.7"
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "WCAG 2.2 4.1.3"
+msgstr "WCAG 2.2 4.1.3"
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "WCAG 2.2 2.1.2"
+msgstr "WCAG 2.2 2.1.2"
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "WCAG 2.2 2.1.1"
+msgstr "WCAG 2.2 2.1.1"
+
+msgctxt "docs.api:prose"
+msgid "Computed styles"
+msgstr "Beräknade stilar"
+
+msgctxt "docs.api:prose"
+msgid "The name parts intentionally clip full names to leading letters. Keep the full text in the markup; when identifying text must also be visible, show the full name alongside the avatar."
+msgstr "Namndelarna är avsiktligt beskurna till de första bokstäverna i fullständiga namn. Behåll hela texten i markupen; när identifierande text också måste vara synlig visar du hela namnet bredvid avataren."
+
+msgctxt "docs.api:prose"
+msgid "All 18 measured pieces of text pass with more contrast. one other piece can't be reduced to one color. \"Sam Kim\" can't be measured because a background image or gradient sits behind it."
+msgstr "Alla 18 uppmätta textdelar får bättre kontrast. En annan textdel kan inte reduceras till en enda färg. \"Sam Kim\" kan inte mätas eftersom en bakgrundsbild eller gradient ligger bakom den."
+
+msgctxt "docs.api:prose"
+msgid "With line height 1.5, letter spacing 0.12em, word spacing 0.16em, and paragraph spacing 2em, text in six elements gets cut off: "
+msgstr "Med radavstånd 1.5, teckenavstånd 0.12em, ordavstånd 0.16em och styckeavstånd 2em kapas text i sex element: "
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid " (\"Lee Harper\"); "
+msgstr " (\"Lee Harper\"); "
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid " (\"Amira Patel\"); "
+msgstr " (\"Amira Patel\"); "
+
+msgctxt "docs.api:prose"
+msgid " (\"Miguel\"); and 3 more. Overlapping text isn't checked."
+msgstr " (\"Miguel\"); och 3 till. Överlappande text kontrolleras inte."
+
+msgctxt "docs.api:prose"
+msgid "The count or dot is visual only, so don't rely on color to carry its meaning; put the status in text, such as visually hidden text or an `aria-label` on the target it decorates."
+msgstr "Antalet eller punkten är endast visuell, så förlita dig inte på färg för att förmedla dess betydelse; ange statusen i text, till exempel som visuellt dold text eller en `aria-label` på elementet den dekorerar."
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "Canvas:"
+msgstr "Canvas:"
+
+msgctxt "docs.api:prose"
+msgid " With prefers-contrast: more, two pieces of text fall below the minimum contrast. The worst is \"Undo\" at 4.46:1 (needs 4.5:1)."
+msgstr " Med prefers-contrast: more hamnar två textstycken under den minsta kontrasten. Det sämsta är \"Ångra\" med 4.46:1 (behöver 4.5:1)."
+
+msgctxt "docs.api:prose"
+msgid "It sets the page surface, text color, and `color-scheme` so native controls follow the active light or dark scheme; keep links distinguishable from surrounding text by more than color alone."
+msgstr "Den anger sidans yta, textfärg och `color-scheme` så att inbyggda kontroller följer det aktiva ljusa eller mörka färgschemat; gör länkar särskiljbara från omgivande text på fler sätt än enbart genom färg."
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "label-content-name-mismatch"
+msgstr "label-content-name-mismatch"
+
+msgctxt "docs.api:prose"
+msgid "Render the `.heading` as a real heading element. A `-clickable` billboard only gains hover styling, so give it `tabindex=\"0\"`, an appropriate role, and a keyboard handler."
+msgstr "Återge `.heading` som ett riktigt rubrikelement. En `-clickable` billboard får bara hovringsstyling, så ge den `tabindex=\"0\"`, en lämplig roll och en tangentbordshanterare."
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "WCAG 2.2 2.5.3"
+msgstr "WCAG 2.2 2.5.3"
+
+msgctxt "docs.api:prose"
+msgid "Elements must have their visible text as part of their accessible name"
+msgstr "Element måste ha sin synliga text som en del av sitt tillgängliga namn"
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "reduced-transparency-respected"
+msgstr "reduced-transparency-respected"
+
+msgctxt "docs.api:prose"
+msgid "Rebrand (light):"
+msgstr "Omprofilering (ljus):"
+
+msgctxt "docs.api:prose"
+msgid " With prefers-contrast: more, six pieces of text fall below the minimum contrast. The worst is \"Send\" at 1.64:1 (needs 4.5:1)."
+msgstr " Med prefers-contrast: more hamnar sex textstycken under den minsta kontrasten. Sämst är \"Skicka\" med 1.64:1 (behöver 4.5:1)."
+
+msgctxt "docs.api:prose"
+msgid "Rebrand (dark):"
+msgstr "Omprofilering (mörk):"
+
+msgctxt "docs.api:prose"
+msgid " With prefers-contrast: more, six pieces of text fall below the minimum contrast. The worst is \"Send\" at 1.78:1 (needs 4.5:1)."
+msgstr " Med prefers-contrast: more hamnar sex textstycken under den minsta kontrasten. Sämst är \"Skicka\" med 1.78:1 (behöver 4.5:1)."
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "Canvas, Canvas High Contrast:"
+msgstr "Canvas, Canvas High Contrast:"
+
+msgctxt "docs.api:prose"
+msgid " With prefers-contrast: more, two pieces of text fall below the minimum contrast. The worst is \"Rewrite\" at 1.88:1 (needs 4.5:1)."
+msgstr " Med prefers-contrast: more hamnar två textstycken under den minsta kontrasten. Sämst är \"Skriv om\" med 1.88:1 (behöver 4.5:1)."
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "WCAG 2.2 1.4.3, 1.4.11"
+msgstr "WCAG 2.2 1.4.3, 1.4.11"
+
+msgctxt "docs.api:prose"
+msgid "In a 320px window, the page scrolls sideways (it is 592px wide in a 320px window), and one element reaches past the right edge: "
+msgstr "I ett 320px-fönster rullar sidan i sidled (den är 592px bred i ett 320px-fönster)), och ett element sträcker sig förbi den högra kanten: "
+
+msgctxt "docs.api:prose"
+msgid " ends at 592px. WCAG 1.4.10 Reflow (level AA) exempts two-dimensional content such as data tables and maps, so a person should judge whether that applies."
+msgstr " slutar vid 592px. WCAG 1.4.10 Reflow (nivå AA) undantar tvådimensionellt innehåll, till exempel datatabeller och kartor, så en person bör bedöma om det gäller."
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "enter-activates"
+msgstr "enter-activates"
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "space-activates"
+msgstr "space-activates"
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "boundary-contrast"
+msgstr "boundary-contrast"
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "focus-indicator-contrast"
+msgstr "focus-indicator-contrast"
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "text-contrast-by-state"
+msgstr "text-contrast-by-state"
+
+msgctxt "docs.api:prose"
+msgid " With forced colors on, the focus indicator is weak: only 58 of 299 changed pixels reach 3:1 against their unfocused color, and enough to count is about half the control's perimeter, 108."
+msgstr " Med tvingade färger aktiverade är fokusindikatorn svag: endast 58 av 299 ändrade pixlar når 3:1 jämfört med färgen när de saknar fokus, och ungefär halva kontrollens omkrets, 108, krävs för att det ska räknas."
+
+msgctxt "docs.api:prose"
+msgid " With prefers-contrast: more, eight pieces of text fall below the minimum contrast. The worst is \"Save unavailable\" at 1.64:1 (needs 4.5:1)."
+msgstr " Med prefers-contrast: more understiger åtta textstycken den lägsta kontrasten. Sämst är \"Det går inte att spara\" med 1.64:1 (kräver 4.5:1)."
+
+msgctxt "docs.api:prose"
+msgid " With prefers-contrast: more, eight pieces of text fall below the minimum contrast. The worst is \"Save unavailable\" at 1.78:1 (needs 4.5:1)."
+msgstr " Med prefers-contrast: more understiger åtta textstycken den lägsta kontrasten. Sämst är \"Det går inte att spara\" med 1.78:1 (kräver 4.5:1)."
+
+msgctxt "docs.api:prose"
+msgid " With prefers-contrast: more, two pieces of text fall below the minimum contrast. The worst is \"Summary unavailable\" at 1.88:1 (needs 4.5:1)."
+msgstr " Med prefers-contrast: more understiger två textstycken den lägsta kontrasten. Sämst är \"Sammanfattningen är inte tillgänglig\" med 1.88:1 (kräver 4.5:1)."
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "WCAG 2.2 1.4.11"
+msgstr "WCAG 2.2 1.4.11"
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "WCAG 2.2 1.4.11, 2.4.13"
+msgstr "WCAG 2.2 1.4.11, 2.4.13"
+
+msgctxt "docs.api:prose"
+msgid "Give an informative hero image alt text and mark a decorative one with an empty `alt` or `aria-hidden=\"true\"`. Use a real heading element for the `.title` when it belongs in the document outline."
+msgstr "Skriv en informativ alternativtext för en framträdande bild och markera en dekorativ bild med ett tomt `alt` eller `aria-hidden=\"true\"`. Använd ett riktigt rubrikelement för `.title` när det hör hemma i dokumentets disposition."
+
+msgctxt "docs.api:prose"
+msgid " Elements must meet minimum color contrast ratio thresholds"
+msgstr " Element måste uppfylla tröskelvärdena för minsta färgkontrastförhållande"
+
+msgctxt "docs.api:prose"
+msgid "Mirror `-selected` with `aria-selected` and mark today with `aria-current=\"date\"`; give each day a full-date accessible name, since the day number alone is ambiguous."
+msgstr "Spegla `-selected` med `aria-selected` och markera idag med `aria-current=\"date\"`; ge varje dag ett tillgängligt namn med fullständigt datum, eftersom enbart dagens nummer är tvetydigt."
+
+msgctxt "docs.api:prose"
+msgid "Wrap the native `<input type=\"checkbox\">` and its visible text in a `<label>` to supply its accessible name. The input drives `:checked`, `:indeterminate`, and `:disabled`; set `el.indeterminate = true` in JavaScript for the mixed state. `-readonly` is styling only since checkboxes have no native readonly attribute."
+msgstr "Omslut den inbyggda `<input type=\"checkbox\">` och dess synliga text med en `<label>` för att ange dess tillgängliga namn. Inmatningen styr `:checked`, `:indeterminate` och `:disabled`; ange `el.indeterminate = true` i JavaScript för blandat tillstånd. `-readonly` styr bara utseendet, eftersom kryssrutor saknar ett inbyggt readonly-attribut."
+
+msgctxt "docs.api:prose"
+msgid " With prefers-contrast: more, five pieces of text fall below the minimum contrast. The worst is \"Disabled unchecked checkbox\" at 2.74:1 (needs 4.5:1)."
+msgstr " Med prefers-contrast: more understiger fem textstycken minsta kontrastkravet. Sämst är \"Inaktiverad, omarkerad kryssruta\" med 2.74:1 (kräver 4.5:1)."
+
+msgctxt "docs.api:prose"
+msgid " With prefers-contrast: more, five pieces of text fall below the minimum contrast. The worst is \"Disabled unchecked checkbox\" at 3.15:1 (needs 4.5:1)."
+msgstr " Med prefers-contrast: more understiger fem textstycken minsta kontrastkravet. Sämst är \"Inaktiverad, omarkerad kryssruta\" med 3.15:1 (kräver 4.5:1)."
+
+msgctxt "docs.api:prose"
+msgid " With prefers-contrast: more, five pieces of text fall below the minimum contrast. The worst is \"Disabled unchecked checkbox\" at 3.02:1 (needs 4.5:1)."
+msgstr " Med prefers-contrast: more understiger fem textstycken minsta kontrastkravet. Sämst är \"Inaktiverad, omarkerad kryssruta\" med 3.02:1 (kräver 4.5:1)."
+
+msgctxt "docs.api:prose"
+msgid "Connect the trigger with `popovertarget` so the open state is exposed, and keep the native Escape and outside-click dismissal. The caret is decorative; the callout's content isn't announced unless the trigger references it, for example with `aria-describedby`."
+msgstr "Koppla utlösaren till `popovertarget` så att öppet läge exponeras, och behåll den inbyggda stängningen med Escape och klick utanför. Vinkelmarkören är dekorativ; innehållet i inforutan annonseras inte om inte utlösaren refererar till det, till exempel med `aria-describedby`."
+
+msgctxt "docs.api:prose"
+msgid "The cursor only affects pointer users; a pointer cursor doesn't make an element operable. Put it on native controls (`button`, `a`), and never use `--cursor-not-allowed` or `--cursor-wait` as the only sign that something is disabled or busy."
+msgstr "Markören påverkar bara användare som använder pekare; en pekarmarkör gör inte ett element användbart. Använd den på inbyggda kontroller (`button`, `a`), och använd aldrig `--cursor-not-allowed` eller `--cursor-wait` som enda tecken på att något är inaktiverat eller upptaget."
+
+msgctxt "docs.api:prose"
+msgid "Once the parent's inline-size drops below `64em` (`16em` tray width + `48em` breakpoint), a `@container` query on the parent's `pantoken-drawer-layout` container drops this member's `min-inline-size` to `0` automatically, matching the manual `[should-overlay-tray]` override. This also applies when the tray is closed or absent."
+msgstr "När förälderns inline-size sjunker under `64em` (`16em` tray width + `48em` breakpoint), gör en `@container`-fråga på förälderns `pantoken-drawer-layout`-container att den här medlemmens `min-inline-size` automatiskt ändras till `0`, i enlighet med den manuella `[should-overlay-tray]`-överskrivningen. Detta gäller även när brickan är stängd eller saknas."
+
+msgctxt "docs.api:prose"
+msgid "Use a `div` with `role=\"region\"` (InstUI's DrawerLayout convention) and always name it with `aria-label` or `aria-labelledby`."
+msgstr "Använd en `div` med `role=\"region\"` (InstUI:s DrawerLayout-konvention) och döp den alltid med `aria-label` eller `aria-labelledby`."
+
+msgctxt "docs.api:prose"
+msgid "Name every region with `aria-label` or `aria-labelledby`. Use `div` for InstUI-style regions, not `<main role=\"region\">`. When the tray acts as navigation, use a named `<nav>` or place one inside the tray."
+msgstr "Namnge varje region med `aria-label` eller `aria-labelledby`. Använd `div` för regioner i InstUI-stil, inte `<main role=\"region\">`. När panelen fungerar som navigering använder du en namngiven `<nav>` eller placerar en inuti panelen."
+
+msgctxt "docs.api:prose"
+msgid "The page changes under prefers-contrast: less, but no visible text was measurable."
+msgstr "Sidan ändras under prefers-contrast: less, men ingen synlig text kunde mätas."
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "error-associated-on-invalid"
+msgstr "error-associated-on-invalid"
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "label-associated"
+msgstr "label-associated"
+
+msgctxt "docs.api:prose"
+msgid "Native validation is opt-in: add `data-native-validation` and load `@pantoken/interactions/form-field.iife.js`, or call `initFormField(host, control, error)`. Supply exactly one native control and one error message with a stable, unique ID. The behavior associates the error after blur or a native validation attempt and removes it when corrected; CSS alone doesn't synchronize ARIA."
+msgstr "Inbyggd validering är opt-in: lägg till `data-native-validation` och läs in `@pantoken/interactions/form-field.iife.js`, eller anropa `initFormField(host, control, error)`. Ange exakt ett inbyggt kontrollelement och ett felmeddelande med ett stabilt, unikt ID. Beteendet kopplar felet till kontrollelementet efter att fokus lämnat det eller efter ett försök till inbyggd validering och tar bort det när felet har åtgärdats; enbart CSS synkroniserar inte ARIA."
+
+msgctxt "docs.api:prose"
+msgid "Use your work email."
+msgstr "Använd din jobbmejladress."
+
+msgctxt "docs.api:prose"
+msgid "A wrapping `<label>` names the control. When it also contains messages, use `aria-labelledby` to identify just the visible label text and `aria-describedby` for hints. Associate visible validation errors and synchronize `aria-invalid` in application code or with the opt-in native validation behavior; the decorative required asterisk isn't an accessible-name substitute."
+msgstr "En omslutande `<label>` namnger kontrollelementet. Om den också innehåller meddelanden använder du `aria-labelledby` för att endast identifiera den synliga etiketttexten och `aria-describedby` för hjälptexter. Koppla synliga valideringsfel till kontrollelementet och synkronisera `aria-invalid` i applikationskod eller med det opt-in-baserade inbyggda valideringsbeteendet; den dekorativa asterisken som markerar obligatoriska fält ersätter inte ett tillgängligt namn."
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "WCAG 2.2 3.3.1, 4.1.3"
+msgstr "WCAG 2.2 3.3.1, 4.1.3"
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "WCAG 2.2 1.3.1, 3.3.2, 4.1.2"
+msgstr "WCAG 2.2 1.3.1, 3.3.2, 4.1.2"
+
+msgctxt "docs.api:prose"
+msgid "A gap changes spacing only; reading and focus order still follow the DOM. Keep gaps between interactive controls large enough to meet WCAG 2.5.8 target spacing."
+msgstr "Ett mellanrum ändrar bara avståndet; läsordningen och fokusordningen följer fortfarande DOM:en. Se till att mellanrummen mellan interaktiva kontroller är tillräckligt stora för att uppfylla kraven på målområden i WCAG 2.5.8."
+
+msgctxt "docs.api:prose"
+msgid "All 17 measured pieces of text pass with more contrast. one other piece can't be reduced to one color. \"Suggested study plan\" can't be measured because a background image or gradient sits behind it."
+msgstr "Alla 17 uppmätta textdelar har högre kontrast. En annan textdel kan inte reduceras till en enda färg. \"Föreslagen studieplan\" kan inte mätas eftersom en bakgrundsbild eller gradient ligger bakom den."
+
+msgctxt "docs.api:prose"
+msgid "A hover and focus tooltip bubble, positionable on any side."
+msgstr "En hovrings- och fokusverktygstipsbubbla som kan placeras på valfri sida."
+
+msgctxt "docs.api:prose"
+msgid "A tree of nested collections and leaf items, with rotating chevrons."
+msgstr "Ett träd med nästlade samlingar och lövobjekt, med roterande vinkelpilar."
+
+msgctxt "docs.api:prose"
+msgid "Label the inner input with a real `<label>`. Mark purely visual icons in `.before` and `.after` with `aria-hidden=\"true\"`, and convey `-invalid` and `-success` states in text, not color alone."
+msgstr "Märk det inre inmatningsfältet med en riktig `<label>`. Markera rent visuella ikoner i `.before` och `.after` med `aria-hidden=\"true\"`, och förmedla tillstånden `-invalid` och `-success` i text, inte enbart med färg."
+
+msgctxt "docs.api:prose"
+msgid "`--display-none` removes an element from the accessibility tree as well as the screen, so use it only for content nobody needs. Flex and grid layout can't reorder content for assistive tech; keep the DOM order meaningful, and don't center or justify long passages of text."
+msgstr "`--display-none` tar bort ett element från både tillgänglighetsträdet och skärmen, så använd det bara för innehåll som ingen behöver. Flex- och gridlayout kan inte ändra ordningen på innehåll för hjälpmedelsteknik; se till att DOM-ordningen är meningsfull, och centrera eller justera inte långa textstycken."
+
+msgctxt "docs.api:prose"
+msgid " With prefers-contrast: more, two pieces of text fall below the minimum contrast. The worst is \"Settings unavailable\" at 2.74:1 (needs 4.5:1)."
+msgstr " Med prefers-contrast: more underskrider två textstycken den lägsta kontrastnivån. Sämst är \"Inställningarna är inte tillgängliga\" med 2.74:1 (kräver 4.5:1)."
+
+msgctxt "docs.api:prose"
+msgid " With prefers-contrast: more, two pieces of text fall below the minimum contrast. The worst is \"Settings unavailable on brand\" at 1.84:1 (needs 4.5:1)."
+msgstr " Med prefers-contrast: more underskrider två textstycken den lägsta kontrastnivån. Sämst är \"Inställningarna är inte tillgängliga på varumärkesbakgrund\" med 1.84:1 (kräver 4.5:1)."
+
+msgctxt "docs.api:prose"
+msgid " With prefers-contrast: more, three pieces of text fall below the minimum contrast. The worst is \"Settings unavailable on brand\" at 2.76:1 (needs 4.5:1)."
+msgstr " Med prefers-contrast: more underskrider tre textstycken den lägsta kontrastnivån. Sämst är \"Inställningarna är inte tillgängliga på varumärkesbakgrund\" med 2.76:1 (kräver 4.5:1)."
+
+msgctxt "docs.api:prose"
+msgid "Canvas High Contrast:"
+msgstr "Canvas med hög kontrast:"
+
+msgctxt "docs.api:prose"
+msgid " With prefers-contrast: more, one piece of text falls below the minimum contrast. The worst is \"Settings unavailable on brand\" at 2.84:1 (needs 4.5:1)."
+msgstr " Med prefers-contrast: more underskrider ett textstycke den lägsta kontrastnivån. Sämst är \"Inställningarna är inte tillgängliga på varumärkesbakgrund\" med 2.84:1 (kräver 4.5:1)."
+
+msgctxt "docs.api:prose"
+msgid "Keep each item a direct `<li>` child of the list so it stays in the list's accessibility tree; delimiters and markers are visual only."
+msgstr "Håll varje objekt som ett direkt `<li>` barn till listan så att det förblir i listans tillgänglighetsträd; avgränsare och markörer är endast visuella."
+
+msgctxt "docs.api:prose"
+msgid "Use a real `<ul>` or `<ol>` with `<li>` children. Removing markers with `-unstyled` can make some screen readers drop the list semantics, so add `role=\"list\"` when the list structure matters."
+msgstr "Använd en riktig `<ul>` eller `<ol>` med `<li>` som barn. Om du tar bort markörer med `-unstyled` kan vissa skärmläsare förlora listsemantiken, så lägg till `role=\"list\"` när liststrukturen är viktig."
+
+msgctxt "docs.api:prose"
+msgid "A contained spinner honors reduced motion without hiding the overlay or loading indicator. Keep its status role and meaningful loading label."
+msgstr "En innesluten laddningssnurra respekterar inställningen för minskad rörelse utan att dölja överlägget eller laddningsindikatorn. Behåll dess statusroll och en meningsfull laddningstext."
+
+msgctxt "docs.api:prose"
+msgid "A mask covers content visually but doesn't block assistive tech or the keyboard: make the covered region `inert` (or mark it `aria-busy`), keep the mask's own message as real text, and don't hide the focus indicator behind it."
+msgstr "En mask täcker innehåll visuellt men blockerar inte hjälpmedelsteknik eller tangentbordet: gör det täckta området `inert` (eller markera det `aria-busy`), behåll maskens eget meddelande som riktig text och dölj inte fokusindikatorn bakom den."
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "aria-valid-attr-value"
+msgstr "aria-valid-attr-value"
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "dark-mode-contrast"
+msgstr "dark-mode-contrast"
+
+msgctxt "docs.api:prose"
+msgid "Wrap the grouped items in an element with `role=\"group\"` and point `aria-labelledby` at the group heading so assistive technology announces the group name."
+msgstr "Omslut de grupperade objekten i ett element med `role=\"group\"` och ange `aria-labelledby` som gruppens rubrik så att hjälpmedelsteknik meddelar gruppens namn."
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "WCAG 2.2 4.1.2"
+msgstr "WCAG 2.2 4.1.2"
+
+msgctxt "docs.api:prose"
+msgid "ARIA attributes must conform to valid values"
+msgstr "ARIA-attribut måste följa giltiga värden"
+
+msgctxt "docs.api:prose"
+msgid "Checked actions use `menuitemcheckbox` or `menuitemradio` with `aria-checked`; applications update that state on activation. Pair `-disabled` with `aria-disabled=\"true\"` or native `disabled`, not the CSS class alone. Opt-in menu navigation keeps ARIA-disabled items reachable but prevents their activation."
+msgstr "Markerade åtgärder använder `menuitemcheckbox` eller `menuitemradio` med `aria-checked`; applikationer uppdaterar det tillståndet vid aktivering. Kombinera `-disabled` med `aria-disabled=\"true\"` eller inbyggd `disabled`, inte enbart CSS-klassen. Valfri menynavigering håller ARIA-inaktiverade objekt nåbara men förhindrar att de aktiveras."
+
+msgctxt "docs.api:prose"
+msgid " All five measured pieces of text pass in dark mode. one other piece can't be reduced to one color. \"Archive\" can't be measured because an element behind it is partly transparent."
+msgstr " Alla fem uppmätta textstycken klarar sig i mörkt läge. Ett annat textstycke kan inte reduceras till en enda färg. \"Archive\" kan inte mätas eftersom ett element bakom det är delvis transparent."
+
+msgctxt "docs.api:prose"
+msgid "All five measured pieces of text pass with more contrast. one other piece can't be reduced to one color. \"Archive\" can't be measured because an element behind it is partly transparent."
+msgstr "Alla fem uppmätta textstycken uppfyller kraven med högre kontrast. Ett annat textstycke kan inte reduceras till en enda färg. \"Archive\" kan inte mätas eftersom ett element bakom det är delvis transparent."
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "arrow-keys-move-between-items"
+msgstr "arrow-keys-move-between-items"
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "escape-closes-and-returns-focus"
+msgstr "escape-closes-and-returns-focus"
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "opens-with-enter-or-arrow"
+msgstr "opens-with-enter-or-arrow"
+
+msgctxt "docs.api:prose"
+msgid "Keyboard navigation is opt-in: add `data-menu-navigation` to a vertical native popover with `role=\"menu\"` and load `@pantoken/interactions/menu.iife.js`, or call `initMenu(menu, button)`. Use one native `button[popovertarget]`. The behavior handles focus, arrows, Home/End, initial-character search, Escape, and activation; applications own actions and checked state. Submenus and menubars aren't supported."
+msgstr "Tangentbordsnavigering är valfri: lägg till `data-menu-navigation` i en vertikal inbyggd popover med `role=\"menu\"` och ladda `@pantoken/interactions/menu.iife.js`, eller anropa `initMenu(menu, button)`. Använd ett enda inbyggt `button[popovertarget]`. Beteendet hanterar fokus, piltangenter, Home/End, sökning på begynnelsebokstav, Escape och aktivering; programmen ansvarar för åtgärder och markerat läge. Undermenyer och menyrader stöds inte."
+
+msgctxt "docs.api:prose"
+msgid "Name the menu and button. Use `menuitem` for actions, `menuitemcheckbox`/`menuitemradio` with `aria-checked` for checked actions, and `separator` for dividers. Add `aria-disabled=\"true\"` to disabled items; a CSS modifier alone doesn't convey disabled state. ARIA-disabled entries remain focusable but cannot activate; native-disabled and hidden entries are skipped."
+msgstr "Namnge menyn och knappen. Använd `menuitem` för åtgärder, `menuitemcheckbox`/`menuitemradio` med `aria-checked` för markerade åtgärder och `separator` för avdelare. Lägg till `aria-disabled=\"true\"` på inaktiverade objekt; en CSS-modifierare ensam förmedlar inte inaktiverat tillstånd. ARIA-inaktiverade poster förblir fokuserbara men kan inte aktiveras; inbyggt inaktiverade och dolda poster hoppas över."
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "WCAG 2.2 2.1.1, 2.4.3"
+msgstr "WCAG 2.2 2.1.1, 2.4.3"
+
+msgctxt "docs.api:prose"
+msgid "Give the divider `role=\"separator\"` so assistive technology can announce the break between items; without it the rule is purely decorative."
+msgstr "Ge avdelaren `role=\"separator\"` så att hjälpmedel kan meddela avbrottet mellan objekt; utan den är linjen rent dekorativ."
+
+msgctxt "docs.api:prose"
+msgid "The `.value` and `.label` are separate elements, so keep them adjacent in source order to read together, and don't convey meaning through size alone."
+msgstr "De `.value` och `.label` är separata element, så håll dem intill varandra i källordning så att de läses tillsammans, och förmedla inte betydelse enbart genom storlek."
+
+msgctxt "docs.api:prose"
+msgid "Place the body inside the dialog that the header labels, and give a lone full-bleed `<img>` alt text."
+msgstr "Placera innehållet inuti dialogrutan som rubriken anger, och ge en ensam heltäckande `<img>` en alternativtext."
+
+msgctxt "docs.api:prose"
+msgid "Use real buttons in a logical focus order after the body, and include a visible dismiss action so keyboard users can close the dialog."
+msgstr "Använd riktiga knappar i en logisk fokusordning efter body-elementet, och inkludera en synlig stängningsåtgärd så att tangentbordsanvändare kan stänga dialogrutan."
+
+msgctxt "docs.api:prose"
+msgid "Render the title as a real heading and point the dialog's `aria-labelledby` at it so the dialog is announced with its name."
+msgstr "Återge titeln som en riktig rubrik och låt dialogens `aria-labelledby` peka på den så att dialogen läses upp med sitt namn."
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "escape-closes"
+msgstr "escape-closes"
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "focus-moves-into-dialog"
+msgstr "focus-moves-into-dialog"
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "focus-returns-to-trigger"
+msgstr "focus-returns-to-trigger"
+
+msgctxt "docs.api:prose"
+msgid "The dialog stayed open after Escape."
+msgstr "Dialogrutan förblev öppen efter Escape."
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "WCAG 2.2 2.4.3"
+msgstr "WCAG 2.2 2.4.3"
+
+msgctxt "docs.api:prose"
+msgid "The `.arrows` buttons are redundant pointer controls, hidden from assistive technology and excluded from sequential keyboard focus. Consumers wire pointer activation and keep focus on the input; the native number input provides keyboard increment/decrement."
+msgstr "Knapparna `.arrows` är redundanta pekarkontroller, dolda för hjälpmedel och uteslutna från sekventiell tangentbordsfokusering. Konsumenter kopplar in aktivering med pekare och behåller fokus på inmatningsfältet; det inbyggda nummerinmatningsfältet tillhandahåller tangentbordsbaserad ökning och minskning."
+
+msgctxt "docs.api:prose"
+msgid "Name the native `<input type=\"number\">` so it owns the value and keyboard controls. Mark redundant arrow buttons with both `aria-hidden=\"true\"` and `tabindex=\"-1\"`; never leave an assistive-technology-hidden button in the tab order."
+msgstr "Namnge det inbyggda `<input type=\"number\">` så att det äger värdet och tangentbordskontrollerna. Markera redundanta pilknappar med både `aria-hidden=\"true\"` och `tabindex=\"-1\"`; lämna aldrig en knapp som är dold för hjälpmedel i tabbordningen."
+
+msgctxt "docs.api:prose"
+msgid "A scrollable region must work from the keyboard: give it `tabindex=\"0\"`, a role, and an accessible name (or make sure it contains a focusable control). Don't use `hidden` or `clip` to cut off content people need to read."
+msgstr "Ett rullningsbart område måste kunna användas med tangentbordet: ge det `tabindex=\"0\"`, en roll och ett tillgängligt namn (eller se till att det innehåller ett fokuserbart kontroll). Använd inte `hidden` eller `clip` för att dölja innehåll som människor behöver läsa."
+
+msgctxt "docs.api:prose"
+msgid "Mark the current page with `aria-current=\"page\"`, give each page an accessible name that includes the page number, and wrap the set in a `<nav>` with an `aria-label`."
+msgstr "Markera den aktuella sidan med `aria-current=\"page\"`, ge varje sida ett tillgängligt namn som inkluderar sidnumret och omslut uppsättningen i en `<nav>` med en `aria-label`."
+
+msgctxt "docs.api:prose"
+msgid "Unlike `badge`, which shows a count, or `tag`, which is removable, the pill is a static status label; its leading glyph is a masked `::before`, not an `<img>`. Let groups wrap with `flex-wrap: wrap` on their container so compact labels reflow on narrow screens."
+msgstr "Till skillnad från `badge`, som visar ett antal, eller `tag`, som kan tas bort, är pill en statisk statusetikett; dess inledande symbol är en maskerad `::before`, inte en `<img>`. Låt grupper radbrytas med `flex-wrap: wrap` på deras behållare så att kompakta etiketter flödar om på smala skärmar."
+
+msgctxt "docs.api:prose"
+msgid "The status colors are visual only, so state the status in the label text or a visually hidden label. The leading glyph is a masked `::before` and isn't announced."
+msgstr "Statusfärgerna är enbart visuella, så ange statusen i etikettexten eller i en visuellt dold etikett. Den inledande symbolen är en maskerad `::before` och läses inte upp."
+
+msgctxt "docs.api:prose"
+msgid "Wire the trigger with `popovertarget` so the expanded state is exposed. A native popover closes on Escape and outside click but doesn't move focus, so move focus into interactive content when the popover opens."
+msgstr "Koppla utlösaren till `popovertarget` så att det expanderade tillståndet exponeras. En inbyggd popover stängs med Escape och vid klick utanför, men flyttar inte fokus, så flytta fokus till interaktivt innehåll när popovern öppnas."
+
+msgctxt "docs.api:prose"
+msgid "Positioning changes where content appears, not where it sits in the DOM: keep the visual order matching the reading and focus order, and don't let positioned content cover a focused control."
+msgstr "Positionering ändrar var innehållet visas, inte var det finns i DOM:en: håll den visuella ordningen i linje med läs- och fokusordningen och låt inte positionerat innehåll täcka ett fokuserat reglage."
+
+msgctxt "docs.api:prose"
+msgid "`.value` is a sibling of `.bar`, both children of the root — mirroring how progress-circle nests its own `.value` part. Native `<progress>` and `<meter>` use vendor value parts with the same semantic fill. InstUI has no indeterminate state; `:indeterminate` is a pantoken-only best guess (native `<progress>` without a `value` attribute), using a CSS-owned sliding segment and hiding `.value` since there's no meaningful number to show. Reduced motion keeps a static segment; `<meter>` has no indeterminate state."
+msgstr "`.value` är ett syskon till `.bar`, och båda är barn till roten — vilket speglar hur progress-circle kapslar in sin egen `.value`-del. Inbyggda `<progress>` och `<meter>` använder leverantörens värdedelar med samma semantiska fyllning. InstUI har inget obestämt tillstånd; `:indeterminate` är en gissning som bara finns i pantoken (inbyggd `<progress>` utan attributet `value`), med ett CSS-styrt glidande segment och `.value` dolt eftersom det inte finns något meningsfullt tal att visa. Reducerad rörelse behåller ett statiskt segment; `<meter>` har inget obestämt tillstånd."
+
+msgctxt "docs.api:prose"
+msgid "Custom, not part of InstUI. Applies only to a native `<progress>` missing its `value` attribute; draws a sliding segment on `::before` and hides `.value`."
+msgstr "Anpassat, inte en del av InstUI. Gäller bara en inbyggd `<progress>` som saknar attributet `value`; ritar ett glidande segment på `::before` och döljer `.value`."
+
+msgctxt "docs.api:prose"
+msgid "Draws the native indeterminate segment without relying on the browser's built-in animation."
+msgstr "Ritar det inbyggda obestämda segmentet utan att förlita sig på webbläsarens inbyggda animering."
+
+msgctxt "docs.api:prose"
+msgid "The native value part and `.bar` fill; the -color-* modifiers set it."
+msgstr "Den inbyggda värdedelen och fyllningen i `.bar`; -color-*-modifierarna anger den."
+
+msgctxt "docs.api:prose"
+msgid " With prefers-contrast: more, one piece of text falls below the minimum contrast. The worst is \"30%\" at 1:1 (needs 4.5:1)."
+msgstr " Med prefers-contrast: more hamnar en textbit under minsta kontrast. Sämst är \"30%\" vid 1:1 (kräver 4.5:1)."
+
+msgctxt "docs.api:prose"
+msgid "Rebrand (dark), Canvas, Canvas High Contrast:"
+msgstr "Rebrand (dark__, Canvas, Canvas High Contrast:"
+
+msgctxt "docs.api:prose"
+msgid " With line height 1.5, letter spacing 0.12em, word spacing 0.16em, and paragraph spacing 2em, text in one element gets cut off: "
+msgstr " Med radavståndet 1.5, teckenavståndet 0.12em, ordavståndet 0.16em och styckeavståndet 2em kapas text i ett element: "
+
+msgctxt "docs.api:prose"
+msgid " (\"Working\"). Overlapping text isn't checked."
+msgstr " (\"Arbetar\"). Överlappande text kontrolleras inte."
+
+msgctxt "docs.api:prose"
+msgid "The defaults keep headings in a logical order and links underlined with an interactive colour, so they don't rely on colour alone. Don't skip heading levels for visual size, and don't remove the link underline without another cue."
+msgstr "Standardinställningarna håller rubrikerna i en logisk ordning och understryker länkar med en interaktiv färg, så att de inte enbart förlitar sig på färg. Hoppa inte över rubriknivåer för att ändra den visuella storleken och ta inte bort länkunderstrykningen utan att lägga till en annan markering."
+
+msgctxt "docs.api:prose"
+msgid "Sweatshirt size"
+msgstr "Sweatshirtstorlek"
+
+msgctxt "docs.api:prose"
+msgid "Use a native `<fieldset>` with a `<legend>` that names the group. Radios within a group share one `name`; independent groups need distinct names and legends so selecting one group's radio doesn't clear another group's selection."
+msgstr "Använd en inbyggd `<fieldset>` med en `<legend>` som namnger gruppen. Radioknappar inom en grupp delar samma `name`; oberoende grupper behöver olika namn och förklaringar så att ett val av en grupps radioknapp inte rensar valet i en annan grupp."
+
+msgctxt "docs.api:prose"
+msgid " With prefers-contrast: less, one piece of text falls below the minimum contrast. The worst is \"Large unavailable\" at 2.74:1 (needs 4.5:1). Softer contrast is fine only while text stays readable."
+msgstr " Med prefers-contrast: less hamnar ett textstycke under den lägsta kontrastnivån. Sämst är \"Storlek otillgänglig\" med 2.74:1 (kräver 4.5:1). Mjukare kontrast är okej bara så länge texten förblir läsbar."
+
+msgctxt "docs.api:prose"
+msgid " With prefers-contrast: less, one piece of text falls below the minimum contrast. The worst is \"Large unavailable\" at 3.15:1 (needs 4.5:1). Softer contrast is fine only while text stays readable."
+msgstr " Med prefers-contrast: less hamnar ett textstycke under den lägsta kontrastnivån. Sämst är \"Storlek otillgänglig\" med 3.15:1 (kräver 4.5:1). Mjukare kontrast är okej bara så länge texten förblir läsbar."
+
+msgctxt "docs.api:prose"
+msgid " With prefers-contrast: less, one piece of text falls below the minimum contrast. The worst is \"Large unavailable\" at 3.02:1 (needs 4.5:1). Softer contrast is fine only while text stays readable."
+msgstr " Med prefers-contrast: less hamnar ett textstycke under den lägsta kontrastnivån. Sämst är \"Storlek otillgänglig\" med 3.02:1 (kräver 4.5:1). Mjukare kontrast är okej bara så länge texten förblir läsbar."
+
+msgctxt "docs.api:prose"
+msgid " All 13 measured pieces of text stay above the minimum. one other piece can't be reduced to one color. \"Large\" can't be measured because an element behind it is partly transparent."
+msgstr " Alla 13 uppmätta textstycken ligger över minimigränsen. Ett annat textstycke kan inte reduceras till en enda färg. \"Stor\" kan inte mätas eftersom ett element bakom det är delvis genomskinligt."
+
+msgctxt "docs.api:prose"
+msgid " With prefers-contrast: more, one piece of text falls below the minimum contrast. The worst is \"Large unavailable\" at 2.74:1 (needs 4.5:1)."
+msgstr " Med prefers-contrast: more hamnar ett textstycke under den lägsta kontrastnivån. Sämst är \"Storlek otillgänglig\" med 2.74:1 (kräver 4.5:1)."
+
+msgctxt "docs.api:prose"
+msgid " With prefers-contrast: more, one piece of text falls below the minimum contrast. The worst is \"Large unavailable\" at 3.15:1 (needs 4.5:1)."
+msgstr " Med prefers-contrast: more hamnar ett textstycke under den lägsta kontrastnivån. Sämst är \"Storlek otillgänglig\" med 3.15:1 (kräver 4.5:1)."
+
+msgctxt "docs.api:prose"
+msgid " With prefers-contrast: more, one piece of text falls below the minimum contrast. The worst is \"Large unavailable\" at 3.02:1 (needs 4.5:1)."
+msgstr " Med prefers-contrast: more hamnar ett textstycke under den lägsta kontrastnivån. Sämst är \"Storlek otillgänglig\" med 3.02:1 (kräver 4.5:1)."
+
+msgctxt "docs.api:prose"
+msgid " All 13 measured pieces of text pass with more contrast. one other piece can't be reduced to one color. \"Large\" can't be measured because an element behind it is partly transparent."
+msgstr " Alla 13 uppmätta textstycken klarar kraven med högre kontrast. Ett annat textstycke kan inte reduceras till en enda färg. \"Stor\" kan inte mätas eftersom ett element bakom det är delvis genomskinligt."
+
+msgctxt "docs.api:prose"
+msgid " With prefers-contrast: less, six pieces of text fall below the minimum contrast. The worst is \"Warning selected\" at 1.67:1 (needs 4.5:1). Softer contrast is fine only while text stays readable."
+msgstr " Med prefers-contrast: less faller sex textstycken under den lägsta kontrastnivån. Sämst är \"Varning vald\" med 1.67:1 (kräver 4.5:1). Mjukare kontrast fungerar bara så länge texten förblir läsbar."
+
+msgctxt "docs.api:prose"
+msgid " With prefers-contrast: less, four pieces of text fall below the minimum contrast. The worst is \"Disabled unselected\" at 3.15:1 (needs 4.5:1). Softer contrast is fine only while text stays readable."
+msgstr " Med prefers-contrast: less faller fyra textstycken under den lägsta kontrastnivån. Sämst är \"Inaktiverad omarkerad\" med 3.15:1 (kräver 4.5:1). Mjukare kontrast fungerar bara så länge texten förblir läsbar."
+
+msgctxt "docs.api:prose"
+msgid " With prefers-contrast: less, four pieces of text fall below the minimum contrast. The worst is \"Disabled unselected\" at 3.02:1 (needs 4.5:1). Softer contrast is fine only while text stays readable."
+msgstr " Med prefers-contrast: less faller fyra textstycken under den lägsta kontrastnivån. Sämst är \"Inaktiverad omarkerad\" med 3.02:1 (kräver 4.5:1). Mjukare kontrast fungerar bara så länge texten förblir läsbar."
+
+msgctxt "docs.api:prose"
+msgid " All 31 measured pieces of text stay above the minimum. two other pieces can't be reduced to one color. \"Disabled unselected\" can't be measured because an element behind it is partly transparent."
+msgstr " Alla 31 uppmätta textstycken ligger över minimigränsen. två andra stycken kan inte reduceras till en färg. \"Inaktiverad omarkerad\" kan inte mätas eftersom ett element bakom det är delvis transparent."
+
+msgctxt "docs.api:prose"
+msgid " With prefers-contrast: more, six pieces of text fall below the minimum contrast. The worst is \"Warning selected\" at 1.67:1 (needs 4.5:1)."
+msgstr " Med prefers-contrast: more faller sex textstycken under den lägsta kontrastnivån. Sämst är \"Varning vald\" med 1.67:1 (kräver 4.5:1)."
+
+msgctxt "docs.api:prose"
+msgid " With prefers-contrast: more, four pieces of text fall below the minimum contrast. The worst is \"Disabled unselected\" at 3.15:1 (needs 4.5:1)."
+msgstr " Med prefers-contrast: more faller fyra textstycken under den lägsta kontrastnivån. Sämst är \"Inaktiverad omarkerad\" med 3.15:1 (kräver 4.5:1)."
+
+msgctxt "docs.api:prose"
+msgid " With prefers-contrast: more, four pieces of text fall below the minimum contrast. The worst is \"Disabled unselected\" at 3.02:1 (needs 4.5:1)."
+msgstr " Med prefers-contrast: more faller fyra textstycken under den lägsta kontrastnivån. Sämst är \"Inaktiverad omarkerad\" med 3.02:1 (kräver 4.5:1)."
+
+msgctxt "docs.api:prose"
+msgid " All 31 measured pieces of text pass with more contrast. two other pieces can't be reduced to one color. \"Disabled unselected\" can't be measured because an element behind it is partly transparent."
+msgstr " Alla 31 uppmätta textstycken klarar sig med högre kontrast. två andra stycken kan inte reduceras till en färg. \"Inaktiverad omarkerad\" kan inte mätas eftersom ett element bakom det är delvis transparent."
+
+msgctxt "docs.api:prose"
+msgid "The control is a native `<input type=\"range\">`; give it an accessible name with `aria-label` or an associated `<label>`. Forced colors use a system-color outline because the thumb's box-shadow focus ring doesn't survive that mode."
+msgstr "Kontrollen är en inbyggd `<input type=\"range\">`; ge den ett tillgängligt namn med `aria-label` eller en kopplad `<label>`. I läget för tvingade färger används en kontur i systemfärg, eftersom tumdelens fokusring med box-shadow inte syns i det läget."
+
+msgctxt "docs.api:prose"
+msgid "Hiding content at a breakpoint also hides it from assistive tech, so don't hide the only way to complete a task, and keep the shown and hidden versions equivalent in meaning."
+msgstr "Att dölja innehåll vid en brytpunkt döljer det också för hjälpmedel, så dölj inte det enda sättet att slutföra en uppgift, och se till att de synliga och dolda versionerna är likvärdiga i betydelse."
+
+msgctxt "docs.api:prose"
+msgid "With forced colors on, nothing visible changed when the control took focus. A focus ring drawn with box-shadow or a background color disappears in forced colors. Use an outline."
+msgstr "När tvingade färger är aktiverade ändras inget synligt när kontrollen får fokus. En fokusring som ritas med box-shadow eller en bakgrundsfärg försvinner i läget för tvingade färger. Använd en kontur."
+
+msgctxt "docs.api:prose"
+msgid " With prefers-contrast: less, three pieces of text fall below the minimum contrast. The worst is \"Grades\" at 1.48:1 (needs 4.5:1). Softer contrast is fine only while text stays readable."
+msgstr " Med prefers-contrast: less hamnar tre textstycken under den minsta kontrastnivån. Sämst är \"Grades\" med 1.48:1 (behöver 4.5:1). Mjukare kontrast fungerar bara så länge texten är läsbar."
+
+msgctxt "docs.api:prose"
+msgid " With prefers-contrast: less, three pieces of text fall below the minimum contrast. The worst is \"Grades\" at 1.38:1 (needs 4.5:1). Softer contrast is fine only while text stays readable."
+msgstr " Med prefers-contrast: less hamnar tre textstycken under den minsta kontrastnivån. Sämst är \"Grades\" med 1.38:1 (behöver 4.5:1). Mjukare kontrast fungerar bara så länge texten är läsbar."
+
+msgctxt "docs.api:prose"
+msgid "Mark the active entry with `aria-current=\"page\"` as well as `-selected`, and keep an accessible name, such as `aria-label`, when the parent's `-minimized` modifier hides the `.label`."
+msgstr "Markera den aktiva posten med `aria-current=\"page\"` samt `-selected`, och behåll ett tillgängligt namn, till exempel `aria-label`, när förälderns `-minimized`-modifierare döljer `.label`."
+
+msgctxt "docs.api:prose"
+msgid "It's a native `<select>`, so role, keyboard support, and option announcement come from the browser; associate it with a visible `<label>` and convey errors in text, not color alone."
+msgstr "Det är en inbyggd `<select>`, så rollen, tangentbordsstödet och uppläsningen av alternativ sköts av webbläsaren; koppla den till en synlig `<label>` och förmedla fel med text, inte enbart med färg."
+
+msgctxt "docs.api:prose"
+msgid "Spacing is visual only: use it to keep text and controls from crowding, not to convey structure — use headings, lists, and landmarks for that. Leave enough space around interactive targets for WCAG 2.5.8, and don't rely on fixed spacing that breaks when users increase text spacing."
+msgstr "Mellanrum är endast visuella: använd dem för att undvika att text och kontroller trängs, inte för att förmedla struktur — använd rubriker, listor och landmärken för det. Lämna tillräckligt med utrymme runt interaktiva mål för WCAG 2.5.8, och förlita dig inte på fasta mellanrum som går sönder när användare ökar textavståndet."
+
+msgctxt "docs.api:prose"
+msgid "With reduced motion enabled, the ring or AI glyph remains visible without rotation; keep the loading status and label while work is pending."
+msgstr "När reducerad rörelse är aktiverad förblir ringen eller AI-glyfen synlig utan att rotera; behåll laddningsstatusen och etiketten medan arbetet pågår."
+
+msgctxt "docs.api:prose"
+msgid "Stacking order is visual only: a layered surface that covers focusable content hides the focus indicator. Overlays that take over the page also need focus management and an accessible name."
+msgstr "Staplingsordningen är enbart visuell: en yta som ligger ovanpå och täcker fokuserbart innehåll döljer fokusindikatorn. Överlägg som tar över sidan behöver också fokushantering och ett tillgängligt namn."
+
+msgctxt "docs.api:prose"
+msgid "Use a native `<tbody>` so row and cell relationships are exposed. The parent's `-layout-stacked` changes `display`, which can drop table semantics in some browsers, so add explicit table roles when you use it."
+msgstr "Använd en inbyggd `<tbody>` så att relationerna mellan rader och celler exponeras. Förälderns `-layout-stacked` ändrar `display`, vilket kan göra att tabellsemantiken går förlorad i vissa webbläsare, så lägg till uttryckliga tabellroller när du använder den."
+
+msgctxt "docs.api:prose"
+msgid "Use a native `<td>`. In `-layout-stacked` the column label is generated content that assistive technology may not announce reliably, so keep the column relationship available, for example with `headers`."
+msgstr "Använd en inbyggd `<td>`. I `-layout-stacked` skapas kolumnetiketten som genererat innehåll som hjälpmedelsteknik kanske inte läser upp på ett tillförlitligt sätt, så behåll kolumnkopplingen tillgänglig, till exempel med `headers`."
+
+msgctxt "docs.api:prose"
+msgid "Use `<th scope=\"col\">` so each column header is associated with the cells beneath it."
+msgstr "Använd `<th scope=\"col\">` så att varje kolumnrubrik är kopplad till cellerna under den."
+
+msgctxt "docs.api:prose"
+msgid "Use a native `<thead>`. `-layout-stacked` hides it visually, so keep it in the DOM, not `display: none`, to preserve column names for assistive technology."
+msgstr "Använd en inbyggd `<thead>`. `-layout-stacked` döljer den visuellt, så behåll den i DOM:en, inte `display: none`, för att bevara kolumnnamn för hjälpmedelsteknik."
+
+msgctxt "docs.api:prose"
+msgid "For tables that must retain their columns, use a named, keyboard-focusable `--overflow-x-auto` container instead. Use `-without-focus-animation` for an immediately visible focus outline and the caption to name the region."
+msgstr "För tabeller som måste behålla sina kolumner, använd i stället en namngiven behållare som kan få tangentbordsfokus `--overflow-x-auto`. Använd `-without-focus-animation` för en omedelbart synlig fokusmarkering och bildtexten för att namnge området."
+
+msgctxt "docs.api:prose"
+msgid "Responsive film ratings"
+msgstr "Responsiva filmbetyg"
+
+msgctxt "docs.api:prose"
+msgid "Use stacked cards below the canonical `md` container breakpoint; preserve columns at and above it. Requires per-cell `data-label` values and a size-container ancestor. @affects table.head @affects table.body @affects table.row @affects table.cell @affects table.col-header @affects table.row-header — Applies the existing stacked presentation only in a narrow container."
+msgstr "Använd staplade kort under brytpunkten för den kanoniska `md`-behållaren; behåll kolumnerna vid och över brytpunkten. Kräver värden för `data-label` per cell och en överordnad storleksbehållare. @affects table.head @affects table.body @affects table.row @affects table.cell @affects table.col-header @affects table.row-header — Använder den befintliga staplade presentationen endast i en smal behållare."
+
+msgctxt "docs.api:prose"
+msgid "Label the table with a `<caption>`, mark column headers `<th scope=\"col\">` and row headers `<th scope=\"row\">`, and in stacked or responsive layouts give every cell a localized `data-label` matching its column header. Keep the native header associations; visible generated labels don't replace them. Name scroll regions and provide keyboard access without trapping focus."
+msgstr "Ge tabellen en etikett med en `<caption>`, markera kolumnrubriker med `<th scope=\"col\">` och radrubriker med `<th scope=\"row\">`, och ge i staplade eller responsiva layouter varje cell ett lokaliserat `data-label` som matchar kolumnrubriken. Behåll de inbyggda rubrikassociationerna; synliga genererade etiketter ersätter dem inte. Namnge rullningsområden och ge tangentbordstillgång utan att låsa fokus."
+
+msgctxt "docs.api:prose"
+msgid "Use `<th scope=\"row\">` so the cell names its row for assistive technology."
+msgstr "Använd `<th scope=\"row\">` så att cellen anger sin rad för hjälpmedelsteknik."
+
+msgctxt "docs.api:prose"
+msgid "Use a native `<tr>`. The `-hover` styling is visual only, so give a clickable row a real control rather than relying on the highlight."
+msgstr "Använd en inbyggd `<tr>`. `-hover`-stylingen är enbart visuell, så ge en klickbar rad en riktig kontroll i stället för att förlita dig på markeringen."
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "arrow-keys-move-between-tabs"
+msgstr "arrow-keys-move-between-tabs"
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "home-and-end-work"
+msgstr "home-and-end-work"
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "selected-state-exposed"
+msgstr "selected-state-exposed"
+
+msgctxt "docs.api:prose"
+msgid "All six measured pieces of text pass with more contrast. two other pieces can't be reduced to one color. \"Billing\" can't be measured because an element behind it is partly transparent."
+msgstr "Alla sex uppmätta textdelar klarar kraven med högre kontrast. Två andra textdelar kan inte reduceras till en färg. \"Billing\" kan inte mätas eftersom ett element bakom det är delvis transparent."
+
+msgctxt "docs.api:prose"
+msgid "End didn't move to the last tab."
+msgstr "End flyttade inte till den sista fliken."
+
+msgctxt "docs.api:prose"
+msgid "3 tabs are aria-selected=\"true\". A tab list should have exactly one."
+msgstr "3 flikar har aria-selected=\"true\". En fliklista ska ha exakt en."
+
+msgctxt "docs.api:prose"
+msgid "Give each panel `role=\"tabpanel\"` and an `aria-labelledby` that references its tab, and keep inactive panels `hidden`."
+msgstr "Ge varje panel `role=\"tabpanel\"` och ett `aria-labelledby` som refererar till dess flik, och håll inaktiva paneler `hidden`."
+
+msgctxt "docs.api:prose"
+msgid "Use `role=\"tab\"` inside a `role=\"tablist\"`, mirror `-selected` with `aria-selected`, point `aria-controls` at the panel, and mark a disabled tab with `aria-disabled` or the native `disabled`."
+msgstr "Använd `role=\"tab\"` inuti en `role=\"tablist\"`, spegla `-selected` med `aria-selected`, rikta `aria-controls` mot panelen och markera en inaktiverad flik med `aria-disabled` eller det inbyggda `disabled`."
+
+msgctxt "docs.api:prose"
+msgid "All four measured pieces of text pass with more contrast. two other pieces can't be reduced to one color. \"Billing\" can't be measured because an element behind it is partly transparent."
+msgstr "Alla fyra uppmätta textstycken klarar kraven med högre kontrast. två andra textstycken kan inte reduceras till en enda färg. \"Fakturering\" kan inte mätas eftersom ett element bakom det är delvis genomskinligt."
+
+msgctxt "docs.api:prose"
+msgid "Don't rely on color alone to distinguish tags. Give a removable tag's dismiss control an accessible name that includes the tag text, for example `aria-label=\"Remove Biology\"`."
+msgstr "Förlita dig inte enbart på färg för att skilja taggar åt. Ge avvisningskontrollen för en tagg som kan tas bort ett tillgängligt namn som inkluderar taggtexten, till exempel `aria-label=\"Remove Biology\"`."
+
+msgctxt "docs.api:prose"
+msgid "Associate the field with a visible `<label>`, use `aria-invalid` and `disabled` for state, and explain errors in text, not border color alone."
+msgstr "Koppla fältet till en synlig `<label>`, använd `aria-invalid` och `disabled` för tillstånd, och förklara fel i text, inte enbart med kantfärg."
+
+msgctxt "docs.api:prose"
+msgid " With prefers-contrast: more, one piece of text falls below the minimum contrast. The worst is \"A saved comment.\" at 2.51:1 (needs 4.5:1)."
+msgstr " Med prefers-contrast: more faller en text under minsta kontrastnivå. Sämst är \"En sparad kommentar.\" med 2.51:1 (kräver 4.5:1)."
+
+msgctxt "docs.api:prose"
+msgid " With prefers-contrast: more, one piece of text falls below the minimum contrast. The worst is \"A saved comment.\" at 4.08:1 (needs 4.5:1)."
+msgstr " Med prefers-contrast: more faller en text under minsta kontrastnivå. Sämst är \"En sparad kommentar.\" med 4.08:1 (kräver 4.5:1)."
+
+msgctxt "docs.api:prose"
+msgid " With prefers-contrast: more, one piece of text falls below the minimum contrast. The worst is \"A saved comment.\" at 2.74:1 (needs 4.5:1)."
+msgstr " Med prefers-contrast: more faller en text under minsta kontrastnivå. Sämst är \"En sparad kommentar.\" med 2.74:1 (kräver 4.5:1)."
+
+msgctxt "docs.api:prose"
+msgid " With prefers-contrast: more, one piece of text falls below the minimum contrast. The worst is \"A saved comment.\" at 4.11:1 (needs 4.5:1)."
+msgstr " Med prefers-contrast: more faller en text under minsta kontrastnivå. Sämst är \"En sparad kommentar.\" med 4.11:1 (kräver 4.5:1)."
+
+msgctxt "docs.api:prose"
+msgid "Associate the field with a visible `<label>`, use `aria-invalid` and `disabled` for state, and explain errors in text, not border color alone. Date and time types use the browser's own picker and keyboard support."
+msgstr "Koppla fältet till en synlig `<label>`, använd `aria-invalid` och `disabled` för tillstånd och förklara fel i text, inte enbart med kantfärg. Datum- och tidsfält använder webbläsarens egen väljare och tangentbordsstöd."
+
+msgctxt "docs.api:prose"
+msgid "It sets appearance only and renders no semantics, so use `<p>`, `<strong>`, `<em>`, and similar elements for meaning, and check contrast of each `-color-*` against its background, especially the inverse colors."
+msgstr "Den anger endast utseendet och återger ingen semantik, så använd `<p>`, `<strong>`, `<em>`, och liknande element för betydelse, och kontrollera kontrasten för varje `-color-*` mot dess bakgrund, särskilt de inverterade färgerna."
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "enter-toggles"
+msgstr "enter-toggles"
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "expanded-state-exposed"
+msgstr "expanded-state-exposed"
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "space-toggles"
+msgstr "space-toggles"
+
+msgctxt "docs.api:prose"
+msgid "With reduced motion enabled, the chevron changes direction immediately; native disclosure state and keyboard operation remain unchanged."
+msgstr "När reducerad rörelse är aktiverad ändrar vinkelmarkören riktning omedelbart; det inbyggda öppnings- och stängningstillståndet samt tangentbordsfunktionen förblir oförändrade."
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "WCAG 2.2 2.1.1, 4.1.2"
+msgstr "WCAG 2.2 2.1.1, 4.1.2"
+
+msgctxt "docs.api:prose"
+msgid "Built on native `<details>`, which exposes the expanded state and toggles with Enter and Space; keep the `<summary>` first and give it descriptive text."
+msgstr "Byggt på inbyggd `<details>`, som exponerar det utökade tillståndet och växlar med Enter och mellanslag; behåll `<summary>` först och ge den beskrivande text."
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "appears-on-focus"
+msgstr "appears-on-focus"
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "content-reachable-on-hover"
+msgstr "content-reachable-on-hover"
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "escape-dismisses"
+msgstr "escape-dismisses"
+
+msgctxt "docs.api:prose"
+msgid "`.instui-tooltip` — A hover and focus tooltip bubble, positionable on any side."
+msgstr "`.instui-tooltip` — En hovrings- och fokusbubbla för verktygstips, placerbar på valfri sida."
+
+msgctxt "docs.api:prose"
+msgid "Load `@pantoken/interactions/tooltip.iife.js` for managed delays, Escape dismissal, and combined pointer/focus state. Without JavaScript, hover/focus remains a fallback without Escape or delay guarantees. Use a popover for interactive content."
+msgstr "Ladda `@pantoken/interactions/tooltip.iife.js` för hanterade fördröjningar, avvisning med Escape och kombinerat pekar- och fokustillstånd. Utan JavaScript fungerar hovring/fokus som reservlösning utan garantier för Escape eller fördröjningar. Använd en popover för interaktivt innehåll."
+
+msgctxt "docs.api:prose"
+msgid "The bubble; `-placement-*` sets its preferred side. Initialized tooltips flip/clamp to fit the viewport."
+msgstr "Bubblan; `-placement-*` anger dess föredragna sida. Initierade verktygstips byter sida och begränsas för att passa i visningsområdet."
+
+msgctxt "docs.api:prose"
+msgid "Use a named, focusable trigger with aria-describedby pointing at the role=\"tooltip\" bubble. Keep the content noninteractive. Initialized tooltips stay dismissed after Escape until both pointer and focus leave; the next entry can reopen them."
+msgstr "Använd en namngiven, fokuserbar utlösare med aria-describedby som pekar på bubblan med role=\"tooltip\". Håll innehållet icke-interaktivt. Initierade verktygstips förblir stängda efter Escape tills både pekaren och fokus lämnar; nästa inträde kan öppna dem igen."
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "WCAG 2.2 1.4.13"
+msgstr "WCAG 2.2 1.4.13"
+
+msgctxt "docs.api:prose"
+msgid "The classes only animate, so provide a `prefers-reduced-motion` alternative for large movement and don't convey essential state through the transition alone."
+msgstr "Klasserna animerar bara, så tillhandahåll ett `prefers-reduced-motion`-alternativ för stora rörelser och förmedla inte viktigt tillstånd enbart genom övergången."
+
+msgctxt "docs.api:prose"
+msgid "`.instui-tree-browser` — A tree of nested collections and leaf items, with rotating chevrons."
+msgstr "`.instui-tree-browser` — Ett träd med nästlade samlingar och lövobjekt, med roterande vinkelmarkörer."
+
+msgctxt "docs.api:prose"
+msgid "Load the tree-browser interaction bundle for ARIA-tree keyboard navigation and expansion. Native `<details>` markup remains a CSS-only disclosure fallback; don't give that fallback ARIA-tree roles."
+msgstr "Ladda interaktionspaketet för trädnavigering för tangentbordsnavigering och expandering av ARIA-träd. Native `<details>`-markup förblir en CSS-baserad reservlösning för att visa och dölja innehåll; ge inte reservlösningen ARIA-trädroller."
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "Syllabus.pdf"
+msgstr "Syllabus.pdf"
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "Reading.pdf"
+msgstr "Reading.pdf"
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "Slides.pptx"
+msgstr "Slides.pptx"
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "Rubric.docx"
+msgstr "Rubric.docx"
+
+msgctxt "docs.api:prose"
+msgid "Name the `role=\"tree\"` root, use focusable `role=\"treeitem\"` nodes, and associate each collection with its `role=\"group\"` via `aria-owns`. Load `@pantoken/interactions/tree-browser.iife.js` for one tab stop and synchronized expansion. Add `aria-selected` to opt into single selection; focus alone doesn't select."
+msgstr "Namnge trädets `role=\"tree\"`-rot, använd fokuserbara `role=\"treeitem\"`-noder och koppla varje samling till dess `role=\"group\"` via `aria-owns`. Ladda `@pantoken/interactions/tree-browser.iife.js` för en enda tabbstopp och synkroniserad expandering. Lägg till `aria-selected` för att aktivera enkelmarkering; fokus i sig markerar inte."
+
+msgctxt "docs.api:prose"
+msgid "Truncation hides overflowing text visually while it stays in the DOM, so don't clip information people need (titles, errors, instructions) and keep the full text available another way. Check that clipped text still reads correctly when zoomed or resized."
+msgstr "Avkortning döljer visuellt text som flödar över medan den finns kvar i DOM:en, så klipp inte bort information som människor behöver (titlar, felmeddelanden, instruktioner) och gör hela texten tillgänglig på annat sätt. Kontrollera att avklippt text fortfarande går att läsa korrekt när den zoomas eller storleksändras."
+
+msgctxt "docs.api:prose"
+msgid "With line height 1.5, letter spacing 0.12em, word spacing 0.16em, and paragraph spacing 2em, text in one element gets cut off: "
+msgstr "Med radavståndet 1.5, teckenavståndet 0.12em, ordavståndet 0.16em och styckeavståndet 2em blir texten i ett element avklippt: "
+
+msgctxt "docs.api:prose"
+msgid " (\"Quarterly planning notes for t\"). Overlapping text isn't checked."
+msgstr " (\"Anteckningar för kvartalsplanering för t\"). Överlappande text kontrolleras inte."
+
+msgctxt "docs.api:prose"
+msgid "It's a neutral box with no semantics, so use semantic elements or ARIA roles for meaning and keep sufficient contrast between its background, border, and content."
+msgstr "Det är en neutral behållare utan semantik, så använd semantiska element eller ARIA-roller för att ange betydelse och säkerställ tillräcklig kontrast mellan bakgrunden, kanten och innehållet."
+
+msgctxt "docs.api:prose"
+msgid " With prefers-contrast: more, one piece of text falls below the minimum contrast. The worst is \"Notes unavailable\" at 1.98:1 (needs 4.5:1)."
+msgstr " Med prefers-contrast: more ligger en text under den lägsta kontrastnivån. Sämst är ”Anteckningar är inte tillgängliga” med 1.98:1 (kräver 4.5:1)."
+
+msgctxt "docs.api:prose"
+msgid " With prefers-contrast: more, one piece of text falls below the minimum contrast. The worst is \"Notes unavailable\" at 2.67:1 (needs 4.5:1)."
+msgstr " Med prefers-contrast: more ligger en text under den lägsta kontrastnivån. Sämst är ”Anteckningar är inte tillgängliga” med 2.67:1 (kräver 4.5:1)."
+
+msgctxt "docs.api:prose"
+msgid " With prefers-contrast: more, one piece of text falls below the minimum contrast. The worst is \"Notes unavailable\" at 1.99:1 (needs 4.5:1)."
+msgstr " Med prefers-contrast: more ligger en text under den lägsta kontrastnivån. Sämst är ”Anteckningar är inte tillgängliga” med 1.99:1 (kräver 4.5:1)."
+
+msgctxt "docs.api:prose"
+msgid "With prefers-reduced-transparency: reduce, one surface holding text stays see-through: "
+msgstr "Med prefers-reduced-transparency: reduce förblir en yta med text genomskinlig: "
+
+msgctxt "docs.api:prose"
+msgid " (30% opaque). Without the preference there were one. This preference isn't a WCAG requirement. It matters because see-through backgrounds make text contrast unpredictable."
+msgstr " (30 % ogenomskinlig). Utan inställningen fanns det en sådan yta. Den här inställningen är inget WCAG-krav. Den är viktig eftersom genomskinliga bakgrunder gör textens kontrast svår att förutsäga."
+
+msgctxt "docs.api:prose"
+msgid "Dismiss strategy:\n- `<dialog>` → `dialog.close()`\n- `[popover]` → `el.hidePopover()`\n- `.instui-alert` or `.instui-banner` (per `options.prefix`) → cancelable `dismiss` event, then fade out and remove\n- `[data-dismissible]` or `[open]` → remove open attr + fire bubbling `close`"
+msgstr "Avvisningsstrategi:\n- `<dialog>` → `dialog.close()`\n- `[popover]` → `el.hidePopover()`\n- `.instui-alert` eller `.instui-banner` (per `options.prefix`) → avbrytbar `dismiss` händelse, tona sedan ut och ta bort\n- `[data-dismissible]` eller `[open]` → ta bort attributet open + skicka bubblande `close`"
+
+msgctxt "docs.api:prose"
+msgid "Associate an authored error after blur, native invalid events, or explicit validation.\nUntouched fields stay quiet; edited fields revalidate after the first validation attempt.\nPreserves hint references and uses native constraints, including `setCustomValidity()`.\nThe host must contain the control and a separate, named error element with message text.\nClean up and reinitialize after moving controls between forms or changing error IDs."
+msgstr "Koppla ett manuellt angivet fel efter fokusförlust, inbyggda invalid-händelser eller uttrycklig validering.\nOberörda fält förblir tysta; redigerade fält valideras på nytt efter det första valideringsförsöket.\nBevarar referenser till hjälptips och använder inbyggda begränsningar, inklusive `setCustomValidity()`.\nVärdelementet måste innehålla kontrollen och ett separat, namngivet felfält med meddelandetext.\nRensa upp och initiera om efter att kontroller flyttats mellan formulär eller fel-ID:n ändrats."
+
+msgctxt "docs.api:prose"
+msgid "Wire a vertical, single-level ARIA menu and its native popover button.\nArrow keys wrap; Home/End and initial-character search move focus. Escape returns\nfocus to the button; Tab closes without canceling normal sequential navigation.\nApplications own click actions and checked state. Space activates checkable items\nwithout closing; Enter and pointer activation close unless the click is canceled."
+msgstr "Koppla in en vertikal ARIA-meny på en nivå och dess inbyggda popover-knapp.\nPiltangenterna går runt; Home/End och sökning på första tecknet flyttar fokus. Escape återför\nfokus till knappen; Tab stänger utan att avbryta normal sekventiell navigering.\nApplikationer ansvarar för klickåtgärder och markerat läge. Mellanslag aktiverar valbara objekt\nutan att stänga; Enter och aktivering med pekare stänger, såvida klicket inte avbryts."
+
+msgctxt "docs.api:prose"
+msgid "Own tooltip visibility after initialization, retaining CSS hover/focus as a no-JS fallback.\nPointer and focus are independent reasons to stay open; Escape dismisses until both leave."
+msgstr "Hantera verktygstipsens synlighet efter initiering och behåll CSS-hover/fokus som reservlösning utan JavaScript.\nPekaren och fokus är oberoende skäl att hålla det öppet; Escape stänger det tills båda lämnar."
+
+msgctxt "docs.api:prose"
+msgid "Wire ARIA-tree navigation and expansion, with single selection opt-in via `aria-selected`."
+msgstr "Koppla in ARIA-trädnavigering och expansion, med enkelval som tillval via `aria-selected`."
+
+msgctxt "docs.api:prose"
+msgid "The class namespace for a prefix: `\"instui\"` → `\"instui-\"`, `\"\"` → `\"\"` (unprefixed)."
+msgstr "Klassnamnrymden för ett prefix: `\"instui\"` → `\"instui-\"`, `\"\"` → `\"\"` (utan prefix)."
+
+msgctxt "docs.api:prose"
+msgid "Swap every `pfx-` sentinel in `text` for the namespace of `prefix` (default `\"instui\"`)."
+msgstr "Byt ut varje `pfx-` sentinelvärde i `text` mot namnrymden för `prefix` (standard `\"instui\"`)."
+
+msgctxt "docs.api:prose"
+msgid "Options for [initCloseButton](../functions/initCloseButton.md)."
+msgstr "Alternativ för [initCloseButton](../functions/initCloseButton.md)."
+
+msgctxt "docs.api:prose"
+msgid "Class prefix for the alert/banner hosts. Defaults to `\"instui\"`; `\"\"` means unprefixed."
+msgstr "Klassprefix för alert/banner-värdarna. Standardvärdet är `\"instui\"`; `\"\"` betyder utan prefix."
+
+msgctxt "docs.api:prose"
+msgid "Native validation controls and listener cleanup."
+msgstr "Inbyggda valideringskontroller och rensning av lyssnare."
+
+msgctxt "docs.api:prose"
+msgid "Show the current native validation result without moving focus or changing the value."
+msgstr "Visa det aktuella inbyggda valideringsresultatet utan att flytta fokus eller ändra värdet."
+
+msgctxt "docs.api:prose"
+msgid "Remove listeners and restore the initial accessibility and error-visibility state."
+msgstr "Ta bort lyssnare och återställ det ursprungliga tillgänglighetsläget och synligheten för fel."
+
+msgctxt "docs.api:prose"
+msgid "Listeners and attribute restoration installed by [initMenu](../functions/initMenu.md)."
+msgstr "Lyssnare och attributåterställning som installerats av [initMenu](../functions/initMenu.md)."
+
+msgctxt "docs.api:prose"
+msgid "Class prefix for the `transition` utility. Defaults to `\"instui\"`; `\"\"` means unprefixed."
+msgstr "Klassprefix för the `transition` utility. Standardvärdet är `\"instui\"`; `\"\"` betyder utan prefix."
+
+msgctxt "docs.api:prose"
+msgid "Remove listeners/timers and restore the original managed marker and show class."
+msgstr "Ta bort händelsehanterare/timers och återställ den ursprungliga hanteringsmarkören och show-klassen."
+
+msgctxt "docs.api:prose"
+msgid "Dismiss until both pointer and focus leave, canceling pending timers."
+msgstr "Stäng tills både pekaren och fokus lämnar, och avbryt väntande timers."
+
+msgctxt "docs.api:prose"
+msgid "Listeners installed by [initTreeBrowser](../functions/initTreeBrowser.md)."
+msgstr "Lyssnare installerade av [initTreeBrowser](../functions/initTreeBrowser.md)."
+
+msgctxt "docs.api:prose"
+msgid "Native controls supported by [initFormField](../functions/initFormField.md)."
+msgstr "Inbyggda kontroller stöds av [initFormField](../functions/initFormField.md)."
+
+msgctxt "docs.api:prose"
+msgid "Custom-element tag prefix (`\"x\"` → `<x-icon>`). Never null or empty: tags need a hyphen, so JS callers passing one fall back to `instui`."
+msgstr "Prefix för anpassade elementtaggar (`\"x\"` → `<x-icon>`). Aldrig null eller tomt: taggar måste innehålla ett bindestreck, så JS-anropare som skickar ett sådant värde faller tillbaka på `instui`."
+
+msgctxt "docs.api:prose"
+msgid "Both panes are `div` regions, matching InstUI's inline DrawerLayout. Supply nonempty `tray-label` and `content-label` attributes to name them; labels on the host or slotted content don't name the shadow-DOM regions."
+msgstr "Båda panelerna är `div` regioner, i likhet med InstUI:s inline DrawerLayout. Ange icke-tomma `tray-label` och `content-label` attribut för att namnge dem; etiketter på värdelementet eller slot-innehåll namnger inte shadow-DOM-regionerna."
+
+msgctxt "docs.api:prose"
+msgid "`<instui-modal>` — a real `<dialog>`, so it gets focus trapping, Escape-to-close, and a\n`::backdrop` for free. The `open` attribute drives `showModal()`/`close()`; a native dismissal\n(such as Escape) reflects back to the attribute and re-fires as a bubbling `close`\nevent. Drivable from light DOM via Invoker Commands — a\n`<button command=\"--show|--close|--toggle\" commandfor=\"modal-id\">` toggles it by id. Content goes\nin the default slot."
+msgstr "`<instui-modal>` — en riktig `<dialog>`, så den får fokuslåsning, stängning med Escape och en\n`::backdrop` på köpet. Attributet `open` styr `showModal()`/`close()`; en inbyggd stängning\n(till exempel Escape) återspeglas i attributet och utlöses på nytt som en bubblande `close`\nhändelse. Kan styras från light DOM via Invoker Commands — en\n`<button command=\"--show|--close|--toggle\" commandfor=\"modal-id\">` växlar dess tillstånd via id. Innehållet placeras\ni standard-slotten."
+
+msgctxt "docs.api:prose"
+msgid "`<instui-spinner>` — a loading spinner with `role=\"status\"`. `variant=\"ai\"` and\n`variant=\"ai-on-color\"` select the rotating AI star; size and colour follow the CSS tokens.\nReduced motion keeps the ring or glyph visible without rotation."
+msgstr "`<instui-spinner>` — en laddningssnurra med `role=\"status\"`. `variant=\"ai\"` och\n`variant=\"ai-on-color\"` väljer den roterande AI-stjärnan; storlek och färg följer CSS-tokenen.\nReducerad rörelse håller ringen eller glyfen synlig utan rotation."
+
+msgctxt "docs.api:prose"
+msgid "`<instui-tooltip>` — wraps a slotted trigger and shows a `.tip` bubble (from the `tip` attribute)\non hover/focus. `placement` maps to `-placement-<value>` (e.g. `bottom`, `end`); `show-delay` and\n`hide-delay` (ms, default 0) gate the reveal/hide. Shared behavior owns visibility; Escape\ndismisses until both pointer and focus leave. Tooltip content is noninteractive."
+msgstr "`<instui-tooltip>` — omsluter en trigger med slot och visar en `.tip`bubbla (från attributet `tip`)\nvid hovring/fokus. `placement`mappas till `-placement-<value>` (t.ex. `bottom`, `end`); `show-delay` och\n`hide-delay` (ms, standardvärde 0)styr när visningen visas eller döljs. Det delade beteendet hanterar synligheten; Escape\ndöljer den tills både pekaren lämnar och fokus flyttas. Tooltip-innehållet är inte interaktivt."
+
+msgctxt "docs.api:prose"
+msgid "`<instui-tree-browser>` — an ARIA tree with shared keyboard navigation and expansion.\nName the host and slot `treeitem`/`group` markup. Load the component stylesheet for slotted items."
+msgstr "`<instui-tree-browser>` — ett ARIA-träd med gemensam tangentbordsnavigering och expandering.\nAnge värden och slotten `treeitem`/`group`-uppmärkning. Läs in komponentens formatmall för slot-innehåll."
+
+#, pantoken-verbatim
+msgctxt "docs.api:text"
+msgid "CloseButtonOptions"
+msgstr "CloseButtonOptions"
+
+#, pantoken-verbatim
+msgctxt "docs.api:text"
+msgid "FormFieldHandle"
+msgstr "FormFieldHandle"
+
+#, pantoken-verbatim
+msgctxt "docs.api:text"
+msgid "MenuHandle"
+msgstr "MenuHandle"
+
+#, pantoken-verbatim
+msgctxt "docs.api:text"
+msgid "TreeBrowserHandle"
+msgstr "TreeBrowserHandle"
+
+#, pantoken-verbatim
+msgctxt "docs.api:text"
+msgid "FormFieldControl"
+msgstr "FormFieldControl"
+
+#, pantoken-verbatim
+msgctxt "docs.api:text"
+msgid "initFormField"
+msgstr "initFormField"
+
+#, pantoken-verbatim
+msgctxt "docs.api:text"
+msgid "initMenu"
+msgstr "initMenu"
+
+#, pantoken-verbatim
+msgctxt "docs.api:text"
+msgid "initTreeBrowser"
+msgstr "initTreeBrowser"
+
+#, pantoken-verbatim
+msgctxt "docs.api:text"
+msgid "ns"
+msgstr "ns"
+
+#, pantoken-verbatim
+msgctxt "docs.api:text"
+msgid "withPrefix"
+msgstr "withPrefix"

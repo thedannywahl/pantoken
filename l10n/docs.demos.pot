@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: pantoken\n"
-"PO-Revision-Date: 2026-10-01 01:54+0000\n"
+"PO-Revision-Date: 2026-10-29 02:49+0000\n"
 "Last-Translator: pantoken localization engine\n"
 "Language-Team: pantoken\n"
 "MIME-Version: 1.0\n"
@@ -2988,7 +2988,7 @@ msgstr ""
 #: docs/demos/table/i18n.json#text9
 #, no-c-format
 msgctxt "docs.demos:table:text9"
-msgid "Films (stacked)"
+msgid "Films (responsive)"
 msgstr ""
 
 #: docs/demos/table/i18n.json#text10
@@ -3421,6 +3421,18 @@ msgstr ""
 #, no-c-format
 msgctxt "docs.demos:tooltip:text3"
 msgid "Placement bottom"
+msgstr ""
+
+#: docs/demos/tooltip/i18n.json#text5
+#, no-c-format
+msgctxt "docs.demos:tooltip:text5"
+msgid "Information"
+msgstr ""
+
+#: docs/demos/tooltip/i18n.json#text6
+#, no-c-format
+msgctxt "docs.demos:tooltip:text6"
+msgid "Notifications"
 msgstr ""
 
 #: docs/demos/tooltip/i18n.json#text4

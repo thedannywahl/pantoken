@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: pantoken\n"
-"PO-Revision-Date: 2026-10-26 23:47+0000\n"
+"PO-Revision-Date: 2026-10-29 19:06+0000\n"
 "Last-Translator: pantoken localization engine\n"
 "Language-Team: pantoken\n"
 "MIME-Version: 1.0\n"
@@ -13209,10 +13209,10 @@ msgstr "Кнопка «переглянути на весь екран», яка
 #~ msgid "A native `<input type=\"checkbox\">` drives `:checked`, `:indeterminate`, and `:disabled`; set `el.indeterminate = true` in JavaScript for the mixed state, and note that `-readonly` is styling only since checkboxes have no native readonly attribute."
 #~ msgstr "Рідний `<input type=\"checkbox\">` керує `:checked`, `:indeterminate` і `:disabled`; встановіть `el.indeterminate = true` у JavaScript для змішаного стану, та зауважте, що `-readonly` тільки для стилізації, оскільки чекбокси не мають нативного атрибута readonly."
 
-#, fuzzy, no-c-format
+#, no-c-format
 #~ msgctxt "docs.api:prose"
 #~ msgid "Checkbox\n"
-#~ msgstr "checkbox"
+#~ msgstr "Прапорець\n"
 
 #, fuzzy, no-c-format
 #~ msgctxt "docs.api:prose"
@@ -30915,6 +30915,7 @@ msgstr "Кнопка «переглянути на весь екран», яка
 #~ msgid "Border-only surface for a card inside a base card."
 #~ msgstr "Поверхня тільки з рамкою для картки всередині базової картки."
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:prose"
 #~ msgid "-canvas-rce\n"
 #~ msgstr "-canvas-rce\n"
@@ -30975,6 +30976,7 @@ msgstr "Кнопка «переглянути на весь екран», яка
 #~ msgid "Review your account information."
 #~ msgstr "Перегляньте інформацію про ваш обліковий запис."
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:prose"
 #~ msgid "-docs\n"
 #~ msgstr "-docs\n"
@@ -31143,9 +31145,10 @@ msgstr "Кнопка «переглянути на весь екран», яка
 #~ msgid "See upcoming assignments."
 #~ msgstr "Перегляньте майбутні завдання."
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:prose"
 #~ msgid "Canvas"
-#~ msgstr "Полотно"
+#~ msgstr "Canvas"
 
 #~ msgctxt "docs.api:prose"
 #~ msgid "Course home"
@@ -31205,3 +31208,1193 @@ msgstr "Визначене видання Lucide, необхідне при пр
 msgctxt "docs.api:text"
 msgid "removalDeadline"
 msgstr "removalDeadline"
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "more-contrast-respected"
+msgstr "more-contrast-respected"
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "reflow-at-320px"
+msgstr "reflow-at-320px"
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "Fail"
+msgstr "Fail"
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "text-spacing-no-clipping"
+msgstr "text-spacing-no-clipping"
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "Pass"
+msgstr "Pass"
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "Announcements"
+msgstr "Announcements"
+
+msgctxt "docs.api:prose"
+msgid "The shell is a plain container with no role of its own. Give it a landmark or group name (for example `role=\"region\"` with an `aria-label`, or a heading) so assistive tech can find the agent surface, and keep its content in reading order."
+msgstr "Оболонка — це звичайний контейнер без власної ролі. Додайте їй орієнтир або назву групи (наприклад `role=\"region\"` з `aria-label` або заголовок)), щоб допоміжні технології могли знаходити область агента, і зберігайте її вміст у порядку читання."
+
+msgctxt "docs.api:prose"
+msgid "Conditions"
+msgstr "Умови"
+
+msgctxt "docs.api:prose"
+msgid "Rebrand (light)"
+msgstr "Ребрендинг (світла)"
+
+msgctxt "docs.api:prose"
+msgid "Rebrand (dark)"
+msgstr "Ребрендинг (темна)"
+
+msgctxt "docs.api:prose"
+msgid "Canvas High Contrast"
+msgstr "Полотно з високою контрастністю"
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "WCAG 2.2 1.4.3, 1.4.6"
+msgstr "WCAG 2.2 1.4.3, 1.4.6"
+
+msgctxt "docs.api:prose"
+msgid "Review needed"
+msgstr "Потрібна перевірка"
+
+msgctxt "docs.api:prose"
+msgid "The page changes under prefers-contrast: more, but no visible text was measurable."
+msgstr "Сторінка змінюється за параметра prefers-contrast: more, але видимого тексту для вимірювання не знайдено."
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "WCAG 2.2 1.4.10"
+msgstr "WCAG 2.2 1.4.10"
+
+msgctxt "docs.api:prose"
+msgid "In a 320px window, the page scrolls sideways (it is 336px wide in a 320px window), and one element reaches past the right edge: "
+msgstr "У вікні завширшки 320px сторінка прокручується горизонтально (її ширина — 336px у вікні завширшки 320px), а один елемент виходить за правий край: "
+
+msgctxt "docs.api:prose"
+msgid " ends at 336px. WCAG 1.4.10 Reflow (level AA) exempts two-dimensional content such as data tables and maps, so a person should judge whether that applies."
+msgstr " завершується на 336px. WCAG 1.4.10 «Перекомпонування» (рівень AA)) передбачає виняток для двовимірного вмісту, наприклад таблиць даних і карт, тому слід оцінити, чи застосовується він у цьому випадку."
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "WCAG 2.2 1.4.12"
+msgstr "WCAG 2.2 1.4.12"
+
+msgctxt "docs.api:prose"
+msgid "Screen reader (simulated)"
+msgstr "Зчитувач із екрана (симуляція)"
+
+msgctxt "docs.api:prose"
+msgid "These automated results do not establish that the page meets WCAG; manual review is still needed."
+msgstr "Ці автоматизовані результати не підтверджують відповідність сторінки вимогам WCAG; потрібна ручна перевірка."
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "color-contrast"
+msgstr "color-contrast"
+
+msgctxt "docs.api:prose"
+msgid "Rules (axe-core)"
+msgstr "Правила (axe-core)"
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "WCAG 2.2 1.4.3"
+msgstr "WCAG 2.2 1.4.3"
+
+msgctxt "docs.api:prose"
+msgid "Elements must meet minimum color contrast ratio thresholds"
+msgstr "Елементи мають відповідати мінімальним пороговим значенням коефіцієнта контрастності кольорів"
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "forced-colors-focus-visible"
+msgstr "forced-colors-focus-visible"
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "less-contrast-stays-readable"
+msgstr "less-contrast-stays-readable"
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "reduced-motion-respected"
+msgstr "reduced-motion-respected"
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "Interactions"
+msgstr "Interactions"
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "focus-indicator-visible"
+msgstr "focus-indicator-visible"
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "focus-stays-on-trigger"
+msgstr "focus-stays-on-trigger"
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "live-politeness-fits-role"
+msgstr "live-politeness-fits-role"
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "message-has-text"
+msgstr "message-has-text"
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "message-in-live-region"
+msgstr "message-in-live-region"
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "no-focus-trap"
+msgstr "no-focus-trap"
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "region-exists-before-message"
+msgstr "region-exists-before-message"
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "trigger-reachable-by-tab"
+msgstr "trigger-reachable-by-tab"
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "message-text-contrast"
+msgstr "message-text-contrast"
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "WCAG 2.2 1.4.11, 2.4.7"
+msgstr "WCAG 2.2 1.4.11, 2.4.7"
+
+msgctxt "docs.api:prose"
+msgid "Not applicable"
+msgstr "Не застосовується"
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "WCAG 2.2 2.3.3, 2.2.2"
+msgstr "WCAG 2.2 2.3.3, 2.2.2"
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "WCAG 2.2 2.4.7"
+msgstr "WCAG 2.2 2.4.7"
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "WCAG 2.2 4.1.3"
+msgstr "WCAG 2.2 4.1.3"
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "WCAG 2.2 2.1.2"
+msgstr "WCAG 2.2 2.1.2"
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "WCAG 2.2 2.1.1"
+msgstr "WCAG 2.2 2.1.1"
+
+msgctxt "docs.api:prose"
+msgid "Computed styles"
+msgstr "Обчислені стилі"
+
+msgctxt "docs.api:prose"
+msgid "The name parts intentionally clip full names to leading letters. Keep the full text in the markup; when identifying text must also be visible, show the full name alongside the avatar."
+msgstr "Частини імен навмисно обрізають повні імена до перших літер. Залишайте повний текст у розмітці; якщо ідентифікаційний текст також має бути видимим, показуйте повне ім’я поруч з аватаром."
+
+msgctxt "docs.api:prose"
+msgid "All 18 measured pieces of text pass with more contrast. one other piece can't be reduced to one color. \"Sam Kim\" can't be measured because a background image or gradient sits behind it."
+msgstr "Усі 18 виміряних фрагментів тексту мають вищу контрастність. Один інший фрагмент не можна звести до одного кольору. Неможливо виміряти «Sam Kim», оскільки позаду нього розташоване фонове зображення або градієнт."
+
+msgctxt "docs.api:prose"
+msgid "With line height 1.5, letter spacing 0.12em, word spacing 0.16em, and paragraph spacing 2em, text in six elements gets cut off: "
+msgstr "За міжрядкового інтервалу 1.5, міжлітерного інтервалу 0.12em, інтервалу між словами 0.16em і інтервалу між абзацами 2em текст у шести елементах обрізається: "
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid " (\"Lee Harper\"); "
+msgstr " (\"Lee Harper\"); "
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid " (\"Amira Patel\"); "
+msgstr " (\"Amira Patel\"); "
+
+msgctxt "docs.api:prose"
+msgid " (\"Miguel\"); and 3 more. Overlapping text isn't checked."
+msgstr " (\"Miguel\"); і ще 3. Перекриття тексту не перевіряється."
+
+msgctxt "docs.api:prose"
+msgid "The count or dot is visual only, so don't rely on color to carry its meaning; put the status in text, such as visually hidden text or an `aria-label` on the target it decorates."
+msgstr "Лічильник або крапка є лише візуальними, тому не покладайтеся на колір як носій їхнього значення; зазначайте статус текстом, наприклад, у візуально прихованому тексті або в `aria-label` на елементі, який він оформлює."
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "Canvas:"
+msgstr "Canvas:"
+
+msgctxt "docs.api:prose"
+msgid " With prefers-contrast: more, two pieces of text fall below the minimum contrast. The worst is \"Undo\" at 4.46:1 (needs 4.5:1)."
+msgstr " За prefers-contrast: more два фрагменти тексту мають контраст нижче мінімально допустимого. Найгірший показник у \"Скасувати\" — 4.46:1 (потрібно 4.5:1)."
+
+msgctxt "docs.api:prose"
+msgid "It sets the page surface, text color, and `color-scheme` so native controls follow the active light or dark scheme; keep links distinguishable from surrounding text by more than color alone."
+msgstr "Він задає поверхню сторінки, колір тексту та `color-scheme` так, щоб нативні елементи керування відповідали активній світлій або темній схемі; посилання мають відрізнятися від навколишнього тексту не лише кольором."
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "label-content-name-mismatch"
+msgstr "label-content-name-mismatch"
+
+msgctxt "docs.api:prose"
+msgid "Render the `.heading` as a real heading element. A `-clickable` billboard only gains hover styling, so give it `tabindex=\"0\"`, an appropriate role, and a keyboard handler."
+msgstr "Відображайте `.heading` як справжній елемент заголовка. Елемент billboard із `-clickable` лише отримує стилі при наведенні, тому додайте йому `tabindex=\"0\"`, відповідну роль і обробник клавіатури."
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "WCAG 2.2 2.5.3"
+msgstr "WCAG 2.2 2.5.3"
+
+msgctxt "docs.api:prose"
+msgid "Elements must have their visible text as part of their accessible name"
+msgstr "Видимий текст елементів має бути частиною їхньої доступної назви"
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "reduced-transparency-respected"
+msgstr "reduced-transparency-respected"
+
+msgctxt "docs.api:prose"
+msgid "Rebrand (light):"
+msgstr "Ребрендинг (світла):"
+
+msgctxt "docs.api:prose"
+msgid " With prefers-contrast: more, six pieces of text fall below the minimum contrast. The worst is \"Send\" at 1.64:1 (needs 4.5:1)."
+msgstr " За prefers-contrast: more, шість фрагментів тексту не досягають мінімального контрасту. Найгірший показник у «Надіслати» — 1.64:1 (потрібно 4.5:1)."
+
+msgctxt "docs.api:prose"
+msgid "Rebrand (dark):"
+msgstr "Ребрендинг (темна):"
+
+msgctxt "docs.api:prose"
+msgid " With prefers-contrast: more, six pieces of text fall below the minimum contrast. The worst is \"Send\" at 1.78:1 (needs 4.5:1)."
+msgstr " За prefers-contrast: more, шість фрагментів тексту не досягають мінімального контрасту. Найгірший показник у «Надіслати» — 1.78:1 (потрібно 4.5:1)."
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "Canvas, Canvas High Contrast:"
+msgstr "Canvas, Canvas High Contrast:"
+
+msgctxt "docs.api:prose"
+msgid " With prefers-contrast: more, two pieces of text fall below the minimum contrast. The worst is \"Rewrite\" at 1.88:1 (needs 4.5:1)."
+msgstr " За prefers-contrast: more, два фрагменти тексту не досягають мінімального контрасту. Найгірший показник у «Переписати» — 1.88:1 (потрібно 4.5:1)."
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "WCAG 2.2 1.4.3, 1.4.11"
+msgstr "WCAG 2.2 1.4.3, 1.4.11"
+
+msgctxt "docs.api:prose"
+msgid "In a 320px window, the page scrolls sideways (it is 592px wide in a 320px window), and one element reaches past the right edge: "
+msgstr "У вікні шириною 320px сторінка прокручується горизонтально (її ширина — 592px у вікні шириною 320px)), а один елемент виходить за правий край: "
+
+msgctxt "docs.api:prose"
+msgid " ends at 592px. WCAG 1.4.10 Reflow (level AA) exempts two-dimensional content such as data tables and maps, so a person should judge whether that applies."
+msgstr " закінчується на позначці 592px. WCAG 1.4.10 Reflow (рівень AA) передбачає виняток для двовимірного вмісту, як-от таблиць даних і карт, тож варто оцінити, чи стосується це цього випадку."
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "enter-activates"
+msgstr "enter-activates"
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "space-activates"
+msgstr "space-activates"
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "boundary-contrast"
+msgstr "boundary-contrast"
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "focus-indicator-contrast"
+msgstr "focus-indicator-contrast"
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "text-contrast-by-state"
+msgstr "text-contrast-by-state"
+
+msgctxt "docs.api:prose"
+msgid " With forced colors on, the focus indicator is weak: only 58 of 299 changed pixels reach 3:1 against their unfocused color, and enough to count is about half the control's perimeter, 108."
+msgstr " За ввімкнених примусових кольорів індикатор фокуса слабкий: лише 58 із 299 змінених пікселів досягають контрастності 3:1 порівняно з їхнім кольором без фокуса, а для достатнього результату потрібно приблизно половину периметра елемента керування — 108."
+
+msgctxt "docs.api:prose"
+msgid " With prefers-contrast: more, eight pieces of text fall below the minimum contrast. The worst is \"Save unavailable\" at 1.64:1 (needs 4.5:1)."
+msgstr " За prefers-contrast: more вісім фрагментів тексту мають контрастність нижчу за мінімальну. Найгірший показник у «Збереження недоступне» — 1.64:1 (потрібно 4.5:1)."
+
+msgctxt "docs.api:prose"
+msgid " With prefers-contrast: more, eight pieces of text fall below the minimum contrast. The worst is \"Save unavailable\" at 1.78:1 (needs 4.5:1)."
+msgstr " За prefers-contrast: more вісім фрагментів тексту мають контрастність нижчу за мінімальну. Найгірший показник у «Збереження недоступне» — 1.78:1 (потрібно 4.5:1)."
+
+msgctxt "docs.api:prose"
+msgid " With prefers-contrast: more, two pieces of text fall below the minimum contrast. The worst is \"Summary unavailable\" at 1.88:1 (needs 4.5:1)."
+msgstr " За prefers-contrast: more два фрагменти тексту мають контрастність нижчу за мінімальну. Найгірший показник у «Підсумок недоступний» — 1.88:1 (потрібно 4.5:1)."
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "WCAG 2.2 1.4.11"
+msgstr "WCAG 2.2 1.4.11"
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "WCAG 2.2 1.4.11, 2.4.13"
+msgstr "WCAG 2.2 1.4.11, 2.4.13"
+
+msgctxt "docs.api:prose"
+msgid "Give an informative hero image alt text and mark a decorative one with an empty `alt` or `aria-hidden=\"true\"`. Use a real heading element for the `.title` when it belongs in the document outline."
+msgstr "Додайте інформативний альтернативний текст до головного зображення, а декоративне позначте порожнім `alt` або `aria-hidden=\"true\"`. Використовуйте справжній елемент заголовка для `.title`, якщо він відповідає структурі документа."
+
+msgctxt "docs.api:prose"
+msgid " Elements must meet minimum color contrast ratio thresholds"
+msgstr " Елементи мають відповідати мінімальним пороговим значенням коефіцієнта контрастності кольорів"
+
+msgctxt "docs.api:prose"
+msgid "Mirror `-selected` with `aria-selected` and mark today with `aria-current=\"date\"`; give each day a full-date accessible name, since the day number alone is ambiguous."
+msgstr "Віддзеркальте `-selected` за допомогою `aria-selected` і позначте сьогоднішній день `aria-current=\"date\"`; надайте кожному дню доступну назву з повною датою, оскільки лише номер дня неоднозначний."
+
+msgctxt "docs.api:prose"
+msgid "Wrap the native `<input type=\"checkbox\">` and its visible text in a `<label>` to supply its accessible name. The input drives `:checked`, `:indeterminate`, and `:disabled`; set `el.indeterminate = true` in JavaScript for the mixed state. `-readonly` is styling only since checkboxes have no native readonly attribute."
+msgstr "Огорніть нативний `<input type=\"checkbox\">` та його видимий текст у `<label>`, щоб надати йому доступну назву. Ввід керує `:checked`, `:indeterminate` і `:disabled`; установіть `el.indeterminate = true` у JavaScript для змішаного стану. `-readonly` призначений лише для стилізації, оскільки прапорці не мають нативного атрибута readonly."
+
+msgctxt "docs.api:prose"
+msgid " With prefers-contrast: more, five pieces of text fall below the minimum contrast. The worst is \"Disabled unchecked checkbox\" at 2.74:1 (needs 4.5:1)."
+msgstr " За prefers-contrast: more п’ять фрагментів тексту мають контраст нижче мінімального. Найгірший показник — у «Вимкнений непозначений прапорець»: 2.74:1 (потрібно 4.5:1)."
+
+msgctxt "docs.api:prose"
+msgid " With prefers-contrast: more, five pieces of text fall below the minimum contrast. The worst is \"Disabled unchecked checkbox\" at 3.15:1 (needs 4.5:1)."
+msgstr " За prefers-contrast: more п’ять фрагментів тексту мають контраст нижче мінімального. Найгірший показник — у «Вимкнений непозначений прапорець»: 3.15:1 (потрібно 4.5:1)."
+
+msgctxt "docs.api:prose"
+msgid " With prefers-contrast: more, five pieces of text fall below the minimum contrast. The worst is \"Disabled unchecked checkbox\" at 3.02:1 (needs 4.5:1)."
+msgstr " За prefers-contrast: more п’ять фрагментів тексту мають контраст нижче мінімального. Найгірший показник — у «Вимкнений непозначений прапорець»: 3.02:1 (потрібно 4.5:1)."
+
+msgctxt "docs.api:prose"
+msgid "Connect the trigger with `popovertarget` so the open state is exposed, and keep the native Escape and outside-click dismissal. The caret is decorative; the callout's content isn't announced unless the trigger references it, for example with `aria-describedby`."
+msgstr "Зв’яжіть тригер із `popovertarget`, щоб стан відкриття був доступний, і збережіть нативне закриття клавішею Escape та клацанням поза елементом. Каретка декоративна; вміст виноски не оголошується, якщо тригер не посилається на нього, наприклад за допомогою `aria-describedby`."
+
+msgctxt "docs.api:prose"
+msgid "The cursor only affects pointer users; a pointer cursor doesn't make an element operable. Put it on native controls (`button`, `a`), and never use `--cursor-not-allowed` or `--cursor-wait` as the only sign that something is disabled or busy."
+msgstr "Курсор впливає лише на користувачів пристроїв із вказівником; курсор у вигляді вказівника не робить елемент придатним до взаємодії. Використовуйте його для нативних елементів керування (`button`, `a`), і ніколи не використовуйте `--cursor-not-allowed` або `--cursor-wait` як єдину ознаку того, що щось вимкнено або зайняте."
+
+msgctxt "docs.api:prose"
+msgid "Once the parent's inline-size drops below `64em` (`16em` tray width + `48em` breakpoint), a `@container` query on the parent's `pantoken-drawer-layout` container drops this member's `min-inline-size` to `0` automatically, matching the manual `[should-overlay-tray]` override. This also applies when the tray is closed or absent."
+msgstr "Щойно розмір батьківського елемента в напрямку рядка стає меншим за `64em` (`16em` ширина лотка + `48em` точка перелому), запит `@container` до контейнера `pantoken-drawer-layout` батьківського елемента автоматично змінює `min-inline-size` цього елемента на `0`, відповідно до ручного перевизначення `[should-overlay-tray]`. Це також діє, коли лоток закритий або відсутній."
+
+msgctxt "docs.api:prose"
+msgid "Use a `div` with `role=\"region\"` (InstUI's DrawerLayout convention) and always name it with `aria-label` or `aria-labelledby`."
+msgstr "Використовуйте `div` із `role=\"region\"` (конвенція DrawerLayout в InstUI)) і завжди називайте його `aria-label` або `aria-labelledby`."
+
+msgctxt "docs.api:prose"
+msgid "Name every region with `aria-label` or `aria-labelledby`. Use `div` for InstUI-style regions, not `<main role=\"region\">`. When the tray acts as navigation, use a named `<nav>` or place one inside the tray."
+msgstr "Називайте кожен регіон за допомогою `aria-label` або `aria-labelledby`. Для регіонів у стилі InstUI використовуйте `div`, а не `<main role=\"region\">`. Якщо панель виконує роль навігації, використовуйте іменований `<nav>` або розмістіть його всередині панелі."
+
+msgctxt "docs.api:prose"
+msgid "The page changes under prefers-contrast: less, but no visible text was measurable."
+msgstr "Сторінка змінюється за prefers-contrast: less, але видимого тексту не вдалося виміряти."
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "error-associated-on-invalid"
+msgstr "error-associated-on-invalid"
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "label-associated"
+msgstr "label-associated"
+
+msgctxt "docs.api:prose"
+msgid "Native validation is opt-in: add `data-native-validation` and load `@pantoken/interactions/form-field.iife.js`, or call `initFormField(host, control, error)`. Supply exactly one native control and one error message with a stable, unique ID. The behavior associates the error after blur or a native validation attempt and removes it when corrected; CSS alone doesn't synchronize ARIA."
+msgstr "Нативна валідація вимкнена за замовчуванням: додайте `data-native-validation` і завантажте `@pantoken/interactions/form-field.iife.js`, або викличте `initFormField(host, control, error)`. Додайте рівно один нативний елемент керування та одне повідомлення про помилку зі стабільним унікальним ідентифікатором. Поведінка пов’язує повідомлення про помилку після втрати фокуса або спроби нативної валідації та прибирає його після виправлення; сам CSS не синхронізує ARIA."
+
+msgctxt "docs.api:prose"
+msgid "Use your work email."
+msgstr "Використовуйте робочу електронну адресу."
+
+msgctxt "docs.api:prose"
+msgid "A wrapping `<label>` names the control. When it also contains messages, use `aria-labelledby` to identify just the visible label text and `aria-describedby` for hints. Associate visible validation errors and synchronize `aria-invalid` in application code or with the opt-in native validation behavior; the decorative required asterisk isn't an accessible-name substitute."
+msgstr "Обгортковий `<label>` задає назву елемента керування. Якщо він також містить повідомлення, використовуйте `aria-labelledby`, щоб визначити лише текст видимої мітки, і `aria-describedby` для підказок. Пов’язуйте видимі повідомлення про помилки валідації та синхронізуйте `aria-invalid` у коді застосунку або за допомогою опційної поведінки нативної валідації; декоративна зірочка обов’язкового поля не замінює доступну назву."
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "WCAG 2.2 3.3.1, 4.1.3"
+msgstr "WCAG 2.2 3.3.1, 4.1.3"
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "WCAG 2.2 1.3.1, 3.3.2, 4.1.2"
+msgstr "WCAG 2.2 1.3.1, 3.3.2, 4.1.2"
+
+msgctxt "docs.api:prose"
+msgid "A gap changes spacing only; reading and focus order still follow the DOM. Keep gaps between interactive controls large enough to meet WCAG 2.5.8 target spacing."
+msgstr "Проміжок змінює лише відстань; порядок читання та фокусування й надалі визначається DOM. Залишайте між інтерактивними елементами керування достатньо великі проміжки, щоб відповідати вимогам WCAG 2.5.8 щодо відстані між цілями."
+
+msgctxt "docs.api:prose"
+msgid "All 17 measured pieces of text pass with more contrast. one other piece can't be reduced to one color. \"Suggested study plan\" can't be measured because a background image or gradient sits behind it."
+msgstr "Усі 17 виміряних фрагментів тексту мають вищу контрастність. Ще один фрагмент не можна звести до одного кольору. «Запропонований план навчання» неможливо виміряти, оскільки за ним розташоване фонове зображення або градієнт."
+
+msgctxt "docs.api:prose"
+msgid "A hover and focus tooltip bubble, positionable on any side."
+msgstr "Спливаюча підказка, що з’являється під час наведення курсору або фокусування та може розташовуватися з будь-якого боку."
+
+msgctxt "docs.api:prose"
+msgid "A tree of nested collections and leaf items, with rotating chevrons."
+msgstr "Дерево вкладених колекцій і кінцевих елементів із шевронами, що обертаються."
+
+msgctxt "docs.api:prose"
+msgid "Label the inner input with a real `<label>`. Mark purely visual icons in `.before` and `.after` with `aria-hidden=\"true\"`, and convey `-invalid` and `-success` states in text, not color alone."
+msgstr "Позначте внутрішнє поле введення справжнім `<label>`. Позначте суто декоративні піктограми в `.before` і `.after` за допомогою `aria-hidden=\"true\"`, а стани `-invalid` і `-success` передавайте текстом, а не лише кольором."
+
+msgctxt "docs.api:prose"
+msgid "`--display-none` removes an element from the accessibility tree as well as the screen, so use it only for content nobody needs. Flex and grid layout can't reorder content for assistive tech; keep the DOM order meaningful, and don't center or justify long passages of text."
+msgstr "`--display-none` вилучає елемент із дерева доступності та з екрана, тому використовуйте його лише для вмісту, який нікому не потрібен. Flex і grid не можуть змінювати порядок вмісту для допоміжних технологій; зберігайте логічний порядок DOM і не вирівнюйте довгі фрагменти тексту по центру чи по ширині."
+
+msgctxt "docs.api:prose"
+msgid " With prefers-contrast: more, two pieces of text fall below the minimum contrast. The worst is \"Settings unavailable\" at 2.74:1 (needs 4.5:1)."
+msgstr " За prefers-contrast: more, два фрагменти тексту мають контрастність нижчу за мінімальну. Найгірший показник у тексту \"Налаштування недоступні\" — 2.74:1 (потрібно 4.5:1)."
+
+msgctxt "docs.api:prose"
+msgid " With prefers-contrast: more, two pieces of text fall below the minimum contrast. The worst is \"Settings unavailable on brand\" at 1.84:1 (needs 4.5:1)."
+msgstr " За prefers-contrast: more, два фрагменти тексту мають контрастність нижчу за мінімальну. Найгірший показник у тексту \"Налаштування недоступні на фірмовому тлі\" — 1.84:1 (потрібно 4.5:1)."
+
+msgctxt "docs.api:prose"
+msgid " With prefers-contrast: more, three pieces of text fall below the minimum contrast. The worst is \"Settings unavailable on brand\" at 2.76:1 (needs 4.5:1)."
+msgstr " За prefers-contrast: more, три фрагменти тексту мають контрастність нижчу за мінімальну. Найгірший показник у тексту \"Налаштування недоступні на фірмовому тлі\" — 2.76:1 (потрібно 4.5:1)."
+
+msgctxt "docs.api:prose"
+msgid "Canvas High Contrast:"
+msgstr "Полотно з високою контрастністю:"
+
+msgctxt "docs.api:prose"
+msgid " With prefers-contrast: more, one piece of text falls below the minimum contrast. The worst is \"Settings unavailable on brand\" at 2.84:1 (needs 4.5:1)."
+msgstr " За prefers-contrast: more, один фрагмент тексту має контрастність нижчу за мінімальну. Найгірший показник у тексту \"Налаштування недоступні на фірмовому тлі\" — 2.84:1 (потрібно 4.5:1)."
+
+msgctxt "docs.api:prose"
+msgid "Keep each item a direct `<li>` child of the list so it stays in the list's accessibility tree; delimiters and markers are visual only."
+msgstr "Залишайте кожен елемент безпосередньою `<li>` дитиною списку, щоб він залишався в дереві доступності списку; роздільники та маркери є лише візуальними."
+
+msgctxt "docs.api:prose"
+msgid "Use a real `<ul>` or `<ol>` with `<li>` children. Removing markers with `-unstyled` can make some screen readers drop the list semantics, so add `role=\"list\"` when the list structure matters."
+msgstr "Використовуйте справжній `<ul>` або `<ol>` з дочірніми елементами `<li>`. Видалення маркерів за допомогою `-unstyled` може призвести до втрати семантики списку деякими програмами зчитування з екрана, тому додайте `role=\"list\"`, якщо структура списку має значення."
+
+msgctxt "docs.api:prose"
+msgid "A contained spinner honors reduced motion without hiding the overlay or loading indicator. Keep its status role and meaningful loading label."
+msgstr "Вбудований індикатор завантаження враховує налаштування зменшення руху, не приховуючи накладку чи індикатор завантаження. Збережіть його роль статусу та змістовний напис про завантаження."
+
+msgctxt "docs.api:prose"
+msgid "A mask covers content visually but doesn't block assistive tech or the keyboard: make the covered region `inert` (or mark it `aria-busy`), keep the mask's own message as real text, and don't hide the focus indicator behind it."
+msgstr "Маска візуально закриває вміст, але не блокує допоміжні технології чи клавіатуру: зробіть закриту область `inert` (або позначте її `aria-busy`), залиште власне повідомлення маски звичайним текстом і не ховайте за нею індикатор фокусу."
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "aria-valid-attr-value"
+msgstr "aria-valid-attr-value"
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "dark-mode-contrast"
+msgstr "dark-mode-contrast"
+
+msgctxt "docs.api:prose"
+msgid "Wrap the grouped items in an element with `role=\"group\"` and point `aria-labelledby` at the group heading so assistive technology announces the group name."
+msgstr "Обгорніть згруповані елементи в елемент із `role=\"group\"` і спрямуйте `aria-labelledby` на заголовок групи, щоб допоміжні технології оголошували назву групи."
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "WCAG 2.2 4.1.2"
+msgstr "WCAG 2.2 4.1.2"
+
+msgctxt "docs.api:prose"
+msgid "ARIA attributes must conform to valid values"
+msgstr "Атрибути ARIA мають відповідати допустимим значенням"
+
+msgctxt "docs.api:prose"
+msgid "Checked actions use `menuitemcheckbox` or `menuitemradio` with `aria-checked`; applications update that state on activation. Pair `-disabled` with `aria-disabled=\"true\"` or native `disabled`, not the CSS class alone. Opt-in menu navigation keeps ARIA-disabled items reachable but prevents their activation."
+msgstr "Для позначених дій використовуються `menuitemcheckbox` або `menuitemradio` зі значенням `aria-checked`; застосунки оновлюють цей стан під час активації. Поєднуйте `-disabled` з `aria-disabled=\"true\"` або нативним `disabled`, а не лише з класом CSS. Навігація меню, яку можна ввімкнути за бажанням, залишає елементи з ARIA-disabled доступними, але запобігає їх активації."
+
+msgctxt "docs.api:prose"
+msgid " All five measured pieces of text pass in dark mode. one other piece can't be reduced to one color. \"Archive\" can't be measured because an element behind it is partly transparent."
+msgstr " Усі п’ять виміряних фрагментів тексту відповідають вимогам у темному режимі. один інший фрагмент неможливо звести до одного кольору. Неможливо виміряти «Archive», оскільки елемент позаду нього частково прозорий."
+
+msgctxt "docs.api:prose"
+msgid "All five measured pieces of text pass with more contrast. one other piece can't be reduced to one color. \"Archive\" can't be measured because an element behind it is partly transparent."
+msgstr "Усі п’ять виміряних фрагментів тексту мають вищу контрастність і відповідають вимогам. один інший фрагмент неможливо звести до одного кольору. Неможливо виміряти «Archive», оскільки елемент позаду нього частково прозорий."
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "arrow-keys-move-between-items"
+msgstr "arrow-keys-move-between-items"
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "escape-closes-and-returns-focus"
+msgstr "escape-closes-and-returns-focus"
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "opens-with-enter-or-arrow"
+msgstr "opens-with-enter-or-arrow"
+
+msgctxt "docs.api:prose"
+msgid "Keyboard navigation is opt-in: add `data-menu-navigation` to a vertical native popover with `role=\"menu\"` and load `@pantoken/interactions/menu.iife.js`, or call `initMenu(menu, button)`. Use one native `button[popovertarget]`. The behavior handles focus, arrows, Home/End, initial-character search, Escape, and activation; applications own actions and checked state. Submenus and menubars aren't supported."
+msgstr "Клавіатурна навігація вмикається за бажанням: додайте `data-menu-navigation` до вертикального нативного спливного вікна з `role=\"menu\"` і завантажте `@pantoken/interactions/menu.iife.js`, або викличте `initMenu(menu, button)`. Використовуйте один нативний `button[popovertarget]`. Механізм керує фокусом, стрілками, Home/End, пошуком за першим символом, Escape та активацією; застосунки відповідають за дії та стан позначення. Підменю та панелі меню не підтримуються."
+
+msgctxt "docs.api:prose"
+msgid "Name the menu and button. Use `menuitem` for actions, `menuitemcheckbox`/`menuitemradio` with `aria-checked` for checked actions, and `separator` for dividers. Add `aria-disabled=\"true\"` to disabled items; a CSS modifier alone doesn't convey disabled state. ARIA-disabled entries remain focusable but cannot activate; native-disabled and hidden entries are skipped."
+msgstr "Назвіть меню та кнопку. Використовуйте `menuitem` для дій, `menuitemcheckbox`/`menuitemradio` із `aria-checked` для дій із позначенням, а `separator` — для роздільників. Додайте `aria-disabled=\"true\"` до вимкнених пунктів; одного лише модифікатора CSS недостатньо, щоб передати стан вимкнення. Елементи з aria-disabled залишаються доступними для фокусу, але їх не можна активувати; вимкнені нативно та приховані елементи пропускаються."
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "WCAG 2.2 2.1.1, 2.4.3"
+msgstr "WCAG 2.2 2.1.1, 2.4.3"
+
+msgctxt "docs.api:prose"
+msgid "Give the divider `role=\"separator\"` so assistive technology can announce the break between items; without it the rule is purely decorative."
+msgstr "Задайте роздільнику `role=\"separator\"` так, щоб допоміжні технології могли оголосити про розділення між елементами; без нього лінія є суто декоративною."
+
+msgctxt "docs.api:prose"
+msgid "The `.value` and `.label` are separate elements, so keep them adjacent in source order to read together, and don't convey meaning through size alone."
+msgstr "`.value` і `.label` — це окремі елементи, тож розміщуйте їх поруч у вихідному порядку, щоб вони читалися разом, і не передавайте значення лише розміром."
+
+msgctxt "docs.api:prose"
+msgid "Place the body inside the dialog that the header labels, and give a lone full-bleed `<img>` alt text."
+msgstr "Розмістіть основний вміст у діалоговому вікні, яке позначає заголовок, і додайте альтернативний текст до окремого зображення на всю ширину `<img>`."
+
+msgctxt "docs.api:prose"
+msgid "Use real buttons in a logical focus order after the body, and include a visible dismiss action so keyboard users can close the dialog."
+msgstr "Використовуйте справжні кнопки в логічному порядку фокусування після основного вмісту та додайте видиму дію закриття, щоб користувачі клавіатури могли закрити діалогове вікно."
+
+msgctxt "docs.api:prose"
+msgid "Render the title as a real heading and point the dialog's `aria-labelledby` at it so the dialog is announced with its name."
+msgstr "Зробіть заголовок справжнім заголовком і вкажіть його в `aria-labelledby` діалогу, щоб діалог оголошувався з назвою."
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "escape-closes"
+msgstr "escape-closes"
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "focus-moves-into-dialog"
+msgstr "focus-moves-into-dialog"
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "focus-returns-to-trigger"
+msgstr "focus-returns-to-trigger"
+
+msgctxt "docs.api:prose"
+msgid "The dialog stayed open after Escape."
+msgstr "Діалог залишався відкритим після натискання Escape."
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "WCAG 2.2 2.4.3"
+msgstr "WCAG 2.2 2.4.3"
+
+msgctxt "docs.api:prose"
+msgid "The `.arrows` buttons are redundant pointer controls, hidden from assistive technology and excluded from sequential keyboard focus. Consumers wire pointer activation and keep focus on the input; the native number input provides keyboard increment/decrement."
+msgstr "Кнопки `.arrows` є дубльованими елементами керування вказівником, прихованими від допоміжних технологій і виключеними з послідовного переходу фокусу клавіатурою. Споживачі підключають активацію вказівником і залишають фокус на полі введення; вбудоване числове поле введення забезпечує збільшення та зменшення значення клавіатурою."
+
+msgctxt "docs.api:prose"
+msgid "Name the native `<input type=\"number\">` so it owns the value and keyboard controls. Mark redundant arrow buttons with both `aria-hidden=\"true\"` and `tabindex=\"-1\"`; never leave an assistive-technology-hidden button in the tab order."
+msgstr "Задайте ім’я вбудованому елементу `<input type=\"number\">`, щоб він керував значенням і клавіатурними елементами керування. Позначте дубльовані кнопки зі стрілками обома атрибутами — `aria-hidden=\"true\"` і `tabindex=\"-1\"`; ніколи не залишайте кнопку, приховану від допоміжних технологій, у порядку переходу фокусу."
+
+msgctxt "docs.api:prose"
+msgid "A scrollable region must work from the keyboard: give it `tabindex=\"0\"`, a role, and an accessible name (or make sure it contains a focusable control). Don't use `hidden` or `clip` to cut off content people need to read."
+msgstr "Область із прокручуванням має бути доступною з клавіатури: задайте їй `tabindex=\"0\"`, роль і доступну назву (або переконайтеся, що вона містить елемент керування, який можна сфокусувати). Не використовуйте `hidden` або `clip`, щоб приховати вміст, який людям потрібно прочитати."
+
+msgctxt "docs.api:prose"
+msgid "Mark the current page with `aria-current=\"page\"`, give each page an accessible name that includes the page number, and wrap the set in a `<nav>` with an `aria-label`."
+msgstr "Позначте поточну сторінку за допомогою `aria-current=\"page\"`, надайте кожній сторінці доступне ім’я, що містить її номер, і обгорніть набір у `<nav>` із `aria-label`."
+
+msgctxt "docs.api:prose"
+msgid "Unlike `badge`, which shows a count, or `tag`, which is removable, the pill is a static status label; its leading glyph is a masked `::before`, not an `<img>`. Let groups wrap with `flex-wrap: wrap` on their container so compact labels reflow on narrow screens."
+msgstr "На відміну від `badge`, що показує кількість, або `tag`, який можна видалити, мітка-капсула є статичною міткою стану; її початковий гліф — це замаскований `::before`, а не `<img>`. Дозвольте групам переноситися на новий рядок за допомогою `flex-wrap: wrap` на їхньому контейнері, щоб компактні мітки перерозміщувалися на вузьких екранах."
+
+msgctxt "docs.api:prose"
+msgid "The status colors are visual only, so state the status in the label text or a visually hidden label. The leading glyph is a masked `::before` and isn't announced."
+msgstr "Кольори стану передають інформацію лише візуально, тому вкажіть стан у тексті мітки або у візуально прихованій мітці. Початковий гліф — це замаскований `::before`, який не озвучується."
+
+msgctxt "docs.api:prose"
+msgid "Wire the trigger with `popovertarget` so the expanded state is exposed. A native popover closes on Escape and outside click but doesn't move focus, so move focus into interactive content when the popover opens."
+msgstr "Під’єднайте тригер за допомогою `popovertarget`, щоб показати розгорнутий стан. Вбудований popover закривається клавішею Escape та клацанням поза ним, але не переміщує фокус, тож під час відкриття перемістіть фокус на інтерактивний вміст."
+
+msgctxt "docs.api:prose"
+msgid "Positioning changes where content appears, not where it sits in the DOM: keep the visual order matching the reading and focus order, and don't let positioned content cover a focused control."
+msgstr "Позиціювання змінює місце відображення вмісту, а не його місце в DOM: зберігайте відповідність візуального порядку порядку читання та фокусування й не допускайте, щоб позиційований вміст перекривав елемент керування у фокусі."
+
+msgctxt "docs.api:prose"
+msgid "`.value` is a sibling of `.bar`, both children of the root — mirroring how progress-circle nests its own `.value` part. Native `<progress>` and `<meter>` use vendor value parts with the same semantic fill. InstUI has no indeterminate state; `:indeterminate` is a pantoken-only best guess (native `<progress>` without a `value` attribute), using a CSS-owned sliding segment and hiding `.value` since there's no meaningful number to show. Reduced motion keeps a static segment; `<meter>` has no indeterminate state."
+msgstr "`.value` є сусідом `.bar`, обидва — нащадки кореневого елемента, як progress-circle містить власну частину `.value`. Нативні `<progress>` і `<meter>` використовують частини значення від браузера з таким самим семантичним заповненням. InstUI не має невизначеного стану; `:indeterminate` — це лише найкраще припущення pantoken (нативний `<progress>` без атрибута `value`attribute), із рухомим сегментом, керованим CSS, і прихованим `.value`, адже немає змістовного числа для відображення. За зменшеного руху сегмент залишається статичним; `<meter>` не має невизначеного стану."
+
+msgctxt "docs.api:prose"
+msgid "Custom, not part of InstUI. Applies only to a native `<progress>` missing its `value` attribute; draws a sliding segment on `::before` and hides `.value`."
+msgstr "Власний, не є частиною InstUI. Застосовується лише до нативного `<progress>`, якому бракує атрибута `value`; малює рухомий сегмент на `::before` і приховує `.value`."
+
+msgctxt "docs.api:prose"
+msgid "Draws the native indeterminate segment without relying on the browser's built-in animation."
+msgstr "Малює нативний невизначений сегмент, не покладаючись на вбудовану анімацію браузера."
+
+msgctxt "docs.api:prose"
+msgid "The native value part and `.bar` fill; the -color-* modifiers set it."
+msgstr "Нативна частина значення та заповнення `.bar`; модифікатори -color-* задають його."
+
+msgctxt "docs.api:prose"
+msgid " With prefers-contrast: more, one piece of text falls below the minimum contrast. The worst is \"30%\" at 1:1 (needs 4.5:1)."
+msgstr " За prefers-contrast: more один фрагмент тексту має контраст нижче мінімального. Найгірший — \"30%\" із контрастом 1:1 (потрібно 4.5:1)."
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "Rebrand (dark), Canvas, Canvas High Contrast:"
+msgstr "Rebrand (dark), Canvas, Canvas High Contrast:"
+
+msgctxt "docs.api:prose"
+msgid " With line height 1.5, letter spacing 0.12em, word spacing 0.16em, and paragraph spacing 2em, text in one element gets cut off: "
+msgstr " За висоти рядка 1.5, міжлітерного інтервалу 0.12em, міжслівного інтервалу 0.16em і інтервалу між абзацами 2em текст в одному елементі обрізається: "
+
+msgctxt "docs.api:prose"
+msgid " (\"Working\"). Overlapping text isn't checked."
+msgstr " (\"Працює\"). Перекриття тексту не перевіряється."
+
+msgctxt "docs.api:prose"
+msgid "The defaults keep headings in a logical order and links underlined with an interactive colour, so they don't rely on colour alone. Don't skip heading levels for visual size, and don't remove the link underline without another cue."
+msgstr "Типові налаштування забезпечують логічний порядок заголовків і підкреслення посилань інтерактивним кольором, тож вони не покладаються лише на колір. Не пропускайте рівні заголовків заради візуального розміру й не прибирайте підкреслення посилань без іншої візуальної підказки."
+
+msgctxt "docs.api:prose"
+msgid "Sweatshirt size"
+msgstr "Розмір світшота"
+
+msgctxt "docs.api:prose"
+msgid "Use a native `<fieldset>` with a `<legend>` that names the group. Radios within a group share one `name`; independent groups need distinct names and legends so selecting one group's radio doesn't clear another group's selection."
+msgstr "Використовуйте нативний `<fieldset>` із `<legend>`, що називає групу. Радіокнопки в межах групи мають спільний `name`; незалежним групам потрібні різні назви й легенди, щоб вибір радіокнопки в одній групі не скасовував вибір в іншій."
+
+msgctxt "docs.api:prose"
+msgid " With prefers-contrast: less, one piece of text falls below the minimum contrast. The worst is \"Large unavailable\" at 2.74:1 (needs 4.5:1). Softer contrast is fine only while text stays readable."
+msgstr " За prefers-contrast: less один фрагмент тексту має контрастність нижчу за мінімально допустиму. Найгірший показник у «Великий, недоступний» — 2.74:1 (потрібно 4.5:1). М’якший контраст прийнятний лише за умови, що текст залишається читабельним."
+
+msgctxt "docs.api:prose"
+msgid " With prefers-contrast: less, one piece of text falls below the minimum contrast. The worst is \"Large unavailable\" at 3.15:1 (needs 4.5:1). Softer contrast is fine only while text stays readable."
+msgstr " За prefers-contrast: less один фрагмент тексту має контрастність нижчу за мінімально допустиму. Найгірший показник у «Великий, недоступний» — 3.15:1 (потрібно 4.5:1). М’якший контраст прийнятний лише за умови, що текст залишається читабельним."
+
+msgctxt "docs.api:prose"
+msgid " With prefers-contrast: less, one piece of text falls below the minimum contrast. The worst is \"Large unavailable\" at 3.02:1 (needs 4.5:1). Softer contrast is fine only while text stays readable."
+msgstr " За prefers-contrast: less один фрагмент тексту має контрастність нижчу за мінімально допустиму. Найгірший показник у «Великий, недоступний» — 3.02:1 (потрібно 4.5:1). М’якший контраст прийнятний лише за умови, що текст залишається читабельним."
+
+msgctxt "docs.api:prose"
+msgid " All 13 measured pieces of text stay above the minimum. one other piece can't be reduced to one color. \"Large\" can't be measured because an element behind it is partly transparent."
+msgstr " Усі 13 виміряних фрагментів тексту мають показники вище мінімально допустимого рівня. Ще один фрагмент не можна звести до одного кольору. Неможливо виміряти «Великий», оскільки елемент позаду нього частково прозорий."
+
+msgctxt "docs.api:prose"
+msgid " With prefers-contrast: more, one piece of text falls below the minimum contrast. The worst is \"Large unavailable\" at 2.74:1 (needs 4.5:1)."
+msgstr " За prefers-contrast: more один фрагмент тексту має контрастність нижчу за мінімально допустиму. Найгірший показник у «Великий, недоступний» — 2.74:1 (потрібно 4.5:1)."
+
+msgctxt "docs.api:prose"
+msgid " With prefers-contrast: more, one piece of text falls below the minimum contrast. The worst is \"Large unavailable\" at 3.15:1 (needs 4.5:1)."
+msgstr " За prefers-contrast: more один фрагмент тексту має контрастність нижчу за мінімально допустиму. Найгірший показник у «Великий, недоступний» — 3.15:1 (потрібно 4.5:1)."
+
+msgctxt "docs.api:prose"
+msgid " With prefers-contrast: more, one piece of text falls below the minimum contrast. The worst is \"Large unavailable\" at 3.02:1 (needs 4.5:1)."
+msgstr " За prefers-contrast: more один фрагмент тексту має контрастність нижчу за мінімально допустиму. Найгірший показник у «Великий, недоступний» — 3.02:1 (потрібно 4.5:1)."
+
+msgctxt "docs.api:prose"
+msgid " All 13 measured pieces of text pass with more contrast. one other piece can't be reduced to one color. \"Large\" can't be measured because an element behind it is partly transparent."
+msgstr " Усі 13 виміряних фрагментів тексту мають достатній контраст. Ще один фрагмент не можна звести до одного кольору. Неможливо виміряти «Великий», оскільки елемент позаду нього частково прозорий."
+
+msgctxt "docs.api:prose"
+msgid " With prefers-contrast: less, six pieces of text fall below the minimum contrast. The worst is \"Warning selected\" at 1.67:1 (needs 4.5:1). Softer contrast is fine only while text stays readable."
+msgstr " За prefers-contrast: less, контраст шести фрагментів тексту нижчий за мінімальний. Найгірший результат — «Попередження вибрано»: 1.67:1 (потрібно 4.5:1). Менш різкий контраст прийнятний, лише якщо текст залишається читабельним."
+
+msgctxt "docs.api:prose"
+msgid " With prefers-contrast: less, four pieces of text fall below the minimum contrast. The worst is \"Disabled unselected\" at 3.15:1 (needs 4.5:1). Softer contrast is fine only while text stays readable."
+msgstr " За prefers-contrast: less, контраст чотирьох фрагментів тексту нижчий за мінімальний. Найгірший результат — «Вимкнено, не вибрано»: 3.15:1 (потрібно 4.5:1). Менш різкий контраст прийнятний, лише якщо текст залишається читабельним."
+
+msgctxt "docs.api:prose"
+msgid " With prefers-contrast: less, four pieces of text fall below the minimum contrast. The worst is \"Disabled unselected\" at 3.02:1 (needs 4.5:1). Softer contrast is fine only while text stays readable."
+msgstr " За prefers-contrast: less, контраст чотирьох фрагментів тексту нижчий за мінімальний. Найгірший результат — «Вимкнено, не вибрано»: 3.02:1 (потрібно 4.5:1). Менш різкий контраст прийнятний, лише якщо текст залишається читабельним."
+
+msgctxt "docs.api:prose"
+msgid " All 31 measured pieces of text stay above the minimum. two other pieces can't be reduced to one color. \"Disabled unselected\" can't be measured because an element behind it is partly transparent."
+msgstr " Усі 31 виміряні фрагменти тексту відповідають мінімальним вимогам. Ще два фрагменти неможливо звести до одного кольору. Неможливо виміряти «Вимкнено, не вибрано», оскільки елемент позаду нього частково прозорий."
+
+msgctxt "docs.api:prose"
+msgid " With prefers-contrast: more, six pieces of text fall below the minimum contrast. The worst is \"Warning selected\" at 1.67:1 (needs 4.5:1)."
+msgstr " За prefers-contrast: more, контраст шести фрагментів тексту нижчий за мінімальний. Найгірший результат — «Попередження вибрано»: 1.67:1 (потрібно 4.5:1)."
+
+msgctxt "docs.api:prose"
+msgid " With prefers-contrast: more, four pieces of text fall below the minimum contrast. The worst is \"Disabled unselected\" at 3.15:1 (needs 4.5:1)."
+msgstr " За prefers-contrast: more, контраст чотирьох фрагментів тексту нижчий за мінімальний. Найгірший результат — «Вимкнено, не вибрано»: 3.15:1 (потрібно 4.5:1)."
+
+msgctxt "docs.api:prose"
+msgid " With prefers-contrast: more, four pieces of text fall below the minimum contrast. The worst is \"Disabled unselected\" at 3.02:1 (needs 4.5:1)."
+msgstr " За prefers-contrast: more, контраст чотирьох фрагментів тексту нижчий за мінімальний. Найгірший результат — «Вимкнено, не вибрано»: 3.02:1 (потрібно 4.5:1)."
+
+msgctxt "docs.api:prose"
+msgid " All 31 measured pieces of text pass with more contrast. two other pieces can't be reduced to one color. \"Disabled unselected\" can't be measured because an element behind it is partly transparent."
+msgstr " Усі 31 виміряні фрагменти тексту відповідають вимогам підвищеного контрасту. Ще два фрагменти неможливо звести до одного кольору. Неможливо виміряти «Вимкнено, не вибрано», оскільки елемент позаду нього частково прозорий."
+
+msgctxt "docs.api:prose"
+msgid "The control is a native `<input type=\"range\">`; give it an accessible name with `aria-label` or an associated `<label>`. Forced colors use a system-color outline because the thumb's box-shadow focus ring doesn't survive that mode."
+msgstr "Цей елемент керування є нативним `<input type=\"range\">`; надайте йому доступну назву за допомогою `aria-label` або пов’яжіть із ним `<label>`. У режимі примусових кольорів використовується контур системного кольору, оскільки кільце фокусу box-shadow повзунка не зберігається в цьому режимі."
+
+msgctxt "docs.api:prose"
+msgid "Hiding content at a breakpoint also hides it from assistive tech, so don't hide the only way to complete a task, and keep the shown and hidden versions equivalent in meaning."
+msgstr "Приховування вмісту на брейкпойнті також робить його недоступним для допоміжних технологій, тож не приховуйте єдиний спосіб виконати завдання та стежте, щоб видимий і прихований варіанти мали однаковий зміст."
+
+msgctxt "docs.api:prose"
+msgid "With forced colors on, nothing visible changed when the control took focus. A focus ring drawn with box-shadow or a background color disappears in forced colors. Use an outline."
+msgstr "Коли режим примусового відображення кольорів увімкнено, після отримання елементом керування фокуса нічого видимого не змінилося. Кільце фокуса, намальоване за допомогою box-shadow або кольору тла, зникає в режимі примусового відображення кольорів. Використовуйте outline."
+
+msgctxt "docs.api:prose"
+msgid " With prefers-contrast: less, three pieces of text fall below the minimum contrast. The worst is \"Grades\" at 1.48:1 (needs 4.5:1). Softer contrast is fine only while text stays readable."
+msgstr " За prefers-contrast: less три фрагменти тексту мають контраст нижчий за мінімальний. Найгірший показник у \"Оцінки\" — 1.48:1 (потрібно 4.5:1). М’якший контраст прийнятний, лише якщо текст залишається читабельним."
+
+msgctxt "docs.api:prose"
+msgid " With prefers-contrast: less, three pieces of text fall below the minimum contrast. The worst is \"Grades\" at 1.38:1 (needs 4.5:1). Softer contrast is fine only while text stays readable."
+msgstr " За prefers-contrast: less три фрагменти тексту мають контраст нижчий за мінімальний. Найгірший показник у \"Оцінки\" — 1.38:1 (потрібно 4.5:1). М’якший контраст прийнятний, лише якщо текст залишається читабельним."
+
+msgctxt "docs.api:prose"
+msgid "Mark the active entry with `aria-current=\"page\"` as well as `-selected`, and keep an accessible name, such as `aria-label`, when the parent's `-minimized` modifier hides the `.label`."
+msgstr "Позначте активний елемент за допомогою `aria-current=\"page\"`, а також `-selected`, і задайте доступне ім’я, наприклад `aria-label`, якщо модифікатор батьківського елемента `-minimized` приховує `.label`."
+
+msgctxt "docs.api:prose"
+msgid "It's a native `<select>`, so role, keyboard support, and option announcement come from the browser; associate it with a visible `<label>` and convey errors in text, not color alone."
+msgstr "Це нативний `<select>`, тому роль, підтримка клавіатури й оголошення параметра забезпечуються браузером; пов’яжіть його з видимою `<label>` і передавайте інформацію про помилки текстом, а не лише кольором."
+
+msgctxt "docs.api:prose"
+msgid "Spacing is visual only: use it to keep text and controls from crowding, not to convey structure — use headings, lists, and landmarks for that. Leave enough space around interactive targets for WCAG 2.5.8, and don't rely on fixed spacing that breaks when users increase text spacing."
+msgstr "Інтервали мають лише візуальне призначення: використовуйте їх, щоб текст і елементи керування не були затісно розташовані, а не для передавання структури — для цього використовуйте заголовки, списки та орієнтири. Залишайте достатньо місця навколо інтерактивних елементів відповідно до WCAG 2.5.8 і не покладайтеся на фіксовані інтервали, які порушуються, коли користувачі збільшують міжрядкові або міжсимвольні інтервали."
+
+msgctxt "docs.api:prose"
+msgid "With reduced motion enabled, the ring or AI glyph remains visible without rotation; keep the loading status and label while work is pending."
+msgstr "За ввімкненого режиму зменшення руху кільце або піктограма ШІ залишаються видимими без обертання; поки триває робота, зберігайте статус завантаження та мітку."
+
+msgctxt "docs.api:prose"
+msgid "Stacking order is visual only: a layered surface that covers focusable content hides the focus indicator. Overlays that take over the page also need focus management and an accessible name."
+msgstr "Порядок накладання має лише візуальне значення: багатошарова поверхня, що закриває елементи, до яких можна перейти фокусом, приховує індикатор фокуса. Для накладок, що перекривають сторінку, також потрібні керування фокусом і доступна назва."
+
+msgctxt "docs.api:prose"
+msgid "Use a native `<tbody>` so row and cell relationships are exposed. The parent's `-layout-stacked` changes `display`, which can drop table semantics in some browsers, so add explicit table roles when you use it."
+msgstr "Використовуйте нативний `<tbody>`, щоб зробити зв’язки між рядками та комірками доступними. `-layout-stacked` батьківського елемента змінює `display`, через що в деяких браузерах можуть втрачатися семантичні властивості таблиці. Тому, використовуючи його, явно задавайте ролі таблиці."
+
+msgctxt "docs.api:prose"
+msgid "Use a native `<td>`. In `-layout-stacked` the column label is generated content that assistive technology may not announce reliably, so keep the column relationship available, for example with `headers`."
+msgstr "Використовуйте нативний `<td>`. У `-layout-stacked` мітка стовпця є згенерованим вмістом, який допоміжні технології можуть оголошувати ненадійно, тому збережіть зв’язок зі стовпцем доступним, наприклад за допомогою `headers`."
+
+msgctxt "docs.api:prose"
+msgid "Use `<th scope=\"col\">` so each column header is associated with the cells beneath it."
+msgstr "Використовуйте `<th scope=\"col\">` так, щоб кожен заголовок стовпця був пов’язаний із клітинками під ним."
+
+msgctxt "docs.api:prose"
+msgid "Use a native `<thead>`. `-layout-stacked` hides it visually, so keep it in the DOM, not `display: none`, to preserve column names for assistive technology."
+msgstr "Використовуйте нативний `<thead>`. `-layout-stacked` візуально приховує його, тому залишайте його в DOM, а не `display: none`, щоб зберегти назви стовпців для допоміжних технологій."
+
+msgctxt "docs.api:prose"
+msgid "For tables that must retain their columns, use a named, keyboard-focusable `--overflow-x-auto` container instead. Use `-without-focus-animation` for an immediately visible focus outline and the caption to name the region."
+msgstr "Для таблиць, які мають зберігати стовпці, натомість використовуйте іменований контейнер `--overflow-x-auto`, доступний для фокусування клавіатурою. Використовуйте `-without-focus-animation` для чітко видимого контуру фокуса, а підписом назвіть область."
+
+msgctxt "docs.api:prose"
+msgid "Responsive film ratings"
+msgstr "Адаптивні оцінки фільмів"
+
+msgctxt "docs.api:prose"
+msgid "Use stacked cards below the canonical `md` container breakpoint; preserve columns at and above it. Requires per-cell `data-label` values and a size-container ancestor. @affects table.head @affects table.body @affects table.row @affects table.cell @affects table.col-header @affects table.row-header — Applies the existing stacked presentation only in a narrow container."
+msgstr "Використовуйте картки, розташовані одна під одною, якщо ширина контейнера менша за канонічну контрольну точку `md`; на цій ширині та більшій зберігайте стовпці. Потрібні значення `data-label` для кожної комірки та предок із контейнером розміру. @affects table.head @affects table.body @affects table.row @affects table.cell @affects table.col-header @affects table.row-header — Застосовує наявне компонування карток лише у вузькому контейнері."
+
+msgctxt "docs.api:prose"
+msgid "Label the table with a `<caption>`, mark column headers `<th scope=\"col\">` and row headers `<th scope=\"row\">`, and in stacked or responsive layouts give every cell a localized `data-label` matching its column header. Keep the native header associations; visible generated labels don't replace them. Name scroll regions and provide keyboard access without trapping focus."
+msgstr "Позначте таблицю за допомогою `<caption>`, позначте заголовки стовпців як `<th scope=\"col\">`, а заголовки рядків — як `<th scope=\"row\">`. У компонуванні зі стосом карток або адаптивному компонуванні додайте кожній комірці локалізований `data-label`, що відповідає заголовку її стовпця. Зберігайте нативні зв’язки із заголовками; видимі згенеровані мітки їх не замінюють. Називайте області прокручування та забезпечуйте доступ до них із клавіатури, не захоплюючи фокус."
+
+msgctxt "docs.api:prose"
+msgid "Use `<th scope=\"row\">` so the cell names its row for assistive technology."
+msgstr "Використовуйте `<th scope=\"row\">` щоб комірка називала свій рядок для допоміжних технологій."
+
+msgctxt "docs.api:prose"
+msgid "Use a native `<tr>`. The `-hover` styling is visual only, so give a clickable row a real control rather than relying on the highlight."
+msgstr "Використовуйте нативний `<tr>`. Стилізація `-hover` є лише візуальною, тому додайте рядку, на який можна натиснути, справжній елемент керування, а не покладайтеся на підсвічування."
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "arrow-keys-move-between-tabs"
+msgstr "arrow-keys-move-between-tabs"
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "home-and-end-work"
+msgstr "home-and-end-work"
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "selected-state-exposed"
+msgstr "selected-state-exposed"
+
+msgctxt "docs.api:prose"
+msgid "All six measured pieces of text pass with more contrast. two other pieces can't be reduced to one color. \"Billing\" can't be measured because an element behind it is partly transparent."
+msgstr "Усі шість виміряних фрагментів тексту мають кращий контраст. Два інші фрагменти неможливо звести до одного кольору. \"Billing\" неможливо виміряти, оскільки елемент позаду нього частково прозорий."
+
+msgctxt "docs.api:prose"
+msgid "End didn't move to the last tab."
+msgstr "Клавіша End не перемістила фокус на останню вкладку."
+
+msgctxt "docs.api:prose"
+msgid "3 tabs are aria-selected=\"true\". A tab list should have exactly one."
+msgstr "3 вкладки мають aria-selected=\"true\". У списку вкладок має бути рівно одна."
+
+msgctxt "docs.api:prose"
+msgid "Give each panel `role=\"tabpanel\"` and an `aria-labelledby` that references its tab, and keep inactive panels `hidden`."
+msgstr "Надайте кожній панелі `role=\"tabpanel\"` і `aria-labelledby`, який посилається на її вкладку, і залишайте неактивні панелі `hidden`."
+
+msgctxt "docs.api:prose"
+msgid "Use `role=\"tab\"` inside a `role=\"tablist\"`, mirror `-selected` with `aria-selected`, point `aria-controls` at the panel, and mark a disabled tab with `aria-disabled` or the native `disabled`."
+msgstr "Використовуйте `role=\"tab\"` усередині `role=\"tablist\"`, віддзеркалюйте `-selected` за допомогою `aria-selected`, спрямовуйте `aria-controls` на панель і позначайте вимкнену вкладку за допомогою `aria-disabled` або нативного `disabled`."
+
+msgctxt "docs.api:prose"
+msgid "All four measured pieces of text pass with more contrast. two other pieces can't be reduced to one color. \"Billing\" can't be measured because an element behind it is partly transparent."
+msgstr "Усі чотири виміряні фрагменти тексту проходять перевірку з вищою контрастністю. два інші фрагменти не можна звести до одного кольору. \"Оплата\" не піддається вимірюванню, оскільки елемент позаду неї частково прозорий."
+
+msgctxt "docs.api:prose"
+msgid "Don't rely on color alone to distinguish tags. Give a removable tag's dismiss control an accessible name that includes the tag text, for example `aria-label=\"Remove Biology\"`."
+msgstr "Не покладайтеся лише на колір, щоб розрізняти теги. Надайте елементу керування для закриття тегу, який можна видалити, доступну назву, що містить текст тегу, наприклад `aria-label=\"Remove Biology\"`."
+
+msgctxt "docs.api:prose"
+msgid "Associate the field with a visible `<label>`, use `aria-invalid` and `disabled` for state, and explain errors in text, not border color alone."
+msgstr " Пов’яжіть поле з видимим `<label>`, використовуйте `aria-invalid` і `disabled` для стану, а про помилки повідомляйте текстом, а не лише кольором межі."
+
+msgctxt "docs.api:prose"
+msgid " With prefers-contrast: more, one piece of text falls below the minimum contrast. The worst is \"A saved comment.\" at 2.51:1 (needs 4.5:1)."
+msgstr " За prefers-contrast: more один фрагмент тексту має контраст нижче мінімального. Найгірший показник у «Збережений коментар.» — 2.51:1 (потрібно 4.5:1)."
+
+msgctxt "docs.api:prose"
+msgid " With prefers-contrast: more, one piece of text falls below the minimum contrast. The worst is \"A saved comment.\" at 4.08:1 (needs 4.5:1)."
+msgstr " За prefers-contrast: more один фрагмент тексту має контраст нижче мінімального. Найгірший показник у «Збережений коментар.» — 4.08:1 (потрібно 4.5:1)."
+
+msgctxt "docs.api:prose"
+msgid " With prefers-contrast: more, one piece of text falls below the minimum contrast. The worst is \"A saved comment.\" at 2.74:1 (needs 4.5:1)."
+msgstr " За prefers-contrast: more один фрагмент тексту має контраст нижче мінімального. Найгірший показник у «Збережений коментар.» — 2.74:1 (потрібно 4.5:1)."
+
+msgctxt "docs.api:prose"
+msgid " With prefers-contrast: more, one piece of text falls below the minimum contrast. The worst is \"A saved comment.\" at 4.11:1 (needs 4.5:1)."
+msgstr " За prefers-contrast: more один фрагмент тексту має контраст нижче мінімального. Найгірший показник у «Збережений коментар.» — 4.11:1 (потрібно 4.5:1)."
+
+msgctxt "docs.api:prose"
+msgid "Associate the field with a visible `<label>`, use `aria-invalid` and `disabled` for state, and explain errors in text, not border color alone. Date and time types use the browser's own picker and keyboard support."
+msgstr "Пов’яжіть поле з видимим `<label>`, використовуйте `aria-invalid` та `disabled` для позначення стану й пояснюйте помилки текстом, а не лише кольором межі. Для типів дати й часу використовуються власний засіб вибору браузера та підтримка клавіатури."
+
+msgctxt "docs.api:prose"
+msgid "It sets appearance only and renders no semantics, so use `<p>`, `<strong>`, `<em>`, and similar elements for meaning, and check contrast of each `-color-*` against its background, especially the inverse colors."
+msgstr "Він задає лише зовнішній вигляд і не передає семантики, тож використовуйте `<p>`, `<strong>`, `<em>` та подібні елементи для передавання значення, а також перевіряйте контраст кожного `-color-*` з його тлом, особливо для інверсних кольорів."
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "enter-toggles"
+msgstr "enter-toggles"
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "expanded-state-exposed"
+msgstr "expanded-state-exposed"
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "space-toggles"
+msgstr "space-toggles"
+
+msgctxt "docs.api:prose"
+msgid "With reduced motion enabled, the chevron changes direction immediately; native disclosure state and keyboard operation remain unchanged."
+msgstr "Коли ввімкнено режим зменшення руху, шеврон негайно змінює напрямок; нативний стан розкриття та робота з клавіатурою залишаються незмінними."
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "WCAG 2.2 2.1.1, 4.1.2"
+msgstr "WCAG 2.2 2.1.1, 4.1.2"
+
+msgctxt "docs.api:prose"
+msgid "Built on native `<details>`, which exposes the expanded state and toggles with Enter and Space; keep the `<summary>` first and give it descriptive text."
+msgstr "Побудовано на нативному `<details>`, який надає стан розгорнутості та перемикається клавішами Enter і Space; залиште `<summary>` першим і надайте йому описовий текст."
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "appears-on-focus"
+msgstr "appears-on-focus"
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "content-reachable-on-hover"
+msgstr "content-reachable-on-hover"
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "escape-dismisses"
+msgstr "escape-dismisses"
+
+msgctxt "docs.api:prose"
+msgid "`.instui-tooltip` — A hover and focus tooltip bubble, positionable on any side."
+msgstr "`.instui-tooltip` — Спливаюча підказка для наведення та фокуса, яку можна розмістити з будь-якого боку."
+
+msgctxt "docs.api:prose"
+msgid "Load `@pantoken/interactions/tooltip.iife.js` for managed delays, Escape dismissal, and combined pointer/focus state. Without JavaScript, hover/focus remains a fallback without Escape or delay guarantees. Use a popover for interactive content."
+msgstr "Завантажте `@pantoken/interactions/tooltip.iife.js` для керування затримками, закриття клавішею Escape та відстеження стану вказівника й фокуса. Без JavaScript наведення та фокус залишаються запасним варіантом, але без гарантій щодо Escape чи затримки. Для інтерактивного вмісту використовуйте спливне вікно."
+
+msgctxt "docs.api:prose"
+msgid "The bubble; `-placement-*` sets its preferred side. Initialized tooltips flip/clamp to fit the viewport."
+msgstr "Спливаюча підказка; `-placement-*` задає бажаний бік. Ініціалізовані підказки змінюють бік або зміщуються, щоб уміститися у вікні перегляду."
+
+msgctxt "docs.api:prose"
+msgid "Use a named, focusable trigger with aria-describedby pointing at the role=\"tooltip\" bubble. Keep the content noninteractive. Initialized tooltips stay dismissed after Escape until both pointer and focus leave; the next entry can reopen them."
+msgstr "Використовуйте іменований елемент, що може отримати фокус, як тригер, і вкажіть в aria-describedby елемент підказки з role=\"tooltip\". Не додавайте до вмісту інтерактивні елементи. Ініціалізовані підказки залишаються закритими після натискання Escape, доки вказівник і фокус не залишать їх; під час наступного наведення або фокусування вони можуть відкритися знову."
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "WCAG 2.2 1.4.13"
+msgstr "WCAG 2.2 1.4.13"
+
+msgctxt "docs.api:prose"
+msgid "The classes only animate, so provide a `prefers-reduced-motion` alternative for large movement and don't convey essential state through the transition alone."
+msgstr "Класи лише анімують, тому для значного переміщення передбачте `prefers-reduced-motion` альтернативу й не передавайте важливий стан лише через перехід."
+
+msgctxt "docs.api:prose"
+msgid "`.instui-tree-browser` — A tree of nested collections and leaf items, with rotating chevrons."
+msgstr "`.instui-tree-browser` — Дерево вкладених колекцій і кінцевих елементів із шевронами, що обертаються."
+
+msgctxt "docs.api:prose"
+msgid "Load the tree-browser interaction bundle for ARIA-tree keyboard navigation and expansion. Native `<details>` markup remains a CSS-only disclosure fallback; don't give that fallback ARIA-tree roles."
+msgstr "Завантажте пакет взаємодії tree-browser для клавіатурної навігації деревом ARIA та розгортання. Нативна розмітка `<details>` залишається резервним механізмом розкриття лише на CSS; не призначайте цьому резервному механізму ролі дерева ARIA."
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "Syllabus.pdf"
+msgstr "Syllabus.pdf"
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "Reading.pdf"
+msgstr "Reading.pdf"
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "Slides.pptx"
+msgstr "Slides.pptx"
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "Rubric.docx"
+msgstr "Rubric.docx"
+
+msgctxt "docs.api:prose"
+msgid "Name the `role=\"tree\"` root, use focusable `role=\"treeitem\"` nodes, and associate each collection with its `role=\"group\"` via `aria-owns`. Load `@pantoken/interactions/tree-browser.iife.js` for one tab stop and synchronized expansion. Add `aria-selected` to opt into single selection; focus alone doesn't select."
+msgstr "Назвіть кореневий елемент `role=\"tree\"`, використовуйте фокусовані вузли `role=\"treeitem\"` і зв’яжіть кожну колекцію з її `role=\"group\"` за допомогою `aria-owns`. Завантажте `@pantoken/interactions/tree-browser.iife.js` для однієї позиції табуляції та синхронізованого розгортання. Додайте `aria-selected`, щоб увімкнути одиночний вибір; сам фокус не означає вибір."
+
+msgctxt "docs.api:prose"
+msgid "Truncation hides overflowing text visually while it stays in the DOM, so don't clip information people need (titles, errors, instructions) and keep the full text available another way. Check that clipped text still reads correctly when zoomed or resized."
+msgstr "Обрізання візуально приховує текст, що виходить за межі, хоча він залишається в DOM, тож не обрізайте інформацію, яка потрібна людям (заголовки, помилки, інструкції) і забезпечте доступ до повного тексту іншим способом. Переконайтеся, що обрізаний текст залишається читабельним під час масштабування або зміни розміру."
+
+msgctxt "docs.api:prose"
+msgid "With line height 1.5, letter spacing 0.12em, word spacing 0.16em, and paragraph spacing 2em, text in one element gets cut off: "
+msgstr "За висоти рядка 1.5, міжлітерного інтервалу 0.12em, інтервалу між словами 0.16em і інтервалу між абзацами 2em текст в одному елементі обрізається: "
+
+msgctxt "docs.api:prose"
+msgid " (\"Quarterly planning notes for t\"). Overlapping text isn't checked."
+msgstr " (\"Нотатки щодо квартального планування для т\"). Перекриття тексту не перевіряється."
+
+msgctxt "docs.api:prose"
+msgid "It's a neutral box with no semantics, so use semantic elements or ARIA roles for meaning and keep sufficient contrast between its background, border, and content."
+msgstr "Це нейтральний блок без семантичного значення, тому використовуйте семантичні елементи або ролі ARIA для позначення призначення та забезпечте достатній контраст між фоном, рамкою й вмістом."
+
+msgctxt "docs.api:prose"
+msgid " With prefers-contrast: more, one piece of text falls below the minimum contrast. The worst is \"Notes unavailable\" at 1.98:1 (needs 4.5:1)."
+msgstr " За prefers-contrast: more контраст одного текстового елемента нижчий за мінімально допустимий. Найгірший показник у «Нотатки недоступні»: 1.98:1 (потрібно 4.5:1)."
+
+msgctxt "docs.api:prose"
+msgid " With prefers-contrast: more, one piece of text falls below the minimum contrast. The worst is \"Notes unavailable\" at 2.67:1 (needs 4.5:1)."
+msgstr " За prefers-contrast: more контраст одного текстового елемента нижчий за мінімально допустимий. Найгірший показник у «Нотатки недоступні»: 2.67:1 (потрібно 4.5:1)."
+
+msgctxt "docs.api:prose"
+msgid " With prefers-contrast: more, one piece of text falls below the minimum contrast. The worst is \"Notes unavailable\" at 1.99:1 (needs 4.5:1)."
+msgstr " За prefers-contrast: more контраст одного текстового елемента нижчий за мінімально допустимий. Найгірший показник у «Нотатки недоступні»: 1.99:1 (потрібно 4.5:1)."
+
+msgctxt "docs.api:prose"
+msgid "With prefers-reduced-transparency: reduce, one surface holding text stays see-through: "
+msgstr "За prefers-reduced-transparency: reduce одна поверхня з текстом залишається напівпрозорою: "
+
+msgctxt "docs.api:prose"
+msgid " (30% opaque). Without the preference there were one. This preference isn't a WCAG requirement. It matters because see-through backgrounds make text contrast unpredictable."
+msgstr " (30% непрозорості). Без цієї настройки таких поверхонь було: 1. Ця настройка не є вимогою WCAG. Вона важлива, оскільки напівпрозоре тло ускладнює передбачення контрасту тексту."
+
+msgctxt "docs.api:prose"
+msgid "Dismiss strategy:\n- `<dialog>` → `dialog.close()`\n- `[popover]` → `el.hidePopover()`\n- `.instui-alert` or `.instui-banner` (per `options.prefix`) → cancelable `dismiss` event, then fade out and remove\n- `[data-dismissible]` or `[open]` → remove open attr + fire bubbling `close`"
+msgstr "Стратегія закриття:\n- `<dialog>` → `dialog.close()`\n- `[popover]` → `el.hidePopover()`\n- `.instui-alert` або `.instui-banner` (за `options.prefix`) → скасовуваною `dismiss` подією, потім згасити й видалити\n- `[data-dismissible]` або `[open]` → видалити атрибут open + ініціювати спливну `close`"
+
+msgctxt "docs.api:prose"
+msgid "Associate an authored error after blur, native invalid events, or explicit validation.\nUntouched fields stay quiet; edited fields revalidate after the first validation attempt.\nPreserves hint references and uses native constraints, including `setCustomValidity()`.\nThe host must contain the control and a separate, named error element with message text.\nClean up and reinitialize after moving controls between forms or changing error IDs."
+msgstr "Пов’язуйте вручну задану помилку після втрати фокуса, нативних подій недійсного значення або явної перевірки.\nНезмінені поля не показують помилок; змінені поля повторно перевіряються після першої спроби перевірки.\nЗберігає посилання на підказки та використовує нативні обмеження, зокрема `setCustomValidity()`.\nХост має містити елемент керування та окремий іменований елемент помилки з текстом повідомлення.\nОчистіть і повторно ініціалізуйте після переміщення елементів керування між формами або зміни ідентифікаторів помилок."
+
+msgctxt "docs.api:prose"
+msgid "Wire a vertical, single-level ARIA menu and its native popover button.\nArrow keys wrap; Home/End and initial-character search move focus. Escape returns\nfocus to the button; Tab closes without canceling normal sequential navigation.\nApplications own click actions and checked state. Space activates checkable items\nwithout closing; Enter and pointer activation close unless the click is canceled."
+msgstr "Під’єднайте вертикальне однорівневе ARIA-меню та його нативну кнопку popover.\nСтрілки циклічно переміщують фокус; Home/End і пошук за початковим символом переміщують\nфокус на кнопку; Tab закриває меню, не перериваючи звичайну послідовну навігацію.\nЗастосунки керують діями під час натискання та станом позначення. Пробіл активує елементи, які можна позначити,\nне закриваючи меню; Enter і активація вказівником закривають його, якщо натискання не скасовано."
+
+msgctxt "docs.api:prose"
+msgid "Own tooltip visibility after initialization, retaining CSS hover/focus as a no-JS fallback.\nPointer and focus are independent reasons to stay open; Escape dismisses until both leave."
+msgstr "Керуйте видимістю підказки після ініціалізації, зберігаючи CSS-наведення/фокус як резервний варіант без JS.\nНаведення та фокус — незалежні причини залишати підказку відкритою; Escape закриває її, доки не буде прибрано обидва."
+
+msgctxt "docs.api:prose"
+msgid "Wire ARIA-tree navigation and expansion, with single selection opt-in via `aria-selected`."
+msgstr "Реалізуйте навігацію та розгортання дерева ARIA, а одиночний вибір можна ввімкнути через `aria-selected`."
+
+msgctxt "docs.api:prose"
+msgid "The class namespace for a prefix: `\"instui\"` → `\"instui-\"`, `\"\"` → `\"\"` (unprefixed)."
+msgstr "Простір імен класів для префікса: `\"instui\"` → `\"instui-\"`, `\"\"` → `\"\"` (unprefixed)."
+
+msgctxt "docs.api:prose"
+msgid "Swap every `pfx-` sentinel in `text` for the namespace of `prefix` (default `\"instui\"`)."
+msgstr "Замініть кожен `pfx-` у `text` на простір імен `prefix` (за замовчуванням `\"instui\"`)."
+
+msgctxt "docs.api:prose"
+msgid "Options for [initCloseButton](../functions/initCloseButton.md)."
+msgstr "Параметри для [initCloseButton](../functions/initCloseButton.md)."
+
+msgctxt "docs.api:prose"
+msgid "Class prefix for the alert/banner hosts. Defaults to `\"instui\"`; `\"\"` means unprefixed."
+msgstr "Префікс класу для хостів сповіщень/банерів. За замовчуванням — `\"instui\"`; `\"\"` означає відсутність префікса."
+
+msgctxt "docs.api:prose"
+msgid "Native validation controls and listener cleanup."
+msgstr "Засоби нативної перевірки та очищення обробників подій."
+
+msgctxt "docs.api:prose"
+msgid "Show the current native validation result without moving focus or changing the value."
+msgstr "Показати поточний результат нативної перевірки, не переміщуючи фокус і не змінюючи значення."
+
+msgctxt "docs.api:prose"
+msgid "Remove listeners and restore the initial accessibility and error-visibility state."
+msgstr "Видалити обробники подій і відновити початковий стан доступності та видимості помилки."
+
+msgctxt "docs.api:prose"
+msgid "Listeners and attribute restoration installed by [initMenu](../functions/initMenu.md)."
+msgstr "Обробники подій і відновлення атрибутів, установлені [initMenu](../functions/initMenu.md)."
+
+msgctxt "docs.api:prose"
+msgid "Class prefix for the `transition` utility. Defaults to `\"instui\"`; `\"\"` means unprefixed."
+msgstr "Префікс класу для утиліти `transition`. За замовчуванням — `\"instui\"`; `\"\"` означає без префікса."
+
+msgctxt "docs.api:prose"
+msgid "Remove listeners/timers and restore the original managed marker and show class."
+msgstr "Видаліть слухачі/таймери та відновіть початковий маркер керування й клас show."
+
+msgctxt "docs.api:prose"
+msgid "Dismiss until both pointer and focus leave, canceling pending timers."
+msgstr "Закривайте, доки вказівник і фокус не залишать область, скасовуючи відкладені таймери."
+
+msgctxt "docs.api:prose"
+msgid "Listeners installed by [initTreeBrowser](../functions/initTreeBrowser.md)."
+msgstr "Слухачі, встановлені за допомогою [initTreeBrowser](../functions/initTreeBrowser.md)."
+
+msgctxt "docs.api:prose"
+msgid "Native controls supported by [initFormField](../functions/initFormField.md)."
+msgstr "Нативні елементи керування, що підтримуються [initFormField](../functions/initFormField.md)."
+
+msgctxt "docs.api:prose"
+msgid "Custom-element tag prefix (`\"x\"` → `<x-icon>`). Never null or empty: tags need a hyphen, so JS callers passing one fall back to `instui`."
+msgstr "Префікс тегу користувацького елемента (`\"x\"` → `<x-icon>`). Ніколи не має бути null або порожнім: у тегах має бути дефіс, тому виклики з JS, які передають порожнє значення, використовують `instui`."
+
+msgctxt "docs.api:prose"
+msgid "Both panes are `div` regions, matching InstUI's inline DrawerLayout. Supply nonempty `tray-label` and `content-label` attributes to name them; labels on the host or slotted content don't name the shadow-DOM regions."
+msgstr "Обидві панелі є `div` областями, як і вбудований DrawerLayout в InstUI. Щоб назвати їх, задайте непорожні атрибути `tray-label` і `content-label`; мітки на хості або вмісті слотів не називають області shadow DOM."
+
+msgctxt "docs.api:prose"
+msgid "`<instui-modal>` — a real `<dialog>`, so it gets focus trapping, Escape-to-close, and a\n`::backdrop` for free. The `open` attribute drives `showModal()`/`close()`; a native dismissal\n(such as Escape) reflects back to the attribute and re-fires as a bubbling `close`\nevent. Drivable from light DOM via Invoker Commands — a\n`<button command=\"--show|--close|--toggle\" commandfor=\"modal-id\">` toggles it by id. Content goes\nin the default slot."
+msgstr "`<instui-modal>` — справжній `<dialog>`, тому він автоматично отримує утримання фокуса, закриття клавішею Escape та\n`::backdrop`. Атрибут `open` керує `showModal()`/`close()`; нативне закриття\n(наприклад, клавішею Escape) відображається в атрибуті та повторно ініціює подію `close`\nзі спливанням. Можна керувати з light DOM через Invoker Commands —\n`<button command=\"--show|--close|--toggle\" commandfor=\"modal-id\">` перемикає його стан за id. Вміст розміщується\nу слоті за замовчуванням."
+
+msgctxt "docs.api:prose"
+msgid "`<instui-spinner>` — a loading spinner with `role=\"status\"`. `variant=\"ai\"` and\n`variant=\"ai-on-color\"` select the rotating AI star; size and colour follow the CSS tokens.\nReduced motion keeps the ring or glyph visible without rotation."
+msgstr "`<instui-spinner>` — індикатор завантаження з `role=\"status\"`. `variant=\"ai\"` і\n`variant=\"ai-on-color\"` вибирають обертову зірку ШІ; розмір і колір відповідають токенам CSS.\nЗа вимкненої анімації кільце або гліф залишається видимим без обертання."
+
+msgctxt "docs.api:prose"
+msgid "`<instui-tooltip>` — wraps a slotted trigger and shows a `.tip` bubble (from the `tip` attribute)\non hover/focus. `placement` maps to `-placement-<value>` (e.g. `bottom`, `end`); `show-delay` and\n`hide-delay` (ms, default 0) gate the reveal/hide. Shared behavior owns visibility; Escape\ndismisses until both pointer and focus leave. Tooltip content is noninteractive."
+msgstr "`<instui-tooltip>` — обгортає тригер зі слотом і показує спливаючу підказку (з атрибута `tip`) під час наведення/фокусування. `placement` відповідає `-placement-<value>` (наприклад, `bottom`, `end`); `show-delay` і\n`hide-delay` (мс, за замовчуванням 0) визначають появу/приховування. Спільна поведінка керує видимістю; Escape\nзакриває підказку, доки не буде знято і наведення, і фокус. Вміст підказки не є інтерактивним."
+
+msgctxt "docs.api:prose"
+msgid "`<instui-tree-browser>` — an ARIA tree with shared keyboard navigation and expansion.\nName the host and slot `treeitem`/`group` markup. Load the component stylesheet for slotted items."
+msgstr "`<instui-tree-browser>` — дерево ARIA зі спільною клавіатурною навігацією та розгортанням.\nНазвіть хост і слот `treeitem`/`group` розмітки. Завантажте таблицю стилів компонента для елементів у слотах."
+
+#, pantoken-verbatim
+msgctxt "docs.api:text"
+msgid "CloseButtonOptions"
+msgstr "CloseButtonOptions"
+
+#, pantoken-verbatim
+msgctxt "docs.api:text"
+msgid "FormFieldHandle"
+msgstr "FormFieldHandle"
+
+#, pantoken-verbatim
+msgctxt "docs.api:text"
+msgid "MenuHandle"
+msgstr "MenuHandle"
+
+#, pantoken-verbatim
+msgctxt "docs.api:text"
+msgid "TreeBrowserHandle"
+msgstr "TreeBrowserHandle"
+
+#, pantoken-verbatim
+msgctxt "docs.api:text"
+msgid "FormFieldControl"
+msgstr "FormFieldControl"
+
+#, pantoken-verbatim
+msgctxt "docs.api:text"
+msgid "initFormField"
+msgstr "initFormField"
+
+#, pantoken-verbatim
+msgctxt "docs.api:text"
+msgid "initMenu"
+msgstr "initMenu"
+
+#, pantoken-verbatim
+msgctxt "docs.api:text"
+msgid "initTreeBrowser"
+msgstr "initTreeBrowser"
+
+#, pantoken-verbatim
+msgctxt "docs.api:text"
+msgid "ns"
+msgstr "ns"
+
+#, pantoken-verbatim
+msgctxt "docs.api:text"
+msgid "withPrefix"
+msgstr "withPrefix"

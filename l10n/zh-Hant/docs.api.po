@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: pantoken\n"
-"PO-Revision-Date: 2026-10-26 23:45+0000\n"
+"PO-Revision-Date: 2026-10-29 18:19+0000\n"
 "Last-Translator: pantoken localization engine\n"
 "Language-Team: pantoken\n"
 "MIME-Version: 1.0\n"
@@ -30915,6 +30915,7 @@ msgstr "一個可在懸停時顯示的「檢視全螢幕」按鈕，覆蓋在示
 #~ msgid "Border-only surface for a card inside a base card."
 #~ msgstr "僅邊框的表面，用於基底卡片內的卡片。"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:prose"
 #~ msgid "-canvas-rce\n"
 #~ msgstr "-canvas-rce\n"
@@ -30975,6 +30976,7 @@ msgstr "一個可在懸停時顯示的「檢視全螢幕」按鈕，覆蓋在示
 #~ msgid "Review your account information."
 #~ msgstr "檢視您的帳戶資訊。"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:prose"
 #~ msgid "-docs\n"
 #~ msgstr "-docs\n"
@@ -31143,9 +31145,10 @@ msgstr "一個可在懸停時顯示的「檢視全螢幕」按鈕，覆蓋在示
 #~ msgid "See upcoming assignments."
 #~ msgstr "查看即將到來的作業。"
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:prose"
 #~ msgid "Canvas"
-#~ msgstr "畫布"
+#~ msgstr "Canvas"
 
 #~ msgctxt "docs.api:prose"
 #~ msgid "Course home"
@@ -31205,3 +31208,1184 @@ msgstr "已解析的 Lucide 版本，淘汰 Lucide shim 時所需。"
 msgctxt "docs.api:text"
 msgid "removalDeadline"
 msgstr "removalDeadline"
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "more-contrast-respected"
+msgstr "more-contrast-respected"
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "reflow-at-320px"
+msgstr "reflow-at-320px"
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "Fail"
+msgstr "Fail"
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "text-spacing-no-clipping"
+msgstr "text-spacing-no-clipping"
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "Pass"
+msgstr "Pass"
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "Announcements"
+msgstr "Announcements"
+
+msgctxt "docs.api:prose"
+msgid "The shell is a plain container with no role of its own. Give it a landmark or group name (for example `role=\"region\"` with an `aria-label`, or a heading) so assistive tech can find the agent surface, and keep its content in reading order."
+msgstr "shell 是沒有自身角色的純容器。請為它指定地標或群組名稱（例如 `role=\"region\"`，並搭配 `aria-label`，或使用標題)），讓輔助技術能找到代理程式介面，並讓其中的內容保持正確的閱讀順序。"
+
+msgctxt "docs.api:prose"
+msgid "Conditions"
+msgstr "條件"
+
+msgctxt "docs.api:prose"
+msgid "Rebrand (light)"
+msgstr "品牌重塑（淺色)"
+
+msgctxt "docs.api:prose"
+msgid "Rebrand (dark)"
+msgstr "品牌重塑（深色)"
+
+msgctxt "docs.api:prose"
+msgid "Canvas High Contrast"
+msgstr "Canvas 高對比"
+
+msgctxt "docs.api:prose"
+msgid "WCAG 2.2 1.4.3, 1.4.6"
+msgstr "WCAG 2.2 1.4.3、1.4.6"
+
+msgctxt "docs.api:prose"
+msgid "Review needed"
+msgstr "需要檢查"
+
+msgctxt "docs.api:prose"
+msgid "The page changes under prefers-contrast: more, but no visible text was measurable."
+msgstr "在 prefers-contrast: more 設定下，頁面會有所變化，但無法測量到可見文字。"
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "WCAG 2.2 1.4.10"
+msgstr "WCAG 2.2 1.4.10"
+
+msgctxt "docs.api:prose"
+msgid "In a 320px window, the page scrolls sideways (it is 336px wide in a 320px window), and one element reaches past the right edge: "
+msgstr "在 320px 寬的視窗中，頁面會水平捲動（頁面寬 336px，而視窗寬 320px)，且有一個元素超出右側邊緣："
+
+msgctxt "docs.api:prose"
+msgid " ends at 336px. WCAG 1.4.10 Reflow (level AA) exempts two-dimensional content such as data tables and maps, so a person should judge whether that applies."
+msgstr " 結束於 336px。WCAG 1.4.10 重新排版（AA 級)豁免資料表和地圖等二維內容，因此應由人工判斷此規定是否適用。"
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "WCAG 2.2 1.4.12"
+msgstr "WCAG 2.2 1.4.12"
+
+msgctxt "docs.api:prose"
+msgid "Screen reader (simulated)"
+msgstr "螢幕閱讀器（模擬)"
+
+msgctxt "docs.api:prose"
+msgid "These automated results do not establish that the page meets WCAG; manual review is still needed."
+msgstr "這些自動化結果無法證明頁面符合 WCAG；仍需進行人工檢查。"
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "color-contrast"
+msgstr "color-contrast"
+
+msgctxt "docs.api:prose"
+msgid "Rules (axe-core)"
+msgstr "規則 (axe-core)"
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "WCAG 2.2 1.4.3"
+msgstr "WCAG 2.2 1.4.3"
+
+msgctxt "docs.api:prose"
+msgid "Elements must meet minimum color contrast ratio thresholds"
+msgstr "元素必須符合最低色彩對比度門檻"
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "forced-colors-focus-visible"
+msgstr "forced-colors-focus-visible"
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "less-contrast-stays-readable"
+msgstr "less-contrast-stays-readable"
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "reduced-motion-respected"
+msgstr "reduced-motion-respected"
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "Interactions"
+msgstr "Interactions"
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "focus-indicator-visible"
+msgstr "focus-indicator-visible"
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "focus-stays-on-trigger"
+msgstr "focus-stays-on-trigger"
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "live-politeness-fits-role"
+msgstr "live-politeness-fits-role"
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "message-has-text"
+msgstr "message-has-text"
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "message-in-live-region"
+msgstr "message-in-live-region"
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "no-focus-trap"
+msgstr "no-focus-trap"
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "region-exists-before-message"
+msgstr "region-exists-before-message"
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "trigger-reachable-by-tab"
+msgstr "trigger-reachable-by-tab"
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "message-text-contrast"
+msgstr "message-text-contrast"
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "WCAG 2.2 1.4.11, 2.4.7"
+msgstr "WCAG 2.2 1.4.11, 2.4.7"
+
+msgctxt "docs.api:prose"
+msgid "Not applicable"
+msgstr "不適用"
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "WCAG 2.2 2.3.3, 2.2.2"
+msgstr "WCAG 2.2 2.3.3, 2.2.2"
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "WCAG 2.2 2.4.7"
+msgstr "WCAG 2.2 2.4.7"
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "WCAG 2.2 4.1.3"
+msgstr "WCAG 2.2 4.1.3"
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "WCAG 2.2 2.1.2"
+msgstr "WCAG 2.2 2.1.2"
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "WCAG 2.2 2.1.1"
+msgstr "WCAG 2.2 2.1.1"
+
+msgctxt "docs.api:prose"
+msgid "Computed styles"
+msgstr "計算樣式"
+
+msgctxt "docs.api:prose"
+msgid "The name parts intentionally clip full names to leading letters. Keep the full text in the markup; when identifying text must also be visible, show the full name alongside the avatar."
+msgstr "名稱部分刻意將完整姓名裁切為開頭字母。請在標記中保留完整文字；若識別文字也必須可見，請在頭像旁顯示完整姓名。"
+
+msgctxt "docs.api:prose"
+msgid "All 18 measured pieces of text pass with more contrast. one other piece can't be reduced to one color. \"Sam Kim\" can't be measured because a background image or gradient sits behind it."
+msgstr "所有 18 段經測量的文字都因對比度提升而通過。另有一段文字無法簡化為單一顏色。「Sam Kim」後方有背景圖片或漸層，因此無法測量。"
+
+msgctxt "docs.api:prose"
+msgid "With line height 1.5, letter spacing 0.12em, word spacing 0.16em, and paragraph spacing 2em, text in six elements gets cut off: "
+msgstr "行高設為 1.5、字母間距設為 0.12em、單字間距設為 0.16em，段落間距設為 2em 時，六個元素中的文字會被截斷："
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid " (\"Lee Harper\"); "
+msgstr " (\"Lee Harper\"); "
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid " (\"Amira Patel\"); "
+msgstr " (\"Amira Patel\"); "
+
+msgctxt "docs.api:prose"
+msgid " (\"Miguel\"); and 3 more. Overlapping text isn't checked."
+msgstr " (\"Miguel\"); 以及另外 3 段。重疊文字不會檢查。"
+
+msgctxt "docs.api:prose"
+msgid "The count or dot is visual only, so don't rely on color to carry its meaning; put the status in text, such as visually hidden text or an `aria-label` on the target it decorates."
+msgstr "計數或圓點僅供視覺呈現，因此不要依賴顏色傳達其意義；請以文字呈現狀態，例如使用視覺上隱藏的文字，或在其所修飾的目標上使用一個 `aria-label`。"
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "Canvas:"
+msgstr "Canvas:"
+
+msgctxt "docs.api:prose"
+msgid " With prefers-contrast: more, two pieces of text fall below the minimum contrast. The worst is \"Undo\" at 4.46:1 (needs 4.5:1)."
+msgstr " 使用 prefers-contrast: more 時，有兩段文字的對比度低於最低標準。最差的是「復原」，對比度為 4.46:1（需要 4.5:1)."
+
+msgctxt "docs.api:prose"
+msgid "It sets the page surface, text color, and `color-scheme` so native controls follow the active light or dark scheme; keep links distinguishable from surrounding text by more than color alone."
+msgstr "它會設定頁面表面、文字顏色與 `color-scheme`，讓原生控制項遵循目前啟用的淺色或深色配置；連結應透過不僅限於顏色的方式，與周圍文字區分。"
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "label-content-name-mismatch"
+msgstr "label-content-name-mismatch"
+
+msgctxt "docs.api:prose"
+msgid "Render the `.heading` as a real heading element. A `-clickable` billboard only gains hover styling, so give it `tabindex=\"0\"`, an appropriate role, and a keyboard handler."
+msgstr "將 `.heading` 呈現為真正的標題元素。`-clickable` billboard 只會獲得懸停樣式，因此請為它設定 `tabindex=\"0\"`、適當的角色，以及鍵盤事件處理器。"
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "WCAG 2.2 2.5.3"
+msgstr "WCAG 2.2 2.5.3"
+
+msgctxt "docs.api:prose"
+msgid "Elements must have their visible text as part of their accessible name"
+msgstr "元素的可見文字必須包含在其無障礙名稱中"
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "reduced-transparency-respected"
+msgstr "reduced-transparency-respected"
+
+msgctxt "docs.api:prose"
+msgid "Rebrand (light):"
+msgstr "重新品牌 (淺色):"
+
+msgctxt "docs.api:prose"
+msgid " With prefers-contrast: more, six pieces of text fall below the minimum contrast. The worst is \"Send\" at 1.64:1 (needs 4.5:1)."
+msgstr " 在 prefers-contrast: more 的情況下，有六段文字的對比度低於最低要求。最差的是「傳送」，對比度為 1.64:1（需要 4.5:1)。"
+
+msgctxt "docs.api:prose"
+msgid "Rebrand (dark):"
+msgstr "重新品牌 (深色):"
+
+msgctxt "docs.api:prose"
+msgid " With prefers-contrast: more, six pieces of text fall below the minimum contrast. The worst is \"Send\" at 1.78:1 (needs 4.5:1)."
+msgstr " 在 prefers-contrast: more 的情況下，有六段文字的對比度低於最低要求。最差的是「傳送」，對比度為 1.78:1（需要 4.5:1)。"
+
+msgctxt "docs.api:prose"
+msgid "Canvas, Canvas High Contrast:"
+msgstr "Canvas、Canvas 高對比:"
+
+msgctxt "docs.api:prose"
+msgid " With prefers-contrast: more, two pieces of text fall below the minimum contrast. The worst is \"Rewrite\" at 1.88:1 (needs 4.5:1)."
+msgstr " 在 prefers-contrast: more 的情況下，有兩段文字的對比度低於最低要求。最差的是「改寫」，對比度為 1.88:1（需要 4.5:1)。"
+
+msgctxt "docs.api:prose"
+msgid "WCAG 2.2 1.4.3, 1.4.11"
+msgstr "WCAG 2.2 1.4.3、1.4.11"
+
+msgctxt "docs.api:prose"
+msgid "In a 320px window, the page scrolls sideways (it is 592px wide in a 320px window), and one element reaches past the right edge: "
+msgstr "在 320px 的視窗中，頁面會水平捲動（在 320px 的視窗中寬度為 592px)），且有一個元素超出右側邊緣："
+
+msgctxt "docs.api:prose"
+msgid " ends at 592px. WCAG 1.4.10 Reflow (level AA) exempts two-dimensional content such as data tables and maps, so a person should judge whether that applies."
+msgstr " 結束於 592px。WCAG 1.4.10 重排（AA 級)）豁免資料表格和地圖等二維內容，因此應由使用者判斷此豁免是否適用。"
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "enter-activates"
+msgstr "enter-activates"
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "space-activates"
+msgstr "space-activates"
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "boundary-contrast"
+msgstr "boundary-contrast"
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "focus-indicator-contrast"
+msgstr "focus-indicator-contrast"
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "text-contrast-by-state"
+msgstr "text-contrast-by-state"
+
+msgctxt "docs.api:prose"
+msgid " With forced colors on, the focus indicator is weak: only 58 of 299 changed pixels reach 3:1 against their unfocused color, and enough to count is about half the control's perimeter, 108."
+msgstr " 啟用強制色彩時，焦點指示器不夠明顯：299 個變更的像素中，只有 58 個與未聚焦時的顏色對比達到 3:1，而達到足夠數量的像素約需覆蓋控制項周長的一半，也就是 108 個。"
+
+msgctxt "docs.api:prose"
+msgid " With prefers-contrast: more, eight pieces of text fall below the minimum contrast. The worst is \"Save unavailable\" at 1.64:1 (needs 4.5:1)."
+msgstr " 啟用 prefers-contrast: more 時，有八處文字低於最低對比度。最差的是「無法儲存」，對比度為 1.64:1（需要 4.5:1)。"
+
+msgctxt "docs.api:prose"
+msgid " With prefers-contrast: more, eight pieces of text fall below the minimum contrast. The worst is \"Save unavailable\" at 1.78:1 (needs 4.5:1)."
+msgstr " 啟用 prefers-contrast: more 時，有八處文字低於最低對比度。最差的是「無法儲存」，對比度為 1.78:1（需要 4.5:1)。"
+
+msgctxt "docs.api:prose"
+msgid " With prefers-contrast: more, two pieces of text fall below the minimum contrast. The worst is \"Summary unavailable\" at 1.88:1 (needs 4.5:1)."
+msgstr " 啟用 prefers-contrast: more 時，有兩處文字低於最低對比度。最差的是「摘要無法使用」，對比度為 1.88:1（需要 4.5:1)。"
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "WCAG 2.2 1.4.11"
+msgstr "WCAG 2.2 1.4.11"
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "WCAG 2.2 1.4.11, 2.4.13"
+msgstr "WCAG 2.2 1.4.11, 2.4.13"
+
+msgctxt "docs.api:prose"
+msgid "Give an informative hero image alt text and mark a decorative one with an empty `alt` or `aria-hidden=\"true\"`. Use a real heading element for the `.title` when it belongs in the document outline."
+msgstr "為主視覺圖片提供具資訊性的替代文字，並為裝飾性圖片設定空的 `alt` 或 `aria-hidden=\"true\"`。當 `.title` 屬於文件大綱時，請使用真正的標題元素。"
+
+msgctxt "docs.api:prose"
+msgid " Elements must meet minimum color contrast ratio thresholds"
+msgstr " 元素必須符合最低色彩對比度門檻"
+
+msgctxt "docs.api:prose"
+msgid "Mirror `-selected` with `aria-selected` and mark today with `aria-current=\"date\"`; give each day a full-date accessible name, since the day number alone is ambiguous."
+msgstr "以 `-selected` 為鏡像，搭配 `aria-selected`，並以 `aria-current=\"date\"` 標示今天；為每一天提供完整日期的無障礙名稱，因為單獨的日期數字容易產生歧義。"
+
+msgctxt "docs.api:prose"
+msgid "Wrap the native `<input type=\"checkbox\">` and its visible text in a `<label>` to supply its accessible name. The input drives `:checked`, `:indeterminate`, and `:disabled`; set `el.indeterminate = true` in JavaScript for the mixed state. `-readonly` is styling only since checkboxes have no native readonly attribute."
+msgstr "將原生 `<input type=\"checkbox\">` 及其可見文字包在 `<label>` 中，以提供其可存取名稱。輸入會控制 `:checked`、`:indeterminate` 和 `:disabled`；若為混合狀態，請在 JavaScript 中設定 `el.indeterminate = true`。`-readonly` 僅用於樣式，因為核取方塊沒有原生的 readonly 屬性。"
+
+msgctxt "docs.api:prose"
+msgid " With prefers-contrast: more, five pieces of text fall below the minimum contrast. The worst is \"Disabled unchecked checkbox\" at 2.74:1 (needs 4.5:1)."
+msgstr " 在 prefers-contrast: more 下，有五段文字的對比度低於最低標準。最差的是「停用的未勾選核取方塊」，對比度為 2.74:1（需達 4.5:1)."
+
+msgctxt "docs.api:prose"
+msgid " With prefers-contrast: more, five pieces of text fall below the minimum contrast. The worst is \"Disabled unchecked checkbox\" at 3.15:1 (needs 4.5:1)."
+msgstr " 在 prefers-contrast: more 下，有五段文字的對比度低於最低標準。最差的是「停用的未勾選核取方塊」，對比度為 3.15:1（需達 4.5:1)."
+
+msgctxt "docs.api:prose"
+msgid " With prefers-contrast: more, five pieces of text fall below the minimum contrast. The worst is \"Disabled unchecked checkbox\" at 3.02:1 (needs 4.5:1)."
+msgstr " 在 prefers-contrast: more 下，有五段文字的對比度低於最低標準。最差的是「停用的未勾選核取方塊」，對比度為 3.02:1（需達 4.5:1)."
+
+msgctxt "docs.api:prose"
+msgid "Connect the trigger with `popovertarget` so the open state is exposed, and keep the native Escape and outside-click dismissal. The caret is decorative; the callout's content isn't announced unless the trigger references it, for example with `aria-describedby`."
+msgstr "將觸發器與 `popovertarget` 連結，讓開啟狀態可被呈現，並保留原生的 Escape 鍵及點擊外部時的關閉行為。小箭頭僅供裝飾；除非觸發器引用提示框的內容，例如 `aria-describedby`，否則不會宣讀其內容。"
+
+msgctxt "docs.api:prose"
+msgid "The cursor only affects pointer users; a pointer cursor doesn't make an element operable. Put it on native controls (`button`, `a`), and never use `--cursor-not-allowed` or `--cursor-wait` as the only sign that something is disabled or busy."
+msgstr "游標只會影響使用指標的使用者；指標游標不會讓元素變得可操作。請將它用於原生控制項（`button`, `a`)），絕不要只用 `--cursor-not-allowed` 或 `--cursor-wait` 作為某項目已停用或忙碌的唯一標示。"
+
+msgctxt "docs.api:prose"
+msgid "Once the parent's inline-size drops below `64em` (`16em` tray width + `48em` breakpoint), a `@container` query on the parent's `pantoken-drawer-layout` container drops this member's `min-inline-size` to `0` automatically, matching the manual `[should-overlay-tray]` override. This also applies when the tray is closed or absent."
+msgstr "當父層的 inline-size 低於 `64em` (`16em` 托盤寬度 + `48em` 斷點)，在父層的 `pantoken-drawer-layout` 容器上使用 __PTK_INLINE_CODE_3_ 查詢，會自動將此成員的 `min-inline-size` 降至 `0`，與手動的 `[should-overlay-tray]` 覆寫相符。托盤關閉或不存在時也適用。"
+
+msgctxt "docs.api:prose"
+msgid "Use a `div` with `role=\"region\"` (InstUI's DrawerLayout convention) and always name it with `aria-label` or `aria-labelledby`."
+msgstr "使用 `div` 搭配 `role=\"region\"`（InstUI 的 DrawerLayout 慣例)，並務必使用 `aria-label` 或 `aria-labelledby` 為其命名。"
+
+msgctxt "docs.api:prose"
+msgid "Name every region with `aria-label` or `aria-labelledby`. Use `div` for InstUI-style regions, not `<main role=\"region\">`. When the tray acts as navigation, use a named `<nav>` or place one inside the tray."
+msgstr "請為每個區域命名為 `aria-label` 或 `aria-labelledby`。InstUI 樣式的區域請使用 `div`，而非 `<main role=\"region\">`。當托盤做為導覽使用時，請使用具名的 `<nav>`，或在托盤內放置一個。"
+
+msgctxt "docs.api:prose"
+msgid "The page changes under prefers-contrast: less, but no visible text was measurable."
+msgstr "頁面在 prefers-contrast: less 下會變更，但無法測得任何可見文字。"
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "error-associated-on-invalid"
+msgstr "error-associated-on-invalid"
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "label-associated"
+msgstr "label-associated"
+
+msgctxt "docs.api:prose"
+msgid "Native validation is opt-in: add `data-native-validation` and load `@pantoken/interactions/form-field.iife.js`, or call `initFormField(host, control, error)`. Supply exactly one native control and one error message with a stable, unique ID. The behavior associates the error after blur or a native validation attempt and removes it when corrected; CSS alone doesn't synchronize ARIA."
+msgstr "原生驗證為選用功能：新增 `data-native-validation` 並載入 `@pantoken/interactions/form-field.iife.js`，或呼叫 `initFormField(host, control, error)`。請提供一個原生控制項和一則錯誤訊息，並為兩者使用穩定且唯一的 ID。此行為會在失去焦點或嘗試原生驗證後關聯錯誤訊息，並在修正後移除；僅靠 CSS 無法同步 ARIA。"
+
+msgctxt "docs.api:prose"
+msgid "Use your work email."
+msgstr "請使用工作電子郵件。"
+
+msgctxt "docs.api:prose"
+msgid "A wrapping `<label>` names the control. When it also contains messages, use `aria-labelledby` to identify just the visible label text and `aria-describedby` for hints. Associate visible validation errors and synchronize `aria-invalid` in application code or with the opt-in native validation behavior; the decorative required asterisk isn't an accessible-name substitute."
+msgstr "包覆控制項的 `<label>` 會為其命名。若其中也包含訊息，請使用 `aria-labelledby` 僅標示可見標籤文字，並使用 `aria-describedby` 標示提示。請在應用程式程式碼中關聯可見的驗證錯誤並同步 `aria-invalid`，或使用選用的原生驗證行為；裝飾用的必填星號無法取代可存取名稱。"
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "WCAG 2.2 3.3.1, 4.1.3"
+msgstr "WCAG 2.2 3.3.1, 4.1.3"
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "WCAG 2.2 1.3.1, 3.3.2, 4.1.2"
+msgstr "WCAG 2.2 1.3.1, 3.3.2, 4.1.2"
+
+msgctxt "docs.api:prose"
+msgid "A gap changes spacing only; reading and focus order still follow the DOM. Keep gaps between interactive controls large enough to meet WCAG 2.5.8 target spacing."
+msgstr "間距只會改變間隔；閱讀順序與焦點順序仍依照 DOM。互動控制項之間的間距應足夠大，以符合 WCAG 2.5.8 的目標間距要求。"
+
+msgctxt "docs.api:prose"
+msgid "All 17 measured pieces of text pass with more contrast. one other piece can't be reduced to one color. \"Suggested study plan\" can't be measured because a background image or gradient sits behind it."
+msgstr "所有 17 段經測量的文字都通過檢查，且對比度更高。另有一段文字無法簡化為單一顏色。「建議的學習計畫」因背景有圖片或漸層，無法測量。"
+
+msgctxt "docs.api:prose"
+msgid "A hover and focus tooltip bubble, positionable on any side."
+msgstr "可在任意一側定位的懸停與焦點提示泡泡。"
+
+msgctxt "docs.api:prose"
+msgid "A tree of nested collections and leaf items, with rotating chevrons."
+msgstr "由巢狀集合與末端項目組成的樹狀結構，搭配旋轉式 V 形箭頭。"
+
+msgctxt "docs.api:prose"
+msgid "Label the inner input with a real `<label>`. Mark purely visual icons in `.before` and `.after` with `aria-hidden=\"true\"`, and convey `-invalid` and `-success` states in text, not color alone."
+msgstr "使用實際的 `<label>` 為內部輸入欄位加上標籤。對 `.before` 和 `.after` 中純裝飾用途的圖示加上 `aria-hidden=\"true\"`，並以文字呈現 `-invalid` 和 `-success` 狀態，不要只依賴顏色。"
+
+msgctxt "docs.api:prose"
+msgid "`--display-none` removes an element from the accessibility tree as well as the screen, so use it only for content nobody needs. Flex and grid layout can't reorder content for assistive tech; keep the DOM order meaningful, and don't center or justify long passages of text."
+msgstr "`--display-none` 會將元素從無障礙樹和畫面中一併移除，因此僅用於無人需要的內容。Flex 和 grid 版面配置無法為輔助技術重新排列內容；請保持有意義的 DOM 順序，並避免將長篇文字置中或左右對齊。"
+
+msgctxt "docs.api:prose"
+msgid " With prefers-contrast: more, two pieces of text fall below the minimum contrast. The worst is \"Settings unavailable\" at 2.74:1 (needs 4.5:1)."
+msgstr " 使用 prefers-contrast: more 時，有兩段文字的對比度低於最低標準。最差的是「設定無法使用」，對比度為 2.74:1（需要 4.5:1)."
+
+msgctxt "docs.api:prose"
+msgid " With prefers-contrast: more, two pieces of text fall below the minimum contrast. The worst is \"Settings unavailable on brand\" at 1.84:1 (needs 4.5:1)."
+msgstr " 使用 prefers-contrast: more 時，有兩段文字的對比度低於最低標準。最差的是「品牌上的設定無法使用」，對比度為 1.84:1（需要 4.5:1)."
+
+msgctxt "docs.api:prose"
+msgid " With prefers-contrast: more, three pieces of text fall below the minimum contrast. The worst is \"Settings unavailable on brand\" at 2.76:1 (needs 4.5:1)."
+msgstr " 使用 prefers-contrast: more 時，有三段文字的對比度低於最低標準。最差的是「品牌上的設定無法使用」，對比度為 2.76:1（需要 4.5:1)."
+
+msgctxt "docs.api:prose"
+msgid "Canvas High Contrast:"
+msgstr "畫布高對比："
+
+msgctxt "docs.api:prose"
+msgid " With prefers-contrast: more, one piece of text falls below the minimum contrast. The worst is \"Settings unavailable on brand\" at 2.84:1 (needs 4.5:1)."
+msgstr " 使用 prefers-contrast: more 時，有一段文字的對比度低於最低標準。最差的是「品牌上的設定無法使用」，對比度為 2.84:1（需要 4.5:1)."
+
+msgctxt "docs.api:prose"
+msgid "Keep each item a direct `<li>` child of the list so it stays in the list's accessibility tree; delimiters and markers are visual only."
+msgstr "讓每個項目都成為清單的直接 `<li>` 子項，使其保留在清單的無障礙樹中；分隔符和標記僅供視覺呈現。"
+
+msgctxt "docs.api:prose"
+msgid "Use a real `<ul>` or `<ol>` with `<li>` children. Removing markers with `-unstyled` can make some screen readers drop the list semantics, so add `role=\"list\"` when the list structure matters."
+msgstr "請使用真正的 `<ul>` 或 `<ol>`，並搭配 `<li>` 子項目。移除標記 `-unstyled`，可能會使某些螢幕閱讀器失去清單語意，因此當清單結構很重要時，請加入 `role=\"list\"`。"
+
+msgctxt "docs.api:prose"
+msgid "A contained spinner honors reduced motion without hiding the overlay or loading indicator. Keep its status role and meaningful loading label."
+msgstr "局部範圍內的載入旋轉指示器會遵循減少動態效果的設定，但不會隱藏覆蓋層或載入指示器。請保留其 status 角色和具意義的載入標籤。"
+
+msgctxt "docs.api:prose"
+msgid "A mask covers content visually but doesn't block assistive tech or the keyboard: make the covered region `inert` (or mark it `aria-busy`), keep the mask's own message as real text, and don't hide the focus indicator behind it."
+msgstr "遮罩會在視覺上覆蓋內容，但不會阻擋輔助技術或鍵盤操作：請讓被覆蓋的區域 `inert`（或將其標記為 `aria-busy`)），遮罩本身的訊息應保留為實際文字，且不要讓遮罩遮住焦點指示器。"
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "aria-valid-attr-value"
+msgstr "aria-valid-attr-value"
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "dark-mode-contrast"
+msgstr "dark-mode-contrast"
+
+msgctxt "docs.api:prose"
+msgid "Wrap the grouped items in an element with `role=\"group\"` and point `aria-labelledby` at the group heading so assistive technology announces the group name."
+msgstr "將分組項目包在一個元素中，並使用 `role=\"group\"`，再將 `aria-labelledby` 指向群組標題，讓輔助技術能夠宣告群組名稱。"
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "WCAG 2.2 4.1.2"
+msgstr "WCAG 2.2 4.1.2"
+
+msgctxt "docs.api:prose"
+msgid "ARIA attributes must conform to valid values"
+msgstr "ARIA 屬性必須符合有效值"
+
+msgctxt "docs.api:prose"
+msgid "Checked actions use `menuitemcheckbox` or `menuitemradio` with `aria-checked`; applications update that state on activation. Pair `-disabled` with `aria-disabled=\"true\"` or native `disabled`, not the CSS class alone. Opt-in menu navigation keeps ARIA-disabled items reachable but prevents their activation."
+msgstr "已勾選的動作使用 `menuitemcheckbox` 或 `menuitemradio` 搭配 `aria-checked`；應用程式會在啟用時更新該狀態。請將 `-disabled` 與 `aria-disabled=\"true\"` 或原生的 `disabled` 配對，而非只使用 CSS 類別。選用的選單導覽會讓 ARIA-disabled 項目仍可觸及，但會阻止其啟用。"
+
+msgctxt "docs.api:prose"
+msgid " All five measured pieces of text pass in dark mode. one other piece can't be reduced to one color. \"Archive\" can't be measured because an element behind it is partly transparent."
+msgstr " 五段經測量的文字在深色模式下皆通過。另一段文字無法簡化為單一顏色。「Archive」無法測量，因為其後方的元素部分透明。"
+
+msgctxt "docs.api:prose"
+msgid "All five measured pieces of text pass with more contrast. one other piece can't be reduced to one color. \"Archive\" can't be measured because an element behind it is partly transparent."
+msgstr "五段經測量的文字皆以更高對比度通過。另一段文字無法簡化為單一顏色。「Archive」無法測量，因為其後方的元素部分透明。"
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "arrow-keys-move-between-items"
+msgstr "arrow-keys-move-between-items"
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "escape-closes-and-returns-focus"
+msgstr "escape-closes-and-returns-focus"
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "opens-with-enter-or-arrow"
+msgstr "opens-with-enter-or-arrow"
+
+msgctxt "docs.api:prose"
+msgid "Keyboard navigation is opt-in: add `data-menu-navigation` to a vertical native popover with `role=\"menu\"` and load `@pantoken/interactions/menu.iife.js`, or call `initMenu(menu, button)`. Use one native `button[popovertarget]`. The behavior handles focus, arrows, Home/End, initial-character search, Escape, and activation; applications own actions and checked state. Submenus and menubars aren't supported."
+msgstr "鍵盤導覽為選用功能：將 `data-menu-navigation` 加入垂直原生快顯視窗，並搭配 `role=\"menu\"` 載入 `@pantoken/interactions/menu.iife.js`，或呼叫 `initMenu(menu, button)`。使用單一原生 `button[popovertarget]`。此行為會處理焦點、方向鍵、Home/End、首字元搜尋、Escape 和啟用；應用程式負責執行動作及管理勾選狀態。不支援子選單和選單列。"
+
+msgctxt "docs.api:prose"
+msgid "Name the menu and button. Use `menuitem` for actions, `menuitemcheckbox`/`menuitemradio` with `aria-checked` for checked actions, and `separator` for dividers. Add `aria-disabled=\"true\"` to disabled items; a CSS modifier alone doesn't convey disabled state. ARIA-disabled entries remain focusable but cannot activate; native-disabled and hidden entries are skipped."
+msgstr "為選單和按鈕命名。動作請使用 `menuitem`；已勾選的動作請使用搭配 `aria-checked` 的 `menuitemcheckbox`/`menuitemradio`；分隔線請使用 `separator`。停用項目請加上 `aria-disabled=\"true\"`；僅使用 CSS 修飾符不會傳達停用狀態。ARIA 停用項目仍可聚焦，但無法啟用；原生停用及隱藏項目則會略過。"
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "WCAG 2.2 2.1.1, 2.4.3"
+msgstr "WCAG 2.2 2.1.1, 2.4.3"
+
+msgctxt "docs.api:prose"
+msgid "Give the divider `role=\"separator\"` so assistive technology can announce the break between items; without it the rule is purely decorative."
+msgstr "為分隔線提供 `role=\"separator\"`，讓輔助技術能宣告項目之間的分隔；若沒有，這條線就只是裝飾。"
+
+msgctxt "docs.api:prose"
+msgid "The `.value` and `.label` are separate elements, so keep them adjacent in source order to read together, and don't convey meaning through size alone."
+msgstr "`.value` 和 `.label` 是不同的元素，因此請在原始碼中依序相鄰放置，讓它們能一起閱讀，並且不要只透過大小來傳達意義。"
+
+msgctxt "docs.api:prose"
+msgid "Place the body inside the dialog that the header labels, and give a lone full-bleed `<img>` alt text."
+msgstr "將內容置於標題所標示的對話框內，並為單獨的全出血 `<img>` 提供替代文字。"
+
+msgctxt "docs.api:prose"
+msgid "Use real buttons in a logical focus order after the body, and include a visible dismiss action so keyboard users can close the dialog."
+msgstr "在 body 之後依照合理的焦點順序使用真正的按鈕，並提供可見的關閉操作，讓鍵盤使用者也能關閉對話框。"
+
+msgctxt "docs.api:prose"
+msgid "Render the title as a real heading and point the dialog's `aria-labelledby` at it so the dialog is announced with its name."
+msgstr "將標題呈現為真正的標題，並讓對話框的 `aria-labelledby` 指向該標題，讓對話框以其名稱進行公告。"
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "escape-closes"
+msgstr "escape-closes"
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "focus-moves-into-dialog"
+msgstr "focus-moves-into-dialog"
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "focus-returns-to-trigger"
+msgstr "focus-returns-to-trigger"
+
+msgctxt "docs.api:prose"
+msgid "The dialog stayed open after Escape."
+msgstr "按下 Escape 後，對話框仍保持開啟。"
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "WCAG 2.2 2.4.3"
+msgstr "WCAG 2.2 2.4.3"
+
+msgctxt "docs.api:prose"
+msgid "The `.arrows` buttons are redundant pointer controls, hidden from assistive technology and excluded from sequential keyboard focus. Consumers wire pointer activation and keep focus on the input; the native number input provides keyboard increment/decrement."
+msgstr "這些 `.arrows` 按鈕是多餘的指標控制項，會對輔助技術隱藏，且不會納入循序鍵盤焦點。使用者需自行連接指標啟用行為，並讓焦點停留在輸入欄位；原生數字輸入欄位提供鍵盤遞增／遞減功能。"
+
+msgctxt "docs.api:prose"
+msgid "Name the native `<input type=\"number\">` so it owns the value and keyboard controls. Mark redundant arrow buttons with both `aria-hidden=\"true\"` and `tabindex=\"-1\"`; never leave an assistive-technology-hidden button in the tab order."
+msgstr "為原生 `<input type=\"number\">` 命名，讓它負責管理值和鍵盤控制項。為多餘的箭頭按鈕同時加上 `aria-hidden=\"true\"` 和 `tabindex=\"-1\"`；絕不可讓對輔助技術隱藏的按鈕保留在 Tab 順序中。"
+
+msgctxt "docs.api:prose"
+msgid "A scrollable region must work from the keyboard: give it `tabindex=\"0\"`, a role, and an accessible name (or make sure it contains a focusable control). Don't use `hidden` or `clip` to cut off content people need to read."
+msgstr "可捲動區域必須能透過鍵盤操作：為其提供 `tabindex=\"0\"`、角色，以及可存取名稱（或確保其中包含可聚焦的控制項)。請勿使用 `hidden` 或 `clip` 來截斷使用者需要閱讀的內容。"
+
+msgctxt "docs.api:prose"
+msgid "Mark the current page with `aria-current=\"page\"`, give each page an accessible name that includes the page number, and wrap the set in a `<nav>` with an `aria-label`."
+msgstr "使用 `aria-current=\"page\"` 標記目前頁面，為每個頁面提供包含頁碼的無障礙名稱，並將這組頁面包在 `<nav>` 中，並加上 `aria-label`。"
+
+msgctxt "docs.api:prose"
+msgid "Unlike `badge`, which shows a count, or `tag`, which is removable, the pill is a static status label; its leading glyph is a masked `::before`, not an `<img>`. Let groups wrap with `flex-wrap: wrap` on their container so compact labels reflow on narrow screens."
+msgstr "不同於顯示計數的 `badge`，或可移除的 `tag`，膠囊標籤是靜態的狀態標籤；其前置圖示是套用遮罩的 `::before`，而非 `<img>`。在容器上使用 `flex-wrap: wrap`，讓群組自動換行，使精簡標籤能在窄螢幕上重新排列。"
+
+msgctxt "docs.api:prose"
+msgid "The status colors are visual only, so state the status in the label text or a visually hidden label. The leading glyph is a masked `::before` and isn't announced."
+msgstr "狀態色彩僅提供視覺提示，因此請在標籤文字或視覺隱藏的標籤中說明狀態。前置圖示是套用遮罩的 `::before`，不會被螢幕閱讀器讀出。"
+
+msgctxt "docs.api:prose"
+msgid "Wire the trigger with `popovertarget` so the expanded state is exposed. A native popover closes on Escape and outside click but doesn't move focus, so move focus into interactive content when the popover opens."
+msgstr "將觸發器與 `popovertarget` 連接，讓展開狀態能夠呈現。原生彈出視窗會在按下 Escape 或點擊外部時關閉，但不會移動焦點，因此在彈出視窗開啟時，請將焦點移至互動內容。"
+
+msgctxt "docs.api:prose"
+msgid "Positioning changes where content appears, not where it sits in the DOM: keep the visual order matching the reading and focus order, and don't let positioned content cover a focused control."
+msgstr "定位會改變內容出現的位置，而非其在 DOM 中的位置：保持視覺順序與閱讀及焦點順序一致，並避免定位內容遮住已聚焦的控制項。"
+
+msgctxt "docs.api:prose"
+msgid "`.value` is a sibling of `.bar`, both children of the root — mirroring how progress-circle nests its own `.value` part. Native `<progress>` and `<meter>` use vendor value parts with the same semantic fill. InstUI has no indeterminate state; `:indeterminate` is a pantoken-only best guess (native `<progress>` without a `value` attribute), using a CSS-owned sliding segment and hiding `.value` since there's no meaningful number to show. Reduced motion keeps a static segment; `<meter>` has no indeterminate state."
+msgstr "`.value` 是 `.bar` 的同層元素，兩者都是根元素的子元素 — 這反映了 progress-circle 如何巢狀包含自己的 `.value` 部分。原生 `<progress>` 和 `<meter>` 使用具有相同語意填色的瀏覽器廠商 value 部分。InstUI 沒有不確定狀態；`:indeterminate` 是 pantoken 專用的推測實作（原生 `<progress>` 不含 `value` 屬性)，使用由 CSS 控制的滑動區段，並隱藏 `.value`，因為沒有有意義的數字可供顯示。減少動態效果時會保留靜態區段；`<meter>` 沒有不確定狀態。"
+
+msgctxt "docs.api:prose"
+msgid "Custom, not part of InstUI. Applies only to a native `<progress>` missing its `value` attribute; draws a sliding segment on `::before` and hides `.value`."
+msgstr "自訂功能，不屬於 InstUI。僅適用於缺少 `value` 屬性的原生 `<progress>`；會在 `::before` 上繪製滑動區段，並隱藏 `.value`。"
+
+msgctxt "docs.api:prose"
+msgid "Draws the native indeterminate segment without relying on the browser's built-in animation."
+msgstr "繪製原生不確定區段，不依賴瀏覽器內建動畫。"
+
+msgctxt "docs.api:prose"
+msgid "The native value part and `.bar` fill; the -color-* modifiers set it."
+msgstr "原生 value 部分和 `.bar` 填色；-color-* 修飾符會設定它。"
+
+msgctxt "docs.api:prose"
+msgid " With prefers-contrast: more, one piece of text falls below the minimum contrast. The worst is \"30%\" at 1:1 (needs 4.5:1)."
+msgstr " 使用 prefers-contrast: more 時，有一段文字的對比度低於最低要求。最差的是「30%」，對比度為 1:1（需要 4.5:1)。"
+
+msgctxt "docs.api:prose"
+msgid "Rebrand (dark), Canvas, Canvas High Contrast:"
+msgstr "重新品牌化（深色)、Canvas、Canvas 高對比："
+
+msgctxt "docs.api:prose"
+msgid " With line height 1.5, letter spacing 0.12em, word spacing 0.16em, and paragraph spacing 2em, text in one element gets cut off: "
+msgstr " 使用 1.5 的行高、0.12em 的字母間距、0.16em 的字詞間距，以及 2em 的段落間距時，單一元素中的文字會遭到截斷： "
+
+msgctxt "docs.api:prose"
+msgid " (\"Working\"). Overlapping text isn't checked."
+msgstr "（「Working」)。不會檢查文字重疊。"
+
+msgctxt "docs.api:prose"
+msgid "The defaults keep headings in a logical order and links underlined with an interactive colour, so they don't rely on colour alone. Don't skip heading levels for visual size, and don't remove the link underline without another cue."
+msgstr "預設設定會讓標題維持合理的順序，並為連結加上底線及互動色彩，因此不會只依賴色彩傳達資訊。不要為了視覺尺寸而跳過標題層級，也不要在沒有其他提示的情況下移除連結底線。"
+
+msgctxt "docs.api:prose"
+msgid "Sweatshirt size"
+msgstr "運動衫尺寸"
+
+msgctxt "docs.api:prose"
+msgid "Use a native `<fieldset>` with a `<legend>` that names the group. Radios within a group share one `name`; independent groups need distinct names and legends so selecting one group's radio doesn't clear another group's selection."
+msgstr "使用原生 `<fieldset>`，並搭配一個標示群組名稱的 `<legend>`。同一群組中的單選按鈕共用一個 `name`；不同群組需要使用不同的名稱和圖例，這樣選取一個群組中的單選按鈕時，不會清除另一個群組的選取狀態。"
+
+msgctxt "docs.api:prose"
+msgid " With prefers-contrast: less, one piece of text falls below the minimum contrast. The worst is \"Large unavailable\" at 2.74:1 (needs 4.5:1). Softer contrast is fine only while text stays readable."
+msgstr " 使用 prefers-contrast: less 時，有一段文字低於最低對比度。最差的是「Large unavailable」，對比度為 2.74:1（需達 4.5:1)。降低對比度可以接受，但文字仍須保持可讀。"
+
+msgctxt "docs.api:prose"
+msgid " With prefers-contrast: less, one piece of text falls below the minimum contrast. The worst is \"Large unavailable\" at 3.15:1 (needs 4.5:1). Softer contrast is fine only while text stays readable."
+msgstr " 使用 prefers-contrast: less 時，有一段文字低於最低對比度。最差的是「Large unavailable」，對比度為 3.15:1（需達 4.5:1)。降低對比度可以接受，但文字仍須保持可讀。"
+
+msgctxt "docs.api:prose"
+msgid " With prefers-contrast: less, one piece of text falls below the minimum contrast. The worst is \"Large unavailable\" at 3.02:1 (needs 4.5:1). Softer contrast is fine only while text stays readable."
+msgstr " 使用 prefers-contrast: less 時，有一段文字低於最低對比度。最差的是「Large unavailable」，對比度為 3.02:1（需達 4.5:1)。降低對比度可以接受，但文字仍須保持可讀。"
+
+msgctxt "docs.api:prose"
+msgid " All 13 measured pieces of text stay above the minimum. one other piece can't be reduced to one color. \"Large\" can't be measured because an element behind it is partly transparent."
+msgstr " 13 段經測量的文字都高於最低標準。另有一段文字無法簡化為單一顏色。「Large」無法測量，因為其後方的元素部分透明。"
+
+msgctxt "docs.api:prose"
+msgid " With prefers-contrast: more, one piece of text falls below the minimum contrast. The worst is \"Large unavailable\" at 2.74:1 (needs 4.5:1)."
+msgstr " 使用 prefers-contrast: more 時，有一段文字低於最低對比度。最差的是「Large unavailable」，對比度為 2.74:1（需達 4.5:1)。"
+
+msgctxt "docs.api:prose"
+msgid " With prefers-contrast: more, one piece of text falls below the minimum contrast. The worst is \"Large unavailable\" at 3.15:1 (needs 4.5:1)."
+msgstr " 使用 prefers-contrast: more 時，有一段文字低於最低對比度。最差的是「Large unavailable」，對比度為 3.15:1（需達 4.5:1)。"
+
+msgctxt "docs.api:prose"
+msgid " With prefers-contrast: more, one piece of text falls below the minimum contrast. The worst is \"Large unavailable\" at 3.02:1 (needs 4.5:1)."
+msgstr " 使用 prefers-contrast: more 時，有一段文字低於最低對比度。最差的是「Large unavailable」，對比度為 3.02:1（需達 4.5:1)。"
+
+msgctxt "docs.api:prose"
+msgid " All 13 measured pieces of text pass with more contrast. one other piece can't be reduced to one color. \"Large\" can't be measured because an element behind it is partly transparent."
+msgstr " 13 段經測量的文字在提高對比度後都符合標準。另有一段文字無法簡化為單一顏色。「Large」無法測量，因為其後方的元素部分透明。"
+
+msgctxt "docs.api:prose"
+msgid " With prefers-contrast: less, six pieces of text fall below the minimum contrast. The worst is \"Warning selected\" at 1.67:1 (needs 4.5:1). Softer contrast is fine only while text stays readable."
+msgstr " 在 prefers-contrast: less 時，有六段文字低於最低對比度。最差的是「已選取的警告」，對比度為 1.67:1（需要 4.5:1)。只有在文字仍清晰可讀時，較低的對比度才可以接受。"
+
+msgctxt "docs.api:prose"
+msgid " With prefers-contrast: less, four pieces of text fall below the minimum contrast. The worst is \"Disabled unselected\" at 3.15:1 (needs 4.5:1). Softer contrast is fine only while text stays readable."
+msgstr " 在 prefers-contrast: less 時，有四段文字低於最低對比度。最差的是「未選取的停用項目」，對比度為 3.15:1（需要 4.5:1)。只有在文字仍清晰可讀時，較低的對比度才可以接受。"
+
+msgctxt "docs.api:prose"
+msgid " With prefers-contrast: less, four pieces of text fall below the minimum contrast. The worst is \"Disabled unselected\" at 3.02:1 (needs 4.5:1). Softer contrast is fine only while text stays readable."
+msgstr " 在 prefers-contrast: less 時，有四段文字低於最低對比度。最差的是「未選取的停用項目」，對比度為 3.02:1（需要 4.5:1)。只有在文字仍清晰可讀時，較低的對比度才可以接受。"
+
+msgctxt "docs.api:prose"
+msgid " All 31 measured pieces of text stay above the minimum. two other pieces can't be reduced to one color. \"Disabled unselected\" can't be measured because an element behind it is partly transparent."
+msgstr " 所有 31 段經測量的文字都高於最低標準。另有兩段無法簡化為單一顏色。「未選取的停用項目」無法測量，因為其後方的元素部分透明。"
+
+msgctxt "docs.api:prose"
+msgid " With prefers-contrast: more, six pieces of text fall below the minimum contrast. The worst is \"Warning selected\" at 1.67:1 (needs 4.5:1)."
+msgstr " 在 prefers-contrast: more 時，有六段文字低於最低對比度。最差的是「已選取的警告」，對比度為 1.67:1（需要 4.5:1)。"
+
+msgctxt "docs.api:prose"
+msgid " With prefers-contrast: more, four pieces of text fall below the minimum contrast. The worst is \"Disabled unselected\" at 3.15:1 (needs 4.5:1)."
+msgstr " 在 prefers-contrast: more 時，有四段文字低於最低對比度。最差的是「未選取的停用項目」，對比度為 3.15:1（需要 4.5:1)。"
+
+msgctxt "docs.api:prose"
+msgid " With prefers-contrast: more, four pieces of text fall below the minimum contrast. The worst is \"Disabled unselected\" at 3.02:1 (needs 4.5:1)."
+msgstr " 在 prefers-contrast: more 時，有四段文字低於最低對比度。最差的是「未選取的停用項目」，對比度為 3.02:1（需要 4.5:1)。"
+
+msgctxt "docs.api:prose"
+msgid " All 31 measured pieces of text pass with more contrast. two other pieces can't be reduced to one color. \"Disabled unselected\" can't be measured because an element behind it is partly transparent."
+msgstr " 所有 31 段經測量的文字在提高對比度後都符合標準。另有兩段無法簡化為單一顏色。「未選取的停用項目」無法測量，因為其後方的元素部分透明。"
+
+msgctxt "docs.api:prose"
+msgid "The control is a native `<input type=\"range\">`; give it an accessible name with `aria-label` or an associated `<label>`. Forced colors use a system-color outline because the thumb's box-shadow focus ring doesn't survive that mode."
+msgstr "此控制項是原生的 `<input type=\"range\">`；請使用 `aria-label` 為其提供無障礙名稱，或關聯一個 `<label>`。強制色彩模式下會使用系統色彩外框，因為滑塊的 box-shadow 焦點環在該模式下無法保留。"
+
+msgctxt "docs.api:prose"
+msgid "Hiding content at a breakpoint also hides it from assistive tech, so don't hide the only way to complete a task, and keep the shown and hidden versions equivalent in meaning."
+msgstr "在某個斷點隱藏內容，也會讓輔助科技無法取得該內容，因此不要隱藏完成任務的唯一方式，並確保顯示與隱藏的版本意義相同。"
+
+msgctxt "docs.api:prose"
+msgid "With forced colors on, nothing visible changed when the control took focus. A focus ring drawn with box-shadow or a background color disappears in forced colors. Use an outline."
+msgstr "啟用強制色彩時，控制項取得焦點後，畫面上沒有任何可見變化。以 box-shadow 或背景色繪製的焦點環會在強制色彩模式下消失。請使用 outline。"
+
+msgctxt "docs.api:prose"
+msgid " With prefers-contrast: less, three pieces of text fall below the minimum contrast. The worst is \"Grades\" at 1.48:1 (needs 4.5:1). Softer contrast is fine only while text stays readable."
+msgstr " 在 prefers-contrast: less 時，有三處文字的對比低於最低標準。最差的是「Grades」，對比為 1.48:1（需要 4.5:1)。只要文字仍清晰易讀，較柔和的對比就可以接受。"
+
+msgctxt "docs.api:prose"
+msgid " With prefers-contrast: less, three pieces of text fall below the minimum contrast. The worst is \"Grades\" at 1.38:1 (needs 4.5:1). Softer contrast is fine only while text stays readable."
+msgstr " 在 prefers-contrast: less 時，有三處文字的對比低於最低標準。最差的是「Grades」，對比為 1.38:1（需要 4.5:1)。只要文字仍清晰易讀，較柔和的對比就可以接受。"
+
+msgctxt "docs.api:prose"
+msgid "Mark the active entry with `aria-current=\"page\"` as well as `-selected`, and keep an accessible name, such as `aria-label`, when the parent's `-minimized` modifier hides the `.label`."
+msgstr "使用 `aria-current=\"page\"` 標記作用中的項目，並搭配 `-selected`；當父層的 `-minimized` 修飾符隱藏 `.label` 時，仍須保留可存取名稱，例如 `aria-label`。"
+
+msgctxt "docs.api:prose"
+msgid "It's a native `<select>`, so role, keyboard support, and option announcement come from the browser; associate it with a visible `<label>` and convey errors in text, not color alone."
+msgstr "這是原生的 `<select>`，因此角色、鍵盤支援和選項播報都由瀏覽器提供；請將它與可見的 `<label>`建立關聯，並以文字傳達錯誤，而不只是依賴顏色。"
+
+msgctxt "docs.api:prose"
+msgid "Spacing is visual only: use it to keep text and controls from crowding, not to convey structure — use headings, lists, and landmarks for that. Leave enough space around interactive targets for WCAG 2.5.8, and don't rely on fixed spacing that breaks when users increase text spacing."
+msgstr "間距僅用於視覺呈現：用它避免文字和控制項過於擁擠，而非傳達結構——結構應使用標題、清單和地標來呈現。互動目標周圍應保留足夠空間，以符合 WCAG 2.5.8；不要依賴固定間距，以免使用者增加文字間距時版面失效。"
+
+msgctxt "docs.api:prose"
+msgid "With reduced motion enabled, the ring or AI glyph remains visible without rotation; keep the loading status and label while work is pending."
+msgstr "啟用減少動態效果時，圓環或 AI 圖示會保持可見且不旋轉；工作處理中時，請保留載入狀態和標籤。"
+
+msgctxt "docs.api:prose"
+msgid "Stacking order is visual only: a layered surface that covers focusable content hides the focus indicator. Overlays that take over the page also need focus management and an accessible name."
+msgstr "堆疊順序僅影響視覺呈現：覆蓋可聚焦內容的分層表面會遮住焦點指示器。接管整個頁面的覆蓋層也需要焦點管理和無障礙名稱。"
+
+msgctxt "docs.api:prose"
+msgid "Use a native `<tbody>` so row and cell relationships are exposed. The parent's `-layout-stacked` changes `display`, which can drop table semantics in some browsers, so add explicit table roles when you use it."
+msgstr "使用原生的 `<tbody>`，以呈現列與儲存格之間的關係。父元素的 `-layout-stacked` 會改變 `display`，可能導致某些瀏覽器失去表格語意，因此使用時請加上明確的表格角色。"
+
+msgctxt "docs.api:prose"
+msgid "Use a native `<td>`. In `-layout-stacked` the column label is generated content that assistive technology may not announce reliably, so keep the column relationship available, for example with `headers`."
+msgstr "請使用原生 `<td>`. 在 `-layout-stacked` 中，欄標籤是產生的內容，輔助技術可能無法可靠地宣讀，因此請保留欄位關係，例如使用 `headers`。"
+
+msgctxt "docs.api:prose"
+msgid "Use `<th scope=\"col\">` so each column header is associated with the cells beneath it."
+msgstr "使用 `<th scope=\"col\">`，讓每個欄位標題都與其下方的儲存格建立關聯。"
+
+msgctxt "docs.api:prose"
+msgid "Use a native `<thead>`. `-layout-stacked` hides it visually, so keep it in the DOM, not `display: none`, to preserve column names for assistive technology."
+msgstr "使用原生 `<thead>`。`-layout-stacked` 會在視覺上隱藏它，因此請將它保留在 DOM 中，而非 `display: none`，以便為輔助技術保留欄名。"
+
+msgctxt "docs.api:prose"
+msgid "For tables that must retain their columns, use a named, keyboard-focusable `--overflow-x-auto` container instead. Use `-without-focus-animation` for an immediately visible focus outline and the caption to name the region."
+msgstr "對於必須保留欄位的表格，請改用具名且可透過鍵盤聚焦的 `--overflow-x-auto` 容器。使用 `-without-focus-animation` 以立即顯示焦點外框，並使用 caption 為此區域命名。"
+
+msgctxt "docs.api:prose"
+msgid "Responsive film ratings"
+msgstr "響應式電影評分"
+
+msgctxt "docs.api:prose"
+msgid "Use stacked cards below the canonical `md` container breakpoint; preserve columns at and above it. Requires per-cell `data-label` values and a size-container ancestor. @affects table.head @affects table.body @affects table.row @affects table.cell @affects table.col-header @affects table.row-header — Applies the existing stacked presentation only in a narrow container."
+msgstr "在標準的 `md` 容器斷點以下使用堆疊卡片；在該斷點及以上保留欄位。每個儲存格都必須設定 `data-label` 值，且須有尺寸容器祖先。@affects table.head @affects table.body @affects table.row @affects table.cell @affects table.col-header @affects table.row-header — 僅在狹窄容器中套用現有的堆疊呈現方式。"
+
+msgctxt "docs.api:prose"
+msgid "Label the table with a `<caption>`, mark column headers `<th scope=\"col\">` and row headers `<th scope=\"row\">`, and in stacked or responsive layouts give every cell a localized `data-label` matching its column header. Keep the native header associations; visible generated labels don't replace them. Name scroll regions and provide keyboard access without trapping focus."
+msgstr "使用 `<caption>` 為表格加上標籤，將欄標題標記為 `<th scope=\"col\">`，將列標題標記為 `<th scope=\"row\">`；在堆疊或響應式版面配置中，為每個儲存格提供與其欄標題相符的在地化 `data-label`。保留原生標題關聯；自動產生的可見標籤不能取代這些關聯。為捲動區域命名，並提供鍵盤操作方式，且不要讓焦點受困。"
+
+msgctxt "docs.api:prose"
+msgid "Use `<th scope=\"row\">` so the cell names its row for assistive technology."
+msgstr "使用 `<th scope=\"row\">`，讓儲存格為輔助技術指出其列名稱。"
+
+msgctxt "docs.api:prose"
+msgid "Use a native `<tr>`. The `-hover` styling is visual only, so give a clickable row a real control rather than relying on the highlight."
+msgstr "使用原生 `<tr>`。`-hover` 樣式僅供視覺呈現，因此請為可點擊的列提供真正的控制項，而不要只依賴醒目提示。"
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "arrow-keys-move-between-tabs"
+msgstr "arrow-keys-move-between-tabs"
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "home-and-end-work"
+msgstr "home-and-end-work"
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "selected-state-exposed"
+msgstr "selected-state-exposed"
+
+msgctxt "docs.api:prose"
+msgid "All six measured pieces of text pass with more contrast. two other pieces can't be reduced to one color. \"Billing\" can't be measured because an element behind it is partly transparent."
+msgstr "六段測量的文字對比都更高，符合標準。其他兩段文字無法簡化為單一顏色。「Billing」無法測量，因為它後方的元素部分透明。"
+
+msgctxt "docs.api:prose"
+msgid "End didn't move to the last tab."
+msgstr "End 沒有移至最後一個索引標籤。"
+
+msgctxt "docs.api:prose"
+msgid "3 tabs are aria-selected=\"true\". A tab list should have exactly one."
+msgstr "有 3 個索引標籤的 aria-selected=\"true\"。索引標籤清單應該恰好有一個。"
+
+msgctxt "docs.api:prose"
+msgid "Give each panel `role=\"tabpanel\"` and an `aria-labelledby` that references its tab, and keep inactive panels `hidden`."
+msgstr "為每個面板設定 `role=\"tabpanel\"`，並設定 `aria-labelledby`，使其參照對應的索引標籤，並讓非作用中的面板保持 `hidden`。"
+
+msgctxt "docs.api:prose"
+msgid "Use `role=\"tab\"` inside a `role=\"tablist\"`, mirror `-selected` with `aria-selected`, point `aria-controls` at the panel, and mark a disabled tab with `aria-disabled` or the native `disabled`."
+msgstr "在 `role=\"tablist\"` 內使用 `role=\"tab\"`，以 `aria-selected` 同步反映 `-selected`，將 `aria-controls` 指向面板，並使用 `aria-disabled` 或原生的 `disabled` 標記已停用的頁籤。"
+
+msgctxt "docs.api:prose"
+msgid "All four measured pieces of text pass with more contrast. two other pieces can't be reduced to one color. \"Billing\" can't be measured because an element behind it is partly transparent."
+msgstr "四處受測文字皆以更高的對比度通過檢測。另外兩處文字無法簡化為單一顏色。「帳單」無法測量，因為其後方有個元素部分透明。"
+
+msgctxt "docs.api:prose"
+msgid "Don't rely on color alone to distinguish tags. Give a removable tag's dismiss control an accessible name that includes the tag text, for example `aria-label=\"Remove Biology\"`."
+msgstr "不要只依賴顏色來區分標籤。為可移除標籤的關閉控制項提供無障礙名稱，且名稱應包含標籤文字，例如 `aria-label=\"Remove Biology\"`。"
+
+msgctxt "docs.api:prose"
+msgid "Associate the field with a visible `<label>`, use `aria-invalid` and `disabled` for state, and explain errors in text, not border color alone."
+msgstr "將欄位與可見的 `<label>` 關聯，使用 `aria-invalid` 和 `disabled` 表示狀態，並以文字說明錯誤，不要只使用邊框顏色。"
+
+msgctxt "docs.api:prose"
+msgid " With prefers-contrast: more, one piece of text falls below the minimum contrast. The worst is \"A saved comment.\" at 2.51:1 (needs 4.5:1)."
+msgstr " 在 prefers-contrast: more 下，有一段文字未達最低對比度。最差的是「已儲存的留言。」：2.51:1（需要 4.5:1)。"
+
+msgctxt "docs.api:prose"
+msgid " With prefers-contrast: more, one piece of text falls below the minimum contrast. The worst is \"A saved comment.\" at 4.08:1 (needs 4.5:1)."
+msgstr " 在 prefers-contrast: more 下，有一段文字未達最低對比度。最差的是「已儲存的留言。」：4.08:1（需要 4.5:1)。"
+
+msgctxt "docs.api:prose"
+msgid " With prefers-contrast: more, one piece of text falls below the minimum contrast. The worst is \"A saved comment.\" at 2.74:1 (needs 4.5:1)."
+msgstr " 在 prefers-contrast: more 下，有一段文字未達最低對比度。最差的是「已儲存的留言。」：2.74:1（需要 4.5:1)。"
+
+msgctxt "docs.api:prose"
+msgid " With prefers-contrast: more, one piece of text falls below the minimum contrast. The worst is \"A saved comment.\" at 4.11:1 (needs 4.5:1)."
+msgstr " 在 prefers-contrast: more 下，有一段文字未達最低對比度。最差的是「已儲存的留言。」：4.11:1（需要 4.5:1)。"
+
+msgctxt "docs.api:prose"
+msgid "Associate the field with a visible `<label>`, use `aria-invalid` and `disabled` for state, and explain errors in text, not border color alone. Date and time types use the browser's own picker and keyboard support."
+msgstr "將欄位與可見的 `<label>` 關聯，使用 `aria-invalid` 和 `disabled` 表示狀態，並以文字說明錯誤，而不只是改變邊框顏色。日期和時間類型會使用瀏覽器內建的選擇器和鍵盤支援。"
+
+msgctxt "docs.api:prose"
+msgid "It sets appearance only and renders no semantics, so use `<p>`, `<strong>`, `<em>`, and similar elements for meaning, and check contrast of each `-color-*` against its background, especially the inverse colors."
+msgstr "它僅設定外觀，不呈現任何語意，因此請使用 `<p>`、`<strong>`、`<em>` 等元素來表達意義，並檢查每個 `-color-*` 與其背景的對比度，尤其是反相色彩。"
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "enter-toggles"
+msgstr "enter-toggles"
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "expanded-state-exposed"
+msgstr "expanded-state-exposed"
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "space-toggles"
+msgstr "space-toggles"
+
+msgctxt "docs.api:prose"
+msgid "With reduced motion enabled, the chevron changes direction immediately; native disclosure state and keyboard operation remain unchanged."
+msgstr "啟用減少動態效果時，箭頭會立即改變方向；原生的展開狀態和鍵盤操作維持不變。"
+
+msgctxt "docs.api:prose"
+msgid "WCAG 2.2 2.1.1, 4.1.2"
+msgstr "WCAG 2.2 2.1.1、4.1.2"
+
+msgctxt "docs.api:prose"
+msgid "Built on native `<details>`, which exposes the expanded state and toggles with Enter and Space; keep the `<summary>` first and give it descriptive text."
+msgstr "以原生 `<details>` 為基礎，此元素會公開展開狀態，並可使用 Enter 和 Space 切換；請將 `<summary>` 放在前面，並提供描述性文字。"
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "appears-on-focus"
+msgstr "appears-on-focus"
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "content-reachable-on-hover"
+msgstr "content-reachable-on-hover"
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "escape-dismisses"
+msgstr "escape-dismisses"
+
+msgctxt "docs.api:prose"
+msgid "`.instui-tooltip` — A hover and focus tooltip bubble, positionable on any side."
+msgstr "`.instui-tooltip` — 可定位於任一側的懸停與焦點提示泡泡。"
+
+msgctxt "docs.api:prose"
+msgid "Load `@pantoken/interactions/tooltip.iife.js` for managed delays, Escape dismissal, and combined pointer/focus state. Without JavaScript, hover/focus remains a fallback without Escape or delay guarantees. Use a popover for interactive content."
+msgstr "載入 `@pantoken/interactions/tooltip.iife.js`，以管理延遲、按 Escape 關閉，以及整合指標與焦點狀態。沒有 JavaScript 時，懸停／焦點仍可作為備援，但無法保證 Escape 關閉或延遲效果。互動式內容請使用 popover。"
+
+msgctxt "docs.api:prose"
+msgid "The bubble; `-placement-*` sets its preferred side. Initialized tooltips flip/clamp to fit the viewport."
+msgstr "提示泡泡；`-placement-*` 設定其偏好的位置。初始化後的提示會翻轉／限制位置，以符合視窗範圍。"
+
+msgctxt "docs.api:prose"
+msgid "Use a named, focusable trigger with aria-describedby pointing at the role=\"tooltip\" bubble. Keep the content noninteractive. Initialized tooltips stay dismissed after Escape until both pointer and focus leave; the next entry can reopen them."
+msgstr "使用具名且可聚焦的觸發元素，並以 aria-describedby 指向 role=\"tooltip\" 提示泡泡。保持內容不可互動。初始化後的提示在按下 Escape 後會維持關閉，直到指標與焦點都離開；下次進入時即可再次開啟。"
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "WCAG 2.2 1.4.13"
+msgstr "WCAG 2.2 1.4.13"
+
+msgctxt "docs.api:prose"
+msgid "The classes only animate, so provide a `prefers-reduced-motion` alternative for large movement and don't convey essential state through the transition alone."
+msgstr "這些類別只會產生動畫，因此請為大型移動提供 `prefers-reduced-motion` 替代方案，且不要只透過轉場傳達重要狀態。"
+
+msgctxt "docs.api:prose"
+msgid "`.instui-tree-browser` — A tree of nested collections and leaf items, with rotating chevrons."
+msgstr "`.instui-tree-browser` — 由巢狀集合與葉節點項目組成的樹狀結構，搭配可旋轉的箭頭。"
+
+msgctxt "docs.api:prose"
+msgid "Load the tree-browser interaction bundle for ARIA-tree keyboard navigation and expansion. Native `<details>` markup remains a CSS-only disclosure fallback; don't give that fallback ARIA-tree roles."
+msgstr "載入 tree-browser 互動套件，以啟用 ARIA 樹狀結構的鍵盤導覽與展開功能。原生 `<details>` 標記仍是僅使用 CSS 的展開收合備援方案；請勿為此備援方案指定 ARIA 樹狀結構角色。"
+
+msgctxt "docs.api:prose"
+msgid "Syllabus.pdf"
+msgstr "課程大綱.pdf"
+
+msgctxt "docs.api:prose"
+msgid "Reading.pdf"
+msgstr "閱讀資料.pdf"
+
+msgctxt "docs.api:prose"
+msgid "Slides.pptx"
+msgstr "投影片.pptx"
+
+msgctxt "docs.api:prose"
+msgid "Rubric.docx"
+msgstr "評分規準.docx"
+
+msgctxt "docs.api:prose"
+msgid "Name the `role=\"tree\"` root, use focusable `role=\"treeitem\"` nodes, and associate each collection with its `role=\"group\"` via `aria-owns`. Load `@pantoken/interactions/tree-browser.iife.js` for one tab stop and synchronized expansion. Add `aria-selected` to opt into single selection; focus alone doesn't select."
+msgstr "為 `role=\"tree\"` 根節點命名，使用可取得焦點的 `role=\"treeitem\"` 節點，並透過 `aria-owns` 將每個集合與其 `role=\"group\"` 關聯。載入 `@pantoken/interactions/tree-browser.iife.js`，以提供單一 Tab 停駐點並同步展開狀態。加入 `aria-selected` 以啟用單選；僅取得焦點不會選取。"
+
+msgctxt "docs.api:prose"
+msgid "Truncation hides overflowing text visually while it stays in the DOM, so don't clip information people need (titles, errors, instructions) and keep the full text available another way. Check that clipped text still reads correctly when zoomed or resized."
+msgstr "截斷會讓溢出的文字在視覺上隱藏，但文字仍留在 DOM 中，因此不要裁切人們需要的資訊（標題、錯誤訊息、指示)，並透過其他方式保留完整文字。檢查裁切後的文字在縮放或調整大小時仍能正確閱讀。"
+
+msgctxt "docs.api:prose"
+msgid "With line height 1.5, letter spacing 0.12em, word spacing 0.16em, and paragraph spacing 2em, text in one element gets cut off: "
+msgstr "行高為 1.5、字母間距為 0.12em、字詞間距為 0.16em，段落間距為 2em 時，單一元素中的文字會被截斷： "
+
+msgctxt "docs.api:prose"
+msgid " (\"Quarterly planning notes for t\"). Overlapping text isn't checked."
+msgstr "（「季度規劃筆記，供 t」)。不會檢查文字重疊。"
+
+msgctxt "docs.api:prose"
+msgid "It's a neutral box with no semantics, so use semantic elements or ARIA roles for meaning and keep sufficient contrast between its background, border, and content."
+msgstr "這是一個沒有語意的中性方框，因此請使用語意元素或 ARIA 角色來表達意義，並確保背景、邊框與內容之間有足夠的對比。"
+
+msgctxt "docs.api:prose"
+msgid " With prefers-contrast: more, one piece of text falls below the minimum contrast. The worst is \"Notes unavailable\" at 1.98:1 (needs 4.5:1)."
+msgstr " 在 prefers-contrast: more 設定下，有一段文字的對比低於最低標準。最低的是「無法使用筆記」，對比為 1.98:1（需要 4.5:1)。"
+
+msgctxt "docs.api:prose"
+msgid " With prefers-contrast: more, one piece of text falls below the minimum contrast. The worst is \"Notes unavailable\" at 2.67:1 (needs 4.5:1)."
+msgstr " 在 prefers-contrast: more 設定下，有一段文字的對比低於最低標準。最低的是「無法使用筆記」，對比為 2.67:1（需要 4.5:1)。"
+
+msgctxt "docs.api:prose"
+msgid " With prefers-contrast: more, one piece of text falls below the minimum contrast. The worst is \"Notes unavailable\" at 1.99:1 (needs 4.5:1)."
+msgstr " 在 prefers-contrast: more 設定下，有一段文字的對比低於最低標準。最低的是「無法使用筆記」，對比為 1.99:1（需要 4.5:1)。"
+
+msgctxt "docs.api:prose"
+msgid "With prefers-reduced-transparency: reduce, one surface holding text stays see-through: "
+msgstr "在 prefers-reduced-transparency: reduce 設定下，有一個承載文字的表面仍然是半透明的："
+
+msgctxt "docs.api:prose"
+msgid " (30% opaque). Without the preference there were one. This preference isn't a WCAG requirement. It matters because see-through backgrounds make text contrast unpredictable."
+msgstr " （30% 不透明)。未啟用此偏好設定時，也有一個表面是半透明的。此偏好設定不是 WCAG 的要求。之所以重要，是因為半透明背景會讓文字對比難以預測。"
+
+msgctxt "docs.api:prose"
+msgid "Dismiss strategy:\n- `<dialog>` → `dialog.close()`\n- `[popover]` → `el.hidePopover()`\n- `.instui-alert` or `.instui-banner` (per `options.prefix`) → cancelable `dismiss` event, then fade out and remove\n- `[data-dismissible]` or `[open]` → remove open attr + fire bubbling `close`"
+msgstr "關閉策略：\n- `<dialog>` → `dialog.close()`\n- `[popover]` → `el.hidePopover()`\n- `.instui-alert` 或 `.instui-banner`（每個 `options.prefix`) → 可取消的 `dismiss` 事件，接著淡出並移除\n- `[data-dismissible]` 或 `[open]` → 移除 open 屬性並觸發冒泡的 `close`"
+
+msgctxt "docs.api:prose"
+msgid "Associate an authored error after blur, native invalid events, or explicit validation.\nUntouched fields stay quiet; edited fields revalidate after the first validation attempt.\nPreserves hint references and uses native constraints, including `setCustomValidity()`.\nThe host must contain the control and a separate, named error element with message text.\nClean up and reinitialize after moving controls between forms or changing error IDs."
+msgstr "在失焦、原生 invalid 事件或明確驗證後，關聯已撰寫的錯誤。\n未觸碰的欄位保持安靜；欄位編輯後，會在首次驗證嘗試後重新驗證。\n保留提示參照並使用原生限制，包括 `setCustomValidity()`.\n主體必須包含控制項，以及一個具名且文字為訊息的獨立錯誤元素。\n在表單之間移動控制項或變更錯誤 ID 後，請清理並重新初始化。"
+
+msgctxt "docs.api:prose"
+msgid "Wire a vertical, single-level ARIA menu and its native popover button.\nArrow keys wrap; Home/End and initial-character search move focus. Escape returns\nfocus to the button; Tab closes without canceling normal sequential navigation.\nApplications own click actions and checked state. Space activates checkable items\nwithout closing; Enter and pointer activation close unless the click is canceled."
+msgstr "建立垂直、單層的 ARIA 選單及其原生 popover 按鈕。\n方向鍵會循環移動；Home/End 與首字元搜尋會移動焦點。Escape 將焦點移回按鈕；Tab 會關閉選單，但不會取消一般的循序導覽。\n應用程式負責點擊動作與勾選狀態。空白鍵會啟用可勾選項目，但不會關閉選單；Enter 與指標啟用會關閉選單，除非點擊事件已取消。"
+
+msgctxt "docs.api:prose"
+msgid "Own tooltip visibility after initialization, retaining CSS hover/focus as a no-JS fallback.\nPointer and focus are independent reasons to stay open; Escape dismisses until both leave."
+msgstr "初始化後自行管理提示框的顯示狀態，並保留 CSS 懸停／焦點作為無 JavaScript 時的備援。\n指標懸停和焦點是各自獨立的保持開啟原因；按下 Escape 會將其關閉，直到兩者都離開為止。"
+
+msgctxt "docs.api:prose"
+msgid "Wire ARIA-tree navigation and expansion, with single selection opt-in via `aria-selected`."
+msgstr "接入 ARIA 樹狀導覽與展開功能，並可透過 `aria-selected` 選擇性啟用單選。"
+
+msgctxt "docs.api:prose"
+msgid "The class namespace for a prefix: `\"instui\"` → `\"instui-\"`, `\"\"` → `\"\"` (unprefixed)."
+msgstr "前綴的類別命名空間：`\"instui\"` → `\"instui-\"`, `\"\"` → `\"\"` (未加前綴)."
+
+msgctxt "docs.api:prose"
+msgid "Swap every `pfx-` sentinel in `text` for the namespace of `prefix` (default `\"instui\"`)."
+msgstr "將每個 `pfx-` 標記，在 `text` 中替換為 `prefix` 的命名空間（預設為 `\"instui\"`)。"
+
+msgctxt "docs.api:prose"
+msgid "Options for [initCloseButton](../functions/initCloseButton.md)."
+msgstr "適用於[initCloseButton](../functions/initCloseButton.md)的選項。"
+
+msgctxt "docs.api:prose"
+msgid "Class prefix for the alert/banner hosts. Defaults to `\"instui\"`; `\"\"` means unprefixed."
+msgstr "警示／橫幅主機的類別前綴。預設為 `\"instui\"`；`\"\"` 表示不加前綴。"
+
+msgctxt "docs.api:prose"
+msgid "Native validation controls and listener cleanup."
+msgstr "原生驗證控制項與監聽器清理。"
+
+msgctxt "docs.api:prose"
+msgid "Show the current native validation result without moving focus or changing the value."
+msgstr "顯示目前的原生驗證結果，不移動焦點或變更值。"
+
+msgctxt "docs.api:prose"
+msgid "Remove listeners and restore the initial accessibility and error-visibility state."
+msgstr "移除監聽器，並還原初始的無障礙狀態與錯誤可見性狀態。"
+
+msgctxt "docs.api:prose"
+msgid "Listeners and attribute restoration installed by [initMenu](../functions/initMenu.md)."
+msgstr "由 [initMenu](../functions/initMenu.md) 安裝的監聽器與屬性還原。"
+
+msgctxt "docs.api:prose"
+msgid "Class prefix for the `transition` utility. Defaults to `\"instui\"`; `\"\"` means unprefixed."
+msgstr "適用於 `transition` 公用程式的類別前綴。預設為 `\"instui\"`；`\"\"` 表示不加前綴。"
+
+msgctxt "docs.api:prose"
+msgid "Remove listeners/timers and restore the original managed marker and show class."
+msgstr "移除事件監聽器／計時器，並還原原始的受管理標記與顯示類別。"
+
+msgctxt "docs.api:prose"
+msgid "Dismiss until both pointer and focus leave, canceling pending timers."
+msgstr "直到指標與焦點都離開後才關閉，並取消待處理的計時器。"
+
+msgctxt "docs.api:prose"
+msgid "Listeners installed by [initTreeBrowser](../functions/initTreeBrowser.md)."
+msgstr "由 [initTreeBrowser](../functions/initTreeBrowser.md) 安裝的監聽器。"
+
+msgctxt "docs.api:prose"
+msgid "Native controls supported by [initFormField](../functions/initFormField.md)."
+msgstr "支援的原生控制項：[initFormField](../functions/initFormField.md)。"
+
+msgctxt "docs.api:prose"
+msgid "Custom-element tag prefix (`\"x\"` → `<x-icon>`). Never null or empty: tags need a hyphen, so JS callers passing one fall back to `instui`."
+msgstr "自訂元素標籤前綴 (`\"x\"` → `<x-icon>`). 絕不可為 null 或空字串：標籤必須包含連字號，因此 JS 呼叫端若傳入空字串，會回退至 `instui`。"
+
+msgctxt "docs.api:prose"
+msgid "Both panes are `div` regions, matching InstUI's inline DrawerLayout. Supply nonempty `tray-label` and `content-label` attributes to name them; labels on the host or slotted content don't name the shadow-DOM regions."
+msgstr "兩個窗格都是 `div` 區域，與 InstUI 的 inline DrawerLayout 相符。請提供非空的 `tray-label` 和 `content-label` 屬性為其命名；主體或插槽內容上的標籤不會為 shadow-DOM 區域命名。"
+
+msgctxt "docs.api:prose"
+msgid "`<instui-modal>` — a real `<dialog>`, so it gets focus trapping, Escape-to-close, and a\n`::backdrop` for free. The `open` attribute drives `showModal()`/`close()`; a native dismissal\n(such as Escape) reflects back to the attribute and re-fires as a bubbling `close`\nevent. Drivable from light DOM via Invoker Commands — a\n`<button command=\"--show|--close|--toggle\" commandfor=\"modal-id\">` toggles it by id. Content goes\nin the default slot."
+msgstr "`<instui-modal>` — 真正的 `<dialog>`，因此內建焦點限制、按 Escape 關閉，以及一個\n`::backdrop`。`open` 屬性會驅動 `showModal()`/`close()`；原生關閉操作\n（例如按 Escape) 會回寫至該屬性，並重新觸發為會冒泡的 `close`\n事件。可透過 Invoker Commands 從 light DOM 控制 — 一個\n`<button command=\"--show|--close|--toggle\" commandfor=\"modal-id\">` 會依 id 切換其狀態。內容放置\n於預設插槽中。"
+
+msgctxt "docs.api:prose"
+msgid "`<instui-spinner>` — a loading spinner with `role=\"status\"`. `variant=\"ai\"` and\n`variant=\"ai-on-color\"` select the rotating AI star; size and colour follow the CSS tokens.\nReduced motion keeps the ring or glyph visible without rotation."
+msgstr "`<instui-spinner>` — 一個載入中的旋轉指示器，並搭配 `role=\"status\"`. `variant=\"ai\"` 和\n`variant=\"ai-on-color\"` 會選擇旋轉的 AI 星形圖示；大小和顏色依照 CSS tokens。\n減少動態效果時，圓環或字形會保持可見且不旋轉。"
+
+msgctxt "docs.api:prose"
+msgid "`<instui-tooltip>` — wraps a slotted trigger and shows a `.tip` bubble (from the `tip` attribute)\non hover/focus. `placement` maps to `-placement-<value>` (e.g. `bottom`, `end`); `show-delay` and\n`hide-delay` (ms, default 0) gate the reveal/hide. Shared behavior owns visibility; Escape\ndismisses until both pointer and focus leave. Tooltip content is noninteractive."
+msgstr "`<instui-tooltip>` — 包裝具插槽的觸發器，並在懸停/焦點時顯示 `.tip` 氣泡（取自 `tip` 屬性)\n。`placement` 對應到 `-placement-<value>`（例如 `bottom`、`end`)；`show-delay` 和\n`hide-delay`（毫秒，預設值為 0) 控制顯示/隱藏。共用行為負責可見狀態；Escape 會將其關閉，直到指標和焦點都離開。工具提示內容不可互動。"
+
+msgctxt "docs.api:prose"
+msgid "`<instui-tree-browser>` — an ARIA tree with shared keyboard navigation and expansion.\nName the host and slot `treeitem`/`group` markup. Load the component stylesheet for slotted items."
+msgstr "`<instui-tree-browser>` — 一個具備共用鍵盤導覽與展開功能的 ARIA 樹狀結構。\n為主體與插槽標記命名：`treeitem`/`group`。載入元件樣式表以套用至插槽項目。"
+
+#, pantoken-verbatim
+msgctxt "docs.api:text"
+msgid "CloseButtonOptions"
+msgstr "CloseButtonOptions"
+
+#, pantoken-verbatim
+msgctxt "docs.api:text"
+msgid "FormFieldHandle"
+msgstr "FormFieldHandle"
+
+#, pantoken-verbatim
+msgctxt "docs.api:text"
+msgid "MenuHandle"
+msgstr "MenuHandle"
+
+#, pantoken-verbatim
+msgctxt "docs.api:text"
+msgid "TreeBrowserHandle"
+msgstr "TreeBrowserHandle"
+
+#, pantoken-verbatim
+msgctxt "docs.api:text"
+msgid "FormFieldControl"
+msgstr "FormFieldControl"
+
+#, pantoken-verbatim
+msgctxt "docs.api:text"
+msgid "initFormField"
+msgstr "initFormField"
+
+#, pantoken-verbatim
+msgctxt "docs.api:text"
+msgid "initMenu"
+msgstr "initMenu"
+
+#, pantoken-verbatim
+msgctxt "docs.api:text"
+msgid "initTreeBrowser"
+msgstr "initTreeBrowser"
+
+#, pantoken-verbatim
+msgctxt "docs.api:text"
+msgid "ns"
+msgstr "ns"
+
+#, pantoken-verbatim
+msgctxt "docs.api:text"
+msgid "withPrefix"
+msgstr "withPrefix"

@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: pantoken\n"
-"PO-Revision-Date: 2026-10-28 16:19+0000\n"
+"PO-Revision-Date: 2026-10-29 16:06+0000\n"
 "Last-Translator: pantoken localization engine\n"
 "Language-Team: pantoken\n"
 "MIME-Version: 1.0\n"
@@ -670,10 +670,18 @@ msgid "Action"
 msgstr ""
 
 #: css/agent-shell.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "The shell is a plain container with no role of its own. Give it a landmark or group name (for example `role=\"region\"` with an `aria-label`, or a heading) so assistive tech can find the agent surface, and keep its content in reading order."
+msgstr ""
+
+#: css/agent-shell.md
+#: css/ai-gradient.md
 #: css/alert.md
 #: css/avatar.md
 #: css/badge.md
 #: css/banner.md
+#: css/base.md
 #: css/billboard.md
 #: css/breadcrumb.link.md
 #: css/breadcrumb.md
@@ -686,6 +694,7 @@ msgstr ""
 #: css/checkbox.md
 #: css/close-button.md
 #: css/context-view.md
+#: css/cursor.md
 #: css/drawer-layout.content.md
 #: css/drawer-layout.md
 #: css/drawer-layout.tray.md
@@ -693,15 +702,19 @@ msgstr ""
 #: css/form-field-group.md
 #: css/form-field-messages.md
 #: css/form-field.md
+#: css/gap.md
 #: css/heading.md
 #: css/icon.md
 #: css/img.md
 #: css/in-place-edit.md
 #: css/input-group.md
+#: css/layout.md
 #: css/link.md
 #: css/list.item.md
 #: css/list.md
+#: css/logo.md
 #: css/mask.md
+#: css/maskglobal.md
 #: css/menu.group.md
 #: css/menu.item.md
 #: css/menu.md
@@ -712,24 +725,29 @@ msgstr ""
 #: css/modal.header.md
 #: css/modal.md
 #: css/number-input.md
+#: css/overflow.md
 #: css/pagination.md
 #: css/pagination.page.md
 #: css/pill.md
 #: css/popover.md
+#: css/position.md
 #: css/progress-circle.md
 #: css/progress.md
+#: css/prose.md
 #: css/radio-input-group.md
 #: css/radio.md
 #: css/range-input.md
 #: css/rating.md
+#: css/responsive.md
 #: css/screen-reader-content.md
 #: css/segmented-control.md
-#: css/segmented-control.segment.md
 #: css/side-nav-bar.item.md
 #: css/side-nav-bar.md
 #: css/simple-select.md
 #: css/skeleton-loader.md
+#: css/spacing.md
 #: css/spinner.md
+#: css/stacking.md
 #: css/table.body.md
 #: css/table.cell.md
 #: css/table.col-header.md
@@ -747,9 +765,2079 @@ msgstr ""
 #: css/toggle-details.md
 #: css/toggle-group.md
 #: css/tooltip.md
+#: css/transition.md
+#: css/tray.md
+#: css/tree-browser.md
+#: css/truncate.md
+#: css/view.md
+#: css/visual-debug.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Conditions"
+msgstr ""
+
+#: css/agent-shell.md
+#: css/agent-shell.md
+#: css/ai-gradient.md
+#: css/ai-gradient.md
+#: css/ai-gradient.md
+#: css/alert.md
+#: css/alert.md
+#: css/alert.md
+#: css/alert.md
+#: css/avatar.md
+#: css/avatar.md
+#: css/badge.md
+#: css/badge.md
+#: css/banner.md
+#: css/banner.md
+#: css/banner.md
+#: css/base.md
+#: css/base.md
+#: css/billboard.md
+#: css/billboard.md
+#: css/billboard.md
+#: css/breadcrumb.link.md
+#: css/breadcrumb.link.md
+#: css/breadcrumb.md
+#: css/breadcrumb.md
+#: css/button-set.md
+#: css/button-set.md
+#: css/button-set.md
+#: css/button.md
+#: css/button.md
+#: css/button.md
+#: css/button.md
+#: css/button.md
+#: css/byline.md
+#: css/byline.md
+#: css/byline.md
+#: css/calendar.day.md
+#: css/calendar.day.md
+#: css/calendar.md
+#: css/calendar.md
+#: css/card.md
+#: css/card.md
+#: css/checkbox.md
+#: css/checkbox.md
+#: css/close-button.md
+#: css/close-button.md
+#: css/context-view.md
+#: css/context-view.md
+#: css/cursor.md
+#: css/cursor.md
+#: css/drawer-layout.content.md
+#: css/drawer-layout.content.md
+#: css/drawer-layout.md
+#: css/drawer-layout.md
+#: css/drawer-layout.tray.md
+#: css/drawer-layout.tray.md
+#: css/file-drop.md
+#: css/file-drop.md
+#: css/form-field-group.md
+#: css/form-field-group.md
+#: css/form-field-messages.md
+#: css/form-field-messages.md
+#: css/form-field.md
+#: css/form-field.md
+#: css/form-field.md
+#: css/form-field.md
+#: css/form-field.md
+#: css/gap.md
+#: css/gap.md
+#: css/heading.md
+#: css/heading.md
+#: css/heading.md
+#: css/icon.md
+#: css/icon.md
+#: css/img.md
+#: css/img.md
+#: css/in-place-edit.md
+#: css/in-place-edit.md
+#: css/input-group.md
+#: css/input-group.md
+#: css/input-group.md
+#: css/layout.md
+#: css/layout.md
+#: css/link.md
+#: css/link.md
+#: css/link.md
+#: css/link.md
+#: css/link.md
+#: css/list.item.md
+#: css/list.item.md
+#: css/list.md
+#: css/list.md
+#: css/logo.md
+#: css/logo.md
+#: css/mask.md
+#: css/mask.md
+#: css/maskglobal.md
+#: css/maskglobal.md
+#: css/maskglobal.md
+#: css/menu.group.md
+#: css/menu.group.md
+#: css/menu.group.md
+#: css/menu.item.md
+#: css/menu.item.md
+#: css/menu.item.md
+#: css/menu.md
+#: css/menu.md
+#: css/menu.md
+#: css/menu.md
+#: css/menu.md
+#: css/menu.separator.md
+#: css/menu.separator.md
+#: css/menu.separator.md
+#: css/metric.md
+#: css/metric.md
+#: css/modal.body.md
+#: css/modal.body.md
+#: css/modal.footer.md
+#: css/modal.footer.md
+#: css/modal.header.md
+#: css/modal.header.md
+#: css/modal.md
+#: css/modal.md
+#: css/modal.md
+#: css/modal.md
+#: css/number-input.md
+#: css/number-input.md
+#: css/overflow.md
+#: css/overflow.md
+#: css/pagination.md
+#: css/pagination.md
+#: css/pagination.page.md
+#: css/pagination.page.md
+#: css/pill.md
+#: css/pill.md
+#: css/popover.md
+#: css/popover.md
+#: css/position.md
+#: css/position.md
+#: css/progress-circle.md
+#: css/progress-circle.md
+#: css/progress.md
+#: css/progress.md
+#: css/progress.md
+#: css/prose.md
+#: css/prose.md
+#: css/radio-input-group.md
+#: css/radio-input-group.md
+#: css/radio.md
+#: css/radio.md
+#: css/radio.md
+#: css/range-input.md
+#: css/range-input.md
+#: css/rating.md
+#: css/rating.md
+#: css/responsive.md
+#: css/responsive.md
+#: css/screen-reader-content.md
+#: css/screen-reader-content.md
+#: css/segmented-control.md
+#: css/segmented-control.md
+#: css/side-nav-bar.item.md
+#: css/side-nav-bar.item.md
+#: css/side-nav-bar.md
+#: css/side-nav-bar.md
+#: css/simple-select.md
+#: css/simple-select.md
+#: css/simple-select.md
+#: css/skeleton-loader.md
+#: css/skeleton-loader.md
+#: css/spacing.md
+#: css/spacing.md
+#: css/spinner.md
+#: css/spinner.md
+#: css/stacking.md
+#: css/stacking.md
+#: css/table.body.md
+#: css/table.body.md
+#: css/table.cell.md
+#: css/table.cell.md
+#: css/table.col-header.md
+#: css/table.col-header.md
+#: css/table.head.md
+#: css/table.head.md
+#: css/table.md
+#: css/table.md
+#: css/table.row-header.md
+#: css/table.row-header.md
+#: css/table.row.md
+#: css/table.row.md
+#: css/tabs.md
+#: css/tabs.md
+#: css/tabs.md
+#: css/tabs.md
+#: css/tabs.panel.md
+#: css/tabs.panel.md
+#: css/tabs.tab.md
+#: css/tabs.tab.md
+#: css/tag.md
+#: css/tag.md
+#: css/text-area.md
+#: css/text-area.md
+#: css/text-input.md
+#: css/text-input.md
+#: css/text.md
+#: css/text.md
+#: css/toggle-details.md
+#: css/toggle-details.md
+#: css/toggle-details.md
+#: css/toggle-details.md
+#: css/toggle-group.md
+#: css/toggle-group.md
+#: css/tooltip.md
+#: css/tooltip.md
+#: css/tooltip.md
+#: css/tooltip.md
+#: css/transition.md
+#: css/transition.md
+#: css/tray.md
+#: css/tray.md
+#: css/tree-browser.md
+#: css/tree-browser.md
+#: css/truncate.md
+#: css/truncate.md
+#: css/view.md
+#: css/view.md
+#: css/visual-debug.md
+#: css/visual-debug.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Rebrand (light)"
+msgstr ""
+
+#: css/agent-shell.md
+#: css/agent-shell.md
+#: css/ai-gradient.md
+#: css/ai-gradient.md
+#: css/ai-gradient.md
+#: css/alert.md
+#: css/alert.md
+#: css/alert.md
+#: css/alert.md
+#: css/avatar.md
+#: css/avatar.md
+#: css/badge.md
+#: css/badge.md
+#: css/banner.md
+#: css/banner.md
+#: css/banner.md
+#: css/base.md
+#: css/base.md
+#: css/billboard.md
+#: css/billboard.md
+#: css/billboard.md
+#: css/breadcrumb.link.md
+#: css/breadcrumb.link.md
+#: css/breadcrumb.md
+#: css/breadcrumb.md
+#: css/button-set.md
+#: css/button-set.md
+#: css/button-set.md
+#: css/button.md
+#: css/button.md
+#: css/button.md
+#: css/button.md
+#: css/button.md
+#: css/byline.md
+#: css/byline.md
+#: css/byline.md
+#: css/calendar.day.md
+#: css/calendar.day.md
+#: css/calendar.md
+#: css/calendar.md
+#: css/card.md
+#: css/card.md
+#: css/checkbox.md
+#: css/checkbox.md
+#: css/close-button.md
+#: css/close-button.md
+#: css/context-view.md
+#: css/context-view.md
+#: css/cursor.md
+#: css/cursor.md
+#: css/drawer-layout.content.md
+#: css/drawer-layout.content.md
+#: css/drawer-layout.md
+#: css/drawer-layout.md
+#: css/drawer-layout.tray.md
+#: css/drawer-layout.tray.md
+#: css/file-drop.md
+#: css/file-drop.md
+#: css/form-field-group.md
+#: css/form-field-group.md
+#: css/form-field-messages.md
+#: css/form-field-messages.md
+#: css/form-field.md
+#: css/form-field.md
+#: css/form-field.md
+#: css/form-field.md
+#: css/form-field.md
+#: css/gap.md
+#: css/gap.md
+#: css/heading.md
+#: css/heading.md
+#: css/heading.md
+#: css/icon.md
+#: css/icon.md
+#: css/img.md
+#: css/img.md
+#: css/in-place-edit.md
+#: css/in-place-edit.md
+#: css/input-group.md
+#: css/input-group.md
+#: css/input-group.md
+#: css/layout.md
+#: css/layout.md
+#: css/link.md
+#: css/link.md
+#: css/link.md
+#: css/link.md
+#: css/link.md
+#: css/list.item.md
+#: css/list.item.md
+#: css/list.md
+#: css/list.md
+#: css/logo.md
+#: css/logo.md
+#: css/mask.md
+#: css/mask.md
+#: css/maskglobal.md
+#: css/maskglobal.md
+#: css/maskglobal.md
+#: css/menu.group.md
+#: css/menu.group.md
+#: css/menu.group.md
+#: css/menu.item.md
+#: css/menu.item.md
+#: css/menu.item.md
+#: css/menu.md
+#: css/menu.md
+#: css/menu.md
+#: css/menu.md
+#: css/menu.md
+#: css/menu.separator.md
+#: css/menu.separator.md
+#: css/menu.separator.md
+#: css/metric.md
+#: css/metric.md
+#: css/modal.body.md
+#: css/modal.body.md
+#: css/modal.footer.md
+#: css/modal.footer.md
+#: css/modal.header.md
+#: css/modal.header.md
+#: css/modal.md
+#: css/modal.md
+#: css/modal.md
+#: css/modal.md
+#: css/number-input.md
+#: css/number-input.md
+#: css/overflow.md
+#: css/overflow.md
+#: css/pagination.md
+#: css/pagination.md
+#: css/pagination.page.md
+#: css/pagination.page.md
+#: css/pill.md
+#: css/pill.md
+#: css/popover.md
+#: css/popover.md
+#: css/position.md
+#: css/position.md
+#: css/progress-circle.md
+#: css/progress-circle.md
+#: css/progress.md
+#: css/progress.md
+#: css/progress.md
+#: css/prose.md
+#: css/prose.md
+#: css/radio-input-group.md
+#: css/radio-input-group.md
+#: css/radio.md
+#: css/radio.md
+#: css/radio.md
+#: css/range-input.md
+#: css/range-input.md
+#: css/rating.md
+#: css/rating.md
+#: css/responsive.md
+#: css/responsive.md
+#: css/screen-reader-content.md
+#: css/screen-reader-content.md
+#: css/segmented-control.md
+#: css/segmented-control.md
+#: css/side-nav-bar.item.md
+#: css/side-nav-bar.item.md
+#: css/side-nav-bar.md
+#: css/side-nav-bar.md
+#: css/simple-select.md
+#: css/simple-select.md
+#: css/simple-select.md
+#: css/skeleton-loader.md
+#: css/skeleton-loader.md
+#: css/spacing.md
+#: css/spacing.md
+#: css/spinner.md
+#: css/spinner.md
+#: css/stacking.md
+#: css/stacking.md
+#: css/table.body.md
+#: css/table.body.md
+#: css/table.cell.md
+#: css/table.cell.md
+#: css/table.col-header.md
+#: css/table.col-header.md
+#: css/table.head.md
+#: css/table.head.md
+#: css/table.md
+#: css/table.md
+#: css/table.row-header.md
+#: css/table.row-header.md
+#: css/table.row.md
+#: css/table.row.md
+#: css/tabs.md
+#: css/tabs.md
+#: css/tabs.md
+#: css/tabs.md
+#: css/tabs.panel.md
+#: css/tabs.panel.md
+#: css/tabs.tab.md
+#: css/tabs.tab.md
+#: css/tag.md
+#: css/tag.md
+#: css/text-area.md
+#: css/text-area.md
+#: css/text-input.md
+#: css/text-input.md
+#: css/text.md
+#: css/text.md
+#: css/toggle-details.md
+#: css/toggle-details.md
+#: css/toggle-details.md
+#: css/toggle-details.md
+#: css/toggle-group.md
+#: css/toggle-group.md
+#: css/tooltip.md
+#: css/tooltip.md
+#: css/tooltip.md
+#: css/tooltip.md
+#: css/transition.md
+#: css/transition.md
+#: css/tray.md
+#: css/tray.md
+#: css/tree-browser.md
+#: css/tree-browser.md
+#: css/truncate.md
+#: css/truncate.md
+#: css/view.md
+#: css/view.md
+#: css/visual-debug.md
+#: css/visual-debug.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Rebrand (dark)"
+msgstr ""
+
+#: css/agent-shell.md
+#: css/agent-shell.md
+#: css/ai-gradient.md
+#: css/ai-gradient.md
+#: css/ai-gradient.md
+#: css/alert.md
+#: css/alert.md
+#: css/alert.md
+#: css/alert.md
+#: css/avatar.md
+#: css/avatar.md
+#: css/badge.md
+#: css/badge.md
+#: css/banner.md
+#: css/banner.md
+#: css/banner.md
+#: css/base.md
+#: css/base.md
+#: css/billboard.md
+#: css/billboard.md
+#: css/billboard.md
+#: css/breadcrumb.link.md
+#: css/breadcrumb.link.md
+#: css/breadcrumb.md
+#: css/breadcrumb.md
+#: css/button-set.md
+#: css/button-set.md
+#: css/button-set.md
+#: css/button.md
+#: css/button.md
+#: css/button.md
+#: css/button.md
+#: css/button.md
+#: css/byline.md
+#: css/byline.md
+#: css/byline.md
+#: css/calendar.day.md
+#: css/calendar.day.md
+#: css/calendar.md
+#: css/calendar.md
+#: css/card.md
+#: css/card.md
+#: css/checkbox.md
+#: css/checkbox.md
+#: css/close-button.md
+#: css/close-button.md
+#: css/context-view.md
+#: css/context-view.md
+#: css/cursor.md
+#: css/cursor.md
+#: css/drawer-layout.content.md
+#: css/drawer-layout.content.md
+#: css/drawer-layout.md
+#: css/drawer-layout.md
+#: css/drawer-layout.tray.md
+#: css/drawer-layout.tray.md
+#: css/file-drop.md
+#: css/file-drop.md
+#: css/form-field-group.md
+#: css/form-field-group.md
+#: css/form-field-messages.md
+#: css/form-field-messages.md
+#: css/form-field.md
+#: css/form-field.md
+#: css/form-field.md
+#: css/form-field.md
+#: css/form-field.md
+#: css/gap.md
+#: css/gap.md
+#: css/heading.md
+#: css/heading.md
+#: css/heading.md
+#: css/icon.md
+#: css/icon.md
+#: css/img.md
+#: css/img.md
+#: css/in-place-edit.md
+#: css/in-place-edit.md
+#: css/input-group.md
+#: css/input-group.md
+#: css/input-group.md
+#: css/layout.md
+#: css/layout.md
+#: css/link.md
+#: css/link.md
+#: css/link.md
+#: css/link.md
+#: css/link.md
+#: css/list.item.md
+#: css/list.item.md
+#: css/list.md
+#: css/list.md
+#: css/logo.md
+#: css/logo.md
+#: css/mask.md
+#: css/mask.md
+#: css/maskglobal.md
+#: css/maskglobal.md
+#: css/maskglobal.md
+#: css/menu.group.md
+#: css/menu.group.md
+#: css/menu.group.md
+#: css/menu.item.md
+#: css/menu.item.md
+#: css/menu.item.md
+#: css/menu.md
+#: css/menu.md
+#: css/menu.md
+#: css/menu.md
+#: css/menu.md
+#: css/menu.separator.md
+#: css/menu.separator.md
+#: css/menu.separator.md
+#: css/metric.md
+#: css/metric.md
+#: css/modal.body.md
+#: css/modal.body.md
+#: css/modal.footer.md
+#: css/modal.footer.md
+#: css/modal.header.md
+#: css/modal.header.md
+#: css/modal.md
+#: css/modal.md
+#: css/modal.md
+#: css/modal.md
+#: css/number-input.md
+#: css/number-input.md
+#: css/overflow.md
+#: css/overflow.md
+#: css/pagination.md
+#: css/pagination.md
+#: css/pagination.page.md
+#: css/pagination.page.md
+#: css/pill.md
+#: css/pill.md
+#: css/popover.md
+#: css/popover.md
+#: css/position.md
+#: css/position.md
+#: css/progress-circle.md
+#: css/progress-circle.md
+#: css/progress.md
+#: css/progress.md
+#: css/progress.md
+#: css/prose.md
+#: css/prose.md
+#: css/radio-input-group.md
+#: css/radio-input-group.md
+#: css/radio.md
+#: css/radio.md
+#: css/radio.md
+#: css/range-input.md
+#: css/range-input.md
+#: css/rating.md
+#: css/rating.md
+#: css/responsive.md
+#: css/responsive.md
+#: css/screen-reader-content.md
+#: css/screen-reader-content.md
+#: css/segmented-control.md
+#: css/segmented-control.md
+#: css/side-nav-bar.item.md
+#: css/side-nav-bar.item.md
+#: css/side-nav-bar.md
+#: css/side-nav-bar.md
+#: css/simple-select.md
+#: css/simple-select.md
+#: css/simple-select.md
+#: css/skeleton-loader.md
+#: css/skeleton-loader.md
+#: css/spacing.md
+#: css/spacing.md
+#: css/spinner.md
+#: css/spinner.md
+#: css/stacking.md
+#: css/stacking.md
+#: css/table.body.md
+#: css/table.body.md
+#: css/table.cell.md
+#: css/table.cell.md
+#: css/table.col-header.md
+#: css/table.col-header.md
+#: css/table.head.md
+#: css/table.head.md
+#: css/table.md
+#: css/table.md
+#: css/table.row-header.md
+#: css/table.row-header.md
+#: css/table.row.md
+#: css/table.row.md
+#: css/tabs.md
+#: css/tabs.md
+#: css/tabs.md
+#: css/tabs.md
+#: css/tabs.panel.md
+#: css/tabs.panel.md
+#: css/tabs.tab.md
+#: css/tabs.tab.md
+#: css/tag.md
+#: css/tag.md
+#: css/text-area.md
+#: css/text-area.md
+#: css/text-input.md
+#: css/text-input.md
+#: css/text.md
+#: css/text.md
+#: css/toggle-details.md
+#: css/toggle-details.md
+#: css/toggle-details.md
+#: css/toggle-details.md
+#: css/toggle-group.md
+#: css/toggle-group.md
+#: css/tooltip.md
+#: css/tooltip.md
+#: css/tooltip.md
+#: css/tooltip.md
+#: css/transition.md
+#: css/transition.md
+#: css/tray.md
+#: css/tray.md
+#: css/tree-browser.md
+#: css/tree-browser.md
+#: css/truncate.md
+#: css/truncate.md
+#: css/view.md
+#: css/view.md
+#: css/visual-debug.md
+#: css/visual-debug.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Canvas"
+msgstr ""
+
+#: css/agent-shell.md
+#: css/agent-shell.md
+#: css/ai-gradient.md
+#: css/ai-gradient.md
+#: css/ai-gradient.md
+#: css/alert.md
+#: css/alert.md
+#: css/alert.md
+#: css/alert.md
+#: css/avatar.md
+#: css/avatar.md
+#: css/badge.md
+#: css/badge.md
+#: css/banner.md
+#: css/banner.md
+#: css/banner.md
+#: css/base.md
+#: css/base.md
+#: css/billboard.md
+#: css/billboard.md
+#: css/billboard.md
+#: css/breadcrumb.link.md
+#: css/breadcrumb.link.md
+#: css/breadcrumb.md
+#: css/breadcrumb.md
+#: css/button-set.md
+#: css/button-set.md
+#: css/button-set.md
+#: css/button.md
+#: css/button.md
+#: css/button.md
+#: css/button.md
+#: css/button.md
+#: css/byline.md
+#: css/byline.md
+#: css/byline.md
+#: css/calendar.day.md
+#: css/calendar.day.md
+#: css/calendar.md
+#: css/calendar.md
+#: css/card.md
+#: css/card.md
+#: css/checkbox.md
+#: css/checkbox.md
+#: css/close-button.md
+#: css/close-button.md
+#: css/context-view.md
+#: css/context-view.md
+#: css/cursor.md
+#: css/cursor.md
+#: css/drawer-layout.content.md
+#: css/drawer-layout.content.md
+#: css/drawer-layout.md
+#: css/drawer-layout.md
+#: css/drawer-layout.tray.md
+#: css/drawer-layout.tray.md
+#: css/file-drop.md
+#: css/file-drop.md
+#: css/form-field-group.md
+#: css/form-field-group.md
+#: css/form-field-messages.md
+#: css/form-field-messages.md
+#: css/form-field.md
+#: css/form-field.md
+#: css/form-field.md
+#: css/form-field.md
+#: css/form-field.md
+#: css/gap.md
+#: css/gap.md
+#: css/heading.md
+#: css/heading.md
+#: css/heading.md
+#: css/icon.md
+#: css/icon.md
+#: css/img.md
+#: css/img.md
+#: css/in-place-edit.md
+#: css/in-place-edit.md
+#: css/input-group.md
+#: css/input-group.md
+#: css/input-group.md
+#: css/layout.md
+#: css/layout.md
+#: css/link.md
+#: css/link.md
+#: css/link.md
+#: css/link.md
+#: css/link.md
+#: css/list.item.md
+#: css/list.item.md
+#: css/list.md
+#: css/list.md
+#: css/logo.md
+#: css/logo.md
+#: css/mask.md
+#: css/mask.md
+#: css/maskglobal.md
+#: css/maskglobal.md
+#: css/maskglobal.md
+#: css/menu.group.md
+#: css/menu.group.md
+#: css/menu.group.md
+#: css/menu.item.md
+#: css/menu.item.md
+#: css/menu.item.md
+#: css/menu.md
+#: css/menu.md
+#: css/menu.md
+#: css/menu.md
+#: css/menu.md
+#: css/menu.separator.md
+#: css/menu.separator.md
+#: css/menu.separator.md
+#: css/metric.md
+#: css/metric.md
+#: css/modal.body.md
+#: css/modal.body.md
+#: css/modal.footer.md
+#: css/modal.footer.md
+#: css/modal.header.md
+#: css/modal.header.md
+#: css/modal.md
+#: css/modal.md
+#: css/modal.md
+#: css/modal.md
+#: css/number-input.md
+#: css/number-input.md
+#: css/overflow.md
+#: css/overflow.md
+#: css/pagination.md
+#: css/pagination.md
+#: css/pagination.page.md
+#: css/pagination.page.md
+#: css/pill.md
+#: css/pill.md
+#: css/popover.md
+#: css/popover.md
+#: css/position.md
+#: css/position.md
+#: css/progress-circle.md
+#: css/progress-circle.md
+#: css/progress.md
+#: css/progress.md
+#: css/progress.md
+#: css/prose.md
+#: css/prose.md
+#: css/radio-input-group.md
+#: css/radio-input-group.md
+#: css/radio.md
+#: css/radio.md
+#: css/radio.md
+#: css/range-input.md
+#: css/range-input.md
+#: css/rating.md
+#: css/rating.md
+#: css/responsive.md
+#: css/responsive.md
+#: css/screen-reader-content.md
+#: css/screen-reader-content.md
+#: css/segmented-control.md
+#: css/segmented-control.md
+#: css/side-nav-bar.item.md
+#: css/side-nav-bar.item.md
+#: css/side-nav-bar.md
+#: css/side-nav-bar.md
+#: css/simple-select.md
+#: css/simple-select.md
+#: css/simple-select.md
+#: css/skeleton-loader.md
+#: css/skeleton-loader.md
+#: css/spacing.md
+#: css/spacing.md
+#: css/spinner.md
+#: css/spinner.md
+#: css/stacking.md
+#: css/stacking.md
+#: css/table.body.md
+#: css/table.body.md
+#: css/table.cell.md
+#: css/table.cell.md
+#: css/table.col-header.md
+#: css/table.col-header.md
+#: css/table.head.md
+#: css/table.head.md
+#: css/table.md
+#: css/table.md
+#: css/table.row-header.md
+#: css/table.row-header.md
+#: css/table.row.md
+#: css/table.row.md
+#: css/tabs.md
+#: css/tabs.md
+#: css/tabs.md
+#: css/tabs.md
+#: css/tabs.panel.md
+#: css/tabs.panel.md
+#: css/tabs.tab.md
+#: css/tabs.tab.md
+#: css/tag.md
+#: css/tag.md
+#: css/text-area.md
+#: css/text-area.md
+#: css/text-input.md
+#: css/text-input.md
+#: css/text.md
+#: css/text.md
+#: css/toggle-details.md
+#: css/toggle-details.md
+#: css/toggle-details.md
+#: css/toggle-details.md
+#: css/toggle-group.md
+#: css/toggle-group.md
+#: css/tooltip.md
+#: css/tooltip.md
+#: css/tooltip.md
+#: css/tooltip.md
+#: css/transition.md
+#: css/transition.md
+#: css/tray.md
+#: css/tray.md
+#: css/tree-browser.md
+#: css/tree-browser.md
+#: css/truncate.md
+#: css/truncate.md
+#: css/view.md
+#: css/view.md
+#: css/visual-debug.md
+#: css/visual-debug.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Canvas High Contrast"
+msgstr ""
+
+#: css/agent-shell.md
+#: css/ai-gradient.md
+#: css/alert.md
+#: css/avatar.md
+#: css/banner.md
+#: css/breadcrumb.link.md
+#: css/breadcrumb.md
+#: css/button-set.md
+#: css/button.md
+#: css/card.md
+#: css/checkbox.md
+#: css/context-view.md
+#: css/cursor.md
+#: css/drawer-layout.md
+#: css/drawer-layout.tray.md
+#: css/file-drop.md
+#: css/form-field-group.md
+#: css/form-field-messages.md
+#: css/form-field.md
+#: css/gap.md
+#: css/heading.md
+#: css/in-place-edit.md
+#: css/input-group.md
+#: css/link.md
+#: css/list.item.md
+#: css/menu.group.md
+#: css/menu.item.md
+#: css/menu.md
+#: css/menu.separator.md
+#: css/modal.body.md
+#: css/modal.footer.md
+#: css/modal.header.md
+#: css/modal.md
+#: css/number-input.md
+#: css/pagination.md
+#: css/pill.md
+#: css/popover.md
+#: css/progress.md
+#: css/radio-input-group.md
+#: css/radio.md
+#: css/range-input.md
+#: css/simple-select.md
+#: css/table.body.md
+#: css/table.cell.md
+#: css/table.col-header.md
+#: css/table.head.md
+#: css/table.md
+#: css/table.row-header.md
+#: css/table.row.md
+#: css/tabs.md
+#: css/tabs.panel.md
+#: css/tabs.tab.md
+#: css/tag.md
+#: css/text-area.md
+#: css/text-input.md
+#: css/toggle-group.md
+#: css/tooltip.md
 #: css/tray.md
 #: css/tree-browser.md
 #: css/view.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "more-contrast-respected"
+msgstr ""
+
+#: css/agent-shell.md
+#: css/ai-gradient.md
+#: css/alert.md
+#: css/avatar.md
+#: css/banner.md
+#: css/breadcrumb.link.md
+#: css/breadcrumb.md
+#: css/button-set.md
+#: css/button.md
+#: css/card.md
+#: css/checkbox.md
+#: css/context-view.md
+#: css/cursor.md
+#: css/drawer-layout.md
+#: css/drawer-layout.tray.md
+#: css/file-drop.md
+#: css/form-field-group.md
+#: css/form-field-messages.md
+#: css/form-field.md
+#: css/gap.md
+#: css/heading.md
+#: css/in-place-edit.md
+#: css/input-group.md
+#: css/link.md
+#: css/list.item.md
+#: css/menu.group.md
+#: css/menu.item.md
+#: css/menu.md
+#: css/menu.separator.md
+#: css/modal.body.md
+#: css/modal.footer.md
+#: css/modal.header.md
+#: css/modal.md
+#: css/number-input.md
+#: css/pagination.md
+#: css/pill.md
+#: css/popover.md
+#: css/progress.md
+#: css/radio-input-group.md
+#: css/radio.md
+#: css/range-input.md
+#: css/simple-select.md
+#: css/table.body.md
+#: css/table.cell.md
+#: css/table.col-header.md
+#: css/table.head.md
+#: css/table.md
+#: css/table.row-header.md
+#: css/table.row.md
+#: css/tabs.md
+#: css/tabs.panel.md
+#: css/tabs.tab.md
+#: css/tag.md
+#: css/text-area.md
+#: css/text-input.md
+#: css/toggle-group.md
+#: css/tooltip.md
+#: css/tray.md
+#: css/tree-browser.md
+#: css/view.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "WCAG 2.2 1.4.3, 1.4.6"
+msgstr ""
+
+#: css/agent-shell.md
+#: css/ai-gradient.md
+#: css/ai-gradient.md
+#: css/avatar.md
+#: css/banner.md
+#: css/button-set.md
+#: css/button.md
+#: css/byline.md
+#: css/drawer-layout.md
+#: css/drawer-layout.tray.md
+#: css/form-field.md
+#: css/heading.md
+#: css/heading.md
+#: css/input-group.md
+#: css/maskglobal.md
+#: css/menu.group.md
+#: css/menu.item.md
+#: css/menu.item.md
+#: css/menu.md
+#: css/menu.separator.md
+#: css/progress.md
+#: css/radio-input-group.md
+#: css/radio.md
+#: css/simple-select.md
+#: css/tabs.md
+#: css/tabs.tab.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Review needed"
+msgstr ""
+
+#: css/agent-shell.md
+#: css/ai-gradient.md
+#: css/drawer-layout.md
+#: css/drawer-layout.tray.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "The page changes under prefers-contrast: more, but no visible text was measurable."
+msgstr ""
+
+#: css/agent-shell.md
+#: css/ai-gradient.md
+#: css/alert.md
+#: css/avatar.md
+#: css/badge.md
+#: css/banner.md
+#: css/base.md
+#: css/billboard.md
+#: css/breadcrumb.link.md
+#: css/breadcrumb.md
+#: css/button-set.md
+#: css/button.md
+#: css/byline.md
+#: css/calendar.day.md
+#: css/calendar.md
+#: css/card.md
+#: css/checkbox.md
+#: css/close-button.md
+#: css/context-view.md
+#: css/cursor.md
+#: css/drawer-layout.content.md
+#: css/drawer-layout.md
+#: css/drawer-layout.tray.md
+#: css/file-drop.md
+#: css/form-field-group.md
+#: css/form-field-messages.md
+#: css/form-field.md
+#: css/gap.md
+#: css/heading.md
+#: css/icon.md
+#: css/img.md
+#: css/in-place-edit.md
+#: css/input-group.md
+#: css/layout.md
+#: css/link.md
+#: css/list.item.md
+#: css/list.md
+#: css/logo.md
+#: css/mask.md
+#: css/maskglobal.md
+#: css/menu.group.md
+#: css/menu.item.md
+#: css/menu.md
+#: css/menu.separator.md
+#: css/metric.md
+#: css/modal.body.md
+#: css/modal.footer.md
+#: css/modal.header.md
+#: css/modal.md
+#: css/number-input.md
+#: css/overflow.md
+#: css/pagination.md
+#: css/pagination.page.md
+#: css/pill.md
+#: css/popover.md
+#: css/position.md
+#: css/progress-circle.md
+#: css/progress.md
+#: css/prose.md
+#: css/radio-input-group.md
+#: css/radio.md
+#: css/range-input.md
+#: css/rating.md
+#: css/responsive.md
+#: css/screen-reader-content.md
+#: css/segmented-control.md
+#: css/side-nav-bar.item.md
+#: css/side-nav-bar.md
+#: css/simple-select.md
+#: css/skeleton-loader.md
+#: css/spacing.md
+#: css/spinner.md
+#: css/stacking.md
+#: css/table.body.md
+#: css/table.cell.md
+#: css/table.col-header.md
+#: css/table.head.md
+#: css/table.md
+#: css/table.row-header.md
+#: css/table.row.md
+#: css/tabs.md
+#: css/tabs.panel.md
+#: css/tabs.tab.md
+#: css/tag.md
+#: css/text-area.md
+#: css/text-input.md
+#: css/text.md
+#: css/toggle-details.md
+#: css/toggle-group.md
+#: css/tooltip.md
+#: css/transition.md
+#: css/tray.md
+#: css/tree-browser.md
+#: css/truncate.md
+#: css/view.md
+#: css/visual-debug.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "reflow-at-320px"
+msgstr ""
+
+#: css/agent-shell.md
+#: css/ai-gradient.md
+#: css/alert.md
+#: css/avatar.md
+#: css/badge.md
+#: css/banner.md
+#: css/base.md
+#: css/billboard.md
+#: css/breadcrumb.link.md
+#: css/breadcrumb.md
+#: css/button-set.md
+#: css/button.md
+#: css/byline.md
+#: css/calendar.day.md
+#: css/calendar.md
+#: css/card.md
+#: css/checkbox.md
+#: css/close-button.md
+#: css/context-view.md
+#: css/cursor.md
+#: css/drawer-layout.content.md
+#: css/drawer-layout.md
+#: css/drawer-layout.tray.md
+#: css/file-drop.md
+#: css/form-field-group.md
+#: css/form-field-messages.md
+#: css/form-field.md
+#: css/gap.md
+#: css/heading.md
+#: css/icon.md
+#: css/img.md
+#: css/in-place-edit.md
+#: css/input-group.md
+#: css/layout.md
+#: css/link.md
+#: css/list.item.md
+#: css/list.md
+#: css/logo.md
+#: css/mask.md
+#: css/maskglobal.md
+#: css/menu.group.md
+#: css/menu.item.md
+#: css/menu.md
+#: css/menu.separator.md
+#: css/metric.md
+#: css/modal.body.md
+#: css/modal.footer.md
+#: css/modal.header.md
+#: css/modal.md
+#: css/number-input.md
+#: css/overflow.md
+#: css/pagination.md
+#: css/pagination.page.md
+#: css/pill.md
+#: css/popover.md
+#: css/position.md
+#: css/progress-circle.md
+#: css/progress.md
+#: css/prose.md
+#: css/radio-input-group.md
+#: css/radio.md
+#: css/range-input.md
+#: css/rating.md
+#: css/responsive.md
+#: css/screen-reader-content.md
+#: css/segmented-control.md
+#: css/side-nav-bar.item.md
+#: css/side-nav-bar.md
+#: css/simple-select.md
+#: css/skeleton-loader.md
+#: css/spacing.md
+#: css/spinner.md
+#: css/stacking.md
+#: css/table.body.md
+#: css/table.cell.md
+#: css/table.col-header.md
+#: css/table.head.md
+#: css/table.md
+#: css/table.row-header.md
+#: css/table.row.md
+#: css/tabs.md
+#: css/tabs.panel.md
+#: css/tabs.tab.md
+#: css/tag.md
+#: css/text-area.md
+#: css/text-input.md
+#: css/text.md
+#: css/toggle-details.md
+#: css/toggle-group.md
+#: css/tooltip.md
+#: css/transition.md
+#: css/tray.md
+#: css/tree-browser.md
+#: css/truncate.md
+#: css/view.md
+#: css/visual-debug.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "WCAG 2.2 1.4.10"
+msgstr ""
+
+#: css/agent-shell.md
+#: css/avatar.md
+#: css/banner.md
+#: css/billboard.md
+#: css/button-set.md
+#: css/button.md
+#: css/checkbox.md
+#: css/link.md
+#: css/link.md
+#: css/modal.md
+#: css/progress.md
+#: css/radio-input-group.md
+#: css/radio.md
+#: css/radio.md
+#: css/segmented-control.md
+#: css/tabs.md
+#: css/text-area.md
+#: css/tray.md
+#: css/truncate.md
+#: css/view.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Fail"
+msgstr ""
+
+#: css/agent-shell.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "In a 320px window, the page scrolls sideways (it is 336px wide in a 320px window), and one element reaches past the right edge: "
+msgstr ""
+
+#: css/agent-shell.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid " ends at 336px. WCAG 1.4.10 Reflow (level AA) exempts two-dimensional content such as data tables and maps, so a person should judge whether that applies."
+msgstr ""
+
+#: css/agent-shell.md
+#: css/ai-gradient.md
+#: css/alert.md
+#: css/avatar.md
+#: css/badge.md
+#: css/banner.md
+#: css/base.md
+#: css/billboard.md
+#: css/breadcrumb.link.md
+#: css/breadcrumb.md
+#: css/button-set.md
+#: css/button.md
+#: css/byline.md
+#: css/calendar.day.md
+#: css/calendar.md
+#: css/card.md
+#: css/checkbox.md
+#: css/close-button.md
+#: css/context-view.md
+#: css/cursor.md
+#: css/drawer-layout.content.md
+#: css/drawer-layout.md
+#: css/drawer-layout.tray.md
+#: css/file-drop.md
+#: css/form-field-group.md
+#: css/form-field-messages.md
+#: css/form-field.md
+#: css/gap.md
+#: css/heading.md
+#: css/icon.md
+#: css/img.md
+#: css/in-place-edit.md
+#: css/input-group.md
+#: css/layout.md
+#: css/link.md
+#: css/list.item.md
+#: css/list.md
+#: css/logo.md
+#: css/mask.md
+#: css/maskglobal.md
+#: css/menu.group.md
+#: css/menu.item.md
+#: css/menu.md
+#: css/menu.separator.md
+#: css/metric.md
+#: css/modal.body.md
+#: css/modal.footer.md
+#: css/modal.header.md
+#: css/modal.md
+#: css/number-input.md
+#: css/overflow.md
+#: css/pagination.md
+#: css/pagination.page.md
+#: css/pill.md
+#: css/popover.md
+#: css/position.md
+#: css/progress-circle.md
+#: css/progress.md
+#: css/prose.md
+#: css/radio-input-group.md
+#: css/radio.md
+#: css/range-input.md
+#: css/rating.md
+#: css/responsive.md
+#: css/screen-reader-content.md
+#: css/segmented-control.md
+#: css/side-nav-bar.item.md
+#: css/side-nav-bar.md
+#: css/simple-select.md
+#: css/skeleton-loader.md
+#: css/spacing.md
+#: css/spinner.md
+#: css/stacking.md
+#: css/table.body.md
+#: css/table.cell.md
+#: css/table.col-header.md
+#: css/table.head.md
+#: css/table.md
+#: css/table.row-header.md
+#: css/table.row.md
+#: css/tabs.md
+#: css/tabs.panel.md
+#: css/tabs.tab.md
+#: css/tag.md
+#: css/text-area.md
+#: css/text-input.md
+#: css/text.md
+#: css/toggle-details.md
+#: css/toggle-group.md
+#: css/tooltip.md
+#: css/transition.md
+#: css/tray.md
+#: css/tree-browser.md
+#: css/truncate.md
+#: css/view.md
+#: css/visual-debug.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "text-spacing-no-clipping"
+msgstr ""
+
+#: css/agent-shell.md
+#: css/ai-gradient.md
+#: css/alert.md
+#: css/avatar.md
+#: css/badge.md
+#: css/banner.md
+#: css/base.md
+#: css/billboard.md
+#: css/breadcrumb.link.md
+#: css/breadcrumb.md
+#: css/button-set.md
+#: css/button.md
+#: css/byline.md
+#: css/calendar.day.md
+#: css/calendar.md
+#: css/card.md
+#: css/checkbox.md
+#: css/close-button.md
+#: css/context-view.md
+#: css/cursor.md
+#: css/drawer-layout.content.md
+#: css/drawer-layout.md
+#: css/drawer-layout.tray.md
+#: css/file-drop.md
+#: css/form-field-group.md
+#: css/form-field-messages.md
+#: css/form-field.md
+#: css/gap.md
+#: css/heading.md
+#: css/icon.md
+#: css/img.md
+#: css/in-place-edit.md
+#: css/input-group.md
+#: css/layout.md
+#: css/link.md
+#: css/list.item.md
+#: css/list.md
+#: css/logo.md
+#: css/mask.md
+#: css/maskglobal.md
+#: css/menu.group.md
+#: css/menu.item.md
+#: css/menu.md
+#: css/menu.separator.md
+#: css/metric.md
+#: css/modal.body.md
+#: css/modal.footer.md
+#: css/modal.header.md
+#: css/modal.md
+#: css/number-input.md
+#: css/overflow.md
+#: css/pagination.md
+#: css/pagination.page.md
+#: css/pill.md
+#: css/popover.md
+#: css/position.md
+#: css/progress-circle.md
+#: css/progress.md
+#: css/prose.md
+#: css/radio-input-group.md
+#: css/radio.md
+#: css/range-input.md
+#: css/rating.md
+#: css/responsive.md
+#: css/screen-reader-content.md
+#: css/segmented-control.md
+#: css/side-nav-bar.item.md
+#: css/side-nav-bar.md
+#: css/simple-select.md
+#: css/skeleton-loader.md
+#: css/spacing.md
+#: css/spinner.md
+#: css/stacking.md
+#: css/table.body.md
+#: css/table.cell.md
+#: css/table.col-header.md
+#: css/table.head.md
+#: css/table.md
+#: css/table.row-header.md
+#: css/table.row.md
+#: css/tabs.md
+#: css/tabs.panel.md
+#: css/tabs.tab.md
+#: css/tag.md
+#: css/text-area.md
+#: css/text-input.md
+#: css/text.md
+#: css/toggle-details.md
+#: css/toggle-group.md
+#: css/tooltip.md
+#: css/transition.md
+#: css/tray.md
+#: css/tree-browser.md
+#: css/truncate.md
+#: css/view.md
+#: css/visual-debug.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "WCAG 2.2 1.4.12"
+msgstr ""
+
+#: css/agent-shell.md
+#: css/agent-shell.md
+#: css/ai-gradient.md
+#: css/ai-gradient.md
+#: css/alert.md
+#: css/alert.md
+#: css/alert.md
+#: css/alert.md
+#: css/avatar.md
+#: css/avatar.md
+#: css/badge.md
+#: css/badge.md
+#: css/banner.md
+#: css/banner.md
+#: css/base.md
+#: css/base.md
+#: css/billboard.md
+#: css/billboard.md
+#: css/breadcrumb.link.md
+#: css/breadcrumb.link.md
+#: css/breadcrumb.md
+#: css/breadcrumb.md
+#: css/button-set.md
+#: css/button-set.md
+#: css/button.md
+#: css/button.md
+#: css/button.md
+#: css/button.md
+#: css/byline.md
+#: css/byline.md
+#: css/byline.md
+#: css/calendar.day.md
+#: css/calendar.day.md
+#: css/calendar.md
+#: css/calendar.md
+#: css/card.md
+#: css/card.md
+#: css/checkbox.md
+#: css/checkbox.md
+#: css/close-button.md
+#: css/close-button.md
+#: css/context-view.md
+#: css/context-view.md
+#: css/cursor.md
+#: css/cursor.md
+#: css/drawer-layout.content.md
+#: css/drawer-layout.content.md
+#: css/drawer-layout.md
+#: css/drawer-layout.md
+#: css/drawer-layout.tray.md
+#: css/drawer-layout.tray.md
+#: css/file-drop.md
+#: css/file-drop.md
+#: css/form-field-group.md
+#: css/form-field-group.md
+#: css/form-field-messages.md
+#: css/form-field-messages.md
+#: css/form-field.md
+#: css/form-field.md
+#: css/form-field.md
+#: css/form-field.md
+#: css/form-field.md
+#: css/gap.md
+#: css/gap.md
+#: css/heading.md
+#: css/heading.md
+#: css/icon.md
+#: css/icon.md
+#: css/img.md
+#: css/img.md
+#: css/in-place-edit.md
+#: css/in-place-edit.md
+#: css/input-group.md
+#: css/input-group.md
+#: css/layout.md
+#: css/layout.md
+#: css/link.md
+#: css/link.md
+#: css/link.md
+#: css/link.md
+#: css/link.md
+#: css/list.item.md
+#: css/list.item.md
+#: css/list.md
+#: css/list.md
+#: css/logo.md
+#: css/logo.md
+#: css/mask.md
+#: css/mask.md
+#: css/maskglobal.md
+#: css/maskglobal.md
+#: css/menu.group.md
+#: css/menu.group.md
+#: css/menu.item.md
+#: css/menu.item.md
+#: css/menu.md
+#: css/menu.md
+#: css/menu.md
+#: css/menu.md
+#: css/menu.separator.md
+#: css/menu.separator.md
+#: css/metric.md
+#: css/metric.md
+#: css/modal.body.md
+#: css/modal.body.md
+#: css/modal.footer.md
+#: css/modal.footer.md
+#: css/modal.header.md
+#: css/modal.header.md
+#: css/modal.md
+#: css/modal.md
+#: css/modal.md
+#: css/modal.md
+#: css/number-input.md
+#: css/number-input.md
+#: css/overflow.md
+#: css/overflow.md
+#: css/pagination.md
+#: css/pagination.md
+#: css/pagination.page.md
+#: css/pagination.page.md
+#: css/pill.md
+#: css/pill.md
+#: css/popover.md
+#: css/popover.md
+#: css/position.md
+#: css/position.md
+#: css/progress-circle.md
+#: css/progress-circle.md
+#: css/progress.md
+#: css/progress.md
+#: css/progress.md
+#: css/prose.md
+#: css/prose.md
+#: css/radio-input-group.md
+#: css/radio-input-group.md
+#: css/radio.md
+#: css/radio.md
+#: css/radio.md
+#: css/range-input.md
+#: css/range-input.md
+#: css/rating.md
+#: css/rating.md
+#: css/responsive.md
+#: css/responsive.md
+#: css/screen-reader-content.md
+#: css/screen-reader-content.md
+#: css/segmented-control.md
+#: css/segmented-control.md
+#: css/side-nav-bar.item.md
+#: css/side-nav-bar.item.md
+#: css/side-nav-bar.md
+#: css/side-nav-bar.md
+#: css/simple-select.md
+#: css/simple-select.md
+#: css/skeleton-loader.md
+#: css/skeleton-loader.md
+#: css/spacing.md
+#: css/spacing.md
+#: css/spinner.md
+#: css/spinner.md
+#: css/stacking.md
+#: css/stacking.md
+#: css/table.body.md
+#: css/table.body.md
+#: css/table.cell.md
+#: css/table.cell.md
+#: css/table.col-header.md
+#: css/table.col-header.md
+#: css/table.head.md
+#: css/table.head.md
+#: css/table.md
+#: css/table.md
+#: css/table.row-header.md
+#: css/table.row-header.md
+#: css/table.row.md
+#: css/table.row.md
+#: css/tabs.md
+#: css/tabs.md
+#: css/tabs.md
+#: css/tabs.md
+#: css/tabs.panel.md
+#: css/tabs.panel.md
+#: css/tabs.tab.md
+#: css/tabs.tab.md
+#: css/tag.md
+#: css/tag.md
+#: css/text-area.md
+#: css/text-area.md
+#: css/text-input.md
+#: css/text-input.md
+#: css/text.md
+#: css/text.md
+#: css/toggle-details.md
+#: css/toggle-details.md
+#: css/toggle-details.md
+#: css/toggle-details.md
+#: css/toggle-group.md
+#: css/toggle-group.md
+#: css/tooltip.md
+#: css/tooltip.md
+#: css/tooltip.md
+#: css/tooltip.md
+#: css/transition.md
+#: css/transition.md
+#: css/tray.md
+#: css/tray.md
+#: css/tree-browser.md
+#: css/tree-browser.md
+#: css/truncate.md
+#: css/truncate.md
+#: css/view.md
+#: css/view.md
+#: css/visual-debug.md
+#: css/visual-debug.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Pass"
+msgstr ""
+
+#: css/agent-shell.md
+#: css/ai-gradient.md
+#: css/alert.md
+#: css/avatar.md
+#: css/badge.md
+#: css/banner.md
+#: css/base.md
+#: css/billboard.md
+#: css/breadcrumb.link.md
+#: css/breadcrumb.md
+#: css/button-set.md
+#: css/button.md
+#: css/byline.md
+#: css/calendar.day.md
+#: css/calendar.md
+#: css/card.md
+#: css/checkbox.md
+#: css/close-button.md
+#: css/context-view.md
+#: css/cursor.md
+#: css/drawer-layout.content.md
+#: css/drawer-layout.md
+#: css/drawer-layout.tray.md
+#: css/file-drop.md
+#: css/form-field-group.md
+#: css/form-field-messages.md
+#: css/form-field.md
+#: css/gap.md
+#: css/heading.md
+#: css/icon.md
+#: css/img.md
+#: css/in-place-edit.md
+#: css/input-group.md
+#: css/layout.md
+#: css/link.md
+#: css/list.item.md
+#: css/list.md
+#: css/logo.md
+#: css/mask.md
+#: css/maskglobal.md
+#: css/menu.group.md
+#: css/menu.item.md
+#: css/menu.md
+#: css/menu.separator.md
+#: css/metric.md
+#: css/modal.body.md
+#: css/modal.footer.md
+#: css/modal.header.md
+#: css/modal.md
+#: css/number-input.md
+#: css/overflow.md
+#: css/pagination.md
+#: css/pagination.page.md
+#: css/pill.md
+#: css/popover.md
+#: css/position.md
+#: css/progress-circle.md
+#: css/progress.md
+#: css/prose.md
+#: css/radio-input-group.md
+#: css/radio.md
+#: css/range-input.md
+#: css/rating.md
+#: css/responsive.md
+#: css/screen-reader-content.md
+#: css/segmented-control.md
+#: css/side-nav-bar.item.md
+#: css/side-nav-bar.md
+#: css/simple-select.md
+#: css/skeleton-loader.md
+#: css/spacing.md
+#: css/spinner.md
+#: css/stacking.md
+#: css/table.body.md
+#: css/table.cell.md
+#: css/table.col-header.md
+#: css/table.head.md
+#: css/table.md
+#: css/table.row-header.md
+#: css/table.row.md
+#: css/tabs.md
+#: css/tabs.panel.md
+#: css/tabs.tab.md
+#: css/tag.md
+#: css/text-area.md
+#: css/text-input.md
+#: css/text.md
+#: css/toggle-details.md
+#: css/toggle-group.md
+#: css/tooltip.md
+#: css/transition.md
+#: css/tray.md
+#: css/tree-browser.md
+#: css/truncate.md
+#: css/view.md
+#: css/visual-debug.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Screen reader (simulated)"
+msgstr ""
+
+#: css/agent-shell.md
+#: css/ai-gradient.md
+#: css/alert.md
+#: css/avatar.md
+#: css/badge.md
+#: css/banner.md
+#: css/base.md
+#: css/billboard.md
+#: css/breadcrumb.link.md
+#: css/breadcrumb.md
+#: css/button-set.md
+#: css/button.md
+#: css/byline.md
+#: css/calendar.day.md
+#: css/calendar.md
+#: css/card.md
+#: css/checkbox.md
+#: css/close-button.md
+#: css/context-view.md
+#: css/cursor.md
+#: css/drawer-layout.content.md
+#: css/drawer-layout.md
+#: css/drawer-layout.tray.md
+#: css/file-drop.md
+#: css/form-field-group.md
+#: css/form-field-messages.md
+#: css/form-field.md
+#: css/gap.md
+#: css/heading.md
+#: css/icon.md
+#: css/img.md
+#: css/in-place-edit.md
+#: css/input-group.md
+#: css/layout.md
+#: css/link.md
+#: css/list.item.md
+#: css/list.md
+#: css/logo.md
+#: css/mask.md
+#: css/maskglobal.md
+#: css/menu.group.md
+#: css/menu.item.md
+#: css/menu.md
+#: css/menu.separator.md
+#: css/metric.md
+#: css/modal.body.md
+#: css/modal.footer.md
+#: css/modal.header.md
+#: css/modal.md
+#: css/number-input.md
+#: css/overflow.md
+#: css/pagination.md
+#: css/pagination.page.md
+#: css/pill.md
+#: css/popover.md
+#: css/position.md
+#: css/progress-circle.md
+#: css/progress.md
+#: css/prose.md
+#: css/radio-input-group.md
+#: css/radio.md
+#: css/range-input.md
+#: css/rating.md
+#: css/responsive.md
+#: css/screen-reader-content.md
+#: css/segmented-control.md
+#: css/side-nav-bar.item.md
+#: css/side-nav-bar.md
+#: css/simple-select.md
+#: css/skeleton-loader.md
+#: css/spacing.md
+#: css/spinner.md
+#: css/stacking.md
+#: css/table.body.md
+#: css/table.cell.md
+#: css/table.col-header.md
+#: css/table.head.md
+#: css/table.md
+#: css/table.row-header.md
+#: css/table.row.md
+#: css/tabs.md
+#: css/tabs.panel.md
+#: css/tabs.tab.md
+#: css/tag.md
+#: css/text-area.md
+#: css/text-input.md
+#: css/text.md
+#: css/toggle-details.md
+#: css/toggle-group.md
+#: css/tooltip.md
+#: css/transition.md
+#: css/tray.md
+#: css/tree-browser.md
+#: css/truncate.md
+#: css/view.md
+#: css/visual-debug.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Announcements"
+msgstr ""
+
+#: css/agent-shell.md
+#: css/ai-gradient.md
+#: css/alert.md
+#: css/avatar.md
+#: css/badge.md
+#: css/banner.md
+#: css/base.md
+#: css/billboard.md
+#: css/breadcrumb.link.md
+#: css/breadcrumb.md
+#: css/button-set.md
+#: css/button.md
+#: css/byline.md
+#: css/calendar.day.md
+#: css/calendar.md
+#: css/card.md
+#: css/checkbox.md
+#: css/close-button.md
+#: css/context-view.md
+#: css/cursor.md
+#: css/drawer-layout.content.md
+#: css/drawer-layout.md
+#: css/drawer-layout.tray.md
+#: css/file-drop.md
+#: css/form-field-group.md
+#: css/form-field-messages.md
+#: css/form-field.md
+#: css/gap.md
+#: css/heading.md
+#: css/icon.md
+#: css/img.md
+#: css/in-place-edit.md
+#: css/input-group.md
+#: css/layout.md
+#: css/link.md
+#: css/list.item.md
+#: css/list.md
+#: css/logo.md
+#: css/mask.md
+#: css/maskglobal.md
+#: css/menu.group.md
+#: css/menu.item.md
+#: css/menu.md
+#: css/menu.separator.md
+#: css/metric.md
+#: css/modal.body.md
+#: css/modal.footer.md
+#: css/modal.header.md
+#: css/modal.md
+#: css/number-input.md
+#: css/overflow.md
+#: css/pagination.md
+#: css/pagination.page.md
+#: css/pill.md
+#: css/popover.md
+#: css/position.md
+#: css/progress-circle.md
+#: css/progress.md
+#: css/prose.md
+#: css/radio-input-group.md
+#: css/radio.md
+#: css/range-input.md
+#: css/rating.md
+#: css/responsive.md
+#: css/screen-reader-content.md
+#: css/segmented-control.md
+#: css/segmented-control.segment.md
+#: css/side-nav-bar.item.md
+#: css/side-nav-bar.md
+#: css/simple-select.md
+#: css/skeleton-loader.md
+#: css/spacing.md
+#: css/spinner.md
+#: css/stacking.md
+#: css/table.body.md
+#: css/table.cell.md
+#: css/table.col-header.md
+#: css/table.head.md
+#: css/table.md
+#: css/table.row-header.md
+#: css/table.row.md
+#: css/tabs.md
+#: css/tabs.panel.md
+#: css/tabs.tab.md
+#: css/tag.md
+#: css/text-area.md
+#: css/text-input.md
+#: css/text.md
+#: css/toggle-details.md
+#: css/toggle-group.md
+#: css/tooltip.md
+#: css/transition.md
+#: css/tray.md
+#: css/tree-browser.md
+#: css/truncate.md
+#: css/view.md
+#: css/visual-debug.md
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "These automated results do not establish that the page meets WCAG; manual review is still needed."
@@ -790,6 +2878,107 @@ msgstr ""
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "A transparent border framed by the shared AI gradient."
+msgstr ""
+
+#: css/ai-gradient.md
+#: css/banner.md
+#: css/billboard.md
+#: css/button-set.md
+#: css/button.md
+#: css/byline.md
+#: css/form-field.md
+#: css/heading.md
+#: css/input-group.md
+#: css/link.md
+#: css/maskglobal.md
+#: css/menu.group.md
+#: css/menu.item.md
+#: css/menu.md
+#: css/menu.separator.md
+#: css/progress.md
+#: css/radio.md
+#: css/simple-select.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Rules (axe-core)"
+msgstr ""
+
+#: css/ai-gradient.md
+#: css/banner.md
+#: css/button-set.md
+#: css/button.md
+#: css/byline.md
+#: css/form-field.md
+#: css/heading.md
+#: css/input-group.md
+#: css/link.md
+#: css/maskglobal.md
+#: css/progress.md
+#: css/radio.md
+#: css/simple-select.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "color-contrast"
+msgstr ""
+
+#: css/ai-gradient.md
+#: css/alert.md
+#: css/alert.md
+#: css/banner.md
+#: css/button-set.md
+#: css/button.md
+#: css/button.md
+#: css/byline.md
+#: css/card.md
+#: css/context-view.md
+#: css/drawer-layout.md
+#: css/drawer-layout.tray.md
+#: css/form-field.md
+#: css/form-field.md
+#: css/heading.md
+#: css/input-group.md
+#: css/link.md
+#: css/link.md
+#: css/maskglobal.md
+#: css/menu.group.md
+#: css/menu.item.md
+#: css/menu.md
+#: css/menu.md
+#: css/menu.separator.md
+#: css/modal.body.md
+#: css/modal.footer.md
+#: css/modal.header.md
+#: css/modal.md
+#: css/modal.md
+#: css/popover.md
+#: css/progress.md
+#: css/radio-input-group.md
+#: css/radio.md
+#: css/radio.md
+#: css/segmented-control.md
+#: css/simple-select.md
+#: css/tabs.md
+#: css/toggle-details.md
+#: css/toggle-group.md
+#: css/tooltip.md
+#: css/tooltip.md
+#: css/tray.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "WCAG 2.2 1.4.3"
+msgstr ""
+
+#: css/ai-gradient.md
+#: css/banner.md
+#: css/button-set.md
+#: css/button.md
+#: css/heading.md
+#: css/input-group.md
+#: css/maskglobal.md
+#: css/simple-select.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Elements must meet minimum color contrast ratio thresholds"
 msgstr ""
 
 #: css/alert.md
@@ -980,6 +3169,388 @@ msgstr ""
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "For an important message, add `role=\"alert\"` or an `aria-live` region so assistive tech announces it; the dismiss control is a labelled close button (the `.instui-close-button` in the example carries `aria-label=\"Close\"`)."
+msgstr ""
+
+#: css/alert.md
+#: css/banner.md
+#: css/base.md
+#: css/billboard.md
+#: css/breadcrumb.link.md
+#: css/breadcrumb.md
+#: css/button-set.md
+#: css/button.md
+#: css/card.md
+#: css/checkbox.md
+#: css/close-button.md
+#: css/context-view.md
+#: css/cursor.md
+#: css/file-drop.md
+#: css/form-field-group.md
+#: css/form-field-messages.md
+#: css/form-field.md
+#: css/gap.md
+#: css/icon.md
+#: css/in-place-edit.md
+#: css/input-group.md
+#: css/link.md
+#: css/menu.group.md
+#: css/menu.item.md
+#: css/menu.md
+#: css/menu.separator.md
+#: css/modal.md
+#: css/number-input.md
+#: css/overflow.md
+#: css/pagination.md
+#: css/pagination.page.md
+#: css/popover.md
+#: css/prose.md
+#: css/radio-input-group.md
+#: css/radio.md
+#: css/range-input.md
+#: css/screen-reader-content.md
+#: css/segmented-control.md
+#: css/side-nav-bar.item.md
+#: css/side-nav-bar.md
+#: css/simple-select.md
+#: css/tabs.md
+#: css/tabs.panel.md
+#: css/tabs.tab.md
+#: css/tag.md
+#: css/text-area.md
+#: css/text-input.md
+#: css/toggle-details.md
+#: css/toggle-group.md
+#: css/tooltip.md
+#: css/tray.md
+#: css/tree-browser.md
+#: css/view.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "forced-colors-focus-visible"
+msgstr ""
+
+#: css/alert.md
+#: css/banner.md
+#: css/base.md
+#: css/billboard.md
+#: css/breadcrumb.link.md
+#: css/breadcrumb.md
+#: css/button-set.md
+#: css/button.md
+#: css/card.md
+#: css/checkbox.md
+#: css/close-button.md
+#: css/context-view.md
+#: css/cursor.md
+#: css/file-drop.md
+#: css/form-field-group.md
+#: css/form-field-messages.md
+#: css/form-field.md
+#: css/gap.md
+#: css/icon.md
+#: css/in-place-edit.md
+#: css/input-group.md
+#: css/link.md
+#: css/menu.group.md
+#: css/menu.item.md
+#: css/menu.md
+#: css/menu.separator.md
+#: css/modal.md
+#: css/number-input.md
+#: css/overflow.md
+#: css/pagination.md
+#: css/pagination.page.md
+#: css/popover.md
+#: css/prose.md
+#: css/radio-input-group.md
+#: css/radio.md
+#: css/range-input.md
+#: css/screen-reader-content.md
+#: css/segmented-control.md
+#: css/side-nav-bar.item.md
+#: css/side-nav-bar.md
+#: css/simple-select.md
+#: css/tabs.md
+#: css/tabs.panel.md
+#: css/tabs.tab.md
+#: css/tag.md
+#: css/text-area.md
+#: css/text-input.md
+#: css/toggle-details.md
+#: css/toggle-group.md
+#: css/tooltip.md
+#: css/tray.md
+#: css/tree-browser.md
+#: css/view.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "WCAG 2.2 1.4.11, 2.4.7"
+msgstr ""
+
+#: css/alert.md
+#: css/card.md
+#: css/context-view.md
+#: css/drawer-layout.md
+#: css/drawer-layout.tray.md
+#: css/menu.group.md
+#: css/menu.md
+#: css/menu.separator.md
+#: css/modal.body.md
+#: css/modal.footer.md
+#: css/modal.header.md
+#: css/modal.md
+#: css/popover.md
+#: css/radio-input-group.md
+#: css/radio.md
+#: css/segmented-control.md
+#: css/tray.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "less-contrast-stays-readable"
+msgstr ""
+
+#: css/alert.md
+#: css/button-set.md
+#: css/button.md
+#: css/context-view.md
+#: css/file-drop.md
+#: css/menu.group.md
+#: css/menu.item.md
+#: css/menu.md
+#: css/menu.separator.md
+#: css/modal.md
+#: css/number-input.md
+#: css/segmented-control.md
+#: css/tabs.tab.md
+#: css/tag.md
+#: css/toggle-details.md
+#: css/toggle-group.md
+#: css/tooltip.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Not applicable"
+msgstr ""
+
+#: css/alert.md
+#: css/badge.md
+#: css/banner.md
+#: css/button-set.md
+#: css/button.md
+#: css/card.md
+#: css/close-button.md
+#: css/context-view.md
+#: css/form-field.md
+#: css/icon.md
+#: css/link.md
+#: css/menu.group.md
+#: css/menu.item.md
+#: css/menu.md
+#: css/menu.separator.md
+#: css/modal.md
+#: css/progress-circle.md
+#: css/progress.md
+#: css/screen-reader-content.md
+#: css/segmented-control.md
+#: css/simple-select.md
+#: css/skeleton-loader.md
+#: css/spinner.md
+#: css/tabs.md
+#: css/tabs.panel.md
+#: css/tabs.tab.md
+#: css/toggle-details.md
+#: css/tooltip.md
+#: css/tray.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "reduced-motion-respected"
+msgstr ""
+
+#: css/alert.md
+#: css/badge.md
+#: css/banner.md
+#: css/button-set.md
+#: css/button.md
+#: css/card.md
+#: css/close-button.md
+#: css/context-view.md
+#: css/form-field.md
+#: css/icon.md
+#: css/link.md
+#: css/menu.group.md
+#: css/menu.item.md
+#: css/menu.md
+#: css/menu.separator.md
+#: css/modal.md
+#: css/progress-circle.md
+#: css/progress.md
+#: css/screen-reader-content.md
+#: css/segmented-control.md
+#: css/simple-select.md
+#: css/skeleton-loader.md
+#: css/spinner.md
+#: css/tabs.md
+#: css/tabs.panel.md
+#: css/tabs.tab.md
+#: css/toggle-details.md
+#: css/tooltip.md
+#: css/tray.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "WCAG 2.2 2.3.3, 2.2.2"
+msgstr ""
+
+#: css/alert.md
+#: css/button.md
+#: css/form-field.md
+#: css/link.md
+#: css/menu.md
+#: css/modal.md
+#: css/tabs.md
+#: css/toggle-details.md
+#: css/tooltip.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Interactions"
+msgstr ""
+
+#: css/alert.md
+#: css/button.md
+#: css/form-field.md
+#: css/link.md
+#: css/menu.md
+#: css/modal.md
+#: css/tabs.md
+#: css/toggle-details.md
+#: css/tooltip.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "focus-indicator-visible"
+msgstr ""
+
+#: css/alert.md
+#: css/button.md
+#: css/form-field.md
+#: css/link.md
+#: css/menu.md
+#: css/modal.md
+#: css/tabs.md
+#: css/toggle-details.md
+#: css/tooltip.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "WCAG 2.2 2.4.7"
+msgstr ""
+
+#: css/alert.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "focus-stays-on-trigger"
+msgstr ""
+
+#: css/alert.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "WCAG 2.2 4.1.3"
+msgstr ""
+
+#: css/alert.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "live-politeness-fits-role"
+msgstr ""
+
+#: css/alert.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "message-has-text"
+msgstr ""
+
+#: css/alert.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "message-in-live-region"
+msgstr ""
+
+#: css/alert.md
+#: css/button.md
+#: css/form-field.md
+#: css/link.md
+#: css/menu.md
+#: css/modal.md
+#: css/tabs.md
+#: css/toggle-details.md
+#: css/tooltip.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "no-focus-trap"
+msgstr ""
+
+#: css/alert.md
+#: css/button.md
+#: css/form-field.md
+#: css/link.md
+#: css/menu.md
+#: css/modal.md
+#: css/tabs.md
+#: css/toggle-details.md
+#: css/tooltip.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "WCAG 2.2 2.1.2"
+msgstr ""
+
+#: css/alert.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "region-exists-before-message"
+msgstr ""
+
+#: css/alert.md
+#: css/button.md
+#: css/form-field.md
+#: css/link.md
+#: css/menu.md
+#: css/modal.md
+#: css/tabs.md
+#: css/toggle-details.md
+#: css/tooltip.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "trigger-reachable-by-tab"
+msgstr ""
+
+#: css/alert.md
+#: css/button.md
+#: css/form-field.md
+#: css/link.md
+#: css/menu.md
+#: css/modal.md
+#: css/tabs.md
+#: css/toggle-details.md
+#: css/tooltip.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "WCAG 2.2 2.1.1"
+msgstr ""
+
+#: css/alert.md
+#: css/button.md
+#: css/form-field.md
+#: css/link.md
+#: css/menu.md
+#: css/modal.md
+#: css/tabs.md
+#: css/toggle-details.md
+#: css/tooltip.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Computed styles"
+msgstr ""
+
+#: css/alert.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "message-text-contrast"
 msgstr ""
 
 #: css/alert.md
@@ -1327,6 +3898,36 @@ msgstr ""
 #: css/avatar.md
 #, no-c-format
 msgctxt "docs.api:prose"
+msgid "All 18 measured pieces of text pass with more contrast. one other piece can't be reduced to one color. \"Sam Kim\" can't be measured because a background image or gradient sits behind it."
+msgstr ""
+
+#: css/avatar.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "With line height 1.5, letter spacing 0.12em, word spacing 0.16em, and paragraph spacing 2em, text in six elements gets cut off: "
+msgstr ""
+
+#: css/avatar.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid " (\"Lee Harper\"); "
+msgstr ""
+
+#: css/avatar.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid " (\"Amira Patel\"); "
+msgstr ""
+
+#: css/avatar.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid " (\"Miguel\"); and 3 more. Overlapping text isn't checked."
+msgstr ""
+
+#: css/avatar.md
+#, no-c-format
+msgctxt "docs.api:prose"
 msgid "- [byline](/api/css/byline.md) — Can host an avatar as its leading hero figure."
 msgstr ""
 
@@ -1557,6 +4158,24 @@ msgid "Add `role=\"status\"` (or `role=\"alert\"` for urgent messages) so assist
 msgstr ""
 
 #: css/banner.md
+#: css/checkbox.md
+#: css/link.md
+#: css/link.md
+#: css/radio-input-group.md
+#: css/radio.md
+#: css/text-area.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Canvas:"
+msgstr ""
+
+#: css/banner.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid " With prefers-contrast: more, two pieces of text fall below the minimum contrast. The worst is \"Undo\" at 4.46:1 (needs 4.5:1)."
+msgstr ""
+
+#: css/banner.md
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "- [alert](/api/css/alert.md) — A non-dismissible, status-coloured counterpart for inline messages.\n- [close-button](/api/css/close-button.md) — The dismiss control a banner may include."
@@ -1699,6 +4318,24 @@ msgstr ""
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "Render the `.heading` as a real heading element. A `-clickable` billboard only gains hover styling, so give it `tabindex=\"0\"`, an appropriate role, and a keyboard handler."
+msgstr ""
+
+#: css/billboard.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "label-content-name-mismatch"
+msgstr ""
+
+#: css/billboard.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "WCAG 2.2 2.5.3"
+msgstr ""
+
+#: css/billboard.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Elements must have their visible text as part of their accessible name"
 msgstr ""
 
 #: css/billboard.md
@@ -1914,6 +4551,13 @@ msgid "Month"
 msgstr ""
 
 #: css/button-set.md
+#: renderers/web-components/src/variables/button.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Save changes"
+msgstr ""
+
+#: css/button-set.md
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "Default every unmodified child to the AI gradient treatment."
@@ -2033,6 +4677,104 @@ msgstr ""
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "Use a labelled group for related actions; when buttons represent a toggle choice, expose each state with aria-pressed. Give icon-only buttons an accessible name."
+msgstr ""
+
+#: css/button-set.md
+#: css/button.md
+#: css/checkbox.md
+#: css/link.md
+#: css/radio-input-group.md
+#: css/radio.md
+#: css/radio.md
+#: css/segmented-control.md
+#: css/text-area.md
+#: css/view.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Rebrand (light):"
+msgstr ""
+
+#: css/button-set.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid " With prefers-contrast: more, six pieces of text fall below the minimum contrast. The worst is \"Send\" at 1.64:1 (needs 4.5:1)."
+msgstr ""
+
+#: css/button-set.md
+#: css/button.md
+#: css/checkbox.md
+#: css/link.md
+#: css/menu.item.md
+#: css/radio-input-group.md
+#: css/radio.md
+#: css/segmented-control.md
+#: css/text-area.md
+#: css/view.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Rebrand (dark):"
+msgstr ""
+
+#: css/button-set.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid " With prefers-contrast: more, six pieces of text fall below the minimum contrast. The worst is \"Send\" at 1.78:1 (needs 4.5:1)."
+msgstr ""
+
+#: css/button-set.md
+#: css/button.md
+#: css/byline.md
+#: css/form-field.md
+#: css/progress.md
+#: css/progress.md
+#: css/view.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Canvas, Canvas High Contrast:"
+msgstr ""
+
+#: css/button-set.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid " With prefers-contrast: more, two pieces of text fall below the minimum contrast. The worst is \"Rewrite\" at 1.88:1 (needs 4.5:1)."
+msgstr ""
+
+#: css/button-set.md
+#: css/button.md
+#: css/maskglobal.md
+#: css/number-input.md
+#: css/segmented-control.md
+#: css/tag.md
+#: css/toggle-details.md
+#: css/view.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "reduced-transparency-respected"
+msgstr ""
+
+#: css/button-set.md
+#: css/button.md
+#: css/maskglobal.md
+#: css/number-input.md
+#: css/segmented-control.md
+#: css/tag.md
+#: css/toggle-details.md
+#: css/view.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "WCAG 2.2 1.4.3, 1.4.11"
+msgstr ""
+
+#: css/button-set.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "In a 320px window, the page scrolls sideways (it is 592px wide in a 320px window), and one element reaches past the right edge: "
+msgstr ""
+
+#: css/button-set.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid " ends at 592px. WCAG 1.4.10 Reflow (level AA) exempts two-dimensional content such as data tables and maps, so a person should judge whether that applies."
 msgstr ""
 
 #: css/button-set.md
@@ -2212,6 +4954,104 @@ msgstr ""
 #: css/button.md
 #, no-c-format
 msgctxt "docs.api:prose"
+msgid " With forced colors on, the focus indicator is weak: only 58 of 299 changed pixels reach 3:1 against their unfocused color, and enough to count is about half the control's perimeter, 108."
+msgstr ""
+
+#: css/button.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid " With prefers-contrast: more, eight pieces of text fall below the minimum contrast. The worst is \"Save unavailable\" at 1.64:1 (needs 4.5:1)."
+msgstr ""
+
+#: css/button.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid " With prefers-contrast: more, eight pieces of text fall below the minimum contrast. The worst is \"Save unavailable\" at 1.78:1 (needs 4.5:1)."
+msgstr ""
+
+#: css/button.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid " With prefers-contrast: more, two pieces of text fall below the minimum contrast. The worst is \"Summary unavailable\" at 1.88:1 (needs 4.5:1)."
+msgstr ""
+
+#: css/button.md
+#: css/link.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "enter-activates"
+msgstr ""
+
+#: css/button.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "space-activates"
+msgstr ""
+
+#: css/button.md
+#: css/form-field.md
+#: css/menu.md
+#: css/modal.md
+#: css/tabs.md
+#: css/tooltip.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "boundary-contrast"
+msgstr ""
+
+#: css/button.md
+#: css/form-field.md
+#: css/menu.md
+#: css/modal.md
+#: css/tabs.md
+#: css/tooltip.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "WCAG 2.2 1.4.11"
+msgstr ""
+
+#: css/button.md
+#: css/form-field.md
+#: css/link.md
+#: css/menu.md
+#: css/modal.md
+#: css/tabs.md
+#: css/toggle-details.md
+#: css/tooltip.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "focus-indicator-contrast"
+msgstr ""
+
+#: css/button.md
+#: css/form-field.md
+#: css/link.md
+#: css/menu.md
+#: css/modal.md
+#: css/tabs.md
+#: css/toggle-details.md
+#: css/tooltip.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "WCAG 2.2 1.4.11, 2.4.13"
+msgstr ""
+
+#: css/button.md
+#: css/form-field.md
+#: css/link.md
+#: css/menu.md
+#: css/modal.md
+#: css/tabs.md
+#: css/toggle-details.md
+#: css/tooltip.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "text-contrast-by-state"
+msgstr ""
+
+#: css/button.md
+#, no-c-format
+msgctxt "docs.api:prose"
 msgid "- [close-button](/api/css/close-button.md) — The icon-only dismiss button."
 msgstr ""
 
@@ -2293,6 +5133,16 @@ msgstr ""
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "Give an informative hero image alt text and mark a decorative one with an empty `alt` or `aria-hidden=\"true\"`. Use a real heading element for the `.title` when it belongs in the document outline."
+msgstr ""
+
+#: css/byline.md
+#: css/form-field.md
+#: css/link.md
+#: css/progress.md
+#: css/radio.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid " Elements must meet minimum color contrast ratio thresholds"
 msgstr ""
 
 #: css/calendar.day.md
@@ -2683,6 +5533,24 @@ msgstr ""
 #: css/checkbox.md
 #, no-c-format
 msgctxt "docs.api:prose"
+msgid " With prefers-contrast: more, five pieces of text fall below the minimum contrast. The worst is \"Disabled unchecked checkbox\" at 2.74:1 (needs 4.5:1)."
+msgstr ""
+
+#: css/checkbox.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid " With prefers-contrast: more, five pieces of text fall below the minimum contrast. The worst is \"Disabled unchecked checkbox\" at 3.15:1 (needs 4.5:1)."
+msgstr ""
+
+#: css/checkbox.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid " With prefers-contrast: more, five pieces of text fall below the minimum contrast. The worst is \"Disabled unchecked checkbox\" at 3.02:1 (needs 4.5:1)."
+msgstr ""
+
+#: css/checkbox.md
+#, no-c-format
+msgctxt "docs.api:prose"
 msgid "- [radio](/api/css/radio.md) — The single-select counterpart."
 msgstr ""
 
@@ -2932,6 +5800,12 @@ msgctxt "docs.api:prose"
 msgid "cursor: wait."
 msgstr ""
 
+#: css/cursor.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "The cursor only affects pointer users; a pointer cursor doesn't make an element operable. Put it on native controls (`button`, `a`), and never use `--cursor-not-allowed` or `--cursor-wait` as the only sign that something is disabled or busy."
+msgstr ""
+
 #: css/drawer-layout.content.md
 #, no-c-format
 msgctxt "docs.api:prose"
@@ -3034,6 +5908,13 @@ msgstr ""
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "Name every region with `aria-label` or `aria-labelledby`. Use `div` for InstUI-style regions, not `<main role=\"region\">`. When the tray acts as navigation, use a named `<nav>` or place one inside the tray."
+msgstr ""
+
+#: css/drawer-layout.md
+#: css/drawer-layout.tray.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "The page changes under prefers-contrast: less, but no visible text was measurable."
 msgstr ""
 
 #: css/drawer-layout.md
@@ -3523,6 +6404,30 @@ msgstr ""
 #: css/form-field.md
 #, no-c-format
 msgctxt "docs.api:prose"
+msgid "error-associated-on-invalid"
+msgstr ""
+
+#: css/form-field.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "WCAG 2.2 3.3.1, 4.1.3"
+msgstr ""
+
+#: css/form-field.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "label-associated"
+msgstr ""
+
+#: css/form-field.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "WCAG 2.2 1.3.1, 3.3.2, 4.1.2"
+msgstr ""
+
+#: css/form-field.md
+#, no-c-format
+msgctxt "docs.api:prose"
 msgid "- [form-field-messages](/api/css/form-field-messages.md) — Renders the field's hint, error, and success messages.\n- [form-field-group](/api/css/form-field-group.md) — Groups related fields under a shared legend."
 msgstr ""
 
@@ -3562,6 +6467,12 @@ msgstr ""
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "Gap utilities across short and long spacing-step spellings."
+msgstr ""
+
+#: css/gap.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "A gap changes spacing only; reading and focus order still follow the DOM. Keep gaps between interactive controls large enough to meet WCAG 2.5.8 target spacing."
 msgstr ""
 
 #: css/heading.md
@@ -3700,6 +6611,12 @@ msgstr ""
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "These classes set the visual level only, so render a real `<h1>`–`<h6>` (or use `role=\"heading\"` with `aria-level`) to convey the heading level."
+msgstr ""
+
+#: css/heading.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "All 17 measured pieces of text pass with more contrast. one other piece can't be reduced to one color. \"Suggested study plan\" can't be measured because a background image or gradient sits behind it."
 msgstr ""
 
 #: css/heading.md
@@ -4679,6 +7596,12 @@ msgctxt "docs.api:prose"
 msgid "Text-alignment utilities: `start`, `center`, `end`, and `justify`."
 msgstr ""
 
+#: css/layout.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "`--display-none` removes an element from the accessibility tree as well as the screen, so use it only for content nobody needs. Flex and grid layout can't reorder content for assistive tech; keep the DOM order meaningful, and don't center or justify long passages of text."
+msgstr ""
+
 #: css/link.md
 #, no-c-format
 msgctxt "docs.api:prose"
@@ -4750,6 +7673,39 @@ msgstr ""
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "Mark a disabled link with `aria-disabled=\"true\"`."
+msgstr ""
+
+#: css/link.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid " With prefers-contrast: more, two pieces of text fall below the minimum contrast. The worst is \"Settings unavailable\" at 2.74:1 (needs 4.5:1)."
+msgstr ""
+
+#: css/link.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid " With prefers-contrast: more, two pieces of text fall below the minimum contrast. The worst is \"Settings unavailable on brand\" at 1.84:1 (needs 4.5:1)."
+msgstr ""
+
+#: css/link.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid " With prefers-contrast: more, three pieces of text fall below the minimum contrast. The worst is \"Settings unavailable on brand\" at 2.76:1 (needs 4.5:1)."
+msgstr ""
+
+#: css/link.md
+#: css/radio-input-group.md
+#: css/radio.md
+#: css/text-area.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Canvas High Contrast:"
+msgstr ""
+
+#: css/link.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid " With prefers-contrast: more, one piece of text falls below the minimum contrast. The worst is \"Settings unavailable on brand\" at 2.84:1 (needs 4.5:1)."
 msgstr ""
 
 #: css/link.md
@@ -5432,6 +8388,12 @@ msgctxt "docs.api:prose"
 msgid "The full mask overlay (position, centring, background)."
 msgstr ""
 
+#: css/maskglobal.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "A mask covers content visually but doesn't block assistive tech or the keyboard: make the covered region `inert` (or mark it `aria-busy`), keep the mask's own message as real text, and don't hide the focus indicator behind it."
+msgstr ""
+
 #: css/menu.group.md
 #, no-c-format
 msgctxt "docs.api:prose"
@@ -5442,6 +8404,47 @@ msgstr ""
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "Wrap the grouped items in an element with `role=\"group\"` and point `aria-labelledby` at the group heading so assistive technology announces the group name."
+msgstr ""
+
+#: css/menu.group.md
+#: css/menu.item.md
+#: css/menu.md
+#: css/menu.separator.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "aria-valid-attr-value"
+msgstr ""
+
+#: css/menu.group.md
+#: css/menu.item.md
+#: css/menu.md
+#: css/menu.separator.md
+#: css/tabs.md
+#: css/toggle-details.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "WCAG 2.2 4.1.2"
+msgstr ""
+
+#: css/menu.group.md
+#: css/menu.item.md
+#: css/menu.md
+#: css/menu.separator.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "ARIA attributes must conform to valid values"
+msgstr ""
+
+#: css/menu.group.md
+#: css/menu.item.md
+#: css/menu.md
+#: css/menu.separator.md
+#: css/modal.md
+#: css/toggle-group.md
+#: css/tooltip.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "dark-mode-contrast"
 msgstr ""
 
 #: css/menu.item.md
@@ -5478,6 +8481,18 @@ msgstr ""
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "Checked actions use `menuitemcheckbox` or `menuitemradio` with `aria-checked`; applications update that state on activation. Pair `-disabled` with `aria-disabled=\"true\"` or native `disabled`, not the CSS class alone. Opt-in menu navigation keeps ARIA-disabled items reachable but prevents their activation."
+msgstr ""
+
+#: css/menu.item.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid " All five measured pieces of text pass in dark mode. one other piece can't be reduced to one color. \"Archive\" can't be measured because an element behind it is partly transparent."
+msgstr ""
+
+#: css/menu.item.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "All five measured pieces of text pass with more contrast. one other piece can't be reduced to one color. \"Archive\" can't be measured because an element behind it is partly transparent."
 msgstr ""
 
 #: css/menu.md
@@ -5525,6 +8540,30 @@ msgstr ""
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "Name the menu and button. Use `menuitem` for actions, `menuitemcheckbox`/`menuitemradio` with `aria-checked` for checked actions, and `separator` for dividers. Add `aria-disabled=\"true\"` to disabled items; a CSS modifier alone doesn't convey disabled state. ARIA-disabled entries remain focusable but cannot activate; native-disabled and hidden entries are skipped."
+msgstr ""
+
+#: css/menu.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "arrow-keys-move-between-items"
+msgstr ""
+
+#: css/menu.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "escape-closes-and-returns-focus"
+msgstr ""
+
+#: css/menu.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "WCAG 2.2 2.1.1, 2.4.3"
+msgstr ""
+
+#: css/menu.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "opens-with-enter-or-arrow"
 msgstr ""
 
 #: css/menu.md
@@ -5784,6 +8823,36 @@ msgstr ""
 #: css/modal.md
 #, no-c-format
 msgctxt "docs.api:prose"
+msgid "escape-closes"
+msgstr ""
+
+#: css/modal.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "The dialog stayed open after Escape."
+msgstr ""
+
+#: css/modal.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "focus-moves-into-dialog"
+msgstr ""
+
+#: css/modal.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "WCAG 2.2 2.4.3"
+msgstr ""
+
+#: css/modal.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "focus-returns-to-trigger"
+msgstr ""
+
+#: css/modal.md
+#, no-c-format
+msgctxt "docs.api:prose"
 msgid "- Styles a native &lt;dialog&gt; and its `::backdrop`; the top-layer rendering and backdrop styling need a browser that supports the dialog element."
 msgstr ""
 
@@ -5941,6 +9010,12 @@ msgstr ""
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "overflow-y: visible."
+msgstr ""
+
+#: css/overflow.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "A scrollable region must work from the keyboard: give it `tabindex=\"0\"`, a role, and an accessible name (or make sure it contains a focusable control). Don't use `hidden` or `clip` to cut off content people need to read."
 msgstr ""
 
 #: css/page-layout.md
@@ -6344,6 +9419,12 @@ msgctxt "docs.api:prose"
 msgid "position: sticky."
 msgstr ""
 
+#: css/position.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Positioning changes where content appears, not where it sits in the DOM: keep the visual order matching the reading and focus order, and don't let positioned content cover a focused control."
+msgstr ""
+
 #: css/primitives.md
 #, no-c-format
 msgctxt "docs.api:prose"
@@ -6618,6 +9699,30 @@ msgstr ""
 #: css/progress.md
 #, no-c-format
 msgctxt "docs.api:prose"
+msgid " With prefers-contrast: more, one piece of text falls below the minimum contrast. The worst is \"30%\" at 1:1 (needs 4.5:1)."
+msgstr ""
+
+#: css/progress.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Rebrand (dark), Canvas, Canvas High Contrast:"
+msgstr ""
+
+#: css/progress.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid " With line height 1.5, letter spacing 0.12em, word spacing 0.16em, and paragraph spacing 2em, text in one element gets cut off: "
+msgstr ""
+
+#: css/progress.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid " (\"Working\"). Overlapping text isn't checked."
+msgstr ""
+
+#: css/progress.md
+#, no-c-format
+msgctxt "docs.api:prose"
 msgid "- Scopes the meter part rules with the `@scope` at-rule; browsers without `@scope` support ignore those scoped rules."
 msgstr ""
 
@@ -6655,6 +9760,12 @@ msgstr ""
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "link"
+msgstr ""
+
+#: css/prose.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "The defaults keep headings in a logical order and links underlined with an interactive colour, so they don't rely on colour alone. Don't skip heading levels for visual size, and don't remove the link underline without another cue."
 msgstr ""
 
 #: css/radio-input-group.md
@@ -6735,6 +9846,54 @@ msgstr ""
 #: css/radio-input-group.md
 #, no-c-format
 msgctxt "docs.api:prose"
+msgid " With prefers-contrast: less, one piece of text falls below the minimum contrast. The worst is \"Large unavailable\" at 2.74:1 (needs 4.5:1). Softer contrast is fine only while text stays readable."
+msgstr ""
+
+#: css/radio-input-group.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid " With prefers-contrast: less, one piece of text falls below the minimum contrast. The worst is \"Large unavailable\" at 3.15:1 (needs 4.5:1). Softer contrast is fine only while text stays readable."
+msgstr ""
+
+#: css/radio-input-group.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid " With prefers-contrast: less, one piece of text falls below the minimum contrast. The worst is \"Large unavailable\" at 3.02:1 (needs 4.5:1). Softer contrast is fine only while text stays readable."
+msgstr ""
+
+#: css/radio-input-group.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid " All 13 measured pieces of text stay above the minimum. one other piece can't be reduced to one color. \"Large\" can't be measured because an element behind it is partly transparent."
+msgstr ""
+
+#: css/radio-input-group.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid " With prefers-contrast: more, one piece of text falls below the minimum contrast. The worst is \"Large unavailable\" at 2.74:1 (needs 4.5:1)."
+msgstr ""
+
+#: css/radio-input-group.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid " With prefers-contrast: more, one piece of text falls below the minimum contrast. The worst is \"Large unavailable\" at 3.15:1 (needs 4.5:1)."
+msgstr ""
+
+#: css/radio-input-group.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid " With prefers-contrast: more, one piece of text falls below the minimum contrast. The worst is \"Large unavailable\" at 3.02:1 (needs 4.5:1)."
+msgstr ""
+
+#: css/radio-input-group.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid " All 13 measured pieces of text pass with more contrast. one other piece can't be reduced to one color. \"Large\" can't be measured because an element behind it is partly transparent."
+msgstr ""
+
+#: css/radio-input-group.md
+#, no-c-format
+msgctxt "docs.api:prose"
 msgid "- [radio](/api/css/radio.md) — The individual control this group collects.\n- [form-field-group](/api/css/form-field-group.md) — The general wrapper for grouping and laying out fields."
 msgstr ""
 
@@ -6808,6 +9967,54 @@ msgstr ""
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "A native `<input type=\"radio\">` drives `:checked` and `:disabled`; `-readonly` is styling only, since radios have no native readonly attribute."
+msgstr ""
+
+#: css/radio.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid " With prefers-contrast: less, six pieces of text fall below the minimum contrast. The worst is \"Warning selected\" at 1.67:1 (needs 4.5:1). Softer contrast is fine only while text stays readable."
+msgstr ""
+
+#: css/radio.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid " With prefers-contrast: less, four pieces of text fall below the minimum contrast. The worst is \"Disabled unselected\" at 3.15:1 (needs 4.5:1). Softer contrast is fine only while text stays readable."
+msgstr ""
+
+#: css/radio.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid " With prefers-contrast: less, four pieces of text fall below the minimum contrast. The worst is \"Disabled unselected\" at 3.02:1 (needs 4.5:1). Softer contrast is fine only while text stays readable."
+msgstr ""
+
+#: css/radio.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid " All 31 measured pieces of text stay above the minimum. two other pieces can't be reduced to one color. \"Disabled unselected\" can't be measured because an element behind it is partly transparent."
+msgstr ""
+
+#: css/radio.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid " With prefers-contrast: more, six pieces of text fall below the minimum contrast. The worst is \"Warning selected\" at 1.67:1 (needs 4.5:1)."
+msgstr ""
+
+#: css/radio.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid " With prefers-contrast: more, four pieces of text fall below the minimum contrast. The worst is \"Disabled unselected\" at 3.15:1 (needs 4.5:1)."
+msgstr ""
+
+#: css/radio.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid " With prefers-contrast: more, four pieces of text fall below the minimum contrast. The worst is \"Disabled unselected\" at 3.02:1 (needs 4.5:1)."
+msgstr ""
+
+#: css/radio.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid " All 31 measured pieces of text pass with more contrast. two other pieces can't be reduced to one color. \"Disabled unselected\" can't be measured because an element behind it is partly transparent."
 msgstr ""
 
 #: css/radio.md
@@ -7464,6 +10671,12 @@ msgctxt "docs.api:prose"
 msgid "Lower bound of the `content-full-width` breakpoint, evaluated against a marked container."
 msgstr ""
 
+#: css/responsive.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Hiding content at a breakpoint also hides it from assistive tech, so don't hide the only way to complete a task, and keep the shown and hidden versions equivalent in meaning."
+msgstr ""
+
 #: css/rubric-note.md
 #, no-c-format
 msgctxt "docs.api:prose"
@@ -7657,6 +10870,25 @@ msgstr ""
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "Use a labelled fieldset and one shared radio name with a checked default. Native radios\n  announce their checked state; overflow buttons need labels describing their scroll direction."
+msgstr ""
+
+#: css/segmented-control.md
+#: css/tray.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "With forced colors on, nothing visible changed when the control took focus. A focus ring drawn with box-shadow or a background color disappears in forced colors. Use an outline."
+msgstr ""
+
+#: css/segmented-control.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid " With prefers-contrast: less, three pieces of text fall below the minimum contrast. The worst is \"Grades\" at 1.48:1 (needs 4.5:1). Softer contrast is fine only while text stays readable."
+msgstr ""
+
+#: css/segmented-control.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid " With prefers-contrast: less, three pieces of text fall below the minimum contrast. The worst is \"Grades\" at 1.38:1 (needs 4.5:1). Softer contrast is fine only while text stays readable."
 msgstr ""
 
 #: css/segmented-control.segment.md
@@ -7961,6 +11193,12 @@ msgctxt "docs.api:prose"
 msgid "Padding utilities across short, legacy-long, and fully long spellings."
 msgstr ""
 
+#: css/spacing.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Spacing is visual only: use it to keep text and controls from crowding, not to convey structure — use headings, lists, and landmarks for that. Leave enough space around interactive targets for WCAG 2.5.8, and don't rely on fixed spacing that breaks when users increase text spacing."
+msgstr ""
+
 #: css/spinner.md
 #, no-c-format
 msgctxt "docs.api:prose"
@@ -8061,6 +11299,12 @@ msgstr ""
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "The highest stacking depth (overlays, menus)."
+msgstr ""
+
+#: css/stacking.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Stacking order is visual only: a layered surface that covers focusable content hides the focus indicator. Overlays that take over the page also need focus management and an accessible name."
 msgstr ""
 
 #: css/table.body.md
@@ -8373,6 +11617,42 @@ msgctxt "docs.api:prose"
 msgid "Wire the tab list with role=\"tablist\", each tab with role=\"tab\" and aria-selected, and each panel with role=\"tabpanel\"."
 msgstr ""
 
+#: css/tabs.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "All six measured pieces of text pass with more contrast. two other pieces can't be reduced to one color. \"Billing\" can't be measured because an element behind it is partly transparent."
+msgstr ""
+
+#: css/tabs.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "arrow-keys-move-between-tabs"
+msgstr ""
+
+#: css/tabs.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "home-and-end-work"
+msgstr ""
+
+#: css/tabs.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "End didn't move to the last tab."
+msgstr ""
+
+#: css/tabs.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "selected-state-exposed"
+msgstr ""
+
+#: css/tabs.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "3 tabs are aria-selected=\"true\". A tab list should have exactly one."
+msgstr ""
+
 #: css/tabs.panel.md
 #, no-c-format
 msgctxt "docs.api:prose"
@@ -8413,6 +11693,12 @@ msgstr ""
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "Use `role=\"tab\"` inside a `role=\"tablist\"`, mirror `-selected` with `aria-selected`, point `aria-controls` at the panel, and mark a disabled tab with `aria-disabled` or the native `disabled`."
+msgstr ""
+
+#: css/tabs.tab.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "All four measured pieces of text pass with more contrast. two other pieces can't be reduced to one color. \"Billing\" can't be measured because an element behind it is partly transparent."
 msgstr ""
 
 #: css/tag.md
@@ -8575,6 +11861,30 @@ msgstr ""
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "Associate the field with a visible `<label>`, use `aria-invalid` and `disabled` for state, and explain errors in text, not border color alone."
+msgstr ""
+
+#: css/text-area.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid " With prefers-contrast: more, one piece of text falls below the minimum contrast. The worst is \"A saved comment.\" at 2.51:1 (needs 4.5:1)."
+msgstr ""
+
+#: css/text-area.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid " With prefers-contrast: more, one piece of text falls below the minimum contrast. The worst is \"A saved comment.\" at 4.08:1 (needs 4.5:1)."
+msgstr ""
+
+#: css/text-area.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid " With prefers-contrast: more, one piece of text falls below the minimum contrast. The worst is \"A saved comment.\" at 2.74:1 (needs 4.5:1)."
+msgstr ""
+
+#: css/text-area.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid " With prefers-contrast: more, one piece of text falls below the minimum contrast. The worst is \"A saved comment.\" at 4.11:1 (needs 4.5:1)."
 msgstr ""
 
 #: css/text-area.md
@@ -8874,6 +12184,30 @@ msgstr ""
 #: css/toggle-details.md
 #, no-c-format
 msgctxt "docs.api:prose"
+msgid "enter-toggles"
+msgstr ""
+
+#: css/toggle-details.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "WCAG 2.2 2.1.1, 4.1.2"
+msgstr ""
+
+#: css/toggle-details.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "expanded-state-exposed"
+msgstr ""
+
+#: css/toggle-details.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "space-toggles"
+msgstr ""
+
+#: css/toggle-details.md
+#, no-c-format
+msgctxt "docs.api:prose"
 msgid "- [toggle-group](/api/css/toggle-group.md) — The bordered, grouped form of the same disclosure."
 msgstr ""
 
@@ -8978,6 +12312,30 @@ msgstr ""
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "Use a named, focusable trigger with aria-describedby pointing at the role=\"tooltip\" bubble. Keep the content noninteractive. Initialized tooltips stay dismissed after Escape until both pointer and focus leave; the next entry can reopen them."
+msgstr ""
+
+#: css/tooltip.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "appears-on-focus"
+msgstr ""
+
+#: css/tooltip.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "WCAG 2.2 1.4.13"
+msgstr ""
+
+#: css/tooltip.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "content-reachable-on-hover"
+msgstr ""
+
+#: css/tooltip.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "escape-dismisses"
 msgstr ""
 
 #: css/tooltip.md
@@ -9308,6 +12666,24 @@ msgstr ""
 #: css/truncate.md
 #, no-c-format
 msgctxt "docs.api:prose"
+msgid "Truncation hides overflowing text visually while it stays in the DOM, so don't clip information people need (titles, errors, instructions) and keep the full text available another way. Check that clipped text still reads correctly when zoomed or resized."
+msgstr ""
+
+#: css/truncate.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "With line height 1.5, letter spacing 0.12em, word spacing 0.16em, and paragraph spacing 2em, text in one element gets cut off: "
+msgstr ""
+
+#: css/truncate.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid " (\"Quarterly planning notes for t\"). Overlapping text isn't checked."
+msgstr ""
+
+#: css/truncate.md
+#, no-c-format
+msgctxt "docs.api:prose"
 msgid "- Clamping relies on `-webkit-line-clamp` with `display: -webkit-box`, paired with the standard `line-clamp`."
 msgstr ""
 
@@ -9585,6 +12961,36 @@ msgstr ""
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "It's a neutral box with no semantics, so use semantic elements or ARIA roles for meaning and keep sufficient contrast between its background, border, and content."
+msgstr ""
+
+#: css/view.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid " With prefers-contrast: more, one piece of text falls below the minimum contrast. The worst is \"Notes unavailable\" at 1.98:1 (needs 4.5:1)."
+msgstr ""
+
+#: css/view.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid " With prefers-contrast: more, one piece of text falls below the minimum contrast. The worst is \"Notes unavailable\" at 2.67:1 (needs 4.5:1)."
+msgstr ""
+
+#: css/view.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid " With prefers-contrast: more, one piece of text falls below the minimum contrast. The worst is \"Notes unavailable\" at 1.99:1 (needs 4.5:1)."
+msgstr ""
+
+#: css/view.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "With prefers-reduced-transparency: reduce, one surface holding text stays see-through: "
+msgstr ""
+
+#: css/view.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid " (30% opaque). Without the preference there were one. This preference isn't a WCAG requirement. It matters because see-through backgrounds make text contrast unpredictable."
 msgstr ""
 
 #: css/visual-debug.md
@@ -20146,12 +23552,6 @@ msgstr ""
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "It is also a native invoker: `popovertarget` (with optional `popovertargetaction`) toggles any\nlight-DOM `[popover]` such as `<instui-context-view>`, `<instui-popover>`, or `<instui-tray>`, and\n`command`/`commandfor` drives the command-based components (`<instui-modal>` with `--show`/`--close`,\netc.). The id is forwarded to the inner button via the invoker IDL, so it resolves across the shadow\nboundary and may point forward to an element declared later in the document."
-msgstr ""
-
-#: renderers/web-components/src/variables/button.md
-#, no-c-format
-msgctxt "docs.api:prose"
-msgid "Save changes"
 msgstr ""
 
 #: renderers/web-components/src/variables/button.md

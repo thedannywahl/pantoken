@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: pantoken\n"
-"PO-Revision-Date: 2026-10-26 23:45+0000\n"
+"PO-Revision-Date: 2026-10-29 17:56+0000\n"
 "Last-Translator: pantoken localization engine\n"
 "Language-Team: pantoken\n"
 "MIME-Version: 1.0\n"
@@ -30915,6 +30915,7 @@ msgstr "ปุ่ม \"ดูแบบเต็มจอ\" ที่แสดง
 #~ msgid "Border-only surface for a card inside a base card."
 #~ msgstr "พื้นผิวแบบมีเฉพาะเส้นขอบสำหรับการ์ดภายในการ์ดฐาน."
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:prose"
 #~ msgid "-canvas-rce\n"
 #~ msgstr "-canvas-rce\n"
@@ -30975,6 +30976,7 @@ msgstr "ปุ่ม \"ดูแบบเต็มจอ\" ที่แสดง
 #~ msgid "Review your account information."
 #~ msgstr "ตรวจสอบข้อมูลบัญชีของคุณ."
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:prose"
 #~ msgid "-docs\n"
 #~ msgstr "-docs\n"
@@ -31143,9 +31145,10 @@ msgstr "ปุ่ม \"ดูแบบเต็มจอ\" ที่แสดง
 #~ msgid "See upcoming assignments."
 #~ msgstr "ดูการมอบหมายที่กำลังจะมาถึง."
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:prose"
 #~ msgid "Canvas"
-#~ msgstr "ผืนผ้าใบ"
+#~ msgstr "Canvas"
 
 #~ msgctxt "docs.api:prose"
 #~ msgid "Course home"
@@ -31205,3 +31208,1192 @@ msgstr "Lucide release ที่แก้ไขแล้ว จำเป็น�
 msgctxt "docs.api:text"
 msgid "removalDeadline"
 msgstr "removalDeadline"
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "more-contrast-respected"
+msgstr "more-contrast-respected"
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "reflow-at-320px"
+msgstr "reflow-at-320px"
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "Fail"
+msgstr "Fail"
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "text-spacing-no-clipping"
+msgstr "text-spacing-no-clipping"
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "Pass"
+msgstr "Pass"
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "Announcements"
+msgstr "Announcements"
+
+msgctxt "docs.api:prose"
+msgid "The shell is a plain container with no role of its own. Give it a landmark or group name (for example `role=\"region\"` with an `aria-label`, or a heading) so assistive tech can find the agent surface, and keep its content in reading order."
+msgstr "เชลล์เป็นคอนเทนเนอร์ธรรมดาที่ไม่มีบทบาทในตัวเอง กำหนดชื่อแลนด์มาร์กหรือกลุ่มให้กับเชลล์ (เช่น `role=\"region\"` ที่มี `aria-label` หรือหัวเรื่อง)) เพื่อให้เทคโนโลยีสิ่งอำนวยความสะดวกค้นหาพื้นที่ของเอเจนต์ได้ และจัดเรียงเนื้อหาให้อยู่ในลำดับการอ่าน"
+
+msgctxt "docs.api:prose"
+msgid "Conditions"
+msgstr "เงื่อนไข"
+
+msgctxt "docs.api:prose"
+msgid "Rebrand (light)"
+msgstr "รีแบรนด์ (สว่าง)"
+
+msgctxt "docs.api:prose"
+msgid "Rebrand (dark)"
+msgstr "รีแบรนด์ (มืด)"
+
+msgctxt "docs.api:prose"
+msgid "Canvas High Contrast"
+msgstr "Canvas คอนทราสต์สูง"
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "WCAG 2.2 1.4.3, 1.4.6"
+msgstr "WCAG 2.2 1.4.3, 1.4.6"
+
+msgctxt "docs.api:prose"
+msgid "Review needed"
+msgstr "ต้องตรวจสอบ"
+
+msgctxt "docs.api:prose"
+msgid "The page changes under prefers-contrast: more, but no visible text was measurable."
+msgstr "หน้าเปลี่ยนแปลงเมื่อใช้ prefers-contrast: more แต่ไม่สามารถวัดข้อความที่มองเห็นได้"
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "WCAG 2.2 1.4.10"
+msgstr "WCAG 2.2 1.4.10"
+
+msgctxt "docs.api:prose"
+msgid "In a 320px window, the page scrolls sideways (it is 336px wide in a 320px window), and one element reaches past the right edge: "
+msgstr "ในหน้าต่างขนาด 320px หน้าเว็บเลื่อนไปด้านข้าง (มีความกว้าง 336px ในหน้าต่างขนาด 320px) และมีองค์ประกอบหนึ่งยื่นเลยขอบด้านขวาไป: "
+
+msgctxt "docs.api:prose"
+msgid " ends at 336px. WCAG 1.4.10 Reflow (level AA) exempts two-dimensional content such as data tables and maps, so a person should judge whether that applies."
+msgstr " สิ้นสุดที่ 336px WCAG 1.4.10 การจัดเรียงใหม่ (ระดับ AA) ยกเว้นเนื้อหาแบบสองมิติ เช่น ตารางข้อมูลและแผนที่ ดังนั้นควรให้ผู้ตรวจสอบพิจารณาว่าข้อยกเว้นนี้ใช้ได้หรือไม่"
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "WCAG 2.2 1.4.12"
+msgstr "WCAG 2.2 1.4.12"
+
+msgctxt "docs.api:prose"
+msgid "Screen reader (simulated)"
+msgstr "โปรแกรมอ่านหน้าจอ (จำลอง)"
+
+msgctxt "docs.api:prose"
+msgid "These automated results do not establish that the page meets WCAG; manual review is still needed."
+msgstr "ผลลัพธ์อัตโนมัติเหล่านี้ไม่ได้ยืนยันว่าหน้าเว็บเป็นไปตาม WCAG; ยังคงต้องตรวจสอบด้วยตนเอง"
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "color-contrast"
+msgstr "color-contrast"
+
+msgctxt "docs.api:prose"
+msgid "Rules (axe-core)"
+msgstr "กฎ (axe-core)"
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "WCAG 2.2 1.4.3"
+msgstr "WCAG 2.2 1.4.3"
+
+msgctxt "docs.api:prose"
+msgid "Elements must meet minimum color contrast ratio thresholds"
+msgstr "องค์ประกอบต้องมีอัตราส่วนคอนทราสต์ของสีไม่ต่ำกว่าเกณฑ์ขั้นต่ำ"
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "forced-colors-focus-visible"
+msgstr "forced-colors-focus-visible"
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "less-contrast-stays-readable"
+msgstr "less-contrast-stays-readable"
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "reduced-motion-respected"
+msgstr "reduced-motion-respected"
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "Interactions"
+msgstr "Interactions"
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "focus-indicator-visible"
+msgstr "focus-indicator-visible"
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "focus-stays-on-trigger"
+msgstr "focus-stays-on-trigger"
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "live-politeness-fits-role"
+msgstr "live-politeness-fits-role"
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "message-has-text"
+msgstr "message-has-text"
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "message-in-live-region"
+msgstr "message-in-live-region"
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "no-focus-trap"
+msgstr "no-focus-trap"
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "region-exists-before-message"
+msgstr "region-exists-before-message"
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "trigger-reachable-by-tab"
+msgstr "trigger-reachable-by-tab"
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "message-text-contrast"
+msgstr "message-text-contrast"
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "WCAG 2.2 1.4.11, 2.4.7"
+msgstr "WCAG 2.2 1.4.11, 2.4.7"
+
+msgctxt "docs.api:prose"
+msgid "Not applicable"
+msgstr "ไม่เกี่ยวข้อง"
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "WCAG 2.2 2.3.3, 2.2.2"
+msgstr "WCAG 2.2 2.3.3, 2.2.2"
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "WCAG 2.2 2.4.7"
+msgstr "WCAG 2.2 2.4.7"
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "WCAG 2.2 4.1.3"
+msgstr "WCAG 2.2 4.1.3"
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "WCAG 2.2 2.1.2"
+msgstr "WCAG 2.2 2.1.2"
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "WCAG 2.2 2.1.1"
+msgstr "WCAG 2.2 2.1.1"
+
+msgctxt "docs.api:prose"
+msgid "Computed styles"
+msgstr "สไตล์ที่คำนวณได้"
+
+msgctxt "docs.api:prose"
+msgid "The name parts intentionally clip full names to leading letters. Keep the full text in the markup; when identifying text must also be visible, show the full name alongside the avatar."
+msgstr "ส่วนของชื่อถูกตัดให้เหลืออักษรนำหน้าโดยตั้งใจ คงข้อความเต็มไว้ในมาร์กอัป หากต้องแสดงข้อความระบุชื่อด้วย ให้แสดงชื่อเต็มควบคู่กับรูปประจำตัว"
+
+msgctxt "docs.api:prose"
+msgid "All 18 measured pieces of text pass with more contrast. one other piece can't be reduced to one color. \"Sam Kim\" can't be measured because a background image or gradient sits behind it."
+msgstr "ข้อความทั้ง 18 รายการที่วัดผ่านเกณฑ์เมื่อเพิ่มความเปรียบต่าง มีอีกหนึ่งรายการที่ไม่สามารถปรับให้เป็นสีเดียวได้ ไม่สามารถวัด \"Sam Kim\" ได้ เพราะมีภาพพื้นหลังหรือการไล่ระดับสีอยู่ด้านหลัง"
+
+msgctxt "docs.api:prose"
+msgid "With line height 1.5, letter spacing 0.12em, word spacing 0.16em, and paragraph spacing 2em, text in six elements gets cut off: "
+msgstr "เมื่อกำหนดความสูงบรรทัดเป็น 1.5 ระยะห่างตัวอักษรเป็น 0.12em ระยะห่างคำเป็น 0.16em และระยะห่างย่อหน้าเป็น 2em ข้อความในองค์ประกอบหกรายการจะถูกตัด: "
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid " (\"Lee Harper\"); "
+msgstr " (\"Lee Harper\"); "
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid " (\"Amira Patel\"); "
+msgstr " (\"Amira Patel\"); "
+
+msgctxt "docs.api:prose"
+msgid " (\"Miguel\"); and 3 more. Overlapping text isn't checked."
+msgstr " (\"Miguel\"); และอีก 3 รายการ ไม่ได้ตรวจสอบข้อความที่ซ้อนทับกัน"
+
+msgctxt "docs.api:prose"
+msgid "The count or dot is visual only, so don't rely on color to carry its meaning; put the status in text, such as visually hidden text or an `aria-label` on the target it decorates."
+msgstr "ตัวเลขจำนวนหรือจุดเป็นเพียงองค์ประกอบทางภาพเท่านั้น อย่าพึ่งพาสีเพื่อสื่อความหมาย แต่ให้แสดงสถานะเป็นข้อความ เช่น ข้อความที่ซ่อนจากการมองเห็น หรือ `aria-label` บนอิลิเมนต์เป้าหมายที่ตกแต่ง"
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "Canvas:"
+msgstr "Canvas:"
+
+msgctxt "docs.api:prose"
+msgid " With prefers-contrast: more, two pieces of text fall below the minimum contrast. The worst is \"Undo\" at 4.46:1 (needs 4.5:1)."
+msgstr " เมื่อใช้ prefers-contrast: more ข้อความสองส่วนมีคอนทราสต์ต่ำกว่าค่าขั้นต่ำ โดยข้อความที่แย่ที่สุดคือ \"เลิกทำ\" ที่ 4.46:1 (ต้องมีค่า 4.5:1)."
+
+msgctxt "docs.api:prose"
+msgid "It sets the page surface, text color, and `color-scheme` so native controls follow the active light or dark scheme; keep links distinguishable from surrounding text by more than color alone."
+msgstr "ค่านี้กำหนดพื้นผิวของหน้า สีข้อความ และ `color-scheme` เพื่อให้ตัวควบคุมแบบเนทีฟเป็นไปตามโทนสว่างหรือมืดที่ใช้งานอยู่; ทำให้ลิงก์แตกต่างจากข้อความโดยรอบด้วยวิธีอื่นนอกเหนือจากสีเพียงอย่างเดียว"
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "label-content-name-mismatch"
+msgstr "label-content-name-mismatch"
+
+msgctxt "docs.api:prose"
+msgid "Render the `.heading` as a real heading element. A `-clickable` billboard only gains hover styling, so give it `tabindex=\"0\"`, an appropriate role, and a keyboard handler."
+msgstr "แสดง `.heading` เป็นองค์ประกอบหัวข้อจริง ป้ายโฆษณา `-clickable` จะมีเพียงสไตล์เมื่อวางเมาส์เหนือ ดังนั้นจึงต้องกำหนด `tabindex=\"0\"` บทบาทที่เหมาะสม และตัวจัดการแป้นพิมพ์ให้กับองค์ประกอบนี้"
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "WCAG 2.2 2.5.3"
+msgstr "WCAG 2.2 2.5.3"
+
+msgctxt "docs.api:prose"
+msgid "Elements must have their visible text as part of their accessible name"
+msgstr "องค์ประกอบต้องมีข้อความที่มองเห็นได้เป็นส่วนหนึ่งของชื่อที่โปรแกรมช่วยการเข้าถึงอ่านได้"
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "reduced-transparency-respected"
+msgstr "reduced-transparency-respected"
+
+msgctxt "docs.api:prose"
+msgid "Rebrand (light):"
+msgstr "ปรับแบรนด์ใหม่ (light):"
+
+msgctxt "docs.api:prose"
+msgid " With prefers-contrast: more, six pieces of text fall below the minimum contrast. The worst is \"Send\" at 1.64:1 (needs 4.5:1)."
+msgstr " เมื่อใช้ prefers-contrast: more ข้อความ 6 รายการมีความเปรียบต่างต่ำกว่าค่าขั้นต่ำ โดยรายการที่แย่ที่สุดคือ \"ส่ง\" ที่ 1.64:1 (ต้องได้ 4.5:1)."
+
+msgctxt "docs.api:prose"
+msgid "Rebrand (dark):"
+msgstr "ปรับแบรนด์ใหม่ (dark):"
+
+msgctxt "docs.api:prose"
+msgid " With prefers-contrast: more, six pieces of text fall below the minimum contrast. The worst is \"Send\" at 1.78:1 (needs 4.5:1)."
+msgstr " เมื่อใช้ prefers-contrast: more ข้อความ 6 รายการมีความเปรียบต่างต่ำกว่าค่าขั้นต่ำ โดยรายการที่แย่ที่สุดคือ \"ส่ง\" ที่ 1.78:1 (ต้องได้ 4.5:1)."
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "Canvas, Canvas High Contrast:"
+msgstr "Canvas, Canvas High Contrast:"
+
+msgctxt "docs.api:prose"
+msgid " With prefers-contrast: more, two pieces of text fall below the minimum contrast. The worst is \"Rewrite\" at 1.88:1 (needs 4.5:1)."
+msgstr " เมื่อใช้ prefers-contrast: more ข้อความ 2 รายการมีความเปรียบต่างต่ำกว่าค่าขั้นต่ำ โดยรายการที่แย่ที่สุดคือ \"เขียนใหม่\" ที่ 1.88:1 (ต้องได้ 4.5:1)."
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "WCAG 2.2 1.4.3, 1.4.11"
+msgstr "WCAG 2.2 1.4.3, 1.4.11"
+
+msgctxt "docs.api:prose"
+msgid "In a 320px window, the page scrolls sideways (it is 592px wide in a 320px window), and one element reaches past the right edge: "
+msgstr "ในหน้าต่างขนาด 320px หน้าเว็บเลื่อนไปด้านข้าง (มีความกว้าง 592px ในหน้าต่างขนาด 320px)) และมีองค์ประกอบหนึ่งยื่นเลยขอบด้านขวาไป: "
+
+msgctxt "docs.api:prose"
+msgid " ends at 592px. WCAG 1.4.10 Reflow (level AA) exempts two-dimensional content such as data tables and maps, so a person should judge whether that applies."
+msgstr " สิ้นสุดที่ 592px WCAG 1.4.10 Reflow (ระดับ AA)) ยกเว้นเนื้อหาสองมิติ เช่น ตารางข้อมูลและแผนที่ ดังนั้นควรพิจารณาว่าข้อยกเว้นนี้ใช้ได้หรือไม่"
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "enter-activates"
+msgstr "enter-activates"
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "space-activates"
+msgstr "space-activates"
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "boundary-contrast"
+msgstr "boundary-contrast"
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "focus-indicator-contrast"
+msgstr "focus-indicator-contrast"
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "text-contrast-by-state"
+msgstr "text-contrast-by-state"
+
+msgctxt "docs.api:prose"
+msgid " With forced colors on, the focus indicator is weak: only 58 of 299 changed pixels reach 3:1 against their unfocused color, and enough to count is about half the control's perimeter, 108."
+msgstr " เมื่อเปิดใช้ forced colors ตัวบ่งชี้โฟกัสมีความชัดเจนน้อย: มีพิกเซลที่เปลี่ยนสีเพียง 58 จาก 299 พิกเซลที่มีอัตราส่วนคอนทราสต์ถึง 3:1 เมื่อเทียบกับสีขณะไม่มีโฟกัส และเกณฑ์ที่นับว่ามากพอคือประมาณครึ่งหนึ่งของเส้นรอบรูปของตัวควบคุม ซึ่งเท่ากับ 108"
+
+msgctxt "docs.api:prose"
+msgid " With prefers-contrast: more, eight pieces of text fall below the minimum contrast. The worst is \"Save unavailable\" at 1.64:1 (needs 4.5:1)."
+msgstr " เมื่อใช้ prefers-contrast: more ข้อความแปดรายการมีคอนทราสต์ต่ำกว่าขั้นต่ำ รายการที่แย่ที่สุดคือ \"Save unavailable\" ที่ 1.64:1 (ต้องมี 4.5:1)."
+
+msgctxt "docs.api:prose"
+msgid " With prefers-contrast: more, eight pieces of text fall below the minimum contrast. The worst is \"Save unavailable\" at 1.78:1 (needs 4.5:1)."
+msgstr " เมื่อใช้ prefers-contrast: more ข้อความแปดรายการมีคอนทราสต์ต่ำกว่าขั้นต่ำ รายการที่แย่ที่สุดคือ \"Save unavailable\" ที่ 1.78:1 (ต้องมี 4.5:1)."
+
+msgctxt "docs.api:prose"
+msgid " With prefers-contrast: more, two pieces of text fall below the minimum contrast. The worst is \"Summary unavailable\" at 1.88:1 (needs 4.5:1)."
+msgstr " เมื่อใช้ prefers-contrast: more ข้อความสองรายการมีคอนทราสต์ต่ำกว่าขั้นต่ำ รายการที่แย่ที่สุดคือ \"Summary unavailable\" ที่ 1.88:1 (ต้องมี 4.5:1)."
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "WCAG 2.2 1.4.11"
+msgstr "WCAG 2.2 1.4.11"
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "WCAG 2.2 1.4.11, 2.4.13"
+msgstr "WCAG 2.2 1.4.11, 2.4.13"
+
+msgctxt "docs.api:prose"
+msgid "Give an informative hero image alt text and mark a decorative one with an empty `alt` or `aria-hidden=\"true\"`. Use a real heading element for the `.title` when it belongs in the document outline."
+msgstr "กำหนดข้อความ alt ที่ให้ข้อมูลสำหรับภาพหลัก และระบุภาพตกแต่งด้วย `alt` หรือ `aria-hidden=\"true\"` ใช้องค์ประกอบหัวข้อจริงสำหรับ `.title` เมื่อควรอยู่ในโครงร่างเอกสาร"
+
+msgctxt "docs.api:prose"
+msgid " Elements must meet minimum color contrast ratio thresholds"
+msgstr " องค์ประกอบต้องมีอัตราส่วนคอนทราสต์ของสีขั้นต่ำตามเกณฑ์"
+
+msgctxt "docs.api:prose"
+msgid "Mirror `-selected` with `aria-selected` and mark today with `aria-current=\"date\"`; give each day a full-date accessible name, since the day number alone is ambiguous."
+msgstr "จับคู่ `-selected` กับ `aria-selected` และทำเครื่องหมายวันที่เป็นวันนี้ด้วย `aria-current=\"date\"`; กำหนดชื่อที่โปรแกรมอ่านหน้าจอเข้าถึงได้เป็นวันที่เต็มให้แต่ละวัน เนื่องจากหมายเลขวันเพียงอย่างเดียวกำกวม"
+
+msgctxt "docs.api:prose"
+msgid "Wrap the native `<input type=\"checkbox\">` and its visible text in a `<label>` to supply its accessible name. The input drives `:checked`, `:indeterminate`, and `:disabled`; set `el.indeterminate = true` in JavaScript for the mixed state. `-readonly` is styling only since checkboxes have no native readonly attribute."
+msgstr "ครอบ `<input type=\"checkbox\">` แบบเนทีฟและข้อความที่มองเห็นได้ด้วย `<label>` เพื่อกำหนดชื่อที่เข้าถึงได้ อินพุตนี้ควบคุมสถานะ `:checked`, `:indeterminate` และ `:disabled`; กำหนด `el.indeterminate = true` ใน JavaScript สำหรับสถานะผสม `-readonly` ใช้เพื่อจัดรูปแบบเท่านั้น เนื่องจากช่องทำเครื่องหมายไม่มีแอตทริบิวต์ readonly แบบเนทีฟ"
+
+msgctxt "docs.api:prose"
+msgid " With prefers-contrast: more, five pieces of text fall below the minimum contrast. The worst is \"Disabled unchecked checkbox\" at 2.74:1 (needs 4.5:1)."
+msgstr " เมื่อใช้ prefers-contrast: more ข้อความห้ารายการมีคอนทราสต์ต่ำกว่าค่าขั้นต่ำ โดยรายการที่แย่ที่สุดคือ \"ช่องทำเครื่องหมายที่ปิดใช้งานและไม่ได้เลือก\" ที่ 2.74:1 (ต้องมี 4.5:1)."
+
+msgctxt "docs.api:prose"
+msgid " With prefers-contrast: more, five pieces of text fall below the minimum contrast. The worst is \"Disabled unchecked checkbox\" at 3.15:1 (needs 4.5:1)."
+msgstr " เมื่อใช้ prefers-contrast: more ข้อความห้ารายการมีคอนทราสต์ต่ำกว่าค่าขั้นต่ำ โดยรายการที่แย่ที่สุดคือ \"ช่องทำเครื่องหมายที่ปิดใช้งานและไม่ได้เลือก\" ที่ 3.15:1 (ต้องมี 4.5:1)."
+
+msgctxt "docs.api:prose"
+msgid " With prefers-contrast: more, five pieces of text fall below the minimum contrast. The worst is \"Disabled unchecked checkbox\" at 3.02:1 (needs 4.5:1)."
+msgstr " เมื่อใช้ prefers-contrast: more ข้อความห้ารายการมีคอนทราสต์ต่ำกว่าค่าขั้นต่ำ โดยรายการที่แย่ที่สุดคือ \"ช่องทำเครื่องหมายที่ปิดใช้งานและไม่ได้เลือก\" ที่ 3.02:1 (ต้องมี 4.5:1)."
+
+msgctxt "docs.api:prose"
+msgid "Connect the trigger with `popovertarget` so the open state is exposed, and keep the native Escape and outside-click dismissal. The caret is decorative; the callout's content isn't announced unless the trigger references it, for example with `aria-describedby`."
+msgstr "เชื่อมทริกเกอร์กับ `popovertarget` เพื่อเปิดเผยสถานะเปิด และคงการปิดด้วยปุ่ม Escape และการคลิกภายนอกตามพฤติกรรมดั้งเดิมไว้ ลูกศรเป็นเพียงของตกแต่ง เนื้อหาของกล่องข้อความจะไม่ถูกประกาศ เว้นแต่ทริกเกอร์จะอ้างอิงถึงเนื้อหานั้น เช่น ด้วย `aria-describedby`."
+
+msgctxt "docs.api:prose"
+msgid "The cursor only affects pointer users; a pointer cursor doesn't make an element operable. Put it on native controls (`button`, `a`), and never use `--cursor-not-allowed` or `--cursor-wait` as the only sign that something is disabled or busy."
+msgstr "เคอร์เซอร์มีผลเฉพาะกับผู้ใช้อุปกรณ์ชี้ตำแหน่ง เคอร์เซอร์รูปมือไม่ได้ทำให้องค์ประกอบใช้งานได้ วางเคอร์เซอร์นี้ไว้บนตัวควบคุมแบบเนทีฟ (`button`, `a`)) และอย่าใช้ `--cursor-not-allowed` หรือ `--cursor-wait` เป็นสัญญาณเดียวที่บอกว่าบางสิ่งถูกปิดใช้งานหรือกำลังทำงาน"
+
+msgctxt "docs.api:prose"
+msgid "Once the parent's inline-size drops below `64em` (`16em` tray width + `48em` breakpoint), a `@container` query on the parent's `pantoken-drawer-layout` container drops this member's `min-inline-size` to `0` automatically, matching the manual `[should-overlay-tray]` override. This also applies when the tray is closed or absent."
+msgstr "เมื่อ inline-size ของ parent ลดลงต่ำกว่า `64em` (`16em` ความกว้าง tray + `48em` breakpoint), query `@container` บน container `pantoken-drawer-layout` ของ parent จะปรับ `min-inline-size` ของสมาชิกนี้เป็น `0` โดยอัตโนมัติ ให้ตรงกับ override `[should-overlay-tray]` แบบกำหนดเอง นอกจากนี้ยังมีผลเมื่อ tray ปิดอยู่หรือไม่มีอยู่"
+
+msgctxt "docs.api:prose"
+msgid "Use a `div` with `role=\"region\"` (InstUI's DrawerLayout convention) and always name it with `aria-label` or `aria-labelledby`."
+msgstr "ใช้ `div` กับ `role=\"region\"` (รูปแบบการตั้งชื่อ DrawerLayout ของ InstUI) และตั้งชื่อให้เป็น `aria-label` หรือ `aria-labelledby` เสมอ"
+
+msgctxt "docs.api:prose"
+msgid "Name every region with `aria-label` or `aria-labelledby`. Use `div` for InstUI-style regions, not `<main role=\"region\">`. When the tray acts as navigation, use a named `<nav>` or place one inside the tray."
+msgstr "ตั้งชื่อทุกบริเวณด้วย `aria-label` หรือ `aria-labelledby`. ใช้ `div` สำหรับบริเวณแบบ InstUI ไม่ใช่ `<main role=\"region\">`. เมื่อ tray ทำหน้าที่เป็นการนำทาง ให้ใช้ `<nav>` ที่มีชื่อ หรือวางองค์ประกอบดังกล่าวไว้ภายใน tray"
+
+msgctxt "docs.api:prose"
+msgid "The page changes under prefers-contrast: less, but no visible text was measurable."
+msgstr "หน้าเปลี่ยนแปลงเมื่อใช้ prefers-contrast: less แต่ไม่มีข้อความที่มองเห็นได้ซึ่งสามารถวัดได้"
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "error-associated-on-invalid"
+msgstr "error-associated-on-invalid"
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "label-associated"
+msgstr "label-associated"
+
+msgctxt "docs.api:prose"
+msgid "Native validation is opt-in: add `data-native-validation` and load `@pantoken/interactions/form-field.iife.js`, or call `initFormField(host, control, error)`. Supply exactly one native control and one error message with a stable, unique ID. The behavior associates the error after blur or a native validation attempt and removes it when corrected; CSS alone doesn't synchronize ARIA."
+msgstr "การตรวจสอบแบบ native เป็นตัวเลือกเสริม: เพิ่ม `data-native-validation` แล้วโหลด `@pantoken/interactions/form-field.iife.js` หรือเรียก `initFormField(host, control, error)` ระบุคอนโทรล native หนึ่งรายการและข้อความแสดงข้อผิดพลาดหนึ่งข้อความที่มี ID เฉพาะและคงที่ ลักษณะการทำงานนี้จะเชื่อมโยงข้อผิดพลาดหลังจากออกจากช่องหรือพยายามตรวจสอบแบบ native และนำออกเมื่อแก้ไขแล้ว CSS เพียงอย่างเดียวไม่สามารถซิงโครไนซ์ ARIA ได้"
+
+msgctxt "docs.api:prose"
+msgid "Use your work email."
+msgstr "ใช้อีเมลที่ทำงานของคุณ"
+
+msgctxt "docs.api:prose"
+msgid "A wrapping `<label>` names the control. When it also contains messages, use `aria-labelledby` to identify just the visible label text and `aria-describedby` for hints. Associate visible validation errors and synchronize `aria-invalid` in application code or with the opt-in native validation behavior; the decorative required asterisk isn't an accessible-name substitute."
+msgstr "การครอบด้วย `<label>` จะกำหนดชื่อให้คอนโทรล หากมีข้อความอื่นอยู่ด้วย ให้ใช้ `aria-labelledby` เพื่อระบุเฉพาะข้อความป้ายกำกับที่มองเห็นได้ และใช้ `aria-describedby` สำหรับคำใบ้ เชื่อมโยงข้อผิดพลาดในการตรวจสอบที่มองเห็นได้และซิงโครไนซ์ `aria-invalid` ในโค้ดแอปพลิเคชัน หรือใช้ลักษณะการตรวจสอบแบบ native ที่เลือกเปิดใช้ เครื่องหมายดอกจันแสดงว่าจำเป็นซึ่งใช้เพื่อการตกแต่ง ไม่สามารถใช้แทนชื่อที่โปรแกรมอ่านได้"
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "WCAG 2.2 3.3.1, 4.1.3"
+msgstr "WCAG 2.2 3.3.1, 4.1.3"
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "WCAG 2.2 1.3.1, 3.3.2, 4.1.2"
+msgstr "WCAG 2.2 1.3.1, 3.3.2, 4.1.2"
+
+msgctxt "docs.api:prose"
+msgid "A gap changes spacing only; reading and focus order still follow the DOM. Keep gaps between interactive controls large enough to meet WCAG 2.5.8 target spacing."
+msgstr "ช่องว่างมีผลเฉพาะระยะห่าง; ลำดับการอ่านและลำดับการโฟกัสยังคงเป็นไปตาม DOM ควรรักษาระยะห่างระหว่างตัวควบคุมแบบโต้ตอบให้มากพอเพื่อให้เป็นไปตามข้อกำหนดเรื่องระยะห่างของเป้าหมายใน WCAG 2.5.8"
+
+msgctxt "docs.api:prose"
+msgid "All 17 measured pieces of text pass with more contrast. one other piece can't be reduced to one color. \"Suggested study plan\" can't be measured because a background image or gradient sits behind it."
+msgstr "ข้อความทั้ง 17 รายการที่วัดผลผ่านเกณฑ์เมื่อมีคอนทราสต์มากขึ้น อีกหนึ่งรายการไม่สามารถลดให้เหลือสีเดียวได้ ส่วน \"แผนการเรียนที่แนะนำ\" วัดผลไม่ได้ เพราะมีภาพพื้นหลังหรือการไล่ระดับสีอยู่ด้านหลัง"
+
+msgctxt "docs.api:prose"
+msgid "A hover and focus tooltip bubble, positionable on any side."
+msgstr "ฟองคำแนะนำที่แสดงเมื่อชี้เมาส์หรือโฟกัส และจัดวางได้ทุกด้าน"
+
+msgctxt "docs.api:prose"
+msgid "A tree of nested collections and leaf items, with rotating chevrons."
+msgstr "โครงสร้างแบบต้นไม้ของคอลเลกชันที่ซ้อนกันและรายการปลายทาง พร้อมเครื่องหมายบั้งที่หมุนได้"
+
+msgctxt "docs.api:prose"
+msgid "Label the inner input with a real `<label>`. Mark purely visual icons in `.before` and `.after` with `aria-hidden=\"true\"`, and convey `-invalid` and `-success` states in text, not color alone."
+msgstr "กำหนดป้ายกำกับให้ช่องป้อนข้อมูลด้านในด้วย `<label>`. ทำเครื่องหมายไอคอนที่มีไว้เพื่อการแสดงผลเท่านั้นใน `.before` และ `.after` ด้วย `aria-hidden=\"true\"`, และสื่อสถานะ `-invalid` และ `-success` ด้วยข้อความ ไม่ใช่ใช้สีเพียงอย่างเดียว."
+
+msgctxt "docs.api:prose"
+msgid "`--display-none` removes an element from the accessibility tree as well as the screen, so use it only for content nobody needs. Flex and grid layout can't reorder content for assistive tech; keep the DOM order meaningful, and don't center or justify long passages of text."
+msgstr "`--display-none` นำองค์ประกอบออกจากทั้ง accessibility tree และหน้าจอ ดังนั้นให้ใช้กับเนื้อหาที่ไม่มีใครจำเป็นต้องใช้เท่านั้น การจัดวางแบบ Flex และ grid ไม่สามารถจัดเรียงเนื้อหาใหม่สำหรับเทคโนโลยีสิ่งอำนวยความสะดวกได้ ให้ลำดับ DOM มีความหมาย และอย่าจัดข้อความยาวให้อยู่กึ่งกลางหรือชิดขอบ"
+
+msgctxt "docs.api:prose"
+msgid " With prefers-contrast: more, two pieces of text fall below the minimum contrast. The worst is \"Settings unavailable\" at 2.74:1 (needs 4.5:1)."
+msgstr " เมื่อใช้ prefers-contrast: more ข้อความสองส่วนมีความเปรียบต่างต่ำกว่าค่าขั้นต่ำ ค่าที่แย่ที่สุดคือ \"การตั้งค่าไม่พร้อมใช้งาน\" ที่ 2.74:1 (ต้องการ 4.5:1)."
+
+msgctxt "docs.api:prose"
+msgid " With prefers-contrast: more, two pieces of text fall below the minimum contrast. The worst is \"Settings unavailable on brand\" at 1.84:1 (needs 4.5:1)."
+msgstr " เมื่อใช้ prefers-contrast: more ข้อความสองส่วนมีความเปรียบต่างต่ำกว่าค่าขั้นต่ำ ค่าที่แย่ที่สุดคือ \"การตั้งค่าไม่พร้อมใช้งานบนสีแบรนด์\" ที่ 1.84:1 (ต้องการ 4.5:1)."
+
+msgctxt "docs.api:prose"
+msgid " With prefers-contrast: more, three pieces of text fall below the minimum contrast. The worst is \"Settings unavailable on brand\" at 2.76:1 (needs 4.5:1)."
+msgstr " เมื่อใช้ prefers-contrast: more ข้อความสามส่วนมีความเปรียบต่างต่ำกว่าค่าขั้นต่ำ ค่าที่แย่ที่สุดคือ \"การตั้งค่าไม่พร้อมใช้งานบนสีแบรนด์\" ที่ 2.76:1 (ต้องการ 4.5:1)."
+
+msgctxt "docs.api:prose"
+msgid "Canvas High Contrast:"
+msgstr "Canvas ความคมชัดสูง:"
+
+msgctxt "docs.api:prose"
+msgid " With prefers-contrast: more, one piece of text falls below the minimum contrast. The worst is \"Settings unavailable on brand\" at 2.84:1 (needs 4.5:1)."
+msgstr " เมื่อใช้ prefers-contrast: more ข้อความหนึ่งส่วนมีความเปรียบต่างต่ำกว่าค่าขั้นต่ำ ค่าที่แย่ที่สุดคือ \"การตั้งค่าไม่พร้อมใช้งานบนสีแบรนด์\" ที่ 2.84:1 (ต้องการ 4.5:1)."
+
+msgctxt "docs.api:prose"
+msgid "Keep each item a direct `<li>` child of the list so it stays in the list's accessibility tree; delimiters and markers are visual only."
+msgstr "ให้แต่ละรายการเป็นลูกโดยตรงของรายการ เพื่อให้ยังคงอยู่ใน accessibility tree ของรายการ ตัวคั่นและเครื่องหมายมีไว้เพื่อการแสดงผลเท่านั้น"
+
+msgctxt "docs.api:prose"
+msgid "Use a real `<ul>` or `<ol>` with `<li>` children. Removing markers with `-unstyled` can make some screen readers drop the list semantics, so add `role=\"list\"` when the list structure matters."
+msgstr "ใช้ `<ul>` หรือ `<ol>` ที่ถูกต้อง พร้อมด้วยองค์ประกอบย่อย `<li>` การนำเครื่องหมายออกด้วย `-unstyled` อาจทำให้โปรแกรมอ่านหน้าจอบางตัวไม่รับรู้ความหมายของรายการ ดังนั้นให้เพิ่ม `role=\"list\"` เมื่อโครงสร้างรายการมีความสำคัญ"
+
+msgctxt "docs.api:prose"
+msgid "A contained spinner honors reduced motion without hiding the overlay or loading indicator. Keep its status role and meaningful loading label."
+msgstr "สปินเนอร์ที่อยู่ภายในจะเคารพการตั้งค่าลดการเคลื่อนไหว โดยไม่ซ่อนโอเวอร์เลย์หรือตัวบ่งชี้การโหลด คงบทบาทสถานะและป้ายกำกับการโหลดที่สื่อความหมายไว้"
+
+msgctxt "docs.api:prose"
+msgid "A mask covers content visually but doesn't block assistive tech or the keyboard: make the covered region `inert` (or mark it `aria-busy`), keep the mask's own message as real text, and don't hide the focus indicator behind it."
+msgstr "มาสก์ปิดบังเนื้อหาในเชิงภาพ แต่ไม่ได้ปิดกั้นเทคโนโลยีสิ่งอำนวยความสะดวกหรือแป้นพิมพ์: กำหนดบริเวณที่ถูกปิดบังเป็น `inert` (หรือทำเครื่องหมายเป็น `aria-busy`), ให้ข้อความของมาสก์เป็นข้อความจริง และอย่าซ่อนตัวบ่งชี้โฟกัสไว้ด้านหลังมาสก์"
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "aria-valid-attr-value"
+msgstr "aria-valid-attr-value"
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "dark-mode-contrast"
+msgstr "dark-mode-contrast"
+
+msgctxt "docs.api:prose"
+msgid "Wrap the grouped items in an element with `role=\"group\"` and point `aria-labelledby` at the group heading so assistive technology announces the group name."
+msgstr "ห่อรายการที่จัดกลุ่มไว้ในองค์ประกอบที่มี `role=\"group\"` และกำหนด `aria-labelledby` ให้ชี้ไปยังหัวข้อกลุ่ม เพื่อให้เทคโนโลยีสิ่งอำนวยความสะดวกประกาศชื่อกลุ่ม"
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "WCAG 2.2 4.1.2"
+msgstr "WCAG 2.2 4.1.2"
+
+msgctxt "docs.api:prose"
+msgid "ARIA attributes must conform to valid values"
+msgstr "แอตทริบิวต์ ARIA ต้องเป็นไปตามค่าที่ถูกต้อง"
+
+msgctxt "docs.api:prose"
+msgid "Checked actions use `menuitemcheckbox` or `menuitemradio` with `aria-checked`; applications update that state on activation. Pair `-disabled` with `aria-disabled=\"true\"` or native `disabled`, not the CSS class alone. Opt-in menu navigation keeps ARIA-disabled items reachable but prevents their activation."
+msgstr "การกระทำที่เลือกใช้ `menuitemcheckbox` หรือ `menuitemradio` ร่วมกับ `aria-checked`; แอปพลิเคชันจะอัปเดตสถานะนี้เมื่อเปิดใช้งาน ให้ใช้ `-disabled` คู่กับ `aria-disabled=\"true\"` หรือ `disabled` แบบเนทีฟ ไม่ใช่ใช้คลาส CSS เพียงอย่างเดียว การนำทางเมนูแบบเลือกใช้จะยังเข้าถึงรายการที่ปิดใช้งานด้วย ARIA ได้ แต่จะป้องกันไม่ให้เปิดใช้งานรายการเหล่านั้น"
+
+msgctxt "docs.api:prose"
+msgid " All five measured pieces of text pass in dark mode. one other piece can't be reduced to one color. \"Archive\" can't be measured because an element behind it is partly transparent."
+msgstr " ข้อความทั้งห้าส่วนที่วัดผ่านเกณฑ์ในโหมดมืด ข้อความอีกส่วนหนึ่งไม่สามารถลดให้เหลือสีเดียวได้ ไม่สามารถวัดค่า \"Archive\" ได้ เนื่องจากองค์ประกอบที่อยู่ด้านหลังมีความโปร่งใสบางส่วน"
+
+msgctxt "docs.api:prose"
+msgid "All five measured pieces of text pass with more contrast. one other piece can't be reduced to one color. \"Archive\" can't be measured because an element behind it is partly transparent."
+msgstr "ข้อความทั้งห้าส่วนที่วัดมีความเปรียบต่างมากพอที่จะผ่านเกณฑ์ ข้อความอีกส่วนหนึ่งไม่สามารถลดให้เหลือสีเดียวได้ ไม่สามารถวัดค่า \"Archive\" ได้ เนื่องจากองค์ประกอบที่อยู่ด้านหลังมีความโปร่งใสบางส่วน"
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "arrow-keys-move-between-items"
+msgstr "arrow-keys-move-between-items"
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "escape-closes-and-returns-focus"
+msgstr "escape-closes-and-returns-focus"
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "opens-with-enter-or-arrow"
+msgstr "opens-with-enter-or-arrow"
+
+msgctxt "docs.api:prose"
+msgid "Keyboard navigation is opt-in: add `data-menu-navigation` to a vertical native popover with `role=\"menu\"` and load `@pantoken/interactions/menu.iife.js`, or call `initMenu(menu, button)`. Use one native `button[popovertarget]`. The behavior handles focus, arrows, Home/End, initial-character search, Escape, and activation; applications own actions and checked state. Submenus and menubars aren't supported."
+msgstr "การนำทางด้วยแป้นพิมพ์เป็นตัวเลือกที่เปิดใช้ได้: เพิ่ม `data-menu-navigation` ลงในป๊อปโอเวอร์ native แนวตั้งที่มี `role=\"menu\"` แล้วโหลด `@pantoken/interactions/menu.iife.js` หรือเรียกใช้ `initMenu(menu, button)`. ใช้ `button[popovertarget]` native เพียงรายการเดียว ลักษณะการทำงานนี้จัดการโฟกัส ปุ่มลูกศร Home/End การค้นหาด้วยอักขระตัวแรก Escape และการเปิดใช้งาน ส่วนแอปพลิเคชันเป็นผู้กำหนดการทำงานและสถานะที่เลือกไว้ ไม่รองรับเมนูย่อยและแถบเมนู"
+
+msgctxt "docs.api:prose"
+msgid "Name the menu and button. Use `menuitem` for actions, `menuitemcheckbox`/`menuitemradio` with `aria-checked` for checked actions, and `separator` for dividers. Add `aria-disabled=\"true\"` to disabled items; a CSS modifier alone doesn't convey disabled state. ARIA-disabled entries remain focusable but cannot activate; native-disabled and hidden entries are skipped."
+msgstr "ตั้งชื่อเมนูและปุ่ม ใช้ `menuitem` สำหรับการดำเนินการ, `menuitemcheckbox`/`menuitemradio` ที่มี `aria-checked` สำหรับการดำเนินการที่เลือกไว้ และ `separator` สำหรับตัวแบ่ง เพิ่ม `aria-disabled=\"true\"` ให้กับรายการที่ปิดใช้งาน การใช้ตัวปรับแต่ง CSS เพียงอย่างเดียวไม่ได้สื่อถึงสถานะปิดใช้งาน รายการที่ปิดใช้งานด้วย ARIA ยังคงโฟกัสได้แต่เปิดใช้งานไม่ได้ ส่วนรายการที่ปิดใช้งานแบบ native และรายการที่ซ่อนไว้จะถูกข้าม"
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "WCAG 2.2 2.1.1, 2.4.3"
+msgstr "WCAG 2.2 2.1.1, 2.4.3"
+
+msgctxt "docs.api:prose"
+msgid "Give the divider `role=\"separator\"` so assistive technology can announce the break between items; without it the rule is purely decorative."
+msgstr "กำหนดตัวแบ่ง `role=\"separator\"` เพื่อให้เทคโนโลยีสิ่งอำนวยความสะดวกประกาศการแบ่งระหว่างรายการได้ หากไม่มีสิ่งนี้ เส้นดังกล่าวจะเป็นเพียงของตกแต่งเท่านั้น"
+
+msgctxt "docs.api:prose"
+msgid "The `.value` and `.label` are separate elements, so keep them adjacent in source order to read together, and don't convey meaning through size alone."
+msgstr "`.value` และ `.label` เป็นองค์ประกอบแยกจากกัน ดังนั้นควรวางไว้ติดกันตามลำดับในซอร์สเพื่อให้อ่านต่อเนื่องกัน และอย่าสื่อความหมายด้วยขนาดเพียงอย่างเดียว"
+
+msgctxt "docs.api:prose"
+msgid "Place the body inside the dialog that the header labels, and give a lone full-bleed `<img>` alt text."
+msgstr "วางเนื้อหาไว้ภายในกล่องโต้ตอบที่ส่วนหัวระบุชื่อ และกำหนดข้อความแสดงแทนให้กับ `<img>` แบบเต็มพื้นที่เพียงรายการเดียว"
+
+msgctxt "docs.api:prose"
+msgid "Use real buttons in a logical focus order after the body, and include a visible dismiss action so keyboard users can close the dialog."
+msgstr "ใช้ปุ่มจริงตามลำดับโฟกัสที่สมเหตุสมผลหลังเนื้อหาหลัก และมีปุ่มปิดที่มองเห็นได้เพื่อให้ผู้ใช้คีย์บอร์ดปิดกล่องโต้ตอบได้"
+
+msgctxt "docs.api:prose"
+msgid "Render the title as a real heading and point the dialog's `aria-labelledby` at it so the dialog is announced with its name."
+msgstr "แสดงชื่อเรื่องเป็นหัวข้อจริง และกำหนดให้ `aria-labelledby` ของกล่องโต้ตอบชี้ไปยังหัวข้อนั้น เพื่อให้มีการประกาศชื่อของกล่องโต้ตอบ"
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "escape-closes"
+msgstr "escape-closes"
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "focus-moves-into-dialog"
+msgstr "focus-moves-into-dialog"
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "focus-returns-to-trigger"
+msgstr "focus-returns-to-trigger"
+
+msgctxt "docs.api:prose"
+msgid "The dialog stayed open after Escape."
+msgstr "กล่องโต้ตอบยังคงเปิดอยู่หลังจากกด Escape"
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "WCAG 2.2 2.4.3"
+msgstr "WCAG 2.2 2.4.3"
+
+msgctxt "docs.api:prose"
+msgid "The `.arrows` buttons are redundant pointer controls, hidden from assistive technology and excluded from sequential keyboard focus. Consumers wire pointer activation and keep focus on the input; the native number input provides keyboard increment/decrement."
+msgstr "ปุ่ม `.arrows` เป็นตัวควบคุมแบบชี้ที่ซ้ำซ้อน ซึ่งซ่อนจากเทคโนโลยีสิ่งอำนวยความสะดวกและไม่รวมอยู่ในลำดับการโฟกัสด้วยแป้นพิมพ์ ผู้ใช้แพ็กเกจต้องเชื่อมการทำงานเมื่อเปิดใช้งานด้วยการชี้ และคงโฟกัสไว้ที่อินพุต โดยอินพุตตัวเลขแบบเนทีฟจะมีการเพิ่ม/ลดค่าด้วยแป้นพิมพ์"
+
+msgctxt "docs.api:prose"
+msgid "Name the native `<input type=\"number\">` so it owns the value and keyboard controls. Mark redundant arrow buttons with both `aria-hidden=\"true\"` and `tabindex=\"-1\"`; never leave an assistive-technology-hidden button in the tab order."
+msgstr "ตั้งชื่อ `<input type=\"number\">` แบบเนทีฟเพื่อให้เป็นเจ้าของค่าและตัวควบคุมด้วยแป้นพิมพ์ กำหนดปุ่มลูกศรที่ซ้ำซ้อนด้วยทั้ง `aria-hidden=\"true\"` และ `tabindex=\"-1\"`; อย่าปล่อยให้ปุ่มที่ซ่อนจากเทคโนโลยีสิ่งอำนวยความสะดวกอยู่ในลำดับการกด Tab"
+
+msgctxt "docs.api:prose"
+msgid "A scrollable region must work from the keyboard: give it `tabindex=\"0\"`, a role, and an accessible name (or make sure it contains a focusable control). Don't use `hidden` or `clip` to cut off content people need to read."
+msgstr "บริเวณที่เลื่อนได้ต้องใช้งานด้วยแป้นพิมพ์ได้: กำหนดให้มี `tabindex=\"0\"`, บทบาท และชื่อที่เข้าถึงได้ (หรือให้แน่ใจว่ามีตัวควบคุมที่โฟกัสได้อยู่ภายใน). อย่าใช้ `hidden` หรือ `clip` เพื่อตัดเนื้อหาที่ผู้ใช้จำเป็นต้องอ่านออกไป"
+
+msgctxt "docs.api:prose"
+msgid "Mark the current page with `aria-current=\"page\"`, give each page an accessible name that includes the page number, and wrap the set in a `<nav>` with an `aria-label`."
+msgstr "ระบุหน้าปัจจุบันด้วย `aria-current=\"page\"`, ตั้งชื่อที่เข้าถึงได้ให้แต่ละหน้าโดยระบุหมายเลขหน้า และครอบชุดหน้าทั้งหมดด้วย `<nav>` พร้อม `aria-label`."
+
+msgctxt "docs.api:prose"
+msgid "Unlike `badge`, which shows a count, or `tag`, which is removable, the pill is a static status label; its leading glyph is a masked `::before`, not an `<img>`. Let groups wrap with `flex-wrap: wrap` on their container so compact labels reflow on narrow screens."
+msgstr "ต่างจาก `badge` ซึ่งแสดงจำนวน หรือ `tag` ซึ่งนำออกได้ ป้ายทรงแคปซูลเป็นป้ายสถานะแบบคงที่ สัญลักษณ์นำหน้าของป้ายเป็น `::before` ที่ใช้มาสก์ ไม่ใช่ `<img>` อนุญาตให้กลุ่มขึ้นบรรทัดใหม่โดยใช้ `flex-wrap: wrap` กับคอนเทนเนอร์ เพื่อให้ป้ายขนาดกะทัดรัดจัดเรียงใหม่ได้บนหน้าจอแคบ"
+
+msgctxt "docs.api:prose"
+msgid "The status colors are visual only, so state the status in the label text or a visually hidden label. The leading glyph is a masked `::before` and isn't announced."
+msgstr "สีสถานะเป็นเพียงตัวบ่งชี้ทางสายตาเท่านั้น จึงควรระบุสถานะในข้อความของป้ายหรือป้ายที่ซ่อนไว้จากการมองเห็น สัญลักษณ์นำหน้าเป็น `::before` ที่ใช้มาสก์ และโปรแกรมอ่านหน้าจอจะไม่อ่านออกเสียง"
+
+msgctxt "docs.api:prose"
+msgid "Wire the trigger with `popovertarget` so the expanded state is exposed. A native popover closes on Escape and outside click but doesn't move focus, so move focus into interactive content when the popover opens."
+msgstr "เชื่อมโยงทริกเกอร์กับ `popovertarget` เพื่อให้แสดงสถานะที่ขยายแล้ว ป๊อปโอเวอร์แบบเนทีฟจะปิดเมื่อกด Escape หรือคลิกภายนอก แต่จะไม่ย้ายโฟกัส ดังนั้นให้ย้ายโฟกัสไปยังเนื้อหาแบบโต้ตอบเมื่อเปิดป๊อปโอเวอร์"
+
+msgctxt "docs.api:prose"
+msgid "Positioning changes where content appears, not where it sits in the DOM: keep the visual order matching the reading and focus order, and don't let positioned content cover a focused control."
+msgstr "การจัดตำแหน่งเปลี่ยนตำแหน่งที่เนื้อหาปรากฏ ไม่ใช่ตำแหน่งใน DOM: รักษาลำดับที่มองเห็นให้ตรงกับลำดับการอ่านและลำดับการโฟกัส และอย่าให้เนื้อหาที่จัดตำแหน่งบังตัวควบคุมที่กำลังโฟกัส"
+
+msgctxt "docs.api:prose"
+msgid "`.value` is a sibling of `.bar`, both children of the root — mirroring how progress-circle nests its own `.value` part. Native `<progress>` and `<meter>` use vendor value parts with the same semantic fill. InstUI has no indeterminate state; `:indeterminate` is a pantoken-only best guess (native `<progress>` without a `value` attribute), using a CSS-owned sliding segment and hiding `.value` since there's no meaningful number to show. Reduced motion keeps a static segment; `<meter>` has no indeterminate state."
+msgstr "`.value` เป็นองค์ประกอบพี่น้องของ `.bar` โดยทั้งคู่เป็นลูกของ root — สะท้อนวิธีที่ progress-circle ซ้อนส่วน `.value` ของตัวเองไว้ภายใน Native `<progress>` และ `<meter>` ใช้ส่วน value ของ vendor ที่มี fill เชิงความหมายแบบเดียวกัน InstUI ไม่มีสถานะ indeterminate; `:indeterminate` เป็นการคาดเดาที่ดีที่สุดซึ่งมีเฉพาะใน pantoken (native `<progress>` ที่ไม่มีแอตทริบิวต์ `value`) โดยใช้ส่วนเลื่อนที่ควบคุมด้วย CSS และซ่อน `.value` เพราะไม่มีตัวเลขที่มีความหมายให้แสดง เมื่อเปิดการลดการเคลื่อนไหว ส่วนจะแสดงนิ่ง; `<meter>` ไม่มีสถานะ indeterminate"
+
+msgctxt "docs.api:prose"
+msgid "Custom, not part of InstUI. Applies only to a native `<progress>` missing its `value` attribute; draws a sliding segment on `::before` and hides `.value`."
+msgstr "ปรับแต่งเอง ไม่ใช่ส่วนหนึ่งของ InstUI ใช้กับ native `<progress>` ที่ไม่มีแอตทริบิวต์ `value` เท่านั้น; วาดส่วนเลื่อนบน `::before` และซ่อน `.value`"
+
+msgctxt "docs.api:prose"
+msgid "Draws the native indeterminate segment without relying on the browser's built-in animation."
+msgstr "วาดส่วน indeterminate ของ native โดยไม่อาศัยแอนิเมชันในตัวของเบราว์เซอร์"
+
+msgctxt "docs.api:prose"
+msgid "The native value part and `.bar` fill; the -color-* modifiers set it."
+msgstr "ส่วน value ของ native และ fill ของ `.bar`; ตัวแก้ไข -color-* จะกำหนดค่านี้"
+
+msgctxt "docs.api:prose"
+msgid " With prefers-contrast: more, one piece of text falls below the minimum contrast. The worst is \"30%\" at 1:1 (needs 4.5:1)."
+msgstr " เมื่อใช้ prefers-contrast: more ข้อความหนึ่งชิ้นมีคอนทราสต์ต่ำกว่าค่าขั้นต่ำ ค่าที่แย่ที่สุดคือ \"30%\" ที่ 1:1 (ต้องได้ 4.5:1)."
+
+msgctxt "docs.api:prose"
+msgid "Rebrand (dark), Canvas, Canvas High Contrast:"
+msgstr "รีแบรนด์ (มืด), Canvas, Canvas High Contrast:"
+
+msgctxt "docs.api:prose"
+msgid " With line height 1.5, letter spacing 0.12em, word spacing 0.16em, and paragraph spacing 2em, text in one element gets cut off: "
+msgstr " เมื่อใช้ความสูงบรรทัด 1.5 ระยะห่างตัวอักษร 0.12em ระยะห่างคำ 0.16em และระยะห่างย่อหน้า 2em ข้อความในองค์ประกอบหนึ่งจะถูกตัด: "
+
+msgctxt "docs.api:prose"
+msgid " (\"Working\"). Overlapping text isn't checked."
+msgstr " (\"กำลังทำงาน\"). ไม่มีการตรวจสอบข้อความที่ซ้อนทับกัน"
+
+msgctxt "docs.api:prose"
+msgid "The defaults keep headings in a logical order and links underlined with an interactive colour, so they don't rely on colour alone. Don't skip heading levels for visual size, and don't remove the link underline without another cue."
+msgstr "ค่าเริ่มต้นช่วยจัดลำดับหัวข้ออย่างเป็นเหตุเป็นผลและขีดเส้นใต้ลิงก์ด้วยสีที่แสดงการโต้ตอบ จึงไม่ต้องพึ่งพาสีเพียงอย่างเดียว อย่าข้ามระดับหัวข้อเพื่อปรับขนาดให้ดูสวยงาม และอย่าลบเส้นใต้ลิงก์โดยไม่มีสัญญาณบ่งชี้อื่น"
+
+msgctxt "docs.api:prose"
+msgid "Sweatshirt size"
+msgstr "ขนาดเสื้อสเวตเชิ้ต"
+
+msgctxt "docs.api:prose"
+msgid "Use a native `<fieldset>` with a `<legend>` that names the group. Radios within a group share one `name`; independent groups need distinct names and legends so selecting one group's radio doesn't clear another group's selection."
+msgstr "ใช้ `<fieldset>` แบบเนทีฟ พร้อม `<legend>` ที่ตั้งชื่อกลุ่ม ปุ่มตัวเลือกภายในกลุ่มเดียวกันใช้ `name` ร่วมกัน ส่วนกลุ่มที่เป็นอิสระต่อกันต้องใช้ชื่อและคำอธิบายกลุ่มที่แตกต่างกัน เพื่อให้การเลือกปุ่มตัวเลือกในกลุ่มหนึ่งไม่ล้างการเลือกของอีกกลุ่ม"
+
+msgctxt "docs.api:prose"
+msgid " With prefers-contrast: less, one piece of text falls below the minimum contrast. The worst is \"Large unavailable\" at 2.74:1 (needs 4.5:1). Softer contrast is fine only while text stays readable."
+msgstr " เมื่อใช้ prefers-contrast: less ข้อความหนึ่งรายการมีคอนทราสต์ต่ำกว่าค่าขั้นต่ำ รายการที่แย่ที่สุดคือ \"ใช้ไม่ได้ขนาดใหญ่\" ที่ 2.74:1 (ต้องมี 4.5:1) คอนทราสต์ที่นุ่มนวลลงยอมรับได้ตราบใดที่ข้อความยังอ่านออก"
+
+msgctxt "docs.api:prose"
+msgid " With prefers-contrast: less, one piece of text falls below the minimum contrast. The worst is \"Large unavailable\" at 3.15:1 (needs 4.5:1). Softer contrast is fine only while text stays readable."
+msgstr " เมื่อใช้ prefers-contrast: less ข้อความหนึ่งรายการมีคอนทราสต์ต่ำกว่าค่าขั้นต่ำ รายการที่แย่ที่สุดคือ \"ใช้ไม่ได้ขนาดใหญ่\" ที่ 3.15:1 (ต้องมี 4.5:1) คอนทราสต์ที่นุ่มนวลลงยอมรับได้ตราบใดที่ข้อความยังอ่านออก"
+
+msgctxt "docs.api:prose"
+msgid " With prefers-contrast: less, one piece of text falls below the minimum contrast. The worst is \"Large unavailable\" at 3.02:1 (needs 4.5:1). Softer contrast is fine only while text stays readable."
+msgstr " เมื่อใช้ prefers-contrast: less ข้อความหนึ่งรายการมีคอนทราสต์ต่ำกว่าค่าขั้นต่ำ รายการที่แย่ที่สุดคือ \"ใช้ไม่ได้ขนาดใหญ่\" ที่ 3.02:1 (ต้องมี 4.5:1) คอนทราสต์ที่นุ่มนวลลงยอมรับได้ตราบใดที่ข้อความยังอ่านออก"
+
+msgctxt "docs.api:prose"
+msgid " All 13 measured pieces of text stay above the minimum. one other piece can't be reduced to one color. \"Large\" can't be measured because an element behind it is partly transparent."
+msgstr " ข้อความทั้ง 13 รายการที่วัดได้มีคอนทราสต์สูงกว่าค่าขั้นต่ำ ข้อความอีกหนึ่งรายการไม่สามารถปรับให้เป็นสีเดียวได้ ไม่สามารถวัด \"ขนาดใหญ่\" ได้ เนื่องจากองค์ประกอบที่อยู่ด้านหลังมีความโปร่งใสบางส่วน"
+
+msgctxt "docs.api:prose"
+msgid " With prefers-contrast: more, one piece of text falls below the minimum contrast. The worst is \"Large unavailable\" at 2.74:1 (needs 4.5:1)."
+msgstr " เมื่อใช้ prefers-contrast: more ข้อความหนึ่งรายการมีคอนทราสต์ต่ำกว่าค่าขั้นต่ำ รายการที่แย่ที่สุดคือ \"ใช้ไม่ได้ขนาดใหญ่\" ที่ 2.74:1 (ต้องมี 4.5:1)"
+
+msgctxt "docs.api:prose"
+msgid " With prefers-contrast: more, one piece of text falls below the minimum contrast. The worst is \"Large unavailable\" at 3.15:1 (needs 4.5:1)."
+msgstr " เมื่อใช้ prefers-contrast: more ข้อความหนึ่งรายการมีคอนทราสต์ต่ำกว่าค่าขั้นต่ำ รายการที่แย่ที่สุดคือ \"ใช้ไม่ได้ขนาดใหญ่\" ที่ 3.15:1 (ต้องมี 4.5:1)"
+
+msgctxt "docs.api:prose"
+msgid " With prefers-contrast: more, one piece of text falls below the minimum contrast. The worst is \"Large unavailable\" at 3.02:1 (needs 4.5:1)."
+msgstr " เมื่อใช้ prefers-contrast: more ข้อความหนึ่งรายการมีคอนทราสต์ต่ำกว่าค่าขั้นต่ำ รายการที่แย่ที่สุดคือ \"ใช้ไม่ได้ขนาดใหญ่\" ที่ 3.02:1 (ต้องมี 4.5:1)"
+
+msgctxt "docs.api:prose"
+msgid " All 13 measured pieces of text pass with more contrast. one other piece can't be reduced to one color. \"Large\" can't be measured because an element behind it is partly transparent."
+msgstr " ข้อความทั้ง 13 รายการที่วัดได้ผ่านเกณฑ์เมื่อเพิ่มคอนทราสต์ ข้อความอีกหนึ่งรายการไม่สามารถปรับให้เป็นสีเดียวได้ ไม่สามารถวัด \"ขนาดใหญ่\" ได้ เนื่องจากองค์ประกอบที่อยู่ด้านหลังมีความโปร่งใสบางส่วน"
+
+msgctxt "docs.api:prose"
+msgid " With prefers-contrast: less, six pieces of text fall below the minimum contrast. The worst is \"Warning selected\" at 1.67:1 (needs 4.5:1). Softer contrast is fine only while text stays readable."
+msgstr " เมื่อใช้ prefers-contrast: less ข้อความ 6 รายการมีคอนทราสต์ต่ำกว่าขั้นต่ำ โดยรายการที่แย่ที่สุดคือ \"เลือกคำเตือนแล้ว\" ที่ 1.67:1 (ต้องการ 4.5:1). คอนทราสต์ที่นุ่มนวลลงใช้ได้ตราบใดที่ข้อความยังอ่านออก"
+
+msgctxt "docs.api:prose"
+msgid " With prefers-contrast: less, four pieces of text fall below the minimum contrast. The worst is \"Disabled unselected\" at 3.15:1 (needs 4.5:1). Softer contrast is fine only while text stays readable."
+msgstr " เมื่อใช้ prefers-contrast: less ข้อความ 4 รายการมีคอนทราสต์ต่ำกว่าขั้นต่ำ โดยรายการที่แย่ที่สุดคือ \"ปิดใช้งานและไม่ได้เลือก\" ที่ 3.15:1 (ต้องการ 4.5:1). คอนทราสต์ที่นุ่มนวลลงใช้ได้ตราบใดที่ข้อความยังอ่านออก"
+
+msgctxt "docs.api:prose"
+msgid " With prefers-contrast: less, four pieces of text fall below the minimum contrast. The worst is \"Disabled unselected\" at 3.02:1 (needs 4.5:1). Softer contrast is fine only while text stays readable."
+msgstr " เมื่อใช้ prefers-contrast: less ข้อความ 4 รายการมีคอนทราสต์ต่ำกว่าขั้นต่ำ โดยรายการที่แย่ที่สุดคือ \"ปิดใช้งานและไม่ได้เลือก\" ที่ 3.02:1 (ต้องการ 4.5:1). คอนทราสต์ที่นุ่มนวลลงใช้ได้ตราบใดที่ข้อความยังอ่านออก"
+
+msgctxt "docs.api:prose"
+msgid " All 31 measured pieces of text stay above the minimum. two other pieces can't be reduced to one color. \"Disabled unselected\" can't be measured because an element behind it is partly transparent."
+msgstr " ข้อความทั้ง 31 รายการที่วัดได้มีคอนทราสต์สูงกว่าขั้นต่ำ ข้อความอีกสองรายการไม่สามารถปรับให้เป็นสีเดียวได้ ไม่สามารถวัด \"ปิดใช้งานและไม่ได้เลือก\" ได้ เพราะองค์ประกอบที่อยู่ด้านหลังโปร่งใสบางส่วน"
+
+msgctxt "docs.api:prose"
+msgid " With prefers-contrast: more, six pieces of text fall below the minimum contrast. The worst is \"Warning selected\" at 1.67:1 (needs 4.5:1)."
+msgstr " เมื่อใช้ prefers-contrast: more ข้อความ 6 รายการมีคอนทราสต์ต่ำกว่าขั้นต่ำ โดยรายการที่แย่ที่สุดคือ \"เลือกคำเตือนแล้ว\" ที่ 1.67:1 (ต้องการ 4.5:1)."
+
+msgctxt "docs.api:prose"
+msgid " With prefers-contrast: more, four pieces of text fall below the minimum contrast. The worst is \"Disabled unselected\" at 3.15:1 (needs 4.5:1)."
+msgstr " เมื่อใช้ prefers-contrast: more ข้อความ 4 รายการมีคอนทราสต์ต่ำกว่าขั้นต่ำ โดยรายการที่แย่ที่สุดคือ \"ปิดใช้งานและไม่ได้เลือก\" ที่ 3.15:1 (ต้องการ 4.5:1)."
+
+msgctxt "docs.api:prose"
+msgid " With prefers-contrast: more, four pieces of text fall below the minimum contrast. The worst is \"Disabled unselected\" at 3.02:1 (needs 4.5:1)."
+msgstr " เมื่อใช้ prefers-contrast: more ข้อความ 4 รายการมีคอนทราสต์ต่ำกว่าขั้นต่ำ โดยรายการที่แย่ที่สุดคือ \"ปิดใช้งานและไม่ได้เลือก\" ที่ 3.02:1 (ต้องการ 4.5:1)."
+
+msgctxt "docs.api:prose"
+msgid " All 31 measured pieces of text pass with more contrast. two other pieces can't be reduced to one color. \"Disabled unselected\" can't be measured because an element behind it is partly transparent."
+msgstr " ข้อความทั้ง 31 รายการที่วัดได้ผ่านเกณฑ์เมื่อเพิ่มคอนทราสต์ ข้อความอีกสองรายการไม่สามารถปรับให้เป็นสีเดียวได้ ไม่สามารถวัด \"ปิดใช้งานและไม่ได้เลือก\" ได้ เพราะองค์ประกอบที่อยู่ด้านหลังโปร่งใสบางส่วน"
+
+msgctxt "docs.api:prose"
+msgid "The control is a native `<input type=\"range\">`; give it an accessible name with `aria-label` or an associated `<label>`. Forced colors use a system-color outline because the thumb's box-shadow focus ring doesn't survive that mode."
+msgstr "ตัวควบคุมนี้เป็น `<input type=\"range\">` แบบเนทีฟ โปรดตั้งชื่อที่เข้าถึงได้ให้ด้วย `aria-label` หรือเชื่อมโยงกับ `<label>` ที่เกี่ยวข้อง ในโหมดสีบังคับ จะใช้เส้นขอบสีระบบ เนื่องจากเงากล่องของปุ่มเลื่อนที่ใช้เป็นวงแหวนโฟกัสไม่แสดงในโหมดนี้"
+
+msgctxt "docs.api:prose"
+msgid "Hiding content at a breakpoint also hides it from assistive tech, so don't hide the only way to complete a task, and keep the shown and hidden versions equivalent in meaning."
+msgstr "การซ่อนเนื้อหาที่จุดแบ่งหน้าจอยังทำให้เทคโนโลยีสิ่งอำนวยความสะดวกไม่สามารถเข้าถึงเนื้อหานั้นได้ ดังนั้นอย่าซ่อนวิธีเดียวที่จะทำงานให้เสร็จ และตรวจสอบให้แน่ใจว่าเนื้อหาเวอร์ชันที่แสดงและซ่อนมีความหมายเทียบเท่ากัน"
+
+msgctxt "docs.api:prose"
+msgid "With forced colors on, nothing visible changed when the control took focus. A focus ring drawn with box-shadow or a background color disappears in forced colors. Use an outline."
+msgstr "เมื่อเปิดใช้สีบังคับ จะไม่มีสิ่งใดเปลี่ยนแปลงให้เห็นเมื่อคอนโทรลได้รับโฟกัส วงแหวนโฟกัสที่วาดด้วย box-shadow หรือสีพื้นหลังจะหายไปเมื่อใช้สีบังคับ ให้ใช้ outline"
+
+msgctxt "docs.api:prose"
+msgid " With prefers-contrast: less, three pieces of text fall below the minimum contrast. The worst is \"Grades\" at 1.48:1 (needs 4.5:1). Softer contrast is fine only while text stays readable."
+msgstr " เมื่อใช้ prefers-contrast: less ข้อความสามส่วนมีคอนทราสต์ต่ำกว่าค่าขั้นต่ำ ส่วนที่แย่ที่สุดคือ \"เกรด\" ที่ 1.48:1 (ต้องมี 4.5:1). คอนทราสต์ที่นุ่มนวลลงใช้ได้ตราบใดที่ข้อความยังอ่านออก"
+
+msgctxt "docs.api:prose"
+msgid " With prefers-contrast: less, three pieces of text fall below the minimum contrast. The worst is \"Grades\" at 1.38:1 (needs 4.5:1). Softer contrast is fine only while text stays readable."
+msgstr " เมื่อใช้ prefers-contrast: less ข้อความสามส่วนมีคอนทราสต์ต่ำกว่าค่าขั้นต่ำ ส่วนที่แย่ที่สุดคือ \"เกรด\" ที่ 1.38:1 (ต้องมี 4.5:1). คอนทราสต์ที่นุ่มนวลลงใช้ได้ตราบใดที่ข้อความยังอ่านออก"
+
+msgctxt "docs.api:prose"
+msgid "Mark the active entry with `aria-current=\"page\"` as well as `-selected`, and keep an accessible name, such as `aria-label`, when the parent's `-minimized` modifier hides the `.label`."
+msgstr "กำหนดรายการที่กำลังใช้งานด้วย `aria-current=\"page\"` และ `-selected` พร้อมทั้งคงชื่อที่โปรแกรมช่วยการเข้าถึงอ่านได้ เช่น `aria-label` เมื่อ modifier `-minimized` ขององค์ประกอบแม่ซ่อน `.label`"
+
+msgctxt "docs.api:prose"
+msgid "It's a native `<select>`, so role, keyboard support, and option announcement come from the browser; associate it with a visible `<label>` and convey errors in text, not color alone."
+msgstr "เป็น `<select>` แบบเนทีฟ ดังนั้นบทบาท การรองรับแป้นพิมพ์ และการประกาศตัวเลือกจึงมาจากเบราว์เซอร์ ให้เชื่อมโยงกับ `<label>` ที่มองเห็นได้ และสื่อสารข้อผิดพลาดเป็นข้อความ ไม่ใช่ใช้เพียงสี"
+
+msgctxt "docs.api:prose"
+msgid "Spacing is visual only: use it to keep text and controls from crowding, not to convey structure — use headings, lists, and landmarks for that. Leave enough space around interactive targets for WCAG 2.5.8, and don't rely on fixed spacing that breaks when users increase text spacing."
+msgstr "ระยะห่างมีไว้เพื่อการมองเห็นเท่านั้น: ใช้เพื่อไม่ให้ข้อความและตัวควบคุมเบียดกัน ไม่ใช่เพื่อสื่อโครงสร้าง — ใช้หัวข้อ รายการ และจุดนำทางสำหรับสิ่งนั้น เว้นระยะรอบองค์ประกอบโต้ตอบให้เพียงพอตาม WCAG 2.5.8 และอย่าพึ่งพาระยะห่างแบบตายตัวที่ใช้ไม่ได้เมื่อผู้ใช้เพิ่มระยะห่างระหว่างข้อความ"
+
+msgctxt "docs.api:prose"
+msgid "With reduced motion enabled, the ring or AI glyph remains visible without rotation; keep the loading status and label while work is pending."
+msgstr "เมื่อเปิดใช้การลดการเคลื่อนไหว วงแหวนหรือสัญลักษณ์ AI จะยังคงมองเห็นได้โดยไม่หมุน ให้คงสถานะและป้ายกำกับการโหลดไว้ระหว่างที่งานยังดำเนินการอยู่"
+
+msgctxt "docs.api:prose"
+msgid "Stacking order is visual only: a layered surface that covers focusable content hides the focus indicator. Overlays that take over the page also need focus management and an accessible name."
+msgstr "ลำดับการซ้อนมีผลเฉพาะด้านภาพ: พื้นผิวที่ซ้อนทับและบังเนื้อหาที่โฟกัสได้จะซ่อนตัวบ่งชี้โฟกัส โอเวอร์เลย์ที่เข้าควบคุมทั้งหน้าต้องมีการจัดการโฟกัสและชื่อที่เข้าถึงได้"
+
+msgctxt "docs.api:prose"
+msgid "Use a native `<tbody>` so row and cell relationships are exposed. The parent's `-layout-stacked` changes `display`, which can drop table semantics in some browsers, so add explicit table roles when you use it."
+msgstr "ใช้ a native `<tbody>` เพื่อให้มีการเปิดเผยความสัมพันธ์ระหว่างแถวและเซลล์ การเปลี่ยนแปลงขององค์ประกอบแม่ของ `-layout-stacked` ทำให้ `display` ซึ่งอาจทำให้ความหมายเชิงตารางหายไปในบางเบราว์เซอร์ ดังนั้นให้เพิ่มบทบาทตารางอย่างชัดเจนเมื่อใช้"
+
+msgctxt "docs.api:prose"
+msgid "Use a native `<td>`. In `-layout-stacked` the column label is generated content that assistive technology may not announce reliably, so keep the column relationship available, for example with `headers`."
+msgstr "ใช้ `<td>` แบบเนทีฟ ใน `-layout-stacked` ป้ายกำกับคอลัมน์เป็นเนื้อหาที่สร้างขึ้น ซึ่งเทคโนโลยีสิ่งอำนวยความสะดวกอาจไม่ประกาศได้อย่างน่าเชื่อถือ ดังนั้นควรรักษาความสัมพันธ์ของคอลัมน์ไว้ เช่น ด้วย `headers`."
+
+msgctxt "docs.api:prose"
+msgid "Use `<th scope=\"col\">` so each column header is associated with the cells beneath it."
+msgstr "ใช้ `<th scope=\"col\">` เพื่อให้หัวคอลัมน์แต่ละหัวเชื่อมโยงกับเซลล์ที่อยู่ด้านล่าง"
+
+msgctxt "docs.api:prose"
+msgid "Use a native `<thead>`. `-layout-stacked` hides it visually, so keep it in the DOM, not `display: none`, to preserve column names for assistive technology."
+msgstr "ใช้ `<thead>` แบบเนทีฟ `-layout-stacked` ซ่อนสิ่งนี้จากการมองเห็น ดังนั้นให้คงไว้ใน DOM ไม่ใช่ `display: none` เพื่อให้ชื่อคอลัมน์ยังคงอ่านได้โดยเทคโนโลยีสิ่งอำนวยความสะดวก"
+
+msgctxt "docs.api:prose"
+msgid "For tables that must retain their columns, use a named, keyboard-focusable `--overflow-x-auto` container instead. Use `-without-focus-animation` for an immediately visible focus outline and the caption to name the region."
+msgstr "สำหรับตารางที่ต้องคงคอลัมน์ไว้ ให้ใช้คอนเทนเนอร์ `--overflow-x-auto` ที่มีชื่อและสามารถรับโฟกัสด้วยแป้นพิมพ์ได้ ใช้ `-without-focus-animation` เพื่อให้เห็นเส้นขอบโฟกัสทันที และใช้คำบรรยายภาพเพื่อตั้งชื่อบริเวณ"
+
+msgctxt "docs.api:prose"
+msgid "Responsive film ratings"
+msgstr "คะแนนภาพยนตร์แบบปรับตามหน้าจอ"
+
+msgctxt "docs.api:prose"
+msgid "Use stacked cards below the canonical `md` container breakpoint; preserve columns at and above it. Requires per-cell `data-label` values and a size-container ancestor. @affects table.head @affects table.body @affects table.row @affects table.cell @affects table.col-header @affects table.row-header — Applies the existing stacked presentation only in a narrow container."
+msgstr "ใช้การ์ดซ้อนกันเมื่อคอนเทนเนอร์ `md` มีขนาดต่ำกว่าจุดเปลี่ยนตามรูปแบบมาตรฐาน และคงคอลัมน์ไว้เมื่อมีขนาดเท่ากับหรือสูงกว่าจุดเปลี่ยนดังกล่าว ต้องกำหนดค่า `data-label` ให้แต่ละเซลล์ และต้องมีบรรพบุรุษที่เป็นคอนเทนเนอร์กำหนดขนาด @affects table.head @affects table.body @affects table.row @affects table.cell @affects table.col-header @affects table.row-header — ใช้การแสดงผลแบบซ้อนที่มีอยู่เฉพาะเมื่อคอนเทนเนอร์มีความแคบ"
+
+msgctxt "docs.api:prose"
+msgid "Label the table with a `<caption>`, mark column headers `<th scope=\"col\">` and row headers `<th scope=\"row\">`, and in stacked or responsive layouts give every cell a localized `data-label` matching its column header. Keep the native header associations; visible generated labels don't replace them. Name scroll regions and provide keyboard access without trapping focus."
+msgstr "ตั้งชื่อให้ตารางด้วย `<caption>` กำหนดส่วนหัวคอลัมน์เป็น `<th scope=\"col\">` และส่วนหัวแถวเป็น `<th scope=\"row\">` และในเลย์เอาต์แบบซ้อนหรือแบบปรับตามหน้าจอ ให้ทุกเซลล์มี `data-label` ที่แปลเป็นภาษาท้องถิ่นและตรงกับส่วนหัวคอลัมน์ คงการเชื่อมโยงส่วนหัวแบบเนทีฟไว้ ป้ายกำกับที่สร้างขึ้นและมองเห็นได้ไม่ได้ใช้แทนการเชื่อมโยงดังกล่าว ตั้งชื่อบริเวณเลื่อนและรองรับการใช้งานด้วยแป้นพิมพ์โดยไม่กักโฟกัส"
+
+msgctxt "docs.api:prose"
+msgid "Use `<th scope=\"row\">` so the cell names its row for assistive technology."
+msgstr "ใช้ `<th scope=\"row\">` เพื่อให้เซลล์ระบุแถวของตนแก่เทคโนโลยีสิ่งอำนวยความสะดวก"
+
+msgctxt "docs.api:prose"
+msgid "Use a native `<tr>`. The `-hover` styling is visual only, so give a clickable row a real control rather than relying on the highlight."
+msgstr "ใช้ `<tr>` แบบเนทีฟ ส่วนการจัดรูปแบบ `-hover` เป็นเพียงการตกแต่งภาพ ดังนั้นควรใช้ตัวควบคุมจริงกับแถวที่คลิกได้ แทนการพึ่งพาการไฮไลต์"
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "arrow-keys-move-between-tabs"
+msgstr "arrow-keys-move-between-tabs"
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "home-and-end-work"
+msgstr "home-and-end-work"
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "selected-state-exposed"
+msgstr "selected-state-exposed"
+
+msgctxt "docs.api:prose"
+msgid "All six measured pieces of text pass with more contrast. two other pieces can't be reduced to one color. \"Billing\" can't be measured because an element behind it is partly transparent."
+msgstr "ข้อความทั้งหกส่วนที่วัดได้ผ่านเกณฑ์เมื่อมีคอนทราสต์มากขึ้น อีกสองส่วนไม่สามารถลดให้เหลือสีเดียวได้ ไม่สามารถวัด \"Billing\" ได้ เนื่องจากองค์ประกอบด้านหลังโปร่งใสบางส่วน"
+
+msgctxt "docs.api:prose"
+msgid "End didn't move to the last tab."
+msgstr "End ไม่ได้ย้ายไปยังแท็บสุดท้าย"
+
+msgctxt "docs.api:prose"
+msgid "3 tabs are aria-selected=\"true\". A tab list should have exactly one."
+msgstr "มี 3 แท็บที่ aria-selected=\"true\" รายการแท็บควรมีเพียงหนึ่งแท็บเท่านั้น"
+
+msgctxt "docs.api:prose"
+msgid "Give each panel `role=\"tabpanel\"` and an `aria-labelledby` that references its tab, and keep inactive panels `hidden`."
+msgstr "กำหนดให้แต่ละแผง `role=\"tabpanel\"` และมี `aria-labelledby` ที่อ้างอิงถึงแท็บของแผงนั้น และกำหนดให้แผงที่ไม่ได้ใช้งานเป็น `hidden`"
+
+msgctxt "docs.api:prose"
+msgid "Use `role=\"tab\"` inside a `role=\"tablist\"`, mirror `-selected` with `aria-selected`, point `aria-controls` at the panel, and mark a disabled tab with `aria-disabled` or the native `disabled`."
+msgstr "ใช้ `role=\"tab\"` ภายใน `role=\"tablist\"`, ให้ `-selected` สอดคล้องกับ `aria-selected`, ให้ `aria-controls` ชี้ไปยังแผงเนื้อหา, และระบุว่าแท็บถูกปิดใช้งานด้วย `aria-disabled` หรือ `disabled` แบบเนทีฟ."
+
+msgctxt "docs.api:prose"
+msgid "All four measured pieces of text pass with more contrast. two other pieces can't be reduced to one color. \"Billing\" can't be measured because an element behind it is partly transparent."
+msgstr "ข้อความทั้งสี่ส่วนที่วัดผ่านเกณฑ์โดยมีความต่างระดับสีสูงขึ้น. ข้อความอีกสองส่วนไม่สามารถลดให้เหลือสีเดียวได้. ไม่สามารถวัด \"การเรียกเก็บเงิน\" ได้เนื่องจากองค์ประกอบที่อยู่ด้านหลังมีความโปร่งใสบางส่วน."
+
+msgctxt "docs.api:prose"
+msgid "Don't rely on color alone to distinguish tags. Give a removable tag's dismiss control an accessible name that includes the tag text, for example `aria-label=\"Remove Biology\"`."
+msgstr "อย่าใช้สีเพียงอย่างเดียวในการแยกแยะแท็ก กำหนดชื่อที่เข้าถึงได้ให้กับตัวควบคุมปิดแท็กที่ลบได้ โดยให้ชื่อนั้นมีข้อความของแท็กด้วย เช่น `aria-label=\"Remove Biology\"`."
+
+msgctxt "docs.api:prose"
+msgid "Associate the field with a visible `<label>`, use `aria-invalid` and `disabled` for state, and explain errors in text, not border color alone."
+msgstr "เชื่อมโยงฟิลด์กับ `<label>` ที่มองเห็นได้ ใช้ `aria-invalid` และ `disabled` สำหรับสถานะ และอธิบายข้อผิดพลาดเป็นข้อความ ไม่ใช่ใช้เพียงสีเส้นขอบ"
+
+msgctxt "docs.api:prose"
+msgid " With prefers-contrast: more, one piece of text falls below the minimum contrast. The worst is \"A saved comment.\" at 2.51:1 (needs 4.5:1)."
+msgstr " เมื่อใช้ prefers-contrast: more ข้อความหนึ่งรายการมีคอนทราสต์ต่ำกว่าค่าขั้นต่ำ รายการที่แย่ที่สุดคือ \"ความคิดเห็นที่บันทึกไว้\" ที่ 2.51:1 (ต้องมี 4.5:1)."
+
+msgctxt "docs.api:prose"
+msgid " With prefers-contrast: more, one piece of text falls below the minimum contrast. The worst is \"A saved comment.\" at 4.08:1 (needs 4.5:1)."
+msgstr " เมื่อใช้ prefers-contrast: more ข้อความหนึ่งรายการมีคอนทราสต์ต่ำกว่าค่าขั้นต่ำ รายการที่แย่ที่สุดคือ \"ความคิดเห็นที่บันทึกไว้\" ที่ 4.08:1 (ต้องมี 4.5:1)."
+
+msgctxt "docs.api:prose"
+msgid " With prefers-contrast: more, one piece of text falls below the minimum contrast. The worst is \"A saved comment.\" at 2.74:1 (needs 4.5:1)."
+msgstr " เมื่อใช้ prefers-contrast: more ข้อความหนึ่งรายการมีคอนทราสต์ต่ำกว่าค่าขั้นต่ำ รายการที่แย่ที่สุดคือ \"ความคิดเห็นที่บันทึกไว้\" ที่ 2.74:1 (ต้องมี 4.5:1)."
+
+msgctxt "docs.api:prose"
+msgid " With prefers-contrast: more, one piece of text falls below the minimum contrast. The worst is \"A saved comment.\" at 4.11:1 (needs 4.5:1)."
+msgstr " เมื่อใช้ prefers-contrast: more ข้อความหนึ่งรายการมีคอนทราสต์ต่ำกว่าค่าขั้นต่ำ รายการที่แย่ที่สุดคือ \"ความคิดเห็นที่บันทึกไว้\" ที่ 4.11:1 (ต้องมี 4.5:1)."
+
+msgctxt "docs.api:prose"
+msgid "Associate the field with a visible `<label>`, use `aria-invalid` and `disabled` for state, and explain errors in text, not border color alone. Date and time types use the browser's own picker and keyboard support."
+msgstr "เชื่อมโยงฟิลด์กับ `<label>` ที่มองเห็นได้ ใช้ `aria-invalid` และ `disabled` สำหรับสถานะ และอธิบายข้อผิดพลาดด้วยข้อความ ไม่ใช่เพียงสีเส้นขอบ ประเภทวันที่และเวลาใช้ตัวเลือกของเบราว์เซอร์เองและรองรับการใช้แป้นพิมพ์"
+
+msgctxt "docs.api:prose"
+msgid "It sets appearance only and renders no semantics, so use `<p>`, `<strong>`, `<em>`, and similar elements for meaning, and check contrast of each `-color-*` against its background, especially the inverse colors."
+msgstr "องค์ประกอบนี้กำหนดเฉพาะรูปลักษณ์และไม่สื่อความหมายเชิงโครงสร้าง ดังนั้นให้ใช้ `<p>`, `<strong>`, `<em>` และองค์ประกอบลักษณะเดียวกันเพื่อสื่อความหมาย และตรวจสอบคอนทราสต์ของแต่ละ `-color-*` กับพื้นหลัง โดยเฉพาะสีแบบกลับด้าน"
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "enter-toggles"
+msgstr "enter-toggles"
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "expanded-state-exposed"
+msgstr "expanded-state-exposed"
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "space-toggles"
+msgstr "space-toggles"
+
+msgctxt "docs.api:prose"
+msgid "With reduced motion enabled, the chevron changes direction immediately; native disclosure state and keyboard operation remain unchanged."
+msgstr "เมื่อเปิดใช้งานการลดการเคลื่อนไหว ลูกศรเชฟรอนจะเปลี่ยนทิศทางทันที ส่วนสถานะการเปิดเผยเนื้อหาแบบเนทีฟและการใช้งานแป้นพิมพ์ยังคงเดิม"
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "WCAG 2.2 2.1.1, 4.1.2"
+msgstr "WCAG 2.2 2.1.1, 4.1.2"
+
+msgctxt "docs.api:prose"
+msgid "Built on native `<details>`, which exposes the expanded state and toggles with Enter and Space; keep the `<summary>` first and give it descriptive text."
+msgstr "สร้างโดยใช้ `<details>` แบบเนทีฟ ซึ่งแสดงสถานะที่ขยายอยู่และสลับสถานะด้วย Enter และ Space; วาง `<summary>` ไว้ก่อน และกำหนดข้อความอธิบายให้ชัดเจน"
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "appears-on-focus"
+msgstr "appears-on-focus"
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "content-reachable-on-hover"
+msgstr "content-reachable-on-hover"
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "escape-dismisses"
+msgstr "escape-dismisses"
+
+msgctxt "docs.api:prose"
+msgid "`.instui-tooltip` — A hover and focus tooltip bubble, positionable on any side."
+msgstr "`.instui-tooltip` — กล่องคำแนะนำที่แสดงเมื่อชี้เมาส์หรือโฟกัส และกำหนดตำแหน่งได้ทุกด้าน"
+
+msgctxt "docs.api:prose"
+msgid "Load `@pantoken/interactions/tooltip.iife.js` for managed delays, Escape dismissal, and combined pointer/focus state. Without JavaScript, hover/focus remains a fallback without Escape or delay guarantees. Use a popover for interactive content."
+msgstr "โหลด `@pantoken/interactions/tooltip.iife.js` เพื่อจัดการการหน่วงเวลา การปิดด้วย Escape และสถานะการชี้เมาส์/โฟกัสร่วมกัน หากไม่มี JavaScript การชี้เมาส์/โฟกัสจะยังใช้เป็นทางเลือกสำรอง แต่ไม่รับประกันการปิดด้วย Escape หรือการหน่วงเวลา ใช้ป๊อปโอเวอร์สำหรับเนื้อหาแบบโต้ตอบ"
+
+msgctxt "docs.api:prose"
+msgid "The bubble; `-placement-*` sets its preferred side. Initialized tooltips flip/clamp to fit the viewport."
+msgstr "กล่องคำแนะนำ; `-placement-*` กำหนดด้านที่ต้องการแสดง ทูลทิปที่เริ่มทำงานแล้วจะปรับด้านหรือขอบเขตเพื่อให้อยู่ภายในวิวพอร์ต"
+
+msgctxt "docs.api:prose"
+msgid "Use a named, focusable trigger with aria-describedby pointing at the role=\"tooltip\" bubble. Keep the content noninteractive. Initialized tooltips stay dismissed after Escape until both pointer and focus leave; the next entry can reopen them."
+msgstr "ใช้ตัวกระตุ้นที่มีชื่อและโฟกัสได้ โดยให้ aria-describedby ชี้ไปยังกล่องคำแนะนำ role=\"tooltip\" เนื้อหาต้องไม่โต้ตอบได้ ทูลทิปที่เริ่มทำงานแล้วจะยังคงปิดอยู่หลังจากกด Escape จนกว่าทั้งตัวชี้และโฟกัสจะออกจากพื้นที่ เมื่อเข้ามาอีกครั้งจึงจะเปิดได้"
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "WCAG 2.2 1.4.13"
+msgstr "WCAG 2.2 1.4.13"
+
+msgctxt "docs.api:prose"
+msgid "The classes only animate, so provide a `prefers-reduced-motion` alternative for large movement and don't convey essential state through the transition alone."
+msgstr "คลาสเหล่านี้ใช้เพื่อสร้างภาพเคลื่อนไหวเท่านั้น ดังนั้นควรมีทางเลือกอื่นที่ไม่ใช้ `prefers-reduced-motion` สำหรับการเคลื่อนไหวขนาดใหญ่ และอย่าสื่อสถานะที่สำคัญผ่านการเปลี่ยนสถานะเพียงอย่างเดียว"
+
+msgctxt "docs.api:prose"
+msgid "`.instui-tree-browser` — A tree of nested collections and leaf items, with rotating chevrons."
+msgstr "`.instui-tree-browser` — โครงสร้างต้นไม้ของคอลเลกชันที่ซ้อนกันและรายการปลายทาง พร้อมเครื่องหมายลูกศรแบบหมุนได้"
+
+msgctxt "docs.api:prose"
+msgid "Load the tree-browser interaction bundle for ARIA-tree keyboard navigation and expansion. Native `<details>` markup remains a CSS-only disclosure fallback; don't give that fallback ARIA-tree roles."
+msgstr "โหลดชุดการทำงาน tree-browser เพื่อรองรับการนำทางด้วยแป้นพิมพ์และการขยายใน ARIA tree มาร์กอัป `<details>` แบบเนทีฟยังคงใช้เป็นทางเลือกสำหรับการเปิดเผยเนื้อหาที่ใช้ CSS เท่านั้น อย่ากำหนดบทบาท ARIA tree ให้กับทางเลือกนี้"
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "Syllabus.pdf"
+msgstr "Syllabus.pdf"
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "Reading.pdf"
+msgstr "Reading.pdf"
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "Slides.pptx"
+msgstr "Slides.pptx"
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "Rubric.docx"
+msgstr "Rubric.docx"
+
+msgctxt "docs.api:prose"
+msgid "Name the `role=\"tree\"` root, use focusable `role=\"treeitem\"` nodes, and associate each collection with its `role=\"group\"` via `aria-owns`. Load `@pantoken/interactions/tree-browser.iife.js` for one tab stop and synchronized expansion. Add `aria-selected` to opt into single selection; focus alone doesn't select."
+msgstr "กำหนดรากของ `role=\"tree\"` ใช้โหนด `role=\"treeitem\"` ที่โฟกัสได้ และเชื่อมโยงแต่ละคอลเลกชันกับ `role=\"group\"` ด้วย `aria-owns` โหลด `@pantoken/interactions/tree-browser.iife.js` เพื่อให้มีจุดหยุดแท็บเพียงจุดเดียวและการขยายที่ซิงโครไนซ์กัน เพิ่ม `aria-selected` เพื่อเปิดใช้การเลือกได้เพียงรายการเดียว การโฟกัสเพียงอย่างเดียวไม่ได้เป็นการเลือก"
+
+msgctxt "docs.api:prose"
+msgid "Truncation hides overflowing text visually while it stays in the DOM, so don't clip information people need (titles, errors, instructions) and keep the full text available another way. Check that clipped text still reads correctly when zoomed or resized."
+msgstr "การตัดข้อความทำให้ข้อความที่ล้นหายไปจากการมองเห็น แต่ยังคงอยู่ใน DOM ดังนั้นอย่าตัดข้อมูลที่ผู้คนจำเป็นต้องใช้ (ชื่อเรื่อง ข้อผิดพลาด คำแนะนำ) และทำให้มีวิธีอื่นในการดูข้อความฉบับเต็ม ตรวจสอบว่าข้อความที่ถูกตัดยังอ่านได้ถูกต้องเมื่อซูมหรือปรับขนาด"
+
+msgctxt "docs.api:prose"
+msgid "With line height 1.5, letter spacing 0.12em, word spacing 0.16em, and paragraph spacing 2em, text in one element gets cut off: "
+msgstr "เมื่อกำหนดความสูงบรรทัดเป็น 1.5 ระยะห่างตัวอักษรเป็น 0.12em ระยะห่างคำเป็น 0.16em และระยะห่างย่อหน้าเป็น 2em ข้อความในองค์ประกอบหนึ่งจะถูกตัด: "
+
+msgctxt "docs.api:prose"
+msgid " (\"Quarterly planning notes for t\"). Overlapping text isn't checked."
+msgstr " (\"บันทึกการวางแผนรายไตรมาสสำหรับ t\"). ไม่มีการตรวจสอบข้อความที่ซ้อนทับกัน"
+
+msgctxt "docs.api:prose"
+msgid "It's a neutral box with no semantics, so use semantic elements or ARIA roles for meaning and keep sufficient contrast between its background, border, and content."
+msgstr "กล่องนี้ไม่มีความหมายเชิงความหมาย จึงควรใช้องค์ประกอบเชิงความหมายหรือบทบาท ARIA เพื่อสื่อความหมาย และรักษาความต่างของสีระหว่างพื้นหลัง เส้นขอบ และเนื้อหาให้เพียงพอ"
+
+msgctxt "docs.api:prose"
+msgid " With prefers-contrast: more, one piece of text falls below the minimum contrast. The worst is \"Notes unavailable\" at 1.98:1 (needs 4.5:1)."
+msgstr " เมื่อใช้ prefers-contrast: more ข้อความหนึ่งรายการมีความต่างของสีต่ำกว่าค่าขั้นต่ำ โดยข้อความที่มีค่าต่ำที่สุดคือ \"ไม่มีบันทึกที่ใช้ได้\" ที่ 1.98:1 (ต้องการ 4.5:1)."
+
+msgctxt "docs.api:prose"
+msgid " With prefers-contrast: more, one piece of text falls below the minimum contrast. The worst is \"Notes unavailable\" at 2.67:1 (needs 4.5:1)."
+msgstr " เมื่อใช้ prefers-contrast: more ข้อความหนึ่งรายการมีความต่างของสีต่ำกว่าค่าขั้นต่ำ โดยข้อความที่มีค่าต่ำที่สุดคือ \"ไม่มีบันทึกที่ใช้ได้\" ที่ 2.67:1 (ต้องการ 4.5:1)."
+
+msgctxt "docs.api:prose"
+msgid " With prefers-contrast: more, one piece of text falls below the minimum contrast. The worst is \"Notes unavailable\" at 1.99:1 (needs 4.5:1)."
+msgstr " เมื่อใช้ prefers-contrast: more ข้อความหนึ่งรายการมีความต่างของสีต่ำกว่าค่าขั้นต่ำ โดยข้อความที่มีค่าต่ำที่สุดคือ \"ไม่มีบันทึกที่ใช้ได้\" ที่ 1.99:1 (ต้องการ 4.5:1)."
+
+msgctxt "docs.api:prose"
+msgid "With prefers-reduced-transparency: reduce, one surface holding text stays see-through: "
+msgstr "เมื่อใช้ prefers-reduced-transparency: reduce พื้นผิวหนึ่งที่มีข้อความยังคงโปร่งแสง: "
+
+msgctxt "docs.api:prose"
+msgid " (30% opaque). Without the preference there were one. This preference isn't a WCAG requirement. It matters because see-through backgrounds make text contrast unpredictable."
+msgstr " (ทึบแสง 30%). เมื่อไม่ได้ตั้งค่าความต้องการนี้ มีพื้นผิวเช่นนี้หนึ่งรายการ ความต้องการนี้ไม่ใช่ข้อกำหนดของ WCAG แต่มีความสำคัญเพราะพื้นหลังโปร่งแสงทำให้คาดเดาความต่างของสีข้อความได้ยาก"
+
+msgctxt "docs.api:prose"
+msgid "Dismiss strategy:\n- `<dialog>` → `dialog.close()`\n- `[popover]` → `el.hidePopover()`\n- `.instui-alert` or `.instui-banner` (per `options.prefix`) → cancelable `dismiss` event, then fade out and remove\n- `[data-dismissible]` or `[open]` → remove open attr + fire bubbling `close`"
+msgstr "กลยุทธ์การปิด:\n- `<dialog>` → `dialog.close()`\n- `[popover]` → `el.hidePopover()`\n- `.instui-alert` หรือ `.instui-banner` (ต่อ `options.prefix`) → เหตุการณ์ `dismiss` ที่ยกเลิกได้ จากนั้นค่อย ๆ จางหายและนำออก\n- `[data-dismissible]` หรือ `[open]` → นำแอตทริบิวต์ open ออก + ส่งเหตุการณ์ `close` ที่ส่งต่อไปยังองค์ประกอบแม่"
+
+msgctxt "docs.api:prose"
+msgid "Associate an authored error after blur, native invalid events, or explicit validation.\nUntouched fields stay quiet; edited fields revalidate after the first validation attempt.\nPreserves hint references and uses native constraints, including `setCustomValidity()`.\nThe host must contain the control and a separate, named error element with message text.\nClean up and reinitialize after moving controls between forms or changing error IDs."
+msgstr "เชื่อมโยงข้อผิดพลาดที่กำหนดไว้หลังจากยกเลิกโฟกัส เกิดเหตุการณ์ invalid แบบเนทีฟ หรือมีการตรวจสอบความถูกต้องอย่างชัดเจน.\nฟิลด์ที่ยังไม่ถูกแตะจะไม่แสดงข้อผิดพลาด ส่วนฟิลด์ที่แก้ไขแล้วจะตรวจสอบความถูกต้องอีกครั้งหลังจากพยายามตรวจสอบครั้งแรก.\nรักษาการอ้างอิงคำใบ้ไว้และใช้ข้อจำกัดแบบเนทีฟ รวมถึง `setCustomValidity()`.\nองค์ประกอบโฮสต์ต้องมีตัวควบคุมและองค์ประกอบข้อผิดพลาดแยกต่างหากที่มีชื่อและข้อความแจ้งข้อผิดพลาด.\nล้างข้อมูลและเริ่มต้นใหม่หลังจากย้ายตัวควบคุมระหว่างฟอร์มหรือเปลี่ยน ID ของข้อผิดพลาด"
+
+msgctxt "docs.api:prose"
+msgid "Wire a vertical, single-level ARIA menu and its native popover button.\nArrow keys wrap; Home/End and initial-character search move focus. Escape returns\nfocus to the button; Tab closes without canceling normal sequential navigation.\nApplications own click actions and checked state. Space activates checkable items\nwithout closing; Enter and pointer activation close unless the click is canceled."
+msgstr "เชื่อมเมนู ARIA แนวตั้งระดับเดียวเข้ากับปุ่มป๊อปโอเวอร์แบบเนทีฟ\nปุ่มลูกศรจะวนกลับเมื่อถึงปลายรายการ; Home/End และการค้นหาด้วยอักขระแรกจะย้ายโฟกัส\nEscape จะคืนโฟกัสไปยังปุ่ม; Tab จะปิดเมนูโดยไม่ยกเลิกการนำทางตามลำดับปกติ\nแอปพลิเคชันเป็นผู้จัดการการทำงานเมื่อคลิกและสถานะที่เลือกไว้ กด Space เพื่อเปิดใช้งานรายการที่เลือกได้\nโดยไม่ปิดเมนู; กด Enter หรือเปิดใช้งานด้วยตัวชี้เพื่อปิดเมนู เว้นแต่การคลิกจะถูกยกเลิก"
+
+msgctxt "docs.api:prose"
+msgid "Own tooltip visibility after initialization, retaining CSS hover/focus as a no-JS fallback.\nPointer and focus are independent reasons to stay open; Escape dismisses until both leave."
+msgstr "จัดการการแสดงผลของคำแนะนำเครื่องมือเองหลังเริ่มต้น โดยคงการทำงานเมื่อโฮเวอร์หรือโฟกัสด้วย CSS ไว้เป็นทางเลือกเมื่อไม่มี JavaScript\nตัวชี้และโฟกัสเป็นเหตุผลแยกจากกันที่ทำให้เปิดค้างไว้ได้; ปุ่ม Escape จะปิดคำแนะนำจนกว่าทั้งสองสถานะจะสิ้นสุด"
+
+msgctxt "docs.api:prose"
+msgid "Wire ARIA-tree navigation and expansion, with single selection opt-in via `aria-selected`."
+msgstr "เพิ่มการนำทางและการขยายใน ARIA tree พร้อมรองรับการเลือกทีละรายการเมื่อเปิดใช้ตัวเลือกนี้ผ่าน `aria-selected`."
+
+msgctxt "docs.api:prose"
+msgid "The class namespace for a prefix: `\"instui\"` → `\"instui-\"`, `\"\"` → `\"\"` (unprefixed)."
+msgstr "เนมสเปซคลาสสำหรับคำนำหน้า: `\"instui\"` → `\"instui-\"`, `\"\"` → `\"\"` (ไม่มีคำนำหน้า)."
+
+msgctxt "docs.api:prose"
+msgid "Swap every `pfx-` sentinel in `text` for the namespace of `prefix` (default `\"instui\"`)."
+msgstr "สลับ sentinel ทุกตัว `pfx-` ภายใน `text` ให้เป็น namespace ของ `prefix` (ค่าเริ่มต้น `\"instui\"`)."
+
+msgctxt "docs.api:prose"
+msgid "Options for [initCloseButton](../functions/initCloseButton.md)."
+msgstr "ตัวเลือกสำหรับ [initCloseButton](../functions/initCloseButton.md)."
+
+msgctxt "docs.api:prose"
+msgid "Class prefix for the alert/banner hosts. Defaults to `\"instui\"`; `\"\"` means unprefixed."
+msgstr "คำนำหน้าคลาสสำหรับโฮสต์การแจ้งเตือน/แบนเนอร์ ค่าเริ่มต้นคือ `\"instui\"`; `\"\"` หมายถึงไม่มีคำนำหน้า."
+
+msgctxt "docs.api:prose"
+msgid "Native validation controls and listener cleanup."
+msgstr "ตัวควบคุมการตรวจสอบความถูกต้องแบบเนทีฟและการล้างตัวรับฟังเหตุการณ์"
+
+msgctxt "docs.api:prose"
+msgid "Show the current native validation result without moving focus or changing the value."
+msgstr "แสดงผลการตรวจสอบความถูกต้องแบบเนทีฟในปัจจุบันโดยไม่ย้ายโฟกัสหรือเปลี่ยนค่า"
+
+msgctxt "docs.api:prose"
+msgid "Remove listeners and restore the initial accessibility and error-visibility state."
+msgstr "นำตัวรับฟังเหตุการณ์ออกและคืนค่าสถานะการช่วยการเข้าถึงและการแสดงข้อผิดพลาดเริ่มต้น"
+
+msgctxt "docs.api:prose"
+msgid "Listeners and attribute restoration installed by [initMenu](../functions/initMenu.md)."
+msgstr "ติดตั้งตัวรับฟังเหตุการณ์และการคืนค่าแอตทริบิวต์โดย [initMenu](../functions/initMenu.md)."
+
+msgctxt "docs.api:prose"
+msgid "Class prefix for the `transition` utility. Defaults to `\"instui\"`; `\"\"` means unprefixed."
+msgstr "คำนำหน้าคลาสสำหรับยูทิลิตี `transition` ค่าเริ่มต้นคือ `\"instui\"`; `\"\"` หมายถึงไม่มีคำนำหน้า"
+
+msgctxt "docs.api:prose"
+msgid "Remove listeners/timers and restore the original managed marker and show class."
+msgstr "นำตัวรับฟัง/ตัวจับเวลาออก และคืนค่าเครื่องหมายที่จัดการไว้และคลาสแสดงผลเดิม"
+
+msgctxt "docs.api:prose"
+msgid "Dismiss until both pointer and focus leave, canceling pending timers."
+msgstr "ซ่อนจนกว่าทั้งตัวชี้และโฟกัสจะออก โดยยกเลิกตัวจับเวลาที่รอดำเนินการ"
+
+msgctxt "docs.api:prose"
+msgid "Listeners installed by [initTreeBrowser](../functions/initTreeBrowser.md)."
+msgstr "ตัวรับฟังเหตุการณ์ที่ติดตั้งโดย [initTreeBrowser](../functions/initTreeBrowser.md)."
+
+msgctxt "docs.api:prose"
+msgid "Native controls supported by [initFormField](../functions/initFormField.md)."
+msgstr "ตัวควบคุมแบบเนทีฟที่รองรับโดย [initFormField](../functions/initFormField.md)."
+
+msgctxt "docs.api:prose"
+msgid "Custom-element tag prefix (`\"x\"` → `<x-icon>`). Never null or empty: tags need a hyphen, so JS callers passing one fall back to `instui`."
+msgstr "คำนำหน้าแท็ก custom element (`\"x\"` → `<x-icon>`). ห้ามเป็น null หรือค่าว่าง: แท็กต้องมีเครื่องหมายยัติภังค์ ดังนั้นผู้เรียกจาก JS ที่ส่งค่านี้จะใช้ `instui` แทน"
+
+msgctxt "docs.api:prose"
+msgid "Both panes are `div` regions, matching InstUI's inline DrawerLayout. Supply nonempty `tray-label` and `content-label` attributes to name them; labels on the host or slotted content don't name the shadow-DOM regions."
+msgstr "แผงทั้งสองเป็นบริเวณ `div` ซึ่งสอดคล้องกับ DrawerLayout แบบอินไลน์ของ InstUI ระบุแอตทริบิวต์ `tray-label` และ `content-label` ที่ไม่ว่างเพื่อใช้ตั้งชื่อบริเวณเหล่านี้ ป้ายกำกับบนโฮสต์หรือเนื้อหาที่ใส่ผ่าน slot ไม่ได้ใช้ตั้งชื่อบริเวณใน shadow DOM"
+
+msgctxt "docs.api:prose"
+msgid "`<instui-modal>` — a real `<dialog>`, so it gets focus trapping, Escape-to-close, and a\n`::backdrop` for free. The `open` attribute drives `showModal()`/`close()`; a native dismissal\n(such as Escape) reflects back to the attribute and re-fires as a bubbling `close`\nevent. Drivable from light DOM via Invoker Commands — a\n`<button command=\"--show|--close|--toggle\" commandfor=\"modal-id\">` toggles it by id. Content goes\nin the default slot."
+msgstr "`<instui-modal>` — เป็น `<dialog>` จริง จึงมีการจำกัดโฟกัสให้อยู่ภายใน การกด Escape เพื่อปิด และ\n`::backdrop` ให้โดยอัตโนมัติ แอตทริบิวต์ `open` ควบคุม `showModal()`/`close()`; การปิดด้วยกลไกของเบราว์เซอร์\n(เช่น การกด Escape) จะสะท้อนกลับไปยังแอตทริบิวต์และส่งเหตุการณ์ `close`\nอีกครั้ง โดยเหตุการณ์จะส่งต่อขึ้นไปยังองค์ประกอบแม่ ควบคุมได้จาก light DOM ผ่าน Invoker Commands — \n`<button command=\"--show|--close|--toggle\" commandfor=\"modal-id\">` สลับการเปิดปิดโดยอ้างอิง id เนื้อหาจะอยู่\nในสล็อตเริ่มต้น"
+
+msgctxt "docs.api:prose"
+msgid "`<instui-spinner>` — a loading spinner with `role=\"status\"`. `variant=\"ai\"` and\n`variant=\"ai-on-color\"` select the rotating AI star; size and colour follow the CSS tokens.\nReduced motion keeps the ring or glyph visible without rotation."
+msgstr "`<instui-spinner>` — ตัวแสดงการโหลดแบบวงหมุนที่มี `role=\"status\"`. `variant=\"ai\"` และ\n`variant=\"ai-on-color\"` ใช้เลือกดาว AI ที่หมุน โดยขนาดและสีจะเป็นไปตามโทเค็น CSS.\nการลดการเคลื่อนไหวจะทำให้วงแหวนหรือสัญลักษณ์ยังคงมองเห็นได้โดยไม่หมุน."
+
+msgctxt "docs.api:prose"
+msgid "`<instui-tooltip>` — wraps a slotted trigger and shows a `.tip` bubble (from the `tip` attribute)\non hover/focus. `placement` maps to `-placement-<value>` (e.g. `bottom`, `end`); `show-delay` and\n`hide-delay` (ms, default 0) gate the reveal/hide. Shared behavior owns visibility; Escape\ndismisses until both pointer and focus leave. Tooltip content is noninteractive."
+msgstr "`<instui-tooltip>` — ครอบตัวกระตุ้นที่กำหนดสล็อตและแสดงฟองข้อความ `.tip` (จากแอตทริบิวต์ `tip`)\nเมื่อโฮเวอร์หรือได้รับโฟกัส `placement` จับคู่กับ `-placement-<value>` (เช่น `bottom`, `end`); `show-delay` และ\n`hide-delay` (มิลลิวินาที ค่าเริ่มต้น 0) เป็นตัวกำหนดการแสดง/ซ่อน พฤติกรรมที่ใช้ร่วมกันควบคุมการแสดงผล Escape\nจะปิดจนกว่าทั้งตัวชี้และโฟกัสจะออกจากพื้นที่ เนื้อหาของคำแนะนำเครื่องมือนี้ไม่สามารถโต้ตอบได้"
+
+msgctxt "docs.api:prose"
+msgid "`<instui-tree-browser>` — an ARIA tree with shared keyboard navigation and expansion.\nName the host and slot `treeitem`/`group` markup. Load the component stylesheet for slotted items."
+msgstr "`<instui-tree-browser>` — แผนผัง ARIA ที่ใช้การนำทางด้วยแป้นพิมพ์และการขยายร่วมกัน\nระบุโฮสต์และมาร์กอัปสล็อต `treeitem`/`group` โหลดสไตล์ชีตของคอมโพเนนต์สำหรับรายการที่ใส่ผ่านสล็อต"
+
+#, pantoken-verbatim
+msgctxt "docs.api:text"
+msgid "CloseButtonOptions"
+msgstr "CloseButtonOptions"
+
+#, pantoken-verbatim
+msgctxt "docs.api:text"
+msgid "FormFieldHandle"
+msgstr "FormFieldHandle"
+
+#, pantoken-verbatim
+msgctxt "docs.api:text"
+msgid "MenuHandle"
+msgstr "MenuHandle"
+
+#, pantoken-verbatim
+msgctxt "docs.api:text"
+msgid "TreeBrowserHandle"
+msgstr "TreeBrowserHandle"
+
+#, pantoken-verbatim
+msgctxt "docs.api:text"
+msgid "FormFieldControl"
+msgstr "FormFieldControl"
+
+#, pantoken-verbatim
+msgctxt "docs.api:text"
+msgid "initFormField"
+msgstr "initFormField"
+
+#, pantoken-verbatim
+msgctxt "docs.api:text"
+msgid "initMenu"
+msgstr "initMenu"
+
+#, pantoken-verbatim
+msgctxt "docs.api:text"
+msgid "initTreeBrowser"
+msgstr "initTreeBrowser"
+
+#, pantoken-verbatim
+msgctxt "docs.api:text"
+msgid "ns"
+msgstr "ns"
+
+#, pantoken-verbatim
+msgctxt "docs.api:text"
+msgid "withPrefix"
+msgstr "withPrefix"
