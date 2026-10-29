@@ -5,7 +5,7 @@ export const DEFAULT_PREFIX = "instui";
  * The class-prefix sentinel, identical to the one `@pantoken/components` swaps at build time.
  * Selectors are authored as `.pfx-button` and resolved against the active prefix at runtime.
  */
-export const SENTINEL = "pfx-";
+const SENTINEL = "pfx-";
 
 /** The class namespace for a prefix: `"instui"` → `"instui-"`, `""` → `""` (unprefixed). */
 export function ns(prefix: string): string {
