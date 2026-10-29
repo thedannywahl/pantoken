@@ -1,0 +1,13 @@
+[[PLAN]] I'd like button set to have a variant that sets a button to 1/2 width. so think like a left full-size button with a narrower button for a dropdown.
+
+---
+
+[[PLAN]] I'd like button set to have a variant that sets a button to 1/2 width. so think like a left full-size button with a narrower button for a dropdown.
+
+---
+
+if I did a button set that was an icon button (aspect ratio 1:1) and then the second was `-shape-square` wouldn't that just give me two square buttons of the same size?
+
+---
+
+if I did a button set that was an icon button (aspect ratio 1:1) and then the second was `-shape-square` wouldn't that just give me two square buttons of the same size?

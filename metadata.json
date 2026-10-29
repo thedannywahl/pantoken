@@ -3,7 +3,7 @@
   "checkpoint_id": "01M64P6XEK1BBACS5MMG1FXK8J",
   "strategy": "manual-commit",
   "branch": "add-automatica11y",
-  "checkpoints_count": 1,
+  "checkpoints_count": 3,
   "files_touched": [
     "l10n/ar/docs.api.po",
     "l10n/ar/docs.demos.po",
@@ -24,6 +24,7 @@
     "l10n/en-CA/docs.demos.po",
     "l10n/en-GB/docs.api.po",
     "l10n/en-GB/docs.demos.po",
+    "l10n/es/docs.api.po",
     "l10n/es/docs.demos.po",
     "l10n/fa/docs.api.po",
     "l10n/fa/docs.demos.po",
@@ -65,18 +66,24 @@
     "l10n/nl/docs.demos.po",
     "l10n/nn/docs.api.po",
     "l10n/nn/docs.demos.po",
+    "l10n/pl/docs.api.po",
     "l10n/pl/docs.demos.po",
+    "l10n/pt-BR/docs.api.po",
     "l10n/pt-BR/docs.demos.po",
+    "l10n/pt/docs.api.po",
     "l10n/pt/docs.demos.po",
+    "l10n/ru/docs.api.po",
     "l10n/ru/docs.demos.po",
     "l10n/se/docs.api.po",
     "l10n/se/docs.demos.po",
+    "l10n/sl/docs.api.po",
     "l10n/sl/docs.demos.po",
     "l10n/sv/docs.demos.po",
     "l10n/th/docs.demos.po",
     "l10n/tr/docs.demos.po",
     "l10n/uk/docs.demos.po",
     "l10n/vi/docs.demos.po",
+    "l10n/zh-Hans/docs.api.po",
     "l10n/zh-Hans/docs.demos.po",
     "l10n/zh-Hant/docs.demos.po"
   ],
@@ -87,6 +94,13 @@
       "compact_transcript": "/0/transcript.jsonl",
       "content_hash": "/0/content_hash.txt",
       "prompt": "/0/prompt.txt"
+    },
+    {
+      "metadata": "/1/metadata.json",
+      "transcript": "/1/full.jsonl",
+      "compact_transcript": "/1/transcript.jsonl",
+      "content_hash": "/1/content_hash.txt",
+      "prompt": "/1/prompt.txt"
     }
   ],
   "token_usage": {
@@ -97,7 +111,7 @@
     "api_call_count": 0
   },
   "redaction": {
-    "replacements": 26397,
+    "replacements": 34791,
     "layers": {
       "betterleaks": 2,
       "connection_string": 0,
@@ -105,7 +119,7 @@
       "credential_value": 0,
       "credentialed_uri": 0,
       "custom": 0,
-      "entropy": 64788,
+      "entropy": 92714,
       "goredact": 0,
       "key_context": 0,
       "pii": 1,
