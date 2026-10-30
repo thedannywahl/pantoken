@@ -1,0 +1,1 @@
+I'm getting i18n drift errors in CI on PR 239 but not drift found locally via vite tasks.
