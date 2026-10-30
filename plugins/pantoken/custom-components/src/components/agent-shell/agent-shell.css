@@ -1,19 +1,25 @@
 /**
  * @component agent-shell
  * @summary A surface container for AI agents.
+ * @selector .pfx-agent-shell
  * @sealed
  * @structure
  * .pfx-agent-shell {
  *   slot {}
  * }
+ * @a11y The shell is a plain container with no role of its own. Give it a landmark or group name (for example `role="region"` with an `aria-label`, or a heading) so assistive tech can find the agent surface, and keep its content in reading order.
  * @see https://www.figma.com/design/EmUrCpRWxboBTWEokGiBKP/Agent-Platform?node-id=1045-60738
- * @example -nocard
+ * @example -nocard -docs
  * ```html
  * <div class="pfx-agent-shell --p-md">
  *   <h2 class="pfx-heading -variant-title-card-large">AI Agent</h2>
  *   <p>Content here.</p>
  *   <button class="pfx-button">Action</button>
  * </div>
+ * ```
+ * @example -automatica11y -nocard
+ * ```html
+ * <section class="pfx-agent-shell" role="region" aria-label="AI Agent"></section>
  * ```
  */
 .pfx-agent-shell {

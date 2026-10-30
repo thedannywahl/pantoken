@@ -3,10 +3,11 @@
 // Per-component interaction entry point for popover
 
 import { applySpacing } from "../shared/index.js";
+import { sel } from "../shared/prefix.js";
 
 // Initialize on page load
 function initpopover() {
-  for (const el of document.querySelectorAll(".instui-popover")) {
+  for (const el of document.querySelectorAll(sel(".pfx-popover"))) {
     applySpacing(el as HTMLElement);
   }
 }

@@ -11,13 +11,13 @@
  * @remarks Positioning uses `inset-inline-start`/`inset-inline` (never `left`/`right`), so `-placement-end` docks to the true trailing edge in both LTR and RTL.
  * @accessibility If used as navigation, wrap links in a semantic `<nav>` and provide an accessible name.
  * @related drawer-layout.content — The primary pane that flexes alongside this member.
- * @example
+ * @example -canvas-rce -docs
  * ```html
  * <div class="pfx-drawer-layout" open>
- *   <aside class="tray" aria-label="Course navigation">
+ *   <div class="tray" role="region" aria-label="Course panel">
  *     <a class="pfx-link" href="#">Modules</a>
- *   </aside>
- *   <main class="content" role="region">Main content</main>
+ *   </div>
+ *   <div class="content" role="region" aria-label="Course content">Main content</div>
  * </div>
  * ```
  * @structure
@@ -26,6 +26,16 @@
  *     slot {}
  *   }
  * }
+ * @example -automatica11y
+ * ```html
+ * <div class="pfx-drawer-layout" open style="min-block-size: 6rem">
+ *   <div class="tray" role="region" aria-label="Course panel"></div>
+ *   <div class="content" role="region" aria-label="Course content"></div>
+ * </div>
+ * <div class="pfx-drawer-layout -should-overlay-tray" open style="min-block-size: 6rem"><div class="tray -placement-end" role="region" aria-label="End overlay panel"></div><div class="content" role="region" aria-label="End overlay content"></div></div>
+ * <div class="pfx-drawer-layout" open style="min-block-size: 6rem"><div class="tray -without-border" role="region" aria-label="Borderless panel"></div><div class="content" role="region" aria-label="Borderless drawer content"></div></div>
+ * <div class="pfx-drawer-layout -should-overlay-tray" open style="min-block-size: 6rem"><div class="tray -without-shadow" role="region" aria-label="Shadowless panel"></div><div class="content" role="region" aria-label="Shadowless drawer content"></div></div>
+ * ```
  */
 
 @scope (.pfx-drawer-layout) {

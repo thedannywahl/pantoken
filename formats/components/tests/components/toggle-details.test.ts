@@ -16,3 +16,12 @@ test("toggle-details hides the native marker, has a rotating chevron + filled va
   expect(css).toMatch(/&\[open\]\s*>\s*summary::before\s*\{\s*transform:\s*rotate\(90deg\)/u);
   expect(css).toMatch(/&\.-variant-filled\s*>\s*summary/u);
 });
+
+test("toggle-details stops chevron transitions under reduced motion without removing open state", () => {
+  const css = norm(toggleDetailsCss({ prefix: "instui" }));
+  expect(css).toMatch(
+    /@media \(prefers-reduced-motion: reduce\) \{ & > summary::before \{ transition: none; \} \}/u,
+  );
+  expect(css).toContain("transition: transform 0.2s ease");
+  expect(css).toMatch(/&\[open\] > summary::before \{ transform: rotate\(90deg\)/u);
+});

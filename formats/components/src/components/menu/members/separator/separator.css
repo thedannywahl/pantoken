@@ -2,11 +2,21 @@
  * @component menu.separator
  * @memberOf menu
  * @selector .separator
+ * @a11y Give the divider `role="separator"` so assistive technology can announce the break between items; without it the rule is purely decorative.
  * @summary A divider rule between items (InstUI `Menu.Separator`).
  * @structure
  * @component menu {
  *   .separator {}
  * }
+ * @example -automatica11y
+ * ```html
+ * <button type="button" popovertarget="actions-menu" aria-haspopup="menu" aria-controls="actions-menu" aria-expanded="false" data-a11y-trigger>Actions</button>
+ * <div class="pfx-menu" id="actions-menu" popover="auto" role="menu" aria-label="Actions" data-menu-navigation data-a11y-root>
+ *   <button class="item" type="button" role="menuitem">Edit</button>
+ *   <div class="separator" role="separator"></div>
+ *   <button class="item" type="button" role="menuitem">Delete</button>
+ * </div>
+ * ```
  */
 @scope (.pfx-menu) {
   :scope {

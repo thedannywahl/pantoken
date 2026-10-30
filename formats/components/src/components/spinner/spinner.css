@@ -11,7 +11,8 @@
  * @modifier -color-ai-on-color — Rotating on-colour AI star for a coloured or dark surface.
  * @animation pantoken-spinner-rotate — Rotates the ring, or the AI star at the slower 2.25-second cadence.
  * @a11y Give the spinner role="status" and an aria-label so screen readers announce it as a live loading status.
- * @example
+ * @a11y With reduced motion enabled, the ring or AI glyph remains visible without rotation; keep the loading status and label while work is pending.
+ * @example -canvas-rce -docs
  * ```html
  * <span class="pfx-spinner" role="status" aria-label="Loading"></span>
  * ```
@@ -22,6 +23,29 @@
  * </div>
  * ```
  * @demo self:spinner
+ * @example -automatica11y
+ * ```html
+ * <div><span class="pfx-spinner -size-xs" role="status" aria-label="Loading thumbnail"></span></div>
+ * <div><span class="pfx-spinner -size-sm" role="status" aria-label="Loading profile"></span></div>
+ * <div><span class="pfx-spinner" role="status" aria-label="Loading course"></span></div>
+ * <div><span class="pfx-spinner -size-lg" role="status" aria-label="Loading dashboard"></span></div>
+ * <div><span class="pfx-spinner -color-ai -size-xs" role="status" aria-label="Suggesting a tag"></span></div>
+ * <div><span class="pfx-spinner -color-ai -size-sm" role="status" aria-label="Suggesting a title"></span></div>
+ * <div><span class="pfx-spinner -color-ai" role="status" aria-label="Preparing a summary"></span></div>
+ * <div><span class="pfx-spinner -color-ai -size-lg" role="status" aria-label="Preparing a study plan"></span></div>
+ * <div class="--bg-dark --p-md">
+ *   <div><span class="pfx-spinner -color-inverse -size-xs" role="status" aria-label="Loading archive thumbnail"></span></div>
+ *   <div><span class="pfx-spinner -color-inverse -size-sm" role="status" aria-label="Loading archive profile"></span></div>
+ *   <div><span class="pfx-spinner -color-inverse" role="status" aria-label="Loading archive"></span></div>
+ *   <div><span class="pfx-spinner -color-inverse -size-lg" role="status" aria-label="Loading archive dashboard"></span></div>
+ * </div>
+ * <div class="--bg-accent-blue --p-md">
+ *   <div><span class="pfx-spinner -color-ai-on-color -size-xs" role="status" aria-label="Suggesting an archive tag"></span></div>
+ *   <div><span class="pfx-spinner -color-ai-on-color -size-sm" role="status" aria-label="Suggesting an archive title"></span></div>
+ *   <div><span class="pfx-spinner -color-ai-on-color" role="status" aria-label="Summarizing the archive"></span></div>
+ *   <div><span class="pfx-spinner -color-ai-on-color -size-lg" role="status" aria-label="Preparing an archive study plan"></span></div>
+ * </div>
+ * ```
  */
 @keyframes pantoken-spinner-rotate {
   to {
@@ -63,6 +87,18 @@
 
     &.-color-ai-on-color {
       background: var(--instui-color-icon-on-color);
+    }
+
+    @media (forced-colors: active) {
+      &.-color-ai,
+      &.-color-ai-on-color {
+        forced-color-adjust: preserve-parent-color;
+        background: currentColor;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      animation: none;
     }
   }
 }

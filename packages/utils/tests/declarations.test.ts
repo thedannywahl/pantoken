@@ -50,3 +50,24 @@ test("focusOutlineRules wraps the default (or a custom) selector in zero-specifi
   const custom = focusOutlineRules(".my-widget");
   expect(custom).toContain(":where(.my-widget) {");
 });
+
+test("forced colors remove the resting outline and restore keyboard and focus-within rings", () => {
+  for (const selector of [FOCUSABLE_SELECTOR, ".my-widget"]) {
+    const rules = focusOutlineRules(selector);
+    const forced = rules.slice(rules.indexOf("@media (forced-colors: active)"));
+    expect(forced).toContain(`:where(${selector}) { outline-style: none; }`);
+    expect(forced).toContain(`:where(${selector}):where(:focus-visible),`);
+    expect(forced).toContain(
+      ":where(.-focus-within):where(:focus-within) { outline-style: var(--instui-focus-outline-style); }",
+    );
+    expect(forced).not.toContain("forced-color-adjust");
+  }
+});
+
+test("focus transitions stop automatically for default and custom selectors under reduced motion", () => {
+  for (const selector of [FOCUSABLE_SELECTOR, ".my-widget"]) {
+    expect(focusOutlineRules(selector)).toContain(
+      `@media (prefers-reduced-motion: reduce) {\n  :where(${selector}), :where(.-focus-within) { transition: none; }\n}`,
+    );
+  }
+});

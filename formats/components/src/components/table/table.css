@@ -3,14 +3,19 @@
  * @selector .pfx-table
  * @summary A styled data table for `th` and `td` plus an optional caption, with hover, fixed, and stacked-card layouts.
  * @remarks For `-layout-stacked`, pure CSS can't pull each column header's text into its cell, so give every cell a `data-label` and the stacked card shows it via `::before`. See the `table.head`, `table.body`, `table.row`, `table.cell`, `table.col-header`, and `table.row-header` members for the individual parts.
+ * @remarks `-layout-responsive` reuses the stacked presentation below the canonical `md` breakpoint, measured against the nearest size container. Load `utilities.css` and put the table inside a `pfx-container` ancestor. Query thresholds resolve from the token IR when CSS is emitted; overriding a CSS breakpoint custom property doesn't move them.
+ * @remarks For tables that must retain their columns, use a named, keyboard-focusable `--overflow-x-auto` container instead. Use `-without-focus-animation` for an immediately visible focus outline and the caption to name the region.
  * @modifier -hover — Highlight rows on hover. @affects table.row — Reserves and colours the row's hover border.
  * @modifier -layout-fixed — Fixed table layout (equal-width columns).
  * @modifier -layout-stacked — Stack each row as a card, via a per-cell `data-label`. @affects table.head @affects table.body @affects table.row @affects table.cell @affects table.col-header @affects table.row-header — Stacks each part as a block and hides/labels the header accordingly.
+ * @modifier -layout-responsive — Use stacked cards below the canonical `md` container breakpoint; preserve columns at and above it. Requires per-cell `data-label` values and a size-container ancestor. @affects table.head @affects table.body @affects table.row @affects table.cell @affects table.col-header @affects table.row-header — Applies the existing stacked presentation only in a narrow container.
  * @part caption — An optional table caption.
- * @accessibility Label the table with a `<caption>`, mark column headers `<th scope="col">` and row headers `<th scope="row">`, and in `-layout-stacked` give every cell a `data-label` since the header row is visually hidden.
- * @example
+ * @accessibility Label the table with a `<caption>`, mark column headers `<th scope="col">` and row headers `<th scope="row">`, and in stacked or responsive layouts give every cell a localized `data-label` matching its column header. Keep the native header associations; visible generated labels don't replace them. Name scroll regions and provide keyboard access without trapping focus.
+ * @example -canvas-rce -docs
+ * ```html
+ * <div class="pfx-view --overflow-x-auto -focus-position-inset -without-focus-animation" role="region" aria-labelledby="table-caption" tabindex="0">
  * <table class="pfx-table -hover">
- *   <caption>Top-rated films</caption>
+ *   <caption id="table-caption">Top-rated films</caption>
  *   <thead>
  *     <tr>
  *       <th scope="col">Rank</th>
@@ -40,6 +45,20 @@
  *     </tr>
  *   </tbody>
  * </table>
+ * </div>
+ * <div class="pfx-container">
+ *   <table class="pfx-table -layout-responsive">
+ *     <caption>Responsive film ratings</caption>
+ *     <thead>
+ *       <tr><th scope="col">Title</th><th scope="col">Year</th><th scope="col">Rating</th></tr>
+ *     </thead>
+ *     <tbody>
+ *       <tr><td data-label="Title">The Shawshank Redemption</td><td data-label="Year">1994</td><td data-label="Rating">9.3</td></tr>
+ *       <tr><td data-label="Title">The Godfather</td><td data-label="Year">1972</td><td data-label="Rating">9.2</td></tr>
+ *     </tbody>
+ *   </table>
+ * </div>
+ * ```
  * @structure
  * .pfx-table.-hover {
  *   caption {}
@@ -52,6 +71,54 @@
  *     }
  *   }
  * }
+ * @example -automatica11y
+ * ```html
+ * <table class="pfx-table -hover">
+ *   <caption id="table-caption">Top-rated films</caption>
+ *   <thead>
+ *     <tr>
+ *       <th scope="col">Rank</th>
+ *       <th scope="col">Title</th>
+ *       <th scope="col">Year</th>
+ *       <th scope="col">Rating</th>
+ *     </tr>
+ *   </thead>
+ *   <tbody>
+ *     <tr>
+ *       <th scope="row">1</th>
+ *       <td>The Shawshank Redemption</td>
+ *       <td>1994</td>
+ *       <td>9.3</td>
+ *     </tr>
+ *     <tr>
+ *       <th scope="row">2</th>
+ *       <td>The Godfather</td>
+ *       <td>1972</td>
+ *       <td>9.2</td>
+ *     </tr>
+ *     <tr>
+ *       <th scope="row">3</th>
+ *       <td>The Godfather: Part II</td>
+ *       <td>1974</td>
+ *       <td>9.0</td>
+ *     </tr>
+ *   </tbody>
+ * </table>
+ * <table class="pfx-table -layout-fixed"><caption>Fixed film ratings</caption><thead><tr><th scope="col">Title</th><th scope="col">Rating</th></tr></thead><tbody><tr><th scope="row">The Godfather</th><td>9.2</td></tr></tbody></table>
+ * <table class="pfx-table -layout-stacked"><caption>Stacked film ratings</caption><thead><tr><th scope="col">Title</th><th scope="col">Rating</th></tr></thead><tbody><tr><th scope="row" data-label="Title">The Godfather</th><td data-label="Rating">9.2</td></tr></tbody></table>
+ * <div class="pfx-container">
+ *   <table class="pfx-table -layout-responsive">
+ *     <caption>Responsive film ratings</caption>
+ *     <thead>
+ *       <tr><th scope="col">Title</th><th scope="col">Year</th><th scope="col">Rating</th></tr>
+ *     </thead>
+ *     <tbody>
+ *       <tr><td data-label="Title">The Shawshank Redemption</td><td data-label="Year">1994</td><td data-label="Rating">9.3</td></tr>
+ *       <tr><td data-label="Title">The Godfather</td><td data-label="Year">1972</td><td data-label="Rating">9.2</td></tr>
+ *     </tbody>
+ *   </table>
+ * </div>
+ * ```
  */
 @scope (.pfx-table) {
   & {

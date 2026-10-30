@@ -2,6 +2,7 @@
  * @component modal.body
  * @memberOf modal
  * @selector .body
+ * @a11y Place the body inside the dialog that the header labels, and give a lone full-bleed `<img>` alt text.
  * @summary The content region (InstUI `Modal.Body`); a lone `<img>` goes full-bleed.
  * @remarks The parent `modal`'s `-overflow-fit`, `-density-compact`, and `-color-inverse` modifiers restyle this member — see `modal`'s own doc for those modifiers.
  * @structure
@@ -10,6 +11,29 @@
  *     code {}
  *   }
  * }
+ * @example -automatica11y
+ * ```html
+ * <button type="button" command="--show" commandfor="account-dialog" data-a11y-trigger>Open account details</button>
+ * <dialog class="pfx-modal" id="account-dialog" aria-label="Account details" data-a11y-root>
+ *   <div class="body"></div>
+ *   <div class="footer"><button type="button" command="--close" commandfor="account-dialog">Close</button></div>
+ * </dialog>
+ * ```
+ * @example -automatica11y
+ * ```html
+ * <button type="button" command="--show" commandfor="compact-body-dialog" data-a11y-trigger>Open compact body</button>
+ * <dialog class="pfx-modal -density-compact" id="compact-body-dialog" aria-label="Compact body" data-a11y-root><div class="body"></div><div class="footer"><button type="button" command="--close" commandfor="compact-body-dialog">Close</button></div></dialog>
+ * ```
+ * @example -automatica11y
+ * ```html
+ * <button type="button" command="--show" commandfor="inverse-body-dialog" data-a11y-trigger>Open inverse body</button>
+ * <dialog class="pfx-modal -color-inverse" id="inverse-body-dialog" aria-label="Inverse body" data-a11y-root><div class="body"></div><div class="footer"><button type="button" command="--close" commandfor="inverse-body-dialog">Close</button></div></dialog>
+ * ```
+ * @example -automatica11y
+ * ```html
+ * <button type="button" command="--show" commandfor="fit-body-dialog" data-a11y-trigger>Open viewport-fit body</button>
+ * <dialog class="pfx-modal -overflow-fit" id="fit-body-dialog" aria-label="Viewport-fit body" data-a11y-root><div class="body"></div><div class="footer"><button type="button" command="--close" commandfor="fit-body-dialog">Close</button></div></dialog>
+ * ```
  */
 @scope (.pfx-modal) {
   :scope {

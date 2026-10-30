@@ -3,6 +3,33 @@
 `@pantoken/components` is the semantic RSCSS CSS API — a parameterized generator, not hand-written
 CSS. Each documented record is one file; the bucket `index.ts` is a barrel + registry, not a monolith.
 
+## Automatic user preferences
+
+User preferences are intrinsic behavior, not modifiers. Gate decorative transitions and animations
+with `prefers-reduced-motion: no-preference` in each record so standalone sheets and shadow styles
+follow the same policy. Keep loading and progress indicators visible when animation stops, and
+apply state changes immediately. Interaction behaviors must also respect the live preference:
+don't smooth-scroll, delay removal for a skipped fade, or hide progress behind a mount animation.
+Do not shorten loading timeouts or cancel announcements in the name of reducing motion.
+
+Token sheets handle color preferences in the active theme's scope. `prefers-contrast: more`
+strengthens nonzero border widths and focus rings; `less` removes decorative elevation color without
+reducing text contrast. Keep semantic text/status colors and explicit light/dark pins intact.
+Links gain an underline in more-contrast mode, including normally unstyled links.
+
+Reduced transparency composites translucent surface tokens over an opaque semantic background.
+Remove backdrop blur in that mode, and use opaque muted colors rather than whole-control opacity for
+disabled states. Keep intentionally empty backgrounds, image effects, and visibility transitions:
+they aren't interchangeable with translucent component chrome. New surface expressions need coverage
+in the token preference generator and a real-browser check.
+
+In forced colors, keep browser adjustment on surrounding components and text. Masked glyphs can use
+`forced-color-adjust: preserve-parent-color` on the painter itself, with system-color fills. Give
+gradient text a solid system-color fallback, and keep selected states visible without shadows.
+Native progress needs authored value parts and a CSS-owned indeterminate segment: suppressing CSS
+animations alone doesn't stop the browser's built-in loading animation. Check actual rendered pixels,
+native range semantics, and live preference changes, including RTL.
+
 ## Source layout
 
 - `src/components/<name>/index.ts` + `<name>.css` (`COMPONENTS` registry).
@@ -104,6 +131,57 @@ example, a banner or alert can include a close button in the first example and o
 second. The selector reads the current setting at insertion time and leaves existing content alone.
 Components without the new flag retain their previous example fallback. Add `-docs` to examples
 that should also render in documentation; `-automatica11y` remains independent.
+
+### Accessibility audit examples
+
+Every record in the component registry, including member records, has an explicit
+`@example -automatica11y` block. The audit never falls back to Canvas or docs examples. Keep a
+member's required parent markup in its example, and give controls real labels and ID relationships. Include only markup the component owns or requires: a bare container audits as an empty container with its accessible name, so findings on slotted content don't get attributed to it.
+Use fenced HTML so audience flags remain metadata, not visible page content.
+
+Keep one audit example per record, with distinct visual variants together: canonical colors, sizes,
+and supported states. Use separate audit examples for modal dialogs and other overlays whose
+variants would obscure one another. Each example runs in its own page, with production behavior
+enabled. Don't duplicate deprecated aliases or build a Cartesian product of every modifier.
+Include meaningful labels, selected and unselected choices, and native `disabled`,
+`readonly`, or `aria-invalid` semantics where the component supports them. Use the intended surface
+for inverse/on-color treatments, without overriding the component's tested colors. Keep decorative
+content hidden from assistive technology and preserve required parent/member structures.
+
+Stack independent cases in normal document flow instead of forcing a wide row. Don't override an
+overlay's position or size just to fit several variants in one page: production modal behavior
+promotes authored `open` dialogs to the top layer, where later dialogs obscure earlier ones.
+Static state markup is not evidence that hover, keyboard interaction, focus movement, or announcements work:
+those still need interaction checks and manual testing. Don't remove a supported variant or add a
+fixture-only CSS fix to make the audit pass.
+
+Run `vp run audit:components` from the repository root. It builds local styles and behavior bundles,
+then tests each example separately in all three themes, light and dark. Reports and the coverage
+inventory live under the gitignored `a11y-report/<run>/` directory; open `index.md` first.
+Use `vp run audit:components --record button` for a focused reproduction.
+
+The page suite runs both axe-core and IBM Equal Access against WCAG 2.2 AA, conditions checks, and
+**simulated** screen-reader checks. Page audits don't exercise archetype-specific interactions or
+computed checks. Page fixtures expand dialogs, native popovers, and disclosures and focus tooltip
+triggers so their expanded surfaces are measured; npm fixtures preserve authored initial states
+for interaction checks.
+Audit-only fixture text stays verbatim in generated API sources and doesn't enter translation
+catalogs; add `-docs` only when the example should also appear in documentation.
+Closed surfaces aren't evidence that their hidden contents passed. Findings are
+advisory; failed targets, missing fixtures/assets, and incomplete execution are errors.
+
+The same command also runs authored npm fixtures for button, link, dialog (modal), menu, tabs,
+form-field, accordion (toggle-details), tooltip, and live-region (alert). These fixtures reuse the
+tagged examples and actual production interactions, with all five audit tiers enabled. There is no
+claimed combobox or chart coverage. A native template or generated guess never counts as a tested
+Pantoken component. Read gaps and undetermined computed results separately from violations.
+
+The npm suite packs the current workspace dependency closure locally with `vp pm pack`; it doesn't
+test the last published version instead. Its fixture wrappers inline supplementary built styles,
+fonts, and behavior bundles only to reproduce the production cascade in the tool's HTML harness.
+They don't implement replacement widget behavior.
+
+These automated results do not establish that the page meets WCAG; manual review is still needed.
 
 ## The modifier convention (key-value RSCSS compound)
 

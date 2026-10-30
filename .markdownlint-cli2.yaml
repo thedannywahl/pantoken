@@ -5,6 +5,9 @@ ignores:
   - "**/dist"
   - coverage
   - "**/coverage"
+  # Original accessibility evidence follows the audit tool's Markdown conventions.
+  - "a11y-report"
+  - "a11y-report/**"
   - "**/style.css"
   # Per-package generated/ dirs (gitignored, reproduced by build); includes the upstream-diff report.
   - "**/generated"

@@ -7,16 +7,34 @@
  * @part .pfx-form-field-message — An individual message; its `-type-*` picks the hint, error, success, or screen-reader-only variant.
  * @pseudo ::before — Renders the leading status glyph on error and success messages: an alert circle for errors and a check circle for success.
  * @accessibility A `-type-screenreader-only` message is visually hidden but stays in the accessibility tree, so it's still announced; pair error and success messages with the field via aria-describedby so assistive tech reads them with the control.
- * @example
+ * @example -canvas-rce -docs
+ * ```html
  * <div class="pfx-form-field-messages">
  *   <span class="pfx-form-field-message -type-hint">We'll never share it.</span>
  *   <span class="pfx-form-field-message -type-error">Enter a valid email address.</span>
  * </div>
+ * ```
  * @structure
  * .pfx-form-field-messages {
  *   .pfx-form-field-message {}
  * }
  * @related form-field — Wraps a label, controls, and these messages.
+ * @example -automatica11y
+ * ```html
+ * <p><label for="audit-message-hint-input">Contact email</label><input id="audit-message-hint-input" class="pfx-text-input" type="email" aria-describedby="audit-message-hint audit-message-screenreader"></p>
+ * <div class="pfx-form-field-messages">
+ *   <span class="pfx-form-field-message -type-hint" id="audit-message-hint">We'll never share your email address.</span>
+ *   <span class="pfx-form-field-message -type-screenreader-only" id="audit-message-screenreader">Use an address you check regularly.</span>
+ * </div>
+ * <p><label for="audit-message-error-input">Email needing correction</label><input id="audit-message-error-input" class="pfx-text-input -invalid" type="email" value="not-an-email" aria-invalid="true" aria-describedby="audit-message-error"></p>
+ * <div class="pfx-form-field-messages">
+ *   <span class="pfx-form-field-message -type-error" id="audit-message-error">Enter a valid email address.</span>
+ * </div>
+ * <p><label for="audit-message-success-input">Validated email</label><input id="audit-message-success-input" class="pfx-text-input -success" type="email" value="alex@example.com" aria-describedby="audit-message-success"></p>
+ * <div class="pfx-form-field-messages">
+ *   <span class="pfx-form-field-message -type-success" id="audit-message-success">Email address accepted.</span>
+ * </div>
+ * ```
  */
 @scope (.pfx-form-field-messages) {
   & {
@@ -57,6 +75,9 @@
     inline-size: 1em;
     block-size: 1em;
     background: currentColor;
+    @media (forced-colors: active) {
+      forced-color-adjust: preserve-parent-color;
+    }
   }
 
   &.-type-error::before {

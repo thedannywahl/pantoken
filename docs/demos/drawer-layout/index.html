@@ -18,21 +18,21 @@
     open
     style="height: calc(100% - 48px); --drawer-layout-min-width: 36rem"
   >
-    <aside class="tray">
+    <div class="tray" role="region" aria-labelledby="demo-drawer-tray-title">
       <div style="padding: 12px">
-        <strong>{{text4}}</strong>
+        <strong id="demo-drawer-tray-title">{{text4}}</strong>
         <ul class="instui-list" style="margin-top: 8px">
           <li class="item">{{text5}}</li>
           <li class="item">{{text6}}</li>
           <li class="item">{{text7}}</li>
         </ul>
       </div>
-    </aside>
-    <main class="content" role="region">
+    </div>
+    <div class="content" role="region" aria-labelledby="demo-drawer-content-title">
       <div style="padding: 16px">
-        <h3 class="instui-heading -level-h3">{{text8}}</h3>
+        <h3 class="instui-heading -level-h3" id="demo-drawer-content-title">{{text8}}</h3>
         <p class="instui-text -size-sm">{{text9}}</p>
       </div>
-    </main>
+    </div>
   </div>
 </div>

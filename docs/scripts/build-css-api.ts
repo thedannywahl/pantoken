@@ -25,6 +25,8 @@ import { makeResolver, unknownReferences } from "@pantoken/utils";
 import { BESPOKE_SYNTAX } from "@pantoken/utils/token-syntax";
 import capabilities from "@pantoken/interactions/component-capabilities.json" with { type: "json" };
 import { BADGE_CLASS_BY_LABEL } from "./api-badge-classes.ts";
+import accessibilitySnapshot from "../public/accessibility/results.json" with { type: "json" };
+import { annotateAccessibility, loadAccessibilitySnapshot } from "./accessibility-evidence.ts";
 
 const docsRoot = join(import.meta.dirname, "..");
 
@@ -70,7 +72,7 @@ const SYNTAX_PATTERNS: [RegExp, string][] = [
 function getColorSyntax(v: string): string | undefined {
   if (
     /light-dark\s*\(/iu.test(v) ||
-    /(#[0-9a-f]{3,8}\b|\b(?:rgb|hsl|hwb|oklch|oklab|lab|lch|color)\()/iu.test(v)
+    /(#[0-9a-f]{3,8}\b|\b(?:rgb|hsl|hwb|oklch|oklab|lab|lch|color|color-mix)\()/iu.test(v)
   ) {
     return "<color>";
   }
@@ -108,12 +110,13 @@ export function inferSyntax(value: string): string | undefined {
  * `|` `||` `&&` `[]` `?` `{a,b}` `#`). Matched by name substring, most-specific first, so it also catches
  * variants (`…-text-decoration-outside-text`) and non-IR tokens (elevation shadows, the focus ring).
  * `BESPOKE_SYNTAX` (shared with `@pantoken/utils`' build-time token validator) covers every entry
- * except `font-family`: the validator matches that against the REAL `font-family` property via
- * `css-tree`, so it isn't in the shared grammar table — this docs-only entry just needs a
- * human-readable string for display, unrelated to how the validator checks it.
+ * except `font-family` and `border-style`: the validator matches those against the real properties
+ * via `css-tree`, so they aren't in the shared grammar table. These docs-only entries provide
+ * human-readable types for the token values, unrelated to how the validator checks them.
  */
 const PROPERTY_SYNTAX: (readonly [RegExp, string])[] = [
   [/font-family/u, "[ <font-family-name> | <generic-font-family> ]#"],
+  [/border-style/u, "<line-style>"],
   ...BESPOKE_SYNTAX,
 ];
 
@@ -696,6 +699,7 @@ export const build = (): void => {
 
   writeCssIndexBlurb(outSubdir);
   annotateJsRequirement(entries, pages);
+  annotateAccessibility(entries, pages, loadAccessibilitySnapshot(accessibilitySnapshot));
 
   // `@cssdoc/markdown` keeps `@example` as a plain code fence (generic — it can't assume the host loads
   // the component CSS). Our docs do, so `demoMarkdownIt` seams a live preview onto each fence at compile

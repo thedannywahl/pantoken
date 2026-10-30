@@ -99,6 +99,14 @@ export const spacing: Definition = defineUtility({
  * @modifier --m* — Margin utilities across short, legacy-long, and fully long spellings.
  * @modifier --p* — Padding utilities across short, legacy-long, and fully long spellings.
  * @demo self:spacing
+ * @a11y Spacing is visual only: use it to keep text and controls from crowding, not to convey structure — use headings, lists, and landmarks for that. Leave enough space around interactive targets for WCAG 2.5.8, and don't rely on fixed spacing that breaks when users increase text spacing.
+ * @example -automatica11y
+ * \`\`\`html
+ * <div class="--p-md --mt-lg">
+ *   <h2>Office hours</h2>
+ *   <p>Mondays and Wednesdays, 2–4 pm.</p>
+ * </div>
+ * \`\`\`
  * @example
  * <div class="--p-md --mt-lg">Padded box with a large top margin.</div>
  */

@@ -1,5 +1,26 @@
 import { expect, test } from "vite-plus/test";
-import { resolveExampleTargets } from "../src/example-targets.ts";
+import { resolveExampleTargets, stripExampleMetadata } from "../src/example-targets.ts";
+
+test.each([
+  ["-automatica11y\n<p>Hi</p>", false, "<p>Hi</p>"],
+  ["-a-a-a \t-b\r\n<p>Hi</p>", false, "<p>Hi</p>"],
+  [" -a\n<p>Hi</p>", false, " -a\n<p>Hi</p>"],
+  ["-a\n-b\n<p>Hi</p>", false, "-b\n<p>Hi</p>"],
+  [" \n-a\n-b \n<p>Hi</p>", true, "<p>Hi</p>"],
+  ["-a\n\n  <p>Hi</p>", true, "  <p>Hi</p>"],
+  ["-a bad\n<p>Hi</p>", false, "-a bad\n<p>Hi</p>"],
+  ["-a", true, "-a"],
+  ["-a-a!", false, "-a-a!"],
+] as const)("strips only valid metadata: %j (%s)", (input, multiline, expected) => {
+  expect(stripExampleMetadata(input, multiline)).toBe(expected);
+});
+
+test("scans long malformed flag sequences without backtracking", () => {
+  for (const input of ["-a".repeat(100_000), "-a ".repeat(100_000), "-a".repeat(100_000) + "!"]) {
+    expect(stripExampleMetadata(input)).toBe(input);
+    expect(stripExampleMetadata(input, true)).toBe(input);
+  }
+}, 2_000);
 
 test("Canvas routes explicit examples by interactions state without changing docs selection", () => {
   const examples = [

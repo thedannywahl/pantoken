@@ -1,33 +1,53 @@
 <div class="instui-card">
-  <!-- A tree of nested <details> collections and leaf .item links. The chevron rotates on open. -->
-  <div class="instui-tree-browser" role="tree" style="max-width: 320px">
-    <details open>
-      <summary><span class="instui-icon -icon-folder"></span> {{text1}}</summary>
-      <ul role="group">
-        <li>
-          <a class="item" href="#"><span class="instui-icon -icon-file-text"></span> {{text2}}</a>
-        </li>
-        <li>
-          <details>
-            <summary><span class="instui-icon -icon-folder"></span> {{text3}}</summary>
-            <ul role="group">
-              <li>
-                <a class="item -selected" href="#"
-                  ><span class="instui-icon -icon-file-text"></span> {{text4}}</a
-                >
-              </li>
-              <li>
-                <a class="item" href="#"
-                  ><span class="instui-icon -icon-file-text"></span> {{text5}}</a
-                >
-              </li>
-            </ul>
-          </details>
-        </li>
-        <li>
-          <a class="item" href="#"><span class="instui-icon -icon-file-text"></span> {{text6}}</a>
-        </li>
-      </ul>
-    </details>
+  <div
+    class="instui-tree-browser"
+    role="tree"
+    aria-labelledby="demo-course-tree-label"
+    style="max-width: 320px"
+  >
+    <div role="none">
+      <div
+        role="treeitem"
+        tabindex="0"
+        aria-expanded="true"
+        aria-selected="false"
+        aria-labelledby="demo-course-tree-label"
+        aria-owns="demo-course-tree-group"
+      >
+        <span class="item" id="demo-course-tree-label">
+          <span class="instui-icon -icon-folder" aria-hidden="true"></span> {{text1}}
+        </span>
+      </div>
+      <div role="group" id="demo-course-tree-group">
+        <a class="item" role="treeitem" tabindex="-1" aria-selected="false" href="#syllabus">
+          <span class="instui-icon -icon-file-text" aria-hidden="true"></span> {{text2}}
+        </a>
+        <div role="none">
+          <div
+            role="treeitem"
+            tabindex="-1"
+            aria-expanded="false"
+            aria-selected="false"
+            aria-labelledby="demo-week-tree-label"
+            aria-owns="demo-week-tree-group"
+          >
+            <span class="item" id="demo-week-tree-label">
+              <span class="instui-icon -icon-folder" aria-hidden="true"></span> {{text3}}
+            </span>
+          </div>
+          <div role="group" id="demo-week-tree-group" hidden>
+            <a class="item" role="treeitem" tabindex="-1" aria-selected="true" href="#reading">
+              <span class="instui-icon -icon-file-text" aria-hidden="true"></span> {{text4}}
+            </a>
+            <a class="item" role="treeitem" tabindex="-1" aria-selected="false" href="#slides">
+              <span class="instui-icon -icon-file-text" aria-hidden="true"></span> {{text5}}
+            </a>
+          </div>
+        </div>
+        <a class="item" role="treeitem" tabindex="-1" aria-selected="false" href="#rubric">
+          <span class="instui-icon -icon-file-text" aria-hidden="true"></span> {{text6}}
+        </a>
+      </div>
+    </div>
   </div>
 </div>

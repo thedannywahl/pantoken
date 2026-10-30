@@ -2,6 +2,10 @@ import { expect, test } from "vite-plus/test";
 import { checkboxCss } from "../../src/index.ts";
 import { checkbox } from "../../src/components/checkbox/index.ts";
 import { validate } from "../_validate.ts";
+import { parseCssDocs } from "@cssdoc/core";
+import { Window } from "happy-dom";
+import { exampleHtml } from "../../scripts/audit-accessibility.ts";
+import { resolveExampleTargets } from "@pantoken/utils/example-targets";
 
 test("checkbox: emits exactly one well-formed cssdoc record with no token drift", () => {
   validate(checkbox);
@@ -17,6 +21,45 @@ test("checkbox has a toggle-switch variant driven by the toggle tokens", () => {
   // rules out-specify the switch and it renders as a checkbox (regression fix).
   expect(css).toContain(":not(.instui-checkbox.-variant-toggle)");
   expect(css).not.toContain(":not(.instui-checkbox.-toggle)");
+});
+
+test("checkbox examples retain native label associations even when a label matches a role word", () => {
+  const [record] = parseCssDocs(checkboxCss({ prefix: "instui" }));
+  expect(record!.examples.length).toBeGreaterThan(0);
+  const auditExamples = resolveExampleTargets(record!.examples).automatica11y;
+  for (const [index, example] of record!.examples.entries()) {
+    const window = new Window();
+    try {
+      window.document.body.innerHTML = exampleHtml(example);
+      const inputs = [...window.document.querySelectorAll("input")];
+      if (auditExamples.includes(index)) {
+        expect(inputs.length).toBeGreaterThan(2);
+        for (const selector of [
+          ".instui-checkbox:not(.-variant-toggle)",
+          ".instui-checkbox.-variant-toggle",
+        ]) {
+          expect(window.document.querySelector(`${selector} input:checked`)).not.toBeNull();
+          expect(window.document.querySelector(`${selector} input:not(:checked)`)).not.toBeNull();
+          expect(window.document.querySelector(`${selector} input:disabled`)).not.toBeNull();
+        }
+      } else {
+        expect(inputs).toHaveLength(2);
+        expect(inputs.map((input) => input.labels?.[0]?.textContent.trim())).toEqual([
+          "Checkbox",
+          "Toggle",
+        ]);
+      }
+      for (const input of inputs) {
+        expect(input.type).toBe("checkbox");
+        expect(input.labels).toHaveLength(1);
+        expect(input.labels![0]!.textContent.trim()).toBeTruthy();
+        expect(input.closest('[aria-hidden="true"]')).toBeNull();
+        expect(input.hasAttribute("aria-label")).toBe(false);
+      }
+    } finally {
+      void window.happyDOM.abort();
+    }
+  }
 });
 
 test("checkbox is a custom-appearance control with sizes, error and readonly states", () => {

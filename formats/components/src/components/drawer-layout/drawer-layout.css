@@ -13,13 +13,13 @@
  * @remarks The tray stays hidden until `open` (attribute) or `-open` (class) is present.
  * @remarks A `container-type: inline-size` container (named `pantoken-drawer-layout`) lets the `drawer-layout.tray`/`drawer-layout.content` members auto-detect overlay mode from this element's own computed inline-size — no JS required for the visual switch.
  * @remarks `-placement-end` and the default (start) both use `flex-direction`/`inset-inline-*` logical properties, not `left`/`right`, so the tray's side follows `direction`/`dir="rtl"` automatically — no separate RTL rules are needed.
- * @accessibility When the tray acts as navigation, label it with an accessible heading or `aria-label`. Give `.content` `role="region"` (InstUI's DrawerLayout convention) and name it with `aria-label`/`aria-labelledby` when context alone doesn't identify it.
+ * @accessibility Name every region with `aria-label` or `aria-labelledby`. Use `div` for InstUI-style regions, not `<main role="region">`. When the tray acts as navigation, use a named `<nav>` or place one inside the tray.
  * @compat The `drawer-layout.tray`/`drawer-layout.content` members switch to overlay mode automatically via a `@container` query once this element's inline-size drops below tray-width + `--pantoken-bp-md`. The `@pantoken/interactions` behavior additionally toggles `[should-overlay-tray]`/`.-should-overlay-tray` (a manual override) and emits `overlaytraychange` for apps that need the change as an event.
- * @example
+ * @example -canvas-rce -docs
  * ```html
  * <div class="pfx-drawer-layout" id="drawer" open>
- *   <aside class="tray">Navigation</aside>
- *   <main class="content" role="region">Main content</main>
+ *   <div class="tray" role="region" aria-label="Course panel">Navigation</div>
+ *   <div class="content" role="region" aria-label="Course content">Main content</div>
  * </div>
  * ```
  * @structure
@@ -29,6 +29,16 @@
  * }
  * @related tray — A standalone edge overlay; this layout keeps tray and content in the same flow.
  * @related context-view — A smaller anchored surface for contextual actions and detail.
+ * @example -automatica11y
+ * ```html
+ * <div class="pfx-drawer-layout -placement-start" id="drawer" open style="min-block-size: 6rem">
+ *   <div class="tray" role="region" aria-label="Start course panel"></div>
+ *   <div class="content" role="region" aria-label="Start course content"></div>
+ * </div>
+ * <div class="pfx-drawer-layout -placement-end -open" style="min-block-size: 6rem"><div class="tray" role="region" aria-label="End course panel"></div><div class="content" role="region" aria-label="End course content"></div></div>
+ * <div class="pfx-drawer-layout -should-overlay-tray" open style="min-block-size: 6rem"><div class="tray" role="region" aria-label="Overlay course panel"></div><div class="content" role="region" aria-label="Overlay course content"></div></div>
+ * <div class="pfx-drawer-layout" style="min-block-size: 6rem"><div class="tray" role="region" aria-label="Initially closed course panel"></div><div class="content" role="region" aria-label="Closed drawer content"></div></div>
+ * ```
  */
 
 @scope (.pfx-drawer-layout) {

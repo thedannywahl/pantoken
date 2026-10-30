@@ -2,6 +2,7 @@
  * @component table.row-header
  * @memberOf table
  * @selector th[scope="row"]
+ * @a11y Use `<th scope="row">` so the cell names its row for assistive technology.
  * @summary A row-header cell (InstUI `Table.RowHeader`); styled from the row-header tokens, not the column-header ones.
  * @remarks The parent `table`'s `-layout-stacked` modifier stacks this member as a block and labels it via `::before` — see `table`'s own doc for that modifier.
  * @structure
@@ -12,6 +13,42 @@
  *     }
  *   }
  * }
+ * @example -automatica11y
+ * ```html
+ * <table class="pfx-table -hover">
+ *   <caption id="table-row-header-caption">Top-rated films</caption>
+ *   <thead>
+ *     <tr>
+ *       <th scope="col">Rank</th>
+ *       <th scope="col">Title</th>
+ *       <th scope="col">Year</th>
+ *       <th scope="col">Rating</th>
+ *     </tr>
+ *   </thead>
+ *   <tbody>
+ *     <tr>
+ *       <th scope="row">1</th>
+ *       <td>The Shawshank Redemption</td>
+ *       <td>1994</td>
+ *       <td>9.3</td>
+ *     </tr>
+ *     <tr>
+ *       <th scope="row">2</th>
+ *       <td>The Godfather</td>
+ *       <td>1972</td>
+ *       <td>9.2</td>
+ *     </tr>
+ *     <tr>
+ *       <th scope="row">3</th>
+ *       <td>The Godfather: Part II</td>
+ *       <td>1974</td>
+ *       <td>9.0</td>
+ *     </tr>
+ *   </tbody>
+ * </table>
+ * <table class="pfx-table -layout-stacked"><caption>Stacked row headers</caption><thead><tr><th scope="col">Title</th><th scope="col">Rating</th></tr></thead><tbody><tr><th scope="row" data-label="Title">The Godfather</th><td data-label="Rating">9.2</td></tr></tbody></table>
+ * <div class="pfx-container"><table class="pfx-table -layout-responsive"><caption>Responsive row headers</caption><thead><tr><th scope="col">Title</th><th scope="col">Rating</th></tr></thead><tbody><tr><th scope="row" data-label="Title">The Godfather</th><td data-label="Rating">9.2</td></tr></tbody></table></div>
+ * ```
  */
 /* A row-header cell (th scope=row) — styled from the row-header tokens, not the column-header ones. */
 .pfx-table tbody th,

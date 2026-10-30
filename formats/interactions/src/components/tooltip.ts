@@ -1,9 +1,10 @@
 // fallow-ignore-file unused-file
 /* c8 ignore file */ // side-effect module, tested via behavior functions and IIFE bundles
 import { initTooltip } from "../behaviors/tooltip.js";
+import { sel } from "../shared/prefix.js";
 
 function initTooltipComponents(): void {
-  for (const wrapper of document.querySelectorAll<HTMLElement>(".instui-tooltip")) {
+  for (const wrapper of document.querySelectorAll<HTMLElement>(sel(".pfx-tooltip"))) {
     const tip = wrapper.querySelector<HTMLElement>(".tip");
     if (tip) {
       const showDelay = Number(wrapper.getAttribute("data-show-delay")) || 0;

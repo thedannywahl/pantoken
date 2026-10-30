@@ -1,6 +1,7 @@
 /**
  * @component badge
  * @selector .pfx-badge
+ * @a11y The count or dot is visual only, so don't rely on color to carry its meaning; put the status in text, such as visually hidden text or an `aria-label` on the target it decorates.
  * @summary A small count or status dot placed over a target's corner.
  * @modifier -color-success — A positive/complete count.
  * @modifier -color-danger — An attention/error count.
@@ -19,7 +20,7 @@
  * @cssproperty --pantoken-badge-text <color> — The text colour, paired to the accent so it stays legible.
  * @remarks To place a badge over a target, wrap both in a `.pfx-badge-wrapper` (the position anchor) and pin the badge with a `-placement-*` modifier.
  * @animation pantoken-badge-pulse — The pulse ring animation.
- * @example
+ * @example -canvas-rce -docs
  * ```html
  * <span class="pfx-badge-wrapper">
  *   <button class="pfx-button">Inbox</button>
@@ -35,6 +36,21 @@
  * }
  * @related pill — The inline label-chip counterpart.
  * @demo self:badge
+ * @example -automatica11y
+ * ```html
+ * <div><span class="pfx-badge -standalone" role="img" aria-label="4 unread messages">4</span></div>
+ * <div><span class="pfx-badge -standalone -color-success" role="img" aria-label="2 completed reviews">2</span></div>
+ * <div><span class="pfx-badge -standalone -color-danger" role="img" aria-label="3 failed uploads">3</span></div>
+ * <div class="--bg-dark --p-md"><span class="pfx-badge -standalone -color-inverse" role="img" aria-label="5 new notices">5</span></div>
+ * <div><span class="pfx-badge -standalone -type-notification" role="img" aria-label="New message"></span></div>
+ * <div><span class="pfx-badge -standalone -pulse" role="img" aria-label="1 pending invitation">1</span></div>
+ * <div class="--p-md"><span class="pfx-badge-wrapper --p-sm">Unread messages<span class="pfx-badge -placement-top-start" role="img" aria-label="4 unread">4</span></span></div>
+ * <div class="--p-md"><span class="pfx-badge-wrapper --p-sm">Unread messages<span class="pfx-badge -placement-top-end" role="img" aria-label="4 unread">4</span></span></div>
+ * <div class="--p-md"><span class="pfx-badge-wrapper --p-sm">Unread messages<span class="pfx-badge -placement-bottom-start" role="img" aria-label="4 unread">4</span></span></div>
+ * <div class="--p-md"><span class="pfx-badge-wrapper --p-sm">Unread messages<span class="pfx-badge -placement-bottom-end" role="img" aria-label="4 unread">4</span></span></div>
+ * <div class="--p-md"><span class="pfx-badge-wrapper --p-sm">Unread messages<span class="pfx-badge -placement-start-center" role="img" aria-label="4 unread">4</span></span></div>
+ * <div class="--p-md"><span class="pfx-badge-wrapper --p-sm">Unread messages<span class="pfx-badge -placement-end-center" role="img" aria-label="4 unread">4</span></span></div>
+ * ```
  */
 @keyframes pantoken-badge-pulse {
   from {
@@ -112,7 +128,9 @@
       inset: 0;
       border: var(--instui-border-width-md) solid var(--pantoken-badge-accent);
       border-radius: inherit;
-      animation: pantoken-badge-pulse 1.2s ease-out infinite;
+      @media (prefers-reduced-motion: no-preference) {
+        animation: pantoken-badge-pulse 1.2s ease-out infinite;
+      }
     }
 
     /* Placement: position the badge over a `.badge-wrapper` target. InstUI's countOffset is 0.5rem. */

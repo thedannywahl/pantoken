@@ -7,49 +7,87 @@
  * @modifier -highlighted — Highlighted background/text (keyboard focus or hover).
  * @modifier -active — Active/checked highlight; same styling as `[aria-checked="true"]`.
  * @part .item-info — Secondary info text within the item.
- * @a11y Mark a checked item with `aria-checked="true"` (same styling as `-active`).
+ * @a11y Checked actions use `menuitemcheckbox` or `menuitemradio` with `aria-checked`; applications update that state on activation. Pair `-disabled` with `aria-disabled="true"` or native `disabled`, not the CSS class alone. Opt-in menu navigation keeps ARIA-disabled items reachable but prevents their activation.
  * @structure
  * @component menu {
  *   .item {
  *     .item-info {}
  *   }
  * }
+ * @example -automatica11y
+ * ```html
+ * <button type="button" popovertarget="actions-menu" aria-haspopup="menu" aria-controls="actions-menu" aria-expanded="false" data-a11y-trigger>Actions</button>
+ * <div class="pfx-menu" id="actions-menu" popover="auto" role="menu" aria-label="Actions" data-menu-navigation data-a11y-root>
+ *   <button class="item" type="button" role="menuitem">Edit</button>
+ *   <button class="item" type="button" role="menuitem">Delete</button>
+ *   <button class="item -disabled" type="button" role="menuitem" disabled>Archive</button>
+ *   <button class="item -highlighted" type="button" role="menuitem">Duplicate</button>
+ *   <button class="item -active" type="button" role="menuitemcheckbox" aria-checked="true">Show details</button>
+ * </div>
+ * ```
  */
 @scope (.pfx-menu) {
   :scope {
-    > .item {
+    > .item,
+    > [role="group"] > .item {
+      appearance: none;
+      box-sizing: border-box;
       display: block;
+      inline-size: 100%;
+      margin: 0;
+      border: 0;
+      border-radius: 0;
       padding: var(--instui-component-menu-item-padding-vertical)
         var(--instui-component-menu-item-padding-horizontal);
+      background: var(--instui-component-menu-item-background);
       color: var(--instui-component-menu-item-label-color);
       font-family: var(--instui-component-menu-item-font-family);
       font-size: var(--instui-component-menu-item-font-size);
       font-weight: var(--instui-component-menu-item-font-weight);
       line-height: var(--instui-component-menu-item-line-height);
+      text-align: start;
       cursor: pointer;
     }
 
     /* A disabled item (InstUI Menu.Item `disabled`): muted, non-interactive. */
-    > .item.-disabled {
+    > .item.-disabled,
+    > .item[aria-disabled="true"],
+    > .item:disabled,
+    > [role="group"] > .item.-disabled,
+    > [role="group"] > .item[aria-disabled="true"],
+    > [role="group"] > .item:disabled {
       opacity: var(--instui-opacity-disabled);
       pointer-events: none;
       cursor: not-allowed;
+
+      @media (prefers-reduced-transparency: reduce) {
+        opacity: 1;
+        color: var(--instui-color-text-muted);
+      }
     }
 
     > .item:hover,
-    > .item.-highlighted {
+    > .item:focus-visible,
+    > .item.-highlighted,
+    > [role="group"] > .item:hover,
+    > [role="group"] > .item:focus-visible,
+    > [role="group"] > .item.-highlighted {
       background: var(--instui-component-menu-item-highlighted-background);
       color: var(--instui-component-menu-item-highlighted-label-color);
     }
 
     > .item.-active,
-    > .item[aria-checked="true"] {
+    > .item[aria-checked="true"],
+    > [role="group"] > .item.-active,
+    > [role="group"] > .item[aria-checked="true"] {
       background: var(--instui-component-menu-item-active-background);
       color: var(--instui-component-menu-item-active-label-color);
     }
 
     > .item.-active:hover,
-    > .item[aria-checked="true"]:hover {
+    > .item[aria-checked="true"]:hover,
+    > [role="group"] > .item.-active:hover,
+    > [role="group"] > .item[aria-checked="true"]:hover {
       background: var(--instui-component-menu-item-selected-highlighted-background);
     }
 
@@ -59,8 +97,19 @@
     }
 
     > .item:hover .item-info,
-    > .item.-highlighted .item-info {
+    > .item:focus-visible .item-info,
+    > .item.-highlighted .item-info,
+    > [role="group"] > .item:hover .item-info,
+    > [role="group"] > .item:focus-visible .item-info,
+    > [role="group"] > .item.-highlighted .item-info {
       color: var(--instui-component-menu-item-highlighted-label-info-color);
+    }
+
+    > .item.-active .item-info,
+    > .item[aria-checked="true"] .item-info,
+    > [role="group"] > .item.-active .item-info,
+    > [role="group"] > .item[aria-checked="true"] .item-info {
+      color: inherit;
     }
   }
 }

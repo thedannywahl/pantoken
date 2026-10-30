@@ -12,13 +12,145 @@
   correctness; cssdoc owns documentation comments. `lint:css` and `lint:cssdoc` run in `ready`, and
   both are wired into the `vite.config.ts` staged hook.
 
+`vpr docs:dev` builds interactions before staging its browser bundles. The interactions build task
+declares its workspace dependencies' builds as prerequisites, so `@pantoken/utils` is built even
+when its `dist` output is missing. Run `vp run @pantoken/interactions#build` rather than invoking
+`scripts/build-iife.ts` directly when prerequisites haven't been built.
+CSS generation also declares both runtime and development workspace builds as prerequisites:
+its generator imports `@pantoken/plugin-props-minify` from development dependencies. Keep these
+prerequisites on the generator task so standalone generation and docs startup use the same order.
+
+## Accessibility evidence in the docs build
+
+The docs build keeps the checked-in evidence (`docs/public/accessibility/results.json`) current, so
+the `## Accessibility` tables on each CSS API page match the code that ships. The `accessibility`
+asset task (`docs/scripts/accessibility-refresh.ts`, run by `docs:assets`) fingerprints every audited
+record from its CSS and examples, built stylesheet and behavior script, and the inputs every page
+shares (tokens, base, focus, elevation, the automatica11y version, and the audit harness). It
+re-audits only records whose fingerprint differs from the one stored in the snapshot and merges the
+results back, so an unchanged tree is a fast no-op.
+
+- `vp run @pantoken/docs#docs:accessibility` refreshes stale records. `--check` (via
+  `docs:accessibility:check`) reports them without auditing; `--all` re-audits everything; `--adopt`
+  stamps current fingerprints onto existing evidence when you know the inputs didn't change the results.
+- Commit the updated snapshot with the change that caused it. The `component-accessibility` CI job
+  re-audits stale records and fails when the committed snapshot differs.
+- On CI (or with `DOCS_ACCESSIBILITY_INSTALL_BROWSER=1`) the refresh provisions the audit browser
+  when it needs one. `docs:dev` sets `DOCS_ACCESSIBILITY_AUDIT=skip` so a dev server never starts an audit.
+- The tables are raw HTML in the generated page. The segmenter classifies them as `audit` blocks, so
+  their visible text (headings, pill labels, details) enters `l10n/docs.api.pot` through the normal API
+  translation pipeline while markup and `<code>` selectors stay verbatim. The fixed labels live in
+  `ACCESSIBILITY_AUDIT_STRINGS` in `docs/.vitepress/i18n.ts`.
+
+## Local component accessibility reports
+
+`vp run audit:components` is an explicit, uncached full audit task, separate from `ready` (the docs build re-audits only stale records; see above). It uses the
+catalog-backed automatica11y development dependency, current local package builds, and authored
+component examples. It doesn't send examples to a remote audit service.
+The task first runs the shared `build:all` prerequisite, restoring the complete workspace build
+graph in dependency order. A fresh checkout or restored CI task cache doesn't contain package
+outputs until those tasks run; building only components, CSS, and interactions can leave their
+build-time workspace dependencies missing.
+
+The tool requires Chrome or Chromium. Check setup with
+`vp exec -F @pantoken/components automatica11y doctor`. If a browser is missing, explicitly opt into
+its download with `vp exec -F @pantoken/components automatica11y doctor --install-browser`.
+Don't bypass an outdated-browser warning without understanding its effect on results.
+
+Each run retains the tool's original Markdown and JSON reports and a coverage index in
+`a11y-report/<run>/`. The command returns an error for infrastructure failures; accessibility
+violations alone don't fail it. Keep axe and IBM findings separate, and read incomplete and
+needs-review results rather than treating an empty violations list as a verdict.
+The index separates explicit gaps/undetermined checks from coverage notices and lists tier
+execution per target, archetype, and state. Notices preserve `outcome.coverage`, summary gaps,
+and not-testable notes, with missing requested tiers derived when absent from the tool's outcome.
+Notices can overlap explicit gap counts; they aren't unique defects, and the counts aren't additive.
+Target completion doesn't mean every requested tier ran in every state. In automatica11y 0.11.0,
+supplemental npm states run rules and simulated VSR only. Interaction, computed, and condition
+checks run on fresh pages and are attached to the initial configuration. Missing supplemental tiers
+remain visible limitations, not passes or infrastructure errors. Nested execution errors still fail
+the command. Original reports stay unchanged.
+The npm archetype suite retains its authored fixture mapping and local package tarballs alongside
+the reports. These tarballs are test inputs, not release artifacts. Each theme/scheme case uses
+the same semantic example. Keep the report's authored-fixture provenance and browser warnings.
+Each npm report batch gets its own mapping; automatica11y rejects mapping entries for targets
+outside that invocation.
+
+The supported matrix has four combinations: rebrand light/dark, Canvas light, and Canvas High
+Contrast light. Canvas themes don't support dark mode. Older raw reports retain their unsupported
+Canvas dark cases as historical evidence; don't count those cases as supported product coverage.
+
+### Results on component API pages
+
+Generated component pages append the audit to the record's **Accessibility** section, without a
+separate header, so it follows the authored `@accessibility` (or `@a11y`) guidance. The audit is
+one table per tier (axe-core rules, conditions, interactions, computed styles) plus a simulated screen-reader
+table. axe reports only failed and needs-review rules, so its table lists those rules with their
+WCAG criteria; a listed rule with no finding in a column that ran axe shows Pass. IBM Equal Access
+results aren't rendered because they don't align to WCAG. Rows are checks (name, then `WCAG 2.2` and the success criteria on a second line; the name
+may wrap, pills never do); columns are the supported theme/scheme
+pairs, and each cell is an `instui-pill` with an icon (Pass, Fail, Not applicable, or Review needed; missing or undetermined results always show the last so they're never read as passes). A check that's Not applicable in every column is omitted, and so is a table with no remaining rows.
+A cell takes the worst result across the page and npm evidence for that column. A row that fails or
+needs manual review spans two table rows: the label cell uses `rowspan="2"` and a second row spans
+every theme column with the tool's explanation (columns with identical text share one paragraph).
+Because Markdown tables can't span rows, the audit tables are raw HTML blocks with no blank lines
+inside, escaped with `html()`; the segmenter preserves them verbatim, so their labels aren't
+machine-translated. Every record
+needs that tag; a record without one still gets a bare **Accessibility** section, but a test fails.
+The docs build reads a checked-in snapshot at `docs/public/accessibility/results.json`; it doesn't
+run a browser or select whichever local audit happens to be newest. A component without evidence
+shows **Not audited**, including plugin components outside the core audit inventory.
+
+Refresh that snapshot explicitly from a complete audit run at the repository root:
+
+```sh
+vp exec node docs/scripts/accessibility-evidence.ts a11y-report/<run>
+vp run @pantoken/docs#docs:api:css
+```
+
+Commit the snapshot with the implementation and Changeset. The importer validates expected target
+inventories and execution, retains per-check results with their WCAG criteria, condition failures,
+undetermined results, simulated flags, missing tiers, browser warnings, dates, tool versions, and
+SHA-256 digests of the original results files. It still stores axe/IBM counts in the snapshot but the
+API section doesn't show them. It excludes historical unsupported Canvas dark
+cases without editing raw evidence. The snapshot is a compact summary, not the original tool report.
+Keep the original `a11y-report/<run>/` files or CI artifact for investigation.
+
+The current snapshot comes from `2026-10-28T02-50-41.851Z`. Its page assets predate the final
+forced-color painter fixes, and that run didn't record an exact source revision. The API section
+shows only summary tables and the manual-review caveat; it has no preamble, download link, or
+per-run details. The full provenance stays in `results.json`. It's
+historical evidence, not verification of the current code. Refreshing evidence is explicit;
+a code change alone doesn't update or validate these results. Never turn missing evidence into a
+pass or publish a combined engine score. Page/npm evidence and supplemental-state coverage differ.
+Static section strings live in `docs/.vitepress/i18n.ts`; generated prose uses the existing API
+glossary/prose translation pipeline. Translation synchronization is still required before merging.
+
+The `component-accessibility` CI job runs this command after the build and stays outside
+`ci-gate`. It's advisory even when setup or execution fails; such a failure isn't a clean audit.
+The job always attempts to publish a summary and upload `component-accessibility` evidence
+with 14-day retention. Download that artifact to follow the index's relative report links.
+The complete matrix is browser-intensive: it runs at most two report batches at once, and CI
+allows up to two hours. Original audit reports are excluded from contributor Markdown linting.
+Generated pages and their assets share the `pages/` directory: automatica11y's local HTTP server
+serves only the HTML file's containing directory. Verify styles over that HTTP boundary, not
+only through `file://` URLs.
+
 ## The gate
+
+Social-card builds use only vendored brand and Noto fonts. Noto signatures and SHA-256 digests are
+checked before use; the renderer never downloads replacement fonts or writes a font cache.
+See the [font provenance and update procedure](../assets/fonts/noto/README.md) when updating
+upstream faces or their SIL OFL notices.
 
 - `pnpm run ready` — the pass/fail gate. It's a `vp` task DAG (`ready:all`), not a serial chain:
   `build:all` runs once, then `check:all` (`vp check`), `test:all` (`vp run -r test`), `lint:css`,
   `lint:cssdoc`, `validate:generated:only`, and `lint:markdown` fan out concurrently. Everything that reads
   generated output depends on `build:all`, so generation happens exactly once (no concurrent codegen
   race). Must pass before you're done.
+- Vitest defaults to at most two workers, including coverage runs launched through the task DAG.
+  This bounds test-process contention without increasing timeouts or skipping tests. For an explicit
+  standalone override on a larger machine, use `vp test --maxWorkers=<count>`.
 - `pnpm run check:publish` — the publish gate (`gate:publish`): `gate:repository` (asserts every
   publishable manifest has the `repository.url` npm OIDC provenance needs), `gate:publint`, and
   `gate:attw`. Publint/attw depend on `build:all`; the repository check is a pure manifest read.
@@ -216,6 +348,10 @@ translation half is already incremental: `TranslationMemory` serves unchanged st
 (Magyar, `/hu/…`) — a symmetric prefix swap that VitePress's default routing already handles (don't
 set a custom `i18nRouting`).
 
+- **Consumed-token types come from pantoken.** `docs/scripts/build-css-api.ts` supplies cssdoc's
+  `resolveToken` hook with display types and resolved values. Color functions, including
+  `color-mix()`, display as `<color>`; border-style tokens display as `<line-style>`.
+  These display types don't change the IR's `@property` registration syntax.
 - **Translation layer is `docs/.vitepress/i18n.ts`.** `LOCALE_THEMES[locale]` holds every localizable
   UI string (nav/sidebar labels, `editText`, the theme selector, VitePress chrome labels, and local
   search). `config.ts` expands these into per-locale `themeConfig` (search is the exception — it lives

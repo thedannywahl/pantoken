@@ -46,11 +46,20 @@ const FOCUS_DOC = css`/**
  * @cssproperty --instui-focus-outline-color-inverse — The ring colour for the \`-focus-color-inverse\` (on-dark) modifier.
  * @cssproperty --instui-focus-outline-inset — The outline offset used when \`-focus-position-inset\` draws the ring inside the edge.
  * @a11y Every focusable element gets a \`:focus-visible\` outline ring so keyboard users can see what's focused.
+ * @a11y In forced colors, the resting outline is removed instead of relying on transparency; keyboard focus and opt-in focus-within restore its line style using system-adjusted colors.
  * @example
  * <button class="instui-button -focus-color-danger">Delete</button>
  * @example -automatica11y
  * \`\`\`html
- * <button class="pfx-button -focus-color-danger" data-a11y-root data-a11y-trigger>Delete</button>
+ * <button data-a11y-root data-a11y-trigger>Default focus</button>
+ * <button class="-focus-color-danger">Danger focus</button>
+ * <button class="-focus-color-success">Success focus</button>
+ * <div style="background: var(--instui-color-background-brand)">
+ *   <button class="-focus-color-inverse">Inverse focus</button>
+ * </div>
+ * <button class="-focus-position-inset">Inset focus</button>
+ * <div class="-focus-within"><button>Focus within</button></div>
+ * <button class="-without-focus-animation">Focus without animation</button>
  * \`\`\`
  * @demo self:focus-outline
  */`;

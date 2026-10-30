@@ -1,7 +1,7 @@
 /**
  * @component number-input
  * @summary A number-input facade with a +/- spinner column.
- * @remarks The `.arrows` buttons are `aria-hidden` and purely presentational — incrementing/decrementing the value on click is the consumer's JS to wire up.
+ * @remarks The `.arrows` buttons are redundant pointer controls, hidden from assistive technology and excluded from sequential keyboard focus. Consumers wire pointer activation and keep focus on the input; the native number input provides keyboard increment/decrement.
  * @selector .pfx-number-input
  * @modifier -disabled — Disabled state.
  * @modifier -invalid — Invalid (error) state.
@@ -15,15 +15,17 @@
  * @pseudo ::before — The masked chevron glyph on each spinner button: up to increment, down on `.down`.
  * @pseudo ::placeholder — The placeholder text of the inner input, in a muted color.
  * @cssstate disabled
- * @accessibility Put the accessible name on the `<input>` (e.g. `aria-label`) so the field owns the value; the +/- spinner buttons are decorative and marked `aria-hidden="true"`.
- * @example
+ * @accessibility Name the native `<input type="number">` so it owns the value and keyboard controls. Mark redundant arrow buttons with both `aria-hidden="true"` and `tabindex="-1"`; never leave an assistive-technology-hidden button in the tab order.
+ * @example -canvas-rce -docs
+ * ```html
  * <span class="pfx-number-input">
  *   <input id="qty" type="number" value="1" aria-label="Quantity">
  *   <span class="arrows">
- *     <button type="button" id="up" aria-hidden="true"></button>
- *     <button class="down" type="button" id="down" aria-hidden="true"></button>
+ *     <button type="button" id="up" aria-hidden="true" tabindex="-1"></button>
+ *     <button class="down" type="button" id="down" aria-hidden="true" tabindex="-1"></button>
  *   </span>
  * </span>
+ * ```
  * @structure
  * .pfx-number-input {
  *   input {}
@@ -34,6 +36,39 @@
  * }
  * @related text-input — Shares the same input facade chrome.
  * @related range-input — Another numeric input control.
+ * @example -automatica11y
+ * ```html
+ * <p><label for="audit-qty-small">Small quantity</label><span class="pfx-number-input -size-sm">
+ *   <input id="audit-qty-small" type="number" min="0" max="10" value="1">
+ *   <span class="arrows"><button type="button" aria-hidden="true" tabindex="-1"></button><button class="down" type="button" aria-hidden="true" tabindex="-1"></button></span>
+ * </span></p>
+ * <p><label for="audit-qty-medium">Medium quantity</label><span class="pfx-number-input -size-md">
+ *   <input id="audit-qty-medium" type="number" min="0" max="10" value="2">
+ *   <span class="arrows"><button type="button" aria-hidden="true" tabindex="-1"></button><button class="down" type="button" aria-hidden="true" tabindex="-1"></button></span>
+ * </span></p>
+ * <p><label for="audit-qty-large">Large quantity</label><span class="pfx-number-input -size-lg">
+ *   <input id="audit-qty-large" type="number" min="0" max="10" value="3">
+ *   <span class="arrows"><button type="button" aria-hidden="true" tabindex="-1"></button><button class="down" type="button" aria-hidden="true" tabindex="-1"></button></span>
+ * </span></p>
+ * <p><label for="audit-qty-disabled">Disabled quantity</label><span class="pfx-number-input -disabled">
+ *   <input id="audit-qty-disabled" type="number" value="4" disabled>
+ *   <span class="arrows"><button type="button" disabled aria-hidden="true" tabindex="-1"></button><button class="down" type="button" disabled aria-hidden="true" tabindex="-1"></button></span>
+ * </span></p>
+ * <p><label for="audit-qty-readonly">Read-only quantity</label><span class="pfx-number-input -readonly">
+ *   <input id="audit-qty-readonly" type="number" value="5" readonly>
+ *   <span class="arrows"><button type="button" disabled aria-hidden="true" tabindex="-1"></button><button class="down" type="button" disabled aria-hidden="true" tabindex="-1"></button></span>
+ * </span></p>
+ * <p><label for="audit-qty-invalid">Required quantity</label><span class="pfx-number-input -invalid">
+ *   <input id="audit-qty-invalid" type="number" min="1" max="10" value="0" required aria-invalid="true" aria-describedby="audit-qty-error">
+ *   <span class="arrows"><button type="button" aria-hidden="true" tabindex="-1"></button><button class="down" type="button" aria-hidden="true" tabindex="-1"></button></span>
+ * </span></p>
+ * <p id="audit-qty-error">Quantity must be between 1 and 10.</p>
+ * <p><label for="audit-qty-success">Validated quantity</label><span class="pfx-number-input -success">
+ *   <input id="audit-qty-success" type="number" min="1" max="10" value="6" aria-describedby="audit-qty-valid">
+ *   <span class="arrows"><button type="button" aria-hidden="true" tabindex="-1"></button><button class="down" type="button" aria-hidden="true" tabindex="-1"></button></span>
+ * </span></p>
+ * <p id="audit-qty-valid">Quantity accepted.</p>
+ * ```
  */
 @scope (.pfx-number-input) {
   & {
@@ -197,6 +232,9 @@
     background: currentColor;
     -webkit-mask: var(--instui-icon-chevron-up) center / contain no-repeat;
     mask: var(--instui-icon-chevron-up) center / contain no-repeat;
+    @media (forced-colors: active) {
+      forced-color-adjust: preserve-parent-color;
+    }
   }
 
   & .arrows button.down::before {

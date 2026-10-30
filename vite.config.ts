@@ -5,6 +5,8 @@ export default defineConfig({
     // Reads FC_NUM_RUNS to adjust fast-check iteration counts without changing test source.
     // Default: 100 (fast). Stress runs (vp run property:stress): 10 000.
     setupFiles: ["./scripts/quality/fast-check-setup.ts"],
+    // Keep coverage workers within the CPU/memory budget shared with the ready task DAG.
+    maxWorkers: 2,
     // Default (5000ms) is too tight for a full-suite local run (277 files) where module transform/
     // import contends for CPU; slower CI/gh runners need the same headroom.
     testTimeout: 20_000,
@@ -41,7 +43,8 @@ export default defineConfig({
         // siblings don't drag the floor). These are the high-complexity scripts now unit-tested so
         // their CRAP reflects real coverage rather than a worst-case zero.
         "formats/*/scripts/{fonts,generate}.ts",
-        "docs/scripts/{translation-memory,api-translation,build-api-locales,build-css-api,changed-pages,check-locale-drift,style-api-badges}.ts",
+        "formats/components/scripts/audit-accessibility.ts",
+        "docs/scripts/{accessibility-evidence,translation-memory,api-translation,build-api-locales,build-css-api,changed-pages,check-locale-drift,segment-markdown,style-api-badges}.ts",
         "docs/scripts/lib/scope-components.ts",
         "renderers/web-components/src/locales/**",
         "renderers/web-components/src/i18n.ts",
@@ -144,10 +147,11 @@ export default defineConfig({
       // gates fan out concurrently. `command: "true"` makes it a pure aggregator whose only job is to
       // pull its `dependsOn` (the root `ready` script is `vp run ready:all` — a task and a package.json
       // script may not share a name). Everything that needs generated output funnels through `build:all`,
-      // the single generation path, so no two nodes run the component codegen at once (a `vp run -r build`
-      // and a bare `@pantoken/components#generate` writing the same `generated/` dir would race).
+      // the single generation path, so no two nodes run the component codegen at once. Serialize the
+      // recursive build as well: concurrently replayed task outputs can invalidate another package's
+      // workspace dependency while its generator is importing it.
       "build:all": {
-        command: "vp run -r build",
+        command: "vp run -r --concurrency-limit 1 build",
       },
       "check:all": {
         command: "node docs/scripts/site-themes.ts && vp check",

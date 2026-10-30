@@ -13,7 +13,7 @@
  *     li:one-or-more {}
  *   }
  * }
- * @example
+ * @example -canvas-rce -docs
  * ```html
  * <nav class="pfx-breadcrumb" aria-label="Breadcrumb">
  *   <ol>
@@ -28,6 +28,12 @@
  * ```
  * @sealed
  * @stable
+ * @example -automatica11y
+ * ```html
+ * <nav class="pfx-breadcrumb -size-sm" aria-label="Small breadcrumb"><ol><li><a href="#home">Home</a></li><li aria-current="page">Guides</li></ol></nav>
+ * <nav class="pfx-breadcrumb -size-md" aria-label="Medium breadcrumb"><ol><li><a href="#home">Home</a></li><li aria-current="page">Guides</li></ol></nav>
+ * <nav class="pfx-breadcrumb -size-lg" aria-label="Large breadcrumb"><ol><li><a href="#home">Home</a></li><li aria-current="page">Guides</li></ol></nav>
+ * ```
  */
 @scope (.pfx-breadcrumb) {
   & {

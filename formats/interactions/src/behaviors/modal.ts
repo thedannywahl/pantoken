@@ -13,22 +13,34 @@ export function initModal(
   dialog: HTMLDialogElement,
   onCommand: OnCommand,
 ): void {
-  const sync = () => {
-    const wantOpen = host.hasAttribute("open");
-    if (wantOpen && !dialog.open) dialog.showModal();
-    else if (!wantOpen && dialog.open) dialog.close();
+  const setOpen = (wantOpen: boolean): void => {
+    const modal = dialog.matches(":modal");
+    if (wantOpen && !modal) {
+      // An authored open attribute creates a nonmodal dialog; promote it through showModal().
+      if (dialog.open) dialog.removeAttribute("open");
+      dialog.showModal();
+    } else if (!wantOpen && (dialog.open || modal)) {
+      // Removing open doesn't leave the top layer. Restore it so native close can finish.
+      if (!dialog.open) dialog.setAttribute("open", "");
+      dialog.close();
+    } else if (wantOpen && !dialog.open) {
+      dialog.setAttribute("open", "");
+    }
+    if (host !== dialog) host.toggleAttribute("open", dialog.open);
   };
+  const sync = (): void => setOpen(host.hasAttribute("open"));
 
   dialog.addEventListener("close", () => {
-    if (host.hasAttribute("open")) host.removeAttribute("open");
+    // A native close event may arrive after the dialog has already reopened.
+    if (!dialog.open && host.hasAttribute("open")) host.removeAttribute("open");
     // Only re-dispatch when host ≠ dialog (web component); for CSS use host IS dialog.
     if (host !== dialog) host.dispatchEvent(new CustomEvent("close", { bubbles: true }));
   });
 
   onCommand(host, (command) => {
-    if (command === "--show") host.setAttribute("open", "");
-    else if (command === "--close") host.removeAttribute("open");
-    else if (command === "--toggle") host.toggleAttribute("open");
+    if (command === "--show") setOpen(true);
+    else if (command === "--close") setOpen(false);
+    else if (command === "--toggle") setOpen(!host.hasAttribute("open"));
   });
 
   new MutationObserver(sync).observe(host, { attributes: true, attributeFilter: ["open"] });

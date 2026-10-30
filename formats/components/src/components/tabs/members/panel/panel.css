@@ -2,12 +2,24 @@
  * @component tabs.panel
  * @memberOf tabs
  * @selector .panel
+ * @a11y Give each panel `role="tabpanel"` and an `aria-labelledby` that references its tab, and keep inactive panels `hidden`.
  * @summary The content panel for a tab (InstUI `Tabs.Panel`).
  * @cssstate hidden
  * @structure
  * @component tabs {
  *   .panel {}
  * }
+ * @example -automatica11y
+ * ```html
+ * <div class="pfx-tabs" data-a11y-root>
+ *   <div class="list" role="tablist" aria-label="Account settings">
+ *     <button class="tab -selected" id="profile-tab" role="tab" aria-selected="true" aria-controls="profile-panel" tabindex="0" data-a11y-trigger>Profile</button>
+ *     <button class="tab" id="security-tab" role="tab" aria-selected="false" aria-controls="security-panel" tabindex="-1">Security</button>
+ *   </div>
+ *   <div class="panel" id="profile-panel" role="tabpanel" aria-labelledby="profile-tab"></div>
+ *   <div class="panel" id="security-panel" role="tabpanel" aria-labelledby="security-tab" hidden></div>
+ * </div>
+ * ```
  */
 @scope (.pfx-tabs) {
   :scope {

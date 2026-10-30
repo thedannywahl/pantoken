@@ -33,3 +33,9 @@ test("base carries the focus-outline ring for focusables out of the box", () => 
   expect(css).toContain(":where(.-focus-color-danger):where(:focus-visible)");
   expect(css).toContain(":where(.-without-focus-animation)");
 });
+
+test("the base reset's scheme default stays in the base layer below explicit subtree pins", () => {
+  expect(baseCss()).toMatch(
+    /@layer pantoken\.base\s*\{\s*:where\(html\)\s*\{\s*color-scheme: light dark;\s*\}\s*\}/u,
+  );
+});

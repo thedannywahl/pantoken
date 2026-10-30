@@ -11,7 +11,8 @@
  * .pfx-side-nav-bar {
  *   .item:one-or-more {}
  * }
- * @example
+ * @example -canvas-rce -docs
+ * ```html
  * <nav class="pfx-side-nav-bar" aria-label="Primary">
  *   <a class="item -selected" href="#">
  *     <span class="pfx-icon -icon-house"></span>
@@ -30,6 +31,24 @@
  *     <span class="label">Settings</span>
  *   </a>
  * </nav>
+ * ```
+ * @example -automatica11y
+ * ```html
+ * <nav class="pfx-side-nav-bar" aria-label="Primary">
+ *   <a class="item -selected" href="#home" aria-current="page">
+ *     <span class="-icon-house" aria-hidden="true"></span>
+ *     <span class="label">Home</span>
+ *   </a>
+ *   <a class="item" href="#inbox">
+ *     <span class="-icon-inbox" aria-hidden="true"></span>
+ *     <span class="label">Inbox</span>
+ *   </a>
+ * </nav>
+ * <nav class="pfx-side-nav-bar -minimized" aria-label="Minimized primary">
+ *   <a class="item -selected" href="#home" aria-current="page" aria-label="Home"><span class="-icon-house" aria-hidden="true"></span><span class="label">Home</span></a>
+ *   <a class="item" href="#inbox" aria-label="Inbox"><span class="-icon-inbox" aria-hidden="true"></span><span class="label">Inbox</span></a>
+ * </nav>
+ * ```
  */
 @scope (.pfx-side-nav-bar) {
   & {

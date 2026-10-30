@@ -44,10 +44,47 @@
  * ```html
  * <fieldset class="pfx-segmented-control" aria-label="Course view" data-a11y-root>
  *   <div class="viewport">
+ *     <button class="overflow-start" aria-label="Scroll to previous views" hidden></button>
  *     <div class="track">
  *       <label><input type="radio" name="course-view" value="overview" checked data-a11y-trigger>Overview</label>
  *       <label><input type="radio" name="course-view" value="grades">Grades</label>
- *       <label><input type="radio" name="course-view" value="people">People</label>
+ *       <label><input type="radio" name="course-view" value="people" disabled>People</label>
+ *       <label><input type="radio" name="course-view" value="assignments">Assignments</label>
+ *       <label><input type="radio" name="course-view" value="discussions">Discussions</label>
+ *       <label><input type="radio" name="course-view" value="settings">Settings</label>
+ *     </div>
+ *     <button class="overflow-end" aria-label="Scroll to next views" hidden></button>
+ *   </div>
+ * </fieldset>
+ * <fieldset class="pfx-segmented-control -size-sm" aria-label="Small course view">
+ *   <div class="viewport">
+ *     <div class="track">
+ *       <label class="-icon-settings"><input type="radio" name="small-course-view" checked>Settings</label>
+ *       <label><input type="radio" name="small-course-view">Grades</label>
+ *     </div>
+ *   </div>
+ * </fieldset>
+ * <fieldset class="pfx-segmented-control -size-md" aria-label="Medium course view">
+ *   <div class="viewport">
+ *     <div class="track">
+ *       <label><input type="radio" name="medium-course-view" checked>Overview</label>
+ *       <label><input type="radio" name="medium-course-view">Grades</label>
+ *     </div>
+ *   </div>
+ * </fieldset>
+ * <fieldset class="pfx-segmented-control -size-lg" aria-label="Large course view">
+ *   <div class="viewport">
+ *     <div class="track">
+ *       <label><input type="radio" name="large-course-view" checked>Overview</label>
+ *       <label><input type="radio" name="large-course-view">Grades</label>
+ *     </div>
+ *   </div>
+ * </fieldset>
+ * <fieldset class="pfx-segmented-control" aria-label="Unavailable course view" disabled>
+ *   <div class="viewport">
+ *     <div class="track">
+ *       <label><input type="radio" name="disabled-course-view" checked>Overview</label>
+ *       <label><input type="radio" name="disabled-course-view">Grades</label>
  *     </div>
  *   </div>
  * </fieldset>

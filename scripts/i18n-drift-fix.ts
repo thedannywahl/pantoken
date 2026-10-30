@@ -86,7 +86,7 @@ const providerEnvironment = (provider: Provider): NodeJS.ProcessEnv => {
       `tools/translation-adapters/${provider}-wrapper.sh`,
     );
     environment.DOCS_TRANSLATION_COMMAND_ARGS =
-      provider === "copilot" ? "--model gpt-5-mini --effort low" : "--model gemini-3.6-flash-low";
+      provider === "copilot" ? "--model auto" : "--model gemini-3.6-flash-low";
   }
   return environment;
 };

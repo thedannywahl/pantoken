@@ -1,4 +1,4 @@
-import { existsSync, mkdtempSync, readFileSync } from "node:fs";
+import { existsSync, mkdtempSync, readFileSync, rmSync } from "node:fs";
 import { tmpdir } from "node:os";
 import { join } from "node:path";
 import { expect, test } from "vite-plus/test";
@@ -60,6 +60,41 @@ test("installed agent assets link to the published compatibility registry", () =
     );
   }
   expect(readFileSync(join(dir, "AGENTS.md"), "utf8")).toContain("`$schema`");
+});
+
+test("installed usage assets describe tree behavior, shadow names, and opt-in validation", () => {
+  const dir = mkdtempSync(join(tmpdir(), "pantoken-ai-tree-"));
+  try {
+    installAgentAssets("all", dir);
+    for (const file of [
+      "AGENTS.md",
+      "llms.txt",
+      ".cursor/rules/pantoken.mdc",
+      ".github/copilot-instructions.md",
+    ]) {
+      const content = readFileSync(join(dir, file), "utf8");
+      expect(content).toContain("initTreeBrowser");
+      expect(content).toContain("aria-owns");
+      expect(content).toContain("disclosures");
+      expect(content).toContain("tray-label");
+      expect(content).toContain("content-label");
+      expect(content).toContain("initFormField");
+      expect(content).toContain("data-native-validation");
+      expect(content).toContain("initMenu");
+      expect(content).toContain("data-menu-navigation");
+      expect(content).toContain("-layout-responsive");
+      expect(content).toContain("instui-container");
+      expect(content).toContain("data-label");
+      expect(content).toContain("--overflow-x-auto");
+      expect(content).toContain("prefers-reduced-motion");
+      expect(content).toContain("prefers-contrast");
+      expect(content).toContain("prefers-reduced-transparency");
+      expect(content).toContain("data-pantoken-scheme");
+      expect(content).toContain("scope.css");
+    }
+  } finally {
+    rmSync(dir, { recursive: true, force: true });
+  }
 });
 
 test("'all' writes every asset, deduped", () => {

@@ -23,6 +23,35 @@ test("content pane carries role=region per InstUI's DrawerLayout accessibility g
   const el = drawer("open");
   const root = el.shadowRoot as ShadowRoot;
   expect(root.querySelector(".content")?.getAttribute("role")).toBe("region");
+  expect(root.querySelector(".tray")?.getAttribute("role")).toBe("region");
+  expect(root.querySelector(".content")?.tagName).toBe("DIV");
+  expect(root.querySelector(".tray")?.tagName).toBe("DIV");
+  expect(root.querySelector("main, aside")).toBeNull();
+});
+
+test("pane labels name the shadow regions and synchronize attribute changes and removal", () => {
+  const el = drawer('open tray-label="Course panel" content-label="Course content"');
+  const tray = el.shadowRoot!.querySelector(".tray")!;
+  const content = el.shadowRoot!.querySelector(".content")!;
+  expect(tray.getAttribute("aria-label")).toBe("Course panel");
+  expect(content.getAttribute("aria-label")).toBe("Course content");
+  el.setAttribute("tray-label", "Updated panel");
+  el.setAttribute("content-label", "Updated content");
+  expect(tray.getAttribute("aria-label")).toBe("Updated panel");
+  expect(content.getAttribute("aria-label")).toBe("Updated content");
+  el.removeAttribute("tray-label");
+  el.removeAttribute("content-label");
+  expect(tray.hasAttribute("aria-label")).toBe(false);
+  expect(content.hasAttribute("aria-label")).toBe(false);
+});
+
+test("pane labels are attribute text, not parsed markup", () => {
+  const el = drawer("open");
+  el.setAttribute("content-label", "<strong>Course content</strong>");
+  expect(el.shadowRoot!.querySelector(".content")?.getAttribute("aria-label")).toBe(
+    "<strong>Course content</strong>",
+  );
+  expect(el.shadowRoot!.querySelector("strong")).toBeNull();
 });
 
 test("toggle() flips the open attribute; forced values win", () => {

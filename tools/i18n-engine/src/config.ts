@@ -172,8 +172,7 @@ export const CONFIG_DEFAULTS: Omit<I18nConfig, "source" | "spaces"> = {
     profiles: {
       copilot: {
         command: "tools/translation-adapters/copilot-wrapper.sh",
-        model: "gpt-5-mini",
-        effort: "low",
+        model: "auto",
         concurrency: 4,
       },
       agy: {

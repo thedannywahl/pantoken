@@ -16,7 +16,22 @@
  * <a class="pfx-link" href="#">A styled link</a>
  * @example -automatica11y
  * ```html
- * <a class="pfx-link" href="#account-settings" data-a11y-trigger data-a11y-root>Account settings</a>
+ * <div>
+ *   <p><a class="pfx-link" href="#audit-link-settings" data-a11y-trigger data-a11y-root>Account settings</a></p>
+ *   <p><a class="pfx-link -size-sm" href="#audit-link-settings">Profile settings</a></p>
+ *   <p><a class="pfx-link -size-lg" href="#audit-link-settings">Notification settings</a></p>
+ *   <p>Read the <a class="pfx-link -inline" href="#audit-link-settings">account guide</a>.</p>
+ *   <p>Open the <a class="pfx-link -inline -sm" href="#audit-link-settings">short guide</a>.</p>
+ *   <p>Open the <a class="pfx-link -inline -lg" href="#audit-link-settings">complete guide</a>.</p>
+ *   <p><a class="pfx-link -unstyled" href="#audit-link-settings">Account overview</a></p>
+ *   <p><a class="pfx-link -icon-arrow-right" href="#audit-link-settings">Continue to settings</a></p>
+ *   <p><a class="pfx-link" role="link" aria-disabled="true">Settings unavailable</a></p>
+ *   <div class="--bg-accent-blue --p-md">
+ *     <p><a class="pfx-link -color-inverse" href="#audit-link-settings">Settings on brand</a></p>
+ *     <p><a class="pfx-link -color-inverse" role="link" aria-disabled="true">Settings unavailable on brand</a></p>
+ *   </div>
+ *   <p id="audit-link-settings">Manage your account preferences here.</p>
+ * </div>
  * ```
  * @example -docs
  * ```html
@@ -69,6 +84,9 @@
     background: currentColor;
     -webkit-mask: var(--pantoken-glyph) center / contain no-repeat;
     mask: var(--pantoken-glyph) center / contain no-repeat;
+    @media (forced-colors: active) {
+      forced-color-adjust: preserve-parent-color;
+    }
   }
 
   &:is([class^="-icon-"], [class*=" -icon-"]):only-child::before {
@@ -113,4 +131,12 @@
 .pfx-link.-unstyled {
   color: var(--instui-component-link-unstyled-text-color);
   text-decoration: none;
+}
+
+@media (prefers-contrast: more) {
+  .pfx-link:any-link {
+    text-decoration-line: underline;
+    text-decoration-thickness: max(2px, 0.1em);
+    text-underline-offset: 0.15em;
+  }
 }

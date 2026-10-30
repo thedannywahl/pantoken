@@ -17,10 +17,47 @@
  * @cssstate checked
  * @cssstate disabled
  * @accessibility A native `<input type="radio">` drives `:checked` and `:disabled`; `-readonly` is styling only, since radios have no native readonly attribute.
- * @example
+ * @example -canvas-rce -docs
+ * ```html
  * <label class="pfx-radio"><input type="radio" name="r" checked> Option A</label>
+ * ```
  * @related checkbox — The multi-select counterpart to a single-select radio.
  * @related radio-input-group — Collects radios into one single-select fieldset.
+ * @example -automatica11y
+ * ```html
+ * <fieldset>
+ *   <legend>Standard radio sizes and states</legend>
+ *   <p><label class="pfx-radio"><input type="radio" name="audit-radio-standard" value="medium" checked>Medium selected</label></p>
+ *   <p><label class="pfx-radio -size-sm"><input type="radio" name="audit-radio-standard" value="small">Small unselected</label></p>
+ *   <p><label class="pfx-radio -size-lg"><input type="radio" name="audit-radio-standard" value="large">Large unselected</label></p>
+ *   <p><label class="pfx-radio"><input type="radio" name="audit-radio-standard" value="disabled" disabled>Disabled unselected</label></p>
+ * </fieldset>
+ * <fieldset><legend>Small selected radio</legend><label class="pfx-radio -size-sm"><input type="radio" name="audit-radio-small" checked>Small selected</label></fieldset>
+ * <fieldset><legend>Large selected radio</legend><label class="pfx-radio -size-lg"><input type="radio" name="audit-radio-large" checked>Large selected</label></fieldset>
+ * <fieldset>
+ *   <legend>Locked radio selection (disabled because native radios have no readonly state)</legend>
+ *   <p><label class="pfx-radio -readonly"><input type="radio" name="audit-radio-locked" value="locked" checked disabled>Read-only selected</label></p>
+ *   <p><label class="pfx-radio"><input type="radio" name="audit-radio-locked" value="other" disabled>Disabled unselected</label></p>
+ * </fieldset>
+ * <fieldset>
+ *   <legend>Disabled selected radio</legend>
+ *   <label class="pfx-radio"><input type="radio" name="audit-radio-disabled" checked disabled>Disabled selected</label>
+ * </fieldset>
+ * <fieldset>
+ *   <legend>Default toggle sizes and states</legend>
+ *   <p><label class="pfx-radio -variant-toggle"><input type="radio" name="audit-radio-toggle" value="medium" checked>Medium selected</label></p>
+ *   <p><label class="pfx-radio -variant-toggle -size-sm"><input type="radio" name="audit-radio-toggle" value="small">Small unselected</label></p>
+ *   <p><label class="pfx-radio -variant-toggle -size-lg"><input type="radio" name="audit-radio-toggle" value="large">Large unselected</label></p>
+ *   <p><label class="pfx-radio -variant-toggle"><input type="radio" name="audit-radio-toggle" value="disabled" disabled>Disabled unselected</label></p>
+ * </fieldset>
+ * <fieldset><legend>Small selected toggle</legend><label class="pfx-radio -variant-toggle -size-sm"><input type="radio" name="audit-radio-toggle-small" checked>Small selected</label></fieldset>
+ * <fieldset><legend>Large selected toggle</legend><label class="pfx-radio -variant-toggle -size-lg"><input type="radio" name="audit-radio-toggle-large" checked>Large selected</label></fieldset>
+ * <fieldset><legend>Neutral toggle</legend><label class="pfx-radio -variant-toggle -context-off"><input type="radio" name="audit-radio-off" checked>Neutral selected</label></fieldset>
+ * <fieldset><legend>Success toggle</legend><label class="pfx-radio -variant-toggle -context-success"><input type="radio" name="audit-radio-success" checked>Success selected</label></fieldset>
+ * <fieldset><legend>Warning toggle</legend><label class="pfx-radio -variant-toggle -context-warning"><input type="radio" name="audit-radio-warning" checked>Warning selected</label></fieldset>
+ * <fieldset><legend>Danger toggle</legend><label class="pfx-radio -variant-toggle -context-danger"><input type="radio" name="audit-radio-danger" checked>Danger selected</label></fieldset>
+ * <fieldset><legend>Disabled toggle selection</legend><label class="pfx-radio -variant-toggle"><input type="radio" name="audit-radio-toggle-disabled" checked disabled>Disabled selected</label></fieldset>
+ * ```
  */
 @scope (.pfx-radio) {
   & {
@@ -48,9 +85,11 @@
     border-radius: 50%;
     background: var(--instui-component-radio-input-background-color);
     cursor: pointer;
-    transition:
-      border-color 0.15s ease,
-      background-color 0.15s ease;
+    @media (prefers-reduced-motion: no-preference) {
+      transition:
+        border-color 0.15s ease,
+        background-color 0.15s ease;
+    }
   }
 
   &:not(.-variant-toggle):not(.-toggle) input[type="radio"]::before {
@@ -65,8 +104,14 @@
     );
     border-radius: 50%;
     background: var(--instui-component-radio-input-border-selected-color);
+    @media (forced-colors: active) {
+      forced-color-adjust: preserve-parent-color;
+      background: currentColor;
+    }
     transform: scale(0);
-    transition: transform 0.1s ease;
+    @media (prefers-reduced-motion: no-preference) {
+      transition: transform 0.1s ease;
+    }
   }
 
   &:not(.-variant-toggle):not(.-toggle) input[type="radio"]:hover {
@@ -167,9 +212,11 @@
     text-transform: uppercase;
     white-space: nowrap;
     cursor: pointer;
-    transition:
-      background-color 0.15s ease,
-      color 0.15s ease;
+    @media (prefers-reduced-motion: no-preference) {
+      transition:
+        background-color 0.15s ease,
+        color 0.15s ease;
+    }
   }
 
   /* Clip the native control (still focusable + in the a11y tree); the label is the button. */
@@ -206,6 +253,9 @@
     background: var(--pantoken-rt-fill);
     color: var(--instui-component-radio-input-toggle-handle-text);
     box-shadow: var(--instui-elevation-depth1);
+    @media (forced-colors: active) {
+      outline: 2px solid Highlight;
+    }
   }
 
   /* Focus: underline the label and draw a ring offset just outside the pill (the InstUI focus facade). */
@@ -226,6 +276,11 @@
   &.-variant-toggle:has(input:disabled) {
     opacity: 0.5;
     cursor: not-allowed;
+
+    @media (prefers-reduced-transparency: reduce) {
+      opacity: 1;
+      color: var(--instui-component-radio-input-label-disabled-color);
+    }
   }
 
   &.-variant-toggle.-size-sm {

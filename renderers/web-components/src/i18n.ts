@@ -83,7 +83,7 @@ export function getDir(localeOrBundle: string | LocaleBundle): "ltr" | "rtl" {
 export function registerLocalized(
   bundle: LocaleBundle | string,
   target?: ElementRegistry,
-  options: { prefix?: string | null; only?: readonly string[] } = {},
+  options: { prefix?: string; only?: readonly string[] } = {},
 ): void {
   if (typeof bundle === "string") {
     const meta = LOCALES[bundle];
@@ -121,7 +121,7 @@ export interface LocaleSet<K extends string> {
   register(
     locale: K,
     target?: ElementRegistry,
-    options?: { prefix?: string | null; only?: readonly string[] },
+    options?: { prefix?: string; only?: readonly string[] },
   ): void;
 }
 

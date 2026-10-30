@@ -1,7 +1,25 @@
-<div class="instui-menu" style="max-width: 220px">
-  <div class="group">{{text1}}</div>
-  <div class="item">{{text2}}</div>
-  <div class="item -active">{{text3}}</div>
-  <div class="separator"></div>
-  <div class="item">{{text4}}</div>
+<button
+  id="demo-menu-button"
+  class="instui-button"
+  type="button"
+  popovertarget="demo-menu"
+  aria-haspopup="menu"
+  aria-controls="demo-menu"
+  aria-expanded="false"
+>
+  {{text1}}
+</button>
+<div
+  id="demo-menu"
+  class="instui-menu"
+  role="menu"
+  popover="auto"
+  aria-labelledby="demo-menu-button"
+  data-menu-navigation
+  style="max-width: 220px"
+>
+  <button class="item" type="button" role="menuitem">{{text2}}</button>
+  <button class="item" type="button" role="menuitem">{{text3}}</button>
+  <div class="separator" role="separator"></div>
+  <button class="item" type="button" role="menuitem">{{text4}}</button>
 </div>

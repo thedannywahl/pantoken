@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: pantoken\n"
-"PO-Revision-Date: 2026-10-26 23:48+0000\n"
+"PO-Revision-Date: 2026-10-29 23:32+0000\n"
 "Last-Translator: pantoken localization engine\n"
 "Language-Team: pantoken\n"
 "MIME-Version: 1.0\n"
@@ -13209,10 +13209,10 @@ msgstr "Một nút \"xem toàn màn hình\" hiện khi rê chuột, phủ lên k
 #~ msgid "A native `<input type=\"checkbox\">` drives `:checked`, `:indeterminate`, and `:disabled`; set `el.indeterminate = true` in JavaScript for the mixed state, and note that `-readonly` is styling only since checkboxes have no native readonly attribute."
 #~ msgstr "Một `<input type=\"checkbox\">` gốc điều khiển `:checked`, `:indeterminate`, và `:disabled`; đặt `el.indeterminate = true` bằng JavaScript cho trạng thái hỗn hợp, và lưu ý rằng `-readonly` chỉ là kiểu dáng vì checkbox không có thuộc tính readonly gốc."
 
-#, fuzzy, no-c-format
+#, no-c-format
 #~ msgctxt "docs.api:prose"
 #~ msgid "Checkbox\n"
-#~ msgstr "checkbox"
+#~ msgstr "Hộp kiểm\n"
 
 #, fuzzy, no-c-format
 #~ msgctxt "docs.api:prose"
@@ -30976,6 +30976,7 @@ msgstr "Một nút \"xem toàn màn hình\" hiện khi rê chuột, phủ lên k
 #~ msgid "Review your account information."
 #~ msgstr "Xem lại thông tin tài khoản của bạn."
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:prose"
 #~ msgid "-docs\n"
 #~ msgstr "-docs\n"
@@ -31144,9 +31145,10 @@ msgstr "Một nút \"xem toàn màn hình\" hiện khi rê chuột, phủ lên k
 #~ msgid "See upcoming assignments."
 #~ msgstr "Xem các bài tập sắp tới."
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:prose"
 #~ msgid "Canvas"
-#~ msgstr "Bảng vẽ"
+#~ msgstr "Canvas"
 
 #~ msgctxt "docs.api:prose"
 #~ msgid "Course home"
@@ -31206,3 +31208,1213 @@ msgstr "Bản phát hành Lucide được phân giải, cần thiết khi loại
 msgctxt "docs.api:text"
 msgid "removalDeadline"
 msgstr "removalDeadline"
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "more-contrast-respected"
+msgstr "more-contrast-respected"
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "reflow-at-320px"
+msgstr "reflow-at-320px"
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "Fail"
+msgstr "Fail"
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "text-spacing-no-clipping"
+msgstr "text-spacing-no-clipping"
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "Pass"
+msgstr "Pass"
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "Announcements"
+msgstr "Announcements"
+
+msgctxt "docs.api:prose"
+msgid "The shell is a plain container with no role of its own. Give it a landmark or group name (for example `role=\"region\"` with an `aria-label`, or a heading) so assistive tech can find the agent surface, and keep its content in reading order."
+msgstr "Vỏ bọc này chỉ là một vùng chứa đơn thuần, không có vai trò riêng. Hãy đặt tên cho landmark hoặc nhóm (ví dụ `role=\"region\"` với `aria-label`, hoặc một tiêu đề) để công nghệ hỗ trợ có thể tìm thấy bề mặt tác nhân và giữ nội dung theo thứ tự đọc."
+
+msgctxt "docs.api:prose"
+msgid "Conditions"
+msgstr "Điều kiện"
+
+msgctxt "docs.api:prose"
+msgid "Rebrand (light)"
+msgstr "Đổi thương hiệu (sáng)"
+
+msgctxt "docs.api:prose"
+msgid "Rebrand (dark)"
+msgstr "Đổi thương hiệu (tối)"
+
+msgctxt "docs.api:prose"
+msgid "Canvas High Contrast"
+msgstr "Canvas tương phản cao"
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "WCAG 2.2 1.4.3, 1.4.6"
+msgstr "WCAG 2.2 1.4.3, 1.4.6"
+
+msgctxt "docs.api:prose"
+msgid "Review needed"
+msgstr "Cần xem xét"
+
+msgctxt "docs.api:prose"
+msgid "The page changes under prefers-contrast: more, but no visible text was measurable."
+msgstr "Trang thay đổi khi bật prefers-contrast: more, nhưng không đo được văn bản hiển thị nào."
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "WCAG 2.2 1.4.10"
+msgstr "WCAG 2.2 1.4.10"
+
+msgctxt "docs.api:prose"
+msgid "In a 320px window, the page scrolls sideways (it is 336px wide in a 320px window), and one element reaches past the right edge: "
+msgstr "Trong cửa sổ rộng 320px, trang cuộn ngang (trang rộng 336px trong cửa sổ rộng 320px), và một phần tử vượt quá mép phải: "
+
+msgctxt "docs.api:prose"
+msgid " ends at 336px. WCAG 1.4.10 Reflow (level AA) exempts two-dimensional content such as data tables and maps, so a person should judge whether that applies."
+msgstr " kết thúc ở 336px. WCAG 1.4.10 Tái bố cục (mức AA) miễn trừ nội dung hai chiều như bảng dữ liệu và bản đồ, vì vậy người đánh giá cần xác định liệu trường hợp đó có áp dụng hay không."
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "WCAG 2.2 1.4.12"
+msgstr "WCAG 2.2 1.4.12"
+
+msgctxt "docs.api:prose"
+msgid "Screen reader (simulated)"
+msgstr "Trình đọc màn hình (mô phỏng)"
+
+msgctxt "docs.api:prose"
+msgid "These automated results do not establish that the page meets WCAG; manual review is still needed."
+msgstr "Các kết quả tự động này không chứng minh rằng trang đáp ứng WCAG; vẫn cần đánh giá thủ công."
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "color-contrast"
+msgstr "color-contrast"
+
+msgctxt "docs.api:prose"
+msgid "Rules (axe-core)"
+msgstr "Quy tắc (axe-core)"
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "WCAG 2.2 1.4.3"
+msgstr "WCAG 2.2 1.4.3"
+
+msgctxt "docs.api:prose"
+msgid "Elements must meet minimum color contrast ratio thresholds"
+msgstr "Các phần tử phải đáp ứng ngưỡng tỷ lệ tương phản màu tối thiểu"
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "forced-colors-focus-visible"
+msgstr "forced-colors-focus-visible"
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "less-contrast-stays-readable"
+msgstr "less-contrast-stays-readable"
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "reduced-motion-respected"
+msgstr "reduced-motion-respected"
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "Interactions"
+msgstr "Interactions"
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "focus-indicator-visible"
+msgstr "focus-indicator-visible"
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "focus-stays-on-trigger"
+msgstr "focus-stays-on-trigger"
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "live-politeness-fits-role"
+msgstr "live-politeness-fits-role"
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "message-has-text"
+msgstr "message-has-text"
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "message-in-live-region"
+msgstr "message-in-live-region"
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "no-focus-trap"
+msgstr "no-focus-trap"
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "region-exists-before-message"
+msgstr "region-exists-before-message"
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "trigger-reachable-by-tab"
+msgstr "trigger-reachable-by-tab"
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "message-text-contrast"
+msgstr "message-text-contrast"
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "WCAG 2.2 1.4.11, 2.4.7"
+msgstr "WCAG 2.2 1.4.11, 2.4.7"
+
+msgctxt "docs.api:prose"
+msgid "Not applicable"
+msgstr "Không áp dụng"
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "WCAG 2.2 2.3.3, 2.2.2"
+msgstr "WCAG 2.2 2.3.3, 2.2.2"
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "WCAG 2.2 2.4.7"
+msgstr "WCAG 2.2 2.4.7"
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "WCAG 2.2 4.1.3"
+msgstr "WCAG 2.2 4.1.3"
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "WCAG 2.2 2.1.2"
+msgstr "WCAG 2.2 2.1.2"
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "WCAG 2.2 2.1.1"
+msgstr "WCAG 2.2 2.1.1"
+
+msgctxt "docs.api:prose"
+msgid "Computed styles"
+msgstr "Kiểu đã tính toán"
+
+msgctxt "docs.api:prose"
+msgid "The name parts intentionally clip full names to leading letters. Keep the full text in the markup; when identifying text must also be visible, show the full name alongside the avatar."
+msgstr "Các phần tên cố ý cắt tên đầy đủ, chỉ hiển thị các chữ cái đầu. Giữ nguyên toàn bộ văn bản trong mã đánh dấu; khi văn bản nhận diện cũng cần hiển thị, hãy hiển thị tên đầy đủ bên cạnh ảnh đại diện."
+
+msgctxt "docs.api:prose"
+msgid "All 18 measured pieces of text pass with more contrast. one other piece can't be reduced to one color. \"Sam Kim\" can't be measured because a background image or gradient sits behind it."
+msgstr "Cả 18 đoạn văn bản được đo đều đạt yêu cầu với độ tương phản cao hơn. Một đoạn khác không thể giảm xuống còn một màu. Không thể đo \"Sam Kim\" vì có hình nền hoặc dải chuyển màu phía sau."
+
+msgctxt "docs.api:prose"
+msgid "With line height 1.5, letter spacing 0.12em, word spacing 0.16em, and paragraph spacing 2em, text in six elements gets cut off: "
+msgstr "Với chiều cao dòng 1.5, khoảng cách chữ 0.12em, khoảng cách từ 0.16em và khoảng cách đoạn 2em, văn bản trong sáu phần tử bị cắt: "
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid " (\"Lee Harper\"); "
+msgstr " (\"Lee Harper\"); "
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid " (\"Amira Patel\"); "
+msgstr " (\"Amira Patel\"); "
+
+msgctxt "docs.api:prose"
+msgid " (\"Miguel\"); and 3 more. Overlapping text isn't checked."
+msgstr " (\"Miguel\"); và 3 mục khác. Không kiểm tra văn bản chồng lấp."
+
+msgctxt "docs.api:prose"
+msgid "The count or dot is visual only, so don't rely on color to carry its meaning; put the status in text, such as visually hidden text or an `aria-label` on the target it decorates."
+msgstr "Số đếm hoặc dấu chấm chỉ mang tính trực quan, vì vậy đừng dựa vào màu sắc để truyền tải ý nghĩa; hãy thể hiện trạng thái bằng văn bản, chẳng hạn như văn bản bị ẩn về mặt thị giác hoặc một `aria-label` trên phần tử đích mà nó trang trí."
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "Canvas:"
+msgstr "Canvas:"
+
+msgctxt "docs.api:prose"
+msgid " With prefers-contrast: more, two pieces of text fall below the minimum contrast. The worst is \"Undo\" at 4.46:1 (needs 4.5:1)."
+msgstr " Với prefers-contrast: more, hai đoạn văn bản có độ tương phản thấp hơn mức tối thiểu. Mức thấp nhất là \"Undo\" ở 4.46:1 (cần 4.5:1)."
+
+msgctxt "docs.api:prose"
+msgid "It sets the page surface, text color, and `color-scheme` so native controls follow the active light or dark scheme; keep links distinguishable from surrounding text by more than color alone."
+msgstr "Nó thiết lập bề mặt trang, màu văn bản và `color-scheme` để các điều khiển gốc tuân theo giao diện sáng hoặc tối đang hoạt động; hãy giúp người đọc phân biệt liên kết với văn bản xung quanh bằng nhiều cách hơn là chỉ dựa vào màu sắc."
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "label-content-name-mismatch"
+msgstr "label-content-name-mismatch"
+
+msgctxt "docs.api:prose"
+msgid "Render the `.heading` as a real heading element. A `-clickable` billboard only gains hover styling, so give it `tabindex=\"0\"`, an appropriate role, and a keyboard handler."
+msgstr "Hiển thị `.heading` dưới dạng một phần tử tiêu đề thực sự. Một `-clickable` billboard chỉ có kiểu định dạng khi di chuột, vì vậy hãy cung cấp cho nó `tabindex=\"0\"`, một vai trò phù hợp và trình xử lý bàn phím."
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "WCAG 2.2 2.5.3"
+msgstr "WCAG 2.2 2.5.3"
+
+msgctxt "docs.api:prose"
+msgid "Elements must have their visible text as part of their accessible name"
+msgstr "Các phần tử phải có văn bản hiển thị nằm trong tên có thể truy cập"
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "reduced-transparency-respected"
+msgstr "reduced-transparency-respected"
+
+msgctxt "docs.api:prose"
+msgid "Rebrand (light):"
+msgstr "Đổi thương hiệu (sáng):"
+
+msgctxt "docs.api:prose"
+msgid " With prefers-contrast: more, six pieces of text fall below the minimum contrast. The worst is \"Send\" at 1.64:1 (needs 4.5:1)."
+msgstr " Với prefers-contrast: more, sáu đoạn văn bản có độ tương phản thấp hơn mức tối thiểu. Tệ nhất là \"Gửi\" ở mức 1.64:1 (cần 4.5:1)."
+
+msgctxt "docs.api:prose"
+msgid "Rebrand (dark):"
+msgstr "Đổi thương hiệu (tối):"
+
+msgctxt "docs.api:prose"
+msgid " With prefers-contrast: more, six pieces of text fall below the minimum contrast. The worst is \"Send\" at 1.78:1 (needs 4.5:1)."
+msgstr " Với prefers-contrast: more, sáu đoạn văn bản có độ tương phản thấp hơn mức tối thiểu. Tệ nhất là \"Gửi\" ở mức 1.78:1 (cần 4.5:1)."
+
+msgctxt "docs.api:prose"
+msgid "Canvas, Canvas High Contrast:"
+msgstr "Canvas, Canvas Tương phản cao:"
+
+msgctxt "docs.api:prose"
+msgid " With prefers-contrast: more, two pieces of text fall below the minimum contrast. The worst is \"Rewrite\" at 1.88:1 (needs 4.5:1)."
+msgstr " Với prefers-contrast: more, hai đoạn văn bản có độ tương phản thấp hơn mức tối thiểu. Tệ nhất là \"Viết lại\" ở mức 1.88:1 (cần 4.5:1)."
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "WCAG 2.2 1.4.3, 1.4.11"
+msgstr "WCAG 2.2 1.4.3, 1.4.11"
+
+msgctxt "docs.api:prose"
+msgid "In a 320px window, the page scrolls sideways (it is 592px wide in a 320px window), and one element reaches past the right edge: "
+msgstr "Trong cửa sổ rộng 320px, trang bị cuộn ngang (trang rộng 592px trong cửa sổ rộng 320px)), và một phần tử vượt quá cạnh phải: "
+
+msgctxt "docs.api:prose"
+msgid " ends at 592px. WCAG 1.4.10 Reflow (level AA) exempts two-dimensional content such as data tables and maps, so a person should judge whether that applies."
+msgstr " kết thúc ở 592px. WCAG 1.4.10 Reflow (mức AA) miễn trừ nội dung hai chiều như bảng dữ liệu và bản đồ, vì vậy người đánh giá nên xác định liệu trường hợp này có áp dụng hay không."
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "enter-activates"
+msgstr "enter-activates"
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "space-activates"
+msgstr "space-activates"
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "boundary-contrast"
+msgstr "boundary-contrast"
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "focus-indicator-contrast"
+msgstr "focus-indicator-contrast"
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "text-contrast-by-state"
+msgstr "text-contrast-by-state"
+
+msgctxt "docs.api:prose"
+msgid " With forced colors on, the focus indicator is weak: only 58 of 299 changed pixels reach 3:1 against their unfocused color, and enough to count is about half the control's perimeter, 108."
+msgstr " Khi bật forced colors, chỉ báo tiêu điểm yếu: chỉ 58 trong số 299 pixel thay đổi đạt tỷ lệ 3:1 so với màu khi không được lấy tiêu điểm, trong khi ngưỡng đủ để tính là khoảng một nửa chu vi của điều khiển, 108."
+
+msgctxt "docs.api:prose"
+msgid " With prefers-contrast: more, eight pieces of text fall below the minimum contrast. The worst is \"Save unavailable\" at 1.64:1 (needs 4.5:1)."
+msgstr " Khi bật prefers-contrast: more, tám đoạn văn bản có độ tương phản thấp hơn mức tối thiểu. Tệ nhất là \"Không thể lưu\" ở mức 1.64:1 (cần 4.5:1)."
+
+msgctxt "docs.api:prose"
+msgid " With prefers-contrast: more, eight pieces of text fall below the minimum contrast. The worst is \"Save unavailable\" at 1.78:1 (needs 4.5:1)."
+msgstr " Khi bật prefers-contrast: more, tám đoạn văn bản có độ tương phản thấp hơn mức tối thiểu. Tệ nhất là \"Không thể lưu\" ở mức 1.78:1 (cần 4.5:1)."
+
+msgctxt "docs.api:prose"
+msgid " With prefers-contrast: more, two pieces of text fall below the minimum contrast. The worst is \"Summary unavailable\" at 1.88:1 (needs 4.5:1)."
+msgstr " Khi bật prefers-contrast: more, hai đoạn văn bản có độ tương phản thấp hơn mức tối thiểu. Tệ nhất là \"Không có bản tóm tắt\" ở mức 1.88:1 (cần 4.5:1)."
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "WCAG 2.2 1.4.11"
+msgstr "WCAG 2.2 1.4.11"
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "WCAG 2.2 1.4.11, 2.4.13"
+msgstr "WCAG 2.2 1.4.11, 2.4.13"
+
+msgctxt "docs.api:prose"
+msgid "Give an informative hero image alt text and mark a decorative one with an empty `alt` or `aria-hidden=\"true\"`. Use a real heading element for the `.title` when it belongs in the document outline."
+msgstr "Cung cấp văn bản thay thế mô tả hữu ích cho ảnh chính và đánh dấu ảnh trang trí bằng `alt` hoặc `aria-hidden=\"true\"`. Dùng phần tử tiêu đề thực sự cho `.title` khi nó thuộc cấu trúc đề mục của tài liệu."
+
+msgctxt "docs.api:prose"
+msgid " Elements must meet minimum color contrast ratio thresholds"
+msgstr " Các phần tử phải đáp ứng ngưỡng tỷ lệ tương phản màu tối thiểu"
+
+msgctxt "docs.api:prose"
+msgid "Mirror `-selected` with `aria-selected` and mark today with `aria-current=\"date\"`; give each day a full-date accessible name, since the day number alone is ambiguous."
+msgstr "Đối chiếu `-selected` với `aria-selected` và đánh dấu ngày hôm nay bằng `aria-current=\"date\"`; đặt tên trợ năng bao gồm ngày tháng năm đầy đủ cho mỗi ngày, vì chỉ số ngày không đủ rõ ràng."
+
+msgctxt "docs.api:prose"
+msgid "Wrap the native `<input type=\"checkbox\">` and its visible text in a `<label>` to supply its accessible name. The input drives `:checked`, `:indeterminate`, and `:disabled`; set `el.indeterminate = true` in JavaScript for the mixed state. `-readonly` is styling only since checkboxes have no native readonly attribute."
+msgstr "Bọc `<input type=\"checkbox\">` gốc và văn bản hiển thị của nó trong một `<label>` để cung cấp tên trợ năng cho nó. Đầu vào này điều khiển `:checked`, `:indeterminate` và `:disabled`; hãy đặt `el.indeterminate = true` trong JavaScript để thiết lập trạng thái hỗn hợp. `-readonly` chỉ dùng để tạo kiểu vì hộp kiểm không có thuộc tính readonly gốc."
+
+msgctxt "docs.api:prose"
+msgid " With prefers-contrast: more, five pieces of text fall below the minimum contrast. The worst is \"Disabled unchecked checkbox\" at 2.74:1 (needs 4.5:1)."
+msgstr " Với prefers-contrast: more, năm đoạn văn bản có độ tương phản thấp hơn mức tối thiểu. Mức thấp nhất là \"Hộp kiểm bị tắt, chưa chọn\" ở 2.74:1 (cần 4.5:1)."
+
+msgctxt "docs.api:prose"
+msgid " With prefers-contrast: more, five pieces of text fall below the minimum contrast. The worst is \"Disabled unchecked checkbox\" at 3.15:1 (needs 4.5:1)."
+msgstr " Với prefers-contrast: more, năm đoạn văn bản có độ tương phản thấp hơn mức tối thiểu. Mức thấp nhất là \"Hộp kiểm bị tắt, chưa chọn\" ở 3.15:1 (cần 4.5:1)."
+
+msgctxt "docs.api:prose"
+msgid " With prefers-contrast: more, five pieces of text fall below the minimum contrast. The worst is \"Disabled unchecked checkbox\" at 3.02:1 (needs 4.5:1)."
+msgstr " Với prefers-contrast: more, năm đoạn văn bản có độ tương phản thấp hơn mức tối thiểu. Mức thấp nhất là \"Hộp kiểm bị tắt, chưa chọn\" ở 3.02:1 (cần 4.5:1)."
+
+msgctxt "docs.api:prose"
+msgid "Connect the trigger with `popovertarget` so the open state is exposed, and keep the native Escape and outside-click dismissal. The caret is decorative; the callout's content isn't announced unless the trigger references it, for example with `aria-describedby`."
+msgstr "Kết nối phần tử kích hoạt với `popovertarget` để trạng thái mở được hiển thị, đồng thời giữ nguyên cách đóng bằng phím Escape và nhấp bên ngoài theo cơ chế gốc. Dấu mũi tên chỉ có tính trang trí; nội dung của hộp chú thích sẽ không được thông báo trừ khi phần tử kích hoạt tham chiếu đến nội dung đó, chẳng hạn bằng `aria-describedby`."
+
+msgctxt "docs.api:prose"
+msgid "The cursor only affects pointer users; a pointer cursor doesn't make an element operable. Put it on native controls (`button`, `a`), and never use `--cursor-not-allowed` or `--cursor-wait` as the only sign that something is disabled or busy."
+msgstr "Con trỏ chỉ ảnh hưởng đến người dùng dùng chuột; con trỏ dạng bàn tay không khiến một phần tử có thể thao tác được. Hãy dùng nó cho các điều khiển gốc (`button`, `a`)), và không bao giờ chỉ dùng `--cursor-not-allowed` hoặc `--cursor-wait` để cho biết rằng nội dung nào đó bị vô hiệu hóa hoặc đang bận."
+
+msgctxt "docs.api:prose"
+msgid "Once the parent's inline-size drops below `64em` (`16em` tray width + `48em` breakpoint), a `@container` query on the parent's `pantoken-drawer-layout` container drops this member's `min-inline-size` to `0` automatically, matching the manual `[should-overlay-tray]` override. This also applies when the tray is closed or absent."
+msgstr "Khi kích thước nội tuyến của phần tử cha giảm xuống dưới `64em` (`16em` độ rộng khay + `48em` điểm ngắt), truy vấn `@container` trên vùng chứa `pantoken-drawer-layout` của phần tử cha sẽ tự động giảm `min-inline-size` của thành phần này xuống `0`, tương ứng với phần ghi đè `[should-overlay-tray]` được thiết lập thủ công. Điều này cũng áp dụng khi khay đã đóng hoặc không tồn tại."
+
+msgctxt "docs.api:prose"
+msgid "Use a `div` with `role=\"region\"` (InstUI's DrawerLayout convention) and always name it with `aria-label` or `aria-labelledby`."
+msgstr "Sử dụng `div` với `role=\"region\"` (theo quy ước DrawerLayout của InstUI) và luôn đặt tên bằng `aria-label` hoặc `aria-labelledby`."
+
+msgctxt "docs.api:prose"
+msgid "Name every region with `aria-label` or `aria-labelledby`. Use `div` for InstUI-style regions, not `<main role=\"region\">`. When the tray acts as navigation, use a named `<nav>` or place one inside the tray."
+msgstr "Đặt tên cho mọi vùng bằng `aria-label` hoặc `aria-labelledby`. Dùng `div` cho các vùng theo kiểu InstUI, không dùng `<main role=\"region\">`. Khi khay đóng vai trò điều hướng, hãy dùng một `<nav>` có tên hoặc đặt một cái bên trong khay."
+
+msgctxt "docs.api:prose"
+msgid "The page changes under prefers-contrast: less, but no visible text was measurable."
+msgstr "Giao diện trang thay đổi khi prefers-contrast: less, nhưng không đo được văn bản nào hiển thị."
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "error-associated-on-invalid"
+msgstr "error-associated-on-invalid"
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "label-associated"
+msgstr "label-associated"
+
+msgctxt "docs.api:prose"
+msgid "Native validation is opt-in: add `data-native-validation` and load `@pantoken/interactions/form-field.iife.js`, or call `initFormField(host, control, error)`. Supply exactly one native control and one error message with a stable, unique ID. The behavior associates the error after blur or a native validation attempt and removes it when corrected; CSS alone doesn't synchronize ARIA."
+msgstr "Xác thực gốc là tùy chọn bật: thêm `data-native-validation` và tải `@pantoken/interactions/form-field.iife.js`, hoặc gọi `initFormField(host, control, error)`. Cung cấp chính xác một điều khiển gốc và một thông báo lỗi có ID duy nhất, ổn định. Hành vi này liên kết lỗi sau sự kiện mất tiêu điểm hoặc một lần thử xác thực gốc, rồi xóa lỗi khi được khắc phục; chỉ CSS thì không đồng bộ hóa ARIA."
+
+msgctxt "docs.api:prose"
+msgid "Use your work email."
+msgstr "Hãy sử dụng email công việc của bạn."
+
+msgctxt "docs.api:prose"
+msgid "A wrapping `<label>` names the control. When it also contains messages, use `aria-labelledby` to identify just the visible label text and `aria-describedby` for hints. Associate visible validation errors and synchronize `aria-invalid` in application code or with the opt-in native validation behavior; the decorative required asterisk isn't an accessible-name substitute."
+msgstr "Nhãn bao quanh đặt tên cho điều khiển. Khi nhãn cũng chứa thông báo, hãy dùng `aria-labelledby` để chỉ xác định phần văn bản nhãn hiển thị và `aria-describedby` cho phần gợi ý. Liên kết các lỗi xác thực hiển thị và đồng bộ hóa `aria-invalid` trong mã ứng dụng hoặc bằng hành vi xác thực gốc tùy chọn; dấu hoa thị trang trí chỉ trạng thái bắt buộc không thể thay thế tên truy cập."
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "WCAG 2.2 3.3.1, 4.1.3"
+msgstr "WCAG 2.2 3.3.1, 4.1.3"
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "WCAG 2.2 1.3.1, 3.3.2, 4.1.2"
+msgstr "WCAG 2.2 1.3.1, 3.3.2, 4.1.2"
+
+msgctxt "docs.api:prose"
+msgid "A gap changes spacing only; reading and focus order still follow the DOM. Keep gaps between interactive controls large enough to meet WCAG 2.5.8 target spacing."
+msgstr "Khoảng cách chỉ thay đổi độ giãn cách; thứ tự đọc và thứ tự lấy nét vẫn tuân theo DOM. Hãy giữ khoảng cách giữa các điều khiển tương tác đủ lớn để đáp ứng yêu cầu về khoảng cách mục tiêu của WCAG 2.5.8."
+
+msgctxt "docs.api:prose"
+msgid "All 17 measured pieces of text pass with more contrast. one other piece can't be reduced to one color. \"Suggested study plan\" can't be measured because a background image or gradient sits behind it."
+msgstr "Cả 17 đoạn văn bản đã đo đều đạt yêu cầu với độ tương phản cao hơn. Một đoạn khác không thể quy về một màu duy nhất. \"Suggested study plan\" không thể đo được vì có hình nền hoặc dải chuyển màu phía sau."
+
+msgctxt "docs.api:prose"
+msgid "A hover and focus tooltip bubble, positionable on any side."
+msgstr "Bong bóng chú giải xuất hiện khi di chuột hoặc lấy tiêu điểm, có thể định vị ở bất kỳ phía nào."
+
+msgctxt "docs.api:prose"
+msgid "A tree of nested collections and leaf items, with rotating chevrons."
+msgstr "Cây gồm các nhóm lồng nhau và mục lá, với các dấu chữ V xoay."
+
+msgctxt "docs.api:prose"
+msgid "Label the inner input with a real `<label>`. Mark purely visual icons in `.before` and `.after` with `aria-hidden=\"true\"`, and convey `-invalid` and `-success` states in text, not color alone."
+msgstr "Gắn nhãn cho trường nhập liệu bên trong bằng một `<label>` thực. Đánh dấu các biểu tượng chỉ mang tính trang trí trong `.before` và `.after` bằng `aria-hidden=\"true\"`, đồng thời thể hiện trạng thái `-invalid` và `-success` bằng văn bản, không chỉ bằng màu sắc."
+
+msgctxt "docs.api:prose"
+msgid "`--display-none` removes an element from the accessibility tree as well as the screen, so use it only for content nobody needs. Flex and grid layout can't reorder content for assistive tech; keep the DOM order meaningful, and don't center or justify long passages of text."
+msgstr "`--display-none` loại bỏ một phần tử khỏi cây trợ năng cũng như khỏi màn hình, vì vậy chỉ dùng nó cho nội dung không ai cần. Bố cục flex và grid không thể sắp xếp lại nội dung cho công nghệ hỗ trợ; hãy giữ thứ tự DOM có ý nghĩa, và đừng căn giữa hoặc căn đều các đoạn văn dài."
+
+msgctxt "docs.api:prose"
+msgid " With prefers-contrast: more, two pieces of text fall below the minimum contrast. The worst is \"Settings unavailable\" at 2.74:1 (needs 4.5:1)."
+msgstr " Khi prefers-contrast: more được bật, hai đoạn văn bản có độ tương phản thấp hơn mức tối thiểu. Tệ nhất là \"Cài đặt không khả dụng\" ở mức 2.74:1 (cần 4.5:1)."
+
+msgctxt "docs.api:prose"
+msgid " With prefers-contrast: more, two pieces of text fall below the minimum contrast. The worst is \"Settings unavailable on brand\" at 1.84:1 (needs 4.5:1)."
+msgstr " Khi prefers-contrast: more được bật, hai đoạn văn bản có độ tương phản thấp hơn mức tối thiểu. Tệ nhất là \"Cài đặt không khả dụng trên thương hiệu\" ở mức 1.84:1 (cần 4.5:1)."
+
+msgctxt "docs.api:prose"
+msgid " With prefers-contrast: more, three pieces of text fall below the minimum contrast. The worst is \"Settings unavailable on brand\" at 2.76:1 (needs 4.5:1)."
+msgstr " Khi prefers-contrast: more được bật, ba đoạn văn bản có độ tương phản thấp hơn mức tối thiểu. Tệ nhất là \"Cài đặt không khả dụng trên thương hiệu\" ở mức 2.76:1 (cần 4.5:1)."
+
+msgctxt "docs.api:prose"
+msgid "Canvas High Contrast:"
+msgstr "Độ tương phản cao của Canvas:"
+
+msgctxt "docs.api:prose"
+msgid " With prefers-contrast: more, one piece of text falls below the minimum contrast. The worst is \"Settings unavailable on brand\" at 2.84:1 (needs 4.5:1)."
+msgstr " Khi prefers-contrast: more được bật, một đoạn văn bản có độ tương phản thấp hơn mức tối thiểu. Tệ nhất là \"Cài đặt không khả dụng trên thương hiệu\" ở mức 2.84:1 (cần 4.5:1)."
+
+msgctxt "docs.api:prose"
+msgid "Keep each item a direct `<li>` child of the list so it stays in the list's accessibility tree; delimiters and markers are visual only."
+msgstr "Giữ mỗi mục là phần tử con trực tiếp `<li>` của danh sách để mục đó vẫn nằm trong cây hỗ trợ tiếp cận của danh sách; dấu phân cách và ký hiệu chỉ mang tính trực quan."
+
+msgctxt "docs.api:prose"
+msgid "Use a real `<ul>` or `<ol>` with `<li>` children. Removing markers with `-unstyled` can make some screen readers drop the list semantics, so add `role=\"list\"` when the list structure matters."
+msgstr "Dùng __PTK_INLINE_CODE_0_ hoặc __PTK_INLINE_CODE_1_ thực sự, với các phần tử con __PTK_INLINE_CODE_2_. Xóa các dấu đánh dấu bằng __PTK_INLINE_CODE_3_ có thể khiến một số trình đọc màn hình bỏ qua ngữ nghĩa danh sách, vì vậy hãy thêm __PTK_INLINE_CODE_4_ khi cấu trúc danh sách quan trọng."
+
+msgctxt "docs.api:prose"
+msgid "A contained spinner honors reduced motion without hiding the overlay or loading indicator. Keep its status role and meaningful loading label."
+msgstr "Vòng xoay nằm trong phần tử tôn trọng tùy chọn giảm chuyển động mà không ẩn lớp phủ hoặc chỉ báo tải. Giữ nguyên vai trò trạng thái và nhãn tải có ý nghĩa."
+
+msgctxt "docs.api:prose"
+msgid "A mask covers content visually but doesn't block assistive tech or the keyboard: make the covered region `inert` (or mark it `aria-busy`), keep the mask's own message as real text, and don't hide the focus indicator behind it."
+msgstr "Mặt nạ che nội dung về mặt thị giác nhưng không ngăn công nghệ hỗ trợ hoặc bàn phím truy cập: hãy làm cho vùng bị che `inert` (hoặc đánh dấu vùng đó là `aria-busy`), giữ thông báo riêng của mặt nạ ở dạng văn bản thực và không để mặt nạ che khuất chỉ báo tiêu điểm."
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "aria-valid-attr-value"
+msgstr "aria-valid-attr-value"
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "dark-mode-contrast"
+msgstr "dark-mode-contrast"
+
+msgctxt "docs.api:prose"
+msgid "Wrap the grouped items in an element with `role=\"group\"` and point `aria-labelledby` at the group heading so assistive technology announces the group name."
+msgstr "Bọc các mục được nhóm trong một phần tử có `role=\"group\"` và trỏ `aria-labelledby` đến tiêu đề nhóm để công nghệ hỗ trợ thông báo tên nhóm."
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "WCAG 2.2 4.1.2"
+msgstr "WCAG 2.2 4.1.2"
+
+msgctxt "docs.api:prose"
+msgid "ARIA attributes must conform to valid values"
+msgstr "Các thuộc tính ARIA phải tuân theo các giá trị hợp lệ"
+
+msgctxt "docs.api:prose"
+msgid "Checked actions use `menuitemcheckbox` or `menuitemradio` with `aria-checked`; applications update that state on activation. Pair `-disabled` with `aria-disabled=\"true\"` or native `disabled`, not the CSS class alone. Opt-in menu navigation keeps ARIA-disabled items reachable but prevents their activation."
+msgstr "Các hành động được chọn sử dụng `menuitemcheckbox` hoặc `menuitemradio` cùng với `aria-checked`; ứng dụng cập nhật trạng thái đó khi kích hoạt. Ghép `-disabled` với `aria-disabled=\"true\"` hoặc `disabled` gốc, không chỉ dùng riêng lớp CSS. Điều hướng menu tùy chọn cho phép truy cập các mục bị vô hiệu hóa bằng ARIA nhưng ngăn kích hoạt chúng."
+
+msgctxt "docs.api:prose"
+msgid " All five measured pieces of text pass in dark mode. one other piece can't be reduced to one color. \"Archive\" can't be measured because an element behind it is partly transparent."
+msgstr " Cả năm đoạn văn bản được đo đều đạt trong chế độ tối. một đoạn khác không thể quy về một màu. Không thể đo \"Archive\" vì một phần tử phía sau nó có độ trong suốt một phần."
+
+msgctxt "docs.api:prose"
+msgid "All five measured pieces of text pass with more contrast. one other piece can't be reduced to one color. \"Archive\" can't be measured because an element behind it is partly transparent."
+msgstr "Cả năm đoạn văn bản được đo đều đạt với độ tương phản cao hơn. một đoạn khác không thể quy về một màu. Không thể đo \"Archive\" vì một phần tử phía sau nó có độ trong suốt một phần."
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "arrow-keys-move-between-items"
+msgstr "arrow-keys-move-between-items"
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "escape-closes-and-returns-focus"
+msgstr "escape-closes-and-returns-focus"
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "opens-with-enter-or-arrow"
+msgstr "opens-with-enter-or-arrow"
+
+msgctxt "docs.api:prose"
+msgid "Keyboard navigation is opt-in: add `data-menu-navigation` to a vertical native popover with `role=\"menu\"` and load `@pantoken/interactions/menu.iife.js`, or call `initMenu(menu, button)`. Use one native `button[popovertarget]`. The behavior handles focus, arrows, Home/End, initial-character search, Escape, and activation; applications own actions and checked state. Submenus and menubars aren't supported."
+msgstr "Điều hướng bằng bàn phím là tùy chọn: thêm `data-menu-navigation` vào một popover gốc theo chiều dọc có `role=\"menu\"` và tải `@pantoken/interactions/menu.iife.js`, hoặc gọi `initMenu(menu, button)`. Sử dụng một `button[popovertarget]` gốc. Hành vi này xử lý tiêu điểm, phím mũi tên, Home/End, tìm kiếm theo ký tự đầu, Escape và kích hoạt; ứng dụng chịu trách nhiệm về hành động và trạng thái được chọn. Không hỗ trợ menu con và thanh menu."
+
+msgctxt "docs.api:prose"
+msgid "Name the menu and button. Use `menuitem` for actions, `menuitemcheckbox`/`menuitemradio` with `aria-checked` for checked actions, and `separator` for dividers. Add `aria-disabled=\"true\"` to disabled items; a CSS modifier alone doesn't convey disabled state. ARIA-disabled entries remain focusable but cannot activate; native-disabled and hidden entries are skipped."
+msgstr "Đặt tên cho menu và nút. Dùng `menuitem` cho các hành động, `menuitemcheckbox`/`menuitemradio` với `aria-checked` cho các hành động có trạng thái được chọn, và `separator` cho dấu phân cách. Thêm `aria-disabled=\"true\"` vào các mục bị vô hiệu hóa; chỉ dùng CSS modifier thì không truyền tải trạng thái bị vô hiệu hóa. Các mục có ARIA-disabled vẫn nhận tiêu điểm nhưng không thể kích hoạt; các mục bị vô hiệu hóa theo kiểu gốc và các mục bị ẩn sẽ được bỏ qua."
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "WCAG 2.2 2.1.1, 2.4.3"
+msgstr "WCAG 2.2 2.1.1, 2.4.3"
+
+msgctxt "docs.api:prose"
+msgid "Give the divider `role=\"separator\"` so assistive technology can announce the break between items; without it the rule is purely decorative."
+msgstr "Cung cấp dấu phân cách `role=\"separator\"` để công nghệ hỗ trợ có thể thông báo khoảng ngắt giữa các mục; nếu không, đường kẻ chỉ mang tính trang trí."
+
+msgctxt "docs.api:prose"
+msgid "The `.value` and `.label` are separate elements, so keep them adjacent in source order to read together, and don't convey meaning through size alone."
+msgstr "The `.value` và `.label` là các phần tử riêng biệt, vì vậy hãy giữ chúng liền kề theo thứ tự trong mã nguồn để có thể đọc cùng nhau, và đừng chỉ dùng kích thước để truyền tải ý nghĩa."
+
+msgctxt "docs.api:prose"
+msgid "Place the body inside the dialog that the header labels, and give a lone full-bleed `<img>` alt text."
+msgstr "Đặt phần nội dung bên trong hộp thoại được tiêu đề đặt tên, và cung cấp văn bản thay thế cho một `<img>` đơn lẻ tràn toàn chiều rộng."
+
+msgctxt "docs.api:prose"
+msgid "Use real buttons in a logical focus order after the body, and include a visible dismiss action so keyboard users can close the dialog."
+msgstr "Sử dụng các nút thực trong thứ tự lấy nét hợp lý sau phần nội dung, đồng thời thêm thao tác đóng hiển thị rõ ràng để người dùng bàn phím có thể đóng hộp thoại."
+
+msgctxt "docs.api:prose"
+msgid "Render the title as a real heading and point the dialog's `aria-labelledby` at it so the dialog is announced with its name."
+msgstr "Hiển thị tiêu đề dưới dạng một tiêu đề thực sự và trỏ `aria-labelledby` của hộp thoại đến tiêu đề đó để hộp thoại được thông báo cùng tên."
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "escape-closes"
+msgstr "escape-closes"
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "focus-moves-into-dialog"
+msgstr "focus-moves-into-dialog"
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "focus-returns-to-trigger"
+msgstr "focus-returns-to-trigger"
+
+msgctxt "docs.api:prose"
+msgid "The dialog stayed open after Escape."
+msgstr "Hộp thoại vẫn mở sau khi nhấn Escape."
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "WCAG 2.2 2.4.3"
+msgstr "WCAG 2.2 2.4.3"
+
+msgctxt "docs.api:prose"
+msgid "The `.arrows` buttons are redundant pointer controls, hidden from assistive technology and excluded from sequential keyboard focus. Consumers wire pointer activation and keep focus on the input; the native number input provides keyboard increment/decrement."
+msgstr "Các nút `.arrows` là các điều khiển con trỏ dư thừa, bị ẩn khỏi công nghệ hỗ trợ và không nằm trong thứ tự lấy tiêu điểm tuần tự. Người dùng thành phần kết nối thao tác kích hoạt bằng con trỏ và giữ tiêu điểm trên ô nhập; ô nhập số gốc cung cấp chức năng tăng/giảm bằng bàn phím."
+
+msgctxt "docs.api:prose"
+msgid "Name the native `<input type=\"number\">` so it owns the value and keyboard controls. Mark redundant arrow buttons with both `aria-hidden=\"true\"` and `tabindex=\"-1\"`; never leave an assistive-technology-hidden button in the tab order."
+msgstr "Đặt tên cho `<input type=\"number\">` gốc để nó quản lý giá trị và các điều khiển bàn phím. Đánh dấu các nút mũi tên dư thừa bằng cả `aria-hidden=\"true\"` và `tabindex=\"-1\"`; không bao giờ để nút bị ẩn khỏi công nghệ hỗ trợ nằm trong thứ tự tab."
+
+msgctxt "docs.api:prose"
+msgid "A scrollable region must work from the keyboard: give it `tabindex=\"0\"`, a role, and an accessible name (or make sure it contains a focusable control). Don't use `hidden` or `clip` to cut off content people need to read."
+msgstr "Một vùng có thể cuộn phải hoạt động bằng bàn phím: hãy cung cấp cho vùng đó `tabindex=\"0\"`, một vai trò và tên có thể truy cập (hoặc đảm bảo vùng đó chứa một điều khiển có thể lấy tiêu điểm). Đừng dùng `hidden` hoặc `clip` để cắt bỏ nội dung mà mọi người cần đọc."
+
+msgctxt "docs.api:prose"
+msgid "Mark the current page with `aria-current=\"page\"`, give each page an accessible name that includes the page number, and wrap the set in a `<nav>` with an `aria-label`."
+msgstr "Đánh dấu trang hiện tại bằng `aria-current=\"page\"`, đặt cho mỗi trang một tên dễ tiếp cận có chứa số trang, và bọc tập hợp trong `<nav>` cùng với `aria-label`."
+
+msgctxt "docs.api:prose"
+msgid "Unlike `badge`, which shows a count, or `tag`, which is removable, the pill is a static status label; its leading glyph is a masked `::before`, not an `<img>`. Let groups wrap with `flex-wrap: wrap` on their container so compact labels reflow on narrow screens."
+msgstr "Khác với `badge`, dùng để hiển thị số lượng, hoặc `tag`, có thể xóa được, pill là một nhãn trạng thái tĩnh; biểu tượng ở đầu là một `::before` được áp dụng mặt nạ, không phải một `<img>`. Cho phép các nhóm xuống dòng bằng cách đặt `flex-wrap: wrap` trên phần tử chứa để các nhãn nhỏ gọn tự sắp xếp lại trên màn hình hẹp."
+
+msgctxt "docs.api:prose"
+msgid "The status colors are visual only, so state the status in the label text or a visually hidden label. The leading glyph is a masked `::before` and isn't announced."
+msgstr "Màu trạng thái chỉ mang tính trực quan, vì vậy hãy nêu rõ trạng thái trong nội dung nhãn hoặc trong một nhãn ẩn về mặt thị giác. Biểu tượng ở đầu là một `::before` được áp dụng mặt nạ và không được trình đọc màn hình đọc lên."
+
+msgctxt "docs.api:prose"
+msgid "Wire the trigger with `popovertarget` so the expanded state is exposed. A native popover closes on Escape and outside click but doesn't move focus, so move focus into interactive content when the popover opens."
+msgstr "Gắn nút kích hoạt với `popovertarget` để trạng thái mở rộng được hiển thị. Popover gốc sẽ đóng khi nhấn Escape hoặc nhấp bên ngoài nhưng không chuyển tiêu điểm, vì vậy hãy chuyển tiêu điểm vào nội dung tương tác khi popover mở."
+
+msgctxt "docs.api:prose"
+msgid "Positioning changes where content appears, not where it sits in the DOM: keep the visual order matching the reading and focus order, and don't let positioned content cover a focused control."
+msgstr "Việc định vị làm thay đổi nơi nội dung xuất hiện, chứ không thay đổi vị trí của nó trong DOM: hãy giữ thứ tự hiển thị khớp với thứ tự đọc và thứ tự lấy tiêu điểm, đồng thời không để nội dung được định vị che khuất một điều khiển đang được lấy tiêu điểm."
+
+msgctxt "docs.api:prose"
+msgid "`.value` is a sibling of `.bar`, both children of the root — mirroring how progress-circle nests its own `.value` part. Native `<progress>` and `<meter>` use vendor value parts with the same semantic fill. InstUI has no indeterminate state; `:indeterminate` is a pantoken-only best guess (native `<progress>` without a `value` attribute), using a CSS-owned sliding segment and hiding `.value` since there's no meaningful number to show. Reduced motion keeps a static segment; `<meter>` has no indeterminate state."
+msgstr "`.value` là phần tử cùng cấp với `.bar`, cả hai đều là con của phần tử gốc — tương tự cách progress-circle lồng phần `.value` riêng của nó. Các phần tử gốc `<progress>` và `<meter>` dùng các phần tử giá trị của nhà cung cấp với màu tô có cùng ý nghĩa. InstUI không có trạng thái không xác định; `:indeterminate` là phỏng đoán tốt nhất chỉ dành cho pantoken (phần tử gốc `<progress>` không có thuộc tính `value`), dùng một đoạn trượt do CSS kiểm soát và ẩn `.value` vì không có con số có ý nghĩa để hiển thị. Chế độ giảm chuyển động giữ đoạn tĩnh; `<meter>` không có trạng thái không xác định."
+
+msgctxt "docs.api:prose"
+msgid "Custom, not part of InstUI. Applies only to a native `<progress>` missing its `value` attribute; draws a sliding segment on `::before` and hides `.value`."
+msgstr "Tùy chỉnh, không thuộc InstUI. Chỉ áp dụng cho phần tử gốc `<progress>` thiếu thuộc tính `value`; vẽ một đoạn trượt trên `::before` và ẩn `.value`."
+
+msgctxt "docs.api:prose"
+msgid "Draws the native indeterminate segment without relying on the browser's built-in animation."
+msgstr "Vẽ đoạn không xác định gốc mà không phụ thuộc vào hoạt ảnh tích hợp sẵn của trình duyệt."
+
+msgctxt "docs.api:prose"
+msgid "The native value part and `.bar` fill; the -color-* modifiers set it."
+msgstr "Phần tử giá trị gốc và phần tô `.bar`; các modifier -color-* thiết lập phần này."
+
+msgctxt "docs.api:prose"
+msgid " With prefers-contrast: more, one piece of text falls below the minimum contrast. The worst is \"30%\" at 1:1 (needs 4.5:1)."
+msgstr " Với prefers-contrast: more, một phần văn bản có độ tương phản thấp hơn mức tối thiểu. Mức thấp nhất là \"30%\" ở tỷ lệ 1:1 (cần 4.5:1)."
+
+msgctxt "docs.api:prose"
+msgid "Rebrand (dark), Canvas, Canvas High Contrast:"
+msgstr "Rebrand (tối), Canvas, Canvas High Contrast:"
+
+msgctxt "docs.api:prose"
+msgid " With line height 1.5, letter spacing 0.12em, word spacing 0.16em, and paragraph spacing 2em, text in one element gets cut off: "
+msgstr " Với chiều cao dòng 1.5, khoảng cách chữ cái 0.12em, khoảng cách từ 0.16em và khoảng cách đoạn 2em, văn bản trong một phần tử bị cắt: "
+
+msgctxt "docs.api:prose"
+msgid " (\"Working\"). Overlapping text isn't checked."
+msgstr " (\"Đang làm việc\"). Không kiểm tra văn bản bị chồng lấp."
+
+msgctxt "docs.api:prose"
+msgid "The defaults keep headings in a logical order and links underlined with an interactive colour, so they don't rely on colour alone. Don't skip heading levels for visual size, and don't remove the link underline without another cue."
+msgstr "Các giá trị mặc định sắp xếp tiêu đề theo thứ tự hợp lý và gạch chân liên kết bằng màu tương tác, nhờ đó nội dung không chỉ dựa vào màu sắc. Đừng bỏ qua cấp tiêu đề để thay đổi kích thước hiển thị và đừng xóa phần gạch chân liên kết nếu không có dấu hiệu khác."
+
+msgctxt "docs.api:prose"
+msgid "Sweatshirt size"
+msgstr "Cỡ áo nỉ"
+
+msgctxt "docs.api:prose"
+msgid "Use a native `<fieldset>` with a `<legend>` that names the group. Radios within a group share one `name`; independent groups need distinct names and legends so selecting one group's radio doesn't clear another group's selection."
+msgstr "Dùng `<fieldset>` gốc với `<legend>` đặt tên cho nhóm. Các nút radio trong cùng một nhóm dùng chung một `name`; các nhóm độc lập cần tên và chú giải riêng để việc chọn một nút radio trong nhóm này không xóa lựa chọn của nhóm khác."
+
+msgctxt "docs.api:prose"
+msgid " With prefers-contrast: less, one piece of text falls below the minimum contrast. The worst is \"Large unavailable\" at 2.74:1 (needs 4.5:1). Softer contrast is fine only while text stays readable."
+msgstr " Với prefers-contrast: less, một đoạn văn bản có độ tương phản thấp hơn mức tối thiểu. Trường hợp thấp nhất là \"Không khả dụng (cỡ lớn)\" ở mức 2.74:1 (cần 4.5:1). Độ tương phản thấp hơn chỉ phù hợp khi văn bản vẫn dễ đọc."
+
+msgctxt "docs.api:prose"
+msgid " With prefers-contrast: less, one piece of text falls below the minimum contrast. The worst is \"Large unavailable\" at 3.15:1 (needs 4.5:1). Softer contrast is fine only while text stays readable."
+msgstr " Với prefers-contrast: less, một đoạn văn bản có độ tương phản thấp hơn mức tối thiểu. Trường hợp thấp nhất là \"Không khả dụng (cỡ lớn)\" ở mức 3.15:1 (cần 4.5:1). Độ tương phản thấp hơn chỉ phù hợp khi văn bản vẫn dễ đọc."
+
+msgctxt "docs.api:prose"
+msgid " With prefers-contrast: less, one piece of text falls below the minimum contrast. The worst is \"Large unavailable\" at 3.02:1 (needs 4.5:1). Softer contrast is fine only while text stays readable."
+msgstr " Với prefers-contrast: less, một đoạn văn bản có độ tương phản thấp hơn mức tối thiểu. Trường hợp thấp nhất là \"Không khả dụng (cỡ lớn)\" ở mức 3.02:1 (cần 4.5:1). Độ tương phản thấp hơn chỉ phù hợp khi văn bản vẫn dễ đọc."
+
+msgctxt "docs.api:prose"
+msgid " All 13 measured pieces of text stay above the minimum. one other piece can't be reduced to one color. \"Large\" can't be measured because an element behind it is partly transparent."
+msgstr " Cả 13 đoạn văn bản được đo đều vượt mức tối thiểu. Một đoạn khác không thể giảm xuống còn một màu. Không thể đo \"Cỡ lớn\" vì phần tử phía sau nó có độ trong suốt một phần."
+
+msgctxt "docs.api:prose"
+msgid " With prefers-contrast: more, one piece of text falls below the minimum contrast. The worst is \"Large unavailable\" at 2.74:1 (needs 4.5:1)."
+msgstr " Với prefers-contrast: more, một đoạn văn bản có độ tương phản thấp hơn mức tối thiểu. Trường hợp thấp nhất là \"Không khả dụng (cỡ lớn)\" ở mức 2.74:1 (cần 4.5:1)."
+
+msgctxt "docs.api:prose"
+msgid " With prefers-contrast: more, one piece of text falls below the minimum contrast. The worst is \"Large unavailable\" at 3.15:1 (needs 4.5:1)."
+msgstr " Với prefers-contrast: more, một đoạn văn bản có độ tương phản thấp hơn mức tối thiểu. Trường hợp thấp nhất là \"Không khả dụng (cỡ lớn)\" ở mức 3.15:1 (cần 4.5:1)."
+
+msgctxt "docs.api:prose"
+msgid " With prefers-contrast: more, one piece of text falls below the minimum contrast. The worst is \"Large unavailable\" at 3.02:1 (needs 4.5:1)."
+msgstr " Với prefers-contrast: more, một đoạn văn bản có độ tương phản thấp hơn mức tối thiểu. Trường hợp thấp nhất là \"Không khả dụng (cỡ lớn)\" ở mức 3.02:1 (cần 4.5:1)."
+
+msgctxt "docs.api:prose"
+msgid " All 13 measured pieces of text pass with more contrast. one other piece can't be reduced to one color. \"Large\" can't be measured because an element behind it is partly transparent."
+msgstr " Cả 13 đoạn văn bản được đo đều đạt yêu cầu với độ tương phản cao hơn. Một đoạn khác không thể giảm xuống còn một màu. Không thể đo \"Cỡ lớn\" vì phần tử phía sau nó có độ trong suốt một phần."
+
+msgctxt "docs.api:prose"
+msgid " With prefers-contrast: less, six pieces of text fall below the minimum contrast. The worst is \"Warning selected\" at 1.67:1 (needs 4.5:1). Softer contrast is fine only while text stays readable."
+msgstr " Với prefers-contrast: less, sáu đoạn văn bản có độ tương phản thấp hơn mức tối thiểu. Mức thấp nhất là \"Cảnh báo đã chọn\" ở 1.67:1 (cần 4.5:1). Độ tương phản thấp hơn chỉ phù hợp khi văn bản vẫn dễ đọc."
+
+msgctxt "docs.api:prose"
+msgid " With prefers-contrast: less, four pieces of text fall below the minimum contrast. The worst is \"Disabled unselected\" at 3.15:1 (needs 4.5:1). Softer contrast is fine only while text stays readable."
+msgstr " Với prefers-contrast: less, bốn đoạn văn bản có độ tương phản thấp hơn mức tối thiểu. Mức thấp nhất là \"Đã tắt, chưa chọn\" ở 3.15:1 (cần 4.5:1). Độ tương phản thấp hơn chỉ phù hợp khi văn bản vẫn dễ đọc."
+
+msgctxt "docs.api:prose"
+msgid " With prefers-contrast: less, four pieces of text fall below the minimum contrast. The worst is \"Disabled unselected\" at 3.02:1 (needs 4.5:1). Softer contrast is fine only while text stays readable."
+msgstr " Với prefers-contrast: less, bốn đoạn văn bản có độ tương phản thấp hơn mức tối thiểu. Mức thấp nhất là \"Đã tắt, chưa chọn\" ở 3.02:1 (cần 4.5:1). Độ tương phản thấp hơn chỉ phù hợp khi văn bản vẫn dễ đọc."
+
+msgctxt "docs.api:prose"
+msgid " All 31 measured pieces of text stay above the minimum. two other pieces can't be reduced to one color. \"Disabled unselected\" can't be measured because an element behind it is partly transparent."
+msgstr " Cả 31 đoạn văn bản được đo đều đạt mức tối thiểu. hai mục khác không thể giảm xuống còn một màu. Không thể đo \"Đã tắt, chưa chọn\" vì phần tử phía sau nó có độ trong suốt một phần."
+
+msgctxt "docs.api:prose"
+msgid " With prefers-contrast: more, six pieces of text fall below the minimum contrast. The worst is \"Warning selected\" at 1.67:1 (needs 4.5:1)."
+msgstr " Với prefers-contrast: more, sáu đoạn văn bản có độ tương phản thấp hơn mức tối thiểu. Mức thấp nhất là \"Cảnh báo đã chọn\" ở 1.67:1 (cần 4.5:1)."
+
+msgctxt "docs.api:prose"
+msgid " With prefers-contrast: more, four pieces of text fall below the minimum contrast. The worst is \"Disabled unselected\" at 3.15:1 (needs 4.5:1)."
+msgstr " Với prefers-contrast: more, bốn đoạn văn bản có độ tương phản thấp hơn mức tối thiểu. Mức thấp nhất là \"Đã tắt, chưa chọn\" ở 3.15:1 (cần 4.5:1)."
+
+msgctxt "docs.api:prose"
+msgid " With prefers-contrast: more, four pieces of text fall below the minimum contrast. The worst is \"Disabled unselected\" at 3.02:1 (needs 4.5:1)."
+msgstr " Với prefers-contrast: more, bốn đoạn văn bản có độ tương phản thấp hơn mức tối thiểu. Mức thấp nhất là \"Đã tắt, chưa chọn\" ở 3.02:1 (cần 4.5:1)."
+
+msgctxt "docs.api:prose"
+msgid " All 31 measured pieces of text pass with more contrast. two other pieces can't be reduced to one color. \"Disabled unselected\" can't be measured because an element behind it is partly transparent."
+msgstr " Cả 31 đoạn văn bản được đo đều đạt yêu cầu với độ tương phản cao hơn. hai mục khác không thể giảm xuống còn một màu. Không thể đo \"Đã tắt, chưa chọn\" vì phần tử phía sau nó có độ trong suốt một phần."
+
+msgctxt "docs.api:prose"
+msgid "The control is a native `<input type=\"range\">`; give it an accessible name with `aria-label` or an associated `<label>`. Forced colors use a system-color outline because the thumb's box-shadow focus ring doesn't survive that mode."
+msgstr "Điều khiển này là một `<input type=\"range\">`; hãy đặt cho nó một tên có thể truy cập bằng `aria-label` hoặc một `<label>` được liên kết. Chế độ màu bắt buộc sử dụng đường viền màu hệ thống vì vòng chỉ báo tiêu điểm box-shadow của núm điều khiển không còn hiển thị trong chế độ đó."
+
+msgctxt "docs.api:prose"
+msgid "Hiding content at a breakpoint also hides it from assistive tech, so don't hide the only way to complete a task, and keep the shown and hidden versions equivalent in meaning."
+msgstr "Ẩn nội dung tại một điểm ngắt cũng khiến công nghệ hỗ trợ không thể truy cập nội dung đó, vì vậy đừng ẩn cách duy nhất để hoàn thành một tác vụ và hãy đảm bảo phiên bản hiển thị và bị ẩn có ý nghĩa tương đương."
+
+msgctxt "docs.api:prose"
+msgid "With forced colors on, nothing visible changed when the control took focus. A focus ring drawn with box-shadow or a background color disappears in forced colors. Use an outline."
+msgstr "Khi bật chế độ màu cưỡng bức, không có gì thay đổi rõ rệt khi điều khiển nhận tiêu điểm. Vòng tiêu điểm được vẽ bằng box-shadow hoặc màu nền sẽ biến mất trong chế độ màu cưỡng bức. Hãy dùng outline."
+
+msgctxt "docs.api:prose"
+msgid " With prefers-contrast: less, three pieces of text fall below the minimum contrast. The worst is \"Grades\" at 1.48:1 (needs 4.5:1). Softer contrast is fine only while text stays readable."
+msgstr " Với prefers-contrast: less, ba đoạn văn bản có độ tương phản thấp hơn mức tối thiểu. Tệ nhất là \"Điểm số\", ở mức 1.48:1 (cần 4.5:1). Độ tương phản thấp hơn vẫn ổn miễn là văn bản còn dễ đọc."
+
+msgctxt "docs.api:prose"
+msgid " With prefers-contrast: less, three pieces of text fall below the minimum contrast. The worst is \"Grades\" at 1.38:1 (needs 4.5:1). Softer contrast is fine only while text stays readable."
+msgstr " Với prefers-contrast: less, ba đoạn văn bản có độ tương phản thấp hơn mức tối thiểu. Tệ nhất là \"Điểm số\", ở mức 1.38:1 (cần 4.5:1). Độ tương phản thấp hơn vẫn ổn miễn là văn bản còn dễ đọc."
+
+msgctxt "docs.api:prose"
+msgid "Mark the active entry with `aria-current=\"page\"` as well as `-selected`, and keep an accessible name, such as `aria-label`, when the parent's `-minimized` modifier hides the `.label`."
+msgstr "Đánh dấu mục đang hoạt động bằng `aria-current=\"page\"` cũng như `-selected`, và giữ một tên có thể truy cập, chẳng hạn `aria-label`, khi modifier `-minimized` của phần tử cha ẩn `.label`."
+
+msgctxt "docs.api:prose"
+msgid "It's a native `<select>`, so role, keyboard support, and option announcement come from the browser; associate it with a visible `<label>` and convey errors in text, not color alone."
+msgstr "Đây là một `<select>` gốc, vì vậy vai trò, khả năng hỗ trợ bàn phím và thông báo tùy chọn do trình duyệt đảm nhiệm; hãy liên kết nó với một `<label>` hiển thị và truyền đạt lỗi bằng văn bản, không chỉ bằng màu sắc."
+
+msgctxt "docs.api:prose"
+msgid "Spacing is visual only: use it to keep text and controls from crowding, not to convey structure — use headings, lists, and landmarks for that. Leave enough space around interactive targets for WCAG 2.5.8, and don't rely on fixed spacing that breaks when users increase text spacing."
+msgstr "Khoảng cách chỉ mang tính trực quan: hãy dùng khoảng cách để tránh văn bản và các điều khiển chen chúc, không dùng để thể hiện cấu trúc — hãy dùng tiêu đề, danh sách và mốc định vị cho mục đích đó. Chừa đủ khoảng trống xung quanh các mục tiêu tương tác để đáp ứng WCAG 2.5.8, và đừng dựa vào khoảng cách cố định vì chúng có thể bị phá vỡ khi người dùng tăng khoảng cách văn bản."
+
+msgctxt "docs.api:prose"
+msgid "With reduced motion enabled, the ring or AI glyph remains visible without rotation; keep the loading status and label while work is pending."
+msgstr "Khi bật chế độ giảm chuyển động, vòng tròn hoặc biểu tượng AI vẫn hiển thị mà không xoay; hãy giữ trạng thái tải và nhãn trong khi công việc đang chờ xử lý."
+
+msgctxt "docs.api:prose"
+msgid "Stacking order is visual only: a layered surface that covers focusable content hides the focus indicator. Overlays that take over the page also need focus management and an accessible name."
+msgstr "Thứ tự xếp chồng chỉ mang tính trực quan: một bề mặt xếp lớp che khuất nội dung có thể nhận tiêu điểm sẽ làm ẩn chỉ báo tiêu điểm. Các lớp phủ chiếm quyền điều khiển trang cũng cần quản lý tiêu điểm và tên hỗ trợ tiếp cận."
+
+msgctxt "docs.api:prose"
+msgid "Use a native `<tbody>` so row and cell relationships are exposed. The parent's `-layout-stacked` changes `display`, which can drop table semantics in some browsers, so add explicit table roles when you use it."
+msgstr "Hãy dùng phần tử `<tbody>` gốc để các mối quan hệ giữa hàng và ô được thể hiện. `-layout-stacked` của phần tử cha sẽ thay đổi `display`, điều này có thể làm mất ngữ nghĩa bảng trong một số trình duyệt, vì vậy hãy thêm các vai trò bảng tường minh khi sử dụng."
+
+msgctxt "docs.api:prose"
+msgid "Use a native `<td>`. In `-layout-stacked` the column label is generated content that assistive technology may not announce reliably, so keep the column relationship available, for example with `headers`."
+msgstr "Sử dụng `<td>` gốc. Trong `-layout-stacked`, nhãn cột là nội dung được tạo tự động mà công nghệ hỗ trợ có thể không thông báo đáng tin cậy, vì vậy hãy giữ mối quan hệ với cột, chẳng hạn như bằng cách dùng `headers`."
+
+msgctxt "docs.api:prose"
+msgid "Use `<th scope=\"col\">` so each column header is associated with the cells beneath it."
+msgstr "Sử dụng `<th scope=\"col\">` để mỗi tiêu đề cột được liên kết với các ô bên dưới."
+
+msgctxt "docs.api:prose"
+msgid "Use a native `<thead>`. `-layout-stacked` hides it visually, so keep it in the DOM, not `display: none`, to preserve column names for assistive technology."
+msgstr "Sử dụng `<thead>` gốc. `-layout-stacked` ẩn nó về mặt trực quan, vì vậy hãy giữ nó trong DOM, không dùng `display: none`, để giữ lại tên cột cho công nghệ hỗ trợ."
+
+msgctxt "docs.api:prose"
+msgid "For tables that must retain their columns, use a named, keyboard-focusable `--overflow-x-auto` container instead. Use `-without-focus-animation` for an immediately visible focus outline and the caption to name the region."
+msgstr "Đối với các bảng cần giữ nguyên cột, hãy dùng vùng chứa `--overflow-x-auto` có tên và có thể nhận tiêu điểm bằng bàn phím. Dùng `-without-focus-animation` để hiển thị ngay đường viền tiêu điểm và dùng chú thích để đặt tên cho vùng."
+
+msgctxt "docs.api:prose"
+msgid "Responsive film ratings"
+msgstr "Đánh giá phim thích ứng"
+
+msgctxt "docs.api:prose"
+msgid "Use stacked cards below the canonical `md` container breakpoint; preserve columns at and above it. Requires per-cell `data-label` values and a size-container ancestor. @affects table.head @affects table.body @affects table.row @affects table.cell @affects table.col-header @affects table.row-header — Applies the existing stacked presentation only in a narrow container."
+msgstr "Dùng các thẻ xếp chồng bên dưới điểm ngắt vùng chứa chuẩn `md`; giữ nguyên các cột tại hoặc trên điểm ngắt này. Yêu cầu các giá trị `data-label` cho từng ô và phần tử tổ tiên vùng chứa có kích thước. @affects table.head @affects table.body @affects table.row @affects table.cell @affects table.col-header @affects table.row-header — Chỉ áp dụng cách trình bày xếp chồng hiện có trong vùng chứa hẹp."
+
+msgctxt "docs.api:prose"
+msgid "Label the table with a `<caption>`, mark column headers `<th scope=\"col\">` and row headers `<th scope=\"row\">`, and in stacked or responsive layouts give every cell a localized `data-label` matching its column header. Keep the native header associations; visible generated labels don't replace them. Name scroll regions and provide keyboard access without trapping focus."
+msgstr "Đặt nhãn cho bảng bằng `<caption>`, đánh dấu tiêu đề cột bằng `<th scope=\"col\">` và tiêu đề hàng bằng `<th scope=\"row\">`. Trong bố cục xếp chồng hoặc thích ứng, hãy cung cấp cho mỗi ô một `data-label` được bản địa hóa, khớp với tiêu đề cột của ô đó. Giữ nguyên các liên kết tiêu đề gốc; nhãn được tạo để hiển thị không thay thế chúng. Đặt tên cho các vùng cuộn và cung cấp khả năng truy cập bằng bàn phím mà không khóa tiêu điểm."
+
+msgctxt "docs.api:prose"
+msgid "Use `<th scope=\"row\">` so the cell names its row for assistive technology."
+msgstr "Sử dụng `<th scope=\"row\">` để ô xác định hàng của nó cho công nghệ hỗ trợ."
+
+msgctxt "docs.api:prose"
+msgid "Use a native `<tr>`. The `-hover` styling is visual only, so give a clickable row a real control rather than relying on the highlight."
+msgstr "Hãy sử dụng một `<tr>`. Kiểu dáng `-hover` chỉ mang tính trực quan, vì vậy hãy cung cấp cho hàng có thể nhấp một điều khiển thực sự thay vì chỉ dựa vào phần tô sáng."
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "arrow-keys-move-between-tabs"
+msgstr "arrow-keys-move-between-tabs"
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "home-and-end-work"
+msgstr "home-and-end-work"
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "selected-state-exposed"
+msgstr "selected-state-exposed"
+
+msgctxt "docs.api:prose"
+msgid "All six measured pieces of text pass with more contrast. two other pieces can't be reduced to one color. \"Billing\" can't be measured because an element behind it is partly transparent."
+msgstr "Cả sáu phần văn bản được đo đều đạt yêu cầu với độ tương phản cao hơn. Hai phần khác không thể giảm xuống còn một màu. Không thể đo “Billing” vì một phần tử phía sau nó hơi trong suốt."
+
+msgctxt "docs.api:prose"
+msgid "End didn't move to the last tab."
+msgstr "End không chuyển đến tab cuối cùng."
+
+msgctxt "docs.api:prose"
+msgid "3 tabs are aria-selected=\"true\". A tab list should have exactly one."
+msgstr "Có 3 tab có aria-selected=\"true\". Danh sách tab chỉ nên có đúng một tab."
+
+msgctxt "docs.api:prose"
+msgid "Give each panel `role=\"tabpanel\"` and an `aria-labelledby` that references its tab, and keep inactive panels `hidden`."
+msgstr "Gán cho mỗi panel `role=\"tabpanel\"` và một `aria-labelledby` tham chiếu đến tab tương ứng, đồng thời giữ các panel không hoạt động ở trạng thái `hidden`."
+
+msgctxt "docs.api:prose"
+msgid "Use `role=\"tab\"` inside a `role=\"tablist\"`, mirror `-selected` with `aria-selected`, point `aria-controls` at the panel, and mark a disabled tab with `aria-disabled` or the native `disabled`."
+msgstr "Sử dụng `role=\"tab\"` bên trong một `role=\"tablist\"`, đồng bộ `-selected` với `aria-selected`, trỏ `aria-controls` đến bảng nội dung, và đánh dấu một thẻ bị vô hiệu hóa bằng `aria-disabled` hoặc thuộc tính gốc `disabled`."
+
+msgctxt "docs.api:prose"
+msgid "All four measured pieces of text pass with more contrast. two other pieces can't be reduced to one color. \"Billing\" can't be measured because an element behind it is partly transparent."
+msgstr "Cả bốn đoạn văn bản được đo đều đạt yêu cầu với độ tương phản cao hơn. hai đoạn khác không thể quy về một màu duy nhất. Không thể đo \"Thanh toán\" vì một phần tử phía sau nó có độ trong suốt một phần."
+
+msgctxt "docs.api:prose"
+msgid "Don't rely on color alone to distinguish tags. Give a removable tag's dismiss control an accessible name that includes the tag text, for example `aria-label=\"Remove Biology\"`."
+msgstr "Đừng chỉ dựa vào màu sắc để phân biệt các thẻ. Hãy đặt tên dễ tiếp cận cho nút đóng của thẻ có thể xóa, trong đó có nội dung thẻ, ví dụ `aria-label=\"Remove Biology\"`."
+
+msgctxt "docs.api:prose"
+msgid "Associate the field with a visible `<label>`, use `aria-invalid` and `disabled` for state, and explain errors in text, not border color alone."
+msgstr "Gắn trường này với `<label>` hiển thị, dùng `aria-invalid` và `disabled` cho trạng thái, đồng thời giải thích lỗi bằng văn bản, không chỉ dựa vào màu viền."
+
+msgctxt "docs.api:prose"
+msgid " With prefers-contrast: more, one piece of text falls below the minimum contrast. The worst is \"A saved comment.\" at 2.51:1 (needs 4.5:1)."
+msgstr " Với prefers-contrast: more, một đoạn văn bản có độ tương phản thấp hơn mức tối thiểu. Mức thấp nhất là \"Một bình luận đã lưu.\" ở tỷ lệ 2.51:1 (cần 4.5:1)."
+
+msgctxt "docs.api:prose"
+msgid " With prefers-contrast: more, one piece of text falls below the minimum contrast. The worst is \"A saved comment.\" at 4.08:1 (needs 4.5:1)."
+msgstr " Với prefers-contrast: more, một đoạn văn bản có độ tương phản thấp hơn mức tối thiểu. Mức thấp nhất là \"Một bình luận đã lưu.\" ở tỷ lệ 4.08:1 (cần 4.5:1)."
+
+msgctxt "docs.api:prose"
+msgid " With prefers-contrast: more, one piece of text falls below the minimum contrast. The worst is \"A saved comment.\" at 2.74:1 (needs 4.5:1)."
+msgstr " Với prefers-contrast: more, một đoạn văn bản có độ tương phản thấp hơn mức tối thiểu. Mức thấp nhất là \"Một bình luận đã lưu.\" ở tỷ lệ 2.74:1 (cần 4.5:1)."
+
+msgctxt "docs.api:prose"
+msgid " With prefers-contrast: more, one piece of text falls below the minimum contrast. The worst is \"A saved comment.\" at 4.11:1 (needs 4.5:1)."
+msgstr " Với prefers-contrast: more, một đoạn văn bản có độ tương phản thấp hơn mức tối thiểu. Mức thấp nhất là \"Một bình luận đã lưu.\" ở tỷ lệ 4.11:1 (cần 4.5:1)."
+
+msgctxt "docs.api:prose"
+msgid "Associate the field with a visible `<label>`, use `aria-invalid` and `disabled` for state, and explain errors in text, not border color alone. Date and time types use the browser's own picker and keyboard support."
+msgstr "Liên kết trường với `<label>` hiển thị, dùng `aria-invalid` và `disabled` cho trạng thái, đồng thời mô tả lỗi bằng văn bản, không chỉ bằng màu viền. Các kiểu ngày và giờ sử dụng bộ chọn riêng của trình duyệt và hỗ trợ bàn phím."
+
+msgctxt "docs.api:prose"
+msgid "It sets appearance only and renders no semantics, so use `<p>`, `<strong>`, `<em>`, and similar elements for meaning, and check contrast of each `-color-*` against its background, especially the inverse colors."
+msgstr "Nó chỉ thiết lập giao diện và không thể hiện ngữ nghĩa, vì vậy hãy dùng `<p>`, `<strong>`, `<em>`, và các phần tử tương tự để thể hiện ý nghĩa; đồng thời kiểm tra độ tương phản của từng `-color-*` với nền, đặc biệt là các màu đảo ngược."
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "enter-toggles"
+msgstr "enter-toggles"
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "expanded-state-exposed"
+msgstr "expanded-state-exposed"
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "space-toggles"
+msgstr "space-toggles"
+
+msgctxt "docs.api:prose"
+msgid "With reduced motion enabled, the chevron changes direction immediately; native disclosure state and keyboard operation remain unchanged."
+msgstr "Khi bật chế độ giảm chuyển động, dấu chữ V đổi hướng ngay lập tức; trạng thái mở rộng/thu gọn gốc và thao tác bằng bàn phím vẫn không thay đổi."
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "WCAG 2.2 2.1.1, 4.1.2"
+msgstr "WCAG 2.2 2.1.1, 4.1.2"
+
+msgctxt "docs.api:prose"
+msgid "Built on native `<details>`, which exposes the expanded state and toggles with Enter and Space; keep the `<summary>` first and give it descriptive text."
+msgstr "Được xây dựng trên `<details>`, vốn hiển thị trạng thái mở rộng và chuyển đổi bằng Enter và Space; hãy giữ `<summary>` ở vị trí đầu tiên và cung cấp cho nó văn bản mô tả."
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "appears-on-focus"
+msgstr "appears-on-focus"
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "content-reachable-on-hover"
+msgstr "content-reachable-on-hover"
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "escape-dismisses"
+msgstr "escape-dismisses"
+
+msgctxt "docs.api:prose"
+msgid "`.instui-tooltip` — A hover and focus tooltip bubble, positionable on any side."
+msgstr "`.instui-tooltip` — Bong bóng chú giải xuất hiện khi di chuột hoặc lấy tiêu điểm, có thể định vị ở bất kỳ phía nào."
+
+msgctxt "docs.api:prose"
+msgid "Load `@pantoken/interactions/tooltip.iife.js` for managed delays, Escape dismissal, and combined pointer/focus state. Without JavaScript, hover/focus remains a fallback without Escape or delay guarantees. Use a popover for interactive content."
+msgstr "Tải `@pantoken/interactions/tooltip.iife.js` để quản lý độ trễ, đóng khi nhấn Escape và kết hợp trạng thái con trỏ/tiêu điểm. Không có JavaScript, di chuột/lấy tiêu điểm vẫn là phương án dự phòng nhưng không đảm bảo đóng bằng Escape hoặc độ trễ. Dùng popover cho nội dung có thể tương tác."
+
+msgctxt "docs.api:prose"
+msgid "The bubble; `-placement-*` sets its preferred side. Initialized tooltips flip/clamp to fit the viewport."
+msgstr "Bong bóng; `-placement-*` đặt phía ưu tiên của nó. Các tooltip đã khởi tạo sẽ đổi phía/điều chỉnh vị trí để vừa với khung nhìn."
+
+msgctxt "docs.api:prose"
+msgid "Use a named, focusable trigger with aria-describedby pointing at the role=\"tooltip\" bubble. Keep the content noninteractive. Initialized tooltips stay dismissed after Escape until both pointer and focus leave; the next entry can reopen them."
+msgstr "Dùng một phần tử kích hoạt có tên và có thể lấy tiêu điểm, với aria-describedby trỏ đến bong bóng role=\"tooltip\". Giữ nội dung không có tính tương tác. Các tooltip đã khởi tạo vẫn đóng sau khi nhấn Escape cho đến khi cả con trỏ lẫn tiêu điểm rời đi; lần vào tiếp theo có thể mở lại tooltip."
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "WCAG 2.2 1.4.13"
+msgstr "WCAG 2.2 1.4.13"
+
+msgctxt "docs.api:prose"
+msgid "The classes only animate, so provide a `prefers-reduced-motion` alternative for large movement and don't convey essential state through the transition alone."
+msgstr "Các lớp chỉ tạo hiệu ứng hoạt ảnh, vì vậy hãy cung cấp một phương án `prefers-reduced-motion` thay thế cho chuyển động lớn và đừng truyền tải trạng thái thiết yếu chỉ thông qua hiệu ứng chuyển tiếp."
+
+msgctxt "docs.api:prose"
+msgid "`.instui-tree-browser` — A tree of nested collections and leaf items, with rotating chevrons."
+msgstr "`.instui-tree-browser` — Một cây gồm các bộ sưu tập lồng nhau và các mục lá, với các dấu chữ V xoay."
+
+msgctxt "docs.api:prose"
+msgid "Load the tree-browser interaction bundle for ARIA-tree keyboard navigation and expansion. Native `<details>` markup remains a CSS-only disclosure fallback; don't give that fallback ARIA-tree roles."
+msgstr "Nạp gói tương tác tree-browser để hỗ trợ điều hướng bằng bàn phím và mở rộng cây ARIA. Đánh dấu `<details>` gốc vẫn là phương án dự phòng chỉ dùng CSS để hiển thị nội dung; không gán các vai trò cây ARIA cho phương án dự phòng đó."
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "Syllabus.pdf"
+msgstr "Syllabus.pdf"
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "Reading.pdf"
+msgstr "Reading.pdf"
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "Slides.pptx"
+msgstr "Slides.pptx"
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "Rubric.docx"
+msgstr "Rubric.docx"
+
+msgctxt "docs.api:prose"
+msgid "Name the `role=\"tree\"` root, use focusable `role=\"treeitem\"` nodes, and associate each collection with its `role=\"group\"` via `aria-owns`. Load `@pantoken/interactions/tree-browser.iife.js` for one tab stop and synchronized expansion. Add `aria-selected` to opt into single selection; focus alone doesn't select."
+msgstr "Đặt tên cho gốc `role=\"tree\"`, dùng các nút `role=\"treeitem\"` có thể nhận tiêu điểm và liên kết mỗi bộ sưu tập với `role=\"group\"` bằng `aria-owns`. Nạp `@pantoken/interactions/tree-browser.iife.js` để chỉ có một điểm dừng Tab và đồng bộ hóa việc mở rộng. Thêm `aria-selected` để bật chế độ chỉ chọn một mục; chỉ nhận tiêu điểm không đồng nghĩa với việc chọn mục."
+
+msgctxt "docs.api:prose"
+msgid "Truncation hides overflowing text visually while it stays in the DOM, so don't clip information people need (titles, errors, instructions) and keep the full text available another way. Check that clipped text still reads correctly when zoomed or resized."
+msgstr "Việc cắt ngắn khiến phần văn bản tràn bị ẩn về mặt thị giác nhưng vẫn còn trong DOM, vì vậy đừng cắt bỏ thông tin mà mọi người cần (tiêu đề, lỗi, hướng dẫn) và hãy cung cấp toàn bộ văn bản theo cách khác. Hãy kiểm tra để đảm bảo văn bản bị cắt vẫn dễ đọc khi phóng to hoặc thay đổi kích thước."
+
+msgctxt "docs.api:prose"
+msgid "With line height 1.5, letter spacing 0.12em, word spacing 0.16em, and paragraph spacing 2em, text in one element gets cut off: "
+msgstr "Khi chiều cao dòng là 1.5, khoảng cách chữ là 0.12em, khoảng cách từ là 0.16em và khoảng cách đoạn là 2em, văn bản trong một phần tử bị cắt: "
+
+msgctxt "docs.api:prose"
+msgid " (\"Quarterly planning notes for t\"). Overlapping text isn't checked."
+msgstr " (\"Ghi chú lập kế hoạch quý cho t\"). Không kiểm tra văn bản bị chồng lấp."
+
+msgctxt "docs.api:prose"
+msgid "It's a neutral box with no semantics, so use semantic elements or ARIA roles for meaning and keep sufficient contrast between its background, border, and content."
+msgstr "Đây là một hộp trung tính, không mang ý nghĩa ngữ nghĩa, vì vậy hãy dùng các phần tử ngữ nghĩa hoặc vai trò ARIA để biểu đạt ý nghĩa, đồng thời duy trì độ tương phản phù hợp giữa nền, đường viền và nội dung."
+
+msgctxt "docs.api:prose"
+msgid " With prefers-contrast: more, one piece of text falls below the minimum contrast. The worst is \"Notes unavailable\" at 1.98:1 (needs 4.5:1)."
+msgstr " Với prefers-contrast: more, một đoạn văn bản có độ tương phản thấp hơn mức tối thiểu. Mức thấp nhất là \"Không có ghi chú\" ở 1.98:1 (cần 4.5:1)."
+
+msgctxt "docs.api:prose"
+msgid " With prefers-contrast: more, one piece of text falls below the minimum contrast. The worst is \"Notes unavailable\" at 2.67:1 (needs 4.5:1)."
+msgstr " Với prefers-contrast: more, một đoạn văn bản có độ tương phản thấp hơn mức tối thiểu. Mức thấp nhất là \"Không có ghi chú\" ở 2.67:1 (cần 4.5:1)."
+
+msgctxt "docs.api:prose"
+msgid " With prefers-contrast: more, one piece of text falls below the minimum contrast. The worst is \"Notes unavailable\" at 1.99:1 (needs 4.5:1)."
+msgstr " Với prefers-contrast: more, một đoạn văn bản có độ tương phản thấp hơn mức tối thiểu. Mức thấp nhất là \"Không có ghi chú\" ở 1.99:1 (cần 4.5:1)."
+
+msgctxt "docs.api:prose"
+msgid "With prefers-reduced-transparency: reduce, one surface holding text stays see-through: "
+msgstr "Với prefers-reduced-transparency: reduce, một bề mặt có chứa văn bản vẫn trong suốt một phần: "
+
+msgctxt "docs.api:prose"
+msgid " (30% opaque). Without the preference there were one. This preference isn't a WCAG requirement. It matters because see-through backgrounds make text contrast unpredictable."
+msgstr " (độ mờ 30%). Khi không bật tùy chọn này, chỉ có một bề mặt như vậy. Tùy chọn này không phải là yêu cầu của WCAG. Tùy chọn này quan trọng vì nền trong suốt khiến độ tương phản của văn bản khó dự đoán."
+
+msgctxt "docs.api:prose"
+msgid "Dismiss strategy:\n- `<dialog>` → `dialog.close()`\n- `[popover]` → `el.hidePopover()`\n- `.instui-alert` or `.instui-banner` (per `options.prefix`) → cancelable `dismiss` event, then fade out and remove\n- `[data-dismissible]` or `[open]` → remove open attr + fire bubbling `close`"
+msgstr "Chiến lược đóng:\n- `<dialog>` → `dialog.close()`\n- `[popover]` → `el.hidePopover()`\n- `.instui-alert` hoặc `.instui-banner` (theo `options.prefix`) → sự kiện `dismiss` có thể hủy, sau đó mờ dần rồi xóa\n- `[data-dismissible]` hoặc `[open]` → xóa thuộc tính open + phát sự kiện nổi bọt `close`"
+
+msgctxt "docs.api:prose"
+msgid "Associate an authored error after blur, native invalid events, or explicit validation.\nUntouched fields stay quiet; edited fields revalidate after the first validation attempt.\nPreserves hint references and uses native constraints, including `setCustomValidity()`.\nThe host must contain the control and a separate, named error element with message text.\nClean up and reinitialize after moving controls between forms or changing error IDs."
+msgstr "Liên kết lỗi do người dùng tạo sau khi mất tiêu điểm, khi có sự kiện không hợp lệ gốc hoặc khi xác thực rõ ràng.\nCác trường chưa được chạm tới vẫn im lặng; các trường đã chỉnh sửa sẽ được xác thực lại sau lần thử xác thực đầu tiên.\nGiữ nguyên các tham chiếu gợi ý và sử dụng các ràng buộc gốc, bao gồm `setCustomValidity()`.\nPhần tử chủ phải chứa điều khiển và một phần tử lỗi riêng biệt, có tên và chứa thông báo.\nDọn dẹp và khởi tạo lại sau khi di chuyển điều khiển giữa các biểu mẫu hoặc thay đổi ID lỗi."
+
+msgctxt "docs.api:prose"
+msgid "Wire a vertical, single-level ARIA menu and its native popover button.\nArrow keys wrap; Home/End and initial-character search move focus. Escape returns\nfocus to the button; Tab closes without canceling normal sequential navigation.\nApplications own click actions and checked state. Space activates checkable items\nwithout closing; Enter and pointer activation close unless the click is canceled."
+msgstr "Kết nối một menu ARIA dọc, một cấp với nút popover gốc của nó.\nCác phím mũi tên di chuyển vòng; Home/End và tìm kiếm theo ký tự đầu tiên di chuyển tiêu điểm. Escape đưa\ntiêu điểm về nút; Tab đóng menu mà không hủy thao tác điều hướng tuần tự thông thường.\nỨng dụng chịu trách nhiệm xử lý hành động nhấp và trạng thái được chọn. Phím Space kích hoạt các mục có thể chọn\nmà không đóng menu; Enter và thao tác kích hoạt bằng con trỏ sẽ đóng menu, trừ khi sự kiện nhấp bị hủy."
+
+msgctxt "docs.api:prose"
+msgid "Own tooltip visibility after initialization, retaining CSS hover/focus as a no-JS fallback.\nPointer and focus are independent reasons to stay open; Escape dismisses until both leave."
+msgstr "Tự quản lý trạng thái hiển thị của chú giải công cụ sau khi khởi tạo, đồng thời giữ lại hover/focus bằng CSS làm phương án dự phòng khi không có JS.\nCon trỏ và tiêu điểm là các lý do độc lập để giữ mở; phím Escape sẽ đóng cho đến khi cả hai rời đi."
+
+msgctxt "docs.api:prose"
+msgid "Wire ARIA-tree navigation and expansion, with single selection opt-in via `aria-selected`."
+msgstr "Thiết lập điều hướng và mở rộng cây ARIA, với tùy chọn bật chế độ chọn đơn qua `aria-selected`."
+
+msgctxt "docs.api:prose"
+msgid "The class namespace for a prefix: `\"instui\"` → `\"instui-\"`, `\"\"` → `\"\"` (unprefixed)."
+msgstr "Không gian tên lớp cho tiền tố: `\"instui\"` → `\"instui-\"`, `\"\"` → `\"\"` (không có tiền tố)."
+
+msgctxt "docs.api:prose"
+msgid "Swap every `pfx-` sentinel in `text` for the namespace of `prefix` (default `\"instui\"`)."
+msgstr "Thay mọi ký hiệu sentinel `pfx-` trong `text` bằng namespace của `prefix` (mặc định là `\"instui\"`)."
+
+msgctxt "docs.api:prose"
+msgid "Options for [initCloseButton](../functions/initCloseButton.md)."
+msgstr "Các tùy chọn cho [initCloseButton](../functions/initCloseButton.md)."
+
+msgctxt "docs.api:prose"
+msgid "Class prefix for the alert/banner hosts. Defaults to `\"instui\"`; `\"\"` means unprefixed."
+msgstr "Tiền tố lớp cho các host alert/banner. Mặc định là `\"instui\"`; `\"\"` nghĩa là không có tiền tố."
+
+msgctxt "docs.api:prose"
+msgid "Native validation controls and listener cleanup."
+msgstr "Các điều khiển xác thực gốc và việc dọn dẹp trình lắng nghe."
+
+msgctxt "docs.api:prose"
+msgid "Show the current native validation result without moving focus or changing the value."
+msgstr "Hiển thị kết quả xác thực gốc hiện tại mà không chuyển tiêu điểm hoặc thay đổi giá trị."
+
+msgctxt "docs.api:prose"
+msgid "Remove listeners and restore the initial accessibility and error-visibility state."
+msgstr "Gỡ bỏ trình lắng nghe và khôi phục trạng thái trợ năng ban đầu cùng trạng thái hiển thị lỗi."
+
+msgctxt "docs.api:prose"
+msgid "Listeners and attribute restoration installed by [initMenu](../functions/initMenu.md)."
+msgstr "Các trình lắng nghe và việc khôi phục thuộc tính được cài đặt bởi [initMenu](../functions/initMenu.md)."
+
+msgctxt "docs.api:prose"
+msgid "Class prefix for the `transition` utility. Defaults to `\"instui\"`; `\"\"` means unprefixed."
+msgstr "Tiền tố lớp cho tiện ích `transition`. Mặc định là `\"instui\"`; `\"\"` nghĩa là không có tiền tố."
+
+msgctxt "docs.api:prose"
+msgid "Remove listeners/timers and restore the original managed marker and show class."
+msgstr "Xóa các trình nghe/bộ hẹn giờ và khôi phục dấu đánh dấu được quản lý ban đầu cùng lớp show."
+
+msgctxt "docs.api:prose"
+msgid "Dismiss until both pointer and focus leave, canceling pending timers."
+msgstr "Ẩn cho đến khi cả con trỏ và tiêu điểm đều rời đi, đồng thời hủy các bộ hẹn giờ đang chờ."
+
+msgctxt "docs.api:prose"
+msgid "Listeners installed by [initTreeBrowser](../functions/initTreeBrowser.md)."
+msgstr "Các trình nghe được cài đặt bởi [initTreeBrowser](../functions/initTreeBrowser.md)."
+
+msgctxt "docs.api:prose"
+msgid "Native controls supported by [initFormField](../functions/initFormField.md)."
+msgstr "Các điều khiển gốc được hỗ trợ bởi [initFormField](../functions/initFormField.md)."
+
+msgctxt "docs.api:prose"
+msgid "Custom-element tag prefix (`\"x\"` → `<x-icon>`). Never null or empty: tags need a hyphen, so JS callers passing one fall back to `instui`."
+msgstr "Tiền tố thẻ phần tử tùy chỉnh (`\"x\"` → `<x-icon>`). Không bao giờ là null hoặc rỗng: thẻ cần có dấu gạch nối, vì vậy các bên gọi JS truyền giá trị này sẽ chuyển về `instui`."
+
+msgctxt "docs.api:prose"
+msgid "Both panes are `div` regions, matching InstUI's inline DrawerLayout. Supply nonempty `tray-label` and `content-label` attributes to name them; labels on the host or slotted content don't name the shadow-DOM regions."
+msgstr "Cả hai ngăn đều là các vùng `div`, tương ứng với DrawerLayout nội tuyến của InstUI. Cung cấp các thuộc tính `tray-label` và `content-label` không rỗng để đặt tên cho chúng; nhãn trên host hoặc nội dung được slot không đặt tên cho các vùng shadow-DOM."
+
+msgctxt "docs.api:prose"
+msgid "`<instui-modal>` — a real `<dialog>`, so it gets focus trapping, Escape-to-close, and a\n`::backdrop` for free. The `open` attribute drives `showModal()`/`close()`; a native dismissal\n(such as Escape) reflects back to the attribute and re-fires as a bubbling `close`\nevent. Drivable from light DOM via Invoker Commands — a\n`<button command=\"--show|--close|--toggle\" commandfor=\"modal-id\">` toggles it by id. Content goes\nin the default slot."
+msgstr "`<instui-modal>` — một `<dialog>` thực sự, nên có sẵn tính năng giữ tiêu điểm bên trong, nhấn Escape để đóng và một\n`::backdrop`. Thuộc tính `open` điều khiển `showModal()`/`close()`; thao tác đóng gốc của trình duyệt\n(chẳng hạn như Escape) được phản ánh ngược lại vào thuộc tính và phát lại dưới dạng sự kiện `close`\nlan truyền lên. Có thể điều khiển từ light DOM thông qua Invoker Commands — một\n`<button command=\"--show|--close|--toggle\" commandfor=\"modal-id\">` bật/tắt nó theo id. Nội dung được đặt\nvào slot mặc định."
+
+msgctxt "docs.api:prose"
+msgid "`<instui-spinner>` — a loading spinner with `role=\"status\"`. `variant=\"ai\"` and\n`variant=\"ai-on-color\"` select the rotating AI star; size and colour follow the CSS tokens.\nReduced motion keeps the ring or glyph visible without rotation."
+msgstr "`<instui-spinner>` — vòng xoay tải với `role=\"status\"`. `variant=\"ai\"` và\n`variant=\"ai-on-color\"` chọn ngôi sao AI xoay; kích thước và màu sắc tuân theo các token CSS.\nChuyển động giảm thiểu giữ vòng hoặc biểu tượng hiển thị mà không xoay."
+
+msgctxt "docs.api:prose"
+msgid "`<instui-tooltip>` — wraps a slotted trigger and shows a `.tip` bubble (from the `tip` attribute)\non hover/focus. `placement` maps to `-placement-<value>` (e.g. `bottom`, `end`); `show-delay` and\n`hide-delay` (ms, default 0) gate the reveal/hide. Shared behavior owns visibility; Escape\ndismisses until both pointer and focus leave. Tooltip content is noninteractive."
+msgstr "`<instui-tooltip>` — bao bọc một phần tử kích hoạt được gán slot và hiển thị bong bóng `.tip` (lấy từ thuộc tính `tip`)\n khi di chuột/được focus. `placement` ánh xạ tới `-placement-<value>` (ví dụ `bottom`, `end`); `show-delay` và\n`hide-delay` (ms, mặc định 0) điều khiển việc hiện/ẩn. Hành vi dùng chung quản lý trạng thái hiển thị; Escape\nđóng cho đến khi cả con trỏ và tiêu điểm đều rời đi. Nội dung chú giải không tương tác."
+
+msgctxt "docs.api:prose"
+msgid "`<instui-tree-browser>` — an ARIA tree with shared keyboard navigation and expansion.\nName the host and slot `treeitem`/`group` markup. Load the component stylesheet for slotted items."
+msgstr "`<instui-tree-browser>` — một cây ARIA với khả năng điều hướng bàn phím và mở rộng dùng chung.\nĐặt tên cho host và slot `treeitem`/`group` cấu trúc đánh dấu. Tải biểu định kiểu của component cho các mục được đưa vào slot."
+
+#, pantoken-verbatim
+msgctxt "docs.api:text"
+msgid "CloseButtonOptions"
+msgstr "CloseButtonOptions"
+
+#, pantoken-verbatim
+msgctxt "docs.api:text"
+msgid "FormFieldHandle"
+msgstr "FormFieldHandle"
+
+#, pantoken-verbatim
+msgctxt "docs.api:text"
+msgid "MenuHandle"
+msgstr "MenuHandle"
+
+#, pantoken-verbatim
+msgctxt "docs.api:text"
+msgid "TreeBrowserHandle"
+msgstr "TreeBrowserHandle"
+
+#, pantoken-verbatim
+msgctxt "docs.api:text"
+msgid "FormFieldControl"
+msgstr "FormFieldControl"
+
+#, pantoken-verbatim
+msgctxt "docs.api:text"
+msgid "initFormField"
+msgstr "initFormField"
+
+#, pantoken-verbatim
+msgctxt "docs.api:text"
+msgid "initMenu"
+msgstr "initMenu"
+
+#, pantoken-verbatim
+msgctxt "docs.api:text"
+msgid "initTreeBrowser"
+msgstr "initTreeBrowser"
+
+#, pantoken-verbatim
+msgctxt "docs.api:text"
+msgid "ns"
+msgstr "ns"
+
+#, pantoken-verbatim
+msgctxt "docs.api:text"
+msgid "withPrefix"
+msgstr "withPrefix"
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "target-size"
+msgstr "target-size"
+
+msgctxt "docs.api:prose"
+msgid "Its own chained modifiers (`-color-*`, `-size-*`, `-shape-*`, `-toggle`, `-condensed`,\n  `-without-background`, `-without-border`, `-display-block`) set a default for every child\n  `.instui-button` that doesn't carry its own modifier in that same category — a button's own\n  modifier class always wins over the group's default. `-icon-*` is always per-button; it's\n  never read from the group. Deprecated button aliases (`-ghost`, `-color-primary-inverse`)\n  aren't supported as group-level modifiers — use their canonical replacements\n  (`-color-tertiary`, `-on-color`) instead. Each join shows a single 1px seam in the buttons'\n  own border color (solid fills, whose border matches the fill, tint it with the label color).\n  `-without-seam` is group-only: it hides that seam so the buttons read as\n  one continuous control.\n  Put `-width-half` on an individual icon-only child button for a split-action\n  trigger with half the standard square width and the full button height."
+msgstr "Các modifier theo chuỗi riêng của nó (`-color-*`, `-size-*`, `-shape-*`, `-toggle`, `-condensed`,\n  `-without-background`, `-without-border`, `-display-block`) đặt giá trị mặc định cho mọi phần tử con\n  `.instui-button` không có modifier riêng trong cùng danh mục đó — modifier riêng của nút luôn được ưu tiên hơn giá trị mặc định của nhóm. `-icon-*` luôn áp dụng cho từng nút; nó\n  không bao giờ được lấy từ nhóm. Các bí danh nút đã lỗi thời (`-ghost`, `-color-primary-inverse`)\n  không được hỗ trợ làm modifier cấp nhóm — hãy dùng các phương án thay thế chuẩn\n  (`-color-tertiary`, `-on-color`) thay thế. Mỗi điểm nối tạo ra một đường nối 1px duy nhất có màu viền riêng của các nút (các màu tô đặc, có viền trùng màu tô, sẽ được nhuộm theo màu nhãn).\n  `-without-seam` chỉ dành cho nhóm: nó ẩn đường nối đó để các nút trông như\n  một điều khiển liền mạch.\n  Đặt `-width-half` lên một nút con riêng lẻ chỉ có biểu tượng để tạo\n  nút kích hoạt hành động phân tách, rộng bằng một nửa kích thước hình vuông tiêu chuẩn và cao bằng toàn bộ chiều cao của nút."
+
+msgctxt "docs.api:prose"
+msgid "Use a labelled group for related actions; when buttons represent a toggle choice, expose each state with aria-pressed. Give icon-only buttons an accessible name. Half-width triggers are narrow targets (16px, 20px, or 24px at the standard sizes); ensure sufficient target spacing or use a full-width square button for touch interfaces."
+msgstr "Dùng nhóm có nhãn cho các hành động liên quan; khi các nút biểu thị lựa chọn bật/tắt, hãy thể hiện từng trạng thái bằng aria-pressed. Đặt tên dễ truy cập cho các nút chỉ có biểu tượng. Nút kích hoạt rộng một nửa là mục tiêu chạm hẹp (16px, 20px hoặc 24px ở các kích thước tiêu chuẩn); hãy đảm bảo khoảng cách giữa các mục tiêu đủ rộng hoặc dùng nút vuông có chiều rộng đầy đủ cho giao diện cảm ứng."
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "WCAG 2.2 2.5.8"
+msgstr "WCAG 2.2 2.5.8"
+
+msgctxt "docs.api:prose"
+msgid "All touch targets must be 24px large, or leave sufficient space"
+msgstr "Tất cả mục tiêu chạm phải có kích thước tối thiểu 24px hoặc phải có đủ khoảng cách"

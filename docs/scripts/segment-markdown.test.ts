@@ -88,6 +88,7 @@ const find = (segments: Segment[], needle: string): Segment => {
       s.kind !== "callout" &&
       s.kind !== "prompt" &&
       s.kind !== "html" &&
+      s.kind !== "audit" &&
       s.text.includes(needle),
   );
   expect(match.length, `exactly one segment contains ${JSON.stringify(needle)}`).toBe(1);
@@ -225,6 +226,27 @@ describe("classification", () => {
   test("multiple -flag tokens on one line are also preserved", () => {
     expect(find(segmentMarkdown("-nocard -noshow\n"), "-nocard -noshow").kind).toBe("preserve");
   });
+
+  test.each(["-automatica11y", "-automatica11y -canvas-rce"])(
+    "keeps %s fixture text outside the translation catalog",
+    (flags) => {
+      const page = `${flags}\n\`\`\`html\n<label>Audit-only label<input></label>\n\`\`\`\n`;
+      const segments = segmentMarkdown(page);
+      expect(collectUnits(segments)).toEqual([]);
+      expect(reassemble(segments, identity)).toBe(page);
+    },
+  );
+
+  test("still translates examples shared with docs and separates flags from captions", () => {
+    const page =
+      "-automatica11y -docs\n```html\n<button>Visible label</button>\n```\n\n-canvas-rce -docs\n### Nested label\n```html\n<label>Another label</label>\n```\n";
+    const segments = segmentMarkdown(page);
+    const units = collectUnits(segments);
+    expect(units.map((unit) => unit.text)).toContain("Visible label");
+    expect(units.map((unit) => unit.text)).toContain("Another label");
+    expect(units.some((unit) => unit.text.includes("-canvas-rce"))).toBe(false);
+    expect(reassemble(segments, identity)).toBe(page);
+  });
 });
 
 describe("the js-requirement callout", () => {
@@ -343,3 +365,26 @@ describe("tables", () => {
 function renderOne(segment: Segment, resolve: (t: string, k: TranslationKind) => string): string {
   return reassemble([segment], resolve);
 }
+
+describe("accessibility audit tables", () => {
+  const table = [
+    "<!-- accessibility-audit:start -->",
+    '<table class="pantoken-a11y-table">',
+    '<tr><th scope="row"><span class="pantoken-a11y-check">color-contrast</span></th><td><span class="instui-pill pantoken-doc-tag">Fail</span></td></tr>',
+    "<tr><td><p><strong>Rebrand (light):</strong> Text <code>.-color-ai</code> is too faint.</p></td></tr>",
+    "</table>",
+    "<!-- accessibility-audit:end -->",
+  ].join("\n");
+
+  test("translates visible text, not markup or code", () => {
+    const segments = segmentMarkdown(table);
+    expect(segments.map((segment) => segment.kind)).toEqual(["audit"]);
+    const texts = collectUnits(segments).map((unit) => unit.text);
+    expect(texts).toContain("Fail");
+    expect(texts).toContain(" Text ");
+    expect(texts).not.toContain(".-color-ai");
+    const out = reassemble(segments, (text) => (text === "Fail" ? "Hiba" : text));
+    expect(out).toContain(">Hiba</span>");
+    expect(out.replace("Hiba", "Fail")).toBe(table);
+  });
+});

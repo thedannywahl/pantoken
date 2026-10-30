@@ -11,9 +11,26 @@
  * @cssstate disabled
  * @pseudo ::before — The × glyph, masked in `currentColor`.
  * @a11y Give the icon-only button an `aria-label` (e.g. "Close"), and mark a disabled button with `aria-disabled` (or the native `disabled`).
- * @example
+ * @example -canvas-rce -docs
+ * ```html
  * <button class="pfx-close-button -size-sm" aria-label="Close"></button>
+ * ```
  * @related button — The general-purpose action button.
+ * @example -automatica11y
+ * ```html
+ * <div><button class="pfx-close-button -size-sm" type="button" aria-label="Dismiss reminder" data-a11y-trigger></button></div>
+ * <div><button class="pfx-close-button -size-md" type="button" aria-label="Dismiss notice"></button></div>
+ * <div><button class="pfx-close-button -size-lg" type="button" aria-label="Dismiss announcement"></button></div>
+ * <div><button class="pfx-close-button" type="button" aria-label="Dismiss unavailable" disabled></button></div>
+ * <div><button class="pfx-close-button" type="button" aria-label="Dismiss while saving" aria-disabled="true"></button></div>
+ * <div class="--bg-accent-blue --p-md">
+ *   <div><button class="pfx-close-button -on-color -size-sm" type="button" aria-label="Dismiss brand reminder"></button></div>
+ *   <div><button class="pfx-close-button -on-color -size-md" type="button" aria-label="Dismiss brand notice"></button></div>
+ *   <div><button class="pfx-close-button -on-color -size-lg" type="button" aria-label="Dismiss brand announcement"></button></div>
+ *   <div><button class="pfx-close-button -on-color" type="button" aria-label="Brand dismiss unavailable" disabled></button></div>
+ *   <div><button class="pfx-close-button -on-color" type="button" aria-label="Brand dismiss while saving" aria-disabled="true"></button></div>
+ * </div>
+ * ```
  */
 @scope (.pfx-close-button) {
   & {
@@ -37,6 +54,10 @@
     background: currentColor;
     -webkit-mask: var(--instui-icon-x) center / contain no-repeat;
     mask: var(--instui-icon-x) center / contain no-repeat;
+    @media (forced-colors: active) {
+      forced-color-adjust: preserve-parent-color;
+      background: currentColor;
+    }
   }
 
   &:hover {

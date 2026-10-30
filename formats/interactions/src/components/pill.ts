@@ -3,10 +3,11 @@
 // Per-component interaction entry point for pill
 
 import { applySpacing } from "../shared/index.js";
+import { sel } from "../shared/prefix.js";
 
 // Initialize on page load
 function initpill() {
-  for (const el of document.querySelectorAll(".instui-pill")) {
+  for (const el of document.querySelectorAll(sel(".pfx-pill"))) {
     applySpacing(el as HTMLElement);
   }
 }

@@ -151,8 +151,22 @@
       const height = (id) => getComputedStyle(document.getElementById(id)).minHeight;
       // canvas and canvasHighContrast share background and height; stroke-base is where they differ.
       const border = (id) => getComputedStyle(document.getElementById(id)).borderTopColor;
+      const aliasBackground = (id) => {
+        const probe = document.createElement("span");
+        probe.style.backgroundColor = "var(--instui-component-tag-default-background)";
+        document.getElementById(id).append(probe);
+        const color = getComputedStyle(probe).backgroundColor;
+        probe.remove();
+        return color;
+      };
 
       const checks = [
+        [
+          "nested themes recompute aliases with theme-dependent references",
+          "Identical alias spelling doesn't make its resolved color theme-independent.",
+          () => aliasBackground("f") === aliasBackground("b"),
+          () => `nested=${aliasBackground("f")} expected(rebrand/dark)=${aliasBackground("b")}`,
+        ],
         [
           "light-dark() resolves per subtree, not per document",
           "THE load-bearing assumption: the token is declared once at :root, and only the " +

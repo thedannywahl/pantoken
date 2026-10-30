@@ -340,10 +340,31 @@ test("side-nav-bar adds the -minimized modifier only when minimized=true", () =>
   expect(norm.shadowRoot?.querySelector("nav")?.className).toBe("instui-side-nav-bar");
 });
 
-test("tree-browser renders a role=tree shell with a slot", () => {
+test("tree-browser exposes the tree role on the named host and retains its slotted shell", () => {
   const el = mount(`<instui-tree-browser></instui-tree-browser>`, "instui-tree-browser");
   const div = el.shadowRoot?.querySelector("div");
-  expect(div?.getAttribute("role")).toBe("tree");
+  expect(el.getAttribute("role")).toBe("tree");
+  expect(div?.hasAttribute("role")).toBe(false);
   expect(div?.className).toBe("instui-tree-browser");
   expect(el.shadowRoot?.querySelector("slot")).toBeTruthy();
+});
+
+test("tree-browser delegates keyboard behavior and cleans up across disconnect/reconnect", () => {
+  const el = mount(
+    `<instui-tree-browser aria-label="Files">
+    <span class="item" role="treeitem" tabindex="0">First</span>
+    <span class="item" role="treeitem" tabindex="-1">Second</span>
+  </instui-tree-browser>`,
+    "instui-tree-browser",
+  );
+  const items = el.querySelectorAll<HTMLElement>('[role="treeitem"]');
+  items[0].focus();
+  items[0].dispatchEvent(new KeyboardEvent("keydown", { key: "ArrowDown", bubbles: true }));
+  expect(document.activeElement).toBe(items[1]);
+  el.remove();
+  items[1].dispatchEvent(new KeyboardEvent("keydown", { key: "Home", bubbles: true }));
+  expect(items[1].tabIndex).toBe(0);
+  document.body.append(el);
+  items[1].dispatchEvent(new KeyboardEvent("keydown", { key: "Home", bubbles: true }));
+  expect(document.activeElement).toBe(items[0]);
 });

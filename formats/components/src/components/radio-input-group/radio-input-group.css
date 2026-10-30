@@ -8,23 +8,23 @@
  * @modifier -required — Mark the group as required.
  * @modifier -variant-toggle — Lay the child toggles out as a segmented control (only the selected segment fills).
  * @pseudo ::after — Renders the decorative required-field asterisk after the legend text when the group is required.
- * @accessibility Renders a native `<fieldset>` with a `<legend>` that names the group; the child radios share one `name`, so only one can be selected at a time.
- * @example
+ * @accessibility Use a native `<fieldset>` with a `<legend>` that names the group. Radios within a group share one `name`; independent groups need distinct names and legends so selecting one group's radio doesn't clear another group's selection.
+ * @example -canvas-rce -docs
   * ```html
  * <fieldset class="pfx-radio-input-group">
  *   <legend>T-shirt size</legend>
- *   <label class="pfx-radio"><input type="radio" name="size" checked> Small</label>
- *   <label class="pfx-radio"><input type="radio" name="size"> Medium</label>
- *   <label class="pfx-radio"><input type="radio" name="size"> Large</label>
+ *   <label class="pfx-radio"><input type="radio" name="shirt-size" checked> Small</label>
+ *   <label class="pfx-radio"><input type="radio" name="shirt-size"> Medium</label>
+ *   <label class="pfx-radio"><input type="radio" name="shirt-size"> Large</label>
  * </fieldset>
  * ```
  * ### Toggle variant
  * ```html
  * <fieldset class="pfx-radio-input-group -variant-toggle">
- *   <legend>T-shirt size</legend>
- *   <label class="pfx-radio -variant-toggle"><input type="radio" name="size" checked> Small</label>
- *   <label class="pfx-radio -variant-toggle"><input type="radio" name="size"> Medium</label>
- *   <label class="pfx-radio -variant-toggle"><input type="radio" name="size"> Large</label>
+ *   <legend>Sweatshirt size</legend>
+ *   <label class="pfx-radio -variant-toggle"><input type="radio" name="sweatshirt-size" checked> Small</label>
+ *   <label class="pfx-radio -variant-toggle"><input type="radio" name="sweatshirt-size"> Medium</label>
+ *   <label class="pfx-radio -variant-toggle"><input type="radio" name="sweatshirt-size"> Large</label>
  * </fieldset>
  * ```
  * @structure
@@ -36,6 +36,31 @@
  * }
  * @related radio — The individual control this group collects.
  * @related form-field-group — The general wrapper for grouping and laying out fields.
+ * @example -automatica11y
+ * ```html
+ * <fieldset class="pfx-radio-input-group">
+ *   <legend>Stacked sizes</legend>
+ *   <label class="pfx-radio"><input type="radio" name="audit-shirt-size" value="sm" checked>Small</label>
+ *   <label class="pfx-radio"><input type="radio" name="audit-shirt-size" value="md">Medium</label>
+ *   <label class="pfx-radio"><input type="radio" name="audit-shirt-size" value="lg" disabled>Large unavailable</label>
+ * </fieldset>
+ * <fieldset class="pfx-radio-input-group -layout-columns">
+ *   <legend>Column sizes</legend>
+ *   <label class="pfx-radio"><input type="radio" name="audit-column-size" value="sm" checked>Small</label>
+ *   <label class="pfx-radio"><input type="radio" name="audit-column-size" value="md">Medium</label>
+ * </fieldset>
+ * <fieldset class="pfx-radio-input-group -layout-inline -required">
+ *   <legend>Required inline size</legend>
+ *   <label class="pfx-radio"><input type="radio" name="audit-inline-size" value="sm" required checked>Small</label>
+ *   <label class="pfx-radio"><input type="radio" name="audit-inline-size" value="md" required>Medium</label>
+ * </fieldset>
+ * <fieldset class="pfx-radio-input-group -variant-toggle">
+ *   <legend>Toggle sizes</legend>
+ *   <label class="pfx-radio -variant-toggle"><input type="radio" name="audit-toggle-size" value="sm" checked>Small</label>
+ *   <label class="pfx-radio -variant-toggle"><input type="radio" name="audit-toggle-size" value="md">Medium</label>
+ *   <label class="pfx-radio -variant-toggle"><input type="radio" name="audit-toggle-size" value="lg" disabled>Large</label>
+ * </fieldset>
+ * ```
  */
 @scope (.pfx-radio-input-group) {
   & {

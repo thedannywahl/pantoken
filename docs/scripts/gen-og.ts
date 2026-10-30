@@ -18,7 +18,7 @@
  * (`--vp-font-family-base`). The faces are bundled (converted to TTF from the vendored `.woff2` under
  * `formats/components/assets/fonts`, since resvg reads TTF/OTF, not WOFF2) and loaded explicitly with
  * `loadSystemFonts` OFF, so the card renders identically on CI's `ubuntu-latest`, which ships none of
- * the fonts a `loadSystemFonts` build would otherwise fall back to. Non-Latin scripts layer a cached
+ * the fonts a `loadSystemFonts` build would otherwise fall back to. Non-Latin scripts layer a vendored
  * Noto face on top of it — see `lib/og-fonts.ts`. If a script font can't be resolved, that locale's
  * card is still written, with the English text, so no `og-<locale>.png` ever 404s.
  *

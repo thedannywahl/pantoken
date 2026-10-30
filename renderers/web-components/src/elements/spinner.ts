@@ -4,6 +4,7 @@ import type { ElementDefinition } from "../lib/context.ts";
 /**
  * `<instui-spinner>` — a loading spinner with `role="status"`. `variant="ai"` and
  * `variant="ai-on-color"` select the rotating AI star; size and colour follow the CSS tokens.
+ * Reduced motion keeps the ring or glyph visible without rotation.
  *
  * @example
  * ```html

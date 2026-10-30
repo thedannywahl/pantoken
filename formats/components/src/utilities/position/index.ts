@@ -37,6 +37,13 @@ export const position: Definition = defineUtility({
  * @modifier --position-absolute — position: absolute.
  * @modifier --position-fixed — position: fixed.
  * @modifier --position-sticky — position: sticky.
+ * @a11y Positioning changes where content appears, not where it sits in the DOM: keep the visual order matching the reading and focus order, and don't let positioned content cover a focused control.
+ * @example -automatica11y
+ * \`\`\`html
+ * <div class="--position-relative">
+ *   <p>Positioned content stays in reading order.</p>
+ * </div>
+ * \`\`\`
  * @example
  * <div class="--position-relative">…</div>
  */

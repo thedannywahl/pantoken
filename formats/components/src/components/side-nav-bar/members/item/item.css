@@ -2,6 +2,7 @@
  * @component side-nav-bar.item
  * @memberOf side-nav-bar
  * @selector .item
+ * @a11y Mark the active entry with `aria-current="page"` as well as `-selected`, and keep an accessible name, such as `aria-label`, when the parent's `-minimized` modifier hides the `.label`.
  * @summary A navigation entry (InstUI `SideNavBar.Item`); `-selected` marks the active one.
  * @modifier -selected — The active nav item.
  * @part .label — The item's text label; hidden when the rail is minimized.
@@ -13,6 +14,23 @@
  *     .label {}
  *   }
  * }
+ * @example -automatica11y
+ * ```html
+ * <nav class="pfx-side-nav-bar" aria-label="Primary">
+ *   <a class="item -selected" href="#home" aria-current="page">
+ *     <span class="-icon-house" aria-hidden="true"></span>
+ *     <span class="label">Home</span>
+ *   </a>
+ *   <a class="item" href="#inbox">
+ *     <span class="-icon-inbox" aria-hidden="true"></span>
+ *     <span class="label">Inbox</span>
+ *   </a>
+ * </nav>
+ * <nav class="pfx-side-nav-bar -minimized" aria-label="Minimized primary">
+ *   <a class="item -selected" href="#home" aria-current="page" aria-label="Home"><span class="-icon-house" aria-hidden="true"></span><span class="label">Home</span></a>
+ *   <a class="item" href="#inbox" aria-label="Inbox"><span class="-icon-inbox" aria-hidden="true"></span><span class="label">Inbox</span></a>
+ * </nav>
+ * ```
  */
 @scope (.pfx-side-nav-bar) {
   :scope {

@@ -21,7 +21,8 @@
  * @pseudo ::after — Renders the decorative required-field asterisk after the legend text when the group is required.
  * @accessibility Renders a native `<fieldset>` with a `<legend>`, so the legend text names the whole group for assistive tech.
  * @compat The `-layout-aligned` mode uses CSS subgrid behind an `@supports` guard; where subgrid is unsupported, the fields fall back to their own stacked layout.
- * @example
+ * @example -canvas-rce -docs
+ * ```html
  * <fieldset class="pfx-form-field-group -layout-columns -col-spacing-medium">
  *   <legend>Shipping address</legend>
  *   <label class="pfx-form-field">
@@ -50,6 +51,7 @@
  *     <span class="pfx-form-field-message -type-hint">All fields are used for delivery only.</span>
  *   </div>
  * </fieldset>
+ * ```
  * @structure
  * .pfx-form-field-group.-layout-columns.-col-spacing-medium {
  *   legend {}
@@ -58,6 +60,42 @@
  * }
  * @related form-field — The single field this group repeats.
  * @related radio-input-group — Groups radio inputs under a legend.
+ * @example -automatica11y
+ * ```html
+ * <fieldset class="pfx-form-field-group">
+ *   <legend>Stacked fields</legend>
+ *   <label class="pfx-form-field">
+ *     <span class="label">Name</span>
+ *     <span class="controls"><input class="pfx-text-input"></span>
+ *   </label>
+ * </fieldset>
+ * <fieldset class="pfx-form-field-group -layout-columns -col-spacing-none -row-spacing-none -v-align-top">
+ *   <legend>Columns without gaps</legend>
+ *   <label class="pfx-form-field"><span class="label">City</span><span class="controls"><input class="pfx-text-input"></span></label>
+ *   <label class="pfx-form-field"><span class="label">Region</span><span class="controls"><input class="pfx-text-input"></span></label>
+ * </fieldset>
+ * <fieldset class="pfx-form-field-group -layout-inline -col-spacing-small -row-spacing-small -v-align-middle">
+ *   <legend>Inline fields with small gaps</legend>
+ *   <label class="pfx-form-field"><span class="label">Town</span><span class="controls"><input class="pfx-text-input"></span></label>
+ *   <label class="pfx-form-field"><span class="label">Area</span><span class="controls"><textarea class="pfx-text-area"></textarea></span></label>
+ * </fieldset>
+ * <fieldset class="pfx-form-field-group -layout-columns -col-spacing-medium -row-spacing-medium -v-align-bottom">
+ *   <legend>Columns with medium gaps</legend>
+ *   <label class="pfx-form-field"><span class="label">City</span><span class="controls"><input class="pfx-text-input"></span></label>
+ *   <label class="pfx-form-field"><span class="label">Area</span><span class="controls"><textarea class="pfx-text-area"></textarea></span></label>
+ * </fieldset>
+ * <fieldset class="pfx-form-field-group -layout-aligned -col-spacing-large -row-spacing-large -required">
+ *   <legend>Aligned required fields</legend>
+ *   <label class="pfx-form-field">
+ *     <span class="label">Name</span>
+ *     <span class="controls"><input class="pfx-text-input" required value="Alex"></span>
+ *   </label>
+ *   <label class="pfx-form-field">
+ *     <span class="label">City</span>
+ *     <span class="controls"><input class="pfx-text-input" required value="Denver"></span>
+ *   </label>
+ * </fieldset>
+ * ```
  */
 @scope (.pfx-form-field-group) {
   & {

@@ -48,6 +48,8 @@ const ALL_COMPONENTS = [
   "tabs",
   "skeleton-loader",
   "segmented-control",
+  "form-field",
+  "menu",
 ];
 
 function toCamelCase(name: string): string {

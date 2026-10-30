@@ -3,10 +3,11 @@
 // Per-component interaction entry point for tag
 
 import { applySpacing } from "../shared/index.js";
+import { sel } from "../shared/prefix.js";
 
 // Initialize on page load
 function inittag() {
-  for (const el of document.querySelectorAll(".instui-tag")) {
+  for (const el of document.querySelectorAll(sel(".pfx-tag"))) {
     applySpacing(el as HTMLElement);
   }
 }

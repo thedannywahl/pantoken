@@ -1,10 +1,15 @@
 /**
  * @rule base
  * @selector *
+ * @a11y It sets the page surface, text color, and `color-scheme` so native controls follow the active light or dark scheme; keep links distinguishable from surrounding text by more than color alone.
  * @summary The opt-in global reset: `box-sizing`, the page surface, base text colour and font, `color-scheme`, and link defaults.
  * @pseudo ::before — Included in the universal `box-sizing: border-box` reset so its generated box sizes predictably.
  * @pseudo ::after — Included in the universal `box-sizing: border-box` reset so its generated box sizes predictably.
  * @pseudo ::selection — Tints highlighted text with a translucent primary navigation colour.
+ * @example -automatica11y
+ * ```html
+ * <p>Read the <a href="#guide">accessibility guide</a> for details.</p>
+ * ```
  * @example
  * <html>
  *   <body>
@@ -18,8 +23,13 @@
   box-sizing: border-box;
 }
 
+@layer pantoken.base {
+  :where(html) {
+    color-scheme: light dark;
+  }
+}
+
 :where(html) {
-  color-scheme: light dark;
   background: var(--instui-color-background-page);
   color: var(--instui-color-text-base);
   font-family: var(--instui-font-family-base);

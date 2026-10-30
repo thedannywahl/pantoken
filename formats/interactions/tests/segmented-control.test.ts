@@ -116,6 +116,7 @@ test("enables overflow arrows only when requested and measured content clips", (
   strip.querySelectorAll<HTMLElement>("label").forEach((segment, index) => {
     vi.spyOn(segment, "getBoundingClientRect").mockReturnValue(rect(index * 80, index * 80 + 70));
   });
+
   const handle = initSegmentedControl(host, { isOverflown: true });
   expect(start.hidden).toBe(true);
   expect(end.hidden).toBe(false);
@@ -123,6 +124,42 @@ test("enables overflow arrows only when requested and measured content clips", (
   handle.refresh();
   expect(start.hidden).toBe(true);
   expect(end.hidden).toBe(true);
+  handle.cleanup();
+});
+
+test("overflow scrolling and keyboard reveal follow live motion changes", () => {
+  const media = window.matchMedia("(prefers-reduced-motion: reduce)");
+  const matches = vi.spyOn(media, "matches", "get").mockReturnValue(false);
+  vi.spyOn(window, "matchMedia").mockReturnValue(media);
+  const { host, strip, end, radios } = setup();
+  Object.defineProperty(strip, "scrollWidth", { configurable: true, value: 300 });
+  Object.defineProperty(strip, "clientWidth", { configurable: true, value: 100 });
+  vi.spyOn(strip, "getBoundingClientRect").mockReturnValue({ left: 0, right: 100 } as DOMRect);
+  strip.querySelectorAll<HTMLElement>("label").forEach((label, index) => {
+    vi.spyOn(label, "getBoundingClientRect").mockReturnValue({
+      left: index * 80,
+      right: index * 80 + 70,
+    } as DOMRect);
+  });
+  const scroll = vi.spyOn(strip, "scrollBy").mockImplementation(() => {});
+  const reveal = vi
+    .spyOn(radios[2].closest("label")!, "scrollIntoView")
+    .mockImplementation(() => {});
+  const handle = initSegmentedControl(host);
+  for (const reduced of [false, true, false]) {
+    matches.mockReturnValue(reduced);
+    end.click();
+    expect(scroll).toHaveBeenLastCalledWith({
+      left: 50,
+      behavior: reduced ? "instant" : "smooth",
+    });
+    radios[0].dispatchEvent(new KeyboardEvent("keydown", { key: "End", bubbles: true }));
+    expect(reveal).toHaveBeenLastCalledWith({
+      block: "nearest",
+      inline: "nearest",
+      behavior: reduced ? "instant" : "auto",
+    });
+  }
   handle.cleanup();
 });
 

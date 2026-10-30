@@ -3,10 +3,11 @@
 // Per-component interaction entry point for icon
 
 import { applySpacing } from "../shared/index.js";
+import { sel } from "../shared/prefix.js";
 
 // Initialize on page load
 function initicon() {
-  for (const el of document.querySelectorAll(".instui-icon")) {
+  for (const el of document.querySelectorAll(sel(".pfx-icon"))) {
     applySpacing(el as HTMLElement);
   }
 }

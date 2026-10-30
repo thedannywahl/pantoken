@@ -3,11 +3,12 @@
 // Per-component interaction entry point for date-input
 
 import { applySpacing } from "../shared/index.js";
+import { sel } from "../shared/prefix.js";
 import { syncInvoker } from "../shared/index.js";
 
 // Initialize on page load
 function initdateInput() {
-  for (const el of document.querySelectorAll(".instui-date-input")) {
+  for (const el of document.querySelectorAll(sel(".pfx-date-input"))) {
     applySpacing(el as HTMLElement);
     syncInvoker(el as HTMLElement);
   }

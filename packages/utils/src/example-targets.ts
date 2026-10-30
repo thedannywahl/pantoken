@@ -19,6 +19,37 @@ const AUDIENCE_FLAGS = new Map<string, ExampleAudience>([
   ["-docs", "docs"],
 ]);
 
+/**
+ * Strip a leading flag header only when it ends in a newline.
+ * The editor also accepts leading whitespace and flags on successive lines.
+ */
+export function stripExampleMetadata(example: string, multilineWhitespace = false): string {
+  const flag = /-[a-z][a-z0-9-]*/uy;
+  let cursor = 0;
+  let end = 0;
+  if (multilineWhitespace) {
+    while (cursor < example.length && /\s/u.test(example[cursor]!)) cursor += 1;
+  }
+  while (cursor < example.length) {
+    flag.lastIndex = cursor;
+    if (!flag.test(example)) break;
+    cursor = flag.lastIndex;
+    while (
+      cursor < example.length &&
+      (multilineWhitespace ? /\s/u.test(example[cursor]!) : /[ \t]/u.test(example[cursor]!))
+    ) {
+      if (example[cursor] === "\n") end = cursor + 1;
+      cursor += 1;
+    }
+    if (!multilineWhitespace) {
+      if (example[cursor] === "\r") cursor += 1;
+      if (example[cursor] === "\n") end = cursor + 1;
+      if (end || example[cursor - 1] === "\r") break;
+    }
+  }
+  return example.slice(end);
+}
+
 function audienceFlags(example: string): Set<ExampleAudience> {
   const fenceStart = example.indexOf("```");
   const metadata = fenceStart < 0 ? example : example.slice(0, fenceStart);

@@ -2,12 +2,49 @@
  * @component table.head
  * @memberOf table
  * @selector thead
+ * @a11y Use a native `<thead>`. `-layout-stacked` hides it visually, so keep it in the DOM, not `display: none`, to preserve column names for assistive technology.
  * @summary The table's header row group (InstUI `Table.Head`).
  * @remarks The parent `table`'s `-layout-stacked` modifier visually hides this member (its column titles surface per-cell instead) — see `table`'s own doc for that modifier.
  * @structure
  * @component table {
  *   thead {}
  * }
+ * @example -automatica11y
+ * ```html
+ * <table class="pfx-table -hover">
+ *   <caption id="table-head-caption">Top-rated films</caption>
+ *   <thead>
+ *     <tr>
+ *       <th scope="col">Rank</th>
+ *       <th scope="col">Title</th>
+ *       <th scope="col">Year</th>
+ *       <th scope="col">Rating</th>
+ *     </tr>
+ *   </thead>
+ *   <tbody>
+ *     <tr>
+ *       <th scope="row">1</th>
+ *       <td>The Shawshank Redemption</td>
+ *       <td>1994</td>
+ *       <td>9.3</td>
+ *     </tr>
+ *     <tr>
+ *       <th scope="row">2</th>
+ *       <td>The Godfather</td>
+ *       <td>1972</td>
+ *       <td>9.2</td>
+ *     </tr>
+ *     <tr>
+ *       <th scope="row">3</th>
+ *       <td>The Godfather: Part II</td>
+ *       <td>1974</td>
+ *       <td>9.0</td>
+ *     </tr>
+ *   </tbody>
+ * </table>
+ * <table class="pfx-table -layout-stacked"><caption>Stacked head</caption><thead><tr><th scope="col">Title</th><th scope="col">Rating</th></tr></thead><tbody><tr><th scope="row" data-label="Title">The Godfather</th><td data-label="Rating">9.2</td></tr></tbody></table>
+ * <div class="pfx-container"><table class="pfx-table -layout-responsive"><caption>Responsive head</caption><thead><tr><th scope="col">Title</th><th scope="col">Rating</th></tr></thead><tbody><tr><th scope="row" data-label="Title">The Godfather</th><td data-label="Rating">9.2</td></tr></tbody></table></div>
+ * ```
  */
 .pfx-table thead {
   background: var(--instui-component-table-head-background);

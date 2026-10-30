@@ -3092,9 +3092,9 @@ msgid "The Godfather: Part II"
 msgstr "The Godfather: Part II"
 
 #: docs/demos/table/i18n.json#text9
-#, no-c-format
+#, fuzzy, no-c-format
 msgctxt "docs.demos:table:text9"
-msgid "Films (stacked)"
+msgid "Films (responsive)"
 msgstr "Films (stacked)"
 
 #: docs/demos/table/i18n.json#text10
@@ -3542,6 +3542,18 @@ msgstr "Hover me"
 msgctxt "docs.demos:tooltip:text3"
 msgid "Placement bottom"
 msgstr "Placement bottom"
+
+#: docs/demos/tooltip/i18n.json#text5
+#, fuzzy, no-c-format
+msgctxt "docs.demos:tooltip:text5"
+msgid "Information"
+msgstr "formats"
+
+#: docs/demos/tooltip/i18n.json#text6
+#, fuzzy, no-c-format
+msgctxt "docs.demos:tooltip:text6"
+msgid "Notifications"
+msgstr "Notification frequency"
 
 #: docs/demos/tooltip/i18n.json#text4
 #, no-c-format

@@ -2,6 +2,7 @@
  * @component table.col-header
  * @memberOf table
  * @selector th
+ * @a11y Use `<th scope="col">` so each column header is associated with the cells beneath it.
  * @summary A column-header cell (InstUI `Table.ColHeader`); the default `th` styling, overridden by `table.row-header` for `th[scope="row"]`.
  * @structure
  * @component table {
@@ -9,6 +10,42 @@
  *     th {}
  *   }
  * }
+ * @example -automatica11y
+ * ```html
+ * <table class="pfx-table -hover">
+ *   <caption id="table-col-header-caption">Top-rated films</caption>
+ *   <thead>
+ *     <tr>
+ *       <th scope="col">Rank</th>
+ *       <th scope="col">Title</th>
+ *       <th scope="col">Year</th>
+ *       <th scope="col">Rating</th>
+ *     </tr>
+ *   </thead>
+ *   <tbody>
+ *     <tr>
+ *       <th scope="row">1</th>
+ *       <td>The Shawshank Redemption</td>
+ *       <td>1994</td>
+ *       <td>9.3</td>
+ *     </tr>
+ *     <tr>
+ *       <th scope="row">2</th>
+ *       <td>The Godfather</td>
+ *       <td>1972</td>
+ *       <td>9.2</td>
+ *     </tr>
+ *     <tr>
+ *       <th scope="row">3</th>
+ *       <td>The Godfather: Part II</td>
+ *       <td>1974</td>
+ *       <td>9.0</td>
+ *     </tr>
+ *   </tbody>
+ * </table>
+ * <table class="pfx-table -layout-stacked"><caption>Stacked column headers</caption><thead><tr><th scope="col">Title</th><th scope="col">Rating</th></tr></thead><tbody><tr><th scope="row" data-label="Title">The Godfather</th><td data-label="Rating">9.2</td></tr></tbody></table>
+ * <div class="pfx-container"><table class="pfx-table -layout-responsive"><caption>Responsive column headers</caption><thead><tr><th scope="col">Title</th><th scope="col">Rating</th></tr></thead><tbody><tr><th scope="row" data-label="Title">The Godfather</th><td data-label="Rating">9.2</td></tr></tbody></table></div>
+ * ```
  */
 .pfx-table th {
   text-align: start;

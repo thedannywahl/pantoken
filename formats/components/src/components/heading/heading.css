@@ -22,9 +22,32 @@
  * @modifier -variant-title-card-regular — Regular card-title preset.
  * @modifier -variant-title-card-section — Card section-title preset.
  * @accessibility These classes set the visual level only, so render a real `<h1>`–`<h6>` (or use `role="heading"` with `aria-level`) to convey the heading level.
- * @example
+ * @example -canvas-rce -docs
+ * ```html
  * <div class="pfx-heading -level-h1">Heading h1</div>
+ * ```
  * @related text — Body typography for non-heading text.
+ * @example -automatica11y
+ * ```html
+ * <h1 class="pfx-heading -level-h1">Course overview</h1>
+ * <h2 class="pfx-heading -level-h2">Getting started</h2>
+ * <h3 class="pfx-heading -level-h3">Your first lesson</h3>
+ * <h4 class="pfx-heading -level-h4">Required reading</h4>
+ * <h5 class="pfx-heading -level-h5">Reading notes</h5>
+ * <h6 class="pfx-heading -level-h6">Further details</h6>
+ * <h2 class="pfx-heading -color-primary">Course details</h2>
+ * <h2 class="pfx-heading -color-secondary">Optional activities</h2>
+ * <h2 class="pfx-heading -color-ai">Suggested study plan</h2>
+ * <div class="--bg-inverse --p-md"><h2 class="pfx-heading -color-primary-inverse">Course announcement</h2></div>
+ * <h2 class="pfx-heading -border-top">Schedule</h2>
+ * <h2 class="pfx-heading -border-bottom">Assignments</h2>
+ * <h2 class="pfx-heading -variant-title-page">Course home</h2>
+ * <h2 class="pfx-heading -variant-title-section">Weekly materials</h2>
+ * <h3 class="pfx-heading -variant-title-card-regular">Lesson resources</h3>
+ * <h3 class="pfx-heading -variant-title-card-mini">Quick links</h3>
+ * <h3 class="pfx-heading -variant-title-card-section">Practice exercises</h3>
+ * <h3 class="pfx-heading -variant-label">Learning objectives</h3>
+ * ```
  */
 @scope (.pfx-heading) {
   & {
@@ -119,6 +142,11 @@
     background-clip: text;
     -webkit-text-fill-color: transparent;
     color: transparent;
+    @media (forced-colors: active) {
+      background: none;
+      color: CanvasText;
+      -webkit-text-fill-color: currentColor;
+    }
   }
 
   &.-border-bottom {

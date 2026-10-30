@@ -23,8 +23,8 @@
  * @cssstate checked
  * @cssstate indeterminate
  * @cssstate disabled
- * @accessibility A native `<input type="checkbox">` drives `:checked`, `:indeterminate`, and `:disabled`; set `el.indeterminate = true` in JavaScript for the mixed state, and note that `-readonly` is styling only since checkboxes have no native readonly attribute.
- * @example
+ * @accessibility Wrap the native `<input type="checkbox">` and its visible text in a `<label>` to supply its accessible name. The input drives `:checked`, `:indeterminate`, and `:disabled`; set `el.indeterminate = true` in JavaScript for the mixed state. `-readonly` is styling only since checkboxes have no native readonly attribute.
+ * @example -canvas-rce -docs
  * ```html
  * <label class="pfx-checkbox --display-block --mb-sm">
  *   <input type="checkbox" checked>Checkbox
@@ -34,6 +34,26 @@
  * </label>
  * ```
  * @related radio — The single-select counterpart.
+ * @example -automatica11y
+ * ```html
+ * <p><label class="pfx-checkbox"><input type="checkbox">Unchecked checkbox</label></p>
+ * <p><label class="pfx-checkbox -label-placement-end"><input type="checkbox" checked>Checked checkbox, label after</label></p>
+ * <p><label class="pfx-checkbox -size-sm -label-placement-start"><input type="checkbox" checked>Small checkbox, label before</label></p>
+ * <p><label class="pfx-checkbox -size-lg -label-placement-top"><input type="checkbox" checked>Large checkbox, label above</label></p>
+ * <p><label class="pfx-checkbox"><input id="audit-checkbox-mixed" type="checkbox">Partially selected checkbox</label></p>
+ * <p><label class="pfx-checkbox"><input type="checkbox" disabled>Disabled unchecked checkbox</label></p>
+ * <p><label class="pfx-checkbox"><input type="checkbox" checked disabled>Disabled checked checkbox</label></p>
+ * <p><label class="pfx-checkbox -readonly"><input type="checkbox" checked disabled>Locked checkbox (disabled because native checkboxes have no readonly state)</label></p>
+ * <p><label class="pfx-checkbox -invalid -required"><input type="checkbox" required aria-invalid="true" aria-describedby="audit-checkbox-error">Accept the terms (required)<span class="asterisk" aria-hidden="true">*</span></label></p>
+ * <p id="audit-checkbox-error">Accept the terms before continuing.</p>
+ * <p><label class="pfx-checkbox -variant-toggle"><input type="checkbox">Toggle off</label></p>
+ * <p><label class="pfx-checkbox -variant-toggle"><input type="checkbox" checked>Toggle on</label></p>
+ * <p><label class="pfx-checkbox -variant-toggle -size-sm"><input type="checkbox" checked>Small toggle on</label></p>
+ * <p><label class="pfx-checkbox -variant-toggle -size-lg"><input type="checkbox" checked>Large toggle on</label></p>
+ * <p><label class="pfx-checkbox -variant-toggle"><input type="checkbox" disabled>Disabled toggle off</label></p>
+ * <p><label class="pfx-checkbox -variant-toggle"><input type="checkbox" checked disabled>Disabled toggle on</label></p>
+ * <script>document.getElementById("audit-checkbox-mixed").indeterminate = true;</script>
+ * ```
  */
 .pfx-checkbox {
   display: inline-flex;
@@ -79,9 +99,11 @@
   background: var(--instui-component-checkbox-background-color);
   cursor: pointer;
 
-  transition:
-    background-color 0.15s ease,
-    border-color 0.15s ease;
+  @media (prefers-reduced-motion: no-preference) {
+    transition:
+      background-color 0.15s ease,
+      border-color 0.15s ease;
+  }
 }
 
 .pfx-checkbox:not(.pfx-checkbox.-variant-toggle) input[type="checkbox"]::before {
@@ -96,8 +118,14 @@
   );
   -webkit-mask: var(--pantoken-cb-glyph);
   mask: var(--pantoken-cb-glyph);
+  @media (forced-colors: active) {
+    forced-color-adjust: preserve-parent-color;
+    background: currentColor;
+  }
   transform: scale(0);
-  transition: transform 0.1s ease;
+  @media (prefers-reduced-motion: no-preference) {
+    transition: transform 0.1s ease;
+  }
 }
 
 .pfx-checkbox:not(.pfx-checkbox.-variant-toggle) input[type="checkbox"]:hover {
@@ -202,7 +230,12 @@
      track uses the neutral muted background; the handle position and on-color signal the state. */
   background: var(--instui-color-background-muted);
   cursor: pointer;
-  transition: background-color 0.15s ease;
+  @media (forced-colors: active) {
+    border: var(--pantoken-toggle-bw) solid ButtonText;
+  }
+  @media (prefers-reduced-motion: no-preference) {
+    transition: background-color 0.15s ease;
+  }
 }
 
 .pfx-checkbox.-variant-toggle input[type="checkbox"]::before {
@@ -217,7 +250,9 @@
   border-radius: 50%;
   border: var(--pantoken-toggle-bw) solid var(--instui-color-stroke-base);
   background: var(--instui-component-radio-input-toggle-handle-text);
-  transition: inset-inline-start 0.15s ease;
+  @media (prefers-reduced-motion: no-preference) {
+    transition: inset-inline-start 0.15s ease;
+  }
 }
 
 /* A state glyph riding on the handle: an X when off, a check when on, in the track color. */
@@ -232,7 +267,13 @@
   background: var(--instui-color-text-muted);
   -webkit-mask: var(--instui-icon-x) center / 58% no-repeat;
   mask: var(--instui-icon-x) center / 58% no-repeat;
-  transition: inset-inline-start 0.15s ease;
+  @media (forced-colors: active) {
+    forced-color-adjust: preserve-parent-color;
+    background: currentColor;
+  }
+  @media (prefers-reduced-motion: no-preference) {
+    transition: inset-inline-start 0.15s ease;
+  }
 }
 
 .pfx-checkbox.-variant-toggle input[type="checkbox"]:checked {
@@ -249,4 +290,7 @@
   background: var(--instui-component-radio-input-toggle-background-success);
   -webkit-mask: var(--instui-icon-check) center / 58% no-repeat;
   mask: var(--instui-icon-check) center / 58% no-repeat;
+  @media (forced-colors: active) {
+    background: currentColor;
+  }
 }

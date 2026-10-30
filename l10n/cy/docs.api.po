@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: pantoken\n"
-"PO-Revision-Date: 2026-10-26 23:48+0000\n"
+"PO-Revision-Date: 2026-10-29 23:32+0000\n"
 "Last-Translator: pantoken localization engine\n"
 "Language-Team: pantoken\n"
 "MIME-Version: 1.0\n"
@@ -13209,10 +13209,10 @@ msgstr "Botwm “gweld sgrîn lawn” sy’n ymddangos wrth hofran, wedi’i orc
 #~ msgid "A native `<input type=\"checkbox\">` drives `:checked`, `:indeterminate`, and `:disabled`; set `el.indeterminate = true` in JavaScript for the mixed state, and note that `-readonly` is styling only since checkboxes have no native readonly attribute."
 #~ msgstr "Mae `<input type=\"checkbox\">` brodorol yn gyrru `:checked`, `:indeterminate`, a `:disabled`; gosod `el.indeterminate = true` yn JavaScript ar gyfer y cyflwr cymysg, a nodwch fod `-readonly` yn arddull yn unig gan nad oes gan flychau ticio briodwedd readonly brodorol."
 
-#, fuzzy, no-c-format
+#, no-c-format
 #~ msgctxt "docs.api:prose"
 #~ msgid "Checkbox\n"
-#~ msgstr "checkbox"
+#~ msgstr "Blwch ticio\n"
 
 #, fuzzy, no-c-format
 #~ msgctxt "docs.api:prose"
@@ -30915,6 +30915,7 @@ msgstr "Botwm “gweld sgrîn lawn” sy’n ymddangos wrth hofran, wedi’i orc
 #~ msgid "Border-only surface for a card inside a base card."
 #~ msgstr "Arwyneb ffin-yn-unig ar gyfer cerdyn o fewn cerdyn sylfaen."
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:prose"
 #~ msgid "-canvas-rce\n"
 #~ msgstr "-canvas-rce\n"
@@ -30975,6 +30976,7 @@ msgstr "Botwm “gweld sgrîn lawn” sy’n ymddangos wrth hofran, wedi’i orc
 #~ msgid "Review your account information."
 #~ msgstr "Adolygwch wybodaeth eich cyfrif."
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:prose"
 #~ msgid "-docs\n"
 #~ msgstr "-docs\n"
@@ -31143,9 +31145,10 @@ msgstr "Botwm “gweld sgrîn lawn” sy’n ymddangos wrth hofran, wedi’i orc
 #~ msgid "See upcoming assignments."
 #~ msgstr "Gweler y tasgau sydd i ddod."
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:prose"
 #~ msgid "Canvas"
-#~ msgstr "Canfas"
+#~ msgstr "Canvas"
 
 #~ msgctxt "docs.api:prose"
 #~ msgid "Course home"
@@ -31205,3 +31208,1213 @@ msgstr "Y rhyddhad Lucide wedi'i ddatrys, sy'n ofynnol wrth ymddeol o shim Lucid
 msgctxt "docs.api:text"
 msgid "removalDeadline"
 msgstr "removalDeadline"
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "more-contrast-respected"
+msgstr "more-contrast-respected"
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "reflow-at-320px"
+msgstr "reflow-at-320px"
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "Fail"
+msgstr "Fail"
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "text-spacing-no-clipping"
+msgstr "text-spacing-no-clipping"
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "Pass"
+msgstr "Pass"
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "Announcements"
+msgstr "Announcements"
+
+msgctxt "docs.api:prose"
+msgid "The shell is a plain container with no role of its own. Give it a landmark or group name (for example `role=\"region\"` with an `aria-label`, or a heading) so assistive tech can find the agent surface, and keep its content in reading order."
+msgstr "Cynhwysydd plaen yw’r gragen heb rôl ei hun. Rhowch enw tirnod neu grŵp iddi (er enghraifft `role=\"region\"` gydag `aria-label`, neu bennawd) fel y gall technoleg gynorthwyol ddod o hyd i arwyneb yr asiant, a chadwch ei gynnwys yn nhrefn darllen."
+
+msgctxt "docs.api:prose"
+msgid "Conditions"
+msgstr "Amodau"
+
+msgctxt "docs.api:prose"
+msgid "Rebrand (light)"
+msgstr "Ailfrandio (golau)"
+
+msgctxt "docs.api:prose"
+msgid "Rebrand (dark)"
+msgstr "Ailfrandio (tywyll)"
+
+msgctxt "docs.api:prose"
+msgid "Canvas High Contrast"
+msgstr "Cynfas cyferbyniad uchel"
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "WCAG 2.2 1.4.3, 1.4.6"
+msgstr "WCAG 2.2 1.4.3, 1.4.6"
+
+msgctxt "docs.api:prose"
+msgid "Review needed"
+msgstr "Mae angen adolygiad"
+
+msgctxt "docs.api:prose"
+msgid "The page changes under prefers-contrast: more, but no visible text was measurable."
+msgstr "Mae’r dudalen yn newid o dan prefers-contrast: more, ond nid oedd modd mesur unrhyw destun gweladwy."
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "WCAG 2.2 1.4.10"
+msgstr "WCAG 2.2 1.4.10"
+
+msgctxt "docs.api:prose"
+msgid "In a 320px window, the page scrolls sideways (it is 336px wide in a 320px window), and one element reaches past the right edge: "
+msgstr "Mewn ffenestr 320px, mae’r dudalen yn sgrolio i’r ochr (mae’n 336px o led mewn ffenestr 320px), ac mae un elfen yn ymestyn heibio’r ymyl dde: "
+
+msgctxt "docs.api:prose"
+msgid " ends at 336px. WCAG 1.4.10 Reflow (level AA) exempts two-dimensional content such as data tables and maps, so a person should judge whether that applies."
+msgstr " yn gorffen ar 336px. Mae WCAG 1.4.10 Ail-lifo (lefel AA) yn eithrio cynnwys dau ddimensiwn fel tablau data a mapiau, felly dylai person benderfynu a yw hynny’n berthnasol."
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "WCAG 2.2 1.4.12"
+msgstr "WCAG 2.2 1.4.12"
+
+msgctxt "docs.api:prose"
+msgid "Screen reader (simulated)"
+msgstr "Darllenydd sgrin (efelychiad)"
+
+msgctxt "docs.api:prose"
+msgid "These automated results do not establish that the page meets WCAG; manual review is still needed."
+msgstr "Nid yw’r canlyniadau awtomataidd hyn yn profi bod y dudalen yn bodloni WCAG; mae angen adolygiad â llaw o hyd."
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "color-contrast"
+msgstr "color-contrast"
+
+msgctxt "docs.api:prose"
+msgid "Rules (axe-core)"
+msgstr "Rheolau (axe-core)"
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "WCAG 2.2 1.4.3"
+msgstr "WCAG 2.2 1.4.3"
+
+msgctxt "docs.api:prose"
+msgid "Elements must meet minimum color contrast ratio thresholds"
+msgstr "Rhaid i elfennau gyrraedd y trothwyon cymhareb cyferbyniad lliw lleiaf"
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "forced-colors-focus-visible"
+msgstr "forced-colors-focus-visible"
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "less-contrast-stays-readable"
+msgstr "less-contrast-stays-readable"
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "reduced-motion-respected"
+msgstr "reduced-motion-respected"
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "Interactions"
+msgstr "Interactions"
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "focus-indicator-visible"
+msgstr "focus-indicator-visible"
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "focus-stays-on-trigger"
+msgstr "focus-stays-on-trigger"
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "live-politeness-fits-role"
+msgstr "live-politeness-fits-role"
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "message-has-text"
+msgstr "message-has-text"
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "message-in-live-region"
+msgstr "message-in-live-region"
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "no-focus-trap"
+msgstr "no-focus-trap"
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "region-exists-before-message"
+msgstr "region-exists-before-message"
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "trigger-reachable-by-tab"
+msgstr "trigger-reachable-by-tab"
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "message-text-contrast"
+msgstr "message-text-contrast"
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "WCAG 2.2 1.4.11, 2.4.7"
+msgstr "WCAG 2.2 1.4.11, 2.4.7"
+
+msgctxt "docs.api:prose"
+msgid "Not applicable"
+msgstr "Ddim yn berthnasol"
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "WCAG 2.2 2.3.3, 2.2.2"
+msgstr "WCAG 2.2 2.3.3, 2.2.2"
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "WCAG 2.2 2.4.7"
+msgstr "WCAG 2.2 2.4.7"
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "WCAG 2.2 4.1.3"
+msgstr "WCAG 2.2 4.1.3"
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "WCAG 2.2 2.1.2"
+msgstr "WCAG 2.2 2.1.2"
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "WCAG 2.2 2.1.1"
+msgstr "WCAG 2.2 2.1.1"
+
+msgctxt "docs.api:prose"
+msgid "Computed styles"
+msgstr "Arddulliau wedi'u cyfrifo"
+
+msgctxt "docs.api:prose"
+msgid "The name parts intentionally clip full names to leading letters. Keep the full text in the markup; when identifying text must also be visible, show the full name alongside the avatar."
+msgstr "Mae rhannau’r enw yn clipio enwau llawn i’r llythrennau cyntaf yn fwriadol. Cadwch y testun llawn yn y marcio; pan fydd angen i’r testun adnabod fod yn weladwy hefyd, dangoswch yr enw llawn ochr yn ochr â’r avatar."
+
+msgctxt "docs.api:prose"
+msgid "All 18 measured pieces of text pass with more contrast. one other piece can't be reduced to one color. \"Sam Kim\" can't be measured because a background image or gradient sits behind it."
+msgstr "Mae gan bob un o’r 18 darn o destun a fesurwyd fwy o gyferbyniad. Ni ellir lleihau un darn arall i un lliw. Ni ellir mesur \"Sam Kim\" oherwydd bod delwedd gefndir neu raddiant y tu ôl iddo."
+
+msgctxt "docs.api:prose"
+msgid "With line height 1.5, letter spacing 0.12em, word spacing 0.16em, and paragraph spacing 2em, text in six elements gets cut off: "
+msgstr "Gyda bylchiad llinell o 1.5, bylchiad llythrennau o 0.12em, bylchiad geiriau o 0.16em, a bylchiad paragraffau o 2em, caiff testun mewn chwe elfen ei dorri i ffwrdd: "
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid " (\"Lee Harper\"); "
+msgstr " (\"Lee Harper\"); "
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid " (\"Amira Patel\"); "
+msgstr " (\"Amira Patel\"); "
+
+msgctxt "docs.api:prose"
+msgid " (\"Miguel\"); and 3 more. Overlapping text isn't checked."
+msgstr " (\"Miguel\"); a 3 arall. Ni chaiff testun sy’n gorgyffwrdd ei wirio."
+
+msgctxt "docs.api:prose"
+msgid "The count or dot is visual only, so don't rely on color to carry its meaning; put the status in text, such as visually hidden text or an `aria-label` on the target it decorates."
+msgstr "Mae’r cyfrif neu’r dot yn weledol yn unig, felly peidiwch â dibynnu ar liw i gyfleu ei ystyr; rhowch y statws mewn testun, megis testun sydd wedi’i guddio’n weledol neu `aria-label` ar y targed y mae’n ei addurno."
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "Canvas:"
+msgstr "Canvas:"
+
+msgctxt "docs.api:prose"
+msgid " With prefers-contrast: more, two pieces of text fall below the minimum contrast. The worst is \"Undo\" at 4.46:1 (needs 4.5:1)."
+msgstr " Gyda prefers-contrast: more, mae dau ddarn o destun yn is na’r cyferbyniad lleiaf. Y gwaethaf yw \"Undo\" ar 4.46:1 (mae angen 4.5:1)."
+
+msgctxt "docs.api:prose"
+msgid "It sets the page surface, text color, and `color-scheme` so native controls follow the active light or dark scheme; keep links distinguishable from surrounding text by more than color alone."
+msgstr "Mae'n gosod arwyneb y dudalen, lliw'r testun, a `color-scheme` fel bod rheolyddion brodorol yn dilyn y cynllun golau neu dywyll gweithredol; cadwch ddolenni'n wahanol i'r testun o'u cwmpas drwy fwy na lliw yn unig."
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "label-content-name-mismatch"
+msgstr "label-content-name-mismatch"
+
+msgctxt "docs.api:prose"
+msgid "Render the `.heading` as a real heading element. A `-clickable` billboard only gains hover styling, so give it `tabindex=\"0\"`, an appropriate role, and a keyboard handler."
+msgstr "Rendro'r `.heading` fel elfen pennawd go iawn. Dim ond arddull hofran y mae hysbysfwrdd `-clickable` yn ei gael, felly rhowch iddo `tabindex=\"0\"`, rôl briodol, a thriniwr bysellfwrdd."
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "WCAG 2.2 2.5.3"
+msgstr "WCAG 2.2 2.5.3"
+
+msgctxt "docs.api:prose"
+msgid "Elements must have their visible text as part of their accessible name"
+msgstr "Rhaid i destun gweladwy elfennau fod yn rhan o'u henw hygyrch"
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "reduced-transparency-respected"
+msgstr "reduced-transparency-respected"
+
+msgctxt "docs.api:prose"
+msgid "Rebrand (light):"
+msgstr "Ailfrandio (ysgafn):"
+
+msgctxt "docs.api:prose"
+msgid " With prefers-contrast: more, six pieces of text fall below the minimum contrast. The worst is \"Send\" at 1.64:1 (needs 4.5:1)."
+msgstr " Gyda prefers-contrast: more, mae chwe darn o destun yn is na’r cyferbyniad gofynnol. Y gwaethaf yw \"Anfon\" ar 1.64:1 (mae angen 4.5:1)."
+
+msgctxt "docs.api:prose"
+msgid "Rebrand (dark):"
+msgstr "Ailfrandio (tywyll):"
+
+msgctxt "docs.api:prose"
+msgid " With prefers-contrast: more, six pieces of text fall below the minimum contrast. The worst is \"Send\" at 1.78:1 (needs 4.5:1)."
+msgstr " Gyda prefers-contrast: more, mae chwe darn o destun yn is na’r cyferbyniad gofynnol. Y gwaethaf yw \"Anfon\" ar 1.78:1 (mae angen 4.5:1)."
+
+msgctxt "docs.api:prose"
+msgid "Canvas, Canvas High Contrast:"
+msgstr "Canvas, Canvas Cyferbyniad Uchel:"
+
+msgctxt "docs.api:prose"
+msgid " With prefers-contrast: more, two pieces of text fall below the minimum contrast. The worst is \"Rewrite\" at 1.88:1 (needs 4.5:1)."
+msgstr " Gyda prefers-contrast: more, mae dau ddarn o destun yn is na’r cyferbyniad gofynnol. Y gwaethaf yw \"Ailysgrifennu\" ar 1.88:1 (mae angen 4.5:1)."
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "WCAG 2.2 1.4.3, 1.4.11"
+msgstr "WCAG 2.2 1.4.3, 1.4.11"
+
+msgctxt "docs.api:prose"
+msgid "In a 320px window, the page scrolls sideways (it is 592px wide in a 320px window), and one element reaches past the right edge: "
+msgstr "Mewn ffenestr 320px, mae’r dudalen yn sgrolio i’r ochr (mae’n 592px o led mewn ffenestr 320px), ac mae un elfen yn ymestyn heibio’r ymyl dde: "
+
+msgctxt "docs.api:prose"
+msgid " ends at 592px. WCAG 1.4.10 Reflow (level AA) exempts two-dimensional content such as data tables and maps, so a person should judge whether that applies."
+msgstr " yn gorffen ar 592px. Mae WCAG 1.4.10 Reflow (lefel AA) yn eithrio cynnwys dau ddimensiwn fel tablau data a mapiau, felly dylai rhywun benderfynu a yw hynny’n berthnasol."
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "enter-activates"
+msgstr "enter-activates"
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "space-activates"
+msgstr "space-activates"
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "boundary-contrast"
+msgstr "boundary-contrast"
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "focus-indicator-contrast"
+msgstr "focus-indicator-contrast"
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "text-contrast-by-state"
+msgstr "text-contrast-by-state"
+
+msgctxt "docs.api:prose"
+msgid " With forced colors on, the focus indicator is weak: only 58 of 299 changed pixels reach 3:1 against their unfocused color, and enough to count is about half the control's perimeter, 108."
+msgstr " Gyda lliwiau gorfodol ymlaen, mae’r dangosydd ffocws yn wan: dim ond 58 o’r 299 o bicseli sydd wedi newid sy’n cyrraedd cymhareb 3:1 o’u cymharu â’u lliw heb ffocws, ac mae angen tua hanner perimedr y rheolydd, sef 108, i gyfrif."
+
+msgctxt "docs.api:prose"
+msgid " With prefers-contrast: more, eight pieces of text fall below the minimum contrast. The worst is \"Save unavailable\" at 1.64:1 (needs 4.5:1)."
+msgstr " Gyda prefers-contrast: more, mae wyth darn o destun yn is na’r cyferbyniad lleiaf. Y gwaethaf yw \"Nid yw Cadw ar gael\" ar 1.64:1 (mae angen 4.5:1)."
+
+msgctxt "docs.api:prose"
+msgid " With prefers-contrast: more, eight pieces of text fall below the minimum contrast. The worst is \"Save unavailable\" at 1.78:1 (needs 4.5:1)."
+msgstr " Gyda prefers-contrast: more, mae wyth darn o destun yn is na’r cyferbyniad lleiaf. Y gwaethaf yw \"Nid yw Cadw ar gael\" ar 1.78:1 (mae angen 4.5:1)."
+
+msgctxt "docs.api:prose"
+msgid " With prefers-contrast: more, two pieces of text fall below the minimum contrast. The worst is \"Summary unavailable\" at 1.88:1 (needs 4.5:1)."
+msgstr " Gyda prefers-contrast: more, mae dau ddarn o destun yn is na’r cyferbyniad lleiaf. Y gwaethaf yw \"Nid yw’r crynodeb ar gael\" ar 1.88:1 (mae angen 4.5:1)."
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "WCAG 2.2 1.4.11"
+msgstr "WCAG 2.2 1.4.11"
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "WCAG 2.2 1.4.11, 2.4.13"
+msgstr "WCAG 2.2 1.4.11, 2.4.13"
+
+msgctxt "docs.api:prose"
+msgid "Give an informative hero image alt text and mark a decorative one with an empty `alt` or `aria-hidden=\"true\"`. Use a real heading element for the `.title` when it belongs in the document outline."
+msgstr "Rhowch destun alt llawn gwybodaeth i ddelwedd arwr a marciwch ddelwedd addurniadol ag `alt` neu `aria-hidden=\"true\"`. Defnyddiwch elfen bennawd go iawn ar gyfer `.title` pan fo’n perthyn yn amlinelliad y ddogfen."
+
+msgctxt "docs.api:prose"
+msgid " Elements must meet minimum color contrast ratio thresholds"
+msgstr " Rhaid i elfennau fodloni’r trothwyon cymhareb cyferbyniad lliw lleiaf"
+
+msgctxt "docs.api:prose"
+msgid "Mirror `-selected` with `aria-selected` and mark today with `aria-current=\"date\"`; give each day a full-date accessible name, since the day number alone is ambiguous."
+msgstr "Drychwch `-selected` gyda `aria-selected` a nodwch heddiw gyda `aria-current=\"date\"`; rhowch enw hygyrch dyddiad llawn i bob diwrnod, gan fod rhif y diwrnod ar ei ben ei hun yn amwys."
+
+msgctxt "docs.api:prose"
+msgid "Wrap the native `<input type=\"checkbox\">` and its visible text in a `<label>` to supply its accessible name. The input drives `:checked`, `:indeterminate`, and `:disabled`; set `el.indeterminate = true` in JavaScript for the mixed state. `-readonly` is styling only since checkboxes have no native readonly attribute."
+msgstr "Lapiwch y `<input type=\"checkbox\">` brodorol a’i destun gweladwy mewn `<label>` i ddarparu ei enw hygyrch. Mae’r mewnbwn yn rheoli `:checked`, `:indeterminate`, a `:disabled`; gosodwch `el.indeterminate = true` yn JavaScript ar gyfer y cyflwr cymysg. Mae `-readonly` ar gyfer steilio yn unig gan nad oes gan flychau ticio briodwedd frodorol readonly."
+
+msgctxt "docs.api:prose"
+msgid " With prefers-contrast: more, five pieces of text fall below the minimum contrast. The worst is \"Disabled unchecked checkbox\" at 2.74:1 (needs 4.5:1)."
+msgstr " Gyda prefers-contrast: more, mae pum darn o destun yn is na’r cyferbyniad lleiaf. Y gwaethaf yw \"Blwch ticio heb ei dicio, wedi’i analluogi\" ar 2.74:1 (mae angen 4.5:1)."
+
+msgctxt "docs.api:prose"
+msgid " With prefers-contrast: more, five pieces of text fall below the minimum contrast. The worst is \"Disabled unchecked checkbox\" at 3.15:1 (needs 4.5:1)."
+msgstr " Gyda prefers-contrast: more, mae pum darn o destun yn is na’r cyferbyniad lleiaf. Y gwaethaf yw \"Blwch ticio heb ei dicio, wedi’i analluogi\" ar 3.15:1 (mae angen 4.5:1)."
+
+msgctxt "docs.api:prose"
+msgid " With prefers-contrast: more, five pieces of text fall below the minimum contrast. The worst is \"Disabled unchecked checkbox\" at 3.02:1 (needs 4.5:1)."
+msgstr " Gyda prefers-contrast: more, mae pum darn o destun yn is na’r cyferbyniad lleiaf. Y gwaethaf yw \"Blwch ticio heb ei dicio, wedi’i analluogi\" ar 3.02:1 (mae angen 4.5:1)."
+
+msgctxt "docs.api:prose"
+msgid "Connect the trigger with `popovertarget` so the open state is exposed, and keep the native Escape and outside-click dismissal. The caret is decorative; the callout's content isn't announced unless the trigger references it, for example with `aria-describedby`."
+msgstr "Cysylltwch y sbardun â `popovertarget` fel bod y cyflwr agored yn cael ei ddatgelu, a chadwch y modd cau brodorol wrth wasgu Escape a chlicio y tu allan. Addurnol yw’r saeth fach; ni chaiff cynnwys y blwch gwybodaeth ei gyhoeddi oni bai bod y sbardun yn cyfeirio ato, er enghraifft gyda `aria-describedby`."
+
+msgctxt "docs.api:prose"
+msgid "The cursor only affects pointer users; a pointer cursor doesn't make an element operable. Put it on native controls (`button`, `a`), and never use `--cursor-not-allowed` or `--cursor-wait` as the only sign that something is disabled or busy."
+msgstr "Mae'r cyrchwr yn effeithio ar ddefnyddwyr pwyntydd yn unig; nid yw cyrchwr pwyntydd yn gwneud elfen yn weithredadwy. Rhowch ef ar reolyddion brodorol (`button`, `a`)), a pheidiwch byth â defnyddio `--cursor-not-allowed` neu `--cursor-wait` fel yr unig arwydd bod rhywbeth wedi'i analluogi neu'n brysur."
+
+msgctxt "docs.api:prose"
+msgid "Once the parent's inline-size drops below `64em` (`16em` tray width + `48em` breakpoint), a `@container` query on the parent's `pantoken-drawer-layout` container drops this member's `min-inline-size` to `0` automatically, matching the manual `[should-overlay-tray]` override. This also applies when the tray is closed or absent."
+msgstr "Unwaith y bydd maint inline y rhiant yn disgyn islaw `64em` (`16em` lled yr hambwrdd + `48em` torbwynt), mae ymholiad `@container` ar gynhwysydd `pantoken-drawer-layout` y rhiant yn gostwng `min-inline-size` yr aelod hwn i `0` yn awtomatig, gan gyfateb i'r gwrthwneud `[should-overlay-tray]` â llaw. Mae hyn hefyd yn berthnasol pan fydd yr hambwrdd ar gau neu ddim yn bodoli."
+
+msgctxt "docs.api:prose"
+msgid "Use a `div` with `role=\"region\"` (InstUI's DrawerLayout convention) and always name it with `aria-label` or `aria-labelledby`."
+msgstr "Defnyddiwch `div` gyda `role=\"region\"` (confensiwn DrawerLayout InstUI)) a rhowch enw iddo bob amser gyda `aria-label` neu `aria-labelledby`."
+
+msgctxt "docs.api:prose"
+msgid "Name every region with `aria-label` or `aria-labelledby`. Use `div` for InstUI-style regions, not `<main role=\"region\">`. When the tray acts as navigation, use a named `<nav>` or place one inside the tray."
+msgstr "Enwch bob rhanbarth â `aria-label` neu `aria-labelledby`. Defnyddiwch `div` ar gyfer rhanbarthau arddull InstUI, nid `<main role=\"region\">`. Pan fydd yr hambwrdd yn gweithredu fel llywio, defnyddiwch `<nav>` ag enw neu rhowch un y tu mewn i'r hambwrdd."
+
+msgctxt "docs.api:prose"
+msgid "The page changes under prefers-contrast: less, but no visible text was measurable."
+msgstr "Mae'r dudalen yn newid o dan prefers-contrast: less, ond ni ellid mesur unrhyw destun gweladwy."
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "error-associated-on-invalid"
+msgstr "error-associated-on-invalid"
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "label-associated"
+msgstr "label-associated"
+
+msgctxt "docs.api:prose"
+msgid "Native validation is opt-in: add `data-native-validation` and load `@pantoken/interactions/form-field.iife.js`, or call `initFormField(host, control, error)`. Supply exactly one native control and one error message with a stable, unique ID. The behavior associates the error after blur or a native validation attempt and removes it when corrected; CSS alone doesn't synchronize ARIA."
+msgstr "Mae dilysu brodorol yn ddewisol: ychwanegwch `data-native-validation` a llwythwch `@pantoken/interactions/form-field.iife.js`, neu ffoniwch `initFormField(host, control, error)`. Rhowch un rheolydd brodorol ac un neges gwall yn unig, gyda ID unigryw sefydlog. Mae'r ymddygiad yn cysylltu'r gwall ar ôl colli ffocws neu ymgais i ddilysu'n frodorol, ac yn ei dynnu pan gaiff y gwall ei gywiro; nid yw CSS yn unig yn cydamseru ARIA."
+
+msgctxt "docs.api:prose"
+msgid "Use your work email."
+msgstr "Defnyddiwch eich cyfeiriad e-bost gwaith."
+
+msgctxt "docs.api:prose"
+msgid "A wrapping `<label>` names the control. When it also contains messages, use `aria-labelledby` to identify just the visible label text and `aria-describedby` for hints. Associate visible validation errors and synchronize `aria-invalid` in application code or with the opt-in native validation behavior; the decorative required asterisk isn't an accessible-name substitute."
+msgstr "Mae `<label>` amgylchynol yn enwi'r rheolydd. Pan fydd hefyd yn cynnwys negeseuon, defnyddiwch `aria-labelledby` i nodi testun y label gweladwy yn unig a `aria-describedby` ar gyfer awgrymiadau. Cysylltwch wallau dilysu gweladwy a chydamserwch `aria-invalid` yng nghod y rhaglen neu drwy'r ymddygiad dilysu brodorol dewisol; nid yw'r seren addurniadol sy'n dynodi maes gofynnol yn lle enw hygyrch."
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "WCAG 2.2 3.3.1, 4.1.3"
+msgstr "WCAG 2.2 3.3.1, 4.1.3"
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "WCAG 2.2 1.3.1, 3.3.2, 4.1.2"
+msgstr "WCAG 2.2 1.3.1, 3.3.2, 4.1.2"
+
+msgctxt "docs.api:prose"
+msgid "A gap changes spacing only; reading and focus order still follow the DOM. Keep gaps between interactive controls large enough to meet WCAG 2.5.8 target spacing."
+msgstr "Mae bwlch yn newid y bylchau yn unig; mae trefn darllen a ffocws yn dal i ddilyn y DOM. Cadwch fylchau rhwng rheolyddion rhyngweithiol yn ddigon mawr i fodloni gofyniad bylchau targed WCAG 2.5.8."
+
+msgctxt "docs.api:prose"
+msgid "All 17 measured pieces of text pass with more contrast. one other piece can't be reduced to one color. \"Suggested study plan\" can't be measured because a background image or gradient sits behind it."
+msgstr "Mae pob un o'r 17 darn o destun a fesurwyd yn pasio gyda mwy o gyferbyniad. Ni ellir lleihau un darn arall i un lliw. Ni ellir mesur \"Cynllun astudio a awgrymir\" oherwydd bod delwedd gefndir neu raddiant y tu ôl iddo."
+
+msgctxt "docs.api:prose"
+msgid "A hover and focus tooltip bubble, positionable on any side."
+msgstr "Swigen awgrym sy'n ymddangos wrth hofran neu ganolbwyntio, y gellir ei lleoli ar unrhyw ochr."
+
+msgctxt "docs.api:prose"
+msgid "A tree of nested collections and leaf items, with rotating chevrons."
+msgstr "Coeden o gasgliadau nythol ac eitemau terfynol, gyda saethau onglog sy'n cylchdroi."
+
+msgctxt "docs.api:prose"
+msgid "Label the inner input with a real `<label>`. Mark purely visual icons in `.before` and `.after` with `aria-hidden=\"true\"`, and convey `-invalid` and `-success` states in text, not color alone."
+msgstr "Labelwch y mewnbwn mewnol â label go iawn `<label>`. Marciwch eiconau sy’n weledol yn unig yn `.before` a `.after` yn addurniadol drwy ddefnyddio `aria-hidden=\"true\"`, a chyfleuwch gyflyrau `-invalid` a `-success` mewn testun, nid drwy liw yn unig."
+
+msgctxt "docs.api:prose"
+msgid "`--display-none` removes an element from the accessibility tree as well as the screen, so use it only for content nobody needs. Flex and grid layout can't reorder content for assistive tech; keep the DOM order meaningful, and don't center or justify long passages of text."
+msgstr "`--display-none` yn tynnu elfen o'r goeden hygyrchedd yn ogystal â'r sgrin, felly defnyddiwch ef ar gyfer cynnwys nad oes ei angen ar neb yn unig. Ni all cynllun Flex a grid aildrefnu cynnwys ar gyfer technoleg gynorthwyol; cadwch drefn y DOM yn ystyrlon, a pheidiwch â chanoli na chyfiawnhau darnau hir o destun."
+
+msgctxt "docs.api:prose"
+msgid " With prefers-contrast: more, two pieces of text fall below the minimum contrast. The worst is \"Settings unavailable\" at 2.74:1 (needs 4.5:1)."
+msgstr " Gyda prefers-contrast: more, mae dwy ran o destun yn is na’r cyferbyniad lleiaf. Y gwaethaf yw \"Nid yw’r gosodiadau ar gael\" ar 2.74:1 (mae angen 4.5:1)."
+
+msgctxt "docs.api:prose"
+msgid " With prefers-contrast: more, two pieces of text fall below the minimum contrast. The worst is \"Settings unavailable on brand\" at 1.84:1 (needs 4.5:1)."
+msgstr " Gyda prefers-contrast: more, mae dwy ran o destun yn is na’r cyferbyniad lleiaf. Y gwaethaf yw \"Nid yw’r gosodiadau ar gael ar frand\" ar 1.84:1 (mae angen 4.5:1)."
+
+msgctxt "docs.api:prose"
+msgid " With prefers-contrast: more, three pieces of text fall below the minimum contrast. The worst is \"Settings unavailable on brand\" at 2.76:1 (needs 4.5:1)."
+msgstr " Gyda prefers-contrast: more, mae tair rhan o destun yn is na’r cyferbyniad lleiaf. Y gwaethaf yw \"Nid yw’r gosodiadau ar gael ar frand\" ar 2.76:1 (mae angen 4.5:1)."
+
+msgctxt "docs.api:prose"
+msgid "Canvas High Contrast:"
+msgstr "Canvas Cyferbyniad Uchel:"
+
+msgctxt "docs.api:prose"
+msgid " With prefers-contrast: more, one piece of text falls below the minimum contrast. The worst is \"Settings unavailable on brand\" at 2.84:1 (needs 4.5:1)."
+msgstr " Gyda prefers-contrast: more, mae un rhan o destun yn is na’r cyferbyniad lleiaf. Y gwaethaf yw \"Nid yw’r gosodiadau ar gael ar frand\" ar 2.84:1 (mae angen 4.5:1)."
+
+msgctxt "docs.api:prose"
+msgid "Keep each item a direct `<li>` child of the list so it stays in the list's accessibility tree; delimiters and markers are visual only."
+msgstr "Cadwch bob eitem yn blentyn uniongyrchol `<li>` o'r rhestr fel ei bod yn aros yng nghoeden hygyrchedd y rhestr; mae'r amffinyddion a'r marcwyr yn weledol yn unig."
+
+msgctxt "docs.api:prose"
+msgid "Use a real `<ul>` or `<ol>` with `<li>` children. Removing markers with `-unstyled` can make some screen readers drop the list semantics, so add `role=\"list\"` when the list structure matters."
+msgstr "Defnyddiwch `<ul>` neu `<ol>` go iawn gyda phlant `<li>`. Gall tynnu marcwyr gyda `-unstyled` beri i rai darllenwyr sgrin golli semanteg y rhestr, felly ychwanegwch `role=\"list\"` pan fo strwythur y rhestr yn bwysig."
+
+msgctxt "docs.api:prose"
+msgid "A contained spinner honors reduced motion without hiding the overlay or loading indicator. Keep its status role and meaningful loading label."
+msgstr "Mae troellwr mewn cynhwysydd yn parchu’r dewis i leihau symudiadau heb guddio’r troshaen na’r dangosydd llwytho. Cadwch ei rôl status a label llwytho ystyrlon."
+
+msgctxt "docs.api:prose"
+msgid "A mask covers content visually but doesn't block assistive tech or the keyboard: make the covered region `inert` (or mark it `aria-busy`), keep the mask's own message as real text, and don't hide the focus indicator behind it."
+msgstr "Mae mwgwd yn cuddio cynnwys yn weledol ond nid yw'n rhwystro technoleg gynorthwyol na'r bysellfwrdd: gwnewch yr ardal dan orchudd yn `inert` (neu ei marcio'n `aria-busy`), cadwch neges y mwgwd ei hun yn destun go iawn, a pheidiwch â chuddio'r dangosydd ffocws y tu ôl iddo."
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "aria-valid-attr-value"
+msgstr "aria-valid-attr-value"
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "dark-mode-contrast"
+msgstr "dark-mode-contrast"
+
+msgctxt "docs.api:prose"
+msgid "Wrap the grouped items in an element with `role=\"group\"` and point `aria-labelledby` at the group heading so assistive technology announces the group name."
+msgstr "Lapiwch yr eitemau sydd wedi'u grwpio mewn elfen gyda `role=\"group\"` a chyfeiriwch `aria-labelledby` at bennawd y grŵp fel bod technoleg gynorthwyol yn cyhoeddi enw'r grŵp."
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "WCAG 2.2 4.1.2"
+msgstr "WCAG 2.2 4.1.2"
+
+msgctxt "docs.api:prose"
+msgid "ARIA attributes must conform to valid values"
+msgstr "Rhaid i briodoleddau ARIA gydymffurfio â gwerthoedd dilys"
+
+msgctxt "docs.api:prose"
+msgid "Checked actions use `menuitemcheckbox` or `menuitemradio` with `aria-checked`; applications update that state on activation. Pair `-disabled` with `aria-disabled=\"true\"` or native `disabled`, not the CSS class alone. Opt-in menu navigation keeps ARIA-disabled items reachable but prevents their activation."
+msgstr "Mae gweithredoedd wedi'u gwirio yn defnyddio `menuitemcheckbox` neu `menuitemradio` gyda `aria-checked`; mae cymwysiadau'n diweddaru'r cyflwr hwnnw wrth actifadu. Parwch `-disabled` â `aria-disabled=\"true\"` neu `disabled` brodorol, nid y dosbarth CSS yn unig. Mae llywio dewislen optio i mewn yn cadw eitemau sydd wedi'u hanalluogi gan ARIA yn hygyrch ond yn atal eu hactifadu."
+
+msgctxt "docs.api:prose"
+msgid " All five measured pieces of text pass in dark mode. one other piece can't be reduced to one color. \"Archive\" can't be measured because an element behind it is partly transparent."
+msgstr " Mae pob un o'r pum darn o destun a fesurwyd yn pasio yn y modd tywyll. ni ellir lleihau un darn arall i un lliw. Ni ellir mesur \"Archif\" oherwydd bod elfen y tu ôl iddo yn rhannol dryloyw."
+
+msgctxt "docs.api:prose"
+msgid "All five measured pieces of text pass with more contrast. one other piece can't be reduced to one color. \"Archive\" can't be measured because an element behind it is partly transparent."
+msgstr "Mae pob un o'r pum darn o destun a fesurwyd yn pasio gyda mwy o gyferbyniad. ni ellir lleihau un darn arall i un lliw. Ni ellir mesur \"Archif\" oherwydd bod elfen y tu ôl iddo yn rhannol dryloyw."
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "arrow-keys-move-between-items"
+msgstr "arrow-keys-move-between-items"
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "escape-closes-and-returns-focus"
+msgstr "escape-closes-and-returns-focus"
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "opens-with-enter-or-arrow"
+msgstr "opens-with-enter-or-arrow"
+
+msgctxt "docs.api:prose"
+msgid "Keyboard navigation is opt-in: add `data-menu-navigation` to a vertical native popover with `role=\"menu\"` and load `@pantoken/interactions/menu.iife.js`, or call `initMenu(menu, button)`. Use one native `button[popovertarget]`. The behavior handles focus, arrows, Home/End, initial-character search, Escape, and activation; applications own actions and checked state. Submenus and menubars aren't supported."
+msgstr "Mae llywio â bysellfwrdd yn ddewisol: ychwanegwch `data-menu-navigation` at naidlen frodorol fertigol gyda `role=\"menu\"` a llwythwch `@pantoken/interactions/menu.iife.js`, neu ffoniwch `initMenu(menu, button)`. Defnyddiwch un `button[popovertarget]` brodorol. Mae'r ymddygiad yn rheoli ffocws, y saethau, Home/End, chwilio yn ôl y nod cychwynnol, Escape, ac actifadu; yr apiau sy'n gyfrifol am weithredoedd a chyflwr wedi'i ddewis. Nid yw is-ddewislenni na barrau dewislenni'n cael eu cynnal."
+
+msgctxt "docs.api:prose"
+msgid "Name the menu and button. Use `menuitem` for actions, `menuitemcheckbox`/`menuitemradio` with `aria-checked` for checked actions, and `separator` for dividers. Add `aria-disabled=\"true\"` to disabled items; a CSS modifier alone doesn't convey disabled state. ARIA-disabled entries remain focusable but cannot activate; native-disabled and hidden entries are skipped."
+msgstr "Rhowch enw i'r ddewislen a'r botwm. Defnyddiwch `menuitem` ar gyfer gweithredoedd, `menuitemcheckbox`/`menuitemradio` gyda `aria-checked` ar gyfer gweithredoedd sydd wedi'u dewis, a `separator` ar gyfer gwahanyddion. Ychwanegwch `aria-disabled=\"true\"` at eitemau sydd wedi'u hanalluogi; nid yw addasydd CSS yn unig yn cyfleu cyflwr anabl. Mae cofnodion sydd wedi'u hanalluogi drwy ARIA yn parhau i fod yn ffocysadwy ond ni ellir eu hactifadu; caiff cofnodion sydd wedi'u hanalluogi'n frodorol a rhai cudd eu hepgor."
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "WCAG 2.2 2.1.1, 2.4.3"
+msgstr "WCAG 2.2 2.1.1, 2.4.3"
+
+msgctxt "docs.api:prose"
+msgid "Give the divider `role=\"separator\"` so assistive technology can announce the break between items; without it the rule is purely decorative."
+msgstr "Rhowch y gwahanydd `role=\"separator\"` fel y gall technoleg gynorthwyol gyhoeddi’r toriad rhwng eitemau; hebddo, addurnol yn unig yw’r llinell."
+
+msgctxt "docs.api:prose"
+msgid "The `.value` and `.label` are separate elements, so keep them adjacent in source order to read together, and don't convey meaning through size alone."
+msgstr "Mae'r `.value` a `.label` yn elfennau ar wahân, felly cadwch nhw'n gyfagos yn nhrefn y ffynhonnell er mwyn eu darllen gyda'i gilydd, a pheidiwch â chyfleu ystyr drwy faint yn unig."
+
+msgctxt "docs.api:prose"
+msgid "Place the body inside the dialog that the header labels, and give a lone full-bleed `<img>` alt text."
+msgstr "Rhowch y corff y tu mewn i'r ymgom y mae'r pennawd yn ei labelu, a rhowch destun amgen i `<img>` unigol sy'n ymestyn dros y lled cyfan."
+
+msgctxt "docs.api:prose"
+msgid "Use real buttons in a logical focus order after the body, and include a visible dismiss action so keyboard users can close the dialog."
+msgstr "Defnyddiwch fotymau go iawn mewn trefn ffocws resymegol ar ôl y corff, a chynnwys gweithred cau weladwy fel y gall defnyddwyr bysellfwrdd gau'r blwch deialog."
+
+msgctxt "docs.api:prose"
+msgid "Render the title as a real heading and point the dialog's `aria-labelledby` at it so the dialog is announced with its name."
+msgstr "Rendro'r teitl fel pennawd go iawn a chyfeirio `aria-labelledby` ato fel bod y deialog yn cael ei gyhoeddi gyda'i enw."
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "escape-closes"
+msgstr "escape-closes"
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "focus-moves-into-dialog"
+msgstr "focus-moves-into-dialog"
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "focus-returns-to-trigger"
+msgstr "focus-returns-to-trigger"
+
+msgctxt "docs.api:prose"
+msgid "The dialog stayed open after Escape."
+msgstr "Arhosodd y deialog ar agor ar ôl Escape."
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "WCAG 2.2 2.4.3"
+msgstr "WCAG 2.2 2.4.3"
+
+msgctxt "docs.api:prose"
+msgid "The `.arrows` buttons are redundant pointer controls, hidden from assistive technology and excluded from sequential keyboard focus. Consumers wire pointer activation and keep focus on the input; the native number input provides keyboard increment/decrement."
+msgstr "Mae'r `.arrows` botymau yn rheolyddion pwyntydd diangen, wedi'u cuddio rhag technoleg gynorthwyol ac wedi'u heithrio o ffocws bysellfwrdd dilyniannol. Mae defnyddwyr yn cysylltu actifadu pwyntydd ac yn cadw'r ffocws ar y mewnbwn; mae'r mewnbwn rhif brodorol yn darparu cynyddu a lleihau drwy'r bysellfwrdd."
+
+msgctxt "docs.api:prose"
+msgid "Name the native `<input type=\"number\">` so it owns the value and keyboard controls. Mark redundant arrow buttons with both `aria-hidden=\"true\"` and `tabindex=\"-1\"`; never leave an assistive-technology-hidden button in the tab order."
+msgstr "Enwch y `<input type=\"number\">` brodorol fel mai ef sy'n berchen ar y gwerth a'r rheolyddion bysellfwrdd. Marciwch y botymau saeth diangen â'r ddau briodwedd `aria-hidden=\"true\"` a `tabindex=\"-1\"`; peidiwch byth â gadael botwm sydd wedi'i guddio rhag technoleg gynorthwyol yn nhrefn y tab."
+
+msgctxt "docs.api:prose"
+msgid "A scrollable region must work from the keyboard: give it `tabindex=\"0\"`, a role, and an accessible name (or make sure it contains a focusable control). Don't use `hidden` or `clip` to cut off content people need to read."
+msgstr "Rhaid i ranbarth y gellir sgrolio drwyddo weithio drwy'r bysellfwrdd: rhowch iddo `tabindex=\"0\"`, rôl ac enw hygyrch (neu sicrhewch ei fod yn cynnwys rheolydd y gellir rhoi ffocws iddo). Peidiwch â defnyddio `hidden` na `clip` i guddio cynnwys y mae angen i bobl ei ddarllen."
+
+msgctxt "docs.api:prose"
+msgid "Mark the current page with `aria-current=\"page\"`, give each page an accessible name that includes the page number, and wrap the set in a `<nav>` with an `aria-label`."
+msgstr "Marciwch y dudalen gyfredol gyda `aria-current=\"page\"`, rhowch enw hygyrch i bob tudalen sy’n cynnwys rhif y dudalen, a lapiwch y set mewn `<nav>` gyda `aria-label`."
+
+msgctxt "docs.api:prose"
+msgid "Unlike `badge`, which shows a count, or `tag`, which is removable, the pill is a static status label; its leading glyph is a masked `::before`, not an `<img>`. Let groups wrap with `flex-wrap: wrap` on their container so compact labels reflow on narrow screens."
+msgstr "Yn wahanol i `badge`, sy'n dangos cyfrif, neu `tag`, y gellir ei dynnu, mae'r bilsen yn label statws statig; mae ei glyff arweiniol yn `::before` wedi'i fasgio, nid yn `<img>`. Gadewch i grwpiau lapio gyda `flex-wrap: wrap` ar eu cynhwysydd fel bod labeli cryno'n aildrefnu ar sgriniau cul."
+
+msgctxt "docs.api:prose"
+msgid "The status colors are visual only, so state the status in the label text or a visually hidden label. The leading glyph is a masked `::before` and isn't announced."
+msgstr "Mae'r lliwiau statws yn weledol yn unig, felly nodwch y statws yn nhestun y label neu mewn label sydd wedi'i guddio'n weledol. Mae'r glyff arweiniol yn `::before` wedi'i fasgio ac nid yw'n cael ei gyhoeddi."
+
+msgctxt "docs.api:prose"
+msgid "Wire the trigger with `popovertarget` so the expanded state is exposed. A native popover closes on Escape and outside click but doesn't move focus, so move focus into interactive content when the popover opens."
+msgstr "Cysylltwch y sbardun â `popovertarget` fel bod y cyflwr estynedig yn cael ei ddatgelu. Mae popover brodorol yn cau wrth wasgu Escape a chlicio y tu allan, ond nid yw’n symud y ffocws, felly symudwch y ffocws i gynnwys rhyngweithiol pan fydd y popover yn agor."
+
+msgctxt "docs.api:prose"
+msgid "Positioning changes where content appears, not where it sits in the DOM: keep the visual order matching the reading and focus order, and don't let positioned content cover a focused control."
+msgstr "Mae lleoli yn newid ble mae cynnwys yn ymddangos, nid ble mae wedi’i osod yn y DOM: cadwch y drefn weledol yn gyson â’r drefn ddarllen a’r drefn ffocws, a pheidiwch â gadael i gynnwys wedi’i leoli orchuddio rheolydd sydd â ffocws."
+
+msgctxt "docs.api:prose"
+msgid "`.value` is a sibling of `.bar`, both children of the root — mirroring how progress-circle nests its own `.value` part. Native `<progress>` and `<meter>` use vendor value parts with the same semantic fill. InstUI has no indeterminate state; `:indeterminate` is a pantoken-only best guess (native `<progress>` without a `value` attribute), using a CSS-owned sliding segment and hiding `.value` since there's no meaningful number to show. Reduced motion keeps a static segment; `<meter>` has no indeterminate state."
+msgstr "`.value` yn gydran chwaer i `.bar`, ac mae’r ddau’n blant i’r gwraidd — gan adlewyrchu sut mae progress-circle yn nythu ei ran `.value` ei hun. Mae `<progress>` a `<meter>` brodorol yn defnyddio rhannau gwerth y gwerthwr gyda’r un llenwad semantig. Nid oes gan InstUI gyflwr amhenodol; `:indeterminate` yw dyfaliad gorau pantoken yn unig (elfen `<progress>` frodorol heb briodoledd `value`، sy’n defnyddio segment llithro dan reolaeth CSS ac yn cuddio `.value` gan nad oes rhif ystyrlon i’w ddangos. Mae lleihau symudiad yn cadw segment statig; nid oes gan `<meter>` gyflwr amhenodol."
+
+msgctxt "docs.api:prose"
+msgid "Custom, not part of InstUI. Applies only to a native `<progress>` missing its `value` attribute; draws a sliding segment on `::before` and hides `.value`."
+msgstr "Addaswedd, nid yw’n rhan o InstUI. Mae’n berthnasol i elfen `<progress>` frodorol sydd heb ei phriodoledd `value` yn unig; mae’n lluniadu segment llithro ar `::before` ac yn cuddio `.value`."
+
+msgctxt "docs.api:prose"
+msgid "Draws the native indeterminate segment without relying on the browser's built-in animation."
+msgstr "Yn lluniadu’r segment amhenodol brodorol heb ddibynnu ar animeiddiad adeiledig y porwr."
+
+msgctxt "docs.api:prose"
+msgid "The native value part and `.bar` fill; the -color-* modifiers set it."
+msgstr "Llenwad y rhan werth frodorol a `.bar`; mae’r addaswyr -color-* yn ei osod."
+
+msgctxt "docs.api:prose"
+msgid " With prefers-contrast: more, one piece of text falls below the minimum contrast. The worst is \"30%\" at 1:1 (needs 4.5:1)."
+msgstr " Gyda prefers-contrast: more, mae cyferbyniad un darn o destun yn is na’r isafswm. Y gwaethaf yw \"30%\" ar 1:1 (mae angen 4.5:1)."
+
+msgctxt "docs.api:prose"
+msgid "Rebrand (dark), Canvas, Canvas High Contrast:"
+msgstr "Ailfrandio (tywyll), Canvas, Canvas High Contrast:"
+
+msgctxt "docs.api:prose"
+msgid " With line height 1.5, letter spacing 0.12em, word spacing 0.16em, and paragraph spacing 2em, text in one element gets cut off: "
+msgstr " Gyda uchder llinell o 1.5, bylchiad llythrennau o 0.12em, bylchiad geiriau o 0.16em, a bylchiad paragraffau o 2em, caiff testun mewn un elfen ei dorri i ffwrdd: "
+
+msgctxt "docs.api:prose"
+msgid " (\"Working\"). Overlapping text isn't checked."
+msgstr " (\"Working\"). Ni chaiff testun sy’n gorgyffwrdd ei wirio."
+
+msgctxt "docs.api:prose"
+msgid "The defaults keep headings in a logical order and links underlined with an interactive colour, so they don't rely on colour alone. Don't skip heading levels for visual size, and don't remove the link underline without another cue."
+msgstr "Mae'r rhagosodiadau'n cadw penawdau mewn trefn resymegol a dolenni wedi'u tanlinellu â lliw rhyngweithiol, felly nid ydynt yn dibynnu ar liw yn unig. Peidiwch â hepgor lefelau pennawd er mwyn maint gweledol, a pheidiwch â thynnu tanlinell y ddolen heb gliw arall."
+
+msgctxt "docs.api:prose"
+msgid "Sweatshirt size"
+msgstr "Maint crys chwys"
+
+msgctxt "docs.api:prose"
+msgid "Use a native `<fieldset>` with a `<legend>` that names the group. Radios within a group share one `name`; independent groups need distinct names and legends so selecting one group's radio doesn't clear another group's selection."
+msgstr "Defnyddiwch `<fieldset>` brodorol gyda `<legend>` sy'n enwi'r grŵp. Mae botymau radio o fewn grŵp yn rhannu un `name`; mae angen enwau a chwedlau unigryw ar grwpiau annibynnol fel nad yw dewis botwm radio mewn un grŵp yn clirio dewis grŵp arall."
+
+msgctxt "docs.api:prose"
+msgid " With prefers-contrast: less, one piece of text falls below the minimum contrast. The worst is \"Large unavailable\" at 2.74:1 (needs 4.5:1). Softer contrast is fine only while text stays readable."
+msgstr " Gyda prefers-contrast: less, mae un darn o destun yn disgyn islaw'r cyferbyniad lleiaf. Y gwaethaf yw \"Mawr ddim ar gael\" ar 2.74:1 (mae angen 4.5:1). Mae cyferbyniad meddalach yn iawn cyn belled â bod y testun yn parhau'n ddarllenadwy."
+
+msgctxt "docs.api:prose"
+msgid " With prefers-contrast: less, one piece of text falls below the minimum contrast. The worst is \"Large unavailable\" at 3.15:1 (needs 4.5:1). Softer contrast is fine only while text stays readable."
+msgstr " Gyda prefers-contrast: less, mae un darn o destun yn disgyn islaw'r cyferbyniad lleiaf. Y gwaethaf yw \"Mawr ddim ar gael\" ar 3.15:1 (mae angen 4.5:1). Mae cyferbyniad meddalach yn iawn cyn belled â bod y testun yn parhau'n ddarllenadwy."
+
+msgctxt "docs.api:prose"
+msgid " With prefers-contrast: less, one piece of text falls below the minimum contrast. The worst is \"Large unavailable\" at 3.02:1 (needs 4.5:1). Softer contrast is fine only while text stays readable."
+msgstr " Gyda prefers-contrast: less, mae un darn o destun yn disgyn islaw'r cyferbyniad lleiaf. Y gwaethaf yw \"Mawr ddim ar gael\" ar 3.02:1 (mae angen 4.5:1). Mae cyferbyniad meddalach yn iawn cyn belled â bod y testun yn parhau'n ddarllenadwy."
+
+msgctxt "docs.api:prose"
+msgid " All 13 measured pieces of text stay above the minimum. one other piece can't be reduced to one color. \"Large\" can't be measured because an element behind it is partly transparent."
+msgstr " Mae pob un o'r 13 darn o destun a fesurwyd yn aros uwchlaw'r lleiafswm. Ni ellir lleihau un darn arall i un lliw. Ni ellir mesur \"Mawr\" oherwydd bod elfen y tu ôl iddo yn rhannol dryloyw."
+
+msgctxt "docs.api:prose"
+msgid " With prefers-contrast: more, one piece of text falls below the minimum contrast. The worst is \"Large unavailable\" at 2.74:1 (needs 4.5:1)."
+msgstr " Gyda prefers-contrast: more, mae un darn o destun yn disgyn islaw'r cyferbyniad lleiaf. Y gwaethaf yw \"Mawr ddim ar gael\" ar 2.74:1 (mae angen 4.5:1)."
+
+msgctxt "docs.api:prose"
+msgid " With prefers-contrast: more, one piece of text falls below the minimum contrast. The worst is \"Large unavailable\" at 3.15:1 (needs 4.5:1)."
+msgstr " Gyda prefers-contrast: more, mae un darn o destun yn disgyn islaw'r cyferbyniad lleiaf. Y gwaethaf yw \"Mawr ddim ar gael\" ar 3.15:1 (mae angen 4.5:1)."
+
+msgctxt "docs.api:prose"
+msgid " With prefers-contrast: more, one piece of text falls below the minimum contrast. The worst is \"Large unavailable\" at 3.02:1 (needs 4.5:1)."
+msgstr " Gyda prefers-contrast: more, mae un darn o destun yn disgyn islaw'r cyferbyniad lleiaf. Y gwaethaf yw \"Mawr ddim ar gael\" ar 3.02:1 (mae angen 4.5:1)."
+
+msgctxt "docs.api:prose"
+msgid " All 13 measured pieces of text pass with more contrast. one other piece can't be reduced to one color. \"Large\" can't be measured because an element behind it is partly transparent."
+msgstr " Mae pob un o'r 13 darn o destun a fesurwyd yn pasio gyda mwy o gyferbyniad. Ni ellir lleihau un darn arall i un lliw. Ni ellir mesur \"Mawr\" oherwydd bod elfen y tu ôl iddo yn rhannol dryloyw."
+
+msgctxt "docs.api:prose"
+msgid " With prefers-contrast: less, six pieces of text fall below the minimum contrast. The worst is \"Warning selected\" at 1.67:1 (needs 4.5:1). Softer contrast is fine only while text stays readable."
+msgstr " Gyda prefers-contrast: less, mae chwe darn o destun yn disgyn islaw'r cyferbyniad lleiaf. Y gwaethaf yw \"Rhybudd wedi'i ddewis\" ar 1.67:1 (mae angen 4.5:1). Mae cyferbyniad meddalach yn iawn dim ond tra bo'r testun yn parhau'n ddarllenadwy."
+
+msgctxt "docs.api:prose"
+msgid " With prefers-contrast: less, four pieces of text fall below the minimum contrast. The worst is \"Disabled unselected\" at 3.15:1 (needs 4.5:1). Softer contrast is fine only while text stays readable."
+msgstr " Gyda prefers-contrast: less, mae pedwar darn o destun yn disgyn islaw'r cyferbyniad lleiaf. Y gwaethaf yw \"Analluog heb ei ddewis\" ar 3.15:1 (mae angen 4.5:1). Mae cyferbyniad meddalach yn iawn dim ond tra bo'r testun yn parhau'n ddarllenadwy."
+
+msgctxt "docs.api:prose"
+msgid " With prefers-contrast: less, four pieces of text fall below the minimum contrast. The worst is \"Disabled unselected\" at 3.02:1 (needs 4.5:1). Softer contrast is fine only while text stays readable."
+msgstr " Gyda prefers-contrast: less, mae pedwar darn o destun yn disgyn islaw'r cyferbyniad lleiaf. Y gwaethaf yw \"Analluog heb ei ddewis\" ar 3.02:1 (mae angen 4.5:1). Mae cyferbyniad meddalach yn iawn dim ond tra bo'r testun yn parhau'n ddarllenadwy."
+
+msgctxt "docs.api:prose"
+msgid " All 31 measured pieces of text stay above the minimum. two other pieces can't be reduced to one color. \"Disabled unselected\" can't be measured because an element behind it is partly transparent."
+msgstr " Mae pob un o'r 31 darn o destun a fesurwyd yn parhau uwchlaw'r lleiafswm. ni ellir lleihau dau ddarn arall i un lliw. Ni ellir mesur \"Analluog heb ei ddewis\" oherwydd bod elfen y tu ôl iddo yn rhannol dryloyw."
+
+msgctxt "docs.api:prose"
+msgid " With prefers-contrast: more, six pieces of text fall below the minimum contrast. The worst is \"Warning selected\" at 1.67:1 (needs 4.5:1)."
+msgstr " Gyda prefers-contrast: more, mae chwe darn o destun yn disgyn islaw'r cyferbyniad lleiaf. Y gwaethaf yw \"Rhybudd wedi'i ddewis\" ar 1.67:1 (mae angen 4.5:1)."
+
+msgctxt "docs.api:prose"
+msgid " With prefers-contrast: more, four pieces of text fall below the minimum contrast. The worst is \"Disabled unselected\" at 3.15:1 (needs 4.5:1)."
+msgstr " Gyda prefers-contrast: more, mae pedwar darn o destun yn disgyn islaw'r cyferbyniad lleiaf. Y gwaethaf yw \"Analluog heb ei ddewis\" ar 3.15:1 (mae angen 4.5:1)."
+
+msgctxt "docs.api:prose"
+msgid " With prefers-contrast: more, four pieces of text fall below the minimum contrast. The worst is \"Disabled unselected\" at 3.02:1 (needs 4.5:1)."
+msgstr " Gyda prefers-contrast: more, mae pedwar darn o destun yn disgyn islaw'r cyferbyniad lleiaf. Y gwaethaf yw \"Analluog heb ei ddewis\" ar 3.02:1 (mae angen 4.5:1)."
+
+msgctxt "docs.api:prose"
+msgid " All 31 measured pieces of text pass with more contrast. two other pieces can't be reduced to one color. \"Disabled unselected\" can't be measured because an element behind it is partly transparent."
+msgstr " Mae pob un o'r 31 darn o destun a fesurwyd yn pasio gyda mwy o gyferbyniad. ni ellir lleihau dau ddarn arall i un lliw. Ni ellir mesur \"Analluog heb ei ddewis\" oherwydd bod elfen y tu ôl iddo yn rhannol dryloyw."
+
+msgctxt "docs.api:prose"
+msgid "The control is a native `<input type=\"range\">`; give it an accessible name with `aria-label` or an associated `<label>`. Forced colors use a system-color outline because the thumb's box-shadow focus ring doesn't survive that mode."
+msgstr "Rheolydd brodorol yw’r rheolydd `<input type=\"range\">`; rhowch enw hygyrch iddo gan ddefnyddio `aria-label` neu `<label>` cysylltiedig. Mae modd lliwiau gorfodol yn defnyddio amlinelliad lliw system oherwydd nad yw cylch ffocws cysgod blwch y bawd yn goroesi yn y modd hwnnw."
+
+msgctxt "docs.api:prose"
+msgid "Hiding content at a breakpoint also hides it from assistive tech, so don't hide the only way to complete a task, and keep the shown and hidden versions equivalent in meaning."
+msgstr "Mae cuddio cynnwys ar bwynt torri hefyd yn ei guddio rhag technoleg gynorthwyol, felly peidiwch â chuddio’r unig ffordd o gwblhau tasg, a sicrhewch fod y fersiynau sy’n cael eu dangos a’u cuddio yn gyfwerth o ran ystyr."
+
+msgctxt "docs.api:prose"
+msgid "With forced colors on, nothing visible changed when the control took focus. A focus ring drawn with box-shadow or a background color disappears in forced colors. Use an outline."
+msgstr "Pan oedd lliwiau gorfodol ymlaen, ni newidiodd dim gweladwy pan gafodd y rheolydd ffocws. Mae cylch ffocws a luniwyd â box-shadow neu liw cefndir yn diflannu mewn lliwiau gorfodol. Defnyddiwch amlinelliad."
+
+msgctxt "docs.api:prose"
+msgid " With prefers-contrast: less, three pieces of text fall below the minimum contrast. The worst is \"Grades\" at 1.48:1 (needs 4.5:1). Softer contrast is fine only while text stays readable."
+msgstr " Gyda prefers-contrast: less, mae tri darn o destun yn disgyn islaw'r cyferbyniad lleiaf. Y gwaethaf yw \"Grades\" ar 1.48:1 (mae angen 4.5:1). Mae cyferbyniad meddalach yn iawn dim ond tra bo'r testun yn parhau'n ddarllenadwy."
+
+msgctxt "docs.api:prose"
+msgid " With prefers-contrast: less, three pieces of text fall below the minimum contrast. The worst is \"Grades\" at 1.38:1 (needs 4.5:1). Softer contrast is fine only while text stays readable."
+msgstr " Gyda prefers-contrast: less, mae tri darn o destun yn disgyn islaw'r cyferbyniad lleiaf. Y gwaethaf yw \"Grades\" ar 1.38:1 (mae angen 4.5:1). Mae cyferbyniad meddalach yn iawn dim ond tra bo'r testun yn parhau'n ddarllenadwy."
+
+msgctxt "docs.api:prose"
+msgid "Mark the active entry with `aria-current=\"page\"` as well as `-selected`, and keep an accessible name, such as `aria-label`, when the parent's `-minimized` modifier hides the `.label`."
+msgstr "Marciwch y cofnod gweithredol â `aria-current=\"page\"` yn ogystal â `-selected`, a chadwch enw hygyrch, megis `aria-label`, pan fydd addasydd `-minimized` y rhiant yn cuddio'r `.label`."
+
+msgctxt "docs.api:prose"
+msgid "It's a native `<select>`, so role, keyboard support, and option announcement come from the browser; associate it with a visible `<label>` and convey errors in text, not color alone."
+msgstr "Mae'n frodorol `<select>`, felly daw'r rôl, y gefnogaeth bysellfwrdd, a chyhoeddi'r opsiynau o'r porwr; cysylltwch ef â `<label>` gweladwy a chyfleu gwallau mewn testun, nid trwy liw yn unig."
+
+msgctxt "docs.api:prose"
+msgid "Spacing is visual only: use it to keep text and controls from crowding, not to convey structure — use headings, lists, and landmarks for that. Leave enough space around interactive targets for WCAG 2.5.8, and don't rely on fixed spacing that breaks when users increase text spacing."
+msgstr "Mae bylchu yn weledol yn unig: defnyddiwch ef i atal testun a rheolyddion rhag mynd yn rhy agos at ei gilydd, nid i gyfleu strwythur — defnyddiwch benawdau, rhestrau a thirnodau ar gyfer hynny. Gadewch ddigon o le o amgylch targedau rhyngweithiol i gydymffurfio â WCAG 2.5.8, a pheidiwch â dibynnu ar fylchu sefydlog sy’n torri pan fydd defnyddwyr yn cynyddu bylchiad testun."
+
+msgctxt "docs.api:prose"
+msgid "With reduced motion enabled, the ring or AI glyph remains visible without rotation; keep the loading status and label while work is pending."
+msgstr "Pan fydd mudiant wedi’i leihau wedi’i alluogi, mae’r cylch neu’r glyff AI yn parhau’n weladwy heb gylchdroi; cadwch y statws llwytho a’r label tra bo’r gwaith yn yr arfaeth."
+
+msgctxt "docs.api:prose"
+msgid "Stacking order is visual only: a layered surface that covers focusable content hides the focus indicator. Overlays that take over the page also need focus management and an accessible name."
+msgstr "Gweledol yn unig yw trefn pentyrru: mae arwyneb haenedig sy’n gorchuddio cynnwys y gellir rhoi ffocws iddo yn cuddio’r dangosydd ffocws. Mae angen rheoli ffocws ac enw hygyrch ar droshaenau sy’n cymryd drosodd y dudalen hefyd."
+
+msgctxt "docs.api:prose"
+msgid "Use a native `<tbody>` so row and cell relationships are exposed. The parent's `-layout-stacked` changes `display`, which can drop table semantics in some browsers, so add explicit table roles when you use it."
+msgstr "Defnyddiwch `<tbody>` brodorol fel bod perthnasoedd rhesi a chelloedd yn cael eu hamlygu. Mae `-layout-stacked` y rhiant yn newid `display`, a all ddileu semanteg tabl mewn rhai porwyr, felly ychwanegwch rolau tabl penodol wrth ei ddefnyddio."
+
+msgctxt "docs.api:prose"
+msgid "Use a native `<td>`. In `-layout-stacked` the column label is generated content that assistive technology may not announce reliably, so keep the column relationship available, for example with `headers`."
+msgstr "Defnyddiwch `<td>` brodorol. Yn `-layout-stacked` cynnwys a gynhyrchir yw label y golofn ac efallai na fydd technoleg gynorthwyol yn ei gyhoeddi'n ddibynadwy, felly cadwch berthynas y golofn ar gael, er enghraifft gyda `headers`."
+
+msgctxt "docs.api:prose"
+msgid "Use `<th scope=\"col\">` so each column header is associated with the cells beneath it."
+msgstr "Defnyddiwch `<th scope=\"col\">` fel bod pennawd pob colofn yn gysylltiedig â'r celloedd oddi tano."
+
+msgctxt "docs.api:prose"
+msgid "Use a native `<thead>`. `-layout-stacked` hides it visually, so keep it in the DOM, not `display: none`, to preserve column names for assistive technology."
+msgstr "Defnyddiwch `<thead>` brodorol. Mae `-layout-stacked` yn ei guddio'n weledol, felly cadwch ef yn y DOM, nid `display: none`, er mwyn cadw enwau'r colofnau ar gyfer technoleg gynorthwyol."
+
+msgctxt "docs.api:prose"
+msgid "For tables that must retain their columns, use a named, keyboard-focusable `--overflow-x-auto` container instead. Use `-without-focus-animation` for an immediately visible focus outline and the caption to name the region."
+msgstr "Ar gyfer tablau y mae'n rhaid iddynt gadw eu colofnau, defnyddiwch gynhwysydd `--overflow-x-auto` ag enw y gellir rhoi ffocws iddo â'r bysellfwrdd yn lle hynny. Defnyddiwch `-without-focus-animation` ar gyfer amlinell ffocws sy'n weladwy ar unwaith a defnyddiwch y capsiwn i enwi'r rhanbarth."
+
+msgctxt "docs.api:prose"
+msgid "Responsive film ratings"
+msgstr "Sgoriau ffilm ymatebol"
+
+msgctxt "docs.api:prose"
+msgid "Use stacked cards below the canonical `md` container breakpoint; preserve columns at and above it. Requires per-cell `data-label` values and a size-container ancestor. @affects table.head @affects table.body @affects table.row @affects table.cell @affects table.col-header @affects table.row-header — Applies the existing stacked presentation only in a narrow container."
+msgstr "Defnyddiwch gardiau wedi'u pentyrru o dan drothwy cynhwysydd `md` safonol; cadwch y colofnau ar y trothwy hwn ac uwch. Mae angen gwerthoedd `data-label` fesul cell ac elfen hynafol cynhwysydd maint. @affects table.head @affects table.body @affects table.row @affects table.cell @affects table.col-header @affects table.row-header — Yn cymhwyso'r cyflwyniad pentyrru presennol mewn cynhwysydd cul yn unig."
+
+msgctxt "docs.api:prose"
+msgid "Label the table with a `<caption>`, mark column headers `<th scope=\"col\">` and row headers `<th scope=\"row\">`, and in stacked or responsive layouts give every cell a localized `data-label` matching its column header. Keep the native header associations; visible generated labels don't replace them. Name scroll regions and provide keyboard access without trapping focus."
+msgstr "Rhowch label i'r tabl gyda `<caption>`, marciwch benawdau colofnau â `<th scope=\"col\">` a phenawdau rhesi â `<th scope=\"row\">`, ac mewn cynlluniau wedi'u pentyrru neu ymatebol rhowch `data-label` lleol i bob cell sy'n cyfateb i bennawd ei cholofn. Cadwch y cysylltiadau penawdau brodorol; nid yw labeli a gynhyrchir ac sy'n weladwy yn cymryd eu lle. Rhowch enwau i ranbarthau sgrolio a sicrhewch fynediad drwy'r bysellfwrdd heb ddal y ffocws yn gaeth."
+
+msgctxt "docs.api:prose"
+msgid "Use `<th scope=\"row\">` so the cell names its row for assistive technology."
+msgstr "Defnyddiwch `<th scope=\"row\">` fel bod y gell yn enwi ei rhes ar gyfer technoleg gynorthwyol."
+
+msgctxt "docs.api:prose"
+msgid "Use a native `<tr>`. The `-hover` styling is visual only, so give a clickable row a real control rather than relying on the highlight."
+msgstr "Defnyddiwch `<tr>`. Dim ond yn weledol y mae'r steilio `-hover`, felly rhowch reolydd go iawn i res y gellir ei chlicio yn hytrach na dibynnu ar yr amlygiad."
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "arrow-keys-move-between-tabs"
+msgstr "arrow-keys-move-between-tabs"
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "home-and-end-work"
+msgstr "home-and-end-work"
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "selected-state-exposed"
+msgstr "selected-state-exposed"
+
+msgctxt "docs.api:prose"
+msgid "All six measured pieces of text pass with more contrast. two other pieces can't be reduced to one color. \"Billing\" can't be measured because an element behind it is partly transparent."
+msgstr "Mae pob un o'r chwe darn o destun a fesurwyd yn pasio gyda mwy o gyferbyniad. Ni ellir lleihau dau ddarn arall i un lliw. Ni ellir mesur \"Billing\" oherwydd bod elfen y tu ôl iddo yn rhannol dryloyw."
+
+msgctxt "docs.api:prose"
+msgid "End didn't move to the last tab."
+msgstr "Ni symudodd End i'r tab olaf."
+
+msgctxt "docs.api:prose"
+msgid "3 tabs are aria-selected=\"true\". A tab list should have exactly one."
+msgstr "Mae gan 3 tab aria-selected=\"true\". Dylai fod union un mewn rhestr dabiau."
+
+msgctxt "docs.api:prose"
+msgid "Give each panel `role=\"tabpanel\"` and an `aria-labelledby` that references its tab, and keep inactive panels `hidden`."
+msgstr "Rhowch `role=\"tabpanel\"` i bob panel ac `aria-labelledby` sy’n cyfeirio at ei dab, a chadwch y paneli anweithredol yn `hidden`."
+
+msgctxt "docs.api:prose"
+msgid "Use `role=\"tab\"` inside a `role=\"tablist\"`, mirror `-selected` with `aria-selected`, point `aria-controls` at the panel, and mark a disabled tab with `aria-disabled` or the native `disabled`."
+msgstr "Defnyddiwch `role=\"tab\"` y tu mewn i `role=\"tablist\"`, adlewyrchwch `-selected` gyda `aria-selected`, pwyntiwch `aria-controls` at y panel, a marciwch dab analluog gyda `aria-disabled` neu'r `disabled` brodorol."
+
+msgctxt "docs.api:prose"
+msgid "All four measured pieces of text pass with more contrast. two other pieces can't be reduced to one color. \"Billing\" can't be measured because an element behind it is partly transparent."
+msgstr "Mae pob un o'r pedwar darn o destun a fesurwyd yn pasio gyda mwy o gyferbyniad. ni ellir lleihau dau ddarn arall i un lliw. Ni ellir mesur \"Bilio\" oherwydd bod elfen y tu ôl iddo yn rhannol dryloyw."
+
+msgctxt "docs.api:prose"
+msgid "Don't rely on color alone to distinguish tags. Give a removable tag's dismiss control an accessible name that includes the tag text, for example `aria-label=\"Remove Biology\"`."
+msgstr "Peidiwch â dibynnu ar liw yn unig i wahaniaethu rhwng tagiau. Rhowch enw hygyrch i reolydd cau tag y gellir ei dynnu sy'n cynnwys testun y tag, er enghraifft `aria-label=\"Remove Biology\"`."
+
+msgctxt "docs.api:prose"
+msgid "Associate the field with a visible `<label>`, use `aria-invalid` and `disabled` for state, and explain errors in text, not border color alone."
+msgstr "Cysylltwch y maes â label gweladwy `<label>`, defnyddiwch `aria-invalid` a `disabled` ar gyfer y cyflwr, ac eglurwch wallau mewn testun, nid drwy liw'r ffin yn unig."
+
+msgctxt "docs.api:prose"
+msgid " With prefers-contrast: more, one piece of text falls below the minimum contrast. The worst is \"A saved comment.\" at 2.51:1 (needs 4.5:1)."
+msgstr " Gyda prefers-contrast: more, mae un darn o destun yn is na'r cyferbyniad lleiaf. Y gwaethaf yw \"Sylw wedi'i gadw.\" ar 2.51:1 (mae angen 4.5:1)."
+
+msgctxt "docs.api:prose"
+msgid " With prefers-contrast: more, one piece of text falls below the minimum contrast. The worst is \"A saved comment.\" at 4.08:1 (needs 4.5:1)."
+msgstr " Gyda prefers-contrast: more, mae un darn o destun yn is na'r cyferbyniad lleiaf. Y gwaethaf yw \"Sylw wedi'i gadw.\" ar 4.08:1 (mae angen 4.5:1)."
+
+msgctxt "docs.api:prose"
+msgid " With prefers-contrast: more, one piece of text falls below the minimum contrast. The worst is \"A saved comment.\" at 2.74:1 (needs 4.5:1)."
+msgstr " Gyda prefers-contrast: more, mae un darn o destun yn is na'r cyferbyniad lleiaf. Y gwaethaf yw \"Sylw wedi'i gadw.\" ar 2.74:1 (mae angen 4.5:1)."
+
+msgctxt "docs.api:prose"
+msgid " With prefers-contrast: more, one piece of text falls below the minimum contrast. The worst is \"A saved comment.\" at 4.11:1 (needs 4.5:1)."
+msgstr " Gyda prefers-contrast: more, mae un darn o destun yn is na'r cyferbyniad lleiaf. Y gwaethaf yw \"Sylw wedi'i gadw.\" ar 4.11:1 (mae angen 4.5:1)."
+
+msgctxt "docs.api:prose"
+msgid "Associate the field with a visible `<label>`, use `aria-invalid` and `disabled` for state, and explain errors in text, not border color alone. Date and time types use the browser's own picker and keyboard support."
+msgstr "Cysylltwch y maes â `<label>`, defnyddiwch `aria-invalid` a `disabled` ar gyfer y cyflwr, ac esboniwch wallau mewn testun, nid drwy liw'r ffin yn unig. Mae mathau dyddiad ac amser yn defnyddio dewisydd a chymorth bysellfwrdd y porwr ei hun."
+
+msgctxt "docs.api:prose"
+msgid "It sets appearance only and renders no semantics, so use `<p>`, `<strong>`, `<em>`, and similar elements for meaning, and check contrast of each `-color-*` against its background, especially the inverse colors."
+msgstr "Dim ond ymddangosiad y mae’n ei osod, ac nid yw’n rhoi ystyr semantig, felly defnyddiwch `<p>`, `<strong>`, `<em>`, ac elfennau tebyg i gyfleu ystyr, a gwiriwch gyferbyniad pob `-color-*` yn erbyn ei gefndir, yn enwedig y lliwiau gwrthdro."
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "enter-toggles"
+msgstr "enter-toggles"
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "expanded-state-exposed"
+msgstr "expanded-state-exposed"
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "space-toggles"
+msgstr "space-toggles"
+
+msgctxt "docs.api:prose"
+msgid "With reduced motion enabled, the chevron changes direction immediately; native disclosure state and keyboard operation remain unchanged."
+msgstr "Pan fydd symudiad llai wedi'i alluogi, mae'r saeth onglog yn newid cyfeiriad ar unwaith; mae cyflwr datgelu brodorol a gweithrediad y bysellfwrdd yn aros yr un fath."
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "WCAG 2.2 2.1.1, 4.1.2"
+msgstr "WCAG 2.2 2.1.1, 4.1.2"
+
+msgctxt "docs.api:prose"
+msgid "Built on native `<details>`, which exposes the expanded state and toggles with Enter and Space; keep the `<summary>` first and give it descriptive text."
+msgstr "Wedi'i adeiladu ar `<details>`, sy'n datgelu'r cyflwr estynedig ac yn toglo gyda Enter a Space; cadwch y `<summary>` yn gyntaf a rhowch destun disgrifiadol iddo."
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "appears-on-focus"
+msgstr "appears-on-focus"
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "content-reachable-on-hover"
+msgstr "content-reachable-on-hover"
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "escape-dismisses"
+msgstr "escape-dismisses"
+
+msgctxt "docs.api:prose"
+msgid "`.instui-tooltip` — A hover and focus tooltip bubble, positionable on any side."
+msgstr "`.instui-tooltip` — Swigen awgrym sy’n ymddangos wrth hofran a chanolbwyntio, y gellir ei gosod ar unrhyw ochr."
+
+msgctxt "docs.api:prose"
+msgid "Load `@pantoken/interactions/tooltip.iife.js` for managed delays, Escape dismissal, and combined pointer/focus state. Without JavaScript, hover/focus remains a fallback without Escape or delay guarantees. Use a popover for interactive content."
+msgstr "Llwythwch `@pantoken/interactions/tooltip.iife.js` i reoli oedi, cau wrth bwyso Escape, a chyfuno cyflwr pwyntydd/canolbwyntio. Heb JavaScript, mae hofran/canolbwyntio’n parhau’n opsiwn wrth gefn heb sicrwydd ynghylch Escape nac oedi. Defnyddiwch naidlen ar gyfer cynnwys rhyngweithiol."
+
+msgctxt "docs.api:prose"
+msgid "The bubble; `-placement-*` sets its preferred side. Initialized tooltips flip/clamp to fit the viewport."
+msgstr "Y swigen; mae `-placement-*` yn pennu ei hochr ddewisol. Mae awgrymiadau cychwynnol yn gwrthdroi neu’n cyfyngu eu lleoliad i ffitio’r porth gwylio."
+
+msgctxt "docs.api:prose"
+msgid "Use a named, focusable trigger with aria-describedby pointing at the role=\"tooltip\" bubble. Keep the content noninteractive. Initialized tooltips stay dismissed after Escape until both pointer and focus leave; the next entry can reopen them."
+msgstr "Defnyddiwch sbardun ag enw y gellir canolbwyntio arno, gydag aria-describedby yn cyfeirio at y swigen role=\"tooltip\". Cadwch y cynnwys yn anrhyngweithiol. Mae awgrymiadau cychwynnol yn aros ar gau ar ôl pwyso Escape nes bod y pwyntydd a’r ffocws wedi gadael; gall y cofnod nesaf eu hailagor."
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "WCAG 2.2 1.4.13"
+msgstr "WCAG 2.2 1.4.13"
+
+msgctxt "docs.api:prose"
+msgid "The classes only animate, so provide a `prefers-reduced-motion` alternative for large movement and don't convey essential state through the transition alone."
+msgstr "Dim ond animeiddio mae'r dosbarthiadau, felly darparwch ddewis arall `prefers-reduced-motion` ar gyfer symudiad mawr a pheidiwch â chyfleu cyflwr hanfodol drwy'r trawsnewidiad yn unig."
+
+msgctxt "docs.api:prose"
+msgid "`.instui-tree-browser` — A tree of nested collections and leaf items, with rotating chevrons."
+msgstr "`.instui-tree-browser` — Coeden o gasgliadau nythu ac eitemau dail, gyda saethau onglog sy’n cylchdroi."
+
+msgctxt "docs.api:prose"
+msgid "Load the tree-browser interaction bundle for ARIA-tree keyboard navigation and expansion. Native `<details>` markup remains a CSS-only disclosure fallback; don't give that fallback ARIA-tree roles."
+msgstr "Llwythwch y bwndel rhyngweithio pori coeden ar gyfer llywio a ehangu coeden ARIA drwy’r bysellfwrdd. Mae marcio `<details>` brodorol yn parhau’n ddewis amgen datgelu CSS yn unig; peidiwch â rhoi rolau coeden ARIA i’r dewis amgen hwnnw."
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "Syllabus.pdf"
+msgstr "Syllabus.pdf"
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "Reading.pdf"
+msgstr "Reading.pdf"
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "Slides.pptx"
+msgstr "Slides.pptx"
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "Rubric.docx"
+msgstr "Rubric.docx"
+
+msgctxt "docs.api:prose"
+msgid "Name the `role=\"tree\"` root, use focusable `role=\"treeitem\"` nodes, and associate each collection with its `role=\"group\"` via `aria-owns`. Load `@pantoken/interactions/tree-browser.iife.js` for one tab stop and synchronized expansion. Add `aria-selected` to opt into single selection; focus alone doesn't select."
+msgstr "Enwch wraidd y `role=\"tree\"`, defnyddiwch nodau `role=\"treeitem\"` y gellir rhoi ffocws iddynt, a chysylltwch bob casgliad â’i `role=\"group\"` drwy `aria-owns`. Llwythwch `@pantoken/interactions/tree-browser.iife.js` i gael un stop tab ac ehangu cydamserol. Ychwanegwch `aria-selected` i ddewis un eitem; nid yw ffocws yn unig yn dewis eitem."
+
+msgctxt "docs.api:prose"
+msgid "Truncation hides overflowing text visually while it stays in the DOM, so don't clip information people need (titles, errors, instructions) and keep the full text available another way. Check that clipped text still reads correctly when zoomed or resized."
+msgstr "Mae cwtogi yn cuddio testun sy'n gorlifo'n weledol tra bo'n aros yn y DOM, felly peidiwch â thorri gwybodaeth sydd ei hangen ar bobl (teitlau, gwallau, cyfarwyddiadau) a sicrhewch fod y testun llawn ar gael mewn ffordd arall. Gwiriwch fod y testun sydd wedi'i dorri'n dal i ddarllen yn gywir wrth chwyddo neu newid maint."
+
+msgctxt "docs.api:prose"
+msgid "With line height 1.5, letter spacing 0.12em, word spacing 0.16em, and paragraph spacing 2em, text in one element gets cut off: "
+msgstr "Gyda uchder llinell o 1.5, bylchiad llythrennau o 0.12em, bylchiad geiriau o 0.16em, a bylchiad paragraffau o 2em, caiff testun mewn un elfen ei dorri i ffwrdd: "
+
+msgctxt "docs.api:prose"
+msgid " (\"Quarterly planning notes for t\"). Overlapping text isn't checked."
+msgstr " (\"Nodiadau cynllunio chwarterol ar gyfer t\"). Ni chaiff testun sy'n gorgyffwrdd ei wirio."
+
+msgctxt "docs.api:prose"
+msgid "It's a neutral box with no semantics, so use semantic elements or ARIA roles for meaning and keep sufficient contrast between its background, border, and content."
+msgstr "Blwch niwtral heb unrhyw ystyr semantig ydyw, felly defnyddiwch elfennau semantig neu rolau ARIA i gyfleu ystyr, a sicrhewch fod digon o gyferbyniad rhwng ei gefndir, ei ffin a'i gynnwys."
+
+msgctxt "docs.api:prose"
+msgid " With prefers-contrast: more, one piece of text falls below the minimum contrast. The worst is \"Notes unavailable\" at 1.98:1 (needs 4.5:1)."
+msgstr " Gyda prefers-contrast: more, mae un darn o destun yn disgyn islaw'r gyferbyniad lleiaf. Y gwaethaf yw \"Nid yw'r nodiadau ar gael\" ar 1.98:1 (mae angen 4.5:1)."
+
+msgctxt "docs.api:prose"
+msgid " With prefers-contrast: more, one piece of text falls below the minimum contrast. The worst is \"Notes unavailable\" at 2.67:1 (needs 4.5:1)."
+msgstr " Gyda prefers-contrast: more, mae un darn o destun yn disgyn islaw'r gyferbyniad lleiaf. Y gwaethaf yw \"Nid yw'r nodiadau ar gael\" ar 2.67:1 (mae angen 4.5:1)."
+
+msgctxt "docs.api:prose"
+msgid " With prefers-contrast: more, one piece of text falls below the minimum contrast. The worst is \"Notes unavailable\" at 1.99:1 (needs 4.5:1)."
+msgstr " Gyda prefers-contrast: more, mae un darn o destun yn disgyn islaw'r gyferbyniad lleiaf. Y gwaethaf yw \"Nid yw'r nodiadau ar gael\" ar 1.99:1 (mae angen 4.5:1)."
+
+msgctxt "docs.api:prose"
+msgid "With prefers-reduced-transparency: reduce, one surface holding text stays see-through: "
+msgstr "Gyda prefers-reduced-transparency: reduce, mae un arwyneb sy'n cynnwys testun yn parhau'n dryloyw: "
+
+msgctxt "docs.api:prose"
+msgid " (30% opaque). Without the preference there were one. This preference isn't a WCAG requirement. It matters because see-through backgrounds make text contrast unpredictable."
+msgstr " (30% yn anhryloyw). Heb y dewis hwn, roedd un. Nid yw'r dewis hwn yn ofyniad WCAG. Mae'n bwysig oherwydd bod cefndiroedd tryloyw yn gwneud cyferbyniad testun yn anrhagweladwy."
+
+msgctxt "docs.api:prose"
+msgid "Dismiss strategy:\n- `<dialog>` → `dialog.close()`\n- `[popover]` → `el.hidePopover()`\n- `.instui-alert` or `.instui-banner` (per `options.prefix`) → cancelable `dismiss` event, then fade out and remove\n- `[data-dismissible]` or `[open]` → remove open attr + fire bubbling `close`"
+msgstr "Strategaeth cau:\n- `<dialog>` → `dialog.close()`\n- `[popover]` → `el.hidePopover()`\n- `.instui-alert` neu `.instui-banner` (fesul `options.prefix`) → digwyddiad `dismiss` y gellir ei ganslo, yna pylu a thynnu\n- `[data-dismissible]` neu `[open]` → tynnu'r briodwedd open + tanio digwyddiad swigod `close`"
+
+msgctxt "docs.api:prose"
+msgid "Associate an authored error after blur, native invalid events, or explicit validation.\nUntouched fields stay quiet; edited fields revalidate after the first validation attempt.\nPreserves hint references and uses native constraints, including `setCustomValidity()`.\nThe host must contain the control and a separate, named error element with message text.\nClean up and reinitialize after moving controls between forms or changing error IDs."
+msgstr "Cysylltwch wall a ysgrifennwyd ar ôl colli ffocws, digwyddiadau annilys brodorol, neu ddilysu penodol.\nMae meysydd heb eu cyffwrdd yn aros yn dawel; mae meysydd a olygwyd yn cael eu hailddilysu ar ôl yr ymgais ddilysu gyntaf.\nYn cadw cyfeiriadau at awgrymiadau ac yn defnyddio cyfyngiadau brodorol, gan gynnwys `setCustomValidity()`.\nRhaid i'r gwesteiwr gynnwys y rheolydd ac elfen wall ar wahân, ag enw, gyda thestun y neges.\nGlanhewch ac ailgychwynnwch ar ôl symud rheolyddion rhwng ffurflenni neu newid IDau gwall."
+
+msgctxt "docs.api:prose"
+msgid "Wire a vertical, single-level ARIA menu and its native popover button.\nArrow keys wrap; Home/End and initial-character search move focus. Escape returns\nfocus to the button; Tab closes without canceling normal sequential navigation.\nApplications own click actions and checked state. Space activates checkable items\nwithout closing; Enter and pointer activation close unless the click is canceled."
+msgstr "Cysylltwch ddewislen ARIA fertigol, un lefel, â'i botwm popover brodorol.\nMae bysellau'r saethau'n cylchu; mae Home/End a chwilio am nodau cychwynnol yn symud y ffocws. Mae Escape yn dychwelyd\ny ffocws i'r botwm; mae Tab yn cau'r ddewislen heb ganslo'r llywio dilyniannol arferol.\nY cymwysiadau sy'n rheoli'r gweithredoedd clicio a'r cyflwr wedi'i wirio. Mae Space yn actifadu eitemau y gellir eu ticio\nheb gau'r ddewislen; mae Enter ac actifadu drwy bwyntydd yn ei chau oni chaiff y clic ei ganslo."
+
+msgctxt "docs.api:prose"
+msgid "Own tooltip visibility after initialization, retaining CSS hover/focus as a no-JS fallback.\nPointer and focus are independent reasons to stay open; Escape dismisses until both leave."
+msgstr "Rheoli gwelededd y cynghoryn offer ar ôl ei ymgychwyn, gan gadw hofran/ffocws CSS fel dewis wrth gefn heb JavaScript.\nMae pwyntydd a ffocws yn rhesymau annibynnol dros aros ar agor; mae Escape yn ei gau nes bod y ddau wedi gadael."
+
+msgctxt "docs.api:prose"
+msgid "Wire ARIA-tree navigation and expansion, with single selection opt-in via `aria-selected`."
+msgstr "Cysylltwch lywio ac ehangu coeden ARIA, gyda dewis sengl yn opsiwn drwy `aria-selected`."
+
+msgctxt "docs.api:prose"
+msgid "The class namespace for a prefix: `\"instui\"` → `\"instui-\"`, `\"\"` → `\"\"` (unprefixed)."
+msgstr "Y gofod enwau dosbarth ar gyfer rhagddodiad: `\"instui\"` → `\"instui-\"`, `\"\"` → `\"\"` (heb ragddodiad)."
+
+msgctxt "docs.api:prose"
+msgid "Swap every `pfx-` sentinel in `text` for the namespace of `prefix` (default `\"instui\"`)."
+msgstr "Amnewidiwch bob `pfx-` yn `text` â gofod enwau `prefix` (rhagosodiad `\"instui\"`)."
+
+msgctxt "docs.api:prose"
+msgid "Options for [initCloseButton](../functions/initCloseButton.md)."
+msgstr "Opsiynau ar gyfer [initCloseButton](../functions/initCloseButton.md)."
+
+msgctxt "docs.api:prose"
+msgid "Class prefix for the alert/banner hosts. Defaults to `\"instui\"`; `\"\"` means unprefixed."
+msgstr "Rhagddodiad dosbarth ar gyfer gwesteiwyr y rhybudd/baner. Y rhagosodiad yw `\"instui\"`; mae `\"\"` yn golygu heb ragddodiad."
+
+msgctxt "docs.api:prose"
+msgid "Native validation controls and listener cleanup."
+msgstr "Rheolyddion dilysu brodorol a glanhau gwrandawyr digwyddiadau."
+
+msgctxt "docs.api:prose"
+msgid "Show the current native validation result without moving focus or changing the value."
+msgstr "Dangos canlyniad dilysu brodorol cyfredol heb symud y ffocws na newid y gwerth."
+
+msgctxt "docs.api:prose"
+msgid "Remove listeners and restore the initial accessibility and error-visibility state."
+msgstr "Tynnu'r gwrandawyr a dychwelyd y cyflwr hygyrchedd a gwelededd gwallau cychwynnol."
+
+msgctxt "docs.api:prose"
+msgid "Listeners and attribute restoration installed by [initMenu](../functions/initMenu.md)."
+msgstr "Gwrandawyr ac adfer priodoleddau a osodwyd gan [initMenu](../functions/initMenu.md)."
+
+msgctxt "docs.api:prose"
+msgid "Class prefix for the `transition` utility. Defaults to `\"instui\"`; `\"\"` means unprefixed."
+msgstr "Rhagddodiad dosbarth ar gyfer yr `transition` utiliti. Y rhagosodiad yw `\"instui\"`; mae `\"\"` yn golygu heb ragddodiad."
+
+msgctxt "docs.api:prose"
+msgid "Remove listeners/timers and restore the original managed marker and show class."
+msgstr "Tynnwch wrandawyr/amseryddion ac adfer y marciwr a reolir a’r dosbarth dangos gwreiddiol."
+
+msgctxt "docs.api:prose"
+msgid "Dismiss until both pointer and focus leave, canceling pending timers."
+msgstr "Cuddiwch nes bod y pwyntydd a’r ffocws wedi gadael, gan ganslo amseryddion sydd ar y gweill."
+
+msgctxt "docs.api:prose"
+msgid "Listeners installed by [initTreeBrowser](../functions/initTreeBrowser.md)."
+msgstr "Gwrandawyr wedi'u gosod gan [initTreeBrowser](../functions/initTreeBrowser.md)."
+
+msgctxt "docs.api:prose"
+msgid "Native controls supported by [initFormField](../functions/initFormField.md)."
+msgstr "Rheolyddion brodorol a gefnogir gan [initFormField](../functions/initFormField.md)."
+
+msgctxt "docs.api:prose"
+msgid "Custom-element tag prefix (`\"x\"` → `<x-icon>`). Never null or empty: tags need a hyphen, so JS callers passing one fall back to `instui`."
+msgstr "Rhagddodiad tag elfen arferol (`\"x\"` → `<x-icon>`). Peidiwch byth â defnyddio null neu werth gwag: mae angen cysylltnod ar dagiau, felly mae galwyr JS sy'n pasio un yn defnyddio'r rhagosodiad `instui`."
+
+msgctxt "docs.api:prose"
+msgid "Both panes are `div` regions, matching InstUI's inline DrawerLayout. Supply nonempty `tray-label` and `content-label` attributes to name them; labels on the host or slotted content don't name the shadow-DOM regions."
+msgstr "Mae'r ddwy banel yn rhanbarthau `div`, sy'n cyfateb i DrawerLayout mewnlin InstUI. Rhowch briodoleddau `tray-label` a `content-label` nad ydynt yn wag i'w henwi; nid yw labeli ar y gwesteiwr nac ar gynnwys wedi'i slotio yn enwi rhanbarthau'r DOM cysgodol."
+
+msgctxt "docs.api:prose"
+msgid "`<instui-modal>` — a real `<dialog>`, so it gets focus trapping, Escape-to-close, and a\n`::backdrop` for free. The `open` attribute drives `showModal()`/`close()`; a native dismissal\n(such as Escape) reflects back to the attribute and re-fires as a bubbling `close`\nevent. Drivable from light DOM via Invoker Commands — a\n`<button command=\"--show|--close|--toggle\" commandfor=\"modal-id\">` toggles it by id. Content goes\nin the default slot."
+msgstr "`<instui-modal>` — `<dialog>` go iawn, felly mae'n cael dal ffocws, cau drwy Escape, a\n`::backdrop` yn awtomatig. Mae'r briodwedd `open` yn gyrru `showModal()`/`close()`; mae cau brodorol\n(megis Escape) yn cael ei adlewyrchu yn ôl i'r briodwedd ac yn ailgynnau fel digwyddiad `close`\nsy'n byrlymu. Gellir ei reoli o'r DOM ysgafn drwy Invoker Commands — mae\n`<button command=\"--show|--close|--toggle\" commandfor=\"modal-id\">` yn ei doglo yn ôl id. Mae cynnwys yn mynd\nyn y slot diofyn."
+
+msgctxt "docs.api:prose"
+msgid "`<instui-spinner>` — a loading spinner with `role=\"status\"`. `variant=\"ai\"` and\n`variant=\"ai-on-color\"` select the rotating AI star; size and colour follow the CSS tokens.\nReduced motion keeps the ring or glyph visible without rotation."
+msgstr "`<instui-spinner>` — troellwr llwytho gyda `role=\"status\"`. `variant=\"ai\"` a\n`variant=\"ai-on-color\"` sy’n dewis y seren AI sy’n cylchdroi; mae’r maint a’r lliw yn dilyn y tocynnau CSS.\nMae lleihau symudiad yn cadw’r cylch neu’r glyff yn weladwy heb gylchdroi."
+
+msgctxt "docs.api:prose"
+msgid "`<instui-tooltip>` — wraps a slotted trigger and shows a `.tip` bubble (from the `tip` attribute)\non hover/focus. `placement` maps to `-placement-<value>` (e.g. `bottom`, `end`); `show-delay` and\n`hide-delay` (ms, default 0) gate the reveal/hide. Shared behavior owns visibility; Escape\ndismisses until both pointer and focus leave. Tooltip content is noninteractive."
+msgstr "`<instui-tooltip>` — yn lapio sbardun slotiedig ac yn dangos swigen `.tip` (o’r briodwedd `tip`)\nwrth hofran/ffocysu. Mae `placement` yn mapio i `-placement-<value>` (e.e. `bottom`, `end`); mae `show-delay` a \n`hide-delay` (ms, rhagosodiad 0) yn rheoli’r dangos/cuddio. Yr ymddygiad a rennir sy’n rheoli’r gwelededd; mae Escape\n yn cau’r swigen nes bod y pwyntydd a’r ffocws wedi gadael. Nid yw cynnwys y cyngor yn rhyngweithiol."
+
+msgctxt "docs.api:prose"
+msgid "`<instui-tree-browser>` — an ARIA tree with shared keyboard navigation and expansion.\nName the host and slot `treeitem`/`group` markup. Load the component stylesheet for slotted items."
+msgstr "`<instui-tree-browser>` — coeden ARIA gyda llywio bysellfwrdd ac ehangu a rennir.\nNodwch y gwesteiwr a'r slot `treeitem`/__PTK_INLINE_CODE_2_ yn y marcio._ Llwythwch daflen arddull y gydran ar gyfer yr eitemau sydd mewn slotiau."
+
+#, pantoken-verbatim
+msgctxt "docs.api:text"
+msgid "CloseButtonOptions"
+msgstr "CloseButtonOptions"
+
+#, pantoken-verbatim
+msgctxt "docs.api:text"
+msgid "FormFieldHandle"
+msgstr "FormFieldHandle"
+
+#, pantoken-verbatim
+msgctxt "docs.api:text"
+msgid "MenuHandle"
+msgstr "MenuHandle"
+
+#, pantoken-verbatim
+msgctxt "docs.api:text"
+msgid "TreeBrowserHandle"
+msgstr "TreeBrowserHandle"
+
+#, pantoken-verbatim
+msgctxt "docs.api:text"
+msgid "FormFieldControl"
+msgstr "FormFieldControl"
+
+#, pantoken-verbatim
+msgctxt "docs.api:text"
+msgid "initFormField"
+msgstr "initFormField"
+
+#, pantoken-verbatim
+msgctxt "docs.api:text"
+msgid "initMenu"
+msgstr "initMenu"
+
+#, pantoken-verbatim
+msgctxt "docs.api:text"
+msgid "initTreeBrowser"
+msgstr "initTreeBrowser"
+
+#, pantoken-verbatim
+msgctxt "docs.api:text"
+msgid "ns"
+msgstr "ns"
+
+#, pantoken-verbatim
+msgctxt "docs.api:text"
+msgid "withPrefix"
+msgstr "withPrefix"
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "target-size"
+msgstr "target-size"
+
+msgctxt "docs.api:prose"
+msgid "Its own chained modifiers (`-color-*`, `-size-*`, `-shape-*`, `-toggle`, `-condensed`,\n  `-without-background`, `-without-border`, `-display-block`) set a default for every child\n  `.instui-button` that doesn't carry its own modifier in that same category — a button's own\n  modifier class always wins over the group's default. `-icon-*` is always per-button; it's\n  never read from the group. Deprecated button aliases (`-ghost`, `-color-primary-inverse`)\n  aren't supported as group-level modifiers — use their canonical replacements\n  (`-color-tertiary`, `-on-color`) instead. Each join shows a single 1px seam in the buttons'\n  own border color (solid fills, whose border matches the fill, tint it with the label color).\n  `-without-seam` is group-only: it hides that seam so the buttons read as\n  one continuous control.\n  Put `-width-half` on an individual icon-only child button for a split-action\n  trigger with half the standard square width and the full button height."
+msgstr "Mae ei addaswyr cadwynedig ei hun (`-color-*`, `-size-*`, `-shape-*`, `-toggle`, `-condensed`,\n  `-without-background`, `-without-border`, `-display-block`) yn gosod rhagosodiad ar gyfer pob plentyn\n  `.instui-button` nad oes ganddo ei addasydd ei hun yn yr un categori — mae dosbarth addasydd botwm bob amser yn cael blaenoriaeth dros ragosodiad y grŵp. `-icon-*` bob amser yn berthnasol i bob botwm unigol; ni chaiff byth ei ddarllen o'r grŵp. Ni chefnogir arallenwau botwm anghymeradwy (`-ghost`, `-color-primary-inverse`)\n  fel addaswyr ar lefel grŵp — defnyddiwch eu hamnewidion canonaidd\n  (`-color-tertiary`, `-on-color`) yn eu lle. Mae pob uniad yn dangos un wythïen 1px yn lliw ymyl y botymau eu hunain (mae llenwadau solet, y mae eu hymyl yn cyfateb i'r llenwad, yn ei lliwio â lliw'r label).\n  `-without-seam` ar gyfer y grŵp yn unig: mae'n cuddio'r wythïen honno fel bod y botymau'n ymddangos fel\n  un rheolydd di-dor.\n  Rhowch `-width-half` ar fotwm plentyn unigol sydd ag eicon yn unig ar gyfer sbardun gweithred ranedig\n  sy'n hanner lled sgwâr safonol ac yn llawn uchder y botwm."
+
+msgctxt "docs.api:prose"
+msgid "Use a labelled group for related actions; when buttons represent a toggle choice, expose each state with aria-pressed. Give icon-only buttons an accessible name. Half-width triggers are narrow targets (16px, 20px, or 24px at the standard sizes); ensure sufficient target spacing or use a full-width square button for touch interfaces."
+msgstr "Defnyddiwch grŵp wedi'i labelu ar gyfer gweithredoedd cysylltiedig; pan fydd botymau'n cynrychioli dewis togl, datgelwch gyflwr pob un â aria-pressed. Rhowch enw hygyrch i fotymau sydd ag eicon yn unig. Mae sbardunau hanner lled yn dargedau cul (16px, 20px, neu 24px ar y meintiau safonol); sicrhewch fod digon o fylchau rhwng targedau neu defnyddiwch fotwm sgwâr lled llawn ar gyfer rhyngwynebau cyffwrdd."
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "WCAG 2.2 2.5.8"
+msgstr "WCAG 2.2 2.5.8"
+
+msgctxt "docs.api:prose"
+msgid "All touch targets must be 24px large, or leave sufficient space"
+msgstr "Rhaid i bob targed cyffwrdd fod yn 24px o faint, neu adael digon o le"

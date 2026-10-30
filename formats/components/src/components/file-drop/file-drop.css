@@ -8,13 +8,15 @@
  * @modifier -hover — Hover or drag-over state.
  * @modifier -rejected — Drag state for a rejected file.
  * @accessibility Wrap a native `<input type="file">` in the `<label>` drop zone so it stays a real, labelled file control that the keyboard and assistive tech can operate.
- * @example
+ * @example -canvas-rce -docs
+ * ```html
  * <label class="pfx-file-drop" id="fd">
  *   <span class="pfx-icon -icon-cloud-upload"></span>
  *   <div class="pfx-text"><strong>Drag an image here</strong>, or click to browse.</div>
  *   <div class="pfx-text -size-sm pfx-fg-muted" id="fd-msg">PNG or JPG up to 5&nbsp;MB.</div>
  *   <input type="file" id="fd-input">
  * </label>
+ * ```
  * @structure
  * .pfx-file-drop {
  *   [class*="-icon-"]:optional {}
@@ -24,6 +26,30 @@
  *   .pfx-text {}
  *   input {}
  * }
+ * @example -automatica11y
+ * ```html
+ * <label class="pfx-file-drop">
+ *   <span class="-icon-cloud-upload" aria-hidden="true"></span>
+ *   <span id="audit-file-label">Upload an image</span>
+ *   <span id="audit-file-hint">Choose a PNG or JPEG file, up to 5 MB.</span>
+ *   <input type="file" accept="image/png,image/jpeg" aria-labelledby="audit-file-label" aria-describedby="audit-file-hint">
+ * </label>
+ * <label class="pfx-file-drop -hover">
+ *   <span id="audit-file-hover-label">Upload while dragging a file</span>
+ *   <span id="audit-file-hover-hint">Drop the file here, or use the file picker.</span>
+ *   <input type="file" aria-labelledby="audit-file-hover-label" aria-describedby="audit-file-hover-hint">
+ * </label>
+ * <label class="pfx-file-drop -accepted">
+ *   <span id="audit-file-accepted-label">Upload an acceptable image</span>
+ *   <span id="audit-file-accepted-hint">This file type is accepted: PNG or JPEG.</span>
+ *   <input type="file" accept="image/png,image/jpeg" aria-labelledby="audit-file-accepted-label" aria-describedby="audit-file-accepted-hint">
+ * </label>
+ * <label class="pfx-file-drop -rejected">
+ *   <span id="audit-file-rejected-label">Replace a rejected image</span>
+ *   <span id="audit-file-error">File rejected. Choose a PNG or JPEG file, up to 5 MB.</span>
+ *   <input type="file" accept="image/png,image/jpeg" required aria-invalid="true" aria-labelledby="audit-file-rejected-label" aria-describedby="audit-file-error">
+ * </label>
+ * ```
  */
 @scope (.pfx-file-drop) {
   & {

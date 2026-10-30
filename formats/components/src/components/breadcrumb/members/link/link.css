@@ -18,6 +18,12 @@
  * }
  * @sealed
  * @stable
+ * @example -automatica11y
+ * ```html
+ * <nav class="pfx-breadcrumb -size-sm" aria-label="Small breadcrumb"><ol><li><a href="#home">Home</a></li><li aria-current="page">Guides</li></ol></nav>
+ * <nav class="pfx-breadcrumb -size-md" aria-label="Medium breadcrumb"><ol><li><a href="#home">Home</a></li><li aria-current="page">Guides</li></ol></nav>
+ * <nav class="pfx-breadcrumb -size-lg" aria-label="Large breadcrumb"><ol><li><a href="#home">Home</a></li><li aria-current="page">Guides</li></ol></nav>
+ * ```
  */
 
 @scope (.pfx-breadcrumb) {
@@ -52,6 +58,14 @@
       text-decoration: underline;
     }
 
+    @media (prefers-contrast: more) {
+      a:any-link {
+        text-decoration-line: underline;
+        text-decoration-thickness: max(2px, 0.1em);
+        text-underline-offset: 0.15em;
+      }
+    }
+
     li:not(:last-child) {
       color: var(--instui-color-text-muted);
     }
@@ -66,11 +80,17 @@
       background: currentColor;
       -webkit-mask: var(--instui-icon-chevron-right) center / contain no-repeat;
       mask: var(--instui-icon-chevron-right) center / contain no-repeat;
+      @media (forced-colors: active) {
+        forced-color-adjust: preserve-parent-color;
+      }
     }
 
     [dir="rtl"] & li:not(:last-child)::after {
       -webkit-mask: var(--instui-icon-chevron-left) center / contain no-repeat;
       mask: var(--instui-icon-chevron-left) center / contain no-repeat;
+      @media (forced-colors: active) {
+        forced-color-adjust: preserve-parent-color;
+      }
     }
 
     @media (--breakpoint-large-down) {

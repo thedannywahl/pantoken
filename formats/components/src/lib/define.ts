@@ -13,6 +13,7 @@ import {
   withSizeAliasDocs,
 } from "./aliases.ts";
 import { ns, wrap, type ComponentOptions } from "./helpers.ts";
+import { withResponsiveTableLayout } from "./table-layout.ts";
 
 type CssRecordKind = "component" | "utility" | "rule" | "declaration";
 
@@ -71,7 +72,11 @@ function make(kind: CssRecordKind, input: DefineInput): Definition {
     const { comment, body } = splitLeadingDocComment(cssBuilder(prefix, options));
     // Auto-document the long-form size twins withSizeAliases appends, so they aren't undocumented.
     const docs = withSizeAliasDocs(comment, body);
-    return `${docs}\n${withAliases(withSizeAliases(body), aliasPairs).trim()}\n`;
+    const layout =
+      kind === "component" && (input.name === "table" || input.name.startsWith("table."))
+        ? withResponsiveTableLayout(body)
+        : body;
+    return `${docs}\n${withAliases(withSizeAliases(layout), aliasPairs).trim()}\n`;
   };
   return {
     name: input.name,

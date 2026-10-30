@@ -37,11 +37,17 @@
  * ```
  * @example -automatica11y -nocard
  * ```html
- * <article class="pfx-card" data-a11y-root>
+ * <article class="pfx-card -variant-base" data-a11y-root>
  *   <div class="content">
- *     <h2>Card title</h2>
- *     <p>Content here.</p>
- *     <button class="pfx-button" data-a11y-trigger>Action</button>
+ *     <h2>Course resources</h2>
+ *     <p>Review the materials for this week.</p>
+ *     <button type="button" data-a11y-trigger>Review materials</button>
+ *     <section class="pfx-card -variant-nested">
+ *       <div class="content">
+ *         <h3>Reading list</h3>
+ *         <p>Read chapters one and two before Monday.</p>
+ *       </div>
+ *     </section>
  *   </div>
  * </article>
  * ```

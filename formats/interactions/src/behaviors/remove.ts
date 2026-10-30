@@ -1,9 +1,14 @@
+import { motionPreference } from "../lib/motion.ts";
+import { DEFAULT_PREFIX, withPrefix } from "../shared/prefix.js";
+
 /** Options for a timeout-based removal. */
 export interface RemoveOptions {
   /** Milliseconds before dismissal. Defaults to the target's computed `--timeout`. */
   timeout?: number;
   /** Exit treatment. Defaults to `"fade"`, matching InstUI Alert. */
   transition?: "fade" | "none";
+  /** Class prefix for the `transition` utility. Defaults to `"instui"`; `""` means unprefixed. */
+  prefix?: string;
 }
 
 /** Handle returned by {@link initRemove}. */
@@ -48,15 +53,23 @@ export function initRemove(target: HTMLElement, options: RemoveOptions = {}): Re
   let fallback: ReturnType<typeof setTimeout> | undefined;
   let transitionEnd: ((event: TransitionEvent) => void) | undefined;
   let removed = false;
+  const motion = motionPreference(target);
+  const onMotion = (): void => {
+    if (motion?.matches && transitionEnd) remove();
+  };
 
   if (transition === "fade") {
-    target.classList.add("instui-transition", "-fade-entered");
+    target.classList.add(
+      withPrefix("pfx-transition", options.prefix ?? DEFAULT_PREFIX),
+      "-fade-entered",
+    );
   }
 
   const cleanup = (): void => {
     clearTimeout(timer);
     clearTimeout(fallback);
     if (transitionEnd) target.removeEventListener("transitionend", transitionEnd);
+    motion?.removeEventListener("change", onMotion);
   };
 
   const remove = (): void => {
@@ -75,7 +88,7 @@ export function initRemove(target: HTMLElement, options: RemoveOptions = {}): Re
     });
     if (!target.dispatchEvent(event)) return;
 
-    if (transition === "none") {
+    if (transition === "none" || motion?.matches) {
       remove();
       return;
     }
@@ -90,6 +103,7 @@ export function initRemove(target: HTMLElement, options: RemoveOptions = {}): Re
   };
 
   if (Number.isFinite(timeout) && timeout > 0) timer = setTimeout(dismiss, timeout);
+  motion?.addEventListener("change", onMotion);
 
   return { cleanup, dismiss };
 }

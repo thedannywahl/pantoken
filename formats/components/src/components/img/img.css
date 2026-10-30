@@ -10,8 +10,19 @@
  * @modifier -with-blur — Apply a blur effect.
  * @cssproperty --pantoken-img-filter <filter-value-list> | none — The composed CSS filter on the image; the effect modifiers set it, and you can override it for a custom filter.
  * @accessibility Provide meaningful `alt` text that describes the image, and use an empty `alt=""` for purely decorative images so assistive tech skips them.
- * @example
+ * @example -canvas-rce -docs
+ * ```html
  * <img class="pfx-img" alt="Gradient">
+ * ```
+ * @example -automatica11y
+ * ```html
+ * <img class="pfx-img" alt="Blue square" width="80" height="80" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='80' height='80'%3E%3Cpath fill='%230077aa' d='M0 0h80v80H0z'/%3E%3C/svg%3E">
+ * <img class="pfx-img -display-block" alt="Block blue square" width="80" height="80" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='80' height='80'%3E%3Cpath fill='%230077aa' d='M0 0h80v80H0z'/%3E%3C/svg%3E">
+ * <img class="pfx-img -constrain-cover" alt="Cover blue square" width="120" height="80" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='80' height='80'%3E%3Cpath fill='%230077aa' d='M0 0h80v80H0z'/%3E%3C/svg%3E">
+ * <img class="pfx-img -constrain-contain" alt="Contained blue square" width="120" height="80" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='80' height='80'%3E%3Cpath fill='%230077aa' d='M0 0h80v80H0z'/%3E%3C/svg%3E">
+ * <img class="pfx-img -with-grayscale" alt="Grayscale square" width="80" height="80" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='80' height='80'%3E%3Cpath fill='%230077aa' d='M0 0h80v80H0z'/%3E%3C/svg%3E">
+ * <img class="pfx-img -with-blur" alt="Blurred blue square" width="80" height="80" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='80' height='80'%3E%3Cpath fill='%230077aa' d='M0 0h80v80H0z'/%3E%3C/svg%3E">
+ * ```
  */
 @scope (.pfx-img) {
   & {
@@ -20,7 +31,9 @@
     block-size: auto;
     --pantoken-img-filter: none;
     filter: var(--pantoken-img-filter);
-    transition: filter var(--instui-component-img-effect-transition-duration) ease;
+    @media (prefers-reduced-motion: no-preference) {
+      transition: filter var(--instui-component-img-effect-transition-duration) ease;
+    }
   }
 
   &.-display-block {

@@ -10,7 +10,7 @@ Internal build tooling. Not published.
 ## Usage
 
 ```sh
-# after `vp run -r build`:
+# after `vp run -r --concurrency-limit 1 build`:
 pnpm --filter @pantoken/validate-generated validate
 # or directly:
 node tools/validate-generated/index.ts

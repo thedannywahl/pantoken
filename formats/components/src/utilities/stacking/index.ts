@@ -29,6 +29,13 @@ export const stacking: Definition = defineUtility({
  * @modifier --stack-below — Below the default flow.
  * @modifier --stack-above — Above the default flow.
  * @modifier --stack-topmost — The highest stacking depth (overlays, menus).
+ * @a11y Stacking order is visual only: a layered surface that covers focusable content hides the focus indicator. Overlays that take over the page also need focus management and an accessible name.
+ * @example -automatica11y
+ * \`\`\`html
+ * <div class="--stack-above">
+ *   <p>Content raised above the default flow.</p>
+ * </div>
+ * \`\`\`
  * @example
  * <div class="--stack-topmost">Always on top.</div>
  */

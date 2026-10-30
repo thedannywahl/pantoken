@@ -23,7 +23,8 @@ type-only imports are fine (erased at build); value imports belong in build scri
 
 ## `register()` and the tag prefix
 
-`register(target?, { prefix })`. A prefix is **always** applied because a custom-element name must
+`register(target?, { prefix })`. The `prefix` option is typed `string` — `null` is a type error, unlike
+`@pantoken/components`, where `prefix: null` opts out. A prefix is **always** applied because a custom-element name must
 contain a hyphen (`<icon>` is invalid). A non-empty string wins (`{prefix:"x"}` → `<x-icon>`); anything
 falsy or whitespace falls back to `DEFAULT_PREFIX = "instui"` — it never drops elements. Implementation
 is low-churn: internal code keeps its canonical `instui-<base>` literals, and `register` shadows the
@@ -58,6 +59,11 @@ date/datetime pickers. The consistent declarative layer is the **Invoker Command
 - `instui-drawer-layout`: `--toggle` / `--open` / `--close`.
 - `instui-popover`/`instui-tray`/`instui-context-view`: already native `[popover]`, so the built-in
   `command="toggle-popover"` works with no code.
+
+Drawer-layout keeps InstUI-style regions for its tray and content. Supply nonempty `tray-label`
+and `content-label` attributes on the host; they name the corresponding shadow-DOM panes and
+update when the attributes change. A label on a slotted heading or navigation element doesn't
+name its containing shadow region. Name any additional slotted landmarks separately.
 
 A shared `onCommand(target, handler)` helper adds the `command` listener and, when the API is absent
 (`!("command" in HTMLButtonElement.prototype)`), falls back to a click delegate reading the same

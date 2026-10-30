@@ -37,9 +37,9 @@
  * @cssproperty --pantoken-pc-stroke <length> — The ring's stroke width; the -size-* modifiers set it.
  * @a11y Use native `<progress>` for a zero-based task completion range and `<meter>` when the minimum is non-zero. Give either element an accessible name by nesting it in `<label>` or associating a separate `<label>` through matching `for` and `id` values.
  * @compat Registers the numeric progress properties with `@property` and paints with CSS `mask` and `conic-gradient`; where custom-property transitions are unsupported the ring still renders but won't animate.
- * @example
+ * @example -canvas-rce -docs
  * ### Nested label
- * ```html
+ * ```html -canvas-rce -docs
  * <label>
  *   Uploading Document: <progress class="pfx-progress-circle -size-sm" value="70">70%</progress>
  * </label>
@@ -66,6 +66,29 @@
  * @related progress — The linear bar form of the same determinate progress.
  * @stable
  * @sealed
+ * @example -automatica11y
+ * ```html
+ * <div><label>Uploading notes <progress class="pfx-progress-circle -color-brand -size-xs" value="70" max="100" style="--value: 70">70%</progress></label></div>
+ * <div><label>Preparing files <progress class="pfx-progress-circle -color-info -size-sm" value="40" max="100" style="--value: 40">40%</progress></label></div>
+ * <div><label>Reviews complete <progress class="pfx-progress-circle -color-success -size-md" value="100" max="100" style="--value: 100">100%</progress></label></div>
+ * <div><label>Storage used <progress class="pfx-progress-circle -color-warning -size-lg" value="85" max="100" style="--value: 85">85%</progress></label></div>
+ * <div><label>Failed transfers <progress class="pfx-progress-circle -color-danger" value="20" max="100" style="--value: 20">20%</progress></label></div>
+ * <div><label>Starting upload <progress class="pfx-progress-circle" value="0" max="100">0%</progress></label></div>
+ * <div><label>Finding files <progress class="pfx-progress-circle">Working</progress></label></div>
+ * <label for="audit-review-score">Review score</label>
+ * <meter id="audit-review-score" class="pfx-progress-circle -color-success" min="20" value="40" max="60" style="--min: 20; --value: 40; --max: 60">40 of 60</meter>
+ * <div class="--bg-inverse --text-inverse --p-md">
+ *   <label>Background upload <progress class="pfx-progress-circle -color-primary-inverse -color-brand" value="60" max="100" style="--value: 60">60%</progress></label>
+ *   <label>Preparing archive <progress class="pfx-progress-circle -color-primary-inverse -color-info" value="40" max="100" style="--value: 40">40%</progress></label>
+ *   <label>Archive ready <progress class="pfx-progress-circle -color-primary-inverse -color-success" value="100" max="100" style="--value: 100">100%</progress></label>
+ *   <label>Archive quota <progress class="pfx-progress-circle -color-primary-inverse -color-warning" value="85" max="100" style="--value: 85">85%</progress></label>
+ *   <label>Archive failures <progress class="pfx-progress-circle -color-primary-inverse -color-danger" value="20" max="100" style="--value: 20">20%</progress></label>
+ * </div>
+ * <p id="audit-circle-label">Processing documents</p>
+ * <div class="pfx-progress-circle -should-animate" role="progressbar" aria-labelledby="audit-circle-label" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100" style="--value: 50">
+ *   <span class="value">50%</span>
+ * </div>
+ * ```
  */
 
 @property --value {
@@ -123,10 +146,32 @@
     font-family: var(--instui-component-progress-circle-font-family);
     font-weight: var(--instui-component-progress-circle-font-weight);
     line-height: var(--instui-component-progress-circle-line-height);
-    transition: --value 1s;
+    @media (prefers-reduced-motion: no-preference) {
+      transition: --value 1s;
+    }
   }
 
   /* The ring is a masked conic donut on ::before; the value sits in the hole. */
+  &:is(progress, meter) {
+    appearance: none;
+  }
+
+  &::-webkit-progress-bar,
+  &::-webkit-progress-value,
+  &::-webkit-meter-bar,
+  &::-webkit-meter-optimum-value,
+  &::-webkit-meter-suboptimum-value,
+  &::-webkit-meter-even-less-good-value {
+    background: transparent;
+    border: 0;
+    box-shadow: none;
+  }
+
+  &::-moz-progress-bar,
+  &::-moz-meter-bar {
+    background: transparent;
+  }
+
   &::before {
     content: "";
     position: absolute;
@@ -143,9 +188,16 @@
       #000 0
     );
     mask: radial-gradient(farthest-side, #0000 calc(100% - var(--pantoken-pc-stroke)), #000 0);
-    transition:
-      opacity 0.5s 0.2s,
-      transform 0.5s;
+    @media (forced-colors: active) {
+      forced-color-adjust: preserve-parent-color;
+      --pantoken-pc-fill: CanvasText;
+      --pantoken-pc-track: Canvas;
+    }
+    @media (prefers-reduced-motion: no-preference) {
+      transition:
+        opacity 0.5s 0.2s,
+        transform 0.5s;
+    }
     transform: translate3d(0, 0, 0) scale(1);
   }
 
@@ -243,7 +295,9 @@
   }
 
   &:indeterminate::before {
-    animation: pantoken-progress-circle-indeterminate 1s linear infinite;
+    @media (prefers-reduced-motion: no-preference) {
+      animation: pantoken-progress-circle-indeterminate 1s linear infinite;
+    }
   }
 
   &:indeterminate .value {
@@ -251,23 +305,27 @@
   }
 
   & > .value {
-    transition:
-      opacity 0.5s 1s,
-      transform 0.5s 1s;
+    @media (prefers-reduced-motion: no-preference) {
+      transition:
+        opacity 0.5s 1s,
+        transform 0.5s 1s;
+    }
     transform: translate3d(0, 0, 0);
   }
 
-  &:is(.-should-animate, .-should-animate-on-mount, .-shold-animate-on-mount) {
-    --value: 0 !important;
-  }
+  @media (prefers-reduced-motion: no-preference) {
+    &:is(.-should-animate, .-should-animate-on-mount, .-shold-animate-on-mount) {
+      --value: 0 !important;
+    }
 
-  &:is(.-should-animate, .-should-animate-on-mount, .-shold-animate-on-mount)::before {
-    opacity: 0;
-    transform: translate3d(0, 0, 0) scale(0.75);
-  }
+    &:is(.-should-animate, .-should-animate-on-mount, .-shold-animate-on-mount)::before {
+      opacity: 0;
+      transform: translate3d(0, 0, 0) scale(0.75);
+    }
 
-  &:is(.-should-animate, .-should-animate-on-mount, .-shold-animate-on-mount) > .value {
-    opacity: 0;
-    transform: translate3d(0, 10%, 0);
+    &:is(.-should-animate, .-should-animate-on-mount, .-shold-animate-on-mount) > .value {
+      opacity: 0;
+      transform: translate3d(0, 10%, 0);
+    }
   }
 }

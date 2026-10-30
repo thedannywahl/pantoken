@@ -3,10 +3,11 @@
 // Per-component interaction entry point for rating
 
 import { applySpacing } from "../shared/index.js";
+import { sel } from "../shared/prefix.js";
 
 // Initialize on page load
 function initrating() {
-  for (const el of document.querySelectorAll(".instui-rating")) {
+  for (const el of document.querySelectorAll(sel(".pfx-rating"))) {
     applySpacing(el as HTMLElement);
   }
 }

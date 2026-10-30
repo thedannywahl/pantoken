@@ -3,6 +3,7 @@
  * @selector .pfx-modal
  * @summary A dialog surface (works on a native <dialog>); header/body/footer parts.
  * @remarks On a native <dialog>, `showModal()` puts the modal in the top layer and its `::backdrop` becomes the mask, so no z-index is needed. An `<img>` alone in `.body` goes full-bleed.
+ * @remarks Load `@pantoken/interactions/modal.iife.js` to wire `--show`, `--close`, and `--toggle` commands. It synchronizes `open` through native modal methods, including initially open dialogs; CSS alone doesn't provide modal activation.
  * @element dialog
  * @modifier -size-sm — A narrow modal.
  * @modifier -size-lg — A wide modal.
@@ -26,12 +27,52 @@
  * </dialog>
  * @example -automatica11y
  * ```html
- * <button class="pfx-button" command="--show" commandfor="account-dialog" data-a11y-trigger>Open account details</button>
+ * <button type="button" command="--show" commandfor="account-dialog" data-a11y-trigger>Open account details</button>
  * <dialog class="pfx-modal -size-sm" id="account-dialog" aria-labelledby="account-dialog-title" data-a11y-root>
- *   <div class="header" id="account-dialog-title"><strong>Account details</strong></div>
- *   <div class="body">Review your account information.</div>
- *   <div class="footer"><button class="pfx-button" command="--close" commandfor="account-dialog">Close</button></div>
+ *   <div class="header" id="account-dialog-title"><strong>Small account dialog</strong></div>
+ *   <div class="body"></div>
+ *   <div class="footer"><button type="button" command="--close" commandfor="account-dialog">Close</button></div>
  * </dialog>
+ * ```
+ * @example -automatica11y
+ * ```html
+ * <button type="button" command="--show" commandfor="modal-default" data-a11y-trigger>Open default dialog</button>
+ * <dialog class="pfx-modal" id="modal-default" aria-label="Default dialog" data-a11y-root><div class="header">Default dialog</div><div class="body"></div><div class="footer"><button type="button" command="--close" commandfor="modal-default">Close</button></div></dialog>
+ * ```
+ * @example -automatica11y
+ * ```html
+ * <button type="button" command="--show" commandfor="modal-large" data-a11y-trigger>Open large dialog</button>
+ * <dialog class="pfx-modal -size-lg" id="modal-large" aria-label="Large dialog" data-a11y-root><div class="header">Large dialog</div><div class="body"></div><div class="footer"><button type="button" command="--close" commandfor="modal-large">Close</button></div></dialog>
+ * ```
+ * @example -automatica11y
+ * ```html
+ * <button type="button" command="--show" commandfor="modal-auto" data-a11y-trigger>Open auto-sized dialog</button>
+ * <dialog class="pfx-modal -size-auto" id="modal-auto" aria-label="Auto-sized dialog" data-a11y-root><div class="header">Auto-sized dialog</div><div class="body"></div><div class="footer"><button type="button" command="--close" commandfor="modal-auto">Close</button></div></dialog>
+ * ```
+ * @example -automatica11y
+ * ```html
+ * <button type="button" command="--show" commandfor="modal-fullscreen" data-a11y-trigger>Open fullscreen dialog</button>
+ * <dialog class="pfx-modal -size-fullscreen" id="modal-fullscreen" aria-label="Fullscreen dialog" data-a11y-root><div class="header">Fullscreen dialog</div><div class="body"></div><div class="footer"><button type="button" command="--close" commandfor="modal-fullscreen">Close</button></div></dialog>
+ * ```
+ * @example -automatica11y
+ * ```html
+ * <button type="button" command="--show" commandfor="modal-compact" data-a11y-trigger>Open compact dialog</button>
+ * <dialog class="pfx-modal -density-compact" id="modal-compact" aria-label="Compact dialog" data-a11y-root><div class="header">Compact dialog</div><div class="body"></div><div class="footer"><button type="button" command="--close" commandfor="modal-compact">Close</button></div></dialog>
+ * ```
+ * @example -automatica11y
+ * ```html
+ * <button type="button" command="--show" commandfor="modal-inverse" data-a11y-trigger>Open inverse dialog</button>
+ * <dialog class="pfx-modal -color-inverse" id="modal-inverse" aria-label="Inverse dialog" data-a11y-root><div class="header">Inverse dialog</div><div class="body"></div><div class="footer"><button type="button" command="--close" commandfor="modal-inverse">Close</button></div></dialog>
+ * ```
+ * @example -automatica11y
+ * ```html
+ * <button type="button" command="--show" commandfor="modal-fit" data-a11y-trigger>Open viewport-fit dialog</button>
+ * <dialog class="pfx-modal -overflow-fit" id="modal-fit" aria-label="Viewport-fit dialog" data-a11y-root><div class="header">Viewport-fit dialog</div><div class="body"></div><div class="footer"><button type="button" command="--close" commandfor="modal-fit">Close</button></div></dialog>
+ * ```
+ * @example -automatica11y
+ * ```html
+ * <button type="button" command="--show" commandfor="modal-blur" data-a11y-trigger>Open blurred-backdrop dialog</button>
+ * <dialog class="pfx-modal -blur" id="modal-blur" aria-label="Blurred-backdrop dialog" data-a11y-root><div class="header">Blurred-backdrop dialog</div><div class="body"></div><div class="footer"><button type="button" command="--close" commandfor="modal-blur">Close</button></div></dialog>
  * ```
  * @example -docs
  * <dialog class="pfx-modal -size-lg" aria-labelledby="details-title">
@@ -78,6 +119,10 @@
   &[is="dialog"].-blur::backdrop,
   dialog&.-blur::backdrop {
     backdrop-filter: blur(0.5rem);
+
+    @media (prefers-reduced-transparency: reduce) {
+      backdrop-filter: none;
+    }
   }
 
   &.-size-sm {

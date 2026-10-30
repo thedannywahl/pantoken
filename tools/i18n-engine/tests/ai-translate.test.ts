@@ -223,6 +223,41 @@ describe("resolveProviderInvocation", () => {
       configDir: "/repo",
     });
     expect(invocation?.command).toBe("/repo/tools/translation-adapters/copilot-wrapper.sh");
+    expect(invocation?.args).toEqual(["--model", "auto"]);
+  });
+
+  test("omits effort for Copilot auto routing even when a profile supplies it", () => {
+    delete process.env.I18N_TRANSLATION_COMMAND;
+    const provider = {
+      ...CONFIG_DEFAULTS.provider,
+      profiles: {
+        copilot: { ...CONFIG_DEFAULTS.provider.profiles.copilot!, effort: "low" },
+      },
+    };
+    expect(resolveProviderInvocation(provider, { profile: "copilot" })?.args).toEqual([
+      "--model",
+      "auto",
+    ]);
+  });
+
+  test("uses the Copilot reasoning-effort flag for a pinned model", () => {
+    delete process.env.I18N_TRANSLATION_COMMAND;
+    const provider = {
+      ...CONFIG_DEFAULTS.provider,
+      profiles: {
+        copilot: {
+          ...CONFIG_DEFAULTS.provider.profiles.copilot!,
+          model: "test-model",
+          effort: "low",
+        },
+      },
+    };
+    expect(resolveProviderInvocation(provider, { profile: "copilot" })?.args).toEqual([
+      "--model",
+      "test-model",
+      "--reasoning-effort",
+      "low",
+    ]);
   });
 
   test("the env command still wins over a requested profile", () => {

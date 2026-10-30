@@ -59,6 +59,11 @@ describe("inferSyntax", () => {
     expect(inferSyntax("oklch(0.6 0.1 200)")).toBe("<color>");
     expect(inferSyntax("light-dark(#fff, #000)")).toBe("<color>");
   });
+  test("color-mix is a color even when its arguments are unresolved references or keywords", () => {
+    expect(inferSyntax("color-mix(in srgb, var(--base) 20%, transparent)")).toBe("<color>");
+    expect(inferSyntax("color-mix(in srgb, currentColor 20%, transparent)")).toBe("<color>");
+    expect(inferSyntax("color-mix(in srgb, red 20%, blue)")).toBe("<color>");
+  });
   test("length values (px, rem, viewport units)", () => {
     expect(inferSyntax("16px")).toBe("<length>");
     expect(inferSyntax("1.5rem")).toBe("<length>");
@@ -130,6 +135,20 @@ describe("resolveSyntax", () => {
       "[ <font-family-name> | <generic-font-family> ]#",
     );
   });
+  test("border-style tokens use line-style without classifying unrelated keywords", () => {
+    expect(resolveSyntax("--instui-component-pill-border-style", empty, noLocals, id)).toBe(
+      "<line-style>",
+    );
+    expect(
+      resolveSyntax(
+        "--instui-component-list-item-delimiter-dashed-border-style",
+        empty,
+        noLocals,
+        id,
+      ),
+    ).toBe("<line-style>");
+    expect(inferSyntax("none")).toBeUndefined();
+  });
   test("falls back to inferring from a sheet-local value", () => {
     const locals = new Map([["--instui-elevation-x", "0 1px 2px #000"]]);
     // Not a known token, no property-grammar match → infer from the resolved local (a colour shadow).
@@ -154,6 +173,17 @@ describe("resolveToken", () => {
       syntax: "<color>",
       value: "#123456",
     });
+  });
+  test.each([
+    ["--instui-component-base-button-primary-ghost-hover-background", "<color>"],
+    ["--instui-component-pill-base-border-color", "<color>"],
+    ["--instui-component-pill-border-style", "<line-style>"],
+    ["--instui-component-list-item-delimiter-dashed-border-style", "<line-style>"],
+  ])("returns a type and concrete value for the shipped token %s", (name, syntax) => {
+    const result = resolveToken(name);
+    expect(result?.syntax).toBe(syntax);
+    expect(result?.value).toBeTruthy();
+    expect(result?.value).not.toContain("var(");
   });
   test("reads the value from sheet-local vars when not in the IR", () => {
     const locals = new Map([["--x-plain", "8px"]]);

@@ -2,6 +2,7 @@
  * @component modal.header
  * @memberOf modal
  * @selector .header
+ * @a11y Render the title as a real heading and point the dialog's `aria-labelledby` at it so the dialog is announced with its name.
  * @summary The title row (InstUI `Modal.Header`).
  * @remarks The parent `modal`'s `-density-compact` and `-color-inverse` modifiers restyle this member — see `modal`'s own doc for those modifiers.
  * @structure
@@ -10,6 +11,25 @@
  *     strong {}
  *   }
  * }
+ * @example -automatica11y
+ * ```html
+ * <button type="button" command="--show" commandfor="account-dialog" data-a11y-trigger>Open account details</button>
+ * <dialog class="pfx-modal" id="account-dialog" aria-labelledby="account-dialog-title" data-a11y-root>
+ *   <div class="header" id="account-dialog-title"><strong>Account details</strong></div>
+ *   <div class="body"></div>
+ *   <div class="footer"><button type="button" command="--close" commandfor="account-dialog">Close</button></div>
+ * </dialog>
+ * ```
+ * @example -automatica11y
+ * ```html
+ * <button type="button" command="--show" commandfor="compact-header-dialog" data-a11y-trigger>Open compact header</button>
+ * <dialog class="pfx-modal -density-compact" id="compact-header-dialog" aria-labelledby="compact-header" data-a11y-root><div class="header" id="compact-header">Compact header</div><div class="footer"><button type="button" command="--close" commandfor="compact-header-dialog">Close</button></div></dialog>
+ * ```
+ * @example -automatica11y
+ * ```html
+ * <button type="button" command="--show" commandfor="inverse-header-dialog" data-a11y-trigger>Open inverse header</button>
+ * <dialog class="pfx-modal -color-inverse" id="inverse-header-dialog" aria-labelledby="inverse-header" data-a11y-root><div class="header" id="inverse-header">Inverse header</div><div class="footer"><button type="button" command="--close" commandfor="inverse-header-dialog">Close</button></div></dialog>
+ * ```
  */
 @scope (.pfx-modal) {
   :scope {

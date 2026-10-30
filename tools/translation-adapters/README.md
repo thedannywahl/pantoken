@@ -83,12 +83,11 @@ I18N_TRANSLATION_ADAPTER=ai \
 CLI](https://github.com/github/copilot-cli)'s positional-arg interface — `copilot -p "<prompt>"`
 puts it in "programmatic mode" for a plain prompt argument, same shape as the `agy` wrapper.
 
-All `:copilot` pipeline scripts default to `--model gpt-5-mini --effort low`: `gpt-5-mini` is the
-cheapest model with reasoning-effort support in `copilot --help`'s model list, and `low` (its
-minimum for this model) is plenty for translating short, literal UI strings — a spot check against
-`claude-haiku-4.5` (no effort control) and the CLI's own `auto` picked ~15x more AI credits for the
-same prompt with no quality gain. Override per-invocation with `COMMAND_ARGS` if a locale needs a
-stronger model:
+Copilot translation scripts and the engine's Copilot profile default to
+`--model auto`. Auto routing uses the account's available model catalog
+instead of pinning a model that may no longer be available. Model selection and credit usage can
+vary. Auto doesn't accept an explicit reasoning effort. For a fixed model, pass `COMMAND_ARGS`
+to a direct script invocation; supported Copilot models use `--reasoning-effort`, not `--effort`:
 
 ```sh
 I18N_TRANSLATION_ADAPTER=ai \

@@ -1,6 +1,7 @@
 /**
  * @component popover
  * @selector .pfx-popover
+ * @a11y Wire the trigger with `popovertarget` so the expanded state is exposed. A native popover closes on Escape and outside click but doesn't move focus, so move focus into interactive content when the popover opens.
  * @summary An elevated surface for a native `[popover]`, positioned with CSS anchor positioning.
  * @remarks Anchor positioning is Chromium-only; the `@supports` guard means `-placement-*` is silently inert elsewhere and the UA centers the popover in the top layer instead of failing.
  * @modifier -placement-top — Sit above the anchor.
@@ -8,11 +9,13 @@
  * @modifier -placement-start — Sit at the start (inline-start) of the anchor.
  * @modifier -placement-end — Sit at the end (inline-end) of the anchor.
  * @compat Uses CSS anchor positioning (`position-anchor`/`position-area`) and the native `[popover]` API, both Chromium-only today; an `@supports` guard keeps the placement inert elsewhere, where the UA centres the popover in the top layer.
- * @example
+ * @example -canvas-rce -docs
+ * ```html
  * <div class="pfx-popover -placement-bottom" id="pop-1">
  *   <div class="pfx-heading -level-h4">Share this page</div>
  *   <p class="pfx-text -size-sm">A popover is a lightweight surface anchored to a trigger. This one uses the native <code>popover</code> attribute.</p>
  * </div>
+ * ```
  * @structure
  * .pfx-popover {
  *   .pfx-heading {}
@@ -22,6 +25,26 @@
  * }
  * @related tooltip — A tooltip is a smaller, hover- or focus-triggered anchored surface.
  * @related context-view — Context view is a related anchored surface with a pointer.
+ * @example -automatica11y
+ * ```html
+ * <p><button type="button" popovertarget="popover-top" style="anchor-name: --audit-popover-top">Top popover</button></p>
+ * <div class="pfx-popover -placement-top" id="popover-top" popover="auto" role="region" aria-label="Top popover" style="position-anchor: --audit-popover-top"></div>
+ * ```
+ * @example -automatica11y
+ * ```html
+ * <p><button type="button" popovertarget="popover-bottom" style="anchor-name: --audit-popover-bottom">Bottom popover</button></p>
+ * <div class="pfx-popover -placement-bottom" id="popover-bottom" popover="auto" role="region" aria-label="Bottom popover" style="position-anchor: --audit-popover-bottom"></div>
+ * ```
+ * @example -automatica11y
+ * ```html
+ * <p><button type="button" popovertarget="popover-start" style="anchor-name: --audit-popover-start">Start popover</button></p>
+ * <div class="pfx-popover -placement-start" id="popover-start" popover="auto" role="region" aria-label="Start popover" style="position-anchor: --audit-popover-start"></div>
+ * ```
+ * @example -automatica11y
+ * ```html
+ * <p><button type="button" popovertarget="popover-end" style="anchor-name: --audit-popover-end">End popover</button></p>
+ * <div class="pfx-popover -placement-end" id="popover-end" popover="auto" role="region" aria-label="End popover" style="position-anchor: --audit-popover-end"></div>
+ * ```
  */
 @scope (.pfx-popover) {
   & {
@@ -67,11 +90,13 @@
   /* A gentle open animation (native popover + @starting-style, no JS). Inert where unsupported. */
   @supports (transition-behavior: allow-discrete) {
     &[popover] {
-      transition:
-        opacity 0.15s ease,
-        transform 0.15s ease,
-        overlay 0.15s allow-discrete,
-        display 0.15s allow-discrete;
+      @media (prefers-reduced-motion: no-preference) {
+        transition:
+          opacity 0.15s ease,
+          transform 0.15s ease,
+          overlay 0.15s allow-discrete,
+          display 0.15s allow-discrete;
+      }
       opacity: 1;
       transform: translateY(0);
     }

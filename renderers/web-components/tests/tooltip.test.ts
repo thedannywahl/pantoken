@@ -19,6 +19,9 @@ test("renders the tip text and a slot for the trigger", () => {
   expect(bubble?.textContent).toBe("Helpful");
   expect(bubble?.getAttribute("role")).toBe("tooltip");
   expect(el.shadowRoot?.querySelector("slot")).toBeTruthy();
+  expect(
+    el.shadowRoot?.querySelector(".instui-tooltip")?.hasAttribute("data-tooltip-managed"),
+  ).toBe(true);
 });
 
 test("placement maps to the -placement- modifier", () => {
@@ -94,4 +97,56 @@ test("disconnecting clears a pending timer (no throw after removal)", () => {
   wrap?.dispatchEvent(new Event("pointerenter"));
   el.remove();
   expect(() => vi.advanceTimersByTime(200)).not.toThrow();
+  expect(wrap?.hasAttribute("data-tooltip-managed")).toBe(false);
+});
+
+test("attribute updates retain the wrapper, pending transition, and new tip text", () => {
+  vi.useFakeTimers();
+  const el = tooltip('tip="Before" show-delay="100"');
+  const previous = el.shadowRoot!.querySelector<HTMLElement>(".instui-tooltip")!;
+  const oldTip = previous.querySelector(".tip")!;
+  previous.dispatchEvent(new Event("pointerenter"));
+  el.setAttribute("tip", "After");
+  vi.advanceTimersByTime(100);
+  expect(el.shadowRoot!.querySelector(".instui-tooltip")).toBe(previous);
+  expect(previous.hasAttribute("data-tooltip-managed")).toBe(true);
+  expect(oldTip.classList.contains("-show")).toBe(true);
+  expect(el.shadowRoot!.querySelector(".tip")?.textContent).toBe("After");
+});
+
+test("attribute updates can't reopen a tooltip dismissed while its trigger stays focused", () => {
+  vi.useFakeTimers();
+  const el = tooltip('tip="Before"');
+  const wrap = el.shadowRoot!.querySelector<HTMLElement>(".instui-tooltip")!;
+  el.querySelector("button")!.focus();
+  wrap.dispatchEvent(new FocusEvent("focusin"));
+  vi.advanceTimersByTime(0);
+  document.dispatchEvent(new KeyboardEvent("keydown", { key: "Escape" }));
+  el.setAttribute("tip", "After");
+  el.setAttribute("placement", "end");
+  el.setAttribute("show-delay", "100");
+  vi.advanceTimersByTime(100);
+  const bubble = el.shadowRoot!.querySelector(".tip")!;
+  expect(bubble.classList.contains("-show")).toBe(false);
+  expect(bubble.classList.contains("-placement-end")).toBe(true);
+  expect(bubble.textContent).toBe("After");
+  wrap.dispatchEvent(new FocusEvent("focusout"));
+  wrap.dispatchEvent(new FocusEvent("focusin"));
+  vi.advanceTimersByTime(99);
+  expect(bubble.classList.contains("-show")).toBe(false);
+  vi.advanceTimersByTime(1);
+  expect(bubble.classList.contains("-show")).toBe(true);
+});
+
+test("reconnection initializes one fresh handle on the retained wrapper", () => {
+  vi.useFakeTimers();
+  const el = tooltip('tip="Help"');
+  const wrap = el.shadowRoot!.querySelector<HTMLElement>(".instui-tooltip")!;
+  el.remove();
+  document.body.append(el);
+  expect(el.shadowRoot!.querySelector(".instui-tooltip")).toBe(wrap);
+  expect(wrap.hasAttribute("data-tooltip-managed")).toBe(true);
+  wrap.dispatchEvent(new Event("pointerenter"));
+  vi.advanceTimersByTime(0);
+  expect(wrap.querySelector(".tip")?.classList.contains("-show")).toBe(true);
 });

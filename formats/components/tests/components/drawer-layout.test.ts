@@ -2,6 +2,9 @@ import { expect, test } from "vite-plus/test";
 import { drawerLayoutContentCss, drawerLayoutCss, drawerLayoutTrayCss } from "../../src/index.ts";
 import { drawerLayout } from "../../src/components/drawer-layout/index.ts";
 import { validate } from "../_validate.ts";
+import { parseCssDocs } from "@cssdoc/core";
+import { Window } from "happy-dom";
+import { exampleHtml } from "../../scripts/audit-accessibility.ts";
 
 test("drawer-layout: emits exactly one well-formed cssdoc record with no token drift", () => {
   validate(drawerLayout);
@@ -14,6 +17,28 @@ test("drawer-layout supports placement, open-state gates, and overlay mode", () 
   expect(css).toContain("&.-should-overlay-tray");
   expect(css).toContain("&.-placement-end");
   expect(css).toMatch(/&:not\(\[open\]\):not\(\.-open\)\s*>\s*\.tray/);
+});
+
+test("all drawer-layout and member examples use named regions on valid elements", () => {
+  for (const render of [drawerLayoutCss, drawerLayoutTrayCss, drawerLayoutContentCss]) {
+    const [record] = parseCssDocs(render({ prefix: "instui" }));
+    expect(record!.examples.length).toBeGreaterThan(0);
+    for (const example of record!.examples) {
+      const window = new Window();
+      try {
+        window.document.body.innerHTML = exampleHtml(example);
+        const regions = [...window.document.querySelectorAll('[role="region"]')];
+        expect(regions.length).toBeGreaterThan(0);
+        for (const region of regions) {
+          expect(region.tagName).toBe("DIV");
+          expect(region.getAttribute("aria-label")).toBeTruthy();
+        }
+        expect(window.document.querySelector("main, aside")).toBeNull();
+      } finally {
+        void window.happyDOM.abort();
+      }
+    }
+  }
 });
 
 test("drawer-layout members emit tray and content rules", () => {
@@ -35,6 +60,13 @@ test("drawer-layout auto-switches to overlay mode via a container query, without
   );
   expect(drawerLayoutContentCss({ prefix: "instui" })).toContain(
     `@container pantoken-drawer-layout (max-width: ${threshold})`,
+  );
+});
+
+test("the automatic content width reset keeps the base rule's scope proximity", () => {
+  const css = drawerLayoutContentCss({ prefix: "instui" });
+  expect(css).toMatch(
+    /@container pantoken-drawer-layout \(max-width: 64em\) \{\s*:scope > \.content \{\s*min-inline-size: 0;\s*\}\s*\}\s*\}\s*$/,
   );
 });
 

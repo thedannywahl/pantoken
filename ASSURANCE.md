@@ -78,6 +78,10 @@ The authoritative architecture description is
 
 ## Assets to protect
 
+Contributor accessibility tooling runs trusted authored examples in a local browser, using
+lockfile-pinned automatica11y and locally built styles and scripts. Its reports are advisory evidence,
+not security controls or a WCAG certification. Fixtures must not contain credentials or private data.
+
 The security-relevant assets are:
 
 - The integrity of the source repository and release workflow.
@@ -128,13 +132,15 @@ Security-relevant entry points include:
 - Public JavaScript APIs that accept token arrays, plugin objects, options, Markdown trees, and HTML
   fragments.
 - Browser component attributes and CSS custom properties consumed by interaction helpers.
+- Opt-in native FormField constraints and authored error elements with stable IDs.
+- Opt-in ARIA menu roles, item state, and native popover-button references.
 - Parent loading-region state events and announcement labels consumed by the SkeletonLoader interaction helper.
 - CLI arguments and caller-selected output paths.
 - Documentation demo specifications and generated iframe attributes.
 - Reviewed locale catalogs used to build TinyMCE plugin labels and inserted logo alt text.
 - Docs-supplied iframe locale tags and browser session drafts restored by the Canvas theme editor.
 - URLs handled by the local Vite development file server.
-- Script fonts fetched at documentation-build time by the social-card renderer.
+- Vendored script fonts and their upstream licenses used by the social-card renderer.
 - CDN provider/version/package/path values passed to `@pantoken/cdn`'s URL builders (consumed by
   `@pantoken/canvas-theme-editor`'s `buildTheme` and, in future, the docs CDN picker).
 - A brand hex color passed to `@pantoken/plugin-custom-theme-colors` (`custom`, `customColorCss`),
@@ -160,7 +166,7 @@ Security-relevant entry points include:
 | T-10 | A defect or malicious change is not detected before release.                                                            | Every pull request and push to `main` runs build, type checking, tests, coverage, linting, generated-output validation, package validation, and static analysis. Releases rebuild the publish set and use the verified `main` commit.                                                                                                                                                                                                                                                              | [CI workflow](.github/workflows/ci.yml), [release workflow](.github/workflows/release.yml), [`vite.config.ts`](vite.config.ts), [`codecov.yml`](codecov.yml)                                                                                                                                                                                                                                                                       |
 | T-11 | A crafted CDN version string breaks out of a URL and corrupts generated CSS/JS/markup.                                  | `@pantoken/cdn` rejects version strings containing quotes, angle brackets, whitespace, or path separators before building any URL. Package/path values are caller-controlled by design (see TB-4) and are not treated as untrusted user input.                                                                                                                                                                                                                                                     | [`packages/cdn/src/version.ts`](packages/cdn/src/version.ts), [`packages/cdn/tests/index.test.ts`](packages/cdn/tests/index.test.ts)                                                                                                                                                                                                                                                                                               |
 | T-12 | An external translation model changes a source literal that must remain exact.                                          | Translation entries marked `verbatim: "required"` are copied from the trusted source directly into locale caches and are excluded from adapter prompts, including forced translation runs. Tests assert adapter bypass and replacement of stale translated cache values.                                                                                                                                                                                                                           | [`tools/translation-adapters/src/index.ts`](tools/translation-adapters/src/index.ts), [`tools/translation-adapters/tests/index.test.ts`](tools/translation-adapters/tests/index.test.ts), [`docs/scripts/translation-memory.ts`](docs/scripts/translation-memory.ts), [`docs/scripts/translation-memory.test.ts`](docs/scripts/translation-memory.test.ts)                                                                         |
-| T-13 | A font fetched during the documentation build is substituted with a hostile file.                                       | Social-card script fonts are fetched from URLs pinned to one `google/fonts` commit and verified against recorded SHA-256 digests before use. A mismatched or unreachable download is discarded, never cached, and the card falls back to the vendored Latin faces rather than failing the build.                                                                                                                                                                                                   | [`docs/scripts/lib/og-fonts.ts`](docs/scripts/lib/og-fonts.ts)                                                                                                                                                                                                                                                                                                                                                                     |
+| T-13 | A social-card script font is substituted with a hostile file.                                                           | Fonts and their upstream licenses are vendored from one pinned `google/fonts` revision. The renderer verifies signatures and recorded SHA-256 digests before use, with no network download or font-cache write. Missing or invalid files warn and fall back to Latin text; unexpected read errors fail the build.                                                                                                                                                                                  | [`docs/scripts/lib/og-fonts.ts`](docs/scripts/lib/og-fonts.ts), [font provenance](docs/assets/fonts/noto/README.md), [`docs/scripts/lib/og-fonts.test.ts`](docs/scripts/lib/og-fonts.test.ts)                                                                                                                                                                                                                                      |
 | T-14 | A crafted `--lang` value is written into scaffolded markup as an HTML attribute.                                        | The scaffold CLI resolves `--lang` against the fixed 44-entry supported-locale registry and rejects anything else before the value reaches template substitution, so only registry-canonical tags are ever emitted into a generated `lang`/`dir` attribute. Ambient sources (`LC_ALL`/`LANG`/`Intl`) are narrowed to a registry entry or discarded in favor of English.                                                                                                                            | [`packages/scaffold/src/locale.ts`](packages/scaffold/src/locale.ts), [`packages/scaffold/tests/locale.test.ts`](packages/scaffold/tests/locale.test.ts), [`packages/scaffold/tests/index.test.ts`](packages/scaffold/tests/index.test.ts)                                                                                                                                                                                         |
 | T-15 | Statically deployed documentation assets exceed hosting quotas or fail to maintain origin and integrity boundaries.     | Deploy tooling splits the distribution into a static site tree (<100k files, <25MB/file) and bucket assets (`assets/`, `demos-assets/`). A single edge router entry point handles same-origin routing and sets immutable cache headers for hashed assets without cross-origin CORS exposure. Gating checks enforce file and size limits before deployment.                                                                                                                                         | [`docs/scripts/prepare-deploy.ts`](docs/scripts/prepare-deploy.ts), [`docs/edge/src/index.ts`](docs/edge/src/index.ts), [docs deploy workflow](.github/workflows/docs.yml)                                                                                                                                                                                                                                                         |
 | T-16 | A public registry item changes dependencies or CSS configuration unexpectedly.                                          | Registry catalogs and item manifests are generated from reviewed source, validated against the shadcn schema, tested with the current shadcn CLI, and served over HTTPS. Public guidance tells consumers to inspect items with `shadcn view` and review installation diffs. npm provenance covers package payloads; registry JSON itself remains mutable and unsigned.                                                                                                                             | [`docs/scripts/generate-registry.ts`](docs/scripts/generate-registry.ts), [`docs/scripts/generate-registry.test.ts`](docs/scripts/generate-registry.test.ts), [`docs/guide/registry.md`](docs/guide/registry.md), [`SECURITY.md`](SECURITY.md#security-boundaries-and-limitations)                                                                                                                                                 |
@@ -175,14 +181,24 @@ Security-relevant entry points include:
 
 ## Trust boundaries
 
+### Example metadata parsing
+
+TinyMCE insertion and accessibility audit tooling use the shared, Node-free
+`stripExampleMetadata` scanner in `packages/utils/src/example-targets.ts` for leading flag headers
+(T-5). The scanner advances through each token once, preserving each consumer's whitespace rules
+without overlapping repeated regex groups. Regression tests exercise long malformed headers in
+the helper and both consumer paths. This bounds metadata parsing, not arbitrary HTML processing;
+component examples remain trusted authored HTML.
+
 ### Weekly maintenance controls
 
 The optional required `renovate-policy` commit status adds automation-specific merge restrictions
 without granting bot bypass rights or preventing legitimate bot rebases. Reserved PRs must match
 their configured identity, same-repository origin, branch, and `main` target. Failed-update branches
 remain blocked. Component follow-ups need a non-author human maintainer's approval on the exact
-current head and cannot use auto-merge. The workflow checks out only trusted base policy and posts
-its result on the PR head with commit-status write permission, not repository-content write access.
+current head and cannot use auto-merge. The workflow checks out the fixed `refs/heads/main` policy,
+never a PR-selected ref. Workflow permissions are read-only; the policy job alone posts its result
+on the PR head with commit-status write permission, not repository-content write access.
 Evidence: `scripts/release/renovate-policy.ts`, its tests, and
 `.github/workflows/renovate-policy.yml`. The ruleset administrator must activate this required
 context after its first successful deployed run; until then the new status is advisory.
@@ -340,10 +356,12 @@ since the runner writes the scale into a generated `srcdoc` attribute.
 
 ## Common implementation weaknesses and countermeasures
 
-| Canvas authoring control    | Evidence                                                                                                                                                                                                                                                                                                   |
-| --------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Local inline conversion     | The generic inliner does not fetch resources. Browser snapshots use a script-disabled iframe and bounded glyph canvases; author images/CSS can still request resources. Tests cover authored/generated declarations and nodes, scoped resolution, and removal of private tracking attributes from exports. |
-| Optional generated behavior | Include interactions controls generated Pantoken scripts outside Inline. Portable Inline disables generated/custom preview JavaScript and materializes static visuals; the app shell remains active.                                                                                                       |
+| Canvas authoring control         | Evidence                                                                                                                                                                                                                                                                                                        |
+| -------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Local inline conversion          | The generic inliner does not fetch resources. Browser snapshots use a script-disabled iframe and bounded glyph canvases; author images/CSS can still request resources. Tests cover authored/generated declarations and nodes, scoped resolution, and removal of private tracking attributes from exports.      |
+| Optional generated behavior      | Include interactions controls generated Pantoken scripts outside Inline. Portable Inline disables generated/custom preview JavaScript and materializes static visuals; the app shell remains active.                                                                                                            |
+| Contributor accessibility audits | Local built assets and explicitly tagged examples define coverage; subprocess argument arrays avoid shell interpolation. Missing targets and reports fail execution rather than appearing clean.                                                                                                                |
+| Published accessibility evidence | Explicit local imports validate report inventories and counts, restrict suite paths, escape report text at the Markdown boundary, and preserve incomplete coverage. Docs use a reviewed snapshot, never automatically publish arbitrary local reports. Tests cover malformed evidence and markup-like findings. |
 
 | Weakness                              | Countermeasure                                                                                                                                                                                                                                                                                                                                                                                                                |
 | ------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -358,6 +376,10 @@ since the runner writes the scale into a generated `srcdoc` attribute.
 | Regular-expression denial of service  | Non-ambiguous expressions, bounded property-test inputs, high-iteration scheduled property tests, CodeQL, and Snyk Code.                                                                                                                                                                                                                                                                                                      |
 | Unsafe object mutation                | Frozen public mapping tables where mutation would alter global behavior, null-prototype generated maps, and immutable inputs where practical.                                                                                                                                                                                                                                                                                 |
 | Malformed browser numeric input       | Alert timeouts and ProgressCircle delays accept only finite values; Progress web-component values clamp between zero and a positive maximum; the Canvas preview width accepts only positive safe integers.                                                                                                                                                                                                                    |
+| Cross-tree DOM updates                | TreeBrowser resolves owned groups by ID and rejects missing, external, non-group references and groups containing their owning row. Events from nested trees are excluded from the parent behavior. Regression tests cover invalid ownership and scoped keyboard handling.                                                                                                                                                    |
+| Browser label interpretation          | DrawerLayout copies pane labels into `aria-label` through `setAttribute`, not HTML parsing. Regression tests verify that markup-like label text doesn't create elements.                                                                                                                                                                                                                                                      |
+| Form validation ownership             | Native FormField validation is opt-in. The helper requires contained controls and separate error elements with nonempty IDs and text, preserves hint references, and uses attribute strings rather than HTML parsing. Tests cover invalid references, cleanup, native validity, and reset cancellation.                                                                                                                       |
+| Menu activation scope                 | Opt-in menu navigation requires a connected native popover and its button in the same root. Nested-menu events are excluded, ARIA-disabled activation is blocked in a menu capture listener, and checked state remains application-owned. Tests cover scoped events, invalid targets, focus, and cleanup.                                                                                                                     |
 | Malformed or missing generated output | Build-before-test ordering, generated-output validation, reference-integrity checks, package export checks, and failure aggregation.                                                                                                                                                                                                                                                                                          |
 | Dependency vulnerabilities            | Renovate and Dependabot monitoring, a dependency release-age delay, Snyk dependency scanning, CodeQL, and OpenSSF Scorecard.                                                                                                                                                                                                                                                                                                  |
 | Release tampering                     | npm registry signatures, Sigstore provenance, npm OIDC trusted publishing, GitHub immutable releases, and public verification instructions.                                                                                                                                                                                                                                                                                   |
@@ -388,6 +410,32 @@ The principal continuous evidence is:
 ## Residual risks and limitations
 
 The following risks remain or are deliberately outside the security claim:
+
+- **Accessibility fixture execution.** Audit examples and their production behavior scripts execute
+  in Chrome/Chromium with local-process privileges. They are trusted repository code, not isolated
+  untrusted content. Audit reports may contain authored markup. Accessibility findings, conditions
+  checks, and simulated screen-reader output don't prove security or WCAG conformance.
+  Published API evidence is a historical, contributor-reviewed snapshot. Report files are trusted
+  local inputs, not an upload endpoint or a sandbox; imported counts don't attest to the current
+  source revision. Don't put confidential material in fixtures, report metadata, or findings.
+
+- **Tree ownership metadata.** TreeBrowser markup and IDs are application-controlled. Group
+  containment checks limit behavior updates to the tree; they don't sanitize markup or make
+  untrusted tree content safe. Applications must keep IDs unique and reinitialize the manual
+  behavior after replacing tree markup.
+
+- **Drawer landmark names.** Applications supply nonempty tray and content labels. DrawerLayout
+  writes labels through `setAttribute`, not HTML parsing; tests cover literal markup-like text.
+  This prevents label text from creating elements, but doesn't sanitize slotted content.
+
+- **Native form validation.** Browser constraints and `setCustomValidity()` are application-owned.
+  Opt-in FormField behavior manages presentation and ARIA associations, not server validation,
+  authorization, or sanitization. Error IDs must stay unique; reinitialize after changing IDs or
+  moving a control to another form. Real assistive-technology review remains necessary.
+
+- **Menu actions.** Menu navigation handles focus and presentation, not action authorization.
+  Applications own click effects and checked state, must use stable IDs and correct roles, and must
+  authorize actions independently. Submenus and menubars aren't implemented by this helper.
 
 - **Automated maintenance evidence.** Compatibility tests do not establish visual equivalence,
   upstream intent, or absence of malicious dependency behavior. Disposable worktrees and sanitized
@@ -429,6 +477,9 @@ The following risks remain or are deliberately outside the security claim:
    Intentional loopback HTTP (T-22) and opaque-preview message delivery (T-23) remain visible as
    advisories, accepted only by exact rule, file, and reported source-call matching. A different
    call site or changed call remains blocking and needs review.
+   The former social-card network-to-file flow (T-13) has been removed by vendoring the verified
+   fonts and licenses. Upstream font updates still require source, digest, and license review;
+   vendoring does not establish that a font parser or an upstream binary is vulnerability-free.
 8. **Generated GitHub source archives.** GitHub can verify an immutable release tag and attached
    assets. Each release now has an attached package tarball and SLSA `*.sigstore.json` provenance
    bundle; the automatically-generated source archives are separate and not covered by those

@@ -3,7 +3,7 @@
 
 [tasks.build]
 description = "Build every JS package"
-run = "vp run -r build"
+run = "vp run -r --concurrency-limit 1 build"
 
 [tasks.test]
 description = "Test every JS package"

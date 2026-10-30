@@ -2,6 +2,7 @@
  * @component modal.footer
  * @memberOf modal
  * @selector .footer
+ * @a11y Use real buttons in a logical focus order after the body, and include a visible dismiss action so keyboard users can close the dialog.
  * @summary The actions row (InstUI `Modal.Footer`).
  * @remarks The parent `modal`'s `-density-compact` and `-color-inverse` modifiers restyle this member — see `modal`'s own doc for those modifiers.
  * @structure
@@ -10,6 +11,23 @@
  *     @component button {}
  *   }
  * }
+ * @example -automatica11y
+ * ```html
+ * <button type="button" command="--show" commandfor="account-dialog" data-a11y-trigger>Open account details</button>
+ * <dialog class="pfx-modal" id="account-dialog" aria-label="Account details" data-a11y-root>
+ *   <div class="footer"><button type="button" command="--close" commandfor="account-dialog">Close</button></div>
+ * </dialog>
+ * ```
+ * @example -automatica11y
+ * ```html
+ * <button type="button" command="--show" commandfor="compact-footer-dialog" data-a11y-trigger>Open compact footer</button>
+ * <dialog class="pfx-modal -density-compact" id="compact-footer-dialog" aria-label="Compact footer" data-a11y-root><div class="footer"><button type="button" command="--close" commandfor="compact-footer-dialog">Close</button></div></dialog>
+ * ```
+ * @example -automatica11y
+ * ```html
+ * <button type="button" command="--show" commandfor="inverse-footer-dialog" data-a11y-trigger>Open inverse footer</button>
+ * <dialog class="pfx-modal -color-inverse" id="inverse-footer-dialog" aria-label="Inverse footer" data-a11y-root><div class="footer"><button type="button" command="--close" commandfor="inverse-footer-dialog">Close</button></div></dialog>
+ * ```
  */
 @scope (.pfx-modal) {
   :scope {

@@ -1,6 +1,7 @@
 /**
  * @component list
  * @selector .pfx-list
+ * @a11y Use a real `<ul>` or `<ol>` with `<li>` children. Removing markers with `-unstyled` can make some screen readers drop the list semantics, so add `role="list"` when the list structure matters.
  * @summary A list with token-driven item spacing.
  * @remarks Sets its own `padding-inline-start` for list indentation; chaining a `-p*`/`-padding*` spacing utility modifier overrides that built-in value. See the `list.item` member for the individual items.
  * @modifier -inline — Lay items out inline (horizontal).
@@ -12,12 +13,22 @@
  * .pfx-list {
  *   li:many {}
  * }
- * @example
+ * @example -canvas-rce -docs
+ * ```html
  * <ul class="pfx-list">
  *   <li>First item</li>
  *   <li>Second item</li>
  *   <li>Third item</li>
  * </ul>
+ * ```
+ * @example -automatica11y
+ * ```html
+ * <ul class="pfx-list -size-sm"><li>Small first item</li><li>Small second item</li></ul>
+ * <ul class="pfx-list -size-md"><li>Medium first item</li><li>Medium second item</li></ul>
+ * <ul class="pfx-list -size-lg"><li>Large first item</li><li>Large second item</li></ul>
+ * <ul class="pfx-list -unstyled" role="list"><li>Unstyled first item</li><li>Unstyled second item</li></ul>
+ * <ul class="pfx-list -inline" role="list"><li>Inline first item</li><li>Inline second item</li></ul>
+ * ```
  */
 @scope (.pfx-list) {
   & {

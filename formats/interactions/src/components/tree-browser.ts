@@ -1,18 +1,21 @@
 // fallow-ignore-file unused-file
 /* c8 ignore file */ // side-effect module, tested via behavior functions and IIFE bundles
-// Per-component interaction entry point for tree-browser
-
+import { initTreeBrowser } from "../behaviors/tree-browser.js";
 import { applySpacing } from "../shared/index.js";
+import { sel } from "../shared/prefix.js";
 
-// Initialize on page load
-function inittreeBrowser() {
-  for (const el of document.querySelectorAll(".instui-tree-browser")) {
-    applySpacing(el as HTMLElement);
+function initTreeBrowsers(): void {
+  for (const tree of document.querySelectorAll<HTMLElement>(
+    sel('.pfx-tree-browser[role="tree"]'),
+  )) {
+    if (tree.localName.includes("-")) continue;
+    applySpacing(tree);
+    initTreeBrowser(tree);
   }
 }
 
 if (document.readyState === "loading") {
-  document.addEventListener("DOMContentLoaded", inittreeBrowser);
+  document.addEventListener("DOMContentLoaded", initTreeBrowsers);
 } else {
-  inittreeBrowser();
+  initTreeBrowsers();
 }

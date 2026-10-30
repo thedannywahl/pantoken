@@ -7,7 +7,7 @@
 import type { Editor } from "tinymce";
 import type { CdnFile } from "@pantoken/cdn";
 import customComponentsModel from "@pantoken/plugin-custom-components/model.json" with { type: "json" };
-import { resolveExampleTargets } from "@pantoken/utils/example-targets";
+import { resolveExampleTargets, stripExampleMetadata } from "@pantoken/utils/example-targets";
 import type { CssDocEntry } from "../cssdoc/model.js";
 import type { MissingAssetHandler } from "../types.js";
 import { trackAndInjectAsset } from "../content-css.js";
@@ -68,9 +68,32 @@ const COMPONENT_PICKER_EXCLUDED_COMPONENTS = new Set([
 const customComponentNames = new Set(customComponentsModel.map((entry) => entry.name));
 
 function normalizeExample(example: string): string {
-  const fencedHtml = example.match(/```(?:html(?:\s+-[a-z][a-z0-9-]*)*)?\s*\r?\n([\s\S]*?)```/iu);
-  const markup = fencedHtml?.[1] ?? example.replace(/^(?:\s*-[a-z][a-z0-9-]*\s*)+\r?\n/u, "");
-  return markup.trim();
+  const flag = /-[a-z][a-z0-9-]*/iuy;
+  let start = example.indexOf("```");
+  while (start >= 0) {
+    let cursor = start + 3;
+    const html = example.slice(cursor, cursor + 4).toLowerCase() === "html";
+    if (html) cursor += 4;
+    let bodyStart = 0;
+    while (cursor < example.length) {
+      const whitespaceStart = cursor;
+      while (cursor < example.length && /\s/u.test(example[cursor]!)) {
+        if (example[cursor] === "\n") bodyStart = cursor + 1;
+        cursor += 1;
+      }
+      if (!html || cursor === whitespaceStart) break;
+      flag.lastIndex = cursor;
+      if (!flag.test(example)) break;
+      cursor = flag.lastIndex;
+    }
+    if (bodyStart > 0) {
+      const end = example.indexOf("```", bodyStart);
+      if (end < 0) break;
+      return example.slice(bodyStart, end).trim();
+    }
+    start = example.indexOf("```", start + 3);
+  }
+  return stripExampleMetadata(example, true).trim();
 }
 
 /**

@@ -16,6 +16,7 @@
  */
 import { toCss } from "./to-css.ts";
 import { themedTokens } from "./theme-variants.ts";
+import { tokenPreferenceCss } from "./preferences.ts";
 import {
   BOUNDARY_ATTR,
   BOUNDARY_CLASS,
@@ -30,6 +31,7 @@ import {
   themeClass,
   themeScopeSelector,
   themeScopeSelectors,
+  makeResolver,
 } from "@pantoken/utils";
 import type { Scheme } from "./theme-variants.ts";
 import type { PantokenPlugin, Theme } from "@pantoken/model";
@@ -155,10 +157,14 @@ export function multiScopeCss(options: MultiScopeCssOptions): string {
   const varying = new Set<string>();
   const seen = new Map<string, string>();
   for (const tokens of perTheme.values()) {
+    const resolve = makeResolver(tokens);
     for (const token of tokens) {
+      // Identical aliases can resolve to different colors in different themes. They must be local
+      // declarations too, or a nested theme inherits the outer theme's already-computed alias.
+      const signature = JSON.stringify([token.value, resolve(token.value)]);
       const previous = seen.get(token.name);
-      if (previous === undefined) seen.set(token.name, token.value);
-      else if (previous !== token.value) varying.add(token.name);
+      if (previous === undefined) seen.set(token.name, signature);
+      else if (previous !== signature) varying.add(token.name);
     }
   }
 
@@ -172,7 +178,8 @@ export function multiScopeCss(options: MultiScopeCssOptions): string {
   ];
 
   for (const theme of themes) {
-    const tokens = (perTheme.get(theme) ?? []).filter((t) => varying.has(t.name));
+    const allTokens = perTheme.get(theme) ?? [];
+    const tokens = allTokens.filter((t) => varying.has(t.name));
     blocks.push(
       toCss(tokens, {
         scope: themeScopeSelectors(theme),
@@ -181,6 +188,8 @@ export function multiScopeCss(options: MultiScopeCssOptions): string {
         declareAll: true,
       }),
     );
+    // Preference transforms need the complete reference graph, not just the varying partition.
+    blocks.push(tokenPreferenceCss(allTokens, themeScopeSelectors(theme), "pantoken.theme"));
   }
 
   // Theme-independent, and small enough that omitting it would never be worth the footgun.

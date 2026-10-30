@@ -3,11 +3,12 @@
 // Per-component interaction entry point for pages
 
 import { applySpacing } from "../shared/index.js";
+import { sel } from "../shared/prefix.js";
 import { syncInvoker } from "../shared/index.js";
 
 // Initialize on page load
 function initpages() {
-  for (const el of document.querySelectorAll(".instui-pages")) {
+  for (const el of document.querySelectorAll(sel(".pfx-pages"))) {
     applySpacing(el as HTMLElement);
     syncInvoker(el as HTMLElement);
   }

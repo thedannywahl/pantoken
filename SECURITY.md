@@ -24,12 +24,36 @@ pantoken is a design-token transformation and distribution system. It converts I
 
 ### Security boundaries and limitations
 
+- Component accessibility audits execute trusted repository examples and locally built browser
+  bundles through automatica11y and Chrome/Chromium. They aren't a sandbox for untrusted fixtures
+  or a sanitizer. Reports may contain example markup and simulated screen-reader output; don't put
+  secrets in examples. Automated accessibility findings aren't a security or WCAG attestation.
+  API documentation publishes an explicitly imported, reviewed summary from local reports.
+  The importer validates inventories and counts and escapes report-derived Markdown text; it isn't
+  an untrusted-report upload service. Snapshots can lag source changes and aren't build attestations.
+
 - Token values, plugin implementations, configuration files, Markdown, HTML, and other caller-provided content must be treated as trusted input unless the relevant package explicitly documents otherwise.
 - pantoken emitters transform input into CSS, JavaScript, JSON, markup, or platform source. They are not a general-purpose sanitizer for untrusted input. Passing attacker-controlled values to an emitter or plugin may produce unsafe output, including CSS, markup, or code injection.
 - Generated stylesheets, components, and framework integrations do not provide an application security boundary. Applications remain responsible for authentication, authorization, output encoding, Content Security Policy, browser security, and safe handling of user content.
 - Application-controlled Pendo guide classes, compact color/glyph suffixes, and layout attributes select stylesheet presentation rules. They do not validate or sanitize Pendo-injected guide HTML, which remains trusted consumer content.
 - Browser component configuration, including numeric attributes and CSS custom properties such as ProgressBar's `min`/`value-now`/`value-max`, Alert's `--timeout`, and ProgressCircle's `--animation-delay`, is application-controlled. Web components and interaction helpers that consume numeric configuration validate expected ranges, but input-type hints such as `initInPlaceEdit`'s do not validate committed values. Applications remain responsible for validating those values and deciding which elements may be updated, dismissed, or animated. The Canvas theme editor accepts only positive safe integers for custom preview widths.
 - SkeletonLoader's parent loading-region helper accepts application-supplied state events and announcement labels. It writes labels as text, not HTML, and requires initially empty status and error elements outside the busy region in the application's server-rendered markup. It does not sanitize application content or control which results the application renders.
+- DrawerLayout's `tray-label` and `content-label` values become `aria-label` attribute strings on
+  its shadow regions, not parsed HTML. Applications must supply descriptive, nonempty names.
+- FormField's opt-in native-validation helper checks browser constraint validity and associates an
+  authored error by ID. It requires the control and a separate, named error with message text inside
+  the host, preserves hint references, and doesn't parse messages as HTML. Applications own the
+  rules, message content, and server-side validation; client-side validity isn't an authorization
+  or input-sanitization boundary.
+- Menu navigation is opt-in and accepts a connected native popover and its button in the same root.
+  It excludes nested-menu events and blocks ARIA-disabled activation in a menu capture listener.
+  Those presentation controls aren't authorization: applications own action effects, checked state,
+  and permission checks. Menu IDs and trigger relationships must remain stable.
+- TreeBrowser's application-supplied `aria-owns` references must identify groups inside the same
+  tree that don't contain the owning row. The behavior rejects missing, external, and non-group
+  references and excludes nested-tree events. This scopes DOM updates; it doesn't sanitize markup
+  or validate every ARIA relationship.
+  Applications must provide unique IDs and reinitialize the manual behavior after replacing markup.
 - pantoken plugins execute with the privileges of the Node.js build or application process that loads them. Plugin structure is validated by `validatePlugin` (non-empty name, function hooks, no unrecognised keys) and plugin output is validated at the IR boundary before it enters the token graph. Full execution sandboxing is planned. Only trusted plugins and configuration should be used.
 - The CLI validates `--theme`, `--class`, and `--format` inputs against allowlists at parse time; unknown flags are rejected immediately. The CLI warns when the output path escapes the current working directory but still writes to the caller-selected location.
 - `@pantoken/plugin-custom-theme-colors` accepts an arbitrary brand color for its `custom` scale (as the Canvas theme editor's Custom swatch does). Only `#rgb`/`#rrggbb` is accepted, and anything else throws a `TypeError`. The generated CSS contains only derived `#rrggbb` values, never the raw input string. Posted `customScale`/`customColor` values in demo and editor frames are dropped unless every entry is a plain hex.
@@ -132,13 +156,19 @@ know what's in place:
 - **Automation merge policy.** The `renovate-policy` required commit status verifies same-repository
   bot identities and reserved branches, blocks failed-maintenance branches, and requires a separate
   human maintainer's current-commit approval for component follow-ups. Its workflow reads trusted
-  base-branch policy code and has read access plus commit-status write permission, never release
+  policy code from the fixed `refs/heads/main` ref. Workflow permissions are read-only; only the
+  policy job has commit-status write permission, never release
   credentials or content-write permission. Ruleset activation must follow deployment of the status
   workflow so existing PRs do not wait indefinitely for an unavailable check.
-- **Pinned build-time downloads.** The only asset the build fetches outside the package manager is the
-  set of Noto script fonts the documentation social cards render in. Those come from URLs pinned to a
-  single `google/fonts` commit and are checked against recorded SHA-256 digests before use; a
-  mismatched or unreachable download is discarded rather than cached.
+- **Vendored social-card fonts.** Noto script fonts and each family's upstream SIL OFL license are
+  tracked in the repository with their pinned `google/fonts` revision and SHA-256 digests.
+  The renderer verifies signatures and digests before use and never downloads fonts or writes a
+  font cache. Missing or invalid faces produce a warning and Latin-text fallback; unexpected
+  filesystem errors fail the build. Upstream font and license updates still require review.
+- **Example metadata parsing.** TinyMCE insertion and accessibility audit tooling share a
+  forward-only scanner for leading example flags. Long or malformed flag sequences do not trigger
+  regex backtracking; each consumer retains its own fence and markup handling. This is not HTML
+  sanitization: authored component examples remain trusted content.
 - **Editor language assets.** TinyMCE community packs are installed through the lockfile-backed
   `tinymce-i18n` dependency and bundled with the scaffold's editor. Locale changes don't load
   executable translations from a third-party CDN; the packs follow TinyMCE's licensing terms.

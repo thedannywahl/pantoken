@@ -1,7 +1,15 @@
 import { extendBase } from "../../vite.config.base.ts";
 
 export default extendBase({
-  run: { tasks: { build: { command: ["vp run generate", "vp pack"] } } },
+  run: {
+    tasks: {
+      build: { command: ["vp run generate", "vp pack"] },
+      generate: {
+        command: "node scripts/generate.ts",
+        dependsOn: [{ task: "build", from: ["dependencies", "devDependencies"] }],
+      },
+    },
+  },
   pack: {
     entry: {
       index: "src/index.ts",

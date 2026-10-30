@@ -9,10 +9,11 @@
  * <span class="instui-icon -icon-megaphone" aria-hidden="true"></span>
  * @example -automatica11y
  * ```html
- * <button class="pfx-button" data-a11y-root data-a11y-trigger>
+ * <button data-a11y-root data-a11y-trigger>
  *   <span class="pfx-icon -icon-search" aria-hidden="true"></span>
  *   Search
  * </button>
+ * <span class="pfx-icon -icon-warning" role="img" aria-label="Warning"></span>
  * ```
  */
 @scope (.pfx-icon) {
@@ -31,4 +32,8 @@
   background: currentColor;
   -webkit-mask: var(--pantoken-glyph) center / contain no-repeat;
   mask: var(--pantoken-glyph) center / contain no-repeat;
+
+  @media (forced-colors: active) {
+    forced-color-adjust: preserve-parent-color;
+  }
 }

@@ -1,3 +1,5 @@
+import { motionPreference } from "../lib/motion.ts";
+
 /** Options for the ProgressCircle mount animation. */
 export interface ProgressCircleOptions {
   /** Milliseconds before the mount state is released. Defaults to computed `--animation-delay`. */
@@ -27,9 +29,11 @@ export function initProgressCircle(
   const configured = options.animationDelay ?? Number(cssDelay);
   const delay = Number.isFinite(configured) && configured >= 0 ? configured : 0;
   let timer: ReturnType<typeof setTimeout> | undefined;
+  const motion = motionPreference(target);
 
   const finish = (): void => {
     clearTimeout(timer);
+    motion?.removeEventListener("change", onMotion);
     target.classList.remove(
       "-should-animate",
       "-should-animate-on-mount",
@@ -37,16 +41,26 @@ export function initProgressCircle(
     );
   };
 
-  const cleanup = (): void => clearTimeout(timer);
+  const onMotion = (): void => {
+    if (motion?.matches) finish();
+  };
+  const cleanup = (): void => {
+    clearTimeout(timer);
+    motion?.removeEventListener("change", onMotion);
+  };
 
   if (
     target.classList.contains("-should-animate") ||
     target.classList.contains("-should-animate-on-mount") ||
     target.classList.contains("-shold-animate-on-mount")
   ) {
-    // Force the initial zero-value state to resolve before releasing it on a later task.
-    void target.offsetWidth;
-    timer = setTimeout(finish, delay);
+    if (motion?.matches) finish();
+    else {
+      // Resolve the mount state before releasing it on a later task.
+      void target.offsetWidth;
+      timer = setTimeout(finish, delay);
+      motion?.addEventListener("change", onMotion);
+    }
   }
 
   return { cleanup, finish };

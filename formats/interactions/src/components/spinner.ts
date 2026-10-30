@@ -3,10 +3,11 @@
 // Per-component interaction entry point for spinner
 
 import { applySpacing } from "../shared/index.js";
+import { sel } from "../shared/prefix.js";
 
 // Initialize on page load
 function initspinner() {
-  for (const el of document.querySelectorAll(".instui-spinner")) {
+  for (const el of document.querySelectorAll(sel(".pfx-spinner"))) {
     applySpacing(el as HTMLElement);
   }
 }

@@ -1,5 +1,6 @@
 /**
  * @component input-group
+ * @a11y Label the inner input with a real `<label>`. Mark purely visual icons in `.before` and `.after` with `aria-hidden="true"`, and convey `-invalid` and `-success` states in text, not color alone.
  * @summary A facade around a text input with leading and trailing icon slots.
  * @remarks Wraps the same field chrome as `text-input` with icon slots either side of it; `-should-not-wrap` is only needed when the group's contents would otherwise overflow onto a second line.
  * @selector .pfx-input-group
@@ -15,12 +16,26 @@
  * @part .after — The trailing content slot.
  * @pseudo ::placeholder — The placeholder text of the inner input, in a muted color.
  * @cssstate disabled
- * @example
+ * @example -canvas-rce -docs
+ * ```html
  * <span class="pfx-input-group">
  *   <span class="before">@</span>
  *   <input type="text" placeholder="username">
  * </span>
+ * ```
  * @related text-input — Wraps a text input, adding leading and trailing icon slots.
+ * @example -automatica11y
+ * ```html
+ * <p><label for="audit-group-small">Small username</label><span class="pfx-input-group -size-sm"><span class="before" aria-hidden="true">@</span><input id="audit-group-small" type="text" autocomplete="username" placeholder="username"></span></p>
+ * <p><label for="audit-group-medium">Medium username</label><span class="pfx-input-group -size-md"><input id="audit-group-medium" type="text" value="alex" autocomplete="username"><span class="after" aria-hidden="true">@</span></span></p>
+ * <p><label for="audit-group-large">Large username</label><span class="pfx-input-group -size-lg -should-not-wrap"><span class="before" aria-hidden="true">@</span><input id="audit-group-large" type="text" value="alex" autocomplete="username"><span class="after" aria-hidden="true">✓</span></span></p>
+ * <p><label for="audit-group-disabled">Disabled username</label><span class="pfx-input-group -disabled"><input id="audit-group-disabled" type="text" value="alex" disabled></span></p>
+ * <p><label for="audit-group-readonly">Read-only username</label><span class="pfx-input-group -readonly"><input id="audit-group-readonly" type="text" value="alex" readonly></span></p>
+ * <p><label for="audit-group-invalid">Required username</label><span class="pfx-input-group -invalid"><input id="audit-group-invalid" type="text" required aria-invalid="true" aria-describedby="audit-group-error"></span></p>
+ * <p id="audit-group-error">Enter a username before continuing.</p>
+ * <p><label for="audit-group-success">Validated username</label><span class="pfx-input-group -success"><input id="audit-group-success" type="text" value="alex" aria-describedby="audit-group-valid"></span></p>
+ * <p id="audit-group-valid">Username accepted.</p>
+ * ```
  */
 @scope (.pfx-input-group) {
   & {

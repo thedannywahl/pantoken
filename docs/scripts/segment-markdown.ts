@@ -28,6 +28,7 @@ import {
   reassembleDemoHtml,
   segmentDemoHtml,
 } from "./segment-demo-html.ts";
+import { resolveExampleTargets } from "@pantoken/utils/example-targets";
 
 /** How a translatable segment is handled: cheap `glossary` substitution or real `prose` translation. */
 export type TranslationKind = "glossary" | "prose";
@@ -44,6 +45,8 @@ export type Segment =
   | { kind: "preserve"; text: string }
   | { kind: "prompt"; opening: string; body: string; closing: string }
   | { kind: "html"; opening: string; body: DemoSegment[]; closing: string }
+  /** The generated accessibility-audit table: visible text translates, markup and `<code>` stay. */
+  | { kind: "audit"; body: DemoSegment[] }
   | { kind: "glossary"; text: string }
   | { kind: "prose"; text: string }
   | {
@@ -170,6 +173,9 @@ const classifyBlock = (lines: string[]): Segment => {
   const callout = classifyJsCallout(lines);
   if (callout) return callout;
 
+  if (text.includes('class="pantoken-a11y-table"'))
+    return { kind: "audit", body: segmentDemoHtml(text) };
+
   // Headings and stability-badge pills → deterministic glossary. The glossary no-ops on identifiers
   // (`### options?`) and on words it doesn't know, so routing every heading here is safe.
   if (/^#{1,6}\s/.test(first)) return { kind: "glossary", text };
@@ -244,7 +250,13 @@ export function segmentMarkdown(md: string): Segment[] {
       const start = index;
       index = scanFence(lines, start);
       const hasClosingFence = index > start + 1 && FENCE.test(lines[index - 1]);
-      if (HTML_FENCE.test(line) && hasClosingFence) {
+      let previous = start - 1;
+      while (previous >= 0 && lines[previous].trim() === "") previous -= 1;
+      const metadata =
+        previous >= 0 && isFlagOnly(lines[previous].trim()) ? `${lines[previous]}\n` : "";
+      const audience = resolveExampleTargets([metadata + lines.slice(start, index).join("\n")]);
+      const auditOnly = audience.automatica11y.length > 0 && audience.docs.length === 0;
+      if (HTML_FENCE.test(line) && hasClosingFence && !auditOnly) {
         segments.push({
           kind: "html",
           opening: lines[start],
@@ -269,6 +281,13 @@ export function segmentMarkdown(md: string): Segment[] {
       const start = index;
       index = scanBlankRun(lines, start);
       segments.push({ kind: "preserve", text: lines.slice(start, index).join("\n") });
+      continue;
+    }
+
+    if (isFlagOnly(line.trim())) {
+      flush();
+      segments.push({ kind: "preserve", text: line });
+      index += 1;
       continue;
     }
 
@@ -324,6 +343,12 @@ export function collectUnits(segments: readonly Segment[]): TranslatableUnit[] {
       units.push(...collectTableUnits(segment));
       continue;
     }
+    if (segment.kind === "audit") {
+      units.push(
+        ...collectDemoUnits(segment.body).map((text) => ({ text, kind: "prose" as const })),
+      );
+      continue;
+    }
     if (segment.kind === "callout") {
       units.push({ text: segment.label, kind: "glossary" }, { text: segment.note, kind: "prose" });
     }
@@ -348,6 +373,8 @@ const renderSegment = (segment: Segment, resolve: Resolve): string => {
         reassembleDemoHtml(segment.body, (text) => resolve(text, "prose")),
         segment.closing,
       ].join("\n");
+    case "audit":
+      return reassembleDemoHtml(segment.body, (text) => resolve(text, "prose"));
     case "glossary":
     case "prose":
       return resolve(segment.text, segment.kind);

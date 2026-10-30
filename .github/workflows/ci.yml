@@ -26,8 +26,9 @@ concurrency:
 
 env:
   # vp's task cache stores task OUTPUTS as .tar.zst tarballs, so a cache hit re-materializes the
-  # gitignored generated dirs. The `build` job warms it; downstream jobs restore and replay
-  # `vp run -r build` as a fast cache-extract instead of a cold rebuild.
+  # gitignored generated dirs. The `build` job warms it; downstream jobs restore and replay the
+  # recursive build. Keep that build serial: concurrent output replay can remove a workspace
+  # dependency while another package's generator imports it.
   #
   # Key shape: `<prefix><os>-<hash(pnpm-lock.yaml, vite.config.ts)>-<run_id>-<run_attempt>`.
   #
@@ -73,9 +74,69 @@ jobs:
             ${{ env.VP_CACHE_KEY_PREFIX }}${{ runner.os }}-${{ hashFiles('pnpm-lock.yaml', 'vite.config.ts') }}-
             ${{ env.VP_CACHE_KEY_PREFIX }}${{ runner.os }}-
       - name: Build all packages
-        run: vp run -r build
+        run: vp run -r --concurrency-limit 1 build
         env:
           CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}
+
+  component-accessibility:
+    needs: build
+    runs-on: ubuntu-latest
+    timeout-minutes: 120
+    continue-on-error: true
+    permissions:
+      contents: read
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
+        with:
+          persist-credentials: false
+      - name: Set up Vite+
+        uses: voidzero-dev/setup-vp@3754dd7dbdb32bd8f6d28b6043de13ad3a75f21f # v1.21.1
+        with:
+          cache: true
+          run-install: true
+      - name: Restore vp task cache
+        uses: actions/cache/restore@55cc8345863c7cc4c66a329aec7e433d2d1c52a9 # v6
+        with:
+          path: ${{ env.VP_TASK_CACHE }}
+          key: ${{ env.VP_CACHE_KEY_PREFIX }}${{ runner.os }}-${{ hashFiles('pnpm-lock.yaml', 'vite.config.ts') }}-${{ github.run_id }}-${{ github.run_attempt }}
+          restore-keys: |
+            ${{ env.VP_CACHE_KEY_PREFIX }}${{ runner.os }}-${{ hashFiles('pnpm-lock.yaml', 'vite.config.ts') }}-
+            ${{ env.VP_CACHE_KEY_PREFIX }}${{ runner.os }}-
+      - name: Materialize generated output
+        run: vp run -r --concurrency-limit 1 build
+      - name: Re-audit components whose inputs changed
+        id: audit
+        run: vp run @pantoken/docs#docs:accessibility
+      - name: Require committed evidence to match
+        id: evidence
+        run: git diff --exit-code -- docs/public/accessibility/results.json
+      - name: Summarize advisory results
+        if: always()
+        shell: bash
+        run: |
+          found=false
+          for summary in a11y-report/*/index.md; do
+            if [ -f "$summary" ]; then
+              cat "$summary" >> "$GITHUB_STEP_SUMMARY"
+              found=true
+            fi
+          done
+          if [ "${{ steps.audit.outcome }}" != "success" ]; then
+            echo "The accessibility audit did not complete successfully; this is not a clean audit." >> "$GITHUB_STEP_SUMMARY"
+          elif [ "${{ steps.evidence.outcome }}" != "success" ]; then
+            echo "Committed accessibility evidence is stale; this is not a clean audit." >> "$GITHUB_STEP_SUMMARY"
+          elif [ "$found" = false ]; then
+            echo "Accessibility evidence is current; no component needed re-auditing." >> "$GITHUB_STEP_SUMMARY"
+          fi
+      - name: Upload advisory accessibility evidence
+        if: always()
+        uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7
+        with:
+          name: component-accessibility
+          path: a11y-report/
+          if-no-files-found: warn
+          retention-days: 14
 
   typecheck:
     needs: build
@@ -100,7 +161,7 @@ jobs:
             ${{ env.VP_CACHE_KEY_PREFIX }}${{ runner.os }}-${{ hashFiles('pnpm-lock.yaml', 'vite.config.ts') }}-
             ${{ env.VP_CACHE_KEY_PREFIX }}${{ runner.os }}-
       - name: Materialize generated output
-        run: vp run -r build
+        run: vp run -r --concurrency-limit 1 build
       - name: Generate docs theme curve
         run: node docs/scripts/site-themes.ts
       - name: Typecheck
@@ -154,7 +215,7 @@ jobs:
             ${{ env.VP_CACHE_KEY_PREFIX }}${{ runner.os }}-${{ hashFiles('pnpm-lock.yaml', 'vite.config.ts') }}-
             ${{ env.VP_CACHE_KEY_PREFIX }}${{ runner.os }}-
       - name: Materialize generated output
-        run: vp run -r build
+        run: vp run -r --concurrency-limit 1 build
       - name: Verify Foundation releases
         run: vp run @pantoken/foundation#check:compatibility
 
@@ -204,7 +265,7 @@ jobs:
             ${{ env.VP_CACHE_KEY_PREFIX }}${{ runner.os }}-${{ hashFiles('pnpm-lock.yaml', 'vite.config.ts') }}-
             ${{ env.VP_CACHE_KEY_PREFIX }}${{ runner.os }}-
       - name: Materialize generated output
-        run: vp run -r build
+        run: vp run -r --concurrency-limit 1 build
       - name: Verify Docusaurus releases
         run: vp run @pantoken/docusaurus#check:compatibility
 
@@ -255,7 +316,7 @@ jobs:
             ${{ env.VP_CACHE_KEY_PREFIX }}${{ runner.os }}-${{ hashFiles('pnpm-lock.yaml', 'vite.config.ts') }}-
             ${{ env.VP_CACHE_KEY_PREFIX }}${{ runner.os }}-
       - name: Materialize generated output
-        run: vp run -r build
+        run: vp run -r --concurrency-limit 1 build
       - name: Verify Astro and Starlight releases
         run: vp run @pantoken/astro#check:compatibility
 
@@ -307,7 +368,7 @@ jobs:
             ${{ env.VP_CACHE_KEY_PREFIX }}${{ runner.os }}-${{ hashFiles('pnpm-lock.yaml', 'vite.config.ts') }}-
             ${{ env.VP_CACHE_KEY_PREFIX }}${{ runner.os }}-
       - name: Materialize generated output
-        run: vp run -r build
+        run: vp run -r --concurrency-limit 1 build
       - name: Verify Jekyll site
         run: vp run @pantoken/jekyll#check:compatibility
 
@@ -359,7 +420,7 @@ jobs:
             ${{ env.VP_CACHE_KEY_PREFIX }}${{ runner.os }}-${{ hashFiles('pnpm-lock.yaml', 'vite.config.ts') }}-
             ${{ env.VP_CACHE_KEY_PREFIX }}${{ runner.os }}-
       - name: Materialize generated output
-        run: vp run -r build
+        run: vp run -r --concurrency-limit 1 build
       - name: Verify Hugo site
         run: vp run @pantoken/hugo#check:compatibility
 
@@ -410,7 +471,7 @@ jobs:
             ${{ env.VP_CACHE_KEY_PREFIX }}${{ runner.os }}-${{ hashFiles('pnpm-lock.yaml', 'vite.config.ts') }}-
             ${{ env.VP_CACHE_KEY_PREFIX }}${{ runner.os }}-
       - name: Materialize generated output
-        run: vp run -r build
+        run: vp run -r --concurrency-limit 1 build
       - name: Validate Drupal themes
         run: vp run @pantoken/drupal#check:compatibility
 
@@ -461,7 +522,7 @@ jobs:
             ${{ env.VP_CACHE_KEY_PREFIX }}${{ runner.os }}-${{ hashFiles('pnpm-lock.yaml', 'vite.config.ts') }}-
             ${{ env.VP_CACHE_KEY_PREFIX }}${{ runner.os }}-
       - name: Materialize generated output
-        run: vp run -r build
+        run: vp run -r --concurrency-limit 1 build
       - name: Verify custom-element environment
         run: vp run @pantoken/web-components#check:compatibility
 
@@ -511,7 +572,7 @@ jobs:
             ${{ env.VP_CACHE_KEY_PREFIX }}${{ runner.os }}-${{ hashFiles('pnpm-lock.yaml', 'vite.config.ts') }}-
             ${{ env.VP_CACHE_KEY_PREFIX }}${{ runner.os }}-
       - name: Materialize generated output
-        run: vp run -r build
+        run: vp run -r --concurrency-limit 1 build
       - name: Verify TinyMCE plugin registration
         run: vp run @pantoken/tinymce#check:compatibility
 
@@ -561,7 +622,7 @@ jobs:
             ${{ env.VP_CACHE_KEY_PREFIX }}${{ runner.os }}-${{ hashFiles('pnpm-lock.yaml', 'vite.config.ts') }}-
             ${{ env.VP_CACHE_KEY_PREFIX }}${{ runner.os }}-
       - name: Materialize generated output
-        run: vp run -r build
+        run: vp run -r --concurrency-limit 1 build
       - name: Verify shadcn theme aliases
         run: vp run @pantoken/shadcn#check:compatibility
 
@@ -612,7 +673,7 @@ jobs:
             ${{ env.VP_CACHE_KEY_PREFIX }}${{ runner.os }}-${{ hashFiles('pnpm-lock.yaml', 'vite.config.ts') }}-
             ${{ env.VP_CACHE_KEY_PREFIX }}${{ runner.os }}-
       - name: Materialize generated output
-        run: vp run -r build
+        run: vp run -r --concurrency-limit 1 build
       - name: Verify Mintlify docs config
         run: vp run @pantoken/mintlify#check:compatibility
 
@@ -663,7 +724,7 @@ jobs:
             ${{ env.VP_CACHE_KEY_PREFIX }}${{ runner.os }}-${{ hashFiles('pnpm-lock.yaml', 'vite.config.ts') }}-
             ${{ env.VP_CACHE_KEY_PREFIX }}${{ runner.os }}-
       - name: Materialize generated output
-        run: vp run -r build
+        run: vp run -r --concurrency-limit 1 build
       - name: Verify Emotion SSR
         run: vp run @pantoken/css-in-js#check:compatibility
 
@@ -713,7 +774,7 @@ jobs:
             ${{ env.VP_CACHE_KEY_PREFIX }}${{ runner.os }}-${{ hashFiles('pnpm-lock.yaml', 'vite.config.ts') }}-
             ${{ env.VP_CACHE_KEY_PREFIX }}${{ runner.os }}-
       - name: Materialize generated output
-        run: vp run -r build
+        run: vp run -r --concurrency-limit 1 build
       - name: Verify VitePress site
         run: vp run @pantoken/vitepress#check:compatibility
 
@@ -764,7 +825,7 @@ jobs:
             ${{ env.VP_CACHE_KEY_PREFIX }}${{ runner.os }}-${{ hashFiles('pnpm-lock.yaml', 'vite.config.ts') }}-
             ${{ env.VP_CACHE_KEY_PREFIX }}${{ runner.os }}-
       - name: Materialize generated output
-        run: vp run -r build
+        run: vp run -r --concurrency-limit 1 build
       - name: Verify Panda releases
         run: vp run @pantoken/panda#check:compatibility
 
@@ -815,7 +876,7 @@ jobs:
             ${{ env.VP_CACHE_KEY_PREFIX }}${{ runner.os }}-${{ hashFiles('pnpm-lock.yaml', 'vite.config.ts') }}-
             ${{ env.VP_CACHE_KEY_PREFIX }}${{ runner.os }}-
       - name: Materialize generated output
-        run: vp run -r build
+        run: vp run -r --concurrency-limit 1 build
       - name: Verify Storybook themes
         run: vp run @pantoken/storybook#check:compatibility
 
@@ -865,7 +926,7 @@ jobs:
             ${{ env.VP_CACHE_KEY_PREFIX }}${{ runner.os }}-${{ hashFiles('pnpm-lock.yaml', 'vite.config.ts') }}-
             ${{ env.VP_CACHE_KEY_PREFIX }}${{ runner.os }}-
       - name: Materialize generated output
-        run: vp run -r build
+        run: vp run -r --concurrency-limit 1 build
       - name: Verify Angular compiler releases
         run: vp run @pantoken/angular#check:compatibility
 
@@ -915,7 +976,7 @@ jobs:
             ${{ env.VP_CACHE_KEY_PREFIX }}${{ runner.os }}-${{ hashFiles('pnpm-lock.yaml', 'vite.config.ts') }}-
             ${{ env.VP_CACHE_KEY_PREFIX }}${{ runner.os }}-
       - name: Materialize generated output
-        run: vp run -r build
+        run: vp run -r --concurrency-limit 1 build
       - name: Verify Svelte releases
         run: vp run @pantoken/svelte#check:compatibility
 
@@ -966,7 +1027,7 @@ jobs:
             ${{ env.VP_CACHE_KEY_PREFIX }}${{ runner.os }}-${{ hashFiles('pnpm-lock.yaml', 'vite.config.ts') }}-
             ${{ env.VP_CACHE_KEY_PREFIX }}${{ runner.os }}-
       - name: Materialize generated output
-        run: vp run -r build
+        run: vp run -r --concurrency-limit 1 build
       - name: Verify react-markdown SSR
         run: vp run @pantoken/react-markdown#check:compatibility
 
@@ -1016,7 +1077,7 @@ jobs:
             ${{ env.VP_CACHE_KEY_PREFIX }}${{ runner.os }}-${{ hashFiles('pnpm-lock.yaml', 'vite.config.ts') }}-
             ${{ env.VP_CACHE_KEY_PREFIX }}${{ runner.os }}-
       - name: Materialize generated output
-        run: vp run -r build
+        run: vp run -r --concurrency-limit 1 build
       - name: Verify Vue releases
         run: vp run @pantoken/vue#check:compatibility
 
@@ -1067,7 +1128,7 @@ jobs:
             ${{ env.VP_CACHE_KEY_PREFIX }}${{ runner.os }}-${{ hashFiles('pnpm-lock.yaml', 'vite.config.ts') }}-
             ${{ env.VP_CACHE_KEY_PREFIX }}${{ runner.os }}-
       - name: Materialize generated output
-        run: vp run -r build
+        run: vp run -r --concurrency-limit 1 build
       - name: Verify React server rendering
         run: vp run @pantoken/react#check:compatibility
 
@@ -1118,7 +1179,7 @@ jobs:
             ${{ env.VP_CACHE_KEY_PREFIX }}${{ runner.os }}-${{ hashFiles('pnpm-lock.yaml', 'vite.config.ts') }}-
             ${{ env.VP_CACHE_KEY_PREFIX }}${{ runner.os }}-
       - name: Materialize generated output
-        run: vp run -r build
+        run: vp run -r --concurrency-limit 1 build
       - name: Verify Next releases
         run: vp run @pantoken/next#check:compatibility
 
@@ -1169,7 +1230,7 @@ jobs:
             ${{ env.VP_CACHE_KEY_PREFIX }}${{ runner.os }}-${{ hashFiles('pnpm-lock.yaml', 'vite.config.ts') }}-
             ${{ env.VP_CACHE_KEY_PREFIX }}${{ runner.os }}-
       - name: Materialize generated output
-        run: vp run -r build
+        run: vp run -r --concurrency-limit 1 build
       - name: Verify MUI releases
         run: vp run @pantoken/mui#check:compatibility
 
@@ -1205,7 +1266,7 @@ jobs:
             ${{ env.VP_CACHE_KEY_PREFIX }}${{ runner.os }}-${{ hashFiles('pnpm-lock.yaml', 'vite.config.ts') }}-
             ${{ env.VP_CACHE_KEY_PREFIX }}${{ runner.os }}-
       - name: Materialize generated output
-        run: vp run -r build
+        run: vp run -r --concurrency-limit 1 build
       - name: Run benchmarks
         uses: CodSpeedHQ/action@373d6868929f444bc08d901fd0eb0ad52a8875ea # v5.2.1
         timeout-minutes: 12
@@ -1241,7 +1302,7 @@ jobs:
       - name: Install gettext
         run: sudo apt-get update && sudo apt-get install --yes gettext
       - name: Materialize generated output
-        run: vp run -r build
+        run: vp run -r --concurrency-limit 1 build
       # The locale-drift tests skip themselves with a warning when `docs/api` isn't generated, so this
       # step is what makes them actually assert.
       - name: Generate English API documentation
@@ -1298,7 +1359,7 @@ jobs:
             ${{ env.VP_CACHE_KEY_PREFIX }}${{ runner.os }}-${{ hashFiles('pnpm-lock.yaml', 'vite.config.ts') }}-
             ${{ env.VP_CACHE_KEY_PREFIX }}${{ runner.os }}-
       - name: Materialize generated output
-        run: vp run -r build
+        run: vp run -r --concurrency-limit 1 build
       # The same policy on PRs and main: dead-code = error, health floored at grade B, dead-code
       # regression vs the committed baseline, duplication thresholded. We deliberately don't use
       # `fallow audit` here — it bundles duplication into its verdict with no opt-out, which would
@@ -1398,7 +1459,7 @@ jobs:
           PACKAGES: ${{ steps.changed.outputs.packages }}
         run: |
           if [[ "${SCOPE}" == "all" ]]; then
-            vp run -r build
+            vp run -r --concurrency-limit 1 build
             exit $?
           fi
           build_filters=()
@@ -1545,7 +1606,7 @@ jobs:
             ${{ env.VP_CACHE_KEY_PREFIX }}${{ runner.os }}-${{ hashFiles('pnpm-lock.yaml', 'vite.config.ts') }}-
             ${{ env.VP_CACHE_KEY_PREFIX }}${{ runner.os }}-
       - name: Materialize generated output
-        run: vp run -r build
+        run: vp run -r --concurrency-limit 1 build
       - name: Check upstream drift
         run: vp run upgrade:check
       - name: Upload drift report
@@ -1601,7 +1662,7 @@ jobs:
             ${{ env.VP_CACHE_KEY_PREFIX }}${{ runner.os }}-${{ hashFiles('pnpm-lock.yaml', 'vite.config.ts') }}-
             ${{ env.VP_CACHE_KEY_PREFIX }}${{ runner.os }}-
       - name: Materialize generated output
-        run: vp run -r build
+        run: vp run -r --concurrency-limit 1 build
       - name: Verify WordPress releases
         run: vp run @pantoken/wordpress#check:compatibility
 
@@ -1697,7 +1758,7 @@ jobs:
             ${{ env.VP_CACHE_KEY_PREFIX }}${{ runner.os }}-${{ hashFiles('pnpm-lock.yaml', 'vite.config.ts') }}-
             ${{ env.VP_CACHE_KEY_PREFIX }}${{ runner.os }}-
       - name: Materialize generated output
-        run: vp run -r build
+        run: vp run -r --concurrency-limit 1 build
       - name: Verify PostCSS releases
         run: vp run @pantoken/postcss#check:compatibility
 
@@ -1748,7 +1809,7 @@ jobs:
             ${{ env.VP_CACHE_KEY_PREFIX }}${{ runner.os }}-${{ hashFiles('pnpm-lock.yaml', 'vite.config.ts') }}-
             ${{ env.VP_CACHE_KEY_PREFIX }}${{ runner.os }}-
       - name: Materialize generated output
-        run: vp run -r build
+        run: vp run -r --concurrency-limit 1 build
       - name: Verify markdown-it releases
         run: vp run @pantoken/markdown-it#check:compatibility
 
@@ -1799,7 +1860,7 @@ jobs:
             ${{ env.VP_CACHE_KEY_PREFIX }}${{ runner.os }}-${{ hashFiles('pnpm-lock.yaml', 'vite.config.ts') }}-
             ${{ env.VP_CACHE_KEY_PREFIX }}${{ runner.os }}-
       - name: Materialize generated output
-        run: vp run -r build
+        run: vp run -r --concurrency-limit 1 build
       - name: Verify Vite releases
         run: vp run @pantoken/vite#check:compatibility
 
@@ -1850,7 +1911,7 @@ jobs:
             ${{ env.VP_CACHE_KEY_PREFIX }}${{ runner.os }}-${{ hashFiles('pnpm-lock.yaml', 'vite.config.ts') }}-
             ${{ env.VP_CACHE_KEY_PREFIX }}${{ runner.os }}-
       - name: Materialize generated output
-        run: vp run -r build
+        run: vp run -r --concurrency-limit 1 build
       - name: Verify webpack releases
         run: vp run @pantoken/webpack#check:compatibility
 
@@ -1900,7 +1961,7 @@ jobs:
             ${{ env.VP_CACHE_KEY_PREFIX }}${{ runner.os }}-${{ hashFiles('pnpm-lock.yaml', 'vite.config.ts') }}-
             ${{ env.VP_CACHE_KEY_PREFIX }}${{ runner.os }}-
       - name: Materialize generated output
-        run: vp run -r build
+        run: vp run -r --concurrency-limit 1 build
       - name: Verify Tailwind releases
         run: vp run @pantoken/tailwind#check:compatibility
 
@@ -1951,7 +2012,7 @@ jobs:
             ${{ env.VP_CACHE_KEY_PREFIX }}${{ runner.os }}-${{ hashFiles('pnpm-lock.yaml', 'vite.config.ts') }}-
             ${{ env.VP_CACHE_KEY_PREFIX }}${{ runner.os }}-
       - name: Materialize generated output
-        run: vp run -r build
+        run: vp run -r --concurrency-limit 1 build
       - name: Verify Bootstrap releases
         run: vp run @pantoken/bootstrap#check:compatibility
 
@@ -2002,7 +2063,7 @@ jobs:
             ${{ env.VP_CACHE_KEY_PREFIX }}${{ runner.os }}-${{ hashFiles('pnpm-lock.yaml', 'vite.config.ts') }}-
             ${{ env.VP_CACHE_KEY_PREFIX }}${{ runner.os }}-
       - name: Materialize generated output
-        run: vp run -r build
+        run: vp run -r --concurrency-limit 1 build
       - name: Verify rehype releases
         run: vp run @pantoken/rehype#check:compatibility
 
@@ -2119,7 +2180,7 @@ jobs:
             ${{ env.VP_CACHE_KEY_PREFIX }}${{ runner.os }}-${{ hashFiles('pnpm-lock.yaml', 'vite.config.ts') }}-
             ${{ env.VP_CACHE_KEY_PREFIX }}${{ runner.os }}-
       - name: Materialize generated output
-        run: vp run -r build
+        run: vp run -r --concurrency-limit 1 build
       - name: Build docs (English API + VitePress)
         run: vp run @pantoken/docs#docs:build
         env:

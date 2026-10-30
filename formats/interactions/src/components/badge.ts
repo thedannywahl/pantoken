@@ -3,10 +3,11 @@
 // Per-component interaction entry point for badge
 
 import { applySpacing } from "../shared/index.js";
+import { sel } from "../shared/prefix.js";
 
 // Initialize on page load
 function initbadge() {
-  for (const el of document.querySelectorAll(".instui-badge")) {
+  for (const el of document.querySelectorAll(sel(".pfx-badge"))) {
     applySpacing(el as HTMLElement);
   }
 }

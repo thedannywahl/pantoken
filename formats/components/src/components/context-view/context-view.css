@@ -1,6 +1,7 @@
 /**
  * @component context-view
  * @selector .pfx-context-view
+ * @a11y Connect the trigger with `popovertarget` so the open state is exposed, and keep the native Escape and outside-click dismissal. The caret is decorative; the callout's content isn't announced unless the trigger references it, for example with `aria-describedby`.
  * @summary An elevated callout with a caret, positionable on any side; works as a native `[popover]`.
  * @remarks The caret is two stacked `::before`/`::after` triangles (border then fill) so it reads correctly against a matching surface; as a `[popover]` it needs the same open/`popovertarget` wiring as `popover`, but unlike `tooltip`, it dismisses on outside click or Escape.
  * @modifier -color-inverse — Dark (inverse) colour scheme.
@@ -12,10 +13,27 @@
  * @pseudo ::after — Renders the caret's inner fill triangle.
  * @cssstate open
  * @compat Uses CSS anchor positioning (`position-anchor`, `position-area`, `position-try-fallbacks`) and the native `[popover]` API behind an `@supports` guard; needs a recent Chromium or Safari, and falls back to a UA-centred popover elsewhere.
- * @example
+ * @example -canvas-rce -docs
+ * ```html
  * <div class="pfx-context-view -placement-bottom" id="cv-popover">A context view frames a callout with a caret. As a popover it rides the top layer and closes when you click away or press Esc.</div>
+ * ```
  * @related popover — The generic top-layer popover.
  * @related tooltip — A smaller hover or focus callout.
+ * @example -automatica11y
+ * ```html
+ * <div class="--p-md" data-a11y-root>
+ *   <div class="--p-md"><div class="pfx-context-view -placement-top">Notes appear above the selection.</div></div>
+ *   <div class="--p-md"><div class="pfx-context-view -placement-bottom">Notes appear below the selection.</div></div>
+ *   <div class="--p-md"><div class="pfx-context-view -placement-start">Notes appear before the selection.</div></div>
+ *   <div class="--p-md"><div class="pfx-context-view -placement-end">Notes appear after the selection.</div></div>
+ *   <div class="--p-md"><div class="pfx-context-view -color-inverse -placement-top">Archive notes above the selection.</div></div>
+ *   <div class="--p-md"><div class="pfx-context-view -color-inverse -placement-bottom">Archive notes below the selection.</div></div>
+ *   <div class="--p-md"><div class="pfx-context-view -color-inverse -placement-start">Archive notes before the selection.</div></div>
+ *   <div class="--p-md"><div class="pfx-context-view -color-inverse -placement-end">Archive notes after the selection.</div></div>
+ *   <button type="button" popovertarget="audit-context-help" aria-describedby="audit-context-help" data-a11y-trigger>Show selection help</button>
+ *   <div class="pfx-context-view -placement-bottom" id="audit-context-help" popover>Choose a passage to add a note. Press Escape to dismiss this help.</div>
+ * </div>
+ * ```
  */
 @scope (.pfx-context-view) {
   & {

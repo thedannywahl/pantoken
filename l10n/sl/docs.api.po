@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: pantoken\n"
-"PO-Revision-Date: 2026-10-26 23:43+0000\n"
+"PO-Revision-Date: 2026-10-29 23:26+0000\n"
 "Last-Translator: pantoken localization engine\n"
 "Language-Team: pantoken\n"
 "MIME-Version: 1.0\n"
@@ -30915,6 +30915,7 @@ msgstr "Gumb, ki se ob premiku miške prikaže kot \"prikaži celozaslonsko\", p
 #~ msgid "Border-only surface for a card inside a base card."
 #~ msgstr "Površina, sestavljena samo iz roba, za kartico znotraj osnovne kartice."
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:prose"
 #~ msgid "-canvas-rce\n"
 #~ msgstr "-canvas-rce\n"
@@ -30975,6 +30976,7 @@ msgstr "Gumb, ki se ob premiku miške prikaže kot \"prikaži celozaslonsko\", p
 #~ msgid "Review your account information."
 #~ msgstr "Preverite podatke o svojem računu."
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:prose"
 #~ msgid "-docs\n"
 #~ msgstr "-docs\n"
@@ -31143,9 +31145,10 @@ msgstr "Gumb, ki se ob premiku miške prikaže kot \"prikaži celozaslonsko\", p
 #~ msgid "See upcoming assignments."
 #~ msgstr "Oglejte si prihajajoče naloge."
 
+#, pantoken-verbatim
 #~ msgctxt "docs.api:prose"
 #~ msgid "Canvas"
-#~ msgstr "Platno"
+#~ msgstr "Canvas"
 
 #~ msgctxt "docs.api:prose"
 #~ msgid "Course home"
@@ -31205,3 +31208,1214 @@ msgstr "Razrešena izdaja Lucide, zahtevana pri upokojitvi shimma Lucide."
 msgctxt "docs.api:text"
 msgid "removalDeadline"
 msgstr "removalDeadline"
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "more-contrast-respected"
+msgstr "more-contrast-respected"
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "reflow-at-320px"
+msgstr "reflow-at-320px"
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "Fail"
+msgstr "Fail"
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "text-spacing-no-clipping"
+msgstr "text-spacing-no-clipping"
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "Pass"
+msgstr "Pass"
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "Announcements"
+msgstr "Announcements"
+
+msgctxt "docs.api:prose"
+msgid "The shell is a plain container with no role of its own. Give it a landmark or group name (for example `role=\"region\"` with an `aria-label`, or a heading) so assistive tech can find the agent surface, and keep its content in reading order."
+msgstr "Lupina je navaden vsebnik brez lastne vloge. Dodelite ji ime orientacijske točke ali skupine (na primer `role=\"region\"` z `aria-label` ali naslov), da lahko podporna tehnologija najde površino agenta, vsebino pa ohranite v vrstnem redu branja."
+
+msgctxt "docs.api:prose"
+msgid "Conditions"
+msgstr "Pogoji"
+
+msgctxt "docs.api:prose"
+msgid "Rebrand (light)"
+msgstr "Preoblikovanje (svetla)"
+
+msgctxt "docs.api:prose"
+msgid "Rebrand (dark)"
+msgstr "Preoblikovanje (temna)"
+
+msgctxt "docs.api:prose"
+msgid "Canvas High Contrast"
+msgstr "Platno z visokim kontrastom"
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "WCAG 2.2 1.4.3, 1.4.6"
+msgstr "WCAG 2.2 1.4.3, 1.4.6"
+
+msgctxt "docs.api:prose"
+msgid "Review needed"
+msgstr "Potreben je pregled"
+
+msgctxt "docs.api:prose"
+msgid "The page changes under prefers-contrast: more, but no visible text was measurable."
+msgstr "Stran se spremeni pri nastavitvi prefers-contrast: more, vendar ni bilo mogoče izmeriti nobenega vidnega besedila."
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "WCAG 2.2 1.4.10"
+msgstr "WCAG 2.2 1.4.10"
+
+msgctxt "docs.api:prose"
+msgid "In a 320px window, the page scrolls sideways (it is 336px wide in a 320px window), and one element reaches past the right edge: "
+msgstr "V oknu širine 320px se stran pomika vstran (v oknu širine 320px je široka 336px), en element pa sega čez desni rob: "
+
+msgctxt "docs.api:prose"
+msgid " ends at 336px. WCAG 1.4.10 Reflow (level AA) exempts two-dimensional content such as data tables and maps, so a person should judge whether that applies."
+msgstr " se konča pri 336px. WCAG 1.4.10 Preoblikovanje (raven AA) izvzema dvodimenzionalno vsebino, kot so podatkovne tabele in zemljevidi, zato naj oseba presodi, ali to velja."
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "WCAG 2.2 1.4.12"
+msgstr "WCAG 2.2 1.4.12"
+
+msgctxt "docs.api:prose"
+msgid "Screen reader (simulated)"
+msgstr "Bralnik zaslona (simuliran)"
+
+msgctxt "docs.api:prose"
+msgid "These automated results do not establish that the page meets WCAG; manual review is still needed."
+msgstr "Ti avtomatizirani rezultati ne dokazujejo, da stran izpolnjuje WCAG; še vedno je potreben ročni pregled."
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "color-contrast"
+msgstr "color-contrast"
+
+msgctxt "docs.api:prose"
+msgid "Rules (axe-core)"
+msgstr "Pravila (axe-core)"
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "WCAG 2.2 1.4.3"
+msgstr "WCAG 2.2 1.4.3"
+
+msgctxt "docs.api:prose"
+msgid "Elements must meet minimum color contrast ratio thresholds"
+msgstr "Elementi morajo izpolnjevati minimalne pragove razmerja barvnega kontrasta"
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "forced-colors-focus-visible"
+msgstr "forced-colors-focus-visible"
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "less-contrast-stays-readable"
+msgstr "less-contrast-stays-readable"
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "reduced-motion-respected"
+msgstr "reduced-motion-respected"
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "Interactions"
+msgstr "Interactions"
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "focus-indicator-visible"
+msgstr "focus-indicator-visible"
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "focus-stays-on-trigger"
+msgstr "focus-stays-on-trigger"
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "live-politeness-fits-role"
+msgstr "live-politeness-fits-role"
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "message-has-text"
+msgstr "message-has-text"
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "message-in-live-region"
+msgstr "message-in-live-region"
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "no-focus-trap"
+msgstr "no-focus-trap"
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "region-exists-before-message"
+msgstr "region-exists-before-message"
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "trigger-reachable-by-tab"
+msgstr "trigger-reachable-by-tab"
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "message-text-contrast"
+msgstr "message-text-contrast"
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "WCAG 2.2 1.4.11, 2.4.7"
+msgstr "WCAG 2.2 1.4.11, 2.4.7"
+
+msgctxt "docs.api:prose"
+msgid "Not applicable"
+msgstr "Ni relevantno"
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "WCAG 2.2 2.3.3, 2.2.2"
+msgstr "WCAG 2.2 2.3.3, 2.2.2"
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "WCAG 2.2 2.4.7"
+msgstr "WCAG 2.2 2.4.7"
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "WCAG 2.2 4.1.3"
+msgstr "WCAG 2.2 4.1.3"
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "WCAG 2.2 2.1.2"
+msgstr "WCAG 2.2 2.1.2"
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "WCAG 2.2 2.1.1"
+msgstr "WCAG 2.2 2.1.1"
+
+msgctxt "docs.api:prose"
+msgid "Computed styles"
+msgstr "Izračunani slogi"
+
+msgctxt "docs.api:prose"
+msgid "The name parts intentionally clip full names to leading letters. Keep the full text in the markup; when identifying text must also be visible, show the full name alongside the avatar."
+msgstr "Deli imen so namenoma skrajšani na začetne črke polnih imen. V oznaki ohranite celotno besedilo; kadar mora biti vidno tudi prepoznavno besedilo, ob avatarju prikažite celotno ime."
+
+msgctxt "docs.api:prose"
+msgid "All 18 measured pieces of text pass with more contrast. one other piece can't be reduced to one color. \"Sam Kim\" can't be measured because a background image or gradient sits behind it."
+msgstr "Vseh 18 izmerjenih delov besedila izpolnjuje merila z večjim kontrastom. En drug del ni mogoče skrčiti na eno barvo. »Sam Kim« ni mogoče izmeriti, ker je za njim slika ozadja ali preliv."
+
+msgctxt "docs.api:prose"
+msgid "With line height 1.5, letter spacing 0.12em, word spacing 0.16em, and paragraph spacing 2em, text in six elements gets cut off: "
+msgstr "Pri višini vrstice 1.5, razmiku med črkami 0.12em, razmiku med besedami 0.16em in razmiku med odstavki 2em se besedilo v šestih elementih odreže: "
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid " (\"Lee Harper\"); "
+msgstr " (\"Lee Harper\"); "
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid " (\"Amira Patel\"); "
+msgstr " (\"Amira Patel\"); "
+
+msgctxt "docs.api:prose"
+msgid " (\"Miguel\"); and 3 more. Overlapping text isn't checked."
+msgstr " (\"Miguel\"); in še 3. Prekrivanje besedila ni preverjeno."
+
+msgctxt "docs.api:prose"
+msgid "The count or dot is visual only, so don't rely on color to carry its meaning; put the status in text, such as visually hidden text or an `aria-label` on the target it decorates."
+msgstr "Število ali pika je zgolj vizualna, zato se ne zanašajte na barvo, da bi izrazila svoj pomen; stanje navedite z besedilom, na primer z vizualno skritim besedilom ali z `aria-label` na elementu, ki ga okrasi."
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "Canvas:"
+msgstr "Canvas:"
+
+msgctxt "docs.api:prose"
+msgid " With prefers-contrast: more, two pieces of text fall below the minimum contrast. The worst is \"Undo\" at 4.46:1 (needs 4.5:1)."
+msgstr " Pri prefers-contrast: more dve besedili ne dosegata minimalnega kontrastnega razmerja. Najslabše je »Undo« pri 4.46:1 (potrebno je 4.5:1)."
+
+msgctxt "docs.api:prose"
+msgid "It sets the page surface, text color, and `color-scheme` so native controls follow the active light or dark scheme; keep links distinguishable from surrounding text by more than color alone."
+msgstr "Nastavi površino strani, barvo besedila in `color-scheme` tako, da izvorni kontrolniki sledijo aktivni svetli ali temni shemi; povezave naj se od okoliškega besedila razlikujejo tudi po čem drugem kot le po barvi."
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "label-content-name-mismatch"
+msgstr "label-content-name-mismatch"
+
+msgctxt "docs.api:prose"
+msgid "Render the `.heading` as a real heading element. A `-clickable` billboard only gains hover styling, so give it `tabindex=\"0\"`, an appropriate role, and a keyboard handler."
+msgstr "Upodobite `.heading` kot pravi naslovni element. `-clickable` billboard dobi le slog ob prehodu kazalca, zato mu dodajte `tabindex=\"0\"`, ustrezno vlogo in obravnavo tipkovnice."
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "WCAG 2.2 2.5.3"
+msgstr "WCAG 2.2 2.5.3"
+
+msgctxt "docs.api:prose"
+msgid "Elements must have their visible text as part of their accessible name"
+msgstr "Elementi morajo imeti vidno besedilo kot del svojega dostopnega imena"
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "reduced-transparency-respected"
+msgstr "reduced-transparency-respected"
+
+msgctxt "docs.api:prose"
+msgid "Rebrand (light):"
+msgstr "Nova podoba (svetla):"
+
+msgctxt "docs.api:prose"
+msgid " With prefers-contrast: more, six pieces of text fall below the minimum contrast. The worst is \"Send\" at 1.64:1 (needs 4.5:1)."
+msgstr " Pri nastavitvi prefers-contrast: more je šest delov besedila pod najmanjšim zahtevanim kontrastom. Najslabši je »Pošlji« z razmerjem 1.64:1 (potrebno je 4.5:1)."
+
+msgctxt "docs.api:prose"
+msgid "Rebrand (dark):"
+msgstr "Nova podoba (temna):"
+
+msgctxt "docs.api:prose"
+msgid " With prefers-contrast: more, six pieces of text fall below the minimum contrast. The worst is \"Send\" at 1.78:1 (needs 4.5:1)."
+msgstr " Pri nastavitvi prefers-contrast: more je šest delov besedila pod najmanjšim zahtevanim kontrastom. Najslabši je »Pošlji« z razmerjem 1.78:1 (potrebno je 4.5:1)."
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "Canvas, Canvas High Contrast:"
+msgstr "Canvas, Canvas High Contrast:"
+
+msgctxt "docs.api:prose"
+msgid " With prefers-contrast: more, two pieces of text fall below the minimum contrast. The worst is \"Rewrite\" at 1.88:1 (needs 4.5:1)."
+msgstr " Pri nastavitvi prefers-contrast: more sta dva dela besedila pod najmanjšim zahtevanim kontrastom. Najslabši je »Prepiši« z razmerjem 1.88:1 (potrebno je 4.5:1)."
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "WCAG 2.2 1.4.3, 1.4.11"
+msgstr "WCAG 2.2 1.4.3, 1.4.11"
+
+msgctxt "docs.api:prose"
+msgid "In a 320px window, the page scrolls sideways (it is 592px wide in a 320px window), and one element reaches past the right edge: "
+msgstr "V 320-pikselskem oknu se stran pomika vstran (v 320-piksel­skem oknu je široka 592 pikslov)), en element pa sega čez desni rob: "
+
+msgctxt "docs.api:prose"
+msgid " ends at 592px. WCAG 1.4.10 Reflow (level AA) exempts two-dimensional content such as data tables and maps, so a person should judge whether that applies."
+msgstr " se konča pri 592 px. WCAG 1.4.10 Reflow (raven AA) izvzema dvodimenzionalno vsebino, kot so podatkovne tabele in zemljevidi, zato je treba presoditi, ali to velja."
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "enter-activates"
+msgstr "enter-activates"
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "space-activates"
+msgstr "space-activates"
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "boundary-contrast"
+msgstr "boundary-contrast"
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "focus-indicator-contrast"
+msgstr "focus-indicator-contrast"
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "text-contrast-by-state"
+msgstr "text-contrast-by-state"
+
+msgctxt "docs.api:prose"
+msgid " With forced colors on, the focus indicator is weak: only 58 of 299 changed pixels reach 3:1 against their unfocused color, and enough to count is about half the control's perimeter, 108."
+msgstr " Ko so vklopljene prisilne barve, je indikator fokusa šibek: le 58 od 299 spremenjenih slikovnih pik doseže kontrast 3:1 glede na barvo brez fokusa, za štetje pa jih je potrebnih približno toliko, kolikor meri polovica oboda kontrolnika, torej 108."
+
+msgctxt "docs.api:prose"
+msgid " With prefers-contrast: more, eight pieces of text fall below the minimum contrast. The worst is \"Save unavailable\" at 1.64:1 (needs 4.5:1)."
+msgstr " Pri prefers-contrast: more je kontrast osmih delov besedila nižji od minimalnega. Najslabši je »Shranjevanje ni na voljo« z razmerjem 1.64:1 (potrebno je 4.5:1)."
+
+msgctxt "docs.api:prose"
+msgid " With prefers-contrast: more, eight pieces of text fall below the minimum contrast. The worst is \"Save unavailable\" at 1.78:1 (needs 4.5:1)."
+msgstr " Pri prefers-contrast: more je kontrast osmih delov besedila nižji od minimalnega. Najslabši je »Shranjevanje ni na voljo« z razmerjem 1.78:1 (potrebno je 4.5:1)."
+
+msgctxt "docs.api:prose"
+msgid " With prefers-contrast: more, two pieces of text fall below the minimum contrast. The worst is \"Summary unavailable\" at 1.88:1 (needs 4.5:1)."
+msgstr " Pri prefers-contrast: more je kontrast dveh delov besedila nižji od minimalnega. Najslabši je »Povzetek ni na voljo« z razmerjem 1.88:1 (potrebno je 4.5:1)."
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "WCAG 2.2 1.4.11"
+msgstr "WCAG 2.2 1.4.11"
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "WCAG 2.2 1.4.11, 2.4.13"
+msgstr "WCAG 2.2 1.4.11, 2.4.13"
+
+msgctxt "docs.api:prose"
+msgid "Give an informative hero image alt text and mark a decorative one with an empty `alt` or `aria-hidden=\"true\"`. Use a real heading element for the `.title` when it belongs in the document outline."
+msgstr "Informativni naslovni sliki določite opisno nadomestno besedilo, okrasno pa označite s praznim `alt` ali `aria-hidden=\"true\"`. Za `.title` uporabite pravi element naslova, kadar sodi v oris dokumenta."
+
+msgctxt "docs.api:prose"
+msgid " Elements must meet minimum color contrast ratio thresholds"
+msgstr " Elementi morajo dosegati minimalne pragove razmerja barvnega kontrasta"
+
+msgctxt "docs.api:prose"
+msgid "Mirror `-selected` with `aria-selected` and mark today with `aria-current=\"date\"`; give each day a full-date accessible name, since the day number alone is ambiguous."
+msgstr "Zrcalite `-selected` z `aria-selected` in današnji dan označite z `aria-current=\"date\"`; vsakemu dnevu določite dostopno ime s celotnim datumom, saj je sama številka dneva dvoumna."
+
+msgctxt "docs.api:prose"
+msgid "Wrap the native `<input type=\"checkbox\">` and its visible text in a `<label>` to supply its accessible name. The input drives `:checked`, `:indeterminate`, and `:disabled`; set `el.indeterminate = true` in JavaScript for the mixed state. `-readonly` is styling only since checkboxes have no native readonly attribute."
+msgstr "Obdajte izvorni `<input type=\"checkbox\">` in njegovo vidno besedilo z `<label>`, da mu zagotovite dostopno ime. Vhodno polje upravlja `:checked`, `:indeterminate` in `:disabled`; za mešano stanje v JavaScriptu nastavite `el.indeterminate = true`. `-readonly` je namenjen samo oblikovanju, saj potrditvena polja nimajo izvornega atributa readonly."
+
+msgctxt "docs.api:prose"
+msgid " With prefers-contrast: more, five pieces of text fall below the minimum contrast. The worst is \"Disabled unchecked checkbox\" at 2.74:1 (needs 4.5:1)."
+msgstr " Pri prefers-contrast: more je kontrast petih besedilnih elementov nižji od minimalnega. Najslabši je \"Onemogočeno neoznačeno potrditveno polje\" pri 2.74:1 (potrebno je 4.5:1)."
+
+msgctxt "docs.api:prose"
+msgid " With prefers-contrast: more, five pieces of text fall below the minimum contrast. The worst is \"Disabled unchecked checkbox\" at 3.15:1 (needs 4.5:1)."
+msgstr " Pri prefers-contrast: more je kontrast petih besedilnih elementov nižji od minimalnega. Najslabši je \"Onemogočeno neoznačeno potrditveno polje\" pri 3.15:1 (potrebno je 4.5:1)."
+
+msgctxt "docs.api:prose"
+msgid " With prefers-contrast: more, five pieces of text fall below the minimum contrast. The worst is \"Disabled unchecked checkbox\" at 3.02:1 (needs 4.5:1)."
+msgstr " Pri prefers-contrast: more je kontrast petih besedilnih elementov nižji od minimalnega. Najslabši je \"Onemogočeno neoznačeno potrditveno polje\" pri 3.02:1 (potrebno je 4.5:1)."
+
+msgctxt "docs.api:prose"
+msgid "Connect the trigger with `popovertarget` so the open state is exposed, and keep the native Escape and outside-click dismissal. The caret is decorative; the callout's content isn't announced unless the trigger references it, for example with `aria-describedby`."
+msgstr "Povežite sprožilec z `popovertarget` tako, da je stanje odprtosti izpostavljeno, in ohranite vgrajeno zapiranje s tipko Escape in klikom zunaj. Kazalec je okrasen; vsebina oblačka ni objavljena, razen če se sprožilec sklicuje nanjo, na primer z `aria-describedby`."
+
+msgctxt "docs.api:prose"
+msgid "The cursor only affects pointer users; a pointer cursor doesn't make an element operable. Put it on native controls (`button`, `a`), and never use `--cursor-not-allowed` or `--cursor-wait` as the only sign that something is disabled or busy."
+msgstr "Kazalec vpliva samo na uporabnike kazalnih naprav; kazalni kazalec elementa ne naredi operativnega. Uporabite ga na izvornih kontrolnikih (`button`, `a`), nikoli pa ne uporabljajte `--cursor-not-allowed` ali `--cursor-wait` kot edinega znaka, da je nekaj onemogočeno ali zasedeno."
+
+msgctxt "docs.api:prose"
+msgid "Once the parent's inline-size drops below `64em` (`16em` tray width + `48em` breakpoint), a `@container` query on the parent's `pantoken-drawer-layout` container drops this member's `min-inline-size` to `0` automatically, matching the manual `[should-overlay-tray]` override. This also applies when the tray is closed or absent."
+msgstr "Ko se velikost starša v smeri vrstice zmanjša pod `64em` (`16em` širina predala + `48em` prelomna točka), poizvedba `@container` v vsebniku `pantoken-drawer-layout` starša samodejno zmanjša vrednost `min-inline-size` tega člana na `0`, kar ustreza ročnemu prepisu `[should-overlay-tray]`. To velja tudi, ko je predal zaprt ali ga ni."
+
+msgctxt "docs.api:prose"
+msgid "Use a `div` with `role=\"region\"` (InstUI's DrawerLayout convention) and always name it with `aria-label` or `aria-labelledby`."
+msgstr "Uporabite `div` z `role=\"region\"` (konvencija InstUI za DrawerLayout) in ga vedno poimenujte z `aria-label` ali `aria-labelledby`."
+
+msgctxt "docs.api:prose"
+msgid "Name every region with `aria-label` or `aria-labelledby`. Use `div` for InstUI-style regions, not `<main role=\"region\">`. When the tray acts as navigation, use a named `<nav>` or place one inside the tray."
+msgstr "Poimenujte vsako območje z `aria-label` ali `aria-labelledby`. Za območja v slogu InstUI uporabite `div`, ne `<main role=\"region\">`. Če predal deluje kot navigacija, uporabite poimenovani `<nav>` ali ga umestite v predal."
+
+msgctxt "docs.api:prose"
+msgid "The page changes under prefers-contrast: less, but no visible text was measurable."
+msgstr "Stran se spremeni pri prefers-contrast: less, vendar ni bilo mogoče izmeriti nobenega vidnega besedila."
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "error-associated-on-invalid"
+msgstr "error-associated-on-invalid"
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "label-associated"
+msgstr "label-associated"
+
+msgctxt "docs.api:prose"
+msgid "Native validation is opt-in: add `data-native-validation` and load `@pantoken/interactions/form-field.iife.js`, or call `initFormField(host, control, error)`. Supply exactly one native control and one error message with a stable, unique ID. The behavior associates the error after blur or a native validation attempt and removes it when corrected; CSS alone doesn't synchronize ARIA."
+msgstr "Izvorno preverjanje je izbirno: dodajte `data-native-validation` in naložite `@pantoken/interactions/form-field.iife.js`, ali pokličite `initFormField(host, control, error)`. Podajte natanko en izvorni kontrolnik in eno sporočilo o napaki s stabilnim, enoličnim ID-jem. To vedenje poveže napako po izgubi fokusa ali poskusu izvornega preverjanja in jo odstrani, ko je napaka odpravljena; samo CSS ne usklajuje ARIA."
+
+msgctxt "docs.api:prose"
+msgid "Use your work email."
+msgstr "Uporabite službeni e-poštni naslov."
+
+msgctxt "docs.api:prose"
+msgid "A wrapping `<label>` names the control. When it also contains messages, use `aria-labelledby` to identify just the visible label text and `aria-describedby` for hints. Associate visible validation errors and synchronize `aria-invalid` in application code or with the opt-in native validation behavior; the decorative required asterisk isn't an accessible-name substitute."
+msgstr "Ovojni `<label>` poimenuje kontrolnik. Če vsebuje tudi sporočila, uporabite `aria-labelledby` za določitev samo besedila vidne oznake in `aria-describedby` za namige. Vidne napake pri preverjanju povežite in uskladite `aria-invalid` v kodi aplikacije ali z izbirnim izvornim preverjanjem; okrasna zvezdica za obvezno polje ne nadomešča dostopnega imena."
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "WCAG 2.2 3.3.1, 4.1.3"
+msgstr "WCAG 2.2 3.3.1, 4.1.3"
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "WCAG 2.2 1.3.1, 3.3.2, 4.1.2"
+msgstr "WCAG 2.2 1.3.1, 3.3.2, 4.1.2"
+
+msgctxt "docs.api:prose"
+msgid "A gap changes spacing only; reading and focus order still follow the DOM. Keep gaps between interactive controls large enough to meet WCAG 2.5.8 target spacing."
+msgstr "Razmik spremeni samo razporeditev; vrstni red branja in fokusa še vedno sledi DOM-u. Razmiki med interaktivnimi kontrolniki naj bodo dovolj veliki, da izpolnjujejo zahteve glede razmika med cilji WCAG 2.5.8."
+
+msgctxt "docs.api:prose"
+msgid "All 17 measured pieces of text pass with more contrast. one other piece can't be reduced to one color. \"Suggested study plan\" can't be measured because a background image or gradient sits behind it."
+msgstr "Vseh 17 izmerjenih besedilnih elementov izpolnjuje zahteve glede kontrasta. Barve še enega elementa ni mogoče poenostaviti na eno samo barvo. »Predlagani učni načrt« ni mogoče izmeriti, ker je za njim slika ali preliv ozadja."
+
+msgctxt "docs.api:prose"
+msgid "A hover and focus tooltip bubble, positionable on any side."
+msgstr "Oblaček z namigom, prikazan ob prehodu miške ali fokusu, ki ga je mogoče postaviti na katero koli stran."
+
+msgctxt "docs.api:prose"
+msgid "A tree of nested collections and leaf items, with rotating chevrons."
+msgstr "Drevo vgnezdenih zbirk in končnih elementov z vrtečimi se puščicami."
+
+msgctxt "docs.api:prose"
+msgid "Label the inner input with a real `<label>`. Mark purely visual icons in `.before` and `.after` with `aria-hidden=\"true\"`, and convey `-invalid` and `-success` states in text, not color alone."
+msgstr "Notranje vnosno polje označite z dejansko `<label>`. Čisto vizualne ikone v `.before` in `.after` označite z `aria-hidden=\"true\"`, stanja `-invalid` in `-success` pa izrazite z besedilom, ne zgolj z barvo."
+
+msgctxt "docs.api:prose"
+msgid "`--display-none` removes an element from the accessibility tree as well as the screen, so use it only for content nobody needs. Flex and grid layout can't reorder content for assistive tech; keep the DOM order meaningful, and don't center or justify long passages of text."
+msgstr "`--display-none` odstrani element iz drevesa dostopnosti in tudi z zaslona, zato ga uporabljajte samo za vsebino, ki je nihče ne potrebuje. Postavitev Flex in grid ne more preurediti vsebine za podporno tehnologijo; vrstni red DOM naj bo smiseln, dolgih besedil pa ne poravnavajte na sredino ali obojestransko."
+
+msgctxt "docs.api:prose"
+msgid " With prefers-contrast: more, two pieces of text fall below the minimum contrast. The worst is \"Settings unavailable\" at 2.74:1 (needs 4.5:1)."
+msgstr " Pri prefers-contrast: more dva besedilna elementa ne dosegata minimalnega kontrasta. Najslabše je »Settings unavailable« z razmerjem 2.74:1 (potrebno je 4.5:1)."
+
+msgctxt "docs.api:prose"
+msgid " With prefers-contrast: more, two pieces of text fall below the minimum contrast. The worst is \"Settings unavailable on brand\" at 1.84:1 (needs 4.5:1)."
+msgstr " Pri prefers-contrast: more dva besedilna elementa ne dosegata minimalnega kontrasta. Najslabše je »Settings unavailable on brand« z razmerjem 1.84:1 (potrebno je 4.5:1)."
+
+msgctxt "docs.api:prose"
+msgid " With prefers-contrast: more, three pieces of text fall below the minimum contrast. The worst is \"Settings unavailable on brand\" at 2.76:1 (needs 4.5:1)."
+msgstr " Pri prefers-contrast: more trije besedilni elementi ne dosegajo minimalnega kontrasta. Najslabše je »Settings unavailable on brand« z razmerjem 2.76:1 (potrebno je 4.5:1)."
+
+msgctxt "docs.api:prose"
+msgid "Canvas High Contrast:"
+msgstr "Platno z visokim kontrastom:"
+
+msgctxt "docs.api:prose"
+msgid " With prefers-contrast: more, one piece of text falls below the minimum contrast. The worst is \"Settings unavailable on brand\" at 2.84:1 (needs 4.5:1)."
+msgstr " Pri prefers-contrast: more en besedilni element ne dosega minimalnega kontrasta. Najslabše je »Settings unavailable on brand« z razmerjem 2.84:1 (potrebno je 4.5:1)."
+
+msgctxt "docs.api:prose"
+msgid "Keep each item a direct `<li>` child of the list so it stays in the list's accessibility tree; delimiters and markers are visual only."
+msgstr "Vsak element naj bo neposreden `<li>` otrok seznama, da ostane v drevesu dostopnosti seznama; ločila in oznake so zgolj vizualna."
+
+msgctxt "docs.api:prose"
+msgid "Use a real `<ul>` or `<ol>` with `<li>` children. Removing markers with `-unstyled` can make some screen readers drop the list semantics, so add `role=\"list\"` when the list structure matters."
+msgstr "Uporabite pravi `<ul>` ali `<ol>` z elementi `<li>`. Če oznake odstranite z `-unstyled`, lahko nekateri bralniki zaslona izgubijo semantiko seznama, zato dodajte `role=\"list\"`, kadar je struktura seznama pomembna."
+
+msgctxt "docs.api:prose"
+msgid "A contained spinner honors reduced motion without hiding the overlay or loading indicator. Keep its status role and meaningful loading label."
+msgstr "Vrtilnik znotraj vsebnika upošteva nastavitve za zmanjšano gibanje, ne da bi skril prekrivni sloj ali indikator nalaganja. Ohranite njegovo vlogo statusa in smiseln opis nalaganja."
+
+msgctxt "docs.api:prose"
+msgid "A mask covers content visually but doesn't block assistive tech or the keyboard: make the covered region `inert` (or mark it `aria-busy`), keep the mask's own message as real text, and don't hide the focus indicator behind it."
+msgstr "Maska vizualno prekrije vsebino, vendar je ne skrije pred podporno tehnologijo ali tipkovnico: prekrito območje naj bo `inert` (ali ga označite `aria-busy`), sporočilo same maske pa naj ostane pravo besedilo in indikatorja fokusa ne skrijte za njo."
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "aria-valid-attr-value"
+msgstr "aria-valid-attr-value"
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "dark-mode-contrast"
+msgstr "dark-mode-contrast"
+
+msgctxt "docs.api:prose"
+msgid "Wrap the grouped items in an element with `role=\"group\"` and point `aria-labelledby` at the group heading so assistive technology announces the group name."
+msgstr "Združene elemente ovijte v element z `role=\"group\"` in nastavite `aria-labelledby` na naslov skupine, da podporna tehnologija napove ime skupine."
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "WCAG 2.2 4.1.2"
+msgstr "WCAG 2.2 4.1.2"
+
+msgctxt "docs.api:prose"
+msgid "ARIA attributes must conform to valid values"
+msgstr "Atributi ARIA morajo vsebovati veljavne vrednosti"
+
+msgctxt "docs.api:prose"
+msgid "Checked actions use `menuitemcheckbox` or `menuitemradio` with `aria-checked`; applications update that state on activation. Pair `-disabled` with `aria-disabled=\"true\"` or native `disabled`, not the CSS class alone. Opt-in menu navigation keeps ARIA-disabled items reachable but prevents their activation."
+msgstr "Dejanja v izbranem stanju uporabljajo `menuitemcheckbox` ali `menuitemradio` z `aria-checked`; aplikacije to stanje posodobijo ob aktivaciji. Povežite `-disabled` z `aria-disabled=\"true\"` ali z izvirnim `disabled`, ne zgolj z razredom CSS. Navigacija po meniju z možnostjo vključitve ohrani elemente, onemogočene z ARIA, dosegljive, vendar prepreči njihovo aktivacijo."
+
+msgctxt "docs.api:prose"
+msgid " All five measured pieces of text pass in dark mode. one other piece can't be reduced to one color. \"Archive\" can't be measured because an element behind it is partly transparent."
+msgstr "Vseh pet izmerjenih delov besedila je v temnem načinu ustreznih. Enemu drugemu delu ni mogoče določiti ene same barve. Barve »Archive« ni mogoče izmeriti, ker je element za njo delno prosojen."
+
+msgctxt "docs.api:prose"
+msgid "All five measured pieces of text pass with more contrast. one other piece can't be reduced to one color. \"Archive\" can't be measured because an element behind it is partly transparent."
+msgstr "Vseh pet izmerjenih delov besedila dosega ustrezno raven kontrasta. Enemu drugemu delu ni mogoče določiti ene same barve. Barve »Archive« ni mogoče izmeriti, ker je element za njo delno prosojen."
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "arrow-keys-move-between-items"
+msgstr "arrow-keys-move-between-items"
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "escape-closes-and-returns-focus"
+msgstr "escape-closes-and-returns-focus"
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "opens-with-enter-or-arrow"
+msgstr "opens-with-enter-or-arrow"
+
+msgctxt "docs.api:prose"
+msgid "Keyboard navigation is opt-in: add `data-menu-navigation` to a vertical native popover with `role=\"menu\"` and load `@pantoken/interactions/menu.iife.js`, or call `initMenu(menu, button)`. Use one native `button[popovertarget]`. The behavior handles focus, arrows, Home/End, initial-character search, Escape, and activation; applications own actions and checked state. Submenus and menubars aren't supported."
+msgstr "Navigacija s tipkovnico je izbirna: dodajte `data-menu-navigation` v navpični vgrajeni pojavni meni z `role=\"menu\"` in naložite `@pantoken/interactions/menu.iife.js`, ali pa pokličite `initMenu(menu, button)`. Uporabite en vgrajeni `button[popovertarget]`. Vedenje upravlja fokus, puščične tipke, Home/End, iskanje po začetni črki, Escape in aktivacijo; aplikacije upravljajo dejanja in označeno stanje. Podmeniji in menijske vrstice niso podprti."
+
+msgctxt "docs.api:prose"
+msgid "Name the menu and button. Use `menuitem` for actions, `menuitemcheckbox`/`menuitemradio` with `aria-checked` for checked actions, and `separator` for dividers. Add `aria-disabled=\"true\"` to disabled items; a CSS modifier alone doesn't convey disabled state. ARIA-disabled entries remain focusable but cannot activate; native-disabled and hidden entries are skipped."
+msgstr "Poimenujte meni in gumb. Za dejanja uporabite `menuitem`, za dejanja z označenim stanjem `menuitemcheckbox`/`menuitemradio` z `aria-checked`, za ločila pa `separator`. Onemogočenim elementom dodajte `aria-disabled=\"true\"`; samo modifikator CSS ne izraža onemogočenega stanja. Elementi z aria-disabled ostanejo v fokusu, vendar jih ni mogoče aktivirati; izvorno onemogočeni in skriti elementi so preskočeni."
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "WCAG 2.2 2.1.1, 2.4.3"
+msgstr "WCAG 2.2 2.1.1, 2.4.3"
+
+msgctxt "docs.api:prose"
+msgid "Give the divider `role=\"separator\"` so assistive technology can announce the break between items; without it the rule is purely decorative."
+msgstr "Ločilniku dodelite `role=\"separator\"`, da lahko podporna tehnologija najavi ločitev med elementi; brez tega je črta zgolj okrasna."
+
+msgctxt "docs.api:prose"
+msgid "The `.value` and `.label` are separate elements, so keep them adjacent in source order to read together, and don't convey meaning through size alone."
+msgstr "`.value` in `.label` sta ločena elementa, zato ju v izvornem vrstnem redu ohranite skupaj, da ju je mogoče brati povezano, in ne izražajte pomena zgolj z velikostjo."
+
+msgctxt "docs.api:prose"
+msgid "Place the body inside the dialog that the header labels, and give a lone full-bleed `<img>` alt text."
+msgstr "Vsebino postavite v pogovorno okno, ki ga označuje glava, samostojni element čez celotno širino pa opremite z nadomestnim besedilom `<img>`."
+
+msgctxt "docs.api:prose"
+msgid "Use real buttons in a logical focus order after the body, and include a visible dismiss action so keyboard users can close the dialog."
+msgstr "Uporabite prave gumbe v logičnem vrstnem redu fokusa za telesom ter vključite vidno možnost zapiranja, da lahko uporabniki tipkovnice zaprejo pogovorno okno."
+
+msgctxt "docs.api:prose"
+msgid "Render the title as a real heading and point the dialog's `aria-labelledby` at it so the dialog is announced with its name."
+msgstr "Naslov prikažite kot pravi naslov in pogovornemu oknu nastavite `aria-labelledby` tako, da kaže na naslov, da bo pogovorno okno najavljeno z imenom."
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "escape-closes"
+msgstr "escape-closes"
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "focus-moves-into-dialog"
+msgstr "focus-moves-into-dialog"
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "focus-returns-to-trigger"
+msgstr "focus-returns-to-trigger"
+
+msgctxt "docs.api:prose"
+msgid "The dialog stayed open after Escape."
+msgstr "Pogovorno okno je po pritisku tipke Escape ostalo odprto."
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "WCAG 2.2 2.4.3"
+msgstr "WCAG 2.2 2.4.3"
+
+msgctxt "docs.api:prose"
+msgid "The `.arrows` buttons are redundant pointer controls, hidden from assistive technology and excluded from sequential keyboard focus. Consumers wire pointer activation and keep focus on the input; the native number input provides keyboard increment/decrement."
+msgstr "Gumbi `.arrows` so podvojeni kontrolniki za upravljanje s kazalcem, skriti pred podpornimi tehnologijami in izključeni iz zaporednega fokusa tipkovnice. Potrošniki povežejo aktivacijo s kazalcem in ohranijo fokus na vnosnem polju; izvorno številsko vnosno polje omogoča povečevanje in zmanjševanje s tipkovnico."
+
+msgctxt "docs.api:prose"
+msgid "Name the native `<input type=\"number\">` so it owns the value and keyboard controls. Mark redundant arrow buttons with both `aria-hidden=\"true\"` and `tabindex=\"-1\"`; never leave an assistive-technology-hidden button in the tab order."
+msgstr "Poimenujte izvorni `<input type=\"number\">`, da upravlja vrednost in kontrolnike tipkovnice. Odvečne puščične gumbe označite tako z `aria-hidden=\"true\"` kot z `tabindex=\"-1\"`; gumba, skritega pred podpornimi tehnologijami, nikoli ne pustite v vrstnem redu premikanja s tabulatorjem."
+
+msgctxt "docs.api:prose"
+msgid "A scrollable region must work from the keyboard: give it `tabindex=\"0\"`, a role, and an accessible name (or make sure it contains a focusable control). Don't use `hidden` or `clip` to cut off content people need to read."
+msgstr "Pomikljivo območje mora biti mogoče uporabljati s tipkovnico: dodajte mu `tabindex=\"0\"`, vlogo in dostopno ime (ali poskrbite, da vsebuje element, ki ga je mogoče fokusirati). Ne uporabljajte `hidden` ali `clip` za odrezovanje vsebine, ki jo morajo ljudje prebrati."
+
+msgctxt "docs.api:prose"
+msgid "Mark the current page with `aria-current=\"page\"`, give each page an accessible name that includes the page number, and wrap the set in a `<nav>` with an `aria-label`."
+msgstr "Označite trenutno stran z `aria-current=\"page\"`, vsaki strani dodelite dostopno ime, ki vključuje številko strani, in nabor ovijte v `<nav>` z `aria-label`."
+
+msgctxt "docs.api:prose"
+msgid "Unlike `badge`, which shows a count, or `tag`, which is removable, the pill is a static status label; its leading glyph is a masked `::before`, not an `<img>`. Let groups wrap with `flex-wrap: wrap` on their container so compact labels reflow on narrow screens."
+msgstr "Za razliko od `badge`, ki prikazuje število, ali `tag`, ki ga je mogoče odstraniti, je oznaka v obliki kapsule statična oznaka stanja; njen začetni simbol je maskiran `::before`, ne pa `<img>`. Omogočite prelamljanje skupin z `flex-wrap: wrap` na njihovem vsebniku, da se kompaktne oznake na ozkih zaslonih prerazporedijo."
+
+msgctxt "docs.api:prose"
+msgid "The status colors are visual only, so state the status in the label text or a visually hidden label. The leading glyph is a masked `::before` and isn't announced."
+msgstr "Barve stanja so le vizualne, zato stanje navedite v besedilu oznake ali v vizualno skriti oznaki. Začetni simbol je maskiran `::before` in ga bralnik zaslona ne prebere."
+
+msgctxt "docs.api:prose"
+msgid "Wire the trigger with `popovertarget` so the expanded state is exposed. A native popover closes on Escape and outside click but doesn't move focus, so move focus into interactive content when the popover opens."
+msgstr "Povežite sprožilec z `popovertarget`, da bo razširjeno stanje razvidno. Izvorni pojavni element se zapre ob pritisku tipke Escape in kliku zunaj, vendar ne premakne fokusa, zato ob odprtju pojavnega elementa premaknite fokus na interaktivno vsebino."
+
+msgctxt "docs.api:prose"
+msgid "Positioning changes where content appears, not where it sits in the DOM: keep the visual order matching the reading and focus order, and don't let positioned content cover a focused control."
+msgstr "Sprememba položaja spremeni, kje se vsebina prikaže, ne pa tega, kje je v DOM-u: poskrbite, da se vizualni vrstni red ujema z vrstnim redom branja in fokusa, ter preprečite, da bi pozicionirana vsebina prekrivala fokusirani kontrolnik."
+
+msgctxt "docs.api:prose"
+msgid "`.value` is a sibling of `.bar`, both children of the root — mirroring how progress-circle nests its own `.value` part. Native `<progress>` and `<meter>` use vendor value parts with the same semantic fill. InstUI has no indeterminate state; `:indeterminate` is a pantoken-only best guess (native `<progress>` without a `value` attribute), using a CSS-owned sliding segment and hiding `.value` since there's no meaningful number to show. Reduced motion keeps a static segment; `<meter>` has no indeterminate state."
+msgstr "`.value` je sorojenec od `.bar`, oba pa sta otroka korena — podobno kot progress-circle ugnezdi svoj `.value` del. Izvorna `<progress>` in `<meter>` uporabljata dobaviteljske dele vrednosti z enakim semantičnim polnilom. InstUI nima nedoločljivega stanja; `:indeterminate` je le približna rešitev, značilna za pantoken (izvorni `<progress>` brez atributa `value` uporablja drseči segment, ki ga upravlja CSS, in skrije `.value`, saj ni smiselne številke za prikaz. Pri zmanjšanem gibanju ostane segment statičen; `<meter>` nima nedoločljivega stanja."
+
+msgctxt "docs.api:prose"
+msgid "Custom, not part of InstUI. Applies only to a native `<progress>` missing its `value` attribute; draws a sliding segment on `::before` and hides `.value`."
+msgstr "Po meri, ni del InstUI. Uporablja se samo za izvorni `<progress>`, ki nima atributa `value`; na `::before` nariše drseči segment in skrije `.value`."
+
+msgctxt "docs.api:prose"
+msgid "Draws the native indeterminate segment without relying on the browser's built-in animation."
+msgstr "Nariše izvorni nedoločljivi segment, ne da bi se zanašal na vgrajeno animacijo brskalnika."
+
+msgctxt "docs.api:prose"
+msgid "The native value part and `.bar` fill; the -color-* modifiers set it."
+msgstr "Izvorni del vrednosti in polnilo `.bar`; določajo ju modifikatorji -color-*."
+
+msgctxt "docs.api:prose"
+msgid " With prefers-contrast: more, one piece of text falls below the minimum contrast. The worst is \"30%\" at 1:1 (needs 4.5:1)."
+msgstr " Pri prefers-contrast: more je kontrast enega besedila prenizek. Najslabši je »30 %« pri razmerju 1:1 (potrebno je 4.5:1)."
+
+msgctxt "docs.api:prose"
+msgid "Rebrand (dark), Canvas, Canvas High Contrast:"
+msgstr "Preoblikovanje znamke (temno), Canvas, Canvas High Contrast:"
+
+msgctxt "docs.api:prose"
+msgid " With line height 1.5, letter spacing 0.12em, word spacing 0.16em, and paragraph spacing 2em, text in one element gets cut off: "
+msgstr " Pri višini vrstice 1.5, razmiku med črkami 0.12em, razmiku med besedami 0.16em in razmiku med odstavki 2em se besedilo v enem elementu odreže: "
+
+msgctxt "docs.api:prose"
+msgid " (\"Working\"). Overlapping text isn't checked."
+msgstr " (»Working«). Prekrivanje besedila se ne preverja."
+
+msgctxt "docs.api:prose"
+msgid "The defaults keep headings in a logical order and links underlined with an interactive colour, so they don't rely on colour alone. Don't skip heading levels for visual size, and don't remove the link underline without another cue."
+msgstr "Privzete nastavitve ohranjajo logično zaporedje naslovov in podčrtane povezave z interaktivno barvo, zato se ne zanašajo zgolj na barvo. Ne preskakujte ravni naslovov zaradi vizualne velikosti in ne odstranjujte podčrtave povezav, ne da bi jo nadomestili z drugim namigom."
+
+msgctxt "docs.api:prose"
+msgid "Sweatshirt size"
+msgstr "Velikost puloverja"
+
+msgctxt "docs.api:prose"
+msgid "Use a native `<fieldset>` with a `<legend>` that names the group. Radios within a group share one `name`; independent groups need distinct names and legends so selecting one group's radio doesn't clear another group's selection."
+msgstr "Uporabite izvorni `<fieldset>` z `<legend>`, ki poimenuje skupino. Izbirni gumbi v skupini imajo isto `name`; neodvisne skupine potrebujejo različna imena in legende, da izbira izbirnega gumba v eni skupini ne prekliče izbire v drugi."
+
+msgctxt "docs.api:prose"
+msgid " With prefers-contrast: less, one piece of text falls below the minimum contrast. The worst is \"Large unavailable\" at 2.74:1 (needs 4.5:1). Softer contrast is fine only while text stays readable."
+msgstr " Pri nastavitvi prefers-contrast: less je kontrast enega besedila pod najnižjo dovoljeno mejo. Najslabši je »Large unavailable« z razmerjem 2.74:1 (potrebno je 4.5:1). Nižji kontrast je sprejemljiv le, dokler besedilo ostane berljivo."
+
+msgctxt "docs.api:prose"
+msgid " With prefers-contrast: less, one piece of text falls below the minimum contrast. The worst is \"Large unavailable\" at 3.15:1 (needs 4.5:1). Softer contrast is fine only while text stays readable."
+msgstr " Pri nastavitvi prefers-contrast: less je kontrast enega besedila pod najnižjo dovoljeno mejo. Najslabši je »Large unavailable« z razmerjem 3.15:1 (potrebno je 4.5:1). Nižji kontrast je sprejemljiv le, dokler besedilo ostane berljivo."
+
+msgctxt "docs.api:prose"
+msgid " With prefers-contrast: less, one piece of text falls below the minimum contrast. The worst is \"Large unavailable\" at 3.02:1 (needs 4.5:1). Softer contrast is fine only while text stays readable."
+msgstr " Pri nastavitvi prefers-contrast: less je kontrast enega besedila pod najnižjo dovoljeno mejo. Najslabši je »Large unavailable« z razmerjem 3.02:1 (potrebno je 4.5:1). Nižji kontrast je sprejemljiv le, dokler besedilo ostane berljivo."
+
+msgctxt "docs.api:prose"
+msgid " All 13 measured pieces of text stay above the minimum. one other piece can't be reduced to one color. \"Large\" can't be measured because an element behind it is partly transparent."
+msgstr " Vseh 13 izmerjenih besedil dosega najnižjo dovoljeno mejo. Enega drugega besedila ni mogoče pretvoriti v eno barvo. Vrednosti za »Large« ni mogoče izmeriti, ker je element za njim delno prosojen."
+
+msgctxt "docs.api:prose"
+msgid " With prefers-contrast: more, one piece of text falls below the minimum contrast. The worst is \"Large unavailable\" at 2.74:1 (needs 4.5:1)."
+msgstr " Pri nastavitvi prefers-contrast: more je kontrast enega besedila pod najnižjo dovoljeno mejo. Najslabši je »Large unavailable« z razmerjem 2.74:1 (potrebno je 4.5:1)."
+
+msgctxt "docs.api:prose"
+msgid " With prefers-contrast: more, one piece of text falls below the minimum contrast. The worst is \"Large unavailable\" at 3.15:1 (needs 4.5:1)."
+msgstr " Pri nastavitvi prefers-contrast: more je kontrast enega besedila pod najnižjo dovoljeno mejo. Najslabši je »Large unavailable« z razmerjem 3.15:1 (potrebno je 4.5:1)."
+
+msgctxt "docs.api:prose"
+msgid " With prefers-contrast: more, one piece of text falls below the minimum contrast. The worst is \"Large unavailable\" at 3.02:1 (needs 4.5:1)."
+msgstr " Pri nastavitvi prefers-contrast: more je kontrast enega besedila pod najnižjo dovoljeno mejo. Najslabši je »Large unavailable« z razmerjem 3.02:1 (potrebno je 4.5:1)."
+
+msgctxt "docs.api:prose"
+msgid " All 13 measured pieces of text pass with more contrast. one other piece can't be reduced to one color. \"Large\" can't be measured because an element behind it is partly transparent."
+msgstr " Vseh 13 izmerjenih besedil izpolnjuje zahteve pri višjem kontrastu. Enega drugega besedila ni mogoče pretvoriti v eno barvo. Vrednosti za »Large« ni mogoče izmeriti, ker je element za njim delno prosojen."
+
+msgctxt "docs.api:prose"
+msgid " With prefers-contrast: less, six pieces of text fall below the minimum contrast. The worst is \"Warning selected\" at 1.67:1 (needs 4.5:1). Softer contrast is fine only while text stays readable."
+msgstr " Pri prefers-contrast: less šest delov besedila ne dosega najmanjšega kontrasta. Najslabši je »Opozorilo izbrano« z razmerjem 1.67:1 (potrebno je 4.5:1). Manjši kontrast je sprejemljiv le, dokler besedilo ostane berljivo."
+
+msgctxt "docs.api:prose"
+msgid " With prefers-contrast: less, four pieces of text fall below the minimum contrast. The worst is \"Disabled unselected\" at 3.15:1 (needs 4.5:1). Softer contrast is fine only while text stays readable."
+msgstr " Pri prefers-contrast: less štirje deli besedila ne dosegajo najmanjšega kontrasta. Najslabši je »Onemogočeno, ni izbrano« z razmerjem 3.15:1 (potrebno je 4.5:1). Manjši kontrast je sprejemljiv le, dokler besedilo ostane berljivo."
+
+msgctxt "docs.api:prose"
+msgid " With prefers-contrast: less, four pieces of text fall below the minimum contrast. The worst is \"Disabled unselected\" at 3.02:1 (needs 4.5:1). Softer contrast is fine only while text stays readable."
+msgstr " Pri prefers-contrast: less štirje deli besedila ne dosegajo najmanjšega kontrasta. Najslabši je »Onemogočeno, ni izbrano« z razmerjem 3.02:1 (potrebno je 4.5:1). Manjši kontrast je sprejemljiv le, dokler besedilo ostane berljivo."
+
+msgctxt "docs.api:prose"
+msgid " All 31 measured pieces of text stay above the minimum. two other pieces can't be reduced to one color. \"Disabled unselected\" can't be measured because an element behind it is partly transparent."
+msgstr " Vseh 31 izmerjenih delov besedila presega najmanjo vrednost. Dveh drugih delov ni mogoče zmanjšati na eno barvo. »Onemogočeno, ni izbrano« ni mogoče izmeriti, ker je element za njim delno prosojen."
+
+msgctxt "docs.api:prose"
+msgid " With prefers-contrast: more, six pieces of text fall below the minimum contrast. The worst is \"Warning selected\" at 1.67:1 (needs 4.5:1)."
+msgstr " Pri prefers-contrast: more šest delov besedila ne dosega najmanjšega kontrasta. Najslabši je »Opozorilo izbrano« z razmerjem 1.67:1 (potrebno je 4.5:1)."
+
+msgctxt "docs.api:prose"
+msgid " With prefers-contrast: more, four pieces of text fall below the minimum contrast. The worst is \"Disabled unselected\" at 3.15:1 (needs 4.5:1)."
+msgstr " Pri prefers-contrast: more štirje deli besedila ne dosegajo najmanjšega kontrasta. Najslabši je »Onemogočeno, ni izbrano« z razmerjem 3.15:1 (potrebno je 4.5:1)."
+
+msgctxt "docs.api:prose"
+msgid " With prefers-contrast: more, four pieces of text fall below the minimum contrast. The worst is \"Disabled unselected\" at 3.02:1 (needs 4.5:1)."
+msgstr " Pri prefers-contrast: more štirje deli besedila ne dosegajo najmanjšega kontrasta. Najslabši je »Onemogočeno, ni izbrano« z razmerjem 3.02:1 (potrebno je 4.5:1)."
+
+msgctxt "docs.api:prose"
+msgid " All 31 measured pieces of text pass with more contrast. two other pieces can't be reduced to one color. \"Disabled unselected\" can't be measured because an element behind it is partly transparent."
+msgstr " Vseh 31 izmerjenih delov besedila dosega zahtevani kontrast pri višjem kontrastu. Dveh drugih delov ni mogoče zmanjšati na eno barvo. »Onemogočeno, ni izbrano« ni mogoče izmeriti, ker je element za njim delno prosojen."
+
+msgctxt "docs.api:prose"
+msgid "The control is a native `<input type=\"range\">`; give it an accessible name with `aria-label` or an associated `<label>`. Forced colors use a system-color outline because the thumb's box-shadow focus ring doesn't survive that mode."
+msgstr "Kontrolnik je izvorni `<input type=\"range\">`; zagotovite mu dostopno ime z `aria-label` ali povezano `<label>`. V načinu prisilnih barv se uporabi obris v sistemski barvi, ker obroba za fokus, ustvarjena s senco ročice, v tem načinu ni vidna."
+
+msgctxt "docs.api:prose"
+msgid "Hiding content at a breakpoint also hides it from assistive tech, so don't hide the only way to complete a task, and keep the shown and hidden versions equivalent in meaning."
+msgstr "Skrivanje vsebine pri prelomni točki jo skrije tudi pred podpornimi tehnologijami, zato ne skrivajte edinega načina za dokončanje opravila in poskrbite, da imata prikazana in skrita različica enak pomen."
+
+msgctxt "docs.api:prose"
+msgid "With forced colors on, nothing visible changed when the control took focus. A focus ring drawn with box-shadow or a background color disappears in forced colors. Use an outline."
+msgstr "Ko so prisiljene barve vklopljene, se ob fokusu kontrolnika ni vidno nič spremenilo. Fokusni obroč, narisan z box-shadow ali barvo ozadja, v načinu prisiljenih barv izgine. Uporabite obrobo."
+
+msgctxt "docs.api:prose"
+msgid " With prefers-contrast: less, three pieces of text fall below the minimum contrast. The worst is \"Grades\" at 1.48:1 (needs 4.5:1). Softer contrast is fine only while text stays readable."
+msgstr " Pri nastavitvi prefers-contrast: less trije deli besedila ne dosegajo najmanjšega kontrasta. Najslabši je »Grades« z razmerjem 1.48:1 (potrebno je 4.5:1). Manjši kontrast je sprejemljiv le, dokler besedilo ostane berljivo."
+
+msgctxt "docs.api:prose"
+msgid " With prefers-contrast: less, three pieces of text fall below the minimum contrast. The worst is \"Grades\" at 1.38:1 (needs 4.5:1). Softer contrast is fine only while text stays readable."
+msgstr " Pri nastavitvi prefers-contrast: less trije deli besedila ne dosegajo najmanjšega kontrasta. Najslabši je »Grades« z razmerjem 1.38:1 (potrebno je 4.5:1). Manjši kontrast je sprejemljiv le, dokler besedilo ostane berljivo."
+
+msgctxt "docs.api:prose"
+msgid "Mark the active entry with `aria-current=\"page\"` as well as `-selected`, and keep an accessible name, such as `aria-label`, when the parent's `-minimized` modifier hides the `.label`."
+msgstr "Aktivni vnos označite z `aria-current=\"page\"` in `-selected`, ter ohranite dostopno ime, na primer `aria-label`, kadar modifikator `-minimized` nadrejenega skrije `.label`."
+
+msgctxt "docs.api:prose"
+msgid "It's a native `<select>`, so role, keyboard support, and option announcement come from the browser; associate it with a visible `<label>` and convey errors in text, not color alone."
+msgstr "Gre za izvorni `<select>`, zato vloga, podpora tipkovnici in napovedovanje možnosti izvirajo iz brskalnika; povežite ga z vidnim `<label>` ter napake sporočite z besedilom, ne zgolj z barvo."
+
+msgctxt "docs.api:prose"
+msgid "Spacing is visual only: use it to keep text and controls from crowding, not to convey structure — use headings, lists, and landmarks for that. Leave enough space around interactive targets for WCAG 2.5.8, and don't rely on fixed spacing that breaks when users increase text spacing."
+msgstr "Razmiki so namenjeni le vizualni urejenosti: uporabite jih, da besedilo in kontrolniki niso natlačeni, ne pa za izražanje strukture — za to uporabite naslove, sezname in orientacijske točke. Okoli interaktivnih ciljev pustite dovolj prostora, da bo izpolnjen WCAG 2.5.8, in se ne zanašajte na fiksne razmike, ki se porušijo, ko uporabniki povečajo razmik med besedilom."
+
+msgctxt "docs.api:prose"
+msgid "With reduced motion enabled, the ring or AI glyph remains visible without rotation; keep the loading status and label while work is pending."
+msgstr "Ko je omogočeno zmanjšano gibanje, obroč ali simbol AI ostane viden brez vrtenja; med čakanjem na dokončanje dela ohranite stanje nalaganja in oznako."
+
+msgctxt "docs.api:prose"
+msgid "Stacking order is visual only: a layered surface that covers focusable content hides the focus indicator. Overlays that take over the page also need focus management and an accessible name."
+msgstr "Vrstni red zlaganja je zgolj vizualen: plast, ki prekrije elemente, na katere je mogoče postaviti fokus, skrije indikator fokusa. Prekrivni elementi, ki prevzamejo celotno stran, potrebujejo tudi upravljanje fokusa in dostopno ime."
+
+msgctxt "docs.api:prose"
+msgid "Use a native `<tbody>` so row and cell relationships are exposed. The parent's `-layout-stacked` changes `display`, which can drop table semantics in some browsers, so add explicit table roles when you use it."
+msgstr "Uporabite izvorni `<tbody>`, da so razmerja med vrsticami in celicami izpostavljena. `-layout-stacked` nadrejenega elementa spremeni `display`, kar lahko v nekaterih brskalnikih odpravi semantiko tabele, zato ob njegovi uporabi dodajte izrecne vloge tabele."
+
+msgctxt "docs.api:prose"
+msgid "Use a native `<td>`. In `-layout-stacked` the column label is generated content that assistive technology may not announce reliably, so keep the column relationship available, for example with `headers`."
+msgstr "Uporabite izvorni `<td>`. V `-layout-stacked` je oznaka stolpca ustvarjena vsebina, ki je podporna tehnologija morda ne bo zanesljivo napovedala, zato ohranite povezavo s stolpcem, na primer z `headers`."
+
+msgctxt "docs.api:prose"
+msgid "Use `<th scope=\"col\">` so each column header is associated with the cells beneath it."
+msgstr "Uporabite `<th scope=\"col\">` tako, da je vsaka glava stolpca povezana s celicami pod njo."
+
+msgctxt "docs.api:prose"
+msgid "Use a native `<thead>`. `-layout-stacked` hides it visually, so keep it in the DOM, not `display: none`, to preserve column names for assistive technology."
+msgstr "Uporabite izvorni `<thead>`. `-layout-stacked` ga vizualno skrije, zato ga zaradi ohranitve imen stolpcev za podporno tehnologijo pustite v DOM-u, ne pa `display: none`."
+
+msgctxt "docs.api:prose"
+msgid "For tables that must retain their columns, use a named, keyboard-focusable `--overflow-x-auto` container instead. Use `-without-focus-animation` for an immediately visible focus outline and the caption to name the region."
+msgstr "Za tabele, ki morajo ohraniti svoje stolpce, namesto tega uporabite poimenovan vsebnik, ki ga je mogoče izbrati s tipkovnico: `--overflow-x-auto`. Uporabite `-without-focus-animation` za takoj vidno orisno oznako fokusa, napis pa naj poimenuje območje."
+
+msgctxt "docs.api:prose"
+msgid "Responsive film ratings"
+msgstr "Odzivne ocene filmov"
+
+msgctxt "docs.api:prose"
+msgid "Use stacked cards below the canonical `md` container breakpoint; preserve columns at and above it. Requires per-cell `data-label` values and a size-container ancestor. @affects table.head @affects table.body @affects table.row @affects table.cell @affects table.col-header @affects table.row-header — Applies the existing stacked presentation only in a narrow container."
+msgstr "Pod prelomno točko kanoničnega vsebnika `md` uporabite zložene kartice; pri njej in nad njo ohranite stolpce. Zahteva vrednosti `data-label` za vsako celico in nadrejeni vsebnik velikosti. @affects table.head @affects table.body @affects table.row @affects table.cell @affects table.col-header @affects table.row-header — Uporabi obstoječi zloženi prikaz samo v ozkem vsebniku."
+
+msgctxt "docs.api:prose"
+msgid "Label the table with a `<caption>`, mark column headers `<th scope=\"col\">` and row headers `<th scope=\"row\">`, and in stacked or responsive layouts give every cell a localized `data-label` matching its column header. Keep the native header associations; visible generated labels don't replace them. Name scroll regions and provide keyboard access without trapping focus."
+msgstr "Tabelo označite z `<caption>`, glave stolpcev označite z `<th scope=\"col\">`, glave vrstic pa z `<th scope=\"row\">`; v zloženih ali odzivnih postavitvah vsaki celici dodajte lokaliziran `data-label`, ki se ujema z glavo njenega stolpca. Ohranite izvorne povezave z glavami; vidne ustvarjene oznake jih ne nadomeščajo. Poimenujte območja drsenja in omogočite dostop s tipkovnico, ne da bi ujeli fokus."
+
+msgctxt "docs.api:prose"
+msgid "Use `<th scope=\"row\">` so the cell names its row for assistive technology."
+msgstr "Uporabite `<th scope=\"row\">`, da celica za podporno tehnologijo poimenuje svojo vrstico."
+
+msgctxt "docs.api:prose"
+msgid "Use a native `<tr>`. The `-hover` styling is visual only, so give a clickable row a real control rather than relying on the highlight."
+msgstr "Uporabite izvorni `<tr>`. Oblikovanje `-hover` je zgolj vizualno, zato klikljivi vrstici dodajte pravi kontrolnik, namesto da se zanašate na označitev."
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "arrow-keys-move-between-tabs"
+msgstr "arrow-keys-move-between-tabs"
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "home-and-end-work"
+msgstr "home-and-end-work"
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "selected-state-exposed"
+msgstr "selected-state-exposed"
+
+msgctxt "docs.api:prose"
+msgid "All six measured pieces of text pass with more contrast. two other pieces can't be reduced to one color. \"Billing\" can't be measured because an element behind it is partly transparent."
+msgstr "Vseh šest izmerjenih besedilnih elementov zdaj dosega ustrezen kontrast. Dveh drugih delov ni mogoče poenostaviti na eno barvo. Element »Billing« ni mogoče izmeriti, ker je element za njim delno prosojen."
+
+msgctxt "docs.api:prose"
+msgid "End didn't move to the last tab."
+msgstr "Konec se ni premaknil na zadnji zavihek."
+
+msgctxt "docs.api:prose"
+msgid "3 tabs are aria-selected=\"true\". A tab list should have exactly one."
+msgstr "3 zavihki imajo aria-selected=\"true\". Seznam zavihkov mora vsebovati natanko enega."
+
+msgctxt "docs.api:prose"
+msgid "Give each panel `role=\"tabpanel\"` and an `aria-labelledby` that references its tab, and keep inactive panels `hidden`."
+msgstr "Vsaki plošči dodelite `role=\"tabpanel\"` in __PTK_INLINE_CODE_1_, ki se sklicuje na njen zavihek, neaktivne plošče pa naj ostanejo `hidden`."
+
+msgctxt "docs.api:prose"
+msgid "Use `role=\"tab\"` inside a `role=\"tablist\"`, mirror `-selected` with `aria-selected`, point `aria-controls` at the panel, and mark a disabled tab with `aria-disabled` or the native `disabled`."
+msgstr "Uporabite `role=\"tab\"` znotraj `role=\"tablist\"`, zrcalite `-selected` z `aria-selected`, usmerite `aria-controls` na ploščo in označite onemogočen zavihek z `aria-disabled` ali z izvornim `disabled`."
+
+msgctxt "docs.api:prose"
+msgid "All four measured pieces of text pass with more contrast. two other pieces can't be reduced to one color. \"Billing\" can't be measured because an element behind it is partly transparent."
+msgstr "Vsi štirje izmerjeni deli besedila z večjim kontrastom izpolnjujejo zahteve. dveh drugih delov ni mogoče omejiti na eno barvo. Besedila \"Obračunavanje\" ni mogoče izmeriti, ker je element za njim delno prosojen."
+
+msgctxt "docs.api:prose"
+msgid "Don't rely on color alone to distinguish tags. Give a removable tag's dismiss control an accessible name that includes the tag text, for example `aria-label=\"Remove Biology\"`."
+msgstr "Za razlikovanje oznak se ne zanašajte zgolj na barvo. Gumbu za odstranitev oznake določite dostopno ime, ki vključuje besedilo oznake, na primer `aria-label=\"Remove Biology\"`."
+
+msgctxt "docs.api:prose"
+msgid "Associate the field with a visible `<label>`, use `aria-invalid` and `disabled` for state, and explain errors in text, not border color alone."
+msgstr "Polje povežite z vidnim `<label>`, za stanje uporabite `aria-invalid` in `disabled`, napake pa pojasnite z besedilom, ne zgolj z barvo obrobe."
+
+msgctxt "docs.api:prose"
+msgid " With prefers-contrast: more, one piece of text falls below the minimum contrast. The worst is \"A saved comment.\" at 2.51:1 (needs 4.5:1)."
+msgstr " Pri nastavitvi prefers-contrast: more eno besedilo ne dosega minimalnega kontrasta. Najslabši rezultat ima »Shranjen komentar.« z razmerjem 2.51:1 (potrebno je 4.5:1)."
+
+msgctxt "docs.api:prose"
+msgid " With prefers-contrast: more, one piece of text falls below the minimum contrast. The worst is \"A saved comment.\" at 4.08:1 (needs 4.5:1)."
+msgstr " Pri nastavitvi prefers-contrast: more eno besedilo ne dosega minimalnega kontrasta. Najslabši rezultat ima »Shranjen komentar.« z razmerjem 4.08:1 (potrebno je 4.5:1)."
+
+msgctxt "docs.api:prose"
+msgid " With prefers-contrast: more, one piece of text falls below the minimum contrast. The worst is \"A saved comment.\" at 2.74:1 (needs 4.5:1)."
+msgstr " Pri nastavitvi prefers-contrast: more eno besedilo ne dosega minimalnega kontrasta. Najslabši rezultat ima »Shranjen komentar.« z razmerjem 2.74:1 (potrebno je 4.5:1)."
+
+msgctxt "docs.api:prose"
+msgid " With prefers-contrast: more, one piece of text falls below the minimum contrast. The worst is \"A saved comment.\" at 4.11:1 (needs 4.5:1)."
+msgstr " Pri nastavitvi prefers-contrast: more eno besedilo ne dosega minimalnega kontrasta. Najslabši rezultat ima »Shranjen komentar.« z razmerjem 4.11:1 (potrebno je 4.5:1)."
+
+msgctxt "docs.api:prose"
+msgid "Associate the field with a visible `<label>`, use `aria-invalid` and `disabled` for state, and explain errors in text, not border color alone. Date and time types use the browser's own picker and keyboard support."
+msgstr "Polje povežite z vidnim `<label>`, za stanje uporabite `aria-invalid` in `disabled`, napake pa pojasnite z besedilom, ne zgolj z barvo obrobe. Datumske in časovne vrste uporabljajo izbirnik brskalnika in podporo za tipkovnico."
+
+msgctxt "docs.api:prose"
+msgid "It sets appearance only and renders no semantics, so use `<p>`, `<strong>`, `<em>`, and similar elements for meaning, and check contrast of each `-color-*` against its background, especially the inverse colors."
+msgstr "Nastavi samo videz in ne upodobi semantike, zato za pomen uporabite `<p>`, `<strong>`, `<em>` in podobne elemente ter preverite kontrast vsakega `-color-*` glede na njegovo ozadje, zlasti pri obrnjenih barvah."
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "enter-toggles"
+msgstr "enter-toggles"
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "expanded-state-exposed"
+msgstr "expanded-state-exposed"
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "space-toggles"
+msgstr "space-toggles"
+
+msgctxt "docs.api:prose"
+msgid "With reduced motion enabled, the chevron changes direction immediately; native disclosure state and keyboard operation remain unchanged."
+msgstr "Ko je omogočeno zmanjšano gibanje, puščica takoj spremeni smer; izvorno stanje razkritja in delovanje tipkovnice ostaneta nespremenjena."
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "WCAG 2.2 2.1.1, 4.1.2"
+msgstr "WCAG 2.2 2.1.1, 4.1.2"
+
+msgctxt "docs.api:prose"
+msgid "Built on native `<details>`, which exposes the expanded state and toggles with Enter and Space; keep the `<summary>` first and give it descriptive text."
+msgstr "Temelji na izvornem `<details>`, ki razkrije stanje razširitve in se preklaplja s tipkama Enter in preslednica; `<summary>` naj bo prvi in naj ima opisno besedilo."
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "appears-on-focus"
+msgstr "appears-on-focus"
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "content-reachable-on-hover"
+msgstr "content-reachable-on-hover"
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "escape-dismisses"
+msgstr "escape-dismisses"
+
+msgctxt "docs.api:prose"
+msgid "`.instui-tooltip` — A hover and focus tooltip bubble, positionable on any side."
+msgstr "`.instui-tooltip` — Oblaček namiga, prikazan ob prehodu kazalca ali fokusu, ki ga je mogoče postaviti na katerokoli stran."
+
+msgctxt "docs.api:prose"
+msgid "Load `@pantoken/interactions/tooltip.iife.js` for managed delays, Escape dismissal, and combined pointer/focus state. Without JavaScript, hover/focus remains a fallback without Escape or delay guarantees. Use a popover for interactive content."
+msgstr "Za upravljane zakasnitve, zapiranje s tipko Escape in združeno stanje kazalca/fokusa naložite `@pantoken/interactions/tooltip.iife.js`. Brez JavaScripta je prehod kazalca oziroma fokus še vedno rezervna možnost, vendar brez zagotovila glede zapiranja s tipko Escape ali zakasnitve. Za interaktivno vsebino uporabite pojavno okno."
+
+msgctxt "docs.api:prose"
+msgid "The bubble; `-placement-*` sets its preferred side. Initialized tooltips flip/clamp to fit the viewport."
+msgstr "Oblaček; `-placement-*` nastavi želeno stran. Inicializirani namigi zamenjajo stran oziroma se omejijo, da se prilegajo vidnemu polju."
+
+msgctxt "docs.api:prose"
+msgid "Use a named, focusable trigger with aria-describedby pointing at the role=\"tooltip\" bubble. Keep the content noninteractive. Initialized tooltips stay dismissed after Escape until both pointer and focus leave; the next entry can reopen them."
+msgstr "Uporabite poimenovan sprožilec, ki lahko prejme fokus, z atributom aria-describedby, ki kaže na oblaček z role=\"tooltip\". Vsebina naj ne bo interaktivna. Inicializirani namigi po pritisku tipke Escape ostanejo skriti, dokler kazalec in fokus ne zapustita sprožilca; ob naslednjem vstopu se lahko znova odprejo."
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "WCAG 2.2 1.4.13"
+msgstr "WCAG 2.2 1.4.13"
+
+msgctxt "docs.api:prose"
+msgid "The classes only animate, so provide a `prefers-reduced-motion` alternative for large movement and don't convey essential state through the transition alone."
+msgstr "Razredi zgolj animirajo, zato za velike premike zagotovite `prefers-reduced-motion` in bistvenega stanja ne sporočajte samo s prehodom."
+
+msgctxt "docs.api:prose"
+msgid "`.instui-tree-browser` — A tree of nested collections and leaf items, with rotating chevrons."
+msgstr "`.instui-tree-browser` — Drevo ugnezdenih zbirk in končnih elementov z vrtečimi se puščicami."
+
+msgctxt "docs.api:prose"
+msgid "Load the tree-browser interaction bundle for ARIA-tree keyboard navigation and expansion. Native `<details>` markup remains a CSS-only disclosure fallback; don't give that fallback ARIA-tree roles."
+msgstr "Naložite paket za interakcijo z drevesnim brskalnikom za krmarjenje s tipkovnico in razširjanje drevesa ARIA. Izvorna oznaka `<details>` ostane nadomestna možnost razkritja, ki temelji samo na CSS; tej nadomestni možnosti ne dodajajte vlog drevesa ARIA."
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "Syllabus.pdf"
+msgstr "Syllabus.pdf"
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "Reading.pdf"
+msgstr "Reading.pdf"
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "Slides.pptx"
+msgstr "Slides.pptx"
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "Rubric.docx"
+msgstr "Rubric.docx"
+
+msgctxt "docs.api:prose"
+msgid "Name the `role=\"tree\"` root, use focusable `role=\"treeitem\"` nodes, and associate each collection with its `role=\"group\"` via `aria-owns`. Load `@pantoken/interactions/tree-browser.iife.js` for one tab stop and synchronized expansion. Add `aria-selected` to opt into single selection; focus alone doesn't select."
+msgstr "Poimenujte korensko vozlišče `role=\"tree\"`, uporabite vozlišča `role=\"treeitem\"`, ki jih je mogoče fokusirati, in vsako zbirko povežite z njenim `role=\"group\"` prek `aria-owns`. Naložite `@pantoken/interactions/tree-browser.iife.js` za eno mesto v zaporedju tabulatorja in usklajeno razširjanje. Dodajte `aria-selected`, da omogočite enojni izbor; sam fokus ne pomeni izbire."
+
+msgctxt "docs.api:prose"
+msgid "Truncation hides overflowing text visually while it stays in the DOM, so don't clip information people need (titles, errors, instructions) and keep the full text available another way. Check that clipped text still reads correctly when zoomed or resized."
+msgstr "Obrezovanje vizualno skrije prelivajoče se besedilo, čeprav ostane v DOM-u, zato ne odrežite informacij, ki jih ljudje potrebujejo (naslovov, napak, navodil) in celotno besedilo omogočite tudi na drug način. Preverite, ali je odrezano besedilo še vedno berljivo pri povečavi ali spremembi velikosti."
+
+msgctxt "docs.api:prose"
+msgid "With line height 1.5, letter spacing 0.12em, word spacing 0.16em, and paragraph spacing 2em, text in one element gets cut off: "
+msgstr "Pri višini vrstice 1.5, razmiku med črkami 0.12em, razmiku med besedami 0.16em in razmiku med odstavki 2em se besedilo v enem elementu odreže: "
+
+msgctxt "docs.api:prose"
+msgid " (\"Quarterly planning notes for t\"). Overlapping text isn't checked."
+msgstr " (»Četrtletni zapiski o načrtovanju za t«). Prekrivanje besedila ni preverjeno."
+
+msgctxt "docs.api:prose"
+msgid "It's a neutral box with no semantics, so use semantic elements or ARIA roles for meaning and keep sufficient contrast between its background, border, and content."
+msgstr "Gre za nevtralen vsebnik brez semantike, zato za izražanje pomena uporabite semantične elemente ali vloge ARIA ter poskrbite za zadosten kontrast med ozadjem, obrobo in vsebino."
+
+msgctxt "docs.api:prose"
+msgid " With prefers-contrast: more, one piece of text falls below the minimum contrast. The worst is \"Notes unavailable\" at 1.98:1 (needs 4.5:1)."
+msgstr " Pri nastavitvi prefers-contrast: more je kontrast enega besedila nižji od najmanjšega dovoljenega. Najslabši je »Notes unavailable« z razmerjem 1.98:1 (potrebno je 4.5:1)."
+
+msgctxt "docs.api:prose"
+msgid " With prefers-contrast: more, one piece of text falls below the minimum contrast. The worst is \"Notes unavailable\" at 2.67:1 (needs 4.5:1)."
+msgstr " Pri nastavitvi prefers-contrast: more je kontrast enega besedila nižji od najmanjšega dovoljenega. Najslabši je »Notes unavailable« z razmerjem 2.67:1 (potrebno je 4.5:1)."
+
+msgctxt "docs.api:prose"
+msgid " With prefers-contrast: more, one piece of text falls below the minimum contrast. The worst is \"Notes unavailable\" at 1.99:1 (needs 4.5:1)."
+msgstr " Pri nastavitvi prefers-contrast: more je kontrast enega besedila nižji od najmanjšega dovoljenega. Najslabši je »Notes unavailable« z razmerjem 1.99:1 (potrebno je 4.5:1)."
+
+msgctxt "docs.api:prose"
+msgid "With prefers-reduced-transparency: reduce, one surface holding text stays see-through: "
+msgstr "Pri nastavitvi prefers-reduced-transparency: reduce ena površina z besedilom ostane prosojna: "
+
+msgctxt "docs.api:prose"
+msgid " (30% opaque). Without the preference there were one. This preference isn't a WCAG requirement. It matters because see-through backgrounds make text contrast unpredictable."
+msgstr " (30 % neprosojna). Brez te nastavitve je bila ena. Ta nastavitev ni zahteva WCAG. Pomembna je zato, ker prosojna ozadja otežujejo predvidljivost kontrasta besedila."
+
+msgctxt "docs.api:prose"
+msgid "Dismiss strategy:\n- `<dialog>` → `dialog.close()`\n- `[popover]` → `el.hidePopover()`\n- `.instui-alert` or `.instui-banner` (per `options.prefix`) → cancelable `dismiss` event, then fade out and remove\n- `[data-dismissible]` or `[open]` → remove open attr + fire bubbling `close`"
+msgstr "Strategija zapiranja:\n- `<dialog>` → `dialog.close()`\n- `[popover]` → `el.hidePopover()`\n- `.instui-alert` ali `.instui-banner` (za `options.prefix`) → preklicljiv `dismiss` dogodek, nato postopoma zbledi in se odstrani\n- `[data-dismissible]` ali `[open]` → odstrani atribut open + sproži mehurčkajoči se dogodek `close`"
+
+msgctxt "docs.api:prose"
+msgid "Associate an authored error after blur, native invalid events, or explicit validation.\nUntouched fields stay quiet; edited fields revalidate after the first validation attempt.\nPreserves hint references and uses native constraints, including `setCustomValidity()`.\nThe host must contain the control and a separate, named error element with message text.\nClean up and reinitialize after moving controls between forms or changing error IDs."
+msgstr "Prikažite avtorsko napako po izgubi fokusa, izvornih dogodkih invalid ali izrecnem preverjanju.\nNedotaknjena polja ostanejo tiha; urejena polja se po prvem poskusu preverjanja znova preverijo.\nOhrani sklice na namige in uporablja izvorne omejitve, vključno z `setCustomValidity()`.\nGostitelj mora vsebovati kontrolnik in ločen poimenovan element napake z besedilom sporočila.\nPo premiku kontrolnikov med obrazci ali spremembi ID-jev napak počistite stanje in jih znova inicializirajte."
+
+msgctxt "docs.api:prose"
+msgid "Wire a vertical, single-level ARIA menu and its native popover button.\nArrow keys wrap; Home/End and initial-character search move focus. Escape returns\nfocus to the button; Tab closes without canceling normal sequential navigation.\nApplications own click actions and checked state. Space activates checkable items\nwithout closing; Enter and pointer activation close unless the click is canceled."
+msgstr "Povežite navpični enonivojski meni ARIA z njegovim izvornim gumbom pojavnega okna.\nS puščičnimi tipkami se fokus pomika krožno; tipki Home/End in iskanje po začetni črki premakneta fokus. Escape vrne\nfokus na gumb; Tab zapre meni, ne da bi prekinil običajno zaporedno krmarjenje.\nAplikacije določajo dejanja ob kliku in stanje izbire. Preslednica aktivira izbirne elemente\nbrez zapiranja; Enter in aktivacija s kazalno napravo zapreta meni, razen če je klik preklican."
+
+msgctxt "docs.api:prose"
+msgid "Own tooltip visibility after initialization, retaining CSS hover/focus as a no-JS fallback.\nPointer and focus are independent reasons to stay open; Escape dismisses until both leave."
+msgstr "Po inicializaciji upravljajte vidnostjo namigov z orodji, pri čemer ohranite CSS za lebdenje in fokus kot rezervno možnost brez JavaScripta.\nKazalec in fokus sta neodvisna razloga za odprt prikaz; tipka Escape ga zapre, dokler ne izginejo oba."
+
+msgctxt "docs.api:prose"
+msgid "Wire ARIA-tree navigation and expansion, with single selection opt-in via `aria-selected`."
+msgstr "Vzpostavite navigacijo in razširjanje drevesa ARIA z možnostjo enojnega izbiranja prek `aria-selected`."
+
+msgctxt "docs.api:prose"
+msgid "The class namespace for a prefix: `\"instui\"` → `\"instui-\"`, `\"\"` → `\"\"` (unprefixed)."
+msgstr "Imenski prostor razredov za predpono: `\"instui\"` → `\"instui-\"`, `\"\"` → `\"\"` (brez predpone)."
+
+msgctxt "docs.api:prose"
+msgid "Swap every `pfx-` sentinel in `text` for the namespace of `prefix` (default `\"instui\"`)."
+msgstr "Zamenjajte vsak označevalnik `pfx-` v `text` z imenskim prostorom za `prefix` (privzeto `\"instui\"`)."
+
+msgctxt "docs.api:prose"
+msgid "Options for [initCloseButton](../functions/initCloseButton.md)."
+msgstr "Možnosti za [initCloseButton](../functions/initCloseButton.md)."
+
+msgctxt "docs.api:prose"
+msgid "Class prefix for the alert/banner hosts. Defaults to `\"instui\"`; `\"\"` means unprefixed."
+msgstr "Predpona razreda za gostitelje opozorila/pasice. Privzeto je `\"instui\"`; `\"\"` pomeni brez predpone."
+
+msgctxt "docs.api:prose"
+msgid "Native validation controls and listener cleanup."
+msgstr "Kontrolniki za izvorno preverjanje veljavnosti in odstranjevanje poslušalcev."
+
+msgctxt "docs.api:prose"
+msgid "Show the current native validation result without moving focus or changing the value."
+msgstr "Prikažite trenutni rezultat izvornega preverjanja veljavnosti, ne da bi premaknili fokus ali spremenili vrednost."
+
+msgctxt "docs.api:prose"
+msgid "Remove listeners and restore the initial accessibility and error-visibility state."
+msgstr "Odstranite poslušalce in obnovite začetno stanje dostopnosti in vidnosti napake."
+
+msgctxt "docs.api:prose"
+msgid "Listeners and attribute restoration installed by [initMenu](../functions/initMenu.md)."
+msgstr "Poslušalniki in obnovitev atributov, nameščeni z [initMenu](../functions/initMenu.md)."
+
+msgctxt "docs.api:prose"
+msgid "Class prefix for the `transition` utility. Defaults to `\"instui\"`; `\"\"` means unprefixed."
+msgstr "Predpona razreda za pripomoček `transition` utility. Privzeto je `\"instui\"`; `\"\"` pomeni brez predpone."
+
+msgctxt "docs.api:prose"
+msgid "Remove listeners/timers and restore the original managed marker and show class."
+msgstr "Odstrani poslušalnike in časovnike ter obnovi izvirno upravljano oznako in razred za prikaz."
+
+msgctxt "docs.api:prose"
+msgid "Dismiss until both pointer and focus leave, canceling pending timers."
+msgstr "Skrij, dokler območja ne zapustita tako kazalec kot fokus, ter prekliči čakajoče časovnike."
+
+msgctxt "docs.api:prose"
+msgid "Listeners installed by [initTreeBrowser](../functions/initTreeBrowser.md)."
+msgstr "Poslušalniki, nameščeni z [initTreeBrowser](../functions/initTreeBrowser.md)."
+
+msgctxt "docs.api:prose"
+msgid "Native controls supported by [initFormField](../functions/initFormField.md)."
+msgstr "Izvorni kontrolniki, ki jih podpira [initFormField](../functions/initFormField.md)."
+
+msgctxt "docs.api:prose"
+msgid "Custom-element tag prefix (`\"x\"` → `<x-icon>`). Never null or empty: tags need a hyphen, so JS callers passing one fall back to `instui`."
+msgstr "Predpona oznake elementa po meri (`\"x\"` → `<x-icon>`). Nikoli null ali prazna: oznake potrebujejo vezaj, zato klici JS, ki podajo prazno vrednost, preklopijo na `instui`."
+
+msgctxt "docs.api:prose"
+msgid "Both panes are `div` regions, matching InstUI's inline DrawerLayout. Supply nonempty `tray-label` and `content-label` attributes to name them; labels on the host or slotted content don't name the shadow-DOM regions."
+msgstr "Obe plošči sta območji `div`, kot pri vgrajeni postavitvi DrawerLayout v InstUI. Za poimenovanje jima dodajte neprazna atributa `tray-label` in `content-label`; oznake na gostitelju ali vsebini v reži ne poimenujejo območij DOM-a v senci."
+
+msgctxt "docs.api:prose"
+msgid "`<instui-modal>` — a real `<dialog>`, so it gets focus trapping, Escape-to-close, and a\n`::backdrop` for free. The `open` attribute drives `showModal()`/`close()`; a native dismissal\n(such as Escape) reflects back to the attribute and re-fires as a bubbling `close`\nevent. Drivable from light DOM via Invoker Commands — a\n`<button command=\"--show|--close|--toggle\" commandfor=\"modal-id\">` toggles it by id. Content goes\nin the default slot."
+msgstr "`<instui-modal>` — pravi `<dialog>`, zato samodejno dobi omejitev fokusa, zapiranje s tipko Escape in\n`::backdrop`. Atribut `open` upravlja `showModal()`/`close()`; izvorno zapiranje\n(na primer s tipko Escape) se odrazi v atributu in znova sproži kot dogodek `close`\n, ki se širi navzgor. Upravljati ga je mogoče iz lahkega DOM-a prek Invoker Commands —\n`<button command=\"--show|--close|--toggle\" commandfor=\"modal-id\">` ga preklaplja glede na id. Vsebina gre\nv privzeto režo."
+
+msgctxt "docs.api:prose"
+msgid "`<instui-spinner>` — a loading spinner with `role=\"status\"`. `variant=\"ai\"` and\n`variant=\"ai-on-color\"` select the rotating AI star; size and colour follow the CSS tokens.\nReduced motion keeps the ring or glyph visible without rotation."
+msgstr "`<instui-spinner>` — vrtljiv indikator nalaganja z `role=\"status\"`. `variant=\"ai\"` in\n`variant=\"ai-on-color\"` izbereta vrtečo se zvezdico AI; velikost in barva sledita žetonom CSS.\nZmanjšano gibanje ohrani obroč ali glif vidna brez vrtenja."
+
+msgctxt "docs.api:prose"
+msgid "`<instui-tooltip>` — wraps a slotted trigger and shows a `.tip` bubble (from the `tip` attribute)\non hover/focus. `placement` maps to `-placement-<value>` (e.g. `bottom`, `end`); `show-delay` and\n`hide-delay` (ms, default 0) gate the reveal/hide. Shared behavior owns visibility; Escape\ndismisses until both pointer and focus leave. Tooltip content is noninteractive."
+msgstr "`<instui-tooltip>` — ovije sprožilec v reži in ob premiku kazalca ali nastavitvi fokusa prikaže oblaček `.tip` (iz atributa `tip`attribute)\n). `placement` se preslika v `-placement-<value>` (npr. `bottom`, `end`); `show-delay` in \n`hide-delay` (ms, privzeto 0) določata prikaz in skritje. Skupno vedenje upravlja vidnost; tipka Escape\n zapre namig, dokler kazalec in fokus ne zapustita elementa. Vsebina namiga ni interaktivna."
+
+msgctxt "docs.api:prose"
+msgid "`<instui-tree-browser>` — an ARIA tree with shared keyboard navigation and expansion.\nName the host and slot `treeitem`/`group` markup. Load the component stylesheet for slotted items."
+msgstr "`<instui-tree-browser>` — drevo ARIA s skupno navigacijo s tipkovnico in razširjanjem.\nNavedite označevalni jezik gostitelja in reže `treeitem`/`group` označevalni jezik. Naložite slogovno datoteko komponente za elemente v reži."
+
+#, pantoken-verbatim
+msgctxt "docs.api:text"
+msgid "CloseButtonOptions"
+msgstr "CloseButtonOptions"
+
+#, pantoken-verbatim
+msgctxt "docs.api:text"
+msgid "FormFieldHandle"
+msgstr "FormFieldHandle"
+
+#, pantoken-verbatim
+msgctxt "docs.api:text"
+msgid "MenuHandle"
+msgstr "MenuHandle"
+
+#, pantoken-verbatim
+msgctxt "docs.api:text"
+msgid "TreeBrowserHandle"
+msgstr "TreeBrowserHandle"
+
+#, pantoken-verbatim
+msgctxt "docs.api:text"
+msgid "FormFieldControl"
+msgstr "FormFieldControl"
+
+#, pantoken-verbatim
+msgctxt "docs.api:text"
+msgid "initFormField"
+msgstr "initFormField"
+
+#, pantoken-verbatim
+msgctxt "docs.api:text"
+msgid "initMenu"
+msgstr "initMenu"
+
+#, pantoken-verbatim
+msgctxt "docs.api:text"
+msgid "initTreeBrowser"
+msgstr "initTreeBrowser"
+
+#, pantoken-verbatim
+msgctxt "docs.api:text"
+msgid "ns"
+msgstr "ns"
+
+#, pantoken-verbatim
+msgctxt "docs.api:text"
+msgid "withPrefix"
+msgstr "withPrefix"
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "target-size"
+msgstr "target-size"
+
+msgctxt "docs.api:prose"
+msgid "Its own chained modifiers (`-color-*`, `-size-*`, `-shape-*`, `-toggle`, `-condensed`,\n  `-without-background`, `-without-border`, `-display-block`) set a default for every child\n  `.instui-button` that doesn't carry its own modifier in that same category — a button's own\n  modifier class always wins over the group's default. `-icon-*` is always per-button; it's\n  never read from the group. Deprecated button aliases (`-ghost`, `-color-primary-inverse`)\n  aren't supported as group-level modifiers — use their canonical replacements\n  (`-color-tertiary`, `-on-color`) instead. Each join shows a single 1px seam in the buttons'\n  own border color (solid fills, whose border matches the fill, tint it with the label color).\n  `-without-seam` is group-only: it hides that seam so the buttons read as\n  one continuous control.\n  Put `-width-half` on an individual icon-only child button for a split-action\n  trigger with half the standard square width and the full button height."
+msgstr "Njegovi lastni povezani modifikatorji (`-color-*`, `-size-*`, `-shape-*`, `-toggle`, `-condensed`,\n  `-without-background`, `-without-border`, `-display-block`) določijo privzeto vrednost za vsakega otroka\n  `.instui-button` ki nima lastnega modifikatorja v isti kategoriji — lasten razred modifikatorja gumba\n  ima vedno prednost pred privzeto vrednostjo skupine. `-icon-*` je vedno določen za vsak gumb posebej;\n  vrednost se nikoli ne prevzame iz skupine. Zastareli vzdevki gumbov (`-ghost`, `-color-primary-inverse`)\n  niso podprti kot modifikatorji na ravni skupine — uporabite njihove kanonične zamenjave\n  (`-color-tertiary`, `-on-color`) namesto njih. Vsak stik ustvari en sam 1-pikselni šiv v barvi obrobe gumbov (pri polnih polnilih, katerih obroba se ujema s polnilom, ga obarva barva oznake).\n  `-without-seam` je namenjen samo skupini: skrije ta šiv, tako da so gumbi videti kot\n  en sam neprekinjen kontrolnik.\n  Na posamezen otroški gumb samo z ikono dodajte `-width-half` za sprožilec deljenega dejanja\n  s polovico standardne širine kvadratnega gumba in polno višino gumba."
+
+msgctxt "docs.api:prose"
+msgid "Use a labelled group for related actions; when buttons represent a toggle choice, expose each state with aria-pressed. Give icon-only buttons an accessible name. Half-width triggers are narrow targets (16px, 20px, or 24px at the standard sizes); ensure sufficient target spacing or use a full-width square button for touch interfaces."
+msgstr "Za povezana dejanja uporabite označeno skupino; kadar gumbi predstavljajo izbiro preklopa, stanje vsakega označite z aria-pressed. Gumbom samo z ikono določite dostopno ime. Sprožilci s polovično širino so ozke tarče (16px, 20px ali 24px pri standardnih velikostih); zagotovite dovolj prostora med tarčami ali za vmesnike na dotik uporabite kvadratni gumb polne širine."
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "WCAG 2.2 2.5.8"
+msgstr "WCAG 2.2 2.5.8"
+
+msgctxt "docs.api:prose"
+msgid "All touch targets must be 24px large, or leave sufficient space"
+msgstr "Vse tarče na dotik morajo biti velike 24px ali pa mora biti med njimi dovolj prostora"

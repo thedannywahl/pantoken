@@ -170,6 +170,23 @@ test("multiScopeCss registers each property once", () => {
     defaultTheme: "rebrand",
     includeIcons: false,
   });
+
   const registered = sheet.match(/@property\s+(--[\w-]+)/g) ?? [];
   expect(registered.length).toBe(new Set(registered).size);
+});
+
+test("nested theme blocks redeclare aliases whose resolved colors vary across themes", () => {
+  const sheet = multiScopeCss({
+    themes: ["rebrand", "canvas", "canvasHighContrast"],
+    defaultTheme: "rebrand",
+    includeIcons: false,
+  });
+  for (const theme of ["rebrand", "canvas", "canvasHighContrast"]) {
+    const start = sheet.indexOf(`  [data-pantoken-theme="${theme}"],`);
+    const block = sheet.slice(start, sheet.indexOf("\n  }", start));
+    expect(block).toContain(
+      "--instui-component-tag-default-background: var(--instui-color-background-interactive-action-secondary-base);",
+    );
+    expect(block).toContain("--instui-component-text-input-arrows-background-color:");
+  }
 });

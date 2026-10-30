@@ -2,6 +2,7 @@
  * @component pagination.page
  * @memberOf pagination
  * @selector .page
+ * @a11y Mark the current page with `aria-current="page"`, give each page an accessible name that includes the page number, and wrap the set in a `<nav>` with an `aria-label`.
  * @summary A page link or button (InstUI `Pagination.Page`); the current page carries `[aria-current]`.
  * @modifier -current — The current page; same styling as `[aria-current]`.
  * @cssstate current
@@ -9,6 +10,20 @@
  * @component pagination {
  *   .page {}
  * }
+ * @example -automatica11y
+ * ```html
+ * <nav class="pfx-pagination" aria-label="Pagination">
+ *   <button class="arrow" type="button" aria-label="First page" disabled><span class="pfx-icon -icon-chevrons-left"></span></button>
+ *   <button class="arrow" type="button" aria-label="Previous page" disabled><span class="pfx-icon -icon-chevron-left"></span></button>
+ *   <a class="page -current" href="#" aria-current="page">1</a>
+ *   <a class="page" href="#">2</a>
+ *   <a class="page" href="#">3</a>
+ *   <span class="ellipsis">…</span>
+ *   <a class="page" href="#">12</a>
+ *   <a class="arrow" href="#" aria-label="Next page"><span class="pfx-icon -icon-chevron-right"></span></a>
+ *   <a class="arrow" href="#" aria-label="Last page"><span class="pfx-icon -icon-chevrons-right"></span></a>
+ * </nav>
+ * ```
  */
 @scope (.pfx-pagination) {
   :scope {

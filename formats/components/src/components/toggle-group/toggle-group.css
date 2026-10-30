@@ -1,6 +1,7 @@
 /**
  * @component toggle-group
  * @selector .pfx-toggle-group
+ * @a11y Built on native `<details>`, which exposes the expanded state and toggles with Enter and Space; keep the `<summary>` first and give it descriptive text.
  * @summary A bordered disclosure built on `<details>`: a chevron summary row and collapsible content.
  * @remarks Built on the same native `<details>` foundation as toggle-details; put the `<summary>` first so it becomes the clickable header row and the rest is the collapsible content.
  * @modifier -without-border — Remove the border.
@@ -8,17 +9,27 @@
  * @modifier -size-lg — Large.
  * @pseudo ::before — Draws the summary row's disclosure chevron, a masked glyph that rotates to point down when the group is open.
  * @cssstate open
- * @example
+ * @example -canvas-rce -docs
+ * ```html
  * <details class="pfx-toggle-group" open>
  *   <summary>Advanced settings</summary>
  *   <div>These options are revealed when the group is expanded. The header row carries a chevron that rotates on open, and the content sits below a divider.</div>
  * </details>
+ * ```
  * @structure
  * .pfx-toggle-group {
  *   summary {}
  *   div {}
  * }
  * @related toggle-details — The single, unbordered form of the same disclosure.
+ * @example -automatica11y
+ * ```html
+ * <details class="pfx-toggle-group" open><summary>Default group</summary><div></div></details>
+ * <details class="pfx-toggle-group -size-sm" open><summary>Small group</summary><div></div></details>
+ * <details class="pfx-toggle-group -size-lg" open><summary>Large group</summary><div></div></details>
+ * <details class="pfx-toggle-group -without-border" open><summary>Borderless group</summary><div></div></details>
+ * <details class="pfx-toggle-group"><summary>Initially collapsed group</summary><div></div></details>
+ * ```
  */
 @scope (.pfx-toggle-group) {
   & {
@@ -55,7 +66,12 @@
     background: currentColor;
     -webkit-mask: var(--instui-icon-chevron-right) center / contain no-repeat;
     mask: var(--instui-icon-chevron-right) center / contain no-repeat;
-    transition: transform 0.2s ease;
+    @media (forced-colors: active) {
+      forced-color-adjust: preserve-parent-color;
+    }
+    @media (prefers-reduced-motion: no-preference) {
+      transition: transform 0.2s ease;
+    }
   }
 
   &[open] > summary::before {

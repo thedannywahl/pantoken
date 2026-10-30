@@ -70,7 +70,7 @@ export function resolveProviderInvocation(
   if (!profile) return undefined;
   return {
     command: resolveProfileCommand(profile, options.configDir),
-    args: profileArgs(profile),
+    args: profileArgs(profile, options.profile === "copilot"),
     concurrency,
   };
 }
@@ -82,8 +82,14 @@ function resolveProfileCommand(profile: ProviderProfileConfig, configDir?: strin
     : profile.command;
 }
 
-function profileArgs(profile: ProviderProfileConfig): string[] {
-  return ["--model", profile.model, ...(profile.effort ? ["--effort", profile.effort] : [])];
+function profileArgs(profile: ProviderProfileConfig, copilot: boolean): string[] {
+  return [
+    "--model",
+    profile.model,
+    ...(profile.effort && !(copilot && profile.model === "auto")
+      ? [copilot ? "--reasoning-effort" : "--effort", profile.effort]
+      : []),
+  ];
 }
 
 /** English display name for a BCP-47 locale tag, e.g. `"hu"` → `"Hungarian"` (falls back to the

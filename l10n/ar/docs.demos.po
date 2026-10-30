@@ -3073,9 +3073,9 @@ msgid "The Godfather: Part II"
 msgstr "العرابي: الجزء الثاني"
 
 #: docs/demos/table/i18n.json#text9
-#, no-c-format
+#, fuzzy, no-c-format
 msgctxt "docs.demos:table:text9"
-msgid "Films (stacked)"
+msgid "Films (responsive)"
 msgstr "أفلام (مكدسة)"
 
 #: docs/demos/table/i18n.json#text10
@@ -3521,6 +3521,18 @@ msgstr "حوم عليّ"
 msgctxt "docs.demos:tooltip:text3"
 msgid "Placement bottom"
 msgstr "الموضع أسفل"
+
+#: docs/demos/tooltip/i18n.json#text5
+#, fuzzy, no-c-format
+msgctxt "docs.demos:tooltip:text5"
+msgid "Information"
+msgstr "التنسيقات"
+
+#: docs/demos/tooltip/i18n.json#text6
+#, fuzzy, no-c-format
+msgctxt "docs.demos:tooltip:text6"
+msgid "Notifications"
+msgstr "تكرار الإشعارات"
 
 #: docs/demos/tooltip/i18n.json#text4
 #, no-c-format

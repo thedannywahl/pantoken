@@ -1,3 +1,5 @@
+import { motionPreference } from "../lib/motion.ts";
+
 /** Segmented control options; the medium size is the CSS default. */
 export interface SegmentedControlOptions {
   size?: "sm" | "md" | "lg";
@@ -128,7 +130,10 @@ export function initSegmentedControl(
       : rtl
         ? rect.right - right
         : rect.left - left;
-    strip.scrollBy({ left: distance, behavior: "smooth" });
+    strip.scrollBy({
+      left: distance,
+      behavior: motionPreference(host)?.matches ? "instant" : "smooth",
+    });
   };
 
   const select = (radio: HTMLInputElement): void => {
@@ -139,7 +144,11 @@ export function initSegmentedControl(
       radio.dispatchEvent(new Event("input", { bubbles: true }));
       radio.dispatchEvent(new Event("change", { bubbles: true }));
     }
-    radio.closest("label")?.scrollIntoView?.({ block: "nearest", inline: "nearest" });
+    radio.closest("label")?.scrollIntoView?.({
+      block: "nearest",
+      inline: "nearest",
+      behavior: motionPreference(host)?.matches ? "instant" : "auto",
+    });
   };
 
   const onChange = (event: Event): void => {

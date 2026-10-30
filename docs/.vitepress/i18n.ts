@@ -7,6 +7,31 @@ import type { GetStartedTabsStrings } from "./theme/get-started.ts";
 import type { RegistryBrowserStrings } from "./theme/registry.ts";
 import { loadConfig, resolveMessagesForLocale, resolveTier } from "@pantoken/i18n-engine";
 
+/** Generated CSS API prose enters the existing glossary/prose API translation pipeline. */
+export const ACCESSIBILITY_AUDIT_STRINGS = {
+  notAudited:
+    "Not audited: no checked-in evidence covers this record. Results from other components don't establish coverage for this one.",
+  pass: "Pass",
+  fail: "Fail",
+  review: "Review needed",
+  notApplicable: "Not applicable",
+  rules: "Rules (axe-core)",
+  conditions: "Conditions",
+  interactions: "Interactions",
+  computed: "Computed styles",
+  screenReader: "Screen reader (simulated)",
+  announcements: "Announcements",
+  noResult: "No result was recorded for this check; test it manually.",
+  columns: {
+    "rebrand/light": "Rebrand (light)",
+    "rebrand/dark": "Rebrand (dark)",
+    "canvas/light": "Canvas",
+    "canvasHighContrast/light": "Canvas High Contrast",
+  },
+  caveat:
+    "These automated results do not establish that the page meets WCAG; manual review is still needed.",
+} as const;
+
 /**
  * Every locale the docs site builds: `root` (English) plus every non-`en` locale from
  * `@pantoken/web-components`'s `LOCALES` (44 BCP47 tags — `en` is dropped since `root` already covers

@@ -36,9 +36,16 @@ Tokens are CSS custom properties named `--instui-<group>-<name>` (e.g.
 
 To activate a non-default theme, pass `--theme canvas` to the CLI or use `byTheme("canvas")` from
 `@pantoken/tokens`. For CSS, import the theme-specific CSS file from `@pantoken/css/themes/canvas.css`.
-To scope a theme to a subtree rather than the whole page, wrap that subtree in an element and apply
-the theme CSS file or `byTheme()` output scoped to that element's selector. Nested theming is not
-supported out of the box; each theme CSS file sets vars at `:root`.
+For nested themes, load `@pantoken/css/properties.css` once and `@pantoken/css/scope.css`, then use
+`data-pantoken-theme` or its `--pantoken-theme-*` class twin on each subtree. Ready-made token sheets
+follow the system color scheme; explicit `data-pantoken-scheme` or `--pantoken-scheme-*` light/dark
+pins remain authoritative, including on the document root.
+
+Component user preferences are automatic, not variants or opt-ins. Respect `prefers-reduced-motion`,
+`prefers-contrast`, `prefers-reduced-transparency`, and forced colors. More contrast strengthens
+boundaries without switching themes; less removes decorative shadows without lowering text contrast.
+Reduced transparency makes chrome opaque and removes backdrop blur. Keep loading indicators and
+disabled-state cues visible. Don't add enabling classes or disable these media queries.
 
 ## Pick the right package
 
@@ -134,6 +141,21 @@ component registry.
 - **Icons anywhere:** `npm i @pantoken/web-components`, `import "@pantoken/web-components";`, then
   `<instui-icon name="check-mark"></instui-icon>`.
 - **Component behaviors (vanilla JS):** `npm i @pantoken/interactions`, then import `initModal`, `initTooltip`, `initInPlaceEdit`, or `initCloseButton` to wire behaviors. For CDN/IIFE: link `@pantoken/interactions/dist/interactions.iife.js` and check `component-capabilities.json` for per-component `.iife.js` entry points.
+- **Tree browser:** ARIA trees need `initTreeBrowser` or the `tree-browser.iife.js` entry point,
+  not CSS alone. Name the tree, use focusable treeitems, and connect collection rows to their groups
+  with `aria-owns`. Native details/summary disclosures remain a CSS-only alternative without tree roles.
+- **Drawer layout:** Give `<instui-drawer-layout>` nonempty `tray-label` and `content-label`
+  attributes to name its shadow-DOM regions. Labels on slotted content don't name those panes.
+- **Form validation:** Native validation is opt-in via `initFormField(host, control, error)` or
+  `data-native-validation` plus `form-field.iife.js`. Supply a separate error with a unique ID.
+  CSS alone doesn't synchronize error associations; client-side checks don't replace server validation.
+- **Menus:** Use `initMenu(menu, button)` or `data-menu-navigation` plus `menu.iife.js` for vertical,
+  single-level native popover menus. Applications own actions and checked state; use `aria-disabled`
+  for disabled items. Submenus and menubars aren't supported; CSS alone doesn't supply ARIA keyboard behavior.
+- **Tables:** Use `-layout-responsive` inside an `instui-container` (load `utilities.css`) for
+  CSS-only stacking below the canonical `md` container breakpoint. Supply localized `data-label`
+  values matching the column headers and retain native header associations. To retain columns,
+  use a named, keyboard-focusable `--overflow-x-auto` region with a visible focus outline.
 - **Tailwind:** add `pantokenPreset()` to `presets` and import `@pantoken/css`.
 - **Native app:** `npx pantoken generate swift --out ./ios/Tokens --icons arrow-left,check-mark`.
 - **Rust app:** `npx pantoken generate rust --out ./src/tokens.rs --format egui`.

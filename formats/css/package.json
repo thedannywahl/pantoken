@@ -40,7 +40,6 @@
     "provenance": true
   },
   "scripts": {
-    "generate": "node scripts/generate.ts",
     "dev": "vp run generate && vp pack --watch",
     "test": "vp test",
     "check": "vp check"

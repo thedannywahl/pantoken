@@ -4,10 +4,28 @@
  * @summary A styled range slider with an inverse value bubble.
  * @remarks Each vendor thumb/track pseudo-element needs its own separate rule — grouping them in one selector list would invalidate the whole rule in browsers that don't recognize the other vendor's pseudo.
  * @pseudo ::before — Draws the value bubble's caret, a small triangle pointing back toward the track.
- * @accessibility The control is a native `<input type="range">`; give it an accessible name with `aria-label` or an associated `<label>`.
- * @example
+ * @accessibility The control is a native `<input type="range">`; give it an accessible name with `aria-label` or an associated `<label>`. Forced colors use a system-color outline because the thumb's box-shadow focus ring doesn't survive that mode.
+ * @example -canvas-rce -docs
+ * ```html
  * <input class="pfx-range-input" id="r1" type="range" value="30">
+ * ```
  * @related number-input — The typed numeric-entry counterpart.
+ * @example -automatica11y
+ * ```html
+ * <p><span class="pfx-range-input"><label for="audit-range-small">Volume with small value bubble</label>
+ *   <input id="audit-range-small" class="pfx-range-input" type="range" min="0" max="100" value="30">
+ *   <output class="pfx-range-input-value -size-sm" for="audit-range-small" aria-label="Initial volume">30</output>
+ * </span></p>
+ * <p><span class="pfx-range-input"><label for="audit-range-medium">Volume with medium value bubble</label>
+ *   <input id="audit-range-medium" class="pfx-range-input" type="range" min="0" max="100" value="50">
+ *   <output class="pfx-range-input-value" for="audit-range-medium" aria-label="Initial volume">50</output>
+ * </span></p>
+ * <p><span class="pfx-range-input"><label for="audit-range-large">Volume with large value bubble</label>
+ *   <input id="audit-range-large" class="pfx-range-input" type="range" min="0" max="100" value="70">
+ *   <output class="pfx-range-input-value -size-lg" for="audit-range-large" aria-label="Initial volume">70</output>
+ * </span></p>
+ * <p><label>Disabled volume <input class="pfx-range-input" type="range" min="0" max="100" value="40" disabled></label></p>
+ * ```
  */
 @scope (.pfx-range-input) {
   & {
@@ -75,6 +93,11 @@
 
   &:focus-visible {
     outline: none;
+
+    @media (forced-colors: active) {
+      outline: var(--instui-focus-outline-width) solid Highlight;
+      outline-offset: var(--instui-focus-outline-offset);
+    }
   }
 
   &:focus-visible::-webkit-slider-thumb {

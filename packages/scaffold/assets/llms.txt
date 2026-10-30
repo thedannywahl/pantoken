@@ -16,12 +16,32 @@
 	`@pantoken/plugin-custom-components` (additional components like `banner` and `agent-shell`). Card is included in `@pantoken/components`.
 - Web CSS from raw tokens (no components): `@pantoken/css` — `import "@pantoken/css/inject"` defines all `--instui-*` properties.
 - Tokens as data: `@pantoken/tokens` — `import { tokens, byTheme } from "@pantoken/tokens"`.
+- User preferences are automatic, not opt-in variants: `prefers-reduced-motion`, `prefers-contrast`,
+	`prefers-reduced-transparency`, and forced colors. Keep loading and disabled cues visible. More
+	contrast strengthens boundaries; less removes decorative shadows without lowering text contrast.
+	Ready token sheets follow the system; explicit `data-pantoken-scheme` light/dark pins win.
+	For nested themes, load `properties.css` once plus `scope.css` and set `data-pantoken-theme`.
 - Icons: `@pantoken/icons` for raw decoded SVG markup/data (`getIcon("arrow-left")`), or
 	`@pantoken/web-components` for a drop-in `<instui-icon>` custom element.
 - Component behaviors (vanilla JS): `@pantoken/interactions` — `initModal`, `initTooltip`,
 	`initInPlaceEdit`, `initCloseButton`; IIFE entry points for CDN. `initInPlaceEdit` accepts an
 	optional `text`, `number`, `email`, `url`, `tel`, or `search` input hint, but the consuming
 	application validates committed values.
+- Tree browser: ARIA tree markup needs `initTreeBrowser` or `tree-browser.iife.js` for keyboard
+	navigation. Name the tree, use focusable treeitems, and associate collection rows with groups via
+	`aria-owns`. CSS-only details/summary disclosures don't claim tree roles.
+- Drawer layout: give `<instui-drawer-layout>` nonempty `tray-label` and `content-label`
+	attributes to name its shadow-DOM regions. Labels on slotted content don't name those panes.
+- Form validation: opt into `initFormField(host, control, error)` or `data-native-validation` plus
+	`form-field.iife.js`, with a separate error and unique ID. CSS alone doesn't synchronize error
+	associations; client-side checks don't replace server validation.
+- Menus: opt into `initMenu(menu, button)` or `data-menu-navigation` plus `menu.iife.js` for
+	vertical, single-level native popover menus. Applications own actions and checked state;
+	disabled items need `aria-disabled`. Submenus and menubars aren't supported.
+- Tables: `-layout-responsive` inside an `instui-container` (with `utilities.css`) stacks below
+	the canonical `md` container breakpoint without JavaScript. Match localized `data-label` values
+	to column headers and retain native header associations. Alternatively, retain columns in a
+	named, keyboard-focusable `--overflow-x-auto` region with a visible focus outline.
 - shadcn registry: `shadcn search @pantoken`, `shadcn view @pantoken/<item>`, then `shadcn add
 	@pantoken/<item>`. Items install CSS/packages and usage metadata, not React components.
 - Standalone browser mockups: use the CDN guide, component capability manifest, demos, and optional

@@ -3,10 +3,9 @@
  *
  * The card's brand face — Atkinson Hyperlegible Next — is vendored under `docs/assets/fonts`, but it
  * only covers Latin. Rendering a card for every locale needs a face per non-Latin script, and the
- * Noto family that covers them all is far too large to commit (~53 MB of variable TTFs). So they're
- * fetched once into a git-ignored cache under `docs/assets/fonts/noto/`, from a pinned `google/fonts`
- * commit, and each download is checked against a recorded SHA-256 before it's used. A cached file is
- * reused as-is, so only the first `docs:assets` run on a machine (or a cold CI runner) pays for it.
+ * Noto faces are vendored under `docs/assets/fonts/noto/` with their upstream licenses and
+ * provenance. Each file is checked against its recorded SHA-256 before use. Builds never download
+ * fonts or write a font cache.
  *
  * `resvg` reads TTF/OTF, and `google/fonts` now ships Noto only as variable TTFs. `resvg` renders the
  * default instance of a variable font rather than instancing the `wght` axis, so non-Latin cards come
@@ -16,20 +15,17 @@
  * @module
  */
 import { createHash } from "node:crypto";
-import { mkdirSync, readFileSync, writeFileSync } from "node:fs";
+import { readFileSync } from "node:fs";
 import { join } from "node:path";
 import { fileURLToPath } from "node:url";
 
-/** The `google/fonts` commit every font below is pinned to. */
-const PIN = "205859f680703e449fe05dce0f792cc041d6dc89";
-
-/** A downloadable script font: where to get it, what it's called, and what it must hash to. */
+/** A vendored script font, its upstream source, and its expected digest. */
 interface NotoFont {
   /** The path under `ofl/` in `google/fonts`, URL-encoded. */
   path: string;
   /** The `font-family` name to reference it by in the SVG. */
   family: string;
-  /** SHA-256 of the file at {@link PIN}. */
+  /** SHA-256 of the file at the revision recorded in the vendored fonts' README. */
   sha256: string;
   /** Han, kana, and Hangul advance about one em per glyph rather than the Latin half-em. */
   ideographic?: boolean;
@@ -139,17 +135,17 @@ const LOCALE_FONTS: Record<string, NotoKey> = {
 /** Loaded last on every card so a character no mapped face carries still renders instead of tofu. */
 const FALLBACK: NotoKey = "sans";
 
-const cacheDir = fileURLToPath(new URL("../../assets/fonts/noto/", import.meta.url));
-const cachePath = (key: NotoKey): string => {
+const fontDir = fileURLToPath(new URL("../../assets/fonts/noto/", import.meta.url));
+const fontPath = (key: NotoKey): string => {
   if (!Object.hasOwn(NOTO_FONTS, key)) {
-    throw new Error(`Unsupported Noto font cache key: ${String(key)}`);
+    throw new Error(`Unsupported Noto font key: ${String(key)}`);
   }
-  return join(cacheDir, `${key}.ttf`);
+  return join(fontDir, `${key}.ttf`);
 };
 
 const sha256 = (bytes: Uint8Array): string => createHash("sha256").update(bytes).digest("hex");
 
-/** Return whether the bytes look like a TTF/OTF font (not arbitrary network data). */
+/** Return whether the bytes have a TTF/OTF font signature. */
 export function isFontFile(bytes: Uint8Array): boolean {
   if (bytes.length < 12) return false;
   const version = bytes.subarray(0, 4);
@@ -159,33 +155,18 @@ export function isFontFile(bytes: Uint8Array): boolean {
   );
 }
 
-/** Read the cached file for `key`, or `undefined` if it's absent, invalid, or mismatched. */
-function readCached(key: NotoKey): Uint8Array | undefined {
-  try {
-    const bytes = readFileSync(cachePath(key));
-    return isFontFile(bytes) && sha256(bytes) === NOTO_FONTS[key].sha256 ? bytes : undefined;
-  } catch {
-    return undefined;
-  }
-}
-
 /**
- * Resolve a script font to a local file path, downloading and caching it on first use.
+ * Resolve a verified vendored font without network access or filesystem writes.
  *
- * @returns The path, or `undefined` when the font is neither cached nor reachable — the caller then
- *   falls back to the Latin card text rather than rendering a page of tofu.
+ * @returns The path, or `undefined` for a missing or invalid font, allowing Latin fallback.
  */
 async function resolveFont(key: NotoKey): Promise<string | undefined> {
-  if (readCached(key)) return cachePath(key);
-
-  const url = `https://raw.githubusercontent.com/google/fonts/${PIN}/ofl/${NOTO_FONTS[key].path}`;
   let bytes: Uint8Array;
   try {
-    const response = await fetch(url);
-    if (!response.ok) throw new Error(`HTTP ${response.status}`);
-    bytes = new Uint8Array(await response.arrayBuffer());
+    bytes = readFileSync(fontPath(key));
   } catch (error) {
-    console.warn(`gen-og: could not fetch ${NOTO_FONTS[key].family} (${String(error)})`);
+    if (!(error instanceof Error && "code" in error && error.code === "ENOENT")) throw error;
+    console.warn(`gen-og: missing vendored ${NOTO_FONTS[key].family} (${String(error)})`);
     return undefined;
   }
 
@@ -198,16 +179,13 @@ async function resolveFont(key: NotoKey): Promise<string | undefined> {
 
   const digest = sha256(bytes);
   if (digest !== NOTO_FONTS[key].sha256) {
-    // A mismatch means the pinned URL served something other than the vetted file; never cache it.
     console.warn(
       `gen-og: ${NOTO_FONTS[key].family} failed its integrity check (got ${digest}) — skipping`,
     );
     return undefined;
   }
 
-  mkdirSync(cacheDir, { recursive: true });
-  writeFileSync(cachePath(key), bytes);
-  return cachePath(key);
+  return fontPath(key);
 }
 
 /** The font resources a locale's card renders with. */

@@ -44,50 +44,110 @@ export function initMyBehavior(
 ### Example: Modal behavior
 
 ```typescript
-/**
- * Wire up modal state sync between host `open` attribute and `<dialog>` methods.
- * Listens for `--show`, `--close`, `--toggle` commands routed via `onCommand`.
- * When host is the dialog (CSS case), no re-dispatch; when host is wrapper (web
- * component case), re-dispatch `close` event so the host element sees it.
- *
- * @param host — Element that owns the `open` attribute
- * @param dialog — `<dialog>` to call showModal() / close() on
- * @param onCommand — Command router (e.g., ctx.onCommand in web components)
- */
-export function initModal(
-  host: Element,
-  dialog: HTMLDialogElement,
-  onCommand?: (cmd: string, detail?: unknown) => void,
-) {
-  const handleCommand = (cmd: string) => {
-    switch (cmd) {
-      case "--show":
-        host.setAttribute("open", "");
-        break;
-      case "--close":
-        host.removeAttribute("open");
-        break;
-      case "--toggle":
-        host.hasAttribute("open") ? host.removeAttribute("open") : host.setAttribute("open", "");
-        break;
-    }
-  };
+import { initModal, makeOnCommand } from "@pantoken/interactions";
 
-  if (onCommand) {
-    onCommand("--show", undefined);
-    // ... more command handling
-  }
-
-  // Return cleanup (IIFE bundles call this on unload)
-  return {
-    cleanup: () => {
-      /* remove listeners */
-    },
-  };
+const dialog = document.querySelector<HTMLDialogElement>("dialog.instui-modal");
+if (dialog) {
+  const onCommand = makeOnCommand("command" in HTMLButtonElement.prototype);
+  initModal(dialog, dialog, onCommand);
 }
 ```
 
+For CSS, the host and dialog are the same element. Web components pass a separate host and its
+shadow dialog. The production IIFE wires CSS dialogs automatically; don't initialize them twice.
+Commands call native methods before reflecting attributes, so opening enters the top layer and
+closing preserves native focus return. Initial or externally added `open` attributes are promoted
+from nonmodal display to `showModal()`. Removing `open` calls native `close()` even if the browser
+still considers the dialog modal.
+
+Native Escape/cancel policy stays with the browser and application listeners. A queued close event
+can't clear a newer open state; separate hosts still receive a bubbling `close` notification.
+
 ## Shared helpers
+
+### Progressively enhanced tooltips
+
+`initTooltip(wrapper, tip, { showDelay, hideDelay })` owns visibility once initialized.
+The production `tooltip.iife.js` initializes `.instui-tooltip` wrappers automatically; don't
+initialize the same wrapper twice. CSS-only hover/focus remains a no-JavaScript fallback, without
+Escape or delay guarantees. The helper manages `data-tooltip-managed` on the wrapper and `-show`
+on the bubble; applications shouldn't author the managed marker.
+
+Pointer hover and keyboard focus independently keep the bubble open. Moving onto the bubble
+across its visual gap doesn't close it. Escape anywhere in the owner document dismisses it and
+cancels pending timers without moving focus. It stays dismissed until both pointer and focus
+leave; the next entry can reopen it. `cancelAndHide()` uses the same dismissal policy.
+`cleanup()` removes listeners/timers and restores the original marker and show class.
+
+For initialized tooltips, `-placement-*` is a preferred side, not a guarantee: the helper tries
+the opposite side, then another side that fits, and clamps the bubble into the viewport. Text wraps
+to a viewport-bounded width. Resize, scrolling, content changes, and direction changes update
+the position. Cleanup also restores the original positioning styles. The bubble stays in its
+wrapper, so viewport fitting doesn't escape clipping ancestors. Keep tooltips concise; oversized
+content may still exceed the viewport, and long or interactive content belongs in a popover.
+Diagonal pointer travel uses a bounded corridor toward the bubble without intercepting clicks.
+Moving away or leaving the corridor ends hover, subject to the configured hide delay.
+
+Use a named, focusable trigger with `aria-describedby` pointing at the bubble's stable ID and
+`role="tooltip"` on the bubble. Keep tooltip content noninteractive; use a popover for links,
+buttons, or other controls. The web component uses the same visibility and dismissal behavior,
+including slotted-trigger focus and `show-delay`/`hide-delay` attributes.
+Web-component attribute updates preserve the current visibility/dismissal state; delay changes
+apply to the next transition without restarting an already pending timer.
+
+### Opt-in ARIA menus
+
+`initMenu(menu, button)` wires a vertical, single-level native popover with `role="menu"` and its
+native `button[popovertarget]`. Both elements must be connected in the same document or shadow
+root, with a stable menu ID. For automatic initialization, add `data-menu-navigation` to
+`.instui-menu` and load `menu.iife.js` or the combined IIFE. Exactly one native popover button
+must target each opted-in menu. Unmarked menus remain application-owned; there's no menu custom
+element to register.
+
+Enter/Space use the button's native popover activation. Arrow Down opens at the first item; Arrow
+Up opens at the last. Opening focuses an item and synchronizes `aria-expanded`, `aria-haspopup`,
+and `aria-controls`. Within the menu, Up/Down wrap, Home/End reach the ends, and printable
+characters cycle to the next label starting with that character. Vertical navigation is the same
+in RTL. Escape dismisses and returns focus; Tab/Shift+Tab dismiss without canceling normal
+sequential navigation. Native outside-click dismissal doesn't steal the new focus.
+
+Use `menuitem` for commands, `menuitemcheckbox`/`menuitemradio` with `aria-checked` for checked
+actions, and `separator` for dividers. Applications own click actions and checked state. Enter
+and pointer activation dismiss; Space on a checkable item keeps the menu open. Cancel a click
+with `preventDefault()` to keep it open. Application focus changes aren't overwritten.
+ARIA-disabled items remain focusable but cannot activate; native-disabled, hidden, and inert
+items are skipped. A CSS `-disabled` modifier alone doesn't convey disabled semantics.
+
+Submenus, menubars, and horizontal menus aren't supported. Cleanup removes listeners and restores
+the original trigger ARIA attributes and item tab indices. Reinitialize after changing IDs,
+trigger relationships, or the menu's semantic structure. Menu behavior isn't an authorization
+boundary: applications must authorize every action independently.
+
+The keyboard contract follows the [APG menu button](https://www.w3.org/WAI/ARIA/apg/patterns/menu-button/)
+and [menu](https://www.w3.org/WAI/ARIA/apg/patterns/menubar/) patterns.
+
+### Opt-in native form validation
+
+`initFormField(host, control, error)` uses a native input, select, or textarea's constraints and
+`setCustomValidity()` result; it doesn't choose validation rules or error text. Supply a separate
+error element inside the field, with nonempty text and a stable, unique ID.
+
+The helper keeps untouched fields quiet. Blur, a native `invalid` event, or `handle.validate()`
+reveals and associates an invalid field's error through `aria-describedby` and sets `aria-invalid`.
+Afterward, input events revalidate, preserving hint references and removing the error when corrected.
+Form reset returns the field to pristine state; canceled resets keep the current state. Cleanup
+removes listeners and restores the initial ARIA attributes, invalid modifier, and error visibility.
+Reinitialize after changing the error ID or moving the control to another form.
+
+For automatic initialization, load `form-field.iife.js` (or the combined IIFE) and add
+`data-native-validation` to `.instui-form-field`. Each opted-in field needs exactly one native
+control and one `.instui-form-field-message.-type-error` (or `-type-new-error`) with an ID.
+Without that marker, application-owned validation stays untouched. There's no form-field custom
+element to wire; consumers can call the same helper within their own DOM.
+
+Client-side constraints aren't a security boundary. Applications still validate submitted values
+on the server. An error element's `hidden` attribute takes precedence over the field's CSS
+error-display rules.
 
 ### Close-button targets
 
@@ -119,6 +179,29 @@ applySpacing(el, ["margin", "padding"]);
 // el with margin="md" padding="sm" → inline styles set
 ```
 
+### Tree browser
+
+The tree-browser interaction follows InstUI's application-tree contract: a named `role="tree"`
+root owns focusable `role="treeitem"` nodes, and collections own `role="group"` containers.
+Load `@pantoken/interactions/tree-browser.js` (or its CDN IIFE) for CSS trees. The web component
+delegates to the same `initTreeBrowser` behavior and exposes the tree role on the host so its
+accessible name and slotted items stay in one DOM tree. Load the component stylesheet for slotted
+item visuals; the shadow shell and `tree-browser` part remain available.
+
+The behavior maintains one tab stop, skips hidden/disabled entries, supports Up/Down (also j/k),
+Home/End, RTL-aware Left/Right expansion, and Enter/Space activation. Focus doesn't select.
+Selection is off by default; supplying `aria-selected` opts into single selection. Pointer
+activation expands collections; keyboard activation selects instead when selection is enabled.
+Native `<details>` disclosure markup keeps its CSS-only styling, but isn't an ARIA tree and mustn't
+claim tree/group roles without treeitems and keyboard behavior. Clean up and reinitialize the
+manual behavior after replacing tree markup.
+
+The authored examples use the [W3C navigation-tree pattern](https://www.w3.org/WAI/ARIA/apg/patterns/treeview/examples/treeview-navigation/):
+each collection row references a sibling group with `aria-owns`. This preserves the accessible
+hierarchy while keeping the collection's visible label separate from descendant item labels.
+Both owned sibling groups and directly nested groups work with the behavior. Owned groups must
+be inside the same tree, have a unique ID, and not contain their owning row.
+
 ## Authoring IIFE entry points
 
 ### Auto-generation
@@ -142,6 +225,20 @@ Add your behavior to the skip list if you're hand-authoring:
 // scripts/generate-components.ts
 const SKIP = ["modal", "tooltip", "in-place-edit", "close-button"];
 ```
+
+### Class prefix
+
+Entry points never hard-code `instui-`. Author selectors with the `pfx-` sentinel (`.pfx-button`) and
+resolve them through `sel()` from `src/shared/prefix.ts`, which swaps the sentinel for the active
+prefix at runtime (`""` yields an unprefixed `.button`). The IIFE reads its prefix from the loading
+script's `data-prefix` attribute, then `globalThis.PANTOKEN_PREFIX`, then the `instui` default:
+
+```html
+<script src=".../interactions.iife.js" data-prefix="acme"></script>
+```
+
+Behaviors that touch prefixed classes (`initCloseButton`, `initRemove`) take a `prefix` option
+instead. Token custom properties (`--instui-*`) aren't prefix-swapped, matching `@pantoken/components`.
 
 ### Hand-authored entries
 

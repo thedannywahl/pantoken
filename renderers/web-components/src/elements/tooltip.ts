@@ -2,14 +2,13 @@ import { tooltipCss } from "@pantoken/components";
 import { initTooltip } from "@pantoken/interactions";
 import type { ElementDefinition } from "../lib/context.ts";
 import tooltipGate from "./tooltip.css?inline";
-import { esc, frag } from "../lib/helpers.ts";
+import { frag } from "../lib/helpers.ts";
 
 /**
  * `<instui-tooltip>` — wraps a slotted trigger and shows a `.tip` bubble (from the `tip` attribute)
  * on hover/focus. `placement` maps to `-placement-<value>` (e.g. `bottom`, `end`); `show-delay` and
- * `hide-delay` (ms, default 0) gate the reveal/hide, and Escape dismisses it. JS owns the timing:
- * a `.-show`-gated `!important` override neutralizes the pure-CSS `:hover`/`:focus-within` auto-show
- * so the delay actually applies.
+ * `hide-delay` (ms, default 0) gate the reveal/hide. Shared behavior owns visibility; Escape
+ * dismisses until both pointer and focus leave. Tooltip content is noninteractive.
  *
  * @example
  * ```html
@@ -28,13 +27,10 @@ export const tooltip: ElementDefinition = {
         static observedAttributes = ["tip", "placement", "show-delay", "hide-delay"];
         #handle: { cleanup(): void; cancelAndHide(): void } | undefined;
         #bubble: HTMLElement | null = null;
+        #options = { showDelay: 0, hideDelay: 0 };
         constructor() {
           super();
           this.attachShadow({ mode: "open" });
-          // Bound once on the host — catches Escape bubbling from the slotted light-DOM trigger.
-          this.addEventListener("keydown", (e) => {
-            if (e.key === "Escape") this.#handle?.cancelAndHide();
-          });
         }
         connectedCallback(): void {
           this.paint();
@@ -44,26 +40,31 @@ export const tooltip: ElementDefinition = {
         }
         disconnectedCallback(): void {
           this.#handle?.cleanup();
+          this.#handle = undefined;
         }
         paint(): void {
-          this.#handle?.cleanup();
           const root = this.shadowRoot;
           if (!root) return;
-          const tip = esc(this.getAttribute("tip") ?? "");
           const placement = frag(this.getAttribute("placement"));
           const tipCls = placement ? `tip -placement-${placement}` : "tip";
-          root.innerHTML =
-            `<style>:host{display:inline-flex}${tooltipCss(ctx.I)}${tooltipGate}</style>` +
-            `<span class="instui-tooltip" part="tooltip"><slot></slot>` +
-            `<span class="${tipCls}" role="tooltip">${tip}</span></span>`;
+          if (!this.#bubble) {
+            root.innerHTML =
+              `<style>:host{display:inline-flex}${tooltipCss(ctx.I)}${tooltipGate}</style>` +
+              `<span class="instui-tooltip" part="tooltip"><slot></slot>` +
+              `<span class="tip" role="tooltip"></span></span>`;
+            this.#bubble = root.querySelector<HTMLElement>(".tip");
+          }
           const wrap = root.querySelector<HTMLElement>(".instui-tooltip");
-          this.#bubble = root.querySelector<HTMLElement>(".tip");
           if (!wrap || !this.#bubble) return;
-          // Listeners sit on the fresh shadow wrapper rebuilt each paint, so they never accumulate.
-          this.#handle = initTooltip(wrap, this.#bubble, {
-            showDelay: Number(this.getAttribute("show-delay")) || 0,
-            hideDelay: Number(this.getAttribute("hide-delay")) || 0,
-          });
+          const shown = this.#bubble.classList.contains("-show");
+          this.#bubble.className = tipCls;
+          this.#bubble.classList.toggle("-show", shown);
+          this.#bubble.textContent = this.getAttribute("tip") ?? "";
+          this.#options.showDelay = Number(this.getAttribute("show-delay")) || 0;
+          this.#options.hideDelay = Number(this.getAttribute("hide-delay")) || 0;
+          // Retain interaction state across attribute updates, especially Escape dismissal.
+          if (this.isConnected && !this.#handle)
+            this.#handle = initTooltip(wrap, this.#bubble, this.#options);
         }
       },
     );

@@ -1,6 +1,6 @@
 // Benchmarks for `@pantoken/core` — the one source transformation every downstream package sits on.
 // `buildTokens` reads the upstream Instructure design tokens + ui-icons and produces the canonical IR,
-// so its cost is paid by every `vp run -r build`; the icon layer and the reference flattening that
+// so its cost is paid by every `vp run -r --concurrency-limit 1 build`; the icon layer and the reference flattening that
 // feeds the native lineage are measured separately so a regression can be attributed to a layer.
 import { test, describe } from "vite-plus/test";
 import { applyModify } from "../packages/core/src/color.ts";

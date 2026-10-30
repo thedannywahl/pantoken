@@ -65,12 +65,12 @@ test("register honors a custom prefix", () => {
   expect(definedTags({ prefix: "x" })).toEqual(ELEMENTS.map((base) => `x-${base}`));
 });
 
-test("an empty or nullish prefix falls back to the default instui- prefix", () => {
+test("an empty or nullish prefix (untyped JS callers) falls back to the default instui- prefix", () => {
   // A prefix is required (custom-element names need a hyphen), so a blank one can't drop it.
   const expected = ELEMENTS.map((base) => `instui-${base}`);
   expect(definedTags({ prefix: "" })).toEqual(expected);
   expect(definedTags({ prefix: "   " })).toEqual(expected);
-  expect(definedTags({ prefix: null })).toEqual(expected);
+  expect(definedTags({ prefix: null as unknown as string })).toEqual(expected);
 });
 
 test("only registers just the requested subset", () => {

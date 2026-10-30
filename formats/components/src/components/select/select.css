@@ -1,6 +1,7 @@
 /**
  * @component simple-select
  * @selector .pfx-simple-select
+ * @a11y It keeps native `<select>` semantics and keyboard behavior; associate it with a visible `<label>`, and check that the customized popup keeps a visible focus indicator and sufficient contrast.
  * @summary Experimental CSS Customizable Select (`appearance: base-select`, Chrome 135+, not yet Baseline). Enhances .pfx-simple-select; degrades to the plain control where unsupported.
  */
 @scope (.pfx-simple-select) {

@@ -12,10 +12,12 @@ test("progress bar meter colours are distinct semantic backgrounds on the root, 
   const css = norm(progressCss({ prefix: "instui" }));
   // Meter rules are nested inside @scope, paired with deprecated -meter-color-* aliases via :is().
   expect(css).toMatch(
-    /&:is\(\.-color-success,\s*\.-meter-color-success\)\s*>\s*\.bar\s*\{\s*background:\s*var\(--instui-color-background-success\)/u,
+    /&:is\(\.-color-success,\s*\.-meter-color-success\)\s*\{\s*--pantoken-progress-fill:\s*var\(--instui-color-background-success\)/u,
   );
   expect(css).toContain("var(--instui-color-background-error)");
-  expect(css).toMatch(/&\.-should-animate\s*>\s*\.bar\s*\{\s*transition:\s*all\s*0\.5s/u);
+  expect(css).toMatch(
+    /&\.-should-animate\s*>\s*\.bar\s*\{\s*@media \(prefers-reduced-motion: no-preference\)\s*\{\s*transition:\s*all\s*0\.5s/u,
+  );
   expect(css).toContain("--value: var(--value-now)");
   expect(css).toContain("--min: 0");
   expect(css).toContain("--max: var(--value-max)");
@@ -39,12 +41,12 @@ test("progress bar has sizes, the full meter palette, and an inverse scheme", ()
   expect(css).toContain("@scope (.instui-progress)");
   // Meter colour modifiers are nested inside @scope, paired with deprecated -meter-color-* aliases.
   expect(css).toMatch(
-    /&:is\(\.-color-info,\s*\.-meter-color-info\)\s*>\s*\.bar\s*\{[\s\S]*background:/u,
+    /&:is\(\.-color-info,\s*\.-meter-color-info\)\s*\{[\s\S]*--pantoken-progress-fill:/u,
   );
   expect(css).toMatch(
-    /&:is\(\.-color-warning,\s*\.-meter-color-warning,\s*\.-meter-color-alert\)\s*>\s*\.bar/u,
+    /&:is\(\.-color-warning,\s*\.-meter-color-warning,\s*\.-meter-color-alert\)/u,
   );
-  expect(css).toMatch(/&:is\(\.-color-danger,\s*\.-meter-color-danger\)\s*>\s*\.bar/u);
+  expect(css).toMatch(/&:is\(\.-color-danger,\s*\.-meter-color-danger\)/u);
   // color="primary-inverse": full border + inverse track/meter, overriding meterColor.
   expect(css).toMatch(/&\.-color-primary-inverse\s*\{[\s\S]*border-color:/u);
   expect(css).toContain("var(--instui-component-progress-bar-border-color)");

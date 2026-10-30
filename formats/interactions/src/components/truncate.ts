@@ -4,6 +4,7 @@
 
 import { applySpacing } from "../shared/index.js";
 import { initTruncateAuto } from "../behaviors/truncate.js";
+import { sel } from "../shared/prefix.js";
 
 function wantsAutoLines(el: HTMLElement): boolean {
   const lines = (el.getAttribute("lines") ?? "").trim().toLowerCase();
@@ -14,7 +15,7 @@ function wantsAutoLines(el: HTMLElement): boolean {
 function inittruncate() {
   // `-truncate` is chainable onto any component (`.instui-button.-truncate`), so match both the
   // bare utility class and the bare modifier class, not just `.instui-truncate`.
-  for (const el of document.querySelectorAll(".instui-truncate, .-truncate")) {
+  for (const el of document.querySelectorAll(sel(".pfx-truncate, .-truncate"))) {
     const host = el as HTMLElement;
     applySpacing(host);
     if (wantsAutoLines(host)) initTruncateAuto(host, host);

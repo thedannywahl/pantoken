@@ -1,5 +1,6 @@
 /**
  * @component billboard
+ * @a11y Render the `.heading` as a real heading element. A `-clickable` billboard only gains hover styling, so give it `tabindex="0"`, an appropriate role, and a keyboard handler.
  * @summary A large empty-state or call-to-action block: a hero icon or image, a heading, and a message.
  * @remarks The `.hero`/`.heading`/`.message` parts are composed by the consumer's markup, not enforced structure; `-clickable` only adds hover styling, so a real click target still needs `tabindex` and a keyboard handler.
  * @modifier -clickable — Interactive (clickable) styling with hover feedback.
@@ -14,7 +15,7 @@
  * @part .heading — The billboard heading.
  * @part .message — The supporting message.
  * @compat Contains its element styles with the CSS `@scope` at-rule; needs a recent Chromium, Firefox, or Safari.
- * @example
+ * @example -canvas-rce -docs
  * ```html
  * <div class="pfx-billboard -size-md -clickable" tabindex="0">
  *   <span class="hero -icon-inbox"></span>
@@ -29,6 +30,29 @@
  *   .message {}
  * }
  * @todo `instructure-design-tokens` is missing several values defined in the `Billboard` component, so we hardcode them here for now. When the tokens are added, we should remove the hardcoded values and use the tokens instead.
+ * @example -automatica11y
+ * ```html
+ * <div class="pfx-billboard -size-sm">
+ *   <span class="hero -icon-inbox" aria-hidden="true"></span>
+ *   <h2 class="heading">Small empty state</h2>
+ *   <div class="message">Create your first item to get started.</div>
+ * </div>
+ * <div class="pfx-billboard -size-md">
+ *   <span class="hero -icon-inbox" aria-hidden="true"></span>
+ *   <h2 class="heading">Medium empty state</h2>
+ *   <div class="message">Create your first item to get started.</div>
+ * </div>
+ * <div class="pfx-billboard -size-lg">
+ *   <span class="hero -icon-inbox" aria-hidden="true"></span>
+ *   <h2 class="heading">Large empty state</h2>
+ *   <div class="message">Create your first item to get started.</div>
+ * </div>
+ * <a class="pfx-billboard -clickable" href="#create-item" aria-labelledby="create-item-heading">
+ *   <span class="hero -icon-inbox" aria-hidden="true"></span>
+ *   <h2 class="heading" id="create-item-heading">Create an item</h2>
+ *   <div class="message">Open the item creation page.</div>
+ * </a>
+ * ```
  */
 .pfx-billboard {
   display: block;

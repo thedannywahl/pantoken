@@ -222,11 +222,58 @@ test("button-set cascades -color-secondary to unmodified children only", () => {
   expect(css).not.toContain(".instui-button-set.-color-secondary > .instui-button.-color-primary");
 });
 
+test.each([
+  ["sm", "small"],
+  ["md", "medium"],
+  ["lg", "large"],
+])("button-set -size-%s preserves a per-button square trigger", (size, tokenSize) => {
+  for (const prefix of ["instui-", "my-", ""]) {
+    const css = buttonSetRules(prefix);
+    const selector = `.${prefix}button-set.-size-${size}`;
+    const squareRule = css
+      .split("}")
+      .find(
+        (rule) =>
+          rule.includes(selector) &&
+          rule.includes(".-shape-square") &&
+          rule.includes("inline-size:"),
+      );
+    expect(squareRule).toBeDefined();
+    expect(squareRule).toContain(`> .${prefix}button:not([class*="-size-"])`);
+    expect(squareRule).toContain(
+      `inline-size: var(--instui-component-base-button-${tokenSize}-height);`,
+    );
+    expect(css).toContain(
+      `${selector} > .${prefix}button:not([class*="-size-"]) {\n  font-size: var(--instui-component-base-button-${tokenSize}-font-size);\n  min-height: var(--instui-component-base-button-${tokenSize}-height);`,
+    );
+  }
+});
+
 test("button-set never cascades -icon-* from the group", () => {
   const css = buttonSetRules("instui-");
   expect(css).not.toMatch(/\.instui-button-set\.-icon-/u);
   expect(css).toContain(':is([class^="-icon-"], [class*=" -icon-"])');
   expect(css).not.toContain('[class*="-icon-"]');
+});
+
+test.each([
+  ["sm", "small"],
+  ["md", "medium"],
+  ["lg", "large"],
+])("button-set -width-half follows -size-%s without overriding child sizes", (size, tokenSize) => {
+  for (const prefix of ["instui-", "my-", ""]) {
+    const css = buttonSetRules(prefix);
+    const group = `.${prefix}button-set.${prefix}button-set`;
+    const button = `.${prefix}button.${prefix}button.${prefix}button.-width-half`;
+    expect(css).toContain(
+      `${group}.-size-${size}\n  > ${button}:not([class*="-size-"]),\n${group} > ${button}.-size-${size} {\n  inline-size: calc(var(--instui-component-base-button-${tokenSize}-height) / 2);`,
+    );
+    expect(css).toContain(
+      `${group} > ${button} {\n  inline-size: calc(var(--instui-component-base-button-medium-height) / 2);\n  aspect-ratio: auto;\n  padding-inline: 0;\n  gap: 0;`,
+    );
+    expect(css).toContain(`${group} > ${button}::before {\n  inline-size: min(1em, 100%);`);
+    expect(css).not.toContain(`.${prefix}button-set.-width-half`);
+  }
 });
 
 test("button-set references only real tokens per theme", () => {
