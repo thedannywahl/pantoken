@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: pantoken\n"
-"PO-Revision-Date: 2026-10-29 17:56+0000\n"
+"PO-Revision-Date: 2026-10-29 23:27+0000\n"
 "Last-Translator: pantoken localization engine\n"
 "Language-Team: pantoken\n"
 "MIME-Version: 1.0\n"
@@ -32397,3 +32397,25 @@ msgstr "ns"
 msgctxt "docs.api:text"
 msgid "withPrefix"
 msgstr "withPrefix"
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "target-size"
+msgstr "target-size"
+
+msgctxt "docs.api:prose"
+msgid "Its own chained modifiers (`-color-*`, `-size-*`, `-shape-*`, `-toggle`, `-condensed`,\n  `-without-background`, `-without-border`, `-display-block`) set a default for every child\n  `.instui-button` that doesn't carry its own modifier in that same category — a button's own\n  modifier class always wins over the group's default. `-icon-*` is always per-button; it's\n  never read from the group. Deprecated button aliases (`-ghost`, `-color-primary-inverse`)\n  aren't supported as group-level modifiers — use their canonical replacements\n  (`-color-tertiary`, `-on-color`) instead. Each join shows a single 1px seam in the buttons'\n  own border color (solid fills, whose border matches the fill, tint it with the label color).\n  `-without-seam` is group-only: it hides that seam so the buttons read as\n  one continuous control.\n  Put `-width-half` on an individual icon-only child button for a split-action\n  trigger with half the standard square width and the full button height."
+msgstr "ตัวปรับแต่งแบบเชื่อมโยงของกลุ่มเอง (`-color-*`, `-size-*`, `-shape-*`, `-toggle`, `-condensed`,\n  `-without-background`, `-without-border`, `-display-block`) จะกำหนดค่าเริ่มต้นให้กับลูกทุกตัว\n  `.instui-button` ที่ไม่มีตัวปรับแต่งของตัวเองในหมวดหมู่เดียวกัน — คลาสตัวปรับแต่งของปุ่มเอง\n  จะมีลำดับความสำคัญเหนือค่าเริ่มต้นของกลุ่มเสมอ `-icon-*` ใช้กับปุ่มแต่ละปุ่มเสมอ; จะ\n  ไม่อ่านค่าจากกลุ่ม ไม่รองรับนามแฝงของปุ่มที่เลิกใช้แล้ว (`-ghost`, `-color-primary-inverse`)\n  ในฐานะตัวปรับแต่งระดับกลุ่ม — ให้ใช้ชื่อทดแทนมาตรฐานแทน\n  (`-color-tertiary`, `-on-color`) แทน รอยต่อแต่ละจุดจะแสดงเส้นแบ่งหนา 1px ด้วยสีเส้นขอบของปุ่มเอง (สีพื้นทึบซึ่งมีเส้นขอบสีเดียวกับพื้นจะถูกแต้มสีด้วยสีข้อความ).\n  `-without-seam` ใช้ได้เฉพาะกับกลุ่ม: ซ่อนเส้นแบ่งนั้นเพื่อให้ปุ่มดูเป็น\n  ตัวควบคุมเดียวที่ต่อเนื่องกัน\n  ใส่ `-width-half` ให้กับปุ่มลูกที่มีเฉพาะไอคอนแต่ละปุ่ม เพื่อสร้าง\n  ปุ่มทริกเกอร์สำหรับการทำงานแบบแยกที่มีความกว้างครึ่งหนึ่งของปุ่มสี่เหลี่ยมมาตรฐานและมีความสูงเท่ากับปุ่มเต็ม"
+
+msgctxt "docs.api:prose"
+msgid "Use a labelled group for related actions; when buttons represent a toggle choice, expose each state with aria-pressed. Give icon-only buttons an accessible name. Half-width triggers are narrow targets (16px, 20px, or 24px at the standard sizes); ensure sufficient target spacing or use a full-width square button for touch interfaces."
+msgstr "ใช้กลุ่มที่มีป้ายกำกับสำหรับการทำงานที่เกี่ยวข้องกัน เมื่อปุ่มใช้แทนตัวเลือกแบบสลับ ให้แสดงสถานะแต่ละสถานะด้วย aria-pressed ตั้งชื่อที่เข้าถึงได้ให้ปุ่มที่มีเฉพาะไอคอน ปุ่มทริกเกอร์แบบครึ่งความกว้างเป็นเป้าหมายขนาดเล็ก (16px, 20px หรือ 24px ที่ขนาดมาตรฐาน); ตรวจสอบให้มีระยะห่างระหว่างเป้าหมายเพียงพอ หรือใช้ปุ่มสี่เหลี่ยมเต็มความกว้างสำหรับอินเทอร์เฟซแบบสัมผัส"
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "WCAG 2.2 2.5.8"
+msgstr "WCAG 2.2 2.5.8"
+
+msgctxt "docs.api:prose"
+msgid "All touch targets must be 24px large, or leave sufficient space"
+msgstr "เป้าหมายการสัมผัสทั้งหมดต้องมีขนาด 24px หรือเว้นระยะห่างให้เพียงพอ"

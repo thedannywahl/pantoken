@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: pantoken\n"
-"PO-Revision-Date: 2026-10-29 19:28+0000\n"
+"PO-Revision-Date: 2026-10-29 23:32+0000\n"
 "Last-Translator: pantoken localization engine\n"
 "Language-Team: pantoken\n"
 "MIME-Version: 1.0\n"
@@ -32396,3 +32396,25 @@ msgstr "ns"
 msgctxt "docs.api:text"
 msgid "withPrefix"
 msgstr "withPrefix"
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "target-size"
+msgstr "target-size"
+
+msgctxt "docs.api:prose"
+msgid "Its own chained modifiers (`-color-*`, `-size-*`, `-shape-*`, `-toggle`, `-condensed`,\n  `-without-background`, `-without-border`, `-display-block`) set a default for every child\n  `.instui-button` that doesn't carry its own modifier in that same category — a button's own\n  modifier class always wins over the group's default. `-icon-*` is always per-button; it's\n  never read from the group. Deprecated button aliases (`-ghost`, `-color-primary-inverse`)\n  aren't supported as group-level modifiers — use their canonical replacements\n  (`-color-tertiary`, `-on-color`) instead. Each join shows a single 1px seam in the buttons'\n  own border color (solid fills, whose border matches the fill, tint it with the label color).\n  `-without-seam` is group-only: it hides that seam so the buttons read as\n  one continuous control.\n  Put `-width-half` on an individual icon-only child button for a split-action\n  trigger with half the standard square width and the full button height."
+msgstr "Các modifier theo chuỗi riêng của nó (`-color-*`, `-size-*`, `-shape-*`, `-toggle`, `-condensed`,\n  `-without-background`, `-without-border`, `-display-block`) đặt giá trị mặc định cho mọi phần tử con\n  `.instui-button` không có modifier riêng trong cùng danh mục đó — modifier riêng của nút luôn được ưu tiên hơn giá trị mặc định của nhóm. `-icon-*` luôn áp dụng cho từng nút; nó\n  không bao giờ được lấy từ nhóm. Các bí danh nút đã lỗi thời (`-ghost`, `-color-primary-inverse`)\n  không được hỗ trợ làm modifier cấp nhóm — hãy dùng các phương án thay thế chuẩn\n  (`-color-tertiary`, `-on-color`) thay thế. Mỗi điểm nối tạo ra một đường nối 1px duy nhất có màu viền riêng của các nút (các màu tô đặc, có viền trùng màu tô, sẽ được nhuộm theo màu nhãn).\n  `-without-seam` chỉ dành cho nhóm: nó ẩn đường nối đó để các nút trông như\n  một điều khiển liền mạch.\n  Đặt `-width-half` lên một nút con riêng lẻ chỉ có biểu tượng để tạo\n  nút kích hoạt hành động phân tách, rộng bằng một nửa kích thước hình vuông tiêu chuẩn và cao bằng toàn bộ chiều cao của nút."
+
+msgctxt "docs.api:prose"
+msgid "Use a labelled group for related actions; when buttons represent a toggle choice, expose each state with aria-pressed. Give icon-only buttons an accessible name. Half-width triggers are narrow targets (16px, 20px, or 24px at the standard sizes); ensure sufficient target spacing or use a full-width square button for touch interfaces."
+msgstr "Dùng nhóm có nhãn cho các hành động liên quan; khi các nút biểu thị lựa chọn bật/tắt, hãy thể hiện từng trạng thái bằng aria-pressed. Đặt tên dễ truy cập cho các nút chỉ có biểu tượng. Nút kích hoạt rộng một nửa là mục tiêu chạm hẹp (16px, 20px hoặc 24px ở các kích thước tiêu chuẩn); hãy đảm bảo khoảng cách giữa các mục tiêu đủ rộng hoặc dùng nút vuông có chiều rộng đầy đủ cho giao diện cảm ứng."
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "WCAG 2.2 2.5.8"
+msgstr "WCAG 2.2 2.5.8"
+
+msgctxt "docs.api:prose"
+msgid "All touch targets must be 24px large, or leave sufficient space"
+msgstr "Tất cả mục tiêu chạm phải có kích thước tối thiểu 24px hoặc phải có đủ khoảng cách"

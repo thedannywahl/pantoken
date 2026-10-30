@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: pantoken\n"
-"PO-Revision-Date: 2026-10-29 17:10+0000\n"
+"PO-Revision-Date: 2026-10-29 23:26+0000\n"
 "Last-Translator: pantoken localization engine\n"
 "Language-Team: pantoken\n"
 "MIME-Version: 1.0\n"
@@ -32395,3 +32395,25 @@ msgstr "ns"
 msgctxt "docs.api:text"
 msgid "withPrefix"
 msgstr "withPrefix"
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "target-size"
+msgstr "target-size"
+
+msgctxt "docs.api:prose"
+msgid "Its own chained modifiers (`-color-*`, `-size-*`, `-shape-*`, `-toggle`, `-condensed`,\n  `-without-background`, `-without-border`, `-display-block`) set a default for every child\n  `.instui-button` that doesn't carry its own modifier in that same category — a button's own\n  modifier class always wins over the group's default. `-icon-*` is always per-button; it's\n  never read from the group. Deprecated button aliases (`-ghost`, `-color-primary-inverse`)\n  aren't supported as group-level modifiers — use their canonical replacements\n  (`-color-tertiary`, `-on-color`) instead. Each join shows a single 1px seam in the buttons'\n  own border color (solid fills, whose border matches the fill, tint it with the label color).\n  `-without-seam` is group-only: it hides that seam so the buttons read as\n  one continuous control.\n  Put `-width-half` on an individual icon-only child button for a split-action\n  trigger with half the standard square width and the full button height."
+msgstr "Sus propios modificadores encadenados (`-color-*`, `-size-*`, `-shape-*`, `-toggle`, `-condensed`,\n  `-without-background`, `-without-border`, `-display-block`) establecen un valor predeterminado para cada elemento secundario\n  `.instui-button` que no tenga su propio modificador en esa misma categoría; la clase de modificador propio de un botón siempre prevalece sobre el valor predeterminado del grupo. `-icon-*` siempre se aplica a cada botón; nunca se toma del grupo. Los alias obsoletos de botones (`-ghost`, `-color-primary-inverse`)\n  no se admiten como modificadores a nivel de grupo; usa sus reemplazos canónicos\n  (`-color-tertiary`, `-on-color`) en su lugar. Cada unión muestra una línea de separación de 1px en el color del borde propio de los botones (los rellenos sólidos, cuyo borde coincide con el relleno, la tiñen con el color de la etiqueta).\n  `-without-seam` solo se aplica al grupo: oculta esa línea de separación para que los botones se vean como\n  un único control continuo.\n  Coloca `-width-half` en un botón secundario individual de solo icono para crear un activador de acción dividida\n  con la mitad del ancho cuadrado estándar y la altura completa del botón."
+
+msgctxt "docs.api:prose"
+msgid "Use a labelled group for related actions; when buttons represent a toggle choice, expose each state with aria-pressed. Give icon-only buttons an accessible name. Half-width triggers are narrow targets (16px, 20px, or 24px at the standard sizes); ensure sufficient target spacing or use a full-width square button for touch interfaces."
+msgstr "Usa un grupo con etiqueta para las acciones relacionadas; cuando los botones representen una opción de alternancia, indica cada estado con aria-pressed. Asigna un nombre accesible a los botones de solo icono. Los activadores de medio ancho son objetivos estrechos (16px, 20px o 24px en los tamaños estándar); asegúrate de que haya suficiente espacio entre objetivos o usa un botón cuadrado de ancho completo para interfaces táctiles."
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "WCAG 2.2 2.5.8"
+msgstr "WCAG 2.2 2.5.8"
+
+msgctxt "docs.api:prose"
+msgid "All touch targets must be 24px large, or leave sufficient space"
+msgstr "Todos los objetivos táctiles deben medir al menos 24px o dejar suficiente espacio"

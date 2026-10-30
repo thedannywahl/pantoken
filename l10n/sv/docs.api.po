@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: pantoken\n"
-"PO-Revision-Date: 2026-10-29 17:34+0000\n"
+"PO-Revision-Date: 2026-10-29 23:27+0000\n"
 "Last-Translator: pantoken localization engine\n"
 "Language-Team: pantoken\n"
 "MIME-Version: 1.0\n"
@@ -32397,3 +32397,25 @@ msgstr "ns"
 msgctxt "docs.api:text"
 msgid "withPrefix"
 msgstr "withPrefix"
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "target-size"
+msgstr "target-size"
+
+msgctxt "docs.api:prose"
+msgid "Its own chained modifiers (`-color-*`, `-size-*`, `-shape-*`, `-toggle`, `-condensed`,\n  `-without-background`, `-without-border`, `-display-block`) set a default for every child\n  `.instui-button` that doesn't carry its own modifier in that same category — a button's own\n  modifier class always wins over the group's default. `-icon-*` is always per-button; it's\n  never read from the group. Deprecated button aliases (`-ghost`, `-color-primary-inverse`)\n  aren't supported as group-level modifiers — use their canonical replacements\n  (`-color-tertiary`, `-on-color`) instead. Each join shows a single 1px seam in the buttons'\n  own border color (solid fills, whose border matches the fill, tint it with the label color).\n  `-without-seam` is group-only: it hides that seam so the buttons read as\n  one continuous control.\n  Put `-width-half` on an individual icon-only child button for a split-action\n  trigger with half the standard square width and the full button height."
+msgstr "Dess egna kedjade modifierare (`-color-*`, `-size-*`, `-shape-*`, `-toggle`, `-condensed`,\n  `-without-background`, `-without-border`, `-display-block`) anger standardvärden för varje underordnat element\n  `.instui-button` som inte har en egen modifierare i samma kategori — en knapps egen modifierarklass har alltid företräde framför gruppens standardvärde. `-icon-*` är alltid per knapp; den\n  läses aldrig från gruppen. Föråldrade knappalias (`-ghost`, `-color-primary-inverse`)\n  stöds inte som modifierare på gruppnivå — använd i stället deras kanoniska ersättningar\n  (`-color-tertiary`, `-on-color`) . Varje sammanfogning visar en enda 1px-skarv i knapparnas egen kantfärg (fyllningar där kanten har samma färg som fyllningen tonas med etikettfärgen).\n  `-without-seam` gäller endast för gruppen: den döljer skarven så att knapparna uppfattas som\n  ett enda sammanhängande reglage.\n  Placera `-width-half` på en enskild ikonknapp utan text för en delad åtgärdsutlösare med halva den vanliga kvadratiska bredden och full knapphöjd."
+
+msgctxt "docs.api:prose"
+msgid "Use a labelled group for related actions; when buttons represent a toggle choice, expose each state with aria-pressed. Give icon-only buttons an accessible name. Half-width triggers are narrow targets (16px, 20px, or 24px at the standard sizes); ensure sufficient target spacing or use a full-width square button for touch interfaces."
+msgstr "Använd en grupp med en etikett för relaterade åtgärder. När knapparna representerar ett växlingsval ska varje tillstånd exponeras med aria-pressed. Ge knappar utan text med enbart ikon ett tillgängligt namn. Utlösare med halv bredd är smala mål (16px, 20px eller 24px vid standardstorlekarna); se till att målen har tillräckligt avstånd eller använd en kvadratisk knapp i full bredd för pekskärmar."
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "WCAG 2.2 2.5.8"
+msgstr "WCAG 2.2 2.5.8"
+
+msgctxt "docs.api:prose"
+msgid "All touch targets must be 24px large, or leave sufficient space"
+msgstr "Alla pekmål måste vara minst 24px stora eller ha tillräckligt med mellanrum"

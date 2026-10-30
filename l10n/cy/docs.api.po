@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: pantoken\n"
-"PO-Revision-Date: 2026-10-29 19:52+0000\n"
+"PO-Revision-Date: 2026-10-29 23:32+0000\n"
 "Last-Translator: pantoken localization engine\n"
 "Language-Team: pantoken\n"
 "MIME-Version: 1.0\n"
@@ -32396,3 +32396,25 @@ msgstr "ns"
 msgctxt "docs.api:text"
 msgid "withPrefix"
 msgstr "withPrefix"
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "target-size"
+msgstr "target-size"
+
+msgctxt "docs.api:prose"
+msgid "Its own chained modifiers (`-color-*`, `-size-*`, `-shape-*`, `-toggle`, `-condensed`,\n  `-without-background`, `-without-border`, `-display-block`) set a default for every child\n  `.instui-button` that doesn't carry its own modifier in that same category — a button's own\n  modifier class always wins over the group's default. `-icon-*` is always per-button; it's\n  never read from the group. Deprecated button aliases (`-ghost`, `-color-primary-inverse`)\n  aren't supported as group-level modifiers — use their canonical replacements\n  (`-color-tertiary`, `-on-color`) instead. Each join shows a single 1px seam in the buttons'\n  own border color (solid fills, whose border matches the fill, tint it with the label color).\n  `-without-seam` is group-only: it hides that seam so the buttons read as\n  one continuous control.\n  Put `-width-half` on an individual icon-only child button for a split-action\n  trigger with half the standard square width and the full button height."
+msgstr "Mae ei addaswyr cadwynedig ei hun (`-color-*`, `-size-*`, `-shape-*`, `-toggle`, `-condensed`,\n  `-without-background`, `-without-border`, `-display-block`) yn gosod rhagosodiad ar gyfer pob plentyn\n  `.instui-button` nad oes ganddo ei addasydd ei hun yn yr un categori — mae dosbarth addasydd botwm bob amser yn cael blaenoriaeth dros ragosodiad y grŵp. `-icon-*` bob amser yn berthnasol i bob botwm unigol; ni chaiff byth ei ddarllen o'r grŵp. Ni chefnogir arallenwau botwm anghymeradwy (`-ghost`, `-color-primary-inverse`)\n  fel addaswyr ar lefel grŵp — defnyddiwch eu hamnewidion canonaidd\n  (`-color-tertiary`, `-on-color`) yn eu lle. Mae pob uniad yn dangos un wythïen 1px yn lliw ymyl y botymau eu hunain (mae llenwadau solet, y mae eu hymyl yn cyfateb i'r llenwad, yn ei lliwio â lliw'r label).\n  `-without-seam` ar gyfer y grŵp yn unig: mae'n cuddio'r wythïen honno fel bod y botymau'n ymddangos fel\n  un rheolydd di-dor.\n  Rhowch `-width-half` ar fotwm plentyn unigol sydd ag eicon yn unig ar gyfer sbardun gweithred ranedig\n  sy'n hanner lled sgwâr safonol ac yn llawn uchder y botwm."
+
+msgctxt "docs.api:prose"
+msgid "Use a labelled group for related actions; when buttons represent a toggle choice, expose each state with aria-pressed. Give icon-only buttons an accessible name. Half-width triggers are narrow targets (16px, 20px, or 24px at the standard sizes); ensure sufficient target spacing or use a full-width square button for touch interfaces."
+msgstr "Defnyddiwch grŵp wedi'i labelu ar gyfer gweithredoedd cysylltiedig; pan fydd botymau'n cynrychioli dewis togl, datgelwch gyflwr pob un â aria-pressed. Rhowch enw hygyrch i fotymau sydd ag eicon yn unig. Mae sbardunau hanner lled yn dargedau cul (16px, 20px, neu 24px ar y meintiau safonol); sicrhewch fod digon o fylchau rhwng targedau neu defnyddiwch fotwm sgwâr lled llawn ar gyfer rhyngwynebau cyffwrdd."
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "WCAG 2.2 2.5.8"
+msgstr "WCAG 2.2 2.5.8"
+
+msgctxt "docs.api:prose"
+msgid "All touch targets must be 24px large, or leave sufficient space"
+msgstr "Rhaid i bob targed cyffwrdd fod yn 24px o faint, neu adael digon o le"

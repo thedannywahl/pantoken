@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: pantoken\n"
-"PO-Revision-Date: 2026-10-29 18:19+0000\n"
+"PO-Revision-Date: 2026-10-29 23:27+0000\n"
 "Last-Translator: pantoken localization engine\n"
 "Language-Team: pantoken\n"
 "MIME-Version: 1.0\n"
@@ -32389,3 +32389,25 @@ msgstr "ns"
 msgctxt "docs.api:text"
 msgid "withPrefix"
 msgstr "withPrefix"
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "target-size"
+msgstr "target-size"
+
+msgctxt "docs.api:prose"
+msgid "Its own chained modifiers (`-color-*`, `-size-*`, `-shape-*`, `-toggle`, `-condensed`,\n  `-without-background`, `-without-border`, `-display-block`) set a default for every child\n  `.instui-button` that doesn't carry its own modifier in that same category — a button's own\n  modifier class always wins over the group's default. `-icon-*` is always per-button; it's\n  never read from the group. Deprecated button aliases (`-ghost`, `-color-primary-inverse`)\n  aren't supported as group-level modifiers — use their canonical replacements\n  (`-color-tertiary`, `-on-color`) instead. Each join shows a single 1px seam in the buttons'\n  own border color (solid fills, whose border matches the fill, tint it with the label color).\n  `-without-seam` is group-only: it hides that seam so the buttons read as\n  one continuous control.\n  Put `-width-half` on an individual icon-only child button for a split-action\n  trigger with half the standard square width and the full button height."
+msgstr "它自己的串接修飾符（`-color-*`, `-size-*`, `-shape-*`, `-toggle`, `-condensed`,\n  `-without-background`, `-without-border`, `-display-block`)）會為每個子項設定預設值\n  `.instui-button`；若按鈕本身在相同類別中帶有修飾符，則會優先採用該修飾符。`-icon-*`一律設定在個別按鈕上；永遠不會從群組讀取。已棄用的按鈕別名（`-ghost`, `-color-primary-inverse`)\n  不支援作為群組層級修飾符；請改用其標準替代項\n  (`-color-tertiary`, `-on-color`)。每個接合處都會在按鈕自己的邊框顏色中顯示一道 1px 的接縫（純色填滿的按鈕，其邊框與填滿顏色相同，接縫會以標籤顏色著色).\n  `-without-seam`僅適用於群組：它會隱藏接縫，讓按鈕看起來像\n  一個連續的控制項。\n  將 `-width-half` 加到個別的純圖示子按鈕上，可建立分割動作觸發器，其寬度為標準正方形按鈕的一半，高度則與按鈕相同。"
+
+msgctxt "docs.api:prose"
+msgid "Use a labelled group for related actions; when buttons represent a toggle choice, expose each state with aria-pressed. Give icon-only buttons an accessible name. Half-width triggers are narrow targets (16px, 20px, or 24px at the standard sizes); ensure sufficient target spacing or use a full-width square button for touch interfaces."
+msgstr "相關操作請使用具標籤的群組；若按鈕代表切換選項，請使用 aria-pressed 呈現各個狀態。純圖示按鈕請提供可存取名稱。半寬觸發器的點擊目標較窄（標準尺寸為 16px、20px 或 24px)；請確保目標間距足夠，或在觸控介面使用完整寬度的正方形按鈕。"
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "WCAG 2.2 2.5.8"
+msgstr "WCAG 2.2 2.5.8"
+
+msgctxt "docs.api:prose"
+msgid "All touch targets must be 24px large, or leave sufficient space"
+msgstr "所有觸控目標都必須至少為 24px，或留有足夠間距"
