@@ -1,0 +1,7 @@
+component accessibility check is still failing in CI
+https://github.com/thedannywahl/pantoken/actions/runs/40810616485/job/123240833333?pr=239
+
+---
+
+component accessibility check is still failing in CI
+https://github.com/thedannywahl/pantoken/actions/runs/40810616485/job/123240833333?pr=239
