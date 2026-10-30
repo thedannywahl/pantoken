@@ -1,4 +1,6 @@
-import { readFileSync } from "node:fs";
+import { spawnSync } from "node:child_process";
+import { mkdtempSync, readFileSync, rmSync, writeFileSync } from "node:fs";
+import { tmpdir } from "node:os";
 import { resolve } from "node:path";
 import { expect, test } from "vite-plus/test";
 import { parse } from "yaml";
@@ -28,6 +30,61 @@ test("uses the serialized workspace build for releases restored from the CI task
   );
   expect(build.run).toBe("vp run build:all");
   expect(build.if).toBe("steps.mode.outputs.will_publish == 'true'");
+});
+
+test.each([
+  { name: "no changesets", changesets: [], publish: true },
+  { name: "empty changesets", changesets: [{ releases: [] }], publish: true },
+  {
+    name: "package bumps",
+    changesets: [{ releases: [{ name: "@pantoken/components", type: "patch" }] }],
+    publish: false,
+  },
+  {
+    name: "empty changesets alongside package bumps",
+    changesets: [{ releases: [] }, { releases: [{ name: "@pantoken/components", type: "patch" }] }],
+    publish: false,
+  },
+])("selects the release path for $name", ({ changesets, publish }) => {
+  const release = parse(readFileSync(resolve(root, ".github/workflows/release.yml"), "utf8"));
+  const mode = release.jobs.release.steps.find((step: { id?: string }) => step.id === "mode");
+  const directory = mkdtempSync(resolve(tmpdir(), "pantoken-release-mode-"));
+  try {
+    const fixture = resolve(directory, "fixture.json");
+    const output = resolve(directory, "output");
+    writeFileSync(fixture, JSON.stringify({ changesets }));
+    const result = spawnSync(
+      "bash",
+      ["-e", "-o", "pipefail", "-c", `vp() { cp "$STATUS_FIXTURE" "$5"; }\n${mode.run}`],
+      {
+        encoding: "utf8",
+        env: {
+          ...process.env,
+          RUNNER_TEMP: directory,
+          GITHUB_OUTPUT: output,
+          STATUS_FIXTURE: fixture,
+        },
+      },
+    );
+    expect(result.status, result.stderr).toBe(0);
+    expect(readFileSync(output, "utf8").trim()).toBe(`will_publish=${publish}`);
+  } finally {
+    rmSync(directory, { recursive: true, force: true });
+  }
+});
+
+test("publishes already-versioned packages directly instead of the empty-changeset action path", () => {
+  const release = parse(readFileSync(resolve(root, ".github/workflows/release.yml"), "utf8"));
+  const steps = release.jobs.release.steps;
+  const version = steps.find((step: { id?: string }) => step.id === "changesets");
+  const publish = steps.find(
+    (step: { name: string }) => step.name === "Publish versioned packages",
+  );
+  expect(version.if).toBe("steps.mode.outputs.will_publish == 'false'");
+  expect(version.with).not.toHaveProperty("publish-script");
+  expect(publish.if).toBe("steps.mode.outputs.will_publish == 'true'");
+  expect(publish.run).toBe("node scripts/release/publish-npm.ts");
+  expect(publish.env.NPM_CONFIG_PROVENANCE).toBe("true");
 });
 
 test("keeps retained tool reports outside contributor Markdown linting", () => {
