@@ -1,5 +1,99 @@
 # CHANGELOG
 
+## 2.2.0
+
+### Minor Changes
+
+- af2a649: Add opt-in, JavaScript-free responsive table stacking driven by the canonical md breakpoint
+  and the nearest size container. Reuse the explicit stacked styles and preserve native column
+  layouts by default. Document and demonstrate named, keyboard-focusable horizontal scroll
+  regions as an alternative, with localized cell labels for stacked layouts.
+
+### Patch Changes
+
+- af2a649: Document accessibility guidance on every component, member, rule, and utility record that lacked
+  an `@a11y` block, so generated API pages show it in the **Accessibility** section.
+- af2a649: Add accessibility guidance and automated-audit examples to the utilities (spacing, gap, layout, responsive, position, overflow, cursor, stacking, mask, truncate, transition, visual-debug, ai-gradient) and the base and prose rules.
+- af2a649: Clarify that avatar name parts intentionally abbreviate full names visually, while keeping
+  the complete text in the markup. Recommend adjacent visible names when identification needs
+  visible text. Preserve existing initials and clipping behavior.
+- af2a649: Correct accessibility audit summaries to retain original coverage notices and report requested
+  tiers per state. Supplemental-state gaps and not-testable notes are no longer hidden by successful
+  target completion. Original engine reports and advisory finding behavior are unchanged.
+- af2a649: Expand accessibility audit examples to exercise distinct visual variants and native control states, with minimal component-owned markup.
+- af2a649: Keep masked glyphs, gradient text, selected states, and progress visible in forced colors. Use authored native progress paint so reduced motion stops indeterminate animation without losing native range semantics.
+- af2a649: Keep keyboard focus distinct in forced colors. Remove the resting outline's line style,
+  which Chromium otherwise paints despite its transparent color, and restore the outline
+  for visible keyboard focus and opt-in focus-within rings. Preserve normal color modes,
+  theme tokens, custom selectors, and system color adjustment.
+- af2a649: Audit only supported color schemes: rebrand light and dark, Canvas light, and Canvas High Contrast light. Preserve historical unsupported cases in original reports.
+- af2a649: Respect reduced motion automatically throughout component transitions, decorative animations, focus rings, and shared interactions. Keep static loading feedback visible, skip smooth scrolling and fade removal waits, and release progress-circle mount states when the preference changes.
+- af2a649: Replace backtracking-prone example metadata stripping with a shared forward-only scanner in editor insertion and accessibility audits.
+- af2a649: Make initialized tooltip visibility follow the shared interaction behavior so Escape dismissal and
+  delays work for CSS and web components. Preserve the CSS-only hover/focus fallback, keep bubbles
+  reachable across their visual gap, and retain visibility while either pointer or focus remains.
+  Dismissed tooltips reopen only after both leave and a new interaction begins. Update the tooltip
+  guide and localized demo triggers.
+- af2a649: Reset native menu-button paint and use menu tokens consistently in light and dark schemes.
+  Apply the same item states within semantic groups, separate group headings from their containers,
+  highlight keyboard focus, and keep secondary text readable on active and checked backgrounds
+  without changing the public class API.
+- af2a649: Keep multiline example-fence compatibility while scanning incomplete fence headers in bounded time.
+- af2a649: Correct drawer-layout and member examples to use valid, explicitly named regions. Align the web
+  component's pane elements with InstUI's inline regions and add reactive `tray-label` and
+  `content-label` attributes. Supply nonempty labels when using the custom element; labels on slotted
+  content don't name the shadow regions. Synchronize consumer guidance.
+- af2a649: Clarify native checkbox naming through wrapping labels and add regression coverage for every
+  authored example. Preserve the existing visible labels while investigating the simulated reader's
+  bare-role heuristic; no accessibility rule or simulator flag is suppressed.
+- af2a649: Add opt-in native form-field validation through `initFormField` and a production IIFE. Associate
+  authored errors after interaction, preserve hints, synchronize invalid state and reset behavior,
+  and restore state on cleanup. Keep application-owned validation unchanged unless opted in.
+  Update examples and consumer guidance, respect hidden errors, and correct the documented
+  tree-browser IIFE import path.
+- af2a649: Add opt-in ARIA menu keyboard navigation through `initMenu` and the production menu IIFE.
+  Wire native popover focus, wrapping arrows, Home/End, initial-character search, Escape, activation,
+  disabled items, and cleanup without taking ownership of application actions or checked state.
+  Update authored menu examples, capability discovery, and consumer guidance.
+- af2a649: Activate CSS modals through native dialog methods so command-driven opening enters the top layer,
+  moves focus, and supports Escape dismissal and native focus return. Synchronize initial and
+  external open attributes, close dialogs whose open attribute was removed, and keep queued close
+  events from clearing a newer open state. Preserve the web-component host protocol.
+- af2a649: Surface historical per-component accessibility audit evidence in the CSS API reference. Keep engine findings and coverage gaps separate, exclude unsupported Canvas dark cases, and label components without evidence as not audited.
+- af2a649: Remove redundant, assistive-technology-hidden number-input arrow buttons from the tab order in
+  documentation and audit examples. Clarify that the named native number input supplies keyboard
+  increment/decrement and that consumers must preserve input focus when wiring pointer activation.
+- af2a649: Apply system color schemes, contrast preferences, and reduced transparency automatically. Preserve explicit scheme pins and theme palettes, keep nested theme aliases local, strengthen boundaries for more contrast, reduce decorative shadows for less contrast, and retain slider focus in forced colors.
+- af2a649: Respect reduced motion for loading rings, AI spinner glyphs, and native disclosure chevrons.
+  Keep static loading indicators and status semantics visible, including inside masks, while
+  switching disclosure direction immediately. Preserve default animation and native keyboard
+  operation when the preference isn't enabled.
+- af2a649: Align the localized tree-browser, drawer-layout, and form-field demo templates with their
+  remediated production contracts. Use named treeitems and owned groups, valid named drawer regions,
+  and associated native-validation errors without adding or replacing translated strings.
+- af2a649: Keep the drawer's automatic narrow-content width reset in the same CSS scope as its desktop
+  minimum. This lets container-query overlay mode reflow without JavaScript or a manual override,
+  including layouts with a closed or absent tray.
+- af2a649: Give the plain and toggle radio-group examples distinct legends and native radio names so their
+  selections remain independent. Document the grouping contract and cover both documentation and
+  audit examples with selection-isolation tests.
+- af2a649: Add explicit accessibility audit examples for every component and member while preserving documentation and Canvas examples.
+- af2a649: Align tree-browser with InstUI's ARIA-tree keyboard contract through a shared Node-free behavior,
+  production IIFE, and web-component lifecycle. Correct examples to use named, focusable treeitems
+  and owned groups, preserve native disclosure styling, and synchronize consumer agent guidance.
+- af2a649: Treat enhanced tooltip placements as preferences: flip to a side that fits when needed, clamp
+  the bubble into view, and wrap text to the viewport width. Keep pointer bridges aligned with the
+  effective side, including diagonal pointer travel after clamping. Reposition on resize, scrolling,
+  content, and direction changes, and restore authored positioning when the behavior is cleaned up.
+- af2a649: Let documented and audited pill groups wrap on narrow screens, matching the source demo.
+  Preserve individual pill sizing and status text instead of hiding overflow.
+- Updated dependencies [af2a649]
+- Updated dependencies [af2a649]
+- Updated dependencies [af2a649]
+  - @pantoken/utils@1.4.2
+  - @pantoken/tokens@0.8.3
+  - @pantoken/scaffold-base@0.3.10
+
 ## 2.1.2
 
 ### Patch Changes

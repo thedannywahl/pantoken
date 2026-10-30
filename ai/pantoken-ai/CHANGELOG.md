@@ -1,5 +1,38 @@
 # CHANGELOG
 
+## 1.4.3
+
+### Patch Changes
+
+- af2a649: Correct drawer-layout and member examples to use valid, explicitly named regions. Align the web
+  component's pane elements with InstUI's inline regions and add reactive `tray-label` and
+  `content-label` attributes. Supply nonempty labels when using the custom element; labels on slotted
+  content don't name the shadow regions. Synchronize consumer guidance.
+- af2a649: Add opt-in native form-field validation through `initFormField` and a production IIFE. Associate
+  authored errors after interaction, preserve hints, synchronize invalid state and reset behavior,
+  and restore state on cleanup. Keep application-owned validation unchanged unless opted in.
+  Update examples and consumer guidance, respect hidden errors, and correct the documented
+  tree-browser IIFE import path.
+- af2a649: Add opt-in ARIA menu keyboard navigation through `initMenu` and the production menu IIFE.
+  Wire native popover focus, wrapping arrows, Home/End, initial-character search, Escape, activation,
+  disabled items, and cleanup without taking ownership of application actions or checked state.
+  Update authored menu examples, capability discovery, and consumer guidance.
+- af2a649: Apply system color schemes, contrast preferences, and reduced transparency automatically. Preserve explicit scheme pins and theme palettes, keep nested theme aliases local, strengthen boundaries for more contrast, reduce decorative shadows for less contrast, and retain slider focus in forced colors.
+- af2a649: Add opt-in, JavaScript-free responsive table stacking driven by the canonical md breakpoint
+  and the nearest size container. Reuse the explicit stacked styles and preserve native column
+  layouts by default. Document and demonstrate named, keyboard-focusable horizontal scroll
+  regions as an alternative, with localized cell labels for stacked layouts.
+- af2a649: Align tree-browser with InstUI's ARIA-tree keyboard contract through a shared Node-free behavior,
+  production IIFE, and web-component lifecycle. Correct examples to use named, focusable treeitems
+  and owned groups, preserve native disclosure styling, and synchronize consumer agent guidance.
+- Updated dependencies [af2a649]
+- Updated dependencies [af2a649]
+- Updated dependencies [af2a649]
+- Updated dependencies [af2a649]
+- Updated dependencies [af2a649]
+- Updated dependencies [af2a649]
+  - @pantoken/scaffold@1.7.1
+
 ## 1.4.2
 
 ### Patch Changes

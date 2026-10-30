@@ -1,5 +1,12 @@
 # CHANGELOG
 
+## 0.6.4
+
+### Patch Changes
+
+- af2a649: Fix missing consumed-token display types for color-mix() colors and border styles in the CSS API reference.
+- af2a649: Vendor hash-verified Noto fonts and their upstream licenses so localized social-card builds no longer download or cache network data.
+
 ## 0.6.3
 
 ### Patch Changes

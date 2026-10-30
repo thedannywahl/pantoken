@@ -1,5 +1,15 @@
 # CHANGELOG
 
+## 0.6.5
+
+### Patch Changes
+
+- Updated dependencies [af2a649]
+- Updated dependencies [af2a649]
+- Updated dependencies [af2a649]
+  - @pantoken/utils@1.4.2
+  - @pantoken/plugin-kit@0.3.8
+
 ## 0.6.4
 
 ### Patch Changes

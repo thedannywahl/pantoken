@@ -1,5 +1,45 @@
 # @pantoken/interactions
 
+## 0.6.0
+
+### Minor Changes
+
+- af2a649: Add opt-in native form-field validation through `initFormField` and a production IIFE. Associate
+  authored errors after interaction, preserve hints, synchronize invalid state and reset behavior,
+  and restore state on cleanup. Keep application-owned validation unchanged unless opted in.
+  Update examples and consumer guidance, respect hidden errors, and correct the documented
+  tree-browser IIFE import path.
+- af2a649: Add opt-in ARIA menu keyboard navigation through `initMenu` and the production menu IIFE.
+  Wire native popover focus, wrapping arrows, Home/End, initial-character search, Escape, activation,
+  disabled items, and cleanup without taking ownership of application actions or checked state.
+  Update authored menu examples, capability discovery, and consumer guidance.
+- af2a649: Support custom class prefixes. The auto-init bundles resolve their selectors against `data-prefix` on the script tag (or `window.PANTOKEN_PREFIX`), defaulting to `instui`. `initCloseButton` and `initRemove` accept a `prefix` option, and `withPrefix`/`ns` are exported.
+- af2a649: Align tree-browser with InstUI's ARIA-tree keyboard contract through a shared Node-free behavior,
+  production IIFE, and web-component lifecycle. Correct examples to use named, focusable treeitems
+  and owned groups, preserve native disclosure styling, and synchronize consumer agent guidance.
+
+### Patch Changes
+
+- af2a649: Respect reduced motion automatically throughout component transitions, decorative animations, focus rings, and shared interactions. Keep static loading feedback visible, skip smooth scrolling and fade removal waits, and release progress-circle mount states when the preference changes.
+- af2a649: Build workspace dependencies before bundling interactions so docs development doesn't fail when the utils build output is missing.
+- af2a649: Make initialized tooltip visibility follow the shared interaction behavior so Escape dismissal and
+  delays work for CSS and web components. Preserve the CSS-only hover/focus fallback, keep bubbles
+  reachable across their visual gap, and retain visibility while either pointer or focus remains.
+  Dismissed tooltips reopen only after both leave and a new interaction begins. Update the tooltip
+  guide and localized demo triggers.
+- af2a649: Activate CSS modals through native dialog methods so command-driven opening enters the top layer,
+  moves focus, and supports Escape dismissal and native focus return. Synchronize initial and
+  external open attributes, close dialogs whose open attribute was removed, and keep queued close
+  events from clearing a newer open state. Preserve the web-component host protocol.
+- af2a649: Treat enhanced tooltip placements as preferences: flip to a side that fits when needed, clamp
+  the bubble into view, and wrap text to the viewport width. Keep pointer bridges aligned with the
+  effective side, including diagonal pointer travel after clamping. Reposition on resize, scrolling,
+  content, and direction changes, and restore authored positioning when the behavior is cleaned up.
+- Updated dependencies [af2a649]
+- Updated dependencies [af2a649]
+- Updated dependencies [af2a649]
+  - @pantoken/utils@1.4.2
+
 ## 0.5.3
 
 ### Patch Changes

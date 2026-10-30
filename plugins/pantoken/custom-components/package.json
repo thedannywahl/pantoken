@@ -1,6 +1,6 @@
 {
   "name": "@pantoken/plugin-custom-components",
-  "version": "0.7.3",
+  "version": "0.7.4",
   "description": "pantoken plugin: additional custom components for downstream consumers, documented with cssdoc.",
   "homepage": "https://pantoken.app",
   "bugs": "https://github.com/thedannywahl/pantoken/issues",

@@ -1,5 +1,53 @@
 # @pantoken/tinymce
 
+## 0.7.2
+
+### Patch Changes
+
+- af2a649: Replace backtracking-prone example metadata stripping with a shared forward-only scanner in editor insertion and accessibility audits.
+- af2a649: Keep multiline example-fence compatibility while scanning incomplete fence headers in bounded time.
+- Updated dependencies [af2a649]
+- Updated dependencies [af2a649]
+- Updated dependencies [af2a649]
+- Updated dependencies [af2a649]
+- Updated dependencies [af2a649]
+- Updated dependencies [af2a649]
+- Updated dependencies [af2a649]
+- Updated dependencies [af2a649]
+- Updated dependencies [af2a649]
+- Updated dependencies [af2a649]
+- Updated dependencies [af2a649]
+- Updated dependencies [af2a649]
+- Updated dependencies [af2a649]
+- Updated dependencies [af2a649]
+- Updated dependencies [af2a649]
+- Updated dependencies [af2a649]
+- Updated dependencies [af2a649]
+- Updated dependencies [af2a649]
+- Updated dependencies [af2a649]
+- Updated dependencies [af2a649]
+- Updated dependencies [af2a649]
+- Updated dependencies [af2a649]
+- Updated dependencies [af2a649]
+- Updated dependencies [af2a649]
+- Updated dependencies [af2a649]
+- Updated dependencies [af2a649]
+- Updated dependencies [af2a649]
+- Updated dependencies [af2a649]
+- Updated dependencies [af2a649]
+- Updated dependencies [af2a649]
+- Updated dependencies [af2a649]
+- Updated dependencies [af2a649]
+  - @pantoken/components@2.2.0
+  - @pantoken/plugin-custom-components@0.7.4
+  - @pantoken/utils@1.4.2
+  - @pantoken/tokens@0.8.3
+  - @pantoken/plugin-custom-icons@0.3.18
+  - @pantoken/plugin-layouts@0.5.7
+  - @pantoken/plugin-logos@0.5.7
+  - @pantoken/plugin-lucide-lab@0.4.6
+  - @pantoken/plugin-simple-icons@0.3.16
+
 ## 0.7.1
 
 ### Patch Changes

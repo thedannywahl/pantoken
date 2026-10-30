@@ -1,5 +1,15 @@
 # CHANGELOG
 
+## 0.2.6
+
+### Patch Changes
+
+- Updated dependencies [af2a649]
+- Updated dependencies [af2a649]
+- Updated dependencies [af2a649]
+  - @pantoken/utils@1.4.2
+  - @pantoken/tokens@0.8.3
+
 ## 0.2.5
 
 ### Patch Changes

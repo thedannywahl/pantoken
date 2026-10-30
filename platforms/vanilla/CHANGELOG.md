@@ -1,5 +1,14 @@
 # CHANGELOG
 
+## 0.1.21
+
+### Patch Changes
+
+- Updated dependencies [af2a649]
+- Updated dependencies [af2a649]
+- Updated dependencies [af2a649]
+  - @pantoken/utils@1.4.2
+
 ## 0.1.20
 
 ### Patch Changes

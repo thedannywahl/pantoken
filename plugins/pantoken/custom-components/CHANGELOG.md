@@ -1,5 +1,46 @@
 # @pantoken/plugin-custom-components
 
+## 0.7.4
+
+### Patch Changes
+
+- af2a649: Document accessibility guidance for `agent-shell`, so its generated API page shows an
+  **Accessibility** section with audit results like the other custom components.
+- af2a649: Expand accessibility audit examples to exercise distinct visual variants and native control states, with minimal component-owned markup.
+- af2a649: Add a per-button `-width-half` modifier inside button sets for split-action triggers with half the standard square width and the full button height. Support group size defaults and per-button size overrides, and document text and icon-only main actions.
+- Updated dependencies [af2a649]
+- Updated dependencies [af2a649]
+- Updated dependencies [af2a649]
+- Updated dependencies [af2a649]
+- Updated dependencies [af2a649]
+- Updated dependencies [af2a649]
+- Updated dependencies [af2a649]
+- Updated dependencies [af2a649]
+- Updated dependencies [af2a649]
+- Updated dependencies [af2a649]
+- Updated dependencies [af2a649]
+- Updated dependencies [af2a649]
+- Updated dependencies [af2a649]
+- Updated dependencies [af2a649]
+- Updated dependencies [af2a649]
+- Updated dependencies [af2a649]
+- Updated dependencies [af2a649]
+- Updated dependencies [af2a649]
+- Updated dependencies [af2a649]
+- Updated dependencies [af2a649]
+- Updated dependencies [af2a649]
+- Updated dependencies [af2a649]
+- Updated dependencies [af2a649]
+- Updated dependencies [af2a649]
+- Updated dependencies [af2a649]
+- Updated dependencies [af2a649]
+- Updated dependencies [af2a649]
+- Updated dependencies [af2a649]
+- Updated dependencies [af2a649]
+- Updated dependencies [af2a649]
+  - @pantoken/components@2.2.0
+  - @pantoken/plugin-kit@0.3.8
+
 ## 0.7.3
 
 ### Patch Changes
