@@ -155,20 +155,21 @@ jobs:
           cache: true
           run-install: true
 
-      # The changesets action takes one of two paths per run: with pending changesets it opens/updates the
-      # Version PR (just `changeset version` — no dist needed); with none it publishes. Only the publish
-      # path needs a build, so gate it — otherwise every feature merge (which carries a changeset) rebuilds
-      # here even though CI already built the same commit. Mirrors the action's own version-vs-publish call.
+      # Only package-bearing changesets need a Version PR. Empty changesets must not block a retry of
+      # already-versioned packages: the changesets action otherwise exits without versioning or publishing.
       - name: Determine release mode
         id: mode
         shell: bash
         run: |
-          if [ -n "$(find .changeset -maxdepth 1 -name '*.md' ! -name 'README.md' -print -quit)" ]; then
+          status="$RUNNER_TEMP/changeset-status.json"
+          vp exec changeset status --output "$status"
+          has_changesets=$(jq '.changesets | any(.releases | length > 0)' "$status")
+          if [ "$has_changesets" = "true" ]; then
             echo "will_publish=false" >> "$GITHUB_OUTPUT"
             echo "Pending changesets → Version PR path; skipping build."
           else
             echo "will_publish=true" >> "$GITHUB_OUTPUT"
-            echo "No changesets → publish path; building."
+            echo "No package bumps pending → publish path; building."
           fi
 
       # CI built this same SHA and saved its task-cache tarballs; restoring here turns the build below
@@ -198,17 +199,12 @@ jobs:
         if: steps.mode.outputs.will_publish == 'true'
         run: vp run gate:i18n
 
-      - name: Create Version PR or publish
+      - name: Create Version PR
         id: changesets
+        if: steps.mode.outputs.will_publish == 'false'
         uses: changesets/action@ae32849d5ba541f9ae29e40e22a623bc13562f51 # v2.1.2
         with:
           version-script: vp run release:version
-          # Publish is invoked as plain `node`, NOT `vp run`: the `vp run` launcher scrubs the
-          # `ACTIONS_ID_TOKEN_REQUEST_URL/TOKEN` env vars (and `NPM_CONFIG_USERCONFIG`) from the task
-          # subprocess, so npm logged "oidc Skipped because incorrect permissions for id-token" and fell
-          # back to ENEEDAUTH. Running node directly under the action's env lets npm see the OIDC token
-          # request vars and do the trusted-publishing exchange.
-          publish-script: node scripts/release/publish-npm.ts
           commit-message: "chore: version packages"
           pr-title: "chore: version packages"
           # The publish script owns tags + GitHub releases (via `gh release create`), so the action must
@@ -221,6 +217,16 @@ jobs:
           github-token: ${{ secrets.RELEASE_PAT }}
         env:
           # npm auth is separate (OIDC), so this token doesn't touch publishing.
+          GITHUB_TOKEN: ${{ secrets.RELEASE_PAT }}
+
+          # Publish is invoked as plain `node`, NOT `vp run`: the `vp run` launcher scrubs the
+          # `ACTIONS_ID_TOKEN_REQUEST_URL/TOKEN` env vars (and `NPM_CONFIG_USERCONFIG`) from the task
+          # subprocess, so npm logged "oidc Skipped because incorrect permissions for id-token" and fell
+          # back to ENEEDAUTH. Running node directly lets npm see the OIDC token request vars.
+      - name: Publish versioned packages
+        if: steps.mode.outputs.will_publish == 'true'
+        run: node scripts/release/publish-npm.ts
+        env:
           GITHUB_TOKEN: ${{ secrets.RELEASE_PAT }}
           NPM_CONFIG_PROVENANCE: "true"
 
