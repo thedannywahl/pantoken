@@ -188,7 +188,7 @@ jobs:
       # package re-invokes a nested `vp` at pack time.
       - name: Build all packages
         if: steps.mode.outputs.will_publish == 'true'
-        run: vp run -r build
+        run: vp run build:all
 
       - name: Install gettext
         if: steps.mode.outputs.will_publish == 'true'

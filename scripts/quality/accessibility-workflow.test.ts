@@ -21,6 +21,15 @@ test("restores the complete workspace build graph before running an uncached aud
   });
 });
 
+test("uses the serialized workspace build for releases restored from the CI task cache", () => {
+  const release = parse(readFileSync(resolve(root, ".github/workflows/release.yml"), "utf8"));
+  const build = release.jobs.release.steps.find(
+    (step: { name: string }) => step.name === "Build all packages",
+  );
+  expect(build.run).toBe("vp run build:all");
+  expect(build.if).toBe("steps.mode.outputs.will_publish == 'true'");
+});
+
 test("keeps retained tool reports outside contributor Markdown linting", () => {
   const config = parse(readFileSync(resolve(root, ".markdownlint-cli2.yaml"), "utf8"));
   expect(config.ignores).toContain("a11y-report");
