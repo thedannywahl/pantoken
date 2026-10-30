@@ -1,5 +1,80 @@
 # CHANGELOG
 
+## 0.8.0
+
+### Minor Changes
+
+- af2a649: Correct drawer-layout and member examples to use valid, explicitly named regions. Align the web
+  component's pane elements with InstUI's inline regions and add reactive `tray-label` and
+  `content-label` attributes. Supply nonempty labels when using the custom element; labels on slotted
+  content don't name the shadow regions. Synchronize consumer guidance.
+
+### Patch Changes
+
+- af2a649: Keep masked glyphs, gradient text, selected states, and progress visible in forced colors. Use authored native progress paint so reduced motion stops indeterminate animation without losing native range semantics.
+- af2a649: Respect reduced motion automatically throughout component transitions, decorative animations, focus rings, and shared interactions. Keep static loading feedback visible, skip smooth scrolling and fade removal waits, and release progress-circle mount states when the preference changes.
+- af2a649: Make initialized tooltip visibility follow the shared interaction behavior so Escape dismissal and
+  delays work for CSS and web components. Preserve the CSS-only hover/focus fallback, keep bubbles
+  reachable across their visual gap, and retain visibility while either pointer or focus remains.
+  Dismissed tooltips reopen only after both leave and a new interaction begins. Update the tooltip
+  guide and localized demo triggers.
+- af2a649: Activate CSS modals through native dialog methods so command-driven opening enters the top layer,
+  moves focus, and supports Escape dismissal and native focus return. Synchronize initial and
+  external open attributes, close dialogs whose open attribute was removed, and keep queued close
+  events from clearing a newer open state. Preserve the web-component host protocol.
+- af2a649: Type the `prefix` option of `register()` and `registerLocalized()` as `string`, so `null` is a type error. Custom-element tags always need a `<prefix>-`; untyped callers passing an empty or null prefix still fall back to `instui`.
+- af2a649: Apply system color schemes, contrast preferences, and reduced transparency automatically. Preserve explicit scheme pins and theme palettes, keep nested theme aliases local, strengthen boundaries for more contrast, reduce decorative shadows for less contrast, and retain slider focus in forced colors.
+- af2a649: Respect reduced motion for loading rings, AI spinner glyphs, and native disclosure chevrons.
+  Keep static loading indicators and status semantics visible, including inside masks, while
+  switching disclosure direction immediately. Preserve default animation and native keyboard
+  operation when the preference isn't enabled.
+- af2a649: Keep the drawer's automatic narrow-content width reset in the same CSS scope as its desktop
+  minimum. This lets container-query overlay mode reflow without JavaScript or a manual override,
+  including layouts with a closed or absent tray.
+- af2a649: Align tree-browser with InstUI's ARIA-tree keyboard contract through a shared Node-free behavior,
+  production IIFE, and web-component lifecycle. Correct examples to use named, focusable treeitems
+  and owned groups, preserve native disclosure styling, and synchronize consumer agent guidance.
+- af2a649: Treat enhanced tooltip placements as preferences: flip to a side that fits when needed, clamp
+  the bubble into view, and wrap text to the viewport width. Keep pointer bridges aligned with the
+  effective side, including diagonal pointer travel after clamping. Reposition on resize, scrolling,
+  content, and direction changes, and restore authored positioning when the behavior is cleaned up.
+- Updated dependencies [af2a649]
+- Updated dependencies [af2a649]
+- Updated dependencies [af2a649]
+- Updated dependencies [af2a649]
+- Updated dependencies [af2a649]
+- Updated dependencies [af2a649]
+- Updated dependencies [af2a649]
+- Updated dependencies [af2a649]
+- Updated dependencies [af2a649]
+- Updated dependencies [af2a649]
+- Updated dependencies [af2a649]
+- Updated dependencies [af2a649]
+- Updated dependencies [af2a649]
+- Updated dependencies [af2a649]
+- Updated dependencies [af2a649]
+- Updated dependencies [af2a649]
+- Updated dependencies [af2a649]
+- Updated dependencies [af2a649]
+- Updated dependencies [af2a649]
+- Updated dependencies [af2a649]
+- Updated dependencies [af2a649]
+- Updated dependencies [af2a649]
+- Updated dependencies [af2a649]
+- Updated dependencies [af2a649]
+- Updated dependencies [af2a649]
+- Updated dependencies [af2a649]
+- Updated dependencies [af2a649]
+- Updated dependencies [af2a649]
+- Updated dependencies [af2a649]
+- Updated dependencies [af2a649]
+- Updated dependencies [af2a649]
+- Updated dependencies [af2a649]
+  - @pantoken/components@2.2.0
+  - @pantoken/interactions@0.6.0
+  - @pantoken/icons@0.3.7
+  - @pantoken/scaffold-base@0.3.10
+
 ## 0.7.6
 
 ### Patch Changes

@@ -1,5 +1,44 @@
 # CHANGELOG
 
+## 0.2.5
+
+### Patch Changes
+
+- Updated dependencies [af2a649]
+- Updated dependencies [af2a649]
+- Updated dependencies [af2a649]
+- Updated dependencies [af2a649]
+- Updated dependencies [af2a649]
+- Updated dependencies [af2a649]
+- Updated dependencies [af2a649]
+- Updated dependencies [af2a649]
+- Updated dependencies [af2a649]
+- Updated dependencies [af2a649]
+- Updated dependencies [af2a649]
+- Updated dependencies [af2a649]
+- Updated dependencies [af2a649]
+- Updated dependencies [af2a649]
+- Updated dependencies [af2a649]
+- Updated dependencies [af2a649]
+- Updated dependencies [af2a649]
+- Updated dependencies [af2a649]
+- Updated dependencies [af2a649]
+- Updated dependencies [af2a649]
+- Updated dependencies [af2a649]
+- Updated dependencies [af2a649]
+- Updated dependencies [af2a649]
+- Updated dependencies [af2a649]
+- Updated dependencies [af2a649]
+- Updated dependencies [af2a649]
+- Updated dependencies [af2a649]
+- Updated dependencies [af2a649]
+- Updated dependencies [af2a649]
+- Updated dependencies [af2a649]
+- Updated dependencies [af2a649]
+  - @pantoken/components@2.2.0
+  - @pantoken/css@0.4.7
+  - @pantoken/scss@0.1.25
+
 ## 0.2.4
 
 ### Patch Changes

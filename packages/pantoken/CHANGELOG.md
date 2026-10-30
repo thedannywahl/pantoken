@@ -1,5 +1,104 @@
 # CHANGELOG
 
+## 0.2.32
+
+### Patch Changes
+
+- Updated dependencies [af2a649]
+- Updated dependencies [af2a649]
+- Updated dependencies [af2a649]
+- Updated dependencies [af2a649]
+- Updated dependencies [af2a649]
+- Updated dependencies [af2a649]
+- Updated dependencies [af2a649]
+- Updated dependencies [af2a649]
+- Updated dependencies [af2a649]
+- Updated dependencies [af2a649]
+- Updated dependencies [af2a649]
+- Updated dependencies [af2a649]
+- Updated dependencies [af2a649]
+- Updated dependencies [af2a649]
+- Updated dependencies [af2a649]
+- Updated dependencies [af2a649]
+- Updated dependencies [af2a649]
+- Updated dependencies [af2a649]
+- Updated dependencies [af2a649]
+- Updated dependencies [af2a649]
+- Updated dependencies [af2a649]
+- Updated dependencies [af2a649]
+- Updated dependencies [af2a649]
+- Updated dependencies [af2a649]
+- Updated dependencies [af2a649]
+- Updated dependencies [af2a649]
+- Updated dependencies [af2a649]
+- Updated dependencies [af2a649]
+- Updated dependencies [af2a649]
+- Updated dependencies [af2a649]
+- Updated dependencies [af2a649]
+- Updated dependencies [af2a649]
+- Updated dependencies [af2a649]
+- Updated dependencies [af2a649]
+- Updated dependencies [af2a649]
+- Updated dependencies [af2a649]
+  - @pantoken/components@2.2.0
+  - @pantoken/plugin-custom-components@0.7.4
+  - @pantoken/css@0.4.7
+  - @pantoken/web-components@0.8.0
+  - @pantoken/interactions@0.6.0
+  - @pantoken/tinymce@0.7.2
+  - @pantoken/drupal@0.2.5
+  - @pantoken/email@0.1.26
+  - @pantoken/hugo@0.2.5
+  - @pantoken/jekyll@0.2.5
+  - @pantoken/angular@0.2.6
+  - @pantoken/astro@0.2.6
+  - @pantoken/bootstrap@0.2.0
+  - @pantoken/css-in-js@0.2.5
+  - @pantoken/docusaurus@0.2.0
+  - @pantoken/foundation@0.2.5
+  - @pantoken/mui@0.2.5
+  - @pantoken/pendo@0.4.16
+  - @pantoken/react@0.2.5
+  - @pantoken/shadcn@0.3.0
+  - @pantoken/storybook@0.2.5
+  - @pantoken/svelte@0.2.5
+  - @pantoken/vitepress@0.3.0
+  - @pantoken/vue@0.2.5
+  - @pantoken/postcss@0.2.6
+  - @pantoken/vite@0.2.6
+  - @pantoken/webpack@0.2.5
+  - @pantoken/panda@0.2.6
+  - @pantoken/figma@0.1.21
+  - @pantoken/swatches@0.1.25
+  - @pantoken/dtcg@0.1.22
+  - @pantoken/icons@0.3.7
+  - @pantoken/less@0.1.25
+  - @pantoken/scope@0.4.7
+  - @pantoken/scss@0.1.25
+  - @pantoken/stylus@0.1.25
+  - @pantoken/tokens@0.8.3
+  - @pantoken/vanilla@0.1.21
+  - @pantoken/wordpress@0.2.4
+  - @pantoken/plugin-primitives@1.0.10
+  - @pantoken/mintlify@0.2.6
+  - @pantoken/react-native@0.1.25
+  - @pantoken/cli@0.1.52
+  - @pantoken/markdown-it@0.2.5
+  - @pantoken/react-markdown@0.2.5
+  - @pantoken/rehype@0.2.5
+  - @pantoken/android@0.1.29
+  - @pantoken/compose@0.1.29
+  - @pantoken/flutter@0.1.29
+  - @pantoken/swift@0.1.29
+  - @pantoken/plugin-custom-icons@0.3.18
+  - @pantoken/plugin-custom-theme-colors@0.3.7
+  - @pantoken/plugin-layouts@0.5.7
+  - @pantoken/plugin-logos@0.5.7
+  - @pantoken/plugin-simple-icons@0.3.16
+  - @pantoken/plugin-stacking@1.0.15
+  - @pantoken/plugin-transition@1.0.13
+  - @pantoken/plugin-visual-debug@0.1.24
+
 ## 0.2.31
 
 ### Patch Changes

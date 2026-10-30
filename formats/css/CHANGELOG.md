@@ -1,5 +1,18 @@
 # CHANGELOG
 
+## 0.4.7
+
+### Patch Changes
+
+- af2a649: Build runtime and development workspace dependencies before CSS generation so docs startup can restore missing plugin outputs.
+- af2a649: Apply system color schemes, contrast preferences, and reduced transparency automatically. Preserve explicit scheme pins and theme palettes, keep nested theme aliases local, strengthen boundaries for more contrast, reduce decorative shadows for less contrast, and retain slider focus in forced colors.
+- Updated dependencies [af2a649]
+- Updated dependencies [af2a649]
+- Updated dependencies [af2a649]
+  - @pantoken/utils@1.4.2
+  - @pantoken/tokens@0.8.3
+  - @pantoken/plugin-kit@0.3.8
+
 ## 0.4.6
 
 ### Patch Changes

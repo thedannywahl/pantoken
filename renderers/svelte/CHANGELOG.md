@@ -1,5 +1,23 @@
 # CHANGELOG
 
+## 0.2.5
+
+### Patch Changes
+
+- Updated dependencies [af2a649]
+- Updated dependencies [af2a649]
+- Updated dependencies [af2a649]
+- Updated dependencies [af2a649]
+- Updated dependencies [af2a649]
+- Updated dependencies [af2a649]
+- Updated dependencies [af2a649]
+- Updated dependencies [af2a649]
+- Updated dependencies [af2a649]
+- Updated dependencies [af2a649]
+- Updated dependencies [af2a649]
+  - @pantoken/web-components@0.8.0
+  - @pantoken/scaffold-base@0.3.10
+
 ## 0.2.4
 
 ### Patch Changes

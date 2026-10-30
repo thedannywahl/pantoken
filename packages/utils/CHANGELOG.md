@@ -1,5 +1,16 @@
 # CHANGELOG
 
+## 1.4.2
+
+### Patch Changes
+
+- af2a649: Keep keyboard focus distinct in forced colors. Remove the resting outline's line style,
+  which Chromium otherwise paints despite its transparent color, and restore the outline
+  for visible keyboard focus and opt-in focus-within rings. Preserve normal color modes,
+  theme tokens, custom selectors, and system color adjustment.
+- af2a649: Respect reduced motion automatically throughout component transitions, decorative animations, focus rings, and shared interactions. Keep static loading feedback visible, skip smooth scrolling and fade removal waits, and release progress-circle mount states when the preference changes.
+- af2a649: Replace backtracking-prone example metadata stripping with a shared forward-only scanner in editor insertion and accessibility audits.
+
 ## 1.4.1
 
 ### Patch Changes
