@@ -4,4 +4,5 @@
 # --model), then pass the prompt as Copilot CLI's own -p argument (its "programmatic mode").
 prompt=$(</dev/stdin)
 # stdin is closed from /dev/null so the CLI can never block waiting on interactive input.
-copilot "${@:1:$#-1}" -p "$prompt" </dev/null
+# Only the response belongs in translation catalogs, not model-selection banners or terminal colors.
+copilot "${@:1:$#-1}" --silent --no-color -p "$prompt" </dev/null
