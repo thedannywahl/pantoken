@@ -9152,7 +9152,7 @@ msgstr "مُعدِّل `-layout-stacked` الخاص بالعُنصر الأب `t
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "Use a native `<thead>`. `-layout-stacked` hides it visually, so keep it in the DOM, not `display: none`, to preserve column names for assistive technology."
-msgstr "[34m●[39m Auto selected GPT-6 Luna since the task has low complexity.\n\nاستخدم عنصر `<thead>` أصليًا. يخفي `-layout-stacked` العنصر بصريًا، لذا أبقه في DOM، ولا تستخدم `display: none`، للحفاظ على أسماء الأعمدة لتقنيات المساعدة."
+msgstr "استخدم عنصر `<thead>` أصليًا. يخفي `-layout-stacked` العنصر بصريًا، لذا أبقه في DOM، ولا تستخدم `display: none`، للحفاظ على أسماء الأعمدة لتقنيات المساعدة."
 
 #: css/table.md
 #, no-c-format

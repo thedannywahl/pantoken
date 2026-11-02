@@ -1,5 +1,3 @@
-[34m●[39m Auto selected GPT-6 Luna since the task has low complexity.
-
 # Compatibiliteit
 
 <!-- Gegenereerd door `vp run sync:compatibility`. Niet handmatig bewerken; voer de writer uit en commit. -->

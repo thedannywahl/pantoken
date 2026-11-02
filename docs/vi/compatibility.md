@@ -1,5 +1,3 @@
-[34m●[39m Auto selected GPT-6 Luna since the task has low complexity.
-
 # Khả năng tương thích
 
 <!-- Được tạo bởi `vp run sync:compatibility`. Không chỉnh sửa thủ công; hãy chạy trình ghi và commit. -->

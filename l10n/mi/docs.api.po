@@ -9399,7 +9399,7 @@ msgstr "Tautuhia te rārangi ripa kia role=\"tablist\", ia ripa kia role=\"tab\"
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "All six measured pieces of text pass with more contrast. two other pieces can't be reduced to one color. \"Billing\" can't be measured because an element behind it is partly transparent."
-msgstr "[34m●[39m Auto selected GPT-6 Luna since the task has low complexity.\n\nKua tutuki i ngā wāhanga kuputuhi e ono i inea te paearu rerekētanga tae, ā, he nui ake te rerekētanga. Kāore e taea te whakaiti i ētahi atu wāhanga e rua kia kotahi noa te tae. Kāore e taea te ine i te “Ngā nama” nā te mea he āhua pūataata tētahi huānga kei muri."
+msgstr "Kua tutuki i ngā wāhanga kuputuhi e ono i inea te paearu rerekētanga tae, ā, he nui ake te rerekētanga. Kāore e taea te whakaiti i ētahi atu wāhanga e rua kia kotahi noa te tae. Kāore e taea te ine i te “Ngā nama” nā te mea he āhua pūataata tētahi huānga kei muri."
 
 #: css/tabs.md
 #, no-c-format, pantoken-verbatim
@@ -9417,7 +9417,7 @@ msgstr "home-and-end-work"
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "End didn't move to the last tab."
-msgstr "[34m●[39m Auto selected GPT-6 Luna since the task has medium complexity.\n\nKāore a End i neke ki te ripa whakamutunga."
+msgstr "Kāore a End i neke ki te ripa whakamutunga."
 
 #: css/tabs.md
 #, no-c-format, pantoken-verbatim
@@ -9429,7 +9429,7 @@ msgstr "selected-state-exposed"
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "3 tabs are aria-selected=\"true\". A tab list should have exactly one."
-msgstr "[34m●[39m Auto selected GPT-6 Luna since the task has low complexity.\n\nE 3 ngā ripa kua aria-selected=\"true\". Kia kotahi anake te ripa kua tīpakohia i roto i tētahi rārangi ripa."
+msgstr "E 3 ngā ripa kua aria-selected=\"true\". Kia kotahi anake te ripa kua tīpakohia i roto i tētahi rārangi ripa."
 
 #: css/tabs.panel.md
 #, no-c-format

@@ -1,5 +1,3 @@
-[34m●[39m Auto selected GPT-6 Luna since the task has low complexity.
-
 # 호환성
 
 <!-- `vp run sync:compatibility`에서 생성됨. 직접 편집하지 마세요. 작성기를 실행한 뒤 커밋하세요. -->

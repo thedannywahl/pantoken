@@ -1,5 +1,3 @@
-[34m●[39m Auto selected GPT-6 Luna since the task has low complexity.
-
 # Kompatibilitet
 
 <!-- Genererad av `vp run sync:compatibility`. Redigera inte för hand; kör skrivaren och checka in. -->

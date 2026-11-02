@@ -1,5 +1,3 @@
-[34m●[39m Auto selected GPT-6 Luna since the task has low complexity.
-
 # Сумісність
 
 <!-- Створено за допомогою `vp run sync:compatibility`. Не редагуйте вручну; запустіть генератор і створіть коміт. -->

@@ -1,5 +1,3 @@
-[34m●[39m Auto selected GPT-6 Luna since the task has low complexity.
-
 # Samhæfni
 
 <!-- Búið til af `vp run sync:compatibility`. Ekki breyta handvirkt; keyrðu ritilinn og commit-aðu. -->

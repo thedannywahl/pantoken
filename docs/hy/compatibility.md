@@ -1,5 +1,3 @@
-[34m●[39m Auto selected GPT-6 Luna since the task has low complexity.
-
 # Համատեղելիություն
 
 <!-- Ստեղծվել է `vp run sync:compatibility`-ի կողմից։ Ձեռքով մի՛ խմբագրեք․ գործարկեք գեներատորը և կատարեք commit։ -->

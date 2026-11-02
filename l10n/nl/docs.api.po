@@ -2072,7 +2072,7 @@ msgstr "De animatie van de pulseringring."
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "The count or dot is visual only, so don't rely on color to carry its meaning; put the status in text, such as visually hidden text or an `aria-label` on the target it decorates."
-msgstr "[34m●[39m Auto selected GPT-6 Luna since the task has low complexity.\n\nHet aantal of de stip is alleen visueel, dus vertrouw niet op kleur om de betekenis over te brengen; vermeld de status in tekst, bijvoorbeeld met visueel verborgen tekst of een `aria-label` op het element dat ermee wordt versierd."
+msgstr "Het aantal of de stip is alleen visueel, dus vertrouw niet op kleur om de betekenis over te brengen; vermeld de status in tekst, bijvoorbeeld met visueel verborgen tekst of een `aria-label` op het element dat ermee wordt versierd."
 
 #: css/badge.md
 #, no-c-format

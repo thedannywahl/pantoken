@@ -1,5 +1,3 @@
-[34m●[39m Auto selected GPT-6 Luna since the task has low complexity.
-
 # Hototahitanga
 
 <!-- I hangaia e `vp run sync:compatibility`. Kaua e whakatika ā-ringa; whakahaerehia te kaituhi, kātahi ka commit. -->

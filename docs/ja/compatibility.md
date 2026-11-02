@@ -1,5 +1,3 @@
-[34m●[39m Auto selected GPT-6 Luna since the task has low complexity.
-
 # 互換性
 
 <!-- `vp run sync:compatibility` によって生成。手動で編集しないでください。writer を実行してコミットしてください。 -->

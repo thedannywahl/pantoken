@@ -1,5 +1,3 @@
-[34m●[39m Auto selected GPT-6 Luna since the task has low complexity.
-
 # תאימות
 
 <!-- נוצר על ידי `vp run sync:compatibility`. אין לערוך ידנית; יש להריץ את הכותב ולבצע commit. -->

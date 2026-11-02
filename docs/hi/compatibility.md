@@ -1,5 +1,3 @@
-[34m●[39m Auto selected GPT-6 Luna since the task has low complexity.
-
 # संगतता
 
 <!-- `vp run sync:compatibility` द्वारा जनरेट किया गया। हाथ से संपादित न करें; writer चलाएँ और commit करें। -->

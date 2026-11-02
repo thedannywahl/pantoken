@@ -1,5 +1,3 @@
-[34m●[39m Auto selected GPT-6 Luna since the task has low complexity.
-
 # Uyumluluk
 
 <!-- `vp run sync:compatibility` tarafından oluşturulmuştur. Elle düzenlemeyin; yazıcıyı çalıştırıp commit edin. -->

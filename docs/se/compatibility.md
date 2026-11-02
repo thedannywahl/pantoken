@@ -1,5 +1,3 @@
-[34m●[39m Auto selected GPT-6 Luna since the task has low complexity.
-
 # Heivvolašvuohta
 
 <!-- Genererejuvvon `vp run sync:compatibility` bokte. Ale doaimmat giehta mielde; vuodja čállájeaddji ja gease. -->

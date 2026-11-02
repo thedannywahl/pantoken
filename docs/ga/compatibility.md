@@ -1,5 +1,3 @@
-[34m●[39m Auto selected GPT-6 Luna since the task has low complexity.
-
 # Comhoiriúnacht
 
 <!-- Ginte ag `vp run sync:compatibility`. Ná cuir in eagar de láimh; rith an scríbhneoir agus déan commit. -->
