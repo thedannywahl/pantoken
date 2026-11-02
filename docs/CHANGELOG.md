@@ -1,5 +1,12 @@
 # CHANGELOG
 
+## 0.6.5
+
+### Patch Changes
+
+- 5580227: Remove Copilot CLI banners and ANSI color codes from saved guide and API translations, and regenerate all 43 localized compatibility pages.
+- 5580227: Keep generated machine values out of translation keys and format compatibility Markdown before writing.
+
 ## 0.6.4
 
 ### Patch Changes

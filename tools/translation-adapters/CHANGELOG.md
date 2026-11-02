@@ -1,5 +1,13 @@
 # CHANGELOG
 
+## 1.0.3
+
+### Patch Changes
+
+- 5580227: Read piped translation prompts directly from standard input so Copilot and agy wrappers work on Linux as well as macOS.
+- 5580227: Keep generated machine values out of translation keys and format compatibility Markdown before writing.
+- 5580227: Keep Copilot model-selection banners and terminal colors out of translation responses.
+
 ## 1.0.2
 
 ### Patch Changes
