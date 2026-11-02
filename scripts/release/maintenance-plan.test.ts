@@ -61,6 +61,37 @@ test("updates manifest fields without replacing catalog or workspace references"
   });
 });
 
+test("updates only the matching existing pnpm devEngine version", () => {
+  const manifest = {
+    scripts: { build: "safe" },
+    devEngines: {
+      packageManager: { name: "pnpm", version: "11.23.0", onFail: "warn" },
+    },
+  };
+  const source = JSON.stringify(manifest);
+  const proposal = {
+    ...upgrade,
+    depName: "pnpm",
+    packageFile: "package.json",
+    currentValue: "11.23.0",
+    newValue: "12.16.1",
+  };
+  expect(JSON.parse(editMaintenanceDependency(source, proposal))).toEqual({
+    ...manifest,
+    devEngines: {
+      packageManager: { name: "pnpm", version: "12.16.1", onFail: "warn" },
+    },
+  });
+  for (const invalid of [
+    { ...proposal, currentValue: "10.0.0" },
+    { ...proposal, newValue: "invalid" },
+    { ...proposal, depName: "npm" },
+    { ...proposal, manager: "github-actions" },
+  ])
+    expect(() => editMaintenanceDependency(source, invalid)).toThrow("does not match");
+  expect(() => editMaintenanceDependency("{}", proposal)).toThrow("does not match");
+});
+
 test("keeps coupled dependency families atomic", () => {
   const group = groupMaintenanceUpgrades([
     upgrade,

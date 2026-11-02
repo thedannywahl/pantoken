@@ -161,8 +161,21 @@ export function validateMaintenanceResult(
 
 /** Compare immutable manifest fields independently of dependency changes. */
 export function validateMaintenanceManifest(before: string, after: string): void {
+  const original = JSON.parse(before) as {
+    devEngines?: { packageManager?: { name?: unknown; version?: unknown } };
+  };
+  const originalManager = original.devEngines?.packageManager;
   const strip = (source: string): string => {
-    const data = JSON.parse(source) as Record<string, unknown>;
+    const data = JSON.parse(source) as Record<string, unknown> & typeof original;
+    const manager = data.devEngines?.packageManager;
+    if (
+      originalManager?.name === "pnpm" &&
+      typeof originalManager.version === "string" &&
+      manager?.name === "pnpm" &&
+      typeof manager.version === "string" &&
+      /^\d+\.\d+\.\d+$/u.test(manager.version)
+    )
+      manager.version = originalManager.version;
     for (const field of [
       "dependencies",
       "optionalDependencies",
