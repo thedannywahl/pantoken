@@ -75,6 +75,7 @@ export default defineConfig({
   },
   staged: {
     "*": "vp check --fix",
+    "*.md": "vp exec markdownlint-cli2",
     // Stylelint fixes CSS; cssdoc then gates its documentation comments.
     "*.css": "vp exec stylelint --fix && vp exec cssdoc lint --max-warnings 0",
   },

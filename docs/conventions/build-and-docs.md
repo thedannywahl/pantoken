@@ -54,6 +54,12 @@ contain literal values, not unresolved placeholders.
 - `.css` formatting: `vp fmt` (oxc) is JS/TS/JSON only and no-ops on `.css`. Stylelint owns core CSS
   correctness; cssdoc owns documentation comments. `lint:css` and `lint:cssdoc` run in `ready`, and
   both are wired into the `vite.config.ts` staged hook.
+- `vp check --fix` formats Markdown but doesn't run markdownlint. Run `vp run lint:markdown` for the
+  same Markdown rules as CI; `ready` includes this gate too. The staged hook also runs markdownlint
+  on changed Markdown files, using the exclusions in `.markdownlint-cli2.yaml`.
+- The Copilot translation wrapper requests `--silent --no-color` output so model-selection banners,
+  statistics, and terminal colors don't enter translation catalogs. If a banner was saved, repair
+  the catalog first, then regenerate its pages; editing rendered Markdown alone won't persist.
 
 `vpr docs:dev` builds interactions before staging its browser bundles. The interactions build task
 declares its workspace dependencies' builds as prerequisites, so `@pantoken/utils` is built even
