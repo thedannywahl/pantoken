@@ -135,6 +135,21 @@ export function editMaintenanceDependency(source: string, upgrade: MaintenanceUp
   if (!upgrade.packageFile.endsWith("package.json"))
     throw new Error(`Unsupported npm proposal file: ${upgrade.packageFile}`);
   const manifest = JSON.parse(source) as Record<string, Record<string, unknown>>;
+  const packageManager = manifest.devEngines?.packageManager as
+    | { name?: unknown; version?: unknown }
+    | undefined;
+  if (
+    upgrade.manager === "npm" &&
+    upgrade.depName === "pnpm" &&
+    packageManager?.name === "pnpm" &&
+    /^\d+\.\d+\.\d+$/u.test(upgrade.newValue)
+  ) {
+    const value = replacementValue(packageManager.version, upgrade);
+    if (value !== undefined) {
+      packageManager.version = value;
+      changed = true;
+    }
+  }
   for (const field of [
     "dependencies",
     "optionalDependencies",
