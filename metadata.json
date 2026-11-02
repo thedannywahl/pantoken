@@ -3,7 +3,7 @@
   "checkpoint_id": "01M6EDHDPW1HWP8DEC3S2PPCJ0",
   "strategy": "manual-commit",
   "branch": "documentation-placeholders",
-  "checkpoints_count": 1,
+  "checkpoints_count": 3,
   "files_touched": [
     "docs/compatibility.md",
     "l10n/ar/docs.api.po",
@@ -102,6 +102,13 @@
       "compact_transcript": "/0/transcript.jsonl",
       "content_hash": "/0/content_hash.txt",
       "prompt": "/0/prompt.txt"
+    },
+    {
+      "metadata": "/1/metadata.json",
+      "transcript": "/1/full.jsonl",
+      "compact_transcript": "/1/transcript.jsonl",
+      "content_hash": "/1/content_hash.txt",
+      "prompt": "/1/prompt.txt"
     }
   ],
   "token_usage": {
@@ -112,24 +119,24 @@
     "api_call_count": 0
   },
   "redaction": {
-    "replacements": 1,
+    "replacements": 72529,
     "layers": {
       "betterleaks": 0,
       "connection_string": 0,
       "credential_key": 0,
-      "credential_value": 0,
+      "credential_value": 3,
       "credentialed_uri": 0,
-      "custom": 0,
-      "entropy": 1,
+      "custom": 2,
+      "entropy": 180604,
       "goredact": 0,
-      "key_context": 0,
-      "pii": 0,
+      "key_context": 1,
+      "pii": 8,
       "provider_token": 0,
       "shell_stdin": 0
     },
     "custom_rules_active": 2,
     "pii": {
-      "EMAIL": 0,
+      "EMAIL": 8,
       "IP": 0,
       "PHONE": 0
     }
