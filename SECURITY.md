@@ -137,7 +137,9 @@ know what's in place:
   GitHub-hosted design-token tag. Candidate builds and target integration checks run without
   repository-write credentials in disposable worktrees. A separate publisher verifies immutable
   base/proposal refs, allowed paths, manifest invariants, and protected CI/Changeset checks before
-  enabling auto-merge. Failed candidates remain in a separate, non-merging draft with individual
+  enabling auto-merge. Existing pnpm `devEngines.packageManager.version` entries may receive
+  numeric stable version updates; package-manager names, failure policy, package versions,
+  scripts, and exports remain protected. Failed candidates remain in a separate, non-merging draft with individual
   issues. Tests, not release-feed data, establish compatibility claims.
 - **Maintenance file and request integrity.** Output hashing and changed-file collection inspect
   and read the same no-follow file descriptor, rejecting symlinks and non-regular files. This is

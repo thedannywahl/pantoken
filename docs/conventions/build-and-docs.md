@@ -240,6 +240,11 @@ Actions, and the GitHub-only Instructure design-token tag. The existing five-day
 still applies. Native standalone lockfile-maintenance PRs are disabled; the coordinator refreshes
 the lockfile and downstream support even on weeks without manifest bumps.
 
+Maintenance can update an existing pnpm `devEngines.packageManager.version` to a numeric stable
+version. Candidate application checks the proposed current value and preserves the package-manager
+name and `onFail` policy. Preparation and publication still reject changes to scripts, package
+versions, exports, and unrelated manifest fields.
+
 `scripts/release/weekly-maintenance.ts` tests coupled candidate groups in disposable worktrees
 without repository-write credentials. It runs explicit owning-adapter checks for framework bumps,
 prepares frozen upstream deprecations, blesses the baseline, regenerates compatibility files, and

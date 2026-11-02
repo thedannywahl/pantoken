@@ -77,6 +77,43 @@ test("permits dependency manifest updates but rejects script/version/export tamp
   );
 });
 
+test("permits an existing pnpm devEngine version update without relaxing manifest controls", () => {
+  const manifest = {
+    name: "pantoken-root",
+    version: "0.1.0",
+    private: true,
+    scripts: { build: "safe" },
+    exports: { ".": "./index.js" },
+    devEngines: {
+      packageManager: { name: "pnpm", version: "11.23.0", onFail: "warn" },
+    },
+  };
+  const before = JSON.stringify(manifest);
+  const updated = structuredClone(manifest);
+  updated.devEngines.packageManager.version = "12.16.1";
+  expect(() => validateMaintenanceManifest(before, JSON.stringify(updated))).not.toThrow();
+  for (const mutate of [
+    (candidate: typeof manifest) => (candidate.devEngines.packageManager.name = "npm"),
+    (candidate: typeof manifest) => (candidate.devEngines.packageManager.onFail = "ignore"),
+    (candidate: typeof manifest) => (candidate.devEngines.packageManager.version = "not-a-version"),
+    (candidate: typeof manifest) => (candidate.scripts.build = "unsafe"),
+    (candidate: typeof manifest) => (candidate.exports["."] = "./unsafe.js"),
+    (candidate: typeof manifest) => (candidate.version = "9.0.0"),
+  ]) {
+    const candidate = structuredClone(updated);
+    mutate(candidate);
+    expect(() => validateMaintenanceManifest(before, JSON.stringify(candidate))).toThrow(
+      "cannot change",
+    );
+  }
+  const withoutVersion = structuredClone(manifest);
+  Reflect.deleteProperty(withoutVersion.devEngines.packageManager, "version");
+  expect(() => validateMaintenanceManifest(before, JSON.stringify(withoutVersion))).toThrow();
+  expect(() =>
+    validateMaintenanceManifest(JSON.stringify(withoutVersion), JSON.stringify(updated)),
+  ).toThrow();
+});
+
 function githubFixture(
   result: unknown = artifact(),
   options: {
