@@ -1,0 +1,142 @@
+PR 237 is failing in CI, use gh to investigate and remediate.
+
+---
+
+give me the steps to take again after this merges.
+
+---
+
+what do I put as the value of RELEASE_ACTOR and RENOVATE_ACTOR ?
+
+---
+
+how do I seed the policy check?
+
+---
+
+I renamed the title to PR 154 (the contents of which are now obsolete, it was going to be closed anyways)
+
+---
+
+PR 239 is now open, but unmerged.
+
+---
+
+PR 239 is now open, but unmerged (and not yet ready to merge, it's incomplete)
+
+---
+
+how do I do that?
+
+---
+
+> Select the status context **`renovate-policy`**, not the workflow job name **“Evaluate trusted automation policy.”**
+how do I do this?
+
+---
+
+I do get 1 warning on "Evaluate trusted automation policy":
+> [**Workflow execution policy warning (evaluate mode): **
+                        .github/workflows/renovate-policy.yml#L1](https://github.com/thedannywahl/pantoken/actions/runs/40591514169/workflow)
+                      
+                        
+                          On December 2, 2026, GitHub will restrict `pull_request_target` on public repositories by default. To continue allowing the event trigger, configure an Actions policy. Learn more: [https://gh.io/securely-using-pull_request_target#default-policy-for-pull_request_target](https://gh.io/securely-using-pull_request_target#default-policy-for-pull_request_target)
+
+---
+
+give me the steps to do that.
+
+---
+
+```
+{
+  "conditions": null,
+  "enforcement": "active",
+  "name": "Allow trusted automation policy events",
+  "rules": null
+}
+```
+
+---
+
+the first one drops me into an editor that I can scroll to the end but how do I write/save?
+
+---
+
+my shell shows a blinking ":" and if I scroll down it shows "(END)"
+
+---
+
+```
+{
+  "conditions": {                                                                   "workflow_path": {
+      "exclude": [],
+      "include": [
+        ".github/workflows/renovate-policy.yml"
+      ]                                                                             }
+  },                                                                              "enforcement": "active",
+  "name": "Allow trusted automation policy events",                               "rules": [
+    {
+      "parameters": {
+        "allowed_events": [
+          "pull_request_target",                                                          "pull_request_review"
+        ]                                                                             },
+      "type": "restrict_action_events"
+    }                                                                             ]
+}
+```
+
+---
+
+a second notice:
+```
+
+Evaluate trusted automation policy
+"The ubuntu-latest label will migrate to Ubuntu 26 beginning October 19, 2026. For more information, see https://github.com/actions/runner-images/issues/14748"
+
+```
+
+---
+
+we have the first renovate PR in place, but it's failing for a number of reasons. One of them was translation drift which has been fixed through automations after the PR was created.  I'd like to get this PR done or to trigger another one to test the end-to-end release automation policy:
+https://github.com/thedannywahl/pantoken/pull/243
+
+---
+
+how do I do step 1?
+
+---
+
+it's running: https://github.com/thedannywahl/pantoken/actions/runs/41517522896
+
+---
+
+prepare failed.
+
+---
+
+issues was read-only. starting a new run.
+
+---
+
+https://github.com/thedannywahl/pantoken/actions/runs/41518841285
+
+---
+
+failed again
+
+---
+
+done, now what?
+
+---
+
+status
+
+---
+
+okay, let's do that.
+
+---
+
+incremental conventional commits on a new branch and push and watch teh PR to green and merge.
