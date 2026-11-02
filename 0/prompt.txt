@@ -1,0 +1,13 @@
+pantoken on documentation-placeholders ≢  ?8 ~113 via  24.22.1
+➜ vpr @pantoken/docs#docs:guides:locales:copilot && vpr @pantoken/docs#docs:values:render && vpr @pantoken/docs#docs:values:check && vpr @pantoken/docs#docs:check:drift
+~/docs$ DOCS_TRANSLATION_COMMAND="$(git rev-parse --show-toplevel)/tools/translation-adapters/copilot-wrapper.sh" DOCS_TRANSLATION_COMMAND_ARGS="--model auto" node scripts/translate-guide-po.ts ○ cache miss: 'l10n/nb/docs.api.po' modified, executing
+file:///Users/dwahl/Scripts/pantoken/tools/translation-adapters/src/generated-values.ts:171
+    throw new Error("Missing or malformed generated Markdown placeholders");
+          ^
+
+Error: Missing or malformed generated Markdown placeholders
+    at restoreGeneratedMarkdown (file:///Users/dwahl/Scripts/pantoken/tools/translation-adapters/src/generated-values.ts:171:11)
+    at file:///Users/dwahl/Scripts/pantoken/docs/scripts/translate-guide-po.ts:60:33
+    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+
+Node.js v26.13.0
