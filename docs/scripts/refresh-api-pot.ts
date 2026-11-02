@@ -107,7 +107,7 @@ export const refreshApiPot = ({ force = false }: { force?: boolean } = {}): void
   const units = globSync("**/*.md", { cwd: enApiDir })
     .sort()
     .flatMap((file) =>
-      collectUnits(segmentMarkdown(readFileSync(join(enApiDir, file), "utf8")))
+      collectUnits(segmentMarkdown(readFileSync(join(enApiDir, file), "utf8"), { scope: file }))
         // Glossary units are deterministically substituted and never written to the PO catalog
         // (see segment-markdown.ts) — including them here would make 100% coverage unreachable.
         .filter(isCatalogedApiUnit)

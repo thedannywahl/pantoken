@@ -30,6 +30,7 @@ import {
   writeCatalog,
   type PoEntry,
 } from "@pantoken/i18n-engine";
+import { assertGeneratedTranslation } from "../../tools/translation-adapters/src/generated-values.ts";
 
 /** Match a translation's trailing-newline shape to its source string. */
 export function alignTrailingNewline(source: string, translation: string): string {
@@ -92,7 +93,11 @@ export class TranslationMemory {
     this._poPath = poPath;
     this._poEntries = poEntries;
     this._poByKey = poEntries
-      ? new Map(poEntries.map((entry) => [`${entry.msgctxt ?? ""}\0${entry.msgid}`, entry]))
+      ? new Map(
+          poEntries
+            .filter((entry) => !entry.msgid.includes("{{ptk_code_") || !entry.obsolete)
+            .map((entry) => [`${entry.msgctxt ?? ""}\0${entry.msgid}`, entry]),
+        )
       : undefined;
   }
 
@@ -112,14 +117,23 @@ export class TranslationMemory {
     // DOCS_TRANSLATION_FORCE turns every lookup into a miss, so `:force` really does retranslate.
     if (process.env.DOCS_TRANSLATION_FORCE === "1") return undefined;
     if (this._poByKey) {
-      const translation = this._poByKey.get(`docs.api:${kind}\0${source}`)?.msgstr;
+      const entry = this._poByKey.get(`docs.api:${kind}\0${source}`);
+      const translation =
+        entry && (!source.includes("{{ptk_code_") || (!entry.fuzzy && !entry.obsolete))
+          ? entry.msgstr
+          : undefined;
+      if (translation !== undefined && translation !== "")
+        assertGeneratedTranslation(source, translation);
       if (translation) this._poHits++;
       return translation || undefined;
     }
-    return this._mem!.get(keyFor(kind, source));
+    const translation = this._mem!.get(keyFor(kind, source));
+    if (translation !== undefined) assertGeneratedTranslation(source, translation);
+    return translation;
   }
 
   set(kind: string, source: string, translation: string, options?: { verbatim?: boolean }): void {
+    assertGeneratedTranslation(source, translation);
     const verbatim = options?.verbatim === true;
     if (this._poByKey) {
       this.setPoTranslation(kind, source, translation, verbatim);

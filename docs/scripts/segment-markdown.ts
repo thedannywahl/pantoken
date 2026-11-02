@@ -29,6 +29,12 @@ import {
   segmentDemoHtml,
 } from "./segment-demo-html.ts";
 import { resolveExampleTargets } from "@pantoken/utils/example-targets";
+import {
+  GENERATED_VALUES_MARKER,
+  generatedMarkdown,
+  restoreGeneratedMarkdown,
+  scopeGeneratedMarkdown,
+} from "../../tools/translation-adapters/src/generated-values.ts";
 
 /** How a translatable segment is handled: cheap `glossary` substitution or real `prose` translation. */
 export type TranslationKind = "glossary" | "prose";
@@ -48,7 +54,7 @@ export type Segment =
   /** The generated accessibility-audit table: visible text translates, markup and `<code>` stay. */
   | { kind: "audit"; body: DemoSegment[] }
   | { kind: "glossary"; text: string }
-  | { kind: "prose"; text: string }
+  | { kind: "prose"; text: string; generatedValues?: boolean; scope?: string }
   | {
       kind: "table";
       rows: string[][];
@@ -65,6 +71,7 @@ export type Segment =
       alertLine: string;
       label: string;
       note: string;
+      scope?: string;
     };
 
 /** A translatable unit: source text plus how it should be translated. */
@@ -156,6 +163,8 @@ const classifyJsCallout = (lines: string[]): Segment | undefined => {
 const classifyBlock = (lines: string[]): Segment => {
   const text = lines.join("\n");
   const first = lines[0];
+  if (first === GENERATED_VALUES_MARKER)
+    return { kind: "prose", text: lines.slice(1).join("\n"), generatedValues: true };
 
   // Table: header row + separator. Only translate cells when the grid rebuilds exactly to the source,
   // so anything with unexpected spacing/escaping is preserved whole rather than silently reformatted.
@@ -223,7 +232,7 @@ const scanBlankRun = (lines: string[], start: number): number => {
 };
 
 /** Split markdown into ordered, lossless segments. */
-export function segmentMarkdown(md: string): Segment[] {
+export function segmentMarkdown(md: string, options: { scope?: string } = {}): Segment[] {
   const lines = md.split("\n");
   const segments: Segment[] = [];
   let index = 0;
@@ -237,7 +246,10 @@ export function segmentMarkdown(md: string): Segment[] {
   let block: string[] = [];
   const flush = (): void => {
     if (block.length > 0) {
-      segments.push(classifyBlock(block));
+      const segment = classifyBlock(block);
+      if (segment.kind === "callout" || (segment.kind === "prose" && segment.generatedValues))
+        segment.scope = options.scope;
+      segments.push(segment);
       block = [];
     }
   };
@@ -322,7 +334,13 @@ export function collectUnits(segments: readonly Segment[]): TranslatableUnit[] {
   const units: TranslatableUnit[] = [];
   for (const segment of segments) {
     if (segment.kind === "glossary" || segment.kind === "prose") {
-      units.push({ text: segment.text, kind: segment.kind });
+      units.push({
+        text:
+          segment.kind === "prose" && segment.generatedValues
+            ? scopeGeneratedMarkdown(generatedMarkdown(segment.text), segment.scope).template
+            : segment.text,
+        kind: segment.kind,
+      });
       continue;
     }
     if (segment.kind === "prompt") {
@@ -350,7 +368,13 @@ export function collectUnits(segments: readonly Segment[]): TranslatableUnit[] {
       continue;
     }
     if (segment.kind === "callout") {
-      units.push({ text: segment.label, kind: "glossary" }, { text: segment.note, kind: "prose" });
+      units.push(
+        { text: segment.label, kind: "glossary" },
+        {
+          text: scopeGeneratedMarkdown(generatedMarkdown(segment.note), segment.scope).template,
+          kind: "prose",
+        },
+      );
     }
   }
   return units;
@@ -360,6 +384,11 @@ export function collectUnits(segments: readonly Segment[]): TranslatableUnit[] {
 export function reassemble(segments: readonly Segment[], resolve: Resolve): string {
   return segments.map((segment) => renderSegment(segment, resolve)).join("\n");
 }
+
+const resolveGenerated = (text: string, resolve: Resolve, scope?: string): string => {
+  const generated = scopeGeneratedMarkdown(generatedMarkdown(text), scope);
+  return restoreGeneratedMarkdown(resolve(generated.template, "prose"), generated);
+};
 
 const renderSegment = (segment: Segment, resolve: Resolve): string => {
   switch (segment.kind) {
@@ -376,15 +405,18 @@ const renderSegment = (segment: Segment, resolve: Resolve): string => {
     case "audit":
       return reassembleDemoHtml(segment.body, (text) => resolve(text, "prose"));
     case "glossary":
-    case "prose":
       return resolve(segment.text, segment.kind);
+    case "prose":
+      return segment.generatedValues
+        ? `${GENERATED_VALUES_MARKER}\n${resolveGenerated(segment.text, resolve, segment.scope)}`
+        : resolve(segment.text, segment.kind);
     case "table":
       return renderTable(segment, resolve);
     case "callout":
       return [
         segment.marker,
         segment.alertLine,
-        `> **${resolve(segment.label, "glossary")}** — ${resolve(segment.note, "prose")}`,
+        `> **${resolve(segment.label, "glossary")}** — ${resolveGenerated(segment.note, resolve, segment.scope)}`,
       ].join("\n");
   }
 };

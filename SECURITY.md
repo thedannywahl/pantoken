@@ -58,6 +58,10 @@ pantoken is a design-token transformation and distribution system. It converts I
 - The CLI validates `--theme`, `--class`, and `--format` inputs against allowlists at parse time; unknown flags are rejected immediately. The CLI warns when the output path escapes the current working directory but still writes to the caller-selected location.
 - `@pantoken/plugin-custom-theme-colors` accepts an arbitrary brand color for its `custom` scale (as the Canvas theme editor's Custom swatch does). Only `#rgb`/`#rrggbb` is accepted, and anything else throws a `TypeError`. The generated CSS contains only derived `#rrggbb` values, never the raw input string. Posted `customScale`/`customColor` values in demo and editor frames are dropped unless every entry is a plain hex.
 - Repository translation sources are trusted input. Entries marked `verbatim: "required"` bypass external translation adapters and are copied exactly into locale caches; `allow` only permits a model response to match the source.
+- Generated documentation binds current machine values into stable translation templates. Missing,
+  duplicated, unknown, or malformed slots fail validation; the bindings don't evaluate expressions
+  or follow object paths. Source Markdown and URLs remain trusted inputs, not sanitized content.
+  Migration preserves fuzzy status and rejects ambiguous mappings rather than approving translations.
 - The CLI translation HTTP shim can listen only on `127.0.0.1`. It rejects browser `Origin`
   headers and unexpected `Host` headers before invoking a provider. It is an unencrypted local
   development endpoint, not a remote service or an authentication boundary against local processes.

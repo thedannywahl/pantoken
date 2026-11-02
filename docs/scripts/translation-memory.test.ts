@@ -43,6 +43,42 @@ test("keyFor is deterministic and separates kinds", () => {
   expect(keyFor("prose", "hello")).toMatch(/^[0-9a-f]{64}$/);
 });
 
+test("validates generated bindings in JSON caches on both read and write", () => {
+  const source = "Use {{ptk_code_0}}.";
+  existsSync.mockReturnValue(true);
+  readFileSync.mockReturnValue(
+    JSON.stringify({
+      version: 1,
+      entries: { [keyFor("prose", source)]: "Use {{ptk_code_1}}." },
+    }),
+  );
+  const memory = TranslationMemory.load("hu", "test");
+  expect(() => memory.get("prose", source)).toThrow("placeholder");
+  expect(() => memory.set("prose", source, "No binding")).toThrow("placeholder");
+});
+
+test("keeps ordinary fuzzy lookup behavior without accepting fuzzy generated bindings", () => {
+  existsSync.mockReturnValue(true);
+  readFileSync.mockReturnValue(
+    '#, fuzzy\nmsgctxt "docs.api:prose"\nmsgid "Ordinary prose"\nmsgstr "Existing prose"\n\n' +
+      '#, fuzzy\nmsgctxt "docs.api:prose"\nmsgid "Use {{ptk_code_0}}."\nmsgstr "Use {{ptk_code_0}}."\n',
+  );
+  const memory = TranslationMemory.load("hu", "api");
+  expect(memory.get("prose", "Ordinary prose")).toBe("Existing prose");
+  expect(memory.get("prose", "Use {{ptk_code_0}}.")).toBeUndefined();
+});
+
+test("obsolete generated entries cannot shadow reviewed active translations", () => {
+  existsSync.mockReturnValue(true);
+  readFileSync.mockReturnValue(
+    'msgctxt "docs.api:prose"\nmsgid "Use {{ptk_code_0}}."\nmsgstr "Hasznald: {{ptk_code_0}}."\n\n' +
+      '#~ msgctxt "docs.api:prose"\n#~ msgid "Use {{ptk_code_0}}."\n#~ msgstr "Old translation"\n',
+  );
+  expect(TranslationMemory.load("hu", "api").get("prose", "Use {{ptk_code_0}}.")).toBe(
+    "Hasznald: {{ptk_code_0}}.",
+  );
+});
+
 test("load starts empty when no cache file exists", () => {
   existsSync.mockReturnValue(false);
   const memory = TranslationMemory.load("hu", "test");

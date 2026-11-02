@@ -6,10 +6,11 @@ import { CONFIG_DEFAULTS } from "../src/config.ts";
 import {
   aiProviderConfigured,
   fillUntranslatedEntries,
+  fillUntranslatedMarkdownEntries,
   resolveProviderInvocation,
   targetLanguageLabel,
 } from "../src/ai-translate.ts";
-import { parsePo } from "../src/po.ts";
+import { parsePo, serializePo } from "../src/po.ts";
 
 let testDir: string;
 const originalCommand = process.env.I18N_TRANSLATION_COMMAND;
@@ -195,6 +196,50 @@ describe("fillUntranslatedEntries", () => {
       { concurrency: 2 },
     );
     expect(peakConcurrency()).toBe(2);
+  });
+});
+
+describe("fillUntranslatedMarkdownEntries generated values", () => {
+  function writeGeneratedPo(): string {
+    const path = join(testDir, "hu.po");
+    writeFileSync(
+      path,
+      serializePo([
+        {
+          msgid: "Use {{ptk_code_0}}.\n",
+          msgstr: "Legacy wording with `pkg`.\n",
+          references: ["compatibility.md"],
+          flags: ["fuzzy", "no-c-format"],
+          fuzzy: true,
+          obsolete: false,
+        },
+      ]),
+    );
+    return path;
+  }
+
+  test("retries nonempty fuzzy generated templates and restores masked slots before caching", async () => {
+    installFakeProvider("Translated __PTK_VAR_0__.\n");
+    const path = writeGeneratedPo();
+
+    await fillUntranslatedMarkdownEntries(path, "hu", CONFIG_DEFAULTS.provider);
+
+    const [entry] = parsePo(readFileSync(path, "utf8"));
+    expect(entry.msgstr).toBe("Translated {{ptk_code_0}}.\n");
+    expect(entry.fuzzy).toBe(false);
+    expect(entry.flags).toEqual(["no-c-format"]);
+  });
+
+  test("preserves fuzzy legacy wording when the provider loses a generated slot", async () => {
+    installFakeProvider("Translated without its slot.\n");
+    const path = writeGeneratedPo();
+
+    await fillUntranslatedMarkdownEntries(path, "hu", CONFIG_DEFAULTS.provider);
+
+    const [entry] = parsePo(readFileSync(path, "utf8"));
+    expect(entry.msgstr).toBe("Legacy wording with `pkg`.\n");
+    expect(entry.fuzzy).toBe(true);
+    expect(entry.flags).toContain("fuzzy");
   });
 });
 

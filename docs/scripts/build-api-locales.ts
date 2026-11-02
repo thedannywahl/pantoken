@@ -51,6 +51,9 @@ import {
 } from "./translation-memory.ts";
 import { GLOSSARY_TERMS } from "./glossary.ts";
 import { readPartialPages, walkFiles } from "./lib/files.ts";
+import { escapeBareHtmlTags } from "./markdown-structure.ts";
+import { renderGeneratedValues } from "./render-generated-values.ts";
+export { escapeBareHtmlTags } from "./markdown-structure.ts";
 
 const docsRoot = join(import.meta.dirname, "..");
 const enApiDir = join(docsRoot, "api");
@@ -187,37 +190,6 @@ const collectSidebarText = (items: SidebarItem[], out: string[]): void => {
   }
 };
 
-// Translated prose occasionally emits literal HTML tags (for example <dialog>), which Vue markdown
-// parsing treats as real elements and can fail on missing end tags. Escape bare tag tokens in prose
-// segments while leaving preserved HTML blocks/code fences untouched. A tag with attributes (the
-// stability-badge pill's `<span class="...">`) is real generated HTML, not a stray mention — its
-// plain closing partner (`</span>`) must stay unescaped too, or the pair goes unbalanced.
-/** Escape bare HTML tags in prose while preserving code and attributed tags. */
-export const escapeBareHtmlTags = (text: string): string => {
-  const preserved: string[] = [];
-  // CommonMark code spans: a backtick run only closes at the next run of the same length.
-  const withoutCode = text.replace(/(?<!`)(`+)(?!`)[\s\S]*?[^`]\1(?!`)/g, (match) => {
-    const marker = `__PTK_HTML_SAFE_${preserved.length}__`;
-    preserved.push(match);
-    return marker;
-  });
-  const attributedTagNames = new Set(
-    [...withoutCode.matchAll(/<([A-Za-z][\w-]*)\s[^>]*>/g)].map((match) => match[1]),
-  );
-  const pairedTagNames = new Set(
-    [...withoutCode.matchAll(/<([A-Za-z][\w-]*)>[^]*?<\/\1>/g)].map((match) => match[1]),
-  );
-
-  let escaped = withoutCode.replace(/<\/?([A-Za-z][\w-]*)>/g, (match, name: string) => {
-    if (attributedTagNames.has(name) || pairedTagNames.has(name)) return match;
-    return match.startsWith("</") ? `&lt;/${name}&gt;` : `&lt;${name}&gt;`;
-  });
-  for (const [index, block] of preserved.entries()) {
-    escaped = escaped.replaceAll(`__PTK_HTML_SAFE_${index}__`, block);
-  }
-  return escaped;
-};
-
 /**
  * Generate the EN API docs (TypeDoc + badge styling + overview) and the CSS API pages. The CSS pages
  * live under docs/api/css/; they run after TypeDoc (which cleans docs/api) and before the locale clone,
@@ -278,7 +250,9 @@ const translateMarkdownFiles = async (
   const glossary = new GlossaryTranslationAdapter(locale);
   const segmented = markdownFiles.map((filePath) => ({
     filePath,
-    segments: segmentMarkdown(readFileSync(filePath, "utf8")),
+    segments: segmentMarkdown(readFileSync(filePath, "utf8"), {
+      scope: relative(join(docsRoot, locale, "api"), filePath),
+    }),
   }));
 
   let totalGlossaryTerms = 0;
@@ -300,6 +274,14 @@ const translateMarkdownFiles = async (
     const protectedProseUnits: TranslationUnit[] = fileUnits
       .filter((unit) => isCatalogedApiUnit(unit) && unit.translateCodeShaped !== true)
       .map((unit) => ({ kind: "prose", source: unit.text }));
+    if (adapter.translatesProse === false) {
+      for (const unit of proseUnits) {
+        if (unit.source.includes("{{ptk_code_") && memory.get("prose", unit.source) === undefined)
+          throw new Error(
+            `${locale} ${relative(docsRoot, filePath)}: missing reviewed generated-value translation`,
+          );
+      }
+    }
 
     const beforeMisses = memory.misses;
     const beforeHits = memory.hits;
@@ -489,6 +471,8 @@ const build = async (): Promise<void> => {
     console.log(`No API pages are in DOCS_CHANGED_PAGES_FILE; skipping API locale build.`);
     return;
   }
+
+  if (!partialPages) await renderGeneratedValues({ guidesOnly: true });
 
   rmSync(enApiDir, { recursive: true, force: true });
   for (const locale of locales) {

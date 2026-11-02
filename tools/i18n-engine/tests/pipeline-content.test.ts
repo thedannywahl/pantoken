@@ -141,3 +141,55 @@ test("removes stale persistent rendered files when a source file is removed", ()
   expect(existsSync(join(repo, "packages/scaffold/generated/l10n/hu/react/README.md"))).toBe(true);
   expect(existsSync(join(repo, "packages/scaffold/generated/l10n/hu/vue/README.md"))).toBe(false);
 });
+
+test("reuses generated table translations with current bindings across locales", () => {
+  const sourcePath = join(repo, "packages/scaffold/templates/react/README.md");
+  const source =
+    "<!-- pantoken-generated-values -->\n# Support\n\n| Package | Version |\n| --- | --- |\n| `pkg` | `1.0` |\n";
+  writeFileSync(sourcePath, source);
+  runExtractContent(config, repo, "scaffold.readme");
+  const entries = parsePo(readFileSync(join(repo, "l10n/scaffold.readme.pot"), "utf8"));
+  const generated = entries.find((entry) => entry.references.includes("react/README.md"));
+  expect(generated).toBeDefined();
+  for (const locale of ["hu", "de"]) {
+    mkdirSync(join(repo, "l10n", locale), { recursive: true });
+    writeCatalog(
+      join(repo, "l10n", locale, "scaffold.readme.po"),
+      serializePo(
+        entries.map((entry) => ({
+          ...entry,
+          msgstr:
+            entry === generated ? entry.msgid.replace("Support", `${locale} support`) : entry.msgid,
+        })),
+      ),
+    );
+  }
+  writeFileSync(sourcePath, source.replace("`1.0`", "`123.45.6`"));
+  runExtractContent(config, repo, "scaffold.readme");
+  const updated = parsePo(readFileSync(join(repo, "l10n/scaffold.readme.pot"), "utf8")).find(
+    (entry) => entry.references.includes("react/README.md"),
+  );
+  expect(updated?.msgid).toBe(generated?.msgid);
+  for (const locale of ["hu", "de"]) {
+    runRenderContent(config, repo, "scaffold.readme", locale);
+    const rendered = readFileSync(
+      join(repo, "packages/scaffold/generated/l10n", locale, "react/README.md"),
+      "utf8",
+    );
+    expect(rendered).toContain(`${locale} support`);
+    expect(rendered).toContain("`123.45.6`");
+    expect(rendered).not.toContain("{{ptk_code_");
+    expect(rendered).not.toContain("pantoken-generated-values");
+  }
+});
+
+test("does not render a generated whole-file template from an incomplete catalog", () => {
+  writeFileSync(
+    join(repo, "packages/scaffold/templates/react/README.md"),
+    "<!-- pantoken-generated-values -->\n| Package | Version |\n| --- | --- |\n| `pkg` | `1.0` |\n",
+  );
+  runExtractContent(config, repo, "scaffold.readme");
+  expect(() => runRenderContent(config, repo, "scaffold.readme", "hu")).toThrow(
+    "missing reviewed generated-value translation",
+  );
+});

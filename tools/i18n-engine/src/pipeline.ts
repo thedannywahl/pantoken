@@ -19,6 +19,11 @@ import {
 } from "node:fs";
 import { dirname, join, relative, sep } from "node:path";
 import { DriftReporter, type DriftPolicy } from "@pantoken/translation-adapters";
+import {
+  assertGeneratedTranslation,
+  generatedFileMarkdown,
+  restoreGeneratedMarkdown,
+} from "../../translation-adapters/src/generated-values.ts";
 import type { ContentSpaceConfig, I18nConfig, MessagesSpaceConfig } from "./config.ts";
 import {
   extractFileUnits,
@@ -166,7 +171,13 @@ function contentSpaceUnits(config: I18nConfig, configDir: string, spaceId: strin
   if (!space || space.kind !== "content") throw new Error(`"${spaceId}" is not a content space.`);
   return contentSpaceFiles(space, configDir).flatMap((file) => {
     if (space.segment === "file") {
-      return [{ msgid: file.source, reference: file.reference, translate: "always" as const }];
+      return [
+        {
+          msgid: generatedFileMarkdown(file.source).template,
+          reference: file.reference,
+          translate: "always" as const,
+        },
+      ];
     }
     return space.segment === "frontmatter"
       ? extractFrontmatterUnits(file.source, file.reference)
@@ -265,9 +276,21 @@ export function runRenderContent(
   if (!space || space.kind !== "content") throw new Error(`"${spaceId}" is not a content space.`);
   const entries = loadPoEntriesForSpace(config, configDir, spaceId, locale);
   const byMsgid = new Map(
-    entries.filter((e) => !e.obsolete && e.msgstr !== "").map((e) => [e.msgid, e.msgstr]),
+    entries
+      .filter(
+        (e) => !e.obsolete && e.msgstr !== "" && (!e.msgid.includes("{{ptk_code_") || !e.fuzzy),
+      )
+      .map((e) => [e.msgid, e.msgstr]),
   );
-  const resolve = (text: string): string => byMsgid.get(text) ?? text;
+  const resolve = (text: string): string => {
+    const translation = byMsgid.get(text);
+    if (text.includes("{{ptk_code_")) {
+      if (translation === undefined)
+        throw new Error(`${locale}: missing reviewed generated-value translation`);
+      assertGeneratedTranslation(text, translation);
+    }
+    return translation ?? text;
+  };
 
   const filesWritten: string[] = [];
   for (const file of contentSpaceFiles(space, configDir)) {
@@ -314,7 +337,10 @@ function renderContentFile(
   resolve: (text: string) => string,
   locale: string,
 ): string {
-  if (segment === "file") return `${normalizeWholeFileMarkdown(resolve(source))}\n`;
+  if (segment === "file") {
+    const generated = generatedFileMarkdown(source);
+    return `${normalizeWholeFileMarkdown(restoreGeneratedMarkdown(resolve(generated.template), generated))}\n`;
+  }
   return segment === "frontmatter"
     ? renderFrontmatterFile(source, resolve, locale)
     : renderFile(source, resolve);
@@ -364,7 +390,16 @@ export function runCheckContent(
   for (const locale of contentLocales(config, configDir, spaceId)) {
     if (locale === config.source) continue;
     const entries = loadPoEntriesForSpace(config, configDir, spaceId, locale);
-    const translated = new Set(entries.filter((e) => e.msgstr !== "").map((e) => e.msgid));
+    const translated = new Set(
+      entries
+        .filter(
+          (e) => e.msgstr !== "" && (!e.msgid.includes("{{ptk_code_") || (!e.fuzzy && !e.obsolete)),
+        )
+        .map((e) => {
+          if (e.msgid.includes("{{ptk_code_")) assertGeneratedTranslation(e.msgid, e.msgstr);
+          return e.msgid;
+        }),
+    );
     for (const unit of units) {
       if (translated.has(unit.msgid)) continue;
       const [file, line] = unit.reference.split(":");
