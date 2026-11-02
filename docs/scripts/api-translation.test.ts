@@ -10,13 +10,13 @@ vi.mock("node:child_process", () => ({
 const { GlossaryTranslationAdapter, AiTranslationAdapter, createTranslationAdapter } =
   await import("./api-translation.ts");
 
-/** Extract the first {...} object from a prompt string (mirrors the model's expected input). */
+/** The batch payload starts on its own line after the prompt's instructions. */
 function objectFromPrompt(prompt: string): Record<string, string> | null {
-  const start = prompt.indexOf("{");
+  const start = prompt.indexOf("\n{");
   const end = prompt.lastIndexOf("}");
   if (start === -1 || end <= start) return null;
   try {
-    return JSON.parse(prompt.slice(start, end + 1)) as Record<string, string>;
+    return JSON.parse(prompt.slice(start + 1, end + 1)) as Record<string, string>;
   } catch {
     return null;
   }
@@ -27,7 +27,8 @@ type Responder = (prompt: string) => { stdout: string; code?: number; stderr?: s
 /** A responder that echoes each batch value back translated, and handles the single-line fallback. */
 const echoResponder: Responder = (prompt) => {
   if (prompt.includes("Translate the VALUES of this JSON object")) {
-    const payload = objectFromPrompt(prompt) ?? {};
+    const payload = objectFromPrompt(prompt);
+    if (!payload) throw new Error("Missing JSON batch payload in test prompt");
     const out = Object.fromEntries(Object.entries(payload).map(([id, v]) => [id, `HU ${v}`]));
     return { stdout: JSON.stringify(out) };
   }
@@ -35,6 +36,18 @@ const echoResponder: Responder = (prompt) => {
   const lines = prompt.split("\n");
   return { stdout: `HU ${lines[lines.length - 1]}` };
 };
+
+test("batch responder ignores placeholder braces before the JSON payload", () => {
+  const prompt = [
+    "Translate the VALUES of this JSON object.",
+    "Preserve {{ptk_code_N}} placeholders.",
+    JSON.stringify({ a: "Use {{ptk_code_0}}." }, null, 2),
+  ].join("\n");
+  expect(objectFromPrompt(prompt)).toEqual({ a: "Use {{ptk_code_0}}." });
+  expect(echoResponder(prompt)).toEqual({
+    stdout: JSON.stringify({ a: "HU Use {{ptk_code_0}}." }),
+  });
+});
 
 /** Install a spawn implementation that drives a FakeChild off `responder`. */
 function useSpawn(responder: Responder): void {
