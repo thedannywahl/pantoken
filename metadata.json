@@ -3,8 +3,9 @@
   "checkpoint_id": "01M6EDGQ8Q4DZ46NXAQCCAB10Z",
   "strategy": "manual-commit",
   "branch": "documentation-placeholders",
-  "checkpoints_count": 1,
+  "checkpoints_count": 3,
   "files_touched": [
+    ".changeset/nice-masks-battle.md",
     "ASSURANCE.md",
     "SECURITY.md",
     "docs/conventions/build-and-docs.md",
@@ -14,6 +15,8 @@
     "docs/scripts/check-locale-drift.ts",
     "docs/scripts/markdown-structure.ts",
     "docs/scripts/refresh-api-pot.ts",
+    "docs/scripts/render-generated-values.test.ts",
+    "docs/scripts/render-generated-values.ts",
     "docs/scripts/segment-markdown.test.ts",
     "docs/scripts/segment-markdown.ts",
     "docs/scripts/translate-guide-po.test.ts",
@@ -23,15 +26,20 @@
     "docs/scripts/write-api-compatibility.test.ts",
     "docs/scripts/write-api-compatibility.ts",
     "scripts/release/compatibility.ts",
+    "scripts/release/format-generated.ts",
     "scripts/release/generate-compatibility.test.ts",
     "scripts/release/generate-compatibility.ts",
+    "scripts/release/migrate-generated-values.test.ts",
+    "scripts/release/migrate-generated-values.ts",
     "tools/i18n-engine/src/ai-translate.ts",
     "tools/i18n-engine/src/pipeline.ts",
     "tools/i18n-engine/tests/ai-translate.test.ts",
     "tools/i18n-engine/tests/pipeline-content.test.ts",
     "tools/i18n-engine/tests/pipeline-guides.test.ts",
     "tools/translation-adapters/prompts/batch-translation.prompt.md",
-    "tools/translation-adapters/src/index.ts"
+    "tools/translation-adapters/src/generated-values.ts",
+    "tools/translation-adapters/src/index.ts",
+    "tools/translation-adapters/tests/generated-values.test.ts"
   ],
   "sessions": [
     {
@@ -40,34 +48,41 @@
       "compact_transcript": "/0/transcript.jsonl",
       "content_hash": "/0/content_hash.txt",
       "prompt": "/0/prompt.txt"
+    },
+    {
+      "metadata": "/1/metadata.json",
+      "transcript": "/1/full.jsonl",
+      "compact_transcript": "/1/transcript.jsonl",
+      "content_hash": "/1/content_hash.txt",
+      "prompt": "/1/prompt.txt"
     }
   ],
   "token_usage": {
-    "input_tokens": 0,
-    "cache_creation_tokens": 0,
-    "cache_read_tokens": 0,
-    "output_tokens": 0,
-    "api_call_count": 0
+    "input_tokens": 14831617,
+    "cache_creation_tokens": 549276,
+    "cache_read_tokens": 14281939,
+    "output_tokens": 117109,
+    "api_call_count": 134
   },
   "redaction": {
-    "replacements": 1,
+    "replacements": 72529,
     "layers": {
       "betterleaks": 0,
       "connection_string": 0,
       "credential_key": 0,
-      "credential_value": 0,
+      "credential_value": 3,
       "credentialed_uri": 0,
-      "custom": 0,
-      "entropy": 1,
+      "custom": 2,
+      "entropy": 180604,
       "goredact": 0,
-      "key_context": 0,
-      "pii": 0,
+      "key_context": 1,
+      "pii": 8,
       "provider_token": 0,
       "shell_stdin": 0
     },
     "custom_rules_active": 2,
     "pii": {
-      "EMAIL": 0,
+      "EMAIL": 8,
       "IP": 0,
       "PHONE": 0
     }

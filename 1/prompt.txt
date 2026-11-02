@@ -1,0 +1,15 @@
+[[PLAN]] release automation is almost complete however the one snag is that between updating the compatibility file and publishing it two things happen:
+* the two formatters fight about table layouts requiring a commit/change
+* the updated values are injected into the documentation and the translation workflow needs to run.
+we should be able to work around both of those since all we're changing is version numbers and not strings or other layout concerns.
+
+---
+
+[[PLAN]] release automation is almost complete however the one snag is that between updating the compatibility file and publishing it two things happen:
+* the two formatters fight about table layouts requiring a commit/change
+* the updated values are injected into the documentation and the translation workflow needs to run.
+we should be able to work around both of those since all we're changing is version numbers and not strings or other layout concerns.
+
+---
+
+how do I address that?
