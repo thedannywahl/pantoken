@@ -60,6 +60,8 @@ contain literal values, not unresolved placeholders.
 - The Copilot translation wrapper requests `--silent --no-color` output so model-selection banners,
   statistics, and terminal colors don't enter translation catalogs. If a banner was saved, repair
   the catalog first, then regenerate its pages; editing rendered Markdown alone won't persist.
+  CLI wrappers read the inherited stdin pipe with `cat`, rather than reopening `/dev/stdin`, so
+  prompts survive Node child-process pipes on Linux as well as macOS.
 
 `vpr docs:dev` builds interactions before staging its browser bundles. The interactions build task
 declares its workspace dependencies' builds as prerequisites, so `@pantoken/utils` is built even
