@@ -1,5 +1,15 @@
 # @pantoken/i18n-engine
 
+## 0.4.1
+
+### Patch Changes
+
+- 5580227: Keep generated machine values out of translation keys and format compatibility Markdown before writing.
+- Updated dependencies [5580227]
+- Updated dependencies [5580227]
+- Updated dependencies [5580227]
+  - @pantoken/translation-adapters@1.0.3
+
 ## 0.4.0
 
 ### Minor Changes
