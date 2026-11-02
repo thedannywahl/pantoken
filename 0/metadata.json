@@ -1,0 +1,51 @@
+{
+  "cli_version": "0.12.2",
+  "checkpoint_id": "01M6ENGGY2C0Z2EKJMHS9T80VM",
+  "session_id": "e7cc6684-43e8-4b8c-bc74-ef12889dd6aa",
+  "strategy": "manual-commit",
+  "created_at": "2026-11-02T17:39:31.677811Z",
+  "branch": "documentation-placeholders",
+  "checkpoints_count": 1,
+  "files_touched": [
+    "docs/scripts/api-translation.test.ts"
+  ],
+  "agent": "Copilot CLI",
+  "model": "gpt-6.1-sol",
+  "turn_id": "69f7d19ebd5a",
+  "checkpoint_transcript_start": 1258,
+  "transcript_lines_at_start": 1258,
+  "compact_transcript_start": 31,
+  "token_usage": {
+    "input_tokens": 0,
+    "cache_creation_tokens": 0,
+    "cache_read_tokens": 0,
+    "output_tokens": 0,
+    "api_call_count": 0
+  },
+  "redaction": {
+    "replacements": 21578,
+    "layers": {
+      "betterleaks": 0,
+      "connection_string": 0,
+      "credential_key": 0,
+      "credential_value": 2,
+      "credentialed_uri": 0,
+      "custom": 0,
+      "entropy": 73188,
+      "goredact": 0,
+      "key_context": 4,
+      "pii": 0,
+      "provider_token": 0,
+      "shell_stdin": 0
+    },
+    "custom_rules_active": 2,
+    "pii": {
+      "EMAIL": 0,
+      "IP": 0,
+      "PHONE": 0
+    }
+  },
+  "session_metrics": {
+    "turn_count": 1
+  }
+}
