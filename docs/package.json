@@ -37,6 +37,8 @@
     "docs:locales:translate:copilot:force": "export DOCS_TRANSLATION_FORCE=1; vp run docs:guides:locales:copilot && vp run docs:home:locales && vp run docs:chrome:locales:copilot && vp run docs:demos:locales:copilot && vp run docs:api:locales:copilot",
     "docs:check:locales": "node scripts/check-locale-parity.ts",
     "docs:check:drift": "node scripts/check-locale-drift.ts",
+    "docs:values:render": "node scripts/render-generated-values.ts",
+    "docs:values:check": "node scripts/render-generated-values.ts --check",
     "docs:changed-pages": "node scripts/changed-pages.ts",
     "docs:assets": "node scripts/run-assets.ts",
     "docs:og": "node scripts/gen-og.ts",

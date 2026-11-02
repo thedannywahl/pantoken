@@ -9,13 +9,19 @@
 import fs from "node:fs/promises";
 import path from "node:path";
 import { buildCompatibility, renderMarkdown } from "./compatibility.ts";
+import { formatGeneratedFile } from "./format-generated.ts";
 
 const ROOT = path.resolve(new URL("../../", import.meta.url).pathname);
 
 async function main(): Promise<void> {
   const compat = await buildCompatibility();
-  await fs.writeFile(path.join(ROOT, "compatibility.json"), `${JSON.stringify(compat, null, 2)}\n`);
-  await fs.writeFile(path.join(ROOT, "docs/compatibility.md"), renderMarkdown(compat));
+  const jsonPath = path.join(ROOT, "compatibility.json");
+  await fs.writeFile(
+    jsonPath,
+    await formatGeneratedFile(JSON.stringify(compat, null, 2), jsonPath),
+  );
+  const markdownPath = path.join(ROOT, "docs/compatibility.md");
+  await fs.writeFile(markdownPath, await formatGeneratedFile(renderMarkdown(compat), markdownPath));
   console.log(
     `✓ compatibility: wrote compatibility.json + docs/compatibility.md (${Object.keys(compat.upstream).length} upstream sources, ${compat.consumers.length} consumers)`,
   );

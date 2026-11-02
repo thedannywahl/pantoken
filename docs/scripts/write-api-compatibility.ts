@@ -1,6 +1,7 @@
 import { readFileSync, writeFileSync } from "node:fs";
 import { join } from "node:path";
 import { buildCompatibility, type ConsumerEntry } from "../../scripts/release/compatibility.ts";
+import { GENERATED_VALUES_MARKER } from "../../tools/translation-adapters/src/generated-values.ts";
 
 const docsRoot = join(import.meta.dirname, "..");
 
@@ -16,11 +17,11 @@ export function withCompatibility(markdown: string, consumer: ConsumerEntry): st
         : support.status === "not-applicable"
           ? `Host version: not applicable (${support.reason}).`
           : "Host compatibility has not yet been verified.";
-  const section = `\n## Compatibility\n\nTarget: ${support.target}.${format} ${versions}\n\n[Full compatibility matrix](../../../../compatibility)\n`;
+  const section = `\n## Compatibility\n\n${GENERATED_VALUES_MARKER}\nTarget: ${support.target}.${format} ${versions}\n\n[Full compatibility matrix](../../../../compatibility)\n`;
   const heading = /^# [^\n]+\n/mu;
   if (!heading.test(markdown)) throw new Error(`Missing API title: ${consumer.package}`);
   const withoutOldSections = markdown.replace(
-    /^## Compatibility\n\nTarget: [^\n]+\n\n\[Full compatibility matrix\]\([^\n]+\)\n\n/gmu,
+    /^## Compatibility\n\n(?:<!-- pantoken-generated-values -->\n)?Target: [^\n]+\n\n\[Full compatibility matrix\]\([^\n]+\)\n\n/gmu,
     "",
   );
   return withoutOldSections.replace(heading, (title) => `${title}${section}`);

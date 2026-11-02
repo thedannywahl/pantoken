@@ -1,5 +1,6 @@
 import { afterEach, beforeEach, expect, test, vi } from "vite-plus/test";
 import type { Compatibility } from "./compatibility.ts";
+import { formatGeneratedFile } from "./format-generated.ts";
 
 const writeFile = vi.fn<(...args: unknown[]) => Promise<void>>();
 const buildCompatibility = vi.fn<() => Promise<Compatibility>>();
@@ -59,6 +60,7 @@ test("writes compatibility.json and docs/compatibility.md, then reports the coun
   const json = writeFile.mock.calls.find((c) => String(c[0]).endsWith(".json"))?.[1] as string;
   expect(json.endsWith("\n")).toBe(true);
   expect(JSON.parse(json)).toEqual(SAMPLE);
+  expect(await formatGeneratedFile(json, "compatibility.json")).toBe(json);
   const md = writeFile.mock.calls.find((c) => String(c[0]).endsWith(".md"))?.[1] as string;
   expect(md).toContain("# Compatibility");
 
@@ -74,4 +76,17 @@ test("surfaces a build failure as a non-zero exit code", async () => {
 
   expect(errSpy.mock.calls.some((c) => String(c[0]).includes("catalog read failed"))).toBe(true);
   expect(writeFile).not.toHaveBeenCalled();
+});
+
+test("generation already matches the formatter, including long resolved refs", async () => {
+  const { renderMarkdown } = await import("./compatibility.ts");
+  const sample: Compatibility = {
+    ...SAMPLE,
+    upstream: {
+      example: { range: "^123.456.789", resolved: "v123.456.789@abcdef123456", feeds: "token-ir" },
+    },
+  };
+  const markdown = await formatGeneratedFile(renderMarkdown(sample), "docs/compatibility.md");
+  expect(await formatGeneratedFile(markdown, "docs/compatibility.md")).toBe(markdown);
+  expect(await formatGeneratedFile(renderMarkdown(sample), "docs/compatibility.md")).toBe(markdown);
 });

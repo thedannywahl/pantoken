@@ -32,6 +32,10 @@ import { GLOSSARY_TERMS } from "./glossary.ts";
 import { listDemoNames, loadDemoI18n } from "./demo-i18n.ts";
 import { collectUnits, isCatalogedApiUnit, segmentMarkdown } from "./segment-markdown.ts";
 import { keyFor } from "./translation-memory.ts";
+import {
+  assertGeneratedTranslation,
+  generatedFileMarkdown,
+} from "../../tools/translation-adapters/src/generated-values.ts";
 
 const docsRoot = join(import.meta.dirname, "..");
 const cacheDir = join(docsRoot, "i18n-cache");
@@ -58,7 +62,16 @@ const loadPoTranslatedSet = (
 ): Set<string | undefined> => {
   return new Set(
     parsePo(readFileSync(poPath, "utf8"))
-      .filter((entry) => entry.msgstr !== "")
+      .filter(
+        (entry) =>
+          entry.msgstr !== "" &&
+          (!entry.msgid.includes("{{ptk_code_") || (!entry.obsolete && !entry.fuzzy)),
+      )
+      .map((entry) => {
+        if (entry.msgid.includes("{{ptk_code_"))
+          assertGeneratedTranslation(entry.msgid, entry.msgstr);
+        return entry;
+      })
       .map(keyFn),
   );
 };
@@ -96,7 +109,7 @@ const guideDrift = (locale: string): Missing[] => {
     return guideFiles
       .map((file) => ({
         file: relative(docsRoot, file),
-        source: readFileSync(file, "utf8"),
+        source: generatedFileMarkdown(readFileSync(file, "utf8")).template,
       }))
       .filter(({ source }) => !translated.has(source))
       .map(({ file, source }) => ({
@@ -109,7 +122,7 @@ const guideDrift = (locale: string): Missing[] => {
   const cached = loadCacheKeys(locale, "guides");
   const missing: Missing[] = [];
   for (const file of guideFiles) {
-    const source = readFileSync(file, "utf8");
+    const source = generatedFileMarkdown(readFileSync(file, "utf8")).template;
     if (!cached.has(keyFor("markdown", source))) {
       missing.push({
         file: relative(docsRoot, file),
@@ -132,7 +145,9 @@ export const apiDrift = (locale: string): Missing[] => {
     );
     const missing: Missing[] = [];
     for (const file of walkMarkdown(apiDir)) {
-      for (const unit of collectUnits(segmentMarkdown(readFileSync(file, "utf8")))) {
+      for (const unit of collectUnits(
+        segmentMarkdown(readFileSync(file, "utf8"), { scope: relative(apiDir, file) }),
+      )) {
         if (!isCatalogedApiUnit(unit)) continue;
         if (!translated.has(`docs.api:${unit.kind}\0${unit.text}`)) {
           missing.push({
@@ -149,7 +164,9 @@ export const apiDrift = (locale: string): Missing[] => {
   const cached = loadCacheKeys(locale, "api");
   const missing: Missing[] = [];
   for (const file of walkMarkdown(apiDir)) {
-    const units = collectUnits(segmentMarkdown(readFileSync(file, "utf8")));
+    const units = collectUnits(
+      segmentMarkdown(readFileSync(file, "utf8"), { scope: relative(apiDir, file) }),
+    );
     for (const unit of units) {
       if (!isCatalogedApiUnit(unit)) continue;
       if (!cached.has(keyFor("prose", unit.text))) {

@@ -276,7 +276,7 @@ describe("the js-requirement callout", () => {
     const units = collectUnits(segments);
     expect(units).toContainEqual({ text: "JS Enhancement", kind: "glossary" });
     expect(units).toContainEqual({
-      text: "Pair it with `@pantoken/interactions`. See the [modifier table below](#modifiers).",
+      text: "Pair it with {{ptk_code_0}}. See the [modifier table below]({{ptk_code_1}}).",
       kind: "prose",
     });
   });
@@ -287,7 +287,11 @@ describe("the js-requirement callout", () => {
 
   test("resolves the label and note independently on translation", () => {
     const resolve = (text: string, kind: TranslationKind): string =>
-      kind === "glossary" ? "JS-bővítmény" : "Párosítsd a `@pantoken/interactions`-szal.";
+      kind === "glossary"
+        ? "JS-bővítmény"
+        : text.startsWith("Pair it with")
+          ? "Párosítsd a {{ptk_code_0}}-szal. [Modositok]({{ptk_code_1}})."
+          : text;
     const out = reassemble(segmentMarkdown(page), resolve);
     expect(out).toContain("> **JS-bővítmény** — Párosítsd a `@pantoken/interactions`-szal.");
   });

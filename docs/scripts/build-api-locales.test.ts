@@ -18,6 +18,7 @@ const spawnSync = vi.fn<() => { status: number }>();
 const spawn = vi.fn();
 const refreshApiPot = vi.fn();
 const writeApiCompatibility = vi.fn();
+const renderGeneratedValues = vi.fn();
 const PANTOKEN_VERBATIM_FLAG = "pantoken-verbatim";
 const LOCALE_VERBATIM_API_PROSE = new Map([
   [
@@ -55,6 +56,7 @@ vi.mock("./refresh-api-pot.ts", () => ({
   LOCALE_VERBATIM_API_PROSE,
 }));
 vi.mock("./write-api-compatibility.ts", () => ({ writeApiCompatibility }));
+vi.mock("./render-generated-values.ts", () => ({ renderGeneratedValues }));
 // One target locale keeps the loop (and the fixtures below, which only model a HU tree) deterministic.
 vi.mock("../.vitepress/i18n.ts", () => ({
   NON_ROOT_LOCALES: ["hu"],
@@ -187,6 +189,7 @@ test("build localizes markdown headings, prose, and sidebars, then logs the summ
   expect(cpSync).toHaveBeenCalled();
   expect(writeApiCompatibility).toHaveBeenCalledOnce();
   expect(refreshApiPot).toHaveBeenCalledExactlyOnceWith({ force: true });
+  expect(renderGeneratedValues).toHaveBeenCalledExactlyOnceWith({ guidesOnly: true });
   expect(writeApiCompatibility.mock.invocationCallOrder[0]).toBeLessThan(
     refreshApiPot.mock.invocationCallOrder[0],
   );
@@ -303,7 +306,20 @@ test("partial mode translates only allowlisted locale API markdown", async () =>
 
   expect(spawnSync).toHaveBeenCalled();
   expect(cpSync).toHaveBeenCalled();
+  expect(renderGeneratedValues).not.toHaveBeenCalled();
   expect(writtenTo("index.md")).toContain("Regular prose describing how to use the component.");
+});
+
+test("incomplete compatibility translations fail before removing generated API trees", async () => {
+  renderGeneratedValues.mockRejectedValueOnce(
+    new Error("missing reviewed compatibility translation"),
+  );
+  const { buildPromise } = await import("./build-api-locales.ts");
+  await buildPromise;
+  expect(process.exitCode).toBe(1);
+  expect(rmSync).not.toHaveBeenCalled();
+  expect(cpSync).not.toHaveBeenCalled();
+  expect(spawnSync).not.toHaveBeenCalled();
 });
 
 test("escapes stray prose tags without changing Markdown code or balanced HTML", async () => {

@@ -4,6 +4,10 @@ import { describe, expect, test } from "vite-plus/test";
 import { collectProseRanges, listGuideFiles } from "../src/extract.ts";
 import { parsePo } from "../src/po.ts";
 import { normalizeWholeFileMarkdown } from "../src/pipeline.ts";
+import {
+  generatedFileMarkdown,
+  restoreGeneratedMarkdown,
+} from "../../translation-adapters/src/generated-values.ts";
 
 const root = new URL("../../../", import.meta.url).pathname;
 
@@ -14,7 +18,9 @@ describe("docs.guides PO migration", () => {
       .filter((entry) => entry.isDirectory() && entry.name !== "en")
       .filter((entry) => readdirSync(join(root, "l10n", entry.name)).includes("docs.guides.po"))
       .map((entry) => entry.name);
-    const compatibilitySource = readFileSync(join(root, "docs", "compatibility.md"), "utf8");
+    const compatibilitySource = generatedFileMarkdown(
+      readFileSync(join(root, "docs", "compatibility.md"), "utf8"),
+    );
 
     for (const locale of locales) {
       const entries = parsePo(readFileSync(join(root, "l10n", locale, "docs.guides.po"), "utf8"));
@@ -44,11 +50,18 @@ describe("docs.guides PO migration", () => {
       expect(translations).toHaveLength(files.length);
 
       const compatibility = entries.find(
-        (entry) => !entry.obsolete && entry.msgid === compatibilitySource,
+        (entry) => !entry.obsolete && entry.msgid === compatibilitySource.template,
       );
       expect(compatibility?.msgstr).not.toBe("");
       const expectedCompatibility =
-        normalizeWholeFileMarkdown(compatibility?.msgstr ?? compatibilitySource) + "\n";
+        normalizeWholeFileMarkdown(
+          compatibility?.fuzzy
+            ? compatibility.msgstr
+            : restoreGeneratedMarkdown(
+                compatibility?.msgstr ?? compatibilitySource.template,
+                compatibilitySource,
+              ),
+        ) + "\n";
       const renderedCompatibility = readFileSync(
         join(root, "docs", locale, "compatibility.md"),
         "utf8",

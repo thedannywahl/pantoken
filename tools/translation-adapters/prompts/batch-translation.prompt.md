@@ -5,6 +5,7 @@ Return ONLY a JSON object with the same keys and translated values.
 Do not translate, add, or remove keys. Keep identifiers, package names, and URLs unchanged.
 If a value contains no translatable prose (empty, whitespace-only, or only placeholders/code), return it unchanged.
 Tokens matching the regex /_*PTK*(CODE_BLOCK|INLINE_CODE|PACKAGE|ESC)_\d+__/ must be preserved verbatim.
+Preserve every `{{ptk_code_N}}` placeholder exactly once, with its original index. You may reorder placeholders with the translated prose, but never translate, duplicate, or remove them.
 Preserve every value's Markdown structure exactly: headings, emphasis, strong text, lists, blockquotes, links, line breaks, blank lines, and all delimiters must remain unchanged.
 Translate visible prose and link labels only. Do not alter Markdown syntax, link destinations, HTML tags or comments, or code contents.
 Never HTML-escape code or Markdown content: for example, preserve `<li>` inside backticks as `<li>`, not `&lt;li&gt;`.

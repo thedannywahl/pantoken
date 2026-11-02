@@ -41,6 +41,16 @@ export {
   stripMarkdownEnvelope,
   type PreservedMarkdown,
 } from "./markdown.ts";
+export {
+  GENERATED_VALUES_MARKER,
+  assertGeneratedTranslation,
+  generatedFileMarkdown,
+  generatedMarkdown,
+  migrateGeneratedMarkdown,
+  restoreGeneratedMarkdown,
+  scopeGeneratedMarkdown,
+  type GeneratedMarkdown,
+} from "./generated-values.ts";
 
 /**
  * Pull the first `{…}` JSON object out of a model response, tolerating surrounding prose or code

@@ -19,7 +19,9 @@ test("shows the current format without asserting an unverified WordPress version
     "[Home](../../index.md)\n\n# wordpress\n\n## Functions\n",
     consumer,
   );
-  expect(page).toContain("## Compatibility\n\nTarget: WordPress block themes.");
+  expect(page).toContain(
+    "## Compatibility\n\n<!-- pantoken-generated-values -->\nTarget: WordPress block themes.",
+  );
   expect(page).toContain("Current format: `theme.json v3`.");
   expect(page).toContain("Host compatibility has not yet been verified.");
   expect(page).toContain("[Full compatibility matrix](../../../../compatibility)");

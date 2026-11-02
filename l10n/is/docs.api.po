@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: pantoken\n"
-"PO-Revision-Date: 2026-10-29 22:28+0000\n"
+"PO-Revision-Date: 2026-10-30 19:56+0000\n"
 "Last-Translator: pantoken localization engine\n"
 "Language-Team: pantoken\n"
 "MIME-Version: 1.0\n"
@@ -206,8 +206,8 @@ msgstr "**Transpileraðu auka InstUI pakka**"
 #: bundlers/next/src/index.md
 #, no-c-format, pantoken-verbatim
 msgctxt "docs.api:prose"
-msgid "Target: Next.js. Current format: `Production build transpiling and rendering Instructure UI 11.7.10 with React 19.3.0`. Minimum host version: `16.0.0`. Tested through `16.4.0`. Newer releases require review."
-msgstr "Target: Next.js. Current format: `Production build transpiling and rendering Instructure UI 11.7.10 with React 19.3.0`. Minimum host version: `16.0.0`. Tested through `16.4.0`. Newer releases require review."
+msgid "<!-- pantoken-value-scope:bundlers%2Fnext%2Fsrc%2Findex.md -->\nTarget: Next.js. Current format: {{ptk_code_0}}. Minimum host version: {{ptk_code_1}}. Tested through {{ptk_code_2}}. Newer releases require review."
+msgstr "<!-- pantoken-value-scope:bundlers%2Fnext%2Fsrc%2Findex.md -->\nTarget: Next.js. Current format: {{ptk_code_0}}. Minimum host version: {{ptk_code_1}}. Tested through {{ptk_code_2}}. Newer releases require review."
 
 #: bundlers/next/src/index.md
 #, no-c-format
@@ -315,8 +315,8 @@ msgstr "**Smíða forstillingu úr sérsniðnu IR**"
 #: bundlers/panda/src/index.md
 #, no-c-format, pantoken-verbatim
 msgctxt "docs.api:prose"
-msgid "Target: Panda CSS. Current format: `Panda token utility extraction from the Pantoken preset`. Minimum host version: `1.12.1`. Tested through `2.2.0`. Newer releases require review."
-msgstr "Target: Panda CSS. Current format: `Panda token utility extraction from the Pantoken preset`. Minimum host version: `1.12.1`. Tested through `2.2.0`. Newer releases require review."
+msgid "<!-- pantoken-value-scope:bundlers%2Fpanda%2Fsrc%2Findex.md -->\nTarget: Panda CSS. Current format: {{ptk_code_0}}. Minimum host version: {{ptk_code_1}}. Tested through {{ptk_code_2}}. Newer releases require review."
+msgstr "<!-- pantoken-value-scope:bundlers%2Fpanda%2Fsrc%2Findex.md -->\nTarget: Panda CSS. Current format: {{ptk_code_0}}. Minimum host version: {{ptk_code_1}}. Tested through {{ptk_code_2}}. Newer releases require review."
 
 #: bundlers/panda/src/index.md
 #, no-c-format
@@ -381,8 +381,8 @@ msgstr "**Bætið því inn í panda.config.ts**"
 #: bundlers/postcss/src/index.md
 #, no-c-format, pantoken-verbatim
 msgctxt "docs.api:prose"
-msgid "Target: PostCSS. Minimum host version: `8.0.0`. Tested through `8.5.29`. Newer releases require review."
-msgstr "Target: PostCSS. Minimum host version: `8.0.0`. Tested through `8.5.29`. Newer releases require review."
+msgid "<!-- pantoken-value-scope:bundlers%2Fpostcss%2Fsrc%2Findex.md -->\nTarget: PostCSS. Minimum host version: {{ptk_code_0}}. Tested through {{ptk_code_1}}. Newer releases require review."
+msgstr "<!-- pantoken-value-scope:bundlers%2Fpostcss%2Fsrc%2Findex.md -->\nTarget: PostCSS. Minimum host version: {{ptk_code_0}}. Tested through {{ptk_code_1}}. Newer releases require review."
 
 #: bundlers/postcss/src/index.md
 #, no-c-format
@@ -481,8 +481,8 @@ msgstr "**Sýna einnig primitive-palettuna undir primitive- forskeyti**"
 #: bundlers/tailwind/src/index.md
 #, no-c-format, pantoken-verbatim
 msgctxt "docs.api:prose"
-msgid "Target: Tailwind CSS. Minimum host version: `4.0.17`. Tested through `4.3.3`. Newer releases require review."
-msgstr "Target: Tailwind CSS. Minimum host version: `4.0.17`. Tested through `4.3.3`. Newer releases require review."
+msgid "<!-- pantoken-value-scope:bundlers%2Ftailwind%2Fsrc%2Findex.md -->\nTarget: Tailwind CSS. Minimum host version: {{ptk_code_0}}. Tested through {{ptk_code_1}}. Newer releases require review."
+msgstr "<!-- pantoken-value-scope:bundlers%2Ftailwind%2Fsrc%2Findex.md -->\nTarget: Tailwind CSS. Minimum host version: {{ptk_code_0}}. Tested through {{ptk_code_1}}. Newer releases require review."
 
 #: bundlers/tailwind/src/index.md
 #, no-c-format
@@ -553,8 +553,8 @@ msgstr "**Nota sýndarmódúlana í app-kóða**"
 #: bundlers/vite/src/index.md
 #, no-c-format, pantoken-verbatim
 msgctxt "docs.api:prose"
-msgid "Target: Vite. Minimum host version: `8.0.0`. Tested through `8.3.4`. Newer releases require review."
-msgstr "Target: Vite. Minimum host version: `8.0.0`. Tested through `8.3.4`. Newer releases require review."
+msgid "<!-- pantoken-value-scope:bundlers%2Fvite%2Fsrc%2Findex.md -->\nTarget: Vite. Minimum host version: {{ptk_code_0}}. Tested through {{ptk_code_1}}. Newer releases require review."
+msgstr "<!-- pantoken-value-scope:bundlers%2Fvite%2Fsrc%2Findex.md -->\nTarget: Vite. Minimum host version: {{ptk_code_0}}. Tested through {{ptk_code_1}}. Newer releases require review."
 
 #: bundlers/vite/src/index.md
 #, no-c-format
@@ -613,8 +613,8 @@ msgstr "**Endurnefndu útgefna eignina**"
 #: bundlers/webpack/src/index.md
 #, no-c-format, pantoken-verbatim
 msgctxt "docs.api:prose"
-msgid "Target: webpack. Current format: `Emitted token CSS build asset`. Minimum host version: `5.61.0`. Tested through `5.111.1`. Newer releases require review."
-msgstr "Target: webpack. Current format: `Emitted token CSS build asset`. Minimum host version: `5.61.0`. Tested through `5.111.1`. Newer releases require review."
+msgid "<!-- pantoken-value-scope:bundlers%2Fwebpack%2Fsrc%2Findex.md -->\nTarget: webpack. Current format: {{ptk_code_0}}. Minimum host version: {{ptk_code_1}}. Tested through {{ptk_code_2}}. Newer releases require review."
+msgstr "<!-- pantoken-value-scope:bundlers%2Fwebpack%2Fsrc%2Findex.md -->\nTarget: webpack. Current format: {{ptk_code_0}}. Minimum host version: {{ptk_code_1}}. Tested through {{ptk_code_2}}. Newer releases require review."
 
 #: bundlers/webpack/src/index.md
 #, no-c-format
@@ -1240,8 +1240,8 @@ msgstr "**Source:** [alert.css](https://github.com/thedannywahl/pantoken/blob/ma
 #: css/alert.md
 #, no-c-format
 msgctxt "docs.api:prose"
-msgid "This component's CSS renders and works on its own; pair it with `@pantoken/interactions` to add the interactive behavior. Its `-timeout` modifier is driven by that behavior. See the [modifier table below](#modifiers)."
-msgstr "CSS þessa íhluta birtir hann og virkar sjálfstætt; paraðu hann við `@pantoken/interactions` til að bæta við gagnvirkni. `-timeout` breytirinn er stýrður af þeirri hegðun. Sjá [breytitöflu hér að neðan](#modifiers)."
+msgid "<!-- pantoken-value-scope:css%2Falert.md -->\nThis component's CSS renders and works on its own; pair it with {{ptk_code_0}} to add the interactive behavior. Its {{ptk_code_1}} modifier is driven by that behavior. See the [modifier table below]({{ptk_code_2}})."
+msgstr "<!-- pantoken-value-scope:css%2Falert.md -->\nCSS þessa íhluta birtir hann og virkar sjálfstætt; paraðu hann við {{ptk_code_0}} til að bæta við gagnvirkni. {{ptk_code_1}} breytirinn er stýrður af þeirri hegðun. Sjá [breytitöflu hér að neðan]({{ptk_code_2}})."
 
 #: css/alert.md
 #, no-c-format
@@ -1610,13 +1610,71 @@ msgctxt "docs.api:prose"
 msgid "**Source:** [avatar.css](https://github.com/thedannywahl/pantoken/blob/main/formats/components/src/components/avatar/avatar.css)"
 msgstr "**Source:** [avatar.css](https://github.com/thedannywahl/pantoken/blob/main/formats/components/src/components/avatar/avatar.css)"
 
-#: css/avatar.md css/close-button.md css/form-field.md css/in-place-edit.md
-#: css/menu.md css/modal.md css/segmented-control.md css/skeleton-loader.md
-#: css/tabs.md css/tooltip.md css/tree-browser.md
+#: css/avatar.md
 #, no-c-format
 msgctxt "docs.api:prose"
-msgid "This component's CSS renders and works on its own; pair it with `@pantoken/interactions` to add the interactive behavior. See the [modifier table below](#modifiers)."
-msgstr "CSS þessa íhluta renderar og virkar sjálfstætt; paraðu hann við `@pantoken/interactions` til að bæta við gagnvirku hegðuninni. Sjá [modifier table below](#modifiers)."
+msgid "<!-- pantoken-value-scope:css%2Favatar.md -->\nThis component's CSS renders and works on its own; pair it with {{ptk_code_0}} to add the interactive behavior. See the [modifier table below]({{ptk_code_1}})."
+msgstr "<!-- pantoken-value-scope:css%2Favatar.md -->\nCSS þessa íhluta renderar og virkar sjálfstætt; paraðu hann við {{ptk_code_0}} til að bæta við gagnvirku hegðuninni. Sjá [modifier table below]({{ptk_code_1}})."
+
+#: css/close-button.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "<!-- pantoken-value-scope:css%2Fclose-button.md -->\nThis component's CSS renders and works on its own; pair it with {{ptk_code_0}} to add the interactive behavior. See the [modifier table below]({{ptk_code_1}})."
+msgstr "<!-- pantoken-value-scope:css%2Fclose-button.md -->\nCSS þessa íhluta renderar og virkar sjálfstætt; paraðu hann við {{ptk_code_0}} til að bæta við gagnvirku hegðuninni. Sjá [modifier table below]({{ptk_code_1}})."
+
+#: css/form-field.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "<!-- pantoken-value-scope:css%2Fform-field.md -->\nThis component's CSS renders and works on its own; pair it with {{ptk_code_0}} to add the interactive behavior. See the [modifier table below]({{ptk_code_1}})."
+msgstr "<!-- pantoken-value-scope:css%2Fform-field.md -->\nCSS þessa íhluta renderar og virkar sjálfstætt; paraðu hann við {{ptk_code_0}} til að bæta við gagnvirku hegðuninni. Sjá [modifier table below]({{ptk_code_1}})."
+
+#: css/in-place-edit.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "<!-- pantoken-value-scope:css%2Fin-place-edit.md -->\nThis component's CSS renders and works on its own; pair it with {{ptk_code_0}} to add the interactive behavior. See the [modifier table below]({{ptk_code_1}})."
+msgstr "<!-- pantoken-value-scope:css%2Fin-place-edit.md -->\nCSS þessa íhluta renderar og virkar sjálfstætt; paraðu hann við {{ptk_code_0}} til að bæta við gagnvirku hegðuninni. Sjá [modifier table below]({{ptk_code_1}})."
+
+#: css/menu.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "<!-- pantoken-value-scope:css%2Fmenu.md -->\nThis component's CSS renders and works on its own; pair it with {{ptk_code_0}} to add the interactive behavior. See the [modifier table below]({{ptk_code_1}})."
+msgstr "<!-- pantoken-value-scope:css%2Fmenu.md -->\nCSS þessa íhluta renderar og virkar sjálfstætt; paraðu hann við {{ptk_code_0}} til að bæta við gagnvirku hegðuninni. Sjá [modifier table below]({{ptk_code_1}})."
+
+#: css/modal.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "<!-- pantoken-value-scope:css%2Fmodal.md -->\nThis component's CSS renders and works on its own; pair it with {{ptk_code_0}} to add the interactive behavior. See the [modifier table below]({{ptk_code_1}})."
+msgstr "<!-- pantoken-value-scope:css%2Fmodal.md -->\nCSS þessa íhluta renderar og virkar sjálfstætt; paraðu hann við {{ptk_code_0}} til að bæta við gagnvirku hegðuninni. Sjá [modifier table below]({{ptk_code_1}})."
+
+#: css/segmented-control.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "<!-- pantoken-value-scope:css%2Fsegmented-control.md -->\nThis component's CSS renders and works on its own; pair it with {{ptk_code_0}} to add the interactive behavior. See the [modifier table below]({{ptk_code_1}})."
+msgstr "<!-- pantoken-value-scope:css%2Fsegmented-control.md -->\nCSS þessa íhluta renderar og virkar sjálfstætt; paraðu hann við {{ptk_code_0}} til að bæta við gagnvirku hegðuninni. Sjá [modifier table below]({{ptk_code_1}})."
+
+#: css/skeleton-loader.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "<!-- pantoken-value-scope:css%2Fskeleton-loader.md -->\nThis component's CSS renders and works on its own; pair it with {{ptk_code_0}} to add the interactive behavior. See the [modifier table below]({{ptk_code_1}})."
+msgstr "<!-- pantoken-value-scope:css%2Fskeleton-loader.md -->\nCSS þessa íhluta renderar og virkar sjálfstætt; paraðu hann við {{ptk_code_0}} til að bæta við gagnvirku hegðuninni. Sjá [modifier table below]({{ptk_code_1}})."
+
+#: css/tabs.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "<!-- pantoken-value-scope:css%2Ftabs.md -->\nThis component's CSS renders and works on its own; pair it with {{ptk_code_0}} to add the interactive behavior. See the [modifier table below]({{ptk_code_1}})."
+msgstr "<!-- pantoken-value-scope:css%2Ftabs.md -->\nCSS þessa íhluta renderar og virkar sjálfstætt; paraðu hann við {{ptk_code_0}} til að bæta við gagnvirku hegðuninni. Sjá [modifier table below]({{ptk_code_1}})."
+
+#: css/tooltip.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "<!-- pantoken-value-scope:css%2Ftooltip.md -->\nThis component's CSS renders and works on its own; pair it with {{ptk_code_0}} to add the interactive behavior. See the [modifier table below]({{ptk_code_1}})."
+msgstr "<!-- pantoken-value-scope:css%2Ftooltip.md -->\nCSS þessa íhluta renderar og virkar sjálfstætt; paraðu hann við {{ptk_code_0}} til að bæta við gagnvirku hegðuninni. Sjá [modifier table below]({{ptk_code_1}})."
+
+#: css/tree-browser.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "<!-- pantoken-value-scope:css%2Ftree-browser.md -->\nThis component's CSS renders and works on its own; pair it with {{ptk_code_0}} to add the interactive behavior. See the [modifier table below]({{ptk_code_1}})."
+msgstr "<!-- pantoken-value-scope:css%2Ftree-browser.md -->\nCSS þessa íhluta renderar og virkar sjálfstætt; paraðu hann við {{ptk_code_0}} til að bæta við gagnvirku hegðuninni. Sjá [modifier table below]({{ptk_code_1}})."
 
 #: css/avatar.md
 #, no-c-format, pantoken-verbatim
@@ -7208,8 +7266,8 @@ msgstr "**Source:** [progress-circle.css](https://github.com/thedannywahl/pantok
 #: css/progress-circle.md
 #, no-c-format
 msgctxt "docs.api:prose"
-msgid "This component's CSS renders and works on its own; pair it with `@pantoken/interactions` to add the interactive behavior. Its `-should-animate` modifier is driven by that behavior. See the [modifier table below](#modifiers)."
-msgstr "CSS þessa íhluta birtist og virkar sjálfstætt; paraðu það við `@pantoken/interactions` til að bæta við gagnvirkri hegðun. Breytirinn `-should-animate` er stýrður af þeirri hegðun. Sjá [breytutöflu hér að neðan](#modifiers)."
+msgid "<!-- pantoken-value-scope:css%2Fprogress-circle.md -->\nThis component's CSS renders and works on its own; pair it with {{ptk_code_0}} to add the interactive behavior. Its {{ptk_code_1}} modifier is driven by that behavior. See the [modifier table below]({{ptk_code_2}})."
+msgstr "<!-- pantoken-value-scope:css%2Fprogress-circle.md -->\nCSS þessa íhluta birtist og virkar sjálfstætt; paraðu það við {{ptk_code_0}} til að bæta við gagnvirkri hegðun. Breytirinn {{ptk_code_1}} er stýrður af þeirri hegðun. Sjá [breytutöflu hér að neðan]({{ptk_code_2}})."
 
 #: css/progress-circle.md
 #, no-c-format
@@ -10288,8 +10346,8 @@ msgstr "**Source:** [index.ts](https://github.com/thedannywahl/pantoken/blob/mai
 #: css/truncate.md
 #, no-c-format
 msgctxt "docs.api:prose"
-msgid "This component ships no CSS of its own — its markup and behavior come entirely from `@pantoken/interactions`. Its `--max-lines-auto` modifier is driven by that behavior. See the [modifier table below](#modifiers)."
-msgstr "Þessi íhlutur sendir frá sér engan eigin CSS — uppbygging og hegðun kemur alfarið frá `@pantoken/interactions`. Breytirinn `--max-lines-auto` ræðst af þeirri hegðun. Sjá [breytutöfluna hér að neðan](#modifiers)."
+msgid "<!-- pantoken-value-scope:css%2Ftruncate.md -->\nThis component ships no CSS of its own — its markup and behavior come entirely from {{ptk_code_0}}. Its {{ptk_code_1}} modifier is driven by that behavior. See the [modifier table below]({{ptk_code_2}})."
+msgstr "<!-- pantoken-value-scope:css%2Ftruncate.md -->\nÞessi íhlutur sendir frá sér engan eigin CSS — uppbygging og hegðun kemur alfarið frá {{ptk_code_0}}. Breytirinn {{ptk_code_1}} ræðst af þeirri hegðun. Sjá [breytutöfluna hér að neðan]({{ptk_code_2}})."
 
 #: css/truncate.md
 #, no-c-format
@@ -15425,8 +15483,8 @@ msgstr "**Dökkur hamur með VectorDrawable-táknum**"
 #: platforms/android/src/index.md
 #, no-c-format, pantoken-verbatim
 msgctxt "docs.api:prose"
-msgid "Target: Android resources. Current format: `Generated colors, dimensions, and VectorDrawable compile and link with Android build-tools`. Minimum host version: `API 35 / build-tools 35.0.0`. Tested through `API 35 / build-tools 35.0.0`. Newer releases require review."
-msgstr "Target: Android resources. Current format: `Generated colors, dimensions, and VectorDrawable compile and link with Android build-tools`. Minimum host version: `API 35 / build-tools 35.0.0`. Tested through `API 35 / build-tools 35.0.0`. Newer releases require review."
+msgid "<!-- pantoken-value-scope:platforms%2Fandroid%2Fsrc%2Findex.md -->\nTarget: Android resources. Current format: {{ptk_code_0}}. Minimum host version: {{ptk_code_1}}. Tested through {{ptk_code_2}}. Newer releases require review."
+msgstr "<!-- pantoken-value-scope:platforms%2Fandroid%2Fsrc%2Findex.md -->\nTarget: Android resources. Current format: {{ptk_code_0}}. Minimum host version: {{ptk_code_1}}. Tested through {{ptk_code_2}}. Newer releases require review."
 
 #: platforms/android/src/index.md
 #, no-c-format
@@ -15722,8 +15780,8 @@ msgstr "**Dökk stilling með sérsniðið hlutarheiti**"
 #: platforms/compose/src/index.md
 #, no-c-format, pantoken-verbatim
 msgctxt "docs.api:prose"
-msgid "Target: Jetpack Compose. Current format: `Generated Color and Dp token object compiles in an Android library module`. Minimum host version: `Kotlin 2.1.10 / Compose UI 1.8.2 / Android API 35`. Tested through `Kotlin 2.1.10 / Compose UI 1.8.2 / Android API 35`. Newer releases require review."
-msgstr "Target: Jetpack Compose. Current format: `Generated Color and Dp token object compiles in an Android library module`. Minimum host version: `Kotlin 2.1.10 / Compose UI 1.8.2 / Android API 35`. Tested through `Kotlin 2.1.10 / Compose UI 1.8.2 / Android API 35`. Newer releases require review."
+msgid "<!-- pantoken-value-scope:platforms%2Fcompose%2Fsrc%2Findex.md -->\nTarget: Jetpack Compose. Current format: {{ptk_code_0}}. Minimum host version: {{ptk_code_1}}. Tested through {{ptk_code_2}}. Newer releases require review."
+msgstr "<!-- pantoken-value-scope:platforms%2Fcompose%2Fsrc%2Findex.md -->\nTarget: Jetpack Compose. Current format: {{ptk_code_0}}. Minimum host version: {{ptk_code_1}}. Tested through {{ptk_code_2}}. Newer releases require review."
 
 #: platforms/compose/src/index.md
 #, no-c-format
@@ -15782,8 +15840,8 @@ msgstr "**Byggja undirþema ofan á grunnþema**"
 #: platforms/drupal/src/index.md
 #, no-c-format, pantoken-verbatim
 msgctxt "docs.api:prose"
-msgid "Target: Drupal themes. Current format: `Drupal core discovers generated theme; InfoParser and Symfony YAML accept metadata`. Minimum host version: `10.6.18`. Tested through `11.3.2`. Newer releases require review."
-msgstr "Target: Drupal themes. Current format: `Drupal core discovers generated theme; InfoParser and Symfony YAML accept metadata`. Minimum host version: `10.6.18`. Tested through `11.3.2`. Newer releases require review."
+msgid "<!-- pantoken-value-scope:platforms%2Fdrupal%2Fsrc%2Findex.md -->\nTarget: Drupal themes. Current format: {{ptk_code_0}}. Minimum host version: {{ptk_code_1}}. Tested through {{ptk_code_2}}. Newer releases require review."
+msgstr "<!-- pantoken-value-scope:platforms%2Fdrupal%2Fsrc%2Findex.md -->\nTarget: Drupal themes. Current format: {{ptk_code_0}}. Minimum host version: {{ptk_code_1}}. Tested through {{ptk_code_2}}. Newer releases require review."
 
 #: platforms/drupal/src/index.md
 #, no-c-format
@@ -16036,8 +16094,8 @@ msgstr "**Skrifa auðlindirnar undir rót síðunnar**"
 #: platforms/hugo/src/index.md
 #, no-c-format, pantoken-verbatim
 msgctxt "docs.api:prose"
-msgid "Target: Hugo. Current format: `Hugo Pipes builds the Pantoken token stylesheet`. Minimum host version: `0.165.0`. Tested through `0.165.0`. Newer releases require review."
-msgstr "Target: Hugo. Current format: `Hugo Pipes builds the Pantoken token stylesheet`. Minimum host version: `0.165.0`. Tested through `0.165.0`. Newer releases require review."
+msgid "<!-- pantoken-value-scope:platforms%2Fhugo%2Fsrc%2Findex.md -->\nTarget: Hugo. Current format: {{ptk_code_0}}. Minimum host version: {{ptk_code_1}}. Tested through {{ptk_code_2}}. Newer releases require review."
+msgstr "<!-- pantoken-value-scope:platforms%2Fhugo%2Fsrc%2Findex.md -->\nTarget: Hugo. Current format: {{ptk_code_0}}. Minimum host version: {{ptk_code_1}}. Tested through {{ptk_code_2}}. Newer releases require review."
 
 #: platforms/hugo/src/index.md
 #, no-c-format
@@ -16073,8 +16131,8 @@ msgstr "Sass-partialið (`_sass/pantoken.scss`), hreina stílblaðið\n(`assets/
 #: platforms/jekyll/src/index.md
 #, no-c-format, pantoken-verbatim
 msgctxt "docs.api:prose"
-msgid "Target: Jekyll. Current format: `Jekyll builds the generated Sass partial into site CSS`. Minimum host version: `4.4.1`. Tested through `4.4.1`. Newer releases require review."
-msgstr "Target: Jekyll. Current format: `Jekyll builds the generated Sass partial into site CSS`. Minimum host version: `4.4.1`. Tested through `4.4.1`. Newer releases require review."
+msgid "<!-- pantoken-value-scope:platforms%2Fjekyll%2Fsrc%2Findex.md -->\nTarget: Jekyll. Current format: {{ptk_code_0}}. Minimum host version: {{ptk_code_1}}. Tested through {{ptk_code_2}}. Newer releases require review."
+msgstr "<!-- pantoken-value-scope:platforms%2Fjekyll%2Fsrc%2Findex.md -->\nTarget: Jekyll. Current format: {{ptk_code_0}}. Minimum host version: {{ptk_code_1}}. Tested through {{ptk_code_2}}. Newer releases require review."
 
 #: platforms/jekyll/src/index.md
 #, no-c-format
@@ -16121,8 +16179,8 @@ msgstr "**iced (Color), dökkt þema**"
 #: platforms/rust/src/index.md
 #, no-c-format, pantoken-verbatim
 msgctxt "docs.api:prose"
-msgid "Target: Rust GUI frameworks. Current format: `Generated egui Color32 accessors and iced_core Color constants compile with the Rust toolchain`. Minimum host version: `1.95.0`. Tested through `1.95.0`. Newer releases require review."
-msgstr "Target: Rust GUI frameworks. Current format: `Generated egui Color32 accessors and iced_core Color constants compile with the Rust toolchain`. Minimum host version: `1.95.0`. Tested through `1.95.0`. Newer releases require review."
+msgid "<!-- pantoken-value-scope:platforms%2Frust%2Fsrc%2Findex.md -->\nTarget: Rust GUI frameworks. Current format: {{ptk_code_0}}. Minimum host version: {{ptk_code_1}}. Tested through {{ptk_code_2}}. Newer releases require review."
+msgstr "<!-- pantoken-value-scope:platforms%2Frust%2Fsrc%2Findex.md -->\nTarget: Rust GUI frameworks. Current format: {{ptk_code_0}}. Minimum host version: {{ptk_code_1}}. Tested through {{ptk_code_2}}. Newer releases require review."
 
 #: platforms/rust/src/index.md
 #, no-c-format
@@ -16188,8 +16246,8 @@ msgstr "**Dökkur háttur með sérsniðið klasanafn og eignasafn**"
 #: platforms/swift/src/index.md
 #, no-c-format, pantoken-verbatim
 msgctxt "docs.api:prose"
-msgid "Target: Swift iOS. Current format: `UIKit SwiftPM module, runtime token check, and compiled Icons.xcassets`. Tested environment: `Xcode 27.0 (27A266a), Swift 6.4, iOS Simulator SDK/runtime 27.0, iPhone 18 Pro, arm64 iOS 15 deployment target`. Runtime tested only on iOS Simulator 27.0; this does not establish an iOS 15 runtime floor. No watchOS or tvOS claim."
-msgstr "Target: Swift iOS. Current format: `UIKit SwiftPM module, runtime token check, and compiled Icons.xcassets`. Tested environment: `Xcode 27.0 (27A266a), Swift 6.4, iOS Simulator SDK/runtime 27.0, iPhone 18 Pro, arm64 iOS 15 deployment target`. Runtime tested only on iOS Simulator 27.0; this does not establish an iOS 15 runtime floor. No watchOS or tvOS claim."
+msgid "<!-- pantoken-value-scope:platforms%2Fswift%2Fsrc%2Findex.md -->\nTarget: Swift iOS. Current format: {{ptk_code_0}}. Tested environment: {{ptk_code_1}}. Runtime tested only on iOS Simulator 27.0; this does not establish an iOS 15 runtime floor. No watchOS or tvOS claim."
+msgstr "<!-- pantoken-value-scope:platforms%2Fswift%2Fsrc%2Findex.md -->\nTarget: Swift iOS. Current format: {{ptk_code_0}}. Tested environment: {{ptk_code_1}}. Runtime tested only on iOS Simulator 27.0; this does not establish an iOS 15 runtime floor. No watchOS or tvOS claim."
 
 #: platforms/swift/src/index.md
 #, no-c-format
@@ -16332,8 +16390,8 @@ msgstr "**Breyta IR í theme.json fyrir ljósan hátt**"
 #: platforms/wordpress/src/index.md
 #, no-c-format, pantoken-verbatim
 msgctxt "docs.api:prose"
-msgid "Target: WordPress block themes. Current format: `theme.json v3`. Minimum host version: `6.6`. Tested through `7.1.3`. Newer releases require review."
-msgstr "Target: WordPress block themes. Current format: `theme.json v3`. Minimum host version: `6.6`. Tested through `7.1.3`. Newer releases require review."
+msgid "<!-- pantoken-value-scope:platforms%2Fwordpress%2Fsrc%2Findex.md -->\nTarget: WordPress block themes. Current format: {{ptk_code_0}}. Minimum host version: {{ptk_code_1}}. Tested through {{ptk_code_2}}. Newer releases require review."
+msgstr "<!-- pantoken-value-scope:platforms%2Fwordpress%2Fsrc%2Findex.md -->\nTarget: WordPress block themes. Current format: {{ptk_code_0}}. Minimum host version: {{ptk_code_1}}. Tested through {{ptk_code_2}}. Newer releases require review."
 
 #: platforms/wordpress/src/index.md
 #, no-c-format
@@ -18594,8 +18652,8 @@ msgstr "Skrá pantoken sérsniðnu þættina (kallað einu sinni við ræsingu f
 #: renderers/angular/src/index.md
 #, no-c-format, pantoken-verbatim
 msgctxt "docs.api:prose"
-msgid "Target: Angular. Current format: `CUSTOM_ELEMENTS_SCHEMA template compilation (Angular 16.2.12 / TS 5.1.6; Angular 22.2.0, 22.2.1, and 22.2.2 / TS 6.0.3)`. Minimum host version: `16.2.12`. Tested through `22.2.2`. Newer releases require review."
-msgstr "Target: Angular. Current format: `CUSTOM_ELEMENTS_SCHEMA template compilation (Angular 16.2.12 / TS 5.1.6; Angular 22.2.0, 22.2.1, and 22.2.2 / TS 6.0.3)`. Minimum host version: `16.2.12`. Tested through `22.2.2`. Newer releases require review."
+msgid "<!-- pantoken-value-scope:renderers%2Fangular%2Fsrc%2Findex.md -->\nTarget: Angular. Current format: {{ptk_code_0}}. Minimum host version: {{ptk_code_1}}. Tested through {{ptk_code_2}}. Newer releases require review."
+msgstr "<!-- pantoken-value-scope:renderers%2Fangular%2Fsrc%2Findex.md -->\nTarget: Angular. Current format: {{ptk_code_0}}. Minimum host version: {{ptk_code_1}}. Tested through {{ptk_code_2}}. Newer releases require review."
 
 #: renderers/angular/src/index.md
 #, no-c-format
@@ -18636,8 +18694,8 @@ msgstr "Búðu til pantoken stílsnið fyrir þema (með valfrjálsu viðbótar-
 #: renderers/astro/src/index.md
 #, no-c-format, pantoken-verbatim
 msgctxt "docs.api:prose"
-msgid "Target: Astro / Starlight. Current format: `Built Starlight page with injected token stylesheet (Astro 5 and 7)`. Minimum host version: `0.35.0`. Tested through `0.42.6`. Newer releases require review."
-msgstr "Target: Astro / Starlight. Current format: `Built Starlight page with injected token stylesheet (Astro 5 and 7)`. Minimum host version: `0.35.0`. Tested through `0.42.6`. Newer releases require review."
+msgid "<!-- pantoken-value-scope:renderers%2Fastro%2Fsrc%2Findex.md -->\nTarget: Astro / Starlight. Current format: {{ptk_code_0}}. Minimum host version: {{ptk_code_1}}. Tested through {{ptk_code_2}}. Newer releases require review."
+msgstr "<!-- pantoken-value-scope:renderers%2Fastro%2Fsrc%2Findex.md -->\nTarget: Astro / Starlight. Current format: {{ptk_code_0}}. Minimum host version: {{ptk_code_1}}. Tested through {{ptk_code_2}}. Newer releases require review."
 
 #: renderers/astro/src/index.md
 #, no-c-format
@@ -18710,8 +18768,8 @@ msgstr "**Afmarka við þemaeiginleika Bootstrap**"
 #: renderers/bootstrap/src/index.md
 #, no-c-format, pantoken-verbatim
 msgctxt "docs.api:prose"
-msgid "Target: Bootstrap. Current format: `CSS variables: body + primary button`. Minimum host version: `5.2.0`. Tested through `5.3.8`. Newer releases require review."
-msgstr "Target: Bootstrap. Current format: `CSS variables: body + primary button`. Minimum host version: `5.2.0`. Tested through `5.3.8`. Newer releases require review."
+msgid "<!-- pantoken-value-scope:renderers%2Fbootstrap%2Fsrc%2Findex.md -->\nTarget: Bootstrap. Current format: {{ptk_code_0}}. Minimum host version: {{ptk_code_1}}. Tested through {{ptk_code_2}}. Newer releases require review."
+msgstr "<!-- pantoken-value-scope:renderers%2Fbootstrap%2Fsrc%2Findex.md -->\nTarget: Bootstrap. Current format: {{ptk_code_0}}. Minimum host version: {{ptk_code_1}}. Tested through {{ptk_code_2}}. Newer releases require review."
 
 #: renderers/bootstrap/src/index.md
 #, no-c-format
@@ -18793,8 +18851,8 @@ msgstr "Breyttu `--instui-color-background-brand` í `colorBackgroundBrand`."
 #: renderers/css-in-js/src/index.md
 #, no-c-format, pantoken-verbatim
 msgctxt "docs.api:prose"
-msgid "Target: Emotion CSS-in-JS. Current format: `ThemeProvider SSR emits the Pantoken token variable`. Minimum host version: `11.14.0`. Tested through `11.14.0`. Newer releases require review."
-msgstr "Target: Emotion CSS-in-JS. Current format: `ThemeProvider SSR emits the Pantoken token variable`. Minimum host version: `11.14.0`. Tested through `11.14.0`. Newer releases require review."
+msgid "<!-- pantoken-value-scope:renderers%2Fcss-in-js%2Fsrc%2Findex.md -->\nTarget: Emotion CSS-in-JS. Current format: {{ptk_code_0}}. Minimum host version: {{ptk_code_1}}. Tested through {{ptk_code_2}}. Newer releases require review."
+msgstr "<!-- pantoken-value-scope:renderers%2Fcss-in-js%2Fsrc%2Findex.md -->\nTarget: Emotion CSS-in-JS. Current format: {{ptk_code_0}}. Minimum host version: {{ptk_code_1}}. Tested through {{ptk_code_2}}. Newer releases require review."
 
 #: renderers/css-in-js/src/index.md
 #, no-c-format
@@ -18853,8 +18911,8 @@ msgstr "Búa til Infima → Instructure brú fyrir CSS-breytur."
 #: renderers/docusaurus/src/index.md
 #, no-c-format, pantoken-verbatim
 msgctxt "docs.api:prose"
-msgid "Target: Docusaurus theme-classic. Current format: `Infima CSS-variable bridge: primary and background`. Minimum host version: `3.0.0`. Tested through `3.10.2`. Newer releases require review."
-msgstr "Target: Docusaurus theme-classic. Current format: `Infima CSS-variable bridge: primary and background`. Minimum host version: `3.0.0`. Tested through `3.10.2`. Newer releases require review."
+msgid "<!-- pantoken-value-scope:renderers%2Fdocusaurus%2Fsrc%2Findex.md -->\nTarget: Docusaurus theme-classic. Current format: {{ptk_code_0}}. Minimum host version: {{ptk_code_1}}. Tested through {{ptk_code_2}}. Newer releases require review."
+msgstr "<!-- pantoken-value-scope:renderers%2Fdocusaurus%2Fsrc%2Findex.md -->\nTarget: Docusaurus theme-classic. Current format: {{ptk_code_0}}. Minimum host version: {{ptk_code_1}}. Tested through {{ptk_code_2}}. Newer releases require review."
 
 #: renderers/docusaurus/src/index.md
 #, no-c-format
@@ -18925,8 +18983,8 @@ msgstr "**Látið samt sem áður stillingar notandans ráða**"
 #: renderers/foundation/src/index.md
 #, no-c-format, pantoken-verbatim
 msgctxt "docs.api:prose"
-msgid "Target: Foundation for Sites. Current format: `Concrete Sass settings + variable-backed CSS overlay`. Minimum host version: `6.1.2`. Tested through `6.9.0`. Newer releases require review."
-msgstr "Target: Foundation for Sites. Current format: `Concrete Sass settings + variable-backed CSS overlay`. Minimum host version: `6.1.2`. Tested through `6.9.0`. Newer releases require review."
+msgid "<!-- pantoken-value-scope:renderers%2Ffoundation%2Fsrc%2Findex.md -->\nTarget: Foundation for Sites. Current format: {{ptk_code_0}}. Minimum host version: {{ptk_code_1}}. Tested through {{ptk_code_2}}. Newer releases require review."
+msgstr "<!-- pantoken-value-scope:renderers%2Ffoundation%2Fsrc%2Findex.md -->\nTarget: Foundation for Sites. Current format: {{ptk_code_0}}. Minimum host version: {{ptk_code_1}}. Tested through {{ptk_code_2}}. Newer releases require review."
 
 #: renderers/foundation/src/index.md
 #, no-c-format
@@ -19011,8 +19069,8 @@ msgstr "**Settu saman leysir fyrir brand-icon viðbót**"
 #: renderers/markdown-it/src/index.md
 #, no-c-format, pantoken-verbatim
 msgctxt "docs.api:prose"
-msgid "Target: markdown-it. Minimum host version: `14.0.0`. Tested through `15.0.2`. Newer releases require review."
-msgstr "Target: markdown-it. Minimum host version: `14.0.0`. Tested through `15.0.2`. Newer releases require review."
+msgid "<!-- pantoken-value-scope:renderers%2Fmarkdown-it%2Fsrc%2Findex.md -->\nTarget: markdown-it. Minimum host version: {{ptk_code_0}}. Tested through {{ptk_code_1}}. Newer releases require review."
+msgstr "<!-- pantoken-value-scope:renderers%2Fmarkdown-it%2Fsrc%2Findex.md -->\nTarget: markdown-it. Minimum host version: {{ptk_code_0}}. Tested through {{ptk_code_1}}. Newer releases require review."
 
 #: renderers/markdown-it/src/index.md
 #, no-c-format
@@ -19101,8 +19159,8 @@ msgstr "Lyklarnir `colors` + `background` sem á að sameina í Mintlify `docs.j
 #: renderers/mintlify/src/index.md
 #, no-c-format, pantoken-verbatim
 msgctxt "docs.api:prose"
-msgid "Target: Mintlify docs.json. Current format: `Official CLI validates generated colors and background theme config`. Minimum host version: `4.0.1555`. Tested through `4.0.1614`. Newer releases require review."
-msgstr "Target: Mintlify docs.json. Current format: `Official CLI validates generated colors and background theme config`. Minimum host version: `4.0.1555`. Tested through `4.0.1614`. Newer releases require review."
+msgid "<!-- pantoken-value-scope:renderers%2Fmintlify%2Fsrc%2Findex.md -->\nTarget: Mintlify docs.json. Current format: {{ptk_code_0}}. Minimum host version: {{ptk_code_1}}. Tested through {{ptk_code_2}}. Newer releases require review."
+msgstr "<!-- pantoken-value-scope:renderers%2Fmintlify%2Fsrc%2Findex.md -->\nTarget: Mintlify docs.json. Current format: {{ptk_code_0}}. Minimum host version: {{ptk_code_1}}. Tested through {{ptk_code_2}}. Newer releases require review."
 
 #: renderers/mintlify/src/index.md
 #, no-c-format
@@ -19185,8 +19243,8 @@ msgstr "Þema fyrir hvert vörumerki og hvert ham"
 #: renderers/mui/src/index.md
 #, no-c-format, pantoken-verbatim
 msgctxt "docs.api:prose"
-msgid "Target: Material UI. Current format: `Concrete createTheme palettes (MUI 5, 6, 7, 9)`. Minimum host version: `5.0.0`. Tested through `9.5.0`. Newer releases require review."
-msgstr "Target: Material UI. Current format: `Concrete createTheme palettes (MUI 5, 6, 7, 9)`. Minimum host version: `5.0.0`. Tested through `9.5.0`. Newer releases require review."
+msgid "<!-- pantoken-value-scope:renderers%2Fmui%2Fsrc%2Findex.md -->\nTarget: Material UI. Current format: {{ptk_code_0}}. Minimum host version: {{ptk_code_1}}. Tested through {{ptk_code_2}}. Newer releases require review."
+msgstr "<!-- pantoken-value-scope:renderers%2Fmui%2Fsrc%2Findex.md -->\nTarget: Material UI. Current format: {{ptk_code_0}}. Minimum host version: {{ptk_code_1}}. Tested through {{ptk_code_2}}. Newer releases require review."
 
 #: renderers/mui/src/index.md
 #, no-c-format
@@ -19443,8 +19501,8 @@ msgstr "Rehype-viðbót sem merkir GitHub-viðvörunartilvitnanir: hún greinir 
 #: renderers/react-markdown/src/index.md
 #, no-c-format, pantoken-verbatim
 msgctxt "docs.api:prose"
-msgid "Target: react-markdown. Current format: `SSR-rendered InstUI heading, icon, and color swatch with React 19.3.0`. Minimum host version: `10.1.0`. Tested through `10.1.0`. Newer releases require review."
-msgstr "Target: react-markdown. Current format: `SSR-rendered InstUI heading, icon, and color swatch with React 19.3.0`. Minimum host version: `10.1.0`. Tested through `10.1.0`. Newer releases require review."
+msgid "<!-- pantoken-value-scope:renderers%2Freact-markdown%2Fsrc%2Findex.md -->\nTarget: react-markdown. Current format: {{ptk_code_0}}. Minimum host version: {{ptk_code_1}}. Tested through {{ptk_code_2}}. Newer releases require review."
+msgstr "<!-- pantoken-value-scope:renderers%2Freact-markdown%2Fsrc%2Findex.md -->\nTarget: react-markdown. Current format: {{ptk_code_0}}. Minimum host version: {{ptk_code_1}}. Tested through {{ptk_code_2}}. Newer releases require review."
 
 #: renderers/react-markdown/src/index.md
 #, no-c-format
@@ -19653,8 +19711,8 @@ msgstr "React hook sem skilar leystu `--instui-*` token-gildi (les aftur þegar 
 #: renderers/react/src/index.md
 #, no-c-format, pantoken-verbatim
 msgctxt "docs.api:prose"
-msgid "Target: React. Current format: `SSR-rendered Icon custom element and token fallback`. Minimum host version: `19.3.0`. Tested through `19.3.0`. Newer releases require review."
-msgstr "Target: React. Current format: `SSR-rendered Icon custom element and token fallback`. Minimum host version: `19.3.0`. Tested through `19.3.0`. Newer releases require review."
+msgid "<!-- pantoken-value-scope:renderers%2Freact%2Fsrc%2Findex.md -->\nTarget: React. Current format: {{ptk_code_0}}. Minimum host version: {{ptk_code_1}}. Tested through {{ptk_code_2}}. Newer releases require review."
+msgstr "<!-- pantoken-value-scope:renderers%2Freact%2Fsrc%2Findex.md -->\nTarget: React. Current format: {{ptk_code_0}}. Minimum host version: {{ptk_code_1}}. Tested through {{ptk_code_2}}. Newer releases require review."
 
 #: renderers/react/src/index.md
 #, no-c-format
@@ -19720,8 +19778,8 @@ msgstr "**Innbyggt táknasett**"
 #: renderers/rehype/src/index.md
 #, no-c-format, pantoken-verbatim
 msgctxt "docs.api:prose"
-msgid "Target: rehype. Current format: `HAST + raw SVG`. Minimum host version: `13.0.0`. Tested through `13.0.2`. Newer releases require review."
-msgstr "Target: rehype. Current format: `HAST + raw SVG`. Minimum host version: `13.0.0`. Tested through `13.0.2`. Newer releases require review."
+msgid "<!-- pantoken-value-scope:renderers%2Frehype%2Fsrc%2Findex.md -->\nTarget: rehype. Current format: {{ptk_code_0}}. Minimum host version: {{ptk_code_1}}. Tested through {{ptk_code_2}}. Newer releases require review."
+msgstr "<!-- pantoken-value-scope:renderers%2Frehype%2Fsrc%2Findex.md -->\nTarget: rehype. Current format: {{ptk_code_0}}. Minimum host version: {{ptk_code_1}}. Tested through {{ptk_code_2}}. Newer releases require review."
 
 #: renderers/rehype/src/index.md
 #, no-c-format
@@ -19768,8 +19826,8 @@ msgstr "Gefðu út Tailwind v4 aliases fyrir shadcn þema-breytur og afleidda ra
 #: renderers/shadcn/src/index.md
 #, no-c-format, pantoken-verbatim
 msgctxt "docs.api:prose"
-msgid "Target: shadcn/ui CSS variables. Current format: `Tailwind 4.3.3 compiles the Pantoken primary theme alias`. Minimum host version: `4.3.3`. Tested through `4.3.3`. Newer releases require review."
-msgstr "Target: shadcn/ui CSS variables. Current format: `Tailwind 4.3.3 compiles the Pantoken primary theme alias`. Minimum host version: `4.3.3`. Tested through `4.3.3`. Newer releases require review."
+msgid "<!-- pantoken-value-scope:renderers%2Fshadcn%2Fsrc%2Findex.md -->\nTarget: shadcn/ui CSS variables. Current format: {{ptk_code_0}}. Minimum host version: {{ptk_code_1}}. Tested through {{ptk_code_2}}. Newer releases require review."
+msgstr "<!-- pantoken-value-scope:renderers%2Fshadcn%2Fsrc%2Findex.md -->\nTarget: shadcn/ui CSS variables. Current format: {{ptk_code_0}}. Minimum host version: {{ptk_code_1}}. Tested through {{ptk_code_2}}. Newer releases require review."
 
 #: renderers/shadcn/src/index.md
 #, no-c-format
@@ -19828,8 +19886,8 @@ msgstr "Hlutur sem er í lögun `ThemeVars`."
 #: renderers/storybook/src/index.md
 #, no-c-format, pantoken-verbatim
 msgctxt "docs.api:prose"
-msgid "Target: Storybook theming. Current format: `Storybook ThemeVars constructor accepts light and dark Pantoken themes`. Minimum host version: `8.6.14`. Tested through `8.6.14`. Newer releases require review."
-msgstr "Target: Storybook theming. Current format: `Storybook ThemeVars constructor accepts light and dark Pantoken themes`. Minimum host version: `8.6.14`. Tested through `8.6.14`. Newer releases require review."
+msgid "<!-- pantoken-value-scope:renderers%2Fstorybook%2Fsrc%2Findex.md -->\nTarget: Storybook theming. Current format: {{ptk_code_0}}. Minimum host version: {{ptk_code_1}}. Tested through {{ptk_code_2}}. Newer releases require review."
+msgstr "<!-- pantoken-value-scope:renderers%2Fstorybook%2Fsrc%2Findex.md -->\nTarget: Storybook theming. Current format: {{ptk_code_0}}. Minimum host version: {{ptk_code_1}}. Tested through {{ptk_code_2}}. Newer releases require review."
 
 #: renderers/storybook/src/index.md
 #, no-c-format
@@ -19909,8 +19967,8 @@ msgstr "Sendt áfram til `register()` (t.d. `prefix`, `only`)."
 #: renderers/svelte/src/index.md
 #, no-c-format, pantoken-verbatim
 msgctxt "docs.api:prose"
-msgid "Target: Svelte. Current format: `Icon action component compiles and SSR renders on Svelte 4 and 5`. Minimum host version: `4.2.20`. Tested through `5.57.2`. Newer releases require review."
-msgstr "Target: Svelte. Current format: `Icon action component compiles and SSR renders on Svelte 4 and 5`. Minimum host version: `4.2.20`. Tested through `5.57.2`. Newer releases require review."
+msgid "<!-- pantoken-value-scope:renderers%2Fsvelte%2Fsrc%2Findex.md -->\nTarget: Svelte. Current format: {{ptk_code_0}}. Minimum host version: {{ptk_code_1}}. Tested through {{ptk_code_2}}. Newer releases require review."
+msgstr "<!-- pantoken-value-scope:renderers%2Fsvelte%2Fsrc%2Findex.md -->\nTarget: Svelte. Current format: {{ptk_code_0}}. Minimum host version: {{ptk_code_1}}. Tested through {{ptk_code_2}}. Newer releases require review."
 
 #: renderers/svelte/src/index.md
 #, no-c-format
@@ -20203,8 +20261,8 @@ msgstr "Staðfesta pantoken flokkstákna (t.d. \"instui-button\", \"instui-butto
 #: renderers/tinymce/src/index.md
 #, no-c-format, pantoken-verbatim
 msgctxt "docs.api:prose"
-msgid "Target: TinyMCE PluginManager. Current format: `Pantoken plugin registration and callback initialization`. Minimum host version: `8.9.2`. Tested through `8.9.3`. Newer releases require review."
-msgstr "Target: TinyMCE PluginManager. Current format: `Pantoken plugin registration and callback initialization`. Minimum host version: `8.9.2`. Tested through `8.9.3`. Newer releases require review."
+msgid "<!-- pantoken-value-scope:renderers%2Ftinymce%2Fsrc%2Findex.md -->\nTarget: TinyMCE PluginManager. Current format: {{ptk_code_0}}. Minimum host version: {{ptk_code_1}}. Tested through {{ptk_code_2}}. Newer releases require review."
+msgstr "<!-- pantoken-value-scope:renderers%2Ftinymce%2Fsrc%2Findex.md -->\nTarget: TinyMCE PluginManager. Current format: {{ptk_code_0}}. Minimum host version: {{ptk_code_1}}. Tested through {{ptk_code_2}}. Newer releases require review."
 
 #: renderers/tinymce/src/interfaces/ContentClassesPluginOptions.md
 #, fuzzy, no-c-format
@@ -20672,8 +20730,8 @@ msgstr "Innbyggðu síðuútlitin sem sniðmáta-veljarinn býður upp á."
 #: renderers/vitepress/src/index.md
 #, no-c-format, pantoken-verbatim
 msgctxt "docs.api:prose"
-msgid "Target: VitePress. Current format: `Built site CSS includes the Pantoken primary-brand bridge`. Minimum host version: `1.6.4`. Tested through `1.6.4`. Newer releases require review."
-msgstr "Target: VitePress. Current format: `Built site CSS includes the Pantoken primary-brand bridge`. Minimum host version: `1.6.4`. Tested through `1.6.4`. Newer releases require review."
+msgid "<!-- pantoken-value-scope:renderers%2Fvitepress%2Fsrc%2Findex.md -->\nTarget: VitePress. Current format: {{ptk_code_0}}. Minimum host version: {{ptk_code_1}}. Tested through {{ptk_code_2}}. Newer releases require review."
+msgstr "<!-- pantoken-value-scope:renderers%2Fvitepress%2Fsrc%2Findex.md -->\nTarget: VitePress. Current format: {{ptk_code_0}}. Minimum host version: {{ptk_code_1}}. Tested through {{ptk_code_2}}. Newer releases require review."
 
 #: renderers/vitepress/src/index.md
 #, no-c-format
@@ -20723,8 +20781,8 @@ msgstr "Leysirinn (sjálfgefið notar innbyggða pantoken táknasafnið)."
 #: renderers/vue/src/index.md
 #, no-c-format, pantoken-verbatim
 msgctxt "docs.api:prose"
-msgid "Target: Vue. Current format: `Plugin installation, custom-element configuration, and SSR output`. Minimum host version: `3.0.0`. Tested through `3.5.43`. Newer releases require review."
-msgstr "Target: Vue. Current format: `Plugin installation, custom-element configuration, and SSR output`. Minimum host version: `3.0.0`. Tested through `3.5.43`. Newer releases require review."
+msgid "<!-- pantoken-value-scope:renderers%2Fvue%2Fsrc%2Findex.md -->\nTarget: Vue. Current format: {{ptk_code_0}}. Minimum host version: {{ptk_code_1}}. Tested through {{ptk_code_2}}. Newer releases require review."
+msgstr "<!-- pantoken-value-scope:renderers%2Fvue%2Fsrc%2Findex.md -->\nTarget: Vue. Current format: {{ptk_code_0}}. Minimum host version: {{ptk_code_1}}. Tested through {{ptk_code_2}}. Newer releases require review."
 
 #: renderers/vue/src/index.md
 #, no-c-format
@@ -20880,8 +20938,8 @@ msgstr "Fyrsti dagur vikunnar sem JS `Date.getDay()` vísitala (0=sunnudagur …
 #: renderers/web-components/src/index.md
 #, no-c-format, pantoken-verbatim
 msgctxt "docs.api:prose"
-msgid "Target: Web Components. Current format: `Custom-element registration and button shadow output`. Tested environment: `Node 26.10.0 with happy-dom 20.14.5`. Real-browser rendering and interaction behavior are not verified."
-msgstr "Target: Web Components. Current format: `Custom-element registration and button shadow output`. Tested environment: `Node 26.10.0 with happy-dom 20.14.5`. Real-browser rendering and interaction behavior are not verified."
+msgid "<!-- pantoken-value-scope:renderers%2Fweb-components%2Fsrc%2Findex.md -->\nTarget: Web Components. Current format: {{ptk_code_0}}. Tested environment: {{ptk_code_1}}. Real-browser rendering and interaction behavior are not verified."
+msgstr "<!-- pantoken-value-scope:renderers%2Fweb-components%2Fsrc%2Findex.md -->\nTarget: Web Components. Current format: {{ptk_code_0}}. Tested environment: {{ptk_code_1}}. Real-browser rendering and interaction behavior are not verified."
 
 #: renderers/web-components/src/index.md
 #, no-c-format

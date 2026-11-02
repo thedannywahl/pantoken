@@ -16,6 +16,10 @@ import { sanitizeGuideFrontmatter } from "./guide-frontmatter.ts";
 import { reassemble, segmentMarkdown } from "./segment-markdown.ts";
 import { parseRequestedGuideFiles } from "./translation-scope.ts";
 import { NON_ROOT_LOCALES, parseRequestedLocales } from "../.vitepress/i18n.ts";
+import {
+  generatedFileMarkdown,
+  restoreGeneratedMarkdown,
+} from "../../tools/translation-adapters/src/generated-values.ts";
 
 const repoRoot = new URL("../../", import.meta.url).pathname;
 const config = loadConfig(join(repoRoot, "i18n.config.json"));
@@ -35,7 +39,9 @@ if (process.env.DOCS_TRANSLATION_COMMAND) {
 
 runExtractContent(config, repoRoot, "docs.guides");
 const files = parseRequestedGuideFiles(process.env.DOCS_TRANSLATION_FILE, listGuideFiles(docsRoot));
-const compatibilitySource = readFileSync(join(docsRoot, "compatibility.md"), "utf8");
+const compatibility = generatedFileMarkdown(
+  readFileSync(join(docsRoot, "compatibility.md"), "utf8"),
+);
 
 if (process.env.DOCS_TRANSLATION_FILE !== undefined) {
   console.log(`guide file scope: ${files.join(", ")}`);
@@ -46,12 +52,12 @@ for (const locale of locales) {
   const poPath = join(repoRoot, "l10n", locale, "docs.guides.po");
   const entries = parsePo(readFileSync(poPath, "utf8"));
   const compatibilityEntry = entries.find(
-    (item) => !item.obsolete && item.msgid === compatibilitySource,
+    (item) => !item.obsolete && !item.fuzzy && item.msgid === compatibility.template,
   );
   if (compatibilityEntry?.msgstr) {
     writeFileSync(
       join(docsRoot, locale, "compatibility.md"),
-      `${normalizeRenderedGuide(compatibilityEntry.msgstr)}\n`,
+      `${normalizeRenderedGuide(restoreGeneratedMarkdown(compatibilityEntry.msgstr, compatibility))}\n`,
     );
   }
   const adapter = new AiTranslationAdapter(locale);

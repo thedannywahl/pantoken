@@ -1,5 +1,48 @@
 # Build, release, and the docs site
 
+## Generated values and translation identity
+
+Compatibility Markdown is formatted through `vite-plus/fmt` before it is written, so running
+`sync:compatibility` doesn't need a later table-format repair commit.
+
+Generated package compatibility paragraphs opt in with `<!-- pantoken-generated-values -->`.
+Their code spans and link destinations become stable `{{ptk_code_N}}` placeholders during
+extraction and lookup. Generated JS callouts use the same contract; authored descriptions,
+examples, and prose numbers don't opt in automatically. CSS value/code columns and HTML `<code>`
+content already stay outside translatable units.
+
+The compatibility page opts in at whole-file level. Its generated tables normalize padding before
+keying, and the **Current format** column treats numeric version metadata as bindings while keeping
+its explanatory words translatable. Status, limitations, reasons, new rows, and grammatical changes
+still need translations. Generated API templates include a stable page scope so existing translations
+with different wording aren't merged just because their machine values differ.
+
+After generating English API pages, migrate existing catalogs without invoking a provider:
+
+```sh
+vp exec node scripts/release/migrate-generated-values.ts --check
+vp exec node scripts/release/migrate-generated-values.ts --write
+vp run @pantoken/docs#docs:values:render
+vp run @pantoken/docs#docs:values:check
+```
+
+Migration preserves unrelated catalog formatting, headers, comments, and obsolete history.
+An obsolete, non-fuzzy translation can seed a new active generated entry only when its literal
+English source exactly matches the current generated source; the historical entry stays unchanged.
+It preserves fuzzy/empty entries as incomplete and rejects conflicting or ambiguous mappings.
+Review those entries separately; don't clear their flags just to pass the gate.
+The renderer also refuses incomplete generated templates. These commands never start an AI adapter.
+The normal API locale build refreshes compatibility guide values before rendering package pages.
+
+The guide translation command retries nonempty fuzzy generated templates through the configured
+provider. It validates restored placeholders before saving a response or clearing fuzzy flags.
+Failed translations remain incomplete and aren't rendered as reviewed compatibility pages.
+
+Bindings are restored from each current source after translation lookup. A template can outlive a
+version bump without retaining the old value. Missing, repeated, unknown, or corrupted slots fail;
+they never silently fall back to stale data. Rendered Markdown, HTML, and agent-facing exports
+contain literal values, not unresolved placeholders.
+
 ## Use the `vp` toolchain, never pnpm directly
 
 - `vp` / `vpr` / `vpx` are **global** bins. Run tasks via `vp run <task>`, execute bins via `vp exec
@@ -11,6 +54,14 @@
 - `.css` formatting: `vp fmt` (oxc) is JS/TS/JSON only and no-ops on `.css`. Stylelint owns core CSS
   correctness; cssdoc owns documentation comments. `lint:css` and `lint:cssdoc` run in `ready`, and
   both are wired into the `vite.config.ts` staged hook.
+- `vp check --fix` formats Markdown but doesn't run markdownlint. Run `vp run lint:markdown` for the
+  same Markdown rules as CI; `ready` includes this gate too. The staged hook also runs markdownlint
+  on changed Markdown files, using the exclusions in `.markdownlint-cli2.yaml`.
+- The Copilot translation wrapper requests `--silent --no-color` output so model-selection banners,
+  statistics, and terminal colors don't enter translation catalogs. If a banner was saved, repair
+  the catalog first, then regenerate its pages; editing rendered Markdown alone won't persist.
+  CLI wrappers read the inherited stdin pipe with `cat`, rather than reopening `/dev/stdin`, so
+  prompts survive Node child-process pipes on Linux as well as macOS.
 
 `vpr docs:dev` builds interactions before staging its browser bundles. The interactions build task
 declares its workspace dependencies' builds as prerequisites, so `@pantoken/utils` is built even
