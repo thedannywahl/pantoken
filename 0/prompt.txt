@@ -1,0 +1,7 @@
+running `vp check --fix` passes locally, but markdown lint is failing in CI. Investigate and remediate with incremental conventional commits and changesets where necessary.
+https://github.com/thedannywahl/pantoken/actions/runs/41482348424/job/125405457739?pr=245
+
+---
+
+running `vp check --fix` passes locally, but markdown lint is failing in CI. Investigate and remediate with incremental conventional commits and changesets where necessary.
+https://github.com/thedannywahl/pantoken/actions/runs/41482348424/job/125405457739?pr=245
