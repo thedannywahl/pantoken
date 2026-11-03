@@ -251,6 +251,9 @@ prepares frozen upstream deprecations, blesses the baseline, regenerates compati
 creates deterministic package Changesets. The final combined tree passes `vp run ready` and
 `vp run check:publish`; final-head PR CI must pass again before GitHub auto-merges it.
 
+Baseline and candidate recursive builds use `--concurrency-limit 1`, matching normal generation.
+This prevents generators from importing workspace dependency output while another build cleans it.
+
 Downstream support retains the current and previous released stable major. Older majors age out
 even when passing; a compatibility assertion can drop the previous major early. Infrastructure
 errors and missing evidence never withdraw support. Adding support gets a minor; support-floor

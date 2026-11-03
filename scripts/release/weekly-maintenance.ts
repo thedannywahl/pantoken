@@ -362,7 +362,7 @@ export async function prepareMaintenance(
   try {
     const baseline = createTree();
     command(baseline, "vp", ["install", "--frozen-lockfile"]);
-    command(baseline, "vp", ["run", "-r", "build"]);
+    command(baseline, "vp", ["run", "-r", "--concurrency-limit", "1", "build"]);
     const oldSnapshot = snapshot(baseline);
     const oldVersions = versions(baseline);
     const oldLedger = readJson<DeprecationLedger>(baseline, ledgerFile);
@@ -387,7 +387,7 @@ export async function prepareMaintenance(
         console.log(`Preparing ${candidates.length} dependency updates in an isolated worktree`);
         applyUpgrades(directory, candidates, proposal);
         command(directory, "vp", ["install", "--no-frozen-lockfile"]);
-        command(directory, "vp", ["run", "-r", "build"]);
+        command(directory, "vp", ["run", "-r", "--concurrency-limit", "1", "build"]);
         const knownBefore = readJson<unknown[]>(baseline, knownIssuesFile);
         const knownAfter = readJson<unknown[]>(directory, knownIssuesFile);
         if (
@@ -404,7 +404,7 @@ export async function prepareMaintenance(
           versions(directory),
         );
         writeFiles(directory, { [ledgerFile]: `${JSON.stringify(lifecycle.ledger, null, 2)}\n` });
-        command(directory, "vp", ["run", "-r", "build"]);
+        command(directory, "vp", ["run", "-r", "--concurrency-limit", "1", "build"]);
         command(directory, "vp", ["run", "upgrade:bless"]);
         const registry = structuredClone(originalRegistry);
         const evidence: Record<string, string[]> = {};
