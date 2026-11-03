@@ -9698,10 +9698,10 @@ msgid "Logos under `product` (all when omitted) whose name, product, or variant 
 msgstr "โลโก้ภายใต้ `product` (ทั้งหมดเมื่อถูกละไว้)) ซึ่งชื่อ ผลิตภัณฑ์ หรือรูปแบบตรงกับ `query`."
 
 #: renderers/tinymce/src/functions/filterLogos.md
-#, fuzzy, no-c-format
+#, no-c-format, pantoken-verbatim
 msgctxt "docs.api:prose"
 msgid "readonly [`LogoMeta`](../interfaces/LogoMeta.md)[]"
-msgstr "อ่านอย่างเดียว [`Token`](../interfaces/Token.md)[]"
+msgstr "readonly [`LogoMeta`](../interfaces/LogoMeta.md)[]"
 
 #: renderers/tinymce/src/functions/findEntry.md
 #, no-c-format
