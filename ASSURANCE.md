@@ -211,6 +211,16 @@ not apply candidate-authored source patches. Component availability, variants, C
 alias retirement still require human validation. Evidence: `scripts/release/component-reviews.ts`
 and its co-located tests, plus the publisher's separate-draft regression test.
 
+Matrix validation uses immutable base/proposal refs and a validator identity bound to the base.
+Candidate outcome files are opened with no-follow flags, then inspected and read through the same
+descriptor, which is closed on success or failure. They must be bounded regular files; missing groups, duplicate attempts, stale refs,
+changed coupled groups, or a newest attempt that is still running or infrastructure-failed block
+integration. Integration consumes outcomes, not candidate-produced source files, then revalidates
+the combined candidate set with atomic-group bisection and the full release gates. Command timings
+and errors are written immediately to an external JSONL progress file, whose path is removed from
+child environments. Evidence: `scripts/release/maintenance-validation.ts`, its tests, and
+`scripts/release/weekly-maintenance.test.ts`.
+
 | Threat                                                                                                        | Control                                                                                                                                                                                                                                                                                                                         | Evidence                                                                                                                                               |
 | ------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------ |
 | A dependency proposal acquires repository-write credentials during execution.                                 | Candidate commands receive a credential-filtered environment; the publication job checks out trusted base code, does not install candidate dependencies, and accepts only bounded file handoffs tied to immutable base/proposal SHAs.                                                                                           | `scripts/release/weekly-maintenance.ts`, `scripts/release/weekly-maintenance.test.ts`, `.github/workflows/renovate.yml`                                |
@@ -482,6 +492,9 @@ The following risks remain or are deliberately outside the security claim:
    select presentation rules only; they do not validate or sanitize Pendo-injected guide HTML.
 7. **Static-analysis availability.** CodeQL runs in CI. The Snyk Code pre-push gate requires local
    authentication and warns when it cannot run, so it is supplementary rather than the sole control.
+   Maintenance progress artifacts are diagnostics, not independent attestations or a sandbox for
+   dependency code. Recovery reuses only completed group evidence from the same immutable workflow
+   run. A cancelled group must rerun, and artifact upload remains best-effort after runner loss.
    Intentional loopback HTTP (T-22) and opaque-preview message delivery (T-23) remain visible as
    advisories, accepted only by exact rule, file, and reported source-call matching. A different
    call site or changed call remains blocking and needs review.
@@ -492,6 +505,7 @@ The following risks remain or are deliberately outside the security claim:
    assets. Each release now has an attached package tarball and SLSA `*.sigstore.json` provenance
    bundle; the automatically-generated source archives are separate and not covered by those
    signatures. npm packages are additionally covered by registry signatures and Sigstore provenance.
+
 9. **Registry item mutability.** The public shadcn namespace resolves to latest JSON served from
    `pantoken.app`; those manifests are not independently signed or version-addressable. HTTPS,
    generated-output tests, schema checks, `shadcn view`, and consumer diff review reduce this risk,

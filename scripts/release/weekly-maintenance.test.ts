@@ -43,6 +43,7 @@ vi.mock("./release-candidates.ts", async (original) => ({
 
 const temporary: string[] = [];
 afterEach(() => {
+  vi.restoreAllMocks();
   vi.resetAllMocks();
   vi.unstubAllEnvs();
   for (const directory of temporary.splice(0)) rmSync(directory, { recursive: true, force: true });
@@ -111,6 +112,36 @@ test("validates combined updates and excludes interaction failures", async () =>
   expect(calls).toEqual([["a"], ["a", "b"]]);
   expect(result.accepted).toEqual([upgrade("a")]);
   expect(result.failures[0].package).toBe("b");
+});
+
+test("aborts infrastructure failures instead of rejecting every dependency", async () => {
+  const error = new Error("ENOSPC");
+  error.name = "MaintenanceInfrastructureError";
+  const validate = vi.fn().mockRejectedValue(error);
+  await expect(partitionMaintenance([upgrade("a"), upgrade("b")], validate)).rejects.toThrow(
+    "ENOSPC",
+  );
+  expect(validate).toHaveBeenCalledTimes(1);
+});
+
+test("batch integration validates passing sets once and bisects interaction failures atomically", async () => {
+  const validate = vi.fn().mockResolvedValue(undefined);
+  expect(
+    (await partitionMaintenance([upgrade("a"), upgrade("b")], validate, true)).accepted,
+  ).toHaveLength(2);
+  expect(validate).toHaveBeenCalledTimes(1);
+  const calls: string[][] = [];
+  const result = await partitionMaintenance(
+    [upgrade("a"), upgrade("react"), upgrade("react-dom")],
+    async (candidates) => {
+      calls.push(candidates.map((candidate) => candidate.depName));
+      if (candidates.length > 1) throw new Error("AssertionError: interaction");
+    },
+    true,
+  );
+  expect(calls).toEqual([["a", "react", "react-dom"], ["a"], ["a", "react", "react-dom"]]);
+  expect(result.accepted.map((candidate) => candidate.depName)).toEqual(["a"]);
+  expect(result.failures.map((failure) => failure.package)).toEqual(["react", "react-dom"]);
 });
 
 test("empty and all-failed batches never invent passing evidence; retries have stable IDs", async () => {
@@ -244,6 +275,48 @@ test("serializes baseline and candidate builds so generators cannot race depende
     expect(build.args).toEqual(["run", "-r", "--concurrency-limit", "1", "build"]);
 });
 
+test.each([0, 1, 2])(
+  "preparation logs identify the phase and all %i proposed updates",
+  async (count) => {
+    const proposals = [
+      { ...upgrade("react"), currentValue: "^19.0.0", newValue: "^20.0.0" },
+      {
+        ...upgrade("react"),
+        packageFile: "renderers/react/package.json",
+        currentValue: "^19.0.0",
+        newValue: "^20.0.0",
+      },
+    ].slice(0, count);
+    fixture(proposals);
+    const log = vi.spyOn(console, "log").mockImplementation(() => {});
+    await prepareMaintenance("a".repeat(40), "b".repeat(40), {
+      mode: "candidate",
+      candidates: proposals,
+    });
+    const phase = count ? "candidate validation" : "baseline validation";
+    const message = log.mock.calls
+      .map(([value]) => String(value))
+      .find((value) => value.startsWith(`Preparing ${phase}:`));
+    expect(message).toContain(`${count} dependency update${count === 1 ? ";" : "s;"}`);
+    for (const proposal of proposals)
+      expect(message).toContain(`react: ^19.0.0 -> ^20.0.0 (${proposal.packageFile})`);
+    if (!count) expect(message).toContain("no dependency changes");
+    expect(log.mock.calls.some(([value]) => String(value).includes('"event":"preparation"'))).toBe(
+      true,
+    );
+  },
+);
+
+test("preparation logs distinguish final integration from candidate validation", async () => {
+  fixture();
+  const log = vi.spyOn(console, "log").mockImplementation(() => {});
+  const base = "a".repeat(40);
+  await prepareMaintenance(base, base);
+  expect(log).toHaveBeenCalledWith(
+    "Preparing final integration: 0 dependency updates; no dependency changes",
+  );
+});
+
 test("hashes the opened file even when its pathname is replaced, and closes its descriptor", async () => {
   fixture();
   const fs = await vi.importActual<typeof import("node:fs")>("node:fs");
@@ -375,6 +448,32 @@ test("applies explicit dependency proposals and revalidates the final combined t
 test("rejects mutable refs before making worktrees or spawning candidate commands", async () => {
   await expect(prepareMaintenance("main", "renovate/proposal")).rejects.toThrow("immutable");
   expect(spawnSync).not.toHaveBeenCalled();
+});
+
+test("candidate mode skips release discovery and final gates while persisting progress", async () => {
+  const candidate = { ...upgrade("react"), currentValue: "^19.0.0", newValue: "^20.0.0" };
+  const state = fixture([candidate]);
+  const file = join(state.directory, "progress.jsonl");
+  vi.stubEnv("MAINTENANCE_PROGRESS_FILE", file);
+  const result = await prepareMaintenance("a".repeat(40), "b".repeat(40), {
+    mode: "candidate",
+    candidates: [candidate],
+  });
+  expect(result.accepted).toEqual([candidate]);
+  expect(targetReleaseHistory).not.toHaveBeenCalled();
+  expect(state.commands.some((command) => command.args.includes("ready"))).toBe(false);
+  expect(readFileSync(file, "utf8")).toContain('"state":"passed"');
+  expect(state.commands.every((command) => !command.env.MAINTENANCE_PROGRESS_FILE)).toBe(true);
+});
+
+test("rejects candidates absent from the immutable proposal", async () => {
+  fixture();
+  await expect(
+    prepareMaintenance("a".repeat(40), "b".repeat(40), {
+      mode: "candidate",
+      candidates: [upgrade("unproposed")],
+    }),
+  ).rejects.toThrow("Unproposed");
 });
 
 test("captures raw metadata without candidate dependencies and rejects malformed input", () => {
