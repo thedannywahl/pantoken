@@ -9698,10 +9698,10 @@ msgid "Logos under `product` (all when omitted) whose name, product, or variant 
 msgstr "Các logo nằm trong `product` (tất cả khi bị bỏ qua)) có tên, product, hoặc variant khớp với `query`."
 
 #: renderers/tinymce/src/functions/filterLogos.md
-#, fuzzy, no-c-format
+#, no-c-format, pantoken-verbatim
 msgctxt "docs.api:prose"
 msgid "readonly [`LogoMeta`](../interfaces/LogoMeta.md)[]"
-msgstr "chỉ đọc [`Token`](../interfaces/Token.md)[]"
+msgstr "readonly [`LogoMeta`](../interfaces/LogoMeta.md)[]"
 
 #: renderers/tinymce/src/functions/findEntry.md
 #, no-c-format

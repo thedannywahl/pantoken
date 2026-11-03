@@ -658,6 +658,7 @@ export async function prepareMaintenance(
           /\.(?:json|ya?ml|md)$/u.test(file),
         );
         if (changed.length) command(directory, "vp", ["fmt", ...changed]);
+        command(directory, process.execPath, ["docs/scripts/site-themes.ts"]);
         if (final) {
           command(directory, "vp", ["run", "ready"]);
           command(directory, "vp", ["run", "check:publish"]);

@@ -9698,10 +9698,10 @@ msgid "Logos under `product` (all when omitted) whose name, product, or variant 
 msgstr "位於 `product`（省略時為全部)）且名稱、product 或 variant 符合 `query` 的標誌。"
 
 #: renderers/tinymce/src/functions/filterLogos.md
-#, fuzzy, no-c-format
+#, no-c-format, pantoken-verbatim
 msgctxt "docs.api:prose"
 msgid "readonly [`LogoMeta`](../interfaces/LogoMeta.md)[]"
-msgstr "唯讀 [`Token`](../interfaces/Token.md)[]"
+msgstr "readonly [`LogoMeta`](../interfaces/LogoMeta.md)[]"
 
 #: renderers/tinymce/src/functions/findEntry.md
 #, no-c-format
@@ -32132,9 +32132,10 @@ msgctxt "docs.api:prose"
 msgid "With reduced motion enabled, the chevron changes direction immediately; native disclosure state and keyboard operation remain unchanged."
 msgstr "啟用減少動態效果時，箭頭會立即改變方向；原生的展開狀態和鍵盤操作維持不變。"
 
+#, pantoken-verbatim
 msgctxt "docs.api:prose"
 msgid "WCAG 2.2 2.1.1, 4.1.2"
-msgstr "WCAG 2.2 2.1.1、4.1.2"
+msgstr "WCAG 2.2 2.1.1, 4.1.2"
 
 msgctxt "docs.api:prose"
 msgid "Built on native `<details>`, which exposes the expanded state and toggles with Enter and Space; keep the `<summary>` first and give it descriptive text."

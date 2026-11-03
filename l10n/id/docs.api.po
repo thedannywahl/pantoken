@@ -1504,7 +1504,7 @@ msgstr "focus-indicator-visible"
 
 #: css/alert.md css/button.md css/form-field.md css/link.md css/menu.md
 #: css/modal.md css/tabs.md css/toggle-details.md css/tooltip.md
-#, no-c-format
+#, no-c-format, pantoken-verbatim
 msgctxt "docs.api:prose"
 msgid "WCAG 2.2 2.4.7"
 msgstr "WCAG 2.2 2.4.7"
@@ -1516,7 +1516,7 @@ msgid "focus-stays-on-trigger"
 msgstr "focus-stays-on-trigger"
 
 #: css/alert.md
-#, no-c-format
+#, no-c-format, pantoken-verbatim
 msgctxt "docs.api:prose"
 msgid "WCAG 2.2 4.1.3"
 msgstr "WCAG 2.2 4.1.3"
@@ -1548,7 +1548,7 @@ msgstr "no-focus-trap"
 
 #: css/alert.md css/button.md css/form-field.md css/link.md css/menu.md
 #: css/modal.md css/tabs.md css/toggle-details.md css/tooltip.md
-#, no-c-format
+#, no-c-format, pantoken-verbatim
 msgctxt "docs.api:prose"
 msgid "WCAG 2.2 2.1.2"
 msgstr "WCAG 2.2 2.1.2"
@@ -1568,7 +1568,7 @@ msgstr "trigger-reachable-by-tab"
 
 #: css/alert.md css/button.md css/form-field.md css/link.md css/menu.md
 #: css/modal.md css/tabs.md css/toggle-details.md css/tooltip.md
-#, no-c-format
+#, no-c-format, pantoken-verbatim
 msgctxt "docs.api:prose"
 msgid "WCAG 2.2 2.1.1"
 msgstr "WCAG 2.2 2.1.1"
@@ -1919,13 +1919,13 @@ msgid "With line height 1.5, letter spacing 0.12em, word spacing 0.16em, and par
 msgstr "Dengan tinggi baris 1.5, jarak huruf 0.12em, jarak kata 0.16em, dan jarak paragraf 2em, teks pada enam elemen terpotong: "
 
 #: css/avatar.md
-#, no-c-format
+#, no-c-format, pantoken-verbatim
 msgctxt "docs.api:prose"
 msgid " (\"Lee Harper\"); "
 msgstr " (\"Lee Harper\"); "
 
 #: css/avatar.md
-#, no-c-format
+#, no-c-format, pantoken-verbatim
 msgctxt "docs.api:prose"
 msgid " (\"Amira Patel\"); "
 msgstr " (\"Amira Patel\"); "
@@ -2328,7 +2328,7 @@ msgid "label-content-name-mismatch"
 msgstr "label-content-name-mismatch"
 
 #: css/billboard.md
-#, no-c-format
+#, no-c-format, pantoken-verbatim
 msgctxt "docs.api:prose"
 msgid "WCAG 2.2 2.5.3"
 msgstr "WCAG 2.2 2.5.3"
@@ -2949,7 +2949,7 @@ msgstr "boundary-contrast"
 
 #: css/button.md css/form-field.md css/menu.md css/modal.md css/tabs.md
 #: css/tooltip.md
-#, no-c-format
+#, no-c-format, pantoken-verbatim
 msgctxt "docs.api:prose"
 msgid "WCAG 2.2 1.4.11"
 msgstr "WCAG 2.2 1.4.11"
@@ -2963,7 +2963,7 @@ msgstr "focus-indicator-contrast"
 
 #: css/button.md css/form-field.md css/link.md css/menu.md css/modal.md
 #: css/tabs.md css/toggle-details.md css/tooltip.md
-#, no-c-format
+#, no-c-format, pantoken-verbatim
 msgctxt "docs.api:prose"
 msgid "WCAG 2.2 1.4.11, 2.4.13"
 msgstr "WCAG 2.2 1.4.11, 2.4.13"
@@ -4198,7 +4198,7 @@ msgstr "**Source:** [form-field.css](https://github.com/thedannywahl/pantoken/bl
 
 #: css/form-field.md css/link.md css/modal.md css/simple-select.md
 #: css/toggle-details.md
-#, no-c-format
+#, no-c-format, pantoken-verbatim
 msgctxt "docs.api:prose"
 msgid "-canvas-rce\n"
 msgstr "-canvas-rce\n"
@@ -4294,7 +4294,7 @@ msgid "error-associated-on-invalid"
 msgstr "error-associated-on-invalid"
 
 #: css/form-field.md
-#, no-c-format
+#, no-c-format, pantoken-verbatim
 msgctxt "docs.api:prose"
 msgid "WCAG 2.2 3.3.1, 4.1.3"
 msgstr "WCAG 2.2 3.3.1, 4.1.3"
@@ -4306,7 +4306,7 @@ msgid "label-associated"
 msgstr "label-associated"
 
 #: css/form-field.md
-#, no-c-format
+#, no-c-format, pantoken-verbatim
 msgctxt "docs.api:prose"
 msgid "WCAG 2.2 1.3.1, 3.3.2, 4.1.2"
 msgstr "WCAG 2.2 1.3.1, 3.3.2, 4.1.2"
@@ -6259,7 +6259,7 @@ msgstr "aria-valid-attr-value"
 
 #: css/menu.group.md css/menu.item.md css/menu.md css/menu.separator.md
 #: css/tabs.md css/toggle-details.md
-#, no-c-format
+#, no-c-format, pantoken-verbatim
 msgctxt "docs.api:prose"
 msgid "WCAG 2.2 4.1.2"
 msgstr "WCAG 2.2 4.1.2"
@@ -6380,7 +6380,7 @@ msgid "escape-closes-and-returns-focus"
 msgstr "escape-closes-and-returns-focus"
 
 #: css/menu.md
-#, no-c-format
+#, no-c-format, pantoken-verbatim
 msgctxt "docs.api:prose"
 msgid "WCAG 2.2 2.1.1, 2.4.3"
 msgstr "WCAG 2.2 2.1.1, 2.4.3"
@@ -6554,7 +6554,7 @@ msgid "Close"
 msgstr "Tutup"
 
 #: css/modal.md css/toggle-details.md
-#, no-c-format
+#, no-c-format, pantoken-verbatim
 msgctxt "docs.api:prose"
 msgid "-docs\n"
 msgstr "-docs\n"
@@ -6662,7 +6662,7 @@ msgid "focus-moves-into-dialog"
 msgstr "focus-moves-into-dialog"
 
 #: css/modal.md
-#, no-c-format
+#, no-c-format, pantoken-verbatim
 msgctxt "docs.api:prose"
 msgid "WCAG 2.2 2.4.3"
 msgstr "WCAG 2.2 2.4.3"
@@ -9966,7 +9966,7 @@ msgid "enter-toggles"
 msgstr "enter-toggles"
 
 #: css/toggle-details.md
-#, no-c-format
+#, no-c-format, pantoken-verbatim
 msgctxt "docs.api:prose"
 msgid "WCAG 2.2 2.1.1, 4.1.2"
 msgstr "WCAG 2.2 2.1.1, 4.1.2"
@@ -10098,7 +10098,7 @@ msgid "appears-on-focus"
 msgstr "appears-on-focus"
 
 #: css/tooltip.md
-#, no-c-format
+#, no-c-format, pantoken-verbatim
 msgctxt "docs.api:prose"
 msgid "WCAG 2.2 1.4.13"
 msgstr "WCAG 2.2 1.4.13"
@@ -20091,10 +20091,10 @@ msgid "Logos under `product` (all when omitted) whose name, product, or variant 
 msgstr "Logo di bawah `product` (semua saat dihilangkan) yang nama, produk, atau variannya cocok dengan `query`."
 
 #: renderers/tinymce/src/functions/filterLogos.md
-#, fuzzy, no-c-format
+#, no-c-format, pantoken-verbatim
 msgctxt "docs.api:prose"
 msgid "readonly [`LogoMeta`](../interfaces/LogoMeta.md)[]"
-msgstr "hanya baca [`Token`](../interfaces/Token.md)[]"
+msgstr "readonly [`LogoMeta`](../interfaces/LogoMeta.md)[]"
 
 #: renderers/tinymce/src/functions/findEntry.md
 #, no-c-format

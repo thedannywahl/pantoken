@@ -264,7 +264,7 @@ function fixture(
   return { directory, trees, commands };
 }
 
-test("serializes baseline and candidate builds so generators cannot race dependency output", async () => {
+test("serializes builds and generates the docs theme curve before maintenance checks", async () => {
   const state = fixture([{ ...upgrade("react"), currentValue: "^19.0.0", newValue: "^20.0.0" }]);
   await prepareMaintenance("a".repeat(40), "b".repeat(40));
   const builds = state.commands.filter(
@@ -273,6 +273,20 @@ test("serializes baseline and candidate builds so generators cannot race depende
   expect(builds.length).toBeGreaterThanOrEqual(3);
   for (const build of builds)
     expect(build.args).toEqual(["run", "-r", "--concurrency-limit", "1", "build"]);
+  const checks = state.commands.filter(
+    (command) =>
+      command.executable === "vp" &&
+      (command.args[0] === "check" || (command.args[0] === "run" && command.args[1] === "ready")),
+  );
+  expect(checks.length).toBeGreaterThanOrEqual(2);
+  for (const check of checks) {
+    const index = state.commands.indexOf(check);
+    expect(state.commands[index - 1]).toMatchObject({
+      executable: process.execPath,
+      args: ["docs/scripts/site-themes.ts"],
+      cwd: check.cwd,
+    });
+  }
 });
 
 test.each([0, 1, 2])(

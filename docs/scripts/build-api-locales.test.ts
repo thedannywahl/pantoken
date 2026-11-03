@@ -260,17 +260,22 @@ test("locale-specific identity prose is limited to locales whose translation is 
       "Dr. Nguyen Van Thoc",
     ]),
   );
-  expect(LOCALE_VERBATIM_API_PROSE.get("se")).toEqual([
-    " Syllabus.pdf",
-    "Miguel Sanchez",
-    "Miguel",
-    "Sanchez",
-    "Dr. Nguyen Van Thoc",
-  ]);
+  expect(LOCALE_VERBATIM_API_PROSE.get("se")).toEqual(
+    expect.arrayContaining([
+      " Syllabus.pdf",
+      ' ("Amira Patel"); ',
+      ' ("Lee Harper"); ',
+      "Canvas:",
+      "Miguel Sanchez",
+      "Miguel",
+      "Sanchez",
+      "Dr. Nguyen Van Thoc",
+    ]),
+  );
   expect(LOCALE_VERBATIM_API_PROSE.get("de")).toContain("Dr. Nguyen Van Thoc");
   expect(LOCALE_VERBATIM_API_PROSE.get("fi")).toContain("Miguel");
   expect(LOCALE_VERBATIM_API_PROSE.get("fi")).not.toContain("Dr. Nguyen Van Thoc");
-  expect(LOCALE_VERBATIM_API_PROSE.get("ja")).toBeUndefined();
+  expect(LOCALE_VERBATIM_API_PROSE.get("ja")).toEqual([' ("Amira Patel"); ', ' ("Lee Harper"); ']);
 });
 
 test.each([
@@ -297,6 +302,95 @@ test.each([
 
   expect(approvedLocales).toEqual([...locales].sort());
 });
+
+test.each([
+  [
+    ' ("Amira Patel"); ',
+    [
+      "ar",
+      "ca",
+      "da",
+      "de",
+      "el",
+      "fi",
+      "fr",
+      "ga",
+      "he",
+      "hi",
+      "ht",
+      "hy",
+      "id",
+      "is",
+      "it",
+      "ja",
+      "ko",
+      "mi",
+      "ms",
+      "nl",
+      "nn",
+      "pt",
+      "pt-BR",
+      "se",
+      "tr",
+    ],
+  ],
+  [
+    ' ("Lee Harper"); ',
+    [
+      "ar",
+      "ca",
+      "da",
+      "de",
+      "el",
+      "fi",
+      "fr",
+      "ga",
+      "he",
+      "hi",
+      "ht",
+      "hy",
+      "id",
+      "is",
+      "it",
+      "ja",
+      "ko",
+      "mi",
+      "ms",
+      "nl",
+      "nn",
+      "pt",
+      "pt-BR",
+      "se",
+      "tr",
+    ],
+  ],
+  ["@alias Alias for `--value`.", ["nb"]],
+  ["Action", ["fr", "fr-CA"]],
+  ["Actions", ["fr", "fr-CA"]],
+  ["Reading.pdf", ["ca", "ga", "is", "it", "mi", "ms", "tr"]],
+  ["Rubric.docx", ["ca", "ga", "is", "it", "mi", "ms", "tr"]],
+  ["Slides.pptx", ["ca", "ga", "is", "it", "mi", "ms", "pt-BR", "tr"]],
+  ["Syllabus.pdf", ["is", "it", "mi", "ms"]],
+  ["Canvas:", ["ca", "da", "fi", "ht", "is", "it", "mi", "nb", "nl", "nn", "pt", "pt-BR", "se"]],
+  ["Components", ["ca"]],
+  ["Details", ["nl"]],
+  ["OK", ["da", "nb"]],
+  ["Orange", ["de", "fr", "fr-CA"]],
+  ["Score", ["nl"]],
+] as const)(
+  "approves diagnostic source %s only in its matching locales",
+  async (source, locales) => {
+    const { LOCALE_VERBATIM_API_PROSE } =
+      await vi.importActual<typeof import("./refresh-api-pot.ts")>("./refresh-api-pot.ts");
+
+    const approvedLocales = [...LOCALE_VERBATIM_API_PROSE]
+      .filter(([, sources]) => sources.includes(source))
+      .map(([locale]) => locale)
+      .sort();
+
+    expect(approvedLocales).toEqual([...locales].sort());
+  },
+);
 
 test("partial mode translates only allowlisted locale API markdown", async () => {
   process.env.DOCS_CHANGED_PAGES_FILE = PAGES_FILE;
