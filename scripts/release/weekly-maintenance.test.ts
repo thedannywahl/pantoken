@@ -123,6 +123,26 @@ test("aborts infrastructure failures instead of rejecting every dependency", asy
   expect(validate).toHaveBeenCalledTimes(1);
 });
 
+test("batch integration validates passing sets once and bisects interaction failures atomically", async () => {
+  const validate = vi.fn().mockResolvedValue(undefined);
+  expect(
+    (await partitionMaintenance([upgrade("a"), upgrade("b")], validate, true)).accepted,
+  ).toHaveLength(2);
+  expect(validate).toHaveBeenCalledTimes(1);
+  const calls: string[][] = [];
+  const result = await partitionMaintenance(
+    [upgrade("a"), upgrade("react"), upgrade("react-dom")],
+    async (candidates) => {
+      calls.push(candidates.map((candidate) => candidate.depName));
+      if (candidates.length > 1) throw new Error("AssertionError: interaction");
+    },
+    true,
+  );
+  expect(calls).toEqual([["a", "react", "react-dom"], ["a"], ["a", "react", "react-dom"]]);
+  expect(result.accepted.map((candidate) => candidate.depName)).toEqual(["a"]);
+  expect(result.failures.map((failure) => failure.package)).toEqual(["react", "react-dom"]);
+});
+
 test("empty and all-failed batches never invent passing evidence; retries have stable IDs", async () => {
   expect(await partitionMaintenance([], async () => {})).toEqual({ accepted: [], failures: [] });
   const validate = async () => {

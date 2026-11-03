@@ -333,10 +333,12 @@ function adapterCheck(
 export async function partitionMaintenance(
   upgrades: readonly MaintenanceUpgrade[],
   validate: (accepted: MaintenanceUpgrade[]) => Promise<void>,
+  batch = false,
 ): Promise<{ accepted: MaintenanceUpgrade[]; failures: MaintenanceFailure[] }> {
   const accepted: MaintenanceUpgrade[] = [];
   const failures: MaintenanceFailure[] = [];
-  for (const group of groupMaintenanceUpgrades(upgrades)) {
+  const visit = async (groups: MaintenanceUpgrade[][]): Promise<void> => {
+    const group = groups.flat();
     try {
       await validate([...accepted, ...group]);
       accepted.push(...group);
@@ -348,6 +350,12 @@ export async function partitionMaintenance(
         error: error instanceof Error ? error.message : String(error),
       });
       if (error instanceof Error && error.name === "MaintenanceInfrastructureError") throw error;
+      if (batch && groups.length > 1) {
+        const middle = Math.ceil(groups.length / 2);
+        await visit(groups.slice(0, middle));
+        await visit(groups.slice(middle));
+        return;
+      }
       for (const upgrade of group)
         failures.push({
           id: maintenanceId(upgrade.depName, upgrade.newValue),
@@ -357,7 +365,10 @@ export async function partitionMaintenance(
           upgrades: group,
         });
     }
-  }
+  };
+  const groups = groupMaintenanceUpgrades(upgrades);
+  if (batch) await visit(groups);
+  else for (const group of groups) await visit([group]);
   return { accepted, failures };
 }
 
@@ -659,9 +670,10 @@ export async function prepareMaintenance(
         worktrees.splice(worktrees.indexOf(directory), 1);
       }
     };
-    const partition = options.mode
-      ? { accepted: selected, failures: [] }
-      : await partitionMaintenance(selected, validate);
+    const partition =
+      options.mode === "candidate"
+        ? { accepted: selected, failures: [] }
+        : await partitionMaintenance(selected, validate, options.mode === "integration");
     await validate(partition.accepted, options.mode !== "candidate");
     if (!prepared) throw new Error("Maintenance preparation did not produce evidence");
     return {

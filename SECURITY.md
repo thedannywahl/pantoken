@@ -141,6 +141,14 @@ know what's in place:
   numeric stable version updates; package-manager names, failure policy, package versions,
   scripts, and exports remain protected. Failed candidates remain in a separate, non-merging draft with individual
   issues. Tests, not release-feed data, establish compatibility claims.
+- **Resumable maintenance evidence.** Validation groups carry the immutable base and proposal SHAs,
+  trusted validator identity, coupled-group identity, and run attempt. Integration rejects missing,
+  stale, duplicate, malformed, symlinked, or oversized result files and requires the newest attempt
+  to be terminal. Candidate artifacts supply outcomes, never source files. Integration rebuilds
+  accepted candidates and runs the full release gates before the existing trusted publisher runs.
+  Command timings and failure diagnostics persist outside disposable worktrees; subprocesses do
+  not inherit the diagnostic output path. Transport, resource, and subprocess-timeout failures abort
+  validation rather than becoming incompatibility evidence. Cross-run reuse is not enabled.
 - **Maintenance file and request integrity.** Output hashing and changed-file collection inspect
   and read the same no-follow file descriptor, rejecting symlinks and non-regular files. This is
   not filesystem isolation against ancestor-directory changes or in-place writes. The publisher
