@@ -1,0 +1,96 @@
+name: Maintenance validation stage
+
+on:
+  workflow_call:
+    inputs:
+      stage:
+        type: string
+        required: true
+      base:
+        type: string
+        required: true
+      proposal:
+        type: string
+        required: true
+      group:
+        type: string
+        default: ""
+    outputs:
+      artifact:
+        description: Validated integration handoff artifact name
+        value: ${{ jobs.validate.outputs.artifact }}
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    name: ${{ inputs.stage }} ${{ inputs.group }}
+    runs-on: ubuntu-latest
+    timeout-minutes: ${{ inputs.stage == 'integrate' && 200 || 90 }}
+    env:
+      PANTOKEN_MAINTENANCE_VALIDATION: "1"
+    outputs:
+      artifact: ${{ format('maintenance-result-{0}', github.run_attempt) }}
+    steps:
+      - name: Checkout immutable trusted base
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
+        with:
+          ref: ${{ inputs.base }}
+          persist-credentials: false
+          fetch-depth: 0
+      - name: Fetch immutable proposal
+        env:
+          GH_TOKEN: ${{ github.token }}
+          PROPOSAL_SHA: ${{ inputs.proposal }}
+        run: |
+          auth=$(printf 'x-access-token:%s' "$GH_TOKEN" | base64 -w0)
+          git -c "http.https://github.com/.extraheader=AUTHORIZATION: basic $auth" fetch origin "$PROPOSAL_SHA"
+      - name: Set up Node.js
+        uses: actions/setup-node@820762786026740c76f36085b0efc47a31fe5020 # v7
+        with:
+          node-version: "26"
+      - name: Set up Vite+
+        uses: voidzero-dev/setup-vp@3754dd7dbdb32bd8f6d28b6043de13ad3a75f21f # v1.21.1
+        with:
+          run-install: true
+      - name: Install host-check tools
+        run: sudo apt-get update && sudo apt-get install --yes gettext php-cli php-xml php-mbstring composer ruby ruby-dev
+      - name: Build trusted automation dependencies
+        run: vp run @pantoken/model#build && vp run @pantoken/plugin-kit#build && vp run @pantoken/utils#build
+      - name: Download same-run candidate outcomes
+        if: inputs.stage == 'integrate'
+        uses: actions/download-artifact@9000827ccba6bdab643e8b6fd33ac0654aef8333 # v8
+        with:
+          pattern: maintenance-candidate-*
+          path: ${{ runner.temp }}/maintenance/candidates
+          merge-multiple: false
+      - name: Validate immutable maintenance stage
+        timeout-minutes: ${{ inputs.stage == 'integrate' && 175 || 70 }}
+        env:
+          STAGE: ${{ inputs.stage }}
+          BASE_SHA: ${{ inputs.base }}
+          PROPOSAL_SHA: ${{ inputs.proposal }}
+          GROUP_ID: ${{ inputs.group }}
+          MAINTENANCE_PROGRESS_FILE: ${{ runner.temp }}/maintenance/progress.jsonl
+          NODE_OPTIONS: --max-old-space-size=8192
+        run: node scripts/release/maintenance-validation.ts "$STAGE" "$BASE_SHA" "$PROPOSAL_SHA" "$RUNNER_TEMP/maintenance" "$GROUP_ID"
+      - name: Upload outcome and progress even after step failure
+        if: always()
+        uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7
+        with:
+          name: ${{ inputs.stage == 'candidate' && format('maintenance-candidate-{0}-{1}', inputs.group, github.run_attempt) || format('maintenance-diagnostics-{0}-{1}', inputs.stage, github.run_attempt) }}
+          path: |
+            ${{ runner.temp }}/maintenance/progress.jsonl
+            ${{ runner.temp }}/maintenance/result.json
+            ${{ runner.temp }}/maintenance/baseline.json
+          if-no-files-found: warn
+          retention-days: 7
+      - name: Upload validated integration handoff
+        if: success() && inputs.stage == 'integrate'
+        uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7
+        with:
+          name: maintenance-result-${{ github.run_attempt }}
+          path: ${{ runner.temp }}/maintenance/maintenance-result.json
+          if-no-files-found: error
+          retention-days: 7

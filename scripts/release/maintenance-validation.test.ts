@@ -3,6 +3,7 @@ import { spawnSync } from "node:child_process";
 import { mkdirSync, mkdtempSync, readFileSync, rmSync, symlinkSync, writeFileSync } from "node:fs";
 import { tmpdir } from "node:os";
 import { join } from "node:path";
+import { parse as parseYaml } from "yaml";
 import {
   collectMaintenanceCandidates,
   maintenanceValidationPlan,
@@ -241,4 +242,80 @@ test("CLI no-change plans avoid proposal reads and fail closed on git errors", a
   await expect(runMaintenanceValidation(["plan", base, proposal, directory])).rejects.toThrow(
     "immutable",
   );
+});
+
+test("workflow shards unprivileged groups and preserves diagnostics and exact retry handoffs", () => {
+  const workflow = parseYaml(
+    readFileSync(join(import.meta.dirname, "../../.github/workflows/renovate.yml"), "utf8"),
+  ) as {
+    jobs: {
+      candidates: { uses: string; strategy: { "max-parallel": number; "fail-fast": boolean } };
+      baseline: { needs: string[] };
+      integrate: { needs: string[] };
+      publish: {
+        needs: string[];
+        steps: Array<{
+          name: string;
+          with?: Record<string, unknown>;
+          env?: Record<string, string>;
+        }>;
+      };
+    };
+  };
+  expect(workflow.jobs.candidates.strategy).toMatchObject({
+    "max-parallel": 4,
+    "fail-fast": false,
+  });
+  expect(workflow.jobs.candidates.uses).toBe("./.github/workflows/maintenance-validation.yml");
+  expect(workflow.jobs.baseline.needs).toContain("plan");
+  expect(workflow.jobs.integrate.needs).toContain("candidates");
+  expect(workflow.jobs.publish.needs).toEqual(["propose", "integrate"]);
+  expect(
+    workflow.jobs.publish.steps.find(
+      (step) => step.name === "Download this run's validated handoff",
+    )?.with?.name,
+  ).toBe("${{ needs.integrate.outputs.artifact }}");
+  const source = readFileSync(
+    join(import.meta.dirname, "../../.github/workflows/maintenance-validation.yml"),
+    "utf8",
+  );
+  expect(source).not.toContain("RELEASE_PAT");
+  const stage = parseYaml(source) as {
+    permissions: Record<string, string>;
+    jobs: {
+      validate: {
+        "timeout-minutes": string;
+        steps: Array<{
+          name: string;
+          if?: string;
+          "timeout-minutes"?: string;
+          with?: Record<string, unknown>;
+        }>;
+      };
+    };
+  };
+  expect(stage.permissions).toEqual({ contents: "read" });
+  const steps = stage.jobs.validate.steps;
+  expect(
+    steps.find((step) => step.name === "Download same-run candidate outcomes")?.with,
+  ).toMatchObject({ pattern: "maintenance-candidate-*", "merge-multiple": false });
+  expect(
+    steps.find((step) => step.name === "Upload outcome and progress even after step failure")?.if,
+  ).toBe("always()");
+  expect(
+    steps.find((step) => step.name === "Validate immutable maintenance stage")?.["timeout-minutes"],
+  ).toBe("${{ inputs.stage == 'integrate' && 175 || 70 }}");
+  expect(stage.jobs.validate["timeout-minutes"]).toBe(
+    "${{ inputs.stage == 'integrate' && 200 || 90 }}",
+  );
+});
+
+test("maintenance omits optional bundle uploads while ordinary CI keeps them enabled", async () => {
+  vi.stubEnv("CI", "true");
+  vi.stubEnv("PANTOKEN_MAINTENANCE_VALIDATION", "1");
+  vi.resetModules();
+  expect((await import("../../vite.config.base.ts")).default.pack.plugins).toHaveLength(0);
+  vi.stubEnv("PANTOKEN_MAINTENANCE_VALIDATION", "");
+  vi.resetModules();
+  expect((await import("../../vite.config.base.ts")).default.pack.plugins).toHaveLength(1);
 });

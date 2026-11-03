@@ -136,6 +136,7 @@ function command(
     );
     if (
       result.error ||
+      result.signal ||
       /ENOSPC|ENOMEM|ECONNRESET|ETIMEDOUT|EAI_AGAIN|ENOTFOUND|ERR_PNPM_FETCH|HTTP (?:429|5\d\d)/u.test(
         failure.message,
       )

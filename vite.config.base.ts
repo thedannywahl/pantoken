@@ -38,7 +38,7 @@ const baseConfig = {
   pack: {
     dts: true,
     // Cast avoids isolatedDeclarations needing to name unplugin's Plugin type here.
-    plugins: (process.env.CI === "true"
+    plugins: (process.env.CI === "true" && process.env.PANTOKEN_MAINTENANCE_VALIDATION !== "1"
       ? [
           codecovVitePlugin({
             enableBundleAnalysis: true,

@@ -45,10 +45,14 @@ jobs:
           echo "base=$base" >> "$GITHUB_OUTPUT"
           echo "proposal=${proposal:-$base}" >> "$GITHUB_OUTPUT"
 
-  prepare:
+  plan:
     needs: propose
     runs-on: ubuntu-latest
-    timeout-minutes: 330
+    timeout-minutes: 10
+    env:
+      PANTOKEN_MAINTENANCE_VALIDATION: "1"
+    outputs:
+      matrix: ${{ steps.plan.outputs.matrix }}
     steps:
       - name: Checkout immutable trusted base
         uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
@@ -71,26 +75,53 @@ jobs:
         uses: voidzero-dev/setup-vp@3754dd7dbdb32bd8f6d28b6043de13ad3a75f21f # v1.21.1
         with:
           run-install: true
-      - name: Install host-check tools
-        run: sudo apt-get update && sudo apt-get install --yes gettext php-cli php-xml php-mbstring composer ruby ruby-dev
       - name: Build trusted automation dependencies
         run: vp run @pantoken/model#build && vp run @pantoken/plugin-kit#build && vp run @pantoken/utils#build
-      - name: Prepare passing changes and isolate failures
+      - name: Plan immutable coupled groups
+        id: plan
         env:
           BASE_SHA: ${{ needs.propose.outputs.base }}
           PROPOSAL_SHA: ${{ needs.propose.outputs.proposal }}
-          NODE_OPTIONS: --max-old-space-size=8192
-        run: node scripts/release/weekly-maintenance.ts prepare "$BASE_SHA" "$PROPOSAL_SHA" "$RUNNER_TEMP/maintenance-result.json"
-      - name: Upload validated handoff
+        run: node scripts/release/maintenance-validation.ts plan "$BASE_SHA" "$PROPOSAL_SHA" "$RUNNER_TEMP/maintenance-plan"
+      - name: Upload immutable plan
         uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7
         with:
-          name: maintenance-result
-          path: ${{ runner.temp }}/maintenance-result.json
+          name: maintenance-plan-${{ github.run_attempt }}
+          path: ${{ runner.temp }}/maintenance-plan/plan.json
           if-no-files-found: error
           retention-days: 7
 
+  baseline:
+    needs: [propose, plan]
+    uses: ./.github/workflows/maintenance-validation.yml
+    with:
+      stage: baseline
+      base: ${{ needs.propose.outputs.base }}
+      proposal: ${{ needs.propose.outputs.proposal }}
+
+  candidates:
+    needs: [propose, plan, baseline]
+    strategy:
+      fail-fast: false
+      max-parallel: 4
+      matrix: ${{ fromJSON(needs.plan.outputs.matrix) }}
+    uses: ./.github/workflows/maintenance-validation.yml
+    with:
+      stage: candidate
+      group: ${{ matrix.id }}
+      base: ${{ needs.propose.outputs.base }}
+      proposal: ${{ needs.propose.outputs.proposal }}
+
+  integrate:
+    needs: [propose, candidates]
+    uses: ./.github/workflows/maintenance-validation.yml
+    with:
+      stage: integrate
+      base: ${{ needs.propose.outputs.base }}
+      proposal: ${{ needs.propose.outputs.proposal }}
+
   publish:
-    needs: [propose, prepare]
+    needs: [propose, integrate]
     runs-on: ubuntu-latest
     timeout-minutes: 20
     steps:
@@ -106,7 +137,7 @@ jobs:
       - name: Download this run's validated handoff
         uses: actions/download-artifact@9000827ccba6bdab643e8b6fd33ac0654aef8333 # v8
         with:
-          name: maintenance-result
+          name: ${{ needs.integrate.outputs.artifact }}
           path: ${{ runner.temp }}/maintenance-handoff
       - name: Publish passing PR and failed-updates draft
         env:

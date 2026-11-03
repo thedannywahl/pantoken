@@ -251,6 +251,41 @@ prepares frozen upstream deprecations, blesses the baseline, regenerates compati
 creates deterministic package Changesets. The final combined tree passes `vp run ready` and
 `vp run check:publish`; final-head PR CI must pass again before GitHub auto-merges it.
 
+The workflow plans immutable coupled groups, runs a clean-baseline preflight, and validates groups
+in a matrix with `max-parallel: 4` and `fail-fast: false`. Each job has its own disposable worktrees
+and no repository-write credentials. A rejected update is recorded as an outcome; transport,
+resource, and subprocess-timeout errors fail the job instead. The baseline preflight catches
+shared build/check failures before the matrix spends time classifying dependency updates.
+
+Integration accepts only complete same-run outcomes matching the base, proposal, validator, group,
+and attempt. The newest attempt wins; duplicate attempts, missing groups, and incomplete or
+infrastructure-failed outcomes block publication. It first validates the combined passing set and
+bisects failures along coupled-group boundaries, then runs the full release gates once on the final
+accepted set. Full-gate failures block publication rather than silently dropping checks. The existing
+publisher still rejects an advanced `main` and requires final-head PR CI before auto-merge.
+
+### Retry maintenance validation
+
+After deploying this workflow, start a fresh run on `main`; rerunning an older run still uses its
+older workflow definition.
+
+Use **Re-run failed jobs** on the existing Actions run to retry infrastructure failures or a failed
+integration. Completed matrix groups retain their immutable artifacts; only failed jobs need to
+repeat. Artifact names include the group and run attempt, so retries cannot overwrite earlier
+outcomes. Cross-run reuse is intentionally disabled. If `main` advanced or seven-day artifacts
+expired, start a new workflow run to validate the new base; don't relabel old evidence as current.
+
+Each validation job uploads command timings, immediate failure diagnostics, and any terminal group
+outcome even after a step failure. A group starts with a `running` record; cancellation is not a
+pass. Progress upload is best-effort if the runner itself disappears. Candidate validation has a
+70-minute step budget in a 90-minute job; integration has 175 minutes in a 200-minute job, leaving
+time for artifact uploads. Look at `maintenance-candidate-*` and `maintenance-diagnostics-*` when
+diagnosing a timeout. No partial candidate files become a publication handoff.
+
+Maintenance jobs set `PANTOKEN_MAINTENANCE_VALIDATION=1` to omit optional Codecov bundle-analysis
+uploads from disposable builds. This avoids unauthenticated upload retries without skipping test
+coverage, the full release gates, or normal PR CI bundle analysis.
+
 Baseline and candidate recursive builds use `--concurrency-limit 1`, matching normal generation.
 This prevents generators from importing workspace dependency output while another build cleans it.
 
