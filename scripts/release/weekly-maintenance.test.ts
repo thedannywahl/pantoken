@@ -233,6 +233,17 @@ function fixture(
   return { directory, trees, commands };
 }
 
+test("serializes baseline and candidate builds so generators cannot race dependency output", async () => {
+  const state = fixture([{ ...upgrade("react"), currentValue: "^19.0.0", newValue: "^20.0.0" }]);
+  await prepareMaintenance("a".repeat(40), "b".repeat(40));
+  const builds = state.commands.filter(
+    (command) => command.executable === "vp" && command.args.includes("build"),
+  );
+  expect(builds.length).toBeGreaterThanOrEqual(3);
+  for (const build of builds)
+    expect(build.args).toEqual(["run", "-r", "--concurrency-limit", "1", "build"]);
+});
+
 test("hashes the opened file even when its pathname is replaced, and closes its descriptor", async () => {
   fixture();
   const fs = await vi.importActual<typeof import("node:fs")>("node:fs");
