@@ -1,6 +1,7 @@
 import { spawnSync } from "node:child_process";
 import { createHash } from "node:crypto";
 import {
+  appendFileSync,
   closeSync,
   constants,
   fstatSync,
@@ -81,6 +82,22 @@ const ledgerFile = "formats/tokens/deprecations.json";
 const knownIssuesFile = "formats/tokens/known-syntax-issues.json";
 const themes: Theme[] = ["rebrand", "canvas", "canvasHighContrast"];
 
+/** Select a bounded candidate check or final integration without repeating partition work. */
+export interface MaintenancePreparationOptions {
+  mode?: "candidate" | "integration";
+  candidates?: readonly MaintenanceUpgrade[];
+}
+
+function progress(event: Record<string, unknown>): void {
+  const line = `${JSON.stringify({ time: new Date().toISOString(), ...event })}\n`;
+  console.log(line.trimEnd());
+  const file = process.env.MAINTENANCE_PROGRESS_FILE;
+  if (file) {
+    mkdirSync(dirname(file), { recursive: true });
+    appendFileSync(file, line);
+  }
+}
+
 function readJson<T>(directory: string, file: string): T {
   return JSON.parse(readFileSync(join(directory, file), "utf8")) as T;
 }
@@ -89,6 +106,7 @@ function cleanEnvironment(): NodeJS.ProcessEnv {
   return Object.fromEntries(
     Object.entries(process.env).filter(
       ([name]) =>
+        name !== "MAINTENANCE_PROGRESS_FILE" &&
         !/(?:TOKEN|SECRET|PASSWORD|CREDENTIAL|AUTH|PRIVATE_KEY|(?:^|_)PAT(?:_|$))/iu.test(name) &&
         !/^(?:GITHUB_|GH_|ACTIONS_|AWS_|AZURE_|GOOGLE_|GIT_CONFIG|NPM_CONFIG_USERCONFIG)/u.test(
           name,
@@ -103,6 +121,8 @@ function command(
   args: string[],
   timeout = 2_400_000,
 ): string {
+  const started = Date.now();
+  progress({ event: "command", state: "started", executable, args });
   const result = spawnSync(executable, args, {
     cwd: directory,
     env: cleanEnvironment(),
@@ -111,10 +131,33 @@ function command(
     maxBuffer: 64 * 1024 * 1024,
   });
   if (result.error || result.status !== 0) {
-    throw new Error(
+    const failure = new Error(
       `${executable} ${args.join(" ")} failed: ${result.error?.message ?? `${result.stderr.slice(-8_000)}\n${result.stdout.slice(-4_000)}\nexit ${result.status}`}`,
     );
+    if (
+      result.error ||
+      /ENOSPC|ENOMEM|ECONNRESET|ETIMEDOUT|EAI_AGAIN|ENOTFOUND|ERR_PNPM_FETCH|HTTP (?:429|5\d\d)/u.test(
+        failure.message,
+      )
+    )
+      failure.name = "MaintenanceInfrastructureError";
+    progress({
+      event: "command",
+      state: "failed",
+      executable,
+      args,
+      durationMs: Date.now() - started,
+      error: failure.message,
+    });
+    throw failure;
   }
+  progress({
+    event: "command",
+    state: "passed",
+    executable,
+    args,
+    durationMs: Date.now() - started,
+  });
   return result.stdout;
 }
 
@@ -298,6 +341,13 @@ export async function partitionMaintenance(
       await validate([...accepted, ...group]);
       accepted.push(...group);
     } catch (error) {
+      progress({
+        event: "candidate",
+        state: "failed",
+        upgrades: group,
+        error: error instanceof Error ? error.message : String(error),
+      });
+      if (error instanceof Error && error.name === "MaintenanceInfrastructureError") throw error;
       for (const upgrade of group)
         failures.push({
           id: maintenanceId(upgrade.depName, upgrade.newValue),
@@ -315,6 +365,7 @@ export async function partitionMaintenance(
 export async function prepareMaintenance(
   base: string,
   proposal: string,
+  options: MaintenancePreparationOptions = {},
 ): Promise<MaintenanceResult> {
   if (!/^[a-f0-9]{40}$/u.test(base) || !/^[a-f0-9]{40}$/u.test(proposal))
     throw new Error("Maintenance requires immutable base/proposal SHAs");
@@ -324,6 +375,10 @@ export async function prepareMaintenance(
       : parseMaintenanceUpgrades(
           JSON.parse(command(root, "git", ["show", `${proposal}:${maintenanceProposalPath}`])),
         );
+  const selected = options.candidates ? parseMaintenanceUpgrades(options.candidates) : upgrades;
+  for (const candidate of selected)
+    if (!upgrades.some((upgrade) => JSON.stringify(upgrade) === JSON.stringify(candidate)))
+      throw new Error("Unproposed maintenance candidate");
   if (base !== proposal) {
     const changed = command(root, "git", ["diff", "--name-only", `${base}...${proposal}`])
       .trim()
@@ -370,6 +425,7 @@ export async function prepareMaintenance(
     const originalRegistry = readJson<Record<string, TargetSupport>>(baseline, registryFile);
     const histories = new Map<string, string[] | Error>();
     for (const [name, support] of Object.entries(originalRegistry)) {
+      if (options.mode === "candidate") break;
       if (support.status !== "verified") continue;
       try {
         const history = await targetReleaseHistory(name);
@@ -603,8 +659,10 @@ export async function prepareMaintenance(
         worktrees.splice(worktrees.indexOf(directory), 1);
       }
     };
-    const partition = await partitionMaintenance(upgrades, validate);
-    await validate(partition.accepted, true);
+    const partition = options.mode
+      ? { accepted: selected, failures: [] }
+      : await partitionMaintenance(selected, validate);
+    await validate(partition.accepted, options.mode !== "candidate");
     if (!prepared) throw new Error("Maintenance preparation did not produce evidence");
     return {
       base,

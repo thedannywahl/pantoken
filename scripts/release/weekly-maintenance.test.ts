@@ -113,6 +113,16 @@ test("validates combined updates and excludes interaction failures", async () =>
   expect(result.failures[0].package).toBe("b");
 });
 
+test("aborts infrastructure failures instead of rejecting every dependency", async () => {
+  const error = new Error("ENOSPC");
+  error.name = "MaintenanceInfrastructureError";
+  const validate = vi.fn().mockRejectedValue(error);
+  await expect(partitionMaintenance([upgrade("a"), upgrade("b")], validate)).rejects.toThrow(
+    "ENOSPC",
+  );
+  expect(validate).toHaveBeenCalledTimes(1);
+});
+
 test("empty and all-failed batches never invent passing evidence; retries have stable IDs", async () => {
   expect(await partitionMaintenance([], async () => {})).toEqual({ accepted: [], failures: [] });
   const validate = async () => {
@@ -375,6 +385,32 @@ test("applies explicit dependency proposals and revalidates the final combined t
 test("rejects mutable refs before making worktrees or spawning candidate commands", async () => {
   await expect(prepareMaintenance("main", "renovate/proposal")).rejects.toThrow("immutable");
   expect(spawnSync).not.toHaveBeenCalled();
+});
+
+test("candidate mode skips release discovery and final gates while persisting progress", async () => {
+  const candidate = { ...upgrade("react"), currentValue: "^19.0.0", newValue: "^20.0.0" };
+  const state = fixture([candidate]);
+  const file = join(state.directory, "progress.jsonl");
+  vi.stubEnv("MAINTENANCE_PROGRESS_FILE", file);
+  const result = await prepareMaintenance("a".repeat(40), "b".repeat(40), {
+    mode: "candidate",
+    candidates: [candidate],
+  });
+  expect(result.accepted).toEqual([candidate]);
+  expect(targetReleaseHistory).not.toHaveBeenCalled();
+  expect(state.commands.some((command) => command.args.includes("ready"))).toBe(false);
+  expect(readFileSync(file, "utf8")).toContain('"state":"passed"');
+  expect(state.commands.every((command) => !command.env.MAINTENANCE_PROGRESS_FILE)).toBe(true);
+});
+
+test("rejects candidates absent from the immutable proposal", async () => {
+  fixture();
+  await expect(
+    prepareMaintenance("a".repeat(40), "b".repeat(40), {
+      mode: "candidate",
+      candidates: [upgrade("unproposed")],
+    }),
+  ).rejects.toThrow("Unproposed");
 });
 
 test("captures raw metadata without candidate dependencies and rejects malformed input", () => {
