@@ -150,7 +150,9 @@ know what's in place:
   not inherit the diagnostic output path. Transport, resource, and subprocess-timeout failures abort
   validation rather than becoming incompatibility evidence. Cross-run reuse is not enabled.
 - **Maintenance file and request integrity.** Output hashing and changed-file collection inspect
-  and read the same no-follow file descriptor, rejecting symlinks and non-regular files. This is
+  and read the same no-follow file descriptor, rejecting symlinks and non-regular files. Integration
+  applies the same descriptor-based inspection and reading to candidate outcome artifacts and closes
+  descriptors even when size validation or JSON parsing fails. This is
   not filesystem isolation against ancestor-directory changes or in-place writes. The publisher
   resolves artifact paths against immutable GitHub trees and requests content by validated blob
   SHA, never by interpolating artifact paths into URLs. Truncated trees, symlink entries, and HTTP

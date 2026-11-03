@@ -2,9 +2,12 @@ import assert from "node:assert/strict";
 import { spawnSync } from "node:child_process";
 import {
   appendFileSync,
+  closeSync,
+  constants,
+  fstatSync,
   globSync,
-  lstatSync,
   mkdirSync,
+  openSync,
   readFileSync,
   writeFileSync,
 } from "node:fs";
@@ -234,9 +237,17 @@ export async function runMaintenanceValidation(
     assert.ok(files.length > 0 && files.length <= 2048, "Missing or excessive candidate artifacts");
     const results = files.map((file) => {
       const path = join(directory, "candidates", file);
-      const stat = lstatSync(path);
-      assert.ok(stat.isFile() && stat.size <= 2 * 1024 * 1024, "Invalid candidate artifact file");
-      return JSON.parse(readFileSync(path, "utf8")) as unknown;
+      const descriptor = openSync(
+        path,
+        constants.O_RDONLY | constants.O_NOFOLLOW | constants.O_NONBLOCK,
+      );
+      try {
+        const stat = fstatSync(descriptor);
+        assert.ok(stat.isFile() && stat.size <= 2 * 1024 * 1024, "Invalid candidate artifact file");
+        return JSON.parse(readFileSync(descriptor, "utf8")) as unknown;
+      } finally {
+        closeSync(descriptor);
+      }
     });
     const candidates = collectMaintenanceCandidates(plan, results);
     const result = await prepareMaintenance(base, proposal, {

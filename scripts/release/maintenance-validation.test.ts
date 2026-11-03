@@ -1,6 +1,16 @@
 import { afterEach, expect, test, vi } from "vite-plus/test";
 import { spawnSync } from "node:child_process";
-import { mkdirSync, mkdtempSync, readFileSync, rmSync, symlinkSync, writeFileSync } from "node:fs";
+import {
+  closeSync,
+  fstatSync,
+  mkdirSync,
+  mkdtempSync,
+  openSync,
+  readFileSync,
+  rmSync,
+  symlinkSync,
+  writeFileSync,
+} from "node:fs";
 import { tmpdir } from "node:os";
 import { join } from "node:path";
 import { parse as parseYaml } from "yaml";
@@ -15,6 +25,10 @@ import { prepareMaintenance } from "./weekly-maintenance.ts";
 
 vi.mock("./weekly-maintenance.ts", () => ({ prepareMaintenance: vi.fn() }));
 vi.mock("node:child_process", () => ({ spawnSync: vi.fn() }));
+vi.mock("node:fs", async (original) => {
+  const fs = await original<typeof import("node:fs")>();
+  return { ...fs, openSync: vi.fn(fs.openSync), closeSync: vi.fn(fs.closeSync) };
+});
 const directories: string[] = [];
 afterEach(() => {
   vi.resetAllMocks();
@@ -225,9 +239,57 @@ test("CLI rejects invalid commands, mutable refs, foreign checkout, and missing 
   writeFileSync(file, JSON.stringify(records()[0]));
   symlinkSync(file, join(target, "result.json"));
   await expect(runMaintenanceValidation(["integrate", base, proposal, directory])).rejects.toThrow(
-    "artifact file",
+    /ELOOP/u,
   );
 });
+
+test("integration reads the inspected descriptor even when its pathname is replaced", async () => {
+  const directory = cliFixture();
+  for (const result of records()) {
+    const target = join(directory, "candidates", result.id);
+    mkdirSync(target, { recursive: true });
+    writeFileSync(join(target, "result.json"), JSON.stringify(result));
+  }
+  const fs = await vi.importActual<typeof import("node:fs")>("node:fs");
+  let descriptor: number | undefined;
+  vi.mocked(openSync).mockImplementation((path, flags, mode) => {
+    const opened = fs.openSync(path, flags, mode);
+    if (descriptor === undefined && String(path).endsWith("/result.json")) {
+      descriptor = opened;
+      rmSync(path);
+      writeFileSync(path, "invalid replacement");
+    }
+    return opened;
+  });
+  await runMaintenanceValidation(["integrate", base, proposal, directory]);
+  expect(prepareMaintenance).toHaveBeenCalledWith(base, proposal, {
+    mode: "integration",
+    candidates: records().flatMap((record) => record.upgrades),
+  });
+  expect(closeSync).toHaveBeenCalledWith(descriptor);
+  expect(() => fstatSync(descriptor!)).toThrow(/EBADF/u);
+});
+
+test.each(["oversized", "invalid-json", "directory"])(
+  "integration closes rejected %s artifact descriptors",
+  async (kind) => {
+    const directory = cliFixture();
+    const target = join(directory, "candidates", "group");
+    mkdirSync(target, { recursive: true });
+    const path = join(target, "result.json");
+    if (kind === "directory") mkdirSync(path);
+    else
+      writeFileSync(path, kind === "oversized" ? "x".repeat(2 * 1024 * 1024 + 1) : "invalid json");
+    await expect(
+      runMaintenanceValidation(["integrate", base, proposal, directory]),
+    ).rejects.toThrow();
+    const descriptor = vi.mocked(openSync).mock.results[0]?.value as number | undefined;
+    if (descriptor !== undefined) {
+      expect(closeSync).toHaveBeenCalledWith(descriptor);
+      expect(() => fstatSync(descriptor)).toThrow(/EBADF/u);
+    }
+  },
+);
 
 test("CLI no-change plans avoid proposal reads and fail closed on git errors", async () => {
   const directory = cliFixture();
