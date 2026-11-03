@@ -1,0 +1,13 @@
+[[PLAN]] these are the job logs from a release/deploy. review the translation logs noting the lines that start with `!` that indicate a potentially untranslated line. however, most of the strings are not untranslated - they are the same in all languages.
+
+---
+
+[[PLAN]] these are the job logs from a release/deploy. review the translation logs noting the lines that start with `!` that indicate a potentially untranslated line. however, most of the strings are not untranslated - they are the same in all languages.
+
+---
+
+we should update the po/pot sources to indicate that hte strings don't need to be re-translated.
+
+---
+
+we should update the po/pot sources to indicate that hte strings don't need to be re-translated.
