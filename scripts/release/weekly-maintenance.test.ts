@@ -43,6 +43,7 @@ vi.mock("./release-candidates.ts", async (original) => ({
 
 const temporary: string[] = [];
 afterEach(() => {
+  vi.restoreAllMocks();
   vi.resetAllMocks();
   vi.unstubAllEnvs();
   for (const directory of temporary.splice(0)) rmSync(directory, { recursive: true, force: true });
@@ -272,6 +273,48 @@ test("serializes baseline and candidate builds so generators cannot race depende
   expect(builds.length).toBeGreaterThanOrEqual(3);
   for (const build of builds)
     expect(build.args).toEqual(["run", "-r", "--concurrency-limit", "1", "build"]);
+});
+
+test.each([0, 1, 2])(
+  "preparation logs identify the phase and all %i proposed updates",
+  async (count) => {
+    const proposals = [
+      { ...upgrade("react"), currentValue: "^19.0.0", newValue: "^20.0.0" },
+      {
+        ...upgrade("react"),
+        packageFile: "renderers/react/package.json",
+        currentValue: "^19.0.0",
+        newValue: "^20.0.0",
+      },
+    ].slice(0, count);
+    fixture(proposals);
+    const log = vi.spyOn(console, "log").mockImplementation(() => {});
+    await prepareMaintenance("a".repeat(40), "b".repeat(40), {
+      mode: "candidate",
+      candidates: proposals,
+    });
+    const phase = count ? "candidate validation" : "baseline validation";
+    const message = log.mock.calls
+      .map(([value]) => String(value))
+      .find((value) => value.startsWith(`Preparing ${phase}:`));
+    expect(message).toContain(`${count} dependency update${count === 1 ? ";" : "s;"}`);
+    for (const proposal of proposals)
+      expect(message).toContain(`react: ^19.0.0 -> ^20.0.0 (${proposal.packageFile})`);
+    if (!count) expect(message).toContain("no dependency changes");
+    expect(log.mock.calls.some(([value]) => String(value).includes('"event":"preparation"'))).toBe(
+      true,
+    );
+  },
+);
+
+test("preparation logs distinguish final integration from candidate validation", async () => {
+  fixture();
+  const log = vi.spyOn(console, "log").mockImplementation(() => {});
+  const base = "a".repeat(40);
+  await prepareMaintenance(base, base);
+  expect(log).toHaveBeenCalledWith(
+    "Preparing final integration: 0 dependency updates; no dependency changes",
+  );
 });
 
 test("hashes the opened file even when its pathname is replaced, and closes its descriptor", async () => {

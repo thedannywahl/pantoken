@@ -452,7 +452,27 @@ export async function prepareMaintenance(
     const validate = async (candidates: MaintenanceUpgrade[], final = false): Promise<void> => {
       const directory = createTree();
       try {
-        console.log(`Preparing ${candidates.length} dependency updates in an isolated worktree`);
+        const stage = final
+          ? "final integration"
+          : options.mode === "integration"
+            ? "integration trial"
+            : candidates.length
+              ? "candidate validation"
+              : "baseline validation";
+        const updates = candidates.map(
+          (candidate) =>
+            `${candidate.depName}: ${candidate.currentValue ?? "unknown"} -> ${candidate.newValue} (${candidate.packageFile})`,
+        );
+        console.log(
+          `Preparing ${stage}: ${candidates.length} dependency update${candidates.length === 1 ? "" : "s"}${updates.length ? `; ${updates.join("; ")}` : "; no dependency changes"}`,
+        );
+        progress({
+          event: "preparation",
+          state: "started",
+          stage,
+          worktree: directory,
+          upgrades: candidates,
+        });
         applyUpgrades(directory, candidates, proposal);
         command(directory, "vp", ["install", "--no-frozen-lockfile"]);
         command(directory, "vp", ["run", "-r", "--concurrency-limit", "1", "build"]);
