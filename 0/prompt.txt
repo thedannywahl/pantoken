@@ -1,0 +1,754 @@
+[Terminal ae8095cc-a024-4853-9935-72fa5c192335 notification: command completed with exit code 130. The terminal has been cleaned up.]
+Terminal output:
+348:        validateMaintenanceManifest(
+8:    // Keep coverage workers within the CPU/memory budget shared with the ready task DAG.
+13:    include: [
+26:    coverage: {
+28:      // text-summary for humans, lcov for Codecov, json for `fallow health --coverage`.
+30:      include: [
+42:        // Build/docs tooling brought under coverage (specific files, not a broad glob, so untested
+44:        // their CRAP reflects real coverage rather than a worst-case zero.
+70:      // Hard coverage floor (grade-A number). Vitest fails the run below these; codecov.yml enforces
+71:      // the same 85% project + patch in CI. Branches sit at 70 (85% branch coverage isn't realistic
+110:    ignorePatterns: ["**/coverage/**", "**/dist/**"],
+166:      "test:coverage": {
+167:        command: "vp test --coverage",
+188:          "vp exec snyk test --all-projects --severity-threshold=medium --exclude=generated,dist",
+209:          "test:coverage",
+274:      // `test:coverage` in `ready:all`. `property:stress` runs only the property test files with
+529:      // tree and is included in the all-surface task below.
+549:      // Generate the local, git-ignored language coverage report. Keep this uncached so the report
+551:      "i18n:coverage": {
+556:      // Keep the local HTML coverage dashboard synchronized while translation jobs update catalogs.
+557:      "i18n:coverage:watch": {
+576:      // Publishing validates the complete English API tree; TypeDoc alone does not include CSS API
+594:      "release:coverage": {
+595:        command: "node scripts/release/check-changeset-coverage.ts",
+pantoken on main ≡ via  24.22.1 
+➜  vp install --frozen-lockfile >/tmp/pantoken-maintenance-install.log 2>&1 && tail -4 /tmp/pantoken-maintenance-install.log
+
+. prepare$ vp config && sh scripts/quality/restore-entire-hooks.sh
+. prepare: Done
+Done in 2.2s using pnpm v11.23.0
+pantoken on main ≡ via  24.22.1 
+➜  vp test scripts/release/maintenance-publication.test.ts
+VITE+ - The Unified Toolchain for the Web
+
+
+ RUN  v5.0.4 /Users/dwahl/Scripts/pantoken
+
+
+ Test Files  1 passed (1)
+      Tests  14 passed (14)
+   Start at  14:46:03
+   Duration  482ms (transform 44%, tests 32%, setup 12%, import 10%, worker 2%)
+
+pantoken on main ≡  ~2 via  24.22.1 
+➜  rg -n 'apply.*Upgrade|devDependencies|dependencies|upgrade.depName|packageFile' scripts/release/weekly-maintenance.ts | head -38 && rg -n 'Maintenance|Renovate|manifest|non-dependency' ASSURANCE.md SECURITY.md && git log -2 --format='%h %s%n%b' -- scripts/release/maintenance-publication.ts && vp check scripts/release/maintenance-publication.ts scripts/release/maintenance-publication.test.ts
+173:    for (const field of ["dependencies", "optionalDependencies"]) {
+174:      const dependencies = manifest[field] as Record<string, string> | undefined;
+175:      if (dependencies)
+177:          Object.entries(dependencies).map(([name, value]) => [
+240:function applyUpgrades(
+247:    const file = safeMaintenancePath(upgrade.packageFile);
+303:          id: maintenanceId(upgrade.depName, upgrade.newValue),
+304:          package: upgrade.depName,
+344:        !upgrades.some((upgrade) => upgrade.packageFile === file)
+388:        applyUpgrades(directory, candidates, proposal);
+414:          (upgrade) => `Update ${upgrade.depName} to ${upgrade.newValue}.`,
+534:              JSON.stringify(previous.manifest.dependencies) !==
+535:                JSON.stringify(output.manifest.dependencies) ||
+536:              JSON.stringify(previous.manifest.devDependencies) !==
+537:                JSON.stringify(output.manifest.devDependencies))
+545:              JSON.stringify(old.manifest.dependencies) !==
+546:                JSON.stringify(output.manifest.dependencies) ||
+SECURITY.md
+131:- **Install delay.** The pnpm workspace sets `minimumReleaseAge`, and Renovate a matching 5-day
+134:- **Pinned actions.** CI workflows pin third-party GitHub Actions to commit SHAs, and Renovate keeps
+136:- **Test-gated weekly maintenance.** Monday Renovate proposals include major updates and the
+139:  base/proposal refs, allowed paths, manifest invariants, and protected CI/Changeset checks before
+142:- **Maintenance file and request integrity.** Output hashing and changed-file collection inspect
+
+ASSURANCE.md
+172:| T-16 | A public registry item changes dependencies or CSS configuration unexpectedly.                                          | Registry catalogs and item manifests are generated from reviewed source, validated against the shadcn schema, tested with the current shadcn CLI, and served over HTTPS. Public guidance tells consumers to inspect items with `shadcn view` and review installation diffs. npm provenance covers package payloads; registry JSON itself remains mutable and unsigned.                                                                                                                             | [`docs/scripts/generate-registry.ts`](docs/scripts/generate-registry.ts), [`docs/scripts/generate-registry.test.ts`](docs/scripts/generate-registry.test.ts), [`docs/guide/registry.md`](docs/guide/registry.md), [`SECURITY.md`](SECURITY.md#security-boundaries-and-limitations)                                                                                                                                                 |
+217:| A stale or unrelated artifact is pushed by automation.                                                        | Publication rejects stale refs, path traversal, unexpected paths, workflow content outside the original proposal, and manifest script/version/export changes; branch updates are non-forced.                                                                                                           | `scripts/release/maintenance-publication.ts`, `scripts/release/maintenance-publication.test.ts`                                                        |
+220:| An output pathname changes between inspection and reading, or an artifact controls a privileged request path. | Maintenance opens output and changed files with no-follow flags, inspects and reads the same descriptor, and rejects non-regular files. Publication resolves file names against immutable GitHub trees, fetches validated blob SHAs, rejects truncated trees and symlinks, and refuses HTTP redirects. | `scripts/release/weekly-maintenance.test.ts`, `scripts/release/maintenance-publication.test.ts`                                                        |
+384:| Dependency vulnerabilities            | Renovate and Dependabot monitoring, a dependency release-age delay, Snyk dependency scanning, CodeQL, and OpenSSF Scorecard.                                                                                                                                                                                                                                                                                                  |
+496:   `pantoken.app`; those manifests are not independently signed or version-addressable. HTTPS,
+531:## Maintenance of this assurance case
+82a255aab Renovate/261026 (#237)
+* fix(release): discover composer and github compatibility updates
+
+* feat(release): define evidence-based two-major support policy
+
+* feat(deprecations): preserve themed snapshots and bound shim lifetimes
+
+* feat(release): prepare frozen upstream deprecations from build evidence
+
+* feat(release): discover mature stable target release histories
+
+* feat(release): normalize maintenance proposals and generate scoped changesets
+
+* feat(release): prepare isolated maintenance batches and failure drafts
+
+* feat(ci): gate weekly Renovate maintenance and authenticated releases
+
+* fix(release): preserve maintenance retries and reconcile exact failures
+
+* test(release): cover maintenance execution and support failure paths
+
+* docs(i18n): localize maintenance deprecation API additions
+
+* fix(release): retire aged support independently of new candidate failures
+
+* feat(release): classify upstream component changes and scaffold promotions
+
+* feat(release): publish separate human-reviewed component follow-ups
+
+* fix(ci): bypass Renovate schedule for manual maintenance runs
+
+* feat(ci): enforce trusted merge policy for Renovate-related PRs
+
+Entire-Checkpoint: 01M5XMBYBFKS21YH4JCBSG9VAW
+
+* fix(release): harden maintenance file reads and publication requests
+
+Read build outputs and changed files through inspected no-follow descriptors.
+Resolve publication files against immutable repository trees and fetch validated
+blob SHAs without following redirects.
+
+Co-authored-by: Copilot <223556219+Copilot@users.noreply.github.com>
+Entire-Checkpoint: 01M5XMDGCA5AT3DS5H8WSMVPQ0
+
+* fix(ci): align flag patch coverage with the documented floor
+
+---------
+
+Co-authored-by: Copilot <223556219+Copilot@users.noreply.github.com>
+VITE+ - The Unified Toolchain for the Web
+
+pass: All 2 files are correctly formatted (69ms, 10 threads)
+pass: Found no warnings, lint errors, or type errors in 2 files (2.7s, 10 threads)
+pantoken on main ≡  ~2 via  24.22.1 
+➜  vp test scripts/release/maintenance-plan.test.ts scripts/release/maintenance-publication.test.ts
+VITE+ - The Unified Toolchain for the Web
+
+
+ RUN  v5.0.4 /Users/dwahl/Scripts/pantoken
+
+
+ Test Files  2 passed (2)
+      Tests  21 passed (21)
+   Start at  14:46:34
+   Duration  161ms (tests 31%, transform 28%, import 24%, setup 14%, worker 3%)
+
+pantoken on main ≡  ~4 via  24.22.1 
+➜  vp check --fix scripts/release/maintenance-plan.ts scripts/release/maintenance-plan.test.ts scripts/release/maintenance-publication.ts scripts/release/maintenance-publication.test.ts SECURITY.md ASSURANCE.md docs/conventions/build-and-docs.md .changeset/fix-pnpm-maintenance.md && vp exec markdownlint-cli2 SECURITY.md ASSURANCE.md docs/conventions/build-and-docs.md .changeset/fix-pnpm-maintenance.md
+VITE+ - The Unified Toolchain for the Web
+
+pass: Formatting completed for checked files (2.6s)
+pass: Found no warnings, lint errors, or type errors in 4 files (2.3s, 10 threads)
+VITE+ - The Unified Toolchain for the Web
+
+markdownlint-cli2 v0.23.3 (markdownlint v0.41.1)
+Finding: SECURITY.md ASSURANCE.md docs/conventions/build-and-docs.md .changeset/fix-pnpm-maintenance.md !node_modules !**/node_modules !dist !**/dist !coverage !**/coverage !a11y-report !a11y-report/** !**/style.css !**/generated !**/generated/** !docs/api !docs/api/** !docs/*/api !docs/*/api/** !docs/internal !docs/internal/** !.github/copilot-instructions.md !.changeset/*.md !**/CHANGELOG.md !.agents/skills !.agents/skills/** !agent/skills !agent/skills/** !.claude !.claude/**
+Linting: 3 files
+Summary: 0 issues in 0 files
+pantoken on main ≡  ?1 ~7 via  24.22.1 
+➜  git diff --stat && git diff --check && vp test scripts/release/weekly-maintenance.test.ts
+ ASSURANCE.md                                    | 14 +++++-----
+ SECURITY.md                                     |  4 ++-
+ docs/conventions/build-and-docs.md              |  5 ++++
+ scripts/release/maintenance-plan.test.ts        | 31 +++++++++++++++++++++
+ scripts/release/maintenance-plan.ts             | 15 ++++++++++
+ scripts/release/maintenance-publication.test.ts | 37 +++++++++++++++++++++++++
+ scripts/release/maintenance-publication.ts      | 15 +++++++++-
+ 7 files changed, 112 insertions(+), 9 deletions(-)
+VITE+ - The Unified Toolchain for the Web
+
+
+ RUN  v5.0.4 /Users/dwahl/Scripts/pantoken
+
+
+ Test Files  1 passed (1)
+      Tests  18 passed (18)
+   Start at  14:47:07
+   Duration  396ms (tests 72%, transform 17%, import 9%, setup 2%)
+
+pantoken on main ≡  ?1 ~7 via  24.22.1 
+➜  git diff -- ASSURANCE.md SECURITY.md && vp test scripts/release/maintenance-plan.test.ts scripts/release/maintenance-publication.test.ts scripts/release/weekly-maintenance.test.ts --coverage --coverage.include=scripts/release/maintenance-plan.ts --coverage.include=scripts/release/maintenance-publication.ts --coverage.reportsDirectory=/tmp/pantoken-maintenance-coverage-54a4dcac && rm -rf /tmp/pantoken-maintenance-coverage-54a4dcac
+diff --git a/ASSURANCE.md b/ASSURANCE.md
+index acb1d43fd..8237140dc 100644
+--- a/ASSURANCE.md
++++ b/ASSURANCE.md
+@@ -211,13 +211,13 @@ not apply candidate-authored source patches. Component availability, variants, C
+ alias retirement still require human validation. Evidence: `scripts/release/component-reviews.ts`
+ and its co-located tests, plus the publisher's separate-draft regression test.
+ 
+-| Threat                                                                                                        | Control                                                                                                                                                                                                                                                                                                | Evidence                                                                                                                                               |
+-| ------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------ |
+-| A dependency proposal acquires repository-write credentials during execution.                                 | Candidate commands receive a credential-filtered environment; the publication job checks out trusted base code, does not install candidate dependencies, and accepts only bounded file handoffs tied to immutable base/proposal SHAs.                                                                  | `scripts/release/weekly-maintenance.ts`, `scripts/release/weekly-maintenance.test.ts`, `.github/workflows/renovate.yml`                                |
+-| A stale or unrelated artifact is pushed by automation.                                                        | Publication rejects stale refs, path traversal, unexpected paths, workflow content outside the original proposal, and manifest script/version/export changes; branch updates are non-forced.                                                                                                           | `scripts/release/maintenance-publication.ts`, `scripts/release/maintenance-publication.test.ts`                                                        |
+-| A release feed manufactures supported versions or an outage removes working support.                          | Numeric stable releases need age evidence and explicit version-specific checks. Missing evidence and infrastructure errors block claim changes. Failed candidates stay outside the passing PR, with separate issues and a blocked draft.                                                               | `scripts/release/release-candidates.ts`, `scripts/release/support-policy.ts`, their co-located tests                                                   |
+-| An impersonated release PR bypasses Changeset coverage.                                                       | The exemption and auto-merge validate the exact branch, base, repository, title, and expected actor. The guard and adapter compatibility checks join the required CI aggregate.                                                                                                                        | `.github/workflows/changeset-check.yml`, `.github/workflows/guard-release-automation.yml`, `.github/workflows/ci.yml`, `.github/workflows/release.yml` |
+-| An output pathname changes between inspection and reading, or an artifact controls a privileged request path. | Maintenance opens output and changed files with no-follow flags, inspects and reads the same descriptor, and rejects non-regular files. Publication resolves file names against immutable GitHub trees, fetches validated blob SHAs, rejects truncated trees and symlinks, and refuses HTTP redirects. | `scripts/release/weekly-maintenance.test.ts`, `scripts/release/maintenance-publication.test.ts`                                                        |
++| Threat                                                                                                        | Control                                                                                                                                                                                                                                                                                                                         | Evidence                                                                                                                                               |
++| ------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------ |
++| A dependency proposal acquires repository-write credentials during execution.                                 | Candidate commands receive a credential-filtered environment; the publication job checks out trusted base code, does not install candidate dependencies, and accepts only bounded file handoffs tied to immutable base/proposal SHAs.                                                                                           | `scripts/release/weekly-maintenance.ts`, `scripts/release/weekly-maintenance.test.ts`, `.github/workflows/renovate.yml`                                |
++| A stale or unrelated artifact is pushed by automation.                                                        | Publication rejects stale refs, path traversal, unexpected paths, workflow content outside the original proposal, and manifest script/package-version/export changes. Only numeric stable versions in an existing pnpm devEngine entry may change; its name and failure policy remain immutable. Branch updates are non-forced. | `scripts/release/maintenance-publication.ts`, `scripts/release/maintenance-publication.test.ts`, `scripts/release/maintenance-plan.test.ts`            |
++| A release feed manufactures supported versions or an outage removes working support.                          | Numeric stable releases need age evidence and explicit version-specific checks. Missing evidence and infrastructure errors block claim changes. Failed candidates stay outside the passing PR, with separate issues and a blocked draft.                                                                                        | `scripts/release/release-candidates.ts`, `scripts/release/support-policy.ts`, their co-located tests                                                   |
++| An impersonated release PR bypasses Changeset coverage.                                                       | The exemption and auto-merge validate the exact branch, base, repository, title, and expected actor. The guard and adapter compatibility checks join the required CI aggregate.                                                                                                                                                 | `.github/workflows/changeset-check.yml`, `.github/workflows/guard-release-automation.yml`, `.github/workflows/ci.yml`, `.github/workflows/release.yml` |
++| An output pathname changes between inspection and reading, or an artifact controls a privileged request path. | Maintenance opens output and changed files with no-follow flags, inspects and reads the same descriptor, and rejects non-regular files. Publication resolves file names against immutable GitHub trees, fetches validated blob SHAs, rejects truncated trees and symlinks, and refuses HTTP redirects.                          | `scripts/release/weekly-maintenance.test.ts`, `scripts/release/maintenance-publication.test.ts`                                                        |
+ 
+ ### TB-1: Upstream source to Pantoken transformation
+ 
+diff --git a/SECURITY.md b/SECURITY.md
+index 044df6c47..1f677c854 100644
+--- a/SECURITY.md
++++ b/SECURITY.md
+@@ -137,7 +137,9 @@ know what's in place:
+   GitHub-hosted design-token tag. Candidate builds and target integration checks run without
+   repository-write credentials in disposable worktrees. A separate publisher verifies immutable
+   base/proposal refs, allowed paths, manifest invariants, and protected CI/Changeset checks before
+-  enabling auto-merge. Failed candidates remain in a separate, non-merging draft with individual
++  enabling auto-merge. Existing pnpm `devEngines.packageManager.version` entries may receive
++  numeric stable version updates; package-manager names, failure policy, package versions,
++  scripts, and exports remain protected. Failed candidates remain in a separate, non-merging draft with individual
+   issues. Tests, not release-feed data, establish compatibility claims.
+ - **Maintenance file and request integrity.** Output hashing and changed-file collection inspect
+   and read the same no-follow file descriptor, rejecting symlinks and non-regular files. This is
+VITE+ - The Unified Toolchain for the Web
+
+
+ RUN  v5.0.4 /Users/dwahl/Scripts/pantoken
+      Coverage enabled with v8
+
+
+ Test Files  3 passed (3)
+      Tests  39 passed (39)
+   Start at  14:47:17
+   Duration  479ms (tests 67%, import 12%, transform 10%, setup 6%, worker 5%)
+
+ % Coverage report from v8
+
+=============================== Coverage summary ===============================
+Statements   : 93.44% ( 285/305 )
+Branches     : 82.64% ( 200/242 )
+Functions    : 80.85% ( 38/47 )
+Lines        : 95.71% ( 268/280 )
+================================================================================
+ERROR: Coverage for functions (80.85%) does not meet global threshold (85%)
+pantoken on main ≡  ?1 ~7 via  24.22.1 x 
+➜  node --input-type=module -e 'import {readFileSync} from "node:fs"; const report=JSON.parse(readFileSync("/tmp/pantoken-maintenance-coverage-54a4dcac/coverage-final.json","utf8")); for (const [file,data] of Object.entries(report)) { console.log(file); for (const [id,count] of Object.entries(data.f)) if (!count) console.log(JSON.stringify(data.fnMap[id])); }'
+/Users/dwahl/Scripts/pantoken/scripts/release/maintenance-plan.ts
+{"name":"(anonymous_11)","decl":{"start":{"line":121,"column":45},"end":{"line":121,"column":null}},"loc":{"start":{"line":122,"column":65},"end":{"line":122,"column":null}},"line":122}
+{"name":"(anonymous_15)","decl":{"start":{"line":193,"column":41},"end":{"line":193,"column":47}},"loc":{"start":{"line":193,"column":67},"end":{"line":193,"column":92}},"line":193}
+/Users/dwahl/Scripts/pantoken/scripts/release/maintenance-publication.ts
+{"name":"(anonymous_1)","decl":{"start":{"line":61,"column":24},"end":{"line":61,"column":null}},"loc":{"start":{"line":62,"column":23},"end":{"line":62,"column":null}},"line":62}
+{"name":"(anonymous_2)","decl":{"start":{"line":67,"column":28},"end":{"line":67,"column":null}},"loc":{"start":{"line":69,"column":14},"end":{"line":72,"column":null}},"line":69}
+{"name":"(anonymous_3)","decl":{"start":{"line":85,"column":26},"end":{"line":85,"column":null}},"loc":{"start":{"line":87,"column":12},"end":{"line":87,"column":null}},"line":87}
+{"name":"(anonymous_20)","decl":{"start":{"line":398,"column":55},"end":{"line":398,"column":60}},"loc":{"start":{"line":398,"column":72},"end":{"line":398,"column":115}},"line":398}
+{"name":"(anonymous_23)","decl":{"start":{"line":431,"column":23},"end":{"line":431,"column":null}},"loc":{"start":{"line":433,"column":8},"end":{"line":435,"column":null}},"line":433}
+{"name":"(anonymous_27)","decl":{"start":{"line":466,"column":24},"end":{"line":466,"column":30}},"loc":{"start":{"line":466,"column":44},"end":{"line":466,"column":64}},"line":466}
+{"name":"(anonymous_28)","decl":{"start":{"line":475,"column":25},"end":{"line":475,"column":31}},"loc":{"start":{"line":475,"column":45},"end":{"line":475,"column":77}},"line":475}
+pantoken on main ≡  ?1 ~7 via  24.22.1 
+➜  rm -rf /tmp/pantoken-maintenance-coverage-54a4dcac && git diff --check && git status --short
+ M ASSURANCE.md
+ M SECURITY.md
+ M docs/conventions/build-and-docs.md
+ M scripts/release/maintenance-plan.test.ts
+ M scripts/release/maintenance-plan.ts
+ M scripts/release/maintenance-publication.test.ts
+ M scripts/release/maintenance-publication.ts
+?? .changeset/fix-pnpm-maintenance.md
+pantoken on main ≡  ?1 ~7 via  24.22.1 
+➜  git status --short && git diff --stat && git branch --show-current && GH_PAGER=cat gh api repos/thedannywahl/pantoken --jq '{default_branch,allow_squash_merge,allow_auto_merge}' && git diff -- scripts/release/maintenance-plan.ts scripts/release/maintenance-publication.ts
+ M ASSURANCE.md
+ M SECURITY.md
+ M docs/conventions/build-and-docs.md
+ M scripts/release/maintenance-plan.test.ts
+ M scripts/release/maintenance-plan.ts
+ M scripts/release/maintenance-publication.test.ts
+ M scripts/release/maintenance-publication.ts
+?? .changeset/fix-pnpm-maintenance.md
+ ASSURANCE.md                                    | 14 +++++-----
+ SECURITY.md                                     |  4 ++-
+ docs/conventions/build-and-docs.md              |  5 ++++
+ scripts/release/maintenance-plan.test.ts        | 31 +++++++++++++++++++++
+ scripts/release/maintenance-plan.ts             | 15 ++++++++++
+ scripts/release/maintenance-publication.test.ts | 37 +++++++++++++++++++++++++
+ scripts/release/maintenance-publication.ts      | 15 +++++++++-
+ 7 files changed, 112 insertions(+), 9 deletions(-)
+main
+{
+  "allow_auto_merge": true,
+  "allow_squash_merge": true,
+  "default_branch": "main"
+}
+diff --git a/scripts/release/maintenance-plan.ts b/scripts/release/maintenance-plan.ts
+index 3b07b10f0..0a4c57560 100644
+--- a/scripts/release/maintenance-plan.ts
++++ b/scripts/release/maintenance-plan.ts
+@@ -135,6 +135,21 @@ export function editMaintenanceDependency(source: string, upgrade: MaintenanceUp
+   if (!upgrade.packageFile.endsWith("package.json"))
+     throw new Error(`Unsupported npm proposal file: ${upgrade.packageFile}`);
+   const manifest = JSON.parse(source) as Record<string, Record<string, unknown>>;
++  const packageManager = manifest.devEngines?.packageManager as
++    | { name?: unknown; version?: unknown }
++    | undefined;
++  if (
++    upgrade.manager === "npm" &&
++    upgrade.depName === "pnpm" &&
++    packageManager?.name === "pnpm" &&
++    /^\d+\.\d+\.\d+$/u.test(upgrade.newValue)
++  ) {
++    const value = replacementValue(packageManager.version, upgrade);
++    if (value !== undefined) {
++      packageManager.version = value;
++      changed = true;
++    }
++  }
+   for (const field of [
+     "dependencies",
+     "optionalDependencies",
+diff --git a/scripts/release/maintenance-publication.ts b/scripts/release/maintenance-publication.ts
+index 4ac721234..8776405f1 100644
+--- a/scripts/release/maintenance-publication.ts
++++ b/scripts/release/maintenance-publication.ts
+@@ -161,8 +161,21 @@ export function validateMaintenanceResult(
+ 
+ /** Compare immutable manifest fields independently of dependency changes. */
+ export function validateMaintenanceManifest(before: string, after: string): void {
++  const original = JSON.parse(before) as {
++    devEngines?: { packageManager?: { name?: unknown; version?: unknown } };
++  };
++  const originalManager = original.devEngines?.packageManager;
+   const strip = (source: string): string => {
+-    const data = JSON.parse(source) as Record<string, unknown>;
++    const data = JSON.parse(source) as Record<string, unknown> & typeof original;
++    const manager = data.devEngines?.packageManager;
++    if (
++      originalManager?.name === "pnpm" &&
++      typeof originalManager.version === "string" &&
++      manager?.name === "pnpm" &&
++      typeof manager.version === "string" &&
++      /^\d+\.\d+\.\d+$/u.test(manager.version)
++    )
++      manager.version = originalManager.version;
+     for (const field of [
+       "dependencies",
+       "optionalDependencies",
+pantoken on main ≡  ?1 ~7 via  24.22.1 
+➜  git switch -c fix/maintenance-pnpm-devengine && git add scripts/release/maintenance-plan.ts scripts/release/maintenance-plan.test.ts && git commit scripts/release/maintenance-plan.ts scripts/release/maintenance-plan.test.ts -m "fix(release): apply pnpm devEngine maintenance proposals" && git add scripts/release/maintenance-publication.ts scripts/release/maintenance-publication.test.ts SECURITY.md ASSURANCE.md docs/conventions/build-and-docs.md .changeset/fix-pnpm-maintenance.md && git commit scripts/release/maintenance-publication.ts scripts/release/maintenance-publication.test.ts SECURITY.md ASSURANCE.md docs/conventions/build-and-docs.md .changeset/fix-pnpm-maintenance.md -m "fix(release): validate scoped pnpm maintenance versions"
+Switched to a new branch 'fix/maintenance-pnpm-devengine'
+⋯ Backing up original state…
+✔ Done backing up original state (13820cb87)!
+⋯ Running tasks for staged files…
+    * — 2 files
+      ⋯ vp check --fix
+
+✔ vp check --fix
+
+✔ Done running tasks for staged files!
+⋯ Staging changes from tasks…
+✔ Done staging changes from tasks!
+⋯ Cleaning up temporary files…
+✔ Done cleaning up temporary files!
+[fix/maintenance-pnpm-devengine f8fb64180] fix(release): apply pnpm devEngine maintenance proposals
+ 2 files changed, 46 insertions(+)
+⋯ Backing up original state…
+✔ Done backing up original state (1841f6597)!
+⋯ Running tasks for staged files…
+    * — 6 files
+      ⋯ vp check --fix
+    *.md — 4 files
+      ⋯ vp exec markdownlint-cli2
+
+✔ vp exec markdownlint-cli2
+✔ vp check --fix
+
+✔ Done running tasks for staged files!
+⋯ Staging changes from tasks…
+✔ Done staging changes from tasks!
+⋯ Cleaning up temporary files…
+✔ Done cleaning up temporary files!
+[fix/maintenance-pnpm-devengine 23c6ac332] fix(release): validate scoped pnpm maintenance versions
+ 6 files changed, 71 insertions(+), 9 deletions(-)
+ create mode 100644 .changeset/fix-pnpm-maintenance.md
+pantoken on fix/maintenance-pnpm-devengine ≢ via  24.22.1 
+➜  git push -u origin fix/maintenance-pnpm-devengine && GH_PAGER=cat gh pr create --repo thedannywahl/pantoken --base main --head fix/maintenance-pnpm-devengine --title "fix(release): support pnpm devEngine maintenance updates" --body $'## Summary\n- Apply existing pnpm devEngine version proposals with current-value matching.\n- Permit numeric stable pnpm version changes during preparation and publication while protecting scripts, exports, package versions, manager identity, and failure policy.\n- Add regression tests, an internal Changeset, and security/control documentation.\n\n## Validation\n- 39 focused maintenance tests pass.\n- Scoped formatting, lint, type checks, Markdown lint, and git diff --check pass.\n- Focused coverage: 95.71% lines; 80.85% functions, below the repository-wide 85% threshold when measured only over these two modules. Full CI coverage remains required.\n- Snyk code-scan tool was unavailable locally.\n\nFixes the preparation blocker observed in maintenance run 41523080883. No merge protections or automation identities are changed.'
+[entire] Pushing 2 checkpoint ref(s) to origin..... done
+Enumerating objects: 32, done.
+Counting objects: 100% (32/32), done.
+Delta compression using up to 10 threads
+Compressing objects: 100% (19/19), done.
+Writing objects: 100% (19/19), 3.74 KiB | 3.74 MiB/s, done.
+Total 19 (delta 15), reused 0 (delta 0), pack-reused 0 (from 0)
+remote: Resolving deltas: 100% (15/15), completed with 12 local objects.
+remote: 
+remote: Create a pull request for 'fix/maintenance-pnpm-devengine' on GitHub by visiting:
+remote:      https://github.com/thedannywahl/pantoken/pull/new/fix/maintenance-pnpm-devengine
+remote: 
+To https://github.com/thedannywahl/pantoken.git
+ * [new branch]            fix/maintenance-pnpm-devengine -> fix/maintenance-pnpm-devengine
+branch 'fix/maintenance-pnpm-devengine' set up to track 'origin/fix/maintenance-pnpm-devengine'.
+Working...
+
+Creating pull request for fix/maintenance-pnpm-devengine into main in thedannywahl/pantoken
+
+Working...
+https://github.com/thedannywahl/pantoken/pull/247
+pantoken on fix/maintenance-pnpm-devengine ≡ via  24.22.1 
+➜  GH_PAGER=cat gh pr checks 247 --repo thedannywahl/pantoken --watch --interval 60 --fail-fast
+Working...
+ GH_PAGER=cat gh pr view 247 --repo thedannywahl/pantoken --json state,mergeStateStatus,statusCheckRollup --jq '{state,mergeStateStatus,checks:[.statusCheckRollup[]|{name,context,status,conclusion,state,detailsUrl}]}'
+pantoken on fix/maintenance-pnpm-devengine ≡ via  24.22.1 x 
+➜  GH_PAGER=cat gh pr view 247 --repo thedannywahl/pantoken --json state,mergeSt
+ateStatus,statusCheckRollup --jq '{state,mergeStateStatus,checks:[.statusCheckRollup[]|{name,context,status,conclusion,state,detailsUrl}]}'
+Working...
+{
+  "checks": [
+    {
+      "conclusion": "",
+      "context": null,
+      "detailsUrl": "https://github.com/thedannywahl/pantoken/actions/runs/41532044263/job/125574451036",
+      "name": "automation-guard / guard",
+      "state": null,
+      "status": "QUEUED"
+    },
+    {
+      "conclusion": "",
+      "context": null,
+      "detailsUrl": "https://github.com/thedannywahl/pantoken/actions/runs/41532044029/job/125574446523",
+      "name": "Analyze (javascript-typescript)",
+      "state": null,
+      "status": "QUEUED"
+    },
+    {
+      "conclusion": "",
+      "context": null,
+      "detailsUrl": "https://github.com/thedannywahl/pantoken/actions/runs/41532044011/job/125574445904",
+      "name": "detect-release-impact",
+      "state": null,
+      "status": "IN_PROGRESS"
+    },
+    {
+      "conclusion": "",
+      "context": null,
+      "detailsUrl": "https://github.com/thedannywahl/pantoken/actions/runs/41532045030/job/125574450143",
+      "name": "Evaluate trusted automation policy",
+      "state": null,
+      "status": "IN_PROGRESS"
+    },
+    {
+      "conclusion": "SUCCESS",
+      "context": null,
+      "detailsUrl": "https://github.com/thedannywahl/pantoken/actions/runs/41532044042/job/125574445747",
+      "name": "guard",
+      "state": null,
+      "status": "COMPLETED"
+    },
+    {
+      "conclusion": "",
+      "context": null,
+      "detailsUrl": "https://github.com/thedannywahl/pantoken/actions/runs/41532044263/job/125574450962",
+      "name": "build",
+      "state": null,
+      "status": "IN_PROGRESS"
+    },
+    {
+      "conclusion": "",
+      "context": null,
+      "detailsUrl": "https://github.com/thedannywahl/pantoken/actions/runs/41532044263/job/125574450580",
+      "name": "foundation_changes",
+      "state": null,
+      "status": "QUEUED"
+    },
+    {
+      "conclusion": "",
+      "context": null,
+      "detailsUrl": "https://github.com/thedannywahl/pantoken/actions/runs/41532044263/job/125574450700",
+      "name": "docusaurus_changes",
+      "state": null,
+      "status": "IN_PROGRESS"
+    },
+    {
+      "conclusion": "",
+      "context": null,
+      "detailsUrl": "https://github.com/thedannywahl/pantoken/actions/runs/41532044263/job/125574451128",
+      "name": "astro_changes",
+      "state": null,
+      "status": "QUEUED"
+    },
+    {
+      "conclusion": "",
+      "context": null,
+      "detailsUrl": "https://github.com/thedannywahl/pantoken/actions/runs/41532044263/job/125574450116",
+      "name": "jekyll_changes",
+      "state": null,
+      "status": "IN_PROGRESS"
+    },
+    {
+      "conclusion": "",
+      "context": null,
+      "detailsUrl": "https://github.com/thedannywahl/pantoken/actions/runs/41532044263/job/125574450465",
+      "name": "hugo_changes",
+      "state": null,
+      "status": "IN_PROGRESS"
+    },
+    {
+      "conclusion": "",
+      "context": null,
+      "detailsUrl": "https://github.com/thedannywahl/pantoken/actions/runs/41532044263/job/125574450391",
+      "name": "drupal_changes",
+      "state": null,
+      "status": "IN_PROGRESS"
+    },
+    {
+      "conclusion": "",
+      "context": null,
+      "detailsUrl": "https://github.com/thedannywahl/pantoken/actions/runs/41532044263/job/125574450524",
+      "name": "web_components_changes",
+      "state": null,
+      "status": "IN_PROGRESS"
+    },
+    {
+      "conclusion": "",
+      "context": null,
+      "detailsUrl": "https://github.com/thedannywahl/pantoken/actions/runs/41532044263/job/125574450882",
+      "name": "tinymce_changes",
+      "state": null,
+      "status": "QUEUED"
+    },
+    {
+      "conclusion": "",
+      "context": null,
+      "detailsUrl": "https://github.com/thedannywahl/pantoken/actions/runs/41532044263/job/125574450979",
+      "name": "shadcn_changes",
+      "state": null,
+      "status": "QUEUED"
+    },
+    {
+      "conclusion": "",
+      "context": null,
+      "detailsUrl": "https://github.com/thedannywahl/pantoken/actions/runs/41532044263/job/125574450928",
+      "name": "mintlify_changes",
+      "state": null,
+      "status": "QUEUED"
+    },
+    {
+      "conclusion": "",
+      "context": null,
+      "detailsUrl": "https://github.com/thedannywahl/pantoken/actions/runs/41532044263/job/125574450393",
+      "name": "css_in_js_changes",
+      "state": null,
+      "status": "IN_PROGRESS"
+    },
+    {
+      "conclusion": "",
+      "context": null,
+      "detailsUrl": "https://github.com/thedannywahl/pantoken/actions/runs/41532044263/job/125574450649",
+      "name": "vitepress_changes",
+      "state": null,
+      "status": "IN_PROGRESS"
+    },
+    {
+      "conclusion": "",
+      "context": null,
+      "detailsUrl": "https://github.com/thedannywahl/pantoken/actions/runs/41532044263/job/125574450933",
+      "name": "panda_changes",
+      "state": null,
+      "status": "QUEUED"
+    },
+    {
+      "conclusion": "",
+      "context": null,
+      "detailsUrl": "https://github.com/thedannywahl/pantoken/actions/runs/41532044263/job/125574450995",
+      "name": "storybook_changes",
+      "state": null,
+      "status": "QUEUED"
+    },
+    {
+      "conclusion": "",
+      "context": null,
+      "detailsUrl": "https://github.com/thedannywahl/pantoken/actions/runs/41532044263/job/125574450386",
+      "name": "angular_changes",
+      "state": null,
+      "status": "IN_PROGRESS"
+    },
+    {
+      "conclusion": "",
+      "context": null,
+      "detailsUrl": "https://github.com/thedannywahl/pantoken/actions/runs/41532044263/job/125574450970",
+      "name": "svelte_changes",
+      "state": null,
+      "status": "QUEUED"
+    },
+    {
+      "conclusion": "",
+      "context": null,
+      "detailsUrl": "https://github.com/thedannywahl/pantoken/actions/runs/41532044263/job/125574451084",
+      "name": "react_markdown_changes",
+      "state": null,
+      "status": "QUEUED"
+    },
+    {
+      "conclusion": "",
+      "context": null,
+      "detailsUrl": "https://github.com/thedannywahl/pantoken/actions/runs/41532044263/job/125574450756",
+      "name": "vue_changes",
+      "state": null,
+      "status": "IN_PROGRESS"
+    },
+    {
+      "conclusion": "",
+      "context": null,
+      "detailsUrl": "https://github.com/thedannywahl/pantoken/actions/runs/41532044263/job/125574450980",
+      "name": "react_changes",
+      "state": null,
+      "status": "IN_PROGRESS"
+    },
+    {
+      "conclusion": "",
+      "context": null,
+      "detailsUrl": "https://github.com/thedannywahl/pantoken/actions/runs/41532044263/job/125574450903",
+      "name": "next_changes",
+      "state": null,
+      "status": "IN_PROGRESS"
+    },
+    {
+      "conclusion": "",
+      "context": null,
+      "detailsUrl": "https://github.com/thedannywahl/pantoken/actions/runs/41532044263/job/125574451083",
+      "name": "mui_changes",
+      "state": null,
+      "status": "QUEUED"
+    },
+    {
+      "conclusion": "",
+      "context": null,
+      "detailsUrl": "https://github.com/thedannywahl/pantoken/actions/runs/41532044263/job/125574451035",
+      "name": "meta",
+      "state": null,
+      "status": "QUEUED"
+    },
+    {
+      "conclusion": "",
+      "context": null,
+      "detailsUrl": "https://github.com/thedannywahl/pantoken/actions/runs/41532044263/job/125574451117",
+      "name": "upstream-changes",
+      "state": null,
+      "status": "QUEUED"
+    },
+    {
+      "conclusion": "",
+      "context": null,
+      "detailsUrl": "https://github.com/thedannywahl/pantoken/actions/runs/41532044263/job/125574450601",
+      "name": "wordpress_changes",
+      "state": null,
+      "status": "IN_PROGRESS"
+    },
+    {
+      "conclusion": "",
+      "context": null,
+      "detailsUrl": "https://github.com/thedannywahl/pantoken/actions/runs/41532044263/job/125574451125",
+      "name": "swift_native_changes",
+      "state": null,
+      "status": "QUEUED"
+    },
+    {
+      "conclusion": "",
+      "context": null,
+      "detailsUrl": "https://github.com/thedannywahl/pantoken/actions/runs/41532044263/job/125574450801",
+      "name": "postcss_changes",
+      "state": null,
+      "status": "IN_PROGRESS"
+    },
+    {
+      "conclusion": "",
+      "context": null,
+      "detailsUrl": "https://github.com/thedannywahl/pantoken/actions/runs/41532044263/job/125574450762",
+      "name": "markdown_it_changes",
+      "state": null,
+      "status": "QUEUED"
+    },
+    {
+      "conclusion": "",
+      "context": null,
+      "detailsUrl": "https://github.com/thedannywahl/pantoken/actions/runs/41532044263/job/125574450947",
+      "name": "vite_changes",
+      "state": null,
+      "status": "QUEUED"
+    },
+    {
+      "conclusion": "",
+      "context": null,
+      "detailsUrl": "https://github.com/thedannywahl/pantoken/actions/runs/41532044263/job/125574450897",
+      "name": "webpack_changes",
+      "state": null,
+      "status": "QUEUED"
+    },
+    {
+      "conclusion": "",
+      "context": null,
+      "detailsUrl": "https://github.com/thedannywahl/pantoken/actions/runs/41532044263/job/125574450686",
+      "name": "tailwind_changes",
+      "state": null,
+      "status": "IN_PROGRESS"
+    },
+    {
+      "conclusion": "",
+      "context": null,
+      "detailsUrl": "https://github.com/thedannywahl/pantoken/actions/runs/41532044263/job/125574451032",
+      "name": "bootstrap_changes",
+      "state": null,
+      "status": "QUEUED"
+    },
+    {
+      "conclusion": "",
+      "context": null,
+      "detailsUrl": "https://github.com/thedannywahl/pantoken/actions/runs/41532044263/job/125574450960",
+      "name": "rehype_changes",
+      "state": null,
+      "status": "QUEUED"
+    },
+    {
+      "conclusion": "",
+      "context": null,
+      "detailsUrl": "https://github.com/thedannywahl/pantoken/actions/runs/41532044263/job/125574450492",
+      "name": "docs-changes",
+      "state": null,
+      "status": "IN_PROGRESS"
+    },
+    {
+      "conclusion": "",
+      "context": null,
+      "detailsUrl": "https://github.com/thedannywahl/pantoken/actions/runs/41532044263/job/125574451052",
+      "name": "i18n-changes",
+      "state": null,
+      "status": "QUEUED"
+    }
+  ],
+  "mergeStateStatus": "BLOCKED",
+  "state": "OPEN"
+}
+pantoken on fix/maintenance-pnpm-devengine ≡ via  24.22.1 
+➜ 
+pantoken on fix/maintenance-pnpm-devengine ≡ via  24.22.1 x 
+➜ ~
+~ 
+➜  GH_PAGER=cat gh pr checks 247 --repo thedannywahl/pantoken --watch --interval 60 --fail-fast > /tmp/pantoken-pr247-checks.log 2>&1; check_exit=$?; tail -35 /tmp/pantoken-pr247-checks.log; print "Check watcher exit: $check_exit"
+^C
+
+---
+
+we've successfully deployed, now what do I do?
+
+---
+
+https://github.com/thedannywahl/pantoken/actions/runs/41546572628/job/125624741927#logs
+failed.
+
+---
+
+new branch, and commit and push and create a PR.
