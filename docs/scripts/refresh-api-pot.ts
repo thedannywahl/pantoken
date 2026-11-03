@@ -20,7 +20,32 @@ const enApiDir = join(docsRoot, "api");
 /** PO flag approving a deliberate source-identical translation. */
 export const PANTOKEN_VERBATIM_FLAG = "pantoken-verbatim";
 
-const VERBATIM_API_PROSE = new Set(["CA", "NY", "TX", "LH", "AI", "JS", "AB"]);
+const VERBATIM_API_PROSE = new Set([
+  "CA",
+  "NY",
+  "TX",
+  "LH",
+  "AI",
+  "JS",
+  "AB",
+  "-canvas-rce\n",
+  "-docs\n",
+  "WCAG 2.2 1.3.1, 3.3.2, 4.1.2",
+  "WCAG 2.2 1.4.11",
+  "WCAG 2.2 1.4.11, 2.4.13",
+  "WCAG 2.2 1.4.13",
+  "WCAG 2.2 2.1.1",
+  "WCAG 2.2 2.1.1, 2.4.3",
+  "WCAG 2.2 2.1.1, 4.1.2",
+  "WCAG 2.2 2.1.2",
+  "WCAG 2.2 2.4.3",
+  "WCAG 2.2 2.4.7",
+  "WCAG 2.2 2.5.3",
+  "WCAG 2.2 3.3.1, 4.1.3",
+  "WCAG 2.2 4.1.2",
+  "WCAG 2.2 4.1.3",
+  "readonly [`LogoMeta`](../interfaces/LogoMeta.md)[]",
+]);
 
 /** Locale-specific API prose that is intentionally identical to English in existing catalogs. */
 const localeVerbatimApiProse = new Map<string, string[]>();
@@ -57,6 +82,91 @@ addLocaleVerbatimSource("link", ["da", "de", "pt", "pt-BR"]);
 addLocaleVerbatimSource("Guides", ["fr", "fr-CA"]);
 addLocaleVerbatimSource("General", ["ca", "es"]);
 addLocaleVerbatimSource("Dashboard", ["nl"]);
+addLocaleVerbatimSource(' ("Amira Patel"); ', [
+  "ar",
+  "ca",
+  "da",
+  "de",
+  "el",
+  "fi",
+  "fr",
+  "ga",
+  "he",
+  "hi",
+  "ht",
+  "hy",
+  "id",
+  "is",
+  "it",
+  "ja",
+  "ko",
+  "mi",
+  "ms",
+  "nl",
+  "nn",
+  "pt",
+  "pt-BR",
+  "se",
+  "tr",
+]);
+addLocaleVerbatimSource(' ("Lee Harper"); ', [
+  "ar",
+  "ca",
+  "da",
+  "de",
+  "el",
+  "fi",
+  "fr",
+  "ga",
+  "he",
+  "hi",
+  "ht",
+  "hy",
+  "id",
+  "is",
+  "it",
+  "ja",
+  "ko",
+  "mi",
+  "ms",
+  "nl",
+  "nn",
+  "pt",
+  "pt-BR",
+  "se",
+  "tr",
+]);
+addLocaleVerbatimSource("@alias Alias for `--value`.", ["nb"]);
+addLocaleVerbatimSource("Action", ["fr", "fr-CA"]);
+addLocaleVerbatimSource("Actions", ["fr", "fr-CA"]);
+addLocaleVerbatimSource("Reading.pdf", ["ca", "ga", "is", "it", "mi", "ms", "tr"]);
+addLocaleVerbatimSource("Rubric.docx", ["ca", "ga", "is", "it", "mi", "ms", "tr"]);
+addLocaleVerbatimSource("Slides.pptx", ["ca", "ga", "is", "it", "mi", "ms", "pt-BR", "tr"]);
+addLocaleVerbatimSource("Syllabus.pdf", ["is", "it", "mi", "ms"]);
+addLocaleVerbatimSource("Canvas:", [
+  "ca",
+  "da",
+  "fi",
+  "ht",
+  "is",
+  "it",
+  "mi",
+  "nb",
+  "nl",
+  "nn",
+  "pt",
+  "pt-BR",
+  "se",
+]);
+addLocaleVerbatimSource("Components", ["ca"]);
+addLocaleVerbatimSource("Details", ["nl"]);
+addLocaleVerbatimSource("Dr. Nguyen Van Thoc", ["ca"]);
+addLocaleVerbatimSource("Miguel", ["ca"]);
+addLocaleVerbatimSource("Miguel Sanchez", ["ca"]);
+addLocaleVerbatimSource("OK", ["da", "nb"]);
+addLocaleVerbatimSource("Orange", ["de", "fr", "fr-CA"]);
+addLocaleVerbatimSource("Sanchez", ["ca"]);
+addLocaleVerbatimSource("Score", ["nl"]);
 
 const latinScriptNameLocales = [
   "cy",
