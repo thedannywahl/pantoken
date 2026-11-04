@@ -1,0 +1,51 @@
+{
+  "cli_version": "0.12.2",
+  "checkpoint_id": "01M6KPJGBWSY6NE3WTSPDK0VJT",
+  "session_id": "a3673cbe-f38a-4cf9-b0b9-c110698c203f",
+  "strategy": "manual-commit",
+  "created_at": "2026-11-04T16:34:19.12418Z",
+  "branch": "figma-mcp",
+  "checkpoints_count": 3,
+  "save_step_count": 3,
+  "files_touched": [
+    "AGENTS.md",
+    "docs/conventions/authoring.md"
+  ],
+  "agent": "Copilot CLI",
+  "model": "gpt-6.1-sol",
+  "turn_id": "288497c88919",
+  "compact_transcript_start": 0,
+  "token_usage": {
+    "input_tokens": 2423721,
+    "cache_creation_tokens": 208408,
+    "cache_read_tokens": 2215199,
+    "output_tokens": 10318,
+    "api_call_count": 38
+  },
+  "redaction": {
+    "replacements": 7412,
+    "layers": {
+      "betterleaks": 0,
+      "connection_string": 0,
+      "credential_key": 0,
+      "credential_value": 0,
+      "credentialed_uri": 0,
+      "custom": 0,
+      "entropy": 36540,
+      "goredact": 0,
+      "key_context": 1,
+      "pii": 1,
+      "provider_token": 0,
+      "shell_stdin": 0
+    },
+    "custom_rules_active": 2,
+    "pii": {
+      "EMAIL": 1,
+      "IP": 0,
+      "PHONE": 0
+    }
+  },
+  "session_metrics": {
+    "turn_count": 3
+  }
+}

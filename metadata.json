@@ -3,7 +3,7 @@
   "checkpoint_id": "01M6KPJGBWSY6NE3WTSPDK0VJT",
   "strategy": "manual-commit",
   "branch": "figma-mcp",
-  "checkpoints_count": 11,
+  "checkpoints_count": 14,
   "files_touched": [
     ".mcp.json",
     "AGENTS.md",
@@ -79,17 +79,24 @@
       "compact_transcript": "/9/transcript.jsonl",
       "content_hash": "/9/content_hash.txt",
       "prompt": "/9/prompt.txt"
+    },
+    {
+      "metadata": "/10/metadata.json",
+      "transcript": "/10/full.jsonl",
+      "compact_transcript": "/10/transcript.jsonl",
+      "content_hash": "/10/content_hash.txt",
+      "prompt": "/10/prompt.txt"
     }
   ],
   "token_usage": {
-    "input_tokens": 0,
-    "cache_creation_tokens": 0,
-    "cache_read_tokens": 0,
-    "output_tokens": 0,
-    "api_call_count": 0
+    "input_tokens": 2423721,
+    "cache_creation_tokens": 208408,
+    "cache_read_tokens": 2215199,
+    "output_tokens": 10318,
+    "api_call_count": 38
   },
   "redaction": {
-    "replacements": 2262,
+    "replacements": 9674,
     "layers": {
       "betterleaks": 0,
       "connection_string": 0,
@@ -97,16 +104,16 @@
       "credential_value": 0,
       "credentialed_uri": 0,
       "custom": 0,
-      "entropy": 6897,
+      "entropy": 43437,
       "goredact": 0,
-      "key_context": 0,
-      "pii": 0,
+      "key_context": 1,
+      "pii": 1,
       "provider_token": 0,
       "shell_stdin": 0
     },
     "custom_rules_active": 2,
     "pii": {
-      "EMAIL": 0,
+      "EMAIL": 1,
       "IP": 0,
       "PHONE": 0
     }

@@ -1,0 +1,59 @@
+[[PLAN]] I've wired the figma mcp into the workspace and they provided some generic rules to add to our agents.md, the only thing I've changed is the placeholder path to the figma design with the actual path to the InstUI component library.
+we need to review the general instructions and tailor them for the pantoken repo: chiefly the upstream instui and instructure-design-tokens sources and the downstream output styles.
+
+---
+
+[[PLAN]] I've wired the figma mcp into the workspace and they provided some generic rules to add to our agents.md, the only thing I've changed is the placeholder path to the figma design with the actual path to the InstUI component library.
+we need to review the general instructions and tailor them for the pantoken repo: chiefly the upstream instui and instructure-design-tokens sources and the downstream output styles.
+
+---
+
+[[PLAN]] Not sure if it's the place to add it here or elsewhere:
+in the list of pages and sections:
+* the pages under "● COMPONENTS" are the actual list of components
+* the pages under "● INTERNALS" are a mix of general utilities and components.
+* the pages under "● GUIDES" are general guidance for developers
+* The pages under "● NATIVE MOBILE COMPONENTS" can be ignored.
+* the pages under "Native resources" can be ignored.
+* the pages under "● ICONS" can be ignored because they're just lucide.
+* The pages under "● OTHERS" can be ignored.
+* the pages under "Draft" can be ignored
+The figma design page broadly should be using the same upstream design token library as pantoken.
+
+---
+
+[[PLAN]] Not sure if it's the place to add it here or elsewhere:
+in the list of pages and sections:
+* the pages under "● COMPONENTS" are the actual list of components
+* the pages under "● INTERNALS" are a mix of general utilities and components.
+* the pages under "● GUIDES" are general guidance for developers
+* The pages under "● NATIVE MOBILE COMPONENTS" can be ignored.
+* the pages under "Native resources" can be ignored.
+* the pages under "● ICONS" can be ignored because they're just lucide.
+* The pages under "● OTHERS" can be ignored.
+* the pages under "Draft" can be ignored
+The figma design page broadly should be using the same upstream design token library as pantoken.
+
+---
+
+on the components pages some are marked as "Completed" and some are marked as "Ready for dev." Ready for dev is listed for both updated/refreshed components and new components. so we can't use "ready for dev" as an indicator of new components. we should be looking at whether the component is available in `@instructure/ui` - that means that it belongs in formats/components. if it's marked 'ready for dev' and it's NOT in `@instructure/ui` that means it goes in plugins/pantoken/custom-components. once they're released they can be moved to components with an alias in custom-components for the current specified amount of time.
+
+---
+
+on the components pages some are marked as "Completed" and some are marked as "Ready for dev." Ready for dev is listed for both updated/refreshed components and new components. so we can't use "ready for dev" as an indicator of new components. we should be looking at whether the component is available in `@instructure/ui` - that means that it belongs in formats/components. if it's marked 'ready for dev' and it's NOT in `@instructure/ui` that means it goes in plugins/pantoken/custom-components. once they're released they can be moved to components with an alias in custom-components for the current specified amount of time.
+
+---
+
+how do I fix this?
+```
+LLM analysis failed [combined]: No language models available - sign in to GitHub Copilot
+```
+?
+
+---
+
+how do I fix this?
+```
+LLM analysis failed [combined]: No language models available - sign in to GitHub Copilot
+```
+?
