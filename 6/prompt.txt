@@ -1,0 +1,55 @@
+/fix-customization-evaluation-diagnostics
+
+Target file: /Users/dwahl/Scripts/pantoken/AGENTS.md
+
+Use ONLY the diagnostics below for this target file. Do not lint or rewrite the skill file itself.
+
+Field meanings:
+
+- line: 1-based line number where the diagnostic starts (or start-end for a multi-line range).
+
+- lineText: exact text currently present at the diagnostic start line in the target file.
+
+- message: diagnostic description explaining what is wrong and needs to be fixed.
+
+Diagnostics:
+
+ - line: 22
+ - lineText: - For user-facing package refinements, evaluate whether `ai/pantoken-ai` assets (`AGENTS.md`,
+ - message: Ambiguous: "For user-facing package refinements, evaluate whether `ai/pantoken-ai` assets". "User-facing package refinements" is undefined, and "evaluate whether" gives no decision rule or output. The model may update the ai/pantoken-ai assets for every change, skip them without reporting, or edit them without a clear basis. Suggestion: Replace with: 'If a change alters public component names, props or modifiers, install or usage instructions, or published AI-facing guidance, update `ai/pantoken-ai` assets (`AGENTS.md`, `llms.txt`, editor rules, bootstrap skill) in the same PR. If none of these apply, state in the PR description that the assets were checked and need no update.'
+  suggestion: Replace with: 'If a change alters public component names, props or modifiers, install or usage instructions, or published AI-facing guidance, update `ai/pantoken-ai` assets (`AGENTS.md`, `llms.txt`, editor rules, bootstrap skill) in the same PR. If none of these apply, state in the PR description that the assets were checked and need no update.'
+
+
+ - line: 24
+ - lineText: - Run `vp exec changeset` and commit the changeset for every user-visible change before merging.
+ - message: Ambiguous: "for every user-visible change before merging". "User-visible" is undefined. A model could treat only UI or API changes as user-visible, or treat any commit that touches published package output as user-visible. Docs-only, test-only, and internal refactor changes are unclear. The model may skip the changeset for some changes that need one or create one for changes that do not. Suggestion: Replace with: 'Run `vp exec changeset` and commit the changeset for every change that alters published package output, public API, CSS class names, emitted tokens, or documented behavior before merging. Do not add a changeset for test-only, internal-only, or docs-only changes.'
+  suggestion: Replace with: 'Run `vp exec changeset` and commit the changeset for every change that alters published package output, public API, CSS class names, emitted tokens, or documented behavior before merging. Do not add a changeset for test-only, internal-only, or docs-only changes.'
+
+---
+
+/fix-customization-evaluation-diagnostics
+
+Target file: /Users/dwahl/Scripts/pantoken/AGENTS.md
+
+Use ONLY the diagnostics below for this target file. Do not lint or rewrite the skill file itself.
+
+Field meanings:
+
+- line: 1-based line number where the diagnostic starts (or start-end for a multi-line range).
+
+- lineText: exact text currently present at the diagnostic start line in the target file.
+
+- message: diagnostic description explaining what is wrong and needs to be fixed.
+
+Diagnostics:
+
+ - line: 22
+ - lineText: - For user-facing package refinements, evaluate whether `ai/pantoken-ai` assets (`AGENTS.md`,
+ - message: Ambiguous: "For user-facing package refinements, evaluate whether `ai/pantoken-ai` assets". "User-facing package refinements" is undefined, and "evaluate whether" gives no decision rule or output. The model may update the ai/pantoken-ai assets for every change, skip them without reporting, or edit them without a clear basis. Suggestion: Replace with: 'If a change alters public component names, props or modifiers, install or usage instructions, or published AI-facing guidance, update `ai/pantoken-ai` assets (`AGENTS.md`, `llms.txt`, editor rules, bootstrap skill) in the same PR. If none of these apply, state in the PR description that the assets were checked and need no update.'
+  suggestion: Replace with: 'If a change alters public component names, props or modifiers, install or usage instructions, or published AI-facing guidance, update `ai/pantoken-ai` assets (`AGENTS.md`, `llms.txt`, editor rules, bootstrap skill) in the same PR. If none of these apply, state in the PR description that the assets were checked and need no update.'
+
+
+ - line: 24
+ - lineText: - Run `vp exec changeset` and commit the changeset for every user-visible change before merging.
+ - message: Ambiguous: "for every user-visible change before merging". "User-visible" is undefined. A model could treat only UI or API changes as user-visible, or treat any commit that touches published package output as user-visible. Docs-only, test-only, and internal refactor changes are unclear. The model may skip the changeset for some changes that need one or create one for changes that do not. Suggestion: Replace with: 'Run `vp exec changeset` and commit the changeset for every change that alters published package output, public API, CSS class names, emitted tokens, or documented behavior before merging. Do not add a changeset for test-only, internal-only, or docs-only changes.'
+  suggestion: Replace with: 'Run `vp exec changeset` and commit the changeset for every change that alters published package output, public API, CSS class names, emitted tokens, or documented behavior before merging. Do not add a changeset for test-only, internal-only, or docs-only changes.'
