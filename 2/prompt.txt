@@ -1,0 +1,63 @@
+/fix-customization-evaluation-diagnostics
+
+Target file: /Users/dwahl/Scripts/pantoken/AGENTS.md
+
+Use ONLY the diagnostics below for this target file. Do not lint or rewrite the skill file itself.
+
+Field meanings:
+
+- line: 1-based line number where the diagnostic starts (or start-end for a multi-line range).
+
+- lineText: exact text currently present at the diagnostic start line in the target file.
+
+- message: diagnostic description explaining what is wrong and needs to be fixed.
+
+Diagnostics:
+
+ - line: 133
+ - lineText:   distinguish genuine image assets from reusable glyphs.
+ - message: Ambiguous: "distinguish genuine image assets from reusable glyphs". "Genuine image assets" is undefined. A model could treat any Figma-exported raster or SVG as a genuine image asset and download it, or treat any simple icon-like graphic as a reusable glyph and map it to an existing icon API, with no rule for borderline cases. Suggestion: Replace with: 'Use an existing pantoken glyph or icon API when one matches the Figma icon. Download an asset only when it is a raster or illustrative image with no glyph equivalent. If neither applies, report the unmatched icon instead of copying the Figma SVG.'
+  suggestion: Replace with: 'Use an existing pantoken glyph or icon API when one matches the Figma icon. Download an asset only when it is a raster or illustrative image with no glyph equivalent. If neither applies, report the unmatched icon instead of copying the Figma SVG.'
+
+
+ - line: 202
+ - lineText: - `formats/interactions/src/components/*.ts` — 34 IIFE entry points (4 hand-authored, 30 auto-generated) that register listeners on `document.querySelectorAll(".instui-{name}")` and wire behaviors.
+ - message: Conflicts with line 209: "Author behaviors as side-effect-free functions that accept DOM references (host, trigger, target)". The behavior functions are described as side-effect-free, yet the behaviors they support must register DOM listeners and return cleanup objects to tear them down. A model may either avoid attaching listeners inside behaviors, which breaks the interaction wiring, or add listeners without recognizing that they conflict with the stated rule, and then fail to return a matching cleanup.
+
+
+ - line: 209
+ - lineText: - Author behaviors as side-effect-free functions that accept DOM references (host, trigger, target) and return `{cleanup(): void, ...}` if tear-down is needed.
+ - message: Contradiction: "Author behaviors as side-effect-free functions that accept DOM references (host, trigger, target)" conflicts with "`formats/interactions/src/components/*.ts` — 34 IIFE entry points (4 hand-authored, 30 auto-generated) that register listeners on". The behavior functions are described as side-effect-free, yet the behaviors they support must register DOM listeners and return cleanup objects to tear them down. A model may either avoid attaching listeners inside behaviors, which breaks the interaction wiring, or add listeners without recognizing that they conflict with the stated rule, and then fail to return a matching cleanup.
+
+---
+
+/fix-customization-evaluation-diagnostics
+
+Target file: /Users/dwahl/Scripts/pantoken/AGENTS.md
+
+Use ONLY the diagnostics below for this target file. Do not lint or rewrite the skill file itself.
+
+Field meanings:
+
+- line: 1-based line number where the diagnostic starts (or start-end for a multi-line range).
+
+- lineText: exact text currently present at the diagnostic start line in the target file.
+
+- message: diagnostic description explaining what is wrong and needs to be fixed.
+
+Diagnostics:
+
+ - line: 133
+ - lineText:   distinguish genuine image assets from reusable glyphs.
+ - message: Ambiguous: "distinguish genuine image assets from reusable glyphs". "Genuine image assets" is undefined. A model could treat any Figma-exported raster or SVG as a genuine image asset and download it, or treat any simple icon-like graphic as a reusable glyph and map it to an existing icon API, with no rule for borderline cases. Suggestion: Replace with: 'Use an existing pantoken glyph or icon API when one matches the Figma icon. Download an asset only when it is a raster or illustrative image with no glyph equivalent. If neither applies, report the unmatched icon instead of copying the Figma SVG.'
+  suggestion: Replace with: 'Use an existing pantoken glyph or icon API when one matches the Figma icon. Download an asset only when it is a raster or illustrative image with no glyph equivalent. If neither applies, report the unmatched icon instead of copying the Figma SVG.'
+
+
+ - line: 202
+ - lineText: - `formats/interactions/src/components/*.ts` — 34 IIFE entry points (4 hand-authored, 30 auto-generated) that register listeners on `document.querySelectorAll(".instui-{name}")` and wire behaviors.
+ - message: Conflicts with line 209: "Author behaviors as side-effect-free functions that accept DOM references (host, trigger, target)". The behavior functions are described as side-effect-free, yet the behaviors they support must register DOM listeners and return cleanup objects to tear them down. A model may either avoid attaching listeners inside behaviors, which breaks the interaction wiring, or add listeners without recognizing that they conflict with the stated rule, and then fail to return a matching cleanup.
+
+
+ - line: 209
+ - lineText: - Author behaviors as side-effect-free functions that accept DOM references (host, trigger, target) and return `{cleanup(): void, ...}` if tear-down is needed.
+ - message: Contradiction: "Author behaviors as side-effect-free functions that accept DOM references (host, trigger, target)" conflicts with "`formats/interactions/src/components/*.ts` — 34 IIFE entry points (4 hand-authored, 30 auto-generated) that register listeners on". The behavior functions are described as side-effect-free, yet the behaviors they support must register DOM listeners and return cleanup objects to tear them down. A model may either avoid attaching listeners inside behaviors, which breaks the interaction wiring, or add listeners without recognizing that they conflict with the stated rule, and then fail to return a matching cleanup.
