@@ -3,6 +3,23 @@
 `@pantoken/components` is the semantic RSCSS CSS API — a parameterized generator, not hand-written
 CSS. Each documented record is one file; the bucket `index.ts` is a barrel + registry, not a monolith.
 
+## Upstream contracts and Figma
+
+Version-matched InstUI source defines upstream component contracts; Instructure design tokens feed
+pantoken's canonical IR. Use the existing IR token names and aliases in component CSS. The InstUI
+Figma library provides visual evidence and is expected to share that upstream token library, but
+versions, bindings, and modes can drift. Report discrepancies and ask before changing public
+contracts; don't hide differences with invented tokens or hardcoded values. For library navigation,
+MCP retrieval, output ownership, and visual validation, follow the
+[Figma workflow in AGENTS.md](../../AGENTS.md#figma-mcp-integration).
+
+Component ownership follows exports in the workspace's released version of `@instructure/ui`, not
+Figma's `Completed` or `Ready for dev` labels. Released components belong in `formats/components`;
+`Ready for dev` components absent from those exports belong in `plugins/pantoken/custom-components`.
+When adopted upstream, promote them with a functional deprecated custom-components alias for the
+existing compatibility period, following the
+[promotion policy](build-and-docs.md#upstream-component-follow-up).
+
 ## Automatic user preferences
 
 User preferences are intrinsic behavior, not modifiers. Gate decorative transitions and animations
