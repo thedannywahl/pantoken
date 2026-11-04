@@ -1,0 +1,43 @@
+/fix-customization-evaluation-diagnostics
+
+Target file: /Users/dwahl/Scripts/pantoken/AGENTS.md
+
+Use ONLY the diagnostics below for this target file. Do not lint or rewrite the skill file itself.
+
+Field meanings:
+
+- line: 1-based line number where the diagnostic starts (or start-end for a multi-line range).
+
+- lineText: exact text currently present at the diagnostic start line in the target file.
+
+- message: diagnostic description explaining what is wrong and needs to be fixed.
+
+Diagnostics:
+
+ - line: 108
+ - lineText:    Read the relevant `● GUIDES` guidance; use `get_variable_defs` when needed to resolve bindings.
+ - message: Missing error handling: The `get_variable_defs` call fails or returns no bindings for a variable the target uses. The prompt defines failure handling for `get_design_context` and `get_screenshot` but not for this call, so the model has no rule for resolving the binding.. Suggestion: Add: 'If `get_variable_defs` fails or returns no binding for a used variable, report the error and the node ID, do not infer the token value from the design context or screenshot, and stop until the user confirms how to proceed.'
+  suggestion: Add: 'If `get_variable_defs` fails or returns no binding for a used variable, report the error and the node ID, do not infer the token value from the design context or screenshot, and stop until the user confirms how to proceed.'
+
+---
+
+/fix-customization-evaluation-diagnostics
+
+Target file: /Users/dwahl/Scripts/pantoken/AGENTS.md
+
+Use ONLY the diagnostics below for this target file. Do not lint or rewrite the skill file itself.
+
+Field meanings:
+
+- line: 1-based line number where the diagnostic starts (or start-end for a multi-line range).
+
+- lineText: exact text currently present at the diagnostic start line in the target file.
+
+- message: diagnostic description explaining what is wrong and needs to be fixed.
+
+Diagnostics:
+
+ - line: 108
+ - lineText:    Read the relevant `● GUIDES` guidance; use `get_variable_defs` when needed to resolve bindings.
+ - message: Missing error handling: The `get_variable_defs` call fails or returns no bindings for a variable the target uses. The prompt defines failure handling for `get_design_context` and `get_screenshot` but not for this call, so the model has no rule for resolving the binding.. Suggestion: Add: 'If `get_variable_defs` fails or returns no binding for a used variable, report the error and the node ID, do not infer the token value from the design context or screenshot, and stop until the user confirms how to proceed.'
+  suggestion: Add: 'If `get_variable_defs` fails or returns no binding for a used variable, report the error and the node ID, do not infer the token value from the design context or screenshot, and stop until the user confirms how to proceed.'
