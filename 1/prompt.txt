@@ -1,0 +1,43 @@
+/fix-customization-evaluation-diagnostics
+
+Target file: /Users/dwahl/Scripts/pantoken/AGENTS.md
+
+Use ONLY the diagnostics below for this target file. Do not lint or rewrite the skill file itself.
+
+Field meanings:
+
+- line: 1-based line number where the diagnostic starts (or start-end for a multi-line range).
+
+- lineText: exact text currently present at the diagnostic start line in the target file.
+
+- message: diagnostic description explaining what is wrong and needs to be fixed.
+
+Diagnostics:
+
+ - line: 123
+ - lineText: 5e. Record a pass/fail result for each applicable WCAG check.
+ - message: Ambiguous: "Record a pass/fail result for each applicable WCAG check.". "Each applicable WCAG check" does not define which WCAG success criteria apply to a given component or change. A model could record results for a few criteria it picks from memory, for every criterion in WCAG 2.2, or for only the criteria tied to the component's role. These choices produce different and non-comparable accessibility records. Suggestion: Replace with: 'Record a pass/fail result for each WCAG 2.2 success criterion listed for the component in `docs/conventions/authoring.md`, plus 2.1.1 Keyboard, 2.4.7 Focus Visible, 1.4.3 Contrast (Minimum), and 1.4.11 Non-text Contrast for any interactive element. Mark a criterion as not applicable only with a stated reason.'
+  suggestion: Replace with: 'Record a pass/fail result for each WCAG 2.2 success criterion listed for the component in `docs/conventions/authoring.md`, plus 2.1.1 Keyboard, 2.4.7 Focus Visible, 1.4.3 Contrast (Minimum), and 1.4.11 Non-text Contrast for any interactive element. Mark a criterion as not applicable only with a stated reason.'
+
+---
+
+/fix-customization-evaluation-diagnostics
+
+Target file: /Users/dwahl/Scripts/pantoken/AGENTS.md
+
+Use ONLY the diagnostics below for this target file. Do not lint or rewrite the skill file itself.
+
+Field meanings:
+
+- line: 1-based line number where the diagnostic starts (or start-end for a multi-line range).
+
+- lineText: exact text currently present at the diagnostic start line in the target file.
+
+- message: diagnostic description explaining what is wrong and needs to be fixed.
+
+Diagnostics:
+
+ - line: 123
+ - lineText: 5e. Record a pass/fail result for each applicable WCAG check.
+ - message: Ambiguous: "Record a pass/fail result for each applicable WCAG check.". "Each applicable WCAG check" does not define which WCAG success criteria apply to a given component or change. A model could record results for a few criteria it picks from memory, for every criterion in WCAG 2.2, or for only the criteria tied to the component's role. These choices produce different and non-comparable accessibility records. Suggestion: Replace with: 'Record a pass/fail result for each WCAG 2.2 success criterion listed for the component in `docs/conventions/authoring.md`, plus 2.1.1 Keyboard, 2.4.7 Focus Visible, 1.4.3 Contrast (Minimum), and 1.4.11 Non-text Contrast for any interactive element. Mark a criterion as not applicable only with a stated reason.'
+  suggestion: Replace with: 'Record a pass/fail result for each WCAG 2.2 success criterion listed for the component in `docs/conventions/authoring.md`, plus 2.1.1 Keyboard, 2.4.7 Focus Visible, 1.4.3 Contrast (Minimum), and 1.4.11 Non-text Contrast for any interactive element. Mark a criterion as not applicable only with a stated reason.'
