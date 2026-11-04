@@ -1,0 +1,69 @@
+/fix-customization-evaluation-diagnostics
+
+Target file: /Users/dwahl/Scripts/pantoken/AGENTS.md
+
+Use ONLY the diagnostics below for this target file. Do not lint or rewrite the skill file itself.
+
+Field meanings:
+
+- line: 1-based line number where the diagnostic starts (or start-end for a multi-line range).
+
+- lineText: exact text currently present at the diagnostic start line in the target file.
+
+- message: diagnostic description explaining what is wrong and needs to be fixed.
+
+Diagnostics:
+
+ - line: 26-27
+ - lineText: - Run `vp exec changeset` and commit the changeset for every change that alters published package
+ - message: Contradiction: "Run `vp exec changeset` and commit the changeset for every change that alters published package
+  output, public API, CSS class names, emitted tokens, or documented behavior before merging." conflicts with "Do not
+  add a changeset for test-only, internal-only, or docs-only changes.". A change that only updates docs but alters documented behavior matches both rules. One rule requires a changeset and the other forbids one, so the model may add a changeset for a docs-only PR or skip it for a behavior change described in docs. The prompt needs a precedence rule, such as 'If a docs-only change documents a behavior change made in the same PR, the behavior change requires a changeset.'
+
+
+ - line: 27-28
+ - lineText:   output, public API, CSS class names, emitted tokens, or documented behavior before merging. Do not
+ - message: Conflicts with line 26: "Run `vp exec changeset` and commit the changeset for every change that alters published package
+  output, public API, CSS class names, emitted tokens, or documented behavior before merging.". A change that only updates docs but alters documented behavior matches both rules. One rule requires a changeset and the other forbids one, so the model may add a changeset for a docs-only PR or skip it for a behavior change described in docs. The prompt needs a precedence rule, such as 'If a docs-only change documents a behavior change made in the same PR, the behavior change requires a changeset.'
+
+
+ - line: 148
+ - lineText:   retain applicable attribution. Report unavailable assets explicitly.
+ - message: Ambiguous: "retain applicable attribution". 'Applicable attribution' is undefined. A model could add no attribution, add a generic credit line, add a license notice, or add a full source reference for each asset, and these produce different files and PR content. Suggestion: Replace with: 'Retain attribution required by the asset's license or the Figma file's terms: copy the license name and source URL into the asset's directory README or the docs credits page.'
+  suggestion: Replace with: 'Retain attribution required by the asset's license or the Figma file's terms: copy the license name and source URL into the asset's directory README or the docs credits page.'
+
+---
+
+/fix-customization-evaluation-diagnostics
+
+Target file: /Users/dwahl/Scripts/pantoken/AGENTS.md
+
+Use ONLY the diagnostics below for this target file. Do not lint or rewrite the skill file itself.
+
+Field meanings:
+
+- line: 1-based line number where the diagnostic starts (or start-end for a multi-line range).
+
+- lineText: exact text currently present at the diagnostic start line in the target file.
+
+- message: diagnostic description explaining what is wrong and needs to be fixed.
+
+Diagnostics:
+
+ - line: 26-27
+ - lineText: - Run `vp exec changeset` and commit the changeset for every change that alters published package
+ - message: Contradiction: "Run `vp exec changeset` and commit the changeset for every change that alters published package
+  output, public API, CSS class names, emitted tokens, or documented behavior before merging." conflicts with "Do not
+  add a changeset for test-only, internal-only, or docs-only changes.". A change that only updates docs but alters documented behavior matches both rules. One rule requires a changeset and the other forbids one, so the model may add a changeset for a docs-only PR or skip it for a behavior change described in docs. The prompt needs a precedence rule, such as 'If a docs-only change documents a behavior change made in the same PR, the behavior change requires a changeset.'
+
+
+ - line: 27-28
+ - lineText:   output, public API, CSS class names, emitted tokens, or documented behavior before merging. Do not
+ - message: Conflicts with line 26: "Run `vp exec changeset` and commit the changeset for every change that alters published package
+  output, public API, CSS class names, emitted tokens, or documented behavior before merging.". A change that only updates docs but alters documented behavior matches both rules. One rule requires a changeset and the other forbids one, so the model may add a changeset for a docs-only PR or skip it for a behavior change described in docs. The prompt needs a precedence rule, such as 'If a docs-only change documents a behavior change made in the same PR, the behavior change requires a changeset.'
+
+
+ - line: 148
+ - lineText:   retain applicable attribution. Report unavailable assets explicitly.
+ - message: Ambiguous: "retain applicable attribution". 'Applicable attribution' is undefined. A model could add no attribution, add a generic credit line, add a license notice, or add a full source reference for each asset, and these produce different files and PR content. Suggestion: Replace with: 'Retain attribution required by the asset's license or the Figma file's terms: copy the license name and source URL into the asset's directory README or the docs credits page.'
+  suggestion: Replace with: 'Retain attribution required by the asset's license or the Figma file's terms: copy the license name and source URL into the asset's directory README or the docs credits page.'

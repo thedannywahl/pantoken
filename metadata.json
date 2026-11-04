@@ -3,7 +3,7 @@
   "checkpoint_id": "01M6KPJGBWSY6NE3WTSPDK0VJT",
   "strategy": "manual-commit",
   "branch": "figma-mcp",
-  "checkpoints_count": 3,
+  "checkpoints_count": 4,
   "files_touched": [
     ".mcp.json",
     "AGENTS.md",
@@ -30,6 +30,13 @@
       "compact_transcript": "/2/transcript.jsonl",
       "content_hash": "/2/content_hash.txt",
       "prompt": "/2/prompt.txt"
+    },
+    {
+      "metadata": "/3/metadata.json",
+      "transcript": "/3/full.jsonl",
+      "compact_transcript": "/3/transcript.jsonl",
+      "content_hash": "/3/content_hash.txt",
+      "prompt": "/3/prompt.txt"
     }
   ],
   "token_usage": {
@@ -40,7 +47,7 @@
     "api_call_count": 0
   },
   "redaction": {
-    "replacements": 403,
+    "replacements": 685,
     "layers": {
       "betterleaks": 0,
       "connection_string": 0,
@@ -48,7 +55,7 @@
       "credential_value": 0,
       "credentialed_uri": 0,
       "custom": 0,
-      "entropy": 939,
+      "entropy": 1889,
       "goredact": 0,
       "key_context": 0,
       "pii": 0,
