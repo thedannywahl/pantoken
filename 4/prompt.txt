@@ -1,0 +1,63 @@
+/fix-customization-evaluation-diagnostics
+
+Target file: /Users/dwahl/Scripts/pantoken/AGENTS.md
+
+Use ONLY the diagnostics below for this target file. Do not lint or rewrite the skill file itself.
+
+Field meanings:
+
+- line: 1-based line number where the diagnostic starts (or start-end for a multi-line range).
+
+- lineText: exact text currently present at the diagnostic start line in the target file.
+
+- message: diagnostic description explaining what is wrong and needs to be fixed.
+
+Diagnostics:
+
+ - line: 108
+ - lineText:    Read the relevant `● GUIDES` guidance; use `get_variable_defs` when needed to resolve bindings.
+ - message: Cognitive load (constraint-overload): Step 2 combines several unrelated branches in one paragraph: the screenshot failure path, the missing-variant stop rule, the GUIDES reading task, and the get_variable_defs failure path. The variable-defs failure rule appears after a sentence about reading guides, so a model can easily skip it or apply the missing-variant stop to a binding failure.. Suggestion: Split step 2 into sub-steps 2a (get_screenshot and failure handling), 2b (missing variant handling), 2c (read GUIDES), and 2d (get_variable_defs and its failure handling), each with its own stop condition.
+  suggestion: Split step 2 into sub-steps 2a (get_screenshot and failure handling), 2b (missing variant handling), 2c (read GUIDES), and 2d (get_variable_defs and its failure handling), each with its own stop condition.
+
+
+ - line: 232
+ - lineText: - Always write tests for new behaviors in `tests/` (happy-dom environment). Test coverage must meet
+ - message: Contradiction: "Always write tests for new behaviors in `tests/` (happy-dom environment)." conflicts with "Behavioral shadow-DOM tests aren't possible without a DOM env; verify behavior in a real browser.". The first rule requires automated tests for every new behavior in happy-dom, but the second says shadow-DOM behavior cannot be tested without a DOM environment and must be verified in a real browser. For behaviors that touch shadow roots, the model may write happy-dom tests that do not exercise the real behavior, or skip the test and substitute manual verification, which breaks the required coverage gate.
+
+
+ - line: 253
+ - lineText: - Behavioral shadow-DOM tests aren't possible without a DOM env; verify behavior in a real browser.
+ - message: Conflicts with line 232: "Always write tests for new behaviors in `tests/` (happy-dom environment).". The first rule requires automated tests for every new behavior in happy-dom, but the second says shadow-DOM behavior cannot be tested without a DOM environment and must be verified in a real browser. For behaviors that touch shadow roots, the model may write happy-dom tests that do not exercise the real behavior, or skip the test and substitute manual verification, which breaks the required coverage gate.
+
+---
+
+/fix-customization-evaluation-diagnostics
+
+Target file: /Users/dwahl/Scripts/pantoken/AGENTS.md
+
+Use ONLY the diagnostics below for this target file. Do not lint or rewrite the skill file itself.
+
+Field meanings:
+
+- line: 1-based line number where the diagnostic starts (or start-end for a multi-line range).
+
+- lineText: exact text currently present at the diagnostic start line in the target file.
+
+- message: diagnostic description explaining what is wrong and needs to be fixed.
+
+Diagnostics:
+
+ - line: 108
+ - lineText:    Read the relevant `● GUIDES` guidance; use `get_variable_defs` when needed to resolve bindings.
+ - message: Cognitive load (constraint-overload): Step 2 combines several unrelated branches in one paragraph: the screenshot failure path, the missing-variant stop rule, the GUIDES reading task, and the get_variable_defs failure path. The variable-defs failure rule appears after a sentence about reading guides, so a model can easily skip it or apply the missing-variant stop to a binding failure.. Suggestion: Split step 2 into sub-steps 2a (get_screenshot and failure handling), 2b (missing variant handling), 2c (read GUIDES), and 2d (get_variable_defs and its failure handling), each with its own stop condition.
+  suggestion: Split step 2 into sub-steps 2a (get_screenshot and failure handling), 2b (missing variant handling), 2c (read GUIDES), and 2d (get_variable_defs and its failure handling), each with its own stop condition.
+
+
+ - line: 232
+ - lineText: - Always write tests for new behaviors in `tests/` (happy-dom environment). Test coverage must meet
+ - message: Contradiction: "Always write tests for new behaviors in `tests/` (happy-dom environment)." conflicts with "Behavioral shadow-DOM tests aren't possible without a DOM env; verify behavior in a real browser.". The first rule requires automated tests for every new behavior in happy-dom, but the second says shadow-DOM behavior cannot be tested without a DOM environment and must be verified in a real browser. For behaviors that touch shadow roots, the model may write happy-dom tests that do not exercise the real behavior, or skip the test and substitute manual verification, which breaks the required coverage gate.
+
+
+ - line: 253
+ - lineText: - Behavioral shadow-DOM tests aren't possible without a DOM env; verify behavior in a real browser.
+ - message: Conflicts with line 232: "Always write tests for new behaviors in `tests/` (happy-dom environment).". The first rule requires automated tests for every new behavior in happy-dom, but the second says shadow-DOM behavior cannot be tested without a DOM environment and must be verified in a real browser. For behaviors that touch shadow roots, the model may write happy-dom tests that do not exercise the real behavior, or skip the test and substitute manual verification, which breaks the required coverage gate.
