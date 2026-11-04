@@ -1,0 +1,43 @@
+/fix-customization-evaluation-diagnostics
+
+Target file: /Users/dwahl/Scripts/pantoken/AGENTS.md
+
+Use ONLY the diagnostics below for this target file. Do not lint or rewrite the skill file itself.
+
+Field meanings:
+
+- line: 1-based line number where the diagnostic starts (or start-end for a multi-line range).
+
+- lineText: exact text currently present at the diagnostic start line in the target file.
+
+- message: diagnostic description explaining what is wrong and needs to be fixed.
+
+Diagnostics:
+
+ - line: 109
+ - lineText: 2d. Use `get_variable_defs` when needed to resolve bindings. If it fails or returns no binding for
+ - message: Ambiguous: "Use `get_variable_defs` when needed to resolve bindings.". The trigger condition 'when needed' does not say which situations require the call. A model could call it for every target, only when a design value is unclear, or only when a token name is missing from the IR. Runs would then differ in whether binding evidence is gathered before implementation, so token-drift checks in step 3 may or may not happen. Suggestion: Replace with: 'Run `get_variable_defs` for every variable used by the target node before comparing tokens in step 3, and record the returned binding for each one.'
+  suggestion: Replace with: 'Run `get_variable_defs` for every variable used by the target node before comparing tokens in step 3, and record the returned binding for each one.'
+
+---
+
+/fix-customization-evaluation-diagnostics
+
+Target file: /Users/dwahl/Scripts/pantoken/AGENTS.md
+
+Use ONLY the diagnostics below for this target file. Do not lint or rewrite the skill file itself.
+
+Field meanings:
+
+- line: 1-based line number where the diagnostic starts (or start-end for a multi-line range).
+
+- lineText: exact text currently present at the diagnostic start line in the target file.
+
+- message: diagnostic description explaining what is wrong and needs to be fixed.
+
+Diagnostics:
+
+ - line: 109
+ - lineText: 2d. Use `get_variable_defs` when needed to resolve bindings. If it fails or returns no binding for
+ - message: Ambiguous: "Use `get_variable_defs` when needed to resolve bindings.". The trigger condition 'when needed' does not say which situations require the call. A model could call it for every target, only when a design value is unclear, or only when a token name is missing from the IR. Runs would then differ in whether binding evidence is gathered before implementation, so token-drift checks in step 3 may or may not happen. Suggestion: Replace with: 'Run `get_variable_defs` for every variable used by the target node before comparing tokens in step 3, and record the returned binding for each one.'
+  suggestion: Replace with: 'Run `get_variable_defs` for every variable used by the target node before comparing tokens in step 3, and record the returned binding for each one.'
