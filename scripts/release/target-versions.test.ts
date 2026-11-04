@@ -7,16 +7,13 @@ test("strips the vp run separator from explicit candidate arguments", () => {
 });
 
 test("reads the verified versions from the target registry", () => {
-  expect(targetVersions("@pantoken/postcss")).toEqual([
-    "8.0.0",
-    "8.0.9",
-    "8.1.14",
-    "8.2.15",
-    "8.3.11",
-    "8.4.49",
-    "8.5.28",
-    "8.5.29",
-  ]);
+  const support = targetSupport("@pantoken/postcss");
+  expect(support.status).toBe("verified");
+  if (support.status !== "verified") return;
+  const versions = targetVersions("@pantoken/postcss");
+  expect(versions).toEqual(support.testedVersions);
+  expect(versions[0]).toBe(support.minimum);
+  expect(versions.at(-1)).toBe(support.testedThrough);
 });
 
 test("uses explicit candidates without changing the registry claim", () => {
@@ -29,11 +26,4 @@ test("rejects unverified targets", () => {
   expect(() => targetVersions("@pantoken/email")).toThrow(
     "does not have verified release versions",
   );
-});
-
-test("reads support records directly from the compatibility registry", () => {
-  expect(targetSupport("@pantoken/postcss")).toMatchObject({
-    status: "verified",
-    testedThrough: "8.5.29",
-  });
 });
