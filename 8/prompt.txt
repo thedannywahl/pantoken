@@ -1,0 +1,75 @@
+/fix-customization-evaluation-diagnostics
+
+Target file: /Users/dwahl/Scripts/pantoken/AGENTS.md
+
+Use ONLY the diagnostics below for this target file. Do not lint or rewrite the skill file itself.
+
+Field meanings:
+
+- line: 1-based line number where the diagnostic starts (or start-end for a multi-line range).
+
+- lineText: exact text currently present at the diagnostic start line in the target file.
+
+- message: diagnostic description explaining what is wrong and needs to be fixed.
+
+Diagnostics:
+
+ - line: 1
+ - lineText: # Agents
+ - message: Ambiguous: "`INTERNALS`                | Mixed utilities and components; inspect each target's role.". 'Inspect each target's role' gives no decision rule. A model could classify an internal item as a component from its name, from its Figma variants, or from its upstream export. Those methods can give different answers, so the same node could be handled as a component in one run and a utility in another. Suggestion: Replace with: 'Mixed utilities and components; classify each target as a component only if `@instructure/ui` exports it under that name in the workspace's released version, otherwise treat it as a utility and report it.'
+  suggestion: Replace with: 'Mixed utilities and components; classify each target as a component only if `@instructure/ui` exports it under that name in the workspace's released version, otherwise treat it as a utility and report it.'
+
+
+ - line: 77
+ - lineText: - Check whether the component is exported by the workspace's released version of `@instructure/ui`.
+ - message: Coverage gap: The prompt requires checking whether a component is exported by the released `@instructure/ui`, but does not say how to perform that check. The model may rely on memory, a guessed import path, or a single file, which can give false negatives.. Suggestion: Add after this bullet: 'Verify exports by inspecting the installed `@instructure/ui` package in `node_modules` at the version locked in the lockfile, checking its public entry points. Do not rely on memory or the GitHub `main` branch.'
+  suggestion: Add after this bullet: 'Verify exports by inspecting the installed `@instructure/ui` package in `node_modules` at the version locked in the lockfile, checking its public entry points. Do not rely on memory or the GitHub `main` branch.'
+
+
+ - line: 112
+ - lineText: 5c. Test with a screen reader.
+ - message: Ambiguous: "Test with a screen reader.". The prompt does not name a screen reader or platform. A model could simulate screen reader output from the DOM or accessibility tree, claim a test ran without a real tool, or pick an arbitrary reader. The recorded WCAG pass/fail results would then be unreliable. Suggestion: Replace with: 'Test with a screen reader: use NVDA with Firefox or Chromium on Windows, or VoiceOver with Safari on macOS. If no screen reader can be run, record the check as not tested and state that in the PR description.'
+  suggestion: Replace with: 'Test with a screen reader: use NVDA with Firefox or Chromium on Windows, or VoiceOver with Safari on macOS. If no screen reader can be run, record the check as not tested and state that in the PR description.'
+
+---
+
+/fix-customization-evaluation-diagnostics
+
+Target file: /Users/dwahl/Scripts/pantoken/AGENTS.md
+
+Use ONLY the diagnostics below for this target file. Do not lint or rewrite the skill file itself.
+
+Field meanings:
+
+- line: 1-based line number where the diagnostic starts (or start-end for a multi-line range).
+
+- lineText: exact text currently present at the diagnostic start line in the target file.
+
+- message: diagnostic description explaining what is wrong and needs to be fixed.
+
+Diagnostics:
+
+ - line: 1
+ - lineText: # Agents
+ - message: Ambiguous: "`INTERNALS`                | Mixed utilities and components; inspect each target's role.". 'Inspect each target's role' gives no decision rule. A model could classify an internal item as a component from its name, from its Figma variants, or from its upstream export. Those methods can give different answers, so the same node could be handled as a component in one run and a utility in another. Suggestion: Replace with: 'Mixed utilities and components; classify each target as a component only if `@instructure/ui` exports it under that name in the workspace's released version, otherwise treat it as a utility and report it.'
+  suggestion: Replace with: 'Mixed utilities and components; classify each target as a component only if `@instructure/ui` exports it under that name in the workspace's released version, otherwise treat it as a utility and report it.'
+
+
+ - line: 77
+ - lineText: - Check whether the component is exported by the workspace's released version of `@instructure/ui`.
+ - message: Coverage gap: The prompt requires checking whether a component is exported by the released `@instructure/ui`, but does not say how to perform that check. The model may rely on memory, a guessed import path, or a single file, which can give false negatives.. Suggestion: Add after this bullet: 'Verify exports by inspecting the installed `@instructure/ui` package in `node_modules` at the version locked in the lockfile, checking its public entry points. Do not rely on memory or the GitHub `main` branch.'
+  suggestion: Add after this bullet: 'Verify exports by inspecting the installed `@instructure/ui` package in `node_modules` at the version locked in the lockfile, checking its public entry points. Do not rely on memory or the GitHub `main` branch.'
+
+
+ - line: 112
+ - lineText: 5c. Test with a screen reader.
+ - message: Ambiguous: "Test with a screen reader.". The prompt does not name a screen reader or platform. A model could simulate screen reader output from the DOM or accessibility tree, claim a test ran without a real tool, or pick an arbitrary reader. The recorded WCAG pass/fail results would then be unreliable. Suggestion: Replace with: 'Test with a screen reader: use NVDA with Firefox or Chromium on Windows, or VoiceOver with Safari on macOS. If no screen reader can be run, record the check as not tested and state that in the PR description.'
+  suggestion: Replace with: 'Test with a screen reader: use NVDA with Firefox or Chromium on Windows, or VoiceOver with Safari on macOS. If no screen reader can be run, record the check as not tested and state that in the PR description.'
+
+---
+
+actually the "test with a screenreader" we have automatica11y integrated and it can use guidepup as a virtual screenreader and provided back a report.
+
+---
+
+actually the "test with a screenreader" we have automatica11y integrated and it can use guidepup as a virtual screenreader and provided back a report.

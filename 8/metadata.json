@@ -1,0 +1,76 @@
+{
+  "cli_version": "0.12.2",
+  "checkpoint_id": "01M6KPJGBWSY6NE3WTSPDK0VJT",
+  "session_id": "9ddfbd51-1877-4e9d-b5e5-9d24bc3dfa21",
+  "strategy": "manual-commit",
+  "created_at": "2026-11-04T16:34:18.027122Z",
+  "branch": "figma-mcp",
+  "checkpoints_count": 2,
+  "save_step_count": 2,
+  "files_touched": [
+    "AGENTS.md",
+    "docs/conventions/authoring.md"
+  ],
+  "agent": "Copilot CLI",
+  "model": "gpt-6-luna",
+  "turn_id": "7bedcfd5381c",
+  "compact_transcript_start": 0,
+  "token_usage": {
+    "input_tokens": 0,
+    "cache_creation_tokens": 0,
+    "cache_read_tokens": 0,
+    "output_tokens": 0,
+    "api_call_count": 0
+  },
+  "redaction": {
+    "replacements": 35,
+    "layers": {
+      "betterleaks": 0,
+      "connection_string": 0,
+      "credential_key": 0,
+      "credential_value": 0,
+      "credentialed_uri": 0,
+      "custom": 0,
+      "entropy": 1524,
+      "goredact": 0,
+      "key_context": 0,
+      "pii": 0,
+      "provider_token": 0,
+      "shell_stdin": 0
+    },
+    "custom_rules_active": 2,
+    "pii": {
+      "EMAIL": 0,
+      "IP": 0,
+      "PHONE": 0
+    }
+  },
+  "skill_events_version": 1,
+  "skill_events": [
+    {
+      "id": "prompt-skill-copilot-cli-fix-customization-evaluation-diagnostics-2026-11-04T16:17:17.283Z",
+      "event_type": "prompt_invocation",
+      "skill": {
+        "name": "fix-customization-evaluation-diagnostics"
+      },
+      "source": {
+        "agent": "copilot-cli",
+        "signal": "prompt_slash_command",
+        "confidence": "explicit"
+      },
+      "turn_id": "66f77979fd2c",
+      "timestamp": "2026-11-04T16:17:17.283Z",
+      "native": {
+        "command": "/fix-customization-evaluation-diagnostics"
+      },
+      "collapse": {
+        "target": "user_message",
+        "label": "/fix-customization-evaluation-diagnostics",
+        "default_collapsed": true
+      }
+    }
+  ],
+  "session_metrics": {
+    "turn_count": 2
+  }
+}
