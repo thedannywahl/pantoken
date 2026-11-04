@@ -1,0 +1,43 @@
+/fix-customization-evaluation-diagnostics
+
+Target file: /Users/dwahl/Scripts/pantoken/AGENTS.md
+
+Use ONLY the diagnostics below for this target file. Do not lint or rewrite the skill file itself.
+
+Field meanings:
+
+- line: 1-based line number where the diagnostic starts (or start-end for a multi-line range).
+
+- lineText: exact text currently present at the diagnostic start line in the target file.
+
+- message: diagnostic description explaining what is wrong and needs to be fixed.
+
+Diagnostics:
+
+ - line: 108
+ - lineText: 2c. Read the relevant `● GUIDES` guidance before proceeding to implementation.
+ - message: Ambiguous: "Read the relevant `● GUIDES` guidance before proceeding to implementation.". "Relevant" is undefined. A model could read every GUIDES page, read only the page with the exact component name, read none because no page matches, or read a page for a different component. Each choice leads to different implementation conventions, and the run cannot be checked against a fixed set of sources. Suggestion: Replace with: 'Read each `● GUIDES` page whose title names the target component. List the pages read in the PR description. If no page matches, report that and stop until the user confirms how to proceed.'
+  suggestion: Replace with: 'Read each `● GUIDES` page whose title names the target component. List the pages read in the PR description. If no page matches, report that and stop until the user confirms how to proceed.'
+
+---
+
+/fix-customization-evaluation-diagnostics
+
+Target file: /Users/dwahl/Scripts/pantoken/AGENTS.md
+
+Use ONLY the diagnostics below for this target file. Do not lint or rewrite the skill file itself.
+
+Field meanings:
+
+- line: 1-based line number where the diagnostic starts (or start-end for a multi-line range).
+
+- lineText: exact text currently present at the diagnostic start line in the target file.
+
+- message: diagnostic description explaining what is wrong and needs to be fixed.
+
+Diagnostics:
+
+ - line: 108
+ - lineText: 2c. Read the relevant `● GUIDES` guidance before proceeding to implementation.
+ - message: Ambiguous: "Read the relevant `● GUIDES` guidance before proceeding to implementation.". "Relevant" is undefined. A model could read every GUIDES page, read only the page with the exact component name, read none because no page matches, or read a page for a different component. Each choice leads to different implementation conventions, and the run cannot be checked against a fixed set of sources. Suggestion: Replace with: 'Read each `● GUIDES` page whose title names the target component. List the pages read in the PR description. If no page matches, report that and stop until the user confirms how to proceed.'
+  suggestion: Replace with: 'Read each `● GUIDES` page whose title names the target component. List the pages read in the PR description. If no page matches, report that and stop until the user confirms how to proceed.'
