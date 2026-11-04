@@ -1,0 +1,57 @@
+/fix-customization-evaluation-diagnostics
+
+Target file: /Users/dwahl/Scripts/pantoken/AGENTS.md
+
+Use ONLY the diagnostics below for this target file. Do not lint or rewrite the skill file itself.
+
+Field meanings:
+
+- line: 1-based line number where the diagnostic starts (or start-end for a multi-line range).
+
+- lineText: exact text currently present at the diagnostic start line in the target file.
+
+- message: diagnostic description explaining what is wrong and needs to be fixed.
+
+Diagnostics:
+
+ - line: 79-80
+ - lineText:   Verify exports by inspecting the installed `@instructure/ui` package in `node_modules` at the
+ - message: Ambiguous: "Verify exports by inspecting the installed `@instructure/ui` package in `node_modules` at the
+  version locked in the lockfile, checking its public entry points.". The prompt does not say whether the package may be installed or inspected under a different method when `node_modules` is missing or incomplete. A model could install dependencies, read the lockfile version from a different source, or treat the missing package as a reason to classify the component by Figma status. Ownership decisions depend on this step. Suggestion: Replace with: 'Verify exports by inspecting the installed `@instructure/ui` package in `node_modules` at the version locked in the lockfile, checking its public entry points. If `node_modules` does not contain that version, report the missing evidence and stop until the user confirms how to proceed.'
+  suggestion: Replace with: 'Verify exports by inspecting the installed `@instructure/ui` package in `node_modules` at the version locked in the lockfile, checking its public entry points. If `node_modules` does not contain that version, report the missing evidence and stop until the user confirms how to proceed.'
+
+
+ - line: 90-91
+ - lineText: - An unavailable export lookup isn't proof of absence. Report missing evidence; don't infer
+ - message: Missing error handling: The workspace's released `@instructure/ui` cannot be inspected, so export evidence is unavailable. The prompt says only to report missing evidence, which leaves the ownership decision (formats/components vs. custom-components) undefined.. Suggestion: Add: 'If the export lookup cannot be completed, report the missing evidence with the node ID and stop until the user confirms which output layer to use before implementing.'
+  suggestion: Add: 'If the export lookup cannot be completed, report the missing evidence with the node ID and stop until the user confirms which output layer to use before implementing.'
+
+---
+
+/fix-customization-evaluation-diagnostics
+
+Target file: /Users/dwahl/Scripts/pantoken/AGENTS.md
+
+Use ONLY the diagnostics below for this target file. Do not lint or rewrite the skill file itself.
+
+Field meanings:
+
+- line: 1-based line number where the diagnostic starts (or start-end for a multi-line range).
+
+- lineText: exact text currently present at the diagnostic start line in the target file.
+
+- message: diagnostic description explaining what is wrong and needs to be fixed.
+
+Diagnostics:
+
+ - line: 79-80
+ - lineText:   Verify exports by inspecting the installed `@instructure/ui` package in `node_modules` at the
+ - message: Ambiguous: "Verify exports by inspecting the installed `@instructure/ui` package in `node_modules` at the
+  version locked in the lockfile, checking its public entry points.". The prompt does not say whether the package may be installed or inspected under a different method when `node_modules` is missing or incomplete. A model could install dependencies, read the lockfile version from a different source, or treat the missing package as a reason to classify the component by Figma status. Ownership decisions depend on this step. Suggestion: Replace with: 'Verify exports by inspecting the installed `@instructure/ui` package in `node_modules` at the version locked in the lockfile, checking its public entry points. If `node_modules` does not contain that version, report the missing evidence and stop until the user confirms how to proceed.'
+  suggestion: Replace with: 'Verify exports by inspecting the installed `@instructure/ui` package in `node_modules` at the version locked in the lockfile, checking its public entry points. If `node_modules` does not contain that version, report the missing evidence and stop until the user confirms how to proceed.'
+
+
+ - line: 90-91
+ - lineText: - An unavailable export lookup isn't proof of absence. Report missing evidence; don't infer
+ - message: Missing error handling: The workspace's released `@instructure/ui` cannot be inspected, so export evidence is unavailable. The prompt says only to report missing evidence, which leaves the ownership decision (formats/components vs. custom-components) undefined.. Suggestion: Add: 'If the export lookup cannot be completed, report the missing evidence with the node ID and stop until the user confirms which output layer to use before implementing.'
+  suggestion: Add: 'If the export lookup cannot be completed, report the missing evidence with the node ID and stop until the user confirms which output layer to use before implementing.'
