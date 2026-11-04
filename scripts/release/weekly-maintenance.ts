@@ -137,7 +137,7 @@ function command(
     if (
       result.error ||
       result.signal ||
-      /ENOSPC|ENOMEM|ECONNRESET|ETIMEDOUT|EAI_AGAIN|ENOTFOUND|ERR_PNPM_FETCH|HTTP (?:429|5\d\d)/u.test(
+      /ENOSPC|ENOMEM|ECONNRESET|ETIMEDOUT|EAI_AGAIN|ENOTFOUND|ERR_PNPM_FETCH|HTTP (?:429|5\d\d)|Unable to find image|failed to resolve reference|Cannot connect to the Docker daemon|Error establishing a database connection|database server at `db` could not be established/iu.test(
         failure.message,
       )
     )
@@ -515,17 +515,21 @@ export async function prepareMaintenance(
         for (const [name, history] of final ? histories : []) {
           const support = originalRegistry[name];
           if (support.status !== "verified") continue;
+          let checkingVersion: string | undefined;
           try {
             if (history instanceof Error) throw history;
             const outcomes: VersionEvidence[] = [];
             for (const version of supportCandidates(support, history)) {
+              checkingVersion = version;
               try {
                 adapterCheck(directory, support, version);
                 outcomes.push({ version, outcome: "pass" });
               } catch (error) {
                 if (
                   !(error instanceof Error) ||
-                  !/ERR_ASSERTION|AssertionError/u.test(error.message)
+                  !/(?:ERR_ASSERTION|AssertionError|Invalid .+ release:|Unsupported .+ release:)/u.test(
+                    error.message,
+                  )
                 )
                   throw error;
                 outcomes.push({ version, outcome: "incompatible" });
@@ -560,7 +564,10 @@ export async function prepareMaintenance(
               }
             }
           } catch (error) {
-            const version = history instanceof Error ? "discovery" : history.at(-1)!;
+            const infrastructure =
+              error instanceof Error && error.name === "MaintenanceInfrastructureError";
+            const version =
+              history instanceof Error ? "discovery" : (checkingVersion ?? history.at(-1)!);
             failures.push({
               id: maintenanceId(name, version),
               package: name,
@@ -569,9 +576,13 @@ export async function prepareMaintenance(
               upgrades: [],
             });
             const retained =
-              history instanceof Error ? support : retireAgedSupport(support, history);
-            for (const version of retained.testedVersions)
-              adapterCheck(directory, support, version);
+              history instanceof Error || infrastructure
+                ? support
+                : retireAgedSupport(support, history);
+            if (!(history instanceof Error) && !infrastructure) {
+              for (const retainedVersion of retained.testedVersions)
+                adapterCheck(directory, support, retainedVersion);
+            }
             registry[name] = retained;
             if (retained.minimum !== support.minimum) {
               const pkg = oldOutputs.find((entry) => entry.name === name)!;

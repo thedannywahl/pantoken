@@ -537,6 +537,38 @@ test("records release-feed outages without changing recorded support", async () 
   expect(result.evidence).toEqual({});
 });
 
+test("treats an explicit unsupported prior major as incompatibility evidence", async () => {
+  fixture([], { "19.0.0": "Invalid PostCSS 8 release: 19.0.0" });
+  const result = await prepareMaintenance("a".repeat(40), "a".repeat(40), {
+    mode: "integration",
+    candidates: [],
+  });
+  const support = JSON.parse(result.files["scripts/release/target-compatibility.json"]!)[
+    "@pantoken/react"
+  ];
+  expect(support).toMatchObject({ minimum: "20.0.0", testedThrough: "20.0.0" });
+  expect(support.testedVersions).toEqual(["20.0.0"]);
+  expect(result.failures).toEqual([]);
+});
+
+test.each([
+  "Unable to find image 'example:20.0.0' locally\ndocker: Error response from daemon: failed to resolve reference",
+  "Error establishing a database connection: database server at `db` could not be established",
+])("records compatibility infrastructure outages and preserves support: %s", async (message) => {
+  fixture([], { "20.0.0": message });
+  const result = await prepareMaintenance("a".repeat(40), "a".repeat(40), {
+    mode: "integration",
+    candidates: [],
+  });
+  const support = JSON.parse(result.files["scripts/release/target-compatibility.json"]!)[
+    "@pantoken/react"
+  ];
+  expect(support).toMatchObject({ minimum: "18.0.0", testedThrough: "19.0.0" });
+  expect(result.failures).toMatchObject([
+    { package: "@pantoken/react", version: "20.0.0", error: expect.stringContaining(message) },
+  ]);
+});
+
 test("CLI validates preparation arguments and writes the immutable result handoff", async () => {
   fixture();
   await expect(runWeeklyMaintenance(["unknown"])).rejects.toThrow("Usage");
