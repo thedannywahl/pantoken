@@ -1,0 +1,67 @@
+/fix-customization-evaluation-diagnostics
+
+Target file: /Users/dwahl/Scripts/pantoken/AGENTS.md
+
+Use ONLY the diagnostics below for this target file. Do not lint or rewrite the skill file itself.
+
+Field meanings:
+
+- line: 1-based line number where the diagnostic starts (or start-end for a multi-line range).
+
+- lineText: exact text currently present at the diagnostic start line in the target file.
+
+- message: diagnostic description explaining what is wrong and needs to be fixed.
+
+Diagnostics:
+
+ - line: 86-87
+ - lineText: - An unavailable export lookup isn't proof of absence. Report missing evidence; don't infer
+ - message: Coverage gap: A Figma component is marked Completed (not Ready for dev) and is not exported by the workspace's released @instructure/ui. The prompt forbids inferring ownership from Completed but never says where such a component belongs.. Suggestion: Add after the ownership bullets: 'If a component is not exported by the workspace's released `@instructure/ui` and is not marked `Ready for dev`, stop, report the node ID and the export evidence, and ask the user which output layer to use before implementing.'
+  suggestion: Add after the ownership bullets: 'If a component is not exported by the workspace's released `@instructure/ui` and is not marked `Ready for dev`, stop, report the node ID and the export evidence, and ask the user which output layer to use before implementing.'
+
+
+ - line: 96
+ - lineText: 2. Run `get_screenshot` for the matching variant before visual implementation or asset downloads.
+ - message: Missing error handling: The get_screenshot call fails or the Figma MCP server becomes unavailable after get_design_context succeeded. Step 1 covers only get_design_context failures, so the model has no rule for a screenshot failure.. Suggestion: Add: 'If `get_screenshot` fails or returns an error, report the error and the node ID, do not infer the visual from the design context alone, and stop until the user confirms how to proceed.'
+  suggestion: Add: 'If `get_screenshot` fails or returns an error, report the error and the node ID, do not infer the visual from the design context alone, and stop until the user confirms how to proceed.'
+
+
+ - line: 261
+ - lineText: - Localizable UI strings go in `i18n.ts`, never inline. Use the `glossary` adapter for the generated
+ - message: Coverage gap: The prompt does not say whether new localizable UI strings must be added to both the English (root) and Magyar (hu) locales, so the model may add English-only entries and break the locale symmetry the docs site relies on.. Suggestion: Replace with: 'Localizable UI strings go in `docs/.vitepress/i18n.ts`, never inline. Add every new string to both the `root` (English) and `hu` (Magyar) locales in the same change, using the symmetric prefix swap.'
+  suggestion: Replace with: 'Localizable UI strings go in `docs/.vitepress/i18n.ts`, never inline. Add every new string to both the `root` (English) and `hu` (Magyar) locales in the same change, using the symmetric prefix swap.'
+
+---
+
+/fix-customization-evaluation-diagnostics
+
+Target file: /Users/dwahl/Scripts/pantoken/AGENTS.md
+
+Use ONLY the diagnostics below for this target file. Do not lint or rewrite the skill file itself.
+
+Field meanings:
+
+- line: 1-based line number where the diagnostic starts (or start-end for a multi-line range).
+
+- lineText: exact text currently present at the diagnostic start line in the target file.
+
+- message: diagnostic description explaining what is wrong and needs to be fixed.
+
+Diagnostics:
+
+ - line: 86-87
+ - lineText: - An unavailable export lookup isn't proof of absence. Report missing evidence; don't infer
+ - message: Coverage gap: A Figma component is marked Completed (not Ready for dev) and is not exported by the workspace's released @instructure/ui. The prompt forbids inferring ownership from Completed but never says where such a component belongs.. Suggestion: Add after the ownership bullets: 'If a component is not exported by the workspace's released `@instructure/ui` and is not marked `Ready for dev`, stop, report the node ID and the export evidence, and ask the user which output layer to use before implementing.'
+  suggestion: Add after the ownership bullets: 'If a component is not exported by the workspace's released `@instructure/ui` and is not marked `Ready for dev`, stop, report the node ID and the export evidence, and ask the user which output layer to use before implementing.'
+
+
+ - line: 96
+ - lineText: 2. Run `get_screenshot` for the matching variant before visual implementation or asset downloads.
+ - message: Missing error handling: The get_screenshot call fails or the Figma MCP server becomes unavailable after get_design_context succeeded. Step 1 covers only get_design_context failures, so the model has no rule for a screenshot failure.. Suggestion: Add: 'If `get_screenshot` fails or returns an error, report the error and the node ID, do not infer the visual from the design context alone, and stop until the user confirms how to proceed.'
+  suggestion: Add: 'If `get_screenshot` fails or returns an error, report the error and the node ID, do not infer the visual from the design context alone, and stop until the user confirms how to proceed.'
+
+
+ - line: 261
+ - lineText: - Localizable UI strings go in `i18n.ts`, never inline. Use the `glossary` adapter for the generated
+ - message: Coverage gap: The prompt does not say whether new localizable UI strings must be added to both the English (root) and Magyar (hu) locales, so the model may add English-only entries and break the locale symmetry the docs site relies on.. Suggestion: Replace with: 'Localizable UI strings go in `docs/.vitepress/i18n.ts`, never inline. Add every new string to both the `root` (English) and `hu` (Magyar) locales in the same change, using the symmetric prefix swap.'
+  suggestion: Replace with: 'Localizable UI strings go in `docs/.vitepress/i18n.ts`, never inline. Add every new string to both the `root` (English) and `hu` (Magyar) locales in the same change, using the symmetric prefix swap.'
