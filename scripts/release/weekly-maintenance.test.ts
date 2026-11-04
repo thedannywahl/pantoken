@@ -281,11 +281,22 @@ test("serializes builds and generates the docs theme curve before maintenance ch
   expect(checks.length).toBeGreaterThanOrEqual(2);
   for (const check of checks) {
     const index = state.commands.indexOf(check);
-    expect(state.commands[index - 1]).toMatchObject({
-      executable: process.execPath,
-      args: ["docs/scripts/site-themes.ts"],
-      cwd: check.cwd,
-    });
+    if (check.args[0] === "run" && check.args[1] === "ready")
+      expect(state.commands[index - 1]).toMatchObject({
+        executable: "vp",
+        args: ["run", "@pantoken/docs#docs:api:en"],
+        cwd: check.cwd,
+      });
+    expect(
+      state.commands
+        .slice(0, index)
+        .some(
+          (command) =>
+            command.executable === process.execPath &&
+            JSON.stringify(command.args) === JSON.stringify(["docs/scripts/site-themes.ts"]) &&
+            command.cwd === check.cwd,
+        ),
+    ).toBe(true);
   }
 });
 

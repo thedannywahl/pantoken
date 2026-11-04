@@ -263,6 +263,9 @@ infrastructure-failed outcomes block publication. It first validates the combine
 bisects failures along coupled-group boundaries, then runs the full release gates once on the final
 accepted set. Full-gate failures block publication rather than silently dropping checks. The existing
 publisher still rejects an advanced `main` and requires final-head PR CI before auto-merge.
+Before `vp run ready`, final integration runs `vp run @pantoken/docs#docs:api:en`; docs API tests
+import generated pages from `docs/api`, which are intentionally not checked into Git. This step does
+not refresh the translation catalog.
 
 ### Retry maintenance validation
 
