@@ -1,0 +1,123 @@
+/fix-customization-evaluation-diagnostics
+
+Target file: /Users/dwahl/Scripts/pantoken/AGENTS.md
+
+Use ONLY the diagnostics below for this target file. Do not lint or rewrite the skill file itself.
+
+Field meanings:
+
+- line: 1-based line number where the diagnostic starts (or start-end for a multi-line range).
+
+- lineText: exact text currently present at the diagnostic start line in the target file.
+
+- message: diagnostic description explaining what is wrong and needs to be fixed.
+
+Diagnostics:
+
+ - line: 1
+ - lineText: # Agents
+ - message: Contradiction: "Package scripts invoke the toolchain via `vp` (`vp run`, `vp exec`), never `pnpm` — CI has no `pnpm` on PATH." conflicts with "Run `pnpm changeset` and commit the changeset for every user-visible change before merging.". The docs/build section forbids invoking the toolchain through pnpm, while the cross-cutting section requires running pnpm changeset. The model cannot satisfy both, so it may run pnpm commands in violation of the CI rule, or skip the changeset step. The same conflict appears in `pnpm run ready` and `pnpm run check:publish`, which the gate section names directly.
+
+
+ - line: 1
+ - lineText: # Agents
+ - message: Cognitive load (constraint-overload): Step 5 bundles browser comparison, interaction testing, accessibility testing, user-preference preservation, and manual WCAG checks into one sentence with no order or completion criteria. The model is likely to skip the WCAG checks or treat the screenshot comparison as proof of interaction and accessibility, which the same step explicitly denies.. Suggestion: Split into sub-steps: '5a. Compare theme, mode, size, variant, and state against the screenshot. 5b. Test keyboard and focus behavior. 5c. Test with a screen reader. 5d. Confirm user preferences (reduced motion, color scheme, font size) are respected. 5e. Record a pass/fail result for each WCAG check that applies.'
+  suggestion: Split into sub-steps: '5a. Compare theme, mode, size, variant, and state against the screenshot. 5b. Test keyboard and focus behavior. 5c. Test with a screen reader. 5d. Confirm user preferences (reduced motion, color scheme, font size) are respected. 5e. Record a pass/fail result for each WCAG check that applies.'
+
+
+ - line: 24
+ - lineText: - Run `pnpm changeset` and commit the changeset for every user-visible change before merging.
+ - message: Conflicts with line 1: "Package scripts invoke the toolchain via `vp` (`vp run`, `vp exec`), never `pnpm` — CI has no `pnpm` on PATH.". The docs/build section forbids invoking the toolchain through pnpm, while the cross-cutting section requires running pnpm changeset. The model cannot satisfy both, so it may run pnpm commands in violation of the CI rule, or skip the changeset step. The same conflict appears in `pnpm run ready` and `pnpm run check:publish`, which the gate section names directly.
+
+
+ - line: 87
+ - lineText: 1. Run `get_design_context` for the exact node and variant. If the response is truncated, use
+ - message: Missing error handling: The Figma MCP tools are unavailable, fail, or return an error instead of design context.. Suggestion: Add: 'If `get_design_context` fails or the Figma MCP server is unavailable, report the error and the node ID, do not infer the design from memory or other sources, and stop until the user confirms how to proceed.'
+  suggestion: Add: 'If `get_design_context` fails or the Figma MCP server is unavailable, report the error and the node ID, do not infer the design from memory or other sources, and stop until the user confirms how to proceed.'
+
+
+ - line: 89
+ - lineText: 2. Run `get_screenshot` for the matching variant before visual implementation or asset downloads.
+ - message: Coverage gap: The Figma node or variant has no matching screenshot, or the requested variant does not exist in the library.. Suggestion: Add: 'If no screenshot exists for the requested variant, stop, report the missing variant with its node ID, and ask the user which variant to use before implementing.'
+  suggestion: Add: 'If no screenshot exists for the requested variant, stop, report the missing variant with its node ID, and ask the user which variant to use before implementing.'
+
+
+ - line: 149
+ - lineText: - Keep `utils` below `components` — `utils` must not import from `components`.
+ - message: Ambiguous: "Keep `utils` below `components` — `utils` must not import from `components`.". 'Below' is a layering metaphor that could mean 'lower in the dependency graph' or 'earlier in the build order'. The explicit clause clarifies the import rule, but the model may still misjudge whether indirect or type-only imports are allowed. Suggestion: Replace with: 'Dependency direction: `utils` must not import (directly or transitively, including type-only imports) from `components`.'
+  suggestion: Replace with: 'Dependency direction: `utils` must not import (directly or transitively, including type-only imports) from `components`.'
+
+
+ - line: 179
+ - lineText:   --fix`, tests, `check:publish`, and `lint:markdown`. Browser-verify visual changes.
+ - message: Ambiguous: "Browser-verify visual changes.". The prompt does not specify which browsers, viewports, themes, or color modes to verify. The model may verify in one browser, skip themes, or report success without covering the variants the prompt requires elsewhere. Suggestion: Replace with: 'Browser-verify visual changes in Chromium at 1280px and 375px widths, in light and dark themes, and state the results in the PR description.'
+  suggestion: Replace with: 'Browser-verify visual changes in Chromium at 1280px and 375px widths, in light and dark themes, and state the results in the PR description.'
+
+
+ - line: 200
+ - lineText: - Always write tests for new behaviors in `tests/` (happy-dom environment). Test coverage must meet 85% threshold.
+ - message: Ambiguous: "Test coverage must meet 85% threshold.". The prompt does not say whether 85% refers to line, branch, function, or statement coverage, or whether it applies per package or workspace-wide. The model may apply a different metric or scope than the project's test runner enforces. Suggestion: Replace with: 'Test coverage must meet the 85% line and branch threshold configured in the interactions package's test runner config, measured per package.'
+  suggestion: Replace with: 'Test coverage must meet the 85% line and branch threshold configured in the interactions package's test runner config, measured per package.'
+
+---
+
+/fix-customization-evaluation-diagnostics
+
+Target file: /Users/dwahl/Scripts/pantoken/AGENTS.md
+
+Use ONLY the diagnostics below for this target file. Do not lint or rewrite the skill file itself.
+
+Field meanings:
+
+- line: 1-based line number where the diagnostic starts (or start-end for a multi-line range).
+
+- lineText: exact text currently present at the diagnostic start line in the target file.
+
+- message: diagnostic description explaining what is wrong and needs to be fixed.
+
+Diagnostics:
+
+ - line: 1
+ - lineText: # Agents
+ - message: Contradiction: "Package scripts invoke the toolchain via `vp` (`vp run`, `vp exec`), never `pnpm` — CI has no `pnpm` on PATH." conflicts with "Run `pnpm changeset` and commit the changeset for every user-visible change before merging.". The docs/build section forbids invoking the toolchain through pnpm, while the cross-cutting section requires running pnpm changeset. The model cannot satisfy both, so it may run pnpm commands in violation of the CI rule, or skip the changeset step. The same conflict appears in `pnpm run ready` and `pnpm run check:publish`, which the gate section names directly.
+
+
+ - line: 1
+ - lineText: # Agents
+ - message: Cognitive load (constraint-overload): Step 5 bundles browser comparison, interaction testing, accessibility testing, user-preference preservation, and manual WCAG checks into one sentence with no order or completion criteria. The model is likely to skip the WCAG checks or treat the screenshot comparison as proof of interaction and accessibility, which the same step explicitly denies.. Suggestion: Split into sub-steps: '5a. Compare theme, mode, size, variant, and state against the screenshot. 5b. Test keyboard and focus behavior. 5c. Test with a screen reader. 5d. Confirm user preferences (reduced motion, color scheme, font size) are respected. 5e. Record a pass/fail result for each WCAG check that applies.'
+  suggestion: Split into sub-steps: '5a. Compare theme, mode, size, variant, and state against the screenshot. 5b. Test keyboard and focus behavior. 5c. Test with a screen reader. 5d. Confirm user preferences (reduced motion, color scheme, font size) are respected. 5e. Record a pass/fail result for each WCAG check that applies.'
+
+
+ - line: 24
+ - lineText: - Run `pnpm changeset` and commit the changeset for every user-visible change before merging.
+ - message: Conflicts with line 1: "Package scripts invoke the toolchain via `vp` (`vp run`, `vp exec`), never `pnpm` — CI has no `pnpm` on PATH.". The docs/build section forbids invoking the toolchain through pnpm, while the cross-cutting section requires running pnpm changeset. The model cannot satisfy both, so it may run pnpm commands in violation of the CI rule, or skip the changeset step. The same conflict appears in `pnpm run ready` and `pnpm run check:publish`, which the gate section names directly.
+
+
+ - line: 87
+ - lineText: 1. Run `get_design_context` for the exact node and variant. If the response is truncated, use
+ - message: Missing error handling: The Figma MCP tools are unavailable, fail, or return an error instead of design context.. Suggestion: Add: 'If `get_design_context` fails or the Figma MCP server is unavailable, report the error and the node ID, do not infer the design from memory or other sources, and stop until the user confirms how to proceed.'
+  suggestion: Add: 'If `get_design_context` fails or the Figma MCP server is unavailable, report the error and the node ID, do not infer the design from memory or other sources, and stop until the user confirms how to proceed.'
+
+
+ - line: 89
+ - lineText: 2. Run `get_screenshot` for the matching variant before visual implementation or asset downloads.
+ - message: Coverage gap: The Figma node or variant has no matching screenshot, or the requested variant does not exist in the library.. Suggestion: Add: 'If no screenshot exists for the requested variant, stop, report the missing variant with its node ID, and ask the user which variant to use before implementing.'
+  suggestion: Add: 'If no screenshot exists for the requested variant, stop, report the missing variant with its node ID, and ask the user which variant to use before implementing.'
+
+
+ - line: 149
+ - lineText: - Keep `utils` below `components` — `utils` must not import from `components`.
+ - message: Ambiguous: "Keep `utils` below `components` — `utils` must not import from `components`.". 'Below' is a layering metaphor that could mean 'lower in the dependency graph' or 'earlier in the build order'. The explicit clause clarifies the import rule, but the model may still misjudge whether indirect or type-only imports are allowed. Suggestion: Replace with: 'Dependency direction: `utils` must not import (directly or transitively, including type-only imports) from `components`.'
+  suggestion: Replace with: 'Dependency direction: `utils` must not import (directly or transitively, including type-only imports) from `components`.'
+
+
+ - line: 179
+ - lineText:   --fix`, tests, `check:publish`, and `lint:markdown`. Browser-verify visual changes.
+ - message: Ambiguous: "Browser-verify visual changes.". The prompt does not specify which browsers, viewports, themes, or color modes to verify. The model may verify in one browser, skip themes, or report success without covering the variants the prompt requires elsewhere. Suggestion: Replace with: 'Browser-verify visual changes in Chromium at 1280px and 375px widths, in light and dark themes, and state the results in the PR description.'
+  suggestion: Replace with: 'Browser-verify visual changes in Chromium at 1280px and 375px widths, in light and dark themes, and state the results in the PR description.'
+
+
+ - line: 200
+ - lineText: - Always write tests for new behaviors in `tests/` (happy-dom environment). Test coverage must meet 85% threshold.
+ - message: Ambiguous: "Test coverage must meet 85% threshold.". The prompt does not say whether 85% refers to line, branch, function, or statement coverage, or whether it applies per package or workspace-wide. The model may apply a different metric or scope than the project's test runner enforces. Suggestion: Replace with: 'Test coverage must meet the 85% line and branch threshold configured in the interactions package's test runner config, measured per package.'
+  suggestion: Replace with: 'Test coverage must meet the 85% line and branch threshold configured in the interactions package's test runner config, measured per package.'
