@@ -265,7 +265,10 @@ accepted set. Full-gate failures block publication rather than silently dropping
 publisher still rejects an advanced `main` and requires final-head PR CI before auto-merge.
 Before `vp run ready`, final integration runs `vp run @pantoken/docs#docs:api:en`; docs API tests
 import generated pages from `docs/api`, which are intentionally not checked into Git. This step does
-not refresh the translation catalog.
+not refresh the translation catalog directly, but the `ready` i18n gate rebuilds the English API POT.
+That generated `l10n/docs.api.pot` is excluded from the maintenance handoff: localization catalogs
+are maintained by their dedicated workflow and must not be published as a side effect of a dependency
+update.
 
 ### Retry maintenance validation
 
