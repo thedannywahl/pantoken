@@ -255,15 +255,16 @@ function packageOutputs(directory: string): PackageOutput[] {
 }
 
 function collectedFiles(directory: string, base: string): Record<string, string | null> {
+  const generatedCatalogs = new Set(["l10n/docs.api.pot"]);
   const names = command(directory, "git", ["diff", "--name-only", base])
     .trim()
     .split("\n")
-    .filter(Boolean);
+    .filter((file) => Boolean(file) && !generatedCatalogs.has(file));
   names.push(
     ...command(directory, "git", ["ls-files", "--others", "--exclude-standard"])
       .trim()
       .split("\n")
-      .filter(Boolean),
+      .filter((file) => Boolean(file) && !generatedCatalogs.has(file)),
   );
   return Object.fromEntries(
     [...new Set(names)].sort().map((file) => {

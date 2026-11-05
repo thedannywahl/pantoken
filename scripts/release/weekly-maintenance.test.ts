@@ -157,6 +157,7 @@ test("empty and all-failed batches never invent passing evidence; retries have s
 function fixture(
   proposals: MaintenanceUpgrade[] = [],
   adapterFailures: Record<string, string> = {},
+  readyGeneratedFiles: Record<string, string> = {},
 ) {
   const directory = mkdtempSync(join(tmpdir(), "pantoken-weekly-test-"));
   temporary.push(directory);
@@ -190,6 +191,7 @@ function fixture(
     }),
     "compatibility.json": "{}",
     "docs/compatibility.md": "Compatibility\n",
+    "l10n/docs.api.pot": "source catalog\n",
     ...Object.fromEntries(
       ["rebrand", "canvas", "canvasHighContrast"].map((theme) => [
         `formats/tokens/generated/${theme}.json`,
@@ -228,6 +230,9 @@ function fixture(
         signal: null,
       };
     }
+    if (executable === "vp" && args[0] === "run" && args[1] === "ready")
+      for (const [file, content] of Object.entries(readyGeneratedFiles))
+        writeFileSync(join(options.cwd, file), content);
     let stdout = "";
     if (executable === "git" && args[0] === "show") {
       const file = args[1].slice(args[1].indexOf(":") + 1);
@@ -298,6 +303,18 @@ test("serializes builds and generates the docs theme curve before maintenance ch
         ),
     ).toBe(true);
   }
+});
+
+test("omits the generated English API catalog from the maintenance handoff", async () => {
+  const state = fixture([], {}, { "l10n/docs.api.pot": "regenerated catalog\n" });
+  const base = "a".repeat(40);
+  const result = await prepareMaintenance(base, base);
+  expect(result.files).not.toHaveProperty("l10n/docs.api.pot");
+  expect(
+    state.commands.some(
+      (command) => command.executable === "vp" && command.args.join(" ") === "run ready",
+    ),
+  ).toBe(true);
 });
 
 test.each([0, 1, 2])(
