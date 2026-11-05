@@ -18,6 +18,7 @@ afterEach(() => {
 
 const base = "a".repeat(40);
 const proposal = "b".repeat(40);
+const passingBranch = `maintenance/weekly-passing-${proposal}`;
 const artifact = () => ({
   base,
   proposal,
@@ -123,6 +124,10 @@ function githubFixture(
     checks?: string[];
     draft?: boolean;
     proposalHead?: string;
+    existingPassingPr?: boolean;
+    existingPassingRef?: boolean;
+    passingTree?: string;
+    passingRefSha?: string;
     graphError?: boolean;
     tree?: Array<{ path: string; type: string; sha: string; mode: string }>;
     truncated?: boolean;
@@ -151,22 +156,42 @@ function githubFixture(
     else if (endpoint.includes("/issues?")) response = options.issues ?? [];
     else if (endpoint.endsWith("/git/ref/heads/main"))
       response = { object: { sha: options.main ?? base } };
+    else if (
+      endpoint.endsWith(`/git/ref/heads/${passingBranch}`) &&
+      options.existingPassingRef === false
+    )
+      return { ok: false, status: 404, json: async () => ({}) };
+    else if (endpoint.endsWith(`/git/ref/heads/${passingBranch}`))
+      response = { object: { sha: options.passingRefSha ?? "c".repeat(40) } };
     else if (endpoint.includes("/pulls?"))
-      response = [
-        {
-          number: 17,
-          node_id: "PR_17",
-          user: { login: options.actor ?? "maintainer" },
-          head: {
-            ref: "renovate/weekly-maintenance",
-            sha: options.proposalHead ?? proposal,
-            repo: { full_name: "example/pantoken" },
-          },
-          base: { ref: "main" },
-          draft: options.draft ?? true,
-        },
-      ];
-    else if (endpoint.endsWith("/pulls/17")) response = { head: { sha: "c".repeat(40) } };
+      response =
+        options.existingPassingPr === false
+          ? []
+          : [
+              {
+                number: 17,
+                node_id: "PR_17",
+                user: { login: options.actor ?? "maintainer" },
+                head: {
+                  ref: passingBranch,
+                  sha: options.proposalHead ?? proposal,
+                  repo: { full_name: "example/pantoken" },
+                },
+                base: { ref: "main" },
+                draft: options.draft ?? true,
+              },
+            ];
+    else if (endpoint.endsWith("/pulls/17") || endpoint.endsWith("/pulls/42"))
+      response = { head: { sha: options.proposalHead ?? proposal } };
+    else if (
+      method === "GET" &&
+      (endpoint.endsWith(`/git/commits/${options.proposalHead ?? proposal}`) ||
+        endpoint.endsWith(`/git/commits/${options.passingRefSha ?? "c".repeat(40)}`))
+    )
+      response = {
+        tree: { sha: options.passingTree ?? "c".repeat(40) },
+        parents: [{ sha: base }],
+      };
     else if (endpoint.includes("/git/commits/") && method === "GET")
       response = { tree: { sha: "tree-base" } };
     else if (
@@ -186,6 +211,15 @@ function githubFixture(
           },
         },
       ];
+    else if (endpoint.endsWith("/pulls") && method === "POST")
+      response = {
+        number: 42,
+        node_id: "PR_42",
+        user: { login: "maintainer" },
+        head: { ref: body.head, sha: "c".repeat(40), repo: { full_name: "example/pantoken" } },
+        base: { ref: "main" },
+        draft: body.draft,
+      };
     else if (endpoint.endsWith("/issues") && method === "POST")
       response = { number: 42, title: body.title, body: body.body };
     else if (endpoint.includes("/git/trees/") && method === "GET")
@@ -214,16 +248,17 @@ function githubFixture(
   return { file, calls, fetcher };
 }
 
-test("publishes a validated tree and enables auto-merge only with protected required checks", async () => {
+test("reuses only a content-identical passing PR and enables protected auto-merge", async () => {
   const fixture = githubFixture();
   await publishMaintenance(["publish", fixture.file, base, proposal]);
   expect(
     fixture.calls.some(
-      (call) =>
-        call.endpoint.endsWith("/git/refs/heads/renovate/weekly-maintenance") &&
-        call.body.force === false,
+      (call) => call.endpoint.endsWith(`/git/commits/${proposal}`) && call.method === "GET",
     ),
   ).toBe(true);
+  expect(
+    fixture.calls.some((call) => call.endpoint.endsWith("/git/refs") && call.method === "POST"),
+  ).toBe(false);
   const mutations = fixture.calls
     .filter((call) => call.endpoint === "graphql")
     .map((call) => String(call.body.query));
@@ -231,11 +266,53 @@ test("publishes a validated tree and enables auto-merge only with protected requ
   expect(mutations[1]).toContain("enablePullRequestAutoMerge");
 });
 
+test("creates a proposal-specific passing branch instead of colliding with the Renovate proposal ref", async () => {
+  const fixture = githubFixture(artifact(), {
+    existingPassingPr: false,
+    existingPassingRef: false,
+  });
+  await publishMaintenance(["publish", fixture.file, base, proposal]);
+  const createdRef = fixture.calls.find(
+    (call) => call.endpoint.endsWith("/git/refs") && call.method === "POST",
+  );
+  expect(createdRef?.body.ref).toBe(`refs/heads/${passingBranch}`);
+  expect(
+    fixture.calls.find((call) => call.endpoint.endsWith("/pulls") && call.method === "POST")?.body,
+  ).toMatchObject({
+    head: passingBranch,
+    base: "main",
+    draft: false,
+  });
+});
+
+test("recovers an interrupted ref creation only when its immutable tree matches", async () => {
+  const fixture = githubFixture(artifact(), { existingPassingPr: false, existingPassingRef: true });
+  await publishMaintenance(["publish", fixture.file, base, proposal]);
+  expect(
+    fixture.calls.some((call) => call.endpoint.endsWith("/git/refs") && call.method === "POST"),
+  ).toBe(false);
+  expect(
+    fixture.calls.some((call) => call.endpoint.endsWith("/pulls") && call.method === "POST"),
+  ).toBe(true);
+
+  const stale = githubFixture(artifact(), {
+    existingPassingPr: false,
+    existingPassingRef: true,
+    passingTree: "d".repeat(40),
+  });
+  await expect(publishMaintenance(["publish", stale.file, base, proposal])).rejects.toThrow(
+    "Orphaned maintenance branch has different content",
+  );
+  expect(
+    stale.calls.some((call) => call.method === "POST" && call.endpoint.endsWith("/pulls")),
+  ).toBe(false);
+});
+
 test("rejects base/head races, unexpected PR actors, missing required checks, and GraphQL denial", async () => {
   for (const [options, message] of [
     [{ main: "d".repeat(40) }, "Main advanced"],
     [{ actor: "other" }, "another actor"],
-    [{ proposalHead: "e".repeat(40) }, "branch changed"],
+    [{ proposalHead: "e".repeat(40), passingTree: "d".repeat(40) }, "tree changed"],
     [{ checks: [] }, "Protected CI"],
     [{ graphError: true }, "GraphQL operation failed"],
   ] as const) {
