@@ -4,7 +4,7 @@ import type { MaintenanceResult } from "./weekly-maintenance.ts";
 import { runAsMain } from "./cli.ts";
 import { renderComponentReview } from "./component-reviews.ts";
 
-const branch = "renovate/weekly-maintenance";
+const passingBranch = (proposal: string): string => `maintenance/weekly-passing-${proposal}`;
 const failureBranch = "maintenance/failed-updates";
 const generatedPaths = new Set([
   "pnpm-workspace.yaml",
@@ -203,7 +203,12 @@ export async function publishMaintenance(
   const token = process.env.GH_TOKEN;
   assert.ok(repository && /^[\w.-]+\/[\w.-]+$/u.test(repository), "Repository identity required");
   assert.ok(token, "Publication requires a scoped repository token");
-  const api = async <T>(endpoint: string, method = "GET", body?: unknown): Promise<T> => {
+  const api = async <T>(
+    endpoint: string,
+    method = "GET",
+    body?: unknown,
+    allowNotFound = false,
+  ): Promise<T> => {
     const response = await fetch(`https://api.github.com/${endpoint}`, {
       method,
       redirect: "error",
@@ -216,7 +221,10 @@ export async function publishMaintenance(
       },
       ...(body === undefined ? {} : { body: JSON.stringify(body) }),
     });
-    if (!response.ok) throw new Error(`GitHub ${method} ${endpoint}: HTTP ${response.status}`);
+    if (!response.ok) {
+      if (allowNotFound && response.status === 404) return undefined as T;
+      throw new Error(`GitHub ${method} ${endpoint}: HTTP ${response.status}`);
+    }
     if (response.status === 204) return undefined as T;
     const payload = (await response.json()) as { errors?: unknown[] };
     assert.ok(!payload.errors?.length, `GitHub ${method} ${endpoint}: GraphQL operation failed`);
@@ -342,17 +350,73 @@ export async function publishMaintenance(
     body: string,
     draft: boolean,
     expected: string,
+    reuseValidatedTree = false,
   ) => {
     let pr = pullRequests.find((candidate) => candidate.head.ref === head);
     if (pr) {
       assert.equal(pr.user.login, actor, "Refusing to overwrite a PR from another actor");
       assert.equal(pr.head.repo.full_name, repository);
       assert.equal(pr.base.ref, "main");
-      assert.equal(pr.head.sha, expected, "Maintenance branch changed during validation");
       if (draft && !pr.draft)
         throw new Error(
           "Failure tracking PR was manually marked ready; automation will not overwrite it",
         );
+      if (reuseValidatedTree) {
+        const existing = await api<{
+          tree: { sha: string };
+          parents: Array<{ sha: string }>;
+        }>(`${prefix}/git/commits/${pr.head.sha}`);
+        assert.equal(existing.tree.sha, tree, "Maintenance PR tree changed after validation");
+        assert.deepEqual(
+          existing.parents.map((parent) => parent.sha),
+          [base],
+        );
+        await api(`${prefix}/pulls/${pr.number}`, "PATCH", { title, body });
+        return pr;
+      }
+      assert.equal(pr.head.sha, expected, "Maintenance branch changed during validation");
+    }
+    if (!pr && reuseValidatedTree) {
+      const ref = await api<{ object: { sha: string } } | undefined>(
+        `${prefix}/git/ref/heads/${head}`,
+        "GET",
+        undefined,
+        true,
+      );
+      let sha: string;
+      if (ref) {
+        const existing = await api<{
+          tree: { sha: string };
+          parents: Array<{ sha: string }>;
+        }>(`${prefix}/git/commits/${ref.object.sha}`);
+        assert.equal(existing.tree.sha, tree, "Orphaned maintenance branch has different content");
+        assert.deepEqual(
+          existing.parents.map((parent) => parent.sha),
+          [base],
+        );
+        sha = ref.object.sha;
+      } else {
+        const commit = await api<{ sha: string }>(`${prefix}/git/commits`, "POST", {
+          message: title,
+          tree,
+          parents: [base],
+          author: {
+            name: "Pantoken Renovate",
+            email: "pantoken-renovate@users.noreply.github.com",
+          },
+        });
+        sha = commit.sha;
+        await api(`${prefix}/git/refs`, "POST", { ref: `refs/heads/${head}`, sha });
+      }
+      pr = await api<(typeof pullRequests)[number]>(`${prefix}/pulls`, "POST", {
+        head,
+        base: "main",
+        title,
+        body,
+        draft,
+      });
+      await api(`${prefix}/pulls/${pr.number}`, "PATCH", { title, body });
+      return pr;
     }
     const parent = pr ? expected : base;
     const commit = await api<{ sha: string }>(`${prefix}/git/commits`, "POST", {
@@ -392,12 +456,13 @@ export async function publishMaintenance(
       `${JSON.stringify(result.accepted, null, 2)}\n`;
     const tree = await writeTree(base, passingFiles);
     const pr = await publish(
-      branch,
+      passingBranch(proposal),
       tree,
       "chore(deps): prepare weekly maintenance",
       `Tested weekly maintenance.\n\n${result.accepted.map((upgrade) => `- ${upgrade.depName}: ${upgrade.newValue}`).join("\n")}\n\nExcluded failures: ${result.failures.length}. Final-head CI remains required.`,
       false,
       proposal,
+      true,
     );
     passingCommit = (await api<{ head: { sha: string } }>(`${prefix}/pulls/${pr.number}`)).head.sha;
     const rules = await api<

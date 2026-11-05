@@ -250,6 +250,10 @@ without repository-write credentials. It runs explicit owning-adapter checks for
 prepares frozen upstream deprecations, blesses the baseline, regenerates compatibility files, and
 creates deterministic package Changesets. The final combined tree passes `vp run ready` and
 `vp run check:publish`; final-head PR CI must pass again before GitHub auto-merges it.
+Renovate's `renovate/weekly-maintenance` branch is proposal input only. Publication opens the passing
+PR from `maintenance/weekly-passing-<proposal-sha>` so a closed or stale proposal PR cannot collide
+with the authenticated publisher. A retry reuses that branch only if its tree and sole parent exactly
+match the current validated result and base.
 
 The workflow plans immutable coupled groups, runs a clean-baseline preflight, and validates groups
 in a matrix with `max-parallel: 4` and `fail-fast: false`. Each job has its own disposable worktrees

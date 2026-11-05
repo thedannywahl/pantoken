@@ -42,8 +42,11 @@ export function automationPolicy(
     pr.title === "chore(components): scaffold upstream component reviews";
   const version =
     head.startsWith("changeset-release/") || pr.title.startsWith("chore: version packages");
+  const preparedMaintenance = /^maintenance\/weekly-passing-[a-f0-9]{40}$/u.test(head);
   const renovate =
-    head.startsWith("renovate/") || pr.title === "chore(deps): prepare weekly maintenance";
+    head.startsWith("renovate/") ||
+    preparedMaintenance ||
+    pr.title === "chore(deps): prepare weekly maintenance";
   if (!component && !version && !renovate) return null;
   if (pr.base.ref !== "main" || pr.head.repo?.full_name !== options.repository)
     return "Automation PRs must originate in this repository and target main.";
@@ -52,8 +55,10 @@ export function automationPolicy(
     return "Automation PR author does not match the configured bot identity.";
   if (version && (head !== "changeset-release/main" || pr.title !== "chore: version packages"))
     return "Version PR branch/title does not match the authenticated Changesets flow.";
-  if (renovate && head !== "renovate/weekly-maintenance")
+  if (renovate && head !== "renovate/weekly-maintenance" && !preparedMaintenance)
     return "Only the consolidated weekly Renovate branch may use automated maintenance merging.";
+  if (preparedMaintenance && pr.title !== "chore(deps): prepare weekly maintenance")
+    return "Prepared maintenance branch requires the consolidated weekly maintenance title.";
   if (!component) return null;
   if (head !== "maintenance/component-reviews")
     return "Component follow-up must use its dedicated review branch.";

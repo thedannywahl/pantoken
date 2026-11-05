@@ -69,6 +69,9 @@ test("allows ordinary PRs and authenticated tested bot flows", () => {
   ).toBeNull();
   expect(automationPolicy(pr(), [], options)).toBeNull();
   expect(
+    automationPolicy(pr(`maintenance/weekly-passing-${"b".repeat(40)}`), [], options),
+  ).toBeNull();
+  expect(
     automationPolicy(
       {
         ...pr("changeset-release/main"),
@@ -87,6 +90,8 @@ test("rejects impostors, fork branches, other bases, and unrecognized reserved b
     { ...pr(), head: { ...pr().head, repo: { full_name: "attacker/fork" } } },
     { ...pr(), base: { ref: "dev" } },
     pr("renovate/unprepared"),
+    pr("maintenance/weekly-passing-not-a-proposal-sha"),
+    { ...pr(`maintenance/weekly-passing-${"b".repeat(40)}`), title: "chore: unrelated" },
     {
       ...pr("changeset-release/impostor"),
       title: "chore: version packages",
