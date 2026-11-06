@@ -22,7 +22,7 @@
     "target": "PostCSS",
     "status": "verified",
     "minimum": "8.0.0",
-    "testedThrough": "8.5.29",
+    "testedThrough": "8.5.32",
     "testedVersions": [
       "8.0.0",
       "8.0.9",
@@ -31,7 +31,8 @@
       "8.3.11",
       "8.4.49",
       "8.5.28",
-      "8.5.29"
+      "8.5.29",
+      "8.5.32"
     ],
     "testCommand": "vp run @pantoken/postcss#check:compatibility"
   },
@@ -56,8 +57,8 @@
     "format": "Emitted token CSS build asset",
     "status": "verified",
     "minimum": "5.61.0",
-    "testedThrough": "5.111.1",
-    "testedVersions": ["5.61.0", "5.76.0", "5.90.0", "5.111.1"],
+    "testedThrough": "5.112.2",
+    "testedVersions": ["5.61.0", "5.76.0", "5.90.0", "5.111.1", "5.112.2"],
     "testCommand": "vp run @pantoken/webpack#check:compatibility"
   },
   "@pantoken/android": {
@@ -69,7 +70,10 @@
     "testedVersions": ["API 35 / build-tools 35.0.0"],
     "testCommand": "vp run @pantoken/android#check:compatibility"
   },
-  "@pantoken/canvas-theme-editor": { "target": "Canvas Theme Editor", "status": "unverified" },
+  "@pantoken/canvas-theme-editor": {
+    "target": "Canvas Theme Editor",
+    "status": "unverified"
+  },
   "@pantoken/compose": {
     "target": "Jetpack Compose",
     "format": "Generated Color and Dp token object compiles in an Android library module",
@@ -88,8 +92,14 @@
     "testedVersions": ["10.6.18", "11.3.2"],
     "testCommand": "vp run @pantoken/drupal#check:compatibility"
   },
-  "@pantoken/email": { "target": "HTML email", "status": "unverified" },
-  "@pantoken/flutter": { "target": "Flutter", "status": "unverified" },
+  "@pantoken/email": {
+    "target": "HTML email",
+    "status": "unverified"
+  },
+  "@pantoken/flutter": {
+    "target": "Flutter",
+    "status": "unverified"
+  },
   "@pantoken/hugo": {
     "target": "Hugo",
     "format": "Hugo Pipes builds the Pantoken token stylesheet",
@@ -127,7 +137,10 @@
     "limitations": "Runtime tested only on iOS Simulator 27.0; this does not establish an iOS 15 runtime floor. No watchOS or tvOS claim.",
     "testCommand": "mise run verify:swift:runtime"
   },
-  "@pantoken/vanilla": { "target": "Vanilla Forums", "status": "unverified" },
+  "@pantoken/vanilla": {
+    "target": "Vanilla Forums",
+    "status": "unverified"
+  },
   "@pantoken/wordpress": {
     "target": "WordPress block themes",
     "format": "theme.json v3",
@@ -205,8 +218,8 @@
     "target": "markdown-it",
     "status": "verified",
     "minimum": "14.0.0",
-    "testedThrough": "15.0.2",
-    "testedVersions": ["14.0.0", "14.1.1", "14.2.0", "14.3.2", "15.0.2"],
+    "testedThrough": "15.0.3",
+    "testedVersions": ["14.0.0", "14.1.1", "14.2.0", "14.3.2", "14.3.3", "15.0.2", "15.0.3"],
     "testCommand": "vp run @pantoken/markdown-it#check:compatibility"
   },
   "@pantoken/mintlify": {
@@ -222,41 +235,37 @@
     "target": "Material UI",
     "format": "Concrete createTheme palettes (MUI 5, 6, 7, 9)",
     "status": "verified",
-    "minimum": "5.0.0",
+    "minimum": "7.0.0",
     "testedThrough": "9.5.0",
-    "testedVersions": [
-      "5.0.0",
-      "5.18.0",
-      "6.0.0",
-      "6.5.0",
-      "7.0.0",
-      "7.3.11",
-      "9.0.0",
-      "9.4.0",
-      "9.5.0"
-    ],
+    "testedVersions": ["7.0.0", "7.3.11", "9.0.0", "9.4.0", "9.5.0"],
     "testCommand": "vp run @pantoken/mui#check:compatibility"
   },
-  "@pantoken/pendo": { "target": "Pendo", "status": "unverified" },
+  "@pantoken/pendo": {
+    "target": "Pendo",
+    "status": "unverified"
+  },
   "@pantoken/react": {
     "target": "React",
     "format": "SSR-rendered Icon custom element and token fallback",
     "status": "verified",
     "minimum": "19.3.0",
-    "testedThrough": "19.3.0",
-    "testedVersions": ["19.3.0"],
+    "testedThrough": "19.3.1",
+    "testedVersions": ["19.3.0", "19.3.1"],
     "testCommand": "vp run @pantoken/react#check:compatibility"
   },
   "@pantoken/react-markdown": {
     "target": "react-markdown",
     "format": "SSR-rendered InstUI heading, icon, and color swatch with React 19.3.0",
     "status": "verified",
-    "minimum": "10.1.0",
+    "minimum": "9.1.0",
     "testedThrough": "10.1.0",
-    "testedVersions": ["10.1.0"],
+    "testedVersions": ["9.1.0", "10.1.0"],
     "testCommand": "vp run @pantoken/react-markdown#check:compatibility"
   },
-  "@pantoken/react-native": { "target": "React Native", "status": "unverified" },
+  "@pantoken/react-native": {
+    "target": "React Native",
+    "status": "unverified"
+  },
   "@pantoken/rehype": {
     "target": "rehype",
     "format": "HAST + raw SVG",
@@ -280,8 +289,8 @@
     "format": "Storybook ThemeVars constructor accepts light and dark Pantoken themes",
     "status": "verified",
     "minimum": "8.6.14",
-    "testedThrough": "8.6.14",
-    "testedVersions": ["8.6.14"],
+    "testedThrough": "8.6.19",
+    "testedVersions": ["8.6.14", "8.6.19"],
     "testCommand": "vp run @pantoken/storybook#check:compatibility"
   },
   "@pantoken/svelte": {
@@ -289,8 +298,8 @@
     "format": "Icon action component compiles and SSR renders on Svelte 4 and 5",
     "status": "verified",
     "minimum": "4.2.20",
-    "testedThrough": "5.57.2",
-    "testedVersions": ["4.2.20", "5.57.1", "5.57.2"],
+    "testedThrough": "5.57.3",
+    "testedVersions": ["4.2.20", "5.57.1", "5.57.2", "5.57.3"],
     "testCommand": "vp run @pantoken/svelte#check:compatibility"
   },
   "@pantoken/tinymce": {
@@ -298,8 +307,8 @@
     "format": "Pantoken plugin registration and callback initialization",
     "status": "verified",
     "minimum": "8.9.2",
-    "testedThrough": "8.9.3",
-    "testedVersions": ["8.9.2", "8.9.3"],
+    "testedThrough": "8.10.1",
+    "testedVersions": ["8.9.2", "8.9.3", "8.10.1"],
     "testCommand": "vp run @pantoken/tinymce#check:compatibility"
   },
   "@pantoken/vitepress": {

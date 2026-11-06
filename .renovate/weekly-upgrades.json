@@ -1,0 +1,465 @@
+[
+  {
+    "depName": "voidzero-dev/setup-vp",
+    "packageFile": ".github/workflows/changeset-check.yml",
+    "manager": "github-actions",
+    "newValue": "v1.22.0",
+    "currentValue": "v1.21.1",
+    "newDigest": "cab1ab9eaff52d4857875f4f2c016e36af8f2c76"
+  },
+  {
+    "depName": "CodSpeedHQ/action",
+    "packageFile": ".github/workflows/ci.yml",
+    "manager": "github-actions",
+    "newValue": "v5.6.1",
+    "currentValue": "v5.2.1",
+    "newDigest": "61efe07e57e55bedeab750c434504de272a56e8c"
+  },
+  {
+    "depName": "actions/upload-artifact",
+    "packageFile": ".github/workflows/ci.yml",
+    "manager": "github-actions",
+    "newValue": "v7",
+    "currentValue": "v7",
+    "newDigest": "cf430e030ddbb5b0abf93d22962f4752f3646cd9"
+  },
+  {
+    "depName": "voidzero-dev/setup-vp",
+    "packageFile": ".github/workflows/ci.yml",
+    "manager": "github-actions",
+    "newValue": "v1.22.0",
+    "currentValue": "v1.21.1",
+    "newDigest": "cab1ab9eaff52d4857875f4f2c016e36af8f2c76"
+  },
+  {
+    "depName": "github/codeql-action",
+    "packageFile": ".github/workflows/codeql.yml",
+    "manager": "github-actions",
+    "newValue": "v4.39.1",
+    "currentValue": "v4.38.2",
+    "newDigest": "9b3254085494b55a0f7c4c2b3d2d52cc712ce370"
+  },
+  {
+    "depName": "voidzero-dev/setup-vp",
+    "packageFile": ".github/workflows/copilot-setup-steps.yml",
+    "manager": "github-actions",
+    "newValue": "v1.22.0",
+    "currentValue": "v1.21.1",
+    "newDigest": "cab1ab9eaff52d4857875f4f2c016e36af8f2c76"
+  },
+  {
+    "depName": "actions/upload-artifact",
+    "packageFile": ".github/workflows/docs.yml",
+    "manager": "github-actions",
+    "newValue": "v7",
+    "currentValue": "v7",
+    "newDigest": "cf430e030ddbb5b0abf93d22962f4752f3646cd9"
+  },
+  {
+    "depName": "voidzero-dev/setup-vp",
+    "packageFile": ".github/workflows/docs.yml",
+    "manager": "github-actions",
+    "newValue": "v1.22.0",
+    "currentValue": "v1.21.1",
+    "newDigest": "cab1ab9eaff52d4857875f4f2c016e36af8f2c76"
+  },
+  {
+    "depName": "actions/setup-node",
+    "packageFile": ".github/workflows/maintenance-validation.yml",
+    "manager": "github-actions",
+    "newValue": "v7",
+    "currentValue": "v7",
+    "newDigest": "949feb2413d6458794dcd2491c4babbbce0c15c1"
+  },
+  {
+    "depName": "actions/upload-artifact",
+    "packageFile": ".github/workflows/maintenance-validation.yml",
+    "manager": "github-actions",
+    "newValue": "v7",
+    "currentValue": "v7",
+    "newDigest": "cf430e030ddbb5b0abf93d22962f4752f3646cd9"
+  },
+  {
+    "depName": "voidzero-dev/setup-vp",
+    "packageFile": ".github/workflows/maintenance-validation.yml",
+    "manager": "github-actions",
+    "newValue": "v1.22.0",
+    "currentValue": "v1.21.1",
+    "newDigest": "cab1ab9eaff52d4857875f4f2c016e36af8f2c76"
+  },
+  {
+    "depName": "voidzero-dev/setup-vp",
+    "packageFile": ".github/workflows/property.yml",
+    "manager": "github-actions",
+    "newValue": "v1.22.0",
+    "currentValue": "v1.21.1",
+    "newDigest": "cab1ab9eaff52d4857875f4f2c016e36af8f2c76"
+  },
+  {
+    "depName": "actions/setup-node",
+    "packageFile": ".github/workflows/release.yml",
+    "manager": "github-actions",
+    "newValue": "v7",
+    "currentValue": "v7",
+    "newDigest": "949feb2413d6458794dcd2491c4babbbce0c15c1"
+  },
+  {
+    "depName": "actions/upload-artifact",
+    "packageFile": ".github/workflows/release.yml",
+    "manager": "github-actions",
+    "newValue": "v7",
+    "currentValue": "v7",
+    "newDigest": "cf430e030ddbb5b0abf93d22962f4752f3646cd9"
+  },
+  {
+    "depName": "node",
+    "packageFile": ".github/workflows/release.yml",
+    "manager": "github-actions",
+    "newValue": "26",
+    "currentValue": "22"
+  },
+  {
+    "depName": "pnpm/setup",
+    "packageFile": ".github/workflows/release.yml",
+    "manager": "github-actions",
+    "newValue": "v3.1.2",
+    "currentValue": "v3.0.0",
+    "newDigest": "fa36a5ef7dcdefc3a7cb25655c122e00cf6e636e"
+  },
+  {
+    "depName": "voidzero-dev/setup-vp",
+    "packageFile": ".github/workflows/release.yml",
+    "manager": "github-actions",
+    "newValue": "v1.22.0",
+    "currentValue": "v1.21.1",
+    "newDigest": "cab1ab9eaff52d4857875f4f2c016e36af8f2c76"
+  },
+  {
+    "depName": "actions/setup-node",
+    "packageFile": ".github/workflows/renovate-policy.yml",
+    "manager": "github-actions",
+    "newValue": "v7",
+    "currentValue": "v7",
+    "newDigest": "949feb2413d6458794dcd2491c4babbbce0c15c1"
+  },
+  {
+    "depName": "actions/setup-node",
+    "packageFile": ".github/workflows/renovate.yml",
+    "manager": "github-actions",
+    "newValue": "v7",
+    "currentValue": "v7",
+    "newDigest": "949feb2413d6458794dcd2491c4babbbce0c15c1"
+  },
+  {
+    "depName": "actions/upload-artifact",
+    "packageFile": ".github/workflows/renovate.yml",
+    "manager": "github-actions",
+    "newValue": "v7",
+    "currentValue": "v7",
+    "newDigest": "cf430e030ddbb5b0abf93d22962f4752f3646cd9"
+  },
+  {
+    "depName": "renovatebot/github-action",
+    "packageFile": ".github/workflows/renovate.yml",
+    "manager": "github-actions",
+    "newValue": "v46.3.11",
+    "currentValue": "v46.3.10",
+    "newDigest": "43b963bf5dd5e57f1f95c59765a018d782870211"
+  },
+  {
+    "depName": "voidzero-dev/setup-vp",
+    "packageFile": ".github/workflows/renovate.yml",
+    "manager": "github-actions",
+    "newValue": "v1.22.0",
+    "currentValue": "v1.21.1",
+    "newDigest": "cab1ab9eaff52d4857875f4f2c016e36af8f2c76"
+  },
+  {
+    "depName": "actions/upload-artifact",
+    "packageFile": ".github/workflows/scorecard.yml",
+    "manager": "github-actions",
+    "newValue": "v7",
+    "currentValue": "v7",
+    "newDigest": "cf430e030ddbb5b0abf93d22962f4752f3646cd9"
+  },
+  {
+    "depName": "github/codeql-action",
+    "packageFile": ".github/workflows/scorecard.yml",
+    "manager": "github-actions",
+    "newValue": "v4.39.1",
+    "currentValue": "v4.38.2",
+    "newDigest": "9b3254085494b55a0f7c4c2b3d2d52cc712ce370"
+  },
+  {
+    "depName": "ossf/scorecard-action",
+    "packageFile": ".github/workflows/scorecard.yml",
+    "manager": "github-actions",
+    "newValue": "v2.5.0",
+    "currentValue": "v2.4.4",
+    "newDigest": "fa7117db83c52d787ae5a89f350999701505d78e"
+  },
+  {
+    "depName": "actions/setup-node",
+    "packageFile": ".github/workflows/target-releases.yml",
+    "manager": "github-actions",
+    "newValue": "v7",
+    "currentValue": "v7",
+    "newDigest": "949feb2413d6458794dcd2491c4babbbce0c15c1"
+  },
+  {
+    "depName": "@codemirror/autocomplete",
+    "packageFile": "pnpm-workspace.yaml",
+    "manager": "npm",
+    "newValue": "^6.20.3",
+    "currentValue": "^6.20.3",
+    "newDigest": "sha512-yF8RhOf2SXlg00+qtupzLhrglcas61boqaONiNcbPIebHCpJocpqTBA6dyrtUrQO47hqyTdeob/3XnYilT7TaQ=="
+  },
+  {
+    "depName": "@codemirror/view",
+    "packageFile": "pnpm-workspace.yaml",
+    "manager": "npm",
+    "newValue": "^6.43.14",
+    "currentValue": "^6.43.14",
+    "newDigest": "sha512-HHsfpqFeHyXLs983pSRe38Xajs0vFWZQ2BuX0m7Ki8w3jZ5iD8cuR3lBz2/5/X53Dhf32SBHKh6rtSTB6tKeGw=="
+  },
+  {
+    "depName": "@codspeed/vitest-plugin",
+    "packageFile": "pnpm-workspace.yaml",
+    "manager": "npm",
+    "newValue": "^6.0.1",
+    "currentValue": "^6.0.1",
+    "newDigest": "sha512-jYGZo8RSCIYD0G/+WWeZZUcQtGzz6Xl9gsdaElg9EQr5D99DbtDd2QxJYtA/9DWoWlXSP/EPR2OQR2UeHpYTSQ=="
+  },
+  {
+    "depName": "@commitlint/cli",
+    "packageFile": "pnpm-workspace.yaml",
+    "manager": "npm",
+    "newValue": "^21.2.3",
+    "currentValue": "^21.2.3",
+    "newDigest": "sha512-g3M/wrQdElqGH5vROIeL2QiYIxrzqUkhCgsDyDlWfKEyQdCt10OyMB28W2cJtpZ+VNGMvmaN923infr1hOfyrg=="
+  },
+  {
+    "depName": "@commitlint/config-conventional",
+    "packageFile": "pnpm-workspace.yaml",
+    "manager": "npm",
+    "newValue": "^21.2.3",
+    "currentValue": "^21.2.3",
+    "newDigest": "sha512-IRldtwgNmR0SySR7wizFbhRmq45lPt6H3XCNTMyVN7jrPLgi8JlTRR6Eg1HLWUQt9P1Lh3k6eY25ilDa47EE6w=="
+  },
+  {
+    "depName": "@types/node",
+    "packageFile": "pnpm-workspace.yaml",
+    "manager": "npm",
+    "newValue": "^26.6.5",
+    "currentValue": "^26.6.5",
+    "newDigest": "sha512-MzQj+8Kx3XI40OmUAE6Qoh58ZMNstNNMwn2nfd3qWsfe7nDNSqJNzes4njhz6AHwrSHOffSLwXU6yb474Q4aog=="
+  },
+  {
+    "depName": "@vscode/vsce",
+    "packageFile": "pnpm-workspace.yaml",
+    "manager": "npm",
+    "newValue": "^4.0.0",
+    "currentValue": "^3.9.2",
+    "newDigest": "sha512-iWNykEfLWTAU7FC2iBiE0vJvnJDpGm3GlL89dsBtRs62F+8tkPtq80Imi0QSFHjNBWu4QIdYII+3F9v/ZQRExw=="
+  },
+  {
+    "depName": "arkregex",
+    "packageFile": "pnpm-workspace.yaml",
+    "manager": "npm",
+    "newValue": "^0.0.14",
+    "currentValue": "^0.0.12",
+    "newDigest": "sha512-G3I/uCtWE0IKQiPh0qqmmAFDdtjZKZQ5mNPR6gJBeAMZ7VqYCpoaDeXnLju2Zo6ywExtmxZJELeVFb0MPDjPyA=="
+  },
+  {
+    "depName": "automatica11y",
+    "packageFile": "pnpm-workspace.yaml",
+    "manager": "npm",
+    "newValue": "^0.12.0",
+    "currentValue": "^0.11.0",
+    "newDigest": "sha512-TI/jsAoFk+HhSKOB9xWW8PFsta8cgh0H8pva5rJOH4YcADpNlLr51rJyczIOhZPHu+jEBZck86xzqHj7yfxU6Q=="
+  },
+  {
+    "depName": "core-js",
+    "packageFile": "pnpm-workspace.yaml",
+    "manager": "npm",
+    "newValue": "^3.50.0",
+    "currentValue": "^3.50.0",
+    "newDigest": "sha512-7bDKx/5jm5MxzsXxc93g6Z2+4ZsuT/MddrfRmTDJNAkWsYWHU8EVNEsBiIEWnMAMCHMmRfUEjkuo3jeNBOIHRw=="
+  },
+  {
+    "depName": "fallow",
+    "packageFile": "pnpm-workspace.yaml",
+    "manager": "npm",
+    "newValue": "^3.33.1",
+    "currentValue": "^3.33.1",
+    "newDigest": "sha512-prbdSGu/n17OfkeXs+12jwnYf5jmSm2RGDmWfjjvN/7HZZ58TlTKIjyjD8Sl5WRr1V1GBYwFhOts53MdBlbhHw=="
+  },
+  {
+    "depName": "happy-dom",
+    "packageFile": "pnpm-workspace.yaml",
+    "manager": "npm",
+    "newValue": "^21.0.0",
+    "currentValue": "^20.14.6",
+    "newDigest": "sha512-tFm+GaLBgo6o0awHnvHaNoraVo27qJ+2tZEtZ+cIa08hXbeitrxAJajLI05hsUy/2/YTKcUjQYzHe5mCcraLBw=="
+  },
+  {
+    "depName": "juice",
+    "packageFile": "pnpm-workspace.yaml",
+    "manager": "npm",
+    "newValue": "^12.2.0",
+    "currentValue": "^12.2.0",
+    "newDigest": "sha512-tbyBK+Ifmx95xRB2XET205DAz67Oq8A5SG+gV8GzBzzf0oRVhpo+Wh1KTkC12emlyZallR/ZsG8FJ1LcM4P17Q=="
+  },
+  {
+    "depName": "lucide",
+    "packageFile": "pnpm-workspace.yaml",
+    "manager": "npm",
+    "newValue": "^1.57.0",
+    "currentValue": "^1.57.0",
+    "newDigest": "sha512-Ngq8coV3XJ9S/DLTNnIWk9lmdJusoSnuuoO1rK7C0H9/VaV93LoWkv/u5GyUAJhL+rFesAd4gL3YG544bnH6gQ=="
+  },
+  {
+    "depName": "markdown-it",
+    "packageFile": "renderers/markdown-it/package.json",
+    "manager": "npm",
+    "newValue": ">=14.0.0 <=15.0.3",
+    "currentValue": ">=14.0.0 <=15.0.2",
+    "newDigest": "sha512-+Az7Ojz3iRGu8KYMvJ6xVhvrxP3eE+vEtJX75Ow88XBpcQNV/0lGX5ZynIIBftREo4DC2jsveAMDaeltmm8QvQ=="
+  },
+  {
+    "depName": "markdown-it",
+    "packageFile": "pnpm-workspace.yaml",
+    "manager": "npm",
+    "newValue": "^15.0.2",
+    "currentValue": "^15.0.2",
+    "newDigest": "sha512-+Az7Ojz3iRGu8KYMvJ6xVhvrxP3eE+vEtJX75Ow88XBpcQNV/0lGX5ZynIIBftREo4DC2jsveAMDaeltmm8QvQ=="
+  },
+  {
+    "depName": "markdownlint-cli2",
+    "packageFile": "pnpm-workspace.yaml",
+    "manager": "npm",
+    "newValue": "^0.24.0",
+    "currentValue": "^0.23.3",
+    "newDigest": "sha512-c5hU2MDoTlS230MLzdNlkIyxImXq5acxGKz4nYz4aDhH/2BgFtpsA7iK9/OoTHMgZ4FuR0wedTQA31K6Lp9I/Q=="
+  },
+  {
+    "depName": "mermaid",
+    "packageFile": "pnpm-workspace.yaml",
+    "manager": "npm",
+    "newValue": "^12.0.0",
+    "currentValue": "^11.17.2",
+    "newDigest": "sha512-w7nr/SFrLO7BaVTs3dQTvYSV6nYSBj0Yy9DjBhsIJtAcHqRzXSq4Pg32ujHZ/AdWsAMNEvvhbm5dt9E2tOiHzw=="
+  },
+  {
+    "depName": "oxc-minify",
+    "packageFile": "pnpm-workspace.yaml",
+    "manager": "npm",
+    "newValue": "^0.156.0",
+    "currentValue": "^0.153.0",
+    "newDigest": "sha512-RD/gmIMN2MnhE9Tlhs74GsXPdgcSbg2WCNQlqTeBVYvx5HdtAiTqq/SR13ViorYwYXr7ATB8kMZcmox4cZW8vA=="
+  },
+  {
+    "depName": "pnpm",
+    "packageFile": "package.json",
+    "manager": "npm",
+    "newValue": "12.16.1",
+    "currentValue": "11.23.0",
+    "newDigest": "sha512-CR0d7nknV1Zhsl2rPCrjHK/BxU1rce1qZgDPDByxBDSkR+rhQBXxsj4ua+3u1535SpMuIWTSgyKA3OP7MvZW0Q=="
+  },
+  {
+    "depName": "postcss",
+    "packageFile": "pnpm-workspace.yaml",
+    "manager": "npm",
+    "newValue": "^8.5.30",
+    "currentValue": "^8.5.30",
+    "newDigest": "sha512-LJlKCCAUFKOuZxipUdYw1NzIITEsPcgyOG9LkvRJvuKj/bRzbuRY0ARXvL0pWGpsZvn8jku+LMep2eU0seHp8g=="
+  },
+  {
+    "depName": "postcss",
+    "packageFile": "bundlers/postcss/package.json",
+    "manager": "npm",
+    "newValue": ">=8.0.0 <=8.5.32",
+    "currentValue": ">=8.0.0 <=8.5.29",
+    "newDigest": "sha512-LJlKCCAUFKOuZxipUdYw1NzIITEsPcgyOG9LkvRJvuKj/bRzbuRY0ARXvL0pWGpsZvn8jku+LMep2eU0seHp8g=="
+  },
+  {
+    "depName": "sass",
+    "packageFile": "pnpm-workspace.yaml",
+    "manager": "npm",
+    "newValue": "^1.105.1",
+    "currentValue": "^1.105.1",
+    "newDigest": "sha512-aJ1/LvxOOb04YhmiBjzZn3jVwdHKol+OVhoMV6fFl02fF9T3i+5Mg9l/CnzqtM+NX5Jn5o3lAbs/ZJivTCLHfQ=="
+  },
+  {
+    "depName": "simple-icons",
+    "packageFile": "pnpm-workspace.yaml",
+    "manager": "npm",
+    "newValue": "^16.35.0",
+    "currentValue": "^16.35.0",
+    "newDigest": "sha512-+VNPPkqSOLidFeSgBKUWX4n50WPpDC09hav+BgS26anIF1oQOlGBb8LvwGR+6fYRjo+B6CiKzNBceMPkSVXANQ=="
+  },
+  {
+    "depName": "snyk",
+    "packageFile": "pnpm-workspace.yaml",
+    "manager": "npm",
+    "newValue": "^1.1308.1",
+    "currentValue": "^1.1308.1",
+    "newDigest": "sha512-CgpCJyOg4c4VvWSU6sIHrgU4z5MoknuQ1WhZi6gYjkluCgpBaEvmGd+SiyegY1FWYNhocTj+RpJwn5af3wwPkw=="
+  },
+  {
+    "depName": "style-dictionary",
+    "packageFile": "pnpm-workspace.yaml",
+    "manager": "npm",
+    "newValue": "^5.6.1",
+    "currentValue": "^5.6.1",
+    "newDigest": "sha512-qO9WsyR5jZWz8+5JRtehn7HF8YAvm+Jd8UxiYHtvZhYSNwfMfAVOBK1anjdZwbH+njFb7xuQsjqpD+djPXErcw=="
+  },
+  {
+    "depName": "tinymce",
+    "packageFile": "pnpm-workspace.yaml",
+    "manager": "npm",
+    "newValue": "^8.10.0",
+    "currentValue": "^8.10.0",
+    "newDigest": "sha512-Mgdnx8HuEPRlLqKTyHcy7+JJn9reXH7b7L/1ywPCzKAyjaq8fzEPE+CYBLW42GgBlaaoIOd0dTOcYHUlPZyV2A=="
+  },
+  {
+    "depName": "typedoc-plugin-markdown",
+    "packageFile": "pnpm-workspace.yaml",
+    "manager": "npm",
+    "newValue": "^4.14.0",
+    "currentValue": "^4.14.0",
+    "newDigest": "sha512-24XX0oqyBsjBIBNoSH4wbgQkouci/CmgmO1ZBSaVkrcflqXFL2PQ5zFOpkz+Ewow5xQ3q2You+wrcmilNepRKg=="
+  },
+  {
+    "depName": "unist-util-visit",
+    "packageFile": "pnpm-workspace.yaml",
+    "manager": "npm",
+    "newValue": "^5.1.0",
+    "currentValue": "^5.1.0",
+    "newDigest": "sha512-fpsYs/VVoZxfGY9/j3FQpZmN8wdLJaV1Pt38AaJNZu9uKIHcFU3halCdBveEq1HGKO1OEfJY65w1zvoFV1b3qQ=="
+  },
+  {
+    "depName": "vscode-languageclient",
+    "packageFile": "pnpm-workspace.yaml",
+    "manager": "npm",
+    "newValue": "^11.0.0",
+    "currentValue": "^10.1.0",
+    "newDigest": "sha512-kVyeGLfyd1M74PbMNPfFkgRnhMYgnt6YGc5uXr/tNMzCpfZ0wFtfiqmqX1M05kkdNgV0HSozEUPvgggJbyIAYw=="
+  },
+  {
+    "depName": "vscode-languageserver",
+    "packageFile": "pnpm-workspace.yaml",
+    "manager": "npm",
+    "newValue": "^11.0.0",
+    "currentValue": "^10.1.0",
+    "newDigest": "sha512-dOyMIyq0PNVJhTkj+FZoi3H8N3WffNSZEepfbQT+x2E16x1ONPacSx00DoVRqyVKO7PN35ixj/l2RQwQmStkNg=="
+  },
+  {
+    "depName": "webpack-sources",
+    "packageFile": "pnpm-workspace.yaml",
+    "manager": "npm",
+    "newValue": "^3.6.0",
+    "currentValue": "^3.6.0",
+    "newDigest": "sha512-PdUhbCycwEgiS1hB/FBDksWKg/ashAIuJKqwdbPn8/dFVgU5LxQiBvG0js6VRRIzPujMrStYCczywp82P0KWng=="
+  }
+]
