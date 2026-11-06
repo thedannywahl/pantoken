@@ -139,7 +139,9 @@ know what's in place:
   base/proposal refs, allowed paths, manifest invariants, and protected CI/Changeset checks before
   enabling auto-merge. Existing pnpm `devEngines.packageManager.version` entries may receive
   numeric stable version updates; package-manager names, failure policy, package versions,
-  scripts, and exports remain protected. Passing output is published to a proposal-SHA-specific
+  scripts, and exports remain protected. Pinned npm alias updates must match the existing upstream
+  package identity and version; numeric stable replacements preserve that identity and do not permit
+  alias retargeting. Passing output is published to a proposal-SHA-specific
   branch, separate from Renovate's input branch. Retries reuse it only when its tree and base parent
   exactly match the validated handoff. Failed candidates remain in a separate, non-merging draft with individual
   issues. Tests, not release-feed data, establish compatibility claims.
