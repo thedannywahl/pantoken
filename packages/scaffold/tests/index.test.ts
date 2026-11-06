@@ -2,6 +2,7 @@ import { existsSync, mkdtempSync, readFileSync } from "node:fs";
 import { tmpdir } from "node:os";
 import { join } from "node:path";
 import { expect, test } from "vite-plus/test";
+import { parse } from "yaml";
 import { SCAFFOLD_PLATFORMS, isScaffoldPlatform, scaffoldProject } from "../src/index.ts";
 
 test("ships a known scaffold platform set", () => {
@@ -34,7 +35,10 @@ test("canvas-theme-editor is a known, template-only platform (no preset)", async
   const manifest = JSON.parse(readFileSync(join(target, "package.json"), "utf8")) as {
     devDependencies: Record<string, string>;
   };
-  expect(manifest.devDependencies["tinymce-i18n"]).toBe("26.9.21");
+  const workspace = parse(
+    readFileSync(new URL("../../../pnpm-workspace.yaml", import.meta.url), "utf8"),
+  ) as { catalog: Record<string, string> };
+  expect(manifest.devDependencies["tinymce-i18n"]).toBe(workspace.catalog["tinymce-i18n"]);
   const main = readFileSync(join(target, "src/main.ts"), "utf8");
   const appHtml = readFileSync(join(target, "src/app.html"), "utf8");
   expect(appHtml.match(/class="instui-button -size-sm -color-secondary -toggle"/g)).toHaveLength(3);
