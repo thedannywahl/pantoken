@@ -1,4 +1,6 @@
 import { expect, test } from "vite-plus/test";
+import { readFileSync } from "node:fs";
+import { parse } from "yaml";
 import config from "../../formats/css/vite.config.ts";
 import manifest from "../../formats/css/package.json" with { type: "json" };
 
@@ -8,4 +10,17 @@ test("builds CSS generation dependencies before docs startup consumes their expo
     dependsOn: [{ task: "build", from: ["dependencies", "devDependencies"] }],
   });
   expect(manifest.scripts).not.toHaveProperty("generate");
+});
+
+test("serializes all deployment dependency builds to prevent output cleanup races", () => {
+  const workflow = parse(
+    readFileSync(new URL("../../.github/workflows/docs.yml", import.meta.url), "utf8"),
+  ) as { jobs: { deploy: { steps: Array<{ run?: string }> } } };
+  const commands = workflow.jobs.deploy.steps
+    .flatMap((step) => step.run?.split("\n") ?? [])
+    .map((command) => command.trim())
+    .filter((command) => command.startsWith('vp run -F "@pantoken/docs..."'));
+  expect(commands).toHaveLength(3);
+  for (const command of commands)
+    expect(command).toBe('vp run -F "@pantoken/docs..." --concurrency-limit 1 build');
 });

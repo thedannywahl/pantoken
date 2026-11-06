@@ -71,6 +71,11 @@ CSS generation also declares both runtime and development workspace builds as pr
 its generator imports `@pantoken/plugin-props-minify` from development dependencies. Keep these
 prerequisites on the generator task so standalone generation and docs startup use the same order.
 
+Docs deployment serializes every filtered dependency build with
+`vp run -F "@pantoken/docs..." --concurrency-limit 1 build`, including partial and full deploys.
+This prevents generators from importing workspace output while another build cleans or restores it.
+The locale-build concurrency setting is independent of this dependency-build limit.
+
 ## Accessibility evidence in the docs build
 
 The docs build keeps the checked-in evidence (`docs/public/accessibility/results.json`) current, so
