@@ -192,6 +192,9 @@ function fixture(
     "compatibility.json": "{}",
     "docs/compatibility.md": "Compatibility\n",
     "l10n/docs.api.pot": "source catalog\n",
+    ".renovate/verified-targets.json": "{}\n",
+    ".renovate/weekly-upgrades.json": "[]\n",
+    "docs/public/accessibility/results.json": "{}\n",
     ...Object.fromEntries(
       ["rebrand", "canvas", "canvasHighContrast"].map((theme) => [
         `formats/tokens/generated/${theme}.json`,
@@ -314,6 +317,28 @@ test("omits the generated English API catalog from the maintenance handoff", asy
     state.commands.some(
       (command) => command.executable === "vp" && command.args.join(" ") === "run ready",
     ),
+  ).toBe(true);
+});
+
+test("prepares metadata and accessibility evidence before the final gates", async () => {
+  const state = fixture([], {}, { "docs/public/accessibility/results.json": '{"records":{}}\n' });
+  const base = "a".repeat(40);
+  const result = await prepareMaintenance(base, base);
+  expect(JSON.parse(result.files[".renovate/verified-targets.json"]!)).toEqual(result.evidence);
+  expect(result.files["docs/public/accessibility/results.json"]).toBe('{"records":{}}\n');
+  const audit = state.commands.findIndex(
+    (command) => command.args[1] === "@pantoken/docs#docs:accessibility",
+  );
+  const ready = state.commands.findIndex((command) => command.args[1] === "ready");
+  expect(audit).toBeGreaterThan(-1);
+  expect(audit).toBeLessThan(ready);
+  expect(
+    state.commands
+      .slice(0, audit)
+      .some(
+        (command) =>
+          command.args[0] === "fmt" && command.args.includes(".renovate/verified-targets.json"),
+      ),
   ).toBe(true);
 });
 

@@ -11,6 +11,9 @@ const generatedPaths = new Set([
   "pnpm-lock.yaml",
   "compatibility.json",
   "docs/compatibility.md",
+  "docs/public/accessibility/results.json",
+  ".renovate/verified-targets.json",
+  ".renovate/weekly-upgrades.json",
   "formats/tokens/deprecations.json",
   "formats/tokens/known-syntax-issues.json",
   "scripts/release/target-compatibility.json",
@@ -450,10 +453,16 @@ export async function publishMaintenance(
         ...new Set([...(mergedEvidence[upgrade.depName] ?? []), upgrade.newValue]),
       ];
     }
-    passingFiles[".renovate/verified-targets.json"] =
-      `${JSON.stringify(mergedEvidence, null, 2)}\n`;
-    passingFiles[".renovate/weekly-upgrades.json"] =
-      `${JSON.stringify(result.accepted, null, 2)}\n`;
+    assert.deepEqual(
+      JSON.parse(passingFiles[".renovate/verified-targets.json"] ?? "null"),
+      mergedEvidence,
+      "Prepared verification evidence does not match accepted updates",
+    );
+    assert.deepEqual(
+      JSON.parse(passingFiles[".renovate/weekly-upgrades.json"] ?? "null"),
+      result.accepted,
+      "Prepared proposal does not match accepted updates",
+    );
     const tree = await writeTree(base, passingFiles);
     const pr = await publish(
       passingBranch(proposal),

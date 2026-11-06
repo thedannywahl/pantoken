@@ -91,6 +91,9 @@ results back, so an unchanged tree is a fast no-op.
   stamps current fingerprints onto existing evidence when you know the inputs didn't change the results.
 - Commit the updated snapshot with the change that caused it. The `component-accessibility` CI job
   re-audits stale records and fails when the committed snapshot differs.
+- Weekly maintenance refreshes this snapshot before API generation and final release validation.
+  It also formats proposal and verified-target metadata before validation; publication preserves
+  those prepared files instead of creating unchecked files after the gates.
 - On CI (or with `DOCS_ACCESSIBILITY_INSTALL_BROWSER=1`) the refresh provisions the audit browser
   when it needs one. `docs:dev` sets `DOCS_ACCESSIBILITY_AUDIT=skip` so a dev server never starts an audit.
 - The tables are raw HTML in the generated page. The segmenter classifies them as `audit` blocks, so
