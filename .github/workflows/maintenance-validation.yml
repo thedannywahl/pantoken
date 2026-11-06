@@ -47,11 +47,11 @@ jobs:
           auth=$(printf 'x-access-token:%s' "$GH_TOKEN" | base64 -w0)
           git -c "http.https://github.com/.extraheader=AUTHORIZATION: basic $auth" fetch origin "$PROPOSAL_SHA"
       - name: Set up Node.js
-        uses: actions/setup-node@820762786026740c76f36085b0efc47a31fe5020 # v7
+        uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7
         with:
           node-version: "26"
       - name: Set up Vite+
-        uses: voidzero-dev/setup-vp@3754dd7dbdb32bd8f6d28b6043de13ad3a75f21f # v1.21.1
+        uses: voidzero-dev/setup-vp@cab1ab9eaff52d4857875f4f2c016e36af8f2c76 # v1.22.0
         with:
           run-install: true
       - name: Install host-check tools
@@ -77,7 +77,7 @@ jobs:
         run: node scripts/release/maintenance-validation.ts "$STAGE" "$BASE_SHA" "$PROPOSAL_SHA" "$RUNNER_TEMP/maintenance" "$GROUP_ID"
       - name: Upload outcome and progress even after step failure
         if: always()
-        uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7
+        uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7
         with:
           name: ${{ inputs.stage == 'candidate' && format('maintenance-candidate-{0}-{1}', inputs.group, github.run_attempt) || format('maintenance-diagnostics-{0}-{1}', inputs.stage, github.run_attempt) }}
           path: |
@@ -88,7 +88,7 @@ jobs:
           retention-days: 7
       - name: Upload validated integration handoff
         if: success() && inputs.stage == 'integrate'
-        uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7
+        uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7
         with:
           name: maintenance-result-${{ github.run_attempt }}
           path: ${{ runner.temp }}/maintenance/maintenance-result.json
