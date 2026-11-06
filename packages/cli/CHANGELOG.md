@@ -1,5 +1,13 @@
 # CHANGELOG
 
+## 0.1.53
+
+### Patch Changes
+
+- Updated dependencies [9707324]
+  - @pantoken/drupal@0.2.6
+  - @pantoken/wordpress@0.2.5
+
 ## 0.1.52
 
 ### Patch Changes
