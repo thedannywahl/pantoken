@@ -586,8 +586,23 @@ test("records release-feed outages without changing recorded support", async () 
   vi.mocked(targetReleaseHistory).mockRejectedValue(new Error("HTTP 503"));
   const base = "a".repeat(40);
   const result = await prepareMaintenance(base, base);
-  expect(result.failures[0]).toMatchObject({ version: "discovery", error: "HTTP 503" });
+  expect(result.failures[0]).toMatchObject({
+    kind: "infrastructure",
+    version: "discovery",
+    error: "HTTP 503",
+  });
   expect(result.evidence).toEqual({});
+});
+
+test("records release-age holds as deferrals without changing verified support", async () => {
+  fixture();
+  vi.mocked(targetReleaseHistory).mockResolvedValue([
+    { version: "20.0.0", publishedAt: new Date().toISOString() },
+  ]);
+  const result = await prepareMaintenance("a".repeat(40), "a".repeat(40));
+  expect(result.failures[0]).toMatchObject({ kind: "deferred", version: "discovery" });
+  expect(result.evidence).toEqual({});
+  expect(result.files["scripts/release/target-compatibility.json"]).toContain('"18.0.0"');
 });
 
 test("treats an explicit unsupported prior major as incompatibility evidence", async () => {
@@ -618,7 +633,12 @@ test.each([
   ];
   expect(support).toMatchObject({ minimum: "18.0.0", testedThrough: "19.0.0" });
   expect(result.failures).toMatchObject([
-    { package: "@pantoken/react", version: "20.0.0", error: expect.stringContaining(message) },
+    {
+      kind: "infrastructure",
+      package: "@pantoken/react",
+      version: "20.0.0",
+      error: expect.stringContaining(message),
+    },
   ]);
 });
 

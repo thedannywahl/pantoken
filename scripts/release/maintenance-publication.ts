@@ -122,6 +122,11 @@ export function validateMaintenanceResult(
   for (const failure of result.failures) {
     assert.match(failure.id, /^[a-f0-9]{20}$/u);
     assert.ok(
+      failure.kind === undefined ||
+        ["compatibility", "infrastructure", "deferred"].includes(failure.kind),
+      "Invalid maintenance failure kind",
+    );
+    assert.ok(
       typeof failure.package === "string" &&
         typeof failure.version === "string" &&
         typeof failure.error === "string" &&
@@ -250,7 +255,10 @@ export async function publishMaintenance(
   if (action === "reconcile") {
     const evidence = JSON.parse(readFileSync(file, "utf8")) as Record<string, string[]>;
     for (const issue of issues) {
-      const match = /^Compatibility (?:review|failure): (.+) \/ (.+)$/u.exec(issue.title);
+      const match =
+        /^(?:Compatibility (?:review|failure)|Infrastructure failure|Deferred verification): (.+) \/ (.+)$/u.exec(
+          issue.title,
+        );
       if (match && evidence[match[1]]?.includes(match[2])) {
         await api(`${prefix}/issues/${issue.number}/comments`, "POST", {
           body: `Verified ${match[2]} in the merged maintenance evidence on main: https://github.com/${repository}/blob/main/.renovate/verified-targets.json`,
@@ -498,9 +506,16 @@ export async function publishMaintenance(
     assert.ok(!enabled.errors?.length, "Could not enable gated auto-merge");
   }
   const issueLinks: string[] = [];
-  for (const failure of result.failures) {
+  const failures = [...new Map(result.failures.map((failure) => [failure.id, failure])).values()];
+  for (const failure of failures) {
     const marker = `<!-- pantoken-maintenance:${failure.id} -->`;
-    const title = `Compatibility failure: ${failure.package} / ${failure.version}`;
+    const label =
+      failure.kind === "deferred"
+        ? "Deferred verification"
+        : failure.kind === "infrastructure"
+          ? "Infrastructure failure"
+          : "Compatibility failure";
+    const title = `${label}: ${failure.package} / ${failure.version}`;
     const body = `${marker}\n\nCandidate: ${failure.package} ${failure.version}\n\n\`\`\`text\n${failure.error.slice(-12_000)}\n\`\`\`\n\nTracked in the failed-updates draft; excluded from automatic merging.`;
     let issue = issues.find(
       (issue) =>
@@ -515,14 +530,14 @@ export async function publishMaintenance(
     }
     issueLinks.push(`- https://github.com/${repository}/issues/${issue.number}`);
   }
-  if (result.failures.length) {
+  if (failures.length) {
     const failedFiles: Record<string, string | null> = {
-      ".renovate/failed-targets.json": `${JSON.stringify(result.failures, null, 2)}\n`,
+      ".renovate/failed-targets.json": `${JSON.stringify(failures, null, 2)}\n`,
     };
-    for (const failure of result.failures)
+    for (const failure of failures)
       for (const upgrade of failure.upgrades)
         failedFiles[upgrade.packageFile] = await content(upgrade.packageFile, proposal);
-    if (result.failures.some((failure) => failure.upgrades.length))
+    if (failures.some((failure) => failure.upgrades.length))
       failedFiles["pnpm-lock.yaml"] = await content("pnpm-lock.yaml", proposal);
     const existing = pullRequests.find((pr) => pr.head.ref === failureBranch);
     await publish(

@@ -571,6 +571,12 @@ export async function prepareMaintenance(
               history instanceof Error ? "discovery" : (checkingVersion ?? history.at(-1)!);
             failures.push({
               id: maintenanceId(name, version),
+              kind:
+                error instanceof Error && error.name === "MaintenanceDeferredError"
+                  ? "deferred"
+                  : history instanceof Error || infrastructure
+                    ? "infrastructure"
+                    : "compatibility",
               package: name,
               version,
               error: error instanceof Error ? error.message : String(error),

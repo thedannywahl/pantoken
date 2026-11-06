@@ -153,6 +153,8 @@ know what's in place:
   Command timings and failure diagnostics persist outside disposable worktrees; subprocesses do
   not inherit the diagnostic output path. Transport, resource, and subprocess-timeout failures abort
   validation rather than becoming incompatibility evidence. Cross-run reuse is not enabled.
+  Release-age holds are reported as deferred verification; feed and adapter outages are reported as
+  infrastructure failures. Neither label grants compatibility or bypasses the release-age policy.
   Final integration formats maintenance metadata and refreshes accessibility evidence before the
   release gates. Only the exact proposal, verified-target, and accessibility JSON paths are allowed;
   the publisher checks metadata against accepted updates and publishes the validated bytes.

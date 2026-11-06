@@ -375,6 +375,34 @@ test("records failures in individual issues and a separate draft without auto-me
   expect(fixture.calls.some((call) => call.endpoint === "graphql")).toBe(false);
 });
 
+test.each([
+  ["deferred", "Deferred verification"],
+  ["infrastructure", "Infrastructure failure"],
+  ["compatibility", "Compatibility failure"],
+] as const)("labels %s findings and deduplicates repeated issue links", async (kind, label) => {
+  const failure = {
+    id: "f".repeat(20),
+    kind,
+    package: "@pantoken/react",
+    version: "20.0.0",
+    error: "not verified",
+    upgrades: [],
+  };
+  const fixture = githubFixture({ ...artifact(), files: {}, failures: [failure, failure] });
+  await publishMaintenance(["publish", fixture.file, base, proposal]);
+  const issues = fixture.calls.filter(
+    (call) => call.endpoint.endsWith("/issues") && call.method === "POST",
+  );
+  expect(issues).toHaveLength(1);
+  expect(issues[0].body.title).toBe(`${label}: @pantoken/react / 20.0.0`);
+  const pr = fixture.calls.find(
+    (call) => call.endpoint.endsWith("/pulls") && call.method === "POST",
+  )!;
+  expect(
+    String(pr.body.body).match(/https:\/\/github.com\/example\/pantoken\/issues\/42/gu),
+  ).toHaveLength(1);
+});
+
 test("resolves artifact paths through immutable repository trees and fetches only blob SHAs", async () => {
   const upgrade = {
     depName: "react",
