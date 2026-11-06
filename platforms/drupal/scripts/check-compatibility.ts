@@ -56,7 +56,7 @@ echo json_encode(["type" => $info["type"], "library" => "tokens", "discovered" =
         `${join(directory, "check.php")}:/tmp/pantoken-check.php:ro`,
         "--entrypoint",
         "php",
-        `drupal:${version}-php8.3-apache`,
+        `drupal:${version}-apache`,
         "/tmp/pantoken-check.php",
       ],
       { encoding: "utf8" },

@@ -622,6 +622,7 @@ test("treats an explicit unsupported prior major as incompatibility evidence", a
 test.each([
   "Unable to find image 'example:20.0.0' locally\ndocker: Error response from daemon: failed to resolve reference",
   "Error establishing a database connection: database server at `db` could not be established",
+  "WordPress test database did not become healthy",
 ])("records compatibility infrastructure outages and preserves support: %s", async (message) => {
   fixture([], { "20.0.0": message });
   const result = await prepareMaintenance("a".repeat(40), "a".repeat(40), {

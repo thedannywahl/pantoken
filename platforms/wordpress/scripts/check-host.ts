@@ -86,7 +86,7 @@ export async function checkHost(
       network,
       "--network-alias",
       "db",
-      "--health-cmd=mariadb-admin ping -h localhost --silent",
+      `--health-cmd=mariadb --host=127.0.0.1 --user=wordpress --password=${password} --database=wordpress --execute='SELECT 1' --silent`,
       "--health-interval=2s",
       "--health-retries=20",
       "-e",

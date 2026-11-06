@@ -137,7 +137,7 @@ function command(
     if (
       result.error ||
       result.signal ||
-      /ENOSPC|ENOMEM|ECONNRESET|ETIMEDOUT|EAI_AGAIN|ENOTFOUND|ERR_PNPM_FETCH|HTTP (?:429|5\d\d)|Unable to find image|failed to resolve reference|Cannot connect to the Docker daemon|Error establishing a database connection|database server at `db` could not be established/iu.test(
+      /ENOSPC|ENOMEM|ECONNRESET|ETIMEDOUT|EAI_AGAIN|ENOTFOUND|ERR_PNPM_FETCH|HTTP (?:429|5\d\d)|Unable to find image|failed to resolve reference|Cannot connect to the Docker daemon|Error establishing a database connection|database server at `db` could not be established|database did not become healthy/iu.test(
         failure.message,
       )
     )
