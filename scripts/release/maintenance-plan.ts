@@ -5,6 +5,7 @@ import type { WorkspacePackage } from "./workspace-packages.ts";
 /** A Renovate-proposed dependency change, captured before branch preparation. */
 export interface MaintenanceUpgrade {
   depName: string;
+  packageName?: string;
   packageFile: string;
   manager: string;
   currentValue?: string;
@@ -15,6 +16,7 @@ export interface MaintenanceUpgrade {
 /** A candidate or infrastructure failure that remains outside the passing branch. */
 export interface MaintenanceFailure {
   id: string;
+  kind?: "compatibility" | "infrastructure" | "deferred";
   package: string;
   version: string;
   error: string;
@@ -48,12 +50,13 @@ export function parseMaintenanceUpgrades(input: unknown): MaintenanceUpgrade[] {
       if (typeof record[key] !== "string" || !(record[key] as string).length)
         throw new Error(`Missing proposal ${key}`);
     }
-    for (const key of ["currentValue", "newDigest"]) {
+    for (const key of ["currentValue", "newDigest", "packageName"]) {
       if (record[key] !== undefined && typeof record[key] !== "string")
         throw new Error(`Invalid proposal ${key}`);
     }
     return {
       depName: record.depName as string,
+      ...(record.packageName === undefined ? {} : { packageName: record.packageName as string }),
       packageFile: safeMaintenancePath(record.packageFile as string),
       manager: record.manager as string,
       newValue: record.newValue as string,
@@ -96,6 +99,18 @@ export function groupMaintenanceUpgrades(
 function replacementValue(current: unknown, upgrade: MaintenanceUpgrade): string | undefined {
   if (typeof current !== "string" || current === "catalog:" || current.startsWith("workspace:"))
     return undefined;
+  if (current.startsWith("npm:")) {
+    const alias = /^npm:((?:@[a-z0-9._-]+\/)?[a-z0-9._-]+)@(\d+\.\d+\.\d+)$/u.exec(current);
+    if (
+      !alias ||
+      upgrade.manager !== "npm" ||
+      alias[1] !== upgrade.packageName ||
+      alias[2] !== upgrade.currentValue ||
+      !/^\d+\.\d+\.\d+$/u.test(upgrade.newValue)
+    )
+      return undefined;
+    return `npm:${alias[1]}@${upgrade.newValue}`;
+  }
   if (upgrade.currentValue !== undefined && current !== upgrade.currentValue) {
     if (!current.startsWith("github:") || !current.endsWith(`#${upgrade.currentValue}`))
       return undefined;

@@ -139,7 +139,9 @@ know what's in place:
   base/proposal refs, allowed paths, manifest invariants, and protected CI/Changeset checks before
   enabling auto-merge. Existing pnpm `devEngines.packageManager.version` entries may receive
   numeric stable version updates; package-manager names, failure policy, package versions,
-  scripts, and exports remain protected. Passing output is published to a proposal-SHA-specific
+  scripts, and exports remain protected. Pinned npm alias updates must match the existing upstream
+  package identity and version; numeric stable replacements preserve that identity and do not permit
+  alias retargeting. Passing output is published to a proposal-SHA-specific
   branch, separate from Renovate's input branch. Retries reuse it only when its tree and base parent
   exactly match the validated handoff. Failed candidates remain in a separate, non-merging draft with individual
   issues. Tests, not release-feed data, establish compatibility claims.
@@ -151,6 +153,11 @@ know what's in place:
   Command timings and failure diagnostics persist outside disposable worktrees; subprocesses do
   not inherit the diagnostic output path. Transport, resource, and subprocess-timeout failures abort
   validation rather than becoming incompatibility evidence. Cross-run reuse is not enabled.
+  Release-age holds are reported as deferred verification; feed and adapter outages are reported as
+  infrastructure failures. Neither label grants compatibility or bypasses the release-age policy.
+  Final integration formats maintenance metadata and refreshes accessibility evidence before the
+  release gates. Only the exact proposal, verified-target, and accessibility JSON paths are allowed;
+  the publisher checks metadata against accepted updates and publishes the validated bytes.
 - **Maintenance file and request integrity.** Output hashing and changed-file collection inspect
   and read the same no-follow file descriptor, rejecting symlinks and non-regular files. Integration
   applies the same descriptor-based inspection and reading to candidate outcome artifacts and closes

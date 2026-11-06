@@ -137,7 +137,7 @@ function command(
     if (
       result.error ||
       result.signal ||
-      /ENOSPC|ENOMEM|ECONNRESET|ETIMEDOUT|EAI_AGAIN|ENOTFOUND|ERR_PNPM_FETCH|HTTP (?:429|5\d\d)|Unable to find image|failed to resolve reference|Cannot connect to the Docker daemon|Error establishing a database connection|database server at `db` could not be established/iu.test(
+      /ENOSPC|ENOMEM|ECONNRESET|ETIMEDOUT|EAI_AGAIN|ENOTFOUND|ERR_PNPM_FETCH|HTTP (?:429|5\d\d)|Unable to find image|failed to resolve reference|Cannot connect to the Docker daemon|Error establishing a database connection|database server at `db` could not be established|database did not become healthy/iu.test(
         failure.message,
       )
     )
@@ -571,6 +571,12 @@ export async function prepareMaintenance(
               history instanceof Error ? "discovery" : (checkingVersion ?? history.at(-1)!);
             failures.push({
               id: maintenanceId(name, version),
+              kind:
+                error instanceof Error && error.name === "MaintenanceDeferredError"
+                  ? "deferred"
+                  : history instanceof Error || infrastructure
+                    ? "infrastructure"
+                    : "compatibility",
               package: name,
               version,
               error: error instanceof Error ? error.message : String(error),
@@ -666,12 +672,24 @@ export async function prepareMaintenance(
             [`.changeset/weekly-${maintenanceId(base, JSON.stringify(candidates))}.md`]: changeset,
           });
         command(directory, "vp", ["install", "--no-frozen-lockfile"]);
+        if (final) {
+          const mergedEvidence = structuredClone(evidence);
+          for (const upgrade of candidates)
+            mergedEvidence[upgrade.depName] = [
+              ...new Set([...(mergedEvidence[upgrade.depName] ?? []), upgrade.newValue]),
+            ];
+          writeFiles(directory, {
+            ".renovate/verified-targets.json": `${JSON.stringify(mergedEvidence, null, 2)}\n`,
+            [maintenanceProposalPath]: `${JSON.stringify(candidates, null, 2)}\n`,
+          });
+        }
         const changed = Object.keys(collectedFiles(directory, base)).filter((file) =>
           /\.(?:json|ya?ml|md)$/u.test(file),
         );
         if (changed.length) command(directory, "vp", ["fmt", ...changed]);
         command(directory, process.execPath, ["docs/scripts/site-themes.ts"]);
         if (final) {
+          command(directory, "vp", ["run", "@pantoken/docs#docs:accessibility"]);
           command(directory, "vp", ["run", "@pantoken/docs#docs:api:en"]);
           command(directory, "vp", ["run", "ready"]);
           command(directory, "vp", ["run", "check:publish"]);

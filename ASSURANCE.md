@@ -221,6 +221,23 @@ and errors are written immediately to an external JSONL progress file, whose pat
 child environments. Evidence: `scripts/release/maintenance-validation.ts`, its tests, and
 `scripts/release/weekly-maintenance.test.ts`.
 
+Final integration generates the proposal and verified-target metadata before formatting and release
+gates, and refreshes accessibility evidence before generating the API pages. The handoff permits
+only the two exact maintenance JSON paths and `docs/public/accessibility/results.json` in addition
+to the existing generated paths. Publication compares prepared metadata with the accepted updates
+and target evidence instead of regenerating files after validation; size and deletion controls apply.
+Accessibility results remain generated evidence, not a substitute for final-head CI.
+
+Pinned npm alias proposals retain the upstream package name in normalized metadata. Applying an
+alias update requires the existing alias target and current version to match that metadata, accepts
+only numeric stable replacements, and preserves the alias target. Stale versions, missing identity,
+and alias retargeting fail validation; coupled toolchain updates remain atomic.
+
+Release-age holds retain the existing age policy and are labeled deferred verification. Release-feed
+and adapter infrastructure outages are labeled separately from incompatibilities; neither category
+adds passing evidence or removes previously verified support. Repeated failure IDs produce one issue
+link, and the publisher rejects unknown finding kinds.
+
 | Threat                                                                                                        | Control                                                                                                                                                                                                                                                                                                                                                                                                                                                           | Evidence                                                                                                                                               |
 | ------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------ |
 | A dependency proposal acquires repository-write credentials during execution.                                 | Candidate commands receive a credential-filtered environment; the publication job checks out trusted base code, does not install candidate dependencies, and accepts only bounded file handoffs tied to immutable base/proposal SHAs.                                                                                                                                                                                                                             | `scripts/release/weekly-maintenance.ts`, `scripts/release/weekly-maintenance.test.ts`, `.github/workflows/renovate.yml`                                |

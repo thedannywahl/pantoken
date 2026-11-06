@@ -44,9 +44,11 @@ export function selectReleaseCandidates(
     const release = stable.filter((entry) => Number(entry.version.split(".")[0]) === major).at(-1)!;
     const published = Date.parse(release.publishedAt ?? "");
     if (!Number.isFinite(published) || published > now - minimumAgeDays * 86_400_000) {
-      throw new Error(
+      const failure = new Error(
         `Deferred release ${release.version}: missing timestamp or minimum release age`,
       );
+      failure.name = "MaintenanceDeferredError";
+      throw failure;
     }
     return release.version;
   });

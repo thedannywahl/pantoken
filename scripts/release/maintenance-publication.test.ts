@@ -25,7 +25,11 @@ const artifact = () => ({
   upgrades: [],
   accepted: [],
   failures: [],
-  files: { "compatibility.json": "{}\n" },
+  files: {
+    "compatibility.json": "{}\n",
+    ".renovate/verified-targets.json": '{"@pantoken/react":["19.0.0"]}\n',
+    ".renovate/weekly-upgrades.json": "[]\n",
+  },
   evidence: { "@pantoken/react": ["19.0.0"] },
 });
 
@@ -371,6 +375,34 @@ test("records failures in individual issues and a separate draft without auto-me
   expect(fixture.calls.some((call) => call.endpoint === "graphql")).toBe(false);
 });
 
+test.each([
+  ["deferred", "Deferred verification"],
+  ["infrastructure", "Infrastructure failure"],
+  ["compatibility", "Compatibility failure"],
+] as const)("labels %s findings and deduplicates repeated issue links", async (kind, label) => {
+  const failure = {
+    id: "f".repeat(20),
+    kind,
+    package: "@pantoken/react",
+    version: "20.0.0",
+    error: "not verified",
+    upgrades: [],
+  };
+  const fixture = githubFixture({ ...artifact(), files: {}, failures: [failure, failure] });
+  await publishMaintenance(["publish", fixture.file, base, proposal]);
+  const issues = fixture.calls.filter(
+    (call) => call.endpoint.endsWith("/issues") && call.method === "POST",
+  );
+  expect(issues).toHaveLength(1);
+  expect(issues[0].body.title).toBe(`${label}: @pantoken/react / 20.0.0`);
+  const pr = fixture.calls.find(
+    (call) => call.endpoint.endsWith("/pulls") && call.method === "POST",
+  )!;
+  expect(
+    String(pr.body.body).match(/https:\/\/github.com\/example\/pantoken\/issues\/42/gu),
+  ).toHaveLength(1);
+});
+
 test("resolves artifact paths through immutable repository trees and fetches only blob SHAs", async () => {
   const upgrade = {
     depName: "react",
@@ -423,7 +455,10 @@ test("fails closed for missing files, symlinks, invalid blob SHAs, and truncated
 
 test("compares dependency manifests with the base blob before writing a tree", async () => {
   const fixture = githubFixture(
-    { ...artifact(), files: { "package.json": '{"dependencies":{"react":"^21.0.0"}}' } },
+    {
+      ...artifact(),
+      files: { ...artifact().files, "package.json": '{"dependencies":{"react":"^21.0.0"}}' },
+    },
     { tree: [{ path: "package.json", type: "blob", sha: "d".repeat(40), mode: "100644" }] },
   );
   await publishMaintenance(["publish", fixture.file, base, proposal]);
@@ -434,6 +469,22 @@ test("compares dependency manifests with the base blob before writing a tree", a
     fixture.calls.some((call) => call.endpoint.endsWith("/git/trees") && call.method === "POST"),
   ).toBe(true);
 });
+
+test.each([".renovate/verified-targets.json", ".renovate/weekly-upgrades.json"])(
+  "rejects altered prepared metadata: %s",
+  async (file) => {
+    const fixture = githubFixture({
+      ...artifact(),
+      files: { ...artifact().files, [file]: "{}\n" },
+    });
+    await expect(publishMaintenance(["publish", fixture.file, base, proposal])).rejects.toThrow(
+      "does not match accepted updates",
+    );
+    expect(
+      fixture.calls.some((call) => call.endpoint.endsWith("/git/trees") && call.method === "POST"),
+    ).toBe(false);
+  },
+);
 
 test("rejects workflow content that differs from the proposal blob", async () => {
   const upgrade = {

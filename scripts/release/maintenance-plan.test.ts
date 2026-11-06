@@ -41,6 +41,39 @@ test("preserves GitHub-only dependency URLs while changing the tag", () => {
   ).toBe("github:instructure/instructure-design-tokens#v2.2.0");
 });
 
+test("preserves a pinned npm alias and validates its package identity", () => {
+  const proposal = {
+    ...upgrade,
+    depName: "vite",
+    packageName: "@voidzero-dev/vite-plus-core",
+    currentValue: "1.2.0",
+    newValue: "1.4.0",
+  };
+  const source = "catalog:\n  vite: npm:@voidzero-dev/vite-plus-core@1.2.0\n";
+  expect(parseMaintenanceUpgrades([proposal])).toEqual([proposal]);
+  expect(parse(editMaintenanceDependency(source, proposal)).catalog.vite).toBe(
+    "npm:@voidzero-dev/vite-plus-core@1.4.0",
+  );
+  expect(
+    JSON.parse(
+      editMaintenanceDependency(
+        JSON.stringify({ devDependencies: { vite: "npm:@voidzero-dev/vite-plus-core@1.2.0" } }),
+        { ...proposal, packageFile: "package.json" },
+      ),
+    ).devDependencies.vite,
+  ).toBe("npm:@voidzero-dev/vite-plus-core@1.4.0");
+  for (const invalid of [
+    { ...proposal, packageName: undefined },
+    { ...proposal, packageName: "vite" },
+    { ...proposal, currentValue: "1.1.0" },
+    { ...proposal, newValue: "npm:other@1.4.0" },
+    { ...proposal, newValue: "1.4.0-beta.1" },
+    { ...proposal, manager: "github-actions" },
+  ])
+    expect(() => editMaintenanceDependency(source, invalid)).toThrow("does not match");
+  expect(() => parseMaintenanceUpgrades([{ ...proposal, packageName: 42 }])).toThrow("packageName");
+});
+
 test("updates manifest fields without replacing catalog or workspace references", () => {
   const source = JSON.stringify({
     dependencies: { react: "^19.0.0" },

@@ -192,6 +192,9 @@ function fixture(
     "compatibility.json": "{}",
     "docs/compatibility.md": "Compatibility\n",
     "l10n/docs.api.pot": "source catalog\n",
+    ".renovate/verified-targets.json": "{}\n",
+    ".renovate/weekly-upgrades.json": "[]\n",
+    "docs/public/accessibility/results.json": "{}\n",
     ...Object.fromEntries(
       ["rebrand", "canvas", "canvasHighContrast"].map((theme) => [
         `formats/tokens/generated/${theme}.json`,
@@ -314,6 +317,28 @@ test("omits the generated English API catalog from the maintenance handoff", asy
     state.commands.some(
       (command) => command.executable === "vp" && command.args.join(" ") === "run ready",
     ),
+  ).toBe(true);
+});
+
+test("prepares metadata and accessibility evidence before the final gates", async () => {
+  const state = fixture([], {}, { "docs/public/accessibility/results.json": '{"records":{}}\n' });
+  const base = "a".repeat(40);
+  const result = await prepareMaintenance(base, base);
+  expect(JSON.parse(result.files[".renovate/verified-targets.json"]!)).toEqual(result.evidence);
+  expect(result.files["docs/public/accessibility/results.json"]).toBe('{"records":{}}\n');
+  const audit = state.commands.findIndex(
+    (command) => command.args[1] === "@pantoken/docs#docs:accessibility",
+  );
+  const ready = state.commands.findIndex((command) => command.args[1] === "ready");
+  expect(audit).toBeGreaterThan(-1);
+  expect(audit).toBeLessThan(ready);
+  expect(
+    state.commands
+      .slice(0, audit)
+      .some(
+        (command) =>
+          command.args[0] === "fmt" && command.args.includes(".renovate/verified-targets.json"),
+      ),
   ).toBe(true);
 });
 
@@ -561,8 +586,23 @@ test("records release-feed outages without changing recorded support", async () 
   vi.mocked(targetReleaseHistory).mockRejectedValue(new Error("HTTP 503"));
   const base = "a".repeat(40);
   const result = await prepareMaintenance(base, base);
-  expect(result.failures[0]).toMatchObject({ version: "discovery", error: "HTTP 503" });
+  expect(result.failures[0]).toMatchObject({
+    kind: "infrastructure",
+    version: "discovery",
+    error: "HTTP 503",
+  });
   expect(result.evidence).toEqual({});
+});
+
+test("records release-age holds as deferrals without changing verified support", async () => {
+  fixture();
+  vi.mocked(targetReleaseHistory).mockResolvedValue([
+    { version: "20.0.0", publishedAt: new Date().toISOString() },
+  ]);
+  const result = await prepareMaintenance("a".repeat(40), "a".repeat(40));
+  expect(result.failures[0]).toMatchObject({ kind: "deferred", version: "discovery" });
+  expect(result.evidence).toEqual({});
+  expect(result.files["scripts/release/target-compatibility.json"]).toContain('"18.0.0"');
 });
 
 test("treats an explicit unsupported prior major as incompatibility evidence", async () => {
@@ -582,6 +622,7 @@ test("treats an explicit unsupported prior major as incompatibility evidence", a
 test.each([
   "Unable to find image 'example:20.0.0' locally\ndocker: Error response from daemon: failed to resolve reference",
   "Error establishing a database connection: database server at `db` could not be established",
+  "WordPress test database did not become healthy",
 ])("records compatibility infrastructure outages and preserves support: %s", async (message) => {
   fixture([], { "20.0.0": message });
   const result = await prepareMaintenance("a".repeat(40), "a".repeat(40), {
@@ -593,7 +634,12 @@ test.each([
   ];
   expect(support).toMatchObject({ minimum: "18.0.0", testedThrough: "19.0.0" });
   expect(result.failures).toMatchObject([
-    { package: "@pantoken/react", version: "20.0.0", error: expect.stringContaining(message) },
+    {
+      kind: "infrastructure",
+      package: "@pantoken/react",
+      version: "20.0.0",
+      error: expect.stringContaining(message),
+    },
   ]);
 });
 
