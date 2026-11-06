@@ -1,0 +1,829 @@
+[
+  {
+    "id": "0ca1ed6845c944b6459e",
+    "package": "@pantoken/next",
+    "version": "discovery",
+    "error": "Deferred release 15.5.29: missing timestamp or minimum release age",
+    "upgrades": []
+  },
+  {
+    "id": "e1e9d99e35742dc45f33",
+    "package": "@pantoken/panda",
+    "version": "discovery",
+    "error": "Deferred release 1.12.2: missing timestamp or minimum release age",
+    "upgrades": []
+  },
+  {
+    "id": "4d98202f32488e180bd2",
+    "package": "@pantoken/tailwind",
+    "version": "discovery",
+    "error": "Deferred release 4.3.4: missing timestamp or minimum release age",
+    "upgrades": []
+  },
+  {
+    "id": "90b364b516d5b2572904",
+    "package": "@pantoken/vite",
+    "version": "discovery",
+    "error": "Deferred release 8.3.6: missing timestamp or minimum release age",
+    "upgrades": []
+  },
+  {
+    "id": "ac8eedfbf8866cd25a81",
+    "package": "@pantoken/drupal",
+    "version": "11.4.11",
+    "error": "/home/runner/.local/share/vite-plus/js_runtime/node/26.13.0/bin/node scripts/check-compatibility.ts 11.4.11 failed: file:///tmp/pantoken-weekly-nyGm1y/candidate-1/platforms/drupal/scripts/check-compatibility.ts:65\n      throw new Error(\n            ^\n\nError: Unable to find image 'drupal:11.4.11-php8.3-apache' locally\ndocker: Error response from daemon: failed to resolve reference \"docker.io/library/drupal:11.4.11-php8.3-apache\": docker.io/library/drupal:11.4.11-php8.3-apache: not found\n\nRun 'docker run --help' for more information\n\n    at checkCompatibility (file:///tmp/pantoken-weekly-nyGm1y/candidate-1/platforms/drupal/scripts/check-compatibility.ts:65:13)\n    at file:///tmp/pantoken-weekly-nyGm1y/candidate-1/platforms/drupal/scripts/check-compatibility.ts:80:11\n    at ModuleJob.run (node:internal/modules/esm/module_job:569:25)\n    at async node:internal/modules/esm/loader:650:26\n    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:105:5)\n\nNode.js v26.13.0\n\n\nexit 1",
+    "upgrades": []
+  },
+  {
+    "id": "0185d1a435f8baafde16",
+    "package": "@pantoken/hugo",
+    "version": "0.169.0",
+    "error": "/home/runner/.local/share/vite-plus/js_runtime/node/26.13.0/bin/node scripts/check-compatibility.ts 0.169.0 failed: file:///tmp/pantoken-weekly-nyGm1y/candidate-1/platforms/hugo/scripts/check-compatibility.ts:68\n      throw new Error(\n            ^\n\nError: Unable to find image 'hugomods/hugo:0.169.0' locally\ndocker: Error response from daemon: failed to resolve reference \"docker.io/hugomods/hugo:0.169.0\": docker.io/hugomods/hugo:0.169.0: not found\n\nRun 'docker run --help' for more information\n\n    at checkCompatibility (file:///tmp/pantoken-weekly-nyGm1y/candidate-1/platforms/hugo/scripts/check-compatibility.ts:68:13)\n    at file:///tmp/pantoken-weekly-nyGm1y/candidate-1/platforms/hugo/scripts/check-compatibility.ts:86:66\n    at ModuleJob.run (node:internal/modules/esm/module_job:569:25)\n    at async node:internal/modules/esm/loader:650:26\n    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:105:5)\n\nNode.js v26.13.0\n\n\nexit 1",
+    "upgrades": []
+  },
+  {
+    "id": "f9dc32b5d8a63fd77093",
+    "package": "@pantoken/jekyll",
+    "version": "3.9.4",
+    "error": "/home/runner/.local/share/vite-plus/js_runtime/node/26.13.0/bin/node scripts/check-compatibility.ts 3.9.4 failed: file:///tmp/pantoken-weekly-nyGm1y/candidate-1/platforms/jekyll/scripts/check-compatibility.ts:67\n      throw new Error(\n            ^\n\nError: Unable to find image 'jekyll/jekyll:3.9.4' locally\ndocker: Error response from daemon: failed to resolve reference \"docker.io/jekyll/jekyll:3.9.4\": docker.io/jekyll/jekyll:3.9.4: not found\n\nRun 'docker run --help' for more information\n\n    at checkCompatibility (file:///tmp/pantoken-weekly-nyGm1y/candidate-1/platforms/jekyll/scripts/check-compatibility.ts:67:13)\n    at file:///tmp/pantoken-weekly-nyGm1y/candidate-1/platforms/jekyll/scripts/check-compatibility.ts:85:5\n    at ModuleJob.run (node:internal/modules/esm/module_job:569:25)\n    at async node:internal/modules/esm/loader:650:26\n    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:105:5)\n\nNode.js v26.13.0\n\n\nexit 1",
+    "upgrades": []
+  },
+  {
+    "id": "087bb44aa97668008e57",
+    "package": "@pantoken/wordpress",
+    "version": "6.7",
+    "error": "/home/runner/.local/share/vite-plus/js_runtime/node/26.13.0/bin/node scripts/check-host.ts 6.7 failed: file:///tmp/pantoken-weekly-nyGm1y/candidate-1/platforms/wordpress/scripts/check-host.ts:14\n    throw new Error(\n          ^\n\nError: Error: Error establishing a database connection. This either means that the username and password information in your `wp-config.php` file is incorrect or that contact with the database server at `db` could not be established. This could mean your host’s database server is down.\n    at docker (file:///tmp/pantoken-weekly-nyGm1y/candidate-1/platforms/wordpress/scripts/check-host.ts:14:11)\n    at wp (file:///tmp/pantoken-weekly-nyGm1y/candidate-1/platforms/wordpress/scripts/check-host.ts:61:5)\n    at checkHost (file:///tmp/pantoken-weekly-nyGm1y/candidate-1/platforms/wordpress/scripts/check-host.ts:147:5)\n    at async file:///tmp/pantoken-weekly-nyGm1y/candidate-1/platforms/wordpress/scripts/check-host.ts:173:47\n\nNode.js v26.13.0\n\n\nexit 1",
+    "upgrades": []
+  },
+  {
+    "id": "0706b629187878970396",
+    "package": "@pantoken/angular",
+    "version": "discovery",
+    "error": "Deferred release 21.2.26: missing timestamp or minimum release age",
+    "upgrades": []
+  },
+  {
+    "id": "ac7fc985edd1a8f8a2ae",
+    "package": "@pantoken/astro",
+    "version": "discovery",
+    "error": "Deferred release 0.42.9: missing timestamp or minimum release age",
+    "upgrades": []
+  },
+  {
+    "id": "51c0adc8ae7e22cf8de5",
+    "package": "@pantoken/mintlify",
+    "version": "discovery",
+    "error": "Deferred release 4.0.1810: missing timestamp or minimum release age",
+    "upgrades": []
+  },
+  {
+    "id": "8ae75ce6f0e255a6dd6b",
+    "package": "@pantoken/shadcn",
+    "version": "discovery",
+    "error": "Deferred release 4.3.4: missing timestamp or minimum release age",
+    "upgrades": []
+  },
+  {
+    "id": "beb0193a518214da484e",
+    "package": "@pantoken/vue",
+    "version": "discovery",
+    "error": "Deferred release 3.5.45: missing timestamp or minimum release age",
+    "upgrades": []
+  },
+  {
+    "id": "68365b20ef7bf605127e",
+    "package": "bingo-stratum",
+    "version": "^0.9.0",
+    "error": "vp check failed: error: Lint or type issues found\n\npass: All 6904 files are correctly formatted (5985ms, 4 threads)\n\u001b[38;2;225;80;80;1m×\u001b[0m \u001b[38;2;225;80;80;1mtypescript(TS2724): '\"bingo-stratum\"' has no exported member named 'BlockWithoutAddons'. Did you mean 'BlockWithoutProps'?\u001b[0m\n   ╭─[\u001b[38;2;92;157;255;1mpackages/scaffold-base/src/blocks/cssdoc.ts\u001b[0m:8:15]\n \u001b[2m7\u001b[0m │  */\n \u001b[2m8\u001b[0m │ import type { BlockWithoutAddons } from \"bingo-stratum\";\n   · \u001b[38;2;246;87;248m              ──────────────────\u001b[0m\n \u001b[2m9\u001b[0m │ import { base } from \"../base.ts\";\n   ╰────\n\nFound 1 error and 0 warnings in 1932 files (6.7s, 4 threads)\n\nexit 1",
+    "upgrades": [
+      {
+        "depName": "bingo-stratum",
+        "packageFile": "pnpm-workspace.yaml",
+        "manager": "npm",
+        "newValue": "^0.9.0",
+        "currentValue": "^0.8.0",
+        "newDigest": "sha512-Q9WSIC8yjC0dxw0mRXF5enQjEFKHdkoFBVRyOKvt/6nTFksBRVQArK7KHVpq5DjhMLZnr14zwbr4jW2uH6ZHSg=="
+      }
+    ]
+  },
+  {
+    "id": "ca982bb6db7cf2b87c60",
+    "package": "tinymce-i18n",
+    "version": "26.10.26",
+    "error": "vp test formats/css formats/tokens packages/scaffold renderers/web-components --passWithNoTests failed: \u001b[90mstderr\u001b[2m | formats/tokens/scripts/generate.test.ts\u001b[2m > \u001b[22m\u001b[2mgenerate.ts skips a supplemental token that already exists in the IR\n\u001b[22m\u001b[39m[pantoken] rebrand: \"--instui-component-text-content-quote-font-weight\" patched to \"500\" — known upstream issue\n\n\u001b[90mstderr\u001b[2m | formats/tokens/scripts/generate.test.ts\u001b[2m > \u001b[22m\u001b[2mgenerate.ts treats a changed upstream value as a new issue, dropping the stale ledger entry\n\u001b[22m\u001b[39m[pantoken] rebrand: \"--instui-component-text-content-quote-font-weight\" patched to \"unset\" — newly discovered upstream issue, added to known-syntax-issues.json\n[pantoken] known-syntax-issues.json: removed \"--instui-component-text-content-quote-font-weight\" — no longer reproduces (resolved upstream)\n\n\u001b[90mstderr\u001b[2m | formats/css/tests/scoped.test.ts\u001b[2m > \u001b[22m\u001b[2mplugin declarations honour the configured scope instead of hardcoding :root\n\u001b[22m\u001b[39m[pantoken] plugin \"extra\": not created with @pantoken/plugin-kit; capability checks are skipped.\n\n\n\u001b[31m⎯⎯⎯⎯⎯⎯⎯\u001b[39m\u001b[1m\u001b[41m Failed Tests 1 \u001b[49m\u001b[22m\u001b[31m⎯⎯⎯⎯⎯⎯⎯\u001b[39m\n\n\u001b[41m\u001b[1m FAIL \u001b[22m\u001b[49m packages/scaffold/tests/index.test.ts\u001b[2m > \u001b[22mcanvas-theme-editor is a known, template-only platform (no preset)\n\u001b[31m\u001b[1mAssertionError\u001b[22m: expected '26.10.26' to be '26.9.21' // Object.is equality\u001b[39m\n\nExpected: \u001b[32m\"26.\u001b[7m9\u001b[27m.2\u001b[7m1\u001b[27m\"\u001b[39m\nReceived: \u001b[31m\"26.\u001b[7m10\u001b[27m.2\u001b[7m6\u001b[27m\"\u001b[39m\n\n\u001b[36m \u001b[2m❯\u001b[22m packages/scaffold/tests/index.test.ts:\u001b[2m37:52\u001b[22m\u001b[39m\n    \u001b[90m 35|\u001b[39m     devDependencies: Record<string, string>;\n    \u001b[90m 36|\u001b[39m   };\n    \u001b[90m 37|\u001b[39m   expect(manifest.devDependencies[\"tinymce-i18n\"]).toBe(\"26.9.21\");\n    \u001b[90m   |\u001b[39m                                                    \u001b[31m^\u001b[39m\n    \u001b[90m 38|\u001b[39m   const main = readFileSync(join(target, \"src/main.ts\"), \"utf8\");\n    \u001b[90m 39|\u001b[39m   const appHtml = readFileSync(join(target, \"src/app.html\"), \"utf8\");\n\n\u001b[31m\u001b[2m⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/1]⎯\u001b[22m\u001b[39m\n\n\nes/hy.ts (hy)\n  ca → src/locales/ca.ts (ca)\n  da → src/locales/da.ts (da)\n  nl → src/locales/nl.ts (nl)\n  en-AU → src/locales/en-AU.ts (enAU)\n  en-CA → src/locales/en-CA.ts (enCA)\n  en-GB → src/locales/en-GB.ts (enGB)\n  en → src/locales/en.ts (en)\n  fi → src/locales/fi.ts (fi)\n  fr → src/locales/fr.ts (fr)\n  fr-CA → src/locales/fr-CA.ts (frCA)\n  ga → src/locales/ga.ts (ga)\n  de → src/locales/de.ts (de)\n  el → src/locales/el.ts (el)\n  ht → src/locales/ht.ts (ht)\n  he → src/locales/he.ts (he)\n  hi → src/locales/hi.ts (hi)\n  hu → src/locales/hu.ts (hu)\n  is → src/locales/is.ts (is)\n  id → src/locales/id.ts (id)\n  it → src/locales/it.ts (it)\n  ja → src/locales/ja.ts (ja)\n  ko → src/locales/ko.ts (ko)\n  mi → src/locales/mi.ts (mi)\n  ms → src/locales/ms.ts (ms)\n  se → src/locales/se.ts (se)\n  nb → src/locales/nb.ts (nb)\n  nn → src/locales/nn.ts (nn)\n  fa → src/locales/fa.ts (fa)\n  pl → src/locales/pl.ts (pl)\n  pt → src/locales/pt.ts (pt)\n  pt-BR → src/locales/pt-BR.ts (ptBR)\n  ru → src/locales/ru.ts (ru)\n  zh-Hans → src/locales/zh-Hans.ts (zhHans)\n  sl → src/locales/sl.ts (sl)\n  es → src/locales/es.ts (es)\n  sv → src/locales/sv.ts (sv)\n  th → src/locales/th.ts (th)\n  zh-Hant → src/locales/zh-Hant.ts (zhHant)\n  tr → src/locales/tr.ts (tr)\n  uk → src/locales/uk.ts (uk)\n  vi → src/locales/vi.ts (vi)\n  cy → src/locales/cy.ts (cy)\n\n✓ i18n build-bundles: wrote 44 locale files\n\n \u001b[32m✓\u001b[39m renderers/web-components/tests/i18n-scripts.test.ts \u001b[2m(\u001b[22m\u001b[2m4 tests\u001b[22m\u001b[2m)\u001b[22m\u001b[32m 4\u001b[2mms\u001b[22m\u001b[39m\n \u001b[32m✓\u001b[39m formats/css/tests/inject.test.ts \u001b[2m(\u001b[22m\u001b[2m3 tests\u001b[22m\u001b[2m)\u001b[22m\u001b[32m 3\u001b[2mms\u001b[22m\u001b[39m\n \u001b[32m✓\u001b[39m packages/scaffold/tests/wrapper-layout.test.ts \u001b[2m(\u001b[22m\u001b[2m4 tests\u001b[22m\u001b[2m)\u001b[22m\u001b[32m 13\u001b[2mms\u001b[22m\u001b[39m\n \u001b[32m✓\u001b[39m formats/css/scripts/generate.test.ts \u001b[2m(\u001b[22m\u001b[2m4 tests\u001b[22m\u001b[2m)\u001b[22m\u001b[33m 2704\u001b[2mms\u001b[22m\u001b[39m\n   \u001b[33m\u001b[2m✓\u001b[22m\u001b[39m writes style.css with @property registrations flattened to :root declarations\u001b[33m 1196\u001b[2mms\u001b[22m\u001b[39m\n   \u001b[33m\u001b[2m✓\u001b[22m\u001b[39m writes style.lean.css with @property registrations flattened\u001b[33m 500\u001b[2mms\u001b[22m\u001b[39m\n   \u001b[33m\u001b[2m✓\u001b[22m\u001b[39m writes the rebrand light-only artifacts without light-dark() pairs\u001b[33m 534\u001b[2mms\u001b[22m\u001b[39m\n   \u001b[33m\u001b[2m✓\u001b[22m\u001b[39m writes canvas and canvas high-contrast artifacts\u001b[33m 473\u001b[2mms\u001b[22m\u001b[39m\n \u001b[32m✓\u001b[39m packages/scaffold/tests/canvas-theme-editor-responsive.test.ts \u001b[2m(\u001b[22m\u001b[2m1 test\u001b[22m\u001b[2m)\u001b[22m\u001b[32m 6\u001b[2mms\u001b[22m\u001b[39m\n \u001b[32m✓\u001b[39m packages/scaffold/tests/canvas-theme-editor-pwa.test.ts \u001b[2m(\u001b[22m\u001b[2m1 test\u001b[22m\u001b[2m)\u001b[22m\u001b[32m 6\u001b[2mms\u001b[22m\u001b[39m\n \u001b[32m✓\u001b[39m formats/css/tests/emit.test.ts \u001b[2m(\u001b[22m\u001b[2m2 tests\u001b[22m\u001b[2m)\u001b[22m\u001b[32m 3\u001b[2mms\u001b[22m\u001b[39m\n \u001b[32m✓\u001b[39m renderers/web-components/tests/i18n-node-free.test.ts \u001b[2m(\u001b[22m\u001b[2m1 test\u001b[22m\u001b[2m)\u001b[22m\u001b[32m 3\u001b[2mms\u001b[22m\u001b[39m\n \u001b[32m✓\u001b[39m packages/scaffold-base/tests/index.test.ts \u001b[2m(\u001b[22m\u001b[2m2 tests\u001b[22m\u001b[2m)\u001b[22m\u001b[32m 4\u001b[2mms\u001b[22m\u001b[39m\n \u001b[32m✓\u001b[39m renderers/web-components/tests/icon.test.ts \u001b[2m(\u001b[22m\u001b[2m4 tests\u001b[22m\u001b[2m)\u001b[22m\u001b[32m 15\u001b[2mms\u001b[22m\u001b[39m\n \u001b[32m✓\u001b[39m packages/scaffold-base/tests/preset.test.ts \u001b[2m(\u001b[22m\u001b[2m1 test\u001b[22m\u001b[2m)\u001b[22m\u001b[32m 3\u001b[2mms\u001b[22m\u001b[39m\n \u001b[32m✓\u001b[39m renderers/web-components/tests/scaffold-preset.test.ts \u001b[2m(\u001b[22m\u001b[2m1 test\u001b[22m\u001b[2m)\u001b[22m\u001b[32m 2\u001b[2mms\u001b[22m\u001b[39m\n\n\u001b[2m Test Files \u001b[22m \u001b[1m\u001b[31m1 failed\u001b[39m\u001b[22m\u001b[2m | \u001b[22m\u001b[1m\u001b[32m40 passed\u001b[39m\u001b[22m\u001b[90m (41)\u001b[39m\n\u001b[2m      Tests \u001b[22m \u001b[1m\u001b[31m1 failed\u001b[39m\u001b[22m\u001b[2m | \u001b[22m\u001b[1m\u001b[32m411 passed\u001b[39m\u001b[22m\u001b[90m (412)\u001b[39m\n\u001b[2m   Start at \u001b[22m 04:18:58\n\u001b[2m   Duration \u001b[22m 19.21s\u001b[2m (import 57%, tests 19%, transform 12%, environment 9%, setup 2%)\u001b[22m\n\n\u001b[2m     Import \u001b[22m \u001b[33m282 modules were evaluated 2208 times\u001b[39m\u001b[2m · 19.42s total, 57% of tracked time\u001b[22m\n\u001b[2m            \u001b[22m \u001b[2m~7.83s faster with \u001b[22m\u001b[33misolate: false\u001b[39m\u001b[2m — shared modules are evaluated once per worker instead of once per file\u001b[22m\n\u001b[2m            \u001b[22m \u001b[2mlearn more: https://vitest.dev/guide/improving-performance#test-isolation\u001b[22m\n\n\nexit 1",
+    "upgrades": [
+      {
+        "depName": "tinymce-i18n",
+        "packageFile": "pnpm-workspace.yaml",
+        "manager": "npm",
+        "newValue": "26.10.26",
+        "currentValue": "26.9.21",
+        "newDigest": "sha512-w8Za1ul2/PNv2HyTKpNgB51QsKnM/NAF7+X0KHIXxJNPcHzPd7mawJkVpnnUeWKNjmZzCmCe3q9uC2XswD/R2w=="
+      },
+      {
+        "depName": "tinymce-i18n",
+        "packageFile": "packages/scaffold/templates/canvas-theme-editor/package.json",
+        "manager": "npm",
+        "newValue": "26.10.26",
+        "currentValue": "26.9.21",
+        "newDigest": "sha512-w8Za1ul2/PNv2HyTKpNgB51QsKnM/NAF7+X0KHIXxJNPcHzPd7mawJkVpnnUeWKNjmZzCmCe3q9uC2XswD/R2w=="
+      }
+    ]
+  },
+  {
+    "id": "ca982bb6db7cf2b87c60",
+    "package": "tinymce-i18n",
+    "version": "26.10.26",
+    "error": "vp test formats/css formats/tokens packages/scaffold renderers/web-components --passWithNoTests failed: \u001b[90mstderr\u001b[2m | formats/tokens/scripts/generate.test.ts\u001b[2m > \u001b[22m\u001b[2mgenerate.ts skips a supplemental token that already exists in the IR\n\u001b[22m\u001b[39m[pantoken] rebrand: \"--instui-component-text-content-quote-font-weight\" patched to \"500\" — known upstream issue\n\n\u001b[90mstderr\u001b[2m | formats/tokens/scripts/generate.test.ts\u001b[2m > \u001b[22m\u001b[2mgenerate.ts treats a changed upstream value as a new issue, dropping the stale ledger entry\n\u001b[22m\u001b[39m[pantoken] rebrand: \"--instui-component-text-content-quote-font-weight\" patched to \"unset\" — newly discovered upstream issue, added to known-syntax-issues.json\n[pantoken] known-syntax-issues.json: removed \"--instui-component-text-content-quote-font-weight\" — no longer reproduces (resolved upstream)\n\n\u001b[90mstderr\u001b[2m | formats/css/tests/scoped.test.ts\u001b[2m > \u001b[22m\u001b[2mplugin declarations honour the configured scope instead of hardcoding :root\n\u001b[22m\u001b[39m[pantoken] plugin \"extra\": not created with @pantoken/plugin-kit; capability checks are skipped.\n\n\n\u001b[31m⎯⎯⎯⎯⎯⎯⎯\u001b[39m\u001b[1m\u001b[41m Failed Tests 1 \u001b[49m\u001b[22m\u001b[31m⎯⎯⎯⎯⎯⎯⎯\u001b[39m\n\n\u001b[41m\u001b[1m FAIL \u001b[22m\u001b[49m packages/scaffold/tests/index.test.ts\u001b[2m > \u001b[22mcanvas-theme-editor is a known, template-only platform (no preset)\n\u001b[31m\u001b[1mAssertionError\u001b[22m: expected '26.10.26' to be '26.9.21' // Object.is equality\u001b[39m\n\nExpected: \u001b[32m\"26.\u001b[7m9\u001b[27m.2\u001b[7m1\u001b[27m\"\u001b[39m\nReceived: \u001b[31m\"26.\u001b[7m10\u001b[27m.2\u001b[7m6\u001b[27m\"\u001b[39m\n\n\u001b[36m \u001b[2m❯\u001b[22m packages/scaffold/tests/index.test.ts:\u001b[2m37:52\u001b[22m\u001b[39m\n    \u001b[90m 35|\u001b[39m     devDependencies: Record<string, string>;\n    \u001b[90m 36|\u001b[39m   };\n    \u001b[90m 37|\u001b[39m   expect(manifest.devDependencies[\"tinymce-i18n\"]).toBe(\"26.9.21\");\n    \u001b[90m   |\u001b[39m                                                    \u001b[31m^\u001b[39m\n    \u001b[90m 38|\u001b[39m   const main = readFileSync(join(target, \"src/main.ts\"), \"utf8\");\n    \u001b[90m 39|\u001b[39m   const appHtml = readFileSync(join(target, \"src/app.html\"), \"utf8\");\n\n\u001b[31m\u001b[2m⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/1]⎯\u001b[22m\u001b[39m\n\n\nes/hy.ts (hy)\n  ca → src/locales/ca.ts (ca)\n  da → src/locales/da.ts (da)\n  nl → src/locales/nl.ts (nl)\n  en-AU → src/locales/en-AU.ts (enAU)\n  en-CA → src/locales/en-CA.ts (enCA)\n  en-GB → src/locales/en-GB.ts (enGB)\n  en → src/locales/en.ts (en)\n  fi → src/locales/fi.ts (fi)\n  fr → src/locales/fr.ts (fr)\n  fr-CA → src/locales/fr-CA.ts (frCA)\n  ga → src/locales/ga.ts (ga)\n  de → src/locales/de.ts (de)\n  el → src/locales/el.ts (el)\n  ht → src/locales/ht.ts (ht)\n  he → src/locales/he.ts (he)\n  hi → src/locales/hi.ts (hi)\n  hu → src/locales/hu.ts (hu)\n  is → src/locales/is.ts (is)\n  id → src/locales/id.ts (id)\n  it → src/locales/it.ts (it)\n  ja → src/locales/ja.ts (ja)\n  ko → src/locales/ko.ts (ko)\n  mi → src/locales/mi.ts (mi)\n  ms → src/locales/ms.ts (ms)\n  se → src/locales/se.ts (se)\n  nb → src/locales/nb.ts (nb)\n  nn → src/locales/nn.ts (nn)\n  fa → src/locales/fa.ts (fa)\n  pl → src/locales/pl.ts (pl)\n  pt → src/locales/pt.ts (pt)\n  pt-BR → src/locales/pt-BR.ts (ptBR)\n  ru → src/locales/ru.ts (ru)\n  zh-Hans → src/locales/zh-Hans.ts (zhHans)\n  sl → src/locales/sl.ts (sl)\n  es → src/locales/es.ts (es)\n  sv → src/locales/sv.ts (sv)\n  th → src/locales/th.ts (th)\n  zh-Hant → src/locales/zh-Hant.ts (zhHant)\n  tr → src/locales/tr.ts (tr)\n  uk → src/locales/uk.ts (uk)\n  vi → src/locales/vi.ts (vi)\n  cy → src/locales/cy.ts (cy)\n\n✓ i18n build-bundles: wrote 44 locale files\n\n \u001b[32m✓\u001b[39m renderers/web-components/tests/i18n-scripts.test.ts \u001b[2m(\u001b[22m\u001b[2m4 tests\u001b[22m\u001b[2m)\u001b[22m\u001b[32m 4\u001b[2mms\u001b[22m\u001b[39m\n \u001b[32m✓\u001b[39m formats/css/tests/inject.test.ts \u001b[2m(\u001b[22m\u001b[2m3 tests\u001b[22m\u001b[2m)\u001b[22m\u001b[32m 3\u001b[2mms\u001b[22m\u001b[39m\n \u001b[32m✓\u001b[39m packages/scaffold/tests/wrapper-layout.test.ts \u001b[2m(\u001b[22m\u001b[2m4 tests\u001b[22m\u001b[2m)\u001b[22m\u001b[32m 13\u001b[2mms\u001b[22m\u001b[39m\n \u001b[32m✓\u001b[39m formats/css/scripts/generate.test.ts \u001b[2m(\u001b[22m\u001b[2m4 tests\u001b[22m\u001b[2m)\u001b[22m\u001b[33m 2704\u001b[2mms\u001b[22m\u001b[39m\n   \u001b[33m\u001b[2m✓\u001b[22m\u001b[39m writes style.css with @property registrations flattened to :root declarations\u001b[33m 1196\u001b[2mms\u001b[22m\u001b[39m\n   \u001b[33m\u001b[2m✓\u001b[22m\u001b[39m writes style.lean.css with @property registrations flattened\u001b[33m 500\u001b[2mms\u001b[22m\u001b[39m\n   \u001b[33m\u001b[2m✓\u001b[22m\u001b[39m writes the rebrand light-only artifacts without light-dark() pairs\u001b[33m 534\u001b[2mms\u001b[22m\u001b[39m\n   \u001b[33m\u001b[2m✓\u001b[22m\u001b[39m writes canvas and canvas high-contrast artifacts\u001b[33m 473\u001b[2mms\u001b[22m\u001b[39m\n \u001b[32m✓\u001b[39m packages/scaffold/tests/canvas-theme-editor-responsive.test.ts \u001b[2m(\u001b[22m\u001b[2m1 test\u001b[22m\u001b[2m)\u001b[22m\u001b[32m 6\u001b[2mms\u001b[22m\u001b[39m\n \u001b[32m✓\u001b[39m packages/scaffold/tests/canvas-theme-editor-pwa.test.ts \u001b[2m(\u001b[22m\u001b[2m1 test\u001b[22m\u001b[2m)\u001b[22m\u001b[32m 6\u001b[2mms\u001b[22m\u001b[39m\n \u001b[32m✓\u001b[39m formats/css/tests/emit.test.ts \u001b[2m(\u001b[22m\u001b[2m2 tests\u001b[22m\u001b[2m)\u001b[22m\u001b[32m 3\u001b[2mms\u001b[22m\u001b[39m\n \u001b[32m✓\u001b[39m renderers/web-components/tests/i18n-node-free.test.ts \u001b[2m(\u001b[22m\u001b[2m1 test\u001b[22m\u001b[2m)\u001b[22m\u001b[32m 3\u001b[2mms\u001b[22m\u001b[39m\n \u001b[32m✓\u001b[39m packages/scaffold-base/tests/index.test.ts \u001b[2m(\u001b[22m\u001b[2m2 tests\u001b[22m\u001b[2m)\u001b[22m\u001b[32m 4\u001b[2mms\u001b[22m\u001b[39m\n \u001b[32m✓\u001b[39m renderers/web-components/tests/icon.test.ts \u001b[2m(\u001b[22m\u001b[2m4 tests\u001b[22m\u001b[2m)\u001b[22m\u001b[32m 15\u001b[2mms\u001b[22m\u001b[39m\n \u001b[32m✓\u001b[39m packages/scaffold-base/tests/preset.test.ts \u001b[2m(\u001b[22m\u001b[2m1 test\u001b[22m\u001b[2m)\u001b[22m\u001b[32m 3\u001b[2mms\u001b[22m\u001b[39m\n \u001b[32m✓\u001b[39m renderers/web-components/tests/scaffold-preset.test.ts \u001b[2m(\u001b[22m\u001b[2m1 test\u001b[22m\u001b[2m)\u001b[22m\u001b[32m 2\u001b[2mms\u001b[22m\u001b[39m\n\n\u001b[2m Test Files \u001b[22m \u001b[1m\u001b[31m1 failed\u001b[39m\u001b[22m\u001b[2m | \u001b[22m\u001b[1m\u001b[32m40 passed\u001b[39m\u001b[22m\u001b[90m (41)\u001b[39m\n\u001b[2m      Tests \u001b[22m \u001b[1m\u001b[31m1 failed\u001b[39m\u001b[22m\u001b[2m | \u001b[22m\u001b[1m\u001b[32m411 passed\u001b[39m\u001b[22m\u001b[90m (412)\u001b[39m\n\u001b[2m   Start at \u001b[22m 04:18:58\n\u001b[2m   Duration \u001b[22m 19.21s\u001b[2m (import 57%, tests 19%, transform 12%, environment 9%, setup 2%)\u001b[22m\n\n\u001b[2m     Import \u001b[22m \u001b[33m282 modules were evaluated 2208 times\u001b[39m\u001b[2m · 19.42s total, 57% of tracked time\u001b[22m\n\u001b[2m            \u001b[22m \u001b[2m~7.83s faster with \u001b[22m\u001b[33misolate: false\u001b[39m\u001b[2m — shared modules are evaluated once per worker instead of once per file\u001b[22m\n\u001b[2m            \u001b[22m \u001b[2mlearn more: https://vitest.dev/guide/improving-performance#test-isolation\u001b[22m\n\n\nexit 1",
+    "upgrades": [
+      {
+        "depName": "tinymce-i18n",
+        "packageFile": "pnpm-workspace.yaml",
+        "manager": "npm",
+        "newValue": "26.10.26",
+        "currentValue": "26.9.21",
+        "newDigest": "sha512-w8Za1ul2/PNv2HyTKpNgB51QsKnM/NAF7+X0KHIXxJNPcHzPd7mawJkVpnnUeWKNjmZzCmCe3q9uC2XswD/R2w=="
+      },
+      {
+        "depName": "tinymce-i18n",
+        "packageFile": "packages/scaffold/templates/canvas-theme-editor/package.json",
+        "manager": "npm",
+        "newValue": "26.10.26",
+        "currentValue": "26.9.21",
+        "newDigest": "sha512-w8Za1ul2/PNv2HyTKpNgB51QsKnM/NAF7+X0KHIXxJNPcHzPd7mawJkVpnnUeWKNjmZzCmCe3q9uC2XswD/R2w=="
+      }
+    ]
+  },
+  {
+    "id": "84948a1c379256df75b3",
+    "package": "typescript",
+    "version": "^7.0.0",
+    "error": "vp test docs formats/css formats/tokens plugins/typedoc/demo plugins/typedoc/live-example renderers/web-components --passWithNoTests failed: s/@voidzero-dev/vite-plus-core/dist/vite/node/module-runner.js:\u001b[2m1240:18\u001b[22m\u001b[39m\n\u001b[90m \u001b[2m❯\u001b[22m VitestModuleRunner.cachedRequest node_modules/.pnpm/@voidzero-dev+vite-plus-core@1.2.0_@arethetypeswrong+core@0.18.5_@types+node@26.6.5_esb_3a6b14baa17636cbe44628037fc501f0/node_modules/@voidzero-dev/vite-plus-core/dist/vite/node/module-runner.js:\u001b[2m1184:73\u001b[22m\u001b[39m\n\u001b[36m \u001b[2m❯\u001b[22m docs/scripts/build-css-api.ts:\u001b[2m20:1\u001b[22m\u001b[39m\n    \u001b[90m 18|\u001b[39m import { fileURLToPath } from \"node:url\";\n    \u001b[90m 19|\u001b[39m import { CssDocConfigFile } from \"@cssdoc/config\";\n    \u001b[90m 20|\u001b[39m import { emitCssApi } from \"@cssdoc/typedoc\";\n    \u001b[90m   |\u001b[39m \u001b[31m^\u001b[39m\n    \u001b[90m 21|\u001b[39m import { parseCssDocs, type CssDocEntry, type CssModifier } from \"@css…\n    \u001b[90m 22|\u001b[39m import { JS_CALLOUT_MARKER } from \"./segment-markdown.ts\";\n\u001b[90m \u001b[2m❯\u001b[22m VitestModuleRunner.directRequest node_modules/.pnpm/@voidzero-dev+vite-plus-core@1.2.0_@arethetypeswrong+core@0.18.5_@types+node@26.6.5_esb_3a6b14baa17636cbe44628037fc501f0/node_modules/@voidzero-dev/vite-plus-core/dist/vite/node/module-runner.js:\u001b[2m1277:59\u001b[22m\u001b[39m\n\n\u001b[31m\u001b[2m⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/8]⎯\u001b[22m\u001b[39m\n\n\u001b[41m\u001b[1m FAIL \u001b[22m\u001b[49m plugins/typedoc/demo/tests/index.test.ts\u001b[2m [ plugins/typedoc/demo/tests/index.test.ts ]\u001b[22m\n\u001b[41m\u001b[1m FAIL \u001b[22m\u001b[49m plugins/typedoc/demo/tests/load.test.ts\u001b[2m [ plugins/typedoc/demo/tests/load.test.ts ]\u001b[22m\n\u001b[31m\u001b[1mTypeError\u001b[22m: Cannot read properties of undefined (reading 'PropertyDeclaration')\u001b[39m\n\u001b[90m \u001b[2m❯\u001b[22m node_modules/.pnpm/typedoc@0.28.20_typescript@7.0.2/node_modules/typedoc/dist/index.js:\u001b[2m537:18\u001b[22m\u001b[39m\n\u001b[90m \u001b[2m❯\u001b[22m VitestModuleRunner.directRequest node_modules/.pnpm/@voidzero-dev+vite-plus-core@1.2.0_@arethetypeswrong+core@0.18.5_@types+node@26.6.5_esb_3a6b14baa17636cbe44628037fc501f0/node_modules/@voidzero-dev/vite-plus-core/dist/vite/node/module-runner.js:\u001b[2m1240:18\u001b[22m\u001b[39m\n\u001b[90m \u001b[2m❯\u001b[22m VitestModuleRunner.cachedRequest node_modules/.pnpm/@voidzero-dev+vite-plus-core@1.2.0_@arethetypeswrong+core@0.18.5_@types+node@26.6.5_esb_3a6b14baa17636cbe44628037fc501f0/node_modules/@voidzero-dev/vite-plus-core/dist/vite/node/module-runner.js:\u001b[2m1184:73\u001b[22m\u001b[39m\n\u001b[36m \u001b[2m❯\u001b[22m plugins/typedoc/demo/src/index.ts:\u001b[2m32:1\u001b[22m\u001b[39m\n    \u001b[90m 30|\u001b[39m import { readFileSync, renameSync, writeFileSync } from \"node:fs\";\n    \u001b[90m 31|\u001b[39m import { join } from \"node:path\";\n    \u001b[90m 32|\u001b[39m import { Converter, RendererEvent } from \"typedoc\";\n    \u001b[90m   |\u001b[39m \u001b[31m^\u001b[39m\n    \u001b[90m 33|\u001b[39m import type {\n    \u001b[90m 34|\u001b[39m   Application,\n\u001b[90m \u001b[2m❯\u001b[22m VitestModuleRunner.directRequest node_modules/.pnpm/@voidzero-dev+vite-plus-core@1.2.0_@arethetypeswrong+core@0.18.5_@types+node@26.6.5_esb_3a6b14baa17636cbe44628037fc501f0/node_modules/@voidzero-dev/vite-plus-core/dist/vite/node/module-runner.js:\u001b[2m1277:59\u001b[22m\u001b[39m\n\n\u001b[31m\u001b[2m⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[2/8]⎯\u001b[22m\u001b[39m\n\n\u001b[41m\u001b[1m FAIL \u001b[22m\u001b[49m plugins/typedoc/live-example/tests/index.test.ts\u001b[2m [ plugins/typedoc/live-example/tests/index.test.ts ]\u001b[22m\n\u001b[41m\u001b[1m FAIL \u001b[22m\u001b[49m plugins/typedoc/live-example/tests/load.test.ts\u001b[2m [ plugins/typedoc/live-example/tests/load.test.ts ]\u001b[22m\n\u001b[31m\u001b[1mTypeError\u001b[22m: Cannot read properties of undefined (reading 'PropertyDeclaration')\u001b[39m\n\u001b[90m \u001b[2m❯\u001b[22m node_modules/.pnpm/typedoc@0.28.20_typescript@7.0.2/node_modules/typedoc/dist/index.js:\u001b[2m537:18\u001b[22m\u001b[39m\n\u001b[90m \u001b[2m❯\u001b[22m VitestModuleRunner.directRequest node_modules/.pnpm/@voidzero-dev+vite-plus-core@1.2.0_@arethetypeswrong+core@0.18.5_@types+node@26.6.5_esb_3a6b14baa17636cbe44628037fc501f0/node_modules/@voidzero-dev/vite-plus-core/dist/vite/node/module-runner.js:\u001b[2m1240:18\u001b[22m\u001b[39m\n\u001b[90m \u001b[2m❯\u001b[22m VitestModuleRunner.cachedRequest node_modules/.pnpm/@voidzero-dev+vite-plus-core@1.2.0_@arethetypeswrong+core@0.18.5_@types+node@26.6.5_esb_3a6b14baa17636cbe44628037fc501f0/node_modules/@voidzero-dev/vite-plus-core/dist/vite/node/module-runner.js:\u001b[2m1184:73\u001b[22m\u001b[39m\n\u001b[36m \u001b[2m❯\u001b[22m plugins/typedoc/live-example/src/index.ts:\u001b[2m22:1\u001b[22m\u001b[39m\n    \u001b[90m 20|\u001b[39m import { readdirSync, readFileSync, writeFileSync } from \"node:fs\";\n    \u001b[90m 21|\u001b[39m import { join } from \"node:path\";\n    \u001b[90m 22|\u001b[39m import { type Application, ParameterType, RendererEvent } from \"typedo…\n    \u001b[90m   |\u001b[39m \u001b[31m^\u001b[39m\n    \u001b[90m 23|\u001b[39m\n    \u001b[90m 24|\u001b[39m /** A fenced `html` block and its inner markup. Uses a negative lookah…\n\u001b[90m \u001b[2m❯\u001b[22m VitestModuleRunner.directRequest node_modules/.pnpm/@voidzero-dev+vite-plus-core@1.2.0_@arethetypeswrong+core@0.18.5_@types+node@26.6.5_esb_3a6b14baa17636cbe44628037fc501f0/node_modules/@voidzero-dev/vite-plus-core/dist/vite/node/module-runner.js:\u001b[2m1277:59\u001b[22m\u001b[39m\n\n\u001b[31m\u001b[2m⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[3/8]⎯\u001b[22m\u001b[39m\n\n\n\u001b[31m⎯⎯⎯⎯⎯⎯⎯\u001b[39m\u001b[1m\u001b[41m Failed Tests 2 \u001b[49m\u001b[22m\u001b[31m⎯⎯⎯⎯⎯⎯⎯\u001b[39m\n\n\u001b[41m\u001b[1m FAIL \u001b[22m\u001b[49m docs/scripts/build-api-en.test.ts\u001b[2m > \u001b[22mgenerates the English API without refreshing the catalog by default\n\u001b[31m\u001b[1mError\u001b[22m: ENOENT: no such file or directory, open '/tmp/pantoken-weekly-v9a2A8/candidate-1/docs/api/bundlers/next/src/index.md'\u001b[39m\n\u001b[36m \u001b[2m❯\u001b[22m Module.writeApiCompatibility docs/scripts/write-api-compatibility.ts:\u001b[2m35:43\u001b[22m\u001b[39m\n    \u001b[90m 33|\u001b[39m   for (const consumer of compatibility.consumers) {\n    \u001b[90m 34|\u001b[39m     const file = join(docsRoot, \"api\", consumer.path, \"src/index.md\");\n    \u001b[90m 35|\u001b[39m     writeFileSync(file, withCompatibility(readFileSync(file, \"utf8\"), …\n    \u001b[90m   |\u001b[39m                                           \u001b[31m^\u001b[39m\n    \u001b[90m 36|\u001b[39m   }\n    \u001b[90m 37|\u001b[39m   console.log(`✓ API compatibility: updated ${compatibility.consumers.…\n\u001b[90m \u001b[2m❯\u001b[22m docs/scripts/build-api-en.ts:\u001b[2m34:1\u001b[22m\u001b[39m\n\u001b[90m \u001b[2m❯\u001b[22m VitestModuleRunner.directRequest node_modules/.pnpm/@voidzero-dev+vite-plus-core@1.2.0_@arethetypeswrong+core@0.18.5_@types+node@26.6.5_esb_3a6b14baa17636cbe44628037fc501f0/node_modules/@voidzero-dev/vite-plus-core/dist/vite/node/module-runner.js:\u001b[2m1277:59\u001b[22m\u001b[39m\n\u001b[90m \u001b[2m❯\u001b[22m VitestModuleRunner.cachedRequest node_modules/.pnpm/@voidzero-dev+vite-plus-core@1.2.0_@arethetypeswrong+core@0.18.5_@types+node@26.6.5_esb_3a6b14baa17636cbe44628037fc501f0/node_modules/@voidzero-dev/vite-plus-core/dist/vite/node/module-runner.js:\u001b[2m1184:73\u001b[22m\u001b[39m\n\u001b[90m \u001b[2m❯\u001b[22m docs/scripts/build-api-en.test.ts:\u001b[2m21:3\u001b[22m\u001b[39m\n\n\u001b[31m\u001b[2m⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[4/8]⎯\u001b[22m\u001b[39m\n\n\u001b[41m\u001b[1m FAIL \u001b[22m\u001b[49m docs/scripts/build-api-en.test.ts\u001b[2m > \u001b[22mrefreshes the API catalog only in build mode\n\u001b[31m\u001b[1mError\u001b[22m: ENOENT: no such file or directory, open '/tmp/pantoken-weekly-v9a2A8/candidate-1/docs/api/bundlers/next/src/index.md'\u001b[39m\n\u001b[36m \u001b[2m❯\u001b[22m Module.writeApiCompatibility docs/scripts/write-api-compatibility.ts:\u001b[2m35:43\u001b[22m\u001b[39m\n    \u001b[90m 33|\u001b[39m   for (const consumer of compatibility.consumers) {\n    \u001b[90m 34|\u001b[39m     const file = join(docsRoot, \"api\", consumer.path, \"src/index.md\");\n    \u001b[90m 35|\u001b[39m     writeFileSync(file, withCompatibility(readFileSync(file, \"utf8\"), …\n    \u001b[90m   |\u001b[39m                                           \u001b[31m^\u001b[39m\n    \u001b[90m 36|\u001b[39m   }\n    \u001b[90m 37|\u001b[39m   console.log(`✓ API compatibility: updated ${compatibility.consumers.…\n\u001b[90m \u001b[2m❯\u001b[22m docs/scripts/build-api-en.ts:\u001b[2m34:1\u001b[22m\u001b[39m\n\u001b[90m \u001b[2m❯\u001b[22m VitestModuleRunner.directRequest node_modules/.pnpm/@voidzero-dev+vite-plus-core@1.2.0_@arethetypeswrong+core@0.18.5_@types+node@26.6.5_esb_3a6b14baa17636cbe44628037fc501f0/node_modules/@voidzero-dev/vite-plus-core/dist/vite/node/module-runner.js:\u001b[2m1277:59\u001b[22m\u001b[39m\n\u001b[90m \u001b[2m❯\u001b[22m VitestModuleRunner.cachedRequest node_modules/.pnpm/@voidzero-dev+vite-plus-core@1.2.0_@arethetypeswrong+core@0.18.5_@types+node@26.6.5_esb_3a6b14baa17636cbe44628037fc501f0/node_modules/@voidzero-dev/vite-plus-core/dist/vite/node/module-runner.js:\u001b[2m1184:73\u001b[22m\u001b[39m\n\u001b[90m \u001b[2m❯\u001b[22m docs/scripts/build-api-en.test.ts:\u001b[2m30:3\u001b[22m\u001b[39m\n\n\u001b[31m\u001b[2m⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[5/8]⎯\u001b[22m\u001b[39m\n\n\nth)\n  zh-Hant → src/locales/zh-Hant.ts (zhHant)\n  tr → src/locales/tr.ts (tr)\n  uk → src/locales/uk.ts (uk)\n  vi → src/locales/vi.ts (vi)\n  cy → src/locales/cy.ts (cy)\n\n✓ i18n build-bundles: wrote 44 locale files\n\n \u001b[32m✓\u001b[39m renderers/web-components/tests/i18n-scripts.test.ts \u001b[2m(\u001b[22m\u001b[2m4 tests\u001b[22m\u001b[2m)\u001b[22m\u001b[32m 5\u001b[2mms\u001b[22m\u001b[39m\n \u001b[32m✓\u001b[39m formats/css/tests/inject.test.ts \u001b[2m(\u001b[22m\u001b[2m3 tests\u001b[22m\u001b[2m)\u001b[22m\u001b[32m 6\u001b[2mms\u001b[22m\u001b[39m\n \u001b[32m✓\u001b[39m docs/.vitepress/theme/composables/tokenSheetPaths.test.ts \u001b[2m(\u001b[22m\u001b[2m8 tests\u001b[22m\u001b[2m)\u001b[22m\u001b[32m 5\u001b[2mms\u001b[22m\u001b[39m\n \u001b[31m❯\u001b[39m docs/scripts/build-css-api.property.test.ts \u001b[2m(\u001b[22m\u001b[2m0 test\u001b[22m\u001b[2m)\u001b[22m\n \u001b[32m✓\u001b[39m formats/css/scripts/generate.test.ts \u001b[2m(\u001b[22m\u001b[2m4 tests\u001b[22m\u001b[2m)\u001b[22m\u001b[33m 3249\u001b[2mms\u001b[22m\u001b[39m\n   \u001b[33m\u001b[2m✓\u001b[22m\u001b[39m writes style.css with @property registrations flattened to :root declarations\u001b[33m 1467\u001b[2mms\u001b[22m\u001b[39m\n   \u001b[33m\u001b[2m✓\u001b[22m\u001b[39m writes style.lean.css with @property registrations flattened\u001b[33m 579\u001b[2mms\u001b[22m\u001b[39m\n   \u001b[33m\u001b[2m✓\u001b[22m\u001b[39m writes the rebrand light-only artifacts without light-dark() pairs\u001b[33m 629\u001b[2mms\u001b[22m\u001b[39m\n   \u001b[33m\u001b[2m✓\u001b[22m\u001b[39m writes canvas and canvas high-contrast artifacts\u001b[33m 572\u001b[2mms\u001b[22m\u001b[39m\n \u001b[32m✓\u001b[39m docs/.vitepress/theme/theme.test.ts \u001b[2m(\u001b[22m\u001b[2m7 tests\u001b[22m\u001b[2m)\u001b[22m\u001b[32m 15\u001b[2mms\u001b[22m\u001b[39m\n \u001b[32m✓\u001b[39m docs/scripts/translation-scope.test.ts \u001b[2m(\u001b[22m\u001b[2m5 tests\u001b[22m\u001b[2m)\u001b[22m\u001b[32m 7\u001b[2mms\u001b[22m\u001b[39m\n \u001b[32m✓\u001b[39m renderers/web-components/tests/icon.test.ts \u001b[2m(\u001b[22m\u001b[2m4 tests\u001b[22m\u001b[2m)\u001b[22m\u001b[32m 21\u001b[2mms\u001b[22m\u001b[39m\n \u001b[32m✓\u001b[39m formats/css/tests/emit.test.ts \u001b[2m(\u001b[22m\u001b[2m2 tests\u001b[22m\u001b[2m)\u001b[22m\u001b[32m 4\u001b[2mms\u001b[22m\u001b[39m\n \u001b[31m❯\u001b[39m docs/scripts/build-api-en.test.ts \u001b[2m(\u001b[22m\u001b[2m2 tests\u001b[22m\u001b[2m | \u001b[22m\u001b[31m2 failed\u001b[39m\u001b[2m)\u001b[22m\u001b[32m 215\u001b[2mms\u001b[22m\u001b[39m\n\u001b[31m   \u001b[31m×\u001b[31m generates the English API without refreshing the catalog by default\u001b[39m\u001b[32m 155\u001b[2mms\u001b[22m\u001b[39m\n\u001b[31m   \u001b[31m×\u001b[31m refreshes the API catalog only in build mode\u001b[39m\u001b[32m 58\u001b[2mms\u001b[22m\u001b[39m\n\u001b[90mstdout\u001b[2m | docs/scripts/cdn-plugin-manifest.test.ts\u001b[2m > \u001b[22m\u001b[2mpublishes the plugin manifest for both the docs UI and external agents\n\u001b[22m\u001b[39m✓ docs: wrote cdn-plugin-manifest.json (2 custom components, 4 other plugins, 12 custom icons, 7 logo products)\n\n \u001b[32m✓\u001b[39m docs/scripts/cdn-plugin-manifest.test.ts \u001b[2m(\u001b[22m\u001b[2m1 test\u001b[22m\u001b[2m)\u001b[22m\u001b[33m 1122\u001b[2mms\u001b[22m\u001b[39m\n   \u001b[33m\u001b[2m✓\u001b[22m\u001b[39m publishes the plugin manifest for both the docs UI and external agents\u001b[33m 1121\u001b[2mms\u001b[22m\u001b[39m\n \u001b[32m✓\u001b[39m renderers/web-components/tests/i18n-node-free.test.ts \u001b[2m(\u001b[22m\u001b[2m1 test\u001b[22m\u001b[2m)\u001b[22m\u001b[32m 3\u001b[2mms\u001b[22m\u001b[39m\n \u001b[32m✓\u001b[39m docs/scripts/guide-frontmatter.test.ts \u001b[2m(\u001b[22m\u001b[2m2 tests\u001b[22m\u001b[2m)\u001b[22m\u001b[32m 6\u001b[2mms\u001b[22m\u001b[39m\n \u001b[32m✓\u001b[39m docs/scripts/published-schemas.test.ts \u001b[2m(\u001b[22m\u001b[2m1 test\u001b[22m\u001b[2m)\u001b[22m\u001b[32m 61\u001b[2mms\u001b[22m\u001b[39m\n \u001b[32m✓\u001b[39m docs/scripts/markdown-structure.test.ts \u001b[2m(\u001b[22m\u001b[2m1 test\u001b[22m\u001b[2m)\u001b[22m\u001b[32m 5\u001b[2mms\u001b[22m\u001b[39m\n \u001b[32m✓\u001b[39m scripts/quality/docs-startup.test.ts \u001b[2m(\u001b[22m\u001b[2m1 test\u001b[22m\u001b[2m)\u001b[22m\u001b[32m 5\u001b[2mms\u001b[22m\u001b[39m\n \u001b[32m✓\u001b[39m renderers/web-components/tests/scaffold-preset.test.ts \u001b[2m(\u001b[22m\u001b[2m1 test\u001b[22m\u001b[2m)\u001b[22m\u001b[32m 3\u001b[2mms\u001b[22m\u001b[39m\n\n\u001b[2m Test Files \u001b[22m \u001b[1m\u001b[31m7 failed\u001b[39m\u001b[22m\u001b[2m | \u001b[22m\u001b[1m\u001b[32m73 passed\u001b[39m\u001b[22m\u001b[90m (80)\u001b[39m\n\u001b[2m      Tests \u001b[22m \u001b[1m\u001b[31m2 failed\u001b[39m\u001b[22m\u001b[2m | \u001b[22m\u001b[1m\u001b[32m710 passed\u001b[39m\u001b[22m\u001b[2m | \u001b[22m\u001b[33m3 skipped\u001b[39m\u001b[90m (715)\u001b[39m\n\u001b[2m   Start at \u001b[22m 04:39:12\n\u001b[2m   Duration \u001b[22m 36.86s\u001b[2m (import 53%, tests 28%, transform 10%, environment 7%, setup 3%, worker 1%)\u001b[22m\n\n\u001b[2m     Import \u001b[22m \u001b[33m436 modules were evaluated 2632 times\u001b[39m\u001b[2m · 32.88s total, 53% of tracked time\u001b[22m\n\u001b[2m            \u001b[22m \u001b[2m~12.64s faster with \u001b[22m\u001b[33misolate: false\u001b[39m\u001b[2m — shared modules are evaluated once per worker instead of once per file\u001b[22m\n\u001b[2m            \u001b[22m \u001b[2mlearn more: https://vitest.dev/guide/improving-performance#test-isolation\u001b[22m\n\n\nexit 1",
+    "upgrades": [
+      {
+        "depName": "typescript",
+        "packageFile": "plugins/typedoc/live-example/package.json",
+        "manager": "npm",
+        "newValue": "^7.0.0",
+        "currentValue": "^6.0.3",
+        "newDigest": "sha512-8FYau96o3NKOhbjKi/qNvG/W5jhzxkbdm5sj9AbZ/5T5sWqn3hJgLfGx27sRKZWTvyzCP8dLRBTf5tBTSRVUNA=="
+      },
+      {
+        "depName": "typescript",
+        "packageFile": "plugins/typedoc/demo/package.json",
+        "manager": "npm",
+        "newValue": "^7.0.0",
+        "currentValue": "^6.0.3",
+        "newDigest": "sha512-8FYau96o3NKOhbjKi/qNvG/W5jhzxkbdm5sj9AbZ/5T5sWqn3hJgLfGx27sRKZWTvyzCP8dLRBTf5tBTSRVUNA=="
+      },
+      {
+        "depName": "typescript",
+        "packageFile": "docs/package.json",
+        "manager": "npm",
+        "newValue": "^7.0.0",
+        "currentValue": "^6.0.3",
+        "newDigest": "sha512-8FYau96o3NKOhbjKi/qNvG/W5jhzxkbdm5sj9AbZ/5T5sWqn3hJgLfGx27sRKZWTvyzCP8dLRBTf5tBTSRVUNA=="
+      }
+    ]
+  },
+  {
+    "id": "84948a1c379256df75b3",
+    "package": "typescript",
+    "version": "^7.0.0",
+    "error": "vp test docs formats/css formats/tokens plugins/typedoc/demo plugins/typedoc/live-example renderers/web-components --passWithNoTests failed: s/@voidzero-dev/vite-plus-core/dist/vite/node/module-runner.js:\u001b[2m1240:18\u001b[22m\u001b[39m\n\u001b[90m \u001b[2m❯\u001b[22m VitestModuleRunner.cachedRequest node_modules/.pnpm/@voidzero-dev+vite-plus-core@1.2.0_@arethetypeswrong+core@0.18.5_@types+node@26.6.5_esb_3a6b14baa17636cbe44628037fc501f0/node_modules/@voidzero-dev/vite-plus-core/dist/vite/node/module-runner.js:\u001b[2m1184:73\u001b[22m\u001b[39m\n\u001b[36m \u001b[2m❯\u001b[22m docs/scripts/build-css-api.ts:\u001b[2m20:1\u001b[22m\u001b[39m\n    \u001b[90m 18|\u001b[39m import { fileURLToPath } from \"node:url\";\n    \u001b[90m 19|\u001b[39m import { CssDocConfigFile } from \"@cssdoc/config\";\n    \u001b[90m 20|\u001b[39m import { emitCssApi } from \"@cssdoc/typedoc\";\n    \u001b[90m   |\u001b[39m \u001b[31m^\u001b[39m\n    \u001b[90m 21|\u001b[39m import { parseCssDocs, type CssDocEntry, type CssModifier } from \"@css…\n    \u001b[90m 22|\u001b[39m import { JS_CALLOUT_MARKER } from \"./segment-markdown.ts\";\n\u001b[90m \u001b[2m❯\u001b[22m VitestModuleRunner.directRequest node_modules/.pnpm/@voidzero-dev+vite-plus-core@1.2.0_@arethetypeswrong+core@0.18.5_@types+node@26.6.5_esb_3a6b14baa17636cbe44628037fc501f0/node_modules/@voidzero-dev/vite-plus-core/dist/vite/node/module-runner.js:\u001b[2m1277:59\u001b[22m\u001b[39m\n\n\u001b[31m\u001b[2m⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/8]⎯\u001b[22m\u001b[39m\n\n\u001b[41m\u001b[1m FAIL \u001b[22m\u001b[49m plugins/typedoc/demo/tests/index.test.ts\u001b[2m [ plugins/typedoc/demo/tests/index.test.ts ]\u001b[22m\n\u001b[41m\u001b[1m FAIL \u001b[22m\u001b[49m plugins/typedoc/demo/tests/load.test.ts\u001b[2m [ plugins/typedoc/demo/tests/load.test.ts ]\u001b[22m\n\u001b[31m\u001b[1mTypeError\u001b[22m: Cannot read properties of undefined (reading 'PropertyDeclaration')\u001b[39m\n\u001b[90m \u001b[2m❯\u001b[22m node_modules/.pnpm/typedoc@0.28.20_typescript@7.0.2/node_modules/typedoc/dist/index.js:\u001b[2m537:18\u001b[22m\u001b[39m\n\u001b[90m \u001b[2m❯\u001b[22m VitestModuleRunner.directRequest node_modules/.pnpm/@voidzero-dev+vite-plus-core@1.2.0_@arethetypeswrong+core@0.18.5_@types+node@26.6.5_esb_3a6b14baa17636cbe44628037fc501f0/node_modules/@voidzero-dev/vite-plus-core/dist/vite/node/module-runner.js:\u001b[2m1240:18\u001b[22m\u001b[39m\n\u001b[90m \u001b[2m❯\u001b[22m VitestModuleRunner.cachedRequest node_modules/.pnpm/@voidzero-dev+vite-plus-core@1.2.0_@arethetypeswrong+core@0.18.5_@types+node@26.6.5_esb_3a6b14baa17636cbe44628037fc501f0/node_modules/@voidzero-dev/vite-plus-core/dist/vite/node/module-runner.js:\u001b[2m1184:73\u001b[22m\u001b[39m\n\u001b[36m \u001b[2m❯\u001b[22m plugins/typedoc/demo/src/index.ts:\u001b[2m32:1\u001b[22m\u001b[39m\n    \u001b[90m 30|\u001b[39m import { readFileSync, renameSync, writeFileSync } from \"node:fs\";\n    \u001b[90m 31|\u001b[39m import { join } from \"node:path\";\n    \u001b[90m 32|\u001b[39m import { Converter, RendererEvent } from \"typedoc\";\n    \u001b[90m   |\u001b[39m \u001b[31m^\u001b[39m\n    \u001b[90m 33|\u001b[39m import type {\n    \u001b[90m 34|\u001b[39m   Application,\n\u001b[90m \u001b[2m❯\u001b[22m VitestModuleRunner.directRequest node_modules/.pnpm/@voidzero-dev+vite-plus-core@1.2.0_@arethetypeswrong+core@0.18.5_@types+node@26.6.5_esb_3a6b14baa17636cbe44628037fc501f0/node_modules/@voidzero-dev/vite-plus-core/dist/vite/node/module-runner.js:\u001b[2m1277:59\u001b[22m\u001b[39m\n\n\u001b[31m\u001b[2m⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[2/8]⎯\u001b[22m\u001b[39m\n\n\u001b[41m\u001b[1m FAIL \u001b[22m\u001b[49m plugins/typedoc/live-example/tests/index.test.ts\u001b[2m [ plugins/typedoc/live-example/tests/index.test.ts ]\u001b[22m\n\u001b[41m\u001b[1m FAIL \u001b[22m\u001b[49m plugins/typedoc/live-example/tests/load.test.ts\u001b[2m [ plugins/typedoc/live-example/tests/load.test.ts ]\u001b[22m\n\u001b[31m\u001b[1mTypeError\u001b[22m: Cannot read properties of undefined (reading 'PropertyDeclaration')\u001b[39m\n\u001b[90m \u001b[2m❯\u001b[22m node_modules/.pnpm/typedoc@0.28.20_typescript@7.0.2/node_modules/typedoc/dist/index.js:\u001b[2m537:18\u001b[22m\u001b[39m\n\u001b[90m \u001b[2m❯\u001b[22m VitestModuleRunner.directRequest node_modules/.pnpm/@voidzero-dev+vite-plus-core@1.2.0_@arethetypeswrong+core@0.18.5_@types+node@26.6.5_esb_3a6b14baa17636cbe44628037fc501f0/node_modules/@voidzero-dev/vite-plus-core/dist/vite/node/module-runner.js:\u001b[2m1240:18\u001b[22m\u001b[39m\n\u001b[90m \u001b[2m❯\u001b[22m VitestModuleRunner.cachedRequest node_modules/.pnpm/@voidzero-dev+vite-plus-core@1.2.0_@arethetypeswrong+core@0.18.5_@types+node@26.6.5_esb_3a6b14baa17636cbe44628037fc501f0/node_modules/@voidzero-dev/vite-plus-core/dist/vite/node/module-runner.js:\u001b[2m1184:73\u001b[22m\u001b[39m\n\u001b[36m \u001b[2m❯\u001b[22m plugins/typedoc/live-example/src/index.ts:\u001b[2m22:1\u001b[22m\u001b[39m\n    \u001b[90m 20|\u001b[39m import { readdirSync, readFileSync, writeFileSync } from \"node:fs\";\n    \u001b[90m 21|\u001b[39m import { join } from \"node:path\";\n    \u001b[90m 22|\u001b[39m import { type Application, ParameterType, RendererEvent } from \"typedo…\n    \u001b[90m   |\u001b[39m \u001b[31m^\u001b[39m\n    \u001b[90m 23|\u001b[39m\n    \u001b[90m 24|\u001b[39m /** A fenced `html` block and its inner markup. Uses a negative lookah…\n\u001b[90m \u001b[2m❯\u001b[22m VitestModuleRunner.directRequest node_modules/.pnpm/@voidzero-dev+vite-plus-core@1.2.0_@arethetypeswrong+core@0.18.5_@types+node@26.6.5_esb_3a6b14baa17636cbe44628037fc501f0/node_modules/@voidzero-dev/vite-plus-core/dist/vite/node/module-runner.js:\u001b[2m1277:59\u001b[22m\u001b[39m\n\n\u001b[31m\u001b[2m⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[3/8]⎯\u001b[22m\u001b[39m\n\n\n\u001b[31m⎯⎯⎯⎯⎯⎯⎯\u001b[39m\u001b[1m\u001b[41m Failed Tests 2 \u001b[49m\u001b[22m\u001b[31m⎯⎯⎯⎯⎯⎯⎯\u001b[39m\n\n\u001b[41m\u001b[1m FAIL \u001b[22m\u001b[49m docs/scripts/build-api-en.test.ts\u001b[2m > \u001b[22mgenerates the English API without refreshing the catalog by default\n\u001b[31m\u001b[1mError\u001b[22m: ENOENT: no such file or directory, open '/tmp/pantoken-weekly-v9a2A8/candidate-1/docs/api/bundlers/next/src/index.md'\u001b[39m\n\u001b[36m \u001b[2m❯\u001b[22m Module.writeApiCompatibility docs/scripts/write-api-compatibility.ts:\u001b[2m35:43\u001b[22m\u001b[39m\n    \u001b[90m 33|\u001b[39m   for (const consumer of compatibility.consumers) {\n    \u001b[90m 34|\u001b[39m     const file = join(docsRoot, \"api\", consumer.path, \"src/index.md\");\n    \u001b[90m 35|\u001b[39m     writeFileSync(file, withCompatibility(readFileSync(file, \"utf8\"), …\n    \u001b[90m   |\u001b[39m                                           \u001b[31m^\u001b[39m\n    \u001b[90m 36|\u001b[39m   }\n    \u001b[90m 37|\u001b[39m   console.log(`✓ API compatibility: updated ${compatibility.consumers.…\n\u001b[90m \u001b[2m❯\u001b[22m docs/scripts/build-api-en.ts:\u001b[2m34:1\u001b[22m\u001b[39m\n\u001b[90m \u001b[2m❯\u001b[22m VitestModuleRunner.directRequest node_modules/.pnpm/@voidzero-dev+vite-plus-core@1.2.0_@arethetypeswrong+core@0.18.5_@types+node@26.6.5_esb_3a6b14baa17636cbe44628037fc501f0/node_modules/@voidzero-dev/vite-plus-core/dist/vite/node/module-runner.js:\u001b[2m1277:59\u001b[22m\u001b[39m\n\u001b[90m \u001b[2m❯\u001b[22m VitestModuleRunner.cachedRequest node_modules/.pnpm/@voidzero-dev+vite-plus-core@1.2.0_@arethetypeswrong+core@0.18.5_@types+node@26.6.5_esb_3a6b14baa17636cbe44628037fc501f0/node_modules/@voidzero-dev/vite-plus-core/dist/vite/node/module-runner.js:\u001b[2m1184:73\u001b[22m\u001b[39m\n\u001b[90m \u001b[2m❯\u001b[22m docs/scripts/build-api-en.test.ts:\u001b[2m21:3\u001b[22m\u001b[39m\n\n\u001b[31m\u001b[2m⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[4/8]⎯\u001b[22m\u001b[39m\n\n\u001b[41m\u001b[1m FAIL \u001b[22m\u001b[49m docs/scripts/build-api-en.test.ts\u001b[2m > \u001b[22mrefreshes the API catalog only in build mode\n\u001b[31m\u001b[1mError\u001b[22m: ENOENT: no such file or directory, open '/tmp/pantoken-weekly-v9a2A8/candidate-1/docs/api/bundlers/next/src/index.md'\u001b[39m\n\u001b[36m \u001b[2m❯\u001b[22m Module.writeApiCompatibility docs/scripts/write-api-compatibility.ts:\u001b[2m35:43\u001b[22m\u001b[39m\n    \u001b[90m 33|\u001b[39m   for (const consumer of compatibility.consumers) {\n    \u001b[90m 34|\u001b[39m     const file = join(docsRoot, \"api\", consumer.path, \"src/index.md\");\n    \u001b[90m 35|\u001b[39m     writeFileSync(file, withCompatibility(readFileSync(file, \"utf8\"), …\n    \u001b[90m   |\u001b[39m                                           \u001b[31m^\u001b[39m\n    \u001b[90m 36|\u001b[39m   }\n    \u001b[90m 37|\u001b[39m   console.log(`✓ API compatibility: updated ${compatibility.consumers.…\n\u001b[90m \u001b[2m❯\u001b[22m docs/scripts/build-api-en.ts:\u001b[2m34:1\u001b[22m\u001b[39m\n\u001b[90m \u001b[2m❯\u001b[22m VitestModuleRunner.directRequest node_modules/.pnpm/@voidzero-dev+vite-plus-core@1.2.0_@arethetypeswrong+core@0.18.5_@types+node@26.6.5_esb_3a6b14baa17636cbe44628037fc501f0/node_modules/@voidzero-dev/vite-plus-core/dist/vite/node/module-runner.js:\u001b[2m1277:59\u001b[22m\u001b[39m\n\u001b[90m \u001b[2m❯\u001b[22m VitestModuleRunner.cachedRequest node_modules/.pnpm/@voidzero-dev+vite-plus-core@1.2.0_@arethetypeswrong+core@0.18.5_@types+node@26.6.5_esb_3a6b14baa17636cbe44628037fc501f0/node_modules/@voidzero-dev/vite-plus-core/dist/vite/node/module-runner.js:\u001b[2m1184:73\u001b[22m\u001b[39m\n\u001b[90m \u001b[2m❯\u001b[22m docs/scripts/build-api-en.test.ts:\u001b[2m30:3\u001b[22m\u001b[39m\n\n\u001b[31m\u001b[2m⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[5/8]⎯\u001b[22m\u001b[39m\n\n\nth)\n  zh-Hant → src/locales/zh-Hant.ts (zhHant)\n  tr → src/locales/tr.ts (tr)\n  uk → src/locales/uk.ts (uk)\n  vi → src/locales/vi.ts (vi)\n  cy → src/locales/cy.ts (cy)\n\n✓ i18n build-bundles: wrote 44 locale files\n\n \u001b[32m✓\u001b[39m renderers/web-components/tests/i18n-scripts.test.ts \u001b[2m(\u001b[22m\u001b[2m4 tests\u001b[22m\u001b[2m)\u001b[22m\u001b[32m 5\u001b[2mms\u001b[22m\u001b[39m\n \u001b[32m✓\u001b[39m formats/css/tests/inject.test.ts \u001b[2m(\u001b[22m\u001b[2m3 tests\u001b[22m\u001b[2m)\u001b[22m\u001b[32m 6\u001b[2mms\u001b[22m\u001b[39m\n \u001b[32m✓\u001b[39m docs/.vitepress/theme/composables/tokenSheetPaths.test.ts \u001b[2m(\u001b[22m\u001b[2m8 tests\u001b[22m\u001b[2m)\u001b[22m\u001b[32m 5\u001b[2mms\u001b[22m\u001b[39m\n \u001b[31m❯\u001b[39m docs/scripts/build-css-api.property.test.ts \u001b[2m(\u001b[22m\u001b[2m0 test\u001b[22m\u001b[2m)\u001b[22m\n \u001b[32m✓\u001b[39m formats/css/scripts/generate.test.ts \u001b[2m(\u001b[22m\u001b[2m4 tests\u001b[22m\u001b[2m)\u001b[22m\u001b[33m 3249\u001b[2mms\u001b[22m\u001b[39m\n   \u001b[33m\u001b[2m✓\u001b[22m\u001b[39m writes style.css with @property registrations flattened to :root declarations\u001b[33m 1467\u001b[2mms\u001b[22m\u001b[39m\n   \u001b[33m\u001b[2m✓\u001b[22m\u001b[39m writes style.lean.css with @property registrations flattened\u001b[33m 579\u001b[2mms\u001b[22m\u001b[39m\n   \u001b[33m\u001b[2m✓\u001b[22m\u001b[39m writes the rebrand light-only artifacts without light-dark() pairs\u001b[33m 629\u001b[2mms\u001b[22m\u001b[39m\n   \u001b[33m\u001b[2m✓\u001b[22m\u001b[39m writes canvas and canvas high-contrast artifacts\u001b[33m 572\u001b[2mms\u001b[22m\u001b[39m\n \u001b[32m✓\u001b[39m docs/.vitepress/theme/theme.test.ts \u001b[2m(\u001b[22m\u001b[2m7 tests\u001b[22m\u001b[2m)\u001b[22m\u001b[32m 15\u001b[2mms\u001b[22m\u001b[39m\n \u001b[32m✓\u001b[39m docs/scripts/translation-scope.test.ts \u001b[2m(\u001b[22m\u001b[2m5 tests\u001b[22m\u001b[2m)\u001b[22m\u001b[32m 7\u001b[2mms\u001b[22m\u001b[39m\n \u001b[32m✓\u001b[39m renderers/web-components/tests/icon.test.ts \u001b[2m(\u001b[22m\u001b[2m4 tests\u001b[22m\u001b[2m)\u001b[22m\u001b[32m 21\u001b[2mms\u001b[22m\u001b[39m\n \u001b[32m✓\u001b[39m formats/css/tests/emit.test.ts \u001b[2m(\u001b[22m\u001b[2m2 tests\u001b[22m\u001b[2m)\u001b[22m\u001b[32m 4\u001b[2mms\u001b[22m\u001b[39m\n \u001b[31m❯\u001b[39m docs/scripts/build-api-en.test.ts \u001b[2m(\u001b[22m\u001b[2m2 tests\u001b[22m\u001b[2m | \u001b[22m\u001b[31m2 failed\u001b[39m\u001b[2m)\u001b[22m\u001b[32m 215\u001b[2mms\u001b[22m\u001b[39m\n\u001b[31m   \u001b[31m×\u001b[31m generates the English API without refreshing the catalog by default\u001b[39m\u001b[32m 155\u001b[2mms\u001b[22m\u001b[39m\n\u001b[31m   \u001b[31m×\u001b[31m refreshes the API catalog only in build mode\u001b[39m\u001b[32m 58\u001b[2mms\u001b[22m\u001b[39m\n\u001b[90mstdout\u001b[2m | docs/scripts/cdn-plugin-manifest.test.ts\u001b[2m > \u001b[22m\u001b[2mpublishes the plugin manifest for both the docs UI and external agents\n\u001b[22m\u001b[39m✓ docs: wrote cdn-plugin-manifest.json (2 custom components, 4 other plugins, 12 custom icons, 7 logo products)\n\n \u001b[32m✓\u001b[39m docs/scripts/cdn-plugin-manifest.test.ts \u001b[2m(\u001b[22m\u001b[2m1 test\u001b[22m\u001b[2m)\u001b[22m\u001b[33m 1122\u001b[2mms\u001b[22m\u001b[39m\n   \u001b[33m\u001b[2m✓\u001b[22m\u001b[39m publishes the plugin manifest for both the docs UI and external agents\u001b[33m 1121\u001b[2mms\u001b[22m\u001b[39m\n \u001b[32m✓\u001b[39m renderers/web-components/tests/i18n-node-free.test.ts \u001b[2m(\u001b[22m\u001b[2m1 test\u001b[22m\u001b[2m)\u001b[22m\u001b[32m 3\u001b[2mms\u001b[22m\u001b[39m\n \u001b[32m✓\u001b[39m docs/scripts/guide-frontmatter.test.ts \u001b[2m(\u001b[22m\u001b[2m2 tests\u001b[22m\u001b[2m)\u001b[22m\u001b[32m 6\u001b[2mms\u001b[22m\u001b[39m\n \u001b[32m✓\u001b[39m docs/scripts/published-schemas.test.ts \u001b[2m(\u001b[22m\u001b[2m1 test\u001b[22m\u001b[2m)\u001b[22m\u001b[32m 61\u001b[2mms\u001b[22m\u001b[39m\n \u001b[32m✓\u001b[39m docs/scripts/markdown-structure.test.ts \u001b[2m(\u001b[22m\u001b[2m1 test\u001b[22m\u001b[2m)\u001b[22m\u001b[32m 5\u001b[2mms\u001b[22m\u001b[39m\n \u001b[32m✓\u001b[39m scripts/quality/docs-startup.test.ts \u001b[2m(\u001b[22m\u001b[2m1 test\u001b[22m\u001b[2m)\u001b[22m\u001b[32m 5\u001b[2mms\u001b[22m\u001b[39m\n \u001b[32m✓\u001b[39m renderers/web-components/tests/scaffold-preset.test.ts \u001b[2m(\u001b[22m\u001b[2m1 test\u001b[22m\u001b[2m)\u001b[22m\u001b[32m 3\u001b[2mms\u001b[22m\u001b[39m\n\n\u001b[2m Test Files \u001b[22m \u001b[1m\u001b[31m7 failed\u001b[39m\u001b[22m\u001b[2m | \u001b[22m\u001b[1m\u001b[32m73 passed\u001b[39m\u001b[22m\u001b[90m (80)\u001b[39m\n\u001b[2m      Tests \u001b[22m \u001b[1m\u001b[31m2 failed\u001b[39m\u001b[22m\u001b[2m | \u001b[22m\u001b[1m\u001b[32m710 passed\u001b[39m\u001b[22m\u001b[2m | \u001b[22m\u001b[33m3 skipped\u001b[39m\u001b[90m (715)\u001b[39m\n\u001b[2m   Start at \u001b[22m 04:39:12\n\u001b[2m   Duration \u001b[22m 36.86s\u001b[2m (import 53%, tests 28%, transform 10%, environment 7%, setup 3%, worker 1%)\u001b[22m\n\n\u001b[2m     Import \u001b[22m \u001b[33m436 modules were evaluated 2632 times\u001b[39m\u001b[2m · 32.88s total, 53% of tracked time\u001b[22m\n\u001b[2m            \u001b[22m \u001b[2m~12.64s faster with \u001b[22m\u001b[33misolate: false\u001b[39m\u001b[2m — shared modules are evaluated once per worker instead of once per file\u001b[22m\n\u001b[2m            \u001b[22m \u001b[2mlearn more: https://vitest.dev/guide/improving-performance#test-isolation\u001b[22m\n\n\nexit 1",
+    "upgrades": [
+      {
+        "depName": "typescript",
+        "packageFile": "plugins/typedoc/live-example/package.json",
+        "manager": "npm",
+        "newValue": "^7.0.0",
+        "currentValue": "^6.0.3",
+        "newDigest": "sha512-8FYau96o3NKOhbjKi/qNvG/W5jhzxkbdm5sj9AbZ/5T5sWqn3hJgLfGx27sRKZWTvyzCP8dLRBTf5tBTSRVUNA=="
+      },
+      {
+        "depName": "typescript",
+        "packageFile": "plugins/typedoc/demo/package.json",
+        "manager": "npm",
+        "newValue": "^7.0.0",
+        "currentValue": "^6.0.3",
+        "newDigest": "sha512-8FYau96o3NKOhbjKi/qNvG/W5jhzxkbdm5sj9AbZ/5T5sWqn3hJgLfGx27sRKZWTvyzCP8dLRBTf5tBTSRVUNA=="
+      },
+      {
+        "depName": "typescript",
+        "packageFile": "docs/package.json",
+        "manager": "npm",
+        "newValue": "^7.0.0",
+        "currentValue": "^6.0.3",
+        "newDigest": "sha512-8FYau96o3NKOhbjKi/qNvG/W5jhzxkbdm5sj9AbZ/5T5sWqn3hJgLfGx27sRKZWTvyzCP8dLRBTf5tBTSRVUNA=="
+      }
+    ]
+  },
+  {
+    "id": "84948a1c379256df75b3",
+    "package": "typescript",
+    "version": "^7.0.0",
+    "error": "vp test docs formats/css formats/tokens plugins/typedoc/demo plugins/typedoc/live-example renderers/web-components --passWithNoTests failed: s/@voidzero-dev/vite-plus-core/dist/vite/node/module-runner.js:\u001b[2m1240:18\u001b[22m\u001b[39m\n\u001b[90m \u001b[2m❯\u001b[22m VitestModuleRunner.cachedRequest node_modules/.pnpm/@voidzero-dev+vite-plus-core@1.2.0_@arethetypeswrong+core@0.18.5_@types+node@26.6.5_esb_3a6b14baa17636cbe44628037fc501f0/node_modules/@voidzero-dev/vite-plus-core/dist/vite/node/module-runner.js:\u001b[2m1184:73\u001b[22m\u001b[39m\n\u001b[36m \u001b[2m❯\u001b[22m docs/scripts/build-css-api.ts:\u001b[2m20:1\u001b[22m\u001b[39m\n    \u001b[90m 18|\u001b[39m import { fileURLToPath } from \"node:url\";\n    \u001b[90m 19|\u001b[39m import { CssDocConfigFile } from \"@cssdoc/config\";\n    \u001b[90m 20|\u001b[39m import { emitCssApi } from \"@cssdoc/typedoc\";\n    \u001b[90m   |\u001b[39m \u001b[31m^\u001b[39m\n    \u001b[90m 21|\u001b[39m import { parseCssDocs, type CssDocEntry, type CssModifier } from \"@css…\n    \u001b[90m 22|\u001b[39m import { JS_CALLOUT_MARKER } from \"./segment-markdown.ts\";\n\u001b[90m \u001b[2m❯\u001b[22m VitestModuleRunner.directRequest node_modules/.pnpm/@voidzero-dev+vite-plus-core@1.2.0_@arethetypeswrong+core@0.18.5_@types+node@26.6.5_esb_3a6b14baa17636cbe44628037fc501f0/node_modules/@voidzero-dev/vite-plus-core/dist/vite/node/module-runner.js:\u001b[2m1277:59\u001b[22m\u001b[39m\n\n\u001b[31m\u001b[2m⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/8]⎯\u001b[22m\u001b[39m\n\n\u001b[41m\u001b[1m FAIL \u001b[22m\u001b[49m plugins/typedoc/demo/tests/index.test.ts\u001b[2m [ plugins/typedoc/demo/tests/index.test.ts ]\u001b[22m\n\u001b[41m\u001b[1m FAIL \u001b[22m\u001b[49m plugins/typedoc/demo/tests/load.test.ts\u001b[2m [ plugins/typedoc/demo/tests/load.test.ts ]\u001b[22m\n\u001b[31m\u001b[1mTypeError\u001b[22m: Cannot read properties of undefined (reading 'PropertyDeclaration')\u001b[39m\n\u001b[90m \u001b[2m❯\u001b[22m node_modules/.pnpm/typedoc@0.28.20_typescript@7.0.2/node_modules/typedoc/dist/index.js:\u001b[2m537:18\u001b[22m\u001b[39m\n\u001b[90m \u001b[2m❯\u001b[22m VitestModuleRunner.directRequest node_modules/.pnpm/@voidzero-dev+vite-plus-core@1.2.0_@arethetypeswrong+core@0.18.5_@types+node@26.6.5_esb_3a6b14baa17636cbe44628037fc501f0/node_modules/@voidzero-dev/vite-plus-core/dist/vite/node/module-runner.js:\u001b[2m1240:18\u001b[22m\u001b[39m\n\u001b[90m \u001b[2m❯\u001b[22m VitestModuleRunner.cachedRequest node_modules/.pnpm/@voidzero-dev+vite-plus-core@1.2.0_@arethetypeswrong+core@0.18.5_@types+node@26.6.5_esb_3a6b14baa17636cbe44628037fc501f0/node_modules/@voidzero-dev/vite-plus-core/dist/vite/node/module-runner.js:\u001b[2m1184:73\u001b[22m\u001b[39m\n\u001b[36m \u001b[2m❯\u001b[22m plugins/typedoc/demo/src/index.ts:\u001b[2m32:1\u001b[22m\u001b[39m\n    \u001b[90m 30|\u001b[39m import { readFileSync, renameSync, writeFileSync } from \"node:fs\";\n    \u001b[90m 31|\u001b[39m import { join } from \"node:path\";\n    \u001b[90m 32|\u001b[39m import { Converter, RendererEvent } from \"typedoc\";\n    \u001b[90m   |\u001b[39m \u001b[31m^\u001b[39m\n    \u001b[90m 33|\u001b[39m import type {\n    \u001b[90m 34|\u001b[39m   Application,\n\u001b[90m \u001b[2m❯\u001b[22m VitestModuleRunner.directRequest node_modules/.pnpm/@voidzero-dev+vite-plus-core@1.2.0_@arethetypeswrong+core@0.18.5_@types+node@26.6.5_esb_3a6b14baa17636cbe44628037fc501f0/node_modules/@voidzero-dev/vite-plus-core/dist/vite/node/module-runner.js:\u001b[2m1277:59\u001b[22m\u001b[39m\n\n\u001b[31m\u001b[2m⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[2/8]⎯\u001b[22m\u001b[39m\n\n\u001b[41m\u001b[1m FAIL \u001b[22m\u001b[49m plugins/typedoc/live-example/tests/index.test.ts\u001b[2m [ plugins/typedoc/live-example/tests/index.test.ts ]\u001b[22m\n\u001b[41m\u001b[1m FAIL \u001b[22m\u001b[49m plugins/typedoc/live-example/tests/load.test.ts\u001b[2m [ plugins/typedoc/live-example/tests/load.test.ts ]\u001b[22m\n\u001b[31m\u001b[1mTypeError\u001b[22m: Cannot read properties of undefined (reading 'PropertyDeclaration')\u001b[39m\n\u001b[90m \u001b[2m❯\u001b[22m node_modules/.pnpm/typedoc@0.28.20_typescript@7.0.2/node_modules/typedoc/dist/index.js:\u001b[2m537:18\u001b[22m\u001b[39m\n\u001b[90m \u001b[2m❯\u001b[22m VitestModuleRunner.directRequest node_modules/.pnpm/@voidzero-dev+vite-plus-core@1.2.0_@arethetypeswrong+core@0.18.5_@types+node@26.6.5_esb_3a6b14baa17636cbe44628037fc501f0/node_modules/@voidzero-dev/vite-plus-core/dist/vite/node/module-runner.js:\u001b[2m1240:18\u001b[22m\u001b[39m\n\u001b[90m \u001b[2m❯\u001b[22m VitestModuleRunner.cachedRequest node_modules/.pnpm/@voidzero-dev+vite-plus-core@1.2.0_@arethetypeswrong+core@0.18.5_@types+node@26.6.5_esb_3a6b14baa17636cbe44628037fc501f0/node_modules/@voidzero-dev/vite-plus-core/dist/vite/node/module-runner.js:\u001b[2m1184:73\u001b[22m\u001b[39m\n\u001b[36m \u001b[2m❯\u001b[22m plugins/typedoc/live-example/src/index.ts:\u001b[2m22:1\u001b[22m\u001b[39m\n    \u001b[90m 20|\u001b[39m import { readdirSync, readFileSync, writeFileSync } from \"node:fs\";\n    \u001b[90m 21|\u001b[39m import { join } from \"node:path\";\n    \u001b[90m 22|\u001b[39m import { type Application, ParameterType, RendererEvent } from \"typedo…\n    \u001b[90m   |\u001b[39m \u001b[31m^\u001b[39m\n    \u001b[90m 23|\u001b[39m\n    \u001b[90m 24|\u001b[39m /** A fenced `html` block and its inner markup. Uses a negative lookah…\n\u001b[90m \u001b[2m❯\u001b[22m VitestModuleRunner.directRequest node_modules/.pnpm/@voidzero-dev+vite-plus-core@1.2.0_@arethetypeswrong+core@0.18.5_@types+node@26.6.5_esb_3a6b14baa17636cbe44628037fc501f0/node_modules/@voidzero-dev/vite-plus-core/dist/vite/node/module-runner.js:\u001b[2m1277:59\u001b[22m\u001b[39m\n\n\u001b[31m\u001b[2m⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[3/8]⎯\u001b[22m\u001b[39m\n\n\n\u001b[31m⎯⎯⎯⎯⎯⎯⎯\u001b[39m\u001b[1m\u001b[41m Failed Tests 2 \u001b[49m\u001b[22m\u001b[31m⎯⎯⎯⎯⎯⎯⎯\u001b[39m\n\n\u001b[41m\u001b[1m FAIL \u001b[22m\u001b[49m docs/scripts/build-api-en.test.ts\u001b[2m > \u001b[22mgenerates the English API without refreshing the catalog by default\n\u001b[31m\u001b[1mError\u001b[22m: ENOENT: no such file or directory, open '/tmp/pantoken-weekly-v9a2A8/candidate-1/docs/api/bundlers/next/src/index.md'\u001b[39m\n\u001b[36m \u001b[2m❯\u001b[22m Module.writeApiCompatibility docs/scripts/write-api-compatibility.ts:\u001b[2m35:43\u001b[22m\u001b[39m\n    \u001b[90m 33|\u001b[39m   for (const consumer of compatibility.consumers) {\n    \u001b[90m 34|\u001b[39m     const file = join(docsRoot, \"api\", consumer.path, \"src/index.md\");\n    \u001b[90m 35|\u001b[39m     writeFileSync(file, withCompatibility(readFileSync(file, \"utf8\"), …\n    \u001b[90m   |\u001b[39m                                           \u001b[31m^\u001b[39m\n    \u001b[90m 36|\u001b[39m   }\n    \u001b[90m 37|\u001b[39m   console.log(`✓ API compatibility: updated ${compatibility.consumers.…\n\u001b[90m \u001b[2m❯\u001b[22m docs/scripts/build-api-en.ts:\u001b[2m34:1\u001b[22m\u001b[39m\n\u001b[90m \u001b[2m❯\u001b[22m VitestModuleRunner.directRequest node_modules/.pnpm/@voidzero-dev+vite-plus-core@1.2.0_@arethetypeswrong+core@0.18.5_@types+node@26.6.5_esb_3a6b14baa17636cbe44628037fc501f0/node_modules/@voidzero-dev/vite-plus-core/dist/vite/node/module-runner.js:\u001b[2m1277:59\u001b[22m\u001b[39m\n\u001b[90m \u001b[2m❯\u001b[22m VitestModuleRunner.cachedRequest node_modules/.pnpm/@voidzero-dev+vite-plus-core@1.2.0_@arethetypeswrong+core@0.18.5_@types+node@26.6.5_esb_3a6b14baa17636cbe44628037fc501f0/node_modules/@voidzero-dev/vite-plus-core/dist/vite/node/module-runner.js:\u001b[2m1184:73\u001b[22m\u001b[39m\n\u001b[90m \u001b[2m❯\u001b[22m docs/scripts/build-api-en.test.ts:\u001b[2m21:3\u001b[22m\u001b[39m\n\n\u001b[31m\u001b[2m⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[4/8]⎯\u001b[22m\u001b[39m\n\n\u001b[41m\u001b[1m FAIL \u001b[22m\u001b[49m docs/scripts/build-api-en.test.ts\u001b[2m > \u001b[22mrefreshes the API catalog only in build mode\n\u001b[31m\u001b[1mError\u001b[22m: ENOENT: no such file or directory, open '/tmp/pantoken-weekly-v9a2A8/candidate-1/docs/api/bundlers/next/src/index.md'\u001b[39m\n\u001b[36m \u001b[2m❯\u001b[22m Module.writeApiCompatibility docs/scripts/write-api-compatibility.ts:\u001b[2m35:43\u001b[22m\u001b[39m\n    \u001b[90m 33|\u001b[39m   for (const consumer of compatibility.consumers) {\n    \u001b[90m 34|\u001b[39m     const file = join(docsRoot, \"api\", consumer.path, \"src/index.md\");\n    \u001b[90m 35|\u001b[39m     writeFileSync(file, withCompatibility(readFileSync(file, \"utf8\"), …\n    \u001b[90m   |\u001b[39m                                           \u001b[31m^\u001b[39m\n    \u001b[90m 36|\u001b[39m   }\n    \u001b[90m 37|\u001b[39m   console.log(`✓ API compatibility: updated ${compatibility.consumers.…\n\u001b[90m \u001b[2m❯\u001b[22m docs/scripts/build-api-en.ts:\u001b[2m34:1\u001b[22m\u001b[39m\n\u001b[90m \u001b[2m❯\u001b[22m VitestModuleRunner.directRequest node_modules/.pnpm/@voidzero-dev+vite-plus-core@1.2.0_@arethetypeswrong+core@0.18.5_@types+node@26.6.5_esb_3a6b14baa17636cbe44628037fc501f0/node_modules/@voidzero-dev/vite-plus-core/dist/vite/node/module-runner.js:\u001b[2m1277:59\u001b[22m\u001b[39m\n\u001b[90m \u001b[2m❯\u001b[22m VitestModuleRunner.cachedRequest node_modules/.pnpm/@voidzero-dev+vite-plus-core@1.2.0_@arethetypeswrong+core@0.18.5_@types+node@26.6.5_esb_3a6b14baa17636cbe44628037fc501f0/node_modules/@voidzero-dev/vite-plus-core/dist/vite/node/module-runner.js:\u001b[2m1184:73\u001b[22m\u001b[39m\n\u001b[90m \u001b[2m❯\u001b[22m docs/scripts/build-api-en.test.ts:\u001b[2m30:3\u001b[22m\u001b[39m\n\n\u001b[31m\u001b[2m⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[5/8]⎯\u001b[22m\u001b[39m\n\n\nth)\n  zh-Hant → src/locales/zh-Hant.ts (zhHant)\n  tr → src/locales/tr.ts (tr)\n  uk → src/locales/uk.ts (uk)\n  vi → src/locales/vi.ts (vi)\n  cy → src/locales/cy.ts (cy)\n\n✓ i18n build-bundles: wrote 44 locale files\n\n \u001b[32m✓\u001b[39m renderers/web-components/tests/i18n-scripts.test.ts \u001b[2m(\u001b[22m\u001b[2m4 tests\u001b[22m\u001b[2m)\u001b[22m\u001b[32m 5\u001b[2mms\u001b[22m\u001b[39m\n \u001b[32m✓\u001b[39m formats/css/tests/inject.test.ts \u001b[2m(\u001b[22m\u001b[2m3 tests\u001b[22m\u001b[2m)\u001b[22m\u001b[32m 6\u001b[2mms\u001b[22m\u001b[39m\n \u001b[32m✓\u001b[39m docs/.vitepress/theme/composables/tokenSheetPaths.test.ts \u001b[2m(\u001b[22m\u001b[2m8 tests\u001b[22m\u001b[2m)\u001b[22m\u001b[32m 5\u001b[2mms\u001b[22m\u001b[39m\n \u001b[31m❯\u001b[39m docs/scripts/build-css-api.property.test.ts \u001b[2m(\u001b[22m\u001b[2m0 test\u001b[22m\u001b[2m)\u001b[22m\n \u001b[32m✓\u001b[39m formats/css/scripts/generate.test.ts \u001b[2m(\u001b[22m\u001b[2m4 tests\u001b[22m\u001b[2m)\u001b[22m\u001b[33m 3249\u001b[2mms\u001b[22m\u001b[39m\n   \u001b[33m\u001b[2m✓\u001b[22m\u001b[39m writes style.css with @property registrations flattened to :root declarations\u001b[33m 1467\u001b[2mms\u001b[22m\u001b[39m\n   \u001b[33m\u001b[2m✓\u001b[22m\u001b[39m writes style.lean.css with @property registrations flattened\u001b[33m 579\u001b[2mms\u001b[22m\u001b[39m\n   \u001b[33m\u001b[2m✓\u001b[22m\u001b[39m writes the rebrand light-only artifacts without light-dark() pairs\u001b[33m 629\u001b[2mms\u001b[22m\u001b[39m\n   \u001b[33m\u001b[2m✓\u001b[22m\u001b[39m writes canvas and canvas high-contrast artifacts\u001b[33m 572\u001b[2mms\u001b[22m\u001b[39m\n \u001b[32m✓\u001b[39m docs/.vitepress/theme/theme.test.ts \u001b[2m(\u001b[22m\u001b[2m7 tests\u001b[22m\u001b[2m)\u001b[22m\u001b[32m 15\u001b[2mms\u001b[22m\u001b[39m\n \u001b[32m✓\u001b[39m docs/scripts/translation-scope.test.ts \u001b[2m(\u001b[22m\u001b[2m5 tests\u001b[22m\u001b[2m)\u001b[22m\u001b[32m 7\u001b[2mms\u001b[22m\u001b[39m\n \u001b[32m✓\u001b[39m renderers/web-components/tests/icon.test.ts \u001b[2m(\u001b[22m\u001b[2m4 tests\u001b[22m\u001b[2m)\u001b[22m\u001b[32m 21\u001b[2mms\u001b[22m\u001b[39m\n \u001b[32m✓\u001b[39m formats/css/tests/emit.test.ts \u001b[2m(\u001b[22m\u001b[2m2 tests\u001b[22m\u001b[2m)\u001b[22m\u001b[32m 4\u001b[2mms\u001b[22m\u001b[39m\n \u001b[31m❯\u001b[39m docs/scripts/build-api-en.test.ts \u001b[2m(\u001b[22m\u001b[2m2 tests\u001b[22m\u001b[2m | \u001b[22m\u001b[31m2 failed\u001b[39m\u001b[2m)\u001b[22m\u001b[32m 215\u001b[2mms\u001b[22m\u001b[39m\n\u001b[31m   \u001b[31m×\u001b[31m generates the English API without refreshing the catalog by default\u001b[39m\u001b[32m 155\u001b[2mms\u001b[22m\u001b[39m\n\u001b[31m   \u001b[31m×\u001b[31m refreshes the API catalog only in build mode\u001b[39m\u001b[32m 58\u001b[2mms\u001b[22m\u001b[39m\n\u001b[90mstdout\u001b[2m | docs/scripts/cdn-plugin-manifest.test.ts\u001b[2m > \u001b[22m\u001b[2mpublishes the plugin manifest for both the docs UI and external agents\n\u001b[22m\u001b[39m✓ docs: wrote cdn-plugin-manifest.json (2 custom components, 4 other plugins, 12 custom icons, 7 logo products)\n\n \u001b[32m✓\u001b[39m docs/scripts/cdn-plugin-manifest.test.ts \u001b[2m(\u001b[22m\u001b[2m1 test\u001b[22m\u001b[2m)\u001b[22m\u001b[33m 1122\u001b[2mms\u001b[22m\u001b[39m\n   \u001b[33m\u001b[2m✓\u001b[22m\u001b[39m publishes the plugin manifest for both the docs UI and external agents\u001b[33m 1121\u001b[2mms\u001b[22m\u001b[39m\n \u001b[32m✓\u001b[39m renderers/web-components/tests/i18n-node-free.test.ts \u001b[2m(\u001b[22m\u001b[2m1 test\u001b[22m\u001b[2m)\u001b[22m\u001b[32m 3\u001b[2mms\u001b[22m\u001b[39m\n \u001b[32m✓\u001b[39m docs/scripts/guide-frontmatter.test.ts \u001b[2m(\u001b[22m\u001b[2m2 tests\u001b[22m\u001b[2m)\u001b[22m\u001b[32m 6\u001b[2mms\u001b[22m\u001b[39m\n \u001b[32m✓\u001b[39m docs/scripts/published-schemas.test.ts \u001b[2m(\u001b[22m\u001b[2m1 test\u001b[22m\u001b[2m)\u001b[22m\u001b[32m 61\u001b[2mms\u001b[22m\u001b[39m\n \u001b[32m✓\u001b[39m docs/scripts/markdown-structure.test.ts \u001b[2m(\u001b[22m\u001b[2m1 test\u001b[22m\u001b[2m)\u001b[22m\u001b[32m 5\u001b[2mms\u001b[22m\u001b[39m\n \u001b[32m✓\u001b[39m scripts/quality/docs-startup.test.ts \u001b[2m(\u001b[22m\u001b[2m1 test\u001b[22m\u001b[2m)\u001b[22m\u001b[32m 5\u001b[2mms\u001b[22m\u001b[39m\n \u001b[32m✓\u001b[39m renderers/web-components/tests/scaffold-preset.test.ts \u001b[2m(\u001b[22m\u001b[2m1 test\u001b[22m\u001b[2m)\u001b[22m\u001b[32m 3\u001b[2mms\u001b[22m\u001b[39m\n\n\u001b[2m Test Files \u001b[22m \u001b[1m\u001b[31m7 failed\u001b[39m\u001b[22m\u001b[2m | \u001b[22m\u001b[1m\u001b[32m73 passed\u001b[39m\u001b[22m\u001b[90m (80)\u001b[39m\n\u001b[2m      Tests \u001b[22m \u001b[1m\u001b[31m2 failed\u001b[39m\u001b[22m\u001b[2m | \u001b[22m\u001b[1m\u001b[32m710 passed\u001b[39m\u001b[22m\u001b[2m | \u001b[22m\u001b[33m3 skipped\u001b[39m\u001b[90m (715)\u001b[39m\n\u001b[2m   Start at \u001b[22m 04:39:12\n\u001b[2m   Duration \u001b[22m 36.86s\u001b[2m (import 53%, tests 28%, transform 10%, environment 7%, setup 3%, worker 1%)\u001b[22m\n\n\u001b[2m     Import \u001b[22m \u001b[33m436 modules were evaluated 2632 times\u001b[39m\u001b[2m · 32.88s total, 53% of tracked time\u001b[22m\n\u001b[2m            \u001b[22m \u001b[2m~12.64s faster with \u001b[22m\u001b[33misolate: false\u001b[39m\u001b[2m — shared modules are evaluated once per worker instead of once per file\u001b[22m\n\u001b[2m            \u001b[22m \u001b[2mlearn more: https://vitest.dev/guide/improving-performance#test-isolation\u001b[22m\n\n\nexit 1",
+    "upgrades": [
+      {
+        "depName": "typescript",
+        "packageFile": "plugins/typedoc/live-example/package.json",
+        "manager": "npm",
+        "newValue": "^7.0.0",
+        "currentValue": "^6.0.3",
+        "newDigest": "sha512-8FYau96o3NKOhbjKi/qNvG/W5jhzxkbdm5sj9AbZ/5T5sWqn3hJgLfGx27sRKZWTvyzCP8dLRBTf5tBTSRVUNA=="
+      },
+      {
+        "depName": "typescript",
+        "packageFile": "plugins/typedoc/demo/package.json",
+        "manager": "npm",
+        "newValue": "^7.0.0",
+        "currentValue": "^6.0.3",
+        "newDigest": "sha512-8FYau96o3NKOhbjKi/qNvG/W5jhzxkbdm5sj9AbZ/5T5sWqn3hJgLfGx27sRKZWTvyzCP8dLRBTf5tBTSRVUNA=="
+      },
+      {
+        "depName": "typescript",
+        "packageFile": "docs/package.json",
+        "manager": "npm",
+        "newValue": "^7.0.0",
+        "currentValue": "^6.0.3",
+        "newDigest": "sha512-8FYau96o3NKOhbjKi/qNvG/W5jhzxkbdm5sj9AbZ/5T5sWqn3hJgLfGx27sRKZWTvyzCP8dLRBTf5tBTSRVUNA=="
+      }
+    ]
+  },
+  {
+    "id": "47ce399556457fc6a3cf",
+    "package": "@vitest/coverage-v8",
+    "version": "5.0.5",
+    "error": "Catalog proposal does not match vite",
+    "upgrades": [
+      {
+        "depName": "@vitest/coverage-v8",
+        "packageFile": "pnpm-workspace.yaml",
+        "manager": "npm",
+        "newValue": "5.0.5",
+        "currentValue": "5.0.4",
+        "newDigest": "sha512-4KpkGdIrSqBihx/JyP/e+S+IKB98etg1XDQiLAxksLfcShnwi1VReGeOT9NI43hLHbknosKp/1CCLn9Zgcs8mg=="
+      },
+      {
+        "depName": "vite",
+        "packageFile": "pnpm-workspace.yaml",
+        "manager": "npm",
+        "newValue": "1.4.0",
+        "currentValue": "1.2.0",
+        "newDigest": "sha512-LTGXCdZ58qJKfuCOmf0hnZOVA64eOgzDQOqYpI+71tPxk/0cGqPQhYDGQQZoEvNLAn1G2Lo4gKadsQdWxb99WQ=="
+      },
+      {
+        "depName": "vite",
+        "packageFile": "plugins/vite/workspace-orchestrator/package.json",
+        "manager": "npm",
+        "newValue": "1.4.0",
+        "currentValue": "1.1.0",
+        "newDigest": "sha512-LTGXCdZ58qJKfuCOmf0hnZOVA64eOgzDQOqYpI+71tPxk/0cGqPQhYDGQQZoEvNLAn1G2Lo4gKadsQdWxb99WQ=="
+      },
+      {
+        "depName": "vite",
+        "packageFile": "bundlers/vite/package.json",
+        "manager": "npm",
+        "newValue": ">=8.0.0 <=8.3.5",
+        "currentValue": ">=8.0.0 <=8.3.2",
+        "newDigest": "sha512-z1YpjieJ9g0ebTmQpLBv/oq9E3F9EIlOe+7LahW8SrE3LTiG3udBRUXQOlYXP9b+IC2q2phHeVxj9xGlw34OEQ=="
+      },
+      {
+        "depName": "vite",
+        "packageFile": "bundlers/vite/package.json",
+        "manager": "npm",
+        "newValue": "1.4.0",
+        "currentValue": "1.1.0",
+        "newDigest": "sha512-LTGXCdZ58qJKfuCOmf0hnZOVA64eOgzDQOqYpI+71tPxk/0cGqPQhYDGQQZoEvNLAn1G2Lo4gKadsQdWxb99WQ=="
+      },
+      {
+        "depName": "vite-plus",
+        "packageFile": "pnpm-workspace.yaml",
+        "manager": "npm",
+        "newValue": "1.4.0",
+        "currentValue": "1.2.0",
+        "newDigest": "sha512-bLyUKNFl0XjbHe20FpDM6OuknOb2E4ueoWKCW4n+wMO2+lQtA9tmAjW+Xs0Xe9rg2+tCgY3W13GOgDh2wjwjAQ=="
+      },
+      {
+        "depName": "vitepress",
+        "packageFile": "pnpm-workspace.yaml",
+        "manager": "npm",
+        "newValue": "2.0.0-alpha.21",
+        "currentValue": "2.0.0-alpha.20",
+        "newDigest": "sha512-b2PFPIw2mVfxDi490FhSq4AlkFi17b9lofLCqWfH4uPKz/dF4oy2C9vBpP2r7l7hl2hc5BG7OTRPvRFfRzF7MA=="
+      },
+      {
+        "depName": "vitest",
+        "packageFile": "pnpm-workspace.yaml",
+        "manager": "npm",
+        "newValue": "5.0.5",
+        "currentValue": "5.0.4",
+        "newDigest": "sha512-cPODOMF8YnkiiYtDdHo6n4wWmBrOBBbOIYH2d33M4l3CdNn72h+qMmO6uXffUN6A5AZFXNND/d+krS9mgkXRfg=="
+      }
+    ]
+  },
+  {
+    "id": "bf3e572f96d8e7c86cfb",
+    "package": "vite",
+    "version": "1.4.0",
+    "error": "Catalog proposal does not match vite",
+    "upgrades": [
+      {
+        "depName": "@vitest/coverage-v8",
+        "packageFile": "pnpm-workspace.yaml",
+        "manager": "npm",
+        "newValue": "5.0.5",
+        "currentValue": "5.0.4",
+        "newDigest": "sha512-4KpkGdIrSqBihx/JyP/e+S+IKB98etg1XDQiLAxksLfcShnwi1VReGeOT9NI43hLHbknosKp/1CCLn9Zgcs8mg=="
+      },
+      {
+        "depName": "vite",
+        "packageFile": "pnpm-workspace.yaml",
+        "manager": "npm",
+        "newValue": "1.4.0",
+        "currentValue": "1.2.0",
+        "newDigest": "sha512-LTGXCdZ58qJKfuCOmf0hnZOVA64eOgzDQOqYpI+71tPxk/0cGqPQhYDGQQZoEvNLAn1G2Lo4gKadsQdWxb99WQ=="
+      },
+      {
+        "depName": "vite",
+        "packageFile": "plugins/vite/workspace-orchestrator/package.json",
+        "manager": "npm",
+        "newValue": "1.4.0",
+        "currentValue": "1.1.0",
+        "newDigest": "sha512-LTGXCdZ58qJKfuCOmf0hnZOVA64eOgzDQOqYpI+71tPxk/0cGqPQhYDGQQZoEvNLAn1G2Lo4gKadsQdWxb99WQ=="
+      },
+      {
+        "depName": "vite",
+        "packageFile": "bundlers/vite/package.json",
+        "manager": "npm",
+        "newValue": ">=8.0.0 <=8.3.5",
+        "currentValue": ">=8.0.0 <=8.3.2",
+        "newDigest": "sha512-z1YpjieJ9g0ebTmQpLBv/oq9E3F9EIlOe+7LahW8SrE3LTiG3udBRUXQOlYXP9b+IC2q2phHeVxj9xGlw34OEQ=="
+      },
+      {
+        "depName": "vite",
+        "packageFile": "bundlers/vite/package.json",
+        "manager": "npm",
+        "newValue": "1.4.0",
+        "currentValue": "1.1.0",
+        "newDigest": "sha512-LTGXCdZ58qJKfuCOmf0hnZOVA64eOgzDQOqYpI+71tPxk/0cGqPQhYDGQQZoEvNLAn1G2Lo4gKadsQdWxb99WQ=="
+      },
+      {
+        "depName": "vite-plus",
+        "packageFile": "pnpm-workspace.yaml",
+        "manager": "npm",
+        "newValue": "1.4.0",
+        "currentValue": "1.2.0",
+        "newDigest": "sha512-bLyUKNFl0XjbHe20FpDM6OuknOb2E4ueoWKCW4n+wMO2+lQtA9tmAjW+Xs0Xe9rg2+tCgY3W13GOgDh2wjwjAQ=="
+      },
+      {
+        "depName": "vitepress",
+        "packageFile": "pnpm-workspace.yaml",
+        "manager": "npm",
+        "newValue": "2.0.0-alpha.21",
+        "currentValue": "2.0.0-alpha.20",
+        "newDigest": "sha512-b2PFPIw2mVfxDi490FhSq4AlkFi17b9lofLCqWfH4uPKz/dF4oy2C9vBpP2r7l7hl2hc5BG7OTRPvRFfRzF7MA=="
+      },
+      {
+        "depName": "vitest",
+        "packageFile": "pnpm-workspace.yaml",
+        "manager": "npm",
+        "newValue": "5.0.5",
+        "currentValue": "5.0.4",
+        "newDigest": "sha512-cPODOMF8YnkiiYtDdHo6n4wWmBrOBBbOIYH2d33M4l3CdNn72h+qMmO6uXffUN6A5AZFXNND/d+krS9mgkXRfg=="
+      }
+    ]
+  },
+  {
+    "id": "bf3e572f96d8e7c86cfb",
+    "package": "vite",
+    "version": "1.4.0",
+    "error": "Catalog proposal does not match vite",
+    "upgrades": [
+      {
+        "depName": "@vitest/coverage-v8",
+        "packageFile": "pnpm-workspace.yaml",
+        "manager": "npm",
+        "newValue": "5.0.5",
+        "currentValue": "5.0.4",
+        "newDigest": "sha512-4KpkGdIrSqBihx/JyP/e+S+IKB98etg1XDQiLAxksLfcShnwi1VReGeOT9NI43hLHbknosKp/1CCLn9Zgcs8mg=="
+      },
+      {
+        "depName": "vite",
+        "packageFile": "pnpm-workspace.yaml",
+        "manager": "npm",
+        "newValue": "1.4.0",
+        "currentValue": "1.2.0",
+        "newDigest": "sha512-LTGXCdZ58qJKfuCOmf0hnZOVA64eOgzDQOqYpI+71tPxk/0cGqPQhYDGQQZoEvNLAn1G2Lo4gKadsQdWxb99WQ=="
+      },
+      {
+        "depName": "vite",
+        "packageFile": "plugins/vite/workspace-orchestrator/package.json",
+        "manager": "npm",
+        "newValue": "1.4.0",
+        "currentValue": "1.1.0",
+        "newDigest": "sha512-LTGXCdZ58qJKfuCOmf0hnZOVA64eOgzDQOqYpI+71tPxk/0cGqPQhYDGQQZoEvNLAn1G2Lo4gKadsQdWxb99WQ=="
+      },
+      {
+        "depName": "vite",
+        "packageFile": "bundlers/vite/package.json",
+        "manager": "npm",
+        "newValue": ">=8.0.0 <=8.3.5",
+        "currentValue": ">=8.0.0 <=8.3.2",
+        "newDigest": "sha512-z1YpjieJ9g0ebTmQpLBv/oq9E3F9EIlOe+7LahW8SrE3LTiG3udBRUXQOlYXP9b+IC2q2phHeVxj9xGlw34OEQ=="
+      },
+      {
+        "depName": "vite",
+        "packageFile": "bundlers/vite/package.json",
+        "manager": "npm",
+        "newValue": "1.4.0",
+        "currentValue": "1.1.0",
+        "newDigest": "sha512-LTGXCdZ58qJKfuCOmf0hnZOVA64eOgzDQOqYpI+71tPxk/0cGqPQhYDGQQZoEvNLAn1G2Lo4gKadsQdWxb99WQ=="
+      },
+      {
+        "depName": "vite-plus",
+        "packageFile": "pnpm-workspace.yaml",
+        "manager": "npm",
+        "newValue": "1.4.0",
+        "currentValue": "1.2.0",
+        "newDigest": "sha512-bLyUKNFl0XjbHe20FpDM6OuknOb2E4ueoWKCW4n+wMO2+lQtA9tmAjW+Xs0Xe9rg2+tCgY3W13GOgDh2wjwjAQ=="
+      },
+      {
+        "depName": "vitepress",
+        "packageFile": "pnpm-workspace.yaml",
+        "manager": "npm",
+        "newValue": "2.0.0-alpha.21",
+        "currentValue": "2.0.0-alpha.20",
+        "newDigest": "sha512-b2PFPIw2mVfxDi490FhSq4AlkFi17b9lofLCqWfH4uPKz/dF4oy2C9vBpP2r7l7hl2hc5BG7OTRPvRFfRzF7MA=="
+      },
+      {
+        "depName": "vitest",
+        "packageFile": "pnpm-workspace.yaml",
+        "manager": "npm",
+        "newValue": "5.0.5",
+        "currentValue": "5.0.4",
+        "newDigest": "sha512-cPODOMF8YnkiiYtDdHo6n4wWmBrOBBbOIYH2d33M4l3CdNn72h+qMmO6uXffUN6A5AZFXNND/d+krS9mgkXRfg=="
+      }
+    ]
+  },
+  {
+    "id": "4956427deb6ce376a940",
+    "package": "vite",
+    "version": ">=8.0.0 <=8.3.5",
+    "error": "Catalog proposal does not match vite",
+    "upgrades": [
+      {
+        "depName": "@vitest/coverage-v8",
+        "packageFile": "pnpm-workspace.yaml",
+        "manager": "npm",
+        "newValue": "5.0.5",
+        "currentValue": "5.0.4",
+        "newDigest": "sha512-4KpkGdIrSqBihx/JyP/e+S+IKB98etg1XDQiLAxksLfcShnwi1VReGeOT9NI43hLHbknosKp/1CCLn9Zgcs8mg=="
+      },
+      {
+        "depName": "vite",
+        "packageFile": "pnpm-workspace.yaml",
+        "manager": "npm",
+        "newValue": "1.4.0",
+        "currentValue": "1.2.0",
+        "newDigest": "sha512-LTGXCdZ58qJKfuCOmf0hnZOVA64eOgzDQOqYpI+71tPxk/0cGqPQhYDGQQZoEvNLAn1G2Lo4gKadsQdWxb99WQ=="
+      },
+      {
+        "depName": "vite",
+        "packageFile": "plugins/vite/workspace-orchestrator/package.json",
+        "manager": "npm",
+        "newValue": "1.4.0",
+        "currentValue": "1.1.0",
+        "newDigest": "sha512-LTGXCdZ58qJKfuCOmf0hnZOVA64eOgzDQOqYpI+71tPxk/0cGqPQhYDGQQZoEvNLAn1G2Lo4gKadsQdWxb99WQ=="
+      },
+      {
+        "depName": "vite",
+        "packageFile": "bundlers/vite/package.json",
+        "manager": "npm",
+        "newValue": ">=8.0.0 <=8.3.5",
+        "currentValue": ">=8.0.0 <=8.3.2",
+        "newDigest": "sha512-z1YpjieJ9g0ebTmQpLBv/oq9E3F9EIlOe+7LahW8SrE3LTiG3udBRUXQOlYXP9b+IC2q2phHeVxj9xGlw34OEQ=="
+      },
+      {
+        "depName": "vite",
+        "packageFile": "bundlers/vite/package.json",
+        "manager": "npm",
+        "newValue": "1.4.0",
+        "currentValue": "1.1.0",
+        "newDigest": "sha512-LTGXCdZ58qJKfuCOmf0hnZOVA64eOgzDQOqYpI+71tPxk/0cGqPQhYDGQQZoEvNLAn1G2Lo4gKadsQdWxb99WQ=="
+      },
+      {
+        "depName": "vite-plus",
+        "packageFile": "pnpm-workspace.yaml",
+        "manager": "npm",
+        "newValue": "1.4.0",
+        "currentValue": "1.2.0",
+        "newDigest": "sha512-bLyUKNFl0XjbHe20FpDM6OuknOb2E4ueoWKCW4n+wMO2+lQtA9tmAjW+Xs0Xe9rg2+tCgY3W13GOgDh2wjwjAQ=="
+      },
+      {
+        "depName": "vitepress",
+        "packageFile": "pnpm-workspace.yaml",
+        "manager": "npm",
+        "newValue": "2.0.0-alpha.21",
+        "currentValue": "2.0.0-alpha.20",
+        "newDigest": "sha512-b2PFPIw2mVfxDi490FhSq4AlkFi17b9lofLCqWfH4uPKz/dF4oy2C9vBpP2r7l7hl2hc5BG7OTRPvRFfRzF7MA=="
+      },
+      {
+        "depName": "vitest",
+        "packageFile": "pnpm-workspace.yaml",
+        "manager": "npm",
+        "newValue": "5.0.5",
+        "currentValue": "5.0.4",
+        "newDigest": "sha512-cPODOMF8YnkiiYtDdHo6n4wWmBrOBBbOIYH2d33M4l3CdNn72h+qMmO6uXffUN6A5AZFXNND/d+krS9mgkXRfg=="
+      }
+    ]
+  },
+  {
+    "id": "bf3e572f96d8e7c86cfb",
+    "package": "vite",
+    "version": "1.4.0",
+    "error": "Catalog proposal does not match vite",
+    "upgrades": [
+      {
+        "depName": "@vitest/coverage-v8",
+        "packageFile": "pnpm-workspace.yaml",
+        "manager": "npm",
+        "newValue": "5.0.5",
+        "currentValue": "5.0.4",
+        "newDigest": "sha512-4KpkGdIrSqBihx/JyP/e+S+IKB98etg1XDQiLAxksLfcShnwi1VReGeOT9NI43hLHbknosKp/1CCLn9Zgcs8mg=="
+      },
+      {
+        "depName": "vite",
+        "packageFile": "pnpm-workspace.yaml",
+        "manager": "npm",
+        "newValue": "1.4.0",
+        "currentValue": "1.2.0",
+        "newDigest": "sha512-LTGXCdZ58qJKfuCOmf0hnZOVA64eOgzDQOqYpI+71tPxk/0cGqPQhYDGQQZoEvNLAn1G2Lo4gKadsQdWxb99WQ=="
+      },
+      {
+        "depName": "vite",
+        "packageFile": "plugins/vite/workspace-orchestrator/package.json",
+        "manager": "npm",
+        "newValue": "1.4.0",
+        "currentValue": "1.1.0",
+        "newDigest": "sha512-LTGXCdZ58qJKfuCOmf0hnZOVA64eOgzDQOqYpI+71tPxk/0cGqPQhYDGQQZoEvNLAn1G2Lo4gKadsQdWxb99WQ=="
+      },
+      {
+        "depName": "vite",
+        "packageFile": "bundlers/vite/package.json",
+        "manager": "npm",
+        "newValue": ">=8.0.0 <=8.3.5",
+        "currentValue": ">=8.0.0 <=8.3.2",
+        "newDigest": "sha512-z1YpjieJ9g0ebTmQpLBv/oq9E3F9EIlOe+7LahW8SrE3LTiG3udBRUXQOlYXP9b+IC2q2phHeVxj9xGlw34OEQ=="
+      },
+      {
+        "depName": "vite",
+        "packageFile": "bundlers/vite/package.json",
+        "manager": "npm",
+        "newValue": "1.4.0",
+        "currentValue": "1.1.0",
+        "newDigest": "sha512-LTGXCdZ58qJKfuCOmf0hnZOVA64eOgzDQOqYpI+71tPxk/0cGqPQhYDGQQZoEvNLAn1G2Lo4gKadsQdWxb99WQ=="
+      },
+      {
+        "depName": "vite-plus",
+        "packageFile": "pnpm-workspace.yaml",
+        "manager": "npm",
+        "newValue": "1.4.0",
+        "currentValue": "1.2.0",
+        "newDigest": "sha512-bLyUKNFl0XjbHe20FpDM6OuknOb2E4ueoWKCW4n+wMO2+lQtA9tmAjW+Xs0Xe9rg2+tCgY3W13GOgDh2wjwjAQ=="
+      },
+      {
+        "depName": "vitepress",
+        "packageFile": "pnpm-workspace.yaml",
+        "manager": "npm",
+        "newValue": "2.0.0-alpha.21",
+        "currentValue": "2.0.0-alpha.20",
+        "newDigest": "sha512-b2PFPIw2mVfxDi490FhSq4AlkFi17b9lofLCqWfH4uPKz/dF4oy2C9vBpP2r7l7hl2hc5BG7OTRPvRFfRzF7MA=="
+      },
+      {
+        "depName": "vitest",
+        "packageFile": "pnpm-workspace.yaml",
+        "manager": "npm",
+        "newValue": "5.0.5",
+        "currentValue": "5.0.4",
+        "newDigest": "sha512-cPODOMF8YnkiiYtDdHo6n4wWmBrOBBbOIYH2d33M4l3CdNn72h+qMmO6uXffUN6A5AZFXNND/d+krS9mgkXRfg=="
+      }
+    ]
+  },
+  {
+    "id": "ea630dd594b48af970fa",
+    "package": "vite-plus",
+    "version": "1.4.0",
+    "error": "Catalog proposal does not match vite",
+    "upgrades": [
+      {
+        "depName": "@vitest/coverage-v8",
+        "packageFile": "pnpm-workspace.yaml",
+        "manager": "npm",
+        "newValue": "5.0.5",
+        "currentValue": "5.0.4",
+        "newDigest": "sha512-4KpkGdIrSqBihx/JyP/e+S+IKB98etg1XDQiLAxksLfcShnwi1VReGeOT9NI43hLHbknosKp/1CCLn9Zgcs8mg=="
+      },
+      {
+        "depName": "vite",
+        "packageFile": "pnpm-workspace.yaml",
+        "manager": "npm",
+        "newValue": "1.4.0",
+        "currentValue": "1.2.0",
+        "newDigest": "sha512-LTGXCdZ58qJKfuCOmf0hnZOVA64eOgzDQOqYpI+71tPxk/0cGqPQhYDGQQZoEvNLAn1G2Lo4gKadsQdWxb99WQ=="
+      },
+      {
+        "depName": "vite",
+        "packageFile": "plugins/vite/workspace-orchestrator/package.json",
+        "manager": "npm",
+        "newValue": "1.4.0",
+        "currentValue": "1.1.0",
+        "newDigest": "sha512-LTGXCdZ58qJKfuCOmf0hnZOVA64eOgzDQOqYpI+71tPxk/0cGqPQhYDGQQZoEvNLAn1G2Lo4gKadsQdWxb99WQ=="
+      },
+      {
+        "depName": "vite",
+        "packageFile": "bundlers/vite/package.json",
+        "manager": "npm",
+        "newValue": ">=8.0.0 <=8.3.5",
+        "currentValue": ">=8.0.0 <=8.3.2",
+        "newDigest": "sha512-z1YpjieJ9g0ebTmQpLBv/oq9E3F9EIlOe+7LahW8SrE3LTiG3udBRUXQOlYXP9b+IC2q2phHeVxj9xGlw34OEQ=="
+      },
+      {
+        "depName": "vite",
+        "packageFile": "bundlers/vite/package.json",
+        "manager": "npm",
+        "newValue": "1.4.0",
+        "currentValue": "1.1.0",
+        "newDigest": "sha512-LTGXCdZ58qJKfuCOmf0hnZOVA64eOgzDQOqYpI+71tPxk/0cGqPQhYDGQQZoEvNLAn1G2Lo4gKadsQdWxb99WQ=="
+      },
+      {
+        "depName": "vite-plus",
+        "packageFile": "pnpm-workspace.yaml",
+        "manager": "npm",
+        "newValue": "1.4.0",
+        "currentValue": "1.2.0",
+        "newDigest": "sha512-bLyUKNFl0XjbHe20FpDM6OuknOb2E4ueoWKCW4n+wMO2+lQtA9tmAjW+Xs0Xe9rg2+tCgY3W13GOgDh2wjwjAQ=="
+      },
+      {
+        "depName": "vitepress",
+        "packageFile": "pnpm-workspace.yaml",
+        "manager": "npm",
+        "newValue": "2.0.0-alpha.21",
+        "currentValue": "2.0.0-alpha.20",
+        "newDigest": "sha512-b2PFPIw2mVfxDi490FhSq4AlkFi17b9lofLCqWfH4uPKz/dF4oy2C9vBpP2r7l7hl2hc5BG7OTRPvRFfRzF7MA=="
+      },
+      {
+        "depName": "vitest",
+        "packageFile": "pnpm-workspace.yaml",
+        "manager": "npm",
+        "newValue": "5.0.5",
+        "currentValue": "5.0.4",
+        "newDigest": "sha512-cPODOMF8YnkiiYtDdHo6n4wWmBrOBBbOIYH2d33M4l3CdNn72h+qMmO6uXffUN6A5AZFXNND/d+krS9mgkXRfg=="
+      }
+    ]
+  },
+  {
+    "id": "010386b1692f5d2a585b",
+    "package": "vitepress",
+    "version": "2.0.0-alpha.21",
+    "error": "Catalog proposal does not match vite",
+    "upgrades": [
+      {
+        "depName": "@vitest/coverage-v8",
+        "packageFile": "pnpm-workspace.yaml",
+        "manager": "npm",
+        "newValue": "5.0.5",
+        "currentValue": "5.0.4",
+        "newDigest": "sha512-4KpkGdIrSqBihx/JyP/e+S+IKB98etg1XDQiLAxksLfcShnwi1VReGeOT9NI43hLHbknosKp/1CCLn9Zgcs8mg=="
+      },
+      {
+        "depName": "vite",
+        "packageFile": "pnpm-workspace.yaml",
+        "manager": "npm",
+        "newValue": "1.4.0",
+        "currentValue": "1.2.0",
+        "newDigest": "sha512-LTGXCdZ58qJKfuCOmf0hnZOVA64eOgzDQOqYpI+71tPxk/0cGqPQhYDGQQZoEvNLAn1G2Lo4gKadsQdWxb99WQ=="
+      },
+      {
+        "depName": "vite",
+        "packageFile": "plugins/vite/workspace-orchestrator/package.json",
+        "manager": "npm",
+        "newValue": "1.4.0",
+        "currentValue": "1.1.0",
+        "newDigest": "sha512-LTGXCdZ58qJKfuCOmf0hnZOVA64eOgzDQOqYpI+71tPxk/0cGqPQhYDGQQZoEvNLAn1G2Lo4gKadsQdWxb99WQ=="
+      },
+      {
+        "depName": "vite",
+        "packageFile": "bundlers/vite/package.json",
+        "manager": "npm",
+        "newValue": ">=8.0.0 <=8.3.5",
+        "currentValue": ">=8.0.0 <=8.3.2",
+        "newDigest": "sha512-z1YpjieJ9g0ebTmQpLBv/oq9E3F9EIlOe+7LahW8SrE3LTiG3udBRUXQOlYXP9b+IC2q2phHeVxj9xGlw34OEQ=="
+      },
+      {
+        "depName": "vite",
+        "packageFile": "bundlers/vite/package.json",
+        "manager": "npm",
+        "newValue": "1.4.0",
+        "currentValue": "1.1.0",
+        "newDigest": "sha512-LTGXCdZ58qJKfuCOmf0hnZOVA64eOgzDQOqYpI+71tPxk/0cGqPQhYDGQQZoEvNLAn1G2Lo4gKadsQdWxb99WQ=="
+      },
+      {
+        "depName": "vite-plus",
+        "packageFile": "pnpm-workspace.yaml",
+        "manager": "npm",
+        "newValue": "1.4.0",
+        "currentValue": "1.2.0",
+        "newDigest": "sha512-bLyUKNFl0XjbHe20FpDM6OuknOb2E4ueoWKCW4n+wMO2+lQtA9tmAjW+Xs0Xe9rg2+tCgY3W13GOgDh2wjwjAQ=="
+      },
+      {
+        "depName": "vitepress",
+        "packageFile": "pnpm-workspace.yaml",
+        "manager": "npm",
+        "newValue": "2.0.0-alpha.21",
+        "currentValue": "2.0.0-alpha.20",
+        "newDigest": "sha512-b2PFPIw2mVfxDi490FhSq4AlkFi17b9lofLCqWfH4uPKz/dF4oy2C9vBpP2r7l7hl2hc5BG7OTRPvRFfRzF7MA=="
+      },
+      {
+        "depName": "vitest",
+        "packageFile": "pnpm-workspace.yaml",
+        "manager": "npm",
+        "newValue": "5.0.5",
+        "currentValue": "5.0.4",
+        "newDigest": "sha512-cPODOMF8YnkiiYtDdHo6n4wWmBrOBBbOIYH2d33M4l3CdNn72h+qMmO6uXffUN6A5AZFXNND/d+krS9mgkXRfg=="
+      }
+    ]
+  },
+  {
+    "id": "4d5265617deb1e61a1f8",
+    "package": "vitest",
+    "version": "5.0.5",
+    "error": "Catalog proposal does not match vite",
+    "upgrades": [
+      {
+        "depName": "@vitest/coverage-v8",
+        "packageFile": "pnpm-workspace.yaml",
+        "manager": "npm",
+        "newValue": "5.0.5",
+        "currentValue": "5.0.4",
+        "newDigest": "sha512-4KpkGdIrSqBihx/JyP/e+S+IKB98etg1XDQiLAxksLfcShnwi1VReGeOT9NI43hLHbknosKp/1CCLn9Zgcs8mg=="
+      },
+      {
+        "depName": "vite",
+        "packageFile": "pnpm-workspace.yaml",
+        "manager": "npm",
+        "newValue": "1.4.0",
+        "currentValue": "1.2.0",
+        "newDigest": "sha512-LTGXCdZ58qJKfuCOmf0hnZOVA64eOgzDQOqYpI+71tPxk/0cGqPQhYDGQQZoEvNLAn1G2Lo4gKadsQdWxb99WQ=="
+      },
+      {
+        "depName": "vite",
+        "packageFile": "plugins/vite/workspace-orchestrator/package.json",
+        "manager": "npm",
+        "newValue": "1.4.0",
+        "currentValue": "1.1.0",
+        "newDigest": "sha512-LTGXCdZ58qJKfuCOmf0hnZOVA64eOgzDQOqYpI+71tPxk/0cGqPQhYDGQQZoEvNLAn1G2Lo4gKadsQdWxb99WQ=="
+      },
+      {
+        "depName": "vite",
+        "packageFile": "bundlers/vite/package.json",
+        "manager": "npm",
+        "newValue": ">=8.0.0 <=8.3.5",
+        "currentValue": ">=8.0.0 <=8.3.2",
+        "newDigest": "sha512-z1YpjieJ9g0ebTmQpLBv/oq9E3F9EIlOe+7LahW8SrE3LTiG3udBRUXQOlYXP9b+IC2q2phHeVxj9xGlw34OEQ=="
+      },
+      {
+        "depName": "vite",
+        "packageFile": "bundlers/vite/package.json",
+        "manager": "npm",
+        "newValue": "1.4.0",
+        "currentValue": "1.1.0",
+        "newDigest": "sha512-LTGXCdZ58qJKfuCOmf0hnZOVA64eOgzDQOqYpI+71tPxk/0cGqPQhYDGQQZoEvNLAn1G2Lo4gKadsQdWxb99WQ=="
+      },
+      {
+        "depName": "vite-plus",
+        "packageFile": "pnpm-workspace.yaml",
+        "manager": "npm",
+        "newValue": "1.4.0",
+        "currentValue": "1.2.0",
+        "newDigest": "sha512-bLyUKNFl0XjbHe20FpDM6OuknOb2E4ueoWKCW4n+wMO2+lQtA9tmAjW+Xs0Xe9rg2+tCgY3W13GOgDh2wjwjAQ=="
+      },
+      {
+        "depName": "vitepress",
+        "packageFile": "pnpm-workspace.yaml",
+        "manager": "npm",
+        "newValue": "2.0.0-alpha.21",
+        "currentValue": "2.0.0-alpha.20",
+        "newDigest": "sha512-b2PFPIw2mVfxDi490FhSq4AlkFi17b9lofLCqWfH4uPKz/dF4oy2C9vBpP2r7l7hl2hc5BG7OTRPvRFfRzF7MA=="
+      },
+      {
+        "depName": "vitest",
+        "packageFile": "pnpm-workspace.yaml",
+        "manager": "npm",
+        "newValue": "5.0.5",
+        "currentValue": "5.0.4",
+        "newDigest": "sha512-cPODOMF8YnkiiYtDdHo6n4wWmBrOBBbOIYH2d33M4l3CdNn72h+qMmO6uXffUN6A5AZFXNND/d+krS9mgkXRfg=="
+      }
+    ]
+  }
+]

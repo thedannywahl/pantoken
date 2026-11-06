@@ -47,7 +47,7 @@
     "vite-plus": "catalog:"
   },
   "peerDependencies": {
-    "svelte": ">=4"
+    "svelte": ">=4.2.20 <5.0.0 || >=5.0.0 <6.0.0"
   },
   "peerDependenciesMeta": {
     "svelte": {

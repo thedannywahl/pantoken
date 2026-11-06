@@ -23,9 +23,9 @@ catalog:
   yaml: ^2.9.1
   "@types/node": ^26.6.5
   typescript: ^7.0.2
-  arkregex: ^0.0.12
-  vite: npm:@voidzero-dev/vite-plus-core@1.2.0
-  vite-plus: 1.2.0
+  arkregex: ^0.0.14
+  vite: npm:@voidzero-dev/vite-plus-core@1.4.0
+  vite-plus: 1.4.0
   # Upstream Instructure sources. The design-tokens repo is GitHub-only and versioned independently of
   # the 11.7.x line, so it's pinned to a release tag (its package.json version is unreliable — stuck at
   # 1.0.0 across tags — so the tag + resolved commit are the provenance the upgrade pipeline records).
@@ -84,30 +84,30 @@ catalog:
   # Codecov bundle analysis plugin
   "@codecov/vite-plugin": ^2.0.1
   # Quality gates
-  automatica11y: ^0.11.0
+  automatica11y: ^0.12.0
   "@commitlint/cli": ^21.2.3
   "@commitlint/config-conventional": ^21.2.3
   "@changesets/cli": ^3.0.3
-  "@vitest/coverage-v8": 5.0.4
-  markdownlint-cli2: ^0.23.3
+  "@vitest/coverage-v8": 5.0.5
+  markdownlint-cli2: ^0.24.0
   "@manypkg/cli": ^0.25.1
   fallow: ^3.33.1
-  happy-dom: ^20.14.6
+  happy-dom: ^21.0.0
   dompurify: ^3.4.17
   snyk: ^1.1308.1
   publint: ^0.3.25
   "@arethetypeswrong/cli": ^0.18.5
   bumpp: ^12.2.1
   vitepress-plugin-mermaid: ^2.0.17
-  mermaid: ^11.17.2
+  mermaid: ^12.0.0
   shiki: ^4.5.0
   "@shikijs/langs": ^4.5.0
   "@shikijs/themes": ^4.5.0
   "@shikijs/types": ^4.5.0
   vue: ^3.5.44
   "@vue/server-renderer": ^3.5.44
-  vitepress: 2.0.0-alpha.20
-  oxc-minify: ^0.153.0
+  vitepress: 2.0.0-alpha.21
+  oxc-minify: ^0.156.0
   typedoc: ^0.28.20
   typedoc-plugin-markdown: ^4.14.0
   typedoc-vitepress-theme: ^1.1.4
@@ -137,18 +137,18 @@ catalog:
   "@resvg/resvg-js": ^2.6.2
   esbuild: ^0.28.2
   changelogen: ^0.6.2
-  "@vscode/vsce": ^3.9.2
+  "@vscode/vsce": ^4.0.0
   ovsx: ^1.0.2
-  vscode-languageclient: ^10.1.0
-  vscode-languageserver: ^10.1.0
+  vscode-languageclient: ^11.0.0
+  vscode-languageserver: ^11.0.0
   vscode-languageserver-textdocument: ^1.0.12
-  bingo-stratum: ^0.8.0
+  bingo-stratum: ^0.9.0
   zod: ^4.6.7
   # @pantoken/tinymce + canvas-theme-editor scaffold — tracks the current tinymce major, not
   # instructure/canvas-lms's own (older) production RCE version. v8's stricter DOMPurify
   # sanitization is stricter than canvas-lms's tinymce 5, which is an acceptable direction.
   tinymce: ^8.10.0
-  tinymce-i18n: 26.9.21
+  tinymce-i18n: 26.10.26
   less: ^4.9.1
   codemirror: ^6.0.2
   "@codemirror/lang-html": ^6.4.12
@@ -162,7 +162,7 @@ catalog:
   "@codemirror/view": ^6.43.14
   "@lezer/highlight": ^1.2.3
   prettier: ^3.9.10
-  vitest: 5.0.4
+  vitest: 5.0.5
   # Continuous performance testing through Vitest's native benchmark provider.
   "@codspeed/vitest-plugin": ^6.0.1
   tinybench: ^6.2.2
