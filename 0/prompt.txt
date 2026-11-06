@@ -1,0 +1,236 @@
+pr 250 is failing CI, investigate remediate and push fixes with conventional commits and changesets.
+
+---
+
+chore(i18n): Update localization files to enhance accessibility compliance
+
+    
+
+  
+
+    
+      
+      
+      
+
+    
+
+  
+
+    
+      
+      
+      Entire-Checkpoint: 01M6H60JE0TB414PFV7RBEJDTH
+
+    
+
+  
+
+    
+      
+      
+      ✖   subject must not be sentence-case [subject-case]
+
+    
+
+  
+
+    
+      
+      
+      
+
+    
+
+  
+
+    
+      
+      
+      ✖   found 1 problems, 0 warnings
+
+    
+
+  
+
+    
+      
+      
+      ⓘ   Get help: [https://github.com/conventional-changelog/commitlint/#what-is-commitlint](https://github.com/conventional-changelog/commitlint/#what-is-commitlint)
+
+    
+
+  
+
+    
+      
+      
+      
+
+    
+
+  
+
+    
+      
+      
+      ⧗   --- input ---
+
+    
+
+  
+
+    
+      
+      
+      feat(locales): enhance locale-specific API prose with additional entries
+
+    
+
+  
+
+    
+      
+      
+      
+
+    
+
+  
+
+    
+      
+      
+      Entire-Checkpoint: 01M6H5ZVKCFZSHEPPQ51SMZWM3
+
+    
+
+  
+
+    
+      
+      
+      ✔   found 0 problems, 0 warnings
+
+    
+
+  
+
+    
+      
+      
+      ⧗   --- input ---
+
+    
+
+  
+
+    
+      
+      
+      fix(release): generate docs theme curve before maintenance checks
+
+    
+
+  
+
+    
+      
+      
+      
+
+    
+
+  
+
+    
+      
+      
+      Entire-Checkpoint: 01M6H5HNZRB97Y9Y7SG6T2B54R
+
+    
+
+  
+
+    
+      
+      
+      ✔   found 0 problems, 0 warnings
+
+    
+
+  
+
+    
+      
+      
+      Error: Process completed with exit code 1.
+
+---
+
+yes
+
+---
+
+this job was cancelled on merge after 5 minutes for some reason: https://github.com/thedannywahl/pantoken/actions/runs/41693402111/job/126117522042
+
+---
+
+okay, it's successfully merged. now what?
+
+---
+
+what do you mean keep the existing proposal branch?
+
+---
+
+another failure:
+https://github.com/thedannywahl/pantoken/actions/runs/41710586906/job/126322249091
+
+---
+
+Continue: "Continue to iterate?"
+
+---
+
+251 merged successfully, now what?
+
+---
+
+another ci failure, we can fix on this branch:
+https://github.com/thedannywahl/pantoken/actions/runs/41852395697/job/126823102774
+
+---
+
+what happened to the other branch? the figma one?
+
+---
+
+failed on the publish step:
+https://github.com/thedannywahl/pantoken/actions/runs/41926932123/job/127046623894
+```
+Run node scripts/release/maintenance-publication.ts publish "$RUNNER_TEMP/maintenance-handoff/maintenance-result.json" "$BASE_SHA" "$PROPOSAL_SHA"
+Unexpected generated path: l10n/docs.api.pot
+Error: Process completed with exit code 1.
+```
+
+---
+
+another failure:
+https://github.com/thedannywahl/pantoken/actions/runs/42056240154/job/127548131684
+
+---
+
+the workflow successfully ran, but the merge / deploy failed on main:
+https://github.com/thedannywahl/pantoken/actions/runs/42117708956/job/127561694811
+
+---
+
+it did successfully open the prepare weekly maintenance PR in 256, but that's also failing:
+https://github.com/thedannywahl/pantoken/pull/256
+and let's take a look at the failed candidates to see if these were true compatibility failures, or if they're things that can be fixed in the release workflow:
+https://github.com/thedannywahl/pantoken/pull/279
+
+---
+
+apply the recommended fixes in incremental conventional commits and changesets, including the already unstaged changes and push to a new branch/pr following guidelines. I will close both open PRs so we can re-run the weekly maintenance workflow from scratch.
