@@ -212,6 +212,7 @@ function fixture(
     args: string[];
     cwd: string;
     env: NodeJS.ProcessEnv;
+    timeout?: number;
   }> = [];
   vi.mocked(targetReleaseHistory).mockResolvedValue([
     { version: "19.0.0", publishedAt: "2026-01-01" },
@@ -220,7 +221,7 @@ function fixture(
   vi.mocked(spawnSync).mockImplementation(((
     executable: string,
     args: string[],
-    options: { cwd: string; env: NodeJS.ProcessEnv },
+    options: { cwd: string; env: NodeJS.ProcessEnv; timeout?: number },
   ) => {
     commands.push({ executable, args, ...options });
     if (args[0] === "scripts/check-compatibility.ts" && adapterFailures[args[1]]) {
@@ -332,6 +333,7 @@ test("prepares metadata and accessibility evidence before the final gates", asyn
   const ready = state.commands.findIndex((command) => command.args[1] === "ready");
   expect(audit).toBeGreaterThan(-1);
   expect(audit).toBeLessThan(ready);
+  expect(state.commands[audit].timeout).toBe(100 * 60 * 1000);
   expect(
     state.commands
       .slice(0, audit)
