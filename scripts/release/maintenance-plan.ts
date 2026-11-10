@@ -16,7 +16,7 @@ export interface MaintenanceUpgrade {
 /** A candidate or infrastructure failure that remains outside the passing branch. */
 export interface MaintenanceFailure {
   id: string;
-  kind?: "compatibility" | "infrastructure" | "deferred";
+  kind?: "compatibility" | "infrastructure" | "deferred" | "release-gate";
   package: string;
   version: string;
   error: string;

@@ -272,8 +272,10 @@ shared build/check failures before the matrix spends time classifying dependency
 Integration accepts only complete same-run outcomes matching the base, proposal, validator, group,
 and attempt. The newest attempt wins; duplicate attempts, missing groups, and incomplete or
 infrastructure-failed outcomes block publication. It first validates the combined passing set and
-bisects failures along coupled-group boundaries, then runs the full release gates once on the final
-accepted set. Full-gate failures block publication rather than silently dropping checks. The existing
+bisects failures along coupled-group boundaries. Each integration trial regenerates the English API
+and runs `vp run @pantoken/docs#docs:check:drift`, so untranslated generated prose is attributed to
+the update group that introduced it. It then runs the full release gates once on the final accepted
+set; full-gate failures still block publication rather than silently dropping checks. The existing
 publisher still rejects an advanced `main` and requires final-head PR CI before auto-merge.
 Before `vp run ready`, final integration runs `vp run @pantoken/docs#docs:api:en`; docs API tests
 import generated pages from `docs/api`, which are intentionally not checked into Git. This step does

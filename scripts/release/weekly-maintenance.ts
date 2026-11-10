@@ -142,6 +142,8 @@ function command(
       )
     )
       failure.name = "MaintenanceInfrastructureError";
+    else if (executable === "vp" && args.join(" ") === "run @pantoken/docs#docs:check:drift")
+      failure.name = "MaintenanceReleaseGateError";
     progress({
       event: "command",
       state: "failed",
@@ -361,6 +363,10 @@ export async function partitionMaintenance(
       for (const upgrade of group)
         failures.push({
           id: maintenanceId(upgrade.depName, upgrade.newValue),
+          kind:
+            error instanceof Error && error.name === "MaintenanceReleaseGateError"
+              ? "release-gate"
+              : "compatibility",
           package: upgrade.depName,
           version: upgrade.newValue,
           error: error instanceof Error ? error.message : String(error),
@@ -694,6 +700,10 @@ export async function prepareMaintenance(
           command(directory, "vp", ["run", "ready"]);
           command(directory, "vp", ["run", "check:publish"]);
         } else {
+          if (options.mode === "integration" && candidates.length) {
+            command(directory, "vp", ["run", "@pantoken/docs#docs:api:en"]);
+            command(directory, "vp", ["run", "@pantoken/docs#docs:check:drift"]);
+          }
           command(directory, "vp", ["check"]);
           if (affectedPaths.length)
             command(directory, "vp", ["test", ...affectedPaths, "--passWithNoTests"]);
