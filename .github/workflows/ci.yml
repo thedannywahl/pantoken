@@ -2089,6 +2089,8 @@ jobs:
               - 'docs/**'
               - 'packages/**'
               - 'formats/**'
+              - '!formats/components/scripts/audit-accessibility.ts'
+              - '!formats/components/tests/audit-accessibility.test.ts'
               - 'platforms/**'
               - 'renderers/**'
               - 'plugins/**'
