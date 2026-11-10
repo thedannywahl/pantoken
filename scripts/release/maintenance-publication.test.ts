@@ -378,6 +378,7 @@ test("records failures in individual issues and a separate draft without auto-me
 test.each([
   ["deferred", "Deferred verification"],
   ["infrastructure", "Infrastructure failure"],
+  ["release-gate", "Release gate blocked"],
   ["compatibility", "Compatibility failure"],
 ] as const)("labels %s findings and deduplicates repeated issue links", async (kind, label) => {
   const failure = {

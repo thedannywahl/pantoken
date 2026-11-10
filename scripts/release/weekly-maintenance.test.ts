@@ -162,7 +162,8 @@ function fixture(
   const directory = mkdtempSync(join(tmpdir(), "pantoken-weekly-test-"));
   temporary.push(directory);
   const files: Record<string, string> = {
-    "pnpm-workspace.yaml": "packages:\n  - renderers/*\ncatalog:\n  react: ^19.0.0\n",
+    "pnpm-workspace.yaml":
+      "packages:\n  - renderers/*\ncatalog:\n  other: ^1.0.0\n  react: ^19.0.0\n",
     "renderers/react/package.json": JSON.stringify({
       name: "@pantoken/react",
       version: "1.0.0",
@@ -342,6 +343,54 @@ test("prepares metadata and accessibility evidence before the final gates", asyn
           command.args[0] === "fmt" && command.args.includes(".renovate/verified-targets.json"),
       ),
   ).toBe(true);
+});
+
+test("bisects generated API locale drift and reports it as a release-gate block", async () => {
+  const candidates = [
+    { ...upgrade("react"), currentValue: "^19.0.0", newValue: "^20.0.0" },
+    { ...upgrade("other"), currentValue: "^1.0.0", newValue: "^2.0.0" },
+  ];
+  const state = fixture(candidates);
+  const spawn = vi.mocked(spawnSync).getMockImplementation()!;
+  vi.mocked(spawnSync).mockImplementation((...args) => {
+    const result = spawn(...args);
+    const [executable, commandArgs, options] = args;
+    if (
+      executable === "vp" &&
+      commandArgs?.join(" ") === "run @pantoken/docs#docs:check:drift" &&
+      readFileSync(join((options as { cwd: string }).cwd, "pnpm-workspace.yaml"), "utf8").includes(
+        "react: ^20.0.0",
+      )
+    )
+      return { ...result, status: 1, stderr: "Blocking translation drift" };
+    return result;
+  });
+
+  const result = await prepareMaintenance("a".repeat(40), "b".repeat(40), {
+    mode: "integration",
+    candidates,
+  });
+
+  expect(result.accepted.map((candidate) => candidate.depName)).toEqual(["other"]);
+  expect(result.failures).toMatchObject([
+    {
+      kind: "release-gate",
+      package: "react",
+      version: "^20.0.0",
+      error: expect.stringContaining("Blocking translation drift"),
+    },
+  ]);
+  const driftCheck = state.commands.findIndex((command) =>
+    command.args.includes("@pantoken/docs#docs:check:drift"),
+  );
+  expect(driftCheck).toBeGreaterThan(-1);
+  expect(state.commands[driftCheck - 1]).toMatchObject({
+    args: ["run", "@pantoken/docs#docs:api:en"],
+    cwd: state.commands[driftCheck].cwd,
+  });
+  expect(state.commands.some((command) => command.args.join(" ") === "run check:publish")).toBe(
+    true,
+  );
 });
 
 test.each([0, 1, 2])(

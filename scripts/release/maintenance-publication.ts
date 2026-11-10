@@ -123,7 +123,7 @@ export function validateMaintenanceResult(
     assert.match(failure.id, /^[a-f0-9]{20}$/u);
     assert.ok(
       failure.kind === undefined ||
-        ["compatibility", "infrastructure", "deferred"].includes(failure.kind),
+        ["compatibility", "infrastructure", "deferred", "release-gate"].includes(failure.kind),
       "Invalid maintenance failure kind",
     );
     assert.ok(
@@ -514,7 +514,9 @@ export async function publishMaintenance(
         ? "Deferred verification"
         : failure.kind === "infrastructure"
           ? "Infrastructure failure"
-          : "Compatibility failure";
+          : failure.kind === "release-gate"
+            ? "Release gate blocked"
+            : "Compatibility failure";
     const title = `${label}: ${failure.package} / ${failure.version}`;
     const body = `${marker}\n\nCandidate: ${failure.package} ${failure.version}\n\n\`\`\`text\n${failure.error.slice(-12_000)}\n\`\`\`\n\nTracked in the failed-updates draft; excluded from automatic merging.`;
     let issue = issues.find(
