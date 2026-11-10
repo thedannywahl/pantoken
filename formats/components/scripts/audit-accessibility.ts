@@ -704,24 +704,19 @@ export async function runPageAudits(
     writeIndex(out, evidence, cases);
     run(process.execPath, [cli, "--version"]);
     run(process.execPath, [cli, "doctor"]);
-    for (let offset = 0; offset < groups.length; offset += 2) {
-      await Promise.all(
-        groups.slice(offset, offset + 2).map(async (group, localIndex) => {
-          const index = offset + localIndex;
-          const targets = cases
-            .filter((item) => `${item.theme}-${item.scheme}` === group)
-            .map((item) => `${item.id}=${join(out, "pages", `${item.id}.html`)}`);
-          evidence[index] = await auditInvocation(
-            out,
-            `pages-${group}`,
-            targets,
-            ["--tiers", "rules,conditions,vsr"],
-            run === execute ? executeAsync : run,
-          );
-          writeIndex(out, evidence, cases);
-        }),
+    for (const [index, group] of groups.entries()) {
+      const targets = cases
+        .filter((item) => `${item.theme}-${item.scheme}` === group)
+        .map((item) => `${item.id}=${join(out, "pages", `${item.id}.html`)}`);
+      evidence[index] = await auditInvocation(
+        out,
+        `pages-${group}`,
+        targets,
+        ["--tiers", "rules,conditions,vsr"],
+        run === execute ? executeAsync : run,
       );
-      if (evidence.slice(0, offset + 2).some((item) => item.error)) break;
+      writeIndex(out, evidence, cases);
+      if (evidence[index].error) break;
     }
   } catch (error) {
     evidence.push({ directory: "setup", expected: [], completed: [], error: String(error) });
