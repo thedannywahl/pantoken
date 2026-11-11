@@ -695,7 +695,7 @@ export async function prepareMaintenance(
         if (changed.length) command(directory, "vp", ["fmt", ...changed]);
         command(directory, process.execPath, ["docs/scripts/site-themes.ts"]);
         if (final) {
-          command(directory, "vp", ["run", "@pantoken/docs#docs:accessibility"], 100 * 60 * 1000);
+          command(directory, "vp", ["run", "@pantoken/docs#docs:accessibility"], 130 * 60 * 1000);
           command(directory, "vp", ["run", "@pantoken/docs#docs:api:en"]);
           command(directory, "vp", ["run", "ready"]);
           command(directory, "vp", ["run", "check:publish"]);
