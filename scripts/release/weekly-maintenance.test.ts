@@ -90,6 +90,28 @@ test("manual dispatch overrides only Renovate scheduling while scheduled runs re
   });
 });
 
+test("budgets integration time for the full accessibility refresh and release gates", () => {
+  const workflow = parseYaml(
+    readFileSync(
+      join(import.meta.dirname, "../../.github/workflows/maintenance-validation.yml"),
+      "utf8",
+    ),
+  ) as {
+    jobs: {
+      validate: {
+        "timeout-minutes": string;
+        steps: Array<{ name: string; "timeout-minutes"?: string }>;
+      };
+    };
+  };
+  const validation = workflow.jobs.validate;
+  const step = validation.steps.find(
+    (candidate) => candidate.name === "Validate immutable maintenance stage",
+  );
+  expect(validation["timeout-minutes"]).toBe("${{ inputs.stage == 'integrate' && 210 || 90 }}");
+  expect(step?.["timeout-minutes"]).toBe("${{ inputs.stage == 'integrate' && 190 || 70 }}");
+});
+
 test("keeps passing updates and records one failure per excluded coupled candidate", async () => {
   const result = await partitionMaintenance(
     [upgrade("passing"), upgrade("react"), upgrade("react-dom")],
@@ -334,7 +356,7 @@ test("prepares metadata and accessibility evidence before the final gates", asyn
   const ready = state.commands.findIndex((command) => command.args[1] === "ready");
   expect(audit).toBeGreaterThan(-1);
   expect(audit).toBeLessThan(ready);
-  expect(state.commands[audit].timeout).toBe(100 * 60 * 1000);
+  expect(state.commands[audit].timeout).toBe(130 * 60 * 1000);
   expect(
     state.commands
       .slice(0, audit)

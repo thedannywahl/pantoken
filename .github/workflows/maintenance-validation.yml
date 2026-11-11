@@ -27,7 +27,7 @@ jobs:
   validate:
     name: ${{ inputs.stage }} ${{ inputs.group }}
     runs-on: ubuntu-latest
-    timeout-minutes: ${{ inputs.stage == 'integrate' && 200 || 90 }}
+    timeout-minutes: ${{ inputs.stage == 'integrate' && 210 || 90 }}
     env:
       PANTOKEN_MAINTENANCE_VALIDATION: "1"
     outputs:
@@ -66,7 +66,7 @@ jobs:
           path: ${{ runner.temp }}/maintenance/candidates
           merge-multiple: false
       - name: Validate immutable maintenance stage
-        timeout-minutes: ${{ inputs.stage == 'integrate' && 175 || 70 }}
+        timeout-minutes: ${{ inputs.stage == 'integrate' && 190 || 70 }}
         env:
           STAGE: ${{ inputs.stage }}
           BASE_SHA: ${{ inputs.base }}
