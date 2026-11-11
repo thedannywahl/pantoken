@@ -31,7 +31,10 @@ test("skips the docs build for accessibility audit tooling-only changes", () => 
   ) as {
     jobs: {
       "docs-changes": {
-        steps: Array<{ name?: string; with?: { filters?: string } }>;
+        steps: Array<{
+          name?: string;
+          with?: { filters?: string; "predicate-quantifier"?: string };
+        }>;
       };
     };
   };
@@ -41,6 +44,7 @@ test("skips the docs build for accessibility audit tooling-only changes", () => 
   const filters = parse(filterStep?.with?.filters ?? "") as {
     docs: string[];
   };
+  expect(filterStep?.with?.["predicate-quantifier"]).toBe("some-with-excludes");
   expect(filters.docs).toContain("formats/**");
   expect(filters.docs).toContain("!formats/components/scripts/audit-accessibility.ts");
   expect(filters.docs).toContain("!formats/components/tests/audit-accessibility.test.ts");
