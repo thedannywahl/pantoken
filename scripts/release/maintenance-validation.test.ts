@@ -366,9 +366,9 @@ test("workflow shards unprivileged groups and preserves diagnostics and exact re
   ).toBe("always()");
   expect(
     steps.find((step) => step.name === "Validate immutable maintenance stage")?.["timeout-minutes"],
-  ).toBe("${{ inputs.stage == 'integrate' && 175 || 70 }}");
+  ).toBe("${{ inputs.stage == 'integrate' && 190 || 70 }}");
   expect(stage.jobs.validate["timeout-minutes"]).toBe(
-    "${{ inputs.stage == 'integrate' && 200 || 90 }}",
+    "${{ inputs.stage == 'integrate' && 210 || 90 }}",
   );
 });
 
