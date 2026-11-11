@@ -24,3 +24,28 @@ test("serializes all deployment dependency builds to prevent output cleanup race
   for (const command of commands)
     expect(command).toBe('vp run -F "@pantoken/docs..." --concurrency-limit 1 build');
 });
+
+test("skips the docs build for accessibility audit tooling-only changes", () => {
+  const workflow = parse(
+    readFileSync(new URL("../../.github/workflows/ci.yml", import.meta.url), "utf8"),
+  ) as {
+    jobs: {
+      "docs-changes": {
+        steps: Array<{
+          name?: string;
+          with?: { filters?: string; "predicate-quantifier"?: string };
+        }>;
+      };
+    };
+  };
+  const filterStep = workflow.jobs["docs-changes"].steps.find(
+    (step) => step.name === "Detect docs-relevant changes",
+  );
+  const filters = parse(filterStep?.with?.filters ?? "") as {
+    docs: string[];
+  };
+  expect(filterStep?.with?.["predicate-quantifier"]).toBe("some-with-excludes");
+  expect(filters.docs).toContain("formats/**");
+  expect(filters.docs).toContain("!formats/components/scripts/audit-accessibility.ts");
+  expect(filters.docs).toContain("!formats/components/tests/audit-accessibility.test.ts");
+});

@@ -215,19 +215,29 @@ test.each(["success", "setup failure", "audit failure"])(
     }
     vi.spyOn(console, "error").mockImplementation(() => {});
     vi.spyOn(console, "log").mockImplementation(() => {});
+    let activeAudits = 0;
+    let maxConcurrentAudits = 0;
     const run = vi.fn((_command: string, args: string[]) => {
       if (outcome === "setup failure" && args.includes("doctor"))
         throw new Error("Missing browser");
       const index = args.indexOf("--out");
       if (index < 0) return;
-      if (outcome === "audit failure") throw new Error("Target failed");
-      const directory = args[index + 1]!;
-      const targets = args
-        .slice(2, args.indexOf("--wcag"))
-        .map((target) => ({ id: target.split("=")[0], status: "ran" }));
-      mkdirSync(directory, { recursive: true });
-      writeFileSync(join(directory, "report.md"), "Original");
-      writeFileSync(join(directory, "results.json"), JSON.stringify({ targets }));
+      activeAudits++;
+      maxConcurrentAudits = Math.max(maxConcurrentAudits, activeAudits);
+      return Promise.resolve()
+        .then(() => {
+          if (outcome === "audit failure") throw new Error("Target failed");
+          const directory = args[index + 1]!;
+          const targets = args
+            .slice(2, args.indexOf("--wcag"))
+            .map((target) => ({ id: target.split("=")[0], status: "ran" }));
+          mkdirSync(directory, { recursive: true });
+          writeFileSync(join(directory, "report.md"), "Original");
+          writeFileSync(join(directory, "results.json"), JSON.stringify({ targets }));
+        })
+        .finally(() => {
+          activeAudits--;
+        });
     });
     if (outcome === "success")
       expect(await runPageAudits("button", run, root)).toContain("a11y-report");
@@ -251,6 +261,7 @@ test.each(["success", "setup failure", "audit failure"])(
         coverage.evidence.every((item: { completed: string[] }) => item.completed.length === 1),
       ).toBe(true);
     else expect(readFileSync(join(output, "index.md"), "utf8")).toContain("Not run");
+    if (outcome === "success") expect(maxConcurrentAudits).toBe(1);
   },
 );
 

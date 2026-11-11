@@ -2084,11 +2084,14 @@ jobs:
         id: filter
         uses: dorny/paths-filter@ceb8a2b8f2d89434be7ff52d3de7ec3738c5cc9d # v4.0.3
         with:
+          predicate-quantifier: some-with-excludes
           filters: |
             docs:
               - 'docs/**'
               - 'packages/**'
               - 'formats/**'
+              - '!formats/components/scripts/audit-accessibility.ts'
+              - '!formats/components/tests/audit-accessibility.test.ts'
               - 'platforms/**'
               - 'renderers/**'
               - 'plugins/**'
