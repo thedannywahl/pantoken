@@ -71,19 +71,25 @@ function normalizeAlignment(element: Element): void {
   element.classList.add(className);
 }
 
-/** Add pantoken classes to supported structures without replacing author-defined classes. */
+function normalizeElement(element: Element, prefix: string): void {
+  const tag = element.tagName.toLowerCase();
+  if (tag === "p") addClasses(element, `${prefix}-text`);
+  if (/^h[2-6]$/u.test(tag)) {
+    element.classList.remove("-level-h2", "-level-h3", "-level-h4", "-level-h5", "-level-h6");
+    addClasses(element, `${prefix}-heading`, `-level-${tag}`);
+  }
+  if (tag === "a") addClasses(element, `${prefix}-link`, "-inline");
+  if (tag === "img") addClasses(element, `${prefix}-img`);
+  if (tag === "ul" || tag === "ol" || tag === "dl") addClasses(element, `${prefix}-list`);
+  if (tag === "table") addClasses(element, `${prefix}-table`);
+}
+
+/** Explicitly convert supported structures, including their authored alignment, to pantoken. */
 export function normalizePantokenContent(root: ParentNode, prefix = "instui"): void {
   const normalize = (element: Element): void => {
-    const tag = element.tagName.toLowerCase();
-    if (tag === "p") addClasses(element, `${prefix}-text`);
-    if (/^h[2-6]$/u.test(tag)) addClasses(element, `${prefix}-heading`, `-level-${tag}`);
-    if (tag === "a") addClasses(element, `${prefix}-link`, "-inline");
-    if (tag === "img") addClasses(element, `${prefix}-img`);
-    if (tag === "ul" || tag === "ol" || tag === "dl") addClasses(element, `${prefix}-list`);
-    if (tag === "table") addClasses(element, `${prefix}-table`);
+    normalizeElement(element, prefix);
     normalizeAlignment(element);
   };
-
   if (root.nodeType === 1) normalize(root as Element);
   for (const element of root.querySelectorAll(
     "p,h2,h3,h4,h5,h6,a,img,ul,ol,dl,table,[style*='text-align'],[align]",
@@ -111,13 +117,10 @@ function mergeListAttributes(value: CommandValue, className: string): Record<str
 export function createContentClassesPlugin(options: ContentClassesPluginOptions = {}) {
   return function pantokenContentClassesPlugin(editor: Editor) {
     const prefix = options.prefix ?? "instui";
-    const normalize = (root: ParentNode = editor.getBody()): void =>
-      normalizePantokenContent(root, prefix);
     const delegate =
       (command: string) =>
       (_ui: boolean, value?: CommandValue): void => {
         editor.execCommand(command, false, value);
-        normalize();
       };
 
     editor.addCommand(PANTOKEN_COMMANDS.paragraph, () =>
@@ -169,11 +172,58 @@ export function createContentClassesPlugin(options: ContentClassesPluginOptions 
     ] as const) {
       editor.addCommand(name, (_ui, value) => {
         editor.execCommand(command, false, mergeListAttributes(value, `${prefix}-list`));
-        normalize();
       });
     }
 
-    editor.on("ExecCommand", () => normalize());
+    const commandSelectors: Record<string, string> = {
+      formatblock: "p,h2,h3,h4,h5,h6",
+      insertunorderedlist: "ul",
+      insertorderedlist: "ol",
+      insertdefinitionlist: "dl",
+      mceinsertlink: "a",
+      mceupdateimage: "img",
+      mceinserttable: "table",
+      justifyleft: "[style],[align]",
+      justifycenter: "[style],[align]",
+      justifyright: "[style],[align]",
+      justifyfull: "[style],[align]",
+    };
+    const snapshots = new Map<string, Map<Element, string>>();
+    const attributes = (element: Element): string =>
+      JSON.stringify(
+        [...element.attributes]
+          .filter(({ name }) => !name.startsWith("data-mce-"))
+          .map(({ name, value }) => [name, value]),
+      );
+
+    editor.on("BeforeExecCommand", ({ command }) => {
+      const key = command.toLowerCase();
+      if (!Object.hasOwn(commandSelectors, key)) return;
+      const selector = commandSelectors[key];
+      snapshots.set(
+        key,
+        new Map(
+          [...editor.getBody().querySelectorAll(selector)].map((element) => [
+            element,
+            attributes(element),
+          ]),
+        ),
+      );
+    });
+    editor.on("ExecCommand", ({ command }) => {
+      const key = command.toLowerCase();
+      const before = snapshots.get(key);
+      snapshots.delete(key);
+      if (!before) return;
+      const alignment = key.startsWith("justify");
+      const selectedBlocks =
+        key === "formatblock" ? new Set(editor.selection.getSelectedBlocks()) : undefined;
+      for (const element of editor.getBody().querySelectorAll(commandSelectors[key])) {
+        if (before.get(element) === attributes(element) && !selectedBlocks?.has(element)) continue;
+        if (alignment) normalizeAlignment(element);
+        else normalizeElement(element, prefix);
+      }
+    });
 
     return {};
   };

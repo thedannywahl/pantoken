@@ -10,17 +10,24 @@ import {
 
 function fakeEditor() {
   const commands = new Map<string, (ui: boolean, value?: unknown) => void>();
-  const listeners = new Map<string, (event: { node: ParentNode }) => void>();
+  const listeners = new Map<string, (event: { node: ParentNode; command?: string }) => void>();
   const body = document.createElement("div");
   const formatter = { register: vi.fn(), toggle: vi.fn() };
+  const nativeCommand = vi.fn();
   return {
     addCommand: vi.fn((name: string, command: (ui: boolean, value?: unknown) => void) =>
       commands.set(name, command),
     ),
-    execCommand: vi.fn(),
+    execCommand: vi.fn((command: string, ui: boolean, value?: unknown) => {
+      listeners.get("BeforeExecCommand")?.({ node: body, command });
+      nativeCommand(command, ui, value);
+      listeners.get("ExecCommand")?.({ node: body, command });
+    }),
+    nativeCommand,
+    selection: { getSelectedBlocks: vi.fn((): Element[] => []) },
     formatter,
     getBody: () => body,
-    on: vi.fn((names: string, handler: (event: { node: ParentNode }) => void) => {
+    on: vi.fn((names: string, handler: (event: { node: ParentNode; command?: string }) => void) => {
       for (const name of names.split(" ")) listeners.set(name, handler);
     }),
     commands,
@@ -172,5 +179,119 @@ test("preserves the imported grid example through passive editing and serializat
     editor.listeners.get(event)?.({ node: editor.body });
     expect(editor.body.innerHTML).toBe(authored);
   }
+  for (const command of [
+    "mceInsertContent",
+    "mceSetContent",
+    "Undo",
+    "Redo",
+    "Bold",
+    "constructor",
+    "__proto__",
+  ]) {
+    editor.execCommand(command, false);
+    expect(editor.body.innerHTML).toBe(authored);
+  }
   expect(editor.body.querySelector("[class]")).toBeNull();
+});
+
+test("formats only selected paragraphs, without inferring classes from their children", () => {
+  const editor = fakeEditor();
+  editor.body.innerHTML = '<p class="authored"><a href="#">Selected link</a></p><p>Unrelated</p>';
+  const selected = editor.body.firstElementChild!;
+  editor.selection.getSelectedBlocks.mockReturnValue([selected]);
+  createContentClassesPlugin()(editor as never);
+
+  editor.commands.get(PANTOKEN_COMMANDS.paragraph)?.(false);
+
+  expect(selected.className).toBe("authored instui-text");
+  expect(selected.querySelector("a")?.hasAttribute("class")).toBe(false);
+  expect(editor.body.lastElementChild?.hasAttribute("class")).toBe(false);
+});
+
+test.each([
+  ["FormatBlock", "<h2>Heading</h2>", "instui-heading -level-h2"],
+  ["InsertUnorderedList", "<ul><li>Item</li></ul>", "instui-list"],
+  ["InsertOrderedList", "<ol><li>Item</li></ol>", "instui-list"],
+  ["InsertDefinitionList", "<dl><dt>Term</dt></dl>", "instui-list"],
+  ["mceInsertLink", '<a href="#">Link</a>', "instui-link -inline"],
+  ["mceUpdateImage", '<img alt="New image">', "instui-img"],
+  ["mceInsertTable", "<table><tbody><tr><td>Cell</td></tr></tbody></table>", "instui-table"],
+])("adds classes only to targets created by %s", (command, html, className) => {
+  const editor = fakeEditor();
+  editor.body.innerHTML =
+    '<p class="authored">Text <a href="#">link</a></p><h2>Heading</h2>' +
+    "<ul><li>Item</li></ul><ol><li>Item</li></ol><dl><dt>Term</dt></dl>" +
+    '<img alt="Existing image"><table></table>';
+  const authored = editor.body.innerHTML;
+  createContentClassesPlugin()(editor as never);
+  editor.nativeCommand.mockImplementation(() => editor.body.insertAdjacentHTML("beforeend", html));
+
+  editor.execCommand(command, false);
+
+  const inserted = editor.body.lastElementChild!;
+  expect(inserted.className).toBe(className);
+  inserted.remove();
+  expect(editor.body.innerHTML).toBe(authored);
+});
+
+test("alignment adds only the requested utility to changed targets", () => {
+  const editor = fakeEditor();
+  editor.body.innerHTML =
+    '<p class="authored">Selected</p><p style="text-align: right">Unrelated</p>';
+  const selected = editor.body.firstElementChild as HTMLElement;
+  const unrelated = editor.body.lastElementChild!.outerHTML;
+  createContentClassesPlugin()(editor as never);
+  editor.nativeCommand.mockImplementation(() => {
+    selected.style.textAlign = "center";
+  });
+
+  editor.execCommand("JustifyCenter", false);
+
+  expect(selected.className).toBe("authored --text-align-center");
+  expect(editor.body.lastElementChild!.outerHTML).toBe(unrelated);
+});
+
+test("changing an image preserves authored attributes without styling unrelated content", () => {
+  const editor = fakeEditor();
+  editor.body.innerHTML =
+    '<img class="authored" src="old.png" style="width: 30px"><p>Unrelated</p>';
+  const image = editor.body.firstElementChild!;
+  createContentClassesPlugin({ prefix: "course" })(editor as never);
+  editor.nativeCommand.mockImplementation(() => image.setAttribute("src", "new.png"));
+
+  editor.execCommand("mceUpdateImage", false);
+
+  expect(image.className).toBe("authored course-img");
+  expect(image.getAttribute("style")).toBe("width: 30px");
+  expect(editor.body.lastElementChild?.hasAttribute("class")).toBe(false);
+});
+
+test("replaces heading level modifiers only on the formatted heading", () => {
+  const editor = fakeEditor();
+  editor.body.innerHTML =
+    '<h2 class="authored instui-heading -level-h3">Selected</h2><h2>Other</h2>';
+  const selected = editor.body.firstElementChild!;
+  editor.selection.getSelectedBlocks.mockReturnValue([selected]);
+  createContentClassesPlugin()(editor as never);
+
+  editor.execCommand("FormatBlock", false, "h2");
+
+  expect(selected.className).toBe("authored instui-heading -level-h2");
+  expect(editor.body.lastElementChild?.hasAttribute("class")).toBe(false);
+});
+
+test("ignores editor-only selection attribute changes on unrelated images", () => {
+  const editor = fakeEditor();
+  editor.body.innerHTML = '<img data-mce-selected="1" alt="Old selection">';
+  const existing = editor.body.firstElementChild!;
+  createContentClassesPlugin()(editor as never);
+  editor.nativeCommand.mockImplementation(() => {
+    existing.removeAttribute("data-mce-selected");
+    editor.body.insertAdjacentHTML("beforeend", '<img alt="New selection">');
+  });
+
+  editor.execCommand("mceUpdateImage", false);
+
+  expect(existing.hasAttribute("class")).toBe(false);
+  expect(editor.body.lastElementChild?.className).toBe("instui-img");
 });
