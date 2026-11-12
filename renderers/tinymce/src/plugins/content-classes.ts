@@ -84,7 +84,7 @@ function normalizeElement(element: Element, prefix: string): void {
   if (tag === "table") addClasses(element, `${prefix}-table`);
 }
 
-/** Explicitly convert supported structures, including their authored alignment, to pantoken. */
+/** Add pantoken classes to supported structures without replacing author-defined classes. */
 export function normalizePantokenContent(root: ParentNode, prefix = "instui"): void {
   const normalize = (element: Element): void => {
     normalizeElement(element, prefix);
@@ -113,13 +113,7 @@ function mergeListAttributes(value: CommandValue, className: string): Record<str
   };
 }
 
-/**
- * Add pantoken classes to targets of explicit TinyMCE formatting commands.
- *
- * Loading, pasting, source editing, serialization, and unrelated edits don't infer classes.
- * Native inline formatting retains TinyMCE's markup and styles. Hosts can deliberately convert
- * a whole fragment with {@link normalizePantokenContent}; provider-specific inlining is separate.
- */
+/** Build an opt-in plugin that adds pantoken classes to TinyMCE-authored content. */
 export function createContentClassesPlugin(options: ContentClassesPluginOptions = {}) {
   return function pantokenContentClassesPlugin(editor: Editor) {
     const prefix = options.prefix ?? "instui";
@@ -181,6 +175,7 @@ export function createContentClassesPlugin(options: ContentClassesPluginOptions 
       });
     }
 
+    // Only explicit formatting commands infer classes, never loading, pasting, or serialization.
     const commandSelectors: Record<string, string> = {
       formatblock: "p,h2,h3,h4,h5,h6",
       insertunorderedlist: "ul",
@@ -195,6 +190,7 @@ export function createContentClassesPlugin(options: ContentClassesPluginOptions 
       justifyfull: "[style],[align]",
     };
     const snapshots = new Map<string, Map<Element, string>>();
+    // Editor bookkeeping can change on unrelated nodes when a command moves the selection.
     const attributes = (element: Element): string =>
       JSON.stringify(
         [...element.attributes]
