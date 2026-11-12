@@ -113,7 +113,13 @@ function mergeListAttributes(value: CommandValue, className: string): Record<str
   };
 }
 
-/** Build an opt-in plugin that adds pantoken classes to TinyMCE-authored content. */
+/**
+ * Add pantoken classes to targets of explicit TinyMCE formatting commands.
+ *
+ * Loading, pasting, source editing, serialization, and unrelated edits don't infer classes.
+ * Native inline formatting retains TinyMCE's markup and styles. Hosts can deliberately convert
+ * a whole fragment with {@link normalizePantokenContent}; provider-specific inlining is separate.
+ */
 export function createContentClassesPlugin(options: ContentClassesPluginOptions = {}) {
   return function pantokenContentClassesPlugin(editor: Editor) {
     const prefix = options.prefix ?? "instui";
