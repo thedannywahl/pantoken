@@ -1,0 +1,42 @@
+the the canvas-rce when a user inputs code like this:
+```
+```
+<div style="padding: 20px; background-color: #cdc1ab30;">
+    <p>Add intro text here.</p>
+    <div style="display: grid; gap: 20px; grid-template-columns: repeat(auto-fit,minmax(clamp(50% - 20px,(40rem - 100%) * 999,100%),1fr));">
+        <div style="padding: 20px; background-color: #ffffff;">
+            <h2>Header 2</h2>
+            <p>add text here</p>
+        </div>
+        <div style="padding: 20px; background-color: #ffffff;">
+            <h2>Header 2</h2>
+            <p>add text here</p>
+        </div>
+    </div>
+</div>
+```
+it gets converted to pantoken-compatible code like this:
+```
+```
+<div style="padding: 20px; background-color: #cdc1ab30;">
+  <p class="instui-text">Add intro text here.</p>
+  <div
+    style="display: grid; gap: 20px; grid-template-columns: repeat(auto-fit,minmax(clamp(50% - 20px,(40rem - 100%) * 999,100%),1fr));"
+  >
+    <div style="padding: 20px; background-color: #ffffff;">
+      <h2 class="instui-heading -level-h2">Header 2</h2>
+      <p class="instui-text">add text here</p>
+    </div>
+    <div style="padding: 20px; background-color: #ffffff;">
+      <h2 class="instui-heading -level-h2">Header 2</h2>
+      <p class="instui-text">add text here</p>
+    </div>
+  </div>
+</div>
+```
+
+
+
+---
+
+this needs a new branch, incremental conventional commits, changesets, and a PR.
