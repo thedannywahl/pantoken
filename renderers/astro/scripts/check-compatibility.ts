@@ -15,6 +15,13 @@ const companions = [
   { starlight: "0.42.6", astro: "7.3.5" },
 ];
 
+/** Return the repository-verified Astro companion for one supported Starlight release. */
+export function astroCompanion(starlight: string): string {
+  const companion = companions.find((candidate) => candidate.starlight === starlight);
+  if (!companion) throw new Error(`Missing Astro companion version for Starlight ${starlight}`);
+  return companion.astro;
+}
+
 /** Build a disposable Starlight site and inspect the generated head stylesheet. */
 export async function checkCompatibility(starlight: string, astro: string): Promise<void> {
   if (!/^0\.\d+\.\d+$/u.test(starlight) || !/^\d+\.\d+\.\d+$/u.test(astro)) {
@@ -83,16 +90,16 @@ export default defineConfig({ site: "https://example.com", integrations: [starli
 
 if (process.argv[1] === fileURLToPath(import.meta.url)) {
   const args = commandTargetArgs();
-  if (args.length > 0) {
+  if (args.length === 1) {
+    await checkCompatibility(args[0]!, astroCompanion(args[0]!));
+  } else if (args.length > 0) {
     if (args.length !== 4 || args[0] !== "--version" || args[2] !== "--astro") {
-      throw new Error("Use --version <starlight> --astro <astro>");
+      throw new Error("Use <starlight> or --version <starlight> --astro <astro>");
     }
     await checkCompatibility(args[1], args[3]);
   } else {
     for (const starlight of commandTargetVersions("@pantoken/astro")) {
-      const release = companions.find((candidate) => candidate.starlight === starlight);
-      if (!release) throw new Error(`Missing Astro companion version for Starlight ${starlight}`);
-      await checkCompatibility(release.starlight, release.astro);
+      await checkCompatibility(starlight, astroCompanion(starlight));
     }
   }
 }
