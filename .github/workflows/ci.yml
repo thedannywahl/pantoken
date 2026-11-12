@@ -2094,6 +2094,8 @@ jobs:
               - '!formats/components/tests/audit-accessibility.test.ts'
               - 'platforms/**'
               - 'renderers/**'
+              - '!renderers/astro/scripts/check-compatibility.ts'
+              - '!renderers/astro/tests/index.test.ts'
               - 'plugins/**'
               - 'design/**'
               - 'tools/translation-adapters/**'

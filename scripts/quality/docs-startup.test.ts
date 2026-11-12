@@ -48,4 +48,7 @@ test("skips the docs build for accessibility audit tooling-only changes", () => 
   expect(filters.docs).toContain("formats/**");
   expect(filters.docs).toContain("!formats/components/scripts/audit-accessibility.ts");
   expect(filters.docs).toContain("!formats/components/tests/audit-accessibility.test.ts");
+  expect(filters.docs).toContain("renderers/**");
+  expect(filters.docs).toContain("!renderers/astro/scripts/check-compatibility.ts");
+  expect(filters.docs).toContain("!renderers/astro/tests/index.test.ts");
 });
