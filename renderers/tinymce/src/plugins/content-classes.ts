@@ -173,8 +173,7 @@ export function createContentClassesPlugin(options: ContentClassesPluginOptions 
       });
     }
 
-    editor.on("SetContent ExecCommand change", () => normalize());
-    editor.on("PreProcess", (event) => normalize(event.node));
+    editor.on("ExecCommand", () => normalize());
 
     return {};
   };

@@ -115,7 +115,7 @@ test.each([
   expect(editor.execCommand).toHaveBeenCalledWith(nativeCommand, false, value);
 });
 
-test("merges list attributes and normalizes stock command output", () => {
+test("merges list attributes without normalizing passive editor events", () => {
   const editor = fakeEditor();
   createContentClassesPlugin({ prefix: "course" })(editor as never);
 
@@ -142,10 +142,35 @@ test("merges list attributes and normalizes stock command output", () => {
 
   editor.body.innerHTML = '<img class="authored"><table></table>';
   editor.listeners.get("change")?.({ node: editor.body });
-  expect(editor.body.querySelector("img")?.className).toBe("authored course-img");
-  expect(editor.body.querySelector("table")?.className).toBe("course-table");
+  expect(editor.body.querySelector("img")?.className).toBe("authored");
+  expect(editor.body.querySelector("table")?.hasAttribute("class")).toBe(false);
 
   const image = document.createElement("img");
   editor.listeners.get("PreProcess")?.({ node: image });
-  expect(image.className).toBe("course-img");
+  expect(image.hasAttribute("class")).toBe(false);
+});
+
+test("preserves the imported grid example through passive editing and serialization", () => {
+  const editor = fakeEditor();
+  createContentClassesPlugin()(editor as never);
+  editor.body.innerHTML = `<div style="padding: 20px; background-color: #cdc1ab30;">
+    <p>Add intro text here.</p>
+    <div style="display: grid; gap: 20px; grid-template-columns: repeat(auto-fit,minmax(clamp(50% - 20px,(40rem - 100%) * 999,100%),1fr));">
+        <div style="padding: 20px; background-color: #ffffff;">
+            <h2>Header 2</h2>
+            <p>add text here</p>
+        </div>
+        <div style="padding: 20px; background-color: #ffffff;">
+            <h2>Header 2</h2>
+            <p>add text here</p>
+        </div>
+    </div>
+</div>`;
+  const authored = editor.body.innerHTML;
+
+  for (const event of ["SetContent", "change", "PreProcess"]) {
+    editor.listeners.get(event)?.({ node: editor.body });
+    expect(editor.body.innerHTML).toBe(authored);
+  }
+  expect(editor.body.querySelector("[class]")).toBeNull();
 });
