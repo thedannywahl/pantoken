@@ -1,0 +1,60 @@
+{
+  "cli_version": "0.13.2",
+  "checkpoint_id": "01M79H2RABRHP344JSSZEBDPSP",
+  "strategy": "manual-commit",
+  "branch": "a2ui",
+  "checkpoints_count": 4,
+  "files_touched": [
+    ".changeset/a2ui-shared-guidance.md",
+    "ai/pantoken-ai/README.md",
+    "ai/pantoken-ai/evals/use-a2ui/eval.yaml",
+    "ai/pantoken-ai/evals/use-a2ui/tasks/web-theme.yaml",
+    "ai/pantoken-ai/package.json",
+    "ai/pantoken-ai/scripts/generate.ts",
+    "ai/pantoken-ai/tests/index.test.ts",
+    "packages/scaffold/assets/AGENTS.md",
+    "packages/scaffold/assets/copilot-instructions.md",
+    "packages/scaffold/assets/llms.txt",
+    "packages/scaffold/assets/windsurf.md",
+    "packages/scaffold/skills/use-a2ui/SKILL.md"
+  ],
+  "sessions": [
+    {
+      "metadata": "/0/metadata.json",
+      "transcript": "/0/full.jsonl",
+      "compact_transcript": "/0/transcript.jsonl",
+      "content_hash": "/0/content_hash.txt",
+      "prompt": ""
+    }
+  ],
+  "token_usage": {
+    "input_tokens": 156,
+    "cache_creation_tokens": 85017,
+    "cache_read_tokens": 6086086,
+    "output_tokens": 42666,
+    "api_call_count": 52
+  },
+  "redaction": {
+    "replacements": 18743,
+    "layers": {
+      "betterleaks": 0,
+      "connection_string": 0,
+      "credential_key": 0,
+      "credential_value": 0,
+      "credentialed_uri": 0,
+      "custom": 0,
+      "entropy": 50775,
+      "goredact": 0,
+      "key_context": 0,
+      "pii": 3,
+      "provider_token": 0,
+      "shell_stdin": 0
+    },
+    "custom_rules_active": 2,
+    "pii": {
+      "EMAIL": 3,
+      "IP": 0,
+      "PHONE": 0
+    }
+  }
+}
