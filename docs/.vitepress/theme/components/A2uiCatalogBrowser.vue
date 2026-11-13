@@ -48,8 +48,8 @@ const components = computed(() => {
 });
 
 function propertyDescription(schema: PropertySchema): string {
-  if (schema.$ref?.endsWith("/DynamicString")) return "A2UI v1.0 DynamicString";
-  if (schema.$ref?.endsWith("/Action")) return "A2UI v1.0 Action";
+  const reference = schema.$ref?.split("/").at(-1);
+  if (reference) return `A2UI v1.0 ${reference}`;
   if (schema.enum) return schema.enum.join(", ");
   return schema.type ?? "A2UI value";
 }

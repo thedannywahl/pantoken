@@ -64,7 +64,7 @@ If you only want the starter project without the agent assets, run
 ## A2UI 1.0 catalog
 
 The package exports the Pantoken component schema at `@pantoken/ai/a2ui/catalog-v1.json`. The
-catalog currently defines only `PantokenButton` and `PantokenTooltip`; it contains no executable
+catalog covers every exported `@pantoken/web-components` element and contains no executable
 functions. Browse the supported properties and Lit integration at
 [`pantoken.app/a2ui`](https://pantoken.app/a2ui/). Use the matching Universal component runtime
 from [`@pantoken/web-components`](https://www.npmjs.com/package/@pantoken/web-components); React

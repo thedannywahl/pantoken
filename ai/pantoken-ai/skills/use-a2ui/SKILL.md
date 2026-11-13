@@ -6,7 +6,7 @@ description: Use Pantoken's constrained A2UI 1.0 component catalog or theme an i
 # Use Pantoken with A2UI
 
 Use this skill when a consumer app combines Pantoken with A2UI. A2UI supplies the protocol and
-framework-specific renderers; Pantoken supplies tokens, icons, and a small set of styled components.
+framework-specific renderers; Pantoken supplies tokens, icons, and its complete web-component set.
 Use A2UI 1.0 only. Do not fall back to A2UI 0.9.
 
 ## Do not use this skill for
@@ -32,8 +32,8 @@ For A2UI 1.0 Lit clients, use the published Pantoken catalog and Universal compo
 - Reference Pantoken components with the catalog's `@catalogId`.
 - Use only the components and properties listed in the catalog JSON at
   `@pantoken/ai/a2ui/catalog-v1.json` or the
-  [Pantoken A2UI Catalog](https://pantoken.app/a2ui/). The v1 catalog currently contains
-  `PantokenButton` and `PantokenTooltip`; don't invent additional Pantoken components or properties.
+  [Pantoken A2UI Catalog](https://pantoken.app/a2ui/). It covers every exported
+  `@pantoken/web-components` element; don't invent additional Pantoken components or properties.
 - The catalog defines no executable functions. Its actions dispatch through A2UI's normal
   action-handling path; the host application remains responsible for authorization.
 
