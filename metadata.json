@@ -3,7 +3,7 @@
   "checkpoint_id": "01M7BHRPN1ZV2K3ZY2ZJS7JP71",
   "strategy": "manual-commit",
   "branch": "a2ui",
-  "checkpoints_count": 8,
+  "checkpoints_count": 11,
   "files_touched": [
     "ai/pantoken-ai/evals/use-a2ui/eval.yaml",
     "ai/pantoken-ai/evals/use-a2ui/fixtures/libs.versions.toml",
@@ -46,17 +46,24 @@
       "compact_transcript": "/3/transcript.jsonl",
       "content_hash": "/3/content_hash.txt",
       "prompt": "/3/prompt.txt"
+    },
+    {
+      "metadata": "/4/metadata.json",
+      "transcript": "/4/full.jsonl",
+      "compact_transcript": "/4/transcript.jsonl",
+      "content_hash": "/4/content_hash.txt",
+      "prompt": "/4/prompt.txt"
     }
   ],
   "token_usage": {
-    "input_tokens": 377,
-    "cache_creation_tokens": 274246,
-    "cache_read_tokens": 2303138,
-    "output_tokens": 15697,
-    "api_call_count": 61
+    "input_tokens": 560,
+    "cache_creation_tokens": 410630,
+    "cache_read_tokens": 3585024,
+    "output_tokens": 22007,
+    "api_call_count": 92
   },
   "redaction": {
-    "replacements": 418,
+    "replacements": 1605,
     "layers": {
       "betterleaks": 0,
       "connection_string": 0,
@@ -64,7 +71,7 @@
       "credential_value": 0,
       "credentialed_uri": 0,
       "custom": 0,
-      "entropy": 518,
+      "entropy": 6456,
       "goredact": 0,
       "key_context": 0,
       "pii": 0,
