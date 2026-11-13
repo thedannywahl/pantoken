@@ -1,0 +1,117 @@
+[[PLAN]] pantoken/tiny-mce needs to extend or create our own tiny plugins for text color and highlight. what we're going to do is narrow the pallette to the pantoken color schemes and then use the pantoken primitives to ensure that light/dark versions of the colors meet the accessibility contrast requirements.
+
+---
+
+[[PLAN]] pantoken/tiny-mce needs to extend or create our own tiny plugins for text color and highlight. what we're going to do is narrow the pallette to the pantoken color schemes and then use the pantoken primitives to ensure that light/dark versions of the colors meet the accessibility contrast requirements.
+
+---
+
+[[PLAN]] maybe this should first be an export from plugins/pantoken/custom-theme-colors or plugins/pantoken/colors and then consumed into tinymce so that we can have `.pfx-text-color-<name>` (sea, plum, violet, custom) and `pfx-bg-color-<name>`
+
+---
+
+[[PLAN]] maybe this should first be an export from plugins/pantoken/custom-theme-colors or plugins/pantoken/colors and then consumed into tinymce so that we can have `.pfx-text-color-<name>` (sea, plum, violet, custom) and `pfx-bg-color-<name>`
+
+---
+
+[[PLAN]] semantic names should not be configurable per theme, they come from the token library and its a fixed set.
+plugins/pantoken/colors already exists so we need to make sure that this is the appropriate place to add it, if it should be a different place or if it be a new plugin.
+tinymce plugin should look like:
+the list of swatches and then a 'custom' color swatch that when selected adds two color inputs for light and dark mode and they're both required.
+
+---
+
+[[PLAN]] semantic names should not be configurable per theme, they come from the token library and its a fixed set.
+plugins/pantoken/colors already exists so we need to make sure that this is the appropriate place to add it, if it should be a different place or if it be a new plugin.
+tinymce plugin should look like:
+the list of swatches and then a 'custom' color swatch that when selected adds two color inputs for light and dark mode and they're both required.
+
+---
+
+[[PLAN]] the classes should apply resolved pantoken css vars which in turn are mapped to light-dark vars based on the base css properties.
+````
+## HTML
+```
+<p class="pfx-text-color-sea">Hello</p>
+```
+## CSS
+```
+.pfx-text-color-sea {
+    color: light-dark(--instui-primitive-color-sea-sea100, --instui-primitive-color-sea-sea20);
+}
+```
+````
+
+---
+
+[[PLAN]] the classes should apply resolved pantoken css vars which in turn are mapped to light-dark vars based on the base css properties.
+````
+## HTML
+```
+<p class="pfx-text-color-sea">Hello</p>
+```
+## CSS
+```
+.pfx-text-color-sea {
+    color: light-dark(--instui-primitive-color-sea-sea100, --instui-primitive-color-sea-sea20);
+}
+```
+````
+
+---
+
+[[PLAN]] **Selecting "Custom"**: opens a two-input dialog (light-mode hex + dark-mode hex, both required)
+
+actually, let's change this to follow the pattern already established by custom-theme-colors where it takes a single value, then derives the scale from it and then we'll pick the two appropriate valies from that scale and show them as swatches next to the input.
+
+---
+
+[[PLAN]] **Selecting "Custom"**: opens a two-input dialog (light-mode hex + dark-mode hex, both required)
+
+actually, let's change this to follow the pattern already established by custom-theme-colors where it takes a single value, then derives the scale from it and then we'll pick the two appropriate valies from that scale and show them as swatches next to the input.
+
+---
+
+[[PLAN]] **Selecting "Custom"**: opens a two-input dialog (light-mode hex + dark-mode hex, both required)
+       - Applies inline `style="color: light-dark(#light, #dark)"
+
+no, this should be a single hex input, with two swatches after it that show the generated light/dark values.  it shouldn't be an inline style, it should be:
+```
+<p class="pfx-text-color-custom">hello</p>
+```
+and may require a data attribute or something so that a single editor can have multiple custom colors or we could do:
+```
+p class="pfx-text-color-custom" style="color:light-dark(--tinymce-custom-color-1);"
+```
+or something similar. we need to make sure we capture/retain the single input value and display the derived values. I prefer not to inline the derived values because that could break accessibility again.
+
+---
+
+[[PLAN]] **Selecting "Custom"**: opens a two-input dialog (light-mode hex + dark-mode hex, both required)
+       - Applies inline `style="color: light-dark(#light, #dark)"
+
+no, this should be a single hex input, with two swatches after it that show the generated light/dark values.  it shouldn't be an inline style, it should be:
+```
+<p class="pfx-text-color-custom">hello</p>
+```
+and may require a data attribute or something so that a single editor can have multiple custom colors or we could do:
+```
+p class="pfx-text-color-custom" style="color:light-dark(--tinymce-custom-color-1);"
+```
+or something similar. we need to make sure we capture/retain the single input value and display the derived values. I prefer not to inline the derived values because that could break accessibility again.
+
+---
+
+[[PLAN]] under 2. "TinyMCE plugins consume the palette" that selecting custom opens a two-input dialog and applies inline styles. this is incorrect.
+
+---
+
+[[PLAN]] under 2. "TinyMCE plugins consume the palette" that selecting custom opens a two-input dialog and applies inline styles. this is incorrect.
+
+---
+
+[[PLAN]] I did not say start implementing, I said update the plan.
+
+---
+
+[[PLAN]] I did not say start implementing, I said update the plan.

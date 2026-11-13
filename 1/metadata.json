@@ -1,0 +1,77 @@
+{
+  "cli_version": "0.13.2",
+  "checkpoint_id": "01M7B13SKJ1Q2RC3WGM6FBD5KW",
+  "session_id": "8e9199d5-cc3a-4fa8-9337-1a521bc3403c",
+  "strategy": "manual-commit",
+  "created_at": "2026-11-13T18:01:02.136272Z",
+  "branch": "a2ui",
+  "checkpoints_count": 1,
+  "save_step_count": 1,
+  "files_touched": [
+    "ASSURANCE.md",
+    "SECURITY.md",
+    "ai/pantoken-ai/catalogs/pantoken-v1.json",
+    "ai/pantoken-ai/scripts/generate-a2ui-catalog.ts",
+    "docs/.vitepress/theme/components/A2uiCatalogBrowser.vue",
+    "docs/.vitepress/theme/components/AgentToolsPage.vue",
+    "docs/conventions/web-components.md",
+    "docs/public/accessibility/results.json",
+    "formats/interactions/component-capabilities.json",
+    "l10n/docs.api.pot",
+    "packages/scaffold/assets/AGENTS.md",
+    "packages/scaffold/assets/llms.txt",
+    "renderers/web-components/src/a2ui-contracts.ts",
+    "renderers/web-components/src/a2ui.ts",
+    "renderers/web-components/src/elements/index.ts",
+    "renderers/web-components/src/index.ts",
+    "renderers/web-components/src/lib/context.ts",
+    "renderers/web-components/src/lib/elements-meta.ts",
+    "renderers/web-components/src/lib/helpers.ts",
+    "renderers/web-components/src/lib/register-context.ts",
+    "renderers/web-components/tests/a2ui.test.ts"
+  ],
+  "agent": "Copilot CLI",
+  "model": "claude-haiku-4.5",
+  "turn_id": "b66b7a5ccf72",
+  "compact_transcript_start": 0,
+  "token_usage": {
+    "input_tokens": 491,
+    "cache_creation_tokens": 581348,
+    "cache_read_tokens": 5944035,
+    "output_tokens": 47316,
+    "api_call_count": 89
+  },
+  "session_token_usage": {
+    "input_tokens": 491,
+    "cache_creation_tokens": 581348,
+    "cache_read_tokens": 5944035,
+    "output_tokens": 47316,
+    "api_call_count": 89
+  },
+  "redaction": {
+    "replacements": 1689,
+    "layers": {
+      "betterleaks": 0,
+      "connection_string": 0,
+      "credential_key": 0,
+      "credential_value": 0,
+      "credentialed_uri": 0,
+      "custom": 0,
+      "entropy": 2142,
+      "goredact": 0,
+      "key_context": 0,
+      "pii": 0,
+      "provider_token": 0,
+      "shell_stdin": 0
+    },
+    "custom_rules_active": 2,
+    "pii": {
+      "EMAIL": 0,
+      "IP": 0,
+      "PHONE": 0
+    }
+  },
+  "session_metrics": {
+    "turn_count": 1
+  }
+}
