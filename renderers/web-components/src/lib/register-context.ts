@@ -272,10 +272,12 @@ function makeWrapper(registry: ElementRegistry): RegisterContext["wrapper"] {
           >("input,textarea,select");
           if (!control) return false;
           if (name === "value") {
+            if (control.value !== (value ?? "")) this.#lastValue = undefined;
             control.value = value ?? "";
             return true;
           }
           if (name === "checked" && control instanceof HTMLInputElement) {
+            if (control.checked !== this.hasAttribute(name)) this.#lastValue = undefined;
             control.checked = this.hasAttribute(name);
             return true;
           }

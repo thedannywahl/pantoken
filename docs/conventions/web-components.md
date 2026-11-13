@@ -66,6 +66,10 @@ URLs are limited to `http:`, `https:`, `mailto:`, `tel:`, and same-origin relati
 Protocol-relative URLs and raw backslashes are rejected. The A2UI table adapter uses bounded text
 rows, and the select adapter accepts bounded text options rather than arbitrary HTML.
 
+Native form wrappers update values and constraints without replacing their controls. They emit one
+`value-change` event for matching native `input`/`change` pairs. Model updates that change a control's
+value or checked state reset that deduplication, so the user can return to a previously emitted value.
+
 ## The JS-behavior tier
 
 Behavior pure CSS can't cover: tooltip, drilldown, pages, drawer-layout, an interactive calendar, and
