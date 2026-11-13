@@ -1,7 +1,7 @@
 {
   "name": "@pantoken/ai",
-  "version": "1.4.3",
-  "description": "Agent assets for projects that use pantoken: AGENTS.md, llms.txt, editor rules, and Claude Code skills for initialization, applications, registry usage, A2UI, and mockups.",
+  "version": "1.4.4",
+  "description": "Agent assets for projects that use pantoken: AGENTS.md, llms.txt, editor rules, and Claude Code skills for initialization, applications, registry usage, and standalone mockups.",
   "homepage": "https://pantoken.app",
   "bugs": "https://github.com/thedannywahl/pantoken/issues",
   "license": "MIT",

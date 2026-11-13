@@ -1,5 +1,73 @@
 # CHANGELOG
 
+## 0.2.34
+
+### Patch Changes
+
+- Updated dependencies [9116489]
+- Updated dependencies [c4b73d0]
+- Updated dependencies [2784dba]
+  - @pantoken/astro@0.2.7
+  - @pantoken/components@2.2.1
+  - @pantoken/css@0.4.8
+  - @pantoken/drupal@0.3.0
+  - @pantoken/markdown-it@0.3.0
+  - @pantoken/mui@0.3.0
+  - @pantoken/panda@0.3.0
+  - @pantoken/postcss@0.3.0
+  - @pantoken/react@0.3.0
+  - @pantoken/react-markdown@0.3.0
+  - @pantoken/shadcn@0.4.0
+  - @pantoken/storybook@0.3.0
+  - @pantoken/svelte@0.3.0
+  - @pantoken/tailwind@0.3.0
+  - @pantoken/tokens@0.8.4
+  - @pantoken/vue@0.3.0
+  - @pantoken/web-components@0.8.1
+  - @pantoken/webpack@0.3.0
+  - @pantoken/wordpress@0.3.0
+  - @pantoken/email@0.1.27
+  - @pantoken/hugo@0.2.6
+  - @pantoken/jekyll@0.2.6
+  - @pantoken/plugin-custom-components@0.7.5
+  - @pantoken/angular@0.2.7
+  - @pantoken/bootstrap@0.2.0
+  - @pantoken/css-in-js@0.2.6
+  - @pantoken/docusaurus@0.2.0
+  - @pantoken/foundation@0.2.6
+  - @pantoken/pendo@0.4.17
+  - @pantoken/tinymce@0.7.3
+  - @pantoken/vitepress@0.3.0
+  - @pantoken/vite@0.2.7
+  - @pantoken/cli@0.1.54
+  - @pantoken/swatches@0.1.26
+  - @pantoken/dtcg@0.1.23
+  - @pantoken/icons@0.3.8
+  - @pantoken/less@0.1.26
+  - @pantoken/scss@0.1.26
+  - @pantoken/stylus@0.1.26
+  - @pantoken/android@0.1.30
+  - @pantoken/compose@0.1.30
+  - @pantoken/flutter@0.1.30
+  - @pantoken/swift@0.1.30
+  - @pantoken/vanilla@0.1.22
+  - @pantoken/plugin-custom-theme-colors@0.3.8
+  - @pantoken/plugin-primitives@1.0.11
+  - @pantoken/plugin-stacking@1.0.16
+  - @pantoken/plugin-theme-custom-media@0.2.13
+  - @pantoken/mintlify@0.2.7
+  - @pantoken/react-native@0.1.26
+  - @pantoken/figma@0.1.22
+  - @pantoken/interactions@0.6.1
+  - @pantoken/scope@0.4.8
+  - @pantoken/rehype@0.2.6
+  - @pantoken/plugin-custom-icons@0.3.19
+  - @pantoken/plugin-layouts@0.5.8
+  - @pantoken/plugin-logos@0.5.8
+  - @pantoken/plugin-simple-icons@0.3.17
+  - @pantoken/plugin-transition@1.0.14
+  - @pantoken/plugin-visual-debug@0.1.25
+
 ## 0.2.33
 
 ### Patch Changes

@@ -1,6 +1,6 @@
 {
   "name": "@pantoken/storybook",
-  "version": "0.2.5",
+  "version": "0.3.0",
   "description": "A Storybook theme built from Instructure tokens (maps to Storybook ThemeVars).",
   "homepage": "https://pantoken.app",
   "bugs": "https://github.com/thedannywahl/pantoken/issues",
@@ -46,7 +46,7 @@
     "vite-plus": "catalog:"
   },
   "peerDependencies": {
-    "@storybook/theming": ">=7"
+    "@storybook/theming": ">=8.6.14 <9.0.0"
   },
   "peerDependenciesMeta": {
     "@storybook/theming": {

@@ -1,5 +1,12 @@
 # @pantoken/interactions
 
+## 0.6.1
+
+### Patch Changes
+
+- Updated dependencies [2784dba]
+  - @pantoken/utils@1.4.3
+
 ## 0.6.0
 
 ### Minor Changes

@@ -1,6 +1,6 @@
 {
   "name": "@pantoken/svelte",
-  "version": "0.2.5",
+  "version": "0.3.0",
   "description": "Svelte helpers for pantoken: an icon action over the web components, plus token reads.",
   "homepage": "https://pantoken.app",
   "bugs": "https://github.com/thedannywahl/pantoken/issues",
@@ -47,7 +47,7 @@
     "vite-plus": "catalog:"
   },
   "peerDependencies": {
-    "svelte": ">=4"
+    "svelte": ">=4.2.20 <5.0.0 || >=5.0.0 <6.0.0"
   },
   "peerDependenciesMeta": {
     "svelte": {
