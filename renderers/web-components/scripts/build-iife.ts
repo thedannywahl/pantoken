@@ -23,7 +23,7 @@
  * nested `vp` (vite-plus can't spawn a nested `vp` from inside a run task), and passes `configFile: false`
  * so it doesn't try to load this package's vite-plus config.
  */
-import { mkdirSync, rmSync, writeFileSync } from "node:fs";
+import { existsSync, mkdirSync, rmSync, writeFileSync } from "node:fs";
 import { resolve } from "node:path";
 import { build } from "vite";
 // From the metadata leaf module specifically, not "../src/index.ts" — that (transitively, via the
@@ -74,6 +74,10 @@ for (const name of ELEMENTS) {
   const exportName = toCamel(name);
   const needsIcons = iconElementNames.includes(name);
   const resolver = needsIcons ? "iconSvg" : "noopIconSvg";
+  const individualSource = resolve(root, "src/elements", `${name}.ts`);
+  const elementSource = existsSync(individualSource)
+    ? individualSource
+    : resolve(root, "src/elements/component-elements.ts");
 
   const entryPath = resolve(entriesDir, `${name}.ts`);
   writeFileSync(
@@ -83,7 +87,7 @@ for (const name of ELEMENTS) {
     // would drag @pantoken/icons/@pantoken/tokens into every one of these files regardless of
     // `resolver`, defeating the entire point of building them separately.
     `import { buildRegisterContext, ${resolver} } from ${JSON.stringify(resolve(root, "src/lib/register-context.ts"))};
-import { ${exportName} } from ${JSON.stringify(resolve(root, "src/elements", `${name}.ts`))};
+import { ${exportName} } from ${JSON.stringify(elementSource)};
 
 if (typeof HTMLElement !== "undefined") {
   ${exportName}.define(buildRegisterContext({}, globalThis.customElements, ${resolver}));

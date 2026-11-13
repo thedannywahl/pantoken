@@ -48,6 +48,10 @@ order — append new tags at the end). `register()` builds one `RegisterContext`
 (`{ registry, tag, I:{prefix:"instui"}, invokerSupported, onCommand, wrapper, variantClass, iconSvg }`)
 and hands it to each `def.define(ctx)`.
 
+The per-element CDN builder resolves a bespoke element file first, then the shared
+`component-elements.ts` module. Both paths use the element's named export and avoid the
+auto-registering package barrel.
+
 ## CSS-record coverage and A2UI
 
 Each root record in `@pantoken/components` has a matching web-component export. Dotted member records
