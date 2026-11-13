@@ -40,7 +40,7 @@
     "vite-plus": "catalog:"
   },
   "peerDependencies": {
-    "webpack": ">=5"
+    "webpack": ">=5.61.0 <6.0.0"
   },
   "peerDependenciesMeta": {
     "webpack": {
