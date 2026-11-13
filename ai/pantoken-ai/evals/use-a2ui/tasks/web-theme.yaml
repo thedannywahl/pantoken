@@ -1,0 +1,17 @@
+id: web-theme-001
+name: Theme an A2UI web renderer
+description: User wants pantoken tokens applied to an existing A2UI React Basic Catalog.
+tags:
+  - positive-trigger
+inputs:
+  prompt: "This app uses @a2ui/react. Help me theme its Basic Catalog with pantoken and support dark mode."
+expected:
+  should_trigger: true
+graders:
+  - type: text
+    name: uses-verified-token-bridge
+    config:
+      contains:
+        - "--a2ui-"
+        - "--instui-"
+        - "@pantoken/css"

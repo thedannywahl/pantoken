@@ -1,0 +1,9 @@
+id: generic-pantoken-001
+name: Generic pantoken styling without A2UI
+description: User wants ordinary React token styling and does not mention A2UI.
+tags:
+  - negative-trigger
+inputs:
+  prompt: "In my React app, how do I read a pantoken color token?"
+expected:
+  should_trigger: false

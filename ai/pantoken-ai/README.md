@@ -1,9 +1,9 @@
 # @pantoken/ai
 
 Agent assets for projects that use pantoken (not for developing pantoken itself). It ships an
-`AGENTS.md`, an `llms.txt`, editor and agent rule files (Cursor, Copilot, Windsurf), and four Claude
+`AGENTS.md`, an `llms.txt`, editor and agent rule files (Cursor, Copilot, Windsurf), and five Claude
 Code skills (`init-pantoken`, `create-pantoken-app`, `create-pantoken-mockup`,
-`use-pantoken-registry`) — plus an installer CLI with two commands:
+`use-pantoken-registry`, `use-a2ui`) — plus an installer CLI with two commands:
 `init` (write those assets into a consumer repo) and `scaffold <platform>` (scaffold a starter
 project via [`@pantoken/scaffold`](https://www.npmjs.com/package/@pantoken/scaffold) and install
 the agent assets into the same directory).
@@ -91,9 +91,9 @@ the exact tested releases or environments; its `$schema` field points to the pub
 
 ## Evals
 
-The `init-pantoken`, `create-pantoken-app`, `create-pantoken-mockup`, and `use-pantoken-registry`
-Claude Code skills each have an eval suite under `evals/<skill-name>/` (skill definitions are
-inlined from `@pantoken/scaffold`), run with
+The `init-pantoken`, `create-pantoken-app`, `create-pantoken-mockup`, `use-pantoken-registry`, and
+`use-a2ui` Claude Code skills each have an eval suite under `evals/<skill-name>/` (skill definitions
+are inlined from `@pantoken/scaffold`), run with
 [waza](https://github.com/microsoft/waza), Microsoft's CLI for evaluating agent Skills:
 
 ```sh
