@@ -58,6 +58,8 @@ export type Segment =
   | {
       kind: "table";
       rows: string[][];
+      /** Original row strings to preserve formatting/spacing. */
+      rawRows: string[];
       headerRow: number;
       separatorRow: number;
       /** Column indices whose body cells hold prose (a `Description`/`Summary` column). */
@@ -136,6 +138,32 @@ const parseRow = (line: string): string[] => {
 
 const rebuildRow = (cells: string[]): string => `| ${cells.join(" | ")} |`;
 
+/**
+ * Rebuild a row by replacing cell contents while preserving the original row's spacing pattern.
+ * This ensures translated tables maintain the same formatting as their source.
+ */
+const rebuildRowPreservingSpacing = (rawRow: string, newCells: string[]): string => {
+  const cells = parseRow(rawRow);
+  // If cell counts don't match, fall back to standard rebuild
+  if (cells.length !== newCells.length) return rebuildRow(newCells);
+
+  // Replace cells while preserving spacing from the original row
+  let result = rawRow;
+  let offset = 0;
+  for (let i = 0; i < cells.length; i++) {
+    const oldCell = cells[i];
+    const newCell = newCells[i];
+    if (oldCell !== newCell) {
+      const idx = result.indexOf(oldCell, offset);
+      if (idx !== -1) {
+        result = result.slice(0, idx) + newCell + result.slice(idx + oldCell.length);
+        offset = idx + newCell.length;
+      }
+    }
+  }
+  return result;
+};
+
 /** A GFM separator row: every cell is `---`, `:--`, `--:`, or `:-:`. */
 const isSeparatorRow = (line: string): boolean => {
   const cells = parseRow(line);
@@ -174,7 +202,7 @@ const classifyBlock = (lines: string[]): Segment => {
       const descCols = rows[0]
         .map((header, index) => (/^(description|summary)$/i.test(header) ? index : -1))
         .filter((index) => index >= 0);
-      return { kind: "table", rows, headerRow: 0, separatorRow: 1, descCols };
+      return { kind: "table", rows, rawRows: lines, headerRow: 0, separatorRow: 1, descCols };
     }
     return { kind: "preserve", text };
   }
@@ -432,6 +460,6 @@ const renderTable = (segment: Extract<Segment, { kind: "table" }>, resolve: Reso
         }
         return cell;
       });
-      return rebuildRow(rendered);
+      return rebuildRowPreservingSpacing(segment.rawRows[row], rendered);
     })
     .join("\n");
