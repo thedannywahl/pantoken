@@ -1,0 +1,133 @@
+The user explicitly invoked the "/VS Code Synced Data:fix-customization-evaluation-diagnostics" skill. Follow its instructions now.
+
+<skill-context name="fix-customization-evaluation-diagnostics">
+Base directory for this skill: /Users/dwahl/Library/Application Support/Code/agentPlugins/vscode-synced-customization-agent-host-copilotcli-1148375999/1133972934/skills/fix-customization-evaluation-diagnostics
+
+# Implement suggestions
+
+## Purpose
+
+Fix issues found by the Chat Customizations Evaluations analyzer in prompt, agent, skill, and instruction files. The diagnostics include contradictions, ambiguities, persona conflicts, cognitive load issues, and coverage gaps.
+
+## Usage
+
+This skill is invoked automatically when the user clicks the "Implement suggestions" button in the editor title bar. It receives the diagnostics as context and rewrites the affected sections of the file to resolve them.
+
+This skill can also be called directly by the user. In that case search for the diagnostics from the Chat Customizations Evaluations extension and apply the fixes.
+
+## Instructions
+
+- You will either receive a list of diagnostics from the Chat Customizations Evaluations extension or be called without diagnostics. 
+- If you receive a list of diagnostics from the Chat Customizations Evaluations extension, then each diagnostic will includes a line number, code, message, and optionally a suggestion.
+- If you are called without diagnostics, you should search and find diagnostics from the Chat Customizations Evaluations extension yourself.
+- For each diagnostic, apply the fix directly to the file content. Use the suggestion if one is provided; otherwise, use your judgment to resolve the issue.
+- Preserve the overall structure, tone, and intent of the prompt file. Only change what is necessary to resolve the diagnostics.
+- If two diagnostics conflict with each other, prefer the fix that keeps the prompt clearer and more consistent.
+- Directly edit the file content to apply the fixes.
+- Do NOT add new instructions or sections that were not in the original file.
+- Do NOT remove instructions unless a diagnostic specifically calls for it (e.g., contradictions).
+
+
+ARGUMENTS: Target file: /Users/dwahl/Scripts/pantoken/ai/pantoken-ai/skills/use-a2ui/SKILL.md
+
+Use ONLY the diagnostics below for this target file. Do not lint or rewrite the skill file itself.
+
+Field meanings:
+
+- line: 1-based line number where the diagnostic starts (or start-end for a multi-line range).
+
+- lineText: exact text currently present at the diagnostic start line in the target file.
+
+- message: diagnostic description explaining what is wrong and needs to be fixed.
+
+Diagnostics:
+
+ - line: 1
+ - lineText: ---
+ - message: Cognitive load (constraint-overload): The Web Basic Catalog bullet packs several separate rules into one paragraph: check the property exists, omit unfound mappings, use only verified tokens, load a stylesheet, scope by theme, and avoid hard-coded colors. A model may apply some rules and skip others, and the order of the checks is unclear.. Suggestion: Split the bullet into numbered steps: '1. Confirm each `--a2ui-*` property exists in the installed renderer. 2. Omit any property that cannot be confirmed and list it. 3. For each remaining mapping, resolve a semantically matching, correctly typed token from `@pantoken/tokens`. 4. Load `@pantoken/css`. 5. Scope mappings per theme.'
+  suggestion: Split the bullet into numbered steps: '1. Confirm each `--a2ui-*` property exists in the installed renderer. 2. Omit any property that cannot be confirmed and list it. 3. For each remaining mapping, resolve a semantically matching, correctly typed token from `@pantoken/tokens`. 4. Load `@pantoken/css`. 5. Scope mappings per theme.'
+
+
+ - line: 63
+ - lineText: - If a requested component or property is not listed in the catalog JSON, respond with the sentence "Pantoken component X is not supported in the v1 catalog," where X is the requested name. Do not write X as a code identifier. In the same response, name the closest A2UI Basic Catalog component from the Basic Catalog docs and use it instead.
+ - message: Ambiguous: "name the closest A2UI Basic Catalog component". "Closest" has no defined measure. A model could match by component name similarity, by visual function, by property overlap, or by the order listed in the Basic Catalog docs, and each choice can produce a different substitute for the same unsupported Pantoken component. Suggestion: Replace with: 'name the A2UI Basic Catalog component that has the same role (for example, button for a button, text field for an input) and the most overlapping listed properties, and state which properties were dropped.'
+  suggestion: Replace with: 'name the A2UI Basic Catalog component that has the same role (for example, button for a button, text field for an input) and the most overlapping listed properties, and state which properties were dropped.'
+
+
+ - line: 100
+ - lineText: Run the host app's relevant type checks and tests. Verify the theme in every color scheme that the installed `@pantoken/tokens` package defines (for example, light and dark), and list each scheme checked in the verification summary. Confirm every `--instui-*` reference
+ - message: Ambiguous: "Verify the theme in every color scheme that the installed `@pantoken/tokens` package defines". "Verify" does not say how. A model could run only type checks, run unit tests, inspect the CSS text, or render the UI visually in each scheme. It also does not say what counts as a passing check for each scheme. Suggestion: Replace with: 'For each color scheme defined by the installed `@pantoken/tokens` package, run the host app's relevant tests and confirm that every `--a2ui-*` and `--instui-*` value resolves to a defined token, then list each scheme and its result in the verification summary.'
+  suggestion: Replace with: 'For each color scheme defined by the installed `@pantoken/tokens` package, run the host app's relevant tests and confirm that every `--a2ui-*` and `--instui-*` value resolves to a defined token, then list each scheme and its result in the verification summary.'
+</skill-context>
+
+---
+
+The user explicitly invoked the "/VS Code Synced Data:fix-customization-evaluation-diagnostics" skill. Follow its instructions now.
+
+<skill-context name="fix-customization-evaluation-diagnostics">
+Base directory for this skill: /Users/dwahl/Library/Application Support/Code/agentPlugins/vscode-synced-customization-agent-host-copilotcli-1148375999/1133972934/skills/fix-customization-evaluation-diagnostics
+
+# Implement suggestions
+
+## Purpose
+
+Fix issues found by the Chat Customizations Evaluations analyzer in prompt, agent, skill, and instruction files. The diagnostics include contradictions, ambiguities, persona conflicts, cognitive load issues, and coverage gaps.
+
+## Usage
+
+This skill is invoked automatically when the user clicks the "Implement suggestions" button in the editor title bar. It receives the diagnostics as context and rewrites the affected sections of the file to resolve them.
+
+This skill can also be called directly by the user. In that case search for the diagnostics from the Chat Customizations Evaluations extension and apply the fixes.
+
+## Instructions
+
+- You will either receive a list of diagnostics from the Chat Customizations Evaluations extension or be called without diagnostics. 
+- If you receive a list of diagnostics from the Chat Customizations Evaluations extension, then each diagnostic will includes a line number, code, message, and optionally a suggestion.
+- If you are called without diagnostics, you should search and find diagnostics from the Chat Customizations Evaluations extension yourself.
+- For each diagnostic, apply the fix directly to the file content. Use the suggestion if one is provided; otherwise, use your judgment to resolve the issue.
+- Preserve the overall structure, tone, and intent of the prompt file. Only change what is necessary to resolve the diagnostics.
+- If two diagnostics conflict with each other, prefer the fix that keeps the prompt clearer and more consistent.
+- Directly edit the file content to apply the fixes.
+- Do NOT add new instructions or sections that were not in the original file.
+- Do NOT remove instructions unless a diagnostic specifically calls for it (e.g., contradictions).
+
+
+ARGUMENTS: Target file: /Users/dwahl/Scripts/pantoken/ai/pantoken-ai/skills/use-a2ui/SKILL.md
+
+Use ONLY the diagnostics below for this target file. Do not lint or rewrite the skill file itself.
+
+Field meanings:
+
+- line: 1-based line number where the diagnostic starts (or start-end for a multi-line range).
+
+- lineText: exact text currently present at the diagnostic start line in the target file.
+
+- message: diagnostic description explaining what is wrong and needs to be fixed.
+
+Diagnostics:
+
+ - line: 1
+ - lineText: ---
+ - message: Cognitive load (constraint-overload): The Web Basic Catalog bullet packs several separate rules into one paragraph: check the property exists, omit unfound mappings, use only verified tokens, load a stylesheet, scope by theme, and avoid hard-coded colors. A model may apply some rules and skip others, and the order of the checks is unclear.. Suggestion: Split the bullet into numbered steps: '1. Confirm each `--a2ui-*` property exists in the installed renderer. 2. Omit any property that cannot be confirmed and list it. 3. For each remaining mapping, resolve a semantically matching, correctly typed token from `@pantoken/tokens`. 4. Load `@pantoken/css`. 5. Scope mappings per theme.'
+  suggestion: Split the bullet into numbered steps: '1. Confirm each `--a2ui-*` property exists in the installed renderer. 2. Omit any property that cannot be confirmed and list it. 3. For each remaining mapping, resolve a semantically matching, correctly typed token from `@pantoken/tokens`. 4. Load `@pantoken/css`. 5. Scope mappings per theme.'
+
+
+ - line: 63
+ - lineText: - If a requested component or property is not listed in the catalog JSON, respond with the sentence "Pantoken component X is not supported in the v1 catalog," where X is the requested name. Do not write X as a code identifier. In the same response, name the closest A2UI Basic Catalog component from the Basic Catalog docs and use it instead.
+ - message: Ambiguous: "name the closest A2UI Basic Catalog component". "Closest" has no defined measure. A model could match by component name similarity, by visual function, by property overlap, or by the order listed in the Basic Catalog docs, and each choice can produce a different substitute for the same unsupported Pantoken component. Suggestion: Replace with: 'name the A2UI Basic Catalog component that has the same role (for example, button for a button, text field for an input) and the most overlapping listed properties, and state which properties were dropped.'
+  suggestion: Replace with: 'name the A2UI Basic Catalog component that has the same role (for example, button for a button, text field for an input) and the most overlapping listed properties, and state which properties were dropped.'
+
+
+ - line: 100
+ - lineText: Run the host app's relevant type checks and tests. Verify the theme in every color scheme that the installed `@pantoken/tokens` package defines (for example, light and dark), and list each scheme checked in the verification summary. Confirm every `--instui-*` reference
+ - message: Ambiguous: "Verify the theme in every color scheme that the installed `@pantoken/tokens` package defines". "Verify" does not say how. A model could run only type checks, run unit tests, inspect the CSS text, or render the UI visually in each scheme. It also does not say what counts as a passing check for each scheme. Suggestion: Replace with: 'For each color scheme defined by the installed `@pantoken/tokens` package, run the host app's relevant tests and confirm that every `--a2ui-*` and `--instui-*` value resolves to a defined token, then list each scheme and its result in the verification summary.'
+  suggestion: Replace with: 'For each color scheme defined by the installed `@pantoken/tokens` package, run the host app's relevant tests and confirm that every `--a2ui-*` and `--instui-*` value resolves to a defined token, then list each scheme and its result in the verification summary.'
+</skill-context>
+
+---
+
+next round of feedback
+
+---
+
+next round of feedback
