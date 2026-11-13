@@ -149,11 +149,11 @@
     "translate": "always"
   },
   "a2uiCatalog.reactSupport": {
-    "message": "React runtime support is pending v1.0 SDK verification.",
+    "message": "Verified with @a2ui/react 0.15.0 and React 19.3.1 in Chromium, Firefox, and WebKit.",
     "translate": "always"
   },
   "a2uiCatalog.angularSupport": {
-    "message": "Angular runtime support is pending v1.0 SDK verification.",
+    "message": "Verified with @a2ui/angular 0.14.0 and Angular 21.2.5 in Chromium, Firefox, and WebKit.",
     "translate": "always"
   },
   "a2uiCatalog.nativeSupport": {
@@ -163,7 +163,7 @@
   "a2uiCatalog.functionsHeading": { "message": "Functions", "translate": "always" },
   "a2uiCatalog.integrationHeading": { "message": "Lit registration", "translate": "always" },
   "a2uiCatalog.componentReference": {
-    "message": "Use @catalogId to reference Pantoken components alongside Basic Catalog components.",
+    "message": "Use catalogId to reference Pantoken components alongside Basic Catalog components.",
     "translate": "always"
   },
   "a2uiCatalog.empty": { "message": "No components match your search.", "translate": "always" },

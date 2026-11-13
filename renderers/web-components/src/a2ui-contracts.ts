@@ -501,7 +501,7 @@ const A2UI_COMPONENT_OVERRIDES: Partial<Record<ElementName, A2uiComponentContrac
     children: "tabs",
     special: "tabs",
     actionEvents: ["click"],
-    valueChange: { event: "click", property: "activeIndex", kind: "tab-index" },
+    valueChange: { event: "change", property: "activeIndex", kind: "tab-index" },
   },
   link: {
     description: "A navigable text link with an allowlisted URL scheme.",

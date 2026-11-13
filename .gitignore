@@ -83,6 +83,8 @@ docs/internal/
 # Test coverage output
 coverage/
 a11y-report/
+tools/a2ui-conformance/test-results/
+tools/a2ui-conformance/playwright-report/
 
 # Local i18n coverage reports
 .i18n/

@@ -76,7 +76,7 @@ no DOM. Call `register(customElements)` manually if you need to control timing.
 
 ## A2UI 1.0
 
-For verified Lit clients, the optional `./a2ui` entry registers Pantoken's Universal components and
+For Lit, React, and Angular clients, the optional `./a2ui` entry registers Pantoken's Universal components and
 catalog alongside A2UI's Basic Catalog:
 
 ```ts
@@ -88,10 +88,13 @@ registerPantokenA2uiComponents();
 const processor = new MessageProcessor([basicCatalog, pantokenA2uiCatalog]);
 ```
 
-Install `@a2ui/web_core` and `lit` in the host app. The catalog currently contains only
-`PantokenButton` and `PantokenTooltip`. See the [published catalog and support status](https://pantoken.app/a2ui/);
-React and Angular v1.0 runtime support is pending verification, and native platforms have schema-only
-support.
+Install `@a2ui/web_core`, `lit`, and the host's A2UI renderer. The catalog covers every exported
+web component. Browser conformance tests verify `@a2ui/react` 0.15.0 with React 19.3.1 and
+`@a2ui/angular` 0.14.0 with Angular 21.2.5, using web-core 0.15.0 in Chromium, Firefox, and WebKit.
+These are shared Lit-backed Universal components, not separate native framework implementations.
+Angular 22 and SSR/hydration aren't covered by this validation. Native platforms have schema-only
+support. See the [published catalog](https://pantoken.app/a2ui/) and the
+[consumer fixtures](../../tools/a2ui-conformance/README.md) for setup and the tested scope.
 
 ## Related
 

@@ -36,25 +36,27 @@ If a referenced documentation URL or the file `@pantoken/ai/a2ui/catalog-v1.json
 
 Before reading the sections below, use this table to identify which section applies:
 
-| A2UI Version | Client Framework                | Renderer Type     | Section                   |
-| ------------ | ------------------------------- | ----------------- | ------------------------- |
-| 1.0          | Lit                             | Universal Catalog | 2                         |
-| 1.0          | Web (React, Angular, Vue, etc.) | Basic Catalog     | 3 (Web)                   |
-| 1.0          | Flutter                         | Native            | 3 (Native)                |
-| 1.0          | SwiftUI                         | Native            | 3 (Native)                |
-| 1.0          | Jetpack Compose                 | Native            | 3 (Native)                |
-| Other        | —                               | —                 | Stop: unsupported version |
+| A2UI Version | Client Framework               | Renderer Type     | Section                   |
+| ------------ | ------------------------------ | ----------------- | ------------------------- |
+| 1.0          | Lit, verified React or Angular | Universal Catalog | 2                         |
+| 1.0          | Other verified web clients     | Basic Catalog     | 3 (Web)                   |
+| 1.0          | Flutter                        | Native            | 3 (Native)                |
+| 1.0          | SwiftUI                        | Native            | 3 (Native)                |
+| 1.0          | Jetpack Compose                | Native            | 3 (Native)                |
+| Other        | —                              | —                 | Stop: unsupported version |
 
 Find the row matching the user's setup and follow only that section. If the setup doesn't match a row, the configuration is not supported by this skill.
 
-## 2. Prefer the Pantoken catalog for verified Lit clients
+## 2. Prefer the Pantoken catalog for verified web clients
 
-For A2UI 1.0 Lit clients, use the published Pantoken catalog and Universal components:
+For A2UI 1.0 Lit clients and the verified React/Angular combinations below, use the published
+Pantoken catalog and Universal components:
 
 - Install `@pantoken/ai` and `@pantoken/web-components`.
 - Register `pantokenA2uiCatalog` with `registerPantokenA2uiComponents()` from
   `@pantoken/web-components/a2ui`, alongside A2UI's Basic Catalog.
-- Reference Pantoken components with the catalog's `@catalogId`.
+- Set the surface's `catalogId` to Pantoken's catalog ID, or set a component's `catalogId` when
+  mixing catalogs. Don't use `@catalogId`; it isn't a v1.0 protocol directive.
 - Use only the components and properties listed in the catalog JSON at
   `@pantoken/ai/a2ui/catalog-v1.json`. If the web catalog at [https://pantoken.app/a2ui/](https://pantoken.app/a2ui/) differs
   from that JSON file, follow the JSON file and report the difference in the response. It covers
@@ -62,15 +64,17 @@ For A2UI 1.0 Lit clients, use the published Pantoken catalog and Universal compo
   or properties.
 - If a requested component or property is not listed in the catalog JSON, respond with the sentence "Pantoken component X is not supported in the v1 catalog," where X is the requested name. Do not write X as a code identifier. In the same response, name the A2UI Basic Catalog component that has the same role (for example, button for a button, text field for an input) and the most overlapping listed properties, and state which properties were dropped.
 
-  Example response: "Pantoken component PantokenCard is not supported in the v1 catalog. The closest Basic Catalog component is `card`, which keeps `title` and `children`; `elevation` and `variant` are dropped."
-
 - The catalog defines no executable functions. Its actions dispatch through A2UI's normal
   action-handling path; the host application remains responsible for authorization.
 
-React and Angular v1.0 runtime support has not been verified. For those clients, use A2UI's Basic
-Catalog and the installed renderer's theme API instead of claiming the Pantoken Universal components
-are supported. Flutter, SwiftUI, and Jetpack Compose have schema-only support; Pantoken does not
-provide native component renderers.
+Browser tests verify `@a2ui/react` 0.15.0 with React 19.3.1 and `@a2ui/angular` 0.14.0 with Angular
+21.2.5, using `@a2ui/web_core` 0.15.0 and the same Lit-backed Universal components in Chromium,
+Firefox, and WebKit. Install `lit` and the matching renderer; don't create per-framework component
+copies. Initialize Angular's renderer before constructing surfaces, because it installs the signal
+backend. Angular 22, SSR/hydration, arbitrary native framework children, and other version
+combinations haven't been verified. Don't infer A2UI support from Pantoken's general framework
+compatibility matrix. For other verified SDK clients, use the Basic Catalog and renderer theme API.
+Flutter, SwiftUI, and Jetpack Compose have schema-only support; Pantoken provides no native renderers.
 
 ## 3. Theme the Basic Catalog and other verified renderers
 

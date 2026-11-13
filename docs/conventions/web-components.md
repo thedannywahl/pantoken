@@ -70,6 +70,16 @@ Native form wrappers update values and constraints without replacing their contr
 `value-change` event for matching native `input`/`change` pairs. Model updates that change a control's
 value or checked state reset that deduplication, so the user can return to a previously emitted value.
 
+React and Angular A2UI consumers run the same Universal adapters, not separate implementations.
+The [browser conformance fixture](../../tools/a2ui-conformance/README.md) imports package exports,
+generates valid cases from the published catalog, and mounts them with the official framework
+surface renderers. Run `vp run test:a2ui` after installing its browser engines. CI requires this
+suite in Chromium, Firefox, and WebKit. Its version pins define the verified scope; don't generalize
+the result to other Angular majors, SSR/hydration, or a full accessibility assessment.
+
+Content-free adapters don't place Lit child markers inside their native element. This matters for
+`instui-icon`, which owns and replaces its light DOM while rendering its SVG.
+
 ## The JS-behavior tier
 
 Behavior pure CSS can't cover: tooltip, drilldown, pages, drawer-layout, an interactive calendar, and

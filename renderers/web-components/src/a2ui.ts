@@ -195,6 +195,7 @@ function compileGenericTemplate(
 ): {
   strings: TemplateStringsArray;
   attributes: Array<[string, A2uiPropertyContract]>;
+  hasContent: boolean;
 } {
   const strings = [`<instui-${element} id="`, '"'];
   const attributes: Array<[string, A2uiPropertyContract]> = [];
@@ -210,8 +211,10 @@ function compileGenericTemplate(
     }
   }
   strings[strings.length - 1] += ">";
-  strings.push(`</instui-${element}>`);
-  return { strings: toTemplateStrings(strings), attributes };
+  const hasContent = Boolean(contract.children || contract.contentProperty);
+  if (hasContent) strings.push(`</instui-${element}>`);
+  else strings[strings.length - 1] += `</instui-${element}>`;
+  return { strings: toTemplateStrings(strings), attributes, hasContent };
 }
 
 function drilldownPages(value: unknown): Array<{
@@ -305,9 +308,8 @@ function createA2uiElement(
         if (valueChange.kind === "toggle") {
           value = !props[valueChange.property];
         } else if (valueChange.kind === "tab-index") {
-          const tab = target?.closest<HTMLElement>('[role="tab"]');
-          const index = Number(tab?.dataset.index);
-          if (Number.isInteger(index)) value = index;
+          const index: unknown = (event as CustomEvent<{ index?: unknown }>).detail?.index;
+          if (typeof index === "number" && Number.isInteger(index) && index >= 0) value = index;
         } else if (valueChange.kind === "close") {
           value = false;
         } else if (valueChange.kind === "popover-state") {
@@ -529,7 +531,7 @@ function createA2uiElement(
             >${renderChildNodes(this.renderNode.bind(this), children)}${content}</instui-button
           >`,
         );
-      } else {
+      } else if (genericTemplate.hasContent) {
         const children = contract.children === "slot" ? childRefs(props.children) : [];
         const renderedChildren = renderChildNodes(this.renderNode.bind(this), children);
         const content = contract.contentProperty

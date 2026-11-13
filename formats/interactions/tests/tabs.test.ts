@@ -69,6 +69,25 @@ test("keyboard navigation selects and focuses the next enabled tab", () => {
   expect(tabs[1].getAttribute("aria-selected")).toBe("true");
 });
 
+test("reports pointer and keyboard selection changes once, but not initialization or reselection", () => {
+  const { host, handle } = setup();
+  const changes: number[] = [];
+  host.addEventListener("change", (event) => {
+    changes.push((event as CustomEvent<{ index: number }>).detail.index);
+  });
+  const tabs = host.querySelectorAll<HTMLButtonElement>('[role="tab"]');
+  handle.cleanup();
+  const nextHandle = initTabs(host);
+  expect(changes).toEqual([]);
+  tabs[1].click();
+  tabs[1].click();
+  tabs[1].dispatchEvent(new KeyboardEvent("keydown", { key: "Home", bubbles: true }));
+  expect(changes).toEqual([1, 0]);
+  nextHandle.cleanup();
+  tabs[1].click();
+  expect(changes).toEqual([1, 0]);
+});
+
 test("keyboard controls skip disabled tabs and activate the focused tab", () => {
   const { host } = setup();
   const tabs = host.querySelectorAll<HTMLButtonElement>('[role="tab"]');

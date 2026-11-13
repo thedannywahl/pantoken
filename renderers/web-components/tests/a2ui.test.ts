@@ -277,8 +277,9 @@ test("tabs pair labeled controls and panels, clamp selection, and bind only tab 
   await element.updateComplete;
   expect(surface.dataModel.get("/selected")).toBe(0);
   expect(panels[0]!.hidden).toBe(false);
-  tabs[1]!.dataset.index = "invalid";
-  tabs[1]!.click();
+  root
+    .querySelector("instui-tabs")!
+    .dispatchEvent(new CustomEvent("change", { detail: { index: "invalid" } }));
   expect(surface.dataModel.get("/selected")).toBe(0);
   subscription.unsubscribe();
 });

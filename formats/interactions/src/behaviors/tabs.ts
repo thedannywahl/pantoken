@@ -18,7 +18,8 @@ export function initTabs(host: HTMLElement): TabsHandle {
     return undefined;
   };
 
-  const select = (tab: HTMLButtonElement): void => {
+  const select = (tab: HTMLButtonElement, notify = true): void => {
+    const changed = tab.getAttribute("aria-selected") !== "true";
     for (const other of tabs()) {
       const selected = other === tab;
       other.classList.toggle("-selected", selected);
@@ -26,6 +27,11 @@ export function initTabs(host: HTMLElement): TabsHandle {
       const panelId = other.getAttribute("aria-controls");
       const panel = panelId ? panelById(panelId) : undefined;
       if (panel) panel.hidden = !selected;
+    }
+    if (notify && changed) {
+      host.dispatchEvent(
+        new CustomEvent("change", { bubbles: true, detail: { index: tabs().indexOf(tab) } }),
+      );
     }
   };
 
@@ -64,7 +70,7 @@ export function initTabs(host: HTMLElement): TabsHandle {
     tabs().find(
       (tab) => tab.classList.contains("-selected") || tab.getAttribute("aria-selected") === "true",
     ) ?? tabs()[0];
-  if (initial) select(initial);
+  if (initial) select(initial, false);
 
   return {
     cleanup(): void {

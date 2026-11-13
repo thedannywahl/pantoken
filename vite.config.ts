@@ -173,6 +173,10 @@ export default defineConfig({
         command: "vp test --coverage",
         dependsOn: ["build:all"],
       },
+      "test:a2ui": {
+        command: "vp run @pantoken/a2ui-conformance#check:browser",
+        dependsOn: ["build:all"],
+      },
       "validate:generated:only": {
         command: "vp run @pantoken/validate-generated#validate",
         dependsOn: ["build:all"],
