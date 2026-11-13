@@ -1,0 +1,71 @@
+{
+  "cli_version": "0.13.2",
+  "checkpoint_id": "01M7B83FW607PA798JECNQ26PY",
+  "session_id": "39e9b1ff-f8f1-4f49-bb37-3badfe65e332",
+  "strategy": "manual-commit",
+  "created_at": "2026-11-13T20:03:10.729532Z",
+  "branch": "a2ui",
+  "checkpoints_count": 1,
+  "save_step_count": 1,
+  "files_touched": [],
+  "agent": "Copilot CLI",
+  "model": "claude-haiku-5.5",
+  "turn_id": "ec44455e525a",
+  "compact_transcript_start": 0,
+  "token_usage": {
+    "input_tokens": 21,
+    "cache_creation_tokens": 4924,
+    "cache_read_tokens": 389044,
+    "output_tokens": 2093,
+    "api_call_count": 7,
+    "subagent_tokens": {
+      "input_tokens": 15,
+      "cache_creation_tokens": 5309,
+      "cache_read_tokens": 407294,
+      "output_tokens": 3729,
+      "api_call_count": 5
+    },
+    "subagent_tokens_complete": true
+  },
+  "session_token_usage": {
+    "input_tokens": 2784,
+    "cache_creation_tokens": 3799658,
+    "cache_read_tokens": 120765735,
+    "output_tokens": 947632,
+    "api_call_count": 928,
+    "subagent_tokens": {
+      "input_tokens": 144,
+      "cache_creation_tokens": 235607,
+      "cache_read_tokens": 2384803,
+      "output_tokens": 45766,
+      "api_call_count": 53
+    },
+    "subagent_tokens_complete": true
+  },
+  "redaction": {
+    "replacements": 228930,
+    "layers": {
+      "betterleaks": 0,
+      "connection_string": 0,
+      "credential_key": 0,
+      "credential_value": 0,
+      "credentialed_uri": 0,
+      "custom": 0,
+      "entropy": 549710,
+      "goredact": 0,
+      "key_context": 0,
+      "pii": 34,
+      "provider_token": 0,
+      "shell_stdin": 0
+    },
+    "custom_rules_active": 2,
+    "pii": {
+      "EMAIL": 34,
+      "IP": 0,
+      "PHONE": 0
+    }
+  },
+  "session_metrics": {
+    "turn_count": 22
+  }
+}
