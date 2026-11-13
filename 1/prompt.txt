@@ -1,0 +1,109 @@
+The user explicitly invoked the "/VS Code Synced Data:fix-customization-evaluation-diagnostics" skill. Follow its instructions now.
+
+<skill-context name="fix-customization-evaluation-diagnostics">
+Base directory for this skill: /Users/dwahl/Library/Application Support/Code/agentPlugins/vscode-synced-customization-agent-host-copilotcli-1148375999/1133972934/skills/fix-customization-evaluation-diagnostics
+
+# Implement suggestions
+
+## Purpose
+
+Fix issues found by the Chat Customizations Evaluations analyzer in prompt, agent, skill, and instruction files. The diagnostics include contradictions, ambiguities, persona conflicts, cognitive load issues, and coverage gaps.
+
+## Usage
+
+This skill is invoked automatically when the user clicks the "Implement suggestions" button in the editor title bar. It receives the diagnostics as context and rewrites the affected sections of the file to resolve them.
+
+This skill can also be called directly by the user. In that case search for the diagnostics from the Chat Customizations Evaluations extension and apply the fixes.
+
+## Instructions
+
+- You will either receive a list of diagnostics from the Chat Customizations Evaluations extension or be called without diagnostics. 
+- If you receive a list of diagnostics from the Chat Customizations Evaluations extension, then each diagnostic will includes a line number, code, message, and optionally a suggestion.
+- If you are called without diagnostics, you should search and find diagnostics from the Chat Customizations Evaluations extension yourself.
+- For each diagnostic, apply the fix directly to the file content. Use the suggestion if one is provided; otherwise, use your judgment to resolve the issue.
+- Preserve the overall structure, tone, and intent of the prompt file. Only change what is necessary to resolve the diagnostics.
+- If two diagnostics conflict with each other, prefer the fix that keeps the prompt clearer and more consistent.
+- Directly edit the file content to apply the fixes.
+- Do NOT add new instructions or sections that were not in the original file.
+- Do NOT remove instructions unless a diagnostic specifically calls for it (e.g., contradictions).
+
+
+ARGUMENTS: Target file: /Users/dwahl/Scripts/pantoken/ai/pantoken-ai/skills/use-a2ui/SKILL.md
+
+Use ONLY the diagnostics below for this target file. Do not lint or rewrite the skill file itself.
+
+Field meanings:
+
+- line: 1-based line number where the diagnostic starts (or start-end for a multi-line range).
+
+- lineText: exact text currently present at the diagnostic start line in the target file.
+
+- message: diagnostic description explaining what is wrong and needs to be fixed.
+
+Diagnostics:
+
+ - line: 83-84
+ - lineText:   use `pantoken generate flutter` for Flutter projects, `pantoken generate compose` for Jetpack Compose projects, and `pantoken generate swift` for SwiftUI projects. If the host platform is not one of these, stop and ask the user. Follow the A2UI renderer's
+ - message: Coverage gap: Native client (Flutter, SwiftUI, or Jetpack Compose) whose renderer's native theme API cannot be verified in the installed package or version-matched docs. Suggestion: Add after this sentence: 'If the renderer's native theme API cannot be verified in the installed package or version-matched docs, do not apply theme changes, list the unverified theme properties in the response, and state that the external source was not verified.'
+  suggestion: Add after this sentence: 'If the renderer's native theme API cannot be verified in the installed package or version-matched docs, do not apply theme changes, list the unverified theme properties in the response, and state that the external source was not verified.'
+</skill-context>
+
+---
+
+The user explicitly invoked the "/VS Code Synced Data:fix-customization-evaluation-diagnostics" skill. Follow its instructions now.
+
+<skill-context name="fix-customization-evaluation-diagnostics">
+Base directory for this skill: /Users/dwahl/Library/Application Support/Code/agentPlugins/vscode-synced-customization-agent-host-copilotcli-1148375999/1133972934/skills/fix-customization-evaluation-diagnostics
+
+# Implement suggestions
+
+## Purpose
+
+Fix issues found by the Chat Customizations Evaluations analyzer in prompt, agent, skill, and instruction files. The diagnostics include contradictions, ambiguities, persona conflicts, cognitive load issues, and coverage gaps.
+
+## Usage
+
+This skill is invoked automatically when the user clicks the "Implement suggestions" button in the editor title bar. It receives the diagnostics as context and rewrites the affected sections of the file to resolve them.
+
+This skill can also be called directly by the user. In that case search for the diagnostics from the Chat Customizations Evaluations extension and apply the fixes.
+
+## Instructions
+
+- You will either receive a list of diagnostics from the Chat Customizations Evaluations extension or be called without diagnostics. 
+- If you receive a list of diagnostics from the Chat Customizations Evaluations extension, then each diagnostic will includes a line number, code, message, and optionally a suggestion.
+- If you are called without diagnostics, you should search and find diagnostics from the Chat Customizations Evaluations extension yourself.
+- For each diagnostic, apply the fix directly to the file content. Use the suggestion if one is provided; otherwise, use your judgment to resolve the issue.
+- Preserve the overall structure, tone, and intent of the prompt file. Only change what is necessary to resolve the diagnostics.
+- If two diagnostics conflict with each other, prefer the fix that keeps the prompt clearer and more consistent.
+- Directly edit the file content to apply the fixes.
+- Do NOT add new instructions or sections that were not in the original file.
+- Do NOT remove instructions unless a diagnostic specifically calls for it (e.g., contradictions).
+
+
+ARGUMENTS: Target file: /Users/dwahl/Scripts/pantoken/ai/pantoken-ai/skills/use-a2ui/SKILL.md
+
+Use ONLY the diagnostics below for this target file. Do not lint or rewrite the skill file itself.
+
+Field meanings:
+
+- line: 1-based line number where the diagnostic starts (or start-end for a multi-line range).
+
+- lineText: exact text currently present at the diagnostic start line in the target file.
+
+- message: diagnostic description explaining what is wrong and needs to be fixed.
+
+Diagnostics:
+
+ - line: 83-84
+ - lineText:   use `pantoken generate flutter` for Flutter projects, `pantoken generate compose` for Jetpack Compose projects, and `pantoken generate swift` for SwiftUI projects. If the host platform is not one of these, stop and ask the user. Follow the A2UI renderer's
+ - message: Coverage gap: Native client (Flutter, SwiftUI, or Jetpack Compose) whose renderer's native theme API cannot be verified in the installed package or version-matched docs. Suggestion: Add after this sentence: 'If the renderer's native theme API cannot be verified in the installed package or version-matched docs, do not apply theme changes, list the unverified theme properties in the response, and state that the external source was not verified.'
+  suggestion: Add after this sentence: 'If the renderer's native theme API cannot be verified in the installed package or version-matched docs, do not apply theme changes, list the unverified theme properties in the response, and state that the external source was not verified.'
+</skill-context>
+
+---
+
+ai/pantoken-ai/skills/use-a2ui/SKILL.md:59:62 error MD034/no-bare-urls Bare URL used [Context: "https://pantoken.app/a2ui/"]
+
+---
+
+ai/pantoken-ai/skills/use-a2ui/SKILL.md:59:62 error MD034/no-bare-urls Bare URL used [Context: "https://pantoken.app/a2ui/"]
