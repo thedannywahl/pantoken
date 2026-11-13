@@ -36,6 +36,44 @@ test("link rejects executable and network-path URLs and protects blank-target na
   expect(safe.shadowRoot?.querySelector("a")?.getAttribute("rel")).toBe("noopener noreferrer");
 });
 
+test.each([" https://example.com", "/has space", "/bad\\path", "https://[", "mailto:"])(
+  "link leaves malformed navigation target %j inert",
+  (href) => {
+    const link = document.createElement("instui-link");
+    link.setAttribute("href", href);
+    link.setAttribute("target", "untrusted-frame");
+    document.body.append(link);
+    const anchor = link.shadowRoot!.querySelector("a")!;
+    expect(anchor.hasAttribute("href")).toBe(false);
+    expect(anchor.hasAttribute("target")).toBe(false);
+  },
+);
+
+test.each(["/guide", "#section", "https://example.com", "mailto:help@example.com", "tel:+123"])(
+  "link retains supported navigation target %j",
+  (href) => {
+    const link = document.createElement("instui-link");
+    link.setAttribute("href", href);
+    document.body.append(link);
+    expect(link.shadowRoot!.querySelector("a")!.getAttribute("href")).toBe(href);
+  },
+);
+
+test.each([
+  ["1", "h1"],
+  ["6", "h6"],
+  ["0", "h2"],
+  ["7", "h2"],
+  ["2.5", "h2"],
+  ["h1 onclick=alert(1)", "h2"],
+])("heading level %j produces a bounded native %s", (level, tag) => {
+  const heading = document.createElement("instui-heading");
+  heading.setAttribute("level", level);
+  document.body.append(heading);
+  expect(heading.shadowRoot!.querySelector(tag)).not.toBeNull();
+  expect(heading.shadowRoot!.querySelector("[onclick]")).toBeNull();
+});
+
 test("text input reports value changes and preserves the native control on model updates", () => {
   const field = document.createElement("instui-text-input");
   field.textContent = "Name";
