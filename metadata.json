@@ -3,7 +3,7 @@
   "checkpoint_id": "01M7BHTDRXMGHSD8BP0J72XW69",
   "strategy": "manual-commit",
   "branch": "a2ui",
-  "checkpoints_count": 7,
+  "checkpoints_count": 9,
   "files_touched": [
     "docs/ar/compatibility.md",
     "docs/ca/compatibility.md",
@@ -70,10 +70,17 @@
       "compact_transcript": "/2/transcript.jsonl",
       "content_hash": "/2/content_hash.txt",
       "prompt": "/2/prompt.txt"
+    },
+    {
+      "metadata": "/3/metadata.json",
+      "transcript": "/3/full.jsonl",
+      "compact_transcript": "/3/transcript.jsonl",
+      "content_hash": "/3/content_hash.txt",
+      "prompt": "/3/prompt.txt"
     }
   ],
   "redaction": {
-    "replacements": 231851,
+    "replacements": 231853,
     "layers": {
       "betterleaks": 0,
       "connection_string": 0,
@@ -81,7 +88,7 @@
       "credential_value": 0,
       "credentialed_uri": 0,
       "custom": 0,
-      "entropy": 557769,
+      "entropy": 557793,
       "goredact": 0,
       "key_context": 0,
       "pii": 38,
