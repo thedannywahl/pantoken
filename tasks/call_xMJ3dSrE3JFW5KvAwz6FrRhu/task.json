@@ -1,0 +1,9 @@
+{
+  "tool_use_id": "call_xMJ3dSrE3JFW5KvAwz6FrRhu",
+  "agent_id": "38a3e136-e30f-4046-ab6e-27508774b389",
+  "subagent_type": "security-review",
+  "task_description": "Find Snyk scan tool",
+  "started_at": "2026-11-13T09:35:41.329415-07:00",
+  "completed_at": "2026-11-13T09:35:41.330114-07:00",
+  "transcript_unavailable_reason": "transcript path unresolvable"
+}

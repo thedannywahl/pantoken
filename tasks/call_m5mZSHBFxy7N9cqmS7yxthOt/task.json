@@ -1,0 +1,9 @@
+{
+  "tool_use_id": "call_m5mZSHBFxy7N9cqmS7yxthOt",
+  "agent_id": "99a2cbd6-cca3-4348-84c7-3f3da7805470",
+  "subagent_type": "security-review",
+  "task_description": "Scan current changes",
+  "started_at": "2026-11-13T09:37:11.546649-07:00",
+  "completed_at": "2026-11-13T09:37:11.547609-07:00",
+  "transcript_unavailable_reason": "transcript path unresolvable"
+}

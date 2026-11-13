@@ -1,0 +1,9 @@
+{
+  "tool_use_id": "call_H7Qsd7ViAuUYHLn95UH0S8rl",
+  "agent_id": "dbc7a43b-1a16-4ca8-a73d-bba2e314ef0a",
+  "subagent_type": "rubber-duck",
+  "task_description": "Check docs guidance",
+  "started_at": "2026-11-13T09:37:38.890468-07:00",
+  "completed_at": "2026-11-13T09:37:38.890749-07:00",
+  "transcript_unavailable_reason": "transcript path unresolvable"
+}

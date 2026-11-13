@@ -1,0 +1,87 @@
+{
+  "cli_version": "0.13.2",
+  "checkpoint_id": "01M7B13SKJ1Q2RC3WGM6FBD5KW",
+  "strategy": "manual-commit",
+  "branch": "a2ui",
+  "checkpoints_count": 7,
+  "files_touched": [
+    ".changeset/clean-rules-sin.md",
+    "ASSURANCE.md",
+    "SECURITY.md",
+    "ai/pantoken-ai/catalogs/pantoken-v1.json",
+    "ai/pantoken-ai/scripts/generate-a2ui-catalog.ts",
+    "docs/.vitepress/config.ts",
+    "docs/.vitepress/i18n.json",
+    "docs/.vitepress/theme/a2ui-catalog.ts",
+    "docs/.vitepress/theme/components/A2uiCatalogBrowser.vue",
+    "docs/.vitepress/theme/components/AgentToolsPage.vue",
+    "docs/.vitepress/theme/composables/useShikiHighlight.ts",
+    "docs/a2ui/index.md",
+    "docs/conventions/web-components.md",
+    "docs/package.json",
+    "docs/public/accessibility/results.json",
+    "formats/interactions/component-capabilities.json",
+    "l10n/docs.api.pot",
+    "packages/scaffold/assets/AGENTS.md",
+    "packages/scaffold/assets/llms.txt",
+    "pnpm-lock.yaml",
+    "renderers/web-components/src/a2ui-contracts.ts",
+    "renderers/web-components/src/a2ui.ts",
+    "renderers/web-components/src/elements/component-elements.ts",
+    "renderers/web-components/src/elements/index.ts",
+    "renderers/web-components/src/index.ts",
+    "renderers/web-components/src/lib/context.ts",
+    "renderers/web-components/src/lib/elements-meta.ts",
+    "renderers/web-components/src/lib/helpers.ts",
+    "renderers/web-components/src/lib/register-context.ts",
+    "renderers/web-components/tests/a2ui.test.ts",
+    "renderers/web-components/tests/component-elements.test.ts"
+  ],
+  "sessions": [
+    {
+      "metadata": "/0/metadata.json",
+      "transcript": "/0/full.jsonl",
+      "compact_transcript": "/0/transcript.jsonl",
+      "content_hash": "/0/content_hash.txt",
+      "prompt": "/0/prompt.txt"
+    }
+  ],
+  "token_usage": {
+    "input_tokens": 645,
+    "cache_creation_tokens": 937607,
+    "cache_read_tokens": 27769984,
+    "output_tokens": 229967,
+    "api_call_count": 215,
+    "subagent_tokens": {
+      "input_tokens": 75,
+      "cache_creation_tokens": 128683,
+      "cache_read_tokens": 1264972,
+      "output_tokens": 31640,
+      "api_call_count": 30
+    },
+    "subagent_tokens_complete": true
+  },
+  "redaction": {
+    "replacements": 225363,
+    "layers": {
+      "betterleaks": 0,
+      "connection_string": 0,
+      "credential_key": 0,
+      "credential_value": 0,
+      "credentialed_uri": 0,
+      "custom": 0,
+      "entropy": 536039,
+      "goredact": 0,
+      "key_context": 0,
+      "pii": 24,
+      "provider_token": 0,
+      "shell_stdin": 0
+    },
+    "custom_rules_active": 2,
+    "pii": {
+      "EMAIL": 24,
+      "IP": 0,
+      "PHONE": 0
+    }
+  }
+}
