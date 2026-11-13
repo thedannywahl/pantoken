@@ -1,0 +1,12 @@
+{
+  "tool_use_id": "call_LczvSFTs48cFaWxb1PM7IhcD",
+  "agent_id": "bc3deb02-40cf-45bb-8256-4300f68e6baf",
+  "subagent_type": "general-purpose",
+  "task_description": "Cover new A2UI behavior",
+  "files": [
+    "renderers/web-components/tests/a2ui.test.ts"
+  ],
+  "started_at": "2026-11-13T13:03:48.820817-07:00",
+  "completed_at": "2026-11-13T13:03:48.821365-07:00",
+  "transcript_unavailable_reason": "transcript path unresolvable"
+}

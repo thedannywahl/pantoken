@@ -1,0 +1,305 @@
+now, should we be adding a catalog?
+
+---
+
+now, should we be adding a catalog?
+
+---
+
+You have not yet marked the task as complete using the task_complete tool. If you were planning changes the user asked for, stop planning and start implementing. You aren't done until you have fully completed the task.
+
+IMPORTANT: Do NOT call task_complete if:
+- You have open questions or ambiguities - make good decisions and keep working
+- You encountered an error - try to resolve it or find an alternative approach
+- There are remaining steps - complete them first
+
+If the user asked only for a review, analysis or recommendation and you have already delivered it, the task is complete: call task_complete now. A follow-up you offered or recommended is not part of the task, so do not start it.
+
+Keep working autonomously until the task is truly finished, then call task_complete.
+
+---
+
+You have not yet marked the task as complete using the task_complete tool. If you were planning changes the user asked for, stop planning and start implementing. You aren't done until you have fully completed the task.
+
+IMPORTANT: Do NOT call task_complete if:
+- You have open questions or ambiguities - make good decisions and keep working
+- You encountered an error - try to resolve it or find an alternative approach
+- There are remaining steps - complete them first
+
+If the user asked only for a review, analysis or recommendation and you have already delivered it, the task is complete: call task_complete now. A follow-up you offered or recommended is not part of the task, so do not start it.
+
+Keep working autonomously until the task is truly finished, then call task_complete.
+
+---
+
+show me the output
+
+---
+
+show me the output
+
+---
+
+explain to me why we wouldn't publish a catalog for clients to register and what other things we can do to implement a2ui
+
+---
+
+explain to me why we wouldn't publish a catalog for clients to register and what other things we can do to implement a2ui
+
+---
+
+[[PLAN]] Back to plan mode: the goal is to provide the agents a constrained vocabulary of pantoken-style components.
+Pantoken has component renderers, property mapping, icon handling, event/function behavior etc. already in its renderers.
+
+---
+
+[[PLAN]] Back to plan mode: the goal is to provide the agents a constrained vocabulary of pantoken-style components.
+Pantoken has component renderers, property mapping, icon handling, event/function behavior etc. already in its renderers.
+
+---
+
+[[PLAN]] what are the pros and cons of adding a2ui registration adapters to every renderer vs an a2ui renderer package that reexports the other packages with the registration data added?
+
+---
+
+[[PLAN]] what are the pros and cons of adding a2ui registration adapters to every renderer vs an a2ui renderer package that reexports the other packages with the registration data added?
+
+---
+
+[[PLAN]] what about [universal components](https://a2ui.org/guides/authoring-universal-components/)?
+
+---
+
+[[PLAN]] what about [universal components](https://a2ui.org/guides/authoring-universal-components/)?
+
+---
+
+[[PLAN]] should we expose the catalog in a browsable fashion too like we do the shadcn catalog?
+
+---
+
+[[PLAN]] should we expose the catalog in a browsable fashion too like we do the shadcn catalog?
+
+---
+
+[[PLAN]] should we expose the catalog in a browsable fashion in the docs site too like we do the shadcn catalog?
+
+---
+
+[[PLAN]] should we expose the catalog in a browsable fashion in the docs site too like we do the shadcn catalog?
+
+---
+
+[[PLAN]] The plan’s biggest problem is that the native adapters can’t “reuse existing Pantoken renderers”, because there aren’t any to reuse. Otherwise the structure holds up.
+
+### Blocking
+**1. Flutter, SwiftUI, and Compose have no component renderers.**
+
+- `platforms/flutter`, `platforms/swift`, and `platforms/compose` each contain a single src/index.ts. They generate token constants (see the compose README: “numeric constants… reference them straight from composables”).
+- Steps 3 and 5 and the “complete coverage” decision assume there’s something to wrap, and there isn’t.
+- “Cover every component on every client” would mean writing and maintaining native Pantoken UI kits in Dart, Swift, and Kotlin. That’s a large new product, and it contradicts the stated “no duplicate implementations” goal.
+- Decision for you: either (a) scope v1 to web, which covers React, Lit, and Angular through the web-component bridge, and ship native catalog-schema support only, or (b) make the native kits an explicit separate project.
+- Recommendation: (a). On native, agents would use the Basic Catalog themed by the existing token output, which is what `use-a2ui` does today. The catalog JSON stays client-agnostic, and the coverage matrix marks native as “schema only”.
+
+### Should fix
+**2. Verify the A2UI facts before you commit to the design.** The plan states the Universal Web Components contract, the six-SDK list, and “extend the Basic Catalog” as fact. A pre-implementation check should confirm:
+
+- Whether Universal Web Components actually register across React, Lit, and Angular in the shipped SDK versions.
+- Which protocol versions each SDK supports. The current skill targets v1.0, and the plan hedges “verify each SDK’s status”.
+- Whether catalogs can extend the Basic Catalog by reference or must copy it.
+Make this a gating step zero with a written finding. The bridge design depends on the answers.
+
+**3. Step 2 understates schema generation.** `formats/components` records are CSS-oriented (modifiers, aliases, `@scope`). A2UI components need typed props, child slots, and events. Part of that is likely missing, and the plan only says “add metadata where needed”. Spike two or three components first (for example Button, Tabs, Tooltip) to see how much new canonical metadata you need. Then adjust the scope and the coverage claim.
+
+**4. Security belongs up front, not in step 7.** A catalog lets an LLM drive the UI, which gives you new input surfaces:
+
+- Agent-supplied icon names, URLs, and HTML or slot content.
+- Actions and functions that fire events.
+- Attribute-to-property mapping on custom elements, which risks `innerHTML` or `href` injection.
+Define an allowlist-only prop schema, ban raw HTML props, and add negative tests, before building the bridge. That also fits the Node-free runtime rule in `CLAUDE.md` for `@pantoken/web-components`.
+
+**5. The bridge could import server-only packages.** The thin adapter lives in `renderers/web-components`, so it must not pull in `@cssdoc/*` or the generator. Say so in the plan, and keep the generator in `ai/` as a build script only.
+
+### Smaller notes
+
+- **Versioning.** Define the `catalogId` scheme and what counts as a breaking change. Removing a component or prop is breaking; adding one is additive. Without this, agents holding an old catalog break silently.
+- **Drift gate.** You have the instui upgrade pipeline and a deprecation ledger. Tie catalog regeneration to them so an upstream bump can’t change the catalog without a version bump.
+- **Docs browser.** Reusing the shadcn browser’s search patterns is fine. Drop “registration snippets” for native clients, since there’s no native registration to show.
+- **Tests and evals.** Add negative evals (an agent inventing a non-catalog component), not only routing. The existing `use-a2ui` evals cover token theming, so keep those routing cases to avoid regressions.
+- **Skill update.** The current `use-a2ui` skill says to use a custom catalog “only when the user explicitly requests one”. Revise that sentence deliberately once the catalog ships, or agents will keep ignoring it.
+- **Sequencing.** The plan is one big change across about eight areas. Split it into milestones, each independently shippable with its own changeset: (1) verification and schema spike, (2) catalog source and generator, (3) web bridge, (4) docs browser, (5) native, if it’s still in scope.
+- **Housekeeping.** The last line says the checkout is `main` with no changes, but you’re on `a2ui` with two commits already. The plan should record that those commits cover the skill and guidance only.
+
+---
+
+[[PLAN]] The plan’s biggest problem is that the native adapters can’t “reuse existing Pantoken renderers”, because there aren’t any to reuse. Otherwise the structure holds up.
+
+### Blocking
+**1. Flutter, SwiftUI, and Compose have no component renderers.**
+
+- `platforms/flutter`, `platforms/swift`, and `platforms/compose` each contain a single src/index.ts. They generate token constants (see the compose README: “numeric constants… reference them straight from composables”).
+- Steps 3 and 5 and the “complete coverage” decision assume there’s something to wrap, and there isn’t.
+- “Cover every component on every client” would mean writing and maintaining native Pantoken UI kits in Dart, Swift, and Kotlin. That’s a large new product, and it contradicts the stated “no duplicate implementations” goal.
+- Decision for you: either (a) scope v1 to web, which covers React, Lit, and Angular through the web-component bridge, and ship native catalog-schema support only, or (b) make the native kits an explicit separate project.
+- Recommendation: (a). On native, agents would use the Basic Catalog themed by the existing token output, which is what `use-a2ui` does today. The catalog JSON stays client-agnostic, and the coverage matrix marks native as “schema only”.
+
+### Should fix
+**2. Verify the A2UI facts before you commit to the design.** The plan states the Universal Web Components contract, the six-SDK list, and “extend the Basic Catalog” as fact. A pre-implementation check should confirm:
+
+- Whether Universal Web Components actually register across React, Lit, and Angular in the shipped SDK versions.
+- Which protocol versions each SDK supports. The current skill targets v1.0, and the plan hedges “verify each SDK’s status”.
+- Whether catalogs can extend the Basic Catalog by reference or must copy it.
+Make this a gating step zero with a written finding. The bridge design depends on the answers.
+
+**3. Step 2 understates schema generation.** `formats/components` records are CSS-oriented (modifiers, aliases, `@scope`). A2UI components need typed props, child slots, and events. Part of that is likely missing, and the plan only says “add metadata where needed”. Spike two or three components first (for example Button, Tabs, Tooltip) to see how much new canonical metadata you need. Then adjust the scope and the coverage claim.
+
+**4. Security belongs up front, not in step 7.** A catalog lets an LLM drive the UI, which gives you new input surfaces:
+
+- Agent-supplied icon names, URLs, and HTML or slot content.
+- Actions and functions that fire events.
+- Attribute-to-property mapping on custom elements, which risks `innerHTML` or `href` injection.
+Define an allowlist-only prop schema, ban raw HTML props, and add negative tests, before building the bridge. That also fits the Node-free runtime rule in `CLAUDE.md` for `@pantoken/web-components`.
+
+**5. The bridge could import server-only packages.** The thin adapter lives in `renderers/web-components`, so it must not pull in `@cssdoc/*` or the generator. Say so in the plan, and keep the generator in `ai/` as a build script only.
+
+### Smaller notes
+
+- **Versioning.** Define the `catalogId` scheme and what counts as a breaking change. Removing a component or prop is breaking; adding one is additive. Without this, agents holding an old catalog break silently.
+- **Drift gate.** You have the instui upgrade pipeline and a deprecation ledger. Tie catalog regeneration to them so an upstream bump can’t change the catalog without a version bump.
+- **Docs browser.** Reusing the shadcn browser’s search patterns is fine. Drop “registration snippets” for native clients, since there’s no native registration to show.
+- **Tests and evals.** Add negative evals (an agent inventing a non-catalog component), not only routing. The existing `use-a2ui` evals cover token theming, so keep those routing cases to avoid regressions.
+- **Skill update.** The current `use-a2ui` skill says to use a custom catalog “only when the user explicitly requests one”. Revise that sentence deliberately once the catalog ships, or agents will keep ignoring it.
+- **Sequencing.** The plan is one big change across about eight areas. Split it into milestones, each independently shippable with its own changeset: (1) verification and schema spike, (2) catalog source and generator, (3) web bridge, (4) docs browser, (5) native, if it’s still in scope.
+- **Housekeeping.** The last line says the checkout is `main` with no changes, but you’re on `a2ui` with two commits already. The plan should record that those commits cover the skill and guidance only.
+
+---
+
+but we only built two components?
+
+---
+
+but we only built two components?
+
+---
+
+You have not yet marked the task as complete using the task_complete tool. If you were planning changes the user asked for, stop planning and start implementing. You aren't done until you have fully completed the task.
+
+IMPORTANT: Do NOT call task_complete if:
+- You have open questions or ambiguities - make good decisions and keep working
+- You encountered an error - try to resolve it or find an alternative approach
+- There are remaining steps - complete them first
+
+If the user asked only for a review, analysis or recommendation and you have already delivered it, the task is complete: call task_complete now. A follow-up you offered or recommended is not part of the task, so do not start it.
+
+Keep working autonomously until the task is truly finished, then call task_complete.
+
+---
+
+You have not yet marked the task as complete using the task_complete tool. If you were planning changes the user asked for, stop planning and start implementing. You aren't done until you have fully completed the task.
+
+IMPORTANT: Do NOT call task_complete if:
+- You have open questions or ambiguities - make good decisions and keep working
+- You encountered an error - try to resolve it or find an alternative approach
+- There are remaining steps - complete them first
+
+If the user asked only for a review, analysis or recommendation and you have already delivered it, the task is complete: call task_complete now. A follow-up you offered or recommended is not part of the task, so do not start it.
+
+Keep working autonomously until the task is truly finished, then call task_complete.
+
+---
+
+shouldn't this allowedComponents be auto-generated based off of web-components exports? then we can test the full catalog and not have to worry about updating this every time we add a new component.
+
+---
+
+shouldn't this allowedComponents be auto-generated based off of web-components exports? then we can test the full catalog and not have to worry about updating this every time we add a new component.
+
+---
+
+we should be auto-creating schemas and adapters for every web component. or going through and adding them for every web-component.
+
+---
+
+we should be auto-creating schemas and adapters for every web component. or going through and adding them for every web-component.
+
+---
+
+now we need to go back through pantoken/components add fill in the missing web-components
+
+---
+
+now we need to go back through pantoken/components add fill in the missing web-components
+
+---
+
+did we fix that severity finding ? if not we need to remediate it.
+
+---
+
+did we fix that severity finding ? if not we need to remediate it.
+
+---
+
+A2UI catalog needs to be added to the Agent tools -> Agent docs list.
+the A2UI catalog page should be patterened after the shadcn page including vitepress layout.
+the A2UI catalog cards need a max-height or something because enumerating 1600 icons a few times is overkill.
+
+---
+
+A2UI catalog needs to be added to the Agent tools -> Agent docs list.
+the A2UI catalog page should be patterened after the shadcn page including vitepress layout.
+the A2UI catalog cards need a max-height or something because enumerating 1600 icons a few times is overkill.
+
+---
+
+this is 404ing, are we generating it locally?
+http://localhost:5173/a2ui/catalog/v1/catalog.json
+
+---
+
+this is 404ing, are we generating it locally?
+http://localhost:5173/a2ui/catalog/v1/catalog.json
+
+---
+
+the page layout doesn't have the sidebar like the shadcn/ui registry does.
+
+---
+
+the page layout doesn't have the sidebar like the shadcn/ui registry does.
+
+---
+
+move Client Support, Lit Registration above the components list.
+Catalog Versioning header and text should match the rest of the page.
+Pantoken's A2UI Catalog heading and text should match the rest of the page. and the header should be renamed to "Functions"
+
+---
+
+move Client Support, Lit Registration above the components list.
+Catalog Versioning header and text should match the rest of the page.
+Pantoken's A2UI Catalog heading and text should match the rest of the page. and the header should be renamed to "Functions"
+
+---
+
+the lit registration section should be using shiki and prettier.
+
+---
+
+the lit registration section should be using shiki and prettier.
+
+---
+
+the strings on that page should go in the translation pipeline and so should the shadcn page if it isn't already.
+
+---
+
+the strings on that page should go in the translation pipeline and so should the shadcn page if it isn't already.
+
+---
+
+watch CI on PR 309 and follow it until green creating incremental conventional commits and changesets where necessary. prefer remediation over suppression.
+
+---
+
+watch CI on PR 309 and follow it until green creating incremental conventional commits and changesets where necessary. prefer remediation over suppression.
