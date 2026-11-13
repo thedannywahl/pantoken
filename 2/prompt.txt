@@ -1,0 +1,56 @@
+did we delete the docs po?
+
+---
+
+did we delete the docs po?
+
+---
+
+CI is failing
+
+---
+
+CI is failing
+
+---
+
+CI failed
+
+---
+
+[[PLAN]] back to plan mode, this merged and was released but:
+```
+```
+<div style="padding: 20px; background-color: #cdc1ab30;">
+    <p>Add intro text here.</p>
+    <div style="display: grid; gap: 20px; grid-template-columns: repeat(auto-fit,minmax(clamp(50% - 20px,(40rem - 100%) * 999,100%),1fr));">
+        <div style="padding: 20px; background-color: #ffffff;">
+            <h2>Header 2</h2>
+            <p>add text here</p>
+        </div>
+        <div style="padding: 20px; background-color: #ffffff;">
+            <h2>Header 2</h2>
+            <p>add text here</p>
+        </div>
+    </div>
+</div>
+```
+is still getting converted to:
+```
+<div style="padding: 20px; background-color: #cdc1ab30;">
+  <p class="instui-text">Add intro text here.</p>
+  <div
+    style="display: grid; gap: 20px; grid-template-columns: repeat(auto-fit,minmax(clamp(50% - 20px,(40rem - 100%) * 999,100%),1fr));"
+  >
+    <div style="padding: 20px; background-color: #ffffff;">
+      <h2 class="instui-heading -level-h2">Header 2</h2>
+      <p class="instui-text">add text here</p>
+    </div>
+    <div style="padding: 20px; background-color: #ffffff;">
+      <h2 class="instui-heading -level-h2">Header 2</h2>
+      <p class="instui-text">add text here</p>
+    </div>
+  </div>
+</div>
+```
+when toggling between html view and WYSIWYG view in the canvas-rce scaffolded package.
