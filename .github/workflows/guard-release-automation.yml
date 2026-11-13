@@ -33,7 +33,7 @@ jobs:
               exit 1
             fi
           fi
-          if [[ "$PR_HEAD" == "maintenance/failed-updates" ]]; then
+          if [[ "$PR_HEAD" == "maintenance/failed-updates" || "$PR_HEAD" == maintenance/failed-updates/* ]]; then
             echo "::error::Failed maintenance candidates must not merge through the automated release flow."
             exit 1
           fi

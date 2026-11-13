@@ -5,7 +5,8 @@ import { runAsMain } from "./cli.ts";
 import { renderComponentReview } from "./component-reviews.ts";
 
 const passingBranch = (proposal: string): string => `maintenance/weekly-passing-${proposal}`;
-const failureBranch = "maintenance/failed-updates";
+const failedUpdatesBranch = (runId: string, attempt: string): string =>
+  `maintenance/failed-updates/${runId}-${attempt}`;
 const generatedPaths = new Set([
   "pnpm-workspace.yaml",
   "pnpm-lock.yaml",
@@ -277,6 +278,11 @@ export async function publishMaintenance(
     "publish",
     "Usage: maintenance-publication.ts <publish|reconcile> FILE BASE PROPOSAL",
   );
+  const runId = process.env.GITHUB_RUN_ID ?? "";
+  const runAttempt = process.env.GITHUB_RUN_ATTEMPT ?? "";
+  assert.match(runId, /^\d+$/u, "Publication requires a GitHub workflow run ID");
+  assert.match(runAttempt, /^\d+$/u, "Publication requires a GitHub workflow attempt");
+  const failureBranch = failedUpdatesBranch(runId, runAttempt);
   const result = validateMaintenanceResult(JSON.parse(readFileSync(file, "utf8")), base, proposal);
   const mainRef = await api<{ object: { sha: string } }>(`${prefix}/git/ref/heads/main`);
   assert.equal(
