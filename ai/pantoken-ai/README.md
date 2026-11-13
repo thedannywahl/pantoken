@@ -6,7 +6,7 @@ Code skills (`init-pantoken`, `create-pantoken-app`, `create-pantoken-mockup`,
 `use-pantoken-registry`, `use-a2ui`) — plus an installer CLI with two commands:
 `init` (write those assets into a consumer repo) and `scaffold <platform>` (scaffold a starter
 project via [`@pantoken/scaffold`](https://www.npmjs.com/package/@pantoken/scaffold) and install
-the agent assets into the same directory).
+the agent assets into the same directory). It also publishes Pantoken's versioned A2UI 1.0 catalog.
 
 The scaffold system is **preset-based**: each platform package (`@pantoken/components`, `@pantoken/react`,
 `@pantoken/vue`, `@pantoken/web-components`) exports a Bingo preset that defines its own scaffold
@@ -60,6 +60,16 @@ only manual step. Pass `--no-install` to skip the automatic install.
 
 If you only want the starter project without the agent assets, run
 [`npx @pantoken/scaffold <platform>`](https://www.npmjs.com/package/@pantoken/scaffold) directly.
+
+## A2UI 1.0 catalog
+
+The package exports the Pantoken component schema at `@pantoken/ai/a2ui/catalog-v1.json`. The
+catalog currently defines only `PantokenButton` and `PantokenTooltip`; it contains no executable
+functions. Browse the supported properties and Lit integration at
+[`pantoken.app/a2ui`](https://pantoken.app/a2ui/). Use the matching Universal component runtime
+from [`@pantoken/web-components`](https://www.npmjs.com/package/@pantoken/web-components); React
+and Angular v1.0 runtime support is pending verification, and native platforms have schema-only
+support.
 
 Run `npx pantoken-ai --help` (or `init --help`/`scaffold --help`) for the full flag reference, or
 `npx pantoken-ai completion <shell>` to generate a bash/zsh/fish/PowerShell completion script.

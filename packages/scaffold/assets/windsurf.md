@@ -8,9 +8,11 @@
 - In shadcn projects, use `shadcn search/view/add @pantoken/...` for CSS styles and metadata. The
   registry does not provide React components; `@pantoken/shadcn` is the variable bridge.
 - Web: `import "@pantoken/css/inject";`. Icons: `@pantoken/web-components` (`<instui-icon>`).
-- A2UI: use the installed framework renderer and verify its version. Map documented web
-  `--a2ui-*` properties only to verified `--instui-*` tokens; native clients use existing pantoken
-  platform outputs.
+- A2UI: for verified A2UI 1.0 Lit clients, use Pantoken's catalog
+  (`@pantoken/ai/a2ui/catalog-v1.json`) with `@pantoken/web-components/a2ui` alongside the Basic
+  Catalog; use only its listed components and properties. React/Angular runtime support is pending
+  v1.0 verification; native clients have schema-only support. For Basic Catalog theming, verify the
+  installed renderer's `--a2ui-*` properties and map only to verified `--instui-*` tokens.
 - React: `@pantoken/react`. Tailwind: `@pantoken/tailwind` preset.
 - Native / other ecosystems: `npx pantoken generate <swift|android|compose|flutter|rust|wordpress|vanilla|drupal|jekyll|hugo> --out <dir>`.
 - Check the [target compatibility registry](https://pantoken.app/target-compatibility.json) before recommending a host version; the

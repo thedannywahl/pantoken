@@ -1,0 +1,75 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://pantoken.app/a2ui/catalog/v1/catalog.json",
+  "catalogId": "https://pantoken.app/a2ui/catalog/v1/catalog.json",
+  "protocolVersion": "1.0",
+  "title": "Pantoken A2UI Catalog",
+  "description": "A constrained set of Pantoken-styled components for A2UI v1.0 web clients.",
+  "components": {
+    "PantokenButton": {
+      "type": "object",
+      "description": "A token-styled action button.",
+      "properties": {
+        "component": {
+          "const": "PantokenButton"
+        },
+        "label": {
+          "$ref": "common_types.json#/$defs/DynamicString"
+        },
+        "variant": {
+          "type": "string",
+          "enum": ["primary", "secondary", "tertiary", "success", "danger", "ai", "ai-secondary"],
+          "default": "primary"
+        },
+        "action": {
+          "$ref": "common_types.json#/$defs/Action"
+        }
+      },
+      "required": ["component", "label"],
+      "additionalProperties": false
+    },
+    "PantokenTooltip": {
+      "type": "object",
+      "description": "A named button with a noninteractive tooltip.",
+      "properties": {
+        "component": {
+          "const": "PantokenTooltip"
+        },
+        "triggerLabel": {
+          "$ref": "common_types.json#/$defs/DynamicString"
+        },
+        "tip": {
+          "$ref": "common_types.json#/$defs/DynamicString"
+        },
+        "placement": {
+          "type": "string",
+          "enum": ["top", "bottom", "start", "end"],
+          "default": "top"
+        },
+        "action": {
+          "$ref": "common_types.json#/$defs/Action"
+        }
+      },
+      "required": ["component", "triggerLabel", "tip", "action"],
+      "additionalProperties": false
+    }
+  },
+  "$defs": {
+    "anyComponent": {
+      "oneOf": [
+        {
+          "$ref": "#/components/PantokenButton"
+        },
+        {
+          "$ref": "#/components/PantokenTooltip"
+        }
+      ],
+      "discriminator": {
+        "propertyName": "component"
+      }
+    },
+    "anyFunction": {
+      "not": {}
+    }
+  }
+}

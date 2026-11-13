@@ -89,6 +89,11 @@ pantoken is a design-token transformation and distribution system. It converts I
   or project suitability. Inspect an item with `shadcn view`, review the resulting diff, and pin
   package versions for durable applications. npm provenance covers installed packages but does not
   sign the mutable JSON served from `pantoken.app`.
+- The Pantoken A2UI v1 catalog restricts component names and properties, rejects undeclared
+  properties, and defines no executable catalog functions. Its Lit components render supplied
+  labels as text and route declared actions through A2UI's action handling; these controls are not
+  an authorization boundary. The published catalog JSON is mutable and unsigned, so clients should
+  review the versioned schema and authorize action effects in the host application.
 - Agent coding sessions are checkpointed by Entire and pushed to this repository as git objects
   under `refs/entire/checkpoints/*`. Transcripts are redacted at capture time for known credential
   formats and for email and phone PII, but they are still a record of contributor terminal and

@@ -61,8 +61,11 @@
 ## Theming other systems
 
 - `@pantoken/shadcn` · `@pantoken/bootstrap` · `@pantoken/storybook`
-- A2UI: theme an existing framework renderer with version-matched `--a2ui-*` properties and
-  verified `--instui-*` tokens; use existing pantoken native outputs for native clients.
+- A2UI: for verified A2UI 1.0 Lit clients, use `@pantoken/ai/a2ui/catalog-v1.json` with
+  `@pantoken/web-components/a2ui` alongside the Basic Catalog. It currently defines
+  `PantokenButton` and `PantokenTooltip` only. React/Angular runtime support is pending verification;
+  Flutter, SwiftUI, and Jetpack Compose have schema-only support. For Basic Catalog theming, use
+  version-matched `--a2ui-*` properties and verified `--instui-*` tokens.
 
 ## Native & other ecosystems (CLI: `pantoken generate <target>`)
 

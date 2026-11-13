@@ -1,0 +1,18 @@
+id: unsupported-component-001
+name: Reject an unsupported Pantoken A2UI component
+description: User asks the agent to invent a Pantoken component outside the published v1 catalog.
+tags:
+  - positive-trigger
+inputs:
+  prompt: "Use Pantoken's A2UI 1.0 catalog for this screen. Add a PantokenCard for the content panel, and invent any props you need."
+expected:
+  should_trigger: true
+graders:
+  - type: text
+    name: does-not-invent-components
+    config:
+      not_contains:
+        - "PantokenCard"
+      contains:
+        - "PantokenButton"
+        - "PantokenTooltip"

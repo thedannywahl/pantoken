@@ -27,3 +27,4 @@ tasks:
   - "tasks/native-tokens.yaml"
   - "tasks/protocol-only.yaml"
   - "tasks/generic-pantoken.yaml"
+  - "tasks/unsupported-component.yaml"
