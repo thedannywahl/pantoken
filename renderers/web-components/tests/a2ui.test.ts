@@ -8,7 +8,7 @@ import {
 } from "../src/a2ui.ts";
 import catalogDocument from "../src/generated/a2ui-catalog.json" with { type: "json" };
 import { ELEMENTS } from "../src/lib/elements-meta.ts";
-import { a2uiNameForElement } from "../src/a2ui-contracts.ts";
+import { A2UI_COMPONENTS, a2uiNameForElement } from "../src/a2ui-contracts.ts";
 
 afterEach(() => {
   vi.useRealTimers();
@@ -61,10 +61,16 @@ test("component schemas constrain variants, icons, media URLs, and undeclared pr
   const tooltip = pantokenA2uiCatalog.components.get("PantokenTooltip");
   const icon = pantokenA2uiCatalog.components.get("PantokenIcon");
   const image = pantokenA2uiCatalog.components.get("PantokenImg");
+  const link = pantokenA2uiCatalog.components.get("PantokenLink");
+  const card = pantokenA2uiCatalog.components.get("PantokenCard");
+  const table = pantokenA2uiCatalog.components.get("PantokenTable");
+  const select = pantokenA2uiCatalog.components.get("PantokenSimpleSelect");
   expect(button).toBeTruthy();
   expect(tooltip).toBeTruthy();
   expect(icon).toBeTruthy();
   expect(image).toBeTruthy();
+  expect(link).toBeTruthy();
+  expect(card).toBeTruthy();
   expect(button?.schema.safeParse({ label: "Save", variant: "primary" }).success).toBe(true);
   expect(button?.schema.safeParse({ label: "Save", variant: "arbitrary" }).success).toBe(false);
   expect(button?.schema.safeParse({ label: "Save", href: "javascript:alert(1)" }).success).toBe(
@@ -96,7 +102,93 @@ test("component schemas constrain variants, icons, media URLs, and undeclared pr
   expect(
     image?.schema.safeParse({ src: "https://example.com/image.png", alt: "Campus" }).success,
   ).toBe(true);
+  expect(link?.schema.safeParse({ label: "Docs", href: "https://example.com" }).success).toBe(true);
+  expect(link?.schema.safeParse({ label: "Unsafe", href: "javascript:alert(1)" }).success).toBe(
+    false,
+  );
+  expect(link?.schema.safeParse({ label: "External", href: "//evil.example" }).success).toBe(false);
+  expect(link?.schema.safeParse({ label: "External", href: "/\\evil.example" }).success).toBe(
+    false,
+  );
+  expect(
+    table?.schema.safeParse({
+      caption: "People",
+      headers: ["Name", "Role"],
+      rows: [["Ada", "Admin"]],
+    }).success,
+  ).toBe(true);
+  expect(
+    table?.schema.safeParse({
+      caption: "People",
+      headers: ["Name"],
+      rows: ["not a row"],
+    }).success,
+  ).toBe(false);
+  expect(
+    select?.schema.safeParse({
+      label: "Role",
+      options: [{ label: "Admin", value: "admin" }],
+    }).success,
+  ).toBe(true);
+  expect(
+    select?.schema.safeParse({
+      label: "Role",
+      options: [{ label: "Admin", value: "admin", html: true }],
+    }).success,
+  ).toBe(false);
+  expect(A2UI_COMPONENTS.checkbox.valueChange).toEqual({
+    event: "value-change",
+    property: "checked",
+    detailProperty: "value",
+  });
+  expect(card?.schema.safeParse({ label: "Summary" }).success).toBe(true);
+  expect(card?.schema.safeParse({ label: "Summary", html: "<b>raw</b>" }).success).toBe(false);
   expect(pantokenA2uiCatalog.components.has("UnknownComponent")).toBe(false);
+});
+
+test("A2UI renders tables and selects with validated native content", async () => {
+  registerPantokenA2uiComponents();
+  const tableSurface = makeSurface("PantokenTable", {
+    caption: "People",
+    headers: ["Name", "Role"],
+    rows: [["Ada", "Admin"]],
+  });
+  const tableImplementation = implementationFor("PantokenTable");
+  const tableElement = document.createElement(tableImplementation.tagName);
+  if (!(tableElement instanceof tableImplementation.element)) {
+    throw new Error("Pantoken A2UI table was not registered.");
+  }
+  document.body.appendChild(tableElement);
+  tableElement.context = new ComponentContext(tableSurface, "testComponent");
+  await tableElement.updateComplete;
+
+  const table = tableElement.shadowRoot?.querySelector("table");
+  expect(table?.querySelector("caption")?.textContent?.trim()).toBe("People");
+  expect(table?.querySelectorAll("thead th")).toHaveLength(2);
+  expect(Array.from(table?.querySelectorAll("tbody td") ?? [], (cell) => cell.textContent)).toEqual(
+    ["Ada", "Admin"],
+  );
+
+  const selectSurface = makeSurface("PantokenSimpleSelect", {
+    label: "Role",
+    value: "admin",
+    options: [
+      { label: "User", value: "user" },
+      { label: "Admin", value: "admin" },
+    ],
+  });
+  const selectImplementation = implementationFor("PantokenSimpleSelect");
+  const selectElement = document.createElement(selectImplementation.tagName);
+  if (!(selectElement instanceof selectImplementation.element)) {
+    throw new Error("Pantoken A2UI select was not registered.");
+  }
+  document.body.appendChild(selectElement);
+  selectElement.context = new ComponentContext(selectSurface, "testComponent");
+  await selectElement.updateComplete;
+
+  const select = selectElement.shadowRoot?.querySelector("instui-simple-select");
+  expect(select?.shadowRoot?.querySelector("select")?.value).toBe("admin");
+  expect(select?.shadowRoot?.querySelectorAll("option")).toHaveLength(2);
 });
 
 test("registers every Universal implementation and all Pantoken element dependencies on demand", () => {

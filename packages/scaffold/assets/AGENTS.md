@@ -103,7 +103,7 @@ rules:
 - For verified A2UI 1.0 Lit clients, use Pantoken's published catalog alongside the Basic Catalog:
   `@pantoken/ai/a2ui/catalog-v1.json` and
   `registerPantokenA2uiComponents()` from `@pantoken/web-components/a2ui`. Use only the listed
-  components and properties; the current catalog contains `PantokenButton` and `PantokenTooltip`.
+  components and properties; the catalog covers every exported `@pantoken/web-components` element.
 - React and Angular runtime support is pending v1.0 SDK verification. Flutter, SwiftUI, and Jetpack
   Compose have schema-only support; Pantoken doesn't provide native component renderers.
 - For the web Basic Catalog, use its documented `--a2ui-*` properties and map only to semantically

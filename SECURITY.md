@@ -89,13 +89,15 @@ pantoken is a design-token transformation and distribution system. It converts I
   or project suitability. Inspect an item with `shadcn view`, review the resulting diff, and pin
   package versions for durable applications. npm provenance covers installed packages but does not
   sign the mutable JSON served from `pantoken.app`.
-- The Pantoken A2UI v1 catalog is generated from an exhaustive contract for every exported
-  `@pantoken/web-components` element. It rejects undeclared properties, allowlists icon names and
-  variants, excludes raw HTML, and sanitizes `MediaUrl` values before assigning image sources.
-  Lit adapters render text as text and route declared actions through A2UI; these controls are not
-  an authorization boundary. The published catalog JSON is mutable and unsigned, so clients should
-  review the versioned schema, apply their own media-source policy, and authorize action effects in
-  the host application.
+- The Pantoken A2UI v1 catalog generates a closed default schema for every exported
+  `@pantoken/web-components` element, with explicit component-specific properties where needed. It
+  rejects undeclared properties, allowlists icon names and variants, excludes raw HTML, sanitizes
+  `MediaUrl` values before assigning image sources, and restricts link URLs to safe schemes and
+  same-origin relative references (not protocol-relative URLs or raw backslashes). Lit adapters
+  render text as text and route declared actions through A2UI;
+  these controls are not an authorization boundary. The published catalog JSON is mutable and
+  unsigned, so clients should review the versioned schema, apply their own media-source and link
+  policies, and authorize action effects in the host application.
 - Agent coding sessions are checkpointed by Entire and pushed to this repository as git objects
   under `refs/entire/checkpoints/*`. Transcripts are redacted at capture time for known credential
   formats and for email and phone PII, but they are still a record of contributor terminal and

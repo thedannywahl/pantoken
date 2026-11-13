@@ -3,6 +3,7 @@ import { computed, ref, watch } from "vue";
 import { useData } from "vitepress";
 import { ASSETS } from "../../../../packages/scaffold/generated/assets";
 import { AGENT_TOOLS_DEFAULTS, type AgentToolsStrings } from "../agent-tools";
+import type { A2uiCatalogStrings } from "../a2ui-catalog";
 import { readHashParam, writeHashParam } from "../composables/useHashParams";
 import { useHashParamRef } from "../composables/usePickerHelpers";
 import { GET_STARTED_TABS_DEFAULTS, type GetStartedTabsStrings } from "../get-started";
@@ -53,9 +54,11 @@ interface AssetTarget {
 
 const { theme } = useData<{
   agentTools?: AgentToolsStrings;
+  a2uiCatalog: A2uiCatalogStrings;
   getStartedTabs?: GetStartedTabsStrings;
 }>();
 const t = computed(() => ({ ...AGENT_TOOLS_DEFAULTS, ...theme.value.agentTools }));
+const a2uiCatalog = computed(() => theme.value.a2uiCatalog);
 const getStartedTabs = computed<GetStartedTabsStrings>(
   () => theme.value.getStartedTabs ?? GET_STARTED_TABS_DEFAULTS,
 );
@@ -181,6 +184,13 @@ const docsLinks = computed<LinkInfo[]>(() => [
     href: "/.well-known/api-catalog",
     value: "/.well-known/api-catalog",
     description: t.value.apiCatalogDescription,
+  },
+  {
+    id: "a2ui-catalog",
+    title: a2uiCatalog.value.title,
+    href: "/a2ui/",
+    value: "/a2ui/",
+    description: a2uiCatalog.value.subtitle,
   },
   {
     id: "vscode-custom-data",

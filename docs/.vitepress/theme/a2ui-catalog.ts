@@ -12,6 +12,7 @@ export interface A2uiCatalogStrings {
   optional: string;
   noFunctions: string;
   supportHeading: string;
+  functionsHeading: string;
   litSupport: string;
   reactSupport: string;
   angularSupport: string;

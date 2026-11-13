@@ -2,6 +2,7 @@ import { mkdirSync, readFileSync, writeFileSync } from "node:fs";
 import { dirname, resolve } from "node:path";
 import {
   A2UI_COMPONENTS,
+  SAFE_HREF_PATTERN,
   a2uiNameForElement,
   a2uiPropertiesFor,
 } from "../../../renderers/web-components/src/a2ui-contracts.ts";
@@ -14,6 +15,7 @@ const outputs = [
   resolve(root, "renderers/web-components/src/generated/a2ui-catalog.json"),
   resolve(root, "docs/.vitepress/theme/generated/a2ui-catalog.json"),
   resolve(root, "docs/public/a2ui/catalog.json"),
+  resolve(root, "docs/public/a2ui/catalog/v1/catalog.json"),
 ];
 
 const exportedComponents = new Set(ELEMENTS.map(a2uiNameForElement));
@@ -178,7 +180,12 @@ function validateSchema(
     ) {
       fail(`${path}.enum must contain unique strings`);
     }
-    if ("pattern" in schema && schema.pattern !== safeIdPattern) {
+    const isSafeLinkHref =
+      component === "PantokenLink" && property === "href" && schema.pattern === SAFE_HREF_PATTERN;
+    if (
+      ("pattern" in schema && schema.pattern !== safeIdPattern && !isSafeLinkHref) ||
+      (component === "PantokenLink" && property === "href" && !isSafeLinkHref)
+    ) {
       fail(`${path}.pattern is not an approved identifier constraint`);
     }
     if (
@@ -290,7 +297,8 @@ export function validateCatalog(value: unknown): asserts value is JsonRecord {
       if (
         property.toLowerCase() !== "component" &&
         unsafePropertyNames.has(property.toLowerCase()) &&
-        !(name === "PantokenImg" && property === "src")
+        !(name === "PantokenImg" && property === "src") &&
+        !(name === "PantokenLink" && property === "href")
       ) {
         fail(`${name}.${property} is not allowed in the A2UI catalog`);
       }

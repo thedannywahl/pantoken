@@ -4992,6 +4992,833 @@
         "children"
       ],
       "additionalProperties": false
+    },
+    "PantokenCard": {
+      "type": "object",
+      "description": "A Pantoken card component with safe text and child content.",
+      "properties": {
+        "component": {
+          "const": "PantokenCard"
+        },
+        "label": {
+          "$ref": "common_types.json#/$defs/DynamicString"
+        },
+        "children": {
+          "$ref": "common_types.json#/$defs/ChildList",
+          "minItems": 1,
+          "maxItems": 32
+        }
+      },
+      "required": [
+        "component"
+      ],
+      "additionalProperties": false
+    },
+    "PantokenByline": {
+      "type": "object",
+      "description": "A Pantoken byline component with safe text and child content.",
+      "properties": {
+        "component": {
+          "const": "PantokenByline"
+        },
+        "label": {
+          "$ref": "common_types.json#/$defs/DynamicString"
+        },
+        "children": {
+          "$ref": "common_types.json#/$defs/ChildList",
+          "minItems": 1,
+          "maxItems": 32
+        }
+      },
+      "required": [
+        "component"
+      ],
+      "additionalProperties": false
+    },
+    "PantokenTable": {
+      "type": "object",
+      "description": "A data table with a caption, column headers, and text-only cells.",
+      "properties": {
+        "component": {
+          "const": "PantokenTable"
+        },
+        "caption": {
+          "$ref": "common_types.json#/$defs/DynamicString"
+        },
+        "headers": {
+          "type": "array",
+          "items": {
+            "$ref": "common_types.json#/$defs/DynamicString"
+          },
+          "minItems": 1,
+          "maxItems": 32
+        },
+        "rows": {
+          "type": "array",
+          "items": {
+            "type": "array",
+            "items": {
+              "$ref": "common_types.json#/$defs/DynamicString"
+            },
+            "minItems": 1,
+            "maxItems": 32
+          },
+          "minItems": 1,
+          "maxItems": 64
+        }
+      },
+      "required": [
+        "component",
+        "caption",
+        "headers",
+        "rows"
+      ],
+      "additionalProperties": false
+    },
+    "PantokenLink": {
+      "type": "object",
+      "description": "A navigable text link with an allowlisted URL scheme.",
+      "properties": {
+        "component": {
+          "const": "PantokenLink"
+        },
+        "label": {
+          "$ref": "common_types.json#/$defs/DynamicString"
+        },
+        "href": {
+          "type": "string",
+          "pattern": "^(?:(?:https?:\\/\\/|mailto:|tel:)[^\\u0000-\\u0020\\\\]+|\\/(?![\\/\\\\])[^\\u0000-\\u0020\\\\]*|\\.{1,2}\\/[^\\u0000-\\u0020\\\\]*|#[^\\u0000-\\u0020\\\\]*|\\?[^\\u0000-\\u0020\\\\]*|(?![A-Za-z][A-Za-z0-9+.-]*:)[^:/\\\\][^\\u0000-\\u0020\\\\]*)$"
+        },
+        "target": {
+          "type": "string",
+          "enum": [
+            "_self",
+            "_blank",
+            "_parent",
+            "_top"
+          ]
+        },
+        "children": {
+          "$ref": "common_types.json#/$defs/ChildList",
+          "minItems": 1,
+          "maxItems": 32
+        },
+        "action": {
+          "$ref": "common_types.json#/$defs/Action"
+        }
+      },
+      "required": [
+        "component",
+        "label"
+      ],
+      "additionalProperties": false
+    },
+    "PantokenList": {
+      "type": "object",
+      "description": "A Pantoken list component with safe text and child content.",
+      "properties": {
+        "component": {
+          "const": "PantokenList"
+        },
+        "label": {
+          "$ref": "common_types.json#/$defs/DynamicString"
+        },
+        "children": {
+          "$ref": "common_types.json#/$defs/ChildList",
+          "minItems": 1,
+          "maxItems": 32
+        }
+      },
+      "required": [
+        "component"
+      ],
+      "additionalProperties": false
+    },
+    "PantokenCheckbox": {
+      "type": "object",
+      "description": "A native checkbox with a visible label and checked-state updates.",
+      "properties": {
+        "component": {
+          "const": "PantokenCheckbox"
+        },
+        "label": {
+          "$ref": "common_types.json#/$defs/DynamicString"
+        },
+        "checked": {
+          "$ref": "common_types.json#/$defs/DynamicBoolean"
+        },
+        "disabled": {
+          "$ref": "common_types.json#/$defs/DynamicBoolean"
+        },
+        "name": {
+          "$ref": "common_types.json#/$defs/DynamicString"
+        },
+        "value": {
+          "$ref": "common_types.json#/$defs/DynamicString"
+        },
+        "action": {
+          "$ref": "common_types.json#/$defs/Action"
+        }
+      },
+      "required": [
+        "component",
+        "label"
+      ],
+      "additionalProperties": false
+    },
+    "PantokenRadio": {
+      "type": "object",
+      "description": "A native radio control with a visible label and selected-value updates.",
+      "properties": {
+        "component": {
+          "const": "PantokenRadio"
+        },
+        "label": {
+          "$ref": "common_types.json#/$defs/DynamicString"
+        },
+        "checked": {
+          "$ref": "common_types.json#/$defs/DynamicBoolean"
+        },
+        "disabled": {
+          "$ref": "common_types.json#/$defs/DynamicBoolean"
+        },
+        "name": {
+          "$ref": "common_types.json#/$defs/DynamicString"
+        },
+        "value": {
+          "$ref": "common_types.json#/$defs/DynamicString"
+        },
+        "action": {
+          "$ref": "common_types.json#/$defs/Action"
+        }
+      },
+      "required": [
+        "component",
+        "label",
+        "value"
+      ],
+      "additionalProperties": false
+    },
+    "PantokenMenu": {
+      "type": "object",
+      "description": "A Pantoken menu component with safe text and child content.",
+      "properties": {
+        "component": {
+          "const": "PantokenMenu"
+        },
+        "label": {
+          "$ref": "common_types.json#/$defs/DynamicString"
+        },
+        "children": {
+          "$ref": "common_types.json#/$defs/ChildList",
+          "minItems": 1,
+          "maxItems": 32
+        }
+      },
+      "required": [
+        "component"
+      ],
+      "additionalProperties": false
+    },
+    "PantokenBreadcrumb": {
+      "type": "object",
+      "description": "A labeled navigation landmark with breadcrumb items.",
+      "properties": {
+        "component": {
+          "const": "PantokenBreadcrumb"
+        },
+        "label": {
+          "$ref": "common_types.json#/$defs/DynamicString"
+        },
+        "children": {
+          "$ref": "common_types.json#/$defs/ChildList",
+          "minItems": 1,
+          "maxItems": 32
+        }
+      },
+      "required": [
+        "component",
+        "label"
+      ],
+      "additionalProperties": false
+    },
+    "PantokenBillboard": {
+      "type": "object",
+      "description": "A Pantoken billboard component with safe text and child content.",
+      "properties": {
+        "component": {
+          "const": "PantokenBillboard"
+        },
+        "label": {
+          "$ref": "common_types.json#/$defs/DynamicString"
+        },
+        "children": {
+          "$ref": "common_types.json#/$defs/ChildList",
+          "minItems": 1,
+          "maxItems": 32
+        }
+      },
+      "required": [
+        "component"
+      ],
+      "additionalProperties": false
+    },
+    "PantokenToggleGroup": {
+      "type": "object",
+      "description": "A token-styled disclosure group with a summary and expandable child content.",
+      "properties": {
+        "component": {
+          "const": "PantokenToggleGroup"
+        },
+        "summary": {
+          "$ref": "common_types.json#/$defs/DynamicString"
+        },
+        "open": {
+          "$ref": "common_types.json#/$defs/DynamicBoolean"
+        },
+        "children": {
+          "$ref": "common_types.json#/$defs/ChildList",
+          "minItems": 1,
+          "maxItems": 32
+        },
+        "action": {
+          "$ref": "common_types.json#/$defs/Action"
+        }
+      },
+      "required": [
+        "component",
+        "summary"
+      ],
+      "additionalProperties": false
+    },
+    "PantokenPagination": {
+      "type": "object",
+      "description": "A labeled navigation landmark for pagination controls.",
+      "properties": {
+        "component": {
+          "const": "PantokenPagination"
+        },
+        "label": {
+          "$ref": "common_types.json#/$defs/DynamicString"
+        },
+        "children": {
+          "$ref": "common_types.json#/$defs/ChildList",
+          "minItems": 1,
+          "maxItems": 32
+        }
+      },
+      "required": [
+        "component",
+        "label"
+      ],
+      "additionalProperties": false
+    },
+    "PantokenToggleDetails": {
+      "type": "object",
+      "description": "A native disclosure with a summary and expandable child content.",
+      "properties": {
+        "component": {
+          "const": "PantokenToggleDetails"
+        },
+        "summary": {
+          "$ref": "common_types.json#/$defs/DynamicString"
+        },
+        "open": {
+          "$ref": "common_types.json#/$defs/DynamicBoolean"
+        },
+        "children": {
+          "$ref": "common_types.json#/$defs/ChildList",
+          "minItems": 1,
+          "maxItems": 32
+        },
+        "action": {
+          "$ref": "common_types.json#/$defs/Action"
+        }
+      },
+      "required": [
+        "component",
+        "summary"
+      ],
+      "additionalProperties": false
+    },
+    "PantokenFileDrop": {
+      "type": "object",
+      "description": "A Pantoken file-drop component with safe text and child content.",
+      "properties": {
+        "component": {
+          "const": "PantokenFileDrop"
+        },
+        "label": {
+          "$ref": "common_types.json#/$defs/DynamicString"
+        },
+        "children": {
+          "$ref": "common_types.json#/$defs/ChildList",
+          "minItems": 1,
+          "maxItems": 32
+        }
+      },
+      "required": [
+        "component"
+      ],
+      "additionalProperties": false
+    },
+    "PantokenRangeInput": {
+      "type": "object",
+      "description": "A native range slider with bounded numeric values.",
+      "properties": {
+        "component": {
+          "const": "PantokenRangeInput"
+        },
+        "label": {
+          "$ref": "common_types.json#/$defs/DynamicString"
+        },
+        "value": {
+          "$ref": "common_types.json#/$defs/DynamicNumber",
+          "minimum": 0,
+          "maximum": 1000000
+        },
+        "min": {
+          "$ref": "common_types.json#/$defs/DynamicNumber",
+          "minimum": 0,
+          "maximum": 1000000
+        },
+        "max": {
+          "$ref": "common_types.json#/$defs/DynamicNumber",
+          "minimum": 0,
+          "maximum": 1000000
+        },
+        "step": {
+          "$ref": "common_types.json#/$defs/DynamicNumber",
+          "minimum": 0,
+          "maximum": 1000000
+        },
+        "disabled": {
+          "$ref": "common_types.json#/$defs/DynamicBoolean"
+        },
+        "action": {
+          "$ref": "common_types.json#/$defs/Action"
+        }
+      },
+      "required": [
+        "component",
+        "label"
+      ],
+      "additionalProperties": false
+    },
+    "PantokenMask": {
+      "type": "object",
+      "description": "A Pantoken mask component with safe text and child content.",
+      "properties": {
+        "component": {
+          "const": "PantokenMask"
+        },
+        "label": {
+          "$ref": "common_types.json#/$defs/DynamicString"
+        },
+        "children": {
+          "$ref": "common_types.json#/$defs/ChildList",
+          "minItems": 1,
+          "maxItems": 32
+        }
+      },
+      "required": [
+        "component"
+      ],
+      "additionalProperties": false
+    },
+    "PantokenScreenReaderContent": {
+      "type": "object",
+      "description": "A Pantoken screen-reader-content component with safe text and child content.",
+      "properties": {
+        "component": {
+          "const": "PantokenScreenReaderContent"
+        },
+        "label": {
+          "$ref": "common_types.json#/$defs/DynamicString"
+        },
+        "children": {
+          "$ref": "common_types.json#/$defs/ChildList",
+          "minItems": 1,
+          "maxItems": 32
+        }
+      },
+      "required": [
+        "component"
+      ],
+      "additionalProperties": false
+    },
+    "PantokenHeading": {
+      "type": "object",
+      "description": "A Pantoken heading component with safe text and child content.",
+      "properties": {
+        "component": {
+          "const": "PantokenHeading"
+        },
+        "label": {
+          "$ref": "common_types.json#/$defs/DynamicString"
+        },
+        "children": {
+          "$ref": "common_types.json#/$defs/ChildList",
+          "minItems": 1,
+          "maxItems": 32
+        }
+      },
+      "required": [
+        "component"
+      ],
+      "additionalProperties": false
+    },
+    "PantokenText": {
+      "type": "object",
+      "description": "A Pantoken text component with safe text and child content.",
+      "properties": {
+        "component": {
+          "const": "PantokenText"
+        },
+        "label": {
+          "$ref": "common_types.json#/$defs/DynamicString"
+        },
+        "children": {
+          "$ref": "common_types.json#/$defs/ChildList",
+          "minItems": 1,
+          "maxItems": 32
+        }
+      },
+      "required": [
+        "component"
+      ],
+      "additionalProperties": false
+    },
+    "PantokenCloseButton": {
+      "type": "object",
+      "description": "An accessible close control that dispatches an A2UI click action.",
+      "properties": {
+        "component": {
+          "const": "PantokenCloseButton"
+        },
+        "label": {
+          "$ref": "common_types.json#/$defs/DynamicString"
+        },
+        "action": {
+          "$ref": "common_types.json#/$defs/Action"
+        }
+      },
+      "required": [
+        "component",
+        "label"
+      ],
+      "additionalProperties": false
+    },
+    "PantokenFormField": {
+      "type": "object",
+      "description": "A Pantoken form-field component with safe text and child content.",
+      "properties": {
+        "component": {
+          "const": "PantokenFormField"
+        },
+        "label": {
+          "$ref": "common_types.json#/$defs/DynamicString"
+        },
+        "children": {
+          "$ref": "common_types.json#/$defs/ChildList",
+          "minItems": 1,
+          "maxItems": 32
+        }
+      },
+      "required": [
+        "component"
+      ],
+      "additionalProperties": false
+    },
+    "PantokenFormFieldGroup": {
+      "type": "object",
+      "description": "A labeled fieldset grouping related form controls.",
+      "properties": {
+        "component": {
+          "const": "PantokenFormFieldGroup"
+        },
+        "label": {
+          "$ref": "common_types.json#/$defs/DynamicString"
+        },
+        "children": {
+          "$ref": "common_types.json#/$defs/ChildList",
+          "minItems": 1,
+          "maxItems": 32
+        }
+      },
+      "required": [
+        "component",
+        "label"
+      ],
+      "additionalProperties": false
+    },
+    "PantokenRadioInputGroup": {
+      "type": "object",
+      "description": "A labeled fieldset grouping related radio controls.",
+      "properties": {
+        "component": {
+          "const": "PantokenRadioInputGroup"
+        },
+        "label": {
+          "$ref": "common_types.json#/$defs/DynamicString"
+        },
+        "children": {
+          "$ref": "common_types.json#/$defs/ChildList",
+          "minItems": 1,
+          "maxItems": 32
+        }
+      },
+      "required": [
+        "component",
+        "label"
+      ],
+      "additionalProperties": false
+    },
+    "PantokenFormFieldMessages": {
+      "type": "object",
+      "description": "A Pantoken form-field-messages component with safe text and child content.",
+      "properties": {
+        "component": {
+          "const": "PantokenFormFieldMessages"
+        },
+        "label": {
+          "$ref": "common_types.json#/$defs/DynamicString"
+        },
+        "children": {
+          "$ref": "common_types.json#/$defs/ChildList",
+          "minItems": 1,
+          "maxItems": 32
+        }
+      },
+      "required": [
+        "component"
+      ],
+      "additionalProperties": false
+    },
+    "PantokenTextInput": {
+      "type": "object",
+      "description": "A native text input with a visible label and value updates.",
+      "properties": {
+        "component": {
+          "const": "PantokenTextInput"
+        },
+        "label": {
+          "$ref": "common_types.json#/$defs/DynamicString"
+        },
+        "value": {
+          "$ref": "common_types.json#/$defs/DynamicString"
+        },
+        "type": {
+          "type": "string",
+          "enum": [
+            "text",
+            "email",
+            "url",
+            "tel",
+            "search",
+            "date",
+            "time"
+          ],
+          "default": "text"
+        },
+        "placeholder": {
+          "$ref": "common_types.json#/$defs/DynamicString"
+        },
+        "name": {
+          "$ref": "common_types.json#/$defs/DynamicString"
+        },
+        "required": {
+          "$ref": "common_types.json#/$defs/DynamicBoolean"
+        },
+        "disabled": {
+          "$ref": "common_types.json#/$defs/DynamicBoolean"
+        },
+        "readOnly": {
+          "$ref": "common_types.json#/$defs/DynamicBoolean"
+        }
+      },
+      "required": [
+        "component",
+        "label"
+      ],
+      "additionalProperties": false
+    },
+    "PantokenTextArea": {
+      "type": "object",
+      "description": "A native multiline text field with a visible label and value updates.",
+      "properties": {
+        "component": {
+          "const": "PantokenTextArea"
+        },
+        "label": {
+          "$ref": "common_types.json#/$defs/DynamicString"
+        },
+        "value": {
+          "$ref": "common_types.json#/$defs/DynamicString"
+        },
+        "placeholder": {
+          "$ref": "common_types.json#/$defs/DynamicString"
+        },
+        "name": {
+          "$ref": "common_types.json#/$defs/DynamicString"
+        },
+        "required": {
+          "$ref": "common_types.json#/$defs/DynamicBoolean"
+        },
+        "disabled": {
+          "$ref": "common_types.json#/$defs/DynamicBoolean"
+        },
+        "readOnly": {
+          "$ref": "common_types.json#/$defs/DynamicBoolean"
+        }
+      },
+      "required": [
+        "component",
+        "label"
+      ],
+      "additionalProperties": false
+    },
+    "PantokenSimpleSelect": {
+      "type": "object",
+      "description": "A labeled select control with bounded, text-only options.",
+      "properties": {
+        "component": {
+          "const": "PantokenSimpleSelect"
+        },
+        "label": {
+          "$ref": "common_types.json#/$defs/DynamicString"
+        },
+        "value": {
+          "$ref": "common_types.json#/$defs/DynamicString"
+        },
+        "name": {
+          "$ref": "common_types.json#/$defs/DynamicString"
+        },
+        "required": {
+          "$ref": "common_types.json#/$defs/DynamicBoolean"
+        },
+        "disabled": {
+          "$ref": "common_types.json#/$defs/DynamicBoolean"
+        },
+        "options": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "label": {
+                "$ref": "common_types.json#/$defs/DynamicString"
+              },
+              "value": {
+                "$ref": "common_types.json#/$defs/DynamicString"
+              },
+              "disabled": {
+                "$ref": "common_types.json#/$defs/DynamicBoolean"
+              }
+            },
+            "required": [
+              "label",
+              "value"
+            ],
+            "additionalProperties": false
+          },
+          "minItems": 1,
+          "maxItems": 64
+        }
+      },
+      "required": [
+        "component",
+        "label",
+        "options"
+      ],
+      "additionalProperties": false
+    },
+    "PantokenInputGroup": {
+      "type": "object",
+      "description": "A Pantoken input-group component with safe text and child content.",
+      "properties": {
+        "component": {
+          "const": "PantokenInputGroup"
+        },
+        "label": {
+          "$ref": "common_types.json#/$defs/DynamicString"
+        },
+        "children": {
+          "$ref": "common_types.json#/$defs/ChildList",
+          "minItems": 1,
+          "maxItems": 32
+        }
+      },
+      "required": [
+        "component"
+      ],
+      "additionalProperties": false
+    },
+    "PantokenNumberInput": {
+      "type": "object",
+      "description": "A native number input with bounded values and a visible label.",
+      "properties": {
+        "component": {
+          "const": "PantokenNumberInput"
+        },
+        "label": {
+          "$ref": "common_types.json#/$defs/DynamicString"
+        },
+        "value": {
+          "$ref": "common_types.json#/$defs/DynamicNumber",
+          "minimum": -1000000,
+          "maximum": 1000000
+        },
+        "min": {
+          "$ref": "common_types.json#/$defs/DynamicNumber",
+          "minimum": -1000000,
+          "maximum": 1000000
+        },
+        "max": {
+          "$ref": "common_types.json#/$defs/DynamicNumber",
+          "minimum": -1000000,
+          "maximum": 1000000
+        },
+        "step": {
+          "$ref": "common_types.json#/$defs/DynamicNumber",
+          "minimum": 0,
+          "maximum": 1000000
+        },
+        "name": {
+          "$ref": "common_types.json#/$defs/DynamicString"
+        },
+        "required": {
+          "$ref": "common_types.json#/$defs/DynamicBoolean"
+        },
+        "disabled": {
+          "$ref": "common_types.json#/$defs/DynamicBoolean"
+        }
+      },
+      "required": [
+        "component",
+        "label"
+      ],
+      "additionalProperties": false
+    },
+    "PantokenView": {
+      "type": "object",
+      "description": "A Pantoken view component with safe text and child content.",
+      "properties": {
+        "component": {
+          "const": "PantokenView"
+        },
+        "label": {
+          "$ref": "common_types.json#/$defs/DynamicString"
+        },
+        "children": {
+          "$ref": "common_types.json#/$defs/ChildList",
+          "minItems": 1,
+          "maxItems": 32
+        }
+      },
+      "required": [
+        "component"
+      ],
+      "additionalProperties": false
     }
   },
   "$defs": {
@@ -5007,10 +5834,28 @@
           "$ref": "#/components/PantokenBadge"
         },
         {
+          "$ref": "#/components/PantokenBillboard"
+        },
+        {
+          "$ref": "#/components/PantokenBreadcrumb"
+        },
+        {
           "$ref": "#/components/PantokenButton"
         },
         {
+          "$ref": "#/components/PantokenByline"
+        },
+        {
           "$ref": "#/components/PantokenCalendar"
+        },
+        {
+          "$ref": "#/components/PantokenCard"
+        },
+        {
+          "$ref": "#/components/PantokenCheckbox"
+        },
+        {
+          "$ref": "#/components/PantokenCloseButton"
         },
         {
           "$ref": "#/components/PantokenContextView"
@@ -5028,6 +5873,21 @@
           "$ref": "#/components/PantokenDrilldown"
         },
         {
+          "$ref": "#/components/PantokenFileDrop"
+        },
+        {
+          "$ref": "#/components/PantokenFormField"
+        },
+        {
+          "$ref": "#/components/PantokenFormFieldGroup"
+        },
+        {
+          "$ref": "#/components/PantokenFormFieldMessages"
+        },
+        {
+          "$ref": "#/components/PantokenHeading"
+        },
+        {
           "$ref": "#/components/PantokenIcon"
         },
         {
@@ -5040,13 +5900,34 @@
           "$ref": "#/components/PantokenInPlaceEdit"
         },
         {
+          "$ref": "#/components/PantokenInputGroup"
+        },
+        {
+          "$ref": "#/components/PantokenLink"
+        },
+        {
+          "$ref": "#/components/PantokenList"
+        },
+        {
+          "$ref": "#/components/PantokenMask"
+        },
+        {
+          "$ref": "#/components/PantokenMenu"
+        },
+        {
           "$ref": "#/components/PantokenMetric"
         },
         {
           "$ref": "#/components/PantokenModal"
         },
         {
+          "$ref": "#/components/PantokenNumberInput"
+        },
+        {
           "$ref": "#/components/PantokenPages"
+        },
+        {
+          "$ref": "#/components/PantokenPagination"
         },
         {
           "$ref": "#/components/PantokenPill"
@@ -5061,13 +5942,31 @@
           "$ref": "#/components/PantokenProgressCircle"
         },
         {
+          "$ref": "#/components/PantokenRadio"
+        },
+        {
+          "$ref": "#/components/PantokenRadioInputGroup"
+        },
+        {
+          "$ref": "#/components/PantokenRangeInput"
+        },
+        {
           "$ref": "#/components/PantokenRating"
+        },
+        {
+          "$ref": "#/components/PantokenScreenReaderContent"
         },
         {
           "$ref": "#/components/PantokenSideNavBar"
         },
         {
+          "$ref": "#/components/PantokenSimpleSelect"
+        },
+        {
           "$ref": "#/components/PantokenSpinner"
+        },
+        {
+          "$ref": "#/components/PantokenTable"
         },
         {
           "$ref": "#/components/PantokenTabs"
@@ -5076,7 +5975,22 @@
           "$ref": "#/components/PantokenTag"
         },
         {
+          "$ref": "#/components/PantokenText"
+        },
+        {
+          "$ref": "#/components/PantokenTextArea"
+        },
+        {
+          "$ref": "#/components/PantokenTextInput"
+        },
+        {
           "$ref": "#/components/PantokenToggleButton"
+        },
+        {
+          "$ref": "#/components/PantokenToggleDetails"
+        },
+        {
+          "$ref": "#/components/PantokenToggleGroup"
         },
         {
           "$ref": "#/components/PantokenTooltip"
@@ -5089,6 +6003,9 @@
         },
         {
           "$ref": "#/components/PantokenTruncate"
+        },
+        {
+          "$ref": "#/components/PantokenView"
         }
       ],
       "discriminator": {

@@ -3,7 +3,11 @@ import { ELEMENTS } from "./lib/elements-meta.ts";
 
 type JsonSchema = Record<string, unknown>;
 type ElementName = (typeof ELEMENTS)[number];
-type AttributeMode = "boolean" | "boolean-string" | "media-url" | "popover-open";
+type AttributeMode = "boolean" | "boolean-string" | "media-url" | "safe-href" | "popover-open";
+
+/** JSON Schema pattern shared by the link contract and catalog generator. */
+export const SAFE_HREF_PATTERN: string =
+  "^(?:(?:https?:\\/\\/|mailto:|tel:)[^\\u0000-\\u0020\\\\]+|\\/(?![\\/\\\\])[^\\u0000-\\u0020\\\\]*|\\.{1,2}\\/[^\\u0000-\\u0020\\\\]*|#[^\\u0000-\\u0020\\\\]*|\\?[^\\u0000-\\u0020\\\\]*|(?![A-Za-z][A-Za-z0-9+.-]*:)[^:/\\\\][^\\u0000-\\u0020\\\\]*)$";
 
 /** A safe A2UI schema and rendering mapping for one Pantoken property. */
 export interface A2uiPropertyContract {
@@ -29,7 +33,18 @@ export interface A2uiComponentContract {
   required?: readonly string[];
   contentProperty?: string;
   children?: "slot" | "tree" | "pages" | "tabs" | "drawer";
-  special?: "icon-button" | "tooltip" | "tree" | "pages" | "tabs" | "drilldown" | "drawer";
+  special?:
+    | "icon-button"
+    | "tooltip"
+    | "tree"
+    | "pages"
+    | "tabs"
+    | "drilldown"
+    | "drawer"
+    | "toggle-group"
+    | "toggle-details"
+    | "table"
+    | "simple-select";
   actionEvents?: readonly string[];
   valueChange?: A2uiValueChange;
   attributeChange?: { attribute: string; property: string };
@@ -149,8 +164,8 @@ const drilldownPages: JsonSchema = {
   },
 };
 
-/** Contracts are exhaustive against ELEMENTS; adding a web component requires an explicit A2UI contract. */
-export const A2UI_COMPONENTS: Record<ElementName, A2uiComponentContract> = {
+/** Component-specific contracts extend the generated safe default for each name in ELEMENTS. */
+const A2UI_COMPONENT_OVERRIDES: Partial<Record<ElementName, A2uiComponentContract>> = {
   icon: {
     description: "An inline glyph selected from Pantoken's icon set.",
     properties: {
@@ -488,7 +503,231 @@ export const A2UI_COMPONENTS: Record<ElementName, A2uiComponentContract> = {
     actionEvents: ["click"],
     valueChange: { event: "click", property: "activeIndex", kind: "tab-index" },
   },
+  link: {
+    description: "A navigable text link with an allowlisted URL scheme.",
+    properties: {
+      label: text(),
+      href: property(
+        {
+          type: "string",
+          pattern: SAFE_HREF_PATTERN,
+        },
+        "href",
+        "safe-href",
+      ),
+      target: enumeration(["_self", "_blank", "_parent", "_top"], "target"),
+    },
+    required: ["label"],
+    contentProperty: "label",
+    children: "slot",
+    actionEvents: ["click"],
+  },
+  checkbox: {
+    description: "A native checkbox with a visible label and checked-state updates.",
+    properties: {
+      label: text(),
+      checked: boolean("checked"),
+      disabled: boolean("disabled"),
+      name: text("name"),
+      value: text("value"),
+    },
+    required: ["label"],
+    contentProperty: "label",
+    actionEvents: ["click"],
+    valueChange: { event: "value-change", property: "checked", detailProperty: "value" },
+  },
+  "close-button": {
+    description: "An accessible close control that dispatches an A2UI click action.",
+    properties: { label: text("label") },
+    required: ["label"],
+    actionEvents: ["click"],
+  },
+  radio: {
+    description: "A native radio control with a visible label and selected-value updates.",
+    properties: {
+      label: text(),
+      checked: boolean("checked"),
+      disabled: boolean("disabled"),
+      name: text("name"),
+      value: text("value"),
+    },
+    required: ["label", "value"],
+    contentProperty: "label",
+    actionEvents: ["click"],
+    valueChange: { event: "value-change", property: "value", detailProperty: "value" },
+  },
+  table: {
+    description: "A data table with a caption, column headers, and text-only cells.",
+    properties: {
+      caption: text(),
+      headers: property(listOf(dynamicString, 1, 32)),
+      rows: property(listOf(listOf(dynamicString, 1, 32), 1, 64)),
+    },
+    required: ["caption", "headers", "rows"],
+    special: "table",
+  },
+  breadcrumb: {
+    description: "A labeled navigation landmark with breadcrumb items.",
+    properties: { label: text("aria-label") },
+    required: ["label"],
+    children: "slot",
+  },
+  pagination: {
+    description: "A labeled navigation landmark for pagination controls.",
+    properties: { label: text("aria-label") },
+    required: ["label"],
+    children: "slot",
+  },
+  "form-field-group": {
+    description: "A labeled fieldset grouping related form controls.",
+    properties: { label: text("label") },
+    required: ["label"],
+    children: "slot",
+  },
+  "radio-input-group": {
+    description: "A labeled fieldset grouping related radio controls.",
+    properties: { label: text("label") },
+    required: ["label"],
+    children: "slot",
+  },
+  "range-input": {
+    description: "A native range slider with bounded numeric values.",
+    properties: {
+      label: text(),
+      value: number("value", { minimum: 0, maximum: 1_000_000 }),
+      min: number("min", { minimum: 0, maximum: 1_000_000 }),
+      max: number("max", { minimum: 0, maximum: 1_000_000 }),
+      step: number("step", { minimum: 0, maximum: 1_000_000 }),
+      disabled: boolean("disabled"),
+    },
+    required: ["label"],
+    contentProperty: "label",
+    actionEvents: ["click"],
+    valueChange: { event: "value-change", property: "value", detailProperty: "value" },
+  },
+  "simple-select": {
+    description: "A labeled select control with bounded, text-only options.",
+    properties: {
+      label: text(),
+      value: text("value"),
+      name: text("name"),
+      required: boolean("required"),
+      disabled: boolean("disabled"),
+      options: property(
+        listOf(
+          {
+            type: "object",
+            properties: {
+              label: dynamicString,
+              value: dynamicString,
+              disabled: dynamicBoolean,
+            },
+            required: ["label", "value"],
+            additionalProperties: false,
+          },
+          1,
+          64,
+        ),
+      ),
+    },
+    required: ["label", "options"],
+    contentProperty: "label",
+    special: "simple-select",
+    valueChange: { event: "value-change", property: "value", detailProperty: "value" },
+  },
+  "text-input": {
+    description: "A native text input with a visible label and value updates.",
+    properties: {
+      label: text(),
+      value: text("value"),
+      type: enumeration(["text", "email", "url", "tel", "search", "date", "time"], "type", "text"),
+      placeholder: text("placeholder"),
+      name: text("name"),
+      required: boolean("required"),
+      disabled: boolean("disabled"),
+      readOnly: boolean("readonly"),
+    },
+    required: ["label"],
+    contentProperty: "label",
+    valueChange: { event: "value-change", property: "value", detailProperty: "value" },
+  },
+  "text-area": {
+    description: "A native multiline text field with a visible label and value updates.",
+    properties: {
+      label: text(),
+      value: text("value"),
+      placeholder: text("placeholder"),
+      name: text("name"),
+      required: boolean("required"),
+      disabled: boolean("disabled"),
+      readOnly: boolean("readonly"),
+    },
+    required: ["label"],
+    contentProperty: "label",
+    valueChange: { event: "value-change", property: "value", detailProperty: "value" },
+  },
+  "number-input": {
+    description: "A native number input with bounded values and a visible label.",
+    properties: {
+      label: text(),
+      value: number("value", { minimum: -1_000_000, maximum: 1_000_000 }),
+      min: number("min", { minimum: -1_000_000, maximum: 1_000_000 }),
+      max: number("max", { minimum: -1_000_000, maximum: 1_000_000 }),
+      step: number("step", { minimum: 0, maximum: 1_000_000 }),
+      name: text("name"),
+      required: boolean("required"),
+      disabled: boolean("disabled"),
+    },
+    required: ["label"],
+    contentProperty: "label",
+    valueChange: { event: "value-change", property: "value", detailProperty: "value" },
+  },
+  "toggle-details": {
+    description: "A native disclosure with a summary and expandable child content.",
+    properties: {
+      summary: text("summary"),
+      open: boolean("open"),
+    },
+    required: ["summary"],
+    children: "slot",
+    special: "toggle-details",
+    actionEvents: ["toggle"],
+    valueChange: { event: "toggle", property: "open", kind: "popover-state" },
+  },
+  "toggle-group": {
+    description: "A token-styled disclosure group with a summary and expandable child content.",
+    properties: {
+      summary: text("summary"),
+      open: boolean("open"),
+    },
+    required: ["summary"],
+    children: "slot",
+    special: "toggle-group",
+    actionEvents: ["toggle"],
+    valueChange: { event: "toggle", property: "open", kind: "popover-state" },
+  },
 };
+
+const A2UI_COMPONENTS_BY_ELEMENT = Object.fromEntries(
+  ELEMENTS.map((element) => [
+    element,
+    {
+      description: `A Pantoken ${element} component with safe text and child content.`,
+      properties: { label: text() },
+      contentProperty: "label",
+      children: "slot",
+    } satisfies A2uiComponentContract,
+  ]),
+) as Record<string, A2uiComponentContract>;
+
+for (const element of ELEMENTS) {
+  const override = A2UI_COMPONENT_OVERRIDES[element];
+  if (override) A2UI_COMPONENTS_BY_ELEMENT[element] = override;
+}
+
+/** Every exported element gets a strict default contract; specialized elements override it above. */
+export const A2UI_COMPONENTS: Record<ElementName, A2uiComponentContract> =
+  A2UI_COMPONENTS_BY_ELEMENT;
 
 /** Return the versioned A2UI catalog name for an exported web component. */
 export function a2uiNameForElement(element: ElementName): string {

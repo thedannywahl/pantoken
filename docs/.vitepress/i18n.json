@@ -155,6 +155,7 @@
     "message": "Flutter, SwiftUI, and Jetpack Compose: schema only; no Pantoken native component renderers.",
     "translate": "always"
   },
+  "a2uiCatalog.functionsHeading": { "message": "Functions", "translate": "always" },
   "a2uiCatalog.integrationHeading": { "message": "Lit registration", "translate": "always" },
   "a2uiCatalog.componentReference": {
     "message": "Use @catalogId to reference Pantoken components alongside Basic Catalog components.",

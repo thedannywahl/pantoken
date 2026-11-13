@@ -232,6 +232,11 @@
       "css": "https://cdn.jsdelivr.net/npm/@pantoken/components/dist/rating.css"
     },
     {
+      "name": "screen-reader-content",
+      "type": "js-only",
+      "js": "https://cdn.jsdelivr.net/npm/@pantoken/interactions/dist/screen-reader-content.iife.js"
+    },
+    {
       "name": "segmented-control",
       "type": "both",
       "css": "https://cdn.jsdelivr.net/npm/@pantoken/plugin-custom-components/dist/segmented-control.css",

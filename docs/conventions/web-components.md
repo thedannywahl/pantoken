@@ -40,11 +40,27 @@ exported for SSR inlining.
 
 ## Structure
 
-`src/index.ts` is a barrel. Elements are `src/elements/<name>.ts`, one `ElementDefinition` each, added
-to `DEFINITIONS[]` and `ELEMENTS[]` in **load-bearing order** (a test asserts `ELEMENTS` matches the
-`register()` define order — append new tags at the end). `register()` builds one `RegisterContext`
+`src/index.ts` is a barrel. Most bespoke elements live in `src/elements/<name>.ts`, one
+`ElementDefinition` each; the presentational wrappers for component records without bespoke behavior
+are grouped in `src/elements/component-elements.ts`. Add definitions to `DEFINITIONS[]` and names to
+`ELEMENTS[]` in **load-bearing order** (a test asserts `ELEMENTS` matches the `register()` define
+order — append new tags at the end). `register()` builds one `RegisterContext`
 (`{ registry, tag, I:{prefix:"instui"}, invokerSupported, onCommand, wrapper, variantClass, iconSvg }`)
 and hands it to each `def.define(ctx)`.
+
+## CSS-record coverage and A2UI
+
+Each root record in `@pantoken/components` has a matching web-component export. Dotted member records
+such as `table.row` aren't standalone custom-element exports. Their CSS is included with the parent
+styles, but shadow CSS can't style arbitrary slotted light-DOM descendants; consumers must provide
+their own member markup and styling where needed. A parity test checks root-record coverage.
+
+The A2UI 1.0 contracts and catalog schemas are generated from `ELEMENTS`, so adding an exported
+element adds it to the catalog. Each element gets a closed default schema; component-specific
+contracts add only supported properties and rendering behavior. Raw HTML is not a property, and link
+URLs are limited to `http:`, `https:`, `mailto:`, `tel:`, and same-origin relative references.
+Protocol-relative URLs and raw backslashes are rejected. The A2UI table adapter uses bounded text
+rows, and the select adapter accepts bounded text options rather than arbitrary HTML.
 
 ## The JS-behavior tier
 
@@ -81,6 +97,7 @@ change).
 
 ## Testing
 
-The harness has no DOM lib (happy-dom/jsdom absent), so `tests/index.test.ts` only asserts
-registration + pure `iconSvg`. Verify behavior in a real browser. `.focus()` fires no focus events
-when `document.hasFocus()` is false (headless) — dispatch a composed `focusin` to exercise focus-show.
+Happy DOM tests cover registration, shadow DOM structure, and focused event behavior. They don't
+replace real-browser checks for CSS rendering, native control behavior, or assistive technology.
+`.focus()` fires no focus events when `document.hasFocus()` is false (headless) — dispatch a composed
+`focusin` to exercise focus-show.

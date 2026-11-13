@@ -1,8 +1,9 @@
 <script setup lang="ts">
-import { computed, ref } from "vue";
+import { computed, onMounted, ref } from "vue";
 import { useData } from "vitepress";
 import catalogData from "../generated/a2ui-catalog.json";
 import type { A2uiCatalogStrings } from "../a2ui-catalog";
+import { useShikiHighlight } from "../composables/useShikiHighlight";
 
 type PropertySchema = {
   $ref?: string;
@@ -26,31 +27,39 @@ type DocsThemeWithA2uiCatalog = {
   a2uiCatalog?: A2uiCatalogStrings;
 };
 
+const MAX_ENUM_VALUES_IN_CARD = 12;
+
 const { theme } = useData<DocsThemeWithA2uiCatalog>();
 const t = computed(() => theme.value.a2uiCatalog);
 const search = ref("");
 const catalog = catalogData as CatalogDocument;
+const componentEntries = Object.entries(catalog.components);
+const searchableTextByComponent = new Map(
+  componentEntries.map(([name, component]) => {
+    const props = Object.entries(component.properties)
+      .filter(([property]) => property !== "component")
+      .flatMap(([property, schema]) => [property, ...(schema.enum ?? [])]);
+    return [
+      name,
+      `${name} ${component.description ?? ""} ${props.join(" ")}`.toLowerCase(),
+    ] as const;
+  }),
+);
 
 const components = computed(() => {
   const query = search.value.trim().toLowerCase();
-  return Object.entries(catalog.components)
-    .map(([name, component]) => ({ name, ...component }))
-    .filter((component) => {
-      if (!query) return true;
-      const props = Object.entries(component.properties)
-        .filter(([name]) => name !== "component")
-        .flatMap(([name, schema]) => [name, ...(schema.enum ?? [])])
-        .join(" ");
-      return `${component.name} ${component.description ?? ""} ${props}`
-        .toLowerCase()
-        .includes(query);
-    });
+  return componentEntries
+    .filter(([name]) => !query || (searchableTextByComponent.get(name)?.includes(query) ?? false))
+    .map(([name, component]) => ({ name, ...component }));
 });
 
 function propertyDescription(schema: PropertySchema): string {
   const reference = schema.$ref?.split("/").at(-1);
   if (reference) return `A2UI v1.0 ${reference}`;
-  if (schema.enum) return schema.enum.join(", ");
+  if (schema.enum) {
+    const values = schema.enum.slice(0, MAX_ENUM_VALUES_IN_CARD);
+    return schema.enum.length > values.length ? `${values.join(", ")}, ...` : values.join(", ");
+  }
   return schema.type ?? "A2UI value";
 }
 
@@ -58,24 +67,73 @@ function isRequired(component: CatalogComponent, property: string): boolean {
   return component.required?.includes(property) ?? false;
 }
 
-const integrationExample = `import { basicCatalog } from "@a2ui/web_core/catalogs/basic/v1";
+const integrationExample = ref(`import { basicCatalog } from "@a2ui/web_core/catalogs/basic/v1";
 import { MessageProcessor } from "@a2ui/web_core";
 import { pantokenA2uiCatalog, registerPantokenA2uiComponents } from "@pantoken/web-components/a2ui";
 
 registerPantokenA2uiComponents();
-const processor = new MessageProcessor([basicCatalog, pantokenA2uiCatalog]);`;
+const processor = new MessageProcessor([basicCatalog, pantokenA2uiCatalog]);`);
+const componentReferenceExample = ref(
+  JSON.stringify(
+    {
+      id: "save",
+      "@catalogId": catalog.catalogId,
+      component: "PantokenButton",
+      label: "Save",
+    },
+    null,
+    2,
+  ),
+);
+const integrationLanguage = ref("ts");
+const componentReferenceLanguage = ref("json");
+const highlightedIntegrationExample = useShikiHighlight(integrationExample, integrationLanguage);
+const highlightedComponentReference = useShikiHighlight(
+  componentReferenceExample,
+  componentReferenceLanguage,
+);
+
+onMounted(async () => {
+  const [prettier, typescript, babel, estree] = await Promise.all([
+    import("prettier/standalone"),
+    import("prettier/plugins/typescript"),
+    import("prettier/plugins/babel"),
+    import("prettier/plugins/estree"),
+  ]);
+  integrationExample.value = await prettier.format(integrationExample.value, {
+    parser: "typescript",
+    plugins: [typescript, estree],
+  });
+  componentReferenceExample.value = await prettier.format(componentReferenceExample.value, {
+    parser: "json",
+    plugins: [babel, estree],
+  });
+});
 </script>
 
 <template>
-  <main class="a2ui-catalog instui-view">
-    <header class="a2ui-catalog__header">
-      <h1 class="instui-heading -level-h1 -variant-title-page">{{ t?.title }}</h1>
-      <p class="instui-text -color-secondary">{{ t?.subtitle }}</p>
+  <div class="a2ui-catalog instui-view">
+    <h1 class="instui-heading -level-h1 -variant-title-page a2ui-catalog__title">
+      {{ t?.title }}
+    </h1>
+
+    <section class="instui-card --bg-secondary a2ui-catalog__hero">
+      <div class="a2ui-catalog__hero-header">
+        <span class="instui-pill -color-brand">
+          {{ t?.protocolLabel }} {{ catalog.protocolVersion }}
+        </span>
+        <a
+          class="instui-link -color-brand -size-small"
+          href="/a2ui/catalog/v1/catalog.json"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          {{ t?.rawCatalog }}
+          <span class="instui-icon -icon-arrow-up-right" aria-hidden="true" />
+        </a>
+      </div>
+      <p class="instui-text -color-secondary a2ui-catalog__subtitle">{{ t?.subtitle }}</p>
       <dl class="a2ui-catalog__metadata">
-        <div>
-          <dt>{{ t?.protocolLabel }}</dt>
-          <dd>{{ catalog.protocolVersion }}</dd>
-        </div>
         <div>
           <dt>{{ t?.catalogIdLabel }}</dt>
           <dd>
@@ -83,19 +141,51 @@ const processor = new MessageProcessor([basicCatalog, pantokenA2uiCatalog]);`;
           </dd>
         </div>
       </dl>
-      <a class="instui-link -color-brand" href="/a2ui/catalog.json" target="_blank" rel="noopener">
-        {{ t?.rawCatalog }}
-      </a>
-    </header>
+    </section>
+
+    <section class="a2ui-catalog__support" aria-labelledby="a2ui-support-heading">
+      <h2 id="a2ui-support-heading" class="instui-heading -level-h2">
+        {{ t?.supportHeading }}
+      </h2>
+      <ul class="instui-list">
+        <li>{{ t?.litSupport }}</li>
+        <li>{{ t?.reactSupport }}</li>
+        <li>{{ t?.angularSupport }}</li>
+        <li>{{ t?.nativeSupport }}</li>
+      </ul>
+    </section>
+
+    <section class="a2ui-catalog__functions" aria-labelledby="a2ui-functions-heading">
+      <h2 id="a2ui-functions-heading" class="instui-heading -level-h2">
+        {{ t?.functionsHeading }}
+      </h2>
+      <p class="instui-text -color-secondary">{{ t?.noFunctions }}</p>
+      <div class="a2ui-catalog__integration">
+        <h3 class="instui-heading -level-h3">{{ t?.integrationHeading }}</h3>
+        <div v-if="highlightedIntegrationExample" v-html="highlightedIntegrationExample" />
+        <pre v-else><code>{{ integrationExample }}</code></pre>
+        <p class="instui-text -color-secondary">{{ t?.componentReference }}</p>
+        <div v-if="highlightedComponentReference" v-html="highlightedComponentReference" />
+        <pre v-else><code>{{ componentReferenceExample }}</code></pre>
+      </div>
+    </section>
 
     <section aria-labelledby="a2ui-components-heading">
       <div class="a2ui-catalog__section-heading">
         <h2 id="a2ui-components-heading" class="instui-heading -level-h2">
           {{ t?.componentsHeading }} ({{ components.length }})
         </h2>
-        <label class="a2ui-catalog__search">
-          <span>{{ t?.searchLabel }}</span>
-          <input v-model="search" type="search" :placeholder="t?.searchPlaceholder" />
+        <label class="instui-input-group a2ui-catalog__search">
+          <span class="before">
+            <span class="instui-icon -icon-search" aria-hidden="true" />
+          </span>
+          <span class="instui-screen-reader-content">{{ t?.searchLabel }}</span>
+          <input
+            v-model="search"
+            type="search"
+            :aria-label="t?.searchLabel"
+            :placeholder="t?.searchPlaceholder"
+          />
         </label>
       </div>
 
@@ -105,8 +195,12 @@ const processor = new MessageProcessor([basicCatalog, pantokenA2uiCatalog]);`;
           :key="component.name"
           class="instui-card a2ui-catalog__card"
         >
-          <h3 class="instui-heading -level-h3">{{ component.name }}</h3>
-          <p class="instui-text -color-secondary">{{ component.description }}</p>
+          <div class="a2ui-catalog__card-header">
+            <h3 class="instui-heading -level-h3">{{ component.name }}</h3>
+          </div>
+          <p class="instui-text -color-secondary a2ui-catalog__card-description">
+            {{ component.description }}
+          </p>
           <dl class="a2ui-catalog__properties">
             <template
               v-for="[name, schema] in Object.entries(component.properties).filter(
@@ -126,28 +220,21 @@ const processor = new MessageProcessor([basicCatalog, pantokenA2uiCatalog]);`;
       <p v-else class="a2ui-catalog__empty">{{ t?.empty }}</p>
     </section>
 
-    <section class="a2ui-catalog__support" aria-labelledby="a2ui-support-heading">
-      <h2 id="a2ui-support-heading" class="instui-heading -level-h2">
-        {{ t?.supportHeading }}
-      </h2>
-      <ul class="instui-list">
-        <li>{{ t?.litSupport }}</li>
-        <li>{{ t?.reactSupport }}</li>
-        <li>{{ t?.angularSupport }}</li>
-        <li>{{ t?.nativeSupport }}</li>
-      </ul>
+    <section class="a2ui-catalog__versioning" aria-labelledby="a2ui-versioning-heading">
+      <h2 id="a2ui-versioning-heading" class="instui-heading -level-h2">Catalog Versioning</h2>
+      <p class="instui-text -color-secondary">
+        The v1 catalog ID is stable. Adding an optional component, property, or enum value is
+        additive; removing or renaming an existing component or property, narrowing an enum, or
+        making an optional property required is breaking and requires a new catalog version. Only
+        the components and properties listed above are part of Pantoken's A2UI catalog.
+      </p>
+      <p class="instui-text -color-secondary">
+        The catalog defines no executable functions and does not authorize actions. A2UI actions are
+        dispatched through the host application's normal action handling, where the application must
+        enforce its own permissions.
+      </p>
     </section>
-
-    <section class="a2ui-catalog__integration" aria-labelledby="a2ui-integration-heading">
-      <h2 id="a2ui-integration-heading" class="instui-heading -level-h2">
-        {{ t?.integrationHeading }}
-      </h2>
-      <pre><code>{{ integrationExample }}</code></pre>
-      <p class="instui-text -color-secondary">{{ t?.componentReference }}</p>
-      <pre><code>{"id":"save","@catalogId":"{{ catalog.catalogId }}","component":"PantokenButton","label":"Save"}</code></pre>
-      <p class="instui-text -color-secondary">{{ t?.noFunctions }}</p>
-    </section>
-  </main>
+  </div>
 </template>
 
 <style scoped>
@@ -157,67 +244,107 @@ const processor = new MessageProcessor([basicCatalog, pantokenA2uiCatalog]);`;
   padding: 2rem 1.5rem;
 }
 
-.a2ui-catalog__header,
+.a2ui-catalog__title {
+  margin: 0 0 1rem;
+}
+
+.a2ui-catalog__hero {
+  margin-bottom: 1.5rem;
+  padding: 1.25rem;
+}
+
+.a2ui-catalog__hero-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+  margin-bottom: 0.5rem;
+}
+
+.a2ui-catalog__subtitle {
+  margin: 0 0 1rem;
+  line-height: 1.5;
+}
+
 .a2ui-catalog__support,
-.a2ui-catalog__integration {
+.a2ui-catalog__functions,
+.a2ui-catalog__versioning {
   margin-bottom: 2rem;
 }
 
-.a2ui-catalog__metadata {
-  display: grid;
-  gap: 0.75rem;
-  margin: 1.25rem 0;
+.a2ui-catalog__functions > .instui-text,
+.a2ui-catalog__versioning > .instui-text {
+  margin: 0.5rem 0;
+  line-height: 1.5;
 }
 
-.a2ui-catalog__metadata dt,
+.a2ui-catalog__integration {
+  margin-top: 1rem;
+}
+
+.a2ui-catalog__integration .instui-heading {
+  margin: 0;
+}
+
+.a2ui-catalog__metadata {
+  margin: 0;
+}
+
+.a2ui-catalog__metadata dt {
+  font-weight: 600;
+}
+
+.a2ui-catalog__metadata dd {
+  margin: 0.25rem 0 0;
+}
+
 .a2ui-catalog__properties dt {
   font-weight: 600;
 }
 
-.a2ui-catalog__metadata dd,
 .a2ui-catalog__properties dd {
   margin: 0.25rem 0 0;
 }
 
 .a2ui-catalog__section-heading {
   display: flex;
-  align-items: end;
+  align-items: center;
   justify-content: space-between;
   flex-wrap: wrap;
   gap: 1rem;
-  margin-bottom: 1rem;
+  margin: 1rem 0 1.5rem;
 }
 
 .a2ui-catalog__search {
-  display: grid;
-  gap: 0.375rem;
-  min-width: min(100%, 20rem);
-}
-
-.a2ui-catalog__search input {
-  font: inherit;
-  padding: 0.5rem 0.75rem;
-  border: 1px solid var(--instui-color-stroke-base);
-  border-radius: var(--instui-border-radius-sm);
-  color: var(--instui-color-text-base);
-  background: var(--instui-color-background-page);
+  flex: 1 1 260px;
+  max-width: 32rem;
 }
 
 .a2ui-catalog__grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(min(100%, 20rem), 1fr));
-  gap: 1rem;
+  gap: 1.25rem;
 }
 
 .a2ui-catalog__card {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  max-height: 28rem;
+  overflow-y: auto;
   padding: 1.25rem;
+}
+
+.a2ui-catalog__card-header .instui-heading,
+.a2ui-catalog__card-description {
+  margin: 0;
 }
 
 .a2ui-catalog__properties {
   display: grid;
   grid-template-columns: auto 1fr;
   gap: 0.5rem 0.75rem;
-  margin-top: 1rem;
+  margin: 0;
 }
 
 .a2ui-catalog__properties dt span {
@@ -240,13 +367,33 @@ const processor = new MessageProcessor([basicCatalog, pantokenA2uiCatalog]);`;
   background: var(--instui-color-background-secondary);
 }
 
+.a2ui-catalog__integration :deep(.shiki) {
+  overflow: auto;
+  padding: 1rem;
+  border-radius: var(--instui-border-radius-sm);
+}
+
 .a2ui-catalog__integration code {
   white-space: pre;
+}
+
+:global(.dark) .a2ui-catalog__integration :deep(.shiki) {
+  background-color: var(--shiki-dark-bg) !important;
+  color: var(--shiki-dark) !important;
+}
+
+:global(.dark) .a2ui-catalog__integration :deep(.shiki span) {
+  color: var(--shiki-dark) !important;
 }
 
 @media (max-width: 640px) {
   .a2ui-catalog__metadata dd {
     overflow-wrap: anywhere;
+  }
+
+  .a2ui-catalog__hero-header {
+    align-items: flex-start;
+    flex-direction: column;
   }
 }
 </style>

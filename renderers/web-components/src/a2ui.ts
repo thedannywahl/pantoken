@@ -1,4 +1,15 @@
-import { buttonCss, tabsCss, tooltipCss } from "@pantoken/components";
+import {
+  buttonCss,
+  tableBodyCss,
+  tableCellCss,
+  tableColHeaderCss,
+  tableCss,
+  tableHeadCss,
+  tableRowCss,
+  tableRowHeaderCss,
+  tabsCss,
+  tooltipCss,
+} from "@pantoken/components";
 import { initTooltip, type TooltipHandle } from "@pantoken/interactions";
 import { Catalog, type ComponentApi } from "@a2ui/web_core/catalog";
 import {
@@ -25,6 +36,7 @@ import {
   type A2uiPropertyContract,
 } from "./a2ui-contracts.ts";
 import { DEFINITIONS } from "./elements/index.ts";
+import { safeHref } from "./lib/helpers.ts";
 import { buildRegisterContext, iconSvg } from "./lib/register-context.ts";
 import { ELEMENTS } from "./lib/elements-meta.ts";
 
@@ -81,6 +93,9 @@ function attributeValue(
 ): string | number | boolean | null | undefined {
   if (value === null || value === undefined) return value;
   if (definition.mode === "media-url") return sanitizeMediaUrl(value);
+  if (definition.mode === "safe-href") {
+    return typeof value === "string" ? safeHref(value) : undefined;
+  }
   if (definition.mode === "boolean") return value === true;
   if (definition.mode === "boolean-string") return String(value === true);
   if (typeof value === "number") {
@@ -99,6 +114,62 @@ function renderChildNodes(
   children: A2uiChildRef[],
 ): unknown[] {
   return children.map((child) => renderNode(child));
+}
+
+function tableData(props: Record<string, unknown>): {
+  caption: string;
+  headers: string[];
+  rows: string[][];
+} {
+  const caption = props.caption;
+  const headers = props.headers;
+  const rows = props.rows;
+  if (typeof caption !== "string") {
+    throw new Error("PantokenTable.caption must be a string.");
+  }
+  if (!Array.isArray(headers) || !headers.every((header) => typeof header === "string")) {
+    throw new Error("PantokenTable.headers must be an array of strings.");
+  }
+  if (
+    !Array.isArray(rows) ||
+    !rows.every((row) => Array.isArray(row) && row.every((cell) => typeof cell === "string"))
+  ) {
+    throw new Error("PantokenTable.rows must be an array of string arrays.");
+  }
+  if (rows.some((row) => row.length !== headers.length)) {
+    throw new Error("PantokenTable rows must contain one cell per header.");
+  }
+  return { caption, headers, rows };
+}
+
+interface SelectOption {
+  label: string;
+  value: string;
+  disabled?: boolean;
+}
+
+function isSelectOption(value: unknown): value is SelectOption {
+  return (
+    isRecord(value) &&
+    typeof value.label === "string" &&
+    typeof value.value === "string" &&
+    (value.disabled === undefined || typeof value.disabled === "boolean")
+  );
+}
+
+function selectOptions(value: unknown): Array<{
+  label: string;
+  value: string;
+  disabled: boolean;
+}> {
+  if (!Array.isArray(value) || !value.every(isSelectOption)) {
+    throw new Error("PantokenSimpleSelect.options must contain labeled string options.");
+  }
+  return value.map((option) => ({
+    label: option.label as string,
+    value: option.value as string,
+    disabled: option.disabled === true,
+  }));
 }
 
 type A2uiElementConstructor = new () => A2uiLitElement<ComponentApi, Record<string, unknown>>;
@@ -180,16 +251,26 @@ function createA2uiElement(
   const contract = A2UI_COMPONENTS[element];
   const genericTemplate = compileGenericTemplate(element, contract);
   const styles: CSSResultGroup =
-    element === "tabs"
+    element === "table"
       ? css`
-          ${unsafeCSS(tabsCss({ prefix: "instui" }))}
+          ${unsafeCSS(tableCss({ prefix: "instui" }))}
+          ${unsafeCSS(tableHeadCss({ prefix: "instui" }))}
+          ${unsafeCSS(tableBodyCss({ prefix: "instui" }))}
+          ${unsafeCSS(tableRowCss({ prefix: "instui" }))}
+          ${unsafeCSS(tableCellCss({ prefix: "instui" }))}
+          ${unsafeCSS(tableColHeaderCss({ prefix: "instui" }))}
+          ${unsafeCSS(tableRowHeaderCss({ prefix: "instui" }))}
         `
-      : element === "tooltip"
+      : element === "tabs"
         ? css`
-            ${unsafeCSS(buttonCss({ prefix: "instui" }))}
-            ${unsafeCSS(tooltipCss({ prefix: "instui" }))}
+            ${unsafeCSS(tabsCss({ prefix: "instui" }))}
           `
-        : [];
+        : element === "tooltip"
+          ? css`
+              ${unsafeCSS(buttonCss({ prefix: "instui" }))}
+              ${unsafeCSS(tooltipCss({ prefix: "instui" }))}
+            `
+          : [];
 
   class PantokenA2uiElement extends A2uiLitElement<ComponentApi, Record<string, unknown>> {
     static override styles = styles;
@@ -231,7 +312,8 @@ function createA2uiElement(
           value = false;
         } else if (valueChange.kind === "popover-state") {
           const toggleEvent = event as Event & { newState?: string };
-          const open = toggleEvent.newState === "open";
+          const detail = (event as CustomEvent<{ newState?: string }>).detail;
+          const open = toggleEvent.newState === "open" || detail?.newState === "open";
           value = open;
           this.#popoverOpen = open;
         } else if (valueChange.detailProperty) {
@@ -329,6 +411,49 @@ function createA2uiElement(
         </instui-tabs>`;
       }
 
+      if (contract.special === "table") {
+        const { caption, headers, rows } = tableData(props);
+        return html`<table class="instui-table" id=${id}>
+          <caption>
+            ${caption}
+          </caption>
+          <thead>
+            <tr>
+              ${headers.map(
+                (header) => html`<th class="instui-table-col-header" scope="col">${header}</th>`,
+              )}
+            </tr>
+          </thead>
+          <tbody>
+            ${rows.map(
+              (row) =>
+                html`<tr class="instui-table-row">
+                  ${row.map((cell) => html`<td class="instui-table-cell">${cell}</td>`)}
+                </tr>`,
+            )}
+          </tbody>
+        </table>`;
+      }
+
+      if (contract.special === "simple-select") {
+        const options = selectOptions(props.options);
+        return html`<instui-simple-select
+          id=${id}
+          name=${props.name ?? nothing}
+          value=${props.value ?? nothing}
+          ?required=${props.required === true}
+          ?disabled=${props.disabled === true}
+        >
+          ${typeof props.label === "string" ? props.label : nothing}
+          ${options.map(
+            (option) =>
+              html`<option slot="options" value=${option.value} ?disabled=${option.disabled}>
+                ${option.label}
+              </option>`,
+          )}
+        </instui-simple-select>`;
+      }
+
       if (contract.special === "drilldown") {
         const pages = drilldownPages(props.pages);
         return html`<instui-drilldown id=${id} active=${props.active ?? nothing}>
@@ -350,6 +475,25 @@ function createA2uiElement(
               </div>`,
           )}
         </instui-drilldown>`;
+      }
+
+      if (contract.special === "toggle-group" || contract.special === "toggle-details") {
+        const children = childRefs(props.children);
+        const content = renderChildNodes(this.renderNode.bind(this), children);
+        if (contract.special === "toggle-group") {
+          return html`<instui-toggle-group
+            id=${id}
+            summary=${props.summary ?? nothing}
+            ?open=${props.open === true}
+            >${content}</instui-toggle-group
+          >`;
+        }
+        return html`<instui-toggle-details
+          id=${id}
+          summary=${props.summary ?? nothing}
+          ?open=${props.open === true}
+          >${content}</instui-toggle-details
+        >`;
       }
 
       if (contract.special === "drawer") {
@@ -401,7 +545,9 @@ function createA2uiElement(
       const host =
         contract.special === "tooltip"
           ? this.renderRoot.querySelector<HTMLElement>("button")
-          : this.renderRoot.querySelector<HTMLElement>(`instui-${element}`);
+          : contract.special === "table"
+            ? this.renderRoot.querySelector<HTMLElement>(".instui-table")
+            : this.renderRoot.querySelector<HTMLElement>(`instui-${element}`);
       if (host !== this.#component) {
         this.#observer?.disconnect();
         this.#component?.removeEventListener("click", this.#onComponentEvent);

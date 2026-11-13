@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: pantoken\n"
-"PO-Revision-Date: 2026-10-30 19:56+0000\n"
+"PO-Revision-Date: 2026-11-13 16:52+0000\n"
 "Last-Translator: pantoken localization engine\n"
 "Language-Team: pantoken\n"
 "MIME-Version: 1.0\n"
@@ -2953,15 +2953,16 @@ msgstr ""
 #: css/modal.md
 #: css/popover.md
 #: css/progress.md
+#: css/progress.md
 #: css/radio-input-group.md
 #: css/radio.md
 #: css/radio.md
 #: css/segmented-control.md
 #: css/simple-select.md
+#: css/simple-select.md
 #: css/tabs.md
 #: css/toggle-details.md
 #: css/toggle-group.md
-#: css/tooltip.md
 #: css/tooltip.md
 #: css/tray.md
 #, no-c-format
@@ -3301,9 +3302,11 @@ msgstr ""
 #: css/modal.header.md
 #: css/modal.md
 #: css/popover.md
+#: css/progress.md
 #: css/radio-input-group.md
 #: css/radio.md
 #: css/segmented-control.md
+#: css/toggle-group.md
 #: css/tray.md
 #, no-c-format
 msgctxt "docs.api:prose"
@@ -3313,16 +3316,15 @@ msgstr ""
 #: css/alert.md
 #: css/button-set.md
 #: css/button.md
-#: css/context-view.md
 #: css/file-drop.md
 #: css/menu.group.md
 #: css/menu.item.md
 #: css/menu.md
 #: css/menu.separator.md
-#: css/modal.md
 #: css/number-input.md
+#: css/progress.md
 #: css/segmented-control.md
-#: css/tabs.tab.md
+#: css/simple-select.md
 #: css/tag.md
 #: css/toggle-details.md
 #: css/toggle-group.md
@@ -3582,66 +3584,6 @@ msgstr ""
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "<!-- pantoken-value-scope:css%2Favatar.md -->\nThis component's CSS renders and works on its own; pair it with {{ptk_code_0}} to add the interactive behavior. See the [modifier table below]({{ptk_code_1}})."
-msgstr ""
-
-#: css/close-button.md
-#, no-c-format
-msgctxt "docs.api:prose"
-msgid "<!-- pantoken-value-scope:css%2Fclose-button.md -->\nThis component's CSS renders and works on its own; pair it with {{ptk_code_0}} to add the interactive behavior. See the [modifier table below]({{ptk_code_1}})."
-msgstr ""
-
-#: css/form-field.md
-#, no-c-format
-msgctxt "docs.api:prose"
-msgid "<!-- pantoken-value-scope:css%2Fform-field.md -->\nThis component's CSS renders and works on its own; pair it with {{ptk_code_0}} to add the interactive behavior. See the [modifier table below]({{ptk_code_1}})."
-msgstr ""
-
-#: css/in-place-edit.md
-#, no-c-format
-msgctxt "docs.api:prose"
-msgid "<!-- pantoken-value-scope:css%2Fin-place-edit.md -->\nThis component's CSS renders and works on its own; pair it with {{ptk_code_0}} to add the interactive behavior. See the [modifier table below]({{ptk_code_1}})."
-msgstr ""
-
-#: css/menu.md
-#, no-c-format
-msgctxt "docs.api:prose"
-msgid "<!-- pantoken-value-scope:css%2Fmenu.md -->\nThis component's CSS renders and works on its own; pair it with {{ptk_code_0}} to add the interactive behavior. See the [modifier table below]({{ptk_code_1}})."
-msgstr ""
-
-#: css/modal.md
-#, no-c-format
-msgctxt "docs.api:prose"
-msgid "<!-- pantoken-value-scope:css%2Fmodal.md -->\nThis component's CSS renders and works on its own; pair it with {{ptk_code_0}} to add the interactive behavior. See the [modifier table below]({{ptk_code_1}})."
-msgstr ""
-
-#: css/segmented-control.md
-#, no-c-format
-msgctxt "docs.api:prose"
-msgid "<!-- pantoken-value-scope:css%2Fsegmented-control.md -->\nThis component's CSS renders and works on its own; pair it with {{ptk_code_0}} to add the interactive behavior. See the [modifier table below]({{ptk_code_1}})."
-msgstr ""
-
-#: css/skeleton-loader.md
-#, no-c-format
-msgctxt "docs.api:prose"
-msgid "<!-- pantoken-value-scope:css%2Fskeleton-loader.md -->\nThis component's CSS renders and works on its own; pair it with {{ptk_code_0}} to add the interactive behavior. See the [modifier table below]({{ptk_code_1}})."
-msgstr ""
-
-#: css/tabs.md
-#, no-c-format
-msgctxt "docs.api:prose"
-msgid "<!-- pantoken-value-scope:css%2Ftabs.md -->\nThis component's CSS renders and works on its own; pair it with {{ptk_code_0}} to add the interactive behavior. See the [modifier table below]({{ptk_code_1}})."
-msgstr ""
-
-#: css/tooltip.md
-#, no-c-format
-msgctxt "docs.api:prose"
-msgid "<!-- pantoken-value-scope:css%2Ftooltip.md -->\nThis component's CSS renders and works on its own; pair it with {{ptk_code_0}} to add the interactive behavior. See the [modifier table below]({{ptk_code_1}})."
-msgstr ""
-
-#: css/tree-browser.md
-#, no-c-format
-msgctxt "docs.api:prose"
-msgid "<!-- pantoken-value-scope:css%2Ftree-browser.md -->\nThis component's CSS renders and works on its own; pair it with {{ptk_code_0}} to add the interactive behavior. See the [modifier table below]({{ptk_code_1}})."
 msgstr ""
 
 #: css/avatar.md
@@ -5644,6 +5586,12 @@ msgstr ""
 #: css/close-button.md
 #, no-c-format
 msgctxt "docs.api:prose"
+msgid "<!-- pantoken-value-scope:css%2Fclose-button.md -->\nThis component's CSS renders and works on its own; pair it with {{ptk_code_0}} to add the interactive behavior. See the [modifier table below]({{ptk_code_1}})."
+msgstr ""
+
+#: css/close-button.md
+#, no-c-format
+msgctxt "docs.api:prose"
 msgid "For a close button placed on a coloured (non-neutral) surface."
 msgstr ""
 
@@ -6376,6 +6324,12 @@ msgid "**Source:** [form-field.css](https://github.com/thedannywahl/pantoken/blo
 msgstr ""
 
 #: css/form-field.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "<!-- pantoken-value-scope:css%2Fform-field.md -->\nThis component's CSS renders and works on its own; pair it with {{ptk_code_0}} to add the interactive behavior. See the [modifier table below]({{ptk_code_1}})."
+msgstr ""
+
+#: css/form-field.md
 #: css/link.md
 #: css/modal.md
 #: css/simple-select.md
@@ -6878,6 +6832,12 @@ msgstr ""
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "**Source:** [in-place-edit.css](https://github.com/thedannywahl/pantoken/blob/main/formats/components/src/components/in-place-edit/in-place-edit.css)"
+msgstr ""
+
+#: css/in-place-edit.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "<!-- pantoken-value-scope:css%2Fin-place-edit.md -->\nThis component's CSS renders and works on its own; pair it with {{ptk_code_0}} to add the interactive behavior. See the [modifier table below]({{ptk_code_1}})."
 msgstr ""
 
 #: css/in-place-edit.md
@@ -8504,18 +8464,6 @@ msgctxt "docs.api:prose"
 msgid "ARIA attributes must conform to valid values"
 msgstr ""
 
-#: css/menu.group.md
-#: css/menu.item.md
-#: css/menu.md
-#: css/menu.separator.md
-#: css/modal.md
-#: css/toggle-group.md
-#: css/tooltip.md
-#, no-c-format
-msgctxt "docs.api:prose"
-msgid "dark-mode-contrast"
-msgstr ""
-
 #: css/menu.item.md
 #, no-c-format
 msgctxt "docs.api:prose"
@@ -8553,6 +8501,14 @@ msgid "Checked actions use `menuitemcheckbox` or `menuitemradio` with `aria-chec
 msgstr ""
 
 #: css/menu.item.md
+#: css/progress.md
+#: css/simple-select.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "dark-mode-contrast"
+msgstr ""
+
+#: css/menu.item.md
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid " All five measured pieces of text pass in dark mode. one other piece can't be reduced to one color. \"Archive\" can't be measured because an element behind it is partly transparent."
@@ -8580,6 +8536,12 @@ msgstr ""
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "**Source:** [group.css](https://github.com/thedannywahl/pantoken/blob/main/formats/components/src/components/menu/members/group/group.css)"
+msgstr ""
+
+#: css/menu.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "<!-- pantoken-value-scope:css%2Fmenu.md -->\nThis component's CSS renders and works on its own; pair it with {{ptk_code_0}} to add the interactive behavior. See the [modifier table below]({{ptk_code_1}})."
 msgstr ""
 
 #: css/menu.md
@@ -8778,6 +8740,12 @@ msgstr ""
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "**Source:** [body.css](https://github.com/thedannywahl/pantoken/blob/main/formats/components/src/components/modal/members/body/body.css)"
+msgstr ""
+
+#: css/modal.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "<!-- pantoken-value-scope:css%2Fmodal.md -->\nThis component's CSS renders and works on its own; pair it with {{ptk_code_0}} to add the interactive behavior. See the [modifier table below]({{ptk_code_1}})."
 msgstr ""
 
 #: css/modal.md
@@ -9772,15 +9740,10 @@ msgid " With prefers-contrast: more, one piece of text falls below the minimum c
 msgstr ""
 
 #: css/progress.md
+#: css/truncate.md
 #, no-c-format
 msgctxt "docs.api:prose"
-msgid "Rebrand (dark), Canvas, Canvas High Contrast:"
-msgstr ""
-
-#: css/progress.md
-#, no-c-format
-msgctxt "docs.api:prose"
-msgid " With line height 1.5, letter spacing 0.12em, word spacing 0.16em, and paragraph spacing 2em, text in one element gets cut off: "
+msgid "With line height 1.5, letter spacing 0.12em, word spacing 0.16em, and paragraph spacing 2em, text in one element gets cut off: "
 msgstr ""
 
 #: css/progress.md
@@ -10827,6 +10790,12 @@ msgstr ""
 #: css/screen-reader-content.md
 #, no-c-format
 msgctxt "docs.api:prose"
+msgid "<!-- pantoken-value-scope:css%2Fscreen-reader-content.md -->\nThis component ships no CSS of its own — its markup and behavior come entirely from {{ptk_code_0}}. See the [modifier table below]({{ptk_code_1}})."
+msgstr ""
+
+#: css/screen-reader-content.md
+#, no-c-format
+msgctxt "docs.api:prose"
 msgid "example"
 msgstr ""
 
@@ -10852,6 +10821,12 @@ msgstr ""
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "The selected segment uses a distinct active-item shadow; it does not match an existing\n  --instui-elevation-* composite. Overflow buttons use the upstream elevation3 component tokens."
+msgstr ""
+
+#: css/segmented-control.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "<!-- pantoken-value-scope:css%2Fsegmented-control.md -->\nThis component's CSS renders and works on its own; pair it with {{ptk_code_0}} to add the interactive behavior. See the [modifier table below]({{ptk_code_1}})."
 msgstr ""
 
 #: css/segmented-control.md
@@ -11146,6 +11121,12 @@ msgstr ""
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "`.instui-skeleton-loader` — Decorative placeholder for content that has not loaded yet."
+msgstr ""
+
+#: css/skeleton-loader.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "<!-- pantoken-value-scope:css%2Fskeleton-loader.md -->\nThis component's CSS renders and works on its own; pair it with {{ptk_code_0}} to add the interactive behavior. See the [modifier table below]({{ptk_code_1}})."
 msgstr ""
 
 #: css/skeleton-loader.md
@@ -11597,6 +11578,12 @@ msgstr ""
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "**Source:** [panel.css](https://github.com/thedannywahl/pantoken/blob/main/formats/components/src/components/tabs/members/panel/panel.css)"
+msgstr ""
+
+#: css/tabs.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "<!-- pantoken-value-scope:css%2Ftabs.md -->\nThis component's CSS renders and works on its own; pair it with {{ptk_code_0}} to add the interactive behavior. See the [modifier table below]({{ptk_code_1}})."
 msgstr ""
 
 #: css/tabs.md
@@ -12350,6 +12337,12 @@ msgstr ""
 #: css/tooltip.md
 #, no-c-format
 msgctxt "docs.api:prose"
+msgid "<!-- pantoken-value-scope:css%2Ftooltip.md -->\nThis component's CSS renders and works on its own; pair it with {{ptk_code_0}} to add the interactive behavior. See the [modifier table below]({{ptk_code_1}})."
+msgstr ""
+
+#: css/tooltip.md
+#, no-c-format
+msgctxt "docs.api:prose"
 msgid "Default placement is top"
 msgstr ""
 
@@ -12554,6 +12547,12 @@ msgstr ""
 #: css/tree-browser.md
 #, no-c-format
 msgctxt "docs.api:prose"
+msgid "<!-- pantoken-value-scope:css%2Ftree-browser.md -->\nThis component's CSS renders and works on its own; pair it with {{ptk_code_0}} to add the interactive behavior. See the [modifier table below]({{ptk_code_1}})."
+msgstr ""
+
+#: css/tree-browser.md
+#, no-c-format
+msgctxt "docs.api:prose"
 msgid " Course files"
 msgstr ""
 
@@ -12736,12 +12735,6 @@ msgstr ""
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "Truncation hides overflowing text visually while it stays in the DOM, so don't clip information people need (titles, errors, instructions) and keep the full text available another way. Check that clipped text still reads correctly when zoomed or resized."
-msgstr ""
-
-#: css/truncate.md
-#, no-c-format
-msgctxt "docs.api:prose"
-msgid "With line height 1.5, letter spacing 0.12em, word spacing 0.16em, and paragraph spacing 2em, text in one element gets cut off: "
 msgstr ""
 
 #: css/truncate.md
@@ -23611,6 +23604,18 @@ msgctxt "docs.api:prose"
 msgid "`<instui-badge>` — a small count/status badge. The `variant` attribute maps to the\n`-color-<variant>` modifier; slotted content is the count or label."
 msgstr ""
 
+#: renderers/web-components/src/variables/billboard.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "A section for an empty state or call to action."
+msgstr ""
+
+#: renderers/web-components/src/variables/breadcrumb.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "A breadcrumb navigation landmark."
+msgstr ""
+
 #: renderers/web-components/src/variables/button.md
 #, no-c-format
 msgctxt "docs.api:prose"
@@ -23630,6 +23635,12 @@ msgctxt "docs.api:prose"
 msgid "More about this item."
 msgstr ""
 
+#: renderers/web-components/src/variables/byline.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "A media-object byline container."
+msgstr ""
+
 #: renderers/web-components/src/variables/ca.md
 #, no-c-format
 msgctxt "docs.api:prose"
@@ -23640,6 +23651,30 @@ msgstr ""
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "`<instui-calendar>` — an interactive month grid. `value` (`yyyy-mm-dd`) is the selected day and\n`view` (`yyyy-mm-dd`, optional) the visible month. The prev/next chevrons and every day are\n`<button>`s driving the Invoker Commands API (`--calendar-prev`, `--calendar-next`,\n`--calendar-select`) at the grid; selecting a day updates `value`/`view` and dispatches a composed,\nbubbling `change` event (`detail.value` is the ISO date). Renders its own grid (no slot), so it\nworks standalone or nested inside a date picker."
+msgstr ""
+
+#: renderers/web-components/src/variables/card.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "An article-shaped card with slotted content."
+msgstr ""
+
+#: renderers/web-components/src/variables/checkbox.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "A native checkbox and its slotted label."
+msgstr ""
+
+#: renderers/web-components/src/variables/closeButton.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "A native close button with an accessible label."
+msgstr ""
+
+#: renderers/web-components/src/variables/componentElements.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Missing root component records, registered after the hand-authored elements."
 msgstr ""
 
 #: renderers/web-components/src/variables/contextView.md
@@ -23756,6 +23791,30 @@ msgctxt "docs.api:prose"
 msgid "Finnish (Suomi) locale bundle."
 msgstr ""
 
+#: renderers/web-components/src/variables/fileDrop.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "A native file picker presented as a dropzone label."
+msgstr ""
+
+#: renderers/web-components/src/variables/formField.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "A form-field layout container."
+msgstr ""
+
+#: renderers/web-components/src/variables/formFieldGroup.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "A native fieldset for a group of form fields."
+msgstr ""
+
+#: renderers/web-components/src/variables/formFieldMessages.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "A status region for form-field help and validation messages."
+msgstr ""
+
 #: renderers/web-components/src/variables/fr.md
 #, no-c-format
 msgctxt "docs.api:prose"
@@ -23778,6 +23837,12 @@ msgstr ""
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "Hebrew (עִברִית) locale bundle."
+msgstr ""
+
+#: renderers/web-components/src/variables/heading.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "A semantic heading with a bounded level from one through six."
 msgstr ""
 
 #: renderers/web-components/src/variables/hi.md
@@ -23834,6 +23899,12 @@ msgctxt "docs.api:prose"
 msgid "`<instui-in-place-edit>` — a click-to-edit field. `value` shows as text; on click/focus it becomes\neditable, Enter or blur commits (and fires a bubbling `change` event with `detail.value`), and\nEscape reverts to the pre-edit value. `readonly` disables editing. An external `value` change\nreflects into the field while it isn't being edited. `input-type` accepts `text`, `number`,\n`email`, `url`, `tel`, or `search` as a non-validating editing hint."
 msgstr ""
 
+#: renderers/web-components/src/variables/inputGroup.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "A container for an input and adjacent content."
+msgstr ""
+
 #: renderers/web-components/src/variables/is.md
 #, no-c-format
 msgctxt "docs.api:prose"
@@ -23856,6 +23927,30 @@ msgstr ""
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "Korean (한국말) locale bundle."
+msgstr ""
+
+#: renderers/web-components/src/variables/link.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "A link that rejects executable and data URL schemes."
+msgstr ""
+
+#: renderers/web-components/src/variables/list.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "A native unordered list with Pantoken list-item styles."
+msgstr ""
+
+#: renderers/web-components/src/variables/mask.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "An overlay surface for positioned content."
+msgstr ""
+
+#: renderers/web-components/src/variables/menu.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "A menu surface with item, group, and separator styles."
 msgstr ""
 
 #: renderers/web-components/src/variables/metric.md
@@ -23912,6 +24007,12 @@ msgctxt "docs.api:prose"
 msgid "Norwegian Nynorsk (Norsk Nynorsk) locale bundle."
 msgstr ""
 
+#: renderers/web-components/src/variables/numberInput.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "A native number input with value-change events."
+msgstr ""
+
 #: renderers/web-components/src/variables/pages.md
 #, no-c-format
 msgctxt "docs.api:prose"
@@ -23940,6 +24041,12 @@ msgstr ""
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "Back"
+msgstr ""
+
+#: renderers/web-components/src/variables/pagination.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "A pagination navigation landmark."
 msgstr ""
 
 #: renderers/web-components/src/variables/pill.md
@@ -24002,6 +24109,24 @@ msgctxt "docs.api:prose"
 msgid "Portuguese Brazil (Português do Brasil) locale bundle."
 msgstr ""
 
+#: renderers/web-components/src/variables/radio.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "A native radio control and its slotted label."
+msgstr ""
+
+#: renderers/web-components/src/variables/radioInputGroup.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "A native fieldset for a radio-input group."
+msgstr ""
+
+#: renderers/web-components/src/variables/rangeInput.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "A native range slider with value-change events."
+msgstr ""
+
 #: renderers/web-components/src/variables/rating.md
 #, no-c-format
 msgctxt "docs.api:prose"
@@ -24012,6 +24137,12 @@ msgstr ""
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "Russian (Русский) locale bundle."
+msgstr ""
+
+#: renderers/web-components/src/variables/screenReaderContent.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Visually hidden content that remains available to assistive technology."
 msgstr ""
 
 #: renderers/web-components/src/variables/se.md
@@ -24038,6 +24169,12 @@ msgctxt "docs.api:prose"
 msgid "Courses"
 msgstr ""
 
+#: renderers/web-components/src/variables/simpleSelect.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "A native select control that copies text-only options from its light DOM."
+msgstr ""
+
 #: renderers/web-components/src/variables/sl.md
 #, no-c-format
 msgctxt "docs.api:prose"
@@ -24054,6 +24191,12 @@ msgstr ""
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "Swedish (Svenska) locale bundle."
+msgstr ""
+
+#: renderers/web-components/src/variables/table.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "A table-layout container that keeps slotted rows inside its table semantics."
 msgstr ""
 
 #: renderers/web-components/src/variables/tabs.md
@@ -24092,6 +24235,24 @@ msgctxt "docs.api:prose"
 msgid "Design"
 msgstr ""
 
+#: renderers/web-components/src/variables/text.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "A paragraph of Pantoken body text."
+msgstr ""
+
+#: renderers/web-components/src/variables/textArea.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "A native multiline text input with a visible slotted label."
+msgstr ""
+
+#: renderers/web-components/src/variables/textInput.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "A native text input with a visible slotted label."
+msgstr ""
+
 #: renderers/web-components/src/variables/th.md
 #, no-c-format
 msgctxt "docs.api:prose"
@@ -24108,6 +24269,18 @@ msgstr ""
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "Bookmarked"
+msgstr ""
+
+#: renderers/web-components/src/variables/toggleDetails.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "A native disclosure with a configurable summary."
+msgstr ""
+
+#: renderers/web-components/src/variables/toggleGroup.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "A native disclosure group."
 msgstr ""
 
 #: renderers/web-components/src/variables/tooltip.md
@@ -24168,6 +24341,12 @@ msgstr ""
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "Vietnamese locale bundle."
+msgstr ""
+
+#: renderers/web-components/src/variables/view.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "A neutral layout primitive."
 msgstr ""
 
 #: renderers/web-components/src/variables/zhHans.md

@@ -453,6 +453,7 @@ const localesConfig = Object.fromEntries(
           sidebar: {
             [locale.guidePrefix]: guideSidebar,
             [`${localeKey === "root" ? "/" : `/${localeKey}/`}r/`]: guideSidebar,
+            ...(localeKey === "root" ? { "/a2ui/": guideSidebar } : {}),
             // Per-route API/CSS sidebars (see `apiSidebarRoutesByLocale` above) — VitePress's
             // `getSidebar` matches the longest key that's a prefix of the current page's path, so
             // each API page only ever renders its own route's (already-partitioned) subtree.
