@@ -43,7 +43,7 @@
     "dev": "vp pack --watch",
     "test": "vp run generate && vp test",
     "check": "vp check && i18n --config \"$(git rev-parse --show-toplevel)/i18n.config.json\" check cli.ai",
-    "eval": "waza run evals --discover -v"
+    "eval": "node scripts/generate.ts && waza run evals --discover -v"
   },
   "dependencies": {
     "@bomb.sh/tab": "catalog:",

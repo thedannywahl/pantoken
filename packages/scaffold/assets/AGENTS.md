@@ -92,6 +92,22 @@ After selecting a base package, also consider `@pantoken/plugin-layouts` (app-sh
 - React Native: `@pantoken/react-native` (StyleSheet-friendly objects, no CSS vars).
 - Markdown: `@pantoken/react-markdown` (react-markdown → InstUI), `@pantoken/rehype` (`:icon:` tokens).
 
+## A2UI clients
+
+When combining pantoken with A2UI, distinguish token theming from the A2UI protocol, transport,
+renderer, and catalog. Claude Code has a dedicated `use-a2ui` skill; other agents can follow these
+rules:
+
+- Inspect the installed A2UI renderer and protocol version, and check the current official SDK docs.
+  Do not assume framework clients support the same versions or styling APIs.
+- For the web Basic Catalog, use its documented `--a2ui-*` properties and map only to semantically
+  matching `--instui-*` tokens verified in `@pantoken/tokens`. Load `@pantoken/css`; don't invent
+  property names or hard-code colors.
+- For native clients, use the existing pantoken output for that host (`flutter`, `compose`, or
+  `swift`) and the renderer's native theme API; CSS custom properties do not apply to native views.
+- A2UI v1.0 delegates branding to the renderer. Do not put theme properties in v1.0 protocol
+  messages or add a runtime/renderer/catalog for token-only work.
+
 **Build tools:**
 
 - Vite: `@pantoken/vite` (virtual modules + CSS inject). Next: `@pantoken/next` (`withPantoken` for `transpilePackages`).

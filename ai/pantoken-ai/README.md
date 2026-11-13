@@ -93,7 +93,7 @@ the exact tested releases or environments; its `$schema` field points to the pub
 
 The `init-pantoken`, `create-pantoken-app`, `create-pantoken-mockup`, `use-pantoken-registry`, and
 `use-a2ui` Claude Code skills each have an eval suite under `evals/<skill-name>/` (skill definitions
-are inlined from `@pantoken/scaffold`), run with
+are generated from `@pantoken/scaffold` into `skills/`), run with
 [waza](https://github.com/microsoft/waza), Microsoft's CLI for evaluating agent Skills:
 
 ```sh

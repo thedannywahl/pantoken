@@ -1,6 +1,6 @@
 ---
 name: use-a2ui
-description: Use pantoken tokens or icons in an A2UI client. Trigger when integrating A2UI with pantoken, theming an A2UI renderer with InstUI tokens, or generating pantoken values for an A2UI native client. Do not trigger for A2UI protocol/transport questions that do not involve pantoken, or for generic pantoken styling without A2UI.
+description: Inspect an app's installed A2UI renderer and apply pantoken tokens or icons through its supported theme API. Use for A2UI renderer theming or native token output, not transport-only or generic pantoken tasks.
 ---
 
 # Use pantoken with A2UI
@@ -9,6 +9,12 @@ Use this skill when a consumer app combines pantoken with an A2UI renderer. Pant
 design tokens and icons; A2UI supplies the UI protocol and framework-specific renderers. For
 token-only work, reuse the installed A2UI renderer rather than adding a runtime, transport, renderer,
 or custom catalog.
+
+## Do not use this skill for
+
+Don't use this skill for A2UI protocol or transport questions that don't involve pantoken, or
+generic pantoken styling without A2UI. Use it for custom catalogs only when the user explicitly
+requests one.
 
 ## 1. Identify the client and versions
 
@@ -32,6 +38,9 @@ renderer; don't put theme properties in v1.0 protocol messages.
   CSS custom properties do not apply to native views.
 - **Other web frameworks:** Choose the matching official A2UI renderer first, then use its supported
   theming mechanism. Don't assume React-specific setup applies to Lit or Angular.
+- **Icons:** For surrounding web UI, use `@pantoken/web-components` or `@pantoken/icons`. For icons
+  inside an A2UI surface, verify the selected catalog's icon API; only add a custom component when
+  the user asks for one.
 
 ## 3. Extend only when requested
 

@@ -23,4 +23,7 @@ graders:
     config:
       max_tokens: 150000
 tasks:
-  - "tasks/*.yaml"
+  - "tasks/web-theme.yaml"
+  - "tasks/native-tokens.yaml"
+  - "tasks/protocol-only.yaml"
+  - "tasks/generic-pantoken.yaml"

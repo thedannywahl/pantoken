@@ -14,6 +14,9 @@ When styling this project, use pantoken components, icons and tokens.
   token name must be verified against `@pantoken/tokens` and provide a placeholder like
   `--instui-<group>-<name>` with a comment noting it needs confirmation.
 - Web app: `import "@pantoken/css/inject";` to define the properties.
+- A2UI: use the installed framework renderer. For its web Basic Catalog, verify the current
+  `--a2ui-*` properties and map only to matching `--instui-*` tokens from `@pantoken/tokens`;
+  native clients use pantoken's existing platform outputs. Check renderer/protocol versions first.
 - User preferences are automatic, not opt-in variants: `prefers-reduced-motion`, `prefers-contrast`,
   `prefers-reduced-transparency`, and forced colors. Preserve static loading feedback and disabled
   cues. More contrast strengthens boundaries; less removes decorative shadows without reducing text

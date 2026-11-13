@@ -61,6 +61,8 @@
 ## Theming other systems
 
 - `@pantoken/shadcn` · `@pantoken/bootstrap` · `@pantoken/storybook`
+- A2UI: theme an existing framework renderer with version-matched `--a2ui-*` properties and
+  verified `--instui-*` tokens; use existing pantoken native outputs for native clients.
 
 ## Native & other ecosystems (CLI: `pantoken generate <target>`)
 
@@ -74,6 +76,8 @@
 
 - `@pantoken/ai` provides installable agent assets: `AGENTS.md`, `llms.txt`, and editor/assistant
 	rules for Cursor, Copilot, Windsurf, and Claude Code.
+- The Claude Code assets include `use-a2ui` for A2UI integrations; shared agent rules also cover
+	version-aware token theming.
 - CLI: `npx pantoken-ai init [--tool <all|agents|llms|cursor|copilot|windsurf|claude>] [--dir <path>]`.
 
 ## Design & interchange

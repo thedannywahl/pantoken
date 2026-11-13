@@ -1,10 +1,10 @@
 id: web-theme-001
 name: Theme an A2UI web renderer
-description: User wants pantoken tokens applied to an existing A2UI React Basic Catalog.
+description: User wants guidance for theming an A2UI React Basic Catalog with pantoken tokens and icons.
 tags:
   - positive-trigger
 inputs:
-  prompt: "This app uses @a2ui/react. Help me theme its Basic Catalog with pantoken and support dark mode."
+  prompt: "I already verified that this app's installed @a2ui/react Basic Catalog supports --a2ui-* custom properties and that @pantoken/css supplies semantically matching --instui-* tokens. Show a minimal scoped CSS pattern for light and dark mode, and explain how to use pantoken icons without inventing token names."
 expected:
   should_trigger: true
 graders:
