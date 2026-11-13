@@ -1,0 +1,7 @@
+Error: Parameter must have an explicit type annotation with --isolatedDeclarations.
+generate-a2ui-catalog.ts(116, 37): Add a type annotation to the parameter check.
+
+---
+
+Error: Parameter must have an explicit type annotation with --isolatedDeclarations.
+generate-a2ui-catalog.ts(116, 37): Add a type annotation to the parameter check.
