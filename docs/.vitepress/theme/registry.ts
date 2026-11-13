@@ -18,8 +18,13 @@ export interface RegistryBrowserStrings {
   tabHooks: string;
   /** Placeholder text for the filter/search input. */
   searchPlaceholder: string;
+  searchLabel: string;
   /** Label preceding the package manager selector tabs. */
   cliLabel: string;
+  cliPattern: string;
+  typeTheme: string;
+  typeBase: string;
+  typeHook: string;
   /** Copy button label. */
   copy: string;
   /** Copy button label after copying. */
@@ -48,7 +53,12 @@ export const REGISTRY_BROWSER_DEFAULTS: RegistryBrowserStrings = {
   tabThemes: "Themes",
   tabHooks: "Hooks",
   searchPlaceholder: "Filter components, layouts, plugins, themes…",
+  searchLabel: "Filter registry items",
   cliLabel: "CLI:",
+  cliPattern: "CLI pattern:",
+  typeTheme: "Theme",
+  typeBase: "Base",
+  typeHook: "Hook",
   copy: "Copy",
   copied: "Copied",
   depsLabel: "Deps:",

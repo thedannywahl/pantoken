@@ -417,9 +417,10 @@ const localesConfig = Object.fromEntries(
                 text: locale.sidebar.registry,
                 link: `${localeKey === "root" ? "/" : `/${localeKey}/`}r/`,
               },
-              ...(localeKey === "root"
-                ? [{ text: locale.sidebar.a2uiCatalog, link: "/a2ui/" }]
-                : []),
+              {
+                text: locale.sidebar.a2uiCatalog,
+                link: `${localeKey === "root" ? "/" : `/${localeKey}/`}a2ui/`,
+              },
               {
                 text: locale.sidebar.agentTools,
                 link: `${locale.guidePrefix}agent-tools`,
@@ -453,7 +454,7 @@ const localesConfig = Object.fromEntries(
           sidebar: {
             [locale.guidePrefix]: guideSidebar,
             [`${localeKey === "root" ? "/" : `/${localeKey}/`}r/`]: guideSidebar,
-            ...(localeKey === "root" ? { "/a2ui/": guideSidebar } : {}),
+            [`${localeKey === "root" ? "/" : `/${localeKey}/`}a2ui/`]: guideSidebar,
             // Per-route API/CSS sidebars (see `apiSidebarRoutesByLocale` above) — VitePress's
             // `getSidebar` matches the longest key that's a prefix of the current page's path, so
             // each API page only ever renders its own route's (already-partitioned) subtree.
@@ -494,6 +495,8 @@ const localesConfig = Object.fromEntries(
           // Read by the shadcn/ui registry browser (RegistryBrowser.vue) via `useData().theme`.
           registryBrowser: locale.registryBrowser,
           a2uiCatalog: locale.a2uiCatalog,
+          registryBrowserItems: locale.registryBrowserItems,
+          a2uiCatalogDescriptions: locale.a2uiCatalogDescriptions,
           agentTools: locale.agentTools,
         },
       },

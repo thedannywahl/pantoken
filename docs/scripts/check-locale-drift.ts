@@ -28,6 +28,7 @@ import { dirname, join, relative } from "node:path";
 import { DriftReporter, type DriftUnit } from "@pantoken/translation-adapters";
 import { extractFrontmatterUnits, parsePo } from "@pantoken/i18n-engine";
 import { ENGLISH_UI_STRINGS, NON_ROOT_LOCALES, flattenStrings } from "../.vitepress/i18n.ts";
+import catalogSource from "../.vitepress/catalog-i18n.json" with { type: "json" };
 import { GLOSSARY_TERMS } from "./glossary.ts";
 import { listDemoNames, loadDemoI18n } from "./demo-i18n.ts";
 import { collectUnits, isCatalogedApiUnit, segmentMarkdown } from "./segment-markdown.ts";
@@ -194,11 +195,13 @@ const chromeDrift = (locale: string): Missing[] => {
   if (chromeLeaves.length === 0) return [];
   const poPath = join(l10nDir, locale, "docs.chrome.po");
   if (existsSync(poPath)) {
-    const translated = loadPoTranslatedSet(poPath, (entry) => entry.msgctxt);
+    const translated = loadPoTranslatedSet(poPath, (entry) =>
+      JSON.stringify([entry.msgctxt, entry.msgid]),
+    );
     return chromeLeaves
-      .filter(({ path }) => !translated.has(`docs.chrome:${path}`))
+      .filter(({ path, text }) => !translated.has(JSON.stringify([`docs.chrome:${path}`, text])))
       .map(({ path, text }) => ({
-        file: `.vitepress/i18n.json#${path}`,
+        file: `.vitepress/${Object.hasOwn(catalogSource, path) ? "catalog-i18n.json" : "i18n.json"}#${path}`,
         kind: "text",
         sample: preview(text),
         unit: { msgctxt: `docs.chrome:${path}`, msgid: text },

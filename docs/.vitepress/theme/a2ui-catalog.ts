@@ -20,4 +20,8 @@ export interface A2uiCatalogStrings {
   integrationHeading: string;
   componentReference: string;
   empty: string;
+  value: string;
+  versioningHeading: string;
+  versioningDescription: string;
+  versioningActions: string;
 }

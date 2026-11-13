@@ -123,7 +123,8 @@
     },
     "docs.chrome": {
       "kind": "messages",
-      "source": "docs/.vitepress/i18n.json"
+      "source": "docs/.vitepress/i18n.json",
+      "sourceMerge": ["docs/.vitepress/catalog-i18n.json"]
     },
     "docs.demos": {
       "kind": "messages",

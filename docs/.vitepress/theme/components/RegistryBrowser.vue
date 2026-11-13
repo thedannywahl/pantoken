@@ -11,6 +11,7 @@ type TabKey = "all" | "ui" | "theme";
 
 type DocsThemeWithRegistryBrowser = {
   registryBrowser?: RegistryBrowserStrings;
+  registryBrowserItems?: Record<string, { title?: string; description?: string }>;
 };
 
 const { theme } = useData<DocsThemeWithRegistryBrowser>();
@@ -19,7 +20,15 @@ const t = computed<RegistryBrowserStrings>(
 );
 
 const catalog = shallowRef(catalogData);
-const items = computed<RegistryItem[]>(() => catalog.value.items as RegistryItem[]);
+const originalItems = new Map(
+  (catalogData.items as RegistryItem[]).map((item) => [item.name, item]),
+);
+const items = computed<RegistryItem[]>(() =>
+  (catalog.value.items as RegistryItem[]).map((item) => ({
+    ...item,
+    ...theme.value.registryBrowserItems?.[item.name],
+  })),
+);
 
 const search = useHashParamRef("r_q", "");
 const pm = useHashParamRef("r_pm", "npx");
@@ -57,8 +66,12 @@ const filteredItems = computed(() => {
     const matchName = item.name.toLowerCase().includes(query);
     const matchTitle = (item.title ?? "").toLowerCase().includes(query);
     const matchDesc = (item.description ?? "").toLowerCase().includes(query);
+    const original = originalItems.get(item.name);
+    const matchOriginal =
+      (original?.title ?? "").toLowerCase().includes(query) ||
+      (original?.description ?? "").toLowerCase().includes(query);
     const matchDeps = (item.dependencies ?? []).some((d) => d.toLowerCase().includes(query));
-    return matchName || matchTitle || matchDesc || matchDeps;
+    return matchName || matchTitle || matchDesc || matchOriginal || matchDeps;
   });
 });
 
@@ -99,11 +112,11 @@ function typeBadgeLabel(type: RegistryItem["type"]): string {
     case "registry:ui":
       return "UI";
     case "registry:theme":
-      return "Theme";
+      return t.value.typeTheme;
     case "registry:base":
-      return "Base";
+      return t.value.typeBase;
     case "registry:hook":
-      return "Hook";
+      return t.value.typeHook;
     default:
       return type.replace(/^registry:/, "");
   }
@@ -126,7 +139,7 @@ function badgeColorClass(type: RegistryItem["type"]): string {
 </script>
 
 <template>
-  <div class="registry-page instui-view">
+  <main class="vp-doc registry-page instui-view">
     <h1 class="instui-heading -level-h1 -variant-title-page" style="margin: 0 0 1rem">
       {{ t.title }}
     </h1>
@@ -149,7 +162,7 @@ function badgeColorClass(type: RegistryItem["type"]): string {
         {{ t.subtitle }}
       </p>
       <div class="registry-page__hero-tip instui-view -border-radius-medium --p-sm">
-        <span class="instui-text -weight-bold -size-small">CLI pattern:</span>
+        <span class="instui-text -weight-bold -size-small">{{ t.cliPattern }}</span>
         <code class="registry-page__code">npx shadcn@latest add @pantoken/[item]</code>
       </div>
     </div>
@@ -194,7 +207,7 @@ function badgeColorClass(type: RegistryItem["type"]): string {
               v-model="search"
               type="search"
               :placeholder="t.searchPlaceholder"
-              aria-label="Filter registry items"
+              :aria-label="t.searchLabel"
             />
           </span>
 
@@ -253,8 +266,12 @@ function badgeColorClass(type: RegistryItem["type"]): string {
               v-if="item.dependencies && item.dependencies.length > 0"
               class="registry-page__card-deps"
             >
-              <span class="instui-text -size-x-small -color-secondary">{{ t.depsLabel }}</span>
-              <span v-for="dep in item.dependencies" :key="dep" class="instui-tag -size-sm">
+              <span class="instui-text -size-x-small">{{ t.depsLabel }}</span>
+              <span
+                v-for="dep in item.dependencies"
+                :key="dep"
+                class="instui-text -size-x-small -color-secondary"
+              >
                 {{ dep }}
               </span>
             </div>
@@ -337,7 +354,7 @@ function badgeColorClass(type: RegistryItem["type"]): string {
         </div>
       </div>
     </div>
-  </div>
+  </main>
 </template>
 
 <style scoped>

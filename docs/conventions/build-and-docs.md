@@ -1,5 +1,15 @@
 # Build, release, and the docs site
 
+## Catalog browser localization
+
+The A2UI and shadcn registry browsers use `docs.chrome` for their labels and visible catalog prose.
+`docs/scripts/catalog-i18n.ts` derives the catalog message source from the component contracts and
+registry generator; don't edit `docs/.vitepress/catalog-i18n.json` by hand. The docs asset and
+chrome translation commands refresh it, and `node docs/scripts/catalog-i18n.ts --check` checks for
+drift without translating. The asset build also stages locale-specific browser pages; their
+untranslated messages fall back to English. Catalog JSON, component names, properties, commands,
+and code examples remain unchanged.
+
 ## Generated values and translation identity
 
 Compatibility Markdown is formatted through `vite-plus/fmt` before it is written, so running

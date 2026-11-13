@@ -34,6 +34,8 @@ packages/scaffold/.dev/
 docs/--port/
 docs/api/
 docs/*/api/
+docs/*/a2ui/index.md
+docs/*/r/index.md
 docs/.vitepress/cache/
 docs/docs/.vitepress/cache/
 docs/.vitepress/.temp/

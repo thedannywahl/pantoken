@@ -25,6 +25,7 @@ type CatalogDocument = {
 
 type DocsThemeWithA2uiCatalog = {
   a2uiCatalog?: A2uiCatalogStrings;
+  a2uiCatalogDescriptions?: Record<string, string>;
 };
 
 const MAX_ENUM_VALUES_IN_CARD = 12;
@@ -34,23 +35,36 @@ const t = computed(() => theme.value.a2uiCatalog);
 const search = ref("");
 const catalog = catalogData as CatalogDocument;
 const componentEntries = Object.entries(catalog.components);
-const searchableTextByComponent = new Map(
-  componentEntries.map(([name, component]) => {
-    const props = Object.entries(component.properties)
-      .filter(([property]) => property !== "component")
-      .flatMap(([property, schema]) => [property, ...(schema.enum ?? [])]);
-    return [
-      name,
-      `${name} ${component.description ?? ""} ${props.join(" ")}`.toLowerCase(),
-    ] as const;
-  }),
+const originalDescriptions = new Map(
+  componentEntries.map(([name, component]) => [name, component.description ?? ""]),
+);
+const localizedEntries = computed(() =>
+  componentEntries.map(([name, component]) => ({
+    name,
+    ...component,
+    description: theme.value.a2uiCatalogDescriptions?.[name] ?? component.description,
+  })),
+);
+const searchableTextByComponent = computed(
+  () =>
+    new Map(
+      localizedEntries.value.map((component) => {
+        const props = Object.entries(component.properties)
+          .filter(([property]) => property !== "component")
+          .flatMap(([property, schema]) => [property, ...(schema.enum ?? [])]);
+        return [
+          component.name,
+          `${component.name} ${component.description ?? ""} ${originalDescriptions.get(component.name)} ${props.join(" ")}`.toLowerCase(),
+        ] as const;
+      }),
+    ),
 );
 
 const components = computed(() => {
   const query = search.value.trim().toLowerCase();
-  return componentEntries
-    .filter(([name]) => !query || (searchableTextByComponent.get(name)?.includes(query) ?? false))
-    .map(([name, component]) => ({ name, ...component }));
+  return localizedEntries.value.filter(
+    ({ name }) => !query || (searchableTextByComponent.value.get(name)?.includes(query) ?? false),
+  );
 });
 
 function propertyDescription(schema: PropertySchema): string {
@@ -60,7 +74,7 @@ function propertyDescription(schema: PropertySchema): string {
     const values = schema.enum.slice(0, MAX_ENUM_VALUES_IN_CARD);
     return schema.enum.length > values.length ? `${values.join(", ")}, ...` : values.join(", ");
   }
-  return schema.type ?? "A2UI value";
+  return schema.type ?? t.value?.value ?? "A2UI value";
 }
 
 function isRequired(component: CatalogComponent, property: string): boolean {
@@ -112,7 +126,7 @@ onMounted(async () => {
 </script>
 
 <template>
-  <div class="a2ui-catalog instui-view">
+  <main class="vp-doc a2ui-catalog instui-view">
     <h1 class="instui-heading -level-h1 -variant-title-page a2ui-catalog__title">
       {{ t?.title }}
     </h1>
@@ -221,20 +235,17 @@ onMounted(async () => {
     </section>
 
     <section class="a2ui-catalog__versioning" aria-labelledby="a2ui-versioning-heading">
-      <h2 id="a2ui-versioning-heading" class="instui-heading -level-h2">Catalog Versioning</h2>
+      <h2 id="a2ui-versioning-heading" class="instui-heading -level-h2">
+        {{ t?.versioningHeading }}
+      </h2>
       <p class="instui-text -color-secondary">
-        The v1 catalog ID is stable. Adding an optional component, property, or enum value is
-        additive; removing or renaming an existing component or property, narrowing an enum, or
-        making an optional property required is breaking and requires a new catalog version. Only
-        the components and properties listed above are part of Pantoken's A2UI catalog.
+        {{ t?.versioningDescription }}
       </p>
       <p class="instui-text -color-secondary">
-        The catalog defines no executable functions and does not authorize actions. A2UI actions are
-        dispatched through the host application's normal action handling, where the application must
-        enforce its own permissions.
+        {{ t?.versioningActions }}
       </p>
     </section>
-  </div>
+  </main>
 </template>
 
 <style scoped>
