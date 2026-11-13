@@ -24,6 +24,11 @@
       "matchPackageNames": ["*"],
       "groupName": "weekly maintenance",
       "separateMajorMinor": false
+    },
+    {
+      "description": "Hold accessibility audit updates until their generated API prose has localized coverage.",
+      "matchPackageNames": ["automatica11y"],
+      "enabled": false
     }
   ],
   "lockFileMaintenance": {
