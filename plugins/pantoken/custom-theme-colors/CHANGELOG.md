@@ -1,5 +1,13 @@
 # @pantoken/plugin-custom-theme-colors
 
+## 0.3.8
+
+### Patch Changes
+
+- Updated dependencies [2784dba]
+  - @pantoken/tokens@0.8.4
+  - @pantoken/plugin-kit@0.3.9
+
 ## 0.3.7
 
 ### Patch Changes
