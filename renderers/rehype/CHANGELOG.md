@@ -1,5 +1,11 @@
 # CHANGELOG
 
+## 0.2.6
+
+### Patch Changes
+
+- @pantoken/icons@0.3.8
+
 ## 0.2.5
 
 ### Patch Changes
