@@ -1,7 +1,7 @@
 {
   "name": "@pantoken/web-components",
   "version": "0.8.1",
-  "description": "Framework-agnostic custom elements for Instructure UI: <instui-icon> plus token-styled primitives.",
+  "description": "Framework-agnostic custom elements for Instructure UI, including A2UI 1.0 Universal components.",
   "homepage": "https://pantoken.app",
   "bugs": "https://github.com/thedannywahl/pantoken/issues",
   "license": "MIT",
@@ -24,6 +24,7 @@
     "./components.css": "./dist/components.css",
     "./*.css": "./dist/*.css",
     "./scaffold-preset": "./dist/scaffold-preset.mjs",
+    "./a2ui": "./dist/a2ui.mjs",
     "./package.json": "./package.json"
   },
   "publishConfig": {
@@ -32,8 +33,8 @@
   },
   "scripts": {
     "check:compatibility": "node scripts/check-compatibility.ts",
-    "generate": "node scripts/generate.ts && node scripts/build-bundles.ts",
-    "dev": "node scripts/generate.ts && node scripts/build-bundles.ts && node scripts/build-entries.ts && vp pack --watch",
+    "generate": "node ../../ai/pantoken-ai/scripts/generate-a2ui-catalog.ts && node scripts/generate.ts && node scripts/build-bundles.ts",
+    "dev": "node ../../ai/pantoken-ai/scripts/generate-a2ui-catalog.ts && node scripts/generate.ts && node scripts/build-bundles.ts && node scripts/build-entries.ts && vp pack --watch",
     "extract": "i18n --config \"$(git rev-parse --show-toplevel)/i18n.config.json\" extract ui.strings",
     "translate": "i18n --config \"$(git rev-parse --show-toplevel)/i18n.config.json\" translate ui.strings --provider claude",
     "translate:agy": "i18n --config \"$(git rev-parse --show-toplevel)/i18n.config.json\" translate ui.strings --provider agy",
@@ -42,8 +43,8 @@
     "translate:force:agy": "i18n --config \"$(git rev-parse --show-toplevel)/i18n.config.json\" translate ui.strings --provider agy --force",
     "translate:force:copilot": "i18n --config \"$(git rev-parse --show-toplevel)/i18n.config.json\" translate ui.strings --provider copilot --force",
     "check:drift": "i18n --config \"$(git rev-parse --show-toplevel)/i18n.config.json\" check ui.strings",
-    "test": "vp test",
-    "check": "vp check"
+    "test": "node ../../ai/pantoken-ai/scripts/generate-a2ui-catalog.ts && vp test",
+    "check": "node ../../ai/pantoken-ai/scripts/generate-a2ui-catalog.ts && vp check"
   },
   "dependencies": {
     "@pantoken/components": "workspace:*",
@@ -54,13 +55,27 @@
     "messageformat": "catalog:"
   },
   "devDependencies": {
+    "@a2ui/web_core": "catalog:",
     "@pantoken/i18n-engine": "workspace:*",
     "@types/node": "catalog:",
     "bingo-stratum": "catalog:",
     "happy-dom": "catalog:",
+    "lit": "catalog:",
     "typescript": "catalog:",
     "vite": "catalog:",
     "vite-plus": "catalog:"
+  },
+  "peerDependencies": {
+    "@a2ui/web_core": "^0.15.0",
+    "lit": "^3.3.3"
+  },
+  "peerDependenciesMeta": {
+    "@a2ui/web_core": {
+      "optional": true
+    },
+    "lit": {
+      "optional": true
+    }
   },
   "engines": {
     "node": ">=22.18.0"

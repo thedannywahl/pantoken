@@ -19,6 +19,8 @@ packages:
 catalogMode: prefer
 
 catalog:
+  "@a2ui/web_core": ^0.15.0
+  lit: ^3.3.3
   acorn: ^8.19.0
   yaml: ^2.9.1
   "@types/node": ^26.6.5

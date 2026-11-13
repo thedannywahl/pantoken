@@ -74,6 +74,25 @@ no DOM. Call `register(customElements)` manually if you need to control timing.
 - **`DEFAULT_PREFIX`** — the default tag prefix, `"instui"`.
 - **`WebComponentStrings`**, **`ENGLISH_STRINGS`**, **`makeStrings`**, **`resolveFirstDay`** — the locale string contract, plus the full 44-locale bundle set and `registerLocalized` helper.
 
+## A2UI 1.0
+
+For verified Lit clients, the optional `./a2ui` entry registers Pantoken's Universal components and
+catalog alongside A2UI's Basic Catalog:
+
+```ts
+import { basicCatalog } from "@a2ui/web_core/catalogs/basic/v1";
+import { MessageProcessor } from "@a2ui/web_core";
+import { pantokenA2uiCatalog, registerPantokenA2uiComponents } from "@pantoken/web-components/a2ui";
+
+registerPantokenA2uiComponents();
+const processor = new MessageProcessor([basicCatalog, pantokenA2uiCatalog]);
+```
+
+Install `@a2ui/web_core` and `lit` in the host app. The catalog currently contains only
+`PantokenButton` and `PantokenTooltip`. See the [published catalog and support status](https://pantoken.app/a2ui/);
+React and Angular v1.0 runtime support is pending verification, and native platforms have schema-only
+support.
+
 ## Related
 
 - Styles the elements with `@pantoken/components` and reads glyphs from `@pantoken/icons`.
