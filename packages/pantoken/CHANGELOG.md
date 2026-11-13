@@ -1,5 +1,12 @@
 # CHANGELOG
 
+## 0.2.35
+
+### Patch Changes
+
+- Updated dependencies [0e55f77]
+  - @pantoken/tinymce@0.7.4
+
 ## 0.2.34
 
 ### Patch Changes
