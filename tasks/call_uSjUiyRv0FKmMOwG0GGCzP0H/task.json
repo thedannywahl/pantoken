@@ -1,0 +1,13 @@
+{
+  "tool_use_id": "call_uSjUiyRv0FKmMOwG0GGCzP0H",
+  "agent_id": "b5544195-0bc7-4c9b-b56f-c2078003a000",
+  "subagent_type": "general-purpose",
+  "task_description": "Implement framework surface hosts",
+  "files": [
+    "tools/a2ui-conformance/src/angular.ts",
+    "tools/a2ui-conformance/src/react.ts"
+  ],
+  "started_at": "2026-11-13T16:02:42.631326-07:00",
+  "completed_at": "2026-11-13T16:02:42.632318-07:00",
+  "transcript_unavailable_reason": "transcript path unresolvable"
+}
