@@ -3,7 +3,7 @@
   "checkpoint_id": "01M7BMM6C08AM5YSCAMPNZG3GX",
   "strategy": "manual-commit",
   "branch": "a2ui",
-  "checkpoints_count": 5,
+  "checkpoints_count": 7,
   "files_touched": [
     ".changeset/neat-mangos-push.md",
     ".github/workflows/ci.yml",
@@ -50,6 +50,13 @@
       "compact_transcript": "/1/transcript.jsonl",
       "content_hash": "/1/content_hash.txt",
       "prompt": "/1/prompt.txt"
+    },
+    {
+      "metadata": "/2/metadata.json",
+      "transcript": "/2/full.jsonl",
+      "compact_transcript": "/2/transcript.jsonl",
+      "content_hash": "/2/content_hash.txt",
+      "prompt": "/2/prompt.txt"
     }
   ],
   "token_usage": {
@@ -68,7 +75,7 @@
     "subagent_tokens_complete": true
   },
   "redaction": {
-    "replacements": 239653,
+    "replacements": 240065,
     "layers": {
       "betterleaks": 2,
       "connection_string": 0,
@@ -76,7 +83,7 @@
       "credential_value": 0,
       "credentialed_uri": 0,
       "custom": 0,
-      "entropy": 577509,
+      "entropy": 577960,
       "goredact": 0,
       "key_context": 0,
       "pii": 38,
