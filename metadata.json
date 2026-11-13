@@ -1,0 +1,66 @@
+{
+  "cli_version": "0.13.2",
+  "checkpoint_id": "01M7B6YK739YNCND79FJ02BM0W",
+  "strategy": "manual-commit",
+  "branch": "a2ui",
+  "checkpoints_count": 1,
+  "files_touched": [
+    ".gitignore",
+    "docs/.vitepress/catalog-i18n.json",
+    "docs/.vitepress/config.ts",
+    "docs/.vitepress/i18n.json",
+    "docs/.vitepress/i18n.ts",
+    "docs/.vitepress/theme/a2ui-catalog.ts",
+    "docs/.vitepress/theme/components/A2uiCatalogBrowser.vue",
+    "docs/.vitepress/theme/components/RegistryBrowser.vue",
+    "docs/.vitepress/theme/registry.ts",
+    "docs/conventions/build-and-docs.md",
+    "docs/package.json",
+    "docs/scripts/catalog-i18n.test.ts",
+    "docs/scripts/catalog-i18n.ts",
+    "docs/scripts/check-locale-drift.test.ts",
+    "docs/scripts/check-locale-drift.ts",
+    "docs/scripts/stage-catalog-locales.ts",
+    "i18n.config.json",
+    "l10n/docs.chrome.pot"
+  ],
+  "sessions": [
+    {
+      "metadata": "/0/metadata.json",
+      "transcript": "/0/full.jsonl",
+      "compact_transcript": "/0/transcript.jsonl",
+      "content_hash": "/0/content_hash.txt",
+      "prompt": "/0/prompt.txt"
+    }
+  ],
+  "token_usage": {
+    "input_tokens": 126,
+    "cache_creation_tokens": 142527,
+    "cache_read_tokens": 4973670,
+    "output_tokens": 16420,
+    "api_call_count": 42
+  },
+  "redaction": {
+    "replacements": 226890,
+    "layers": {
+      "betterleaks": 0,
+      "connection_string": 0,
+      "credential_key": 0,
+      "credential_value": 0,
+      "credentialed_uri": 0,
+      "custom": 0,
+      "entropy": 542686,
+      "goredact": 0,
+      "key_context": 0,
+      "pii": 24,
+      "provider_token": 0,
+      "shell_stdin": 0
+    },
+    "custom_rules_active": 2,
+    "pii": {
+      "EMAIL": 24,
+      "IP": 0,
+      "PHONE": 0
+    }
+  }
+}
