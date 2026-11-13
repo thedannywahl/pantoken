@@ -1,4 +1,13 @@
-import { existsSync, mkdirSync, readFileSync, writeFileSync } from "node:fs";
+import {
+  closeSync,
+  constants,
+  fstatSync,
+  ftruncateSync,
+  mkdirSync,
+  openSync,
+  readFileSync,
+  writeSync,
+} from "node:fs";
 import { resolve } from "node:path";
 import { LOCALE_THEMES, NON_ROOT_LOCALES } from "../.vitepress/i18n.ts";
 import { runAsMain } from "../../scripts/release/cli.ts";
@@ -18,14 +27,33 @@ export function stageCatalogLocales(
     ]) {
       const directory = resolve(docsRoot, locale, route);
       const path = resolve(directory, "index.md");
-      if (existsSync(path) && !readFileSync(path, "utf8").includes(marker)) {
-        throw new Error(`Refusing to overwrite authored page: ${path}`);
-      }
       mkdirSync(directory, { recursive: true });
-      writeFileSync(
-        path,
-        `---\ntitle: ${JSON.stringify(title)}\nlayout: page\n---\n\n${marker}\n<${component} />\n`,
-      );
+      let descriptor: number;
+      let created = false;
+      const flags = constants.O_RDWR | constants.O_NOFOLLOW | constants.O_NONBLOCK;
+      try {
+        descriptor = openSync(path, flags | constants.O_CREAT | constants.O_EXCL, 0o666);
+        created = true;
+      } catch (error) {
+        if (!(error instanceof Error && "code" in error && error.code === "EEXIST")) throw error;
+        descriptor = openSync(path, flags);
+      }
+      try {
+        if (!fstatSync(descriptor).isFile()) throw new Error(`Not a regular page file: ${path}`);
+        if (!created && !readFileSync(descriptor, "utf8").includes(marker)) {
+          throw new Error(`Refusing to overwrite authored page: ${path}`);
+        }
+        const output = Buffer.from(
+          `---\ntitle: ${JSON.stringify(title)}\nlayout: page\n---\n\n${marker}\n<${component} />\n`,
+        );
+        let written = 0;
+        while (written < output.length) {
+          written += writeSync(descriptor, output, written, output.length - written, written);
+        }
+        ftruncateSync(descriptor, output.length);
+      } finally {
+        closeSync(descriptor);
+      }
     }
   }
 }

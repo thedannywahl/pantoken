@@ -98,6 +98,10 @@ pantoken is a design-token transformation and distribution system. It converts I
   these controls are not an authorization boundary. The published catalog JSON is mutable and
   unsigned, so clients should review the versioned schema, apply their own media-source and link
   policies, and authorize action effects in the host application.
+- Localized catalog page staging validates and writes through the same no-follow file descriptor,
+  rejecting symlinks, non-regular files, and existing pages without the generated-page marker.
+  This protects the final file path, not ancestor directories or concurrent writes to an open file;
+  run docs builds in a trusted checkout.
 - Agent coding sessions are checkpointed by Entire and pushed to this repository as git objects
   under `refs/entire/checkpoints/*`. Transcripts are redacted at capture time for known credential
   formats and for email and phone PII, but they are still a record of contributor terminal and
