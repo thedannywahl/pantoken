@@ -7,6 +7,7 @@ import {
   pantokenA2uiCatalog,
   registerPantokenA2uiComponents,
 } from "../src/a2ui.ts";
+import catalogDocument from "../src/generated/a2ui-catalog.json" with { type: "json" };
 
 afterEach(() => {
   document.body.innerHTML = "";
@@ -35,10 +36,12 @@ function makeSurface(
   return surface;
 }
 
-test("publishes only the Pantoken components under the A2UI 1.0 catalog", () => {
+test("registers an A2UI implementation for every component in the full catalog", () => {
   expect(pantokenA2uiCatalog.protocolVersion).toBe("1.0");
   expect(pantokenA2uiCatalog.id).toBe("https://pantoken.app/a2ui/catalog/v1/catalog.json");
-  expect([...pantokenA2uiCatalog.components.keys()]).toEqual(["PantokenButton", "PantokenTooltip"]);
+  expect([...pantokenA2uiCatalog.components.keys()].sort()).toEqual(
+    Object.keys(catalogDocument.components).sort(),
+  );
   expect(pantokenA2uiCatalog.functions.size).toBe(0);
 });
 

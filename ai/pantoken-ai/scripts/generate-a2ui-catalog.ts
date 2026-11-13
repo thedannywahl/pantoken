@@ -1,5 +1,6 @@
 import { mkdirSync, readFileSync, writeFileSync } from "node:fs";
 import { dirname, resolve } from "node:path";
+import { ELEMENTS } from "../../../renderers/web-components/src/lib/elements-meta.ts";
 
 const root = resolve(import.meta.dirname, "../../..");
 const sourcePath = resolve(root, "ai/pantoken-ai/catalogs/pantoken-v1.json");
@@ -9,22 +10,20 @@ const outputs = [
   resolve(root, "docs/public/a2ui/catalog.json"),
 ];
 
-const allowedComponents = {
-  PantokenButton: {
-    properties: ["action", "component", "label", "variant"],
-    required: ["component", "label"],
-    enums: {
-      variant: ["primary", "secondary", "tertiary", "success", "danger", "ai", "ai-secondary"],
-    },
-    selector: "PantokenButton",
-  },
-  PantokenTooltip: {
-    properties: ["action", "component", "placement", "tip", "triggerLabel"],
-    required: ["component", "triggerLabel", "tip", "action"],
-    enums: { placement: ["top", "bottom", "start", "end"] },
-    selector: "PantokenTooltip",
-  },
-} as const;
+const exportedComponents = new Set(
+  ELEMENTS.map(
+    (element) =>
+      `Pantoken${element
+        .split("-")
+        .map((part) => part.slice(0, 1).toUpperCase() + part.slice(1))
+        .join("")}`,
+  ),
+);
+const allowedReferences = new Set([
+  "common_types.json#/$defs/Action",
+  "common_types.json#/$defs/DynamicString",
+]);
+const unsafePropertyNames = new Set(["href", "src", "url", "html", "innerhtml", "outerhtml"]);
 
 type JsonRecord = Record<string, unknown>;
 
@@ -49,18 +48,13 @@ export function validateCatalog(value: unknown): asserts value is JsonRecord {
   const components = value.components;
   if (!isRecord(components)) fail("components must be an object");
   if ("functions" in value) fail("Pantoken does not publish executable catalog functions");
+  if (Object.keys(components).length === 0) fail("components must not be empty");
 
-  const componentNames = Object.keys(allowedComponents);
-  if (
-    Object.keys(components).length !== componentNames.length ||
-    componentNames.some((name) => !(name in components))
-  ) {
-    fail(`components must be exactly ${componentNames.join(", ")}`);
-  }
-
-  for (const [name, contract] of Object.entries(allowedComponents)) {
-    const component = components[name];
-    if (!isRecord(component) || !isRecord(component.properties)) {
+  for (const [name, component] of Object.entries(components)) {
+    if (!exportedComponents.has(name)) {
+      fail(`${name} is not a component exported by @pantoken/web-components`);
+    }
+    if (!isRecord(component) || component.type !== "object" || !isRecord(component.properties)) {
       fail(`${name} must declare a properties object`);
     }
     if (component.additionalProperties !== false) {
@@ -68,46 +62,64 @@ export function validateCatalog(value: unknown): asserts value is JsonRecord {
     }
     const properties = component.properties;
     const selector = properties.component;
-    if (!isRecord(selector) || selector.const !== contract.selector) {
-      fail(`${name}.component must be the ${contract.selector} constant`);
+    if (
+      !isRecord(selector) ||
+      selector.const !== name ||
+      Object.keys(selector).some((key) => !["const", "description"].includes(key))
+    ) {
+      fail(`${name}.component must be the ${name} constant`);
     }
-    const propertyNames = Object.keys(properties).sort();
-    if (propertyNames.join(",") !== [...contract.properties].sort().join(",")) {
-      fail(`${name} properties must be exactly ${contract.properties.join(", ")}`);
+    for (const [property, definition] of Object.entries(properties)) {
+      if (!isRecord(definition)) fail(`${name}.${property} must be a property schema`);
+      if (
+        property.toLowerCase() !== "component" &&
+        unsafePropertyNames.has(property.toLowerCase())
+      ) {
+        fail(`${name}.${property} is not allowed in the A2UI catalog`);
+      }
+      if (property === "component") continue;
+      if ("$ref" in definition) {
+        if (
+          Object.keys(definition).some((key) => !["$ref", "description"].includes(key)) ||
+          typeof definition.$ref !== "string" ||
+          !allowedReferences.has(definition.$ref) ||
+          (definition.$ref === "common_types.json#/$defs/Action" && property !== "action") ||
+          (definition.$ref === "common_types.json#/$defs/DynamicString" && property === "action")
+        ) {
+          fail(`${name}.${property} uses an unsupported A2UI reference`);
+        }
+        continue;
+      }
+      if (
+        Object.keys(definition).some(
+          (key) => !["type", "enum", "default", "description"].includes(key),
+        ) ||
+        definition.type !== "string" ||
+        !Array.isArray(definition.enum) ||
+        definition.enum.length === 0 ||
+        !definition.enum.every((value) => typeof value === "string") ||
+        new Set(definition.enum).size !== definition.enum.length
+      ) {
+        fail(`${name}.${property} must use a string enum or an approved A2UI reference`);
+      }
+      if (property === "action") {
+        fail(`${name}.action must use the A2UI Action contract`);
+      }
+      if (
+        "default" in definition &&
+        (typeof definition.default !== "string" || !definition.enum.includes(definition.default))
+      ) {
+        fail(`${name}.${property} default must be one of its enum values`);
+      }
     }
     const required = component.required;
     if (
       !Array.isArray(required) ||
-      required.length !== contract.required.length ||
-      !contract.required.every((property) => required.includes(property))
+      !required.every((property) => typeof property === "string" && property in properties) ||
+      new Set(required).size !== required.length ||
+      !required.includes("component")
     ) {
-      fail(`${name} required properties must be exactly ${contract.required.join(", ")}`);
-    }
-    for (const [property, values] of Object.entries(contract.enums)) {
-      const definition = properties[property];
-      if (
-        !isRecord(definition) ||
-        definition.type !== "string" ||
-        !Array.isArray(definition.enum)
-      ) {
-        fail(`${name}.${property} must be an enum`);
-      }
-      if (definition.enum.join(",") !== values.join(",")) {
-        fail(`${name}.${property} enum does not match the renderer allowlist`);
-      }
-    }
-    for (const property of ["label", "triggerLabel", "tip"]) {
-      if (!(property in properties)) continue;
-      const definition = properties[property];
-      if (!isRecord(definition) || definition.$ref !== "common_types.json#/$defs/DynamicString") {
-        fail(`${name}.${property} must use A2UI v1.0 DynamicString`);
-      }
-    }
-    if ("action" in properties) {
-      const definition = properties.action;
-      if (!isRecord(definition) || definition.$ref !== "common_types.json#/$defs/Action") {
-        fail(`${name}.action must use the A2UI v1.0 Action contract`);
-      }
+      fail(`${name}.required must contain unique declared properties, including component`);
     }
   }
 }

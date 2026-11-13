@@ -18,13 +18,27 @@ test("validates the checked-in Pantoken A2UI 1.0 catalog", () => {
   expect(() => validateCatalog(readCatalog())).not.toThrow();
 });
 
-test("rejects unlisted component properties and executable catalog functions", () => {
+test("derives component names from web-component exports", () => {
+  const withExportedComponent = readCatalog();
+  const component = structuredClone(withExportedComponent.components.PantokenButton);
+  component.properties.component = { const: "PantokenDateTimeInput" };
+  withExportedComponent.components.PantokenDateTimeInput = component;
+
+  expect(() => validateCatalog(withExportedComponent)).not.toThrow();
+});
+
+test("rejects unexported components, unsafe properties, and executable functions", () => {
+  const withUnexportedComponent = readCatalog();
+  withUnexportedComponent.components.PantokenUnknown =
+    withUnexportedComponent.components.PantokenButton;
+  expect(() => validateCatalog(withUnexportedComponent)).toThrow(/not a component exported/);
+
   const withExtraProperty = readCatalog();
   withExtraProperty.components.PantokenButton.properties.href = {
     type: "string",
     format: "uri",
   };
-  expect(() => validateCatalog(withExtraProperty)).toThrow(/properties must be exactly/);
+  expect(() => validateCatalog(withExtraProperty)).toThrow(/not allowed in the A2UI catalog/);
 
   const withFunctions = readCatalog();
   withFunctions.functions = {};
