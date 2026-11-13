@@ -71,6 +71,11 @@ test("manual dispatch overrides only Renovate scheduling while scheduled runs re
     minimumReleaseAge: string;
     draftPR: boolean;
     automerge: boolean;
+    packageRules: Array<{
+      description?: string;
+      matchPackageNames?: string[];
+      enabled?: boolean;
+    }>;
   };
   const override = workflow.jobs.propose.steps.find((step) => step.name === "Run Renovate")?.env
     ?.RENOVATE_FORCE;
@@ -88,6 +93,9 @@ test("manual dispatch overrides only Renovate scheduling while scheduled runs re
     draftPR: true,
     automerge: false,
   });
+  expect(
+    config.packageRules.find((rule) => rule.matchPackageNames?.includes("automatica11y")),
+  ).toMatchObject({ enabled: false });
 });
 
 test("budgets integration time for the full accessibility refresh and release gates", () => {
