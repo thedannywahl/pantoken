@@ -1,6 +1,6 @@
 ---
 name: use-a2ui
-description: Use Pantoken's constrained A2UI 1.0 component catalog or theme an installed A2UI renderer with Pantoken tokens. Use for A2UI work involving Pantoken, not transport-only or generic Pantoken tasks.
+description: Use Pantoken's constrained A2UI 1.0 component catalog or theme an installed A2UI renderer with Pantoken tokens. Use for A2UI work involving Pantoken, not transport-only or generic Pantoken tasks. When the app needs multiple themes, define each theme's `--a2ui-*` and `--instui-*` mappings under a separate selector (for example, `[data-theme="dark"] { ... }`), and do not set the mappings on `:root`.
 ---
 
 # Use Pantoken with A2UI
@@ -19,8 +19,33 @@ generic Pantoken styling without A2UI.
 Inspect the app's package manifest, lockfile, and installed packages. Confirm the A2UI protocol
 version and the client framework's supported SDK version from the
 [official SDK table](https://a2ui.org/concepts/sdks/) and
-[client integration guide](https://a2ui.org/guides/client-integration/). A2UI 1.0 delegates branding
-to the renderer; don't put theme properties in protocol messages.
+[client integration guide](https://a2ui.org/guides/client-integration/). Report the detected A2UI
+protocol version (for example, "A2UI 1.0") in the first sentence of your response. A2UI 1.0 delegates
+branding to the renderer; don't put theme properties in protocol messages.
+
+If the installed client framework's SDK version is not listed as supported for A2UI 1.0 in the official SDK table, or the SDK version cannot be determined, stop before making changes, report the detected SDK version, and do not apply Pantoken catalog or theme changes.
+
+If no package manifest or lockfile is available, ask the user for the A2UI version and client
+framework before continuing, and do not assume 1.0.
+
+If the installed A2UI protocol version is not 1.0, stop before making changes, report the detected version and the required upgrade path, and do not apply Pantoken catalog or theme changes.
+
+If a referenced documentation URL or the file `@pantoken/ai/a2ui/catalog-v1.json` cannot be accessed, use the installed package version and its README or type definitions to confirm support, and state in the response that the external source was not verified.
+
+## Routing table: Choose your path
+
+Before reading the sections below, use this table to identify which section applies:
+
+| A2UI Version | Client Framework                | Renderer Type     | Section                   |
+| ------------ | ------------------------------- | ----------------- | ------------------------- |
+| 1.0          | Lit                             | Universal Catalog | 2                         |
+| 1.0          | Web (React, Angular, Vue, etc.) | Basic Catalog     | 3 (Web)                   |
+| 1.0          | Flutter                         | Native            | 3 (Native)                |
+| 1.0          | SwiftUI                         | Native            | 3 (Native)                |
+| 1.0          | Jetpack Compose                 | Native            | 3 (Native)                |
+| Other        | —                               | —                 | Stop: unsupported version |
+
+Find the row matching the user's setup and follow only that section. If the setup doesn't match a row, the configuration is not supported by this skill.
 
 ## 2. Prefer the Pantoken catalog for verified Lit clients
 
@@ -31,9 +56,14 @@ For A2UI 1.0 Lit clients, use the published Pantoken catalog and Universal compo
   `@pantoken/web-components/a2ui`, alongside A2UI's Basic Catalog.
 - Reference Pantoken components with the catalog's `@catalogId`.
 - Use only the components and properties listed in the catalog JSON at
-  `@pantoken/ai/a2ui/catalog-v1.json` or the
-  [Pantoken A2UI Catalog](https://pantoken.app/a2ui/). It covers every exported
-  `@pantoken/web-components` element; don't invent additional Pantoken components or properties.
+  `@pantoken/ai/a2ui/catalog-v1.json`. If the web catalog at [https://pantoken.app/a2ui/](https://pantoken.app/a2ui/) differs
+  from that JSON file, follow the JSON file and report the difference in the response. It covers
+  every exported `@pantoken/web-components` element; don't invent additional Pantoken components
+  or properties.
+- If a requested component or property is not listed in the catalog JSON, respond with the sentence "Pantoken component X is not supported in the v1 catalog," where X is the requested name. Do not write X as a code identifier. In the same response, name the A2UI Basic Catalog component that has the same role (for example, button for a button, text field for an input) and the most overlapping listed properties, and state which properties were dropped.
+
+  Example response: "Pantoken component PantokenCard is not supported in the v1 catalog. The closest Basic Catalog component is `card`, which keeps `title` and `children`; `elevation` and `variant` are dropped."
+
 - The catalog defines no executable functions. Its actions dispatch through A2UI's normal
   action-handling path; the host application remains responsible for authorization.
 
@@ -44,16 +74,20 @@ provide native component renderers.
 
 ## 3. Theme the Basic Catalog and other verified renderers
 
-- **Web Basic Catalog:** Follow the current A2UI docs for its `--a2ui-*` custom properties. Read the
-  installed renderer's stylesheet or version-matched docs to confirm each property. Use Pantoken's
-  `--instui-*` custom properties only after resolving a semantically matching, correctly typed token
-  from `@pantoken/tokens`. Load `@pantoken/css` so those tokens are defined. Keep mappings scoped
-  when the app needs multiple themes; don't hard-code colors or invent property names.
+- **Web Basic Catalog:**
+  1. Confirm each `--a2ui-*` property exists in the installed renderer's stylesheet or version-matched docs.
+  2. Omit any property that cannot be confirmed and list it in the response.
+  3. For each remaining mapping, resolve a semantically matching, correctly typed token from `@pantoken/tokens`.
+  4. Load `@pantoken/css` so those tokens are defined.
+  5. Keep mappings scoped when the app needs multiple themes; don't hard-code colors or invent property names.
 - **Native clients:** Use Pantoken's existing target output for the host:
-  `pantoken generate flutter`, `compose`, or `swift`, as appropriate. Follow the A2UI renderer's
-  native theme API; CSS custom properties don't apply to native views.
+  use `pantoken generate flutter` for Flutter projects, `pantoken generate compose` for Jetpack Compose projects, and `pantoken generate swift` for SwiftUI projects. If the host platform is not one of these, stop and ask the user. Follow the A2UI renderer's
+  native theme API; CSS custom properties don't apply to native views. If the renderer's native theme API cannot be verified in the installed package or version-matched docs, do not apply theme changes, list the unverified theme properties in the response, and state that the external source was not verified.
 - **Icons:** For surrounding web UI, use `@pantoken/web-components` or `@pantoken/icons`. For icons
   inside an A2UI surface, verify the selected catalog's icon API; don't invent icon props.
+  If the selected catalog's icon API cannot be verified, omit icon props inside the A2UI surface,
+  use the surrounding web UI icon source from `@pantoken/web-components` or `@pantoken/icons`,
+  and list the omitted icon usage in the response.
 
 ## 4. Extend only when requested
 
@@ -65,10 +99,7 @@ not an authorization boundary; the host must authorize action effects.
 
 ## 5. Verify
 
-Run the host app's relevant type checks and tests. Verify the theme in each supported color scheme,
-including contrast, keyboard behavior, and focus visibility. Confirm every `--instui-*` reference
-exists in the installed token package and every `--a2ui-*` property matches the installed A2UI
-renderer version.
+Run the host app's relevant type checks and tests. For each color scheme defined by the installed `@pantoken/tokens` package, run the host app's relevant tests and confirm that every `--a2ui-*` and `--instui-*` value resolves to a defined token, then list each scheme and its result in the verification summary.
 
 ## References
 

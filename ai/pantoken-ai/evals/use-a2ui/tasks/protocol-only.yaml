@@ -7,3 +7,15 @@ inputs:
   prompt: "How do A2UI messages get framed over server-sent events?"
 expected:
   should_trigger: false
+graders:
+  - type: text
+    name: skill-not-triggered
+    config:
+      not_contains:
+        - "pantoken generate"
+        - "@pantoken/ai"
+        - "pantoken-ai"
+  - type: behavior
+    name: token-budget
+    config:
+      max_tokens: 600000

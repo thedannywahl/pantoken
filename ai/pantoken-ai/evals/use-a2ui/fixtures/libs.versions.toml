@@ -1,0 +1,10 @@
+[versions]
+a2ui = "1.0.0"
+compose = "1.6.0"
+
+[libraries]
+a2ui-compose = { module = "org.a2ui:compose", version.ref = "a2ui" }
+androidx-compose-ui = { module = "androidx.compose.ui:ui", version.ref = "compose" }
+
+[bundles]
+compose = ["a2ui-compose", "androidx-compose-ui"]

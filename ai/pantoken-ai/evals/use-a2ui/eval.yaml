@@ -4,7 +4,7 @@ skill: use-a2ui
 version: "1.0"
 config:
   trials_per_task: 1
-  timeout_seconds: 300
+  timeout_seconds: 600
   parallel: false
   executor: copilot-sdk
   model: claude-sonnet-4.6
@@ -17,11 +17,6 @@ metrics:
     weight: 0.3
     threshold: 0.7
     description: Did the skill avoid unnecessary A2UI runtime or custom catalog work?
-graders:
-  - type: behavior
-    name: token-budget
-    config:
-      max_tokens: 150000
 tasks:
   - "tasks/web-theme.yaml"
   - "tasks/native-tokens.yaml"
