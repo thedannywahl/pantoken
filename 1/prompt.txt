@@ -1,0 +1,5 @@
+there's something going on in the formatter between oxc and running `@pantoken/docs#docs:locales:translate:copilot` that always flags spaces and a single space in md tables leading to unnecessarily large diffs.
+
+---
+
+there's something going on in the formatter between oxc and running `@pantoken/docs#docs:locales:translate:copilot` that always flags spaces and a single space in md tables leading to unnecessarily large diffs.
