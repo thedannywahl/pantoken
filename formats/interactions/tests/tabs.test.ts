@@ -34,6 +34,30 @@ test("selects a tab and hides the other controlled panel", () => {
   expect(panels[1].hidden).toBe(false);
 });
 
+test("resolves controlled panels inside the host shadow root", () => {
+  const wrapper = document.createElement("div");
+  document.body.append(wrapper);
+  const root = wrapper.attachShadow({ mode: "open" });
+  root.innerHTML = `
+    <div class="instui-tabs">
+      <div role="tablist">
+        <button role="tab" aria-selected="true" aria-controls="one">One</button>
+        <button role="tab" aria-selected="false" aria-controls="two">Two</button>
+      </div>
+      <div id="one" role="tabpanel">First</div>
+      <div id="two" role="tabpanel">Second</div>
+    </div>`;
+  const host = root.querySelector<HTMLElement>(".instui-tabs")!;
+  initTabs(host);
+  const tabs = host.querySelectorAll<HTMLButtonElement>('[role="tab"]');
+  const panels = host.querySelectorAll<HTMLElement>('[role="tabpanel"]');
+
+  tabs[1].click();
+
+  expect(panels[0].hidden).toBe(true);
+  expect(panels[1].hidden).toBe(false);
+});
+
 test("keyboard navigation selects and focuses the next enabled tab", () => {
   const { host } = setup();
   const tabs = host.querySelectorAll<HTMLButtonElement>('[role="tab"]');
