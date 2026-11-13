@@ -1,0 +1,72 @@
+{
+  "cli_version": "0.13.2",
+  "checkpoint_id": "01M7AQ7EYKMXJMFSA42SWB9G18",
+  "session_id": "39e9b1ff-f8f1-4f49-bb37-3badfe65e332",
+  "strategy": "manual-commit",
+  "created_at": "2026-11-13T15:08:18.108307Z",
+  "branch": "a2ui",
+  "checkpoints_count": 5,
+  "files_touched": [
+    "ASSURANCE.md",
+    "SECURITY.md",
+    "ai/pantoken-ai/README.md",
+    "ai/pantoken-ai/catalogs/pantoken-v1.json",
+    "ai/pantoken-ai/evals/use-a2ui/eval.yaml",
+    "ai/pantoken-ai/evals/use-a2ui/tasks/unsupported-component.yaml",
+    "ai/pantoken-ai/package.json",
+    "ai/pantoken-ai/scripts/generate-a2ui-catalog.ts",
+    "ai/pantoken-ai/tests/a2ui-catalog.test.ts",
+    "ai/pantoken-ai/vite.config.ts",
+    "packages/scaffold/assets/AGENTS.md",
+    "packages/scaffold/assets/copilot-instructions.md",
+    "packages/scaffold/assets/llms.txt",
+    "packages/scaffold/assets/windsurf.md",
+    "packages/scaffold/skills/use-a2ui/SKILL.md"
+  ],
+  "agent": "Copilot CLI",
+  "model": "gpt-6-luna",
+  "turn_id": "b085b5714077",
+  "checkpoint_transcript_start": 1620,
+  "transcript_lines_at_start": 1620,
+  "compact_transcript_start": 115,
+  "token_usage": {
+    "input_tokens": 822,
+    "cache_creation_tokens": 1371506,
+    "cache_read_tokens": 37215636,
+    "output_tokens": 342014,
+    "api_call_count": 274
+  },
+  "session_token_usage": {
+    "input_tokens": 1125,
+    "cache_creation_tokens": 1662209,
+    "cache_read_tokens": 48564386,
+    "output_tokens": 429824,
+    "api_call_count": 375
+  },
+  "redaction": {
+    "replacements": 96607,
+    "layers": {
+      "betterleaks": 0,
+      "connection_string": 0,
+      "credential_key": 0,
+      "credential_value": 0,
+      "credentialed_uri": 0,
+      "custom": 0,
+      "entropy": 245862,
+      "goredact": 0,
+      "key_context": 0,
+      "pii": 22,
+      "provider_token": 0,
+      "shell_stdin": 0
+    },
+    "custom_rules_active": 2,
+    "pii": {
+      "EMAIL": 22,
+      "IP": 0,
+      "PHONE": 0
+    }
+  },
+  "session_metrics": {
+    "turn_count": 9
+  }
+}
