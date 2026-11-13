@@ -2,8 +2,6 @@
 import { ComponentContext, MessageProcessor } from "@a2ui/web_core";
 import { afterEach, expect, test, vi } from "vite-plus/test";
 import {
-  PantokenA2uiButtonElement,
-  PantokenA2uiTooltipElement,
   pantokenA2uiCatalog,
   pantokenA2uiComponents,
   registerPantokenA2uiComponents,
@@ -38,6 +36,12 @@ function makeSurface(
   const surface = processor.model.getSurface("test-surface");
   if (!surface) throw new Error("A2UI test surface was not created.");
   return surface;
+}
+
+function implementationFor(name: string) {
+  const implementation = pantokenA2uiComponents.find((component) => component.name === name);
+  if (!implementation) throw new Error(`Missing ${name} A2UI test implementation.`);
+  return implementation;
 }
 
 test("registers an A2UI implementation for every component in the full catalog", () => {
@@ -115,8 +119,9 @@ test("renders button labels as text and dispatches the declared A2UI action", as
     action: { event: { name: "save" } },
   });
   const element = document.createElement("pantoken-a2ui-button");
-  expect(element).toBeInstanceOf(PantokenA2uiButtonElement);
-  if (!(element instanceof PantokenA2uiButtonElement)) {
+  const implementation = implementationFor("PantokenButton");
+  expect(element).toBeInstanceOf(implementation.element);
+  if (!(element instanceof implementation.element)) {
     throw new Error("Pantoken A2UI button was not registered.");
   }
   document.body.appendChild(element);
@@ -149,8 +154,9 @@ test("keeps tooltip trigger and description in one shadow tree and wires Escape 
     action: { event: { name: "help" } },
   });
   const element = document.createElement("pantoken-a2ui-tooltip");
-  expect(element).toBeInstanceOf(PantokenA2uiTooltipElement);
-  if (!(element instanceof PantokenA2uiTooltipElement)) {
+  const implementation = implementationFor("PantokenTooltip");
+  expect(element).toBeInstanceOf(implementation.element);
+  if (!(element instanceof implementation.element)) {
     throw new Error("Pantoken A2UI tooltip was not registered.");
   }
   document.body.appendChild(element);
@@ -184,7 +190,8 @@ test("uses A2UI tooltip show and hide delay properties", async () => {
   });
   const element = document.createElement("pantoken-a2ui-tooltip");
   document.body.appendChild(element);
-  if (!(element instanceof PantokenA2uiTooltipElement)) {
+  const implementation = implementationFor("PantokenTooltip");
+  if (!(element instanceof implementation.element)) {
     throw new Error("Pantoken A2UI tooltip was not registered.");
   }
   element.context = new ComponentContext(surface, "testComponent");

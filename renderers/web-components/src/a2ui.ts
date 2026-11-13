@@ -520,24 +520,6 @@ export const pantokenA2uiComponents: PantokenA2uiImplementation[] = ELEMENTS.map
   };
 });
 
-function getImplementation(element: (typeof ELEMENTS)[number]): PantokenA2uiImplementation {
-  const name = a2uiNameForElement(element);
-  const implementation = pantokenA2uiComponents.find((component) => component.name === name);
-  if (!implementation) throw new Error(`Missing ${name} A2UI runtime implementation.`);
-  return implementation;
-}
-
-/** @deprecated Compatibility export; use {@link pantokenA2uiComponents} for the full catalog. */
-export const PantokenA2uiButtonElement: A2uiElementConstructor =
-  getImplementation("button").element;
-/** @deprecated Compatibility export; use {@link pantokenA2uiComponents} for the full catalog. */
-export const PantokenA2uiTooltipElement: A2uiElementConstructor =
-  getImplementation("tooltip").element;
-/** @deprecated Compatibility export; use {@link pantokenA2uiCatalog}. */
-export const pantokenButtonComponent: PantokenA2uiImplementation = getImplementation("button");
-/** @deprecated Compatibility export; use {@link pantokenA2uiCatalog}. */
-export const pantokenTooltipComponent: PantokenA2uiImplementation = getImplementation("tooltip");
-
 /** The runtime A2UI catalog containing all Pantoken v1 web-component implementations. */
 export const pantokenA2uiCatalog: Catalog<ComponentApi> = new Catalog(
   PANTOKEN_A2UI_CATALOG_ID,
