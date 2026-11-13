@@ -133,6 +133,8 @@ function githubFixture(
     passingTree?: string;
     passingRefSha?: string;
     graphError?: boolean;
+    runId?: string;
+    runAttempt?: string;
     tree?: Array<{ path: string; type: string; sha: string; mode: string }>;
     truncated?: boolean;
   } = {},
@@ -143,6 +145,8 @@ function githubFixture(
   writeFileSync(file, JSON.stringify(result));
   vi.stubEnv("GITHUB_REPOSITORY", "example/pantoken");
   vi.stubEnv("GH_TOKEN", "test-token");
+  vi.stubEnv("GITHUB_RUN_ID", options.runId ?? "100");
+  vi.stubEnv("GITHUB_RUN_ATTEMPT", options.runAttempt ?? "1");
   const calls: Array<{
     endpoint: string;
     method: string;
@@ -370,9 +374,38 @@ test("records failures in individual issues and a separate draft without auto-me
   const pr = fixture.calls.find(
     (call) => call.endpoint.endsWith("/pulls") && call.method === "POST",
   );
-  expect(pr?.body).toMatchObject({ head: "maintenance/failed-updates", draft: true });
+  expect(pr?.body).toMatchObject({ head: "maintenance/failed-updates/100-1", draft: true });
   expect(String(pr?.body.body)).toContain("issues/42");
   expect(fixture.calls.some((call) => call.endpoint === "graphql")).toBe(false);
+});
+
+test("uses a distinct failed-updates branch for each workflow attempt", async () => {
+  const result = {
+    ...artifact(),
+    files: {},
+    failures: [
+      {
+        id: "f".repeat(20),
+        package: "@pantoken/react",
+        version: "20.0.0",
+        error: "SSR failed",
+        upgrades: [],
+      },
+    ],
+  };
+  const first = githubFixture(result, { runId: "200", runAttempt: "1" });
+  await publishMaintenance(["publish", first.file, base, proposal]);
+  const second = githubFixture(result, { runId: "200", runAttempt: "2" });
+  await publishMaintenance(["publish", second.file, base, proposal]);
+  const refs = [first, second].map(
+    (fixture) =>
+      fixture.calls.find((call) => call.endpoint.endsWith("/git/refs") && call.method === "POST")
+        ?.body.ref,
+  );
+  expect(refs).toEqual([
+    "refs/heads/maintenance/failed-updates/200-1",
+    "refs/heads/maintenance/failed-updates/200-2",
+  ]);
 });
 
 test.each([

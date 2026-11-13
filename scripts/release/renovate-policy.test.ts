@@ -99,7 +99,8 @@ test("rejects impostors, fork branches, other bases, and unrecognized reserved b
     },
   ])
     expect(automationPolicy(candidate, [], options)).not.toBeNull();
-  expect(automationPolicy(pr("maintenance/failed-updates"), [], options)).toContain("cannot merge");
+  for (const ref of ["maintenance/failed-updates", "maintenance/failed-updates/200-1"])
+    expect(automationPolicy(pr(ref), [], options)).toContain("cannot merge");
 });
 
 test("requires a separate human maintainer approval for the current component commit", () => {

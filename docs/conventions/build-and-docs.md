@@ -275,8 +275,11 @@ infrastructure-failed outcomes block publication. It first validates the combine
 bisects failures along coupled-group boundaries. Each integration trial regenerates the English API
 and runs `vp run @pantoken/docs#docs:check:drift`, so untranslated generated prose is attributed to
 the update group that introduced it. It then runs the full release gates once on the final accepted
-set; full-gate failures still block publication rather than silently dropping checks. The existing
-publisher still rejects an advanced `main` and requires final-head PR CI before auto-merge.
+set; full-gate failures still block publication rather than silently dropping checks. Failed-update
+drafts use a per-run/per-attempt branch under `maintenance/failed-updates/`, so a closed draft from a
+previous run can't collide with a later publication; the merge policy rejects that whole namespace.
+The existing publisher still rejects an advanced `main` and requires final-head PR CI before
+auto-merge.
 Before `vp run ready`, final integration runs `vp run @pantoken/docs#docs:api:en`; docs API tests
 import generated pages from `docs/api`, which are intentionally not checked into Git. This step does
 not refresh the translation catalog directly, but the `ready` i18n gate rebuilds the English API POT.
