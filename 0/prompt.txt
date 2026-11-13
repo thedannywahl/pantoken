@@ -1,0 +1,37 @@
+[[PLAN]] [a2ui](https://github.com/a2ui-project/a2ui) as a first-class supported lib, whether that's platforms, renderers, design, or other.
+
+---
+
+[[PLAN]] [a2ui](https://github.com/a2ui-project/a2ui) as a first-class supported lib, whether that's platforms, renderers, design, or other.
+
+---
+
+it shouldn't go in renderers/ it should go in ai/
+
+---
+
+it shouldn't go in renderers/ it should go in ai/
+
+---
+
+white up the full plan
+
+---
+
+white up the full plan
+
+---
+
+on the deferred/decision gate- we're going to do both.
+
+---
+
+on the deferred/decision gate- we're going to do both.
+
+---
+
+working in incremental conventional commits and changesets on the a2ui branch begin implementation.
+
+---
+
+working in incremental conventional commits and changesets on the a2ui branch begin implementation.
