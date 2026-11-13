@@ -33,6 +33,7 @@ import AgentToolsPage from "./components/AgentToolsPage.vue";
 import CanvasRcePage from "./components/CanvasRcePage.vue";
 import GetStartedTabs from "./components/GetStartedTabs.vue";
 import RegistryBrowser from "./components/RegistryBrowser.vue";
+import A2uiCatalogBrowser from "./components/A2uiCatalogBrowser.vue";
 import SidebarToggle from "@pantoken/vitepress-sidebar-toggle/SidebarToggle.vue";
 import "@pantoken/vitepress-sidebar-toggle/style.css";
 // Import register() from the web-components SOURCE, not `@pantoken/web-components` (dist). The dist
@@ -163,6 +164,7 @@ export default {
     ctx.app.component("CanvasRcePage", CanvasRcePage);
     ctx.app.component("GetStartedTabs", GetStartedTabs);
     ctx.app.component("RegistryBrowser", RegistryBrowser);
+    ctx.app.component("A2uiCatalogBrowser", A2uiCatalogBrowser);
     // The whole-sidebar show/hide toggle (see Layout.vue) — @pantoken/vitepress-sidebar-toggle.
     ctx.app.component("SidebarToggle", SidebarToggle);
 

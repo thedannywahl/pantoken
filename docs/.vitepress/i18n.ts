@@ -5,6 +5,7 @@ import type { CanvasRceStrings } from "./theme/canvas-rce.ts";
 import type { CdnPickerStrings } from "./theme/cdn.ts";
 import type { GetStartedTabsStrings } from "./theme/get-started.ts";
 import type { RegistryBrowserStrings } from "./theme/registry.ts";
+import type { A2uiCatalogStrings } from "./theme/a2ui-catalog.ts";
 import { loadConfig, resolveMessagesForLocale, resolveTier } from "@pantoken/i18n-engine";
 
 /** Generated CSS API prose enters the existing glossary/prose API translation pipeline. */
@@ -145,6 +146,7 @@ export interface UiStrings {
     cdn: string;
     cdnPicker: string;
     registry: string;
+    a2uiCatalog: string;
     agentTools: string;
     canvasRce: string;
     cli: string;
@@ -205,6 +207,7 @@ export interface UiStrings {
   getStartedTabs: GetStartedTabsStrings;
   // The shadcn/ui registry browser (see theme/components/RegistryBrowser.vue and theme/registry.ts).
   registryBrowser: RegistryBrowserStrings;
+  a2uiCatalog: A2uiCatalogStrings;
   // The interactive Agent Tools utility (see theme/components/AgentToolsPage.vue and
   // theme/agent-tools.ts).
   agentTools: AgentToolsStrings;

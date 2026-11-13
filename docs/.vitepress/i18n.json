@@ -16,6 +16,7 @@
   "sidebar.cdn": { "message": "CDN & distribution", "translate": "always" },
   "sidebar.cdnPicker": { "message": "CDN picker", "translate": "always" },
   "sidebar.registry": { "message": "shadcn/ui Registry", "translate": "always" },
+  "sidebar.a2uiCatalog": { "message": "A2UI Catalog", "translate": "always" },
   "sidebar.agentTools": { "message": "Agent Tools", "translate": "always" },
   "sidebar.canvasRce": { "message": "Canvas RCE", "translate": "always" },
   "sidebar.cli": { "message": "The pantoken CLI", "translate": "always" },
@@ -117,6 +118,49 @@
     "translate": "always"
   },
   "registryBrowser.emptyReset": { "message": "Reset Filters", "translate": "always" },
+  "a2uiCatalog.title": { "message": "Pantoken A2UI Catalog", "translate": "always" },
+  "a2uiCatalog.subtitle": {
+    "message": "Explore the Pantoken component vocabulary for A2UI 1.0. This catalog defines only Pantoken components; standard layout components remain in the A2UI Basic Catalog.",
+    "translate": "always"
+  },
+  "a2uiCatalog.protocolLabel": { "message": "Protocol", "translate": "always" },
+  "a2uiCatalog.catalogIdLabel": { "message": "Catalog ID", "translate": "always" },
+  "a2uiCatalog.rawCatalog": { "message": "View catalog JSON", "translate": "always" },
+  "a2uiCatalog.componentsHeading": { "message": "Components", "translate": "always" },
+  "a2uiCatalog.searchLabel": { "message": "Filter components", "translate": "always" },
+  "a2uiCatalog.searchPlaceholder": {
+    "message": "Search names, properties, or values",
+    "translate": "always"
+  },
+  "a2uiCatalog.required": { "message": "Required", "translate": "always" },
+  "a2uiCatalog.optional": { "message": "Optional", "translate": "always" },
+  "a2uiCatalog.noFunctions": {
+    "message": "This catalog defines no executable functions. Button actions use A2UI's registered action handling.",
+    "translate": "always"
+  },
+  "a2uiCatalog.supportHeading": { "message": "Client support", "translate": "always" },
+  "a2uiCatalog.litSupport": {
+    "message": "Verified with the published A2UI 1.0 Lit SDK.",
+    "translate": "always"
+  },
+  "a2uiCatalog.reactSupport": {
+    "message": "React runtime support is pending v1.0 SDK verification.",
+    "translate": "always"
+  },
+  "a2uiCatalog.angularSupport": {
+    "message": "Angular runtime support is pending v1.0 SDK verification.",
+    "translate": "always"
+  },
+  "a2uiCatalog.nativeSupport": {
+    "message": "Flutter, SwiftUI, and Jetpack Compose: schema only; no Pantoken native component renderers.",
+    "translate": "always"
+  },
+  "a2uiCatalog.integrationHeading": { "message": "Lit registration", "translate": "always" },
+  "a2uiCatalog.componentReference": {
+    "message": "Use @catalogId to reference Pantoken components alongside Basic Catalog components.",
+    "translate": "always"
+  },
+  "a2uiCatalog.empty": { "message": "No components match your search.", "translate": "always" },
   "canvasRce.title": { "message": "Canvas RCE", "translate": "always" },
   "canvasRce.description": {
     "message": "A live preview of pantoken's Canvas LMS Rich Content Editor template: a TinyMCE-based editor with starter layouts, a live preview pane, and hand-editable theme.css/theme.js output.",

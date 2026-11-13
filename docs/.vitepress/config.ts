@@ -417,6 +417,9 @@ const localesConfig = Object.fromEntries(
                 text: locale.sidebar.registry,
                 link: `${localeKey === "root" ? "/" : `/${localeKey}/`}r/`,
               },
+              ...(localeKey === "root"
+                ? [{ text: locale.sidebar.a2uiCatalog, link: "/a2ui/" }]
+                : []),
               {
                 text: locale.sidebar.agentTools,
                 link: `${locale.guidePrefix}agent-tools`,
@@ -489,6 +492,7 @@ const localesConfig = Object.fromEntries(
           getStartedTabs: locale.getStartedTabs,
           // Read by the shadcn/ui registry browser (RegistryBrowser.vue) via `useData().theme`.
           registryBrowser: locale.registryBrowser,
+          a2uiCatalog: locale.a2uiCatalog,
           agentTools: locale.agentTools,
         },
       },
