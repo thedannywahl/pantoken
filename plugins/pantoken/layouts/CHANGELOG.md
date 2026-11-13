@@ -1,5 +1,11 @@
 # @pantoken/plugin-layouts
 
+## 0.5.8
+
+### Patch Changes
+
+- @pantoken/plugin-kit@0.3.9
+
 ## 0.5.7
 
 ### Patch Changes

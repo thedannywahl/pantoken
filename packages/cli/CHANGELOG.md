@@ -1,5 +1,28 @@
 # CHANGELOG
 
+## 0.1.54
+
+### Patch Changes
+
+- Updated dependencies [2784dba]
+  - @pantoken/drupal@0.3.0
+  - @pantoken/scaffold@1.7.2
+  - @pantoken/tokens@0.8.4
+  - @pantoken/wordpress@0.3.0
+  - @pantoken/email@0.1.27
+  - @pantoken/hugo@0.2.6
+  - @pantoken/jekyll@0.2.6
+  - @pantoken/pendo@0.4.17
+  - @pantoken/swatches@0.1.26
+  - @pantoken/icon-font@0.1.29
+  - @pantoken/android@0.1.30
+  - @pantoken/compose@0.1.30
+  - @pantoken/flutter@0.1.30
+  - @pantoken/rust@0.1.28
+  - @pantoken/swift@0.1.30
+  - @pantoken/vanilla@0.1.22
+  - @pantoken/mintlify@0.2.7
+
 ## 0.1.53
 
 ### Patch Changes

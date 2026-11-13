@@ -1,6 +1,6 @@
 {
   "name": "@pantoken/tailwind",
-  "version": "0.2.3",
+  "version": "0.3.0",
   "description": "Tailwind CSS preset that maps Instructure design tokens into the theme as var(--instui-*) references.",
   "homepage": "https://pantoken.app",
   "bugs": "https://github.com/thedannywahl/pantoken/issues",
@@ -40,7 +40,7 @@
     "vite-plus": "catalog:"
   },
   "peerDependencies": {
-    "tailwindcss": ">=4.0.17 <=4.3.3"
+    "tailwindcss": ">=4.0.17 <5.0.0"
   },
   "peerDependenciesMeta": {
     "tailwindcss": {

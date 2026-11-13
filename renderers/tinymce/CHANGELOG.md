@@ -1,5 +1,21 @@
 # @pantoken/tinymce
 
+## 0.7.3
+
+### Patch Changes
+
+- Updated dependencies [c4b73d0]
+- Updated dependencies [2784dba]
+  - @pantoken/components@2.2.1
+  - @pantoken/plugin-lucide-lab@0.4.7
+  - @pantoken/tokens@0.8.4
+  - @pantoken/utils@1.4.3
+  - @pantoken/plugin-custom-components@0.7.5
+  - @pantoken/plugin-custom-icons@0.3.19
+  - @pantoken/plugin-layouts@0.5.8
+  - @pantoken/plugin-logos@0.5.8
+  - @pantoken/plugin-simple-icons@0.3.17
+
 ## 0.7.2
 
 ### Patch Changes

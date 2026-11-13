@@ -1,5 +1,15 @@
 # CHANGELOG
 
+## 2.2.1
+
+### Patch Changes
+
+- c4b73d0: Run generated accessibility page-theme audits sequentially to reduce concurrent Chromium resource use.
+- Updated dependencies [2784dba]
+  - @pantoken/tokens@0.8.4
+  - @pantoken/utils@1.4.3
+  - @pantoken/scaffold-base@0.3.11
+
 ## 2.2.0
 
 ### Minor Changes
