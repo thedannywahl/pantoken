@@ -1,0 +1,9 @@
+{
+  "tool_use_id": "call_kHfnAEYVl4h9XnTqcUUogYr6",
+  "agent_id": "975685a0-fd23-4c5f-96e7-eb9a4aa9b3f5",
+  "subagent_type": "explore",
+  "task_description": "Inventory web component contracts",
+  "started_at": "2026-11-13T08:20:02.944442-07:00",
+  "completed_at": "2026-11-13T08:20:02.946879-07:00",
+  "transcript_unavailable_reason": "transcript path unresolvable"
+}
