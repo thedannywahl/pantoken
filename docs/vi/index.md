@@ -34,6 +34,6 @@ features:
   - icon:
       light: /wand-sparkles-light.svg
       dark: /wand-sparkles-dark.svg
-    title: Build agentically
-    details: Add pantoken to the AI tools you're already using with included skills, agents file, api-catalog, llms.txt, and A2UI.
+    title: Xây dựng với tác nhân AI
+    details: Thêm pantoken vào các công cụ AI bạn đang sử dụng với các skills, tệp agents, api-catalog, llms.txt và A2UI đi kèm.
 ---
