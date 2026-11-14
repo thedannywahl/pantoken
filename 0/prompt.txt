@@ -1,0 +1,43 @@
+<system_notification>
+Shell command "Continue watching all checks while metadata approval is unavailable" (shellId: pr309-watch-54588715f-all) has exited with exit code 1.
+</system_notification>
+
+---
+
+<system_notification>
+Shell command "Continue watching all checks while metadata approval is unavailable" (shellId: pr309-watch-54588715f-all) has exited with exit code 1.
+</system_notification>
+
+---
+
+You have not yet marked the task as complete using the task_complete tool. If you were planning changes the user asked for, stop planning and start implementing. You aren't done until you have fully completed the task.
+
+IMPORTANT: Do NOT call task_complete if:
+- You have open questions or ambiguities - make good decisions and keep working
+- You encountered an error - try to resolve it or find an alternative approach
+- There are remaining steps - complete them first
+
+If the user asked only for a review, analysis or recommendation and you have already delivered it, the task is complete: call task_complete now. A follow-up you offered or recommended is not part of the task, so do not start it.
+
+Keep working autonomously until the task is truly finished, then call task_complete.
+
+---
+
+You have not yet marked the task as complete using the task_complete tool. If you were planning changes the user asked for, stop planning and start implementing. You aren't done until you have fully completed the task.
+
+IMPORTANT: Do NOT call task_complete if:
+- You have open questions or ambiguities - make good decisions and keep working
+- You encountered an error - try to resolve it or find an alternative approach
+- There are remaining steps - complete them first
+
+If the user asked only for a review, analysis or recommendation and you have already delivered it, the task is complete: call task_complete now. A follow-up you offered or recommended is not part of the task, so do not start it.
+
+Keep working autonomously until the task is truly finished, then call task_complete.
+
+---
+
+you can rewrite the history.
+
+---
+
+you can rewrite the history.
