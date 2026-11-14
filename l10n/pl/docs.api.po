@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: pantoken\n"
-"PO-Revision-Date: 2026-11-14 00:00+0000\n"
+"PO-Revision-Date: 2026-11-14 00:01+0000\n"
 "Last-Translator: pantoken localization engine\n"
 "Language-Team: pantoken\n"
 "MIME-Version: 1.0\n"
@@ -34887,3 +34887,23 @@ msgstr "Kontener układu pola formularza."
 msgctxt "docs.api:prose"
 msgid "A native fieldset for a group of form fields."
 msgstr "Natywny fieldset dla grupy pól formularza."
+
+msgctxt "docs.api:prose"
+msgid "A status region for form-field help and validation messages."
+msgstr "Region statusu dla wskazówek dotyczących pól formularza i komunikatów walidacyjnych."
+
+msgctxt "docs.api:prose"
+msgid "A semantic heading with a bounded level from one through six."
+msgstr "Nagłówek semantyczny o poziomie ograniczonym do zakresu od jednego do sześciu."
+
+msgctxt "docs.api:prose"
+msgid "A container for an input and adjacent content."
+msgstr "Kontener na pole wejściowe i sąsiadującą treść."
+
+msgctxt "docs.api:prose"
+msgid "A link that rejects executable and data URL schemes."
+msgstr "Link, który odrzuca schematy URL umożliwiające wykonywanie kodu oraz schematy data."
+
+msgctxt "docs.api:prose"
+msgid "A native unordered list with Pantoken list-item styles."
+msgstr "Natywna lista nieuporządkowana ze stylami elementów listy Pantoken."
