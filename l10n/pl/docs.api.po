@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: pantoken\n"
-"PO-Revision-Date: 2026-10-30 19:56+0000\n"
+"PO-Revision-Date: 2026-11-14 00:00+0000\n"
 "Last-Translator: pantoken localization engine\n"
 "Language-Team: pantoken\n"
 "MIME-Version: 1.0\n"
@@ -34843,3 +34843,47 @@ msgstr "WCAG 2.2 2.5.8"
 msgctxt "docs.api:prose"
 msgid "All touch targets must be 24px large, or leave sufficient space"
 msgstr "Wszystkie cele dotykowe muszą mieć co najmniej 24px lub należy pozostawić wokół nich wystarczająco dużo miejsca"
+
+msgctxt "docs.api:prose"
+msgid "<!-- pantoken-value-scope:css%2Fscreen-reader-content.md -->\nThis component ships no CSS of its own — its markup and behavior come entirely from {{ptk_code_0}}. See the [modifier table below]({{ptk_code_1}})."
+msgstr "<!-- pantoken-value-scope:css%2Fscreen-reader-content.md -->\nTen komponent nie dostarcza własnego CSS — jego znacznik i zachowanie pochodzą w całości z {{ptk_code_0}}. Zobacz [tabelę modyfikatorów poniżej]({{ptk_code_1}})."
+
+msgctxt "docs.api:prose"
+msgid "A section for an empty state or call to action."
+msgstr "Sekcja dla pustego stanu lub wezwania do działania."
+
+msgctxt "docs.api:prose"
+msgid "A breadcrumb navigation landmark."
+msgstr "Punkt orientacyjny nawigacji okruszkowej."
+
+msgctxt "docs.api:prose"
+msgid "A media-object byline container."
+msgstr "Kontener podpisu obiektu multimedialnego."
+
+msgctxt "docs.api:prose"
+msgid "An article-shaped card with slotted content."
+msgstr "Karta o układzie artykułu z treścią dostarczaną przez sloty."
+
+msgctxt "docs.api:prose"
+msgid "A native checkbox and its slotted label."
+msgstr "Natywne pole wyboru i przypisana do niego etykieta."
+
+msgctxt "docs.api:prose"
+msgid "A native close button with an accessible label."
+msgstr "Natywny przycisk zamykania z etykietą dostępną dla czytników ekranu."
+
+msgctxt "docs.api:prose"
+msgid "Missing root component records, registered after the hand-authored elements."
+msgstr "Brak rekordów komponentów głównych, rejestrowanych po elementach utworzonych ręcznie."
+
+msgctxt "docs.api:prose"
+msgid "A native file picker presented as a dropzone label."
+msgstr "Natywny selektor plików wyświetlany jako etykieta strefy upuszczania."
+
+msgctxt "docs.api:prose"
+msgid "A form-field layout container."
+msgstr "Kontener układu pola formularza."
+
+msgctxt "docs.api:prose"
+msgid "A native fieldset for a group of form fields."
+msgstr "Natywny fieldset dla grupy pól formularza."
