@@ -1,5 +1,16 @@
 # CHANGELOG
 
+## 0.1.55
+
+### Patch Changes
+
+- Updated dependencies [f7a77f1]
+- Updated dependencies [f7a77f1]
+- Updated dependencies [f7a77f1]
+- Updated dependencies [f7a77f1]
+- Updated dependencies [f7a77f1]
+  - @pantoken/scaffold@1.7.3
+
 ## 0.1.54
 
 ### Patch Changes

@@ -1,5 +1,15 @@
 # @pantoken/scaffold
 
+## 1.7.3
+
+### Patch Changes
+
+- f7a77f1: Add an installable A2UI integration skill and focused evaluations.
+- f7a77f1: Add A2UI token-integration guidance to the shared consumer agent assets.
+- f7a77f1: Add root component coverage to web-components and the A2UI catalog
+- f7a77f1: Add the versioned Pantoken A2UI 1.0 catalog and agent guidance.
+- f7a77f1: Validate React and Angular A2UI consumers across browser engines, preserve content-free Universal component rendering, and synchronize keyboard tab selection with bound models.
+
 ## 1.7.2
 
 ### Patch Changes

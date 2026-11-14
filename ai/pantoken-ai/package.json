@@ -1,6 +1,6 @@
 {
   "name": "@pantoken/ai",
-  "version": "1.4.4",
+  "version": "1.5.0",
   "description": "Agent assets and a versioned A2UI 1.0 component catalog for projects that use pantoken.",
   "homepage": "https://pantoken.app",
   "bugs": "https://github.com/thedannywahl/pantoken/issues",

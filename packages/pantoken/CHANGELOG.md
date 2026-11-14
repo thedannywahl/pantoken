@@ -1,5 +1,28 @@
 # CHANGELOG
 
+## 0.2.36
+
+### Patch Changes
+
+- Updated dependencies [f7a77f1]
+- Updated dependencies [f7a77f1]
+- Updated dependencies [f7a77f1]
+- Updated dependencies [f7a77f1]
+- Updated dependencies [f7a77f1]
+- Updated dependencies [f7a77f1]
+- Updated dependencies [f7a77f1]
+- Updated dependencies [f7a77f1]
+  - @pantoken/web-components@0.9.0
+  - @pantoken/interactions@0.6.2
+  - @pantoken/plugin-custom-icons@0.3.20
+  - @pantoken/cli@0.1.55
+  - @pantoken/angular@0.2.8
+  - @pantoken/react@0.3.1
+  - @pantoken/svelte@0.3.1
+  - @pantoken/vue@0.3.1
+  - @pantoken/components@2.2.1
+  - @pantoken/tinymce@0.7.5
+
 ## 0.2.35
 
 ### Patch Changes

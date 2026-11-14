@@ -1,5 +1,12 @@
 # @pantoken/interactions
 
+## 0.6.2
+
+### Patch Changes
+
+- f7a77f1: Resolve tab panels inside the component's own DOM root so tabs work in shadow roots.
+- f7a77f1: Validate React and Angular A2UI consumers across browser engines, preserve content-free Universal component rendering, and synchronize keyboard tab selection with bound models.
+
 ## 0.6.1
 
 ### Patch Changes

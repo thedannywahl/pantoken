@@ -1,6 +1,6 @@
 {
   "name": "@pantoken/web-components",
-  "version": "0.8.1",
+  "version": "0.9.0",
   "description": "Framework-agnostic custom elements for Instructure UI, including A2UI 1.0 Universal components.",
   "homepage": "https://pantoken.app",
   "bugs": "https://github.com/thedannywahl/pantoken/issues",
