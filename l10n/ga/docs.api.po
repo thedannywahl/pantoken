@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: pantoken\n"
-"PO-Revision-Date: 2026-10-30 19:56+0000\n"
+"PO-Revision-Date: 2026-11-13 22:09+0000\n"
 "Last-Translator: pantoken localization engine\n"
 "Language-Team: pantoken\n"
 "MIME-Version: 1.0\n"
@@ -34863,3 +34863,211 @@ msgstr "WCAG 2.2 2.5.8"
 msgctxt "docs.api:prose"
 msgid "All touch targets must be 24px large, or leave sufficient space"
 msgstr "Caithfidh gach sprioc tadhaill a bheith 24px ar a laghad, nó dóthain spáis a fhágáil"
+
+msgctxt "docs.api:prose"
+msgid "<!-- pantoken-value-scope:css%2Fscreen-reader-content.md -->\nThis component ships no CSS of its own — its markup and behavior come entirely from {{ptk_code_0}}. See the [modifier table below]({{ptk_code_1}})."
+msgstr "<!-- pantoken-value-scope:css%2Fscreen-reader-content.md -->\nNí sheolann an chomhpháirt seo CSS dá cuid féin — tagann a marcáil agus a hiompar go hiomlán ó {{ptk_code_0}}. Féach an [tábla na modhnóirí thíos]({{ptk_code_1}})."
+
+msgctxt "docs.api:prose"
+msgid "A section for an empty state or call to action."
+msgstr "Rannán do staid fholamh nó do ghlao chun gnímh."
+
+msgctxt "docs.api:prose"
+msgid "A breadcrumb navigation landmark."
+msgstr "Sainchomhartha nascleanúna blúiríní aráin."
+
+msgctxt "docs.api:prose"
+msgid "A media-object byline container."
+msgstr "Coimeádán do líne an údair i réad meán."
+
+msgctxt "docs.api:prose"
+msgid "An article-shaped card with slotted content."
+msgstr "Cárta i gcruth ailt le hábhar sliotáilte."
+
+msgctxt "docs.api:prose"
+msgid "A native checkbox and its slotted label."
+msgstr "Bosca seiceála dúchasach agus a lipéad sliotáilte."
+
+msgctxt "docs.api:prose"
+msgid "A native close button with an accessible label."
+msgstr "Cnaipe dúnta dúchasach le lipéad inrochtana."
+
+msgctxt "docs.api:prose"
+msgid "Missing root component records, registered after the hand-authored elements."
+msgstr "Taifid chomhpháirte fréimhe ar iarraidh, cláraithe i ndiaidh na n-eilimintí a scríobhadh de láimh."
+
+msgctxt "docs.api:prose"
+msgid "A native file picker presented as a dropzone label."
+msgstr "Roghnóir comhad dúchasach a chuirtear i láthair mar lipéad limistéir scaoilte."
+
+msgctxt "docs.api:prose"
+msgid "A form-field layout container."
+msgstr "Coimeádán leagan amach réimse foirme."
+
+msgctxt "docs.api:prose"
+msgid "A native fieldset for a group of form fields."
+msgstr "Fieldset dúchasach do ghrúpa réimsí foirme."
+
+msgctxt "docs.api:prose"
+msgid "A status region for form-field help and validation messages."
+msgstr "Réigiún stádais le haghaidh cabhrach réimse foirme agus teachtaireachtaí bailíochtaithe."
+
+msgctxt "docs.api:prose"
+msgid "A semantic heading with a bounded level from one through six."
+msgstr "Ceannteideal séimeantach le leibhéal teoranta ó haon go sé."
+
+msgctxt "docs.api:prose"
+msgid "A container for an input and adjacent content."
+msgstr "Coimeádán le haghaidh ionchuir agus ábhar cóngarach."
+
+msgctxt "docs.api:prose"
+msgid "A link that rejects executable and data URL schemes."
+msgstr "Nasc a dhiúltaíonn do scéimeanna URL inrite agus sonraí."
+
+msgctxt "docs.api:prose"
+msgid "A native unordered list with Pantoken list-item styles."
+msgstr "Liosta dúchasach gan ord le stíleanna míreanna liosta Pantoken."
+
+msgctxt "docs.api:prose"
+msgid "An overlay surface for positioned content."
+msgstr "Dromchla forleagain le haghaidh ábhair suite."
+
+msgctxt "docs.api:prose"
+msgid "A menu surface with item, group, and separator styles."
+msgstr "Dromchla roghchláir le stíleanna míreanna, grúpaí agus deighilteoirí."
+
+msgctxt "docs.api:prose"
+msgid "A native number input with value-change events."
+msgstr "Ionchur uimhreach dúchasach le himeachtaí athraithe luacha."
+
+msgctxt "docs.api:prose"
+msgid "A pagination navigation landmark."
+msgstr "Sainchomhartha nascleanúna le haghaidh leathanachú."
+
+msgctxt "docs.api:prose"
+msgid "A native radio control and its slotted label."
+msgstr "Rialtán raidió dúchasach agus a lipéad sliotáilte."
+
+msgctxt "docs.api:prose"
+msgid "A native fieldset for a radio-input group."
+msgstr "Fieldset dúchasach do ghrúpa ionchuir raidió."
+
+msgctxt "docs.api:prose"
+msgid "A native range slider with value-change events."
+msgstr "Sleamhnán raoin dúchasach le himeachtaí athraithe luacha."
+
+msgctxt "docs.api:prose"
+msgid "Visually hidden content that remains available to assistive technology."
+msgstr "Ábhar atá folaithe go radhairc agus atá fós ar fáil don teicneolaíocht chúnta."
+
+msgctxt "docs.api:prose"
+msgid "A native select control that copies text-only options from its light DOM."
+msgstr "Rialtán roghnúcháin dúchasach a chóipeálann roghanna téacs amháin óna DOM éadrom."
+
+msgctxt "docs.api:prose"
+msgid "A table-layout container that keeps slotted rows inside its table semantics."
+msgstr "Coimeádán le leagan amach tábla é a choinníonn na sraitheanna sliotáilte laistigh de shéimeantaic an tábla."
+
+msgctxt "docs.api:prose"
+msgid "A paragraph of Pantoken body text."
+msgstr "Alt de théacs coirp Pantoken."
+
+msgctxt "docs.api:prose"
+msgid "A native multiline text input with a visible slotted label."
+msgstr "Ionchur dúchasach téacs illíneach le lipéad sliotáilte infheicthe."
+
+msgctxt "docs.api:prose"
+msgid "A native text input with a visible slotted label."
+msgstr "Ionchur téacs dúchasach le lipéad infheicthe i sliotán."
+
+msgctxt "docs.api:prose"
+msgid "A native disclosure with a configurable summary."
+msgstr "Nochtadh dúchasach le hachoimre inchumraithe."
+
+msgctxt "docs.api:prose"
+msgid "A native disclosure group."
+msgstr "Grúpa dúchasach nochta."
+
+msgctxt "docs.api:prose"
+msgid "A neutral layout primitive."
+msgstr "Gné bhunúsach leagan amach neodrach."
+
+#, pantoken-verbatim
+msgctxt "docs.api:text"
+msgid "toggleGroup"
+msgstr "toggleGroup"
+
+#, pantoken-verbatim
+msgctxt "docs.api:text"
+msgid "toggleDetails"
+msgstr "toggleDetails"
+
+#, pantoken-verbatim
+msgctxt "docs.api:text"
+msgid "fileDrop"
+msgstr "fileDrop"
+
+#, pantoken-verbatim
+msgctxt "docs.api:text"
+msgid "rangeInput"
+msgstr "rangeInput"
+
+#, pantoken-verbatim
+msgctxt "docs.api:text"
+msgid "screenReaderContent"
+msgstr "screenReaderContent"
+
+#, pantoken-verbatim
+msgctxt "docs.api:text"
+msgid "closeButton"
+msgstr "closeButton"
+
+#, pantoken-verbatim
+msgctxt "docs.api:text"
+msgid "formField"
+msgstr "formField"
+
+#, pantoken-verbatim
+msgctxt "docs.api:text"
+msgid "formFieldGroup"
+msgstr "formFieldGroup"
+
+#, pantoken-verbatim
+msgctxt "docs.api:text"
+msgid "radioInputGroup"
+msgstr "radioInputGroup"
+
+#, pantoken-verbatim
+msgctxt "docs.api:text"
+msgid "formFieldMessages"
+msgstr "formFieldMessages"
+
+#, pantoken-verbatim
+msgctxt "docs.api:text"
+msgid "textInput"
+msgstr "textInput"
+
+#, pantoken-verbatim
+msgctxt "docs.api:text"
+msgid "textArea"
+msgstr "textArea"
+
+#, pantoken-verbatim
+msgctxt "docs.api:text"
+msgid "simpleSelect"
+msgstr "simpleSelect"
+
+#, pantoken-verbatim
+msgctxt "docs.api:text"
+msgid "inputGroup"
+msgstr "inputGroup"
+
+#, pantoken-verbatim
+msgctxt "docs.api:text"
+msgid "numberInput"
+msgstr "numberInput"
+
+#, pantoken-verbatim
+msgctxt "docs.api:text"
+msgid "componentElements"
+msgstr "componentElements"

@@ -32,8 +32,8 @@ features:
     title: Generirajte za katero koli platformo
     details: Namestite pantoken cli za generiranje prednastavitev ali dodajanje komponent za katero koli platformo&colon; splet, native in vse drugo.
   - icon:
-      light: /unlink-light.svg
-      dark: /unlink-dark.svg
-    title: React ni potreben
-    details: Knjižnica InstUI je tesno povezana s React-om. Če jo želite uporabiti, morate uporabiti React. Sedaj lahko gradite kjerkoli.
+      light: /wand-sparkles-light.svg
+      dark: /wand-sparkles-dark.svg
+    title: Build agentically
+    details: Add pantoken to the AI tools you're already using with included skills, agents file, api-catalog, llms.txt, and A2UI.
 ---

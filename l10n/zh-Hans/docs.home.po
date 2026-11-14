@@ -85,17 +85,27 @@ msgstr ""
 
 #: index.md:37
 #, no-c-format
-msgid "No React needed"
-msgstr "无需 React"
+msgid "Build agentically"
+msgstr ""
 
 #: index.md:38
 #, no-c-format
 msgid ""
-"The InstUI library is tightly coupled with React. If you want to use it, you "
-"have to use React. Now you can build anywhere."
+"Add pantoken to the AI tools you're already using with included skills, "
+"agents file, api-catalog, llms.txt, and A2UI."
 msgstr ""
-"InstUI 库与 React 紧密耦合。如果要使用它，必须使用 React。现在您可以在任何地"
-"方构建。"
+
+#, no-c-format
+#~ msgid "No React needed"
+#~ msgstr "无需 React"
+
+#, no-c-format
+#~ msgid ""
+#~ "The InstUI library is tightly coupled with React. If you want to use it, "
+#~ "you have to use React. Now you can build anywhere."
+#~ msgstr ""
+#~ "InstUI 库与 React 紧密耦合。如果要使用它，必须使用 React。现在您可以在任何"
+#~ "地方构建。"
 
 #, no-c-format
 #~ msgid "InstUI, everywhere"

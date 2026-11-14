@@ -32,8 +32,8 @@ features:
     title: 모든 플랫폼용 생성
     details: pantoken cli를 설치하여 모든 플랫폼&colon; 웹, 네이티브, 그리고 그 사이의 모든 것에 대해 프리셋을 생성하거나 컴포넌트를 추가하세요.
   - icon:
-      light: /unlink-light.svg
-      dark: /unlink-dark.svg
-    title: React가 필요 없습니다
-    details: InstUI 라이브러리는 React와 긴밀하게 결합되어 있습니다. 이를 사용하려면 React를 사용해야 합니다. 이제 어디서든 빌드할 수 있습니다.
+      light: /wand-sparkles-light.svg
+      dark: /wand-sparkles-dark.svg
+    title: Build agentically
+    details: Add pantoken to the AI tools you're already using with included skills, agents file, api-catalog, llms.txt, and A2UI.
 ---

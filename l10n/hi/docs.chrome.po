@@ -1,19 +1,23 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: pantoken\n"
-"PO-Revision-Date: 2026-11-13 20:41+0000\n"
+"PO-Revision-Date: 2026-11-14 02:26+0000\n"
 "Last-Translator: pantoken localization engine\n"
 "Language-Team: pantoken\n"
+"Language: und\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: und\n"
 
 #: docs/.vitepress/i18n.json#description
 #, no-c-format
 msgctxt "docs.chrome:description"
-msgid "Instructure design tokens and icons, reshaped for every platform and framework."
-msgstr "Instructure डिज़ाइन टोकन और आइकन, प्रत्येक प्लेटफ़ॉर्म और फ़्रेमवर्क के लिए पुन:आकार दिए गए।"
+msgid ""
+"Instructure design tokens and icons, reshaped for every platform and "
+"framework."
+msgstr ""
+"Instructure डिज़ाइन टोकन और आइकन, प्रत्येक प्लेटफ़ॉर्म और फ़्रेमवर्क के लिए पुन:आकार दिए "
+"गए।"
 
 #: docs/.vitepress/i18n.json#nav.guide
 #, no-c-format
@@ -354,8 +358,12 @@ msgstr "बेस रिसेट के बारे में"
 #: docs/.vitepress/i18n.json#cdnPicker.baseInfo
 #, no-c-format
 msgctxt "docs.chrome:cdnPicker.baseInfo"
-msgid "The opt-in global reset: box-sizing, the page surface, base text colour and font, color-scheme, and link defaults."
-msgstr "ऑप्ट-इन ग्लोबल रिसेट: box-sizing, पेज सतह, मूल टेक्स्ट रंग और फ़ॉन्ट, color-scheme, और लिंक डिफॉल्ट्स।"
+msgid ""
+"The opt-in global reset: box-sizing, the page surface, base text colour and "
+"font, color-scheme, and link defaults."
+msgstr ""
+"ऑप्ट-इन ग्लोबल रिसेट: box-sizing, पेज सतह, मूल टेक्स्ट रंग और फ़ॉन्ट, color-scheme, और "
+"लिंक डिफॉल्ट्स।"
 
 #: docs/.vitepress/i18n.json#cdnPicker.includeUtilities
 #, no-c-format
@@ -372,8 +380,12 @@ msgstr "यूटिलिटी क्लासेस के बारे म�
 #: docs/.vitepress/i18n.json#cdnPicker.utilitiesInfo
 #, no-c-format
 msgctxt "docs.chrome:cdnPicker.utilitiesInfo"
-msgid "An opt-in layer of cross-cutting classes: a View primitive, spacing on the token scale, and semantic color overrides."
-msgstr "एक ऑप्ट-इन पार-कटिंग क्लासेस परत: एक View प्रिमिटिव, टोकन स्केल पर स्पेसिंग, और सेमैटिक कलर ओवरराइड्स।"
+msgid ""
+"An opt-in layer of cross-cutting classes: a View primitive, spacing on the "
+"token scale, and semantic color overrides."
+msgstr ""
+"एक ऑप्ट-इन पार-कटिंग क्लासेस परत: एक View प्रिमिटिव, टोकन स्केल पर स्पेसिंग, और सेमैटिक "
+"कलर ओवरराइड्स।"
 
 #: docs/.vitepress/i18n.json#cdnPicker.copy
 #, no-c-format
@@ -396,14 +408,21 @@ msgstr "URL बनाने के लिए एक या अधिक कॉ�
 #: docs/.vitepress/i18n.json#cdnPicker.fontsNote
 #, no-c-format
 msgctxt "docs.chrome:cdnPicker.fontsNote"
-msgid "Fonts load separately — add a <link> to @pantoken/components/fonts.css when you need them."
-msgstr "फ़ॉन्ट अलग से लोड होते हैं — जब आवश्यकता हो तो @pantoken/components/fonts.css में एक <link> जोड़ें।"
+msgid ""
+"Fonts load separately — add a <link> to @pantoken/components/fonts.css when "
+"you need them."
+msgstr ""
+"फ़ॉन्ट अलग से लोड होते हैं — जब आवश्यकता हो तो @pantoken/components/fonts.css में एक "
+"<link> जोड़ें।"
 
 #: docs/.vitepress/i18n.json#cdnPicker.iconsNote
 #, no-c-format
 msgctxt "docs.chrome:cdnPicker.iconsNote"
-msgid "component-icons.css is included because a selected component uses icons."
-msgstr "component-icons.css शामिल है क्योंकि किसी चयनित कॉम्पोनेंट द्वारा आइकनों का उपयोग किया गया है।"
+msgid ""
+"component-icons.css is included because a selected component uses icons."
+msgstr ""
+"component-icons.css शामिल है क्योंकि किसी चयनित कॉम्पोनेंट द्वारा आइकनों का उपयोग "
+"किया गया है।"
 
 #: docs/.vitepress/i18n.json#getStartedTabs.copied
 #, no-c-format
@@ -439,7 +458,9 @@ msgstr "एनिमेशन फिर से शुरू करें"
 #, fuzzy, no-c-format
 msgctxt "docs.chrome:getStartedTabs.agentPrompt"
 msgid "\"Set up pantoken in this project using create.pantoken.app/SKILL.md.\""
-msgstr "\"इस परियोजना में pantoken (github.com/thedannywahl/pantoken) सेट अप करें create.pantoken.app/SKILL.md का उपयोग करके.\""
+msgstr ""
+"\"इस परियोजना में pantoken (github.com/thedannywahl/pantoken) सेट अप करें "
+"create.pantoken.app/SKILL.md का उपयोग करके.\""
 
 #: docs/.vitepress/i18n.json#registryBrowser.title
 #, fuzzy, no-c-format
@@ -450,8 +471,12 @@ msgstr "रजिस्ट्री"
 #: docs/.vitepress/i18n.json#registryBrowser.subtitle
 #, no-c-format
 msgctxt "docs.chrome:registryBrowser.subtitle"
-msgid "CSS components, layouts, plugins, and themes for package-managed shadcn projects. Items install styles and usage metadata, not React components."
-msgstr "पैकेज-प्रबंधित shadcn प्रोजेक्ट्स के लिए CSS घटक, लेआउट, प्लगइन और थीम। आइटम स्टाइल और उपयोग मेटाडेटा इंस्टॉल करते हैं, React घटक नहीं।"
+msgid ""
+"CSS components, layouts, plugins, and themes for package-managed shadcn "
+"projects. Items install styles and usage metadata, not React components."
+msgstr ""
+"पैकेज-प्रबंधित shadcn प्रोजेक्ट्स के लिए CSS घटक, लेआउट, प्लगइन और थीम। आइटम स्टाइल और "
+"उपयोग मेटाडेटा इंस्टॉल करते हैं, React घटक नहीं।"
 
 #: docs/.vitepress/i18n.json#registryBrowser.tabAll
 #, no-c-format
@@ -576,8 +601,13 @@ msgstr "Pantoken A2UI कैटलॉग"
 #: docs/.vitepress/i18n.json#a2uiCatalog.subtitle
 #, no-c-format
 msgctxt "docs.chrome:a2uiCatalog.subtitle"
-msgid "Explore the Pantoken component vocabulary for A2UI 1.0. This catalog defines only Pantoken components; standard layout components remain in the A2UI Basic Catalog."
-msgstr "A2UI 1.0 के लिए Pantoken घटक शब्दावली देखें। यह कैटलॉग केवल Pantoken घटकों को परिभाषित करता है; मानक लेआउट घटक A2UI Basic Catalog में रहते हैं।"
+msgid ""
+"Explore the Pantoken component vocabulary for A2UI 1.0. This catalog defines "
+"only Pantoken components; standard layout components remain in the A2UI "
+"Basic Catalog."
+msgstr ""
+"A2UI 1.0 के लिए Pantoken घटक शब्दावली देखें। यह कैटलॉग केवल Pantoken घटकों को "
+"परिभाषित करता है; मानक लेआउट घटक A2UI Basic Catalog में रहते हैं।"
 
 #: docs/.vitepress/i18n.json#a2uiCatalog.protocolLabel
 #, no-c-format
@@ -630,8 +660,12 @@ msgstr "वैकल्पिक"
 #: docs/.vitepress/i18n.json#a2uiCatalog.noFunctions
 #, no-c-format
 msgctxt "docs.chrome:a2uiCatalog.noFunctions"
-msgid "This catalog defines no executable functions. Button actions use A2UI's registered action handling."
-msgstr "यह कैटलॉग कोई निष्पादन योग्य फ़ंक्शन परिभाषित नहीं करता। बटन कार्रवाइयाँ A2UI के पंजीकृत कार्रवाई प्रबंधन का उपयोग करती हैं।"
+msgid ""
+"This catalog defines no executable functions. Button actions use A2UI's "
+"registered action handling."
+msgstr ""
+"यह कैटलॉग कोई निष्पादन योग्य फ़ंक्शन परिभाषित नहीं करता। बटन कार्रवाइयाँ A2UI के पंजीकृत "
+"कार्रवाई प्रबंधन का उपयोग करती हैं।"
 
 #: docs/.vitepress/i18n.json#a2uiCatalog.supportHeading
 #, no-c-format
@@ -648,20 +682,32 @@ msgstr "प्रकाशित A2UI 1.0 Lit SDK के साथ सत्य�
 #: docs/.vitepress/i18n.json#a2uiCatalog.reactSupport
 #, no-c-format
 msgctxt "docs.chrome:a2uiCatalog.reactSupport"
-msgid "React runtime support is pending v1.0 SDK verification."
-msgstr "React रनटाइम समर्थन, v1.0 SDK सत्यापन की प्रतीक्षा में है।"
+msgid ""
+"Verified with @a2ui/react 0.15.0 and React 19.3.1 in Chromium, Firefox, and "
+"WebKit."
+msgstr ""
+"@a2ui/react 0.15.0 और React 19.3.1 के साथ Chromium, Firefox और WebKit में "
+"सत्यापित।"
 
 #: docs/.vitepress/i18n.json#a2uiCatalog.angularSupport
 #, no-c-format
 msgctxt "docs.chrome:a2uiCatalog.angularSupport"
-msgid "Angular runtime support is pending v1.0 SDK verification."
-msgstr "Angular रनटाइम समर्थन, v1.0 SDK सत्यापन की प्रतीक्षा में है।"
+msgid ""
+"Verified with @a2ui/angular 0.14.0 and Angular 21.2.5 in Chromium, Firefox, "
+"and WebKit."
+msgstr ""
+"@a2ui/angular 0.14.0 और Angular 21.2.5 के साथ Chromium, Firefox और WebKit में "
+"सत्यापित।"
 
 #: docs/.vitepress/i18n.json#a2uiCatalog.nativeSupport
 #, no-c-format
 msgctxt "docs.chrome:a2uiCatalog.nativeSupport"
-msgid "Flutter, SwiftUI, and Jetpack Compose: schema only; no Pantoken native component renderers."
-msgstr "Flutter, SwiftUI और Jetpack Compose: केवल स्कीमा; कोई Pantoken नेटिव घटक रेंडरर नहीं।"
+msgid ""
+"Flutter, SwiftUI, and Jetpack Compose: schema only; no Pantoken native "
+"component renderers."
+msgstr ""
+"Flutter, SwiftUI और Jetpack Compose: केवल स्कीमा; कोई Pantoken नेटिव घटक रेंडरर "
+"नहीं।"
 
 #: docs/.vitepress/i18n.json#a2uiCatalog.functionsHeading
 #, fuzzy, no-c-format
@@ -676,10 +722,14 @@ msgid "Lit registration"
 msgstr "Lit पंजीकरण"
 
 #: docs/.vitepress/i18n.json#a2uiCatalog.componentReference
-#, no-c-format
+#, fuzzy, no-c-format
 msgctxt "docs.chrome:a2uiCatalog.componentReference"
-msgid "Use @catalogId to reference Pantoken components alongside Basic Catalog components."
-msgstr "Basic Catalog घटकों के साथ Pantoken घटकों का संदर्भ देने के लिए @catalogId का उपयोग करें।"
+msgid ""
+"Use catalogId to reference Pantoken components alongside Basic Catalog "
+"components."
+msgstr ""
+"Basic Catalog घटकों के साथ Pantoken घटकों का संदर्भ देने के लिए @catalogId का उपयोग "
+"करें।"
 
 #: docs/.vitepress/i18n.json#a2uiCatalog.empty
 #, fuzzy, no-c-format
@@ -702,14 +752,30 @@ msgstr "कैटलॉग संस्करण निर्धारण"
 #: docs/.vitepress/i18n.json#a2uiCatalog.versioningDescription
 #, no-c-format
 msgctxt "docs.chrome:a2uiCatalog.versioningDescription"
-msgid "The v1 catalog ID is stable. Adding an optional component, property, or enum value is additive; removing or renaming an existing component or property, narrowing an enum, or making an optional property required is breaking and requires a new catalog version. Only the components and properties listed above are part of Pantoken's A2UI catalog."
-msgstr "v1 कैटलॉग ID स्थिर है। वैकल्पिक घटक, प्रॉपर्टी या enum मान जोड़ना एक पूरक बदलाव है; किसी मौजूदा घटक या प्रॉपर्टी को हटाना या उसका नाम बदलना, enum के विकल्प सीमित करना, या किसी वैकल्पिक प्रॉपर्टी को आवश्यक बनाना एक विघटनकारी बदलाव है और इसके लिए नए कैटलॉग संस्करण की आवश्यकता होती है। ऊपर सूचीबद्ध घटक और प्रॉपर्टी ही Pantoken के A2UI कैटलॉग का हिस्सा हैं।"
+msgid ""
+"The v1 catalog ID is stable. Adding an optional component, property, or enum "
+"value is additive; removing or renaming an existing component or property, "
+"narrowing an enum, or making an optional property required is breaking and "
+"requires a new catalog version. Only the components and properties listed "
+"above are part of Pantoken's A2UI catalog."
+msgstr ""
+"v1 कैटलॉग ID स्थिर है। वैकल्पिक घटक, प्रॉपर्टी या enum मान जोड़ना एक पूरक बदलाव है; "
+"किसी मौजूदा घटक या प्रॉपर्टी को हटाना या उसका नाम बदलना, enum के विकल्प सीमित "
+"करना, या किसी वैकल्पिक प्रॉपर्टी को आवश्यक बनाना एक विघटनकारी बदलाव है और इसके लिए "
+"नए कैटलॉग संस्करण की आवश्यकता होती है। ऊपर सूचीबद्ध घटक और प्रॉपर्टी ही Pantoken के "
+"A2UI कैटलॉग का हिस्सा हैं।"
 
 #: docs/.vitepress/i18n.json#a2uiCatalog.versioningActions
 #, no-c-format
 msgctxt "docs.chrome:a2uiCatalog.versioningActions"
-msgid "The catalog defines no executable functions and does not authorize actions. A2UI actions are dispatched through the host application's normal action handling, where the application must enforce its own permissions."
-msgstr "कैटलॉग कोई निष्पादन योग्य फ़ंक्शन परिभाषित नहीं करता और न ही कार्रवाइयों को अधिकृत करता है। A2UI कार्रवाइयाँ होस्ट एप्लिकेशन के सामान्य कार्रवाई प्रबंधन के माध्यम से भेजी जाती हैं, जहाँ एप्लिकेशन को अपनी अनुमतियाँ लागू करनी होती हैं।"
+msgid ""
+"The catalog defines no executable functions and does not authorize actions. "
+"A2UI actions are dispatched through the host application's normal action "
+"handling, where the application must enforce its own permissions."
+msgstr ""
+"कैटलॉग कोई निष्पादन योग्य फ़ंक्शन परिभाषित नहीं करता और न ही कार्रवाइयों को अधिकृत "
+"करता है। A2UI कार्रवाइयाँ होस्ट एप्लिकेशन के सामान्य कार्रवाई प्रबंधन के माध्यम से भेजी "
+"जाती हैं, जहाँ एप्लिकेशन को अपनी अनुमतियाँ लागू करनी होती हैं।"
 
 #: docs/.vitepress/i18n.json#canvasRce.title
 #, fuzzy, no-c-format
@@ -720,8 +786,14 @@ msgstr "Canvas"
 #: docs/.vitepress/i18n.json#canvasRce.description
 #, no-c-format
 msgctxt "docs.chrome:canvasRce.description"
-msgid "A live preview of pantoken's Canvas LMS Rich Content Editor template: a TinyMCE-based editor with starter layouts, a live preview pane, and hand-editable theme.css/theme.js output."
-msgstr "pantoken के Canvas LMS Rich Content Editor टेम्पलेट का लाइव प्रीव्यू: एक TinyMCE-आधारित संपादक जिसमें स्टार्टर लेआउट, एक लाइव प्रीव्यू पैन और हाथ से संपादन योग्य theme.css/theme.js आउटपुट शामिल है।"
+msgid ""
+"A live preview of pantoken's Canvas LMS Rich Content Editor template: a "
+"TinyMCE-based editor with starter layouts, a live preview pane, and hand-"
+"editable theme.css/theme.js output."
+msgstr ""
+"pantoken के Canvas LMS Rich Content Editor टेम्पलेट का लाइव प्रीव्यू: एक TinyMCE-"
+"आधारित संपादक जिसमें स्टार्टर लेआउट, एक लाइव प्रीव्यू पैन और हाथ से संपादन योग्य "
+"theme.css/theme.js आउटपुट शामिल है।"
 
 #: docs/.vitepress/i18n.json#canvasRce.openInNewTab
 #, fuzzy, no-c-format
@@ -744,8 +816,12 @@ msgstr "उपकरण"
 #: docs/.vitepress/i18n.json#agentTools.subtitle
 #, no-c-format
 msgctxt "docs.chrome:agentTools.subtitle"
-msgid "Pick a Pantoken agent workflow, generate the command or launch URL, and give your assistant the files it needs to stop guessing."
-msgstr "एक Pantoken एजेंट वर्कफ़्लो चुनें, कमांड या लॉन्च URL जेनरेट करें, और अपने सहायक को वे फ़ाइलें दें जिनकी उसे अनुमान लगाने की ज़रूरत न पड़े।"
+msgid ""
+"Pick a Pantoken agent workflow, generate the command or launch URL, and give "
+"your assistant the files it needs to stop guessing."
+msgstr ""
+"एक Pantoken एजेंट वर्कफ़्लो चुनें, कमांड या लॉन्च URL जेनरेट करें, और अपने सहायक को वे फ़ाइलें "
+"दें जिनकी उसे अनुमान लगाने की ज़रूरत न पड़े।"
 
 #: docs/.vitepress/i18n.json#agentTools.providerLabel
 #, no-c-format
@@ -792,8 +868,10 @@ msgstr "{{agent}} में खोलें"
 #: docs/.vitepress/i18n.json#agentTools.openUnavailable
 #, no-c-format
 msgctxt "docs.chrome:agentTools.openUnavailable"
-msgid "This agent does not publish a stable launch URL. Use Copy for the CLI prompt."
-msgstr "यह एजेंट एक स्थिर लॉन्च URL प्रकाशित नहीं करता। CLI प्रॉम्प्ट के लिए Copy का उपयोग करें।"
+msgid ""
+"This agent does not publish a stable launch URL. Use Copy for the CLI prompt."
+msgstr ""
+"यह एजेंट एक स्थिर लॉन्च URL प्रकाशित नहीं करता। CLI प्रॉम्प्ट के लिए Copy का उपयोग करें।"
 
 #: docs/.vitepress/i18n.json#agentTools.tabBootstrap
 #, no-c-format
@@ -828,8 +906,12 @@ msgstr "प्रोजेक्ट बूटस्ट्रैप करें"
 #: docs/.vitepress/i18n.json#agentTools.bootstrapDescription
 #, no-c-format
 msgctxt "docs.chrome:agentTools.bootstrapDescription"
-msgid "Scaffold a starter with Pantoken wired in and install the repo-local agent assets in the same pass."
-msgstr "Pantoken को जोड़कर एक स्टार्टर स्कैफ़ोल्ड करें और उसी ऑपरेशन में रेपो-लोकल एजेंट एसेट्स इंस्टॉल करें।"
+msgid ""
+"Scaffold a starter with Pantoken wired in and install the repo-local agent "
+"assets in the same pass."
+msgstr ""
+"Pantoken को जोड़कर एक स्टार्टर स्कैफ़ोल्ड करें और उसी ऑपरेशन में रेपो-लोकल एजेंट एसेट्स इंस्टॉल "
+"करें।"
 
 #: docs/.vitepress/i18n.json#agentTools.platformLabel
 #, fuzzy, no-c-format
@@ -852,8 +934,12 @@ msgstr "एक रेपो में एजेंट मार्गदर्�
 #: docs/.vitepress/i18n.json#agentTools.installDescription
 #, no-c-format
 msgctxt "docs.chrome:agentTools.installDescription"
-msgid "Install AGENTS.md, llms.txt, editor rules, and Claude skills into an existing project that already uses or is about to use Pantoken."
-msgstr "एक मौजूदा प्रोजेक्ट में AGENTS.md, llms.txt, एडिटर नियम, और Claude कौशल इंस्टॉल करें जो पहले से Pantoken का उपयोग करता है या उपयोग करने वाला है।"
+msgid ""
+"Install AGENTS.md, llms.txt, editor rules, and Claude skills into an "
+"existing project that already uses or is about to use Pantoken."
+msgstr ""
+"एक मौजूदा प्रोजेक्ट में AGENTS.md, llms.txt, एडिटर नियम, और Claude कौशल इंस्टॉल करें "
+"जो पहले से Pantoken का उपयोग करता है या उपयोग करने वाला है।"
 
 #: docs/.vitepress/i18n.json#agentTools.toolLabel
 #, no-c-format
@@ -876,8 +962,12 @@ msgstr "रजिस्ट्री"
 #: docs/.vitepress/i18n.json#agentTools.registryDescription
 #, no-c-format
 msgctxt "docs.chrome:agentTools.registryDescription"
-msgid "Point an agent at Pantoken's indexed registry so it can search, inspect, and add CSS-backed registry items instead of inventing package names."
-msgstr "Pantoken के इंडेक्स्ड रजिस्ट्री की ओर एजेंट को पॉइंट करें ताकि यह पैकेज नाम बनाने के बजाय रजिस्ट्री आइटम्स को खोज, निरीक्षण और जोड़ सके।"
+msgid ""
+"Point an agent at Pantoken's indexed registry so it can search, inspect, and "
+"add CSS-backed registry items instead of inventing package names."
+msgstr ""
+"Pantoken के इंडेक्स्ड रजिस्ट्री की ओर एजेंट को पॉइंट करें ताकि यह पैकेज नाम बनाने के बजाय "
+"रजिस्ट्री आइटम्स को खोज, निरीक्षण और जोड़ सके।"
 
 #: docs/.vitepress/i18n.json#agentTools.registryActionLabel
 #, no-c-format
@@ -900,32 +990,58 @@ msgstr "एजेंट-पठनीय दस्तावेज़"
 #: docs/.vitepress/i18n.json#agentTools.docsDescription
 #, no-c-format
 msgctxt "docs.chrome:agentTools.docsDescription"
-msgid "Pantoken publishes fetchable documentation and manifests for assistants that can browse URLs or read raw Markdown."
-msgstr "Pantoken सहायक एजेंटों के लिए फ़ेच करने योग्य दस्तावेज़ और मैनीफेस्ट प्रकाशित करता है जो URL ब्राउज़ या कच्चा Markdown पढ़ सकते हैं।"
+msgid ""
+"Pantoken publishes fetchable documentation and manifests for assistants that "
+"can browse URLs or read raw Markdown."
+msgstr ""
+"Pantoken सहायक एजेंटों के लिए फ़ेच करने योग्य दस्तावेज़ और मैनीफेस्ट प्रकाशित करता है जो URL "
+"ब्राउज़ या कच्चा Markdown पढ़ सकते हैं।"
 
 #: docs/.vitepress/i18n.json#agentTools.installPrompt
 #, no-c-format
 msgctxt "docs.chrome:agentTools.installPrompt"
-msgid "Install Pantoken agent guidance in this repository. Use {{command}}, then summarize the files written and when future agents should read them."
-msgstr "इस रिपॉज़िटरी में Pantoken एजेंट मार्गदर्शन इंस्टॉल करें। {{command}} का उपयोग करें, फिर लिखी गई फ़ाइलों और भविष्य के एजेंटों को उन्हें कब पढ़ना चाहिए इसका सारांश दें।"
+msgid ""
+"Install Pantoken agent guidance in this repository. Use {{command}}, then "
+"summarize the files written and when future agents should read them."
+msgstr ""
+"इस रिपॉज़िटरी में Pantoken एजेंट मार्गदर्शन इंस्टॉल करें। {{command}} का उपयोग करें, फिर "
+"लिखी गई फ़ाइलों और भविष्य के एजेंटों को उन्हें कब पढ़ना चाहिए इसका सारांश दें।"
 
 #: docs/.vitepress/i18n.json#agentTools.registryPrompt
 #, no-c-format
 msgctxt "docs.chrome:agentTools.registryPrompt"
-msgid "Use the Pantoken shadcn registry for this project. Fetch https://pantoken.app/r/registry.json, then run {{command}} if the project uses shadcn or has components.json. Registry items install CSS and metadata, not React components."
-msgstr "इस प्रोजेक्ट के लिए Pantoken shadcn रजिस्ट्री का उपयोग करें। https://pantoken.app/r/registry.json फ़ेच करें, फिर यदि प्रोजेक्ट shadcn का उपयोग करता है या components.json है तो {{command}} चलाएँ। रजिस्ट्री आइटम CSS और मेटाडेटा इंस्टॉल करते हैं, React कंपोनेंट्स नहीं।"
+msgid ""
+"Use the Pantoken shadcn registry for this project. Fetch https://"
+"pantoken.app/r/registry.json, then run {{command}} if the project uses "
+"shadcn or has components.json. Registry items install CSS and metadata, not "
+"React components."
+msgstr ""
+"इस प्रोजेक्ट के लिए Pantoken shadcn रजिस्ट्री का उपयोग करें। https://pantoken.app/r/"
+"registry.json फ़ेच करें, फिर यदि प्रोजेक्ट shadcn का उपयोग करता है या "
+"components.json है तो {{command}} चलाएँ। रजिस्ट्री आइटम CSS और मेटाडेटा इंस्टॉल करते "
+"हैं, React कंपोनेंट्स नहीं।"
 
 #: docs/.vitepress/i18n.json#agentTools.docsPrompt
 #, no-c-format
 msgctxt "docs.chrome:agentTools.docsPrompt"
-msgid "Fetch https://pantoken.app/llms.txt first. When a page is needed, prefer its raw Markdown URL by adding .md to the clean docs path, and use Pantoken manifests for component capabilities, CDN plugins, demos, and registry items."
-msgstr "पहले https://pantoken.app/llms.txt फ़ेच करें। जब किसी पृष्ठ की आवश्यकता हो, तो क्लीान डॉक्स पाथ में .md जोड़कर उसके कच्चे Markdown URL को प्राथमिकता दें, और कंपोनेंट क्षमताओं, CDN प्लगइन्स, डेमो और रजिस्ट्री आइटम्स के लिए Pantoken मैनीफेस्ट का उपयोग करें।"
+msgid ""
+"Fetch https://pantoken.app/llms.txt first. When a page is needed, prefer its "
+"raw Markdown URL by adding .md to the clean docs path, and use Pantoken "
+"manifests for component capabilities, CDN plugins, demos, and registry items."
+msgstr ""
+"पहले https://pantoken.app/llms.txt फ़ेच करें। जब किसी पृष्ठ की आवश्यकता हो, तो क्लीान "
+"डॉक्स पाथ में .md जोड़कर उसके कच्चे Markdown URL को प्राथमिकता दें, और कंपोनेंट क्षमताओं, "
+"CDN प्लगइन्स, डेमो और रजिस्ट्री आइटम्स के लिए Pantoken मैनीफेस्ट का उपयोग करें।"
 
 #: docs/.vitepress/i18n.json#agentTools.docsCommand
 #, no-c-format
 msgctxt "docs.chrome:agentTools.docsCommand"
-msgid "Fetch https://pantoken.app/llms.txt, then follow links to the pages and manifests relevant to this task."
-msgstr "https://pantoken.app/llms.txt फ़ेच करें, फिर इस टास्क से संबंधित पृष्ठों और मैनीफेस्ट्स के लिंक का पालन करें।"
+msgid ""
+"Fetch https://pantoken.app/llms.txt, then follow links to the pages and "
+"manifests relevant to this task."
+msgstr ""
+"https://pantoken.app/llms.txt फ़ेच करें, फिर इस टास्क से संबंधित पृष्ठों और मैनीफेस्ट्स के "
+"लिंक का पालन करें।"
 
 #: docs/.vitepress/i18n.json#agentTools.createDomainTitle
 #, no-c-format
@@ -936,8 +1052,10 @@ msgstr "स्किल URL बूटस्ट्रैप करें"
 #: docs/.vitepress/i18n.json#agentTools.createDomainDescription
 #, no-c-format
 msgctxt "docs.chrome:agentTools.createDomainDescription"
-msgid "The short public URL any URL-capable agent can fetch to set up Pantoken."
-msgstr "छोटा सार्वजनिक URL जिसे कोई भी URL-सक्षम एजेंट Pantoken सेटअप के लिए फ़ेच कर सकता है।"
+msgid ""
+"The short public URL any URL-capable agent can fetch to set up Pantoken."
+msgstr ""
+"छोटा सार्वजनिक URL जिसे कोई भी URL-सक्षम एजेंट Pantoken सेटअप के लिए फ़ेच कर सकता है।"
 
 #: docs/.vitepress/i18n.json#agentTools.llmsTitle
 #, no-c-format
@@ -960,7 +1078,8 @@ msgstr "पूर्ण साइट संदर्भ"
 #: docs/.vitepress/i18n.json#agentTools.llmsFullDescription
 #, no-c-format
 msgctxt "docs.chrome:agentTools.llmsFullDescription"
-msgid "Expanded LLM context for agents that need the complete documentation set."
+msgid ""
+"Expanded LLM context for agents that need the complete documentation set."
 msgstr "उन एजेंटों के लिए विस्तारित LLM संदर्भ जिन्हें पूर्ण दस्तावेज़ सेट की आवश्यकता है।"
 
 #: docs/.vitepress/i18n.json#agentTools.pageMdTitle
@@ -1008,7 +1127,9 @@ msgstr "कॉम्पोनेंट्स"
 #: docs/.vitepress/i18n.json#agentTools.capabilitiesDescription
 #, no-c-format
 msgctxt "docs.chrome:agentTools.capabilitiesDescription"
-msgid "Machine-readable map of component CSS, JavaScript, icon, and dependency needs."
+msgid ""
+"Machine-readable map of component CSS, JavaScript, icon, and dependency "
+"needs."
 msgstr "कंपोनेंट के CSS, JavaScript, आइकन, और निर्भरताओं की मशीन-पठनीय मैप।"
 
 #: docs/.vitepress/i18n.json#agentTools.pluginsTitle
@@ -1134,8 +1255,12 @@ msgstr "पृष्ठ नहीं मिला"
 #: docs/.vitepress/i18n.json#chrome.notFound.quote
 #, no-c-format
 msgctxt "docs.chrome:chrome.notFound.quote"
-msgid "But if you don't change your direction, and if you keep looking, you may end up where you are heading."
-msgstr "लेकिन अगर आप अपना मार्ग नहीं बदलते हैं, और अगर आप देखते रहते हैं, तो आप संभवतः वहीं पहुँच जाएंगे जहाँ आप जा रहे हैं।"
+msgid ""
+"But if you don't change your direction, and if you keep looking, you may end "
+"up where you are heading."
+msgstr ""
+"लेकिन अगर आप अपना मार्ग नहीं बदलते हैं, और अगर आप देखते रहते हैं, तो आप संभवतः वहीं पहुँच "
+"जाएंगे जहाँ आप जा रहे हैं।"
 
 #: docs/.vitepress/i18n.json#chrome.notFound.linkLabel
 #, no-c-format
@@ -1206,8 +1331,11 @@ msgstr "Pantoken के आइकन सेट से चुना गया इ
 #: docs/.vitepress/catalog-i18n.json#a2uiCatalogDescriptions.PantokenButton
 #, no-c-format
 msgctxt "docs.chrome:a2uiCatalogDescriptions.PantokenButton"
-msgid "A token-styled action button with optional A2UI event and Invoker Commands behavior."
-msgstr "वैकल्पिक A2UI इवेंट और Invoker Commands व्यवहार वाला, टोकन-शैली का कार्रवाई बटन।"
+msgid ""
+"A token-styled action button with optional A2UI event and Invoker Commands "
+"behavior."
+msgstr ""
+"वैकल्पिक A2UI इवेंट और Invoker Commands व्यवहार वाला, टोकन-शैली का कार्रवाई बटन।"
 
 #: docs/.vitepress/catalog-i18n.json#a2uiCatalogDescriptions.PantokenAlert
 #, no-c-format
@@ -1290,7 +1418,8 @@ msgstr "अनुमत पंक्ति-संख्या तक सीम�
 #: docs/.vitepress/catalog-i18n.json#a2uiCatalogDescriptions.PantokenImg
 #, no-c-format
 msgctxt "docs.chrome:a2uiCatalogDescriptions.PantokenImg"
-msgid "A responsive image with a sanitized media URL and constrained presentation."
+msgid ""
+"A responsive image with a sanitized media URL and constrained presentation."
 msgstr "स्वच्छ किए गए मीडिया URL और सीमित प्रस्तुति वाला प्रतिक्रियाशील चित्र।"
 
 #: docs/.vitepress/catalog-i18n.json#a2uiCatalogDescriptions.PantokenSideNavBar
@@ -1302,8 +1431,11 @@ msgstr "एक लंबवत नेविगेशन रेल, जिसे 
 #: docs/.vitepress/catalog-i18n.json#a2uiCatalogDescriptions.PantokenTreeBrowser
 #, no-c-format
 msgctxt "docs.chrome:a2uiCatalogDescriptions.PantokenTreeBrowser"
-msgid "An accessible tree whose child components are exposed as focusable tree items."
-msgstr "एक सुलभ ट्री, जिसके चाइल्ड घटक फ़ोकस किए जा सकने वाले ट्री आइटम के रूप में उपलब्ध होते हैं।"
+msgid ""
+"An accessible tree whose child components are exposed as focusable tree "
+"items."
+msgstr ""
+"एक सुलभ ट्री, जिसके चाइल्ड घटक फ़ोकस किए जा सकने वाले ट्री आइटम के रूप में उपलब्ध होते हैं।"
 
 #: docs/.vitepress/catalog-i18n.json#a2uiCatalogDescriptions.PantokenCalendar
 #, no-c-format
@@ -1446,7 +1578,8 @@ msgstr "सुरक्षित पाठ और चाइल्ड कंट�
 #: docs/.vitepress/catalog-i18n.json#a2uiCatalogDescriptions.PantokenToggleGroup
 #, no-c-format
 msgctxt "docs.chrome:a2uiCatalogDescriptions.PantokenToggleGroup"
-msgid "A token-styled disclosure group with a summary and expandable child content."
+msgid ""
+"A token-styled disclosure group with a summary and expandable child content."
 msgstr "सारांश और विस्तार योग्य चाइल्ड कंटेंट वाला, टोकन-शैली का डिस्क्लोज़र समूह।"
 
 #: docs/.vitepress/catalog-i18n.json#a2uiCatalogDescriptions.PantokenPagination
@@ -1482,7 +1615,8 @@ msgstr "सुरक्षित टेक्स्ट और चाइल्ड
 #: docs/.vitepress/catalog-i18n.json#a2uiCatalogDescriptions.PantokenScreenReaderContent
 #, no-c-format
 msgctxt "docs.chrome:a2uiCatalogDescriptions.PantokenScreenReaderContent"
-msgid "A Pantoken screen-reader-content component with safe text and child content."
+msgid ""
+"A Pantoken screen-reader-content component with safe text and child content."
 msgstr "सुरक्षित टेक्स्ट और चाइल्ड कंटेंट वाला Pantoken स्क्रीन-रीडर-कंटेंट कंपोनेंट।"
 
 #: docs/.vitepress/catalog-i18n.json#a2uiCatalogDescriptions.PantokenHeading
@@ -1524,7 +1658,8 @@ msgstr "संबंधित रेडियो कंट्रोल को �
 #: docs/.vitepress/catalog-i18n.json#a2uiCatalogDescriptions.PantokenFormFieldMessages
 #, no-c-format
 msgctxt "docs.chrome:a2uiCatalogDescriptions.PantokenFormFieldMessages"
-msgid "A Pantoken form-field-messages component with safe text and child content."
+msgid ""
+"A Pantoken form-field-messages component with safe text and child content."
 msgstr "सुरक्षित टेक्स्ट और चाइल्ड कंटेंट वाला Pantoken फ़ॉर्म-फ़ील्ड-मैसेजेस कंपोनेंट।"
 
 #: docs/.vitepress/catalog-i18n.json#a2uiCatalogDescriptions.PantokenTextInput
@@ -1572,7 +1707,9 @@ msgstr "Canvas LMS थीम"
 #: docs/.vitepress/catalog-i18n.json#registryBrowserItems.theme-canvas.description
 #, no-c-format
 msgctxt "docs.chrome:registryBrowserItems.theme-canvas.description"
-msgid "Instructure Canvas LMS theme variables bridging to shadcn/ui custom properties."
+msgid ""
+"Instructure Canvas LMS theme variables bridging to shadcn/ui custom "
+"properties."
 msgstr "Instructure Canvas LMS थीम वैरिएबल, जो shadcn/ui कस्टम प्रॉपर्टीज़ से जुड़ते हैं।"
 
 #: docs/.vitepress/catalog-i18n.json#registryBrowserItems.theme-canvas-high-contrast.title
@@ -1583,7 +1720,8 @@ msgstr "Canvas high contrast"
 
 #: docs/.vitepress/catalog-i18n.json#registryBrowserItems.theme-canvas-high-contrast.description
 #, no-c-format
-msgctxt "docs.chrome:registryBrowserItems.theme-canvas-high-contrast.description"
+msgctxt ""
+"docs.chrome:registryBrowserItems.theme-canvas-high-contrast.description"
 msgid "Canvas LMS High Contrast theme variables for WCAG AAA compliance."
 msgstr "WCAG AAA अनुपालन के लिए Canvas LMS हाई-कॉन्ट्रास्ट थीम वैरिएबल।"
 
@@ -1608,7 +1746,9 @@ msgstr "Pantoken बेस सिस्टम"
 #: docs/.vitepress/catalog-i18n.json#registryBrowserItems.base.description
 #, no-c-format
 msgctxt "docs.chrome:registryBrowserItems.base.description"
-msgid "Pantoken core design token system, CSS custom properties, and semantic components."
+msgid ""
+"Pantoken core design token system, CSS custom properties, and semantic "
+"components."
 msgstr "Pantoken का कोर डिज़ाइन टोकन सिस्टम, CSS कस्टम प्रॉपर्टीज़ और सेमांटिक कंपोनेंट।"
 
 #: docs/.vitepress/catalog-i18n.json#registryBrowserItems.button.title
@@ -1620,7 +1760,8 @@ msgstr "बटन"
 #: docs/.vitepress/catalog-i18n.json#registryBrowserItems.button.description
 #, no-c-format
 msgctxt "docs.chrome:registryBrowserItems.button.description"
-msgid "Instructure Button component styled with semantic .instui-button classes."
+msgid ""
+"Instructure Button component styled with semantic .instui-button classes."
 msgstr "सेमांटिक .instui-button क्लास से स्टाइल किया गया Instructure बटन कंपोनेंट।"
 
 #: docs/.vitepress/catalog-i18n.json#registryBrowserItems.card.title
@@ -1692,7 +1833,8 @@ msgstr "अवतार"
 #: docs/.vitepress/catalog-i18n.json#registryBrowserItems.avatar.description
 #, no-c-format
 msgctxt "docs.chrome:registryBrowserItems.avatar.description"
-msgid "Instructure Avatar component styled with semantic .instui-avatar classes."
+msgid ""
+"Instructure Avatar component styled with semantic .instui-avatar classes."
 msgstr "सेमांटिक .instui-avatar क्लास से स्टाइल किया गया Instructure अवतार कंपोनेंट।"
 
 #: docs/.vitepress/catalog-i18n.json#registryBrowserItems.tabs.title
@@ -1716,7 +1858,8 @@ msgstr "मेट्रिक"
 #: docs/.vitepress/catalog-i18n.json#registryBrowserItems.metric.description
 #, no-c-format
 msgctxt "docs.chrome:registryBrowserItems.metric.description"
-msgid "Instructure Metric component styled with semantic .instui-metric classes."
+msgid ""
+"Instructure Metric component styled with semantic .instui-metric classes."
 msgstr "सेमांटिक .instui-metric क्लास से स्टाइल किया गया Instructure मेट्रिक कंपोनेंट।"
 
 #: docs/.vitepress/catalog-i18n.json#registryBrowserItems.byline.title
@@ -1728,7 +1871,8 @@ msgstr "बायलाइन"
 #: docs/.vitepress/catalog-i18n.json#registryBrowserItems.byline.description
 #, no-c-format
 msgctxt "docs.chrome:registryBrowserItems.byline.description"
-msgid "Instructure Byline component styled with semantic .instui-byline classes."
+msgid ""
+"Instructure Byline component styled with semantic .instui-byline classes."
 msgstr "सेमांटिक .instui-byline क्लास से स्टाइल किया गया Instructure बायलाइन कंपोनेंट।"
 
 #: docs/.vitepress/catalog-i18n.json#registryBrowserItems.img.title
@@ -1800,8 +1944,10 @@ msgstr "चेकबॉक्स"
 #: docs/.vitepress/catalog-i18n.json#registryBrowserItems.checkbox.description
 #, no-c-format
 msgctxt "docs.chrome:registryBrowserItems.checkbox.description"
-msgid "Instructure Checkbox component styled with semantic .instui-checkbox classes."
-msgstr "सेमांटिक .instui-checkbox क्लास से स्टाइल किया गया Instructure चेकबॉक्स कंपोनेंट।"
+msgid ""
+"Instructure Checkbox component styled with semantic .instui-checkbox classes."
+msgstr ""
+"सेमांटिक .instui-checkbox क्लास से स्टाइल किया गया Instructure चेकबॉक्स कंपोनेंट।"
 
 #: docs/.vitepress/catalog-i18n.json#registryBrowserItems.radio.title
 #, no-c-format
@@ -1824,7 +1970,8 @@ msgstr "रनर"
 #: docs/.vitepress/catalog-i18n.json#registryBrowserItems.spinner.description
 #, no-c-format
 msgctxt "docs.chrome:registryBrowserItems.spinner.description"
-msgid "Instructure Spinner component styled with semantic .instui-spinner classes."
+msgid ""
+"Instructure Spinner component styled with semantic .instui-spinner classes."
 msgstr "सेमांटिक .instui-spinner क्लास से स्टाइल किया गया Instructure स्पिनर कंपोनेंट।"
 
 #: docs/.vitepress/catalog-i18n.json#registryBrowserItems.progress.title
@@ -1836,8 +1983,10 @@ msgstr "प्रगति"
 #: docs/.vitepress/catalog-i18n.json#registryBrowserItems.progress.description
 #, no-c-format
 msgctxt "docs.chrome:registryBrowserItems.progress.description"
-msgid "Instructure Progress component styled with semantic .instui-progress classes."
-msgstr "सेमांटिक .instui-progress क्लास से स्टाइल किया गया Instructure प्रोग्रेस कंपोनेंट।"
+msgid ""
+"Instructure Progress component styled with semantic .instui-progress classes."
+msgstr ""
+"सेमांटिक .instui-progress क्लास से स्टाइल किया गया Instructure प्रोग्रेस कंपोनेंट।"
 
 #: docs/.vitepress/catalog-i18n.json#registryBrowserItems.menu.title
 #, fuzzy, no-c-format
@@ -1872,8 +2021,11 @@ msgstr "ब्रेडक्रंब"
 #: docs/.vitepress/catalog-i18n.json#registryBrowserItems.breadcrumb.description
 #, no-c-format
 msgctxt "docs.chrome:registryBrowserItems.breadcrumb.description"
-msgid "Instructure Breadcrumb component styled with semantic .instui-breadcrumb classes."
-msgstr "सेमांटिक .instui-breadcrumb क्लास से स्टाइल किया गया Instructure ब्रेडक्रंब कंपोनेंट।"
+msgid ""
+"Instructure Breadcrumb component styled with semantic .instui-breadcrumb "
+"classes."
+msgstr ""
+"सेमांटिक .instui-breadcrumb क्लास से स्टाइल किया गया Instructure ब्रेडक्रंब कंपोनेंट।"
 
 #: docs/.vitepress/catalog-i18n.json#registryBrowserItems.billboard.title
 #, no-c-format
@@ -1884,8 +2036,11 @@ msgstr "बिलबोर्ड"
 #: docs/.vitepress/catalog-i18n.json#registryBrowserItems.billboard.description
 #, no-c-format
 msgctxt "docs.chrome:registryBrowserItems.billboard.description"
-msgid "Instructure Billboard component styled with semantic .instui-billboard classes."
-msgstr "सेमांटिक .instui-billboard क्लास से स्टाइल किया गया Instructure बिलबोर्ड कंपोनेंट।"
+msgid ""
+"Instructure Billboard component styled with semantic .instui-billboard "
+"classes."
+msgstr ""
+"सेमांटिक .instui-billboard क्लास से स्टाइल किया गया Instructure बिलबोर्ड कंपोनेंट।"
 
 #: docs/.vitepress/catalog-i18n.json#registryBrowserItems.rating.title
 #, no-c-format
@@ -1896,7 +2051,8 @@ msgstr "रेटिंग"
 #: docs/.vitepress/catalog-i18n.json#registryBrowserItems.rating.description
 #, no-c-format
 msgctxt "docs.chrome:registryBrowserItems.rating.description"
-msgid "Instructure Rating component styled with semantic .instui-rating classes."
+msgid ""
+"Instructure Rating component styled with semantic .instui-rating classes."
 msgstr "सेमांटिक .instui-rating क्लास से स्टाइल किया गया Instructure रेटिंग कंपोनेंट।"
 
 #: docs/.vitepress/catalog-i18n.json#registryBrowserItems.toggle-group.title
@@ -1908,8 +2064,11 @@ msgstr "टॉगल-ग्रुप"
 #: docs/.vitepress/catalog-i18n.json#registryBrowserItems.toggle-group.description
 #, no-c-format
 msgctxt "docs.chrome:registryBrowserItems.toggle-group.description"
-msgid "Instructure Toggle-group component styled with semantic .instui-toggle-group classes."
-msgstr "सेमांटिक .instui-toggle-group क्लास से स्टाइल किया गया Instructure टॉगल-ग्रुप कंपोनेंट।"
+msgid ""
+"Instructure Toggle-group component styled with semantic .instui-toggle-group "
+"classes."
+msgstr ""
+"सेमांटिक .instui-toggle-group क्लास से स्टाइल किया गया Instructure टॉगल-ग्रुप कंपोनेंट।"
 
 #: docs/.vitepress/catalog-i18n.json#registryBrowserItems.context-view.title
 #, no-c-format
@@ -1920,8 +2079,12 @@ msgstr "कॉन्टेक्स्ट-व्यू"
 #: docs/.vitepress/catalog-i18n.json#registryBrowserItems.context-view.description
 #, no-c-format
 msgctxt "docs.chrome:registryBrowserItems.context-view.description"
-msgid "Instructure Context-view component styled with semantic .instui-context-view classes."
-msgstr "सेमांटिक .instui-context-view क्लास से स्टाइल किया गया Instructure कॉन्टेक्स्ट-व्यू कंपोनेंट।"
+msgid ""
+"Instructure Context-view component styled with semantic .instui-context-view "
+"classes."
+msgstr ""
+"सेमांटिक .instui-context-view क्लास से स्टाइल किया गया Instructure कॉन्टेक्स्ट-व्यू "
+"कंपोनेंट।"
 
 #: docs/.vitepress/catalog-i18n.json#registryBrowserItems.drawer-layout.title
 #, no-c-format
@@ -1932,8 +2095,12 @@ msgstr "ड्रॉअर-लेआउट"
 #: docs/.vitepress/catalog-i18n.json#registryBrowserItems.drawer-layout.description
 #, no-c-format
 msgctxt "docs.chrome:registryBrowserItems.drawer-layout.description"
-msgid "Instructure Drawer-layout component styled with semantic .instui-drawer-layout classes."
-msgstr "सेमांटिक .instui-drawer-layout क्लास से स्टाइल किया गया Instructure ड्रॉअर-लेआउट कंपोनेंट।"
+msgid ""
+"Instructure Drawer-layout component styled with semantic .instui-drawer-"
+"layout classes."
+msgstr ""
+"सेमांटिक .instui-drawer-layout क्लास से स्टाइल किया गया Instructure ड्रॉअर-लेआउट "
+"कंपोनेंट।"
 
 #: docs/.vitepress/catalog-i18n.json#registryBrowserItems.progress-circle.title
 #, no-c-format
@@ -1944,8 +2111,12 @@ msgstr "प्रोग्रेस-सर्कल"
 #: docs/.vitepress/catalog-i18n.json#registryBrowserItems.progress-circle.description
 #, no-c-format
 msgctxt "docs.chrome:registryBrowserItems.progress-circle.description"
-msgid "Instructure Progress-circle component styled with semantic .instui-progress-circle classes."
-msgstr "सेमांटिक .instui-progress-circle क्लास से स्टाइल किया गया Instructure प्रोग्रेस-सर्कल कंपोनेंट।"
+msgid ""
+"Instructure Progress-circle component styled with semantic .instui-progress-"
+"circle classes."
+msgstr ""
+"सेमांटिक .instui-progress-circle क्लास से स्टाइल किया गया Instructure प्रोग्रेस-सर्कल "
+"कंपोनेंट।"
 
 #: docs/.vitepress/catalog-i18n.json#registryBrowserItems.pagination.title
 #, fuzzy, no-c-format
@@ -1956,8 +2127,11 @@ msgstr "एनिमेशन रोकें"
 #: docs/.vitepress/catalog-i18n.json#registryBrowserItems.pagination.description
 #, no-c-format
 msgctxt "docs.chrome:registryBrowserItems.pagination.description"
-msgid "Instructure Pagination component styled with semantic .instui-pagination classes."
-msgstr "सेमांटिक .instui-pagination क्लास से स्टाइल किया गया Instructure पेजिनेशन कंपोनेंट।"
+msgid ""
+"Instructure Pagination component styled with semantic .instui-pagination "
+"classes."
+msgstr ""
+"सेमांटिक .instui-pagination क्लास से स्टाइल किया गया Instructure पेजिनेशन कंपोनेंट।"
 
 #: docs/.vitepress/catalog-i18n.json#registryBrowserItems.toggle-details.title
 #, fuzzy, no-c-format
@@ -1968,8 +2142,12 @@ msgstr "साइडबार टॉगल करें"
 #: docs/.vitepress/catalog-i18n.json#registryBrowserItems.toggle-details.description
 #, no-c-format
 msgctxt "docs.chrome:registryBrowserItems.toggle-details.description"
-msgid "Instructure Toggle-details component styled with semantic .instui-toggle-details classes."
-msgstr "सेमांटिक .instui-toggle-details क्लास से स्टाइल किया गया Instructure टॉगल-डिटेल्स कंपोनेंट।"
+msgid ""
+"Instructure Toggle-details component styled with semantic .instui-toggle-"
+"details classes."
+msgstr ""
+"सेमांटिक .instui-toggle-details क्लास से स्टाइल किया गया Instructure टॉगल-डिटेल्स "
+"कंपोनेंट।"
 
 #: docs/.vitepress/catalog-i18n.json#registryBrowserItems.file-drop.title
 #, no-c-format
@@ -1980,8 +2158,11 @@ msgstr "फ़ाइल-ड्रॉप"
 #: docs/.vitepress/catalog-i18n.json#registryBrowserItems.file-drop.description
 #, no-c-format
 msgctxt "docs.chrome:registryBrowserItems.file-drop.description"
-msgid "Instructure File-drop component styled with semantic .instui-file-drop classes."
-msgstr "सेमांटिक .instui-file-drop क्लास से स्टाइल किया गया Instructure फ़ाइल-ड्रॉप कंपोनेंट।"
+msgid ""
+"Instructure File-drop component styled with semantic .instui-file-drop "
+"classes."
+msgstr ""
+"सेमांटिक .instui-file-drop क्लास से स्टाइल किया गया Instructure फ़ाइल-ड्रॉप कंपोनेंट।"
 
 #: docs/.vitepress/catalog-i18n.json#registryBrowserItems.side-nav-bar.title
 #, no-c-format
@@ -1992,8 +2173,12 @@ msgstr "साइड-नेविगेशन-बार"
 #: docs/.vitepress/catalog-i18n.json#registryBrowserItems.side-nav-bar.description
 #, no-c-format
 msgctxt "docs.chrome:registryBrowserItems.side-nav-bar.description"
-msgid "Instructure Side-nav-bar component styled with semantic .instui-side-nav-bar classes."
-msgstr "सेमांटिक .instui-side-nav-bar क्लास से स्टाइल किया गया Instructure साइड-नेविगेशन-बार कंपोनेंट।"
+msgid ""
+"Instructure Side-nav-bar component styled with semantic .instui-side-nav-bar "
+"classes."
+msgstr ""
+"सेमांटिक .instui-side-nav-bar क्लास से स्टाइल किया गया Instructure साइड-नेविगेशन-"
+"बार कंपोनेंट।"
 
 #: docs/.vitepress/catalog-i18n.json#registryBrowserItems.tree-browser.title
 #, no-c-format
@@ -2004,8 +2189,12 @@ msgstr "ट्री-ब्राउज़र"
 #: docs/.vitepress/catalog-i18n.json#registryBrowserItems.tree-browser.description
 #, no-c-format
 msgctxt "docs.chrome:registryBrowserItems.tree-browser.description"
-msgid "Instructure Tree-browser component styled with semantic .instui-tree-browser classes."
-msgstr "सेमांटिक .instui-tree-browser क्लास से स्टाइल किया गया Instructure ट्री-ब्राउज़र कंपोनेंट।"
+msgid ""
+"Instructure Tree-browser component styled with semantic .instui-tree-browser "
+"classes."
+msgstr ""
+"सेमांटिक .instui-tree-browser क्लास से स्टाइल किया गया Instructure ट्री-ब्राउज़र "
+"कंपोनेंट।"
 
 #: docs/.vitepress/catalog-i18n.json#registryBrowserItems.calendar.title
 #, no-c-format
@@ -2016,8 +2205,10 @@ msgstr "कैलेंडर"
 #: docs/.vitepress/catalog-i18n.json#registryBrowserItems.calendar.description
 #, no-c-format
 msgctxt "docs.chrome:registryBrowserItems.calendar.description"
-msgid "Instructure Calendar component styled with semantic .instui-calendar classes."
-msgstr "Instructure कैलेंडर घटक, semantic .instui-calendar क्लासों से स्टाइल किया गया है।"
+msgid ""
+"Instructure Calendar component styled with semantic .instui-calendar classes."
+msgstr ""
+"Instructure कैलेंडर घटक, semantic .instui-calendar क्लासों से स्टाइल किया गया है।"
 
 #: docs/.vitepress/catalog-i18n.json#registryBrowserItems.popover.title
 #, no-c-format
@@ -2028,8 +2219,10 @@ msgstr "पॉपओवर"
 #: docs/.vitepress/catalog-i18n.json#registryBrowserItems.popover.description
 #, no-c-format
 msgctxt "docs.chrome:registryBrowserItems.popover.description"
-msgid "Instructure Popover component styled with semantic .instui-popover classes."
-msgstr "Instructure पॉपओवर घटक, semantic .instui-popover क्लासों से स्टाइल किया गया है।"
+msgid ""
+"Instructure Popover component styled with semantic .instui-popover classes."
+msgstr ""
+"Instructure पॉपओवर घटक, semantic .instui-popover क्लासों से स्टाइल किया गया है।"
 
 #: docs/.vitepress/catalog-i18n.json#registryBrowserItems.tray.title
 #, no-c-format
@@ -2052,8 +2245,10 @@ msgstr "उपकरण"
 #: docs/.vitepress/catalog-i18n.json#registryBrowserItems.tooltip.description
 #, no-c-format
 msgctxt "docs.chrome:registryBrowserItems.tooltip.description"
-msgid "Instructure Tooltip component styled with semantic .instui-tooltip classes."
-msgstr "Instructure टूलटिप घटक, semantic .instui-tooltip क्लासों से स्टाइल किया गया है।"
+msgid ""
+"Instructure Tooltip component styled with semantic .instui-tooltip classes."
+msgstr ""
+"Instructure टूलटिप घटक, semantic .instui-tooltip क्लासों से स्टाइल किया गया है।"
 
 #: docs/.vitepress/catalog-i18n.json#registryBrowserItems.range-input.title
 #, no-c-format
@@ -2064,8 +2259,12 @@ msgstr "रेंज-इनपुट"
 #: docs/.vitepress/catalog-i18n.json#registryBrowserItems.range-input.description
 #, no-c-format
 msgctxt "docs.chrome:registryBrowserItems.range-input.description"
-msgid "Instructure Range-input component styled with semantic .instui-range-input classes."
-msgstr "Instructure रेंज-इनपुट घटक, semantic .instui-range-input क्लासों से स्टाइल किया गया है।"
+msgid ""
+"Instructure Range-input component styled with semantic .instui-range-input "
+"classes."
+msgstr ""
+"Instructure रेंज-इनपुट घटक, semantic .instui-range-input क्लासों से स्टाइल किया गया "
+"है।"
 
 #: docs/.vitepress/catalog-i18n.json#registryBrowserItems.mask.title
 #, no-c-format
@@ -2088,8 +2287,12 @@ msgstr "स्क्रीन-रीडर-कंटेंट"
 #: docs/.vitepress/catalog-i18n.json#registryBrowserItems.screen-reader-content.description
 #, no-c-format
 msgctxt "docs.chrome:registryBrowserItems.screen-reader-content.description"
-msgid "Instructure Screen-reader-content component styled with semantic .instui-screen-reader-content classes."
-msgstr "Instructure स्क्रीन-रीडर-कंटेंट घटक, semantic .instui-screen-reader-content क्लासों से स्टाइल किया गया है।"
+msgid ""
+"Instructure Screen-reader-content component styled with semantic .instui-"
+"screen-reader-content classes."
+msgstr ""
+"Instructure स्क्रीन-रीडर-कंटेंट घटक, semantic .instui-screen-reader-content क्लासों "
+"से स्टाइल किया गया है।"
 
 #: docs/.vitepress/catalog-i18n.json#registryBrowserItems.heading.title
 #, no-c-format
@@ -2100,8 +2303,10 @@ msgstr "शीर्षक"
 #: docs/.vitepress/catalog-i18n.json#registryBrowserItems.heading.description
 #, no-c-format
 msgctxt "docs.chrome:registryBrowserItems.heading.description"
-msgid "Instructure Heading component styled with semantic .instui-heading classes."
-msgstr "Instructure शीर्षक घटक, semantic .instui-heading क्लासों से स्टाइल किया गया है।"
+msgid ""
+"Instructure Heading component styled with semantic .instui-heading classes."
+msgstr ""
+"Instructure शीर्षक घटक, semantic .instui-heading क्लासों से स्टाइल किया गया है।"
 
 #: docs/.vitepress/catalog-i18n.json#registryBrowserItems.text.title
 #, no-c-format
@@ -2124,8 +2329,12 @@ msgstr "बंद-बटन"
 #: docs/.vitepress/catalog-i18n.json#registryBrowserItems.close-button.description
 #, no-c-format
 msgctxt "docs.chrome:registryBrowserItems.close-button.description"
-msgid "Instructure Close-button component styled with semantic .instui-close-button classes."
-msgstr "Instructure बंद-बटन घटक, semantic .instui-close-button क्लासों से स्टाइल किया गया है।"
+msgid ""
+"Instructure Close-button component styled with semantic .instui-close-button "
+"classes."
+msgstr ""
+"Instructure बंद-बटन घटक, semantic .instui-close-button क्लासों से स्टाइल किया गया "
+"है।"
 
 #: docs/.vitepress/catalog-i18n.json#registryBrowserItems.form-field.title
 #, no-c-format
@@ -2136,8 +2345,12 @@ msgstr "फ़ॉर्म-फ़ील्ड"
 #: docs/.vitepress/catalog-i18n.json#registryBrowserItems.form-field.description
 #, no-c-format
 msgctxt "docs.chrome:registryBrowserItems.form-field.description"
-msgid "Instructure Form-field component styled with semantic .instui-form-field classes."
-msgstr "Instructure फ़ॉर्म-फ़ील्ड घटक, semantic .instui-form-field क्लासों से स्टाइल किया गया है।"
+msgid ""
+"Instructure Form-field component styled with semantic .instui-form-field "
+"classes."
+msgstr ""
+"Instructure फ़ॉर्म-फ़ील्ड घटक, semantic .instui-form-field क्लासों से स्टाइल किया "
+"गया है।"
 
 #: docs/.vitepress/catalog-i18n.json#registryBrowserItems.form-field-group.title
 #, no-c-format
@@ -2148,8 +2361,12 @@ msgstr "फ़ॉर्म-फ़ील्ड-समूह"
 #: docs/.vitepress/catalog-i18n.json#registryBrowserItems.form-field-group.description
 #, no-c-format
 msgctxt "docs.chrome:registryBrowserItems.form-field-group.description"
-msgid "Instructure Form-field-group component styled with semantic .instui-form-field-group classes."
-msgstr "Instructure फ़ॉर्म-फ़ील्ड-समूह घटक, semantic .instui-form-field-group क्लासों से स्टाइल किया गया है।"
+msgid ""
+"Instructure Form-field-group component styled with semantic .instui-form-"
+"field-group classes."
+msgstr ""
+"Instructure फ़ॉर्म-फ़ील्ड-समूह घटक, semantic .instui-form-field-group क्लासों से "
+"स्टाइल किया गया है।"
 
 #: docs/.vitepress/catalog-i18n.json#registryBrowserItems.radio-input-group.title
 #, no-c-format
@@ -2160,8 +2377,12 @@ msgstr "रेडियो-इनपुट-समूह"
 #: docs/.vitepress/catalog-i18n.json#registryBrowserItems.radio-input-group.description
 #, no-c-format
 msgctxt "docs.chrome:registryBrowserItems.radio-input-group.description"
-msgid "Instructure Radio-input-group component styled with semantic .instui-radio-input-group classes."
-msgstr "Instructure रेडियो-इनपुट-समूह घटक, semantic .instui-radio-input-group क्लासों से स्टाइल किया गया है।"
+msgid ""
+"Instructure Radio-input-group component styled with semantic .instui-radio-"
+"input-group classes."
+msgstr ""
+"Instructure रेडियो-इनपुट-समूह घटक, semantic .instui-radio-input-group क्लासों से "
+"स्टाइल किया गया है।"
 
 #: docs/.vitepress/catalog-i18n.json#registryBrowserItems.form-field-messages.title
 #, no-c-format
@@ -2172,8 +2393,12 @@ msgstr "फ़ॉर्म-फ़ील्ड-संदेश"
 #: docs/.vitepress/catalog-i18n.json#registryBrowserItems.form-field-messages.description
 #, no-c-format
 msgctxt "docs.chrome:registryBrowserItems.form-field-messages.description"
-msgid "Instructure Form-field-messages component styled with semantic .instui-form-field-messages classes."
-msgstr "Instructure फ़ॉर्म-फ़ील्ड-संदेश घटक, semantic .instui-form-field-messages क्लासों से स्टाइल किया गया है।"
+msgid ""
+"Instructure Form-field-messages component styled with semantic .instui-form-"
+"field-messages classes."
+msgstr ""
+"Instructure फ़ॉर्म-फ़ील्ड-संदेश घटक, semantic .instui-form-field-messages क्लासों से "
+"स्टाइल किया गया है।"
 
 #: docs/.vitepress/catalog-i18n.json#registryBrowserItems.text-input.title
 #, no-c-format
@@ -2184,8 +2409,12 @@ msgstr "टेक्स्ट-इनपुट"
 #: docs/.vitepress/catalog-i18n.json#registryBrowserItems.text-input.description
 #, no-c-format
 msgctxt "docs.chrome:registryBrowserItems.text-input.description"
-msgid "Instructure Text-input component styled with semantic .instui-text-input classes."
-msgstr "Instructure टेक्स्ट-इनपुट घटक, semantic .instui-text-input क्लासों से स्टाइल किया गया है।"
+msgid ""
+"Instructure Text-input component styled with semantic .instui-text-input "
+"classes."
+msgstr ""
+"Instructure टेक्स्ट-इनपुट घटक, semantic .instui-text-input क्लासों से स्टाइल किया "
+"गया है।"
 
 #: docs/.vitepress/catalog-i18n.json#registryBrowserItems.text-area.title
 #, no-c-format
@@ -2196,8 +2425,12 @@ msgstr "टेक्स्ट-एरिया"
 #: docs/.vitepress/catalog-i18n.json#registryBrowserItems.text-area.description
 #, no-c-format
 msgctxt "docs.chrome:registryBrowserItems.text-area.description"
-msgid "Instructure Text-area component styled with semantic .instui-text-area classes."
-msgstr "Instructure टेक्स्ट-एरिया घटक, semantic .instui-text-area क्लासों से स्टाइल किया गया है।"
+msgid ""
+"Instructure Text-area component styled with semantic .instui-text-area "
+"classes."
+msgstr ""
+"Instructure टेक्स्ट-एरिया घटक, semantic .instui-text-area क्लासों से स्टाइल किया "
+"गया है।"
 
 #: docs/.vitepress/catalog-i18n.json#registryBrowserItems.simple-select.title
 #, no-c-format
@@ -2208,8 +2441,12 @@ msgstr "सिंपल-सेलेक्ट"
 #: docs/.vitepress/catalog-i18n.json#registryBrowserItems.simple-select.description
 #, no-c-format
 msgctxt "docs.chrome:registryBrowserItems.simple-select.description"
-msgid "Instructure Simple-select component styled with semantic .instui-simple-select classes."
-msgstr "Instructure सिंपल-सेलेक्ट घटक, semantic .instui-simple-select क्लासों से स्टाइल किया गया है।"
+msgid ""
+"Instructure Simple-select component styled with semantic .instui-simple-"
+"select classes."
+msgstr ""
+"Instructure सिंपल-सेलेक्ट घटक, semantic .instui-simple-select क्लासों से स्टाइल किया "
+"गया है।"
 
 #: docs/.vitepress/catalog-i18n.json#registryBrowserItems.input-group.title
 #, no-c-format
@@ -2220,8 +2457,12 @@ msgstr "इनपुट-समूह"
 #: docs/.vitepress/catalog-i18n.json#registryBrowserItems.input-group.description
 #, no-c-format
 msgctxt "docs.chrome:registryBrowserItems.input-group.description"
-msgid "Instructure Input-group component styled with semantic .instui-input-group classes."
-msgstr "Instructure इनपुट-समूह घटक, semantic .instui-input-group क्लासों से स्टाइल किया गया है।"
+msgid ""
+"Instructure Input-group component styled with semantic .instui-input-group "
+"classes."
+msgstr ""
+"Instructure इनपुट-समूह घटक, semantic .instui-input-group क्लासों से स्टाइल किया "
+"गया है।"
 
 #: docs/.vitepress/catalog-i18n.json#registryBrowserItems.number-input.title
 #, no-c-format
@@ -2232,8 +2473,12 @@ msgstr "नंबर-इनपुट"
 #: docs/.vitepress/catalog-i18n.json#registryBrowserItems.number-input.description
 #, no-c-format
 msgctxt "docs.chrome:registryBrowserItems.number-input.description"
-msgid "Instructure Number-input component styled with semantic .instui-number-input classes."
-msgstr "Instructure नंबर-इनपुट घटक, semantic .instui-number-input क्लासों से स्टाइल किया गया है।"
+msgid ""
+"Instructure Number-input component styled with semantic .instui-number-input "
+"classes."
+msgstr ""
+"Instructure नंबर-इनपुट घटक, semantic .instui-number-input क्लासों से स्टाइल किया "
+"गया है।"
 
 #: docs/.vitepress/catalog-i18n.json#registryBrowserItems.in-place-edit.title
 #, no-c-format
@@ -2244,8 +2489,12 @@ msgstr "इन-प्लेस-संपादन"
 #: docs/.vitepress/catalog-i18n.json#registryBrowserItems.in-place-edit.description
 #, no-c-format
 msgctxt "docs.chrome:registryBrowserItems.in-place-edit.description"
-msgid "Instructure In-place-edit component styled with semantic .instui-in-place-edit classes."
-msgstr "Instructure इन-प्लेस-संपादन घटक, semantic .instui-in-place-edit क्लासों से स्टाइल किया गया है।"
+msgid ""
+"Instructure In-place-edit component styled with semantic .instui-in-place-"
+"edit classes."
+msgstr ""
+"Instructure इन-प्लेस-संपादन घटक, semantic .instui-in-place-edit क्लासों से स्टाइल "
+"किया गया है।"
 
 #: docs/.vitepress/catalog-i18n.json#registryBrowserItems.view.title
 #, no-c-format
@@ -2292,7 +2541,8 @@ msgstr "स्केलेटन लोडर"
 #: docs/.vitepress/catalog-i18n.json#registryBrowserItems.skeleton-loader.description
 #, no-c-format
 msgctxt "docs.chrome:registryBrowserItems.skeleton-loader.description"
-msgid "Pantoken skeleton-loader component styles and documented HTML structure."
+msgid ""
+"Pantoken skeleton-loader component styles and documented HTML structure."
 msgstr "Pantoken स्केलेटन-लोडर घटक की स्टाइल और प्रलेखित HTML संरचना।"
 
 #: docs/.vitepress/catalog-i18n.json#registryBrowserItems.segmented-control.title
@@ -2304,7 +2554,8 @@ msgstr "खंडित नियंत्रण"
 #: docs/.vitepress/catalog-i18n.json#registryBrowserItems.segmented-control.description
 #, no-c-format
 msgctxt "docs.chrome:registryBrowserItems.segmented-control.description"
-msgid "Pantoken segmented-control component styles and documented HTML structure."
+msgid ""
+"Pantoken segmented-control component styles and documented HTML structure."
 msgstr "Pantoken खंडित-नियंत्रण घटक की स्टाइल और प्रलेखित HTML संरचना।"
 
 #: docs/.vitepress/catalog-i18n.json#registryBrowserItems.wrapper.title
@@ -2548,6 +2799,21 @@ msgid "Development-only layout outlines for Pantoken components."
 msgstr "केवल डेवलपमेंट के लिए Pantoken घटकों के लेआउट की रूपरेखाएँ।"
 
 #, no-c-format
+#~ msgctxt "docs.chrome:a2uiCatalog.reactSupport"
+#~ msgid "React runtime support is pending v1.0 SDK verification."
+#~ msgstr "React रनटाइम समर्थन, v1.0 SDK सत्यापन की प्रतीक्षा में है।"
+
+#, no-c-format
+#~ msgctxt "docs.chrome:a2uiCatalog.angularSupport"
+#~ msgid "Angular runtime support is pending v1.0 SDK verification."
+#~ msgstr "Angular रनटाइम समर्थन, v1.0 SDK सत्यापन की प्रतीक्षा में है।"
+
+#, no-c-format
 #~ msgctxt "docs.chrome:registryBrowser.subtitle"
-#~ msgid "Compatible components, themes, and behavior hooks conforming to the shadcn/ui registry specification. Add items directly to your shadcn/ui project via CLI."
-#~ msgstr "shadcn/ui रजिस्ट्र्री विनिर्देशन के अनुरूप संगत घटक, थीम और व्यवहार हुक। CLI के माध्यम से आइटम सीधे अपने shadcn/ui प्रोजेक्ट में जोड़ें।"
+#~ msgid ""
+#~ "Compatible components, themes, and behavior hooks conforming to the "
+#~ "shadcn/ui registry specification. Add items directly to your shadcn/ui "
+#~ "project via CLI."
+#~ msgstr ""
+#~ "shadcn/ui रजिस्ट्र्री विनिर्देशन के अनुरूप संगत घटक, थीम और व्यवहार हुक। CLI के माध्यम "
+#~ "से आइटम सीधे अपने shadcn/ui प्रोजेक्ट में जोड़ें।"

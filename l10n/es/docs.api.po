@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: pantoken\n"
-"PO-Revision-Date: 2026-10-30 19:56+0000\n"
+"PO-Revision-Date: 2026-11-14 00:41+0000\n"
 "Last-Translator: pantoken localization engine\n"
 "Language-Team: pantoken\n"
 "MIME-Version: 1.0\n"
@@ -32501,3 +32501,211 @@ msgstr "<!-- pantoken-value-scope:css%2Fprogress-circle.md -->\nEl CSS de este c
 msgctxt "docs.api:prose"
 msgid "<!-- pantoken-value-scope:css%2Ftruncate.md -->\nThis component ships no CSS of its own — its markup and behavior come entirely from {{ptk_code_0}}. Its {{ptk_code_1}} modifier is driven by that behavior. See the [modifier table below]({{ptk_code_2}})."
 msgstr "<!-- pantoken-value-scope:css%2Ftruncate.md -->\nEste componente no incluye CSS propio: su marcado y comportamiento provienen íntegramente de {{ptk_code_0}}. Su modificador {{ptk_code_1}} está impulsado por ese comportamiento. Ver la [tabla de modificadores más abajo]({{ptk_code_2}})."
+
+msgctxt "docs.api:prose"
+msgid "<!-- pantoken-value-scope:css%2Fscreen-reader-content.md -->\nThis component ships no CSS of its own — its markup and behavior come entirely from {{ptk_code_0}}. See the [modifier table below]({{ptk_code_1}})."
+msgstr "<!-- pantoken-value-scope:css%2Fscreen-reader-content.md -->\nEste componente no incluye CSS propio — su marcado y comportamiento provienen íntegramente de {{ptk_code_0}}. Consulta la [tabla de modificadores a continuación]({{ptk_code_1}})."
+
+msgctxt "docs.api:prose"
+msgid "A section for an empty state or call to action."
+msgstr "Una sección para un estado vacío o una llamada a la acción."
+
+msgctxt "docs.api:prose"
+msgid "A breadcrumb navigation landmark."
+msgstr "Un punto de referencia de navegación de migas de pan."
+
+msgctxt "docs.api:prose"
+msgid "A media-object byline container."
+msgstr "Un contenedor de firma de objeto multimedia."
+
+msgctxt "docs.api:prose"
+msgid "An article-shaped card with slotted content."
+msgstr "Una tarjeta con forma de artículo y contenido asignado a slots."
+
+msgctxt "docs.api:prose"
+msgid "A native checkbox and its slotted label."
+msgstr "Una casilla de verificación nativa y su etiqueta asignada mediante slot."
+
+msgctxt "docs.api:prose"
+msgid "A native close button with an accessible label."
+msgstr "Un botón de cierre nativo con una etiqueta accesible."
+
+msgctxt "docs.api:prose"
+msgid "Missing root component records, registered after the hand-authored elements."
+msgstr "Registros de componentes raíz faltantes, registrados después de los elementos escritos manualmente."
+
+msgctxt "docs.api:prose"
+msgid "A native file picker presented as a dropzone label."
+msgstr "Un selector de archivos nativo presentado como etiqueta de área de arrastre."
+
+msgctxt "docs.api:prose"
+msgid "A form-field layout container."
+msgstr "Un contenedor de diseño para campos de formulario."
+
+msgctxt "docs.api:prose"
+msgid "A native fieldset for a group of form fields."
+msgstr "Un fieldset nativo para un grupo de campos de formulario."
+
+msgctxt "docs.api:prose"
+msgid "A status region for form-field help and validation messages."
+msgstr "Una región de estado para mensajes de ayuda y validación de campos de formulario."
+
+msgctxt "docs.api:prose"
+msgid "A semantic heading with a bounded level from one through six."
+msgstr "Un encabezado semántico con un nivel limitado del uno al seis."
+
+msgctxt "docs.api:prose"
+msgid "A container for an input and adjacent content."
+msgstr "Un contenedor para un campo de entrada y contenido adyacente."
+
+msgctxt "docs.api:prose"
+msgid "A link that rejects executable and data URL schemes."
+msgstr "Un enlace que rechaza los esquemas de URL ejecutables y de datos."
+
+msgctxt "docs.api:prose"
+msgid "A native unordered list with Pantoken list-item styles."
+msgstr "Una lista no ordenada nativa con estilos de elementos de lista de Pantoken."
+
+msgctxt "docs.api:prose"
+msgid "An overlay surface for positioned content."
+msgstr "Una superficie superpuesta para contenido posicionado."
+
+msgctxt "docs.api:prose"
+msgid "A menu surface with item, group, and separator styles."
+msgstr "Una superficie de menú con estilos para elementos, grupos y separadores."
+
+msgctxt "docs.api:prose"
+msgid "A native number input with value-change events."
+msgstr "Un campo de entrada numérico nativo con eventos de cambio de valor."
+
+msgctxt "docs.api:prose"
+msgid "A pagination navigation landmark."
+msgstr "Un punto de referencia de navegación de paginación."
+
+msgctxt "docs.api:prose"
+msgid "A native radio control and its slotted label."
+msgstr "Un control de opción nativo y su etiqueta asignada mediante slot."
+
+msgctxt "docs.api:prose"
+msgid "A native fieldset for a radio-input group."
+msgstr "Un conjunto de campos nativo para un grupo de botones de opción."
+
+msgctxt "docs.api:prose"
+msgid "A native range slider with value-change events."
+msgstr "Un control deslizante de rango nativo con eventos de cambio de valor."
+
+msgctxt "docs.api:prose"
+msgid "Visually hidden content that remains available to assistive technology."
+msgstr "Contenido oculto visualmente que sigue estando disponible para las tecnologías de asistencia."
+
+msgctxt "docs.api:prose"
+msgid "A native select control that copies text-only options from its light DOM."
+msgstr "Un control de selección nativo que copia opciones de solo texto desde su DOM ligero."
+
+msgctxt "docs.api:prose"
+msgid "A table-layout container that keeps slotted rows inside its table semantics."
+msgstr "Un contenedor con diseño de tabla que mantiene las filas asignadas dentro de la semántica de la tabla."
+
+msgctxt "docs.api:prose"
+msgid "A paragraph of Pantoken body text."
+msgstr "Un párrafo de texto del cuerpo de Pantoken."
+
+msgctxt "docs.api:prose"
+msgid "A native multiline text input with a visible slotted label."
+msgstr "Un campo de texto multilínea nativo con una etiqueta visible insertada mediante slot."
+
+msgctxt "docs.api:prose"
+msgid "A native text input with a visible slotted label."
+msgstr "Un campo de texto nativo con una etiqueta visible asignada mediante slot."
+
+msgctxt "docs.api:prose"
+msgid "A native disclosure with a configurable summary."
+msgstr "Una sección desplegable nativa con un resumen configurable."
+
+msgctxt "docs.api:prose"
+msgid "A native disclosure group."
+msgstr "Un grupo de divulgación nativo."
+
+msgctxt "docs.api:prose"
+msgid "A neutral layout primitive."
+msgstr "Una primitiva de diseño neutra."
+
+#, pantoken-verbatim
+msgctxt "docs.api:text"
+msgid "toggleGroup"
+msgstr "toggleGroup"
+
+#, pantoken-verbatim
+msgctxt "docs.api:text"
+msgid "toggleDetails"
+msgstr "toggleDetails"
+
+#, pantoken-verbatim
+msgctxt "docs.api:text"
+msgid "fileDrop"
+msgstr "fileDrop"
+
+#, pantoken-verbatim
+msgctxt "docs.api:text"
+msgid "rangeInput"
+msgstr "rangeInput"
+
+#, pantoken-verbatim
+msgctxt "docs.api:text"
+msgid "screenReaderContent"
+msgstr "screenReaderContent"
+
+#, pantoken-verbatim
+msgctxt "docs.api:text"
+msgid "closeButton"
+msgstr "closeButton"
+
+#, pantoken-verbatim
+msgctxt "docs.api:text"
+msgid "formField"
+msgstr "formField"
+
+#, pantoken-verbatim
+msgctxt "docs.api:text"
+msgid "formFieldGroup"
+msgstr "formFieldGroup"
+
+#, pantoken-verbatim
+msgctxt "docs.api:text"
+msgid "radioInputGroup"
+msgstr "radioInputGroup"
+
+#, pantoken-verbatim
+msgctxt "docs.api:text"
+msgid "formFieldMessages"
+msgstr "formFieldMessages"
+
+#, pantoken-verbatim
+msgctxt "docs.api:text"
+msgid "textInput"
+msgstr "textInput"
+
+#, pantoken-verbatim
+msgctxt "docs.api:text"
+msgid "textArea"
+msgstr "textArea"
+
+#, pantoken-verbatim
+msgctxt "docs.api:text"
+msgid "simpleSelect"
+msgstr "simpleSelect"
+
+#, pantoken-verbatim
+msgctxt "docs.api:text"
+msgid "inputGroup"
+msgstr "inputGroup"
+
+#, pantoken-verbatim
+msgctxt "docs.api:text"
+msgid "numberInput"
+msgstr "numberInput"
+
+#, pantoken-verbatim
+msgctxt "docs.api:text"
+msgid "componentElements"
+msgstr "componentElements"

@@ -32,8 +32,8 @@ features:
     title: تولید برای هر پلتفرم
     details: CLI pantoken را برای تولید پیش‌تنظیمات یا افزودن اجزا برای هر پلتفرمی نصب کنید&colon; وب، بومی، و هر چیز میانی.
   - icon:
-      light: /unlink-light.svg
-      dark: /unlink-dark.svg
-    title: React نیازی نیست
-    details: کتابخانه InstUI به‌شدت با React مرتبط است. اگر می‌خواهید از آن استفاده کنید، باید React را استفاده کنید. اکنون می‌توانید در هر جایی بسازید.
+      light: /wand-sparkles-light.svg
+      dark: /wand-sparkles-dark.svg
+    title: Build agentically
+    details: Add pantoken to the AI tools you're already using with included skills, agents file, api-catalog, llms.txt, and A2UI.
 ---

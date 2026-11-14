@@ -1,19 +1,22 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: pantoken\n"
-"PO-Revision-Date: 2026-11-13 20:37+0000\n"
+"PO-Revision-Date: 2026-11-14 02:25+0000\n"
 "Last-Translator: pantoken localization engine\n"
 "Language-Team: pantoken\n"
+"Language: und\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: und\n"
 
 #: docs/.vitepress/i18n.json#description
 #, no-c-format
 msgctxt "docs.chrome:description"
-msgid "Instructure design tokens and icons, reshaped for every platform and framework."
-msgstr "توکن‌ها و آیکون‌های طراحی Instructure، بازطراحی‌شده برای هر پلتفرم و فریم‌ورک."
+msgid ""
+"Instructure design tokens and icons, reshaped for every platform and "
+"framework."
+msgstr ""
+"توکن‌ها و آیکون‌های طراحی Instructure، بازطراحی‌شده برای هر پلتفرم و فریم‌ورک."
 
 #: docs/.vitepress/i18n.json#nav.guide
 #, no-c-format
@@ -354,8 +357,12 @@ msgstr "دربارهٔ بازنشانی پایه"
 #: docs/.vitepress/i18n.json#cdnPicker.baseInfo
 #, no-c-format
 msgctxt "docs.chrome:cdnPicker.baseInfo"
-msgid "The opt-in global reset: box-sizing, the page surface, base text colour and font, color-scheme, and link defaults."
-msgstr "بازنشانی سراسری اختیاری: box-sizing، سطح صفحه، رنگ و قلم متن پایه، color-scheme و پیش‌فرض‌های لینک."
+msgid ""
+"The opt-in global reset: box-sizing, the page surface, base text colour and "
+"font, color-scheme, and link defaults."
+msgstr ""
+"بازنشانی سراسری اختیاری: box-sizing، سطح صفحه، رنگ و قلم متن پایه، color-"
+"scheme و پیش‌فرض‌های لینک."
 
 #: docs/.vitepress/i18n.json#cdnPicker.includeUtilities
 #, no-c-format
@@ -372,8 +379,12 @@ msgstr "دربارهٔ کلاس‌های کمکی"
 #: docs/.vitepress/i18n.json#cdnPicker.utilitiesInfo
 #, no-c-format
 msgctxt "docs.chrome:cdnPicker.utilitiesInfo"
-msgid "An opt-in layer of cross-cutting classes: a View primitive, spacing on the token scale, and semantic color overrides."
-msgstr "یک لایهٔ اختیاری از کلاس‌های فراگیر: یک ابتدایی View، فاصله‌گذاری بر اساس مقیاس توکن و بازنویسی‌های معنایی رنگ."
+msgid ""
+"An opt-in layer of cross-cutting classes: a View primitive, spacing on the "
+"token scale, and semantic color overrides."
+msgstr ""
+"یک لایهٔ اختیاری از کلاس‌های فراگیر: یک ابتدایی View، فاصله‌گذاری بر اساس مقیاس "
+"توکن و بازنویسی‌های معنایی رنگ."
 
 #: docs/.vitepress/i18n.json#cdnPicker.copy
 #, no-c-format
@@ -396,14 +407,21 @@ msgstr "یک یا چند مولفه را انتخاب کنید تا یک URL س�
 #: docs/.vitepress/i18n.json#cdnPicker.fontsNote
 #, no-c-format
 msgctxt "docs.chrome:cdnPicker.fontsNote"
-msgid "Fonts load separately — add a <link> to @pantoken/components/fonts.css when you need them."
-msgstr "فونت‌ها جداگانه بارگذاری می‌شوند — وقتی نیاز دارید یک <link> به @pantoken/components/fonts.css اضافه کنید."
+msgid ""
+"Fonts load separately — add a <link> to @pantoken/components/fonts.css when "
+"you need them."
+msgstr ""
+"فونت‌ها جداگانه بارگذاری می‌شوند — وقتی نیاز دارید یک <link> به @pantoken/"
+"components/fonts.css اضافه کنید."
 
 #: docs/.vitepress/i18n.json#cdnPicker.iconsNote
 #, no-c-format
 msgctxt "docs.chrome:cdnPicker.iconsNote"
-msgid "component-icons.css is included because a selected component uses icons."
-msgstr "component-icons.css گنجانده شده زیرا یک مولفهٔ انتخاب‌شده از آیکون‌ها استفاده می‌کند."
+msgid ""
+"component-icons.css is included because a selected component uses icons."
+msgstr ""
+"component-icons.css گنجانده شده زیرا یک مولفهٔ انتخاب‌شده از آیکون‌ها استفاده "
+"می‌کند."
 
 #: docs/.vitepress/i18n.json#getStartedTabs.copied
 #, no-c-format
@@ -439,7 +457,9 @@ msgstr "ادامهٔ انیمیشن"
 #, fuzzy, no-c-format
 msgctxt "docs.chrome:getStartedTabs.agentPrompt"
 msgid "\"Set up pantoken in this project using create.pantoken.app/SKILL.md.\""
-msgstr "\"pantoken را (github.com/thedannywahl/pantoken) در این پروژه با استفاده از create.pantoken.app/SKILL.md راه‌اندازی کنید.\""
+msgstr ""
+"\"pantoken را (github.com/thedannywahl/pantoken) در این پروژه با استفاده از "
+"create.pantoken.app/SKILL.md راه‌اندازی کنید.\""
 
 #: docs/.vitepress/i18n.json#registryBrowser.title
 #, fuzzy, no-c-format
@@ -450,8 +470,12 @@ msgstr "رجیستری"
 #: docs/.vitepress/i18n.json#registryBrowser.subtitle
 #, no-c-format
 msgctxt "docs.chrome:registryBrowser.subtitle"
-msgid "CSS components, layouts, plugins, and themes for package-managed shadcn projects. Items install styles and usage metadata, not React components."
-msgstr "کامپوننت‌های CSS، چیدمان‌ها، افزونه‌ها و پوسته‌ها برای پروژه‌های shadcn با مدیریت بسته. موارد، سبک‌ها و فرادادهٔ استفاده را نصب می‌کنند، نه کامپوننت‌های React را."
+msgid ""
+"CSS components, layouts, plugins, and themes for package-managed shadcn "
+"projects. Items install styles and usage metadata, not React components."
+msgstr ""
+"کامپوننت‌های CSS، چیدمان‌ها، افزونه‌ها و پوسته‌ها برای پروژه‌های shadcn با مدیریت "
+"بسته. موارد، سبک‌ها و فرادادهٔ استفاده را نصب می‌کنند، نه کامپوننت‌های React را."
 
 #: docs/.vitepress/i18n.json#registryBrowser.tabAll
 #, no-c-format
@@ -576,8 +600,14 @@ msgstr "کاتالوگ A2UI پنتوکن"
 #: docs/.vitepress/i18n.json#a2uiCatalog.subtitle
 #, no-c-format
 msgctxt "docs.chrome:a2uiCatalog.subtitle"
-msgid "Explore the Pantoken component vocabulary for A2UI 1.0. This catalog defines only Pantoken components; standard layout components remain in the A2UI Basic Catalog."
-msgstr "واژگان کامپوننت‌های Pantoken برای A2UI 1.0 را کاوش کنید. این کاتالوگ فقط کامپوننت‌های Pantoken را تعریف می‌کند؛ کامپوننت‌های استاندارد چیدمان در کاتالوگ پایهٔ A2UI باقی می‌مانند."
+msgid ""
+"Explore the Pantoken component vocabulary for A2UI 1.0. This catalog defines "
+"only Pantoken components; standard layout components remain in the A2UI "
+"Basic Catalog."
+msgstr ""
+"واژگان کامپوننت‌های Pantoken برای A2UI 1.0 را کاوش کنید. این کاتالوگ فقط "
+"کامپوننت‌های Pantoken را تعریف می‌کند؛ کامپوننت‌های استاندارد چیدمان در کاتالوگ "
+"پایهٔ A2UI باقی می‌مانند."
 
 #: docs/.vitepress/i18n.json#a2uiCatalog.protocolLabel
 #, no-c-format
@@ -630,8 +660,12 @@ msgstr "اختیاری"
 #: docs/.vitepress/i18n.json#a2uiCatalog.noFunctions
 #, no-c-format
 msgctxt "docs.chrome:a2uiCatalog.noFunctions"
-msgid "This catalog defines no executable functions. Button actions use A2UI's registered action handling."
-msgstr "این کاتالوگ هیچ تابع اجرایی تعریف نمی‌کند. کنش‌های دکمه از مدیریت کنش ثبت‌شدهٔ A2UI استفاده می‌کنند."
+msgid ""
+"This catalog defines no executable functions. Button actions use A2UI's "
+"registered action handling."
+msgstr ""
+"این کاتالوگ هیچ تابع اجرایی تعریف نمی‌کند. کنش‌های دکمه از مدیریت کنش ثبت‌شدهٔ "
+"A2UI استفاده می‌کنند."
 
 #: docs/.vitepress/i18n.json#a2uiCatalog.supportHeading
 #, no-c-format
@@ -648,20 +682,32 @@ msgstr "با SDK منتشرشدهٔ A2UI 1.0 Lit تأیید شده است."
 #: docs/.vitepress/i18n.json#a2uiCatalog.reactSupport
 #, no-c-format
 msgctxt "docs.chrome:a2uiCatalog.reactSupport"
-msgid "React runtime support is pending v1.0 SDK verification."
-msgstr "پشتیبانی زمان اجرای React در انتظار تأیید با SDK نسخهٔ 1.0 است."
+msgid ""
+"Verified with @a2ui/react 0.15.0 and React 19.3.1 in Chromium, Firefox, and "
+"WebKit."
+msgstr ""
+"با @a2ui/react نسخهٔ 0.15.0 و React نسخهٔ 19.3.1 در Chromium، Firefox و WebKit "
+"تأیید شد."
 
 #: docs/.vitepress/i18n.json#a2uiCatalog.angularSupport
 #, no-c-format
 msgctxt "docs.chrome:a2uiCatalog.angularSupport"
-msgid "Angular runtime support is pending v1.0 SDK verification."
-msgstr "پشتیبانی زمان اجرای Angular در انتظار تأیید با SDK نسخهٔ 1.0 است."
+msgid ""
+"Verified with @a2ui/angular 0.14.0 and Angular 21.2.5 in Chromium, Firefox, "
+"and WebKit."
+msgstr ""
+"با @a2ui/angular نسخهٔ 0.14.0 و Angular نسخهٔ 21.2.5 در Chromium، Firefox و "
+"WebKit تأیید شد."
 
 #: docs/.vitepress/i18n.json#a2uiCatalog.nativeSupport
 #, no-c-format
 msgctxt "docs.chrome:a2uiCatalog.nativeSupport"
-msgid "Flutter, SwiftUI, and Jetpack Compose: schema only; no Pantoken native component renderers."
-msgstr "Flutter، SwiftUI و Jetpack Compose: فقط طرح‌واره؛ بدون رندرکنندهٔ کامپوننت بومی Pantoken."
+msgid ""
+"Flutter, SwiftUI, and Jetpack Compose: schema only; no Pantoken native "
+"component renderers."
+msgstr ""
+"Flutter، SwiftUI و Jetpack Compose: فقط طرح‌واره؛ بدون رندرکنندهٔ کامپوننت "
+"بومی Pantoken."
 
 #: docs/.vitepress/i18n.json#a2uiCatalog.functionsHeading
 #, fuzzy, no-c-format
@@ -676,10 +722,14 @@ msgid "Lit registration"
 msgstr "ثبت Lit"
 
 #: docs/.vitepress/i18n.json#a2uiCatalog.componentReference
-#, no-c-format
+#, fuzzy, no-c-format
 msgctxt "docs.chrome:a2uiCatalog.componentReference"
-msgid "Use @catalogId to reference Pantoken components alongside Basic Catalog components."
-msgstr "برای ارجاع به کامپوننت‌های Pantoken در کنار کامپوننت‌های کاتالوگ پایه، از @catalogId استفاده کنید."
+msgid ""
+"Use catalogId to reference Pantoken components alongside Basic Catalog "
+"components."
+msgstr ""
+"برای ارجاع به کامپوننت‌های Pantoken در کنار کامپوننت‌های کاتالوگ پایه، از "
+"@catalogId استفاده کنید."
 
 #: docs/.vitepress/i18n.json#a2uiCatalog.empty
 #, fuzzy, no-c-format
@@ -702,14 +752,30 @@ msgstr "نسخه‌بندی کاتالوگ"
 #: docs/.vitepress/i18n.json#a2uiCatalog.versioningDescription
 #, no-c-format
 msgctxt "docs.chrome:a2uiCatalog.versioningDescription"
-msgid "The v1 catalog ID is stable. Adding an optional component, property, or enum value is additive; removing or renaming an existing component or property, narrowing an enum, or making an optional property required is breaking and requires a new catalog version. Only the components and properties listed above are part of Pantoken's A2UI catalog."
-msgstr "شناسهٔ کاتالوگ نسخهٔ 1 پایدار است. افزودن کامپوننت، ویژگی یا مقدار enum اختیاری، تغییری افزایشی است؛ حذف یا تغییر نام کامپوننت یا ویژگی موجود، محدودتر کردن enum یا الزامی کردن یک ویژگی اختیاری، تغییری ناسازگار است و به نسخهٔ جدیدی از کاتالوگ نیاز دارد. فقط کامپوننت‌ها و ویژگی‌های فهرست‌شده در بالا بخشی از کاتالوگ A2UI پنتوکن هستند."
+msgid ""
+"The v1 catalog ID is stable. Adding an optional component, property, or enum "
+"value is additive; removing or renaming an existing component or property, "
+"narrowing an enum, or making an optional property required is breaking and "
+"requires a new catalog version. Only the components and properties listed "
+"above are part of Pantoken's A2UI catalog."
+msgstr ""
+"شناسهٔ کاتالوگ نسخهٔ 1 پایدار است. افزودن کامپوننت، ویژگی یا مقدار enum "
+"اختیاری، تغییری افزایشی است؛ حذف یا تغییر نام کامپوننت یا ویژگی موجود، "
+"محدودتر کردن enum یا الزامی کردن یک ویژگی اختیاری، تغییری ناسازگار است و به "
+"نسخهٔ جدیدی از کاتالوگ نیاز دارد. فقط کامپوننت‌ها و ویژگی‌های فهرست‌شده در بالا "
+"بخشی از کاتالوگ A2UI پنتوکن هستند."
 
 #: docs/.vitepress/i18n.json#a2uiCatalog.versioningActions
 #, no-c-format
 msgctxt "docs.chrome:a2uiCatalog.versioningActions"
-msgid "The catalog defines no executable functions and does not authorize actions. A2UI actions are dispatched through the host application's normal action handling, where the application must enforce its own permissions."
-msgstr "این کاتالوگ هیچ تابع اجرایی تعریف نمی‌کند و مجوزی برای کنش‌ها صادر نمی‌کند. کنش‌های A2UI از طریق مدیریت معمول کنش در برنامهٔ میزبان ارسال می‌شوند؛ برنامه باید مجوزهای خود را اعمال کند."
+msgid ""
+"The catalog defines no executable functions and does not authorize actions. "
+"A2UI actions are dispatched through the host application's normal action "
+"handling, where the application must enforce its own permissions."
+msgstr ""
+"این کاتالوگ هیچ تابع اجرایی تعریف نمی‌کند و مجوزی برای کنش‌ها صادر نمی‌کند. "
+"کنش‌های A2UI از طریق مدیریت معمول کنش در برنامهٔ میزبان ارسال می‌شوند؛ برنامه "
+"باید مجوزهای خود را اعمال کند."
 
 #: docs/.vitepress/i18n.json#canvasRce.title
 #, fuzzy, no-c-format
@@ -720,8 +786,14 @@ msgstr "Canvas"
 #: docs/.vitepress/i18n.json#canvasRce.description
 #, no-c-format
 msgctxt "docs.chrome:canvasRce.description"
-msgid "A live preview of pantoken's Canvas LMS Rich Content Editor template: a TinyMCE-based editor with starter layouts, a live preview pane, and hand-editable theme.css/theme.js output."
-msgstr "پیش‌نمایش زندهٔ قالب ویرایشگر محتوای غنی (Rich Content Editor) برای Canvas LMS در pantoken: یک ویرایشگر مبتنی بر TinyMCE با طرح‌های شروع‌گر، یک پنل پیش‌نمایش زنده، و خروجی theme.css/theme.js که به‌صورت دستی قابل ویرایش است."
+msgid ""
+"A live preview of pantoken's Canvas LMS Rich Content Editor template: a "
+"TinyMCE-based editor with starter layouts, a live preview pane, and hand-"
+"editable theme.css/theme.js output."
+msgstr ""
+"پیش‌نمایش زندهٔ قالب ویرایشگر محتوای غنی (Rich Content Editor) برای Canvas LMS "
+"در pantoken: یک ویرایشگر مبتنی بر TinyMCE با طرح‌های شروع‌گر، یک پنل پیش‌نمایش "
+"زنده، و خروجی theme.css/theme.js که به‌صورت دستی قابل ویرایش است."
 
 #: docs/.vitepress/i18n.json#canvasRce.openInNewTab
 #, fuzzy, no-c-format
@@ -744,8 +816,12 @@ msgstr "ابزارها"
 #: docs/.vitepress/i18n.json#agentTools.subtitle
 #, no-c-format
 msgctxt "docs.chrome:agentTools.subtitle"
-msgid "Pick a Pantoken agent workflow, generate the command or launch URL, and give your assistant the files it needs to stop guessing."
-msgstr "یک گردش‌کار عامل Pantoken انتخاب کنید، فرمان یا URL راه‌اندازی تولید کنید، و فایل‌هایی را که دستیار شما برای توقف حدس‌زدن نیاز دارد در اختیارش قرار دهید."
+msgid ""
+"Pick a Pantoken agent workflow, generate the command or launch URL, and give "
+"your assistant the files it needs to stop guessing."
+msgstr ""
+"یک گردش‌کار عامل Pantoken انتخاب کنید، فرمان یا URL راه‌اندازی تولید کنید، و "
+"فایل‌هایی را که دستیار شما برای توقف حدس‌زدن نیاز دارد در اختیارش قرار دهید."
 
 #: docs/.vitepress/i18n.json#agentTools.providerLabel
 #, no-c-format
@@ -792,8 +868,11 @@ msgstr "باز کردن در {{agent}}"
 #: docs/.vitepress/i18n.json#agentTools.openUnavailable
 #, no-c-format
 msgctxt "docs.chrome:agentTools.openUnavailable"
-msgid "This agent does not publish a stable launch URL. Use Copy for the CLI prompt."
-msgstr "این عامل URL راه‌اندازی پایدار منتشر نمی‌کند. برای درخواست CLI از Copy استفاده کنید."
+msgid ""
+"This agent does not publish a stable launch URL. Use Copy for the CLI prompt."
+msgstr ""
+"این عامل URL راه‌اندازی پایدار منتشر نمی‌کند. برای درخواست CLI از Copy استفاده "
+"کنید."
 
 #: docs/.vitepress/i18n.json#agentTools.tabBootstrap
 #, no-c-format
@@ -828,8 +907,12 @@ msgstr "بوت‌استرپ یک پروژه"
 #: docs/.vitepress/i18n.json#agentTools.bootstrapDescription
 #, no-c-format
 msgctxt "docs.chrome:agentTools.bootstrapDescription"
-msgid "Scaffold a starter with Pantoken wired in and install the repo-local agent assets in the same pass."
-msgstr "یک استارتر بسازید که Pantoken در آن راه‌اندازی شده و دارایی‌های عامل محلی مخزن را در همان مرحله نصب کنید."
+msgid ""
+"Scaffold a starter with Pantoken wired in and install the repo-local agent "
+"assets in the same pass."
+msgstr ""
+"یک استارتر بسازید که Pantoken در آن راه‌اندازی شده و دارایی‌های عامل محلی مخزن "
+"را در همان مرحله نصب کنید."
 
 #: docs/.vitepress/i18n.json#agentTools.platformLabel
 #, fuzzy, no-c-format
@@ -852,8 +935,12 @@ msgstr "افزودن راهنمایی عامل به یک مخزن"
 #: docs/.vitepress/i18n.json#agentTools.installDescription
 #, no-c-format
 msgctxt "docs.chrome:agentTools.installDescription"
-msgid "Install AGENTS.md, llms.txt, editor rules, and Claude skills into an existing project that already uses or is about to use Pantoken."
-msgstr "نصب AGENTS.md، llms.txt، قواعد ویرایشگر، و مهارت‌های Claude در یک پروژه موجود که قبلاً از Pantoken استفاده می‌کند یا قصد استفاده دارد."
+msgid ""
+"Install AGENTS.md, llms.txt, editor rules, and Claude skills into an "
+"existing project that already uses or is about to use Pantoken."
+msgstr ""
+"نصب AGENTS.md، llms.txt، قواعد ویرایشگر، و مهارت‌های Claude در یک پروژه موجود "
+"که قبلاً از Pantoken استفاده می‌کند یا قصد استفاده دارد."
 
 #: docs/.vitepress/i18n.json#agentTools.toolLabel
 #, no-c-format
@@ -876,8 +963,13 @@ msgstr "رجیستری"
 #: docs/.vitepress/i18n.json#agentTools.registryDescription
 #, no-c-format
 msgctxt "docs.chrome:agentTools.registryDescription"
-msgid "Point an agent at Pantoken's indexed registry so it can search, inspect, and add CSS-backed registry items instead of inventing package names."
-msgstr "عامل را به رجیستری فهرست‌شده Pantoken اشاره دهید تا بتواند جستجو، بررسی و افزودن آیتم‌های رجیستری پشتیبانی‌شده با CSS را به‌جای اختراع نام بسته‌ها انجام دهد."
+msgid ""
+"Point an agent at Pantoken's indexed registry so it can search, inspect, and "
+"add CSS-backed registry items instead of inventing package names."
+msgstr ""
+"عامل را به رجیستری فهرست‌شده Pantoken اشاره دهید تا بتواند جستجو، بررسی و "
+"افزودن آیتم‌های رجیستری پشتیبانی‌شده با CSS را به‌جای اختراع نام بسته‌ها انجام "
+"دهد."
 
 #: docs/.vitepress/i18n.json#agentTools.registryActionLabel
 #, no-c-format
@@ -900,32 +992,59 @@ msgstr "مستندات قابل‌خواندن برای عامل"
 #: docs/.vitepress/i18n.json#agentTools.docsDescription
 #, no-c-format
 msgctxt "docs.chrome:agentTools.docsDescription"
-msgid "Pantoken publishes fetchable documentation and manifests for assistants that can browse URLs or read raw Markdown."
-msgstr "Pantoken مستندات و مانیفست‌هایی را منتشر می‌کند که قابل واکشی برای دستیارانی است که می‌توانند URLها را مرور یا Markdown خام را بخوانند."
+msgid ""
+"Pantoken publishes fetchable documentation and manifests for assistants that "
+"can browse URLs or read raw Markdown."
+msgstr ""
+"Pantoken مستندات و مانیفست‌هایی را منتشر می‌کند که قابل واکشی برای دستیارانی "
+"است که می‌توانند URLها را مرور یا Markdown خام را بخوانند."
 
 #: docs/.vitepress/i18n.json#agentTools.installPrompt
 #, no-c-format
 msgctxt "docs.chrome:agentTools.installPrompt"
-msgid "Install Pantoken agent guidance in this repository. Use {{command}}, then summarize the files written and when future agents should read them."
-msgstr "راهنمای عامل Pantoken را در این مخزن نصب کنید. از {{command}} استفاده کنید، سپس فایل‌های نوشته‌شده و زمان خوانده‌شدن آن‌ها توسط عوامل آینده را خلاصه کنید."
+msgid ""
+"Install Pantoken agent guidance in this repository. Use {{command}}, then "
+"summarize the files written and when future agents should read them."
+msgstr ""
+"راهنمای عامل Pantoken را در این مخزن نصب کنید. از {{command}} استفاده کنید، "
+"سپس فایل‌های نوشته‌شده و زمان خوانده‌شدن آن‌ها توسط عوامل آینده را خلاصه کنید."
 
 #: docs/.vitepress/i18n.json#agentTools.registryPrompt
 #, no-c-format
 msgctxt "docs.chrome:agentTools.registryPrompt"
-msgid "Use the Pantoken shadcn registry for this project. Fetch https://pantoken.app/r/registry.json, then run {{command}} if the project uses shadcn or has components.json. Registry items install CSS and metadata, not React components."
-msgstr "از رجیستری shadcn Pantoken برای این پروژه استفاده کنید. https://pantoken.app/r/registry.json را واکشی کنید، سپس اگر پروژه از shadcn استفاده می‌کند یا components.json دارد {{command}} را اجرا کنید. آیتم‌های رجیستری CSS و متادیتا نصب می‌کنند، نه کامپوننت‌های React."
+msgid ""
+"Use the Pantoken shadcn registry for this project. Fetch https://"
+"pantoken.app/r/registry.json, then run {{command}} if the project uses "
+"shadcn or has components.json. Registry items install CSS and metadata, not "
+"React components."
+msgstr ""
+"از رجیستری shadcn Pantoken برای این پروژه استفاده کنید. https://pantoken.app/"
+"r/registry.json را واکشی کنید، سپس اگر پروژه از shadcn استفاده می‌کند یا "
+"components.json دارد {{command}} را اجرا کنید. آیتم‌های رجیستری CSS و متادیتا "
+"نصب می‌کنند، نه کامپوننت‌های React."
 
 #: docs/.vitepress/i18n.json#agentTools.docsPrompt
 #, no-c-format
 msgctxt "docs.chrome:agentTools.docsPrompt"
-msgid "Fetch https://pantoken.app/llms.txt first. When a page is needed, prefer its raw Markdown URL by adding .md to the clean docs path, and use Pantoken manifests for component capabilities, CDN plugins, demos, and registry items."
-msgstr "ابتدا https://pantoken.app/llms.txt را واکشی کنید. وقتی صفحه‌ای لازم است، آدرس Markdown خام آن را با افزودن .md به مسیر تمیز مستندات ترجیح دهید، و برای قابلیت‌های کامپوننت، پلاگین‌های CDN، دموها و آیتم‌های رجیستری از مانیفست‌های Pantoken استفاده کنید."
+msgid ""
+"Fetch https://pantoken.app/llms.txt first. When a page is needed, prefer its "
+"raw Markdown URL by adding .md to the clean docs path, and use Pantoken "
+"manifests for component capabilities, CDN plugins, demos, and registry items."
+msgstr ""
+"ابتدا https://pantoken.app/llms.txt را واکشی کنید. وقتی صفحه‌ای لازم است، "
+"آدرس Markdown خام آن را با افزودن .md به مسیر تمیز مستندات ترجیح دهید، و "
+"برای قابلیت‌های کامپوننت، پلاگین‌های CDN، دموها و آیتم‌های رجیستری از "
+"مانیفست‌های Pantoken استفاده کنید."
 
 #: docs/.vitepress/i18n.json#agentTools.docsCommand
 #, no-c-format
 msgctxt "docs.chrome:agentTools.docsCommand"
-msgid "Fetch https://pantoken.app/llms.txt, then follow links to the pages and manifests relevant to this task."
-msgstr "https://pantoken.app/llms.txt را واکشی کنید، سپس به لینک‌های صفحات و مانیفست‌های مرتبط با این وظیفه مراجعه کنید."
+msgid ""
+"Fetch https://pantoken.app/llms.txt, then follow links to the pages and "
+"manifests relevant to this task."
+msgstr ""
+"https://pantoken.app/llms.txt را واکشی کنید، سپس به لینک‌های صفحات و "
+"مانیفست‌های مرتبط با این وظیفه مراجعه کنید."
 
 #: docs/.vitepress/i18n.json#agentTools.createDomainTitle
 #, no-c-format
@@ -936,8 +1055,11 @@ msgstr "URL بوت‌استرپ مهارت"
 #: docs/.vitepress/i18n.json#agentTools.createDomainDescription
 #, no-c-format
 msgctxt "docs.chrome:agentTools.createDomainDescription"
-msgid "The short public URL any URL-capable agent can fetch to set up Pantoken."
-msgstr "URL عمومی کوتاهی که هر عامل دارای قابلیت واکشی URL می‌تواند برای راه‌اندازی Pantoken آن را دریافت کند."
+msgid ""
+"The short public URL any URL-capable agent can fetch to set up Pantoken."
+msgstr ""
+"URL عمومی کوتاهی که هر عامل دارای قابلیت واکشی URL می‌تواند برای راه‌اندازی "
+"Pantoken آن را دریافت کند."
 
 #: docs/.vitepress/i18n.json#agentTools.llmsTitle
 #, no-c-format
@@ -960,7 +1082,8 @@ msgstr "زمینه کامل سایت"
 #: docs/.vitepress/i18n.json#agentTools.llmsFullDescription
 #, no-c-format
 msgctxt "docs.chrome:agentTools.llmsFullDescription"
-msgid "Expanded LLM context for agents that need the complete documentation set."
+msgid ""
+"Expanded LLM context for agents that need the complete documentation set."
 msgstr "زمینه گسترش‌یافته LLM برای عواملی که به مجموعه کامل مستندات نیاز دارند."
 
 #: docs/.vitepress/i18n.json#agentTools.pageMdTitle
@@ -1008,8 +1131,12 @@ msgstr "مولفه‌ها"
 #: docs/.vitepress/i18n.json#agentTools.capabilitiesDescription
 #, no-c-format
 msgctxt "docs.chrome:agentTools.capabilitiesDescription"
-msgid "Machine-readable map of component CSS, JavaScript, icon, and dependency needs."
-msgstr "نقشه قابل‌خواندن توسط ماشین از نیازمندی‌های CSS، JavaScript، آیکون و وابستگی‌های کامپوننت."
+msgid ""
+"Machine-readable map of component CSS, JavaScript, icon, and dependency "
+"needs."
+msgstr ""
+"نقشه قابل‌خواندن توسط ماشین از نیازمندی‌های CSS، JavaScript، آیکون و "
+"وابستگی‌های کامپوننت."
 
 #: docs/.vitepress/i18n.json#agentTools.pluginsTitle
 #, no-c-format
@@ -1033,7 +1160,9 @@ msgstr "کاتالوگ API"
 #, no-c-format
 msgctxt "docs.chrome:agentTools.apiCatalogDescription"
 msgid "Machine-readable linkset for Pantoken's agent-readable resources."
-msgstr "مجموعه لینک‌های قابل‌خواندن توسط ماشین برای منابع قابل‌خواندن توسط عامل Pantoken."
+msgstr ""
+"مجموعه لینک‌های قابل‌خواندن توسط ماشین برای منابع قابل‌خواندن توسط عامل "
+"Pantoken."
 
 #: docs/.vitepress/i18n.json#agentTools.vscodeCustomDataTitle
 #, no-c-format
@@ -1134,8 +1263,12 @@ msgstr "صفحه پیدا نشد"
 #: docs/.vitepress/i18n.json#chrome.notFound.quote
 #, no-c-format
 msgctxt "docs.chrome:chrome.notFound.quote"
-msgid "But if you don't change your direction, and if you keep looking, you may end up where you are heading."
-msgstr "اما اگر جهتِ حرکت‌تان را تغییر ندهید و به جستجو ادامه دهید، ممکن است در همان جایی پایان ببرید که به سمتش می‌رفتید."
+msgid ""
+"But if you don't change your direction, and if you keep looking, you may end "
+"up where you are heading."
+msgstr ""
+"اما اگر جهتِ حرکت‌تان را تغییر ندهید و به جستجو ادامه دهید، ممکن است در همان "
+"جایی پایان ببرید که به سمتش می‌رفتید."
 
 #: docs/.vitepress/i18n.json#chrome.notFound.linkLabel
 #, no-c-format
@@ -1206,8 +1339,12 @@ msgstr "یک آیکون درون‌خطی که از مجموعهٔ آیکون‌
 #: docs/.vitepress/catalog-i18n.json#a2uiCatalogDescriptions.PantokenButton
 #, no-c-format
 msgctxt "docs.chrome:a2uiCatalogDescriptions.PantokenButton"
-msgid "A token-styled action button with optional A2UI event and Invoker Commands behavior."
-msgstr "دکمهٔ کنش با سبک‌دهی مبتنی بر توکن و رفتار اختیاری رویدادهای A2UI و Invoker Commands."
+msgid ""
+"A token-styled action button with optional A2UI event and Invoker Commands "
+"behavior."
+msgstr ""
+"دکمهٔ کنش با سبک‌دهی مبتنی بر توکن و رفتار اختیاری رویدادهای A2UI و Invoker "
+"Commands."
 
 #: docs/.vitepress/catalog-i18n.json#a2uiCatalogDescriptions.PantokenAlert
 #, no-c-format
@@ -1290,7 +1427,8 @@ msgstr "ناحیهٔ متن با تعداد خطوط محدود و کنترل‌
 #: docs/.vitepress/catalog-i18n.json#a2uiCatalogDescriptions.PantokenImg
 #, no-c-format
 msgctxt "docs.chrome:a2uiCatalogDescriptions.PantokenImg"
-msgid "A responsive image with a sanitized media URL and constrained presentation."
+msgid ""
+"A responsive image with a sanitized media URL and constrained presentation."
 msgstr "تصویری واکنش‌گرا با نشانی رسانهٔ پاک‌سازی‌شده و نمایش محدود."
 
 #: docs/.vitepress/catalog-i18n.json#a2uiCatalogDescriptions.PantokenSideNavBar
@@ -1302,8 +1440,12 @@ msgstr "نوار پیمایش عمودی که می‌تواند به نمای ف
 #: docs/.vitepress/catalog-i18n.json#a2uiCatalogDescriptions.PantokenTreeBrowser
 #, no-c-format
 msgctxt "docs.chrome:a2uiCatalogDescriptions.PantokenTreeBrowser"
-msgid "An accessible tree whose child components are exposed as focusable tree items."
-msgstr "درختی دسترس‌پذیر که کامپوننت‌های فرزند آن به‌صورت موارد درختیِ قابل فوکوس در دسترس هستند."
+msgid ""
+"An accessible tree whose child components are exposed as focusable tree "
+"items."
+msgstr ""
+"درختی دسترس‌پذیر که کامپوننت‌های فرزند آن به‌صورت موارد درختیِ قابل فوکوس در "
+"دسترس هستند."
 
 #: docs/.vitepress/catalog-i18n.json#a2uiCatalogDescriptions.PantokenCalendar
 #, no-c-format
@@ -1381,7 +1523,8 @@ msgstr "فیلد ترکیبی تاریخ و زمان با به‌روزرسان�
 #, no-c-format
 msgctxt "docs.chrome:a2uiCatalogDescriptions.PantokenTabs"
 msgid "An accessible tab set pairing A2UI child panels with labels."
-msgstr "مجموعه‌ای دسترس‌پذیر از زبانه‌ها که پنل‌های فرزند A2UI را با برچسب‌ها جفت می‌کند."
+msgstr ""
+"مجموعه‌ای دسترس‌پذیر از زبانه‌ها که پنل‌های فرزند A2UI را با برچسب‌ها جفت می‌کند."
 
 #: docs/.vitepress/catalog-i18n.json#a2uiCatalogDescriptions.PantokenCard
 #, no-c-format
@@ -1446,8 +1589,10 @@ msgstr "کامپوننت بیلبورد Pantoken با متن امن و محتو�
 #: docs/.vitepress/catalog-i18n.json#a2uiCatalogDescriptions.PantokenToggleGroup
 #, no-c-format
 msgctxt "docs.chrome:a2uiCatalogDescriptions.PantokenToggleGroup"
-msgid "A token-styled disclosure group with a summary and expandable child content."
-msgstr "گروه بازشونده با سبک‌دهی مبتنی بر توکن، شامل خلاصه و محتوای فرزندِ قابل گسترش."
+msgid ""
+"A token-styled disclosure group with a summary and expandable child content."
+msgstr ""
+"گروه بازشونده با سبک‌دهی مبتنی بر توکن، شامل خلاصه و محتوای فرزندِ قابل گسترش."
 
 #: docs/.vitepress/catalog-i18n.json#a2uiCatalogDescriptions.PantokenPagination
 #, no-c-format
@@ -1482,7 +1627,8 @@ msgstr "یک مؤلفهٔ ماسک Pantoken با متن امن و محتوای �
 #: docs/.vitepress/catalog-i18n.json#a2uiCatalogDescriptions.PantokenScreenReaderContent
 #, no-c-format
 msgctxt "docs.chrome:a2uiCatalogDescriptions.PantokenScreenReaderContent"
-msgid "A Pantoken screen-reader-content component with safe text and child content."
+msgid ""
+"A Pantoken screen-reader-content component with safe text and child content."
 msgstr "یک مؤلفهٔ محتوای صفحه‌خوان Pantoken با متن امن و محتوای فرزند."
 
 #: docs/.vitepress/catalog-i18n.json#a2uiCatalogDescriptions.PantokenHeading
@@ -1524,7 +1670,8 @@ msgstr "یک fieldset برچسب‌دار برای گروه‌بندی گزین�
 #: docs/.vitepress/catalog-i18n.json#a2uiCatalogDescriptions.PantokenFormFieldMessages
 #, no-c-format
 msgctxt "docs.chrome:a2uiCatalogDescriptions.PantokenFormFieldMessages"
-msgid "A Pantoken form-field-messages component with safe text and child content."
+msgid ""
+"A Pantoken form-field-messages component with safe text and child content."
 msgstr "یک مؤلفهٔ پیام‌های فیلد فرم Pantoken با متن امن و محتوای فرزند."
 
 #: docs/.vitepress/catalog-i18n.json#a2uiCatalogDescriptions.PantokenTextInput
@@ -1572,8 +1719,12 @@ msgstr "پوستهٔ Canvas LMS"
 #: docs/.vitepress/catalog-i18n.json#registryBrowserItems.theme-canvas.description
 #, no-c-format
 msgctxt "docs.chrome:registryBrowserItems.theme-canvas.description"
-msgid "Instructure Canvas LMS theme variables bridging to shadcn/ui custom properties."
-msgstr "متغیرهای پوستهٔ Instructure Canvas LMS که به ویژگی‌های سفارشی shadcn/ui متصل می‌شوند."
+msgid ""
+"Instructure Canvas LMS theme variables bridging to shadcn/ui custom "
+"properties."
+msgstr ""
+"متغیرهای پوستهٔ Instructure Canvas LMS که به ویژگی‌های سفارشی shadcn/ui متصل "
+"می‌شوند."
 
 #: docs/.vitepress/catalog-i18n.json#registryBrowserItems.theme-canvas-high-contrast.title
 #, fuzzy, no-c-format
@@ -1583,7 +1734,8 @@ msgstr "Canvas high contrast"
 
 #: docs/.vitepress/catalog-i18n.json#registryBrowserItems.theme-canvas-high-contrast.description
 #, no-c-format
-msgctxt "docs.chrome:registryBrowserItems.theme-canvas-high-contrast.description"
+msgctxt ""
+"docs.chrome:registryBrowserItems.theme-canvas-high-contrast.description"
 msgid "Canvas LMS High Contrast theme variables for WCAG AAA compliance."
 msgstr "متغیرهای پوستهٔ کنتراست بالای Canvas LMS برای انطباق با WCAG AAA."
 
@@ -1608,8 +1760,11 @@ msgstr "سامانهٔ پایهٔ Pantoken"
 #: docs/.vitepress/catalog-i18n.json#registryBrowserItems.base.description
 #, no-c-format
 msgctxt "docs.chrome:registryBrowserItems.base.description"
-msgid "Pantoken core design token system, CSS custom properties, and semantic components."
-msgstr "سامانهٔ اصلی توکن‌های طراحی Pantoken، ویژگی‌های سفارشی CSS و مؤلفه‌های معنایی."
+msgid ""
+"Pantoken core design token system, CSS custom properties, and semantic "
+"components."
+msgstr ""
+"سامانهٔ اصلی توکن‌های طراحی Pantoken، ویژگی‌های سفارشی CSS و مؤلفه‌های معنایی."
 
 #: docs/.vitepress/catalog-i18n.json#registryBrowserItems.button.title
 #, no-c-format
@@ -1620,8 +1775,10 @@ msgstr "دکمه"
 #: docs/.vitepress/catalog-i18n.json#registryBrowserItems.button.description
 #, no-c-format
 msgctxt "docs.chrome:registryBrowserItems.button.description"
-msgid "Instructure Button component styled with semantic .instui-button classes."
-msgstr "مؤلفهٔ دکمهٔ Instructure با کلاس‌های معنایی .instui-button استایل‌دهی شده است."
+msgid ""
+"Instructure Button component styled with semantic .instui-button classes."
+msgstr ""
+"مؤلفهٔ دکمهٔ Instructure با کلاس‌های معنایی .instui-button استایل‌دهی شده است."
 
 #: docs/.vitepress/catalog-i18n.json#registryBrowserItems.card.title
 #, no-c-format
@@ -1633,7 +1790,8 @@ msgstr "کارت"
 #, no-c-format
 msgctxt "docs.chrome:registryBrowserItems.card.description"
 msgid "Instructure Card component styled with semantic .instui-card classes."
-msgstr "مؤلفهٔ کارت Instructure با کلاس‌های معنایی .instui-card استایل‌دهی شده است."
+msgstr ""
+"مؤلفهٔ کارت Instructure با کلاس‌های معنایی .instui-card استایل‌دهی شده است."
 
 #: docs/.vitepress/catalog-i18n.json#registryBrowserItems.alert.title
 #, no-c-format
@@ -1645,7 +1803,8 @@ msgstr "هشدار"
 #, no-c-format
 msgctxt "docs.chrome:registryBrowserItems.alert.description"
 msgid "Instructure Alert component styled with semantic .instui-alert classes."
-msgstr "مؤلفهٔ هشدار Instructure با کلاس‌های معنایی .instui-alert استایل‌دهی شده است."
+msgstr ""
+"مؤلفهٔ هشدار Instructure با کلاس‌های معنایی .instui-alert استایل‌دهی شده است."
 
 #: docs/.vitepress/catalog-i18n.json#registryBrowserItems.badge.title
 #, no-c-format
@@ -1657,7 +1816,8 @@ msgstr "نشان"
 #, no-c-format
 msgctxt "docs.chrome:registryBrowserItems.badge.description"
 msgid "Instructure Badge component styled with semantic .instui-badge classes."
-msgstr "مؤلفهٔ نشان Instructure با کلاس‌های معنایی .instui-badge استایل‌دهی شده است."
+msgstr ""
+"مؤلفهٔ نشان Instructure با کلاس‌های معنایی .instui-badge استایل‌دهی شده است."
 
 #: docs/.vitepress/catalog-i18n.json#registryBrowserItems.pill.title
 #, no-c-format
@@ -1669,7 +1829,8 @@ msgstr "برچسبک"
 #, no-c-format
 msgctxt "docs.chrome:registryBrowserItems.pill.description"
 msgid "Instructure Pill component styled with semantic .instui-pill classes."
-msgstr "مؤلفهٔ برچسبک Instructure با کلاس‌های معنایی .instui-pill استایل‌دهی شده است."
+msgstr ""
+"مؤلفهٔ برچسبک Instructure با کلاس‌های معنایی .instui-pill استایل‌دهی شده است."
 
 #: docs/.vitepress/catalog-i18n.json#registryBrowserItems.tag.title
 #, no-c-format
@@ -1681,7 +1842,8 @@ msgstr "برچسب"
 #, no-c-format
 msgctxt "docs.chrome:registryBrowserItems.tag.description"
 msgid "Instructure Tag component styled with semantic .instui-tag classes."
-msgstr "مؤلفهٔ برچسب Instructure با کلاس‌های معنایی .instui-tag استایل‌دهی شده است."
+msgstr ""
+"مؤلفهٔ برچسب Instructure با کلاس‌های معنایی .instui-tag استایل‌دهی شده است."
 
 #: docs/.vitepress/catalog-i18n.json#registryBrowserItems.avatar.title
 #, no-c-format
@@ -1692,8 +1854,10 @@ msgstr "آواتار"
 #: docs/.vitepress/catalog-i18n.json#registryBrowserItems.avatar.description
 #, no-c-format
 msgctxt "docs.chrome:registryBrowserItems.avatar.description"
-msgid "Instructure Avatar component styled with semantic .instui-avatar classes."
-msgstr "مؤلفهٔ آواتار Instructure با کلاس‌های معنایی .instui-avatar استایل‌دهی شده است."
+msgid ""
+"Instructure Avatar component styled with semantic .instui-avatar classes."
+msgstr ""
+"مؤلفهٔ آواتار Instructure با کلاس‌های معنایی .instui-avatar استایل‌دهی شده است."
 
 #: docs/.vitepress/catalog-i18n.json#registryBrowserItems.tabs.title
 #, no-c-format
@@ -1705,7 +1869,8 @@ msgstr "زبانه‌ها"
 #, no-c-format
 msgctxt "docs.chrome:registryBrowserItems.tabs.description"
 msgid "Instructure Tabs component styled with semantic .instui-tabs classes."
-msgstr "مؤلفهٔ زبانه‌های Instructure با کلاس‌های معنایی .instui-tabs استایل‌دهی شده است."
+msgstr ""
+"مؤلفهٔ زبانه‌های Instructure با کلاس‌های معنایی .instui-tabs استایل‌دهی شده است."
 
 #: docs/.vitepress/catalog-i18n.json#registryBrowserItems.metric.title
 #, no-c-format
@@ -1716,8 +1881,10 @@ msgstr "سنجه"
 #: docs/.vitepress/catalog-i18n.json#registryBrowserItems.metric.description
 #, no-c-format
 msgctxt "docs.chrome:registryBrowserItems.metric.description"
-msgid "Instructure Metric component styled with semantic .instui-metric classes."
-msgstr "مؤلفهٔ سنجهٔ Instructure با کلاس‌های معنایی .instui-metric استایل‌دهی شده است."
+msgid ""
+"Instructure Metric component styled with semantic .instui-metric classes."
+msgstr ""
+"مؤلفهٔ سنجهٔ Instructure با کلاس‌های معنایی .instui-metric استایل‌دهی شده است."
 
 #: docs/.vitepress/catalog-i18n.json#registryBrowserItems.byline.title
 #, no-c-format
@@ -1728,8 +1895,11 @@ msgstr "معرفی نویسنده"
 #: docs/.vitepress/catalog-i18n.json#registryBrowserItems.byline.description
 #, no-c-format
 msgctxt "docs.chrome:registryBrowserItems.byline.description"
-msgid "Instructure Byline component styled with semantic .instui-byline classes."
-msgstr "مؤلفهٔ معرفی نویسندهٔ Instructure با کلاس‌های معنایی .instui-byline استایل‌دهی شده است."
+msgid ""
+"Instructure Byline component styled with semantic .instui-byline classes."
+msgstr ""
+"مؤلفهٔ معرفی نویسندهٔ Instructure با کلاس‌های معنایی .instui-byline استایل‌دهی "
+"شده است."
 
 #: docs/.vitepress/catalog-i18n.json#registryBrowserItems.img.title
 #, no-c-format
@@ -1741,7 +1911,8 @@ msgstr "تصویر"
 #, no-c-format
 msgctxt "docs.chrome:registryBrowserItems.img.description"
 msgid "Instructure Img component styled with semantic .instui-img classes."
-msgstr "مؤلفهٔ تصویر Instructure با کلاس‌های معنایی .instui-img استایل‌دهی شده است."
+msgstr ""
+"مؤلفهٔ تصویر Instructure با کلاس‌های معنایی .instui-img استایل‌دهی شده است."
 
 #: docs/.vitepress/catalog-i18n.json#registryBrowserItems.table.title
 #, no-c-format
@@ -1753,7 +1924,8 @@ msgstr "جدول"
 #, no-c-format
 msgctxt "docs.chrome:registryBrowserItems.table.description"
 msgid "Instructure Table component styled with semantic .instui-table classes."
-msgstr "مؤلفهٔ جدول Instructure با کلاس‌های معنایی .instui-table استایل‌دهی شده است."
+msgstr ""
+"مؤلفهٔ جدول Instructure با کلاس‌های معنایی .instui-table استایل‌دهی شده است."
 
 #: docs/.vitepress/catalog-i18n.json#registryBrowserItems.link.title
 #, no-c-format
@@ -1765,7 +1937,8 @@ msgstr "پیوند"
 #, no-c-format
 msgctxt "docs.chrome:registryBrowserItems.link.description"
 msgid "Instructure Link component styled with semantic .instui-link classes."
-msgstr "مؤلفهٔ پیوند Instructure با کلاس‌های معنایی .instui-link استایل‌دهی شده است."
+msgstr ""
+"مؤلفهٔ پیوند Instructure با کلاس‌های معنایی .instui-link استایل‌دهی شده است."
 
 #: docs/.vitepress/catalog-i18n.json#registryBrowserItems.list.title
 #, no-c-format
@@ -1777,7 +1950,8 @@ msgstr "فهرست"
 #, no-c-format
 msgctxt "docs.chrome:registryBrowserItems.list.description"
 msgid "Instructure List component styled with semantic .instui-list classes."
-msgstr "مؤلفهٔ فهرست Instructure با کلاس‌های معنایی .instui-list استایل‌دهی شده است."
+msgstr ""
+"مؤلفهٔ فهرست Instructure با کلاس‌های معنایی .instui-list استایل‌دهی شده است."
 
 #: docs/.vitepress/catalog-i18n.json#registryBrowserItems.icon.title
 #, no-c-format
@@ -1789,7 +1963,8 @@ msgstr "شمایل"
 #, no-c-format
 msgctxt "docs.chrome:registryBrowserItems.icon.description"
 msgid "Instructure Icon component styled with semantic .instui-icon classes."
-msgstr "مؤلفهٔ شمایل Instructure با کلاس‌های معنایی .instui-icon استایل‌دهی شده است."
+msgstr ""
+"مؤلفهٔ شمایل Instructure با کلاس‌های معنایی .instui-icon استایل‌دهی شده است."
 
 #: docs/.vitepress/catalog-i18n.json#registryBrowserItems.checkbox.title
 #, no-c-format
@@ -1800,8 +1975,11 @@ msgstr "کادر انتخاب"
 #: docs/.vitepress/catalog-i18n.json#registryBrowserItems.checkbox.description
 #, no-c-format
 msgctxt "docs.chrome:registryBrowserItems.checkbox.description"
-msgid "Instructure Checkbox component styled with semantic .instui-checkbox classes."
-msgstr "مؤلفهٔ کادر انتخاب Instructure با کلاس‌های معنایی .instui-checkbox استایل‌دهی شده است."
+msgid ""
+"Instructure Checkbox component styled with semantic .instui-checkbox classes."
+msgstr ""
+"مؤلفهٔ کادر انتخاب Instructure با کلاس‌های معنایی .instui-checkbox استایل‌دهی "
+"شده است."
 
 #: docs/.vitepress/catalog-i18n.json#registryBrowserItems.radio.title
 #, no-c-format
@@ -1813,7 +1991,9 @@ msgstr "گزینهٔ رادیویی"
 #, no-c-format
 msgctxt "docs.chrome:registryBrowserItems.radio.description"
 msgid "Instructure Radio component styled with semantic .instui-radio classes."
-msgstr "مؤلفهٔ گزینهٔ رادیویی Instructure با کلاس‌های معنایی .instui-radio استایل‌دهی شده است."
+msgstr ""
+"مؤلفهٔ گزینهٔ رادیویی Instructure با کلاس‌های معنایی .instui-radio استایل‌دهی "
+"شده است."
 
 #: docs/.vitepress/catalog-i18n.json#registryBrowserItems.spinner.title
 #, fuzzy, no-c-format
@@ -1824,8 +2004,10 @@ msgstr "رانر"
 #: docs/.vitepress/catalog-i18n.json#registryBrowserItems.spinner.description
 #, no-c-format
 msgctxt "docs.chrome:registryBrowserItems.spinner.description"
-msgid "Instructure Spinner component styled with semantic .instui-spinner classes."
-msgstr "مؤلفهٔ چرخانهٔ Instructure با کلاس‌های معنایی .instui-spinner استایل‌دهی شده است."
+msgid ""
+"Instructure Spinner component styled with semantic .instui-spinner classes."
+msgstr ""
+"مؤلفهٔ چرخانهٔ Instructure با کلاس‌های معنایی .instui-spinner استایل‌دهی شده است."
 
 #: docs/.vitepress/catalog-i18n.json#registryBrowserItems.progress.title
 #, no-c-format
@@ -1836,8 +2018,11 @@ msgstr "پیشرفت"
 #: docs/.vitepress/catalog-i18n.json#registryBrowserItems.progress.description
 #, no-c-format
 msgctxt "docs.chrome:registryBrowserItems.progress.description"
-msgid "Instructure Progress component styled with semantic .instui-progress classes."
-msgstr "مؤلفهٔ پیشرفت Instructure با کلاس‌های معنایی .instui-progress استایل‌دهی شده است."
+msgid ""
+"Instructure Progress component styled with semantic .instui-progress classes."
+msgstr ""
+"مؤلفهٔ پیشرفت Instructure با کلاس‌های معنایی .instui-progress استایل‌دهی شده "
+"است."
 
 #: docs/.vitepress/catalog-i18n.json#registryBrowserItems.menu.title
 #, fuzzy, no-c-format
@@ -1849,7 +2034,8 @@ msgstr "منو"
 #, no-c-format
 msgctxt "docs.chrome:registryBrowserItems.menu.description"
 msgid "Instructure Menu component styled with semantic .instui-menu classes."
-msgstr "مؤلفهٔ منوی Instructure با کلاس‌های معنایی .instui-menu استایل‌دهی شده است."
+msgstr ""
+"مؤلفهٔ منوی Instructure با کلاس‌های معنایی .instui-menu استایل‌دهی شده است."
 
 #: docs/.vitepress/catalog-i18n.json#registryBrowserItems.modal.title
 #, no-c-format
@@ -1861,7 +2047,9 @@ msgstr "پنجرهٔ محاوره‌ای"
 #, no-c-format
 msgctxt "docs.chrome:registryBrowserItems.modal.description"
 msgid "Instructure Modal component styled with semantic .instui-modal classes."
-msgstr "مؤلفهٔ پنجرهٔ محاوره‌ای Instructure با کلاس‌های معنایی .instui-modal استایل‌دهی شده است."
+msgstr ""
+"مؤلفهٔ پنجرهٔ محاوره‌ای Instructure با کلاس‌های معنایی .instui-modal استایل‌دهی "
+"شده است."
 
 #: docs/.vitepress/catalog-i18n.json#registryBrowserItems.breadcrumb.title
 #, no-c-format
@@ -1872,8 +2060,12 @@ msgstr "مسیر راهنما"
 #: docs/.vitepress/catalog-i18n.json#registryBrowserItems.breadcrumb.description
 #, no-c-format
 msgctxt "docs.chrome:registryBrowserItems.breadcrumb.description"
-msgid "Instructure Breadcrumb component styled with semantic .instui-breadcrumb classes."
-msgstr "مؤلفهٔ مسیر راهنمای Instructure با کلاس‌های معنایی .instui-breadcrumb استایل‌دهی شده است."
+msgid ""
+"Instructure Breadcrumb component styled with semantic .instui-breadcrumb "
+"classes."
+msgstr ""
+"مؤلفهٔ مسیر راهنمای Instructure با کلاس‌های معنایی .instui-breadcrumb "
+"استایل‌دهی شده است."
 
 #: docs/.vitepress/catalog-i18n.json#registryBrowserItems.billboard.title
 #, no-c-format
@@ -1884,8 +2076,11 @@ msgstr "بنر"
 #: docs/.vitepress/catalog-i18n.json#registryBrowserItems.billboard.description
 #, no-c-format
 msgctxt "docs.chrome:registryBrowserItems.billboard.description"
-msgid "Instructure Billboard component styled with semantic .instui-billboard classes."
-msgstr "مؤلفهٔ بنر Instructure با کلاس‌های معنایی .instui-billboard استایل‌دهی شده است."
+msgid ""
+"Instructure Billboard component styled with semantic .instui-billboard "
+"classes."
+msgstr ""
+"مؤلفهٔ بنر Instructure با کلاس‌های معنایی .instui-billboard استایل‌دهی شده است."
 
 #: docs/.vitepress/catalog-i18n.json#registryBrowserItems.rating.title
 #, no-c-format
@@ -1896,8 +2091,11 @@ msgstr "امتیازدهی"
 #: docs/.vitepress/catalog-i18n.json#registryBrowserItems.rating.description
 #, no-c-format
 msgctxt "docs.chrome:registryBrowserItems.rating.description"
-msgid "Instructure Rating component styled with semantic .instui-rating classes."
-msgstr "مؤلفهٔ امتیازدهی Instructure با کلاس‌های معنایی .instui-rating استایل‌دهی شده است."
+msgid ""
+"Instructure Rating component styled with semantic .instui-rating classes."
+msgstr ""
+"مؤلفهٔ امتیازدهی Instructure با کلاس‌های معنایی .instui-rating استایل‌دهی شده "
+"است."
 
 #: docs/.vitepress/catalog-i18n.json#registryBrowserItems.toggle-group.title
 #, no-c-format
@@ -1908,8 +2106,12 @@ msgstr "گروه تغییر وضعیت"
 #: docs/.vitepress/catalog-i18n.json#registryBrowserItems.toggle-group.description
 #, no-c-format
 msgctxt "docs.chrome:registryBrowserItems.toggle-group.description"
-msgid "Instructure Toggle-group component styled with semantic .instui-toggle-group classes."
-msgstr "مؤلفهٔ گروه تغییر وضعیت Instructure با کلاس‌های معنایی .instui-toggle-group استایل‌دهی شده است."
+msgid ""
+"Instructure Toggle-group component styled with semantic .instui-toggle-group "
+"classes."
+msgstr ""
+"مؤلفهٔ گروه تغییر وضعیت Instructure با کلاس‌های معنایی .instui-toggle-group "
+"استایل‌دهی شده است."
 
 #: docs/.vitepress/catalog-i18n.json#registryBrowserItems.context-view.title
 #, no-c-format
@@ -1920,8 +2122,12 @@ msgstr "نمای زمینه"
 #: docs/.vitepress/catalog-i18n.json#registryBrowserItems.context-view.description
 #, no-c-format
 msgctxt "docs.chrome:registryBrowserItems.context-view.description"
-msgid "Instructure Context-view component styled with semantic .instui-context-view classes."
-msgstr "مؤلفهٔ نمای زمینهٔ Instructure با کلاس‌های معنایی .instui-context-view استایل‌دهی شده است."
+msgid ""
+"Instructure Context-view component styled with semantic .instui-context-view "
+"classes."
+msgstr ""
+"مؤلفهٔ نمای زمینهٔ Instructure با کلاس‌های معنایی .instui-context-view "
+"استایل‌دهی شده است."
 
 #: docs/.vitepress/catalog-i18n.json#registryBrowserItems.drawer-layout.title
 #, no-c-format
@@ -1932,8 +2138,12 @@ msgstr "چیدمان کشویی"
 #: docs/.vitepress/catalog-i18n.json#registryBrowserItems.drawer-layout.description
 #, no-c-format
 msgctxt "docs.chrome:registryBrowserItems.drawer-layout.description"
-msgid "Instructure Drawer-layout component styled with semantic .instui-drawer-layout classes."
-msgstr "مؤلفهٔ چیدمان کشویی Instructure با کلاس‌های معنایی .instui-drawer-layout استایل‌دهی شده است."
+msgid ""
+"Instructure Drawer-layout component styled with semantic .instui-drawer-"
+"layout classes."
+msgstr ""
+"مؤلفهٔ چیدمان کشویی Instructure با کلاس‌های معنایی .instui-drawer-layout "
+"استایل‌دهی شده است."
 
 #: docs/.vitepress/catalog-i18n.json#registryBrowserItems.progress-circle.title
 #, no-c-format
@@ -1944,8 +2154,12 @@ msgstr "دایرهٔ پیشرفت"
 #: docs/.vitepress/catalog-i18n.json#registryBrowserItems.progress-circle.description
 #, no-c-format
 msgctxt "docs.chrome:registryBrowserItems.progress-circle.description"
-msgid "Instructure Progress-circle component styled with semantic .instui-progress-circle classes."
-msgstr "مؤلفهٔ دایرهٔ پیشرفت Instructure با کلاس‌های معنایی .instui-progress-circle استایل‌دهی شده است."
+msgid ""
+"Instructure Progress-circle component styled with semantic .instui-progress-"
+"circle classes."
+msgstr ""
+"مؤلفهٔ دایرهٔ پیشرفت Instructure با کلاس‌های معنایی .instui-progress-circle "
+"استایل‌دهی شده است."
 
 #: docs/.vitepress/catalog-i18n.json#registryBrowserItems.pagination.title
 #, fuzzy, no-c-format
@@ -1956,8 +2170,12 @@ msgstr "توقف انیمیشن"
 #: docs/.vitepress/catalog-i18n.json#registryBrowserItems.pagination.description
 #, no-c-format
 msgctxt "docs.chrome:registryBrowserItems.pagination.description"
-msgid "Instructure Pagination component styled with semantic .instui-pagination classes."
-msgstr "مؤلفهٔ صفحه‌بندی Instructure با کلاس‌های معنایی .instui-pagination استایل‌دهی شده است."
+msgid ""
+"Instructure Pagination component styled with semantic .instui-pagination "
+"classes."
+msgstr ""
+"مؤلفهٔ صفحه‌بندی Instructure با کلاس‌های معنایی .instui-pagination استایل‌دهی "
+"شده است."
 
 #: docs/.vitepress/catalog-i18n.json#registryBrowserItems.toggle-details.title
 #, fuzzy, no-c-format
@@ -1968,8 +2186,12 @@ msgstr "نمایش/پنهان کردن نوار کناری"
 #: docs/.vitepress/catalog-i18n.json#registryBrowserItems.toggle-details.description
 #, no-c-format
 msgctxt "docs.chrome:registryBrowserItems.toggle-details.description"
-msgid "Instructure Toggle-details component styled with semantic .instui-toggle-details classes."
-msgstr "مؤلفهٔ تغییر وضعیت جزئیات Instructure با کلاس‌های معنایی .instui-toggle-details استایل‌دهی شده است."
+msgid ""
+"Instructure Toggle-details component styled with semantic .instui-toggle-"
+"details classes."
+msgstr ""
+"مؤلفهٔ تغییر وضعیت جزئیات Instructure با کلاس‌های معنایی .instui-toggle-"
+"details استایل‌دهی شده است."
 
 #: docs/.vitepress/catalog-i18n.json#registryBrowserItems.file-drop.title
 #, no-c-format
@@ -1980,8 +2202,12 @@ msgstr "رهاسازی فایل"
 #: docs/.vitepress/catalog-i18n.json#registryBrowserItems.file-drop.description
 #, no-c-format
 msgctxt "docs.chrome:registryBrowserItems.file-drop.description"
-msgid "Instructure File-drop component styled with semantic .instui-file-drop classes."
-msgstr "مؤلفهٔ رهاسازی فایل Instructure با کلاس‌های معنایی .instui-file-drop استایل‌دهی شده است."
+msgid ""
+"Instructure File-drop component styled with semantic .instui-file-drop "
+"classes."
+msgstr ""
+"مؤلفهٔ رهاسازی فایل Instructure با کلاس‌های معنایی .instui-file-drop استایل‌دهی "
+"شده است."
 
 #: docs/.vitepress/catalog-i18n.json#registryBrowserItems.side-nav-bar.title
 #, no-c-format
@@ -1992,8 +2218,12 @@ msgstr "نوار پیمایش کناری"
 #: docs/.vitepress/catalog-i18n.json#registryBrowserItems.side-nav-bar.description
 #, no-c-format
 msgctxt "docs.chrome:registryBrowserItems.side-nav-bar.description"
-msgid "Instructure Side-nav-bar component styled with semantic .instui-side-nav-bar classes."
-msgstr "مؤلفهٔ نوار پیمایش کناری Instructure با کلاس‌های معنایی .instui-side-nav-bar استایل‌دهی شده است."
+msgid ""
+"Instructure Side-nav-bar component styled with semantic .instui-side-nav-bar "
+"classes."
+msgstr ""
+"مؤلفهٔ نوار پیمایش کناری Instructure با کلاس‌های معنایی .instui-side-nav-bar "
+"استایل‌دهی شده است."
 
 #: docs/.vitepress/catalog-i18n.json#registryBrowserItems.tree-browser.title
 #, no-c-format
@@ -2004,8 +2234,12 @@ msgstr "مرورگر درختی"
 #: docs/.vitepress/catalog-i18n.json#registryBrowserItems.tree-browser.description
 #, no-c-format
 msgctxt "docs.chrome:registryBrowserItems.tree-browser.description"
-msgid "Instructure Tree-browser component styled with semantic .instui-tree-browser classes."
-msgstr "مؤلفهٔ مرورگر درختی Instructure با کلاس‌های معنایی .instui-tree-browser استایل‌دهی شده است."
+msgid ""
+"Instructure Tree-browser component styled with semantic .instui-tree-browser "
+"classes."
+msgstr ""
+"مؤلفهٔ مرورگر درختی Instructure با کلاس‌های معنایی .instui-tree-browser "
+"استایل‌دهی شده است."
 
 #: docs/.vitepress/catalog-i18n.json#registryBrowserItems.calendar.title
 #, no-c-format
@@ -2016,8 +2250,11 @@ msgstr "تقویم"
 #: docs/.vitepress/catalog-i18n.json#registryBrowserItems.calendar.description
 #, no-c-format
 msgctxt "docs.chrome:registryBrowserItems.calendar.description"
-msgid "Instructure Calendar component styled with semantic .instui-calendar classes."
-msgstr "کامپوننت تقویم Instructure که با کلاس‌های معنایی .instui-calendar استایل‌دهی شده است."
+msgid ""
+"Instructure Calendar component styled with semantic .instui-calendar classes."
+msgstr ""
+"کامپوننت تقویم Instructure که با کلاس‌های معنایی .instui-calendar استایل‌دهی "
+"شده است."
 
 #: docs/.vitepress/catalog-i18n.json#registryBrowserItems.popover.title
 #, no-c-format
@@ -2028,8 +2265,11 @@ msgstr "پاپ‌اور"
 #: docs/.vitepress/catalog-i18n.json#registryBrowserItems.popover.description
 #, no-c-format
 msgctxt "docs.chrome:registryBrowserItems.popover.description"
-msgid "Instructure Popover component styled with semantic .instui-popover classes."
-msgstr "کامپوننت پاپ‌اور Instructure که با کلاس‌های معنایی .instui-popover استایل‌دهی شده است."
+msgid ""
+"Instructure Popover component styled with semantic .instui-popover classes."
+msgstr ""
+"کامپوننت پاپ‌اور Instructure که با کلاس‌های معنایی .instui-popover استایل‌دهی "
+"شده است."
 
 #: docs/.vitepress/catalog-i18n.json#registryBrowserItems.tray.title
 #, no-c-format
@@ -2041,7 +2281,9 @@ msgstr "سینی"
 #, no-c-format
 msgctxt "docs.chrome:registryBrowserItems.tray.description"
 msgid "Instructure Tray component styled with semantic .instui-tray classes."
-msgstr "کامپوننت سینی Instructure که با کلاس‌های معنایی .instui-tray استایل‌دهی شده است."
+msgstr ""
+"کامپوننت سینی Instructure که با کلاس‌های معنایی .instui-tray استایل‌دهی شده "
+"است."
 
 #: docs/.vitepress/catalog-i18n.json#registryBrowserItems.tooltip.title
 #, fuzzy, no-c-format
@@ -2052,8 +2294,11 @@ msgstr "ابزارها"
 #: docs/.vitepress/catalog-i18n.json#registryBrowserItems.tooltip.description
 #, no-c-format
 msgctxt "docs.chrome:registryBrowserItems.tooltip.description"
-msgid "Instructure Tooltip component styled with semantic .instui-tooltip classes."
-msgstr "کامپوننت راهنمای شناور Instructure که با کلاس‌های معنایی .instui-tooltip استایل‌دهی شده است."
+msgid ""
+"Instructure Tooltip component styled with semantic .instui-tooltip classes."
+msgstr ""
+"کامپوننت راهنمای شناور Instructure که با کلاس‌های معنایی .instui-tooltip "
+"استایل‌دهی شده است."
 
 #: docs/.vitepress/catalog-i18n.json#registryBrowserItems.range-input.title
 #, no-c-format
@@ -2064,8 +2309,12 @@ msgstr "ورودی بازه"
 #: docs/.vitepress/catalog-i18n.json#registryBrowserItems.range-input.description
 #, no-c-format
 msgctxt "docs.chrome:registryBrowserItems.range-input.description"
-msgid "Instructure Range-input component styled with semantic .instui-range-input classes."
-msgstr "کامپوننت ورودی بازه Instructure که با کلاس‌های معنایی .instui-range-input استایل‌دهی شده است."
+msgid ""
+"Instructure Range-input component styled with semantic .instui-range-input "
+"classes."
+msgstr ""
+"کامپوننت ورودی بازه Instructure که با کلاس‌های معنایی .instui-range-input "
+"استایل‌دهی شده است."
 
 #: docs/.vitepress/catalog-i18n.json#registryBrowserItems.mask.title
 #, no-c-format
@@ -2077,7 +2326,9 @@ msgstr "ماسک"
 #, no-c-format
 msgctxt "docs.chrome:registryBrowserItems.mask.description"
 msgid "Instructure Mask component styled with semantic .instui-mask classes."
-msgstr "کامپوننت ماسک Instructure که با کلاس‌های معنایی .instui-mask استایل‌دهی شده است."
+msgstr ""
+"کامپوننت ماسک Instructure که با کلاس‌های معنایی .instui-mask استایل‌دهی شده "
+"است."
 
 #: docs/.vitepress/catalog-i18n.json#registryBrowserItems.screen-reader-content.title
 #, no-c-format
@@ -2088,8 +2339,12 @@ msgstr "محتوای صفحه‌خوان"
 #: docs/.vitepress/catalog-i18n.json#registryBrowserItems.screen-reader-content.description
 #, no-c-format
 msgctxt "docs.chrome:registryBrowserItems.screen-reader-content.description"
-msgid "Instructure Screen-reader-content component styled with semantic .instui-screen-reader-content classes."
-msgstr "کامپوننت محتوای صفحه‌خوان Instructure که با کلاس‌های معنایی .instui-screen-reader-content استایل‌دهی شده است."
+msgid ""
+"Instructure Screen-reader-content component styled with semantic .instui-"
+"screen-reader-content classes."
+msgstr ""
+"کامپوننت محتوای صفحه‌خوان Instructure که با کلاس‌های معنایی .instui-screen-"
+"reader-content استایل‌دهی شده است."
 
 #: docs/.vitepress/catalog-i18n.json#registryBrowserItems.heading.title
 #, no-c-format
@@ -2100,8 +2355,11 @@ msgstr "عنوان"
 #: docs/.vitepress/catalog-i18n.json#registryBrowserItems.heading.description
 #, no-c-format
 msgctxt "docs.chrome:registryBrowserItems.heading.description"
-msgid "Instructure Heading component styled with semantic .instui-heading classes."
-msgstr "کامپوننت عنوان Instructure که با کلاس‌های معنایی .instui-heading استایل‌دهی شده است."
+msgid ""
+"Instructure Heading component styled with semantic .instui-heading classes."
+msgstr ""
+"کامپوننت عنوان Instructure که با کلاس‌های معنایی .instui-heading استایل‌دهی "
+"شده است."
 
 #: docs/.vitepress/catalog-i18n.json#registryBrowserItems.text.title
 #, no-c-format
@@ -2113,7 +2371,8 @@ msgstr "متن"
 #, no-c-format
 msgctxt "docs.chrome:registryBrowserItems.text.description"
 msgid "Instructure Text component styled with semantic .instui-text classes."
-msgstr "کامپوننت متن Instructure که با کلاس‌های معنایی .instui-text استایل‌دهی شده است."
+msgstr ""
+"کامپوننت متن Instructure که با کلاس‌های معنایی .instui-text استایل‌دهی شده است."
 
 #: docs/.vitepress/catalog-i18n.json#registryBrowserItems.close-button.title
 #, no-c-format
@@ -2124,8 +2383,12 @@ msgstr "دکمه بستن"
 #: docs/.vitepress/catalog-i18n.json#registryBrowserItems.close-button.description
 #, no-c-format
 msgctxt "docs.chrome:registryBrowserItems.close-button.description"
-msgid "Instructure Close-button component styled with semantic .instui-close-button classes."
-msgstr "کامپوننت دکمه بستن Instructure که با کلاس‌های معنایی .instui-close-button استایل‌دهی شده است."
+msgid ""
+"Instructure Close-button component styled with semantic .instui-close-button "
+"classes."
+msgstr ""
+"کامپوننت دکمه بستن Instructure که با کلاس‌های معنایی .instui-close-button "
+"استایل‌دهی شده است."
 
 #: docs/.vitepress/catalog-i18n.json#registryBrowserItems.form-field.title
 #, no-c-format
@@ -2136,8 +2399,12 @@ msgstr "فیلد فرم"
 #: docs/.vitepress/catalog-i18n.json#registryBrowserItems.form-field.description
 #, no-c-format
 msgctxt "docs.chrome:registryBrowserItems.form-field.description"
-msgid "Instructure Form-field component styled with semantic .instui-form-field classes."
-msgstr "کامپوننت فیلد فرم Instructure که با کلاس‌های معنایی .instui-form-field استایل‌دهی شده است."
+msgid ""
+"Instructure Form-field component styled with semantic .instui-form-field "
+"classes."
+msgstr ""
+"کامپوننت فیلد فرم Instructure که با کلاس‌های معنایی .instui-form-field "
+"استایل‌دهی شده است."
 
 #: docs/.vitepress/catalog-i18n.json#registryBrowserItems.form-field-group.title
 #, no-c-format
@@ -2148,8 +2415,12 @@ msgstr "گروه فیلدهای فرم"
 #: docs/.vitepress/catalog-i18n.json#registryBrowserItems.form-field-group.description
 #, no-c-format
 msgctxt "docs.chrome:registryBrowserItems.form-field-group.description"
-msgid "Instructure Form-field-group component styled with semantic .instui-form-field-group classes."
-msgstr "کامپوننت گروه فیلدهای فرم Instructure که با کلاس‌های معنایی .instui-form-field-group استایل‌دهی شده است."
+msgid ""
+"Instructure Form-field-group component styled with semantic .instui-form-"
+"field-group classes."
+msgstr ""
+"کامپوننت گروه فیلدهای فرم Instructure که با کلاس‌های معنایی .instui-form-"
+"field-group استایل‌دهی شده است."
 
 #: docs/.vitepress/catalog-i18n.json#registryBrowserItems.radio-input-group.title
 #, no-c-format
@@ -2160,8 +2431,12 @@ msgstr "گروه ورودی‌های رادیویی"
 #: docs/.vitepress/catalog-i18n.json#registryBrowserItems.radio-input-group.description
 #, no-c-format
 msgctxt "docs.chrome:registryBrowserItems.radio-input-group.description"
-msgid "Instructure Radio-input-group component styled with semantic .instui-radio-input-group classes."
-msgstr "کامپوننت گروه ورودی‌های رادیویی Instructure که با کلاس‌های معنایی .instui-radio-input-group استایل‌دهی شده است."
+msgid ""
+"Instructure Radio-input-group component styled with semantic .instui-radio-"
+"input-group classes."
+msgstr ""
+"کامپوننت گروه ورودی‌های رادیویی Instructure که با کلاس‌های معنایی .instui-"
+"radio-input-group استایل‌دهی شده است."
 
 #: docs/.vitepress/catalog-i18n.json#registryBrowserItems.form-field-messages.title
 #, no-c-format
@@ -2172,8 +2447,12 @@ msgstr "پیام‌های فیلد فرم"
 #: docs/.vitepress/catalog-i18n.json#registryBrowserItems.form-field-messages.description
 #, no-c-format
 msgctxt "docs.chrome:registryBrowserItems.form-field-messages.description"
-msgid "Instructure Form-field-messages component styled with semantic .instui-form-field-messages classes."
-msgstr "کامپوننت پیام‌های فیلد فرم Instructure که با کلاس‌های معنایی .instui-form-field-messages استایل‌دهی شده است."
+msgid ""
+"Instructure Form-field-messages component styled with semantic .instui-form-"
+"field-messages classes."
+msgstr ""
+"کامپوننت پیام‌های فیلد فرم Instructure که با کلاس‌های معنایی .instui-form-"
+"field-messages استایل‌دهی شده است."
 
 #: docs/.vitepress/catalog-i18n.json#registryBrowserItems.text-input.title
 #, no-c-format
@@ -2184,8 +2463,12 @@ msgstr "ورودی متنی"
 #: docs/.vitepress/catalog-i18n.json#registryBrowserItems.text-input.description
 #, no-c-format
 msgctxt "docs.chrome:registryBrowserItems.text-input.description"
-msgid "Instructure Text-input component styled with semantic .instui-text-input classes."
-msgstr "کامپوننت ورودی متنی Instructure که با کلاس‌های معنایی .instui-text-input استایل‌دهی شده است."
+msgid ""
+"Instructure Text-input component styled with semantic .instui-text-input "
+"classes."
+msgstr ""
+"کامپوننت ورودی متنی Instructure که با کلاس‌های معنایی .instui-text-input "
+"استایل‌دهی شده است."
 
 #: docs/.vitepress/catalog-i18n.json#registryBrowserItems.text-area.title
 #, no-c-format
@@ -2196,8 +2479,12 @@ msgstr "ناحیه متنی"
 #: docs/.vitepress/catalog-i18n.json#registryBrowserItems.text-area.description
 #, no-c-format
 msgctxt "docs.chrome:registryBrowserItems.text-area.description"
-msgid "Instructure Text-area component styled with semantic .instui-text-area classes."
-msgstr "کامپوننت ناحیه متنی Instructure که با کلاس‌های معنایی .instui-text-area استایل‌دهی شده است."
+msgid ""
+"Instructure Text-area component styled with semantic .instui-text-area "
+"classes."
+msgstr ""
+"کامپوننت ناحیه متنی Instructure که با کلاس‌های معنایی .instui-text-area "
+"استایل‌دهی شده است."
 
 #: docs/.vitepress/catalog-i18n.json#registryBrowserItems.simple-select.title
 #, no-c-format
@@ -2208,8 +2495,12 @@ msgstr "انتخاب ساده"
 #: docs/.vitepress/catalog-i18n.json#registryBrowserItems.simple-select.description
 #, no-c-format
 msgctxt "docs.chrome:registryBrowserItems.simple-select.description"
-msgid "Instructure Simple-select component styled with semantic .instui-simple-select classes."
-msgstr "کامپوننت انتخاب ساده Instructure که با کلاس‌های معنایی .instui-simple-select استایل‌دهی شده است."
+msgid ""
+"Instructure Simple-select component styled with semantic .instui-simple-"
+"select classes."
+msgstr ""
+"کامپوننت انتخاب ساده Instructure که با کلاس‌های معنایی .instui-simple-select "
+"استایل‌دهی شده است."
 
 #: docs/.vitepress/catalog-i18n.json#registryBrowserItems.input-group.title
 #, no-c-format
@@ -2220,8 +2511,12 @@ msgstr "گروه ورودی"
 #: docs/.vitepress/catalog-i18n.json#registryBrowserItems.input-group.description
 #, no-c-format
 msgctxt "docs.chrome:registryBrowserItems.input-group.description"
-msgid "Instructure Input-group component styled with semantic .instui-input-group classes."
-msgstr "کامپوننت گروه ورودی Instructure که با کلاس‌های معنایی .instui-input-group استایل‌دهی شده است."
+msgid ""
+"Instructure Input-group component styled with semantic .instui-input-group "
+"classes."
+msgstr ""
+"کامپوننت گروه ورودی Instructure که با کلاس‌های معنایی .instui-input-group "
+"استایل‌دهی شده است."
 
 #: docs/.vitepress/catalog-i18n.json#registryBrowserItems.number-input.title
 #, no-c-format
@@ -2232,8 +2527,12 @@ msgstr "ورودی عددی"
 #: docs/.vitepress/catalog-i18n.json#registryBrowserItems.number-input.description
 #, no-c-format
 msgctxt "docs.chrome:registryBrowserItems.number-input.description"
-msgid "Instructure Number-input component styled with semantic .instui-number-input classes."
-msgstr "کامپوننت ورودی عددی Instructure که با کلاس‌های معنایی .instui-number-input استایل‌دهی شده است."
+msgid ""
+"Instructure Number-input component styled with semantic .instui-number-input "
+"classes."
+msgstr ""
+"کامپوننت ورودی عددی Instructure که با کلاس‌های معنایی .instui-number-input "
+"استایل‌دهی شده است."
 
 #: docs/.vitepress/catalog-i18n.json#registryBrowserItems.in-place-edit.title
 #, no-c-format
@@ -2244,8 +2543,12 @@ msgstr "ویرایش درجا"
 #: docs/.vitepress/catalog-i18n.json#registryBrowserItems.in-place-edit.description
 #, no-c-format
 msgctxt "docs.chrome:registryBrowserItems.in-place-edit.description"
-msgid "Instructure In-place-edit component styled with semantic .instui-in-place-edit classes."
-msgstr "کامپوننت ویرایش درجا Instructure که با کلاس‌های معنایی .instui-in-place-edit استایل‌دهی شده است."
+msgid ""
+"Instructure In-place-edit component styled with semantic .instui-in-place-"
+"edit classes."
+msgstr ""
+"کامپوننت ویرایش درجا Instructure که با کلاس‌های معنایی .instui-in-place-edit "
+"استایل‌دهی شده است."
 
 #: docs/.vitepress/catalog-i18n.json#registryBrowserItems.view.title
 #, no-c-format
@@ -2257,7 +2560,8 @@ msgstr "نما"
 #, no-c-format
 msgctxt "docs.chrome:registryBrowserItems.view.description"
 msgid "Instructure View component styled with semantic .instui-view classes."
-msgstr "کامپوننت نما Instructure که با کلاس‌های معنایی .instui-view استایل‌دهی شده است."
+msgstr ""
+"کامپوننت نما Instructure که با کلاس‌های معنایی .instui-view استایل‌دهی شده است."
 
 #: docs/.vitepress/catalog-i18n.json#registryBrowserItems.banner.title
 #, fuzzy, no-c-format
@@ -2292,7 +2596,8 @@ msgstr "بارگذار اسکلت"
 #: docs/.vitepress/catalog-i18n.json#registryBrowserItems.skeleton-loader.description
 #, no-c-format
 msgctxt "docs.chrome:registryBrowserItems.skeleton-loader.description"
-msgid "Pantoken skeleton-loader component styles and documented HTML structure."
+msgid ""
+"Pantoken skeleton-loader component styles and documented HTML structure."
 msgstr "استایل‌های کامپوننت بارگذار اسکلت Pantoken و ساختار HTML مستندشده."
 
 #: docs/.vitepress/catalog-i18n.json#registryBrowserItems.segmented-control.title
@@ -2304,7 +2609,8 @@ msgstr "کنترل بخش‌بندی‌شده"
 #: docs/.vitepress/catalog-i18n.json#registryBrowserItems.segmented-control.description
 #, no-c-format
 msgctxt "docs.chrome:registryBrowserItems.segmented-control.description"
-msgid "Pantoken segmented-control component styles and documented HTML structure."
+msgid ""
+"Pantoken segmented-control component styles and documented HTML structure."
 msgstr "استایل‌های کامپوننت کنترل بخش‌بندی‌شده Pantoken و ساختار HTML مستندشده."
 
 #: docs/.vitepress/catalog-i18n.json#registryBrowserItems.wrapper.title
@@ -2548,6 +2854,22 @@ msgid "Development-only layout outlines for Pantoken components."
 msgstr "خطوط پیرامونی چیدمان مختص توسعه برای کامپوننت‌های Pantoken."
 
 #, no-c-format
+#~ msgctxt "docs.chrome:a2uiCatalog.reactSupport"
+#~ msgid "React runtime support is pending v1.0 SDK verification."
+#~ msgstr "پشتیبانی زمان اجرای React در انتظار تأیید با SDK نسخهٔ 1.0 است."
+
+#, no-c-format
+#~ msgctxt "docs.chrome:a2uiCatalog.angularSupport"
+#~ msgid "Angular runtime support is pending v1.0 SDK verification."
+#~ msgstr "پشتیبانی زمان اجرای Angular در انتظار تأیید با SDK نسخهٔ 1.0 است."
+
+#, no-c-format
 #~ msgctxt "docs.chrome:registryBrowser.subtitle"
-#~ msgid "Compatible components, themes, and behavior hooks conforming to the shadcn/ui registry specification. Add items directly to your shadcn/ui project via CLI."
-#~ msgstr "کامپوننت‌ها، تم‌ها و هوک‌های رفتار سازگار که با مشخصات رجیستری shadcn/ui مطابقت دارند. آیتم‌ها را مستقیماً از طریق CLI به پروژه shadcn/ui خود اضافه کنید."
+#~ msgid ""
+#~ "Compatible components, themes, and behavior hooks conforming to the "
+#~ "shadcn/ui registry specification. Add items directly to your shadcn/ui "
+#~ "project via CLI."
+#~ msgstr ""
+#~ "کامپوننت‌ها، تم‌ها و هوک‌های رفتار سازگار که با مشخصات رجیستری shadcn/ui "
+#~ "مطابقت دارند. آیتم‌ها را مستقیماً از طریق CLI به پروژه shadcn/ui خود اضافه "
+#~ "کنید."

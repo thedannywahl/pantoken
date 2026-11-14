@@ -32,8 +32,8 @@ features:
     title: ייצר לכל פלטפורמה
     details: התקן את pantoken cli כדי ליצור הגדרות מראש או להוסיף רכיבים לכל פלטפורמה&colon; web, native, וכל דבר אחר.
   - icon:
-      light: /unlink-light.svg
-      dark: /unlink-dark.svg
-    title: אין צורך ב-React
-    details: ספריית InstUI קשורה היטב עם React. אם אתה רוצה להשתמש בה, עליך להשתמש ב-React. עכשיו אתה יכול לבנות בכל מקום.
+      light: /wand-sparkles-light.svg
+      dark: /wand-sparkles-dark.svg
+    title: Build agentically
+    details: Add pantoken to the AI tools you're already using with included skills, agents file, api-catalog, llms.txt, and A2UI.
 ---

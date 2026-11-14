@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: pantoken\n"
-"PO-Revision-Date: 2026-10-30 19:57+0000\n"
+"PO-Revision-Date: 2026-11-14 00:59+0000\n"
 "Last-Translator: pantoken localization engine\n"
 "Language-Team: pantoken\n"
 "MIME-Version: 1.0\n"
@@ -32496,3 +32496,211 @@ msgstr "<!-- pantoken-value-scope:css%2Fprogress-circle.md -->\n此元件的 CSS
 msgctxt "docs.api:prose"
 msgid "<!-- pantoken-value-scope:css%2Ftruncate.md -->\nThis component ships no CSS of its own — its markup and behavior come entirely from {{ptk_code_0}}. Its {{ptk_code_1}} modifier is driven by that behavior. See the [modifier table below]({{ptk_code_2}})."
 msgstr "<!-- pantoken-value-scope:css%2Ftruncate.md -->\n此元件本身不帶任何 CSS — 它的標記與行為完全來自 {{ptk_code_0}}。其 {{ptk_code_1}} 修飾符由該行為驅動。請參閱下方的[修飾符表]({{ptk_code_2}})。"
+
+msgctxt "docs.api:prose"
+msgid "<!-- pantoken-value-scope:css%2Fscreen-reader-content.md -->\nThis component ships no CSS of its own — its markup and behavior come entirely from {{ptk_code_0}}. See the [modifier table below]({{ptk_code_1}})."
+msgstr "<!-- pantoken-value-scope:css%2Fscreen-reader-content.md -->\n此元件本身不附帶 CSS — 其標記和行為完全來自 {{ptk_code_0}}。請參閱下方的 [修飾符表]({{ptk_code_1}})。"
+
+msgctxt "docs.api:prose"
+msgid "A section for an empty state or call to action."
+msgstr "用於空狀態或行動呼籲的區塊。"
+
+msgctxt "docs.api:prose"
+msgid "A breadcrumb navigation landmark."
+msgstr "麵包屑導覽地標。"
+
+msgctxt "docs.api:prose"
+msgid "A media-object byline container."
+msgstr "媒體物件的署名容器。"
+
+msgctxt "docs.api:prose"
+msgid "An article-shaped card with slotted content."
+msgstr "具有插槽內容的文章形狀卡片。"
+
+msgctxt "docs.api:prose"
+msgid "A native checkbox and its slotted label."
+msgstr "原生核取方塊及其插槽標籤。"
+
+msgctxt "docs.api:prose"
+msgid "A native close button with an accessible label."
+msgstr "具有無障礙標籤的原生關閉按鈕。"
+
+msgctxt "docs.api:prose"
+msgid "Missing root component records, registered after the hand-authored elements."
+msgstr "缺少根元件記錄，這些記錄是在手工撰寫的元素之後註冊。"
+
+msgctxt "docs.api:prose"
+msgid "A native file picker presented as a dropzone label."
+msgstr "以拖放區標籤呈現的原生檔案選擇器。"
+
+msgctxt "docs.api:prose"
+msgid "A form-field layout container."
+msgstr "表單欄位版面配置容器。"
+
+msgctxt "docs.api:prose"
+msgid "A native fieldset for a group of form fields."
+msgstr "用於一組表單欄位的原生 fieldset。"
+
+msgctxt "docs.api:prose"
+msgid "A status region for form-field help and validation messages."
+msgstr "用於表單欄位說明與驗證訊息的狀態區域。"
+
+msgctxt "docs.api:prose"
+msgid "A semantic heading with a bounded level from one through six."
+msgstr "層級介於一到六的語意標題。"
+
+msgctxt "docs.api:prose"
+msgid "A container for an input and adjacent content."
+msgstr "用於容納輸入欄位及相鄰內容的容器。"
+
+msgctxt "docs.api:prose"
+msgid "A link that rejects executable and data URL schemes."
+msgstr "會拒絕可執行程式與資料 URL 配置的連結。"
+
+msgctxt "docs.api:prose"
+msgid "A native unordered list with Pantoken list-item styles."
+msgstr "使用 Pantoken 清單項目樣式的原生無序清單。"
+
+msgctxt "docs.api:prose"
+msgid "An overlay surface for positioned content."
+msgstr "用於顯示定位內容的覆蓋層。"
+
+msgctxt "docs.api:prose"
+msgid "A menu surface with item, group, and separator styles."
+msgstr "具有項目、群組和分隔線樣式的選單表面。"
+
+msgctxt "docs.api:prose"
+msgid "A native number input with value-change events."
+msgstr "具有值變更事件的原生數字輸入欄位。"
+
+msgctxt "docs.api:prose"
+msgid "A pagination navigation landmark."
+msgstr "分頁導覽地標。"
+
+msgctxt "docs.api:prose"
+msgid "A native radio control and its slotted label."
+msgstr "原生單選控制項及其插槽標籤。"
+
+msgctxt "docs.api:prose"
+msgid "A native fieldset for a radio-input group."
+msgstr "用於單選輸入群組的原生欄位集。"
+
+msgctxt "docs.api:prose"
+msgid "A native range slider with value-change events."
+msgstr "原生範圍滑桿，並提供值變更事件。"
+
+msgctxt "docs.api:prose"
+msgid "Visually hidden content that remains available to assistive technology."
+msgstr "視覺上隱藏但仍可供輔助技術使用的內容。"
+
+msgctxt "docs.api:prose"
+msgid "A native select control that copies text-only options from its light DOM."
+msgstr "原生選取控制項，會從其 light DOM 複製純文字選項。"
+
+msgctxt "docs.api:prose"
+msgid "A table-layout container that keeps slotted rows inside its table semantics."
+msgstr "一個表格佈局容器，會將透過 slot 插入的列維持在表格語意中。"
+
+msgctxt "docs.api:prose"
+msgid "A paragraph of Pantoken body text."
+msgstr "一段 Pantoken 內文。"
+
+msgctxt "docs.api:prose"
+msgid "A native multiline text input with a visible slotted label."
+msgstr "具有可見插槽標籤的原生多行文字輸入欄位。"
+
+msgctxt "docs.api:prose"
+msgid "A native text input with a visible slotted label."
+msgstr "具有可見插槽標籤的原生文字輸入欄位。"
+
+msgctxt "docs.api:prose"
+msgid "A native disclosure with a configurable summary."
+msgstr "可設定摘要的原生揭露元件。"
+
+msgctxt "docs.api:prose"
+msgid "A native disclosure group."
+msgstr "原生的可展開群組。"
+
+msgctxt "docs.api:prose"
+msgid "A neutral layout primitive."
+msgstr "中性的版面配置基礎元件。"
+
+#, pantoken-verbatim
+msgctxt "docs.api:text"
+msgid "toggleGroup"
+msgstr "toggleGroup"
+
+#, pantoken-verbatim
+msgctxt "docs.api:text"
+msgid "toggleDetails"
+msgstr "toggleDetails"
+
+#, pantoken-verbatim
+msgctxt "docs.api:text"
+msgid "fileDrop"
+msgstr "fileDrop"
+
+#, pantoken-verbatim
+msgctxt "docs.api:text"
+msgid "rangeInput"
+msgstr "rangeInput"
+
+#, pantoken-verbatim
+msgctxt "docs.api:text"
+msgid "screenReaderContent"
+msgstr "screenReaderContent"
+
+#, pantoken-verbatim
+msgctxt "docs.api:text"
+msgid "closeButton"
+msgstr "closeButton"
+
+#, pantoken-verbatim
+msgctxt "docs.api:text"
+msgid "formField"
+msgstr "formField"
+
+#, pantoken-verbatim
+msgctxt "docs.api:text"
+msgid "formFieldGroup"
+msgstr "formFieldGroup"
+
+#, pantoken-verbatim
+msgctxt "docs.api:text"
+msgid "radioInputGroup"
+msgstr "radioInputGroup"
+
+#, pantoken-verbatim
+msgctxt "docs.api:text"
+msgid "formFieldMessages"
+msgstr "formFieldMessages"
+
+#, pantoken-verbatim
+msgctxt "docs.api:text"
+msgid "textInput"
+msgstr "textInput"
+
+#, pantoken-verbatim
+msgctxt "docs.api:text"
+msgid "textArea"
+msgstr "textArea"
+
+#, pantoken-verbatim
+msgctxt "docs.api:text"
+msgid "simpleSelect"
+msgstr "simpleSelect"
+
+#, pantoken-verbatim
+msgctxt "docs.api:text"
+msgid "inputGroup"
+msgstr "inputGroup"
+
+#, pantoken-verbatim
+msgctxt "docs.api:text"
+msgid "numberInput"
+msgstr "numberInput"
+
+#, pantoken-verbatim
+msgctxt "docs.api:text"
+msgid "componentElements"
+msgstr "componentElements"

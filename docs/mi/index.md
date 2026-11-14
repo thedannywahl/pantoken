@@ -32,8 +32,8 @@ features:
     title: Hangaia mō ngā tūāpapa katoa
     details: Whakauru i te pantoken cli hei whakaputa tauira, hei tāpiri whakaritenga mā ia kaupapa&colon; web, native, me ētahi atu i waenganui.
   - icon:
-      light: /unlink-light.svg
-      dark: /unlink-dark.svg
-    title: Kaore React e hiahiatia
-    details: He hononga tata ki a React te tawhā InstUI. Mēnā e hiahia ana koe ki te whakamahi i a ia, me whakamahi e koe i a React. Ināianei ka taea e koe te hanga i te waahi nui rawa.
+      light: /wand-sparkles-light.svg
+      dark: /wand-sparkles-dark.svg
+    title: Build agentically
+    details: Add pantoken to the AI tools you're already using with included skills, agents file, api-catalog, llms.txt, and A2UI.
 ---

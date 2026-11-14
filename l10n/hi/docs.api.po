@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: pantoken\n"
-"PO-Revision-Date: 2026-10-30 19:56+0000\n"
+"PO-Revision-Date: 2026-11-14 02:41+0000\n"
 "Last-Translator: pantoken localization engine\n"
 "Language-Team: pantoken\n"
 "MIME-Version: 1.0\n"
@@ -204,10 +204,10 @@ msgid "**Transpile extra InstUI packages**"
 msgstr "**अतिरिक्त InstUI पैकेजों को ट्रांसपाइल करें**"
 
 #: bundlers/next/src/index.md
-#, no-c-format, pantoken-verbatim
+#, no-c-format
 msgctxt "docs.api:prose"
 msgid "<!-- pantoken-value-scope:bundlers%2Fnext%2Fsrc%2Findex.md -->\nTarget: Next.js. Current format: {{ptk_code_0}}. Minimum host version: {{ptk_code_1}}. Tested through {{ptk_code_2}}. Newer releases require review."
-msgstr "<!-- pantoken-value-scope:bundlers%2Fnext%2Fsrc%2Findex.md -->\nTarget: Next.js. Current format: {{ptk_code_0}}. Minimum host version: {{ptk_code_1}}. Tested through {{ptk_code_2}}. Newer releases require review."
+msgstr "<!-- pantoken-value-scope:bundlers%2Fnext%2Fsrc%2Findex.md -->\nलक्ष्य: Next.js। वर्तमान फ़ॉर्मैट: {{ptk_code_0}}। न्यूनतम होस्ट संस्करण: {{ptk_code_1}}। {{ptk_code_2}} तक परीक्षण किया गया। नए रिलीज़ की समीक्षा आवश्यक है।"
 
 #: bundlers/next/src/index.md
 #, no-c-format
@@ -313,10 +313,10 @@ msgid "**Build a preset from a custom IR**"
 msgstr "**कस्टम IR से एक प्रीसेट बनाएं**"
 
 #: bundlers/panda/src/index.md
-#, no-c-format, pantoken-verbatim
+#, no-c-format
 msgctxt "docs.api:prose"
 msgid "<!-- pantoken-value-scope:bundlers%2Fpanda%2Fsrc%2Findex.md -->\nTarget: Panda CSS. Current format: {{ptk_code_0}}. Minimum host version: {{ptk_code_1}}. Tested through {{ptk_code_2}}. Newer releases require review."
-msgstr "<!-- pantoken-value-scope:bundlers%2Fpanda%2Fsrc%2Findex.md -->\nTarget: Panda CSS. Current format: {{ptk_code_0}}. Minimum host version: {{ptk_code_1}}. Tested through {{ptk_code_2}}. Newer releases require review."
+msgstr "<!-- pantoken-value-scope:bundlers%2Fpanda%2Fsrc%2Findex.md -->\nलक्ष्य: Panda CSS। वर्तमान फ़ॉर्मैट: {{ptk_code_0}}। होस्ट का न्यूनतम संस्करण: {{ptk_code_1}}। {{ptk_code_2}} तक परीक्षण किया गया। नए रिलीज़ की समीक्षा आवश्यक है।"
 
 #: bundlers/panda/src/index.md
 #, no-c-format
@@ -379,10 +379,10 @@ msgid "**Spread it into panda.config.ts**"
 msgstr "**इसे panda.config.ts में फैलाएँ**"
 
 #: bundlers/postcss/src/index.md
-#, no-c-format, pantoken-verbatim
+#, no-c-format
 msgctxt "docs.api:prose"
 msgid "<!-- pantoken-value-scope:bundlers%2Fpostcss%2Fsrc%2Findex.md -->\nTarget: PostCSS. Minimum host version: {{ptk_code_0}}. Tested through {{ptk_code_1}}. Newer releases require review."
-msgstr "<!-- pantoken-value-scope:bundlers%2Fpostcss%2Fsrc%2Findex.md -->\nTarget: PostCSS. Minimum host version: {{ptk_code_0}}. Tested through {{ptk_code_1}}. Newer releases require review."
+msgstr "<!-- pantoken-value-scope:bundlers%2Fpostcss%2Fsrc%2Findex.md -->\nलक्ष्य: PostCSS। होस्ट का न्यूनतम संस्करण: {{ptk_code_0}}। {{ptk_code_1}} तक परीक्षण किया गया। नए रिलीज़ के लिए समीक्षा आवश्यक है।"
 
 #: bundlers/postcss/src/index.md
 #, no-c-format
@@ -479,10 +479,10 @@ msgid "**Also expose the primitive palette under a primitive- prefix**"
 msgstr "**primitive- prefix के अंतर्गत primitive पैलेट को भी उपलब्ध कराएं**"
 
 #: bundlers/tailwind/src/index.md
-#, no-c-format, pantoken-verbatim
+#, no-c-format
 msgctxt "docs.api:prose"
 msgid "<!-- pantoken-value-scope:bundlers%2Ftailwind%2Fsrc%2Findex.md -->\nTarget: Tailwind CSS. Minimum host version: {{ptk_code_0}}. Tested through {{ptk_code_1}}. Newer releases require review."
-msgstr "<!-- pantoken-value-scope:bundlers%2Ftailwind%2Fsrc%2Findex.md -->\nTarget: Tailwind CSS. Minimum host version: {{ptk_code_0}}. Tested through {{ptk_code_1}}. Newer releases require review."
+msgstr "<!-- pantoken-value-scope:bundlers%2Ftailwind%2Fsrc%2Findex.md -->\nलक्ष्य: Tailwind CSS. न्यूनतम होस्ट संस्करण: {{ptk_code_0}}. {{ptk_code_1}} तक परीक्षण किया गया। नए रिलीज़ के लिए समीक्षा आवश्यक है।"
 
 #: bundlers/tailwind/src/index.md
 #, no-c-format
@@ -551,10 +551,10 @@ msgid "**Consume the virtual modules in app code**"
 msgstr "**ऐप कोड में वर्चुअल मॉड्यूल का उपयोग करें**"
 
 #: bundlers/vite/src/index.md
-#, no-c-format, pantoken-verbatim
+#, no-c-format
 msgctxt "docs.api:prose"
 msgid "<!-- pantoken-value-scope:bundlers%2Fvite%2Fsrc%2Findex.md -->\nTarget: Vite. Minimum host version: {{ptk_code_0}}. Tested through {{ptk_code_1}}. Newer releases require review."
-msgstr "<!-- pantoken-value-scope:bundlers%2Fvite%2Fsrc%2Findex.md -->\nTarget: Vite. Minimum host version: {{ptk_code_0}}. Tested through {{ptk_code_1}}. Newer releases require review."
+msgstr "<!-- pantoken-value-scope:bundlers%2Fvite%2Fsrc%2Findex.md -->\nलक्ष्य: Vite. होस्ट का न्यूनतम संस्करण: {{ptk_code_0}}. {{ptk_code_1}} तक परीक्षण किया गया। नए रिलीज़ की समीक्षा आवश्यक है।"
 
 #: bundlers/vite/src/index.md
 #, no-c-format
@@ -611,10 +611,10 @@ msgid "**Rename the emitted asset**"
 msgstr "**जारी किए गए एसेट का नाम बदलें**"
 
 #: bundlers/webpack/src/index.md
-#, no-c-format, pantoken-verbatim
+#, no-c-format
 msgctxt "docs.api:prose"
 msgid "<!-- pantoken-value-scope:bundlers%2Fwebpack%2Fsrc%2Findex.md -->\nTarget: webpack. Current format: {{ptk_code_0}}. Minimum host version: {{ptk_code_1}}. Tested through {{ptk_code_2}}. Newer releases require review."
-msgstr "<!-- pantoken-value-scope:bundlers%2Fwebpack%2Fsrc%2Findex.md -->\nTarget: webpack. Current format: {{ptk_code_0}}. Minimum host version: {{ptk_code_1}}. Tested through {{ptk_code_2}}. Newer releases require review."
+msgstr "<!-- pantoken-value-scope:bundlers%2Fwebpack%2Fsrc%2Findex.md -->\nलक्ष्य: webpack. वर्तमान फ़ॉर्मैट: {{ptk_code_0}}. न्यूनतम होस्ट संस्करण: {{ptk_code_1}}. {{ptk_code_2}} तक परीक्षण किया गया है। नए संस्करणों की समीक्षा आवश्यक है।"
 
 #: bundlers/webpack/src/index.md
 #, no-c-format
@@ -1447,18 +1447,19 @@ msgstr "WCAG 2.2 1.4.11, 2.4.7"
 #: css/alert.md css/card.md css/context-view.md css/drawer-layout.md
 #: css/drawer-layout.tray.md css/menu.group.md css/menu.md
 #: css/menu.separator.md css/modal.body.md css/modal.footer.md
-#: css/modal.header.md css/modal.md css/popover.md css/radio-input-group.md
-#: css/radio.md css/segmented-control.md css/tray.md
+#: css/modal.header.md css/modal.md css/popover.md css/progress.md
+#: css/radio-input-group.md css/radio.md css/segmented-control.md
+#: css/toggle-group.md css/tray.md
 #, no-c-format, pantoken-verbatim
 msgctxt "docs.api:prose"
 msgid "less-contrast-stays-readable"
 msgstr "less-contrast-stays-readable"
 
-#: css/alert.md css/button-set.md css/button.md css/context-view.md
-#: css/file-drop.md css/menu.group.md css/menu.item.md css/menu.md
-#: css/menu.separator.md css/modal.md css/number-input.md
-#: css/segmented-control.md css/tabs.tab.md css/tag.md css/toggle-details.md
-#: css/toggle-group.md css/tooltip.md
+#: css/alert.md css/button-set.md css/button.md css/file-drop.md
+#: css/menu.group.md css/menu.item.md css/menu.md css/menu.separator.md
+#: css/number-input.md css/progress.md css/segmented-control.md
+#: css/simple-select.md css/tag.md css/toggle-details.md css/toggle-group.md
+#: css/tooltip.md
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "Not applicable"
@@ -1615,66 +1616,6 @@ msgstr "**Source:** [avatar.css](https://github.com/thedannywahl/pantoken/blob/m
 msgctxt "docs.api:prose"
 msgid "<!-- pantoken-value-scope:css%2Favatar.md -->\nThis component's CSS renders and works on its own; pair it with {{ptk_code_0}} to add the interactive behavior. See the [modifier table below]({{ptk_code_1}})."
 msgstr "<!-- pantoken-value-scope:css%2Favatar.md -->\nयह कंपोनेंट का CSS स्वयं रेंडर और कार्य करता है; इंटरैक्टिव व्यवहार जोड़ने के लिए इसे {{ptk_code_0}} के साथ जोड़ें। विवरण के लिए [modifier table below]({{ptk_code_1}}) देखें।"
-
-#: css/close-button.md
-#, no-c-format
-msgctxt "docs.api:prose"
-msgid "<!-- pantoken-value-scope:css%2Fclose-button.md -->\nThis component's CSS renders and works on its own; pair it with {{ptk_code_0}} to add the interactive behavior. See the [modifier table below]({{ptk_code_1}})."
-msgstr "<!-- pantoken-value-scope:css%2Fclose-button.md -->\nयह कंपोनेंट का CSS स्वयं रेंडर और कार्य करता है; इंटरैक्टिव व्यवहार जोड़ने के लिए इसे {{ptk_code_0}} के साथ जोड़ें। विवरण के लिए [modifier table below]({{ptk_code_1}}) देखें।"
-
-#: css/form-field.md
-#, no-c-format
-msgctxt "docs.api:prose"
-msgid "<!-- pantoken-value-scope:css%2Fform-field.md -->\nThis component's CSS renders and works on its own; pair it with {{ptk_code_0}} to add the interactive behavior. See the [modifier table below]({{ptk_code_1}})."
-msgstr "<!-- pantoken-value-scope:css%2Fform-field.md -->\nयह कंपोनेंट का CSS स्वयं रेंडर और कार्य करता है; इंटरैक्टिव व्यवहार जोड़ने के लिए इसे {{ptk_code_0}} के साथ जोड़ें। विवरण के लिए [modifier table below]({{ptk_code_1}}) देखें।"
-
-#: css/in-place-edit.md
-#, no-c-format
-msgctxt "docs.api:prose"
-msgid "<!-- pantoken-value-scope:css%2Fin-place-edit.md -->\nThis component's CSS renders and works on its own; pair it with {{ptk_code_0}} to add the interactive behavior. See the [modifier table below]({{ptk_code_1}})."
-msgstr "<!-- pantoken-value-scope:css%2Fin-place-edit.md -->\nयह कंपोनेंट का CSS स्वयं रेंडर और कार्य करता है; इंटरैक्टिव व्यवहार जोड़ने के लिए इसे {{ptk_code_0}} के साथ जोड़ें। विवरण के लिए [modifier table below]({{ptk_code_1}}) देखें।"
-
-#: css/menu.md
-#, no-c-format
-msgctxt "docs.api:prose"
-msgid "<!-- pantoken-value-scope:css%2Fmenu.md -->\nThis component's CSS renders and works on its own; pair it with {{ptk_code_0}} to add the interactive behavior. See the [modifier table below]({{ptk_code_1}})."
-msgstr "<!-- pantoken-value-scope:css%2Fmenu.md -->\nयह कंपोनेंट का CSS स्वयं रेंडर और कार्य करता है; इंटरैक्टिव व्यवहार जोड़ने के लिए इसे {{ptk_code_0}} के साथ जोड़ें। विवरण के लिए [modifier table below]({{ptk_code_1}}) देखें।"
-
-#: css/modal.md
-#, no-c-format
-msgctxt "docs.api:prose"
-msgid "<!-- pantoken-value-scope:css%2Fmodal.md -->\nThis component's CSS renders and works on its own; pair it with {{ptk_code_0}} to add the interactive behavior. See the [modifier table below]({{ptk_code_1}})."
-msgstr "<!-- pantoken-value-scope:css%2Fmodal.md -->\nयह कंपोनेंट का CSS स्वयं रेंडर और कार्य करता है; इंटरैक्टिव व्यवहार जोड़ने के लिए इसे {{ptk_code_0}} के साथ जोड़ें। विवरण के लिए [modifier table below]({{ptk_code_1}}) देखें।"
-
-#: css/segmented-control.md
-#, no-c-format
-msgctxt "docs.api:prose"
-msgid "<!-- pantoken-value-scope:css%2Fsegmented-control.md -->\nThis component's CSS renders and works on its own; pair it with {{ptk_code_0}} to add the interactive behavior. See the [modifier table below]({{ptk_code_1}})."
-msgstr "<!-- pantoken-value-scope:css%2Fsegmented-control.md -->\nयह कंपोनेंट का CSS स्वयं रेंडर और कार्य करता है; इंटरैक्टिव व्यवहार जोड़ने के लिए इसे {{ptk_code_0}} के साथ जोड़ें। विवरण के लिए [modifier table below]({{ptk_code_1}}) देखें।"
-
-#: css/skeleton-loader.md
-#, no-c-format
-msgctxt "docs.api:prose"
-msgid "<!-- pantoken-value-scope:css%2Fskeleton-loader.md -->\nThis component's CSS renders and works on its own; pair it with {{ptk_code_0}} to add the interactive behavior. See the [modifier table below]({{ptk_code_1}})."
-msgstr "<!-- pantoken-value-scope:css%2Fskeleton-loader.md -->\nयह कंपोनेंट का CSS स्वयं रेंडर और कार्य करता है; इंटरैक्टिव व्यवहार जोड़ने के लिए इसे {{ptk_code_0}} के साथ जोड़ें। विवरण के लिए [modifier table below]({{ptk_code_1}}) देखें।"
-
-#: css/tabs.md
-#, no-c-format
-msgctxt "docs.api:prose"
-msgid "<!-- pantoken-value-scope:css%2Ftabs.md -->\nThis component's CSS renders and works on its own; pair it with {{ptk_code_0}} to add the interactive behavior. See the [modifier table below]({{ptk_code_1}})."
-msgstr "<!-- pantoken-value-scope:css%2Ftabs.md -->\nयह कंपोनेंट का CSS स्वयं रेंडर और कार्य करता है; इंटरैक्टिव व्यवहार जोड़ने के लिए इसे {{ptk_code_0}} के साथ जोड़ें। विवरण के लिए [modifier table below]({{ptk_code_1}}) देखें।"
-
-#: css/tooltip.md
-#, no-c-format
-msgctxt "docs.api:prose"
-msgid "<!-- pantoken-value-scope:css%2Ftooltip.md -->\nThis component's CSS renders and works on its own; pair it with {{ptk_code_0}} to add the interactive behavior. See the [modifier table below]({{ptk_code_1}})."
-msgstr "<!-- pantoken-value-scope:css%2Ftooltip.md -->\nयह कंपोनेंट का CSS स्वयं रेंडर और कार्य करता है; इंटरैक्टिव व्यवहार जोड़ने के लिए इसे {{ptk_code_0}} के साथ जोड़ें। विवरण के लिए [modifier table below]({{ptk_code_1}}) देखें।"
-
-#: css/tree-browser.md
-#, no-c-format
-msgctxt "docs.api:prose"
-msgid "<!-- pantoken-value-scope:css%2Ftree-browser.md -->\nThis component's CSS renders and works on its own; pair it with {{ptk_code_0}} to add the interactive behavior. See the [modifier table below]({{ptk_code_1}})."
-msgstr "<!-- pantoken-value-scope:css%2Ftree-browser.md -->\nयह कंपोनेंट का CSS स्वयं रेंडर और कार्य करता है; इंटरैक्टिव व्यवहार जोड़ने के लिए इसे {{ptk_code_0}} के साथ जोड़ें। विवरण के लिए [modifier table below]({{ptk_code_1}}) देखें।"
 
 #: css/avatar.md
 #, no-c-format, pantoken-verbatim
@@ -2502,10 +2443,10 @@ msgid "`.instui-button-set` — A non-wrapping, flush row of buttons joined by 1
 msgstr "`.instui-button-set` — एक सिलवाया हुआ (सपाट, शून्य-श्लेष) बटन पंक्ति, जिसकी केवल बाहरी दो कोने गोल किए गए हैं."
 
 #: css/button-set.md
-#, fuzzy, no-c-format
+#, no-c-format
 msgctxt "docs.api:prose"
-msgid "Its own chained modifiers (`-color-*`, `-size-*`, `-shape-*`, `-toggle`, `-condensed`,\n  `-without-background`, `-without-border`, `-display-block`) set a default for every child\n  `.instui-button` that doesn't carry its own modifier in that same category — a button's own\n  modifier class always wins over the group's default. `-icon-*` is always per-button; it's\n  never read from the group. Deprecated button aliases (`-ghost`, `-color-primary-inverse`)\n  aren't supported as group-level modifiers — use their canonical replacements\n  (`-color-tertiary`, `-on-color`) instead. Each join shows a single 1px seam in the buttons'\n  own border color (solid fills, whose border matches the fill, tint it with the label color).\n  `-without-seam` is group-only: it hides that seam so the buttons read as\n  one continuous control."
-msgstr "Its own chained modifiers (`-color-*`, `-size-*`, `-shape-*`, `-toggle`, `-condensed`,\n  `-without-background`, `-without-border`, `-display-block`) ग्रुप के लिए डिफ़ॉल्ट सेट करते हैं उन प्रत्येक बच्चे के लिए\n  `.instui-button` जिनके पास उसी श्रेणी में अपना मॉडिफायर नहीं है — किसी बटन का अपना\n  मॉडिफायर क्लास हमेशा समूह के डिफ़ॉल्ट पर भारी पड़ता है। `-icon-*` हमेशा प्रति-बटन होता है; इसे\n  कभी समूह से पढ़ा नहीं जाता। प्रतिबंधित बटन उपनाम (`-ghost`, `-color-primary-inverse`)\n) समूह-स्तरीय मॉडिफायर के रूप में समर्थित नहीं हैं — इनके canonical प्रतिस्थापनों का उपयोग करें\n  (`-color-tertiary`, `-on-color`) के बजाय)."
+msgid "Its own chained modifiers (`-color-*`, `-size-*`, `-shape-*`, `-toggle`, `-condensed`,\n  `-without-background`, `-without-border`, `-display-block`) set a default for every child\n  `.instui-button` that doesn't carry its own modifier in that same category — a button's own\n  modifier class always wins over the group's default. `-icon-*` is always per-button; it's\n  never read from the group. Deprecated button aliases (`-ghost`, `-color-primary-inverse`)\n  aren't supported as group-level modifiers — use their canonical replacements\n  (`-color-tertiary`, `-on-color`) instead. Each join shows a single 1px seam in the buttons'\n  own border color (solid fills, whose border matches the fill, tint it with the label color).\n  `-without-seam` is group-only: it hides that seam so the buttons read as\n  one continuous control.\n  Put `-width-half` on an individual icon-only child button for a split-action\n  trigger with half the standard square width and the full button height."
+msgstr "इसके अपने श्रृंखलाबद्ध modifiers (`-color-*`, `-size-*`, `-shape-*`, `-toggle`, `-condensed`,\n  `-without-background`, `-without-border`, `-display-block`) हर child के लिए डिफ़ॉल्ट तय करते हैं\n  `.instui-button` जिसके पास उसी category में अपना modifier नहीं है — button का अपना\n  modifier class हमेशा group के डिफ़ॉल्ट पर प्राथमिकता पाता है। `-icon-*` हमेशा हर button पर अलग से लागू होता है; इसे\n  group से कभी नहीं लिया जाता। Deprecated button aliases (`-ghost`, `-color-primary-inverse`)\n  group-स्तर के modifiers के रूप में समर्थित नहीं हैं — इनके canonical replacements\n  (`-color-tertiary`, `-on-color`) का उपयोग करें। हर जोड़ buttons के अपने border color में 1px की एक सीम दिखाता है (ठोस भरण, जिनका border भरण से मेल खाता है, इसे label color से रंग देते हैं).\n  `-without-seam` केवल group के लिए है: यह उस सीम को छिपाता है ताकि buttons\n  एक सतत नियंत्रण की तरह दिखें।\n  विभाजित-क्रिया वाले trigger के लिए किसी अलग icon-only child button पर `-width-half` लगाएँ; इसकी चौड़ाई मानक वर्गाकार चौड़ाई की आधी और ऊँचाई पूरी button जितनी होती है।"
 
 #: css/button-set.md
 #, no-c-format
@@ -2666,8 +2607,26 @@ msgstr "बटनों के बीच 1px की सीम को छिप�
 #: css/button-set.md
 #, no-c-format
 msgctxt "docs.api:prose"
-msgid "Use a labelled group for related actions; when buttons represent a toggle choice, expose each state with aria-pressed. Give icon-only buttons an accessible name."
-msgstr "संबंधित कार्यों के लिए एक लेबलयुक्त समूह का उपयोग करें; जब बटन किसी टॉगल विकल्प का प्रतिनिधित्व करते हों, तो प्रत्येक स्थिति को aria-pressed के साथ प्रदर्शित करें। केवल आइकन वाले बटनों को एक पहुँच योग्य नाम दें।"
+msgid "Use a labelled group for related actions; when buttons represent a toggle choice, expose each state with aria-pressed. Give icon-only buttons an accessible name. Half-width triggers are narrow targets (16px, 20px, or 24px at the standard sizes); ensure sufficient target spacing or use a full-width square button for touch interfaces."
+msgstr "संबंधित कार्रवाइयों के लिए लेबल वाला group उपयोग करें; जब buttons किसी toggle विकल्प को दर्शाते हों, तो aria-pressed के साथ हर स्थिति बताएं। केवल icon वाले buttons को सुलभ नाम दें। आधी चौड़ाई वाले triggers संकरे लक्ष्य होते हैं (मानक आकारों में 16px, 20px या 24px); पर्याप्त लक्ष्य-अंतराल सुनिश्चित करें या touch interfaces के लिए पूरी चौड़ाई वाला वर्गाकार button उपयोग करें।"
+
+#: css/button-set.md
+#, no-c-format, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "target-size"
+msgstr "target-size"
+
+#: css/button-set.md
+#, no-c-format, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "WCAG 2.2 2.5.8"
+msgstr "WCAG 2.2 2.5.8"
+
+#: css/button-set.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "All touch targets must be 24px large, or leave sufficient space"
+msgstr "सभी touch targets कम-से-कम 24px के हों, या उनके बीच पर्याप्त जगह छोड़ें"
 
 #: css/button-set.md css/button.md css/checkbox.md css/link.md
 #: css/radio-input-group.md css/radio.md css/segmented-control.md
@@ -2699,10 +2658,10 @@ msgstr " prefers-contrast: more के साथ, टेक्स्ट के �
 
 #: css/button-set.md css/button.md css/byline.md css/form-field.md
 #: css/progress.md css/view.md
-#, no-c-format, pantoken-verbatim
+#, no-c-format
 msgctxt "docs.api:prose"
 msgid "Canvas, Canvas High Contrast:"
-msgstr "Canvas, Canvas High Contrast:"
+msgstr "Canvas, Canvas उच्च कंट्रास्ट:"
 
 #: css/button-set.md
 #, no-c-format
@@ -3484,6 +3443,12 @@ msgstr "**Source:** [close-button.css](https://github.com/thedannywahl/pantoken/
 #: css/close-button.md
 #, no-c-format
 msgctxt "docs.api:prose"
+msgid "<!-- pantoken-value-scope:css%2Fclose-button.md -->\nThis component's CSS renders and works on its own; pair it with {{ptk_code_0}} to add the interactive behavior. See the [modifier table below]({{ptk_code_1}})."
+msgstr "<!-- pantoken-value-scope:css%2Fclose-button.md -->\nयह कंपोनेंट का CSS स्वयं रेंडर और कार्य करता है; इंटरैक्टिव व्यवहार जोड़ने के लिए इसे {{ptk_code_0}} के साथ जोड़ें। विवरण के लिए [modifier table below]({{ptk_code_1}}) देखें।"
+
+#: css/close-button.md
+#, no-c-format
+msgctxt "docs.api:prose"
 msgid "For a close button placed on a coloured (non-neutral) surface."
 msgstr "रंगीन (गैर-न्यूट्रल) सतह पर रखा गया बंद बटन के लिए।"
 
@@ -4196,6 +4161,12 @@ msgctxt "docs.api:prose"
 msgid "**Source:** [form-field.css](https://github.com/thedannywahl/pantoken/blob/main/formats/components/src/components/form-field/form-field.css)"
 msgstr "**Source:** [form-field.css](https://github.com/thedannywahl/pantoken/blob/main/formats/components/src/components/form-field/form-field.css)"
 
+#: css/form-field.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "<!-- pantoken-value-scope:css%2Fform-field.md -->\nThis component's CSS renders and works on its own; pair it with {{ptk_code_0}} to add the interactive behavior. See the [modifier table below]({{ptk_code_1}})."
+msgstr "<!-- pantoken-value-scope:css%2Fform-field.md -->\nयह कंपोनेंट का CSS स्वयं रेंडर और कार्य करता है; इंटरैक्टिव व्यवहार जोड़ने के लिए इसे {{ptk_code_0}} के साथ जोड़ें। विवरण के लिए [modifier table below]({{ptk_code_1}}) देखें।"
+
 #: css/form-field.md css/link.md css/modal.md css/simple-select.md
 #: css/toggle-details.md
 #, no-c-format, pantoken-verbatim
@@ -4694,6 +4665,12 @@ msgstr "इनपुट क्रोम केवल फोकस के दौ�
 msgctxt "docs.api:prose"
 msgid "**Source:** [in-place-edit.css](https://github.com/thedannywahl/pantoken/blob/main/formats/components/src/components/in-place-edit/in-place-edit.css)"
 msgstr "**Source:** [in-place-edit.css](https://github.com/thedannywahl/pantoken/blob/main/formats/components/src/components/in-place-edit/in-place-edit.css)"
+
+#: css/in-place-edit.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "<!-- pantoken-value-scope:css%2Fin-place-edit.md -->\nThis component's CSS renders and works on its own; pair it with {{ptk_code_0}} to add the interactive behavior. See the [modifier table below]({{ptk_code_1}})."
+msgstr "<!-- pantoken-value-scope:css%2Fin-place-edit.md -->\nयह कंपोनेंट का CSS स्वयं रेंडर और कार्य करता है; इंटरैक्टिव व्यवहार जोड़ने के लिए इसे {{ptk_code_0}} के साथ जोड़ें। विवरण के लिए [modifier table below]({{ptk_code_1}}) देखें।"
 
 #: css/in-place-edit.md
 #, no-c-format
@@ -6270,13 +6247,6 @@ msgctxt "docs.api:prose"
 msgid "ARIA attributes must conform to valid values"
 msgstr "ARIA एट्रिब्यूट के मान मान्य होने चाहिए"
 
-#: css/menu.group.md css/menu.item.md css/menu.md css/menu.separator.md
-#: css/modal.md css/toggle-group.md css/tooltip.md
-#, no-c-format, pantoken-verbatim
-msgctxt "docs.api:prose"
-msgid "dark-mode-contrast"
-msgstr "dark-mode-contrast"
-
 #: css/menu.item.md
 #, no-c-format
 msgctxt "docs.api:prose"
@@ -6313,6 +6283,12 @@ msgctxt "docs.api:prose"
 msgid "Checked actions use `menuitemcheckbox` or `menuitemradio` with `aria-checked`; applications update that state on activation. Pair `-disabled` with `aria-disabled=\"true\"` or native `disabled`, not the CSS class alone. Opt-in menu navigation keeps ARIA-disabled items reachable but prevents their activation."
 msgstr "चेक की गई कार्रवाइयाँ `menuitemcheckbox` या `menuitemradio` का उपयोग करती हैं, साथ में `aria-checked`; एप्लिकेशन सक्रिय होने पर उस स्थिति को अपडेट करते हैं। `-disabled` को `aria-disabled=\"true\"` या नेटिव `disabled` के साथ इस्तेमाल करें, केवल CSS क्लास के साथ नहीं। वैकल्पिक मेनू नेविगेशन ARIA-disabled आइटमों को पहुँच योग्य रखता है, लेकिन उन्हें सक्रिय होने से रोकता है।"
 
+#: css/menu.item.md css/progress.md css/simple-select.md
+#, no-c-format, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "dark-mode-contrast"
+msgstr "dark-mode-contrast"
+
 #: css/menu.item.md
 #, no-c-format
 msgctxt "docs.api:prose"
@@ -6342,6 +6318,12 @@ msgstr "कीबोर्ड नेविगेशन वैकल्पिक 
 msgctxt "docs.api:prose"
 msgid "**Source:** [group.css](https://github.com/thedannywahl/pantoken/blob/main/formats/components/src/components/menu/members/group/group.css)"
 msgstr "**Source:** [group.css](https://github.com/thedannywahl/pantoken/blob/main/formats/components/src/components/menu/members/group/group.css)"
+
+#: css/menu.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "<!-- pantoken-value-scope:css%2Fmenu.md -->\nThis component's CSS renders and works on its own; pair it with {{ptk_code_0}} to add the interactive behavior. See the [modifier table below]({{ptk_code_1}})."
+msgstr "<!-- pantoken-value-scope:css%2Fmenu.md -->\nयह कंपोनेंट का CSS स्वयं रेंडर और कार्य करता है; इंटरैक्टिव व्यवहार जोड़ने के लिए इसे {{ptk_code_0}} के साथ जोड़ें। विवरण के लिए [modifier table below]({{ptk_code_1}}) देखें।"
 
 #: css/menu.md
 #, no-c-format
@@ -6534,6 +6516,12 @@ msgstr "व्यक्तिगत हिस्सों के लिए `moda
 msgctxt "docs.api:prose"
 msgid "**Source:** [body.css](https://github.com/thedannywahl/pantoken/blob/main/formats/components/src/components/modal/members/body/body.css)"
 msgstr "**Source:** [body.css](https://github.com/thedannywahl/pantoken/blob/main/formats/components/src/components/modal/members/body/body.css)"
+
+#: css/modal.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "<!-- pantoken-value-scope:css%2Fmodal.md -->\nThis component's CSS renders and works on its own; pair it with {{ptk_code_0}} to add the interactive behavior. See the [modifier table below]({{ptk_code_1}})."
+msgstr "<!-- pantoken-value-scope:css%2Fmodal.md -->\nयह कंपोनेंट का CSS स्वयं रेंडर और कार्य करता है; इंटरैक्टिव व्यवहार जोड़ने के लिए इसे {{ptk_code_0}} के साथ जोड़ें। विवरण के लिए [modifier table below]({{ptk_code_1}}) देखें।"
 
 #: css/modal.md
 #, no-c-format
@@ -7491,17 +7479,11 @@ msgctxt "docs.api:prose"
 msgid " With prefers-contrast: more, one piece of text falls below the minimum contrast. The worst is \"30%\" at 1:1 (needs 4.5:1)."
 msgstr " prefers-contrast: more के साथ, टेक्स्ट का एक हिस्सा न्यूनतम कंट्रास्ट से नीचे चला जाता है। सबसे खराब स्थिति में \"30%\" का अनुपात 1:1 है (जबकि 4.5:1) चाहिए।"
 
-#: css/progress.md
+#: css/progress.md css/truncate.md
 #, no-c-format
 msgctxt "docs.api:prose"
-msgid "Rebrand (dark), Canvas, Canvas High Contrast:"
-msgstr "Rebrand (गहरा), Canvas, Canvas High Contrast:"
-
-#: css/progress.md
-#, no-c-format
-msgctxt "docs.api:prose"
-msgid " With line height 1.5, letter spacing 0.12em, word spacing 0.16em, and paragraph spacing 2em, text in one element gets cut off: "
-msgstr " लाइन ऊँचाई 1.5, अक्षर-अंतराल 0.12em, शब्द-अंतराल 0.16em, और अनुच्छेद-अंतराल 2em होने पर, एक तत्व का टेक्स्ट कट जाता है: "
+msgid "With line height 1.5, letter spacing 0.12em, word spacing 0.16em, and paragraph spacing 2em, text in one element gets cut off: "
+msgstr "लाइन की ऊँचाई 1.5, अक्षरों के बीच की दूरी 0.12em, शब्दों के बीच की दूरी 0.16em और पैराग्राफ़ों के बीच की दूरी 2em होने पर, एक तत्व का टेक्स्ट कट जाता है: "
 
 #: css/progress.md
 #, no-c-format
@@ -8544,6 +8526,12 @@ msgstr "**Source:** [screen-reader-content.css](https://github.com/thedannywahl/
 #: css/screen-reader-content.md
 #, no-c-format
 msgctxt "docs.api:prose"
+msgid "<!-- pantoken-value-scope:css%2Fscreen-reader-content.md -->\nThis component ships no CSS of its own — its markup and behavior come entirely from {{ptk_code_0}}. See the [modifier table below]({{ptk_code_1}})."
+msgstr "<!-- pantoken-value-scope:css%2Fscreen-reader-content.md -->\nइस घटक की अपनी कोई CSS नहीं है — इसका मार्कअप और व्यवहार पूरी तरह {{ptk_code_0}} से आता है। नीचे दी गई [मॉडिफ़ायर तालिका]({{ptk_code_1}}) देखें।"
+
+#: css/screen-reader-content.md
+#, no-c-format
+msgctxt "docs.api:prose"
 msgid "example"
 msgstr "उदाहरण"
 
@@ -8570,6 +8558,12 @@ msgstr "`.instui-segmented-control` — एक एकल-चयन पंक्�
 msgctxt "docs.api:prose"
 msgid "The selected segment uses a distinct active-item shadow; it does not match an existing\n  --instui-elevation-* composite. Overflow buttons use the upstream elevation3 component tokens."
 msgstr "चुने गए सेगमेंट एक पृथक active-item छाया का उपयोग करता है; यह किसी मौजूदा\n  --instui-elevation-* कंपोजिट से मेल नहीं खाता। ओवरफ़्लो बटन अपस्ट्रीम elevation3 कंपोनेंट टोकन का उपयोग करते हैं."
+
+#: css/segmented-control.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "<!-- pantoken-value-scope:css%2Fsegmented-control.md -->\nThis component's CSS renders and works on its own; pair it with {{ptk_code_0}} to add the interactive behavior. See the [modifier table below]({{ptk_code_1}})."
+msgstr "<!-- pantoken-value-scope:css%2Fsegmented-control.md -->\nयह कंपोनेंट का CSS स्वयं रेंडर और कार्य करता है; इंटरैक्टिव व्यवहार जोड़ने के लिए इसे {{ptk_code_0}} के साथ जोड़ें। विवरण के लिए [modifier table below]({{ptk_code_1}}) देखें।"
 
 #: css/segmented-control.md css/side-nav-bar.md
 #: renderers/web-components/src/variables/drilldown.md
@@ -8859,6 +8853,12 @@ msgstr "- [text-input](/api/css/text-input.md) — वही field chrome, स�
 msgctxt "docs.api:prose"
 msgid "`.instui-skeleton-loader` — Decorative placeholder for content that has not loaded yet."
 msgstr "`.instui-skeleton-loader` — अभी लोड नहीं हुई सामग्री के लिए सजावटी प्लेसहोल्डर।"
+
+#: css/skeleton-loader.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "<!-- pantoken-value-scope:css%2Fskeleton-loader.md -->\nThis component's CSS renders and works on its own; pair it with {{ptk_code_0}} to add the interactive behavior. See the [modifier table below]({{ptk_code_1}})."
+msgstr "<!-- pantoken-value-scope:css%2Fskeleton-loader.md -->\nयह कंपोनेंट का CSS स्वयं रेंडर और कार्य करता है; इंटरैक्टिव व्यवहार जोड़ने के लिए इसे {{ptk_code_0}} के साथ जोड़ें। विवरण के लिए [modifier table below]({{ptk_code_1}}) देखें।"
 
 #: css/skeleton-loader.md
 #, no-c-format
@@ -9309,6 +9309,12 @@ msgstr "व्यक्तिगत टैब बटन और उनके स�
 msgctxt "docs.api:prose"
 msgid "**Source:** [panel.css](https://github.com/thedannywahl/pantoken/blob/main/formats/components/src/components/tabs/members/panel/panel.css)"
 msgstr "**Source:** [panel.css](https://github.com/thedannywahl/pantoken/blob/main/formats/components/src/components/tabs/members/panel/panel.css)"
+
+#: css/tabs.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "<!-- pantoken-value-scope:css%2Ftabs.md -->\nThis component's CSS renders and works on its own; pair it with {{ptk_code_0}} to add the interactive behavior. See the [modifier table below]({{ptk_code_1}})."
+msgstr "<!-- pantoken-value-scope:css%2Ftabs.md -->\nयह कंपोनेंट का CSS स्वयं रेंडर और कार्य करता है; इंटरैक्टिव व्यवहार जोड़ने के लिए इसे {{ptk_code_0}} के साथ जोड़ें। विवरण के लिए [modifier table below]({{ptk_code_1}}) देखें।"
 
 #: css/tabs.md
 #, no-c-format
@@ -10058,6 +10064,12 @@ msgstr "**Source:** [tooltip.css](https://github.com/thedannywahl/pantoken/blob/
 #: css/tooltip.md
 #, no-c-format
 msgctxt "docs.api:prose"
+msgid "<!-- pantoken-value-scope:css%2Ftooltip.md -->\nThis component's CSS renders and works on its own; pair it with {{ptk_code_0}} to add the interactive behavior. See the [modifier table below]({{ptk_code_1}})."
+msgstr "<!-- pantoken-value-scope:css%2Ftooltip.md -->\nयह कंपोनेंट का CSS स्वयं रेंडर और कार्य करता है; इंटरैक्टिव व्यवहार जोड़ने के लिए इसे {{ptk_code_0}} के साथ जोड़ें। विवरण के लिए [modifier table below]({{ptk_code_1}}) देखें।"
+
+#: css/tooltip.md
+#, no-c-format
+msgctxt "docs.api:prose"
 msgid "Default placement is top"
 msgstr "डिफ़ॉल्ट प्लेसमेंट शीर्ष पर है"
 
@@ -10262,6 +10274,12 @@ msgstr "**Source:** [tree-browser.css](https://github.com/thedannywahl/pantoken/
 #: css/tree-browser.md
 #, no-c-format
 msgctxt "docs.api:prose"
+msgid "<!-- pantoken-value-scope:css%2Ftree-browser.md -->\nThis component's CSS renders and works on its own; pair it with {{ptk_code_0}} to add the interactive behavior. See the [modifier table below]({{ptk_code_1}})."
+msgstr "<!-- pantoken-value-scope:css%2Ftree-browser.md -->\nयह कंपोनेंट का CSS स्वयं रेंडर और कार्य करता है; इंटरैक्टिव व्यवहार जोड़ने के लिए इसे {{ptk_code_0}} के साथ जोड़ें। विवरण के लिए [modifier table below]({{ptk_code_1}}) देखें।"
+
+#: css/tree-browser.md
+#, no-c-format
+msgctxt "docs.api:prose"
 msgid " Course files"
 msgstr " पाठ्यक्रम फ़ाइलें"
 
@@ -10444,12 +10462,6 @@ msgstr "वर्ड स्तर पर ट्रंकेट करें।"
 msgctxt "docs.api:prose"
 msgid "Truncation hides overflowing text visually while it stays in the DOM, so don't clip information people need (titles, errors, instructions) and keep the full text available another way. Check that clipped text still reads correctly when zoomed or resized."
 msgstr "कटाव, DOM में बने रहने के बावजूद, बाहर निकलने वाले टेक्स्ट को दृश्य रूप से छिपा देता है, इसलिए लोगों के लिए ज़रूरी जानकारी (शीर्षक, त्रुटियाँ, निर्देश) को न काटें और पूरा टेक्स्ट किसी दूसरे तरीके से उपलब्ध रखें। जाँचें कि ज़ूम करने या आकार बदलने पर भी कटा हुआ टेक्स्ट सही ढंग से पढ़ा जा सके।"
-
-#: css/truncate.md
-#, no-c-format
-msgctxt "docs.api:prose"
-msgid "With line height 1.5, letter spacing 0.12em, word spacing 0.16em, and paragraph spacing 2em, text in one element gets cut off: "
-msgstr "लाइन की ऊँचाई 1.5, अक्षरों के बीच की दूरी 0.12em, शब्दों के बीच की दूरी 0.16em और पैराग्राफ़ों के बीच की दूरी 2em होने पर, एक तत्व का टेक्स्ट कट जाता है: "
 
 #: css/truncate.md
 #, no-c-format
@@ -15481,10 +15493,10 @@ msgid "**Dark mode with icon VectorDrawables**"
 msgstr "**आइकन VectorDrawables के साथ डार्क मोड**"
 
 #: platforms/android/src/index.md
-#, no-c-format, pantoken-verbatim
+#, no-c-format
 msgctxt "docs.api:prose"
 msgid "<!-- pantoken-value-scope:platforms%2Fandroid%2Fsrc%2Findex.md -->\nTarget: Android resources. Current format: {{ptk_code_0}}. Minimum host version: {{ptk_code_1}}. Tested through {{ptk_code_2}}. Newer releases require review."
-msgstr "<!-- pantoken-value-scope:platforms%2Fandroid%2Fsrc%2Findex.md -->\nTarget: Android resources. Current format: {{ptk_code_0}}. Minimum host version: {{ptk_code_1}}. Tested through {{ptk_code_2}}. Newer releases require review."
+msgstr "<!-- pantoken-value-scope:platforms%2Fandroid%2Fsrc%2Findex.md -->\nलक्ष्य: Android संसाधन। वर्तमान प्रारूप: {{ptk_code_0}}। न्यूनतम होस्ट संस्करण: {{ptk_code_1}}। {{ptk_code_2}} तक परीक्षण किया गया। नए रिलीज़ की समीक्षा आवश्यक है।"
 
 #: platforms/android/src/index.md
 #, no-c-format
@@ -15778,10 +15790,10 @@ msgid "**Dark mode with a custom object name**"
 msgstr "**कस्टम ऑब्जेक्ट नाम के साथ डार्क मोड**"
 
 #: platforms/compose/src/index.md
-#, no-c-format, pantoken-verbatim
+#, no-c-format
 msgctxt "docs.api:prose"
 msgid "<!-- pantoken-value-scope:platforms%2Fcompose%2Fsrc%2Findex.md -->\nTarget: Jetpack Compose. Current format: {{ptk_code_0}}. Minimum host version: {{ptk_code_1}}. Tested through {{ptk_code_2}}. Newer releases require review."
-msgstr "<!-- pantoken-value-scope:platforms%2Fcompose%2Fsrc%2Findex.md -->\nTarget: Jetpack Compose. Current format: {{ptk_code_0}}. Minimum host version: {{ptk_code_1}}. Tested through {{ptk_code_2}}. Newer releases require review."
+msgstr "<!-- pantoken-value-scope:platforms%2Fcompose%2Fsrc%2Findex.md -->\nलक्ष्य: Jetpack Compose। वर्तमान फ़ॉर्मैट: {{ptk_code_0}}। न्यूनतम होस्ट संस्करण: {{ptk_code_1}}। {{ptk_code_2}} तक परीक्षण किया गया। नए रिलीज़ की समीक्षा आवश्यक है।"
 
 #: platforms/compose/src/index.md
 #, no-c-format
@@ -15838,10 +15850,10 @@ msgid "**Build a sub-theme on top of a base theme**"
 msgstr "**बेस थीम के ऊपर एक सब-थीम बनाएं**"
 
 #: platforms/drupal/src/index.md
-#, no-c-format, pantoken-verbatim
+#, no-c-format
 msgctxt "docs.api:prose"
 msgid "<!-- pantoken-value-scope:platforms%2Fdrupal%2Fsrc%2Findex.md -->\nTarget: Drupal themes. Current format: {{ptk_code_0}}. Minimum host version: {{ptk_code_1}}. Tested through {{ptk_code_2}}. Newer releases require review."
-msgstr "<!-- pantoken-value-scope:platforms%2Fdrupal%2Fsrc%2Findex.md -->\nTarget: Drupal themes. Current format: {{ptk_code_0}}. Minimum host version: {{ptk_code_1}}. Tested through {{ptk_code_2}}. Newer releases require review."
+msgstr "<!-- pantoken-value-scope:platforms%2Fdrupal%2Fsrc%2Findex.md -->\nलक्ष्य: Drupal थीम। वर्तमान फ़ॉर्मेट: {{ptk_code_0}}। होस्ट का न्यूनतम संस्करण: {{ptk_code_1}}। {{ptk_code_2}} तक परीक्षण किया गया। नए रिलीज़ की समीक्षा आवश्यक है।"
 
 #: platforms/drupal/src/index.md
 #, no-c-format
@@ -16092,10 +16104,10 @@ msgid "**Write the assets under a site root**"
 msgstr "**साइट रूट के अंतर्गत एसेट लिखें**"
 
 #: platforms/hugo/src/index.md
-#, no-c-format, pantoken-verbatim
+#, no-c-format
 msgctxt "docs.api:prose"
 msgid "<!-- pantoken-value-scope:platforms%2Fhugo%2Fsrc%2Findex.md -->\nTarget: Hugo. Current format: {{ptk_code_0}}. Minimum host version: {{ptk_code_1}}. Tested through {{ptk_code_2}}. Newer releases require review."
-msgstr "<!-- pantoken-value-scope:platforms%2Fhugo%2Fsrc%2Findex.md -->\nTarget: Hugo. Current format: {{ptk_code_0}}. Minimum host version: {{ptk_code_1}}. Tested through {{ptk_code_2}}. Newer releases require review."
+msgstr "<!-- pantoken-value-scope:platforms%2Fhugo%2Fsrc%2Findex.md -->\nलक्ष्य: Hugo. वर्तमान प्रारूप: {{ptk_code_0}}. न्यूनतम होस्ट संस्करण: {{ptk_code_1}}. {{ptk_code_2}} तक परीक्षण किया गया है. नए रिलीज़ की समीक्षा आवश्यक है।"
 
 #: platforms/hugo/src/index.md
 #, no-c-format
@@ -16129,10 +16141,10 @@ msgid "The Sass partial (`_sass/pantoken.scss`), the plain stylesheet\n(`assets/
 msgstr "Sass partial (`_sass/pantoken.scss`), सादा स्टाइलशीट\n(`assets/css/pantoken.css`), और prose stylesheet (`assets/css/pantoken-prose.css`)."
 
 #: platforms/jekyll/src/index.md
-#, no-c-format, pantoken-verbatim
+#, no-c-format
 msgctxt "docs.api:prose"
 msgid "<!-- pantoken-value-scope:platforms%2Fjekyll%2Fsrc%2Findex.md -->\nTarget: Jekyll. Current format: {{ptk_code_0}}. Minimum host version: {{ptk_code_1}}. Tested through {{ptk_code_2}}. Newer releases require review."
-msgstr "<!-- pantoken-value-scope:platforms%2Fjekyll%2Fsrc%2Findex.md -->\nTarget: Jekyll. Current format: {{ptk_code_0}}. Minimum host version: {{ptk_code_1}}. Tested through {{ptk_code_2}}. Newer releases require review."
+msgstr "<!-- pantoken-value-scope:platforms%2Fjekyll%2Fsrc%2Findex.md -->\nलक्ष्य: Jekyll। वर्तमान फ़ॉर्मैट: {{ptk_code_0}}। न्यूनतम होस्ट संस्करण: {{ptk_code_1}}। {{ptk_code_2}} तक परीक्षण किया गया। नए रिलीज़ की समीक्षा आवश्यक है।"
 
 #: platforms/jekyll/src/index.md
 #, no-c-format
@@ -16177,10 +16189,10 @@ msgid "**iced (Color), dark mode**"
 msgstr "**iced (Color), डार्क मोड**"
 
 #: platforms/rust/src/index.md
-#, no-c-format, pantoken-verbatim
+#, no-c-format
 msgctxt "docs.api:prose"
 msgid "<!-- pantoken-value-scope:platforms%2Frust%2Fsrc%2Findex.md -->\nTarget: Rust GUI frameworks. Current format: {{ptk_code_0}}. Minimum host version: {{ptk_code_1}}. Tested through {{ptk_code_2}}. Newer releases require review."
-msgstr "<!-- pantoken-value-scope:platforms%2Frust%2Fsrc%2Findex.md -->\nTarget: Rust GUI frameworks. Current format: {{ptk_code_0}}. Minimum host version: {{ptk_code_1}}. Tested through {{ptk_code_2}}. Newer releases require review."
+msgstr "<!-- pantoken-value-scope:platforms%2Frust%2Fsrc%2Findex.md -->\nलक्ष्य: Rust GUI फ़्रेमवर्क। वर्तमान फ़ॉर्मैट: {{ptk_code_0}}। न्यूनतम होस्ट संस्करण: {{ptk_code_1}}। {{ptk_code_2}} तक परीक्षण किया गया। नए रिलीज़ की समीक्षा आवश्यक है।"
 
 #: platforms/rust/src/index.md
 #, no-c-format
@@ -16244,10 +16256,10 @@ msgid "**Dark mode with a custom class name and an asset catalog**"
 msgstr "**कस्टम क्लास नाम और एक एसेट कैटलॉग के साथ डार्क मोड**"
 
 #: platforms/swift/src/index.md
-#, no-c-format, pantoken-verbatim
+#, no-c-format
 msgctxt "docs.api:prose"
 msgid "<!-- pantoken-value-scope:platforms%2Fswift%2Fsrc%2Findex.md -->\nTarget: Swift iOS. Current format: {{ptk_code_0}}. Tested environment: {{ptk_code_1}}. Runtime tested only on iOS Simulator 27.0; this does not establish an iOS 15 runtime floor. No watchOS or tvOS claim."
-msgstr "<!-- pantoken-value-scope:platforms%2Fswift%2Fsrc%2Findex.md -->\nTarget: Swift iOS. Current format: {{ptk_code_0}}. Tested environment: {{ptk_code_1}}. Runtime tested only on iOS Simulator 27.0; this does not establish an iOS 15 runtime floor. No watchOS or tvOS claim."
+msgstr "<!-- pantoken-value-scope:platforms%2Fswift%2Fsrc%2Findex.md -->\nलक्ष्य: Swift iOS। वर्तमान फ़ॉर्मैट: {{ptk_code_0}}। परीक्षित परिवेश: {{ptk_code_1}}। रनटाइम का परीक्षण केवल iOS Simulator 27.0 पर किया गया है; इससे iOS 15 की न्यूनतम रनटाइम आवश्यकता स्थापित नहीं होती। watchOS या tvOS के लिए कोई दावा नहीं।"
 
 #: platforms/swift/src/index.md
 #, no-c-format
@@ -16388,10 +16400,10 @@ msgid "**Convert an IR to a light-mode theme.json**"
 msgstr "**IR को एक लाइट-मोड theme.json में बदलें**"
 
 #: platforms/wordpress/src/index.md
-#, no-c-format, pantoken-verbatim
+#, no-c-format
 msgctxt "docs.api:prose"
 msgid "<!-- pantoken-value-scope:platforms%2Fwordpress%2Fsrc%2Findex.md -->\nTarget: WordPress block themes. Current format: {{ptk_code_0}}. Minimum host version: {{ptk_code_1}}. Tested through {{ptk_code_2}}. Newer releases require review."
-msgstr "<!-- pantoken-value-scope:platforms%2Fwordpress%2Fsrc%2Findex.md -->\nTarget: WordPress block themes. Current format: {{ptk_code_0}}. Minimum host version: {{ptk_code_1}}. Tested through {{ptk_code_2}}. Newer releases require review."
+msgstr "<!-- pantoken-value-scope:platforms%2Fwordpress%2Fsrc%2Findex.md -->\nलक्ष्य: WordPress ब्लॉक थीम। वर्तमान प्रारूप: {{ptk_code_0}}। न्यूनतम होस्ट संस्करण: {{ptk_code_1}}। {{ptk_code_2}} तक परीक्षण किया गया। नए संस्करणों की समीक्षा आवश्यक है।"
 
 #: platforms/wordpress/src/index.md
 #, no-c-format
@@ -18650,10 +18662,10 @@ msgid "Register the pantoken custom elements (call once during app bootstrap)."
 msgstr "pantoken कस्टम एलिमेंट्स को रजिस्टर करें (ऐप बूटस्टैप के दौरान एक बार कॉल करें)."
 
 #: renderers/angular/src/index.md
-#, no-c-format, pantoken-verbatim
+#, no-c-format
 msgctxt "docs.api:prose"
 msgid "<!-- pantoken-value-scope:renderers%2Fangular%2Fsrc%2Findex.md -->\nTarget: Angular. Current format: {{ptk_code_0}}. Minimum host version: {{ptk_code_1}}. Tested through {{ptk_code_2}}. Newer releases require review."
-msgstr "<!-- pantoken-value-scope:renderers%2Fangular%2Fsrc%2Findex.md -->\nTarget: Angular. Current format: {{ptk_code_0}}. Minimum host version: {{ptk_code_1}}. Tested through {{ptk_code_2}}. Newer releases require review."
+msgstr "<!-- pantoken-value-scope:renderers%2Fangular%2Fsrc%2Findex.md -->\nलक्ष्य: Angular। वर्तमान प्रारूप: {{ptk_code_0}}। होस्ट का न्यूनतम संस्करण: {{ptk_code_1}}। {{ptk_code_2}} तक परीक्षण किया गया। नए रिलीज़ की समीक्षा आवश्यक है।"
 
 #: renderers/angular/src/index.md
 #, no-c-format
@@ -18692,10 +18704,10 @@ msgid "Build the pantoken stylesheet for a theme (with optional plugin CSS). Exp
 msgstr "थीम के लिए pantoken स्टाइलशीट बनाएँ (वैकल्पिक plugin CSS के साथ)। सीधे उपयोग के लिए उपलब्ध।"
 
 #: renderers/astro/src/index.md
-#, no-c-format, pantoken-verbatim
+#, no-c-format
 msgctxt "docs.api:prose"
 msgid "<!-- pantoken-value-scope:renderers%2Fastro%2Fsrc%2Findex.md -->\nTarget: Astro / Starlight. Current format: {{ptk_code_0}}. Minimum host version: {{ptk_code_1}}. Tested through {{ptk_code_2}}. Newer releases require review."
-msgstr "<!-- pantoken-value-scope:renderers%2Fastro%2Fsrc%2Findex.md -->\nTarget: Astro / Starlight. Current format: {{ptk_code_0}}. Minimum host version: {{ptk_code_1}}. Tested through {{ptk_code_2}}. Newer releases require review."
+msgstr "<!-- pantoken-value-scope:renderers%2Fastro%2Fsrc%2Findex.md -->\nलक्ष्य: Astro / Starlight। वर्तमान फ़ॉर्मैट: {{ptk_code_0}}। न्यूनतम होस्ट संस्करण: {{ptk_code_1}}। {{ptk_code_2}} तक परीक्षण किया गया। नए रिलीज़ की समीक्षा आवश्यक है।"
 
 #: renderers/astro/src/index.md
 #, no-c-format
@@ -18766,10 +18778,10 @@ msgid "**Scope to Bootstrap's theme attribute**"
 msgstr "**Bootstrap के theme attribute तक सीमित करें**"
 
 #: renderers/bootstrap/src/index.md
-#, no-c-format, pantoken-verbatim
+#, no-c-format
 msgctxt "docs.api:prose"
 msgid "<!-- pantoken-value-scope:renderers%2Fbootstrap%2Fsrc%2Findex.md -->\nTarget: Bootstrap. Current format: {{ptk_code_0}}. Minimum host version: {{ptk_code_1}}. Tested through {{ptk_code_2}}. Newer releases require review."
-msgstr "<!-- pantoken-value-scope:renderers%2Fbootstrap%2Fsrc%2Findex.md -->\nTarget: Bootstrap. Current format: {{ptk_code_0}}. Minimum host version: {{ptk_code_1}}. Tested through {{ptk_code_2}}. Newer releases require review."
+msgstr "<!-- pantoken-value-scope:renderers%2Fbootstrap%2Fsrc%2Findex.md -->\nलक्ष्य: Bootstrap. वर्तमान फ़ॉर्मैट: {{ptk_code_0}}. न्यूनतम होस्ट संस्करण: {{ptk_code_1}}. {{ptk_code_2}} तक परीक्षण किया गया। नए रिलीज़ के लिए समीक्षा आवश्यक है।"
 
 #: renderers/bootstrap/src/index.md
 #, no-c-format
@@ -18849,10 +18861,10 @@ msgid "Turn `--instui-color-background-brand` into `colorBackgroundBrand`."
 msgstr "`--instui-color-background-brand` को `colorBackgroundBrand` में बदलें."
 
 #: renderers/css-in-js/src/index.md
-#, no-c-format, pantoken-verbatim
+#, no-c-format
 msgctxt "docs.api:prose"
 msgid "<!-- pantoken-value-scope:renderers%2Fcss-in-js%2Fsrc%2Findex.md -->\nTarget: Emotion CSS-in-JS. Current format: {{ptk_code_0}}. Minimum host version: {{ptk_code_1}}. Tested through {{ptk_code_2}}. Newer releases require review."
-msgstr "<!-- pantoken-value-scope:renderers%2Fcss-in-js%2Fsrc%2Findex.md -->\nTarget: Emotion CSS-in-JS. Current format: {{ptk_code_0}}. Minimum host version: {{ptk_code_1}}. Tested through {{ptk_code_2}}. Newer releases require review."
+msgstr "<!-- pantoken-value-scope:renderers%2Fcss-in-js%2Fsrc%2Findex.md -->\nलक्ष्य: Emotion CSS-in-JS। वर्तमान प्रारूप: {{ptk_code_0}}। न्यूनतम होस्ट संस्करण: {{ptk_code_1}}। {{ptk_code_2}} तक परीक्षण किया गया। नए रिलीज़ की समीक्षा आवश्यक है।"
 
 #: renderers/css-in-js/src/index.md
 #, no-c-format
@@ -18909,10 +18921,10 @@ msgid "Emit the Infima → Instructure CSS-variable bridge."
 msgstr "Infima → Instructure CSS-वैरिएबल ब्रिज जारी करें।"
 
 #: renderers/docusaurus/src/index.md
-#, no-c-format, pantoken-verbatim
+#, no-c-format
 msgctxt "docs.api:prose"
 msgid "<!-- pantoken-value-scope:renderers%2Fdocusaurus%2Fsrc%2Findex.md -->\nTarget: Docusaurus theme-classic. Current format: {{ptk_code_0}}. Minimum host version: {{ptk_code_1}}. Tested through {{ptk_code_2}}. Newer releases require review."
-msgstr "<!-- pantoken-value-scope:renderers%2Fdocusaurus%2Fsrc%2Findex.md -->\nTarget: Docusaurus theme-classic. Current format: {{ptk_code_0}}. Minimum host version: {{ptk_code_1}}. Tested through {{ptk_code_2}}. Newer releases require review."
+msgstr "<!-- pantoken-value-scope:renderers%2Fdocusaurus%2Fsrc%2Findex.md -->\nलक्ष्य: Docusaurus theme-classic. वर्तमान फ़ॉर्मैट: {{ptk_code_0}}. न्यूनतम होस्ट संस्करण: {{ptk_code_1}}. {{ptk_code_2}} तक परीक्षण किया गया। नए रिलीज़ की समीक्षा आवश्यक है।"
 
 #: renderers/docusaurus/src/index.md
 #, no-c-format
@@ -18981,10 +18993,10 @@ msgid "**Let consumer settings still win**"
 msgstr "**उपभोक्ता सेटिंग्स को फिर भी जीतने दें**"
 
 #: renderers/foundation/src/index.md
-#, no-c-format, pantoken-verbatim
+#, no-c-format
 msgctxt "docs.api:prose"
 msgid "<!-- pantoken-value-scope:renderers%2Ffoundation%2Fsrc%2Findex.md -->\nTarget: Foundation for Sites. Current format: {{ptk_code_0}}. Minimum host version: {{ptk_code_1}}. Tested through {{ptk_code_2}}. Newer releases require review."
-msgstr "<!-- pantoken-value-scope:renderers%2Ffoundation%2Fsrc%2Findex.md -->\nTarget: Foundation for Sites. Current format: {{ptk_code_0}}. Minimum host version: {{ptk_code_1}}. Tested through {{ptk_code_2}}. Newer releases require review."
+msgstr "<!-- pantoken-value-scope:renderers%2Ffoundation%2Fsrc%2Findex.md -->\nलक्ष्य: Foundation for Sites. वर्तमान फ़ॉर्मैट: {{ptk_code_0}}. न्यूनतम होस्ट संस्करण: {{ptk_code_1}}. {{ptk_code_2}} तक परीक्षण किया गया। नए रिलीज़ की समीक्षा आवश्यक है।"
 
 #: renderers/foundation/src/index.md
 #, no-c-format
@@ -19067,10 +19079,10 @@ msgid "**Compose a brand-icon plugin's resolver**"
 msgstr "**ब्रांड-आइकन प्लगइन के रिज़ॉल्वर को बनाएं**"
 
 #: renderers/markdown-it/src/index.md
-#, no-c-format, pantoken-verbatim
+#, no-c-format
 msgctxt "docs.api:prose"
 msgid "<!-- pantoken-value-scope:renderers%2Fmarkdown-it%2Fsrc%2Findex.md -->\nTarget: markdown-it. Minimum host version: {{ptk_code_0}}. Tested through {{ptk_code_1}}. Newer releases require review."
-msgstr "<!-- pantoken-value-scope:renderers%2Fmarkdown-it%2Fsrc%2Findex.md -->\nTarget: markdown-it. Minimum host version: {{ptk_code_0}}. Tested through {{ptk_code_1}}. Newer releases require review."
+msgstr "<!-- pantoken-value-scope:renderers%2Fmarkdown-it%2Fsrc%2Findex.md -->\nलक्ष्य: markdown-it. होस्ट का न्यूनतम संस्करण: {{ptk_code_0}}. {{ptk_code_1}} तक परीक्षण किया गया है. नए संस्करणों के लिए समीक्षा आवश्यक है."
 
 #: renderers/markdown-it/src/index.md
 #, no-c-format
@@ -19157,10 +19169,10 @@ msgid "The `colors` + `background` keys to merge into a Mintlify `docs.json`."
 msgstr "वे `colors` + `background` कुंजीं हैं जिन्हें Mintlify `docs.json` में विलय करना है।"
 
 #: renderers/mintlify/src/index.md
-#, no-c-format, pantoken-verbatim
+#, no-c-format
 msgctxt "docs.api:prose"
 msgid "<!-- pantoken-value-scope:renderers%2Fmintlify%2Fsrc%2Findex.md -->\nTarget: Mintlify docs.json. Current format: {{ptk_code_0}}. Minimum host version: {{ptk_code_1}}. Tested through {{ptk_code_2}}. Newer releases require review."
-msgstr "<!-- pantoken-value-scope:renderers%2Fmintlify%2Fsrc%2Findex.md -->\nTarget: Mintlify docs.json. Current format: {{ptk_code_0}}. Minimum host version: {{ptk_code_1}}. Tested through {{ptk_code_2}}. Newer releases require review."
+msgstr "<!-- pantoken-value-scope:renderers%2Fmintlify%2Fsrc%2Findex.md -->\nलक्ष्य: Mintlify docs.json. वर्तमान प्रारूप: {{ptk_code_0}}. न्यूनतम होस्ट संस्करण: {{ptk_code_1}}. {{ptk_code_2}} तक परीक्षण किया गया। नए रिलीज़ के लिए समीक्षा आवश्यक है।"
 
 #: renderers/mintlify/src/index.md
 #, no-c-format
@@ -19241,10 +19253,10 @@ msgid "**Per-brand, per-mode theme**"
 msgstr "**प्रति-ब्रांड, प्रति-मोड थीम**"
 
 #: renderers/mui/src/index.md
-#, no-c-format, pantoken-verbatim
+#, no-c-format
 msgctxt "docs.api:prose"
 msgid "<!-- pantoken-value-scope:renderers%2Fmui%2Fsrc%2Findex.md -->\nTarget: Material UI. Current format: {{ptk_code_0}}. Minimum host version: {{ptk_code_1}}. Tested through {{ptk_code_2}}. Newer releases require review."
-msgstr "<!-- pantoken-value-scope:renderers%2Fmui%2Fsrc%2Findex.md -->\nTarget: Material UI. Current format: {{ptk_code_0}}. Minimum host version: {{ptk_code_1}}. Tested through {{ptk_code_2}}. Newer releases require review."
+msgstr "<!-- pantoken-value-scope:renderers%2Fmui%2Fsrc%2Findex.md -->\nलक्ष्य: Material UI. वर्तमान प्रारूप: {{ptk_code_0}}. न्यूनतम होस्ट संस्करण: {{ptk_code_1}}. {{ptk_code_2}} तक परीक्षण किया गया। नए रिलीज़ की समीक्षा आवश्यक है।"
 
 #: renderers/mui/src/index.md
 #, no-c-format
@@ -19499,10 +19511,10 @@ msgid "A rehype plugin that tags GitHub-alert blockquotes: it detects a `[!NOTE]
 msgstr "GitHub-alert ब्लॉककोट्स को टैग करने वाला एक rehype प्लगइन: यह ब्लॉककोट की शुरुआत में `[!NOTE]`-शैली के मार्कर का पता लगाता है, इसे `data-alert=\"note\"` के रूप में रिकॉर्ड करता है, और मार्कर टेक्स्ट को हटा देता है। फिर React `blockquote` कंपोनेंट एक InstUI `Alert` रेंडर करता है।"
 
 #: renderers/react-markdown/src/index.md
-#, no-c-format, pantoken-verbatim
+#, no-c-format
 msgctxt "docs.api:prose"
 msgid "<!-- pantoken-value-scope:renderers%2Freact-markdown%2Fsrc%2Findex.md -->\nTarget: react-markdown. Current format: {{ptk_code_0}}. Minimum host version: {{ptk_code_1}}. Tested through {{ptk_code_2}}. Newer releases require review."
-msgstr "<!-- pantoken-value-scope:renderers%2Freact-markdown%2Fsrc%2Findex.md -->\nTarget: react-markdown. Current format: {{ptk_code_0}}. Minimum host version: {{ptk_code_1}}. Tested through {{ptk_code_2}}. Newer releases require review."
+msgstr "<!-- pantoken-value-scope:renderers%2Freact-markdown%2Fsrc%2Findex.md -->\nलक्ष्य: react-markdown. वर्तमान प्रारूप: {{ptk_code_0}}. न्यूनतम होस्ट संस्करण: {{ptk_code_1}}. {{ptk_code_2}} तक परीक्षण किया गया। नए संस्करणों की समीक्षा आवश्यक है।"
 
 #: renderers/react-markdown/src/index.md
 #, no-c-format
@@ -19709,10 +19721,10 @@ msgid "React hook returning a resolved `--instui-*` token value (re-reads on `na
 msgstr "React हुक जो एक सुलझे हुए `--instui-*` टोकन मान को लौटाता है (जब `name` बदलता है तो पुनः-पढ़ता है)।"
 
 #: renderers/react/src/index.md
-#, no-c-format, pantoken-verbatim
+#, no-c-format
 msgctxt "docs.api:prose"
 msgid "<!-- pantoken-value-scope:renderers%2Freact%2Fsrc%2Findex.md -->\nTarget: React. Current format: {{ptk_code_0}}. Minimum host version: {{ptk_code_1}}. Tested through {{ptk_code_2}}. Newer releases require review."
-msgstr "<!-- pantoken-value-scope:renderers%2Freact%2Fsrc%2Findex.md -->\nTarget: React. Current format: {{ptk_code_0}}. Minimum host version: {{ptk_code_1}}. Tested through {{ptk_code_2}}. Newer releases require review."
+msgstr "<!-- pantoken-value-scope:renderers%2Freact%2Fsrc%2Findex.md -->\nलक्ष्य: React. वर्तमान फ़ॉर्मैट: {{ptk_code_0}}. न्यूनतम होस्ट संस्करण: {{ptk_code_1}}. {{ptk_code_2}} तक परीक्षण किया गया. नए रिलीज़ की समीक्षा आवश्यक है."
 
 #: renderers/react/src/index.md
 #, no-c-format
@@ -19776,10 +19788,10 @@ msgid "**Built-in icon set**"
 msgstr "**बिल्ट-इन आइकन सेट**"
 
 #: renderers/rehype/src/index.md
-#, no-c-format, pantoken-verbatim
+#, no-c-format
 msgctxt "docs.api:prose"
 msgid "<!-- pantoken-value-scope:renderers%2Frehype%2Fsrc%2Findex.md -->\nTarget: rehype. Current format: {{ptk_code_0}}. Minimum host version: {{ptk_code_1}}. Tested through {{ptk_code_2}}. Newer releases require review."
-msgstr "<!-- pantoken-value-scope:renderers%2Frehype%2Fsrc%2Findex.md -->\nTarget: rehype. Current format: {{ptk_code_0}}. Minimum host version: {{ptk_code_1}}. Tested through {{ptk_code_2}}. Newer releases require review."
+msgstr "<!-- pantoken-value-scope:renderers%2Frehype%2Fsrc%2Findex.md -->\nलक्ष्य: rehype. वर्तमान प्रारूप: {{ptk_code_0}}. न्यूनतम होस्ट संस्करण: {{ptk_code_1}}. {{ptk_code_2}} तक परीक्षण किया गया। नए रिलीज़ की समीक्षा आवश्यक है।"
 
 #: renderers/rehype/src/index.md
 #, no-c-format
@@ -19824,10 +19836,10 @@ msgid "Emit Tailwind v4 aliases for the shadcn theme variables and derived radiu
 msgstr "shadcn थीम वेरिएबल्स और व्युत्पन्न रेडियस स्केल के लिए Tailwind v4 के उपनाम जारी करें।"
 
 #: renderers/shadcn/src/index.md
-#, no-c-format, pantoken-verbatim
+#, no-c-format
 msgctxt "docs.api:prose"
 msgid "<!-- pantoken-value-scope:renderers%2Fshadcn%2Fsrc%2Findex.md -->\nTarget: shadcn/ui CSS variables. Current format: {{ptk_code_0}}. Minimum host version: {{ptk_code_1}}. Tested through {{ptk_code_2}}. Newer releases require review."
-msgstr "<!-- pantoken-value-scope:renderers%2Fshadcn%2Fsrc%2Findex.md -->\nTarget: shadcn/ui CSS variables. Current format: {{ptk_code_0}}. Minimum host version: {{ptk_code_1}}. Tested through {{ptk_code_2}}. Newer releases require review."
+msgstr "<!-- pantoken-value-scope:renderers%2Fshadcn%2Fsrc%2Findex.md -->\nलक्ष्य: shadcn/ui CSS variables. वर्तमान प्रारूप: {{ptk_code_0}}. न्यूनतम होस्ट संस्करण: {{ptk_code_1}}. {{ptk_code_2}} तक परीक्षण किया गया। नए रिलीज़ की समीक्षा आवश्यक है।"
 
 #: renderers/shadcn/src/index.md
 #, no-c-format
@@ -19884,10 +19896,10 @@ msgid "A `ThemeVars`-shaped object."
 msgstr "एक `ThemeVars`-आकार का ऑब्जेक्ट।"
 
 #: renderers/storybook/src/index.md
-#, no-c-format, pantoken-verbatim
+#, no-c-format
 msgctxt "docs.api:prose"
 msgid "<!-- pantoken-value-scope:renderers%2Fstorybook%2Fsrc%2Findex.md -->\nTarget: Storybook theming. Current format: {{ptk_code_0}}. Minimum host version: {{ptk_code_1}}. Tested through {{ptk_code_2}}. Newer releases require review."
-msgstr "<!-- pantoken-value-scope:renderers%2Fstorybook%2Fsrc%2Findex.md -->\nTarget: Storybook theming. Current format: {{ptk_code_0}}. Minimum host version: {{ptk_code_1}}. Tested through {{ptk_code_2}}. Newer releases require review."
+msgstr "<!-- pantoken-value-scope:renderers%2Fstorybook%2Fsrc%2Findex.md -->\nलक्ष्य: Storybook थीमिंग। वर्तमान फ़ॉर्मैट: {{ptk_code_0}}। न्यूनतम होस्ट संस्करण: {{ptk_code_1}}। {{ptk_code_2}} तक परीक्षण किया गया। नए रिलीज़ की समीक्षा आवश्यक है।"
 
 #: renderers/storybook/src/index.md
 #, no-c-format
@@ -19965,10 +19977,10 @@ msgid "Passed through to `register()` (e.g. `prefix`, `only`)."
 msgstr "यह `register()` तक पास किया जाता है (उदा. `prefix`, `only`)."
 
 #: renderers/svelte/src/index.md
-#, no-c-format, pantoken-verbatim
+#, no-c-format
 msgctxt "docs.api:prose"
 msgid "<!-- pantoken-value-scope:renderers%2Fsvelte%2Fsrc%2Findex.md -->\nTarget: Svelte. Current format: {{ptk_code_0}}. Minimum host version: {{ptk_code_1}}. Tested through {{ptk_code_2}}. Newer releases require review."
-msgstr "<!-- pantoken-value-scope:renderers%2Fsvelte%2Fsrc%2Findex.md -->\nTarget: Svelte. Current format: {{ptk_code_0}}. Minimum host version: {{ptk_code_1}}. Tested through {{ptk_code_2}}. Newer releases require review."
+msgstr "<!-- pantoken-value-scope:renderers%2Fsvelte%2Fsrc%2Findex.md -->\nलक्ष्य: Svelte। वर्तमान फ़ॉर्मैट: {{ptk_code_0}}। होस्ट का न्यूनतम संस्करण: {{ptk_code_1}}। {{ptk_code_2}} तक परीक्षण किया गया। नए रिलीज़ की समीक्षा आवश्यक है।"
 
 #: renderers/svelte/src/index.md
 #, no-c-format
@@ -20259,10 +20271,10 @@ msgid "Validate a pantoken class token (e.g., \"instui-button\", \"instui-button
 msgstr "एक pantoken क्लास टोकन को सत्यापित करें (जैसे \"instui-button\", \"instui-button.-color-primary\")。\nसत्यापन त्रुटियों की एक सरणी लौटाता है (यदि वैध हो तो खाली)।"
 
 #: renderers/tinymce/src/index.md
-#, no-c-format, pantoken-verbatim
+#, no-c-format
 msgctxt "docs.api:prose"
 msgid "<!-- pantoken-value-scope:renderers%2Ftinymce%2Fsrc%2Findex.md -->\nTarget: TinyMCE PluginManager. Current format: {{ptk_code_0}}. Minimum host version: {{ptk_code_1}}. Tested through {{ptk_code_2}}. Newer releases require review."
-msgstr "<!-- pantoken-value-scope:renderers%2Ftinymce%2Fsrc%2Findex.md -->\nTarget: TinyMCE PluginManager. Current format: {{ptk_code_0}}. Minimum host version: {{ptk_code_1}}. Tested through {{ptk_code_2}}. Newer releases require review."
+msgstr "<!-- pantoken-value-scope:renderers%2Ftinymce%2Fsrc%2Findex.md -->\nलक्ष्य: TinyMCE PluginManager. वर्तमान फ़ॉर्मैट: {{ptk_code_0}}. न्यूनतम होस्ट संस्करण: {{ptk_code_1}}. {{ptk_code_2}} तक परीक्षण किया गया। नए संस्करणों की समीक्षा आवश्यक है।"
 
 #: renderers/tinymce/src/interfaces/ContentClassesPluginOptions.md
 #, fuzzy, no-c-format
@@ -20728,10 +20740,10 @@ msgid "The bundled page layouts exposed through the template picker."
 msgstr "टेम्पलेट पिकर के माध्यम से एक्सपोज़ किए गए बंडल किए गए पेज लेआउट।"
 
 #: renderers/vitepress/src/index.md
-#, no-c-format, pantoken-verbatim
+#, no-c-format
 msgctxt "docs.api:prose"
 msgid "<!-- pantoken-value-scope:renderers%2Fvitepress%2Fsrc%2Findex.md -->\nTarget: VitePress. Current format: {{ptk_code_0}}. Minimum host version: {{ptk_code_1}}. Tested through {{ptk_code_2}}. Newer releases require review."
-msgstr "<!-- pantoken-value-scope:renderers%2Fvitepress%2Fsrc%2Findex.md -->\nTarget: VitePress. Current format: {{ptk_code_0}}. Minimum host version: {{ptk_code_1}}. Tested through {{ptk_code_2}}. Newer releases require review."
+msgstr "<!-- pantoken-value-scope:renderers%2Fvitepress%2Fsrc%2Findex.md -->\nलक्ष्य: VitePress. वर्तमान फ़ॉर्मैट: {{ptk_code_0}}. न्यूनतम होस्ट संस्करण: {{ptk_code_1}}. {{ptk_code_2}} तक परीक्षण किया गया। नए रिलीज़ के लिए समीक्षा आवश्यक है।"
 
 #: renderers/vitepress/src/index.md
 #, no-c-format
@@ -20779,10 +20791,10 @@ msgid "The resolver (defaults to the built-in pantoken icon set)."
 msgstr "रिज़ॉल्वर (डिफ़ॉल्ट रूप से बिल्ट-इन pantoken आइकन सेट)।"
 
 #: renderers/vue/src/index.md
-#, no-c-format, pantoken-verbatim
+#, no-c-format
 msgctxt "docs.api:prose"
 msgid "<!-- pantoken-value-scope:renderers%2Fvue%2Fsrc%2Findex.md -->\nTarget: Vue. Current format: {{ptk_code_0}}. Minimum host version: {{ptk_code_1}}. Tested through {{ptk_code_2}}. Newer releases require review."
-msgstr "<!-- pantoken-value-scope:renderers%2Fvue%2Fsrc%2Findex.md -->\nTarget: Vue. Current format: {{ptk_code_0}}. Minimum host version: {{ptk_code_1}}. Tested through {{ptk_code_2}}. Newer releases require review."
+msgstr "<!-- pantoken-value-scope:renderers%2Fvue%2Fsrc%2Findex.md -->\nलक्ष्य: Vue. वर्तमान फ़ॉर्मैट: {{ptk_code_0}}. न्यूनतम होस्ट संस्करण: {{ptk_code_1}}. {{ptk_code_2}} तक परीक्षण किया गया। नए रिलीज़ की समीक्षा आवश्यक है।"
 
 #: renderers/vue/src/index.md
 #, no-c-format
@@ -20936,10 +20948,10 @@ msgid "First day of week as a JS `Date.getDay()` index (0=Sunday … 6=Saturday)
 msgstr "सप्ताह का पहला दिन JS `Date.getDay()` इंडेक्स के रूप में (0=रविवार … 6=शनिवार)."
 
 #: renderers/web-components/src/index.md
-#, no-c-format, pantoken-verbatim
+#, no-c-format
 msgctxt "docs.api:prose"
 msgid "<!-- pantoken-value-scope:renderers%2Fweb-components%2Fsrc%2Findex.md -->\nTarget: Web Components. Current format: {{ptk_code_0}}. Tested environment: {{ptk_code_1}}. Real-browser rendering and interaction behavior are not verified."
-msgstr "<!-- pantoken-value-scope:renderers%2Fweb-components%2Fsrc%2Findex.md -->\nTarget: Web Components. Current format: {{ptk_code_0}}. Tested environment: {{ptk_code_1}}. Real-browser rendering and interaction behavior are not verified."
+msgstr "<!-- pantoken-value-scope:renderers%2Fweb-components%2Fsrc%2Findex.md -->\nलक्ष्य: Web Components। वर्तमान प्रारूप: {{ptk_code_0}}। परीक्षण किया गया परिवेश: {{ptk_code_1}}। वास्तविक ब्राउज़र में रेंडरिंग और इंटरैक्शन व्यवहार सत्यापित नहीं हैं।"
 
 #: renderers/web-components/src/index.md
 #, no-c-format
@@ -21302,6 +21314,18 @@ msgctxt "docs.api:prose"
 msgid "`<instui-badge>` — a small count/status badge. The `variant` attribute maps to the\n`-color-<variant>` modifier; slotted content is the count or label."
 msgstr "`&lt;instui-badge&gt;` — a small count/status badge. The `variant` attribute maps to the\n`-color-&lt;variant&gt;` modifier; slotted content is the count or label."
 
+#: renderers/web-components/src/variables/billboard.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "A section for an empty state or call to action."
+msgstr "खाली स्थिति या कार्रवाई के आह्वान के लिए एक अनुभाग।"
+
+#: renderers/web-components/src/variables/breadcrumb.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "A breadcrumb navigation landmark."
+msgstr "ब्रेडक्रंब नेविगेशन लैंडमार्क।"
+
 #: renderers/web-components/src/variables/button.md
 #, no-c-format
 msgctxt "docs.api:prose"
@@ -21321,6 +21345,12 @@ msgctxt "docs.api:prose"
 msgid "More about this item."
 msgstr "इस आइटम के बारे में और जानकारी।"
 
+#: renderers/web-components/src/variables/byline.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "A media-object byline container."
+msgstr "मीडिया-ऑब्जेक्ट बायलाइन कंटेनर।"
+
 #: renderers/web-components/src/variables/ca.md
 #, no-c-format
 msgctxt "docs.api:prose"
@@ -21332,6 +21362,30 @@ msgstr "Catalan (Catalá) स्थानीय बंडल।"
 msgctxt "docs.api:prose"
 msgid "`<instui-calendar>` — an interactive month grid. `value` (`yyyy-mm-dd`) is the selected day and\n`view` (`yyyy-mm-dd`, optional) the visible month. The prev/next chevrons and every day are\n`<button>`s driving the Invoker Commands API (`--calendar-prev`, `--calendar-next`,\n`--calendar-select`) at the grid; selecting a day updates `value`/`view` and dispatches a composed,\nbubbling `change` event (`detail.value` is the ISO date). Renders its own grid (no slot), so it\nworks standalone or nested inside a date picker."
 msgstr "`&lt;instui-calendar&gt;` — an interactive month grid. `value` (`yyyy-mm-dd`) is the selected day and\n`view` (`yyyy-mm-dd`, optional) the visible month. The prev/next chevrons and every day are\n`&lt;button&gt;`s driving the Invoker Commands API (`--calendar-prev`, `--calendar-next`,\n`--calendar-select`) at the grid; selecting a day updates `value`/`view` and dispatches a composed,\nbubbling `change` event (`detail.value` is the ISO date). Renders its own grid (no slot), so it\nworks standalone or nested inside a date picker."
+
+#: renderers/web-components/src/variables/card.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "An article-shaped card with slotted content."
+msgstr "स्लॉट की गई सामग्री वाला लेख-आकार का कार्ड।"
+
+#: renderers/web-components/src/variables/checkbox.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "A native checkbox and its slotted label."
+msgstr "एक नेटिव चेकबॉक्स और उसका स्लॉट किया गया लेबल।"
+
+#: renderers/web-components/src/variables/closeButton.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "A native close button with an accessible label."
+msgstr "सुलभ लेबल वाला एक नेटिव बंद करें बटन।"
+
+#: renderers/web-components/src/variables/componentElements.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Missing root component records, registered after the hand-authored elements."
+msgstr "रूट घटक रिकॉर्ड अनुपस्थित हैं, जिन्हें हाथ से लिखे गए एलिमेंट्स के बाद पंजीकृत किया गया है।"
 
 #: renderers/web-components/src/variables/contextView.md
 #, no-c-format
@@ -21447,6 +21501,30 @@ msgctxt "docs.api:prose"
 msgid "Finnish (Suomi) locale bundle."
 msgstr "फिनिश (Suomi) लोकलाइज़ेशन बंडल."
 
+#: renderers/web-components/src/variables/fileDrop.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "A native file picker presented as a dropzone label."
+msgstr "ड्रॉपज़ोन लेबल के रूप में प्रस्तुत एक नेटिव फ़ाइल पिकर।"
+
+#: renderers/web-components/src/variables/formField.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "A form-field layout container."
+msgstr "फ़ॉर्म-फ़ील्ड लेआउट कंटेनर।"
+
+#: renderers/web-components/src/variables/formFieldGroup.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "A native fieldset for a group of form fields."
+msgstr "फ़ॉर्म फ़ील्ड के समूह के लिए एक मूल फ़ील्डसेट।"
+
+#: renderers/web-components/src/variables/formFieldMessages.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "A status region for form-field help and validation messages."
+msgstr "प्रपत्र फ़ील्ड की सहायता और सत्यापन संदेशों के लिए स्थिति क्षेत्र।"
+
 #: renderers/web-components/src/variables/fr.md
 #, no-c-format
 msgctxt "docs.api:prose"
@@ -21470,6 +21548,12 @@ msgstr "आयरिश गेलिक लोकल बंडल।"
 msgctxt "docs.api:prose"
 msgid "Hebrew (עִברִית) locale bundle."
 msgstr "हिब्रू (עִברִית) लोकलाइज़ेशन बंडल।"
+
+#: renderers/web-components/src/variables/heading.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "A semantic heading with a bounded level from one through six."
+msgstr "एक अर्थगत शीर्षक जिसका स्तर एक से छह तक सीमित है।"
 
 #: renderers/web-components/src/variables/hi.md
 #, no-c-format
@@ -21525,6 +21609,12 @@ msgctxt "docs.api:prose"
 msgid "`<instui-in-place-edit>` — a click-to-edit field. `value` shows as text; on click/focus it becomes\neditable, Enter or blur commits (and fires a bubbling `change` event with `detail.value`), and\nEscape reverts to the pre-edit value. `readonly` disables editing. An external `value` change\nreflects into the field while it isn't being edited. `input-type` accepts `text`, `number`,\n`email`, `url`, `tel`, or `search` as a non-validating editing hint."
 msgstr "`&lt;instui-in-place-edit&gt;` — a click-to-edit field. `value` shows as text; on click/focus it becomes\neditable, Enter or blur commits (and fires a bubbling `change` event with `detail.value`), and\nEscape reverts to the pre-edit value. `readonly` disables editing. An external `value` change\nreflects into the field while it isn't being edited."
 
+#: renderers/web-components/src/variables/inputGroup.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "A container for an input and adjacent content."
+msgstr "एक इनपुट और उससे सटी हुई सामग्री के लिए एक कंटेनर।"
+
 #: renderers/web-components/src/variables/is.md
 #, no-c-format
 msgctxt "docs.api:prose"
@@ -21548,6 +21638,30 @@ msgstr "जापानी (日本語) लोकल बंडल."
 msgctxt "docs.api:prose"
 msgid "Korean (한국말) locale bundle."
 msgstr "कोरियाई (한국말) लोकलाइज़ेशन बंडल।"
+
+#: renderers/web-components/src/variables/link.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "A link that rejects executable and data URL schemes."
+msgstr "एक लिंक जो निष्पादन योग्य और डेटा URL स्कीम को अस्वीकार करता है।"
+
+#: renderers/web-components/src/variables/list.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "A native unordered list with Pantoken list-item styles."
+msgstr "Pantoken सूची-आइटम शैलियों वाली एक मूल अनक्रमित सूची।"
+
+#: renderers/web-components/src/variables/mask.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "An overlay surface for positioned content."
+msgstr "स्थित सामग्री के लिए एक ओवरले सतह।"
+
+#: renderers/web-components/src/variables/menu.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "A menu surface with item, group, and separator styles."
+msgstr "आइटम, समूह और विभाजक शैलियों वाला मेनू पटल।"
 
 #: renderers/web-components/src/variables/metric.md
 #, no-c-format
@@ -21603,6 +21717,12 @@ msgctxt "docs.api:prose"
 msgid "Norwegian Nynorsk (Norsk Nynorsk) locale bundle."
 msgstr "नॉर्वेजियाई Nynorsk (Norsk Nynorsk) लोकल बंडल।"
 
+#: renderers/web-components/src/variables/numberInput.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "A native number input with value-change events."
+msgstr "मूल संख्या इनपुट, जिसमें मान बदलने पर इवेंट होते हैं।"
+
 #: renderers/web-components/src/variables/pages.md
 #, no-c-format
 msgctxt "docs.api:prose"
@@ -21632,6 +21752,12 @@ msgstr "दूसरा "
 msgctxt "docs.api:prose"
 msgid "Back"
 msgstr "वापस"
+
+#: renderers/web-components/src/variables/pagination.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "A pagination navigation landmark."
+msgstr "पृष्ठांकन नेविगेशन का एक लैंडमार्क।"
 
 #: renderers/web-components/src/variables/pill.md
 #, no-c-format
@@ -21693,6 +21819,24 @@ msgctxt "docs.api:prose"
 msgid "Portuguese Brazil (Português do Brasil) locale bundle."
 msgstr "Portuguese Brazil (Português do Brasil) स्थानीय भाषा बंडल."
 
+#: renderers/web-components/src/variables/radio.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "A native radio control and its slotted label."
+msgstr "एक नेटिव रेडियो कंट्रोल और उसका स्लॉट किया हुआ लेबल।"
+
+#: renderers/web-components/src/variables/radioInputGroup.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "A native fieldset for a radio-input group."
+msgstr "रेडियो-इनपुट समूह के लिए एक नेटिव फ़ील्डसेट।"
+
+#: renderers/web-components/src/variables/rangeInput.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "A native range slider with value-change events."
+msgstr "मान-परिवर्तन इवेंट वाला एक नेटिव रेंज स्लाइडर।"
+
 #: renderers/web-components/src/variables/rating.md
 #, no-c-format
 msgctxt "docs.api:prose"
@@ -21704,6 +21848,12 @@ msgstr "`&lt;instui-rating&gt;` — a star rating with `role=\"img\"`. `value` i
 msgctxt "docs.api:prose"
 msgid "Russian (Русский) locale bundle."
 msgstr "रूसी (Русский) लोकलाइज़ेशन बंडल."
+
+#: renderers/web-components/src/variables/screenReaderContent.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Visually hidden content that remains available to assistive technology."
+msgstr "दृश्य रूप से छिपी सामग्री, जो सहायक तकनीक के लिए उपलब्ध रहती है।"
 
 #: renderers/web-components/src/variables/se.md
 #, no-c-format
@@ -21729,6 +21879,12 @@ msgctxt "docs.api:prose"
 msgid "Courses"
 msgstr "पाठ्यक्रम"
 
+#: renderers/web-components/src/variables/simpleSelect.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "A native select control that copies text-only options from its light DOM."
+msgstr "एक नेटिव select नियंत्रण जो अपने लाइट DOM से केवल-पाठ विकल्पों की प्रतिलिपि बनाता है।"
+
 #: renderers/web-components/src/variables/sl.md
 #, no-c-format
 msgctxt "docs.api:prose"
@@ -21746,6 +21902,12 @@ msgstr "`<instui-spinner>` — एक लोडिंग स्पिनर, ज
 msgctxt "docs.api:prose"
 msgid "Swedish (Svenska) locale bundle."
 msgstr "स्वीडिश (Svenska) स्थानीय भाषा बंडल."
+
+#: renderers/web-components/src/variables/table.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "A table-layout container that keeps slotted rows inside its table semantics."
+msgstr "एक टेबल-लेआउट कंटेनर जो स्लॉट की गई पंक्तियों को टेबल के सिमेंटिक्स के भीतर रखता है।"
 
 #: renderers/web-components/src/variables/tabs.md
 #, no-c-format
@@ -21783,6 +21945,24 @@ msgctxt "docs.api:prose"
 msgid "Design"
 msgstr "डिज़ाइन"
 
+#: renderers/web-components/src/variables/text.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "A paragraph of Pantoken body text."
+msgstr "Pantoken के मुख्य पाठ का एक अनुच्छेद।"
+
+#: renderers/web-components/src/variables/textArea.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "A native multiline text input with a visible slotted label."
+msgstr "दृश्यमान स्लॉटेड लेबल वाला एक नेटिव मल्टीलाइन टेक्स्ट इनपुट।"
+
+#: renderers/web-components/src/variables/textInput.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "A native text input with a visible slotted label."
+msgstr "दिखाई देने वाले स्लॉटेड लेबल वाला एक नेटिव टेक्स्ट इनपुट।"
+
 #: renderers/web-components/src/variables/th.md
 #, no-c-format
 msgctxt "docs.api:prose"
@@ -21800,6 +21980,18 @@ msgstr "`&lt;instui-toggle-button&gt;` — a two-state button. `pressed=\"true\"
 msgctxt "docs.api:prose"
 msgid "Bookmarked"
 msgstr "बुकमार्क किया गया"
+
+#: renderers/web-components/src/variables/toggleDetails.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "A native disclosure with a configurable summary."
+msgstr "कॉन्फ़िगर करने योग्य सारांश वाला एक नेटिव डिस्क्लोज़र।"
+
+#: renderers/web-components/src/variables/toggleGroup.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "A native disclosure group."
+msgstr "एक नेटिव प्रकटीकरण समूह।"
 
 #: renderers/web-components/src/variables/tooltip.md
 #, no-c-format
@@ -21860,6 +22052,12 @@ msgstr "Ukrainian (Українська) स्थानीय भाषा ब�
 msgctxt "docs.api:prose"
 msgid "Vietnamese locale bundle."
 msgstr "वियतनामी लोकलाइज़ेशन बंडल।"
+
+#: renderers/web-components/src/variables/view.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "A neutral layout primitive."
+msgstr "एक तटस्थ लेआउट आधारभूत तत्व।"
 
 #: renderers/web-components/src/variables/zhHans.md
 #, no-c-format
@@ -22183,6 +22381,26 @@ msgstr "Stylus स्रोत स्ट्रिंग।"
 msgctxt "docs.api:prose"
 msgid "A hoverable \"view fullscreen\" button, overlaid on a demo/example frame the same way VitePress's own\ncode-block \"copy\" button reveals on hover. Purely markup — wire a delegated click handler in your\nhost page (`button.closest(...).querySelector(\"iframe\")?.requestFullscreen()`; see the pantoken docs\ntheme for the reference wiring) and style the reveal-on-hover with `@pantoken/demo/demo.css`."
 msgstr "एक hoverable \"view fullscreen\" बटन, जो एक डेमो/उदाहरण फ्रेम पर उसी तरह ओवरले होता है जैसे VitePress का अपना\ncode-block \"copy\" बटन hover पर प्रकट होता है। केवल मार्कअप — अपने होस्ट पेज में एक डेलीगेटेड क्लिक हैंडलर जोड़ें\n(`button.closest(...).querySelector(\"iframe\")?.requestFullscreen()`; संदर्भ वायरिंग के लिए pantoken docs\ntheme देखें) और reveal-on-hover को `@pantoken/demo/demo.css` से स्टाइल करें।"
+
+#, fuzzy, no-c-format
+#~ msgctxt "docs.api:prose"
+#~ msgid "Its own chained modifiers (`-color-*`, `-size-*`, `-shape-*`, `-toggle`, `-condensed`,\n  `-without-background`, `-without-border`, `-display-block`) set a default for every child\n  `.instui-button` that doesn't carry its own modifier in that same category — a button's own\n  modifier class always wins over the group's default. `-icon-*` is always per-button; it's\n  never read from the group. Deprecated button aliases (`-ghost`, `-color-primary-inverse`)\n  aren't supported as group-level modifiers — use their canonical replacements\n  (`-color-tertiary`, `-on-color`) instead. Each join shows a single 1px seam in the buttons'\n  own border color (solid fills, whose border matches the fill, tint it with the label color).\n  `-without-seam` is group-only: it hides that seam so the buttons read as\n  one continuous control."
+#~ msgstr "Its own chained modifiers (`-color-*`, `-size-*`, `-shape-*`, `-toggle`, `-condensed`,\n  `-without-background`, `-without-border`, `-display-block`) ग्रुप के लिए डिफ़ॉल्ट सेट करते हैं उन प्रत्येक बच्चे के लिए\n  `.instui-button` जिनके पास उसी श्रेणी में अपना मॉडिफायर नहीं है — किसी बटन का अपना\n  मॉडिफायर क्लास हमेशा समूह के डिफ़ॉल्ट पर भारी पड़ता है। `-icon-*` हमेशा प्रति-बटन होता है; इसे\n  कभी समूह से पढ़ा नहीं जाता। प्रतिबंधित बटन उपनाम (`-ghost`, `-color-primary-inverse`)\n) समूह-स्तरीय मॉडिफायर के रूप में समर्थित नहीं हैं — इनके canonical प्रतिस्थापनों का उपयोग करें\n  (`-color-tertiary`, `-on-color`) के बजाय)."
+
+#, no-c-format
+#~ msgctxt "docs.api:prose"
+#~ msgid "Use a labelled group for related actions; when buttons represent a toggle choice, expose each state with aria-pressed. Give icon-only buttons an accessible name."
+#~ msgstr "संबंधित कार्यों के लिए एक लेबलयुक्त समूह का उपयोग करें; जब बटन किसी टॉगल विकल्प का प्रतिनिधित्व करते हों, तो प्रत्येक स्थिति को aria-pressed के साथ प्रदर्शित करें। केवल आइकन वाले बटनों को एक पहुँच योग्य नाम दें।"
+
+#, no-c-format
+#~ msgctxt "docs.api:prose"
+#~ msgid "Rebrand (dark), Canvas, Canvas High Contrast:"
+#~ msgstr "Rebrand (गहरा), Canvas, Canvas High Contrast:"
+
+#, no-c-format
+#~ msgctxt "docs.api:prose"
+#~ msgid " With line height 1.5, letter spacing 0.12em, word spacing 0.16em, and paragraph spacing 2em, text in one element gets cut off: "
+#~ msgstr " लाइन ऊँचाई 1.5, अक्षर-अंतराल 0.12em, शब्द-अंतराल 0.16em, और अनुच्छेद-अंतराल 2em होने पर, एक तत्व का टेक्स्ट कट जाता है: "
 
 #, no-c-format
 #~ msgctxt "docs.api:prose"
@@ -34828,23 +35046,81 @@ msgstr "एक hoverable \"view fullscreen\" बटन, जो एक डेम�
 #~ msgstr "withPrefix"
 
 #, pantoken-verbatim
-msgctxt "docs.api:prose"
-msgid "target-size"
-msgstr "target-size"
-
-msgctxt "docs.api:prose"
-msgid "Its own chained modifiers (`-color-*`, `-size-*`, `-shape-*`, `-toggle`, `-condensed`,\n  `-without-background`, `-without-border`, `-display-block`) set a default for every child\n  `.instui-button` that doesn't carry its own modifier in that same category — a button's own\n  modifier class always wins over the group's default. `-icon-*` is always per-button; it's\n  never read from the group. Deprecated button aliases (`-ghost`, `-color-primary-inverse`)\n  aren't supported as group-level modifiers — use their canonical replacements\n  (`-color-tertiary`, `-on-color`) instead. Each join shows a single 1px seam in the buttons'\n  own border color (solid fills, whose border matches the fill, tint it with the label color).\n  `-without-seam` is group-only: it hides that seam so the buttons read as\n  one continuous control.\n  Put `-width-half` on an individual icon-only child button for a split-action\n  trigger with half the standard square width and the full button height."
-msgstr "इसके अपने श्रृंखलाबद्ध modifiers (`-color-*`, `-size-*`, `-shape-*`, `-toggle`, `-condensed`,\n  `-without-background`, `-without-border`, `-display-block`) हर child के लिए डिफ़ॉल्ट तय करते हैं\n  `.instui-button` जिसके पास उसी category में अपना modifier नहीं है — button का अपना\n  modifier class हमेशा group के डिफ़ॉल्ट पर प्राथमिकता पाता है। `-icon-*` हमेशा हर button पर अलग से लागू होता है; इसे\n  group से कभी नहीं लिया जाता। Deprecated button aliases (`-ghost`, `-color-primary-inverse`)\n  group-स्तर के modifiers के रूप में समर्थित नहीं हैं — इनके canonical replacements\n  (`-color-tertiary`, `-on-color`) का उपयोग करें। हर जोड़ buttons के अपने border color में 1px की एक सीम दिखाता है (ठोस भरण, जिनका border भरण से मेल खाता है, इसे label color से रंग देते हैं).\n  `-without-seam` केवल group के लिए है: यह उस सीम को छिपाता है ताकि buttons\n  एक सतत नियंत्रण की तरह दिखें।\n  विभाजित-क्रिया वाले trigger के लिए किसी अलग icon-only child button पर `-width-half` लगाएँ; इसकी चौड़ाई मानक वर्गाकार चौड़ाई की आधी और ऊँचाई पूरी button जितनी होती है।"
-
-msgctxt "docs.api:prose"
-msgid "Use a labelled group for related actions; when buttons represent a toggle choice, expose each state with aria-pressed. Give icon-only buttons an accessible name. Half-width triggers are narrow targets (16px, 20px, or 24px at the standard sizes); ensure sufficient target spacing or use a full-width square button for touch interfaces."
-msgstr "संबंधित कार्रवाइयों के लिए लेबल वाला group उपयोग करें; जब buttons किसी toggle विकल्प को दर्शाते हों, तो aria-pressed के साथ हर स्थिति बताएं। केवल icon वाले buttons को सुलभ नाम दें। आधी चौड़ाई वाले triggers संकरे लक्ष्य होते हैं (मानक आकारों में 16px, 20px या 24px); पर्याप्त लक्ष्य-अंतराल सुनिश्चित करें या touch interfaces के लिए पूरी चौड़ाई वाला वर्गाकार button उपयोग करें।"
+#~ msgctxt "docs.api:text"
+#~ msgid "toggleGroup"
+#~ msgstr "toggleGroup"
 
 #, pantoken-verbatim
-msgctxt "docs.api:prose"
-msgid "WCAG 2.2 2.5.8"
-msgstr "WCAG 2.2 2.5.8"
+#~ msgctxt "docs.api:text"
+#~ msgid "toggleDetails"
+#~ msgstr "toggleDetails"
 
-msgctxt "docs.api:prose"
-msgid "All touch targets must be 24px large, or leave sufficient space"
-msgstr "सभी touch targets कम-से-कम 24px के हों, या उनके बीच पर्याप्त जगह छोड़ें"
+#, pantoken-verbatim
+#~ msgctxt "docs.api:text"
+#~ msgid "fileDrop"
+#~ msgstr "fileDrop"
+
+#, pantoken-verbatim
+#~ msgctxt "docs.api:text"
+#~ msgid "rangeInput"
+#~ msgstr "rangeInput"
+
+#, pantoken-verbatim
+#~ msgctxt "docs.api:text"
+#~ msgid "screenReaderContent"
+#~ msgstr "screenReaderContent"
+
+#, pantoken-verbatim
+#~ msgctxt "docs.api:text"
+#~ msgid "closeButton"
+#~ msgstr "closeButton"
+
+#, pantoken-verbatim
+#~ msgctxt "docs.api:text"
+#~ msgid "formField"
+#~ msgstr "formField"
+
+#, pantoken-verbatim
+#~ msgctxt "docs.api:text"
+#~ msgid "formFieldGroup"
+#~ msgstr "formFieldGroup"
+
+#, pantoken-verbatim
+#~ msgctxt "docs.api:text"
+#~ msgid "radioInputGroup"
+#~ msgstr "radioInputGroup"
+
+#, pantoken-verbatim
+#~ msgctxt "docs.api:text"
+#~ msgid "formFieldMessages"
+#~ msgstr "formFieldMessages"
+
+#, pantoken-verbatim
+#~ msgctxt "docs.api:text"
+#~ msgid "textInput"
+#~ msgstr "textInput"
+
+#, pantoken-verbatim
+#~ msgctxt "docs.api:text"
+#~ msgid "textArea"
+#~ msgstr "textArea"
+
+#, pantoken-verbatim
+#~ msgctxt "docs.api:text"
+#~ msgid "simpleSelect"
+#~ msgstr "simpleSelect"
+
+#, pantoken-verbatim
+#~ msgctxt "docs.api:text"
+#~ msgid "inputGroup"
+#~ msgstr "inputGroup"
+
+#, pantoken-verbatim
+#~ msgctxt "docs.api:text"
+#~ msgid "numberInput"
+#~ msgstr "numberInput"
+
+#, pantoken-verbatim
+#~ msgctxt "docs.api:text"
+#~ msgid "componentElements"
+#~ msgstr "componentElements"

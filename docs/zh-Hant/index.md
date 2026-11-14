@@ -32,8 +32,8 @@ features:
     title: 為任何平台生成
     details: 安裝 pantoken cli 以為任何平台生成預設或添加組件&colon; 網頁、原生及任何介於兩者之間。
   - icon:
-      light: /unlink-light.svg
-      dark: /unlink-dark.svg
-    title: 不需要 React
-    details: InstUI 程式庫與 React 緊密耦合。如果你想使用它，你必須使用 React。現在你可以在任何地方構建。
+      light: /wand-sparkles-light.svg
+      dark: /wand-sparkles-dark.svg
+    title: Build agentically
+    details: Add pantoken to the AI tools you're already using with included skills, agents file, api-catalog, llms.txt, and A2UI.
 ---

@@ -32,8 +32,8 @@ features:
     title: Ստեղծեք ցանկացած պլատֆորմի համար
     details: Տեղադրեք pantoken cli-ն՝ նախորոշումներ ստեղծել կամ բաղադրիչներ ավելացնել ցանկացած պլատֆորմի համար&colon; վեբ, բնական և ամեն ինչ միջև&colon;
   - icon:
-      light: /unlink-light.svg
-      dark: /unlink-dark.svg
-    title: React պետք չէ
-    details: InstUI գրադարանը սերտորեն կապված React-ի հետ&colon; Եթե ցանկանում եք այն օգտագործել, պետք է React օգտագործեք&colon; Այժմ կարող եք շինել ցանկացած տեղում&colon;
+      light: /wand-sparkles-light.svg
+      dark: /wand-sparkles-dark.svg
+    title: Build agentically
+    details: Add pantoken to the AI tools you're already using with included skills, agents file, api-catalog, llms.txt, and A2UI.
 ---

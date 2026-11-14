@@ -88,18 +88,28 @@ msgstr ""
 
 #: index.md:37
 #, no-c-format
-msgid "No React needed"
-msgstr "Kaore React e hiahiatia"
+msgid "Build agentically"
+msgstr ""
 
 #: index.md:38
 #, no-c-format
 msgid ""
-"The InstUI library is tightly coupled with React. If you want to use it, you "
-"have to use React. Now you can build anywhere."
+"Add pantoken to the AI tools you're already using with included skills, "
+"agents file, api-catalog, llms.txt, and A2UI."
 msgstr ""
-"He hononga tata ki a React te tawhā InstUI. Mēnā e hiahia ana koe ki te "
-"whakamahi i a ia, me whakamahi e koe i a React. Ināianei ka taea e koe te "
-"hanga i te waahi nui rawa."
+
+#, no-c-format
+#~ msgid "No React needed"
+#~ msgstr "Kaore React e hiahiatia"
+
+#, no-c-format
+#~ msgid ""
+#~ "The InstUI library is tightly coupled with React. If you want to use it, "
+#~ "you have to use React. Now you can build anywhere."
+#~ msgstr ""
+#~ "He hononga tata ki a React te tawhā InstUI. Mēnā e hiahia ana koe ki te "
+#~ "whakamahi i a ia, me whakamahi e koe i a React. Ināianei ka taea e koe te "
+#~ "hanga i te waahi nui rawa."
 
 #, no-c-format
 #~ msgid "InstUI, everywhere"

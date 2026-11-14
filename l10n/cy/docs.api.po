@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: pantoken\n"
-"PO-Revision-Date: 2026-10-30 19:56+0000\n"
+"PO-Revision-Date: 2026-11-14 01:25+0000\n"
 "Last-Translator: pantoken localization engine\n"
 "Language-Team: pantoken\n"
 "MIME-Version: 1.0\n"
@@ -32502,3 +32502,211 @@ msgstr "<!-- pantoken-value-scope:css%2Fprogress-circle.md -->\nMae CSS y cydran
 msgctxt "docs.api:prose"
 msgid "<!-- pantoken-value-scope:css%2Ftruncate.md -->\nThis component ships no CSS of its own — its markup and behavior come entirely from {{ptk_code_0}}. Its {{ptk_code_1}} modifier is driven by that behavior. See the [modifier table below]({{ptk_code_2}})."
 msgstr "<!-- pantoken-value-scope:css%2Ftruncate.md -->\nNid yw’r gydran hon yn cynnwys CSS ei hun — mae ei farc-ap a’i hymddygiad yn deillio’n gyfan o {{ptk_code_0}}. Caiff ei fodyffiwr {{ptk_code_1}} ei lywio gan y ymddygiad hwnnw. Gweler y [modifier table below]({{ptk_code_2}})."
+
+msgctxt "docs.api:prose"
+msgid "<!-- pantoken-value-scope:css%2Fscreen-reader-content.md -->\nThis component ships no CSS of its own — its markup and behavior come entirely from {{ptk_code_0}}. See the [modifier table below]({{ptk_code_1}})."
+msgstr "<!-- pantoken-value-scope:css%2Fscreen-reader-content.md -->\nNid yw'r gydran hon yn cynnwys CSS ei hun — daw ei marcio a'i hymddygiad yn gyfan gwbl o {{ptk_code_0}}. Gweler y [tabl addaswyr isod]({{ptk_code_1}})."
+
+msgctxt "docs.api:prose"
+msgid "A section for an empty state or call to action."
+msgstr "Adran ar gyfer cyflwr gwag neu alwad i weithredu."
+
+msgctxt "docs.api:prose"
+msgid "A breadcrumb navigation landmark."
+msgstr "Tirnod llywio briwsion bara."
+
+msgctxt "docs.api:prose"
+msgid "A media-object byline container."
+msgstr "Cynhwysydd llinell awdur gwrthrych cyfryngau."
+
+msgctxt "docs.api:prose"
+msgid "An article-shaped card with slotted content."
+msgstr "Cerdyn siâp erthygl gyda chynnwys mewn slotiau."
+
+msgctxt "docs.api:prose"
+msgid "A native checkbox and its slotted label."
+msgstr "Blwch ticio brodorol a'i label wedi'i slotio."
+
+msgctxt "docs.api:prose"
+msgid "A native close button with an accessible label."
+msgstr "Botwm cau brodorol gyda label hygyrch."
+
+msgctxt "docs.api:prose"
+msgid "Missing root component records, registered after the hand-authored elements."
+msgstr "Cofnodion cydran gwraidd coll, wedi'u cofrestru ar ôl yr elfennau a ysgrifennwyd â llaw."
+
+msgctxt "docs.api:prose"
+msgid "A native file picker presented as a dropzone label."
+msgstr "Dewisydd ffeil brodorol a gyflwynir fel label parth gollwng."
+
+msgctxt "docs.api:prose"
+msgid "A form-field layout container."
+msgstr "Cynhwysydd cynllun maes ffurflen."
+
+msgctxt "docs.api:prose"
+msgid "A native fieldset for a group of form fields."
+msgstr "Set maes brodorol ar gyfer grŵp o feysydd ffurflen."
+
+msgctxt "docs.api:prose"
+msgid "A status region for form-field help and validation messages."
+msgstr "Rhanbarth statws ar gyfer cymorth maes ffurflen a negeseuon dilysu."
+
+msgctxt "docs.api:prose"
+msgid "A semantic heading with a bounded level from one through six."
+msgstr "Pennawd semantig â lefel gyfyngedig o un i chwech."
+
+msgctxt "docs.api:prose"
+msgid "A container for an input and adjacent content."
+msgstr "Cynhwysydd ar gyfer mewnbwn a chynnwys cyfagos."
+
+msgctxt "docs.api:prose"
+msgid "A link that rejects executable and data URL schemes."
+msgstr "Dolen sy'n gwrthod cynlluniau URL gweithredadwy a data."
+
+msgctxt "docs.api:prose"
+msgid "A native unordered list with Pantoken list-item styles."
+msgstr "Rhestr frodorol heb ei threfnu gydag arddulliau eitemau rhestr Pantoken."
+
+msgctxt "docs.api:prose"
+msgid "An overlay surface for positioned content."
+msgstr "Arwyneb troshaenu ar gyfer cynnwys wedi'i leoli."
+
+msgctxt "docs.api:prose"
+msgid "A menu surface with item, group, and separator styles."
+msgstr "Arwyneb dewislen gydag arddulliau eitem, grŵp a gwahanydd."
+
+msgctxt "docs.api:prose"
+msgid "A native number input with value-change events."
+msgstr "Mewnbwn rhif brodorol gyda digwyddiadau newid gwerth."
+
+msgctxt "docs.api:prose"
+msgid "A pagination navigation landmark."
+msgstr "Tirnod llywio ar gyfer tudalennu."
+
+msgctxt "docs.api:prose"
+msgid "A native radio control and its slotted label."
+msgstr "Rheolydd radio brodorol a'i label slotiedig."
+
+msgctxt "docs.api:prose"
+msgid "A native fieldset for a radio-input group."
+msgstr "Set maes frodorol ar gyfer grŵp o fewnbynnau radio."
+
+msgctxt "docs.api:prose"
+msgid "A native range slider with value-change events."
+msgstr "Llithrydd ystod brodorol gyda digwyddiadau newid gwerth."
+
+msgctxt "docs.api:prose"
+msgid "Visually hidden content that remains available to assistive technology."
+msgstr "Cynnwys sydd wedi'i guddio'n weledol ond sy'n parhau ar gael i dechnoleg gynorthwyol."
+
+msgctxt "docs.api:prose"
+msgid "A native select control that copies text-only options from its light DOM."
+msgstr "Rheolydd dewis brodorol sy’n copïo opsiynau testun yn unig o’i DOM ysgafn."
+
+msgctxt "docs.api:prose"
+msgid "A table-layout container that keeps slotted rows inside its table semantics."
+msgstr "Cynhwysydd cynllun tabl sy'n cadw'r rhesi sydd wedi'u slotio o fewn semanteg y tabl."
+
+msgctxt "docs.api:prose"
+msgid "A paragraph of Pantoken body text."
+msgstr "Paragraff o destun corff Pantoken."
+
+msgctxt "docs.api:prose"
+msgid "A native multiline text input with a visible slotted label."
+msgstr "Mewnbwn testun brodorol aml-linell gyda label slotiedig gweladwy."
+
+msgctxt "docs.api:prose"
+msgid "A native text input with a visible slotted label."
+msgstr "Mewnbwn testun brodorol gyda label gweladwy mewn slot."
+
+msgctxt "docs.api:prose"
+msgid "A native disclosure with a configurable summary."
+msgstr "Datgeliad brodorol gyda chrynodeb ffurfweddadwy."
+
+msgctxt "docs.api:prose"
+msgid "A native disclosure group."
+msgstr "Grŵp datgelu brodorol."
+
+msgctxt "docs.api:prose"
+msgid "A neutral layout primitive."
+msgstr "Elfen gynllunio niwtral."
+
+#, pantoken-verbatim
+msgctxt "docs.api:text"
+msgid "toggleGroup"
+msgstr "toggleGroup"
+
+#, pantoken-verbatim
+msgctxt "docs.api:text"
+msgid "toggleDetails"
+msgstr "toggleDetails"
+
+#, pantoken-verbatim
+msgctxt "docs.api:text"
+msgid "fileDrop"
+msgstr "fileDrop"
+
+#, pantoken-verbatim
+msgctxt "docs.api:text"
+msgid "rangeInput"
+msgstr "rangeInput"
+
+#, pantoken-verbatim
+msgctxt "docs.api:text"
+msgid "screenReaderContent"
+msgstr "screenReaderContent"
+
+#, pantoken-verbatim
+msgctxt "docs.api:text"
+msgid "closeButton"
+msgstr "closeButton"
+
+#, pantoken-verbatim
+msgctxt "docs.api:text"
+msgid "formField"
+msgstr "formField"
+
+#, pantoken-verbatim
+msgctxt "docs.api:text"
+msgid "formFieldGroup"
+msgstr "formFieldGroup"
+
+#, pantoken-verbatim
+msgctxt "docs.api:text"
+msgid "radioInputGroup"
+msgstr "radioInputGroup"
+
+#, pantoken-verbatim
+msgctxt "docs.api:text"
+msgid "formFieldMessages"
+msgstr "formFieldMessages"
+
+#, pantoken-verbatim
+msgctxt "docs.api:text"
+msgid "textInput"
+msgstr "textInput"
+
+#, pantoken-verbatim
+msgctxt "docs.api:text"
+msgid "textArea"
+msgstr "textArea"
+
+#, pantoken-verbatim
+msgctxt "docs.api:text"
+msgid "simpleSelect"
+msgstr "simpleSelect"
+
+#, pantoken-verbatim
+msgctxt "docs.api:text"
+msgid "inputGroup"
+msgstr "inputGroup"
+
+#, pantoken-verbatim
+msgctxt "docs.api:text"
+msgid "numberInput"
+msgstr "numberInput"
+
+#, pantoken-verbatim
+msgctxt "docs.api:text"
+msgid "componentElements"
+msgstr "componentElements"

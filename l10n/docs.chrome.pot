@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: pantoken\n"
-"PO-Revision-Date: 2026-11-13 19:16+0000\n"
+"PO-Revision-Date: 2026-11-14 02:24+0000\n"
 "Last-Translator: pantoken localization engine\n"
 "Language-Team: pantoken\n"
 "MIME-Version: 1.0\n"
@@ -648,13 +648,13 @@ msgstr ""
 #: docs/.vitepress/i18n.json#a2uiCatalog.reactSupport
 #, no-c-format
 msgctxt "docs.chrome:a2uiCatalog.reactSupport"
-msgid "React runtime support is pending v1.0 SDK verification."
+msgid "Verified with @a2ui/react 0.15.0 and React 19.3.1 in Chromium, Firefox, and WebKit."
 msgstr ""
 
 #: docs/.vitepress/i18n.json#a2uiCatalog.angularSupport
 #, no-c-format
 msgctxt "docs.chrome:a2uiCatalog.angularSupport"
-msgid "Angular runtime support is pending v1.0 SDK verification."
+msgid "Verified with @a2ui/angular 0.14.0 and Angular 21.2.5 in Chromium, Firefox, and WebKit."
 msgstr ""
 
 #: docs/.vitepress/i18n.json#a2uiCatalog.nativeSupport
@@ -678,7 +678,7 @@ msgstr ""
 #: docs/.vitepress/i18n.json#a2uiCatalog.componentReference
 #, no-c-format
 msgctxt "docs.chrome:a2uiCatalog.componentReference"
-msgid "Use @catalogId to reference Pantoken components alongside Basic Catalog components."
+msgid "Use catalogId to reference Pantoken components alongside Basic Catalog components."
 msgstr ""
 
 #: docs/.vitepress/i18n.json#a2uiCatalog.empty

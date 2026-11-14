@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: pantoken\n"
-"PO-Revision-Date: 2026-10-30 19:57+0000\n"
+"PO-Revision-Date: 2026-11-14 01:19+0000\n"
 "Last-Translator: pantoken localization engine\n"
 "Language-Team: pantoken\n"
 "MIME-Version: 1.0\n"
@@ -32502,3 +32502,211 @@ msgstr "<!-- pantoken-value-scope:css%2Fprogress-circle.md -->\nCSS của thành
 msgctxt "docs.api:prose"
 msgid "<!-- pantoken-value-scope:css%2Ftruncate.md -->\nThis component ships no CSS of its own — its markup and behavior come entirely from {{ptk_code_0}}. Its {{ptk_code_1}} modifier is driven by that behavior. See the [modifier table below]({{ptk_code_2}})."
 msgstr "<!-- pantoken-value-scope:css%2Ftruncate.md -->\nComponent này không phát hành CSS riêng — cấu trúc và hành vi của nó hoàn toàn đến từ {{ptk_code_0}}. Bộ sửa đổi {{ptk_code_1}} của nó được điều khiển bởi hành vi đó. Xem [bảng modifier phía dưới]({{ptk_code_2}})."
+
+msgctxt "docs.api:prose"
+msgid "<!-- pantoken-value-scope:css%2Fscreen-reader-content.md -->\nThis component ships no CSS of its own — its markup and behavior come entirely from {{ptk_code_0}}. See the [modifier table below]({{ptk_code_1}})."
+msgstr "<!-- pantoken-value-scope:css%2Fscreen-reader-content.md -->\nThành phần này không đi kèm CSS riêng — cấu trúc đánh dấu và hành vi của nó hoàn toàn đến từ {{ptk_code_0}}. Xem [bảng modifier bên dưới]({{ptk_code_1}})."
+
+msgctxt "docs.api:prose"
+msgid "A section for an empty state or call to action."
+msgstr "Một phần dành cho trạng thái trống hoặc lời kêu gọi hành động."
+
+msgctxt "docs.api:prose"
+msgid "A breadcrumb navigation landmark."
+msgstr "Một mốc điều hướng breadcrumb."
+
+msgctxt "docs.api:prose"
+msgid "A media-object byline container."
+msgstr "Một vùng chứa dòng ghi công cho đối tượng đa phương tiện."
+
+msgctxt "docs.api:prose"
+msgid "An article-shaped card with slotted content."
+msgstr "Thẻ dạng bài viết với nội dung được đặt vào các slot."
+
+msgctxt "docs.api:prose"
+msgid "A native checkbox and its slotted label."
+msgstr "Một ô kiểm gốc và nhãn được đặt vào slot của nó."
+
+msgctxt "docs.api:prose"
+msgid "A native close button with an accessible label."
+msgstr "Nút đóng gốc có nhãn hỗ trợ truy cập."
+
+msgctxt "docs.api:prose"
+msgid "Missing root component records, registered after the hand-authored elements."
+msgstr "Thiếu các bản ghi thành phần gốc, được đăng ký sau các phần tử viết thủ công."
+
+msgctxt "docs.api:prose"
+msgid "A native file picker presented as a dropzone label."
+msgstr "Bộ chọn tệp tích hợp được trình bày như nhãn vùng thả."
+
+msgctxt "docs.api:prose"
+msgid "A form-field layout container."
+msgstr "Một vùng chứa bố cục trường biểu mẫu."
+
+msgctxt "docs.api:prose"
+msgid "A native fieldset for a group of form fields."
+msgstr "Một fieldset gốc để nhóm các trường biểu mẫu."
+
+msgctxt "docs.api:prose"
+msgid "A status region for form-field help and validation messages."
+msgstr "Vùng trạng thái dành cho thông tin trợ giúp và thông báo xác thực của trường biểu mẫu."
+
+msgctxt "docs.api:prose"
+msgid "A semantic heading with a bounded level from one through six."
+msgstr "Tiêu đề ngữ nghĩa có cấp độ giới hạn từ một đến sáu."
+
+msgctxt "docs.api:prose"
+msgid "A container for an input and adjacent content."
+msgstr "Một vùng chứa cho trường nhập liệu và nội dung liền kề."
+
+msgctxt "docs.api:prose"
+msgid "A link that rejects executable and data URL schemes."
+msgstr "Một liên kết từ chối các lược đồ URL thực thi và dữ liệu."
+
+msgctxt "docs.api:prose"
+msgid "A native unordered list with Pantoken list-item styles."
+msgstr "Danh sách không thứ tự gốc với kiểu dáng mục danh sách của Pantoken."
+
+msgctxt "docs.api:prose"
+msgid "An overlay surface for positioned content."
+msgstr "Một bề mặt phủ dành cho nội dung được định vị."
+
+msgctxt "docs.api:prose"
+msgid "A menu surface with item, group, and separator styles."
+msgstr "Một vùng menu với kiểu hiển thị cho mục, nhóm và dấu phân cách."
+
+msgctxt "docs.api:prose"
+msgid "A native number input with value-change events."
+msgstr "Một ô nhập số gốc với các sự kiện thay đổi giá trị."
+
+msgctxt "docs.api:prose"
+msgid "A pagination navigation landmark."
+msgstr "Một mốc điều hướng phân trang."
+
+msgctxt "docs.api:prose"
+msgid "A native radio control and its slotted label."
+msgstr "Điều khiển radio gốc và nhãn được gán vào slot của nó."
+
+msgctxt "docs.api:prose"
+msgid "A native fieldset for a radio-input group."
+msgstr "Một fieldset gốc cho nhóm đầu vào radio."
+
+msgctxt "docs.api:prose"
+msgid "A native range slider with value-change events."
+msgstr "Thanh trượt phạm vi gốc với các sự kiện thay đổi giá trị."
+
+msgctxt "docs.api:prose"
+msgid "Visually hidden content that remains available to assistive technology."
+msgstr "Nội dung bị ẩn về mặt thị giác nhưng vẫn có thể truy cập bằng công nghệ hỗ trợ."
+
+msgctxt "docs.api:prose"
+msgid "A native select control that copies text-only options from its light DOM."
+msgstr "Một điều khiển chọn gốc sao chép các tùy chọn chỉ chứa văn bản từ DOM thông thường."
+
+msgctxt "docs.api:prose"
+msgid "A table-layout container that keeps slotted rows inside its table semantics."
+msgstr "Một bộ chứa bố cục bảng giữ các hàng được gán vào slot trong ngữ nghĩa bảng của nó."
+
+msgctxt "docs.api:prose"
+msgid "A paragraph of Pantoken body text."
+msgstr "Một đoạn văn bản nội dung của Pantoken."
+
+msgctxt "docs.api:prose"
+msgid "A native multiline text input with a visible slotted label."
+msgstr "Trường nhập văn bản nhiều dòng gốc với nhãn được chèn qua slot và hiển thị."
+
+msgctxt "docs.api:prose"
+msgid "A native text input with a visible slotted label."
+msgstr "Một trường nhập văn bản gốc có nhãn hiển thị được đặt qua slot."
+
+msgctxt "docs.api:prose"
+msgid "A native disclosure with a configurable summary."
+msgstr "Một vùng nội dung có thể mở rộng gốc với phần tóm tắt có thể tùy chỉnh."
+
+msgctxt "docs.api:prose"
+msgid "A native disclosure group."
+msgstr "Một nhóm hiển thị nội dung dạng gốc."
+
+msgctxt "docs.api:prose"
+msgid "A neutral layout primitive."
+msgstr "Một thành phần bố cục trung tính."
+
+#, pantoken-verbatim
+msgctxt "docs.api:text"
+msgid "toggleGroup"
+msgstr "toggleGroup"
+
+#, pantoken-verbatim
+msgctxt "docs.api:text"
+msgid "toggleDetails"
+msgstr "toggleDetails"
+
+#, pantoken-verbatim
+msgctxt "docs.api:text"
+msgid "fileDrop"
+msgstr "fileDrop"
+
+#, pantoken-verbatim
+msgctxt "docs.api:text"
+msgid "rangeInput"
+msgstr "rangeInput"
+
+#, pantoken-verbatim
+msgctxt "docs.api:text"
+msgid "screenReaderContent"
+msgstr "screenReaderContent"
+
+#, pantoken-verbatim
+msgctxt "docs.api:text"
+msgid "closeButton"
+msgstr "closeButton"
+
+#, pantoken-verbatim
+msgctxt "docs.api:text"
+msgid "formField"
+msgstr "formField"
+
+#, pantoken-verbatim
+msgctxt "docs.api:text"
+msgid "formFieldGroup"
+msgstr "formFieldGroup"
+
+#, pantoken-verbatim
+msgctxt "docs.api:text"
+msgid "radioInputGroup"
+msgstr "radioInputGroup"
+
+#, pantoken-verbatim
+msgctxt "docs.api:text"
+msgid "formFieldMessages"
+msgstr "formFieldMessages"
+
+#, pantoken-verbatim
+msgctxt "docs.api:text"
+msgid "textInput"
+msgstr "textInput"
+
+#, pantoken-verbatim
+msgctxt "docs.api:text"
+msgid "textArea"
+msgstr "textArea"
+
+#, pantoken-verbatim
+msgctxt "docs.api:text"
+msgid "simpleSelect"
+msgstr "simpleSelect"
+
+#, pantoken-verbatim
+msgctxt "docs.api:text"
+msgid "inputGroup"
+msgstr "inputGroup"
+
+#, pantoken-verbatim
+msgctxt "docs.api:text"
+msgid "numberInput"
+msgstr "numberInput"
+
+#, pantoken-verbatim
+msgctxt "docs.api:text"
+msgid "componentElements"
+msgstr "componentElements"

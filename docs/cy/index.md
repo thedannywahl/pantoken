@@ -32,8 +32,8 @@ features:
     title: Generiwch ar gyfer unrhyw lwyfan
     details: Gosod y pantoken cli i gynhyrchu rhagosodiadau neu ychwanegu cydrannau ar gyfer unrhyw lwyfan&colon; gwe, brodorol, a pob dim arall.
   - icon:
-      light: /unlink-light.svg
-      dark: /unlink-dark.svg
-    title: Dim React angen
-    details: Mae Llyfrgell InstUI wedi'i chysylltu'n dynn â React. Os ydych chi eisiau ei defnyddio, rhaid i chi ddefnyddio React. Nawr gallwch chi adeiladu yn unrhywle.
+      light: /wand-sparkles-light.svg
+      dark: /wand-sparkles-dark.svg
+    title: Build agentically
+    details: Add pantoken to the AI tools you're already using with included skills, agents file, api-catalog, llms.txt, and A2UI.
 ---

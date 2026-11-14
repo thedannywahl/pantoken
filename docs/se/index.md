@@ -32,8 +32,8 @@ features:
     title: Generere mihkke platvorma
     details: Hálediš pantoken cli:a maid oastit valmaduvvon váđđaid juohke platform:as&colon; interneta, áddjá, ja buohccá maiddái.
   - icon:
-      light: /unlink-light.svg
-      dark: /unlink-dark.svg
-    title: React ii leat dárbbat
-    details: InstUI bibliotehka lea čeakcu guođalaš React:iin. Jus háliid geažešeapmi dan, de maŋŋelaččat geažešeapmi React:a. Dás sáhtat ráhpat maiddái.
+      light: /wand-sparkles-light.svg
+      dark: /wand-sparkles-dark.svg
+    title: Build agentically
+    details: Add pantoken to the AI tools you're already using with included skills, agents file, api-catalog, llms.txt, and A2UI.
 ---
