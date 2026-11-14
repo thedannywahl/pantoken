@@ -185,23 +185,21 @@ onMounted(async () => {
     </section>
 
     <section aria-labelledby="a2ui-components-heading">
-      <div class="a2ui-catalog__section-heading">
-        <h2 id="a2ui-components-heading" class="instui-heading -level-h2">
-          {{ t?.componentsHeading }} ({{ components.length }})
-        </h2>
-        <label class="instui-input-group a2ui-catalog__search">
-          <span class="before">
-            <span class="instui-icon -icon-search" aria-hidden="true" />
-          </span>
-          <span class="instui-screen-reader-content">{{ t?.searchLabel }}</span>
-          <input
-            v-model="search"
-            type="search"
-            :aria-label="t?.searchLabel"
-            :placeholder="t?.searchPlaceholder"
-          />
-        </label>
-      </div>
+      <h2 id="a2ui-components-heading" class="instui-heading -level-h2">
+        {{ t?.componentsHeading }} ({{ components.length }})
+      </h2>
+      <label class="instui-input-group a2ui-catalog__search">
+        <span class="before">
+          <span class="instui-icon -icon-search" aria-hidden="true" />
+        </span>
+        <span class="instui-screen-reader-content">{{ t?.searchLabel }}</span>
+        <input
+          v-model="search"
+          type="search"
+          :aria-label="t?.searchLabel"
+          :placeholder="t?.searchPlaceholder"
+        />
+      </label>
 
       <div v-if="components.length" class="a2ui-catalog__grid">
         <article
@@ -317,18 +315,10 @@ onMounted(async () => {
   margin: 0.25rem 0 0;
 }
 
-.a2ui-catalog__section-heading {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  flex-wrap: wrap;
-  gap: 1rem;
-  margin: 1rem 0 1.5rem;
-}
-
 .a2ui-catalog__search {
-  flex: 1 1 260px;
+  width: 100%;
   max-width: 32rem;
+  margin-bottom: 1.5rem;
 }
 
 .a2ui-catalog__grid {
