@@ -1,0 +1,17 @@
+now that translations are done this PR should be ready to merge. watch it until green and if there are failures remediate them with incremental conventional commits and change sets. prefer remediating over suppressing.
+
+---
+
+now that translations are done this PR should be ready to merge. watch it until green and if there are failures remediate them with incremental conventional commits and change sets. prefer remediating over suppressing.
+
+---
+
+<system_notification>
+Shell command "Watch PR 309 until checks finish or the first failure appears" (shellId: pr309-live-watch) has exited with exit code 1.
+</system_notification>
+
+---
+
+<system_notification>
+Shell command "Watch PR 309 until checks finish or the first failure appears" (shellId: pr309-live-watch) has exited with exit code 1.
+</system_notification>
