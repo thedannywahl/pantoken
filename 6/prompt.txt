@@ -1,0 +1,129 @@
+The user explicitly invoked the "/VS Code Synced Data:fix-customization-evaluation-diagnostics" skill. Follow its instructions now.
+
+<skill-context name="fix-customization-evaluation-diagnostics">
+Base directory for this skill: /Users/dwahl/Library/Application Support/Code/agentPlugins/vscode-synced-customization-agent-host-copilotcli-1148375999/1133972934/skills/fix-customization-evaluation-diagnostics
+
+# Implement suggestions
+
+## Purpose
+
+Fix issues found by the Chat Customizations Evaluations analyzer in prompt, agent, skill, and instruction files. The diagnostics include contradictions, ambiguities, persona conflicts, cognitive load issues, and coverage gaps.
+
+## Usage
+
+This skill is invoked automatically when the user clicks the "Implement suggestions" button in the editor title bar. It receives the diagnostics as context and rewrites the affected sections of the file to resolve them.
+
+This skill can also be called directly by the user. In that case search for the diagnostics from the Chat Customizations Evaluations extension and apply the fixes.
+
+## Instructions
+
+- You will either receive a list of diagnostics from the Chat Customizations Evaluations extension or be called without diagnostics. 
+- If you receive a list of diagnostics from the Chat Customizations Evaluations extension, then each diagnostic will includes a line number, code, message, and optionally a suggestion.
+- If you are called without diagnostics, you should search and find diagnostics from the Chat Customizations Evaluations extension yourself.
+- For each diagnostic, apply the fix directly to the file content. Use the suggestion if one is provided; otherwise, use your judgment to resolve the issue.
+- Preserve the overall structure, tone, and intent of the prompt file. Only change what is necessary to resolve the diagnostics.
+- If two diagnostics conflict with each other, prefer the fix that keeps the prompt clearer and more consistent.
+- Directly edit the file content to apply the fixes.
+- Do NOT add new instructions or sections that were not in the original file.
+- Do NOT remove instructions unless a diagnostic specifically calls for it (e.g., contradictions).
+
+
+ARGUMENTS: Target file: /Users/dwahl/Scripts/pantoken/ai/pantoken-ai/skills/use-a2ui/SKILL.md
+
+Use ONLY the diagnostics below for this target file. Do not lint or rewrite the skill file itself.
+
+Field meanings:
+
+- line: 1-based line number where the diagnostic starts (or start-end for a multi-line range).
+
+- lineText: exact text currently present at the diagnostic start line in the target file.
+
+- message: diagnostic description explaining what is wrong and needs to be fixed.
+
+Diagnostics:
+
+ - line: 53
+ - lineText: - Use only the components and properties listed in the catalog JSON at
+ - message: Ambiguous: "Use only the components and properties listed in the catalog JSON at". The prompt names two sources of truth for allowed components and properties: the catalog JSON file and the Pantoken A2UI Catalog web page. It does not say which one wins if they differ or if only one is reachable. A model could validate against the JSON, against the web page, or against both, and could accept a component that only one source lists. Suggestion: Replace with: 'Use only the components and properties listed in the catalog JSON at `@pantoken/ai/a2ui/catalog-v1.json`. If the web catalog at https://pantoken.app/a2ui/ differs from that JSON file, follow the JSON file and report the difference in the response.'
+  suggestion: Replace with: 'Use only the components and properties listed in the catalog JSON at `@pantoken/ai/a2ui/catalog-v1.json`. If the web catalog at https://pantoken.app/a2ui/ differs from that JSON file, follow the JSON file and report the difference in the response.'
+
+
+ - line: 79
+ - lineText:   inside an A2UI surface, verify the selected catalog's icon API; don't invent icon props.
+ - message: Coverage gap: The selected A2UI catalog has no icon API, or its icon API cannot be verified. The prompt says to verify the icon API and not invent icon props, but gives no fallback, so the model must decide how to handle icons on its own.. Suggestion: Add after this sentence: 'If the selected catalog's icon API cannot be verified, omit icon props inside the A2UI surface, use the surrounding web UI icon source from `@pantoken/web-components` or `@pantoken/icons`, and list the omitted icon usage in the response.'
+  suggestion: Add after this sentence: 'If the selected catalog's icon API cannot be verified, omit icon props inside the A2UI surface, use the surrounding web UI icon source from `@pantoken/web-components` or `@pantoken/icons`, and list the omitted icon usage in the response.'
+</skill-context>
+
+---
+
+The user explicitly invoked the "/VS Code Synced Data:fix-customization-evaluation-diagnostics" skill. Follow its instructions now.
+
+<skill-context name="fix-customization-evaluation-diagnostics">
+Base directory for this skill: /Users/dwahl/Library/Application Support/Code/agentPlugins/vscode-synced-customization-agent-host-copilotcli-1148375999/1133972934/skills/fix-customization-evaluation-diagnostics
+
+# Implement suggestions
+
+## Purpose
+
+Fix issues found by the Chat Customizations Evaluations analyzer in prompt, agent, skill, and instruction files. The diagnostics include contradictions, ambiguities, persona conflicts, cognitive load issues, and coverage gaps.
+
+## Usage
+
+This skill is invoked automatically when the user clicks the "Implement suggestions" button in the editor title bar. It receives the diagnostics as context and rewrites the affected sections of the file to resolve them.
+
+This skill can also be called directly by the user. In that case search for the diagnostics from the Chat Customizations Evaluations extension and apply the fixes.
+
+## Instructions
+
+- You will either receive a list of diagnostics from the Chat Customizations Evaluations extension or be called without diagnostics. 
+- If you receive a list of diagnostics from the Chat Customizations Evaluations extension, then each diagnostic will includes a line number, code, message, and optionally a suggestion.
+- If you are called without diagnostics, you should search and find diagnostics from the Chat Customizations Evaluations extension yourself.
+- For each diagnostic, apply the fix directly to the file content. Use the suggestion if one is provided; otherwise, use your judgment to resolve the issue.
+- Preserve the overall structure, tone, and intent of the prompt file. Only change what is necessary to resolve the diagnostics.
+- If two diagnostics conflict with each other, prefer the fix that keeps the prompt clearer and more consistent.
+- Directly edit the file content to apply the fixes.
+- Do NOT add new instructions or sections that were not in the original file.
+- Do NOT remove instructions unless a diagnostic specifically calls for it (e.g., contradictions).
+
+
+ARGUMENTS: Target file: /Users/dwahl/Scripts/pantoken/ai/pantoken-ai/skills/use-a2ui/SKILL.md
+
+Use ONLY the diagnostics below for this target file. Do not lint or rewrite the skill file itself.
+
+Field meanings:
+
+- line: 1-based line number where the diagnostic starts (or start-end for a multi-line range).
+
+- lineText: exact text currently present at the diagnostic start line in the target file.
+
+- message: diagnostic description explaining what is wrong and needs to be fixed.
+
+Diagnostics:
+
+ - line: 53
+ - lineText: - Use only the components and properties listed in the catalog JSON at
+ - message: Ambiguous: "Use only the components and properties listed in the catalog JSON at". The prompt names two sources of truth for allowed components and properties: the catalog JSON file and the Pantoken A2UI Catalog web page. It does not say which one wins if they differ or if only one is reachable. A model could validate against the JSON, against the web page, or against both, and could accept a component that only one source lists. Suggestion: Replace with: 'Use only the components and properties listed in the catalog JSON at `@pantoken/ai/a2ui/catalog-v1.json`. If the web catalog at https://pantoken.app/a2ui/ differs from that JSON file, follow the JSON file and report the difference in the response.'
+  suggestion: Replace with: 'Use only the components and properties listed in the catalog JSON at `@pantoken/ai/a2ui/catalog-v1.json`. If the web catalog at https://pantoken.app/a2ui/ differs from that JSON file, follow the JSON file and report the difference in the response.'
+
+
+ - line: 79
+ - lineText:   inside an A2UI surface, verify the selected catalog's icon API; don't invent icon props.
+ - message: Coverage gap: The selected A2UI catalog has no icon API, or its icon API cannot be verified. The prompt says to verify the icon API and not invent icon props, but gives no fallback, so the model must decide how to handle icons on its own.. Suggestion: Add after this sentence: 'If the selected catalog's icon API cannot be verified, omit icon props inside the A2UI surface, use the surrounding web UI icon source from `@pantoken/web-components` or `@pantoken/icons`, and list the omitted icon usage in the response.'
+  suggestion: Add after this sentence: 'If the selected catalog's icon API cannot be verified, omit icon props inside the A2UI surface, use the surrounding web UI icon source from `@pantoken/web-components` or `@pantoken/icons`, and list the omitted icon usage in the response.'
+</skill-context>
+
+---
+
+next round of feedback
+
+---
+
+next round of feedback
+
+---
+
+yes
+
+---
+
+yes
