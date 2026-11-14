@@ -1,5 +1,11 @@
 # @pantoken/plugin-custom-icons
 
+## 0.3.20
+
+### Patch Changes
+
+- f7a77f1: Add A2UI icon.
+
 ## 0.3.19
 
 ### Patch Changes

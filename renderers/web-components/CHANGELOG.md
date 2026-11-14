@@ -1,5 +1,23 @@
 # CHANGELOG
 
+## 0.9.0
+
+### Minor Changes
+
+- f7a77f1: Add A2UI schemas and Lit Universal adapters for every exported Pantoken web component.
+- f7a77f1: Add root component coverage to web-components and the A2UI catalog
+- f7a77f1: Add opt-in A2UI 1.0 Lit Universal components.
+
+### Patch Changes
+
+- f7a77f1: Preserve value-change events when model updates restore a previously emitted value, without duplicating native input/change pairs.
+- f7a77f1: Build per-element CDN bundles for components defined in the shared component-elements module.
+- f7a77f1: Validate React and Angular A2UI consumers across browser engines, preserve content-free Universal component rendering, and synchronize keyboard tab selection with bound models.
+- Updated dependencies [f7a77f1]
+- Updated dependencies [f7a77f1]
+  - @pantoken/interactions@0.6.2
+  - @pantoken/components@2.2.1
+
 ## 0.8.1
 
 ### Patch Changes

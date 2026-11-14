@@ -1,5 +1,24 @@
 # CHANGELOG
 
+## 1.5.0
+
+### Minor Changes
+
+- f7a77f1: Add A2UI schemas and Lit Universal adapters for every exported Pantoken web component.
+- f7a77f1: Add root component coverage to web-components and the A2UI catalog
+- f7a77f1: Add the versioned Pantoken A2UI 1.0 catalog and agent guidance.
+
+### Patch Changes
+
+- f7a77f1: Add an installable A2UI integration skill and focused evaluations.
+- f7a77f1: Validate React and Angular A2UI consumers across browser engines, preserve content-free Universal component rendering, and synchronize keyboard tab selection with bound models.
+- Updated dependencies [f7a77f1]
+- Updated dependencies [f7a77f1]
+- Updated dependencies [f7a77f1]
+- Updated dependencies [f7a77f1]
+- Updated dependencies [f7a77f1]
+  - @pantoken/scaffold@1.7.3
+
 ## 1.4.4
 
 ### Patch Changes
