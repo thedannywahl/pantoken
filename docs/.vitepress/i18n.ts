@@ -1,10 +1,12 @@
 import { LOCALES } from "@pantoken/web-components";
 import chromeSource from "./i18n.json" with { type: "json" };
+import catalogSource from "./catalog-i18n.json" with { type: "json" };
 import type { AgentToolsStrings } from "./theme/agent-tools.ts";
 import type { CanvasRceStrings } from "./theme/canvas-rce.ts";
 import type { CdnPickerStrings } from "./theme/cdn.ts";
 import type { GetStartedTabsStrings } from "./theme/get-started.ts";
 import type { RegistryBrowserStrings } from "./theme/registry.ts";
+import type { A2uiCatalogStrings } from "./theme/a2ui-catalog.ts";
 import { loadConfig, resolveMessagesForLocale, resolveTier } from "@pantoken/i18n-engine";
 
 /** Generated CSS API prose enters the existing glossary/prose API translation pipeline. */
@@ -145,6 +147,7 @@ export interface UiStrings {
     cdn: string;
     cdnPicker: string;
     registry: string;
+    a2uiCatalog: string;
     agentTools: string;
     canvasRce: string;
     cli: string;
@@ -205,6 +208,9 @@ export interface UiStrings {
   getStartedTabs: GetStartedTabsStrings;
   // The shadcn/ui registry browser (see theme/components/RegistryBrowser.vue and theme/registry.ts).
   registryBrowser: RegistryBrowserStrings;
+  a2uiCatalog: A2uiCatalogStrings;
+  a2uiCatalogDescriptions: Record<string, string>;
+  registryBrowserItems: Record<string, { title?: string; description?: string }>;
   // The interactive Agent Tools utility (see theme/components/AgentToolsPage.vue and
   // theme/agent-tools.ts).
   agentTools: AgentToolsStrings;
@@ -250,7 +256,7 @@ export interface UiStrings {
 
 /** The English source of truth for every translatable UI string in {@link UiStrings}. */
 const sourceUiStrings = Object.fromEntries(
-  Object.entries(chromeSource)
+  Object.entries({ ...chromeSource, ...catalogSource })
     .filter(([key]) => key !== "$schema")
     .map(([key, entry]) => [key, (entry as { message: string }).message]),
 );

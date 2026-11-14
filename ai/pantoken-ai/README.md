@@ -1,12 +1,12 @@
 # @pantoken/ai
 
 Agent assets for projects that use pantoken (not for developing pantoken itself). It ships an
-`AGENTS.md`, an `llms.txt`, editor and agent rule files (Cursor, Copilot, Windsurf), and four Claude
+`AGENTS.md`, an `llms.txt`, editor and agent rule files (Cursor, Copilot, Windsurf), and five Claude
 Code skills (`init-pantoken`, `create-pantoken-app`, `create-pantoken-mockup`,
-`use-pantoken-registry`) — plus an installer CLI with two commands:
+`use-pantoken-registry`, `use-a2ui`) — plus an installer CLI with two commands:
 `init` (write those assets into a consumer repo) and `scaffold <platform>` (scaffold a starter
 project via [`@pantoken/scaffold`](https://www.npmjs.com/package/@pantoken/scaffold) and install
-the agent assets into the same directory).
+the agent assets into the same directory). It also publishes Pantoken's versioned A2UI 1.0 catalog.
 
 The scaffold system is **preset-based**: each platform package (`@pantoken/components`, `@pantoken/react`,
 `@pantoken/vue`, `@pantoken/web-components`) exports a Bingo preset that defines its own scaffold
@@ -61,6 +61,17 @@ only manual step. Pass `--no-install` to skip the automatic install.
 If you only want the starter project without the agent assets, run
 [`npx @pantoken/scaffold <platform>`](https://www.npmjs.com/package/@pantoken/scaffold) directly.
 
+## A2UI 1.0 catalog
+
+The package exports the Pantoken component schema at `@pantoken/ai/a2ui/catalog-v1.json`. The
+catalog covers every exported `@pantoken/web-components` element and contains no executable
+functions. Browse the supported properties and Lit integration at
+[`pantoken.app/a2ui`](https://pantoken.app/a2ui/). Use the matching Universal component runtime
+from [`@pantoken/web-components`](https://www.npmjs.com/package/@pantoken/web-components). Browser
+tests verify A2UI 1.0 with `@a2ui/react` 0.15.0 / React 19.3.1 and `@a2ui/angular` 0.14.0 /
+Angular 21.2.5, using web-core 0.15.0 in Chromium, Firefox, and WebKit. Native platforms have
+schema-only support; Angular 22 and SSR/hydration haven't been verified.
+
 Run `npx pantoken-ai --help` (or `init --help`/`scaffold --help`) for the full flag reference, or
 `npx pantoken-ai completion <shell>` to generate a bash/zsh/fish/PowerShell completion script.
 
@@ -91,9 +102,9 @@ the exact tested releases or environments; its `$schema` field points to the pub
 
 ## Evals
 
-The `init-pantoken`, `create-pantoken-app`, `create-pantoken-mockup`, and `use-pantoken-registry`
-Claude Code skills each have an eval suite under `evals/<skill-name>/` (skill definitions are
-inlined from `@pantoken/scaffold`), run with
+The `init-pantoken`, `create-pantoken-app`, `create-pantoken-mockup`, `use-pantoken-registry`, and
+`use-a2ui` Claude Code skills each have an eval suite under `evals/<skill-name>/` (skill definitions
+are generated from `@pantoken/scaffold` into `skills/`), run with
 [waza](https://github.com/microsoft/waza), Microsoft's CLI for evaluating agent Skills:
 
 ```sh

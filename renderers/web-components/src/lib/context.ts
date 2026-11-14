@@ -39,7 +39,12 @@ export interface RegisterContext {
     tag: string,
     css: string,
     render: (host: HTMLElement) => string,
-    options?: { display?: string; invoker?: boolean },
+    options?: {
+      display?: string;
+      invoker?: boolean;
+      valueChange?: "value" | "checked";
+      childrenChange?: boolean;
+    },
   ) => void;
   /** Build a `.instui-<name>` class with an optional `-color-<variant>` modifier from `variant`. */
   variantClass: (name: string, host: HTMLElement) => string;

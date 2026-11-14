@@ -32,8 +32,8 @@ features:
     title: किसी भी प्लेटफ़ॉर्म के लिए जनरेट करें
     details: pantoken cli install करें presets उत्पन्न करने या किसी भी platform के लिए components जोड़ने के लिए&colon; web, native, और कुछ और भी।
   - icon:
-      light: /unlink-light.svg
-      dark: /unlink-dark.svg
-    title: React की जरूरत नहीं
-    details: InstUI लाइब्रेरी React के साथ मजबूती से जुड़ी है। अगर आप इसका उपयोग करना चाहते हैं, तो आपको React का उपयोग करना होगा। अब आप कहीं भी build कर सकते हैं।
+      light: /wand-sparkles-light.svg
+      dark: /wand-sparkles-dark.svg
+    title: एजेंटिक तरीके से बनाएँ
+    details: शामिल skills, agents फ़ाइल, api-catalog, llms.txt और A2UI के साथ pantoken को उन AI टूल्स में जोड़ें जिनका आप पहले से उपयोग कर रहे हैं।
 ---

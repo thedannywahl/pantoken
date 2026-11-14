@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: pantoken\n"
-"PO-Revision-Date: 2026-10-30 19:56+0000\n"
+"PO-Revision-Date: 2026-11-13 23:16+0000\n"
 "Last-Translator: pantoken localization engine\n"
 "Language-Team: pantoken\n"
 "MIME-Version: 1.0\n"
@@ -34848,3 +34848,211 @@ msgstr "WCAG 2.2 2.5.8"
 msgctxt "docs.api:prose"
 msgid "All touch targets must be 24px large, or leave sufficient space"
 msgstr "모든 터치 타깃은 24px 이상이어야 합니다. 그렇지 않다면 충분한 간격을 두세요."
+
+msgctxt "docs.api:prose"
+msgid "<!-- pantoken-value-scope:css%2Fscreen-reader-content.md -->\nThis component ships no CSS of its own — its markup and behavior come entirely from {{ptk_code_0}}. See the [modifier table below]({{ptk_code_1}})."
+msgstr "<!-- pantoken-value-scope:css%2Fscreen-reader-content.md -->\n이 컴포넌트는 자체 CSS를 제공하지 않습니다 — 마크업과 동작은 전적으로 {{ptk_code_0}}에서 제공됩니다. [아래의 수정자 표]({{ptk_code_1}})을 참조하세요."
+
+msgctxt "docs.api:prose"
+msgid "A section for an empty state or call to action."
+msgstr "빈 상태 또는 행동 유도 문구를 위한 섹션입니다."
+
+msgctxt "docs.api:prose"
+msgid "A breadcrumb navigation landmark."
+msgstr "브레드크럼 탐색 랜드마크."
+
+msgctxt "docs.api:prose"
+msgid "A media-object byline container."
+msgstr "미디어 객체의 작성자 정보 컨테이너."
+
+msgctxt "docs.api:prose"
+msgid "An article-shaped card with slotted content."
+msgstr "슬롯 콘텐츠가 포함된 아티클 형태의 카드."
+
+msgctxt "docs.api:prose"
+msgid "A native checkbox and its slotted label."
+msgstr "네이티브 체크박스와 슬롯에 삽입된 레이블."
+
+msgctxt "docs.api:prose"
+msgid "A native close button with an accessible label."
+msgstr "접근성 레이블이 있는 기본 닫기 버튼."
+
+msgctxt "docs.api:prose"
+msgid "Missing root component records, registered after the hand-authored elements."
+msgstr "수작업으로 작성한 요소 뒤에 등록된 루트 컴포넌트 레코드가 누락되었습니다."
+
+msgctxt "docs.api:prose"
+msgid "A native file picker presented as a dropzone label."
+msgstr "드롭존 레이블로 표시되는 네이티브 파일 선택기."
+
+msgctxt "docs.api:prose"
+msgid "A form-field layout container."
+msgstr "폼 필드 레이아웃 컨테이너."
+
+msgctxt "docs.api:prose"
+msgid "A native fieldset for a group of form fields."
+msgstr "폼 필드 그룹을 위한 기본 fieldset입니다."
+
+msgctxt "docs.api:prose"
+msgid "A status region for form-field help and validation messages."
+msgstr "양식 필드 도움말 및 유효성 검사 메시지를 위한 상태 영역."
+
+msgctxt "docs.api:prose"
+msgid "A semantic heading with a bounded level from one through six."
+msgstr "1부터 6까지의 범위로 제한된 수준을 가진 시맨틱 제목입니다."
+
+msgctxt "docs.api:prose"
+msgid "A container for an input and adjacent content."
+msgstr "입력 요소와 인접한 콘텐츠를 담는 컨테이너입니다."
+
+msgctxt "docs.api:prose"
+msgid "A link that rejects executable and data URL schemes."
+msgstr "실행 가능한 스킴과 데이터 URL 스킴을 거부하는 링크."
+
+msgctxt "docs.api:prose"
+msgid "A native unordered list with Pantoken list-item styles."
+msgstr "Pantoken 목록 항목 스타일이 적용된 기본 순서 없는 목록."
+
+msgctxt "docs.api:prose"
+msgid "An overlay surface for positioned content."
+msgstr "위치가 지정된 콘텐츠를 위한 오버레이 영역."
+
+msgctxt "docs.api:prose"
+msgid "A menu surface with item, group, and separator styles."
+msgstr "항목, 그룹 및 구분선 스타일이 적용된 메뉴 표면입니다."
+
+msgctxt "docs.api:prose"
+msgid "A native number input with value-change events."
+msgstr "값 변경 이벤트가 있는 네이티브 숫자 입력 요소."
+
+msgctxt "docs.api:prose"
+msgid "A pagination navigation landmark."
+msgstr "페이지 매김 탐색 랜드마크."
+
+msgctxt "docs.api:prose"
+msgid "A native radio control and its slotted label."
+msgstr "네이티브 라디오 컨트롤과 슬롯에 배치된 레이블."
+
+msgctxt "docs.api:prose"
+msgid "A native fieldset for a radio-input group."
+msgstr "라디오 입력 그룹을 위한 기본 fieldset입니다."
+
+msgctxt "docs.api:prose"
+msgid "A native range slider with value-change events."
+msgstr "값 변경 이벤트를 지원하는 네이티브 범위 슬라이더입니다."
+
+msgctxt "docs.api:prose"
+msgid "Visually hidden content that remains available to assistive technology."
+msgstr "보조 기술에서 계속 사용할 수 있도록 시각적으로 숨겨진 콘텐츠입니다."
+
+msgctxt "docs.api:prose"
+msgid "A native select control that copies text-only options from its light DOM."
+msgstr "라이트 DOM에서 텍스트 전용 옵션을 복사하는 네이티브 선택 컨트롤입니다."
+
+msgctxt "docs.api:prose"
+msgid "A table-layout container that keeps slotted rows inside its table semantics."
+msgstr "슬롯에 삽입된 행을 테이블 의미 체계 안에 유지하는 테이블 레이아웃 컨테이너입니다."
+
+msgctxt "docs.api:prose"
+msgid "A paragraph of Pantoken body text."
+msgstr "Pantoken 본문 텍스트 단락입니다."
+
+msgctxt "docs.api:prose"
+msgid "A native multiline text input with a visible slotted label."
+msgstr "눈에 보이는 슬롯 라벨이 있는 네이티브 여러 줄 텍스트 입력 요소."
+
+msgctxt "docs.api:prose"
+msgid "A native text input with a visible slotted label."
+msgstr "슬롯에 삽입된 레이블이 표시되는 네이티브 텍스트 입력 필드."
+
+msgctxt "docs.api:prose"
+msgid "A native disclosure with a configurable summary."
+msgstr "요약을 구성할 수 있는 네이티브 공개 요소입니다."
+
+msgctxt "docs.api:prose"
+msgid "A native disclosure group."
+msgstr "네이티브 디스클로저 그룹."
+
+msgctxt "docs.api:prose"
+msgid "A neutral layout primitive."
+msgstr "중립적인 레이아웃 기본 요소."
+
+#, pantoken-verbatim
+msgctxt "docs.api:text"
+msgid "toggleGroup"
+msgstr "toggleGroup"
+
+#, pantoken-verbatim
+msgctxt "docs.api:text"
+msgid "toggleDetails"
+msgstr "toggleDetails"
+
+#, pantoken-verbatim
+msgctxt "docs.api:text"
+msgid "fileDrop"
+msgstr "fileDrop"
+
+#, pantoken-verbatim
+msgctxt "docs.api:text"
+msgid "rangeInput"
+msgstr "rangeInput"
+
+#, pantoken-verbatim
+msgctxt "docs.api:text"
+msgid "screenReaderContent"
+msgstr "screenReaderContent"
+
+#, pantoken-verbatim
+msgctxt "docs.api:text"
+msgid "closeButton"
+msgstr "closeButton"
+
+#, pantoken-verbatim
+msgctxt "docs.api:text"
+msgid "formField"
+msgstr "formField"
+
+#, pantoken-verbatim
+msgctxt "docs.api:text"
+msgid "formFieldGroup"
+msgstr "formFieldGroup"
+
+#, pantoken-verbatim
+msgctxt "docs.api:text"
+msgid "radioInputGroup"
+msgstr "radioInputGroup"
+
+#, pantoken-verbatim
+msgctxt "docs.api:text"
+msgid "formFieldMessages"
+msgstr "formFieldMessages"
+
+#, pantoken-verbatim
+msgctxt "docs.api:text"
+msgid "textInput"
+msgstr "textInput"
+
+#, pantoken-verbatim
+msgctxt "docs.api:text"
+msgid "textArea"
+msgstr "textArea"
+
+#, pantoken-verbatim
+msgctxt "docs.api:text"
+msgid "simpleSelect"
+msgstr "simpleSelect"
+
+#, pantoken-verbatim
+msgctxt "docs.api:text"
+msgid "inputGroup"
+msgstr "inputGroup"
+
+#, pantoken-verbatim
+msgctxt "docs.api:text"
+msgid "numberInput"
+msgstr "numberInput"
+
+#, pantoken-verbatim
+msgctxt "docs.api:text"
+msgid "componentElements"
+msgstr "componentElements"

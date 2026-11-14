@@ -33,7 +33,26 @@ test("installs all Claude skills + AGENTS.md", () => {
   expect(existsSync(join(dir, ".claude/skills/create-pantoken-app/SKILL.md"))).toBe(true);
   expect(existsSync(join(dir, ".claude/skills/create-pantoken-mockup/SKILL.md"))).toBe(true);
   expect(existsSync(join(dir, ".claude/skills/use-pantoken-registry/SKILL.md"))).toBe(true);
+  expect(existsSync(join(dir, ".claude/skills/use-a2ui/SKILL.md"))).toBe(true);
+  expect(readFileSync(join(dir, ".claude/skills/use-a2ui/SKILL.md"), "utf8")).toContain(
+    "@pantoken/tokens",
+  );
   expect(existsSync(join(dir, "AGENTS.md"))).toBe(true);
+});
+
+test("materializes the A2UI skill for evals from its installable asset", () => {
+  const dir = mkdtempSync(join(tmpdir(), "pantoken-ai-a2ui-skill-"));
+  try {
+    installAgentAssets("claude", dir);
+    const installed = readFileSync(join(dir, ".claude/skills/use-a2ui/SKILL.md"), "utf8");
+    const materialized = readFileSync(
+      new URL("../skills/use-a2ui/SKILL.md", import.meta.url),
+      "utf8",
+    );
+    expect(materialized).toBe(installed);
+  } finally {
+    rmSync(dir, { recursive: true, force: true });
+  }
 });
 
 test("ships intent routing for apps, browser mockups, and sendable email", () => {
@@ -43,6 +62,28 @@ test("ships intent routing for apps, browser mockups, and sendable email", () =>
   expect(AGENTS_MD).toContain("@pantoken/email");
   expect(AGENTS_MD).toContain("inlineEmailHtml");
   expect(AGENTS_MD).toContain("pantoken generate email");
+});
+
+test("routes A2UI work through version-aware token guidance", () => {
+  const dir = mkdtempSync(join(tmpdir(), "pantoken-ai-a2ui-"));
+  try {
+    installAgentAssets("all", dir);
+    for (const file of [
+      "AGENTS.md",
+      "llms.txt",
+      ".cursor/rules/pantoken.mdc",
+      ".github/copilot-instructions.md",
+      ".windsurf/rules/pantoken.md",
+    ]) {
+      const content = readFileSync(join(dir, file), "utf8");
+      expect(content).toContain("A2UI");
+      expect(content).toContain("--instui-*");
+      expect(content).toContain("version");
+    }
+    expect(readFileSync(join(dir, "AGENTS.md"), "utf8")).toContain("use-a2ui");
+  } finally {
+    rmSync(dir, { recursive: true, force: true });
+  }
 });
 
 test("installed agent assets link to the published compatibility registry", () => {

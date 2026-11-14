@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: pantoken\n"
-"PO-Revision-Date: 2026-10-01 01:50+0000\n"
+"PO-Revision-Date: 2026-11-14 02:27+0000\n"
 "Last-Translator: pantoken localization engine\n"
 "Language-Team: pantoken\n"
 "Language: und\n"
@@ -90,6 +90,12 @@ msgstr "CDN választó"
 msgctxt "docs.chrome:sidebar.registry"
 msgid "shadcn/ui Registry"
 msgstr "Regiszter"
+
+#: docs/.vitepress/i18n.json#sidebar.a2uiCatalog
+#, fuzzy, no-c-format
+msgctxt "docs.chrome:sidebar.a2uiCatalog"
+msgid "A2UI Catalog"
+msgstr "API katalógus"
 
 #: docs/.vitepress/i18n.json#sidebar.agentTools
 #, fuzzy, no-c-format
@@ -466,13 +472,12 @@ msgstr "Regiszter"
 #, no-c-format
 msgctxt "docs.chrome:registryBrowser.subtitle"
 msgid ""
-"Compatible components, themes, and behavior hooks conforming to the shadcn/"
-"ui registry specification. Add items directly to your shadcn/ui project via "
-"CLI."
+"CSS components, layouts, plugins, and themes for package-managed shadcn "
+"projects. Items install styles and usage metadata, not React components."
 msgstr ""
-"Kompatibilis komponensek, témák és viselkedés-horgok, amelyek megfelelnek a "
-"shadcn/ui regiszter specifikációnak. Elemeket közvetlenül hozzáadhat a "
-"shadcn/ui projektjéhez a CLI segítségével."
+"CSS-komponensek, -elrendezések, -bővítmények és -témák csomagkezelővel "
+"kezelt shadcn-projektekhez. Az elemek stílusokat és használati metaadatokat "
+"telepítenek, nem React-komponenseket."
 
 #: docs/.vitepress/i18n.json#registryBrowser.tabAll
 #, no-c-format
@@ -499,16 +504,46 @@ msgid "Hooks"
 msgstr "Hookok"
 
 #: docs/.vitepress/i18n.json#registryBrowser.searchPlaceholder
-#, no-c-format
+#, fuzzy, no-c-format
 msgctxt "docs.chrome:registryBrowser.searchPlaceholder"
-msgid "Filter components, themes, hooks…"
+msgid "Filter components, layouts, plugins, themes…"
 msgstr "Komponensek, témák, hookok szűrése…"
+
+#: docs/.vitepress/i18n.json#registryBrowser.searchLabel
+#, fuzzy, no-c-format
+msgctxt "docs.chrome:registryBrowser.searchLabel"
+msgid "Filter registry items"
+msgstr "Regiszter"
 
 #: docs/.vitepress/i18n.json#registryBrowser.cliLabel
 #, no-c-format
 msgctxt "docs.chrome:registryBrowser.cliLabel"
 msgid "CLI:"
 msgstr "CLI:"
+
+#: docs/.vitepress/i18n.json#registryBrowser.cliPattern
+#, no-c-format
+msgctxt "docs.chrome:registryBrowser.cliPattern"
+msgid "CLI pattern:"
+msgstr "CLI-minta:"
+
+#: docs/.vitepress/i18n.json#registryBrowser.typeTheme
+#, fuzzy, no-c-format
+msgctxt "docs.chrome:registryBrowser.typeTheme"
+msgid "Theme"
+msgstr "Téma"
+
+#: docs/.vitepress/i18n.json#registryBrowser.typeBase
+#, fuzzy, no-c-format
+msgctxt "docs.chrome:registryBrowser.typeBase"
+msgid "Base"
+msgstr "Alap"
+
+#: docs/.vitepress/i18n.json#registryBrowser.typeHook
+#, fuzzy, no-c-format
+msgctxt "docs.chrome:registryBrowser.typeHook"
+msgid "Hook"
+msgstr "Hookok"
 
 #: docs/.vitepress/i18n.json#registryBrowser.copy
 #, fuzzy, no-c-format
@@ -557,6 +592,194 @@ msgstr "A keresésnek nincs megfelelő regiszterelem."
 msgctxt "docs.chrome:registryBrowser.emptyReset"
 msgid "Reset Filters"
 msgstr "Keresés törlése"
+
+#: docs/.vitepress/i18n.json#a2uiCatalog.title
+#, no-c-format
+msgctxt "docs.chrome:a2uiCatalog.title"
+msgid "Pantoken A2UI Catalog"
+msgstr "Pantoken A2UI-katalógus"
+
+#: docs/.vitepress/i18n.json#a2uiCatalog.subtitle
+#, no-c-format
+msgctxt "docs.chrome:a2uiCatalog.subtitle"
+msgid ""
+"Explore the Pantoken component vocabulary for A2UI 1.0. This catalog defines "
+"only Pantoken components; standard layout components remain in the A2UI "
+"Basic Catalog."
+msgstr ""
+"Fedezze fel a Pantoken komponenskészletét az A2UI 1.0-hoz. Ez a katalógus "
+"kizárólag Pantoken-komponenseket definiál; a szabványos elrendezési "
+"komponensek az A2UI Basic Catalog katalógusban maradnak."
+
+#: docs/.vitepress/i18n.json#a2uiCatalog.protocolLabel
+#, no-c-format
+msgctxt "docs.chrome:a2uiCatalog.protocolLabel"
+msgid "Protocol"
+msgstr "Protokoll"
+
+#: docs/.vitepress/i18n.json#a2uiCatalog.catalogIdLabel
+#, no-c-format
+msgctxt "docs.chrome:a2uiCatalog.catalogIdLabel"
+msgid "Catalog ID"
+msgstr "Katalógusazonosító"
+
+#: docs/.vitepress/i18n.json#a2uiCatalog.rawCatalog
+#, no-c-format
+msgctxt "docs.chrome:a2uiCatalog.rawCatalog"
+msgid "View catalog JSON"
+msgstr "Katalógus JSON megtekintése"
+
+#: docs/.vitepress/i18n.json#a2uiCatalog.componentsHeading
+#, fuzzy, no-c-format
+msgctxt "docs.chrome:a2uiCatalog.componentsHeading"
+msgid "Components"
+msgstr "Komponensek"
+
+#: docs/.vitepress/i18n.json#a2uiCatalog.searchLabel
+#, fuzzy, no-c-format
+msgctxt "docs.chrome:a2uiCatalog.searchLabel"
+msgid "Filter components"
+msgstr "Minden komponens"
+
+#: docs/.vitepress/i18n.json#a2uiCatalog.searchPlaceholder
+#, no-c-format
+msgctxt "docs.chrome:a2uiCatalog.searchPlaceholder"
+msgid "Search names, properties, or values"
+msgstr "Keresés nevek, tulajdonságok vagy értékek között"
+
+#: docs/.vitepress/i18n.json#a2uiCatalog.required
+#, no-c-format
+msgctxt "docs.chrome:a2uiCatalog.required"
+msgid "Required"
+msgstr "Kötelező"
+
+#: docs/.vitepress/i18n.json#a2uiCatalog.optional
+#, no-c-format
+msgctxt "docs.chrome:a2uiCatalog.optional"
+msgid "Optional"
+msgstr "Nem kötelező"
+
+#: docs/.vitepress/i18n.json#a2uiCatalog.noFunctions
+#, no-c-format
+msgctxt "docs.chrome:a2uiCatalog.noFunctions"
+msgid ""
+"This catalog defines no executable functions. Button actions use A2UI's "
+"registered action handling."
+msgstr ""
+"Ez a katalógus nem definiál végrehajtható függvényeket. A gombműveleteket az "
+"A2UI regisztrált műveletkezelése kezeli."
+
+#: docs/.vitepress/i18n.json#a2uiCatalog.supportHeading
+#, no-c-format
+msgctxt "docs.chrome:a2uiCatalog.supportHeading"
+msgid "Client support"
+msgstr "Kliensoldali támogatás"
+
+#: docs/.vitepress/i18n.json#a2uiCatalog.litSupport
+#, no-c-format
+msgctxt "docs.chrome:a2uiCatalog.litSupport"
+msgid "Verified with the published A2UI 1.0 Lit SDK."
+msgstr "Ellenőrizve a közzétett A2UI 1.0 Lit SDK-val."
+
+#: docs/.vitepress/i18n.json#a2uiCatalog.reactSupport
+#, no-c-format
+msgctxt "docs.chrome:a2uiCatalog.reactSupport"
+msgid ""
+"Verified with @a2ui/react 0.15.0 and React 19.3.1 in Chromium, Firefox, and "
+"WebKit."
+msgstr ""
+"Ellenőrizve a @a2ui/react 0.15.0-val és a React 19.3.1-gyel Chromium, "
+"Firefox és WebKit böngészőben."
+
+#: docs/.vitepress/i18n.json#a2uiCatalog.angularSupport
+#, no-c-format
+msgctxt "docs.chrome:a2uiCatalog.angularSupport"
+msgid ""
+"Verified with @a2ui/angular 0.14.0 and Angular 21.2.5 in Chromium, Firefox, "
+"and WebKit."
+msgstr ""
+"Ellenőrizve a @a2ui/angular 0.14.0-val és az Angular 21.2.5-tel Chromium, "
+"Firefox és WebKit böngészőben."
+
+#: docs/.vitepress/i18n.json#a2uiCatalog.nativeSupport
+#, no-c-format
+msgctxt "docs.chrome:a2uiCatalog.nativeSupport"
+msgid ""
+"Flutter, SwiftUI, and Jetpack Compose: schema only; no Pantoken native "
+"component renderers."
+msgstr ""
+"Flutter, SwiftUI és Jetpack Compose: csak séma; nincsenek Pantoken natív "
+"komponensmegjelenítők."
+
+#: docs/.vitepress/i18n.json#a2uiCatalog.functionsHeading
+#, fuzzy, no-c-format
+msgctxt "docs.chrome:a2uiCatalog.functionsHeading"
+msgid "Functions"
+msgstr "Művelet"
+
+#: docs/.vitepress/i18n.json#a2uiCatalog.integrationHeading
+#, no-c-format
+msgctxt "docs.chrome:a2uiCatalog.integrationHeading"
+msgid "Lit registration"
+msgstr "Lit-regisztráció"
+
+#: docs/.vitepress/i18n.json#a2uiCatalog.componentReference
+#, fuzzy, no-c-format
+msgctxt "docs.chrome:a2uiCatalog.componentReference"
+msgid ""
+"Use catalogId to reference Pantoken components alongside Basic Catalog "
+"components."
+msgstr ""
+"A Pantoken-komponensek Basic Catalog komponensei mellett történő "
+"hivatkozásához használja a @catalogId értéket."
+
+#: docs/.vitepress/i18n.json#a2uiCatalog.empty
+#, fuzzy, no-c-format
+msgctxt "docs.chrome:a2uiCatalog.empty"
+msgid "No components match your search."
+msgstr "A keresésnek nincs megfelelő regiszterelem."
+
+#: docs/.vitepress/i18n.json#a2uiCatalog.value
+#, no-c-format
+msgctxt "docs.chrome:a2uiCatalog.value"
+msgid "A2UI value"
+msgstr "A2UI-érték"
+
+#: docs/.vitepress/i18n.json#a2uiCatalog.versioningHeading
+#, no-c-format
+msgctxt "docs.chrome:a2uiCatalog.versioningHeading"
+msgid "Catalog Versioning"
+msgstr "Katalógusverziózás"
+
+#: docs/.vitepress/i18n.json#a2uiCatalog.versioningDescription
+#, no-c-format
+msgctxt "docs.chrome:a2uiCatalog.versioningDescription"
+msgid ""
+"The v1 catalog ID is stable. Adding an optional component, property, or enum "
+"value is additive; removing or renaming an existing component or property, "
+"narrowing an enum, or making an optional property required is breaking and "
+"requires a new catalog version. Only the components and properties listed "
+"above are part of Pantoken's A2UI catalog."
+msgstr ""
+"A v1 katalógusazonosító stabil. Egy nem kötelező komponens, tulajdonság vagy "
+"felsorolási érték hozzáadása bővítésnek számít; egy meglévő komponens vagy "
+"tulajdonság eltávolítása vagy átnevezése, a felsorolás szűkítése, illetve "
+"egy nem kötelező tulajdonság kötelezővé tétele kompatibilitástörő változás, "
+"és új katalógusverziót igényel. A Pantoken A2UI-katalógusának csak a fent "
+"felsorolt komponensek és tulajdonságok részei."
+
+#: docs/.vitepress/i18n.json#a2uiCatalog.versioningActions
+#, no-c-format
+msgctxt "docs.chrome:a2uiCatalog.versioningActions"
+msgid ""
+"The catalog defines no executable functions and does not authorize actions. "
+"A2UI actions are dispatched through the host application's normal action "
+"handling, where the application must enforce its own permissions."
+msgstr ""
+"A katalógus nem definiál végrehajtható függvényeket, és nem jogosít fel "
+"műveletekre. Az A2UI-műveleteket a gazdaalkalmazás szokásos műveletkezelése "
+"küldi el, amelynek során az alkalmazásnak saját jogosultságait kell "
+"érvényesítenie."
 
 #: docs/.vitepress/i18n.json#canvasRce.title
 #, fuzzy, no-c-format
@@ -1122,3 +1345,1563 @@ msgstr "navigáláshoz"
 msgctxt "docs.chrome:search.footerClose"
 msgid "to close"
 msgstr "bezáráshoz"
+
+#: docs/.vitepress/catalog-i18n.json#a2uiCatalogDescriptions.PantokenIcon
+#, no-c-format
+msgctxt "docs.chrome:a2uiCatalogDescriptions.PantokenIcon"
+msgid "An inline glyph selected from Pantoken's icon set."
+msgstr "A Pantoken ikonkészletéből kiválasztott beágyazott piktogram."
+
+#: docs/.vitepress/catalog-i18n.json#a2uiCatalogDescriptions.PantokenButton
+#, no-c-format
+msgctxt "docs.chrome:a2uiCatalogDescriptions.PantokenButton"
+msgid ""
+"A token-styled action button with optional A2UI event and Invoker Commands "
+"behavior."
+msgstr ""
+"Tokenstílusú műveletgomb opcionális A2UI-eseménnyel és Invoker Commands-"
+"viselkedéssel."
+
+#: docs/.vitepress/catalog-i18n.json#a2uiCatalogDescriptions.PantokenAlert
+#, no-c-format
+msgctxt "docs.chrome:a2uiCatalogDescriptions.PantokenAlert"
+msgid "A status message with optional timeout dismissal."
+msgstr "Állapotüzenet opcionális időzített bezárással."
+
+#: docs/.vitepress/catalog-i18n.json#a2uiCatalogDescriptions.PantokenBadge
+#, no-c-format
+msgctxt "docs.chrome:a2uiCatalogDescriptions.PantokenBadge"
+msgid "A compact count or status badge."
+msgstr "Kompakt számláló- vagy állapotjelvény."
+
+#: docs/.vitepress/catalog-i18n.json#a2uiCatalogDescriptions.PantokenPill
+#, no-c-format
+msgctxt "docs.chrome:a2uiCatalogDescriptions.PantokenPill"
+msgid "A compact status pill."
+msgstr "Kompakt állapotjelző kapszula."
+
+#: docs/.vitepress/catalog-i18n.json#a2uiCatalogDescriptions.PantokenTag
+#, no-c-format
+msgctxt "docs.chrome:a2uiCatalogDescriptions.PantokenTag"
+msgid "A token-styled tag or chip."
+msgstr "Tokenstílusú címke vagy chip."
+
+#: docs/.vitepress/catalog-i18n.json#a2uiCatalogDescriptions.PantokenAvatar
+#, no-c-format
+msgctxt "docs.chrome:a2uiCatalogDescriptions.PantokenAvatar"
+msgid "An initials avatar with a constrained palette, size, and shape."
+msgstr "Monogramos avatar korlátozott színpalettával, mérettel és formával."
+
+#: docs/.vitepress/catalog-i18n.json#a2uiCatalogDescriptions.PantokenSpinner
+#, no-c-format
+msgctxt "docs.chrome:a2uiCatalogDescriptions.PantokenSpinner"
+msgid "A loading status indicator."
+msgstr "Betöltési állapotjelző."
+
+#: docs/.vitepress/catalog-i18n.json#a2uiCatalogDescriptions.PantokenProgress
+#, no-c-format
+msgctxt "docs.chrome:a2uiCatalogDescriptions.PantokenProgress"
+msgid "A horizontal progress or meter indicator."
+msgstr "Vízszintes folyamat- vagy mérőjelző."
+
+#: docs/.vitepress/catalog-i18n.json#a2uiCatalogDescriptions.PantokenMetric
+#, no-c-format
+msgctxt "docs.chrome:a2uiCatalogDescriptions.PantokenMetric"
+msgid "A large value paired with a descriptive label."
+msgstr "Nagy érték leíró címkével."
+
+#: docs/.vitepress/catalog-i18n.json#a2uiCatalogDescriptions.PantokenRating
+#, no-c-format
+msgctxt "docs.chrome:a2uiCatalogDescriptions.PantokenRating"
+msgid "A read-only star rating with a bounded number of stars."
+msgstr "Csak olvasható csillagos értékelés korlátozott számú csillaggal."
+
+#: docs/.vitepress/catalog-i18n.json#a2uiCatalogDescriptions.PantokenProgressCircle
+#, no-c-format
+msgctxt "docs.chrome:a2uiCatalogDescriptions.PantokenProgressCircle"
+msgid "A circular progress or meter indicator."
+msgstr "Kör alakú folyamat- vagy mérőjelző."
+
+#: docs/.vitepress/catalog-i18n.json#a2uiCatalogDescriptions.PantokenIconButton
+#, no-c-format
+msgctxt "docs.chrome:a2uiCatalogDescriptions.PantokenIconButton"
+msgid "An icon-only button with an accessible label."
+msgstr "Csak ikont tartalmazó gomb akadálymentes címkével."
+
+#: docs/.vitepress/catalog-i18n.json#a2uiCatalogDescriptions.PantokenToggleButton
+#, no-c-format
+msgctxt "docs.chrome:a2uiCatalogDescriptions.PantokenToggleButton"
+msgid "A two-state button whose pressed state is bound to A2UI data."
+msgstr ""
+"Kétállapotú gomb, amelynek lenyomott állapota A2UI-adatokhoz van kötve."
+
+#: docs/.vitepress/catalog-i18n.json#a2uiCatalogDescriptions.PantokenTruncate
+#, no-c-format
+msgctxt "docs.chrome:a2uiCatalogDescriptions.PantokenTruncate"
+msgid "A clamped text region with an allowlisted line count."
+msgstr "Korlátozott sorszámú, levágott szövegrész."
+
+#: docs/.vitepress/catalog-i18n.json#a2uiCatalogDescriptions.PantokenImg
+#, no-c-format
+msgctxt "docs.chrome:a2uiCatalogDescriptions.PantokenImg"
+msgid ""
+"A responsive image with a sanitized media URL and constrained presentation."
+msgstr ""
+"Reszponzív kép tisztított média-URL-lel és korlátozott megjelenítéssel."
+
+#: docs/.vitepress/catalog-i18n.json#a2uiCatalogDescriptions.PantokenSideNavBar
+#, no-c-format
+msgctxt "docs.chrome:a2uiCatalogDescriptions.PantokenSideNavBar"
+msgid "A vertical navigation rail that can collapse to icon-only presentation."
+msgstr "Függőleges navigációs sáv, amely ikonokra szűkíthető."
+
+#: docs/.vitepress/catalog-i18n.json#a2uiCatalogDescriptions.PantokenTreeBrowser
+#, no-c-format
+msgctxt "docs.chrome:a2uiCatalogDescriptions.PantokenTreeBrowser"
+msgid ""
+"An accessible tree whose child components are exposed as focusable tree "
+"items."
+msgstr ""
+"Akadálymentes fa, amelynek gyermekkomponensei fókuszálható faelemként "
+"jelennek meg."
+
+#: docs/.vitepress/catalog-i18n.json#a2uiCatalogDescriptions.PantokenCalendar
+#, no-c-format
+msgctxt "docs.chrome:a2uiCatalogDescriptions.PantokenCalendar"
+msgid "An interactive month calendar that updates its selected ISO date."
+msgstr "Interaktív havi naptár, amely frissíti a kiválasztott ISO-dátumot."
+
+#: docs/.vitepress/catalog-i18n.json#a2uiCatalogDescriptions.PantokenTooltip
+#, no-c-format
+msgctxt "docs.chrome:a2uiCatalogDescriptions.PantokenTooltip"
+msgid "A noninteractive tooltip around a trigger component."
+msgstr "Nem interaktív eszköztipp egy aktiváló komponens körül."
+
+#: docs/.vitepress/catalog-i18n.json#a2uiCatalogDescriptions.PantokenModal
+#, no-c-format
+msgctxt "docs.chrome:a2uiCatalogDescriptions.PantokenModal"
+msgid "A native dialog with command-driven open and close behavior."
+msgstr "Natív párbeszédablak parancsvezérelt megnyitással és bezárással."
+
+#: docs/.vitepress/catalog-i18n.json#a2uiCatalogDescriptions.PantokenContextView
+#, no-c-format
+msgctxt "docs.chrome:a2uiCatalogDescriptions.PantokenContextView"
+msgid "A callout popover with Pantoken styling."
+msgstr "Pantoken-stílusú kiemelő felugró ablak."
+
+#: docs/.vitepress/catalog-i18n.json#a2uiCatalogDescriptions.PantokenPopover
+#, no-c-format
+msgctxt "docs.chrome:a2uiCatalogDescriptions.PantokenPopover"
+msgid "A floating popover surface."
+msgstr "Lebegő felugró felület."
+
+#: docs/.vitepress/catalog-i18n.json#a2uiCatalogDescriptions.PantokenTray
+#, no-c-format
+msgctxt "docs.chrome:a2uiCatalogDescriptions.PantokenTray"
+msgid "A viewport-edge popover panel with constrained placement and size."
+msgstr ""
+"A nézetablak széléhez igazodó felugró panel korlátozott elhelyezéssel és "
+"mérettel."
+
+#: docs/.vitepress/catalog-i18n.json#a2uiCatalogDescriptions.PantokenInPlaceEdit
+#, no-c-format
+msgctxt "docs.chrome:a2uiCatalogDescriptions.PantokenInPlaceEdit"
+msgid "An inline editable value with A2UI state updates."
+msgstr "Beágyazottan szerkeszthető érték A2UI-állapotfrissítésekkel."
+
+#: docs/.vitepress/catalog-i18n.json#a2uiCatalogDescriptions.PantokenDrilldown
+#, no-c-format
+msgctxt "docs.chrome:a2uiCatalogDescriptions.PantokenDrilldown"
+msgid "A nested menu built from safe page and item data."
+msgstr "Biztonságos oldal- és adatelemekből felépített beágyazott menü."
+
+#: docs/.vitepress/catalog-i18n.json#a2uiCatalogDescriptions.PantokenPages
+#, no-c-format
+msgctxt "docs.chrome:a2uiCatalogDescriptions.PantokenPages"
+msgid "A history-aware set of A2UI child panels."
+msgstr "Előzményeket kezelő A2UI-gyermekpanelek gyűjteménye."
+
+#: docs/.vitepress/catalog-i18n.json#a2uiCatalogDescriptions.PantokenDrawerLayout
+#, no-c-format
+msgctxt "docs.chrome:a2uiCatalogDescriptions.PantokenDrawerLayout"
+msgid "A responsive content and tray layout with command-driven open state."
+msgstr ""
+"Reszponzív tartalom- és fiókelrendezés parancsvezérelt nyitott állapottal."
+
+#: docs/.vitepress/catalog-i18n.json#a2uiCatalogDescriptions.PantokenDateInput
+#, no-c-format
+msgctxt "docs.chrome:a2uiCatalogDescriptions.PantokenDateInput"
+msgid "A date field with a calendar popover and ISO value updates."
+msgstr "Dátummező naptáras felugró ablakkal és ISO-értékfrissítésekkel."
+
+#: docs/.vitepress/catalog-i18n.json#a2uiCatalogDescriptions.PantokenDateTimeInput
+#, no-c-format
+msgctxt "docs.chrome:a2uiCatalogDescriptions.PantokenDateTimeInput"
+msgid "A combined date and time field with an ISO value update."
+msgstr "Dátum- és időmező együttes ISO-értékfrissítéssel."
+
+#: docs/.vitepress/catalog-i18n.json#a2uiCatalogDescriptions.PantokenTabs
+#, no-c-format
+msgctxt "docs.chrome:a2uiCatalogDescriptions.PantokenTabs"
+msgid "An accessible tab set pairing A2UI child panels with labels."
+msgstr ""
+"Akadálymentes lapkészlet, amely A2UI-gyermekpaneleket párosít címkékkel."
+
+#: docs/.vitepress/catalog-i18n.json#a2uiCatalogDescriptions.PantokenCard
+#, no-c-format
+msgctxt "docs.chrome:a2uiCatalogDescriptions.PantokenCard"
+msgid "A Pantoken card component with safe text and child content."
+msgstr "Pantoken-kártyakomponens biztonságos szöveggel és gyermekelemekkel."
+
+#: docs/.vitepress/catalog-i18n.json#a2uiCatalogDescriptions.PantokenByline
+#, no-c-format
+msgctxt "docs.chrome:a2uiCatalogDescriptions.PantokenByline"
+msgid "A Pantoken byline component with safe text and child content."
+msgstr ""
+"Pantoken-szerzői sor komponens biztonságos szöveggel és gyermekelemekkel."
+
+#: docs/.vitepress/catalog-i18n.json#a2uiCatalogDescriptions.PantokenTable
+#, no-c-format
+msgctxt "docs.chrome:a2uiCatalogDescriptions.PantokenTable"
+msgid "A data table with a caption, column headers, and text-only cells."
+msgstr ""
+"Adattábla felirattal, oszlopfejlécekkel és kizárólag szöveges cellákkal."
+
+#: docs/.vitepress/catalog-i18n.json#a2uiCatalogDescriptions.PantokenLink
+#, no-c-format
+msgctxt "docs.chrome:a2uiCatalogDescriptions.PantokenLink"
+msgid "A navigable text link with an allowlisted URL scheme."
+msgstr "Navigációs szöveges hivatkozás engedélyezett URL-sémával."
+
+#: docs/.vitepress/catalog-i18n.json#a2uiCatalogDescriptions.PantokenList
+#, no-c-format
+msgctxt "docs.chrome:a2uiCatalogDescriptions.PantokenList"
+msgid "A Pantoken list component with safe text and child content."
+msgstr "Pantoken-listakomponens biztonságos szöveggel és gyermekelemekkel."
+
+#: docs/.vitepress/catalog-i18n.json#a2uiCatalogDescriptions.PantokenCheckbox
+#, no-c-format
+msgctxt "docs.chrome:a2uiCatalogDescriptions.PantokenCheckbox"
+msgid "A native checkbox with a visible label and checked-state updates."
+msgstr ""
+"Natív jelölőnégyzet látható címkével és a bejelölt állapot frissítésével."
+
+#: docs/.vitepress/catalog-i18n.json#a2uiCatalogDescriptions.PantokenRadio
+#, no-c-format
+msgctxt "docs.chrome:a2uiCatalogDescriptions.PantokenRadio"
+msgid "A native radio control with a visible label and selected-value updates."
+msgstr ""
+"Natív választógomb látható címkével és a kiválasztott érték frissítésével."
+
+#: docs/.vitepress/catalog-i18n.json#a2uiCatalogDescriptions.PantokenMenu
+#, no-c-format
+msgctxt "docs.chrome:a2uiCatalogDescriptions.PantokenMenu"
+msgid "A Pantoken menu component with safe text and child content."
+msgstr "Pantoken-menükomponens biztonságos szöveggel és gyermekelemekkel."
+
+#: docs/.vitepress/catalog-i18n.json#a2uiCatalogDescriptions.PantokenBreadcrumb
+#, no-c-format
+msgctxt "docs.chrome:a2uiCatalogDescriptions.PantokenBreadcrumb"
+msgid "A labeled navigation landmark with breadcrumb items."
+msgstr "Feliratozott navigációs tájékozódási pont morzsaelemekkel."
+
+#: docs/.vitepress/catalog-i18n.json#a2uiCatalogDescriptions.PantokenBillboard
+#, no-c-format
+msgctxt "docs.chrome:a2uiCatalogDescriptions.PantokenBillboard"
+msgid "A Pantoken billboard component with safe text and child content."
+msgstr "Pantoken-kiemelő komponens biztonságos szöveggel és gyermekelemekkel."
+
+#: docs/.vitepress/catalog-i18n.json#a2uiCatalogDescriptions.PantokenToggleGroup
+#, no-c-format
+msgctxt "docs.chrome:a2uiCatalogDescriptions.PantokenToggleGroup"
+msgid ""
+"A token-styled disclosure group with a summary and expandable child content."
+msgstr ""
+"Tokenstílusú lenyitható csoport összefoglalóval és kibontott "
+"gyermekelemekkel."
+
+#: docs/.vitepress/catalog-i18n.json#a2uiCatalogDescriptions.PantokenPagination
+#, no-c-format
+msgctxt "docs.chrome:a2uiCatalogDescriptions.PantokenPagination"
+msgid "A labeled navigation landmark for pagination controls."
+msgstr "Feliratozott navigációs tájékozódási pont lapozóvezérlőkhöz."
+
+#: docs/.vitepress/catalog-i18n.json#a2uiCatalogDescriptions.PantokenToggleDetails
+#, no-c-format
+msgctxt "docs.chrome:a2uiCatalogDescriptions.PantokenToggleDetails"
+msgid "A native disclosure with a summary and expandable child content."
+msgstr "Natív lenyitható elem összefoglalóval és kibontott gyermekelemekkel."
+
+#: docs/.vitepress/catalog-i18n.json#a2uiCatalogDescriptions.PantokenFileDrop
+#, no-c-format
+msgctxt "docs.chrome:a2uiCatalogDescriptions.PantokenFileDrop"
+msgid "A Pantoken file-drop component with safe text and child content."
+msgstr ""
+"Pantoken-fájlfeltöltő komponens biztonságos szöveggel és gyermekelemekkel."
+
+#: docs/.vitepress/catalog-i18n.json#a2uiCatalogDescriptions.PantokenRangeInput
+#, no-c-format
+msgctxt "docs.chrome:a2uiCatalogDescriptions.PantokenRangeInput"
+msgid "A native range slider with bounded numeric values."
+msgstr "Natív tartománycsúszka korlátozott numerikus értékekkel."
+
+#: docs/.vitepress/catalog-i18n.json#a2uiCatalogDescriptions.PantokenMask
+#, no-c-format
+msgctxt "docs.chrome:a2uiCatalogDescriptions.PantokenMask"
+msgid "A Pantoken mask component with safe text and child content."
+msgstr "Biztonságos szöveget és gyermekelemeket tartalmazó Pantoken maszkelem."
+
+#: docs/.vitepress/catalog-i18n.json#a2uiCatalogDescriptions.PantokenScreenReaderContent
+#, no-c-format
+msgctxt "docs.chrome:a2uiCatalogDescriptions.PantokenScreenReaderContent"
+msgid ""
+"A Pantoken screen-reader-content component with safe text and child content."
+msgstr ""
+"Biztonságos szöveget és gyermekelemeket tartalmazó Pantoken képernyőolvasó-"
+"tartalom elem."
+
+#: docs/.vitepress/catalog-i18n.json#a2uiCatalogDescriptions.PantokenHeading
+#, no-c-format
+msgctxt "docs.chrome:a2uiCatalogDescriptions.PantokenHeading"
+msgid "A Pantoken heading component with safe text and child content."
+msgstr ""
+"Biztonságos szöveget és gyermekelemeket tartalmazó Pantoken címsorelem."
+
+#: docs/.vitepress/catalog-i18n.json#a2uiCatalogDescriptions.PantokenText
+#, no-c-format
+msgctxt "docs.chrome:a2uiCatalogDescriptions.PantokenText"
+msgid "A Pantoken text component with safe text and child content."
+msgstr ""
+"Biztonságos szöveget és gyermekelemeket tartalmazó Pantoken szövegelem."
+
+#: docs/.vitepress/catalog-i18n.json#a2uiCatalogDescriptions.PantokenCloseButton
+#, no-c-format
+msgctxt "docs.chrome:a2uiCatalogDescriptions.PantokenCloseButton"
+msgid "An accessible close control that dispatches an A2UI click action."
+msgstr "Akadálymentes bezáró vezérlő, amely A2UI kattintási műveletet indít."
+
+#: docs/.vitepress/catalog-i18n.json#a2uiCatalogDescriptions.PantokenFormField
+#, no-c-format
+msgctxt "docs.chrome:a2uiCatalogDescriptions.PantokenFormField"
+msgid "A Pantoken form-field component with safe text and child content."
+msgstr ""
+"Biztonságos szöveget és gyermekelemeket tartalmazó Pantoken űrlapmező-elem."
+
+#: docs/.vitepress/catalog-i18n.json#a2uiCatalogDescriptions.PantokenFormFieldGroup
+#, no-c-format
+msgctxt "docs.chrome:a2uiCatalogDescriptions.PantokenFormFieldGroup"
+msgid "A labeled fieldset grouping related form controls."
+msgstr "Kapcsolódó űrlapvezérlőket csoportosító, feliratozott mezőkészlet."
+
+#: docs/.vitepress/catalog-i18n.json#a2uiCatalogDescriptions.PantokenRadioInputGroup
+#, no-c-format
+msgctxt "docs.chrome:a2uiCatalogDescriptions.PantokenRadioInputGroup"
+msgid "A labeled fieldset grouping related radio controls."
+msgstr "Kapcsolódó rádiógombokat csoportosító, feliratozott mezőkészlet."
+
+#: docs/.vitepress/catalog-i18n.json#a2uiCatalogDescriptions.PantokenFormFieldMessages
+#, no-c-format
+msgctxt "docs.chrome:a2uiCatalogDescriptions.PantokenFormFieldMessages"
+msgid ""
+"A Pantoken form-field-messages component with safe text and child content."
+msgstr ""
+"Biztonságos szöveget és gyermekelemeket tartalmazó Pantoken űrlapmező-"
+"üzenetek elem."
+
+#: docs/.vitepress/catalog-i18n.json#a2uiCatalogDescriptions.PantokenTextInput
+#, no-c-format
+msgctxt "docs.chrome:a2uiCatalogDescriptions.PantokenTextInput"
+msgid "A native text input with a visible label and value updates."
+msgstr "Natív szövegbeviteli mező látható címkével és értékfrissítésekkel."
+
+#: docs/.vitepress/catalog-i18n.json#a2uiCatalogDescriptions.PantokenTextArea
+#, no-c-format
+msgctxt "docs.chrome:a2uiCatalogDescriptions.PantokenTextArea"
+msgid "A native multiline text field with a visible label and value updates."
+msgstr "Natív, többsoros szövegmező látható címkével és értékfrissítésekkel."
+
+#: docs/.vitepress/catalog-i18n.json#a2uiCatalogDescriptions.PantokenSimpleSelect
+#, no-c-format
+msgctxt "docs.chrome:a2uiCatalogDescriptions.PantokenSimpleSelect"
+msgid "A labeled select control with bounded, text-only options."
+msgstr ""
+"Feliratozott választóvezérlő korlátozott számú, csak szöveget tartalmazó "
+"lehetőséggel."
+
+#: docs/.vitepress/catalog-i18n.json#a2uiCatalogDescriptions.PantokenInputGroup
+#, no-c-format
+msgctxt "docs.chrome:a2uiCatalogDescriptions.PantokenInputGroup"
+msgid "A Pantoken input-group component with safe text and child content."
+msgstr ""
+"Biztonságos szöveget és gyermekelemeket tartalmazó Pantoken beviteli csoport "
+"elem."
+
+#: docs/.vitepress/catalog-i18n.json#a2uiCatalogDescriptions.PantokenNumberInput
+#, no-c-format
+msgctxt "docs.chrome:a2uiCatalogDescriptions.PantokenNumberInput"
+msgid "A native number input with bounded values and a visible label."
+msgstr "Natív számbeviteli mező korlátozott értékekkel és látható címkével."
+
+#: docs/.vitepress/catalog-i18n.json#a2uiCatalogDescriptions.PantokenView
+#, no-c-format
+msgctxt "docs.chrome:a2uiCatalogDescriptions.PantokenView"
+msgid "A Pantoken view component with safe text and child content."
+msgstr ""
+"Biztonságos szöveget és gyermekelemeket tartalmazó Pantoken nézetkomponens."
+
+#: docs/.vitepress/catalog-i18n.json#registryBrowserItems.theme-canvas.title
+#, no-c-format
+msgctxt "docs.chrome:registryBrowserItems.theme-canvas.title"
+msgid "Canvas LMS Theme"
+msgstr "Canvas LMS-téma"
+
+#: docs/.vitepress/catalog-i18n.json#registryBrowserItems.theme-canvas.description
+#, no-c-format
+msgctxt "docs.chrome:registryBrowserItems.theme-canvas.description"
+msgid ""
+"Instructure Canvas LMS theme variables bridging to shadcn/ui custom "
+"properties."
+msgstr ""
+"Az Instructure Canvas LMS témaváltozói, amelyek a shadcn/ui egyéni "
+"tulajdonságaihoz kapcsolódnak."
+
+#: docs/.vitepress/catalog-i18n.json#registryBrowserItems.theme-canvas-high-contrast.title
+#, fuzzy, no-c-format
+msgctxt "docs.chrome:registryBrowserItems.theme-canvas-high-contrast.title"
+msgid "Canvas High Contrast Theme"
+msgstr "Canvas high contrast"
+
+#: docs/.vitepress/catalog-i18n.json#registryBrowserItems.theme-canvas-high-contrast.description
+#, no-c-format
+msgctxt ""
+"docs.chrome:registryBrowserItems.theme-canvas-high-contrast.description"
+msgid "Canvas LMS High Contrast theme variables for WCAG AAA compliance."
+msgstr "A Canvas LMS nagy kontrasztú témaváltozói a WCAG AAA-megfelelőségért."
+
+#: docs/.vitepress/catalog-i18n.json#registryBrowserItems.theme-rebrand.title
+#, no-c-format
+msgctxt "docs.chrome:registryBrowserItems.theme-rebrand.title"
+msgid "Instructure Next gen Theme"
+msgstr "Instructure új generációs téma"
+
+#: docs/.vitepress/catalog-i18n.json#registryBrowserItems.theme-rebrand.description
+#, no-c-format
+msgctxt "docs.chrome:registryBrowserItems.theme-rebrand.description"
+msgid "Modern Instructure brand theme variables."
+msgstr "Modern Instructure márkatémaváltozók."
+
+#: docs/.vitepress/catalog-i18n.json#registryBrowserItems.base.title
+#, no-c-format
+msgctxt "docs.chrome:registryBrowserItems.base.title"
+msgid "Pantoken Base System"
+msgstr "Pantoken alaprendszer"
+
+#: docs/.vitepress/catalog-i18n.json#registryBrowserItems.base.description
+#, no-c-format
+msgctxt "docs.chrome:registryBrowserItems.base.description"
+msgid ""
+"Pantoken core design token system, CSS custom properties, and semantic "
+"components."
+msgstr ""
+"A Pantoken alapvető tervezésitoken-rendszere, CSS egyéni tulajdonságai és "
+"szemantikus komponensei."
+
+#: docs/.vitepress/catalog-i18n.json#registryBrowserItems.button.title
+#, no-c-format
+msgctxt "docs.chrome:registryBrowserItems.button.title"
+msgid "Button"
+msgstr "Gomb"
+
+#: docs/.vitepress/catalog-i18n.json#registryBrowserItems.button.description
+#, no-c-format
+msgctxt "docs.chrome:registryBrowserItems.button.description"
+msgid ""
+"Instructure Button component styled with semantic .instui-button classes."
+msgstr "Instructure gombkomponens szemantikus .instui-button osztályokkal."
+
+#: docs/.vitepress/catalog-i18n.json#registryBrowserItems.card.title
+#, no-c-format
+msgctxt "docs.chrome:registryBrowserItems.card.title"
+msgid "Card"
+msgstr "Kártya"
+
+#: docs/.vitepress/catalog-i18n.json#registryBrowserItems.card.description
+#, no-c-format
+msgctxt "docs.chrome:registryBrowserItems.card.description"
+msgid "Instructure Card component styled with semantic .instui-card classes."
+msgstr "Instructure kártyakomponens szemantikus .instui-card osztályokkal."
+
+#: docs/.vitepress/catalog-i18n.json#registryBrowserItems.alert.title
+#, no-c-format
+msgctxt "docs.chrome:registryBrowserItems.alert.title"
+msgid "Alert"
+msgstr "Riasztás"
+
+#: docs/.vitepress/catalog-i18n.json#registryBrowserItems.alert.description
+#, no-c-format
+msgctxt "docs.chrome:registryBrowserItems.alert.description"
+msgid "Instructure Alert component styled with semantic .instui-alert classes."
+msgstr "Instructure riasztáskomponens szemantikus .instui-alert osztályokkal."
+
+#: docs/.vitepress/catalog-i18n.json#registryBrowserItems.badge.title
+#, no-c-format
+msgctxt "docs.chrome:registryBrowserItems.badge.title"
+msgid "Badge"
+msgstr "Jelvény"
+
+#: docs/.vitepress/catalog-i18n.json#registryBrowserItems.badge.description
+#, no-c-format
+msgctxt "docs.chrome:registryBrowserItems.badge.description"
+msgid "Instructure Badge component styled with semantic .instui-badge classes."
+msgstr "Instructure jelvénykomponens szemantikus .instui-badge osztályokkal."
+
+#: docs/.vitepress/catalog-i18n.json#registryBrowserItems.pill.title
+#, no-c-format
+msgctxt "docs.chrome:registryBrowserItems.pill.title"
+msgid "Pill"
+msgstr "Kapszula"
+
+#: docs/.vitepress/catalog-i18n.json#registryBrowserItems.pill.description
+#, no-c-format
+msgctxt "docs.chrome:registryBrowserItems.pill.description"
+msgid "Instructure Pill component styled with semantic .instui-pill classes."
+msgstr "Instructure kapszulakomponens szemantikus .instui-pill osztályokkal."
+
+#: docs/.vitepress/catalog-i18n.json#registryBrowserItems.tag.title
+#, no-c-format
+msgctxt "docs.chrome:registryBrowserItems.tag.title"
+msgid "Tag"
+msgstr "Címke"
+
+#: docs/.vitepress/catalog-i18n.json#registryBrowserItems.tag.description
+#, no-c-format
+msgctxt "docs.chrome:registryBrowserItems.tag.description"
+msgid "Instructure Tag component styled with semantic .instui-tag classes."
+msgstr "Instructure címkekomponens szemantikus .instui-tag osztályokkal."
+
+#: docs/.vitepress/catalog-i18n.json#registryBrowserItems.avatar.title
+#, no-c-format
+msgctxt "docs.chrome:registryBrowserItems.avatar.title"
+msgid "Avatar"
+msgstr "Avatár"
+
+#: docs/.vitepress/catalog-i18n.json#registryBrowserItems.avatar.description
+#, no-c-format
+msgctxt "docs.chrome:registryBrowserItems.avatar.description"
+msgid ""
+"Instructure Avatar component styled with semantic .instui-avatar classes."
+msgstr "Instructure avatárkomponens szemantikus .instui-avatar osztályokkal."
+
+#: docs/.vitepress/catalog-i18n.json#registryBrowserItems.tabs.title
+#, no-c-format
+msgctxt "docs.chrome:registryBrowserItems.tabs.title"
+msgid "Tabs"
+msgstr "Lapok"
+
+#: docs/.vitepress/catalog-i18n.json#registryBrowserItems.tabs.description
+#, no-c-format
+msgctxt "docs.chrome:registryBrowserItems.tabs.description"
+msgid "Instructure Tabs component styled with semantic .instui-tabs classes."
+msgstr "Instructure lapkomponens szemantikus .instui-tabs osztályokkal."
+
+#: docs/.vitepress/catalog-i18n.json#registryBrowserItems.metric.title
+#, no-c-format
+msgctxt "docs.chrome:registryBrowserItems.metric.title"
+msgid "Metric"
+msgstr "Mutatószám"
+
+#: docs/.vitepress/catalog-i18n.json#registryBrowserItems.metric.description
+#, no-c-format
+msgctxt "docs.chrome:registryBrowserItems.metric.description"
+msgid ""
+"Instructure Metric component styled with semantic .instui-metric classes."
+msgstr ""
+"Instructure mutatószámkomponens szemantikus .instui-metric osztályokkal."
+
+#: docs/.vitepress/catalog-i18n.json#registryBrowserItems.byline.title
+#, no-c-format
+msgctxt "docs.chrome:registryBrowserItems.byline.title"
+msgid "Byline"
+msgstr "Szerzői sor"
+
+#: docs/.vitepress/catalog-i18n.json#registryBrowserItems.byline.description
+#, no-c-format
+msgctxt "docs.chrome:registryBrowserItems.byline.description"
+msgid ""
+"Instructure Byline component styled with semantic .instui-byline classes."
+msgstr ""
+"Instructure szerzői sor komponens szemantikus .instui-byline osztályokkal."
+
+#: docs/.vitepress/catalog-i18n.json#registryBrowserItems.img.title
+#, no-c-format
+msgctxt "docs.chrome:registryBrowserItems.img.title"
+msgid "Img"
+msgstr "Kép"
+
+#: docs/.vitepress/catalog-i18n.json#registryBrowserItems.img.description
+#, no-c-format
+msgctxt "docs.chrome:registryBrowserItems.img.description"
+msgid "Instructure Img component styled with semantic .instui-img classes."
+msgstr "Instructure képkomponens szemantikus .instui-img osztályokkal."
+
+#: docs/.vitepress/catalog-i18n.json#registryBrowserItems.table.title
+#, no-c-format
+msgctxt "docs.chrome:registryBrowserItems.table.title"
+msgid "Table"
+msgstr "Táblázat"
+
+#: docs/.vitepress/catalog-i18n.json#registryBrowserItems.table.description
+#, no-c-format
+msgctxt "docs.chrome:registryBrowserItems.table.description"
+msgid "Instructure Table component styled with semantic .instui-table classes."
+msgstr "Instructure táblázatkomponens szemantikus .instui-table osztályokkal."
+
+#: docs/.vitepress/catalog-i18n.json#registryBrowserItems.link.title
+#, no-c-format
+msgctxt "docs.chrome:registryBrowserItems.link.title"
+msgid "Link"
+msgstr "Hivatkozás"
+
+#: docs/.vitepress/catalog-i18n.json#registryBrowserItems.link.description
+#, no-c-format
+msgctxt "docs.chrome:registryBrowserItems.link.description"
+msgid "Instructure Link component styled with semantic .instui-link classes."
+msgstr "Instructure hivatkozáskomponens szemantikus .instui-link osztályokkal."
+
+#: docs/.vitepress/catalog-i18n.json#registryBrowserItems.list.title
+#, no-c-format
+msgctxt "docs.chrome:registryBrowserItems.list.title"
+msgid "List"
+msgstr "Lista"
+
+#: docs/.vitepress/catalog-i18n.json#registryBrowserItems.list.description
+#, no-c-format
+msgctxt "docs.chrome:registryBrowserItems.list.description"
+msgid "Instructure List component styled with semantic .instui-list classes."
+msgstr "Instructure listakomponens szemantikus .instui-list osztályokkal."
+
+#: docs/.vitepress/catalog-i18n.json#registryBrowserItems.icon.title
+#, no-c-format
+msgctxt "docs.chrome:registryBrowserItems.icon.title"
+msgid "Icon"
+msgstr "Ikon"
+
+#: docs/.vitepress/catalog-i18n.json#registryBrowserItems.icon.description
+#, no-c-format
+msgctxt "docs.chrome:registryBrowserItems.icon.description"
+msgid "Instructure Icon component styled with semantic .instui-icon classes."
+msgstr "Instructure ikonkomponens szemantikus .instui-icon osztályokkal."
+
+#: docs/.vitepress/catalog-i18n.json#registryBrowserItems.checkbox.title
+#, no-c-format
+msgctxt "docs.chrome:registryBrowserItems.checkbox.title"
+msgid "Checkbox"
+msgstr "Jelölőnégyzet"
+
+#: docs/.vitepress/catalog-i18n.json#registryBrowserItems.checkbox.description
+#, no-c-format
+msgctxt "docs.chrome:registryBrowserItems.checkbox.description"
+msgid ""
+"Instructure Checkbox component styled with semantic .instui-checkbox classes."
+msgstr ""
+"Instructure jelölőnégyzet-komponens szemantikus .instui-checkbox "
+"osztályokkal."
+
+#: docs/.vitepress/catalog-i18n.json#registryBrowserItems.radio.title
+#, no-c-format
+msgctxt "docs.chrome:registryBrowserItems.radio.title"
+msgid "Radio"
+msgstr "Rádiógomb"
+
+#: docs/.vitepress/catalog-i18n.json#registryBrowserItems.radio.description
+#, no-c-format
+msgctxt "docs.chrome:registryBrowserItems.radio.description"
+msgid "Instructure Radio component styled with semantic .instui-radio classes."
+msgstr ""
+"Instructure rádiógomb-komponens szemantikus .instui-radio osztályokkal."
+
+#: docs/.vitepress/catalog-i18n.json#registryBrowserItems.spinner.title
+#, fuzzy, no-c-format
+msgctxt "docs.chrome:registryBrowserItems.spinner.title"
+msgid "Spinner"
+msgstr "Futtató"
+
+#: docs/.vitepress/catalog-i18n.json#registryBrowserItems.spinner.description
+#, no-c-format
+msgctxt "docs.chrome:registryBrowserItems.spinner.description"
+msgid ""
+"Instructure Spinner component styled with semantic .instui-spinner classes."
+msgstr ""
+"Instructure betöltésjelző komponens szemantikus .instui-spinner osztályokkal."
+
+#: docs/.vitepress/catalog-i18n.json#registryBrowserItems.progress.title
+#, no-c-format
+msgctxt "docs.chrome:registryBrowserItems.progress.title"
+msgid "Progress"
+msgstr "Folyamatjelző"
+
+#: docs/.vitepress/catalog-i18n.json#registryBrowserItems.progress.description
+#, no-c-format
+msgctxt "docs.chrome:registryBrowserItems.progress.description"
+msgid ""
+"Instructure Progress component styled with semantic .instui-progress classes."
+msgstr ""
+"Instructure folyamatjelző komponens szemantikus .instui-progress "
+"osztályokkal."
+
+#: docs/.vitepress/catalog-i18n.json#registryBrowserItems.menu.title
+#, fuzzy, no-c-format
+msgctxt "docs.chrome:registryBrowserItems.menu.title"
+msgid "Menu"
+msgstr "Menü"
+
+#: docs/.vitepress/catalog-i18n.json#registryBrowserItems.menu.description
+#, no-c-format
+msgctxt "docs.chrome:registryBrowserItems.menu.description"
+msgid "Instructure Menu component styled with semantic .instui-menu classes."
+msgstr "Instructure menükomponens szemantikus .instui-menu osztályokkal."
+
+#: docs/.vitepress/catalog-i18n.json#registryBrowserItems.modal.title
+#, no-c-format
+msgctxt "docs.chrome:registryBrowserItems.modal.title"
+msgid "Modal"
+msgstr "Modális ablak"
+
+#: docs/.vitepress/catalog-i18n.json#registryBrowserItems.modal.description
+#, no-c-format
+msgctxt "docs.chrome:registryBrowserItems.modal.description"
+msgid "Instructure Modal component styled with semantic .instui-modal classes."
+msgstr ""
+"Instructure modális ablak komponens szemantikus .instui-modal osztályokkal."
+
+#: docs/.vitepress/catalog-i18n.json#registryBrowserItems.breadcrumb.title
+#, no-c-format
+msgctxt "docs.chrome:registryBrowserItems.breadcrumb.title"
+msgid "Breadcrumb"
+msgstr "Morzsamenü"
+
+#: docs/.vitepress/catalog-i18n.json#registryBrowserItems.breadcrumb.description
+#, no-c-format
+msgctxt "docs.chrome:registryBrowserItems.breadcrumb.description"
+msgid ""
+"Instructure Breadcrumb component styled with semantic .instui-breadcrumb "
+"classes."
+msgstr ""
+"Instructure morzsamenü-komponens szemantikus .instui-breadcrumb osztályokkal."
+
+#: docs/.vitepress/catalog-i18n.json#registryBrowserItems.billboard.title
+#, no-c-format
+msgctxt "docs.chrome:registryBrowserItems.billboard.title"
+msgid "Billboard"
+msgstr "Reklámtábla"
+
+#: docs/.vitepress/catalog-i18n.json#registryBrowserItems.billboard.description
+#, no-c-format
+msgctxt "docs.chrome:registryBrowserItems.billboard.description"
+msgid ""
+"Instructure Billboard component styled with semantic .instui-billboard "
+"classes."
+msgstr ""
+"Instructure reklámtábla-komponens szemantikus .instui-billboard osztályokkal."
+
+#: docs/.vitepress/catalog-i18n.json#registryBrowserItems.rating.title
+#, no-c-format
+msgctxt "docs.chrome:registryBrowserItems.rating.title"
+msgid "Rating"
+msgstr "Értékelés"
+
+#: docs/.vitepress/catalog-i18n.json#registryBrowserItems.rating.description
+#, no-c-format
+msgctxt "docs.chrome:registryBrowserItems.rating.description"
+msgid ""
+"Instructure Rating component styled with semantic .instui-rating classes."
+msgstr ""
+"Instructure értékeléskomponens szemantikus .instui-rating osztályokkal."
+
+#: docs/.vitepress/catalog-i18n.json#registryBrowserItems.toggle-group.title
+#, no-c-format
+msgctxt "docs.chrome:registryBrowserItems.toggle-group.title"
+msgid "Toggle-group"
+msgstr "Kapcsolócsoport"
+
+#: docs/.vitepress/catalog-i18n.json#registryBrowserItems.toggle-group.description
+#, no-c-format
+msgctxt "docs.chrome:registryBrowserItems.toggle-group.description"
+msgid ""
+"Instructure Toggle-group component styled with semantic .instui-toggle-group "
+"classes."
+msgstr ""
+"Instructure kapcsolócsoport-komponens szemantikus .instui-toggle-group "
+"osztályokkal."
+
+#: docs/.vitepress/catalog-i18n.json#registryBrowserItems.context-view.title
+#, no-c-format
+msgctxt "docs.chrome:registryBrowserItems.context-view.title"
+msgid "Context-view"
+msgstr "Kontextusnézet"
+
+#: docs/.vitepress/catalog-i18n.json#registryBrowserItems.context-view.description
+#, no-c-format
+msgctxt "docs.chrome:registryBrowserItems.context-view.description"
+msgid ""
+"Instructure Context-view component styled with semantic .instui-context-view "
+"classes."
+msgstr ""
+"Instructure kontextusnézet-komponens szemantikus .instui-context-view "
+"osztályokkal."
+
+#: docs/.vitepress/catalog-i18n.json#registryBrowserItems.drawer-layout.title
+#, no-c-format
+msgctxt "docs.chrome:registryBrowserItems.drawer-layout.title"
+msgid "Drawer-layout"
+msgstr "Oldalsó panel elrendezése"
+
+#: docs/.vitepress/catalog-i18n.json#registryBrowserItems.drawer-layout.description
+#, no-c-format
+msgctxt "docs.chrome:registryBrowserItems.drawer-layout.description"
+msgid ""
+"Instructure Drawer-layout component styled with semantic .instui-drawer-"
+"layout classes."
+msgstr ""
+"Instructure oldalsó panel elrendezéskomponens szemantikus .instui-drawer-"
+"layout osztályokkal."
+
+#: docs/.vitepress/catalog-i18n.json#registryBrowserItems.progress-circle.title
+#, no-c-format
+msgctxt "docs.chrome:registryBrowserItems.progress-circle.title"
+msgid "Progress-circle"
+msgstr "Kör alakú folyamatjelző"
+
+#: docs/.vitepress/catalog-i18n.json#registryBrowserItems.progress-circle.description
+#, no-c-format
+msgctxt "docs.chrome:registryBrowserItems.progress-circle.description"
+msgid ""
+"Instructure Progress-circle component styled with semantic .instui-progress-"
+"circle classes."
+msgstr ""
+"Instructure kör alakú folyamatjelző komponens szemantikus .instui-progress-"
+"circle osztályokkal."
+
+#: docs/.vitepress/catalog-i18n.json#registryBrowserItems.pagination.title
+#, fuzzy, no-c-format
+msgctxt "docs.chrome:registryBrowserItems.pagination.title"
+msgid "Pagination"
+msgstr "Animáció szüneteltetése"
+
+#: docs/.vitepress/catalog-i18n.json#registryBrowserItems.pagination.description
+#, no-c-format
+msgctxt "docs.chrome:registryBrowserItems.pagination.description"
+msgid ""
+"Instructure Pagination component styled with semantic .instui-pagination "
+"classes."
+msgstr ""
+"Instructure lapozókomponens szemantikus .instui-pagination osztályokkal."
+
+#: docs/.vitepress/catalog-i18n.json#registryBrowserItems.toggle-details.title
+#, fuzzy, no-c-format
+msgctxt "docs.chrome:registryBrowserItems.toggle-details.title"
+msgid "Toggle-details"
+msgstr "Oldalsáv váltása"
+
+#: docs/.vitepress/catalog-i18n.json#registryBrowserItems.toggle-details.description
+#, no-c-format
+msgctxt "docs.chrome:registryBrowserItems.toggle-details.description"
+msgid ""
+"Instructure Toggle-details component styled with semantic .instui-toggle-"
+"details classes."
+msgstr ""
+"Instructure részletek kapcsoló komponens szemantikus .instui-toggle-details "
+"osztályokkal."
+
+#: docs/.vitepress/catalog-i18n.json#registryBrowserItems.file-drop.title
+#, no-c-format
+msgctxt "docs.chrome:registryBrowserItems.file-drop.title"
+msgid "File-drop"
+msgstr "Fájlbehúzás"
+
+#: docs/.vitepress/catalog-i18n.json#registryBrowserItems.file-drop.description
+#, no-c-format
+msgctxt "docs.chrome:registryBrowserItems.file-drop.description"
+msgid ""
+"Instructure File-drop component styled with semantic .instui-file-drop "
+"classes."
+msgstr ""
+"Instructure fájlbehúzó komponens szemantikus .instui-file-drop osztályokkal."
+
+#: docs/.vitepress/catalog-i18n.json#registryBrowserItems.side-nav-bar.title
+#, no-c-format
+msgctxt "docs.chrome:registryBrowserItems.side-nav-bar.title"
+msgid "Side-nav-bar"
+msgstr "Oldalsó navigációs sáv"
+
+#: docs/.vitepress/catalog-i18n.json#registryBrowserItems.side-nav-bar.description
+#, no-c-format
+msgctxt "docs.chrome:registryBrowserItems.side-nav-bar.description"
+msgid ""
+"Instructure Side-nav-bar component styled with semantic .instui-side-nav-bar "
+"classes."
+msgstr ""
+"Instructure oldalsó navigációssáv-komponens szemantikus .instui-side-nav-bar "
+"osztályokkal."
+
+#: docs/.vitepress/catalog-i18n.json#registryBrowserItems.tree-browser.title
+#, no-c-format
+msgctxt "docs.chrome:registryBrowserItems.tree-browser.title"
+msgid "Tree-browser"
+msgstr "Fastruktúra-böngésző"
+
+#: docs/.vitepress/catalog-i18n.json#registryBrowserItems.tree-browser.description
+#, no-c-format
+msgctxt "docs.chrome:registryBrowserItems.tree-browser.description"
+msgid ""
+"Instructure Tree-browser component styled with semantic .instui-tree-browser "
+"classes."
+msgstr ""
+"Instructure fastruktúra-böngésző komponens szemantikus .instui-tree-browser "
+"osztályokkal."
+
+#: docs/.vitepress/catalog-i18n.json#registryBrowserItems.calendar.title
+#, no-c-format
+msgctxt "docs.chrome:registryBrowserItems.calendar.title"
+msgid "Calendar"
+msgstr "Naptár"
+
+#: docs/.vitepress/catalog-i18n.json#registryBrowserItems.calendar.description
+#, no-c-format
+msgctxt "docs.chrome:registryBrowserItems.calendar.description"
+msgid ""
+"Instructure Calendar component styled with semantic .instui-calendar classes."
+msgstr ""
+"Instructure Calendar komponens szemantikus .instui-calendar osztályokkal "
+"formázva."
+
+#: docs/.vitepress/catalog-i18n.json#registryBrowserItems.popover.title
+#, no-c-format
+msgctxt "docs.chrome:registryBrowserItems.popover.title"
+msgid "Popover"
+msgstr "Felugró ablak"
+
+#: docs/.vitepress/catalog-i18n.json#registryBrowserItems.popover.description
+#, no-c-format
+msgctxt "docs.chrome:registryBrowserItems.popover.description"
+msgid ""
+"Instructure Popover component styled with semantic .instui-popover classes."
+msgstr ""
+"Instructure Popover komponens szemantikus .instui-popover osztályokkal "
+"formázva."
+
+#: docs/.vitepress/catalog-i18n.json#registryBrowserItems.tray.title
+#, no-c-format
+msgctxt "docs.chrome:registryBrowserItems.tray.title"
+msgid "Tray"
+msgstr "Tálca"
+
+#: docs/.vitepress/catalog-i18n.json#registryBrowserItems.tray.description
+#, no-c-format
+msgctxt "docs.chrome:registryBrowserItems.tray.description"
+msgid "Instructure Tray component styled with semantic .instui-tray classes."
+msgstr ""
+"Instructure Tray komponens szemantikus .instui-tray osztályokkal formázva."
+
+#: docs/.vitepress/catalog-i18n.json#registryBrowserItems.tooltip.title
+#, fuzzy, no-c-format
+msgctxt "docs.chrome:registryBrowserItems.tooltip.title"
+msgid "Tooltip"
+msgstr "Eszközök"
+
+#: docs/.vitepress/catalog-i18n.json#registryBrowserItems.tooltip.description
+#, no-c-format
+msgctxt "docs.chrome:registryBrowserItems.tooltip.description"
+msgid ""
+"Instructure Tooltip component styled with semantic .instui-tooltip classes."
+msgstr ""
+"Instructure Tooltip komponens szemantikus .instui-tooltip osztályokkal "
+"formázva."
+
+#: docs/.vitepress/catalog-i18n.json#registryBrowserItems.range-input.title
+#, no-c-format
+msgctxt "docs.chrome:registryBrowserItems.range-input.title"
+msgid "Range-input"
+msgstr "Tartománybemenet"
+
+#: docs/.vitepress/catalog-i18n.json#registryBrowserItems.range-input.description
+#, no-c-format
+msgctxt "docs.chrome:registryBrowserItems.range-input.description"
+msgid ""
+"Instructure Range-input component styled with semantic .instui-range-input "
+"classes."
+msgstr ""
+"Instructure Range-input komponens szemantikus .instui-range-input "
+"osztályokkal formázva."
+
+#: docs/.vitepress/catalog-i18n.json#registryBrowserItems.mask.title
+#, no-c-format
+msgctxt "docs.chrome:registryBrowserItems.mask.title"
+msgid "Mask"
+msgstr "Maszk"
+
+#: docs/.vitepress/catalog-i18n.json#registryBrowserItems.mask.description
+#, no-c-format
+msgctxt "docs.chrome:registryBrowserItems.mask.description"
+msgid "Instructure Mask component styled with semantic .instui-mask classes."
+msgstr ""
+"Instructure Mask komponens szemantikus .instui-mask osztályokkal formázva."
+
+#: docs/.vitepress/catalog-i18n.json#registryBrowserItems.screen-reader-content.title
+#, no-c-format
+msgctxt "docs.chrome:registryBrowserItems.screen-reader-content.title"
+msgid "Screen-reader-content"
+msgstr "Képernyőolvasó-tartalom"
+
+#: docs/.vitepress/catalog-i18n.json#registryBrowserItems.screen-reader-content.description
+#, no-c-format
+msgctxt "docs.chrome:registryBrowserItems.screen-reader-content.description"
+msgid ""
+"Instructure Screen-reader-content component styled with semantic .instui-"
+"screen-reader-content classes."
+msgstr ""
+"Instructure Screen-reader-content komponens szemantikus .instui-screen-"
+"reader-content osztályokkal formázva."
+
+#: docs/.vitepress/catalog-i18n.json#registryBrowserItems.heading.title
+#, no-c-format
+msgctxt "docs.chrome:registryBrowserItems.heading.title"
+msgid "Heading"
+msgstr "Címsor"
+
+#: docs/.vitepress/catalog-i18n.json#registryBrowserItems.heading.description
+#, no-c-format
+msgctxt "docs.chrome:registryBrowserItems.heading.description"
+msgid ""
+"Instructure Heading component styled with semantic .instui-heading classes."
+msgstr ""
+"Instructure Heading komponens szemantikus .instui-heading osztályokkal "
+"formázva."
+
+#: docs/.vitepress/catalog-i18n.json#registryBrowserItems.text.title
+#, no-c-format
+msgctxt "docs.chrome:registryBrowserItems.text.title"
+msgid "Text"
+msgstr "Szöveg"
+
+#: docs/.vitepress/catalog-i18n.json#registryBrowserItems.text.description
+#, no-c-format
+msgctxt "docs.chrome:registryBrowserItems.text.description"
+msgid "Instructure Text component styled with semantic .instui-text classes."
+msgstr ""
+"Instructure Text komponens szemantikus .instui-text osztályokkal formázva."
+
+#: docs/.vitepress/catalog-i18n.json#registryBrowserItems.close-button.title
+#, no-c-format
+msgctxt "docs.chrome:registryBrowserItems.close-button.title"
+msgid "Close-button"
+msgstr "Bezárógomb"
+
+#: docs/.vitepress/catalog-i18n.json#registryBrowserItems.close-button.description
+#, no-c-format
+msgctxt "docs.chrome:registryBrowserItems.close-button.description"
+msgid ""
+"Instructure Close-button component styled with semantic .instui-close-button "
+"classes."
+msgstr ""
+"Instructure Close-button komponens szemantikus .instui-close-button "
+"osztályokkal formázva."
+
+#: docs/.vitepress/catalog-i18n.json#registryBrowserItems.form-field.title
+#, no-c-format
+msgctxt "docs.chrome:registryBrowserItems.form-field.title"
+msgid "Form-field"
+msgstr "Űrlapmező"
+
+#: docs/.vitepress/catalog-i18n.json#registryBrowserItems.form-field.description
+#, no-c-format
+msgctxt "docs.chrome:registryBrowserItems.form-field.description"
+msgid ""
+"Instructure Form-field component styled with semantic .instui-form-field "
+"classes."
+msgstr ""
+"Instructure Form-field komponens szemantikus .instui-form-field osztályokkal "
+"formázva."
+
+#: docs/.vitepress/catalog-i18n.json#registryBrowserItems.form-field-group.title
+#, no-c-format
+msgctxt "docs.chrome:registryBrowserItems.form-field-group.title"
+msgid "Form-field-group"
+msgstr "Űrlapmező-csoport"
+
+#: docs/.vitepress/catalog-i18n.json#registryBrowserItems.form-field-group.description
+#, no-c-format
+msgctxt "docs.chrome:registryBrowserItems.form-field-group.description"
+msgid ""
+"Instructure Form-field-group component styled with semantic .instui-form-"
+"field-group classes."
+msgstr ""
+"Instructure Form-field-group komponens szemantikus .instui-form-field-group "
+"osztályokkal formázva."
+
+#: docs/.vitepress/catalog-i18n.json#registryBrowserItems.radio-input-group.title
+#, no-c-format
+msgctxt "docs.chrome:registryBrowserItems.radio-input-group.title"
+msgid "Radio-input-group"
+msgstr "Rádiógomb-csoport"
+
+#: docs/.vitepress/catalog-i18n.json#registryBrowserItems.radio-input-group.description
+#, no-c-format
+msgctxt "docs.chrome:registryBrowserItems.radio-input-group.description"
+msgid ""
+"Instructure Radio-input-group component styled with semantic .instui-radio-"
+"input-group classes."
+msgstr ""
+"Instructure Radio-input-group komponens szemantikus .instui-radio-input-"
+"group osztályokkal formázva."
+
+#: docs/.vitepress/catalog-i18n.json#registryBrowserItems.form-field-messages.title
+#, no-c-format
+msgctxt "docs.chrome:registryBrowserItems.form-field-messages.title"
+msgid "Form-field-messages"
+msgstr "Űrlapmező-üzenetek"
+
+#: docs/.vitepress/catalog-i18n.json#registryBrowserItems.form-field-messages.description
+#, no-c-format
+msgctxt "docs.chrome:registryBrowserItems.form-field-messages.description"
+msgid ""
+"Instructure Form-field-messages component styled with semantic .instui-form-"
+"field-messages classes."
+msgstr ""
+"Instructure Form-field-messages komponens szemantikus .instui-form-field-"
+"messages osztályokkal formázva."
+
+#: docs/.vitepress/catalog-i18n.json#registryBrowserItems.text-input.title
+#, no-c-format
+msgctxt "docs.chrome:registryBrowserItems.text-input.title"
+msgid "Text-input"
+msgstr "Szövegmező"
+
+#: docs/.vitepress/catalog-i18n.json#registryBrowserItems.text-input.description
+#, no-c-format
+msgctxt "docs.chrome:registryBrowserItems.text-input.description"
+msgid ""
+"Instructure Text-input component styled with semantic .instui-text-input "
+"classes."
+msgstr ""
+"Instructure Text-input komponens szemantikus .instui-text-input osztályokkal "
+"formázva."
+
+#: docs/.vitepress/catalog-i18n.json#registryBrowserItems.text-area.title
+#, no-c-format
+msgctxt "docs.chrome:registryBrowserItems.text-area.title"
+msgid "Text-area"
+msgstr "Szövegterület"
+
+#: docs/.vitepress/catalog-i18n.json#registryBrowserItems.text-area.description
+#, no-c-format
+msgctxt "docs.chrome:registryBrowserItems.text-area.description"
+msgid ""
+"Instructure Text-area component styled with semantic .instui-text-area "
+"classes."
+msgstr ""
+"Instructure Text-area komponens szemantikus .instui-text-area osztályokkal "
+"formázva."
+
+#: docs/.vitepress/catalog-i18n.json#registryBrowserItems.simple-select.title
+#, no-c-format
+msgctxt "docs.chrome:registryBrowserItems.simple-select.title"
+msgid "Simple-select"
+msgstr "Egyszerű választó"
+
+#: docs/.vitepress/catalog-i18n.json#registryBrowserItems.simple-select.description
+#, no-c-format
+msgctxt "docs.chrome:registryBrowserItems.simple-select.description"
+msgid ""
+"Instructure Simple-select component styled with semantic .instui-simple-"
+"select classes."
+msgstr ""
+"Instructure Simple-select komponens szemantikus .instui-simple-select "
+"osztályokkal formázva."
+
+#: docs/.vitepress/catalog-i18n.json#registryBrowserItems.input-group.title
+#, no-c-format
+msgctxt "docs.chrome:registryBrowserItems.input-group.title"
+msgid "Input-group"
+msgstr "Bemenetcsoport"
+
+#: docs/.vitepress/catalog-i18n.json#registryBrowserItems.input-group.description
+#, no-c-format
+msgctxt "docs.chrome:registryBrowserItems.input-group.description"
+msgid ""
+"Instructure Input-group component styled with semantic .instui-input-group "
+"classes."
+msgstr ""
+"Instructure Input-group komponens szemantikus .instui-input-group "
+"osztályokkal formázva."
+
+#: docs/.vitepress/catalog-i18n.json#registryBrowserItems.number-input.title
+#, no-c-format
+msgctxt "docs.chrome:registryBrowserItems.number-input.title"
+msgid "Number-input"
+msgstr "Számmező"
+
+#: docs/.vitepress/catalog-i18n.json#registryBrowserItems.number-input.description
+#, no-c-format
+msgctxt "docs.chrome:registryBrowserItems.number-input.description"
+msgid ""
+"Instructure Number-input component styled with semantic .instui-number-input "
+"classes."
+msgstr ""
+"Instructure Number-input komponens szemantikus .instui-number-input "
+"osztályokkal formázva."
+
+#: docs/.vitepress/catalog-i18n.json#registryBrowserItems.in-place-edit.title
+#, no-c-format
+msgctxt "docs.chrome:registryBrowserItems.in-place-edit.title"
+msgid "In-place-edit"
+msgstr "Helyben szerkesztés"
+
+#: docs/.vitepress/catalog-i18n.json#registryBrowserItems.in-place-edit.description
+#, no-c-format
+msgctxt "docs.chrome:registryBrowserItems.in-place-edit.description"
+msgid ""
+"Instructure In-place-edit component styled with semantic .instui-in-place-"
+"edit classes."
+msgstr ""
+"Instructure In-place-edit komponens szemantikus .instui-in-place-edit "
+"osztályokkal formázva."
+
+#: docs/.vitepress/catalog-i18n.json#registryBrowserItems.view.title
+#, no-c-format
+msgctxt "docs.chrome:registryBrowserItems.view.title"
+msgid "View"
+msgstr "Nézet"
+
+#: docs/.vitepress/catalog-i18n.json#registryBrowserItems.view.description
+#, no-c-format
+msgctxt "docs.chrome:registryBrowserItems.view.description"
+msgid "Instructure View component styled with semantic .instui-view classes."
+msgstr ""
+"Instructure View komponens szemantikus .instui-view osztályokkal formázva."
+
+#: docs/.vitepress/catalog-i18n.json#registryBrowserItems.banner.title
+#, fuzzy, no-c-format
+msgctxt "docs.chrome:registryBrowserItems.banner.title"
+msgid "Banner"
+msgstr "Futtató"
+
+#: docs/.vitepress/catalog-i18n.json#registryBrowserItems.banner.description
+#, no-c-format
+msgctxt "docs.chrome:registryBrowserItems.banner.description"
+msgid "Pantoken banner component styles and documented HTML structure."
+msgstr ""
+"A Pantoken bannerkomponensének stílusai és dokumentált HTML-struktúrája."
+
+#: docs/.vitepress/catalog-i18n.json#registryBrowserItems.agent-shell.title
+#, fuzzy, no-c-format
+msgctxt "docs.chrome:registryBrowserItems.agent-shell.title"
+msgid "Agent Shell"
+msgstr "Eszközök"
+
+#: docs/.vitepress/catalog-i18n.json#registryBrowserItems.agent-shell.description
+#, no-c-format
+msgctxt "docs.chrome:registryBrowserItems.agent-shell.description"
+msgid "Pantoken agent-shell component styles and documented HTML structure."
+msgstr ""
+"A Pantoken agent-shell komponensének stílusai és dokumentált HTML-"
+"struktúrája."
+
+#: docs/.vitepress/catalog-i18n.json#registryBrowserItems.skeleton-loader.title
+#, no-c-format
+msgctxt "docs.chrome:registryBrowserItems.skeleton-loader.title"
+msgid "Skeleton Loader"
+msgstr "Vázlatbetöltő"
+
+#: docs/.vitepress/catalog-i18n.json#registryBrowserItems.skeleton-loader.description
+#, no-c-format
+msgctxt "docs.chrome:registryBrowserItems.skeleton-loader.description"
+msgid ""
+"Pantoken skeleton-loader component styles and documented HTML structure."
+msgstr ""
+"A Pantoken skeleton-loader komponensének stílusai és dokumentált HTML-"
+"struktúrája."
+
+#: docs/.vitepress/catalog-i18n.json#registryBrowserItems.segmented-control.title
+#, no-c-format
+msgctxt "docs.chrome:registryBrowserItems.segmented-control.title"
+msgid "Segmented Control"
+msgstr "Szegmentált vezérlő"
+
+#: docs/.vitepress/catalog-i18n.json#registryBrowserItems.segmented-control.description
+#, no-c-format
+msgctxt "docs.chrome:registryBrowserItems.segmented-control.description"
+msgid ""
+"Pantoken segmented-control component styles and documented HTML structure."
+msgstr ""
+"A Pantoken segmented-control komponensének stílusai és dokumentált HTML-"
+"struktúrája."
+
+#: docs/.vitepress/catalog-i18n.json#registryBrowserItems.wrapper.title
+#, no-c-format
+msgctxt "docs.chrome:registryBrowserItems.wrapper.title"
+msgid "Wrapper Layout"
+msgstr "Burkolóelrendezés"
+
+#: docs/.vitepress/catalog-i18n.json#registryBrowserItems.wrapper.description
+#, no-c-format
+msgctxt "docs.chrome:registryBrowserItems.wrapper.description"
+msgid "Pantoken wrapper layout styles and canonical HTML template."
+msgstr "A Pantoken burkolóelrendezésének stílusai és kanonikus HTML-sablonja."
+
+#: docs/.vitepress/catalog-i18n.json#registryBrowserItems.callout.title
+#, no-c-format
+msgctxt "docs.chrome:registryBrowserItems.callout.title"
+msgid "Callout Layout"
+msgstr "Kiemelő elrendezés"
+
+#: docs/.vitepress/catalog-i18n.json#registryBrowserItems.callout.description
+#, no-c-format
+msgctxt "docs.chrome:registryBrowserItems.callout.description"
+msgid "Pantoken callout layout styles and canonical HTML template."
+msgstr "A Pantoken kiemelő elrendezésének stílusai és kanonikus HTML-sablonja."
+
+#: docs/.vitepress/catalog-i18n.json#registryBrowserItems.hero.title
+#, no-c-format
+msgctxt "docs.chrome:registryBrowserItems.hero.title"
+msgid "Hero Layout"
+msgstr "Kiemelt elrendezés"
+
+#: docs/.vitepress/catalog-i18n.json#registryBrowserItems.hero.description
+#, no-c-format
+msgctxt "docs.chrome:registryBrowserItems.hero.description"
+msgid "Pantoken hero layout styles and canonical HTML template."
+msgstr "A Pantoken kiemelt elrendezésének stílusai és kanonikus HTML-sablonja."
+
+#: docs/.vitepress/catalog-i18n.json#registryBrowserItems.page-layout.title
+#, no-c-format
+msgctxt "docs.chrome:registryBrowserItems.page-layout.title"
+msgid "Page Layout Layout"
+msgstr "Oldalelrendezés"
+
+#: docs/.vitepress/catalog-i18n.json#registryBrowserItems.page-layout.description
+#, no-c-format
+msgctxt "docs.chrome:registryBrowserItems.page-layout.description"
+msgid "Pantoken page-layout layout styles and canonical HTML template."
+msgstr "A Pantoken oldalelrendezésének stílusai és kanonikus HTML-sablonja."
+
+#: docs/.vitepress/catalog-i18n.json#registryBrowserItems.rubric-note.title
+#, no-c-format
+msgctxt "docs.chrome:registryBrowserItems.rubric-note.title"
+msgid "Rubric Note Layout"
+msgstr "Értékelési szempont megjegyzésének elrendezése"
+
+#: docs/.vitepress/catalog-i18n.json#registryBrowserItems.rubric-note.description
+#, no-c-format
+msgctxt "docs.chrome:registryBrowserItems.rubric-note.description"
+msgid "Pantoken rubric-note layout styles and canonical HTML template."
+msgstr ""
+"A Pantoken értékelési szempont megjegyzése elrendezésének stílusai és "
+"kanonikus HTML-sablonja."
+
+#: docs/.vitepress/catalog-i18n.json#registryBrowserItems.testimonial.title
+#, no-c-format
+msgctxt "docs.chrome:registryBrowserItems.testimonial.title"
+msgid "Testimonial Layout"
+msgstr "Ajánláselrendezés"
+
+#: docs/.vitepress/catalog-i18n.json#registryBrowserItems.testimonial.description
+#, no-c-format
+msgctxt "docs.chrome:registryBrowserItems.testimonial.description"
+msgid "Pantoken testimonial layout styles and canonical HTML template."
+msgstr "A Pantoken ajánláselrendezésének stílusai és kanonikus HTML-sablonja."
+
+#: docs/.vitepress/catalog-i18n.json#registryBrowserItems.two-column.title
+#, no-c-format
+msgctxt "docs.chrome:registryBrowserItems.two-column.title"
+msgid "Two Column Layout"
+msgstr "Kétoszlopos elrendezés"
+
+#: docs/.vitepress/catalog-i18n.json#registryBrowserItems.two-column.description
+#, no-c-format
+msgctxt "docs.chrome:registryBrowserItems.two-column.description"
+msgid "Pantoken two-column layout styles and canonical HTML template."
+msgstr ""
+"A Pantoken kétoszlopos elrendezésének stílusai és kanonikus HTML-sablonja."
+
+#: docs/.vitepress/catalog-i18n.json#registryBrowserItems.custom-icons.title
+#, no-c-format
+msgctxt "docs.chrome:registryBrowserItems.custom-icons.title"
+msgid "Pantoken Custom Icons"
+msgstr "Pantoken egyéni ikonok"
+
+#: docs/.vitepress/catalog-i18n.json#registryBrowserItems.custom-icons.description
+#, no-c-format
+msgctxt "docs.chrome:registryBrowserItems.custom-icons.description"
+msgid "Pantoken's curated custom icon tokens for the shared -icon-* painter."
+msgstr ""
+"A Pantoken gondosan összeválogatott egyéni ikontokenjei a megosztott -icon-* "
+"megjelenítőhöz."
+
+#: docs/.vitepress/catalog-i18n.json#registryBrowserItems.simple-icons.title
+#, no-c-format
+msgctxt "docs.chrome:registryBrowserItems.simple-icons.title"
+msgid "Simple Icons"
+msgstr "Simple Icons"
+
+#: docs/.vitepress/catalog-i18n.json#registryBrowserItems.simple-icons.description
+#, no-c-format
+msgctxt "docs.chrome:registryBrowserItems.simple-icons.description"
+msgid "The complete Simple Icons brand-glyph token collection."
+msgstr "A Simple Icons márkajelképeket tartalmazó tokenek teljes gyűjteménye."
+
+#: docs/.vitepress/catalog-i18n.json#registryBrowserItems.logos.title
+#, no-c-format
+msgctxt "docs.chrome:registryBrowserItems.logos.title"
+msgid "Instructure Product Logos"
+msgstr "Instructure terméklogók"
+
+#: docs/.vitepress/catalog-i18n.json#registryBrowserItems.logos.description
+#, no-c-format
+msgctxt "docs.chrome:registryBrowserItems.logos.description"
+msgid "All Instructure product logo image tokens."
+msgstr "Az Instructure-terméklogók összes képtokenje."
+
+#: docs/.vitepress/catalog-i18n.json#registryBrowserItems.logo-canvas.title
+#, fuzzy, no-c-format
+msgctxt "docs.chrome:registryBrowserItems.logo-canvas.title"
+msgid "Canvas Logos"
+msgstr "Canvas"
+
+#: docs/.vitepress/catalog-i18n.json#registryBrowserItems.logo-canvas.description
+#, no-c-format
+msgctxt "docs.chrome:registryBrowserItems.logo-canvas.description"
+msgid "Logo image tokens for canvas."
+msgstr "A Canvas logóképeinek tokenjei."
+
+#: docs/.vitepress/catalog-i18n.json#registryBrowserItems.logo-igniteai.title
+#, no-c-format
+msgctxt "docs.chrome:registryBrowserItems.logo-igniteai.title"
+msgid "Igniteai Logos"
+msgstr "Igniteai-logók"
+
+#: docs/.vitepress/catalog-i18n.json#registryBrowserItems.logo-igniteai.description
+#, no-c-format
+msgctxt "docs.chrome:registryBrowserItems.logo-igniteai.description"
+msgid "Logo image tokens for igniteai."
+msgstr "Az igniteai logóképeinek tokenjei."
+
+#: docs/.vitepress/catalog-i18n.json#registryBrowserItems.logo-instructure.title
+#, no-c-format
+msgctxt "docs.chrome:registryBrowserItems.logo-instructure.title"
+msgid "Instructure Logos"
+msgstr "Instructure-logók"
+
+#: docs/.vitepress/catalog-i18n.json#registryBrowserItems.logo-instructure.description
+#, no-c-format
+msgctxt "docs.chrome:registryBrowserItems.logo-instructure.description"
+msgid "Logo image tokens for instructure."
+msgstr "Az instructure logóképeinek tokenjei."
+
+#: docs/.vitepress/catalog-i18n.json#registryBrowserItems.logo-learnplatform.title
+#, no-c-format
+msgctxt "docs.chrome:registryBrowserItems.logo-learnplatform.title"
+msgid "Learnplatform Logos"
+msgstr "Learnplatform-logók"
+
+#: docs/.vitepress/catalog-i18n.json#registryBrowserItems.logo-learnplatform.description
+#, no-c-format
+msgctxt "docs.chrome:registryBrowserItems.logo-learnplatform.description"
+msgid "Logo image tokens for learnplatform."
+msgstr "A learnplatform logóképeinek tokenjei."
+
+#: docs/.vitepress/catalog-i18n.json#registryBrowserItems.logo-mastery.title
+#, no-c-format
+msgctxt "docs.chrome:registryBrowserItems.logo-mastery.title"
+msgid "Mastery Logos"
+msgstr "Mastery-logók"
+
+#: docs/.vitepress/catalog-i18n.json#registryBrowserItems.logo-mastery.description
+#, no-c-format
+msgctxt "docs.chrome:registryBrowserItems.logo-mastery.description"
+msgid "Logo image tokens for mastery."
+msgstr "A mastery logóképeinek tokenjei."
+
+#: docs/.vitepress/catalog-i18n.json#registryBrowserItems.logo-pantoken.title
+#, no-c-format
+msgctxt "docs.chrome:registryBrowserItems.logo-pantoken.title"
+msgid "Pantoken Logos"
+msgstr "Pantoken-logók"
+
+#: docs/.vitepress/catalog-i18n.json#registryBrowserItems.logo-pantoken.description
+#, no-c-format
+msgctxt "docs.chrome:registryBrowserItems.logo-pantoken.description"
+msgid "Logo image tokens for pantoken."
+msgstr "A pantoken logóképeinek tokenjei."
+
+#: docs/.vitepress/catalog-i18n.json#registryBrowserItems.logo-parchment.title
+#, no-c-format
+msgctxt "docs.chrome:registryBrowserItems.logo-parchment.title"
+msgid "Parchment Logos"
+msgstr "Parchment-logók"
+
+#: docs/.vitepress/catalog-i18n.json#registryBrowserItems.logo-parchment.description
+#, no-c-format
+msgctxt "docs.chrome:registryBrowserItems.logo-parchment.description"
+msgid "Logo image tokens for parchment."
+msgstr "A parchment logóképeinek tokenjei."
+
+#: docs/.vitepress/catalog-i18n.json#registryBrowserItems.theme-colors.title
+#, no-c-format
+msgctxt "docs.chrome:registryBrowserItems.theme-colors.title"
+msgid "Custom Theme Colors"
+msgstr "Egyéni témaszínek"
+
+#: docs/.vitepress/catalog-i18n.json#registryBrowserItems.theme-colors.description
+#, no-c-format
+msgctxt "docs.chrome:registryBrowserItems.theme-colors.description"
+msgid "Selector-driven Pantoken brand-color remapping for 13 color namespaces."
+msgstr "Választóvezérelt Pantoken márkaszín-újratérképezés 13 színnévtérhez."
+
+#: docs/.vitepress/catalog-i18n.json#registryBrowserItems.primitives.title
+#, fuzzy, no-c-format
+msgctxt "docs.chrome:registryBrowserItems.primitives.title"
+msgid "Primitive Utilities"
+msgstr "Segédosztályok"
+
+#: docs/.vitepress/catalog-i18n.json#registryBrowserItems.primitives.description
+#, no-c-format
+msgctxt "docs.chrome:registryBrowserItems.primitives.description"
+msgid "Opt-in utility classes for Pantoken's raw primitive palette."
+msgstr ""
+"Opcionálisan engedélyezhető segédosztályok a Pantoken nyers alapszín-"
+"palettájához."
+
+#: docs/.vitepress/catalog-i18n.json#registryBrowserItems.visual-debug.title
+#, no-c-format
+msgctxt "docs.chrome:registryBrowserItems.visual-debug.title"
+msgid "Visual Debug"
+msgstr "Vizuális hibakeresés"
+
+#: docs/.vitepress/catalog-i18n.json#registryBrowserItems.visual-debug.description
+#, no-c-format
+msgctxt "docs.chrome:registryBrowserItems.visual-debug.description"
+msgid "Development-only layout outlines for Pantoken components."
+msgstr "Fejlesztési célú elrendezés-körvonalak a Pantoken komponenseihez."
+
+#, no-c-format
+#~ msgctxt "docs.chrome:a2uiCatalog.reactSupport"
+#~ msgid "React runtime support is pending v1.0 SDK verification."
+#~ msgstr "A React futtatókörnyezet támogatása az 1.0-s SDK ellenőrzésére vár."
+
+#, no-c-format
+#~ msgctxt "docs.chrome:a2uiCatalog.angularSupport"
+#~ msgid "Angular runtime support is pending v1.0 SDK verification."
+#~ msgstr ""
+#~ "Az Angular futtatókörnyezet támogatása az 1.0-s SDK ellenőrzésére vár."
+
+#, no-c-format
+#~ msgctxt "docs.chrome:registryBrowser.subtitle"
+#~ msgid ""
+#~ "Compatible components, themes, and behavior hooks conforming to the "
+#~ "shadcn/ui registry specification. Add items directly to your shadcn/ui "
+#~ "project via CLI."
+#~ msgstr ""
+#~ "Kompatibilis komponensek, témák és viselkedés-horgok, amelyek megfelelnek "
+#~ "a shadcn/ui regiszter specifikációnak. Elemeket közvetlenül hozzáadhat a "
+#~ "shadcn/ui projektjéhez a CLI segítségével."

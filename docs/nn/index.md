@@ -32,8 +32,8 @@ features:
     title: Generer for alle plattformar
     details: Installer pantoken cli for å generera preset eller leggje til komponentar for alle plattformar&colon; web, nativt, og alt i mellom.
   - icon:
-      light: /unlink-light.svg
-      dark: /unlink-dark.svg
-    title: React ikkje naudsynt
-    details: InstUI-biblioteket er tett kopla til React. Om du vil bruka det, må du bruka React. No kan du byggja overalt.
+      light: /wand-sparkles-light.svg
+      dark: /wand-sparkles-dark.svg
+    title: Bygg agentisk
+    details: Legg pantoken til AI-verktøya du allereie brukar, med inkluderte ferdigheiter, agentfil, api-catalog, llms.txt og A2UI.
 ---

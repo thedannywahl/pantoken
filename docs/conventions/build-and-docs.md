@@ -1,5 +1,15 @@
 # Build, release, and the docs site
 
+## Catalog browser localization
+
+The A2UI and shadcn registry browsers use `docs.chrome` for their labels and visible catalog prose.
+`docs/scripts/catalog-i18n.ts` derives the catalog message source from the component contracts and
+registry generator; don't edit `docs/.vitepress/catalog-i18n.json` by hand. The docs asset and
+chrome translation commands refresh it, and `node docs/scripts/catalog-i18n.ts --check` checks for
+drift without translating. The asset build also stages locale-specific browser pages; their
+untranslated messages fall back to English. Catalog JSON, component names, properties, commands,
+and code examples remain unchanged.
+
 ## Generated values and translation identity
 
 Compatibility Markdown is formatted through `vite-plus/fmt` before it is written, so running
@@ -586,6 +596,13 @@ Two escape hatches:
 CI wiring: the `i18n-drift` job runs `vp run gate:i18n` when catalog, source, or policy paths change;
 that gate generates the English API tree and checks every surface. `gate:i18n` also runs before npm
 publishing. AI translation is never wired into CI; fill drift locally with `vp run i18n:translate`.
+
+To translate only homepage frontmatter and regenerate localized home pages, run
+`vp run @pantoken/docs#docs:home:locales:claude` (or `:agy` / `:copilot`). The aggregate
+`docs:locales:translate` commands select the same provider for the homepage as for other surfaces.
+Homepage synchronization honors `DOCS_TRANSLATION_LOCALE`, `DOCS_TRANSLATION_UNITS`, and
+`DOCS_TRANSLATION_FORCE`, reports each locale's translation counts, and fails if entries remain
+untranslated rather than silently rendering English fallback.
 
 `translate` re-extracts a space's `l10n/<space>.pot` from its source before merging, so a newly added
 key reaches the PO catalogs without a separate step, and `check` reports a stale template as drift in

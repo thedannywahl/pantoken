@@ -32,8 +32,8 @@ features:
     title: توليد لأي منصة
     details: ثبّت pantoken cli لإنشاء الإعدادات المسبقة أو إضافة المكونات لأي منصة&colon; ويب، أصلي، وأي شيء بينهما.
   - icon:
-      light: /unlink-light.svg
-      dark: /unlink-dark.svg
-    title: لا حاجة إلى React
-    details: مكتبة InstUI مرتبطة بشكل وثيق بـ React. إذا كنت تريد استخدامها، يجب عليك استخدام React. الآن يمكنك البناء في أي مكان.
+      light: /wand-sparkles-light.svg
+      dark: /wand-sparkles-dark.svg
+    title: طوّر بأسلوبٍ قائم على الوكلاء
+    details: أضف pantoken إلى أدوات الذكاء الاصطناعي التي تستخدمها بالفعل، مع المهارات المضمّنة وملف agents وapi-catalog وllms.txt وA2UI.
 ---

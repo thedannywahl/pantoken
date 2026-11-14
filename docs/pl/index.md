@@ -32,8 +32,8 @@ features:
     title: Generuj dla dowolnej platformy
     details: Zainstaluj interfejs wiersza poleceń pantoken, aby generować presety lub dodawać komponenty na dowolną platformę&colon; web, native i cokolwiek pośrodku.
   - icon:
-      light: /unlink-light.svg
-      dark: /unlink-dark.svg
-    title: React nie jest wymagany
-    details: Biblioteka InstUI jest ściśle powiązana z Reactem. Jeśli chcesz go używać, musisz używać Reactu. Teraz możesz budować wszędzie.
+      light: /wand-sparkles-light.svg
+      dark: /wand-sparkles-dark.svg
+    title: Buduj agentowo
+    details: Dodaj pantoken do narzędzi AI, których już używasz, dzięki dołączonym umiejętnościom, plikowi agents, api-catalog, llms.txt i A2UI.
 ---

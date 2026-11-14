@@ -74,6 +74,28 @@ no DOM. Call `register(customElements)` manually if you need to control timing.
 - **`DEFAULT_PREFIX`** — the default tag prefix, `"instui"`.
 - **`WebComponentStrings`**, **`ENGLISH_STRINGS`**, **`makeStrings`**, **`resolveFirstDay`** — the locale string contract, plus the full 44-locale bundle set and `registerLocalized` helper.
 
+## A2UI 1.0
+
+For Lit, React, and Angular clients, the optional `./a2ui` entry registers Pantoken's Universal components and
+catalog alongside A2UI's Basic Catalog:
+
+```ts
+import { basicCatalog } from "@a2ui/web_core/catalogs/basic/v1";
+import { MessageProcessor } from "@a2ui/web_core";
+import { pantokenA2uiCatalog, registerPantokenA2uiComponents } from "@pantoken/web-components/a2ui";
+
+registerPantokenA2uiComponents();
+const processor = new MessageProcessor([basicCatalog, pantokenA2uiCatalog]);
+```
+
+Install `@a2ui/web_core`, `lit`, and the host's A2UI renderer. The catalog covers every exported
+web component. Browser conformance tests verify `@a2ui/react` 0.15.0 with React 19.3.1 and
+`@a2ui/angular` 0.14.0 with Angular 21.2.5, using web-core 0.15.0 in Chromium, Firefox, and WebKit.
+These are shared Lit-backed Universal components, not separate native framework implementations.
+Angular 22 and SSR/hydration aren't covered by this validation. Native platforms have schema-only
+support. See the [published catalog](https://pantoken.app/a2ui/) and the
+[consumer fixtures](../../tools/a2ui-conformance/README.md) for setup and the tested scope.
+
 ## Related
 
 - Styles the elements with `@pantoken/components` and reads glyphs from `@pantoken/icons`.

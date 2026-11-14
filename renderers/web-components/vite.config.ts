@@ -20,6 +20,7 @@ export default extendBase({
     tasks: {
       build: {
         command: [
+          "node ../../ai/pantoken-ai/scripts/generate-a2ui-catalog.ts",
           "node scripts/generate.ts",
           "node scripts/build-entries.ts",
           "vp pack",
@@ -31,6 +32,7 @@ export default extendBase({
   pack: {
     entry: {
       index: "src/index.ts",
+      a2ui: "src/a2ui.ts",
       "scaffold-preset": "src/scaffold-preset.ts",
       components: "generated/components.css",
       ...cssEntries,

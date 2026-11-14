@@ -363,6 +363,32 @@ describe("tables", () => {
     expect(segments.some((s) => s.kind === "table")).toBe(false);
     expect(reassemble(segments, identity)).toBe(ragged);
   });
+
+  test("preserves original table spacing when translating cells", () => {
+    // Wide-spaced table like docs/compatibility.md: spacing should be preserved even after translating cells
+    const wideSpaced = [
+      "| Package | Description |",
+      "| --- | --- |",
+      "| `@instructure/ui-icons` | Some icons package |",
+    ].join("\n");
+    const segments = segmentMarkdown(wideSpaced);
+    const tableSegment = segments.find((s) => s.kind === "table");
+    expect(tableSegment?.kind).toBe("table");
+
+    // Translate with a function that changes cell content
+    const resolve = (text: string, kind: TranslationKind): string =>
+      text.includes("icons") ? "TRANSLATED_ICONS" : text;
+    const out = reassemble([tableSegment!], resolve);
+
+    // Spacing should match the input, not be normalized to minimal
+    expect(out).toBe(
+      [
+        "| Package | Description |",
+        "| --- | --- |",
+        "| `@instructure/ui-icons` | TRANSLATED_ICONS |",
+      ].join("\n"),
+    );
+  });
 });
 
 /** Reassemble a single segment in isolation (no inter-segment newline joins). */

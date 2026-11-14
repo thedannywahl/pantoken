@@ -32,8 +32,8 @@ features:
     title: Δημιουργία για οποιαδήποτε πλατφόρμα
     details: Εγκαταστήστε το pantoken cli για να δημιουργήσετε προεπιλογές ή προσθέστε συστατικά για οποιαδήποτε πλατφόρμα&colon; ιστό, εγγενής και οτιδήποτε ανάμεσα.
   - icon:
-      light: /unlink-light.svg
-      dark: /unlink-dark.svg
-    title: Δεν απαιτείται React
-    details: Η βιβλιοθήκη InstUI είναι ισχυρά συνδεδεμένη με React. Εάν θέλετε να τη χρησιμοποιήσετε, πρέπει να χρησιμοποιήσετε React. Τώρα μπορείτε να δημιουργήσετε παντού.
+      light: /wand-sparkles-light.svg
+      dark: /wand-sparkles-dark.svg
+    title: Δημιουργήστε με τη βοήθεια πρακτόρων AI
+    details: Προσθέστε το pantoken στα εργαλεία AI που χρησιμοποιείτε ήδη, με ενσωματωμένες δεξιότητες, αρχείο agents, api-catalog, llms.txt και A2UI.
 ---

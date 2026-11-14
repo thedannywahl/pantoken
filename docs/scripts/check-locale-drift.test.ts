@@ -543,6 +543,16 @@ describe("top-level drift check", () => {
     expect(errText()).toContain("[docs.chrome]");
   });
 
+  test("reports chrome translations whose English source changed", async () => {
+    fixtures.chromeLeaves = [{ path: "registryBrowser.subtitle", text: "Updated description" }];
+    fixtures.chromePo =
+      'msgctxt "docs.chrome:registryBrowser.subtitle"\nmsgid "Old description"\nmsgstr "Korábbi leírás"\n';
+
+    await import("./check-locale-drift.ts");
+    expect(errText()).toContain("[docs.chrome]");
+    expect(errText()).toContain("Updated description");
+  });
+
   test("evaluates PO-backed and cache-backed demo drift", async () => {
     fixtures.demoDirExists = true;
     fixtures.demoDirs = ["modal"];

@@ -1,0 +1,26 @@
+id: unsupported-component-001
+name: Reject an unsupported Pantoken A2UI component
+description: User asks the agent to invent a Pantoken component outside the published v1 catalog.
+tags:
+  - positive-trigger
+inputs:
+  prompt: "Use Pantoken's A2UI 1.0 catalog for this screen. The design calls for a PantokenCard component for the content panel."
+expected:
+  should_trigger: true
+graders:
+  - type: text
+    name: does-not-invent-components
+    config:
+      not_contains:
+        - "<PantokenCard"
+        - "PantokenCard("
+        - "pantoken-card"
+      contains_any:
+        - - "Basic Catalog"
+          - "basic catalog"
+        - - "not supported"
+          - "not supported in the v1 catalog"
+  - type: behavior
+    name: token-budget
+    config:
+      max_tokens: 500000

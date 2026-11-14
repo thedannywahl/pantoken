@@ -32,8 +32,8 @@ features:
     title: Sinh cho mọi nền tảng
     details: Cài đặt pantoken cli để tạo các cài đặt sẵn hoặc thêm thành phần cho bất kỳ nền tảng nào&colon; web, native, và bất cứ thứ gì khác.
   - icon:
-      light: /unlink-light.svg
-      dark: /unlink-dark.svg
-    title: Không cần React
-    details: Thư viện InstUI gắn chặt với React. Nếu bạn muốn sử dụng nó, bạn phải sử dụng React. Bây giờ bạn có thể xây dựng ở bất cứ đâu.
+      light: /wand-sparkles-light.svg
+      dark: /wand-sparkles-dark.svg
+    title: Xây dựng với tác nhân AI
+    details: Thêm pantoken vào các công cụ AI bạn đang sử dụng với các skills, tệp agents, api-catalog, llms.txt và A2UI đi kèm.
 ---

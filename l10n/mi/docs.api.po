@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: pantoken\n"
-"PO-Revision-Date: 2026-10-30 19:56+0000\n"
+"PO-Revision-Date: 2026-11-14 02:42+0000\n"
 "Last-Translator: pantoken localization engine\n"
 "Language-Team: pantoken\n"
 "MIME-Version: 1.0\n"
@@ -34848,3 +34848,211 @@ msgstr "WCAG 2.2 2.5.8"
 msgctxt "docs.api:prose"
 msgid "All touch targets must be 24px large, or leave sufficient space"
 msgstr "Me 24px te rahi o ngā wāhi pā katoa, me waiho rānei he mokowā rawaka"
+
+msgctxt "docs.api:prose"
+msgid "A section for an empty state or call to action."
+msgstr "He wāhanga mō te āhua putua, mō tētahi karanga ki te mahi rānei."
+
+msgctxt "docs.api:prose"
+msgid "A breadcrumb navigation landmark."
+msgstr "He tohu whenua whakatere kongakonga."
+
+msgctxt "docs.api:prose"
+msgid "A media-object byline container."
+msgstr "He ipu rārangi-ā-kaituhi mō tētahi ahanoa pāpāho."
+
+msgctxt "docs.api:prose"
+msgid "An article-shaped card with slotted content."
+msgstr "He kāri te āhua o tētahi tuhinga, me ngā ihirangi kua kōkuhutia ki ōna wāhi."
+
+msgctxt "docs.api:prose"
+msgid "A native checkbox and its slotted label."
+msgstr "He pouakataki tūturu me tōna tapanga kua tukuna ki te slot."
+
+msgctxt "docs.api:prose"
+msgid "A native close button with an accessible label."
+msgstr "He pātene kati taketake me tētahi tapanga e wātea ana."
+
+msgctxt "docs.api:prose"
+msgid "Missing root component records, registered after the hand-authored elements."
+msgstr "Kei te ngaro ngā rekoata wāhanga pakiaka, kua rēhitatia i muri i ngā huānga i tuhia ā-ringa."
+
+msgctxt "docs.api:prose"
+msgid "A native file picker presented as a dropzone label."
+msgstr "He kaikōwhiri kōnae taketake e whakaaturia ana hei tapanga rohe tuku."
+
+msgctxt "docs.api:prose"
+msgid "A form-field layout container."
+msgstr "He ipu whakatakotoranga mō ngā āpure puka."
+
+msgctxt "docs.api:prose"
+msgid "A native fieldset for a group of form fields."
+msgstr "He huinga āpure taketake mō tētahi rōpū āpure puka."
+
+msgctxt "docs.api:prose"
+msgid "A status region for form-field help and validation messages."
+msgstr "He rohe tūnga mō ngā karere āwhina me ngā karere whakamana o ngā āpure puka."
+
+msgctxt "docs.api:prose"
+msgid "A semantic heading with a bounded level from one through six."
+msgstr "He pane ā-kaupapa, he taumata kua herea mai i te tahi ki te ono."
+
+msgctxt "docs.api:prose"
+msgid "A container for an input and adjacent content."
+msgstr "He ipu mō tētahi tāuru me ngā ihirangi pātata."
+
+msgctxt "docs.api:prose"
+msgid "A link that rejects executable and data URL schemes."
+msgstr "He hononga e whakahē ana i ngā kaupapa URL ka taea te whakahaere me ngā URL raraunga."
+
+msgctxt "docs.api:prose"
+msgid "A native unordered list with Pantoken list-item styles."
+msgstr "He rārangi taketake kāore i whakaraupapatia, me ngā kāhua tūemi-rārangi Pantoken."
+
+msgctxt "docs.api:prose"
+msgid "An overlay surface for positioned content."
+msgstr "He paparanga mō ngā ihirangi kua tū ki tētahi wāhi."
+
+msgctxt "docs.api:prose"
+msgid "A menu surface with item, group, and separator styles."
+msgstr "He mata tahua me ngā kāhua mō ngā tūemi, ngā rōpū, me ngā whakawehe."
+
+msgctxt "docs.api:prose"
+msgid "A native number input with value-change events."
+msgstr "He tāuru tau taketake me ngā takahanga huringa uara."
+
+msgctxt "docs.api:prose"
+msgid "A pagination navigation landmark."
+msgstr "He tohu whakatere mō te whārangi."
+
+msgctxt "docs.api:prose"
+msgid "A native radio control and its slotted label."
+msgstr "He pātene irirangi taketake me tōna tapanga kua whakaurua ki te mokamoka."
+
+msgctxt "docs.api:prose"
+msgid "A native fieldset for a radio-input group."
+msgstr "He fieldset taketake mō tētahi rōpū tāuru irirangi."
+
+msgctxt "docs.api:prose"
+msgid "A native range slider with value-change events."
+msgstr "He retireti awhe taketake me ngā takahanga huringa-uara."
+
+msgctxt "docs.api:prose"
+msgid "Visually hidden content that remains available to assistive technology."
+msgstr "Ihirangi kua huna ā-kanohi, engari ka wātea tonu ki ngā hangarau āwhina."
+
+msgctxt "docs.api:prose"
+msgid "A native select control that copies text-only options from its light DOM."
+msgstr "He mana kōwhiri taketake e tārua ana i ngā kōwhiringa kuputuhi-anake mai i tōna DOM māmā."
+
+msgctxt "docs.api:prose"
+msgid "A table-layout container that keeps slotted rows inside its table semantics."
+msgstr "He ipu whakatakotoranga-tēpu e pupuri ana i ngā rārangi kua tohaina ki roto i ngā tikanga o tana tēpu."
+
+msgctxt "docs.api:prose"
+msgid "A paragraph of Pantoken body text."
+msgstr "He kōwae o ngā tuhinga matua a Pantoken."
+
+msgctxt "docs.api:prose"
+msgid "A native multiline text input with a visible slotted label."
+msgstr "He āpure tāuru kuputuhi taketake, maha-rārangi, he tapanga kitea kua kōkuhutia."
+
+msgctxt "docs.api:prose"
+msgid "A native text input with a visible slotted label."
+msgstr "He tāuru kuputuhi taketake me tētahi tapanga mokamoka e kitea ana."
+
+msgctxt "docs.api:prose"
+msgid "A native disclosure with a configurable summary."
+msgstr "He whakaaturanga taketake me tētahi whakarāpopototanga ka taea te whirihora."
+
+msgctxt "docs.api:prose"
+msgid "A native disclosure group."
+msgstr "He rōpū whakakitenga taketake."
+
+msgctxt "docs.api:prose"
+msgid "A neutral layout primitive."
+msgstr "He huānga tahora kūpapa."
+
+#, pantoken-verbatim
+msgctxt "docs.api:text"
+msgid "toggleGroup"
+msgstr "toggleGroup"
+
+#, pantoken-verbatim
+msgctxt "docs.api:text"
+msgid "toggleDetails"
+msgstr "toggleDetails"
+
+#, pantoken-verbatim
+msgctxt "docs.api:text"
+msgid "fileDrop"
+msgstr "fileDrop"
+
+#, pantoken-verbatim
+msgctxt "docs.api:text"
+msgid "rangeInput"
+msgstr "rangeInput"
+
+#, pantoken-verbatim
+msgctxt "docs.api:text"
+msgid "screenReaderContent"
+msgstr "screenReaderContent"
+
+#, pantoken-verbatim
+msgctxt "docs.api:text"
+msgid "closeButton"
+msgstr "closeButton"
+
+#, pantoken-verbatim
+msgctxt "docs.api:text"
+msgid "formField"
+msgstr "formField"
+
+#, pantoken-verbatim
+msgctxt "docs.api:text"
+msgid "formFieldGroup"
+msgstr "formFieldGroup"
+
+#, pantoken-verbatim
+msgctxt "docs.api:text"
+msgid "radioInputGroup"
+msgstr "radioInputGroup"
+
+#, pantoken-verbatim
+msgctxt "docs.api:text"
+msgid "formFieldMessages"
+msgstr "formFieldMessages"
+
+#, pantoken-verbatim
+msgctxt "docs.api:text"
+msgid "textInput"
+msgstr "textInput"
+
+#, pantoken-verbatim
+msgctxt "docs.api:text"
+msgid "textArea"
+msgstr "textArea"
+
+#, pantoken-verbatim
+msgctxt "docs.api:text"
+msgid "simpleSelect"
+msgstr "simpleSelect"
+
+#, pantoken-verbatim
+msgctxt "docs.api:text"
+msgid "inputGroup"
+msgstr "inputGroup"
+
+#, pantoken-verbatim
+msgctxt "docs.api:text"
+msgid "numberInput"
+msgstr "numberInput"
+
+#, pantoken-verbatim
+msgctxt "docs.api:text"
+msgid "componentElements"
+msgstr "componentElements"
+
+msgctxt "docs.api:prose"
+msgid "<!-- pantoken-value-scope:css%2Fscreen-reader-content.md -->\nThis component ships no CSS of its own — its markup and behavior come entirely from {{ptk_code_0}}. See the [modifier table below]({{ptk_code_1}})."
+msgstr "<!-- pantoken-value-scope:css%2Fscreen-reader-content.md -->\nKāore he CSS ake o tēnei wae — nō {{ptk_code_0}} katoa ōna tohu me ōna whanonga. Tirohia te [ripanga whakarerekē kei raro]({{ptk_code_1}})."

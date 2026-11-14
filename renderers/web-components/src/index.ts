@@ -79,6 +79,7 @@ export { tooltip } from "./elements/tooltip.ts";
 export { tray } from "./elements/tray.ts";
 export { treeBrowser } from "./elements/tree-browser.ts";
 export { truncate } from "./elements/truncate.ts";
+export * from "./elements/component-elements.ts";
 
 // Auto-register in the browser; a no-op everywhere else.
 register();

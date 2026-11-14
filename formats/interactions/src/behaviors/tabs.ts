@@ -9,14 +9,29 @@ export function initTabs(host: HTMLElement): TabsHandle {
     ...host.querySelectorAll<HTMLButtonElement>('[role="tab"]'),
   ];
 
-  const select = (tab: HTMLButtonElement): void => {
+  const panelById = (id: string): HTMLElement | undefined => {
+    const root = host.getRootNode();
+    if ("getElementById" in root && typeof root.getElementById === "function") {
+      const panel = root.getElementById(id);
+      return panel instanceof HTMLElement ? panel : undefined;
+    }
+    return undefined;
+  };
+
+  const select = (tab: HTMLButtonElement, notify = true): void => {
+    const changed = tab.getAttribute("aria-selected") !== "true";
     for (const other of tabs()) {
       const selected = other === tab;
       other.classList.toggle("-selected", selected);
       other.setAttribute("aria-selected", String(selected));
       const panelId = other.getAttribute("aria-controls");
-      const panel = panelId ? document.getElementById(panelId) : undefined;
+      const panel = panelId ? panelById(panelId) : undefined;
       if (panel) panel.hidden = !selected;
+    }
+    if (notify && changed) {
+      host.dispatchEvent(
+        new CustomEvent("change", { bubbles: true, detail: { index: tabs().indexOf(tab) } }),
+      );
     }
   };
 
@@ -55,7 +70,7 @@ export function initTabs(host: HTMLElement): TabsHandle {
     tabs().find(
       (tab) => tab.classList.contains("-selected") || tab.getAttribute("aria-selected") === "true",
     ) ?? tabs()[0];
-  if (initial) select(initial);
+  if (initial) select(initial, false);
 
   return {
     cleanup(): void {

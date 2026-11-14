@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: pantoken\n"
-"PO-Revision-Date: 2026-10-30 19:56+0000\n"
+"PO-Revision-Date: 2026-11-13 22:46+0000\n"
 "Last-Translator: pantoken localization engine\n"
 "Language-Team: pantoken\n"
 "MIME-Version: 1.0\n"
@@ -35708,3 +35708,211 @@ msgstr "WCAG 2.2 2.5.8"
 msgctxt "docs.api:prose"
 msgid "All touch targets must be 24px large, or leave sufficient space"
 msgstr "Minden érintési célfelület legyen legalább 24 px-es, vagy hagyj körülötte elegendő helyet"
+
+msgctxt "docs.api:prose"
+msgid "<!-- pantoken-value-scope:css%2Fscreen-reader-content.md -->\nThis component ships no CSS of its own — its markup and behavior come entirely from {{ptk_code_0}}. See the [modifier table below]({{ptk_code_1}})."
+msgstr "<!-- pantoken-value-scope:css%2Fscreen-reader-content.md -->\nEz a komponens nem tartalmaz saját CSS-t — a jelölése és működése teljes egészében a {{ptk_code_0}} része. Lásd az [alábbi módosítótáblázatot]({{ptk_code_1}})."
+
+msgctxt "docs.api:prose"
+msgid "A section for an empty state or call to action."
+msgstr "Üres állapothoz vagy cselekvésre ösztönző felhíváshoz használható szakasz."
+
+msgctxt "docs.api:prose"
+msgid "A breadcrumb navigation landmark."
+msgstr "Morzsanavigációs tájékozódási pont."
+
+msgctxt "docs.api:prose"
+msgid "A media-object byline container."
+msgstr "A médiaobjektum szerzői adatainak tárolója."
+
+msgctxt "docs.api:prose"
+msgid "An article-shaped card with slotted content."
+msgstr "Cikk formájú kártya, behelyezhető tartalommal."
+
+msgctxt "docs.api:prose"
+msgid "A native checkbox and its slotted label."
+msgstr "Natív jelölőnégyzet és a hozzá tartozó, slotba helyezett címke."
+
+msgctxt "docs.api:prose"
+msgid "A native close button with an accessible label."
+msgstr "Natív bezárógomb akadálymentes címkével."
+
+msgctxt "docs.api:prose"
+msgid "Missing root component records, registered after the hand-authored elements."
+msgstr "Hiányoznak a kézzel készített elemek után regisztrált gyökérkomponens-rekordok."
+
+msgctxt "docs.api:prose"
+msgid "A native file picker presented as a dropzone label."
+msgstr "Natív fájlválasztó, amely egy fájlfeltöltési terület címkéjeként jelenik meg."
+
+msgctxt "docs.api:prose"
+msgid "A form-field layout container."
+msgstr "Űrlapmező-elrendezés tárolója."
+
+msgctxt "docs.api:prose"
+msgid "A native fieldset for a group of form fields."
+msgstr "Natív fieldset űrlapmezők csoportjához."
+
+msgctxt "docs.api:prose"
+msgid "A status region for form-field help and validation messages."
+msgstr "Az űrlapmező súgó- és érvényesítési üzeneteinek állapotterülete."
+
+msgctxt "docs.api:prose"
+msgid "A semantic heading with a bounded level from one through six."
+msgstr "Egy szemantikus címsor, amelynek szintje egytől hatig terjed."
+
+msgctxt "docs.api:prose"
+msgid "A container for an input and adjacent content."
+msgstr "Beviteli mező és a hozzá kapcsolódó tartalom tárolója."
+
+msgctxt "docs.api:prose"
+msgid "A link that rejects executable and data URL schemes."
+msgstr "A végrehajtható és adat-URL-sémákat elutasító hivatkozás."
+
+msgctxt "docs.api:prose"
+msgid "A native unordered list with Pantoken list-item styles."
+msgstr "Natív rendezetlen lista Pantoken-listaelem-stílusokkal."
+
+msgctxt "docs.api:prose"
+msgid "An overlay surface for positioned content."
+msgstr "Fedőfelület pozicionált tartalomhoz."
+
+msgctxt "docs.api:prose"
+msgid "A menu surface with item, group, and separator styles."
+msgstr "Menüfelület elem-, csoport- és elválasztóstílusokkal."
+
+msgctxt "docs.api:prose"
+msgid "A native number input with value-change events."
+msgstr "Natív számbeviteli mező értékváltozási eseményekkel."
+
+msgctxt "docs.api:prose"
+msgid "A pagination navigation landmark."
+msgstr "Egy lapozási navigációs tájékozódási pont."
+
+msgctxt "docs.api:prose"
+msgid "A native radio control and its slotted label."
+msgstr "Natív rádióvezérlő és a hozzá tartozó, slotba illesztett címke."
+
+msgctxt "docs.api:prose"
+msgid "A native fieldset for a radio-input group."
+msgstr "Natív mezőcsoport rádiógombok csoportjához."
+
+msgctxt "docs.api:prose"
+msgid "A native range slider with value-change events."
+msgstr "Natív tartománycsúszka értékváltozási eseményekkel."
+
+msgctxt "docs.api:prose"
+msgid "Visually hidden content that remains available to assistive technology."
+msgstr "A vizuálisan rejtett tartalom továbbra is elérhető marad a kisegítő technológiák számára."
+
+msgctxt "docs.api:prose"
+msgid "A native select control that copies text-only options from its light DOM."
+msgstr "Natív select vezérlő, amely szöveges opciókat másol át a light DOM-ból."
+
+msgctxt "docs.api:prose"
+msgid "A table-layout container that keeps slotted rows inside its table semantics."
+msgstr "Táblázatelrendezésű konténer, amely a slotokba illesztett sorokat a táblázat szemantikáján belül tartja."
+
+msgctxt "docs.api:prose"
+msgid "A paragraph of Pantoken body text."
+msgstr "Egy bekezdésnyi Pantoken törzsszöveg."
+
+msgctxt "docs.api:prose"
+msgid "A native multiline text input with a visible slotted label."
+msgstr "Natív, többsoros szövegbeviteli mező látható, slotba illesztett címkével."
+
+msgctxt "docs.api:prose"
+msgid "A native text input with a visible slotted label."
+msgstr "Natív szövegbeviteli mező látható, slotba helyezett címkével."
+
+msgctxt "docs.api:prose"
+msgid "A native disclosure with a configurable summary."
+msgstr "Natív, konfigurálható összefoglalóval rendelkező részletező elem."
+
+msgctxt "docs.api:prose"
+msgid "A native disclosure group."
+msgstr "Natív lenyitható csoport."
+
+msgctxt "docs.api:prose"
+msgid "A neutral layout primitive."
+msgstr "Semleges elrendezési alapelem."
+
+#, pantoken-verbatim
+msgctxt "docs.api:text"
+msgid "toggleGroup"
+msgstr "toggleGroup"
+
+#, pantoken-verbatim
+msgctxt "docs.api:text"
+msgid "toggleDetails"
+msgstr "toggleDetails"
+
+#, pantoken-verbatim
+msgctxt "docs.api:text"
+msgid "fileDrop"
+msgstr "fileDrop"
+
+#, pantoken-verbatim
+msgctxt "docs.api:text"
+msgid "rangeInput"
+msgstr "rangeInput"
+
+#, pantoken-verbatim
+msgctxt "docs.api:text"
+msgid "screenReaderContent"
+msgstr "screenReaderContent"
+
+#, pantoken-verbatim
+msgctxt "docs.api:text"
+msgid "closeButton"
+msgstr "closeButton"
+
+#, pantoken-verbatim
+msgctxt "docs.api:text"
+msgid "formField"
+msgstr "formField"
+
+#, pantoken-verbatim
+msgctxt "docs.api:text"
+msgid "formFieldGroup"
+msgstr "formFieldGroup"
+
+#, pantoken-verbatim
+msgctxt "docs.api:text"
+msgid "radioInputGroup"
+msgstr "radioInputGroup"
+
+#, pantoken-verbatim
+msgctxt "docs.api:text"
+msgid "formFieldMessages"
+msgstr "formFieldMessages"
+
+#, pantoken-verbatim
+msgctxt "docs.api:text"
+msgid "textInput"
+msgstr "textInput"
+
+#, pantoken-verbatim
+msgctxt "docs.api:text"
+msgid "textArea"
+msgstr "textArea"
+
+#, pantoken-verbatim
+msgctxt "docs.api:text"
+msgid "simpleSelect"
+msgstr "simpleSelect"
+
+#, pantoken-verbatim
+msgctxt "docs.api:text"
+msgid "inputGroup"
+msgstr "inputGroup"
+
+#, pantoken-verbatim
+msgctxt "docs.api:text"
+msgid "numberInput"
+msgstr "numberInput"
+
+#, pantoken-verbatim
+msgctxt "docs.api:text"
+msgid "componentElements"
+msgstr "componentElements"

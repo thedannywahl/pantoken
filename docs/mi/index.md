@@ -32,8 +32,8 @@ features:
     title: Hangaia mō ngā tūāpapa katoa
     details: Whakauru i te pantoken cli hei whakaputa tauira, hei tāpiri whakaritenga mā ia kaupapa&colon; web, native, me ētahi atu i waenganui.
   - icon:
-      light: /unlink-light.svg
-      dark: /unlink-dark.svg
-    title: Kaore React e hiahiatia
-    details: He hononga tata ki a React te tawhā InstUI. Mēnā e hiahia ana koe ki te whakamahi i a ia, me whakamahi e koe i a React. Ināianei ka taea e koe te hanga i te waahi nui rawa.
+      light: /wand-sparkles-light.svg
+      dark: /wand-sparkles-dark.svg
+    title: Hanga mā te āpiha AI
+    details: Tāpirihia a pantoken ki ngā taputapu AI kua whakamahia kētia e koe, me ngā pūkenga kua whakaurua, te kōnae agents, te api-catalog, te llms.txt, me te A2UI.
 ---

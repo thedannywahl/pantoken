@@ -19,6 +19,8 @@ packages:
 catalogMode: prefer
 
 catalog:
+  "@a2ui/web_core": ^0.15.0
+  lit: ^3.3.3
   acorn: ^8.19.0
   yaml: ^2.9.1
   "@types/node": ^26.6.5
@@ -172,6 +174,18 @@ catalog:
   bootstrap: ^5.3.8
   foundation-sites: ^6.9.0
   sass: ^1.105.1
+catalogs:
+  a2ui-conformance:
+    "@a2ui/angular": 0.14.0
+    "@a2ui/react": 0.15.0
+    "@a2ui/web_core": 0.15.0
+    "@angular/common": 21.2.5
+    "@angular/compiler": 21.2.5
+    "@angular/core": 21.2.5
+    "@angular/platform-browser": 21.2.5
+    "@playwright/test": 1.65.1
+    rxjs: 7.8.2
+    zod: 3.25.76
 overrides:
   vite@*: "catalog:"
   # next 16.2.10 (auto-installed as @pantoken/next's optional peer) has 3 High CVEs; 16.2.11 patches

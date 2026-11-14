@@ -1,0 +1,36 @@
+{
+  "name": "@pantoken/a2ui-conformance",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Browser conformance tests for Pantoken's Universal A2UI catalog in React and Angular.",
+  "license": "MIT",
+  "type": "module",
+  "scripts": {
+    "check": "vp check",
+    "check:browser": "vp exec playwright test"
+  },
+  "devDependencies": {
+    "@a2ui/angular": "catalog:a2ui-conformance",
+    "@a2ui/react": "catalog:a2ui-conformance",
+    "@a2ui/web_core": "catalog:a2ui-conformance",
+    "@angular/common": "catalog:a2ui-conformance",
+    "@angular/compiler": "catalog:a2ui-conformance",
+    "@angular/core": "catalog:a2ui-conformance",
+    "@angular/platform-browser": "catalog:a2ui-conformance",
+    "@pantoken/ai": "workspace:*",
+    "@pantoken/css": "workspace:*",
+    "@pantoken/web-components": "workspace:*",
+    "@playwright/test": "catalog:a2ui-conformance",
+    "@types/node": "catalog:",
+    "@types/react": "catalog:",
+    "@types/react-dom": "catalog:",
+    "lit": "catalog:",
+    "react": "catalog:",
+    "react-dom": "catalog:",
+    "rxjs": "catalog:a2ui-conformance",
+    "typescript": "catalog:",
+    "vite": "catalog:",
+    "vite-plus": "catalog:",
+    "zod": "catalog:a2ui-conformance"
+  }
+}

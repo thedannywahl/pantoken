@@ -115,17 +115,27 @@ function makeRegistry(host: ElementRegistry, tag: (base: string) => string): Ele
  * custom element defaults to `display: inline`, which would collapse internal `width: 100%`.
  */
 function makeWrapper(registry: ElementRegistry): RegisterContext["wrapper"] {
-  return (tag, css, render, { display = "inline-block", invoker = false } = {}) => {
+  return (
+    tag,
+    css,
+    render,
+    { display = "inline-block", invoker = false, valueChange, childrenChange = false } = {},
+  ) => {
     if (registry.get(tag)) return;
     registry.define(
       tag,
       class extends HTMLElement {
+        #valueChangeHandler: ((event: Event) => void) | undefined;
+        #lastValue: string | number | boolean | undefined;
+        #toggleHandler: ((event: Event) => void) | undefined;
+        #childrenObserver: MutationObserver | undefined;
         static observedAttributes = [
           "variant",
           "size",
           "shape",
           "value",
           "max",
+          "min",
           "label",
           "pressed",
           "lines",
@@ -140,6 +150,27 @@ function makeWrapper(registry: ElementRegistry): RegisterContext["wrapper"] {
           "popovertargetaction",
           "command",
           "commandfor",
+          "href",
+          "target",
+          "type",
+          "name",
+          "placeholder",
+          "required",
+          "disabled",
+          "checked",
+          "selected",
+          "multiple",
+          "accept",
+          "readonly",
+          "min",
+          "step",
+          "level",
+          "summary",
+          "open",
+          "aria-label",
+          "rel",
+          "rows",
+          "cols",
         ];
         constructor() {
           super();
@@ -147,6 +178,57 @@ function makeWrapper(registry: ElementRegistry): RegisterContext["wrapper"] {
         }
         connectedCallback(): void {
           this.paint();
+          this.#toggleHandler = (event): void => {
+            if (!(event.target instanceof HTMLDetailsElement)) return;
+            event.stopPropagation();
+            this.dispatchEvent(
+              new CustomEvent("toggle", {
+                detail: { newState: event.target.open ? "open" : "closed" },
+                bubbles: true,
+                composed: true,
+              }),
+            );
+          };
+          this.shadowRoot?.addEventListener("toggle", this.#toggleHandler, true);
+          if (childrenChange) {
+            this.#childrenObserver = new MutationObserver(() => this.paint());
+            this.#childrenObserver.observe(this, {
+              childList: true,
+              subtree: true,
+              characterData: true,
+            });
+          }
+          if (valueChange) {
+            this.#valueChangeHandler = (event): void => {
+              const target = event.target;
+              if (
+                !(target instanceof HTMLInputElement) &&
+                !(target instanceof HTMLTextAreaElement) &&
+                !(target instanceof HTMLSelectElement)
+              ) {
+                return;
+              }
+              const value =
+                valueChange === "checked" && target instanceof HTMLInputElement
+                  ? target.checked
+                  : target instanceof HTMLInputElement &&
+                      (target.type === "number" || target.type === "range")
+                    ? target.valueAsNumber
+                    : target.value;
+              if (typeof value === "number" && !Number.isFinite(value)) return;
+              if (value === this.#lastValue) return;
+              this.#lastValue = value;
+              this.dispatchEvent(
+                new CustomEvent("value-change", {
+                  detail: { value },
+                  bubbles: true,
+                  composed: true,
+                }),
+              );
+            };
+            this.shadowRoot?.addEventListener("input", this.#valueChangeHandler);
+            this.shadowRoot?.addEventListener("change", this.#valueChangeHandler);
+          }
           if (invoker) {
             // Re-resolve the target on each interaction: an id can point forward to an element parsed
             // after this button, and the target may be swapped at runtime. `requestAnimationFrame`
@@ -157,14 +239,65 @@ function makeWrapper(registry: ElementRegistry): RegisterContext["wrapper"] {
             if (typeof requestAnimationFrame === "function") requestAnimationFrame(sync);
           }
         }
-        attributeChangedCallback(): void {
+        attributeChangedCallback(
+          name: string,
+          _oldValue: string | null,
+          newValue: string | null,
+        ): void {
+          if (valueChange && this.syncControl(name, newValue)) return;
           this.paint();
+        }
+        disconnectedCallback(): void {
+          if (this.#toggleHandler) {
+            this.shadowRoot?.removeEventListener("toggle", this.#toggleHandler, true);
+            this.#toggleHandler = undefined;
+          }
+          if (this.#valueChangeHandler) {
+            this.shadowRoot?.removeEventListener("input", this.#valueChangeHandler);
+            this.shadowRoot?.removeEventListener("change", this.#valueChangeHandler);
+            this.#valueChangeHandler = undefined;
+          }
+          this.#childrenObserver?.disconnect();
+          this.#childrenObserver = undefined;
         }
         paint(): void {
           if (this.shadowRoot) {
             this.shadowRoot.innerHTML = `<style>:host{display:${display}}${css}</style>${render(this)}`;
             if (invoker) syncInvoker(this);
           }
+        }
+        syncControl(name: string, value: string | null): boolean {
+          const control = this.shadowRoot?.querySelector<
+            HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement
+          >("input,textarea,select");
+          if (!control) return false;
+          if (name === "value") {
+            if (control.value !== (value ?? "")) this.#lastValue = undefined;
+            control.value = value ?? "";
+            return true;
+          }
+          if (name === "checked" && control instanceof HTMLInputElement) {
+            if (control.checked !== this.hasAttribute(name)) this.#lastValue = undefined;
+            control.checked = this.hasAttribute(name);
+            return true;
+          }
+          if (name === "disabled" || name === "required") {
+            control[name] = this.hasAttribute(name);
+            return true;
+          }
+          if (name === "readonly" && "readOnly" in control) {
+            control.readOnly = this.hasAttribute(name);
+            return true;
+          }
+          if (
+            (name === "min" || name === "max" || name === "step") &&
+            control instanceof HTMLInputElement
+          ) {
+            if (value === null) control.removeAttribute(name);
+            else control.setAttribute(name, value);
+            return true;
+          }
+          return false;
         }
       },
     );

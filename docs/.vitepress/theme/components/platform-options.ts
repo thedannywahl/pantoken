@@ -302,6 +302,15 @@ export const PLATFORM_OPTIONS: PlatformOption[] = [
     command: { verb: "install", arg: "mui" },
   },
   {
+    name: "a2ui",
+    label: "A2UI",
+    icon: "a2ui",
+    category: "renderers",
+    color: "#0b57d0",
+    darkColor: "#8ab4f8",
+    command: { verb: "install", arg: "ai" },
+  },
+  {
     name: "foundation",
     label: "Foundation",
     icon: "zurb",

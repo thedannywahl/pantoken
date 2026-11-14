@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: pantoken\n"
-"PO-Revision-Date: 2026-10-30 19:56+0000\n"
+"PO-Revision-Date: 2026-11-13 22:33+0000\n"
 "Last-Translator: pantoken localization engine\n"
 "Language-Team: pantoken\n"
 "MIME-Version: 1.0\n"
@@ -34848,3 +34848,211 @@ msgstr "WCAG 2.2 2.5.8"
 msgctxt "docs.api:prose"
 msgid "All touch targets must be 24px large, or leave sufficient space"
 msgstr "כל מטרות המגע חייבות להיות בגודל 24px לפחות, או שיש להשאיר מרווח מספיק"
+
+msgctxt "docs.api:prose"
+msgid "<!-- pantoken-value-scope:css%2Fscreen-reader-content.md -->\nThis component ships no CSS of its own — its markup and behavior come entirely from {{ptk_code_0}}. See the [modifier table below]({{ptk_code_1}})."
+msgstr "<!-- pantoken-value-scope:css%2Fscreen-reader-content.md -->\nהרכיב הזה אינו כולל CSS משלו — הסימון וההתנהגות שלו מגיעים כולם מ־{{ptk_code_0}}. ראו את [טבלת המשתנים שלהלן]({{ptk_code_1}})."
+
+msgctxt "docs.api:prose"
+msgid "A section for an empty state or call to action."
+msgstr "מקטע למצב ריק או לקריאה לפעולה."
+
+msgctxt "docs.api:prose"
+msgid "A breadcrumb navigation landmark."
+msgstr "נקודת ציון לניווט בפירורי לחם."
+
+msgctxt "docs.api:prose"
+msgid "A media-object byline container."
+msgstr "מכיל את שורת הקרדיט של אובייקט מדיה."
+
+msgctxt "docs.api:prose"
+msgid "An article-shaped card with slotted content."
+msgstr "כרטיס במבנה של מאמר עם תוכן המשובץ בחריצים."
+
+msgctxt "docs.api:prose"
+msgid "A native checkbox and its slotted label."
+msgstr "תיבת סימון מקורית והתווית המשובצת שלה."
+
+msgctxt "docs.api:prose"
+msgid "A native close button with an accessible label."
+msgstr "כפתור סגירה מובנה עם תווית נגישה."
+
+msgctxt "docs.api:prose"
+msgid "Missing root component records, registered after the hand-authored elements."
+msgstr "חסרות רשומות של רכיבי root, שנרשמו לאחר הרכיבים שנכתבו ידנית."
+
+msgctxt "docs.api:prose"
+msgid "A native file picker presented as a dropzone label."
+msgstr "בורר קבצים מובנה המוצג כתווית של אזור גרירה."
+
+msgctxt "docs.api:prose"
+msgid "A form-field layout container."
+msgstr "מיכל לפריסת שדות טופס."
+
+msgctxt "docs.api:prose"
+msgid "A native fieldset for a group of form fields."
+msgstr "קבוצת שדות מקורית עבור קבוצת שדות בטופס."
+
+msgctxt "docs.api:prose"
+msgid "A status region for form-field help and validation messages."
+msgstr "אזור סטטוס לעזרה בשדות הטופס ולהודעות אימות."
+
+msgctxt "docs.api:prose"
+msgid "A semantic heading with a bounded level from one through six."
+msgstr "כותרת סמנטית עם רמה מוגבלת מאחת עד שש."
+
+msgctxt "docs.api:prose"
+msgid "A container for an input and adjacent content."
+msgstr "מיכל עבור קלט ותוכן סמוך."
+
+msgctxt "docs.api:prose"
+msgid "A link that rejects executable and data URL schemes."
+msgstr "קישור שדוחה סכמות של כתובות URL לקוד שניתן להריץ ולנתונים."
+
+msgctxt "docs.api:prose"
+msgid "A native unordered list with Pantoken list-item styles."
+msgstr "רשימה לא ממוספרת מקורית עם סגנונות לפריטי רשימה של Pantoken."
+
+msgctxt "docs.api:prose"
+msgid "An overlay surface for positioned content."
+msgstr "משטח שכבת־על לתוכן ממוקם."
+
+msgctxt "docs.api:prose"
+msgid "A menu surface with item, group, and separator styles."
+msgstr "משטח תפריט עם סגנונות לפריט, לקבוצה ולמפריד."
+
+msgctxt "docs.api:prose"
+msgid "A native number input with value-change events."
+msgstr "שדה קלט מספרים מקורי עם אירועים בעת שינוי הערך."
+
+msgctxt "docs.api:prose"
+msgid "A pagination navigation landmark."
+msgstr "אזור ניווט לעימוד."
+
+msgctxt "docs.api:prose"
+msgid "A native radio control and its slotted label."
+msgstr "פקד בחירה יחידה מקורי והתווית המשובצת שלו."
+
+msgctxt "docs.api:prose"
+msgid "A native fieldset for a radio-input group."
+msgstr "קבוצת שדות מקורית לקבוצת קלטי רדיו."
+
+msgctxt "docs.api:prose"
+msgid "A native range slider with value-change events."
+msgstr "מחוון טווח מקורי עם אירועים בעת שינוי הערך."
+
+msgctxt "docs.api:prose"
+msgid "Visually hidden content that remains available to assistive technology."
+msgstr "תוכן מוסתר חזותית שנותר זמין לטכנולוגיה מסייעת."
+
+msgctxt "docs.api:prose"
+msgid "A native select control that copies text-only options from its light DOM."
+msgstr "בקרת בחירה מקורית שמעתיקה אפשרויות טקסט בלבד מה־light DOM שלה."
+
+msgctxt "docs.api:prose"
+msgid "A table-layout container that keeps slotted rows inside its table semantics."
+msgstr "מיכל בפריסת טבלה ששומר על השורות שהוקצו לו בתוך הסמנטיקה של הטבלה."
+
+msgctxt "docs.api:prose"
+msgid "A paragraph of Pantoken body text."
+msgstr "פסקה של טקסט גוף של Pantoken."
+
+msgctxt "docs.api:prose"
+msgid "A native multiline text input with a visible slotted label."
+msgstr "שדה קלט טקסט רב־שורי מובנה עם תווית משובצת גלויה."
+
+msgctxt "docs.api:prose"
+msgid "A native text input with a visible slotted label."
+msgstr "שדה קלט טקסט מובנה עם תווית משובצת גלויה."
+
+msgctxt "docs.api:prose"
+msgid "A native disclosure with a configurable summary."
+msgstr "רכיב חשיפה מובנה עם תקציר שניתן להגדיר."
+
+msgctxt "docs.api:prose"
+msgid "A native disclosure group."
+msgstr "קבוצת גילוי מובנית."
+
+msgctxt "docs.api:prose"
+msgid "A neutral layout primitive."
+msgstr "רכיב בסיסי ניטרלי לפריסה."
+
+#, pantoken-verbatim
+msgctxt "docs.api:text"
+msgid "toggleGroup"
+msgstr "toggleGroup"
+
+#, pantoken-verbatim
+msgctxt "docs.api:text"
+msgid "toggleDetails"
+msgstr "toggleDetails"
+
+#, pantoken-verbatim
+msgctxt "docs.api:text"
+msgid "fileDrop"
+msgstr "fileDrop"
+
+#, pantoken-verbatim
+msgctxt "docs.api:text"
+msgid "rangeInput"
+msgstr "rangeInput"
+
+#, pantoken-verbatim
+msgctxt "docs.api:text"
+msgid "screenReaderContent"
+msgstr "screenReaderContent"
+
+#, pantoken-verbatim
+msgctxt "docs.api:text"
+msgid "closeButton"
+msgstr "closeButton"
+
+#, pantoken-verbatim
+msgctxt "docs.api:text"
+msgid "formField"
+msgstr "formField"
+
+#, pantoken-verbatim
+msgctxt "docs.api:text"
+msgid "formFieldGroup"
+msgstr "formFieldGroup"
+
+#, pantoken-verbatim
+msgctxt "docs.api:text"
+msgid "radioInputGroup"
+msgstr "radioInputGroup"
+
+#, pantoken-verbatim
+msgctxt "docs.api:text"
+msgid "formFieldMessages"
+msgstr "formFieldMessages"
+
+#, pantoken-verbatim
+msgctxt "docs.api:text"
+msgid "textInput"
+msgstr "textInput"
+
+#, pantoken-verbatim
+msgctxt "docs.api:text"
+msgid "textArea"
+msgstr "textArea"
+
+#, pantoken-verbatim
+msgctxt "docs.api:text"
+msgid "simpleSelect"
+msgstr "simpleSelect"
+
+#, pantoken-verbatim
+msgctxt "docs.api:text"
+msgid "inputGroup"
+msgstr "inputGroup"
+
+#, pantoken-verbatim
+msgctxt "docs.api:text"
+msgid "numberInput"
+msgstr "numberInput"
+
+#, pantoken-verbatim
+msgctxt "docs.api:text"
+msgid "componentElements"
+msgstr "componentElements"

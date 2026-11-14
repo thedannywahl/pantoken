@@ -32,8 +32,8 @@ features:
     title: Für jede Plattform generieren
     details: Installieren Sie die pantoken-CLI, um Voreinstellungen zu generieren oder Komponenten für jede Plattform&colon; Web, nativ und alles dazwischen hinzuzufügen.
   - icon:
-      light: /unlink-light.svg
-      dark: /unlink-dark.svg
-    title: Kein React erforderlich
-    details: Die InstUI-Bibliothek ist eng mit React gekoppelt. Wenn Sie sie verwenden möchten, müssen Sie React verwenden. Jetzt können Sie überall entwickeln.
+      light: /wand-sparkles-light.svg
+      dark: /wand-sparkles-dark.svg
+    title: Agentisch entwickeln
+    details: Füge pantoken mit den enthaltenen Skills, der Agents-Datei, api-catalog, llms.txt und A2UI zu den KI-Tools hinzu, die du bereits verwendest.
 ---

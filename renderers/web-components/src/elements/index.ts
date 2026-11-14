@@ -38,6 +38,7 @@ import { tooltip } from "./tooltip.ts";
 import { tray } from "./tray.ts";
 import { treeBrowser } from "./tree-browser.ts";
 import { truncate } from "./truncate.ts";
+import { componentElements } from "./component-elements.ts";
 
 /**
  * Every element definition, in the canonical registration order. The order is load-bearing:
@@ -76,4 +77,5 @@ export const DEFINITIONS: readonly ElementDefinition[] = [
   dateInput,
   dateTimeInput,
   tabs,
+  ...componentElements,
 ];

@@ -32,8 +32,8 @@ features:
     title: Jana untuk mana-mana platform
     details: Pasang pantoken cli untuk menghasilkan preset atau menambahkan komponen untuk platform apa pun&colon; web, asli, dan apa pun di antaranya.
   - icon:
-      light: /unlink-light.svg
-      dark: /unlink-dark.svg
-    title: Tidak perlu React
-    details: Perpustakaan InstUI sangat terikat dengan React. Jika Anda ingin menggunakannya, Anda harus menggunakan React. Sekarang Anda dapat membangun di mana saja.
+      light: /wand-sparkles-light.svg
+      dark: /wand-sparkles-dark.svg
+    title: Bina dengan bantuan agen
+    details: Tambahkan pantoken pada alat AI yang sudah anda gunakan dengan kemahiran, fail agents, api-catalog, llms.txt dan A2UI yang disertakan.
 ---

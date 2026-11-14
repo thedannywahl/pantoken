@@ -1,7 +1,7 @@
 {
   "name": "@pantoken/ai",
   "version": "1.4.4",
-  "description": "Agent assets for projects that use pantoken: AGENTS.md, llms.txt, editor rules, and Claude Code skills for initialization, applications, registry usage, and standalone mockups.",
+  "description": "Agent assets and a versioned A2UI 1.0 component catalog for projects that use pantoken.",
   "homepage": "https://pantoken.app",
   "bugs": "https://github.com/thedannywahl/pantoken/issues",
   "license": "MIT",
@@ -17,13 +17,15 @@
     "dist",
     "bin",
     "assets",
-    "skills"
+    "skills",
+    "catalogs"
   ],
   "type": "module",
   "sideEffects": false,
   "exports": {
     ".": "./dist/index.mjs",
     "./cli": "./dist/cli.mjs",
+    "./a2ui/catalog-v1.json": "./catalogs/pantoken-v1.json",
     "./package.json": "./package.json"
   },
   "publishConfig": {
@@ -31,7 +33,7 @@
     "provenance": true
   },
   "scripts": {
-    "generate": "node scripts/generate.ts",
+    "generate": "node scripts/generate.ts && node scripts/generate-a2ui-catalog.ts",
     "extract": "i18n --config \"$(git rev-parse --show-toplevel)/i18n.config.json\" extract cli.ai",
     "translate": "i18n --config \"$(git rev-parse --show-toplevel)/i18n.config.json\" translate cli.ai --provider claude",
     "translate:agy": "i18n --config \"$(git rev-parse --show-toplevel)/i18n.config.json\" translate cli.ai --provider agy",
@@ -43,7 +45,7 @@
     "dev": "vp pack --watch",
     "test": "vp run generate && vp test",
     "check": "vp check && i18n --config \"$(git rev-parse --show-toplevel)/i18n.config.json\" check cli.ai",
-    "eval": "waza run evals --discover -v"
+    "eval": "node scripts/generate.ts && waza run evals --discover -v"
   },
   "dependencies": {
     "@bomb.sh/tab": "catalog:",

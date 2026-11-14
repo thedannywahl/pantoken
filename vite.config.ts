@@ -90,11 +90,17 @@ export default defineConfig({
     // `ai/create-pantoken-app-site` is a separate git submodule (github.com/thedannywahl/
     // create-pantoken-app): its `index.html` is plain-text skill content wearing an `.html`
     // extension only so the static host resolves it as the directory index, not real markup to format.
+    // A2UI catalog copies are generated from the exhaustive component contracts and checked by
+    // generate-a2ui-catalog.ts; formatting them independently would invalidate that check.
     ignorePatterns: [
       ".entire/settings.json",
       "docs/api/**",
       "docs/*/api/**",
       "ai/create-pantoken-app-site/**",
+      "ai/pantoken-ai/catalogs/pantoken-v1.json",
+      "renderers/web-components/src/generated/a2ui-catalog.json",
+      "docs/.vitepress/theme/generated/a2ui-catalog.json",
+      "docs/public/a2ui/catalog.json",
     ],
   },
   lint: {
@@ -165,6 +171,10 @@ export default defineConfig({
       // Coverage run for Codecov + fallow health; needs generated output like the plain test run.
       "test:coverage": {
         command: "vp test --coverage",
+        dependsOn: ["build:all"],
+      },
+      "test:a2ui": {
+        command: "vp run @pantoken/a2ui-conformance#check:browser",
         dependsOn: ["build:all"],
       },
       "validate:generated:only": {

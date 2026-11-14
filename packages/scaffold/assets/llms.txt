@@ -61,6 +61,11 @@
 ## Theming other systems
 
 - `@pantoken/shadcn` · `@pantoken/bootstrap` · `@pantoken/storybook`
+- A2UI: for verified A2UI 1.0 Lit clients, use `@pantoken/ai/a2ui/catalog-v1.json` with
+  `@pantoken/web-components/a2ui` alongside the Basic Catalog. It defines every exported
+  `@pantoken/web-components` element. React/Angular runtime support is pending verification;
+  Flutter, SwiftUI, and Jetpack Compose have schema-only support. For Basic Catalog theming, use
+  version-matched `--a2ui-*` properties and verified `--instui-*` tokens.
 
 ## Native & other ecosystems (CLI: `pantoken generate <target>`)
 
@@ -74,6 +79,8 @@
 
 - `@pantoken/ai` provides installable agent assets: `AGENTS.md`, `llms.txt`, and editor/assistant
 	rules for Cursor, Copilot, Windsurf, and Claude Code.
+- The Claude Code assets include `use-a2ui` for A2UI integrations; shared agent rules also cover
+	version-aware token theming.
 - CLI: `npx pantoken-ai init [--tool <all|agents|llms|cursor|copilot|windsurf|claude>] [--dir <path>]`.
 
 ## Design & interchange

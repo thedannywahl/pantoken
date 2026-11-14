@@ -9,6 +9,37 @@
 export const esc = (value: string): string =>
   value.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;");
 
+/** Allow navigable schemes and same-origin relative references; reject executable and network-path URLs. */
+export function safeHref(value: string | null): string | undefined {
+  const href = value;
+  if (!href || href !== href.trim()) return undefined;
+  for (const character of href) {
+    const code = character.charCodeAt(0);
+    if (code <= 0x20 || code === 0x7f || character === "\\") return undefined;
+  }
+  const scheme = /^([a-z][a-z\d+.-]*):/iu.exec(href)?.[1]?.toLowerCase();
+  if (
+    scheme &&
+    !(
+      ((scheme === "http" || scheme === "https") && /^https?:\/\//iu.test(href)) ||
+      ((scheme === "mailto" || scheme === "tel") && href.length > scheme.length + 1)
+    )
+  ) {
+    return undefined;
+  }
+  if (!scheme && href.startsWith("//")) return undefined;
+  try {
+    const base = new URL("https://pantoken.invalid/");
+    const url = new URL(href, base);
+    if (scheme) {
+      return ["http:", "https:", "mailto:", "tel:"].includes(url.protocol) ? href : undefined;
+    }
+    return url.origin === base.origin ? href : undefined;
+  } catch {
+    return undefined;
+  }
+}
+
 /** Sanitize an attribute value used as a class-name fragment (modifiers, sizes). */
 export const frag = (value: string | null): string => (value ?? "").replace(/[^a-z0-9-]/giu, "");
 

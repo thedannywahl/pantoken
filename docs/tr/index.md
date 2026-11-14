@@ -32,8 +32,8 @@ features:
     title: Her platform için üretin
     details: pantoken CLI'sını yükleyerek ön ayarlar oluşturun veya herhangi bir platform için bileşen ekleyin&colon; web, yerel ve bunların arasındaki her şey.
   - icon:
-      light: /unlink-light.svg
-      dark: /unlink-dark.svg
-    title: React'e gerek yok
-    details: InstUI kütüphanesi React ile sıkı şekilde bağlıdır. Eğer bunu kullanmak istiyorsanız, React kullanmanız gerekir. Artık her yerde oluşturabilirsiniz.
+      light: /wand-sparkles-light.svg
+      dark: /wand-sparkles-dark.svg
+    title: Ajan olarak oluştur
+    details: Zaten kullandığınız AI araçlarına pantoken'ı dahil edilmiş beceriler, ajan dosyası, api-catalog, llms.txt ve A2UI ile ekleyin.
 ---

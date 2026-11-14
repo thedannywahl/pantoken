@@ -65,6 +65,12 @@ can't clear a newer open state; separate hosts still receive a bubbling `close` 
 
 ## Shared helpers
 
+### Tab selection notifications
+
+`initTabs(host)` emits a bubbling `change` event with `detail.index` when pointer or keyboard
+interaction changes the selected tab. Initialization and reselection don't emit it. A2UI uses this
+event for two-way `activeIndex` bindings, so keyboard navigation updates the model as well as panels.
+
 ### Progressively enhanced tooltips
 
 `initTooltip(wrapper, tip, { showDelay, hideDelay })` owns visibility once initialized.

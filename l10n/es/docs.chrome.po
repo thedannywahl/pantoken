@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: pantoken\n"
-"PO-Revision-Date: 2026-10-01 01:49+0000\n"
+"PO-Revision-Date: 2026-11-14 02:25+0000\n"
 "Last-Translator: pantoken localization engine\n"
 "Language-Team: pantoken\n"
 "Language: und\n"
@@ -90,6 +90,12 @@ msgstr "Selector de CDN"
 msgctxt "docs.chrome:sidebar.registry"
 msgid "shadcn/ui Registry"
 msgstr "Registro"
+
+#: docs/.vitepress/i18n.json#sidebar.a2uiCatalog
+#, fuzzy, no-c-format
+msgctxt "docs.chrome:sidebar.a2uiCatalog"
+msgid "A2UI Catalog"
+msgstr "Catálogo de API"
 
 #: docs/.vitepress/i18n.json#sidebar.agentTools
 #, fuzzy, no-c-format
@@ -466,13 +472,12 @@ msgstr "Registro"
 #, no-c-format
 msgctxt "docs.chrome:registryBrowser.subtitle"
 msgid ""
-"Compatible components, themes, and behavior hooks conforming to the shadcn/"
-"ui registry specification. Add items directly to your shadcn/ui project via "
-"CLI."
+"CSS components, layouts, plugins, and themes for package-managed shadcn "
+"projects. Items install styles and usage metadata, not React components."
 msgstr ""
-"Componentes compatibles, temas y hooks de comportamiento que cumplen con la "
-"especificación del registro shadcn/ui. Agrega elementos directamente a tu "
-"proyecto shadcn/ui mediante la CLI."
+"Componentes CSS, diseños, plugins y temas para proyectos shadcn gestionados "
+"por paquetes. Los elementos instalan estilos y metadatos de uso, no "
+"componentes React."
 
 #: docs/.vitepress/i18n.json#registryBrowser.tabAll
 #, no-c-format
@@ -499,16 +504,46 @@ msgid "Hooks"
 msgstr "Hooks"
 
 #: docs/.vitepress/i18n.json#registryBrowser.searchPlaceholder
-#, no-c-format
+#, fuzzy, no-c-format
 msgctxt "docs.chrome:registryBrowser.searchPlaceholder"
-msgid "Filter components, themes, hooks…"
+msgid "Filter components, layouts, plugins, themes…"
 msgstr "Filtrar componentes, temas, hooks…"
+
+#: docs/.vitepress/i18n.json#registryBrowser.searchLabel
+#, fuzzy, no-c-format
+msgctxt "docs.chrome:registryBrowser.searchLabel"
+msgid "Filter registry items"
+msgstr "Registro"
 
 #: docs/.vitepress/i18n.json#registryBrowser.cliLabel
 #, no-c-format
 msgctxt "docs.chrome:registryBrowser.cliLabel"
 msgid "CLI:"
 msgstr "CLI:"
+
+#: docs/.vitepress/i18n.json#registryBrowser.cliPattern
+#, no-c-format
+msgctxt "docs.chrome:registryBrowser.cliPattern"
+msgid "CLI pattern:"
+msgstr "Patrón de CLI:"
+
+#: docs/.vitepress/i18n.json#registryBrowser.typeTheme
+#, fuzzy, no-c-format
+msgctxt "docs.chrome:registryBrowser.typeTheme"
+msgid "Theme"
+msgstr "Tema"
+
+#: docs/.vitepress/i18n.json#registryBrowser.typeBase
+#, fuzzy, no-c-format
+msgctxt "docs.chrome:registryBrowser.typeBase"
+msgid "Base"
+msgstr "Base"
+
+#: docs/.vitepress/i18n.json#registryBrowser.typeHook
+#, fuzzy, no-c-format
+msgctxt "docs.chrome:registryBrowser.typeHook"
+msgid "Hook"
+msgstr "Hooks"
 
 #: docs/.vitepress/i18n.json#registryBrowser.copy
 #, fuzzy, no-c-format
@@ -557,6 +592,193 @@ msgstr "Ningún elemento del registro coincide con tu búsqueda."
 msgctxt "docs.chrome:registryBrowser.emptyReset"
 msgid "Reset Filters"
 msgstr "Restablecer búsqueda"
+
+#: docs/.vitepress/i18n.json#a2uiCatalog.title
+#, no-c-format
+msgctxt "docs.chrome:a2uiCatalog.title"
+msgid "Pantoken A2UI Catalog"
+msgstr "Catálogo A2UI de Pantoken"
+
+#: docs/.vitepress/i18n.json#a2uiCatalog.subtitle
+#, no-c-format
+msgctxt "docs.chrome:a2uiCatalog.subtitle"
+msgid ""
+"Explore the Pantoken component vocabulary for A2UI 1.0. This catalog defines "
+"only Pantoken components; standard layout components remain in the A2UI "
+"Basic Catalog."
+msgstr ""
+"Explora el vocabulario de componentes de Pantoken para A2UI 1.0. Este "
+"catálogo define solo componentes de Pantoken; los componentes de diseño "
+"estándar siguen en el catálogo básico de A2UI."
+
+#: docs/.vitepress/i18n.json#a2uiCatalog.protocolLabel
+#, no-c-format
+msgctxt "docs.chrome:a2uiCatalog.protocolLabel"
+msgid "Protocol"
+msgstr "Protocolo"
+
+#: docs/.vitepress/i18n.json#a2uiCatalog.catalogIdLabel
+#, no-c-format
+msgctxt "docs.chrome:a2uiCatalog.catalogIdLabel"
+msgid "Catalog ID"
+msgstr "ID del catálogo"
+
+#: docs/.vitepress/i18n.json#a2uiCatalog.rawCatalog
+#, no-c-format
+msgctxt "docs.chrome:a2uiCatalog.rawCatalog"
+msgid "View catalog JSON"
+msgstr "Ver JSON del catálogo"
+
+#: docs/.vitepress/i18n.json#a2uiCatalog.componentsHeading
+#, fuzzy, no-c-format
+msgctxt "docs.chrome:a2uiCatalog.componentsHeading"
+msgid "Components"
+msgstr "Componentes"
+
+#: docs/.vitepress/i18n.json#a2uiCatalog.searchLabel
+#, fuzzy, no-c-format
+msgctxt "docs.chrome:a2uiCatalog.searchLabel"
+msgid "Filter components"
+msgstr "Todos los componentes"
+
+#: docs/.vitepress/i18n.json#a2uiCatalog.searchPlaceholder
+#, no-c-format
+msgctxt "docs.chrome:a2uiCatalog.searchPlaceholder"
+msgid "Search names, properties, or values"
+msgstr "Buscar nombres, propiedades o valores"
+
+#: docs/.vitepress/i18n.json#a2uiCatalog.required
+#, no-c-format
+msgctxt "docs.chrome:a2uiCatalog.required"
+msgid "Required"
+msgstr "Obligatorio"
+
+#: docs/.vitepress/i18n.json#a2uiCatalog.optional
+#, no-c-format
+msgctxt "docs.chrome:a2uiCatalog.optional"
+msgid "Optional"
+msgstr "Opcional"
+
+#: docs/.vitepress/i18n.json#a2uiCatalog.noFunctions
+#, no-c-format
+msgctxt "docs.chrome:a2uiCatalog.noFunctions"
+msgid ""
+"This catalog defines no executable functions. Button actions use A2UI's "
+"registered action handling."
+msgstr ""
+"Este catálogo no define funciones ejecutables. Las acciones de los botones "
+"usan la gestión de acciones registrada de A2UI."
+
+#: docs/.vitepress/i18n.json#a2uiCatalog.supportHeading
+#, no-c-format
+msgctxt "docs.chrome:a2uiCatalog.supportHeading"
+msgid "Client support"
+msgstr "Compatibilidad de clientes"
+
+#: docs/.vitepress/i18n.json#a2uiCatalog.litSupport
+#, no-c-format
+msgctxt "docs.chrome:a2uiCatalog.litSupport"
+msgid "Verified with the published A2UI 1.0 Lit SDK."
+msgstr "Verificado con el SDK Lit publicado de A2UI 1.0."
+
+#: docs/.vitepress/i18n.json#a2uiCatalog.reactSupport
+#, no-c-format
+msgctxt "docs.chrome:a2uiCatalog.reactSupport"
+msgid ""
+"Verified with @a2ui/react 0.15.0 and React 19.3.1 in Chromium, Firefox, and "
+"WebKit."
+msgstr ""
+"Verificado con @a2ui/react 0.15.0 y React 19.3.1 en Chromium, Firefox y "
+"WebKit."
+
+#: docs/.vitepress/i18n.json#a2uiCatalog.angularSupport
+#, no-c-format
+msgctxt "docs.chrome:a2uiCatalog.angularSupport"
+msgid ""
+"Verified with @a2ui/angular 0.14.0 and Angular 21.2.5 in Chromium, Firefox, "
+"and WebKit."
+msgstr ""
+"Verificado con @a2ui/angular 0.14.0 y Angular 21.2.5 en Chromium, Firefox y "
+"WebKit."
+
+#: docs/.vitepress/i18n.json#a2uiCatalog.nativeSupport
+#, no-c-format
+msgctxt "docs.chrome:a2uiCatalog.nativeSupport"
+msgid ""
+"Flutter, SwiftUI, and Jetpack Compose: schema only; no Pantoken native "
+"component renderers."
+msgstr ""
+"Flutter, SwiftUI y Jetpack Compose: solo esquema; no hay renderizadores de "
+"componentes nativos de Pantoken."
+
+#: docs/.vitepress/i18n.json#a2uiCatalog.functionsHeading
+#, fuzzy, no-c-format
+msgctxt "docs.chrome:a2uiCatalog.functionsHeading"
+msgid "Functions"
+msgstr "Acción"
+
+#: docs/.vitepress/i18n.json#a2uiCatalog.integrationHeading
+#, no-c-format
+msgctxt "docs.chrome:a2uiCatalog.integrationHeading"
+msgid "Lit registration"
+msgstr "Registro de Lit"
+
+#: docs/.vitepress/i18n.json#a2uiCatalog.componentReference
+#, fuzzy, no-c-format
+msgctxt "docs.chrome:a2uiCatalog.componentReference"
+msgid ""
+"Use catalogId to reference Pantoken components alongside Basic Catalog "
+"components."
+msgstr ""
+"Usa @catalogId para hacer referencia a componentes de Pantoken junto con "
+"componentes del catálogo básico."
+
+#: docs/.vitepress/i18n.json#a2uiCatalog.empty
+#, fuzzy, no-c-format
+msgctxt "docs.chrome:a2uiCatalog.empty"
+msgid "No components match your search."
+msgstr "Ningún elemento del registro coincide con tu búsqueda."
+
+#: docs/.vitepress/i18n.json#a2uiCatalog.value
+#, no-c-format
+msgctxt "docs.chrome:a2uiCatalog.value"
+msgid "A2UI value"
+msgstr "Valor de A2UI"
+
+#: docs/.vitepress/i18n.json#a2uiCatalog.versioningHeading
+#, no-c-format
+msgctxt "docs.chrome:a2uiCatalog.versioningHeading"
+msgid "Catalog Versioning"
+msgstr "Versionado del catálogo"
+
+#: docs/.vitepress/i18n.json#a2uiCatalog.versioningDescription
+#, no-c-format
+msgctxt "docs.chrome:a2uiCatalog.versioningDescription"
+msgid ""
+"The v1 catalog ID is stable. Adding an optional component, property, or enum "
+"value is additive; removing or renaming an existing component or property, "
+"narrowing an enum, or making an optional property required is breaking and "
+"requires a new catalog version. Only the components and properties listed "
+"above are part of Pantoken's A2UI catalog."
+msgstr ""
+"El ID del catálogo v1 es estable. Añadir un componente, una propiedad o un "
+"valor de enumeración opcionales es un cambio aditivo; eliminar o renombrar "
+"un componente o una propiedad existentes, restringir una enumeración o hacer "
+"obligatoria una propiedad opcional es un cambio incompatible que requiere "
+"una nueva versión del catálogo. Solo forman parte del catálogo A2UI de "
+"Pantoken los componentes y las propiedades enumerados arriba."
+
+#: docs/.vitepress/i18n.json#a2uiCatalog.versioningActions
+#, no-c-format
+msgctxt "docs.chrome:a2uiCatalog.versioningActions"
+msgid ""
+"The catalog defines no executable functions and does not authorize actions. "
+"A2UI actions are dispatched through the host application's normal action "
+"handling, where the application must enforce its own permissions."
+msgstr ""
+"El catálogo no define funciones ejecutables ni autoriza acciones. Las "
+"acciones de A2UI se envían mediante la gestión de acciones habitual de la "
+"aplicación anfitriona, donde esta debe aplicar sus propios permisos."
 
 #: docs/.vitepress/i18n.json#canvasRce.title
 #, fuzzy, no-c-format
@@ -1124,3 +1346,1641 @@ msgstr "para navegar"
 msgctxt "docs.chrome:search.footerClose"
 msgid "to close"
 msgstr "para cerrar"
+
+#: docs/.vitepress/catalog-i18n.json#a2uiCatalogDescriptions.PantokenIcon
+#, no-c-format
+msgctxt "docs.chrome:a2uiCatalogDescriptions.PantokenIcon"
+msgid "An inline glyph selected from Pantoken's icon set."
+msgstr "Un glifo en línea seleccionado del conjunto de iconos de Pantoken."
+
+#: docs/.vitepress/catalog-i18n.json#a2uiCatalogDescriptions.PantokenButton
+#, no-c-format
+msgctxt "docs.chrome:a2uiCatalogDescriptions.PantokenButton"
+msgid ""
+"A token-styled action button with optional A2UI event and Invoker Commands "
+"behavior."
+msgstr ""
+"Un botón de acción con estilos basados en tokens y comportamiento opcional "
+"de eventos A2UI y de Invoker Commands."
+
+#: docs/.vitepress/catalog-i18n.json#a2uiCatalogDescriptions.PantokenAlert
+#, no-c-format
+msgctxt "docs.chrome:a2uiCatalogDescriptions.PantokenAlert"
+msgid "A status message with optional timeout dismissal."
+msgstr ""
+"Un mensaje de estado con opción de descartarse tras un tiempo de espera."
+
+#: docs/.vitepress/catalog-i18n.json#a2uiCatalogDescriptions.PantokenBadge
+#, no-c-format
+msgctxt "docs.chrome:a2uiCatalogDescriptions.PantokenBadge"
+msgid "A compact count or status badge."
+msgstr "Una insignia compacta de recuento o estado."
+
+#: docs/.vitepress/catalog-i18n.json#a2uiCatalogDescriptions.PantokenPill
+#, no-c-format
+msgctxt "docs.chrome:a2uiCatalogDescriptions.PantokenPill"
+msgid "A compact status pill."
+msgstr "Una píldora de estado compacta."
+
+#: docs/.vitepress/catalog-i18n.json#a2uiCatalogDescriptions.PantokenTag
+#, no-c-format
+msgctxt "docs.chrome:a2uiCatalogDescriptions.PantokenTag"
+msgid "A token-styled tag or chip."
+msgstr "Una etiqueta o chip con estilos basados en tokens."
+
+#: docs/.vitepress/catalog-i18n.json#a2uiCatalogDescriptions.PantokenAvatar
+#, no-c-format
+msgctxt "docs.chrome:a2uiCatalogDescriptions.PantokenAvatar"
+msgid "An initials avatar with a constrained palette, size, and shape."
+msgstr ""
+"Un avatar con iniciales y una paleta, un tamaño y una forma restringidos."
+
+#: docs/.vitepress/catalog-i18n.json#a2uiCatalogDescriptions.PantokenSpinner
+#, no-c-format
+msgctxt "docs.chrome:a2uiCatalogDescriptions.PantokenSpinner"
+msgid "A loading status indicator."
+msgstr "Un indicador de estado de carga."
+
+#: docs/.vitepress/catalog-i18n.json#a2uiCatalogDescriptions.PantokenProgress
+#, no-c-format
+msgctxt "docs.chrome:a2uiCatalogDescriptions.PantokenProgress"
+msgid "A horizontal progress or meter indicator."
+msgstr "Un indicador horizontal de progreso o nivel."
+
+#: docs/.vitepress/catalog-i18n.json#a2uiCatalogDescriptions.PantokenMetric
+#, no-c-format
+msgctxt "docs.chrome:a2uiCatalogDescriptions.PantokenMetric"
+msgid "A large value paired with a descriptive label."
+msgstr "Un valor grande acompañado de una etiqueta descriptiva."
+
+#: docs/.vitepress/catalog-i18n.json#a2uiCatalogDescriptions.PantokenRating
+#, no-c-format
+msgctxt "docs.chrome:a2uiCatalogDescriptions.PantokenRating"
+msgid "A read-only star rating with a bounded number of stars."
+msgstr ""
+"Una calificación de estrellas de solo lectura con un número de estrellas "
+"limitado."
+
+#: docs/.vitepress/catalog-i18n.json#a2uiCatalogDescriptions.PantokenProgressCircle
+#, no-c-format
+msgctxt "docs.chrome:a2uiCatalogDescriptions.PantokenProgressCircle"
+msgid "A circular progress or meter indicator."
+msgstr "Un indicador circular de progreso o nivel."
+
+#: docs/.vitepress/catalog-i18n.json#a2uiCatalogDescriptions.PantokenIconButton
+#, no-c-format
+msgctxt "docs.chrome:a2uiCatalogDescriptions.PantokenIconButton"
+msgid "An icon-only button with an accessible label."
+msgstr "Un botón que contiene solo un icono y tiene una etiqueta accesible."
+
+#: docs/.vitepress/catalog-i18n.json#a2uiCatalogDescriptions.PantokenToggleButton
+#, no-c-format
+msgctxt "docs.chrome:a2uiCatalogDescriptions.PantokenToggleButton"
+msgid "A two-state button whose pressed state is bound to A2UI data."
+msgstr ""
+"Un botón de dos estados cuyo estado de activación está vinculado a datos de "
+"A2UI."
+
+#: docs/.vitepress/catalog-i18n.json#a2uiCatalogDescriptions.PantokenTruncate
+#, no-c-format
+msgctxt "docs.chrome:a2uiCatalogDescriptions.PantokenTruncate"
+msgid "A clamped text region with an allowlisted line count."
+msgstr ""
+"Una región de texto con líneas limitadas y un número de líneas permitido."
+
+#: docs/.vitepress/catalog-i18n.json#a2uiCatalogDescriptions.PantokenImg
+#, no-c-format
+msgctxt "docs.chrome:a2uiCatalogDescriptions.PantokenImg"
+msgid ""
+"A responsive image with a sanitized media URL and constrained presentation."
+msgstr ""
+"Una imagen adaptable con una URL de medios saneada y una presentación "
+"restringida."
+
+#: docs/.vitepress/catalog-i18n.json#a2uiCatalogDescriptions.PantokenSideNavBar
+#, no-c-format
+msgctxt "docs.chrome:a2uiCatalogDescriptions.PantokenSideNavBar"
+msgid "A vertical navigation rail that can collapse to icon-only presentation."
+msgstr ""
+"Una barra de navegación vertical que puede contraerse para mostrar solo "
+"iconos."
+
+#: docs/.vitepress/catalog-i18n.json#a2uiCatalogDescriptions.PantokenTreeBrowser
+#, no-c-format
+msgctxt "docs.chrome:a2uiCatalogDescriptions.PantokenTreeBrowser"
+msgid ""
+"An accessible tree whose child components are exposed as focusable tree "
+"items."
+msgstr ""
+"Un árbol accesible cuyos componentes secundarios se exponen como elementos "
+"enfocables del árbol."
+
+#: docs/.vitepress/catalog-i18n.json#a2uiCatalogDescriptions.PantokenCalendar
+#, no-c-format
+msgctxt "docs.chrome:a2uiCatalogDescriptions.PantokenCalendar"
+msgid "An interactive month calendar that updates its selected ISO date."
+msgstr ""
+"Un calendario mensual interactivo que actualiza la fecha ISO seleccionada."
+
+#: docs/.vitepress/catalog-i18n.json#a2uiCatalogDescriptions.PantokenTooltip
+#, no-c-format
+msgctxt "docs.chrome:a2uiCatalogDescriptions.PantokenTooltip"
+msgid "A noninteractive tooltip around a trigger component."
+msgstr ""
+"Una ayuda emergente no interactiva alrededor de un componente activador."
+
+#: docs/.vitepress/catalog-i18n.json#a2uiCatalogDescriptions.PantokenModal
+#, no-c-format
+msgctxt "docs.chrome:a2uiCatalogDescriptions.PantokenModal"
+msgid "A native dialog with command-driven open and close behavior."
+msgstr ""
+"Un diálogo nativo con comportamiento de apertura y cierre controlado por "
+"comandos."
+
+#: docs/.vitepress/catalog-i18n.json#a2uiCatalogDescriptions.PantokenContextView
+#, no-c-format
+msgctxt "docs.chrome:a2uiCatalogDescriptions.PantokenContextView"
+msgid "A callout popover with Pantoken styling."
+msgstr "Una ventana emergente de llamada con estilos de Pantoken."
+
+#: docs/.vitepress/catalog-i18n.json#a2uiCatalogDescriptions.PantokenPopover
+#, no-c-format
+msgctxt "docs.chrome:a2uiCatalogDescriptions.PantokenPopover"
+msgid "A floating popover surface."
+msgstr "Una superficie emergente flotante."
+
+#: docs/.vitepress/catalog-i18n.json#a2uiCatalogDescriptions.PantokenTray
+#, no-c-format
+msgctxt "docs.chrome:a2uiCatalogDescriptions.PantokenTray"
+msgid "A viewport-edge popover panel with constrained placement and size."
+msgstr ""
+"Un panel emergente en el borde de la ventana gráfica con ubicación y tamaño "
+"restringidos."
+
+#: docs/.vitepress/catalog-i18n.json#a2uiCatalogDescriptions.PantokenInPlaceEdit
+#, no-c-format
+msgctxt "docs.chrome:a2uiCatalogDescriptions.PantokenInPlaceEdit"
+msgid "An inline editable value with A2UI state updates."
+msgstr "Un valor editable en línea con actualizaciones de estado de A2UI."
+
+#: docs/.vitepress/catalog-i18n.json#a2uiCatalogDescriptions.PantokenDrilldown
+#, no-c-format
+msgctxt "docs.chrome:a2uiCatalogDescriptions.PantokenDrilldown"
+msgid "A nested menu built from safe page and item data."
+msgstr ""
+"Un menú anidado creado a partir de datos seguros de páginas y elementos."
+
+#: docs/.vitepress/catalog-i18n.json#a2uiCatalogDescriptions.PantokenPages
+#, no-c-format
+msgctxt "docs.chrome:a2uiCatalogDescriptions.PantokenPages"
+msgid "A history-aware set of A2UI child panels."
+msgstr "Un conjunto de paneles secundarios de A2UI que conserva el historial."
+
+#: docs/.vitepress/catalog-i18n.json#a2uiCatalogDescriptions.PantokenDrawerLayout
+#, no-c-format
+msgctxt "docs.chrome:a2uiCatalogDescriptions.PantokenDrawerLayout"
+msgid "A responsive content and tray layout with command-driven open state."
+msgstr ""
+"Un diseño adaptable de contenido y panel con estado de apertura controlado "
+"por comandos."
+
+#: docs/.vitepress/catalog-i18n.json#a2uiCatalogDescriptions.PantokenDateInput
+#, no-c-format
+msgctxt "docs.chrome:a2uiCatalogDescriptions.PantokenDateInput"
+msgid "A date field with a calendar popover and ISO value updates."
+msgstr ""
+"Un campo de fecha con una ventana emergente de calendario y actualizaciones "
+"de valores ISO."
+
+#: docs/.vitepress/catalog-i18n.json#a2uiCatalogDescriptions.PantokenDateTimeInput
+#, no-c-format
+msgctxt "docs.chrome:a2uiCatalogDescriptions.PantokenDateTimeInput"
+msgid "A combined date and time field with an ISO value update."
+msgstr "Un campo combinado de fecha y hora con actualización de valor ISO."
+
+#: docs/.vitepress/catalog-i18n.json#a2uiCatalogDescriptions.PantokenTabs
+#, no-c-format
+msgctxt "docs.chrome:a2uiCatalogDescriptions.PantokenTabs"
+msgid "An accessible tab set pairing A2UI child panels with labels."
+msgstr ""
+"Un conjunto de pestañas accesible que empareja paneles secundarios de A2UI "
+"con etiquetas."
+
+#: docs/.vitepress/catalog-i18n.json#a2uiCatalogDescriptions.PantokenCard
+#, no-c-format
+msgctxt "docs.chrome:a2uiCatalogDescriptions.PantokenCard"
+msgid "A Pantoken card component with safe text and child content."
+msgstr ""
+"Un componente de tarjeta de Pantoken con texto seguro y contenido secundario."
+
+#: docs/.vitepress/catalog-i18n.json#a2uiCatalogDescriptions.PantokenByline
+#, no-c-format
+msgctxt "docs.chrome:a2uiCatalogDescriptions.PantokenByline"
+msgid "A Pantoken byline component with safe text and child content."
+msgstr ""
+"Un componente de firma de Pantoken con texto seguro y contenido secundario."
+
+#: docs/.vitepress/catalog-i18n.json#a2uiCatalogDescriptions.PantokenTable
+#, no-c-format
+msgctxt "docs.chrome:a2uiCatalogDescriptions.PantokenTable"
+msgid "A data table with a caption, column headers, and text-only cells."
+msgstr ""
+"Una tabla de datos con título, encabezados de columna y celdas que solo "
+"contienen texto."
+
+#: docs/.vitepress/catalog-i18n.json#a2uiCatalogDescriptions.PantokenLink
+#, no-c-format
+msgctxt "docs.chrome:a2uiCatalogDescriptions.PantokenLink"
+msgid "A navigable text link with an allowlisted URL scheme."
+msgstr "Un enlace de texto navegable con un esquema de URL permitido."
+
+#: docs/.vitepress/catalog-i18n.json#a2uiCatalogDescriptions.PantokenList
+#, no-c-format
+msgctxt "docs.chrome:a2uiCatalogDescriptions.PantokenList"
+msgid "A Pantoken list component with safe text and child content."
+msgstr ""
+"Un componente de lista de Pantoken con texto seguro y contenido secundario."
+
+#: docs/.vitepress/catalog-i18n.json#a2uiCatalogDescriptions.PantokenCheckbox
+#, no-c-format
+msgctxt "docs.chrome:a2uiCatalogDescriptions.PantokenCheckbox"
+msgid "A native checkbox with a visible label and checked-state updates."
+msgstr ""
+"Una casilla de verificación nativa con etiqueta visible y actualizaciones "
+"del estado de selección."
+
+#: docs/.vitepress/catalog-i18n.json#a2uiCatalogDescriptions.PantokenRadio
+#, no-c-format
+msgctxt "docs.chrome:a2uiCatalogDescriptions.PantokenRadio"
+msgid "A native radio control with a visible label and selected-value updates."
+msgstr ""
+"Un control de opción nativo con etiqueta visible y actualizaciones del valor "
+"seleccionado."
+
+#: docs/.vitepress/catalog-i18n.json#a2uiCatalogDescriptions.PantokenMenu
+#, no-c-format
+msgctxt "docs.chrome:a2uiCatalogDescriptions.PantokenMenu"
+msgid "A Pantoken menu component with safe text and child content."
+msgstr ""
+"Un componente de menú de Pantoken con texto seguro y contenido secundario."
+
+#: docs/.vitepress/catalog-i18n.json#a2uiCatalogDescriptions.PantokenBreadcrumb
+#, no-c-format
+msgctxt "docs.chrome:a2uiCatalogDescriptions.PantokenBreadcrumb"
+msgid "A labeled navigation landmark with breadcrumb items."
+msgstr ""
+"Un punto de referencia de navegación etiquetado con elementos de ruta de "
+"navegación."
+
+#: docs/.vitepress/catalog-i18n.json#a2uiCatalogDescriptions.PantokenBillboard
+#, no-c-format
+msgctxt "docs.chrome:a2uiCatalogDescriptions.PantokenBillboard"
+msgid "A Pantoken billboard component with safe text and child content."
+msgstr ""
+"Un componente de panel destacado de Pantoken con texto seguro y contenido "
+"secundario."
+
+#: docs/.vitepress/catalog-i18n.json#a2uiCatalogDescriptions.PantokenToggleGroup
+#, no-c-format
+msgctxt "docs.chrome:a2uiCatalogDescriptions.PantokenToggleGroup"
+msgid ""
+"A token-styled disclosure group with a summary and expandable child content."
+msgstr ""
+"Un grupo desplegable con estilos basados en tokens, un resumen y contenido "
+"secundario expandible."
+
+#: docs/.vitepress/catalog-i18n.json#a2uiCatalogDescriptions.PantokenPagination
+#, no-c-format
+msgctxt "docs.chrome:a2uiCatalogDescriptions.PantokenPagination"
+msgid "A labeled navigation landmark for pagination controls."
+msgstr ""
+"Un punto de referencia de navegación etiquetado para controles de paginación."
+
+#: docs/.vitepress/catalog-i18n.json#a2uiCatalogDescriptions.PantokenToggleDetails
+#, no-c-format
+msgctxt "docs.chrome:a2uiCatalogDescriptions.PantokenToggleDetails"
+msgid "A native disclosure with a summary and expandable child content."
+msgstr ""
+"Un elemento desplegable nativo con un resumen y contenido secundario "
+"expandible."
+
+#: docs/.vitepress/catalog-i18n.json#a2uiCatalogDescriptions.PantokenFileDrop
+#, no-c-format
+msgctxt "docs.chrome:a2uiCatalogDescriptions.PantokenFileDrop"
+msgid "A Pantoken file-drop component with safe text and child content."
+msgstr ""
+"Un componente de carga de archivos de Pantoken con texto seguro y contenido "
+"secundario."
+
+#: docs/.vitepress/catalog-i18n.json#a2uiCatalogDescriptions.PantokenRangeInput
+#, no-c-format
+msgctxt "docs.chrome:a2uiCatalogDescriptions.PantokenRangeInput"
+msgid "A native range slider with bounded numeric values."
+msgstr "Un control deslizante de rango nativo con valores numéricos limitados."
+
+#: docs/.vitepress/catalog-i18n.json#a2uiCatalogDescriptions.PantokenMask
+#, no-c-format
+msgctxt "docs.chrome:a2uiCatalogDescriptions.PantokenMask"
+msgid "A Pantoken mask component with safe text and child content."
+msgstr ""
+"Un componente de máscara de Pantoken con texto seguro y contenido secundario."
+
+#: docs/.vitepress/catalog-i18n.json#a2uiCatalogDescriptions.PantokenScreenReaderContent
+#, no-c-format
+msgctxt "docs.chrome:a2uiCatalogDescriptions.PantokenScreenReaderContent"
+msgid ""
+"A Pantoken screen-reader-content component with safe text and child content."
+msgstr ""
+"Un componente de contenido para lectores de pantalla de Pantoken con texto "
+"seguro y contenido secundario."
+
+#: docs/.vitepress/catalog-i18n.json#a2uiCatalogDescriptions.PantokenHeading
+#, no-c-format
+msgctxt "docs.chrome:a2uiCatalogDescriptions.PantokenHeading"
+msgid "A Pantoken heading component with safe text and child content."
+msgstr ""
+"Un componente de encabezado de Pantoken con texto seguro y contenido "
+"secundario."
+
+#: docs/.vitepress/catalog-i18n.json#a2uiCatalogDescriptions.PantokenText
+#, no-c-format
+msgctxt "docs.chrome:a2uiCatalogDescriptions.PantokenText"
+msgid "A Pantoken text component with safe text and child content."
+msgstr ""
+"Un componente de texto de Pantoken con texto seguro y contenido secundario."
+
+#: docs/.vitepress/catalog-i18n.json#a2uiCatalogDescriptions.PantokenCloseButton
+#, no-c-format
+msgctxt "docs.chrome:a2uiCatalogDescriptions.PantokenCloseButton"
+msgid "An accessible close control that dispatches an A2UI click action."
+msgstr "Un control de cierre accesible que envía una acción de clic de A2UI."
+
+#: docs/.vitepress/catalog-i18n.json#a2uiCatalogDescriptions.PantokenFormField
+#, no-c-format
+msgctxt "docs.chrome:a2uiCatalogDescriptions.PantokenFormField"
+msgid "A Pantoken form-field component with safe text and child content."
+msgstr ""
+"Un componente de campo de formulario de Pantoken con texto seguro y "
+"contenido secundario."
+
+#: docs/.vitepress/catalog-i18n.json#a2uiCatalogDescriptions.PantokenFormFieldGroup
+#, no-c-format
+msgctxt "docs.chrome:a2uiCatalogDescriptions.PantokenFormFieldGroup"
+msgid "A labeled fieldset grouping related form controls."
+msgstr ""
+"Un conjunto de campos con etiqueta que agrupa controles de formulario "
+"relacionados."
+
+#: docs/.vitepress/catalog-i18n.json#a2uiCatalogDescriptions.PantokenRadioInputGroup
+#, no-c-format
+msgctxt "docs.chrome:a2uiCatalogDescriptions.PantokenRadioInputGroup"
+msgid "A labeled fieldset grouping related radio controls."
+msgstr ""
+"Un conjunto de campos con etiqueta que agrupa controles de opción "
+"relacionados."
+
+#: docs/.vitepress/catalog-i18n.json#a2uiCatalogDescriptions.PantokenFormFieldMessages
+#, no-c-format
+msgctxt "docs.chrome:a2uiCatalogDescriptions.PantokenFormFieldMessages"
+msgid ""
+"A Pantoken form-field-messages component with safe text and child content."
+msgstr ""
+"Un componente de mensajes de campo de formulario de Pantoken con texto "
+"seguro y contenido secundario."
+
+#: docs/.vitepress/catalog-i18n.json#a2uiCatalogDescriptions.PantokenTextInput
+#, no-c-format
+msgctxt "docs.chrome:a2uiCatalogDescriptions.PantokenTextInput"
+msgid "A native text input with a visible label and value updates."
+msgstr ""
+"Un campo de texto nativo con una etiqueta visible y actualizaciones de valor."
+
+#: docs/.vitepress/catalog-i18n.json#a2uiCatalogDescriptions.PantokenTextArea
+#, no-c-format
+msgctxt "docs.chrome:a2uiCatalogDescriptions.PantokenTextArea"
+msgid "A native multiline text field with a visible label and value updates."
+msgstr ""
+"Un campo de texto multilínea nativo con una etiqueta visible y "
+"actualizaciones de valor."
+
+#: docs/.vitepress/catalog-i18n.json#a2uiCatalogDescriptions.PantokenSimpleSelect
+#, no-c-format
+msgctxt "docs.chrome:a2uiCatalogDescriptions.PantokenSimpleSelect"
+msgid "A labeled select control with bounded, text-only options."
+msgstr "Un control de selección con etiqueta y opciones de texto acotadas."
+
+#: docs/.vitepress/catalog-i18n.json#a2uiCatalogDescriptions.PantokenInputGroup
+#, no-c-format
+msgctxt "docs.chrome:a2uiCatalogDescriptions.PantokenInputGroup"
+msgid "A Pantoken input-group component with safe text and child content."
+msgstr ""
+"Un componente de grupo de campos de Pantoken con texto seguro y contenido "
+"secundario."
+
+#: docs/.vitepress/catalog-i18n.json#a2uiCatalogDescriptions.PantokenNumberInput
+#, no-c-format
+msgctxt "docs.chrome:a2uiCatalogDescriptions.PantokenNumberInput"
+msgid "A native number input with bounded values and a visible label."
+msgstr "Un campo numérico nativo con valores acotados y una etiqueta visible."
+
+#: docs/.vitepress/catalog-i18n.json#a2uiCatalogDescriptions.PantokenView
+#, no-c-format
+msgctxt "docs.chrome:a2uiCatalogDescriptions.PantokenView"
+msgid "A Pantoken view component with safe text and child content."
+msgstr ""
+"Un componente de vista de Pantoken con texto seguro y contenido secundario."
+
+#: docs/.vitepress/catalog-i18n.json#registryBrowserItems.theme-canvas.title
+#, no-c-format
+msgctxt "docs.chrome:registryBrowserItems.theme-canvas.title"
+msgid "Canvas LMS Theme"
+msgstr "Tema de Canvas LMS"
+
+#: docs/.vitepress/catalog-i18n.json#registryBrowserItems.theme-canvas.description
+#, no-c-format
+msgctxt "docs.chrome:registryBrowserItems.theme-canvas.description"
+msgid ""
+"Instructure Canvas LMS theme variables bridging to shadcn/ui custom "
+"properties."
+msgstr ""
+"Variables del tema de Instructure Canvas LMS que se conectan con las "
+"propiedades personalizadas de shadcn/ui."
+
+#: docs/.vitepress/catalog-i18n.json#registryBrowserItems.theme-canvas-high-contrast.title
+#, fuzzy, no-c-format
+msgctxt "docs.chrome:registryBrowserItems.theme-canvas-high-contrast.title"
+msgid "Canvas High Contrast Theme"
+msgstr "Canvas high contrast"
+
+#: docs/.vitepress/catalog-i18n.json#registryBrowserItems.theme-canvas-high-contrast.description
+#, no-c-format
+msgctxt ""
+"docs.chrome:registryBrowserItems.theme-canvas-high-contrast.description"
+msgid "Canvas LMS High Contrast theme variables for WCAG AAA compliance."
+msgstr ""
+"Variables del tema de alto contraste de Canvas LMS para cumplir con WCAG AAA."
+
+#: docs/.vitepress/catalog-i18n.json#registryBrowserItems.theme-rebrand.title
+#, no-c-format
+msgctxt "docs.chrome:registryBrowserItems.theme-rebrand.title"
+msgid "Instructure Next gen Theme"
+msgstr "Tema de nueva generación de Instructure"
+
+#: docs/.vitepress/catalog-i18n.json#registryBrowserItems.theme-rebrand.description
+#, no-c-format
+msgctxt "docs.chrome:registryBrowserItems.theme-rebrand.description"
+msgid "Modern Instructure brand theme variables."
+msgstr "Variables del tema de la marca moderna de Instructure."
+
+#: docs/.vitepress/catalog-i18n.json#registryBrowserItems.base.title
+#, no-c-format
+msgctxt "docs.chrome:registryBrowserItems.base.title"
+msgid "Pantoken Base System"
+msgstr "Sistema base de Pantoken"
+
+#: docs/.vitepress/catalog-i18n.json#registryBrowserItems.base.description
+#, no-c-format
+msgctxt "docs.chrome:registryBrowserItems.base.description"
+msgid ""
+"Pantoken core design token system, CSS custom properties, and semantic "
+"components."
+msgstr ""
+"Sistema central de tokens de diseño de Pantoken, propiedades personalizadas "
+"de CSS y componentes semánticos."
+
+#: docs/.vitepress/catalog-i18n.json#registryBrowserItems.button.title
+#, no-c-format
+msgctxt "docs.chrome:registryBrowserItems.button.title"
+msgid "Button"
+msgstr "Botón"
+
+#: docs/.vitepress/catalog-i18n.json#registryBrowserItems.button.description
+#, no-c-format
+msgctxt "docs.chrome:registryBrowserItems.button.description"
+msgid ""
+"Instructure Button component styled with semantic .instui-button classes."
+msgstr ""
+"Componente Button de Instructure con estilos de clases semánticas .instui-"
+"button."
+
+#: docs/.vitepress/catalog-i18n.json#registryBrowserItems.card.title
+#, no-c-format
+msgctxt "docs.chrome:registryBrowserItems.card.title"
+msgid "Card"
+msgstr "Tarjeta"
+
+#: docs/.vitepress/catalog-i18n.json#registryBrowserItems.card.description
+#, no-c-format
+msgctxt "docs.chrome:registryBrowserItems.card.description"
+msgid "Instructure Card component styled with semantic .instui-card classes."
+msgstr ""
+"Componente Card de Instructure con estilos de clases semánticas .instui-card."
+
+#: docs/.vitepress/catalog-i18n.json#registryBrowserItems.alert.title
+#, no-c-format
+msgctxt "docs.chrome:registryBrowserItems.alert.title"
+msgid "Alert"
+msgstr "Alerta"
+
+#: docs/.vitepress/catalog-i18n.json#registryBrowserItems.alert.description
+#, no-c-format
+msgctxt "docs.chrome:registryBrowserItems.alert.description"
+msgid "Instructure Alert component styled with semantic .instui-alert classes."
+msgstr ""
+"Componente Alert de Instructure con estilos de clases semánticas .instui-"
+"alert."
+
+#: docs/.vitepress/catalog-i18n.json#registryBrowserItems.badge.title
+#, no-c-format
+msgctxt "docs.chrome:registryBrowserItems.badge.title"
+msgid "Badge"
+msgstr "Insignia"
+
+#: docs/.vitepress/catalog-i18n.json#registryBrowserItems.badge.description
+#, no-c-format
+msgctxt "docs.chrome:registryBrowserItems.badge.description"
+msgid "Instructure Badge component styled with semantic .instui-badge classes."
+msgstr ""
+"Componente Badge de Instructure con estilos de clases semánticas .instui-"
+"badge."
+
+#: docs/.vitepress/catalog-i18n.json#registryBrowserItems.pill.title
+#, no-c-format
+msgctxt "docs.chrome:registryBrowserItems.pill.title"
+msgid "Pill"
+msgstr "Pastilla"
+
+#: docs/.vitepress/catalog-i18n.json#registryBrowserItems.pill.description
+#, no-c-format
+msgctxt "docs.chrome:registryBrowserItems.pill.description"
+msgid "Instructure Pill component styled with semantic .instui-pill classes."
+msgstr ""
+"Componente Pill de Instructure con estilos de clases semánticas .instui-pill."
+
+#: docs/.vitepress/catalog-i18n.json#registryBrowserItems.tag.title
+#, no-c-format
+msgctxt "docs.chrome:registryBrowserItems.tag.title"
+msgid "Tag"
+msgstr "Etiqueta"
+
+#: docs/.vitepress/catalog-i18n.json#registryBrowserItems.tag.description
+#, no-c-format
+msgctxt "docs.chrome:registryBrowserItems.tag.description"
+msgid "Instructure Tag component styled with semantic .instui-tag classes."
+msgstr ""
+"Componente Tag de Instructure con estilos de clases semánticas .instui-tag."
+
+#: docs/.vitepress/catalog-i18n.json#registryBrowserItems.avatar.title
+#, no-c-format
+msgctxt "docs.chrome:registryBrowserItems.avatar.title"
+msgid "Avatar"
+msgstr "Avatar"
+
+#: docs/.vitepress/catalog-i18n.json#registryBrowserItems.avatar.description
+#, no-c-format
+msgctxt "docs.chrome:registryBrowserItems.avatar.description"
+msgid ""
+"Instructure Avatar component styled with semantic .instui-avatar classes."
+msgstr ""
+"Componente Avatar de Instructure con estilos de clases semánticas .instui-"
+"avatar."
+
+#: docs/.vitepress/catalog-i18n.json#registryBrowserItems.tabs.title
+#, no-c-format
+msgctxt "docs.chrome:registryBrowserItems.tabs.title"
+msgid "Tabs"
+msgstr "Pestañas"
+
+#: docs/.vitepress/catalog-i18n.json#registryBrowserItems.tabs.description
+#, no-c-format
+msgctxt "docs.chrome:registryBrowserItems.tabs.description"
+msgid "Instructure Tabs component styled with semantic .instui-tabs classes."
+msgstr ""
+"Componente Tabs de Instructure con estilos de clases semánticas .instui-tabs."
+
+#: docs/.vitepress/catalog-i18n.json#registryBrowserItems.metric.title
+#, no-c-format
+msgctxt "docs.chrome:registryBrowserItems.metric.title"
+msgid "Metric"
+msgstr "Métrica"
+
+#: docs/.vitepress/catalog-i18n.json#registryBrowserItems.metric.description
+#, no-c-format
+msgctxt "docs.chrome:registryBrowserItems.metric.description"
+msgid ""
+"Instructure Metric component styled with semantic .instui-metric classes."
+msgstr ""
+"Componente Metric de Instructure con estilos de clases semánticas .instui-"
+"metric."
+
+#: docs/.vitepress/catalog-i18n.json#registryBrowserItems.byline.title
+#, no-c-format
+msgctxt "docs.chrome:registryBrowserItems.byline.title"
+msgid "Byline"
+msgstr "Firma"
+
+#: docs/.vitepress/catalog-i18n.json#registryBrowserItems.byline.description
+#, no-c-format
+msgctxt "docs.chrome:registryBrowserItems.byline.description"
+msgid ""
+"Instructure Byline component styled with semantic .instui-byline classes."
+msgstr ""
+"Componente Byline de Instructure con estilos de clases semánticas .instui-"
+"byline."
+
+#: docs/.vitepress/catalog-i18n.json#registryBrowserItems.img.title
+#, no-c-format
+msgctxt "docs.chrome:registryBrowserItems.img.title"
+msgid "Img"
+msgstr "Img"
+
+#: docs/.vitepress/catalog-i18n.json#registryBrowserItems.img.description
+#, no-c-format
+msgctxt "docs.chrome:registryBrowserItems.img.description"
+msgid "Instructure Img component styled with semantic .instui-img classes."
+msgstr ""
+"Componente Img de Instructure con estilos de clases semánticas .instui-img."
+
+#: docs/.vitepress/catalog-i18n.json#registryBrowserItems.table.title
+#, no-c-format
+msgctxt "docs.chrome:registryBrowserItems.table.title"
+msgid "Table"
+msgstr "Tabla"
+
+#: docs/.vitepress/catalog-i18n.json#registryBrowserItems.table.description
+#, no-c-format
+msgctxt "docs.chrome:registryBrowserItems.table.description"
+msgid "Instructure Table component styled with semantic .instui-table classes."
+msgstr ""
+"Componente Table de Instructure con estilos de clases semánticas .instui-"
+"table."
+
+#: docs/.vitepress/catalog-i18n.json#registryBrowserItems.link.title
+#, no-c-format
+msgctxt "docs.chrome:registryBrowserItems.link.title"
+msgid "Link"
+msgstr "Enlace"
+
+#: docs/.vitepress/catalog-i18n.json#registryBrowserItems.link.description
+#, no-c-format
+msgctxt "docs.chrome:registryBrowserItems.link.description"
+msgid "Instructure Link component styled with semantic .instui-link classes."
+msgstr ""
+"Componente Link de Instructure con estilos de clases semánticas .instui-link."
+
+#: docs/.vitepress/catalog-i18n.json#registryBrowserItems.list.title
+#, no-c-format
+msgctxt "docs.chrome:registryBrowserItems.list.title"
+msgid "List"
+msgstr "Lista"
+
+#: docs/.vitepress/catalog-i18n.json#registryBrowserItems.list.description
+#, no-c-format
+msgctxt "docs.chrome:registryBrowserItems.list.description"
+msgid "Instructure List component styled with semantic .instui-list classes."
+msgstr ""
+"Componente List de Instructure con estilos de clases semánticas .instui-list."
+
+#: docs/.vitepress/catalog-i18n.json#registryBrowserItems.icon.title
+#, no-c-format
+msgctxt "docs.chrome:registryBrowserItems.icon.title"
+msgid "Icon"
+msgstr "Icono"
+
+#: docs/.vitepress/catalog-i18n.json#registryBrowserItems.icon.description
+#, no-c-format
+msgctxt "docs.chrome:registryBrowserItems.icon.description"
+msgid "Instructure Icon component styled with semantic .instui-icon classes."
+msgstr ""
+"Componente Icon de Instructure con estilos de clases semánticas .instui-icon."
+
+#: docs/.vitepress/catalog-i18n.json#registryBrowserItems.checkbox.title
+#, no-c-format
+msgctxt "docs.chrome:registryBrowserItems.checkbox.title"
+msgid "Checkbox"
+msgstr "Casilla de verificación"
+
+#: docs/.vitepress/catalog-i18n.json#registryBrowserItems.checkbox.description
+#, no-c-format
+msgctxt "docs.chrome:registryBrowserItems.checkbox.description"
+msgid ""
+"Instructure Checkbox component styled with semantic .instui-checkbox classes."
+msgstr ""
+"Componente Checkbox de Instructure con estilos de clases semánticas .instui-"
+"checkbox."
+
+#: docs/.vitepress/catalog-i18n.json#registryBrowserItems.radio.title
+#, no-c-format
+msgctxt "docs.chrome:registryBrowserItems.radio.title"
+msgid "Radio"
+msgstr "Opción"
+
+#: docs/.vitepress/catalog-i18n.json#registryBrowserItems.radio.description
+#, no-c-format
+msgctxt "docs.chrome:registryBrowserItems.radio.description"
+msgid "Instructure Radio component styled with semantic .instui-radio classes."
+msgstr ""
+"Componente Radio de Instructure con estilos de clases semánticas .instui-"
+"radio."
+
+#: docs/.vitepress/catalog-i18n.json#registryBrowserItems.spinner.title
+#, fuzzy, no-c-format
+msgctxt "docs.chrome:registryBrowserItems.spinner.title"
+msgid "Spinner"
+msgstr "Ejecutor"
+
+#: docs/.vitepress/catalog-i18n.json#registryBrowserItems.spinner.description
+#, no-c-format
+msgctxt "docs.chrome:registryBrowserItems.spinner.description"
+msgid ""
+"Instructure Spinner component styled with semantic .instui-spinner classes."
+msgstr ""
+"Componente Spinner de Instructure con estilos de clases semánticas .instui-"
+"spinner."
+
+#: docs/.vitepress/catalog-i18n.json#registryBrowserItems.progress.title
+#, no-c-format
+msgctxt "docs.chrome:registryBrowserItems.progress.title"
+msgid "Progress"
+msgstr "Progreso"
+
+#: docs/.vitepress/catalog-i18n.json#registryBrowserItems.progress.description
+#, no-c-format
+msgctxt "docs.chrome:registryBrowserItems.progress.description"
+msgid ""
+"Instructure Progress component styled with semantic .instui-progress classes."
+msgstr ""
+"Componente Progress de Instructure con estilos de clases semánticas .instui-"
+"progress."
+
+#: docs/.vitepress/catalog-i18n.json#registryBrowserItems.menu.title
+#, fuzzy, no-c-format
+msgctxt "docs.chrome:registryBrowserItems.menu.title"
+msgid "Menu"
+msgstr "Menú"
+
+#: docs/.vitepress/catalog-i18n.json#registryBrowserItems.menu.description
+#, no-c-format
+msgctxt "docs.chrome:registryBrowserItems.menu.description"
+msgid "Instructure Menu component styled with semantic .instui-menu classes."
+msgstr ""
+"Componente Menu de Instructure con estilos de clases semánticas .instui-menu."
+
+#: docs/.vitepress/catalog-i18n.json#registryBrowserItems.modal.title
+#, no-c-format
+msgctxt "docs.chrome:registryBrowserItems.modal.title"
+msgid "Modal"
+msgstr "Modal"
+
+#: docs/.vitepress/catalog-i18n.json#registryBrowserItems.modal.description
+#, no-c-format
+msgctxt "docs.chrome:registryBrowserItems.modal.description"
+msgid "Instructure Modal component styled with semantic .instui-modal classes."
+msgstr ""
+"Componente Modal de Instructure con estilos de clases semánticas .instui-"
+"modal."
+
+#: docs/.vitepress/catalog-i18n.json#registryBrowserItems.breadcrumb.title
+#, no-c-format
+msgctxt "docs.chrome:registryBrowserItems.breadcrumb.title"
+msgid "Breadcrumb"
+msgstr "Ruta de navegación"
+
+#: docs/.vitepress/catalog-i18n.json#registryBrowserItems.breadcrumb.description
+#, no-c-format
+msgctxt "docs.chrome:registryBrowserItems.breadcrumb.description"
+msgid ""
+"Instructure Breadcrumb component styled with semantic .instui-breadcrumb "
+"classes."
+msgstr ""
+"Componente Breadcrumb de Instructure con estilos de clases "
+"semánticas .instui-breadcrumb."
+
+#: docs/.vitepress/catalog-i18n.json#registryBrowserItems.billboard.title
+#, no-c-format
+msgctxt "docs.chrome:registryBrowserItems.billboard.title"
+msgid "Billboard"
+msgstr "Panel destacado"
+
+#: docs/.vitepress/catalog-i18n.json#registryBrowserItems.billboard.description
+#, no-c-format
+msgctxt "docs.chrome:registryBrowserItems.billboard.description"
+msgid ""
+"Instructure Billboard component styled with semantic .instui-billboard "
+"classes."
+msgstr ""
+"Componente Billboard de Instructure con estilos de clases semánticas .instui-"
+"billboard."
+
+#: docs/.vitepress/catalog-i18n.json#registryBrowserItems.rating.title
+#, no-c-format
+msgctxt "docs.chrome:registryBrowserItems.rating.title"
+msgid "Rating"
+msgstr "Valoración"
+
+#: docs/.vitepress/catalog-i18n.json#registryBrowserItems.rating.description
+#, no-c-format
+msgctxt "docs.chrome:registryBrowserItems.rating.description"
+msgid ""
+"Instructure Rating component styled with semantic .instui-rating classes."
+msgstr ""
+"Componente Rating de Instructure con estilos de clases semánticas .instui-"
+"rating."
+
+#: docs/.vitepress/catalog-i18n.json#registryBrowserItems.toggle-group.title
+#, no-c-format
+msgctxt "docs.chrome:registryBrowserItems.toggle-group.title"
+msgid "Toggle-group"
+msgstr "Grupo de alternancia"
+
+#: docs/.vitepress/catalog-i18n.json#registryBrowserItems.toggle-group.description
+#, no-c-format
+msgctxt "docs.chrome:registryBrowserItems.toggle-group.description"
+msgid ""
+"Instructure Toggle-group component styled with semantic .instui-toggle-group "
+"classes."
+msgstr ""
+"Componente Toggle-group de Instructure con estilos de clases "
+"semánticas .instui-toggle-group."
+
+#: docs/.vitepress/catalog-i18n.json#registryBrowserItems.context-view.title
+#, no-c-format
+msgctxt "docs.chrome:registryBrowserItems.context-view.title"
+msgid "Context-view"
+msgstr "Vista de contexto"
+
+#: docs/.vitepress/catalog-i18n.json#registryBrowserItems.context-view.description
+#, no-c-format
+msgctxt "docs.chrome:registryBrowserItems.context-view.description"
+msgid ""
+"Instructure Context-view component styled with semantic .instui-context-view "
+"classes."
+msgstr ""
+"Componente Context-view de Instructure con estilos de clases "
+"semánticas .instui-context-view."
+
+#: docs/.vitepress/catalog-i18n.json#registryBrowserItems.drawer-layout.title
+#, no-c-format
+msgctxt "docs.chrome:registryBrowserItems.drawer-layout.title"
+msgid "Drawer-layout"
+msgstr "Diseño de panel lateral"
+
+#: docs/.vitepress/catalog-i18n.json#registryBrowserItems.drawer-layout.description
+#, no-c-format
+msgctxt "docs.chrome:registryBrowserItems.drawer-layout.description"
+msgid ""
+"Instructure Drawer-layout component styled with semantic .instui-drawer-"
+"layout classes."
+msgstr ""
+"Componente Drawer-layout de Instructure con estilos de clases "
+"semánticas .instui-drawer-layout."
+
+#: docs/.vitepress/catalog-i18n.json#registryBrowserItems.progress-circle.title
+#, no-c-format
+msgctxt "docs.chrome:registryBrowserItems.progress-circle.title"
+msgid "Progress-circle"
+msgstr "Progreso circular"
+
+#: docs/.vitepress/catalog-i18n.json#registryBrowserItems.progress-circle.description
+#, no-c-format
+msgctxt "docs.chrome:registryBrowserItems.progress-circle.description"
+msgid ""
+"Instructure Progress-circle component styled with semantic .instui-progress-"
+"circle classes."
+msgstr ""
+"Componente Progress-circle de Instructure con estilos de clases "
+"semánticas .instui-progress-circle."
+
+#: docs/.vitepress/catalog-i18n.json#registryBrowserItems.pagination.title
+#, fuzzy, no-c-format
+msgctxt "docs.chrome:registryBrowserItems.pagination.title"
+msgid "Pagination"
+msgstr "Pausar animación"
+
+#: docs/.vitepress/catalog-i18n.json#registryBrowserItems.pagination.description
+#, no-c-format
+msgctxt "docs.chrome:registryBrowserItems.pagination.description"
+msgid ""
+"Instructure Pagination component styled with semantic .instui-pagination "
+"classes."
+msgstr ""
+"Componente Pagination de Instructure con estilos de clases "
+"semánticas .instui-pagination."
+
+#: docs/.vitepress/catalog-i18n.json#registryBrowserItems.toggle-details.title
+#, fuzzy, no-c-format
+msgctxt "docs.chrome:registryBrowserItems.toggle-details.title"
+msgid "Toggle-details"
+msgstr "Alternar la barra lateral"
+
+#: docs/.vitepress/catalog-i18n.json#registryBrowserItems.toggle-details.description
+#, no-c-format
+msgctxt "docs.chrome:registryBrowserItems.toggle-details.description"
+msgid ""
+"Instructure Toggle-details component styled with semantic .instui-toggle-"
+"details classes."
+msgstr ""
+"Componente Toggle-details de Instructure con estilos de clases "
+"semánticas .instui-toggle-details."
+
+#: docs/.vitepress/catalog-i18n.json#registryBrowserItems.file-drop.title
+#, no-c-format
+msgctxt "docs.chrome:registryBrowserItems.file-drop.title"
+msgid "File-drop"
+msgstr "Carga de archivos"
+
+#: docs/.vitepress/catalog-i18n.json#registryBrowserItems.file-drop.description
+#, no-c-format
+msgctxt "docs.chrome:registryBrowserItems.file-drop.description"
+msgid ""
+"Instructure File-drop component styled with semantic .instui-file-drop "
+"classes."
+msgstr ""
+"Componente File-drop de Instructure con estilos de clases semánticas .instui-"
+"file-drop."
+
+#: docs/.vitepress/catalog-i18n.json#registryBrowserItems.side-nav-bar.title
+#, no-c-format
+msgctxt "docs.chrome:registryBrowserItems.side-nav-bar.title"
+msgid "Side-nav-bar"
+msgstr "Barra de navegación lateral"
+
+#: docs/.vitepress/catalog-i18n.json#registryBrowserItems.side-nav-bar.description
+#, no-c-format
+msgctxt "docs.chrome:registryBrowserItems.side-nav-bar.description"
+msgid ""
+"Instructure Side-nav-bar component styled with semantic .instui-side-nav-bar "
+"classes."
+msgstr ""
+"Componente Side-nav-bar de Instructure con estilos de clases "
+"semánticas .instui-side-nav-bar."
+
+#: docs/.vitepress/catalog-i18n.json#registryBrowserItems.tree-browser.title
+#, no-c-format
+msgctxt "docs.chrome:registryBrowserItems.tree-browser.title"
+msgid "Tree-browser"
+msgstr "Explorador de árbol"
+
+#: docs/.vitepress/catalog-i18n.json#registryBrowserItems.tree-browser.description
+#, no-c-format
+msgctxt "docs.chrome:registryBrowserItems.tree-browser.description"
+msgid ""
+"Instructure Tree-browser component styled with semantic .instui-tree-browser "
+"classes."
+msgstr ""
+"Componente Tree-browser de Instructure con estilos de clases "
+"semánticas .instui-tree-browser."
+
+#: docs/.vitepress/catalog-i18n.json#registryBrowserItems.calendar.title
+#, no-c-format
+msgctxt "docs.chrome:registryBrowserItems.calendar.title"
+msgid "Calendar"
+msgstr "Calendario"
+
+#: docs/.vitepress/catalog-i18n.json#registryBrowserItems.calendar.description
+#, no-c-format
+msgctxt "docs.chrome:registryBrowserItems.calendar.description"
+msgid ""
+"Instructure Calendar component styled with semantic .instui-calendar classes."
+msgstr ""
+"Componente Calendar de Instructure con estilos basados en las clases "
+"semánticas .instui-calendar."
+
+#: docs/.vitepress/catalog-i18n.json#registryBrowserItems.popover.title
+#, no-c-format
+msgctxt "docs.chrome:registryBrowserItems.popover.title"
+msgid "Popover"
+msgstr "Ventana emergente"
+
+#: docs/.vitepress/catalog-i18n.json#registryBrowserItems.popover.description
+#, no-c-format
+msgctxt "docs.chrome:registryBrowserItems.popover.description"
+msgid ""
+"Instructure Popover component styled with semantic .instui-popover classes."
+msgstr ""
+"Componente Popover de Instructure con estilos basados en las clases "
+"semánticas .instui-popover."
+
+#: docs/.vitepress/catalog-i18n.json#registryBrowserItems.tray.title
+#, no-c-format
+msgctxt "docs.chrome:registryBrowserItems.tray.title"
+msgid "Tray"
+msgstr "Panel"
+
+#: docs/.vitepress/catalog-i18n.json#registryBrowserItems.tray.description
+#, no-c-format
+msgctxt "docs.chrome:registryBrowserItems.tray.description"
+msgid "Instructure Tray component styled with semantic .instui-tray classes."
+msgstr ""
+"Componente Tray de Instructure con estilos basados en las clases "
+"semánticas .instui-tray."
+
+#: docs/.vitepress/catalog-i18n.json#registryBrowserItems.tooltip.title
+#, fuzzy, no-c-format
+msgctxt "docs.chrome:registryBrowserItems.tooltip.title"
+msgid "Tooltip"
+msgstr "Herramientas"
+
+#: docs/.vitepress/catalog-i18n.json#registryBrowserItems.tooltip.description
+#, no-c-format
+msgctxt "docs.chrome:registryBrowserItems.tooltip.description"
+msgid ""
+"Instructure Tooltip component styled with semantic .instui-tooltip classes."
+msgstr ""
+"Componente Tooltip de Instructure con estilos basados en las clases "
+"semánticas .instui-tooltip."
+
+#: docs/.vitepress/catalog-i18n.json#registryBrowserItems.range-input.title
+#, no-c-format
+msgctxt "docs.chrome:registryBrowserItems.range-input.title"
+msgid "Range-input"
+msgstr "Entrada de rango"
+
+#: docs/.vitepress/catalog-i18n.json#registryBrowserItems.range-input.description
+#, no-c-format
+msgctxt "docs.chrome:registryBrowserItems.range-input.description"
+msgid ""
+"Instructure Range-input component styled with semantic .instui-range-input "
+"classes."
+msgstr ""
+"Componente Range-input de Instructure con estilos basados en las clases "
+"semánticas .instui-range-input."
+
+#: docs/.vitepress/catalog-i18n.json#registryBrowserItems.mask.title
+#, no-c-format
+msgctxt "docs.chrome:registryBrowserItems.mask.title"
+msgid "Mask"
+msgstr "Máscara"
+
+#: docs/.vitepress/catalog-i18n.json#registryBrowserItems.mask.description
+#, no-c-format
+msgctxt "docs.chrome:registryBrowserItems.mask.description"
+msgid "Instructure Mask component styled with semantic .instui-mask classes."
+msgstr ""
+"Componente Mask de Instructure con estilos basados en las clases "
+"semánticas .instui-mask."
+
+#: docs/.vitepress/catalog-i18n.json#registryBrowserItems.screen-reader-content.title
+#, no-c-format
+msgctxt "docs.chrome:registryBrowserItems.screen-reader-content.title"
+msgid "Screen-reader-content"
+msgstr "Contenido para lectores de pantalla"
+
+#: docs/.vitepress/catalog-i18n.json#registryBrowserItems.screen-reader-content.description
+#, no-c-format
+msgctxt "docs.chrome:registryBrowserItems.screen-reader-content.description"
+msgid ""
+"Instructure Screen-reader-content component styled with semantic .instui-"
+"screen-reader-content classes."
+msgstr ""
+"Componente Screen-reader-content de Instructure con estilos basados en las "
+"clases semánticas .instui-screen-reader-content."
+
+#: docs/.vitepress/catalog-i18n.json#registryBrowserItems.heading.title
+#, no-c-format
+msgctxt "docs.chrome:registryBrowserItems.heading.title"
+msgid "Heading"
+msgstr "Encabezado"
+
+#: docs/.vitepress/catalog-i18n.json#registryBrowserItems.heading.description
+#, no-c-format
+msgctxt "docs.chrome:registryBrowserItems.heading.description"
+msgid ""
+"Instructure Heading component styled with semantic .instui-heading classes."
+msgstr ""
+"Componente Heading de Instructure con estilos basados en las clases "
+"semánticas .instui-heading."
+
+#: docs/.vitepress/catalog-i18n.json#registryBrowserItems.text.title
+#, no-c-format
+msgctxt "docs.chrome:registryBrowserItems.text.title"
+msgid "Text"
+msgstr "Texto"
+
+#: docs/.vitepress/catalog-i18n.json#registryBrowserItems.text.description
+#, no-c-format
+msgctxt "docs.chrome:registryBrowserItems.text.description"
+msgid "Instructure Text component styled with semantic .instui-text classes."
+msgstr ""
+"Componente Text de Instructure con estilos basados en las clases "
+"semánticas .instui-text."
+
+#: docs/.vitepress/catalog-i18n.json#registryBrowserItems.close-button.title
+#, no-c-format
+msgctxt "docs.chrome:registryBrowserItems.close-button.title"
+msgid "Close-button"
+msgstr "Botón de cierre"
+
+#: docs/.vitepress/catalog-i18n.json#registryBrowserItems.close-button.description
+#, no-c-format
+msgctxt "docs.chrome:registryBrowserItems.close-button.description"
+msgid ""
+"Instructure Close-button component styled with semantic .instui-close-button "
+"classes."
+msgstr ""
+"Componente Close-button de Instructure con estilos basados en las clases "
+"semánticas .instui-close-button."
+
+#: docs/.vitepress/catalog-i18n.json#registryBrowserItems.form-field.title
+#, no-c-format
+msgctxt "docs.chrome:registryBrowserItems.form-field.title"
+msgid "Form-field"
+msgstr "Campo de formulario"
+
+#: docs/.vitepress/catalog-i18n.json#registryBrowserItems.form-field.description
+#, no-c-format
+msgctxt "docs.chrome:registryBrowserItems.form-field.description"
+msgid ""
+"Instructure Form-field component styled with semantic .instui-form-field "
+"classes."
+msgstr ""
+"Componente Form-field de Instructure con estilos basados en las clases "
+"semánticas .instui-form-field."
+
+#: docs/.vitepress/catalog-i18n.json#registryBrowserItems.form-field-group.title
+#, no-c-format
+msgctxt "docs.chrome:registryBrowserItems.form-field-group.title"
+msgid "Form-field-group"
+msgstr "Grupo de campos de formulario"
+
+#: docs/.vitepress/catalog-i18n.json#registryBrowserItems.form-field-group.description
+#, no-c-format
+msgctxt "docs.chrome:registryBrowserItems.form-field-group.description"
+msgid ""
+"Instructure Form-field-group component styled with semantic .instui-form-"
+"field-group classes."
+msgstr ""
+"Componente Form-field-group de Instructure con estilos basados en las clases "
+"semánticas .instui-form-field-group."
+
+#: docs/.vitepress/catalog-i18n.json#registryBrowserItems.radio-input-group.title
+#, no-c-format
+msgctxt "docs.chrome:registryBrowserItems.radio-input-group.title"
+msgid "Radio-input-group"
+msgstr "Grupo de botones de opción"
+
+#: docs/.vitepress/catalog-i18n.json#registryBrowserItems.radio-input-group.description
+#, no-c-format
+msgctxt "docs.chrome:registryBrowserItems.radio-input-group.description"
+msgid ""
+"Instructure Radio-input-group component styled with semantic .instui-radio-"
+"input-group classes."
+msgstr ""
+"Componente Radio-input-group de Instructure con estilos basados en las "
+"clases semánticas .instui-radio-input-group."
+
+#: docs/.vitepress/catalog-i18n.json#registryBrowserItems.form-field-messages.title
+#, no-c-format
+msgctxt "docs.chrome:registryBrowserItems.form-field-messages.title"
+msgid "Form-field-messages"
+msgstr "Mensajes del campo de formulario"
+
+#: docs/.vitepress/catalog-i18n.json#registryBrowserItems.form-field-messages.description
+#, no-c-format
+msgctxt "docs.chrome:registryBrowserItems.form-field-messages.description"
+msgid ""
+"Instructure Form-field-messages component styled with semantic .instui-form-"
+"field-messages classes."
+msgstr ""
+"Componente Form-field-messages de Instructure con estilos basados en las "
+"clases semánticas .instui-form-field-messages."
+
+#: docs/.vitepress/catalog-i18n.json#registryBrowserItems.text-input.title
+#, no-c-format
+msgctxt "docs.chrome:registryBrowserItems.text-input.title"
+msgid "Text-input"
+msgstr "Entrada de texto"
+
+#: docs/.vitepress/catalog-i18n.json#registryBrowserItems.text-input.description
+#, no-c-format
+msgctxt "docs.chrome:registryBrowserItems.text-input.description"
+msgid ""
+"Instructure Text-input component styled with semantic .instui-text-input "
+"classes."
+msgstr ""
+"Componente Text-input de Instructure con estilos basados en las clases "
+"semánticas .instui-text-input."
+
+#: docs/.vitepress/catalog-i18n.json#registryBrowserItems.text-area.title
+#, no-c-format
+msgctxt "docs.chrome:registryBrowserItems.text-area.title"
+msgid "Text-area"
+msgstr "Área de texto"
+
+#: docs/.vitepress/catalog-i18n.json#registryBrowserItems.text-area.description
+#, no-c-format
+msgctxt "docs.chrome:registryBrowserItems.text-area.description"
+msgid ""
+"Instructure Text-area component styled with semantic .instui-text-area "
+"classes."
+msgstr ""
+"Componente Text-area de Instructure con estilos basados en las clases "
+"semánticas .instui-text-area."
+
+#: docs/.vitepress/catalog-i18n.json#registryBrowserItems.simple-select.title
+#, no-c-format
+msgctxt "docs.chrome:registryBrowserItems.simple-select.title"
+msgid "Simple-select"
+msgstr "Selección simple"
+
+#: docs/.vitepress/catalog-i18n.json#registryBrowserItems.simple-select.description
+#, no-c-format
+msgctxt "docs.chrome:registryBrowserItems.simple-select.description"
+msgid ""
+"Instructure Simple-select component styled with semantic .instui-simple-"
+"select classes."
+msgstr ""
+"Componente Simple-select de Instructure con estilos basados en las clases "
+"semánticas .instui-simple-select."
+
+#: docs/.vitepress/catalog-i18n.json#registryBrowserItems.input-group.title
+#, no-c-format
+msgctxt "docs.chrome:registryBrowserItems.input-group.title"
+msgid "Input-group"
+msgstr "Grupo de entradas"
+
+#: docs/.vitepress/catalog-i18n.json#registryBrowserItems.input-group.description
+#, no-c-format
+msgctxt "docs.chrome:registryBrowserItems.input-group.description"
+msgid ""
+"Instructure Input-group component styled with semantic .instui-input-group "
+"classes."
+msgstr ""
+"Componente Input-group de Instructure con estilos basados en las clases "
+"semánticas .instui-input-group."
+
+#: docs/.vitepress/catalog-i18n.json#registryBrowserItems.number-input.title
+#, no-c-format
+msgctxt "docs.chrome:registryBrowserItems.number-input.title"
+msgid "Number-input"
+msgstr "Entrada numérica"
+
+#: docs/.vitepress/catalog-i18n.json#registryBrowserItems.number-input.description
+#, no-c-format
+msgctxt "docs.chrome:registryBrowserItems.number-input.description"
+msgid ""
+"Instructure Number-input component styled with semantic .instui-number-input "
+"classes."
+msgstr ""
+"Componente Number-input de Instructure con estilos basados en las clases "
+"semánticas .instui-number-input."
+
+#: docs/.vitepress/catalog-i18n.json#registryBrowserItems.in-place-edit.title
+#, no-c-format
+msgctxt "docs.chrome:registryBrowserItems.in-place-edit.title"
+msgid "In-place-edit"
+msgstr "Edición en línea"
+
+#: docs/.vitepress/catalog-i18n.json#registryBrowserItems.in-place-edit.description
+#, no-c-format
+msgctxt "docs.chrome:registryBrowserItems.in-place-edit.description"
+msgid ""
+"Instructure In-place-edit component styled with semantic .instui-in-place-"
+"edit classes."
+msgstr ""
+"Componente In-place-edit de Instructure con estilos basados en las clases "
+"semánticas .instui-in-place-edit."
+
+#: docs/.vitepress/catalog-i18n.json#registryBrowserItems.view.title
+#, no-c-format
+msgctxt "docs.chrome:registryBrowserItems.view.title"
+msgid "View"
+msgstr "Vista"
+
+#: docs/.vitepress/catalog-i18n.json#registryBrowserItems.view.description
+#, no-c-format
+msgctxt "docs.chrome:registryBrowserItems.view.description"
+msgid "Instructure View component styled with semantic .instui-view classes."
+msgstr ""
+"Componente View de Instructure con estilos basados en las clases "
+"semánticas .instui-view."
+
+#: docs/.vitepress/catalog-i18n.json#registryBrowserItems.banner.title
+#, fuzzy, no-c-format
+msgctxt "docs.chrome:registryBrowserItems.banner.title"
+msgid "Banner"
+msgstr "Ejecutor"
+
+#: docs/.vitepress/catalog-i18n.json#registryBrowserItems.banner.description
+#, no-c-format
+msgctxt "docs.chrome:registryBrowserItems.banner.description"
+msgid "Pantoken banner component styles and documented HTML structure."
+msgstr ""
+"Estilos del componente banner de Pantoken y estructura HTML documentada."
+
+#: docs/.vitepress/catalog-i18n.json#registryBrowserItems.agent-shell.title
+#, fuzzy, no-c-format
+msgctxt "docs.chrome:registryBrowserItems.agent-shell.title"
+msgid "Agent Shell"
+msgstr "Herramientas"
+
+#: docs/.vitepress/catalog-i18n.json#registryBrowserItems.agent-shell.description
+#, no-c-format
+msgctxt "docs.chrome:registryBrowserItems.agent-shell.description"
+msgid "Pantoken agent-shell component styles and documented HTML structure."
+msgstr ""
+"Estilos del componente agent-shell de Pantoken y estructura HTML documentada."
+
+#: docs/.vitepress/catalog-i18n.json#registryBrowserItems.skeleton-loader.title
+#, no-c-format
+msgctxt "docs.chrome:registryBrowserItems.skeleton-loader.title"
+msgid "Skeleton Loader"
+msgstr "Cargador de esqueleto"
+
+#: docs/.vitepress/catalog-i18n.json#registryBrowserItems.skeleton-loader.description
+#, no-c-format
+msgctxt "docs.chrome:registryBrowserItems.skeleton-loader.description"
+msgid ""
+"Pantoken skeleton-loader component styles and documented HTML structure."
+msgstr ""
+"Estilos del componente skeleton-loader de Pantoken y estructura HTML "
+"documentada."
+
+#: docs/.vitepress/catalog-i18n.json#registryBrowserItems.segmented-control.title
+#, no-c-format
+msgctxt "docs.chrome:registryBrowserItems.segmented-control.title"
+msgid "Segmented Control"
+msgstr "Control segmentado"
+
+#: docs/.vitepress/catalog-i18n.json#registryBrowserItems.segmented-control.description
+#, no-c-format
+msgctxt "docs.chrome:registryBrowserItems.segmented-control.description"
+msgid ""
+"Pantoken segmented-control component styles and documented HTML structure."
+msgstr ""
+"Estilos del componente segmented-control de Pantoken y estructura HTML "
+"documentada."
+
+#: docs/.vitepress/catalog-i18n.json#registryBrowserItems.wrapper.title
+#, no-c-format
+msgctxt "docs.chrome:registryBrowserItems.wrapper.title"
+msgid "Wrapper Layout"
+msgstr "Diseño de contenedor"
+
+#: docs/.vitepress/catalog-i18n.json#registryBrowserItems.wrapper.description
+#, no-c-format
+msgctxt "docs.chrome:registryBrowserItems.wrapper.description"
+msgid "Pantoken wrapper layout styles and canonical HTML template."
+msgstr "Estilos del diseño wrapper de Pantoken y plantilla HTML canónica."
+
+#: docs/.vitepress/catalog-i18n.json#registryBrowserItems.callout.title
+#, no-c-format
+msgctxt "docs.chrome:registryBrowserItems.callout.title"
+msgid "Callout Layout"
+msgstr "Diseño de llamada destacada"
+
+#: docs/.vitepress/catalog-i18n.json#registryBrowserItems.callout.description
+#, no-c-format
+msgctxt "docs.chrome:registryBrowserItems.callout.description"
+msgid "Pantoken callout layout styles and canonical HTML template."
+msgstr "Estilos del diseño callout de Pantoken y plantilla HTML canónica."
+
+#: docs/.vitepress/catalog-i18n.json#registryBrowserItems.hero.title
+#, no-c-format
+msgctxt "docs.chrome:registryBrowserItems.hero.title"
+msgid "Hero Layout"
+msgstr "Diseño principal"
+
+#: docs/.vitepress/catalog-i18n.json#registryBrowserItems.hero.description
+#, no-c-format
+msgctxt "docs.chrome:registryBrowserItems.hero.description"
+msgid "Pantoken hero layout styles and canonical HTML template."
+msgstr "Estilos del diseño hero de Pantoken y plantilla HTML canónica."
+
+#: docs/.vitepress/catalog-i18n.json#registryBrowserItems.page-layout.title
+#, no-c-format
+msgctxt "docs.chrome:registryBrowserItems.page-layout.title"
+msgid "Page Layout Layout"
+msgstr "Diseño de página"
+
+#: docs/.vitepress/catalog-i18n.json#registryBrowserItems.page-layout.description
+#, no-c-format
+msgctxt "docs.chrome:registryBrowserItems.page-layout.description"
+msgid "Pantoken page-layout layout styles and canonical HTML template."
+msgstr "Estilos del diseño page-layout de Pantoken y plantilla HTML canónica."
+
+#: docs/.vitepress/catalog-i18n.json#registryBrowserItems.rubric-note.title
+#, no-c-format
+msgctxt "docs.chrome:registryBrowserItems.rubric-note.title"
+msgid "Rubric Note Layout"
+msgstr "Diseño de nota de rúbrica"
+
+#: docs/.vitepress/catalog-i18n.json#registryBrowserItems.rubric-note.description
+#, no-c-format
+msgctxt "docs.chrome:registryBrowserItems.rubric-note.description"
+msgid "Pantoken rubric-note layout styles and canonical HTML template."
+msgstr "Estilos del diseño rubric-note de Pantoken y plantilla HTML canónica."
+
+#: docs/.vitepress/catalog-i18n.json#registryBrowserItems.testimonial.title
+#, no-c-format
+msgctxt "docs.chrome:registryBrowserItems.testimonial.title"
+msgid "Testimonial Layout"
+msgstr "Diseño de testimonio"
+
+#: docs/.vitepress/catalog-i18n.json#registryBrowserItems.testimonial.description
+#, no-c-format
+msgctxt "docs.chrome:registryBrowserItems.testimonial.description"
+msgid "Pantoken testimonial layout styles and canonical HTML template."
+msgstr "Estilos del diseño testimonial de Pantoken y plantilla HTML canónica."
+
+#: docs/.vitepress/catalog-i18n.json#registryBrowserItems.two-column.title
+#, no-c-format
+msgctxt "docs.chrome:registryBrowserItems.two-column.title"
+msgid "Two Column Layout"
+msgstr "Diseño de dos columnas"
+
+#: docs/.vitepress/catalog-i18n.json#registryBrowserItems.two-column.description
+#, no-c-format
+msgctxt "docs.chrome:registryBrowserItems.two-column.description"
+msgid "Pantoken two-column layout styles and canonical HTML template."
+msgstr "Estilos del diseño two-column de Pantoken y plantilla HTML canónica."
+
+#: docs/.vitepress/catalog-i18n.json#registryBrowserItems.custom-icons.title
+#, no-c-format
+msgctxt "docs.chrome:registryBrowserItems.custom-icons.title"
+msgid "Pantoken Custom Icons"
+msgstr "Iconos personalizados de Pantoken"
+
+#: docs/.vitepress/catalog-i18n.json#registryBrowserItems.custom-icons.description
+#, no-c-format
+msgctxt "docs.chrome:registryBrowserItems.custom-icons.description"
+msgid "Pantoken's curated custom icon tokens for the shared -icon-* painter."
+msgstr ""
+"Tokens de iconos personalizados seleccionados de Pantoken para el pintor "
+"compartido -icon-*."
+
+#: docs/.vitepress/catalog-i18n.json#registryBrowserItems.simple-icons.title
+#, no-c-format
+msgctxt "docs.chrome:registryBrowserItems.simple-icons.title"
+msgid "Simple Icons"
+msgstr "Iconos Simple Icons"
+
+#: docs/.vitepress/catalog-i18n.json#registryBrowserItems.simple-icons.description
+#, no-c-format
+msgctxt "docs.chrome:registryBrowserItems.simple-icons.description"
+msgid "The complete Simple Icons brand-glyph token collection."
+msgstr "La colección completa de tokens de glifos de marca de Simple Icons."
+
+#: docs/.vitepress/catalog-i18n.json#registryBrowserItems.logos.title
+#, no-c-format
+msgctxt "docs.chrome:registryBrowserItems.logos.title"
+msgid "Instructure Product Logos"
+msgstr "Logotipos de productos de Instructure"
+
+#: docs/.vitepress/catalog-i18n.json#registryBrowserItems.logos.description
+#, no-c-format
+msgctxt "docs.chrome:registryBrowserItems.logos.description"
+msgid "All Instructure product logo image tokens."
+msgstr ""
+"Todos los tokens de imagen de los logotipos de productos de Instructure."
+
+#: docs/.vitepress/catalog-i18n.json#registryBrowserItems.logo-canvas.title
+#, fuzzy, no-c-format
+msgctxt "docs.chrome:registryBrowserItems.logo-canvas.title"
+msgid "Canvas Logos"
+msgstr "Canvas"
+
+#: docs/.vitepress/catalog-i18n.json#registryBrowserItems.logo-canvas.description
+#, no-c-format
+msgctxt "docs.chrome:registryBrowserItems.logo-canvas.description"
+msgid "Logo image tokens for canvas."
+msgstr "Tokens de imagen de logotipos de Canvas."
+
+#: docs/.vitepress/catalog-i18n.json#registryBrowserItems.logo-igniteai.title
+#, no-c-format
+msgctxt "docs.chrome:registryBrowserItems.logo-igniteai.title"
+msgid "Igniteai Logos"
+msgstr "Logotipos de Igniteai"
+
+#: docs/.vitepress/catalog-i18n.json#registryBrowserItems.logo-igniteai.description
+#, no-c-format
+msgctxt "docs.chrome:registryBrowserItems.logo-igniteai.description"
+msgid "Logo image tokens for igniteai."
+msgstr "Tokens de imagen de logotipos de Igniteai."
+
+#: docs/.vitepress/catalog-i18n.json#registryBrowserItems.logo-instructure.title
+#, no-c-format
+msgctxt "docs.chrome:registryBrowserItems.logo-instructure.title"
+msgid "Instructure Logos"
+msgstr "Logotipos de Instructure"
+
+#: docs/.vitepress/catalog-i18n.json#registryBrowserItems.logo-instructure.description
+#, no-c-format
+msgctxt "docs.chrome:registryBrowserItems.logo-instructure.description"
+msgid "Logo image tokens for instructure."
+msgstr "Tokens de imagen de logotipos de Instructure."
+
+#: docs/.vitepress/catalog-i18n.json#registryBrowserItems.logo-learnplatform.title
+#, no-c-format
+msgctxt "docs.chrome:registryBrowserItems.logo-learnplatform.title"
+msgid "Learnplatform Logos"
+msgstr "Logotipos de Learnplatform"
+
+#: docs/.vitepress/catalog-i18n.json#registryBrowserItems.logo-learnplatform.description
+#, no-c-format
+msgctxt "docs.chrome:registryBrowserItems.logo-learnplatform.description"
+msgid "Logo image tokens for learnplatform."
+msgstr "Tokens de imagen de logotipos de Learnplatform."
+
+#: docs/.vitepress/catalog-i18n.json#registryBrowserItems.logo-mastery.title
+#, no-c-format
+msgctxt "docs.chrome:registryBrowserItems.logo-mastery.title"
+msgid "Mastery Logos"
+msgstr "Logotipos de Mastery"
+
+#: docs/.vitepress/catalog-i18n.json#registryBrowserItems.logo-mastery.description
+#, no-c-format
+msgctxt "docs.chrome:registryBrowserItems.logo-mastery.description"
+msgid "Logo image tokens for mastery."
+msgstr "Tokens de imagen de logotipos de Mastery."
+
+#: docs/.vitepress/catalog-i18n.json#registryBrowserItems.logo-pantoken.title
+#, no-c-format
+msgctxt "docs.chrome:registryBrowserItems.logo-pantoken.title"
+msgid "Pantoken Logos"
+msgstr "Logotipos de Pantoken"
+
+#: docs/.vitepress/catalog-i18n.json#registryBrowserItems.logo-pantoken.description
+#, no-c-format
+msgctxt "docs.chrome:registryBrowserItems.logo-pantoken.description"
+msgid "Logo image tokens for pantoken."
+msgstr "Tokens de imagen de logotipos de Pantoken."
+
+#: docs/.vitepress/catalog-i18n.json#registryBrowserItems.logo-parchment.title
+#, no-c-format
+msgctxt "docs.chrome:registryBrowserItems.logo-parchment.title"
+msgid "Parchment Logos"
+msgstr "Logotipos de Parchment"
+
+#: docs/.vitepress/catalog-i18n.json#registryBrowserItems.logo-parchment.description
+#, no-c-format
+msgctxt "docs.chrome:registryBrowserItems.logo-parchment.description"
+msgid "Logo image tokens for parchment."
+msgstr "Tokens de imagen de logotipos de Parchment."
+
+#: docs/.vitepress/catalog-i18n.json#registryBrowserItems.theme-colors.title
+#, no-c-format
+msgctxt "docs.chrome:registryBrowserItems.theme-colors.title"
+msgid "Custom Theme Colors"
+msgstr "Colores de tema personalizados"
+
+#: docs/.vitepress/catalog-i18n.json#registryBrowserItems.theme-colors.description
+#, no-c-format
+msgctxt "docs.chrome:registryBrowserItems.theme-colors.description"
+msgid "Selector-driven Pantoken brand-color remapping for 13 color namespaces."
+msgstr ""
+"Remapeo de colores de marca de Pantoken mediante selectores para 13 espacios "
+"de nombres de color."
+
+#: docs/.vitepress/catalog-i18n.json#registryBrowserItems.primitives.title
+#, fuzzy, no-c-format
+msgctxt "docs.chrome:registryBrowserItems.primitives.title"
+msgid "Primitive Utilities"
+msgstr "Utilidades"
+
+#: docs/.vitepress/catalog-i18n.json#registryBrowserItems.primitives.description
+#, no-c-format
+msgctxt "docs.chrome:registryBrowserItems.primitives.description"
+msgid "Opt-in utility classes for Pantoken's raw primitive palette."
+msgstr ""
+"Clases de utilidad opcionales para la paleta de primitivas sin procesar de "
+"Pantoken."
+
+#: docs/.vitepress/catalog-i18n.json#registryBrowserItems.visual-debug.title
+#, no-c-format
+msgctxt "docs.chrome:registryBrowserItems.visual-debug.title"
+msgid "Visual Debug"
+msgstr "Depuración visual"
+
+#: docs/.vitepress/catalog-i18n.json#registryBrowserItems.visual-debug.description
+#, no-c-format
+msgctxt "docs.chrome:registryBrowserItems.visual-debug.description"
+msgid "Development-only layout outlines for Pantoken components."
+msgstr ""
+"Contornos de diseño exclusivos para desarrollo en los componentes de "
+"Pantoken."
+
+#, no-c-format
+#~ msgctxt "docs.chrome:a2uiCatalog.reactSupport"
+#~ msgid "React runtime support is pending v1.0 SDK verification."
+#~ msgstr ""
+#~ "La compatibilidad con el entorno de ejecución de React está pendiente de "
+#~ "verificación con el SDK v1.0."
+
+#, no-c-format
+#~ msgctxt "docs.chrome:a2uiCatalog.angularSupport"
+#~ msgid "Angular runtime support is pending v1.0 SDK verification."
+#~ msgstr ""
+#~ "La compatibilidad con el entorno de ejecución de Angular está pendiente "
+#~ "de verificación con el SDK v1.0."
+
+#, no-c-format
+#~ msgctxt "docs.chrome:registryBrowser.subtitle"
+#~ msgid ""
+#~ "Compatible components, themes, and behavior hooks conforming to the "
+#~ "shadcn/ui registry specification. Add items directly to your shadcn/ui "
+#~ "project via CLI."
+#~ msgstr ""
+#~ "Componentes compatibles, temas y hooks de comportamiento que cumplen con "
+#~ "la especificación del registro shadcn/ui. Agrega elementos directamente a "
+#~ "tu proyecto shadcn/ui mediante la CLI."

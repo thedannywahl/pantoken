@@ -32,8 +32,8 @@ features:
     title: 任意のプラットフォーム向けに生成
     details: pantoken cliをインストールすると、任意のプラットフォーム用のプリセットを生成したり、コンポーネントを追加したりできます&colon; ウェブ、ネイティブ、その他すべて。
   - icon:
-      light: /unlink-light.svg
-      dark: /unlink-dark.svg
-    title: Reactは必要ありません
-    details: InstUIライブラリはReactと密接に結合しています。これを使用するにはReactが必要です。今、どこでも構築できます。
+      light: /wand-sparkles-light.svg
+      dark: /wand-sparkles-dark.svg
+    title: AIエージェントを活用して構築する
+    details: 付属のスキル、agents file、api-catalog、llms.txt、A2UIを使って、すでに利用しているAIツールにpantokenを追加できます。
 ---

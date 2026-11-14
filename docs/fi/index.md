@@ -32,8 +32,8 @@ features:
     title: Luo mille tahansa alustalle
     details: Asenna pantoken cli luodaksesi esiasetuksia tai lisätäksesi komponentteja mille tahansa alustalle&colon; web, natiivi ja mitä tahansa siltä väliltä.
   - icon:
-      light: /unlink-light.svg
-      dark: /unlink-dark.svg
-    title: React ei tarvita
-    details: InstUI-kirjasto on tiiviisti kytketty React:iin. Jos haluat käyttää sitä, sinun täytyy käyttää React:ia. Nyt voit rakentaa missä tahansa.
+      light: /wand-sparkles-light.svg
+      dark: /wand-sparkles-dark.svg
+    title: Rakenna agenttien avulla
+    details: Lisää pantoken jo käyttämiisi tekoälytyökaluihin mukana tulevien taitojen, agents-tiedoston, api-catalogin, llms.txt:n ja A2UI:n avulla.
 ---

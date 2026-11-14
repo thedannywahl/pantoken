@@ -32,8 +32,8 @@ features:
     title: Generálás bármely platformra
     details: Telepítse a pantoken parancssori felületet előbeállítások generálásához vagy összetevők hozzáadásához bármely platformhoz&colon; web, natív és bármi más.
   - icon:
-      light: /unlink-light.svg
-      dark: /unlink-dark.svg
-    title: Nincs szükség a React-re
-    details: Az InstUI könyvtár szorosan összekapcsolódik a React-kel. Ha szeretnéd használni, React-et kell használnod. Most bárhol építhetsz.
+      light: /wand-sparkles-light.svg
+      dark: /wand-sparkles-dark.svg
+    title: Építs ügynöki módon
+    details: Add hozzá a pantokent a már használt AI-eszközeidhez a mellékelt készségekkel, agents fájllal, api-cataloggal, llms.txt-vel és A2UI-val.
 ---

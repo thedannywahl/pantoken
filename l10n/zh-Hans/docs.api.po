@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: pantoken\n"
-"PO-Revision-Date: 2026-10-30 19:57+0000\n"
+"PO-Revision-Date: 2026-11-14 00:29+0000\n"
 "Last-Translator: pantoken localization engine\n"
 "Language-Team: pantoken\n"
 "MIME-Version: 1.0\n"
@@ -34848,3 +34848,211 @@ msgstr "WCAG 2.2 2.5.8"
 msgctxt "docs.api:prose"
 msgid "All touch targets must be 24px large, or leave sufficient space"
 msgstr "所有触控目标的尺寸都必须至少为 24px，或彼此之间留有足够的间距"
+
+msgctxt "docs.api:prose"
+msgid "<!-- pantoken-value-scope:css%2Fscreen-reader-content.md -->\nThis component ships no CSS of its own — its markup and behavior come entirely from {{ptk_code_0}}. See the [modifier table below]({{ptk_code_1}})."
+msgstr "<!-- pantoken-value-scope:css%2Fscreen-reader-content.md -->\n此组件不提供自己的 CSS——其标记和行为完全来自 {{ptk_code_0}}。请参阅下方的 [修饰符表]({{ptk_code_1}})。"
+
+msgctxt "docs.api:prose"
+msgid "A section for an empty state or call to action."
+msgstr "用于空状态或行动号召的区块。"
+
+msgctxt "docs.api:prose"
+msgid "A breadcrumb navigation landmark."
+msgstr "面包屑导航地标。"
+
+msgctxt "docs.api:prose"
+msgid "A media-object byline container."
+msgstr "媒体对象署名容器。"
+
+msgctxt "docs.api:prose"
+msgid "An article-shaped card with slotted content."
+msgstr "带有插槽内容的文章式卡片。"
+
+msgctxt "docs.api:prose"
+msgid "A native checkbox and its slotted label."
+msgstr "原生复选框及其插槽标签。"
+
+msgctxt "docs.api:prose"
+msgid "A native close button with an accessible label."
+msgstr "带有无障碍标签的原生关闭按钮。"
+
+msgctxt "docs.api:prose"
+msgid "Missing root component records, registered after the hand-authored elements."
+msgstr "缺少在手工编写的元素之后注册的根组件记录。"
+
+msgctxt "docs.api:prose"
+msgid "A native file picker presented as a dropzone label."
+msgstr "以拖放区标签形式呈现的原生文件选择器。"
+
+msgctxt "docs.api:prose"
+msgid "A form-field layout container."
+msgstr "表单字段布局容器。"
+
+msgctxt "docs.api:prose"
+msgid "A native fieldset for a group of form fields."
+msgstr "用于一组表单字段的原生 fieldset。"
+
+msgctxt "docs.api:prose"
+msgid "A status region for form-field help and validation messages."
+msgstr "用于显示表单字段帮助和验证消息的状态区域。"
+
+msgctxt "docs.api:prose"
+msgid "A semantic heading with a bounded level from one through six."
+msgstr "级别限定在一级到六级之间的语义标题。"
+
+msgctxt "docs.api:prose"
+msgid "A container for an input and adjacent content."
+msgstr "用于容纳输入框及相邻内容的容器。"
+
+msgctxt "docs.api:prose"
+msgid "A link that rejects executable and data URL schemes."
+msgstr "拒绝可执行文件和数据 URL 方案的链接。"
+
+msgctxt "docs.api:prose"
+msgid "A native unordered list with Pantoken list-item styles."
+msgstr "使用 Pantoken 列表项样式的原生无序列表。"
+
+msgctxt "docs.api:prose"
+msgid "An overlay surface for positioned content."
+msgstr "用于显示定位内容的覆盖层表面。"
+
+msgctxt "docs.api:prose"
+msgid "A menu surface with item, group, and separator styles."
+msgstr "具有菜单项、分组和分隔符样式的菜单界面。"
+
+msgctxt "docs.api:prose"
+msgid "A native number input with value-change events."
+msgstr "带有值变更事件的原生数字输入框。"
+
+msgctxt "docs.api:prose"
+msgid "A pagination navigation landmark."
+msgstr "分页导航地标。"
+
+msgctxt "docs.api:prose"
+msgid "A native radio control and its slotted label."
+msgstr "原生单选控件及其插槽标签。"
+
+msgctxt "docs.api:prose"
+msgid "A native fieldset for a radio-input group."
+msgstr "用于单选输入组的原生字段集。"
+
+msgctxt "docs.api:prose"
+msgid "A native range slider with value-change events."
+msgstr "原生范围滑块，带有值更改事件。"
+
+msgctxt "docs.api:prose"
+msgid "Visually hidden content that remains available to assistive technology."
+msgstr "视觉上隐藏但仍可供辅助技术访问的内容。"
+
+msgctxt "docs.api:prose"
+msgid "A native select control that copies text-only options from its light DOM."
+msgstr "一个原生选择控件，会从其轻量 DOM 中复制纯文本选项。"
+
+msgctxt "docs.api:prose"
+msgid "A table-layout container that keeps slotted rows inside its table semantics."
+msgstr "一种表格布局容器，可使插槽行保留在表格语义中。"
+
+msgctxt "docs.api:prose"
+msgid "A paragraph of Pantoken body text."
+msgstr "一段 Pantoken 正文。"
+
+msgctxt "docs.api:prose"
+msgid "A native multiline text input with a visible slotted label."
+msgstr "原生多行文本输入框，带有可见的插槽标签。"
+
+msgctxt "docs.api:prose"
+msgid "A native text input with a visible slotted label."
+msgstr "带有可见插槽标签的原生文本输入框。"
+
+msgctxt "docs.api:prose"
+msgid "A native disclosure with a configurable summary."
+msgstr "原生披露组件，摘要可配置。"
+
+msgctxt "docs.api:prose"
+msgid "A native disclosure group."
+msgstr "原生折叠组。"
+
+msgctxt "docs.api:prose"
+msgid "A neutral layout primitive."
+msgstr "中性的布局原语。"
+
+#, pantoken-verbatim
+msgctxt "docs.api:text"
+msgid "toggleGroup"
+msgstr "toggleGroup"
+
+#, pantoken-verbatim
+msgctxt "docs.api:text"
+msgid "toggleDetails"
+msgstr "toggleDetails"
+
+#, pantoken-verbatim
+msgctxt "docs.api:text"
+msgid "fileDrop"
+msgstr "fileDrop"
+
+#, pantoken-verbatim
+msgctxt "docs.api:text"
+msgid "rangeInput"
+msgstr "rangeInput"
+
+#, pantoken-verbatim
+msgctxt "docs.api:text"
+msgid "screenReaderContent"
+msgstr "screenReaderContent"
+
+#, pantoken-verbatim
+msgctxt "docs.api:text"
+msgid "closeButton"
+msgstr "closeButton"
+
+#, pantoken-verbatim
+msgctxt "docs.api:text"
+msgid "formField"
+msgstr "formField"
+
+#, pantoken-verbatim
+msgctxt "docs.api:text"
+msgid "formFieldGroup"
+msgstr "formFieldGroup"
+
+#, pantoken-verbatim
+msgctxt "docs.api:text"
+msgid "radioInputGroup"
+msgstr "radioInputGroup"
+
+#, pantoken-verbatim
+msgctxt "docs.api:text"
+msgid "formFieldMessages"
+msgstr "formFieldMessages"
+
+#, pantoken-verbatim
+msgctxt "docs.api:text"
+msgid "textInput"
+msgstr "textInput"
+
+#, pantoken-verbatim
+msgctxt "docs.api:text"
+msgid "textArea"
+msgstr "textArea"
+
+#, pantoken-verbatim
+msgctxt "docs.api:text"
+msgid "simpleSelect"
+msgstr "simpleSelect"
+
+#, pantoken-verbatim
+msgctxt "docs.api:text"
+msgid "inputGroup"
+msgstr "inputGroup"
+
+#, pantoken-verbatim
+msgctxt "docs.api:text"
+msgid "numberInput"
+msgstr "numberInput"
+
+#, pantoken-verbatim
+msgctxt "docs.api:text"
+msgid "componentElements"
+msgstr "componentElements"

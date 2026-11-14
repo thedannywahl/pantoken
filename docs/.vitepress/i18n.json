@@ -16,6 +16,7 @@
   "sidebar.cdn": { "message": "CDN & distribution", "translate": "always" },
   "sidebar.cdnPicker": { "message": "CDN picker", "translate": "always" },
   "sidebar.registry": { "message": "shadcn/ui Registry", "translate": "always" },
+  "sidebar.a2uiCatalog": { "message": "A2UI Catalog", "translate": "always" },
   "sidebar.agentTools": { "message": "Agent Tools", "translate": "always" },
   "sidebar.canvasRce": { "message": "Canvas RCE", "translate": "always" },
   "sidebar.cli": { "message": "The pantoken CLI", "translate": "always" },
@@ -94,7 +95,7 @@
   },
   "registryBrowser.title": { "message": "shadcn/ui Registry", "translate": "always" },
   "registryBrowser.subtitle": {
-    "message": "Compatible components, themes, and behavior hooks conforming to the shadcn/ui registry specification. Add items directly to your shadcn/ui project via CLI.",
+    "message": "CSS components, layouts, plugins, and themes for package-managed shadcn projects. Items install styles and usage metadata, not React components.",
     "translate": "always"
   },
   "registryBrowser.tabAll": { "message": "All", "translate": "always" },
@@ -102,10 +103,15 @@
   "registryBrowser.tabThemes": { "message": "Themes", "translate": "always" },
   "registryBrowser.tabHooks": { "message": "Hooks", "translate": "always" },
   "registryBrowser.searchPlaceholder": {
-    "message": "Filter components, themes, hooks…",
+    "message": "Filter components, layouts, plugins, themes…",
     "translate": "always"
   },
+  "registryBrowser.searchLabel": { "message": "Filter registry items", "translate": "always" },
   "registryBrowser.cliLabel": { "message": "CLI:", "translate": "always" },
+  "registryBrowser.cliPattern": { "message": "CLI pattern:", "translate": "always" },
+  "registryBrowser.typeTheme": { "message": "Theme", "translate": "always" },
+  "registryBrowser.typeBase": { "message": "Base", "translate": "always" },
+  "registryBrowser.typeHook": { "message": "Hook", "translate": "always" },
   "registryBrowser.copy": { "message": "Copy", "translate": "always" },
   "registryBrowser.copied": { "message": "Copied", "translate": "always" },
   "registryBrowser.depsLabel": { "message": "Deps:", "translate": "always" },
@@ -117,6 +123,60 @@
     "translate": "always"
   },
   "registryBrowser.emptyReset": { "message": "Reset Filters", "translate": "always" },
+  "a2uiCatalog.title": { "message": "Pantoken A2UI Catalog", "translate": "always" },
+  "a2uiCatalog.subtitle": {
+    "message": "Explore the Pantoken component vocabulary for A2UI 1.0. This catalog defines only Pantoken components; standard layout components remain in the A2UI Basic Catalog.",
+    "translate": "always"
+  },
+  "a2uiCatalog.protocolLabel": { "message": "Protocol", "translate": "always" },
+  "a2uiCatalog.catalogIdLabel": { "message": "Catalog ID", "translate": "always" },
+  "a2uiCatalog.rawCatalog": { "message": "View catalog JSON", "translate": "always" },
+  "a2uiCatalog.componentsHeading": { "message": "Components", "translate": "always" },
+  "a2uiCatalog.searchLabel": { "message": "Filter components", "translate": "always" },
+  "a2uiCatalog.searchPlaceholder": {
+    "message": "Search names, properties, or values",
+    "translate": "always"
+  },
+  "a2uiCatalog.required": { "message": "Required", "translate": "always" },
+  "a2uiCatalog.optional": { "message": "Optional", "translate": "always" },
+  "a2uiCatalog.noFunctions": {
+    "message": "This catalog defines no executable functions. Button actions use A2UI's registered action handling.",
+    "translate": "always"
+  },
+  "a2uiCatalog.supportHeading": { "message": "Client support", "translate": "always" },
+  "a2uiCatalog.litSupport": {
+    "message": "Verified with the published A2UI 1.0 Lit SDK.",
+    "translate": "always"
+  },
+  "a2uiCatalog.reactSupport": {
+    "message": "Verified with @a2ui/react 0.15.0 and React 19.3.1 in Chromium, Firefox, and WebKit.",
+    "translate": "always"
+  },
+  "a2uiCatalog.angularSupport": {
+    "message": "Verified with @a2ui/angular 0.14.0 and Angular 21.2.5 in Chromium, Firefox, and WebKit.",
+    "translate": "always"
+  },
+  "a2uiCatalog.nativeSupport": {
+    "message": "Flutter, SwiftUI, and Jetpack Compose: schema only; no Pantoken native component renderers.",
+    "translate": "always"
+  },
+  "a2uiCatalog.functionsHeading": { "message": "Functions", "translate": "always" },
+  "a2uiCatalog.integrationHeading": { "message": "Lit registration", "translate": "always" },
+  "a2uiCatalog.componentReference": {
+    "message": "Use catalogId to reference Pantoken components alongside Basic Catalog components.",
+    "translate": "always"
+  },
+  "a2uiCatalog.empty": { "message": "No components match your search.", "translate": "always" },
+  "a2uiCatalog.value": { "message": "A2UI value", "translate": "always" },
+  "a2uiCatalog.versioningHeading": { "message": "Catalog Versioning", "translate": "always" },
+  "a2uiCatalog.versioningDescription": {
+    "message": "The v1 catalog ID is stable. Adding an optional component, property, or enum value is additive; removing or renaming an existing component or property, narrowing an enum, or making an optional property required is breaking and requires a new catalog version. Only the components and properties listed above are part of Pantoken's A2UI catalog.",
+    "translate": "always"
+  },
+  "a2uiCatalog.versioningActions": {
+    "message": "The catalog defines no executable functions and does not authorize actions. A2UI actions are dispatched through the host application's normal action handling, where the application must enforce its own permissions.",
+    "translate": "always"
+  },
   "canvasRce.title": { "message": "Canvas RCE", "translate": "always" },
   "canvasRce.description": {
     "message": "A live preview of pantoken's Canvas LMS Rich Content Editor template: a TinyMCE-based editor with starter layouts, a live preview pane, and hand-editable theme.css/theme.js output.",

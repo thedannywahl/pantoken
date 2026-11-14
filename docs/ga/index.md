@@ -32,8 +32,8 @@ features:
     title: Gineann do aon ardán
     details: Suiteáil an cli pantoken chun réamhsocruithe a ghiniúint nó comhpháirteanna a chur leis d'aon ardán&colon; gréasán, dúchasach, agus gach ní eile.
   - icon:
-      light: /unlink-light.svg
-      dark: /unlink-dark.svg
-    title: Níl React de dhíth
-    details: Tá an leabharlann InstUI ceangailte go dlúth le React. Más mian leat a úsáid, caithfidh tú React a úsáid. Anois is féidir leat a thógáil áit ar bith.
+      light: /wand-sparkles-light.svg
+      dark: /wand-sparkles-dark.svg
+    title: Tóg ar bhealach gníomhaireach
+    details: Cuir pantoken leis na huirlisí IS atá in úsáid agat cheana féin, le scileanna, comhad gníomhairí, api-catalog, llms.txt agus A2UI san áireamh.
 ---

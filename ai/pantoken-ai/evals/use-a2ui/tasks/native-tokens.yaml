@@ -1,0 +1,28 @@
+id: native-tokens-001
+name: Use pantoken with an A2UI native client
+description: User needs token output for a Jetpack Compose A2UI renderer.
+tags:
+  - positive-trigger
+inputs:
+  prompt: |
+    I'm adding pantoken tokens to an A2UI Jetpack Compose client. Confirm the A2UI version and tell me the right approach. Here's my libs.versions.toml:
+
+    [versions]
+    a2ui = "1.0.0"
+    compose = "1.6.0"
+
+    [libraries]
+    a2ui-compose = { module = "org.a2ui:compose", version.ref = "a2ui" }
+    androidx-compose-ui = { module = "androidx.compose.ui:ui", version.ref = "compose" }
+
+    [bundles]
+    compose = ["a2ui-compose", "androidx-compose-ui"]
+expected:
+  should_trigger: true
+graders:
+  - type: text
+    name: uses-existing-native-target
+    config:
+      contains:
+        - "pantoken generate compose"
+        - "A2UI 1.0"

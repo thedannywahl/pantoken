@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: pantoken\n"
-"PO-Revision-Date: 2026-10-01 01:54+0000\n"
+"PO-Revision-Date: 2026-11-14 02:31+0000\n"
 "Last-Translator: pantoken localization engine\n"
 "Language-Team: pantoken\n"
 "Language: und\n"
@@ -88,6 +88,12 @@ msgstr "CDN 選擇器"
 msgctxt "docs.chrome:sidebar.registry"
 msgid "shadcn/ui Registry"
 msgstr "註冊表"
+
+#: docs/.vitepress/i18n.json#sidebar.a2uiCatalog
+#, fuzzy, no-c-format
+msgctxt "docs.chrome:sidebar.a2uiCatalog"
+msgid "A2UI Catalog"
+msgstr "API 目錄"
 
 #: docs/.vitepress/i18n.json#sidebar.agentTools
 #, fuzzy, no-c-format
@@ -460,12 +466,11 @@ msgstr "註冊表"
 #, no-c-format
 msgctxt "docs.chrome:registryBrowser.subtitle"
 msgid ""
-"Compatible components, themes, and behavior hooks conforming to the shadcn/"
-"ui registry specification. Add items directly to your shadcn/ui project via "
-"CLI."
+"CSS components, layouts, plugins, and themes for package-managed shadcn "
+"projects. Items install styles and usage metadata, not React components."
 msgstr ""
-"與 shadcn/ui registry 規範相容的元件、主題與行為掛勾。透過 CLI 直接將項目新增"
-"到你的 shadcn/ui 專案中。"
+"適用於使用套件管理的 shadcn 專案的 CSS 元件、版面配置、外掛程式與佈景主題。項"
+"目會安裝樣式與使用中繼資料，而非 React 元件。"
 
 #: docs/.vitepress/i18n.json#registryBrowser.tabAll
 #, no-c-format
@@ -492,16 +497,46 @@ msgid "Hooks"
 msgstr "掛勾"
 
 #: docs/.vitepress/i18n.json#registryBrowser.searchPlaceholder
-#, no-c-format
+#, fuzzy, no-c-format
 msgctxt "docs.chrome:registryBrowser.searchPlaceholder"
-msgid "Filter components, themes, hooks…"
+msgid "Filter components, layouts, plugins, themes…"
 msgstr "篩選元件、主題、掛勾…"
+
+#: docs/.vitepress/i18n.json#registryBrowser.searchLabel
+#, fuzzy, no-c-format
+msgctxt "docs.chrome:registryBrowser.searchLabel"
+msgid "Filter registry items"
+msgstr "註冊表"
 
 #: docs/.vitepress/i18n.json#registryBrowser.cliLabel
 #, no-c-format
 msgctxt "docs.chrome:registryBrowser.cliLabel"
 msgid "CLI:"
 msgstr "CLI："
+
+#: docs/.vitepress/i18n.json#registryBrowser.cliPattern
+#, no-c-format
+msgctxt "docs.chrome:registryBrowser.cliPattern"
+msgid "CLI pattern:"
+msgstr "CLI 模式："
+
+#: docs/.vitepress/i18n.json#registryBrowser.typeTheme
+#, fuzzy, no-c-format
+msgctxt "docs.chrome:registryBrowser.typeTheme"
+msgid "Theme"
+msgstr "主題"
+
+#: docs/.vitepress/i18n.json#registryBrowser.typeBase
+#, fuzzy, no-c-format
+msgctxt "docs.chrome:registryBrowser.typeBase"
+msgid "Base"
+msgstr "基礎"
+
+#: docs/.vitepress/i18n.json#registryBrowser.typeHook
+#, fuzzy, no-c-format
+msgctxt "docs.chrome:registryBrowser.typeHook"
+msgid "Hook"
+msgstr "掛勾"
 
 #: docs/.vitepress/i18n.json#registryBrowser.copy
 #, fuzzy, no-c-format
@@ -550,6 +585,184 @@ msgstr "沒有登錄項目符合你的搜尋。"
 msgctxt "docs.chrome:registryBrowser.emptyReset"
 msgid "Reset Filters"
 msgstr "重設搜尋"
+
+#: docs/.vitepress/i18n.json#a2uiCatalog.title
+#, no-c-format
+msgctxt "docs.chrome:a2uiCatalog.title"
+msgid "Pantoken A2UI Catalog"
+msgstr "Pantoken A2UI 型錄"
+
+#: docs/.vitepress/i18n.json#a2uiCatalog.subtitle
+#, no-c-format
+msgctxt "docs.chrome:a2uiCatalog.subtitle"
+msgid ""
+"Explore the Pantoken component vocabulary for A2UI 1.0. This catalog defines "
+"only Pantoken components; standard layout components remain in the A2UI "
+"Basic Catalog."
+msgstr ""
+"探索 A2UI 1.0 的 Pantoken 元件詞彙表。此型錄僅定義 Pantoken 元件；標準版面配"
+"置元件仍位於 A2UI Basic Catalog。"
+
+#: docs/.vitepress/i18n.json#a2uiCatalog.protocolLabel
+#, no-c-format
+msgctxt "docs.chrome:a2uiCatalog.protocolLabel"
+msgid "Protocol"
+msgstr "通訊協定"
+
+#: docs/.vitepress/i18n.json#a2uiCatalog.catalogIdLabel
+#, no-c-format
+msgctxt "docs.chrome:a2uiCatalog.catalogIdLabel"
+msgid "Catalog ID"
+msgstr "型錄 ID"
+
+#: docs/.vitepress/i18n.json#a2uiCatalog.rawCatalog
+#, no-c-format
+msgctxt "docs.chrome:a2uiCatalog.rawCatalog"
+msgid "View catalog JSON"
+msgstr "檢視型錄 JSON"
+
+#: docs/.vitepress/i18n.json#a2uiCatalog.componentsHeading
+#, fuzzy, no-c-format
+msgctxt "docs.chrome:a2uiCatalog.componentsHeading"
+msgid "Components"
+msgstr "元件"
+
+#: docs/.vitepress/i18n.json#a2uiCatalog.searchLabel
+#, fuzzy, no-c-format
+msgctxt "docs.chrome:a2uiCatalog.searchLabel"
+msgid "Filter components"
+msgstr "所有元件"
+
+#: docs/.vitepress/i18n.json#a2uiCatalog.searchPlaceholder
+#, no-c-format
+msgctxt "docs.chrome:a2uiCatalog.searchPlaceholder"
+msgid "Search names, properties, or values"
+msgstr "搜尋名稱、屬性或值"
+
+#: docs/.vitepress/i18n.json#a2uiCatalog.required
+#, no-c-format
+msgctxt "docs.chrome:a2uiCatalog.required"
+msgid "Required"
+msgstr "必填"
+
+#: docs/.vitepress/i18n.json#a2uiCatalog.optional
+#, no-c-format
+msgctxt "docs.chrome:a2uiCatalog.optional"
+msgid "Optional"
+msgstr "選填"
+
+#: docs/.vitepress/i18n.json#a2uiCatalog.noFunctions
+#, no-c-format
+msgctxt "docs.chrome:a2uiCatalog.noFunctions"
+msgid ""
+"This catalog defines no executable functions. Button actions use A2UI's "
+"registered action handling."
+msgstr "此型錄未定義可執行函式。按鈕動作使用 A2UI 已註冊的動作處理機制。"
+
+#: docs/.vitepress/i18n.json#a2uiCatalog.supportHeading
+#, no-c-format
+msgctxt "docs.chrome:a2uiCatalog.supportHeading"
+msgid "Client support"
+msgstr "用戶端支援"
+
+#: docs/.vitepress/i18n.json#a2uiCatalog.litSupport
+#, no-c-format
+msgctxt "docs.chrome:a2uiCatalog.litSupport"
+msgid "Verified with the published A2UI 1.0 Lit SDK."
+msgstr "已透過已發布的 A2UI 1.0 Lit SDK 驗證。"
+
+#: docs/.vitepress/i18n.json#a2uiCatalog.reactSupport
+#, no-c-format
+msgctxt "docs.chrome:a2uiCatalog.reactSupport"
+msgid ""
+"Verified with @a2ui/react 0.15.0 and React 19.3.1 in Chromium, Firefox, and "
+"WebKit."
+msgstr ""
+"已在 Chromium、Firefox 和 WebKit 中使用 @a2ui/react 0.15.0 和 React 19.3.1 驗"
+"證。"
+
+#: docs/.vitepress/i18n.json#a2uiCatalog.angularSupport
+#, no-c-format
+msgctxt "docs.chrome:a2uiCatalog.angularSupport"
+msgid ""
+"Verified with @a2ui/angular 0.14.0 and Angular 21.2.5 in Chromium, Firefox, "
+"and WebKit."
+msgstr ""
+"已在 Chromium、Firefox 和 WebKit 中使用 @a2ui/angular 0.14.0 和 Angular "
+"21.2.5 驗證。"
+
+#: docs/.vitepress/i18n.json#a2uiCatalog.nativeSupport
+#, no-c-format
+msgctxt "docs.chrome:a2uiCatalog.nativeSupport"
+msgid ""
+"Flutter, SwiftUI, and Jetpack Compose: schema only; no Pantoken native "
+"component renderers."
+msgstr ""
+"Flutter、SwiftUI 與 Jetpack Compose：僅支援結構描述；沒有 Pantoken 原生元件轉"
+"譯器。"
+
+#: docs/.vitepress/i18n.json#a2uiCatalog.functionsHeading
+#, fuzzy, no-c-format
+msgctxt "docs.chrome:a2uiCatalog.functionsHeading"
+msgid "Functions"
+msgstr "操作"
+
+#: docs/.vitepress/i18n.json#a2uiCatalog.integrationHeading
+#, no-c-format
+msgctxt "docs.chrome:a2uiCatalog.integrationHeading"
+msgid "Lit registration"
+msgstr "Lit 註冊"
+
+#: docs/.vitepress/i18n.json#a2uiCatalog.componentReference
+#, fuzzy, no-c-format
+msgctxt "docs.chrome:a2uiCatalog.componentReference"
+msgid ""
+"Use catalogId to reference Pantoken components alongside Basic Catalog "
+"components."
+msgstr "使用 @catalogId，在 Basic Catalog 元件旁參照 Pantoken 元件。"
+
+#: docs/.vitepress/i18n.json#a2uiCatalog.empty
+#, fuzzy, no-c-format
+msgctxt "docs.chrome:a2uiCatalog.empty"
+msgid "No components match your search."
+msgstr "沒有登錄項目符合你的搜尋。"
+
+#: docs/.vitepress/i18n.json#a2uiCatalog.value
+#, no-c-format
+msgctxt "docs.chrome:a2uiCatalog.value"
+msgid "A2UI value"
+msgstr "A2UI 值"
+
+#: docs/.vitepress/i18n.json#a2uiCatalog.versioningHeading
+#, no-c-format
+msgctxt "docs.chrome:a2uiCatalog.versioningHeading"
+msgid "Catalog Versioning"
+msgstr "型錄版本管理"
+
+#: docs/.vitepress/i18n.json#a2uiCatalog.versioningDescription
+#, no-c-format
+msgctxt "docs.chrome:a2uiCatalog.versioningDescription"
+msgid ""
+"The v1 catalog ID is stable. Adding an optional component, property, or enum "
+"value is additive; removing or renaming an existing component or property, "
+"narrowing an enum, or making an optional property required is breaking and "
+"requires a new catalog version. Only the components and properties listed "
+"above are part of Pantoken's A2UI catalog."
+msgstr ""
+"v1 型錄 ID 固定不變。新增選填元件、屬性或列舉值屬於向後相容的增補；移除或重新"
+"命名現有元件或屬性、縮小列舉範圍，或將選填屬性改為必填，則屬於重大變更，必須"
+"使用新的型錄版本。只有上方列出的元件與屬性屬於 Pantoken 的 A2UI 型錄。"
+
+#: docs/.vitepress/i18n.json#a2uiCatalog.versioningActions
+#, no-c-format
+msgctxt "docs.chrome:a2uiCatalog.versioningActions"
+msgid ""
+"The catalog defines no executable functions and does not authorize actions. "
+"A2UI actions are dispatched through the host application's normal action "
+"handling, where the application must enforce its own permissions."
+msgstr ""
+"此型錄未定義可執行函式，也不授權任何動作。A2UI 動作會透過主機應用程式的一般動"
+"作處理機制派發，應用程式必須在該處執行自己的權限控管。"
 
 #: docs/.vitepress/i18n.json#canvasRce.title
 #, fuzzy, no-c-format
@@ -1089,3 +1302,1471 @@ msgstr "以導覽"
 msgctxt "docs.chrome:search.footerClose"
 msgid "to close"
 msgstr "以關閉"
+
+#: docs/.vitepress/catalog-i18n.json#a2uiCatalogDescriptions.PantokenIcon
+#, no-c-format
+msgctxt "docs.chrome:a2uiCatalogDescriptions.PantokenIcon"
+msgid "An inline glyph selected from Pantoken's icon set."
+msgstr "從 Pantoken 圖示集中選取的行內字形。"
+
+#: docs/.vitepress/catalog-i18n.json#a2uiCatalogDescriptions.PantokenButton
+#, no-c-format
+msgctxt "docs.chrome:a2uiCatalogDescriptions.PantokenButton"
+msgid ""
+"A token-styled action button with optional A2UI event and Invoker Commands "
+"behavior."
+msgstr ""
+"採用 Token 樣式的動作按鈕，可選擇使用 A2UI 事件與 Invoker Commands 行為。"
+
+#: docs/.vitepress/catalog-i18n.json#a2uiCatalogDescriptions.PantokenAlert
+#, no-c-format
+msgctxt "docs.chrome:a2uiCatalogDescriptions.PantokenAlert"
+msgid "A status message with optional timeout dismissal."
+msgstr "可選擇在逾時後關閉的狀態訊息。"
+
+#: docs/.vitepress/catalog-i18n.json#a2uiCatalogDescriptions.PantokenBadge
+#, no-c-format
+msgctxt "docs.chrome:a2uiCatalogDescriptions.PantokenBadge"
+msgid "A compact count or status badge."
+msgstr "精簡的計數或狀態徽章。"
+
+#: docs/.vitepress/catalog-i18n.json#a2uiCatalogDescriptions.PantokenPill
+#, no-c-format
+msgctxt "docs.chrome:a2uiCatalogDescriptions.PantokenPill"
+msgid "A compact status pill."
+msgstr "精簡的狀態膠囊。"
+
+#: docs/.vitepress/catalog-i18n.json#a2uiCatalogDescriptions.PantokenTag
+#, no-c-format
+msgctxt "docs.chrome:a2uiCatalogDescriptions.PantokenTag"
+msgid "A token-styled tag or chip."
+msgstr "採用 Token 樣式的標籤或標記。"
+
+#: docs/.vitepress/catalog-i18n.json#a2uiCatalogDescriptions.PantokenAvatar
+#, no-c-format
+msgctxt "docs.chrome:a2uiCatalogDescriptions.PantokenAvatar"
+msgid "An initials avatar with a constrained palette, size, and shape."
+msgstr "使用受限色盤、尺寸與形狀的姓名縮寫頭像。"
+
+#: docs/.vitepress/catalog-i18n.json#a2uiCatalogDescriptions.PantokenSpinner
+#, no-c-format
+msgctxt "docs.chrome:a2uiCatalogDescriptions.PantokenSpinner"
+msgid "A loading status indicator."
+msgstr "載入狀態指示器。"
+
+#: docs/.vitepress/catalog-i18n.json#a2uiCatalogDescriptions.PantokenProgress
+#, no-c-format
+msgctxt "docs.chrome:a2uiCatalogDescriptions.PantokenProgress"
+msgid "A horizontal progress or meter indicator."
+msgstr "水平進度或計量指示器。"
+
+#: docs/.vitepress/catalog-i18n.json#a2uiCatalogDescriptions.PantokenMetric
+#, no-c-format
+msgctxt "docs.chrome:a2uiCatalogDescriptions.PantokenMetric"
+msgid "A large value paired with a descriptive label."
+msgstr "搭配描述性標籤的大型數值。"
+
+#: docs/.vitepress/catalog-i18n.json#a2uiCatalogDescriptions.PantokenRating
+#, no-c-format
+msgctxt "docs.chrome:a2uiCatalogDescriptions.PantokenRating"
+msgid "A read-only star rating with a bounded number of stars."
+msgstr "星數上限固定的唯讀星級評分。"
+
+#: docs/.vitepress/catalog-i18n.json#a2uiCatalogDescriptions.PantokenProgressCircle
+#, no-c-format
+msgctxt "docs.chrome:a2uiCatalogDescriptions.PantokenProgressCircle"
+msgid "A circular progress or meter indicator."
+msgstr "圓形進度或計量指示器。"
+
+#: docs/.vitepress/catalog-i18n.json#a2uiCatalogDescriptions.PantokenIconButton
+#, no-c-format
+msgctxt "docs.chrome:a2uiCatalogDescriptions.PantokenIconButton"
+msgid "An icon-only button with an accessible label."
+msgstr "具有無障礙標籤的純圖示按鈕。"
+
+#: docs/.vitepress/catalog-i18n.json#a2uiCatalogDescriptions.PantokenToggleButton
+#, no-c-format
+msgctxt "docs.chrome:a2uiCatalogDescriptions.PantokenToggleButton"
+msgid "A two-state button whose pressed state is bound to A2UI data."
+msgstr "按下狀態繫結至 A2UI 資料的雙狀態按鈕。"
+
+#: docs/.vitepress/catalog-i18n.json#a2uiCatalogDescriptions.PantokenTruncate
+#, no-c-format
+msgctxt "docs.chrome:a2uiCatalogDescriptions.PantokenTruncate"
+msgid "A clamped text region with an allowlisted line count."
+msgstr "行數採允許清單限制的截斷文字區域。"
+
+#: docs/.vitepress/catalog-i18n.json#a2uiCatalogDescriptions.PantokenImg
+#, no-c-format
+msgctxt "docs.chrome:a2uiCatalogDescriptions.PantokenImg"
+msgid ""
+"A responsive image with a sanitized media URL and constrained presentation."
+msgstr "使用經清理媒體 URL 且呈現方式受限的自適應圖片。"
+
+#: docs/.vitepress/catalog-i18n.json#a2uiCatalogDescriptions.PantokenSideNavBar
+#, no-c-format
+msgctxt "docs.chrome:a2uiCatalogDescriptions.PantokenSideNavBar"
+msgid "A vertical navigation rail that can collapse to icon-only presentation."
+msgstr "可收合為僅顯示圖示的垂直導覽列。"
+
+#: docs/.vitepress/catalog-i18n.json#a2uiCatalogDescriptions.PantokenTreeBrowser
+#, no-c-format
+msgctxt "docs.chrome:a2uiCatalogDescriptions.PantokenTreeBrowser"
+msgid ""
+"An accessible tree whose child components are exposed as focusable tree "
+"items."
+msgstr "無障礙樹狀結構，其子元件會以可聚焦的樹狀項目呈現。"
+
+#: docs/.vitepress/catalog-i18n.json#a2uiCatalogDescriptions.PantokenCalendar
+#, no-c-format
+msgctxt "docs.chrome:a2uiCatalogDescriptions.PantokenCalendar"
+msgid "An interactive month calendar that updates its selected ISO date."
+msgstr "可互動的月份行事曆，會更新所選的 ISO 日期。"
+
+#: docs/.vitepress/catalog-i18n.json#a2uiCatalogDescriptions.PantokenTooltip
+#, no-c-format
+msgctxt "docs.chrome:a2uiCatalogDescriptions.PantokenTooltip"
+msgid "A noninteractive tooltip around a trigger component."
+msgstr "觸發元件周圍的非互動式工具提示。"
+
+#: docs/.vitepress/catalog-i18n.json#a2uiCatalogDescriptions.PantokenModal
+#, no-c-format
+msgctxt "docs.chrome:a2uiCatalogDescriptions.PantokenModal"
+msgid "A native dialog with command-driven open and close behavior."
+msgstr "使用命令控制開啟與關閉行為的原生對話框。"
+
+#: docs/.vitepress/catalog-i18n.json#a2uiCatalogDescriptions.PantokenContextView
+#, no-c-format
+msgctxt "docs.chrome:a2uiCatalogDescriptions.PantokenContextView"
+msgid "A callout popover with Pantoken styling."
+msgstr "採用 Pantoken 樣式的提示彈出視窗。"
+
+#: docs/.vitepress/catalog-i18n.json#a2uiCatalogDescriptions.PantokenPopover
+#, no-c-format
+msgctxt "docs.chrome:a2uiCatalogDescriptions.PantokenPopover"
+msgid "A floating popover surface."
+msgstr "浮動的彈出視窗表面。"
+
+#: docs/.vitepress/catalog-i18n.json#a2uiCatalogDescriptions.PantokenTray
+#, no-c-format
+msgctxt "docs.chrome:a2uiCatalogDescriptions.PantokenTray"
+msgid "A viewport-edge popover panel with constrained placement and size."
+msgstr "位於視窗邊緣且位置與尺寸受限的彈出面板。"
+
+#: docs/.vitepress/catalog-i18n.json#a2uiCatalogDescriptions.PantokenInPlaceEdit
+#, no-c-format
+msgctxt "docs.chrome:a2uiCatalogDescriptions.PantokenInPlaceEdit"
+msgid "An inline editable value with A2UI state updates."
+msgstr "可行內編輯且會更新 A2UI 狀態的值。"
+
+#: docs/.vitepress/catalog-i18n.json#a2uiCatalogDescriptions.PantokenDrilldown
+#, no-c-format
+msgctxt "docs.chrome:a2uiCatalogDescriptions.PantokenDrilldown"
+msgid "A nested menu built from safe page and item data."
+msgstr "使用安全頁面與項目資料建構的巢狀選單。"
+
+#: docs/.vitepress/catalog-i18n.json#a2uiCatalogDescriptions.PantokenPages
+#, no-c-format
+msgctxt "docs.chrome:a2uiCatalogDescriptions.PantokenPages"
+msgid "A history-aware set of A2UI child panels."
+msgstr "具備歷程感知能力的一組 A2UI 子面板。"
+
+#: docs/.vitepress/catalog-i18n.json#a2uiCatalogDescriptions.PantokenDrawerLayout
+#, no-c-format
+msgctxt "docs.chrome:a2uiCatalogDescriptions.PantokenDrawerLayout"
+msgid "A responsive content and tray layout with command-driven open state."
+msgstr "可自適應的內容與抽屜版面配置，開啟狀態由命令控制。"
+
+#: docs/.vitepress/catalog-i18n.json#a2uiCatalogDescriptions.PantokenDateInput
+#, no-c-format
+msgctxt "docs.chrome:a2uiCatalogDescriptions.PantokenDateInput"
+msgid "A date field with a calendar popover and ISO value updates."
+msgstr "包含行事曆彈出視窗且會更新 ISO 值的日期欄位。"
+
+#: docs/.vitepress/catalog-i18n.json#a2uiCatalogDescriptions.PantokenDateTimeInput
+#, no-c-format
+msgctxt "docs.chrome:a2uiCatalogDescriptions.PantokenDateTimeInput"
+msgid "A combined date and time field with an ISO value update."
+msgstr "結合日期與時間且會更新 ISO 值的欄位。"
+
+#: docs/.vitepress/catalog-i18n.json#a2uiCatalogDescriptions.PantokenTabs
+#, no-c-format
+msgctxt "docs.chrome:a2uiCatalogDescriptions.PantokenTabs"
+msgid "An accessible tab set pairing A2UI child panels with labels."
+msgstr "無障礙分頁組，以標籤搭配 A2UI 子面板。"
+
+#: docs/.vitepress/catalog-i18n.json#a2uiCatalogDescriptions.PantokenCard
+#, no-c-format
+msgctxt "docs.chrome:a2uiCatalogDescriptions.PantokenCard"
+msgid "A Pantoken card component with safe text and child content."
+msgstr "採用 Pantoken 樣式並含安全文字與子內容的卡片元件。"
+
+#: docs/.vitepress/catalog-i18n.json#a2uiCatalogDescriptions.PantokenByline
+#, no-c-format
+msgctxt "docs.chrome:a2uiCatalogDescriptions.PantokenByline"
+msgid "A Pantoken byline component with safe text and child content."
+msgstr "採用 Pantoken 樣式並含安全文字與子內容的署名列元件。"
+
+#: docs/.vitepress/catalog-i18n.json#a2uiCatalogDescriptions.PantokenTable
+#, no-c-format
+msgctxt "docs.chrome:a2uiCatalogDescriptions.PantokenTable"
+msgid "A data table with a caption, column headers, and text-only cells."
+msgstr "包含標題、欄標題與純文字儲存格的資料表格。"
+
+#: docs/.vitepress/catalog-i18n.json#a2uiCatalogDescriptions.PantokenLink
+#, no-c-format
+msgctxt "docs.chrome:a2uiCatalogDescriptions.PantokenLink"
+msgid "A navigable text link with an allowlisted URL scheme."
+msgstr "使用允許清單 URL 配置的可導覽文字連結。"
+
+#: docs/.vitepress/catalog-i18n.json#a2uiCatalogDescriptions.PantokenList
+#, no-c-format
+msgctxt "docs.chrome:a2uiCatalogDescriptions.PantokenList"
+msgid "A Pantoken list component with safe text and child content."
+msgstr "採用 Pantoken 樣式並含安全文字與子內容的清單元件。"
+
+#: docs/.vitepress/catalog-i18n.json#a2uiCatalogDescriptions.PantokenCheckbox
+#, no-c-format
+msgctxt "docs.chrome:a2uiCatalogDescriptions.PantokenCheckbox"
+msgid "A native checkbox with a visible label and checked-state updates."
+msgstr "具有可見標籤且會更新勾選狀態的原生核取方塊。"
+
+#: docs/.vitepress/catalog-i18n.json#a2uiCatalogDescriptions.PantokenRadio
+#, no-c-format
+msgctxt "docs.chrome:a2uiCatalogDescriptions.PantokenRadio"
+msgid "A native radio control with a visible label and selected-value updates."
+msgstr "具有可見標籤且會更新所選值的原生單選控制項。"
+
+#: docs/.vitepress/catalog-i18n.json#a2uiCatalogDescriptions.PantokenMenu
+#, no-c-format
+msgctxt "docs.chrome:a2uiCatalogDescriptions.PantokenMenu"
+msgid "A Pantoken menu component with safe text and child content."
+msgstr "採用 Pantoken 樣式並含安全文字與子內容的選單元件。"
+
+#: docs/.vitepress/catalog-i18n.json#a2uiCatalogDescriptions.PantokenBreadcrumb
+#, no-c-format
+msgctxt "docs.chrome:a2uiCatalogDescriptions.PantokenBreadcrumb"
+msgid "A labeled navigation landmark with breadcrumb items."
+msgstr "包含麵包屑項目的具名導覽地標。"
+
+#: docs/.vitepress/catalog-i18n.json#a2uiCatalogDescriptions.PantokenBillboard
+#, no-c-format
+msgctxt "docs.chrome:a2uiCatalogDescriptions.PantokenBillboard"
+msgid "A Pantoken billboard component with safe text and child content."
+msgstr "採用 Pantoken 樣式並含安全文字與子內容的主視覺元件。"
+
+#: docs/.vitepress/catalog-i18n.json#a2uiCatalogDescriptions.PantokenToggleGroup
+#, no-c-format
+msgctxt "docs.chrome:a2uiCatalogDescriptions.PantokenToggleGroup"
+msgid ""
+"A token-styled disclosure group with a summary and expandable child content."
+msgstr "採用 Token 樣式的揭露群組，包含摘要與可展開的子內容。"
+
+#: docs/.vitepress/catalog-i18n.json#a2uiCatalogDescriptions.PantokenPagination
+#, no-c-format
+msgctxt "docs.chrome:a2uiCatalogDescriptions.PantokenPagination"
+msgid "A labeled navigation landmark for pagination controls."
+msgstr "分頁控制項的具名導覽地標。"
+
+#: docs/.vitepress/catalog-i18n.json#a2uiCatalogDescriptions.PantokenToggleDetails
+#, no-c-format
+msgctxt "docs.chrome:a2uiCatalogDescriptions.PantokenToggleDetails"
+msgid "A native disclosure with a summary and expandable child content."
+msgstr "包含摘要與可展開子內容的原生揭露區塊。"
+
+#: docs/.vitepress/catalog-i18n.json#a2uiCatalogDescriptions.PantokenFileDrop
+#, no-c-format
+msgctxt "docs.chrome:a2uiCatalogDescriptions.PantokenFileDrop"
+msgid "A Pantoken file-drop component with safe text and child content."
+msgstr "採用 Pantoken 樣式並含安全文字與子內容的檔案拖放元件。"
+
+#: docs/.vitepress/catalog-i18n.json#a2uiCatalogDescriptions.PantokenRangeInput
+#, no-c-format
+msgctxt "docs.chrome:a2uiCatalogDescriptions.PantokenRangeInput"
+msgid "A native range slider with bounded numeric values."
+msgstr "數值範圍受限的原生範圍滑桿。"
+
+#: docs/.vitepress/catalog-i18n.json#a2uiCatalogDescriptions.PantokenMask
+#, no-c-format
+msgctxt "docs.chrome:a2uiCatalogDescriptions.PantokenMask"
+msgid "A Pantoken mask component with safe text and child content."
+msgstr "具有安全文字與子內容的 Pantoken 遮罩元件。"
+
+#: docs/.vitepress/catalog-i18n.json#a2uiCatalogDescriptions.PantokenScreenReaderContent
+#, no-c-format
+msgctxt "docs.chrome:a2uiCatalogDescriptions.PantokenScreenReaderContent"
+msgid ""
+"A Pantoken screen-reader-content component with safe text and child content."
+msgstr "具有安全文字與子內容的 Pantoken 螢幕閱讀器內容元件。"
+
+#: docs/.vitepress/catalog-i18n.json#a2uiCatalogDescriptions.PantokenHeading
+#, no-c-format
+msgctxt "docs.chrome:a2uiCatalogDescriptions.PantokenHeading"
+msgid "A Pantoken heading component with safe text and child content."
+msgstr "具有安全文字與子內容的 Pantoken 標題元件。"
+
+#: docs/.vitepress/catalog-i18n.json#a2uiCatalogDescriptions.PantokenText
+#, no-c-format
+msgctxt "docs.chrome:a2uiCatalogDescriptions.PantokenText"
+msgid "A Pantoken text component with safe text and child content."
+msgstr "具有安全文字與子內容的 Pantoken 文字元件。"
+
+#: docs/.vitepress/catalog-i18n.json#a2uiCatalogDescriptions.PantokenCloseButton
+#, no-c-format
+msgctxt "docs.chrome:a2uiCatalogDescriptions.PantokenCloseButton"
+msgid "An accessible close control that dispatches an A2UI click action."
+msgstr "可存取的關閉控制項，會觸發 A2UI 點擊動作。"
+
+#: docs/.vitepress/catalog-i18n.json#a2uiCatalogDescriptions.PantokenFormField
+#, no-c-format
+msgctxt "docs.chrome:a2uiCatalogDescriptions.PantokenFormField"
+msgid "A Pantoken form-field component with safe text and child content."
+msgstr "具有安全文字與子內容的 Pantoken 表單欄位元件。"
+
+#: docs/.vitepress/catalog-i18n.json#a2uiCatalogDescriptions.PantokenFormFieldGroup
+#, no-c-format
+msgctxt "docs.chrome:a2uiCatalogDescriptions.PantokenFormFieldGroup"
+msgid "A labeled fieldset grouping related form controls."
+msgstr "以標籤標示、用於分組相關表單控制項的欄位集。"
+
+#: docs/.vitepress/catalog-i18n.json#a2uiCatalogDescriptions.PantokenRadioInputGroup
+#, no-c-format
+msgctxt "docs.chrome:a2uiCatalogDescriptions.PantokenRadioInputGroup"
+msgid "A labeled fieldset grouping related radio controls."
+msgstr "以標籤標示、用於分組相關單選控制項的欄位集。"
+
+#: docs/.vitepress/catalog-i18n.json#a2uiCatalogDescriptions.PantokenFormFieldMessages
+#, no-c-format
+msgctxt "docs.chrome:a2uiCatalogDescriptions.PantokenFormFieldMessages"
+msgid ""
+"A Pantoken form-field-messages component with safe text and child content."
+msgstr "具有安全文字與子內容的 Pantoken 表單欄位訊息元件。"
+
+#: docs/.vitepress/catalog-i18n.json#a2uiCatalogDescriptions.PantokenTextInput
+#, no-c-format
+msgctxt "docs.chrome:a2uiCatalogDescriptions.PantokenTextInput"
+msgid "A native text input with a visible label and value updates."
+msgstr "原生文字輸入欄位，具有可見標籤並會更新值。"
+
+#: docs/.vitepress/catalog-i18n.json#a2uiCatalogDescriptions.PantokenTextArea
+#, no-c-format
+msgctxt "docs.chrome:a2uiCatalogDescriptions.PantokenTextArea"
+msgid "A native multiline text field with a visible label and value updates."
+msgstr "原生多行文字欄位，具有可見標籤並會更新值。"
+
+#: docs/.vitepress/catalog-i18n.json#a2uiCatalogDescriptions.PantokenSimpleSelect
+#, no-c-format
+msgctxt "docs.chrome:a2uiCatalogDescriptions.PantokenSimpleSelect"
+msgid "A labeled select control with bounded, text-only options."
+msgstr "具有標籤的選取控制項，選項數量有限且僅含文字。"
+
+#: docs/.vitepress/catalog-i18n.json#a2uiCatalogDescriptions.PantokenInputGroup
+#, no-c-format
+msgctxt "docs.chrome:a2uiCatalogDescriptions.PantokenInputGroup"
+msgid "A Pantoken input-group component with safe text and child content."
+msgstr "具有安全文字與子內容的 Pantoken 輸入群組元件。"
+
+#: docs/.vitepress/catalog-i18n.json#a2uiCatalogDescriptions.PantokenNumberInput
+#, no-c-format
+msgctxt "docs.chrome:a2uiCatalogDescriptions.PantokenNumberInput"
+msgid "A native number input with bounded values and a visible label."
+msgstr "原生數字輸入欄位，具有有限範圍的值與可見標籤。"
+
+#: docs/.vitepress/catalog-i18n.json#a2uiCatalogDescriptions.PantokenView
+#, no-c-format
+msgctxt "docs.chrome:a2uiCatalogDescriptions.PantokenView"
+msgid "A Pantoken view component with safe text and child content."
+msgstr "具有安全文字與子內容的 Pantoken 檢視元件。"
+
+#: docs/.vitepress/catalog-i18n.json#registryBrowserItems.theme-canvas.title
+#, no-c-format
+msgctxt "docs.chrome:registryBrowserItems.theme-canvas.title"
+msgid "Canvas LMS Theme"
+msgstr "Canvas LMS 主題"
+
+#: docs/.vitepress/catalog-i18n.json#registryBrowserItems.theme-canvas.description
+#, no-c-format
+msgctxt "docs.chrome:registryBrowserItems.theme-canvas.description"
+msgid ""
+"Instructure Canvas LMS theme variables bridging to shadcn/ui custom "
+"properties."
+msgstr "Instructure Canvas LMS 主題變數，對應至 shadcn/ui 自訂屬性。"
+
+#: docs/.vitepress/catalog-i18n.json#registryBrowserItems.theme-canvas-high-contrast.title
+#, fuzzy, no-c-format
+msgctxt "docs.chrome:registryBrowserItems.theme-canvas-high-contrast.title"
+msgid "Canvas High Contrast Theme"
+msgstr "Canvas high contrast"
+
+#: docs/.vitepress/catalog-i18n.json#registryBrowserItems.theme-canvas-high-contrast.description
+#, no-c-format
+msgctxt ""
+"docs.chrome:registryBrowserItems.theme-canvas-high-contrast.description"
+msgid "Canvas LMS High Contrast theme variables for WCAG AAA compliance."
+msgstr "符合 WCAG AAA 規範的 Canvas LMS 高對比主題變數。"
+
+#: docs/.vitepress/catalog-i18n.json#registryBrowserItems.theme-rebrand.title
+#, no-c-format
+msgctxt "docs.chrome:registryBrowserItems.theme-rebrand.title"
+msgid "Instructure Next gen Theme"
+msgstr "Instructure 新一代主題"
+
+#: docs/.vitepress/catalog-i18n.json#registryBrowserItems.theme-rebrand.description
+#, no-c-format
+msgctxt "docs.chrome:registryBrowserItems.theme-rebrand.description"
+msgid "Modern Instructure brand theme variables."
+msgstr "現代化的 Instructure 品牌主題變數。"
+
+#: docs/.vitepress/catalog-i18n.json#registryBrowserItems.base.title
+#, no-c-format
+msgctxt "docs.chrome:registryBrowserItems.base.title"
+msgid "Pantoken Base System"
+msgstr "Pantoken 基礎系統"
+
+#: docs/.vitepress/catalog-i18n.json#registryBrowserItems.base.description
+#, no-c-format
+msgctxt "docs.chrome:registryBrowserItems.base.description"
+msgid ""
+"Pantoken core design token system, CSS custom properties, and semantic "
+"components."
+msgstr "Pantoken 核心設計權杖系統、CSS 自訂屬性與語意元件。"
+
+#: docs/.vitepress/catalog-i18n.json#registryBrowserItems.button.title
+#, no-c-format
+msgctxt "docs.chrome:registryBrowserItems.button.title"
+msgid "Button"
+msgstr "按鈕"
+
+#: docs/.vitepress/catalog-i18n.json#registryBrowserItems.button.description
+#, no-c-format
+msgctxt "docs.chrome:registryBrowserItems.button.description"
+msgid ""
+"Instructure Button component styled with semantic .instui-button classes."
+msgstr "採用語意化 .instui-button 類別樣式的 Instructure 按鈕元件。"
+
+#: docs/.vitepress/catalog-i18n.json#registryBrowserItems.card.title
+#, no-c-format
+msgctxt "docs.chrome:registryBrowserItems.card.title"
+msgid "Card"
+msgstr "卡片"
+
+#: docs/.vitepress/catalog-i18n.json#registryBrowserItems.card.description
+#, no-c-format
+msgctxt "docs.chrome:registryBrowserItems.card.description"
+msgid "Instructure Card component styled with semantic .instui-card classes."
+msgstr "採用語意化 .instui-card 類別樣式的 Instructure 卡片元件。"
+
+#: docs/.vitepress/catalog-i18n.json#registryBrowserItems.alert.title
+#, no-c-format
+msgctxt "docs.chrome:registryBrowserItems.alert.title"
+msgid "Alert"
+msgstr "警示"
+
+#: docs/.vitepress/catalog-i18n.json#registryBrowserItems.alert.description
+#, no-c-format
+msgctxt "docs.chrome:registryBrowserItems.alert.description"
+msgid "Instructure Alert component styled with semantic .instui-alert classes."
+msgstr "採用語意化 .instui-alert 類別樣式的 Instructure 警示元件。"
+
+#: docs/.vitepress/catalog-i18n.json#registryBrowserItems.badge.title
+#, no-c-format
+msgctxt "docs.chrome:registryBrowserItems.badge.title"
+msgid "Badge"
+msgstr "徽章"
+
+#: docs/.vitepress/catalog-i18n.json#registryBrowserItems.badge.description
+#, no-c-format
+msgctxt "docs.chrome:registryBrowserItems.badge.description"
+msgid "Instructure Badge component styled with semantic .instui-badge classes."
+msgstr "採用語意化 .instui-badge 類別樣式的 Instructure 徽章元件。"
+
+#: docs/.vitepress/catalog-i18n.json#registryBrowserItems.pill.title
+#, no-c-format
+msgctxt "docs.chrome:registryBrowserItems.pill.title"
+msgid "Pill"
+msgstr "膠囊標籤"
+
+#: docs/.vitepress/catalog-i18n.json#registryBrowserItems.pill.description
+#, no-c-format
+msgctxt "docs.chrome:registryBrowserItems.pill.description"
+msgid "Instructure Pill component styled with semantic .instui-pill classes."
+msgstr "採用語意化 .instui-pill 類別樣式的 Instructure 膠囊標籤元件。"
+
+#: docs/.vitepress/catalog-i18n.json#registryBrowserItems.tag.title
+#, no-c-format
+msgctxt "docs.chrome:registryBrowserItems.tag.title"
+msgid "Tag"
+msgstr "標籤"
+
+#: docs/.vitepress/catalog-i18n.json#registryBrowserItems.tag.description
+#, no-c-format
+msgctxt "docs.chrome:registryBrowserItems.tag.description"
+msgid "Instructure Tag component styled with semantic .instui-tag classes."
+msgstr "採用語意化 .instui-tag 類別樣式的 Instructure 標籤元件。"
+
+#: docs/.vitepress/catalog-i18n.json#registryBrowserItems.avatar.title
+#, no-c-format
+msgctxt "docs.chrome:registryBrowserItems.avatar.title"
+msgid "Avatar"
+msgstr "頭像"
+
+#: docs/.vitepress/catalog-i18n.json#registryBrowserItems.avatar.description
+#, no-c-format
+msgctxt "docs.chrome:registryBrowserItems.avatar.description"
+msgid ""
+"Instructure Avatar component styled with semantic .instui-avatar classes."
+msgstr "採用語意化 .instui-avatar 類別樣式的 Instructure 頭像元件。"
+
+#: docs/.vitepress/catalog-i18n.json#registryBrowserItems.tabs.title
+#, no-c-format
+msgctxt "docs.chrome:registryBrowserItems.tabs.title"
+msgid "Tabs"
+msgstr "分頁"
+
+#: docs/.vitepress/catalog-i18n.json#registryBrowserItems.tabs.description
+#, no-c-format
+msgctxt "docs.chrome:registryBrowserItems.tabs.description"
+msgid "Instructure Tabs component styled with semantic .instui-tabs classes."
+msgstr "採用語意化 .instui-tabs 類別樣式的 Instructure 分頁元件。"
+
+#: docs/.vitepress/catalog-i18n.json#registryBrowserItems.metric.title
+#, no-c-format
+msgctxt "docs.chrome:registryBrowserItems.metric.title"
+msgid "Metric"
+msgstr "指標"
+
+#: docs/.vitepress/catalog-i18n.json#registryBrowserItems.metric.description
+#, no-c-format
+msgctxt "docs.chrome:registryBrowserItems.metric.description"
+msgid ""
+"Instructure Metric component styled with semantic .instui-metric classes."
+msgstr "採用語意化 .instui-metric 類別樣式的 Instructure 指標元件。"
+
+#: docs/.vitepress/catalog-i18n.json#registryBrowserItems.byline.title
+#, no-c-format
+msgctxt "docs.chrome:registryBrowserItems.byline.title"
+msgid "Byline"
+msgstr "作者署名"
+
+#: docs/.vitepress/catalog-i18n.json#registryBrowserItems.byline.description
+#, no-c-format
+msgctxt "docs.chrome:registryBrowserItems.byline.description"
+msgid ""
+"Instructure Byline component styled with semantic .instui-byline classes."
+msgstr "採用語意化 .instui-byline 類別樣式的 Instructure 作者署名元件。"
+
+#: docs/.vitepress/catalog-i18n.json#registryBrowserItems.img.title
+#, no-c-format
+msgctxt "docs.chrome:registryBrowserItems.img.title"
+msgid "Img"
+msgstr "圖片"
+
+#: docs/.vitepress/catalog-i18n.json#registryBrowserItems.img.description
+#, no-c-format
+msgctxt "docs.chrome:registryBrowserItems.img.description"
+msgid "Instructure Img component styled with semantic .instui-img classes."
+msgstr "採用語意化 .instui-img 類別樣式的 Instructure 圖片元件。"
+
+#: docs/.vitepress/catalog-i18n.json#registryBrowserItems.table.title
+#, no-c-format
+msgctxt "docs.chrome:registryBrowserItems.table.title"
+msgid "Table"
+msgstr "表格"
+
+#: docs/.vitepress/catalog-i18n.json#registryBrowserItems.table.description
+#, no-c-format
+msgctxt "docs.chrome:registryBrowserItems.table.description"
+msgid "Instructure Table component styled with semantic .instui-table classes."
+msgstr "採用語意化 .instui-table 類別樣式的 Instructure 表格元件。"
+
+#: docs/.vitepress/catalog-i18n.json#registryBrowserItems.link.title
+#, no-c-format
+msgctxt "docs.chrome:registryBrowserItems.link.title"
+msgid "Link"
+msgstr "連結"
+
+#: docs/.vitepress/catalog-i18n.json#registryBrowserItems.link.description
+#, no-c-format
+msgctxt "docs.chrome:registryBrowserItems.link.description"
+msgid "Instructure Link component styled with semantic .instui-link classes."
+msgstr "採用語意化 .instui-link 類別樣式的 Instructure 連結元件。"
+
+#: docs/.vitepress/catalog-i18n.json#registryBrowserItems.list.title
+#, no-c-format
+msgctxt "docs.chrome:registryBrowserItems.list.title"
+msgid "List"
+msgstr "清單"
+
+#: docs/.vitepress/catalog-i18n.json#registryBrowserItems.list.description
+#, no-c-format
+msgctxt "docs.chrome:registryBrowserItems.list.description"
+msgid "Instructure List component styled with semantic .instui-list classes."
+msgstr "採用語意化 .instui-list 類別樣式的 Instructure 清單元件。"
+
+#: docs/.vitepress/catalog-i18n.json#registryBrowserItems.icon.title
+#, no-c-format
+msgctxt "docs.chrome:registryBrowserItems.icon.title"
+msgid "Icon"
+msgstr "圖示"
+
+#: docs/.vitepress/catalog-i18n.json#registryBrowserItems.icon.description
+#, no-c-format
+msgctxt "docs.chrome:registryBrowserItems.icon.description"
+msgid "Instructure Icon component styled with semantic .instui-icon classes."
+msgstr "採用語意化 .instui-icon 類別樣式的 Instructure 圖示元件。"
+
+#: docs/.vitepress/catalog-i18n.json#registryBrowserItems.checkbox.title
+#, no-c-format
+msgctxt "docs.chrome:registryBrowserItems.checkbox.title"
+msgid "Checkbox"
+msgstr "核取方塊"
+
+#: docs/.vitepress/catalog-i18n.json#registryBrowserItems.checkbox.description
+#, no-c-format
+msgctxt "docs.chrome:registryBrowserItems.checkbox.description"
+msgid ""
+"Instructure Checkbox component styled with semantic .instui-checkbox classes."
+msgstr "採用語意化 .instui-checkbox 類別樣式的 Instructure 核取方塊元件。"
+
+#: docs/.vitepress/catalog-i18n.json#registryBrowserItems.radio.title
+#, no-c-format
+msgctxt "docs.chrome:registryBrowserItems.radio.title"
+msgid "Radio"
+msgstr "單選按鈕"
+
+#: docs/.vitepress/catalog-i18n.json#registryBrowserItems.radio.description
+#, no-c-format
+msgctxt "docs.chrome:registryBrowserItems.radio.description"
+msgid "Instructure Radio component styled with semantic .instui-radio classes."
+msgstr "採用語意化 .instui-radio 類別樣式的 Instructure 單選按鈕元件。"
+
+#: docs/.vitepress/catalog-i18n.json#registryBrowserItems.spinner.title
+#, fuzzy, no-c-format
+msgctxt "docs.chrome:registryBrowserItems.spinner.title"
+msgid "Spinner"
+msgstr "執行器"
+
+#: docs/.vitepress/catalog-i18n.json#registryBrowserItems.spinner.description
+#, no-c-format
+msgctxt "docs.chrome:registryBrowserItems.spinner.description"
+msgid ""
+"Instructure Spinner component styled with semantic .instui-spinner classes."
+msgstr "採用語意化 .instui-spinner 類別樣式的 Instructure 載入指示器元件。"
+
+#: docs/.vitepress/catalog-i18n.json#registryBrowserItems.progress.title
+#, no-c-format
+msgctxt "docs.chrome:registryBrowserItems.progress.title"
+msgid "Progress"
+msgstr "進度"
+
+#: docs/.vitepress/catalog-i18n.json#registryBrowserItems.progress.description
+#, no-c-format
+msgctxt "docs.chrome:registryBrowserItems.progress.description"
+msgid ""
+"Instructure Progress component styled with semantic .instui-progress classes."
+msgstr "採用語意化 .instui-progress 類別樣式的 Instructure 進度元件。"
+
+#: docs/.vitepress/catalog-i18n.json#registryBrowserItems.menu.title
+#, fuzzy, no-c-format
+msgctxt "docs.chrome:registryBrowserItems.menu.title"
+msgid "Menu"
+msgstr "選單"
+
+#: docs/.vitepress/catalog-i18n.json#registryBrowserItems.menu.description
+#, no-c-format
+msgctxt "docs.chrome:registryBrowserItems.menu.description"
+msgid "Instructure Menu component styled with semantic .instui-menu classes."
+msgstr "採用語意化 .instui-menu 類別樣式的 Instructure 選單元件。"
+
+#: docs/.vitepress/catalog-i18n.json#registryBrowserItems.modal.title
+#, no-c-format
+msgctxt "docs.chrome:registryBrowserItems.modal.title"
+msgid "Modal"
+msgstr "對話框"
+
+#: docs/.vitepress/catalog-i18n.json#registryBrowserItems.modal.description
+#, no-c-format
+msgctxt "docs.chrome:registryBrowserItems.modal.description"
+msgid "Instructure Modal component styled with semantic .instui-modal classes."
+msgstr "採用語意化 .instui-modal 類別樣式的 Instructure 對話框元件。"
+
+#: docs/.vitepress/catalog-i18n.json#registryBrowserItems.breadcrumb.title
+#, no-c-format
+msgctxt "docs.chrome:registryBrowserItems.breadcrumb.title"
+msgid "Breadcrumb"
+msgstr "導覽路徑"
+
+#: docs/.vitepress/catalog-i18n.json#registryBrowserItems.breadcrumb.description
+#, no-c-format
+msgctxt "docs.chrome:registryBrowserItems.breadcrumb.description"
+msgid ""
+"Instructure Breadcrumb component styled with semantic .instui-breadcrumb "
+"classes."
+msgstr "採用語意化 .instui-breadcrumb 類別樣式的 Instructure 導覽路徑元件。"
+
+#: docs/.vitepress/catalog-i18n.json#registryBrowserItems.billboard.title
+#, no-c-format
+msgctxt "docs.chrome:registryBrowserItems.billboard.title"
+msgid "Billboard"
+msgstr "主視覺"
+
+#: docs/.vitepress/catalog-i18n.json#registryBrowserItems.billboard.description
+#, no-c-format
+msgctxt "docs.chrome:registryBrowserItems.billboard.description"
+msgid ""
+"Instructure Billboard component styled with semantic .instui-billboard "
+"classes."
+msgstr "採用語意化 .instui-billboard 類別樣式的 Instructure 主視覺元件。"
+
+#: docs/.vitepress/catalog-i18n.json#registryBrowserItems.rating.title
+#, no-c-format
+msgctxt "docs.chrome:registryBrowserItems.rating.title"
+msgid "Rating"
+msgstr "評分"
+
+#: docs/.vitepress/catalog-i18n.json#registryBrowserItems.rating.description
+#, no-c-format
+msgctxt "docs.chrome:registryBrowserItems.rating.description"
+msgid ""
+"Instructure Rating component styled with semantic .instui-rating classes."
+msgstr "採用語意化 .instui-rating 類別樣式的 Instructure 評分元件。"
+
+#: docs/.vitepress/catalog-i18n.json#registryBrowserItems.toggle-group.title
+#, no-c-format
+msgctxt "docs.chrome:registryBrowserItems.toggle-group.title"
+msgid "Toggle-group"
+msgstr "切換群組"
+
+#: docs/.vitepress/catalog-i18n.json#registryBrowserItems.toggle-group.description
+#, no-c-format
+msgctxt "docs.chrome:registryBrowserItems.toggle-group.description"
+msgid ""
+"Instructure Toggle-group component styled with semantic .instui-toggle-group "
+"classes."
+msgstr "採用語意化 .instui-toggle-group 類別樣式的 Instructure 切換群組元件。"
+
+#: docs/.vitepress/catalog-i18n.json#registryBrowserItems.context-view.title
+#, no-c-format
+msgctxt "docs.chrome:registryBrowserItems.context-view.title"
+msgid "Context-view"
+msgstr "情境檢視"
+
+#: docs/.vitepress/catalog-i18n.json#registryBrowserItems.context-view.description
+#, no-c-format
+msgctxt "docs.chrome:registryBrowserItems.context-view.description"
+msgid ""
+"Instructure Context-view component styled with semantic .instui-context-view "
+"classes."
+msgstr "採用語意化 .instui-context-view 類別樣式的 Instructure 情境檢視元件。"
+
+#: docs/.vitepress/catalog-i18n.json#registryBrowserItems.drawer-layout.title
+#, no-c-format
+msgctxt "docs.chrome:registryBrowserItems.drawer-layout.title"
+msgid "Drawer-layout"
+msgstr "抽屜版面配置"
+
+#: docs/.vitepress/catalog-i18n.json#registryBrowserItems.drawer-layout.description
+#, no-c-format
+msgctxt "docs.chrome:registryBrowserItems.drawer-layout.description"
+msgid ""
+"Instructure Drawer-layout component styled with semantic .instui-drawer-"
+"layout classes."
+msgstr ""
+"採用語意化 .instui-drawer-layout 類別樣式的 Instructure 抽屜版面配置元件。"
+
+#: docs/.vitepress/catalog-i18n.json#registryBrowserItems.progress-circle.title
+#, no-c-format
+msgctxt "docs.chrome:registryBrowserItems.progress-circle.title"
+msgid "Progress-circle"
+msgstr "圓形進度"
+
+#: docs/.vitepress/catalog-i18n.json#registryBrowserItems.progress-circle.description
+#, no-c-format
+msgctxt "docs.chrome:registryBrowserItems.progress-circle.description"
+msgid ""
+"Instructure Progress-circle component styled with semantic .instui-progress-"
+"circle classes."
+msgstr ""
+"採用語意化 .instui-progress-circle 類別樣式的 Instructure 圓形進度元件。"
+
+#: docs/.vitepress/catalog-i18n.json#registryBrowserItems.pagination.title
+#, fuzzy, no-c-format
+msgctxt "docs.chrome:registryBrowserItems.pagination.title"
+msgid "Pagination"
+msgstr "暫停動畫"
+
+#: docs/.vitepress/catalog-i18n.json#registryBrowserItems.pagination.description
+#, no-c-format
+msgctxt "docs.chrome:registryBrowserItems.pagination.description"
+msgid ""
+"Instructure Pagination component styled with semantic .instui-pagination "
+"classes."
+msgstr "採用語意化 .instui-pagination 類別樣式的 Instructure 分頁導覽元件。"
+
+#: docs/.vitepress/catalog-i18n.json#registryBrowserItems.toggle-details.title
+#, fuzzy, no-c-format
+msgctxt "docs.chrome:registryBrowserItems.toggle-details.title"
+msgid "Toggle-details"
+msgstr "切換側邊欄"
+
+#: docs/.vitepress/catalog-i18n.json#registryBrowserItems.toggle-details.description
+#, no-c-format
+msgctxt "docs.chrome:registryBrowserItems.toggle-details.description"
+msgid ""
+"Instructure Toggle-details component styled with semantic .instui-toggle-"
+"details classes."
+msgstr ""
+"採用語意化 .instui-toggle-details 類別樣式的 Instructure 詳情切換元件。"
+
+#: docs/.vitepress/catalog-i18n.json#registryBrowserItems.file-drop.title
+#, no-c-format
+msgctxt "docs.chrome:registryBrowserItems.file-drop.title"
+msgid "File-drop"
+msgstr "檔案拖放"
+
+#: docs/.vitepress/catalog-i18n.json#registryBrowserItems.file-drop.description
+#, no-c-format
+msgctxt "docs.chrome:registryBrowserItems.file-drop.description"
+msgid ""
+"Instructure File-drop component styled with semantic .instui-file-drop "
+"classes."
+msgstr "採用語意化 .instui-file-drop 類別樣式的 Instructure 檔案拖放元件。"
+
+#: docs/.vitepress/catalog-i18n.json#registryBrowserItems.side-nav-bar.title
+#, no-c-format
+msgctxt "docs.chrome:registryBrowserItems.side-nav-bar.title"
+msgid "Side-nav-bar"
+msgstr "側邊導覽列"
+
+#: docs/.vitepress/catalog-i18n.json#registryBrowserItems.side-nav-bar.description
+#, no-c-format
+msgctxt "docs.chrome:registryBrowserItems.side-nav-bar.description"
+msgid ""
+"Instructure Side-nav-bar component styled with semantic .instui-side-nav-bar "
+"classes."
+msgstr ""
+"採用語意化 .instui-side-nav-bar 類別樣式的 Instructure 側邊導覽列元件。"
+
+#: docs/.vitepress/catalog-i18n.json#registryBrowserItems.tree-browser.title
+#, no-c-format
+msgctxt "docs.chrome:registryBrowserItems.tree-browser.title"
+msgid "Tree-browser"
+msgstr "樹狀瀏覽器"
+
+#: docs/.vitepress/catalog-i18n.json#registryBrowserItems.tree-browser.description
+#, no-c-format
+msgctxt "docs.chrome:registryBrowserItems.tree-browser.description"
+msgid ""
+"Instructure Tree-browser component styled with semantic .instui-tree-browser "
+"classes."
+msgstr ""
+"採用語意化 .instui-tree-browser 類別樣式的 Instructure 樹狀瀏覽器元件。"
+
+#: docs/.vitepress/catalog-i18n.json#registryBrowserItems.calendar.title
+#, no-c-format
+msgctxt "docs.chrome:registryBrowserItems.calendar.title"
+msgid "Calendar"
+msgstr "行事曆"
+
+#: docs/.vitepress/catalog-i18n.json#registryBrowserItems.calendar.description
+#, no-c-format
+msgctxt "docs.chrome:registryBrowserItems.calendar.description"
+msgid ""
+"Instructure Calendar component styled with semantic .instui-calendar classes."
+msgstr "Instructure 行事曆元件，使用語意化的 .instui-calendar 類別設定樣式。"
+
+#: docs/.vitepress/catalog-i18n.json#registryBrowserItems.popover.title
+#, no-c-format
+msgctxt "docs.chrome:registryBrowserItems.popover.title"
+msgid "Popover"
+msgstr "浮層"
+
+#: docs/.vitepress/catalog-i18n.json#registryBrowserItems.popover.description
+#, no-c-format
+msgctxt "docs.chrome:registryBrowserItems.popover.description"
+msgid ""
+"Instructure Popover component styled with semantic .instui-popover classes."
+msgstr "Instructure 浮層元件，使用語意化的 .instui-popover 類別設定樣式。"
+
+#: docs/.vitepress/catalog-i18n.json#registryBrowserItems.tray.title
+#, no-c-format
+msgctxt "docs.chrome:registryBrowserItems.tray.title"
+msgid "Tray"
+msgstr "側邊面板"
+
+#: docs/.vitepress/catalog-i18n.json#registryBrowserItems.tray.description
+#, no-c-format
+msgctxt "docs.chrome:registryBrowserItems.tray.description"
+msgid "Instructure Tray component styled with semantic .instui-tray classes."
+msgstr "Instructure 側邊面板元件，使用語意化的 .instui-tray 類別設定樣式。"
+
+#: docs/.vitepress/catalog-i18n.json#registryBrowserItems.tooltip.title
+#, fuzzy, no-c-format
+msgctxt "docs.chrome:registryBrowserItems.tooltip.title"
+msgid "Tooltip"
+msgstr "工具"
+
+#: docs/.vitepress/catalog-i18n.json#registryBrowserItems.tooltip.description
+#, no-c-format
+msgctxt "docs.chrome:registryBrowserItems.tooltip.description"
+msgid ""
+"Instructure Tooltip component styled with semantic .instui-tooltip classes."
+msgstr "Instructure 工具提示元件，使用語意化的 .instui-tooltip 類別設定樣式。"
+
+#: docs/.vitepress/catalog-i18n.json#registryBrowserItems.range-input.title
+#, no-c-format
+msgctxt "docs.chrome:registryBrowserItems.range-input.title"
+msgid "Range-input"
+msgstr "範圍輸入"
+
+#: docs/.vitepress/catalog-i18n.json#registryBrowserItems.range-input.description
+#, no-c-format
+msgctxt "docs.chrome:registryBrowserItems.range-input.description"
+msgid ""
+"Instructure Range-input component styled with semantic .instui-range-input "
+"classes."
+msgstr ""
+"Instructure 範圍輸入元件，使用語意化的 .instui-range-input 類別設定樣式。"
+
+#: docs/.vitepress/catalog-i18n.json#registryBrowserItems.mask.title
+#, no-c-format
+msgctxt "docs.chrome:registryBrowserItems.mask.title"
+msgid "Mask"
+msgstr "遮罩"
+
+#: docs/.vitepress/catalog-i18n.json#registryBrowserItems.mask.description
+#, no-c-format
+msgctxt "docs.chrome:registryBrowserItems.mask.description"
+msgid "Instructure Mask component styled with semantic .instui-mask classes."
+msgstr "Instructure 遮罩元件，使用語意化的 .instui-mask 類別設定樣式。"
+
+#: docs/.vitepress/catalog-i18n.json#registryBrowserItems.screen-reader-content.title
+#, no-c-format
+msgctxt "docs.chrome:registryBrowserItems.screen-reader-content.title"
+msgid "Screen-reader-content"
+msgstr "螢幕閱讀器內容"
+
+#: docs/.vitepress/catalog-i18n.json#registryBrowserItems.screen-reader-content.description
+#, no-c-format
+msgctxt "docs.chrome:registryBrowserItems.screen-reader-content.description"
+msgid ""
+"Instructure Screen-reader-content component styled with semantic .instui-"
+"screen-reader-content classes."
+msgstr ""
+"Instructure 螢幕閱讀器內容元件，使用語意化的 .instui-screen-reader-content 類"
+"別設定樣式。"
+
+#: docs/.vitepress/catalog-i18n.json#registryBrowserItems.heading.title
+#, no-c-format
+msgctxt "docs.chrome:registryBrowserItems.heading.title"
+msgid "Heading"
+msgstr "標題"
+
+#: docs/.vitepress/catalog-i18n.json#registryBrowserItems.heading.description
+#, no-c-format
+msgctxt "docs.chrome:registryBrowserItems.heading.description"
+msgid ""
+"Instructure Heading component styled with semantic .instui-heading classes."
+msgstr "Instructure 標題元件，使用語意化的 .instui-heading 類別設定樣式。"
+
+#: docs/.vitepress/catalog-i18n.json#registryBrowserItems.text.title
+#, no-c-format
+msgctxt "docs.chrome:registryBrowserItems.text.title"
+msgid "Text"
+msgstr "文字"
+
+#: docs/.vitepress/catalog-i18n.json#registryBrowserItems.text.description
+#, no-c-format
+msgctxt "docs.chrome:registryBrowserItems.text.description"
+msgid "Instructure Text component styled with semantic .instui-text classes."
+msgstr "Instructure 文字元件，使用語意化的 .instui-text 類別設定樣式。"
+
+#: docs/.vitepress/catalog-i18n.json#registryBrowserItems.close-button.title
+#, no-c-format
+msgctxt "docs.chrome:registryBrowserItems.close-button.title"
+msgid "Close-button"
+msgstr "關閉按鈕"
+
+#: docs/.vitepress/catalog-i18n.json#registryBrowserItems.close-button.description
+#, no-c-format
+msgctxt "docs.chrome:registryBrowserItems.close-button.description"
+msgid ""
+"Instructure Close-button component styled with semantic .instui-close-button "
+"classes."
+msgstr ""
+"Instructure 關閉按鈕元件，使用語意化的 .instui-close-button 類別設定樣式。"
+
+#: docs/.vitepress/catalog-i18n.json#registryBrowserItems.form-field.title
+#, no-c-format
+msgctxt "docs.chrome:registryBrowserItems.form-field.title"
+msgid "Form-field"
+msgstr "表單欄位"
+
+#: docs/.vitepress/catalog-i18n.json#registryBrowserItems.form-field.description
+#, no-c-format
+msgctxt "docs.chrome:registryBrowserItems.form-field.description"
+msgid ""
+"Instructure Form-field component styled with semantic .instui-form-field "
+"classes."
+msgstr ""
+"Instructure 表單欄位元件，使用語意化的 .instui-form-field 類別設定樣式。"
+
+#: docs/.vitepress/catalog-i18n.json#registryBrowserItems.form-field-group.title
+#, no-c-format
+msgctxt "docs.chrome:registryBrowserItems.form-field-group.title"
+msgid "Form-field-group"
+msgstr "表單欄位群組"
+
+#: docs/.vitepress/catalog-i18n.json#registryBrowserItems.form-field-group.description
+#, no-c-format
+msgctxt "docs.chrome:registryBrowserItems.form-field-group.description"
+msgid ""
+"Instructure Form-field-group component styled with semantic .instui-form-"
+"field-group classes."
+msgstr ""
+"Instructure 表單欄位群組元件，使用語意化的 .instui-form-field-group 類別設定"
+"樣式。"
+
+#: docs/.vitepress/catalog-i18n.json#registryBrowserItems.radio-input-group.title
+#, no-c-format
+msgctxt "docs.chrome:registryBrowserItems.radio-input-group.title"
+msgid "Radio-input-group"
+msgstr "單選輸入群組"
+
+#: docs/.vitepress/catalog-i18n.json#registryBrowserItems.radio-input-group.description
+#, no-c-format
+msgctxt "docs.chrome:registryBrowserItems.radio-input-group.description"
+msgid ""
+"Instructure Radio-input-group component styled with semantic .instui-radio-"
+"input-group classes."
+msgstr ""
+"Instructure 單選輸入群組元件，使用語意化的 .instui-radio-input-group 類別設定"
+"樣式。"
+
+#: docs/.vitepress/catalog-i18n.json#registryBrowserItems.form-field-messages.title
+#, no-c-format
+msgctxt "docs.chrome:registryBrowserItems.form-field-messages.title"
+msgid "Form-field-messages"
+msgstr "表單欄位訊息"
+
+#: docs/.vitepress/catalog-i18n.json#registryBrowserItems.form-field-messages.description
+#, no-c-format
+msgctxt "docs.chrome:registryBrowserItems.form-field-messages.description"
+msgid ""
+"Instructure Form-field-messages component styled with semantic .instui-form-"
+"field-messages classes."
+msgstr ""
+"Instructure 表單欄位訊息元件，使用語意化的 .instui-form-field-messages 類別設"
+"定樣式。"
+
+#: docs/.vitepress/catalog-i18n.json#registryBrowserItems.text-input.title
+#, no-c-format
+msgctxt "docs.chrome:registryBrowserItems.text-input.title"
+msgid "Text-input"
+msgstr "文字輸入"
+
+#: docs/.vitepress/catalog-i18n.json#registryBrowserItems.text-input.description
+#, no-c-format
+msgctxt "docs.chrome:registryBrowserItems.text-input.description"
+msgid ""
+"Instructure Text-input component styled with semantic .instui-text-input "
+"classes."
+msgstr ""
+"Instructure 文字輸入元件，使用語意化的 .instui-text-input 類別設定樣式。"
+
+#: docs/.vitepress/catalog-i18n.json#registryBrowserItems.text-area.title
+#, no-c-format
+msgctxt "docs.chrome:registryBrowserItems.text-area.title"
+msgid "Text-area"
+msgstr "文字區域"
+
+#: docs/.vitepress/catalog-i18n.json#registryBrowserItems.text-area.description
+#, no-c-format
+msgctxt "docs.chrome:registryBrowserItems.text-area.description"
+msgid ""
+"Instructure Text-area component styled with semantic .instui-text-area "
+"classes."
+msgstr ""
+"Instructure 文字區域元件，使用語意化的 .instui-text-area 類別設定樣式。"
+
+#: docs/.vitepress/catalog-i18n.json#registryBrowserItems.simple-select.title
+#, no-c-format
+msgctxt "docs.chrome:registryBrowserItems.simple-select.title"
+msgid "Simple-select"
+msgstr "簡易選取"
+
+#: docs/.vitepress/catalog-i18n.json#registryBrowserItems.simple-select.description
+#, no-c-format
+msgctxt "docs.chrome:registryBrowserItems.simple-select.description"
+msgid ""
+"Instructure Simple-select component styled with semantic .instui-simple-"
+"select classes."
+msgstr ""
+"Instructure 簡易選取元件，使用語意化的 .instui-simple-select 類別設定樣式。"
+
+#: docs/.vitepress/catalog-i18n.json#registryBrowserItems.input-group.title
+#, no-c-format
+msgctxt "docs.chrome:registryBrowserItems.input-group.title"
+msgid "Input-group"
+msgstr "輸入群組"
+
+#: docs/.vitepress/catalog-i18n.json#registryBrowserItems.input-group.description
+#, no-c-format
+msgctxt "docs.chrome:registryBrowserItems.input-group.description"
+msgid ""
+"Instructure Input-group component styled with semantic .instui-input-group "
+"classes."
+msgstr ""
+"Instructure 輸入群組元件，使用語意化的 .instui-input-group 類別設定樣式。"
+
+#: docs/.vitepress/catalog-i18n.json#registryBrowserItems.number-input.title
+#, no-c-format
+msgctxt "docs.chrome:registryBrowserItems.number-input.title"
+msgid "Number-input"
+msgstr "數字輸入"
+
+#: docs/.vitepress/catalog-i18n.json#registryBrowserItems.number-input.description
+#, no-c-format
+msgctxt "docs.chrome:registryBrowserItems.number-input.description"
+msgid ""
+"Instructure Number-input component styled with semantic .instui-number-input "
+"classes."
+msgstr ""
+"Instructure 數字輸入元件，使用語意化的 .instui-number-input 類別設定樣式。"
+
+#: docs/.vitepress/catalog-i18n.json#registryBrowserItems.in-place-edit.title
+#, no-c-format
+msgctxt "docs.chrome:registryBrowserItems.in-place-edit.title"
+msgid "In-place-edit"
+msgstr "就地編輯"
+
+#: docs/.vitepress/catalog-i18n.json#registryBrowserItems.in-place-edit.description
+#, no-c-format
+msgctxt "docs.chrome:registryBrowserItems.in-place-edit.description"
+msgid ""
+"Instructure In-place-edit component styled with semantic .instui-in-place-"
+"edit classes."
+msgstr ""
+"Instructure 就地編輯元件，使用語意化的 .instui-in-place-edit 類別設定樣式。"
+
+#: docs/.vitepress/catalog-i18n.json#registryBrowserItems.view.title
+#, no-c-format
+msgctxt "docs.chrome:registryBrowserItems.view.title"
+msgid "View"
+msgstr "檢視"
+
+#: docs/.vitepress/catalog-i18n.json#registryBrowserItems.view.description
+#, no-c-format
+msgctxt "docs.chrome:registryBrowserItems.view.description"
+msgid "Instructure View component styled with semantic .instui-view classes."
+msgstr "Instructure 檢視元件，使用語意化的 .instui-view 類別設定樣式。"
+
+#: docs/.vitepress/catalog-i18n.json#registryBrowserItems.banner.title
+#, fuzzy, no-c-format
+msgctxt "docs.chrome:registryBrowserItems.banner.title"
+msgid "Banner"
+msgstr "執行器"
+
+#: docs/.vitepress/catalog-i18n.json#registryBrowserItems.banner.description
+#, no-c-format
+msgctxt "docs.chrome:registryBrowserItems.banner.description"
+msgid "Pantoken banner component styles and documented HTML structure."
+msgstr "Pantoken 橫幅元件樣式及其文件所述的 HTML 結構。"
+
+#: docs/.vitepress/catalog-i18n.json#registryBrowserItems.agent-shell.title
+#, fuzzy, no-c-format
+msgctxt "docs.chrome:registryBrowserItems.agent-shell.title"
+msgid "Agent Shell"
+msgstr "工具"
+
+#: docs/.vitepress/catalog-i18n.json#registryBrowserItems.agent-shell.description
+#, no-c-format
+msgctxt "docs.chrome:registryBrowserItems.agent-shell.description"
+msgid "Pantoken agent-shell component styles and documented HTML structure."
+msgstr "Pantoken agent-shell 元件樣式及其文件所述的 HTML 結構。"
+
+#: docs/.vitepress/catalog-i18n.json#registryBrowserItems.skeleton-loader.title
+#, no-c-format
+msgctxt "docs.chrome:registryBrowserItems.skeleton-loader.title"
+msgid "Skeleton Loader"
+msgstr "骨架載入器"
+
+#: docs/.vitepress/catalog-i18n.json#registryBrowserItems.skeleton-loader.description
+#, no-c-format
+msgctxt "docs.chrome:registryBrowserItems.skeleton-loader.description"
+msgid ""
+"Pantoken skeleton-loader component styles and documented HTML structure."
+msgstr "Pantoken skeleton-loader 元件樣式及其文件所述的 HTML 結構。"
+
+#: docs/.vitepress/catalog-i18n.json#registryBrowserItems.segmented-control.title
+#, no-c-format
+msgctxt "docs.chrome:registryBrowserItems.segmented-control.title"
+msgid "Segmented Control"
+msgstr "分段控制項"
+
+#: docs/.vitepress/catalog-i18n.json#registryBrowserItems.segmented-control.description
+#, no-c-format
+msgctxt "docs.chrome:registryBrowserItems.segmented-control.description"
+msgid ""
+"Pantoken segmented-control component styles and documented HTML structure."
+msgstr "Pantoken segmented-control 元件樣式及其文件所述的 HTML 結構。"
+
+#: docs/.vitepress/catalog-i18n.json#registryBrowserItems.wrapper.title
+#, no-c-format
+msgctxt "docs.chrome:registryBrowserItems.wrapper.title"
+msgid "Wrapper Layout"
+msgstr "包裝版面配置"
+
+#: docs/.vitepress/catalog-i18n.json#registryBrowserItems.wrapper.description
+#, no-c-format
+msgctxt "docs.chrome:registryBrowserItems.wrapper.description"
+msgid "Pantoken wrapper layout styles and canonical HTML template."
+msgstr "Pantoken 包裝版面配置樣式及其標準 HTML 範本。"
+
+#: docs/.vitepress/catalog-i18n.json#registryBrowserItems.callout.title
+#, no-c-format
+msgctxt "docs.chrome:registryBrowserItems.callout.title"
+msgid "Callout Layout"
+msgstr "提示框版面配置"
+
+#: docs/.vitepress/catalog-i18n.json#registryBrowserItems.callout.description
+#, no-c-format
+msgctxt "docs.chrome:registryBrowserItems.callout.description"
+msgid "Pantoken callout layout styles and canonical HTML template."
+msgstr "Pantoken 提示框版面配置樣式及其標準 HTML 範本。"
+
+#: docs/.vitepress/catalog-i18n.json#registryBrowserItems.hero.title
+#, no-c-format
+msgctxt "docs.chrome:registryBrowserItems.hero.title"
+msgid "Hero Layout"
+msgstr "主視覺版面配置"
+
+#: docs/.vitepress/catalog-i18n.json#registryBrowserItems.hero.description
+#, no-c-format
+msgctxt "docs.chrome:registryBrowserItems.hero.description"
+msgid "Pantoken hero layout styles and canonical HTML template."
+msgstr "Pantoken 主視覺版面配置樣式及其標準 HTML 範本。"
+
+#: docs/.vitepress/catalog-i18n.json#registryBrowserItems.page-layout.title
+#, no-c-format
+msgctxt "docs.chrome:registryBrowserItems.page-layout.title"
+msgid "Page Layout Layout"
+msgstr "頁面版面配置"
+
+#: docs/.vitepress/catalog-i18n.json#registryBrowserItems.page-layout.description
+#, no-c-format
+msgctxt "docs.chrome:registryBrowserItems.page-layout.description"
+msgid "Pantoken page-layout layout styles and canonical HTML template."
+msgstr "Pantoken page-layout 版面配置樣式及其標準 HTML 範本。"
+
+#: docs/.vitepress/catalog-i18n.json#registryBrowserItems.rubric-note.title
+#, no-c-format
+msgctxt "docs.chrome:registryBrowserItems.rubric-note.title"
+msgid "Rubric Note Layout"
+msgstr "評分規準註記版面配置"
+
+#: docs/.vitepress/catalog-i18n.json#registryBrowserItems.rubric-note.description
+#, no-c-format
+msgctxt "docs.chrome:registryBrowserItems.rubric-note.description"
+msgid "Pantoken rubric-note layout styles and canonical HTML template."
+msgstr "Pantoken rubric-note 版面配置樣式及其標準 HTML 範本。"
+
+#: docs/.vitepress/catalog-i18n.json#registryBrowserItems.testimonial.title
+#, no-c-format
+msgctxt "docs.chrome:registryBrowserItems.testimonial.title"
+msgid "Testimonial Layout"
+msgstr "推薦內容版面配置"
+
+#: docs/.vitepress/catalog-i18n.json#registryBrowserItems.testimonial.description
+#, no-c-format
+msgctxt "docs.chrome:registryBrowserItems.testimonial.description"
+msgid "Pantoken testimonial layout styles and canonical HTML template."
+msgstr "Pantoken testimonial 版面配置樣式及其標準 HTML 範本。"
+
+#: docs/.vitepress/catalog-i18n.json#registryBrowserItems.two-column.title
+#, no-c-format
+msgctxt "docs.chrome:registryBrowserItems.two-column.title"
+msgid "Two Column Layout"
+msgstr "雙欄版面配置"
+
+#: docs/.vitepress/catalog-i18n.json#registryBrowserItems.two-column.description
+#, no-c-format
+msgctxt "docs.chrome:registryBrowserItems.two-column.description"
+msgid "Pantoken two-column layout styles and canonical HTML template."
+msgstr "Pantoken two-column 版面配置樣式及其標準 HTML 範本。"
+
+#: docs/.vitepress/catalog-i18n.json#registryBrowserItems.custom-icons.title
+#, no-c-format
+msgctxt "docs.chrome:registryBrowserItems.custom-icons.title"
+msgid "Pantoken Custom Icons"
+msgstr "Pantoken 自訂圖示"
+
+#: docs/.vitepress/catalog-i18n.json#registryBrowserItems.custom-icons.description
+#, no-c-format
+msgctxt "docs.chrome:registryBrowserItems.custom-icons.description"
+msgid "Pantoken's curated custom icon tokens for the shared -icon-* painter."
+msgstr "Pantoken 為共用 -icon-* 繪製器精選的自訂圖示權杖。"
+
+#: docs/.vitepress/catalog-i18n.json#registryBrowserItems.simple-icons.title
+#, no-c-format
+msgctxt "docs.chrome:registryBrowserItems.simple-icons.title"
+msgid "Simple Icons"
+msgstr "Simple Icons"
+
+#: docs/.vitepress/catalog-i18n.json#registryBrowserItems.simple-icons.description
+#, no-c-format
+msgctxt "docs.chrome:registryBrowserItems.simple-icons.description"
+msgid "The complete Simple Icons brand-glyph token collection."
+msgstr "完整的 Simple Icons 品牌字形權杖集合。"
+
+#: docs/.vitepress/catalog-i18n.json#registryBrowserItems.logos.title
+#, no-c-format
+msgctxt "docs.chrome:registryBrowserItems.logos.title"
+msgid "Instructure Product Logos"
+msgstr "Instructure 產品標誌"
+
+#: docs/.vitepress/catalog-i18n.json#registryBrowserItems.logos.description
+#, no-c-format
+msgctxt "docs.chrome:registryBrowserItems.logos.description"
+msgid "All Instructure product logo image tokens."
+msgstr "所有 Instructure 產品標誌圖像權杖。"
+
+#: docs/.vitepress/catalog-i18n.json#registryBrowserItems.logo-canvas.title
+#, fuzzy, no-c-format
+msgctxt "docs.chrome:registryBrowserItems.logo-canvas.title"
+msgid "Canvas Logos"
+msgstr "Canvas"
+
+#: docs/.vitepress/catalog-i18n.json#registryBrowserItems.logo-canvas.description
+#, no-c-format
+msgctxt "docs.chrome:registryBrowserItems.logo-canvas.description"
+msgid "Logo image tokens for canvas."
+msgstr "Canvas 的標誌圖像權杖。"
+
+#: docs/.vitepress/catalog-i18n.json#registryBrowserItems.logo-igniteai.title
+#, no-c-format
+msgctxt "docs.chrome:registryBrowserItems.logo-igniteai.title"
+msgid "Igniteai Logos"
+msgstr "Igniteai 標誌"
+
+#: docs/.vitepress/catalog-i18n.json#registryBrowserItems.logo-igniteai.description
+#, no-c-format
+msgctxt "docs.chrome:registryBrowserItems.logo-igniteai.description"
+msgid "Logo image tokens for igniteai."
+msgstr "igniteai 的標誌圖像權杖。"
+
+#: docs/.vitepress/catalog-i18n.json#registryBrowserItems.logo-instructure.title
+#, no-c-format
+msgctxt "docs.chrome:registryBrowserItems.logo-instructure.title"
+msgid "Instructure Logos"
+msgstr "Instructure 標誌"
+
+#: docs/.vitepress/catalog-i18n.json#registryBrowserItems.logo-instructure.description
+#, no-c-format
+msgctxt "docs.chrome:registryBrowserItems.logo-instructure.description"
+msgid "Logo image tokens for instructure."
+msgstr "instructure 的標誌圖像權杖。"
+
+#: docs/.vitepress/catalog-i18n.json#registryBrowserItems.logo-learnplatform.title
+#, no-c-format
+msgctxt "docs.chrome:registryBrowserItems.logo-learnplatform.title"
+msgid "Learnplatform Logos"
+msgstr "Learnplatform 標誌"
+
+#: docs/.vitepress/catalog-i18n.json#registryBrowserItems.logo-learnplatform.description
+#, no-c-format
+msgctxt "docs.chrome:registryBrowserItems.logo-learnplatform.description"
+msgid "Logo image tokens for learnplatform."
+msgstr "learnplatform 的標誌圖像權杖。"
+
+#: docs/.vitepress/catalog-i18n.json#registryBrowserItems.logo-mastery.title
+#, no-c-format
+msgctxt "docs.chrome:registryBrowserItems.logo-mastery.title"
+msgid "Mastery Logos"
+msgstr "Mastery 標誌"
+
+#: docs/.vitepress/catalog-i18n.json#registryBrowserItems.logo-mastery.description
+#, no-c-format
+msgctxt "docs.chrome:registryBrowserItems.logo-mastery.description"
+msgid "Logo image tokens for mastery."
+msgstr "mastery 的標誌圖像權杖。"
+
+#: docs/.vitepress/catalog-i18n.json#registryBrowserItems.logo-pantoken.title
+#, no-c-format
+msgctxt "docs.chrome:registryBrowserItems.logo-pantoken.title"
+msgid "Pantoken Logos"
+msgstr "Pantoken 標誌"
+
+#: docs/.vitepress/catalog-i18n.json#registryBrowserItems.logo-pantoken.description
+#, no-c-format
+msgctxt "docs.chrome:registryBrowserItems.logo-pantoken.description"
+msgid "Logo image tokens for pantoken."
+msgstr "pantoken 的標誌圖像權杖。"
+
+#: docs/.vitepress/catalog-i18n.json#registryBrowserItems.logo-parchment.title
+#, no-c-format
+msgctxt "docs.chrome:registryBrowserItems.logo-parchment.title"
+msgid "Parchment Logos"
+msgstr "Parchment 標誌"
+
+#: docs/.vitepress/catalog-i18n.json#registryBrowserItems.logo-parchment.description
+#, no-c-format
+msgctxt "docs.chrome:registryBrowserItems.logo-parchment.description"
+msgid "Logo image tokens for parchment."
+msgstr "parchment 的標誌圖像權杖。"
+
+#: docs/.vitepress/catalog-i18n.json#registryBrowserItems.theme-colors.title
+#, no-c-format
+msgctxt "docs.chrome:registryBrowserItems.theme-colors.title"
+msgid "Custom Theme Colors"
+msgstr "自訂主題色彩"
+
+#: docs/.vitepress/catalog-i18n.json#registryBrowserItems.theme-colors.description
+#, no-c-format
+msgctxt "docs.chrome:registryBrowserItems.theme-colors.description"
+msgid "Selector-driven Pantoken brand-color remapping for 13 color namespaces."
+msgstr "透過選取器驅動的 Pantoken 品牌色彩重新映射，支援 13 個色彩命名空間。"
+
+#: docs/.vitepress/catalog-i18n.json#registryBrowserItems.primitives.title
+#, fuzzy, no-c-format
+msgctxt "docs.chrome:registryBrowserItems.primitives.title"
+msgid "Primitive Utilities"
+msgstr "工具類別"
+
+#: docs/.vitepress/catalog-i18n.json#registryBrowserItems.primitives.description
+#, no-c-format
+msgctxt "docs.chrome:registryBrowserItems.primitives.description"
+msgid "Opt-in utility classes for Pantoken's raw primitive palette."
+msgstr "Pantoken 原始基本色盤的選用工具類別。"
+
+#: docs/.vitepress/catalog-i18n.json#registryBrowserItems.visual-debug.title
+#, no-c-format
+msgctxt "docs.chrome:registryBrowserItems.visual-debug.title"
+msgid "Visual Debug"
+msgstr "視覺除錯"
+
+#: docs/.vitepress/catalog-i18n.json#registryBrowserItems.visual-debug.description
+#, no-c-format
+msgctxt "docs.chrome:registryBrowserItems.visual-debug.description"
+msgid "Development-only layout outlines for Pantoken components."
+msgstr "僅供開發使用的 Pantoken 元件版面配置外框。"
+
+#, no-c-format
+#~ msgctxt "docs.chrome:a2uiCatalog.reactSupport"
+#~ msgid "React runtime support is pending v1.0 SDK verification."
+#~ msgstr "React 執行階段支援仍待 v1.0 SDK 驗證。"
+
+#, no-c-format
+#~ msgctxt "docs.chrome:a2uiCatalog.angularSupport"
+#~ msgid "Angular runtime support is pending v1.0 SDK verification."
+#~ msgstr "Angular 執行階段支援仍待 v1.0 SDK 驗證。"
+
+#, no-c-format
+#~ msgctxt "docs.chrome:registryBrowser.subtitle"
+#~ msgid ""
+#~ "Compatible components, themes, and behavior hooks conforming to the "
+#~ "shadcn/ui registry specification. Add items directly to your shadcn/ui "
+#~ "project via CLI."
+#~ msgstr ""
+#~ "與 shadcn/ui registry 規範相容的元件、主題與行為掛勾。透過 CLI 直接將項目"
+#~ "新增到你的 shadcn/ui 專案中。"

@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: pantoken\n"
-"PO-Revision-Date: 2026-10-30 19:56+0000\n"
+"PO-Revision-Date: 2026-11-13 23:58+0000\n"
 "Last-Translator: pantoken localization engine\n"
 "Language-Team: pantoken\n"
 "MIME-Version: 1.0\n"
@@ -34848,3 +34848,211 @@ msgstr "WCAG 2.2 2.5.8"
 msgctxt "docs.api:prose"
 msgid "All touch targets must be 24px large, or leave sufficient space"
 msgstr "همهٔ هدف‌های لمسی باید دست‌کم 24px باشند یا فاصلهٔ کافی داشته باشند"
+
+msgctxt "docs.api:prose"
+msgid "<!-- pantoken-value-scope:css%2Fscreen-reader-content.md -->\nThis component ships no CSS of its own — its markup and behavior come entirely from {{ptk_code_0}}. See the [modifier table below]({{ptk_code_1}})."
+msgstr "<!-- pantoken-value-scope:css%2Fscreen-reader-content.md -->\nاین مؤلفه CSS اختصاصی خود را ارائه نمی‌کند — نشانه‌گذاری و رفتار آن کاملاً از {{ptk_code_0}} می‌آیند. [جدول اصلاح‌گرهای زیر را ببینید]({{ptk_code_1}})."
+
+msgctxt "docs.api:prose"
+msgid "A section for an empty state or call to action."
+msgstr "بخشی برای حالت خالی یا فراخوان به اقدام."
+
+msgctxt "docs.api:prose"
+msgid "A breadcrumb navigation landmark."
+msgstr "یک نقطهٔ عطف ناوبریِ مسیر راهنما."
+
+msgctxt "docs.api:prose"
+msgid "A media-object byline container."
+msgstr "یک ظرف برای سطر انتسابِ شیء رسانه‌ای."
+
+msgctxt "docs.api:prose"
+msgid "An article-shaped card with slotted content."
+msgstr "کارتی مقاله‌مانند با محتوای جای‌گذاری‌شده."
+
+msgctxt "docs.api:prose"
+msgid "A native checkbox and its slotted label."
+msgstr "یک چک‌باکس بومی و برچسبِ قرارگرفته در اسلات آن."
+
+msgctxt "docs.api:prose"
+msgid "A native close button with an accessible label."
+msgstr "دکمهٔ بستن بومی با برچسبی دسترس‌پذیر."
+
+msgctxt "docs.api:prose"
+msgid "Missing root component records, registered after the hand-authored elements."
+msgstr "رکوردهای کامپوننت ریشه موجود نیستند و پس از عناصر دست‌نویس ثبت شده‌اند."
+
+msgctxt "docs.api:prose"
+msgid "A native file picker presented as a dropzone label."
+msgstr "یک انتخاب‌گر فایل بومی که به‌صورت برچسب ناحیهٔ رهاسازی نمایش داده می‌شود."
+
+msgctxt "docs.api:prose"
+msgid "A form-field layout container."
+msgstr "یک محفظهٔ چیدمان برای فیلدهای فرم."
+
+msgctxt "docs.api:prose"
+msgid "A native fieldset for a group of form fields."
+msgstr "یک fieldset بومی برای گروهی از فیلدهای فرم."
+
+msgctxt "docs.api:prose"
+msgid "A status region for form-field help and validation messages."
+msgstr "ناحیه‌ای برای نمایش راهنمای فیلدهای فرم و پیام‌های اعتبارسنجی."
+
+msgctxt "docs.api:prose"
+msgid "A semantic heading with a bounded level from one through six."
+msgstr "یک عنوان معنایی با سطحی محدود از یک تا شش."
+
+msgctxt "docs.api:prose"
+msgid "A container for an input and adjacent content."
+msgstr "محفظه‌ای برای یک ورودی و محتوای مجاور."
+
+msgctxt "docs.api:prose"
+msgid "A link that rejects executable and data URL schemes."
+msgstr "پیوندی که طرح‌واره‌های اجرایی و URLهای داده را رد می‌کند."
+
+msgctxt "docs.api:prose"
+msgid "A native unordered list with Pantoken list-item styles."
+msgstr "یک فهرست نامرتب بومی با سبک‌های مورد فهرست Pantoken."
+
+msgctxt "docs.api:prose"
+msgid "An overlay surface for positioned content."
+msgstr "سطحی پوششی برای محتوای موقعیت‌یافته."
+
+msgctxt "docs.api:prose"
+msgid "A menu surface with item, group, and separator styles."
+msgstr "سطح منو با سبک‌های مورد، گروه و جداکننده."
+
+msgctxt "docs.api:prose"
+msgid "A native number input with value-change events."
+msgstr "یک ورودی عددی بومی با رویدادهای تغییر مقدار."
+
+msgctxt "docs.api:prose"
+msgid "A pagination navigation landmark."
+msgstr "یک نشانهٔ ناوبری برای صفحه‌بندی."
+
+msgctxt "docs.api:prose"
+msgid "A native radio control and its slotted label."
+msgstr "یک کنترل رادیویی بومی و برچسبی که در جایگاه خود قرار گرفته است."
+
+msgctxt "docs.api:prose"
+msgid "A native fieldset for a radio-input group."
+msgstr "یک fieldset بومی برای گروهی از ورودی‌های رادیویی."
+
+msgctxt "docs.api:prose"
+msgid "A native range slider with value-change events."
+msgstr "یک لغزندهٔ بازه‌ای بومی با رویدادهای تغییر مقدار."
+
+msgctxt "docs.api:prose"
+msgid "Visually hidden content that remains available to assistive technology."
+msgstr "محتوایی که از نظر بصری پنهان است اما همچنان برای فناوری‌های کمکی در دسترس می‌ماند."
+
+msgctxt "docs.api:prose"
+msgid "A native select control that copies text-only options from its light DOM."
+msgstr "یک کنترل انتخاب بومی که گزینه‌های صرفاً متنی را از DOM سبک آن کپی می‌کند."
+
+msgctxt "docs.api:prose"
+msgid "A table-layout container that keeps slotted rows inside its table semantics."
+msgstr "محفظه‌ای با چیدمان جدولی که ردیف‌های قرارگرفته در اسلات را در چارچوب معنایی جدول خود نگه می‌دارد."
+
+msgctxt "docs.api:prose"
+msgid "A paragraph of Pantoken body text."
+msgstr "یک پاراگراف از متن بدنهٔ Pantoken."
+
+msgctxt "docs.api:prose"
+msgid "A native multiline text input with a visible slotted label."
+msgstr "یک ورودی متن چندخطی بومی با برچسبی قابل‌مشاهده که در اسلات قرار گرفته است."
+
+msgctxt "docs.api:prose"
+msgid "A native text input with a visible slotted label."
+msgstr "یک ورودی متنی بومی با برچسبِ قابل‌مشاهدهٔ اختصاص‌یافته به اسلات."
+
+msgctxt "docs.api:prose"
+msgid "A native disclosure with a configurable summary."
+msgstr "یک بخش بازشوندهٔ بومی با خلاصه‌ای قابل پیکربندی."
+
+msgctxt "docs.api:prose"
+msgid "A native disclosure group."
+msgstr "یک گروه افشای بومی."
+
+msgctxt "docs.api:prose"
+msgid "A neutral layout primitive."
+msgstr "یک عنصر پایه‌ای برای چیدمان خنثی."
+
+#, pantoken-verbatim
+msgctxt "docs.api:text"
+msgid "toggleGroup"
+msgstr "toggleGroup"
+
+#, pantoken-verbatim
+msgctxt "docs.api:text"
+msgid "toggleDetails"
+msgstr "toggleDetails"
+
+#, pantoken-verbatim
+msgctxt "docs.api:text"
+msgid "fileDrop"
+msgstr "fileDrop"
+
+#, pantoken-verbatim
+msgctxt "docs.api:text"
+msgid "rangeInput"
+msgstr "rangeInput"
+
+#, pantoken-verbatim
+msgctxt "docs.api:text"
+msgid "screenReaderContent"
+msgstr "screenReaderContent"
+
+#, pantoken-verbatim
+msgctxt "docs.api:text"
+msgid "closeButton"
+msgstr "closeButton"
+
+#, pantoken-verbatim
+msgctxt "docs.api:text"
+msgid "formField"
+msgstr "formField"
+
+#, pantoken-verbatim
+msgctxt "docs.api:text"
+msgid "formFieldGroup"
+msgstr "formFieldGroup"
+
+#, pantoken-verbatim
+msgctxt "docs.api:text"
+msgid "radioInputGroup"
+msgstr "radioInputGroup"
+
+#, pantoken-verbatim
+msgctxt "docs.api:text"
+msgid "formFieldMessages"
+msgstr "formFieldMessages"
+
+#, pantoken-verbatim
+msgctxt "docs.api:text"
+msgid "textInput"
+msgstr "textInput"
+
+#, pantoken-verbatim
+msgctxt "docs.api:text"
+msgid "textArea"
+msgstr "textArea"
+
+#, pantoken-verbatim
+msgctxt "docs.api:text"
+msgid "simpleSelect"
+msgstr "simpleSelect"
+
+#, pantoken-verbatim
+msgctxt "docs.api:text"
+msgid "inputGroup"
+msgstr "inputGroup"
+
+#, pantoken-verbatim
+msgctxt "docs.api:text"
+msgid "numberInput"
+msgstr "numberInput"
+
+#, pantoken-verbatim
+msgctxt "docs.api:text"
+msgid "componentElements"
+msgstr "componentElements"

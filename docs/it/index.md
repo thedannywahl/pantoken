@@ -32,8 +32,8 @@ features:
     title: Genera per qualsiasi piattaforma
     details: Installa la pantoken cli per generare preset o aggiungere componenti per qualsiasi piattaforma&colon; web, nativo e qualsiasi cosa in mezzo.
   - icon:
-      light: /unlink-light.svg
-      dark: /unlink-dark.svg
-    title: React non è necessario
-    details: La libreria InstUI è strettamente accoppiata con React. Se vuoi usarla, devi usare React. Ora puoi costruire ovunque.
+      light: /wand-sparkles-light.svg
+      dark: /wand-sparkles-dark.svg
+    title: Sviluppa in modo agentico
+    details: Aggiungi pantoken agli strumenti di IA che stai già usando, con skill incluse, file agents, api-catalog, llms.txt e A2UI.
 ---

@@ -32,8 +32,8 @@ features:
     title: Búðu til fyrir hvaða vettvang sem er
     details: Settu upp pantoken cli til að mynda forstillingar eða bæta við íhlutum fyrir hvaða vettvang&colon; vef, innfædd, og allt þar á milli.
   - icon:
-      light: /unlink-light.svg
-      dark: /unlink-dark.svg
-    title: Enginn React þörf
-    details: InstUI-bókasafnið er þétt bundið við React. Ef þú vilt nota það, verður þú að nota React. Nú getur þú byggt hvar sem er.
+      light: /wand-sparkles-light.svg
+      dark: /wand-sparkles-dark.svg
+    title: Byggðu með aðstoð gervigreindar
+    details: Bættu pantoken við gervigreindarverkfærin sem þú notar nú þegar með inniföldum færnisniðum, agents-skrá, api-catalog, llms.txt og A2UI.
 ---

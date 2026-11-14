@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: pantoken\n"
-"PO-Revision-Date: 2026-10-30 19:56+0000\n"
+"PO-Revision-Date: 2026-11-14 02:33+0000\n"
 "Last-Translator: pantoken localization engine\n"
 "Language-Team: pantoken\n"
 "MIME-Version: 1.0\n"
@@ -34848,3 +34848,211 @@ msgstr "WCAG 2.2 2.5.8"
 msgctxt "docs.api:prose"
 msgid "All touch targets must be 24px large, or leave sufficient space"
 msgstr "Tout sib tactile dwe mezire omwen 24px, oswa dwe gen ase espas ant yo"
+
+msgctxt "docs.api:prose"
+msgid "<!-- pantoken-value-scope:css%2Fscreen-reader-content.md -->\nThis component ships no CSS of its own — its markup and behavior come entirely from {{ptk_code_0}}. See the [modifier table below]({{ptk_code_1}})."
+msgstr "<!-- pantoken-value-scope:css%2Fscreen-reader-content.md -->\nKonpozan sa a pa gen pwòp CSS pa li — estrikti HTML li ak konpòtman li soti nèt nan {{ptk_code_0}}. Gade [tablo modifikatè ki anba a]({{ptk_code_1}})."
+
+msgctxt "docs.api:prose"
+msgid "A section for an empty state or call to action."
+msgstr "Yon seksyon pou yon eta vid oswa yon apèl pou aksyon."
+
+msgctxt "docs.api:prose"
+msgid "A media-object byline container."
+msgstr "Yon kontenè pou liy siyati yon objè medya."
+
+msgctxt "docs.api:prose"
+msgid "An article-shaped card with slotted content."
+msgstr "Yon kat ki gen fòm atik, ak kontni ki antre nan plas yo."
+
+msgctxt "docs.api:prose"
+msgid "A native checkbox and its slotted label."
+msgstr "Yon kaz natif natal ak etikèt li plase nan plas la."
+
+msgctxt "docs.api:prose"
+msgid "A native close button with an accessible label."
+msgstr "Yon bouton natif pou fèmen ki gen yon etikèt aksesib."
+
+msgctxt "docs.api:prose"
+msgid "Missing root component records, registered after the hand-authored elements."
+msgstr "Dosye konpozan rasin ki manke, anrejistre apre eleman yo ekri alamen."
+
+msgctxt "docs.api:prose"
+msgid "A native file picker presented as a dropzone label."
+msgstr "Yon selektè fichye natif natal ki prezante kòm yon etikèt pou zòn depoze."
+
+msgctxt "docs.api:prose"
+msgid "A form-field layout container."
+msgstr "Yon kontenè pou aranjman chan fòm yo."
+
+msgctxt "docs.api:prose"
+msgid "A native fieldset for a group of form fields."
+msgstr "Yon fieldset natif pou yon gwoup chan fòm."
+
+msgctxt "docs.api:prose"
+msgid "A status region for form-field help and validation messages."
+msgstr "Yon zòn estati pou èd nan chan fòm nan ak mesaj validasyon."
+
+msgctxt "docs.api:prose"
+msgid "A semantic heading with a bounded level from one through six."
+msgstr "Yon tit semantik ki gen yon nivo limite ant youn ak sis."
+
+msgctxt "docs.api:prose"
+msgid "A container for an input and adjacent content."
+msgstr "Yon kontenè pou yon chan antre ak kontni ki adjasan."
+
+msgctxt "docs.api:prose"
+msgid "A link that rejects executable and data URL schemes."
+msgstr "Yon lyen ki rejte chema URL ègzèkitab ak done."
+
+msgctxt "docs.api:prose"
+msgid "A native unordered list with Pantoken list-item styles."
+msgstr "Yon lis natif san lòd ak estil eleman lis Pantoken."
+
+msgctxt "docs.api:prose"
+msgid "An overlay surface for positioned content."
+msgstr "Yon sifas kouch pou kontni ki plase."
+
+msgctxt "docs.api:prose"
+msgid "A menu surface with item, group, and separator styles."
+msgstr "Yon sifas meni ki gen estil pou atik, gwoup ak separasyon."
+
+msgctxt "docs.api:prose"
+msgid "A native number input with value-change events."
+msgstr "Yon antre nimewo natif natal ki gen evènman chanjman valè."
+
+msgctxt "docs.api:prose"
+msgid "A pagination navigation landmark."
+msgstr "Yon repè navigasyon pou pajinasyon."
+
+msgctxt "docs.api:prose"
+msgid "A native radio control and its slotted label."
+msgstr "Yon kontwòl radyo natif natal ak etikèt ki plase nan plas li."
+
+msgctxt "docs.api:prose"
+msgid "A native fieldset for a radio-input group."
+msgstr "Yon fieldset natif pou yon gwoup bouton radyo."
+
+msgctxt "docs.api:prose"
+msgid "A native range slider with value-change events."
+msgstr "Yon glisè ranje natif natal ki gen evènman chanjman valè."
+
+msgctxt "docs.api:prose"
+msgid "Visually hidden content that remains available to assistive technology."
+msgstr "Kontni ki kache vizyèlman men ki rete disponib pou teknoloji asistans."
+
+msgctxt "docs.api:prose"
+msgid "A native select control that copies text-only options from its light DOM."
+msgstr "Yon kontwòl seleksyon natif natal ki kopye opsyon ki gen tèks sèlman nan DOM limyè li."
+
+msgctxt "docs.api:prose"
+msgid "A table-layout container that keeps slotted rows inside its table semantics."
+msgstr "Yon kontenè ki gen yon dispozisyon an tablo epi ki kenbe ranje yo plase ladan l yo nan kad semantik tablo a."
+
+msgctxt "docs.api:prose"
+msgid "A paragraph of Pantoken body text."
+msgstr "Yon paragraf tèks prensipal Pantoken."
+
+msgctxt "docs.api:prose"
+msgid "A native multiline text input with a visible slotted label."
+msgstr "Yon chan tèks natif natal sou plizyè liy avèk yon etikèt vizib ki plase nan slot la."
+
+msgctxt "docs.api:prose"
+msgid "A native text input with a visible slotted label."
+msgstr "Yon chan tèks natif ki gen yon etikèt vizib nan yon slot."
+
+msgctxt "docs.api:prose"
+msgid "A native disclosure with a configurable summary."
+msgstr "Yon eleman natif pou dewoule, ak yon rezime ou ka konfigire."
+
+msgctxt "docs.api:prose"
+msgid "A native disclosure group."
+msgstr "Yon gwoup natif pou dewoule enfòmasyon."
+
+msgctxt "docs.api:prose"
+msgid "A neutral layout primitive."
+msgstr "Yon eleman fondamantal pou yon aranjman net."
+
+#, pantoken-verbatim
+msgctxt "docs.api:text"
+msgid "toggleGroup"
+msgstr "toggleGroup"
+
+#, pantoken-verbatim
+msgctxt "docs.api:text"
+msgid "toggleDetails"
+msgstr "toggleDetails"
+
+#, pantoken-verbatim
+msgctxt "docs.api:text"
+msgid "fileDrop"
+msgstr "fileDrop"
+
+#, pantoken-verbatim
+msgctxt "docs.api:text"
+msgid "rangeInput"
+msgstr "rangeInput"
+
+#, pantoken-verbatim
+msgctxt "docs.api:text"
+msgid "screenReaderContent"
+msgstr "screenReaderContent"
+
+#, pantoken-verbatim
+msgctxt "docs.api:text"
+msgid "closeButton"
+msgstr "closeButton"
+
+#, pantoken-verbatim
+msgctxt "docs.api:text"
+msgid "formField"
+msgstr "formField"
+
+#, pantoken-verbatim
+msgctxt "docs.api:text"
+msgid "formFieldGroup"
+msgstr "formFieldGroup"
+
+#, pantoken-verbatim
+msgctxt "docs.api:text"
+msgid "radioInputGroup"
+msgstr "radioInputGroup"
+
+#, pantoken-verbatim
+msgctxt "docs.api:text"
+msgid "formFieldMessages"
+msgstr "formFieldMessages"
+
+#, pantoken-verbatim
+msgctxt "docs.api:text"
+msgid "textInput"
+msgstr "textInput"
+
+#, pantoken-verbatim
+msgctxt "docs.api:text"
+msgid "textArea"
+msgstr "textArea"
+
+#, pantoken-verbatim
+msgctxt "docs.api:text"
+msgid "simpleSelect"
+msgstr "simpleSelect"
+
+#, pantoken-verbatim
+msgctxt "docs.api:text"
+msgid "inputGroup"
+msgstr "inputGroup"
+
+#, pantoken-verbatim
+msgctxt "docs.api:text"
+msgid "numberInput"
+msgstr "numberInput"
+
+#, pantoken-verbatim
+msgctxt "docs.api:text"
+msgid "componentElements"
+msgstr "componentElements"
+
+msgctxt "docs.api:prose"
+msgid "A breadcrumb navigation landmark."
+msgstr "Yon repè navigasyon chemen."

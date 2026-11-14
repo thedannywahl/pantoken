@@ -32,8 +32,8 @@ features:
     title: Jenere pou nenpòt platfòm
     details: Enstole pantoken cli pou jenere preset oswa ajoute konpozan pou nenpòt platfòm&colon; wèb, natif, ak nenpòt bagay ant.
   - icon:
-      light: /unlink-light.svg
-      dark: /unlink-dark.svg
-    title: React pa nesesè
-    details: Bibliyotèk InstUI a fèmen konekte ak React. Si ou vle itilize li, ou dwe itilize React. Kounye a ou ka bati nenpòt kote.
+      light: /wand-sparkles-light.svg
+      dark: /wand-sparkles-dark.svg
+    title: Konstwi avèk ajan entèlijan
+    details: Ajoute pantoken nan zouti IA w ap itilize deja yo, avèk konpetans ki ladan l, fichye ajan yo, api-catalog, llms.txt, ak A2UI.
 ---

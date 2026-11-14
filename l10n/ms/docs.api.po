@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: pantoken\n"
-"PO-Revision-Date: 2026-10-30 19:56+0000\n"
+"PO-Revision-Date: 2026-11-14 02:42+0000\n"
 "Last-Translator: pantoken localization engine\n"
 "Language-Team: pantoken\n"
 "MIME-Version: 1.0\n"
@@ -34848,3 +34848,211 @@ msgstr "WCAG 2.2 2.5.8"
 msgctxt "docs.api:prose"
 msgid "All touch targets must be 24px large, or leave sufficient space"
 msgstr "Semua sasaran sentuh mestilah berukuran sekurang-kurangnya 24px, atau sediakan ruang yang mencukupi"
+
+msgctxt "docs.api:prose"
+msgid "A section for an empty state or call to action."
+msgstr "Bahagian untuk keadaan kosong atau seruan untuk bertindak."
+
+msgctxt "docs.api:prose"
+msgid "A breadcrumb navigation landmark."
+msgstr "Penanda navigasi breadcrumb."
+
+msgctxt "docs.api:prose"
+msgid "A media-object byline container."
+msgstr "Bekas untuk baris nama objek media."
+
+msgctxt "docs.api:prose"
+msgid "An article-shaped card with slotted content."
+msgstr "Kad berbentuk artikel dengan kandungan berslot."
+
+msgctxt "docs.api:prose"
+msgid "A native checkbox and its slotted label."
+msgstr "Kotak pilihan asli dan label yang dislotkan."
+
+msgctxt "docs.api:prose"
+msgid "A native close button with an accessible label."
+msgstr "Butang tutup asli dengan label yang boleh diakses."
+
+msgctxt "docs.api:prose"
+msgid "Missing root component records, registered after the hand-authored elements."
+msgstr "Rekod komponen akar tiada, didaftarkan selepas elemen yang ditulis tangan."
+
+msgctxt "docs.api:prose"
+msgid "A native file picker presented as a dropzone label."
+msgstr "Pemilih fail natif yang dipaparkan sebagai label zon lepas."
+
+msgctxt "docs.api:prose"
+msgid "A form-field layout container."
+msgstr "Bekas susun atur medan borang."
+
+msgctxt "docs.api:prose"
+msgid "A native fieldset for a group of form fields."
+msgstr "Satu fieldset natif untuk sekumpulan medan borang."
+
+msgctxt "docs.api:prose"
+msgid "A status region for form-field help and validation messages."
+msgstr "Kawasan status untuk bantuan medan borang dan mesej pengesahan."
+
+msgctxt "docs.api:prose"
+msgid "A semantic heading with a bounded level from one through six."
+msgstr "Tajuk semantik dengan tahap terhad dari satu hingga enam."
+
+msgctxt "docs.api:prose"
+msgid "A container for an input and adjacent content."
+msgstr "Bekas untuk input dan kandungan bersebelahan."
+
+msgctxt "docs.api:prose"
+msgid "A link that rejects executable and data URL schemes."
+msgstr "Pautan yang menolak skema URL boleh laksana dan skema URL data."
+
+msgctxt "docs.api:prose"
+msgid "A native unordered list with Pantoken list-item styles."
+msgstr "Senarai tidak tertib natif dengan gaya item senarai Pantoken."
+
+msgctxt "docs.api:prose"
+msgid "An overlay surface for positioned content."
+msgstr "Permukaan tindanan untuk kandungan yang diposisikan."
+
+msgctxt "docs.api:prose"
+msgid "A menu surface with item, group, and separator styles."
+msgstr "Permukaan menu dengan gaya item, kumpulan dan pemisah."
+
+msgctxt "docs.api:prose"
+msgid "A native number input with value-change events."
+msgstr "Input nombor natif dengan peristiwa perubahan nilai."
+
+msgctxt "docs.api:prose"
+msgid "A pagination navigation landmark."
+msgstr "Mercu tanda navigasi penomboran."
+
+msgctxt "docs.api:prose"
+msgid "A native radio control and its slotted label."
+msgstr "Kawalan radio natif dan label yang dislotkan."
+
+msgctxt "docs.api:prose"
+msgid "A native fieldset for a radio-input group."
+msgstr "Satu fieldset natif untuk kumpulan input radio."
+
+msgctxt "docs.api:prose"
+msgid "A native range slider with value-change events."
+msgstr "Peluncur julat asli dengan peristiwa perubahan nilai."
+
+msgctxt "docs.api:prose"
+msgid "Visually hidden content that remains available to assistive technology."
+msgstr "Kandungan yang disembunyikan secara visual tetapi kekal tersedia kepada teknologi bantuan."
+
+msgctxt "docs.api:prose"
+msgid "A native select control that copies text-only options from its light DOM."
+msgstr "Kawalan pilih asli yang menyalin pilihan teks sahaja daripada DOM ringan."
+
+msgctxt "docs.api:prose"
+msgid "A table-layout container that keeps slotted rows inside its table semantics."
+msgstr "Bekas susun atur jadual yang mengekalkan baris yang dimasukkan melalui slot dalam semantik jadualnya."
+
+msgctxt "docs.api:prose"
+msgid "A paragraph of Pantoken body text."
+msgstr "Satu perenggan teks isi Pantoken."
+
+msgctxt "docs.api:prose"
+msgid "A native multiline text input with a visible slotted label."
+msgstr "Medan input teks berbilang baris natif dengan label slot yang kelihatan."
+
+msgctxt "docs.api:prose"
+msgid "A native text input with a visible slotted label."
+msgstr "Input teks natif dengan label slot yang kelihatan."
+
+msgctxt "docs.api:prose"
+msgid "A native disclosure with a configurable summary."
+msgstr "Komponen pendedahan natif dengan ringkasan yang boleh dikonfigurasikan."
+
+msgctxt "docs.api:prose"
+msgid "A native disclosure group."
+msgstr "Kumpulan pendedahan natif."
+
+msgctxt "docs.api:prose"
+msgid "A neutral layout primitive."
+msgstr "Primitif susun atur neutral."
+
+#, pantoken-verbatim
+msgctxt "docs.api:text"
+msgid "toggleGroup"
+msgstr "toggleGroup"
+
+#, pantoken-verbatim
+msgctxt "docs.api:text"
+msgid "toggleDetails"
+msgstr "toggleDetails"
+
+#, pantoken-verbatim
+msgctxt "docs.api:text"
+msgid "fileDrop"
+msgstr "fileDrop"
+
+#, pantoken-verbatim
+msgctxt "docs.api:text"
+msgid "rangeInput"
+msgstr "rangeInput"
+
+#, pantoken-verbatim
+msgctxt "docs.api:text"
+msgid "screenReaderContent"
+msgstr "screenReaderContent"
+
+#, pantoken-verbatim
+msgctxt "docs.api:text"
+msgid "closeButton"
+msgstr "closeButton"
+
+#, pantoken-verbatim
+msgctxt "docs.api:text"
+msgid "formField"
+msgstr "formField"
+
+#, pantoken-verbatim
+msgctxt "docs.api:text"
+msgid "formFieldGroup"
+msgstr "formFieldGroup"
+
+#, pantoken-verbatim
+msgctxt "docs.api:text"
+msgid "radioInputGroup"
+msgstr "radioInputGroup"
+
+#, pantoken-verbatim
+msgctxt "docs.api:text"
+msgid "formFieldMessages"
+msgstr "formFieldMessages"
+
+#, pantoken-verbatim
+msgctxt "docs.api:text"
+msgid "textInput"
+msgstr "textInput"
+
+#, pantoken-verbatim
+msgctxt "docs.api:text"
+msgid "textArea"
+msgstr "textArea"
+
+#, pantoken-verbatim
+msgctxt "docs.api:text"
+msgid "simpleSelect"
+msgstr "simpleSelect"
+
+#, pantoken-verbatim
+msgctxt "docs.api:text"
+msgid "inputGroup"
+msgstr "inputGroup"
+
+#, pantoken-verbatim
+msgctxt "docs.api:text"
+msgid "numberInput"
+msgstr "numberInput"
+
+#, pantoken-verbatim
+msgctxt "docs.api:text"
+msgid "componentElements"
+msgstr "componentElements"
+
+msgctxt "docs.api:prose"
+msgid "<!-- pantoken-value-scope:css%2Fscreen-reader-content.md -->\nThis component ships no CSS of its own — its markup and behavior come entirely from {{ptk_code_0}}. See the [modifier table below]({{ptk_code_1}})."
+msgstr "<!-- pantoken-value-scope:css%2Fscreen-reader-content.md -->\nKomponen ini tidak menyediakan CSS sendiri — penandaannya dan tingkah lakunya datang sepenuhnya daripada {{ptk_code_0}}. Lihat jadual [pengubah suai di bawah]({{ptk_code_1}})."

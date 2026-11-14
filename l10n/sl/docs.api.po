@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: pantoken\n"
-"PO-Revision-Date: 2026-10-30 19:56+0000\n"
+"PO-Revision-Date: 2026-11-14 00:35+0000\n"
 "Last-Translator: pantoken localization engine\n"
 "Language-Team: pantoken\n"
 "MIME-Version: 1.0\n"
@@ -32503,3 +32503,211 @@ msgstr "<!-- pantoken-value-scope:css%2Fprogress-circle.md -->\nCSS tega kompone
 msgctxt "docs.api:prose"
 msgid "<!-- pantoken-value-scope:css%2Ftruncate.md -->\nThis component ships no CSS of its own — its markup and behavior come entirely from {{ptk_code_0}}. Its {{ptk_code_1}} modifier is driven by that behavior. See the [modifier table below]({{ptk_code_2}})."
 msgstr "<!-- pantoken-value-scope:css%2Ftruncate.md -->\nTa komponenta ne vsebuje lastnega CSS — njena struktura in vedenje izhajata v celoti iz {{ptk_code_0}}. Njena modifikatorja {{ptk_code_1}} poganja to vedenje. Glej [tabelo modifikatorjev spodaj]({{ptk_code_2}})."
+
+msgctxt "docs.api:prose"
+msgid "<!-- pantoken-value-scope:css%2Fscreen-reader-content.md -->\nThis component ships no CSS of its own — its markup and behavior come entirely from {{ptk_code_0}}. See the [modifier table below]({{ptk_code_1}})."
+msgstr "<!-- pantoken-value-scope:css%2Fscreen-reader-content.md -->\nTa komponenta nima lastnega CSS-ja — njena označevalna koda in delovanje v celoti izhajata iz {{ptk_code_0}}. Glejte [spodnjo tabelo modifikatorjev]({{ptk_code_1}})."
+
+msgctxt "docs.api:prose"
+msgid "A section for an empty state or call to action."
+msgstr "Razdelek za prazno stanje ali poziv k dejanju."
+
+msgctxt "docs.api:prose"
+msgid "A breadcrumb navigation landmark."
+msgstr "Orientacijska točka za navigacijo z drobtinicami."
+
+msgctxt "docs.api:prose"
+msgid "A media-object byline container."
+msgstr "Vsebnik za navedbo avtorja medijskega objekta."
+
+msgctxt "docs.api:prose"
+msgid "An article-shaped card with slotted content."
+msgstr "Kartica v obliki članka z vsebino, vstavljeno v reže."
+
+msgctxt "docs.api:prose"
+msgid "A native checkbox and its slotted label."
+msgstr "Izvorno potrditveno polje in njegova oznaka v reži."
+
+msgctxt "docs.api:prose"
+msgid "A native close button with an accessible label."
+msgstr "Izvirni gumb za zapiranje z dostopno oznako."
+
+msgctxt "docs.api:prose"
+msgid "Missing root component records, registered after the hand-authored elements."
+msgstr "Manjkajoči zapisi korenskih komponent, registrirani za ročno napisanimi elementi."
+
+msgctxt "docs.api:prose"
+msgid "A native file picker presented as a dropzone label."
+msgstr "Vgrajen izbirnik datotek, prikazan kot oznaka območja za spuščanje."
+
+msgctxt "docs.api:prose"
+msgid "A form-field layout container."
+msgstr "Vsebnik za postavitev polj obrazca."
+
+msgctxt "docs.api:prose"
+msgid "A native fieldset for a group of form fields."
+msgstr "Nativni fieldset za skupino polj obrazca."
+
+msgctxt "docs.api:prose"
+msgid "A status region for form-field help and validation messages."
+msgstr "Območje stanja za pomoč pri poljih obrazca in validacijska sporočila."
+
+msgctxt "docs.api:prose"
+msgid "A semantic heading with a bounded level from one through six."
+msgstr "Semantični naslov z omejeno ravnjo od ena do šest."
+
+msgctxt "docs.api:prose"
+msgid "A container for an input and adjacent content."
+msgstr "Vsebnik za vnos in sosednjo vsebino."
+
+msgctxt "docs.api:prose"
+msgid "A link that rejects executable and data URL schemes."
+msgstr "Povezava, ki zavrača sheme URL-jev za izvršno kodo in podatke."
+
+msgctxt "docs.api:prose"
+msgid "A native unordered list with Pantoken list-item styles."
+msgstr "Nativni neurejeni seznam s slogi za elemente seznama Pantoken."
+
+msgctxt "docs.api:prose"
+msgid "An overlay surface for positioned content."
+msgstr "Prekrivna površina za pozicionirano vsebino."
+
+msgctxt "docs.api:prose"
+msgid "A menu surface with item, group, and separator styles."
+msgstr "Površina menija s slogi za elemente, skupine in ločila."
+
+msgctxt "docs.api:prose"
+msgid "A native number input with value-change events."
+msgstr "Izvorni številčni vnos z dogodki spremembe vrednosti."
+
+msgctxt "docs.api:prose"
+msgid "A pagination navigation landmark."
+msgstr "Navigacijska orientacijska točka za oštevilčenje strani."
+
+msgctxt "docs.api:prose"
+msgid "A native radio control and its slotted label."
+msgstr "Izvorni radijski kontrolnik in njegova vstavljena oznaka."
+
+msgctxt "docs.api:prose"
+msgid "A native fieldset for a radio-input group."
+msgstr "Izvorni fieldset za skupino radijskih gumbov."
+
+msgctxt "docs.api:prose"
+msgid "A native range slider with value-change events."
+msgstr "Izvorni drsnik za obseg z dogodki ob spremembi vrednosti."
+
+msgctxt "docs.api:prose"
+msgid "Visually hidden content that remains available to assistive technology."
+msgstr "Vizualno skrita vsebina, ki ostane na voljo podporni tehnologiji."
+
+msgctxt "docs.api:prose"
+msgid "A native select control that copies text-only options from its light DOM."
+msgstr "Nativni kontrolnik select, ki kopira samo besedilne možnosti iz svojega light DOM-a."
+
+msgctxt "docs.api:prose"
+msgid "A table-layout container that keeps slotted rows inside its table semantics."
+msgstr "Vsebnik s postavitvijo tabele, ki ohranja vstavljene vrstice znotraj semantike tabele."
+
+msgctxt "docs.api:prose"
+msgid "A paragraph of Pantoken body text."
+msgstr "Odstavek besedila telesa Pantoken."
+
+msgctxt "docs.api:prose"
+msgid "A native multiline text input with a visible slotted label."
+msgstr "Nativni večvrstični vnos besedila z vidno oznako v reži."
+
+msgctxt "docs.api:prose"
+msgid "A native text input with a visible slotted label."
+msgstr "Izvorno besedilno vnosno polje z vidno oznako, vstavljeno prek reže."
+
+msgctxt "docs.api:prose"
+msgid "A native disclosure with a configurable summary."
+msgstr "Izvorno razkritje z nastavljivim povzetkom."
+
+msgctxt "docs.api:prose"
+msgid "A native disclosure group."
+msgstr "Izvorna skupina za razkrivanje vsebine."
+
+msgctxt "docs.api:prose"
+msgid "A neutral layout primitive."
+msgstr "Nevtralen gradnik postavitve."
+
+#, pantoken-verbatim
+msgctxt "docs.api:text"
+msgid "toggleGroup"
+msgstr "toggleGroup"
+
+#, pantoken-verbatim
+msgctxt "docs.api:text"
+msgid "toggleDetails"
+msgstr "toggleDetails"
+
+#, pantoken-verbatim
+msgctxt "docs.api:text"
+msgid "fileDrop"
+msgstr "fileDrop"
+
+#, pantoken-verbatim
+msgctxt "docs.api:text"
+msgid "rangeInput"
+msgstr "rangeInput"
+
+#, pantoken-verbatim
+msgctxt "docs.api:text"
+msgid "screenReaderContent"
+msgstr "screenReaderContent"
+
+#, pantoken-verbatim
+msgctxt "docs.api:text"
+msgid "closeButton"
+msgstr "closeButton"
+
+#, pantoken-verbatim
+msgctxt "docs.api:text"
+msgid "formField"
+msgstr "formField"
+
+#, pantoken-verbatim
+msgctxt "docs.api:text"
+msgid "formFieldGroup"
+msgstr "formFieldGroup"
+
+#, pantoken-verbatim
+msgctxt "docs.api:text"
+msgid "radioInputGroup"
+msgstr "radioInputGroup"
+
+#, pantoken-verbatim
+msgctxt "docs.api:text"
+msgid "formFieldMessages"
+msgstr "formFieldMessages"
+
+#, pantoken-verbatim
+msgctxt "docs.api:text"
+msgid "textInput"
+msgstr "textInput"
+
+#, pantoken-verbatim
+msgctxt "docs.api:text"
+msgid "textArea"
+msgstr "textArea"
+
+#, pantoken-verbatim
+msgctxt "docs.api:text"
+msgid "simpleSelect"
+msgstr "simpleSelect"
+
+#, pantoken-verbatim
+msgctxt "docs.api:text"
+msgid "inputGroup"
+msgstr "inputGroup"
+
+#, pantoken-verbatim
+msgctxt "docs.api:text"
+msgid "numberInput"
+msgstr "numberInput"
+
+#, pantoken-verbatim
+msgctxt "docs.api:text"
+msgid "componentElements"
+msgstr "componentElements"
