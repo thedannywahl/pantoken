@@ -3,7 +3,7 @@
   "checkpoint_id": "01M7C18D1VZXCJ2J764SW61GYZ",
   "strategy": "manual-commit",
   "branch": "a2ui",
-  "checkpoints_count": 5,
+  "checkpoints_count": 7,
   "files_touched": [
     "l10n/ar/docs.api.po",
     "l10n/ar/docs.chrome.po",
@@ -84,6 +84,13 @@
       "compact_transcript": "/1/transcript.jsonl",
       "content_hash": "/1/content_hash.txt",
       "prompt": "/1/prompt.txt"
+    },
+    {
+      "metadata": "/2/metadata.json",
+      "transcript": "/2/full.jsonl",
+      "compact_transcript": "/2/transcript.jsonl",
+      "content_hash": "/2/content_hash.txt",
+      "prompt": "/2/prompt.txt"
     }
   ],
   "token_usage": {
@@ -94,7 +101,7 @@
     "api_call_count": 2
   },
   "redaction": {
-    "replacements": 240594,
+    "replacements": 240596,
     "layers": {
       "betterleaks": 2,
       "connection_string": 0,
@@ -102,7 +109,7 @@
       "credential_value": 0,
       "credentialed_uri": 0,
       "custom": 0,
-      "entropy": 581793,
+      "entropy": 581817,
       "goredact": 0,
       "key_context": 0,
       "pii": 38,
