@@ -597,6 +597,13 @@ CI wiring: the `i18n-drift` job runs `vp run gate:i18n` when catalog, source, or
 that gate generates the English API tree and checks every surface. `gate:i18n` also runs before npm
 publishing. AI translation is never wired into CI; fill drift locally with `vp run i18n:translate`.
 
+To translate only homepage frontmatter and regenerate localized home pages, run
+`vp run @pantoken/docs#docs:home:locales:claude` (or `:agy` / `:copilot`). The aggregate
+`docs:locales:translate` commands select the same provider for the homepage as for other surfaces.
+Homepage synchronization honors `DOCS_TRANSLATION_LOCALE`, `DOCS_TRANSLATION_UNITS`, and
+`DOCS_TRANSLATION_FORCE`, reports each locale's translation counts, and fails if entries remain
+untranslated rather than silently rendering English fallback.
+
 `translate` re-extracts a space's `l10n/<space>.pot` from its source before merging, so a newly added
 key reaches the PO catalogs without a separate step, and `check` reports a stale template as drift in
 its own right. Run `vp run i18n:extract` when you want to refresh a template without spending
