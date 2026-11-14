@@ -34,6 +34,6 @@ features:
   - icon:
       light: /wand-sparkles-light.svg
       dark: /wand-sparkles-dark.svg
-    title: Build agentically
-    details: Add pantoken to the AI tools you're already using with included skills, agents file, api-catalog, llms.txt, and A2UI.
+    title: Rakenna agenttien avulla
+    details: Lisää pantoken jo käyttämiisi tekoälytyökaluihin mukana tulevien taitojen, agents-tiedoston, api-catalogin, llms.txt:n ja A2UI:n avulla.
 ---

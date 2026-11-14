@@ -34,6 +34,6 @@ features:
   - icon:
       light: /wand-sparkles-light.svg
       dark: /wand-sparkles-dark.svg
-    title: Build agentically
-    details: Add pantoken to the AI tools you're already using with included skills, agents file, api-catalog, llms.txt, and A2UI.
+    title: Hanga mā te āpiha AI
+    details: Tāpirihia a pantoken ki ngā taputapu AI kua whakamahia kētia e koe, me ngā pūkenga kua whakaurua, te kōnae agents, te api-catalog, te llms.txt, me te A2UI.
 ---

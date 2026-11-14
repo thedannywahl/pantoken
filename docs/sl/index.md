@@ -34,6 +34,6 @@ features:
   - icon:
       light: /wand-sparkles-light.svg
       dark: /wand-sparkles-dark.svg
-    title: Build agentically
-    details: Add pantoken to the AI tools you're already using with included skills, agents file, api-catalog, llms.txt, and A2UI.
+    title: Gradite z agentskim pristopom
+    details: Dodajte pantoken orodjem umetne inteligence, ki jih že uporabljate, z vključenimi spretnostmi, datoteko agentov, api-catalog, llms.txt in A2UI.
 ---
