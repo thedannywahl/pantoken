@@ -39,9 +39,11 @@ import {
 } from "./support-policy.ts";
 import {
   breakingMaintenanceBump,
+  classifyMaintenanceUpgrades,
   editMaintenanceDependency,
   groupMaintenanceUpgrades,
   maintenanceId,
+  maintenanceTargetVersion,
   parseMaintenanceUpgrades,
   renderMaintenanceChangeset,
   requireMaintenanceBump,
@@ -61,6 +63,7 @@ export interface MaintenanceResult {
   proposal: string;
   upgrades: MaintenanceUpgrade[];
   accepted: MaintenanceUpgrade[];
+  unchanged?: MaintenanceUpgrade[];
   failures: MaintenanceFailure[];
   files: Record<string, string | null>;
   evidence: Record<string, string[]>;
@@ -394,7 +397,14 @@ export async function prepareMaintenance(
       : parseMaintenanceUpgrades(
           JSON.parse(command(root, "git", ["show", `${proposal}:${maintenanceProposalPath}`])),
         );
-  const selected = options.candidates ? parseMaintenanceUpgrades(options.candidates) : upgrades;
+  const classification = classifyMaintenanceUpgrades(upgrades, (file) =>
+    command(root, "git", ["show", `${base}:${file}`]),
+  );
+  const selected = options.candidates
+    ? classifyMaintenanceUpgrades(parseMaintenanceUpgrades(options.candidates), (file) =>
+        command(root, "git", ["show", `${base}:${file}`]),
+      ).changed
+    : classification.changed;
   for (const candidate of selected)
     if (!upgrades.some((upgrade) => JSON.stringify(upgrade) === JSON.stringify(candidate)))
       throw new Error("Unproposed maintenance candidate");
@@ -454,7 +464,7 @@ export async function prepareMaintenance(
       }
     }
     let prepared:
-      | Omit<MaintenanceResult, "base" | "proposal" | "upgrades" | "accepted">
+      | Omit<MaintenanceResult, "base" | "proposal" | "upgrades" | "accepted" | "unchanged">
       | undefined;
     const validate = async (candidates: MaintenanceUpgrade[], final = false): Promise<void> => {
       const directory = createTree();
@@ -510,11 +520,10 @@ export async function prepareMaintenance(
         );
         if (!final) {
           for (const candidate of candidates) {
-            const version = candidate.newValue.replace(/^[~^]/u, "");
-            if (!/^\d+\.\d+\.\d+$/u.test(version)) continue;
             for (const [name, target] of Object.entries(npmTargets)) {
+              const version = maintenanceTargetVersion(candidate, target);
               const support = originalRegistry[name];
-              if (target === candidate.depName && support?.status === "verified")
+              if (version && support?.status === "verified")
                 adapterCheck(directory, support, version);
             }
           }
@@ -744,6 +753,7 @@ export async function prepareMaintenance(
       proposal,
       upgrades,
       accepted: partition.accepted,
+      unchanged: classification.unchanged,
       ...prepared,
       failures: [...partition.failures, ...prepared.failures],
     };

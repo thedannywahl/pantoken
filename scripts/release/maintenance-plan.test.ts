@@ -2,9 +2,11 @@ import { expect, test } from "vite-plus/test";
 import { parse } from "yaml";
 import {
   breakingMaintenanceBump,
+  classifyMaintenanceUpgrades,
   editMaintenanceDependency,
   groupMaintenanceUpgrades,
   maintenanceId,
+  maintenanceTargetVersion,
   parseMaintenanceUpgrades,
   renderMaintenanceChangeset,
   requireMaintenanceBump,
@@ -19,6 +21,66 @@ const upgrade: MaintenanceUpgrade = {
   currentValue: "^19.0.0",
   newValue: "^20.0.0",
 };
+
+test("routes adapter versions by underlying npm identity, not an alias name", () => {
+  const alias = {
+    ...upgrade,
+    depName: "vite",
+    packageName: "@voidzero-dev/vite-plus-core",
+    newValue: "1.5.1",
+  };
+  expect(maintenanceTargetVersion(alias, "vite")).toBeUndefined();
+  expect(maintenanceTargetVersion(alias, alias.packageName)).toBe("1.5.1");
+  expect(
+    maintenanceTargetVersion({ ...alias, packageName: "vite", newValue: "^8.3.7" }, "vite"),
+  ).toBe("8.3.7");
+  expect(
+    maintenanceTargetVersion({ ...upgrade, manager: "github-actions" }, "react"),
+  ).toBeUndefined();
+  expect(maintenanceTargetVersion({ ...upgrade, newValue: ">=19 <=20" }, "react")).toBeUndefined();
+});
+
+test("classifies unchanged proposals against the base, including stale metadata and aliases", () => {
+  const unchanged = { ...upgrade, depName: "vue" };
+  const alias = {
+    ...upgrade,
+    depName: "vite",
+    packageName: "@voidzero-dev/vite-plus-core",
+    currentValue: "1.2.0",
+    newValue: "1.5.1",
+  };
+  const readBase = () =>
+    "catalog:\n  react: ^19.0.0\n  vue: ^20.0.0\n  vite: npm:@voidzero-dev/vite-plus-core@1.5.1\n";
+  expect(classifyMaintenanceUpgrades([upgrade, unchanged, alias], readBase)).toEqual({
+    changed: [upgrade],
+    unchanged: [unchanged, alias],
+  });
+  expect(
+    classifyMaintenanceUpgrades([{ ...alias, packageName: "vite" }], readBase).changed,
+  ).toHaveLength(1);
+  expect(
+    classifyMaintenanceUpgrades([upgrade], () => "catalog:\n  react: wrong\n").changed,
+  ).toEqual([upgrade]);
+  expect(() => classifyMaintenanceUpgrades([upgrade], () => "catalog: [")).toThrow();
+});
+
+test("does not classify partially upgraded catalogs or manifest fields as unchanged", () => {
+  expect(
+    classifyMaintenanceUpgrades(
+      [upgrade],
+      () => "catalog:\n  react: ^20.0.0\ncatalogs:\n  legacy:\n    react: ^19.0.0\n",
+    ).changed,
+  ).toEqual([upgrade]);
+  const manifestUpgrade = { ...upgrade, packageFile: "package.json" };
+  const manifest = { dependencies: { react: "^20.0.0" }, peerDependencies: { react: "^19.0.0" } };
+  expect(
+    classifyMaintenanceUpgrades([manifestUpgrade], () => JSON.stringify(manifest)).changed,
+  ).toEqual([manifestUpgrade]);
+  manifest.peerDependencies.react = "^20.0.0";
+  expect(
+    classifyMaintenanceUpgrades([manifestUpgrade], () => JSON.stringify(manifest)).unchanged,
+  ).toEqual([manifestUpgrade]);
+});
 
 test("edits catalogs structurally without rewriting unrelated values or comments", () => {
   const source = "# Keep this comment\ncatalog:\n  react: ^19.0.0\n  example: ^1.0.0\n";

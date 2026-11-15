@@ -89,6 +89,18 @@ test("collects passing candidates and preserves atomic rejection reasons", () =>
   expect(result.failures[0].upgrades).toHaveLength(2);
 });
 
+test("excludes unchanged entries from atomic validation groups using immutable base files", () => {
+  const readBase = vi.fn(() =>
+    JSON.stringify({
+      dependencies: { react: "2.0.0", "react-dom": "1.0.0", unrelated: "2.0.0" },
+    }),
+  );
+  const result = maintenanceValidationPlan(base, proposal, upgrades, readBase);
+  expect(result.unchanged).toEqual([upgrades[0], upgrades[2]]);
+  expect(result.groups.map((group) => group.upgrades)).toEqual([[upgrades[1]]]);
+  expect(readBase).toHaveBeenCalledExactlyOnceWith("package.json");
+});
+
 test("reuses completed groups but requires the newest retry to be terminal", () => {
   const input = records();
   const retry = { ...input[0], attempt: 2, status: "infrastructure-failed" as const };
