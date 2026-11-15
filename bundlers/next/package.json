@@ -36,7 +36,7 @@
     "vite-plus": "catalog:"
   },
   "peerDependencies": {
-    "next": ">=16"
+    "next": ">=16.0.0 <17.0.0"
   },
   "peerDependenciesMeta": {
     "next": {
