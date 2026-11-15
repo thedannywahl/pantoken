@@ -144,7 +144,7 @@ catalog:
   vscode-languageclient: ^11.0.0
   vscode-languageserver: ^11.0.0
   vscode-languageserver-textdocument: ^1.0.12
-  bingo-stratum: ^0.8.0
+  bingo-stratum: ^0.11.0
   zod: ^4.6.7
   # @pantoken/tinymce + canvas-theme-editor scaffold — tracks the current tinymce major, not
   # instructure/canvas-lms's own (older) production RCE version. v8's stricter DOMPurify

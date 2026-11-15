@@ -396,8 +396,8 @@ catalogs:
       specifier: ^0.11.0
       version: 0.11.0
     bingo-stratum:
-      specifier: ^0.8.0
-      version: 0.8.0
+      specifier: ^0.11.0
+      version: 0.11.0
     bootstrap:
       specifier: ^5.3.8
       version: 5.3.8
@@ -1129,7 +1129,7 @@ importers:
         version: 0.11.0(typescript@7.0.2)
       bingo-stratum:
         specifier: 'catalog:'
-        version: 0.8.0(bingo-fs@0.6.0)(bingo-systems@0.7.0)(bingo@0.13.2)(zod@4.6.7)
+        version: 0.11.0(bingo-fs@0.8.0)(bingo-systems@0.9.0)(bingo@0.16.0(zod@4.6.7))(zod@4.6.7)
       happy-dom:
         specifier: 'catalog:'
         version: 21.0.4
@@ -1580,7 +1580,7 @@ importers:
         version: 1.5.1(@arethetypeswrong/core@0.18.5)(@types/node@26.6.5)(@vitest/coverage-v8@5.1.0)(@vitest/ui@5.1.0)(esbuild@0.28.2)(happy-dom@21.0.4)(jiti@2.6.1)(less@4.9.1(supports-color@10.2.2))(playwright@1.65.1)(publint@0.3.25)(sass@1.105.1)(svelte@5.57.2(@typescript-eslint/types@8.71.2))(terser@5.51.2)(typescript@7.0.2)(yaml@2.9.1)
       vitest:
         specifier: 'catalog:'
-        version: 5.1.0(@types/node@26.6.5)(@vitest/browser-preview@5.1.0)(@vitest/coverage-v8@5.1.0)(@vitest/ui@5.1.0(vitest@5.1.0))(@voidzero-dev/vite-plus-core@1.5.1(@arethetypeswrong/core@0.18.5)(@types/node@26.6.5)(esbuild@0.28.2)(jiti@2.6.1)(less@4.9.1(supports-color@10.2.2))(publint@0.3.25)(sass@1.105.1)(terser@5.51.2)(typescript@7.0.2)(yaml@2.9.1))(happy-dom@21.0.4)
+        version: 5.1.0(@types/node@26.6.5)(@vitest/browser-preview@5.1.0)(@vitest/coverage-v8@5.1.0)(@vitest/ui@5.1.0)(@voidzero-dev/vite-plus-core@1.5.1(@arethetypeswrong/core@0.18.5)(@types/node@26.6.5)(esbuild@0.28.2)(jiti@2.6.1)(less@4.9.1(supports-color@10.2.2))(publint@0.3.25)(sass@1.105.1)(terser@5.51.2)(typescript@7.0.2)(yaml@2.9.1))(happy-dom@21.0.4)
 
   packages/create-pantoken-app:
     dependencies:
@@ -1930,7 +1930,7 @@ importers:
         version: 26.6.5
       bingo-stratum:
         specifier: 'catalog:'
-        version: 0.8.0(bingo-fs@0.6.0)(bingo-systems@0.7.0)(bingo@0.13.2)(zod@4.6.7)
+        version: 0.11.0(bingo-fs@0.8.0)(bingo-systems@0.9.0)(bingo@0.16.0(zod@4.6.7))(zod@4.6.7)
       typescript:
         specifier: 'catalog:'
         version: 7.0.2
@@ -1948,7 +1948,7 @@ importers:
         version: link:../../plugins/pantoken/layouts
       bingo-stratum:
         specifier: 'catalog:'
-        version: 0.8.0(bingo-fs@0.6.0)(bingo-systems@0.7.0)(bingo@0.13.2)(zod@4.6.7)
+        version: 0.11.0(bingo-fs@0.8.0)(bingo-systems@0.9.0)(bingo@0.16.0(zod@4.6.7))(zod@4.6.7)
       zod:
         specifier: 'catalog:'
         version: 4.6.7
@@ -2925,7 +2925,7 @@ importers:
         version: 26.6.5
       bingo-stratum:
         specifier: 'catalog:'
-        version: 0.8.0(bingo-fs@0.6.0)(bingo-systems@0.7.0)(bingo@0.13.2)(zod@4.6.7)
+        version: 0.11.0(bingo-fs@0.8.0)(bingo-systems@0.9.0)(bingo@0.16.0(zod@4.6.7))(zod@4.6.7)
       typescript:
         specifier: 'catalog:'
         version: 7.0.2
@@ -3257,7 +3257,7 @@ importers:
         version: 19.3.0(@types/react@19.3.0)
       bingo-stratum:
         specifier: 'catalog:'
-        version: 0.8.0(bingo-fs@0.6.0)(bingo-systems@0.7.0)(bingo@0.13.2)(zod@4.6.7)
+        version: 0.11.0(bingo-fs@0.8.0)(bingo-systems@0.9.0)(bingo@0.16.0(zod@4.6.7))(zod@4.6.7)
       react:
         specifier: 'catalog:'
         version: 19.3.1
@@ -3493,7 +3493,7 @@ importers:
         version: 26.6.5
       bingo-stratum:
         specifier: 'catalog:'
-        version: 0.8.0(bingo-fs@0.6.0)(bingo-systems@0.7.0)(bingo@0.13.2)(zod@4.6.7)
+        version: 0.11.0(bingo-fs@0.8.0)(bingo-systems@0.9.0)(bingo@0.16.0(zod@4.6.7))(zod@4.6.7)
       typescript:
         specifier: 'catalog:'
         version: 7.0.2
@@ -3633,7 +3633,7 @@ importers:
         version: 3.5.44
       bingo-stratum:
         specifier: 'catalog:'
-        version: 0.8.0(bingo-fs@0.6.0)(bingo-systems@0.7.0)(bingo@0.13.2)(zod@4.6.7)
+        version: 0.11.0(bingo-fs@0.8.0)(bingo-systems@0.9.0)(bingo@0.16.0(zod@4.6.7))(zod@4.6.7)
       typescript:
         specifier: 'catalog:'
         version: 7.0.2
@@ -3676,7 +3676,7 @@ importers:
         version: 26.6.5
       bingo-stratum:
         specifier: 'catalog:'
-        version: 0.8.0(bingo-fs@0.6.0)(bingo-systems@0.7.0)(bingo@0.13.2)(zod@4.6.7)
+        version: 0.11.0(bingo-fs@0.8.0)(bingo-systems@0.9.0)(bingo@0.16.0(zod@4.6.7))(zod@4.6.7)
       happy-dom:
         specifier: 'catalog:'
         version: 21.0.4
@@ -7635,31 +7635,36 @@ packages:
   bindings@1.5.0:
     resolution: {integrity: sha512-p2q/t/mhvuOj/UeLlV6566GD/guowlr0hHxClI0W9m7MWYkL1F0hLo+0Aexs9HSPCtR1SXQ0TD3MMKrXZajbiQ==}
 
-  bingo-fs@0.6.0:
-    resolution: {integrity: sha512-vKEkj1R0jPIjEAUWJB/F3sDgn+mtelbkRs+mmU5CoMZpKQ04WavA4DWWO/Jq88jY840PrqEJInuC9ue4RvUV0g==}
-    engines: {node: '>=18'}
+  bingo-fs@0.8.0:
+    resolution: {integrity: sha512-BD599QRKnwHCKw09HFIEeQI6/V8UJoC/HkVvokYcAm4QDJxKxjuuPdECEKpVcaQA1b8r1DKv+ji7Yw7TUZZsRQ==}
+    engines: {node: ^22.22.2 || ^24.15.0 || >=26.0.0}
 
-  bingo-requests@0.5.6:
-    resolution: {integrity: sha512-cpvNWqMlFkbynxJzyKJ4B/R57zR2MsPkJSldNJRxSTN6LlgB9uzQ8jAeDZy2ENoUHNlH5nApv2JyHxVqFxcjSg==}
-    engines: {node: '>=18'}
+  bingo-requests@0.7.0:
+    resolution: {integrity: sha512-bHxA0c0rsaaA0xGxH0uSAR6W+/JaJia1f+FjVDnTqaAgiB6vUSF7H5X1f1pIkBdXV7yAAjM+6O1tDDP6vP5B6Q==}
+    engines: {node: ^22.22.2 || ^24.15.0 || >=26.0.0}
 
-  bingo-stratum@0.8.0:
-    resolution: {integrity: sha512-n3NlAge52Kg4os7OyexD79UccRYhdDUeqrL+mWxmDOoaGeJG6Hc7V1sBiB3p1rS7QJB13a8kGLhwQ71zyBCylg==}
-    engines: {node: '>=20.18.0'}
+  bingo-stratum@0.11.0:
+    resolution: {integrity: sha512-Xd3gGl0OqrPzsFXZDqYQj6Ufgd+1o01lK+n9g82RVwQesRylT1j8iwHoe2FzzI/BtSLJ215MfK3H2ucIV9V8wQ==}
+    engines: {node: ^22.22.2 || ^24.15.0 || >=26.0.0}
     peerDependencies:
-      bingo: ^0.13.1
-      bingo-fs: ^0.6.0
-      bingo-systems: ^0.7.0
+      bingo: ^0.16.0
+      bingo-fs: ^0.8.0
+      bingo-systems: ^0.9.0
       zod: ^4.4.3
 
-  bingo-systems@0.7.0:
-    resolution: {integrity: sha512-Aw5dokVSssSagrVcib9dfVYobp0h/pJKb5m+PhCkAjYkzgGiEN4E56uBVeB42rMAedg7/hxvhFsCsH6wthrDFw==}
-    engines: {node: '>=22'}
+  bingo-systems@0.9.0:
+    resolution: {integrity: sha512-iyfk4it7qFE9neRJFp5/qpuf2KWw1Bppke9oevECXQGquGVIJhwmKt28cLyru5avd7OLO4gVD2T/m+q1IGEBlQ==}
+    engines: {node: ^22.22.2 || ^24.15.0 || >=26.0.0}
 
-  bingo@0.13.2:
-    resolution: {integrity: sha512-sgSZOjlD2c8Lrsgn1NBvcxNoH1tzVL+Nu3QKfg8Y9ciBP5qvXskadH7u0zpRIdtCXzOqviHyubYcInYPnqqR3Q==}
-    engines: {node: '>=22'}
+  bingo@0.16.0:
+    resolution: {integrity: sha512-JGWvr+cEA9g3F11Oubmmuot9kwkzMHqNJd6Wh3wiEWgIbRy1/X3FOWqEnF0mLf45mjeqIkKlUpiKDdZtgRhPnQ==}
+    engines: {node: ^22.22.2 || ^24.15.0 || >=26.0.0}
     hasBin: true
+    peerDependencies:
+      zod: ^4.4.3
+    peerDependenciesMeta:
+      zod:
+        optional: true
 
   birpc@2.9.0:
     resolution: {integrity: sha512-KrayHS5pBi69Xi9JmvoqrIgYGDkD6mcSe/i6YKi3w5kekCLzrX4+nawcXqrj2tIp50Kw/mT/s3p+GVK0A0sKxw==}
@@ -8437,9 +8442,9 @@ packages:
     resolution: {integrity: sha512-mQw+2fkQbALzQ7V0MY0IqdnXNOeTtP4r0lN9z7AAawCXgqea7bDii20AYrIBrFd/Hx0M2Ocz6S111CaFkUcb0Q==}
     engines: {node: '>=0.8.x'}
 
-  execa@9.6.1:
-    resolution: {integrity: sha512-9Be3ZoN4LmYR90tUoVu2te2BsbzHfhJyfEiAVfz7N5/zv+jduIfLrV2xdQXOHbaD6KgpGdO9PRPM1Y4Q9QkPkA==}
-    engines: {node: ^18.19.0 || >=20.5.0}
+  execa@10.2.1:
+    resolution: {integrity: sha512-/Bofl3ZBh2Q4/PG0W63qFzP5vDAypi8Zc90UWTBzaDNIYiX7apPOd0N6L8hG8CojUdq4V51adu8BObP+iVsSTw==}
+    engines: {node: '>=22'}
 
   expect-type@1.4.0:
     resolution: {integrity: sha512-KfYbmpRm0VbLjEvVa9yGwCi9GI34xvi7A/HXYWQO65CSD2u3MczUJSuwXKFIxlGsgBQizV9q5J9NHj4VG0n+pA==}
@@ -8605,6 +8610,10 @@ packages:
     resolution: {integrity: sha512-vcGCRhKNOOynlxi7j3dOrkCkxG1rxt/IbmZY9A+xXMhRAUMeIA5T4Fn0LTaPXfQWdUkOcc3DBWDvcc6dmnxmYw==}
     engines: {node: '>=18'}
 
+  get-github-auth-token@0.2.0:
+    resolution: {integrity: sha512-3Kbqg9jhyylj/qyumXOhhbXaV23UUIkTQ2TVXQGlGswuciQ09U7hSAt89lusAAj1hu0rRYSdADVqceKqVgiKBQ==}
+    engines: {node: '>=18'}
+
   get-intrinsic@1.3.0:
     resolution: {integrity: sha512-9fSjSaos/fRIVIp+xSJlE6lfwhES7LNtKaCBIamHsjr2na1BiABJPo0mOjjz8GJDURarmCPGqaiVg5mfjb98CQ==}
     engines: {node: '>= 0.4'}
@@ -8724,6 +8733,10 @@ packages:
 
   hookable@5.5.3:
     resolution: {integrity: sha512-Yc+BQe8SvoXH1643Qez1zqLRmbA5rCL+sSmk6TVos0LWVfNIB7PGncdlId77WzLGSIB5KaWgTaNTs2lNVEI6VQ==}
+
+  hosted-git-info@10.1.1:
+    resolution: {integrity: sha512-DeOnSPAvOndYKfw075gt8yZzQ7S2hNztw34zBTfhIzLhmBTswIBg5/y+pqu/VD5cYWm5goAFTusDmUEmKZ0PEQ==}
+    engines: {node: ^22.22.2 || ^24.15.0 || >=26.0.0}
 
   hosted-git-info@9.0.3:
     resolution: {integrity: sha512-Hc+ghLoSt6QaYZUv0WBiIvmMDZuZZ7oaDvdH8MbfOO4lOsxdXLEvuC6ePoGs9H1X9oCLyq6+NVN0MKqD+ydxyg==}
@@ -9596,8 +9609,8 @@ packages:
     engines: {node: '>= 4.4.x'}
     hasBin: true
 
-  new-github-repository@0.2.4:
-    resolution: {integrity: sha512-LHHrk3SdPrjSKsqeCsesqmsp3mdD2uUfmY0+5L8D+Cmw6Ts4p8Ss1AaUsEgxeAaQBVR+O0f5GJgrm7oi3DS3Zw==}
+  new-github-repository@0.2.5:
+    resolution: {integrity: sha512-fisCiZGjLn8LwivoYKZInqZZcJAeWrpV3e5ySEJ7OKFefDtct9OmpjVpPlVyCrXF12Z6+BCcaukB7v80jxAmww==}
     engines: {node: '>=18.3.0'}
 
   next@16.4.1:
@@ -9968,8 +9981,8 @@ packages:
     resolution: {integrity: sha512-Qb1gy5OrP5+zDf2Bvnzdl3jsTf1qXVMazbvCoKhtKqVs4/YK4ozX4gKQJJVyNe+cajNPn0KoC0MC3FUmaHWEmQ==}
     engines: {node: ^10.13.0 || ^12.13.0 || ^14.15.0 || >=15.0.0}
 
-  pretty-ms@9.3.0:
-    resolution: {integrity: sha512-gjVS5hOP+M3wMm5nmNOucbIrqudzs9v/57bWRHQWLYklXqoXKrVfYW2W9+glfGsqtPgpiz5WwyEEB+ksXIx3gQ==}
+  pretty-ms@9.3.1:
+    resolution: {integrity: sha512-HzMy3Geq23nVALD/M2LliU+F+M+gVNsvkQWWqeBZ8HDiCgzo6YPJ/Omrmtq24EFrIsk0a3EkQGEd7bDOo+IhGA==}
     engines: {node: '>=18'}
 
   probe-image-size@7.4.0:
@@ -10916,6 +10929,11 @@ packages:
   whatwg-mimetype@4.0.0:
     resolution: {integrity: sha512-QaKxh0eNIi2mE9p2vEdzfagOKHCcj1pJ56EEHGQOVxp8r9/iszLUUV7v89x9O1p/T+NlTM5W7jW6+cz4Fq1YVg==}
     engines: {node: '>=18'}
+
+  which-command@0.1.0:
+    resolution: {integrity: sha512-XZyoF5/5hZtXitIwzrU4NKK+Wtbb9aB9CezUEw2Q0wlYK8NUYQxC1rRXgNueYLtBAJwXIb+/tFVk4dozciNJMA==}
+    engines: {node: '>=22'}
+    hasBin: true
 
   which-typed-array@1.1.22:
     resolution: {integrity: sha512-fvO4ExWMFsqyhG3AiPAObMuY1lxaqgYcxbc49CNdWDDECOJNgQyvsOWVwbZc+qf3rzRtxojBK+CMEv0Ld5CYpw==}
@@ -15030,18 +15048,18 @@ snapshots:
     dependencies:
       file-uri-to-path: 1.0.0
 
-  bingo-fs@0.6.0: {}
+  bingo-fs@0.8.0: {}
 
-  bingo-requests@0.5.6:
+  bingo-requests@0.7.0:
     dependencies:
       '@octokit/types': 16.0.0
 
-  bingo-stratum@0.8.0(bingo-fs@0.6.0)(bingo-systems@0.7.0)(bingo@0.13.2)(zod@4.6.7):
+  bingo-stratum@0.11.0(bingo-fs@0.8.0)(bingo-systems@0.9.0)(bingo@0.16.0(zod@4.6.7))(zod@4.6.7):
     dependencies:
       all-properties-lazy: 0.1.0
-      bingo: 0.13.2
-      bingo-fs: 0.6.0
-      bingo-systems: 0.7.0
+      bingo: 0.16.0(zod@4.6.7)
+      bingo-fs: 0.8.0
+      bingo-systems: 0.9.0
       cached-factory: 0.3.0
       hash-object: 5.1.0
       octokit: 5.0.5
@@ -15049,31 +15067,32 @@ snapshots:
       without-undefined-properties: 0.1.2
       zod: 4.6.7
 
-  bingo-systems@0.7.0:
+  bingo-systems@0.9.0:
     dependencies:
-      bingo-fs: 0.6.0
-      execa: 9.6.1
-      get-github-auth-token: 0.1.2
+      bingo-fs: 0.8.0
+      execa: 10.2.1
+      get-github-auth-token: 0.2.0
       octokit: 5.0.5
 
-  bingo@0.13.2:
+  bingo@0.16.0(zod@4.6.7):
     dependencies:
       '@clack/prompts': 0.11.0
       all-properties-lazy: 0.1.0
-      bingo-fs: 0.6.0
-      bingo-requests: 0.5.6
-      bingo-systems: 0.7.0
+      bingo-fs: 0.8.0
+      bingo-requests: 0.7.0
+      bingo-systems: 0.9.0
       cached-factory: 0.3.0
       call-id: 0.1.0
-      get-github-auth-token: 0.1.2
+      get-github-auth-token: 0.2.0
       git-url-parse: 16.1.0
       hash-object: 5.1.0
-      hosted-git-info: 9.0.3
-      new-github-repository: 0.2.4
+      hosted-git-info: 10.1.1
+      new-github-repository: 0.2.5
       read-package-up: 12.0.0
       read-pkg: 10.1.0
       slugify: 1.6.9
       without-undefined-properties: 0.1.2
+    optionalDependencies:
       zod: 4.6.7
 
   birpc@2.9.0: {}
@@ -15920,19 +15939,19 @@ snapshots:
 
   events@3.3.0: {}
 
-  execa@9.6.1:
+  execa@10.2.1:
     dependencies:
       '@sindresorhus/merge-streams': 4.0.0
-      cross-spawn: 7.0.6
       figures: 6.1.0
       get-stream: 9.0.1
       human-signals: 8.0.1
       is-plain-obj: 4.1.0
       is-stream: 4.0.1
       npm-run-path: 6.0.0
-      pretty-ms: 9.3.0
+      pretty-ms: 9.3.1
       signal-exit: 4.1.0
       strip-final-newline: 4.0.0
+      which-command: 0.1.0
       yoctocolors: 2.2.0
 
   expect-type@1.4.0: {}
@@ -16079,6 +16098,8 @@ snapshots:
   get-east-asian-width@1.7.0: {}
 
   get-github-auth-token@0.1.2: {}
+
+  get-github-auth-token@0.2.0: {}
 
   get-intrinsic@1.3.0:
     dependencies:
@@ -16291,6 +16312,10 @@ snapshots:
       react-is: 16.13.1
 
   hookable@5.5.3: {}
+
+  hosted-git-info@10.1.1:
+    dependencies:
+      lru-cache: 11.5.3
 
   hosted-git-info@9.0.3:
     dependencies:
@@ -17338,9 +17363,9 @@ snapshots:
       sax: 1.6.1
     optional: true
 
-  new-github-repository@0.2.4:
+  new-github-repository@0.2.5:
     dependencies:
-      '@octokit/openapi-types': 27.0.0
+      '@octokit/openapi-types': 29.0.1
       octokit: 5.0.5
       octokit-from-auth: 0.3.2
 
@@ -17923,7 +17948,7 @@ snapshots:
       ansi-styles: 5.2.0
       react-is: 17.0.2
 
-  pretty-ms@9.3.0:
+  pretty-ms@9.3.1:
     dependencies:
       parse-ms: 4.0.0
 
@@ -19338,6 +19363,31 @@ snapshots:
     transitivePeerDependencies:
       - msw
 
+  vitest@5.1.0(@types/node@26.6.5)(@vitest/browser-preview@5.1.0)(@vitest/coverage-v8@5.1.0)(@vitest/ui@5.1.0)(@voidzero-dev/vite-plus-core@1.5.1(@arethetypeswrong/core@0.18.5)(@types/node@26.6.5)(esbuild@0.28.2)(jiti@2.6.1)(less@4.9.1(supports-color@10.2.2))(publint@0.3.25)(sass@1.105.1)(terser@5.51.2)(typescript@7.0.2)(yaml@2.9.1))(happy-dom@21.0.4):
+    dependencies:
+      '@types/chai': 5.2.3
+      '@vitest/mocker': 5.1.0(@voidzero-dev/vite-plus-core@1.5.1(@arethetypeswrong/core@0.18.5)(@types/node@26.6.5)(esbuild@0.28.2)(jiti@2.6.1)(less@4.9.1(supports-color@10.2.2))(publint@0.3.25)(sass@1.105.1)(terser@5.51.2)(typescript@7.0.2)(yaml@2.9.1))
+      chai: 6.3.0
+      es-module-lexer: 2.3.2
+      expect-type: 1.4.0
+      magic-string: 1.4.3
+      obug: 3.0.0
+      picomatch: 4.0.7
+      std-env: 4.3.0
+      tinybench: 6.2.2
+      tinyexec: 1.3.1
+      tinyglobby: 0.2.17
+      vite: '@voidzero-dev/vite-plus-core@1.5.1(@arethetypeswrong/core@0.18.5)(@types/node@26.6.5)(esbuild@0.28.2)(jiti@2.6.1)(less@4.9.1(supports-color@10.2.2))(publint@0.3.25)(sass@1.105.1)(terser@5.51.2)(typescript@7.0.2)(yaml@2.9.1)'
+      why-is-node-running: 3.2.1
+    optionalDependencies:
+      '@types/node': 26.6.5
+      '@vitest/browser-preview': 5.1.0(@voidzero-dev/vite-plus-core@1.5.1(@arethetypeswrong/core@0.18.5)(@types/node@26.6.5)(esbuild@0.28.2)(jiti@2.6.1)(less@4.9.1(supports-color@10.2.2))(publint@0.3.25)(sass@1.105.1)(terser@5.51.2)(typescript@7.0.2)(yaml@2.9.1))(vitest@5.1.0)
+      '@vitest/coverage-v8': 5.1.0(@vitest/browser@5.1.0)(vitest@5.1.0)
+      '@vitest/ui': 5.1.0(vitest@5.1.0)
+      happy-dom: 21.0.4
+    transitivePeerDependencies:
+      - msw
+
   vue@3.5.44(typescript@6.0.3):
     dependencies:
       '@vue/compiler-dom': 3.5.44
@@ -19424,6 +19474,8 @@ snapshots:
   whatwg-mimetype@3.0.0: {}
 
   whatwg-mimetype@4.0.0: {}
+
+  which-command@0.1.0: {}
 
   which-typed-array@1.1.22:
     dependencies:
