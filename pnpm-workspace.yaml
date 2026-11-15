@@ -185,7 +185,7 @@ catalogs:
     "@angular/platform-browser": 21.2.5
     "@playwright/test": 1.65.1
     rxjs: 7.8.2
-    zod: 3.25.76
+    zod: 4.6.7
 overrides:
   vite@*: "catalog:"
   # next 16.2.10 (auto-installed as @pantoken/next's optional peer) has 3 High CVEs; 16.2.11 patches

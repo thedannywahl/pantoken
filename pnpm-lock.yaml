@@ -233,8 +233,8 @@ catalogs:
       specifier: 7.8.2
       version: 7.8.2
     zod:
-      specifier: 3.25.76
-      version: 3.25.76
+      specifier: 4.6.7
+      version: 4.6.7
   default:
     '@a2ui/web_core':
       specifier: ^0.15.0
@@ -3700,7 +3700,7 @@ importers:
         version: 0.14.0(@a2ui/markdown-it@0.2.2(@a2ui/web_core@0.15.0))(@angular/common@21.2.5(@angular/core@21.2.5(@angular/compiler@22.2.5)(rxjs@7.8.2))(rxjs@7.8.2))(@angular/core@21.2.5(@angular/compiler@22.2.5)(rxjs@7.8.2))(@angular/platform-browser@21.2.5(@angular/common@21.2.5(@angular/core@21.2.5(@angular/compiler@22.2.5)(rxjs@7.8.2))(rxjs@7.8.2))(@angular/core@21.2.5(@angular/compiler@22.2.5)(rxjs@7.8.2)))
       '@a2ui/react':
         specifier: catalog:a2ui-conformance
-        version: 0.15.0(react-dom@19.3.1(react@19.3.1))(react@19.3.1)(zod@3.25.76)
+        version: 0.15.0(react-dom@19.3.1(react@19.3.1))(react@19.3.1)(zod@4.6.7)
       '@a2ui/web_core':
         specifier: catalog:a2ui-conformance
         version: 0.15.0
@@ -3760,7 +3760,7 @@ importers:
         version: 1.5.1(@arethetypeswrong/core@0.18.5)(@types/node@26.6.5)(@vitest/coverage-v8@5.1.0)(@vitest/ui@5.1.0)(esbuild@0.28.2)(happy-dom@21.0.4)(jiti@2.6.1)(less@4.9.1(supports-color@10.2.2))(playwright@1.65.1)(publint@0.3.25)(sass@1.105.1)(svelte@5.57.2(@typescript-eslint/types@8.71.2))(terser@5.51.2)(typescript@7.0.2)(yaml@2.9.1)
       zod:
         specifier: catalog:a2ui-conformance
-        version: 3.25.76
+        version: 4.6.7
 
   tools/aggregate:
     devDependencies:
@@ -11096,7 +11096,7 @@ snapshots:
       dompurify: 3.4.11
       markdown-it: 14.3.2
 
-  '@a2ui/react@0.15.0(react-dom@19.3.1(react@19.3.1))(react@19.3.1)(zod@3.25.76)':
+  '@a2ui/react@0.15.0(react-dom@19.3.1(react@19.3.1))(react@19.3.1)(zod@4.6.7)':
     dependencies:
       '@a2ui/markdown-it': 0.2.2(@a2ui/web_core@0.15.0)
       '@a2ui/web_core': 0.15.0
@@ -11104,7 +11104,7 @@ snapshots:
       markdown-it: 14.3.2
       react: 19.3.1
       react-dom: 19.3.1(react@19.3.1)
-      zod: 3.25.76
+      zod: 4.6.7
 
   '@a2ui/web_core@0.15.0':
     dependencies:
