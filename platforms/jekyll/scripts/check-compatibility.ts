@@ -32,7 +32,7 @@ export function checkCompatibility(version: string, candidate = false): void {
     mkdirSync(join(site, "assets/css"), { recursive: true });
     writeFileSync(
       join(site, "_config.yml"),
-      "title: Pantoken compatibility\nsass:\n  sass_dir: _sass\n",
+      "title: Pantoken compatibility\nkramdown:\n  input: Kramdown\nsass:\n  sass_dir: _sass\n",
     );
     writeFileSync(
       join(site, "index.md"),
@@ -42,7 +42,10 @@ export function checkCompatibility(version: string, candidate = false): void {
       join(site, "_layouts/default.html"),
       '<!doctype html><html><head><link rel="stylesheet" href="/assets/css/pantoken.css"><link rel="stylesheet" href="/assets/css/main.css"></head><body>{{ content }}</body></html>\n',
     );
-    writeFileSync(join(site, "assets/css/main.scss"), '---\n---\n@import "pantoken";\n');
+    writeFileSync(
+      join(site, "assets/css/main.scss"),
+      '---\n---\n@import "/srv/jekyll/_sass/pantoken.scss";\n.pantoken-compatibility { color: $instui-primitive-color-white; }\n',
+    );
     const result = spawnSync(
       "docker",
       [
@@ -53,8 +56,16 @@ export function checkCompatibility(version: string, candidate = false): void {
         `${site}:/srv/jekyll`,
         "--workdir",
         "/srv/jekyll",
-        `jekyll/jekyll:${version}`,
-        "jekyll",
+        "--env",
+        "GEM_HOME=/tmp/pantoken-gems",
+        "--env",
+        `JEKYLL_VERSION=${version}`,
+        "ruby:3.3.10-bookworm",
+        "ruby",
+        "-rrubygems",
+        "-e",
+        'Gem.install("jekyll", ENV.fetch("JEKYLL_VERSION"), document: []); load Gem.bin_path("jekyll", "jekyll", ENV.fetch("JEKYLL_VERSION"))',
+        "--",
         "build",
         "--source",
         "/srv/jekyll",
@@ -71,7 +82,13 @@ export function checkCompatibility(version: string, candidate = false): void {
     }
     const html = readFileSync(join(site, "_site/index.html"), "utf8");
     const sassCss = readFileSync(join(site, "_site/assets/css/main.css"), "utf8");
-    if (!html.includes("Compatibility") || !sassCss.includes("--instui-color-background-brand")) {
+    const tokenCss = readFileSync(join(site, "_site/assets/css/pantoken.css"), "utf8");
+    if (
+      !html.includes("Compatibility") ||
+      !sassCss.includes(".pantoken-compatibility") ||
+      !/color:\s*(?:#fff(?:fff)?|white)\b/iu.test(sassCss) ||
+      !tokenCss.includes("--instui-primitive-color-white")
+    ) {
       throw new Error(`Jekyll ${version} did not build the Pantoken Sass and CSS assets`);
     }
     console.log(`✓ Jekyll ${version}: generated Sass partial compiled into the site`);
