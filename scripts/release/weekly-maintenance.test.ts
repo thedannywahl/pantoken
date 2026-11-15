@@ -184,6 +184,26 @@ test("empty and all-failed batches never invent passing evidence; retries have s
   expect((await partitionMaintenance([upgrade("a")], validate)).failures).toEqual(first.failures);
 });
 
+test("preparation reports already-present base entries without applying or accepting them", async () => {
+  const proposal = {
+    ...upgrade("react"),
+    currentValue: "^18.0.0",
+    newValue: "^19.0.0",
+  };
+  const setup = fixture([proposal]);
+  const result = await prepareMaintenance("a".repeat(40), "b".repeat(40), {
+    mode: "candidate",
+    candidates: [proposal],
+  });
+  expect(result.accepted).toEqual([]);
+  expect(result.unchanged).toEqual([proposal]);
+  expect(result.failures).toEqual([]);
+  expect(Object.keys(result.files).some((file) => file.startsWith(".changeset/"))).toBe(false);
+  expect(
+    setup.commands.some((command) => command.args[0] === "scripts/check-compatibility.ts"),
+  ).toBe(false);
+});
+
 function fixture(
   proposals: MaintenanceUpgrade[] = [],
   adapterFailures: Record<string, string> = {},

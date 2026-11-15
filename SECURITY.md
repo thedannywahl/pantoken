@@ -154,8 +154,11 @@ know what's in place:
   numeric stable version updates; package-manager names, failure policy, package versions,
   scripts, and exports remain protected. Pinned npm alias updates must match the existing upstream
   package identity and version; numeric stable replacements preserve that identity and do not permit
-  alias retargeting. Passing output is published to a proposal-SHA-specific
-  branch, separate from Renovate's input branch. Retries reuse it only when its tree and base parent
+  alias retargeting. Adapter checks select the underlying npm package identity, not the alias name.
+  Entries already present on the immutable base are reported separately and do not grant new
+  compatibility evidence; publication verifies those base values and rejects overlap with accepted
+  or failed updates. Passing output is published to a proposal-SHA-specific branch, separate from
+  Renovate's input branch. Retries reuse it only when its tree and base parent
   exactly match the validated handoff. Failed candidates remain in a separate, non-merging draft with individual
   issues. Tests, not release-feed data, establish compatibility claims.
 - **Resumable maintenance evidence.** Validation groups carry the immutable base and proposal SHAs,

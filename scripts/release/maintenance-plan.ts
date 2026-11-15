@@ -72,6 +72,17 @@ export function maintenanceId(packageName: string, version: string): string {
   return createHash("sha256").update(`${packageName}\n${version}`).digest("hex").slice(0, 20);
 }
 
+/** Select a stable adapter version by underlying npm identity, never by an alias name. */
+export function maintenanceTargetVersion(
+  upgrade: MaintenanceUpgrade,
+  target: string,
+): string | undefined {
+  if (upgrade.manager !== "npm" || (upgrade.packageName ?? upgrade.depName) !== target)
+    return undefined;
+  const version = upgrade.newValue.replace(/^[~^]/u, "");
+  return /^\d+\.\d+\.\d+$/u.test(version) ? version : undefined;
+}
+
 /** Keep dependency families and non-npm edits to the same file atomic during partitioning. */
 export function groupMaintenanceUpgrades(
   upgrades: readonly MaintenanceUpgrade[],
@@ -183,6 +194,42 @@ export function editMaintenanceDependency(source: string, upgrade: MaintenanceUp
   }
   if (!changed) throw new Error(`Manifest proposal does not match ${upgrade.depName}`);
   return `${JSON.stringify(manifest, null, 2)}\n`;
+}
+
+/** Separate npm entries already present on the immutable base from proposed changes. */
+export function classifyMaintenanceUpgrades(
+  upgrades: readonly MaintenanceUpgrade[],
+  readBase: (path: string) => string,
+): { changed: MaintenanceUpgrade[]; unchanged: MaintenanceUpgrade[] } {
+  const changed: MaintenanceUpgrade[] = [];
+  const unchanged: MaintenanceUpgrade[] = [];
+  const sources = new Map<string, string>();
+  for (const upgrade of upgrades) {
+    let same = false;
+    if (upgrade.manager === "npm") {
+      let source = sources.get(upgrade.packageFile);
+      if (source === undefined) {
+        source = readBase(upgrade.packageFile);
+        sources.set(upgrade.packageFile, source);
+      }
+      const parseSource = (value: string): unknown =>
+        upgrade.packageFile.endsWith("pnpm-workspace.yaml")
+          ? parseDocument(value).toJS()
+          : JSON.parse(value);
+      for (const currentValue of [upgrade.currentValue, upgrade.newValue]) {
+        try {
+          const edited = editMaintenanceDependency(source, { ...upgrade, currentValue });
+          same = JSON.stringify(parseSource(source)) === JSON.stringify(parseSource(edited));
+          break;
+        } catch (error) {
+          if (!(error instanceof Error) || !error.message.includes("proposal does not match"))
+            throw error;
+        }
+      }
+    }
+    (same ? unchanged : changed).push(upgrade);
+  }
+  return { changed, unchanged };
 }
 
 /** Upgrade a package's planned bump, never lowering an already required release level. */

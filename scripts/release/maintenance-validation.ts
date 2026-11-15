@@ -14,6 +14,7 @@ import {
 import { join, resolve } from "node:path";
 import { runAsMain } from "./cli.ts";
 import {
+  classifyMaintenanceUpgrades,
   groupMaintenanceUpgrades,
   maintenanceId,
   parseMaintenanceUpgrades,
@@ -29,6 +30,7 @@ export interface MaintenanceValidationPlan {
   proposal: string;
   validator: string;
   groups: Array<{ id: string; upgrades: MaintenanceUpgrade[] }>;
+  unchanged?: MaintenanceUpgrade[];
 }
 
 /** Bounded group evidence; candidate-produced source files are never consumed here. */
@@ -50,11 +52,15 @@ export function maintenanceValidationPlan(
   base: string,
   proposal: string,
   input: unknown,
+  readBase?: (path: string) => string,
 ): MaintenanceValidationPlan {
   assert.match(base, /^[a-f0-9]{40}$/u);
   assert.match(proposal, /^[a-f0-9]{40}$/u);
   const upgrades = parseMaintenanceUpgrades(input);
-  const groups = groupMaintenanceUpgrades(upgrades);
+  const classification = readBase
+    ? classifyMaintenanceUpgrades(upgrades, readBase)
+    : { changed: upgrades, unchanged: [] };
+  const groups = groupMaintenanceUpgrades(classification.changed);
   if (!groups.length) groups.push([]);
   assert.ok(groups.length <= 256, "Maintenance exceeds the matrix job limit");
   return {
@@ -62,6 +68,7 @@ export function maintenanceValidationPlan(
     base,
     proposal,
     validator: `maintenance-v1:${base}`,
+    unchanged: classification.unchanged,
     groups: groups.map((group) => ({
       id: maintenanceId(base, JSON.stringify(group)),
       upgrades: group,
@@ -212,13 +219,16 @@ export async function runMaintenanceValidation(
     base === proposal
       ? []
       : JSON.parse(git(["show", `${proposal}:.renovate/weekly-upgrades.json`])),
+    (file) => git(["show", `${base}:${file}`]),
   );
   mkdirSync(directory, { recursive: true });
   if (action === "plan") {
     writeFileSync(join(directory, "plan.json"), `${JSON.stringify(plan, null, 2)}\n`);
     const matrix = JSON.stringify({ include: plan.groups.map((group) => ({ id: group.id })) });
     if (process.env.GITHUB_OUTPUT) appendFileSync(process.env.GITHUB_OUTPUT, `matrix=${matrix}\n`);
-    console.log(`Planned ${plan.groups.length} atomic validation groups`);
+    console.log(
+      `Planned ${plan.groups.length} atomic validation groups; ${plan.unchanged?.length ?? 0} unchanged entries`,
+    );
   } else if (action === "baseline") {
     await prepareMaintenance(base, proposal, { mode: "candidate", candidates: [] });
     writeFileSync(

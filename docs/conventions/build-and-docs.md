@@ -273,6 +273,14 @@ PR from `maintenance/weekly-passing-<proposal-sha>` so a closed or stale proposa
 with the authenticated publisher. A retry reuses that branch only if its tree and sole parent exactly
 match the current validated result and base.
 
+Npm adapter checks match Renovate's underlying `packageName` (falling back to `depName`), not
+the local alias name. For example, `vite` aliased to Vite+ core must not send a Vite+ version to
+the Vite adapter. Planning and preparation compare npm proposals with the immutable base using
+structured dependency edits. Entries already at the proposed value are reported as unchanged,
+not added to candidate groups, accepted upgrades, or release notes. PRs report accepted dependency
+changes, unchanged base entries, and excluded failures separately. Metadata-only maintenance
+doesn't require new package versions; Changesets still follow actual output and support changes.
+
 The workflow plans immutable coupled groups, runs a clean-baseline preflight, and validates groups
 in a matrix with `max-parallel: 4` and `fail-fast: false`. Each job has its own disposable worktrees
 and no repository-write credentials. A rejected update is recorded as an outcome; transport,
@@ -286,7 +294,7 @@ bisects failures along coupled-group boundaries. Each integration trial regenera
 and runs `vp run @pantoken/docs#docs:check:drift`, so untranslated generated prose is attributed to
 the update group that introduced it. It then runs the full release gates once on the final accepted
 set; full-gate failures still block publication rather than silently dropping checks. Failed-update
-drafts use a per-run/per-attempt branch under `maintenance/failed-updates/`, so a closed draft from a
+drafts use a per-run/per-attempt `maintenance/failed-updates-run-<run>-<attempt>` branch, so a closed draft from a
 previous run can't collide with a later publication; the merge policy rejects that whole namespace.
 The existing publisher still rejects an advanced `main` and requires final-head PR CI before
 auto-merge.
