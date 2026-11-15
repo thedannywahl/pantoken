@@ -99,7 +99,11 @@ test("rejects impostors, fork branches, other bases, and unrecognized reserved b
     },
   ])
     expect(automationPolicy(candidate, [], options)).not.toBeNull();
-  for (const ref of ["maintenance/failed-updates", "maintenance/failed-updates/200-1"])
+  for (const ref of [
+    "maintenance/failed-updates",
+    "maintenance/failed-updates/200-1",
+    "maintenance/failed-updates-run-200-1",
+  ])
     expect(automationPolicy(pr(ref), [], options)).toContain("cannot merge");
 });
 

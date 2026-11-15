@@ -34,7 +34,9 @@ export function automationPolicy(
 ): string | null {
   const head = pr.head.ref;
   const failed =
-    head === "maintenance/failed-updates" || head.startsWith("maintenance/failed-updates/");
+    head === "maintenance/failed-updates" ||
+    head.startsWith("maintenance/failed-updates/") ||
+    head.startsWith("maintenance/failed-updates-run-");
   if (failed)
     return "Failed maintenance candidates cannot merge; fix or split the failing updates first.";
   const component =
