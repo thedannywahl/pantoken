@@ -1,0 +1,691 @@
+[
+  {
+    "id": "d79eda0b02b863b896c9",
+    "kind": "deferred",
+    "package": "@pantoken/postcss",
+    "version": "discovery",
+    "error": "Deferred release 8.5.33: missing timestamp or minimum release age",
+    "upgrades": []
+  },
+  {
+    "id": "90b364b516d5b2572904",
+    "kind": "deferred",
+    "package": "@pantoken/vite",
+    "version": "discovery",
+    "error": "Deferred release 8.3.8: missing timestamp or minimum release age",
+    "upgrades": []
+  },
+  {
+    "id": "28fbb963a58964d89449",
+    "kind": "deferred",
+    "package": "@pantoken/hugo",
+    "version": "discovery",
+    "error": "Deferred release 0.170.0: missing timestamp or minimum release age",
+    "upgrades": []
+  },
+  {
+    "id": "f9dc32b5d8a63fd77093",
+    "kind": "infrastructure",
+    "package": "@pantoken/jekyll",
+    "version": "3.9.4",
+    "error": "/home/runner/.local/share/vite-plus/js_runtime/node/26.13.1/bin/node scripts/check-compatibility.ts 3.9.4 failed: file:///tmp/pantoken-weekly-lZSV2g/candidate-1/platforms/jekyll/scripts/check-compatibility.ts:67\n      throw new Error(\n            ^\n\nError: Unable to find image 'jekyll/jekyll:3.9.4' locally\ndocker: Error response from daemon: failed to resolve reference \"docker.io/jekyll/jekyll:3.9.4\": docker.io/jekyll/jekyll:3.9.4: not found\n\nRun 'docker run --help' for more information\n\n    at checkCompatibility (file:///tmp/pantoken-weekly-lZSV2g/candidate-1/platforms/jekyll/scripts/check-compatibility.ts:67:13)\n    at file:///tmp/pantoken-weekly-lZSV2g/candidate-1/platforms/jekyll/scripts/check-compatibility.ts:85:5\n    at ModuleJob.run (node:internal/modules/esm/module_job:569:25)\n    at async node:internal/modules/esm/loader:650:26\n    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:105:5)\n\nNode.js v26.13.1\n\n\nexit 1",
+    "upgrades": []
+  },
+  {
+    "id": "0706b629187878970396",
+    "kind": "deferred",
+    "package": "@pantoken/angular",
+    "version": "discovery",
+    "error": "Deferred release 22.2.6: missing timestamp or minimum release age",
+    "upgrades": []
+  },
+  {
+    "id": "ac7fc985edd1a8f8a2ae",
+    "kind": "deferred",
+    "package": "@pantoken/astro",
+    "version": "discovery",
+    "error": "Deferred release 0.43.1: missing timestamp or minimum release age",
+    "upgrades": []
+  },
+  {
+    "id": "0aec58aa93112bf942d8",
+    "kind": "deferred",
+    "package": "@pantoken/bootstrap",
+    "version": "discovery",
+    "error": "Deferred release 5.3.9: missing timestamp or minimum release age",
+    "upgrades": []
+  },
+  {
+    "id": "51c0adc8ae7e22cf8de5",
+    "kind": "deferred",
+    "package": "@pantoken/mintlify",
+    "version": "discovery",
+    "error": "Deferred release 4.1.34: missing timestamp or minimum release age",
+    "upgrades": []
+  },
+  {
+    "id": "e9ab03595d41012dc840",
+    "kind": "deferred",
+    "package": "@pantoken/tinymce",
+    "version": "discovery",
+    "error": "Deferred release 8.10.2: missing timestamp or minimum release age",
+    "upgrades": []
+  },
+  {
+    "id": "c82cdd293406c453392d",
+    "package": "@angular/common",
+    "version": "22.2.5",
+    "error": "vp run -r --concurrency-limit 1 build failed: backs below and from callbacks under 1s.\n1 callback is listed without a time. Its calls overlapped, so the time inside one call includes work from other calls. To find its cost, profile the build with `node --cpu-prof`:\n  - plugin rolldown-plugin-dts:resolver resolveId (8 calls)\nSee https://rolldown.rs/reference/InputOptions.checks#bundlertimings for more details.\n\n[PLUGIN_TIMINGS] JavaScript callbacks ran for 4.4s of this 4.4s build (100%).\nThe slowest callbacks, timed inside each callback (the wait before a callback starts is excluded, the time it awaits is included):\n  - plugin @codecov/vite-plugin writeBundle (97%, 4.2s, 1 call)\nAdditional callback time came from the callbacks below and from callbacks under 1s.\n3 callbacks are listed without a time. Their calls overlapped, so the time inside one call includes work from other calls. To find their cost, profile the build with `node --cpu-prof`:\n  - plugin tsdown:deps resolveId (31 calls)\n  - plugin rolldown-plugin-dts:resolver resolveId (36 calls)\n  - plugin rolldown-plugin-dts:fake-js transform (8 calls)\nSee https://rolldown.rs/reference/InputOptions.checks#bundlertimings for more details.\n\n[PLUGIN_TIMINGS] JavaScript callbacks ran for 4.3s of this 4.3s build (100%).\nThe slowest callbacks, timed inside each callback (the wait before a callback starts is excluded, the time it awaits is included):\n  - plugin @codecov/vite-plugin writeBundle (99%, 4.3s, 1 call)\nAdditional callback time came from the callbacks below and from callbacks under 1s.\n2 callbacks are listed without a time. Their calls overlapped, so the time inside one call includes work from other calls. To find their cost, profile the build with `node --cpu-prof`:\n  - plugin tsdown:deps resolveId (50 calls)\n  - plugin rolldown-plugin-dts:resolver resolveId (4 calls)\nSee https://rolldown.rs/reference/InputOptions.checks#bundlertimings for more details.\n\n[PLUGIN_TIMINGS] JavaScript callbacks ran for 4.1s of this 4.1s build (100%).\nThe slowest callbacks, timed inside each callback (the wait before a callback starts is excluded, the time it awaits is included):\n  - plugin @codecov/vite-plugin writeBundle (99%, 4.1s, 1 call)\nAdditional callback time came from the callbacks below and from callbacks under 1s.\n3 callbacks are listed without a time. Their calls overlapped, so the time inside one call includes work from other calls. To find their cost, profile the build with `node --cpu-prof`:\n  - plugin rolldown-plugin-dts:resolver resolveId (20 calls)\n  - plugin tsdown:deps resolveId (28 calls)\n  - plugin rolldown-plugin-dts:fake-js transform (3 calls)\nSee https://rolldown.rs/reference/InputOptions.checks#bundlertimings for more details.\n\n[PLUGIN_TIMINGS] JavaScript callbacks ran for 4.4s of this 4.4s build (100%).\nThe slowest callbacks, timed inside each callback (the wait before a callback starts is excluded, the time it awaits is included):\n  - plugin @codecov/vite-plugin writeBundle (95%, 4.2s, 1 call)\nAdditional callback time came from the callbacks below and from callbacks under 1s.\n3 callbacks are listed without a time. Their calls overlapped, so the time inside one call includes work from other calls. To find their cost, profile the build with `node --cpu-prof`:\n  - plugin rolldown-plugin-dts:resolver resolveId (350 calls)\n  - plugin rolldown-plugin-dts:fake-js transform (68 calls)\n  - plugin tsdown:deps resolveId (743 calls)\nSee https://rolldown.rs/reference/InputOptions.checks#bundlertimings for more details.\n\n✗ Build failed in 691ms\nerror during build:\nBuild failed with 4 errors:\n\n[MISSING_EXPORT] \"Service\" is not exported by \"../../node_modules/.pnpm/@angular+core@21.2.5_@angular+compiler@22.2.5_rxjs@7.8.2/node_modules/@angular/core/fesm2022/core.mjs\".\n - Missing export in ../../node_modules/.pnpm/@angular+common@22.2.5_@angular+core@21.2.5_@angular+compiler@22.2.5_rxjs@7.8.2__rxjs@7.8.2/node_modules/@angular/common/fesm2022/common.mjs at 1972..1979\n\n[MISSING_EXPORT] \"Service\" is not exported by \"../../node_modules/.pnpm/@angular+core@21.2.5_@angular+compiler@22.2.5_rxjs@7.8.2/node_modules/@angular/core/fesm2022/core.mjs\".\n   ╭─[ ../../node_modules/.pnpm/@angular+common@22.2.5_@angular+core@21.2.5_@angular+compiler@22.2.5_rxjs@7.8.2__rxjs@7.8.2/node_modules/@angular/common/fesm2022/_module-chunk.mjs:8:130 ]\n   │\n 8 │ import { ɵRuntimeError as _RuntimeError, InjectionToken, inject, NgZone, DestroyRef, ɵformatRuntimeError as _formatRuntimeError, Service, EnvironmentInjector, runInInjectionContext, DOCUMENT, Injectable, PendingTasks, ɵConsole as _Console, untracked, CSP_NONCE, Inject, ɵTracingService as _TracingService, makeEnvironmentProviders, NgModule } from '@angular/core';\n   │                                                                                                                                  ───┬───  \n   │                                                                                                                                     ╰───── Missing export\n───╯\n\n[MISSING_EXPORT] \"Service\" is not exported by \"../../node_modules/.pnpm/@angular+core@21.2.5_@angular+compiler@22.2.5_rxjs@7.8.2/node_modules/@angular/core/fesm2022/core.mjs\".\n   ╭─[ ../../node_modules/.pnpm/@angular+common@22.2.5_@angular+core@21.2.5_@angular+compiler@22.2.5_rxjs@7.8.2__rxjs@7.8.2/node_modules/@angular/common/fesm2022/_xhr-chunk.mjs:8:10 ]\n   │\n 8 │ import { Service, Injectable } from '@angular/core';\n   │          ───┬───  \n   │             ╰───── Missing export\n───╯\n\n[MISSING_EXPORT] \"Service\" is not exported by \"../../node_modules/.pnpm/@angular+core@21.2.5_@angular+compiler@22.2.5_rxjs@7.8.2/node_modules/@angular/core/fesm2022/core.mjs\".\n - Missing export in ../../node_modules/.pnpm/@angular+common@22.2.5_@angular+core@21.2.5_@angular+compiler@22.2.5_rxjs@7.8.2__rxjs@7.8.2/node_modules/@angular/common/fesm2022/_common_module-chunk.mjs at 450..457\n\n    at aggregateBindingErrorsIntoJsError (file:///tmp/pantoken-weekly-A8qba7/candidate-1/node_modules/.pnpm/@voidzero-dev+vite-plus-core@1.2.0_@arethetypeswrong+core@0.18.5_@types+node@26.6.5_esb_3a6b14baa17636cbe44628037fc501f0/node_modules/@voidzero-dev/vite-plus-core/dist/rolldown/shared/error-Dsqzw0Oa.mjs:49:18)\n    at unwrapBindingResult (file:///tmp/pantoken-weekly-A8qba7/candidate-1/node_modules/.pnpm/@voidzero-dev+vite-plus-core@1.2.0_@arethetypeswrong+core@0.18.5_@types+node@26.6.5_esb_3a6b14baa17636cbe44628037fc501f0/node_modules/@voidzero-dev/vite-plus-core/dist/rolldown/shared/error-Dsqzw0Oa.mjs:19:128)\n    at #build (file:///tmp/pantoken-weekly-A8qba7/candidate-1/node_modules/.pnpm/@voidzero-dev+vite-plus-core@1.2.0_@arethetypeswrong+core@0.18.5_@types+node@26.6.5_esb_3a6b14baa17636cbe44628037fc501f0/node_modules/@voidzero-dev/vite-plus-core/dist/rolldown/shared/rolldown-C8QomUuX.mjs:133:34)\n    at async buildEnvironment (file:///tmp/pantoken-weekly-A8qba7/candidate-1/node_modules/.pnpm/@voidzero-dev+vite-plus-core@1.2.0_@arethetypeswrong+core@0.18.5_@types+node@26.6.5_esb_3a6b14baa17636cbe44628037fc501f0/node_modules/@voidzero-dev/vite-plus-core/dist/vite/node/chunks/node.js:40080:66)\n    at async Object.build (file:///tmp/pantoken-weekly-A8qba7/candidate-1/node_modules/.pnpm/@voidzero-dev+vite-plus-core@1.2.0_@arethetypeswrong+core@0.18.5_@types+node@26.6.5_esb_3a6b14baa17636cbe44628037fc501f0/node_modules/@voidzero-dev/vite-plus-core/dist/vite/node/chunks/node.js:40501:19)\n    at async Object.buildApp (file:///tmp/pantoken-weekly-A8qba7/candidate-1/node_modules/.pnpm/@voidzero-dev+vite-plus-core@1.2.0_@arethetypeswrong+core@0.18.5_@types+node@26.6.5_esb_3a6b14baa17636cbe44628037fc501f0/node_modules/@voidzero-dev/vite-plus-core/dist/vite/node/chunks/node.js:40498:153)\n    at async CAC.<anonymous> (file:///tmp/pantoken-weekly-A8qba7/candidate-1/node_modules/.pnpm/@voidzero-dev+vite-plus-core@1.2.0_@arethetypeswrong+core@0.18.5_@types+node@26.6.5_esb_3a6b14baa17636cbe44628037fc501f0/node_modules/@voidzero-dev/vite-plus-core/dist/vite/node/cli.js:783:3) {\n  errors: [Getter/Setter]\n}\n\nt/layouts.d.mts            0.04 kB │ gzip: 0.06 kB\nℹ dist/react-markdown.d.mts     0.04 kB │ gzip: 0.06 kB\nℹ dist/webComponents.d.mts      0.04 kB │ gzip: 0.06 kB\nℹ dist/colors.d.mts             0.04 kB │ gzip: 0.06 kB\nℹ dist/interactions.d.mts       0.04 kB │ gzip: 0.06 kB\nℹ dist/logos.d.mts              0.04 kB │ gzip: 0.06 kB\nℹ dist/reactNative.d.mts        0.04 kB │ gzip: 0.06 kB\nℹ dist/markdown-it.d.mts        0.04 kB │ gzip: 0.06 kB\nℹ dist/components.d.mts         0.04 kB │ gzip: 0.06 kB\nℹ dist/docusaurus.d.mts         0.04 kB │ gzip: 0.06 kB\nℹ dist/foundation.d.mts         0.04 kB │ gzip: 0.06 kB\nℹ dist/bootstrap.d.mts          0.04 kB │ gzip: 0.06 kB\nℹ dist/cssInJs.d.mts            0.04 kB │ gzip: 0.06 kB\nℹ dist/storybook.d.mts          0.04 kB │ gzip: 0.06 kB\nℹ dist/vitepress.d.mts          0.04 kB │ gzip: 0.06 kB\nℹ dist/wordpress.d.mts          0.04 kB │ gzip: 0.06 kB\nℹ dist/mintlify.d.mts           0.04 kB │ gzip: 0.06 kB\nℹ dist/swatches.d.mts           0.04 kB │ gzip: 0.06 kB\nℹ dist/tailwind.d.mts           0.04 kB │ gzip: 0.06 kB\nℹ dist/android.d.mts            0.03 kB │ gzip: 0.05 kB\nℹ dist/angular.d.mts            0.03 kB │ gzip: 0.05 kB\nℹ dist/compose.d.mts            0.03 kB │ gzip: 0.05 kB\nℹ dist/flutter.d.mts            0.03 kB │ gzip: 0.05 kB\nℹ dist/postcss.d.mts            0.03 kB │ gzip: 0.05 kB\nℹ dist/tinymce.d.mts            0.03 kB │ gzip: 0.05 kB\nℹ dist/vanilla.d.mts            0.03 kB │ gzip: 0.05 kB\nℹ dist/webpack.d.mts            0.03 kB │ gzip: 0.05 kB\nℹ dist/drupal.d.mts             0.03 kB │ gzip: 0.05 kB\nℹ dist/jekyll.d.mts             0.03 kB │ gzip: 0.05 kB\nℹ dist/rehype.d.mts             0.03 kB │ gzip: 0.05 kB\nℹ dist/shadcn.d.mts             0.03 kB │ gzip: 0.05 kB\nℹ dist/stylus.d.mts             0.03 kB │ gzip: 0.05 kB\nℹ dist/svelte.d.mts             0.03 kB │ gzip: 0.05 kB\nℹ dist/tokens.d.mts             0.03 kB │ gzip: 0.05 kB\nℹ dist/astro.d.mts              0.03 kB │ gzip: 0.05 kB\nℹ dist/email.d.mts              0.03 kB │ gzip: 0.05 kB\nℹ dist/figma.d.mts              0.03 kB │ gzip: 0.05 kB\nℹ dist/icons.d.mts              0.03 kB │ gzip: 0.05 kB\nℹ dist/panda.d.mts              0.03 kB │ gzip: 0.05 kB\nℹ dist/pendo.d.mts              0.03 kB │ gzip: 0.05 kB\nℹ dist/react.d.mts              0.03 kB │ gzip: 0.05 kB\nℹ dist/scope.d.mts              0.03 kB │ gzip: 0.05 kB\nℹ dist/swift.d.mts              0.03 kB │ gzip: 0.05 kB\nℹ dist/dtcg.d.mts               0.03 kB │ gzip: 0.05 kB\nℹ dist/hugo.d.mts               0.03 kB │ gzip: 0.05 kB\nℹ dist/less.d.mts               0.03 kB │ gzip: 0.05 kB\nℹ dist/next.d.mts               0.03 kB │ gzip: 0.05 kB\nℹ dist/scss.d.mts               0.03 kB │ gzip: 0.05 kB\nℹ dist/vite.d.mts               0.03 kB │ gzip: 0.05 kB\nℹ dist/cli.d.mts                0.03 kB │ gzip: 0.05 kB\nℹ dist/mui.d.mts                0.03 kB │ gzip: 0.05 kB\nℹ dist/vue.d.mts                0.03 kB │ gzip: 0.05 kB\nℹ 136 files, total: 10.99 kB\n[codecov] Detecting CI provider\n[codecov] Detected CI provider: Local\n[codecov] Attempting to fetch `get-pre-signed-url`, attempt: 1\n[codecov] `get-pre-signed-url` fetch attempt 1 failed\n[codecov] Attempting to fetch `get-pre-signed-url`, attempt: 2\n[codecov] `get-pre-signed-url` fetch attempt 2 failed\n[codecov] Attempting to fetch `get-pre-signed-url`, attempt: 3\n[codecov] `get-pre-signed-url` fetch attempt 3 failed\n[codecov] `get-pre-signed-url` failed after 3 attempts\n[codecov] Failed to get pre-signed URL, bad response: \"400 - \"\n✔ Build complete in 4455ms\n\n~/packages/pantoken$ node scripts/generate-custom-data.ts\npantoken meta: generated VS Code custom data and cssdoc model (687 class entries, 4951 token properties, 88 model entries)\n\n~/tools/a2ui-conformance$ vp build\ntransforming...\n✓ 601 modules transformed.\nrendering chunks...\n\n---\nvp run: 4/176 cache hit (2%), 175/176 successful, 18.49s saved. @pantoken/vitepress-sidebar-toggle#build (and 8 more) not cached because they modified their inputs. (Run `vp run --last-details` for full details)\n\nexit 1",
+    "upgrades": [
+      {
+        "depName": "@angular/common",
+        "packageName": "@angular/common",
+        "packageFile": "pnpm-workspace.yaml",
+        "manager": "npm",
+        "newValue": "22.2.5",
+        "currentValue": "21.2.5",
+        "newDigest": "sha512-8yRucwXK0pl+Y7d9rjz9Ml5Lp4OliOc+OTqIhy8X14vsQvn3eJ4fhDBL0Nk2YKKYE9j05X2YtARpX783av4odw=="
+      }
+    ]
+  },
+  {
+    "id": "daa8e488958e974ed750",
+    "package": "@angular/core",
+    "version": "22.2.5",
+    "error": "/home/runner/.local/share/vite-plus/js_runtime/node/26.13.1/bin/node scripts/check-compatibility.ts 22.2.5 failed: file:///tmp/pantoken-weekly-OBiZLr/candidate-1/renderers/angular/scripts/check-compatibility.ts:89\n      throw new Error(\"Use --version <angular> --typescript <typescript> --zone <zone.js>\");\n            ^\n\nError: Use --version <angular> --typescript <typescript> --zone <zone.js>\n    at file:///tmp/pantoken-weekly-OBiZLr/candidate-1/renderers/angular/scripts/check-compatibility.ts:89:13\n    at ModuleJob.run (node:internal/modules/esm/module_job:569:25)\n    at async node:internal/modules/esm/loader:650:26\n    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:105:5)\n\nNode.js v26.13.1\n\n\nexit 1",
+    "upgrades": [
+      {
+        "depName": "@angular/core",
+        "packageName": "@angular/core",
+        "packageFile": "pnpm-workspace.yaml",
+        "manager": "npm",
+        "newValue": "22.2.5",
+        "currentValue": "21.2.5",
+        "newDigest": "sha512-IW0zRxqii+otvrAlDRLhUF+cxSQvJsKy30Yiv2Fz2LXCI9da4bEnHhssNRrLYDz7Otkr4XKdHEXav/kFO5Hj3g=="
+      }
+    ]
+  },
+  {
+    "id": "26bc3a8b9db18a92b369",
+    "package": "@angular/platform-browser",
+    "version": "22.2.5",
+    "error": "vp run -r --concurrency-limit 1 build failed: in @codecov/vite-plugin writeBundle (98%, 4.0s, 1 call)\nAdditional callback time came from the callbacks below and from callbacks under 1s.\n3 callbacks are listed without a time. Their calls overlapped, so the time inside one call includes work from other calls. To find their cost, profile the build with `node --cpu-prof`:\n  - plugin tsdown:deps resolveId (31 calls)\n  - plugin rolldown-plugin-dts:resolver resolveId (36 calls)\n  - plugin rolldown-plugin-dts:fake-js transform (8 calls)\nSee https://rolldown.rs/reference/InputOptions.checks#bundlertimings for more details.\n\n[PLUGIN_TIMINGS] JavaScript callbacks ran for 3.9s of this 3.9s build (100%).\nThe slowest callbacks, timed inside each callback (the wait before a callback starts is excluded, the time it awaits is included):\n  - plugin @codecov/vite-plugin writeBundle (99%, 3.9s, 1 call)\nAdditional callback time came from the callbacks below and from callbacks under 1s.\n2 callbacks are listed without a time. Their calls overlapped, so the time inside one call includes work from other calls. To find their cost, profile the build with `node --cpu-prof`:\n  - plugin tsdown:deps resolveId (50 calls)\n  - plugin rolldown-plugin-dts:resolver resolveId (4 calls)\nSee https://rolldown.rs/reference/InputOptions.checks#bundlertimings for more details.\n\n[PLUGIN_TIMINGS] JavaScript callbacks ran for 3.8s of this 3.8s build (100%).\nThe slowest callbacks, timed inside each callback (the wait before a callback starts is excluded, the time it awaits is included):\n  - plugin @codecov/vite-plugin writeBundle (99%, 3.8s, 1 call)\nAdditional callback time came from the callbacks below and from callbacks under 1s.\n2 callbacks are listed without a time. Their calls overlapped, so the time inside one call includes work from other calls. To find their cost, profile the build with `node --cpu-prof`:\n  - plugin rolldown-plugin-dts:resolver resolveId (20 calls)\n  - plugin rolldown-plugin-dts:fake-js transform (3 calls)\nSee https://rolldown.rs/reference/InputOptions.checks#bundlertimings for more details.\n\n[PLUGIN_TIMINGS] JavaScript callbacks ran for 4.1s of this 4.1s build (100%).\nThe slowest callbacks, timed inside each callback (the wait before a callback starts is excluded, the time it awaits is included):\n  - plugin @codecov/vite-plugin writeBundle (96%, 3.9s, 1 call)\nAdditional callback time came from the callbacks below and from callbacks under 1s.\n3 callbacks are listed without a time. Their calls overlapped, so the time inside one call includes work from other calls. To find their cost, profile the build with `node --cpu-prof`:\n  - plugin rolldown-plugin-dts:resolver resolveId (350 calls)\n  - plugin rolldown-plugin-dts:fake-js transform (68 calls)\n  - plugin tsdown:deps resolveId (743 calls)\nSee https://rolldown.rs/reference/InputOptions.checks#bundlertimings for more details.\n\n✗ Build failed in 521ms\nerror during build:\nBuild failed with 6 errors:\n\n[MISSING_EXPORT] \"Service\" is not exported by \"../../node_modules/.pnpm/@angular+core@21.2.5_@angular+compiler@22.2.5_rxjs@7.8.2/node_modules/@angular/core/fesm2022/core.mjs\".\n - Missing export in ../../node_modules/.pnpm/@angular+platform-browser@22.2.5_@angular+common@21.2.5_@angular+core@21.2.5_@angular+c_881772bbbb516ed28b2a03b4954d1a7e/node_modules/@angular/platform-browser/fesm2022/platform-browser.mjs at 574..581\n\n[MISSING_EXPORT] \"ɵCACHE_ACTIVE\" is not exported by \"../../node_modules/.pnpm/@angular+core@21.2.5_@angular+compiler@22.2.5_rxjs@7.8.2/node_modules/@angular/core/fesm2022/core.mjs\".\n - Missing export in ../../node_modules/.pnpm/@angular+platform-browser@22.2.5_@angular+common@21.2.5_@angular+core@21.2.5_@angular+c_881772bbbb516ed28b2a03b4954d1a7e/node_modules/@angular/platform-browser/fesm2022/platform-browser.mjs at 666..680\n\n[MISSING_EXPORT] \"ɵSHARED_STYLES_HOST\" is not exported by \"../../node_modules/.pnpm/@angular+core@21.2.5_@angular+compiler@22.2.5_rxjs@7.8.2/node_modules/@angular/core/fesm2022/core.mjs\".\n - Missing export in ../../node_modules/.pnpm/@angular+platform-browser@22.2.5_@angular+common@21.2.5_@angular+core@21.2.5_@angular+c_881772bbbb516ed28b2a03b4954d1a7e/node_modules/@angular/platform-browser/fesm2022/_browser-chunk.mjs at 556..576\n\n[MISSING_EXPORT] \"ɵUSE_PENDING_TASKS\" is not exported by \"../../node_modules/.pnpm/@angular+core@21.2.5_@angular+compiler@22.2.5_rxjs@7.8.2/node_modules/@angular/core/fesm2022/core.mjs\".\n - Missing export in ../../node_modules/.pnpm/@angular+platform-browser@22.2.5_@angular+common@21.2.5_@angular+core@21.2.5_@angular+c_881772bbbb516ed28b2a03b4954d1a7e/node_modules/@angular/platform-browser/fesm2022/_browser-chunk.mjs at 868..887\n\n[MISSING_EXPORT] \"ɵSHARED_STYLES_HOST\" is not exported by \"../../node_modules/.pnpm/@angular+core@21.2.5_@angular+compiler@22.2.5_rxjs@7.8.2/node_modules/@angular/core/fesm2022/core.mjs\".\n   ╭─[ ../../node_modules/.pnpm/@angular+platform-browser@22.2.5_@angular+common@21.2.5_@angular+core@21.2.5_@angular+c_881772bbbb516ed28b2a03b4954d1a7e/node_modules/@angular/platform-browser/fesm2022/_dom_renderer-chunk.mjs:9:165 ]\n   │\n 9 │ import { Inject, Injectable, InjectionToken, ɵRuntimeError as _RuntimeError, APP_ID, CSP_NONCE, PLATFORM_ID, Optional, makeEnvironmentProviders, ViewEncapsulation, ɵSHARED_STYLES_HOST as _SHARED_STYLES_HOST, ɵTracingService as _TracingService, ɵdescribeDomNode as _describeDomNode, RendererStyleFlags2, ɵallLeavingAnimations as _allLeavingAnimations } from '@angular/core';\n   │                                                                                                                                                                     ─────────┬─────────  \n   │                                                                                                                                                                              ╰─────────── Missing export\n───╯\n\n...\n    at aggregateBindingErrorsIntoJsError (file:///tmp/pantoken-weekly-Bgqfp2/candidate-1/node_modules/.pnpm/@voidzero-dev+vite-plus-core@1.2.0_@arethetypeswrong+core@0.18.5_@types+node@26.6.5_esb_3a6b14baa17636cbe44628037fc501f0/node_modules/@voidzero-dev/vite-plus-core/dist/rolldown/shared/error-Dsqzw0Oa.mjs:49:18)\n    at unwrapBindingResult (file:///tmp/pantoken-weekly-Bgqfp2/candidate-1/node_modules/.pnpm/@voidzero-dev+vite-plus-core@1.2.0_@arethetypeswrong+core@0.18.5_@types+node@26.6.5_esb_3a6b14baa17636cbe44628037fc501f0/node_modules/@voidzero-dev/vite-plus-core/dist/rolldown/shared/error-Dsqzw0Oa.mjs:19:128)\n    at #build (file:///tmp/pantoken-weekly-Bgqfp2/candidate-1/node_modules/.pnpm/@voidzero-dev+vite-plus-core@1.2.0_@arethetypeswrong+core@0.18.5_@types+node@26.6.5_esb_3a6b14baa17636cbe44628037fc501f0/node_modules/@voidzero-dev/vite-plus-core/dist/rolldown/shared/rolldown-C8QomUuX.mjs:133:34)\n    at async buildEnvironment (file:///tmp/pantoken-weekly-Bgqfp2/candidate-1/node_modules/.pnpm/@voidzero-dev+vite-plus-core@1.2.0_@arethetypeswrong+core@0.18.5_@types+node@26.6.5_esb_3a6b14baa17636cbe44628037fc501f0/node_modules/@voidzero-dev/vite-plus-core/dist/vite/node/chunks/node.js:40080:66)\n    at async Object.build (file:///tmp/pantoken-weekly-Bgqfp2/candidate-1/node_modules/.pnpm/@voidzero-dev+vite-plus-core@1.2.0_@arethetypeswrong+core@0.18.5_@types+node@26.6.5_esb_3a6b14baa17636cbe44628037fc501f0/node_modules/@voidzero-dev/vite-plus-core/dist/vite/node/chunks/node.js:40501:19)\n    at async Object.buildApp (file:///tmp/pantoken-weekly-Bgqfp2/candidate-1/node_modules/.pnpm/@voidzero-dev+vite-plus-core@1.2.0_@arethetypeswrong+core@0.18.5_@types+node@26.6.5_esb_3a6b14baa17636cbe44628037fc501f0/node_modules/@voidzero-dev/vite-plus-core/dist/vite/node/chunks/node.js:40498:153)\n    at async CAC.<anonymous> (file:///tmp/pantoken-weekly-Bgqfp2/candidate-1/node_modules/.pnpm/@voidzero-dev+vite-plus-core@1.2.0_@arethetypeswrong+core@0.18.5_@types+node@26.6.5_esb_3a6b14baa17636cbe44628037fc501f0/node_modules/@voidzero-dev/vite-plus-core/dist/vite/node/cli.js:783:3) {\n  errors: [Getter/Setter]\n}\n\nt/layouts.d.mts            0.04 kB │ gzip: 0.06 kB\nℹ dist/react-markdown.d.mts     0.04 kB │ gzip: 0.06 kB\nℹ dist/webComponents.d.mts      0.04 kB │ gzip: 0.06 kB\nℹ dist/colors.d.mts             0.04 kB │ gzip: 0.06 kB\nℹ dist/interactions.d.mts       0.04 kB │ gzip: 0.06 kB\nℹ dist/logos.d.mts              0.04 kB │ gzip: 0.06 kB\nℹ dist/reactNative.d.mts        0.04 kB │ gzip: 0.06 kB\nℹ dist/markdown-it.d.mts        0.04 kB │ gzip: 0.06 kB\nℹ dist/components.d.mts         0.04 kB │ gzip: 0.06 kB\nℹ dist/docusaurus.d.mts         0.04 kB │ gzip: 0.06 kB\nℹ dist/foundation.d.mts         0.04 kB │ gzip: 0.06 kB\nℹ dist/bootstrap.d.mts          0.04 kB │ gzip: 0.06 kB\nℹ dist/cssInJs.d.mts            0.04 kB │ gzip: 0.06 kB\nℹ dist/storybook.d.mts          0.04 kB │ gzip: 0.06 kB\nℹ dist/vitepress.d.mts          0.04 kB │ gzip: 0.06 kB\nℹ dist/wordpress.d.mts          0.04 kB │ gzip: 0.06 kB\nℹ dist/mintlify.d.mts           0.04 kB │ gzip: 0.06 kB\nℹ dist/swatches.d.mts           0.04 kB │ gzip: 0.06 kB\nℹ dist/tailwind.d.mts           0.04 kB │ gzip: 0.06 kB\nℹ dist/android.d.mts            0.03 kB │ gzip: 0.05 kB\nℹ dist/angular.d.mts            0.03 kB │ gzip: 0.05 kB\nℹ dist/compose.d.mts            0.03 kB │ gzip: 0.05 kB\nℹ dist/flutter.d.mts            0.03 kB │ gzip: 0.05 kB\nℹ dist/postcss.d.mts            0.03 kB │ gzip: 0.05 kB\nℹ dist/tinymce.d.mts            0.03 kB │ gzip: 0.05 kB\nℹ dist/vanilla.d.mts            0.03 kB │ gzip: 0.05 kB\nℹ dist/webpack.d.mts            0.03 kB │ gzip: 0.05 kB\nℹ dist/drupal.d.mts             0.03 kB │ gzip: 0.05 kB\nℹ dist/jekyll.d.mts             0.03 kB │ gzip: 0.05 kB\nℹ dist/rehype.d.mts             0.03 kB │ gzip: 0.05 kB\nℹ dist/shadcn.d.mts             0.03 kB │ gzip: 0.05 kB\nℹ dist/stylus.d.mts             0.03 kB │ gzip: 0.05 kB\nℹ dist/svelte.d.mts             0.03 kB │ gzip: 0.05 kB\nℹ dist/tokens.d.mts             0.03 kB │ gzip: 0.05 kB\nℹ dist/astro.d.mts              0.03 kB │ gzip: 0.05 kB\nℹ dist/email.d.mts              0.03 kB │ gzip: 0.05 kB\nℹ dist/figma.d.mts              0.03 kB │ gzip: 0.05 kB\nℹ dist/icons.d.mts              0.03 kB │ gzip: 0.05 kB\nℹ dist/panda.d.mts              0.03 kB │ gzip: 0.05 kB\nℹ dist/pendo.d.mts              0.03 kB │ gzip: 0.05 kB\nℹ dist/react.d.mts              0.03 kB │ gzip: 0.05 kB\nℹ dist/scope.d.mts              0.03 kB │ gzip: 0.05 kB\nℹ dist/swift.d.mts              0.03 kB │ gzip: 0.05 kB\nℹ dist/dtcg.d.mts               0.03 kB │ gzip: 0.05 kB\nℹ dist/hugo.d.mts               0.03 kB │ gzip: 0.05 kB\nℹ dist/less.d.mts               0.03 kB │ gzip: 0.05 kB\nℹ dist/next.d.mts               0.03 kB │ gzip: 0.05 kB\nℹ dist/scss.d.mts               0.03 kB │ gzip: 0.05 kB\nℹ dist/vite.d.mts               0.03 kB │ gzip: 0.05 kB\nℹ dist/cli.d.mts                0.03 kB │ gzip: 0.05 kB\nℹ dist/mui.d.mts                0.03 kB │ gzip: 0.05 kB\nℹ dist/vue.d.mts                0.03 kB │ gzip: 0.05 kB\nℹ 136 files, total: 10.99 kB\n[codecov] Detecting CI provider\n[codecov] Detected CI provider: Local\n[codecov] Attempting to fetch `get-pre-signed-url`, attempt: 1\n[codecov] `get-pre-signed-url` fetch attempt 1 failed\n[codecov] Attempting to fetch `get-pre-signed-url`, attempt: 2\n[codecov] `get-pre-signed-url` fetch attempt 2 failed\n[codecov] Attempting to fetch `get-pre-signed-url`, attempt: 3\n[codecov] `get-pre-signed-url` fetch attempt 3 failed\n[codecov] `get-pre-signed-url` failed after 3 attempts\n[codecov] Failed to get pre-signed URL, bad response: \"400 - \"\n✔ Build complete in 4090ms\n\n~/packages/pantoken$ node scripts/generate-custom-data.ts\npantoken meta: generated VS Code custom data and cssdoc model (687 class entries, 4951 token properties, 88 model entries)\n\n~/tools/a2ui-conformance$ vp build\ntransforming...\n✓ 601 modules transformed.\nrendering chunks...\n\n---\nvp run: 4/176 cache hit (2%), 175/176 successful, 17.34s saved. @pantoken/vitepress-sidebar-toggle#build (and 8 more) not cached because they modified their inputs. (Run `vp run --last-details` for full details)\n\nexit 1",
+    "upgrades": [
+      {
+        "depName": "@angular/platform-browser",
+        "packageName": "@angular/platform-browser",
+        "packageFile": "pnpm-workspace.yaml",
+        "manager": "npm",
+        "newValue": "22.2.5",
+        "currentValue": "21.2.5",
+        "newDigest": "sha512-q5xjwutXUNL3qiW2GGBdWIK5OVd7gquGIIWWkr9kgQaSG+0+nbMbmqqOpAWDbnDNv2Jw6ADdFRrZMMXk+71Ovg=="
+      }
+    ]
+  },
+  {
+    "id": "d38e4806ff1b8f084be1",
+    "package": "bingo-stratum",
+    "version": "^0.11.0",
+    "error": "vp check failed: error: Lint or type issues found\n\npass: All 6931 files are correctly formatted (7604ms, 4 threads)\n\u001b[38;2;244;191;117;1m⚠\u001b[0m \u001b[38;2;244;191;117;1meslint(no-unused-vars): Parameter 'kind' is declared but never used. Unused parameters should start with a '_'.\u001b[0m\n     ╭─[\u001b[38;2;92;157;255;1mdocs/scripts/segment-markdown.test.ts\u001b[0m:379:36]\n \u001b[2m378\u001b[0m │     // Translate with a function that changes cell content\n \u001b[2m379\u001b[0m │     const resolve = (text: string, kind: TranslationKind): string =>\n     · \u001b[38;2;246;87;248m                                   ──┬─\u001b[0m\n     ·                                      \u001b[38;2;246;87;248m╰── \u001b[38;2;246;87;248m'kind' is declared here\u001b[0m\u001b[0m\n \u001b[2m380\u001b[0m │       text.includes(\"icons\") ? \"TRANSLATED_ICONS\" : text;\n     ╰────\n\u001b[38;2;106;159;181m  help: \u001b[0mConsider removing this parameter.\n\n  \u001b[38;2;225;80;80;1m×\u001b[0m \u001b[38;2;225;80;80;1mtypescript(TS2724): '\"bingo-stratum\"' has no exported member named 'BlockWithoutAddons'. Did you mean 'BlockWithoutProps'?\u001b[0m\n   ╭─[\u001b[38;2;92;157;255;1mpackages/scaffold-base/src/blocks/cssdoc.ts\u001b[0m:8:15]\n \u001b[2m7\u001b[0m │  */\n \u001b[2m8\u001b[0m │ import type { BlockWithoutAddons } from \"bingo-stratum\";\n   · \u001b[38;2;246;87;248m              ──────────────────\u001b[0m\n \u001b[2m9\u001b[0m │ import { base } from \"../base.ts\";\n   ╰────\n\nFound 1 error and 1 warning in 1951 files (8.6s, 4 threads)\n\nexit 1",
+    "upgrades": [
+      {
+        "depName": "bingo-stratum",
+        "packageName": "bingo-stratum",
+        "packageFile": "pnpm-workspace.yaml",
+        "manager": "npm",
+        "newValue": "^0.11.0",
+        "currentValue": "^0.8.0",
+        "newDigest": "sha512-Xd3gGl0OqrPzsFXZDqYQj6Ufgd+1o01lK+n9g82RVwQesRylT1j8iwHoe2FzzI/BtSLJ215MfK3H2ucIV9V8wQ=="
+      }
+    ]
+  },
+  {
+    "id": "55d6ba2d71c58ddf1a32",
+    "package": "pnpm",
+    "version": "12.19.0",
+    "error": "vp run -r --concurrency-limit 1 build failed: error: Invalid vite task command: vp with args [\"pack\"] under cwd /tmp/pantoken-weekly-zjcFlp/candidate-1/plugins/vite/workspace-orchestrator\n* Failed to resolve pack command: GenericFailure, Expected @voidzero-dev/vite-plus-core@1.2.0, but found @voidzero-dev/vite-plus-core@1.1.0 at /tmp/pantoken-weekly-zjcFlp/candidate-1/node_modules/.pnpm/@voidzero-dev+vite-plus-core@1.1.0_@arethetypeswrong+core@0.18.5_@types+node@26.6.5_esb_2559c64aa9f6728d0ad49201ca2c596a/node_modules/@voidzero-dev/vite-plus-core/package.json. Run `vp migrate` to align the Vite alias, then run `vp install`.\n\n\nexit 1",
+    "upgrades": [
+      {
+        "depName": "pnpm",
+        "packageName": "pnpm",
+        "packageFile": "package.json",
+        "manager": "npm",
+        "newValue": "12.19.0",
+        "currentValue": "11.23.0",
+        "newDigest": "sha512-hzJ7ZhmFMgWDTkvlm6OiMeMD2fXkNZEu3jMSt1Obea+JCUL2UTsFpGkHRWZoiARcCbM/xCDCzS072VwBuiHb6w=="
+      }
+    ]
+  },
+  {
+    "id": "84948a1c379256df75b3",
+    "package": "typescript",
+    "version": "^7.0.0",
+    "error": "vp test docs plugins/typedoc/demo plugins/typedoc/live-example --passWithNoTests failed: s/@voidzero-dev/vite-plus-core/dist/vite/node/module-runner.js:\u001b[2m1240:18\u001b[22m\u001b[39m\n\u001b[90m \u001b[2m❯\u001b[22m VitestModuleRunner.cachedRequest node_modules/.pnpm/@voidzero-dev+vite-plus-core@1.2.0_@arethetypeswrong+core@0.18.5_@types+node@26.6.5_esb_3a6b14baa17636cbe44628037fc501f0/node_modules/@voidzero-dev/vite-plus-core/dist/vite/node/module-runner.js:\u001b[2m1184:73\u001b[22m\u001b[39m\n\u001b[36m \u001b[2m❯\u001b[22m docs/scripts/build-css-api.ts:\u001b[2m20:1\u001b[22m\u001b[39m\n    \u001b[90m 18|\u001b[39m import { fileURLToPath } from \"node:url\";\n    \u001b[90m 19|\u001b[39m import { CssDocConfigFile } from \"@cssdoc/config\";\n    \u001b[90m 20|\u001b[39m import { emitCssApi } from \"@cssdoc/typedoc\";\n    \u001b[90m   |\u001b[39m \u001b[31m^\u001b[39m\n    \u001b[90m 21|\u001b[39m import { parseCssDocs, type CssDocEntry, type CssModifier } from \"@css…\n    \u001b[90m 22|\u001b[39m import { JS_CALLOUT_MARKER } from \"./segment-markdown.ts\";\n\u001b[90m \u001b[2m❯\u001b[22m VitestModuleRunner.directRequest node_modules/.pnpm/@voidzero-dev+vite-plus-core@1.2.0_@arethetypeswrong+core@0.18.5_@types+node@26.6.5_esb_3a6b14baa17636cbe44628037fc501f0/node_modules/@voidzero-dev/vite-plus-core/dist/vite/node/module-runner.js:\u001b[2m1277:59\u001b[22m\u001b[39m\n\n\u001b[31m\u001b[2m⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/8]⎯\u001b[22m\u001b[39m\n\n\u001b[41m\u001b[1m FAIL \u001b[22m\u001b[49m plugins/typedoc/demo/tests/index.test.ts\u001b[2m [ plugins/typedoc/demo/tests/index.test.ts ]\u001b[22m\n\u001b[41m\u001b[1m FAIL \u001b[22m\u001b[49m plugins/typedoc/demo/tests/load.test.ts\u001b[2m [ plugins/typedoc/demo/tests/load.test.ts ]\u001b[22m\n\u001b[31m\u001b[1mTypeError\u001b[22m: Cannot read properties of undefined (reading 'PropertyDeclaration')\u001b[39m\n\u001b[90m \u001b[2m❯\u001b[22m node_modules/.pnpm/typedoc@0.28.20_typescript@7.0.2/node_modules/typedoc/dist/index.js:\u001b[2m537:18\u001b[22m\u001b[39m\n\u001b[90m \u001b[2m❯\u001b[22m VitestModuleRunner.directRequest node_modules/.pnpm/@voidzero-dev+vite-plus-core@1.2.0_@arethetypeswrong+core@0.18.5_@types+node@26.6.5_esb_3a6b14baa17636cbe44628037fc501f0/node_modules/@voidzero-dev/vite-plus-core/dist/vite/node/module-runner.js:\u001b[2m1240:18\u001b[22m\u001b[39m\n\u001b[90m \u001b[2m❯\u001b[22m VitestModuleRunner.cachedRequest node_modules/.pnpm/@voidzero-dev+vite-plus-core@1.2.0_@arethetypeswrong+core@0.18.5_@types+node@26.6.5_esb_3a6b14baa17636cbe44628037fc501f0/node_modules/@voidzero-dev/vite-plus-core/dist/vite/node/module-runner.js:\u001b[2m1184:73\u001b[22m\u001b[39m\n\u001b[36m \u001b[2m❯\u001b[22m plugins/typedoc/demo/src/index.ts:\u001b[2m32:1\u001b[22m\u001b[39m\n    \u001b[90m 30|\u001b[39m import { readFileSync, renameSync, writeFileSync } from \"node:fs\";\n    \u001b[90m 31|\u001b[39m import { join } from \"node:path\";\n    \u001b[90m 32|\u001b[39m import { Converter, RendererEvent } from \"typedoc\";\n    \u001b[90m   |\u001b[39m \u001b[31m^\u001b[39m\n    \u001b[90m 33|\u001b[39m import type {\n    \u001b[90m 34|\u001b[39m   Application,\n\u001b[90m \u001b[2m❯\u001b[22m VitestModuleRunner.directRequest node_modules/.pnpm/@voidzero-dev+vite-plus-core@1.2.0_@arethetypeswrong+core@0.18.5_@types+node@26.6.5_esb_3a6b14baa17636cbe44628037fc501f0/node_modules/@voidzero-dev/vite-plus-core/dist/vite/node/module-runner.js:\u001b[2m1277:59\u001b[22m\u001b[39m\n\n\u001b[31m\u001b[2m⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[2/8]⎯\u001b[22m\u001b[39m\n\n\u001b[41m\u001b[1m FAIL \u001b[22m\u001b[49m plugins/typedoc/live-example/tests/index.test.ts\u001b[2m [ plugins/typedoc/live-example/tests/index.test.ts ]\u001b[22m\n\u001b[41m\u001b[1m FAIL \u001b[22m\u001b[49m plugins/typedoc/live-example/tests/load.test.ts\u001b[2m [ plugins/typedoc/live-example/tests/load.test.ts ]\u001b[22m\n\u001b[31m\u001b[1mTypeError\u001b[22m: Cannot read properties of undefined (reading 'PropertyDeclaration')\u001b[39m\n\u001b[90m \u001b[2m❯\u001b[22m node_modules/.pnpm/typedoc@0.28.20_typescript@7.0.2/node_modules/typedoc/dist/index.js:\u001b[2m537:18\u001b[22m\u001b[39m\n\u001b[90m \u001b[2m❯\u001b[22m VitestModuleRunner.directRequest node_modules/.pnpm/@voidzero-dev+vite-plus-core@1.2.0_@arethetypeswrong+core@0.18.5_@types+node@26.6.5_esb_3a6b14baa17636cbe44628037fc501f0/node_modules/@voidzero-dev/vite-plus-core/dist/vite/node/module-runner.js:\u001b[2m1240:18\u001b[22m\u001b[39m\n\u001b[90m \u001b[2m❯\u001b[22m VitestModuleRunner.cachedRequest node_modules/.pnpm/@voidzero-dev+vite-plus-core@1.2.0_@arethetypeswrong+core@0.18.5_@types+node@26.6.5_esb_3a6b14baa17636cbe44628037fc501f0/node_modules/@voidzero-dev/vite-plus-core/dist/vite/node/module-runner.js:\u001b[2m1184:73\u001b[22m\u001b[39m\n\u001b[36m \u001b[2m❯\u001b[22m plugins/typedoc/live-example/src/index.ts:\u001b[2m22:1\u001b[22m\u001b[39m\n    \u001b[90m 20|\u001b[39m import { readdirSync, readFileSync, writeFileSync } from \"node:fs\";\n    \u001b[90m 21|\u001b[39m import { join } from \"node:path\";\n    \u001b[90m 22|\u001b[39m import { type Application, ParameterType, RendererEvent } from \"typedo…\n    \u001b[90m   |\u001b[39m \u001b[31m^\u001b[39m\n    \u001b[90m 23|\u001b[39m\n    \u001b[90m 24|\u001b[39m /** A fenced `html` block and its inner markup. Uses a negative lookah…\n\u001b[90m \u001b[2m❯\u001b[22m VitestModuleRunner.directRequest node_modules/.pnpm/@voidzero-dev+vite-plus-core@1.2.0_@arethetypeswrong+core@0.18.5_@types+node@26.6.5_esb_3a6b14baa17636cbe44628037fc501f0/node_modules/@voidzero-dev/vite-plus-core/dist/vite/node/module-runner.js:\u001b[2m1277:59\u001b[22m\u001b[39m\n\n\u001b[31m\u001b[2m⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[3/8]⎯\u001b[22m\u001b[39m\n\n\n\u001b[31m⎯⎯⎯⎯⎯⎯⎯\u001b[39m\u001b[1m\u001b[41m Failed Tests 2 \u001b[49m\u001b[22m\u001b[31m⎯⎯⎯⎯⎯⎯⎯\u001b[39m\n\n\u001b[41m\u001b[1m FAIL \u001b[22m\u001b[49m docs/scripts/build-api-en.test.ts\u001b[2m > \u001b[22mgenerates the English API without refreshing the catalog by default\n\u001b[31m\u001b[1mError\u001b[22m: ENOENT: no such file or directory, open '/tmp/pantoken-weekly-ladeHj/candidate-1/docs/api/bundlers/next/src/index.md'\u001b[39m\n\u001b[36m \u001b[2m❯\u001b[22m Module.writeApiCompatibility docs/scripts/write-api-compatibility.ts:\u001b[2m35:43\u001b[22m\u001b[39m\n    \u001b[90m 33|\u001b[39m   for (const consumer of compatibility.consumers) {\n    \u001b[90m 34|\u001b[39m     const file = join(docsRoot, \"api\", consumer.path, \"src/index.md\");\n    \u001b[90m 35|\u001b[39m     writeFileSync(file, withCompatibility(readFileSync(file, \"utf8\"), …\n    \u001b[90m   |\u001b[39m                                           \u001b[31m^\u001b[39m\n    \u001b[90m 36|\u001b[39m   }\n    \u001b[90m 37|\u001b[39m   console.log(`✓ API compatibility: updated ${compatibility.consumers.…\n\u001b[90m \u001b[2m❯\u001b[22m docs/scripts/build-api-en.ts:\u001b[2m34:1\u001b[22m\u001b[39m\n\u001b[90m \u001b[2m❯\u001b[22m VitestModuleRunner.directRequest node_modules/.pnpm/@voidzero-dev+vite-plus-core@1.2.0_@arethetypeswrong+core@0.18.5_@types+node@26.6.5_esb_3a6b14baa17636cbe44628037fc501f0/node_modules/@voidzero-dev/vite-plus-core/dist/vite/node/module-runner.js:\u001b[2m1277:59\u001b[22m\u001b[39m\n\u001b[90m \u001b[2m❯\u001b[22m VitestModuleRunner.cachedRequest node_modules/.pnpm/@voidzero-dev+vite-plus-core@1.2.0_@arethetypeswrong+core@0.18.5_@types+node@26.6.5_esb_3a6b14baa17636cbe44628037fc501f0/node_modules/@voidzero-dev/vite-plus-core/dist/vite/node/module-runner.js:\u001b[2m1184:73\u001b[22m\u001b[39m\n\u001b[90m \u001b[2m❯\u001b[22m docs/scripts/build-api-en.test.ts:\u001b[2m21:3\u001b[22m\u001b[39m\n\n\u001b[31m\u001b[2m⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[4/8]⎯\u001b[22m\u001b[39m\n\n\u001b[41m\u001b[1m FAIL \u001b[22m\u001b[49m docs/scripts/build-api-en.test.ts\u001b[2m > \u001b[22mrefreshes the API catalog only in build mode\n\u001b[31m\u001b[1mError\u001b[22m: ENOENT: no such file or directory, open '/tmp/pantoken-weekly-ladeHj/candidate-1/docs/api/bundlers/next/src/index.md'\u001b[39m\n\u001b[36m \u001b[2m❯\u001b[22m Module.writeApiCompatibility docs/scripts/write-api-compatibility.ts:\u001b[2m35:43\u001b[22m\u001b[39m\n    \u001b[90m 33|\u001b[39m   for (const consumer of compatibility.consumers) {\n    \u001b[90m 34|\u001b[39m     const file = join(docsRoot, \"api\", consumer.path, \"src/index.md\");\n    \u001b[90m 35|\u001b[39m     writeFileSync(file, withCompatibility(readFileSync(file, \"utf8\"), …\n    \u001b[90m   |\u001b[39m                                           \u001b[31m^\u001b[39m\n    \u001b[90m 36|\u001b[39m   }\n    \u001b[90m 37|\u001b[39m   console.log(`✓ API compatibility: updated ${compatibility.consumers.…\n\u001b[90m \u001b[2m❯\u001b[22m docs/scripts/build-api-en.ts:\u001b[2m34:1\u001b[22m\u001b[39m\n\u001b[90m \u001b[2m❯\u001b[22m VitestModuleRunner.directRequest node_modules/.pnpm/@voidzero-dev+vite-plus-core@1.2.0_@arethetypeswrong+core@0.18.5_@types+node@26.6.5_esb_3a6b14baa17636cbe44628037fc501f0/node_modules/@voidzero-dev/vite-plus-core/dist/vite/node/module-runner.js:\u001b[2m1277:59\u001b[22m\u001b[39m\n\u001b[90m \u001b[2m❯\u001b[22m VitestModuleRunner.cachedRequest node_modules/.pnpm/@voidzero-dev+vite-plus-core@1.2.0_@arethetypeswrong+core@0.18.5_@types+node@26.6.5_esb_3a6b14baa17636cbe44628037fc501f0/node_modules/@voidzero-dev/vite-plus-core/dist/vite/node/module-runner.js:\u001b[2m1184:73\u001b[22m\u001b[39m\n\u001b[90m \u001b[2m❯\u001b[22m docs/scripts/build-api-en.test.ts:\u001b[2m30:3\u001b[22m\u001b[39m\n\n\u001b[31m\u001b[2m⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[5/8]⎯\u001b[22m\u001b[39m\n\n\n[2m)\u001b[22m\u001b[32m 173\u001b[2mms\u001b[22m\u001b[39m\n \u001b[32m✓\u001b[39m docs/.vitepress/plugins/token-value-preview/index.test.ts \u001b[2m(\u001b[22m\u001b[2m8 tests\u001b[22m\u001b[2m)\u001b[22m\u001b[32m 6\u001b[2mms\u001b[22m\u001b[39m\n \u001b[32m✓\u001b[39m docs/scripts/translate-guide-po.test.ts \u001b[2m(\u001b[22m\u001b[2m3 tests\u001b[22m\u001b[2m)\u001b[22m\u001b[32m 23\u001b[2mms\u001b[22m\u001b[39m\n \u001b[32m✓\u001b[39m docs/scripts/sync-home-locales.test.ts \u001b[2m(\u001b[22m\u001b[2m4 tests\u001b[22m\u001b[2m)\u001b[22m\u001b[32m 10\u001b[2mms\u001b[22m\u001b[39m\n \u001b[32m✓\u001b[39m docs/scripts/write-api-compatibility.test.ts \u001b[2m(\u001b[22m\u001b[2m3 tests\u001b[22m\u001b[2m)\u001b[22m\u001b[32m 4\u001b[2mms\u001b[22m\u001b[39m\n \u001b[32m✓\u001b[39m docs/.vitepress/i18n.test.ts \u001b[2m(\u001b[22m\u001b[2m9 tests\u001b[22m\u001b[2m)\u001b[22m\u001b[32m 6\u001b[2mms\u001b[22m\u001b[39m\n \u001b[32m✓\u001b[39m docs/scripts/site-themes.test.ts \u001b[2m(\u001b[22m\u001b[2m7 tests\u001b[22m\u001b[2m)\u001b[22m\u001b[33m 393\u001b[2mms\u001b[22m\u001b[39m\n \u001b[32m✓\u001b[39m docs/scripts/demo-i18n.test.ts \u001b[2m(\u001b[22m\u001b[2m3 tests\u001b[22m\u001b[2m)\u001b[22m\u001b[32m 3\u001b[2mms\u001b[22m\u001b[39m\n \u001b[32m✓\u001b[39m scripts/quality/docs-startup.test.ts \u001b[2m(\u001b[22m\u001b[2m3 tests\u001b[22m\u001b[2m)\u001b[22m\u001b[32m 64\u001b[2mms\u001b[22m\u001b[39m\n \u001b[32m✓\u001b[39m docs/.vitepress/theme/composables/useShikiHighlight.test.ts \u001b[2m(\u001b[22m\u001b[2m1 test\u001b[22m\u001b[2m)\u001b[22m\u001b[32m 60\u001b[2mms\u001b[22m\u001b[39m\n \u001b[32m✓\u001b[39m docs/scripts/stage-api-catalog.test.ts \u001b[2m(\u001b[22m\u001b[2m3 tests\u001b[22m\u001b[2m)\u001b[22m\u001b[32m 115\u001b[2mms\u001b[22m\u001b[39m\n \u001b[32m✓\u001b[39m docs/scripts/segment-demo-html.test.ts \u001b[2m(\u001b[22m\u001b[2m6 tests\u001b[22m\u001b[2m)\u001b[22m\u001b[32m 5\u001b[2mms\u001b[22m\u001b[39m\n \u001b[32m✓\u001b[39m docs/scripts/accessibility-refresh.test.ts \u001b[2m(\u001b[22m\u001b[2m3 tests\u001b[22m\u001b[2m)\u001b[22m\u001b[33m 323\u001b[2mms\u001b[22m\u001b[39m\n \u001b[31m❯\u001b[39m plugins/typedoc/demo/tests/index.test.ts \u001b[2m(\u001b[22m\u001b[2m0 test\u001b[22m\u001b[2m)\u001b[22m\n \u001b[31m❯\u001b[39m plugins/typedoc/live-example/tests/index.test.ts \u001b[2m(\u001b[22m\u001b[2m0 test\u001b[22m\u001b[2m)\u001b[22m\n \u001b[32m✓\u001b[39m docs/.vitepress/theme/composables/tokenSheetPaths.test.ts \u001b[2m(\u001b[22m\u001b[2m8 tests\u001b[22m\u001b[2m)\u001b[22m\u001b[32m 4\u001b[2mms\u001b[22m\u001b[39m\n \u001b[31m❯\u001b[39m docs/scripts/build-css-api.property.test.ts \u001b[2m(\u001b[22m\u001b[2m0 test\u001b[22m\u001b[2m)\u001b[22m\n \u001b[32m✓\u001b[39m docs/.vitepress/theme/theme.test.ts \u001b[2m(\u001b[22m\u001b[2m7 tests\u001b[22m\u001b[2m)\u001b[22m\u001b[32m 9\u001b[2mms\u001b[22m\u001b[39m\n \u001b[32m✓\u001b[39m docs/scripts/translation-scope.test.ts \u001b[2m(\u001b[22m\u001b[2m5 tests\u001b[22m\u001b[2m)\u001b[22m\u001b[32m 3\u001b[2mms\u001b[22m\u001b[39m\n \u001b[31m❯\u001b[39m docs/scripts/build-api-en.test.ts \u001b[2m(\u001b[22m\u001b[2m2 tests\u001b[22m\u001b[2m | \u001b[22m\u001b[31m2 failed\u001b[39m\u001b[2m)\u001b[22m\u001b[32m 131\u001b[2mms\u001b[22m\u001b[39m\n\u001b[31m   \u001b[31m×\u001b[31m generates the English API without refreshing the catalog by default\u001b[39m\u001b[32m 99\u001b[2mms\u001b[22m\u001b[39m\n\u001b[31m   \u001b[31m×\u001b[31m refreshes the API catalog only in build mode\u001b[39m\u001b[32m 32\u001b[2mms\u001b[22m\u001b[39m\n \u001b[32m✓\u001b[39m docs/scripts/guide-frontmatter.test.ts \u001b[2m(\u001b[22m\u001b[2m2 tests\u001b[22m\u001b[2m)\u001b[22m\u001b[32m 2\u001b[2mms\u001b[22m\u001b[39m\n \u001b[32m✓\u001b[39m docs/scripts/published-schemas.test.ts \u001b[2m(\u001b[22m\u001b[2m1 test\u001b[22m\u001b[2m)\u001b[22m\u001b[32m 32\u001b[2mms\u001b[22m\u001b[39m\n \u001b[32m✓\u001b[39m docs/scripts/markdown-structure.test.ts \u001b[2m(\u001b[22m\u001b[2m1 test\u001b[22m\u001b[2m)\u001b[22m\u001b[32m 2\u001b[2mms\u001b[22m\u001b[39m\n\u001b[90mstdout\u001b[2m | docs/scripts/cdn-plugin-manifest.test.ts\u001b[2m > \u001b[22m\u001b[2mpublishes the plugin manifest for both the docs UI and external agents\n\u001b[22m\u001b[39m✓ docs: wrote cdn-plugin-manifest.json (2 custom components, 4 other plugins, 13 custom icons, 7 logo products)\n\n \u001b[32m✓\u001b[39m docs/scripts/cdn-plugin-manifest.test.ts \u001b[2m(\u001b[22m\u001b[2m1 test\u001b[22m\u001b[2m)\u001b[22m\u001b[33m 722\u001b[2mms\u001b[22m\u001b[39m\n   \u001b[33m\u001b[2m✓\u001b[22m\u001b[39m publishes the plugin manifest for both the docs UI and external agents\u001b[33m 721\u001b[2mms\u001b[22m\u001b[39m\n\n\u001b[2m Test Files \u001b[22m \u001b[1m\u001b[31m7 failed\u001b[39m\u001b[22m\u001b[2m | \u001b[22m\u001b[1m\u001b[32m46 passed\u001b[39m\u001b[22m\u001b[90m (53)\u001b[39m\n\u001b[2m      Tests \u001b[22m \u001b[1m\u001b[31m2 failed\u001b[39m\u001b[22m\u001b[2m | \u001b[22m\u001b[1m\u001b[32m459 passed\u001b[39m\u001b[22m\u001b[2m | \u001b[22m\u001b[33m3 skipped\u001b[39m\u001b[90m (464)\u001b[39m\n\u001b[2m   Start at \u001b[22m 17:45:45\n\u001b[2m   Duration \u001b[22m 11.02s\u001b[2m (tests 42%, import 39%, transform 13%, setup 4%, environment 1%, worker 1%)\u001b[22m\n\n\u001b[2m     Import \u001b[22m \u001b[33m300 modules were evaluated 739 times\u001b[39m\u001b[2m · 6.47s total, 39% of tracked time\u001b[22m\n\u001b[2m            \u001b[22m \u001b[2m~1.26s faster with \u001b[22m\u001b[33misolate: false\u001b[39m\u001b[2m — shared modules are evaluated once per worker instead of once per file\u001b[22m\n\u001b[2m            \u001b[22m \u001b[2mlearn more: https://vitest.dev/guide/improving-performance#test-isolation\u001b[22m\n\n\nexit 1",
+    "upgrades": [
+      {
+        "depName": "typescript",
+        "packageName": "typescript",
+        "packageFile": "plugins/typedoc/live-example/package.json",
+        "manager": "npm",
+        "newValue": "^7.0.0",
+        "currentValue": "^6.0.3",
+        "newDigest": "sha512-8FYau96o3NKOhbjKi/qNvG/W5jhzxkbdm5sj9AbZ/5T5sWqn3hJgLfGx27sRKZWTvyzCP8dLRBTf5tBTSRVUNA=="
+      },
+      {
+        "depName": "typescript",
+        "packageName": "typescript",
+        "packageFile": "plugins/typedoc/demo/package.json",
+        "manager": "npm",
+        "newValue": "^7.0.0",
+        "currentValue": "^6.0.3",
+        "newDigest": "sha512-8FYau96o3NKOhbjKi/qNvG/W5jhzxkbdm5sj9AbZ/5T5sWqn3hJgLfGx27sRKZWTvyzCP8dLRBTf5tBTSRVUNA=="
+      },
+      {
+        "depName": "typescript",
+        "packageName": "typescript",
+        "packageFile": "docs/package.json",
+        "manager": "npm",
+        "newValue": "^7.0.0",
+        "currentValue": "^6.0.3",
+        "newDigest": "sha512-8FYau96o3NKOhbjKi/qNvG/W5jhzxkbdm5sj9AbZ/5T5sWqn3hJgLfGx27sRKZWTvyzCP8dLRBTf5tBTSRVUNA=="
+      }
+    ]
+  },
+  {
+    "id": "3b9895ebc5a8fc59a6f2",
+    "package": "@vitest/coverage-v8",
+    "version": "5.1.0",
+    "error": "/home/runner/.local/share/vite-plus/js_runtime/node/26.13.1/bin/node scripts/check-compatibility.ts 1.5.1 failed: file:///tmp/pantoken-weekly-ygtJdT/candidate-1/bundlers/vite/scripts/check-compatibility.ts:9\n  if (!/^8\\.\\d+\\.\\d+$/u.test(version)) throw new Error(`Invalid Vite 8 release: ${version}`);\n                                             ^\n\nError: Invalid Vite 8 release: 1.5.1\n    at checkCompatibility (file:///tmp/pantoken-weekly-ygtJdT/candidate-1/bundlers/vite/scripts/check-compatibility.ts:9:46)\n    at file:///tmp/pantoken-weekly-ygtJdT/candidate-1/bundlers/vite/scripts/check-compatibility.ts:44:72\n    at ModuleJob.run (node:internal/modules/esm/module_job:569:25)\n    at async node:internal/modules/esm/loader:650:26\n    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:105:5)\n\nNode.js v26.13.1\n\n\nexit 1",
+    "upgrades": [
+      {
+        "depName": "@vitest/coverage-v8",
+        "packageName": "@vitest/coverage-v8",
+        "packageFile": "pnpm-workspace.yaml",
+        "manager": "npm",
+        "newValue": "5.1.0",
+        "currentValue": "5.0.4",
+        "newDigest": "sha512-OY9aShBQG5KOIw2zCo9fDoCHI9RHliNHJ//nM7m6jGg41Hyke9JOGWmeMlK74xYErsxMoK8mIB3gAeEyFVA7LA=="
+      },
+      {
+        "depName": "vite",
+        "packageName": "@voidzero-dev/vite-plus-core",
+        "packageFile": "pnpm-workspace.yaml",
+        "manager": "npm",
+        "newValue": "1.5.1",
+        "currentValue": "1.2.0",
+        "newDigest": "sha512-34nfvz01DlXmNTRtqOiA2OnI/QsnMZ/XkH2EJYXhXl7D5xloi9EBO87e57Zuo9sgqwDksvtp2gOH72MZZIz0qQ=="
+      },
+      {
+        "depName": "vite",
+        "packageName": "@voidzero-dev/vite-plus-core",
+        "packageFile": "plugins/vite/workspace-orchestrator/package.json",
+        "manager": "npm",
+        "newValue": "1.5.1",
+        "currentValue": "1.1.0",
+        "newDigest": "sha512-34nfvz01DlXmNTRtqOiA2OnI/QsnMZ/XkH2EJYXhXl7D5xloi9EBO87e57Zuo9sgqwDksvtp2gOH72MZZIz0qQ=="
+      },
+      {
+        "depName": "vite",
+        "packageName": "vite",
+        "packageFile": "bundlers/vite/package.json",
+        "manager": "npm",
+        "newValue": ">=8.0.0 <=8.3.7",
+        "currentValue": ">=8.0.0 <=8.3.2",
+        "newDigest": "sha512-oxh0dMxrayBr33ScJvvBJ2HBQ2jc1TBrXKR2NyL/MJ9WPuX19mN2DXWUmywKdyw5RFVQBo8hmtb2FMC0LHrnng=="
+      },
+      {
+        "depName": "vite",
+        "packageName": "@voidzero-dev/vite-plus-core",
+        "packageFile": "bundlers/vite/package.json",
+        "manager": "npm",
+        "newValue": "1.5.1",
+        "currentValue": "1.1.0",
+        "newDigest": "sha512-34nfvz01DlXmNTRtqOiA2OnI/QsnMZ/XkH2EJYXhXl7D5xloi9EBO87e57Zuo9sgqwDksvtp2gOH72MZZIz0qQ=="
+      },
+      {
+        "depName": "vite-plus",
+        "packageName": "vite-plus",
+        "packageFile": "pnpm-workspace.yaml",
+        "manager": "npm",
+        "newValue": "1.5.1",
+        "currentValue": "1.2.0",
+        "newDigest": "sha512-Ckl9Vc5fg3BC8SlxPKujSQz+p1CbFy+5++yrFVbwZRdcpHzj0ExaWuNccKdnW128xGU8ECX6RK7n5YPXSHFWpg=="
+      },
+      {
+        "depName": "vitepress",
+        "packageName": "vitepress",
+        "packageFile": "pnpm-workspace.yaml",
+        "manager": "npm",
+        "newValue": "2.0.0-alpha.21",
+        "currentValue": "2.0.0-alpha.20",
+        "newDigest": "sha512-b2PFPIw2mVfxDi490FhSq4AlkFi17b9lofLCqWfH4uPKz/dF4oy2C9vBpP2r7l7hl2hc5BG7OTRPvRFfRzF7MA=="
+      },
+      {
+        "depName": "vitest",
+        "packageName": "vitest",
+        "packageFile": "pnpm-workspace.yaml",
+        "manager": "npm",
+        "newValue": "5.1.0",
+        "currentValue": "5.0.4",
+        "newDigest": "sha512-MzmNFnrwa8v8lF1bLxw3UJ4EREwVOVb75VqJZmUDRjJ6EluK/x9th7qTbaeDk41WxE1GxWqmTXcdsfobfH5sOA=="
+      }
+    ]
+  },
+  {
+    "id": "abef7ca0848c4595fbb6",
+    "package": "vite",
+    "version": "1.5.1",
+    "error": "/home/runner/.local/share/vite-plus/js_runtime/node/26.13.1/bin/node scripts/check-compatibility.ts 1.5.1 failed: file:///tmp/pantoken-weekly-ygtJdT/candidate-1/bundlers/vite/scripts/check-compatibility.ts:9\n  if (!/^8\\.\\d+\\.\\d+$/u.test(version)) throw new Error(`Invalid Vite 8 release: ${version}`);\n                                             ^\n\nError: Invalid Vite 8 release: 1.5.1\n    at checkCompatibility (file:///tmp/pantoken-weekly-ygtJdT/candidate-1/bundlers/vite/scripts/check-compatibility.ts:9:46)\n    at file:///tmp/pantoken-weekly-ygtJdT/candidate-1/bundlers/vite/scripts/check-compatibility.ts:44:72\n    at ModuleJob.run (node:internal/modules/esm/module_job:569:25)\n    at async node:internal/modules/esm/loader:650:26\n    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:105:5)\n\nNode.js v26.13.1\n\n\nexit 1",
+    "upgrades": [
+      {
+        "depName": "@vitest/coverage-v8",
+        "packageName": "@vitest/coverage-v8",
+        "packageFile": "pnpm-workspace.yaml",
+        "manager": "npm",
+        "newValue": "5.1.0",
+        "currentValue": "5.0.4",
+        "newDigest": "sha512-OY9aShBQG5KOIw2zCo9fDoCHI9RHliNHJ//nM7m6jGg41Hyke9JOGWmeMlK74xYErsxMoK8mIB3gAeEyFVA7LA=="
+      },
+      {
+        "depName": "vite",
+        "packageName": "@voidzero-dev/vite-plus-core",
+        "packageFile": "pnpm-workspace.yaml",
+        "manager": "npm",
+        "newValue": "1.5.1",
+        "currentValue": "1.2.0",
+        "newDigest": "sha512-34nfvz01DlXmNTRtqOiA2OnI/QsnMZ/XkH2EJYXhXl7D5xloi9EBO87e57Zuo9sgqwDksvtp2gOH72MZZIz0qQ=="
+      },
+      {
+        "depName": "vite",
+        "packageName": "@voidzero-dev/vite-plus-core",
+        "packageFile": "plugins/vite/workspace-orchestrator/package.json",
+        "manager": "npm",
+        "newValue": "1.5.1",
+        "currentValue": "1.1.0",
+        "newDigest": "sha512-34nfvz01DlXmNTRtqOiA2OnI/QsnMZ/XkH2EJYXhXl7D5xloi9EBO87e57Zuo9sgqwDksvtp2gOH72MZZIz0qQ=="
+      },
+      {
+        "depName": "vite",
+        "packageName": "vite",
+        "packageFile": "bundlers/vite/package.json",
+        "manager": "npm",
+        "newValue": ">=8.0.0 <=8.3.7",
+        "currentValue": ">=8.0.0 <=8.3.2",
+        "newDigest": "sha512-oxh0dMxrayBr33ScJvvBJ2HBQ2jc1TBrXKR2NyL/MJ9WPuX19mN2DXWUmywKdyw5RFVQBo8hmtb2FMC0LHrnng=="
+      },
+      {
+        "depName": "vite",
+        "packageName": "@voidzero-dev/vite-plus-core",
+        "packageFile": "bundlers/vite/package.json",
+        "manager": "npm",
+        "newValue": "1.5.1",
+        "currentValue": "1.1.0",
+        "newDigest": "sha512-34nfvz01DlXmNTRtqOiA2OnI/QsnMZ/XkH2EJYXhXl7D5xloi9EBO87e57Zuo9sgqwDksvtp2gOH72MZZIz0qQ=="
+      },
+      {
+        "depName": "vite-plus",
+        "packageName": "vite-plus",
+        "packageFile": "pnpm-workspace.yaml",
+        "manager": "npm",
+        "newValue": "1.5.1",
+        "currentValue": "1.2.0",
+        "newDigest": "sha512-Ckl9Vc5fg3BC8SlxPKujSQz+p1CbFy+5++yrFVbwZRdcpHzj0ExaWuNccKdnW128xGU8ECX6RK7n5YPXSHFWpg=="
+      },
+      {
+        "depName": "vitepress",
+        "packageName": "vitepress",
+        "packageFile": "pnpm-workspace.yaml",
+        "manager": "npm",
+        "newValue": "2.0.0-alpha.21",
+        "currentValue": "2.0.0-alpha.20",
+        "newDigest": "sha512-b2PFPIw2mVfxDi490FhSq4AlkFi17b9lofLCqWfH4uPKz/dF4oy2C9vBpP2r7l7hl2hc5BG7OTRPvRFfRzF7MA=="
+      },
+      {
+        "depName": "vitest",
+        "packageName": "vitest",
+        "packageFile": "pnpm-workspace.yaml",
+        "manager": "npm",
+        "newValue": "5.1.0",
+        "currentValue": "5.0.4",
+        "newDigest": "sha512-MzmNFnrwa8v8lF1bLxw3UJ4EREwVOVb75VqJZmUDRjJ6EluK/x9th7qTbaeDk41WxE1GxWqmTXcdsfobfH5sOA=="
+      }
+    ]
+  },
+  {
+    "id": "d8a29414ff656f3734ae",
+    "package": "vite",
+    "version": ">=8.0.0 <=8.3.7",
+    "error": "/home/runner/.local/share/vite-plus/js_runtime/node/26.13.1/bin/node scripts/check-compatibility.ts 1.5.1 failed: file:///tmp/pantoken-weekly-ygtJdT/candidate-1/bundlers/vite/scripts/check-compatibility.ts:9\n  if (!/^8\\.\\d+\\.\\d+$/u.test(version)) throw new Error(`Invalid Vite 8 release: ${version}`);\n                                             ^\n\nError: Invalid Vite 8 release: 1.5.1\n    at checkCompatibility (file:///tmp/pantoken-weekly-ygtJdT/candidate-1/bundlers/vite/scripts/check-compatibility.ts:9:46)\n    at file:///tmp/pantoken-weekly-ygtJdT/candidate-1/bundlers/vite/scripts/check-compatibility.ts:44:72\n    at ModuleJob.run (node:internal/modules/esm/module_job:569:25)\n    at async node:internal/modules/esm/loader:650:26\n    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:105:5)\n\nNode.js v26.13.1\n\n\nexit 1",
+    "upgrades": [
+      {
+        "depName": "@vitest/coverage-v8",
+        "packageName": "@vitest/coverage-v8",
+        "packageFile": "pnpm-workspace.yaml",
+        "manager": "npm",
+        "newValue": "5.1.0",
+        "currentValue": "5.0.4",
+        "newDigest": "sha512-OY9aShBQG5KOIw2zCo9fDoCHI9RHliNHJ//nM7m6jGg41Hyke9JOGWmeMlK74xYErsxMoK8mIB3gAeEyFVA7LA=="
+      },
+      {
+        "depName": "vite",
+        "packageName": "@voidzero-dev/vite-plus-core",
+        "packageFile": "pnpm-workspace.yaml",
+        "manager": "npm",
+        "newValue": "1.5.1",
+        "currentValue": "1.2.0",
+        "newDigest": "sha512-34nfvz01DlXmNTRtqOiA2OnI/QsnMZ/XkH2EJYXhXl7D5xloi9EBO87e57Zuo9sgqwDksvtp2gOH72MZZIz0qQ=="
+      },
+      {
+        "depName": "vite",
+        "packageName": "@voidzero-dev/vite-plus-core",
+        "packageFile": "plugins/vite/workspace-orchestrator/package.json",
+        "manager": "npm",
+        "newValue": "1.5.1",
+        "currentValue": "1.1.0",
+        "newDigest": "sha512-34nfvz01DlXmNTRtqOiA2OnI/QsnMZ/XkH2EJYXhXl7D5xloi9EBO87e57Zuo9sgqwDksvtp2gOH72MZZIz0qQ=="
+      },
+      {
+        "depName": "vite",
+        "packageName": "vite",
+        "packageFile": "bundlers/vite/package.json",
+        "manager": "npm",
+        "newValue": ">=8.0.0 <=8.3.7",
+        "currentValue": ">=8.0.0 <=8.3.2",
+        "newDigest": "sha512-oxh0dMxrayBr33ScJvvBJ2HBQ2jc1TBrXKR2NyL/MJ9WPuX19mN2DXWUmywKdyw5RFVQBo8hmtb2FMC0LHrnng=="
+      },
+      {
+        "depName": "vite",
+        "packageName": "@voidzero-dev/vite-plus-core",
+        "packageFile": "bundlers/vite/package.json",
+        "manager": "npm",
+        "newValue": "1.5.1",
+        "currentValue": "1.1.0",
+        "newDigest": "sha512-34nfvz01DlXmNTRtqOiA2OnI/QsnMZ/XkH2EJYXhXl7D5xloi9EBO87e57Zuo9sgqwDksvtp2gOH72MZZIz0qQ=="
+      },
+      {
+        "depName": "vite-plus",
+        "packageName": "vite-plus",
+        "packageFile": "pnpm-workspace.yaml",
+        "manager": "npm",
+        "newValue": "1.5.1",
+        "currentValue": "1.2.0",
+        "newDigest": "sha512-Ckl9Vc5fg3BC8SlxPKujSQz+p1CbFy+5++yrFVbwZRdcpHzj0ExaWuNccKdnW128xGU8ECX6RK7n5YPXSHFWpg=="
+      },
+      {
+        "depName": "vitepress",
+        "packageName": "vitepress",
+        "packageFile": "pnpm-workspace.yaml",
+        "manager": "npm",
+        "newValue": "2.0.0-alpha.21",
+        "currentValue": "2.0.0-alpha.20",
+        "newDigest": "sha512-b2PFPIw2mVfxDi490FhSq4AlkFi17b9lofLCqWfH4uPKz/dF4oy2C9vBpP2r7l7hl2hc5BG7OTRPvRFfRzF7MA=="
+      },
+      {
+        "depName": "vitest",
+        "packageName": "vitest",
+        "packageFile": "pnpm-workspace.yaml",
+        "manager": "npm",
+        "newValue": "5.1.0",
+        "currentValue": "5.0.4",
+        "newDigest": "sha512-MzmNFnrwa8v8lF1bLxw3UJ4EREwVOVb75VqJZmUDRjJ6EluK/x9th7qTbaeDk41WxE1GxWqmTXcdsfobfH5sOA=="
+      }
+    ]
+  },
+  {
+    "id": "8882d68112627449a6b6",
+    "package": "vite-plus",
+    "version": "1.5.1",
+    "error": "/home/runner/.local/share/vite-plus/js_runtime/node/26.13.1/bin/node scripts/check-compatibility.ts 1.5.1 failed: file:///tmp/pantoken-weekly-ygtJdT/candidate-1/bundlers/vite/scripts/check-compatibility.ts:9\n  if (!/^8\\.\\d+\\.\\d+$/u.test(version)) throw new Error(`Invalid Vite 8 release: ${version}`);\n                                             ^\n\nError: Invalid Vite 8 release: 1.5.1\n    at checkCompatibility (file:///tmp/pantoken-weekly-ygtJdT/candidate-1/bundlers/vite/scripts/check-compatibility.ts:9:46)\n    at file:///tmp/pantoken-weekly-ygtJdT/candidate-1/bundlers/vite/scripts/check-compatibility.ts:44:72\n    at ModuleJob.run (node:internal/modules/esm/module_job:569:25)\n    at async node:internal/modules/esm/loader:650:26\n    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:105:5)\n\nNode.js v26.13.1\n\n\nexit 1",
+    "upgrades": [
+      {
+        "depName": "@vitest/coverage-v8",
+        "packageName": "@vitest/coverage-v8",
+        "packageFile": "pnpm-workspace.yaml",
+        "manager": "npm",
+        "newValue": "5.1.0",
+        "currentValue": "5.0.4",
+        "newDigest": "sha512-OY9aShBQG5KOIw2zCo9fDoCHI9RHliNHJ//nM7m6jGg41Hyke9JOGWmeMlK74xYErsxMoK8mIB3gAeEyFVA7LA=="
+      },
+      {
+        "depName": "vite",
+        "packageName": "@voidzero-dev/vite-plus-core",
+        "packageFile": "pnpm-workspace.yaml",
+        "manager": "npm",
+        "newValue": "1.5.1",
+        "currentValue": "1.2.0",
+        "newDigest": "sha512-34nfvz01DlXmNTRtqOiA2OnI/QsnMZ/XkH2EJYXhXl7D5xloi9EBO87e57Zuo9sgqwDksvtp2gOH72MZZIz0qQ=="
+      },
+      {
+        "depName": "vite",
+        "packageName": "@voidzero-dev/vite-plus-core",
+        "packageFile": "plugins/vite/workspace-orchestrator/package.json",
+        "manager": "npm",
+        "newValue": "1.5.1",
+        "currentValue": "1.1.0",
+        "newDigest": "sha512-34nfvz01DlXmNTRtqOiA2OnI/QsnMZ/XkH2EJYXhXl7D5xloi9EBO87e57Zuo9sgqwDksvtp2gOH72MZZIz0qQ=="
+      },
+      {
+        "depName": "vite",
+        "packageName": "vite",
+        "packageFile": "bundlers/vite/package.json",
+        "manager": "npm",
+        "newValue": ">=8.0.0 <=8.3.7",
+        "currentValue": ">=8.0.0 <=8.3.2",
+        "newDigest": "sha512-oxh0dMxrayBr33ScJvvBJ2HBQ2jc1TBrXKR2NyL/MJ9WPuX19mN2DXWUmywKdyw5RFVQBo8hmtb2FMC0LHrnng=="
+      },
+      {
+        "depName": "vite",
+        "packageName": "@voidzero-dev/vite-plus-core",
+        "packageFile": "bundlers/vite/package.json",
+        "manager": "npm",
+        "newValue": "1.5.1",
+        "currentValue": "1.1.0",
+        "newDigest": "sha512-34nfvz01DlXmNTRtqOiA2OnI/QsnMZ/XkH2EJYXhXl7D5xloi9EBO87e57Zuo9sgqwDksvtp2gOH72MZZIz0qQ=="
+      },
+      {
+        "depName": "vite-plus",
+        "packageName": "vite-plus",
+        "packageFile": "pnpm-workspace.yaml",
+        "manager": "npm",
+        "newValue": "1.5.1",
+        "currentValue": "1.2.0",
+        "newDigest": "sha512-Ckl9Vc5fg3BC8SlxPKujSQz+p1CbFy+5++yrFVbwZRdcpHzj0ExaWuNccKdnW128xGU8ECX6RK7n5YPXSHFWpg=="
+      },
+      {
+        "depName": "vitepress",
+        "packageName": "vitepress",
+        "packageFile": "pnpm-workspace.yaml",
+        "manager": "npm",
+        "newValue": "2.0.0-alpha.21",
+        "currentValue": "2.0.0-alpha.20",
+        "newDigest": "sha512-b2PFPIw2mVfxDi490FhSq4AlkFi17b9lofLCqWfH4uPKz/dF4oy2C9vBpP2r7l7hl2hc5BG7OTRPvRFfRzF7MA=="
+      },
+      {
+        "depName": "vitest",
+        "packageName": "vitest",
+        "packageFile": "pnpm-workspace.yaml",
+        "manager": "npm",
+        "newValue": "5.1.0",
+        "currentValue": "5.0.4",
+        "newDigest": "sha512-MzmNFnrwa8v8lF1bLxw3UJ4EREwVOVb75VqJZmUDRjJ6EluK/x9th7qTbaeDk41WxE1GxWqmTXcdsfobfH5sOA=="
+      }
+    ]
+  },
+  {
+    "id": "010386b1692f5d2a585b",
+    "package": "vitepress",
+    "version": "2.0.0-alpha.21",
+    "error": "/home/runner/.local/share/vite-plus/js_runtime/node/26.13.1/bin/node scripts/check-compatibility.ts 1.5.1 failed: file:///tmp/pantoken-weekly-ygtJdT/candidate-1/bundlers/vite/scripts/check-compatibility.ts:9\n  if (!/^8\\.\\d+\\.\\d+$/u.test(version)) throw new Error(`Invalid Vite 8 release: ${version}`);\n                                             ^\n\nError: Invalid Vite 8 release: 1.5.1\n    at checkCompatibility (file:///tmp/pantoken-weekly-ygtJdT/candidate-1/bundlers/vite/scripts/check-compatibility.ts:9:46)\n    at file:///tmp/pantoken-weekly-ygtJdT/candidate-1/bundlers/vite/scripts/check-compatibility.ts:44:72\n    at ModuleJob.run (node:internal/modules/esm/module_job:569:25)\n    at async node:internal/modules/esm/loader:650:26\n    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:105:5)\n\nNode.js v26.13.1\n\n\nexit 1",
+    "upgrades": [
+      {
+        "depName": "@vitest/coverage-v8",
+        "packageName": "@vitest/coverage-v8",
+        "packageFile": "pnpm-workspace.yaml",
+        "manager": "npm",
+        "newValue": "5.1.0",
+        "currentValue": "5.0.4",
+        "newDigest": "sha512-OY9aShBQG5KOIw2zCo9fDoCHI9RHliNHJ//nM7m6jGg41Hyke9JOGWmeMlK74xYErsxMoK8mIB3gAeEyFVA7LA=="
+      },
+      {
+        "depName": "vite",
+        "packageName": "@voidzero-dev/vite-plus-core",
+        "packageFile": "pnpm-workspace.yaml",
+        "manager": "npm",
+        "newValue": "1.5.1",
+        "currentValue": "1.2.0",
+        "newDigest": "sha512-34nfvz01DlXmNTRtqOiA2OnI/QsnMZ/XkH2EJYXhXl7D5xloi9EBO87e57Zuo9sgqwDksvtp2gOH72MZZIz0qQ=="
+      },
+      {
+        "depName": "vite",
+        "packageName": "@voidzero-dev/vite-plus-core",
+        "packageFile": "plugins/vite/workspace-orchestrator/package.json",
+        "manager": "npm",
+        "newValue": "1.5.1",
+        "currentValue": "1.1.0",
+        "newDigest": "sha512-34nfvz01DlXmNTRtqOiA2OnI/QsnMZ/XkH2EJYXhXl7D5xloi9EBO87e57Zuo9sgqwDksvtp2gOH72MZZIz0qQ=="
+      },
+      {
+        "depName": "vite",
+        "packageName": "vite",
+        "packageFile": "bundlers/vite/package.json",
+        "manager": "npm",
+        "newValue": ">=8.0.0 <=8.3.7",
+        "currentValue": ">=8.0.0 <=8.3.2",
+        "newDigest": "sha512-oxh0dMxrayBr33ScJvvBJ2HBQ2jc1TBrXKR2NyL/MJ9WPuX19mN2DXWUmywKdyw5RFVQBo8hmtb2FMC0LHrnng=="
+      },
+      {
+        "depName": "vite",
+        "packageName": "@voidzero-dev/vite-plus-core",
+        "packageFile": "bundlers/vite/package.json",
+        "manager": "npm",
+        "newValue": "1.5.1",
+        "currentValue": "1.1.0",
+        "newDigest": "sha512-34nfvz01DlXmNTRtqOiA2OnI/QsnMZ/XkH2EJYXhXl7D5xloi9EBO87e57Zuo9sgqwDksvtp2gOH72MZZIz0qQ=="
+      },
+      {
+        "depName": "vite-plus",
+        "packageName": "vite-plus",
+        "packageFile": "pnpm-workspace.yaml",
+        "manager": "npm",
+        "newValue": "1.5.1",
+        "currentValue": "1.2.0",
+        "newDigest": "sha512-Ckl9Vc5fg3BC8SlxPKujSQz+p1CbFy+5++yrFVbwZRdcpHzj0ExaWuNccKdnW128xGU8ECX6RK7n5YPXSHFWpg=="
+      },
+      {
+        "depName": "vitepress",
+        "packageName": "vitepress",
+        "packageFile": "pnpm-workspace.yaml",
+        "manager": "npm",
+        "newValue": "2.0.0-alpha.21",
+        "currentValue": "2.0.0-alpha.20",
+        "newDigest": "sha512-b2PFPIw2mVfxDi490FhSq4AlkFi17b9lofLCqWfH4uPKz/dF4oy2C9vBpP2r7l7hl2hc5BG7OTRPvRFfRzF7MA=="
+      },
+      {
+        "depName": "vitest",
+        "packageName": "vitest",
+        "packageFile": "pnpm-workspace.yaml",
+        "manager": "npm",
+        "newValue": "5.1.0",
+        "currentValue": "5.0.4",
+        "newDigest": "sha512-MzmNFnrwa8v8lF1bLxw3UJ4EREwVOVb75VqJZmUDRjJ6EluK/x9th7qTbaeDk41WxE1GxWqmTXcdsfobfH5sOA=="
+      }
+    ]
+  },
+  {
+    "id": "94126d67b7c92290da13",
+    "package": "vitest",
+    "version": "5.1.0",
+    "error": "/home/runner/.local/share/vite-plus/js_runtime/node/26.13.1/bin/node scripts/check-compatibility.ts 1.5.1 failed: file:///tmp/pantoken-weekly-ygtJdT/candidate-1/bundlers/vite/scripts/check-compatibility.ts:9\n  if (!/^8\\.\\d+\\.\\d+$/u.test(version)) throw new Error(`Invalid Vite 8 release: ${version}`);\n                                             ^\n\nError: Invalid Vite 8 release: 1.5.1\n    at checkCompatibility (file:///tmp/pantoken-weekly-ygtJdT/candidate-1/bundlers/vite/scripts/check-compatibility.ts:9:46)\n    at file:///tmp/pantoken-weekly-ygtJdT/candidate-1/bundlers/vite/scripts/check-compatibility.ts:44:72\n    at ModuleJob.run (node:internal/modules/esm/module_job:569:25)\n    at async node:internal/modules/esm/loader:650:26\n    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:105:5)\n\nNode.js v26.13.1\n\n\nexit 1",
+    "upgrades": [
+      {
+        "depName": "@vitest/coverage-v8",
+        "packageName": "@vitest/coverage-v8",
+        "packageFile": "pnpm-workspace.yaml",
+        "manager": "npm",
+        "newValue": "5.1.0",
+        "currentValue": "5.0.4",
+        "newDigest": "sha512-OY9aShBQG5KOIw2zCo9fDoCHI9RHliNHJ//nM7m6jGg41Hyke9JOGWmeMlK74xYErsxMoK8mIB3gAeEyFVA7LA=="
+      },
+      {
+        "depName": "vite",
+        "packageName": "@voidzero-dev/vite-plus-core",
+        "packageFile": "pnpm-workspace.yaml",
+        "manager": "npm",
+        "newValue": "1.5.1",
+        "currentValue": "1.2.0",
+        "newDigest": "sha512-34nfvz01DlXmNTRtqOiA2OnI/QsnMZ/XkH2EJYXhXl7D5xloi9EBO87e57Zuo9sgqwDksvtp2gOH72MZZIz0qQ=="
+      },
+      {
+        "depName": "vite",
+        "packageName": "@voidzero-dev/vite-plus-core",
+        "packageFile": "plugins/vite/workspace-orchestrator/package.json",
+        "manager": "npm",
+        "newValue": "1.5.1",
+        "currentValue": "1.1.0",
+        "newDigest": "sha512-34nfvz01DlXmNTRtqOiA2OnI/QsnMZ/XkH2EJYXhXl7D5xloi9EBO87e57Zuo9sgqwDksvtp2gOH72MZZIz0qQ=="
+      },
+      {
+        "depName": "vite",
+        "packageName": "vite",
+        "packageFile": "bundlers/vite/package.json",
+        "manager": "npm",
+        "newValue": ">=8.0.0 <=8.3.7",
+        "currentValue": ">=8.0.0 <=8.3.2",
+        "newDigest": "sha512-oxh0dMxrayBr33ScJvvBJ2HBQ2jc1TBrXKR2NyL/MJ9WPuX19mN2DXWUmywKdyw5RFVQBo8hmtb2FMC0LHrnng=="
+      },
+      {
+        "depName": "vite",
+        "packageName": "@voidzero-dev/vite-plus-core",
+        "packageFile": "bundlers/vite/package.json",
+        "manager": "npm",
+        "newValue": "1.5.1",
+        "currentValue": "1.1.0",
+        "newDigest": "sha512-34nfvz01DlXmNTRtqOiA2OnI/QsnMZ/XkH2EJYXhXl7D5xloi9EBO87e57Zuo9sgqwDksvtp2gOH72MZZIz0qQ=="
+      },
+      {
+        "depName": "vite-plus",
+        "packageName": "vite-plus",
+        "packageFile": "pnpm-workspace.yaml",
+        "manager": "npm",
+        "newValue": "1.5.1",
+        "currentValue": "1.2.0",
+        "newDigest": "sha512-Ckl9Vc5fg3BC8SlxPKujSQz+p1CbFy+5++yrFVbwZRdcpHzj0ExaWuNccKdnW128xGU8ECX6RK7n5YPXSHFWpg=="
+      },
+      {
+        "depName": "vitepress",
+        "packageName": "vitepress",
+        "packageFile": "pnpm-workspace.yaml",
+        "manager": "npm",
+        "newValue": "2.0.0-alpha.21",
+        "currentValue": "2.0.0-alpha.20",
+        "newDigest": "sha512-b2PFPIw2mVfxDi490FhSq4AlkFi17b9lofLCqWfH4uPKz/dF4oy2C9vBpP2r7l7hl2hc5BG7OTRPvRFfRzF7MA=="
+      },
+      {
+        "depName": "vitest",
+        "packageName": "vitest",
+        "packageFile": "pnpm-workspace.yaml",
+        "manager": "npm",
+        "newValue": "5.1.0",
+        "currentValue": "5.0.4",
+        "newDigest": "sha512-MzmNFnrwa8v8lF1bLxw3UJ4EREwVOVb75VqJZmUDRjJ6EluK/x9th7qTbaeDk41WxE1GxWqmTXcdsfobfH5sOA=="
+      }
+    ]
+  },
+  {
+    "id": "7133afd69b91192869e7",
+    "package": "zod",
+    "version": "4.6.7",
+    "error": "vp check failed: error: Lint or type issues found\n\npass: All 6930 files are correctly formatted (5897ms, 4 threads)\n\u001b[38;2;244;191;117;1m⚠\u001b[0m \u001b[38;2;244;191;117;1meslint(no-unused-vars): Parameter 'kind' is declared but never used. Unused parameters should start with a '_'.\u001b[0m\n     ╭─[\u001b[38;2;92;157;255;1mdocs/scripts/segment-markdown.test.ts\u001b[0m:379:36]\n \u001b[2m378\u001b[0m │     // Translate with a function that changes cell content\n \u001b[2m379\u001b[0m │     const resolve = (text: string, kind: TranslationKind): string =>\n     · \u001b[38;2;246;87;248m                                   ──┬─\u001b[0m\n     ·                                      \u001b[38;2;246;87;248m╰── \u001b[38;2;246;87;248m'kind' is declared here\u001b[0m\u001b[0m\n \u001b[2m380\u001b[0m │       text.includes(\"icons\") ? \"TRANSLATED_ICONS\" : text;\n     ╰────\n\u001b[38;2;106;159;181m  help: \u001b[0mConsider removing this parameter.\n\n  \u001b[38;2;225;80;80;1m×\u001b[0m \u001b[38;2;225;80;80;1mtypescript(TS2352): Conversion of type 'SurfaceModel<ComponentApi<ZodTypeAny>, FunctionImplementation>' to type 'SurfaceModel<ReactCatalogComponent<ZodTypeAny>, FunctionImplementation>' may be a mistake because neither type sufficiently overlaps with the other. If this was intentional, convert the expression to 'unknown' first.\u001b[0m\n    ╭─[\u001b[38;2;92;157;255;1mtools/a2ui-conformance/tests/fixtures/react.ts\u001b[0m:22:28]\n \u001b[2m21\u001b[0m │       // The harness erases catalog implementation types; the checks above restore that contract.\n \u001b[2m22\u001b[0m │       const reactSurface = surface as ComponentProps<typeof A2uiSurface>[\"surface\"];\n    · \u001b[38;2;246;87;248m                           ────────────────────────────────────────────────────────\u001b[0m\n \u001b[2m23\u001b[0m │       root.render(\n    ╰────\n\nFound 1 error and 1 warning in 1951 files (6.9s, 4 threads)\n\nexit 1",
+    "upgrades": [
+      {
+        "depName": "zod",
+        "packageName": "zod",
+        "packageFile": "pnpm-workspace.yaml",
+        "manager": "npm",
+        "newValue": "4.6.7",
+        "currentValue": "3.25.76",
+        "newDigest": "sha512-g8W2D2kU6a8untc053fX1uVBKzM7yqAxW/3zwk83+6RyF2+SKOuV+c0wBDhUwzV1PaGapmZH+rmcUzPf+3CGwg=="
+      }
+    ]
+  }
+]

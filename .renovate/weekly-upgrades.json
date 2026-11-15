@@ -1,23 +1,5 @@
 [
   {
-    "depName": "renovatebot/github-action",
-    "packageName": "renovatebot/github-action",
-    "packageFile": ".github/workflows/renovate.yml",
-    "manager": "github-actions",
-    "newValue": "v46.3.13",
-    "currentValue": "v46.3.12",
-    "newDigest": "266fef21329c44765ad42f9dea1f01f5d2d91084"
-  },
-  {
-    "depName": "@angular/compiler",
-    "packageName": "@angular/compiler",
-    "packageFile": "pnpm-workspace.yaml",
-    "manager": "npm",
-    "newValue": "22.2.5",
-    "currentValue": "21.2.5",
-    "newDigest": "sha512-rfhQDgjVxCHOkIh47TEYVcPwdyYP5YW0LFDLipH8OTvNLBQR1rS/FIjdKPubYxu+kvw9TFXlrsulKeMIX8qG6w=="
-  },
-  {
     "depName": "@clack/prompts",
     "packageName": "@clack/prompts",
     "packageFile": "pnpm-workspace.yaml",
@@ -141,7 +123,7 @@
     "manager": "npm",
     "newValue": "^3.33.1",
     "currentValue": "^3.33.1",
-    "newDigest": "sha512-n/lhr01sL+cH+K0iK15hZ2NsLSy4pzI6Xx9XCLploOkEbdbLDwpeNsBIwuaMZQ5F8A7Ww0B74RKzQvwEeqmZLQ=="
+    "newDigest": "sha512-zVug6ujNPVVW706qDL5OZvjD+tINA/lav+PwaoM5yIZyLs2y4bspTZBqSggUi56AGpLuHDEerIJAYTIgQzHQfQ=="
   },
   {
     "depName": "juice",
@@ -150,7 +132,7 @@
     "manager": "npm",
     "newValue": "^12.2.0",
     "currentValue": "^12.2.0",
-    "newDigest": "sha512-KIeo11WTx79GSxBjaW7BWAEGQChsF6V4ODpghIPPR7v9YMCYwg4qvaNb+fWemsiSoaBdWk3Wuf4bb18BUqBJ1Q=="
+    "newDigest": "sha512-2qsvEpZINCYmfd8hwcJZOpoZRnqfX8PAYrXkRcnb50ACI9fDKsA8MZrnN6DbYouQj861BhDyS9m+X5wQcT0z4A=="
   },
   {
     "depName": "lucide",
@@ -159,7 +141,7 @@
     "manager": "npm",
     "newValue": "^1.57.0",
     "currentValue": "^1.57.0",
-    "newDigest": "sha512-LxPqUjt8e5PT7JuvmnKc8ECAqgkbnLG3hIi/FV2JpqWdPWLbLCoI5P3jje/Lq84uNU2kCpe2webgyFFJJ9zPAA=="
+    "newDigest": "sha512-n6KHs0byHCG6fAQKBb+UhZtrUZM6v0ithDErPte6PkWkSijH0tPQoETnMobubUSj4okhAMeE6xUc/5S8LndrRg=="
   },
   {
     "depName": "markdown-it",
@@ -169,15 +151,6 @@
     "newValue": "^15.0.2",
     "currentValue": "^15.0.2",
     "newDigest": "sha512-+Az7Ojz3iRGu8KYMvJ6xVhvrxP3eE+vEtJX75Ow88XBpcQNV/0lGX5ZynIIBftREo4DC2jsveAMDaeltmm8QvQ=="
-  },
-  {
-    "depName": "oxc-minify",
-    "packageName": "oxc-minify",
-    "packageFile": "pnpm-workspace.yaml",
-    "manager": "npm",
-    "newValue": "^0.158.0",
-    "currentValue": "^0.157.0",
-    "newDigest": "sha512-BQJzTAWDOAR/t3o3YuQLOAtHuTnmGk0plToK8i6B4sCkEPou1U3Z1yXMZOO1tJmS2X1imwddKPUONo2MeaYEjQ=="
   },
   {
     "depName": "postcss",
