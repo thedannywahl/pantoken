@@ -374,7 +374,7 @@ test("records failures in individual issues and a separate draft without auto-me
   const pr = fixture.calls.find(
     (call) => call.endpoint.endsWith("/pulls") && call.method === "POST",
   );
-  expect(pr?.body).toMatchObject({ head: "maintenance/failed-updates/100-1", draft: true });
+  expect(pr?.body).toMatchObject({ head: "maintenance/failed-updates-run-100-1", draft: true });
   expect(String(pr?.body.body)).toContain("issues/42");
   expect(fixture.calls.some((call) => call.endpoint === "graphql")).toBe(false);
 });
@@ -403,8 +403,8 @@ test("uses a distinct failed-updates branch for each workflow attempt", async ()
         ?.body.ref,
   );
   expect(refs).toEqual([
-    "refs/heads/maintenance/failed-updates/200-1",
-    "refs/heads/maintenance/failed-updates/200-2",
+    "refs/heads/maintenance/failed-updates-run-200-1",
+    "refs/heads/maintenance/failed-updates-run-200-2",
   ]);
 });
 

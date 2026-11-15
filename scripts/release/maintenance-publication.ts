@@ -6,7 +6,7 @@ import { renderComponentReview } from "./component-reviews.ts";
 
 const passingBranch = (proposal: string): string => `maintenance/weekly-passing-${proposal}`;
 const failedUpdatesBranch = (runId: string, attempt: string): string =>
-  `maintenance/failed-updates/${runId}-${attempt}`;
+  `maintenance/failed-updates-run-${runId}-${attempt}`;
 const generatedPaths = new Set([
   "pnpm-workspace.yaml",
   "pnpm-lock.yaml",
