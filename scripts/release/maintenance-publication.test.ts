@@ -43,6 +43,36 @@ test("accepts a bounded prepared handoff only for its immutable base and proposa
   );
 });
 
+test("reports unchanged base entries separately and rejects overlapping outcomes", async () => {
+  const unchanged = {
+    depName: "react",
+    manager: "npm",
+    packageFile: "package.json",
+    newValue: "^20.0.0",
+  };
+  const result = { ...artifact(), upgrades: [unchanged], unchanged: [unchanged] };
+  const options = {
+    tree: [{ path: "package.json", type: "blob", sha: "d".repeat(40), mode: "100644" }],
+  };
+  const fixture = githubFixture(result, options);
+  await publishMaintenance(["publish", fixture.file, base, proposal]);
+  const body = fixture.calls.find(
+    (call) => call.endpoint.endsWith("/pulls/17") && call.method === "PATCH",
+  )?.body.body;
+  expect(body).toContain("Accepted dependency changes: 0");
+  expect(body).toContain("Already present on base (unchanged): 1");
+  expect(() =>
+    validateMaintenanceResult({ ...result, accepted: [unchanged] }, base, proposal),
+  ).toThrow("Unchanged entry");
+  expect(() => validateMaintenanceResult({ ...result, unchanged: {} }, base, proposal)).toThrow();
+  const forged = { ...unchanged, newValue: "^21.0.0" };
+  const invalid = githubFixture({ ...result, upgrades: [forged], unchanged: [forged] }, options);
+  await expect(publishMaintenance(["publish", invalid.file, base, proposal])).rejects.toThrow(
+    "immutable base",
+  );
+  expect(invalid.calls.some((call) => call.method !== "GET")).toBe(false);
+});
+
 test("rejects unexpected executable changes, traversal, missing evidence, and file deletion", () => {
   for (const files of [
     { "scripts/release/publish-npm.ts": "bad" },

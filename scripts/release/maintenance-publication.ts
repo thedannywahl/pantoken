@@ -3,6 +3,7 @@ import { readFileSync } from "node:fs";
 import type { MaintenanceResult } from "./weekly-maintenance.ts";
 import { runAsMain } from "./cli.ts";
 import { renderComponentReview } from "./component-reviews.ts";
+import { classifyMaintenanceUpgrades } from "./maintenance-plan.ts";
 
 const passingBranch = (proposal: string): string => `maintenance/weekly-passing-${proposal}`;
 const failedUpdatesBranch = (runId: string, attempt: string): string =>
@@ -38,6 +39,7 @@ export function validateMaintenanceResult(
       Array.isArray(result.accepted) &&
       Array.isArray(result.failures),
   );
+  assert.ok(result.unchanged === undefined || Array.isArray(result.unchanged));
   assert.ok(result.files && typeof result.files === "object" && !Array.isArray(result.files));
   assert.ok(
     result.evidence && typeof result.evidence === "object" && !Array.isArray(result.evidence),
@@ -102,7 +104,7 @@ export function validateMaintenanceResult(
         ),
     );
   }
-  for (const upgrade of [...result.upgrades, ...result.accepted]) {
+  for (const upgrade of [...result.upgrades, ...result.accepted, ...(result.unchanged ?? [])]) {
     assert.ok(
       upgrade &&
         typeof upgrade.depName === "string" &&
@@ -115,10 +117,18 @@ export function validateMaintenanceResult(
         !upgrade.packageFile.split("/").some((part) => !part || part === "." || part === ".."),
     );
   }
-  for (const upgrade of result.accepted)
+  for (const upgrade of [...result.accepted, ...(result.unchanged ?? [])])
     assert.ok(
       result.upgrades.some((original) => JSON.stringify(original) === JSON.stringify(upgrade)),
       "Unproposed accepted update",
+    );
+  for (const upgrade of result.unchanged ?? [])
+    assert.ok(
+      !result.accepted.some((accepted) => JSON.stringify(accepted) === JSON.stringify(upgrade)) &&
+        !result.failures.some((failure) =>
+          failure.upgrades.some((failed) => JSON.stringify(failed) === JSON.stringify(upgrade)),
+        ),
+      "Unchanged entry cannot also be accepted or excluded",
     );
   for (const failure of result.failures) {
     assert.match(failure.id, /^[a-f0-9]{20}$/u);
@@ -313,6 +323,16 @@ export async function publishMaintenance(
     assert.equal(file.encoding, "base64");
     return Buffer.from(file.content, "base64").toString("utf8");
   };
+  const unchangedSources = new Map<string, string>();
+  for (const upgrade of result.unchanged ?? [])
+    if (!unchangedSources.has(upgrade.packageFile))
+      unchangedSources.set(upgrade.packageFile, await content(upgrade.packageFile, base));
+  assert.equal(
+    classifyMaintenanceUpgrades(result.unchanged ?? [], (path) => unchangedSources.get(path)!)
+      .changed.length,
+    0,
+    "Unchanged entries must already be present on the immutable base",
+  );
   for (const [path, data] of Object.entries(result.files)) {
     if (path.endsWith("package.json")) {
       assert.ok(data);
@@ -482,7 +502,7 @@ export async function publishMaintenance(
       passingBranch(proposal),
       tree,
       "chore(deps): prepare weekly maintenance",
-      `Tested weekly maintenance.\n\n${result.accepted.map((upgrade) => `- ${upgrade.depName}: ${upgrade.newValue}`).join("\n")}\n\nExcluded failures: ${result.failures.length}. Final-head CI remains required.`,
+      `Tested weekly maintenance.\n\nAccepted dependency changes: ${result.accepted.length}\n\n${result.accepted.map((upgrade) => `- ${upgrade.depName}: ${upgrade.newValue}`).join("\n")}\n\nAlready present on base (unchanged): ${result.unchanged?.length ?? 0}\n\n${(result.unchanged ?? []).map((upgrade) => `- ${upgrade.depName}: ${upgrade.newValue}`).join("\n")}\n\nExcluded failures: ${result.failures.length}. Final-head CI remains required.`,
       false,
       proposal,
       true,
