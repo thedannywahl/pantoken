@@ -22,6 +22,16 @@ const upgrade: MaintenanceUpgrade = {
   newValue: "^20.0.0",
 };
 
+test("keeps Angular compiler and runtime updates atomic", () => {
+  const upgrades = [
+    "@angular/core",
+    "@angular/common",
+    "@angular/compiler",
+    "@angular/platform-browser",
+  ].map((depName) => ({ ...upgrade, depName }));
+  expect(groupMaintenanceUpgrades(upgrades)).toEqual([upgrades]);
+});
+
 test("routes adapter versions by underlying npm identity, not an alias name", () => {
   const alias = {
     ...upgrade,
