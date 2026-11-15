@@ -161,6 +161,11 @@ know what's in place:
   Renovate's input branch. Retries reuse it only when its tree and base parent
   exactly match the validated handoff. Failed candidates remain in a separate, non-merging draft with individual
   issues. Tests, not release-feed data, establish compatibility claims.
+  Angular compiler/runtime updates validate atomically with explicit compiler companions. Jekyll
+  checks install an exact numeric gem version in a pinned Ruby image under the host UID/GID and a
+  disposable gem home; no candidate version is interpolated into a shell command. Images and gem
+  registries remain trusted build inputs. Unsupported TypeScript compiler majors remain excluded
+  while the installed TypeDoc release's peer contract and import checks reject them.
 - **Resumable maintenance evidence.** Validation groups carry the immutable base and proposal SHAs,
   trusted validator identity, coupled-group identity, and run attempt. Integration rejects missing,
   stale, duplicate, malformed, symlinked, or oversized result files and requires the newest attempt
