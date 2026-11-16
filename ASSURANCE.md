@@ -238,9 +238,11 @@ only the two exact maintenance JSON paths and `docs/public/accessibility/results
 to the existing generated paths. Publication compares prepared metadata with the accepted updates
 and target evidence instead of regenerating files after validation; size and deletion controls apply.
 Unchanged npm proposals are identified against the immutable base before grouping and preparation.
-The publisher validates their proposal membership and immutable base values, and rejects overlap with accepted or failed
-updates. Unchanged entries do not grant adapter compatibility evidence; adapter version routing
-uses the underlying npm package identity rather than its local alias name.
+The publisher validates their proposal membership and rejects overlap with accepted or failed
+updates. It does not install workspace dependencies; unchanged classification is performed by the
+trusted integration job against the immutable base. Unchanged entries do not grant adapter
+compatibility evidence; adapter version routing uses the underlying npm package identity rather
+than its local alias name.
 Accessibility results remain generated evidence, not a substitute for final-head CI.
 
 Pinned npm alias proposals retain the upstream package name in normalized metadata. Applying an
