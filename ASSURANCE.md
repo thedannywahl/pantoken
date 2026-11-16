@@ -221,6 +221,8 @@ alias retirement still require human validation. Evidence: `scripts/release/comp
 and its co-located tests, plus the publisher's separate-draft regression test.
 
 Matrix validation uses immutable base/proposal refs and a validator identity bound to the base.
+Candidate discovery accepts only a root result file or one-level result files, supporting the
+download action's single-artifact and multi-artifact layouts without recursive traversal.
 Candidate outcome files are opened with no-follow flags, then inspected and read through the same
 descriptor, which is closed on success or failure. They must be bounded regular files; missing groups, duplicate attempts, stale refs,
 changed coupled groups, or a newest attempt that is still running or infrastructure-failed block

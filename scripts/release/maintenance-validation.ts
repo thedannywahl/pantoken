@@ -243,7 +243,9 @@ export async function runMaintenanceValidation(
       Number(process.env.GITHUB_RUN_ATTEMPT ?? "1"),
     );
   } else {
-    const files = globSync("*/result.json", { cwd: join(directory, "candidates") });
+    const files = globSync(["result.json", "*/result.json"], {
+      cwd: join(directory, "candidates"),
+    });
     assert.ok(files.length > 0 && files.length <= 2048, "Missing or excessive candidate artifacts");
     const results = files.map((file) => {
       const path = join(directory, "candidates", file);

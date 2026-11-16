@@ -169,7 +169,8 @@ know what's in place:
 - **Resumable maintenance evidence.** Validation groups carry the immutable base and proposal SHAs,
   trusted validator identity, coupled-group identity, and run attempt. Integration rejects missing,
   stale, duplicate, malformed, symlinked, or oversized result files and requires the newest attempt
-  to be terminal. Candidate artifacts supply outcomes, never source files. Integration rebuilds
+  to be terminal. Discovery accepts the download action's flat single-artifact or one-level
+  multi-artifact layout; both retain the same file and evidence checks. Candidate artifacts supply outcomes, never source files. Integration rebuilds
   accepted candidates and runs the full release gates before the existing trusted publisher runs.
   Command timings and failure diagnostics persist outside disposable worktrees; subprocesses do
   not inherit the diagnostic output path. Transport, resource, and subprocess-timeout failures abort
