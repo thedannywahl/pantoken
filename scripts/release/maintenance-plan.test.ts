@@ -209,6 +209,30 @@ test("keeps coupled dependency families atomic", () => {
   ]);
 });
 
+test("keeps Instructure and Vite families atomic and groups non-npm edits by file", () => {
+  const names = [
+    "@instructure/ui",
+    "@instructure/ui-icons",
+    "vite",
+    "vite-plus",
+    "vitest",
+    "@vitest/coverage-v8",
+    "@voidzero-dev/vite-plus-core",
+  ];
+  const dependencies = names.map((depName) => ({ ...upgrade, depName }));
+  const actions = ["actions/checkout", "actions/setup-node"].map((depName) => ({
+    ...upgrade,
+    depName,
+    manager: "github-actions",
+    packageFile: ".github/workflows/ci.yml",
+  }));
+  expect(groupMaintenanceUpgrades([...dependencies, ...actions])).toEqual([
+    actions,
+    dependencies.slice(0, 2),
+    dependencies.slice(2),
+  ]);
+});
+
 test("rejects malformed or traversing metadata and keeps retry IDs stable", () => {
   expect(parseMaintenanceUpgrades([upgrade])).toEqual([upgrade]);
   expect(parseMaintenanceUpgrades([upgrade, upgrade])).toEqual([upgrade]);
