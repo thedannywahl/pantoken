@@ -174,12 +174,12 @@ test("records incompatibilities but fails jobs on infrastructure errors", async 
   });
 });
 
-function cliFixture() {
+function cliFixture(input = upgrades) {
   const directory = mkdtempSync(join(tmpdir(), "pantoken-validation-cli-"));
   directories.push(directory);
   vi.mocked(spawnSync).mockImplementation(((_executable: string, args: string[]) => ({
     status: 0,
-    stdout: args[0] === "rev-parse" ? base : JSON.stringify(upgrades),
+    stdout: args[0] === "rev-parse" ? base : JSON.stringify(input),
     stderr: "",
   })) as unknown as typeof spawnSync);
   vi.mocked(prepareMaintenance).mockResolvedValue({ failures: [] } as unknown as Awaited<
@@ -231,6 +231,23 @@ test("CLI integration revalidates the combined set and retains pre-screened fail
   ).toHaveLength(1);
 });
 
+test.each(["passed", "rejected"] as const)(
+  "integration consumes a single flat %s artifact without dropping its outcome",
+  async (status) => {
+    const directory = cliFixture(upgrades.slice(0, 2));
+    const candidate = { ...records()[0], status, error: "Formatting issues found" };
+    mkdirSync(join(directory, "candidates"));
+    writeFileSync(join(directory, "candidates/result.json"), JSON.stringify(candidate));
+    await runMaintenanceValidation(["integrate", base, proposal, directory]);
+    expect(prepareMaintenance).toHaveBeenCalledWith(base, proposal, {
+      mode: "integration",
+      candidates: status === "passed" ? candidate.upgrades : [],
+    });
+    const result = JSON.parse(readFileSync(join(directory, "maintenance-result.json"), "utf8"));
+    expect(result.failures).toHaveLength(status === "passed" ? 0 : 2);
+  },
+);
+
 test("CLI rejects invalid commands, mutable refs, foreign checkout, and missing artifacts", async () => {
   const directory = cliFixture();
   await expect(runMaintenanceValidation(["unknown"])).rejects.toThrow("Usage");
@@ -253,6 +270,25 @@ test("CLI rejects invalid commands, mutable refs, foreign checkout, and missing 
   await expect(runMaintenanceValidation(["integrate", base, proposal, directory])).rejects.toThrow(
     /ELOOP/u,
   );
+});
+
+test("flat artifacts still reject stale evidence and symlinks", async () => {
+  const directory = cliFixture(upgrades.slice(0, 2));
+  const candidates = join(directory, "candidates");
+  mkdirSync(candidates);
+  const path = join(candidates, "result.json");
+  writeFileSync(path, JSON.stringify({ ...records()[0], base: proposal }));
+  await expect(runMaintenanceValidation(["integrate", base, proposal, directory])).rejects.toThrow(
+    "Stale candidate base",
+  );
+  rmSync(path);
+  const target = join(directory, "external-result.json");
+  writeFileSync(target, JSON.stringify(records()[0]));
+  symlinkSync(target, path);
+  await expect(runMaintenanceValidation(["integrate", base, proposal, directory])).rejects.toThrow(
+    /ELOOP/u,
+  );
+  expect(prepareMaintenance).not.toHaveBeenCalled();
 });
 
 test("integration reads the inspected descriptor even when its pathname is replaced", async () => {

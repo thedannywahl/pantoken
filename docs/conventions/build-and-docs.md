@@ -310,7 +310,9 @@ resource, and subprocess-timeout errors fail the job instead. The baseline prefl
 shared build/check failures before the matrix spends time classifying dependency updates.
 
 Integration accepts only complete same-run outcomes matching the base, proposal, validator, group,
-and attempt. The newest attempt wins; duplicate attempts, missing groups, and incomplete or
+and attempt. Artifact discovery accepts a flat `result.json` when the download action extracts a
+single artifact directly, or one-level per-artifact directories for multiple downloads. Both layouts
+use the same bounded, no-follow descriptor validation. The newest attempt wins; duplicate attempts, missing groups, and incomplete or
 infrastructure-failed outcomes block publication. It first validates the combined passing set and
 bisects failures along coupled-group boundaries. Each integration trial regenerates the English API
 and runs `vp run @pantoken/docs#docs:check:drift`, so untranslated generated prose is attributed to
