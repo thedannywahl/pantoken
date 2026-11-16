@@ -1,5 +1,12 @@
 # CHANGELOG
 
+## 2.2.2
+
+### Patch Changes
+
+- Updated dependencies [3c21aba]
+  - @pantoken/scaffold-base@0.3.12
+
 ## 2.2.1
 
 ### Patch Changes

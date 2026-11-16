@@ -1,5 +1,11 @@
 # @pantoken/scaffold-base
 
+## 0.3.12
+
+### Patch Changes
+
+- 3c21aba: Support Bingo Stratum 0.11 by using its exported BlockWithoutProps type for the shared cssdoc block.
+
 ## 0.3.11
 
 ### Patch Changes

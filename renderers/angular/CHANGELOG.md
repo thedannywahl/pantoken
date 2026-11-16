@@ -1,5 +1,18 @@
 # CHANGELOG
 
+## 0.3.0
+
+### Minor Changes
+
+- 3c21aba: Verify Angular 22.2.5 template compilation with its TypeScript and zone.js companions. Update
+  the isolated conformance Angular packages together and pnpm to 12.19.0 after a full workspace build.
+
+### Patch Changes
+
+- Updated dependencies [3c21aba]
+  - @pantoken/scaffold-base@0.3.12
+  - @pantoken/web-components@0.9.1
+
 ## 0.2.8
 
 ### Patch Changes
