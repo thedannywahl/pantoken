@@ -9,6 +9,10 @@ import {
   validateMaintenanceResult,
 } from "./maintenance-publication.ts";
 
+vi.mock("yaml", () => {
+  throw new Error("Credentialed maintenance publication must not load workspace dependencies");
+});
+
 const temporary: string[] = [];
 afterEach(() => {
   vi.unstubAllGlobals();
@@ -51,10 +55,7 @@ test("reports unchanged base entries separately and rejects overlapping outcomes
     newValue: "^20.0.0",
   };
   const result = { ...artifact(), upgrades: [unchanged], unchanged: [unchanged] };
-  const options = {
-    tree: [{ path: "package.json", type: "blob", sha: "d".repeat(40), mode: "100644" }],
-  };
-  const fixture = githubFixture(result, options);
+  const fixture = githubFixture(result);
   await publishMaintenance(["publish", fixture.file, base, proposal]);
   const body = fixture.calls.find(
     (call) => call.endpoint.endsWith("/pulls/17") && call.method === "PATCH",
@@ -65,12 +66,9 @@ test("reports unchanged base entries separately and rejects overlapping outcomes
     validateMaintenanceResult({ ...result, accepted: [unchanged] }, base, proposal),
   ).toThrow("Unchanged entry");
   expect(() => validateMaintenanceResult({ ...result, unchanged: {} }, base, proposal)).toThrow();
-  const forged = { ...unchanged, newValue: "^21.0.0" };
-  const invalid = githubFixture({ ...result, upgrades: [forged], unchanged: [forged] }, options);
-  await expect(publishMaintenance(["publish", invalid.file, base, proposal])).rejects.toThrow(
-    "immutable base",
-  );
-  expect(invalid.calls.some((call) => call.method !== "GET")).toBe(false);
+  expect(
+    fixture.calls.some((call) => call.endpoint.endsWith(`/git/trees/${base}?recursive=1`)),
+  ).toBe(false);
 });
 
 test("rejects unexpected executable changes, traversal, missing evidence, and file deletion", () => {

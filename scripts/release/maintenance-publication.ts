@@ -3,7 +3,6 @@ import { readFileSync } from "node:fs";
 import type { MaintenanceResult } from "./weekly-maintenance.ts";
 import { runAsMain } from "./cli.ts";
 import { renderComponentReview } from "./component-reviews.ts";
-import { classifyMaintenanceUpgrades } from "./maintenance-plan.ts";
 
 const passingBranch = (proposal: string): string => `maintenance/weekly-passing-${proposal}`;
 const failedUpdatesBranch = (runId: string, attempt: string): string =>
@@ -323,16 +322,6 @@ export async function publishMaintenance(
     assert.equal(file.encoding, "base64");
     return Buffer.from(file.content, "base64").toString("utf8");
   };
-  const unchangedSources = new Map<string, string>();
-  for (const upgrade of result.unchanged ?? [])
-    if (!unchangedSources.has(upgrade.packageFile))
-      unchangedSources.set(upgrade.packageFile, await content(upgrade.packageFile, base));
-  assert.equal(
-    classifyMaintenanceUpgrades(result.unchanged ?? [], (path) => unchangedSources.get(path)!)
-      .changed.length,
-    0,
-    "Unchanged entries must already be present on the immutable base",
-  );
   for (const [path, data] of Object.entries(result.files)) {
     if (path.endsWith("package.json")) {
       assert.ok(data);
