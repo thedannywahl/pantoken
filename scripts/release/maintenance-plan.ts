@@ -89,15 +89,17 @@ export function groupMaintenanceUpgrades(
 ): MaintenanceUpgrade[][] {
   const groups = new Map<string, MaintenanceUpgrade[]>();
   for (const upgrade of upgrades) {
-    const family = upgrade.depName.startsWith("@instructure/")
-      ? "instructure"
-      : /^(?:react(?:-dom)?|@types\/react(?:-dom)?)$/u.test(upgrade.depName)
-        ? "react"
-        : /^(?:vite|vite-plus|vitest|@vitest\/|@voidzero-dev\/)/u.test(upgrade.depName)
-          ? "vite"
-          : upgrade.manager !== "npm"
-            ? upgrade.packageFile
-            : upgrade.depName;
+    const family = upgrade.depName.startsWith("@angular/")
+      ? "angular"
+      : upgrade.depName.startsWith("@instructure/")
+        ? "instructure"
+        : /^(?:react(?:-dom)?|@types\/react(?:-dom)?)$/u.test(upgrade.depName)
+          ? "react"
+          : /^(?:vite|vite-plus|vitest|@vitest\/|@voidzero-dev\/)/u.test(upgrade.depName)
+            ? "vite"
+            : upgrade.manager !== "npm"
+              ? upgrade.packageFile
+              : upgrade.depName;
     const group = groups.get(family) ?? [];
     group.push(upgrade);
     groups.set(family, group);

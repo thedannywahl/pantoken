@@ -13,7 +13,15 @@ const companions = [
   { angular: "22.2.0", typescript: "6.0.3", zone: "0.16.0" },
   { angular: "22.2.1", typescript: "6.0.3", zone: "0.16.0" },
   { angular: "22.2.2", typescript: "6.0.3", zone: "0.16.0" },
+  { angular: "22.2.5", typescript: "6.0.3", zone: "0.16.0" },
 ];
+
+/** Resolve the explicitly verified compiler companions for an Angular release. */
+export function angularCompanion(angular: string): (typeof companions)[number] {
+  const companion = companions.find((candidate) => candidate.angular === angular);
+  if (!companion) throw new Error(`Missing Angular companion versions for ${angular}`);
+  return companion;
+}
 
 /** Compile a standalone Angular component using the custom-element schema in its template. */
 export async function checkCompatibility(
@@ -79,7 +87,10 @@ export class AppComponent {}
 
 if (process.argv[1] === fileURLToPath(import.meta.url)) {
   const args = commandTargetArgs();
-  if (args.length > 0) {
+  if (args.length === 1) {
+    const release = angularCompanion(args[0]);
+    await checkCompatibility(release.angular, release.typescript, release.zone);
+  } else if (args.length > 0) {
     if (
       args.length !== 6 ||
       args[0] !== "--version" ||
@@ -91,8 +102,7 @@ if (process.argv[1] === fileURLToPath(import.meta.url)) {
     await checkCompatibility(args[1], args[3], args[5]);
   } else {
     for (const angular of commandTargetVersions("@pantoken/angular")) {
-      const release = companions.find((candidate) => candidate.angular === angular);
-      if (!release) throw new Error(`Missing Angular companion versions for ${angular}`);
+      const release = angularCompanion(angular);
       await checkCompatibility(release.angular, release.typescript, release.zone);
     }
   }

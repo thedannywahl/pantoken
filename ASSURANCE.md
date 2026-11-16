@@ -195,6 +195,12 @@ component examples remain trusted authored HTML.
 
 ### Weekly maintenance controls
 
+Angular compiler/runtime proposals form one atomic candidate. Adapter versions use explicit
+compiler companions. The Jekyll harness validates numeric versions before passing them as a
+container environment value; Ruby installs that exact gem without shell interpolation. The
+container retains the host UID/GID and a disposable gem home. Container images and gem registries
+remain supply-chain trust dependencies; real builds, not tag existence, establish compatibility.
+
 The optional required `renovate-policy` commit status adds automation-specific merge restrictions
 without granting bot bypass rights or preventing legitimate bot rebases. Reserved PRs must match
 their configured identity, same-repository origin, branch, and `main` target. Failed-update branches

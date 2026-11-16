@@ -75,6 +75,7 @@ test("manual dispatch overrides only Renovate scheduling while scheduled runs re
       description?: string;
       matchPackageNames?: string[];
       enabled?: boolean;
+      allowedVersions?: string;
     }>;
   };
   const override = workflow.jobs.propose.steps.find((step) => step.name === "Run Renovate")?.env
@@ -96,6 +97,9 @@ test("manual dispatch overrides only Renovate scheduling while scheduled runs re
   expect(
     config.packageRules.find((rule) => rule.matchPackageNames?.includes("automatica11y")),
   ).toMatchObject({ enabled: false });
+  expect(
+    config.packageRules.find((rule) => rule.matchPackageNames?.includes("typescript")),
+  ).toMatchObject({ allowedVersions: "<7" });
 });
 
 test("budgets integration time for the full accessibility refresh and release gates", () => {

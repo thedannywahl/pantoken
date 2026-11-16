@@ -252,6 +252,28 @@ organization governance model.
 
 ## Weekly maintenance
 
+TypeScript majors remain below 7 while TypeDoc's supported compiler peer range ends at 6.0.x.
+Revisit the Renovate rule when TypeDoc advertises and passes support for the new compiler API;
+don't treat a TypeDoc import crash as a Pantoken adapter incompatibility.
+
+Coupled Angular runtime and compiler proposals validate atomically. The Angular adapter accepts
+one maintenance version only when an explicit compiler/zone.js companion entry exists. The Jekyll
+harness installs the exact validated gem in a pinned Ruby image rather than assuming a matching
+Jekyll image tag exists; it compiles a consumed Sass token and checks the copied CSS independently.
+
+The recorded candidate failures are handled as follows:
+
+| Candidate                                                                   | Cause and disposition                                                                                                                                        |
+| --------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| Angular common/core/platform-browser                                        | Separate updates mixed compiler/runtime releases; atomic grouping, explicit companions, real compiler checks, and browser conformance verify the update.     |
+| Vite+, Vite, Vitest/coverage, VitePress                                     | Alias routing was repaired; aliases now align, and Arabic demos use the upgraded formatter's wrapping. Real Vite builds and focused tests verify the update. |
+| pnpm                                                                        | Mismatched Vite+ aliases broke task resolution; aligned aliases pass installation and the sequential workspace build with the proposed pnpm release.         |
+| Bingo Stratum                                                               | Removed block type renamed to the installed BlockWithoutProps API; scaffold tests and declarations verify the update.                                        |
+| Zod                                                                         | The checked React fixture boundary needs explicit type erasure; framework browser conformance verifies the update without removing runtime guards.           |
+| TypeScript                                                                  | TypeDoc doesn't support the proposed compiler API; Renovate holds major 7 until upstream support exists.                                                     |
+| Jekyll                                                                      | Missing per-release Docker tag and an invalid Sass assertion; exact gem builds verify both supported major families.                                         |
+| PostCSS, Vite, Hugo, Angular, Astro, Bootstrap, Mintlify, TinyMCE discovery | Latest releases were younger than the five-day policy or lacked timestamps. These remain deferred, not verified or marked incompatible.                      |
+
 `.github/workflows/renovate.yml` runs self-hosted Renovate Monday at 06:00 UTC, with a manual
 dispatch for retries. One draft proposal groups dependency updates, including majors, GitHub
 Actions, and the GitHub-only Instructure design-token tag. The existing five-day maturity delay

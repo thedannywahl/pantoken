@@ -22,6 +22,16 @@ const upgrade: MaintenanceUpgrade = {
   newValue: "^20.0.0",
 };
 
+test("keeps Angular compiler and runtime updates atomic", () => {
+  const upgrades = [
+    "@angular/core",
+    "@angular/common",
+    "@angular/compiler",
+    "@angular/platform-browser",
+  ].map((depName) => ({ ...upgrade, depName }));
+  expect(groupMaintenanceUpgrades(upgrades)).toEqual([upgrades]);
+});
+
 test("routes adapter versions by underlying npm identity, not an alias name", () => {
   const alias = {
     ...upgrade,
@@ -196,6 +206,30 @@ test("keeps coupled dependency families atomic", () => {
   expect(group.map((items) => items.map((item) => item.depName))).toEqual([
     ["react", "react-dom"],
     ["unrelated"],
+  ]);
+});
+
+test("keeps Instructure and Vite families atomic and groups non-npm edits by file", () => {
+  const names = [
+    "@instructure/ui",
+    "@instructure/ui-icons",
+    "vite",
+    "vite-plus",
+    "vitest",
+    "@vitest/coverage-v8",
+    "@voidzero-dev/vite-plus-core",
+  ];
+  const dependencies = names.map((depName) => ({ ...upgrade, depName }));
+  const actions = ["actions/checkout", "actions/setup-node"].map((depName) => ({
+    ...upgrade,
+    depName,
+    manager: "github-actions",
+    packageFile: ".github/workflows/ci.yml",
+  }));
+  expect(groupMaintenanceUpgrades([...dependencies, ...actions])).toEqual([
+    actions,
+    dependencies.slice(0, 2),
+    dependencies.slice(2),
   ]);
 });
 

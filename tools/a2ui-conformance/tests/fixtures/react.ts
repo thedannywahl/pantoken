@@ -19,7 +19,7 @@ export async function createHost(container: HTMLElement): Promise<RendererHost> 
         }
       }
       // The harness erases catalog implementation types; the checks above restore that contract.
-      const reactSurface = surface as ComponentProps<typeof A2uiSurface>["surface"];
+      const reactSurface = surface as unknown as ComponentProps<typeof A2uiSurface>["surface"];
       root.render(
         createElement(StrictMode, null, createElement(A2uiSurface, { surface: reactSurface })),
       );

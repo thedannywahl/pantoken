@@ -48,8 +48,8 @@
     "target": "Vite",
     "status": "verified",
     "minimum": "8.0.0",
-    "testedThrough": "8.3.4",
-    "testedVersions": ["8.0.0", "8.0.16", "8.1.5", "8.2.2", "8.3.1", "8.3.2", "8.3.4"],
+    "testedThrough": "8.3.7",
+    "testedVersions": ["8.0.0", "8.0.16", "8.1.5", "8.2.2", "8.3.1", "8.3.2", "8.3.4", "8.3.7"],
     "testCommand": "vp run @pantoken/vite#check:compatibility"
   },
   "@pantoken/webpack": {
@@ -155,8 +155,8 @@
     "format": "CUSTOM_ELEMENTS_SCHEMA template compilation (Angular 16.2.12 / TS 5.1.6; Angular 22.2.0, 22.2.1, and 22.2.2 / TS 6.0.3)",
     "status": "verified",
     "minimum": "16.2.12",
-    "testedThrough": "22.2.2",
-    "testedVersions": ["16.2.12", "22.2.0", "22.2.1", "22.2.2"],
+    "testedThrough": "22.2.5",
+    "testedVersions": ["16.2.12", "22.2.0", "22.2.1", "22.2.2", "22.2.5"],
     "testCommand": "vp run @pantoken/angular#check:compatibility"
   },
   "@pantoken/astro": {
