@@ -1,5 +1,17 @@
 # CHANGELOG
 
+## 0.1.56
+
+### Patch Changes
+
+- Updated dependencies [3c21aba]
+  - @pantoken/scaffold@1.7.4
+  - @pantoken/drupal@0.3.1
+  - @pantoken/email@0.1.28
+  - @pantoken/hugo@0.2.7
+  - @pantoken/jekyll@0.2.7
+  - @pantoken/pendo@0.4.18
+
 ## 0.1.55
 
 ### Patch Changes

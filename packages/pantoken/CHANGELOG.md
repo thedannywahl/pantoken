@@ -1,5 +1,36 @@
 # CHANGELOG
 
+## 0.2.38
+
+### Patch Changes
+
+- Updated dependencies [3c21aba]
+- Updated dependencies [3c21aba]
+  - @pantoken/angular@0.3.0
+  - @pantoken/vite@0.3.0
+  - @pantoken/components@2.2.2
+  - @pantoken/react@0.3.2
+  - @pantoken/svelte@0.3.2
+  - @pantoken/vue@0.3.2
+  - @pantoken/web-components@0.9.1
+  - @pantoken/cli@0.1.56
+  - @pantoken/drupal@0.3.1
+  - @pantoken/email@0.1.28
+  - @pantoken/hugo@0.2.7
+  - @pantoken/jekyll@0.2.7
+  - @pantoken/plugin-custom-components@0.7.6
+  - @pantoken/astro@0.2.7
+  - @pantoken/bootstrap@0.2.0
+  - @pantoken/css-in-js@0.2.6
+  - @pantoken/docusaurus@0.2.0
+  - @pantoken/foundation@0.2.6
+  - @pantoken/mui@0.3.0
+  - @pantoken/pendo@0.4.18
+  - @pantoken/shadcn@0.4.0
+  - @pantoken/storybook@0.3.0
+  - @pantoken/tinymce@0.7.6
+  - @pantoken/vitepress@0.3.0
+
 ## 0.2.37
 
 ### Patch Changes
