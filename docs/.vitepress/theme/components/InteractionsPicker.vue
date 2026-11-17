@@ -178,9 +178,7 @@ const note = computed(() => {
 <template>
   <div class="interactions-picker instui-view">
     <fieldset class="instui-form-field-group interactions-picker__group">
-      <span class="instui-screen-reader-content"
-        ><legend>{{ t.label }}</legend></span
-      >
+      <span class="instui-screen-reader-content"><legend>{{ t.label }}</legend></span>
       <span class="instui-input-group interactions-picker__search">
         <span class="before"
           ><span class="instui-icon -icon-search" aria-hidden="true"></span

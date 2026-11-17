@@ -356,9 +356,7 @@ const jsOutput = computed(() => {
 <template>
   <div class="components-picker instui-view">
     <fieldset class="instui-form-field-group components-picker__group">
-      <span class="instui-screen-reader-content"
-        ><legend>{{ t.label }}</legend></span
-      >
+      <span class="instui-screen-reader-content"><legend>{{ t.label }}</legend></span>
       <span class="instui-input-group components-picker__search">
         <span class="before"
           ><span class="instui-icon -icon-search" aria-hidden="true"></span
