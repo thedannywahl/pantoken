@@ -1,0 +1,377 @@
+[
+  {
+    "id": "d79eda0b02b863b896c9",
+    "kind": "deferred",
+    "package": "@pantoken/postcss",
+    "version": "discovery",
+    "error": "Deferred release 8.5.33: missing timestamp or minimum release age",
+    "upgrades": []
+  },
+  {
+    "id": "28fbb963a58964d89449",
+    "kind": "deferred",
+    "package": "@pantoken/hugo",
+    "version": "discovery",
+    "error": "Deferred release 0.170.1: missing timestamp or minimum release age",
+    "upgrades": []
+  },
+  {
+    "id": "3df264fc903c3c446268",
+    "kind": "compatibility",
+    "package": "@pantoken/angular",
+    "version": "21.2.26",
+    "error": "/home/runner/.local/share/vite-plus/js_runtime/node/26.13.1/bin/node scripts/check-compatibility.ts 21.2.26 failed: file:///tmp/pantoken-weekly-Ktm8t8/candidate-1/renderers/angular/scripts/check-compatibility.ts:22\n  if (!companion) throw new Error(`Missing Angular companion versions for ${angular}`);\n                        ^\n\nError: Missing Angular companion versions for 21.2.26\n    at angularCompanion (file:///tmp/pantoken-weekly-Ktm8t8/candidate-1/renderers/angular/scripts/check-compatibility.ts:22:25)\n    at file:///tmp/pantoken-weekly-Ktm8t8/candidate-1/renderers/angular/scripts/check-compatibility.ts:91:21\n    at ModuleJob.run (node:internal/modules/esm/module_job:569:25)\n    at async node:internal/modules/esm/loader:650:26\n    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:105:5)\n\nNode.js v26.13.1\n\n\nexit 1",
+    "upgrades": []
+  },
+  {
+    "id": "ac7fc985edd1a8f8a2ae",
+    "kind": "deferred",
+    "package": "@pantoken/astro",
+    "version": "discovery",
+    "error": "Deferred release 0.43.1: missing timestamp or minimum release age",
+    "upgrades": []
+  },
+  {
+    "id": "51c0adc8ae7e22cf8de5",
+    "kind": "deferred",
+    "package": "@pantoken/mintlify",
+    "version": "discovery",
+    "error": "Deferred release 4.1.50: missing timestamp or minimum release age",
+    "upgrades": []
+  },
+  {
+    "id": "b9a8142584e805d2e528",
+    "package": "@angular/common",
+    "version": "22.2.6",
+    "error": "/home/runner/.local/share/vite-plus/js_runtime/node/26.13.1/bin/node scripts/check-compatibility.ts 22.2.6 failed: file:///tmp/pantoken-weekly-p5PNMx/candidate-1/renderers/angular/scripts/check-compatibility.ts:22\n  if (!companion) throw new Error(`Missing Angular companion versions for ${angular}`);\n                        ^\n\nError: Missing Angular companion versions for 22.2.6\n    at angularCompanion (file:///tmp/pantoken-weekly-p5PNMx/candidate-1/renderers/angular/scripts/check-compatibility.ts:22:25)\n    at file:///tmp/pantoken-weekly-p5PNMx/candidate-1/renderers/angular/scripts/check-compatibility.ts:91:21\n    at ModuleJob.run (node:internal/modules/esm/module_job:569:25)\n    at async node:internal/modules/esm/loader:650:26\n    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:105:5)\n\nNode.js v26.13.1\n\n\nexit 1",
+    "upgrades": [
+      {
+        "depName": "@angular/common",
+        "packageName": "@angular/common",
+        "packageFile": "pnpm-workspace.yaml",
+        "manager": "npm",
+        "newValue": "22.2.6",
+        "currentValue": "22.2.5",
+        "newDigest": "sha512-wL7qv2fb/qWIDhq6leX3SFGql76ljCPC6qXHB2KpKJ3GlppuF9fYJwLo+RicRyM72nFu9qQPzd9Zl9k3/eUisQ=="
+      },
+      {
+        "depName": "@angular/compiler",
+        "packageName": "@angular/compiler",
+        "packageFile": "pnpm-workspace.yaml",
+        "manager": "npm",
+        "newValue": "22.2.6",
+        "currentValue": "22.2.5",
+        "newDigest": "sha512-9QNqLAG+bqsTRDZZbggX50sS9NyWx3ACfgeLKUAaHPzebQXtIsAYIT6H8HNpR27GHJ2qJHi9yEm84hAJsKZCuQ=="
+      },
+      {
+        "depName": "@angular/core",
+        "packageName": "@angular/core",
+        "packageFile": "pnpm-workspace.yaml",
+        "manager": "npm",
+        "newValue": "22.2.6",
+        "currentValue": "22.2.5",
+        "newDigest": "sha512-atESNSPsM0dBXU88aDtByBP4W/wb8USbhL16lsePyxBvAWtM1Xn7QBB489QTmHpY6VCXHnqMhXWcrZsDpoIBsw=="
+      },
+      {
+        "depName": "@angular/platform-browser",
+        "packageName": "@angular/platform-browser",
+        "packageFile": "pnpm-workspace.yaml",
+        "manager": "npm",
+        "newValue": "22.2.6",
+        "currentValue": "22.2.5",
+        "newDigest": "sha512-xXSgdnnLLv/3aEC/pqyrUd0xlyYURGZG2HR3sOIN3bsIoctGFvzA5iwt/GEKpIDA1rn+NnKNLK/EKQaPA4YZEw=="
+      }
+    ]
+  },
+  {
+    "id": "8f67077c7285d3b08f96",
+    "package": "@angular/compiler",
+    "version": "22.2.6",
+    "error": "/home/runner/.local/share/vite-plus/js_runtime/node/26.13.1/bin/node scripts/check-compatibility.ts 22.2.6 failed: file:///tmp/pantoken-weekly-p5PNMx/candidate-1/renderers/angular/scripts/check-compatibility.ts:22\n  if (!companion) throw new Error(`Missing Angular companion versions for ${angular}`);\n                        ^\n\nError: Missing Angular companion versions for 22.2.6\n    at angularCompanion (file:///tmp/pantoken-weekly-p5PNMx/candidate-1/renderers/angular/scripts/check-compatibility.ts:22:25)\n    at file:///tmp/pantoken-weekly-p5PNMx/candidate-1/renderers/angular/scripts/check-compatibility.ts:91:21\n    at ModuleJob.run (node:internal/modules/esm/module_job:569:25)\n    at async node:internal/modules/esm/loader:650:26\n    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:105:5)\n\nNode.js v26.13.1\n\n\nexit 1",
+    "upgrades": [
+      {
+        "depName": "@angular/common",
+        "packageName": "@angular/common",
+        "packageFile": "pnpm-workspace.yaml",
+        "manager": "npm",
+        "newValue": "22.2.6",
+        "currentValue": "22.2.5",
+        "newDigest": "sha512-wL7qv2fb/qWIDhq6leX3SFGql76ljCPC6qXHB2KpKJ3GlppuF9fYJwLo+RicRyM72nFu9qQPzd9Zl9k3/eUisQ=="
+      },
+      {
+        "depName": "@angular/compiler",
+        "packageName": "@angular/compiler",
+        "packageFile": "pnpm-workspace.yaml",
+        "manager": "npm",
+        "newValue": "22.2.6",
+        "currentValue": "22.2.5",
+        "newDigest": "sha512-9QNqLAG+bqsTRDZZbggX50sS9NyWx3ACfgeLKUAaHPzebQXtIsAYIT6H8HNpR27GHJ2qJHi9yEm84hAJsKZCuQ=="
+      },
+      {
+        "depName": "@angular/core",
+        "packageName": "@angular/core",
+        "packageFile": "pnpm-workspace.yaml",
+        "manager": "npm",
+        "newValue": "22.2.6",
+        "currentValue": "22.2.5",
+        "newDigest": "sha512-atESNSPsM0dBXU88aDtByBP4W/wb8USbhL16lsePyxBvAWtM1Xn7QBB489QTmHpY6VCXHnqMhXWcrZsDpoIBsw=="
+      },
+      {
+        "depName": "@angular/platform-browser",
+        "packageName": "@angular/platform-browser",
+        "packageFile": "pnpm-workspace.yaml",
+        "manager": "npm",
+        "newValue": "22.2.6",
+        "currentValue": "22.2.5",
+        "newDigest": "sha512-xXSgdnnLLv/3aEC/pqyrUd0xlyYURGZG2HR3sOIN3bsIoctGFvzA5iwt/GEKpIDA1rn+NnKNLK/EKQaPA4YZEw=="
+      }
+    ]
+  },
+  {
+    "id": "5f51b3ab08d5eb029ef2",
+    "package": "@angular/core",
+    "version": "22.2.6",
+    "error": "/home/runner/.local/share/vite-plus/js_runtime/node/26.13.1/bin/node scripts/check-compatibility.ts 22.2.6 failed: file:///tmp/pantoken-weekly-p5PNMx/candidate-1/renderers/angular/scripts/check-compatibility.ts:22\n  if (!companion) throw new Error(`Missing Angular companion versions for ${angular}`);\n                        ^\n\nError: Missing Angular companion versions for 22.2.6\n    at angularCompanion (file:///tmp/pantoken-weekly-p5PNMx/candidate-1/renderers/angular/scripts/check-compatibility.ts:22:25)\n    at file:///tmp/pantoken-weekly-p5PNMx/candidate-1/renderers/angular/scripts/check-compatibility.ts:91:21\n    at ModuleJob.run (node:internal/modules/esm/module_job:569:25)\n    at async node:internal/modules/esm/loader:650:26\n    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:105:5)\n\nNode.js v26.13.1\n\n\nexit 1",
+    "upgrades": [
+      {
+        "depName": "@angular/common",
+        "packageName": "@angular/common",
+        "packageFile": "pnpm-workspace.yaml",
+        "manager": "npm",
+        "newValue": "22.2.6",
+        "currentValue": "22.2.5",
+        "newDigest": "sha512-wL7qv2fb/qWIDhq6leX3SFGql76ljCPC6qXHB2KpKJ3GlppuF9fYJwLo+RicRyM72nFu9qQPzd9Zl9k3/eUisQ=="
+      },
+      {
+        "depName": "@angular/compiler",
+        "packageName": "@angular/compiler",
+        "packageFile": "pnpm-workspace.yaml",
+        "manager": "npm",
+        "newValue": "22.2.6",
+        "currentValue": "22.2.5",
+        "newDigest": "sha512-9QNqLAG+bqsTRDZZbggX50sS9NyWx3ACfgeLKUAaHPzebQXtIsAYIT6H8HNpR27GHJ2qJHi9yEm84hAJsKZCuQ=="
+      },
+      {
+        "depName": "@angular/core",
+        "packageName": "@angular/core",
+        "packageFile": "pnpm-workspace.yaml",
+        "manager": "npm",
+        "newValue": "22.2.6",
+        "currentValue": "22.2.5",
+        "newDigest": "sha512-atESNSPsM0dBXU88aDtByBP4W/wb8USbhL16lsePyxBvAWtM1Xn7QBB489QTmHpY6VCXHnqMhXWcrZsDpoIBsw=="
+      },
+      {
+        "depName": "@angular/platform-browser",
+        "packageName": "@angular/platform-browser",
+        "packageFile": "pnpm-workspace.yaml",
+        "manager": "npm",
+        "newValue": "22.2.6",
+        "currentValue": "22.2.5",
+        "newDigest": "sha512-xXSgdnnLLv/3aEC/pqyrUd0xlyYURGZG2HR3sOIN3bsIoctGFvzA5iwt/GEKpIDA1rn+NnKNLK/EKQaPA4YZEw=="
+      }
+    ]
+  },
+  {
+    "id": "f5b69b2170649c450cd5",
+    "package": "@angular/platform-browser",
+    "version": "22.2.6",
+    "error": "/home/runner/.local/share/vite-plus/js_runtime/node/26.13.1/bin/node scripts/check-compatibility.ts 22.2.6 failed: file:///tmp/pantoken-weekly-p5PNMx/candidate-1/renderers/angular/scripts/check-compatibility.ts:22\n  if (!companion) throw new Error(`Missing Angular companion versions for ${angular}`);\n                        ^\n\nError: Missing Angular companion versions for 22.2.6\n    at angularCompanion (file:///tmp/pantoken-weekly-p5PNMx/candidate-1/renderers/angular/scripts/check-compatibility.ts:22:25)\n    at file:///tmp/pantoken-weekly-p5PNMx/candidate-1/renderers/angular/scripts/check-compatibility.ts:91:21\n    at ModuleJob.run (node:internal/modules/esm/module_job:569:25)\n    at async node:internal/modules/esm/loader:650:26\n    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:105:5)\n\nNode.js v26.13.1\n\n\nexit 1",
+    "upgrades": [
+      {
+        "depName": "@angular/common",
+        "packageName": "@angular/common",
+        "packageFile": "pnpm-workspace.yaml",
+        "manager": "npm",
+        "newValue": "22.2.6",
+        "currentValue": "22.2.5",
+        "newDigest": "sha512-wL7qv2fb/qWIDhq6leX3SFGql76ljCPC6qXHB2KpKJ3GlppuF9fYJwLo+RicRyM72nFu9qQPzd9Zl9k3/eUisQ=="
+      },
+      {
+        "depName": "@angular/compiler",
+        "packageName": "@angular/compiler",
+        "packageFile": "pnpm-workspace.yaml",
+        "manager": "npm",
+        "newValue": "22.2.6",
+        "currentValue": "22.2.5",
+        "newDigest": "sha512-9QNqLAG+bqsTRDZZbggX50sS9NyWx3ACfgeLKUAaHPzebQXtIsAYIT6H8HNpR27GHJ2qJHi9yEm84hAJsKZCuQ=="
+      },
+      {
+        "depName": "@angular/core",
+        "packageName": "@angular/core",
+        "packageFile": "pnpm-workspace.yaml",
+        "manager": "npm",
+        "newValue": "22.2.6",
+        "currentValue": "22.2.5",
+        "newDigest": "sha512-atESNSPsM0dBXU88aDtByBP4W/wb8USbhL16lsePyxBvAWtM1Xn7QBB489QTmHpY6VCXHnqMhXWcrZsDpoIBsw=="
+      },
+      {
+        "depName": "@angular/platform-browser",
+        "packageName": "@angular/platform-browser",
+        "packageFile": "pnpm-workspace.yaml",
+        "manager": "npm",
+        "newValue": "22.2.6",
+        "currentValue": "22.2.5",
+        "newDigest": "sha512-xXSgdnnLLv/3aEC/pqyrUd0xlyYURGZG2HR3sOIN3bsIoctGFvzA5iwt/GEKpIDA1rn+NnKNLK/EKQaPA4YZEw=="
+      }
+    ]
+  },
+  {
+    "id": "a30e182284d460830942",
+    "package": "vite",
+    "version": "1.6.0",
+    "error": "vp check failed: error: Formatting issues found\n\n\u001b[38;2;244;191;117;1mdocs/.vitepress/theme/components/CdnPicker.vue\u001b[0m (0ms)\n\u001b[38;2;244;191;117;1mdocs/.vitepress/theme/components/ComponentsPicker.vue\u001b[0m (1ms)\n\u001b[38;2;244;191;117;1mdocs/.vitepress/theme/components/InteractionsPicker.vue\u001b[0m (0ms)\n\u001b[38;2;244;191;117;1mdocs/.vitepress/theme/components/WebComponentsPicker.vue\u001b[0m (0ms)\n\nFound formatting issues in 4 files (361ms, 4 threads). Run `vp check --fix` to fix them.\n\nexit 1",
+    "upgrades": [
+      {
+        "depName": "vite",
+        "packageName": "@voidzero-dev/vite-plus-core",
+        "packageFile": "pnpm-workspace.yaml",
+        "manager": "npm",
+        "newValue": "1.6.0",
+        "currentValue": "1.5.1",
+        "newDigest": "sha512-0UFh0AVjt3ZynvRk0BTCwysCeURhyZCoEGabEptwOzlvQjV2eGRcf5jPTfLGaKwgw2dKOQYH4vq/N3H7WUdIyw=="
+      },
+      {
+        "depName": "vite",
+        "packageName": "@voidzero-dev/vite-plus-core",
+        "packageFile": "plugins/vite/workspace-orchestrator/package.json",
+        "manager": "npm",
+        "newValue": "1.6.0",
+        "currentValue": "1.5.1",
+        "newDigest": "sha512-0UFh0AVjt3ZynvRk0BTCwysCeURhyZCoEGabEptwOzlvQjV2eGRcf5jPTfLGaKwgw2dKOQYH4vq/N3H7WUdIyw=="
+      },
+      {
+        "depName": "vite",
+        "packageName": "vite",
+        "packageFile": "bundlers/vite/package.json",
+        "manager": "npm",
+        "newValue": ">=8.0.0 <=8.3.8",
+        "currentValue": ">=8.0.0 <=8.3.7",
+        "newDigest": "sha512-LzOn3h9rG/0vhLdXrV4yJ4QFA9eEoqCl+Yx+kGJd7aB9w6nfNgVHKSYwLPZUHrz4ZGa+t+kXjV9itvcHDLQouA=="
+      },
+      {
+        "depName": "vite",
+        "packageName": "@voidzero-dev/vite-plus-core",
+        "packageFile": "bundlers/vite/package.json",
+        "manager": "npm",
+        "newValue": "1.6.0",
+        "currentValue": "1.5.1",
+        "newDigest": "sha512-0UFh0AVjt3ZynvRk0BTCwysCeURhyZCoEGabEptwOzlvQjV2eGRcf5jPTfLGaKwgw2dKOQYH4vq/N3H7WUdIyw=="
+      },
+      {
+        "depName": "vite-plus",
+        "packageName": "vite-plus",
+        "packageFile": "pnpm-workspace.yaml",
+        "manager": "npm",
+        "newValue": "1.6.0",
+        "currentValue": "1.5.1",
+        "newDigest": "sha512-h6aIA80QcAhICBp2Xga8lPM9jOZm2VvPn7Ls531C7RjD9herrT1rPDUMY72IdFf1XyWDmFVEwO+W3EgXtSSMLQ=="
+      }
+    ]
+  },
+  {
+    "id": "5067281f0fbb4860a8ec",
+    "package": "vite",
+    "version": ">=8.0.0 <=8.3.8",
+    "error": "vp check failed: error: Formatting issues found\n\n\u001b[38;2;244;191;117;1mdocs/.vitepress/theme/components/CdnPicker.vue\u001b[0m (0ms)\n\u001b[38;2;244;191;117;1mdocs/.vitepress/theme/components/ComponentsPicker.vue\u001b[0m (1ms)\n\u001b[38;2;244;191;117;1mdocs/.vitepress/theme/components/InteractionsPicker.vue\u001b[0m (0ms)\n\u001b[38;2;244;191;117;1mdocs/.vitepress/theme/components/WebComponentsPicker.vue\u001b[0m (0ms)\n\nFound formatting issues in 4 files (361ms, 4 threads). Run `vp check --fix` to fix them.\n\nexit 1",
+    "upgrades": [
+      {
+        "depName": "vite",
+        "packageName": "@voidzero-dev/vite-plus-core",
+        "packageFile": "pnpm-workspace.yaml",
+        "manager": "npm",
+        "newValue": "1.6.0",
+        "currentValue": "1.5.1",
+        "newDigest": "sha512-0UFh0AVjt3ZynvRk0BTCwysCeURhyZCoEGabEptwOzlvQjV2eGRcf5jPTfLGaKwgw2dKOQYH4vq/N3H7WUdIyw=="
+      },
+      {
+        "depName": "vite",
+        "packageName": "@voidzero-dev/vite-plus-core",
+        "packageFile": "plugins/vite/workspace-orchestrator/package.json",
+        "manager": "npm",
+        "newValue": "1.6.0",
+        "currentValue": "1.5.1",
+        "newDigest": "sha512-0UFh0AVjt3ZynvRk0BTCwysCeURhyZCoEGabEptwOzlvQjV2eGRcf5jPTfLGaKwgw2dKOQYH4vq/N3H7WUdIyw=="
+      },
+      {
+        "depName": "vite",
+        "packageName": "vite",
+        "packageFile": "bundlers/vite/package.json",
+        "manager": "npm",
+        "newValue": ">=8.0.0 <=8.3.8",
+        "currentValue": ">=8.0.0 <=8.3.7",
+        "newDigest": "sha512-LzOn3h9rG/0vhLdXrV4yJ4QFA9eEoqCl+Yx+kGJd7aB9w6nfNgVHKSYwLPZUHrz4ZGa+t+kXjV9itvcHDLQouA=="
+      },
+      {
+        "depName": "vite",
+        "packageName": "@voidzero-dev/vite-plus-core",
+        "packageFile": "bundlers/vite/package.json",
+        "manager": "npm",
+        "newValue": "1.6.0",
+        "currentValue": "1.5.1",
+        "newDigest": "sha512-0UFh0AVjt3ZynvRk0BTCwysCeURhyZCoEGabEptwOzlvQjV2eGRcf5jPTfLGaKwgw2dKOQYH4vq/N3H7WUdIyw=="
+      },
+      {
+        "depName": "vite-plus",
+        "packageName": "vite-plus",
+        "packageFile": "pnpm-workspace.yaml",
+        "manager": "npm",
+        "newValue": "1.6.0",
+        "currentValue": "1.5.1",
+        "newDigest": "sha512-h6aIA80QcAhICBp2Xga8lPM9jOZm2VvPn7Ls531C7RjD9herrT1rPDUMY72IdFf1XyWDmFVEwO+W3EgXtSSMLQ=="
+      }
+    ]
+  },
+  {
+    "id": "ee9cea857dd5913efb4f",
+    "package": "vite-plus",
+    "version": "1.6.0",
+    "error": "vp check failed: error: Formatting issues found\n\n\u001b[38;2;244;191;117;1mdocs/.vitepress/theme/components/CdnPicker.vue\u001b[0m (0ms)\n\u001b[38;2;244;191;117;1mdocs/.vitepress/theme/components/ComponentsPicker.vue\u001b[0m (1ms)\n\u001b[38;2;244;191;117;1mdocs/.vitepress/theme/components/InteractionsPicker.vue\u001b[0m (0ms)\n\u001b[38;2;244;191;117;1mdocs/.vitepress/theme/components/WebComponentsPicker.vue\u001b[0m (0ms)\n\nFound formatting issues in 4 files (361ms, 4 threads). Run `vp check --fix` to fix them.\n\nexit 1",
+    "upgrades": [
+      {
+        "depName": "vite",
+        "packageName": "@voidzero-dev/vite-plus-core",
+        "packageFile": "pnpm-workspace.yaml",
+        "manager": "npm",
+        "newValue": "1.6.0",
+        "currentValue": "1.5.1",
+        "newDigest": "sha512-0UFh0AVjt3ZynvRk0BTCwysCeURhyZCoEGabEptwOzlvQjV2eGRcf5jPTfLGaKwgw2dKOQYH4vq/N3H7WUdIyw=="
+      },
+      {
+        "depName": "vite",
+        "packageName": "@voidzero-dev/vite-plus-core",
+        "packageFile": "plugins/vite/workspace-orchestrator/package.json",
+        "manager": "npm",
+        "newValue": "1.6.0",
+        "currentValue": "1.5.1",
+        "newDigest": "sha512-0UFh0AVjt3ZynvRk0BTCwysCeURhyZCoEGabEptwOzlvQjV2eGRcf5jPTfLGaKwgw2dKOQYH4vq/N3H7WUdIyw=="
+      },
+      {
+        "depName": "vite",
+        "packageName": "vite",
+        "packageFile": "bundlers/vite/package.json",
+        "manager": "npm",
+        "newValue": ">=8.0.0 <=8.3.8",
+        "currentValue": ">=8.0.0 <=8.3.7",
+        "newDigest": "sha512-LzOn3h9rG/0vhLdXrV4yJ4QFA9eEoqCl+Yx+kGJd7aB9w6nfNgVHKSYwLPZUHrz4ZGa+t+kXjV9itvcHDLQouA=="
+      },
+      {
+        "depName": "vite",
+        "packageName": "@voidzero-dev/vite-plus-core",
+        "packageFile": "bundlers/vite/package.json",
+        "manager": "npm",
+        "newValue": "1.6.0",
+        "currentValue": "1.5.1",
+        "newDigest": "sha512-0UFh0AVjt3ZynvRk0BTCwysCeURhyZCoEGabEptwOzlvQjV2eGRcf5jPTfLGaKwgw2dKOQYH4vq/N3H7WUdIyw=="
+      },
+      {
+        "depName": "vite-plus",
+        "packageName": "vite-plus",
+        "packageFile": "pnpm-workspace.yaml",
+        "manager": "npm",
+        "newValue": "1.6.0",
+        "currentValue": "1.5.1",
+        "newDigest": "sha512-h6aIA80QcAhICBp2Xga8lPM9jOZm2VvPn7Ls531C7RjD9herrT1rPDUMY72IdFf1XyWDmFVEwO+W3EgXtSSMLQ=="
+      }
+    ]
+  }
+]
