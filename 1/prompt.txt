@@ -1,0 +1,161 @@
+The user explicitly invoked the "/VS Code Synced Data:fix-customization-evaluation-diagnostics" skill. Follow its instructions now.
+
+<skill-context name="fix-customization-evaluation-diagnostics">
+Base directory for this skill: /Users/dwahl/Library/Application Support/Code/agentPlugins/vscode-synced-customization-agent-host-copilotcli-1148375999/1722175465/skills/fix-customization-evaluation-diagnostics
+
+# Implement suggestions
+
+## Purpose
+
+Fix issues found by the Chat Customizations Evaluations analyzer in prompt, agent, skill, and instruction files. The diagnostics include contradictions, ambiguities, persona conflicts, cognitive load issues, and coverage gaps.
+
+## Usage
+
+This skill is invoked automatically when the user clicks the "Implement suggestions" button in the editor title bar. It receives the diagnostics as context and rewrites the affected sections of the file to resolve them.
+
+This skill can also be called directly by the user. In that case search for the diagnostics from the Chat Customizations Evaluations extension and apply the fixes.
+
+## Instructions
+
+- You will either receive a list of diagnostics from the Chat Customizations Evaluations extension or be called without diagnostics. 
+- If you receive a list of diagnostics from the Chat Customizations Evaluations extension, then each diagnostic will includes a line number, code, message, and optionally a suggestion.
+- If you are called without diagnostics, you should search and find diagnostics from the Chat Customizations Evaluations extension yourself.
+- For each diagnostic, apply the fix directly to the file content. Use the suggestion if one is provided; otherwise, use your judgment to resolve the issue.
+- Preserve the overall structure, tone, and intent of the prompt file. Only change what is necessary to resolve the diagnostics.
+- If two diagnostics conflict with each other, prefer the fix that keeps the prompt clearer and more consistent.
+- Directly edit the file content to apply the fixes.
+- Do NOT add new instructions or sections that were not in the original file.
+- Do NOT remove instructions unless a diagnostic specifically calls for it (e.g., contradictions).
+
+
+ARGUMENTS: Target file: /Users/dwahl/Scripts/pantoken/.agents/skills/check-failed-updates/SKILL.md
+
+Use ONLY the diagnostics below for this target file. Do not lint or rewrite the skill file itself.
+
+Field meanings:
+
+- line: 1-based line number where the diagnostic starts (or start-end for a multi-line range).
+
+- lineText: exact text currently present at the diagnostic start line in the target file.
+
+- message: diagnostic description explaining what is wrong and needs to be fixed.
+
+Diagnostics:
+
+ - line: 1
+ - lineText: ---
+ - message: Ambiguous: "Recommend the newest relevant snapshot". "Relevant" is undefined. A model could treat relevance as matching the failed-updates pattern, sharing the same run ID, touching the same packages, or being open versus closed. Each reading can select a different snapshot to recommend. Suggestion: Replace with: "Recommend the newest snapshot whose PR is open or merged, whose source run is a failed-updates run, and whose failing records overlap the requested target. If none overlap, recommend the newest snapshot overall and say so."
+  suggestion: Replace with: "Recommend the newest snapshot whose PR is open or merged, whose source run is a failed-updates run, and whose failing records overlap the requested target. If none overlap, recommend the newest snapshot overall and say so."
+
+
+ - line: 1
+ - lineText: ---
+ - message: Coverage gap: A workflow run URL maps to several attempt-specific tracking branches, and the prompt does not say how to choose one.. Suggestion: Add after step 2: "If a run URL maps to several attempt-specific branches, list each with its attempt number, PR state, and date, then ask the user to select one before continuing."
+  suggestion: Add after step 2: "If a run URL maps to several attempt-specific branches, list each with its attempt number, PR state, and date, then ask the user to select one before continuing."
+
+
+ - line: 1
+ - lineText: ---
+ - message: Missing error handling: The file `.renovate/failed-targets.json` is missing, is not valid JSON, or its top level is not an array.. Suggestion: Add: "If the file is missing, unparsable, or not a top-level array, stop the inspection, record the exact error as a blocker in the plan's Snapshot section, and do not infer records from the tracking PR body or issue comments."
+  suggestion: Add: "If the file is missing, unparsable, or not a top-level array, stop the inspection, record the exact error as a blocker in the plan's Snapshot section, and do not infer records from the tracking PR body or issue comments."
+
+
+ - line: 88
+ - lineText: 6. Use bounded log excerpts containing the first substantive error and relevant final diagnostics.
+ - message: Ambiguous: "Use bounded log excerpts containing the first substantive error and relevant final diagnostics.". "Bounded" gives no limit. A model could quote a single line, a full log, or an arbitrary number of lines, which makes output size and completeness inconsistent across runs. Suggestion: Replace with: "Use log excerpts of at most 40 lines: the first 20 lines starting at the first error line, and the last 20 lines of the job log."
+  suggestion: Replace with: "Use log excerpts of at most 40 lines: the first 20 lines starting at the first error line, and the last 20 lines of the job log."
+
+
+ - line: 117
+ - lineText: - When source inspection is needed, follow the repository's graph-retrieval instructions and read
+ - message: Ambiguous: "When source inspection is needed, follow the repository's graph-retrieval instructions". The prompt points to "graph-retrieval instructions" without naming a file or giving their content. The model cannot locate or apply them and may skip the step or invent a retrieval method. Suggestion: Replace with: "When source inspection is needed, follow the graph-retrieval steps in AGENTS.md (or the file path named here) before reading source." Use the actual file path.
+  suggestion: Replace with: "When source inspection is needed, follow the graph-retrieval steps in AGENTS.md (or the file path named here) before reading source." Use the actual file path.
+
+
+ - line: 158
+ - lineText: incremental conventional commits and scoped checks; use `vp` commands for pantoken. Reserve full
+ - message: Ambiguous: "use `vp` commands for pantoken". "vp" is not defined in the prompt. The model cannot know its subcommands or how it maps to the scoped checks it is asked to propose, so it may invent command names. Suggestion: Replace with: "use the `vp` CLI for pantoken (for example `vp check <path>` for scoped checks and `vp ready` for full readiness). Run `vp --help` to confirm subcommands before proposing them."
+  suggestion: Replace with: "use the `vp` CLI for pantoken (for example `vp check <path>` for scoped checks and `vp ready` for full readiness). Run `vp --help` to confirm subcommands before proposing them."
+</skill-context>
+
+---
+
+The user explicitly invoked the "/VS Code Synced Data:fix-customization-evaluation-diagnostics" skill. Follow its instructions now.
+
+<skill-context name="fix-customization-evaluation-diagnostics">
+Base directory for this skill: /Users/dwahl/Library/Application Support/Code/agentPlugins/vscode-synced-customization-agent-host-copilotcli-1148375999/1722175465/skills/fix-customization-evaluation-diagnostics
+
+# Implement suggestions
+
+## Purpose
+
+Fix issues found by the Chat Customizations Evaluations analyzer in prompt, agent, skill, and instruction files. The diagnostics include contradictions, ambiguities, persona conflicts, cognitive load issues, and coverage gaps.
+
+## Usage
+
+This skill is invoked automatically when the user clicks the "Implement suggestions" button in the editor title bar. It receives the diagnostics as context and rewrites the affected sections of the file to resolve them.
+
+This skill can also be called directly by the user. In that case search for the diagnostics from the Chat Customizations Evaluations extension and apply the fixes.
+
+## Instructions
+
+- You will either receive a list of diagnostics from the Chat Customizations Evaluations extension or be called without diagnostics. 
+- If you receive a list of diagnostics from the Chat Customizations Evaluations extension, then each diagnostic will includes a line number, code, message, and optionally a suggestion.
+- If you are called without diagnostics, you should search and find diagnostics from the Chat Customizations Evaluations extension yourself.
+- For each diagnostic, apply the fix directly to the file content. Use the suggestion if one is provided; otherwise, use your judgment to resolve the issue.
+- Preserve the overall structure, tone, and intent of the prompt file. Only change what is necessary to resolve the diagnostics.
+- If two diagnostics conflict with each other, prefer the fix that keeps the prompt clearer and more consistent.
+- Directly edit the file content to apply the fixes.
+- Do NOT add new instructions or sections that were not in the original file.
+- Do NOT remove instructions unless a diagnostic specifically calls for it (e.g., contradictions).
+
+
+ARGUMENTS: Target file: /Users/dwahl/Scripts/pantoken/.agents/skills/check-failed-updates/SKILL.md
+
+Use ONLY the diagnostics below for this target file. Do not lint or rewrite the skill file itself.
+
+Field meanings:
+
+- line: 1-based line number where the diagnostic starts (or start-end for a multi-line range).
+
+- lineText: exact text currently present at the diagnostic start line in the target file.
+
+- message: diagnostic description explaining what is wrong and needs to be fixed.
+
+Diagnostics:
+
+ - line: 1
+ - lineText: ---
+ - message: Ambiguous: "Recommend the newest relevant snapshot". "Relevant" is undefined. A model could treat relevance as matching the failed-updates pattern, sharing the same run ID, touching the same packages, or being open versus closed. Each reading can select a different snapshot to recommend. Suggestion: Replace with: "Recommend the newest snapshot whose PR is open or merged, whose source run is a failed-updates run, and whose failing records overlap the requested target. If none overlap, recommend the newest snapshot overall and say so."
+  suggestion: Replace with: "Recommend the newest snapshot whose PR is open or merged, whose source run is a failed-updates run, and whose failing records overlap the requested target. If none overlap, recommend the newest snapshot overall and say so."
+
+
+ - line: 1
+ - lineText: ---
+ - message: Coverage gap: A workflow run URL maps to several attempt-specific tracking branches, and the prompt does not say how to choose one.. Suggestion: Add after step 2: "If a run URL maps to several attempt-specific branches, list each with its attempt number, PR state, and date, then ask the user to select one before continuing."
+  suggestion: Add after step 2: "If a run URL maps to several attempt-specific branches, list each with its attempt number, PR state, and date, then ask the user to select one before continuing."
+
+
+ - line: 1
+ - lineText: ---
+ - message: Missing error handling: The file `.renovate/failed-targets.json` is missing, is not valid JSON, or its top level is not an array.. Suggestion: Add: "If the file is missing, unparsable, or not a top-level array, stop the inspection, record the exact error as a blocker in the plan's Snapshot section, and do not infer records from the tracking PR body or issue comments."
+  suggestion: Add: "If the file is missing, unparsable, or not a top-level array, stop the inspection, record the exact error as a blocker in the plan's Snapshot section, and do not infer records from the tracking PR body or issue comments."
+
+
+ - line: 88
+ - lineText: 6. Use bounded log excerpts containing the first substantive error and relevant final diagnostics.
+ - message: Ambiguous: "Use bounded log excerpts containing the first substantive error and relevant final diagnostics.". "Bounded" gives no limit. A model could quote a single line, a full log, or an arbitrary number of lines, which makes output size and completeness inconsistent across runs. Suggestion: Replace with: "Use log excerpts of at most 40 lines: the first 20 lines starting at the first error line, and the last 20 lines of the job log."
+  suggestion: Replace with: "Use log excerpts of at most 40 lines: the first 20 lines starting at the first error line, and the last 20 lines of the job log."
+
+
+ - line: 117
+ - lineText: - When source inspection is needed, follow the repository's graph-retrieval instructions and read
+ - message: Ambiguous: "When source inspection is needed, follow the repository's graph-retrieval instructions". The prompt points to "graph-retrieval instructions" without naming a file or giving their content. The model cannot locate or apply them and may skip the step or invent a retrieval method. Suggestion: Replace with: "When source inspection is needed, follow the graph-retrieval steps in AGENTS.md (or the file path named here) before reading source." Use the actual file path.
+  suggestion: Replace with: "When source inspection is needed, follow the graph-retrieval steps in AGENTS.md (or the file path named here) before reading source." Use the actual file path.
+
+
+ - line: 158
+ - lineText: incremental conventional commits and scoped checks; use `vp` commands for pantoken. Reserve full
+ - message: Ambiguous: "use `vp` commands for pantoken". "vp" is not defined in the prompt. The model cannot know its subcommands or how it maps to the scoped checks it is asked to propose, so it may invent command names. Suggestion: Replace with: "use the `vp` CLI for pantoken (for example `vp check <path>` for scoped checks and `vp ready` for full readiness). Run `vp --help` to confirm subcommands before proposing them."
+  suggestion: Replace with: "use the `vp` CLI for pantoken (for example `vp check <path>` for scoped checks and `vp ready` for full readiness). Run `vp --help` to confirm subcommands before proposing them."
+</skill-context>
