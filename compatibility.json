@@ -129,8 +129,18 @@
         "target": "Vite",
         "status": "verified",
         "minimum": "8.0.0",
-        "testedThrough": "8.3.7",
-        "testedVersions": ["8.0.0", "8.0.16", "8.1.5", "8.2.2", "8.3.1", "8.3.2", "8.3.4", "8.3.7"],
+        "testedThrough": "8.3.8",
+        "testedVersions": [
+          "8.0.0",
+          "8.0.16",
+          "8.1.5",
+          "8.2.2",
+          "8.3.1",
+          "8.3.2",
+          "8.3.4",
+          "8.3.7",
+          "8.3.8"
+        ],
         "testCommand": "vp run @pantoken/vite#check:compatibility"
       }
     },
@@ -239,9 +249,9 @@
         "target": "Jekyll",
         "format": "Jekyll builds the generated Sass partial into site CSS",
         "status": "verified",
-        "minimum": "4.4.1",
+        "minimum": "3.9.4",
         "testedThrough": "4.4.1",
-        "testedVersions": ["4.4.1"],
+        "testedVersions": ["3.9.4", "4.4.1"],
         "testCommand": "vp run @pantoken/jekyll#check:compatibility"
       }
     },
@@ -305,9 +315,9 @@
         "target": "Angular",
         "format": "CUSTOM_ELEMENTS_SCHEMA template compilation (Angular 16.2.12 / TS 5.1.6; Angular 22.2.0, 22.2.1, and 22.2.2 / TS 6.0.3)",
         "status": "verified",
-        "minimum": "16.2.12",
+        "minimum": "22.2.0",
         "testedThrough": "22.2.5",
-        "testedVersions": ["16.2.12", "22.2.0", "22.2.1", "22.2.2", "22.2.5"],
+        "testedVersions": ["22.2.0", "22.2.1", "22.2.2", "22.2.5"],
         "testCommand": "vp run @pantoken/angular#check:compatibility"
       }
     },
@@ -334,8 +344,8 @@
         "format": "CSS variables: body + primary button",
         "status": "verified",
         "minimum": "5.2.0",
-        "testedThrough": "5.3.8",
-        "testedVersions": ["5.2.0", "5.2.3", "5.3.8"],
+        "testedThrough": "5.3.9",
+        "testedVersions": ["5.2.0", "5.2.3", "5.3.8", "5.3.9"],
         "testCommand": "vp run @pantoken/bootstrap#check:compatibility"
       }
     },
@@ -543,8 +553,8 @@
         "format": "Pantoken plugin registration and callback initialization",
         "status": "verified",
         "minimum": "8.9.2",
-        "testedThrough": "8.9.3",
-        "testedVersions": ["8.9.2", "8.9.3"],
+        "testedThrough": "8.10.2",
+        "testedVersions": ["8.9.2", "8.9.3", "8.10.2"],
         "testCommand": "vp run @pantoken/tinymce#check:compatibility"
       }
     },

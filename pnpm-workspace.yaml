@@ -49,7 +49,7 @@ catalog:
   # Brand icons (plugin)
   simple-icons: ^16.35.0
   # Lucide Lab icons (plugin)
-  "@lucide/lab": ^0.12.0
+  "@lucide/lab": ^0.13.0
   # React markdown integration
   react: ^19.3.1
   react-dom: ^19.3.1

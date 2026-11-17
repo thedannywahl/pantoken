@@ -82,7 +82,7 @@
     "@codemirror/language": "^6.12.4",
     "@codemirror/lint": "^6.9.7",
     "@codemirror/view": "^6.0.0",
-    "tinymce": "^8.0"
+    "tinymce": ">=8.9.2 <9.0.0"
   },
   "engines": {
     "node": ">=22.18.0"

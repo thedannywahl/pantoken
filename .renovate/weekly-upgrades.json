@@ -1,263 +1,29 @@
 [
   {
-    "depName": "@clack/prompts",
-    "packageName": "@clack/prompts",
-    "packageFile": "pnpm-workspace.yaml",
-    "manager": "npm",
-    "newValue": "^1.8.1",
-    "currentValue": "^1.8.1",
-    "newDigest": "sha512-tEj8X2No2A1c9NDnZECxiiJ8TP3vmFlN9tLlLeSaMqVW4tUmVG2R4qpv/eP4zymWxnymYLkLcIYVV0VcWj3RCQ=="
+    "depName": "pnpm/setup",
+    "packageName": "pnpm/setup",
+    "packageFile": ".github/workflows/release.yml",
+    "manager": "github-actions",
+    "newValue": "v3.2.0",
+    "currentValue": "v3.1.2",
+    "newDigest": "731dfb6463bbd11c11fd0ee11fe00ed0e36d48a1"
   },
   {
-    "depName": "@codemirror/autocomplete",
-    "packageName": "@codemirror/autocomplete",
+    "depName": "@lucide/lab",
+    "packageName": "@lucide/lab",
     "packageFile": "pnpm-workspace.yaml",
     "manager": "npm",
-    "newValue": "^6.20.3",
-    "currentValue": "^6.20.3",
-    "newDigest": "sha512-yF8RhOf2SXlg00+qtupzLhrglcas61boqaONiNcbPIebHCpJocpqTBA6dyrtUrQO47hqyTdeob/3XnYilT7TaQ=="
+    "newValue": "^0.13.0",
+    "currentValue": "^0.12.0",
+    "newDigest": "sha512-M2xhsonyGKrIYYnZE3U97P756iuhxp6H2XRNT+X6y+z1lFSnsEMs/fwuCn2F3MQUGwwB4T9Uf716e/DTHhQkxQ=="
   },
   {
-    "depName": "@codemirror/view",
-    "packageName": "@codemirror/view",
-    "packageFile": "pnpm-workspace.yaml",
+    "depName": "pnpm",
+    "packageName": "pnpm",
+    "packageFile": "package.json",
     "manager": "npm",
-    "newValue": "^6.43.14",
-    "currentValue": "^6.43.14",
-    "newDigest": "sha512-HHsfpqFeHyXLs983pSRe38Xajs0vFWZQ2BuX0m7Ki8w3jZ5iD8cuR3lBz2/5/X53Dhf32SBHKh6rtSTB6tKeGw=="
-  },
-  {
-    "depName": "@codspeed/vitest-plugin",
-    "packageName": "@codspeed/vitest-plugin",
-    "packageFile": "pnpm-workspace.yaml",
-    "manager": "npm",
-    "newValue": "^6.0.1",
-    "currentValue": "^6.0.1",
-    "newDigest": "sha512-zzZGaUmpBgAypYbMyWtm79RkGKVgDlkNV5iOBUT8vKayvrdXm8XpfC4/FaTuydOhGBVbrpxIeneoY6fl00NkTg=="
-  },
-  {
-    "depName": "@commitlint/cli",
-    "packageName": "@commitlint/cli",
-    "packageFile": "pnpm-workspace.yaml",
-    "manager": "npm",
-    "newValue": "^21.2.3",
-    "currentValue": "^21.2.3",
-    "newDigest": "sha512-g3M/wrQdElqGH5vROIeL2QiYIxrzqUkhCgsDyDlWfKEyQdCt10OyMB28W2cJtpZ+VNGMvmaN923infr1hOfyrg=="
-  },
-  {
-    "depName": "@commitlint/config-conventional",
-    "packageName": "@commitlint/config-conventional",
-    "packageFile": "pnpm-workspace.yaml",
-    "manager": "npm",
-    "newValue": "^21.2.3",
-    "currentValue": "^21.2.3",
-    "newDigest": "sha512-IRldtwgNmR0SySR7wizFbhRmq45lPt6H3XCNTMyVN7jrPLgi8JlTRR6Eg1HLWUQt9P1Lh3k6eY25ilDa47EE6w=="
-  },
-  {
-    "depName": "@shikijs/langs",
-    "packageName": "@shikijs/langs",
-    "packageFile": "pnpm-workspace.yaml",
-    "manager": "npm",
-    "newValue": "^4.5.0",
-    "currentValue": "^4.5.0",
-    "newDigest": "sha512-1yMEX3oCVV54LUq/ovfpRkDQoYDkcvjSWFFa/YLUDMiSoRzMi2uxLJYbv41ahT8Lu9lFMaa7hecd3Q39trqUyg=="
-  },
-  {
-    "depName": "@shikijs/themes",
-    "packageName": "@shikijs/themes",
-    "packageFile": "pnpm-workspace.yaml",
-    "manager": "npm",
-    "newValue": "^4.5.0",
-    "currentValue": "^4.5.0",
-    "newDigest": "sha512-qHAVAs80RiGD+IRuH9G+JPDOEc9A/kHsng4EzCUCwB9bLzW6Z0y9WETh2YyCcADJBmfrIaJ1Jp7KBNP6FHkgtQ=="
-  },
-  {
-    "depName": "@shikijs/types",
-    "packageName": "@shikijs/types",
-    "packageFile": "pnpm-workspace.yaml",
-    "manager": "npm",
-    "newValue": "^4.5.0",
-    "currentValue": "^4.5.0",
-    "newDigest": "sha512-+ENG1adsKt/X7cRYw1Nl7BEpBmPOjmQ7bR/eGmHuMlT8gtOFf3KEi5l31DJYyAWhW6Y6bjP1plU7FmaxWGENFw=="
-  },
-  {
-    "depName": "@types/node",
-    "packageName": "@types/node",
-    "packageFile": "pnpm-workspace.yaml",
-    "manager": "npm",
-    "newValue": "^26.6.5",
-    "currentValue": "^26.6.5",
-    "newDigest": "sha512-MzQj+8Kx3XI40OmUAE6Qoh58ZMNstNNMwn2nfd3qWsfe7nDNSqJNzes4njhz6AHwrSHOffSLwXU6yb474Q4aog=="
-  },
-  {
-    "depName": "@vue/server-renderer",
-    "packageName": "@vue/server-renderer",
-    "packageFile": "pnpm-workspace.yaml",
-    "manager": "npm",
-    "newValue": "^3.5.44",
-    "currentValue": "^3.5.44",
-    "newDigest": "sha512-1fNXUHhhsWf4EVL4XixbGBU5mKdiIXJAB82feHRTyPPo6ZUEYWIJuEeUl3mVV6QDBp50HJOX4obLhxYXlrjrzA=="
-  },
-  {
-    "depName": "commander",
-    "packageName": "commander",
-    "packageFile": "pnpm-workspace.yaml",
-    "manager": "npm",
-    "newValue": "^15.0.0",
-    "currentValue": "^15.0.0",
-    "newDigest": "sha512-cgnQ88TRrWcC7pVq46RzJVRMktu3W2RcbnoidnfBsl1bmDCBwJS/udcIZpKoCrbAYYaCqsz1yZCVIgbIaU3ddQ=="
-  },
-  {
-    "depName": "core-js",
-    "packageName": "core-js",
-    "packageFile": "pnpm-workspace.yaml",
-    "manager": "npm",
-    "newValue": "^3.50.0",
-    "currentValue": "^3.50.0",
-    "newDigest": "sha512-7bDKx/5jm5MxzsXxc93g6Z2+4ZsuT/MddrfRmTDJNAkWsYWHU8EVNEsBiIEWnMAMCHMmRfUEjkuo3jeNBOIHRw=="
-  },
-  {
-    "depName": "fallow",
-    "packageName": "fallow",
-    "packageFile": "pnpm-workspace.yaml",
-    "manager": "npm",
-    "newValue": "^3.33.1",
-    "currentValue": "^3.33.1",
-    "newDigest": "sha512-zVug6ujNPVVW706qDL5OZvjD+tINA/lav+PwaoM5yIZyLs2y4bspTZBqSggUi56AGpLuHDEerIJAYTIgQzHQfQ=="
-  },
-  {
-    "depName": "juice",
-    "packageName": "juice",
-    "packageFile": "pnpm-workspace.yaml",
-    "manager": "npm",
-    "newValue": "^12.2.0",
-    "currentValue": "^12.2.0",
-    "newDigest": "sha512-2qsvEpZINCYmfd8hwcJZOpoZRnqfX8PAYrXkRcnb50ACI9fDKsA8MZrnN6DbYouQj861BhDyS9m+X5wQcT0z4A=="
-  },
-  {
-    "depName": "lucide",
-    "packageName": "lucide",
-    "packageFile": "pnpm-workspace.yaml",
-    "manager": "npm",
-    "newValue": "^1.57.0",
-    "currentValue": "^1.57.0",
-    "newDigest": "sha512-n6KHs0byHCG6fAQKBb+UhZtrUZM6v0ithDErPte6PkWkSijH0tPQoETnMobubUSj4okhAMeE6xUc/5S8LndrRg=="
-  },
-  {
-    "depName": "markdown-it",
-    "packageName": "markdown-it",
-    "packageFile": "pnpm-workspace.yaml",
-    "manager": "npm",
-    "newValue": "^15.0.2",
-    "currentValue": "^15.0.2",
-    "newDigest": "sha512-+Az7Ojz3iRGu8KYMvJ6xVhvrxP3eE+vEtJX75Ow88XBpcQNV/0lGX5ZynIIBftREo4DC2jsveAMDaeltmm8QvQ=="
-  },
-  {
-    "depName": "postcss",
-    "packageName": "postcss",
-    "packageFile": "pnpm-workspace.yaml",
-    "manager": "npm",
-    "newValue": "^8.5.30",
-    "currentValue": "^8.5.30",
-    "newDigest": "sha512-LJlKCCAUFKOuZxipUdYw1NzIITEsPcgyOG9LkvRJvuKj/bRzbuRY0ARXvL0pWGpsZvn8jku+LMep2eU0seHp8g=="
-  },
-  {
-    "depName": "sass",
-    "packageName": "sass",
-    "packageFile": "pnpm-workspace.yaml",
-    "manager": "npm",
-    "newValue": "^1.105.1",
-    "currentValue": "^1.105.1",
-    "newDigest": "sha512-sIYgSvOPeD9wABwDS/ofNjHASSck+7h3jLkk7wG1NPFL3XeS6vOQjBlAFSmRV09kZr1yt/Tuayt6kKtBbLjHNQ=="
-  },
-  {
-    "depName": "shiki",
-    "packageName": "shiki",
-    "packageFile": "pnpm-workspace.yaml",
-    "manager": "npm",
-    "newValue": "^4.5.0",
-    "currentValue": "^4.5.0",
-    "newDigest": "sha512-imjLsVHgPuWhvpU3P+zOekvMYqnel7QmKsFC4Sn0fCuAvaaalBsxwKEsrU8Ko5BdFnZA6Go/8a0RzahS634UgA=="
-  },
-  {
-    "depName": "simple-icons",
-    "packageName": "simple-icons",
-    "packageFile": "pnpm-workspace.yaml",
-    "manager": "npm",
-    "newValue": "^16.35.0",
-    "currentValue": "^16.35.0",
-    "newDigest": "sha512-8mCJIhpMYOL9g13GW59EiL3sVXJnTEKGCTZFaekl9UQ3Qo0SwVjnLaJ82QiaH8BKBdouEDzrHMXIWh8cBIy48A=="
-  },
-  {
-    "depName": "snyk",
-    "packageName": "snyk",
-    "packageFile": "pnpm-workspace.yaml",
-    "manager": "npm",
-    "newValue": "^1.1308.1",
-    "currentValue": "^1.1308.1",
-    "newDigest": "sha512-BhGSPx0lDhPdq1pTpC3xrdryUcsDKGlS9vt/bJkY33XHxe4OqdXuWxsuzcV/YZIKFnx6gwVXkMUdeHRtJUIA5A=="
-  },
-  {
-    "depName": "style-dictionary",
-    "packageName": "style-dictionary",
-    "packageFile": "pnpm-workspace.yaml",
-    "manager": "npm",
-    "newValue": "^5.6.1",
-    "currentValue": "^5.6.1",
-    "newDigest": "sha512-RqOa3FF+9Dol5kP8KKtr5oqVijz1TPbs53+lBj9aMJy/JVPwl1pRj/4IzdnvDWXZaePYaO8Z5zgBTvcjeGh6cA=="
-  },
-  {
-    "depName": "tinybench",
-    "packageName": "tinybench",
-    "packageFile": "pnpm-workspace.yaml",
-    "manager": "npm",
-    "newValue": "^6.2.2",
-    "currentValue": "^6.2.2",
-    "newDigest": "sha512-Al01C2JIBnO2CXCAPbpAl6sUiOZHeThGtHYNTa51JRw9PyWOCdr+9Ong05R4qg/Sk3+H645E8ov1h2c58ityNw=="
-  },
-  {
-    "depName": "tinymce",
-    "packageName": "tinymce",
-    "packageFile": "pnpm-workspace.yaml",
-    "manager": "npm",
-    "newValue": "^8.10.0",
-    "currentValue": "^8.10.0",
-    "newDigest": "sha512-Mgdnx8HuEPRlLqKTyHcy7+JJn9reXH7b7L/1ywPCzKAyjaq8fzEPE+CYBLW42GgBlaaoIOd0dTOcYHUlPZyV2A=="
-  },
-  {
-    "depName": "typedoc-plugin-markdown",
-    "packageName": "typedoc-plugin-markdown",
-    "packageFile": "pnpm-workspace.yaml",
-    "manager": "npm",
-    "newValue": "^4.14.0",
-    "currentValue": "^4.14.0",
-    "newDigest": "sha512-24XX0oqyBsjBIBNoSH4wbgQkouci/CmgmO1ZBSaVkrcflqXFL2PQ5zFOpkz+Ewow5xQ3q2You+wrcmilNepRKg=="
-  },
-  {
-    "depName": "unist-util-visit",
-    "packageName": "unist-util-visit",
-    "packageFile": "pnpm-workspace.yaml",
-    "manager": "npm",
-    "newValue": "^5.1.0",
-    "currentValue": "^5.1.0",
-    "newDigest": "sha512-fpsYs/VVoZxfGY9/j3FQpZmN8wdLJaV1Pt38AaJNZu9uKIHcFU3halCdBveEq1HGKO1OEfJY65w1zvoFV1b3qQ=="
-  },
-  {
-    "depName": "vue",
-    "packageName": "vue",
-    "packageFile": "pnpm-workspace.yaml",
-    "manager": "npm",
-    "newValue": "^3.5.44",
-    "currentValue": "^3.5.44",
-    "newDigest": "sha512-3cvsib8m9c0vB24+MDKsgcW4+Da4xaBl9Z/5Tbm2pmSIsRPxcil4cdXjXlVsmJ2g64XJo5h+IRd7rsdGT9pZaw=="
-  },
-  {
-    "depName": "webpack-sources",
-    "packageName": "webpack-sources",
-    "packageFile": "pnpm-workspace.yaml",
-    "manager": "npm",
-    "newValue": "^3.6.0",
-    "currentValue": "^3.6.0",
-    "newDigest": "sha512-PdUhbCycwEgiS1hB/FBDksWKg/ashAIuJKqwdbPn8/dFVgU5LxQiBvG0js6VRRIzPujMrStYCczywp82P0KWng=="
+    "newValue": "12.20.0",
+    "currentValue": "12.19.0",
+    "newDigest": "sha512-bMx0mXzO9OZ5mXiOGNv7+lg+KoSWaGaNtHB7aoMGZi9HFW5lAjKphb0+wkz5NkwaoVTTflHteqxiwc0eOvyAww=="
   }
 ]
