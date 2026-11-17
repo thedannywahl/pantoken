@@ -1,0 +1,125 @@
+The user explicitly invoked the "/VS Code Synced Data:fix-customization-evaluation-diagnostics" skill. Follow its instructions now.
+
+<skill-context name="fix-customization-evaluation-diagnostics">
+Base directory for this skill: /Users/dwahl/Library/Application Support/Code/agentPlugins/vscode-synced-customization-agent-host-copilotcli-1148375999/1722175465/skills/fix-customization-evaluation-diagnostics
+
+# Implement suggestions
+
+## Purpose
+
+Fix issues found by the Chat Customizations Evaluations analyzer in prompt, agent, skill, and instruction files. The diagnostics include contradictions, ambiguities, persona conflicts, cognitive load issues, and coverage gaps.
+
+## Usage
+
+This skill is invoked automatically when the user clicks the "Implement suggestions" button in the editor title bar. It receives the diagnostics as context and rewrites the affected sections of the file to resolve them.
+
+This skill can also be called directly by the user. In that case search for the diagnostics from the Chat Customizations Evaluations extension and apply the fixes.
+
+## Instructions
+
+- You will either receive a list of diagnostics from the Chat Customizations Evaluations extension or be called without diagnostics. 
+- If you receive a list of diagnostics from the Chat Customizations Evaluations extension, then each diagnostic will includes a line number, code, message, and optionally a suggestion.
+- If you are called without diagnostics, you should search and find diagnostics from the Chat Customizations Evaluations extension yourself.
+- For each diagnostic, apply the fix directly to the file content. Use the suggestion if one is provided; otherwise, use your judgment to resolve the issue.
+- Preserve the overall structure, tone, and intent of the prompt file. Only change what is necessary to resolve the diagnostics.
+- If two diagnostics conflict with each other, prefer the fix that keeps the prompt clearer and more consistent.
+- Directly edit the file content to apply the fixes.
+- Do NOT add new instructions or sections that were not in the original file.
+- Do NOT remove instructions unless a diagnostic specifically calls for it (e.g., contradictions).
+
+
+ARGUMENTS: Target file: /Users/dwahl/Scripts/pantoken/.agents/skills/check-failed-updates/SKILL.md
+
+Use ONLY the diagnostics below for this target file. Do not lint or rewrite the skill file itself.
+
+Field meanings:
+
+- line: 1-based line number where the diagnostic starts (or start-end for a multi-line range).
+
+- lineText: exact text currently present at the diagnostic start line in the target file.
+
+- message: diagnostic description explaining what is wrong and needs to be fixed.
+
+Diagnostics:
+
+ - line: 1
+ - lineText: ---
+ - message: Coverage gap: Artifacts are expired, missing, or unreadable, or the log is truncated and no same-run candidate result is available. The prompt covers truncated records but not the case where neither the logs nor the artifacts can be retrieved.. Suggestion: Add after this sentence: "If an artifact is expired, missing, or unreadable, or no same-run evidence can resolve a truncated record, record that record as an unavailable-evidence blocker in the Findings table. Do not classify it as passed, failed, or resolved."
+  suggestion: Add after this sentence: "If an artifact is expired, missing, or unreadable, or no same-run evidence can resolve a truncated record, record that record as an unavailable-evidence blocker in the Findings table. Do not classify it as passed, failed, or resolved."
+
+
+ - line: 60
+ - lineText: Fetch the selected branch from the verified remote, resolve its full commit SHA, and create a fresh
+ - message: Ambiguous: "Fetch the selected branch from the verified remote". "Verified" is never defined. The prompt names a trusted repository in section 1 but does not say how the remote is verified. A model could accept the first remote from `git remote`, match the remote URL to the `gh repo view` result, or fetch from whichever remote was used earlier. These choices can fetch different repositories. Suggestion: Replace with: "Fetch the selected branch from the remote whose URL matches the repository reported by `gh repo view --json nameWithOwner`. If no remote matches, stop and report the mismatch as a blocker."
+  suggestion: Replace with: "Fetch the selected branch from the remote whose URL matches the repository reported by `gh repo view --json nameWithOwner`. If no remote matches, stop and report the mismatch as a blocker."
+
+
+ - line: 133
+ - lineText: directory if needed. If that path exists, preserve it and choose a numbered suffix; don't overwrite
+ - message: Ambiguous: "If that path exists, preserve it and choose a numbered suffix; don't overwrite". The suffix format is unspecified. A model could append `-2`, `-v2`, `-1`, `-copy`, or a timestamp, and could start at 1 or 2. This makes the report filename inconsistent across runs and hard to locate. Suggestion: Replace with: "If that path exists, keep it and save the new report as `.agents/plans/check-failed-updates-<run>-<attempt>-2.md`, incrementing the number (`-3`, `-4`, and so on) until an unused name is found."
+  suggestion: Replace with: "If that path exists, keep it and save the new report as `.agents/plans/check-failed-updates-<run>-<attempt>-2.md`, incrementing the number (`-3`, `-4`, and so on) until an unused name is found."
+</skill-context>
+
+---
+
+The user explicitly invoked the "/VS Code Synced Data:fix-customization-evaluation-diagnostics" skill. Follow its instructions now.
+
+<skill-context name="fix-customization-evaluation-diagnostics">
+Base directory for this skill: /Users/dwahl/Library/Application Support/Code/agentPlugins/vscode-synced-customization-agent-host-copilotcli-1148375999/1722175465/skills/fix-customization-evaluation-diagnostics
+
+# Implement suggestions
+
+## Purpose
+
+Fix issues found by the Chat Customizations Evaluations analyzer in prompt, agent, skill, and instruction files. The diagnostics include contradictions, ambiguities, persona conflicts, cognitive load issues, and coverage gaps.
+
+## Usage
+
+This skill is invoked automatically when the user clicks the "Implement suggestions" button in the editor title bar. It receives the diagnostics as context and rewrites the affected sections of the file to resolve them.
+
+This skill can also be called directly by the user. In that case search for the diagnostics from the Chat Customizations Evaluations extension and apply the fixes.
+
+## Instructions
+
+- You will either receive a list of diagnostics from the Chat Customizations Evaluations extension or be called without diagnostics. 
+- If you receive a list of diagnostics from the Chat Customizations Evaluations extension, then each diagnostic will includes a line number, code, message, and optionally a suggestion.
+- If you are called without diagnostics, you should search and find diagnostics from the Chat Customizations Evaluations extension yourself.
+- For each diagnostic, apply the fix directly to the file content. Use the suggestion if one is provided; otherwise, use your judgment to resolve the issue.
+- Preserve the overall structure, tone, and intent of the prompt file. Only change what is necessary to resolve the diagnostics.
+- If two diagnostics conflict with each other, prefer the fix that keeps the prompt clearer and more consistent.
+- Directly edit the file content to apply the fixes.
+- Do NOT add new instructions or sections that were not in the original file.
+- Do NOT remove instructions unless a diagnostic specifically calls for it (e.g., contradictions).
+
+
+ARGUMENTS: Target file: /Users/dwahl/Scripts/pantoken/.agents/skills/check-failed-updates/SKILL.md
+
+Use ONLY the diagnostics below for this target file. Do not lint or rewrite the skill file itself.
+
+Field meanings:
+
+- line: 1-based line number where the diagnostic starts (or start-end for a multi-line range).
+
+- lineText: exact text currently present at the diagnostic start line in the target file.
+
+- message: diagnostic description explaining what is wrong and needs to be fixed.
+
+Diagnostics:
+
+ - line: 1
+ - lineText: ---
+ - message: Coverage gap: Artifacts are expired, missing, or unreadable, or the log is truncated and no same-run candidate result is available. The prompt covers truncated records but not the case where neither the logs nor the artifacts can be retrieved.. Suggestion: Add after this sentence: "If an artifact is expired, missing, or unreadable, or no same-run evidence can resolve a truncated record, record that record as an unavailable-evidence blocker in the Findings table. Do not classify it as passed, failed, or resolved."
+  suggestion: Add after this sentence: "If an artifact is expired, missing, or unreadable, or no same-run evidence can resolve a truncated record, record that record as an unavailable-evidence blocker in the Findings table. Do not classify it as passed, failed, or resolved."
+
+
+ - line: 60
+ - lineText: Fetch the selected branch from the verified remote, resolve its full commit SHA, and create a fresh
+ - message: Ambiguous: "Fetch the selected branch from the verified remote". "Verified" is never defined. The prompt names a trusted repository in section 1 but does not say how the remote is verified. A model could accept the first remote from `git remote`, match the remote URL to the `gh repo view` result, or fetch from whichever remote was used earlier. These choices can fetch different repositories. Suggestion: Replace with: "Fetch the selected branch from the remote whose URL matches the repository reported by `gh repo view --json nameWithOwner`. If no remote matches, stop and report the mismatch as a blocker."
+  suggestion: Replace with: "Fetch the selected branch from the remote whose URL matches the repository reported by `gh repo view --json nameWithOwner`. If no remote matches, stop and report the mismatch as a blocker."
+
+
+ - line: 133
+ - lineText: directory if needed. If that path exists, preserve it and choose a numbered suffix; don't overwrite
+ - message: Ambiguous: "If that path exists, preserve it and choose a numbered suffix; don't overwrite". The suffix format is unspecified. A model could append `-2`, `-v2`, `-1`, `-copy`, or a timestamp, and could start at 1 or 2. This makes the report filename inconsistent across runs and hard to locate. Suggestion: Replace with: "If that path exists, keep it and save the new report as `.agents/plans/check-failed-updates-<run>-<attempt>-2.md`, incrementing the number (`-3`, `-4`, and so on) until an unused name is found."
+  suggestion: Replace with: "If that path exists, keep it and save the new report as `.agents/plans/check-failed-updates-<run>-<attempt>-2.md`, incrementing the number (`-3`, `-4`, and so on) until an unused name is found."
+</skill-context>
