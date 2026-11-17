@@ -1,0 +1,113 @@
+The user explicitly invoked the "/VS Code Synced Data:fix-customization-evaluation-diagnostics" skill. Follow its instructions now.
+
+<skill-context name="fix-customization-evaluation-diagnostics">
+Base directory for this skill: /Users/dwahl/Library/Application Support/Code/agentPlugins/vscode-synced-customization-agent-host-copilotcli-1148375999/1722175465/skills/fix-customization-evaluation-diagnostics
+
+# Implement suggestions
+
+## Purpose
+
+Fix issues found by the Chat Customizations Evaluations analyzer in prompt, agent, skill, and instruction files. The diagnostics include contradictions, ambiguities, persona conflicts, cognitive load issues, and coverage gaps.
+
+## Usage
+
+This skill is invoked automatically when the user clicks the "Implement suggestions" button in the editor title bar. It receives the diagnostics as context and rewrites the affected sections of the file to resolve them.
+
+This skill can also be called directly by the user. In that case search for the diagnostics from the Chat Customizations Evaluations extension and apply the fixes.
+
+## Instructions
+
+- You will either receive a list of diagnostics from the Chat Customizations Evaluations extension or be called without diagnostics. 
+- If you receive a list of diagnostics from the Chat Customizations Evaluations extension, then each diagnostic will includes a line number, code, message, and optionally a suggestion.
+- If you are called without diagnostics, you should search and find diagnostics from the Chat Customizations Evaluations extension yourself.
+- For each diagnostic, apply the fix directly to the file content. Use the suggestion if one is provided; otherwise, use your judgment to resolve the issue.
+- Preserve the overall structure, tone, and intent of the prompt file. Only change what is necessary to resolve the diagnostics.
+- If two diagnostics conflict with each other, prefer the fix that keeps the prompt clearer and more consistent.
+- Directly edit the file content to apply the fixes.
+- Do NOT add new instructions or sections that were not in the original file.
+- Do NOT remove instructions unless a diagnostic specifically calls for it (e.g., contradictions).
+
+
+ARGUMENTS: Target file: /Users/dwahl/Scripts/pantoken/.agents/skills/check-failed-updates/SKILL.md
+
+Use ONLY the diagnostics below for this target file. Do not lint or rewrite the skill file itself.
+
+Field meanings:
+
+- line: 1-based line number where the diagnostic starts (or start-end for a multi-line range).
+
+- lineText: exact text currently present at the diagnostic start line in the target file.
+
+- message: diagnostic description explaining what is wrong and needs to be fixed.
+
+Diagnostics:
+
+ - line: 83-86
+ - lineText:    Don't infer missing fields or substitute today's latest versions. If the file is missing,
+ - message: Cognitive load (constraint-overload): The first step of section 3 packs three separate failure branches (missing, unparsable, or non-array file; expired, missing, or unreadable artifact; unresolvable truncated record) and their required actions into two long compound sentences. A model may apply the wrong blocker handling, skip one branch, or mix up which action goes with which condition, such as recording an artifact blocker in the Snapshot section instead of the Findings table.. Suggestion: Split the paragraph into a numbered list keyed by condition: '(a) If .renovate/failed-targets.json is missing, unparsable, or not a top-level array: stop, record the exact error as a blocker in the Snapshot section, and do not infer records from the PR body or comments. (b) If an artifact is expired, missing, or unreadable, or no same-run evidence resolves a truncated record: add an unavailable-evidence row to the Findings table and do not classify it as passed, failed, or resolved.'
+  suggestion: Split the paragraph into a numbered list keyed by condition: '(a) If .renovate/failed-targets.json is missing, unparsable, or not a top-level array: stop, record the exact error as a blocker in the Snapshot section, and do not infer records from the PR body or comments. (b) If an artifact is expired, missing, or unreadable, or no same-run evidence resolves a truncated record: add an unavailable-evidence row to the Findings table and do not classify it as passed, failed, or resolved.'
+
+
+ - line: 187
+ - lineText: Remove only the detached worktree and artifact directories created by this invocation. Use
+ - message: Coverage gap: The prompt defines the worktree and temporary artifact directories for cleanup only on the success path. It does not say what to do if the invocation stops early, for example when the fetch fails, the SHA cannot be resolved, or a blocker stops inspection. The model may leave a worktree behind, remove a directory it did not create, or not track which path belongs to this invocation.. Suggestion: Add after this sentence: 'If the invocation stops early, perform the same cleanup for any worktree or artifact directory recorded in this invocation, and report any path that could not be removed.'
+  suggestion: Add after this sentence: 'If the invocation stops early, perform the same cleanup for any worktree or artifact directory recorded in this invocation, and report any path that could not be removed.'
+</skill-context>
+
+---
+
+The user explicitly invoked the "/VS Code Synced Data:fix-customization-evaluation-diagnostics" skill. Follow its instructions now.
+
+<skill-context name="fix-customization-evaluation-diagnostics">
+Base directory for this skill: /Users/dwahl/Library/Application Support/Code/agentPlugins/vscode-synced-customization-agent-host-copilotcli-1148375999/1722175465/skills/fix-customization-evaluation-diagnostics
+
+# Implement suggestions
+
+## Purpose
+
+Fix issues found by the Chat Customizations Evaluations analyzer in prompt, agent, skill, and instruction files. The diagnostics include contradictions, ambiguities, persona conflicts, cognitive load issues, and coverage gaps.
+
+## Usage
+
+This skill is invoked automatically when the user clicks the "Implement suggestions" button in the editor title bar. It receives the diagnostics as context and rewrites the affected sections of the file to resolve them.
+
+This skill can also be called directly by the user. In that case search for the diagnostics from the Chat Customizations Evaluations extension and apply the fixes.
+
+## Instructions
+
+- You will either receive a list of diagnostics from the Chat Customizations Evaluations extension or be called without diagnostics. 
+- If you receive a list of diagnostics from the Chat Customizations Evaluations extension, then each diagnostic will includes a line number, code, message, and optionally a suggestion.
+- If you are called without diagnostics, you should search and find diagnostics from the Chat Customizations Evaluations extension yourself.
+- For each diagnostic, apply the fix directly to the file content. Use the suggestion if one is provided; otherwise, use your judgment to resolve the issue.
+- Preserve the overall structure, tone, and intent of the prompt file. Only change what is necessary to resolve the diagnostics.
+- If two diagnostics conflict with each other, prefer the fix that keeps the prompt clearer and more consistent.
+- Directly edit the file content to apply the fixes.
+- Do NOT add new instructions or sections that were not in the original file.
+- Do NOT remove instructions unless a diagnostic specifically calls for it (e.g., contradictions).
+
+
+ARGUMENTS: Target file: /Users/dwahl/Scripts/pantoken/.agents/skills/check-failed-updates/SKILL.md
+
+Use ONLY the diagnostics below for this target file. Do not lint or rewrite the skill file itself.
+
+Field meanings:
+
+- line: 1-based line number where the diagnostic starts (or start-end for a multi-line range).
+
+- lineText: exact text currently present at the diagnostic start line in the target file.
+
+- message: diagnostic description explaining what is wrong and needs to be fixed.
+
+Diagnostics:
+
+ - line: 83-86
+ - lineText:    Don't infer missing fields or substitute today's latest versions. If the file is missing,
+ - message: Cognitive load (constraint-overload): The first step of section 3 packs three separate failure branches (missing, unparsable, or non-array file; expired, missing, or unreadable artifact; unresolvable truncated record) and their required actions into two long compound sentences. A model may apply the wrong blocker handling, skip one branch, or mix up which action goes with which condition, such as recording an artifact blocker in the Snapshot section instead of the Findings table.. Suggestion: Split the paragraph into a numbered list keyed by condition: '(a) If .renovate/failed-targets.json is missing, unparsable, or not a top-level array: stop, record the exact error as a blocker in the Snapshot section, and do not infer records from the PR body or comments. (b) If an artifact is expired, missing, or unreadable, or no same-run evidence resolves a truncated record: add an unavailable-evidence row to the Findings table and do not classify it as passed, failed, or resolved.'
+  suggestion: Split the paragraph into a numbered list keyed by condition: '(a) If .renovate/failed-targets.json is missing, unparsable, or not a top-level array: stop, record the exact error as a blocker in the Snapshot section, and do not infer records from the PR body or comments. (b) If an artifact is expired, missing, or unreadable, or no same-run evidence resolves a truncated record: add an unavailable-evidence row to the Findings table and do not classify it as passed, failed, or resolved.'
+
+
+ - line: 187
+ - lineText: Remove only the detached worktree and artifact directories created by this invocation. Use
+ - message: Coverage gap: The prompt defines the worktree and temporary artifact directories for cleanup only on the success path. It does not say what to do if the invocation stops early, for example when the fetch fails, the SHA cannot be resolved, or a blocker stops inspection. The model may leave a worktree behind, remove a directory it did not create, or not track which path belongs to this invocation.. Suggestion: Add after this sentence: 'If the invocation stops early, perform the same cleanup for any worktree or artifact directory recorded in this invocation, and report any path that could not be removed.'
+  suggestion: Add after this sentence: 'If the invocation stops early, perform the same cleanup for any worktree or artifact directory recorded in this invocation, and report any path that could not be removed.'
+</skill-context>

@@ -3,7 +3,7 @@
   "checkpoint_id": "01M7NW96TRVM3Y6X98XCA7Z0RK",
   "strategy": "manual-commit",
   "branch": "maintenance/failed-updates-run-44157496288-1",
-  "checkpoints_count": 2,
+  "checkpoints_count": 3,
   "files_touched": [
     ".agents/skills/check-failed-updates/SKILL.md"
   ],
@@ -21,17 +21,24 @@
       "compact_transcript": "/1/transcript.jsonl",
       "content_hash": "/1/content_hash.txt",
       "prompt": "/1/prompt.txt"
+    },
+    {
+      "metadata": "/2/metadata.json",
+      "transcript": "/2/full.jsonl",
+      "compact_transcript": "/2/transcript.jsonl",
+      "content_hash": "/2/content_hash.txt",
+      "prompt": "/2/prompt.txt"
     }
   ],
   "token_usage": {
-    "input_tokens": 105,
-    "cache_creation_tokens": 85360,
-    "cache_read_tokens": 655828,
-    "output_tokens": 4464,
-    "api_call_count": 18
+    "input_tokens": 131,
+    "cache_creation_tokens": 119685,
+    "cache_read_tokens": 781578,
+    "output_tokens": 6012,
+    "api_call_count": 22
   },
   "redaction": {
-    "replacements": 2160,
+    "replacements": 2161,
     "layers": {
       "betterleaks": 0,
       "connection_string": 0,
@@ -39,7 +46,7 @@
       "credential_value": 0,
       "credentialed_uri": 0,
       "custom": 0,
-      "entropy": 3503,
+      "entropy": 3520,
       "goredact": 0,
       "key_context": 0,
       "pii": 0,
