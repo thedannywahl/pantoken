@@ -73,6 +73,7 @@ docs/public/.well-known/*
 # AI agent worktrees
 .claude/worktrees/
 .worktrees/
+.agents/plans/
 
 # Local-only agent notes and personal migration seed — never committed.
 docs/internal/
