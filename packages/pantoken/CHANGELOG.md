@@ -1,5 +1,12 @@
 # CHANGELOG
 
+## 0.2.40
+
+### Patch Changes
+
+- Updated dependencies [9af8738]
+  - @pantoken/angular@0.5.0
+
 ## 0.2.39
 
 ### Patch Changes
