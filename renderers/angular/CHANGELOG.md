@@ -1,5 +1,11 @@
 # CHANGELOG
 
+## 0.5.0
+
+### Minor Changes
+
+- 9af8738: Add Angular 21.2.26 TypeScript/Zone.js companion versions
+
 ## 0.4.0
 
 ### Minor Changes
