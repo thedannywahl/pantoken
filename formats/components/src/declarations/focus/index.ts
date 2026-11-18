@@ -23,8 +23,9 @@ import type { Definition } from "../../lib/define.ts";
 export { FOCUSABLE_SELECTOR, focusOutlineDeclarations, focusOutlineRules } from "@pantoken/utils";
 
 /** The focus declaration's cssdoc doc comment (authored inline; the CSS body follows in {@link focusOutlineCss}). */
-// prettier-ignore
-const FOCUS_DOC = css`/**
+
+const FOCUS_DOC = css`
+  /**
  * @declaration focus
  * @selector :focus-visible
  * @summary The focus-outline system: the \`--instui-focus-outline-*\` custom properties (declared on \`:root\`) plus the \`:focus-visible\` ring every focusable gets, and opt-in tuning classes.
@@ -62,7 +63,8 @@ const FOCUS_DOC = css`/**
  * <button class="-without-focus-animation">Focus without animation</button>
  * \`\`\`
  * @demo self:focus-outline
- */`;
+ */
+`;
 
 /**
  * Build the focus-outline block: the `--instui-focus-outline-*` token defs plus the ring rules.
@@ -82,7 +84,7 @@ export function focusOutlineCss(
   const decls = focusOutlineDeclarations()
     .map(([name, value]) => `  ${name}: ${value};`)
     .join("\n");
-  // prettier-ignore
+
   return css`${FOCUS_DOC}\n${tokenSelector} {\n${decls}\n}\n\n${focusOutlineRules(options.selector)}\n`;
 }
 

@@ -19,8 +19,9 @@ export const stacking: Definition = defineUtility({
       const selector = globalModifierSelector(p, `stack-${level}`);
       return `${selector} { z-index: var(--instui-component-view-stacking-${level}); }`;
     });
-    // prettier-ignore
-    return css`/**
+
+    return css`
+      /**
  * @utility stacking
  * @selector .--stack-topmost
  * @global
@@ -39,7 +40,8 @@ export const stacking: Definition = defineUtility({
  * @example
  * <div class="--stack-topmost">Always on top.</div>
  */
-${rules.join("\n")}`;
+      ${rules.join("\n")}
+    `;
   },
 });
 

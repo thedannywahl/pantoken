@@ -119,7 +119,17 @@ function makeWrapper(registry: ElementRegistry): RegisterContext["wrapper"] {
     tag,
     css,
     render,
-    { display = "inline-block", invoker = false, valueChange, childrenChange = false } = {},
+    {
+      display = "inline-block",
+      invoker = false,
+      valueChange,
+      childrenChange = false,
+    }: {
+      display?: string;
+      invoker?: boolean;
+      valueChange?: "value" | "checked";
+      childrenChange?: boolean;
+    } = {},
   ) => {
     if (registry.get(tag)) return;
     registry.define(

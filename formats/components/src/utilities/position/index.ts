@@ -26,8 +26,9 @@ export const position: Definition = defineUtility({
   name: "position",
   css: (p) => {
     const rules = buildPropertyRules(p, "position", "position", Array.from(POSITIONS));
-    // prettier-ignore
-    return css`/**
+
+    return css`
+      /**
  * @utility position
  * @selector .--position-relative
  * @global
@@ -47,7 +48,8 @@ export const position: Definition = defineUtility({
  * @example
  * <div class="--position-relative">…</div>
  */
-${rules.join("\n")}`;
+      ${rules.join("\n")}
+    `;
   },
 });
 

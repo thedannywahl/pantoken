@@ -203,12 +203,12 @@ export default defineConfig({
       // needs `snyk auth` + network, which CI and fresh clones lack. Task name differs from the
       // `security:code` package.json script — vp forbids the two matching.
       "snyk:code": {
-        command: "node scripts/quality/snyk-code-gate.ts",
+        command: "vpx scripts/quality/snyk-code-gate.ts",
       },
       // Fallow gate: dead-code = error, health = grade A, duplicates = thresholded. Needs generated
       // output (build:all) so the CSS-codegen sources and workspace graph resolve.
       "health:fallow": {
-        command: "node scripts/quality/fallow-health-gate.ts",
+        command: "vpx scripts/quality/fallow-health-gate.ts",
         dependsOn: ["build:all"],
       },
       "ready:all": {
@@ -244,25 +244,25 @@ export default defineConfig({
       // `gate:compatibility` is cheap and correct on every PR (compatibility.json changes only when the
       // pins or the consumer set change), so it joins `ready:all`; `sync:compatibility` regenerates it.
       "sync:compatibility": {
-        command: "node scripts/release/generate-compatibility.ts",
+        command: "vpx scripts/release/generate-compatibility.ts",
         dependsOn: ["build:all"],
       },
       "gate:compatibility": {
-        command: "node scripts/release/check-compatibility.ts",
+        command: "vpx scripts/release/check-compatibility.ts",
         dependsOn: ["build:all"],
       },
       "gate:target-compatibility": {
-        command: "node scripts/release/check-target-compatibility.ts",
+        command: "vpx scripts/release/check-target-compatibility.ts",
       },
       // Networked downstream release monitoring belongs in the scheduled workflow, not ready:all.
       "downstream:check": {
-        command: "node scripts/release/check-target-releases.ts",
+        command: "vpx scripts/release/check-target-releases.ts",
       },
       "downstream:test": {
-        command: "node scripts/release/downstream.ts test",
+        command: "vpx scripts/release/downstream.ts test",
       },
       "downstream:bless": {
-        command: "node scripts/release/downstream.ts bless",
+        command: "vpx scripts/release/downstream.ts bless",
       },
       // CSS/cssdoc linting needs `@pantoken/components`'s generated sheets (`src/generated/_records.css`,
       // the cssdoc sibling-record provider, and the `generated/*.css` sheets). They depend on `build:all`
@@ -542,17 +542,17 @@ export default defineConfig({
           "vp run @pantoken/translation-adapters#build && vp run @pantoken/i18n-engine#build && vp run @pantoken/web-components#check:drift && vp run @pantoken/tinymce#check:drift && vp run @pantoken/plugin-layouts#check:drift && vp run @pantoken/scaffold#check:drift && vp run @pantoken/ai#check:drift",
       },
       "i18n:drift:fix": {
-        command: "node scripts/i18n-drift-fix.ts --provider claude",
+        command: "vpx scripts/i18n-drift-fix.ts --provider claude",
         dependsOn: ["@pantoken/translation-adapters#build", "@pantoken/i18n-engine#build"],
         cache: false,
       },
       "i18n:drift:fix:agy": {
-        command: "node scripts/i18n-drift-fix.ts --provider agy",
+        command: "vpx scripts/i18n-drift-fix.ts --provider agy",
         dependsOn: ["@pantoken/translation-adapters#build", "@pantoken/i18n-engine#build"],
         cache: false,
       },
       "i18n:drift:fix:copilot": {
-        command: "node scripts/i18n-drift-fix.ts --provider copilot",
+        command: "vpx scripts/i18n-drift-fix.ts --provider copilot",
         dependsOn: ["@pantoken/translation-adapters#build", "@pantoken/i18n-engine#build"],
         cache: false,
       },
@@ -602,7 +602,7 @@ export default defineConfig({
         command: "vpx changeset status --verbose",
       },
       "release:coverage": {
-        command: "node scripts/release/check-changeset-coverage.ts",
+        command: "vpx scripts/release/check-changeset-coverage.ts",
       },
       // Driven by the changesets action (.github/workflows/release.yml): `version` opens/updates the
       // Version Packages PR, `publish` ships it via the npm CLI (not `changeset publish`, which shells out
@@ -622,7 +622,7 @@ export default defineConfig({
           'vpx changeset version && (node_modules/.bin/fallow dead-code --save-regression-baseline fallow-baseline.json || true) && vp fmt "**/CHANGELOG.md" fallow-baseline.json',
       },
       "release:publish": {
-        command: "node scripts/release/publish-npm.ts",
+        command: "vpx scripts/release/publish-npm.ts",
       },
       "release:pre:enter": {
         command: "vpx changeset pre enter next",
@@ -635,12 +635,12 @@ export default defineConfig({
       // breaks it), publint, and attw. publint/attw pack each package, so they wait on `build:all`;
       // `gate:repository` is a pure manifest read with no build dependency.
       "gate:repository": {
-        command: "node scripts/release/check-repository-metadata.ts",
+        command: "vpx scripts/release/check-repository-metadata.ts",
       },
       // Writer counterpart to `gate:repository`: stamps the canonical npm metadata onto every
       // publishable package.json. Run after adding a package; the gate then keeps it correct.
       "sync:repository": {
-        command: "node scripts/release/sync-repository-metadata.ts",
+        command: "vpx scripts/release/sync-repository-metadata.ts",
       },
       "gate:publint": {
         command:

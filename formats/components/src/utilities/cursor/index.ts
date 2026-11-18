@@ -35,8 +35,9 @@ export const cursor: Definition = defineUtility({
   name: "cursor",
   css: (p) => {
     const rules = buildPropertyRules(p, "cursor", "cursor", Array.from(CURSORS));
-    // prettier-ignore
-    return css`/**
+
+    return css`
+      /**
  * @utility cursor
  * @selector .--cursor-pointer
  * @global
@@ -57,7 +58,8 @@ export const cursor: Definition = defineUtility({
  * @example
  * <div class="--cursor-pointer">…</div>
  */
-${rules.join("\n")}`;
+      ${rules.join("\n")}
+    `;
   },
 });
 
