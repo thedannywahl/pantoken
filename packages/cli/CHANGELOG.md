@@ -1,5 +1,13 @@
 # CHANGELOG
 
+## 0.1.57
+
+### Patch Changes
+
+- Updated dependencies [5b6ecfc]
+  - @pantoken/jekyll@0.3.0
+  - @pantoken/scaffold@1.7.4
+
 ## 0.1.56
 
 ### Patch Changes

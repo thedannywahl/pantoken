@@ -1,5 +1,18 @@
 # CHANGELOG
 
+## 0.2.39
+
+### Patch Changes
+
+- Updated dependencies [6afed74]
+- Updated dependencies [5b6ecfc]
+  - @pantoken/angular@0.4.0
+  - @pantoken/bootstrap@0.3.0
+  - @pantoken/jekyll@0.3.0
+  - @pantoken/tinymce@0.8.0
+  - @pantoken/vite@0.4.0
+  - @pantoken/cli@0.1.57
+
 ## 0.2.38
 
 ### Patch Changes
