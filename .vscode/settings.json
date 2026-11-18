@@ -36,5 +36,8 @@
     "*.svelte.tmpl": "svelte"
   },
   "oxc.disableNestedConfig": true,
-  "oxc.fmt.disableNestedConfig": true
+  "oxc.fmt.disableNestedConfig": true,
+  "editor.codeActionsOnSave": {
+    "source.fixAll.oxc": "explicit"
+  }
 }
