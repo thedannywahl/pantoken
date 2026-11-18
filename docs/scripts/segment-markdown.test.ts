@@ -376,7 +376,7 @@ describe("tables", () => {
     expect(tableSegment?.kind).toBe("table");
 
     // Translate with a function that changes cell content
-    const resolve = (text: string, kind: TranslationKind): string =>
+    const resolve = (text: string, _kind: TranslationKind): string =>
       text.includes("icons") ? "TRANSLATED_ICONS" : text;
     const out = reassemble([tableSegment!], resolve);
 
