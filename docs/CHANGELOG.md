@@ -1,5 +1,11 @@
 # CHANGELOG
 
+## 0.6.6
+
+### Patch Changes
+
+- 63cc8e3: Upgrade vite-plus to 1.6.0 and reformat Vue components for Oxfmt compatibility
+
 ## 0.6.5
 
 ### Patch Changes
