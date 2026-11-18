@@ -42,7 +42,8 @@
   "@pantoken/tinymce": ["8.9.2", "8.9.3", "8.10.2"],
   "@pantoken/vitepress": ["1.6.4"],
   "@pantoken/vue": ["3.0.0", "3.5.43", "3.5.45"],
-  "pnpm/setup": ["v3.2.0"],
-  "@lucide/lab": ["^0.13.0"],
-  "pnpm": ["12.20.0"]
+  "@angular/common": ["22.2.6"],
+  "@angular/compiler": ["22.2.6"],
+  "@angular/core": ["22.2.6"],
+  "@angular/platform-browser": ["22.2.6"]
 }
