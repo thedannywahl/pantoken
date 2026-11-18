@@ -96,8 +96,7 @@ for (const component of ALL_COMPONENTS) {
     continue;
   }
 
-  let content = `// fallow-ignore-file unused-file\n`;
-  content += `/* c8 ignore file */ // side-effect module, tested via behavior functions and IIFE bundles\n`;
+  let content = `/* c8 ignore file */ // side-effect module, tested via behavior functions and IIFE bundles\n`;
   content += `// Per-component interaction entry point for ${component}\n\n`;
   content += `import { applySpacing } from "../shared/index.js";\nimport { sel } from "../shared/prefix.js";\n`;
 
