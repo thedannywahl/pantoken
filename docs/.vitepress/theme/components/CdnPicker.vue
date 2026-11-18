@@ -120,9 +120,7 @@ const output = computed(() =>
 <template>
   <div class="cdn-picker instui-view">
     <fieldset class="instui-form-field-group cdn-picker__group">
-      <span class="instui-screen-reader-content"
-        ><legend>{{ t.componentsLabel }}</legend></span
-      >
+      <span class="instui-screen-reader-content"><legend>{{ t.componentsLabel }}</legend></span>
       <span class="instui-input-group cdn-picker__search">
         <span class="before"
           ><span class="instui-icon -icon-search" aria-hidden="true"></span

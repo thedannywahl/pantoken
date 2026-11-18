@@ -260,9 +260,7 @@ const output = computed(() => (format.value === "iife" ? iifeSnippet.value : esm
 <template>
   <div class="wc-picker instui-view">
     <fieldset class="instui-form-field-group wc-picker__group">
-      <span class="instui-screen-reader-content"
-        ><legend>{{ t.label }}</legend></span
-      >
+      <span class="instui-screen-reader-content"><legend>{{ t.label }}</legend></span>
       <span class="instui-input-group wc-picker__search">
         <span class="before"
           ><span class="instui-icon -icon-search" aria-hidden="true"></span
