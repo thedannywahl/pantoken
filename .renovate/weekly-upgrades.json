@@ -1,29 +1,38 @@
 [
   {
-    "depName": "pnpm/setup",
-    "packageName": "pnpm/setup",
-    "packageFile": ".github/workflows/release.yml",
-    "manager": "github-actions",
-    "newValue": "v3.2.0",
-    "currentValue": "v3.1.2",
-    "newDigest": "731dfb6463bbd11c11fd0ee11fe00ed0e36d48a1"
-  },
-  {
-    "depName": "@lucide/lab",
-    "packageName": "@lucide/lab",
+    "depName": "@angular/common",
+    "packageName": "@angular/common",
     "packageFile": "pnpm-workspace.yaml",
     "manager": "npm",
-    "newValue": "^0.13.0",
-    "currentValue": "^0.12.0",
-    "newDigest": "sha512-M2xhsonyGKrIYYnZE3U97P756iuhxp6H2XRNT+X6y+z1lFSnsEMs/fwuCn2F3MQUGwwB4T9Uf716e/DTHhQkxQ=="
+    "newValue": "22.2.6",
+    "currentValue": "22.2.5",
+    "newDigest": "sha512-wL7qv2fb/qWIDhq6leX3SFGql76ljCPC6qXHB2KpKJ3GlppuF9fYJwLo+RicRyM72nFu9qQPzd9Zl9k3/eUisQ=="
   },
   {
-    "depName": "pnpm",
-    "packageName": "pnpm",
-    "packageFile": "package.json",
+    "depName": "@angular/compiler",
+    "packageName": "@angular/compiler",
+    "packageFile": "pnpm-workspace.yaml",
     "manager": "npm",
-    "newValue": "12.20.0",
-    "currentValue": "12.19.0",
-    "newDigest": "sha512-bMx0mXzO9OZ5mXiOGNv7+lg+KoSWaGaNtHB7aoMGZi9HFW5lAjKphb0+wkz5NkwaoVTTflHteqxiwc0eOvyAww=="
+    "newValue": "22.2.6",
+    "currentValue": "22.2.5",
+    "newDigest": "sha512-9QNqLAG+bqsTRDZZbggX50sS9NyWx3ACfgeLKUAaHPzebQXtIsAYIT6H8HNpR27GHJ2qJHi9yEm84hAJsKZCuQ=="
+  },
+  {
+    "depName": "@angular/core",
+    "packageName": "@angular/core",
+    "packageFile": "pnpm-workspace.yaml",
+    "manager": "npm",
+    "newValue": "22.2.6",
+    "currentValue": "22.2.5",
+    "newDigest": "sha512-atESNSPsM0dBXU88aDtByBP4W/wb8USbhL16lsePyxBvAWtM1Xn7QBB489QTmHpY6VCXHnqMhXWcrZsDpoIBsw=="
+  },
+  {
+    "depName": "@angular/platform-browser",
+    "packageName": "@angular/platform-browser",
+    "packageFile": "pnpm-workspace.yaml",
+    "manager": "npm",
+    "newValue": "22.2.6",
+    "currentValue": "22.2.5",
+    "newDigest": "sha512-xXSgdnnLLv/3aEC/pqyrUd0xlyYURGZG2HR3sOIN3bsIoctGFvzA5iwt/GEKpIDA1rn+NnKNLK/EKQaPA4YZEw=="
   }
 ]
