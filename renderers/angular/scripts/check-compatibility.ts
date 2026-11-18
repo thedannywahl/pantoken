@@ -14,6 +14,7 @@ const companions = [
   { angular: "22.2.1", typescript: "6.0.3", zone: "0.16.0" },
   { angular: "22.2.2", typescript: "6.0.3", zone: "0.16.0" },
   { angular: "22.2.5", typescript: "6.0.3", zone: "0.16.0" },
+  { angular: "22.2.6", typescript: "6.0.3", zone: "0.16.0" },
 ];
 
 /** Resolve the explicitly verified compiler companions for an Angular release. */
