@@ -12,6 +12,8 @@
  * @modifier -without-shadow — @deprecated {@link -inline}
  * @modifier -has-shadow-false — @alias {@link -without-shadow}
  * @modifier -screen-reader-only — Visually hidden but announced.
+ * @modifier -text-color-base — Use base text color instead of on-color (high-contrast).
+ * @modifier -text-color-on-color — Use on-color text (default for floating).
  * @modifier -variant-info — @deprecated {@link -color-info}
  * @modifier -variant-success — @deprecated {@link -color-success}
  * @modifier -variant-warning — @deprecated {@link -color-warning}
@@ -22,6 +24,7 @@
  * @modifier -timeout-3 — Three seconds before automatic dismissal.
  * @modifier -timeout-4 — Four seconds before automatic dismissal.
  * @modifier -timeout-5 — Five seconds before automatic dismissal.
+ * @modifier -icon-inline — Render inline icon using the status color (for inline alerts).
  * @part button-group — The row container for two action buttons.
  * @slot content — The alert's message content; may include a dismiss button.
  * @modifier -icon-* — Swap the status glyph for a custom icon (e.g. `-icon-megaphone`).
@@ -91,6 +94,15 @@
  *     <button class="pfx-button">Ok</button>
  *   </div>
  *   <button class="pfx-close-button" aria-label="Close"></button>
+ * </div>
+ * <div class="pfx-alert -text-color-base --mb-md">
+ *   An alert with text-color-base modifier for high contrast.
+ * </div>
+ * <div class="pfx-alert -color-warning -text-color-base --mb-md">
+ *   A warning alert with explicit base text color.
+ * </div>
+ * <div class="pfx-alert -color-info -inline -icon-inline --mb-md">
+ *   An inline alert with inline status icon.
  * </div>
  * ```
  * @example -automatica11y -nocard
@@ -251,6 +263,36 @@
 
   &:is([class^="-icon-"], [class*=" -icon-"])::before {
     content: none;
+  }
+
+  /* Text color variants: use alternative text color for the status message. */
+  &.-text-color-base {
+    color: var(--instui-component-alert-text-base);
+
+    > .pfx-close-button {
+      color: var(--instui-color-icon-base);
+    }
+  }
+
+  &.-text-color-on-color {
+    color: var(--instui-component-alert-text-on-color);
+  }
+
+  /* Inline icon variant: render status icon with inline alert's color scheme. */
+  &.-icon-inline:is(.-color-info, .-variant-info, &:not([class*="-color-"], [class*="-variant-"])) {
+    --pantoken-alert-icon-color: var(--instui-component-alert-info-icon-inline);
+  }
+
+  &.-icon-inline:is(.-color-success, .-variant-success) {
+    --pantoken-alert-icon-color: var(--instui-component-alert-success-icon-inline);
+  }
+
+  &.-icon-inline:is(.-color-warning, .-variant-warning) {
+    --pantoken-alert-icon-color: var(--instui-component-alert-warning-icon-inline);
+  }
+
+  &.-icon-inline:is(.-color-danger, .-color-error, .-variant-error) {
+    --pantoken-alert-icon-color: var(--instui-component-alert-danger-icon-inline);
   }
 
   &.-timeout-1 {
