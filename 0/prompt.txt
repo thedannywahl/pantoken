@@ -1,0 +1,209 @@
+You have not yet marked the task as complete using the task_complete tool. If you were planning changes the user asked for, stop planning and start implementing. You aren't done until you have fully completed the task.
+
+IMPORTANT: Do NOT call task_complete if:
+- You have open questions or ambiguities - make good decisions and keep working
+- You encountered an error - try to resolve it or find an alternative approach
+- There are remaining steps - complete them first
+
+If the user asked only for a review, analysis or recommendation and you have already delivered it, the task is complete: call task_complete now. A follow-up you offered or recommended is not part of the task, so do not start it.
+
+Keep working autonomously until the task is truly finished, then call task_complete.
+
+---
+
+You have not yet marked the task as complete using the task_complete tool. If you were planning changes the user asked for, stop planning and start implementing. You aren't done until you have fully completed the task.
+
+IMPORTANT: Do NOT call task_complete if:
+- You have open questions or ambiguities - make good decisions and keep working
+- You encountered an error - try to resolve it or find an alternative approach
+- There are remaining steps - complete them first
+
+If the user asked only for a review, analysis or recommendation and you have already delivered it, the task is complete: call task_complete now. A follow-up you offered or recommended is not part of the task, so do not start it.
+
+Keep working autonomously until the task is truly finished, then call task_complete.
+
+---
+
+approved
+
+---
+
+approved
+
+---
+
+You have not yet marked the task as complete using the task_complete tool. If you were planning changes the user asked for, stop planning and start implementing. You aren't done until you have fully completed the task.
+
+IMPORTANT: Do NOT call task_complete if:
+- You have open questions or ambiguities - make good decisions and keep working
+- You encountered an error - try to resolve it or find an alternative approach
+- There are remaining steps - complete them first
+
+If the user asked only for a review, analysis or recommendation and you have already delivered it, the task is complete: call task_complete now. A follow-up you offered or recommended is not part of the task, so do not start it.
+
+Keep working autonomously until the task is truly finished, then call task_complete.
+
+---
+
+You have not yet marked the task as complete using the task_complete tool. If you were planning changes the user asked for, stop planning and start implementing. You aren't done until you have fully completed the task.
+
+IMPORTANT: Do NOT call task_complete if:
+- You have open questions or ambiguities - make good decisions and keep working
+- You encountered an error - try to resolve it or find an alternative approach
+- There are remaining steps - complete them first
+
+If the user asked only for a review, analysis or recommendation and you have already delivered it, the task is complete: call task_complete now. A follow-up you offered or recommended is not part of the task, so do not start it.
+
+Keep working autonomously until the task is truly finished, then call task_complete.
+
+---
+
+You have not yet marked the task as complete using the task_complete tool. If you were planning changes the user asked for, stop planning and start implementing. You aren't done until you have fully completed the task.
+
+IMPORTANT: Do NOT call task_complete if:
+- You have open questions or ambiguities - make good decisions and keep working
+- You encountered an error - try to resolve it or find an alternative approach
+- There are remaining steps - complete them first
+
+If the user asked only for a review, analysis or recommendation and you have already delivered it, the task is complete: call task_complete now. A follow-up you offered or recommended is not part of the task, so do not start it.
+
+Keep working autonomously until the task is truly finished, then call task_complete.
+
+---
+
+You have not yet marked the task as complete using the task_complete tool. If you were planning changes the user asked for, stop planning and start implementing. You aren't done until you have fully completed the task.
+
+IMPORTANT: Do NOT call task_complete if:
+- You have open questions or ambiguities - make good decisions and keep working
+- You encountered an error - try to resolve it or find an alternative approach
+- There are remaining steps - complete them first
+
+If the user asked only for a review, analysis or recommendation and you have already delivered it, the task is complete: call task_complete now. A follow-up you offered or recommended is not part of the task, so do not start it.
+
+Keep working autonomously until the task is truly finished, then call task_complete.
+
+---
+
+try again.
+
+---
+
+try again.
+
+---
+
+[[PLAN]] one of the main points of typescript 7.1 is the support of es2026. evaluate the new features/functions of the es2026 spec how we can use them to improve the pantoken workspace.
+
+---
+
+[[PLAN]] one of the main points of typescript 7.1 is the support of es2026. evaluate the new features/functions of the es2026 spec how we can use them to improve the pantoken workspace.
+
+---
+
+[[PLAN]] what about error.error?
+
+---
+
+[[PLAN]] what about error.error?
+
+---
+
+[[PLAN]] explore promise.withresolvers first
+
+---
+
+[[PLAN]] explore promise.withresolvers first
+
+---
+
+[[PLAN]] also look at:
+* ## `Math.sumPrecise()`
+* ## `Map.getOrInsert()`
+* ## `Error.isError()`
+* ## Native Base64 Support for `Uint8Array`
+* ## `Iterator.concat()`
+* JSON.parse Source Access
+
+---
+
+[[PLAN]] also look at:
+* ## `Math.sumPrecise()`
+* ## `Map.getOrInsert()`
+* ## `Error.isError()`
+* ## Native Base64 Support for `Uint8Array`
+* ## `Iterator.concat()`
+* JSON.parse Source Access
+
+---
+
+[[PLAN]] investigate:
+- ``
+
+- Asynchronous array creation with `Array.fromAsync()`
+
+- Map upsert with `getOrInsert()`
+
+---
+
+[[PLAN]] investigate:
+- ``
+
+- Asynchronous array creation with `Array.fromAsync()`
+
+- Map upsert with `getOrInsert()`
+
+---
+
+[[PLAN]] why are we updating node?
+
+---
+
+[[PLAN]] why are we updating node?
+
+---
+
+[[PLAN]] where are we using node 20? I thought we were already on 24 or 26
+
+---
+
+[[PLAN]] where are we using node 20? I thought we were already on 24 or 26
+
+---
+
+[[PLAN]] make sure that we're not just updating the code but that we're setting the targets in vite and/or ts configs to the appropriate value too.
+
+---
+
+[[PLAN]] make sure that we're not just updating the code but that we're setting the targets in vite and/or ts configs to the appropriate value too.
+
+---
+
+[[PLAN]] we should work in incremental conventional commits and changesets for affected packages, including private packages.
+
+---
+
+[[PLAN]] we should work in incremental conventional commits and changesets for affected packages, including private packages.
+
+---
+
+[[PLAN]] another thing: are there updates to type declarations in typescript 7.1 that we should be using too?
+
+---
+
+[[PLAN]] another thing: are there updates to type declarations in typescript 7.1 that we should be using too?
+
+---
+
+[[PLAN]] also are there any typescript config file changes or new additions we should leverage? we're generally trying to be future-forward in pantoken workspace.
+
+---
+
+[[PLAN]] also are there any typescript config file changes or new additions we should leverage? we're generally trying to be future-forward in pantoken workspace.
+
+---
+
+[[PLAN]] what else should we consider? anything else from es2022 or 2023 or 2024 ? anything else missing or best practices we're not leveraging for a modern-future-forward implementation?
+
+---
+
+[[PLAN]] what else should we consider? anything else from es2022 or 2023 or 2024 ? anything else missing or best practices we're not leveraging for a modern-future-forward implementation?
