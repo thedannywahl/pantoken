@@ -1,7 +1,7 @@
 {
   "compilerOptions": {
     "target": "esnext",
-    "lib": ["es2023"],
+    "lib": ["es2026"],
     "moduleDetection": "force",
     "module": "nodenext",
     "moduleResolution": "nodenext",
@@ -17,6 +17,8 @@
     "isolatedDeclarations": true,
     "verbatimModuleSyntax": true,
     "noUncheckedSideEffectImports": true,
-    "skipLibCheck": true
+    "skipLibCheck": true,
+    "useDefineForClassFields": true,
+    "noImplicitOverride": true
   }
 }

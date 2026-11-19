@@ -464,6 +464,6 @@ test("rejects unknown platforms with a clear error", async () => {
     await scaffoldProject("invalid");
     expect(true).toBe(false); // Should have thrown
   } catch (err) {
-    expect(err instanceof Error && err.message.includes("Unknown platform")).toBe(true);
+    expect(Error.isError(err) && err.message.includes("Unknown platform")).toBe(true);
   }
 });

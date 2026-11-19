@@ -77213,6 +77213,7 @@
         "source": "page",
         "run": "2026-11-14T03-42-09.734Z",
         "date": "2026-11-14T03:42:33.959Z",
+        "digest": "3cee0a7dc12acfe86efe9bea15a0236b12eff1bd43b17a3a391098863fbc94e5",
         "tools": {
           "node": "26.13.1",
           "automatica11y": "0.11.0",
@@ -77223,12 +77224,8 @@
           "guidepup-vsr": "0.33.0",
           "chromium": "157.0.8103.50"
         },
-        "digest": "3cee0a7dc12acfe86efe9bea15a0236b12eff1bd43b17a3a391098863fbc94e5",
-        "warnings": [],
-        "notices": [
-          "tabs-1-rebrand-light/page/0/conditions/more-contrast-respected: undetermined: All six measured pieces of text pass with more contrast. two other pieces can't be reduced to one color. \"Billing\" can't be measured because an element behind it is partly transparent."
-        ],
         "configurations": 1,
+        "flags": 0,
         "tiers": {
           "rules": {
             "ran": 1
@@ -77239,24 +77236,6 @@
           "vsr": {
             "ran": 1
           }
-        },
-        "axe": {
-          "violations": 0,
-          "reviews": 0,
-          "reviewRules": {},
-          "violationRules": {}
-        },
-        "ibm": {
-          "violations": 0,
-          "reviews": 5,
-          "reviewRules": {
-            "aria_keyboard_handler_exists": 1,
-            "html_skipnav_exists": 1,
-            "style_color_misuse": 1,
-            "style_focus_visible": 1,
-            "style_highcontrast_visible": 1
-          },
-          "violationRules": {}
         },
         "checks": {
           "conditions": {
@@ -77359,10 +77338,31 @@
             "elements": []
           }
         ],
-        "flags": 0,
+        "axe": {
+          "violations": 0,
+          "reviews": 0,
+          "reviewRules": {},
+          "violationRules": {}
+        },
+        "ibm": {
+          "violations": 0,
+          "reviews": 5,
+          "reviewRules": {
+            "aria_keyboard_handler_exists": 1,
+            "html_skipnav_exists": 1,
+            "style_color_misuse": 1,
+            "style_focus_visible": 1,
+            "style_highcontrast_visible": 1
+          },
+          "violationRules": {}
+        },
         "findings": [
           "more-contrast-respected (undetermined): All six measured pieces of text pass with more contrast. two other pieces can't be reduced to one color. \"Billing\" can't be measured because an element behind it is partly transparent."
-        ]
+        ],
+        "notices": [
+          "tabs-1-rebrand-light/page/0/conditions/more-contrast-respected: undetermined: All six measured pieces of text pass with more contrast. two other pieces can't be reduced to one color. \"Billing\" can't be measured because an element behind it is partly transparent."
+        ],
+        "warnings": []
       },
       {
         "target": "tabs-1-rebrand-dark",
@@ -77371,6 +77371,7 @@
         "source": "page",
         "run": "2026-11-14T03-42-09.734Z",
         "date": "2026-11-14T03:42:45.906Z",
+        "digest": "0812953d4bcd481656f08414b8501643eb2ab4047d7f1597c2ea18a5f637d555",
         "tools": {
           "node": "26.13.1",
           "automatica11y": "0.11.0",
@@ -77381,12 +77382,8 @@
           "guidepup-vsr": "0.33.0",
           "chromium": "157.0.8103.50"
         },
-        "digest": "0812953d4bcd481656f08414b8501643eb2ab4047d7f1597c2ea18a5f637d555",
-        "warnings": [],
-        "notices": [
-          "tabs-1-rebrand-dark/page/0/conditions/more-contrast-respected: undetermined: All six measured pieces of text pass with more contrast. two other pieces can't be reduced to one color. \"Billing\" can't be measured because an element behind it is partly transparent."
-        ],
         "configurations": 1,
+        "flags": 0,
         "tiers": {
           "rules": {
             "ran": 1
@@ -77397,24 +77394,6 @@
           "vsr": {
             "ran": 1
           }
-        },
-        "axe": {
-          "violations": 0,
-          "reviews": 0,
-          "reviewRules": {},
-          "violationRules": {}
-        },
-        "ibm": {
-          "violations": 0,
-          "reviews": 5,
-          "reviewRules": {
-            "aria_keyboard_handler_exists": 1,
-            "html_skipnav_exists": 1,
-            "style_color_misuse": 1,
-            "style_focus_visible": 1,
-            "style_highcontrast_visible": 1
-          },
-          "violationRules": {}
         },
         "checks": {
           "conditions": {
@@ -77517,10 +77496,31 @@
             "elements": []
           }
         ],
-        "flags": 0,
+        "axe": {
+          "violations": 0,
+          "reviews": 0,
+          "reviewRules": {},
+          "violationRules": {}
+        },
+        "ibm": {
+          "violations": 0,
+          "reviews": 5,
+          "reviewRules": {
+            "aria_keyboard_handler_exists": 1,
+            "html_skipnav_exists": 1,
+            "style_color_misuse": 1,
+            "style_focus_visible": 1,
+            "style_highcontrast_visible": 1
+          },
+          "violationRules": {}
+        },
         "findings": [
           "more-contrast-respected (undetermined): All six measured pieces of text pass with more contrast. two other pieces can't be reduced to one color. \"Billing\" can't be measured because an element behind it is partly transparent."
-        ]
+        ],
+        "notices": [
+          "tabs-1-rebrand-dark/page/0/conditions/more-contrast-respected: undetermined: All six measured pieces of text pass with more contrast. two other pieces can't be reduced to one color. \"Billing\" can't be measured because an element behind it is partly transparent."
+        ],
+        "warnings": []
       },
       {
         "target": "tabs-1-canvas-light",
@@ -77529,6 +77529,7 @@
         "source": "page",
         "run": "2026-11-14T03-42-09.734Z",
         "date": "2026-11-14T03:42:57.424Z",
+        "digest": "40ca6c1cd9af7d177f48736352fd40bd3850aafd8786ff1acddc59ff0633a6ae",
         "tools": {
           "node": "26.13.1",
           "automatica11y": "0.11.0",
@@ -77539,12 +77540,8 @@
           "guidepup-vsr": "0.33.0",
           "chromium": "157.0.8103.50"
         },
-        "digest": "40ca6c1cd9af7d177f48736352fd40bd3850aafd8786ff1acddc59ff0633a6ae",
-        "warnings": [],
-        "notices": [
-          "tabs-1-canvas-light/page/0/conditions/more-contrast-respected: undetermined: All six measured pieces of text pass with more contrast. two other pieces can't be reduced to one color. \"Billing\" can't be measured because an element behind it is partly transparent."
-        ],
         "configurations": 1,
+        "flags": 0,
         "tiers": {
           "rules": {
             "ran": 1
@@ -77555,24 +77552,6 @@
           "vsr": {
             "ran": 1
           }
-        },
-        "axe": {
-          "violations": 0,
-          "reviews": 0,
-          "reviewRules": {},
-          "violationRules": {}
-        },
-        "ibm": {
-          "violations": 0,
-          "reviews": 5,
-          "reviewRules": {
-            "aria_keyboard_handler_exists": 1,
-            "html_skipnav_exists": 1,
-            "style_color_misuse": 1,
-            "style_focus_visible": 1,
-            "style_highcontrast_visible": 1
-          },
-          "violationRules": {}
         },
         "checks": {
           "conditions": {
@@ -77675,10 +77654,31 @@
             "elements": []
           }
         ],
-        "flags": 0,
+        "axe": {
+          "violations": 0,
+          "reviews": 0,
+          "reviewRules": {},
+          "violationRules": {}
+        },
+        "ibm": {
+          "violations": 0,
+          "reviews": 5,
+          "reviewRules": {
+            "aria_keyboard_handler_exists": 1,
+            "html_skipnav_exists": 1,
+            "style_color_misuse": 1,
+            "style_focus_visible": 1,
+            "style_highcontrast_visible": 1
+          },
+          "violationRules": {}
+        },
         "findings": [
           "more-contrast-respected (undetermined): All six measured pieces of text pass with more contrast. two other pieces can't be reduced to one color. \"Billing\" can't be measured because an element behind it is partly transparent."
-        ]
+        ],
+        "notices": [
+          "tabs-1-canvas-light/page/0/conditions/more-contrast-respected: undetermined: All six measured pieces of text pass with more contrast. two other pieces can't be reduced to one color. \"Billing\" can't be measured because an element behind it is partly transparent."
+        ],
+        "warnings": []
       },
       {
         "target": "tabs-1-canvashighcontrast-light",
@@ -77687,6 +77687,7 @@
         "source": "page",
         "run": "2026-11-14T03-42-09.734Z",
         "date": "2026-11-14T03:43:09.054Z",
+        "digest": "e2c24cb47ccca20332dd4e5563dceeeb6e5a4a1508db747b0a710c11a810a4e9",
         "tools": {
           "node": "26.13.1",
           "automatica11y": "0.11.0",
@@ -77697,12 +77698,8 @@
           "guidepup-vsr": "0.33.0",
           "chromium": "157.0.8103.50"
         },
-        "digest": "e2c24cb47ccca20332dd4e5563dceeeb6e5a4a1508db747b0a710c11a810a4e9",
-        "warnings": [],
-        "notices": [
-          "tabs-1-canvashighcontrast-light/page/0/conditions/more-contrast-respected: undetermined: All six measured pieces of text pass with more contrast. two other pieces can't be reduced to one color. \"Billing\" can't be measured because an element behind it is partly transparent."
-        ],
         "configurations": 1,
+        "flags": 0,
         "tiers": {
           "rules": {
             "ran": 1
@@ -77714,6 +77711,107 @@
             "ran": 1
           }
         },
+        "checks": {
+          "conditions": {
+            "pass": 4,
+            "not-applicable": 3,
+            "undetermined": 1
+          }
+        },
+        "details": [
+          {
+            "tier": "conditions",
+            "name": "reduced-motion-respected",
+            "criteria": ["2.3.3", "2.2.2"],
+            "counts": {
+              "pass": 1
+            },
+            "notes": [],
+            "elements": []
+          },
+          {
+            "tier": "conditions",
+            "name": "dark-mode-contrast",
+            "criteria": ["1.4.3"],
+            "counts": {
+              "not-applicable": 1
+            },
+            "notes": [],
+            "elements": []
+          },
+          {
+            "tier": "conditions",
+            "name": "more-contrast-respected",
+            "criteria": ["1.4.3", "1.4.6"],
+            "counts": {
+              "undetermined": 1
+            },
+            "notes": [
+              "All six measured pieces of text pass with more contrast. two other pieces can't be reduced to one color. \"Billing\" can't be measured because an element behind it is partly transparent."
+            ],
+            "elements": []
+          },
+          {
+            "tier": "conditions",
+            "name": "less-contrast-stays-readable",
+            "criteria": ["1.4.3"],
+            "counts": {
+              "not-applicable": 1
+            },
+            "notes": [],
+            "elements": []
+          },
+          {
+            "tier": "conditions",
+            "name": "reduced-transparency-respected",
+            "criteria": ["1.4.3", "1.4.11"],
+            "counts": {
+              "not-applicable": 1
+            },
+            "notes": [],
+            "elements": []
+          },
+          {
+            "tier": "conditions",
+            "name": "forced-colors-focus-visible",
+            "criteria": ["1.4.11", "2.4.7"],
+            "counts": {
+              "pass": 1
+            },
+            "notes": [],
+            "elements": []
+          },
+          {
+            "tier": "conditions",
+            "name": "reflow-at-320px",
+            "criteria": ["1.4.10"],
+            "counts": {
+              "pass": 1
+            },
+            "notes": [],
+            "elements": []
+          },
+          {
+            "tier": "conditions",
+            "name": "text-spacing-no-clipping",
+            "criteria": ["1.4.12"],
+            "counts": {
+              "pass": 1
+            },
+            "notes": [],
+            "elements": []
+          },
+          {
+            "tier": "vsr",
+            "name": "announcements",
+            "criteria": [],
+            "counts": {
+              "pass": 1
+            },
+            "notes": [],
+            "elements": []
+          }
+        ],
         "axe": {
           "violations": 0,
           "reviews": 0,
@@ -77732,111 +77830,13 @@
           },
           "violationRules": {}
         },
-        "checks": {
-          "conditions": {
-            "pass": 4,
-            "not-applicable": 3,
-            "undetermined": 1
-          }
-        },
-        "details": [
-          {
-            "tier": "conditions",
-            "name": "reduced-motion-respected",
-            "criteria": ["2.3.3", "2.2.2"],
-            "counts": {
-              "pass": 1
-            },
-            "notes": [],
-            "elements": []
-          },
-          {
-            "tier": "conditions",
-            "name": "dark-mode-contrast",
-            "criteria": ["1.4.3"],
-            "counts": {
-              "not-applicable": 1
-            },
-            "notes": [],
-            "elements": []
-          },
-          {
-            "tier": "conditions",
-            "name": "more-contrast-respected",
-            "criteria": ["1.4.3", "1.4.6"],
-            "counts": {
-              "undetermined": 1
-            },
-            "notes": [
-              "All six measured pieces of text pass with more contrast. two other pieces can't be reduced to one color. \"Billing\" can't be measured because an element behind it is partly transparent."
-            ],
-            "elements": []
-          },
-          {
-            "tier": "conditions",
-            "name": "less-contrast-stays-readable",
-            "criteria": ["1.4.3"],
-            "counts": {
-              "not-applicable": 1
-            },
-            "notes": [],
-            "elements": []
-          },
-          {
-            "tier": "conditions",
-            "name": "reduced-transparency-respected",
-            "criteria": ["1.4.3", "1.4.11"],
-            "counts": {
-              "not-applicable": 1
-            },
-            "notes": [],
-            "elements": []
-          },
-          {
-            "tier": "conditions",
-            "name": "forced-colors-focus-visible",
-            "criteria": ["1.4.11", "2.4.7"],
-            "counts": {
-              "pass": 1
-            },
-            "notes": [],
-            "elements": []
-          },
-          {
-            "tier": "conditions",
-            "name": "reflow-at-320px",
-            "criteria": ["1.4.10"],
-            "counts": {
-              "pass": 1
-            },
-            "notes": [],
-            "elements": []
-          },
-          {
-            "tier": "conditions",
-            "name": "text-spacing-no-clipping",
-            "criteria": ["1.4.12"],
-            "counts": {
-              "pass": 1
-            },
-            "notes": [],
-            "elements": []
-          },
-          {
-            "tier": "vsr",
-            "name": "announcements",
-            "criteria": [],
-            "counts": {
-              "pass": 1
-            },
-            "notes": [],
-            "elements": []
-          }
-        ],
-        "flags": 0,
         "findings": [
           "more-contrast-respected (undetermined): All six measured pieces of text pass with more contrast. two other pieces can't be reduced to one color. \"Billing\" can't be measured because an element behind it is partly transparent."
-        ]
+        ],
+        "notices": [
+          "tabs-1-canvashighcontrast-light/page/0/conditions/more-contrast-respected: undetermined: All six measured pieces of text pass with more contrast. two other pieces can't be reduced to one color. \"Billing\" can't be measured because an element behind it is partly transparent."
+        ],
+        "warnings": []
       },
       {
         "target": "npm-tabs-1-rebrand-light",
@@ -77845,6 +77845,7 @@
         "source": "npm",
         "run": "2026-11-14T03-42-09.734Z",
         "date": "2026-11-14T03:44:31.340Z",
+        "digest": "238836f29a84940527e105b04e4f3b12dd006a7e96e91e22c0ce35353ec30e45",
         "tools": {
           "node": "26.13.1",
           "automatica11y": "0.11.0",
@@ -77855,12 +77856,8 @@
           "guidepup-vsr": "0.33.0",
           "chromium": "157.0.8103.50"
         },
-        "digest": "238836f29a84940527e105b04e4f3b12dd006a7e96e91e22c0ce35353ec30e45",
-        "warnings": [],
-        "notices": [
-          "npm-tabs-1-rebrand-light/tabs/0/conditions/more-contrast-respected: undetermined: All six measured pieces of text pass with more contrast. two other pieces can't be reduced to one color. \"Billing\" can't be measured because an element behind it is partly transparent."
-        ],
         "configurations": 1,
+        "flags": 0,
         "tiers": {
           "rules": {
             "ran": 1
@@ -77877,23 +77874,6 @@
           "vsr": {
             "ran": 1
           }
-        },
-        "axe": {
-          "violations": 0,
-          "reviews": 0,
-          "reviewRules": {},
-          "violationRules": {}
-        },
-        "ibm": {
-          "violations": 0,
-          "reviews": 4,
-          "reviewRules": {
-            "aria_keyboard_handler_exists": 1,
-            "style_color_misuse": 1,
-            "style_focus_visible": 1,
-            "style_highcontrast_visible": 1
-          },
-          "violationRules": {}
         },
         "checks": {
           "conditions": {
@@ -78093,12 +78073,32 @@
             "elements": []
           }
         ],
-        "flags": 0,
+        "axe": {
+          "violations": 0,
+          "reviews": 0,
+          "reviewRules": {},
+          "violationRules": {}
+        },
+        "ibm": {
+          "violations": 0,
+          "reviews": 4,
+          "reviewRules": {
+            "aria_keyboard_handler_exists": 1,
+            "style_color_misuse": 1,
+            "style_focus_visible": 1,
+            "style_highcontrast_visible": 1
+          },
+          "violationRules": {}
+        },
         "findings": [
           "more-contrast-respected (undetermined): All six measured pieces of text pass with more contrast. two other pieces can't be reduced to one color. \"Billing\" can't be measured because an element behind it is partly transparent.",
           "home-and-end-work (fail): End didn't move to the last tab.",
           "selected-state-exposed (fail): 3 tabs are aria-selected=\"true\". A tab list should have exactly one."
-        ]
+        ],
+        "notices": [
+          "npm-tabs-1-rebrand-light/tabs/0/conditions/more-contrast-respected: undetermined: All six measured pieces of text pass with more contrast. two other pieces can't be reduced to one color. \"Billing\" can't be measured because an element behind it is partly transparent."
+        ],
+        "warnings": []
       },
       {
         "target": "npm-tabs-1-rebrand-dark",
@@ -78107,6 +78107,7 @@
         "source": "npm",
         "run": "2026-11-14T03-42-09.734Z",
         "date": "2026-11-14T03:44:31.340Z",
+        "digest": "238836f29a84940527e105b04e4f3b12dd006a7e96e91e22c0ce35353ec30e45",
         "tools": {
           "node": "26.13.1",
           "automatica11y": "0.11.0",
@@ -78117,12 +78118,8 @@
           "guidepup-vsr": "0.33.0",
           "chromium": "157.0.8103.50"
         },
-        "digest": "238836f29a84940527e105b04e4f3b12dd006a7e96e91e22c0ce35353ec30e45",
-        "warnings": [],
-        "notices": [
-          "npm-tabs-1-rebrand-dark/tabs/0/conditions/more-contrast-respected: undetermined: All six measured pieces of text pass with more contrast. two other pieces can't be reduced to one color. \"Billing\" can't be measured because an element behind it is partly transparent."
-        ],
         "configurations": 1,
+        "flags": 0,
         "tiers": {
           "rules": {
             "ran": 1
@@ -78139,23 +78136,6 @@
           "vsr": {
             "ran": 1
           }
-        },
-        "axe": {
-          "violations": 0,
-          "reviews": 0,
-          "reviewRules": {},
-          "violationRules": {}
-        },
-        "ibm": {
-          "violations": 0,
-          "reviews": 4,
-          "reviewRules": {
-            "aria_keyboard_handler_exists": 1,
-            "style_color_misuse": 1,
-            "style_focus_visible": 1,
-            "style_highcontrast_visible": 1
-          },
-          "violationRules": {}
         },
         "checks": {
           "conditions": {
@@ -78355,12 +78335,32 @@
             "elements": []
           }
         ],
-        "flags": 0,
+        "axe": {
+          "violations": 0,
+          "reviews": 0,
+          "reviewRules": {},
+          "violationRules": {}
+        },
+        "ibm": {
+          "violations": 0,
+          "reviews": 4,
+          "reviewRules": {
+            "aria_keyboard_handler_exists": 1,
+            "style_color_misuse": 1,
+            "style_focus_visible": 1,
+            "style_highcontrast_visible": 1
+          },
+          "violationRules": {}
+        },
         "findings": [
           "more-contrast-respected (undetermined): All six measured pieces of text pass with more contrast. two other pieces can't be reduced to one color. \"Billing\" can't be measured because an element behind it is partly transparent.",
           "home-and-end-work (fail): End didn't move to the last tab.",
           "selected-state-exposed (fail): 3 tabs are aria-selected=\"true\". A tab list should have exactly one."
-        ]
+        ],
+        "notices": [
+          "npm-tabs-1-rebrand-dark/tabs/0/conditions/more-contrast-respected: undetermined: All six measured pieces of text pass with more contrast. two other pieces can't be reduced to one color. \"Billing\" can't be measured because an element behind it is partly transparent."
+        ],
+        "warnings": []
       },
       {
         "target": "npm-tabs-1-canvas-light",
@@ -78369,6 +78369,7 @@
         "source": "npm",
         "run": "2026-11-14T03-42-09.734Z",
         "date": "2026-11-14T03:44:31.340Z",
+        "digest": "238836f29a84940527e105b04e4f3b12dd006a7e96e91e22c0ce35353ec30e45",
         "tools": {
           "node": "26.13.1",
           "automatica11y": "0.11.0",
@@ -78379,12 +78380,8 @@
           "guidepup-vsr": "0.33.0",
           "chromium": "157.0.8103.50"
         },
-        "digest": "238836f29a84940527e105b04e4f3b12dd006a7e96e91e22c0ce35353ec30e45",
-        "warnings": [],
-        "notices": [
-          "npm-tabs-1-canvas-light/tabs/0/conditions/more-contrast-respected: undetermined: All six measured pieces of text pass with more contrast. two other pieces can't be reduced to one color. \"Billing\" can't be measured because an element behind it is partly transparent."
-        ],
         "configurations": 1,
+        "flags": 0,
         "tiers": {
           "rules": {
             "ran": 1
@@ -78401,23 +78398,6 @@
           "vsr": {
             "ran": 1
           }
-        },
-        "axe": {
-          "violations": 0,
-          "reviews": 0,
-          "reviewRules": {},
-          "violationRules": {}
-        },
-        "ibm": {
-          "violations": 0,
-          "reviews": 4,
-          "reviewRules": {
-            "aria_keyboard_handler_exists": 1,
-            "style_color_misuse": 1,
-            "style_focus_visible": 1,
-            "style_highcontrast_visible": 1
-          },
-          "violationRules": {}
         },
         "checks": {
           "conditions": {
@@ -78617,12 +78597,32 @@
             "elements": []
           }
         ],
-        "flags": 0,
+        "axe": {
+          "violations": 0,
+          "reviews": 0,
+          "reviewRules": {},
+          "violationRules": {}
+        },
+        "ibm": {
+          "violations": 0,
+          "reviews": 4,
+          "reviewRules": {
+            "aria_keyboard_handler_exists": 1,
+            "style_color_misuse": 1,
+            "style_focus_visible": 1,
+            "style_highcontrast_visible": 1
+          },
+          "violationRules": {}
+        },
         "findings": [
           "more-contrast-respected (undetermined): All six measured pieces of text pass with more contrast. two other pieces can't be reduced to one color. \"Billing\" can't be measured because an element behind it is partly transparent.",
           "home-and-end-work (fail): End didn't move to the last tab.",
           "selected-state-exposed (fail): 3 tabs are aria-selected=\"true\". A tab list should have exactly one."
-        ]
+        ],
+        "notices": [
+          "npm-tabs-1-canvas-light/tabs/0/conditions/more-contrast-respected: undetermined: All six measured pieces of text pass with more contrast. two other pieces can't be reduced to one color. \"Billing\" can't be measured because an element behind it is partly transparent."
+        ],
+        "warnings": []
       },
       {
         "target": "npm-tabs-1-canvashighcontrast-light",
@@ -78631,6 +78631,7 @@
         "source": "npm",
         "run": "2026-11-14T03-42-09.734Z",
         "date": "2026-11-14T03:44:31.340Z",
+        "digest": "238836f29a84940527e105b04e4f3b12dd006a7e96e91e22c0ce35353ec30e45",
         "tools": {
           "node": "26.13.1",
           "automatica11y": "0.11.0",
@@ -78641,12 +78642,8 @@
           "guidepup-vsr": "0.33.0",
           "chromium": "157.0.8103.50"
         },
-        "digest": "238836f29a84940527e105b04e4f3b12dd006a7e96e91e22c0ce35353ec30e45",
-        "warnings": [],
-        "notices": [
-          "npm-tabs-1-canvashighcontrast-light/tabs/0/conditions/more-contrast-respected: undetermined: All six measured pieces of text pass with more contrast. two other pieces can't be reduced to one color. \"Billing\" can't be measured because an element behind it is partly transparent."
-        ],
         "configurations": 1,
+        "flags": 0,
         "tiers": {
           "rules": {
             "ran": 1
@@ -78663,23 +78660,6 @@
           "vsr": {
             "ran": 1
           }
-        },
-        "axe": {
-          "violations": 0,
-          "reviews": 0,
-          "reviewRules": {},
-          "violationRules": {}
-        },
-        "ibm": {
-          "violations": 0,
-          "reviews": 4,
-          "reviewRules": {
-            "aria_keyboard_handler_exists": 1,
-            "style_color_misuse": 1,
-            "style_focus_visible": 1,
-            "style_highcontrast_visible": 1
-          },
-          "violationRules": {}
         },
         "checks": {
           "conditions": {
@@ -78879,12 +78859,32 @@
             "elements": []
           }
         ],
-        "flags": 0,
+        "axe": {
+          "violations": 0,
+          "reviews": 0,
+          "reviewRules": {},
+          "violationRules": {}
+        },
+        "ibm": {
+          "violations": 0,
+          "reviews": 4,
+          "reviewRules": {
+            "aria_keyboard_handler_exists": 1,
+            "style_color_misuse": 1,
+            "style_focus_visible": 1,
+            "style_highcontrast_visible": 1
+          },
+          "violationRules": {}
+        },
         "findings": [
           "more-contrast-respected (undetermined): All six measured pieces of text pass with more contrast. two other pieces can't be reduced to one color. \"Billing\" can't be measured because an element behind it is partly transparent.",
           "home-and-end-work (fail): End didn't move to the last tab.",
           "selected-state-exposed (fail): 3 tabs are aria-selected=\"true\". A tab list should have exactly one."
-        ]
+        ],
+        "notices": [
+          "npm-tabs-1-canvashighcontrast-light/tabs/0/conditions/more-contrast-respected: undetermined: All six measured pieces of text pass with more contrast. two other pieces can't be reduced to one color. \"Billing\" can't be measured because an element behind it is partly transparent."
+        ],
+        "warnings": []
       }
     ],
     "tabs.panel": [
@@ -94491,102 +94491,102 @@
     ]
   },
   "fingerprints": {
-    "agent-shell": "776fa08e9d7a1b21",
-    "ai-gradient": "1a95c373a165aa28",
-    "alert": "1db35a89c42f2f5f",
-    "avatar": "5ca8b77c2f0c39a3",
-    "badge": "83edfb9397bfb0a5",
-    "banner": "8d03de878393edec",
-    "base": "57ae07b822bf856f",
-    "billboard": "b11ceacce0bba267",
-    "breadcrumb": "7ca1a69a322dc393",
-    "breadcrumb.link": "e356be4bff3236d1",
-    "button": "ded0cf82612ef940",
-    "button-set": "e09016a24ad78919",
-    "byline": "541b412bbd9a8376",
-    "calendar": "60c621152c074da6",
-    "calendar.day": "68aca461c9c4064c",
-    "card": "5b70eba2286feb0f",
-    "checkbox": "6ba09fcb6e7fa00d",
-    "close-button": "a4c8afd1306179e6",
-    "context-view": "64752572a4df8b15",
-    "cursor": "d6bb0555a3eeeb59",
-    "drawer-layout": "113cfad3652fe9d6",
-    "drawer-layout.content": "7301d4339ddf6f95",
-    "drawer-layout.tray": "97c45af64b883504",
-    "file-drop": "d809fe705bdd1fa5",
-    "focus": "e9de1798f0a13ece",
-    "form-field": "b1ca1683f2093518",
-    "form-field-group": "27e9673c0bb175ea",
-    "form-field-messages": "176b37d3cc86142a",
-    "gap": "365d9c3b7324a04e",
-    "heading": "b979b84e59e2a213",
-    "icon": "1e61f9bad8b2042d",
-    "img": "fc36803e6c68d8e7",
-    "in-place-edit": "1b36124cd479141a",
-    "input-group": "3a6d1fdf397ab29e",
-    "layout": "4586ed21f4347641",
-    "link": "ab4d3805b1771849",
-    "list": "0aa764016e19c9ca",
-    "list.item": "c083aa04f9abcc62",
-    "logo": "09430d6f7664b77f",
-    "mask": "a42afbee15ebf918",
-    "maskglobal": "6997a5289125c1ed",
-    "menu": "a364705dfafcab84",
-    "menu.group": "92e8e11a257ca7dc",
-    "menu.item": "0da92b6742c2cde5",
-    "menu.separator": "844fc61288f90e86",
-    "metric": "a32d35f9b9788062",
-    "modal": "ba80dc64a57e89a6",
-    "modal.body": "dc612d2f143d4c45",
-    "modal.footer": "55a765a3f985ae87",
-    "modal.header": "4e1499ad1f83c405",
-    "number-input": "6a8b8e8c8004e23d",
-    "overflow": "1c410de030e63c67",
-    "pagination": "804c0520cf939f5d",
-    "pagination.page": "dbf8145662367304",
-    "pill": "d8b2fb2d23e74ac3",
-    "popover": "2f643ccac7d88670",
-    "position": "0b74800e1a1a4fff",
-    "progress": "946d004b1196804c",
-    "progress-circle": "d06eb20bb0597fd3",
-    "prose": "9befaa108fd4d57c",
-    "radio": "bbf1240a9bdf16a7",
-    "radio-input-group": "fe87bdfe00c101db",
-    "range-input": "13f2154914b93e42",
-    "rating": "866cc936fa0fc93f",
-    "responsive": "0cc37e346c1db5e1",
-    "screen-reader-content": "a7cc17da270798e6",
-    "segmented-control": "cff267ad9bac1cdc",
-    "side-nav-bar": "4f95c2893a5174d4",
-    "side-nav-bar.item": "cff8d7e3568495ce",
-    "simple-select": "cabaa1e9e155a8b7",
-    "skeleton-loader": "d07b272115073cc7",
-    "spacing": "4c097af6c38e791c",
-    "spinner": "2dffa7b0ca09bf14",
-    "stacking": "4b6f0b6ca641d5ae",
-    "table": "d13fba20398f839e",
-    "table.body": "3cb7baba4efdb3c0",
-    "table.cell": "dcd211a058a3310f",
-    "table.col-header": "64d4027bfc8c1756",
-    "table.head": "c9440b8260f0b721",
-    "table.row": "b899217a350f2e0b",
-    "table.row-header": "34f636791d69d922",
-    "tabs": "e90cf8171c2902eb",
-    "tabs.panel": "c2d6ae5871d94212",
-    "tabs.tab": "4a648bd8fabb0221",
-    "tag": "d7a490ab3203eb59",
-    "text": "f377a37dafcc5b1a",
-    "text-area": "4c1d0bdc4d2124ca",
-    "text-input": "faab01566dc6c9c6",
-    "toggle-details": "9aa0b93f368c7fe1",
-    "toggle-group": "7bb566d408a3cc52",
-    "tooltip": "0772aebe6e249cb4",
-    "transition": "0ee45a81d732ce52",
-    "tray": "439f67acb79ada75",
-    "tree-browser": "f7d423636d5f2ea7",
-    "truncate": "df1e4af85324301b",
-    "view": "649df9aa4128d69b",
-    "visual-debug": "9b1a392a0352ddac"
+    "agent-shell": "2aefe462f22ff4a3",
+    "ai-gradient": "7211af7467787739",
+    "alert": "fd9b058c85d83379",
+    "avatar": "584e11e42cccb73e",
+    "badge": "5c45705d0df6b952",
+    "banner": "102a54a95a3e89a3",
+    "base": "4cddb22c6cbeb7fe",
+    "billboard": "0ed41e8b0c6e7c09",
+    "breadcrumb": "335b1086068c66c3",
+    "breadcrumb.link": "216ee73d0d82defb",
+    "button": "434dbb6ec1794b36",
+    "button-set": "e6c490e7c38d4b4b",
+    "byline": "5b24364afd8342c3",
+    "calendar": "dfdbd28709ab06b6",
+    "calendar.day": "bdbcd1b1bc78b01c",
+    "card": "c6554e4b63f6038f",
+    "checkbox": "1f9df3c4efd0f6a6",
+    "close-button": "defc72b355652671",
+    "context-view": "64fa808dc4627670",
+    "cursor": "0c9b2a0c33156c69",
+    "drawer-layout": "89402d59077fdcd9",
+    "drawer-layout.content": "c0272d98280148c8",
+    "drawer-layout.tray": "436685c36e70e11a",
+    "file-drop": "eae9c44e0a35877d",
+    "focus": "c716a7810e49319b",
+    "form-field": "2f0837ce3a56f8b7",
+    "form-field-group": "5d9afb87fdc062e6",
+    "form-field-messages": "c0f0522faf51b010",
+    "gap": "63b3e8f3617934a2",
+    "heading": "55136a63bba861ca",
+    "icon": "dc1050642e4bf419",
+    "img": "e83b4844c856f558",
+    "in-place-edit": "881a4a3533ace33e",
+    "input-group": "678ac6345bd69da2",
+    "layout": "4f7e5c53c977eaa0",
+    "link": "45c5cbaa5f41b7ff",
+    "list": "1de11d5d93406f89",
+    "list.item": "d6202664ff21bd8a",
+    "logo": "e5e039e0e35a7c3c",
+    "mask": "d8585519bac75416",
+    "maskglobal": "fe72106db68c9256",
+    "menu": "d509b9a32eea4be3",
+    "menu.group": "170c9319aece4e76",
+    "menu.item": "efdfeda20b20d366",
+    "menu.separator": "d85a1f70ce9fa8ec",
+    "metric": "945741be4428d369",
+    "modal": "c19f94aae522432a",
+    "modal.body": "746927dc85d6bf44",
+    "modal.footer": "6591e5ebaab7c797",
+    "modal.header": "983724abd1714429",
+    "number-input": "8c2e602d132928b5",
+    "overflow": "9f84e79f67b347ac",
+    "pagination": "8b9d3d282eb06a82",
+    "pagination.page": "b077c81b80a32718",
+    "pill": "085dfb0f28d49bbe",
+    "popover": "5d3362bae39f1591",
+    "position": "5fdce6b6d3250264",
+    "progress": "a5ee9f6e25e3769b",
+    "progress-circle": "17fa9d9c6e24bdf0",
+    "prose": "58147a8a4ec58237",
+    "radio": "5d56b981b066f696",
+    "radio-input-group": "a614c0921bd6cbd0",
+    "range-input": "ca7255c5077861bd",
+    "rating": "28b6a62bf6480da9",
+    "responsive": "26570bb624983ec0",
+    "screen-reader-content": "6d9748e2fc6769b2",
+    "segmented-control": "107ec6d1403f6a54",
+    "side-nav-bar": "8c99cd98c4064e3c",
+    "side-nav-bar.item": "95e5b2bb3185b454",
+    "simple-select": "b17c8dee92288d0a",
+    "skeleton-loader": "72d88b2bd94b36f7",
+    "spacing": "350c15c36ce4b224",
+    "spinner": "f2f44cb15f2147cd",
+    "stacking": "a529e6e5e13fc3aa",
+    "table": "8d776d0079ffa591",
+    "table.body": "603b0a9dcc318ff5",
+    "table.cell": "3b40981a9e654dbd",
+    "table.col-header": "6f2fb96923522b82",
+    "table.head": "220b9170e53c4e26",
+    "table.row": "ad3107ef0d6c82ab",
+    "table.row-header": "22467cf5dc30768c",
+    "tabs": "32c6d9dfa3bcbba2",
+    "tabs.panel": "021cb551b890a0ca",
+    "tabs.tab": "6f36996230b35a9a",
+    "tag": "8f286fd980b85a05",
+    "text": "ed5fd45aa56ec6c3",
+    "text-area": "be647abfd9cb8734",
+    "text-input": "84f90030819b763f",
+    "toggle-details": "b4b927b7d9b5a237",
+    "toggle-group": "8f8ef6ab2b788a09",
+    "tooltip": "f665cf0a0f2ced94",
+    "transition": "a3b2f0bcad4f5fff",
+    "tray": "fee3865a1196b4a8",
+    "tree-browser": "16a2d9dacd39758d",
+    "truncate": "c88d32c7ef75befb",
+    "view": "a1f523381295d942",
+    "visual-debug": "4d746eced213c916"
   }
 }

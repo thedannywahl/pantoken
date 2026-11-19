@@ -67,7 +67,7 @@ async function checkPoFiles(paths: readonly string[]): Promise<string[]> {
       try {
         await checkPoFile(poPath);
       } catch (error) {
-        errors[pathIndex] = `${poPath}: ${error instanceof Error ? error.message : String(error)}`;
+        errors[pathIndex] = `${poPath}: ${Error.isError(error) ? error.message : String(error)}`;
       }
     }
   }
@@ -115,7 +115,7 @@ export async function runLint(configPath = "i18n.config.json"): Promise<LintResu
             spaceId,
           );
         } catch (error) {
-          errors.push(`${spaceId}: ${error instanceof Error ? error.message : String(error)}`);
+          errors.push(`${spaceId}: ${Error.isError(error) ? error.message : String(error)}`);
         }
       }
     }

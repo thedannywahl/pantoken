@@ -63,7 +63,7 @@ type LifecycleElementCtor = new (...args: never[]) => HTMLElement & {
 function withSpacing(Ctor: LifecycleElementCtor): CustomElementConstructor {
   const Spaced = class extends Ctor {
     #spacingObserver: MutationObserver | undefined;
-    connectedCallback(): void {
+    override connectedCallback(): void {
       super.connectedCallback?.();
       applySpacing(this);
       this.#spacingObserver = new MutationObserver(() => {
@@ -76,7 +76,7 @@ function withSpacing(Ctor: LifecycleElementCtor): CustomElementConstructor {
         attributeFilter: [...SPACING_ATTRS],
       });
     }
-    disconnectedCallback(): void {
+    override disconnectedCallback(): void {
       super.disconnectedCallback?.();
       this.#spacingObserver?.disconnect();
     }

@@ -24,7 +24,7 @@ catalog:
   acorn: ^8.19.0
   yaml: ^2.9.1
   "@types/node": ^26.6.6
-  typescript: ^7.0.2
+  typescript: 7.1.0-dev.20261119.1
   arkregex: ^0.0.15
   vite: npm:@voidzero-dev/vite-plus-core@8.3.8000
   vite-plus: 1.7.0
@@ -86,7 +86,7 @@ catalog:
   # Codecov bundle analysis plugin
   "@codecov/vite-plugin": ^2.0.1
   # Quality gates
-  automatica11y: ^0.12.0
+  automatica11y: ^0.12.2
   "@commitlint/cli": ^21.2.4
   "@commitlint/config-conventional": ^21.2.4
   "@changesets/cli": ^3.0.3
@@ -204,6 +204,7 @@ peerDependencyRules:
     vitest: "*"
 minimumReleaseAge: 5
 minimumReleaseAgeExclude:
+  - automatica11y
   - "@cssdoc/*"
   - vite-plus
   - "@voidzero-dev/*"
@@ -217,6 +218,7 @@ minimumReleaseAgeExclude:
   - "@vitest/*"
   - tsrs
   - "@tsrs/*"
+  - typescript
 allowBuilds:
   "@parcel/watcher": false
   core-js: true

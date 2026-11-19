@@ -50,9 +50,9 @@ jobs:
   # Prevents a race where CodeQL or CI catches a flaw but loses to a concurrent publish.
   gate:
     runs-on: ubuntu-latest
-    # Must exceed the poll loop's own 1-hour deadline below, so the loop reports which workflow
+    # Must exceed the poll loop's own 4-hour deadline below, so the loop reports which workflow
     # stalled instead of the job being killed with no diagnosis.
-    timeout-minutes: 70
+    timeout-minutes: 250
     # workflow_dispatch re-triggers (e.g. failed publish retry) skip the gate — other checks
     # already ran on this SHA when it first landed on main.
     if: github.event_name == 'push'
@@ -67,7 +67,7 @@ jobs:
         run: |
           # Use workflow filenames — avoids the "workflow / job" check-run naming ambiguity.
           required=("ci.yml" "codeql.yml")
-          deadline=$(( $(date +%s) + 3600 ))
+          deadline=$(( $(date +%s) + 14400 ))
           while true; do
             all_ok=true
             for wf in "${required[@]}"; do

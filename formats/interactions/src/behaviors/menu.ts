@@ -85,7 +85,7 @@ export function initMenu(menu: HTMLElement, trigger: HTMLButtonElement): MenuHan
         close(true);
         return;
       }
-      focus(lastOnOpen ? entries[entries.length - 1] : entries[0]);
+      focus(lastOnOpen ? entries.at(-1)! : entries[0]);
     }
     lastOnOpen = false;
   };
@@ -132,7 +132,7 @@ export function initMenu(menu: HTMLElement, trigger: HTMLButtonElement): MenuHan
     if (event.key === "ArrowDown") focus(entries[(index + 1) % entries.length]);
     else if (event.key === "ArrowUp") focus(entries[(index - 1 + entries.length) % entries.length]);
     else if (event.key === "Home") focus(entries[0]);
-    else if (event.key === "End") focus(entries[entries.length - 1]);
+    else if (event.key === "End") focus(entries.at(-1)!);
     else if (event.key === "Enter" || event.key === " ") {
       if (!disabled(item)) {
         keepOpen = event.key === " " && item.getAttribute("role") !== "menuitem";

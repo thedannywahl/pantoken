@@ -99,7 +99,7 @@ test("manual dispatch overrides only Renovate scheduling while scheduled runs re
   ).toMatchObject({ enabled: false });
   expect(
     config.packageRules.find((rule) => rule.matchPackageNames?.includes("typescript")),
-  ).toMatchObject({ allowedVersions: "<7" });
+  ).toMatchObject({ minimumReleaseAge: "0 days" });
 });
 
 test("budgets integration time for the full accessibility refresh and release gates", () => {

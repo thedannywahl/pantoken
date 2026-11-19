@@ -40,7 +40,7 @@ for (const locale of Object.keys(LOCALES)) {
     );
     if (untranslated > 0) incomplete.push(locale);
   } catch (error) {
-    console.warn(`  ${locale}: failed — ${error instanceof Error ? error.message : String(error)}`);
+    console.warn(`  ${locale}: failed — ${Error.isError(error) ? error.message : String(error)}`);
     incomplete.push(locale);
   }
 }

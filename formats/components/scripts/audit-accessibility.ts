@@ -489,7 +489,7 @@ export async function auditInvocation(
       tiersIndex < 0 ? [] : options[tiersIndex + 1]!.split(","),
     );
   } catch (error) {
-    evidence.error = error instanceof Error ? error.message : String(error);
+    evidence.error = Error.isError(error) ? error.message : String(error);
     console.error(`Audit ${directory} incomplete: ${evidence.error}`);
   }
   return evidence;

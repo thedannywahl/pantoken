@@ -92,7 +92,7 @@ export function initTreeBrowser(host: HTMLElement): TreeBrowserHandle {
       focus(visible[Math.min(index + 1, visible.length - 1)]);
     else if (event.key === "ArrowUp" || event.key === "k") focus(visible[Math.max(index - 1, 0)]);
     else if (event.key === "Home") focus(visible[0]);
-    else if (event.key === "End") focus(visible[visible.length - 1]);
+    else if (event.key === "End") focus(visible.at(-1)!);
     else if (event.key === (rtl ? "ArrowLeft" : "ArrowRight")) {
       if (group(item)) {
         if (item.getAttribute("aria-expanded") !== "true") expand(item, true);
