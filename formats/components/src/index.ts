@@ -127,6 +127,8 @@ export { toggleDetailsCss } from "./components/toggle-details/index.ts";
 export { fileDropCss } from "./components/file-drop/index.ts";
 export { sideNavBarCss } from "./components/side-nav-bar/index.ts";
 export { sideNavBarItemCss } from "./components/side-nav-bar/members/item/index.ts";
+export { globalNavBarCss } from "./components/global-nav-bar/index.ts";
+export { globalNavBarItemCss } from "./components/global-nav-bar/members/item/index.ts";
 export { treeBrowserCss } from "./components/tree-browser/index.ts";
 export { calendarCss } from "./components/calendar/index.ts";
 export { calendarDayCss } from "./components/calendar/members/day/index.ts";
