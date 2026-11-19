@@ -218,6 +218,7 @@ minimumReleaseAgeExclude:
   - "@vitest/*"
   - tsrs
   - "@tsrs/*"
+  - typescript
 allowBuilds:
   "@parcel/watcher": false
   core-js: true
