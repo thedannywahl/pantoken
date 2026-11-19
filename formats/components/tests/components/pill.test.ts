@@ -14,15 +14,17 @@ test("pill: emits exactly one well-formed cssdoc record with no token drift", ()
 test("pill uses the 1.9.0 size and spacing tokens", () => {
   const css = pillCss({ prefix: "instui" });
   expect(css).toContain("var(--instui-component-pill-neutral-background-color)");
-  expect(css).toContain("var(--instui-component-pill-padding-vertical)");
+  expect(css).toContain("padding-block: 0");
   expect(css).toContain("var(--instui-component-pill-gap-content)");
   expect(css).toContain("var(--instui-component-pill-gap-icon-label)");
   expect(css).toContain(".-size-x-small");
   expect(css).toContain("var(--instui-component-pill-height-x-small)");
   expect(css).toContain(".-size-medium");
   expect(css).toContain("var(--instui-component-pill-height-medium)");
+  expect(css).toContain("var(--instui-component-pill-line-height-medium)");
   expect(css).toContain(".-size-large");
   expect(css).toContain("var(--instui-component-pill-height-large)");
+  expect(css).toContain("var(--instui-component-pill-line-height-large)");
 });
 
 test("pill supports status and accent backgrounds", () => {

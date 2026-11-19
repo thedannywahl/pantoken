@@ -56,7 +56,7 @@
     align-items: center;
     height: var(--instui-component-pill-height);
     max-width: var(--instui-component-pill-max-width);
-    padding-block: var(--instui-component-pill-padding-vertical);
+    padding-block: 0;
     padding-inline: var(--instui-component-pill-padding-horizontal);
     gap: var(--instui-component-pill-gap-content);
     background: var(--instui-component-pill-neutral-background-color);
@@ -85,6 +85,7 @@
     padding-inline: var(--instui-component-pill-padding-horizontal-medium);
     font-size: var(--instui-component-pill-text-font-size-medium);
     gap: var(--instui-component-pill-gap-content);
+    line-height: var(--instui-component-pill-line-height-medium);
   }
 
   &.-size-large {
@@ -92,6 +93,7 @@
     padding-inline: var(--instui-component-pill-padding-horizontal-large);
     font-size: var(--instui-component-pill-text-font-size-large);
     gap: var(--instui-component-pill-gap-content);
+    line-height: var(--instui-component-pill-line-height-large);
   }
 
   &.-size-medium:is([class^="-icon-"], [class*=" -icon-"])::before {
