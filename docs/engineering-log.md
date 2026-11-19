@@ -513,3 +513,9 @@ upstream token refs, check whether the components (which undergo parity testing 
 all pass their tests. If component tests pass and the dangling refs don't appear in component CSS
 (search with grep), then they are upstream orphans and safe to leave for the upstream maintainers
 to resolve. Document the known upstream issue in the release notes and move forward.
+
+**Additional upstream issue (v2.6.0)** — The `globalNav` token family has a typo in the DTCG:
+`--instui-component-global-nav-minimizedmin-width` (no hyphen between "minimized" and "min").
+The CSS generation script adds a hyphen, creating `--instui-component-global-nav-minimized-min-width`,
+which doesn't exist in the IR. When auto-generating component CSS from globalNav tokens, manually
+correct the token reference or use existing side-nav-bar tokens instead.
