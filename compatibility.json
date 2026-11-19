@@ -1,8 +1,8 @@
 {
   "upstream": {
     "@instructure/instructure-design-tokens": {
-      "range": "github:instructure/instructure-design-tokens#v2.1.0",
-      "resolved": "v2.1.0@c7f0deea242d",
+      "range": "github:instructure/instructure-design-tokens#v2.6.0",
+      "resolved": "v2.6.0@6d9cdb99e36c",
       "feeds": "token-ir"
     },
     "@instructure/ui-icons": {
