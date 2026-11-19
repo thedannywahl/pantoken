@@ -43,3 +43,7 @@ ignores:
   - ".gemini/**"
   - ".github/skills"
   - ".github/skills/**"
+  # Agent persona docs that contain injected instruction blocks; skip linting due to embedded
+  # markdown in custom instructions that may not conform to markdownlint rules.
+  - "AGENTS.md"
+  - "CLAUDE.md"
