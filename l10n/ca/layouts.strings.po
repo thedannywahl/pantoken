@@ -4,10 +4,10 @@ msgstr ""
 "PO-Revision-Date: 2026-09-23 14:21+0000\n"
 "Last-Translator: pantoken localization engine\n"
 "Language-Team: pantoken\n"
+"Language: und\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: und\n"
 
 #: plugins/pantoken/layouts/src/layouts/about-me/i18n.json#aboutMe.title
 #, no-c-format
@@ -24,8 +24,12 @@ msgstr "Sobre el teu instructor"
 #: plugins/pantoken/layouts/src/layouts/about-me/i18n.json#aboutMe.intro
 #, no-c-format
 msgctxt "layouts.strings:aboutMe.intro"
-msgid "Share a brief introduction, your role, and what you hope students take away from this course."
-msgstr "Comparteix una breu introducció, el teu càrrec i què esperes que els estudiants obtinguin d'aquest curs."
+msgid ""
+"Share a brief introduction, your role, and what you hope students take away "
+"from this course."
+msgstr ""
+"Comparteix una breu introducció, el teu càrrec i què esperes que els "
+"estudiants obtinguin d'aquest curs."
 
 #: plugins/pantoken/layouts/src/layouts/about-me/i18n.json#aboutMe.reachHeading
 #, no-c-format
@@ -40,7 +44,7 @@ msgid "Email:"
 msgstr "Correu electrònic:"
 
 #: plugins/pantoken/layouts/src/layouts/about-me/i18n.json#aboutMe.emailPlaceholder
-#, no-c-format, x-translate-never
+#, no-c-format
 msgctxt "layouts.strings:aboutMe.emailPlaceholder"
 msgid "instructor@example.edu"
 msgstr "instructor@example.edu"
@@ -55,7 +59,8 @@ msgstr "Despatx:"
 #, no-c-format
 msgctxt "layouts.strings:aboutMe.officePlaceholder"
 msgid "Add your office location or virtual meeting link."
-msgstr "Afegeix la ubicació del teu despatx o l'enllaç per a reunions virtuals."
+msgstr ""
+"Afegeix la ubicació del teu despatx o l'enllaç per a reunions virtuals."
 
 #: plugins/pantoken/layouts/src/layouts/about-me/i18n.json#aboutMe.responseLabel
 #, no-c-format
@@ -78,8 +83,11 @@ msgstr "Hores d'atenció"
 #: plugins/pantoken/layouts/src/layouts/about-me/i18n.json#aboutMe.officeHoursText
 #, no-c-format
 msgctxt "layouts.strings:aboutMe.officeHoursText"
-msgid "Add your recurring office hours and explain how students can meet with you."
-msgstr "Afegeix les teves hores d'atenció periòdiques i explica com poden reunir-se amb tu els estudiants."
+msgid ""
+"Add your recurring office hours and explain how students can meet with you."
+msgstr ""
+"Afegeix les teves hores d'atenció periòdiques i explica com poden reunir-se "
+"amb tu els estudiants."
 
 #: plugins/pantoken/layouts/src/layouts/about-me/i18n.json#aboutMe.instructorPhotoAlt
 #, no-c-format
@@ -103,7 +111,8 @@ msgstr "Nota:"
 #, no-c-format
 msgctxt "layouts.strings:callout.noteText"
 msgid "Replace this callout with an important reminder for students."
-msgstr "Substitueix aquest destacat per un recordatori important per als estudiants."
+msgstr ""
+"Substitueix aquest destacat per un recordatori important per als estudiants."
 
 #: plugins/pantoken/layouts/src/layouts/course-home/i18n.json#courseHome.title
 #, no-c-format
@@ -121,7 +130,8 @@ msgstr "Benvingut al curs"
 #, no-c-format
 msgctxt "layouts.strings:courseHome.welcomeText"
 msgid "Give students a warm welcome and explain what they should do first."
-msgstr "Dona una càlida benvinguda als estudiants i explica què han de fer primer."
+msgstr ""
+"Dona una càlida benvinguda als estudiants i explica què han de fer primer."
 
 #: plugins/pantoken/layouts/src/layouts/course-home/i18n.json#courseHome.startHeading
 #, no-c-format
@@ -162,8 +172,12 @@ msgstr "Aquesta setmana"
 #: plugins/pantoken/layouts/src/layouts/course-home/i18n.json#courseHome.thisWeekText
 #, no-c-format
 msgctxt "layouts.strings:courseHome.thisWeekText"
-msgid "Add the current focus, important dates, readings, or actions students should see first."
-msgstr "Afegeix l'enfocament actual, dates importants, lectures o accions que els estudiants han de veure primer."
+msgid ""
+"Add the current focus, important dates, readings, or actions students should "
+"see first."
+msgstr ""
+"Afegeix l'enfocament actual, dates importants, lectures o accions que els "
+"estudiants han de veure primer."
 
 #: plugins/pantoken/layouts/src/layouts/course-home/i18n.json#courseHome.needHelpHeading
 #, no-c-format
@@ -198,11 +212,15 @@ msgstr "Preguntes o necessites ajuda?"
 #: plugins/pantoken/layouts/src/layouts/footer/i18n.json#footer.questionsText
 #, no-c-format
 msgctxt "layouts.strings:footer.questionsText"
-msgid "Add office hours, contact details, support links, or accessibility information here."
-msgstr "Afegeix hores d'atenció, dades de contacte, enllaços de suport o informació d'accessibilitat aquí."
+msgid ""
+"Add office hours, contact details, support links, or accessibility "
+"information here."
+msgstr ""
+"Afegeix hores d'atenció, dades de contacte, enllaços de suport o informació "
+"d'accessibilitat aquí."
 
 #: plugins/pantoken/layouts/src/layouts/footer/i18n.json#footer.emailPlaceholder
-#, no-c-format, x-translate-never
+#, no-c-format
 msgctxt "layouts.strings:footer.emailPlaceholder"
 msgid "instructor@example.edu"
 msgstr "instructor@example.edu"
@@ -270,8 +288,11 @@ msgstr "Benvingut al curs"
 #: plugins/pantoken/layouts/src/layouts/hero/i18n.json#hero.intro
 #, no-c-format
 msgctxt "layouts.strings:hero.intro"
-msgid "A short introduction goes here. Replace this text and the heading above."
-msgstr "Aquí va una breu introducció. Substitueix aquest text i el títol d'encapçalament anterior."
+msgid ""
+"A short introduction goes here. Replace this text and the heading above."
+msgstr ""
+"Aquí va una breu introducció. Substitueix aquest text i el títol "
+"d'encapçalament anterior."
 
 #: plugins/pantoken/layouts/src/layouts/hero/i18n.json#hero.cta
 #, no-c-format
@@ -295,7 +316,9 @@ msgstr "Nota de qualificació"
 #, no-c-format
 msgctxt "layouts.strings:rubricNote.text"
 msgid "Explain how this assignment is graded, referencing the rubric below."
-msgstr "Explica com es qualifica aquesta tasca, fent referència a la rúbrica a continuació."
+msgstr ""
+"Explica com es qualifica aquesta tasca, fent referència a la rúbrica a "
+"continuació."
 
 #: plugins/pantoken/layouts/src/layouts/syllabus/i18n.json#syllabus.title
 #, no-c-format
@@ -312,8 +335,12 @@ msgstr "Programa del curs"
 #: plugins/pantoken/layouts/src/layouts/syllabus/i18n.json#syllabus.intro
 #, no-c-format
 msgctxt "layouts.strings:syllabus.intro"
-msgid "Add a concise overview of the course, who it is for, and what students will learn."
-msgstr "Afegeix una visió general concisa del curs, a qui va dirigit i què aprendran els estudiants."
+msgid ""
+"Add a concise overview of the course, who it is for, and what students will "
+"learn."
+msgstr ""
+"Afegeix una visió general concisa del curs, a qui va dirigit i què aprendran "
+"els estudiants."
 
 #: plugins/pantoken/layouts/src/layouts/syllabus/i18n.json#syllabus.outcomesHeading
 #, no-c-format
@@ -390,8 +417,12 @@ msgstr "Polítiques i suport"
 #: plugins/pantoken/layouts/src/layouts/syllabus/i18n.json#syllabus.policiesText
 #, no-c-format
 msgctxt "layouts.strings:syllabus.policiesText"
-msgid "Add attendance, late work, accessibility, academic integrity, and support information here."
-msgstr "Afegeix informació sobre assistència, treballs entregats tard, accessibilitat, integritat acadèmica i informació de suport aquí."
+msgid ""
+"Add attendance, late work, accessibility, academic integrity, and support "
+"information here."
+msgstr ""
+"Afegeix informació sobre assistència, treballs entregats tard, "
+"accessibilitat, integritat acadèmica i informació de suport aquí."
 
 #: plugins/pantoken/layouts/src/layouts/testimonial/i18n.json#testimonial.title
 #, no-c-format
