@@ -77,7 +77,7 @@ export function initSegmentedControl(
     } else {
       const items = segments();
       const firstRect = items[0]?.getBoundingClientRect();
-      const lastRect = items[items.length - 1]?.getBoundingClientRect();
+      const lastRect = items.at(-1)?.getBoundingClientRect();
       startButton.hidden = !lastRect || lastRect.right <= right + 1;
       endButton.hidden = !firstRect || firstRect.left >= left - 1;
     }
