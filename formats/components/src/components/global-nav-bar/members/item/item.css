@@ -39,16 +39,14 @@
       flex-direction: column;
       align-items: center;
       gap: var(--instui-spacing-space2xs);
-      padding: var(--instui-component-side-nav-bar-item-content-padding);
-      min-inline-size: var(--instui-component-side-nav-bar-minimized-width);
-      color: var(--instui-component-side-nav-bar-item-font-color);
-      background: var(--instui-component-side-nav-bar-item-background-color);
-      border-radius: var(--instui-component-side-nav-bar-item-border-radius);
-      font-size: var(--instui-component-side-nav-bar-item-font-size);
-      font-weight: var(--instui-component-side-nav-bar-item-font-weight);
-      line-height: var(--instui-component-side-nav-bar-item-line-height);
+      padding: var(--instui-spacing-space2xs);
+      min-inline-size: var(--instui-component-global-nav-minimized-min-width);
+      color: var(--instui-component-global-nav-text-color);
+      background: var(--instui-component-global-nav-background-color);
+      border-radius: var(--instui-component-global-nav-border-radius);
+      font-size: var(--instui-spacing-space2xs);
       text-align: center;
-      text-decoration: var(--instui-component-side-nav-bar-item-link-text-decoration);
+      text-decoration: none;
       cursor: pointer;
     }
 
@@ -57,12 +55,12 @@
     }
 
     > .item:hover {
-      background: var(--instui-component-side-nav-bar-item-hover-background-color);
+      background: var(--instui-component-global-nav-background-color);
     }
 
     > .item.-selected {
-      background: var(--instui-component-side-nav-bar-item-selected-background-color);
-      color: var(--instui-component-side-nav-bar-item-selected-font-color);
+      background: var(--instui-component-global-nav-background-color);
+      color: var(--instui-component-global-nav-text-color);
     }
   }
 }
