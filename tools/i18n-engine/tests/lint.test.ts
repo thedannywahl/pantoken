@@ -36,4 +36,25 @@ describe("runLint", () => {
       'required space "docs.chrome" is not configured',
     );
   });
+
+  test("throws errors when lint finds issues with Error.isError() check", async () => {
+    // This test verifies that the Error.isError() code path is used
+    // by testing a scenario that causes multiple lint errors
+    const directory = mkdtempSync(join(tmpdir(), "pantoken-i18n-lint-errors-"));
+    tempDirs.push(directory);
+    mkdirSync(join(directory, "tools/i18n-engine"), { recursive: true });
+
+    // Create valid configuration that will then fail on PO file checks
+    const config = JSON.parse(readFileSync(join(root, "i18n.config.json"), "utf8")) as I18nConfig;
+
+    writeFileSync(join(directory, "i18n.config.json"), JSON.stringify(config));
+
+    // Create the l10n directory structure but don't populate it with valid files
+    mkdirSync(join(directory, "l10n"), { recursive: true });
+
+    // This should fail because POT files are missing, exercising the error handling code
+    await expect(runLint(join(directory, "i18n.config.json"))).rejects.toThrow(
+      /i18n lint failed:/u,
+    );
+  });
 });

@@ -127,6 +127,97 @@ describe("runWithBreaker", () => {
     await new Promise((r) => setTimeout(r, 10));
     expect(settled).toBe(false);
   });
+
+  test("includes error causes from all failed profiles in the thrown error", async () => {
+    const error1 = new Error("profile 1 failed");
+    const error2 = new Error("profile 2 failed");
+    const error3 = new Error("profile 3 failed");
+    const promptFn: PromptFn = vi.fn(async (profile) => {
+      if (profile.name === "claude") throw error1;
+      if (profile.name === "agy") throw error2;
+      if (profile.name === "copilot") throw error3;
+      return "unexpected";
+    });
+
+    let thrownError: Error | undefined;
+    try {
+      await runWithBreaker("hi", { profiles: PROFILES, breaker: breaker(), promptFn });
+    } catch (e) {
+      if (e instanceof Error) {
+        thrownError = e;
+      }
+    }
+
+    expect(thrownError).toBeDefined();
+    expect(thrownError?.message).toMatch(/All translation profiles exhausted/u);
+
+    // Verify error cause contains the error details from each profile
+    const cause = thrownError?.cause as Array<{ message: string; cause?: unknown }> | undefined;
+    expect(cause).toBeDefined();
+    expect(cause?.length).toBe(3);
+    expect(cause?.[0]?.message).toMatch(/claude: profile 1 failed/u);
+    expect(cause?.[0]?.cause).toBe(error1);
+    expect(cause?.[1]?.message).toMatch(/agy: profile 2 failed/u);
+    expect(cause?.[1]?.cause).toBe(error2);
+    expect(cause?.[2]?.message).toMatch(/copilot: profile 3 failed/u);
+    expect(cause?.[2]?.cause).toBe(error3);
+  });
+
+  test("handles non-Error exceptions and preserves them in cause chain", async () => {
+    const promptFn: PromptFn = vi.fn(async () => {
+      throw "string error"; // Not an Error object
+    });
+
+    let thrownError: Error | undefined;
+    try {
+      await runWithBreaker("hi", { profiles: [PROFILES[0]], breaker: breaker(), promptFn });
+    } catch (e) {
+      if (e instanceof Error) {
+        thrownError = e;
+      }
+    }
+
+    expect(thrownError).toBeDefined();
+    expect(thrownError?.message).toMatch(/All translation profiles exhausted/u);
+
+    const cause = thrownError?.cause as Array<{ message: string; cause?: unknown }> | undefined;
+    expect(cause).toBeDefined();
+    expect(cause?.length).toBe(1);
+    expect(cause?.[0]?.message).toMatch(/claude: string error/u);
+    expect(cause?.[0]?.cause).toBe("string error");
+  });
+
+  test("includes circuit breaker open failures in error cause", async () => {
+    const promptFn: PromptFn = vi.fn(async () => {
+      throw new Error("fail");
+    });
+    const b = breaker();
+
+    // Open the breaker
+    for (let i = 0; i < 3; i += 1) {
+      await expect(
+        runWithBreaker("hi", { profiles: [PROFILES[0]], breaker: b, promptFn }),
+      ).rejects.toThrow();
+    }
+
+    expect(b.isOpen("claude")).toBe(true);
+
+    // Now try with multiple profiles, one of which has an open breaker
+    let thrownError: Error | undefined;
+    try {
+      await runWithBreaker("hi", { profiles: PROFILES, breaker: b, promptFn });
+    } catch (e) {
+      if (e instanceof Error) {
+        thrownError = e;
+      }
+    }
+
+    const cause = thrownError?.cause as Array<{ message: string; cause?: unknown }> | undefined;
+    expect(cause).toBeDefined();
+    // First entry should be "circuit open" for claude
+    expect(cause?.[0]?.message).toMatch(/claude: circuit open/u);
+    expect(cause?.[0]?.cause).toBeUndefined();
+  });
 });
 
 // ── createChatCompletionsHandler ──────────────────────────────────────────────
