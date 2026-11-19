@@ -1,0 +1,13 @@
+[[PLAN]] instructure-design-tokens is on [2.6.0](https://github.com/instructure/instructure-design-tokens/releases) and pantoken is still on 2.1.0  we need an update and downstream implementation plan. following repository guidelines.
+
+---
+
+[[PLAN]] instructure-design-tokens is on [2.6.0](https://github.com/instructure/instructure-design-tokens/releases) and pantoken is still on 2.1.0  we need an update and downstream implementation plan. following repository guidelines.
+
+---
+
+[[PLAN]] we're going to work in incremental confentional commits and changesets.
+
+---
+
+[[PLAN]] we're going to work in incremental confentional commits and changesets.
