@@ -2,8 +2,7 @@
   "extends": "../../tsconfig.base.json",
   "compilerOptions": {
     "outDir": "dist",
-    "target": "ES2022",
-    "lib": ["ES2022", "DOM", "DOM.Iterable"]
+    "lib": ["es2026", "dom", "dom.iterable"]
   },
   "exclude": [
     "vite.config.ts",

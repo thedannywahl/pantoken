@@ -1,8 +1,7 @@
 {
   "extends": "../../tsconfig.base.json",
   "compilerOptions": {
-    "lib": ["es2023", "dom"],
+    "lib": ["es2026", "dom", "dom.iterable"],
     "jsx": "react-jsx"
-  },
-  "exclude": ["vite.config.ts", "vite.config.*.ts", "vite.runner.config.ts"]
+  }
 }
