@@ -49,7 +49,7 @@ async function readStdin(): Promise<string> {
 
 if (process.argv[1] && import.meta.url === pathToFileURL(process.argv[1]).href) {
   runCli().catch((error: unknown) => {
-    process.stderr.write(`${error instanceof Error ? error.message : String(error)}\n`);
+    process.stderr.write(`${Error.isError(error) ? error.message : String(error)}\n`);
     process.exitCode = 1;
   });
 }

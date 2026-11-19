@@ -290,7 +290,7 @@ export async function scaffoldWithSpinner(
     s.stop(t("spinnerStop"));
     return written;
   } catch (err) {
-    s.stop(`Error: ${err instanceof Error ? err.message : String(err)}`);
+    s.stop(`Error: ${Error.isError(err) ? err.message : String(err)}`);
     throw err;
   }
 }
@@ -405,7 +405,7 @@ export async function installWithSpinner(
     s.stop(t("installSpinnerStop"));
     return true;
   } catch (err) {
-    s.stop(`${t("installSpinnerFailed")} ${err instanceof Error ? err.message : String(err)}`);
+    s.stop(`${t("installSpinnerFailed")} ${Error.isError(err) ? err.message : String(err)}`);
     return false;
   } finally {
     clearInterval(tick);
@@ -687,7 +687,7 @@ export async function runScaffoldCli(
       process.exit((err as ScaffoldCliError).exitCode);
     }
 
-    console.error("Error scaffolding project:", err instanceof Error ? err.message : err);
+    console.error("Error scaffolding project:", Error.isError(err) ? err.message : err);
     process.exit(1);
   }
 }

@@ -106,7 +106,7 @@ export async function runWithBreaker(prompt: string, options: RunShimOptions): P
       return { content, profile: profile.name };
     } catch (e) {
       options.breaker.recordFailure(profile.name);
-      errors.push(`${profile.name}: ${e instanceof Error ? e.message : String(e)}`);
+      errors.push(`${profile.name}: ${Error.isError(e) ? e.message : String(e)}`);
     }
   }
   options.onExhausted?.();
