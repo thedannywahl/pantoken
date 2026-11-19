@@ -16,6 +16,7 @@ const EXPECTED = [
   "alertCss",
   "avatarCss",
   "badgeCss",
+  "bannerCss",
   "baseCss",
   "billboardCss",
   "breadcrumbCss",

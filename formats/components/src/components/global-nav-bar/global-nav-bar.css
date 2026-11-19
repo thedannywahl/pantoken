@@ -1,0 +1,77 @@
+/**
+ * @component global-nav-bar
+ * @selector .pfx-global-nav-bar
+ * @summary A vertical navigation rail of icon-over-label items, with a minimized icons-only mode.
+ * @remarks Sets its own `gap` between nav items and its own `padding`; chaining a `-gap-*`/`-p-*`/`-padding-*` spacing utility modifier overrides those built-in values. See the `global-nav-bar.item` member for the individual nav entries.
+ * @modifier -minimized — Collapse to icons only (labels hidden). @affects global-nav-bar.item — Hides the item's label.
+ * @modifier -icon-* — Render a glyph icon in each nav item.
+ * @part .label — The nav item's text label.
+ * @a11y Label the `<nav>` with aria-label so it's announced as a named navigation landmark.
+ * @structure
+ * .pfx-global-nav-bar {
+ *   .item:one-or-more {}
+ * }
+ * @example -canvas-rce -docs
+ * ```html
+ * <nav class="pfx-global-nav-bar" aria-label="Primary">
+ *   <a class="item -selected" href="#">
+ *     <span class="pfx-icon -icon-house"></span>
+ *     <span class="label">Home</span>
+ *   </a>
+ *   <a class="item" href="#">
+ *     <span class="pfx-icon -icon-inbox"></span>
+ *     <span class="label">Inbox</span>
+ *   </a>
+ *   <a class="item" href="#">
+ *     <span class="pfx-icon -icon-calendar"></span>
+ *     <span class="label">Calendar</span>
+ *   </a>
+ *   <a class="item" href="#">
+ *     <span class="pfx-icon -icon-settings"></span>
+ *     <span class="label">Settings</span>
+ *   </a>
+ * </nav>
+ * ```
+ * @example -automatica11y
+ * ```html
+ * <nav class="pfx-global-nav-bar" aria-label="Primary">
+ *   <a class="item -selected" href="#home" aria-current="page">
+ *     <span class="-icon-house" aria-hidden="true"></span>
+ *     <span class="label">Home</span>
+ *   </a>
+ *   <a class="item" href="#inbox">
+ *     <span class="-icon-inbox" aria-hidden="true"></span>
+ *     <span class="label">Inbox</span>
+ *   </a>
+ * </nav>
+ * <nav class="pfx-global-nav-bar -minimized" aria-label="Minimized primary">
+ *   <a class="item -selected" href="#home" aria-current="page" aria-label="Home"><span class="-icon-house" aria-hidden="true"></span><span class="label">Home</span></a>
+ *   <a class="item" href="#inbox" aria-label="Inbox"><span class="-icon-inbox" aria-hidden="true"></span><span class="label">Inbox</span></a>
+ * </nav>
+ * ```
+ */
+@scope (.pfx-global-nav-bar) {
+  & {
+    display: flex;
+    flex-direction: column;
+    gap: var(--instui-component-side-nav-bar-content-gap);
+    padding: var(--instui-component-side-nav-bar-content-margin);
+    box-sizing: border-box;
+    inline-size: fit-content;
+    /* The rail sits on the page and runs full height (InstUI GlobalNavBar is 100% of its layout column). */
+    block-size: 100%;
+    min-block-size: 100%;
+    background: var(--instui-component-side-nav-bar-background-color);
+    color: var(--instui-component-side-nav-bar-font-color);
+    font-family: var(--instui-component-side-nav-bar-item-font-family);
+  }
+
+  /* minimized: a narrow rail — the icons stay, the labels are hidden. */
+  &.-minimized {
+    inline-size: var(--instui-component-side-nav-bar-minimized-width);
+  }
+
+  &.-minimized .item .label {
+    display: none;
+  }
+}

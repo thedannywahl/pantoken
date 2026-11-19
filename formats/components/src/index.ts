@@ -113,6 +113,7 @@ export { modalFooterCss } from "./components/modal/members/footer/index.ts";
 export { breadcrumbCss } from "./components/breadcrumb/index.ts";
 export { breadcrumbLinkCss } from "./components/breadcrumb/members/link/index.ts";
 export { billboardCss } from "./components/billboard/index.ts";
+export { bannerCss } from "./components/banner/index.ts";
 export { ratingCss } from "./components/rating/index.ts";
 export { toggleGroupCss } from "./components/toggle-group/index.ts";
 export { contextViewCss } from "./components/context-view/index.ts";

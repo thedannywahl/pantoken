@@ -31,7 +31,6 @@ export interface PluginAuditRecord {
 /** Plugin records audited with the core set; their `@a11y` text and examples live in the plugin. */
 export const PLUGIN_AUDIT_RECORDS: readonly PluginAuditRecord[] = [
   { name: "agent-shell", rules: (prefix) => pluginRules(["agent-shell/agent-shell.css"], prefix) },
-  { name: "banner", rules: (prefix) => pluginRules(["banner/banner.css"], prefix) },
   { name: "button-set", rules: (prefix) => pluginRules(["button-set/button-set.css"], prefix) },
   { name: "logo", rules: (prefix) => pluginRules(["logo/logo.css"], prefix) },
   {
