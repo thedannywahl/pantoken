@@ -32,6 +32,20 @@ test("uses the serialized workspace build for releases restored from the CI task
   expect(build.if).toBe("steps.mode.outputs.will_publish == 'true'");
 });
 
+test("allows long-running CI to finish before gating release on the exact commit", () => {
+  const release = parse(readFileSync(resolve(root, ".github/workflows/release.yml"), "utf8"));
+  const gate = release.jobs.gate;
+  const step = gate.steps.find(
+    (candidate: { name: string }) => candidate.name === "Wait for CI and CodeQL to succeed",
+  );
+  expect(gate["timeout-minutes"]).toBe(250);
+  expect(step.run).toContain("deadline=$(( $(date +%s) + 14400 ))");
+  expect(step.run).toContain('required=("ci.yml" "codeql.yml")');
+  expect(step.run).toContain('--repo "$REPO" --commit "$SHA" --workflow "$wf"');
+  expect(step.run).toContain('[ "$result" != "success" ]');
+  expect(release.jobs.release.if).toContain("needs.gate.result == 'success'");
+});
+
 test.each([
   { name: "no changesets", changesets: [], publish: true },
   { name: "empty changesets", changesets: [{ releases: [] }], publish: true },

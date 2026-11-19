@@ -21,7 +21,7 @@ concurrency:
   cancel-in-progress: ${{ github.event_name == 'pull_request' }}
 
 # Every job carries `timeout-minutes`. release.yml's gate waits on this workflow's conclusion with a
-# 1-hour deadline, so a job left on the 6-hour default can hang the release even when it's advisory.
+# 4-hour deadline, so a job left on the 6-hour default can hang the release even when it's advisory.
 # Values are ~2.5x observed runtime — these catch hangs, not slow-but-working jobs.
 
 env:
