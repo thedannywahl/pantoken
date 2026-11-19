@@ -35,7 +35,7 @@
     "@codemirror/state": "^6.7.6",
     "@lezer/highlight": "^1.2.5",
     "codemirror": "^6.0.2",
-    "prettier": "catalog:"
+    "prettier": "^3.9.10"
   },
   "devDependencies": {
     "@types/node": "catalog:",

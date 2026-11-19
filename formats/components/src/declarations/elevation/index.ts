@@ -20,8 +20,9 @@ import type { Definition } from "../../lib/define.ts";
 export { ELEVATION_NAMES, elevationDeclarations } from "@pantoken/utils";
 
 /** The elevation declaration's cssdoc doc comment (authored inline; the CSS body follows in {@link elevationCss}). */
-// prettier-ignore
-const ELEVATION_DOC = css`/**
+
+const ELEVATION_DOC = css`
+  /**
  * @declaration elevation
  * @summary The \`--instui-elevation-*\` shadow scale: multi-layer \`box-shadow\` custom properties (\`resting\`, \`above\`, \`topmost\`, plus the \`depth1\`–\`depth3\`, \`card\`, and \`cardHover\` aliases) declared on \`:root\` and themed via the drop-shadow colour tokens, so shadows adapt per theme wherever a token sheet is loaded.
  * @cssproperty --instui-elevation-resting — The resting (lowest) elevation shadow.
@@ -36,7 +37,8 @@ const ELEVATION_DOC = css`/**
  * @remarks Every level also ships as a global \`box-shadow\` utility class (via \`utilities.css\`), usable
  *   bare (\`.instui-elevation-resting\`) or chained onto any component (\`.instui-button.-elevation-above\`).
  * @demo self:elevation
- */`;
+ */
+`;
 
 /**
  * Build the elevation token block: `<selector> { --instui-elevation-*: … }`. Shipped inside
@@ -60,7 +62,7 @@ export function elevationCss(options: { selector?: string } = {}): string {
   const body = elevationDeclarations()
     .map(([name, value]) => `  ${name}: ${value};`)
     .join("\n");
-  // prettier-ignore
+
   return css`${ELEVATION_DOC}\n${selector} {\n${body}\n}\n`;
 }
 

@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: pantoken\n"
-"PO-Revision-Date: 2026-09-09 11:35+0000\n"
+"PO-Revision-Date: 2026-11-19 00:53+0000\n"
 "Last-Translator: pantoken localization engine\n"
 "Language-Team: pantoken\n"
 "MIME-Version: 1.0\n"
@@ -9,43 +9,43 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Language: und\n"
 
-#: renderers/web-components/src/i18n.json
+#: renderers/web-components/src/i18n.json#prevMonth
 #, no-c-format
 msgctxt "ui.strings:prevMonth"
 msgid "Previous month"
 msgstr ""
 
-#: renderers/web-components/src/i18n.json
+#: renderers/web-components/src/i18n.json#nextMonth
 #, no-c-format
 msgctxt "ui.strings:nextMonth"
 msgid "Next month"
 msgstr ""
 
-#: renderers/web-components/src/i18n.json
+#: renderers/web-components/src/i18n.json#dateLabel
 #, no-c-format, x-translate-optional
 msgctxt "ui.strings:dateLabel"
 msgid "Date"
 msgstr ""
 
-#: renderers/web-components/src/i18n.json
+#: renderers/web-components/src/i18n.json#datePlaceholder
 #, no-c-format, x-translate-optional
 msgctxt "ui.strings:datePlaceholder"
 msgid "yyyy-mm-dd"
 msgstr ""
 
-#: renderers/web-components/src/i18n.json
+#: renderers/web-components/src/i18n.json#openCalendar
 #, no-c-format
 msgctxt "ui.strings:openCalendar"
 msgid "Open calendar"
 msgstr ""
 
-#: renderers/web-components/src/i18n.json
+#: renderers/web-components/src/i18n.json#timeLabel
 #, no-c-format, x-translate-optional
 msgctxt "ui.strings:timeLabel"
 msgid "Time"
 msgstr ""
 
-#: renderers/web-components/src/i18n.json
+#: renderers/web-components/src/i18n.json#back
 #, no-c-format, x-translate-optional
 msgctxt "ui.strings:back"
 msgid "Back"

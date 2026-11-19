@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: pantoken\n"
-"PO-Revision-Date: 2026-09-09 11:35+0000\n"
+"PO-Revision-Date: 2026-11-19 00:53+0000\n"
 "Last-Translator: pantoken localization engine\n"
 "Language-Team: pantoken\n"
 "MIME-Version: 1.0\n"
@@ -9,43 +9,43 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Language: und\n"
 
-#: ai/pantoken-ai/src/i18n.json
+#: ai/pantoken-ai/src/i18n.json#wroteFile
 #, no-c-format, x-translate-never
 msgctxt "cli.ai:wroteFile"
 msgid "✓ {{path}}"
 msgstr ""
 
-#: ai/pantoken-ai/src/i18n.json
+#: ai/pantoken-ai/src/i18n.json#helpInitDescription
 #, no-c-format
 msgctxt "cli.ai:helpInitDescription"
 msgid "Write pantoken's agent assets into a repo"
 msgstr ""
 
-#: ai/pantoken-ai/src/i18n.json
+#: ai/pantoken-ai/src/i18n.json#helpInitToolDescription
 #, no-c-format
 msgctxt "cli.ai:helpInitToolDescription"
 msgid "Agent tool (all|cursor|copilot|windsurf)"
 msgstr ""
 
-#: ai/pantoken-ai/src/i18n.json
+#: ai/pantoken-ai/src/i18n.json#helpInitDirDescription
 #, no-c-format
 msgctxt "cli.ai:helpInitDirDescription"
 msgid "Target directory"
 msgstr ""
 
-#: ai/pantoken-ai/src/i18n.json
+#: ai/pantoken-ai/src/i18n.json#helpScaffoldDescription
 #, no-c-format
 msgctxt "cli.ai:helpScaffoldDescription"
 msgid "Scaffold a starter project (via @pantoken/scaffold) and install agent assets into it"
 msgstr ""
 
-#: ai/pantoken-ai/src/i18n.json
+#: ai/pantoken-ai/src/i18n.json#helpScaffoldToolDescription
 #, no-c-format
 msgctxt "cli.ai:helpScaffoldToolDescription"
 msgid "Agent tool (all|cursor|copilot|windsurf)"
 msgstr ""
 
-#: ai/pantoken-ai/src/i18n.json
+#: ai/pantoken-ai/src/i18n.json#helpLangDescription
 #, no-c-format
 msgctxt "cli.ai:helpLangDescription"
 msgid "Override the auto-detected display language (e.g. \"hu\")"

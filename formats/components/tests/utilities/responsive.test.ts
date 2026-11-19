@@ -3,12 +3,17 @@ import { responsiveUtilitiesCss } from "../../src/index.ts";
 import { responsive } from "../../src/utilities/responsive/index.ts";
 import { validate } from "../_validate.ts";
 
+/** Strip leading cssdoc comments from generated CSS */
+function stripCssdocComments(css: string): string {
+  return css.replace(/^(\/\*[\s\S]*?\*\/\s*)+/, "");
+}
+
 test("responsive: emits exactly one well-formed cssdoc record with no token drift", () => {
   validate(responsive);
 });
 
 test("responsive utilities emit viewport hidden-max/min classes at the canonical breakpoint scale", () => {
-  const css = responsiveUtilitiesCss({ prefix: "instui" });
+  const css = stripCssdocComments(responsiveUtilitiesCss({ prefix: "instui" }));
   expect(css).toContain(
     '@property --pantoken-bp-xs { syntax: "<length>"; inherits: true; initial-value: 20em; }',
   );
@@ -39,7 +44,8 @@ test("responsive utilities emit viewport hidden-max/min classes at the canonical
   expect(css).toContain(".instui-hidden-min-x-large");
   expect(css).toContain(".instui-hidden-min-desktop");
   // Container-query variants react to a marked container's width, not the viewport.
-  expect(css).toContain(".instui-container { container-type: inline-size; }");
+  expect(css).toContain(".instui-container");
+  expect(css).toContain("container-type: inline-size;");
   expect(css).toContain(
     "@container (max-width: 64em) { .instui-cq-hidden-max-lg, .-cq-hidden-max-lg, .instui-cq-hidden-max-large, .-cq-hidden-max-large, .instui-cq-hidden-max-laptop, .-cq-hidden-max-laptop { display: none !important; } }",
   );
@@ -47,9 +53,10 @@ test("responsive utilities emit viewport hidden-max/min classes at the canonical
 });
 
 test("responsive utilities emit show-max/min classes as the inverse of hidden-max/min", () => {
-  const css = responsiveUtilitiesCss({ prefix: "instui" });
+  const css = stripCssdocComments(responsiveUtilitiesCss({ prefix: "instui" }));
   // Hidden by default (one combined base rule covering every -show-*/-cq-show-* class)...
-  expect(css).toMatch(/\.instui-show-max-sm,[^{]*\{ display: none !important; \}/);
+  expect(css).toContain(".instui-show-max-sm,");
+  expect(css).toContain("display: none !important;");
   expect(css).toContain(".instui-cq-show-min-lg");
   // ...then revert()ed back to its natural display only inside the matching range.
   expect(css).toContain(

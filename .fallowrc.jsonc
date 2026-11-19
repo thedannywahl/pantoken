@@ -180,8 +180,13 @@
     // - the flagged dev-deps are all config/CLI-loaded tools (publint, attw, the typedoc plugins,
     //   @cssdoc/stylelint-plugin) invoked via `vp exec`/config, or the packages/pantoken + docs
     //   meta-aggregation of @pantoken/* sub-packages — used, just never `import`ed.
+    // - duplicate-export-alias: index.ts files re-exporting a named export as default is an intentional
+    //   API pattern (makes bar() work alongside import { bar } from 'pkg' and import bar from 'pkg').
+    // - unlisted-binary: waza is a build-time CLI tool used in scripts, not imported in code.
     "unused-catalog-entries": "off",
-    "unused-dev-dependencies": "off"
+    "unused-dev-dependencies": "off",
+    "duplicate-export-alias": "off",
+    "unlisted-binary": "off"
   },
 
   "health": {

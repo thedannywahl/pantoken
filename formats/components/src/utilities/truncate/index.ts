@@ -30,8 +30,9 @@ export const truncate: Definition = defineUtility({
       const selectors = [attachedSelector(`max-lines-${n}`), attachedSelector(`lines-${n}`)];
       return `${selectors.join(", ")} { --lines: ${n}; }`;
     });
-    // prettier-ignore
-    return css`/**
+
+    return css`
+      /**
  * @utility truncate
  * @selector .--truncate
  * @global
@@ -64,40 +65,45 @@ export const truncate: Definition = defineUtility({
  * @related text — Body typography that this truncates.
  */
 
-@property --lines {
-  syntax: "<integer>";
-  inherits: false;
-  initial-value: 1;
-}
+      @property --lines {
+        syntax: "<integer>";
+        inherits: false;
+        initial-value: 1;
+      }
 
-@property --ellipsis {
-  /* Keep the strictest grammar our current CSS parser accepts.
+      @property --ellipsis {
+        /* Keep the strictest grammar our current CSS parser accepts.
      \`fade()\` is valid per modern specs/MDN but currently rejected in this
      descriptor by the toolchain parser during pack/build. */
-  syntax: "clip | ellipsis | <string> | fade";
-  inherits: false;
-  initial-value: ellipsis;
-}
+        syntax: "clip | ellipsis | <string> | fade";
+        inherits: false;
+        initial-value: ellipsis;
+      }
 
-${base} {
-  display: -webkit-box;
-  -webkit-box-orient: vertical;
-  -webkit-line-clamp: var(--lines, 1);
-  line-clamp: var(--lines, 1);
-  overflow: hidden;
-  text-overflow: var(--ellipsis);
-  white-space: normal;
-  overflow-wrap: break-word;
-  word-break: break-all;
-  font-family: var(--instui-component-truncate-text-font-family);
-  line-height: var(--instui-line-height-paragraph-base);
-}
+      ${base} {
+        display: -webkit-box;
+        -webkit-box-orient: vertical;
+        -webkit-line-clamp: var(--lines, 1);
+        line-clamp: var(--lines, 1);
+        overflow: hidden;
+        text-overflow: var(--ellipsis);
+        white-space: normal;
+        overflow-wrap: break-word;
+        word-break: break-all;
+        font-family: var(--instui-component-truncate-text-font-family);
+        line-height: var(--instui-line-height-paragraph-base);
+      }
 
-${character} { word-break: break-all; }
+      ${character} {
+        word-break: break-all;
+      }
 
-${word} { word-break: break-word; }
+      ${word} {
+        word-break: break-word;
+      }
 
-${maxLinesRules.join("\n\n")}`;
+      ${maxLinesRules.join("\n\n")}
+    `;
   },
 });
 

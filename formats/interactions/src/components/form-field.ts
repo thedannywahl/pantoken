@@ -1,4 +1,3 @@
-// fallow-ignore-file unused-file
 /* c8 ignore file */ // side-effect module, tested via behavior functions and IIFE bundles
 import { initFormField, type FormFieldControl } from "../behaviors/form-field.js";
 import { applySpacing } from "../shared/index.js";

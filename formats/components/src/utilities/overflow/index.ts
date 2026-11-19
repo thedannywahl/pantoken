@@ -21,8 +21,9 @@ export const overflow: Definition = defineUtility({
         return `${globalModifierSelector(p, name)} { overflow-${axis}: ${value}; }`;
       }),
     );
-    // prettier-ignore
-    return css`/**
+
+    return css`
+      /**
  * @utility overflow
  * @selector .--overflow-x-hidden
  * @global
@@ -50,7 +51,8 @@ export const overflow: Definition = defineUtility({
  * @example
  * <div class="--overflow-y-auto">…</div>
  */
-${rules.join("\n")}`;
+      ${rules.join("\n")}
+    `;
   },
 });
 

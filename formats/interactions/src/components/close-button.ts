@@ -1,4 +1,3 @@
-// fallow-ignore-file unused-file
 /* c8 ignore file */ // side-effect module, tested via behavior functions and IIFE bundles
 import { initCloseButton } from "../behaviors/close-button.js";
 import { PREFIX, sel } from "../shared/prefix.js";

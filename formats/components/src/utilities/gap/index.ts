@@ -29,8 +29,9 @@ export const gap: Definition = defineUtility({
       const name = `gap-${step}`;
       rules.push(`${globalModifierSelector(p, name)} { gap: ${value}; }`);
     }
-    // prettier-ignore
-    return css`/**
+
+    return css`
+      /**
  * @utility gap
  * @selector .--gap-md
  * @global
@@ -52,7 +53,8 @@ export const gap: Definition = defineUtility({
  *   <span>Two</span>
  * </div>
  */
-${rules.join("\n")}`;
+      ${rules.join("\n")}
+    `;
   },
 });
 

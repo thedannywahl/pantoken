@@ -264,7 +264,7 @@ writeFileSync(
 );
 // `colorUtilitiesCss` is a generic emitter (in @pantoken/utils), so its CSS-API doc comment is authored
 // here, where the InstUI-semantic palette is fed in.
-// prettier-ignore
+
 const colorDoc = css`/**
  * @utility color
  * @selector .--text-danger

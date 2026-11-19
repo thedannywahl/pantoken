@@ -11,8 +11,8 @@ import { globalModifierSelector } from "@pantoken/utils";
 /** The layout utility — composable, global `display` and `text-align` classes. */
 export const layout: Definition = defineUtility({
   name: "layout",
-  css: (p) => // prettier-ignore
-  css`/**
+  css: (p) => css`
+    /**
  * @utility layout
  * @selector .--display-flex
  * @global
@@ -34,7 +34,7 @@ export const layout: Definition = defineUtility({
  *   <span>Two</span>
  * </div>
  */
-${[
+    ${[
       ...["block", "inline-block", "inline", "flex", "inline-flex", "none"].map((v) => {
         const name = `display-${v}`;
         return `${globalModifierSelector(p, name)} { display: ${v}; }`;
@@ -50,7 +50,8 @@ ${[
         const name = `text-align-${label}`;
         return `${globalModifierSelector(p, name)} { text-align: ${value}; }`;
       }),
-    ].join("\n")}`,
+    ].join("\n")}
+  `,
 });
 
 /** The layout utilities as a standalone, header-wrapped stylesheet. */

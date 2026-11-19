@@ -106,7 +106,6 @@
     "mermaid": "catalog:",
     "oxc-minify": "catalog:",
     "postcss": "catalog:",
-    "prettier": "catalog:",
     "remark-gfm": "catalog:",
     "remark-parse": "catalog:",
     "shiki": "catalog:",

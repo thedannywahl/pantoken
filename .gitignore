@@ -99,3 +99,9 @@ docs/.vitepress/.temp/
 
 # Agent workflow artifacts
 .agents/plans/
+.agent/skills/
+.agents/skills/
+.claude/skills/
+.cursor/skills/
+.gemini/skills/
+.github/skills/

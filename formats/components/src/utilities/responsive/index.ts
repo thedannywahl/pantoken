@@ -172,9 +172,9 @@ export const responsive: Definition = defineUtility({
         return ` * @cssproperty --pantoken-bp-${short} <length> — The \`${short}\` breakpoint's value (\`${w}\`, ${source}). Overriding it does not move the compiled \`@media\`/\`@container\` thresholds above.`;
       })
       .join("\n");
-    // prettier-ignore
+
     return css`
-/**
+      /**
  * @utility responsive
  * @selector [class*="-hidden-"],[class*="-show-"]
  * @global
@@ -193,17 +193,21 @@ ${modifierDocs}
 ${conditionDocs}
 ${propertyDocs}
  */
-${properties}
-:root {
-${scaleSourceVars}
-}
-${viewport}
-.${p}container { container-type: inline-size; }
-${container}
-${showBase} { display: none !important; }
-${showViewport}
-${showContainer}
-`;
+      ${properties}
+      :root {
+        ${scaleSourceVars}
+      }
+      ${viewport}
+      .${p}container {
+        container-type: inline-size;
+      }
+      ${container}
+      ${showBase} {
+        display: none !important;
+      }
+      ${showViewport}
+      ${showContainer}
+    `;
   },
 });
 

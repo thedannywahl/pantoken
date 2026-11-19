@@ -89,8 +89,8 @@ export const spacing: Definition = defineUtility({
   css: (p) => {
     const rules = [...shortAndLegacyRules(p), ...fullyLongRules(p)];
 
-    // prettier-ignore
-    return css`/**
+    return css`
+      /**
  * @utility spacing
  * @selector .--p-md
  * @global
@@ -110,7 +110,8 @@ export const spacing: Definition = defineUtility({
  * @example
  * <div class="--p-md --mt-lg">Padded box with a large top margin.</div>
  */
-${rules.join("\n")}`;
+      ${rules.join("\n")}
+    `;
   },
 });
 

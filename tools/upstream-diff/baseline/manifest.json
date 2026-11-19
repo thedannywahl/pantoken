@@ -283,7 +283,14 @@
       "source": "lucide",
       "viewBox": "0 0 24 24"
     },
-    "--instui-icon-archive-restore": {
+    "--instui-icon-archive-arrow-down": {
+      "bidirectional": true,
+      "hash": "2eb3df4a2a6ea582",
+      "source": "lucide",
+      "viewBox": "0 0 24 24"
+    },
+    "--instui-icon-archive-arrow-up": {
+      "bidirectional": true,
       "hash": "45452fadcd849abc",
       "source": "lucide",
       "viewBox": "0 0 24 24"
@@ -555,6 +562,46 @@
       "source": "lucide",
       "viewBox": "0 0 24 24"
     },
+    "--instui-icon-arrows-from-axis-dashed-horizontal": {
+      "hash": "c919025814835b32",
+      "source": "lucide",
+      "viewBox": "0 0 24 24"
+    },
+    "--instui-icon-arrows-from-axis-dashed-vertical": {
+      "hash": "0363cf47bb472daa",
+      "source": "lucide",
+      "viewBox": "0 0 24 24"
+    },
+    "--instui-icon-arrows-from-axis-horizontal": {
+      "hash": "0b5cd6ff468efbe1",
+      "source": "lucide",
+      "viewBox": "0 0 24 24"
+    },
+    "--instui-icon-arrows-from-axis-vertical": {
+      "hash": "05cfec8ed7ad5aa3",
+      "source": "lucide",
+      "viewBox": "0 0 24 24"
+    },
+    "--instui-icon-arrows-to-axis-dashed-horizontal": {
+      "hash": "bae10d3f6d2891ec",
+      "source": "lucide",
+      "viewBox": "0 0 24 24"
+    },
+    "--instui-icon-arrows-to-axis-dashed-vertical": {
+      "hash": "babe58df1da0f3e6",
+      "source": "lucide",
+      "viewBox": "0 0 24 24"
+    },
+    "--instui-icon-arrows-to-axis-horizontal": {
+      "hash": "c15da747cf8025aa",
+      "source": "lucide",
+      "viewBox": "0 0 24 24"
+    },
+    "--instui-icon-arrows-to-axis-vertical": {
+      "hash": "9ff75b80ba400d43",
+      "source": "lucide",
+      "viewBox": "0 0 24 24"
+    },
     "--instui-icon-arrows-up-from-line": {
       "hash": "f40e4bec504107e2",
       "source": "lucide",
@@ -562,6 +609,11 @@
     },
     "--instui-icon-asterisk": {
       "hash": "125035498e5b4d5c",
+      "source": "lucide",
+      "viewBox": "0 0 24 24"
+    },
+    "--instui-icon-asterism": {
+      "hash": "7652ed6326baa379",
       "source": "lucide",
       "viewBox": "0 0 24 24"
     },
@@ -600,6 +652,11 @@
       "source": "lucide",
       "viewBox": "0 0 24 24"
     },
+    "--instui-icon-avocado": {
+      "hash": "3ddfaa44af89efe0",
+      "source": "lucide",
+      "viewBox": "0 0 24 24"
+    },
     "--instui-icon-award": {
       "hash": "ca43fadf7ded1380",
       "source": "lucide",
@@ -612,6 +669,11 @@
     },
     "--instui-icon-axis-3d": {
       "hash": "9734746b14b5ec16",
+      "source": "lucide",
+      "viewBox": "0 0 24 24"
+    },
+    "--instui-icon-azerbaijani-manat": {
+      "hash": "74ddc9b418c4caa0",
       "source": "lucide",
       "viewBox": "0 0 24 24"
     },
@@ -631,13 +693,13 @@
       "source": "lucide",
       "viewBox": "0 0 24 24"
     },
-    "--instui-icon-badge": {
-      "hash": "e3f02afaa824619e",
+    "--instui-icon-bacon": {
+      "hash": "cae56a65895a0fda",
       "source": "lucide",
       "viewBox": "0 0 24 24"
     },
-    "--instui-icon-badge-alert": {
-      "hash": "7c9848b7a734f3b3",
+    "--instui-icon-badge": {
+      "hash": "e3f02afaa824619e",
       "source": "lucide",
       "viewBox": "0 0 24 24"
     },
@@ -658,6 +720,11 @@
     },
     "--instui-icon-badge-euro": {
       "hash": "86608dc3785dbef6",
+      "source": "lucide",
+      "viewBox": "0 0 24 24"
+    },
+    "--instui-icon-badge-exclamation-point": {
+      "hash": "7c9848b7a734f3b3",
       "source": "lucide",
       "viewBox": "0 0 24 24"
     },
@@ -697,7 +764,7 @@
       "viewBox": "0 0 24 24"
     },
     "--instui-icon-badge-question-mark": {
-      "hash": "337cb03e0e7811d9",
+      "hash": "5ba8416e4432011f",
       "source": "lucide",
       "viewBox": "0 0 24 24"
     },
@@ -723,6 +790,11 @@
     },
     "--instui-icon-baggage-claim": {
       "hash": "10d4b050bec1039f",
+      "source": "lucide",
+      "viewBox": "0 0 24 24"
+    },
+    "--instui-icon-ball-wave": {
+      "hash": "8799297c7648cead",
       "source": "lucide",
       "viewBox": "0 0 24 24"
     },
@@ -784,7 +856,7 @@
       "viewBox": "0 0 24 24"
     },
     "--instui-icon-barrel": {
-      "hash": "6936c88b82d90dd1",
+      "hash": "7492c58254ef5217",
       "source": "lucide",
       "viewBox": "0 0 24 24"
     },
@@ -808,6 +880,11 @@
       "source": "lucide",
       "viewBox": "0 0 24 24"
     },
+    "--instui-icon-battery-exclamation-point": {
+      "hash": "05f535decca09b5a",
+      "source": "lucide",
+      "viewBox": "0 0 24 24"
+    },
     "--instui-icon-battery-full": {
       "hash": "1bd89e91297a11ec",
       "source": "lucide",
@@ -825,11 +902,6 @@
     },
     "--instui-icon-battery-plus": {
       "hash": "56fc1ae8ba0865ff",
-      "source": "lucide",
-      "viewBox": "0 0 24 24"
-    },
-    "--instui-icon-battery-warning": {
-      "hash": "ed39e9700fa3f7a5",
       "source": "lucide",
       "viewBox": "0 0 24 24"
     },
@@ -1038,11 +1110,6 @@
       "source": "lucide",
       "viewBox": "0 0 24 24"
     },
-    "--instui-icon-bold": {
-      "hash": "68fc805af2aa47ce",
-      "source": "lucide",
-      "viewBox": "0 0 24 24"
-    },
     "--instui-icon-bolt": {
       "hash": "c238f06aaa55f034",
       "source": "lucide",
@@ -1073,11 +1140,6 @@
       "source": "lucide",
       "viewBox": "0 0 24 24"
     },
-    "--instui-icon-book-alert": {
-      "hash": "f5145e9ea7c58ffa",
-      "source": "lucide",
-      "viewBox": "0 0 24 24"
-    },
     "--instui-icon-book-audio": {
       "hash": "a471e9e716fac01f",
       "source": "lucide",
@@ -1105,6 +1167,11 @@
     },
     "--instui-icon-book-down": {
       "hash": "ce8aa8db97f24f9d",
+      "source": "lucide",
+      "viewBox": "0 0 24 24"
+    },
+    "--instui-icon-book-exclamation-point": {
+      "hash": "f5145e9ea7c58ffa",
       "source": "lucide",
       "viewBox": "0 0 24 24"
     },
@@ -1239,13 +1306,33 @@
       "source": "lucide",
       "viewBox": "0 0 24 24"
     },
+    "--instui-icon-bot-check": {
+      "hash": "73a1596ee5254efa",
+      "source": "lucide",
+      "viewBox": "0 0 24 24"
+    },
     "--instui-icon-bot-message-square": {
       "hash": "3adf9c3d40c4daee",
       "source": "lucide",
       "viewBox": "0 0 24 24"
     },
+    "--instui-icon-bot-minus": {
+      "hash": "defe896380d19318",
+      "source": "lucide",
+      "viewBox": "0 0 24 24"
+    },
     "--instui-icon-bot-off": {
       "hash": "5d803b1cd7acf21e",
+      "source": "lucide",
+      "viewBox": "0 0 24 24"
+    },
+    "--instui-icon-bot-plus": {
+      "hash": "4565c4748fb3f2e9",
+      "source": "lucide",
+      "viewBox": "0 0 24 24"
+    },
+    "--instui-icon-bot-x": {
+      "hash": "34ae3ff0c59203eb",
       "source": "lucide",
       "viewBox": "0 0 24 24"
     },
@@ -1270,6 +1357,11 @@
       "source": "lucide",
       "viewBox": "0 0 24 24"
     },
+    "--instui-icon-boxes-linked": {
+      "hash": "22db190a303f221f",
+      "source": "lucide",
+      "viewBox": "0 0 24 24"
+    },
     "--instui-icon-braces": {
       "hash": "42534922cd430ee5",
       "source": "lucide",
@@ -1281,17 +1373,22 @@
       "viewBox": "0 0 24 24"
     },
     "--instui-icon-brain": {
-      "hash": "012652360f1ce278",
+      "hash": "e1f10fae11845ae2",
       "source": "lucide",
       "viewBox": "0 0 24 24"
     },
     "--instui-icon-brain-circuit": {
-      "hash": "7fdbcb7f5254e90e",
+      "hash": "4b9ec747795d338a",
       "source": "lucide",
       "viewBox": "0 0 24 24"
     },
     "--instui-icon-brain-cog": {
-      "hash": "60eda7ce7612a5e9",
+      "hash": "164c65030a149923",
+      "source": "lucide",
+      "viewBox": "0 0 24 24"
+    },
+    "--instui-icon-brain-off": {
+      "hash": "84facce706388b82",
       "source": "lucide",
       "viewBox": "0 0 24 24"
     },
@@ -1462,6 +1559,18 @@
       "source": "lucide",
       "viewBox": "0 0 24 24"
     },
+    "--instui-icon-calendar-arrow-left": {
+      "bidirectional": true,
+      "hash": "99c7d8a1ab06d631",
+      "source": "lucide",
+      "viewBox": "0 0 24 24"
+    },
+    "--instui-icon-calendar-arrow-right": {
+      "bidirectional": true,
+      "hash": "2f4ba35365020c10",
+      "source": "lucide",
+      "viewBox": "0 0 24 24"
+    },
     "--instui-icon-calendar-arrow-up": {
       "bidirectional": true,
       "hash": "4e57b2f64f7ff60f",
@@ -1621,6 +1730,11 @@
       "style": "Custom",
       "viewBox": "0 0 1920 1920"
     },
+    "--instui-icon-cap": {
+      "hash": "490bd02d4ca201dc",
+      "source": "lucide",
+      "viewBox": "0 0 24 24"
+    },
     "--instui-icon-captions": {
       "hash": "3870e11d213045f9",
       "source": "lucide",
@@ -1664,6 +1778,46 @@
     },
     "--instui-icon-card-sim": {
       "hash": "f56fd20722a19948",
+      "source": "lucide",
+      "viewBox": "0 0 24 24"
+    },
+    "--instui-icon-carets-from-axis-dashed-horizontal": {
+      "hash": "51ad9041830172d9",
+      "source": "lucide",
+      "viewBox": "0 0 24 24"
+    },
+    "--instui-icon-carets-from-axis-dashed-vertical": {
+      "hash": "5cf29c441490d779",
+      "source": "lucide",
+      "viewBox": "0 0 24 24"
+    },
+    "--instui-icon-carets-from-axis-horizontal": {
+      "hash": "32597a3adc0ca414",
+      "source": "lucide",
+      "viewBox": "0 0 24 24"
+    },
+    "--instui-icon-carets-from-axis-vertical": {
+      "hash": "37d16e4bcb6f9ee7",
+      "source": "lucide",
+      "viewBox": "0 0 24 24"
+    },
+    "--instui-icon-carets-to-axis-dashed-horizontal": {
+      "hash": "152896a87b36dae7",
+      "source": "lucide",
+      "viewBox": "0 0 24 24"
+    },
+    "--instui-icon-carets-to-axis-dashed-vertical": {
+      "hash": "5bf4a3ed18e82314",
+      "source": "lucide",
+      "viewBox": "0 0 24 24"
+    },
+    "--instui-icon-carets-to-axis-horizontal": {
+      "hash": "c39358303f090e09",
+      "source": "lucide",
+      "viewBox": "0 0 24 24"
+    },
+    "--instui-icon-carets-to-axis-vertical": {
+      "hash": "df5a16c9223e89eb",
       "source": "lucide",
       "viewBox": "0 0 24 24"
     },
@@ -1727,6 +1881,11 @@
       "source": "lucide",
       "viewBox": "0 0 24 24"
     },
+    "--instui-icon-certificate": {
+      "hash": "a0c9f2ddbc31e8f3",
+      "source": "lucide",
+      "viewBox": "0 0 24 24"
+    },
     "--instui-icon-chart-area": {
       "hash": "1bbae6f5934f3fe4",
       "source": "lucide",
@@ -1754,6 +1913,11 @@
     },
     "--instui-icon-chart-bar-stacked": {
       "hash": "7a83284e7acb17ae",
+      "source": "lucide",
+      "viewBox": "0 0 24 24"
+    },
+    "--instui-icon-chart-bell-curve": {
+      "hash": "042ea01841b1342d",
       "source": "lucide",
       "viewBox": "0 0 24 24"
     },
@@ -1832,6 +1996,16 @@
       "source": "lucide",
       "viewBox": "0 0 24 24"
     },
+    "--instui-icon-chart-quadrant": {
+      "hash": "c006e9c364055075",
+      "source": "lucide",
+      "viewBox": "0 0 24 24"
+    },
+    "--instui-icon-chart-radar": {
+      "hash": "6a82251a959fa0ce",
+      "source": "lucide",
+      "viewBox": "0 0 24 24"
+    },
     "--instui-icon-chart-scatter": {
       "hash": "ba9430874106e921",
       "source": "lucide",
@@ -1857,8 +2031,13 @@
       "source": "lucide",
       "viewBox": "0 0 24 24"
     },
+    "--instui-icon-cheese": {
+      "hash": "3f9d924a56aad00b",
+      "source": "lucide",
+      "viewBox": "0 0 24 24"
+    },
     "--instui-icon-chef-hat": {
-      "hash": "39e2be79d490a953",
+      "hash": "2f43ea0f80e8bc6a",
       "source": "lucide",
       "viewBox": "0 0 24 24"
     },
@@ -1888,7 +2067,7 @@
       "viewBox": "0 0 24 24"
     },
     "--instui-icon-chess-queen": {
-      "hash": "ab8472f63a7a6ffb",
+      "hash": "e3803c60aa01c2b1",
       "source": "lucide",
       "viewBox": "0 0 24 24"
     },
@@ -1943,6 +2122,26 @@
       "source": "lucide",
       "viewBox": "0 0 24 24"
     },
+    "--instui-icon-chevrons-from-axis-dashed-horizontal": {
+      "hash": "e8efbd8c6baaa641",
+      "source": "lucide",
+      "viewBox": "0 0 24 24"
+    },
+    "--instui-icon-chevrons-from-axis-dashed-vertical": {
+      "hash": "e210695d5152ffaf",
+      "source": "lucide",
+      "viewBox": "0 0 24 24"
+    },
+    "--instui-icon-chevrons-from-axis-horizontal": {
+      "hash": "ec2366039606f2b0",
+      "source": "lucide",
+      "viewBox": "0 0 24 24"
+    },
+    "--instui-icon-chevrons-from-axis-vertical": {
+      "hash": "67ef991963ecb26d",
+      "source": "lucide",
+      "viewBox": "0 0 24 24"
+    },
     "--instui-icon-chevrons-left": {
       "bidirectional": true,
       "hash": "2a85961b6200bee0",
@@ -1973,6 +2172,26 @@
       "source": "lucide",
       "viewBox": "0 0 24 24"
     },
+    "--instui-icon-chevrons-to-axis-dashed-horizontal": {
+      "hash": "069e64b4abb93690",
+      "source": "lucide",
+      "viewBox": "0 0 24 24"
+    },
+    "--instui-icon-chevrons-to-axis-dashed-vertical": {
+      "hash": "9b32503576c7cb88",
+      "source": "lucide",
+      "viewBox": "0 0 24 24"
+    },
+    "--instui-icon-chevrons-to-axis-horizontal": {
+      "hash": "b3ef0272a1a179b0",
+      "source": "lucide",
+      "viewBox": "0 0 24 24"
+    },
+    "--instui-icon-chevrons-to-axis-vertical": {
+      "hash": "e7de17a49d331547",
+      "source": "lucide",
+      "viewBox": "0 0 24 24"
+    },
     "--instui-icon-chevrons-up": {
       "hash": "2a657412bc6d5e26",
       "source": "lucide",
@@ -1998,13 +2217,13 @@
       "source": "lucide",
       "viewBox": "0 0 24 24"
     },
-    "--instui-icon-circle": {
-      "hash": "fdba26de799ec31b",
+    "--instui-icon-cinema": {
+      "hash": "2fd1c0104cc89442",
       "source": "lucide",
       "viewBox": "0 0 24 24"
     },
-    "--instui-icon-circle-alert": {
-      "hash": "7ee22b708cadd56d",
+    "--instui-icon-circle": {
+      "hash": "fdba26de799ec31b",
       "source": "lucide",
       "viewBox": "0 0 24 24"
     },
@@ -2020,11 +2239,23 @@
       "source": "lucide",
       "viewBox": "0 0 24 24"
     },
+    "--instui-icon-circle-arrow-down-left-exit": {
+      "bidirectional": true,
+      "hash": "1b606e9e1eb61cd9",
+      "source": "lucide",
+      "viewBox": "0 0 24 24"
+    },
     "--instui-icon-circle-arrow-down-right": {
       "bidirectional": true,
       "hash": "cb0f05325a3a49e4",
       "source": "custom",
       "style": "Custom",
+      "viewBox": "0 0 24 24"
+    },
+    "--instui-icon-circle-arrow-down-right-exit": {
+      "bidirectional": true,
+      "hash": "032a347993b40609",
+      "source": "lucide",
       "viewBox": "0 0 24 24"
     },
     "--instui-icon-circle-arrow-in-left": {
@@ -2047,30 +2278,6 @@
       "source": "lucide",
       "viewBox": "0 0 24 24"
     },
-    "--instui-icon-circle-arrow-out-down-left": {
-      "bidirectional": true,
-      "hash": "1b606e9e1eb61cd9",
-      "source": "lucide",
-      "viewBox": "0 0 24 24"
-    },
-    "--instui-icon-circle-arrow-out-down-right": {
-      "bidirectional": true,
-      "hash": "032a347993b40609",
-      "source": "lucide",
-      "viewBox": "0 0 24 24"
-    },
-    "--instui-icon-circle-arrow-out-up-left": {
-      "bidirectional": true,
-      "hash": "6db210920b08ccbf",
-      "source": "lucide",
-      "viewBox": "0 0 24 24"
-    },
-    "--instui-icon-circle-arrow-out-up-right": {
-      "bidirectional": true,
-      "hash": "6a1d61440ff4758c",
-      "source": "lucide",
-      "viewBox": "0 0 24 24"
-    },
     "--instui-icon-circle-arrow-right": {
       "bidirectional": true,
       "hash": "722e29abee40bf3a",
@@ -2083,11 +2290,28 @@
       "source": "lucide",
       "viewBox": "0 0 24 24"
     },
+    "--instui-icon-circle-arrow-up-left-exit": {
+      "bidirectional": true,
+      "hash": "6db210920b08ccbf",
+      "source": "lucide",
+      "viewBox": "0 0 24 24"
+    },
     "--instui-icon-circle-arrow-up-right": {
       "bidirectional": true,
       "hash": "417c80b6638000f1",
       "source": "custom",
       "style": "Custom",
+      "viewBox": "0 0 24 24"
+    },
+    "--instui-icon-circle-arrow-up-right-exit": {
+      "bidirectional": true,
+      "hash": "6a1d61440ff4758c",
+      "source": "lucide",
+      "viewBox": "0 0 24 24"
+    },
+    "--instui-icon-circle-bounce": {
+      "hash": "3d7c7b9e163d7164",
+      "source": "lucide",
       "viewBox": "0 0 24 24"
     },
     "--instui-icon-circle-check": {
@@ -2121,6 +2345,28 @@
     "--instui-icon-circle-chevron-up": {
       "bidirectional": true,
       "hash": "b5b37b226df3ee56",
+      "source": "lucide",
+      "viewBox": "0 0 24 24"
+    },
+    "--instui-icon-circle-chevrons-down": {
+      "hash": "a26b233d5541b3e1",
+      "source": "lucide",
+      "viewBox": "0 0 24 24"
+    },
+    "--instui-icon-circle-chevrons-left": {
+      "bidirectional": true,
+      "hash": "48574e2d4f3fe194",
+      "source": "lucide",
+      "viewBox": "0 0 24 24"
+    },
+    "--instui-icon-circle-chevrons-right": {
+      "bidirectional": true,
+      "hash": "882d352da098eb26",
+      "source": "lucide",
+      "viewBox": "0 0 24 24"
+    },
+    "--instui-icon-circle-chevrons-up": {
+      "hash": "24cc6190728d14cd",
       "source": "lucide",
       "viewBox": "0 0 24 24"
     },
@@ -2169,9 +2415,19 @@
       "source": "lucide",
       "viewBox": "0 0 24 24"
     },
+    "--instui-icon-circle-exclamation-point": {
+      "hash": "7ee22b708cadd56d",
+      "source": "lucide",
+      "viewBox": "0 0 24 24"
+    },
     "--instui-icon-circle-fading-arrow-up": {
       "bidirectional": true,
       "hash": "c649025197fc867f",
+      "source": "lucide",
+      "viewBox": "0 0 24 24"
+    },
+    "--instui-icon-circle-fading-check": {
+      "hash": "da942fb047137ad6",
       "source": "lucide",
       "viewBox": "0 0 24 24"
     },
@@ -2187,6 +2443,141 @@
     },
     "--instui-icon-circle-gauge": {
       "hash": "22696bd3b1c7838e",
+      "source": "lucide",
+      "viewBox": "0 0 24 24"
+    },
+    "--instui-icon-circle-letter-a": {
+      "hash": "3c194acd63bc322f",
+      "source": "lucide",
+      "viewBox": "0 0 24 24"
+    },
+    "--instui-icon-circle-letter-b": {
+      "hash": "021eaa4790d06c94",
+      "source": "lucide",
+      "viewBox": "0 0 24 24"
+    },
+    "--instui-icon-circle-letter-c": {
+      "hash": "bae10b2b0e313398",
+      "source": "lucide",
+      "viewBox": "0 0 24 24"
+    },
+    "--instui-icon-circle-letter-d": {
+      "hash": "e5d2ea855d176b6b",
+      "source": "lucide",
+      "viewBox": "0 0 24 24"
+    },
+    "--instui-icon-circle-letter-e": {
+      "hash": "1339dfb716b57a7f",
+      "source": "lucide",
+      "viewBox": "0 0 24 24"
+    },
+    "--instui-icon-circle-letter-f": {
+      "hash": "61d197effc89259d",
+      "source": "lucide",
+      "viewBox": "0 0 24 24"
+    },
+    "--instui-icon-circle-letter-g": {
+      "hash": "698ddb3fb8a04098",
+      "source": "lucide",
+      "viewBox": "0 0 24 24"
+    },
+    "--instui-icon-circle-letter-h": {
+      "hash": "c4b1e2d320bdd742",
+      "source": "lucide",
+      "viewBox": "0 0 24 24"
+    },
+    "--instui-icon-circle-letter-i": {
+      "hash": "77f22b252f1860ad",
+      "source": "lucide",
+      "viewBox": "0 0 24 24"
+    },
+    "--instui-icon-circle-letter-j": {
+      "hash": "bdce36693569f1cf",
+      "source": "lucide",
+      "viewBox": "0 0 24 24"
+    },
+    "--instui-icon-circle-letter-k": {
+      "hash": "9d17290c76041da3",
+      "source": "lucide",
+      "viewBox": "0 0 24 24"
+    },
+    "--instui-icon-circle-letter-l": {
+      "hash": "df070eafbd29878c",
+      "source": "lucide",
+      "viewBox": "0 0 24 24"
+    },
+    "--instui-icon-circle-letter-m": {
+      "hash": "f42e79ad1445c3ca",
+      "source": "lucide",
+      "viewBox": "0 0 24 24"
+    },
+    "--instui-icon-circle-letter-n": {
+      "hash": "a15634f2d6364157",
+      "source": "lucide",
+      "viewBox": "0 0 24 24"
+    },
+    "--instui-icon-circle-letter-o": {
+      "hash": "1ad2b5784cf5e327",
+      "source": "lucide",
+      "viewBox": "0 0 24 24"
+    },
+    "--instui-icon-circle-letter-p": {
+      "hash": "42aca040e00c310e",
+      "source": "lucide",
+      "viewBox": "0 0 24 24"
+    },
+    "--instui-icon-circle-letter-p-off": {
+      "hash": "3cacdcc6bde84f0f",
+      "source": "lucide",
+      "viewBox": "0 0 24 24"
+    },
+    "--instui-icon-circle-letter-q": {
+      "hash": "ff505748a498ad0d",
+      "source": "lucide",
+      "viewBox": "0 0 24 24"
+    },
+    "--instui-icon-circle-letter-r": {
+      "hash": "744c2d6a8cff35b4",
+      "source": "lucide",
+      "viewBox": "0 0 24 24"
+    },
+    "--instui-icon-circle-letter-s": {
+      "hash": "0646b0b143c43368",
+      "source": "lucide",
+      "viewBox": "0 0 24 24"
+    },
+    "--instui-icon-circle-letter-t": {
+      "hash": "2b00968d8a5ad536",
+      "source": "lucide",
+      "viewBox": "0 0 24 24"
+    },
+    "--instui-icon-circle-letter-u": {
+      "hash": "745037bce6f1f050",
+      "source": "lucide",
+      "viewBox": "0 0 24 24"
+    },
+    "--instui-icon-circle-letter-v": {
+      "hash": "8aa0ef8ea6ad6ff1",
+      "source": "lucide",
+      "viewBox": "0 0 24 24"
+    },
+    "--instui-icon-circle-letter-w": {
+      "hash": "8548d8207b069725",
+      "source": "lucide",
+      "viewBox": "0 0 24 24"
+    },
+    "--instui-icon-circle-letter-x": {
+      "hash": "e93c4decc8d8936f",
+      "source": "lucide",
+      "viewBox": "0 0 24 24"
+    },
+    "--instui-icon-circle-letter-y": {
+      "hash": "dcf617abe2254d5d",
+      "source": "lucide",
+      "viewBox": "0 0 24 24"
+    },
+    "--instui-icon-circle-letter-z": {
+      "hash": "78a63a1175060eab",
       "source": "lucide",
       "viewBox": "0 0 24 24"
     },
@@ -2206,16 +2597,6 @@
       "source": "lucide",
       "viewBox": "0 0 24 24"
     },
-    "--instui-icon-circle-parking": {
-      "hash": "b52b6c7bbf2f27d5",
-      "source": "lucide",
-      "viewBox": "0 0 24 24"
-    },
-    "--instui-icon-circle-parking-off": {
-      "hash": "cc7385eaf766d736",
-      "source": "lucide",
-      "viewBox": "0 0 24 24"
-    },
     "--instui-icon-circle-pause": {
       "hash": "79e0a708bb90331a",
       "source": "lucide",
@@ -2223,6 +2604,11 @@
     },
     "--instui-icon-circle-percent": {
       "hash": "331ce29ba443df05",
+      "source": "lucide",
+      "viewBox": "0 0 24 24"
+    },
+    "--instui-icon-circle-person-arms-spread": {
+      "hash": "1bc8e31e5773c52d",
       "source": "lucide",
       "viewBox": "0 0 24 24"
     },
@@ -2252,7 +2638,7 @@
       "viewBox": "0 0 24 24"
     },
     "--instui-icon-circle-question-mark": {
-      "hash": "e39839112ed2de96",
+      "hash": "a1b334d0e4347aaa",
       "source": "lucide",
       "viewBox": "0 0 24 24"
     },
@@ -2457,11 +2843,6 @@
       "source": "lucide",
       "viewBox": "0 0 24 24"
     },
-    "--instui-icon-clock-alert": {
-      "hash": "d71d464b37753643",
-      "source": "lucide",
-      "viewBox": "0 0 24 24"
-    },
     "--instui-icon-clock-arrow-down": {
       "bidirectional": true,
       "hash": "1b0bd72c42a4faeb",
@@ -2488,6 +2869,11 @@
     },
     "--instui-icon-clock-check": {
       "hash": "b04f85da48f743b4",
+      "source": "lucide",
+      "viewBox": "0 0 24 24"
+    },
+    "--instui-icon-clock-exclamation-point": {
+      "hash": "d71d464b37753643",
       "source": "lucide",
       "viewBox": "0 0 24 24"
     },
@@ -2529,11 +2915,6 @@
       "source": "lucide",
       "viewBox": "0 0 24 24"
     },
-    "--instui-icon-cloud-alert": {
-      "hash": "039d793a34c036fc",
-      "source": "lucide",
-      "viewBox": "0 0 24 24"
-    },
     "--instui-icon-cloud-backup": {
       "hash": "9439901b77648bc2",
       "source": "lucide",
@@ -2556,6 +2937,11 @@
     },
     "--instui-icon-cloud-drizzle": {
       "hash": "d8dcbf3f5d82aa03",
+      "source": "lucide",
+      "viewBox": "0 0 24 24"
+    },
+    "--instui-icon-cloud-exclamation-point": {
+      "hash": "039d793a34c036fc",
       "source": "lucide",
       "viewBox": "0 0 24 24"
     },
@@ -2807,11 +3193,6 @@
       "source": "lucide",
       "viewBox": "0 0 24 24"
     },
-    "--instui-icon-copyright": {
-      "hash": "227bf5df65f706d3",
-      "source": "lucide",
-      "viewBox": "0 0 24 24"
-    },
     "--instui-icon-copyright-fair-use": {
       "hash": "f0980c808ba5bc21",
       "source": "custom",
@@ -3005,6 +3386,11 @@
       "source": "lucide",
       "viewBox": "0 0 24 24"
     },
+    "--instui-icon-database-cog": {
+      "hash": "e30431ed41dfc581",
+      "source": "lucide",
+      "viewBox": "0 0 24 24"
+    },
     "--instui-icon-database-minus": {
       "hash": "5e50959ecef27be3",
       "source": "lucide",
@@ -3049,6 +3435,16 @@
     },
     "--instui-icon-dessert": {
       "hash": "e297fe1816e0f5ae",
+      "source": "lucide",
+      "viewBox": "0 0 24 24"
+    },
+    "--instui-icon-diagram-flow-horizontal": {
+      "hash": "6f2088595bd74f18",
+      "source": "lucide",
+      "viewBox": "0 0 24 24"
+    },
+    "--instui-icon-diagram-flow-vertical": {
+      "hash": "c2039c3786c7c626",
       "source": "lucide",
       "viewBox": "0 0 24 24"
     },
@@ -3162,8 +3558,13 @@
       "source": "lucide",
       "viewBox": "0 0 24 24"
     },
+    "--instui-icon-doghouse": {
+      "hash": "1626524a4d2fda92",
+      "source": "lucide",
+      "viewBox": "0 0 24 24"
+    },
     "--instui-icon-dollar-sign": {
-      "hash": "25b25b0523e856c5",
+      "hash": "a10c3ed0e811ebaa",
       "source": "lucide",
       "viewBox": "0 0 24 24"
     },
@@ -3277,6 +3678,16 @@
       "source": "lucide",
       "viewBox": "0 0 24 24"
     },
+    "--instui-icon-earbuds": {
+      "hash": "3ecdfe2efad39a32",
+      "source": "lucide",
+      "viewBox": "0 0 24 24"
+    },
+    "--instui-icon-earbuds-off": {
+      "hash": "c159b0af4f6b49c7",
+      "source": "lucide",
+      "viewBox": "0 0 24 24"
+    },
     "--instui-icon-earth": {
       "hash": "a305f1c23737ff27",
       "source": "lucide",
@@ -3307,6 +3718,16 @@
       "source": "lucide",
       "viewBox": "0 0 24 24"
     },
+    "--instui-icon-eighth-note": {
+      "hash": "fc43fe9316762671",
+      "source": "lucide",
+      "viewBox": "0 0 24 24"
+    },
+    "--instui-icon-eighth-notes": {
+      "hash": "006860fa8a92f0bc",
+      "source": "lucide",
+      "viewBox": "0 0 24 24"
+    },
     "--instui-icon-eject": {
       "hash": "1a1d3476720216c5",
       "source": "lucide",
@@ -3330,6 +3751,11 @@
     },
     "--instui-icon-ellipsis-vertical": {
       "hash": "31525b2054864176",
+      "source": "lucide",
+      "viewBox": "0 0 24 24"
+    },
+    "--instui-icon-emirati-dirham": {
+      "hash": "2d2b53c409898172",
       "source": "lucide",
       "viewBox": "0 0 24 24"
     },
@@ -3375,6 +3801,11 @@
     },
     "--instui-icon-ev-charger": {
       "hash": "13ca6beb5ae61799",
+      "source": "lucide",
+      "viewBox": "0 0 24 24"
+    },
+    "--instui-icon-exclamation-mark": {
+      "hash": "f3d19d835796ce21",
       "source": "lucide",
       "viewBox": "0 0 24 24"
     },
@@ -3571,6 +4002,11 @@
       "source": "lucide",
       "viewBox": "0 0 24 24"
     },
+    "--instui-icon-file-database": {
+      "hash": "76e17264a17a88f1",
+      "source": "lucide",
+      "viewBox": "0 0 24 24"
+    },
     "--instui-icon-file-diff": {
       "hash": "fceda733cb44e846",
       "source": "lucide",
@@ -3667,7 +4103,7 @@
       "viewBox": "0 0 24 24"
     },
     "--instui-icon-file-question-mark": {
-      "hash": "0b5ce1b82d12a441",
+      "hash": "b88c82f80a736216",
       "source": "lucide",
       "viewBox": "0 0 24 24"
     },
@@ -3887,16 +4323,6 @@
     },
     "--instui-icon-focus": {
       "hash": "9c09202d932e84e8",
-      "source": "lucide",
-      "viewBox": "0 0 24 24"
-    },
-    "--instui-icon-fold-horizontal": {
-      "hash": "d1c2eaad77503ea8",
-      "source": "lucide",
-      "viewBox": "0 0 24 24"
-    },
-    "--instui-icon-fold-vertical": {
-      "hash": "a49b30fc1e876533",
       "source": "lucide",
       "viewBox": "0 0 24 24"
     },
@@ -4194,7 +4620,7 @@
       "viewBox": "0 0 24 24"
     },
     "--instui-icon-georgian-lari": {
-      "hash": "a9175dbcb48b7d6f",
+      "hash": "17d2c3914b4616fb",
       "source": "lucide",
       "viewBox": "0 0 24 24"
     },
@@ -4320,6 +4746,11 @@
       "source": "lucide",
       "viewBox": "0 0 24 24"
     },
+    "--instui-icon-globe-ban": {
+      "hash": "64539b1d3331d6ec",
+      "source": "lucide",
+      "viewBox": "0 0 24 24"
+    },
     "--instui-icon-globe-check": {
       "hash": "ddfa508f9267e35e",
       "source": "lucide",
@@ -4337,6 +4768,11 @@
     },
     "--instui-icon-globe-off": {
       "hash": "fbf4076e2bd9817c",
+      "source": "lucide",
+      "viewBox": "0 0 24 24"
+    },
+    "--instui-icon-globe-plus": {
+      "hash": "600751cee5adb721",
       "source": "lucide",
       "viewBox": "0 0 24 24"
     },
@@ -4362,6 +4798,16 @@
     },
     "--instui-icon-grape": {
       "hash": "0f0b391f9356b7dd",
+      "source": "lucide",
+      "viewBox": "0 0 24 24"
+    },
+    "--instui-icon-graph-hub": {
+      "hash": "166977ab4bac6a0d",
+      "source": "lucide",
+      "viewBox": "0 0 24 24"
+    },
+    "--instui-icon-graph-ring": {
+      "hash": "9f2dc0c1dd68ee05",
       "source": "lucide",
       "viewBox": "0 0 24 24"
     },
@@ -4400,6 +4846,11 @@
       "source": "lucide",
       "viewBox": "0 0 24 24"
     },
+    "--instui-icon-grid-3x3-off": {
+      "hash": "05c64c0234121648",
+      "source": "lucide",
+      "viewBox": "0 0 24 24"
+    },
     "--instui-icon-grip": {
       "hash": "877f375949df556b",
       "source": "lucide",
@@ -4432,6 +4883,11 @@
     },
     "--instui-icon-guitar-electric": {
       "hash": "a2d0028e22f7fd33",
+      "source": "lucide",
+      "viewBox": "0 0 24 24"
+    },
+    "--instui-icon-half-note": {
+      "hash": "85de3f9678e47840",
       "source": "lucide",
       "viewBox": "0 0 24 24"
     },
@@ -4487,6 +4943,11 @@
     },
     "--instui-icon-hand-platter": {
       "hash": "fc353c94794ea907",
+      "source": "lucide",
+      "viewBox": "0 0 24 24"
+    },
+    "--instui-icon-hand-truck": {
+      "hash": "a49c5698da47c1a8",
       "source": "lucide",
       "viewBox": "0 0 24 24"
     },
@@ -4548,11 +5009,6 @@
     },
     "--instui-icon-hdmi-port": {
       "hash": "4c2506d2a3f3e300",
-      "source": "lucide",
-      "viewBox": "0 0 24 24"
-    },
-    "--instui-icon-heading": {
-      "hash": "6b9e2f527d936bfb",
       "source": "lucide",
       "viewBox": "0 0 24 24"
     },
@@ -4684,6 +5140,11 @@
       "style": "Custom",
       "viewBox": "0 0 24 24"
     },
+    "--instui-icon-hockey-stick": {
+      "hash": "9c28f46659a04642",
+      "source": "lucide",
+      "viewBox": "0 0 24 24"
+    },
     "--instui-icon-hop": {
       "hash": "399d15c86562540d",
       "source": "lucide",
@@ -4696,6 +5157,11 @@
     },
     "--instui-icon-hospital": {
       "hash": "f4c0cebd3155ccae",
+      "source": "lucide",
+      "viewBox": "0 0 24 24"
+    },
+    "--instui-icon-hot-air-balloon": {
+      "hash": "25bea6baa08e5f21",
       "source": "lucide",
       "viewBox": "0 0 24 24"
     },
@@ -4716,6 +5182,18 @@
     },
     "--instui-icon-house": {
       "hash": "e338cbddca45d001",
+      "source": "lucide",
+      "viewBox": "0 0 24 24"
+    },
+    "--instui-icon-house-arrow-left": {
+      "bidirectional": true,
+      "hash": "c5b1539baca97643",
+      "source": "lucide",
+      "viewBox": "0 0 24 24"
+    },
+    "--instui-icon-house-arrow-right": {
+      "bidirectional": true,
+      "hash": "4e92dc5f3501233e",
       "source": "lucide",
       "viewBox": "0 0 24 24"
     },
@@ -4837,7 +5315,7 @@
       "viewBox": "0 0 24 24"
     },
     "--instui-icon-indian-rupee": {
-      "hash": "7b0c04b92d4afb43",
+      "hash": "7e5aac47414cf381",
       "source": "lucide",
       "viewBox": "0 0 24 24"
     },
@@ -4900,8 +5378,13 @@
       "source": "lucide",
       "viewBox": "0 0 24 24"
     },
+    "--instui-icon-jacket": {
+      "hash": "2cce0cafe855c551",
+      "source": "lucide",
+      "viewBox": "0 0 24 24"
+    },
     "--instui-icon-japanese-yen": {
-      "hash": "7fb12614d0b5f45f",
+      "hash": "430af3936fee0901",
       "source": "lucide",
       "viewBox": "0 0 24 24"
     },
@@ -5020,6 +5503,11 @@
       "source": "lucide",
       "viewBox": "0 0 24 24"
     },
+    "--instui-icon-laser": {
+      "hash": "305c412da1bc0b99",
+      "source": "lucide",
+      "viewBox": "0 0 24 24"
+    },
     "--instui-icon-lasso": {
       "hash": "69edd6a5854882af",
       "source": "lucide",
@@ -5106,6 +5594,11 @@
       "source": "lucide",
       "viewBox": "0 0 24 24"
     },
+    "--instui-icon-layout-grid-plus": {
+      "hash": "5bbd9972ea050b27",
+      "source": "lucide",
+      "viewBox": "0 0 24 24"
+    },
     "--instui-icon-layout-list": {
       "hash": "a967356b589140e9",
       "source": "lucide",
@@ -5154,6 +5647,141 @@
     },
     "--instui-icon-lens-convex": {
       "hash": "60719524f372cda4",
+      "source": "lucide",
+      "viewBox": "0 0 24 24"
+    },
+    "--instui-icon-letter-a": {
+      "hash": "960036fa5b3fc923",
+      "source": "lucide",
+      "viewBox": "0 0 24 24"
+    },
+    "--instui-icon-letter-b": {
+      "hash": "bd7b50ebf151a2cb",
+      "source": "lucide",
+      "viewBox": "0 0 24 24"
+    },
+    "--instui-icon-letter-c": {
+      "hash": "37ef1e890ad61cfd",
+      "source": "lucide",
+      "viewBox": "0 0 24 24"
+    },
+    "--instui-icon-letter-d": {
+      "hash": "0eb484f0e1a64a31",
+      "source": "lucide",
+      "viewBox": "0 0 24 24"
+    },
+    "--instui-icon-letter-e": {
+      "hash": "5d1488378985f805",
+      "source": "lucide",
+      "viewBox": "0 0 24 24"
+    },
+    "--instui-icon-letter-f": {
+      "hash": "fcbcd4b213992a35",
+      "source": "lucide",
+      "viewBox": "0 0 24 24"
+    },
+    "--instui-icon-letter-g": {
+      "hash": "54217aaf2db69508",
+      "source": "lucide",
+      "viewBox": "0 0 24 24"
+    },
+    "--instui-icon-letter-h": {
+      "hash": "b11ffdd87144e0d0",
+      "source": "lucide",
+      "viewBox": "0 0 24 24"
+    },
+    "--instui-icon-letter-i": {
+      "hash": "abac4effe7f5d4e7",
+      "source": "lucide",
+      "viewBox": "0 0 24 24"
+    },
+    "--instui-icon-letter-j": {
+      "hash": "c88b2c181610b166",
+      "source": "lucide",
+      "viewBox": "0 0 24 24"
+    },
+    "--instui-icon-letter-k": {
+      "hash": "93d556ab1ad0a7c6",
+      "source": "lucide",
+      "viewBox": "0 0 24 24"
+    },
+    "--instui-icon-letter-l": {
+      "hash": "870d66dda5129d64",
+      "source": "lucide",
+      "viewBox": "0 0 24 24"
+    },
+    "--instui-icon-letter-m": {
+      "hash": "83b2089ccdfd6ff5",
+      "source": "lucide",
+      "viewBox": "0 0 24 24"
+    },
+    "--instui-icon-letter-n": {
+      "hash": "3f8117699879f86a",
+      "source": "lucide",
+      "viewBox": "0 0 24 24"
+    },
+    "--instui-icon-letter-o": {
+      "hash": "38ca91a1e672777f",
+      "source": "lucide",
+      "viewBox": "0 0 24 24"
+    },
+    "--instui-icon-letter-p": {
+      "hash": "f372a276c44575f9",
+      "source": "lucide",
+      "viewBox": "0 0 24 24"
+    },
+    "--instui-icon-letter-q": {
+      "hash": "6e8fde968becd53a",
+      "source": "lucide",
+      "viewBox": "0 0 24 24"
+    },
+    "--instui-icon-letter-r": {
+      "hash": "b4cfbc7f1dc7cd68",
+      "source": "lucide",
+      "viewBox": "0 0 24 24"
+    },
+    "--instui-icon-letter-s": {
+      "hash": "5938b0d57884c258",
+      "source": "lucide",
+      "viewBox": "0 0 24 24"
+    },
+    "--instui-icon-letter-spacing": {
+      "hash": "a68732e76afa8df8",
+      "source": "lucide",
+      "viewBox": "0 0 24 24"
+    },
+    "--instui-icon-letter-t": {
+      "hash": "5a306e45508b3574",
+      "source": "lucide",
+      "viewBox": "0 0 24 24"
+    },
+    "--instui-icon-letter-u": {
+      "hash": "cfc072fcbbcc9cf1",
+      "source": "lucide",
+      "viewBox": "0 0 24 24"
+    },
+    "--instui-icon-letter-v": {
+      "hash": "571c2d43e168021c",
+      "source": "lucide",
+      "viewBox": "0 0 24 24"
+    },
+    "--instui-icon-letter-w": {
+      "hash": "d5517da966cda145",
+      "source": "lucide",
+      "viewBox": "0 0 24 24"
+    },
+    "--instui-icon-letter-x": {
+      "hash": "6735b83da7aaa692",
+      "source": "lucide",
+      "viewBox": "0 0 24 24"
+    },
+    "--instui-icon-letter-y": {
+      "hash": "7e0f59a6d984c9c5",
+      "source": "lucide",
+      "viewBox": "0 0 24 24"
+    },
+    "--instui-icon-letter-z": {
+      "hash": "7d9c7f79fc018dc0",
       "source": "lucide",
       "viewBox": "0 0 24 24"
     },
@@ -5216,6 +5844,11 @@
     },
     "--instui-icon-line-dot-top-vertical": {
       "hash": "409288d82def4d5b",
+      "source": "lucide",
+      "viewBox": "0 0 24 24"
+    },
+    "--instui-icon-line-height": {
+      "hash": "99a79375325690a8",
       "source": "lucide",
       "viewBox": "0 0 24 24"
     },
@@ -5419,7 +6052,7 @@
       "viewBox": "0 0 24 24"
     },
     "--instui-icon-loader-pinwheel": {
-      "hash": "557e4ce812d4b9e6",
+      "hash": "c64c98deeb109cb0",
       "source": "lucide",
       "viewBox": "0 0 24 24"
     },
@@ -5525,6 +6158,11 @@
       "source": "lucide",
       "viewBox": "0 0 24 24"
     },
+    "--instui-icon-mail-exclamation-point": {
+      "hash": "8ddd55218e818605",
+      "source": "lucide",
+      "viewBox": "0 0 24 24"
+    },
     "--instui-icon-mail-minus": {
       "hash": "40e76617cd450eb5",
       "source": "lucide",
@@ -5546,17 +6184,12 @@
       "viewBox": "0 0 24 24"
     },
     "--instui-icon-mail-question-mark": {
-      "hash": "5e77009937208cdd",
+      "hash": "c54f021e840036f2",
       "source": "lucide",
       "viewBox": "0 0 24 24"
     },
     "--instui-icon-mail-search": {
       "hash": "109c983b686016c4",
-      "source": "lucide",
-      "viewBox": "0 0 24 24"
-    },
-    "--instui-icon-mail-warning": {
-      "hash": "8ddd55218e818605",
       "source": "lucide",
       "viewBox": "0 0 24 24"
     },
@@ -5572,6 +6205,11 @@
     },
     "--instui-icon-mails": {
       "hash": "4d6fb0f478669b4e",
+      "source": "lucide",
+      "viewBox": "0 0 24 24"
+    },
+    "--instui-icon-mango": {
+      "hash": "681145302019e582",
       "source": "lucide",
       "viewBox": "0 0 24 24"
     },
@@ -5657,6 +6295,43 @@
     },
     "--instui-icon-map-plus": {
       "hash": "8b2545c09c6aa2b2",
+      "source": "lucide",
+      "viewBox": "0 0 24 24"
+    },
+    "--instui-icon-margin": {
+      "hash": "c15a2cc848d93b97",
+      "source": "lucide",
+      "viewBox": "0 0 24 24"
+    },
+    "--instui-icon-margin-bottom": {
+      "hash": "ab75c04319a3f2a5",
+      "source": "lucide",
+      "viewBox": "0 0 24 24"
+    },
+    "--instui-icon-margin-horizontal": {
+      "hash": "aaa905644ce905ce",
+      "source": "lucide",
+      "viewBox": "0 0 24 24"
+    },
+    "--instui-icon-margin-left": {
+      "bidirectional": true,
+      "hash": "02a17d98c7dcf48b",
+      "source": "lucide",
+      "viewBox": "0 0 24 24"
+    },
+    "--instui-icon-margin-right": {
+      "bidirectional": true,
+      "hash": "cae3c8c057f09920",
+      "source": "lucide",
+      "viewBox": "0 0 24 24"
+    },
+    "--instui-icon-margin-top": {
+      "hash": "fcb06b8f3ad89be4",
+      "source": "lucide",
+      "viewBox": "0 0 24 24"
+    },
+    "--instui-icon-margin-vertical": {
+      "hash": "929bc3e5afcf49d7",
       "source": "lucide",
       "viewBox": "0 0 24 24"
     },
@@ -5758,6 +6433,11 @@
       "source": "lucide",
       "viewBox": "0 0 24 24"
     },
+    "--instui-icon-message-circle-exclamation-point": {
+      "hash": "bf141337a2bb49bb",
+      "source": "lucide",
+      "viewBox": "0 0 24 24"
+    },
     "--instui-icon-message-circle-heart": {
       "hash": "d0517970888535b8",
       "source": "lucide",
@@ -5779,7 +6459,7 @@
       "viewBox": "0 0 24 24"
     },
     "--instui-icon-message-circle-question-mark": {
-      "hash": "2ce761bfc7204738",
+      "hash": "298d18641463892e",
       "source": "lucide",
       "viewBox": "0 0 24 24"
     },
@@ -5790,11 +6470,6 @@
     },
     "--instui-icon-message-circle-text": {
       "hash": "4646f7d49d65a863",
-      "source": "lucide",
-      "viewBox": "0 0 24 24"
-    },
-    "--instui-icon-message-circle-warning": {
-      "hash": "bf141337a2bb49bb",
       "source": "lucide",
       "viewBox": "0 0 24 24"
     },
@@ -5831,6 +6506,11 @@
     },
     "--instui-icon-message-square-dot": {
       "hash": "7710b93765a60ec5",
+      "source": "lucide",
+      "viewBox": "0 0 24 24"
+    },
+    "--instui-icon-message-square-exclamation-point": {
+      "hash": "d10f84621dd8df87",
       "source": "lucide",
       "viewBox": "0 0 24 24"
     },
@@ -5876,11 +6556,6 @@
     },
     "--instui-icon-message-square-text": {
       "hash": "93b14ad57bad600e",
-      "source": "lucide",
-      "viewBox": "0 0 24 24"
-    },
-    "--instui-icon-message-square-warning": {
-      "hash": "d10f84621dd8df87",
       "source": "lucide",
       "viewBox": "0 0 24 24"
     },
@@ -5995,6 +6670,11 @@
       "source": "lucide",
       "viewBox": "0 0 24 24"
     },
+    "--instui-icon-monitor-activity": {
+      "hash": "8b0566f2a11f623f",
+      "source": "lucide",
+      "viewBox": "0 0 24 24"
+    },
     "--instui-icon-monitor-check": {
       "hash": "02d28fe0882967a6",
       "source": "lucide",
@@ -6085,6 +6765,11 @@
       "source": "lucide",
       "viewBox": "0 0 24 24"
     },
+    "--instui-icon-moped": {
+      "hash": "630b628b57990aff",
+      "source": "lucide",
+      "viewBox": "0 0 24 24"
+    },
     "--instui-icon-mosque": {
       "hash": "20df99666501ca4c",
       "source": "lucide",
@@ -6092,6 +6777,11 @@
     },
     "--instui-icon-motorbike": {
       "hash": "074b12445aed0bc7",
+      "source": "lucide",
+      "viewBox": "0 0 24 24"
+    },
+    "--instui-icon-mound-shovel": {
+      "hash": "8c9411bcc398fbe5",
       "source": "lucide",
       "viewBox": "0 0 24 24"
     },
@@ -6238,26 +6928,6 @@
       "source": "lucide",
       "viewBox": "0 0 24 24"
     },
-    "--instui-icon-music": {
-      "hash": "0e37164b849d4c2f",
-      "source": "lucide",
-      "viewBox": "0 0 24 24"
-    },
-    "--instui-icon-music-2": {
-      "hash": "617069f52f9acd1e",
-      "source": "lucide",
-      "viewBox": "0 0 24 24"
-    },
-    "--instui-icon-music-3": {
-      "hash": "85de3f9678e47840",
-      "source": "lucide",
-      "viewBox": "0 0 24 24"
-    },
-    "--instui-icon-music-4": {
-      "hash": "c63fc04982dc0ac9",
-      "source": "lucide",
-      "viewBox": "0 0 24 24"
-    },
     "--instui-icon-navigation": {
       "hash": "12e2edee05c0567a",
       "source": "lucide",
@@ -6279,7 +6949,7 @@
       "viewBox": "0 0 24 24"
     },
     "--instui-icon-nepali-rupee": {
-      "hash": "70fb8643962bc57c",
+      "hash": "4550b212ac8b19ec",
       "source": "lucide",
       "viewBox": "0 0 24 24"
     },
@@ -6295,6 +6965,11 @@
     },
     "--instui-icon-nfc": {
       "hash": "7d3aee402a1e0566",
+      "source": "lucide",
+      "viewBox": "0 0 24 24"
+    },
+    "--instui-icon-nigerian-naira": {
+      "hash": "a0caf5376a01c275",
       "source": "lucide",
       "viewBox": "0 0 24 24"
     },
@@ -6338,6 +7013,11 @@
       "source": "lucide",
       "viewBox": "0 0 24 24"
     },
+    "--instui-icon-numbers": {
+      "hash": "6ae8e9870231e71a",
+      "source": "lucide",
+      "viewBox": "0 0 24 24"
+    },
     "--instui-icon-nut": {
       "hash": "258940e97ddac045",
       "source": "lucide",
@@ -6353,7 +7033,7 @@
       "source": "lucide",
       "viewBox": "0 0 24 24"
     },
-    "--instui-icon-octagon-alert": {
+    "--instui-icon-octagon-exclamation-point": {
       "hash": "f4ae7cbbab7cdabf",
       "source": "lucide",
       "viewBox": "0 0 24 24"
@@ -6375,6 +7055,11 @@
     },
     "--instui-icon-omega": {
       "hash": "faea3a2b3bcde11c",
+      "source": "lucide",
+      "viewBox": "0 0 24 24"
+    },
+    "--instui-icon-opacity": {
+      "hash": "a75eb0237fb27f8a",
       "source": "lucide",
       "viewBox": "0 0 24 24"
     },
@@ -6418,8 +7103,18 @@
       "source": "lucide",
       "viewBox": "0 0 24 24"
     },
+    "--instui-icon-package-pen": {
+      "hash": "544a4449b67ee677",
+      "source": "lucide",
+      "viewBox": "0 0 24 24"
+    },
     "--instui-icon-package-plus": {
       "hash": "52b8f27afd5f6462",
+      "source": "lucide",
+      "viewBox": "0 0 24 24"
+    },
+    "--instui-icon-package-question-mark": {
+      "hash": "c75739e120efef3e",
       "source": "lucide",
       "viewBox": "0 0 24 24"
     },
@@ -6435,6 +7130,11 @@
     },
     "--instui-icon-paint-bucket": {
       "hash": "54d9a6e834c802ae",
+      "source": "lucide",
+      "viewBox": "0 0 24 24"
+    },
+    "--instui-icon-paint-gun": {
+      "hash": "b7d569475b939570",
       "source": "lucide",
       "viewBox": "0 0 24 24"
     },
@@ -6713,7 +7413,7 @@
       "viewBox": "0 0 24 24"
     },
     "--instui-icon-philippine-peso": {
-      "hash": "5dbb92bb7f7bce42",
+      "hash": "983e6676fef6f200",
       "source": "lucide",
       "viewBox": "0 0 24 24"
     },
@@ -6942,7 +7642,7 @@
       "viewBox": "0 0 24 24"
     },
     "--instui-icon-pound-sterling": {
-      "hash": "3bfae13dcf7f4bef",
+      "hash": "f664330588c052c8",
       "source": "lucide",
       "viewBox": "0 0 24 24"
     },
@@ -7009,6 +7709,11 @@
     },
     "--instui-icon-qr-code": {
       "hash": "96ddf82513aece66",
+      "source": "lucide",
+      "viewBox": "0 0 24 24"
+    },
+    "--instui-icon-question-mark": {
+      "hash": "b6b5d67ddba6984c",
       "source": "lucide",
       "viewBox": "0 0 24 24"
     },
@@ -7350,7 +8055,13 @@
       "viewBox": "0 0 24 24"
     },
     "--instui-icon-route": {
-      "hash": "9f6e16dc3d645c22",
+      "hash": "24e25fbcb6d2d908",
+      "source": "lucide",
+      "viewBox": "0 0 24 24"
+    },
+    "--instui-icon-route-arrow-right": {
+      "bidirectional": true,
+      "hash": "afa85388c5793503",
       "source": "lucide",
       "viewBox": "0 0 24 24"
     },
@@ -7400,7 +8111,7 @@
       "viewBox": "0 0 24 24"
     },
     "--instui-icon-russian-ruble": {
-      "hash": "ef3a98c901139094",
+      "hash": "34f46f099e7de46a",
       "source": "lucide",
       "viewBox": "0 0 24 24"
     },
@@ -7430,7 +8141,7 @@
       "viewBox": "0 0 24 24"
     },
     "--instui-icon-saudi-riyal": {
-      "hash": "f50e28274753f628",
+      "hash": "970ae24e4063929b",
       "source": "lucide",
       "viewBox": "0 0 24 24"
     },
@@ -7595,11 +8306,6 @@
       "style": "Custom",
       "viewBox": "0 0 24 24"
     },
-    "--instui-icon-search-alert": {
-      "hash": "fdd426c37acb6286",
-      "source": "lucide",
-      "viewBox": "0 0 24 24"
-    },
     "--instui-icon-search-check": {
       "hash": "0899a057939fc14a",
       "source": "lucide",
@@ -7607,6 +8313,11 @@
     },
     "--instui-icon-search-code": {
       "hash": "556794d3dd96046a",
+      "source": "lucide",
+      "viewBox": "0 0 24 24"
+    },
+    "--instui-icon-search-exclamation-point": {
+      "hash": "fdd426c37acb6286",
       "source": "lucide",
       "viewBox": "0 0 24 24"
     },
@@ -7726,11 +8437,6 @@
       "source": "lucide",
       "viewBox": "0 0 24 24"
     },
-    "--instui-icon-shield-alert": {
-      "hash": "44844951de9aa1f9",
-      "source": "lucide",
-      "viewBox": "0 0 24 24"
-    },
     "--instui-icon-shield-ban": {
       "hash": "e6c8fc0852d4e626",
       "source": "lucide",
@@ -7753,6 +8459,11 @@
     },
     "--instui-icon-shield-ellipsis": {
       "hash": "61bcf1ba9345949f",
+      "source": "lucide",
+      "viewBox": "0 0 24 24"
+    },
+    "--instui-icon-shield-exclamation-point": {
+      "hash": "44844951de9aa1f9",
       "source": "lucide",
       "viewBox": "0 0 24 24"
     },
@@ -7792,7 +8503,7 @@
       "viewBox": "0 0 24 24"
     },
     "--instui-icon-shield-question-mark": {
-      "hash": "1a713d98638c29b0",
+      "hash": "62bedd1b7eaf288d",
       "source": "lucide",
       "viewBox": "0 0 24 24"
     },
@@ -7947,6 +8658,16 @@
       "source": "lucide",
       "viewBox": "0 0 24 24"
     },
+    "--instui-icon-siren-off": {
+      "hash": "e6bec94e2700c013",
+      "source": "lucide",
+      "viewBox": "0 0 24 24"
+    },
+    "--instui-icon-sixteenth-notes": {
+      "hash": "0c8951529a695860",
+      "source": "lucide",
+      "viewBox": "0 0 24 24"
+    },
     "--instui-icon-skip-back": {
       "bidirectional": true,
       "hash": "97a3d295a9799bef",
@@ -7996,6 +8717,11 @@
     },
     "--instui-icon-smartphone-nfc": {
       "hash": "806df82267555b1b",
+      "source": "lucide",
+      "viewBox": "0 0 24 24"
+    },
+    "--instui-icon-smartphone-user-round": {
+      "hash": "e9a03b954f6433e2",
       "source": "lucide",
       "viewBox": "0 0 24 24"
     },
@@ -8106,7 +8832,7 @@
       "viewBox": "0 0 24 24"
     },
     "--instui-icon-spray-can": {
-      "hash": "7578512c82415878",
+      "hash": "1123693a1098d7e2",
       "source": "lucide",
       "viewBox": "0 0 24 24"
     },
@@ -8131,9 +8857,33 @@
       "source": "lucide",
       "viewBox": "0 0 24 24"
     },
+    "--instui-icon-square-arrow-down-enter": {
+      "bidirectional": true,
+      "hash": "eb826f85bf7cea68",
+      "source": "lucide",
+      "viewBox": "0 0 24 24"
+    },
+    "--instui-icon-square-arrow-down-exit": {
+      "bidirectional": true,
+      "hash": "62aaeb9faaff5c2e",
+      "source": "lucide",
+      "viewBox": "0 0 24 24"
+    },
     "--instui-icon-square-arrow-down-left": {
       "bidirectional": true,
       "hash": "bd2d95ded88f5888",
+      "source": "lucide",
+      "viewBox": "0 0 24 24"
+    },
+    "--instui-icon-square-arrow-down-left-enter": {
+      "bidirectional": true,
+      "hash": "9756b07ccc9571ee",
+      "source": "lucide",
+      "viewBox": "0 0 24 24"
+    },
+    "--instui-icon-square-arrow-down-left-exit": {
+      "bidirectional": true,
+      "hash": "2425a7e504baf253",
       "source": "lucide",
       "viewBox": "0 0 24 24"
     },
@@ -8143,33 +8893,33 @@
       "source": "lucide",
       "viewBox": "0 0 24 24"
     },
+    "--instui-icon-square-arrow-down-right-enter": {
+      "bidirectional": true,
+      "hash": "6aa12757dfa036f2",
+      "source": "lucide",
+      "viewBox": "0 0 24 24"
+    },
+    "--instui-icon-square-arrow-down-right-exit": {
+      "bidirectional": true,
+      "hash": "3b3aed36104927cf",
+      "source": "lucide",
+      "viewBox": "0 0 24 24"
+    },
     "--instui-icon-square-arrow-left": {
       "bidirectional": true,
       "hash": "45e74f43afe6c82c",
       "source": "lucide",
       "viewBox": "0 0 24 24"
     },
-    "--instui-icon-square-arrow-out-down-left": {
+    "--instui-icon-square-arrow-left-enter": {
       "bidirectional": true,
-      "hash": "2425a7e504baf253",
+      "hash": "ef7360a0a92c2272",
       "source": "lucide",
       "viewBox": "0 0 24 24"
     },
-    "--instui-icon-square-arrow-out-down-right": {
+    "--instui-icon-square-arrow-left-exit": {
       "bidirectional": true,
-      "hash": "3b3aed36104927cf",
-      "source": "lucide",
-      "viewBox": "0 0 24 24"
-    },
-    "--instui-icon-square-arrow-out-up-left": {
-      "bidirectional": true,
-      "hash": "498cba2ddf14db93",
-      "source": "lucide",
-      "viewBox": "0 0 24 24"
-    },
-    "--instui-icon-square-arrow-out-up-right": {
-      "bidirectional": true,
-      "hash": "19f049257c0ac2fa",
+      "hash": "c70ddc2d3a998e90",
       "source": "lucide",
       "viewBox": "0 0 24 24"
     },
@@ -8181,13 +8931,13 @@
     },
     "--instui-icon-square-arrow-right-enter": {
       "bidirectional": true,
-      "hash": "9ca128aca66990bf",
+      "hash": "4477dead681adbb7",
       "source": "lucide",
       "viewBox": "0 0 24 24"
     },
     "--instui-icon-square-arrow-right-exit": {
       "bidirectional": true,
-      "hash": "c9d0665081a1040d",
+      "hash": "e0f91082e67d11f9",
       "source": "lucide",
       "viewBox": "0 0 24 24"
     },
@@ -8197,9 +8947,33 @@
       "source": "lucide",
       "viewBox": "0 0 24 24"
     },
+    "--instui-icon-square-arrow-up-enter": {
+      "bidirectional": true,
+      "hash": "e2a760b008398e0e",
+      "source": "lucide",
+      "viewBox": "0 0 24 24"
+    },
+    "--instui-icon-square-arrow-up-exit": {
+      "bidirectional": true,
+      "hash": "89cfc0166fb1dc75",
+      "source": "lucide",
+      "viewBox": "0 0 24 24"
+    },
     "--instui-icon-square-arrow-up-left": {
       "bidirectional": true,
       "hash": "7e83b5600a5b8d96",
+      "source": "lucide",
+      "viewBox": "0 0 24 24"
+    },
+    "--instui-icon-square-arrow-up-left-enter": {
+      "bidirectional": true,
+      "hash": "da193b8718ed35de",
+      "source": "lucide",
+      "viewBox": "0 0 24 24"
+    },
+    "--instui-icon-square-arrow-up-left-exit": {
+      "bidirectional": true,
+      "hash": "498cba2ddf14db93",
       "source": "lucide",
       "viewBox": "0 0 24 24"
     },
@@ -8209,8 +8983,40 @@
       "source": "lucide",
       "viewBox": "0 0 24 24"
     },
+    "--instui-icon-square-arrow-up-right-enter": {
+      "bidirectional": true,
+      "hash": "8b39d477bf0e148b",
+      "source": "lucide",
+      "viewBox": "0 0 24 24"
+    },
+    "--instui-icon-square-arrow-up-right-exit": {
+      "bidirectional": true,
+      "hash": "19f049257c0ac2fa",
+      "source": "lucide",
+      "viewBox": "0 0 24 24"
+    },
     "--instui-icon-square-asterisk": {
       "hash": "9f074ff31ad05dc8",
+      "source": "lucide",
+      "viewBox": "0 0 24 24"
+    },
+    "--instui-icon-square-axis-dashed-horizontal": {
+      "hash": "70a7171b8acff3a5",
+      "source": "lucide",
+      "viewBox": "0 0 24 24"
+    },
+    "--instui-icon-square-axis-dashed-vertical": {
+      "hash": "ce2361cc56050694",
+      "source": "lucide",
+      "viewBox": "0 0 24 24"
+    },
+    "--instui-icon-square-axis-horizontal": {
+      "hash": "2004bfea0c53793d",
+      "source": "lucide",
+      "viewBox": "0 0 24 24"
+    },
+    "--instui-icon-square-axis-vertical": {
+      "hash": "9171d3e122d6d712",
       "source": "lucide",
       "viewBox": "0 0 24 24"
     },
@@ -8221,16 +9027,6 @@
     },
     "--instui-icon-square-bottom-dashed-scissors": {
       "hash": "80f26897804ef15b",
-      "source": "lucide",
-      "viewBox": "0 0 24 24"
-    },
-    "--instui-icon-square-centerline-dashed-horizontal": {
-      "hash": "fcce57928cbaa4a2",
-      "source": "lucide",
-      "viewBox": "0 0 24 24"
-    },
-    "--instui-icon-square-centerline-dashed-vertical": {
-      "hash": "fa1a821722c3c498",
       "source": "lucide",
       "viewBox": "0 0 24 24"
     },
@@ -8273,6 +9069,28 @@
       "source": "lucide",
       "viewBox": "0 0 24 24"
     },
+    "--instui-icon-square-chevrons-down": {
+      "hash": "cd3789d9d23a12f5",
+      "source": "lucide",
+      "viewBox": "0 0 24 24"
+    },
+    "--instui-icon-square-chevrons-left": {
+      "bidirectional": true,
+      "hash": "5030c4faae2e5b97",
+      "source": "lucide",
+      "viewBox": "0 0 24 24"
+    },
+    "--instui-icon-square-chevrons-right": {
+      "bidirectional": true,
+      "hash": "41c90731f1484cce",
+      "source": "lucide",
+      "viewBox": "0 0 24 24"
+    },
+    "--instui-icon-square-chevrons-up": {
+      "hash": "b80efd9b5d8ad40d",
+      "source": "lucide",
+      "viewBox": "0 0 24 24"
+    },
     "--instui-icon-square-code": {
       "hash": "065113f66f8a0ec6",
       "source": "lucide",
@@ -8305,6 +9123,11 @@
     },
     "--instui-icon-square-dashed-plus": {
       "hash": "ff440aa8f4a8bafe",
+      "source": "lucide",
+      "viewBox": "0 0 24 24"
+    },
+    "--instui-icon-square-dashed-search": {
+      "hash": "56048fd866d592fd",
       "source": "lucide",
       "viewBox": "0 0 24 24"
     },
@@ -8363,13 +9186,148 @@
       "source": "lucide",
       "viewBox": "0 0 24 24"
     },
-    "--instui-icon-square-library": {
-      "hash": "62fdbddbe306a6d7",
+    "--instui-icon-square-kanban-plus": {
+      "hash": "ba389d03f38b0406",
       "source": "lucide",
       "viewBox": "0 0 24 24"
     },
-    "--instui-icon-square-m": {
-      "hash": "464e202ce5a51750",
+    "--instui-icon-square-letter-a": {
+      "hash": "e97a14281fb0cc0d",
+      "source": "lucide",
+      "viewBox": "0 0 24 24"
+    },
+    "--instui-icon-square-letter-b": {
+      "hash": "51b57f4f1e13ce89",
+      "source": "lucide",
+      "viewBox": "0 0 24 24"
+    },
+    "--instui-icon-square-letter-c": {
+      "hash": "dd8305baa500b884",
+      "source": "lucide",
+      "viewBox": "0 0 24 24"
+    },
+    "--instui-icon-square-letter-d": {
+      "hash": "0ac5b615b06f154e",
+      "source": "lucide",
+      "viewBox": "0 0 24 24"
+    },
+    "--instui-icon-square-letter-e": {
+      "hash": "38a5fdd4beb7522b",
+      "source": "lucide",
+      "viewBox": "0 0 24 24"
+    },
+    "--instui-icon-square-letter-f": {
+      "hash": "d5887610d9c47278",
+      "source": "lucide",
+      "viewBox": "0 0 24 24"
+    },
+    "--instui-icon-square-letter-g": {
+      "hash": "2611605888e3be77",
+      "source": "lucide",
+      "viewBox": "0 0 24 24"
+    },
+    "--instui-icon-square-letter-h": {
+      "hash": "94520e1b383557d2",
+      "source": "lucide",
+      "viewBox": "0 0 24 24"
+    },
+    "--instui-icon-square-letter-i": {
+      "hash": "a8c077cfd90c9782",
+      "source": "lucide",
+      "viewBox": "0 0 24 24"
+    },
+    "--instui-icon-square-letter-j": {
+      "hash": "2b451f3f69885bd4",
+      "source": "lucide",
+      "viewBox": "0 0 24 24"
+    },
+    "--instui-icon-square-letter-k": {
+      "hash": "97256234653e184f",
+      "source": "lucide",
+      "viewBox": "0 0 24 24"
+    },
+    "--instui-icon-square-letter-l": {
+      "hash": "ed0e5f210cc1f5ce",
+      "source": "lucide",
+      "viewBox": "0 0 24 24"
+    },
+    "--instui-icon-square-letter-m": {
+      "hash": "e24cdb18c77d1d2d",
+      "source": "lucide",
+      "viewBox": "0 0 24 24"
+    },
+    "--instui-icon-square-letter-n": {
+      "hash": "45b285a33784af52",
+      "source": "lucide",
+      "viewBox": "0 0 24 24"
+    },
+    "--instui-icon-square-letter-o": {
+      "hash": "d335cad31f746fb4",
+      "source": "lucide",
+      "viewBox": "0 0 24 24"
+    },
+    "--instui-icon-square-letter-p": {
+      "hash": "c99347438a2e831e",
+      "source": "lucide",
+      "viewBox": "0 0 24 24"
+    },
+    "--instui-icon-square-letter-p-off": {
+      "hash": "9d7f8ebc8e45141b",
+      "source": "lucide",
+      "viewBox": "0 0 24 24"
+    },
+    "--instui-icon-square-letter-q": {
+      "hash": "5dfb6cf70411e514",
+      "source": "lucide",
+      "viewBox": "0 0 24 24"
+    },
+    "--instui-icon-square-letter-r": {
+      "hash": "f3897058571aecd7",
+      "source": "lucide",
+      "viewBox": "0 0 24 24"
+    },
+    "--instui-icon-square-letter-s": {
+      "hash": "e469125a4c5b849c",
+      "source": "lucide",
+      "viewBox": "0 0 24 24"
+    },
+    "--instui-icon-square-letter-t": {
+      "hash": "9a5353bf135c99e2",
+      "source": "lucide",
+      "viewBox": "0 0 24 24"
+    },
+    "--instui-icon-square-letter-u": {
+      "hash": "c64d7d680107140d",
+      "source": "lucide",
+      "viewBox": "0 0 24 24"
+    },
+    "--instui-icon-square-letter-v": {
+      "hash": "fbfb32b179ca5001",
+      "source": "lucide",
+      "viewBox": "0 0 24 24"
+    },
+    "--instui-icon-square-letter-w": {
+      "hash": "8f83cd86cd14b2b0",
+      "source": "lucide",
+      "viewBox": "0 0 24 24"
+    },
+    "--instui-icon-square-letter-x": {
+      "hash": "061834ba57453eae",
+      "source": "lucide",
+      "viewBox": "0 0 24 24"
+    },
+    "--instui-icon-square-letter-y": {
+      "hash": "b2598dd5fe8d4d73",
+      "source": "lucide",
+      "viewBox": "0 0 24 24"
+    },
+    "--instui-icon-square-letter-z": {
+      "hash": "61385d9fe04d0658",
+      "source": "lucide",
+      "viewBox": "0 0 24 24"
+    },
+    "--instui-icon-square-library": {
+      "hash": "62fdbddbe306a6d7",
       "source": "lucide",
       "viewBox": "0 0 24 24"
     },
@@ -8393,13 +9351,40 @@
       "source": "lucide",
       "viewBox": "0 0 24 24"
     },
-    "--instui-icon-square-parking": {
-      "hash": "9368cc2be41a9e77",
+    "--instui-icon-square-padding": {
+      "hash": "f5ee18da0dcfd20b",
       "source": "lucide",
       "viewBox": "0 0 24 24"
     },
-    "--instui-icon-square-parking-off": {
-      "hash": "ab0bf8a4eab6f2c3",
+    "--instui-icon-square-padding-bottom": {
+      "hash": "53cfeb8b9c41a9aa",
+      "source": "lucide",
+      "viewBox": "0 0 24 24"
+    },
+    "--instui-icon-square-padding-horizontal": {
+      "hash": "fba35b248ebaaf23",
+      "source": "lucide",
+      "viewBox": "0 0 24 24"
+    },
+    "--instui-icon-square-padding-left": {
+      "bidirectional": true,
+      "hash": "66c7cc59a7dc6e40",
+      "source": "lucide",
+      "viewBox": "0 0 24 24"
+    },
+    "--instui-icon-square-padding-right": {
+      "bidirectional": true,
+      "hash": "2fcb3fddd50fde25",
+      "source": "lucide",
+      "viewBox": "0 0 24 24"
+    },
+    "--instui-icon-square-padding-top": {
+      "hash": "ccd25c5c4640b613",
+      "source": "lucide",
+      "viewBox": "0 0 24 24"
+    },
+    "--instui-icon-square-padding-vertical": {
+      "hash": "88a501d406bfea7c",
       "source": "lucide",
       "viewBox": "0 0 24 24"
     },
@@ -8709,6 +9694,41 @@
       "source": "lucide",
       "viewBox": "0 0 24 24"
     },
+    "--instui-icon-stroke-line-cap-butt": {
+      "hash": "04a1f3a35983db54",
+      "source": "lucide",
+      "viewBox": "0 0 24 24"
+    },
+    "--instui-icon-stroke-line-cap-round": {
+      "hash": "cb00dcec60fa410d",
+      "source": "lucide",
+      "viewBox": "0 0 24 24"
+    },
+    "--instui-icon-stroke-line-cap-square": {
+      "hash": "550a88799cf9e1c1",
+      "source": "lucide",
+      "viewBox": "0 0 24 24"
+    },
+    "--instui-icon-stroke-line-join-bevel": {
+      "hash": "16d34dc0b0f70da3",
+      "source": "lucide",
+      "viewBox": "0 0 24 24"
+    },
+    "--instui-icon-stroke-line-join-miter": {
+      "hash": "5745730630760e16",
+      "source": "lucide",
+      "viewBox": "0 0 24 24"
+    },
+    "--instui-icon-stroke-line-join-round": {
+      "hash": "44142c829cedc5cf",
+      "source": "lucide",
+      "viewBox": "0 0 24 24"
+    },
+    "--instui-icon-stroke-width": {
+      "hash": "7125cb4a66414673",
+      "source": "lucide",
+      "viewBox": "0 0 24 24"
+    },
     "--instui-icon-studio": {
       "hash": "b3bfe2fa5d607f2a",
       "source": "custom",
@@ -8771,7 +9791,7 @@
       "viewBox": "0 0 24 24"
     },
     "--instui-icon-swiss-franc": {
-      "hash": "31d2cd0fbd584fdb",
+      "hash": "f3bf15e707c4fe52",
       "source": "lucide",
       "viewBox": "0 0 24 24"
     },
@@ -9068,6 +10088,11 @@
       "source": "lucide",
       "viewBox": "0 0 24 24"
     },
+    "--instui-icon-text-pen": {
+      "hash": "afed27001c36994a",
+      "source": "lucide",
+      "viewBox": "0 0 24 24"
+    },
     "--instui-icon-text-quote": {
       "hash": "1abd662143fd60d7",
       "source": "lucide",
@@ -9218,6 +10243,11 @@
       "source": "lucide",
       "viewBox": "0 0 24 24"
     },
+    "--instui-icon-tombstone": {
+      "hash": "e2c253bde6f6c91b",
+      "source": "lucide",
+      "viewBox": "0 0 24 24"
+    },
     "--instui-icon-tool-case": {
       "hash": "435d201eef30d3be",
       "source": "lucide",
@@ -9363,29 +10393,19 @@
       "source": "lucide",
       "viewBox": "0 0 24 24"
     },
-    "--instui-icon-triangle-alert": {
-      "hash": "ef8bcf550842085a",
+    "--instui-icon-triangle-dashed": {
+      "hash": "024a1a42a7157a9d",
       "source": "lucide",
       "viewBox": "0 0 24 24"
     },
-    "--instui-icon-triangle-dashed": {
-      "hash": "024a1a42a7157a9d",
+    "--instui-icon-triangle-exclamation-point": {
+      "hash": "ef8bcf550842085a",
       "source": "lucide",
       "viewBox": "0 0 24 24"
     },
     "--instui-icon-triangle-right": {
       "bidirectional": true,
       "hash": "b13e17dbf4a5a217",
-      "source": "lucide",
-      "viewBox": "0 0 24 24"
-    },
-    "--instui-icon-triangles-centerline-dashed-horizontal": {
-      "hash": "b3e4efff4d735b4e",
-      "source": "lucide",
-      "viewBox": "0 0 24 24"
-    },
-    "--instui-icon-triangles-centerline-dashed-vertical": {
-      "hash": "49ba033b83288ef3",
       "source": "lucide",
       "viewBox": "0 0 24 24"
     },
@@ -9410,7 +10430,7 @@
       "viewBox": "0 0 24 24"
     },
     "--instui-icon-turkish-lira": {
-      "hash": "8d588803a5562f36",
+      "hash": "4276be78801fa642",
       "source": "lucide",
       "viewBox": "0 0 24 24"
     },
@@ -9479,16 +10499,6 @@
       "source": "lucide",
       "viewBox": "0 0 24 24"
     },
-    "--instui-icon-unfold-horizontal": {
-      "hash": "bc612ca893734981",
-      "source": "lucide",
-      "viewBox": "0 0 24 24"
-    },
-    "--instui-icon-unfold-vertical": {
-      "hash": "f2e1d10bab326ae5",
-      "source": "lucide",
-      "viewBox": "0 0 24 24"
-    },
     "--instui-icon-ungroup": {
       "hash": "546f2ec64377f81c",
       "source": "lucide",
@@ -9541,6 +10551,11 @@
     },
     "--instui-icon-user-cog": {
       "hash": "7808907e47e52048",
+      "source": "lucide",
+      "viewBox": "0 0 24 24"
+    },
+    "--instui-icon-user-exclamation-point": {
+      "hash": "cb03c7b975dec860",
       "source": "lucide",
       "viewBox": "0 0 24 24"
     },
@@ -9608,6 +10623,11 @@
       "source": "lucide",
       "viewBox": "0 0 24 24"
     },
+    "--instui-icon-user-round-exclamation-point": {
+      "hash": "ba82c6215e0651a4",
+      "source": "lucide",
+      "viewBox": "0 0 24 24"
+    },
     "--instui-icon-user-round-group": {
       "hash": "f4956f7b31daf5c6",
       "source": "lucide",
@@ -9641,6 +10661,11 @@
     },
     "--instui-icon-user-round-search": {
       "hash": "57dc4d90ed0238e4",
+      "source": "lucide",
+      "viewBox": "0 0 24 24"
+    },
+    "--instui-icon-user-round-shield": {
+      "hash": "8f322896f1b1996e",
       "source": "lucide",
       "viewBox": "0 0 24 24"
     },
@@ -9873,6 +10898,11 @@
     },
     "--instui-icon-warehouse": {
       "hash": "733e9d1cde4e0461",
+      "source": "lucide",
+      "viewBox": "0 0 24 24"
+    },
+    "--instui-icon-warehouse-waves": {
+      "hash": "0a42c6dd958f32a1",
       "source": "lucide",
       "viewBox": "0 0 24 24"
     },
@@ -10164,7 +11194,7 @@
     },
     "lucide": {
       "package": "lucide",
-      "resolved": "1.57.0"
+      "resolved": "1.75.0"
     },
     "uiIcons": {
       "package": "@instructure/ui-icons",

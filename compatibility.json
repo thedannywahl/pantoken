@@ -11,8 +11,8 @@
       "feeds": "icons"
     },
     "lucide": {
-      "range": "^1.57.0",
-      "resolved": "1.57.0",
+      "range": "^1.75.0",
+      "resolved": "1.75.0",
       "feeds": "icons"
     },
     "@instructure/ui-heading": {

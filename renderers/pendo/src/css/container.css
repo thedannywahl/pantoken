@@ -356,7 +356,7 @@
   &[class*="-warning"] {
     --_alert-background: var(--instui-component-alert-warning-background);
     --_alert-border-color: var(--instui-component-alert-warning-border-color);
-    --_alert-glyph: var(--instui-icon-triangle-alert);
+    --_alert-glyph: var(--instui-icon-triangle-exclamation-point);
     --_alert-icon-color: var(--instui-color-text-base);
     --_alert-text-color: var(--instui-color-text-base);
   }

@@ -17,8 +17,9 @@ export const maskUtility: Definition = defineUtility({
     const base = selectors("overlay");
     const fullscreen = selectors("fullscreen");
     const blur = selectors("blur");
-    // prettier-ignore
-    return css`/**
+
+    return css`
+      /**
  * @utility maskglobal
  * @selector .--mask-overlay
  * @global
@@ -37,12 +38,27 @@ export const maskUtility: Definition = defineUtility({
  * @example
  * <button class="instui-button --mask-overlay">…</button>
  */
-${base} { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; background: var(--instui-component-mask-background-color); }
-${fullscreen} { position: fixed; z-index: 999; }
-${blur} { backdrop-filter: blur(0.5rem); }
-@media (prefers-reduced-transparency: reduce) {
-  ${blur} { backdrop-filter: none; }
-}`;
+      ${base} {
+        position: absolute;
+        inset: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: var(--instui-component-mask-background-color);
+      }
+      ${fullscreen} {
+        position: fixed;
+        z-index: 999;
+      }
+      ${blur} {
+        backdrop-filter: blur(0.5rem);
+      }
+      @media (prefers-reduced-transparency: reduce) {
+        ${blur} {
+          backdrop-filter: none;
+        }
+      }
+    `;
   },
 });
 

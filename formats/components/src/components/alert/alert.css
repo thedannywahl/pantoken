@@ -230,7 +230,7 @@
     background: var(--instui-component-alert-warning-background);
     border-color: var(--instui-component-alert-warning-border-color);
     color: var(--instui-color-text-base);
-    --pantoken-alert-glyph: var(--instui-icon-triangle-alert);
+    --pantoken-alert-glyph: var(--instui-icon-triangle-exclamation-point);
     --pantoken-alert-icon-color: var(--instui-color-text-base);
 
     > .pfx-close-button {
