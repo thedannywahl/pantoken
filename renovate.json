@@ -31,9 +31,9 @@
       "enabled": false
     },
     {
-      "description": "Keep TypeScript below 7 until TypeDoc supports the compiler API; 0.28.20 supports through 6.0.x.",
+      "description": "Allow TypeScript 7.1 and bypass release cooldown for daily dev builds. TypeDoc support deferred to future work.",
       "matchPackageNames": ["typescript"],
-      "allowedVersions": "<7"
+      "minimumReleaseAge": "0 days"
     }
   ],
   "lockFileMaintenance": {
