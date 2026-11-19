@@ -1,0 +1,49 @@
+should I run another weekly check? Or do we want to address the failures first?
+
+---
+
+the PR is merged.
+
+---
+
+start a new branch and work in incremental conventional commits and changesets working through all the failures on the same branch and opening an auto-merging PR when complete.
+
+---
+
+Continue: "Continue to iterate?"
+
+---
+
+CI is failing for this PR
+
+---
+
+328 is still in a failed state and now we have a new weekly renovate pr opened, I'm not sure the next steps now thta 330 has merged.
+
+---
+
+fail: https://github.com/thedannywahl/pantoken/actions/runs/43884873563
+
+---
+
+next fail: https://github.com/thedannywahl/pantoken/actions/runs/43949123017/job/133643404612
+
+---
+
+weekly maintenance workflow succeeded, but nothing published https://github.com/thedannywahl/pantoken/actions/runs/44157496288
+
+---
+
+if it was passing why didn't it auto-merge?
+
+---
+
+/create-skill a check-failed-updates skill should check out the maintenance/failed-updates-run-#-# branch, check the associated issues on git hub and draft a remediation plan.
+
+---
+
+the skill saves to `.agents` which doesn't exist it should save to `/.agents` relative to this workspace.
+
+---
+
+take a look at the previous release to main and why it failed. we can remediate on the ts7.1.0 branch we're currently on so that this next release works.
