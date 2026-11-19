@@ -108,20 +108,24 @@ const highlightedComponentReference = useShikiHighlight(
 );
 
 onMounted(async () => {
-  const [prettier, typescript, babel, estree] = await Promise.all([
-    import("prettier/standalone"),
-    import("prettier/plugins/typescript"),
-    import("prettier/plugins/babel"),
-    import("prettier/plugins/estree"),
-  ]);
-  integrationExample.value = await prettier.format(integrationExample.value, {
-    parser: "typescript",
-    plugins: [typescript, estree],
-  });
-  componentReferenceExample.value = await prettier.format(componentReferenceExample.value, {
-    parser: "json",
-    plugins: [babel, estree],
-  });
+  try {
+    const [prettier, typescript, babel, estree] = await Promise.all([
+      import("prettier/standalone"),
+      import("prettier/plugins/typescript"),
+      import("prettier/plugins/babel"),
+      import("prettier/plugins/estree"),
+    ]);
+    integrationExample.value = await prettier.format(integrationExample.value, {
+      parser: "typescript",
+      plugins: [typescript, estree],
+    });
+    componentReferenceExample.value = await prettier.format(componentReferenceExample.value, {
+      parser: "json",
+      plugins: [babel, estree],
+    });
+  } catch (e) {
+    // prettier not available in production build; skip formatting
+  }
 });
 </script>
 
