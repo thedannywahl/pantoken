@@ -1,5 +1,14 @@
 # CHANGELOG
 
+## 0.5.1
+
+### Patch Changes
+
+- Updated dependencies [e687579]
+- Updated dependencies [e687579]
+  - @pantoken/web-components@0.9.2
+  - @pantoken/scaffold-base@0.3.13
+
 ## 0.5.0
 
 ### Minor Changes

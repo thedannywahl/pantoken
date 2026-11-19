@@ -1,5 +1,39 @@
 # @pantoken/interactions
 
+## 0.7.0
+
+### Minor Changes
+
+- e687579: Use Array.at() for end-element access in keyboard navigation
+
+  Replace 4 occurrences of `arr[arr.length - 1]` with `arr.at(-1)` in keyboard
+  navigation handlers:
+
+  - formats/interactions/src/behaviors/segmented-control.ts (1)
+  - formats/interactions/src/behaviors/menu.ts (2)
+  - formats/interactions/src/behaviors/tree-browser.ts (1)
+
+  Also update formats/interactions/tsconfig.json target from ES2020 to ES2022 to
+  support Array.at() (ES2022 feature) while maintaining Node 26+ compatibility.
+
+  Array.at() improves readability for relative array access, especially negative
+  indices for end-of-array elements.
+
+### Patch Changes
+
+- e687579: TypeScript configuration modernization: update lib to ES2026 and enable future-forward compiler options
+
+  - Updated `tsconfig.base.json` lib from ES2023 to ES2026 to enable TypeScript 7.1's support for the latest ECMAScript features
+  - Added `useDefineForClassFields: true` for explicit class field semantics alignment with ES2022 standards
+  - Added `noImplicitOverride: true` to enforce explicit override modifiers in class hierarchies for improved safety
+  - Fixed override modifiers in `renderers/web-components` to comply with new noImplicitOverride setting
+
+- e687579: refactor(tsconfig): align all packages to es2026 with dom support
+
+  Remove redundant target/lib overrides that were constraining packages to older ES versions (es2023, es2022, es2020). All browser-facing packages now explicitly declare es2026 + dom + dom.iterable, ensuring consistent modern JavaScript support across the workspace and enabling future adoption of ES2026 features.
+
+  Packages with package-level tsconfig.json files now cleanly inherit target from base while explicitly setting lib to include both es2026 and DOM types as needed.
+
 ## 0.6.2
 
 ### Patch Changes

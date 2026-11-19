@@ -1,5 +1,50 @@
 # CHANGELOG
 
+## 0.1.58
+
+### Patch Changes
+
+- e687579: Add Error.cause to error chain for better debugging
+
+  - packages/cli/src/index.ts: Preserve original import error as cause in icon-font
+    lazy-load failure (runIconFont)
+  - tools/translation-adapters/src/shim.ts: Preserve individual profile errors as
+    cause in exhausted profiles error (runWithBreaker)
+
+  Error.cause (ES2022) enables better error chaining and debugging by preserving
+  the original error context when re-throwing with higher-level messages.
+
+- e687579: TypeScript configuration modernization: update lib to ES2026 and enable future-forward compiler options
+
+  - Updated `tsconfig.base.json` lib from ES2023 to ES2026 to enable TypeScript 7.1's support for the latest ECMAScript features
+  - Added `useDefineForClassFields: true` for explicit class field semantics alignment with ES2022 standards
+  - Added `noImplicitOverride: true` to enforce explicit override modifiers in class hierarchies for improved safety
+  - Fixed override modifiers in `renderers/web-components` to comply with new noImplicitOverride setting
+
+- e687579: refactor(tsconfig): align all packages to es2026 with dom support
+
+  Remove redundant target/lib overrides that were constraining packages to older ES versions (es2023, es2022, es2020). All browser-facing packages now explicitly declare es2026 + dom + dom.iterable, ensuring consistent modern JavaScript support across the workspace and enabling future adoption of ES2026 features.
+
+  Packages with package-level tsconfig.json files now cleanly inherit target from base while explicitly setting lib to include both es2026 and DOM types as needed.
+
+- Updated dependencies [e687579]
+- Updated dependencies [e687579]
+- Updated dependencies [e687579]
+  - @pantoken/scaffold@1.7.5
+  - @pantoken/inline-styles@0.2.1
+  - @pantoken/email@0.1.29
+  - @pantoken/drupal@0.3.2
+  - @pantoken/hugo@0.2.8
+  - @pantoken/jekyll@0.3.1
+  - @pantoken/pendo@0.4.19
+  - @pantoken/icon-font@0.1.30
+  - @pantoken/tokens@0.8.4
+  - @pantoken/android@0.1.31
+  - @pantoken/compose@0.1.31
+  - @pantoken/flutter@0.1.31
+  - @pantoken/rust@0.1.29
+  - @pantoken/swift@0.1.31
+
 ## 0.1.57
 
 ### Patch Changes
