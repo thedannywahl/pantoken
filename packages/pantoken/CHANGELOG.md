@@ -1,5 +1,59 @@
 # CHANGELOG
 
+## 0.2.41
+
+### Patch Changes
+
+- Updated dependencies [e687579]
+- Updated dependencies [e687579]
+- Updated dependencies [e687579]
+- Updated dependencies [e687579]
+- Updated dependencies [e687579]
+  - @pantoken/interactions@0.7.0
+  - @pantoken/cli@0.1.58
+  - @pantoken/components@2.2.3
+  - @pantoken/web-components@0.9.2
+  - @pantoken/email@0.1.29
+  - @pantoken/drupal@0.3.2
+  - @pantoken/hugo@0.2.8
+  - @pantoken/jekyll@0.3.1
+  - @pantoken/plugin-custom-components@0.7.7
+  - @pantoken/angular@0.5.1
+  - @pantoken/astro@0.2.8
+  - @pantoken/bootstrap@0.3.0
+  - @pantoken/css-in-js@0.2.6
+  - @pantoken/docusaurus@0.2.0
+  - @pantoken/foundation@0.2.6
+  - @pantoken/mui@0.3.0
+  - @pantoken/pendo@0.4.19
+  - @pantoken/react@0.3.3
+  - @pantoken/shadcn@0.4.0
+  - @pantoken/storybook@0.3.0
+  - @pantoken/svelte@0.3.3
+  - @pantoken/tinymce@0.8.1
+  - @pantoken/vitepress@0.3.0
+  - @pantoken/vue@0.3.3
+  - @pantoken/plugin-layouts@0.5.9
+  - @pantoken/css@0.4.9
+  - @pantoken/plugin-custom-icons@0.3.21
+  - @pantoken/plugin-custom-theme-colors@0.3.9
+  - @pantoken/plugin-logos@0.5.9
+  - @pantoken/plugin-simple-icons@0.3.18
+  - @pantoken/plugin-stacking@1.0.17
+  - @pantoken/plugin-transition@1.0.15
+  - @pantoken/plugin-visual-debug@0.1.26
+  - @pantoken/postcss@0.3.1
+  - @pantoken/vite@0.4.1
+  - @pantoken/webpack@0.3.1
+  - @pantoken/tokens@0.8.4
+  - @pantoken/android@0.1.31
+  - @pantoken/compose@0.1.31
+  - @pantoken/flutter@0.1.31
+  - @pantoken/swift@0.1.31
+  - @pantoken/markdown-it@0.3.0
+  - @pantoken/react-markdown@0.3.0
+  - @pantoken/rehype@0.2.6
+
 ## 0.2.40
 
 ### Patch Changes

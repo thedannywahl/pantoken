@@ -1,5 +1,14 @@
 # CHANGELOG
 
+## 1.0.15
+
+### Patch Changes
+
+- Updated dependencies [e687579]
+- Updated dependencies [e687579]
+- Updated dependencies [e687579]
+  - @pantoken/plugin-kit@0.3.10
+
 ## 1.0.14
 
 ### Patch Changes
