@@ -493,3 +493,23 @@ targets/listeners that used `"*"` and skipped origin checks (tightened to the ho
 that still accept the sandboxed result frame's opaque `"null"` origin), and a DOM-XSS where highlighted
 code reached `innerHTML` (Shiki already escapes, but the source can arrive from a `src` URL param, so
 the markup now also passes through the `DOMPurify` the runner already imports).
+
+## Dependencies
+
+### Upstream token families with no CSS variable mapping cause dangling refs in emitted CSS
+
+**Symptom** — After upgrading instructure-design-tokens (e.g., v2.1.0 → v2.6.0), the CSS emission
+gate reported dangling `var()` references for tokens like `--instui-component-side-nav-bar-new-*`,
+even though the token names are in the upstream raw tokens and no component CSS references them.
+
+**Root cause** — The CSS emitter builds CSS variables for all tokens in the upstream; some upstream
+token families define a JSON token group (e.g., `sideNav.newInstitutionLogo.*` in the raw DTCG) but
+the IR transform doesn't map every field to a CSS property (e.g., no `--instui-component-side-nav-bar-new-institution-logo-*`
+variables are created). The emitter then generates placeholder variable references that have no
+definition.
+
+**Fix / rule** — This is an upstream data quality issue. When the CSS emission gate fails on dangling
+upstream token refs, check whether the components (which undergo parity testing and coverage checks)
+all pass their tests. If component tests pass and the dangling refs don't appear in component CSS
+(search with grep), then they are upstream orphans and safe to leave for the upstream maintainers
+to resolve. Document the known upstream issue in the release notes and move forward.
