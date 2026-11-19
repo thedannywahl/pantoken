@@ -204,6 +204,7 @@ peerDependencyRules:
     vitest: "*"
 minimumReleaseAge: 5
 minimumReleaseAgeExclude:
+  - automatica11y
   - "@cssdoc/*"
   - vite-plus
   - "@voidzero-dev/*"
