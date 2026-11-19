@@ -1,0 +1,432 @@
+instructure-design-tokens is on [2.6.0](https://github.com/instructure/instructure-design-tokens/releases) and pantoken is still on 2.1.0  we need an update and downstream implementation plan. following repository guidelines.
+
+---
+
+we're going to work in incremental confentional commits and changesets.
+
+---
+
+Task: Lock and baseline instructure-design-tokens upgrade
+
+**What to do:**
+1. Update `pnpm-workspace.yaml` catalog entry from v2.1.0 to v2.6.0
+2. Run `vp install` to update pnpm-lock.yaml
+3. Run `vp check` to ensure TypeScript types check and formatting is correct
+4. Verify `packages/core` builds without errors
+5. Create a conventional commit: `chore(deps): bump instructure-design-tokens to v2.6.0`
+6. Create a changeset (run `vp exec changeset`) with:
+   - Type: patch (or as prompted)
+   - Summary: "Bump instructure-design-tokens to v2.6.0 (adds globalNav, imageCard, Stepper tokens)"
+
+**Location:** /Users/dwahl/Scripts/pantoken
+
+**After completion:**
+- Update SQL: `UPDATE todos SET status = 'done' WHERE id = 'lock-and-baseline'`
+- Return a summary of what was done and any issues encountered
+
+**Guidelines:**
+- Use `vp` CLI commands, never raw pnpm
+- Keep the commit message conventional and clear
+- If `vp check` fails, attempt fixes before returning (e.g., linting errors, format issues)
+- Do NOT start subsequent tasks — just complete this one and report
+
+
+---
+
+Task: Regenerate core Token[] IR from v2.6.0 upstream
+
+**What to do:**
+1. Navigate to `/Users/dwahl/Scripts/pantoken/formats/tokens`
+2. Run `vp run generate` to trigger `node scripts/generate.ts`
+   - This loads themeTokens from @instructure/instructure-design-tokens v2.6.0
+   - Runs buildTokens() from @pantoken/core/build
+   - Outputs Token[] IR as JSON to formats/tokens/generated/
+3. If errors occur:
+   - Check for known syntax issues in `known-syntax-issues.json`
+   - Check for modifier issues in deprecations.json
+   - Re-run with any patches applied
+4. Run `vp test` in formats/tokens to verify token transform tests pass
+5. Inspect the diff for new token families:
+   - Look for `globalNav.*`, `imageCard.*`, `stepper.*` token families in generated output
+   - Verify sideNav tokens are still present (we're deprecating, not removing)
+6. Validate token reference integrity:
+   - Check that generated output has no unresolved `var()` references
+   - Verify color space and numeric range are valid
+7. Run `vp check` to format and type-check
+8. Create a conventional commit: `feat(tokens): add globalNav, imageCard, stepper families from v2.6.0`
+9. No separate changeset needed yet (we'll batch changesets after all component updates)
+
+**Location:** /Users/dwahl/Scripts/pantoken
+
+**Verification steps:**
+- After `vp run generate`, the files `formats/tokens/generated/` should be updated
+- Run `vp test` and ensure tests pass
+- Use `git diff formats/tokens/generated/` to inspect new families
+
+**After completion:**
+- Update SQL: `UPDATE todos SET status = 'done' WHERE id = 'core-transform'`
+- Return a summary of:
+  - New token families found
+  - Any syntax or modifier issues encountered and resolved
+  - Test results
+  - Commit hash
+
+**Guidelines:**
+- Use `vp` CLI, never raw npm/pnpm
+- If generation fails, attempt to resolve known issues before returning
+- Do NOT start subsequent component tasks — just complete this one
+
+
+---
+
+Task: Update Alert component for new tokens from v2.6.0
+
+**What to do:**
+1. Review the upstream changes to Alert tokens in v2.6.0:
+   - Added text color tokens (from v2.3.0)
+   - Added inline icon token support (new in v2.6.0)
+   - Review the token naming in `formats/tokens/generated/rebrand-light.json` (look for `--instui-component-alert-*`)
+   
+2. Update `formats/components/src/components/alert/`:
+   - Examine `alert.css` for current token usage (background, border, text colors)
+   - Add new CSS rules for text color variants (e.g., `-text-color-*`)
+   - Add inline icon modifier (e.g., `-icon-*` for icon support)
+   - Preserve existing modifiers and structure
+   - Use `@scope` for child-scoping if needed
+   - Add CSS doc comments for new variants
+   
+3. Update the component record (`index.ts`):
+   - Ensure it matches the CSS structure
+   - Add any new variant metadata if applicable
+   
+4. Create or update tests in `formats/components/tests/components/alert.test.ts`:
+   - Verify token presence for new variants
+   - Test token reference integrity
+   - Don't add visual tests (browser verification is a separate task)
+   
+5. Update the guide (cssdoc) in `alert.css`:
+   - Document new text color variants
+   - Document inline icon support
+   - Add examples in the `@example` block showing new variants
+   
+6. Run `vp check` to format and type-check
+7. Commit: `feat(components): add text colors and inline icons to Alert`
+8. No changeset yet (batch at end)
+
+**Location:** /Users/dwahl/Scripts/pantoken/formats/components
+
+**Verification:**
+- Run `vp test` in formats/components and ensure all alert tests pass
+- Inspect the generated CSS to verify new variants are present
+- Check that all token references resolve (use grep to verify --instui-component-alert-* tokens exist in generated/rebrand-light.json)
+
+**After completion:**
+- Update SQL: `UPDATE todos SET status = 'done' WHERE id = 'component-alert'`
+- Return: what was added, test results, commit hash
+- Do NOT proceed to other component tasks
+
+**Guidelines:**
+- Use existing component patterns (see side-nav-bar.css for structure)
+- Keep the modifier convention (`-variant-name`)
+- Use `@scope` for nested element selectors
+- Keep CSS simple and token-driven
+
+
+---
+
+Task: Update Pill component for token changes from v2.2-v2.6
+
+**What to do:**
+1. Review Pill token updates:
+   - v2.2.0: Color/spacing updates
+   - v2.6.0: Confirm Pill tokens are current
+   - Inspect `formats/tokens/generated/rebrand-light.json` for `--instui-component-pill-*` tokens
+   
+2. Update `formats/components/src/components/pill/pill.css`:
+   - Verify current CSS uses latest token names
+   - Apply any spacing/color updates from new tokens
+   - Add new variants if tokens support them (e.g., new color states)
+   - Keep modifier structure consistent
+   
+3. Update component record (`index.ts`) if needed:
+   - Ensure it properly loads the updated CSS
+   
+4. Update tests in `formats/components/tests/components/pill.test.ts`:
+   - Verify all Pill tokens resolve correctly
+   - Test variant coverage
+   
+5. Update cssdoc in `pill.css`:
+   - Document any new color variants or states
+   - Add examples showing new variants if applicable
+   
+6. Run `vp check` and verify formatting
+7. Commit: `feat(components): update Pill for color/spacing tokens from v2.6.0`
+8. No changeset yet
+
+**Location:** /Users/dwahl/Scripts/pantoken/formats/components
+
+**Verification:**
+- `vp test` for components package (pill tests should pass)
+- Verify token references in generated CSS
+
+**After completion:**
+- Update SQL: `UPDATE todos SET status = 'done' WHERE id = 'component-pill'`
+- Return: changes made, test results, commit hash
+- Do NOT proceed to other tasks
+
+
+---
+
+Task: Update Options/Select component for state tokens from v2.5-v2.6
+
+**What to do:**
+1. The upstream changes mention "Options selected/hover states":
+   - v2.5.0: Updated Options selected and hover states
+   - v2.6.0: Canvas Options selected state to match rebrand
+   - Inspect `formats/tokens/generated/rebrand-light.json` and `canvas.json` for `--instui-component-options-*` tokens
+
+2. Find the Options component:
+   - It may be named `select` in formats/components (check both `select` and `simple-select`)
+   - Review its current CSS structure
+   
+3. Update the component CSS:
+   - Add or refine `:hover` state styles with new tokens
+   - Add or refine `:focus`, `:active`, or `.selected`/`.-selected` modifier styles
+   - Ensure both rebrand and canvas theme tokens are properly referenced
+   - Add any new state modifiers to cover the upstream changes
+   
+4. Update tests:
+   - Verify new state token variants are present
+   - Test that styles resolve correctly for both themes
+   
+5. Update cssdoc in the CSS file:
+   - Document state modifiers (selected, hover, focus)
+   - Add examples for each state
+   
+6. Run `vp check` to format and type-check
+7. Commit: `feat(components): update Options selected/hover states for canvas rebrand alignment`
+8. No changeset yet
+
+**Location:** /Users/dwahl/Scripts/pantoken/formats/components
+
+**Verification:**
+- `vp test` and confirm all tests pass
+- Verify tokens resolve in generated CSS
+
+**After completion:**
+- Update SQL: `UPDATE todos SET status = 'done' WHERE id = 'component-options'`
+- Return: component file(s) updated, states covered, test results, commit hash
+- Do NOT proceed to other tasks
+
+
+---
+
+Task: Add arrow-padding variant to SegmentedControl component
+
+**What to do:**
+1. Review the SegmentedControl token updates:
+   - v2.4.0: Fixed disabled state
+   - v2.6.0: Added arrow-padding token
+   - Inspect `formats/tokens/generated/rebrand-light.json` for `--instui-component-segmented-control-*` tokens (look for arrow-padding specifically)
+   
+2. Update `formats/components/src/components/` SegmentedControl (check for `tabs` or similar):
+   - Find the SegmentedControl or similar component that uses these tokens
+   - Add CSS for the new arrow-padding variant (e.g., `-arrow-padding-*` modifier)
+   - Apply the token to adjust spacing around arrow/chevron elements
+   
+3. Update component record if needed
+   
+4. Update tests:
+   - Verify arrow-padding token is present
+   - Test the new variant
+   
+5. Update cssdoc:
+   - Document the arrow-padding variant and its effect
+   - Add an example showing the variant
+   
+6. Run `vp check`
+7. Commit: `feat(components): add arrow-padding variant to SegmentedControl`
+8. No changeset yet
+
+**Location:** /Users/dwahl/Scripts/pantoken/formats/components
+
+**Verification:**
+- `vp test` passes
+- Token references resolve
+
+**After completion:**
+- Update SQL: `UPDATE todos SET status = 'done' WHERE id = 'component-segmented-control'`
+- Return: variant added, token details, test results, commit hash
+- Do NOT proceed to other tasks
+
+
+---
+
+Task: Update Banner component for typography tokens from v2.4.0
+
+**What to do:**
+1. Review Banner typography token updates:
+   - v2.4.0 added "Banner typography tokens"
+   - Inspect `formats/tokens/generated/rebrand-light.json` for `--instui-component-banner-*` tokens (focus on font/typography)
+   
+2. Update `formats/components/src/components/billboard/` (Banner is typically called billboard):
+   - Review current CSS and check if typography tokens are applied
+   - Add or enhance typography token usage (font-size, font-weight, line-height, font-family)
+   - Ensure variants (if any) have distinct typography
+   
+3. Update component record if needed
+   
+4. Update tests:
+   - Verify typography tokens are present and correctly referenced
+   
+5. Update cssdoc:
+   - Document typography variants if applicable
+   - Add examples
+   
+6. Run `vp check`
+7. Commit: `feat(components): add typography tokens to Banner`
+8. No changeset yet
+
+**Location:** /Users/dwahl/Scripts/pantoken/formats/components
+
+**Verification:**
+- `vp test` passes
+- Typography tokens resolve
+
+**After completion:**
+- Update SQL: `UPDATE todos SET status = 'done' WHERE id = 'component-banner'`
+- Return: typography tokens applied, test results, commit hash
+- Do NOT proceed to other tasks
+
+**Note:** If Banner is not named "billboard", search for "banner" in the components directory
+
+
+---
+
+Task: Migrate sideNav → globalNav component (breaking change with backward compatibility)
+
+**What to do:**
+1. Research the sideNav → globalNav rename in upstream:
+   - v2.2.0 renamed `sideNav.*` tokens to `globalNav.*`
+   - Verify in `formats/tokens/generated/rebrand-light.json` that both token families exist OR only globalNav exists
+   - Review upstream release notes if available
+   
+2. Create the new globalNav component:
+   - Create `formats/components/src/components/global-nav-bar/` directory structure (copy from side-nav-bar)
+   - Create `index.ts` that exports a `globalNavBar` component record
+   - Create `global-nav-bar.css` with the same structure as side-nav-bar.css but using `globalNav` tokens instead of `sideNav` tokens
+   - Create a `members/` subdirectory if needed (for item components)
+   - Update all CSS doc references from "side-nav-bar" to "global-nav-bar"
+   - Use `.pfx-global-nav-bar` as the main selector
+   
+3. Deprecate the old sideNav component:
+   - Keep `formats/components/src/components/side-nav-bar/` and its CSS
+   - Modify `side-nav-bar/index.ts` to:
+     - Import and re-export the globalNavBar component record
+     - Add a deprecation notice in the JSDoc
+     - Make sideNavBar a **functional alias** (not just a noop) that points to globalNavBar
+     - Export both names but mark sideNavBar as deprecated
+   - This ensures old CSS selectors (`.pfx-side-nav-bar`) still work if users haven't migrated
+   
+4. Update the components index:
+   - Modify `formats/components/src/components/index.ts` to:
+     - Export both `sideNavBar` and `globalNavBar`
+     - Add a deprecation warning comment for `sideNavBar`
+   
+5. Create/update tests:
+   - Verify globalNav tokens exist and resolve
+   - Verify sideNav tokens still exist (backward compat)
+   - Test that both old and new selectors load CSS correctly
+   - In tests, note that sideNavBar is deprecated but functional
+   
+6. Update cssdoc in global-nav-bar.css:
+   - Add `@deprecated Use globalNavBar instead of sideNavBar` if applicable
+   - Document the new component fully
+   - Add examples
+   
+7. Run `vp check`
+8. Commit: `feat(components): add globalNavBar, deprecate sideNavBar with functional alias (breaking)`
+9. No changeset yet (batch later with note that this is a breaking change)
+
+**Location:** /Users/dwahl/Scripts/pantoken/formats/components
+
+**Verification:**
+- `vp test` passes (new globalNav tests + backward-compat sideNav tests)
+- Both `.pfx-side-nav-bar` and `.pfx-global-nav-bar` selectors are valid in generated CSS
+- globalNav tokens resolve in generated CSS
+- sideNav tokens still resolve (we're not removing them, just deprecating the component)
+
+**After completion:**
+- Update SQL: `UPDATE todos SET status = 'done' WHERE id = 'component-sideNav'`
+- Return:
+  - globalNavBar component created
+  - sideNavBar deprecated with functional alias
+  - Both selector types work
+  - Test results
+  - Commit hash
+- Do NOT proceed to other tasks
+
+**Breaking Change Note:**
+This is a breaking change for consumers using the old CSS selector class name. They'll need to migrate to `.pfx-global-nav-bar`, but the old name will still work (as a deprecated alias) for backward compatibility during a transition period.
+
+
+---
+
+Task: Verify Stepper component availability and determine implementation location
+
+**Goal:** Determine whether Stepper component should go in:
+- `formats/components/` (if already released in @instructure/ui v11.7.10)
+- `plugins/pantoken/custom-components/` (if "Ready for dev" in Figma but not yet released)
+- Skip for now (if not yet designed/ready)
+
+**What to do:**
+1. Check @instructure/ui v11.7.10 exports:
+   - Look in /Users/dwahl/Scripts/pantoken/node_modules/@instructure/ui-* for a stepper package
+   - If exists, check if it exports a Stepper component
+   - Run: `ls node_modules/@instructure/ui-* | grep -i step` 
+   
+2. If no package found, check Figma library status (node 5WFqF3HVlNdfcJooCaiFoh):
+   - Look for "Stepper" component in COMPONENTS page group
+   - Check if it's marked "Ready for dev" or "Completed"
+   - Note the status (design exists but not yet released upstream)
+   
+3. Summary findings:
+   - If upstream exports: → Should author in `formats/components`
+   - If Figma "Ready for dev": → Should author in `plugins/pantoken/custom-components` with promotion policy notes
+   - If neither: → Skip for now, note in release notes as "pending upstream"
+
+**After completion:**
+- Update SQL: `UPDATE todos SET status = 'done' WHERE id = 'component-stepper'` (or 'blocked' if decision needed)
+- Return: What you found and where Stepper should be authored
+- If blocked (needs Figma check and you can't access MCP): explain what's needed
+
+
+---
+
+Task: Verify imageCard component availability and determine implementation location
+
+**Goal:** Determine whether imageCard component should go in:
+- `formats/components/` (if already released in @instructure/ui v11.7.10)
+- `plugins/pantoken/custom-components/` (if "Ready for dev" in Figma but not yet released)
+- Skip for now (if not yet designed/ready)
+
+**What to do:**
+1. Check @instructure/ui v11.7.10 exports:
+   - Look in /Users/dwahl/Scripts/pantoken/node_modules/@instructure/ui-* for an image-card or imagecard package
+   - If exists, check if it exports an ImageCard component
+   - Run: `ls node_modules/@instructure/ui-* | grep -i image` 
+   
+2. If no package found, check Figma library status (node 5WFqF3HVlNdfcJooCaiFoh):
+   - Look for "ImageCard" or "Image Card" component in COMPONENTS page group
+   - Check if it's marked "Ready for dev" or "Completed"
+   - Note the status
+   
+3. Summary findings:
+   - If upstream exports: → Should author in `formats/components`
+   - If Figma "Ready for dev": → Should author in `plugins/pantoken/custom-components` with promotion policy notes
+   - If neither: → Skip for now, note in release notes as "pending upstream"
+
+**After completion:**
+- Update SQL: `UPDATE todos SET status = 'done' WHERE id = 'component-imagecard'` (or 'blocked' if decision needed)
+- Return: What you found and where imageCard should be authored
+- If blocked: explain what's needed
