@@ -1,0 +1,9 @@
+{
+  "tool_use_id": "toolu_01Ty8GTxBUqhj1ns6k9crsxA",
+  "agent_id": "1e306465-c4cb-4d50-ac61-1bb9c8025625",
+  "subagent_type": "task",
+  "task_description": "Bump instructure-design-tokens to v2.6.0",
+  "started_at": "2026-11-19T15:58:20.165495-07:00",
+  "completed_at": "2026-11-19T15:58:20.166215-07:00",
+  "transcript_unavailable_reason": "transcript path unresolvable"
+}

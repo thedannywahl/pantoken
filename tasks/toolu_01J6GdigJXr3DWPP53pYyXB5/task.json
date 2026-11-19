@@ -1,0 +1,9 @@
+{
+  "tool_use_id": "toolu_01J6GdigJXr3DWPP53pYyXB5",
+  "agent_id": "ab8bf0ab-aa48-4660-99d1-c7332331ed2e",
+  "subagent_type": "general-purpose",
+  "task_description": "Regenerate token IR from upstream",
+  "started_at": "2026-11-19T15:59:55.648782-07:00",
+  "completed_at": "2026-11-19T15:59:55.649001-07:00",
+  "transcript_unavailable_reason": "transcript path unresolvable"
+}
