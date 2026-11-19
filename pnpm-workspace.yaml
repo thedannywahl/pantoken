@@ -86,7 +86,7 @@ catalog:
   # Codecov bundle analysis plugin
   "@codecov/vite-plugin": ^2.0.1
   # Quality gates
-  automatica11y: ^0.12.0
+  automatica11y: ^0.12.2
   "@commitlint/cli": ^21.2.4
   "@commitlint/config-conventional": ^21.2.4
   "@changesets/cli": ^3.0.3
