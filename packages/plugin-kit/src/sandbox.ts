@@ -90,19 +90,19 @@ function runInThread<T>(pluginPath: string, stage: Stage, ctx: unknown): Promise
   const url = new URL(
     `data:text/javascript;charset=utf-8,${encodeURIComponent(THREAD_WORKER_CODE)}`,
   );
-  return new Promise((resolve, reject) => {
-    const worker = new NodeWorker(url, { workerData: { pluginPath, stage, ctx } });
-    // Cast to EventEmitter — worker_threads.Worker extends EventEmitter but DOM Worker conflicts.
-    const emitter = worker as unknown as EventEmitter;
-    emitter.once("message", ({ ok, result, error }: { ok: boolean; result: T; error?: string }) => {
-      if (ok) resolve(result);
-      else reject(new Error(`Plugin "${pluginPath}" ${stage} hook: ${error}`));
-    });
-    emitter.once("error", (err: Error) => reject(err));
-    emitter.once("exit", (code: number) => {
-      if (code !== 0) reject(new Error(`Plugin "${pluginPath}" worker exited with code ${code}`));
-    });
+  const { promise, resolve, reject } = Promise.withResolvers<T | null>();
+  const worker = new NodeWorker(url, { workerData: { pluginPath, stage, ctx } });
+  // Cast to EventEmitter — worker_threads.Worker extends EventEmitter but DOM Worker conflicts.
+  const emitter = worker as unknown as EventEmitter;
+  emitter.once("message", ({ ok, result, error }: { ok: boolean; result: T; error?: string }) => {
+    if (ok) resolve(result);
+    else reject(new Error(`Plugin "${pluginPath}" ${stage} hook: ${error}`));
   });
+  emitter.once("error", (err: Error) => reject(err));
+  emitter.once("exit", (code: number) => {
+    if (code !== 0) reject(new Error(`Plugin "${pluginPath}" worker exited with code ${code}`));
+  });
+  return promise;
 }
 
 /** Run a hook in a child process with Node.js --permission flags (OS-capability isolation). */
@@ -130,34 +130,34 @@ function runInProcess<T>(
   writeFileSync(scriptPath, PROCESS_WORKER_CODE);
   const fsReadArgs = [...roots, dir].flatMap((p) => ["--allow-fs-read", p]);
 
-  return new Promise((resolve, reject) => {
-    const cleanup = (): void => {
-      try {
-        rmSync(dir, { recursive: true, force: true });
-      } catch {
-        /* ignore */
-      }
-    };
-    const child = nodeSpawn(process.execPath, ["--permission", ...fsReadArgs, scriptPath], {
-      stdio: ["inherit", "inherit", "inherit", "ipc"],
-      shell: false,
-    });
-    const em = child as unknown as EventEmitter;
-    em.once("message", (msg: { ok: boolean; result: T; error?: string }) => {
-      cleanup();
-      if (msg.ok) resolve(msg.result);
-      else reject(new Error(`Plugin "${pluginPath}" ${stage} hook: ${msg.error}`));
-    });
-    em.once("error", (err: Error) => {
-      cleanup();
-      reject(err);
-    });
-    em.once("exit", (code: number) => {
-      cleanup();
-      if (code !== 0) reject(new Error(`Plugin "${pluginPath}" process exited with code ${code}`));
-    });
-    (child as unknown as { send: (msg: unknown) => void }).send({ pluginPath, stage, ctx });
+  const { promise, resolve, reject } = Promise.withResolvers<T | null>();
+  const cleanup = (): void => {
+    try {
+      rmSync(dir, { recursive: true, force: true });
+    } catch {
+      /* ignore */
+    }
+  };
+  const child = nodeSpawn(process.execPath, ["--permission", ...fsReadArgs, scriptPath], {
+    stdio: ["inherit", "inherit", "inherit", "ipc"],
+    shell: false,
   });
+  const em = child as unknown as EventEmitter;
+  em.once("message", (msg: { ok: boolean; result: T; error?: string }) => {
+    cleanup();
+    if (msg.ok) resolve(msg.result);
+    else reject(new Error(`Plugin "${pluginPath}" ${stage} hook: ${msg.error}`));
+  });
+  em.once("error", (err: Error) => {
+    cleanup();
+    reject(err);
+  });
+  em.once("exit", (code: number) => {
+    cleanup();
+    if (code !== 0) reject(new Error(`Plugin "${pluginPath}" process exited with code ${code}`));
+  });
+  (child as unknown as { send: (msg: unknown) => void }).send({ pluginPath, stage, ctx });
+  return promise;
 }
 
 /**
