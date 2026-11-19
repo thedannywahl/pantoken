@@ -274,8 +274,8 @@ catalogs:
       specifier: ^11.14.1
       version: 11.14.1
     '@instructure/instructure-design-tokens':
-      specifier: github:instructure/instructure-design-tokens#v2.1.0
-      version: https://codeload.github.com/instructure/instructure-design-tokens/tar.gz/c7f0deea242d692ae38d4baed0923a6eb251a7e5
+      specifier: github:instructure/instructure-design-tokens#v2.6.0
+      version: https://codeload.github.com/instructure/instructure-design-tokens/tar.gz/6d9cdb99e36c9421b87693f170cf5ec61e5d4480
     '@instructure/ui-alerts':
       specifier: ^11.7.10
       version: 11.7.10
@@ -1384,7 +1384,7 @@ importers:
     devDependencies:
       '@instructure/instructure-design-tokens':
         specifier: 'catalog:'
-        version: https://codeload.github.com/instructure/instructure-design-tokens/tar.gz/c7f0deea242d692ae38d4baed0923a6eb251a7e5
+        version: https://codeload.github.com/instructure/instructure-design-tokens/tar.gz/6d9cdb99e36c9421b87693f170cf5ec61e5d4480
       '@instructure/ui-icons':
         specifier: 'catalog:'
         version: 11.7.10(@types/react@19.3.0)(react-dom@19.3.1(react@19.3.1))(react@19.3.1)(supports-color@8.1.1)
@@ -1505,7 +1505,7 @@ importers:
     dependencies:
       '@instructure/instructure-design-tokens':
         specifier: 'catalog:'
-        version: https://codeload.github.com/instructure/instructure-design-tokens/tar.gz/c7f0deea242d692ae38d4baed0923a6eb251a7e5
+        version: https://codeload.github.com/instructure/instructure-design-tokens/tar.gz/6d9cdb99e36c9421b87693f170cf5ec61e5d4480
       '@instructure/ui-icons':
         specifier: 'catalog:'
         version: 11.7.10(@types/react@19.3.0)(react-dom@19.3.1(react@19.3.1))(react@19.3.1)(supports-color@8.1.1)
@@ -5196,8 +5196,8 @@ packages:
     peerDependencies:
       react: '>=18 <=19'
 
-  '@instructure/instructure-design-tokens@https://codeload.github.com/instructure/instructure-design-tokens/tar.gz/c7f0deea242d692ae38d4baed0923a6eb251a7e5':
-    resolution: {gitHosted: true, integrity: sha512-8O/5ei66jrdjxJrvutPtakHRNuOkz6zaTFh/Dg4PUTW+CFrN9gx6c2Co8Lc7IKJzQ6vzlQoPaWHXhyCeaxOeIw==, tarball: https://codeload.github.com/instructure/instructure-design-tokens/tar.gz/c7f0deea242d692ae38d4baed0923a6eb251a7e5}
+  '@instructure/instructure-design-tokens@https://codeload.github.com/instructure/instructure-design-tokens/tar.gz/6d9cdb99e36c9421b87693f170cf5ec61e5d4480':
+    resolution: {gitHosted: true, integrity: sha512-OBZBRos1YjH0pVc/VVdoS+QzzecYKL0FbqvOYqjU4zCF3Ao33YcavT9B57Wwo/61GDNGpuSHMLKav0yHJDPl/g==, tarball: https://codeload.github.com/instructure/instructure-design-tokens/tar.gz/6d9cdb99e36c9421b87693f170cf5ec61e5d4480}
     version: 1.0.0
 
   '@instructure/shared-types@11.7.10':
@@ -12765,7 +12765,7 @@ snapshots:
       - react-dom
       - supports-color
 
-  '@instructure/instructure-design-tokens@https://codeload.github.com/instructure/instructure-design-tokens/tar.gz/c7f0deea242d692ae38d4baed0923a6eb251a7e5':
+  '@instructure/instructure-design-tokens@https://codeload.github.com/instructure/instructure-design-tokens/tar.gz/6d9cdb99e36c9421b87693f170cf5ec61e5d4480':
     dependencies:
       glob: 13.0.7
 
