@@ -1,0 +1,55 @@
+{
+  "cli_version": "0.13.4",
+  "checkpoint_id": "01M7T6DCSMB7TJKQVM6PVBB18N",
+  "session_id": "e0501ce0-9326-47d8-89ee-0f05f76ab923",
+  "strategy": "manual-commit",
+  "created_at": "2026-11-19T15:22:14.106147Z",
+  "branch": "ts7.1.0",
+  "checkpoints_count": 1,
+  "files_touched": [
+    "scripts/release/weekly-maintenance.test.ts"
+  ],
+  "agent": "Copilot CLI",
+  "model": "",
+  "turn_id": "7e47a3112abc",
+  "checkpoint_transcript_start": 879,
+  "transcript_lines_at_start": 879,
+  "compact_transcript_start": 74,
+  "token_usage": {
+    "input_tokens": 26,
+    "cache_creation_tokens": 3234,
+    "cache_read_tokens": 489656,
+    "output_tokens": 854,
+    "api_call_count": 5
+  },
+  "session_token_usage": {
+    "input_tokens": 55757,
+    "cache_creation_tokens": 342762,
+    "cache_read_tokens": 4979645,
+    "output_tokens": 26991,
+    "api_call_count": 73
+  },
+  "redaction": {
+    "replacements": 852,
+    "layers": {
+      "betterleaks": 0,
+      "connection_string": 0,
+      "credential_key": 0,
+      "credential_value": 0,
+      "credentialed_uri": 0,
+      "custom": 0,
+      "entropy": 1660,
+      "goredact": 0,
+      "key_context": 0,
+      "pii": 1,
+      "provider_token": 0,
+      "shell_stdin": 0
+    },
+    "custom_rules_active": 2,
+    "pii": {
+      "EMAIL": 1,
+      "IP": 0,
+      "PHONE": 0
+    }
+  }
+}
