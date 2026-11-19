@@ -1,35 +1,13 @@
 ---
-"@pantoken/ai": patch
-"@pantoken/android": patch
-"@pantoken/angular": patch
-"@pantoken/astro": patch
-"@pantoken/bootstrap": patch
-"@pantoken/canvas-theme-editor": patch
 "@pantoken/cli": patch
 "@pantoken/components": patch
-"@pantoken/compose": patch
-"@pantoken/core": patch
-"@pantoken/docs": patch
-"@pantoken/icon-font": patch
-"@pantoken/icons": patch
+"@pantoken/i18n-engine": patch
+"@pantoken/inline-styles": patch
 "@pantoken/interactions": patch
-"@pantoken/model": patch
-"@pantoken/next": patch
-"@pantoken/panda": patch
+"@pantoken/plugin-kit": patch
 "@pantoken/scaffold": patch
-"@pantoken/svelte": patch
-"@pantoken/tailwind": patch
-"@pantoken/tailwind-with-postcss": patch
-"@pantoken/tailwind-with-rework": patch
-"@pantoken/tokens": patch
-"@pantoken/typescript-plugin": patch
-"@pantoken/utils": patch
-"@pantoken/vite": patch
-"@pantoken/vitepress-sidebar-toggle": patch
-"@pantoken/vue": patch
+"@pantoken/translation-adapters": patch
 "@pantoken/web-components": patch
-"create-pantoken-app": patch
-"pantoken": patch
 ---
 
 TypeScript configuration modernization: update lib to ES2026 and enable future-forward compiler options
