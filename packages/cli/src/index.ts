@@ -350,9 +350,10 @@ async function runIconFont(args: CliArgs): Promise<void> {
   let buildIconFont: typeof import("@pantoken/icon-font").buildIconFont;
   try {
     ({ buildIconFont } = await import("@pantoken/icon-font"));
-  } catch {
+  } catch (err) {
     throw new Error(
       'The "icon-font" target requires @pantoken/icon-font. Install it with: npm install @pantoken/icon-font',
+      { cause: err },
     );
   }
   const font = await buildIconFont({

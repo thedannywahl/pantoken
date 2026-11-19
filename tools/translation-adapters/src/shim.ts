@@ -94,10 +94,10 @@ export interface ShimResult {
  * only once every profile has been tried and failed.
  */
 export async function runWithBreaker(prompt: string, options: RunShimOptions): Promise<ShimResult> {
-  const errors: string[] = [];
+  const errors: Array<{ message: string; cause?: unknown }> = [];
   for (const profile of options.profiles) {
     if (options.breaker.isOpen(profile.name)) {
-      errors.push(`${profile.name}: circuit open`);
+      errors.push({ message: `${profile.name}: circuit open` });
       continue;
     }
     try {
@@ -106,11 +106,17 @@ export async function runWithBreaker(prompt: string, options: RunShimOptions): P
       return { content, profile: profile.name };
     } catch (e) {
       options.breaker.recordFailure(profile.name);
-      errors.push(`${profile.name}: ${Error.isError(e) ? e.message : String(e)}`);
+      errors.push({
+        message: `${profile.name}: ${Error.isError(e) ? e.message : String(e)}`,
+        cause: e,
+      });
     }
   }
   options.onExhausted?.();
-  throw new Error(`All translation profiles exhausted: ${errors.join("; ")}`);
+  throw new Error(
+    `All translation profiles exhausted: ${errors.map((e) => e.message).join("; ")}`,
+    { cause: errors },
+  );
 }
 
 /** Minimal subset of the OpenAI chat-completions request/response shapes this shim needs. */
