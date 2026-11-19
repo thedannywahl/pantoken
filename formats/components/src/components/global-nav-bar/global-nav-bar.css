@@ -54,22 +54,21 @@
   & {
     display: flex;
     flex-direction: column;
-    gap: var(--instui-component-global-nav-margin);
-    padding: var(--instui-component-global-nav-margin);
+    gap: var(--instui-component-side-nav-bar-content-gap);
+    padding: var(--instui-component-side-nav-bar-content-margin);
     box-sizing: border-box;
     inline-size: fit-content;
     /* The rail sits on the page and runs full height (InstUI GlobalNavBar is 100% of its layout column). */
     block-size: 100%;
     min-block-size: 100%;
-    background: var(--instui-component-global-nav-background-color);
-    color: var(--instui-component-global-nav-text-color);
-    border-width: var(--instui-component-global-nav-border-width);
-    border-color: var(--instui-component-global-nav-border-color);
+    background: var(--instui-component-side-nav-bar-background-color);
+    color: var(--instui-component-side-nav-bar-font-color);
+    font-family: var(--instui-component-side-nav-bar-item-font-family);
   }
 
   /* minimized: a narrow rail — the icons stay, the labels are hidden. */
   &.-minimized {
-    inline-size: var(--instui-component-global-nav-minimized-min-width);
+    inline-size: var(--instui-component-side-nav-bar-minimized-width);
   }
 
   &.-minimized .item .label {
