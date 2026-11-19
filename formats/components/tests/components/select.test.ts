@@ -14,6 +14,8 @@ test("selectCss is an experimental @supports enhancement of simple-select using 
   expect(css).toContain("var(--instui-component-options-item-background)");
   expect(css).toContain("var(--instui-component-options-item-highlighted-background)");
   expect(css).toContain("var(--instui-component-options-item-selected-background)");
+  // Selected state includes highlighted-background for hover/focus states.
+  expect(css).toContain("var(--instui-component-options-item-selected-highlighted-background)");
   // It targets simple-select — no new component class.
   expect(css).not.toContain(".instui-select ");
 });
