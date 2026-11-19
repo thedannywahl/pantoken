@@ -1,0 +1,47 @@
+[[PLAN]] vite-plus 1.7.0 includes typescript 7.1 beta or pre-release. currently this workspace has the typescript plugin installed and we have typescript 7.0.2 installed in the workspace. I want to start using the 7.1 beta everywhere but I need a recommendation on how to do that.
+
+---
+
+[[PLAN]] vite-plus 1.7.0 includes typescript 7.1 beta or pre-release. currently this workspace has the typescript plugin installed and we have typescript 7.0.2 installed in the workspace. I want to start using the 7.1 beta everywhere but I need a recommendation on how to do that.
+
+---
+
+[[PLAN]] do we need typescript installed as a workspace package or does vite-plus provide it?
+
+---
+
+[[PLAN]] do we need typescript installed as a workspace package or does vite-plus provide it?
+
+---
+
+[[PLAN]] the latest version is [7.1.0-dev.20261119.1](https://www.npmjs.com/package/typescript/v/7.1.0-dev.20261119.1)
+since we're changing to dailies we need to make sure that typescript is excluded from the release cooldown in the catalog of 5 days.
+
+---
+
+[[PLAN]] the latest version is [7.1.0-dev.20261119.1](https://www.npmjs.com/package/typescript/v/7.1.0-dev.20261119.1)
+since we're changing to dailies we need to make sure that typescript is excluded from the release cooldown in the catalog of 5 days.
+
+---
+
+[[PLAN]] give me the link for typedoc 1.0 dev, I only see 28.20 and an open issue for ts7 support: https://github.com/TypeStrong/typedoc/issues/3098
+
+---
+
+[[PLAN]] give me the link for typedoc 1.0 dev, I only see 28.20 and an open issue for ts7 support: https://github.com/TypeStrong/typedoc/issues/3098
+
+---
+
+[[PLAN]] it shouldn't be a blocker for anything except vitepress which explicitly pulls in typescript 6 already. everything else is on ts7 already and so we're just making a minor bump.
+
+---
+
+[[PLAN]] it shouldn't be a blocker for anything except vitepress which explicitly pulls in typescript 6 already. everything else is on ts7 already and so we're just making a minor bump.
+
+---
+
+[[PLAN]] this plan should be run in incremental conventional commits and changesets with test coverage, you can work on this branch, creating a PR.
+
+---
+
+[[PLAN]] this plan should be run in incremental conventional commits and changesets with test coverage, you can work on this branch, creating a PR.
