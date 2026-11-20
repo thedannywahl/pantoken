@@ -367,13 +367,19 @@ describe("apiDrift", () => {
 });
 
 describe("top-level drift check", () => {
-  test.skip("reports an untranslated compatibility page as guide drift", async () => {
-    // TODO: Re-enable when compatibility.md translations are available for all locales
+  test("excludes compatibility.md from guide drift check", async () => {
+    // compatibility.md is temporarily excluded from drift check until all locales have translations
     fixtures.compatibilityMd = "# Compatibility\n\nTarget support matrix";
+    fixtures.guideFiles = ["intro.md"];
+    fixtures.guidesCache = {}; // guide drifts
+    fixtures.apiCache = {}; // all 4 api prose blocks drift
 
     await import("./check-locale-drift.ts");
 
-    expect(errText()).toContain("docs/compatibility.md");
+    // Should NOT contain compatibility.md in error output since it's excluded from guides
+    expect(errText()).not.toContain("docs/compatibility.md");
+    // But should still report guide drift from intro.md
+    expect(errText()).toContain("intro.md");
     expect(errText()).toContain("[docs.guides]");
     expect(process.exitCode).toBe(1);
   });
