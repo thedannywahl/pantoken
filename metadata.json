@@ -3,8 +3,10 @@
   "checkpoint_id": "01M7VMES8F7E1J4719CPY7H0AC",
   "strategy": "manual-commit",
   "branch": "design-tokens-2.6.0",
-  "checkpoints_count": 2,
-  "files_touched": null,
+  "checkpoints_count": 3,
+  "files_touched": [
+    ".changeset/i18n-compatibility-fix.md"
+  ],
   "sessions": [
     {
       "metadata": "/0/metadata.json",
@@ -12,17 +14,24 @@
       "compact_transcript": "/0/transcript.jsonl",
       "content_hash": "/0/content_hash.txt",
       "prompt": "/0/prompt.txt"
+    },
+    {
+      "metadata": "/1/metadata.json",
+      "transcript": "/1/full.jsonl",
+      "compact_transcript": "/1/transcript.jsonl",
+      "content_hash": "/1/content_hash.txt",
+      "prompt": ""
     }
   ],
   "token_usage": {
-    "input_tokens": 5,
-    "cache_creation_tokens": 1129,
-    "cache_read_tokens": 67136,
-    "output_tokens": 156,
-    "api_call_count": 1
+    "input_tokens": 46,
+    "cache_creation_tokens": 3831,
+    "cache_read_tokens": 847289,
+    "output_tokens": 1217,
+    "api_call_count": 9
   },
   "redaction": {
-    "replacements": 92,
+    "replacements": 93,
     "layers": {
       "betterleaks": 0,
       "connection_string": 0,
@@ -30,7 +39,7 @@
       "credential_value": 0,
       "credentialed_uri": 0,
       "custom": 0,
-      "entropy": 2320,
+      "entropy": 2337,
       "goredact": 0,
       "key_context": 0,
       "pii": 22,
