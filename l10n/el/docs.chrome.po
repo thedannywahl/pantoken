@@ -1380,6 +1380,14 @@ msgctxt "docs.chrome:a2uiCatalogDescriptions.PantokenBadge"
 msgid "A compact count or status badge."
 msgstr "Ένα συμπαγές σήμα μέτρησης ή κατάστασης."
 
+#: docs/.vitepress/catalog-i18n.json#a2uiCatalogDescriptions.PantokenBanner
+#, fuzzy, no-c-format
+msgctxt "docs.chrome:a2uiCatalogDescriptions.PantokenBanner"
+msgid "A Pantoken banner component with safe text and child content."
+msgstr ""
+"Ένα στοιχείο υπογραφής συντάκτη Pantoken με ασφαλές κείμενο και θυγατρικό "
+"περιεχόμενο."
+
 #: docs/.vitepress/catalog-i18n.json#a2uiCatalogDescriptions.PantokenPill
 #, no-c-format
 msgctxt "docs.chrome:a2uiCatalogDescriptions.PantokenPill"
@@ -1466,6 +1474,22 @@ msgid "A vertical navigation rail that can collapse to icon-only presentation."
 msgstr ""
 "Μια κάθετη γραμμή πλοήγησης που μπορεί να συμπτυχθεί σε προβολή μόνο με "
 "εικονίδια."
+
+#: docs/.vitepress/catalog-i18n.json#a2uiCatalogDescriptions.PantokenGlobalNavBar
+#, fuzzy, no-c-format
+msgctxt "docs.chrome:a2uiCatalogDescriptions.PantokenGlobalNavBar"
+msgid "A Pantoken global-nav-bar component with safe text and child content."
+msgstr ""
+"Ένα στοιχείο προβολής Pantoken με ασφαλές κείμενο και θυγατρικό περιεχόμενο."
+
+#: docs/.vitepress/catalog-i18n.json#a2uiCatalogDescriptions.PantokenGlobalNavBarItem
+#, fuzzy, no-c-format
+msgctxt "docs.chrome:a2uiCatalogDescriptions.PantokenGlobalNavBarItem"
+msgid ""
+"A Pantoken global-nav-bar-item component with safe text and child content."
+msgstr ""
+"Ένα στοιχείο υπογραφής συντάκτη Pantoken με ασφαλές κείμενο και θυγατρικό "
+"περιεχόμενο."
 
 #: docs/.vitepress/catalog-i18n.json#a2uiCatalogDescriptions.PantokenTreeBrowser
 #, no-c-format
@@ -2172,10 +2196,13 @@ msgid "Banner"
 msgstr "Runner"
 
 #: docs/.vitepress/catalog-i18n.json#registryBrowserItems.banner.description
-#, no-c-format
+#, fuzzy, no-c-format
 msgctxt "docs.chrome:registryBrowserItems.banner.description"
-msgid "Pantoken banner component styles and documented HTML structure."
-msgstr "Στυλ στοιχείου banner του Pantoken και τεκμηριωμένη δομή HTML."
+msgid ""
+"Instructure Banner component styled with semantic .instui-banner classes."
+msgstr ""
+"Στοιχείο δείκτη φόρτωσης Instructure με μορφοποίηση μέσω των σημασιολογικών "
+"κλάσεων .instui-spinner."
 
 #: docs/.vitepress/catalog-i18n.json#registryBrowserItems.billboard.title
 #, no-c-format
@@ -2977,6 +3004,11 @@ msgstr "Οπτικός εντοπισμός σφαλμάτων"
 msgctxt "docs.chrome:registryBrowserItems.visual-debug.description"
 msgid "Development-only layout outlines for Pantoken components."
 msgstr "Περιγράμματα διάταξης μόνο για την ανάπτυξη, για τα στοιχεία Pantoken."
+
+#, no-c-format
+#~ msgctxt "docs.chrome:registryBrowserItems.banner.description"
+#~ msgid "Pantoken banner component styles and documented HTML structure."
+#~ msgstr "Στυλ στοιχείου banner του Pantoken και τεκμηριωμένη δομή HTML."
 
 #, no-c-format
 #~ msgctxt "docs.chrome:a2uiCatalog.reactSupport"

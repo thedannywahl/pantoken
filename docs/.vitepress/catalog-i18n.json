@@ -15,6 +15,10 @@
     "message": "A compact count or status badge.",
     "translate": "always"
   },
+  "a2uiCatalogDescriptions.PantokenBanner": {
+    "message": "A Pantoken banner component with safe text and child content.",
+    "translate": "always"
+  },
   "a2uiCatalogDescriptions.PantokenPill": {
     "message": "A compact status pill.",
     "translate": "always"
@@ -65,6 +69,14 @@
   },
   "a2uiCatalogDescriptions.PantokenSideNavBar": {
     "message": "A vertical navigation rail that can collapse to icon-only presentation.",
+    "translate": "always"
+  },
+  "a2uiCatalogDescriptions.PantokenGlobalNavBar": {
+    "message": "A Pantoken global-nav-bar component with safe text and child content.",
+    "translate": "always"
+  },
+  "a2uiCatalogDescriptions.PantokenGlobalNavBarItem": {
+    "message": "A Pantoken global-nav-bar-item component with safe text and child content.",
     "translate": "always"
   },
   "a2uiCatalogDescriptions.PantokenTreeBrowser": {
@@ -456,7 +468,7 @@
     "translate": "always"
   },
   "registryBrowserItems.banner.description": {
-    "message": "Pantoken banner component styles and documented HTML structure.",
+    "message": "Instructure Banner component styled with semantic .instui-banner classes.",
     "translate": "always"
   },
   "registryBrowserItems.billboard.title": {

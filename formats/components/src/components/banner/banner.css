@@ -14,42 +14,49 @@
  * @accessibility Use semantically appropriate heading elements (h1-h6) for `.heading`. Ensure sufficient color contrast between text and background. For dismissible banners, provide an accessible close button with `aria-label`.
  * @example -canvas-rce -docs
  * ```html
- * <div class="PFX-banner -size-relaxed -theme-sea">
+ * <div class="pfx-banner -size-relaxed -theme-sea">
  *   <span class="icon" aria-hidden="true"></span>
  *   <div class="heading">Important Information</div>
  *   <div class="content">This is an important message that needs your attention.</div>
- *   <button class="close-button" aria-label="Close banner"></button>
+ *   <button class="pfx-close-button" aria-label="Close banner"></button>
  * </div>
  * ```
  * @example -automatica11y -nocard
  * ```html
- * <div class="PFX-banner -size-relaxed -theme-sea">
+ * <div class="pfx-banner -size-relaxed -theme-sea">
  *   <span class="icon" aria-hidden="true"></span>
  *   <h2 class="heading">Relaxed Sea Banner</h2>
  *   <div class="content">This is a relaxed banner with the sea color theme.</div>
  * </div>
- * <div class="PFX-banner -size-compact -theme-sea">
+ * <div class="pfx-banner -size-compact -theme-sea">
  *   <h2 class="heading">Compact Sea Banner</h2>
  *   <div class="content">This banner uses compact sizing.</div>
  * </div>
- * <div class="PFX-banner -size-relaxed -theme-violet">
+ * <div class="pfx-banner -size-relaxed -theme-violet">
  *   <h2 class="heading">Relaxed Violet Banner</h2>
  *   <div class="content">This is a relaxed banner with the violet color theme.</div>
  * </div>
- * <div class="PFX-banner -size-compact -theme-violet">
+ * <div class="pfx-banner -size-compact -theme-violet">
  *   <h2 class="heading">Compact Violet Banner</h2>
  *   <div class="content">This banner uses compact sizing with violet theme.</div>
  * </div>
  * ```
  * @example -docs
  * ```html
- * <div class="PFX-banner -size-compact -theme-sea">
+ * <div class="pfx-banner -size-compact -theme-sea">
  *   <div class="heading">Compact Banner</div>
  *   <div class="content">This banner uses compact sizing.</div>
  * </div>
- * <div class="PFX-banner -size-relaxed -theme-violet">
+ * <div class="pfx-banner -size-relaxed -theme-violet">
  *   <div class="heading">Relaxed Banner</div>
  *   <div class="content">This banner uses relaxed sizing.</div>
+ * </div>
+ * ```
+ * @example -canvas-rce-no-interactions
+ * ```html
+ * <div class="pfx-banner -size-relaxed -theme-sea">
+ *   <div class="heading">Important Information</div>
+ *   <div class="content">This is an important message that needs your attention.</div>
  * </div>
  * ```
  */

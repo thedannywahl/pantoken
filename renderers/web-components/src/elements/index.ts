@@ -10,6 +10,7 @@ import type { ElementDefinition } from "../lib/context.ts";
 import { alert } from "./alert.ts";
 import { avatar } from "./avatar.ts";
 import { badge } from "./badge.ts";
+import { banner } from "./banner.ts";
 import { button } from "./button.ts";
 import { calendar } from "./calendar.ts";
 import { contextView } from "./context-view.ts";
@@ -17,6 +18,8 @@ import { dateInput } from "./date-input.ts";
 import { dateTimeInput } from "./date-time-input.ts";
 import { drawerLayout } from "./drawer-layout.ts";
 import { drilldown } from "./drilldown.ts";
+import { globalNavBar } from "./global-nav-bar.ts";
+import { globalNavBarItem } from "./global-nav-bar-item.ts";
 import { icon } from "./icon.ts";
 import { iconButton } from "./icon-button.ts";
 import { img } from "./img.ts";
@@ -50,6 +53,7 @@ export const DEFINITIONS: readonly ElementDefinition[] = [
   button,
   alert,
   badge,
+  banner,
   pill,
   tag,
   avatar,
@@ -63,6 +67,8 @@ export const DEFINITIONS: readonly ElementDefinition[] = [
   truncate,
   img,
   sideNavBar,
+  globalNavBar,
+  globalNavBarItem,
   treeBrowser,
   calendar,
   tooltip,

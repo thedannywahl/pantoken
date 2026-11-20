@@ -126,6 +126,11 @@
       "css": "https://cdn.jsdelivr.net/npm/@pantoken/components/dist/global-nav-bar.css"
     },
     {
+      "name": "global-nav-bar-item",
+      "type": "js-only",
+      "js": "https://cdn.jsdelivr.net/npm/@pantoken/interactions/dist/global-nav-bar-item.iife.js"
+    },
+    {
       "name": "heading",
       "type": "css-only",
       "css": "https://cdn.jsdelivr.net/npm/@pantoken/components/dist/heading.css"

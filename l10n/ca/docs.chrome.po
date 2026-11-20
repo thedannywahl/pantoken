@@ -1376,6 +1376,12 @@ msgctxt "docs.chrome:a2uiCatalogDescriptions.PantokenBadge"
 msgid "A compact count or status badge."
 msgstr "Insígnia compacta de recompte o d'estat."
 
+#: docs/.vitepress/catalog-i18n.json#a2uiCatalogDescriptions.PantokenBanner
+#, fuzzy, no-c-format
+msgctxt "docs.chrome:a2uiCatalogDescriptions.PantokenBanner"
+msgid "A Pantoken banner component with safe text and child content."
+msgstr "Component de firma de Pantoken amb text segur i contingut fill."
+
 #: docs/.vitepress/catalog-i18n.json#a2uiCatalogDescriptions.PantokenPill
 #, no-c-format
 msgctxt "docs.chrome:a2uiCatalogDescriptions.PantokenPill"
@@ -1458,6 +1464,19 @@ msgid "A vertical navigation rail that can collapse to icon-only presentation."
 msgstr ""
 "Barra de navegació vertical que es pot reduir a una presentació només amb "
 "icones."
+
+#: docs/.vitepress/catalog-i18n.json#a2uiCatalogDescriptions.PantokenGlobalNavBar
+#, fuzzy, no-c-format
+msgctxt "docs.chrome:a2uiCatalogDescriptions.PantokenGlobalNavBar"
+msgid "A Pantoken global-nav-bar component with safe text and child content."
+msgstr "Component de destacat de Pantoken amb text segur i contingut fill."
+
+#: docs/.vitepress/catalog-i18n.json#a2uiCatalogDescriptions.PantokenGlobalNavBarItem
+#, fuzzy, no-c-format
+msgctxt "docs.chrome:a2uiCatalogDescriptions.PantokenGlobalNavBarItem"
+msgid ""
+"A Pantoken global-nav-bar-item component with safe text and child content."
+msgstr "Component de firma de Pantoken amb text segur i contingut fill."
 
 #: docs/.vitepress/catalog-i18n.json#a2uiCatalogDescriptions.PantokenTreeBrowser
 #, no-c-format
@@ -2147,10 +2166,13 @@ msgid "Banner"
 msgstr "Executor"
 
 #: docs/.vitepress/catalog-i18n.json#registryBrowserItems.banner.description
-#, no-c-format
+#, fuzzy, no-c-format
 msgctxt "docs.chrome:registryBrowserItems.banner.description"
-msgid "Pantoken banner component styles and documented HTML structure."
-msgstr "Estils del component banner de Pantoken i estructura HTML documentada."
+msgid ""
+"Instructure Banner component styled with semantic .instui-banner classes."
+msgstr ""
+"Component d'indicador de càrrega d'Instructure amb estils basats en les "
+"classes semàntiques .instui-spinner."
 
 #: docs/.vitepress/catalog-i18n.json#registryBrowserItems.billboard.title
 #, no-c-format
@@ -2962,6 +2984,12 @@ msgid "Development-only layout outlines for Pantoken components."
 msgstr ""
 "Contorns de disposició només per al desenvolupament dels components de "
 "Pantoken."
+
+#, no-c-format
+#~ msgctxt "docs.chrome:registryBrowserItems.banner.description"
+#~ msgid "Pantoken banner component styles and documented HTML structure."
+#~ msgstr ""
+#~ "Estils del component banner de Pantoken i estructura HTML documentada."
 
 #, no-c-format
 #~ msgctxt "docs.chrome:a2uiCatalog.reactSupport"

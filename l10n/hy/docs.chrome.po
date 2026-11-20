@@ -1378,6 +1378,13 @@ msgctxt "docs.chrome:a2uiCatalogDescriptions.PantokenBadge"
 msgid "A compact count or status badge."
 msgstr "Կոմպակտ քանակի կամ կարգավիճակի նշան։"
 
+#: docs/.vitepress/catalog-i18n.json#a2uiCatalogDescriptions.PantokenBanner
+#, fuzzy, no-c-format
+msgctxt "docs.chrome:a2uiCatalogDescriptions.PantokenBanner"
+msgid "A Pantoken banner component with safe text and child content."
+msgstr ""
+"Pantoken հեղինակային տողի բաղադրիչ՝ անվտանգ տեքստով և ենթաբովանդակությամբ։"
+
 #: docs/.vitepress/catalog-i18n.json#a2uiCatalogDescriptions.PantokenPill
 #, no-c-format
 msgctxt "docs.chrome:a2uiCatalogDescriptions.PantokenPill"
@@ -1461,6 +1468,20 @@ msgid "A vertical navigation rail that can collapse to icon-only presentation."
 msgstr ""
 "Ուղղահայաց նավիգացիոն վահանակ, որը կարող է սեղմվել՝ ցուցադրելով միայն "
 "պատկերակները։"
+
+#: docs/.vitepress/catalog-i18n.json#a2uiCatalogDescriptions.PantokenGlobalNavBar
+#, fuzzy, no-c-format
+msgctxt "docs.chrome:a2uiCatalogDescriptions.PantokenGlobalNavBar"
+msgid "A Pantoken global-nav-bar component with safe text and child content."
+msgstr "Pantoken ցուցապաստառի բաղադրիչ՝ անվտանգ տեքստով և ենթաբովանդակությամբ։"
+
+#: docs/.vitepress/catalog-i18n.json#a2uiCatalogDescriptions.PantokenGlobalNavBarItem
+#, fuzzy, no-c-format
+msgctxt "docs.chrome:a2uiCatalogDescriptions.PantokenGlobalNavBarItem"
+msgid ""
+"A Pantoken global-nav-bar-item component with safe text and child content."
+msgstr ""
+"Pantoken հեղինակային տողի բաղադրիչ՝ անվտանգ տեքստով և ենթաբովանդակությամբ։"
 
 #: docs/.vitepress/catalog-i18n.json#a2uiCatalogDescriptions.PantokenTreeBrowser
 #, no-c-format
@@ -2125,10 +2146,13 @@ msgid "Banner"
 msgstr "Վազող"
 
 #: docs/.vitepress/catalog-i18n.json#registryBrowserItems.banner.description
-#, no-c-format
+#, fuzzy, no-c-format
 msgctxt "docs.chrome:registryBrowserItems.banner.description"
-msgid "Pantoken banner component styles and documented HTML structure."
-msgstr "Pantoken-ի banner բաղադրիչի ոճերը և փաստաթղթավորված HTML կառուցվածքը։"
+msgid ""
+"Instructure Banner component styled with semantic .instui-banner classes."
+msgstr ""
+"Instructure-ի բեռնման ցուցիչի բաղադրիչ՝ ձևավորված իմաստային .instui-spinner "
+"դասերով։"
 
 #: docs/.vitepress/catalog-i18n.json#registryBrowserItems.billboard.title
 #, no-c-format
@@ -2927,6 +2951,12 @@ msgid "Development-only layout outlines for Pantoken components."
 msgstr ""
 "Միայն մշակման համար նախատեսված դասավորության ուրվագծեր Pantoken բաղադրիչների "
 "համար։"
+
+#, no-c-format
+#~ msgctxt "docs.chrome:registryBrowserItems.banner.description"
+#~ msgid "Pantoken banner component styles and documented HTML structure."
+#~ msgstr ""
+#~ "Pantoken-ի banner բաղադրիչի ոճերը և փաստաթղթավորված HTML կառուցվածքը։"
 
 #, no-c-format
 #~ msgctxt "docs.chrome:a2uiCatalog.reactSupport"
