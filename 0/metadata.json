@@ -1,0 +1,68 @@
+{
+  "cli_version": "0.13.4",
+  "checkpoint_id": "01M7V55SG30EADKJZSVKW6VTTR",
+  "session_id": "49f9a52c-93f6-4334-80ad-41a4f7117db1",
+  "strategy": "manual-commit",
+  "created_at": "2026-11-20T00:19:51.256641Z",
+  "branch": "design-tokens-2.6.0",
+  "checkpoints_count": 3,
+  "files_touched": [
+    ".changeset/fix-institution-logo-tokens.md",
+    "formats/tokens/deprecations.json",
+    "packages/core/src/build.ts"
+  ],
+  "agent": "Copilot CLI",
+  "model": "gpt-6-luna",
+  "turn_id": "eba0ed463180",
+  "checkpoint_transcript_start": 8661,
+  "transcript_lines_at_start": 8661,
+  "compact_transcript_start": 848,
+  "token_usage": {
+    "input_tokens": 1027,
+    "cache_creation_tokens": 141405,
+    "cache_read_tokens": 15379414,
+    "output_tokens": 35212,
+    "api_call_count": 200
+  },
+  "session_token_usage": {
+    "input_tokens": 28519,
+    "cache_creation_tokens": 791772,
+    "cache_read_tokens": 39334144,
+    "output_tokens": 106491,
+    "api_call_count": 513,
+    "subagent_tokens": {
+      "input_tokens": 2641,
+      "cache_creation_tokens": 455501,
+      "cache_read_tokens": 29990981,
+      "output_tokens": 110340,
+      "api_call_count": 511
+    },
+    "subagent_tokens_complete": true
+  },
+  "redaction": {
+    "replacements": 35,
+    "layers": {
+      "betterleaks": 0,
+      "connection_string": 0,
+      "credential_key": 0,
+      "credential_value": 0,
+      "credentialed_uri": 0,
+      "custom": 0,
+      "entropy": 559,
+      "goredact": 0,
+      "key_context": 0,
+      "pii": 16,
+      "provider_token": 0,
+      "shell_stdin": 0
+    },
+    "custom_rules_active": 2,
+    "pii": {
+      "EMAIL": 16,
+      "IP": 0,
+      "PHONE": 0
+    }
+  },
+  "session_metrics": {
+    "turn_count": 5
+  }
+}
