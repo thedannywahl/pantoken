@@ -1,0 +1,97 @@
+{
+  "cli_version": "0.13.4",
+  "checkpoint_id": "01M7VN6GAYTCMNPP9CP15NX2HQ",
+  "session_id": "49f9a52c-93f6-4334-80ad-41a4f7117db1",
+  "strategy": "manual-commit",
+  "created_at": "2026-11-20T04:59:51.692397Z",
+  "branch": "design-tokens-2.6.0",
+  "checkpoints_count": 2,
+  "save_step_count": 1,
+  "files_touched": [
+    "docs/scripts/registry-plugins.ts",
+    "formats/components/src/components/banner/banner.css",
+    "formats/components/tests/public-surface.test.ts",
+    "renderers/web-components/src/elements/banner.ts",
+    "renderers/web-components/src/elements/global-nav-bar-item.ts",
+    "renderers/web-components/src/elements/global-nav-bar.ts",
+    "renderers/web-components/src/elements/index.ts",
+    "renderers/web-components/src/lib/elements-meta.ts"
+  ],
+  "agent": "Copilot CLI",
+  "model": "claude-haiku-4.5",
+  "turn_id": "9d064be1d36d",
+  "compact_transcript_start": 0,
+  "token_usage": {
+    "input_tokens": 230,
+    "cache_creation_tokens": 17562,
+    "cache_read_tokens": 3477508,
+    "output_tokens": 6680,
+    "api_call_count": 45
+  },
+  "session_token_usage": {
+    "input_tokens": 31499,
+    "cache_creation_tokens": 1654084,
+    "cache_read_tokens": 84965213,
+    "output_tokens": 221311,
+    "api_call_count": 1098,
+    "subagent_tokens": {
+      "input_tokens": 2641,
+      "cache_creation_tokens": 455501,
+      "cache_read_tokens": 29990981,
+      "output_tokens": 110340,
+      "api_call_count": 511
+    },
+    "subagent_tokens_complete": true
+  },
+  "redaction": {
+    "replacements": 92,
+    "layers": {
+      "betterleaks": 0,
+      "connection_string": 0,
+      "credential_key": 0,
+      "credential_value": 0,
+      "credentialed_uri": 0,
+      "custom": 0,
+      "entropy": 2320,
+      "goredact": 0,
+      "key_context": 0,
+      "pii": 22,
+      "provider_token": 0,
+      "shell_stdin": 0
+    },
+    "custom_rules_active": 2,
+    "pii": {
+      "EMAIL": 22,
+      "IP": 0,
+      "PHONE": 0
+    }
+  },
+  "skill_events_version": 1,
+  "skill_events": [
+    {
+      "id": "prompt-skill-copilot-cli-tools/upstream-diff-2026-11-20T01:56:19.677Z",
+      "event_type": "prompt_invocation",
+      "skill": {
+        "name": "tools/upstream-diff"
+      },
+      "source": {
+        "agent": "copilot-cli",
+        "signal": "prompt_slash_command",
+        "confidence": "explicit"
+      },
+      "turn_id": "481ba79ae3b1",
+      "timestamp": "2026-11-20T01:56:19.677Z",
+      "native": {
+        "command": "/tools/upstream-diff"
+      },
+      "collapse": {
+        "target": "user_message",
+        "label": "/tools/upstream-diff",
+        "default_collapsed": true
+      }
+    }
+  ],
+  "session_metrics": {
+    "turn_count": 8
+  }
+}
