@@ -3,8 +3,12 @@
   "checkpoint_id": "01M7VMD16K1H28XCZ5P10E0MCW",
   "strategy": "manual-commit",
   "branch": "design-tokens-2.6.0",
-  "checkpoints_count": 2,
-  "files_touched": null,
+  "checkpoints_count": 3,
+  "files_touched": [
+    "tools/i18n-engine/src/extract.ts",
+    "tools/i18n-engine/tests/extract.test.ts",
+    "tools/i18n-engine/tests/pipeline-guides.test.ts"
+  ],
   "sessions": [
     {
       "metadata": "/0/metadata.json",
@@ -12,17 +16,24 @@
       "compact_transcript": "/0/transcript.jsonl",
       "content_hash": "/0/content_hash.txt",
       "prompt": ""
+    },
+    {
+      "metadata": "/1/metadata.json",
+      "transcript": "/1/full.jsonl",
+      "compact_transcript": "/1/transcript.jsonl",
+      "content_hash": "/1/content_hash.txt",
+      "prompt": "/1/prompt.txt"
     }
   ],
   "token_usage": {
-    "input_tokens": 992,
-    "cache_creation_tokens": 157863,
-    "cache_read_tokens": 15476276,
-    "output_tokens": 39558,
-    "api_call_count": 193
+    "input_tokens": 1431,
+    "cache_creation_tokens": 258554,
+    "cache_read_tokens": 21005803,
+    "output_tokens": 59024,
+    "api_call_count": 277
   },
   "redaction": {
-    "replacements": 92,
+    "replacements": 93,
     "layers": {
       "betterleaks": 0,
       "connection_string": 0,
@@ -30,7 +41,7 @@
       "credential_value": 0,
       "credentialed_uri": 0,
       "custom": 0,
-      "entropy": 2320,
+      "entropy": 2337,
       "goredact": 0,
       "key_context": 0,
       "pii": 22,
