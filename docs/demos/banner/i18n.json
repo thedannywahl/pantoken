@@ -1,31 +1,3 @@
 {
-  "$schema": "https://pantoken.app/schemas/i18n.source.schema.json",
-  "text1": {
-    "message": "Relaxed Sea",
-    "translate": {
-      "en*": "optional",
-      "hu": "optional"
-    }
-  },
-  "text2": {
-    "message": "Compact Sea",
-    "translate": {
-      "en*": "optional",
-      "hu": "optional"
-    }
-  },
-  "text3": {
-    "message": "Relaxed Violet",
-    "translate": {
-      "en*": "optional",
-      "hu": "optional"
-    }
-  },
-  "text4": {
-    "message": "Compact Violet",
-    "translate": {
-      "en*": "optional",
-      "hu": "optional"
-    }
-  }
+  "$schema": "https://pantoken.app/schemas/i18n.source.schema.json"
 }
