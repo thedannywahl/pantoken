@@ -53,9 +53,10 @@ const TEMPLATE_TOKEN = /\{\{[^{}\n]+\}\}/g;
 export function preserveMarkdown(input: string): PreservedMarkdown {
   const fenced = mask(input, /```[\s\S]*?```/g, "PTK_CODE_BLOCK");
   const inline = mask(fenced.text, /`[^`\n]+`/g, "PTK_INLINE_CODE");
+  // Generated scopes encode `<`; excluding it also prevents rescanning nested prefixes.
   const scopes = mask(
     inline.text,
-    /<!-- pantoken-(?:value-scope:[^\n]*|compatibility-scaffold) -->/g,
+    /<!-- pantoken-(?:value-scope:[^<\n]*|compatibility-scaffold) -->/g,
     "PTK_SCOPE",
   );
   const packages = mask(scopes.text, /@[a-z0-9][a-z0-9.-]*\/[a-z0-9][a-z0-9.-]*/gi, "PTK_PACKAGE");
