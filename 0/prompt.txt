@@ -1,0 +1,121 @@
+/tools/upstream-diff$ node index.ts --bless ○ cache miss: 'meta-ViafhxEK.mjs' removed from 'formats/tokens/dist', executing
+✗ upstream-diff: cannot bless — 55 dropped upstream token(s) have no deprecations.json entry:
+  - --instui-component-pill-padding-vertical
+  - --instui-component-side-nav-bar-new-background-color
+  - --instui-component-side-nav-bar-new-border-color
+  - --instui-component-side-nav-bar-new-border-radius
+  - --instui-component-side-nav-bar-new-border-width
+  - --instui-component-side-nav-bar-new-button-text-color
+  - --instui-component-side-nav-bar-new-drilldown-option-active-background-color
+  - --instui-component-side-nav-bar-new-drilldown-option-background-color
+  - --instui-component-side-nav-bar-new-drilldown-option-border-radius
+  - --instui-component-side-nav-bar-new-drilldown-option-hover-background-color
+  - --instui-component-side-nav-bar-new-drilldown-option-logout-text-color
+  - --instui-component-side-nav-bar-new-drilldown-option-selected-background-color
+  - --instui-component-side-nav-bar-new-drilldown-option-selected-text-color
+  - --instui-component-side-nav-bar-new-drilldown-option-text-color
+  - --instui-component-side-nav-bar-new-fill
+  - --instui-component-side-nav-bar-new-institution-logo-gap
+  - --instui-component-side-nav-bar-new-institution-logo-padding
+  - --instui-component-side-nav-bar-new-institution-logo-stroke-color
+  - --instui-component-side-nav-bar-new-institution-logo-text-color
+  - --instui-component-side-nav-bar-new-item-background-color
+  - --instui-component-side-nav-bar-new-item-border-radius
+  - --instui-component-side-nav-bar-new-item-current-background-color
+  - --instui-component-side-nav-bar-new-item-current-text-color
+  - --instui-component-side-nav-bar-new-item-font-color
+  - --instui-component-side-nav-bar-new-item-font-family
+  - --instui-component-side-nav-bar-new-item-font-size
+  - --instui-component-side-nav-bar-new-item-font-weight
+  - --instui-component-side-nav-bar-new-item-horizontal-padding
+  - --instui-component-side-nav-bar-new-item-hover-background-color
+  - --instui-component-side-nav-bar-new-item-icon-wrapper-height
+  - --instui-component-side-nav-bar-new-item-inner-focus-outline-color
+  - --instui-component-side-nav-bar-new-item-line-height
+  - --instui-component-side-nav-bar-new-item-link-text-decoration
+  - --instui-component-side-nav-bar-new-item-outer-focus-outline-color
+  - --instui-component-side-nav-bar-new-item-selected-account-background-color
+  - --instui-component-side-nav-bar-new-item-selected-account-font-color
+  - --instui-component-side-nav-bar-new-item-selected-background-color
+  - --instui-component-side-nav-bar-new-item-selected-inner-focus-outline-color
+  - --instui-component-side-nav-bar-new-item-selected-outer-focus-outline-color
+  - --instui-component-side-nav-bar-new-item-vertical-padding
+  - --instui-component-side-nav-bar-new-main-nav-gap
+  - --instui-component-side-nav-bar-new-main-nav-margin
+  - --instui-component-side-nav-bar-new-main-nav-minimized-margin
+  - --instui-component-side-nav-bar-new-margin
+  - --instui-component-side-nav-bar-new-min-width
+  - --instui-component-side-nav-bar-new-minimized-border-radius
+  - --instui-component-side-nav-bar-new-minimized-margin
+  - --instui-component-side-nav-bar-new-minimizedmin-width
+  - --instui-component-side-nav-bar-new-nav-items-gap
+  - --instui-component-side-nav-bar-new-sub-nav-gap
+  - --instui-component-side-nav-bar-new-sub-nav-padding
+  - --instui-component-side-nav-bar-new-sub-nav-stroke-color
+  - --instui-component-side-nav-bar-new-sub-nav-text-color
+  - --instui-component-side-nav-bar-new-text-color
+  - --instui-component-side-nav-bar-new-toggle-transition
+
+Add each to formats/tokens/deprecations.json with a lifecycle (deprecatedIn / removeIn, plus a replacement or a frozen value), then re-run `vp run upgrade:bless`.
+
+---
+
+/tools/upstream-diff$ node index.ts --bless ○ cache miss: 'meta-ViafhxEK.mjs' removed from 'formats/tokens/dist', executing
+✗ upstream-diff: cannot bless — 55 dropped upstream token(s) have no deprecations.json entry:
+  - --instui-component-pill-padding-vertical
+  - --instui-component-side-nav-bar-new-background-color
+  - --instui-component-side-nav-bar-new-border-color
+  - --instui-component-side-nav-bar-new-border-radius
+  - --instui-component-side-nav-bar-new-border-width
+  - --instui-component-side-nav-bar-new-button-text-color
+  - --instui-component-side-nav-bar-new-drilldown-option-active-background-color
+  - --instui-component-side-nav-bar-new-drilldown-option-background-color
+  - --instui-component-side-nav-bar-new-drilldown-option-border-radius
+  - --instui-component-side-nav-bar-new-drilldown-option-hover-background-color
+  - --instui-component-side-nav-bar-new-drilldown-option-logout-text-color
+  - --instui-component-side-nav-bar-new-drilldown-option-selected-background-color
+  - --instui-component-side-nav-bar-new-drilldown-option-selected-text-color
+  - --instui-component-side-nav-bar-new-drilldown-option-text-color
+  - --instui-component-side-nav-bar-new-fill
+  - --instui-component-side-nav-bar-new-institution-logo-gap
+  - --instui-component-side-nav-bar-new-institution-logo-padding
+  - --instui-component-side-nav-bar-new-institution-logo-stroke-color
+  - --instui-component-side-nav-bar-new-institution-logo-text-color
+  - --instui-component-side-nav-bar-new-item-background-color
+  - --instui-component-side-nav-bar-new-item-border-radius
+  - --instui-component-side-nav-bar-new-item-current-background-color
+  - --instui-component-side-nav-bar-new-item-current-text-color
+  - --instui-component-side-nav-bar-new-item-font-color
+  - --instui-component-side-nav-bar-new-item-font-family
+  - --instui-component-side-nav-bar-new-item-font-size
+  - --instui-component-side-nav-bar-new-item-font-weight
+  - --instui-component-side-nav-bar-new-item-horizontal-padding
+  - --instui-component-side-nav-bar-new-item-hover-background-color
+  - --instui-component-side-nav-bar-new-item-icon-wrapper-height
+  - --instui-component-side-nav-bar-new-item-inner-focus-outline-color
+  - --instui-component-side-nav-bar-new-item-line-height
+  - --instui-component-side-nav-bar-new-item-link-text-decoration
+  - --instui-component-side-nav-bar-new-item-outer-focus-outline-color
+  - --instui-component-side-nav-bar-new-item-selected-account-background-color
+  - --instui-component-side-nav-bar-new-item-selected-account-font-color
+  - --instui-component-side-nav-bar-new-item-selected-background-color
+  - --instui-component-side-nav-bar-new-item-selected-inner-focus-outline-color
+  - --instui-component-side-nav-bar-new-item-selected-outer-focus-outline-color
+  - --instui-component-side-nav-bar-new-item-vertical-padding
+  - --instui-component-side-nav-bar-new-main-nav-gap
+  - --instui-component-side-nav-bar-new-main-nav-margin
+  - --instui-component-side-nav-bar-new-main-nav-minimized-margin
+  - --instui-component-side-nav-bar-new-margin
+  - --instui-component-side-nav-bar-new-min-width
+  - --instui-component-side-nav-bar-new-minimized-border-radius
+  - --instui-component-side-nav-bar-new-minimized-margin
+  - --instui-component-side-nav-bar-new-minimizedmin-width
+  - --instui-component-side-nav-bar-new-nav-items-gap
+  - --instui-component-side-nav-bar-new-sub-nav-gap
+  - --instui-component-side-nav-bar-new-sub-nav-padding
+  - --instui-component-side-nav-bar-new-sub-nav-stroke-color
+  - --instui-component-side-nav-bar-new-sub-nav-text-color
+  - --instui-component-side-nav-bar-new-text-color
+  - --instui-component-side-nav-bar-new-toggle-transition
+
+Add each to formats/tokens/deprecations.json with a lifecycle (deprecatedIn / removeIn, plus a replacement or a frozen value), then re-run `vp run upgrade:bless`.
