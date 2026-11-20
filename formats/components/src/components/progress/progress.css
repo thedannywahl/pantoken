@@ -36,13 +36,14 @@
  * @cssproperty --pantoken-progress-fill <color> — The native value part and `.bar` fill; the -color-* modifiers set it.
  * @accessibility Use native `<progress>` for a zero-based task completion range and `<meter>` when the minimum is non-zero. Give either element an accessible name by nesting it in `<label>` or associating a separate `<label>` through matching `for` and `id` values.
  * @compat Scopes the meter part rules with the `@scope` at-rule; browsers without `@scope` support ignore those scoped rules.
- * @example -canvas-rce -docs
+ * @example labels=[canvas-rce,docs]
  * ### Nested label
- * ```html -canvas-rce -docs
+ * ```html
  * <label>
  *   Uploading Document: <progress class="pfx-progress -color-brand" value="70">70%</progress>
  * </label>
  * ```
+ * @example labels=[reference]
  * ### External label
  * ```html
  * <label for="storage-used">Storage used</label>
@@ -67,7 +68,7 @@
  * @related progress-circle — The circular form of the same determinate progress.
  * @stable
  * @sealed
- * @example -automatica11y
+ * @example labels=[automatica11y]
  * ```html
  * <div><label>Uploading notes <progress class="pfx-progress -color-brand -size-xs" value="70" max="100">70%</progress></label></div>
  * <div><label>Preparing files <progress class="pfx-progress -color-info -size-sm" value="40" max="100">40%</progress></label></div>

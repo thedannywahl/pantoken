@@ -22,7 +22,7 @@ test("avatar retains its intentional name abbreviation and authored-initials alt
 test("documentation and audit examples retain complete names without hiding accessible text", () => {
   const [record] = parseCssDocs(avatarCss({ prefix: "instui" }));
   expect(record.examples).toHaveLength(2);
-  const targets = resolveExampleTargets(record.examples);
+  const targets = resolveExampleTargets(record);
   expect(targets.docs).toHaveLength(1);
   expect(targets.automatica11y).toHaveLength(1);
   for (const [index, example] of record.examples.entries()) {

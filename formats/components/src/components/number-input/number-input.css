@@ -16,7 +16,7 @@
  * @pseudo ::placeholder — The placeholder text of the inner input, in a muted color.
  * @cssstate disabled
  * @accessibility Name the native `<input type="number">` so it owns the value and keyboard controls. Mark redundant arrow buttons with both `aria-hidden="true"` and `tabindex="-1"`; never leave an assistive-technology-hidden button in the tab order.
- * @example -canvas-rce -docs
+ * @example labels=[canvas-rce,docs]
  * ```html
  * <span class="pfx-number-input">
  *   <input id="qty" type="number" value="1" aria-label="Quantity">
@@ -36,7 +36,7 @@
  * }
  * @related text-input — Shares the same input facade chrome.
  * @related range-input — Another numeric input control.
- * @example -automatica11y
+ * @example labels=[automatica11y]
  * ```html
  * <p><label for="audit-qty-small">Small quantity</label><span class="pfx-number-input -size-sm">
  *   <input id="audit-qty-small" type="number" min="0" max="10" value="1">

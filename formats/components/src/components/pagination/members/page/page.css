@@ -10,7 +10,7 @@
  * @component pagination {
  *   .page {}
  * }
- * @example -automatica11y
+ * @example labels=[automatica11y]
  * ```html
  * <nav class="pfx-pagination" aria-label="Pagination">
  *   <button class="arrow" type="button" aria-label="First page" disabled><span class="pfx-icon -icon-chevrons-left"></span></button>

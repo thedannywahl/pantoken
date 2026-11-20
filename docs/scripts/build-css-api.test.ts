@@ -4,7 +4,9 @@ import { tmpdir } from "node:os";
 import { join } from "node:path";
 import { CssDocConfigFile } from "@cssdoc/config";
 import type { CssDocEntry, CssModifier } from "@cssdoc/core";
+import { emitCssApi } from "@cssdoc/typedoc";
 import type { Token } from "@pantoken/tokens";
+import { collectUnits, segmentMarkdown } from "./segment-markdown.ts";
 import {
   annotateJsRequirement,
   assertNoUnknownReferences,
@@ -46,6 +48,46 @@ beforeAll(() => {
 });
 afterAll(() => {
   rmSync(tmp, { recursive: true, force: true });
+});
+
+test("filters whole cssdoc examples before extracting page translations", () => {
+  const css = join(tmp, "example-audiences.css");
+  writeFileSync(
+    css,
+    [
+      "/**",
+      " * @component audience-test",
+      " * @example labels=[automatica11y]",
+      " * ### Audit caption",
+      " * ```html",
+      " * <button>Audit fixture</button>",
+      " * ```",
+      " * @example labels=[canvas-rce]",
+      " * ```html",
+      " * <button>Canvas only</button>",
+      " * ```",
+      " * @example labels=[canvas-rce,docs]",
+      " * ```html",
+      " * <button>Shared example</button>",
+      " * ```",
+      " * @example",
+      " * ```html",
+      " * <button>Unlabeled example</button>",
+      " * ```",
+      " */",
+      ".pfx-audience-test { color: red; }",
+    ].join("\n"),
+  );
+  const result = emitCssApi({
+    css: [css],
+    outputDirectory: tmp,
+    configFile: CssDocConfigFile.loadForFolder(repoRoot),
+  });
+  const page = readFileSync(result.pages[0]!, "utf8");
+  expect(page).not.toMatch(/Audit caption|Audit fixture|Canvas only|labels=\[/u);
+  expect(collectUnits(segmentMarkdown(page)).map(({ text }) => text)).toEqual(
+    expect.arrayContaining(["Shared example", "Unlabeled example"]),
+  );
 });
 
 describe("inferSyntax", () => {

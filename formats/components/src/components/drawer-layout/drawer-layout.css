@@ -15,7 +15,7 @@
  * @remarks `-placement-end` and the default (start) both use `flex-direction`/`inset-inline-*` logical properties, not `left`/`right`, so the tray's side follows `direction`/`dir="rtl"` automatically — no separate RTL rules are needed.
  * @accessibility Name every region with `aria-label` or `aria-labelledby`. Use `div` for InstUI-style regions, not `<main role="region">`. When the tray acts as navigation, use a named `<nav>` or place one inside the tray.
  * @compat The `drawer-layout.tray`/`drawer-layout.content` members switch to overlay mode automatically via a `@container` query once this element's inline-size drops below tray-width + `--pantoken-bp-md`. The `@pantoken/interactions` behavior additionally toggles `[should-overlay-tray]`/`.-should-overlay-tray` (a manual override) and emits `overlaytraychange` for apps that need the change as an event.
- * @example -canvas-rce -docs
+ * @example labels=[canvas-rce,docs]
  * ```html
  * <div class="pfx-drawer-layout" id="drawer" open>
  *   <div class="tray" role="region" aria-label="Course panel">Navigation</div>
@@ -29,7 +29,7 @@
  * }
  * @related tray — A standalone edge overlay; this layout keeps tray and content in the same flow.
  * @related context-view — A smaller anchored surface for contextual actions and detail.
- * @example -automatica11y
+ * @example labels=[automatica11y]
  * ```html
  * <div class="pfx-drawer-layout -placement-start" id="drawer" open style="min-block-size: 6rem">
  *   <div class="tray" role="region" aria-label="Start course panel"></div>

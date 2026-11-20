@@ -6,7 +6,7 @@
  * @part .weekday — A weekday column header.
  * @remarks See the `calendar.day` member for the individual day cells.
  * @a11y Expose the grid with `role="table"` and a descriptive `aria-label`, and give each navigation button its own `aria-label`.
- * @example -canvas-rce -docs
+ * @example labels=[canvas-rce,docs]
  * ```html
  * <div class="pfx-calendar" role="table" aria-label="March 2026">
  *   <div class="nav">
@@ -57,7 +57,7 @@
  *     .day:many {}
  *   }
  * }
- * @example -automatica11y
+ * @example labels=[automatica11y]
  * ```html
  * <div class="pfx-calendar">
  *   <div class="nav"><strong>March 2026</strong></div>

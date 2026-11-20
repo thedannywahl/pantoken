@@ -7,7 +7,7 @@
  * @modifier -size-lg — Large.
  * @part .label — The numeric label, e.g. "3/5".
  * @a11y Give it role="img" and an aria-label stating the rating, since the stars are icon glyphs.
- * @example -canvas-rce -docs
+ * @example labels=[canvas-rce,docs]
  * ```html
  * <span class="pfx-rating -size-sm" role="img" aria-label="2 out of 3 stars">
  *   <span class="pfx-icon -icon-star-solid"></span> <span class="pfx-icon -icon-star-solid"></span> <span class="pfx-icon -icon-star"></span>
@@ -19,7 +19,7 @@
  *   [class*="-icon-"] {}
  *   .label {}
  * }
- * @example -automatica11y
+ * @example labels=[automatica11y]
  * ```html
  * <span class="pfx-rating" role="img" aria-label="2 out of 3 stars">
  *   <span class="-icon-star-solid" aria-hidden="true"></span> <span class="-icon-star-solid" aria-hidden="true"></span> <span class="-icon-star" aria-hidden="true"></span>

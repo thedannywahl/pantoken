@@ -16,7 +16,8 @@
  * - Give TrailingContentArea role="complementary" with a descriptive aria-label that reflects its content, such as "Student details"
  * - Give each UtilityPanel a distinct aria-label: "AI assistant", "Notifications", or "Filters"
  * - When a UtilityPanel opens, move focus into the panel; when it closes, return focus to the trigger that opened it
- * @example -automatica11y -nocard
+ * @example labels=[automatica11y]
+ * -nocard
  * ```html
  * <body class="pfx-display-flex" data-a11y-root>
  *   <nav class="pfx-side-nav-bar" aria-label="Global navigation"><a href="#overview">Canvas</a></nav>

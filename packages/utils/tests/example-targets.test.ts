@@ -22,97 +22,60 @@ test("scans long malformed flag sequences without backtracking", () => {
   }
 }, 2_000);
 
-test("Canvas routes explicit examples by interactions state without changing docs selection", () => {
-  const examples = [
-    "-canvas-rce\n```html\n<div>With close button</div>\n```",
-    "```html -canvas-rce-no-interactions\n<div>Static</div>\n```",
-    "-docs\n```html\n<div>Docs</div>\n```",
-  ];
-  expect(resolveExampleTargets(examples)).toEqual({ automatica11y: [], canvasRce: [0], docs: [2] });
-  expect(resolveExampleTargets(examples, { interactions: false })).toEqual({
-    automatica11y: [],
+test("Canvas switches variants without changing docs or audit selection", () => {
+  const entry = {
+    examples: ["Interactive", "Static", "Audit"],
+    exampleLabels: {
+      0: ["canvas-rce", "docs"],
+      1: ["canvas-rce-no-interactions"],
+      2: ["automatica11y"],
+    },
+  };
+  expect(resolveExampleTargets(entry)).toEqual({ automatica11y: [2], canvasRce: [0], docs: [0] });
+  expect(resolveExampleTargets(entry, { interactions: false })).toEqual({
+    automatica11y: [2],
     canvasRce: [1],
-    docs: [2],
+    docs: [0],
   });
   expect(
-    resolveExampleTargets(["-canvas-rce\n```html\n<div>Legacy</div>\n```"], { interactions: false })
-      .canvasRce,
+    resolveExampleTargets(
+      { examples: ["Interactive"], exampleLabels: { 0: ["canvas-rce"] } },
+      { interactions: false },
+    ).canvasRce,
   ).toEqual([0]);
   expect(
-    resolveExampleTargets(["-canvas-rce-no-interactions\n```html\n<div>Static only</div>\n```"])
-      .canvasRce,
+    resolveExampleTargets({
+      examples: ["Static only"],
+      exampleLabels: { 0: ["canvas-rce-no-interactions"] },
+    }).canvasRce,
   ).toEqual([]);
 });
 
-test("keeps existing Canvas and docs behavior when there are no audience flags", () => {
-  expect(resolveExampleTargets(["first", "-nocard\n```html\nsecond\n```"])).toEqual({
-    automatica11y: [],
-    canvasRce: [0],
-    docs: [0, 1],
-  });
-});
-
-test("uses explicit audience examples and assigns unflagged examples to missing audiences", () => {
-  const examples = [
-    "unflagged first",
-    "-automatica11y\n```html\naudit\n```",
-    "```html -canvas-rce\ncanvas\n```",
-    "unflagged remainder",
-  ];
-
-  expect(resolveExampleTargets(examples)).toEqual({
-    automatica11y: [1],
-    canvasRce: [2],
-    docs: [0, 3],
-  });
-});
-
-test("Canvas takes the first unassigned example and docs get the remainder", () => {
+test("Canvas falls back to the first unlabeled example without hiding it from docs", () => {
   expect(
-    resolveExampleTargets([
-      "-automatica11y\n```html\naudit\n```",
-      "Canvas fallback",
-      "Docs fallback",
-    ]),
+    resolveExampleTargets({
+      examples: ["Audit", "Canvas fallback", "Docs"],
+      exampleLabels: { 0: ["automatica11y"], 2: ["docs"] },
+    }),
   ).toEqual({
     automatica11y: [0],
     canvasRce: [1],
-    docs: [2],
-  });
-});
-
-test("keeps only explicitly tagged docs examples when the docs audience is specified", () => {
-  expect(
-    resolveExampleTargets([
-      "Canvas fallback",
-      "-docs\n```html\ndocumentation\n```",
-      "-automatica11y\n```html\naudit\n```",
-    ]),
-  ).toEqual({
-    automatica11y: [2],
-    canvasRce: [0],
-    docs: [1],
+    docs: [1, 2],
   });
 });
 
 test("returns no targets for an empty example list", () => {
-  expect(resolveExampleTargets([])).toEqual({ automatica11y: [], canvasRce: [], docs: [] });
-});
-
-test("does not use the legacy example comment as an Automatica11y fallback", () => {
-  expect(
-    resolveExampleTargets([
-      "```html\n\\3c !-- automatica11y: button -->\n<button>Save</button>\n```",
-    ]),
-  ).toEqual({
+  expect(resolveExampleTargets({ examples: [] })).toEqual({
     automatica11y: [],
-    canvasRce: [0],
-    docs: [0],
+    canvasRce: [],
+    docs: [],
   });
 });
 
 test("does not treat audience-like text in an unfenced example body as metadata", () => {
-  expect(resolveExampleTargets(['<p class="-docs">The -automatica11y option</p>'])).toEqual({
+  expect(
+    resolveExampleTargets({ examples: ['<p class="-docs">The -automatica11y option</p>'] }),
+  ).toEqual({
     automatica11y: [],
     canvasRce: [0],
     docs: [0],

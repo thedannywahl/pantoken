@@ -29,14 +29,14 @@
  * @cssstate disabled
  * @cssstate pressed
  * @a11y Drive the `-toggle` variant's pressed state with `aria-pressed`, and mark a disabled button with `aria-disabled` (or the native `disabled`).
- * @example -canvas-rce
+ * @example labels=[canvas-rce]
  * ```html
  * <div class="pfx-button-group">
  *   <button class="pfx-button">Primary</button>
  *   <button class="pfx-button -color-secondary">Secondary</button>
  * </div>
  * ```
- * @example -automatica11y
+ * @example labels=[automatica11y]
  * ```html
  * <div>
  *   <div><button class="pfx-button -color-primary -size-sm" type="button" data-a11y-trigger data-a11y-root>Save draft</button></div>
@@ -72,7 +72,7 @@
  *   </div>
  * </div>
  * ```
- * @example -docs
+ * @example labels=[docs]
  * ```html
  * <div class="pfx-button-group">
  *   <button class="pfx-button -color-danger">Delete</button>

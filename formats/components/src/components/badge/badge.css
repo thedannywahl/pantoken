@@ -20,7 +20,7 @@
  * @cssproperty --pantoken-badge-text <color> — The text colour, paired to the accent so it stays legible.
  * @remarks To place a badge over a target, wrap both in a `.pfx-badge-wrapper` (the position anchor) and pin the badge with a `-placement-*` modifier.
  * @animation pantoken-badge-pulse — The pulse ring animation.
- * @example -canvas-rce -docs
+ * @example labels=[canvas-rce,docs]
  * ```html
  * <span class="pfx-badge-wrapper">
  *   <button class="pfx-button">Inbox</button>
@@ -36,7 +36,7 @@
  * }
  * @related pill — The inline label-chip counterpart.
  * @demo self:badge
- * @example -automatica11y
+ * @example labels=[automatica11y]
  * ```html
  * <div><span class="pfx-badge -standalone" role="img" aria-label="4 unread messages">4</span></div>
  * <div><span class="pfx-badge -standalone -color-success" role="img" aria-label="2 completed reviews">2</span></div>

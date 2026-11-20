@@ -7,11 +7,11 @@
  * @summary Animation state classes for the `Transition` component — `.instui-transition` and state classes (`-transition-fade-entering`, `-transition-scale-exited`, etc.) — usable bare or chained onto any component.
  * @cssproperty --duration — Animation duration (default `300ms`); override to speed up or slow down every transition state.
  * @cssproperty --timing — Animation timing function (default `ease-in-out`).
- * @example -automatica11y
+ * @example labels=[automatica11y]
  * ```html
  * <div class="instui-transition -transition-fade-entered">Animated content</div>
  * ```
- * @example
+ * @example labels=[canvas-rce]
  * <div class="instui-transition -transition-fade-entering">Animated content</div>
  */
 @property --duration {

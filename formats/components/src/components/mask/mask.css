@@ -5,7 +5,7 @@
  * @a11y A contained spinner honors reduced motion without hiding the overlay or loading indicator. Keep its status role and meaningful loading label.
  * @modifier -fullscreen — Fixed to the viewport, covering it at a high z-index.
  * @modifier -blur — Blur what's behind the mask with a backdrop-filter.
- * @example -canvas-rce -docs
+ * @example labels=[canvas-rce,docs]
  * ```html
  * <div style="position: relative">
  *   <div class="instui-mask">
@@ -13,15 +13,15 @@
  *   </div>
  * </div>
  * ```
- * @example -automatica11y
+ * @example labels=[automatica11y]
  * ```html
  * <div style="position: relative; min-height: 100px"><div class="pfx-mask" role="region" aria-label="Default loading mask"></div></div>
  * ```
- * @example -automatica11y
+ * @example labels=[automatica11y]
  * ```html
  * <div style="position: relative; min-height: 100px"><div class="pfx-mask -blur" role="region" aria-label="Blurred loading mask"></div></div>
  * ```
- * @example -automatica11y
+ * @example labels=[automatica11y]
  * ```html
  * <div class="pfx-mask -fullscreen" role="region" aria-label="Fullscreen loading mask"></div>
  * ```

@@ -35,6 +35,12 @@ with an unsanitized SVG field, even from a trusted source.
 
 ## Toolchain
 
+### cssdoc example audiences
+
+**Rule** — Author audiences with `@example labels=[canvas-rce,docs]`. The docs site applies
+`render.exampleFilters.markdown` during CSS API emission, before preview rendering or translation
+extraction. Canvas and the accessibility audit read the same labels from the cssdoc model.
+
 ### oxfmt corrupts interpolated CSS-in-TS selectors
 
 **Symptom** — After `vp fmt`/`vp check`, a component's compound selector silently changed meaning:

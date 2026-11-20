@@ -48,9 +48,9 @@ const FOCUS_DOC = css`
  * @cssproperty --instui-focus-outline-inset — The outline offset used when \`-focus-position-inset\` draws the ring inside the edge.
  * @a11y Every focusable element gets a \`:focus-visible\` outline ring so keyboard users can see what's focused.
  * @a11y In forced colors, the resting outline is removed instead of relying on transparency; keyboard focus and opt-in focus-within restore its line style using system-adjusted colors.
- * @example
+ * @example labels=[canvas-rce]
  * <button class="instui-button -focus-color-danger">Delete</button>
- * @example -automatica11y
+ * @example labels=[automatica11y]
  * \`\`\`html
  * <button data-a11y-root data-a11y-trigger>Default focus</button>
  * <button class="-focus-color-danger">Danger focus</button>

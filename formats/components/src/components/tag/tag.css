@@ -9,13 +9,13 @@
  * @modifier -inline — Reads inline with text and gets a trailing dismiss glyph.
  * @modifier -readonly — Read-only (non-dismissable) tag.
  * @pseudo ::after — Renders the trailing dismiss glyph on a dismissible inline tag.
- * @example -canvas-rce -docs
+ * @example labels=[canvas-rce,docs]
  * ```html
  * <span class="pfx-tag -size-sm">small</span>
  * ```
  * @related pill — The read-only label-chip counterpart.
  * @demo self:tag
- * @example -automatica11y
+ * @example labels=[automatica11y]
  * ```html
  * <p><span class="pfx-tag -size-sm">Small tag</span></p>
  * <p><span class="pfx-tag">Medium tag</span></p>

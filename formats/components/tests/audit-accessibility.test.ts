@@ -35,7 +35,7 @@ afterEach(() => {
   for (const dir of directories.splice(0)) rmSync(dir, { recursive: true, force: true });
 });
 const entry = (
-  example = '-automatica11y\n```html\n<button class="pfx-button">Save</button>\n```',
+  example = 'labels=[automatica11y]\n```html\n<button class="pfx-button">Save</button>\n```',
 ) =>
   parseCssDocs(
     `/**\n * @component button\n * @example ${example.replaceAll("\n", "\n * ")}\n */\n.pfx-button { color: red; }`,
@@ -57,7 +57,7 @@ test("requires unique records, explicit examples, and valid markup", () => {
   expect(() => collectExamples([], ["button"])).toThrow("found 0");
   expect(() => collectExamples([...entry(), ...entry()], ["button"])).toThrow("found 2");
   expect(() => collectExamples(entry("<button>Save</button>"), ["button"])).toThrow(
-    "Missing -automatica11y",
+    "Missing automatica11y-labeled example",
   );
 });
 test("expands only four supported theme/scheme cases and loads local production assets", () => {

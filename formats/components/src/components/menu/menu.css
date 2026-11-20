@@ -11,7 +11,8 @@
  *   .item:many {}
  *   .separator:optional {}
  * }
- * @example -canvas-rce -nocard
+ * @example labels=[canvas-rce]
+ * -nocard
  * ```html
  * <button class="pfx-button" type="button" popovertarget="canvas-actions-menu" aria-haspopup="menu" aria-controls="canvas-actions-menu" aria-expanded="false">Actions</button>
  * <div class="pfx-menu" id="canvas-actions-menu" popover="auto" role="menu" aria-label="Actions" data-menu-navigation>
@@ -21,7 +22,8 @@
  *   <button class="item -disabled" type="button" role="menuitem" aria-disabled="true">Delete</button>
  * </div>
  * ```
- * @example -automatica11y -nocard
+ * @example labels=[automatica11y]
+ * -nocard
  * ```html
  * <button type="button" popovertarget="actions-menu" aria-haspopup="menu" aria-controls="actions-menu" aria-expanded="false" data-a11y-trigger>Actions</button>
  * <div class="pfx-menu" id="actions-menu" popover="auto" role="menu" aria-label="Actions" data-menu-navigation data-a11y-root>
@@ -29,7 +31,8 @@
  *   <button class="item" type="button" role="menuitem">Delete</button>
  * </div>
  * ```
- * @example -canvas-rce-no-interactions -nocard
+ * @example labels=[canvas-rce-no-interactions]
+ * -nocard
  * ```html
  * <div class="pfx-menu">
  *   <div class="group">Actions</div>
@@ -39,7 +42,8 @@
  *   <div class="item">Delete</div>
  * </div>
  * ```
- * @example -docs -nocard
+ * @example labels=[docs]
+ * -nocard
  * ```html
  * <button class="pfx-button" type="button" popovertarget="docs-actions-menu" aria-haspopup="menu" aria-controls="docs-actions-menu" aria-expanded="false">Actions</button>
  * <div class="pfx-menu" id="docs-actions-menu" popover="auto" role="menu" aria-label="Actions" data-menu-navigation>

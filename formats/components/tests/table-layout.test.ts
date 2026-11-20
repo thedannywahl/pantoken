@@ -85,7 +85,7 @@ test("table docs preserve named scroll regions while audits isolate native table
   ]) {
     const [record] = parseCssDocs(render({ prefix: "instui" }));
     expect(record.examples.length).toBeGreaterThan(0);
-    const auditTargets = resolveExampleTargets(record.examples).automatica11y;
+    const auditTargets = resolveExampleTargets(record).automatica11y;
     for (const [index, example] of record.examples.entries()) {
       const window = new Window();
       try {

@@ -28,7 +28,6 @@ import {
   reassembleDemoHtml,
   segmentDemoHtml,
 } from "./segment-demo-html.ts";
-import { resolveExampleTargets } from "@pantoken/utils/example-targets";
 import {
   GENERATED_VALUES_MARKER,
   generatedMarkdown,
@@ -290,13 +289,7 @@ export function segmentMarkdown(md: string, options: { scope?: string } = {}): S
       const start = index;
       index = scanFence(lines, start);
       const hasClosingFence = index > start + 1 && FENCE.test(lines[index - 1]);
-      let previous = start - 1;
-      while (previous >= 0 && lines[previous].trim() === "") previous -= 1;
-      const metadata =
-        previous >= 0 && isFlagOnly(lines[previous].trim()) ? `${lines[previous]}\n` : "";
-      const audience = resolveExampleTargets([metadata + lines.slice(start, index).join("\n")]);
-      const auditOnly = audience.automatica11y.length > 0 && audience.docs.length === 0;
-      if (HTML_FENCE.test(line) && hasClosingFence && !auditOnly) {
+      if (HTML_FENCE.test(line) && hasClosingFence) {
         segments.push({
           kind: "html",
           opening: lines[start],

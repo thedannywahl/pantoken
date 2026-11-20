@@ -53,12 +53,12 @@ export const truncate: Definition = defineUtility({
  * @modifier --lines-4 — Alias of \`--max-lines-4\`.
  * @modifier --lines-5 — Alias of \`--max-lines-5\`.
  * @compat Clamping relies on \`-webkit-line-clamp\` with \`display: -webkit-box\`, paired with the standard \`line-clamp\`.
- * @example
+ * @example labels=[canvas-rce]
  * <div class="--truncate">This text is clamped to one line by default and ends in an ellipsis.</div>
  * <div class="--truncate" style="--lines: 3">This text is clamped to three lines and ends in an ellipsis.</div>
  * <button class="instui-button --truncate">…</button>
  * @a11y Truncation hides overflowing text visually while it stays in the DOM, so don't clip information people need (titles, errors, instructions) and keep the full text available another way. Check that clipped text still reads correctly when zoomed or resized.
- * @example -automatica11y
+ * @example labels=[automatica11y]
  * \`\`\`html
  * <p class="--truncate --max-lines-2" style="inline-size: 16rem">Quarterly planning notes for the curriculum review committee, including agenda items and follow-up actions.</p>
  * \`\`\`

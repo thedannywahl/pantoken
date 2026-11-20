@@ -28,8 +28,6 @@ const VERBATIM_API_PROSE = new Set([
   "AI",
   "JS",
   "AB",
-  "-canvas-rce\n",
-  "-docs\n",
   "WCAG 2.2 1.3.1, 3.3.2, 4.1.2",
   "WCAG 2.2 1.4.11",
   "WCAG 2.2 1.4.11, 2.4.13",

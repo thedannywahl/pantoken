@@ -14,7 +14,7 @@
  *     .label {}
  *   }
  * }
- * @example -automatica11y
+ * @example labels=[automatica11y]
  * ```html
  * <nav class="pfx-global-nav-bar" aria-label="Primary">
  *   <a class="item -selected" href="#home" aria-current="page">

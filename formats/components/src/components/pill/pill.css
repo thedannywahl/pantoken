@@ -21,7 +21,7 @@
  * @modifier -color-stone — Stone accent status.
  * @modifier -icon-* — A leading glyph from the icon set (e.g. `-icon-check`), painted before the label.
  * @pseudo ::before — The leading icon glyph, sized and spaced to the pill.
- * @example -canvas-rce -docs
+ * @example labels=[canvas-rce,docs]
  * ```html
  * <div class="pfx-view --display-flex --gap-md" style="flex-wrap: wrap">
  *   <span class="instui-pill -color-success -icon-check">Published</span>
@@ -34,7 +34,7 @@
  * ```
  * @related badge — A badge is the count or notification counterpart.
  * @related tag — A tag is the removable, form-oriented counterpart.
- * @example -automatica11y
+ * @example labels=[automatica11y]
  * ```html
  * <div><span class="pfx-pill -color-neutral -size-x-small -icon-check">Draft checked</span></div>
  * <div><span class="pfx-pill -color-info -size-medium -icon-check">Review checked</span></div>

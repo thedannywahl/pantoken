@@ -24,7 +24,7 @@
  * }
  * @a11y Use a labelled fieldset and one shared radio name with a checked default. Native radios
  *   announce their checked state; overflow buttons need labels describing their scroll direction.
- * @example
+ * @example labels=[canvas-rce]
  * ```html
  * <fieldset class="pfx-segmented-control" aria-label="Course view">
  *   <div class="viewport">
@@ -41,7 +41,8 @@
  *   </div>
  * </fieldset>
  * ```
- * @example -automatica11y -nocard
+ * @example labels=[automatica11y]
+ * -nocard
  * ```html
  * <fieldset class="pfx-segmented-control" aria-label="Course view" data-a11y-root>
  *   <div class="viewport">

@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: pantoken\n"
-"PO-Revision-Date: 2026-11-20 02:28+0000\n"
+"PO-Revision-Date: 2026-11-20 18:46+0000\n"
 "Last-Translator: pantoken localization engine\n"
 "Language-Team: pantoken\n"
 "MIME-Version: 1.0\n"
@@ -657,7 +657,6 @@ msgid "AI Agent"
 msgstr ""
 
 #: css/agent-shell.md
-#: css/card.md
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "Content here."
@@ -3012,18 +3011,6 @@ msgstr ""
 #: css/alert.md
 #, no-c-format
 msgctxt "docs.api:prose"
-msgid "Settings saved."
-msgstr ""
-
-#: css/alert.md
-#, no-c-format
-msgctxt "docs.api:prose"
-msgid "\n  Settings saved.\n  "
-msgstr ""
-
-#: css/alert.md
-#, no-c-format
-msgctxt "docs.api:prose"
 msgid "\n  An alert with the default info color, and a custom icon.\n"
 msgstr ""
 
@@ -4111,7 +4098,7 @@ msgstr ""
 #: css/banner.md
 #, no-c-format
 msgctxt "docs.api:prose"
-msgid "**Size** controls padding and gap: `relaxed` (default) is roomier; `compact` tightens both.\n  **Color** sets the fill: bare (no modifier) is unfilled — border and icon only; `-color-violet`\n  and `-color-sea` add a tinted background plus a matching icon swatch."
+msgid "**Size** controls padding and gap: `relaxed` (default) is roomier; `compact` tightens both. **Color** sets the fill: bare (no modifier) is unfilled — border and icon only; `-color-violet` and `-color-sea` add a tinted background plus a matching icon swatch."
 msgstr ""
 
 #: css/banner.md
@@ -4128,13 +4115,11 @@ msgid "@import \"@pantoken/plugin-custom-components/custom-components.css\";"
 msgstr ""
 
 #: css/banner.md
-#: css/banner.md
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "New feature"
 msgstr ""
 
-#: css/banner.md
 #: css/banner.md
 #, no-c-format
 msgctxt "docs.api:prose"
@@ -4145,12 +4130,6 @@ msgstr ""
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "OK"
-msgstr ""
-
-#: css/banner.md
-#, no-c-format
-msgctxt "docs.api:prose"
-msgid "\n  This is a sea-colored banner with compact spacing.\n"
 msgstr ""
 
 #: css/banner.md
@@ -4229,12 +4208,6 @@ msgstr ""
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "**Source:** [base.css](https://github.com/thedannywahl/pantoken/blob/main/formats/components/src/rules/base/base.css)"
-msgstr ""
-
-#: css/base.md
-#, no-c-format
-msgctxt "docs.api:prose"
-msgid "A styled link on the base surface."
 msgstr ""
 
 #: css/base.md
@@ -4550,19 +4523,7 @@ msgstr ""
 #: css/button-set.md
 #, no-c-format
 msgctxt "docs.api:prose"
-msgid "Its own chained modifiers (`-color-*`, `-size-*`, `-shape-*`, `-toggle`, `-condensed`,\n  `-without-background`, `-without-border`, `-display-block`) set a default for every child\n  `.instui-button` that doesn't carry its own modifier in that same category — a button's own\n  modifier class always wins over the group's default. `-icon-*` is always per-button; it's\n  never read from the group. Deprecated button aliases (`-ghost`, `-color-primary-inverse`)\n  aren't supported as group-level modifiers — use their canonical replacements\n  (`-color-tertiary`, `-on-color`) instead. Each join shows a single 1px seam in the buttons'\n  own border color (solid fills, whose border matches the fill, tint it with the label color).\n  `-without-seam` is group-only: it hides that seam so the buttons read as\n  one continuous control.\n  Put `-width-half` on an individual icon-only child button for a split-action\n  trigger with half the standard square width and the full button height."
-msgstr ""
-
-#: css/button-set.md
-#, no-c-format
-msgctxt "docs.api:prose"
-msgid "Left"
-msgstr ""
-
-#: css/button-set.md
-#, no-c-format
-msgctxt "docs.api:prose"
-msgid "Right"
+msgid "Its own chained modifiers (`-color-*`, `-size-*`, `-shape-*`, `-toggle`, `-condensed`, `-without-background`, `-without-border`, `-display-block`) set a default for every child `.instui-button` that doesn't carry its own modifier in that same category — a button's own modifier class always wins over the group's default. `-icon-*` is always per-button; it's never read from the group. Deprecated button aliases (`-ghost`, `-color-primary-inverse`) aren't supported as group-level modifiers — use their canonical replacements (`-color-tertiary`, `-on-color`) instead. Each join shows a single 1px seam in the buttons' own border color (solid fills, whose border matches the fill, tint it with the label color). `-without-seam` is group-only: it hides that seam so the buttons read as one continuous control. Put `-width-half` on an individual icon-only child button for a split-action trigger with half the standard square width and the full button height."
 msgstr ""
 
 #: css/button-set.md
@@ -4859,20 +4820,6 @@ msgid "**Source:** [button.css](https://github.com/thedannywahl/pantoken/blob/ma
 msgstr ""
 
 #: css/button.md
-#, no-c-format
-msgctxt "docs.api:prose"
-msgid "Primary"
-msgstr ""
-
-#: css/button.md
-#, no-c-format
-msgctxt "docs.api:prose"
-msgid "Secondary"
-msgstr ""
-
-#: css/button.md
-#: css/menu.md
-#: css/menu.md
 #: css/menu.md
 #: renderers/web-components/src/variables/button.md
 #, no-c-format
@@ -5392,18 +5339,6 @@ msgstr ""
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "@import \"@pantoken/components/components.css\";"
-msgstr ""
-
-#: css/card.md
-#, no-c-format
-msgctxt "docs.api:prose"
-msgid "Content card -nocard"
-msgstr ""
-
-#: css/card.md
-#, no-c-format
-msgctxt "docs.api:prose"
-msgid "Card title"
 msgstr ""
 
 #: css/card.md
@@ -6313,15 +6248,12 @@ msgid "**Source:** [form-field-messages.css](https://github.com/thedannywahl/pan
 msgstr ""
 
 #: css/form-field-messages.md
-#: css/form-field.md
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "We'll never share it."
 msgstr ""
 
 #: css/form-field-messages.md
-#: css/form-field.md
-#: css/form-field.md
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "Enter a valid email address."
@@ -6376,32 +6308,9 @@ msgid "<!-- pantoken-value-scope:css%2Fform-field.md -->\nThis component's CSS r
 msgstr ""
 
 #: css/form-field.md
-#: css/link.md
-#: css/modal.md
-#: css/simple-select.md
-#: css/toggle-details.md
-#, no-c-format, pantoken-verbatim
-msgctxt "docs.api:prose"
-msgid "-canvas-rce\n"
-msgstr ""
-
-#: css/form-field.md
-#: css/form-field.md
-#, no-c-format
-msgctxt "docs.api:prose"
-msgid "Email address"
-msgstr ""
-
-#: css/form-field.md
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "Display name"
-msgstr ""
-
-#: css/form-field.md
-#, no-c-format
-msgctxt "docs.api:prose"
-msgid "Use your work email."
 msgstr ""
 
 #: css/form-field.md
@@ -6513,20 +6422,6 @@ msgid "**Source:** [index.ts](https://github.com/thedannywahl/pantoken/blob/main
 msgstr ""
 
 #: css/gap.md
-#: css/layout.md
-#, no-c-format
-msgctxt "docs.api:prose"
-msgid "One"
-msgstr ""
-
-#: css/gap.md
-#: css/layout.md
-#, no-c-format
-msgctxt "docs.api:prose"
-msgid "Two"
-msgstr ""
-
-#: css/gap.md
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "Applies the medium spacing token as the gap."
@@ -6603,7 +6498,6 @@ msgid "Calendar"
 msgstr ""
 
 #: css/global-nav-bar.md
-#: css/segmented-control.md
 #: css/side-nav-bar.md
 #: renderers/web-components/src/variables/drilldown.md
 #, no-c-format
@@ -7805,12 +7699,6 @@ msgstr ""
 #: css/link.md
 #, no-c-format
 msgctxt "docs.api:prose"
-msgid "A styled link"
-msgstr ""
-
-#: css/link.md
-#, no-c-format
-msgctxt "docs.api:prose"
 msgid "Read the "
 msgstr ""
 
@@ -8698,26 +8586,15 @@ msgid "<!-- pantoken-value-scope:css%2Fmenu.md -->\nThis component's CSS renders
 msgstr ""
 
 #: css/menu.md
-#: css/menu.md
-#: css/menu.md
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "Actions"
 msgstr ""
 
 #: css/menu.md
-#: css/menu.md
-#: css/menu.md
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "Edit"
-msgstr ""
-
-#: css/menu.md
-#: css/menu.md
-#, no-c-format
-msgctxt "docs.api:prose"
-msgid "Duplicate"
 msgstr ""
 
 #: css/menu.md
@@ -8899,31 +8776,6 @@ msgstr ""
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "<!-- pantoken-value-scope:css%2Fmodal.md -->\nThis component's CSS renders and works on its own; pair it with {{ptk_code_0}} to add the interactive behavior. See the [modifier table below]({{ptk_code_1}})."
-msgstr ""
-
-#: css/modal.md
-#, no-c-format
-msgctxt "docs.api:prose"
-msgid "Small"
-msgstr ""
-
-#: css/modal.md
-#, no-c-format
-msgctxt "docs.api:prose"
-msgid " — a narrow modal."
-msgstr ""
-
-#: css/modal.md
-#, no-c-format
-msgctxt "docs.api:prose"
-msgid "Close"
-msgstr ""
-
-#: css/modal.md
-#: css/toggle-details.md
-#, no-c-format, pantoken-verbatim
-msgctxt "docs.api:prose"
-msgid "-docs\n"
 msgstr ""
 
 #: css/modal.md
@@ -9658,9 +9510,10 @@ msgid "<!-- pantoken-value-scope:css%2Fprogress-circle.md -->\nThis component's 
 msgstr ""
 
 #: css/progress-circle.md
+#: css/progress.md
 #, no-c-format
 msgctxt "docs.api:prose"
-msgid "Score"
+msgid "\n  Uploading Document: "
 msgstr ""
 
 #: css/progress-circle.md
@@ -9835,12 +9688,6 @@ msgstr ""
 #: css/progress.md
 #, no-c-format
 msgctxt "docs.api:prose"
-msgid "Storage used"
-msgstr ""
-
-#: css/progress.md
-#, no-c-format
-msgctxt "docs.api:prose"
 msgid "Renders `.value` inside the track, aligned to its start, instead of beside it; style it for legibility over the meter colour."
 msgstr ""
 
@@ -9932,24 +9779,6 @@ msgstr ""
 #: css/prose.md
 #, no-c-format
 msgctxt "docs.api:prose"
-msgid "Release notes"
-msgstr ""
-
-#: css/prose.md
-#, no-c-format
-msgctxt "docs.api:prose"
-msgid "Body copy with a "
-msgstr ""
-
-#: css/prose.md
-#, no-c-format
-msgctxt "docs.api:prose"
-msgid "link"
-msgstr ""
-
-#: css/prose.md
-#, no-c-format
-msgctxt "docs.api:prose"
 msgid "The defaults keep headings in a logical order and links underlined with an interactive colour, so they don't rely on colour alone. Don't skip heading levels for visual size, and don't remove the link underline without another cue."
 msgstr ""
 
@@ -9978,13 +9807,11 @@ msgid "T-shirt size"
 msgstr ""
 
 #: css/radio-input-group.md
-#: css/radio-input-group.md
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid " Small"
 msgstr ""
 
-#: css/radio-input-group.md
 #: css/radio-input-group.md
 #, no-c-format
 msgctxt "docs.api:prose"
@@ -9992,16 +9819,9 @@ msgid " Medium"
 msgstr ""
 
 #: css/radio-input-group.md
-#: css/radio-input-group.md
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid " Large"
-msgstr ""
-
-#: css/radio-input-group.md
-#, no-c-format
-msgctxt "docs.api:prose"
-msgid "Sweatshirt size"
 msgstr ""
 
 #: css/radio-input-group.md
@@ -10296,18 +10116,6 @@ msgstr ""
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "**Source:** [index.ts](https://github.com/thedannywahl/pantoken/blob/main/formats/components/src/utilities/responsive/index.ts)"
-msgstr ""
-
-#: css/responsive.md
-#, no-c-format
-msgctxt "docs.api:prose"
-msgid "Hidden at or below the small breakpoint."
-msgstr ""
-
-#: css/responsive.md
-#, no-c-format
-msgctxt "docs.api:prose"
-msgid "Shown only at or above the small breakpoint."
 msgstr ""
 
 #: css/responsive.md
@@ -10949,18 +10757,6 @@ msgstr ""
 #: css/screen-reader-content.md
 #, no-c-format
 msgctxt "docs.api:prose"
-msgid "example"
-msgstr ""
-
-#: css/screen-reader-content.md
-#, no-c-format
-msgctxt "docs.api:prose"
-msgid "Opens in a new window"
-msgstr ""
-
-#: css/screen-reader-content.md
-#, no-c-format
-msgctxt "docs.api:prose"
 msgid "Keeps text in the accessibility tree for screen readers while removing it from the visual layout."
 msgstr ""
 
@@ -10973,44 +10769,13 @@ msgstr ""
 #: css/segmented-control.md
 #, no-c-format
 msgctxt "docs.api:prose"
-msgid "The selected segment uses a distinct active-item shadow; it does not match an existing\n  --instui-elevation-* composite. Overflow buttons use the upstream elevation3 component tokens."
+msgid "The selected segment uses a distinct active-item shadow; it does not match an existing --instui-elevation-* composite. Overflow buttons use the upstream elevation3 component tokens."
 msgstr ""
 
 #: css/segmented-control.md
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "<!-- pantoken-value-scope:css%2Fsegmented-control.md -->\nThis component's CSS renders and works on its own; pair it with {{ptk_code_0}} to add the interactive behavior. See the [modifier table below]({{ptk_code_1}})."
-msgstr ""
-
-#: css/segmented-control.md
-#: renderers/web-components/src/variables/popover.md
-#, no-c-format
-msgctxt "docs.api:prose"
-msgid "Options"
-msgstr ""
-
-#: css/segmented-control.md
-#, no-c-format
-msgctxt "docs.api:prose"
-msgid "Config"
-msgstr ""
-
-#: css/segmented-control.md
-#, no-c-format
-msgctxt "docs.api:prose"
-msgid "Utilities"
-msgstr ""
-
-#: css/segmented-control.md
-#, no-c-format
-msgctxt "docs.api:prose"
-msgid "Preferences"
-msgstr ""
-
-#: css/segmented-control.md
-#, no-c-format
-msgctxt "docs.api:prose"
-msgid "Feature flags"
 msgstr ""
 
 #: css/segmented-control.md
@@ -11095,7 +10860,7 @@ msgstr ""
 #: css/segmented-control.segment.md
 #, no-c-format
 msgctxt "docs.api:prose"
-msgid "A `-icon-*` class may live on the label or its native input; the interaction helper\n  promotes input classes to the label so the shared glyph painter can render it."
+msgid "A `-icon-*` class may live on the label or its native input; the interaction helper promotes input classes to the label so the shared glyph painter can render it."
 msgstr ""
 
 #: css/segmented-control.segment.md
@@ -11156,30 +10921,6 @@ msgstr ""
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "**Source:** [select.css](https://github.com/thedannywahl/pantoken/blob/main/formats/components/src/components/select/select.css)"
-msgstr ""
-
-#: css/simple-select.md
-#, no-c-format
-msgctxt "docs.api:prose"
-msgid "Choose a fruit…"
-msgstr ""
-
-#: css/simple-select.md
-#, no-c-format
-msgctxt "docs.api:prose"
-msgid "Apple"
-msgstr ""
-
-#: css/simple-select.md
-#, no-c-format
-msgctxt "docs.api:prose"
-msgid "Orange"
-msgstr ""
-
-#: css/simple-select.md
-#, no-c-format
-msgctxt "docs.api:prose"
-msgid "Pear"
 msgstr ""
 
 #: css/simple-select.md
@@ -11331,12 +11072,6 @@ msgstr ""
 #: css/spacing.md
 #, no-c-format
 msgctxt "docs.api:prose"
-msgid "Padded box with a large top margin."
-msgstr ""
-
-#: css/spacing.md
-#, no-c-format
-msgctxt "docs.api:prose"
 msgid "Applies medium padding on all sides."
 msgstr ""
 
@@ -11428,12 +11163,6 @@ msgstr ""
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "**Source:** [index.ts](https://github.com/thedannywahl/pantoken/blob/main/formats/components/src/utilities/stacking/index.ts)"
-msgstr ""
-
-#: css/stacking.md
-#, no-c-format
-msgctxt "docs.api:prose"
-msgid "Always on top."
 msgstr ""
 
 #: css/stacking.md
@@ -11696,54 +11425,9 @@ msgid "<!-- pantoken-value-scope:css%2Ftabs.md -->\nThis component's CSS renders
 msgstr ""
 
 #: css/tabs.md
-#: css/tabs.md
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "Overview"
-msgstr ""
-
-#: css/tabs.md
-#: renderers/web-components/src/variables/button.md
-#: renderers/web-components/src/variables/contextView.md
-#, no-c-format
-msgctxt "docs.api:prose"
-msgid "Details"
-msgstr ""
-
-#: css/tabs.md
-#, no-c-format
-msgctxt "docs.api:prose"
-msgid "Disabled"
-msgstr ""
-
-#: css/tabs.md
-#, no-c-format
-msgctxt "docs.api:prose"
-msgid "History"
-msgstr ""
-
-#: css/tabs.md
-#, no-c-format
-msgctxt "docs.api:prose"
-msgid "The Overview tab's content shows here."
-msgstr ""
-
-#: css/tabs.md
-#, no-c-format
-msgctxt "docs.api:prose"
-msgid "The Details tab's content shows here."
-msgstr ""
-
-#: css/tabs.md
-#, no-c-format
-msgctxt "docs.api:prose"
-msgid "The Disabled tab's content won't be visible."
-msgstr ""
-
-#: css/tabs.md
-#, no-c-format
-msgctxt "docs.api:prose"
-msgid "The History tab's content shows here."
 msgstr ""
 
 #: css/tabs.md
@@ -12301,18 +11985,6 @@ msgstr ""
 #: css/toggle-details.md
 #, no-c-format
 msgctxt "docs.api:prose"
-msgid "What ships in this package?"
-msgstr ""
-
-#: css/toggle-details.md
-#, no-c-format
-msgctxt "docs.api:prose"
-msgid "\n  Class-based component styles, built from the Instructure tokens, plus a prose layer.\n"
-msgstr ""
-
-#: css/toggle-details.md
-#, no-c-format
-msgctxt "docs.api:prose"
 msgid "Keyboard support"
 msgstr ""
 
@@ -12452,12 +12124,6 @@ msgstr ""
 #: css/tooltip.md
 #, no-c-format
 msgctxt "docs.api:prose"
-msgid "Default placement is top"
-msgstr ""
-
-#: css/tooltip.md
-#, no-c-format
-msgctxt "docs.api:prose"
 msgid "Placement"
 msgstr ""
 
@@ -12525,12 +12191,6 @@ msgstr ""
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "**Source:** [transition.css](https://github.com/thedannywahl/pantoken/blob/main/formats/components/src/utilities/transition/transition.css)"
-msgstr ""
-
-#: css/transition.md
-#, no-c-format
-msgctxt "docs.api:prose"
-msgid "Animated content"
 msgstr ""
 
 #: css/transition.md
@@ -12748,18 +12408,6 @@ msgstr ""
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "<!-- pantoken-value-scope:css%2Ftruncate.md -->\nThis component ships no CSS of its own — its markup and behavior come entirely from {{ptk_code_0}}. Its {{ptk_code_1}} modifier is driven by that behavior. See the [modifier table below]({{ptk_code_2}})."
-msgstr ""
-
-#: css/truncate.md
-#, no-c-format
-msgctxt "docs.api:prose"
-msgid "This text is clamped to one line by default and ends in an ellipsis."
-msgstr ""
-
-#: css/truncate.md
-#, no-c-format
-msgctxt "docs.api:prose"
-msgid "This text is clamped to three lines and ends in an ellipsis."
 msgstr ""
 
 #: css/truncate.md
@@ -22882,6 +22530,12 @@ msgstr ""
 #: renderers/tinymce/src/interfaces/CssDocEntry.md
 #, no-c-format
 msgctxt "docs.api:prose"
+msgid "Private `@example` labels, keyed by zero-based index into [examples](#examples)."
+msgstr ""
+
+#: renderers/tinymce/src/interfaces/CssDocEntry.md
+#, no-c-format
+msgctxt "docs.api:prose"
 msgid "The authored `@structure` element tree (top-level nodes), when present. When the `@structure` body\nuses `@variant` blocks (see [structureVariants](#structurevariants)), this holds the first variant's nodes only,\nfor back-compat with any code that hasn't been updated to read `structureVariants`."
 msgstr ""
 
@@ -23771,6 +23425,13 @@ msgstr ""
 #: renderers/web-components/src/variables/contextView.md
 #, no-c-format
 msgctxt "docs.api:prose"
+msgid "Details"
+msgstr ""
+
+#: renderers/web-components/src/variables/button.md
+#: renderers/web-components/src/variables/contextView.md
+#, no-c-format
+msgctxt "docs.api:prose"
 msgid "More about this item."
 msgstr ""
 
@@ -24210,6 +23871,12 @@ msgstr ""
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "`<instui-popover>` — a floating surface. Like `<instui-context-view>`, the host is a native\n`[popover]` (top layer + light-dismiss), so a light-DOM `popovertarget` button can toggle it by id.\nContent goes in the default slot."
+msgstr ""
+
+#: renderers/web-components/src/variables/popover.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Options"
 msgstr ""
 
 #: renderers/web-components/src/variables/progress.md

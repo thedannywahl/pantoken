@@ -13,7 +13,7 @@
  * @component list {
  *   li {}
  * }
- * @example -automatica11y
+ * @example labels=[automatica11y]
  * ```html
  * <ul class="pfx-list -size-sm"><li>Small first item</li><li>Small second item</li></ul>
  * <ul class="pfx-list -size-md"><li>Medium first item</li><li>Medium second item</li></ul>

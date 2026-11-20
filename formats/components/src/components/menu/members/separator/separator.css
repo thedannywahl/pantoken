@@ -8,7 +8,7 @@
  * @component menu {
  *   .separator {}
  * }
- * @example -automatica11y
+ * @example labels=[automatica11y]
  * ```html
  * <button type="button" popovertarget="actions-menu" aria-haspopup="menu" aria-controls="actions-menu" aria-expanded="false" data-a11y-trigger>Actions</button>
  * <div class="pfx-menu" id="actions-menu" popover="auto" role="menu" aria-label="Actions" data-menu-navigation data-a11y-root>

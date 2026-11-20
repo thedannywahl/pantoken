@@ -34,7 +34,7 @@ export const aiGradient: Definition = defineUtility({
  * @modifier --background-ai — Paints the full element background with the shared AI gradient.
  * @modifier --background-ai-horizontal — Same as \`.--background-ai\`, but uses the horizontal gradient direction for the current text direction.
  * @a11y The gradient border and background are decoration. Keep text on them at a readable contrast (the gradient stops vary), and don't use the AI treatment as the only sign that content came from an AI.
- * @example -automatica11y
+ * @example labels=[automatica11y]
  * \`\`\`html
  * <div class="--border-color-ai">AI border</div>
  * <div class="--border-color-ai-horizontal">Horizontal AI border</div>
@@ -45,7 +45,7 @@ export const aiGradient: Definition = defineUtility({
  *   <div class="--background-ai-horizontal">RTL AI background</div>
  * </div>
  * \`\`\`
- * @example
+ * @example labels=[canvas-rce]
  * <div class="--border-color-ai --border-radius-md --border-width-sm --background-secondary">
  *   AI surface
  * </div>

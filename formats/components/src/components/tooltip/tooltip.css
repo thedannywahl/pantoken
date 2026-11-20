@@ -7,7 +7,7 @@
  * @part .tip — The bubble; `-placement-*` sets its preferred side. Initialized tooltips flip/clamp to fit the viewport.
  * @a11y Use a named, focusable trigger with aria-describedby pointing at the role="tooltip" bubble. Keep the content noninteractive. Initialized tooltips stay dismissed after Escape until both pointer and focus leave; the next entry can reopen them.
  * @demo self:tooltip
- * @example -canvas-rce
+ * @example labels=[canvas-rce]
  * ```html
  * <span class="pfx-tooltip">
  *   <button class="pfx-icon-button" type="button" aria-label="Information" aria-describedby="tt-1">
@@ -16,7 +16,7 @@
  *   <span class="tip" id="tt-1" role="tooltip">Default placement is top</span>
  * </span>
  * ```
- * @example -automatica11y
+ * @example labels=[automatica11y]
  * ```html
  * <p style="padding-block: 3rem">
  * <span class="pfx-tooltip">
@@ -28,7 +28,7 @@
  * <p style="padding-block: 3rem"><span class="pfx-tooltip"><button type="button" aria-describedby="start-tip">Start help</button><span class="tip -placement-start -show" id="start-tip" role="tooltip">Find answers.</span></span></p>
  * <p style="padding-block: 3rem"><span class="pfx-tooltip"><button type="button" aria-describedby="end-tip">End help</button><span class="tip -placement-end -show" id="end-tip" role="tooltip">Find answers.</span></span></p>
  * ```
- * @example -docs
+ * @example labels=[docs]
  * ```html
  * <span class="pfx-tooltip">
  *   <button class="pfx-button" type="button" aria-describedby="placement-tip">Placement</button>

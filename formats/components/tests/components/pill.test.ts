@@ -54,7 +54,7 @@ test("pill supports status and accent backgrounds", () => {
 test("pill documentation wraps and audit examples stack without changing compact pill sizing", () => {
   const css = pillCss({ prefix: "instui" });
   const [record] = parseCssDocs(css);
-  const targets = resolveExampleTargets(record.examples);
+  const targets = resolveExampleTargets(record);
   expect(targets.docs).toHaveLength(1);
   expect(targets.automatica11y).toHaveLength(1);
   for (const index of [...targets.docs, ...targets.automatica11y]) {
