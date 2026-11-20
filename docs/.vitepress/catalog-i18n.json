@@ -451,6 +451,14 @@
     "message": "Instructure Breadcrumb component styled with semantic .instui-breadcrumb classes.",
     "translate": "always"
   },
+  "registryBrowserItems.banner.title": {
+    "message": "Banner",
+    "translate": "always"
+  },
+  "registryBrowserItems.banner.description": {
+    "message": "Pantoken banner component styles and documented HTML structure.",
+    "translate": "always"
+  },
   "registryBrowserItems.billboard.title": {
     "message": "Billboard",
     "translate": "always"
@@ -529,6 +537,14 @@
   },
   "registryBrowserItems.side-nav-bar.description": {
     "message": "Instructure Side-nav-bar component styled with semantic .instui-side-nav-bar classes.",
+    "translate": "always"
+  },
+  "registryBrowserItems.global-nav-bar.title": {
+    "message": "Global-nav-bar",
+    "translate": "always"
+  },
+  "registryBrowserItems.global-nav-bar.description": {
+    "message": "Instructure Global-nav-bar component styled with semantic .instui-global-nav-bar classes.",
     "translate": "always"
   },
   "registryBrowserItems.tree-browser.title": {
@@ -705,14 +721,6 @@
   },
   "registryBrowserItems.view.description": {
     "message": "Instructure View component styled with semantic .instui-view classes.",
-    "translate": "always"
-  },
-  "registryBrowserItems.banner.title": {
-    "message": "Banner",
-    "translate": "always"
-  },
-  "registryBrowserItems.banner.description": {
-    "message": "Pantoken banner component styles and documented HTML structure.",
     "translate": "always"
   },
   "registryBrowserItems.agent-shell.title": {
