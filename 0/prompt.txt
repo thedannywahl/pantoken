@@ -1,0 +1,9 @@
+Warning: Variable 'compatPath' is declared but never used. Unused variables should start with a '_'.
+help: Consider removing this declaration.
+check-locale-drift.ts(105, 9): 'compatPath' is declared here
+
+---
+
+Warning: Variable 'compatPath' is declared but never used. Unused variables should start with a '_'.
+help: Consider removing this declaration.
+check-locale-drift.ts(105, 9): 'compatPath' is declared here
