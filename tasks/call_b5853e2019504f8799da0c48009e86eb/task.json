@@ -1,0 +1,9 @@
+{
+  "tool_use_id": "call_b5853e2019504f8799da0c48009e86eb",
+  "agent_id": "bf62f454-48aa-4d0b-ba1a-2c7ea78e8840",
+  "subagent_type": "entire-search",
+  "task_description": "Search Entire checkpoint history and transcripts with `entire search --json`. Use proactively when the user asks about previous work, commits, sessions, prompts, or historical context in this repository.",
+  "started_at": "2026-11-20T14:00:57.522474-07:00",
+  "completed_at": "2026-11-20T14:00:57.523319-07:00",
+  "transcript_unavailable_reason": "transcript path unresolvable"
+}

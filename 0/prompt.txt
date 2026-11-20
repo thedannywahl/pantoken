@@ -1,0 +1,53 @@
+we need to fix this error:
+```
+
+~/docs$ node scripts/catalog-i18n.ts && DOCS_TRANSLATION_COMMAND="$(git rev-parse --show-toplevel)/tools/translation-adapters/copilot-wrapper.sh" DOCS_TRANSLATION_COMMAND_ARGS="--model auto" node scripts/translate-chrome-po.ts ○ cache miss: 'renderers/web-components/node_modules/@pantoken/components/dist/index.mjs' modified, executing
+
+~/docs$ DOCS_TRANSLATION_COMMAND="$(git rev-parse --show-toplevel)/tools/translation-adapters/copilot-wrapper.sh" DOCS_TRANSLATION_COMMAND_ARGS="--model auto" node scripts/translate-demo-po.ts ○ cache miss: 'renderers/web-components/node_modules/@pantoken/components/dist/index.mjs' modified, executing
+
+~/docs$ DOCS_TRANSLATION_ADAPTER=ai DOCS_TRANSLATION_COMMAND="$(git rev-parse --show-toplevel)/tools/translation-adapters/copilot-wrapper.sh" DOCS_TRANSLATION_COMMAND_ARGS="--model auto" DOCS_TRANSLATION_CONCURRENCY=4 node scripts/build-api-locales.ts ○ cache miss: 'docs/api/css/segmented-control.segment.md' modified, executing
+📋 Building locale-specific API docs
+
+Error: se: missing reviewed compatibility translation
+    at renderGeneratedValues (file:///Users/dwahl/Scripts/pantoken/docs/scripts/render-generated-values.ts:61:23)
+    at async build (file:///Users/dwahl/Scripts/pantoken/docs/scripts/build-api-locales.ts:475:22)
+
+---
+vp run: 0/5 cache hit (0%), 4/5 successful. (Run `vp run --last-details` for full details)
+```
+
+---
+
+we need to fix this error:
+```
+
+~/docs$ node scripts/catalog-i18n.ts && DOCS_TRANSLATION_COMMAND="$(git rev-parse --show-toplevel)/tools/translation-adapters/copilot-wrapper.sh" DOCS_TRANSLATION_COMMAND_ARGS="--model auto" node scripts/translate-chrome-po.ts ○ cache miss: 'renderers/web-components/node_modules/@pantoken/components/dist/index.mjs' modified, executing
+
+~/docs$ DOCS_TRANSLATION_COMMAND="$(git rev-parse --show-toplevel)/tools/translation-adapters/copilot-wrapper.sh" DOCS_TRANSLATION_COMMAND_ARGS="--model auto" node scripts/translate-demo-po.ts ○ cache miss: 'renderers/web-components/node_modules/@pantoken/components/dist/index.mjs' modified, executing
+
+~/docs$ DOCS_TRANSLATION_ADAPTER=ai DOCS_TRANSLATION_COMMAND="$(git rev-parse --show-toplevel)/tools/translation-adapters/copilot-wrapper.sh" DOCS_TRANSLATION_COMMAND_ARGS="--model auto" DOCS_TRANSLATION_CONCURRENCY=4 node scripts/build-api-locales.ts ○ cache miss: 'docs/api/css/segmented-control.segment.md' modified, executing
+📋 Building locale-specific API docs
+
+Error: se: missing reviewed compatibility translation
+    at renderGeneratedValues (file:///Users/dwahl/Scripts/pantoken/docs/scripts/render-generated-values.ts:61:23)
+    at async build (file:///Users/dwahl/Scripts/pantoken/docs/scripts/build-api-locales.ts:475:22)
+
+---
+vp run: 0/5 cache hit (0%), 4/5 successful. (Run `vp run --last-details` for full details)
+```
+
+---
+
+we need to figure out why compatibility.md keeps causing issues and come up with a solid fix. it didn't used to cause issues about 3 releases back, but we made some changes to it to prevent it from triggering translation workflows because we're just changing version numbers in the tables.
+
+---
+
+we need to figure out why compatibility.md keeps causing issues and come up with a solid fix. it didn't used to cause issues about 3 releases back, but we made some changes to it to prevent it from triggering translation workflows because we're just changing version numbers in the tables.
+
+---
+
+fix it.
+
+---
+
+fix it.
