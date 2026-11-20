@@ -1,0 +1,59 @@
+{
+  "cli_version": "0.13.4",
+  "checkpoint_id": "01M7WHG1BRYWPCW6TEN7PBDS2H",
+  "strategy": "manual-commit",
+  "branch": "design-tokens-2.6.0",
+  "checkpoints_count": 1,
+  "files_touched": [
+    "docs/ar/compatibility.md",
+    "docs/ca/compatibility.md",
+    "docs/da/compatibility.md",
+    "docs/hy/compatibility.md",
+    "docs/nl/compatibility.md",
+    "l10n/ar/docs.guides.po",
+    "l10n/ca/docs.guides.po",
+    "l10n/da/docs.guides.po",
+    "l10n/en-AU/docs.guides.po",
+    "l10n/hy/docs.guides.po",
+    "l10n/nl/docs.guides.po"
+  ],
+  "sessions": [
+    {
+      "metadata": "/0/metadata.json",
+      "transcript": "/0/full.jsonl",
+      "compact_transcript": "/0/transcript.jsonl",
+      "content_hash": "/0/content_hash.txt",
+      "prompt": ""
+    }
+  ],
+  "token_usage": {
+    "input_tokens": 30,
+    "cache_creation_tokens": 8510,
+    "cache_read_tokens": 331862,
+    "output_tokens": 971,
+    "api_call_count": 6
+  },
+  "redaction": {
+    "replacements": 102,
+    "layers": {
+      "betterleaks": 0,
+      "connection_string": 0,
+      "credential_key": 0,
+      "credential_value": 0,
+      "credentialed_uri": 0,
+      "custom": 0,
+      "entropy": 2330,
+      "goredact": 0,
+      "key_context": 0,
+      "pii": 22,
+      "provider_token": 0,
+      "shell_stdin": 0
+    },
+    "custom_rules_active": 2,
+    "pii": {
+      "EMAIL": 22,
+      "IP": 0,
+      "PHONE": 0
+    }
+  }
+}
