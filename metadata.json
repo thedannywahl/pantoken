@@ -1,0 +1,58 @@
+{
+  "cli_version": "0.13.4",
+  "checkpoint_id": "01M7XGYQ0EX9A1ATDRT0PFQ070",
+  "strategy": "manual-commit",
+  "branch": "design-tokens-2.6.0",
+  "checkpoints_count": 1,
+  "files_touched": [
+    ".changeset/cssdoc-0-18-1.md",
+    "docs/scripts/build-css-api.test.ts",
+    "docs/scripts/build-css-api.ts",
+    "formats/components/src/lib/define.ts",
+    "formats/components/src/rules/base/base.css",
+    "formats/components/src/rules/index.ts",
+    "formats/components/src/rules/prose/index.ts",
+    "pnpm-lock.yaml",
+    "pnpm-workspace.yaml",
+    "renderers/web-components/src/lib/popover-reset.css"
+  ],
+  "sessions": [
+    {
+      "metadata": "/0/metadata.json",
+      "transcript": "/0/full.jsonl",
+      "compact_transcript": "/0/transcript.jsonl",
+      "content_hash": "/0/content_hash.txt",
+      "prompt": "/0/prompt.txt"
+    }
+  ],
+  "token_usage": {
+    "input_tokens": 22213,
+    "cache_creation_tokens": 208065,
+    "cache_read_tokens": 6227916,
+    "output_tokens": 21411,
+    "api_call_count": 95
+  },
+  "redaction": {
+    "replacements": 24,
+    "layers": {
+      "betterleaks": 0,
+      "connection_string": 0,
+      "credential_key": 0,
+      "credential_value": 0,
+      "credentialed_uri": 0,
+      "custom": 0,
+      "entropy": 439,
+      "goredact": 0,
+      "key_context": 0,
+      "pii": 7,
+      "provider_token": 0,
+      "shell_stdin": 0
+    },
+    "custom_rules_active": 2,
+    "pii": {
+      "EMAIL": 7,
+      "IP": 0,
+      "PHONE": 0
+    }
+  }
+}
