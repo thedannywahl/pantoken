@@ -98,15 +98,16 @@ Tokens upstream dropped that pantoken still ships as a compatibility shim. Each 
 its `Removed in` upstream minor is adopted, at which point the shim is retired and a consumer minor
 is cut. A shim either forwards to a `Replacement` token or freezes its last-known value.
 
-| Token                      | Deprecated in | Removed in  | Replacement                      |
-| -------------------------- | ------------- | ----------- | -------------------------------- |
-| `--instui-icon-angry`      | `ui@11.7.6`   | `ui@11.8.0` | _frozen value_                   |
-| `--instui-icon-annoyed`    | `ui@11.7.6`   | `ui@11.8.0` | _frozen value_                   |
-| `--instui-icon-frown`      | `ui@11.7.6`   | `ui@11.8.0` | _frozen value_                   |
-| `--instui-icon-history`    | `ui@11.7.6`   | `ui@11.8.0` | `--instui-icon-rotate-ccw-clock` |
-| `--instui-icon-laugh`      | `ui@11.7.6`   | `ui@11.8.0` | _frozen value_                   |
-| `--instui-icon-meh`        | `ui@11.7.6`   | `ui@11.8.0` | _frozen value_                   |
-| `--instui-icon-podcast`    | `ui@11.7.6`   | `ui@11.8.0` | _frozen value_                   |
-| `--instui-icon-smile`      | `ui@11.7.6`   | `ui@11.8.0` | _frozen value_                   |
-| `--instui-icon-smile-plus` | `ui@11.7.6`   | `ui@11.8.0` | _frozen value_                   |
-| `--instui-icon-trash-2`    | `ui@11.7.6`   | `ui@11.8.0` | _frozen value_                   |
+| Token                                      | Deprecated in         | Removed in            | Replacement                      |
+| ------------------------------------------ | --------------------- | --------------------- | -------------------------------- |
+| `--instui-component-pill-padding-vertical` | `design-tokens@2.6.0` | `design-tokens@3.0.0` | _frozen value_                   |
+| `--instui-icon-angry`                      | `ui@11.7.6`           | `ui@11.8.0`           | _frozen value_                   |
+| `--instui-icon-annoyed`                    | `ui@11.7.6`           | `ui@11.8.0`           | _frozen value_                   |
+| `--instui-icon-frown`                      | `ui@11.7.6`           | `ui@11.8.0`           | _frozen value_                   |
+| `--instui-icon-history`                    | `ui@11.7.6`           | `ui@11.8.0`           | `--instui-icon-rotate-ccw-clock` |
+| `--instui-icon-laugh`                      | `ui@11.7.6`           | `ui@11.8.0`           | _frozen value_                   |
+| `--instui-icon-meh`                        | `ui@11.7.6`           | `ui@11.8.0`           | _frozen value_                   |
+| `--instui-icon-podcast`                    | `ui@11.7.6`           | `ui@11.8.0`           | _frozen value_                   |
+| `--instui-icon-smile`                      | `ui@11.7.6`           | `ui@11.8.0`           | _frozen value_                   |
+| `--instui-icon-smile-plus`                 | `ui@11.7.6`           | `ui@11.8.0`           | _frozen value_                   |
+| `--instui-icon-trash-2`                    | `ui@11.7.6`           | `ui@11.8.0`           | _frozen value_                   |

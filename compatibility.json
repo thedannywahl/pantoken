@@ -602,6 +602,12 @@
   ],
   "deprecations": [
     {
+      "token": "--instui-component-pill-padding-vertical",
+      "deprecatedIn": "design-tokens@2.6.0",
+      "removeIn": "design-tokens@3.0.0",
+      "note": "The upstream token was removed in v2.6.0."
+    },
+    {
       "token": "--instui-icon-angry",
       "deprecatedIn": "ui@11.7.6",
       "removeIn": "ui@11.8.0",
