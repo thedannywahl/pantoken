@@ -377,7 +377,7 @@ describe("makeImportSnippet", () => {
     "/**\n * @component button\n */\n.button { color: red; }\n/**\n * @component card\n */\n.card {}\n";
   const UTILITIES_CSS = "/**\n * @utility view\n */\n.view { display: block; }\n";
   const PLUGIN_CSS =
-    "/**\n * @rule zstack\n */\n.zstack { z-index: 1; }\n/**\n * @component card\n */\n.card {}\n";
+    "/**\n * @component zstack\n */\n.zstack { z-index: 1; }\n/**\n * @component card\n */\n.card {}\n";
   const pluginDefs = [
     {
       pkg: "plugins/pantoken/stacking",
@@ -397,7 +397,7 @@ describe("makeImportSnippet", () => {
     );
 
   test("a plugin record's import wins", () => {
-    expect(build()(asEntry("zstack", "rule"))).toBe(
+    expect(build()(asEntry("zstack", "utility"))).toBe(
       '@import "@pantoken/plugin-stacking/stacking.css";',
     );
   });

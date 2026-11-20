@@ -646,7 +646,7 @@ export function nestCssSidebarMembers(
 /** Generate the CSS API reference: index sheet-local vars, then emit every record via `emitCssApi`. */
 export const build = (): void => {
   // The component sheet is the primary source; base/utilities/prose carry the non-component records
-  // (@rule/@utility/@declaration). All four feed the emitter so every record is picked up in one pass.
+  // (@component/@utility/@declaration). All four feed the emitter so every record is picked up in one pass.
   const sheets = ["components.css", "utilities.css", "prose.css", "base.css"];
   const cssPaths = sheets.map(cssPath);
   const css = sheets.map(readCss).join("\n");

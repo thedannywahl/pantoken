@@ -256,17 +256,17 @@ catalogs:
       specifier: ^21.2.4
       version: 21.2.4
     '@cssdoc/cli':
-      specifier: ^0.17.1
-      version: 0.17.1
+      specifier: ^0.18.1
+      version: 0.18.1
     '@cssdoc/config':
-      specifier: ^0.17.1
-      version: 0.17.1
+      specifier: ^0.18.1
+      version: 0.18.1
     '@cssdoc/core':
-      specifier: ^0.17.1
-      version: 0.17.1
+      specifier: ^0.18.1
+      version: 0.18.1
     '@cssdoc/typedoc':
-      specifier: ^0.17.1
-      version: 0.17.1
+      specifier: ^0.18.1
+      version: 0.18.1
     '@emotion/react':
       specifier: ^11.14.0
       version: 11.14.0
@@ -583,7 +583,7 @@ importers:
         version: 21.2.4
       '@cssdoc/cli':
         specifier: 'catalog:'
-        version: 0.17.1(cac@7.1.0)
+        version: 0.18.1(cac@7.1.0)
       '@manypkg/cli':
         specifier: 'catalog:'
         version: 0.25.1
@@ -865,13 +865,13 @@ importers:
         version: 6.2.5
       '@cssdoc/config':
         specifier: 'catalog:'
-        version: 0.17.1
+        version: 0.18.1
       '@cssdoc/core':
         specifier: 'catalog:'
-        version: 0.17.1
+        version: 0.18.1
       '@cssdoc/typedoc':
         specifier: 'catalog:'
-        version: 0.17.1(typedoc@0.28.20(typescript@6.0.3))
+        version: 0.18.1(typedoc@0.28.20(typescript@6.0.3))
       '@pantoken/canvas-theme-editor':
         specifier: workspace:*
         version: link:../platforms/canvas-theme-editor
@@ -1058,10 +1058,10 @@ importers:
     devDependencies:
       '@cssdoc/config':
         specifier: 'catalog:'
-        version: 0.17.1
+        version: 0.18.1
       '@cssdoc/core':
         specifier: 'catalog:'
-        version: 0.17.1
+        version: 0.18.1
       '@pantoken/css':
         specifier: workspace:*
         version: link:../css
@@ -3466,7 +3466,7 @@ importers:
     dependencies:
       '@cssdoc/core':
         specifier: 'catalog:'
-        version: 0.17.1
+        version: 0.18.1
       '@pantoken/cdn':
         specifier: workspace:*
         version: link:../../packages/cdn
@@ -3739,7 +3739,7 @@ importers:
     dependencies:
       '@cssdoc/core':
         specifier: 'catalog:'
-        version: 0.17.1
+        version: 0.18.1
     devDependencies:
       '@types/node':
         specifier: 'catalog:'
@@ -4434,39 +4434,39 @@ packages:
     resolution: {integrity: sha512-zG5Z6yXHji12h2EEbFTncRnqOLwBbMJLtviDGLCBt0lV6Jq8FrFS7CRGElMC2SZBonh+9xelWLILwNiBikSh+A==}
     engines: {node: '>=16.0.0'}
 
-  '@cssdoc/cli@0.17.1':
-    resolution: {integrity: sha512-S/tPIi4A32p5bsMNe2vbaoORc+KzZzGIUEY9HqeJGg9DgUUH5ps/ruZHvNomiUphoZSwe72xkx+FM7L5u15QFA==}
+  '@cssdoc/cli@0.18.1':
+    resolution: {integrity: sha512-gbMPLLXy0ig1ir8bo3T7NK9E0qouTKLgfSmL/aZeXqI7BTTOMsPE4CT0Hv3IErgpIY+3nMkrVD15deUN+LfT5A==}
     hasBin: true
 
-  '@cssdoc/config@0.17.1':
-    resolution: {integrity: sha512-YZIRTxEZbY6I6lGX2o2sRsUzxjy/Ns4C5YGNMBIMpKn8zbbMIg3igZkyulS/UqNusbp6VVVFsPEGOHhngMF4LA==}
+  '@cssdoc/config@0.18.1':
+    resolution: {integrity: sha512-cjSGwlNsQd9Bm5f8HPcfUl7oXXVy4+CAM5ks72SPnM3vayM44Ue5nb9IkO8mb70jv/okCjOWfeaW7HKg4LSw2Q==}
 
-  '@cssdoc/core@0.17.1':
-    resolution: {integrity: sha512-Y5Qc7LHZicoDRzuIyU3/AJU/Us9Gek9SC1fMSvu+DOHLgKvmR6YfwD4TL3EFgJZmrkWWRarGM4tznvcnZ7Ty/A==}
+  '@cssdoc/core@0.18.1':
+    resolution: {integrity: sha512-hsg/AphwMi7PX9MVnpAHgGzSlP57SOQdg3bzFqglvyVTwtAmCqeUVWshYTIO/qV00SN1956+TDWocDkkwuslLw==}
 
-  '@cssdoc/dialects@0.17.1':
-    resolution: {integrity: sha512-fUg400C12k/b/TVAYhPs9/Rri4IEwRc7MoXDEmnY3aNDFFl3tRruEvZYiH6NLGTOaVl2YSYMk8cwXb0lx7oIxg==}
+  '@cssdoc/dialects@0.18.1':
+    resolution: {integrity: sha512-7eP3lQbCnMgWTjDkskXszIiYmwd6tKInXGgsiUMGKp4DwSKcjlvEetnDSwg+AeVyC+ov8I+UGb4VOdA3TZpADg==}
 
-  '@cssdoc/embedded@0.17.1':
-    resolution: {integrity: sha512-Xas+N9v0lqnIkWFIBjxyxlgKoR5dX7WPgdbsI2UHy1wtuDujZ8AsB/7C/U+WaXf33J9j/yDC+E/wwo5W9nqfzA==}
+  '@cssdoc/embedded@0.18.1':
+    resolution: {integrity: sha512-5ROLZPbDKEYr5wzo/ZUFJrykQ+CPGQovRixFqWADWDJT6DEDAD/RBpDbEHU2IVCnWtuoZ44rA/dfDkSuUaZdeA==}
 
-  '@cssdoc/index@0.17.1':
-    resolution: {integrity: sha512-TpcCAxojEnPRF0tMocVxEGR03gGlraY06rtBQ1RjM8n6B+rQo6WcLxyR+zvCU0C2w2xHcyWITWInj5/bdmmpSg==}
+  '@cssdoc/index@0.18.1':
+    resolution: {integrity: sha512-qdzcPIpyIFUrXtl4qpEdx+UHrMDI6w5dDmVSyrrv0pujbCpDjImfqVFh/mNcjjgws7l0GjA/hN5elyBx/H2qsA==}
 
-  '@cssdoc/lint-core@0.17.1':
-    resolution: {integrity: sha512-54+owPXQm12hWiE+JuaNyyoOEsDf8Itab9lWxHEUqW53mzb71+CZ9R/8kG0A7dWnPAl+ECL85nn/kHxSqVuiMQ==}
+  '@cssdoc/lint-core@0.18.1':
+    resolution: {integrity: sha512-fNWQcJDfscZdOameiwP1UyAIJ2tL25ZqCVvLcA7AQ+oasxbsBZnRlIfWlEPTM14nQG3eVnsWnTuk2/y13oY9nA==}
 
-  '@cssdoc/markdown@0.17.1':
-    resolution: {integrity: sha512-ysNbYCCKZa0aTgxdi0lScIyKjlm6ZoVyJvAXkxenkOU7P1XBUZ2tG2uOBPqGJveqjEqR4t+F/jTpJXk5iZXS5g==}
+  '@cssdoc/markdown@0.18.1':
+    resolution: {integrity: sha512-Jhm5OYzOTSyUmNXPKwAT49MnIQdQeEPQidYvID2jJCAJGRvW0zjHMcCIQYYEYlIKz8NFZOFeQs6xzXzARD+0YA==}
 
-  '@cssdoc/providers@0.17.1':
-    resolution: {integrity: sha512-JyJsCShIW+x8rf561D25T7+dhi1yfFp0k6pQ2b09yPF1fYz7pD7e7pmP7fI1Smya+UC5pEPVoQPlfgo6jCUPhQ==}
+  '@cssdoc/providers@0.18.1':
+    resolution: {integrity: sha512-ySf/teckvWApQBj9gK/ym+Kgvg7DJGfd6rg6bElVHzLYVloqb0QATiQIr/IZy+SjnnL5N47BkwZHhSa3cLhv/A==}
 
-  '@cssdoc/spec@0.17.1':
-    resolution: {integrity: sha512-qjWgwxFVditeBDzWvLq7E4peRGktnfUUhgcSBu1Dv5Li49DIWG9kvWG25LToFNOaqHHoTJh9jeYQZpV8cfyhJg==}
+  '@cssdoc/spec@0.18.1':
+    resolution: {integrity: sha512-9kFOToqeYgMmPvREy97NZ/vsIWzq8vVCNwaxZEVzxGIUHh7CY98RdMY9TZLDY7hXFU/aCXeQybArIPFDTDOsmQ==}
 
-  '@cssdoc/typedoc@0.17.1':
-    resolution: {integrity: sha512-Sgl8u7tXwYACZEQZyVDMGGiLYOmtI2WKPYh1bgCMkby5dKy/4ljKPhL3kHKO9eR8ToWItz+J79bY1yNs+Sel4Q==}
+  '@cssdoc/typedoc@0.18.1':
+    resolution: {integrity: sha512-AHhYqJ7r2nAS2++xHbcUuevMWVX74bOqHH/WlYWQbHizPEY8J7SB36hQiBwAbwC176KHPLgpG1qN7SuxRc1J/Q==}
     peerDependencies:
       typedoc: '>=0.28'
 
@@ -6437,6 +6437,7 @@ packages:
   '@sapphire/shapeshift@3.9.7':
     resolution: {integrity: sha512-4It2mxPSr4OGn4HSQWGmhFMsNFGfFVhWeRPCRwbH972Ek2pzfGRZtb0pJ4Ze6oIzcyh2jw7nUDa6qGlWofgd9g==}
     engines: {node: '>=v16'}
+    deprecated: Shapeshift was created when other validation libraries had significant limitations in performance and error reporting. Those advantages have diminished as libraries such as Zod have become faster and improved their error messages, while also gaining broader environment support, a larger community, and custom error printers.
 
   '@sec-ant/readable-stream@0.4.1':
     resolution: {integrity: sha512-831qok9r2t8AlxLko40y2ebgSDhenenCatLVeW/uBtnHPyhHOvG0C7TvfgecV+wHzIm5KUICgzmVpWS+IMEAeg==}
@@ -12161,74 +12162,74 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  '@cssdoc/cli@0.17.1(cac@7.1.0)':
+  '@cssdoc/cli@0.18.1(cac@7.1.0)':
     dependencies:
       '@bomb.sh/tab': 0.0.23(cac@7.1.0)(commander@15.1.0)
       '@clack/prompts': 1.9.0
       '@commander-js/extra-typings': 15.1.0(commander@15.1.0)
-      '@cssdoc/config': 0.17.1
-      '@cssdoc/core': 0.17.1
-      '@cssdoc/index': 0.17.1
-      '@cssdoc/lint-core': 0.17.1
+      '@cssdoc/config': 0.18.1
+      '@cssdoc/core': 0.18.1
+      '@cssdoc/index': 0.18.1
+      '@cssdoc/lint-core': 0.18.1
       commander: 15.1.0
     transitivePeerDependencies:
       - cac
       - citty
 
-  '@cssdoc/config@0.17.1':
+  '@cssdoc/config@0.18.1':
     dependencies:
-      '@cssdoc/core': 0.17.1
+      '@cssdoc/core': 0.18.1
       ajv: 8.20.0
       jsonc-parser: 3.3.1
 
-  '@cssdoc/core@0.17.1':
+  '@cssdoc/core@0.18.1':
     dependencies:
-      '@cssdoc/spec': 0.17.1
+      '@cssdoc/spec': 0.18.1
       postcss: 8.5.33
 
-  '@cssdoc/dialects@0.17.1':
+  '@cssdoc/dialects@0.18.1':
     dependencies:
       postcss: 8.5.33
       postcss-less: 7.1.1(postcss@8.5.33)
       postcss-scss: 4.0.9(postcss@8.5.33)
 
-  '@cssdoc/embedded@0.17.1':
+  '@cssdoc/embedded@0.18.1':
     dependencies:
-      '@cssdoc/core': 0.17.1
-      '@cssdoc/dialects': 0.17.1
-      '@cssdoc/lint-core': 0.17.1
+      '@cssdoc/core': 0.18.1
+      '@cssdoc/dialects': 0.18.1
+      '@cssdoc/lint-core': 0.18.1
 
-  '@cssdoc/index@0.17.1':
+  '@cssdoc/index@0.18.1':
     dependencies:
-      '@cssdoc/core': 0.17.1
+      '@cssdoc/core': 0.18.1
       postcss: 8.5.33
       postcss-value-parser: 4.2.0
 
-  '@cssdoc/lint-core@0.17.1':
+  '@cssdoc/lint-core@0.18.1':
     dependencies:
-      '@cssdoc/core': 0.17.1
-      '@cssdoc/index': 0.17.1
-      '@cssdoc/providers': 0.17.1
+      '@cssdoc/core': 0.18.1
+      '@cssdoc/index': 0.18.1
+      '@cssdoc/providers': 0.18.1
 
-  '@cssdoc/markdown@0.17.1':
+  '@cssdoc/markdown@0.18.1':
     dependencies:
-      '@cssdoc/core': 0.17.1
-      '@cssdoc/dialects': 0.17.1
-      '@cssdoc/embedded': 0.17.1
+      '@cssdoc/core': 0.18.1
+      '@cssdoc/dialects': 0.18.1
+      '@cssdoc/embedded': 0.18.1
 
-  '@cssdoc/providers@0.17.1':
+  '@cssdoc/providers@0.18.1':
     dependencies:
-      '@cssdoc/core': 0.17.1
-      '@cssdoc/index': 0.17.1
+      '@cssdoc/core': 0.18.1
+      '@cssdoc/index': 0.18.1
       css-tree: 3.2.1
 
-  '@cssdoc/spec@0.17.1': {}
+  '@cssdoc/spec@0.18.1': {}
 
-  '@cssdoc/typedoc@0.17.1(typedoc@0.28.20(typescript@6.0.3))':
+  '@cssdoc/typedoc@0.18.1(typedoc@0.28.20(typescript@6.0.3))':
     dependencies:
-      '@cssdoc/config': 0.17.1
-      '@cssdoc/core': 0.17.1
-      '@cssdoc/markdown': 0.17.1
+      '@cssdoc/config': 0.18.1
+      '@cssdoc/core': 0.18.1
+      '@cssdoc/markdown': 0.18.1
       typedoc: 0.28.20(typescript@6.0.3)
 
   '@csstools/css-calc@3.4.4(@csstools/css-parser-algorithms@4.0.3(@csstools/css-tokenizer@4.0.3))(@csstools/css-tokenizer@4.0.3)':

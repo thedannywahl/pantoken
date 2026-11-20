@@ -14,7 +14,7 @@ import { headingLevelRules } from "../../lib/headings.ts";
 
 const PROSE_DOC = css`
   /**
- * @rule prose
+ * @component prose
  * @selector :where(body)
  * @summary Typographic defaults for raw HTML — headings, paragraphs, lists, links, and code — applied automatically wherever it's imported (default \`:where(body)\`); pass \`options.scope\` to target a different content root instead (e.g. \`.vp-doc\`).
  * @a11y The defaults keep headings in a logical order and links underlined with an interactive colour, so they don't rely on colour alone. Don't skip heading levels for visual size, and don't remove the link underline without another cue.
@@ -214,7 +214,7 @@ export function proseCss(options: ProseOptions = {}): string {
  */
 export const prose: Definition = {
   name: "prose",
-  kind: "rule",
+  kind: "component",
   rules: () => `${PROSE_DOC}\n${proseBody(":where(body)").trim()}\n`,
   css: () => `${PROSE_DOC}\n${proseBody(":where(body)").trim()}\n`,
 };
