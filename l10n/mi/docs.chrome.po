@@ -2152,6 +2152,18 @@ msgstr ""
 "He wāhanga Ara whakatere Instructure kua whakapaipaitia ki ngā "
 "karaehe .instui-breadcrumb ā-kupu."
 
+#: docs/.vitepress/catalog-i18n.json#registryBrowserItems.banner.title
+#, fuzzy, no-c-format
+msgctxt "docs.chrome:registryBrowserItems.banner.title"
+msgid "Banner"
+msgstr "Kai‑whakahaere"
+
+#: docs/.vitepress/catalog-i18n.json#registryBrowserItems.banner.description
+#, no-c-format
+msgctxt "docs.chrome:registryBrowserItems.banner.description"
+msgid "Pantoken banner component styles and documented HTML structure."
+msgstr "Ngā kāhua wae kara a Pantoken me te hanganga HTML kua tuhia."
+
 #: docs/.vitepress/catalog-i18n.json#registryBrowserItems.billboard.title
 #, no-c-format
 msgctxt "docs.chrome:registryBrowserItems.billboard.title"
@@ -2307,6 +2319,22 @@ msgctxt "docs.chrome:registryBrowserItems.side-nav-bar.description"
 msgid ""
 "Instructure Side-nav-bar component styled with semantic .instui-side-nav-bar "
 "classes."
+msgstr ""
+"He wāhanga Pae whakatere taha Instructure kua whakapaipaitia ki ngā "
+"karaehe .instui-side-nav-bar ā-kupu."
+
+#: docs/.vitepress/catalog-i18n.json#registryBrowserItems.global-nav-bar.title
+#, fuzzy, no-c-format
+msgctxt "docs.chrome:registryBrowserItems.global-nav-bar.title"
+msgid "Global-nav-bar"
+msgstr "Pae whakatere taha"
+
+#: docs/.vitepress/catalog-i18n.json#registryBrowserItems.global-nav-bar.description
+#, fuzzy, no-c-format
+msgctxt "docs.chrome:registryBrowserItems.global-nav-bar.description"
+msgid ""
+"Instructure Global-nav-bar component styled with semantic .instui-global-nav-"
+"bar classes."
 msgstr ""
 "He wāhanga Pae whakatere taha Instructure kua whakapaipaitia ki ngā "
 "karaehe .instui-side-nav-bar ā-kupu."
@@ -2650,18 +2678,6 @@ msgid "Instructure View component styled with semantic .instui-view classes."
 msgstr ""
 "He wae Tirohanga a Instructure kua whakapaipaitia ki ngā karaehe .instui-"
 "view arorau."
-
-#: docs/.vitepress/catalog-i18n.json#registryBrowserItems.banner.title
-#, fuzzy, no-c-format
-msgctxt "docs.chrome:registryBrowserItems.banner.title"
-msgid "Banner"
-msgstr "Kai‑whakahaere"
-
-#: docs/.vitepress/catalog-i18n.json#registryBrowserItems.banner.description
-#, no-c-format
-msgctxt "docs.chrome:registryBrowserItems.banner.description"
-msgid "Pantoken banner component styles and documented HTML structure."
-msgstr "Ngā kāhua wae kara a Pantoken me te hanganga HTML kua tuhia."
 
 #: docs/.vitepress/catalog-i18n.json#registryBrowserItems.agent-shell.title
 #, fuzzy, no-c-format

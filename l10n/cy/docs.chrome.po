@@ -2108,6 +2108,18 @@ msgstr ""
 "Cydran Breadcrumb Instructure wedi'i steilio â dosbarthiadau "
 "semantig .instui-breadcrumb."
 
+#: docs/.vitepress/catalog-i18n.json#registryBrowserItems.banner.title
+#, fuzzy, no-c-format
+msgctxt "docs.chrome:registryBrowserItems.banner.title"
+msgid "Banner"
+msgstr "Rhedegwr"
+
+#: docs/.vitepress/catalog-i18n.json#registryBrowserItems.banner.description
+#, no-c-format
+msgctxt "docs.chrome:registryBrowserItems.banner.description"
+msgid "Pantoken banner component styles and documented HTML structure."
+msgstr "Arddulliau cydran baner Pantoken a strwythur HTML wedi’i ddogfennu."
+
 #: docs/.vitepress/catalog-i18n.json#registryBrowserItems.billboard.title
 #, no-c-format
 msgctxt "docs.chrome:registryBrowserItems.billboard.title"
@@ -2263,6 +2275,22 @@ msgctxt "docs.chrome:registryBrowserItems.side-nav-bar.description"
 msgid ""
 "Instructure Side-nav-bar component styled with semantic .instui-side-nav-bar "
 "classes."
+msgstr ""
+"Cydran Side-nav-bar Instructure wedi'i steilio â dosbarthiadau "
+"semantig .instui-side-nav-bar."
+
+#: docs/.vitepress/catalog-i18n.json#registryBrowserItems.global-nav-bar.title
+#, fuzzy, no-c-format
+msgctxt "docs.chrome:registryBrowserItems.global-nav-bar.title"
+msgid "Global-nav-bar"
+msgstr "Bar llywio ochr"
+
+#: docs/.vitepress/catalog-i18n.json#registryBrowserItems.global-nav-bar.description
+#, fuzzy, no-c-format
+msgctxt "docs.chrome:registryBrowserItems.global-nav-bar.description"
+msgid ""
+"Instructure Global-nav-bar component styled with semantic .instui-global-nav-"
+"bar classes."
 msgstr ""
 "Cydran Side-nav-bar Instructure wedi'i steilio â dosbarthiadau "
 "semantig .instui-side-nav-bar."
@@ -2601,18 +2629,6 @@ msgctxt "docs.chrome:registryBrowserItems.view.description"
 msgid "Instructure View component styled with semantic .instui-view classes."
 msgstr ""
 "Cydran View Instructure wedi’i steilio â dosbarthiadau semantig .instui-view."
-
-#: docs/.vitepress/catalog-i18n.json#registryBrowserItems.banner.title
-#, fuzzy, no-c-format
-msgctxt "docs.chrome:registryBrowserItems.banner.title"
-msgid "Banner"
-msgstr "Rhedegwr"
-
-#: docs/.vitepress/catalog-i18n.json#registryBrowserItems.banner.description
-#, no-c-format
-msgctxt "docs.chrome:registryBrowserItems.banner.description"
-msgid "Pantoken banner component styles and documented HTML structure."
-msgstr "Arddulliau cydran baner Pantoken a strwythur HTML wedi’i ddogfennu."
 
 #: docs/.vitepress/catalog-i18n.json#registryBrowserItems.agent-shell.title
 #, fuzzy, no-c-format

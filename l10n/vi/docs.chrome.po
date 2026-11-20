@@ -2115,6 +2115,19 @@ msgstr ""
 "Thành phần Điều hướng đường dẫn của Instructure được tạo kiểu bằng các lớp "
 "ngữ nghĩa .instui-breadcrumb."
 
+#: docs/.vitepress/catalog-i18n.json#registryBrowserItems.banner.title
+#, fuzzy, no-c-format
+msgctxt "docs.chrome:registryBrowserItems.banner.title"
+msgid "Banner"
+msgstr "Trình chạy"
+
+#: docs/.vitepress/catalog-i18n.json#registryBrowserItems.banner.description
+#, no-c-format
+msgctxt "docs.chrome:registryBrowserItems.banner.description"
+msgid "Pantoken banner component styles and documented HTML structure."
+msgstr ""
+"Kiểu của thành phần biểu ngữ Pantoken và cấu trúc HTML được tài liệu hóa."
+
 #: docs/.vitepress/catalog-i18n.json#registryBrowserItems.billboard.title
 #, no-c-format
 msgctxt "docs.chrome:registryBrowserItems.billboard.title"
@@ -2270,6 +2283,22 @@ msgctxt "docs.chrome:registryBrowserItems.side-nav-bar.description"
 msgid ""
 "Instructure Side-nav-bar component styled with semantic .instui-side-nav-bar "
 "classes."
+msgstr ""
+"Thành phần Thanh điều hướng bên của Instructure được tạo kiểu bằng các lớp "
+"ngữ nghĩa .instui-side-nav-bar."
+
+#: docs/.vitepress/catalog-i18n.json#registryBrowserItems.global-nav-bar.title
+#, fuzzy, no-c-format
+msgctxt "docs.chrome:registryBrowserItems.global-nav-bar.title"
+msgid "Global-nav-bar"
+msgstr "Thanh điều hướng bên"
+
+#: docs/.vitepress/catalog-i18n.json#registryBrowserItems.global-nav-bar.description
+#, fuzzy, no-c-format
+msgctxt "docs.chrome:registryBrowserItems.global-nav-bar.description"
+msgid ""
+"Instructure Global-nav-bar component styled with semantic .instui-global-nav-"
+"bar classes."
 msgstr ""
 "Thành phần Thanh điều hướng bên của Instructure được tạo kiểu bằng các lớp "
 "ngữ nghĩa .instui-side-nav-bar."
@@ -2613,19 +2642,6 @@ msgid "Instructure View component styled with semantic .instui-view classes."
 msgstr ""
 "Thành phần View của Instructure được tạo kiểu bằng các lớp ngữ nghĩa .instui-"
 "view."
-
-#: docs/.vitepress/catalog-i18n.json#registryBrowserItems.banner.title
-#, fuzzy, no-c-format
-msgctxt "docs.chrome:registryBrowserItems.banner.title"
-msgid "Banner"
-msgstr "Trình chạy"
-
-#: docs/.vitepress/catalog-i18n.json#registryBrowserItems.banner.description
-#, no-c-format
-msgctxt "docs.chrome:registryBrowserItems.banner.description"
-msgid "Pantoken banner component styles and documented HTML structure."
-msgstr ""
-"Kiểu của thành phần biểu ngữ Pantoken và cấu trúc HTML được tài liệu hóa."
 
 #: docs/.vitepress/catalog-i18n.json#registryBrowserItems.agent-shell.title
 #, fuzzy, no-c-format

@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: pantoken\n"
-"PO-Revision-Date: 2026-11-19 16:48+0000\n"
+"PO-Revision-Date: 2026-11-20 02:28+0000\n"
 "Last-Translator: pantoken localization engine\n"
 "Language-Team: pantoken\n"
 "MIME-Version: 1.0\n"
@@ -2770,6 +2770,8 @@ msgstr ""
 #: css/form-field-messages.md
 #: css/form-field.md
 #: css/gap.md
+#: css/global-nav-bar.item.md
+#: css/global-nav-bar.md
 #: css/heading.md
 #: css/icon.md
 #: css/img.md
@@ -3062,6 +3064,24 @@ msgstr ""
 #: css/alert.md
 #, no-c-format
 msgctxt "docs.api:prose"
+msgid "\n  An alert with text-color-base modifier for high contrast.\n"
+msgstr ""
+
+#: css/alert.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "\n  A warning alert with explicit base text color.\n"
+msgstr ""
+
+#: css/alert.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "\n  An inline alert with inline status icon.\n"
+msgstr ""
+
+#: css/alert.md
+#, no-c-format
+msgctxt "docs.api:prose"
 msgid "The alert's message content; may include a dismiss button."
 msgstr ""
 
@@ -3098,6 +3118,12 @@ msgstr ""
 #: css/alert.md
 #, no-c-format
 msgctxt "docs.api:prose"
+msgid "Render inline icon using the status color (for inline alerts)."
+msgstr ""
+
+#: css/alert.md
+#, no-c-format
+msgctxt "docs.api:prose"
 msgid "A non-elevated pastel surface for placement in document flow."
 msgstr ""
 
@@ -3105,6 +3131,18 @@ msgstr ""
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "Visually hidden but announced."
+msgstr ""
+
+#: css/alert.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Use base text color instead of on-color (high-contrast)."
+msgstr ""
+
+#: css/alert.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Use on-color text (default for floating)."
 msgstr ""
 
 #: css/alert.md
@@ -3943,6 +3981,7 @@ msgid "**Source:** [badge.css](https://github.com/thedannywahl/pantoken/blob/mai
 msgstr ""
 
 #: css/badge.md
+#: css/global-nav-bar.md
 #: css/side-nav-bar.md
 #, no-c-format
 msgctxt "docs.api:prose"
@@ -4073,6 +4112,12 @@ msgstr ""
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "**Size** controls padding and gap: `relaxed` (default) is roomier; `compact` tightens both.\n  **Color** sets the fill: bare (no modifier) is unfilled — border and icon only; `-color-violet`\n  and `-color-sea` add a tinted background plus a matching icon swatch."
+msgstr ""
+
+#: css/banner.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "**Source:** [banner.css](https://github.com/thedannywahl/pantoken/blob/main/formats/components/src/components/banner/banner.css)"
 msgstr ""
 
 #: css/banner.md
@@ -4417,6 +4462,7 @@ msgid "**Source:** [breadcrumb.css](https://github.com/thedannywahl/pantoken/blo
 msgstr ""
 
 #: css/breadcrumb.md
+#: css/global-nav-bar.md
 #: css/side-nav-bar.md
 #, no-c-format
 msgctxt "docs.api:prose"
@@ -6498,6 +6544,100 @@ msgctxt "docs.api:prose"
 msgid "A gap changes spacing only; reading and focus order still follow the DOM. Keep gaps between interactive controls large enough to meet WCAG 2.5.8 target spacing."
 msgstr ""
 
+#: css/global-nav-bar.item.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "`.item` — A navigation entry (InstUI `GlobalNavBar.Item`); `-selected` marks the active one."
+msgstr ""
+
+#: css/global-nav-bar.item.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "The parent `global-nav-bar`'s `-minimized` modifier hides this member's `.label` — see `global-nav-bar`'s own doc for that modifier."
+msgstr ""
+
+#: css/global-nav-bar.item.md
+#: css/side-nav-bar.item.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "The active nav item."
+msgstr ""
+
+#: css/global-nav-bar.item.md
+#: css/side-nav-bar.item.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "The item's text label; hidden when the rail is minimized."
+msgstr ""
+
+#: css/global-nav-bar.item.md
+#: css/side-nav-bar.item.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Mark the active entry with `aria-current=\"page\"` as well as `-selected`, and keep an accessible name, such as `aria-label`, when the parent's `-minimized` modifier hides the `.label`."
+msgstr ""
+
+#: css/global-nav-bar.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "`.instui-global-nav-bar` — A vertical navigation rail of icon-over-label items, with a minimized icons-only mode."
+msgstr ""
+
+#: css/global-nav-bar.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Sets its own `gap` between nav items and its own `padding`; chaining a `-gap-*`/`-p-*`/`-padding-*` spacing utility modifier overrides those built-in values. See the `global-nav-bar.item` member for the individual nav entries."
+msgstr ""
+
+#: css/global-nav-bar.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "**Source:** [global-nav-bar.css](https://github.com/thedannywahl/pantoken/blob/main/formats/components/src/components/global-nav-bar/global-nav-bar.css)"
+msgstr ""
+
+#: css/global-nav-bar.md
+#: css/side-nav-bar.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Calendar"
+msgstr ""
+
+#: css/global-nav-bar.md
+#: css/segmented-control.md
+#: css/side-nav-bar.md
+#: renderers/web-components/src/variables/drilldown.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Settings"
+msgstr ""
+
+#: css/global-nav-bar.md
+#: css/side-nav-bar.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Render a glyph icon in each nav item."
+msgstr ""
+
+#: css/global-nav-bar.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Collapse to icons only (labels hidden). @affects global-nav-bar.item — Hides the item's label."
+msgstr ""
+
+#: css/global-nav-bar.md
+#: css/side-nav-bar.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "The nav item's text label."
+msgstr ""
+
+#: css/global-nav-bar.md
+#: css/side-nav-bar.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Label the `<nav>` with aria-label so it's announced as a named navigation landmark."
+msgstr ""
+
 #: css/heading.md
 #, no-c-format
 msgctxt "docs.api:prose"
@@ -6897,6 +7037,12 @@ msgstr ""
 #: css/index.md
 #, no-c-format
 msgctxt "docs.api:prose"
+msgid "A styled container for display of important information with two size variants and color themes."
+msgstr ""
+
+#: css/index.md
+#, no-c-format
+msgctxt "docs.api:prose"
 msgid "A dismissible, iconed message surface for page-level or in-context announcements."
 msgstr ""
 
@@ -7013,6 +7159,19 @@ msgstr ""
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "Field help and validation messages — hint, error, success, and screen-reader-only — with a glyph on error and success."
+msgstr ""
+
+#: css/index.md
+#: css/index.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "A vertical navigation rail of icon-over-label items, with a minimized icons-only mode."
+msgstr ""
+
+#: css/index.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "A navigation entry (InstUI `GlobalNavBar.Item`); `-selected` marks the active one."
 msgstr ""
 
 #: css/index.md
@@ -7193,12 +7352,6 @@ msgstr ""
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "A selectable segmented-control label and its native radio input."
-msgstr ""
-
-#: css/index.md
-#, no-c-format
-msgctxt "docs.api:prose"
-msgid "A vertical navigation rail of icon-over-label items, with a minimized icons-only mode."
 msgstr ""
 
 #: css/index.md
@@ -10830,14 +10983,6 @@ msgid "<!-- pantoken-value-scope:css%2Fsegmented-control.md -->\nThis component'
 msgstr ""
 
 #: css/segmented-control.md
-#: css/side-nav-bar.md
-#: renderers/web-components/src/variables/drilldown.md
-#, no-c-format
-msgctxt "docs.api:prose"
-msgid "Settings"
-msgstr ""
-
-#: css/segmented-control.md
 #: renderers/web-components/src/variables/popover.md
 #, no-c-format
 msgctxt "docs.api:prose"
@@ -10866,6 +11011,12 @@ msgstr ""
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "Feature flags"
+msgstr ""
+
+#: css/segmented-control.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Large padding around arrow icons in overflow buttons."
 msgstr ""
 
 #: css/segmented-control.md
@@ -10965,24 +11116,6 @@ msgctxt "docs.api:prose"
 msgid "The parent `side-nav-bar`'s `-minimized` modifier hides this member's `.label` — see `side-nav-bar`'s own doc for that modifier."
 msgstr ""
 
-#: css/side-nav-bar.item.md
-#, no-c-format
-msgctxt "docs.api:prose"
-msgid "The active nav item."
-msgstr ""
-
-#: css/side-nav-bar.item.md
-#, no-c-format
-msgctxt "docs.api:prose"
-msgid "The item's text label; hidden when the rail is minimized."
-msgstr ""
-
-#: css/side-nav-bar.item.md
-#, no-c-format
-msgctxt "docs.api:prose"
-msgid "Mark the active entry with `aria-current=\"page\"` as well as `-selected`, and keep an accessible name, such as `aria-label`, when the parent's `-minimized` modifier hides the `.label`."
-msgstr ""
-
 #: css/side-nav-bar.md
 #, no-c-format
 msgctxt "docs.api:prose"
@@ -11004,31 +11137,7 @@ msgstr ""
 #: css/side-nav-bar.md
 #, no-c-format
 msgctxt "docs.api:prose"
-msgid "Calendar"
-msgstr ""
-
-#: css/side-nav-bar.md
-#, no-c-format
-msgctxt "docs.api:prose"
-msgid "Render a glyph icon in each nav item."
-msgstr ""
-
-#: css/side-nav-bar.md
-#, no-c-format
-msgctxt "docs.api:prose"
 msgid "Collapse to icons only (labels hidden). @affects side-nav-bar.item — Hides the item's label."
-msgstr ""
-
-#: css/side-nav-bar.md
-#, no-c-format
-msgctxt "docs.api:prose"
-msgid "The nav item's text label."
-msgstr ""
-
-#: css/side-nav-bar.md
-#, no-c-format
-msgctxt "docs.api:prose"
-msgid "Label the `<nav>` with aria-label so it's announced as a named navigation landmark."
 msgstr ""
 
 #: css/simple-select.md
@@ -13808,6 +13917,12 @@ msgctxt "docs.api:prose"
 msgid "Standalone `badge` stylesheet — the prefixed CSS for the count-and-status badge, ready to ship as a `.css` file."
 msgstr ""
 
+#: formats/components/src/variables/bannerCss.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Standalone `banner` stylesheet — the prefixed CSS for the banner container, ready to ship as a `.css` file."
+msgstr ""
+
 #: formats/components/src/variables/billboardCss.md
 #, no-c-format
 msgctxt "docs.api:prose"
@@ -13926,6 +14041,18 @@ msgstr ""
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "The gap utility as a standalone, header-wrapped stylesheet."
+msgstr ""
+
+#: formats/components/src/variables/globalNavBarCss.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Standalone `globalNavBar` stylesheet — the prefixed CSS for the navigation rail, ready to ship as a `.css` file."
+msgstr ""
+
+#: formats/components/src/variables/globalNavBarItemCss.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Standalone `global-nav-bar.item` stylesheet."
 msgstr ""
 
 #: formats/components/src/variables/headingCss.md
@@ -14144,10 +14271,22 @@ msgctxt "docs.api:prose"
 msgid "Standalone `sideNavBar` stylesheet — the prefixed CSS for the navigation rail, ready to ship as a `.css` file."
 msgstr ""
 
+#: formats/components/src/variables/sideNavBarCss.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Use `globalNavBarCss` instead."
+msgstr ""
+
 #: formats/components/src/variables/sideNavBarItemCss.md
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "Standalone `side-nav-bar.item` stylesheet."
+msgstr ""
+
+#: formats/components/src/variables/sideNavBarItemCss.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Use `globalNavBarItemCss` instead."
 msgstr ""
 
 #: formats/components/src/variables/simpleSelectCss.md

@@ -2039,6 +2039,18 @@ msgstr ""
 "רכיב שביל הניווט של Instructure המעוצב באמצעות מחלקות סמנטיות .instui-"
 "breadcrumb."
 
+#: docs/.vitepress/catalog-i18n.json#registryBrowserItems.banner.title
+#, fuzzy, no-c-format
+msgctxt "docs.chrome:registryBrowserItems.banner.title"
+msgid "Banner"
+msgstr "ראנר"
+
+#: docs/.vitepress/catalog-i18n.json#registryBrowserItems.banner.description
+#, no-c-format
+msgctxt "docs.chrome:registryBrowserItems.banner.description"
+msgid "Pantoken banner component styles and documented HTML structure."
+msgstr "סגנונות רכיב הבאנר של Pantoken ומבנה ה-HTML המתועד שלו."
+
 #: docs/.vitepress/catalog-i18n.json#registryBrowserItems.billboard.title
 #, no-c-format
 msgctxt "docs.chrome:registryBrowserItems.billboard.title"
@@ -2192,6 +2204,22 @@ msgctxt "docs.chrome:registryBrowserItems.side-nav-bar.description"
 msgid ""
 "Instructure Side-nav-bar component styled with semantic .instui-side-nav-bar "
 "classes."
+msgstr ""
+"רכיב סרגל הניווט הצדדי של Instructure המעוצב באמצעות מחלקות סמנטיות .instui-"
+"side-nav-bar."
+
+#: docs/.vitepress/catalog-i18n.json#registryBrowserItems.global-nav-bar.title
+#, fuzzy, no-c-format
+msgctxt "docs.chrome:registryBrowserItems.global-nav-bar.title"
+msgid "Global-nav-bar"
+msgstr "סרגל ניווט צדדי"
+
+#: docs/.vitepress/catalog-i18n.json#registryBrowserItems.global-nav-bar.description
+#, fuzzy, no-c-format
+msgctxt "docs.chrome:registryBrowserItems.global-nav-bar.description"
+msgid ""
+"Instructure Global-nav-bar component styled with semantic .instui-global-nav-"
+"bar classes."
 msgstr ""
 "רכיב סרגל הניווט הצדדי של Instructure המעוצב באמצעות מחלקות סמנטיות .instui-"
 "side-nav-bar."
@@ -2523,18 +2551,6 @@ msgstr "תצוגה"
 msgctxt "docs.chrome:registryBrowserItems.view.description"
 msgid "Instructure View component styled with semantic .instui-view classes."
 msgstr "רכיב View של Instructure מעוצב באמצעות המחלקות הסמנטיות .instui-view."
-
-#: docs/.vitepress/catalog-i18n.json#registryBrowserItems.banner.title
-#, fuzzy, no-c-format
-msgctxt "docs.chrome:registryBrowserItems.banner.title"
-msgid "Banner"
-msgstr "ראנר"
-
-#: docs/.vitepress/catalog-i18n.json#registryBrowserItems.banner.description
-#, no-c-format
-msgctxt "docs.chrome:registryBrowserItems.banner.description"
-msgid "Pantoken banner component styles and documented HTML structure."
-msgstr "סגנונות רכיב הבאנר של Pantoken ומבנה ה-HTML המתועד שלו."
 
 #: docs/.vitepress/catalog-i18n.json#registryBrowserItems.agent-shell.title
 #, fuzzy, no-c-format

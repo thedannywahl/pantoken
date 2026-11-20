@@ -2144,6 +2144,18 @@ msgstr ""
 "Instructuren murupolkukomponentti, joka on tyylitelty semanttisilla .instui-"
 "breadcrumb-luokilla."
 
+#: docs/.vitepress/catalog-i18n.json#registryBrowserItems.banner.title
+#, fuzzy, no-c-format
+msgctxt "docs.chrome:registryBrowserItems.banner.title"
+msgid "Banner"
+msgstr "Suorittaja"
+
+#: docs/.vitepress/catalog-i18n.json#registryBrowserItems.banner.description
+#, no-c-format
+msgctxt "docs.chrome:registryBrowserItems.banner.description"
+msgid "Pantoken banner component styles and documented HTML structure."
+msgstr "Pantoken-bannerikomponentin tyylit ja dokumentoitu HTML-rakenne."
+
 #: docs/.vitepress/catalog-i18n.json#registryBrowserItems.billboard.title
 #, no-c-format
 msgctxt "docs.chrome:registryBrowserItems.billboard.title"
@@ -2299,6 +2311,22 @@ msgctxt "docs.chrome:registryBrowserItems.side-nav-bar.description"
 msgid ""
 "Instructure Side-nav-bar component styled with semantic .instui-side-nav-bar "
 "classes."
+msgstr ""
+"Instructuren sivunavigointipalkkikomponentti, joka on tyylitelty "
+"semanttisilla .instui-side-nav-bar-luokilla."
+
+#: docs/.vitepress/catalog-i18n.json#registryBrowserItems.global-nav-bar.title
+#, fuzzy, no-c-format
+msgctxt "docs.chrome:registryBrowserItems.global-nav-bar.title"
+msgid "Global-nav-bar"
+msgstr "Sivunavigointipalkki"
+
+#: docs/.vitepress/catalog-i18n.json#registryBrowserItems.global-nav-bar.description
+#, fuzzy, no-c-format
+msgctxt "docs.chrome:registryBrowserItems.global-nav-bar.description"
+msgid ""
+"Instructure Global-nav-bar component styled with semantic .instui-global-nav-"
+"bar classes."
 msgstr ""
 "Instructuren sivunavigointipalkkikomponentti, joka on tyylitelty "
 "semanttisilla .instui-side-nav-bar-luokilla."
@@ -2642,18 +2670,6 @@ msgid "Instructure View component styled with semantic .instui-view classes."
 msgstr ""
 "Instructuren näkymäkomponentti, jonka tyylit on toteutettu "
 "semanttisilla .instui-view-luokilla."
-
-#: docs/.vitepress/catalog-i18n.json#registryBrowserItems.banner.title
-#, fuzzy, no-c-format
-msgctxt "docs.chrome:registryBrowserItems.banner.title"
-msgid "Banner"
-msgstr "Suorittaja"
-
-#: docs/.vitepress/catalog-i18n.json#registryBrowserItems.banner.description
-#, no-c-format
-msgctxt "docs.chrome:registryBrowserItems.banner.description"
-msgid "Pantoken banner component styles and documented HTML structure."
-msgstr "Pantoken-bannerikomponentin tyylit ja dokumentoitu HTML-rakenne."
 
 #: docs/.vitepress/catalog-i18n.json#registryBrowserItems.agent-shell.title
 #, fuzzy, no-c-format

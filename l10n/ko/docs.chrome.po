@@ -2082,6 +2082,18 @@ msgstr ""
 "시맨틱 .instui-breadcrumb 클래스로 스타일을 적용한 Instructure 이동 경로 컴포"
 "넌트입니다."
 
+#: docs/.vitepress/catalog-i18n.json#registryBrowserItems.banner.title
+#, fuzzy, no-c-format
+msgctxt "docs.chrome:registryBrowserItems.banner.title"
+msgid "Banner"
+msgstr "실행기"
+
+#: docs/.vitepress/catalog-i18n.json#registryBrowserItems.banner.description
+#, no-c-format
+msgctxt "docs.chrome:registryBrowserItems.banner.description"
+msgid "Pantoken banner component styles and documented HTML structure."
+msgstr "Pantoken 배너 컴포넌트 스타일 및 문서화된 HTML 구조입니다."
+
 #: docs/.vitepress/catalog-i18n.json#registryBrowserItems.billboard.title
 #, no-c-format
 msgctxt "docs.chrome:registryBrowserItems.billboard.title"
@@ -2237,6 +2249,22 @@ msgctxt "docs.chrome:registryBrowserItems.side-nav-bar.description"
 msgid ""
 "Instructure Side-nav-bar component styled with semantic .instui-side-nav-bar "
 "classes."
+msgstr ""
+"시맨틱 .instui-side-nav-bar 클래스로 스타일을 적용한 Instructure 사이드 내비"
+"게이션 바 컴포넌트입니다."
+
+#: docs/.vitepress/catalog-i18n.json#registryBrowserItems.global-nav-bar.title
+#, fuzzy, no-c-format
+msgctxt "docs.chrome:registryBrowserItems.global-nav-bar.title"
+msgid "Global-nav-bar"
+msgstr "사이드 내비게이션 바"
+
+#: docs/.vitepress/catalog-i18n.json#registryBrowserItems.global-nav-bar.description
+#, fuzzy, no-c-format
+msgctxt "docs.chrome:registryBrowserItems.global-nav-bar.description"
+msgid ""
+"Instructure Global-nav-bar component styled with semantic .instui-global-nav-"
+"bar classes."
 msgstr ""
 "시맨틱 .instui-side-nav-bar 클래스로 스타일을 적용한 Instructure 사이드 내비"
 "게이션 바 컴포넌트입니다."
@@ -2580,18 +2608,6 @@ msgid "Instructure View component styled with semantic .instui-view classes."
 msgstr ""
 "Instructure View 컴포넌트에 의미론적 .instui-view 클래스가 적용된 스타일입니"
 "다."
-
-#: docs/.vitepress/catalog-i18n.json#registryBrowserItems.banner.title
-#, fuzzy, no-c-format
-msgctxt "docs.chrome:registryBrowserItems.banner.title"
-msgid "Banner"
-msgstr "실행기"
-
-#: docs/.vitepress/catalog-i18n.json#registryBrowserItems.banner.description
-#, no-c-format
-msgctxt "docs.chrome:registryBrowserItems.banner.description"
-msgid "Pantoken banner component styles and documented HTML structure."
-msgstr "Pantoken 배너 컴포넌트 스타일 및 문서화된 HTML 구조입니다."
 
 #: docs/.vitepress/catalog-i18n.json#registryBrowserItems.agent-shell.title
 #, fuzzy, no-c-format

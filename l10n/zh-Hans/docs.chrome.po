@@ -2003,6 +2003,18 @@ msgid ""
 "classes."
 msgstr "采用语义化 .instui-breadcrumb 类样式的 Instructure 面包屑导航组件。"
 
+#: docs/.vitepress/catalog-i18n.json#registryBrowserItems.banner.title
+#, fuzzy, no-c-format
+msgctxt "docs.chrome:registryBrowserItems.banner.title"
+msgid "Banner"
+msgstr "运行器"
+
+#: docs/.vitepress/catalog-i18n.json#registryBrowserItems.banner.description
+#, no-c-format
+msgctxt "docs.chrome:registryBrowserItems.banner.description"
+msgid "Pantoken banner component styles and documented HTML structure."
+msgstr "Pantoken 横幅组件样式及文档化的 HTML 结构。"
+
 #: docs/.vitepress/catalog-i18n.json#registryBrowserItems.billboard.title
 #, no-c-format
 msgctxt "docs.chrome:registryBrowserItems.billboard.title"
@@ -2140,6 +2152,20 @@ msgctxt "docs.chrome:registryBrowserItems.side-nav-bar.description"
 msgid ""
 "Instructure Side-nav-bar component styled with semantic .instui-side-nav-bar "
 "classes."
+msgstr "采用语义化 .instui-side-nav-bar 类样式的 Instructure 侧边导航栏组件。"
+
+#: docs/.vitepress/catalog-i18n.json#registryBrowserItems.global-nav-bar.title
+#, fuzzy, no-c-format
+msgctxt "docs.chrome:registryBrowserItems.global-nav-bar.title"
+msgid "Global-nav-bar"
+msgstr "侧边导航栏"
+
+#: docs/.vitepress/catalog-i18n.json#registryBrowserItems.global-nav-bar.description
+#, fuzzy, no-c-format
+msgctxt "docs.chrome:registryBrowserItems.global-nav-bar.description"
+msgid ""
+"Instructure Global-nav-bar component styled with semantic .instui-global-nav-"
+"bar classes."
 msgstr "采用语义化 .instui-side-nav-bar 类样式的 Instructure 侧边导航栏组件。"
 
 #: docs/.vitepress/catalog-i18n.json#registryBrowserItems.tree-browser.title
@@ -2456,18 +2482,6 @@ msgstr "视图"
 msgctxt "docs.chrome:registryBrowserItems.view.description"
 msgid "Instructure View component styled with semantic .instui-view classes."
 msgstr "Instructure 视图组件，采用语义化的 .instui-view 类进行样式设置。"
-
-#: docs/.vitepress/catalog-i18n.json#registryBrowserItems.banner.title
-#, fuzzy, no-c-format
-msgctxt "docs.chrome:registryBrowserItems.banner.title"
-msgid "Banner"
-msgstr "运行器"
-
-#: docs/.vitepress/catalog-i18n.json#registryBrowserItems.banner.description
-#, no-c-format
-msgctxt "docs.chrome:registryBrowserItems.banner.description"
-msgid "Pantoken banner component styles and documented HTML structure."
-msgstr "Pantoken 横幅组件样式及文档化的 HTML 结构。"
 
 #: docs/.vitepress/catalog-i18n.json#registryBrowserItems.agent-shell.title
 #, fuzzy, no-c-format

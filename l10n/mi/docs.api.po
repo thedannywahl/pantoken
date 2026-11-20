@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: pantoken\n"
-"PO-Revision-Date: 2026-11-14 02:42+0000\n"
+"PO-Revision-Date: 2026-11-20 03:21+0000\n"
 "Last-Translator: pantoken localization engine\n"
 "Language-Team: pantoken\n"
 "MIME-Version: 1.0\n"
@@ -35056,3 +35056,109 @@ msgstr "componentElements"
 msgctxt "docs.api:prose"
 msgid "<!-- pantoken-value-scope:css%2Fscreen-reader-content.md -->\nThis component ships no CSS of its own — its markup and behavior come entirely from {{ptk_code_0}}. See the [modifier table below]({{ptk_code_1}})."
 msgstr "<!-- pantoken-value-scope:css%2Fscreen-reader-content.md -->\nKāore he CSS ake o tēnei wae — nō {{ptk_code_0}} katoa ōna tohu me ōna whanonga. Tirohia te [ripanga whakarerekē kei raro]({{ptk_code_1}})."
+
+msgctxt "docs.api:prose"
+msgid "\n  An alert with text-color-base modifier for high contrast.\n"
+msgstr "\n  He matohi me te whakarerekētanga text-color-base mō te tino rerekētanga.\n"
+
+msgctxt "docs.api:prose"
+msgid "\n  A warning alert with explicit base text color.\n"
+msgstr "\n  He matohi whakatūpato me te tae kuputuhi taketake kua tautuhia māriretia.\n"
+
+msgctxt "docs.api:prose"
+msgid "\n  An inline alert with inline status icon.\n"
+msgstr "\n  He matohi ā-rārangi me te ata tūnga ā-rārangi.\n"
+
+msgctxt "docs.api:prose"
+msgid "Render inline icon using the status color (for inline alerts)."
+msgstr "Whakaaturia te ata ā-rārangi mā te whakamahi i te tae tūnga (mō ngā matohi ā-rārangi)."
+
+msgctxt "docs.api:prose"
+msgid "Use base text color instead of on-color (high-contrast)."
+msgstr "Whakamahia te tae kuputuhi taketake, kaua ko te tae o runga (mō te tino rerekētanga)."
+
+msgctxt "docs.api:prose"
+msgid "Use on-color text (default for floating)."
+msgstr "Whakamahia te kuputuhi tae-o-runga (te taunoa mō ngā matohi mānu)."
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "**Source:** [banner.css](https://github.com/thedannywahl/pantoken/blob/main/formats/components/src/components/banner/banner.css)"
+msgstr "**Source:** [banner.css](https://github.com/thedannywahl/pantoken/blob/main/formats/components/src/components/banner/banner.css)"
+
+msgctxt "docs.api:prose"
+msgid "`.item` — A navigation entry (InstUI `GlobalNavBar.Item`); `-selected` marks the active one."
+msgstr "`.item` — He tūemi whakatere (InstUI `GlobalNavBar.Item`); `-selected` e tohu ana i te mea hohe."
+
+msgctxt "docs.api:prose"
+msgid "The parent `global-nav-bar`'s `-minimized` modifier hides this member's `.label` — see `global-nav-bar`'s own doc for that modifier."
+msgstr "Ka huna e te `global-nav-bar` matua te `-minimized` o tēnei mema mā te whakarerekētanga `.label` — tirohia te tuhinga ake a `global-nav-bar` mō taua whakarerekētanga."
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "**Source:** [global-nav-bar.css](https://github.com/thedannywahl/pantoken/blob/main/formats/components/src/components/global-nav-bar/global-nav-bar.css)"
+msgstr "**Source:** [global-nav-bar.css](https://github.com/thedannywahl/pantoken/blob/main/formats/components/src/components/global-nav-bar/global-nav-bar.css)"
+
+msgctxt "docs.api:prose"
+msgid "`.instui-global-nav-bar` — A vertical navigation rail of icon-over-label items, with a minimized icons-only mode."
+msgstr "`.instui-global-nav-bar` — He ara whakatere poutū, he ata kei runga ake i ngā tapanga, me tētahi aratau whakaiti e whakaatu ana i ngā ata anake."
+
+msgctxt "docs.api:prose"
+msgid "Sets its own `gap` between nav items and its own `padding`; chaining a `-gap-*`/`-p-*`/`-padding-*` spacing utility modifier overrides those built-in values. See the `global-nav-bar.item` member for the individual nav entries."
+msgstr "Ka whakarite i tōna ake `gap` i waenga i ngā tūemi whakatere, me tōna ake `padding`; mā te whakamahi ngātahi i tētahi `-gap-*`/`-p-*`/`-padding-*` whakakē whakamahinga mokowā ka takahia aua uara kua tautuhia kētia. Tirohia te `global-nav-bar.item` mō ngā tūemi whakatere takitahi."
+
+msgctxt "docs.api:prose"
+msgid "Collapse to icons only (labels hidden). @affects global-nav-bar.item — Hides the item's label."
+msgstr "Whakaiti ki ngā ata anake (kua huna ngā tapanga). @affects global-nav-bar.item — Ka huna i te tapanga o te tūemi."
+
+msgctxt "docs.api:prose"
+msgid "A styled container for display of important information with two size variants and color themes."
+msgstr "He ipu kua whakarākeitia hei whakaatu i ngā pārongo hira, e rua ōna momo rahi me ngā kaupapa tae."
+
+msgctxt "docs.api:prose"
+msgid "A navigation entry (InstUI `GlobalNavBar.Item`); `-selected` marks the active one."
+msgstr "He tūemi whakatere (InstUI `GlobalNavBar.Item`); `-selected` e tohu ana i te tūemi hohe."
+
+msgctxt "docs.api:prose"
+msgid "Large padding around arrow icons in overflow buttons."
+msgstr "He nui te mokowā huri noa i ngā ata pere i ngā pātene waipuke."
+
+msgctxt "docs.api:prose"
+msgid "Standalone `banner` stylesheet — the prefixed CSS for the banner container, ready to ship as a `.css` file."
+msgstr "Kōnae kāhua motuhake `banner` — te CSS kua whai kuhimua mō te ipu kara, kua rite ki te tuku hei kōnae `.css`."
+
+msgctxt "docs.api:prose"
+msgid "Standalone `globalNavBar` stylesheet — the prefixed CSS for the navigation rail, ready to ship as a `.css` file."
+msgstr "Kōnae kāhua motuhake `globalNavBar` — ko te CSS kua whai kuhimua mō te ara whakatere, kua rite mō te tuku hei kōnae `.css`."
+
+msgctxt "docs.api:prose"
+msgid "Standalone `global-nav-bar.item` stylesheet."
+msgstr "Mā `global-nav-bar.item` pepa kāhua motuhake."
+
+msgctxt "docs.api:prose"
+msgid "Use `globalNavBarCss` instead."
+msgstr "Whakamahia `globalNavBarCss` kē."
+
+msgctxt "docs.api:prose"
+msgid "Use `globalNavBarItemCss` instead."
+msgstr "Whakamahia `globalNavBarItemCss` kē."
+
+#, pantoken-verbatim
+msgctxt "docs.api:text"
+msgid "bannerCss"
+msgstr "bannerCss"
+
+#, pantoken-verbatim
+msgctxt "docs.api:text"
+msgid "globalNavBarCss"
+msgstr "globalNavBarCss"
+
+#, pantoken-verbatim
+msgctxt "docs.api:text"
+msgid "globalNavBarItemCss"
+msgstr "globalNavBarItemCss"
+
+#, pantoken-verbatim
+msgctxt "docs.api:text"
+msgid "global-nav-bar"
+msgstr "global-nav-bar"

@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: pantoken\n"
-"PO-Revision-Date: 2026-11-13 22:09+0000\n"
+"PO-Revision-Date: 2026-11-20 02:54+0000\n"
 "Last-Translator: pantoken localization engine\n"
 "Language-Team: pantoken\n"
 "MIME-Version: 1.0\n"
@@ -35071,3 +35071,109 @@ msgstr "numberInput"
 msgctxt "docs.api:text"
 msgid "componentElements"
 msgstr "componentElements"
+
+msgctxt "docs.api:prose"
+msgid "\n  An alert with text-color-base modifier for high contrast.\n"
+msgstr "\n  Foláireamh le mionathraitheoir text-color-base le haghaidh ardchodarsnachta.\n"
+
+msgctxt "docs.api:prose"
+msgid "\n  A warning alert with explicit base text color.\n"
+msgstr "\n  Foláireamh rabhaidh le dath téacs bunúsach sainráite.\n"
+
+msgctxt "docs.api:prose"
+msgid "\n  An inline alert with inline status icon.\n"
+msgstr "\n  Foláireamh inlíne le deilbhín stádais inlíne.\n"
+
+msgctxt "docs.api:prose"
+msgid "Render inline icon using the status color (for inline alerts)."
+msgstr "Rindreáil an deilbhín inlíne agus dath an stádais á úsáid (le haghaidh foláirimh inlíne)."
+
+msgctxt "docs.api:prose"
+msgid "Use base text color instead of on-color (high-contrast)."
+msgstr "Úsáid dath téacs bunúsach in ionad dath an tulra (ardchodarsnacht)."
+
+msgctxt "docs.api:prose"
+msgid "Use on-color text (default for floating)."
+msgstr "Úsáid dath téacs an tulra (réamhshocrú le haghaidh foláirimh ar snámh)."
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "**Source:** [banner.css](https://github.com/thedannywahl/pantoken/blob/main/formats/components/src/components/banner/banner.css)"
+msgstr "**Source:** [banner.css](https://github.com/thedannywahl/pantoken/blob/main/formats/components/src/components/banner/banner.css)"
+
+msgctxt "docs.api:prose"
+msgid "`.item` — A navigation entry (InstUI `GlobalNavBar.Item`); `-selected` marks the active one."
+msgstr "`.item` — Iontráil nascleanúna (InstUI `GlobalNavBar.Item`); `-selected` a mharcálann an ceann gníomhach."
+
+msgctxt "docs.api:prose"
+msgid "The parent `global-nav-bar`'s `-minimized` modifier hides this member's `.label` — see `global-nav-bar`'s own doc for that modifier."
+msgstr "An tuismitheoir `global-nav-bar`'s `-minimized` modhnóir a cheiltíonn `.label` an ball seo — féach ar dhoiciméad `global-nav-bar` féin don mhodhnóir sin."
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "**Source:** [global-nav-bar.css](https://github.com/thedannywahl/pantoken/blob/main/formats/components/src/components/global-nav-bar/global-nav-bar.css)"
+msgstr "**Source:** [global-nav-bar.css](https://github.com/thedannywahl/pantoken/blob/main/formats/components/src/components/global-nav-bar/global-nav-bar.css)"
+
+msgctxt "docs.api:prose"
+msgid "`.instui-global-nav-bar` — A vertical navigation rail of icon-over-label items, with a minimized icons-only mode."
+msgstr "`.instui-global-nav-bar` — Ráille nascleanúna ingearach ina bhfuil deilbhíní os cionn lipéid, agus mód íoslaghdaithe ina dtaispeántar deilbhíní amháin."
+
+msgctxt "docs.api:prose"
+msgid "Sets its own `gap` between nav items and its own `padding`; chaining a `-gap-*`/`-p-*`/`-padding-*` spacing utility modifier overrides those built-in values. See the `global-nav-bar.item` member for the individual nav entries."
+msgstr "Socraíonn sé a `gap` féin idir míreanna nascleanúna agus a `padding` féin; sáraíonn modhnóir fóntais spásála `-gap-*`/`-p-*`/`-padding-*` na luachanna ionsuite sin nuair a shlabhraítear é. Féach ar an mball `global-nav-bar.item` le haghaidh na míreanna aonair nascleanúna."
+
+msgctxt "docs.api:prose"
+msgid "Collapse to icons only (labels hidden). @affects global-nav-bar.item — Hides the item's label."
+msgstr "Laghdaigh go dtí deilbhíní amháin (lipéid i bhfolach). @affects global-nav-bar.item — Folaíonn sé lipéad na míre."
+
+msgctxt "docs.api:prose"
+msgid "A styled container for display of important information with two size variants and color themes."
+msgstr "Coimeádán stílithe chun faisnéis thábhachtach a thaispeáint, le dhá leagan méide agus téamaí datha."
+
+msgctxt "docs.api:prose"
+msgid "A navigation entry (InstUI `GlobalNavBar.Item`); `-selected` marks the active one."
+msgstr "Iontráil nascleanúna (InstUI `GlobalNavBar.Item`); `-selected`a léiríonn an ceann gníomhach."
+
+msgctxt "docs.api:prose"
+msgid "Large padding around arrow icons in overflow buttons."
+msgstr "Stuáil mhór timpeall ar dheilbhíní saighde sna cnaipí thar maoil."
+
+msgctxt "docs.api:prose"
+msgid "Standalone `banner` stylesheet — the prefixed CSS for the banner container, ready to ship as a `.css` file."
+msgstr "Stílbhileog neamhspleách `banner` — an CSS leis an réimír don choimeádán meirge, réidh le seoladh mar chomhad `.css`."
+
+msgctxt "docs.api:prose"
+msgid "Standalone `globalNavBar` stylesheet — the prefixed CSS for the navigation rail, ready to ship as a `.css` file."
+msgstr "Stílbhileog neamhspleách `globalNavBar` — an CSS réimírthe don ráille nascleanúna, réidh le foilsiú mar chomhad `.css`."
+
+msgctxt "docs.api:prose"
+msgid "Standalone `global-nav-bar.item` stylesheet."
+msgstr "Stílbhileog neamhspleách `global-nav-bar.item`"
+
+msgctxt "docs.api:prose"
+msgid "Use `globalNavBarCss` instead."
+msgstr "Úsáid `globalNavBarCss` ina ionad."
+
+msgctxt "docs.api:prose"
+msgid "Use `globalNavBarItemCss` instead."
+msgstr "Úsáid `globalNavBarItemCss` ina ionad."
+
+#, pantoken-verbatim
+msgctxt "docs.api:text"
+msgid "bannerCss"
+msgstr "bannerCss"
+
+#, pantoken-verbatim
+msgctxt "docs.api:text"
+msgid "globalNavBarCss"
+msgstr "globalNavBarCss"
+
+#, pantoken-verbatim
+msgctxt "docs.api:text"
+msgid "globalNavBarItemCss"
+msgstr "globalNavBarItemCss"
+
+#, pantoken-verbatim
+msgctxt "docs.api:text"
+msgid "global-nav-bar"
+msgstr "global-nav-bar"

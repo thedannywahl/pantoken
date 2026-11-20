@@ -2027,6 +2027,18 @@ msgid ""
 msgstr ""
 "सेमांटिक .instui-breadcrumb क्लास से स्टाइल किया गया Instructure ब्रेडक्रंब कंपोनेंट।"
 
+#: docs/.vitepress/catalog-i18n.json#registryBrowserItems.banner.title
+#, fuzzy, no-c-format
+msgctxt "docs.chrome:registryBrowserItems.banner.title"
+msgid "Banner"
+msgstr "रनर"
+
+#: docs/.vitepress/catalog-i18n.json#registryBrowserItems.banner.description
+#, no-c-format
+msgctxt "docs.chrome:registryBrowserItems.banner.description"
+msgid "Pantoken banner component styles and documented HTML structure."
+msgstr "Pantoken बैनर घटक की स्टाइल और प्रलेखित HTML संरचना।"
+
 #: docs/.vitepress/catalog-i18n.json#registryBrowserItems.billboard.title
 #, no-c-format
 msgctxt "docs.chrome:registryBrowserItems.billboard.title"
@@ -2176,6 +2188,22 @@ msgctxt "docs.chrome:registryBrowserItems.side-nav-bar.description"
 msgid ""
 "Instructure Side-nav-bar component styled with semantic .instui-side-nav-bar "
 "classes."
+msgstr ""
+"सेमांटिक .instui-side-nav-bar क्लास से स्टाइल किया गया Instructure साइड-नेविगेशन-"
+"बार कंपोनेंट।"
+
+#: docs/.vitepress/catalog-i18n.json#registryBrowserItems.global-nav-bar.title
+#, fuzzy, no-c-format
+msgctxt "docs.chrome:registryBrowserItems.global-nav-bar.title"
+msgid "Global-nav-bar"
+msgstr "साइड-नेविगेशन-बार"
+
+#: docs/.vitepress/catalog-i18n.json#registryBrowserItems.global-nav-bar.description
+#, fuzzy, no-c-format
+msgctxt "docs.chrome:registryBrowserItems.global-nav-bar.description"
+msgid ""
+"Instructure Global-nav-bar component styled with semantic .instui-global-nav-"
+"bar classes."
 msgstr ""
 "सेमांटिक .instui-side-nav-bar क्लास से स्टाइल किया गया Instructure साइड-नेविगेशन-"
 "बार कंपोनेंट।"
@@ -2507,18 +2535,6 @@ msgstr "दृश्य"
 msgctxt "docs.chrome:registryBrowserItems.view.description"
 msgid "Instructure View component styled with semantic .instui-view classes."
 msgstr "Instructure दृश्य घटक, semantic .instui-view क्लासों से स्टाइल किया गया है।"
-
-#: docs/.vitepress/catalog-i18n.json#registryBrowserItems.banner.title
-#, fuzzy, no-c-format
-msgctxt "docs.chrome:registryBrowserItems.banner.title"
-msgid "Banner"
-msgstr "रनर"
-
-#: docs/.vitepress/catalog-i18n.json#registryBrowserItems.banner.description
-#, no-c-format
-msgctxt "docs.chrome:registryBrowserItems.banner.description"
-msgid "Pantoken banner component styles and documented HTML structure."
-msgstr "Pantoken बैनर घटक की स्टाइल और प्रलेखित HTML संरचना।"
 
 #: docs/.vitepress/catalog-i18n.json#registryBrowserItems.agent-shell.title
 #, fuzzy, no-c-format

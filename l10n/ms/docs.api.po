@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: pantoken\n"
-"PO-Revision-Date: 2026-11-14 02:42+0000\n"
+"PO-Revision-Date: 2026-11-20 03:24+0000\n"
 "Last-Translator: pantoken localization engine\n"
 "Language-Team: pantoken\n"
 "MIME-Version: 1.0\n"
@@ -35056,3 +35056,109 @@ msgstr "componentElements"
 msgctxt "docs.api:prose"
 msgid "<!-- pantoken-value-scope:css%2Fscreen-reader-content.md -->\nThis component ships no CSS of its own — its markup and behavior come entirely from {{ptk_code_0}}. See the [modifier table below]({{ptk_code_1}})."
 msgstr "<!-- pantoken-value-scope:css%2Fscreen-reader-content.md -->\nKomponen ini tidak menyediakan CSS sendiri — penandaannya dan tingkah lakunya datang sepenuhnya daripada {{ptk_code_0}}. Lihat jadual [pengubah suai di bawah]({{ptk_code_1}})."
+
+msgctxt "docs.api:prose"
+msgid "\n  An alert with text-color-base modifier for high contrast.\n"
+msgstr "\n  Amaran dengan pengubah text-color-base untuk kontras tinggi.\n"
+
+msgctxt "docs.api:prose"
+msgid "\n  A warning alert with explicit base text color.\n"
+msgstr "\n  Amaran dengan warna teks asas yang ditetapkan secara eksplisit.\n"
+
+msgctxt "docs.api:prose"
+msgid "\n  An inline alert with inline status icon.\n"
+msgstr "\n  Amaran sebaris dengan ikon status sebaris.\n"
+
+msgctxt "docs.api:prose"
+msgid "Render inline icon using the status color (for inline alerts)."
+msgstr "Paparkan ikon sebaris menggunakan warna status (untuk amaran sebaris)."
+
+msgctxt "docs.api:prose"
+msgid "Use base text color instead of on-color (high-contrast)."
+msgstr "Gunakan warna teks asas dan bukannya on-color (kontras tinggi)."
+
+msgctxt "docs.api:prose"
+msgid "Use on-color text (default for floating)."
+msgstr "Gunakan teks on-color (lalai untuk amaran terapung)."
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "**Source:** [banner.css](https://github.com/thedannywahl/pantoken/blob/main/formats/components/src/components/banner/banner.css)"
+msgstr "**Source:** [banner.css](https://github.com/thedannywahl/pantoken/blob/main/formats/components/src/components/banner/banner.css)"
+
+msgctxt "docs.api:prose"
+msgid "`.item` — A navigation entry (InstUI `GlobalNavBar.Item`); `-selected` marks the active one."
+msgstr "Entri navigasi (InstUI `GlobalNavBar.Item`); `-selected` menandakan entri yang aktif."
+
+msgctxt "docs.api:prose"
+msgid "The parent `global-nav-bar`'s `-minimized` modifier hides this member's `.label` — see `global-nav-bar`'s own doc for that modifier."
+msgstr "Induk `global-nav-bar` mempunyai pengubah `-minimized` yang menyembunyikan `.label` ahli ini — lihat dokumentasi sendiri untuk `global-nav-bar` bagi pengubah tersebut."
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "**Source:** [global-nav-bar.css](https://github.com/thedannywahl/pantoken/blob/main/formats/components/src/components/global-nav-bar/global-nav-bar.css)"
+msgstr "**Source:** [global-nav-bar.css](https://github.com/thedannywahl/pantoken/blob/main/formats/components/src/components/global-nav-bar/global-nav-bar.css)"
+
+msgctxt "docs.api:prose"
+msgid "`.instui-global-nav-bar` — A vertical navigation rail of icon-over-label items, with a minimized icons-only mode."
+msgstr "`.instui-global-nav-bar` — Rel navigasi menegak yang terdiri daripada item ikon di atas label, dengan mod minimum ikon sahaja."
+
+msgctxt "docs.api:prose"
+msgid "Sets its own `gap` between nav items and its own `padding`; chaining a `-gap-*`/`-p-*`/`-padding-*` spacing utility modifier overrides those built-in values. See the `global-nav-bar.item` member for the individual nav entries."
+msgstr "Menetapkan nilai sendiri `gap` antara item navigasi dan nilai sendiri `padding`; menggabungkan pengubah utiliti jarak `-gap-*`/`-p-*`/`-padding-*` akan mengatasi nilai terbina dalam tersebut. Lihat ahli `global-nav-bar.item` untuk entri navigasi individu."
+
+msgctxt "docs.api:prose"
+msgid "Collapse to icons only (labels hidden). @affects global-nav-bar.item — Hides the item's label."
+msgstr "Runtuhkan kepada ikon sahaja (label disembunyikan). @affects global-nav-bar.item — Menyembunyikan label item."
+
+msgctxt "docs.api:prose"
+msgid "A styled container for display of important information with two size variants and color themes."
+msgstr "Bekas bergaya untuk memaparkan maklumat penting dengan dua varian saiz dan tema warna."
+
+msgctxt "docs.api:prose"
+msgid "A navigation entry (InstUI `GlobalNavBar.Item`); `-selected` marks the active one."
+msgstr "Entri navigasi (InstUI `GlobalNavBar.Item`); `-selected` menandakan item yang aktif."
+
+msgctxt "docs.api:prose"
+msgid "Large padding around arrow icons in overflow buttons."
+msgstr "Ruang dalam yang luas di sekeliling ikon anak panah pada butang limpahan."
+
+msgctxt "docs.api:prose"
+msgid "Standalone `banner` stylesheet — the prefixed CSS for the banner container, ready to ship as a `.css` file."
+msgstr "Berdiri sendiri `banner` helaian gaya — CSS berprefiks untuk bekas sepanduk, sedia untuk dihantar sebagai `.css` fail."
+
+msgctxt "docs.api:prose"
+msgid "Standalone `globalNavBar` stylesheet — the prefixed CSS for the navigation rail, ready to ship as a `.css` file."
+msgstr "Lembaran gaya `globalNavBar` kendiri — CSS berawalan untuk rel navigasi, sedia untuk diterbitkan sebagai fail `.css`."
+
+msgctxt "docs.api:prose"
+msgid "Standalone `global-nav-bar.item` stylesheet."
+msgstr "Helaian gaya kendiri `global-nav-bar.item`."
+
+msgctxt "docs.api:prose"
+msgid "Use `globalNavBarCss` instead."
+msgstr "Gunakan `globalNavBarCss` sebaliknya."
+
+msgctxt "docs.api:prose"
+msgid "Use `globalNavBarItemCss` instead."
+msgstr "Sebaliknya, gunakan `globalNavBarItemCss`."
+
+#, pantoken-verbatim
+msgctxt "docs.api:text"
+msgid "bannerCss"
+msgstr "bannerCss"
+
+#, pantoken-verbatim
+msgctxt "docs.api:text"
+msgid "globalNavBarCss"
+msgstr "globalNavBarCss"
+
+#, pantoken-verbatim
+msgctxt "docs.api:text"
+msgid "globalNavBarItemCss"
+msgstr "globalNavBarItemCss"
+
+#, pantoken-verbatim
+msgctxt "docs.api:text"
+msgid "global-nav-bar"
+msgstr "global-nav-bar"

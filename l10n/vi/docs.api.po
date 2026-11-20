@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: pantoken\n"
-"PO-Revision-Date: 2026-11-14 01:19+0000\n"
+"PO-Revision-Date: 2026-11-20 04:04+0000\n"
 "Last-Translator: pantoken localization engine\n"
 "Language-Team: pantoken\n"
 "MIME-Version: 1.0\n"
@@ -32710,3 +32710,109 @@ msgstr "numberInput"
 msgctxt "docs.api:text"
 msgid "componentElements"
 msgstr "componentElements"
+
+msgctxt "docs.api:prose"
+msgid "\n  An alert with text-color-base modifier for high contrast.\n"
+msgstr "\n  Một cảnh báo với modifier text-color-base để tăng độ tương phản.\n"
+
+msgctxt "docs.api:prose"
+msgid "\n  A warning alert with explicit base text color.\n"
+msgstr "\n  Một cảnh báo dạng warning với màu văn bản cơ bản được chỉ định rõ.\n"
+
+msgctxt "docs.api:prose"
+msgid "\n  An inline alert with inline status icon.\n"
+msgstr "\n  Một cảnh báo nội dòng với biểu tượng trạng thái nội dòng.\n"
+
+msgctxt "docs.api:prose"
+msgid "Render inline icon using the status color (for inline alerts)."
+msgstr "Hiển thị biểu tượng nội dòng bằng màu trạng thái (dành cho cảnh báo nội dòng)."
+
+msgctxt "docs.api:prose"
+msgid "Use base text color instead of on-color (high-contrast)."
+msgstr "Dùng màu văn bản cơ bản thay vì on-color (độ tương phản cao)."
+
+msgctxt "docs.api:prose"
+msgid "Use on-color text (default for floating)."
+msgstr "Dùng văn bản on-color (mặc định cho cảnh báo nổi)."
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "**Source:** [banner.css](https://github.com/thedannywahl/pantoken/blob/main/formats/components/src/components/banner/banner.css)"
+msgstr "**Source:** [banner.css](https://github.com/thedannywahl/pantoken/blob/main/formats/components/src/components/banner/banner.css)"
+
+msgctxt "docs.api:prose"
+msgid "`.item` — A navigation entry (InstUI `GlobalNavBar.Item`); `-selected` marks the active one."
+msgstr "`.item` — Một mục điều hướng (InstUI `GlobalNavBar.Item`); `-selected` đánh dấu mục đang hoạt động."
+
+msgctxt "docs.api:prose"
+msgid "The parent `global-nav-bar`'s `-minimized` modifier hides this member's `.label` — see `global-nav-bar`'s own doc for that modifier."
+msgstr "Bộ sửa đổi `global-nav-bar` của mục cha `-minimized` ẩn `.label` của thành viên này — xem tài liệu riêng của `global-nav-bar` về bộ sửa đổi đó."
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "**Source:** [global-nav-bar.css](https://github.com/thedannywahl/pantoken/blob/main/formats/components/src/components/global-nav-bar/global-nav-bar.css)"
+msgstr "**Source:** [global-nav-bar.css](https://github.com/thedannywahl/pantoken/blob/main/formats/components/src/components/global-nav-bar/global-nav-bar.css)"
+
+msgctxt "docs.api:prose"
+msgid "`.instui-global-nav-bar` — A vertical navigation rail of icon-over-label items, with a minimized icons-only mode."
+msgstr "`.instui-global-nav-bar` — Thanh điều hướng dọc gồm các mục biểu tượng phía trên nhãn, có chế độ thu gọn chỉ hiển thị biểu tượng."
+
+msgctxt "docs.api:prose"
+msgid "Sets its own `gap` between nav items and its own `padding`; chaining a `-gap-*`/`-p-*`/`-padding-*` spacing utility modifier overrides those built-in values. See the `global-nav-bar.item` member for the individual nav entries."
+msgstr "Tự thiết lập `gap` giữa các mục điều hướng và `padding` riêng; khi kết hợp, một tiện ích khoảng cách `-gap-*`/`-p-*`/`-padding-*` sẽ ghi đè các giá trị tích hợp này. Xem thành viên `global-nav-bar.item` để biết các mục điều hướng riêng lẻ."
+
+msgctxt "docs.api:prose"
+msgid "Collapse to icons only (labels hidden). @affects global-nav-bar.item — Hides the item's label."
+msgstr "Thu gọn chỉ còn biểu tượng (nhãn bị ẩn). @affects global-nav-bar.item — Ẩn nhãn của mục."
+
+msgctxt "docs.api:prose"
+msgid "A styled container for display of important information with two size variants and color themes."
+msgstr "Một vùng chứa được tạo kiểu để hiển thị thông tin quan trọng, với hai biến thể kích thước và các chủ đề màu sắc."
+
+msgctxt "docs.api:prose"
+msgid "A navigation entry (InstUI `GlobalNavBar.Item`); `-selected` marks the active one."
+msgstr "Một mục điều hướng (InstUI `GlobalNavBar.Item`); `-selected` đánh dấu mục đang hoạt động."
+
+msgctxt "docs.api:prose"
+msgid "Large padding around arrow icons in overflow buttons."
+msgstr "Khoảng đệm lớn xung quanh các biểu tượng mũi tên trong các nút tràn."
+
+msgctxt "docs.api:prose"
+msgid "Standalone `banner` stylesheet — the prefixed CSS for the banner container, ready to ship as a `.css` file."
+msgstr "Độc lập `banner` biểu định kiểu — CSS có tiền tố cho vùng chứa biểu ngữ, sẵn sàng phát hành dưới dạng tệp `.css`."
+
+msgctxt "docs.api:prose"
+msgid "Standalone `globalNavBar` stylesheet — the prefixed CSS for the navigation rail, ready to ship as a `.css` file."
+msgstr "Biểu định kiểu độc lập `globalNavBar` — CSS có tiền tố dành cho thanh điều hướng, sẵn sàng phát hành dưới dạng tệp `.css`."
+
+msgctxt "docs.api:prose"
+msgid "Standalone `global-nav-bar.item` stylesheet."
+msgstr "Tệp định kiểu độc lập `global-nav-bar.item`."
+
+msgctxt "docs.api:prose"
+msgid "Use `globalNavBarCss` instead."
+msgstr "Thay vào đó, hãy sử dụng `globalNavBarCss`."
+
+msgctxt "docs.api:prose"
+msgid "Use `globalNavBarItemCss` instead."
+msgstr "Thay vào đó, hãy sử dụng `globalNavBarItemCss`."
+
+#, pantoken-verbatim
+msgctxt "docs.api:text"
+msgid "bannerCss"
+msgstr "bannerCss"
+
+#, pantoken-verbatim
+msgctxt "docs.api:text"
+msgid "globalNavBarCss"
+msgstr "globalNavBarCss"
+
+#, pantoken-verbatim
+msgctxt "docs.api:text"
+msgid "globalNavBarItemCss"
+msgstr "globalNavBarItemCss"
+
+#, pantoken-verbatim
+msgctxt "docs.api:text"
+msgid "global-nav-bar"
+msgstr "global-nav-bar"
