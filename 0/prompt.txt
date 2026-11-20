@@ -1,0 +1,15 @@
+Warning: Property exampleFilters is not allowed.
+that should be allowed on 0.17.1 of cssdoc
+
+---
+
+Warning: Property exampleFilters is not allowed.
+that should be allowed on 0.17.1 of cssdoc
+
+---
+
+what we should do is remove the custom `-docs` or `-automatically` and `-demo` or other and processing that we've done to display/hide them in the docs site and then reconvigure them to use cssdoc example labels appropriately, then configure cssdoc.jsonc to follow how they're currently configured.
+
+---
+
+what we should do is remove the custom `-docs` or `-automatically` and `-demo` or other and processing that we've done to display/hide them in the docs site and then reconvigure them to use cssdoc example labels appropriately, then configure cssdoc.jsonc to follow how they're currently configured.
