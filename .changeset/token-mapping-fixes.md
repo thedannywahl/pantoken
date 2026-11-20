@@ -1,6 +1,6 @@
 ---
 "@pantoken/components": patch
-"renderers/shadcn": patch
+"@pantoken/shadcn": patch
 ---
 
 Fix Banner demo i18n.json structure and correct shadcn sidebar token mappings.
