@@ -1,0 +1,91 @@
+{
+  "cli_version": "0.13.4",
+  "checkpoint_id": "01M7WHXZ4EGNQ0RBEGTZZ9GYWN",
+  "session_id": "49f9a52c-93f6-4334-80ad-41a4f7117db1",
+  "strategy": "manual-commit",
+  "created_at": "2026-11-20T13:22:01.215452Z",
+  "branch": "design-tokens-2.6.0",
+  "checkpoints_count": 1,
+  "files_touched": [
+    ".changeset/ai-banner-global-nav-v2-6-0.md"
+  ],
+  "agent": "Copilot CLI",
+  "model": "claude-haiku-4.5",
+  "turn_id": "e4efa764315b",
+  "checkpoint_transcript_start": 17019,
+  "transcript_lines_at_start": 17019,
+  "compact_transcript_start": 1678,
+  "token_usage": {
+    "input_tokens": 95,
+    "cache_creation_tokens": 15018,
+    "cache_read_tokens": 1293636,
+    "output_tokens": 2912,
+    "api_call_count": 19
+  },
+  "session_token_usage": {
+    "input_tokens": 31788,
+    "cache_creation_tokens": 1808274,
+    "cache_read_tokens": 89015025,
+    "output_tokens": 230422,
+    "api_call_count": 1156,
+    "subagent_tokens": {
+      "input_tokens": 2641,
+      "cache_creation_tokens": 455501,
+      "cache_read_tokens": 29990981,
+      "output_tokens": 110340,
+      "api_call_count": 511
+    },
+    "subagent_tokens_complete": true
+  },
+  "redaction": {
+    "replacements": 102,
+    "layers": {
+      "betterleaks": 0,
+      "connection_string": 0,
+      "credential_key": 0,
+      "credential_value": 0,
+      "credentialed_uri": 0,
+      "custom": 0,
+      "entropy": 2330,
+      "goredact": 0,
+      "key_context": 0,
+      "pii": 22,
+      "provider_token": 0,
+      "shell_stdin": 0
+    },
+    "custom_rules_active": 2,
+    "pii": {
+      "EMAIL": 22,
+      "IP": 0,
+      "PHONE": 0
+    }
+  },
+  "skill_events_version": 1,
+  "skill_events": [
+    {
+      "id": "prompt-skill-copilot-cli-tools/upstream-diff-2026-11-20T01:56:19.677Z",
+      "event_type": "prompt_invocation",
+      "skill": {
+        "name": "tools/upstream-diff"
+      },
+      "source": {
+        "agent": "copilot-cli",
+        "signal": "prompt_slash_command",
+        "confidence": "explicit"
+      },
+      "turn_id": "481ba79ae3b1",
+      "timestamp": "2026-11-20T01:56:19.677Z",
+      "native": {
+        "command": "/tools/upstream-diff"
+      },
+      "collapse": {
+        "target": "user_message",
+        "label": "/tools/upstream-diff",
+        "default_collapsed": true
+      }
+    }
+  ],
+  "session_metrics": {
+    "turn_count": 9
+  }
+}
