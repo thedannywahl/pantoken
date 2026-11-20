@@ -1,0 +1,127 @@
+You have not yet marked the task as complete using the task_complete tool. If you were planning changes the user asked for, stop planning and start implementing. You aren't done until you have fully completed the task.
+
+IMPORTANT: Do NOT call task_complete if:
+- You have open questions or ambiguities - make good decisions and keep working
+- You encountered an error - try to resolve it or find an alternative approach
+- There are remaining steps - complete them first
+
+If the user asked only for a review, analysis or recommendation and you have already delivered it, the task is complete: call task_complete now. A follow-up you offered or recommended is not part of the task, so do not start it.
+
+Keep working autonomously until the task is truly finished, then call task_complete.
+
+---
+
+You have not yet marked the task as complete using the task_complete tool. If you were planning changes the user asked for, stop planning and start implementing. You aren't done until you have fully completed the task.
+
+IMPORTANT: Do NOT call task_complete if:
+- You have open questions or ambiguities - make good decisions and keep working
+- You encountered an error - try to resolve it or find an alternative approach
+- There are remaining steps - complete them first
+
+If the user asked only for a review, analysis or recommendation and you have already delivered it, the task is complete: call task_complete now. A follow-up you offered or recommended is not part of the task, so do not start it.
+
+Keep working autonomously until the task is truly finished, then call task_complete.
+
+---
+
+➜ vpr i18n:drift:fix:copilot
+~/tools/i18n-engine$ vp pack ○ cache miss: 'tools/i18n-engine/package.json' modified, executing
+~/tools/translation-adapters$ vp pack ○ cache miss: 'tools/translation-adapters/package.json' modified, executing
+ℹ entry: src/index.ts, src/cli.ts
+ℹ tsconfig: tsconfig.json
+ℹ Build start
+ℹ Cleaning 6 files
+ℹ dist/index.mjs            5.80 kB │ gzip:  2.23 kB
+ℹ dist/cli.mjs              0.10 kB │ gzip:  0.11 kB
+ℹ dist/cli-n5c3gIjf.mjs    91.04 kB │ gzip: 26.44 kB
+ℹ dist/index.d.mts         19.86 kB │ gzip:  6.45 kB
+ℹ dist/cli.d.mts            0.15 kB │ gzip:  0.12 kB
+ℹ dist/cli-1b4fILfG.d.mts   6.59 kB │ gzip:  2.42 kB
+ℹ 6 files, total: 123.54 kB
+✔ Build complete in 52ms
+
+ℹ entry: src/index.ts
+ℹ tsconfig: tsconfig.json
+ℹ Build start
+ℹ Cleaning 2 files
+ℹ dist/index.mjs    46.63 kB │ gzip: 15.43 kB
+ℹ dist/index.d.mts  19.18 kB │ gzip:  7.18 kB
+ℹ 2 files, total: 65.81 kB
+✔ Build complete in 29ms
+
+$ vpx scripts/i18n-drift-fix.ts --provider copilot ⊘ cache disabled
+✓ ui.strings: no translation drift
+ui.strings: no drift, skipping
+✓ cli.scaffold: no translation drift
+cli.scaffold: no drift, skipping
+✓ scaffold.readme: no translation drift
+scaffold.readme: no drift, skipping
+✓ cli.ai: no translation drift
+cli.ai: no drift, skipping
+file:///Users/dwahl/Scripts/pantoken/docs/scripts/demo-i18n.ts:81
+    if (!placeholders.has(key)) throw new Error(`Unused demo i18n key '${key}'.`);
+                                      ^
+
+Error: Unused demo i18n key 'text1'.
+    at validateDemoI18n (file:///Users/dwahl/Scripts/pantoken/docs/scripts/demo-i18n.ts:81:39)
+    at loadDemoI18n (file:///Users/dwahl/Scripts/pantoken/docs/scripts/demo-i18n.ts:97:10)
+    at demosDrift (file:///Users/dwahl/Scripts/pantoken/docs/scripts/check-locale-drift.ts:269:27)
+    at file:///Users/dwahl/Scripts/pantoken/docs/scripts/check-locale-drift.ts:333:32
+    at ModuleJob.run (node:internal/modules/esm/module_job:569:25)
+    at async node:internal/modules/esm/loader:650:26
+    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:105:5)
+
+Node.js v26.13.1
+Drift check did not write /Users/dwahl/Scripts/pantoken/.i18n/drift-fix.98851.docs-guides.json
+
+---
+
+➜ vpr i18n:drift:fix:copilot
+~/tools/i18n-engine$ vp pack ○ cache miss: 'tools/i18n-engine/package.json' modified, executing
+~/tools/translation-adapters$ vp pack ○ cache miss: 'tools/translation-adapters/package.json' modified, executing
+ℹ entry: src/index.ts, src/cli.ts
+ℹ tsconfig: tsconfig.json
+ℹ Build start
+ℹ Cleaning 6 files
+ℹ dist/index.mjs            5.80 kB │ gzip:  2.23 kB
+ℹ dist/cli.mjs              0.10 kB │ gzip:  0.11 kB
+ℹ dist/cli-n5c3gIjf.mjs    91.04 kB │ gzip: 26.44 kB
+ℹ dist/index.d.mts         19.86 kB │ gzip:  6.45 kB
+ℹ dist/cli.d.mts            0.15 kB │ gzip:  0.12 kB
+ℹ dist/cli-1b4fILfG.d.mts   6.59 kB │ gzip:  2.42 kB
+ℹ 6 files, total: 123.54 kB
+✔ Build complete in 52ms
+
+ℹ entry: src/index.ts
+ℹ tsconfig: tsconfig.json
+ℹ Build start
+ℹ Cleaning 2 files
+ℹ dist/index.mjs    46.63 kB │ gzip: 15.43 kB
+ℹ dist/index.d.mts  19.18 kB │ gzip:  7.18 kB
+ℹ 2 files, total: 65.81 kB
+✔ Build complete in 29ms
+
+$ vpx scripts/i18n-drift-fix.ts --provider copilot ⊘ cache disabled
+✓ ui.strings: no translation drift
+ui.strings: no drift, skipping
+✓ cli.scaffold: no translation drift
+cli.scaffold: no drift, skipping
+✓ scaffold.readme: no translation drift
+scaffold.readme: no drift, skipping
+✓ cli.ai: no translation drift
+cli.ai: no drift, skipping
+file:///Users/dwahl/Scripts/pantoken/docs/scripts/demo-i18n.ts:81
+    if (!placeholders.has(key)) throw new Error(`Unused demo i18n key '${key}'.`);
+                                      ^
+
+Error: Unused demo i18n key 'text1'.
+    at validateDemoI18n (file:///Users/dwahl/Scripts/pantoken/docs/scripts/demo-i18n.ts:81:39)
+    at loadDemoI18n (file:///Users/dwahl/Scripts/pantoken/docs/scripts/demo-i18n.ts:97:10)
+    at demosDrift (file:///Users/dwahl/Scripts/pantoken/docs/scripts/check-locale-drift.ts:269:27)
+    at file:///Users/dwahl/Scripts/pantoken/docs/scripts/check-locale-drift.ts:333:32
+    at ModuleJob.run (node:internal/modules/esm/module_job:569:25)
+    at async node:internal/modules/esm/loader:650:26
+    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:105:5)
+
+Node.js v26.13.1
+Drift check did not write /Users/dwahl/Scripts/pantoken/.i18n/drift-fix.98851.docs-guides.json
