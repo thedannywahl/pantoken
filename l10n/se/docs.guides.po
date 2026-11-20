@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: pantoken\n"
-"PO-Revision-Date: 2026-11-20 04:56+0000\n"
+"PO-Revision-Date: 2026-11-20 20:33+0000\n"
 "Last-Translator: pantoken localization engine\n"
 "Language-Team: pantoken\n"
 "MIME-Version: 1.0\n"
@@ -72,3 +72,328 @@ msgstr "# Heiveheapmi\n\n<!-- Genereren `vp run sync:compatibility` bokte. Ale d
 #, no-c-format
 #~ msgid "# The package map\n\npantoken is a monorepo of small, single-purpose packages grouped into buckets. Install the one that\nfits your task, or install the unified `pantoken` package and import from its subpaths (for example\n`pantoken/css`, `pantoken/react`, `pantoken/tailwind`).\n\n## Core\n\nThe shared model and the transformer everything else builds on.\n\n| Package                                                 | What it does                                                                                                       |\n| ------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------ |\n| [`@pantoken/model`](/api/packages/model/src/)           | Zero-dependency TypeScript types: the `Token` shape and the plugin contract.                                       |\n| [`@pantoken/core`](/api/packages/core/src/)             | Resolves the upstream tokens and icons into the canonical IR, and renders CSS.                                     |\n| [`@pantoken/tokens`](/api/formats/tokens/src/)          | The resolved IR vendored as static JSON, per theme, plus the raw Tokens Studio source.                             |\n| [`@pantoken/utils`](/api/packages/utils/src/)           | The token resolver, reference regexes, case and color helpers, drift checks, and the token→utility-class emitters. |\n| [`@pantoken/plugin-kit`](/api/packages/plugin-kit/src/) | Build and compose pantoken plugins with `definePlugin`.                                                            |\n| [`@pantoken/cli`](/api/packages/cli/src/)               | `pantoken generate <target>` — emit native and platform source.                                                    |\n\n## Formats\n\nTurn the tokens into a file format.\n\n| Package                                                | Output                                                                                                                                                                                                     |\n| ------------------------------------------------------ | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |\n| [`@pantoken/css`](/api/formats/css/src/)               | `@property`-typed CSS with `light-dark()` and data-URI icons.                                                                                                                                              |\n| [`@pantoken/scss`](/api/formats/scss/src/)             | SCSS variables, resolved to a single mode.                                                                                                                                                                 |\n| [`@pantoken/less`](/api/formats/less/src/)             | Less variables.                                                                                                                                                                                            |\n| [`@pantoken/stylus`](/api/formats/stylus/src/)         | Stylus variables.                                                                                                                                                                                          |\n| [`@pantoken/dtcg`](/api/formats/dtcg/src/)             | A W3C Design Tokens (DTCG) document.                                                                                                                                                                       |\n| [`@pantoken/tokens`](/api/formats/tokens/src/)         | The IR as JavaScript and JSON (also listed under Core).                                                                                                                                                    |\n| [`@pantoken/icons`](/api/formats/icons/src/)           | An ergonomic view over the icon tokens.                                                                                                                                                                    |\n| [`@pantoken/icon-font`](/api/formats/icon-font/src/)   | An icon web font (TTF, WOFF2) plus its CSS.                                                                                                                                                                |\n| [`@pantoken/components`](/api/formats/components/src/) | An InstUI-look CSS component library (button, alert, table, and more) plus a base reset with focus ring, prose styling, cross-cutting utilities, and the brand fonts. See [Components](/guide/components). |\n\n## Renderers\n\nFramework and tool integrations.\n\n| Package                                                                                                                                          | For                                                        |\n| ------------------------------------------------------------------------------------------------------------------------------------------------ | ---------------------------------------------------------- |\n| [`@pantoken/react`](/api/renderers/react/src/)                                                                                                   | React hooks, `<Icon>`, and a token provider.               |\n| [`@pantoken/vue`](/api/renderers/vue/src/), [`@pantoken/svelte`](/api/renderers/svelte/src/), [`@pantoken/angular`](/api/renderers/angular/src/) | The web component, wired into each framework.              |\n| [`@pantoken/react-native`](/api/renderers/react-native/src/)                                                                                     | StyleSheet-friendly token objects (no CSS variables).      |\n| [`@pantoken/web-components`](/api/renderers/web-components/src/)                                                                                 | `<instui-icon>` and styled primitives, framework-agnostic. |\n| [`@pantoken/astro`](/api/renderers/astro/src/)                                                                                                   | Token setup for Astro sites.                               |\n| [`@pantoken/react-markdown`](/api/renderers/react-markdown/src/), [`@pantoken/rehype`](/api/renderers/rehype/src/)                               | Icon tokens and swatches in Markdown.                      |\n| [`@pantoken/markdown-it`](/api/renderers/markdown-it/src/)                                                                                       | A markdown-it plugin for icon codes and color swatches.    |\n| [`@pantoken/css-in-js`](/api/renderers/css-in-js/src/)                                                                                           | A type-safe theme for styled-components and Emotion.       |\n| [`@pantoken/mui`](/api/renderers/mui/src/)                                                                                                       | A Material UI theme.                                       |\n| [`@pantoken/bootstrap`](/api/renderers/bootstrap/src/), [`@pantoken/shadcn`](/api/renderers/shadcn/src/)                                         | CSS-variable bridges for Bootstrap and shadcn/ui.          |\n| [`@pantoken/foundation`](/api/renderers/foundation/src/)                                                                                         | A Sass settings override and CSS overlay for Foundation.   |\n| [`@pantoken/docusaurus`](/api/renderers/docusaurus/src/), [`@pantoken/vitepress`](/api/renderers/vitepress/src/)                                 | Themes for Docusaurus and VitePress.                       |\n| [`@pantoken/mintlify`](/api/renderers/mintlify/src/)                                                                                             | A Mintlify `docs.json` theme (colors + background).        |\n| [`@pantoken/storybook`](/api/renderers/storybook/src/)                                                                                           | A Storybook theme.                                         |\n| [`@pantoken/pendo`](/api/renderers/pendo/src/)                                                                                                   | Instructure-styled global CSS for Pendo guides.            |\n\n## Bundlers\n\nBuild-tool integrations.\n\n| Package                                             | For                                                   |\n| --------------------------------------------------- | ----------------------------------------------------- |\n| [`@pantoken/vite`](/api/bundlers/vite/src/)         | A Vite plugin with virtual modules and CSS injection. |\n| [`@pantoken/next`](/api/bundlers/next/src/)         | `withPantoken` for Next.js `transpilePackages`.       |\n| [`@pantoken/webpack`](/api/bundlers/webpack/src/)   | A webpack plugin.                                     |\n| [`@pantoken/postcss`](/api/bundlers/postcss/src/)   | The `@pantoken;` at-rule.                             |\n| [`@pantoken/tailwind`](/api/bundlers/tailwind/src/) | A Tailwind preset.                                    |\n| [`@pantoken/panda`](/api/bundlers/panda/src/)       | A Panda CSS preset.                                   |\n\n## Platforms\n\nNative and site-generator targets, emitted by the CLI or their own API.\n\n| Package                                                                                        | Output                                     |\n| ---------------------------------------------------------------------------------------------- | ------------------------------------------ |\n| [`@pantoken/swift`](/api/platforms/swift/src/)                                                 | Swift source plus a SwiftPM manifest stub. |\n| [`@pantoken/android`](/api/platforms/android/src/)                                             | Android XML resources.                     |\n| [`@pantoken/compose`](/api/platforms/compose/src/)                                             | Jetpack Compose Kotlin.                    |\n| [`@pantoken/flutter`](/api/platforms/flutter/src/)                                             | Flutter Dart.                              |\n| [`@pantoken/rust`](/api/platforms/rust/src/)                                                   | Rust consts for egui or iced.              |\n| [`@pantoken/wordpress`](/api/platforms/wordpress/src/)                                         | A WordPress block-theme `theme.json`.      |\n| [`@pantoken/vanilla`](/api/platforms/vanilla/src/)                                             | A Vanilla Forums `variables.json`.         |\n| [`@pantoken/drupal`](/api/platforms/drupal/src/)                                               | Drupal theme assets.                       |\n| [`@pantoken/hugo`](/api/platforms/hugo/src/), [`@pantoken/jekyll`](/api/platforms/jekyll/src/) | Hugo and Jekyll site data.                 |\n| [`@pantoken/email`](/api/platforms/email/src/)                                                 | Inline-friendly values for HTML email.     |\n\n## Design\n\nFor design tools.\n\n| Package                                           | Output                                                                |\n| ------------------------------------------------- | --------------------------------------------------------------------- |\n| [`@pantoken/figma`](/api/design/figma/src/)       | A Figma Variables payload.                                            |\n| [`@pantoken/swatches`](/api/design/swatches/src/) | Color swatches (ASE, GPL, Sketch) plus a viewable SVG specimen sheet. |\n\n## Plugins\n\nOptional transforms that extend the token or CSS output. See [Plugins](/guide/plugins).\n\n| Package                                                                               | What it adds                                                    |\n| ------------------------------------------------------------------------------------- | --------------------------------------------------------------- |\n| [`@pantoken/plugin-stacking`](/api/plugins/pantoken/stacking/src/)                    | Named z-index depths as `--instui-stacking-*` tokens.           |\n| [`@pantoken/plugin-visual-debug`](/api/plugins/pantoken/visual-debug/src/)            | The `-with-visual-debug` layout-debugging outline.              |\n| [`@pantoken/plugin-simple-icons`](/api/plugins/pantoken/simple-icons/src/)            | Brand icons from simple-icons.                                  |\n| [`@pantoken/plugin-logos`](/api/plugins/pantoken/logos/src/)                          | Instructure product logos as SVGs, data URIs, and image tokens. |\n| [`@pantoken/plugin-prune-custom-props`](/api/plugins/postcss/prune-custom-props/src/) | A PostCSS plugin that drops unused custom properties.           |\n\n## Tools\n\nBuild, docs, and demo infrastructure for the monorepo itself. Most is internal, but the pieces are\nself-contained, so we document them here and some ship to npm on their own.\n\n| Package                                            | What it does                                                                                                                                                                                          |\n| -------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |\n| [`@pantoken/aggregate`](/api/tools/aggregate/src/) | Generates the unified `pantoken` package barrel and `exports` from its dependencies.                                                                                                                  |\n| `@pantoken/validate-generated`                     | The drift gate: checks every generated stylesheet resolves against the token IR.                                                                                                                      |\n| [`@pantoken/demo`](/api/tools/demo/src/)           | The self-hosted live-demo runner: resolves a `@demo` spec to an iframe and renders bare HTML/CSS/JS same-origin, token-themed.                                                                        |\n| `@cssdoc/core` (external)                          | A generic CSS documentation extractor (TSDoc, for CSS): parses doc-comments + the CSS AST into a model the docs emit as the CSS API reference. Lives in its own repo; consumed via a link dependency. |\n\n`@pantoken/validate-generated` is a run-once script (invoked by `pnpm run ready`), so it has no API\npage; the others do.\n\n## AI\n\nConsumer-facing AI setup assets. These are for projects that use pantoken, not for developing\npantoken itself.\n\n- [`@pantoken/ai`](/api/ai/pantoken-ai/src/) installs `AGENTS.md`, `llms.txt`, and\n  assistant/editor rules (Cursor, Copilot, Windsurf, Claude Code) into a consumer repository.\n\n## Dev plugins\n\nPlugins we author for the tools we build with, grouped by host. They're standalone and publishable.\n\n| Package                                                                                  | Plugs into                                                                             |\n| ---------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------- |\n| [`@pantoken/typedoc-plugin-demo`](/api/plugins/typedoc/demo/src/)                        | TypeDoc: turns a `@demo <provider>:<ref>` block tag into an embeddable demo fence.     |\n| [`@pantoken/vite-workspace-orchestrator`](/api/plugins/vite/workspace-orchestrator/src/) | Vite: rebuilds upstream workspace packages (and dependents) when their source changes. |\n"
 #~ msgstr "# Pakkea mapa\n\npantoken lea monorepo lágideami, oktavuođa­maš pakkeat mii leat buot fitnodit. Instalera dasa mii\nfitneda du borrat, dahje instalera ruovttoluotta `pantoken` pakkea ja importera dan subpaths­sii (geahččat\n`pantoken/css`, `pantoken/react`, `pantoken/tailwind`).\n\n## Core\n\nGulahallan modellja ja transformera mii bures muhto ođđa bálvalus.\n\n| Package                                                 | Mii lea dasto dán                                                                                        |\n| ------------------------------------------------------- | -------------------------------------------------------------------------------------------------------- |\n| [`@pantoken/model`](/api/packages/model/src/)           | TypeScript mii ii leat sihke-dependenssa: `Token` muhtun ja plugin-kontraktas.                           |\n| [`@pantoken/core`](/api/packages/core/src/)             | Riehtaš upstreame tokenat ja ikonat kanonala IR:sse, ja rendere CSS.                                     |\n| [`@pantoken/tokens`](/api/formats/tokens/src/)          | Resolváhtta IR ladduvuohta statiska JSON:s, theme­per, juohke Tokens Studio lohkat.                      |\n| [`@pantoken/utils`](/api/packages/utils/src/)           | Token-resolver, referenssa-regexat, case ja colora aidat, drift-čekkat, ja token→utility-class emitters. |\n| [`@pantoken/plugin-kit`](/api/packages/plugin-kit/src/) | Byggat ja komponera pantoken plugins `definePlugin`.                                                     |\n| [`@pantoken/cli`](/api/packages/cli/src/)               | `pantoken generate <target>` — emitera native ja platform source.                                        |\n\n## Formats\n\nGeahččat tokenat file-formahtta.\n\n| Package                                                | Output                                                                                                                                                                                           |\n| ------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |\n| [`@pantoken/css`](/api/formats/css/src/)               | `@property`-typed CSS `light-dark()` ja data-URI ikonain.                                                                                                                                        |\n| [`@pantoken/scss`](/api/formats/scss/src/)             | SCSS variables, resolváhtta juo vel gieldda mode.                                                                                                                                                |\n| [`@pantoken/less`](/api/formats/less/src/)             | Less variables.                                                                                                                                                                                  |\n| [`@pantoken/stylus`](/api/formats/stylus/src/)         | Stylus variables.                                                                                                                                                                                |\n| [`@pantoken/dtcg`](/api/formats/dtcg/src/)             | W3C Design Tokens (DTCG) dokumentta.                                                                                                                                                             |\n| [`@pantoken/tokens`](/api/formats/tokens/src/)         | IR JavaScript ja JSON muhto (mahttut Core ala).                                                                                                                                                  |\n| [`@pantoken/icons`](/api/formats/icons/src/)           | Ergonomalaš ovtta icon-tokenaid.                                                                                                                                                                 |\n| [`@pantoken/icon-font`](/api/formats/icon-font/src/)   | Icon web-font (TTF, WOFF2) ja dan CSS.                                                                                                                                                           |\n| [`@pantoken/components`](/api/formats/components/src/) | InstUI-nieidda CSS komponenta library (button, alert, table ja moadde) ja base reset focus ring, prose styling, cross-cutting utilities, ja brand fonts. Lávvut [Components](/guide/components). |\n\n## Renderers\n\nFramework ja tool integrasjovat.\n\n| Package                                                                                                                                          | Buorrán                                                   |\n| ------------------------------------------------------------------------------------------------------------------------------------------------ | --------------------------------------------------------- |\n| [`@pantoken/react`](/api/renderers/react/src/)                                                                                                   | React hooks, `<Icon>`, ja token provider.                 |\n| [`@pantoken/vue`](/api/renderers/vue/src/), [`@pantoken/svelte`](/api/renderers/svelte/src/), [`@pantoken/angular`](/api/renderers/angular/src/) | Web-komponentta, vuoigat buktet buohkaide frameworkiin.   |\n| [`@pantoken/react-native`](/api/renderers/react-native/src/)                                                                                     | StyleSheet-friendlaš token-objektat (ii CSS variables).   |\n| [`@pantoken/web-components`](/api/renderers/web-components/src/)                                                                                 | `<instui-icon>` ja styled primitives, framework-agnostic. |\n| [`@pantoken/astro`](/api/renderers/astro/src/)                                                                                                   | Token-satteaset Astro-siteide.                            |\n| [`@pantoken/react-markdown`](/api/renderers/react-markdown/src/), [`@pantoken/rehype`](/api/renderers/rehype/src/)                               | Icon-tokenat ja swatches Markdown:s.                      |\n| [`@pantoken/markdown-it`](/api/renderers/markdown-it/src/)                                                                                       | markdown-it plugin icon-koodain ja color-swatches.        |\n| [`@pantoken/css-in-js`](/api/renderers/css-in-js/src/)                                                                                           | Type-safe theme styled-components ja Emotion:in.          |\n| [`@pantoken/mui`](/api/renderers/mui/src/)                                                                                                       | Material UI theme.                                        |\n| [`@pantoken/bootstrap`](/api/renderers/bootstrap/src/), [`@pantoken/shadcn`](/api/renderers/shadcn/src/)                                         | CSS-variable bridgadet Bootstrap ja shadcn/ui:in.         |\n| [`@pantoken/foundation`](/api/renderers/foundation/src/)                                                                                         | Sass settings override ja CSS overlay Foundation:in.      |\n| [`@pantoken/docusaurus`](/api/renderers/docusaurus/src/), [`@pantoken/vitepress`](/api/renderers/vitepress/src/)                                 | Themes Docusaurus ja VitePress:in.                        |\n| [`@pantoken/mintlify`](/api/renderers/mintlify/src/)                                                                                             | Mintlify `docs.json` theme (colors + background).         |\n| [`@pantoken/storybook`](/api/renderers/storybook/src/)                                                                                           | Storybook theme.                                          |\n| [`@pantoken/pendo`](/api/renderers/pendo/src/)                                                                                                   | Instructure-styled global CSS Pendo guides:in.            |\n\n## Bundlers\n\nBuild-tool integrasjovat.\n\n| Package                                             | Buorrán                                         |\n| --------------------------------------------------- | ----------------------------------------------- |\n| [`@pantoken/vite`](/api/bundlers/vite/src/)         | Vite plugin virtual modules ja CSS injection.   |\n| [`@pantoken/next`](/api/bundlers/next/src/)         | `withPantoken` for Next.js `transpilePackages`. |\n| [`@pantoken/webpack`](/api/bundlers/webpack/src/)   | Webpack plugin.                                 |\n| [`@pantoken/postcss`](/api/bundlers/postcss/src/)   | `@pantoken;` at-rule.                           |\n| [`@pantoken/tailwind`](/api/bundlers/tailwind/src/) | Tailwind preset.                                |\n| [`@pantoken/panda`](/api/bundlers/panda/src/)       | Panda CSS preset.                               |\n\n## Platforms\n\nNative ja site-generator målmat, emitera CLI dahje áskkas API.\n\n| Package                                                                                        | Output                                   |\n| ---------------------------------------------------------------------------------------------- | ---------------------------------------- |\n| [`@pantoken/swift`](/api/platforms/swift/src/)                                                 | Swift source plus SwiftPM manifest stub. |\n| [`@pantoken/android`](/api/platforms/android/src/)                                             | Android XML resources.                   |\n| [`@pantoken/compose`](/api/platforms/compose/src/)                                             | Jetpack Compose Kotlin.                  |\n| [`@pantoken/flutter`](/api/platforms/flutter/src/)                                             | Flutter Dart.                            |\n| [`@pantoken/rust`](/api/platforms/rust/src/)                                                   | Rust consts for egui dahje iced.         |\n| [`@pantoken/wordpress`](/api/platforms/wordpress/src/)                                         | WordPress block-theme `theme.json`.      |\n| [`@pantoken/vanilla`](/api/platforms/vanilla/src/)                                             | Vanilla Forums `variables.json`.         |\n| [`@pantoken/drupal`](/api/platforms/drupal/src/)                                               | Drupal theme assets.                     |\n| [`@pantoken/hugo`](/api/platforms/hugo/src/), [`@pantoken/jekyll`](/api/platforms/jekyll/src/) | Hugo ja Jekyll site data.                |\n| [`@pantoken/email`](/api/platforms/email/src/)                                                 | Inline-friendly values HTML email:in.    |\n\n## Design\n\nDizain-tovdno alat.\n\n| Package                                           | Output                                                              |\n| ------------------------------------------------- | ------------------------------------------------------------------- |\n| [`@pantoken/figma`](/api/design/figma/src/)       | Figma Variables payload.                                            |\n| [`@pantoken/swatches`](/api/design/swatches/src/) | Color swatches (ASE, GPL, Sketch) plus viewable SVG specimen sheet. |\n\n## Plugins\n\nValgobasihtat transformassat mii loktet token- dahje CSS-outputta. Lávvut [Plugins](/guide/plugins).\n\n| Package                                                                               | Mii addá                                                       |\n| ------------------------------------------------------------------------------------- | -------------------------------------------------------------- |\n| [`@pantoken/plugin-stacking`](/api/plugins/pantoken/stacking/src/)                    | Named z-index depths soahkká `--instui-stacking-*` tokens.     |\n| [`@pantoken/plugin-visual-debug`](/api/plugins/pantoken/visual-debug/src/)            | `-with-visual-debug` layout-debugging outline.                 |\n| [`@pantoken/plugin-simple-icons`](/api/plugins/pantoken/simple-icons/src/)            | Brand icons simple-icons:st.                                   |\n| [`@pantoken/plugin-logos`](/api/plugins/pantoken/logos/src/)                          | Instructure product logos as SVGs, data URIs, ja image tokens. |\n| [`@pantoken/plugin-prune-custom-props`](/api/plugins/postcss/prune-custom-props/src/) | PostCSS plugin mii rohpá unused custom properties.             |\n\n## Tools\n\nBuild, docs, ja demo infrastruktuura monorepo:s. Buot lea internal, muhto dasa osat leat\nselvagávdnojit, ja osa dajan npm:as oassin.\n\n| Package                                            | Mii dasto                                                                                                                                                                    |\n| -------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |\n| [`@pantoken/aggregate`](/api/tools/aggregate/src/) | Genereraa ruovttoluotta `pantoken` package barrel ja `exports` dari dependenssat.                                                                                            |\n| `@pantoken/validate-generated`                     | Drift gate: čekká buot generereda stylesheetat resolváhtte token IR:s.                                                                                                       |\n| [`@pantoken/demo`](/api/tools/demo/src/)           | Self-hosted live-demo runner: resolváhtta `@demo` speci iframe:s ja renderera bare HTML/CSS/JS same-origin, token-themed.                                                    |\n| `@cssdoc/core` (external)                          | Genearala CSS documentation extractor (TSDoc, CSS): parses doc-comments + CSS AST into model mii docs emit CSS API reference. Lea eanet repos; consumera link-dependenssain. |\n\n`@pantoken/validate-generated` lea run-once skripta (invoked by `pnpm run ready`), dan ii leat API\npage; muhtin leat.\n\n## AI\n\nConsumer-facing AI setup assets. Dát leat projekta mii deaddil pantoken, ii pantoken development.\n\n- [`@pantoken/ai`](/api/ai/pantoken-ai/src/) installera `AGENTS.md`, `llms.txt`, ja\n  assistant/editor rules (Cursor, Copilot, Windsurf, Claude Code) consumer-repository:in.\n\n## Dev plugins\n\nPlugins mii ovddastallan tools mii buoriheapmi, gruppejuvvo host:in. Dat leat standalona ja publishable.\n\n| Package                                                                                  | Buohká dahje plugga                                                                 |\n| ---------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------- |\n| [`@pantoken/typedoc-plugin-demo`](/api/plugins/typedoc/demo/src/)                        | TypeDoc: garra `@demo <provider>:<ref>` block tag muhto embeddable demo fence.      |\n| [`@pantoken/vite-workspace-orchestrator`](/api/plugins/vite/workspace-orchestrator/src/) | Vite: rebuildar upstream workspace packages (ja dependents) go source muhtun muhto. |\n"
+
+#: compatibility.md
+#, no-c-format
+msgid "<!-- pantoken-compatibility-scaffold -->\n# Compatibility\n\n<!-- Generated by `vp run sync:compatibility`. Do not edit by hand; run the writer and commit. -->\n\nThis page records the Instructure UI sources this pantoken build resolves from, and which consumers\nuse them. Target versions are separate: only verified releases are claimed, and releases newer than\nthe last verified release need review. Regenerate it with `vp run sync:compatibility`; the\n`gate:compatibility` check fails if it drifts.\n\n## Upstream sources\n\nThe design tokens, Instructure custom icons, and Lucide catalog feed the resolved token IR that every\npackage consumes. The `@instructure/ui-*` React packages are used only by\n`@pantoken/react-markdown`.\n\n{{ptk_table_0}}\n\n## Consumers\n\n{{ptk_table_1}}\n\n## Reviewing target releases\n\nThe weekly target-release workflow opens a review issue for new stable WordPress releases and\necosystems with an explicit npm peer. For other targets, maintainers check the platform's official\nrelease notes weekly and open a review issue manually; an absent issue does not mean a new release\nis supported. To extend a claim:\n\n1. Inspect the release's output schema or integration changes and the adapter in this table.\n2. Run the adapter's compatibility command with the candidate release, for example\n   `vp run @pantoken/postcss#check:compatibility -- 8.5.29`. The default command reads every\n   `testedVersions` entry from this registry; paired environments accept their companion flags.\n3. For feed-discovered candidates, use `vp run downstream:test`; failed attempts are retained in\n   `scripts/release/downstream-compatibility.json`. After a successful review, run\n   `vp run downstream:bless --package @pantoken/name --version x.y.z` to update the claim.\n4. Run a real host, compiler, or build-tool check at the minimum and new release. Remap the current\n   output format if necessary; do not add parallel legacy format emitters.\n5. Update `scripts/release/target-compatibility.json` only after the checks pass, then run\n   `vp run sync:compatibility`, regenerate English API docs, and add a changeset. Newer releases\n   remain pending until that reviewed change lands. Localized documentation is handled separately.\n\n## Deprecations\n\nTokens upstream dropped that pantoken still ships as a compatibility shim. Each is kept working until\nits `Removed in` upstream minor is adopted, at which point the shim is retired and a consumer minor\nis cut. A shim either forwards to a `Replacement` token or freezes its last-known value.\n\n{{ptk_table_2}}\n"
+msgstr "<!-- pantoken-compatibility-scaffold -->\n# Heiveheapmi\n\n<!-- Genereren `vp run sync:compatibility` bokte. Ale divtte gieđain; vuodjalas čálli ja čále sisa. -->\n\nDát siidu čájeha Instructure UI-gálduid maid dát pantoken-builda čoahkkáigeassá, ja makkár geavaheaddjit daid geavahit. Ulbmilversjonat leat sierra: dušše dárkkistuvvon almmustahttimat leat namuhuvvon, ja almmustahttimat maŋŋil maŋimuš dárkkistuvvon almmustahttima dárbbašit čielggadeami. Ođasmahte dan `vp run sync:compatibility` bokte; `gate:compatibility` dárkkisteapmi filte jus dat lea sirdán.\n\n## Bajimus gáldut\n\nDesign-tokenat, Instructure iežas ikónat ja Lucide-kataloga leat čoahkkáigeasson token-IR:a gáldut, man buot paketat geavahit. `@instructure/ui-*` React-paketat geavahuvvojit dušše `@pantoken/react-markdown` várás.\n\n{{ptk_table_0}}\n\n## Geavaheaddjit\n\n{{ptk_table_1}}\n\n## Ulbmilversjonalusaid čielggadeapmi\n\nVahkkosaš ulbmilversjonalusaid workflow rahpá čielggadanáššiid ođđa stabiila WordPress-almmustahttimiid ja ekosystemaid várás main lea čielga npm peer. Eará ulbmiliid várás geavaheaddjit dárkkistit platforma virrrálaš almmustahttinnávccaid juohke vahku ja rahpet čielggadanáššiid gieđalaččat; váilu ášši ii mearkkaš ahte ođđa almmustahttin lea doarjjaštuvvon. Lasiheapmi dáhká:\n\n1. Iskka almmustahttima olggosšema dahje integrašuvdnarievdadusaid ja heiveheaddji dán tabeallas.\n2. Vuoje heiveheaddji heiveheapmidárkkisteami kandidáhtaversjonain, omd. `vp run @pantoken/postcss#check:compatibility -- 8.5.29`. Standárdakommándu lohká registry buot `testedVersions`-merkojuvvon meriid; guovtteguvlota birrasat dohkkehit daid oktasašflagáid.\n3. Feed-buvttaduvvon kandidáhtaid várás geavat `vp run downstream:test`; lihkostuvvan geahččalemiid vurket `scripts/release/downstream-compatibility.json`-ii. Lihkostuvvan čielggadeami maŋŋil vuodjal `vp run downstream:bless --package @pantoken/name --version x.y.z` vai ođasmahtát lohpádusa.\n4. Dárkkis duohta hosta, kompilerema dahje build-reaiddu minimu- ja ođđa almmustahttimiin. Vuođđut dálá olggosšema formáhta ođđasit jus dárbbašuvvo; ale lasit bálddalas dološ formáhta olggosčáliheddjiid.\n5. Ođasmahte `scripts/release/target-compatibility.json` dušše go dárkkisteamit leat lihkostuvvan, ja vuodjal dalle `vp run sync:compatibility`, ráhkadit fas eaŋgalasgiel API-dokumentašuvnna ja lasit changeset. Ođđasat almmustahttimat leat ain vuordeme dassážii go dárkkistuvvon rievdadus lea gollan. Báikkálaš jorgaluvvon dokumentašuvdna gieđahallo sierra.\n\n## Boarásmuvvamat\n\nTokenat maid upstream lea váldán eret, muhto maid pantoken ain sádde kompatibilitehta-vuohkin. Juohke vuohki doibmá dassážii go `Removed in` upstream-minor váldojuvvo atnui; dalle vuohki váldojuvvo eret ja geavaheaddji minor almmuhuvvo. Vuohki dahje sirdá `Replacement` tokenii dahje seailluhá dan maŋimuš dovddus árvvu.\n\n{{ptk_table_2}}\n"
+
+#: compatibility.md
+#, no-c-format
+msgid "| Package | Feeds | Range | Resolved |"
+msgstr "| Paket | Buktá | Versjonráigi | Čoahkkanan |"
+
+#: compatibility.md
+#, no-c-format
+msgid "<!-- pantoken-value-scope:compatibility%2F0%2F%60%40instructure%2Finstructure-design-tokens%60 -->\n| {{ptk_code_0}} | token-ir | {{ptk_code_1}} | {{ptk_code_2}} |"
+msgstr "<!-- pantoken-value-scope:compatibility%2F0%2F%60%40instructure%2Finstructure-design-tokens%60 -->\n| {{ptk_code_0}} | token-ir | {{ptk_code_1}} | {{ptk_code_2}} |"
+
+#: compatibility.md
+#, no-c-format
+msgid "<!-- pantoken-value-scope:compatibility%2F0%2F%60%40instructure%2Fui-icons%60 -->\n| {{ptk_code_0}} | icons | {{ptk_code_1}} | {{ptk_code_2}} |"
+msgstr "<!-- pantoken-value-scope:compatibility%2F0%2F%60%40instructure%2Fui-icons%60 -->\n| {{ptk_code_0}} | ikónat | {{ptk_code_1}} | {{ptk_code_2}} |"
+
+#: compatibility.md
+#, no-c-format
+msgid "<!-- pantoken-value-scope:compatibility%2F0%2F%60lucide%60 -->\n| {{ptk_code_0}} | icons | {{ptk_code_1}} | {{ptk_code_2}} |"
+msgstr "<!-- pantoken-value-scope:compatibility%2F0%2F%60lucide%60 -->\n| {{ptk_code_0}} | ikónat | {{ptk_code_1}} | {{ptk_code_2}} |"
+
+#: compatibility.md
+#, no-c-format
+msgid "<!-- pantoken-value-scope:compatibility%2F0%2F%60%40instructure%2Fui-heading%60 -->\n| {{ptk_code_0}} | instui-react | {{ptk_code_1}} | {{ptk_code_2}} |"
+msgstr "<!-- pantoken-value-scope:compatibility%2F0%2F%60%40instructure%2Fui-heading%60 -->\n| {{ptk_code_0}} | instui-react | {{ptk_code_1}} | {{ptk_code_2}} |"
+
+#: compatibility.md
+#, no-c-format
+msgid "<!-- pantoken-value-scope:compatibility%2F0%2F%60%40instructure%2Fui-text%60 -->\n| {{ptk_code_0}} | instui-react | {{ptk_code_1}} | {{ptk_code_2}} |"
+msgstr "<!-- pantoken-value-scope:compatibility%2F0%2F%60%40instructure%2Fui-text%60 -->\n| {{ptk_code_0}} | instui-react | {{ptk_code_1}} | {{ptk_code_2}} |"
+
+#: compatibility.md
+#, no-c-format
+msgid "<!-- pantoken-value-scope:compatibility%2F0%2F%60%40instructure%2Fui-link%60 -->\n| {{ptk_code_0}} | instui-react | {{ptk_code_1}} | {{ptk_code_2}} |"
+msgstr "<!-- pantoken-value-scope:compatibility%2F0%2F%60%40instructure%2Fui-link%60 -->\n| {{ptk_code_0}} | instui-react | {{ptk_code_1}} | {{ptk_code_2}} |"
+
+#: compatibility.md
+#, no-c-format
+msgid "<!-- pantoken-value-scope:compatibility%2F0%2F%60%40instructure%2Fui-list%60 -->\n| {{ptk_code_0}} | instui-react | {{ptk_code_1}} | {{ptk_code_2}} |"
+msgstr "<!-- pantoken-value-scope:compatibility%2F0%2F%60%40instructure%2Fui-list%60 -->\n| {{ptk_code_0}} | instui-react | {{ptk_code_1}} | {{ptk_code_2}} |"
+
+#: compatibility.md
+#, no-c-format
+msgid "<!-- pantoken-value-scope:compatibility%2F0%2F%60%40instructure%2Fui-table%60 -->\n| {{ptk_code_0}} | instui-react | {{ptk_code_1}} | {{ptk_code_2}} |"
+msgstr "<!-- pantoken-value-scope:compatibility%2F0%2F%60%40instructure%2Fui-table%60 -->\n| {{ptk_code_0}} | instui-react | {{ptk_code_1}} | {{ptk_code_2}} |"
+
+#: compatibility.md
+#, no-c-format
+msgid "<!-- pantoken-value-scope:compatibility%2F0%2F%60%40instructure%2Fui-view%60 -->\n| {{ptk_code_0}} | instui-react | {{ptk_code_1}} | {{ptk_code_2}} |"
+msgstr "<!-- pantoken-value-scope:compatibility%2F0%2F%60%40instructure%2Fui-view%60 -->\n| {{ptk_code_0}} | instui-react | {{ptk_code_1}} | {{ptk_code_2}} |"
+
+#: compatibility.md
+#, no-c-format
+msgid "<!-- pantoken-value-scope:compatibility%2F0%2F%60%40instructure%2Fui-img%60 -->\n| {{ptk_code_0}} | instui-react | {{ptk_code_1}} | {{ptk_code_2}} |"
+msgstr "<!-- pantoken-value-scope:compatibility%2F0%2F%60%40instructure%2Fui-img%60 -->\n| {{ptk_code_0}} | instui-react | {{ptk_code_1}} | {{ptk_code_2}} |"
+
+#: compatibility.md
+#, no-c-format
+msgid "<!-- pantoken-value-scope:compatibility%2F0%2F%60%40instructure%2Fui-alerts%60 -->\n| {{ptk_code_0}} | instui-react | {{ptk_code_1}} | {{ptk_code_2}} |"
+msgstr "<!-- pantoken-value-scope:compatibility%2F0%2F%60%40instructure%2Fui-alerts%60 -->\n| {{ptk_code_0}} | instui-react | {{ptk_code_1}} | {{ptk_code_2}} |"
+
+#: compatibility.md
+#, no-c-format
+msgid "| Package | Path | Governed by | Target | Current format | Host versions |"
+msgstr "| Paket | Geaidnu | Stivrejuvvon | Ulbmil | Dálá formáhta | Host-versjonat |"
+
+#: compatibility.md
+#, no-c-format
+msgid "<!-- pantoken-value-scope:compatibility%2F1%2F%60%40pantoken%2Fnext%60 -->\n| {{ptk_code_0}} | {{ptk_code_1}} | token-ir | Next.js | Production build transpiling and rendering Instructure UI {{ptk_code_2}} with React {{ptk_code_3}} | {{ptk_code_4}} through {{ptk_code_5}} (verified) |"
+msgstr "<!-- pantoken-value-scope:compatibility%2F1%2F%60%40pantoken%2Fnext%60 -->\n| {{ptk_code_0}} | {{ptk_code_1}} | token-ir | Next.js | Producerehkke transpilera ja rendera Instructure UI {{ptk_code_2}} React {{ptk_code_3}} bokte | {{ptk_code_4}} rájes {{ptk_code_5}} rádjái (dárkkistuvvon) |"
+
+#: compatibility.md
+#, no-c-format
+msgid "<!-- pantoken-value-scope:compatibility%2F1%2F%60%40pantoken%2Fpanda%60 -->\n| {{ptk_code_0}} | {{ptk_code_1}} | token-ir | Panda CSS | Panda token utility extraction from the Pantoken preset | {{ptk_code_2}} through {{ptk_code_3}} (verified) |"
+msgstr "<!-- pantoken-value-scope:compatibility%2F1%2F%60%40pantoken%2Fpanda%60 -->\n| {{ptk_code_0}} | {{ptk_code_1}} | token-ir | Panda CSS | Panda-tokenaid ávkkuhisvuođaid čoahkkáigeassu Pantoken-presetas | {{ptk_code_2}} rájes {{ptk_code_3}} rádjái (dárkkistuvvon) |"
+
+#: compatibility.md
+#, no-c-format
+msgid "<!-- pantoken-value-scope:compatibility%2F1%2F%60%40pantoken%2Fpostcss%60 -->\n| {{ptk_code_0}} | {{ptk_code_1}} | token-ir | PostCSS | — | {{ptk_code_2}} through {{ptk_code_3}} (verified) |"
+msgstr "<!-- pantoken-value-scope:compatibility%2F1%2F%60%40pantoken%2Fpostcss%60 -->\n| {{ptk_code_0}} | {{ptk_code_1}} | token-ir | PostCSS | — | {{ptk_code_2}} rájes {{ptk_code_3}} rádjái (dárkkistuvvon) |"
+
+#: compatibility.md
+#, no-c-format
+msgid "<!-- pantoken-value-scope:compatibility%2F1%2F%60%40pantoken%2Ftailwind%60 -->\n| {{ptk_code_0}} | {{ptk_code_1}} | token-ir | Tailwind CSS | — | {{ptk_code_2}} through {{ptk_code_3}} (verified) |"
+msgstr "<!-- pantoken-value-scope:compatibility%2F1%2F%60%40pantoken%2Ftailwind%60 -->\n| {{ptk_code_0}} | {{ptk_code_1}} | token-ir | Tailwind CSS | — | {{ptk_code_2}} rájes {{ptk_code_3}} rádjái (dárkkistuvvon) |"
+
+#: compatibility.md
+#, no-c-format
+msgid "<!-- pantoken-value-scope:compatibility%2F1%2F%60%40pantoken%2Fvite%60 -->\n| {{ptk_code_0}} | {{ptk_code_1}} | token-ir | Vite | — | {{ptk_code_2}} through {{ptk_code_3}} (verified) |"
+msgstr "<!-- pantoken-value-scope:compatibility%2F1%2F%60%40pantoken%2Fvite%60 -->\n| {{ptk_code_0}} | {{ptk_code_1}} | token-ir | Vite | — | {{ptk_code_2}} rájes {{ptk_code_3}} rádjái (dárkkistuvvon) |"
+
+#: compatibility.md
+#, no-c-format
+msgid "<!-- pantoken-value-scope:compatibility%2F1%2F%60%40pantoken%2Fwebpack%60 -->\n| {{ptk_code_0}} | {{ptk_code_1}} | token-ir | webpack | Emitted token CSS build asset | {{ptk_code_2}} through {{ptk_code_3}} (verified) |"
+msgstr "<!-- pantoken-value-scope:compatibility%2F1%2F%60%40pantoken%2Fwebpack%60 -->\n| {{ptk_code_0}} | {{ptk_code_1}} | token-ir | webpack | Almmustuvvon token-CSS-buildaášši | {{ptk_code_2}} rájes {{ptk_code_3}} rádjái (dárkkistuvvon) |"
+
+#: compatibility.md
+#, no-c-format
+msgid "<!-- pantoken-value-scope:compatibility%2F1%2F%60%40pantoken%2Fandroid%60 -->\n| {{ptk_code_0}} | {{ptk_code_1}} | token-ir | Android resources | Generated colors, dimensions, and VectorDrawable compile and link with Android build-tools | {{ptk_code_2}} through {{ptk_code_3}} (verified) |"
+msgstr "<!-- pantoken-value-scope:compatibility%2F1%2F%60%40pantoken%2Fandroid%60 -->\n| {{ptk_code_0}} | {{ptk_code_1}} | token-ir | Android-resurssat | Genererejuvvon ivnnit, dimenšuvnnat ja VectorDrawable kompilererejuvvojit ja čatnojuvvojit Android-build-tools bokte | {{ptk_code_2}} rájes {{ptk_code_3}} rádjái (dárkkistuvvon) |"
+
+#: compatibility.md
+#, no-c-format
+msgid "<!-- pantoken-value-scope:compatibility%2F1%2F%60%40pantoken%2Fcanvas-theme-editor%60 -->\n| {{ptk_code_0}} | {{ptk_code_1}} | token-ir | Canvas Theme Editor | — | Not yet verified |"
+msgstr "<!-- pantoken-value-scope:compatibility%2F1%2F%60%40pantoken%2Fcanvas-theme-editor%60 -->\n| {{ptk_code_0}} | {{ptk_code_1}} | token-ir | Canvas Theme Editor | — | Ii leat vel dárkkistuvvon |"
+
+#: compatibility.md
+#, no-c-format
+msgid "<!-- pantoken-value-scope:compatibility%2F1%2F%60%40pantoken%2Fcompose%60 -->\n| {{ptk_code_0}} | {{ptk_code_1}} | token-ir | Jetpack Compose | Generated Color and Dp token object compiles in an Android library module | {{ptk_code_2}} through {{ptk_code_3}} (verified) |"
+msgstr "<!-- pantoken-value-scope:compatibility%2F1%2F%60%40pantoken%2Fcompose%60 -->\n| {{ptk_code_0}} | {{ptk_code_1}} | token-ir | Jetpack Compose | Genererejuvvon Color- ja Dp-token-objekta kompilererejuvvo Android-library-modulas | {{ptk_code_2}} rájes {{ptk_code_3}} rádjái (dárkkistuvvon) |"
+
+#: compatibility.md
+#, no-c-format
+msgid "<!-- pantoken-value-scope:compatibility%2F1%2F%60%40pantoken%2Fdrupal%60 -->\n| {{ptk_code_0}} | {{ptk_code_1}} | token-ir | Drupal themes | Drupal core discovers generated theme; InfoParser and Symfony YAML accept metadata | {{ptk_code_2}} through {{ptk_code_3}} (verified) |"
+msgstr "<!-- pantoken-value-scope:compatibility%2F1%2F%60%40pantoken%2Fdrupal%60 -->\n| {{ptk_code_0}} | {{ptk_code_1}} | token-ir | Drupal themes | Drupal core gávdná genererejuvvon fáttá; InfoParser ja Symfony YAML dohkkehit metadieđuid | {{ptk_code_2}} rájes {{ptk_code_3}} rádjái (dárkkistuvvon) |"
+
+#: compatibility.md
+#, no-c-format
+msgid "<!-- pantoken-value-scope:compatibility%2F1%2F%60%40pantoken%2Femail%60 -->\n| {{ptk_code_0}} | {{ptk_code_1}} | token-ir | HTML email | — | Not yet verified |"
+msgstr "<!-- pantoken-value-scope:compatibility%2F1%2F%60%40pantoken%2Femail%60 -->\n| {{ptk_code_0}} | {{ptk_code_1}} | token-ir | HTML-e-poasta | — | Ii leat vel dárkkistuvvon |"
+
+#: compatibility.md
+#, no-c-format
+msgid "<!-- pantoken-value-scope:compatibility%2F1%2F%60%40pantoken%2Fflutter%60 -->\n| {{ptk_code_0}} | {{ptk_code_1}} | token-ir | Flutter | — | Not yet verified |"
+msgstr "<!-- pantoken-value-scope:compatibility%2F1%2F%60%40pantoken%2Fflutter%60 -->\n| {{ptk_code_0}} | {{ptk_code_1}} | token-ir | Flutter | — | Ii leat vel dárkkistuvvon |"
+
+#: compatibility.md
+#, no-c-format
+msgid "<!-- pantoken-value-scope:compatibility%2F1%2F%60%40pantoken%2Fhugo%60 -->\n| {{ptk_code_0}} | {{ptk_code_1}} | token-ir | Hugo | Hugo Pipes builds the Pantoken token stylesheet | {{ptk_code_2}} through {{ptk_code_3}} (verified) |"
+msgstr "<!-- pantoken-value-scope:compatibility%2F1%2F%60%40pantoken%2Fhugo%60 -->\n| {{ptk_code_0}} | {{ptk_code_1}} | token-ir | Hugo | Hugo Pipes ráhkada Pantoken-token-stylesheeta | {{ptk_code_2}} rájes {{ptk_code_3}} rádjái (dárkkistuvvon) |"
+
+#: compatibility.md
+#, no-c-format
+msgid "<!-- pantoken-value-scope:compatibility%2F1%2F%60%40pantoken%2Fjekyll%60 -->\n| {{ptk_code_0}} | {{ptk_code_1}} | token-ir | Jekyll | Jekyll builds the generated Sass partial into site CSS | {{ptk_code_2}} through {{ptk_code_3}} (verified) |"
+msgstr "<!-- pantoken-value-scope:compatibility%2F1%2F%60%40pantoken%2Fjekyll%60 -->\n| {{ptk_code_0}} | {{ptk_code_1}} | token-ir | Jekyll | Jekyll ráhkada genererejuvvon Sass-oassálas CSS-ii | {{ptk_code_2}} rájes {{ptk_code_3}} rádjái (dárkkistuvvon) |"
+
+#: compatibility.md
+#, no-c-format
+msgid "<!-- pantoken-value-scope:compatibility%2F1%2F%60%40pantoken%2Frust%60 -->\n| {{ptk_code_0}} | {{ptk_code_1}} | token-ir | Rust GUI frameworks | Generated egui Color32 accessors and iced_core Color constants compile with the Rust toolchain | {{ptk_code_2}} through {{ptk_code_3}} (verified) |"
+msgstr "<!-- pantoken-value-scope:compatibility%2F1%2F%60%40pantoken%2Frust%60 -->\n| {{ptk_code_0}} | {{ptk_code_1}} | token-ir | Rust GUI-frameworkat | Genererejuvvon egui Color32-accessorat ja iced_core Color-konstánttat kompilererejuvvojit Rust-toolchainain | {{ptk_code_2}} rájes {{ptk_code_3}} rádjái (dárkkistuvvon) |"
+
+#: compatibility.md
+#, no-c-format
+msgid "<!-- pantoken-value-scope:compatibility%2F1%2F%60%40pantoken%2Fswift%60 -->\n| {{ptk_code_0}} | {{ptk_code_1}} | token-ir | Swift iOS | UIKit SwiftPM module, runtime token check, and compiled Icons.xcassets | Tested environment: {{ptk_code_2}}. Runtime tested only on iOS Simulator 27.0; this does not establish an iOS 15 runtime floor. No watchOS or tvOS claim. |"
+msgstr "<!-- pantoken-value-scope:compatibility%2F1%2F%60%40pantoken%2Fswift%60 -->\n| {{ptk_code_0}} | {{ptk_code_1}} | token-ir | Swift iOS | UIKit SwiftPM-modula, runtime-token-dárkkisteapmi ja kompilererejuvvon Icons.xcassets | Dárkkistuvvon biras: {{ptk_code_2}}. Runtime lea geahččaluvvon dušše iOS Simulator 27.0:s; dát ii duođaš iOS 15-runtime vuođđodási. watchOS dahje tvOS birra ii leat lohpidus. |"
+
+#: compatibility.md
+#, no-c-format
+msgid "<!-- pantoken-value-scope:compatibility%2F1%2F%60%40pantoken%2Fvanilla%60 -->\n| {{ptk_code_0}} | {{ptk_code_1}} | token-ir | Vanilla Forums | — | Not yet verified |"
+msgstr "<!-- pantoken-value-scope:compatibility%2F1%2F%60%40pantoken%2Fvanilla%60 -->\n| {{ptk_code_0}} | {{ptk_code_1}} | token-ir | Vanilla Forums | — | Ii leat vel dárkkistuvvon |"
+
+#: compatibility.md
+#, no-c-format
+msgid "<!-- pantoken-value-scope:compatibility%2F1%2F%60%40pantoken%2Fwordpress%60 -->\n| {{ptk_code_0}} | {{ptk_code_1}} | token-ir | WordPress block themes | theme.json {{ptk_code_2}} | {{ptk_code_3}} through {{ptk_code_4}} (verified) |"
+msgstr "<!-- pantoken-value-scope:compatibility%2F1%2F%60%40pantoken%2Fwordpress%60 -->\n| {{ptk_code_0}} | {{ptk_code_1}} | token-ir | WordPress-blokkafáttát | theme.json {{ptk_code_2}} | {{ptk_code_3}} rájes {{ptk_code_4}} rádjái (dárkkistuvvon) |"
+
+#: compatibility.md
+#, no-c-format
+msgid "<!-- pantoken-value-scope:compatibility%2F1%2F%60%40pantoken%2Fangular%60 -->\n| {{ptk_code_0}} | {{ptk_code_1}} | token-ir | Angular | CUSTOM_ELEMENTS_SCHEMA template compilation (Angular {{ptk_code_2}} / TS {{ptk_code_3}}; Angular {{ptk_code_4}}, {{ptk_code_5}}, and {{ptk_code_6}} / TS {{ptk_code_7}}) | {{ptk_code_8}} through {{ptk_code_9}} (verified) |"
+msgstr "<!-- pantoken-value-scope:compatibility%2F1%2F%60%40pantoken%2Fangular%60 -->\n| {{ptk_code_0}} | {{ptk_code_1}} | token-ir | Angular | CUSTOM_ELEMENTS_SCHEMA-mállekompilereren (Angular {{ptk_code_2}} / TS {{ptk_code_3}}; Angular {{ptk_code_4}}, {{ptk_code_5}} ja {{ptk_code_6}} / TS {{ptk_code_7}}) | {{ptk_code_8}} rájes {{ptk_code_9}} rádjái (dárkkistuvvon) |"
+
+#: compatibility.md
+#, no-c-format
+msgid "<!-- pantoken-value-scope:compatibility%2F1%2F%60%40pantoken%2Fastro%60 -->\n| {{ptk_code_0}} | {{ptk_code_1}} | token-ir | Astro / Starlight | Built Starlight page with injected token stylesheet (Astro {{ptk_code_2}} and {{ptk_code_3}}) | {{ptk_code_4}} through {{ptk_code_5}} (verified) |"
+msgstr "<!-- pantoken-value-scope:compatibility%2F1%2F%60%40pantoken%2Fastro%60 -->\n| {{ptk_code_0}} | {{ptk_code_1}} | token-ir | Astro / Starlight | Ráhkaduvvon Starlight-siidu mas token-stylesheet lea lasihuvvon (Astro {{ptk_code_2}} ja {{ptk_code_3}}) | {{ptk_code_4}} rájes {{ptk_code_5}} rádjái (dárkkistuvvon) |"
+
+#: compatibility.md
+#, no-c-format
+msgid "<!-- pantoken-value-scope:compatibility%2F1%2F%60%40pantoken%2Fbootstrap%60 -->\n| {{ptk_code_0}} | {{ptk_code_1}} | token-ir | Bootstrap | CSS variables: body + primary button | {{ptk_code_2}} through {{ptk_code_3}} (verified) |"
+msgstr "<!-- pantoken-value-scope:compatibility%2F1%2F%60%40pantoken%2Fbootstrap%60 -->\n| {{ptk_code_0}} | {{ptk_code_1}} | token-ir | Bootstrap | CSS-variábelat: body + primary-button | {{ptk_code_2}} rájes {{ptk_code_3}} rádjái (dárkkistuvvon) |"
+
+#: compatibility.md
+#, no-c-format
+msgid "<!-- pantoken-value-scope:compatibility%2F1%2F%60%40pantoken%2Fcss-in-js%60 -->\n| {{ptk_code_0}} | {{ptk_code_1}} | token-ir | Emotion CSS-in-JS | ThemeProvider SSR emits the Pantoken token variable | {{ptk_code_2}} through {{ptk_code_3}} (verified) |"
+msgstr "<!-- pantoken-value-scope:compatibility%2F1%2F%60%40pantoken%2Fcss-in-js%60 -->\n| {{ptk_code_0}} | {{ptk_code_1}} | token-ir | Emotion CSS-in-JS | ThemeProvider SSR buktá olggos Pantoken-tokenvariábela | {{ptk_code_2}} rájes {{ptk_code_3}} rádjái (dárkkistuvvon) |"
+
+#: compatibility.md
+#, no-c-format
+msgid "<!-- pantoken-value-scope:compatibility%2F1%2F%60%40pantoken%2Fdocusaurus%60 -->\n| {{ptk_code_0}} | {{ptk_code_1}} | token-ir | Docusaurus theme-classic | Infima CSS-variable bridge: primary and background | {{ptk_code_2}} through {{ptk_code_3}} (verified) |"
+msgstr "<!-- pantoken-value-scope:compatibility%2F1%2F%60%40pantoken%2Fdocusaurus%60 -->\n| {{ptk_code_0}} | {{ptk_code_1}} | token-ir | Docusaurus theme-classic | Infima CSS-variábelaid oktiičatnan: primary ja duogáš | {{ptk_code_2}} rájes {{ptk_code_3}} rádjái (dárkkistuvvon) |"
+
+#: compatibility.md
+#, no-c-format
+msgid "<!-- pantoken-value-scope:compatibility%2F1%2F%60%40pantoken%2Ffoundation%60 -->\n| {{ptk_code_0}} | {{ptk_code_1}} | token-ir | Foundation for Sites | Concrete Sass settings + variable-backed CSS overlay | {{ptk_code_2}} through {{ptk_code_3}} (verified) |"
+msgstr "<!-- pantoken-value-scope:compatibility%2F1%2F%60%40pantoken%2Ffoundation%60 -->\n| {{ptk_code_0}} | {{ptk_code_1}} | token-ir | Foundation for Sites | Konkreetta Sass-heivehusat + variábeliin vuođđuduvvon CSS-oassin | {{ptk_code_2}} rájes {{ptk_code_3}} rádjái (dárkkistuvvon) |"
+
+#: compatibility.md
+#, no-c-format
+msgid "<!-- pantoken-value-scope:compatibility%2F1%2F%60%40pantoken%2Fmarkdown-it%60 -->\n| {{ptk_code_0}} | {{ptk_code_1}} | token-ir | markdown-it | — | {{ptk_code_2}} through {{ptk_code_3}} (verified) |"
+msgstr "<!-- pantoken-value-scope:compatibility%2F1%2F%60%40pantoken%2Fmarkdown-it%60 -->\n| {{ptk_code_0}} | {{ptk_code_1}} | token-ir | markdown-it | — | {{ptk_code_2}} rájes {{ptk_code_3}} rádjái (dárkkistuvvon) |"
+
+#: compatibility.md
+#, no-c-format
+msgid "<!-- pantoken-value-scope:compatibility%2F1%2F%60%40pantoken%2Fmintlify%60 -->\n| {{ptk_code_0}} | {{ptk_code_1}} | token-ir | Mintlify docs.json | Official CLI validates generated colors and background theme config | {{ptk_code_2}} through {{ptk_code_3}} (verified) |"
+msgstr "<!-- pantoken-value-scope:compatibility%2F1%2F%60%40pantoken%2Fmintlify%60 -->\n| {{ptk_code_0}} | {{ptk_code_1}} | token-ir | Mintlify docs.json | Virrrálaš CLI dárkkista genererejuvvon ivnniid ja duogášfátta heivehusa | {{ptk_code_2}} rájes {{ptk_code_3}} rádjái (dárkkistuvvon) |"
+
+#: compatibility.md
+#, no-c-format
+msgid "<!-- pantoken-value-scope:compatibility%2F1%2F%60%40pantoken%2Fmui%60 -->\n| {{ptk_code_0}} | {{ptk_code_1}} | token-ir | Material UI | Concrete createTheme palettes (MUI {{ptk_code_2}}, {{ptk_code_3}}, {{ptk_code_4}}, {{ptk_code_5}}) | {{ptk_code_6}} through {{ptk_code_7}} (verified) |"
+msgstr "<!-- pantoken-value-scope:compatibility%2F1%2F%60%40pantoken%2Fmui%60 -->\n| {{ptk_code_0}} | {{ptk_code_1}} | token-ir | Material UI | Konkreetta createTheme-palettat (MUI {{ptk_code_2}}, {{ptk_code_3}}, {{ptk_code_4}}, {{ptk_code_5}}) | {{ptk_code_6}} rájes {{ptk_code_7}} rádjái (dárkkistuvvon) |"
+
+#: compatibility.md
+#, no-c-format
+msgid "<!-- pantoken-value-scope:compatibility%2F1%2F%60%40pantoken%2Fpendo%60 -->\n| {{ptk_code_0}} | {{ptk_code_1}} | token-ir | Pendo | — | Not yet verified |"
+msgstr "<!-- pantoken-value-scope:compatibility%2F1%2F%60%40pantoken%2Fpendo%60 -->\n| {{ptk_code_0}} | {{ptk_code_1}} | token-ir | Pendo | — | Ii leat vel dárkkistuvvon |"
+
+#: compatibility.md
+#, no-c-format
+msgid "<!-- pantoken-value-scope:compatibility%2F1%2F%60%40pantoken%2Freact%60 -->\n| {{ptk_code_0}} | {{ptk_code_1}} | token-ir | React | SSR-rendered Icon custom element and token fallback | {{ptk_code_2}} through {{ptk_code_3}} (verified) |"
+msgstr "<!-- pantoken-value-scope:compatibility%2F1%2F%60%40pantoken%2Freact%60 -->\n| {{ptk_code_0}} | {{ptk_code_1}} | token-ir | React | SSR-rendererejuvvon Icon-custom-element ja token-čuovvumuš | {{ptk_code_2}} rájes {{ptk_code_3}} rádjái (dárkkistuvvon) |"
+
+#: compatibility.md
+#, no-c-format
+msgid "<!-- pantoken-value-scope:compatibility%2F1%2F%60%40pantoken%2Freact-markdown%60 -->\n| {{ptk_code_0}} | {{ptk_code_1}} | instui-react | react-markdown | SSR-rendered InstUI heading, icon, and color swatch with React {{ptk_code_2}} | {{ptk_code_3}} through {{ptk_code_4}} (verified) |"
+msgstr "<!-- pantoken-value-scope:compatibility%2F1%2F%60%40pantoken%2Freact-markdown%60 -->\n| {{ptk_code_0}} | {{ptk_code_1}} | instui-react | react-markdown | SSR-rendererejuvvon InstUI-h1, ikóna ja ivdnespeadjá React {{ptk_code_2}} bokte | {{ptk_code_3}} rájes {{ptk_code_4}} rádjái (dárkkistuvvon) |"
+
+#: compatibility.md
+#, no-c-format
+msgid "<!-- pantoken-value-scope:compatibility%2F1%2F%60%40pantoken%2Freact-native%60 -->\n| {{ptk_code_0}} | {{ptk_code_1}} | token-ir | React Native | — | Not yet verified |"
+msgstr "<!-- pantoken-value-scope:compatibility%2F1%2F%60%40pantoken%2Freact-native%60 -->\n| {{ptk_code_0}} | {{ptk_code_1}} | token-ir | React Native | — | Ii leat vel dárkkistuvvon |"
+
+#: compatibility.md
+#, no-c-format
+msgid "<!-- pantoken-value-scope:compatibility%2F1%2F%60%40pantoken%2Frehype%60 -->\n| {{ptk_code_0}} | {{ptk_code_1}} | token-ir | rehype | HAST + raw SVG | {{ptk_code_2}} through {{ptk_code_3}} (verified) |"
+msgstr "<!-- pantoken-value-scope:compatibility%2F1%2F%60%40pantoken%2Frehype%60 -->\n| {{ptk_code_0}} | {{ptk_code_1}} | token-ir | rehype | HAST + raw SVG | {{ptk_code_2}} rájes {{ptk_code_3}} rádjái (dárkkistuvvon) |"
+
+#: compatibility.md
+#, no-c-format
+msgid "<!-- pantoken-value-scope:compatibility%2F1%2F%60%40pantoken%2Fshadcn%60 -->\n| {{ptk_code_0}} | {{ptk_code_1}} | token-ir | shadcn/ui CSS variables | Tailwind {{ptk_code_2}} compiles the Pantoken primary theme alias | {{ptk_code_3}} through {{ptk_code_4}} (verified) |"
+msgstr "<!-- pantoken-value-scope:compatibility%2F1%2F%60%40pantoken%2Fshadcn%60 -->\n| {{ptk_code_0}} | {{ptk_code_1}} | token-ir | shadcn/ui CSS-variábelat | Tailwind {{ptk_code_2}} kompilerere Pantoken primary-fáttá aliasa | {{ptk_code_3}} rájes {{ptk_code_4}} rádjái (dárkkistuvvon) |"
+
+#: compatibility.md
+#, no-c-format
+msgid "<!-- pantoken-value-scope:compatibility%2F1%2F%60%40pantoken%2Fstorybook%60 -->\n| {{ptk_code_0}} | {{ptk_code_1}} | token-ir | Storybook theming | Storybook ThemeVars constructor accepts light and dark Pantoken themes | {{ptk_code_2}} through {{ptk_code_3}} (verified) |"
+msgstr "<!-- pantoken-value-scope:compatibility%2F1%2F%60%40pantoken%2Fstorybook%60 -->\n| {{ptk_code_0}} | {{ptk_code_1}} | token-ir | Storybook-fáttaheiveheapmi | Storybook ThemeVars-konstruktora dohkkeha čuvges ja seavdnjadas Pantoken-fáttáid | {{ptk_code_2}} rájes {{ptk_code_3}} rádjái (dárkkistuvvon) |"
+
+#: compatibility.md
+#, no-c-format
+msgid "<!-- pantoken-value-scope:compatibility%2F1%2F%60%40pantoken%2Fsvelte%60 -->\n| {{ptk_code_0}} | {{ptk_code_1}} | token-ir | Svelte | Icon action component compiles and SSR renders on Svelte {{ptk_code_2}} and {{ptk_code_3}} | {{ptk_code_4}} through {{ptk_code_5}} (verified) |"
+msgstr "<!-- pantoken-value-scope:compatibility%2F1%2F%60%40pantoken%2Fsvelte%60 -->\n| {{ptk_code_0}} | {{ptk_code_1}} | token-ir | Svelte | Ikóna-action-komponennta kompilererejuvvo ja SSR renderere Svelte {{ptk_code_2}} ja {{ptk_code_3}} bokte | {{ptk_code_4}} rájes {{ptk_code_5}} rádjái (dárkkistuvvon) |"
+
+#: compatibility.md
+#, no-c-format
+msgid "<!-- pantoken-value-scope:compatibility%2F1%2F%60%40pantoken%2Ftinymce%60 -->\n| {{ptk_code_0}} | {{ptk_code_1}} | token-ir | TinyMCE PluginManager | Pantoken plugin registration and callback initialization | {{ptk_code_2}} through {{ptk_code_3}} (verified) |"
+msgstr "<!-- pantoken-value-scope:compatibility%2F1%2F%60%40pantoken%2Ftinymce%60 -->\n| {{ptk_code_0}} | {{ptk_code_1}} | token-ir | TinyMCE PluginManager | Pantoken-pluginna registreren ja callback-initialiseren | {{ptk_code_2}} rájes {{ptk_code_3}} rádjái (dárkkistuvvon) |"
+
+#: compatibility.md
+#, no-c-format
+msgid "<!-- pantoken-value-scope:compatibility%2F1%2F%60%40pantoken%2Fvitepress%60 -->\n| {{ptk_code_0}} | {{ptk_code_1}} | token-ir | VitePress | Built site CSS includes the Pantoken primary-brand bridge | {{ptk_code_2}} through {{ptk_code_3}} (verified) |"
+msgstr "<!-- pantoken-value-scope:compatibility%2F1%2F%60%40pantoken%2Fvitepress%60 -->\n| {{ptk_code_0}} | {{ptk_code_1}} | token-ir | VitePress | Ráhkaduvvon siiddu CSS:s lea Pantoken primary-brand-oktiičatnan | {{ptk_code_2}} rájes {{ptk_code_3}} rádjái (dárkkistuvvon) |"
+
+#: compatibility.md
+#, no-c-format
+msgid "<!-- pantoken-value-scope:compatibility%2F1%2F%60%40pantoken%2Fvue%60 -->\n| {{ptk_code_0}} | {{ptk_code_1}} | token-ir | Vue | Plugin installation, custom-element configuration, and SSR output | {{ptk_code_2}} through {{ptk_code_3}} (verified) |"
+msgstr "<!-- pantoken-value-scope:compatibility%2F1%2F%60%40pantoken%2Fvue%60 -->\n| {{ptk_code_0}} | {{ptk_code_1}} | token-ir | Vue | Plugina installerema, custom-element-heivehusa ja SSR-bohtosa dárkkisteapmi | {{ptk_code_2}} rájes {{ptk_code_3}} rádjái (dárkkistuvvon) |"
+
+#: compatibility.md
+#, no-c-format
+msgid "<!-- pantoken-value-scope:compatibility%2F1%2F%60%40pantoken%2Fweb-components%60 -->\n| {{ptk_code_0}} | {{ptk_code_1}} | token-ir | Web Components | Custom-element registration and button shadow output | Tested environment: {{ptk_code_2}}. Real-browser rendering and interaction behavior are not verified. |"
+msgstr "<!-- pantoken-value-scope:compatibility%2F1%2F%60%40pantoken%2Fweb-components%60 -->\n| {{ptk_code_0}} | {{ptk_code_1}} | token-ir | Web Components | Custom-element-registreren ja button shadow-bohtos | Dárkkistuvvon biras: {{ptk_code_2}}. Duohta neahttaloggerendereren ja interakšuvdnadoaibman eai leat dárkkistuvvon. |"
+
+#: compatibility.md
+#, no-c-format
+msgid "| Token | Deprecated in | Removed in | Replacement |"
+msgstr "| Token | Boarásmuvvan | Váldon eret | Buhttehus |"
+
+#: compatibility.md
+#, no-c-format
+msgid "<!-- pantoken-value-scope:compatibility%2F2%2F%60--instui-component-pill-padding-vertical%60 -->\n| {{ptk_code_0}} | {{ptk_code_1}} | {{ptk_code_2}} | _frozen value_ |"
+msgstr "<!-- pantoken-value-scope:compatibility%2F2%2F%60--instui-component-pill-padding-vertical%60 -->\n| {{ptk_code_0}} | {{ptk_code_1}} | {{ptk_code_2}} | _báhcán árvu_ |"
+
+#: compatibility.md
+#, no-c-format
+msgid "<!-- pantoken-value-scope:compatibility%2F2%2F%60--instui-icon-angry%60 -->\n| {{ptk_code_0}} | {{ptk_code_1}} | {{ptk_code_2}} | _frozen value_ |"
+msgstr "<!-- pantoken-value-scope:compatibility%2F2%2F%60--instui-icon-angry%60 -->\n| {{ptk_code_0}} | {{ptk_code_1}} | {{ptk_code_2}} | _báhcán árvu_ |"
+
+#: compatibility.md
+#, no-c-format
+msgid "<!-- pantoken-value-scope:compatibility%2F2%2F%60--instui-icon-annoyed%60 -->\n| {{ptk_code_0}} | {{ptk_code_1}} | {{ptk_code_2}} | _frozen value_ |"
+msgstr "<!-- pantoken-value-scope:compatibility%2F2%2F%60--instui-icon-annoyed%60 -->\n| {{ptk_code_0}} | {{ptk_code_1}} | {{ptk_code_2}} | _báhcán árvu_ |"
+
+#: compatibility.md
+#, no-c-format
+msgid "<!-- pantoken-value-scope:compatibility%2F2%2F%60--instui-icon-frown%60 -->\n| {{ptk_code_0}} | {{ptk_code_1}} | {{ptk_code_2}} | _frozen value_ |"
+msgstr "<!-- pantoken-value-scope:compatibility%2F2%2F%60--instui-icon-frown%60 -->\n| {{ptk_code_0}} | {{ptk_code_1}} | {{ptk_code_2}} | _báhcán árvu_ |"
+
+#: compatibility.md
+#, no-c-format
+msgid "<!-- pantoken-value-scope:compatibility%2F2%2F%60--instui-icon-history%60 -->\n| {{ptk_code_0}} | {{ptk_code_1}} | {{ptk_code_2}} | {{ptk_code_3}} |"
+msgstr "<!-- pantoken-value-scope:compatibility%2F2%2F%60--instui-icon-history%60 -->\n| {{ptk_code_0}} | {{ptk_code_1}} | {{ptk_code_2}} | {{ptk_code_3}} |"
+
+#: compatibility.md
+#, no-c-format
+msgid "<!-- pantoken-value-scope:compatibility%2F2%2F%60--instui-icon-laugh%60 -->\n| {{ptk_code_0}} | {{ptk_code_1}} | {{ptk_code_2}} | _frozen value_ |"
+msgstr "<!-- pantoken-value-scope:compatibility%2F2%2F%60--instui-icon-laugh%60 -->\n| {{ptk_code_0}} | {{ptk_code_1}} | {{ptk_code_2}} | _báhcán árvu_ |"
+
+#: compatibility.md
+#, no-c-format
+msgid "<!-- pantoken-value-scope:compatibility%2F2%2F%60--instui-icon-meh%60 -->\n| {{ptk_code_0}} | {{ptk_code_1}} | {{ptk_code_2}} | _frozen value_ |"
+msgstr "<!-- pantoken-value-scope:compatibility%2F2%2F%60--instui-icon-meh%60 -->\n| {{ptk_code_0}} | {{ptk_code_1}} | {{ptk_code_2}} | _báhcán árvu_ |"
+
+#: compatibility.md
+#, no-c-format
+msgid "<!-- pantoken-value-scope:compatibility%2F2%2F%60--instui-icon-podcast%60 -->\n| {{ptk_code_0}} | {{ptk_code_1}} | {{ptk_code_2}} | _frozen value_ |"
+msgstr "<!-- pantoken-value-scope:compatibility%2F2%2F%60--instui-icon-podcast%60 -->\n| {{ptk_code_0}} | {{ptk_code_1}} | {{ptk_code_2}} | _báhcán árvu_ |"
+
+#: compatibility.md
+#, no-c-format
+msgid "<!-- pantoken-value-scope:compatibility%2F2%2F%60--instui-icon-smile%60 -->\n| {{ptk_code_0}} | {{ptk_code_1}} | {{ptk_code_2}} | _frozen value_ |"
+msgstr "<!-- pantoken-value-scope:compatibility%2F2%2F%60--instui-icon-smile%60 -->\n| {{ptk_code_0}} | {{ptk_code_1}} | {{ptk_code_2}} | _báhcán árvu_ |"
+
+#: compatibility.md
+#, no-c-format
+msgid "<!-- pantoken-value-scope:compatibility%2F2%2F%60--instui-icon-smile-plus%60 -->\n| {{ptk_code_0}} | {{ptk_code_1}} | {{ptk_code_2}} | _frozen value_ |"
+msgstr "<!-- pantoken-value-scope:compatibility%2F2%2F%60--instui-icon-smile-plus%60 -->\n| {{ptk_code_0}} | {{ptk_code_1}} | {{ptk_code_2}} | _báhcán árvu_ |"
+
+#: compatibility.md
+#, no-c-format
+msgid "<!-- pantoken-value-scope:compatibility%2F2%2F%60--instui-icon-trash-2%60 -->\n| {{ptk_code_0}} | {{ptk_code_1}} | {{ptk_code_2}} | _frozen value_ |"
+msgstr "<!-- pantoken-value-scope:compatibility%2F2%2F%60--instui-icon-trash-2%60 -->\n| {{ptk_code_0}} | {{ptk_code_1}} | {{ptk_code_2}} | _báhcán árvu_ |"

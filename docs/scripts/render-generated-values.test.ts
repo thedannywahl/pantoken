@@ -2,6 +2,7 @@ import { join } from "node:path";
 import { afterEach, beforeEach, expect, test, vi } from "vite-plus/test";
 import { parsePo, serializePo, type PoEntry } from "../../tools/i18n-engine/src/po.ts";
 import { generatedFileMarkdown } from "../../tools/translation-adapters/src/generated-values.ts";
+import { migrateCompatibilityTranslation } from "../../tools/translation-adapters/src/compatibility-markdown.ts";
 import { collectUnits, segmentMarkdown } from "./segment-markdown.ts";
 
 const { files, writeFileSync, provider } = vi.hoisted(() => ({
@@ -69,10 +70,13 @@ beforeEach(() => {
   const template = collectUnits(segmentMarkdown(api("1.0"), { scope: "example.md" }))[0].text;
   for (const locale of ["hu", "de"]) {
     const compatibility = generatedFileMarkdown(guide("1.0")).template;
-    files.set(
-      join(root, "l10n", locale, "docs.guides.po"),
-      serializePo([entry(compatibility, compatibility.replace("Support", `${locale} support`))]),
-    );
+    const guideEntries = [
+      ...migrateCompatibilityTranslation(
+        guide("1.0"),
+        compatibility.replace("Support", `${locale} support`),
+      ),
+    ].map(([source, translated]) => entry(source, translated));
+    files.set(join(root, "l10n", locale, "docs.guides.po"), serializePo(guideEntries));
     files.set(
       join(root, "l10n", locale, "docs.api.po"),
       serializePo([

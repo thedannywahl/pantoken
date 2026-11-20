@@ -4,7 +4,7 @@ import { join } from "node:path";
 import { afterEach, beforeEach, expect, test } from "vite-plus/test";
 import { parseConfig, type I18nConfig } from "../src/config.ts";
 import { parsePo, serializePo, writeCatalog } from "../src/po.ts";
-import { runExtractContent, runRenderContent } from "../src/pipeline.ts";
+import { runExtractContent, runRenderContent, runTranslateContent } from "../src/pipeline.ts";
 
 let repo: string;
 let config: I18nConfig;
@@ -192,4 +192,66 @@ test("does not render a generated whole-file template from an incomplete catalog
   expect(() => runRenderContent(config, repo, "scaffold.readme", "hu")).toThrow(
     "missing reviewed generated-value translation",
   );
+});
+
+test("extracts compatibility rows independently and renders current values to the locale root", async () => {
+  const guides = parseConfig({
+    source: "en",
+    locales: {
+      registry: "@pantoken/web-components#LOCALES",
+      exclude: [],
+      tiers: { source: ["en"], primary: ["hu"], secondary: ["*"] },
+    },
+    spaces: {
+      "docs.guides": {
+        kind: "content",
+        include: ["docs/compatibility.md"],
+        root: "docs",
+        render: "docs/{locale}/guide/{path}",
+        transientRender: false,
+        segment: "file",
+      },
+    },
+  });
+  mkdirSync(join(repo, "docs"), { recursive: true });
+  const sourcePath = join(repo, "docs/compatibility.md");
+  const source =
+    "# Compatibility\n\n<!-- pantoken-generated-values -->\n\n| Package | Version |\n| --- | --- |\n| `pkg` | `1.0` |\n";
+  writeFileSync(sourcePath, source);
+  runExtractContent(guides, repo, "docs.guides");
+  const entries = parsePo(readFileSync(join(repo, "l10n/docs.guides.pot"), "utf8"));
+  expect(entries.filter((entry) => entry.references.includes("compatibility.md"))).toHaveLength(3);
+  mkdirSync(join(repo, "l10n/hu"), { recursive: true });
+  writeCatalog(
+    join(repo, "l10n/hu/docs.guides.po"),
+    serializePo(entries.map((entry) => ({ ...entry, msgstr: entry.msgid }))),
+  );
+  writeFileSync(sourcePath, source.replace("`1.0`", "`2.0`"));
+  runRenderContent(guides, repo, "docs.guides", "hu");
+  expect(readFileSync(join(repo, "docs/hu/compatibility.md"), "utf8")).toContain("`2.0`");
+  expect(existsSync(join(repo, "docs/hu/guide/compatibility.md"))).toBe(false);
+  const command = process.env.I18N_TRANSLATION_COMMAND;
+  delete process.env.I18N_TRANSLATION_COMMAND;
+  try {
+    await runTranslateContent(guides, repo, "docs.guides", "hu");
+    const catalog = parsePo(readFileSync(join(repo, "l10n/hu/docs.guides.po"), "utf8"));
+    expect(
+      catalog.filter((entry) => !entry.obsolete && (entry.fuzzy || !entry.msgstr)),
+    ).toHaveLength(0);
+    writeFileSync(
+      sourcePath,
+      source.replace("| `pkg` | `1.0` |", "| `pkg` | `2.0` |\n| `new` | `1.0` |"),
+    );
+    await runTranslateContent(guides, repo, "docs.guides", "hu");
+    const updated = parsePo(readFileSync(join(repo, "l10n/hu/docs.guides.po"), "utf8"));
+    expect(
+      updated.filter((entry) => !entry.obsolete && (entry.fuzzy || !entry.msgstr)),
+    ).toHaveLength(1);
+    expect(() => runRenderContent(guides, repo, "docs.guides", "hu")).toThrow(
+      "missing reviewed compatibility translation",
+    );
+  } finally {
+    if (command === undefined) delete process.env.I18N_TRANSLATION_COMMAND;
+    else process.env.I18N_TRANSLATION_COMMAND = command;
+  }
 });

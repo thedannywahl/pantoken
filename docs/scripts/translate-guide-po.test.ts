@@ -1,10 +1,12 @@
 import { afterEach, beforeEach, expect, test, vi } from "vite-plus/test";
 import type { PoEntry } from "@pantoken/i18n-engine";
 import { generatedFileMarkdown } from "../../tools/translation-adapters/src/generated-values.ts";
+import { migrateCompatibilityTranslation } from "../../tools/translation-adapters/src/compatibility-markdown.ts";
 
 const source =
   "<!-- pantoken-generated-values -->\n| Package | Version |\n| --- | --- |\n| `pkg` | `2.0` |\n";
 const generated = generatedFileMarkdown(source);
+const originalExitCode = process.exitCode;
 const mocks = vi.hoisted(() => ({
   readFileSync: vi.fn(),
   writeFileSync: vi.fn(),
@@ -44,39 +46,39 @@ beforeEach(() => {
 });
 
 afterEach(() => {
+  process.exitCode = originalExitCode;
   vi.restoreAllMocks();
   vi.unstubAllEnvs();
 });
 
-function compatibilityEntry(msgstr: string, fuzzy = false): PoEntry {
-  return {
-    msgid: generated.template,
-    msgstr,
+function compatibilityEntries(msgstr: string, fuzzy = false): PoEntry[] {
+  return [...migrateCompatibilityTranslation(source, msgstr)].map(([msgid, translation]) => ({
+    msgid,
+    msgstr: translation,
     references: ["compatibility.md"],
     flags: fuzzy ? ["fuzzy", "no-c-format"] : ["no-c-format"],
     fuzzy,
     obsolete: false,
-  };
+  }));
 }
 
 test("does not restore or approve a fuzzy legacy compatibility translation", async () => {
-  const entry = compatibilityEntry(source, true);
-  mocks.parsePo.mockReturnValue([entry]);
+  const entries = compatibilityEntries(generated.template, true);
+  mocks.parsePo.mockReturnValue(entries);
 
   await import("./translate-guide-po.ts");
 
   expect(mocks.runTranslateContent).toHaveBeenCalled();
   expect(mocks.writeFileSync).not.toHaveBeenCalled();
   expect(mocks.translateMarkdown).not.toHaveBeenCalled();
-  expect(entry.fuzzy).toBe(true);
-  expect(entry.flags).toContain("fuzzy");
-  expect(entry.msgstr).toBe(source);
+  expect(entries.every((entry) => entry.fuzzy && entry.flags.includes("fuzzy"))).toBe(true);
+  expect(process.exitCode).toBe(1);
 });
 
 test("restores current values from a reviewed compatibility template", async () => {
-  mocks.parsePo.mockReturnValue([
-    compatibilityEntry(generated.template.replace("Package", "Csomag")),
-  ]);
+  mocks.parsePo.mockReturnValue(
+    compatibilityEntries(generated.template.replace("Package", "Csomag")),
+  );
 
   await import("./translate-guide-po.ts");
 
@@ -88,11 +90,13 @@ test("restores current values from a reviewed compatibility template", async () 
 });
 
 test("still rejects a corrupt reviewed compatibility template", async () => {
-  mocks.parsePo.mockReturnValue([
-    compatibilityEntry(generated.template.replace("{{ptk_code_1}}", "")),
-  ]);
+  const entries = compatibilityEntries(generated.template);
+  const row = entries.find((entry) => entry.msgid.includes("{{ptk_code_1}}"));
+  if (!row) throw new Error("Missing row fixture");
+  row.msgstr = row.msgstr.replace("{{ptk_code_1}}", "");
+  mocks.parsePo.mockReturnValue(entries);
 
-  await expect(import("./translate-guide-po.ts")).rejects.toThrow("placeholder");
+  await expect(import("./translate-guide-po.ts")).rejects.toThrow("value bindings");
 
   expect(mocks.writeFileSync).not.toHaveBeenCalled();
 });

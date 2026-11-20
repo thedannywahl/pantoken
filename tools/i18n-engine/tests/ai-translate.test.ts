@@ -241,6 +241,31 @@ describe("fillUntranslatedMarkdownEntries generated values", () => {
     expect(entry.fuzzy).toBe(true);
     expect(entry.flags).toContain("fuzzy");
   });
+
+  test("retries fuzzy compatibility rows and preserves their protected scope and columns", async () => {
+    installFakeProvider("__PTK_SCOPE_0__\n| __PTK_VAR_0__ | Ellenőrizve |\n");
+    const path = join(testDir, "row.po");
+    writeFileSync(
+      path,
+      serializePo([
+        {
+          msgid:
+            "<!-- pantoken-value-scope:compatibility%2F0%2Fpkg -->\n| {{ptk_code_0}} | Verified |",
+          msgstr: "old",
+          references: ["compatibility.md"],
+          flags: ["fuzzy"],
+          fuzzy: true,
+          obsolete: false,
+        },
+      ]),
+    );
+    await fillUntranslatedMarkdownEntries(path, "hu", CONFIG_DEFAULTS.provider);
+    const [entry] = parsePo(readFileSync(path, "utf8"));
+    expect(entry.fuzzy).toBe(false);
+    expect(entry.msgstr).toBe(
+      "<!-- pantoken-value-scope:compatibility%2F0%2Fpkg -->\n| {{ptk_code_0}} | Ellenőrizve |",
+    );
+  });
 });
 
 describe("resolveProviderInvocation", () => {

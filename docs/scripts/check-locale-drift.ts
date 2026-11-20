@@ -37,6 +37,13 @@ import {
   assertGeneratedTranslation,
   generatedFileMarkdown,
 } from "../../tools/translation-adapters/src/generated-values.ts";
+import {
+  assertCompatibilityHeader,
+  assertCompatibilityRow,
+  assertCompatibilityScaffold,
+  compatibilityMarkdown,
+  compatibilityUnits,
+} from "../../tools/translation-adapters/src/compatibility-markdown.ts";
 
 const docsRoot = join(import.meta.dirname, "..");
 const cacheDir = join(docsRoot, "i18n-cache");
@@ -99,25 +106,53 @@ export const walkMarkdown = (dir: string): string[] => {
 const preview = (text: string): string =>
   text.replace(/\s+/g, " ").trim().slice(0, 60) + (text.length > 60 ? "…" : "");
 
-/** Guide drift: each guide and the compatibility page is one whole-file `markdown` unit. */
+/** Guide drift: whole-file guides and independently reviewed compatibility units. */
 const guideDrift = (locale: string): Missing[] => {
   const poPath = join(l10nDir, locale, "docs.guides.po");
-  // TODO: Include compatibility.md in drift check once all locales have translations
   const guideFiles = walkMarkdown(guideDir).filter(existsSync);
-  if (existsSync(poPath)) {
-    const translated = loadPoTranslatedSet(poPath);
-    return guideFiles
-      .map((file) => ({
-        file: relative(docsRoot, file),
-        source: generatedFileMarkdown(readFileSync(file, "utf8")).template,
-      }))
-      .filter(({ source }) => !translated.has(source))
-      .map(({ file, source }) => ({
-        file,
+  const compatibilityPath = join(docsRoot, "compatibility.md");
+  const compatibility = existsSync(compatibilityPath)
+    ? compatibilityUnits(compatibilityMarkdown(readFileSync(compatibilityPath, "utf8")))
+    : [];
+  const missingCompatibility = (translated: Set<string | undefined>): Missing[] =>
+    compatibility
+      .filter((source) => !translated.has(source))
+      .map((source) => ({
+        file: "compatibility.md",
         kind: "markdown",
         sample: preview(source),
         unit: { msgid: source },
       }));
+  if (existsSync(poPath)) {
+    const translated = loadPoTranslatedSet(poPath);
+    const reviewed = new Set(
+      parsePo(readFileSync(poPath, "utf8"))
+        .filter((entry) => !entry.obsolete && !entry.fuzzy && entry.msgstr !== "")
+        .map((entry) => {
+          if (entry.msgid.includes("{{ptk_code_"))
+            assertGeneratedTranslation(entry.msgid, entry.msgstr);
+          assertCompatibilityScaffold(entry.msgid, entry.msgstr);
+          assertCompatibilityRow(entry.msgid, entry.msgstr);
+          if (entry.references.includes("compatibility.md") && entry.msgid.startsWith("|"))
+            assertCompatibilityHeader(entry.msgid, entry.msgstr);
+          return entry.msgid;
+        }),
+    );
+    return [
+      ...guideFiles
+        .map((file) => ({
+          file: relative(docsRoot, file),
+          source: generatedFileMarkdown(readFileSync(file, "utf8")).template,
+        }))
+        .filter(({ source }) => !translated.has(source))
+        .map(({ file, source }) => ({
+          file,
+          kind: "markdown",
+          sample: preview(source),
+          unit: { msgid: source },
+        })),
+      ...missingCompatibility(reviewed),
+    ];
   }
   const cached = loadCacheKeys(locale, "guides");
   const missing: Missing[] = [];
@@ -132,6 +167,11 @@ const guideDrift = (locale: string): Missing[] => {
       });
     }
   }
+  missing.push(
+    ...missingCompatibility(
+      new Set(compatibility.filter((source) => cached.has(keyFor("markdown", source)))),
+    ),
+  );
   return missing;
 };
 

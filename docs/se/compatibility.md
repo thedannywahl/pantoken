@@ -80,15 +80,16 @@ Vahkkosaš ulbmilversjonalusaid workflow rahpá čielggadanáššiid ođđa stab
 
 Tokenat maid upstream lea váldán eret, muhto maid pantoken ain sádde kompatibilitehta-vuohkin. Juohke vuohki doibmá dassážii go `Removed in` upstream-minor váldojuvvo atnui; dalle vuohki váldojuvvo eret ja geavaheaddji minor almmuhuvvo. Vuohki dahje sirdá `Replacement` tokenii dahje seailluhá dan maŋimuš dovddus árvvu.
 
-| Token                      | Boarásmuvvan | Váldon eret | Buhttehus                        |
-| -------------------------- | ------------ | ----------- | -------------------------------- |
-| `--instui-icon-angry`      | `ui@11.7.6`  | `ui@11.8.0` | _báhcán árvu_                    |
-| `--instui-icon-annoyed`    | `ui@11.7.6`  | `ui@11.8.0` | _báhcán árvu_                    |
-| `--instui-icon-frown`      | `ui@11.7.6`  | `ui@11.8.0` | _báhcán árvu_                    |
-| `--instui-icon-history`    | `ui@11.7.6`  | `ui@11.8.0` | `--instui-icon-rotate-ccw-clock` |
-| `--instui-icon-laugh`      | `ui@11.7.6`  | `ui@11.8.0` | _báhcán árvu_                    |
-| `--instui-icon-meh`        | `ui@11.7.6`  | `ui@11.8.0` | _báhcán árvu_                    |
-| `--instui-icon-podcast`    | `ui@11.7.6`  | `ui@11.8.0` | _báhcán árvu_                    |
-| `--instui-icon-smile`      | `ui@11.7.6`  | `ui@11.8.0` | _báhcán árvu_                    |
-| `--instui-icon-smile-plus` | `ui@11.7.6`  | `ui@11.8.0` | _báhcán árvu_                    |
-| `--instui-icon-trash-2`    | `ui@11.7.6`  | `ui@11.8.0` | _báhcán árvu_                    |
+| Token                                      | Boarásmuvvan          | Váldon eret           | Buhttehus                        |
+| ------------------------------------------ | --------------------- | --------------------- | -------------------------------- |
+| `--instui-component-pill-padding-vertical` | `design-tokens@2.6.0` | `design-tokens@3.0.0` | _báhcán árvu_                    |
+| `--instui-icon-angry`                      | `ui@11.7.6`           | `ui@11.8.0`           | _báhcán árvu_                    |
+| `--instui-icon-annoyed`                    | `ui@11.7.6`           | `ui@11.8.0`           | _báhcán árvu_                    |
+| `--instui-icon-frown`                      | `ui@11.7.6`           | `ui@11.8.0`           | _báhcán árvu_                    |
+| `--instui-icon-history`                    | `ui@11.7.6`           | `ui@11.8.0`           | `--instui-icon-rotate-ccw-clock` |
+| `--instui-icon-laugh`                      | `ui@11.7.6`           | `ui@11.8.0`           | _báhcán árvu_                    |
+| `--instui-icon-meh`                        | `ui@11.7.6`           | `ui@11.8.0`           | _báhcán árvu_                    |
+| `--instui-icon-podcast`                    | `ui@11.7.6`           | `ui@11.8.0`           | _báhcán árvu_                    |
+| `--instui-icon-smile`                      | `ui@11.7.6`           | `ui@11.8.0`           | _báhcán árvu_                    |
+| `--instui-icon-smile-plus`                 | `ui@11.7.6`           | `ui@11.8.0`           | _báhcán árvu_                    |
+| `--instui-icon-trash-2`                    | `ui@11.7.6`           | `ui@11.8.0`           | _báhcán árvu_                    |

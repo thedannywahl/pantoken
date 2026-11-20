@@ -17,9 +17,10 @@ import { reassemble, segmentMarkdown } from "./segment-markdown.ts";
 import { parseRequestedGuideFiles } from "./translation-scope.ts";
 import { NON_ROOT_LOCALES, parseRequestedLocales } from "../.vitepress/i18n.ts";
 import {
-  generatedFileMarkdown,
-  restoreGeneratedMarkdown,
-} from "../../tools/translation-adapters/src/generated-values.ts";
+  compatibilityMarkdown,
+  compatibilityUnits,
+  renderCompatibility,
+} from "../../tools/translation-adapters/src/compatibility-markdown.ts";
 
 const repoRoot = new URL("../../", import.meta.url).pathname;
 const config = loadConfig(join(repoRoot, "i18n.config.json"));
@@ -39,7 +40,7 @@ if (process.env.DOCS_TRANSLATION_COMMAND) {
 
 runExtractContent(config, repoRoot, "docs.guides");
 const files = parseRequestedGuideFiles(process.env.DOCS_TRANSLATION_FILE, listGuideFiles(docsRoot));
-const compatibility = generatedFileMarkdown(
+const compatibility = compatibilityMarkdown(
   readFileSync(join(docsRoot, "compatibility.md"), "utf8"),
 );
 
@@ -51,14 +52,27 @@ for (const locale of locales) {
   await runTranslateContent(config, repoRoot, "docs.guides", locale);
   const poPath = join(repoRoot, "l10n", locale, "docs.guides.po");
   const entries = parsePo(readFileSync(poPath, "utf8"));
-  const compatibilityEntry = entries.find(
-    (item) => !item.obsolete && !item.fuzzy && item.msgid === compatibility.template,
+  const reviewed = new Map(
+    entries
+      .filter((entry) => !entry.obsolete && !entry.fuzzy && entry.msgstr !== "")
+      .map((entry) => [entry.msgid, entry.msgstr]),
   );
-  if (compatibilityEntry?.msgstr) {
+  const missing = compatibilityUnits(compatibility).filter((unit) => !reviewed.has(unit));
+  if (missing.length === 0) {
     writeFileSync(
       join(docsRoot, locale, "compatibility.md"),
-      `${normalizeRenderedGuide(restoreGeneratedMarkdown(compatibilityEntry.msgstr, compatibility))}\n`,
+      `${normalizeRenderedGuide(
+        renderCompatibility(compatibility, (unit) => {
+          const translation = reviewed.get(unit);
+          if (translation === undefined)
+            throw new Error(`${locale}: missing reviewed compatibility translation`);
+          return translation;
+        }),
+      )}\n`,
     );
+  } else {
+    console.warn(`  ! ${locale} compatibility.md: ${missing.length} reviewed unit(s) missing`);
+    process.exitCode = 1;
   }
   const adapter = new AiTranslationAdapter(locale);
 

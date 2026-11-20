@@ -38,6 +38,16 @@ test("round-trips an untouched document byte for byte", () => {
   expect(restoreMarkdown(preserved.text, preserved)).toBe(SOURCE);
 });
 
+test("masks compatibility and generated-value scope comments", () => {
+  const source =
+    "<!-- pantoken-compatibility-scaffold -->\n{{ptk_table_0}}\n<!-- pantoken-value-scope:compatibility%2F0 -->\n";
+  const preserved = preserveMarkdown(source);
+  expect(preserved.text).toContain("__PTK_SCOPE_0__");
+  expect(preserved.text).toContain("__PTK_SCOPE_1__");
+  expect(preserved.text).not.toContain("pantoken-value-scope");
+  expect(restoreMarkdown(preserved.text, preserved)).toBe(source);
+});
+
 test("restores masked tokens around translated prose", () => {
   const preserved = preserveMarkdown(SOURCE);
   const translated = preserved.text.replace("A Vite app styled with", "Egy Vite alkalmazás");
