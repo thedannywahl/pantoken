@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: pantoken\n"
-"PO-Revision-Date: 2026-10-29 02:49+0000\n"
+"PO-Revision-Date: 2026-11-20 00:00+0000\n"
 "Last-Translator: pantoken localization engine\n"
 "Language-Team: pantoken\n"
 "MIME-Version: 1.0\n"
@@ -277,6 +277,30 @@ msgstr ""
 #, no-c-format
 msgctxt "docs.demos:badge:text4"
 msgid "New"
+msgstr ""
+
+#: docs/demos/banner/i18n.json#text1
+#, no-c-format
+msgctxt "docs.demos:banner:text1"
+msgid "Relaxed Sea"
+msgstr ""
+
+#: docs/demos/banner/i18n.json#text2
+#, no-c-format
+msgctxt "docs.demos:banner:text2"
+msgid "Compact Sea"
+msgstr ""
+
+#: docs/demos/banner/i18n.json#text3
+#, no-c-format
+msgctxt "docs.demos:banner:text3"
+msgid "Relaxed Violet"
+msgstr ""
+
+#: docs/demos/banner/i18n.json#text4
+#, no-c-format
+msgctxt "docs.demos:banner:text4"
+msgid "Compact Violet"
 msgstr ""
 
 #: docs/demos/base/i18n.json#text1

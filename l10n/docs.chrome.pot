@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: pantoken\n"
-"PO-Revision-Date: 2026-11-14 02:24+0000\n"
+"PO-Revision-Date: 2026-11-20 00:00+0000\n"
 "Last-Translator: pantoken localization engine\n"
 "Language-Team: pantoken\n"
 "MIME-Version: 1.0\n"
@@ -1875,6 +1875,18 @@ msgctxt "docs.chrome:registryBrowserItems.breadcrumb.description"
 msgid "Instructure Breadcrumb component styled with semantic .instui-breadcrumb classes."
 msgstr ""
 
+#: docs/.vitepress/catalog-i18n.json#registryBrowserItems.banner.title
+#, no-c-format
+msgctxt "docs.chrome:registryBrowserItems.banner.title"
+msgid "Banner"
+msgstr ""
+
+#: docs/.vitepress/catalog-i18n.json#registryBrowserItems.banner.description
+#, no-c-format
+msgctxt "docs.chrome:registryBrowserItems.banner.description"
+msgid "Pantoken banner component styles and documented HTML structure."
+msgstr ""
+
 #: docs/.vitepress/catalog-i18n.json#registryBrowserItems.billboard.title
 #, no-c-format
 msgctxt "docs.chrome:registryBrowserItems.billboard.title"
@@ -1993,6 +2005,18 @@ msgstr ""
 #, no-c-format
 msgctxt "docs.chrome:registryBrowserItems.side-nav-bar.description"
 msgid "Instructure Side-nav-bar component styled with semantic .instui-side-nav-bar classes."
+msgstr ""
+
+#: docs/.vitepress/catalog-i18n.json#registryBrowserItems.global-nav-bar.title
+#, no-c-format
+msgctxt "docs.chrome:registryBrowserItems.global-nav-bar.title"
+msgid "Global-nav-bar"
+msgstr ""
+
+#: docs/.vitepress/catalog-i18n.json#registryBrowserItems.global-nav-bar.description
+#, no-c-format
+msgctxt "docs.chrome:registryBrowserItems.global-nav-bar.description"
+msgid "Instructure Global-nav-bar component styled with semantic .instui-global-nav-bar classes."
 msgstr ""
 
 #: docs/.vitepress/catalog-i18n.json#registryBrowserItems.tree-browser.title
@@ -2257,18 +2281,6 @@ msgstr ""
 #, no-c-format
 msgctxt "docs.chrome:registryBrowserItems.view.description"
 msgid "Instructure View component styled with semantic .instui-view classes."
-msgstr ""
-
-#: docs/.vitepress/catalog-i18n.json#registryBrowserItems.banner.title
-#, no-c-format
-msgctxt "docs.chrome:registryBrowserItems.banner.title"
-msgid "Banner"
-msgstr ""
-
-#: docs/.vitepress/catalog-i18n.json#registryBrowserItems.banner.description
-#, no-c-format
-msgctxt "docs.chrome:registryBrowserItems.banner.description"
-msgid "Pantoken banner component styles and documented HTML structure."
 msgstr ""
 
 #: docs/.vitepress/catalog-i18n.json#registryBrowserItems.agent-shell.title

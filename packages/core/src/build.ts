@@ -283,5 +283,17 @@ export function buildTokensFromRoot(
   //    Both stages are guarded (a wrong-stage plugin warns rather than silently doing nothing);
   //    result is de-duped (later wins).
   const withIcons = includeIcons ? runIconPlugins(tokens, plugins, theme) : tokens;
-  return runTokenPlugins(withIcons, theme, plugins);
+  const withPlugins = runTokenPlugins(withIcons, theme, plugins);
+
+  // 7. Remove orphaned tokens from upstream sources (tokens that exist in the IR but are unused
+  //    and have upstream quality issues such as typos). These are documented in engineering-log.md.
+  const orphanedTokenPatterns = [
+    // v2.6.0 upstream typo: side-nav-bar has tokens named with "insitution" (missing 'i' in institution)
+    // Both the typo versions and their corrected references are unused by any components.
+    "--instui-component-side-nav-bar-new-insitution-logo-gap",
+    "--instui-component-side-nav-bar-new-insitution-logo-padding",
+    "--instui-component-side-nav-bar-new-institution-logo-gap",
+    "--instui-component-side-nav-bar-new-institution-logo-padding",
+  ];
+  return withPlugins.filter((token) => !orphanedTokenPatterns.includes(token.name ?? ""));
 }

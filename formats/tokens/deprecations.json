@@ -2,20 +2,6 @@
   "version": 1,
   "entries": [
     {
-      "token": "--instui-component-side-nav-bar-new-insitution-logo-gap",
-      "deprecatedIn": "ui@11.7.7",
-      "removeIn": "ui@11.8.0",
-      "replacement": "--instui-component-side-nav-bar-new-institution-logo-gap",
-      "note": "The upstream token corrected the institution spelling."
-    },
-    {
-      "token": "--instui-component-side-nav-bar-new-insitution-logo-padding",
-      "deprecatedIn": "ui@11.7.7",
-      "removeIn": "ui@11.8.0",
-      "replacement": "--instui-component-side-nav-bar-new-institution-logo-padding",
-      "note": "The upstream token corrected the institution spelling."
-    },
-    {
       "token": "--instui-icon-angry",
       "deprecatedIn": "ui@11.7.6",
       "removeIn": "ui@11.8.0",
