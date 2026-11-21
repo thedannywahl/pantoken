@@ -53,6 +53,7 @@ import { GLOSSARY_TERMS } from "./glossary.ts";
 import { readPartialPages, walkFiles } from "./lib/files.ts";
 import { escapeBareHtmlTags } from "./markdown-structure.ts";
 import { renderGeneratedValues } from "./render-generated-values.ts";
+import { isWcagReference } from "./api-verbatim.ts";
 export { escapeBareHtmlTags } from "./markdown-structure.ts";
 
 const docsRoot = join(import.meta.dirname, "..");
@@ -115,6 +116,7 @@ const isCodeShapedIdentifier = (value: string): boolean => {
  */
 export const isRequiredVerbatimApiUnit = (source: string): boolean => {
   const text = source.trim();
+  if (isWcagReference(text)) return true;
   const withoutListMarker = text.replace(/^(?:-|\*)\s+/u, "");
   const unwrapped = withoutListMarker.replace(/^\*\*(.+)\*\*$/u, "$1");
   if (unwrapped === "Token") return true;

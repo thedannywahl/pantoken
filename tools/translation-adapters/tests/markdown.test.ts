@@ -1,3 +1,4 @@
+import { spawnSync } from "node:child_process";
 import { expect, test } from "vite-plus/test";
 import {
   assertCleanMarkdownTranslation,
@@ -36,6 +37,40 @@ test("leaves translatable prose visible to the model", () => {
 test("round-trips an untouched document byte for byte", () => {
   const preserved = preserveMarkdown(SOURCE);
   expect(restoreMarkdown(preserved.text, preserved)).toBe(SOURCE);
+});
+
+test("masks compatibility and generated-value scope comments", () => {
+  const source =
+    "<!-- pantoken-compatibility-scaffold -->\n{{ptk_table_0}}\n<!-- pantoken-value-scope:compatibility%2F0%3C1 -->\n";
+  const preserved = preserveMarkdown(source);
+  expect(preserved.text).toContain("__PTK_SCOPE_0__");
+  expect(preserved.text).toContain("__PTK_SCOPE_1__");
+  expect(preserved.text).not.toContain("pantoken-value-scope");
+  expect(restoreMarkdown(preserved.text, preserved)).toBe(source);
+});
+
+test("keeps malformed scope prefixes separate from later valid comments", () => {
+  const malformed = "<!-- pantoken-value-scope:".repeat(3);
+  const comments =
+    "<!-- pantoken-value-scope:compatibility%2F0 --><!-- pantoken-compatibility-scaffold -->";
+  const preserved = preserveMarkdown(malformed + comments);
+  expect(preserved.text).toBe(`${malformed}__PTK_SCOPE_0____PTK_SCOPE_1__`);
+  expect(restoreMarkdown(preserved.text, preserved)).toBe(malformed + comments);
+});
+
+test("handles many unterminated scope prefixes within a bounded time", () => {
+  const moduleUrl = new URL("../src/markdown.ts", import.meta.url).href;
+  const script = `
+    import { preserveMarkdown } from ${JSON.stringify(moduleUrl)};
+    const source = "<!-- pantoken-value-scope:".repeat(50000);
+    if (preserveMarkdown(source).text !== source) process.exitCode = 1;
+  `;
+  const result = spawnSync(process.execPath, ["--input-type=module", "-e", script], {
+    encoding: "utf8",
+    timeout: 5000,
+  });
+  expect(result.error).toBeUndefined();
+  expect(result.status, result.stderr).toBe(0);
 });
 
 test("restores masked tokens around translated prose", () => {

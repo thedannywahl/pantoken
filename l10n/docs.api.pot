@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: pantoken\n"
-"PO-Revision-Date: 2026-11-19 16:48+0000\n"
+"PO-Revision-Date: 2026-11-21 16:09+0000\n"
 "Last-Translator: pantoken localization engine\n"
 "Language-Team: pantoken\n"
 "MIME-Version: 1.0\n"
@@ -657,7 +657,6 @@ msgid "AI Agent"
 msgstr ""
 
 #: css/agent-shell.md
-#: css/card.md
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "Content here."
@@ -703,6 +702,8 @@ msgstr ""
 #: css/form-field-messages.md
 #: css/form-field.md
 #: css/gap.md
+#: css/global-nav-bar.item.md
+#: css/global-nav-bar.md
 #: css/heading.md
 #: css/icon.md
 #: css/img.md
@@ -785,11 +786,11 @@ msgstr ""
 #: css/alert.md
 #: css/alert.md
 #: css/alert.md
+#: css/alert.md
 #: css/avatar.md
 #: css/avatar.md
 #: css/badge.md
 #: css/badge.md
-#: css/banner.md
 #: css/banner.md
 #: css/banner.md
 #: css/base.md
@@ -845,6 +846,10 @@ msgstr ""
 #: css/form-field.md
 #: css/gap.md
 #: css/gap.md
+#: css/global-nav-bar.item.md
+#: css/global-nav-bar.item.md
+#: css/global-nav-bar.md
+#: css/global-nav-bar.md
 #: css/heading.md
 #: css/heading.md
 #: css/heading.md
@@ -877,16 +882,12 @@ msgstr ""
 #: css/maskglobal.md
 #: css/menu.group.md
 #: css/menu.group.md
-#: css/menu.group.md
 #: css/menu.item.md
 #: css/menu.item.md
-#: css/menu.item.md
 #: css/menu.md
 #: css/menu.md
 #: css/menu.md
 #: css/menu.md
-#: css/menu.md
-#: css/menu.separator.md
 #: css/menu.separator.md
 #: css/menu.separator.md
 #: css/metric.md
@@ -924,7 +925,6 @@ msgstr ""
 #: css/prose.md
 #: css/radio-input-group.md
 #: css/radio-input-group.md
-#: css/radio.md
 #: css/radio.md
 #: css/radio.md
 #: css/range-input.md
@@ -1018,11 +1018,11 @@ msgstr ""
 #: css/alert.md
 #: css/alert.md
 #: css/alert.md
+#: css/alert.md
 #: css/avatar.md
 #: css/avatar.md
 #: css/badge.md
 #: css/badge.md
-#: css/banner.md
 #: css/banner.md
 #: css/banner.md
 #: css/base.md
@@ -1078,6 +1078,10 @@ msgstr ""
 #: css/form-field.md
 #: css/gap.md
 #: css/gap.md
+#: css/global-nav-bar.item.md
+#: css/global-nav-bar.item.md
+#: css/global-nav-bar.md
+#: css/global-nav-bar.md
 #: css/heading.md
 #: css/heading.md
 #: css/heading.md
@@ -1110,16 +1114,12 @@ msgstr ""
 #: css/maskglobal.md
 #: css/menu.group.md
 #: css/menu.group.md
-#: css/menu.group.md
 #: css/menu.item.md
 #: css/menu.item.md
-#: css/menu.item.md
 #: css/menu.md
 #: css/menu.md
 #: css/menu.md
 #: css/menu.md
-#: css/menu.md
-#: css/menu.separator.md
 #: css/menu.separator.md
 #: css/menu.separator.md
 #: css/metric.md
@@ -1157,7 +1157,6 @@ msgstr ""
 #: css/prose.md
 #: css/radio-input-group.md
 #: css/radio-input-group.md
-#: css/radio.md
 #: css/radio.md
 #: css/radio.md
 #: css/range-input.md
@@ -1251,11 +1250,11 @@ msgstr ""
 #: css/alert.md
 #: css/alert.md
 #: css/alert.md
+#: css/alert.md
 #: css/avatar.md
 #: css/avatar.md
 #: css/badge.md
 #: css/badge.md
-#: css/banner.md
 #: css/banner.md
 #: css/banner.md
 #: css/base.md
@@ -1311,6 +1310,10 @@ msgstr ""
 #: css/form-field.md
 #: css/gap.md
 #: css/gap.md
+#: css/global-nav-bar.item.md
+#: css/global-nav-bar.item.md
+#: css/global-nav-bar.md
+#: css/global-nav-bar.md
 #: css/heading.md
 #: css/heading.md
 #: css/heading.md
@@ -1343,16 +1346,12 @@ msgstr ""
 #: css/maskglobal.md
 #: css/menu.group.md
 #: css/menu.group.md
-#: css/menu.group.md
 #: css/menu.item.md
 #: css/menu.item.md
-#: css/menu.item.md
 #: css/menu.md
 #: css/menu.md
 #: css/menu.md
 #: css/menu.md
-#: css/menu.md
-#: css/menu.separator.md
 #: css/menu.separator.md
 #: css/menu.separator.md
 #: css/metric.md
@@ -1390,7 +1389,6 @@ msgstr ""
 #: css/prose.md
 #: css/radio-input-group.md
 #: css/radio-input-group.md
-#: css/radio.md
 #: css/radio.md
 #: css/radio.md
 #: css/range-input.md
@@ -1484,11 +1482,11 @@ msgstr ""
 #: css/alert.md
 #: css/alert.md
 #: css/alert.md
+#: css/alert.md
 #: css/avatar.md
 #: css/avatar.md
 #: css/badge.md
 #: css/badge.md
-#: css/banner.md
 #: css/banner.md
 #: css/banner.md
 #: css/base.md
@@ -1544,6 +1542,10 @@ msgstr ""
 #: css/form-field.md
 #: css/gap.md
 #: css/gap.md
+#: css/global-nav-bar.item.md
+#: css/global-nav-bar.item.md
+#: css/global-nav-bar.md
+#: css/global-nav-bar.md
 #: css/heading.md
 #: css/heading.md
 #: css/heading.md
@@ -1576,16 +1578,12 @@ msgstr ""
 #: css/maskglobal.md
 #: css/menu.group.md
 #: css/menu.group.md
-#: css/menu.group.md
 #: css/menu.item.md
 #: css/menu.item.md
-#: css/menu.item.md
 #: css/menu.md
 #: css/menu.md
 #: css/menu.md
 #: css/menu.md
-#: css/menu.md
-#: css/menu.separator.md
 #: css/menu.separator.md
 #: css/menu.separator.md
 #: css/metric.md
@@ -1623,7 +1621,6 @@ msgstr ""
 #: css/prose.md
 #: css/radio-input-group.md
 #: css/radio-input-group.md
-#: css/radio.md
 #: css/radio.md
 #: css/radio.md
 #: css/range-input.md
@@ -1842,7 +1839,6 @@ msgstr ""
 #: css/ai-gradient.md
 #: css/ai-gradient.md
 #: css/avatar.md
-#: css/banner.md
 #: css/button-set.md
 #: css/button.md
 #: css/byline.md
@@ -1853,11 +1849,7 @@ msgstr ""
 #: css/heading.md
 #: css/input-group.md
 #: css/maskglobal.md
-#: css/menu.group.md
 #: css/menu.item.md
-#: css/menu.item.md
-#: css/menu.md
-#: css/menu.separator.md
 #: css/progress.md
 #: css/radio-input-group.md
 #: css/radio.md
@@ -1906,6 +1898,8 @@ msgstr ""
 #: css/form-field-messages.md
 #: css/form-field.md
 #: css/gap.md
+#: css/global-nav-bar.item.md
+#: css/global-nav-bar.md
 #: css/heading.md
 #: css/icon.md
 #: css/img.md
@@ -2007,6 +2001,8 @@ msgstr ""
 #: css/form-field-messages.md
 #: css/form-field.md
 #: css/gap.md
+#: css/global-nav-bar.item.md
+#: css/global-nav-bar.md
 #: css/heading.md
 #: css/icon.md
 #: css/img.md
@@ -2081,8 +2077,9 @@ msgid "WCAG 2.2 1.4.10"
 msgstr ""
 
 #: css/agent-shell.md
+#: css/alert.md
+#: css/alert.md
 #: css/avatar.md
-#: css/banner.md
 #: css/billboard.md
 #: css/button-set.md
 #: css/button-set.md
@@ -2093,7 +2090,6 @@ msgstr ""
 #: css/modal.md
 #: css/progress.md
 #: css/radio-input-group.md
-#: css/radio.md
 #: css/radio.md
 #: css/segmented-control.md
 #: css/tabs.md
@@ -2146,6 +2142,8 @@ msgstr ""
 #: css/form-field-messages.md
 #: css/form-field.md
 #: css/gap.md
+#: css/global-nav-bar.item.md
+#: css/global-nav-bar.md
 #: css/heading.md
 #: css/icon.md
 #: css/img.md
@@ -2247,6 +2245,8 @@ msgstr ""
 #: css/form-field-messages.md
 #: css/form-field.md
 #: css/gap.md
+#: css/global-nav-bar.item.md
+#: css/global-nav-bar.md
 #: css/heading.md
 #: css/icon.md
 #: css/img.md
@@ -2328,6 +2328,7 @@ msgstr ""
 #: css/alert.md
 #: css/alert.md
 #: css/alert.md
+#: css/alert.md
 #: css/avatar.md
 #: css/avatar.md
 #: css/badge.md
@@ -2384,6 +2385,10 @@ msgstr ""
 #: css/form-field.md
 #: css/gap.md
 #: css/gap.md
+#: css/global-nav-bar.item.md
+#: css/global-nav-bar.item.md
+#: css/global-nav-bar.md
+#: css/global-nav-bar.md
 #: css/heading.md
 #: css/heading.md
 #: css/icon.md
@@ -2456,7 +2461,6 @@ msgstr ""
 #: css/prose.md
 #: css/radio-input-group.md
 #: css/radio-input-group.md
-#: css/radio.md
 #: css/radio.md
 #: css/radio.md
 #: css/range-input.md
@@ -2568,6 +2572,8 @@ msgstr ""
 #: css/form-field-messages.md
 #: css/form-field.md
 #: css/gap.md
+#: css/global-nav-bar.item.md
+#: css/global-nav-bar.md
 #: css/heading.md
 #: css/icon.md
 #: css/img.md
@@ -2669,6 +2675,8 @@ msgstr ""
 #: css/form-field-messages.md
 #: css/form-field.md
 #: css/gap.md
+#: css/global-nav-bar.item.md
+#: css/global-nav-bar.md
 #: css/heading.md
 #: css/icon.md
 #: css/img.md
@@ -2770,6 +2778,8 @@ msgstr ""
 #: css/form-field-messages.md
 #: css/form-field.md
 #: css/gap.md
+#: css/global-nav-bar.item.md
+#: css/global-nav-bar.md
 #: css/heading.md
 #: css/icon.md
 #: css/img.md
@@ -2882,7 +2892,7 @@ msgid "A transparent border framed by the shared AI gradient."
 msgstr ""
 
 #: css/ai-gradient.md
-#: css/banner.md
+#: css/alert.md
 #: css/billboard.md
 #: css/button-set.md
 #: css/button.md
@@ -2892,12 +2902,7 @@ msgstr ""
 #: css/input-group.md
 #: css/link.md
 #: css/maskglobal.md
-#: css/menu.group.md
-#: css/menu.item.md
-#: css/menu.md
-#: css/menu.separator.md
 #: css/progress.md
-#: css/radio.md
 #: css/simple-select.md
 #, no-c-format
 msgctxt "docs.api:prose"
@@ -2905,7 +2910,7 @@ msgid "Rules (axe-core)"
 msgstr ""
 
 #: css/ai-gradient.md
-#: css/banner.md
+#: css/alert.md
 #: css/button-set.md
 #: css/button.md
 #: css/byline.md
@@ -2915,7 +2920,6 @@ msgstr ""
 #: css/link.md
 #: css/maskglobal.md
 #: css/progress.md
-#: css/radio.md
 #: css/simple-select.md
 #, no-c-format
 msgctxt "docs.api:prose"
@@ -2925,7 +2929,7 @@ msgstr ""
 #: css/ai-gradient.md
 #: css/alert.md
 #: css/alert.md
-#: css/banner.md
+#: css/alert.md
 #: css/button-set.md
 #: css/button.md
 #: css/button.md
@@ -2945,7 +2949,6 @@ msgstr ""
 #: css/menu.item.md
 #: css/menu.md
 #: css/menu.md
-#: css/menu.separator.md
 #: css/modal.body.md
 #: css/modal.footer.md
 #: css/modal.header.md
@@ -2956,13 +2959,12 @@ msgstr ""
 #: css/progress.md
 #: css/radio-input-group.md
 #: css/radio.md
-#: css/radio.md
 #: css/segmented-control.md
-#: css/simple-select.md
 #: css/simple-select.md
 #: css/tabs.md
 #: css/toggle-details.md
 #: css/toggle-group.md
+#: css/tooltip.md
 #: css/tooltip.md
 #: css/tray.md
 #, no-c-format
@@ -2971,7 +2973,6 @@ msgid "WCAG 2.2 1.4.3"
 msgstr ""
 
 #: css/ai-gradient.md
-#: css/banner.md
 #: css/button-set.md
 #: css/button.md
 #: css/heading.md
@@ -3005,18 +3006,6 @@ msgstr ""
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "<!-- pantoken-value-scope:css%2Falert.md -->\nThis component's CSS renders and works on its own; pair it with {{ptk_code_0}} to add the interactive behavior. Its {{ptk_code_1}} modifier is driven by that behavior. See the [modifier table below]({{ptk_code_2}})."
-msgstr ""
-
-#: css/alert.md
-#, no-c-format
-msgctxt "docs.api:prose"
-msgid "Settings saved."
-msgstr ""
-
-#: css/alert.md
-#, no-c-format
-msgctxt "docs.api:prose"
-msgid "\n  Settings saved.\n  "
 msgstr ""
 
 #: css/alert.md
@@ -3062,6 +3051,24 @@ msgstr ""
 #: css/alert.md
 #, no-c-format
 msgctxt "docs.api:prose"
+msgid "\n  An alert with text-color-base modifier for high contrast.\n"
+msgstr ""
+
+#: css/alert.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "\n  A warning alert with explicit base text color.\n"
+msgstr ""
+
+#: css/alert.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "\n  An inline alert with inline status icon.\n"
+msgstr ""
+
+#: css/alert.md
+#, no-c-format
+msgctxt "docs.api:prose"
 msgid "The alert's message content; may include a dismiss button."
 msgstr ""
 
@@ -3098,6 +3105,12 @@ msgstr ""
 #: css/alert.md
 #, no-c-format
 msgctxt "docs.api:prose"
+msgid "Render inline icon using the status color (for inline alerts)."
+msgstr ""
+
+#: css/alert.md
+#, no-c-format
+msgctxt "docs.api:prose"
 msgid "A non-elevated pastel surface for placement in document flow."
 msgstr ""
 
@@ -3105,6 +3118,18 @@ msgstr ""
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "Visually hidden but announced."
+msgstr ""
+
+#: css/alert.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Use base text color instead of on-color (high-contrast)."
+msgstr ""
+
+#: css/alert.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Use on-color text (default for floating)."
 msgstr ""
 
 #: css/alert.md
@@ -3174,7 +3199,22 @@ msgid "For an important message, add `role=\"alert\"` or an `aria-live` region s
 msgstr ""
 
 #: css/alert.md
-#: css/banner.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Rebrand (light), Canvas, Canvas High Contrast:"
+msgstr ""
+
+#: css/alert.md
+#: css/byline.md
+#: css/form-field.md
+#: css/link.md
+#: css/progress.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid " Elements must meet minimum color contrast ratio thresholds"
+msgstr ""
+
+#: css/alert.md
 #: css/base.md
 #: css/billboard.md
 #: css/breadcrumb.link.md
@@ -3191,6 +3231,8 @@ msgstr ""
 #: css/form-field-messages.md
 #: css/form-field.md
 #: css/gap.md
+#: css/global-nav-bar.item.md
+#: css/global-nav-bar.md
 #: css/icon.md
 #: css/in-place-edit.md
 #: css/input-group.md
@@ -3232,7 +3274,6 @@ msgid "forced-colors-focus-visible"
 msgstr ""
 
 #: css/alert.md
-#: css/banner.md
 #: css/base.md
 #: css/billboard.md
 #: css/breadcrumb.link.md
@@ -3249,6 +3290,8 @@ msgstr ""
 #: css/form-field-messages.md
 #: css/form-field.md
 #: css/gap.md
+#: css/global-nav-bar.item.md
+#: css/global-nav-bar.md
 #: css/icon.md
 #: css/in-place-edit.md
 #: css/input-group.md
@@ -3296,7 +3339,6 @@ msgstr ""
 #: css/drawer-layout.tray.md
 #: css/menu.group.md
 #: css/menu.md
-#: css/menu.separator.md
 #: css/modal.body.md
 #: css/modal.footer.md
 #: css/modal.header.md
@@ -3316,15 +3358,68 @@ msgstr ""
 #: css/alert.md
 #: css/button-set.md
 #: css/button.md
+#: css/checkbox.md
+#: css/link.md
+#: css/radio-input-group.md
+#: css/radio.md
+#: css/segmented-control.md
+#: css/text-area.md
+#: css/view.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Rebrand (light):"
+msgstr ""
+
+#: css/alert.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid " With prefers-contrast: less, one piece of text falls below the minimum contrast. The worst is \"Your session expires soon.\" at 2.74:1 (needs 4.5:1). Softer contrast is fine only while text stays readable."
+msgstr ""
+
+#: css/alert.md
+#: css/checkbox.md
+#: css/link.md
+#: css/link.md
+#: css/radio-input-group.md
+#: css/radio.md
+#: css/text-area.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Canvas:"
+msgstr ""
+
+#: css/alert.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid " With prefers-contrast: less, one piece of text falls below the minimum contrast. The worst is \"Your session expires soon.\" at 2.77:1 (needs 4.5:1). Softer contrast is fine only while text stays readable."
+msgstr ""
+
+#: css/alert.md
+#: css/link.md
+#: css/radio-input-group.md
+#: css/radio.md
+#: css/text-area.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Canvas High Contrast:"
+msgstr ""
+
+#: css/alert.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid " With prefers-contrast: less, one piece of text falls below the minimum contrast. The worst is \"Your session expires soon.\" at 1.48:1 (needs 4.5:1). Softer contrast is fine only while text stays readable."
+msgstr ""
+
+#: css/alert.md
+#: css/button-set.md
+#: css/button.md
 #: css/file-drop.md
 #: css/menu.group.md
 #: css/menu.item.md
 #: css/menu.md
-#: css/menu.separator.md
 #: css/number-input.md
 #: css/progress.md
 #: css/segmented-control.md
-#: css/simple-select.md
 #: css/tag.md
 #: css/toggle-details.md
 #: css/toggle-group.md
@@ -3335,8 +3430,13 @@ msgid "Not applicable"
 msgstr ""
 
 #: css/alert.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid " With prefers-contrast: more, one piece of text falls below the minimum contrast. The worst is \"Your session expires soon.\" at 2.74:1 (needs 4.5:1)."
+msgstr ""
+
+#: css/alert.md
 #: css/badge.md
-#: css/banner.md
 #: css/button-set.md
 #: css/button.md
 #: css/card.md
@@ -3370,7 +3470,6 @@ msgstr ""
 
 #: css/alert.md
 #: css/badge.md
-#: css/banner.md
 #: css/button-set.md
 #: css/button.md
 #: css/card.md
@@ -3943,6 +4042,7 @@ msgid "**Source:** [badge.css](https://github.com/thedannywahl/pantoken/blob/mai
 msgstr ""
 
 #: css/badge.md
+#: css/global-nav-bar.md
 #: css/side-nav-bar.md
 #, no-c-format
 msgctxt "docs.api:prose"
@@ -4072,7 +4172,13 @@ msgstr ""
 #: css/banner.md
 #, no-c-format
 msgctxt "docs.api:prose"
-msgid "**Size** controls padding and gap: `relaxed` (default) is roomier; `compact` tightens both.\n  **Color** sets the fill: bare (no modifier) is unfilled — border and icon only; `-color-violet`\n  and `-color-sea` add a tinted background plus a matching icon swatch."
+msgid "**Size** controls padding and gap: `relaxed` (default) is roomier; `compact` tightens both. **Color** sets the fill: bare (no modifier) is unfilled — border and icon only; `-color-violet` and `-color-sea` add a tinted background plus a matching icon swatch."
+msgstr ""
+
+#: css/banner.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "**Source:** [banner.css](https://github.com/thedannywahl/pantoken/blob/main/formats/components/src/components/banner/banner.css)"
 msgstr ""
 
 #: css/banner.md
@@ -4083,13 +4189,11 @@ msgid "@import \"@pantoken/plugin-custom-components/custom-components.css\";"
 msgstr ""
 
 #: css/banner.md
-#: css/banner.md
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "New feature"
 msgstr ""
 
-#: css/banner.md
 #: css/banner.md
 #, no-c-format
 msgctxt "docs.api:prose"
@@ -4100,12 +4204,6 @@ msgstr ""
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "OK"
-msgstr ""
-
-#: css/banner.md
-#, no-c-format
-msgctxt "docs.api:prose"
-msgid "\n  This is a sea-colored banner with compact spacing.\n"
 msgstr ""
 
 #: css/banner.md
@@ -4151,24 +4249,6 @@ msgid "Add `role=\"status\"` (or `role=\"alert\"` for urgent messages) so assist
 msgstr ""
 
 #: css/banner.md
-#: css/checkbox.md
-#: css/link.md
-#: css/link.md
-#: css/radio-input-group.md
-#: css/radio.md
-#: css/text-area.md
-#, no-c-format
-msgctxt "docs.api:prose"
-msgid "Canvas:"
-msgstr ""
-
-#: css/banner.md
-#, no-c-format
-msgctxt "docs.api:prose"
-msgid " With prefers-contrast: more, two pieces of text fall below the minimum contrast. The worst is \"Undo\" at 4.46:1 (needs 4.5:1)."
-msgstr ""
-
-#: css/banner.md
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "- [alert](/api/css/alert.md) — A non-dismissible, status-coloured counterpart for inline messages.\n- [close-button](/api/css/close-button.md) — The dismiss control a banner may include."
@@ -4184,12 +4264,6 @@ msgstr ""
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "**Source:** [base.css](https://github.com/thedannywahl/pantoken/blob/main/formats/components/src/rules/base/base.css)"
-msgstr ""
-
-#: css/base.md
-#, no-c-format
-msgctxt "docs.api:prose"
-msgid "A styled link on the base surface."
 msgstr ""
 
 #: css/base.md
@@ -4417,6 +4491,7 @@ msgid "**Source:** [breadcrumb.css](https://github.com/thedannywahl/pantoken/blo
 msgstr ""
 
 #: css/breadcrumb.md
+#: css/global-nav-bar.md
 #: css/side-nav-bar.md
 #, no-c-format
 msgctxt "docs.api:prose"
@@ -4504,19 +4579,7 @@ msgstr ""
 #: css/button-set.md
 #, no-c-format
 msgctxt "docs.api:prose"
-msgid "Its own chained modifiers (`-color-*`, `-size-*`, `-shape-*`, `-toggle`, `-condensed`,\n  `-without-background`, `-without-border`, `-display-block`) set a default for every child\n  `.instui-button` that doesn't carry its own modifier in that same category — a button's own\n  modifier class always wins over the group's default. `-icon-*` is always per-button; it's\n  never read from the group. Deprecated button aliases (`-ghost`, `-color-primary-inverse`)\n  aren't supported as group-level modifiers — use their canonical replacements\n  (`-color-tertiary`, `-on-color`) instead. Each join shows a single 1px seam in the buttons'\n  own border color (solid fills, whose border matches the fill, tint it with the label color).\n  `-without-seam` is group-only: it hides that seam so the buttons read as\n  one continuous control.\n  Put `-width-half` on an individual icon-only child button for a split-action\n  trigger with half the standard square width and the full button height."
-msgstr ""
-
-#: css/button-set.md
-#, no-c-format
-msgctxt "docs.api:prose"
-msgid "Left"
-msgstr ""
-
-#: css/button-set.md
-#, no-c-format
-msgctxt "docs.api:prose"
-msgid "Right"
+msgid "Its own chained modifiers (`-color-*`, `-size-*`, `-shape-*`, `-toggle`, `-condensed`, `-without-background`, `-without-border`, `-display-block`) set a default for every child `.instui-button` that doesn't carry its own modifier in that same category — a button's own modifier class always wins over the group's default. `-icon-*` is always per-button; it's never read from the group. Deprecated button aliases (`-ghost`, `-color-primary-inverse`) aren't supported as group-level modifiers — use their canonical replacements (`-color-tertiary`, `-on-color`) instead. Each join shows a single 1px seam in the buttons' own border color (solid fills, whose border matches the fill, tint it with the label color). `-without-seam` is group-only: it hides that seam so the buttons read as one continuous control. Put `-width-half` on an individual icon-only child button for a split-action trigger with half the standard square width and the full button height."
 msgstr ""
 
 #: css/button-set.md
@@ -4691,21 +4754,6 @@ msgid "All touch targets must be 24px large, or leave sufficient space"
 msgstr ""
 
 #: css/button-set.md
-#: css/button.md
-#: css/checkbox.md
-#: css/link.md
-#: css/radio-input-group.md
-#: css/radio.md
-#: css/radio.md
-#: css/segmented-control.md
-#: css/text-area.md
-#: css/view.md
-#, no-c-format
-msgctxt "docs.api:prose"
-msgid "Rebrand (light):"
-msgstr ""
-
-#: css/button-set.md
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid " With prefers-contrast: more, six pieces of text fall below the minimum contrast. The worst is \"Send\" at 1.64:1 (needs 4.5:1)."
@@ -4715,7 +4763,6 @@ msgstr ""
 #: css/button.md
 #: css/checkbox.md
 #: css/link.md
-#: css/menu.item.md
 #: css/radio-input-group.md
 #: css/radio.md
 #: css/segmented-control.md
@@ -4813,20 +4860,6 @@ msgid "**Source:** [button.css](https://github.com/thedannywahl/pantoken/blob/ma
 msgstr ""
 
 #: css/button.md
-#, no-c-format
-msgctxt "docs.api:prose"
-msgid "Primary"
-msgstr ""
-
-#: css/button.md
-#, no-c-format
-msgctxt "docs.api:prose"
-msgid "Secondary"
-msgstr ""
-
-#: css/button.md
-#: css/menu.md
-#: css/menu.md
 #: css/menu.md
 #: renderers/web-components/src/variables/button.md
 #, no-c-format
@@ -5146,16 +5179,6 @@ msgctxt "docs.api:prose"
 msgid "Give an informative hero image alt text and mark a decorative one with an empty `alt` or `aria-hidden=\"true\"`. Use a real heading element for the `.title` when it belongs in the document outline."
 msgstr ""
 
-#: css/byline.md
-#: css/form-field.md
-#: css/link.md
-#: css/progress.md
-#: css/radio.md
-#, no-c-format
-msgctxt "docs.api:prose"
-msgid " Elements must meet minimum color contrast ratio thresholds"
-msgstr ""
-
 #: css/calendar.day.md
 #, no-c-format
 msgctxt "docs.api:prose"
@@ -5346,18 +5369,6 @@ msgstr ""
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "@import \"@pantoken/components/components.css\";"
-msgstr ""
-
-#: css/card.md
-#, no-c-format
-msgctxt "docs.api:prose"
-msgid "Content card -nocard"
-msgstr ""
-
-#: css/card.md
-#, no-c-format
-msgctxt "docs.api:prose"
-msgid "Card title"
 msgstr ""
 
 #: css/card.md
@@ -6267,15 +6278,12 @@ msgid "**Source:** [form-field-messages.css](https://github.com/thedannywahl/pan
 msgstr ""
 
 #: css/form-field-messages.md
-#: css/form-field.md
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "We'll never share it."
 msgstr ""
 
 #: css/form-field-messages.md
-#: css/form-field.md
-#: css/form-field.md
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "Enter a valid email address."
@@ -6330,32 +6338,9 @@ msgid "<!-- pantoken-value-scope:css%2Fform-field.md -->\nThis component's CSS r
 msgstr ""
 
 #: css/form-field.md
-#: css/link.md
-#: css/modal.md
-#: css/simple-select.md
-#: css/toggle-details.md
-#, no-c-format, pantoken-verbatim
-msgctxt "docs.api:prose"
-msgid "-canvas-rce\n"
-msgstr ""
-
-#: css/form-field.md
-#: css/form-field.md
-#, no-c-format
-msgctxt "docs.api:prose"
-msgid "Email address"
-msgstr ""
-
-#: css/form-field.md
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "Display name"
-msgstr ""
-
-#: css/form-field.md
-#, no-c-format
-msgctxt "docs.api:prose"
-msgid "Use your work email."
 msgstr ""
 
 #: css/form-field.md
@@ -6467,20 +6452,6 @@ msgid "**Source:** [index.ts](https://github.com/thedannywahl/pantoken/blob/main
 msgstr ""
 
 #: css/gap.md
-#: css/layout.md
-#, no-c-format
-msgctxt "docs.api:prose"
-msgid "One"
-msgstr ""
-
-#: css/gap.md
-#: css/layout.md
-#, no-c-format
-msgctxt "docs.api:prose"
-msgid "Two"
-msgstr ""
-
-#: css/gap.md
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "Applies the medium spacing token as the gap."
@@ -6496,6 +6467,99 @@ msgstr ""
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "A gap changes spacing only; reading and focus order still follow the DOM. Keep gaps between interactive controls large enough to meet WCAG 2.5.8 target spacing."
+msgstr ""
+
+#: css/global-nav-bar.item.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "`.item` — A navigation entry (InstUI `GlobalNavBar.Item`); `-selected` marks the active one."
+msgstr ""
+
+#: css/global-nav-bar.item.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "The parent `global-nav-bar`'s `-minimized` modifier hides this member's `.label` — see `global-nav-bar`'s own doc for that modifier."
+msgstr ""
+
+#: css/global-nav-bar.item.md
+#: css/side-nav-bar.item.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "The active nav item."
+msgstr ""
+
+#: css/global-nav-bar.item.md
+#: css/side-nav-bar.item.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "The item's text label; hidden when the rail is minimized."
+msgstr ""
+
+#: css/global-nav-bar.item.md
+#: css/side-nav-bar.item.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Mark the active entry with `aria-current=\"page\"` as well as `-selected`, and keep an accessible name, such as `aria-label`, when the parent's `-minimized` modifier hides the `.label`."
+msgstr ""
+
+#: css/global-nav-bar.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "`.instui-global-nav-bar` — A vertical navigation rail of icon-over-label items, with a minimized icons-only mode."
+msgstr ""
+
+#: css/global-nav-bar.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Sets its own `gap` between nav items and its own `padding`; chaining a `-gap-*`/`-p-*`/`-padding-*` spacing utility modifier overrides those built-in values. See the `global-nav-bar.item` member for the individual nav entries."
+msgstr ""
+
+#: css/global-nav-bar.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "**Source:** [global-nav-bar.css](https://github.com/thedannywahl/pantoken/blob/main/formats/components/src/components/global-nav-bar/global-nav-bar.css)"
+msgstr ""
+
+#: css/global-nav-bar.md
+#: css/side-nav-bar.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Calendar"
+msgstr ""
+
+#: css/global-nav-bar.md
+#: css/side-nav-bar.md
+#: renderers/web-components/src/variables/drilldown.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Settings"
+msgstr ""
+
+#: css/global-nav-bar.md
+#: css/side-nav-bar.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Render a glyph icon in each nav item."
+msgstr ""
+
+#: css/global-nav-bar.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Collapse to icons only (labels hidden). @affects global-nav-bar.item — Hides the item's label."
+msgstr ""
+
+#: css/global-nav-bar.md
+#: css/side-nav-bar.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "The nav item's text label."
+msgstr ""
+
+#: css/global-nav-bar.md
+#: css/side-nav-bar.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Label the `<nav>` with aria-label so it's announced as a named navigation landmark."
 msgstr ""
 
 #: css/heading.md
@@ -6897,7 +6961,19 @@ msgstr ""
 #: css/index.md
 #, no-c-format
 msgctxt "docs.api:prose"
+msgid "A styled container for display of important information with two size variants and color themes."
+msgstr ""
+
+#: css/index.md
+#, no-c-format
+msgctxt "docs.api:prose"
 msgid "A dismissible, iconed message surface for page-level or in-context announcements."
+msgstr ""
+
+#: css/index.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "The opt-in global reset: `box-sizing`, the page surface, base text colour and font, `color-scheme`, and link defaults."
 msgstr ""
 
 #: css/index.md
@@ -7013,6 +7089,19 @@ msgstr ""
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "Field help and validation messages — hint, error, success, and screen-reader-only — with a glyph on error and success."
+msgstr ""
+
+#: css/index.md
+#: css/index.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "A vertical navigation rail of icon-over-label items, with a minimized icons-only mode."
+msgstr ""
+
+#: css/index.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "A navigation entry (InstUI `GlobalNavBar.Item`); `-selected` marks the active one."
 msgstr ""
 
 #: css/index.md
@@ -7162,6 +7251,12 @@ msgstr ""
 #: css/index.md
 #, no-c-format
 msgctxt "docs.api:prose"
+msgid "Typographic defaults for raw HTML — headings, paragraphs, lists, links, and code — applied automatically wherever it's imported (default `:where(body)`); pass `options.scope` to target a different content root instead (e.g. `.vp-doc`)."
+msgstr ""
+
+#: css/index.md
+#, no-c-format
+msgctxt "docs.api:prose"
 msgid "A native radio button and its label."
 msgstr ""
 
@@ -7193,12 +7288,6 @@ msgstr ""
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "A selectable segmented-control label and its native radio input."
-msgstr ""
-
-#: css/index.md
-#, no-c-format
-msgctxt "docs.api:prose"
-msgid "A vertical navigation rail of icon-over-label items, with a minimized icons-only mode."
 msgstr ""
 
 #: css/index.md
@@ -7451,18 +7540,6 @@ msgstr ""
 #: css/index.md
 #, no-c-format
 msgctxt "docs.api:prose"
-msgid "The opt-in global reset: `box-sizing`, the page surface, base text colour and font, `color-scheme`, and link defaults."
-msgstr ""
-
-#: css/index.md
-#, no-c-format
-msgctxt "docs.api:prose"
-msgid "Typographic defaults for raw HTML — headings, paragraphs, lists, links, and code — applied automatically wherever it's imported (default `:where(body)`); pass `options.scope` to target a different content root instead (e.g. `.vp-doc`)."
-msgstr ""
-
-#: css/index.md
-#, no-c-format
-msgctxt "docs.api:prose"
 msgid "Extra-small viewport width for phone-sized previews."
 msgstr ""
 
@@ -7652,12 +7729,6 @@ msgstr ""
 #: css/link.md
 #, no-c-format
 msgctxt "docs.api:prose"
-msgid "A styled link"
-msgstr ""
-
-#: css/link.md
-#, no-c-format
-msgctxt "docs.api:prose"
 msgid "Read the "
 msgstr ""
 
@@ -7720,15 +7791,6 @@ msgstr ""
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid " With prefers-contrast: more, three pieces of text fall below the minimum contrast. The worst is \"Settings unavailable on brand\" at 2.76:1 (needs 4.5:1)."
-msgstr ""
-
-#: css/link.md
-#: css/radio-input-group.md
-#: css/radio.md
-#: css/text-area.md
-#, no-c-format
-msgctxt "docs.api:prose"
-msgid "Canvas High Contrast:"
 msgstr ""
 
 #: css/link.md
@@ -8437,31 +8499,12 @@ msgstr ""
 
 #: css/menu.group.md
 #: css/menu.item.md
-#: css/menu.md
-#: css/menu.separator.md
+#: css/progress.md
+#: css/toggle-group.md
+#: css/tooltip.md
 #, no-c-format
 msgctxt "docs.api:prose"
-msgid "aria-valid-attr-value"
-msgstr ""
-
-#: css/menu.group.md
-#: css/menu.item.md
-#: css/menu.md
-#: css/menu.separator.md
-#: css/tabs.md
-#: css/toggle-details.md
-#, no-c-format, pantoken-verbatim
-msgctxt "docs.api:prose"
-msgid "WCAG 2.2 4.1.2"
-msgstr ""
-
-#: css/menu.group.md
-#: css/menu.item.md
-#: css/menu.md
-#: css/menu.separator.md
-#, no-c-format
-msgctxt "docs.api:prose"
-msgid "ARIA attributes must conform to valid values"
+msgid "dark-mode-contrast"
 msgstr ""
 
 #: css/menu.item.md
@@ -8501,11 +8544,9 @@ msgid "Checked actions use `menuitemcheckbox` or `menuitemradio` with `aria-chec
 msgstr ""
 
 #: css/menu.item.md
-#: css/progress.md
-#: css/simple-select.md
 #, no-c-format
 msgctxt "docs.api:prose"
-msgid "dark-mode-contrast"
+msgid "Rebrand (light), Rebrand (dark):"
 msgstr ""
 
 #: css/menu.item.md
@@ -8545,26 +8586,15 @@ msgid "<!-- pantoken-value-scope:css%2Fmenu.md -->\nThis component's CSS renders
 msgstr ""
 
 #: css/menu.md
-#: css/menu.md
-#: css/menu.md
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "Actions"
 msgstr ""
 
 #: css/menu.md
-#: css/menu.md
-#: css/menu.md
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "Edit"
-msgstr ""
-
-#: css/menu.md
-#: css/menu.md
-#, no-c-format
-msgctxt "docs.api:prose"
-msgid "Duplicate"
 msgstr ""
 
 #: css/menu.md
@@ -8746,31 +8776,6 @@ msgstr ""
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "<!-- pantoken-value-scope:css%2Fmodal.md -->\nThis component's CSS renders and works on its own; pair it with {{ptk_code_0}} to add the interactive behavior. See the [modifier table below]({{ptk_code_1}})."
-msgstr ""
-
-#: css/modal.md
-#, no-c-format
-msgctxt "docs.api:prose"
-msgid "Small"
-msgstr ""
-
-#: css/modal.md
-#, no-c-format
-msgctxt "docs.api:prose"
-msgid " — a narrow modal."
-msgstr ""
-
-#: css/modal.md
-#, no-c-format
-msgctxt "docs.api:prose"
-msgid "Close"
-msgstr ""
-
-#: css/modal.md
-#: css/toggle-details.md
-#, no-c-format, pantoken-verbatim
-msgctxt "docs.api:prose"
-msgid "-docs\n"
 msgstr ""
 
 #: css/modal.md
@@ -9505,9 +9510,10 @@ msgid "<!-- pantoken-value-scope:css%2Fprogress-circle.md -->\nThis component's 
 msgstr ""
 
 #: css/progress-circle.md
+#: css/progress.md
 #, no-c-format
 msgctxt "docs.api:prose"
-msgid "Score"
+msgid "\n  Uploading Document: "
 msgstr ""
 
 #: css/progress-circle.md
@@ -9682,12 +9688,6 @@ msgstr ""
 #: css/progress.md
 #, no-c-format
 msgctxt "docs.api:prose"
-msgid "Storage used"
-msgstr ""
-
-#: css/progress.md
-#, no-c-format
-msgctxt "docs.api:prose"
 msgid "Renders `.value` inside the track, aligned to its start, instead of beside it; style it for legibility over the meter colour."
 msgstr ""
 
@@ -9779,24 +9779,6 @@ msgstr ""
 #: css/prose.md
 #, no-c-format
 msgctxt "docs.api:prose"
-msgid "Release notes"
-msgstr ""
-
-#: css/prose.md
-#, no-c-format
-msgctxt "docs.api:prose"
-msgid "Body copy with a "
-msgstr ""
-
-#: css/prose.md
-#, no-c-format
-msgctxt "docs.api:prose"
-msgid "link"
-msgstr ""
-
-#: css/prose.md
-#, no-c-format
-msgctxt "docs.api:prose"
 msgid "The defaults keep headings in a logical order and links underlined with an interactive colour, so they don't rely on colour alone. Don't skip heading levels for visual size, and don't remove the link underline without another cue."
 msgstr ""
 
@@ -9825,13 +9807,11 @@ msgid "T-shirt size"
 msgstr ""
 
 #: css/radio-input-group.md
-#: css/radio-input-group.md
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid " Small"
 msgstr ""
 
-#: css/radio-input-group.md
 #: css/radio-input-group.md
 #, no-c-format
 msgctxt "docs.api:prose"
@@ -9839,16 +9819,9 @@ msgid " Medium"
 msgstr ""
 
 #: css/radio-input-group.md
-#: css/radio-input-group.md
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid " Large"
-msgstr ""
-
-#: css/radio-input-group.md
-#, no-c-format
-msgctxt "docs.api:prose"
-msgid "Sweatshirt size"
 msgstr ""
 
 #: css/radio-input-group.md
@@ -10004,7 +9977,7 @@ msgstr ""
 #: css/radio.md
 #, no-c-format
 msgctxt "docs.api:prose"
-msgid " With prefers-contrast: less, six pieces of text fall below the minimum contrast. The worst is \"Warning selected\" at 1.67:1 (needs 4.5:1). Softer contrast is fine only while text stays readable."
+msgid " With prefers-contrast: less, four pieces of text fall below the minimum contrast. The worst is \"Disabled unselected\" at 2.74:1 (needs 4.5:1). Softer contrast is fine only while text stays readable."
 msgstr ""
 
 #: css/radio.md
@@ -10028,7 +10001,7 @@ msgstr ""
 #: css/radio.md
 #, no-c-format
 msgctxt "docs.api:prose"
-msgid " With prefers-contrast: more, six pieces of text fall below the minimum contrast. The worst is \"Warning selected\" at 1.67:1 (needs 4.5:1)."
+msgid " With prefers-contrast: more, four pieces of text fall below the minimum contrast. The worst is \"Disabled unselected\" at 2.74:1 (needs 4.5:1)."
 msgstr ""
 
 #: css/radio.md
@@ -10143,18 +10116,6 @@ msgstr ""
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "**Source:** [index.ts](https://github.com/thedannywahl/pantoken/blob/main/formats/components/src/utilities/responsive/index.ts)"
-msgstr ""
-
-#: css/responsive.md
-#, no-c-format
-msgctxt "docs.api:prose"
-msgid "Hidden at or below the small breakpoint."
-msgstr ""
-
-#: css/responsive.md
-#, no-c-format
-msgctxt "docs.api:prose"
-msgid "Shown only at or above the small breakpoint."
 msgstr ""
 
 #: css/responsive.md
@@ -10796,18 +10757,6 @@ msgstr ""
 #: css/screen-reader-content.md
 #, no-c-format
 msgctxt "docs.api:prose"
-msgid "example"
-msgstr ""
-
-#: css/screen-reader-content.md
-#, no-c-format
-msgctxt "docs.api:prose"
-msgid "Opens in a new window"
-msgstr ""
-
-#: css/screen-reader-content.md
-#, no-c-format
-msgctxt "docs.api:prose"
 msgid "Keeps text in the accessibility tree for screen readers while removing it from the visual layout."
 msgstr ""
 
@@ -10820,7 +10769,7 @@ msgstr ""
 #: css/segmented-control.md
 #, no-c-format
 msgctxt "docs.api:prose"
-msgid "The selected segment uses a distinct active-item shadow; it does not match an existing\n  --instui-elevation-* composite. Overflow buttons use the upstream elevation3 component tokens."
+msgid "The selected segment uses a distinct active-item shadow; it does not match an existing --instui-elevation-* composite. Overflow buttons use the upstream elevation3 component tokens."
 msgstr ""
 
 #: css/segmented-control.md
@@ -10830,42 +10779,9 @@ msgid "<!-- pantoken-value-scope:css%2Fsegmented-control.md -->\nThis component'
 msgstr ""
 
 #: css/segmented-control.md
-#: css/side-nav-bar.md
-#: renderers/web-components/src/variables/drilldown.md
 #, no-c-format
 msgctxt "docs.api:prose"
-msgid "Settings"
-msgstr ""
-
-#: css/segmented-control.md
-#: renderers/web-components/src/variables/popover.md
-#, no-c-format
-msgctxt "docs.api:prose"
-msgid "Options"
-msgstr ""
-
-#: css/segmented-control.md
-#, no-c-format
-msgctxt "docs.api:prose"
-msgid "Config"
-msgstr ""
-
-#: css/segmented-control.md
-#, no-c-format
-msgctxt "docs.api:prose"
-msgid "Utilities"
-msgstr ""
-
-#: css/segmented-control.md
-#, no-c-format
-msgctxt "docs.api:prose"
-msgid "Preferences"
-msgstr ""
-
-#: css/segmented-control.md
-#, no-c-format
-msgctxt "docs.api:prose"
-msgid "Feature flags"
+msgid "Large padding around arrow icons in overflow buttons."
 msgstr ""
 
 #: css/segmented-control.md
@@ -10944,7 +10860,7 @@ msgstr ""
 #: css/segmented-control.segment.md
 #, no-c-format
 msgctxt "docs.api:prose"
-msgid "A `-icon-*` class may live on the label or its native input; the interaction helper\n  promotes input classes to the label so the shared glyph painter can render it."
+msgid "A `-icon-*` class may live on the label or its native input; the interaction helper promotes input classes to the label so the shared glyph painter can render it."
 msgstr ""
 
 #: css/segmented-control.segment.md
@@ -10963,24 +10879,6 @@ msgstr ""
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "The parent `side-nav-bar`'s `-minimized` modifier hides this member's `.label` — see `side-nav-bar`'s own doc for that modifier."
-msgstr ""
-
-#: css/side-nav-bar.item.md
-#, no-c-format
-msgctxt "docs.api:prose"
-msgid "The active nav item."
-msgstr ""
-
-#: css/side-nav-bar.item.md
-#, no-c-format
-msgctxt "docs.api:prose"
-msgid "The item's text label; hidden when the rail is minimized."
-msgstr ""
-
-#: css/side-nav-bar.item.md
-#, no-c-format
-msgctxt "docs.api:prose"
-msgid "Mark the active entry with `aria-current=\"page\"` as well as `-selected`, and keep an accessible name, such as `aria-label`, when the parent's `-minimized` modifier hides the `.label`."
 msgstr ""
 
 #: css/side-nav-bar.md
@@ -11004,31 +10902,7 @@ msgstr ""
 #: css/side-nav-bar.md
 #, no-c-format
 msgctxt "docs.api:prose"
-msgid "Calendar"
-msgstr ""
-
-#: css/side-nav-bar.md
-#, no-c-format
-msgctxt "docs.api:prose"
-msgid "Render a glyph icon in each nav item."
-msgstr ""
-
-#: css/side-nav-bar.md
-#, no-c-format
-msgctxt "docs.api:prose"
 msgid "Collapse to icons only (labels hidden). @affects side-nav-bar.item — Hides the item's label."
-msgstr ""
-
-#: css/side-nav-bar.md
-#, no-c-format
-msgctxt "docs.api:prose"
-msgid "The nav item's text label."
-msgstr ""
-
-#: css/side-nav-bar.md
-#, no-c-format
-msgctxt "docs.api:prose"
-msgid "Label the `<nav>` with aria-label so it's announced as a named navigation landmark."
 msgstr ""
 
 #: css/simple-select.md
@@ -11047,30 +10921,6 @@ msgstr ""
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "**Source:** [select.css](https://github.com/thedannywahl/pantoken/blob/main/formats/components/src/components/select/select.css)"
-msgstr ""
-
-#: css/simple-select.md
-#, no-c-format
-msgctxt "docs.api:prose"
-msgid "Choose a fruit…"
-msgstr ""
-
-#: css/simple-select.md
-#, no-c-format
-msgctxt "docs.api:prose"
-msgid "Apple"
-msgstr ""
-
-#: css/simple-select.md
-#, no-c-format
-msgctxt "docs.api:prose"
-msgid "Orange"
-msgstr ""
-
-#: css/simple-select.md
-#, no-c-format
-msgctxt "docs.api:prose"
-msgid "Pear"
 msgstr ""
 
 #: css/simple-select.md
@@ -11222,12 +11072,6 @@ msgstr ""
 #: css/spacing.md
 #, no-c-format
 msgctxt "docs.api:prose"
-msgid "Padded box with a large top margin."
-msgstr ""
-
-#: css/spacing.md
-#, no-c-format
-msgctxt "docs.api:prose"
 msgid "Applies medium padding on all sides."
 msgstr ""
 
@@ -11319,12 +11163,6 @@ msgstr ""
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "**Source:** [index.ts](https://github.com/thedannywahl/pantoken/blob/main/formats/components/src/utilities/stacking/index.ts)"
-msgstr ""
-
-#: css/stacking.md
-#, no-c-format
-msgctxt "docs.api:prose"
-msgid "Always on top."
 msgstr ""
 
 #: css/stacking.md
@@ -11587,54 +11425,9 @@ msgid "<!-- pantoken-value-scope:css%2Ftabs.md -->\nThis component's CSS renders
 msgstr ""
 
 #: css/tabs.md
-#: css/tabs.md
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "Overview"
-msgstr ""
-
-#: css/tabs.md
-#: renderers/web-components/src/variables/button.md
-#: renderers/web-components/src/variables/contextView.md
-#, no-c-format
-msgctxt "docs.api:prose"
-msgid "Details"
-msgstr ""
-
-#: css/tabs.md
-#, no-c-format
-msgctxt "docs.api:prose"
-msgid "Disabled"
-msgstr ""
-
-#: css/tabs.md
-#, no-c-format
-msgctxt "docs.api:prose"
-msgid "History"
-msgstr ""
-
-#: css/tabs.md
-#, no-c-format
-msgctxt "docs.api:prose"
-msgid "The Overview tab's content shows here."
-msgstr ""
-
-#: css/tabs.md
-#, no-c-format
-msgctxt "docs.api:prose"
-msgid "The Details tab's content shows here."
-msgstr ""
-
-#: css/tabs.md
-#, no-c-format
-msgctxt "docs.api:prose"
-msgid "The Disabled tab's content won't be visible."
-msgstr ""
-
-#: css/tabs.md
-#, no-c-format
-msgctxt "docs.api:prose"
-msgid "The History tab's content shows here."
 msgstr ""
 
 #: css/tabs.md
@@ -11701,6 +11494,13 @@ msgstr ""
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "selected-state-exposed"
+msgstr ""
+
+#: css/tabs.md
+#: css/toggle-details.md
+#, no-c-format, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "WCAG 2.2 4.1.2"
 msgstr ""
 
 #: css/tabs.md
@@ -12192,18 +11992,6 @@ msgstr ""
 #: css/toggle-details.md
 #, no-c-format
 msgctxt "docs.api:prose"
-msgid "What ships in this package?"
-msgstr ""
-
-#: css/toggle-details.md
-#, no-c-format
-msgctxt "docs.api:prose"
-msgid "\n  Class-based component styles, built from the Instructure tokens, plus a prose layer.\n"
-msgstr ""
-
-#: css/toggle-details.md
-#, no-c-format
-msgctxt "docs.api:prose"
 msgid "Keyboard support"
 msgstr ""
 
@@ -12343,12 +12131,6 @@ msgstr ""
 #: css/tooltip.md
 #, no-c-format
 msgctxt "docs.api:prose"
-msgid "Default placement is top"
-msgstr ""
-
-#: css/tooltip.md
-#, no-c-format
-msgctxt "docs.api:prose"
 msgid "Placement"
 msgstr ""
 
@@ -12416,12 +12198,6 @@ msgstr ""
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "**Source:** [transition.css](https://github.com/thedannywahl/pantoken/blob/main/formats/components/src/utilities/transition/transition.css)"
-msgstr ""
-
-#: css/transition.md
-#, no-c-format
-msgctxt "docs.api:prose"
-msgid "Animated content"
 msgstr ""
 
 #: css/transition.md
@@ -12639,18 +12415,6 @@ msgstr ""
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "<!-- pantoken-value-scope:css%2Ftruncate.md -->\nThis component ships no CSS of its own — its markup and behavior come entirely from {{ptk_code_0}}. Its {{ptk_code_1}} modifier is driven by that behavior. See the [modifier table below]({{ptk_code_2}})."
-msgstr ""
-
-#: css/truncate.md
-#, no-c-format
-msgctxt "docs.api:prose"
-msgid "This text is clamped to one line by default and ends in an ellipsis."
-msgstr ""
-
-#: css/truncate.md
-#, no-c-format
-msgctxt "docs.api:prose"
-msgid "This text is clamped to three lines and ends in an ellipsis."
 msgstr ""
 
 #: css/truncate.md
@@ -13808,6 +13572,12 @@ msgctxt "docs.api:prose"
 msgid "Standalone `badge` stylesheet — the prefixed CSS for the count-and-status badge, ready to ship as a `.css` file."
 msgstr ""
 
+#: formats/components/src/variables/bannerCss.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Standalone `banner` stylesheet — the prefixed CSS for the banner container, ready to ship as a `.css` file."
+msgstr ""
+
 #: formats/components/src/variables/billboardCss.md
 #, no-c-format
 msgctxt "docs.api:prose"
@@ -13926,6 +13696,18 @@ msgstr ""
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "The gap utility as a standalone, header-wrapped stylesheet."
+msgstr ""
+
+#: formats/components/src/variables/globalNavBarCss.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Standalone `globalNavBar` stylesheet — the prefixed CSS for the navigation rail, ready to ship as a `.css` file."
+msgstr ""
+
+#: formats/components/src/variables/globalNavBarItemCss.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Standalone `global-nav-bar.item` stylesheet."
 msgstr ""
 
 #: formats/components/src/variables/headingCss.md
@@ -14144,10 +13926,22 @@ msgctxt "docs.api:prose"
 msgid "Standalone `sideNavBar` stylesheet — the prefixed CSS for the navigation rail, ready to ship as a `.css` file."
 msgstr ""
 
+#: formats/components/src/variables/sideNavBarCss.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Use `globalNavBarCss` instead."
+msgstr ""
+
 #: formats/components/src/variables/sideNavBarItemCss.md
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "Standalone `side-nav-bar.item` stylesheet."
+msgstr ""
+
+#: formats/components/src/variables/sideNavBarItemCss.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Use `globalNavBarItemCss` instead."
 msgstr ""
 
 #: formats/components/src/variables/simpleSelectCss.md
@@ -22587,7 +22381,7 @@ msgstr ""
 #: renderers/tinymce/src/interfaces/CssDocEntry.md
 #, no-c-format
 msgctxt "docs.api:prose"
-msgid "The record name from `@component`/`@utility`/`@rule`/`@declaration`/`@name`, e.g. `button`."
+msgid "The canonical record name from a record-opening tag, e.g. `button`."
 msgstr ""
 
 #: renderers/tinymce/src/interfaces/CssDocEntry.md
@@ -22623,7 +22417,13 @@ msgstr ""
 #: renderers/tinymce/src/interfaces/CssDocEntry.md
 #, no-c-format
 msgctxt "docs.api:prose"
-msgid "The release stage from a modifier flag tag (`@alpha`/`@beta`/`@experimental`/`@internal`/`@public`)."
+msgid "Release maturity from `@stage` or a legacy maturity flag tag."
+msgstr ""
+
+#: renderers/tinymce/src/interfaces/CssDocEntry.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Audience visibility; absent means public."
 msgstr ""
 
 #: renderers/tinymce/src/interfaces/CssDocEntry.md
@@ -22647,7 +22447,7 @@ msgstr ""
 #: renderers/tinymce/src/interfaces/CssDocEntry.md
 #, no-c-format
 msgctxt "docs.api:prose"
-msgid "Set when this record carries a `@global` tag — its modifiers (and per-modifier `@global` flags)\napply to any component/layout/rule/declaration, not just this record's base class. Used during\nvalidation and consumption checks to resolve modifier matches globally."
+msgid "Set when this record carries a `@global` tag — its modifiers (and per-modifier `@global` flags)\napply to any record, not just this record's base class. Used during\nvalidation and consumption checks to resolve modifier matches globally."
 msgstr ""
 
 #: renderers/tinymce/src/interfaces/CssDocEntry.md
@@ -22738,6 +22538,12 @@ msgstr ""
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "`@example` blocks, verbatim."
+msgstr ""
+
+#: renderers/tinymce/src/interfaces/CssDocEntry.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Private `@example` labels, keyed by zero-based index into [examples](#examples)."
 msgstr ""
 
 #: renderers/tinymce/src/interfaces/CssDocEntry.md
@@ -23632,6 +23438,13 @@ msgstr ""
 #: renderers/web-components/src/variables/contextView.md
 #, no-c-format
 msgctxt "docs.api:prose"
+msgid "Details"
+msgstr ""
+
+#: renderers/web-components/src/variables/button.md
+#: renderers/web-components/src/variables/contextView.md
+#, no-c-format
+msgctxt "docs.api:prose"
 msgid "More about this item."
 msgstr ""
 
@@ -24071,6 +23884,12 @@ msgstr ""
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "`<instui-popover>` — a floating surface. Like `<instui-context-view>`, the host is a native\n`[popover]` (top layer + light-dismiss), so a light-DOM `popovertarget` button can toggle it by id.\nContent goes in the default slot."
+msgstr ""
+
+#: renderers/web-components/src/variables/popover.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Options"
 msgstr ""
 
 #: renderers/web-components/src/variables/progress.md

@@ -142,19 +142,39 @@ export const fooCss = foo.css;
 
 ## Example Audiences
 
-Use `-canvas-rce` for the HTML inserted when Include interactions is enabled, and
-`-canvas-rce-no-interactions` for its static counterpart when interactions are disabled. For
-example, a banner or alert can include a close button in the first example and omit it in the
-second. The selector reads the current setting at insertion time and leaves existing content alone.
-Components without the new flag retain their previous example fallback. Add `-docs` to examples
-that should also render in documentation; `-automatica11y` remains independent.
+Start a labeled example with `@example labels=[label]`. Use commas for shared examples. Put the
+caption and HTML fence on the following lines. Docs Markdown includes `docs` and unlabeled examples
+via `render.exampleFilters` in `cssdoc.jsonc`. Use `reference` for examples kept in the model but not
+routed to the docs site, Canvas, or the audit.
+
+Use `canvas-rce` for the example inserted in Canvas and `canvas-rce-no-interactions` for its static
+counterpart. When interactions are disabled, the editor prefers the static example. Otherwise it
+uses the `canvas-rce` example, falling back to the first unlabeled example if needed.
+
+````css
+/**
+ * @example labels=[canvas-rce,docs]
+ * Primary button
+ * ```html
+ * <button class="pfx-button">Primary</button>
+ * ```
+ *
+ * @example labels=[automatica11y]
+ * ```html
+ * <button class="pfx-button -toggle" aria-pressed="false">Toggle</button>
+ * ```
+ */
+````
+
+All fences in one `@example` share its labels. Use separate blocks if examples need different
+audiences. Preview controls such as `-nocard` affect presentation, not audience selection.
 
 ### Accessibility audit examples
 
 Every record in the component registry, including member records, has an explicit
-`@example -automatica11y` block. The audit never falls back to Canvas or docs examples. Keep a
+`@example labels=[automatica11y]` block. The audit never falls back to Canvas or docs examples. Keep a
 member's required parent markup in its example, and give controls real labels and ID relationships. Include only markup the component owns or requires: a bare container audits as an empty container with its accessible name, so findings on slotted content don't get attributed to it.
-Use fenced HTML so audience flags remain metadata, not visible page content.
+Use fenced HTML so each fixture's markup is unambiguous.
 
 Keep one audit example per record, with distinct visual variants together: canonical colors, sizes,
 and supported states. Use separate audit examples for modal dialogs and other overlays whose
@@ -182,8 +202,8 @@ The page suite runs both axe-core and IBM Equal Access against WCAG 2.2 AA, cond
 computed checks. Page fixtures expand dialogs, native popovers, and disclosures and focus tooltip
 triggers so their expanded surfaces are measured; npm fixtures preserve authored initial states
 for interaction checks.
-Audit-only fixture text stays verbatim in generated API sources and doesn't enter translation
-catalogs; add `-docs` only when the example should also appear in documentation.
+Audit-only fixtures are omitted from generated API Markdown and translation catalogs; include `docs`
+in the label list only when the example should also appear in documentation.
 Closed surfaces aren't evidence that their hidden contents passed. Findings are
 advisory; failed targets, missing fixtures/assets, and incomplete execution are errors.
 

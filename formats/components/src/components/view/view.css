@@ -59,13 +59,13 @@
  * @modifier -cursor-move — cursor: move.
  * @modifier -cursor-grab — cursor: grab.
  * @modifier -cursor-wait — cursor: wait.
- * @example -canvas-rce -docs
+ * @example labels=[canvas-rce,docs]
  * ```html
  * <div class="pfx-view -background-secondary -border-radius-medium -shadow-resting">
  *   A card-like surface.
  * </div>
  * ```
- * @example -automatica11y
+ * @example labels=[automatica11y]
  * ```html
  * <div class="pfx-view -background-primary --p-md">Primary surface.</div>
  * <div class="pfx-view -background-secondary --p-md">Secondary surface.</div>

@@ -13,7 +13,8 @@
  * - Use `<blockquote>` semantically for the quote
  * - Ensure attribution is clear and associated with the quote
  * - If using images, provide alt text
- * @example -automatica11y -nocard
+ * @example labels=[automatica11y]
+ * -nocard
  * ```html
  * <div class="pfx-testimonial" data-a11y-root>
  *   <blockquote class="pfx-content">

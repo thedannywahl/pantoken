@@ -12,10 +12,11 @@
  * @animation pantoken-spinner-rotate — Rotates the ring, or the AI star at the slower 2.25-second cadence.
  * @a11y Give the spinner role="status" and an aria-label so screen readers announce it as a live loading status.
  * @a11y With reduced motion enabled, the ring or AI glyph remains visible without rotation; keep the loading status and label while work is pending.
- * @example -canvas-rce -docs
+ * @example labels=[canvas-rce,docs]
  * ```html
  * <span class="pfx-spinner" role="status" aria-label="Loading"></span>
  * ```
+ * @example labels=[reference]
  * ### Inverse color -nocard
  * ```html
  * <div class="instui-view instui-card -background-primary-inverse">
@@ -23,7 +24,7 @@
  * </div>
  * ```
  * @demo self:spinner
- * @example -automatica11y
+ * @example labels=[automatica11y]
  * ```html
  * <div><span class="pfx-spinner -size-xs" role="status" aria-label="Loading thumbnail"></span></div>
  * <div><span class="pfx-spinner -size-sm" role="status" aria-label="Loading profile"></span></div>

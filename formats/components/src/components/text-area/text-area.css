@@ -13,12 +13,12 @@
  * @modifier -size-lg — Large.
  * @pseudo ::placeholder — The placeholder text, in a muted color that shifts on hover.
  * @cssstate disabled
- * @example -canvas-rce -docs
+ * @example labels=[canvas-rce,docs]
  * ```html
  * <textarea class="pfx-text-area" placeholder="Write a comment…"></textarea>
  * ```
  * @related text-input — The single-line counterpart with the same states and sizes.
- * @example -automatica11y
+ * @example labels=[automatica11y]
  * ```html
  * <p><label>Small comment <textarea class="pfx-text-area -size-sm" placeholder="Write a comment"></textarea></label></p>
  * <p><label>Medium comment <textarea class="pfx-text-area -size-md">A draft comment.</textarea></label></p>

@@ -13,7 +13,8 @@ and code examples remain unchanged.
 ## Generated values and translation identity
 
 Compatibility Markdown is formatted through `vite-plus/fmt` before it is written, so running
-`sync:compatibility` doesn't need a later table-format repair commit.
+`sync:compatibility` or rendering translated compatibility pages doesn't need a later table-format
+repair commit.
 
 Generated package compatibility paragraphs opt in with `<!-- pantoken-generated-values -->`.
 Their code spans and link destinations become stable `{{ptk_code_N}}` placeholders during
@@ -21,11 +22,27 @@ extraction and lookup. Generated JS callouts use the same contract; authored des
 examples, and prose numbers don't opt in automatically. CSS value/code columns and HTML `<code>`
 content already stay outside translatable units.
 
-The compatibility page opts in at whole-file level. Its generated tables normalize padding before
-keying, and the **Current format** column treats numeric version metadata as bindings while keeping
-its explanatory words translatable. Status, limitations, reasons, new rows, and grammatical changes
-still need translations. Generated API templates include a stable page scope so existing translations
-with different wording aren't merged just because their machine values differ.
+The compatibility page keeps its prose, table headers, and table rows in separate catalog units.
+Each row uses its table and code identifier as its scope, so a reordered or inserted row can't attach
+another row's translation to it. Its **Current format** column treats numeric version metadata as
+bindings while keeping explanatory words translatable. Version-only changes don't require a
+translation; changed claims and new wording do. Generated API templates include a stable page scope
+so existing translations with different wording aren't merged just because their machine values
+differ.
+
+To migrate reviewed whole-page compatibility entries to the row-based catalog without a provider:
+
+```sh
+vp exec node scripts/release/migrate-compatibility-translations.ts --write
+vp exec node scripts/release/migrate-compatibility-translations.ts --check
+```
+
+For catalogs whose old reviewed entry no longer matches the current source, both commands accept
+optional Git refs for the matching English source and historical catalogs, in that order. The
+migration preserves existing catalog bytes and doesn't approve fuzzy entries. It can reuse identical
+reviewed row wording within a table only when all matching translations agree. Ambiguous or genuinely
+new wording remains incomplete and requires review. Run `docs:values:render` after migration to
+refresh localized pages; `docs:values:check` reports stale pages without changing them.
 
 After generating English API pages, migrate existing catalogs without invoking a provider:
 
@@ -43,6 +60,8 @@ It preserves fuzzy/empty entries as incomplete and rejects conflicting or ambigu
 Review those entries separately; don't clear their flags just to pass the gate.
 The renderer also refuses incomplete generated templates. These commands never start an AI adapter.
 The normal API locale build refreshes compatibility guide values before rendering package pages.
+Compatibility units participate in the guide drift check, and guide translation reports missing
+reviewed units as a failure rather than letting an API build fail later.
 
 The guide translation command retries nonempty fuzzy generated templates through the configured
 provider. It validates restored placeholders before saving a response or clearing fuzzy flags.

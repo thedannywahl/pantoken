@@ -15,6 +15,10 @@
     "message": "A compact count or status badge.",
     "translate": "always"
   },
+  "a2uiCatalogDescriptions.PantokenBanner": {
+    "message": "A Pantoken banner component with safe text and child content.",
+    "translate": "always"
+  },
   "a2uiCatalogDescriptions.PantokenPill": {
     "message": "A compact status pill.",
     "translate": "always"
@@ -65,6 +69,14 @@
   },
   "a2uiCatalogDescriptions.PantokenSideNavBar": {
     "message": "A vertical navigation rail that can collapse to icon-only presentation.",
+    "translate": "always"
+  },
+  "a2uiCatalogDescriptions.PantokenGlobalNavBar": {
+    "message": "A Pantoken global-nav-bar component with safe text and child content.",
+    "translate": "always"
+  },
+  "a2uiCatalogDescriptions.PantokenGlobalNavBarItem": {
+    "message": "A Pantoken global-nav-bar-item component with safe text and child content.",
     "translate": "always"
   },
   "a2uiCatalogDescriptions.PantokenTreeBrowser": {
@@ -451,6 +463,14 @@
     "message": "Instructure Breadcrumb component styled with semantic .instui-breadcrumb classes.",
     "translate": "always"
   },
+  "registryBrowserItems.banner.title": {
+    "message": "Banner",
+    "translate": "always"
+  },
+  "registryBrowserItems.banner.description": {
+    "message": "Instructure Banner component styled with semantic .instui-banner classes.",
+    "translate": "always"
+  },
   "registryBrowserItems.billboard.title": {
     "message": "Billboard",
     "translate": "always"
@@ -529,6 +549,14 @@
   },
   "registryBrowserItems.side-nav-bar.description": {
     "message": "Instructure Side-nav-bar component styled with semantic .instui-side-nav-bar classes.",
+    "translate": "always"
+  },
+  "registryBrowserItems.global-nav-bar.title": {
+    "message": "Global-nav-bar",
+    "translate": "always"
+  },
+  "registryBrowserItems.global-nav-bar.description": {
+    "message": "Instructure Global-nav-bar component styled with semantic .instui-global-nav-bar classes.",
     "translate": "always"
   },
   "registryBrowserItems.tree-browser.title": {
@@ -705,14 +733,6 @@
   },
   "registryBrowserItems.view.description": {
     "message": "Instructure View component styled with semantic .instui-view classes.",
-    "translate": "always"
-  },
-  "registryBrowserItems.banner.title": {
-    "message": "Banner",
-    "translate": "always"
-  },
-  "registryBrowserItems.banner.description": {
-    "message": "Pantoken banner component styles and documented HTML structure.",
     "translate": "always"
   },
   "registryBrowserItems.agent-shell.title": {

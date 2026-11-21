@@ -14,6 +14,7 @@ const PACKAGES = [
   pkg("@pantoken/css", "formats/css"),
   pkg("@pantoken/components", "formats/components"),
   pkg("@pantoken/utils", "packages/utils"),
+  pkg("@pantoken/scaffold", "packages/scaffold"),
   pkg("@pantoken/logos", "plugins/pantoken/logos"),
   pkg("@pantoken/docs", "docs", true), // private → never requires a changeset
 ];
@@ -55,6 +56,15 @@ test("a shipped change alongside ignored files still requires the package", () =
   expect(
     requiredPublishable(["formats/css/src/index.ts", "formats/css/tests/x.test.ts"], PACKAGES),
   ).toEqual(["@pantoken/css"]);
+});
+
+test("README locale synchronization does not count as a scaffold release, but build scripts do", () => {
+  expect(
+    requiredPublishable(["packages/scaffold/scripts/sync-readme-locales.ts"], PACKAGES),
+  ).toEqual([]);
+  expect(requiredPublishable(["packages/scaffold/scripts/generate.ts"], PACKAGES)).toEqual([
+    "@pantoken/scaffold",
+  ]);
 });
 
 test("packageJsonNeedsRelease: dev-only field changes don't warrant a release", () => {

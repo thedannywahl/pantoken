@@ -5,9 +5,9 @@
  * @modifier -icon-* — Set the glyph token (`--pantoken-glyph`) and render it via the shared painter (for example `-icon-search`).
  * @pseudo ::before — The glyph itself: a 1em box masked from `--pantoken-glyph` and filled with `currentColor`.
  * @accessibility The glyph is decorative, so mark it `aria-hidden="true"`; give it a `role` or label only when the icon conveys meaning on its own.
- * @example
+ * @example labels=[canvas-rce]
  * <span class="instui-icon -icon-megaphone" aria-hidden="true"></span>
- * @example -automatica11y
+ * @example labels=[automatica11y]
  * ```html
  * <button data-a11y-root data-a11y-trigger>
  *   <span class="pfx-icon -icon-search" aria-hidden="true"></span>

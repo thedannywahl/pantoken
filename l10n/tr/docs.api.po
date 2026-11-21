@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: pantoken\n"
-"PO-Revision-Date: 2026-11-14 01:06+0000\n"
+"PO-Revision-Date: 2026-11-20 03:59+0000\n"
 "Last-Translator: pantoken localization engine\n"
 "Language-Team: pantoken\n"
 "MIME-Version: 1.0\n"
@@ -35044,3 +35044,109 @@ msgstr "numberInput"
 msgctxt "docs.api:text"
 msgid "componentElements"
 msgstr "componentElements"
+
+msgctxt "docs.api:prose"
+msgid "\n  An alert with text-color-base modifier for high contrast.\n"
+msgstr "\n  Yüksek kontrast için text-color-base modifier'ına sahip bir uyarı.\n"
+
+msgctxt "docs.api:prose"
+msgid "\n  A warning alert with explicit base text color.\n"
+msgstr "\n  Açıkça belirtilmiş temel metin rengine sahip bir uyarı bildirimi.\n"
+
+msgctxt "docs.api:prose"
+msgid "\n  An inline alert with inline status icon.\n"
+msgstr "\n  Satır içi durum simgesine sahip bir satır içi uyarı bildirimi.\n"
+
+msgctxt "docs.api:prose"
+msgid "Render inline icon using the status color (for inline alerts)."
+msgstr "Satır içi simgeyi durum rengini kullanarak oluştur (satır içi uyarılar)."
+
+msgctxt "docs.api:prose"
+msgid "Use base text color instead of on-color (high-contrast)."
+msgstr "on-color yerine temel metin rengini kullan (yüksek kontrast)."
+
+msgctxt "docs.api:prose"
+msgid "Use on-color text (default for floating)."
+msgstr "on-color metin rengini kullan (kayan bildirimler için varsayılan)."
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "**Source:** [banner.css](https://github.com/thedannywahl/pantoken/blob/main/formats/components/src/components/banner/banner.css)"
+msgstr "**Source:** [banner.css](https://github.com/thedannywahl/pantoken/blob/main/formats/components/src/components/banner/banner.css)"
+
+msgctxt "docs.api:prose"
+msgid "`.item` — A navigation entry (InstUI `GlobalNavBar.Item`); `-selected` marks the active one."
+msgstr "`.item` — Bir gezinme girdisi (InstUI `GlobalNavBar.Item`); `-selected` etkin olanı belirtir."
+
+msgctxt "docs.api:prose"
+msgid "The parent `global-nav-bar`'s `-minimized` modifier hides this member's `.label` — see `global-nav-bar`'s own doc for that modifier."
+msgstr "Üst öğenin `global-nav-bar`'s `-minimized` değiştiricisi bu üyenin `.label` özelliğini gizler — bu değiştirici için `global-nav-bar` belgesine bakın."
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "**Source:** [global-nav-bar.css](https://github.com/thedannywahl/pantoken/blob/main/formats/components/src/components/global-nav-bar/global-nav-bar.css)"
+msgstr "**Source:** [global-nav-bar.css](https://github.com/thedannywahl/pantoken/blob/main/formats/components/src/components/global-nav-bar/global-nav-bar.css)"
+
+msgctxt "docs.api:prose"
+msgid "`.instui-global-nav-bar` — A vertical navigation rail of icon-over-label items, with a minimized icons-only mode."
+msgstr "`.instui-global-nav-bar` — Simge ve etiketlerden oluşan dikey bir gezinme çubuğu; simgelerin tek başına gösterildiği küçültülmüş bir modu vardır."
+
+msgctxt "docs.api:prose"
+msgid "Sets its own `gap` between nav items and its own `padding`; chaining a `-gap-*`/`-p-*`/`-padding-*` spacing utility modifier overrides those built-in values. See the `global-nav-bar.item` member for the individual nav entries."
+msgstr "Gezinme öğeleri arasına kendi `gap` değerini, kendi `padding` değerini ayarlar; zincirleme kullanılan bir `-gap-*`/`-p-*`/`-padding-*` aralık yardımcı programı değiştiricisi bu yerleşik değerleri geçersiz kılar. Tek tek gezinme öğeleri için `global-nav-bar.item` üyesine bakın."
+
+msgctxt "docs.api:prose"
+msgid "Collapse to icons only (labels hidden). @affects global-nav-bar.item — Hides the item's label."
+msgstr "Yalnızca simgelere daralt (etiketler gizli). @affects global-nav-bar.item — Öğenin etiketini gizler."
+
+msgctxt "docs.api:prose"
+msgid "A styled container for display of important information with two size variants and color themes."
+msgstr "Önemli bilgilerin iki boyut seçeneği ve renk temasıyla gösterilmesi için biçimlendirilmiş bir kapsayıcı."
+
+msgctxt "docs.api:prose"
+msgid "A navigation entry (InstUI `GlobalNavBar.Item`); `-selected` marks the active one."
+msgstr "Bir gezinme girdisi (InstUI `GlobalNavBar.Item`); `-selected` etkin olanı işaretler."
+
+msgctxt "docs.api:prose"
+msgid "Large padding around arrow icons in overflow buttons."
+msgstr "Taşma düğmelerindeki ok simgelerinin çevresinde geniş iç boşluk."
+
+msgctxt "docs.api:prose"
+msgid "Standalone `banner` stylesheet — the prefixed CSS for the banner container, ready to ship as a `.css` file."
+msgstr "Bağımsız `banner` stil sayfası — banner kapsayıcısı için önekli CSS, `.css` dosyası olarak yayımlanmaya hazır."
+
+msgctxt "docs.api:prose"
+msgid "Standalone `globalNavBar` stylesheet — the prefixed CSS for the navigation rail, ready to ship as a `.css` file."
+msgstr "Tek başına `globalNavBar` stil sayfası — gezinme rayı için önekli CSS, `.css` dosyası olarak yayımlanmaya hazır."
+
+msgctxt "docs.api:prose"
+msgid "Standalone `global-nav-bar.item` stylesheet."
+msgstr "Bağımsız `global-nav-bar.item` stil sayfası."
+
+msgctxt "docs.api:prose"
+msgid "Use `globalNavBarCss` instead."
+msgstr "Bunun yerine `globalNavBarCss` kullanın."
+
+msgctxt "docs.api:prose"
+msgid "Use `globalNavBarItemCss` instead."
+msgstr "Bunun yerine `globalNavBarItemCss` kullanın."
+
+#, pantoken-verbatim
+msgctxt "docs.api:text"
+msgid "bannerCss"
+msgstr "bannerCss"
+
+#, pantoken-verbatim
+msgctxt "docs.api:text"
+msgid "globalNavBarCss"
+msgstr "globalNavBarCss"
+
+#, pantoken-verbatim
+msgctxt "docs.api:text"
+msgid "globalNavBarItemCss"
+msgstr "globalNavBarItemCss"
+
+#, pantoken-verbatim
+msgctxt "docs.api:text"
+msgid "global-nav-bar"
+msgstr "global-nav-bar"

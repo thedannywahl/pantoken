@@ -4,7 +4,9 @@ import { tmpdir } from "node:os";
 import { join } from "node:path";
 import { CssDocConfigFile } from "@cssdoc/config";
 import type { CssDocEntry, CssModifier } from "@cssdoc/core";
+import { emitCssApi } from "@cssdoc/typedoc";
 import type { Token } from "@pantoken/tokens";
+import { collectUnits, segmentMarkdown } from "./segment-markdown.ts";
 import {
   annotateJsRequirement,
   assertNoUnknownReferences,
@@ -46,6 +48,46 @@ beforeAll(() => {
 });
 afterAll(() => {
   rmSync(tmp, { recursive: true, force: true });
+});
+
+test("filters whole cssdoc examples before extracting page translations", () => {
+  const css = join(tmp, "example-audiences.css");
+  writeFileSync(
+    css,
+    [
+      "/**",
+      " * @component audience-test",
+      " * @example labels=[automatica11y]",
+      " * ### Audit caption",
+      " * ```html",
+      " * <button>Audit fixture</button>",
+      " * ```",
+      " * @example labels=[canvas-rce]",
+      " * ```html",
+      " * <button>Canvas only</button>",
+      " * ```",
+      " * @example labels=[canvas-rce,docs]",
+      " * ```html",
+      " * <button>Shared example</button>",
+      " * ```",
+      " * @example",
+      " * ```html",
+      " * <button>Unlabeled example</button>",
+      " * ```",
+      " */",
+      ".pfx-audience-test { color: red; }",
+    ].join("\n"),
+  );
+  const result = emitCssApi({
+    css: [css],
+    outputDirectory: tmp,
+    configFile: CssDocConfigFile.loadForFolder(repoRoot),
+  });
+  const page = readFileSync(result.pages[0]!, "utf8");
+  expect(page).not.toMatch(/Audit caption|Audit fixture|Canvas only|labels=\[/u);
+  expect(collectUnits(segmentMarkdown(page)).map(({ text }) => text)).toEqual(
+    expect.arrayContaining(["Shared example", "Unlabeled example"]),
+  );
 });
 
 describe("inferSyntax", () => {
@@ -335,7 +377,7 @@ describe("makeImportSnippet", () => {
     "/**\n * @component button\n */\n.button { color: red; }\n/**\n * @component card\n */\n.card {}\n";
   const UTILITIES_CSS = "/**\n * @utility view\n */\n.view { display: block; }\n";
   const PLUGIN_CSS =
-    "/**\n * @rule zstack\n */\n.zstack { z-index: 1; }\n/**\n * @component card\n */\n.card {}\n";
+    "/**\n * @component zstack\n */\n.zstack { z-index: 1; }\n/**\n * @component card\n */\n.card {}\n";
   const pluginDefs = [
     {
       pkg: "plugins/pantoken/stacking",
@@ -355,7 +397,7 @@ describe("makeImportSnippet", () => {
     );
 
   test("a plugin record's import wins", () => {
-    expect(build()(asEntry("zstack", "rule"))).toBe(
+    expect(build()(asEntry("zstack", "utility"))).toBe(
       '@import "@pantoken/plugin-stacking/stacking.css";',
     );
   });

@@ -21,7 +21,6 @@
  *
  * @module
  */
-import { resolveExampleTargets } from "@pantoken/utils/example-targets";
 
 /** Minimal renderer-rule shape this plugin needs, independent of any specific markdown-it major
  * version — vitepress bundles its own copy that can differ from the repo's catalog version. */
@@ -523,22 +522,6 @@ export function demoMarkdownIt(md: MarkdownItLike, options: DemoMarkdownItOption
         children?: Array<{ type: string; content: string }>;
       }>;
       migrateLiveExampleFlags(tokens);
-      const fences = tokens.flatMap((token, index) =>
-        token.type === "fence" && token.info.trimStart().startsWith("html")
-          ? [{ token, index }]
-          : [],
-      );
-      const selection = resolveExampleTargets(
-        fences.map(({ token }) => `\`\`\`${token.info}\n${token.content ?? ""}\n\`\`\``),
-      );
-      const docsExamples = new Set(selection.docs);
-
-      fences.forEach(({ token, index }, exampleIndex) => {
-        if (docsExamples.has(exampleIndex)) return;
-        if (!token.info.split(/\s+/u).includes("-noshow")) token.info += " -noshow";
-        const heading = findPreviousHeadingInline(tokens, index);
-        if (heading) hideHeading(tokens, heading.inlineIndex);
-      });
     });
   }
 

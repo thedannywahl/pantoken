@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: pantoken\n"
-"PO-Revision-Date: 2026-11-14 01:25+0000\n"
+"PO-Revision-Date: 2026-11-20 04:06+0000\n"
 "Last-Translator: pantoken localization engine\n"
 "Language-Team: pantoken\n"
 "MIME-Version: 1.0\n"
@@ -32710,3 +32710,109 @@ msgstr "numberInput"
 msgctxt "docs.api:text"
 msgid "componentElements"
 msgstr "componentElements"
+
+msgctxt "docs.api:prose"
+msgid "\n  An alert with text-color-base modifier for high contrast.\n"
+msgstr "\n  Rhybudd gyda addasydd lliw testun sylfaenol ar gyfer cyferbyniad uchel.\n"
+
+msgctxt "docs.api:prose"
+msgid "\n  A warning alert with explicit base text color.\n"
+msgstr "\n  Rhybudd gyda lliw testun sylfaenol penodol.\n"
+
+msgctxt "docs.api:prose"
+msgid "\n  An inline alert with inline status icon.\n"
+msgstr "\n  Rhybudd mewnlinellol gydag eicon statws mewnlinellol.\n"
+
+msgctxt "docs.api:prose"
+msgid "Render inline icon using the status color (for inline alerts)."
+msgstr "Rendro eicon mewnlinellol gan ddefnyddio lliw'r statws (ar gyfer rhybuddion mewnlinellol)."
+
+msgctxt "docs.api:prose"
+msgid "Use base text color instead of on-color (high-contrast)."
+msgstr "Defnyddio lliw testun sylfaenol yn lle lliw-ar (cyferbyniad uchel)."
+
+msgctxt "docs.api:prose"
+msgid "Use on-color text (default for floating)."
+msgstr "Defnyddio testun lliw-ar (diofyn ar gyfer rhybuddion sy'n arnofio)."
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "**Source:** [banner.css](https://github.com/thedannywahl/pantoken/blob/main/formats/components/src/components/banner/banner.css)"
+msgstr "**Source:** [banner.css](https://github.com/thedannywahl/pantoken/blob/main/formats/components/src/components/banner/banner.css)"
+
+msgctxt "docs.api:prose"
+msgid "`.item` — A navigation entry (InstUI `GlobalNavBar.Item`); `-selected` marks the active one."
+msgstr "`.item` — Cofnod llywio (InstUI `GlobalNavBar.Item`); `-selected` sy'n nodi'r un gweithredol."
+
+msgctxt "docs.api:prose"
+msgid "The parent `global-nav-bar`'s `-minimized` modifier hides this member's `.label` — see `global-nav-bar`'s own doc for that modifier."
+msgstr "Mae addasydd y rhiant `global-nav-bar`'s `-minimized` yn cuddio `.label` yr aelod hwn — gweler dogfen `global-nav-bar` ei hun am yr addasydd hwnnw."
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "**Source:** [global-nav-bar.css](https://github.com/thedannywahl/pantoken/blob/main/formats/components/src/components/global-nav-bar/global-nav-bar.css)"
+msgstr "**Source:** [global-nav-bar.css](https://github.com/thedannywahl/pantoken/blob/main/formats/components/src/components/global-nav-bar/global-nav-bar.css)"
+
+msgctxt "docs.api:prose"
+msgid "`.instui-global-nav-bar` — A vertical navigation rail of icon-over-label items, with a minimized icons-only mode."
+msgstr "`.instui-global-nav-bar` — Rheilffordd lywio fertigol o eitemau eicon uwchben label, gyda modd lleihau eiconau'n unig."
+
+msgctxt "docs.api:prose"
+msgid "Sets its own `gap` between nav items and its own `padding`; chaining a `-gap-*`/`-p-*`/`-padding-*` spacing utility modifier overrides those built-in values. See the `global-nav-bar.item` member for the individual nav entries."
+msgstr "Mae'n gosod ei `gap` ei hun rhwng eitemau llywio a'i `padding` ei hun; mae cadwyno addasydd `-gap-*`/`-p-*`/`-padding-*` yn trosysgrifo'r gwerthoedd adeiledig hynny. Gweler yr aelod `global-nav-bar.item` ar gyfer yr eitemau llywio unigol."
+
+msgctxt "docs.api:prose"
+msgid "Collapse to icons only (labels hidden). @affects global-nav-bar.item — Hides the item's label."
+msgstr "Lleihau i eiconau yn unig (labelau wedi'u cuddio). @affects global-nav-bar.item — Yn cuddio label yr eitem."
+
+msgctxt "docs.api:prose"
+msgid "A styled container for display of important information with two size variants and color themes."
+msgstr "Cynhwysydd wedi'i steilio ar gyfer arddangos gwybodaeth bwysig, gyda dau amrywiad maint a themâu lliw."
+
+msgctxt "docs.api:prose"
+msgid "A navigation entry (InstUI `GlobalNavBar.Item`); `-selected` marks the active one."
+msgstr "Eitem lywio (InstUI `GlobalNavBar.Item`); `-selected` sy'n nodi'r un gweithredol."
+
+msgctxt "docs.api:prose"
+msgid "Large padding around arrow icons in overflow buttons."
+msgstr "Padin mawr o amgylch eiconau saeth mewn botymau gorlif."
+
+msgctxt "docs.api:prose"
+msgid "Standalone `banner` stylesheet — the prefixed CSS for the banner container, ready to ship as a `.css` file."
+msgstr "Dalen arddull annibynnol `banner` — y CSS â rhagddodiad ar gyfer cynhwysydd y faner, yn barod i'w ddefnyddio fel ffeil `.css`."
+
+msgctxt "docs.api:prose"
+msgid "Standalone `globalNavBar` stylesheet — the prefixed CSS for the navigation rail, ready to ship as a `.css` file."
+msgstr "Taflen arddull annibynnol `globalNavBar` — y CSS â rhagddodiad ar gyfer y rheilen lywio, yn barod i'w chyhoeddi fel ffeil `.css`."
+
+msgctxt "docs.api:prose"
+msgid "Standalone `global-nav-bar.item` stylesheet."
+msgstr "Taflen arddull annibynnol `global-nav-bar.item`."
+
+msgctxt "docs.api:prose"
+msgid "Use `globalNavBarCss` instead."
+msgstr "Defnyddiwch `globalNavBarCss` yn lle hynny."
+
+msgctxt "docs.api:prose"
+msgid "Use `globalNavBarItemCss` instead."
+msgstr "Defnyddiwch `globalNavBarItemCss` yn lle hynny."
+
+#, pantoken-verbatim
+msgctxt "docs.api:text"
+msgid "bannerCss"
+msgstr "bannerCss"
+
+#, pantoken-verbatim
+msgctxt "docs.api:text"
+msgid "globalNavBarCss"
+msgstr "globalNavBarCss"
+
+#, pantoken-verbatim
+msgctxt "docs.api:text"
+msgid "globalNavBarItemCss"
+msgstr "globalNavBarItemCss"
+
+#, pantoken-verbatim
+msgctxt "docs.api:text"
+msgid "global-nav-bar"
+msgstr "global-nav-bar"

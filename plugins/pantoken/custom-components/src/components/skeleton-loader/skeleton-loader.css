@@ -24,7 +24,7 @@
  * @a11y Mark the decorative loader aria-hidden="true". Put aria-busy on the parent content region,
  *   with an initially empty status and alert outside that region. Use initSkeletonLoading from the
  *   interactions package to announce the parent's loading state. Shapes must not receive focus.
- * @example
+ * @example labels=[canvas-rce]
  * ```html
  * <div style="display: flex; align-items: center; gap: 1rem; max-inline-size: 24rem">
  *   <div class="pfx-skeleton-loader -type-avatar" aria-hidden="true">
@@ -38,7 +38,8 @@
  *   </div>
  * </div>
  * ```
- * @example -automatica11y -nocard
+ * @example labels=[automatica11y]
+ * -nocard
  * ```html
  * <div class="pfx-skeleton-loading">
  * <section aria-label="Profile details" aria-busy="true" data-skeleton-region data-a11y-root>

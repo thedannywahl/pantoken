@@ -15,7 +15,7 @@ import {
 import { ns, wrap, type ComponentOptions } from "./helpers.ts";
 import { withResponsiveTableLayout } from "./table-layout.ts";
 
-type CssRecordKind = "component" | "utility" | "rule" | "declaration";
+type CssRecordKind = "component" | "utility" | "declaration" | "layout";
 
 /** A resolved record: `rules(prefix)` emits the doc block plus CSS body for the aggregator, and `css(options)` returns the standalone header-wrapped sheet. */
 export interface Definition {
@@ -94,6 +94,6 @@ export const defineComponent = (input: DefineInput): Definition => make("compone
 /** Build a utility record from its name and CSS builder. */
 export const defineUtility = (input: DefineInput): Definition => make("utility", input);
 /** Build a rule record from its name and CSS builder. */
-export const defineRule = (input: DefineInput): Definition => make("rule", input);
+export const defineRule = (input: DefineInput): Definition => make("component", input);
 /** Build a declaration record from its name and CSS builder. */
 export const defineDeclaration = (input: DefineInput): Definition => make("declaration", input);

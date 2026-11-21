@@ -14,7 +14,7 @@ test("mask: emits exactly one well-formed cssdoc record with no token drift", ()
 test("mask docs preserve loading feedback and the audit isolates every empty mask surface", () => {
   const [record] = parseCssDocs(maskCss({ prefix: "instui" }));
   expect(record.examples).toHaveLength(4);
-  const targets = resolveExampleTargets(record.examples);
+  const targets = resolveExampleTargets(record);
   for (const [index, example] of record.examples.entries()) {
     const window = new Window();
     try {

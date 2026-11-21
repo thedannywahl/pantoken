@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: pantoken\n"
-"PO-Revision-Date: 2026-10-30 22:39+0000\n"
+"PO-Revision-Date: 2026-11-20 13:13+0000\n"
 "Last-Translator: pantoken localization engine\n"
 "Language-Team: pantoken\n"
 "Language: und\n"
@@ -1682,39 +1682,36 @@ msgid ""
 "\n"
 "| Token | Deprecated in | Removed in | Replacement |\n"
 "| --- | --- | --- | --- |\n"
-"| {{ptk_code_194}} | {{ptk_code_195}} | {{ptk_code_196}} | {{ptk_code_197}} "
+"| {{ptk_code_194}} | {{ptk_code_195}} | {{ptk_code_196}} | _frozen value_ |\n"
+"| {{ptk_code_197}} | {{ptk_code_198}} | {{ptk_code_199}} | _frozen value_ |\n"
+"| {{ptk_code_200}} | {{ptk_code_201}} | {{ptk_code_202}} | _frozen value_ |\n"
+"| {{ptk_code_203}} | {{ptk_code_204}} | {{ptk_code_205}} | _frozen value_ |\n"
+"| {{ptk_code_206}} | {{ptk_code_207}} | {{ptk_code_208}} | {{ptk_code_209}} "
 "|\n"
-"| {{ptk_code_198}} | {{ptk_code_199}} | {{ptk_code_200}} | {{ptk_code_201}} "
-"|\n"
-"| {{ptk_code_202}} | {{ptk_code_203}} | {{ptk_code_204}} | _frozen value_ |\n"
-"| {{ptk_code_205}} | {{ptk_code_206}} | {{ptk_code_207}} | _frozen value_ |\n"
-"| {{ptk_code_208}} | {{ptk_code_209}} | {{ptk_code_210}} | _frozen value_ |\n"
-"| {{ptk_code_211}} | {{ptk_code_212}} | {{ptk_code_213}} | {{ptk_code_214}} "
-"|\n"
-"| {{ptk_code_215}} | {{ptk_code_216}} | {{ptk_code_217}} | _frozen value_ |\n"
-"| {{ptk_code_218}} | {{ptk_code_219}} | {{ptk_code_220}} | _frozen value_ |\n"
-"| {{ptk_code_221}} | {{ptk_code_222}} | {{ptk_code_223}} | _frozen value_ |\n"
-"| {{ptk_code_224}} | {{ptk_code_225}} | {{ptk_code_226}} | _frozen value_ |\n"
-"| {{ptk_code_227}} | {{ptk_code_228}} | {{ptk_code_229}} | _frozen value_ |\n"
-"| {{ptk_code_230}} | {{ptk_code_231}} | {{ptk_code_232}} | _frozen value_ |\n"
+"| {{ptk_code_210}} | {{ptk_code_211}} | {{ptk_code_212}} | _frozen value_ |\n"
+"| {{ptk_code_213}} | {{ptk_code_214}} | {{ptk_code_215}} | _frozen value_ |\n"
+"| {{ptk_code_216}} | {{ptk_code_217}} | {{ptk_code_218}} | _frozen value_ |\n"
+"| {{ptk_code_219}} | {{ptk_code_220}} | {{ptk_code_221}} | _frozen value_ |\n"
+"| {{ptk_code_222}} | {{ptk_code_223}} | {{ptk_code_224}} | _frozen value_ |\n"
+"| {{ptk_code_225}} | {{ptk_code_226}} | {{ptk_code_227}} | _frozen value_ |\n"
 msgstr ""
 "# Compatibiliteit\n"
 "\n"
 "<!-- Gegenereerd door `vp run sync:compatibility`. Niet handmatig bewerken; "
 "voer de writer uit en commit. -->\n"
 "\n"
-"Deze pagina legt vast uit welke Instructure UI-bronnen deze pantoken-build "
-"gegevens haalt en welke consumers ze gebruiken. Doelversies worden "
-"afzonderlijk bijgehouden: alleen geverifieerde releases worden vermeld, en "
-"releases nieuwer dan de laatst geverifieerde release moeten worden "
-"beoordeeld. Genereer de pagina opnieuw met `vp run sync:compatibility`; de "
-"controle `gate:compatibility` mislukt als de pagina afwijkt.\n"
+"Deze pagina vermeldt van welke Instructure UI-bronnen deze pantoken-build "
+"gebruikmaakt en welke afnemers ze gebruiken. Doelversies worden afzonderlijk "
+"behandeld: alleen geverifieerde releases worden genoemd; releases nieuwer "
+"dan de laatst geverifieerde release moeten worden beoordeeld. Genereer de "
+"pagina opnieuw met `vp run sync:compatibility`; de controle "
+"`gate:compatibility` mislukt als de pagina afwijkt.\n"
 "\n"
 "## Upstream-bronnen\n"
 "\n"
-"De designtokens, aangepaste Instructure-iconen en Lucide-catalogus leveren "
-"de opgeloste token-IR die elk pakket gebruikt. De React-pakketten van "
-"`@instructure/ui-*` worden alleen door `@pantoken/react-markdown` gebruikt.\n"
+"De designtokens, aangepaste Instructure-pictogrammen en de Lucide-catalogus "
+"voeden de opgeloste token-IR die elk pakket gebruikt. De React-pakketten "
+"`@instructure/ui-*` worden alleen gebruikt door `@pantoken/react-markdown`.\n"
 "\n"
 "| Pakket | Levert aan | Bereik | Opgelost |\n"
 "| --- | --- | --- | --- |\n"
@@ -1730,16 +1727,16 @@ msgstr ""
 "| {{ptk_code_27}} | instui-react | {{ptk_code_28}} | {{ptk_code_29}} |\n"
 "| {{ptk_code_30}} | instui-react | {{ptk_code_31}} | {{ptk_code_32}} |\n"
 "\n"
-"## Consumers\n"
+"## Afnemers\n"
 "\n"
-"| Pakket | Pad | Beheerd door | Doel | Huidige indeling | Hostversies |\n"
+"| Pakket | Pad | Geregeld door | Doel | Huidig formaat | Hostversies |\n"
 "| --- | --- | --- | --- | --- | --- |\n"
 "| {{ptk_code_33}} | {{ptk_code_34}} | token-ir | Next.js | Productiebuild "
-"transpileert en rendert Instructure UI {{ptk_code_35}} met React "
+"die Instructure UI {{ptk_code_35}} transpileert en weergeeft met React "
 "{{ptk_code_36}} | {{ptk_code_37}} tot en met {{ptk_code_38}} (geverifieerd) "
 "|\n"
 "| {{ptk_code_39}} | {{ptk_code_40}} | token-ir | Panda CSS | Extractie van "
-"Panda-tokenhulpmiddelen uit de Pantoken-preset | {{ptk_code_41}} tot en met "
+"Panda-tokens uit de Pantoken-preset | {{ptk_code_41}} tot en met "
 "{{ptk_code_42}} (geverifieerd) |\n"
 "| {{ptk_code_43}} | {{ptk_code_44}} | token-ir | PostCSS | — | "
 "{{ptk_code_45}} tot en met {{ptk_code_46}} (geverifieerd) |\n"
@@ -1747,12 +1744,12 @@ msgstr ""
 "{{ptk_code_49}} tot en met {{ptk_code_50}} (geverifieerd) |\n"
 "| {{ptk_code_51}} | {{ptk_code_52}} | token-ir | Vite | — | {{ptk_code_53}} "
 "tot en met {{ptk_code_54}} (geverifieerd) |\n"
-"| {{ptk_code_55}} | {{ptk_code_56}} | token-ir | webpack | Gegenereerd CSS-"
-"buildasset met tokens | {{ptk_code_57}} tot en met {{ptk_code_58}} "
-"(geverifieerd) |\n"
+"| {{ptk_code_55}} | {{ptk_code_56}} | token-ir | webpack | Gegenereerd token-"
+"CSS-buildasset | {{ptk_code_57}} tot en met {{ptk_code_58}} (geverifieerd) "
+"|\n"
 "| {{ptk_code_59}} | {{ptk_code_60}} | token-ir | Android-resources | "
 "Gegenereerde kleuren, afmetingen en VectorDrawable worden gecompileerd en "
-"gekoppeld met Android-buildtools | {{ptk_code_61}} tot en met "
+"gekoppeld met Android-build-tools | {{ptk_code_61}} tot en met "
 "{{ptk_code_62}} (geverifieerd) |\n"
 "| {{ptk_code_63}} | {{ptk_code_64}} | token-ir | Canvas Theme Editor | — | "
 "Nog niet geverifieerd |\n"
@@ -1760,7 +1757,7 @@ msgstr ""
 "Gegenereerd Color- en Dp-tokenobject wordt gecompileerd in een Android-"
 "bibliotheekmodule | {{ptk_code_67}} tot en met {{ptk_code_68}} "
 "(geverifieerd) |\n"
-"| {{ptk_code_69}} | {{ptk_code_70}} | token-ir | Drupal-thema's | Drupal "
+"| {{ptk_code_69}} | {{ptk_code_70}} | token-ir | Drupal-thema's | Drupal-"
 "core vindt het gegenereerde thema; InfoParser en Symfony YAML accepteren de "
 "metadata | {{ptk_code_71}} tot en met {{ptk_code_72}} (geverifieerd) |\n"
 "| {{ptk_code_73}} | {{ptk_code_74}} | token-ir | HTML-e-mail | — | Nog niet "
@@ -1770,7 +1767,7 @@ msgstr ""
 "| {{ptk_code_77}} | {{ptk_code_78}} | token-ir | Hugo | Hugo Pipes bouwt het "
 "Pantoken-tokenstylesheet | {{ptk_code_79}} tot en met {{ptk_code_80}} "
 "(geverifieerd) |\n"
-"| {{ptk_code_81}} | {{ptk_code_82}} | token-ir | Jekyll | Jekyll bouwt de "
+"| {{ptk_code_81}} | {{ptk_code_82}} | token-ir | Jekyll | Jekyll bouwt het "
 "gegenereerde Sass-partial in de site-CSS | {{ptk_code_83}} tot en met "
 "{{ptk_code_84}} (geverifieerd) |\n"
 "| {{ptk_code_85}} | {{ptk_code_86}} | token-ir | Rust-GUI-frameworks | "
@@ -1780,15 +1777,15 @@ msgstr ""
 "| {{ptk_code_89}} | {{ptk_code_90}} | token-ir | Swift iOS | UIKit SwiftPM-"
 "module, runtime-tokencontrole en gecompileerde Icons.xcassets | Geteste "
 "omgeving: {{ptk_code_91}}. Runtime alleen getest op iOS Simulator 27.0; dit "
-"stelt geen minimale iOS 15-runtimeversie vast. Er wordt geen claim gedaan "
-"voor watchOS of tvOS. |\n"
+"stelt geen minimale iOS 15-runtimeversie vast. Geen claim voor watchOS of "
+"tvOS. |\n"
 "| {{ptk_code_92}} | {{ptk_code_93}} | token-ir | Vanilla Forums | — | Nog "
 "niet geverifieerd |\n"
 "| {{ptk_code_94}} | {{ptk_code_95}} | token-ir | WordPress-blokthema's | "
 "theme.json {{ptk_code_96}} | {{ptk_code_97}} tot en met {{ptk_code_98}} "
 "(geverifieerd) |\n"
-"| {{ptk_code_99}} | {{ptk_code_100}} | token-ir | Angular | Compilatie van "
-"CUSTOM_ELEMENTS_SCHEMA-templates (Angular {{ptk_code_101}} / TS "
+"| {{ptk_code_99}} | {{ptk_code_100}} | token-ir | Angular | "
+"CUSTOM_ELEMENTS_SCHEMA-sjablooncompilatie (Angular {{ptk_code_101}} / TS "
 "{{ptk_code_102}}; Angular {{ptk_code_103}}, {{ptk_code_104}} en "
 "{{ptk_code_105}} / TS {{ptk_code_106}}) | {{ptk_code_107}} tot en met "
 "{{ptk_code_108}} (geverifieerd) |\n"
@@ -1800,7 +1797,7 @@ msgstr ""
 "variabelen: body + primaire knop | {{ptk_code_117}} tot en met "
 "{{ptk_code_118}} (geverifieerd) |\n"
 "| {{ptk_code_119}} | {{ptk_code_120}} | token-ir | Emotion CSS-in-JS | "
-"ThemeProvider SSR genereert de Pantoken-tokenvariabele | {{ptk_code_121}} "
+"ThemeProvider SSR geeft de Pantoken-tokenvariabele weer | {{ptk_code_121}} "
 "tot en met {{ptk_code_122}} (geverifieerd) |\n"
 "| {{ptk_code_123}} | {{ptk_code_124}} | token-ir | Docusaurus theme-classic "
 "| Infima CSS-variabelenbrug: primair en achtergrond | {{ptk_code_125}} tot "
@@ -1811,7 +1808,7 @@ msgstr ""
 "| {{ptk_code_131}} | {{ptk_code_132}} | token-ir | markdown-it | — | "
 "{{ptk_code_133}} tot en met {{ptk_code_134}} (geverifieerd) |\n"
 "| {{ptk_code_135}} | {{ptk_code_136}} | token-ir | Mintlify docs.json | De "
-"officiële CLI valideert gegenereerde kleuren en de configuratie van het "
+"officiële CLI valideert de gegenereerde kleuren en de configuratie van het "
 "achtergrondthema | {{ptk_code_137}} tot en met {{ptk_code_138}} "
 "(geverifieerd) |\n"
 "| {{ptk_code_139}} | {{ptk_code_140}} | token-ir | Material UI | Concrete "
@@ -1820,11 +1817,11 @@ msgstr ""
 "{{ptk_code_146}} (geverifieerd) |\n"
 "| {{ptk_code_147}} | {{ptk_code_148}} | token-ir | Pendo | — | Nog niet "
 "geverifieerd |\n"
-"| {{ptk_code_149}} | {{ptk_code_150}} | token-ir | React | SSR-gerenderd "
-"aangepast Icon-element en tokenfallback | {{ptk_code_151}} tot en met "
-"{{ptk_code_152}} (geverifieerd) |\n"
+"| {{ptk_code_149}} | {{ptk_code_150}} | token-ir | React | SSR-weergegeven "
+"aangepast Icon-element en terugvalwaarde voor tokens | {{ptk_code_151}} tot "
+"en met {{ptk_code_152}} (geverifieerd) |\n"
 "| {{ptk_code_153}} | {{ptk_code_154}} | instui-react | react-markdown | SSR-"
-"gerenderde InstUI-kop, icoon en kleurstaal met React {{ptk_code_155}} | "
+"weergegeven InstUI-kop, pictogram en kleurstaal met React {{ptk_code_155}} | "
 "{{ptk_code_156}} tot en met {{ptk_code_157}} (geverifieerd) |\n"
 "| {{ptk_code_158}} | {{ptk_code_159}} | token-ir | React Native | — | Nog "
 "niet geverifieerd |\n"
@@ -1838,22 +1835,22 @@ msgstr ""
 "Storybook ThemeVars-constructor accepteert lichte en donkere Pantoken-"
 "thema's | {{ptk_code_171}} tot en met {{ptk_code_172}} (geverifieerd) |\n"
 "| {{ptk_code_173}} | {{ptk_code_174}} | token-ir | Svelte | Icon-"
-"actioncomponent wordt gecompileerd en SSR-gerenderd met Svelte "
+"actioncomponent wordt gecompileerd en via SSR weergegeven met Svelte "
 "{{ptk_code_175}} en {{ptk_code_176}} | {{ptk_code_177}} tot en met "
 "{{ptk_code_178}} (geverifieerd) |\n"
 "| {{ptk_code_179}} | {{ptk_code_180}} | token-ir | TinyMCE PluginManager | "
 "Registratie van de Pantoken-plugin en initialisatie van de callback | "
 "{{ptk_code_181}} tot en met {{ptk_code_182}} (geverifieerd) |\n"
-"| {{ptk_code_183}} | {{ptk_code_184}} | token-ir | VitePress | CSS van de "
-"gebouwde site bevat de Pantoken-brug voor primair merk | {{ptk_code_185}} "
-"tot en met {{ptk_code_186}} (geverifieerd) |\n"
-"| {{ptk_code_187}} | {{ptk_code_188}} | token-ir | Vue | Installatie van de "
-"plugin, configuratie van aangepaste elementen en SSR-uitvoer | "
-"{{ptk_code_189}} tot en met {{ptk_code_190}} (geverifieerd) |\n"
+"| {{ptk_code_183}} | {{ptk_code_184}} | token-ir | VitePress | De CSS van de "
+"gebouwde site bevat de Pantoken-brug voor het primaire merk | "
+"{{ptk_code_185}} tot en met {{ptk_code_186}} (geverifieerd) |\n"
+"| {{ptk_code_187}} | {{ptk_code_188}} | token-ir | Vue | Plugininstallatie, "
+"configuratie van aangepaste elementen en SSR-uitvoer | {{ptk_code_189}} tot "
+"en met {{ptk_code_190}} (geverifieerd) |\n"
 "| {{ptk_code_191}} | {{ptk_code_192}} | token-ir | Web Components | "
-"Registratie van aangepaste elementen en button-shadowuitvoer | Geteste "
-"omgeving: {{ptk_code_193}}. Rendering en interactiegedrag in echte browsers "
-"zijn niet geverifieerd. |\n"
+"Registratie van aangepaste elementen en uitvoer van de button-shadow-DOM | "
+"Geteste omgeving: {{ptk_code_193}}. Weergave en interactiegedrag in een "
+"echte browser zijn niet geverifieerd. |\n"
 "\n"
 "## Doelreleases beoordelen\n"
 "\n"
@@ -1862,65 +1859,63 @@ msgstr ""
 "peerdependency. Voor andere doelen controleren maintainers wekelijks de "
 "officiële releaseopmerkingen van het platform en openen ze handmatig een "
 "beoordelingsissue; het ontbreken van een issue betekent niet dat een nieuwe "
-"release wordt ondersteund. Zo breid je een claim uit:\n"
+"release wordt ondersteund. Een claim uitbreiden:\n"
 "\n"
 "1. Bekijk het uitvoerschema of de integratiewijzigingen van de release en de "
 "adapter in deze tabel.\n"
 "2. Voer de compatibiliteitsopdracht van de adapter uit met de kandidaat-"
 "release, bijvoorbeeld `vp run @pantoken/postcss#check:compatibility -- "
-"8.5.29`. De standaardopdracht leest elk `testedVersions`-item uit dit "
-"register; voor gekoppelde omgevingen zijn de bijbehorende flags "
-"beschikbaar.\n"
-"3. Gebruik voor kandidaten die via feeds zijn ontdekt `vp run "
-"downstream:test`; mislukte pogingen worden bewaard in `scripts/release/"
-"downstream-compatibility.json`. Voer na een geslaagde beoordeling `vp run "
+"8.5.29`. De standaardopdracht leest alle `testedVersions`-items uit dit "
+"register; gecombineerde omgevingen accepteren de bijbehorende vlaggen.\n"
+"3. Gebruik voor via feeds gevonden kandidaten `vp run downstream:test`; "
+"mislukte pogingen worden bewaard in `scripts/release/downstream-"
+"compatibility.json`. Voer na een geslaagde beoordeling `vp run "
 "downstream:bless --package @pantoken/name --version x.y.z` uit om de claim "
 "bij te werken.\n"
 "4. Voer een controle uit met de echte host, compiler of buildtool voor zowel "
-"de minimumversie als de nieuwe release. Pas zo nodig de huidige "
-"uitvoerindeling aan; voeg geen parallelle emitters voor oude indelingen "
+"de minimumversie als de nieuwe release. Pas zo nodig het huidige "
+"uitvoerformaat aan; voeg geen parallelle emitters voor verouderde formaten "
 "toe.\n"
 "5. Werk `scripts/release/target-compatibility.json` pas bij nadat de "
 "controles zijn geslaagd, voer vervolgens `vp run sync:compatibility` uit, "
 "genereer de Engelse API-documentatie opnieuw en voeg een changeset toe. "
 "Nieuwere releases blijven in afwachting totdat die beoordeelde wijziging is "
-"opgenomen. Gelokaliseerde documentatie wordt afzonderlijk afgehandeld.\n"
+"doorgevoerd. Gelokaliseerde documentatie wordt afzonderlijk afgehandeld.\n"
 "\n"
 "## Verouderde tokens\n"
 "\n"
 "Tokens die upstream zijn verwijderd, maar die pantoken nog als "
-"compatibiliteitsshims levert. Elke shim blijft werken totdat de upstream-"
-"minorversie `Removed in` wordt overgenomen; daarna wordt de shim buiten "
-"gebruik gesteld en wordt een minorversie van de consumer uitgebracht. Een "
-"shim verwijst door naar een `Replacement`-token of bevriest de laatst "
-"bekende waarde.\n"
+"compatibiliteitsshim levert. Elke token blijft werken totdat de upstream-"
+"minorversie `Removed in` wordt overgenomen; op dat moment wordt de shim "
+"verwijderd en volgt een minorrelease van de afnemer. Een shim verwijst door "
+"naar een token van `Replacement` of bevriest de laatst bekende waarde.\n"
 "\n"
-"| Token | Verouderd sinds | Verwijderd in | Vervanging |\n"
+"| Token | Verouderd in | Verwijderd in | Vervanging |\n"
 "| --- | --- | --- | --- |\n"
-"| {{ptk_code_194}} | {{ptk_code_195}} | {{ptk_code_196}} | {{ptk_code_197}} "
+"| {{ptk_code_194}} | {{ptk_code_195}} | {{ptk_code_196}} | _bevroren waarde_ "
 "|\n"
-"| {{ptk_code_198}} | {{ptk_code_199}} | {{ptk_code_200}} | {{ptk_code_201}} "
+"| {{ptk_code_197}} | {{ptk_code_198}} | {{ptk_code_199}} | _bevroren waarde_ "
 "|\n"
-"| {{ptk_code_202}} | {{ptk_code_203}} | {{ptk_code_204}} | _bevroren waarde_ "
+"| {{ptk_code_200}} | {{ptk_code_201}} | {{ptk_code_202}} | _bevroren waarde_ "
 "|\n"
-"| {{ptk_code_205}} | {{ptk_code_206}} | {{ptk_code_207}} | _bevroren waarde_ "
+"| {{ptk_code_203}} | {{ptk_code_204}} | {{ptk_code_205}} | _bevroren waarde_ "
 "|\n"
-"| {{ptk_code_208}} | {{ptk_code_209}} | {{ptk_code_210}} | _bevroren waarde_ "
+"| {{ptk_code_206}} | {{ptk_code_207}} | {{ptk_code_208}} | {{ptk_code_209}} "
 "|\n"
-"| {{ptk_code_211}} | {{ptk_code_212}} | {{ptk_code_213}} | {{ptk_code_214}} "
+"| {{ptk_code_210}} | {{ptk_code_211}} | {{ptk_code_212}} | _bevroren waarde_ "
 "|\n"
-"| {{ptk_code_215}} | {{ptk_code_216}} | {{ptk_code_217}} | _bevroren waarde_ "
+"| {{ptk_code_213}} | {{ptk_code_214}} | {{ptk_code_215}} | _bevroren waarde_ "
 "|\n"
-"| {{ptk_code_218}} | {{ptk_code_219}} | {{ptk_code_220}} | _bevroren waarde_ "
+"| {{ptk_code_216}} | {{ptk_code_217}} | {{ptk_code_218}} | _bevroren waarde_ "
 "|\n"
-"| {{ptk_code_221}} | {{ptk_code_222}} | {{ptk_code_223}} | _bevroren waarde_ "
+"| {{ptk_code_219}} | {{ptk_code_220}} | {{ptk_code_221}} | _bevroren waarde_ "
 "|\n"
-"| {{ptk_code_224}} | {{ptk_code_225}} | {{ptk_code_226}} | _bevroren waarde_ "
+"| {{ptk_code_222}} | {{ptk_code_223}} | {{ptk_code_224}} | _bevroren waarde_ "
 "|\n"
-"| {{ptk_code_227}} | {{ptk_code_228}} | {{ptk_code_229}} | _bevroren waarde_ "
+"| {{ptk_code_225}} | {{ptk_code_226}} | {{ptk_code_227}} | _bevroren waarde_ "
 "|\n"
-"| {{ptk_code_230}} | {{ptk_code_231}} | {{ptk_code_232}} | _bevroren waarde_ "
-"|\n"
+"\n"
+"---\n"
 
 #, no-c-format
 #~ msgid ""
@@ -4440,3 +4435,328 @@ msgstr ""
 #~ "| [`@pantoken/vite-workspace-orchestrator`](/api/plugins/vite/workspace-"
 #~ "orchestrator/src/) | Vite: rebuildt upstream workspace-pakketten (en "
 #~ "dependents) wanneer hun bron verandert. |\n"
+
+#: compatibility.md
+#, no-c-format
+msgid "<!-- pantoken-compatibility-scaffold -->\n# Compatibility\n\n<!-- Generated by `vp run sync:compatibility`. Do not edit by hand; run the writer and commit. -->\n\nThis page records the Instructure UI sources this pantoken build resolves from, and which consumers\nuse them. Target versions are separate: only verified releases are claimed, and releases newer than\nthe last verified release need review. Regenerate it with `vp run sync:compatibility`; the\n`gate:compatibility` check fails if it drifts.\n\n## Upstream sources\n\nThe design tokens, Instructure custom icons, and Lucide catalog feed the resolved token IR that every\npackage consumes. The `@instructure/ui-*` React packages are used only by\n`@pantoken/react-markdown`.\n\n{{ptk_table_0}}\n\n## Consumers\n\n{{ptk_table_1}}\n\n## Reviewing target releases\n\nThe weekly target-release workflow opens a review issue for new stable WordPress releases and\necosystems with an explicit npm peer. For other targets, maintainers check the platform's official\nrelease notes weekly and open a review issue manually; an absent issue does not mean a new release\nis supported. To extend a claim:\n\n1. Inspect the release's output schema or integration changes and the adapter in this table.\n2. Run the adapter's compatibility command with the candidate release, for example\n   `vp run @pantoken/postcss#check:compatibility -- 8.5.29`. The default command reads every\n   `testedVersions` entry from this registry; paired environments accept their companion flags.\n3. For feed-discovered candidates, use `vp run downstream:test`; failed attempts are retained in\n   `scripts/release/downstream-compatibility.json`. After a successful review, run\n   `vp run downstream:bless --package @pantoken/name --version x.y.z` to update the claim.\n4. Run a real host, compiler, or build-tool check at the minimum and new release. Remap the current\n   output format if necessary; do not add parallel legacy format emitters.\n5. Update `scripts/release/target-compatibility.json` only after the checks pass, then run\n   `vp run sync:compatibility`, regenerate English API docs, and add a changeset. Newer releases\n   remain pending until that reviewed change lands. Localized documentation is handled separately.\n\n## Deprecations\n\nTokens upstream dropped that pantoken still ships as a compatibility shim. Each is kept working until\nits `Removed in` upstream minor is adopted, at which point the shim is retired and a consumer minor\nis cut. A shim either forwards to a `Replacement` token or freezes its last-known value.\n\n{{ptk_table_2}}\n"
+msgstr "<!-- pantoken-compatibility-scaffold -->\n# Compatibiliteit\n\n<!-- Gegenereerd door `vp run sync:compatibility`. Niet handmatig bewerken; voer de writer uit en commit. -->\n\nDeze pagina vermeldt van welke Instructure UI-bronnen deze pantoken-build gebruikmaakt en welke afnemers ze gebruiken. Doelversies worden afzonderlijk behandeld: alleen geverifieerde releases worden genoemd; releases nieuwer dan de laatst geverifieerde release moeten worden beoordeeld. Genereer de pagina opnieuw met `vp run sync:compatibility`; de controle `gate:compatibility` mislukt als de pagina afwijkt.\n\n## Upstream-bronnen\n\nDe designtokens, aangepaste Instructure-pictogrammen en de Lucide-catalogus voeden de opgeloste token-IR die elk pakket gebruikt. De React-pakketten `@instructure/ui-*` worden alleen gebruikt door `@pantoken/react-markdown`.\n\n{{ptk_table_0}}\n\n## Afnemers\n\n{{ptk_table_1}}\n\n## Doelreleases beoordelen\n\nDe wekelijkse workflow voor doelreleases opent een beoordelingsissue voor nieuwe stabiele WordPress-releases en ecosystemen met een expliciete npm-peerdependency. Voor andere doelen controleren maintainers wekelijks de officiële releaseopmerkingen van het platform en openen ze handmatig een beoordelingsissue; het ontbreken van een issue betekent niet dat een nieuwe release wordt ondersteund. Een claim uitbreiden:\n\n1. Bekijk het uitvoerschema of de integratiewijzigingen van de release en de adapter in deze tabel.\n2. Voer de compatibiliteitsopdracht van de adapter uit met de kandidaat-release, bijvoorbeeld `vp run @pantoken/postcss#check:compatibility -- 8.5.29`. De standaardopdracht leest alle `testedVersions`-items uit dit register; gecombineerde omgevingen accepteren de bijbehorende vlaggen.\n3. Gebruik voor via feeds gevonden kandidaten `vp run downstream:test`; mislukte pogingen worden bewaard in `scripts/release/downstream-compatibility.json`. Voer na een geslaagde beoordeling `vp run downstream:bless --package @pantoken/name --version x.y.z` uit om de claim bij te werken.\n4. Voer een controle uit met de echte host, compiler of buildtool voor zowel de minimumversie als de nieuwe release. Pas zo nodig het huidige uitvoerformaat aan; voeg geen parallelle emitters voor verouderde formaten toe.\n5. Werk `scripts/release/target-compatibility.json` pas bij nadat de controles zijn geslaagd, voer vervolgens `vp run sync:compatibility` uit, genereer de Engelse API-documentatie opnieuw en voeg een changeset toe. Nieuwere releases blijven in afwachting totdat die beoordeelde wijziging is doorgevoerd. Gelokaliseerde documentatie wordt afzonderlijk afgehandeld.\n\n## Verouderde tokens\n\nTokens die upstream zijn verwijderd, maar die pantoken nog als compatibiliteitsshim levert. Elke token blijft werken totdat de upstream-minorversie `Removed in` wordt overgenomen; op dat moment wordt de shim verwijderd en volgt een minorrelease van de afnemer. Een shim verwijst door naar een token van `Replacement` of bevriest de laatst bekende waarde.\n\n{{ptk_table_2}}\n\n---\n"
+
+#: compatibility.md
+#, no-c-format
+msgid "| Package | Feeds | Range | Resolved |"
+msgstr "| Pakket | Levert aan | Bereik | Opgelost |"
+
+#: compatibility.md
+#, no-c-format
+msgid "<!-- pantoken-value-scope:compatibility%2F0%2F%60%40instructure%2Finstructure-design-tokens%60 -->\n| {{ptk_code_0}} | token-ir | {{ptk_code_1}} | {{ptk_code_2}} |"
+msgstr "<!-- pantoken-value-scope:compatibility%2F0%2F%60%40instructure%2Finstructure-design-tokens%60 -->\n| {{ptk_code_0}} | token-ir | {{ptk_code_1}} | {{ptk_code_2}} |"
+
+#: compatibility.md
+#, no-c-format
+msgid "<!-- pantoken-value-scope:compatibility%2F0%2F%60%40instructure%2Fui-icons%60 -->\n| {{ptk_code_0}} | icons | {{ptk_code_1}} | {{ptk_code_2}} |"
+msgstr "<!-- pantoken-value-scope:compatibility%2F0%2F%60%40instructure%2Fui-icons%60 -->\n| {{ptk_code_0}} | icons | {{ptk_code_1}} | {{ptk_code_2}} |"
+
+#: compatibility.md
+#, no-c-format
+msgid "<!-- pantoken-value-scope:compatibility%2F0%2F%60lucide%60 -->\n| {{ptk_code_0}} | icons | {{ptk_code_1}} | {{ptk_code_2}} |"
+msgstr "<!-- pantoken-value-scope:compatibility%2F0%2F%60lucide%60 -->\n| {{ptk_code_0}} | icons | {{ptk_code_1}} | {{ptk_code_2}} |"
+
+#: compatibility.md
+#, no-c-format
+msgid "<!-- pantoken-value-scope:compatibility%2F0%2F%60%40instructure%2Fui-heading%60 -->\n| {{ptk_code_0}} | instui-react | {{ptk_code_1}} | {{ptk_code_2}} |"
+msgstr "<!-- pantoken-value-scope:compatibility%2F0%2F%60%40instructure%2Fui-heading%60 -->\n| {{ptk_code_0}} | instui-react | {{ptk_code_1}} | {{ptk_code_2}} |"
+
+#: compatibility.md
+#, no-c-format
+msgid "<!-- pantoken-value-scope:compatibility%2F0%2F%60%40instructure%2Fui-text%60 -->\n| {{ptk_code_0}} | instui-react | {{ptk_code_1}} | {{ptk_code_2}} |"
+msgstr "<!-- pantoken-value-scope:compatibility%2F0%2F%60%40instructure%2Fui-text%60 -->\n| {{ptk_code_0}} | instui-react | {{ptk_code_1}} | {{ptk_code_2}} |"
+
+#: compatibility.md
+#, no-c-format
+msgid "<!-- pantoken-value-scope:compatibility%2F0%2F%60%40instructure%2Fui-link%60 -->\n| {{ptk_code_0}} | instui-react | {{ptk_code_1}} | {{ptk_code_2}} |"
+msgstr "<!-- pantoken-value-scope:compatibility%2F0%2F%60%40instructure%2Fui-link%60 -->\n| {{ptk_code_0}} | instui-react | {{ptk_code_1}} | {{ptk_code_2}} |"
+
+#: compatibility.md
+#, no-c-format
+msgid "<!-- pantoken-value-scope:compatibility%2F0%2F%60%40instructure%2Fui-list%60 -->\n| {{ptk_code_0}} | instui-react | {{ptk_code_1}} | {{ptk_code_2}} |"
+msgstr "<!-- pantoken-value-scope:compatibility%2F0%2F%60%40instructure%2Fui-list%60 -->\n| {{ptk_code_0}} | instui-react | {{ptk_code_1}} | {{ptk_code_2}} |"
+
+#: compatibility.md
+#, no-c-format
+msgid "<!-- pantoken-value-scope:compatibility%2F0%2F%60%40instructure%2Fui-table%60 -->\n| {{ptk_code_0}} | instui-react | {{ptk_code_1}} | {{ptk_code_2}} |"
+msgstr "<!-- pantoken-value-scope:compatibility%2F0%2F%60%40instructure%2Fui-table%60 -->\n| {{ptk_code_0}} | instui-react | {{ptk_code_1}} | {{ptk_code_2}} |"
+
+#: compatibility.md
+#, no-c-format
+msgid "<!-- pantoken-value-scope:compatibility%2F0%2F%60%40instructure%2Fui-view%60 -->\n| {{ptk_code_0}} | instui-react | {{ptk_code_1}} | {{ptk_code_2}} |"
+msgstr "<!-- pantoken-value-scope:compatibility%2F0%2F%60%40instructure%2Fui-view%60 -->\n| {{ptk_code_0}} | instui-react | {{ptk_code_1}} | {{ptk_code_2}} |"
+
+#: compatibility.md
+#, no-c-format
+msgid "<!-- pantoken-value-scope:compatibility%2F0%2F%60%40instructure%2Fui-img%60 -->\n| {{ptk_code_0}} | instui-react | {{ptk_code_1}} | {{ptk_code_2}} |"
+msgstr "<!-- pantoken-value-scope:compatibility%2F0%2F%60%40instructure%2Fui-img%60 -->\n| {{ptk_code_0}} | instui-react | {{ptk_code_1}} | {{ptk_code_2}} |"
+
+#: compatibility.md
+#, no-c-format
+msgid "<!-- pantoken-value-scope:compatibility%2F0%2F%60%40instructure%2Fui-alerts%60 -->\n| {{ptk_code_0}} | instui-react | {{ptk_code_1}} | {{ptk_code_2}} |"
+msgstr "<!-- pantoken-value-scope:compatibility%2F0%2F%60%40instructure%2Fui-alerts%60 -->\n| {{ptk_code_0}} | instui-react | {{ptk_code_1}} | {{ptk_code_2}} |"
+
+#: compatibility.md
+#, no-c-format
+msgid "| Package | Path | Governed by | Target | Current format | Host versions |"
+msgstr "| Pakket | Pad | Geregeld door | Doel | Huidig formaat | Hostversies |"
+
+#: compatibility.md
+#, no-c-format
+msgid "<!-- pantoken-value-scope:compatibility%2F1%2F%60%40pantoken%2Fnext%60 -->\n| {{ptk_code_0}} | {{ptk_code_1}} | token-ir | Next.js | Production build transpiling and rendering Instructure UI {{ptk_code_2}} with React {{ptk_code_3}} | {{ptk_code_4}} through {{ptk_code_5}} (verified) |"
+msgstr "<!-- pantoken-value-scope:compatibility%2F1%2F%60%40pantoken%2Fnext%60 -->\n| {{ptk_code_0}} | {{ptk_code_1}} | token-ir | Next.js | Productiebuild die Instructure UI {{ptk_code_2}} transpileert en weergeeft met React {{ptk_code_3}} | {{ptk_code_4}} tot en met {{ptk_code_5}} (geverifieerd) |"
+
+#: compatibility.md
+#, no-c-format
+msgid "<!-- pantoken-value-scope:compatibility%2F1%2F%60%40pantoken%2Fpanda%60 -->\n| {{ptk_code_0}} | {{ptk_code_1}} | token-ir | Panda CSS | Panda token utility extraction from the Pantoken preset | {{ptk_code_2}} through {{ptk_code_3}} (verified) |"
+msgstr "<!-- pantoken-value-scope:compatibility%2F1%2F%60%40pantoken%2Fpanda%60 -->\n| {{ptk_code_0}} | {{ptk_code_1}} | token-ir | Panda CSS | Extractie van Panda-tokens uit de Pantoken-preset | {{ptk_code_2}} tot en met {{ptk_code_3}} (geverifieerd) |"
+
+#: compatibility.md
+#, no-c-format
+msgid "<!-- pantoken-value-scope:compatibility%2F1%2F%60%40pantoken%2Fpostcss%60 -->\n| {{ptk_code_0}} | {{ptk_code_1}} | token-ir | PostCSS | — | {{ptk_code_2}} through {{ptk_code_3}} (verified) |"
+msgstr "<!-- pantoken-value-scope:compatibility%2F1%2F%60%40pantoken%2Fpostcss%60 -->\n| {{ptk_code_0}} | {{ptk_code_1}} | token-ir | PostCSS | — | {{ptk_code_2}} tot en met {{ptk_code_3}} (geverifieerd) |"
+
+#: compatibility.md
+#, no-c-format
+msgid "<!-- pantoken-value-scope:compatibility%2F1%2F%60%40pantoken%2Ftailwind%60 -->\n| {{ptk_code_0}} | {{ptk_code_1}} | token-ir | Tailwind CSS | — | {{ptk_code_2}} through {{ptk_code_3}} (verified) |"
+msgstr "<!-- pantoken-value-scope:compatibility%2F1%2F%60%40pantoken%2Ftailwind%60 -->\n| {{ptk_code_0}} | {{ptk_code_1}} | token-ir | Tailwind CSS | — | {{ptk_code_2}} tot en met {{ptk_code_3}} (geverifieerd) |"
+
+#: compatibility.md
+#, no-c-format
+msgid "<!-- pantoken-value-scope:compatibility%2F1%2F%60%40pantoken%2Fvite%60 -->\n| {{ptk_code_0}} | {{ptk_code_1}} | token-ir | Vite | — | {{ptk_code_2}} through {{ptk_code_3}} (verified) |"
+msgstr "<!-- pantoken-value-scope:compatibility%2F1%2F%60%40pantoken%2Fvite%60 -->\n| {{ptk_code_0}} | {{ptk_code_1}} | token-ir | Vite | — | {{ptk_code_2}} tot en met {{ptk_code_3}} (geverifieerd) |"
+
+#: compatibility.md
+#, no-c-format
+msgid "<!-- pantoken-value-scope:compatibility%2F1%2F%60%40pantoken%2Fwebpack%60 -->\n| {{ptk_code_0}} | {{ptk_code_1}} | token-ir | webpack | Emitted token CSS build asset | {{ptk_code_2}} through {{ptk_code_3}} (verified) |"
+msgstr "<!-- pantoken-value-scope:compatibility%2F1%2F%60%40pantoken%2Fwebpack%60 -->\n| {{ptk_code_0}} | {{ptk_code_1}} | token-ir | webpack | Gegenereerd token-CSS-buildasset | {{ptk_code_2}} tot en met {{ptk_code_3}} (geverifieerd) |"
+
+#: compatibility.md
+#, no-c-format
+msgid "<!-- pantoken-value-scope:compatibility%2F1%2F%60%40pantoken%2Fandroid%60 -->\n| {{ptk_code_0}} | {{ptk_code_1}} | token-ir | Android resources | Generated colors, dimensions, and VectorDrawable compile and link with Android build-tools | {{ptk_code_2}} through {{ptk_code_3}} (verified) |"
+msgstr "<!-- pantoken-value-scope:compatibility%2F1%2F%60%40pantoken%2Fandroid%60 -->\n| {{ptk_code_0}} | {{ptk_code_1}} | token-ir | Android-resources | Gegenereerde kleuren, afmetingen en VectorDrawable worden gecompileerd en gekoppeld met Android-build-tools | {{ptk_code_2}} tot en met {{ptk_code_3}} (geverifieerd) |"
+
+#: compatibility.md
+#, no-c-format
+msgid "<!-- pantoken-value-scope:compatibility%2F1%2F%60%40pantoken%2Fcanvas-theme-editor%60 -->\n| {{ptk_code_0}} | {{ptk_code_1}} | token-ir | Canvas Theme Editor | — | Not yet verified |"
+msgstr "<!-- pantoken-value-scope:compatibility%2F1%2F%60%40pantoken%2Fcanvas-theme-editor%60 -->\n| {{ptk_code_0}} | {{ptk_code_1}} | token-ir | Canvas Theme Editor | — | Nog niet geverifieerd |"
+
+#: compatibility.md
+#, no-c-format
+msgid "<!-- pantoken-value-scope:compatibility%2F1%2F%60%40pantoken%2Fcompose%60 -->\n| {{ptk_code_0}} | {{ptk_code_1}} | token-ir | Jetpack Compose | Generated Color and Dp token object compiles in an Android library module | {{ptk_code_2}} through {{ptk_code_3}} (verified) |"
+msgstr "<!-- pantoken-value-scope:compatibility%2F1%2F%60%40pantoken%2Fcompose%60 -->\n| {{ptk_code_0}} | {{ptk_code_1}} | token-ir | Jetpack Compose | Gegenereerd Color- en Dp-tokenobject wordt gecompileerd in een Android-bibliotheekmodule | {{ptk_code_2}} tot en met {{ptk_code_3}} (geverifieerd) |"
+
+#: compatibility.md
+#, no-c-format
+msgid "<!-- pantoken-value-scope:compatibility%2F1%2F%60%40pantoken%2Fdrupal%60 -->\n| {{ptk_code_0}} | {{ptk_code_1}} | token-ir | Drupal themes | Drupal core discovers generated theme; InfoParser and Symfony YAML accept metadata | {{ptk_code_2}} through {{ptk_code_3}} (verified) |"
+msgstr "<!-- pantoken-value-scope:compatibility%2F1%2F%60%40pantoken%2Fdrupal%60 -->\n| {{ptk_code_0}} | {{ptk_code_1}} | token-ir | Drupal-thema's | Drupal-core vindt het gegenereerde thema; InfoParser en Symfony YAML accepteren de metadata | {{ptk_code_2}} tot en met {{ptk_code_3}} (geverifieerd) |"
+
+#: compatibility.md
+#, no-c-format
+msgid "<!-- pantoken-value-scope:compatibility%2F1%2F%60%40pantoken%2Femail%60 -->\n| {{ptk_code_0}} | {{ptk_code_1}} | token-ir | HTML email | — | Not yet verified |"
+msgstr "<!-- pantoken-value-scope:compatibility%2F1%2F%60%40pantoken%2Femail%60 -->\n| {{ptk_code_0}} | {{ptk_code_1}} | token-ir | HTML-e-mail | — | Nog niet geverifieerd |"
+
+#: compatibility.md
+#, no-c-format
+msgid "<!-- pantoken-value-scope:compatibility%2F1%2F%60%40pantoken%2Fflutter%60 -->\n| {{ptk_code_0}} | {{ptk_code_1}} | token-ir | Flutter | — | Not yet verified |"
+msgstr "<!-- pantoken-value-scope:compatibility%2F1%2F%60%40pantoken%2Fflutter%60 -->\n| {{ptk_code_0}} | {{ptk_code_1}} | token-ir | Flutter | — | Nog niet geverifieerd |"
+
+#: compatibility.md
+#, no-c-format
+msgid "<!-- pantoken-value-scope:compatibility%2F1%2F%60%40pantoken%2Fhugo%60 -->\n| {{ptk_code_0}} | {{ptk_code_1}} | token-ir | Hugo | Hugo Pipes builds the Pantoken token stylesheet | {{ptk_code_2}} through {{ptk_code_3}} (verified) |"
+msgstr "<!-- pantoken-value-scope:compatibility%2F1%2F%60%40pantoken%2Fhugo%60 -->\n| {{ptk_code_0}} | {{ptk_code_1}} | token-ir | Hugo | Hugo Pipes bouwt het Pantoken-tokenstylesheet | {{ptk_code_2}} tot en met {{ptk_code_3}} (geverifieerd) |"
+
+#: compatibility.md
+#, no-c-format
+msgid "<!-- pantoken-value-scope:compatibility%2F1%2F%60%40pantoken%2Fjekyll%60 -->\n| {{ptk_code_0}} | {{ptk_code_1}} | token-ir | Jekyll | Jekyll builds the generated Sass partial into site CSS | {{ptk_code_2}} through {{ptk_code_3}} (verified) |"
+msgstr "<!-- pantoken-value-scope:compatibility%2F1%2F%60%40pantoken%2Fjekyll%60 -->\n| {{ptk_code_0}} | {{ptk_code_1}} | token-ir | Jekyll | Jekyll bouwt het gegenereerde Sass-partial in de site-CSS | {{ptk_code_2}} tot en met {{ptk_code_3}} (geverifieerd) |"
+
+#: compatibility.md
+#, no-c-format
+msgid "<!-- pantoken-value-scope:compatibility%2F1%2F%60%40pantoken%2Frust%60 -->\n| {{ptk_code_0}} | {{ptk_code_1}} | token-ir | Rust GUI frameworks | Generated egui Color32 accessors and iced_core Color constants compile with the Rust toolchain | {{ptk_code_2}} through {{ptk_code_3}} (verified) |"
+msgstr "<!-- pantoken-value-scope:compatibility%2F1%2F%60%40pantoken%2Frust%60 -->\n| {{ptk_code_0}} | {{ptk_code_1}} | token-ir | Rust-GUI-frameworks | Gegenereerde egui Color32-accessors en iced_core Color-constanten worden gecompileerd met de Rust-toolchain | {{ptk_code_2}} tot en met {{ptk_code_3}} (geverifieerd) |"
+
+#: compatibility.md
+#, no-c-format
+msgid "<!-- pantoken-value-scope:compatibility%2F1%2F%60%40pantoken%2Fswift%60 -->\n| {{ptk_code_0}} | {{ptk_code_1}} | token-ir | Swift iOS | UIKit SwiftPM module, runtime token check, and compiled Icons.xcassets | Tested environment: {{ptk_code_2}}. Runtime tested only on iOS Simulator 27.0; this does not establish an iOS 15 runtime floor. No watchOS or tvOS claim. |"
+msgstr "<!-- pantoken-value-scope:compatibility%2F1%2F%60%40pantoken%2Fswift%60 -->\n| {{ptk_code_0}} | {{ptk_code_1}} | token-ir | Swift iOS | UIKit SwiftPM-module, runtime-tokencontrole en gecompileerde Icons.xcassets | Geteste omgeving: {{ptk_code_2}}. Runtime alleen getest op iOS Simulator 27.0; dit stelt geen minimale iOS 15-runtimeversie vast. Geen claim voor watchOS of tvOS. |"
+
+#: compatibility.md
+#, no-c-format
+msgid "<!-- pantoken-value-scope:compatibility%2F1%2F%60%40pantoken%2Fvanilla%60 -->\n| {{ptk_code_0}} | {{ptk_code_1}} | token-ir | Vanilla Forums | — | Not yet verified |"
+msgstr "<!-- pantoken-value-scope:compatibility%2F1%2F%60%40pantoken%2Fvanilla%60 -->\n| {{ptk_code_0}} | {{ptk_code_1}} | token-ir | Vanilla Forums | — | Nog niet geverifieerd |"
+
+#: compatibility.md
+#, no-c-format
+msgid "<!-- pantoken-value-scope:compatibility%2F1%2F%60%40pantoken%2Fwordpress%60 -->\n| {{ptk_code_0}} | {{ptk_code_1}} | token-ir | WordPress block themes | theme.json {{ptk_code_2}} | {{ptk_code_3}} through {{ptk_code_4}} (verified) |"
+msgstr "<!-- pantoken-value-scope:compatibility%2F1%2F%60%40pantoken%2Fwordpress%60 -->\n| {{ptk_code_0}} | {{ptk_code_1}} | token-ir | WordPress-blokthema's | theme.json {{ptk_code_2}} | {{ptk_code_3}} tot en met {{ptk_code_4}} (geverifieerd) |"
+
+#: compatibility.md
+#, no-c-format
+msgid "<!-- pantoken-value-scope:compatibility%2F1%2F%60%40pantoken%2Fangular%60 -->\n| {{ptk_code_0}} | {{ptk_code_1}} | token-ir | Angular | CUSTOM_ELEMENTS_SCHEMA template compilation (Angular {{ptk_code_2}} / TS {{ptk_code_3}}; Angular {{ptk_code_4}}, {{ptk_code_5}}, and {{ptk_code_6}} / TS {{ptk_code_7}}) | {{ptk_code_8}} through {{ptk_code_9}} (verified) |"
+msgstr "<!-- pantoken-value-scope:compatibility%2F1%2F%60%40pantoken%2Fangular%60 -->\n| {{ptk_code_0}} | {{ptk_code_1}} | token-ir | Angular | CUSTOM_ELEMENTS_SCHEMA-sjablooncompilatie (Angular {{ptk_code_2}} / TS {{ptk_code_3}}; Angular {{ptk_code_4}}, {{ptk_code_5}} en {{ptk_code_6}} / TS {{ptk_code_7}}) | {{ptk_code_8}} tot en met {{ptk_code_9}} (geverifieerd) |"
+
+#: compatibility.md
+#, no-c-format
+msgid "<!-- pantoken-value-scope:compatibility%2F1%2F%60%40pantoken%2Fastro%60 -->\n| {{ptk_code_0}} | {{ptk_code_1}} | token-ir | Astro / Starlight | Built Starlight page with injected token stylesheet (Astro {{ptk_code_2}} and {{ptk_code_3}}) | {{ptk_code_4}} through {{ptk_code_5}} (verified) |"
+msgstr "<!-- pantoken-value-scope:compatibility%2F1%2F%60%40pantoken%2Fastro%60 -->\n| {{ptk_code_0}} | {{ptk_code_1}} | token-ir | Astro / Starlight | Gebouwde Starlight-pagina met ingevoegd tokenstylesheet (Astro {{ptk_code_2}} en {{ptk_code_3}}) | {{ptk_code_4}} tot en met {{ptk_code_5}} (geverifieerd) |"
+
+#: compatibility.md
+#, no-c-format
+msgid "<!-- pantoken-value-scope:compatibility%2F1%2F%60%40pantoken%2Fbootstrap%60 -->\n| {{ptk_code_0}} | {{ptk_code_1}} | token-ir | Bootstrap | CSS variables: body + primary button | {{ptk_code_2}} through {{ptk_code_3}} (verified) |"
+msgstr "<!-- pantoken-value-scope:compatibility%2F1%2F%60%40pantoken%2Fbootstrap%60 -->\n| {{ptk_code_0}} | {{ptk_code_1}} | token-ir | Bootstrap | CSS-variabelen: body + primaire knop | {{ptk_code_2}} tot en met {{ptk_code_3}} (geverifieerd) |"
+
+#: compatibility.md
+#, no-c-format
+msgid "<!-- pantoken-value-scope:compatibility%2F1%2F%60%40pantoken%2Fcss-in-js%60 -->\n| {{ptk_code_0}} | {{ptk_code_1}} | token-ir | Emotion CSS-in-JS | ThemeProvider SSR emits the Pantoken token variable | {{ptk_code_2}} through {{ptk_code_3}} (verified) |"
+msgstr "<!-- pantoken-value-scope:compatibility%2F1%2F%60%40pantoken%2Fcss-in-js%60 -->\n| {{ptk_code_0}} | {{ptk_code_1}} | token-ir | Emotion CSS-in-JS | ThemeProvider SSR geeft de Pantoken-tokenvariabele weer | {{ptk_code_2}} tot en met {{ptk_code_3}} (geverifieerd) |"
+
+#: compatibility.md
+#, no-c-format
+msgid "<!-- pantoken-value-scope:compatibility%2F1%2F%60%40pantoken%2Fdocusaurus%60 -->\n| {{ptk_code_0}} | {{ptk_code_1}} | token-ir | Docusaurus theme-classic | Infima CSS-variable bridge: primary and background | {{ptk_code_2}} through {{ptk_code_3}} (verified) |"
+msgstr "<!-- pantoken-value-scope:compatibility%2F1%2F%60%40pantoken%2Fdocusaurus%60 -->\n| {{ptk_code_0}} | {{ptk_code_1}} | token-ir | Docusaurus theme-classic | Infima CSS-variabelenbrug: primair en achtergrond | {{ptk_code_2}} tot en met {{ptk_code_3}} (geverifieerd) |"
+
+#: compatibility.md
+#, no-c-format
+msgid "<!-- pantoken-value-scope:compatibility%2F1%2F%60%40pantoken%2Ffoundation%60 -->\n| {{ptk_code_0}} | {{ptk_code_1}} | token-ir | Foundation for Sites | Concrete Sass settings + variable-backed CSS overlay | {{ptk_code_2}} through {{ptk_code_3}} (verified) |"
+msgstr "<!-- pantoken-value-scope:compatibility%2F1%2F%60%40pantoken%2Ffoundation%60 -->\n| {{ptk_code_0}} | {{ptk_code_1}} | token-ir | Foundation for Sites | Concrete Sass-instellingen + CSS-overlay op basis van variabelen | {{ptk_code_2}} tot en met {{ptk_code_3}} (geverifieerd) |"
+
+#: compatibility.md
+#, no-c-format
+msgid "<!-- pantoken-value-scope:compatibility%2F1%2F%60%40pantoken%2Fmarkdown-it%60 -->\n| {{ptk_code_0}} | {{ptk_code_1}} | token-ir | markdown-it | — | {{ptk_code_2}} through {{ptk_code_3}} (verified) |"
+msgstr "<!-- pantoken-value-scope:compatibility%2F1%2F%60%40pantoken%2Fmarkdown-it%60 -->\n| {{ptk_code_0}} | {{ptk_code_1}} | token-ir | markdown-it | — | {{ptk_code_2}} tot en met {{ptk_code_3}} (geverifieerd) |"
+
+#: compatibility.md
+#, no-c-format
+msgid "<!-- pantoken-value-scope:compatibility%2F1%2F%60%40pantoken%2Fmintlify%60 -->\n| {{ptk_code_0}} | {{ptk_code_1}} | token-ir | Mintlify docs.json | Official CLI validates generated colors and background theme config | {{ptk_code_2}} through {{ptk_code_3}} (verified) |"
+msgstr "<!-- pantoken-value-scope:compatibility%2F1%2F%60%40pantoken%2Fmintlify%60 -->\n| {{ptk_code_0}} | {{ptk_code_1}} | token-ir | Mintlify docs.json | De officiële CLI valideert de gegenereerde kleuren en de configuratie van het achtergrondthema | {{ptk_code_2}} tot en met {{ptk_code_3}} (geverifieerd) |"
+
+#: compatibility.md
+#, no-c-format
+msgid "<!-- pantoken-value-scope:compatibility%2F1%2F%60%40pantoken%2Fmui%60 -->\n| {{ptk_code_0}} | {{ptk_code_1}} | token-ir | Material UI | Concrete createTheme palettes (MUI {{ptk_code_2}}, {{ptk_code_3}}, {{ptk_code_4}}, {{ptk_code_5}}) | {{ptk_code_6}} through {{ptk_code_7}} (verified) |"
+msgstr "<!-- pantoken-value-scope:compatibility%2F1%2F%60%40pantoken%2Fmui%60 -->\n| {{ptk_code_0}} | {{ptk_code_1}} | token-ir | Material UI | Concrete createTheme-paletten (MUI {{ptk_code_2}}, {{ptk_code_3}}, {{ptk_code_4}}, {{ptk_code_5}}) | {{ptk_code_6}} tot en met {{ptk_code_7}} (geverifieerd) |"
+
+#: compatibility.md
+#, no-c-format
+msgid "<!-- pantoken-value-scope:compatibility%2F1%2F%60%40pantoken%2Fpendo%60 -->\n| {{ptk_code_0}} | {{ptk_code_1}} | token-ir | Pendo | — | Not yet verified |"
+msgstr "<!-- pantoken-value-scope:compatibility%2F1%2F%60%40pantoken%2Fpendo%60 -->\n| {{ptk_code_0}} | {{ptk_code_1}} | token-ir | Pendo | — | Nog niet geverifieerd |"
+
+#: compatibility.md
+#, no-c-format
+msgid "<!-- pantoken-value-scope:compatibility%2F1%2F%60%40pantoken%2Freact%60 -->\n| {{ptk_code_0}} | {{ptk_code_1}} | token-ir | React | SSR-rendered Icon custom element and token fallback | {{ptk_code_2}} through {{ptk_code_3}} (verified) |"
+msgstr "<!-- pantoken-value-scope:compatibility%2F1%2F%60%40pantoken%2Freact%60 -->\n| {{ptk_code_0}} | {{ptk_code_1}} | token-ir | React | SSR-weergegeven aangepast Icon-element en terugvalwaarde voor tokens | {{ptk_code_2}} tot en met {{ptk_code_3}} (geverifieerd) |"
+
+#: compatibility.md
+#, no-c-format
+msgid "<!-- pantoken-value-scope:compatibility%2F1%2F%60%40pantoken%2Freact-markdown%60 -->\n| {{ptk_code_0}} | {{ptk_code_1}} | instui-react | react-markdown | SSR-rendered InstUI heading, icon, and color swatch with React {{ptk_code_2}} | {{ptk_code_3}} through {{ptk_code_4}} (verified) |"
+msgstr "<!-- pantoken-value-scope:compatibility%2F1%2F%60%40pantoken%2Freact-markdown%60 -->\n| {{ptk_code_0}} | {{ptk_code_1}} | instui-react | react-markdown | SSR-weergegeven InstUI-kop, pictogram en kleurstaal met React {{ptk_code_2}} | {{ptk_code_3}} tot en met {{ptk_code_4}} (geverifieerd) |"
+
+#: compatibility.md
+#, no-c-format
+msgid "<!-- pantoken-value-scope:compatibility%2F1%2F%60%40pantoken%2Freact-native%60 -->\n| {{ptk_code_0}} | {{ptk_code_1}} | token-ir | React Native | — | Not yet verified |"
+msgstr "<!-- pantoken-value-scope:compatibility%2F1%2F%60%40pantoken%2Freact-native%60 -->\n| {{ptk_code_0}} | {{ptk_code_1}} | token-ir | React Native | — | Nog niet geverifieerd |"
+
+#: compatibility.md
+#, no-c-format
+msgid "<!-- pantoken-value-scope:compatibility%2F1%2F%60%40pantoken%2Frehype%60 -->\n| {{ptk_code_0}} | {{ptk_code_1}} | token-ir | rehype | HAST + raw SVG | {{ptk_code_2}} through {{ptk_code_3}} (verified) |"
+msgstr "<!-- pantoken-value-scope:compatibility%2F1%2F%60%40pantoken%2Frehype%60 -->\n| {{ptk_code_0}} | {{ptk_code_1}} | token-ir | rehype | HAST + onbewerkte SVG | {{ptk_code_2}} tot en met {{ptk_code_3}} (geverifieerd) |"
+
+#: compatibility.md
+#, no-c-format
+msgid "<!-- pantoken-value-scope:compatibility%2F1%2F%60%40pantoken%2Fshadcn%60 -->\n| {{ptk_code_0}} | {{ptk_code_1}} | token-ir | shadcn/ui CSS variables | Tailwind {{ptk_code_2}} compiles the Pantoken primary theme alias | {{ptk_code_3}} through {{ptk_code_4}} (verified) |"
+msgstr "<!-- pantoken-value-scope:compatibility%2F1%2F%60%40pantoken%2Fshadcn%60 -->\n| {{ptk_code_0}} | {{ptk_code_1}} | token-ir | shadcn/ui CSS-variabelen | Tailwind {{ptk_code_2}} compileert de Pantoken-alias voor het primaire thema | {{ptk_code_3}} tot en met {{ptk_code_4}} (geverifieerd) |"
+
+#: compatibility.md
+#, no-c-format
+msgid "<!-- pantoken-value-scope:compatibility%2F1%2F%60%40pantoken%2Fstorybook%60 -->\n| {{ptk_code_0}} | {{ptk_code_1}} | token-ir | Storybook theming | Storybook ThemeVars constructor accepts light and dark Pantoken themes | {{ptk_code_2}} through {{ptk_code_3}} (verified) |"
+msgstr "<!-- pantoken-value-scope:compatibility%2F1%2F%60%40pantoken%2Fstorybook%60 -->\n| {{ptk_code_0}} | {{ptk_code_1}} | token-ir | Storybook-thema's | De Storybook ThemeVars-constructor accepteert lichte en donkere Pantoken-thema's | {{ptk_code_2}} tot en met {{ptk_code_3}} (geverifieerd) |"
+
+#: compatibility.md
+#, no-c-format
+msgid "<!-- pantoken-value-scope:compatibility%2F1%2F%60%40pantoken%2Fsvelte%60 -->\n| {{ptk_code_0}} | {{ptk_code_1}} | token-ir | Svelte | Icon action component compiles and SSR renders on Svelte {{ptk_code_2}} and {{ptk_code_3}} | {{ptk_code_4}} through {{ptk_code_5}} (verified) |"
+msgstr "<!-- pantoken-value-scope:compatibility%2F1%2F%60%40pantoken%2Fsvelte%60 -->\n| {{ptk_code_0}} | {{ptk_code_1}} | token-ir | Svelte | Icon-actioncomponent wordt gecompileerd en via SSR weergegeven met Svelte {{ptk_code_2}} en {{ptk_code_3}} | {{ptk_code_4}} tot en met {{ptk_code_5}} (geverifieerd) |"
+
+#: compatibility.md
+#, no-c-format
+msgid "<!-- pantoken-value-scope:compatibility%2F1%2F%60%40pantoken%2Ftinymce%60 -->\n| {{ptk_code_0}} | {{ptk_code_1}} | token-ir | TinyMCE PluginManager | Pantoken plugin registration and callback initialization | {{ptk_code_2}} through {{ptk_code_3}} (verified) |"
+msgstr "<!-- pantoken-value-scope:compatibility%2F1%2F%60%40pantoken%2Ftinymce%60 -->\n| {{ptk_code_0}} | {{ptk_code_1}} | token-ir | TinyMCE PluginManager | Registratie van de Pantoken-plugin en initialisatie van de callback | {{ptk_code_2}} tot en met {{ptk_code_3}} (geverifieerd) |"
+
+#: compatibility.md
+#, no-c-format
+msgid "<!-- pantoken-value-scope:compatibility%2F1%2F%60%40pantoken%2Fvitepress%60 -->\n| {{ptk_code_0}} | {{ptk_code_1}} | token-ir | VitePress | Built site CSS includes the Pantoken primary-brand bridge | {{ptk_code_2}} through {{ptk_code_3}} (verified) |"
+msgstr "<!-- pantoken-value-scope:compatibility%2F1%2F%60%40pantoken%2Fvitepress%60 -->\n| {{ptk_code_0}} | {{ptk_code_1}} | token-ir | VitePress | De CSS van de gebouwde site bevat de Pantoken-brug voor het primaire merk | {{ptk_code_2}} tot en met {{ptk_code_3}} (geverifieerd) |"
+
+#: compatibility.md
+#, no-c-format
+msgid "<!-- pantoken-value-scope:compatibility%2F1%2F%60%40pantoken%2Fvue%60 -->\n| {{ptk_code_0}} | {{ptk_code_1}} | token-ir | Vue | Plugin installation, custom-element configuration, and SSR output | {{ptk_code_2}} through {{ptk_code_3}} (verified) |"
+msgstr "<!-- pantoken-value-scope:compatibility%2F1%2F%60%40pantoken%2Fvue%60 -->\n| {{ptk_code_0}} | {{ptk_code_1}} | token-ir | Vue | Plugininstallatie, configuratie van aangepaste elementen en SSR-uitvoer | {{ptk_code_2}} tot en met {{ptk_code_3}} (geverifieerd) |"
+
+#: compatibility.md
+#, no-c-format
+msgid "<!-- pantoken-value-scope:compatibility%2F1%2F%60%40pantoken%2Fweb-components%60 -->\n| {{ptk_code_0}} | {{ptk_code_1}} | token-ir | Web Components | Custom-element registration and button shadow output | Tested environment: {{ptk_code_2}}. Real-browser rendering and interaction behavior are not verified. |"
+msgstr "<!-- pantoken-value-scope:compatibility%2F1%2F%60%40pantoken%2Fweb-components%60 -->\n| {{ptk_code_0}} | {{ptk_code_1}} | token-ir | Web Components | Registratie van aangepaste elementen en uitvoer van de button-shadow-DOM | Geteste omgeving: {{ptk_code_2}}. Weergave en interactiegedrag in een echte browser zijn niet geverifieerd. |"
+
+#: compatibility.md
+#, no-c-format
+msgid "| Token | Deprecated in | Removed in | Replacement |"
+msgstr "| Token | Verouderd in | Verwijderd in | Vervanging |"
+
+#: compatibility.md
+#, no-c-format
+msgid "<!-- pantoken-value-scope:compatibility%2F2%2F%60--instui-component-pill-padding-vertical%60 -->\n| {{ptk_code_0}} | {{ptk_code_1}} | {{ptk_code_2}} | _frozen value_ |"
+msgstr "<!-- pantoken-value-scope:compatibility%2F2%2F%60--instui-component-pill-padding-vertical%60 -->\n| {{ptk_code_0}} | {{ptk_code_1}} | {{ptk_code_2}} | _bevroren waarde_ |"
+
+#: compatibility.md
+#, no-c-format
+msgid "<!-- pantoken-value-scope:compatibility%2F2%2F%60--instui-icon-angry%60 -->\n| {{ptk_code_0}} | {{ptk_code_1}} | {{ptk_code_2}} | _frozen value_ |"
+msgstr "<!-- pantoken-value-scope:compatibility%2F2%2F%60--instui-icon-angry%60 -->\n| {{ptk_code_0}} | {{ptk_code_1}} | {{ptk_code_2}} | _bevroren waarde_ |"
+
+#: compatibility.md
+#, no-c-format
+msgid "<!-- pantoken-value-scope:compatibility%2F2%2F%60--instui-icon-annoyed%60 -->\n| {{ptk_code_0}} | {{ptk_code_1}} | {{ptk_code_2}} | _frozen value_ |"
+msgstr "<!-- pantoken-value-scope:compatibility%2F2%2F%60--instui-icon-annoyed%60 -->\n| {{ptk_code_0}} | {{ptk_code_1}} | {{ptk_code_2}} | _bevroren waarde_ |"
+
+#: compatibility.md
+#, no-c-format
+msgid "<!-- pantoken-value-scope:compatibility%2F2%2F%60--instui-icon-frown%60 -->\n| {{ptk_code_0}} | {{ptk_code_1}} | {{ptk_code_2}} | _frozen value_ |"
+msgstr "<!-- pantoken-value-scope:compatibility%2F2%2F%60--instui-icon-frown%60 -->\n| {{ptk_code_0}} | {{ptk_code_1}} | {{ptk_code_2}} | _bevroren waarde_ |"
+
+#: compatibility.md
+#, no-c-format
+msgid "<!-- pantoken-value-scope:compatibility%2F2%2F%60--instui-icon-history%60 -->\n| {{ptk_code_0}} | {{ptk_code_1}} | {{ptk_code_2}} | {{ptk_code_3}} |"
+msgstr "<!-- pantoken-value-scope:compatibility%2F2%2F%60--instui-icon-history%60 -->\n| {{ptk_code_0}} | {{ptk_code_1}} | {{ptk_code_2}} | {{ptk_code_3}} |"
+
+#: compatibility.md
+#, no-c-format
+msgid "<!-- pantoken-value-scope:compatibility%2F2%2F%60--instui-icon-laugh%60 -->\n| {{ptk_code_0}} | {{ptk_code_1}} | {{ptk_code_2}} | _frozen value_ |"
+msgstr "<!-- pantoken-value-scope:compatibility%2F2%2F%60--instui-icon-laugh%60 -->\n| {{ptk_code_0}} | {{ptk_code_1}} | {{ptk_code_2}} | _bevroren waarde_ |"
+
+#: compatibility.md
+#, no-c-format
+msgid "<!-- pantoken-value-scope:compatibility%2F2%2F%60--instui-icon-meh%60 -->\n| {{ptk_code_0}} | {{ptk_code_1}} | {{ptk_code_2}} | _frozen value_ |"
+msgstr "<!-- pantoken-value-scope:compatibility%2F2%2F%60--instui-icon-meh%60 -->\n| {{ptk_code_0}} | {{ptk_code_1}} | {{ptk_code_2}} | _bevroren waarde_ |"
+
+#: compatibility.md
+#, no-c-format
+msgid "<!-- pantoken-value-scope:compatibility%2F2%2F%60--instui-icon-podcast%60 -->\n| {{ptk_code_0}} | {{ptk_code_1}} | {{ptk_code_2}} | _frozen value_ |"
+msgstr "<!-- pantoken-value-scope:compatibility%2F2%2F%60--instui-icon-podcast%60 -->\n| {{ptk_code_0}} | {{ptk_code_1}} | {{ptk_code_2}} | _bevroren waarde_ |"
+
+#: compatibility.md
+#, no-c-format
+msgid "<!-- pantoken-value-scope:compatibility%2F2%2F%60--instui-icon-smile%60 -->\n| {{ptk_code_0}} | {{ptk_code_1}} | {{ptk_code_2}} | _frozen value_ |"
+msgstr "<!-- pantoken-value-scope:compatibility%2F2%2F%60--instui-icon-smile%60 -->\n| {{ptk_code_0}} | {{ptk_code_1}} | {{ptk_code_2}} | _bevroren waarde_ |"
+
+#: compatibility.md
+#, no-c-format
+msgid "<!-- pantoken-value-scope:compatibility%2F2%2F%60--instui-icon-smile-plus%60 -->\n| {{ptk_code_0}} | {{ptk_code_1}} | {{ptk_code_2}} | _frozen value_ |"
+msgstr "<!-- pantoken-value-scope:compatibility%2F2%2F%60--instui-icon-smile-plus%60 -->\n| {{ptk_code_0}} | {{ptk_code_1}} | {{ptk_code_2}} | _bevroren waarde_ |"
+
+#: compatibility.md
+#, no-c-format
+msgid "<!-- pantoken-value-scope:compatibility%2F2%2F%60--instui-icon-trash-2%60 -->\n| {{ptk_code_0}} | {{ptk_code_1}} | {{ptk_code_2}} | _frozen value_ |"
+msgstr "<!-- pantoken-value-scope:compatibility%2F2%2F%60--instui-icon-trash-2%60 -->\n| {{ptk_code_0}} | {{ptk_code_1}} | {{ptk_code_2}} | _bevroren waarde_ |"

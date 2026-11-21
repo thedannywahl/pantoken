@@ -11,7 +11,7 @@
  * @modifier -layout-responsive — Use stacked cards below the canonical `md` container breakpoint; preserve columns at and above it. Requires per-cell `data-label` values and a size-container ancestor. @affects table.head @affects table.body @affects table.row @affects table.cell @affects table.col-header @affects table.row-header — Applies the existing stacked presentation only in a narrow container.
  * @part caption — An optional table caption.
  * @accessibility Label the table with a `<caption>`, mark column headers `<th scope="col">` and row headers `<th scope="row">`, and in stacked or responsive layouts give every cell a localized `data-label` matching its column header. Keep the native header associations; visible generated labels don't replace them. Name scroll regions and provide keyboard access without trapping focus.
- * @example -canvas-rce -docs
+ * @example labels=[canvas-rce,docs]
  * ```html
  * <div class="pfx-view --overflow-x-auto -focus-position-inset -without-focus-animation" role="region" aria-labelledby="table-caption" tabindex="0">
  * <table class="pfx-table -hover">
@@ -71,7 +71,7 @@
  *     }
  *   }
  * }
- * @example -automatica11y
+ * @example labels=[automatica11y]
  * ```html
  * <table class="pfx-table -hover">
  *   <caption id="table-caption">Top-rated films</caption>

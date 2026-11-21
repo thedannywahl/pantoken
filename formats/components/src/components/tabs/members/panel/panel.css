@@ -9,7 +9,7 @@
  * @component tabs {
  *   .panel {}
  * }
- * @example -automatica11y
+ * @example labels=[automatica11y]
  * ```html
  * <div class="pfx-tabs" data-a11y-root>
  *   <div class="list" role="tablist" aria-label="Account settings">

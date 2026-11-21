@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: pantoken\n"
-"PO-Revision-Date: 2026-11-14 02:33+0000\n"
+"PO-Revision-Date: 2026-11-20 03:01+0000\n"
 "Last-Translator: pantoken localization engine\n"
 "Language-Team: pantoken\n"
 "MIME-Version: 1.0\n"
@@ -35056,3 +35056,109 @@ msgstr "componentElements"
 msgctxt "docs.api:prose"
 msgid "A breadcrumb navigation landmark."
 msgstr "Yon repè navigasyon chemen."
+
+msgctxt "docs.api:prose"
+msgid "\n  An alert with text-color-base modifier for high contrast.\n"
+msgstr "\n  Yon alèt ki gen modifyè text-color-base pou gwo kontras.\n"
+
+msgctxt "docs.api:prose"
+msgid "\n  A warning alert with explicit base text color.\n"
+msgstr "\n  Yon alèt avètisman ki gen koulè tèks debaz eksplisit.\n"
+
+msgctxt "docs.api:prose"
+msgid "\n  An inline alert with inline status icon.\n"
+msgstr "\n  Yon alèt an liy ki gen ikon estati an liy.\n"
+
+msgctxt "docs.api:prose"
+msgid "Render inline icon using the status color (for inline alerts)."
+msgstr "Montre ikon an liy lan ak koulè estati a (pou alèt an liy yo)."
+
+msgctxt "docs.api:prose"
+msgid "Use base text color instead of on-color (high-contrast)."
+msgstr "Sèvi ak koulè tèks debaz la olye koulè on-color la (gwo kontras)."
+
+msgctxt "docs.api:prose"
+msgid "Use on-color text (default for floating)."
+msgstr "Sèvi ak tèks on-color la (pa defo pou eleman k ap flote)."
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "**Source:** [banner.css](https://github.com/thedannywahl/pantoken/blob/main/formats/components/src/components/banner/banner.css)"
+msgstr "**Source:** [banner.css](https://github.com/thedannywahl/pantoken/blob/main/formats/components/src/components/banner/banner.css)"
+
+msgctxt "docs.api:prose"
+msgid "`.item` — A navigation entry (InstUI `GlobalNavBar.Item`); `-selected` marks the active one."
+msgstr "`.item` — Yon antre navigasyon (InstUI `GlobalNavBar.Item`); `-selected` make sa ki aktif la."
+
+msgctxt "docs.api:prose"
+msgid "The parent `global-nav-bar`'s `-minimized` modifier hides this member's `.label` — see `global-nav-bar`'s own doc for that modifier."
+msgstr "Paran `global-nav-bar` la sèvi ak `-minimized` kòm modifikatè pou kache `.label` manm sa a — gade pwòp dokiman `global-nav-bar` la pou modifikatè sa a."
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "**Source:** [global-nav-bar.css](https://github.com/thedannywahl/pantoken/blob/main/formats/components/src/components/global-nav-bar/global-nav-bar.css)"
+msgstr "**Source:** [global-nav-bar.css](https://github.com/thedannywahl/pantoken/blob/main/formats/components/src/components/global-nav-bar/global-nav-bar.css)"
+
+msgctxt "docs.api:prose"
+msgid "`.instui-global-nav-bar` — A vertical navigation rail of icon-over-label items, with a minimized icons-only mode."
+msgstr "`.instui-global-nav-bar` — Yon ba navigasyon vètikal ki gen atik ak ikon anlè etikèt, ansanm ak yon mòd minimize ki montre ikon sèlman."
+
+msgctxt "docs.api:prose"
+msgid "Sets its own `gap` between nav items and its own `padding`; chaining a `-gap-*`/`-p-*`/`-padding-*` spacing utility modifier overrides those built-in values. See the `global-nav-bar.item` member for the individual nav entries."
+msgstr "Li fikse pwòp `gap` ant atik navigasyon yo ak pwòp `padding`; lè ou mete yon `-gap-*`/`-p-*`/`-padding-*` sèvis espas youn apre lòt, modifikatè a ranplase valè entegre sa yo. Gade manm `global-nav-bar.item` la pou chak atik navigasyon."
+
+msgctxt "docs.api:prose"
+msgid "Collapse to icons only (labels hidden). @affects global-nav-bar.item — Hides the item's label."
+msgstr "Redui pou montre ikon sèlman (etikèt yo kache). @affects global-nav-bar.item — Kache etikèt atik la."
+
+msgctxt "docs.api:prose"
+msgid "A styled container for display of important information with two size variants and color themes."
+msgstr "Yon kontenè ak estil pou afiche enfòmasyon enpòtan, ak de varyant gwosè ak tèm koulè."
+
+msgctxt "docs.api:prose"
+msgid "A navigation entry (InstUI `GlobalNavBar.Item`); `-selected` marks the active one."
+msgstr "Yon antre navigasyon (InstUI `GlobalNavBar.Item`); `-selected` make antre aktif la."
+
+msgctxt "docs.api:prose"
+msgid "Large padding around arrow icons in overflow buttons."
+msgstr "Gwo espasman anndan alantou ikon flèch yo nan bouton debòdman yo."
+
+msgctxt "docs.api:prose"
+msgid "Standalone `banner` stylesheet — the prefixed CSS for the banner container, ready to ship as a `.css` file."
+msgstr "Fèy estil otonòm `banner` — CSS ki gen prefiks pou kontenè banyè a, pare pou distribye kòm yon fichye `.css`."
+
+msgctxt "docs.api:prose"
+msgid "Standalone `globalNavBar` stylesheet — the prefixed CSS for the navigation rail, ready to ship as a `.css` file."
+msgstr "Fèy estil endepandan `globalNavBar` — CSS ki gen prefiks pou ba navigasyon an, pare pou pibliye kòm yon `.css` fichye."
+
+msgctxt "docs.api:prose"
+msgid "Standalone `global-nav-bar.item` stylesheet."
+msgstr "Fèy estil endepandan."
+
+msgctxt "docs.api:prose"
+msgid "Use `globalNavBarCss` instead."
+msgstr "Sèvi ak `globalNavBarCss` pito."
+
+msgctxt "docs.api:prose"
+msgid "Use `globalNavBarItemCss` instead."
+msgstr "Sèvi ak `globalNavBarItemCss` pito."
+
+#, pantoken-verbatim
+msgctxt "docs.api:text"
+msgid "bannerCss"
+msgstr "bannerCss"
+
+#, pantoken-verbatim
+msgctxt "docs.api:text"
+msgid "globalNavBarCss"
+msgstr "globalNavBarCss"
+
+#, pantoken-verbatim
+msgctxt "docs.api:text"
+msgid "globalNavBarItemCss"
+msgstr "globalNavBarItemCss"
+
+#, pantoken-verbatim
+msgctxt "docs.api:text"
+msgid "global-nav-bar"
+msgstr "global-nav-bar"

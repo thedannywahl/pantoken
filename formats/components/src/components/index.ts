@@ -14,6 +14,7 @@ import { screenReaderContent } from "../utilities/screen-reader-content/index.ts
 import { alert } from "./alert/index.ts";
 import { avatar } from "./avatar/index.ts";
 import { badge } from "./badge/index.ts";
+import { banner } from "./banner/index.ts";
 import { billboard } from "./billboard/index.ts";
 import { breadcrumb } from "./breadcrumb/index.ts";
 import { breadcrumbLink } from "./breadcrumb/members/link/index.ts";
@@ -62,6 +63,8 @@ import { rangeInput } from "./range-input/index.ts";
 import { rating } from "./rating/index.ts";
 import { sideNavBar } from "./side-nav-bar/index.ts";
 import { sideNavBarItem } from "./side-nav-bar/members/item/index.ts";
+import { globalNavBar } from "./global-nav-bar/index.ts";
+import { globalNavBarItem } from "./global-nav-bar/members/item/index.ts";
 import { simpleSelect } from "./simple-select/index.ts";
 import { spinner } from "./spinner/index.ts";
 import { table } from "./table/index.ts";
@@ -125,6 +128,7 @@ export const COMPONENTS: readonly Definition[] = [
   modalFooter,
   breadcrumb,
   breadcrumbLink,
+  banner,
   billboard,
   rating,
   toggleGroup,
@@ -139,6 +143,8 @@ export const COMPONENTS: readonly Definition[] = [
   fileDrop,
   sideNavBar,
   sideNavBarItem,
+  globalNavBar,
+  globalNavBarItem,
   treeBrowser,
   calendar,
   calendarDay,

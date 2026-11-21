@@ -11,7 +11,7 @@
  * .pfx-side-nav-bar {
  *   .item:one-or-more {}
  * }
- * @example -canvas-rce -docs
+ * @example labels=[canvas-rce,docs]
  * ```html
  * <nav class="pfx-side-nav-bar" aria-label="Primary">
  *   <a class="item -selected" href="#">
@@ -32,7 +32,7 @@
  *   </a>
  * </nav>
  * ```
- * @example -automatica11y
+ * @example labels=[automatica11y]
  * ```html
  * <nav class="pfx-side-nav-bar" aria-label="Primary">
  *   <a class="item -selected" href="#home" aria-current="page">

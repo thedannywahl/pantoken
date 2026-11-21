@@ -7,7 +7,7 @@
  * @part .pfx-form-field-message — An individual message; its `-type-*` picks the hint, error, success, or screen-reader-only variant.
  * @pseudo ::before — Renders the leading status glyph on error and success messages: an alert circle for errors and a check circle for success.
  * @accessibility A `-type-screenreader-only` message is visually hidden but stays in the accessibility tree, so it's still announced; pair error and success messages with the field via aria-describedby so assistive tech reads them with the control.
- * @example -canvas-rce -docs
+ * @example labels=[canvas-rce,docs]
  * ```html
  * <div class="pfx-form-field-messages">
  *   <span class="pfx-form-field-message -type-hint">We'll never share it.</span>
@@ -19,7 +19,7 @@
  *   .pfx-form-field-message {}
  * }
  * @related form-field — Wraps a label, controls, and these messages.
- * @example -automatica11y
+ * @example labels=[automatica11y]
  * ```html
  * <p><label for="audit-message-hint-input">Contact email</label><input id="audit-message-hint-input" class="pfx-text-input" type="email" aria-describedby="audit-message-hint audit-message-screenreader"></p>
  * <div class="pfx-form-field-messages">

@@ -19,11 +19,20 @@ import {
 } from "node:fs";
 import { dirname, join, relative, sep } from "node:path";
 import { DriftReporter, type DriftPolicy } from "@pantoken/translation-adapters";
+import { formatGeneratedFile } from "../../../scripts/release/format-generated.ts";
 import {
   assertGeneratedTranslation,
   generatedFileMarkdown,
   restoreGeneratedMarkdown,
 } from "../../translation-adapters/src/generated-values.ts";
+import {
+  assertCompatibilityHeader,
+  assertCompatibilityRow,
+  assertCompatibilityScaffold,
+  compatibilityMarkdown,
+  compatibilityUnits,
+  renderCompatibility,
+} from "../../translation-adapters/src/compatibility-markdown.ts";
 import type { ContentSpaceConfig, I18nConfig, MessagesSpaceConfig } from "./config.ts";
 import {
   extractFileUnits,
@@ -171,6 +180,13 @@ function contentSpaceUnits(config: I18nConfig, configDir: string, spaceId: strin
   if (!space || space.kind !== "content") throw new Error(`"${spaceId}" is not a content space.`);
   return contentSpaceFiles(space, configDir).flatMap((file) => {
     if (space.segment === "file") {
+      if (spaceId === "docs.guides" && file.reference === "compatibility.md") {
+        return compatibilityUnits(compatibilityMarkdown(file.source)).map((msgid) => ({
+          msgid,
+          reference: file.reference,
+          translate: "always" as const,
+        }));
+      }
       return [
         {
           msgid: generatedFileMarkdown(file.source).template,
@@ -266,12 +282,12 @@ export interface RenderResult {
 }
 
 /** Render a translated content space's locale output with English fallback for empty PO entries. */
-export function runRenderContent(
+export async function runRenderContent(
   config: I18nConfig,
   configDir: string,
   spaceId: string,
   locale: string,
-): RenderResult {
+): Promise<RenderResult> {
   const space = config.spaces[spaceId];
   if (!space || space.kind !== "content") throw new Error(`"${spaceId}" is not a content space.`);
   const entries = loadPoEntriesForSpace(config, configDir, spaceId, locale);
@@ -282,6 +298,11 @@ export function runRenderContent(
       )
       .map((e) => [e.msgid, e.msgstr]),
   );
+  const reviewed = new Map(
+    entries
+      .filter((e) => !e.obsolete && !e.fuzzy && e.msgstr !== "")
+      .map((e) => [e.msgid, e.msgstr]),
+  );
   const resolve = (text: string): string => {
     const translation = byMsgid.get(text);
     if (text.includes("{{ptk_code_")) {
@@ -289,18 +310,40 @@ export function runRenderContent(
         throw new Error(`${locale}: missing reviewed generated-value translation`);
       assertGeneratedTranslation(text, translation);
     }
+    if (text.startsWith("<!-- pantoken-compatibility-scaffold -->")) {
+      if (translation === undefined)
+        throw new Error(`${locale}: missing reviewed compatibility translation`);
+      assertCompatibilityScaffold(text, translation);
+    }
     return translation ?? text;
   };
 
   const filesWritten: string[] = [];
   for (const file of contentSpaceFiles(space, configDir)) {
-    const rendered = renderContentFile(space.segment, file.source, resolve, locale);
-    const outPath = join(
-      configDir,
-      resolvePattern(space.render, { locale, path: file.renderPath }),
-    );
+    const rendered =
+      spaceId === "docs.guides" && file.reference === "compatibility.md"
+        ? `${normalizeWholeFileMarkdown(
+            renderCompatibility(compatibilityMarkdown(file.source), (unit) => {
+              const translation = reviewed.get(unit);
+              if (translation === undefined)
+                throw new Error(
+                  `${locale}: missing reviewed compatibility translation: ${unit.slice(0, 100)}`,
+                );
+              return translation;
+            }),
+          )}\n`
+        : renderContentFile(space.segment, file.source, resolve, locale);
+    const outPath =
+      spaceId === "docs.guides" && file.reference === "compatibility.md"
+        ? join(configDir, space.root ?? ".", locale, file.reference)
+        : join(configDir, resolvePattern(space.render, { locale, path: file.renderPath }));
     mkdirSync(dirname(outPath), { recursive: true });
-    writeFileSync(outPath, rendered);
+    writeFileSync(
+      outPath,
+      spaceId === "docs.guides" && file.reference === "compatibility.md"
+        ? await formatGeneratedFile(rendered, outPath)
+        : rendered,
+    );
     filesWritten.push(outPath);
   }
   cleanupStaleRenderedFiles(space, configDir, locale, new Set(filesWritten));
@@ -393,15 +436,28 @@ export function runCheckContent(
     const translated = new Set(
       entries
         .filter(
-          (e) => e.msgstr !== "" && (!e.msgid.includes("{{ptk_code_") || (!e.fuzzy && !e.obsolete)),
+          (e) =>
+            e.msgstr !== "" &&
+            (!e.msgid.includes("{{ptk_code_") || (!e.fuzzy && !e.obsolete)) &&
+            (!e.msgid.startsWith("<!-- pantoken-compatibility-scaffold -->") ||
+              (!e.fuzzy && !e.obsolete)),
         )
         .map((e) => {
           if (e.msgid.includes("{{ptk_code_")) assertGeneratedTranslation(e.msgid, e.msgstr);
+          assertCompatibilityScaffold(e.msgid, e.msgstr);
+          assertCompatibilityRow(e.msgid, e.msgstr);
+          if (e.references.includes("compatibility.md") && e.msgid.startsWith("|"))
+            assertCompatibilityHeader(e.msgid, e.msgstr);
           return e.msgid;
         }),
     );
+    const reviewed = new Set(
+      entries
+        .filter((entry) => !entry.obsolete && !entry.fuzzy && entry.msgstr !== "")
+        .map((entry) => entry.msgid),
+    );
     for (const unit of units) {
-      if (translated.has(unit.msgid)) continue;
+      if ((unit.reference === "compatibility.md" ? reviewed : translated).has(unit.msgid)) continue;
       const [file, line] = unit.reference.split(":");
       reporter.add({
         surface: spaceId,

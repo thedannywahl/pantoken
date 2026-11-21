@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: pantoken\n"
-"PO-Revision-Date: 2026-11-13 23:10+0000\n"
+"PO-Revision-Date: 2026-11-20 03:17+0000\n"
 "Last-Translator: pantoken localization engine\n"
 "Language-Team: pantoken\n"
 "MIME-Version: 1.0\n"
@@ -35056,3 +35056,109 @@ msgstr "numberInput"
 msgctxt "docs.api:text"
 msgid "componentElements"
 msgstr "componentElements"
+
+msgctxt "docs.api:prose"
+msgid "\n  An alert with text-color-base modifier for high contrast.\n"
+msgstr "\n  ハイコントラスト向けの text-color-base モディファイアを使ったアラート。\n"
+
+msgctxt "docs.api:prose"
+msgid "\n  A warning alert with explicit base text color.\n"
+msgstr "\n  明示的なベーステキストカラーを使った警告アラート。\n"
+
+msgctxt "docs.api:prose"
+msgid "\n  An inline alert with inline status icon.\n"
+msgstr "\n  インラインのステータスアイコンを含むインラインアラート。\n"
+
+msgctxt "docs.api:prose"
+msgid "Render inline icon using the status color (for inline alerts)."
+msgstr "インラインアラートでは、ステータスカラーを使ってインラインアイコンを描画します)。"
+
+msgctxt "docs.api:prose"
+msgid "Use base text color instead of on-color (high-contrast)."
+msgstr "オンカラーの代わりにベーステキストカラーを使います（ハイコントラスト向け)。"
+
+msgctxt "docs.api:prose"
+msgid "Use on-color text (default for floating)."
+msgstr "オンカラーテキストを使います（フローティングではデフォルト)。"
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "**Source:** [banner.css](https://github.com/thedannywahl/pantoken/blob/main/formats/components/src/components/banner/banner.css)"
+msgstr "**Source:** [banner.css](https://github.com/thedannywahl/pantoken/blob/main/formats/components/src/components/banner/banner.css)"
+
+msgctxt "docs.api:prose"
+msgid "`.item` — A navigation entry (InstUI `GlobalNavBar.Item`); `-selected` marks the active one."
+msgstr "`.item` — ナビゲーション項目（InstUI `GlobalNavBar.Item`); `-selected` はアクティブな項目を示します。"
+
+msgctxt "docs.api:prose"
+msgid "The parent `global-nav-bar`'s `-minimized` modifier hides this member's `.label` — see `global-nav-bar`'s own doc for that modifier."
+msgstr "親の `global-nav-bar` の `-minimized` 修飾子によって、このメンバーの `.label` は非表示になります。この修飾子については、`global-nav-bar` 自身のドキュメントを参照してください。"
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "**Source:** [global-nav-bar.css](https://github.com/thedannywahl/pantoken/blob/main/formats/components/src/components/global-nav-bar/global-nav-bar.css)"
+msgstr "**Source:** [global-nav-bar.css](https://github.com/thedannywahl/pantoken/blob/main/formats/components/src/components/global-nav-bar/global-nav-bar.css)"
+
+msgctxt "docs.api:prose"
+msgid "`.instui-global-nav-bar` — A vertical navigation rail of icon-over-label items, with a minimized icons-only mode."
+msgstr "`.instui-global-nav-bar` — アイコンをラベルの上に配置した項目で構成される縦型ナビゲーションレール。アイコンのみの縮小モードも備えています。"
+
+msgctxt "docs.api:prose"
+msgid "Sets its own `gap` between nav items and its own `padding`; chaining a `-gap-*`/`-p-*`/`-padding-*` spacing utility modifier overrides those built-in values. See the `global-nav-bar.item` member for the individual nav entries."
+msgstr "ナビゲーション項目間に独自の `gap` を設定し、独自の `padding` も設定します。`-gap-*`/`-p-*`/`-padding-*` 間隔ユーティリティ修飾子を連結すると、これらの組み込み値が上書きされます。個々のナビゲーション項目については、`global-nav-bar.item` メンバーを参照してください。"
+
+msgctxt "docs.api:prose"
+msgid "Collapse to icons only (labels hidden). @affects global-nav-bar.item — Hides the item's label."
+msgstr "アイコンのみ（ラベルを非表示）に折りたたむ). @affects global-nav-bar.item — 項目のラベルを非表示にします。"
+
+msgctxt "docs.api:prose"
+msgid "A styled container for display of important information with two size variants and color themes."
+msgstr "重要な情報を表示するための、2種類のサイズとカラーテーマを備えたスタイル付きコンテナ。"
+
+msgctxt "docs.api:prose"
+msgid "A navigation entry (InstUI `GlobalNavBar.Item`); `-selected` marks the active one."
+msgstr "ナビゲーション項目 (InstUI `GlobalNavBar.Item`); `-selected` はアクティブな項目を示します。"
+
+msgctxt "docs.api:prose"
+msgid "Large padding around arrow icons in overflow buttons."
+msgstr "オーバーフローボタンの矢印アイコンの周囲に大きなパディングがあります。"
+
+msgctxt "docs.api:prose"
+msgid "Standalone `banner` stylesheet — the prefixed CSS for the banner container, ready to ship as a `.css` file."
+msgstr "単独で使える `banner` スタイルシート — バナーコンテナ用のプレフィックス付き CSS で、`.css` ファイルとしてそのまま出荷できます。"
+
+msgctxt "docs.api:prose"
+msgid "Standalone `globalNavBar` stylesheet — the prefixed CSS for the navigation rail, ready to ship as a `.css` file."
+msgstr "単独の `globalNavBar` スタイルシート — ナビゲーションレール用のプレフィックス付き CSS で、`.css` ファイルとしてそのまま公開できます。"
+
+msgctxt "docs.api:prose"
+msgid "Standalone `global-nav-bar.item` stylesheet."
+msgstr "単独の `global-nav-bar.item` スタイルシート。"
+
+msgctxt "docs.api:prose"
+msgid "Use `globalNavBarCss` instead."
+msgstr "代わりに`globalNavBarCss`を使用してください。"
+
+msgctxt "docs.api:prose"
+msgid "Use `globalNavBarItemCss` instead."
+msgstr "`globalNavBarItemCss`の代わりに使用してください。"
+
+#, pantoken-verbatim
+msgctxt "docs.api:text"
+msgid "bannerCss"
+msgstr "bannerCss"
+
+#, pantoken-verbatim
+msgctxt "docs.api:text"
+msgid "globalNavBarCss"
+msgstr "globalNavBarCss"
+
+#, pantoken-verbatim
+msgctxt "docs.api:text"
+msgid "globalNavBarItemCss"
+msgstr "globalNavBarItemCss"
+
+#, pantoken-verbatim
+msgctxt "docs.api:text"
+msgid "global-nav-bar"
+msgstr "global-nav-bar"

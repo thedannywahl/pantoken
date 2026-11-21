@@ -34,7 +34,7 @@ for (const locale of Object.keys(LOCALES)) {
       locale,
       provider ? { profile: provider } : {},
     );
-    runRenderContent(config, repoRoot, SPACE, locale);
+    await runRenderContent(config, repoRoot, SPACE, locale);
     console.log(
       `  ${locale}: ${String(translated)} translated, ${String(untranslated)} untranslated`,
     );

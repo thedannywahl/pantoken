@@ -62,6 +62,11 @@ pantoken is a design-token transformation and distribution system. It converts I
   duplicated, unknown, or malformed slots fail validation; the bindings don't evaluate expressions
   or follow object paths. Source Markdown and URLs remain trusted inputs, not sanitized content.
   Migration preserves fuzzy status and rejects ambiguous mappings rather than approving translations.
+  Compatibility table rows are scoped by identifier and reject values moved between columns.
+  Historical revisions supplied to the local migration must come from a trusted checkout; the
+  structural checks don't establish translation quality or authenticate those revisions.
+  Scope-comment masking excludes nested `<` characters so repeated unterminated prefixes don't
+  cause quadratic matching; Markdown is still trusted input, not sanitized content.
 - The CLI translation HTTP shim can listen only on `127.0.0.1`. It rejects browser `Origin`
   headers and unexpected `Host` headers before invoking a provider. It is an unencrypted local
   development endpoint, not a remote service or an authentication boundary against local processes.

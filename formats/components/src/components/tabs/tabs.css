@@ -6,7 +6,7 @@
  * @modifier -overflow-scroll — Keep the tab list on one line and let it scroll horizontally instead of wrapping, hiding the scrollbar.
  * @part .list — The row of tabs.
  * @a11y Wire the tab list with role="tablist", each tab with role="tab" and aria-selected, and each panel with role="tabpanel".
- * @example -canvas-rce
+ * @example labels=[canvas-rce]
  * ```html
  * <div class="pfx-tabs">
  *   <div class="list" role="tablist" aria-label="Default tabs">
@@ -21,7 +21,7 @@
  *   <div class="panel" id="history-panel" role="tabpanel" hidden>The History tab's content shows here.</div>
  * </div>
  * ```
- * @example -automatica11y
+ * @example labels=[automatica11y]
  * ```html
  * <div class="pfx-tabs" data-a11y-root>
  *   <div class="list" role="tablist" aria-label="Account settings">
@@ -52,7 +52,7 @@
  *   <div class="panel" id="scroll-security-panel" role="tabpanel" aria-labelledby="scroll-security-tab" hidden></div>
  * </div>
  * ```
- * @example -docs
+ * @example labels=[docs]
  * ```html
  * <div class="pfx-tabs -variant-secondary">
  *   <div class="list" role="tablist" aria-label="Project views">

@@ -13,7 +13,8 @@
  * - Ensure the title is in an `<h1>` tag for semantic structure
  * - If using background images, provide sufficient color contrast for text
  * - Avoid autoplay on video or animation that could distract from content
- * @example -automatica11y -nocard
+ * @example labels=[automatica11y]
+ * -nocard
  * ```html
  * <div class="pfx-hero" data-a11y-root>
  *   <div class="pfx-content">

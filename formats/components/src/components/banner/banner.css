@@ -1,0 +1,155 @@
+/**
+ * @component banner
+ * @summary A styled container for display of important information with two size variants and color themes.
+ * @remarks Banners present key information with a heading and content in a contained block. Use `-size-compact` for minimal spacing and `-size-relaxed` for expanded spacing. Apply a color theme with `-theme-sea` or `-theme-violet` to change the background and icon colors. Close buttons and icons can be positioned within the banner structure.
+ * @selector .PFX-banner
+ * @modifier -size-compact — Compact sizing with smaller heading, content font size, and tighter spacing.
+ * @modifier -size-relaxed — Relaxed sizing (default) with larger heading, content font size, and expanded spacing.
+ * @modifier -theme-sea — Sea/teal color theme.
+ * @modifier -theme-violet — Violet color theme.
+ * @part .heading — The banner heading.
+ * @part .content — The banner content area.
+ * @part .icon — Optional leading icon or image container.
+ * @part .close-button — Optional close/dismiss button.
+ * @accessibility Use semantically appropriate heading elements (h1-h6) for `.heading`. Ensure sufficient color contrast between text and background. For dismissible banners, provide an accessible close button with `aria-label`.
+ * @example labels=[canvas-rce,docs]
+ * ```html
+ * <div class="pfx-banner -size-relaxed -theme-sea">
+ *   <span class="icon" aria-hidden="true"></span>
+ *   <div class="heading">Important Information</div>
+ *   <div class="content">This is an important message that needs your attention.</div>
+ *   <button class="pfx-close-button" aria-label="Close banner"></button>
+ * </div>
+ * ```
+ * @example labels=[automatica11y]
+ * -nocard
+ * ```html
+ * <div class="pfx-banner -size-relaxed -theme-sea">
+ *   <span class="icon" aria-hidden="true"></span>
+ *   <h2 class="heading">Relaxed Sea Banner</h2>
+ *   <div class="content">This is a relaxed banner with the sea color theme.</div>
+ * </div>
+ * <div class="pfx-banner -size-compact -theme-sea">
+ *   <h2 class="heading">Compact Sea Banner</h2>
+ *   <div class="content">This banner uses compact sizing.</div>
+ * </div>
+ * <div class="pfx-banner -size-relaxed -theme-violet">
+ *   <h2 class="heading">Relaxed Violet Banner</h2>
+ *   <div class="content">This is a relaxed banner with the violet color theme.</div>
+ * </div>
+ * <div class="pfx-banner -size-compact -theme-violet">
+ *   <h2 class="heading">Compact Violet Banner</h2>
+ *   <div class="content">This banner uses compact sizing with violet theme.</div>
+ * </div>
+ * ```
+ * @example labels=[docs]
+ * ```html
+ * <div class="pfx-banner -size-compact -theme-sea">
+ *   <div class="heading">Compact Banner</div>
+ *   <div class="content">This banner uses compact sizing.</div>
+ * </div>
+ * <div class="pfx-banner -size-relaxed -theme-violet">
+ *   <div class="heading">Relaxed Banner</div>
+ *   <div class="content">This banner uses relaxed sizing.</div>
+ * </div>
+ * ```
+ * @example labels=[canvas-rce-no-interactions]
+ * ```html
+ * <div class="pfx-banner -size-relaxed -theme-sea">
+ *   <div class="heading">Important Information</div>
+ *   <div class="content">This is an important message that needs your attention.</div>
+ * </div>
+ * ```
+ */
+.PFX-banner {
+  display: block;
+  font-family: var(--instui-component-banner-font-family);
+  color: var(--instui-component-banner-color);
+  border: var(--instui-component-banner-border-width) var(--instui-component-banner-border-style)
+    var(--instui-component-banner-border-color);
+  border-radius: var(--instui-component-banner-border-radius);
+}
+
+@scope (.PFX-banner) {
+  :scope {
+    &.-size-relaxed {
+      padding: var(--instui-component-banner-relaxed-padding-vertical)
+        var(--instui-component-banner-relaxed-padding-horizontal);
+      gap: var(--instui-component-banner-relaxed-content-gap-horizontal);
+    }
+
+    &.-size-compact {
+      padding: var(--instui-component-banner-compact-padding-vertical)
+        var(--instui-component-banner-compact-padding-horizontal);
+      gap: var(--instui-component-banner-compact-content-gap-horizontal);
+    }
+
+    &.-theme-sea {
+      background-color: var(--instui-component-banner-sea-background);
+    }
+
+    &.-theme-sea .icon {
+      background-color: var(--instui-component-banner-sea-icon-background);
+    }
+
+    &.-theme-violet {
+      background-color: var(--instui-component-banner-violet-background);
+    }
+
+    &.-theme-violet .icon {
+      background-color: var(--instui-component-banner-violet-icon-background);
+    }
+
+    > .heading {
+      margin: 0 0 var(--instui-component-banner-content-gap-vertical) 0;
+      font-weight: var(--instui-component-banner-heading-font-weight);
+      line-height: var(--instui-component-banner-heading-line-height);
+    }
+
+    &.-size-compact > .heading {
+      font-size: var(--instui-component-banner-compact-heading-font-size);
+    }
+
+    &.-size-relaxed > .heading {
+      font-size: var(--instui-component-banner-relaxed-heading-font-size);
+    }
+
+    > .content {
+      font-weight: var(--instui-component-banner-content-font-weight);
+      line-height: var(--instui-component-banner-content-line-height);
+    }
+
+    &.-size-compact > .content {
+      font-size: var(--instui-component-banner-compact-content-font-size);
+    }
+
+    &.-size-relaxed > .content {
+      font-size: var(--instui-component-banner-relaxed-content-font-size);
+    }
+
+    > .icon {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--instui-component-banner-icon-color);
+      border-radius: var(--instui-component-banner-compact-icon-border-radius);
+    }
+
+    &.-size-compact > .icon {
+      height: var(--instui-component-banner-compact-icon-height);
+      width: var(--instui-component-banner-compact-icon-height);
+      border-radius: var(--instui-component-banner-compact-icon-border-radius);
+    }
+
+    &.-size-relaxed > .icon {
+      height: var(--instui-component-banner-relaxed-icon-height);
+      width: var(--instui-component-banner-relaxed-icon-height);
+      border-radius: var(--instui-component-banner-relaxed-icon-border-radius);
+    }
+
+    > .close-button {
+      margin-right: var(--instui-component-banner-close-button-margin-right);
+      margin-top: var(--instui-component-banner-close-button-margin-top);
+    }
+  }
+}

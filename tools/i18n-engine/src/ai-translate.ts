@@ -24,6 +24,11 @@ import {
 import type { ProviderConfig, ProviderProfileConfig } from "./config.ts";
 import { parsePo, serializePo, writeCatalog, type PoEntry } from "./po.ts";
 import { assertGeneratedTranslation } from "../../translation-adapters/src/generated-values.ts";
+import {
+  assertCompatibilityHeader,
+  assertCompatibilityRow,
+  assertCompatibilityScaffold,
+} from "../../translation-adapters/src/compatibility-markdown.ts";
 
 /** True when an AI translation command is configured via `I18N_TRANSLATION_COMMAND`. */
 export function aiProviderConfigured(): boolean {
@@ -204,7 +209,10 @@ export async function fillUntranslatedMarkdownEntries(
       (selected === undefined || selected.has(`${entry.msgctxt ?? ""}\u0000${entry.msgid}`)) &&
       (options.force === true ||
         entry.msgstr === "" ||
-        (entry.fuzzy && entry.msgid.includes("{{ptk_code_"))),
+        (entry.fuzzy &&
+          (entry.msgid.includes("{{ptk_code_") ||
+            entry.msgid.startsWith("<!-- pantoken-compatibility-scaffold -->") ||
+            entry.references.includes("compatibility.md")))),
   );
   if (pending.length === 0) return;
 
@@ -225,7 +233,16 @@ export async function fillUntranslatedMarkdownEntries(
       const translated = restoreMarkdown(stripMarkdownEnvelope(response), preserved);
       if (translated.trim().length === 0) return;
       assertGeneratedTranslation(entry.msgid, translated);
-      entry.msgstr = `${translated.trimEnd()}\n`;
+      assertCompatibilityScaffold(entry.msgid, translated);
+      assertCompatibilityRow(entry.msgid, translated);
+      if (entry.references.includes("compatibility.md") && entry.msgid.startsWith("|"))
+        assertCompatibilityHeader(entry.msgid, translated);
+      entry.msgstr =
+        entry.references.includes("compatibility.md") &&
+        (entry.msgid.startsWith("|") ||
+          entry.msgid.startsWith("<!-- pantoken-value-scope:compatibility%2F"))
+          ? translated.trimEnd()
+          : `${translated.trimEnd()}\n`;
       entry.fuzzy = false;
       entry.flags = entry.flags.filter((flag) => flag !== "fuzzy");
       writeCatalog(poPath, serializePo(entries));

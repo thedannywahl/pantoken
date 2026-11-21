@@ -9,7 +9,7 @@
  * @modifier -variant-toggle — Lay the child toggles out as a segmented control (only the selected segment fills).
  * @pseudo ::after — Renders the decorative required-field asterisk after the legend text when the group is required.
  * @accessibility Use a native `<fieldset>` with a `<legend>` that names the group. Radios within a group share one `name`; independent groups need distinct names and legends so selecting one group's radio doesn't clear another group's selection.
- * @example -canvas-rce -docs
+ * @example labels=[canvas-rce,docs]
   * ```html
  * <fieldset class="pfx-radio-input-group">
  *   <legend>T-shirt size</legend>
@@ -18,6 +18,7 @@
  *   <label class="pfx-radio"><input type="radio" name="shirt-size"> Large</label>
  * </fieldset>
  * ```
+ * @example labels=[reference]
  * ### Toggle variant
  * ```html
  * <fieldset class="pfx-radio-input-group -variant-toggle">
@@ -36,7 +37,7 @@
  * }
  * @related radio — The individual control this group collects.
  * @related form-field-group — The general wrapper for grouping and laying out fields.
- * @example -automatica11y
+ * @example labels=[automatica11y]
  * ```html
  * <fieldset class="pfx-radio-input-group">
  *   <legend>Stacked sizes</legend>

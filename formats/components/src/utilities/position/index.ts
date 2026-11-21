@@ -39,13 +39,13 @@ export const position: Definition = defineUtility({
  * @modifier --position-fixed — position: fixed.
  * @modifier --position-sticky — position: sticky.
  * @a11y Positioning changes where content appears, not where it sits in the DOM: keep the visual order matching the reading and focus order, and don't let positioned content cover a focused control.
- * @example -automatica11y
+ * @example labels=[automatica11y]
  * \`\`\`html
  * <div class="--position-relative">
  *   <p>Positioned content stays in reading order.</p>
  * </div>
  * \`\`\`
- * @example
+ * @example labels=[canvas-rce]
  * <div class="--position-relative">…</div>
  */
       ${rules.join("\n")}

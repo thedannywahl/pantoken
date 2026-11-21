@@ -13,13 +13,13 @@
  * @pseudo ::after — Renders the caret's inner fill triangle.
  * @cssstate open
  * @compat Uses CSS anchor positioning (`position-anchor`, `position-area`, `position-try-fallbacks`) and the native `[popover]` API behind an `@supports` guard; needs a recent Chromium or Safari, and falls back to a UA-centred popover elsewhere.
- * @example -canvas-rce -docs
+ * @example labels=[canvas-rce,docs]
  * ```html
  * <div class="pfx-context-view -placement-bottom" id="cv-popover">A context view frames a callout with a caret. As a popover it rides the top layer and closes when you click away or press Esc.</div>
  * ```
  * @related popover — The generic top-layer popover.
  * @related tooltip — A smaller hover or focus callout.
- * @example -automatica11y
+ * @example labels=[automatica11y]
  * ```html
  * <div class="--p-md" data-a11y-root>
  *   <div class="--p-md"><div class="pfx-context-view -placement-top">Notes appear above the selection.</div></div>

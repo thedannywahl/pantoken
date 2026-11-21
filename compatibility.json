@@ -1,8 +1,8 @@
 {
   "upstream": {
     "@instructure/instructure-design-tokens": {
-      "range": "github:instructure/instructure-design-tokens#v2.1.0",
-      "resolved": "v2.1.0@c7f0deea242d",
+      "range": "github:instructure/instructure-design-tokens#v2.6.0",
+      "resolved": "v2.6.0@6d9cdb99e36c",
       "feeds": "token-ir"
     },
     "@instructure/ui-icons": {
@@ -602,18 +602,10 @@
   ],
   "deprecations": [
     {
-      "token": "--instui-component-side-nav-bar-new-insitution-logo-gap",
-      "deprecatedIn": "ui@11.7.7",
-      "removeIn": "ui@11.8.0",
-      "replacement": "--instui-component-side-nav-bar-new-institution-logo-gap",
-      "note": "The upstream token corrected the institution spelling."
-    },
-    {
-      "token": "--instui-component-side-nav-bar-new-insitution-logo-padding",
-      "deprecatedIn": "ui@11.7.7",
-      "removeIn": "ui@11.8.0",
-      "replacement": "--instui-component-side-nav-bar-new-institution-logo-padding",
-      "note": "The upstream token corrected the institution spelling."
+      "token": "--instui-component-pill-padding-vertical",
+      "deprecatedIn": "design-tokens@2.6.0",
+      "removeIn": "design-tokens@3.0.0",
+      "note": "The upstream token was removed in v2.6.0."
     },
     {
       "token": "--instui-icon-angry",

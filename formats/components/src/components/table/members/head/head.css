@@ -9,7 +9,7 @@
  * @component table {
  *   thead {}
  * }
- * @example -automatica11y
+ * @example labels=[automatica11y]
  * ```html
  * <table class="pfx-table -hover">
  *   <caption id="table-head-caption">Top-rated films</caption>

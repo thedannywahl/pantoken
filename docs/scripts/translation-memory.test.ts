@@ -57,6 +57,53 @@ test("validates generated bindings in JSON caches on both read and write", () =>
   expect(() => memory.set("prose", source, "No binding")).toThrow("placeholder");
 });
 
+test("translates scoped prose without sending its comment and reuses the result", async () => {
+  const prefix = "<!-- pantoken-value-scope:bundlers%2Fnext -->\n";
+  const source = `${prefix}Target: Next.js. Format: {{ptk_code_0}}.`;
+  const translated = `${prefix}Cél: Next.js. Formátum: {{ptk_code_0}}.`;
+  const memory = TranslationMemory.load("hu", "test");
+  const translateBatch = vi.fn(async (items: readonly { id: string; text: string }[]) => {
+    expect(items[0].text).toBe("Target: Next.js. Format: {{ptk_code_0}}.");
+    return { [items[0].id]: "Cél: Next.js. Formátum: {{ptk_code_0}}." };
+  });
+  const units: TranslationUnit[] = [{ kind: "prose", source }];
+  const first = await translateUnits(adapter({ translateBatch }), memory, units);
+  const second = await translateUnits(adapter({ translateBatch }), memory, units);
+  expect(first.get(keyFor("prose", source))).toBe(translated);
+  expect(second.get(keyFor("prose", source))).toBe(translated);
+  expect(translateBatch).toHaveBeenCalledTimes(1);
+});
+
+test("does not cache scoped English echoed alongside a translated unit", async () => {
+  const source = "<!-- pantoken-value-scope:page -->\nUse {{ptk_code_0}}.";
+  const memory = TranslationMemory.load("hu", "test");
+  const translateBatch = vi.fn(async (items: readonly { id: string; text: string }[]) =>
+    Object.fromEntries(
+      items.map((item) => [item.id, item.text === "Other prose" ? "Más" : item.text]),
+    ),
+  );
+  const units: TranslationUnit[] = [
+    { kind: "prose", source },
+    { kind: "prose", source: "Other prose" },
+  ];
+  await translateUnits(adapter({ translateBatch }), memory, units);
+  await translateUnits(adapter({ translateBatch }), memory, units);
+  expect(translateBatch).toHaveBeenCalledTimes(2);
+  expect(translateBatch.mock.calls[1][0]).toEqual([
+    { id: keyFor("prose", source), text: "Use {{ptk_code_0}}." },
+  ]);
+});
+
+test("rejects translated scoped prose that loses generated values", async () => {
+  const source = "<!-- pantoken-value-scope:page -->\nUse {{ptk_code_0}}.";
+  const memory = TranslationMemory.load("hu", "test");
+  await expect(
+    translateUnits(adapter({ translateText: async () => "Használja ezt." }), memory, [
+      { kind: "prose", source },
+    ]),
+  ).rejects.toThrow("placeholder");
+});
+
 test("keeps ordinary fuzzy lookup behavior without accepting fuzzy generated bindings", () => {
   existsSync.mockReturnValue(true);
   readFileSync.mockReturnValue(

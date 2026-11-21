@@ -367,12 +367,16 @@ describe("apiDrift", () => {
 });
 
 describe("top-level drift check", () => {
-  test("reports an untranslated compatibility page as guide drift", async () => {
+  test("reports compatibility.md drift alongside guide drift", async () => {
     fixtures.compatibilityMd = "# Compatibility\n\nTarget support matrix";
+    fixtures.guideFiles = ["intro.md"];
+    fixtures.guidesCache = {}; // guide drifts
+    fixtures.apiCache = {}; // all 4 api prose blocks drift
 
     await import("./check-locale-drift.ts");
 
     expect(errText()).toContain("docs/compatibility.md");
+    expect(errText()).toContain("intro.md");
     expect(errText()).toContain("[docs.guides]");
     expect(process.exitCode).toBe(1);
   });

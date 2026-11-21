@@ -33,9 +33,6 @@
     "test": "vp test",
     "check": "vp check"
   },
-  "dependencies": {
-    "@pantoken/utils": "workspace:*"
-  },
   "devDependencies": {
     "@shikijs/langs": "catalog:",
     "@shikijs/themes": "catalog:",

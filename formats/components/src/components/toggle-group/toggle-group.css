@@ -9,7 +9,7 @@
  * @modifier -size-lg — Large.
  * @pseudo ::before — Draws the summary row's disclosure chevron, a masked glyph that rotates to point down when the group is open.
  * @cssstate open
- * @example -canvas-rce -docs
+ * @example labels=[canvas-rce,docs]
  * ```html
  * <details class="pfx-toggle-group" open>
  *   <summary>Advanced settings</summary>
@@ -22,7 +22,7 @@
  *   div {}
  * }
  * @related toggle-details — The single, unbordered form of the same disclosure.
- * @example -automatica11y
+ * @example labels=[automatica11y]
  * ```html
  * <details class="pfx-toggle-group" open><summary>Default group</summary><div></div></details>
  * <details class="pfx-toggle-group -size-sm" open><summary>Small group</summary><div></div></details>

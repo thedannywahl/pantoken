@@ -51,11 +51,11 @@ export const cursor: Definition = defineUtility({
  * @modifier --cursor-grab — cursor: grab.
  * @modifier --cursor-wait — cursor: wait.
  * @a11y The cursor only affects pointer users; a pointer cursor doesn't make an element operable. Put it on native controls (\`button\`, \`a\`), and never use \`--cursor-not-allowed\` or \`--cursor-wait\` as the only sign that something is disabled or busy.
- * @example -automatica11y
+ * @example labels=[automatica11y]
  * \`\`\`html
  * <button class="instui-button --cursor-pointer">Open details</button>
  * \`\`\`
- * @example
+ * @example labels=[canvas-rce]
  * <div class="--cursor-pointer">…</div>
  */
       ${rules.join("\n")}

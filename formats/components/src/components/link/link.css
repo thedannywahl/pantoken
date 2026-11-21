@@ -12,9 +12,9 @@
  * @modifier -size-lg — Large.
  * @cssstate disabled
  * @a11y Mark a disabled link with `aria-disabled="true"`.
- * @example -canvas-rce
+ * @example labels=[canvas-rce]
  * <a class="pfx-link" href="#">A styled link</a>
- * @example -automatica11y
+ * @example labels=[automatica11y]
  * ```html
  * <div>
  *   <p><a class="pfx-link" href="#audit-link-settings" data-a11y-trigger data-a11y-root>Account settings</a></p>
@@ -33,7 +33,7 @@
  *   <p id="audit-link-settings">Manage your account preferences here.</p>
  * </div>
  * ```
- * @example -docs
+ * @example labels=[docs]
  * ```html
  * <p>Read the <a class="pfx-link -inline" href="#accessibility">accessibility guide</a>.</p>
  * ```

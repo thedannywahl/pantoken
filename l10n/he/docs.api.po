@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: pantoken\n"
-"PO-Revision-Date: 2026-11-13 22:33+0000\n"
+"PO-Revision-Date: 2026-11-20 03:03+0000\n"
 "Last-Translator: pantoken localization engine\n"
 "Language-Team: pantoken\n"
 "MIME-Version: 1.0\n"
@@ -35056,3 +35056,109 @@ msgstr "numberInput"
 msgctxt "docs.api:text"
 msgid "componentElements"
 msgstr "componentElements"
+
+msgctxt "docs.api:prose"
+msgid "\n  An alert with text-color-base modifier for high contrast.\n"
+msgstr "\n  התראה עם משנה צבע טקסט בסיסי לניגודיות גבוהה.\n"
+
+msgctxt "docs.api:prose"
+msgid "\n  A warning alert with explicit base text color.\n"
+msgstr "\n  התראת אזהרה עם צבע טקסט בסיסי מפורש.\n"
+
+msgctxt "docs.api:prose"
+msgid "\n  An inline alert with inline status icon.\n"
+msgstr "\n  התראה בתוך השורה עם סמל סטטוס בתוך השורה.\n"
+
+msgctxt "docs.api:prose"
+msgid "Render inline icon using the status color (for inline alerts)."
+msgstr "עיבוד סמל בתוך השורה באמצעות צבע הסטטוס (להתראות בתוך השורה)."
+
+msgctxt "docs.api:prose"
+msgid "Use base text color instead of on-color (high-contrast)."
+msgstr "שימוש בצבע טקסט בסיסי במקום בצבע על (ניגודיות גבוהה)."
+
+msgctxt "docs.api:prose"
+msgid "Use on-color text (default for floating)."
+msgstr "שימוש בטקסט בצבע על (ברירת מחדל להתראות צפות)."
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "**Source:** [banner.css](https://github.com/thedannywahl/pantoken/blob/main/formats/components/src/components/banner/banner.css)"
+msgstr "**Source:** [banner.css](https://github.com/thedannywahl/pantoken/blob/main/formats/components/src/components/banner/banner.css)"
+
+msgctxt "docs.api:prose"
+msgid "`.item` — A navigation entry (InstUI `GlobalNavBar.Item`); `-selected` marks the active one."
+msgstr "`.item` — פריט ניווט (InstUI `GlobalNavBar.Item`); `-selected` מציין את הפריט הפעיל."
+
+msgctxt "docs.api:prose"
+msgid "The parent `global-nav-bar`'s `-minimized` modifier hides this member's `.label` — see `global-nav-bar`'s own doc for that modifier."
+msgstr "המשנה `global-nav-bar` של ההורה מסתיר את משנה `-minimized` של איבר זה — ראו בתיעוד של `.label` עצמו את פרטי המשנה הזה."
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "**Source:** [global-nav-bar.css](https://github.com/thedannywahl/pantoken/blob/main/formats/components/src/components/global-nav-bar/global-nav-bar.css)"
+msgstr "**Source:** [global-nav-bar.css](https://github.com/thedannywahl/pantoken/blob/main/formats/components/src/components/global-nav-bar/global-nav-bar.css)"
+
+msgctxt "docs.api:prose"
+msgid "`.instui-global-nav-bar` — A vertical navigation rail of icon-over-label items, with a minimized icons-only mode."
+msgstr "`.instui-global-nav-bar` — סרגל ניווט אנכי של פריטים עם סמל מעל תווית, עם מצב ממוזער המציג סמלים בלבד."
+
+msgctxt "docs.api:prose"
+msgid "Sets its own `gap` between nav items and its own `padding`; chaining a `-gap-*`/`-p-*`/`-padding-*` spacing utility modifier overrides those built-in values. See the `global-nav-bar.item` member for the individual nav entries."
+msgstr "מגדיר `gap` משלו בין פריטי הניווט ו־`padding` משלו; שרשור של משנה מרווחים מסוג `-gap-*`/`-p-*`/`-padding-*` גובר על ערכי ברירת המחדל האלה. למידע על פריטי הניווט הבודדים, ראו את החבר `global-nav-bar.item`."
+
+msgctxt "docs.api:prose"
+msgid "Collapse to icons only (labels hidden). @affects global-nav-bar.item — Hides the item's label."
+msgstr "כווץ לתצוגת סמלים בלבד (התוויות מוסתרות). @affects global-nav-bar.item — מסתיר את תווית הפריט."
+
+msgctxt "docs.api:prose"
+msgid "A styled container for display of important information with two size variants and color themes."
+msgstr "מיכל מעוצב להצגת מידע חשוב, עם שתי וריאציות של גודל וערכות צבעים."
+
+msgctxt "docs.api:prose"
+msgid "A navigation entry (InstUI `GlobalNavBar.Item`); `-selected` marks the active one."
+msgstr "פריט ניווט (InstUI `GlobalNavBar.Item`); `-selected` מסמן את הפריט הפעיל."
+
+msgctxt "docs.api:prose"
+msgid "Large padding around arrow icons in overflow buttons."
+msgstr "ריווח פנימי גדול סביב סמלי החצים בכפתורי גלישה."
+
+msgctxt "docs.api:prose"
+msgid "Standalone `banner` stylesheet — the prefixed CSS for the banner container, ready to ship as a `.css` file."
+msgstr "גיליון סגנונות עצמאי `banner` — ה-CSS עם הקידומת עבור מכל הבאנר, מוכן להפצה כקובץ `.css`."
+
+msgctxt "docs.api:prose"
+msgid "Standalone `globalNavBar` stylesheet — the prefixed CSS for the navigation rail, ready to ship as a `.css` file."
+msgstr "גיליון סגנונות עצמאי `globalNavBar` — ה-CSS עם הקידומת עבור סרגל הניווט, מוכן להפצה כקובץ `.css`."
+
+msgctxt "docs.api:prose"
+msgid "Standalone `global-nav-bar.item` stylesheet."
+msgstr "גיליון סגנונות `global-nav-bar.item` עצמאי."
+
+msgctxt "docs.api:prose"
+msgid "Use `globalNavBarCss` instead."
+msgstr "השתמש ב־`globalNavBarCss` במקום זאת."
+
+msgctxt "docs.api:prose"
+msgid "Use `globalNavBarItemCss` instead."
+msgstr "השתמש ב`globalNavBarItemCss` במקום זאת."
+
+#, pantoken-verbatim
+msgctxt "docs.api:text"
+msgid "bannerCss"
+msgstr "bannerCss"
+
+#, pantoken-verbatim
+msgctxt "docs.api:text"
+msgid "globalNavBarCss"
+msgstr "globalNavBarCss"
+
+#, pantoken-verbatim
+msgctxt "docs.api:text"
+msgid "globalNavBarItemCss"
+msgstr "globalNavBarItemCss"
+
+#, pantoken-verbatim
+msgctxt "docs.api:text"
+msgid "global-nav-bar"
+msgstr "global-nav-bar"

@@ -21,6 +21,11 @@
       "css": "https://cdn.jsdelivr.net/npm/@pantoken/components/dist/badge.css"
     },
     {
+      "name": "banner",
+      "type": "css-only",
+      "css": "https://cdn.jsdelivr.net/npm/@pantoken/components/dist/banner.css"
+    },
+    {
       "name": "billboard",
       "type": "css-only",
       "css": "https://cdn.jsdelivr.net/npm/@pantoken/components/dist/billboard.css"
@@ -114,6 +119,16 @@
       "type": "css-only",
       "needsIcons": true,
       "css": "https://cdn.jsdelivr.net/npm/@pantoken/components/dist/form-field-messages.css"
+    },
+    {
+      "name": "global-nav-bar",
+      "type": "css-only",
+      "css": "https://cdn.jsdelivr.net/npm/@pantoken/components/dist/global-nav-bar.css"
+    },
+    {
+      "name": "global-nav-bar-item",
+      "type": "js-only",
+      "js": "https://cdn.jsdelivr.net/npm/@pantoken/interactions/dist/global-nav-bar-item.iife.js"
     },
     {
       "name": "heading",

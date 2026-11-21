@@ -65,3 +65,18 @@ test("alert supports token-backed floating and inline status treatments", () => 
   expect(css).not.toContain(".instui-alert.-removing");
   expect(css).not.toContain("transition: opacity");
 });
+
+test("alert supports text color and inline icon variants from v2.6.0", () => {
+  const css = alertCss({ prefix: "instui" });
+  // Text color variants.
+  expect(css).toContain("&.-text-color-base");
+  expect(css).toContain("--instui-component-alert-text-base");
+  expect(css).toContain("&.-text-color-on-color");
+  expect(css).toContain("--instui-component-alert-text-on-color");
+  // Inline icon variants.
+  expect(css).toContain("&.-icon-inline");
+  expect(css).toContain("--instui-component-alert-info-icon-inline");
+  expect(css).toContain("--instui-component-alert-success-icon-inline");
+  expect(css).toContain("--instui-component-alert-warning-icon-inline");
+  expect(css).toContain("--instui-component-alert-danger-icon-inline");
+});

@@ -44,6 +44,7 @@ interface ComponentRecord {
   kind: "component" | "utility" | "custom-component";
   description?: string;
   examples: string[];
+  exampleLabels?: CssDocEntry["exampleLabels"];
 }
 
 const COMPONENT_PICKER_EXCLUDED_COMPONENTS = new Set([
@@ -156,7 +157,8 @@ function buildComponentList(model: CssDocEntry[]): ComponentRecord[] {
       className: entry.className,
       kind: entry.kind as any,
       description: (entry as any).description || "",
-      examples: (entry as any).examples || [],
+      examples: entry.examples ?? [],
+      exampleLabels: entry.exampleLabels,
     });
   }
 
@@ -208,7 +210,7 @@ function openComponentsDialog(
       const component = components.find((c) => c.name === selectedName);
 
       if (component) {
-        const exampleIndex = resolveExampleTargets(component.examples, {
+        const exampleIndex = resolveExampleTargets(component, {
           interactions: options.includeInteractions?.() ?? true,
         }).canvasRce[0];
         if (exampleIndex === undefined) {

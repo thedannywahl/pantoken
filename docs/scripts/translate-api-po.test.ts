@@ -100,6 +100,65 @@ test("marks POT-flagged identity entries translated without sending them to the 
   expect(mocks.refreshCoverageReports).toHaveBeenCalled();
 });
 
+test.each(["", "WCAG 2.2 1.4.11, 2.4.7"])(
+  "approves fixed WCAG references without a POT flag or provider call (cached: %j)",
+  async (msgstr) => {
+    const entry: PoEntry = {
+      msgctxt: "docs.api:prose",
+      msgid: "WCAG 2.2 1.4.11, 2.4.7",
+      msgstr,
+      obsolete: false,
+      fuzzy: true,
+      flags: ["fuzzy"],
+      references: [],
+    };
+    mocks.parsePo.mockReturnValue([entry]);
+    await import("./translate-api-po.ts");
+    expect(mocks.translateBatch).not.toHaveBeenCalled();
+    expect(entry.msgstr).toBe(entry.msgid);
+    expect(entry.flags).toContain("pantoken-verbatim");
+    expect(entry.fuzzy).toBe(false);
+  },
+);
+
+test("repairs scoped prose without sending metadata and preserves the generated binding", async () => {
+  const prefix = "<!-- pantoken-value-scope:page -->\n";
+  const entry: PoEntry = {
+    msgctxt: "docs.api:prose",
+    msgid: `${prefix}Use {{ptk_code_0}}.`,
+    msgstr: `${prefix}Use {{ptk_code_0}}.`,
+    obsolete: false,
+    fuzzy: false,
+    flags: [],
+    references: [],
+  };
+  mocks.parsePo.mockReturnValue([entry]);
+  mocks.translateBatch.mockImplementation(async (items, onChunk) => {
+    expect(items[0].text).toBe("Use {{ptk_code_0}}.");
+    onChunk({ [items[0].id]: "Használja: {{ptk_code_0}}." });
+  });
+  await import("./translate-api-po.ts");
+  expect(entry.msgstr).toBe(`${prefix}Használja: {{ptk_code_0}}.`);
+});
+
+test("rejects repaired scoped prose with missing generated values", async () => {
+  mocks.parsePo.mockReturnValue([
+    {
+      msgctxt: "docs.api:prose",
+      msgid: "<!-- pantoken-value-scope:page -->\nUse {{ptk_code_0}}.",
+      msgstr: "",
+      obsolete: false,
+      fuzzy: false,
+      flags: [],
+      references: [],
+    },
+  ]);
+  mocks.translateBatch.mockImplementation(async (items, onChunk) => {
+    onChunk({ [items[0].id]: "Használja ezt." });
+  });
+  await expect(import("./translate-api-po.ts")).rejects.toThrow("placeholder");
+});
+
 test("marks locale-specific identity names translated without sending them to the provider", async () => {
   mocks.parsePo.mockReturnValue([
     {

@@ -11,7 +11,7 @@
  *     tr {}
  *   }
  * }
- * @example -automatica11y
+ * @example labels=[automatica11y]
  * ```html
  * <table class="pfx-table -hover">
  *   <caption id="table-row-caption">Top-rated films</caption>

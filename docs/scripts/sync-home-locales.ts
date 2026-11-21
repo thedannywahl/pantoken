@@ -36,5 +36,5 @@ for (const locale of parseRequestedLocales(process.env.DOCS_TRANSLATION_LOCALE, 
   if (result.untranslated > 0) {
     throw new Error(`docs.home (${locale}): ${result.untranslated} entries remain untranslated.`);
   }
-  runRenderContent(config, repoRoot, "docs.home", locale);
+  await runRenderContent(config, repoRoot, "docs.home", locale);
 }

@@ -13,6 +13,7 @@ import { globSync, readFileSync, writeFileSync } from "node:fs";
 import { join, relative } from "node:path";
 import { refreshCoverageReports, serializePot, writeCatalog } from "@pantoken/i18n-engine";
 import { collectUnits, isCatalogedApiUnit, segmentMarkdown } from "./segment-markdown.ts";
+import { isWcagReference } from "./api-verbatim.ts";
 
 const docsRoot = join(import.meta.dirname, "..");
 const repoRoot = join(docsRoot, "..");
@@ -28,22 +29,6 @@ const VERBATIM_API_PROSE = new Set([
   "AI",
   "JS",
   "AB",
-  "-canvas-rce\n",
-  "-docs\n",
-  "WCAG 2.2 1.3.1, 3.3.2, 4.1.2",
-  "WCAG 2.2 1.4.11",
-  "WCAG 2.2 1.4.11, 2.4.13",
-  "WCAG 2.2 1.4.13",
-  "WCAG 2.2 2.1.1",
-  "WCAG 2.2 2.1.1, 2.4.3",
-  "WCAG 2.2 2.1.1, 4.1.2",
-  "WCAG 2.2 2.1.2",
-  "WCAG 2.2 2.4.3",
-  "WCAG 2.2 2.4.7",
-  "WCAG 2.2 2.5.3",
-  "WCAG 2.2 3.3.1, 4.1.3",
-  "WCAG 2.2 4.1.2",
-  "WCAG 2.2 4.1.3",
   "readonly [`LogoMeta`](../interfaces/LogoMeta.md)[]",
 ]);
 
@@ -225,7 +210,10 @@ export const refreshApiPot = ({ force = false }: { force?: boolean } = {}): void
           msgid: unit.text,
           msgctxt: `docs.api:${unit.kind}`,
           reference: relative(enApiDir, join(enApiDir, file)),
-          flags: VERBATIM_API_PROSE.has(unit.text) ? [PANTOKEN_VERBATIM_FLAG] : [],
+          flags:
+            VERBATIM_API_PROSE.has(unit.text) || isWcagReference(unit.text)
+              ? [PANTOKEN_VERBATIM_FLAG]
+              : [],
           translate: "always" as const,
         })),
     );
