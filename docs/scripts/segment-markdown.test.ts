@@ -80,6 +80,13 @@ const TYPEDOC_PAGE = [
 
 const identity = (text: string): string => text;
 
+test("preserves standalone generated metadata without creating a prose unit", () => {
+  const markdown = "<!-- pantoken-generated-values -->\n\n<!-- unrelated metadata -->";
+  const segments = segmentMarkdown(markdown);
+  expect(collectUnits(segments)).toEqual([]);
+  expect(reassemble(segments, identity)).toBe(markdown);
+});
+
 /** Find the single segment whose text contains `needle`. */
 const find = (segments: Segment[], needle: string): Segment => {
   const match = segments.filter(

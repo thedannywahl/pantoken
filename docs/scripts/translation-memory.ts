@@ -30,7 +30,10 @@ import {
   writeCatalog,
   type PoEntry,
 } from "@pantoken/i18n-engine";
-import { assertGeneratedTranslation } from "../../tools/translation-adapters/src/generated-values.ts";
+import {
+  assertGeneratedTranslation,
+  splitGeneratedScope,
+} from "../../tools/translation-adapters/src/generated-values.ts";
 
 /** Match a translation's trailing-newline shape to its source string. */
 export function alignTrailingNewline(source: string, translation: string): string {
@@ -279,7 +282,7 @@ function cachedTranslation(
   if (cached === undefined) return undefined;
   if (isApprovedCacheValue(memory, unit, cached, options)) return cached;
   console.warn(
-    `  !${translationContext(unit, options)} cached ${unit.kind} translation for ${JSON.stringify(unit.source.slice(0, 40))} looks untranslated; retranslating`,
+    `  !${translationContext(unit, options)} cached ${unit.kind} translation for ${JSON.stringify(splitGeneratedScope(unit.source).text.slice(0, 40))} looks untranslated; retranslating`,
   );
   return undefined;
 }
@@ -373,9 +376,13 @@ function persistBatchUnit(
 ): boolean {
   const id = keyFor(unit.kind, unit.source);
   const verbatim = isPassthroughTranslation(unit.source, value);
-  if (!adapterProducedChanges && !allowsVerbatim(unit.source, options) && verbatim) {
+  if (
+    (!adapterProducedChanges || splitGeneratedScope(unit.source).prefix !== "") &&
+    !allowsVerbatim(unit.source, options) &&
+    verbatim
+  ) {
     console.warn(
-      `  !${translationContext(unit, options)} ${unit.kind} unit looks untranslated (identical to source), not cached: ${JSON.stringify(unit.source.slice(0, 40))}`,
+      `  !${translationContext(unit, options)} ${unit.kind} unit looks untranslated (identical to source), not cached: ${JSON.stringify(splitGeneratedScope(unit.source).text.slice(0, 40))}`,
     );
     result.set(id, unit.source);
     return false;
@@ -399,7 +406,10 @@ async function translateBatchableMisses(
   options: TranslateOptions,
 ): Promise<void> {
   if (batchable.length === 0) return;
-  const items = batchable.map((u) => ({ id: keyFor(u.kind, u.source), text: u.source }));
+  const items = batchable.map((u) => ({
+    id: keyFor(u.kind, u.source),
+    text: splitGeneratedScope(u.source).text,
+  }));
   const byId = new Map(items.map((item, index) => [item.id, batchable[index]]));
   const consumed = new Set<string>();
   const persist = (partial: Record<string, string>): void => {
@@ -412,7 +422,10 @@ async function translateBatchableMisses(
       adapter.translatesProse !== false &&
       Object.entries(partial).some(([id, value]) => {
         const unit = byId.get(id);
-        return unit !== undefined && !isPassthroughTranslation(unit.source, value);
+        return (
+          unit !== undefined &&
+          !isPassthroughTranslation(splitGeneratedScope(unit.source).text, value)
+        );
       });
     const added = Object.entries(partial).reduce((count, [id, value]) => {
       const unit = byId.get(id);
@@ -420,7 +433,16 @@ async function translateBatchableMisses(
       consumed.add(id);
       return (
         count +
-        Number(persistBatchUnit(memory, result, unit, value, options, adapterProducedChanges))
+        Number(
+          persistBatchUnit(
+            memory,
+            result,
+            unit,
+            splitGeneratedScope(unit.source).prefix + value,
+            options,
+            adapterProducedChanges,
+          ),
+        )
       );
     }, 0);
     if (added === 0) return; // e.g. the final sweep re-seeing an already-persisted chunk

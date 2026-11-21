@@ -492,3 +492,15 @@ test("keeps API identifiers and code-shaped prose verbatim", async () => {
     expect(isRequiredVerbatimApiUnit(source), source).toBe(false);
   }
 });
+
+test.each([
+  ["WCAG 2.2 1.4.3", true],
+  ["WCAG 2.2 1.4.11, 2.4.7", true],
+  ["WCAG 2.2 2.3.3, 2.2.2", true],
+  ["WCAG 2.2 1.4.3 explains contrast", false],
+  ["WCAG 2.2 1.4", false],
+  ["WCAG 2.2 1.4.3, invalid", false],
+])("classifies WCAG reference %j as verbatim: %s", async (source, expected) => {
+  const { isRequiredVerbatimApiUnit } = await import("./build-api-locales.ts");
+  expect(isRequiredVerbatimApiUnit(source)).toBe(expected);
+});

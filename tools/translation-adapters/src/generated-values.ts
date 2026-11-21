@@ -17,6 +17,12 @@ const CODE_SPAN = /(?<![\\`])(`+)(?!`)([^\n]*?)\1(?!`)/gu;
 /** Explicit opt-in for whole-file generated translation templates. */
 export const GENERATED_VALUES_MARKER = "<!-- pantoken-generated-values -->";
 
+/** Separate the catalog identity from prose sent to a translator. */
+export function splitGeneratedScope(source: string): { prefix: string; text: string } {
+  const prefix = SCOPE.exec(source)?.[0] ?? "";
+  return { prefix, text: source.slice(prefix.length) };
+}
+
 /** Keep existing per-page wording distinct when different machine values share a prose template. */
 export function scopeGeneratedMarkdown(
   generated: GeneratedMarkdown,

@@ -190,6 +190,7 @@ const classifyJsCallout = (lines: string[]): Segment | undefined => {
 const classifyBlock = (lines: string[]): Segment => {
   const text = lines.join("\n");
   const first = lines[0];
+  if (first === GENERATED_VALUES_MARKER && lines.length === 1) return { kind: "preserve", text };
   if (first === GENERATED_VALUES_MARKER)
     return { kind: "prose", text: lines.slice(1).join("\n"), generatedValues: true };
 
