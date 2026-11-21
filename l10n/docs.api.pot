@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: pantoken\n"
-"PO-Revision-Date: 2026-11-20 18:46+0000\n"
+"PO-Revision-Date: 2026-11-21 16:09+0000\n"
 "Last-Translator: pantoken localization engine\n"
 "Language-Team: pantoken\n"
 "MIME-Version: 1.0\n"
@@ -702,6 +702,8 @@ msgstr ""
 #: css/form-field-messages.md
 #: css/form-field.md
 #: css/gap.md
+#: css/global-nav-bar.item.md
+#: css/global-nav-bar.md
 #: css/heading.md
 #: css/icon.md
 #: css/img.md
@@ -784,11 +786,11 @@ msgstr ""
 #: css/alert.md
 #: css/alert.md
 #: css/alert.md
+#: css/alert.md
 #: css/avatar.md
 #: css/avatar.md
 #: css/badge.md
 #: css/badge.md
-#: css/banner.md
 #: css/banner.md
 #: css/banner.md
 #: css/base.md
@@ -844,6 +846,10 @@ msgstr ""
 #: css/form-field.md
 #: css/gap.md
 #: css/gap.md
+#: css/global-nav-bar.item.md
+#: css/global-nav-bar.item.md
+#: css/global-nav-bar.md
+#: css/global-nav-bar.md
 #: css/heading.md
 #: css/heading.md
 #: css/heading.md
@@ -876,16 +882,12 @@ msgstr ""
 #: css/maskglobal.md
 #: css/menu.group.md
 #: css/menu.group.md
-#: css/menu.group.md
 #: css/menu.item.md
 #: css/menu.item.md
-#: css/menu.item.md
 #: css/menu.md
 #: css/menu.md
 #: css/menu.md
 #: css/menu.md
-#: css/menu.md
-#: css/menu.separator.md
 #: css/menu.separator.md
 #: css/menu.separator.md
 #: css/metric.md
@@ -923,7 +925,6 @@ msgstr ""
 #: css/prose.md
 #: css/radio-input-group.md
 #: css/radio-input-group.md
-#: css/radio.md
 #: css/radio.md
 #: css/radio.md
 #: css/range-input.md
@@ -1017,11 +1018,11 @@ msgstr ""
 #: css/alert.md
 #: css/alert.md
 #: css/alert.md
+#: css/alert.md
 #: css/avatar.md
 #: css/avatar.md
 #: css/badge.md
 #: css/badge.md
-#: css/banner.md
 #: css/banner.md
 #: css/banner.md
 #: css/base.md
@@ -1077,6 +1078,10 @@ msgstr ""
 #: css/form-field.md
 #: css/gap.md
 #: css/gap.md
+#: css/global-nav-bar.item.md
+#: css/global-nav-bar.item.md
+#: css/global-nav-bar.md
+#: css/global-nav-bar.md
 #: css/heading.md
 #: css/heading.md
 #: css/heading.md
@@ -1109,16 +1114,12 @@ msgstr ""
 #: css/maskglobal.md
 #: css/menu.group.md
 #: css/menu.group.md
-#: css/menu.group.md
 #: css/menu.item.md
 #: css/menu.item.md
-#: css/menu.item.md
 #: css/menu.md
 #: css/menu.md
 #: css/menu.md
 #: css/menu.md
-#: css/menu.md
-#: css/menu.separator.md
 #: css/menu.separator.md
 #: css/menu.separator.md
 #: css/metric.md
@@ -1156,7 +1157,6 @@ msgstr ""
 #: css/prose.md
 #: css/radio-input-group.md
 #: css/radio-input-group.md
-#: css/radio.md
 #: css/radio.md
 #: css/radio.md
 #: css/range-input.md
@@ -1250,11 +1250,11 @@ msgstr ""
 #: css/alert.md
 #: css/alert.md
 #: css/alert.md
+#: css/alert.md
 #: css/avatar.md
 #: css/avatar.md
 #: css/badge.md
 #: css/badge.md
-#: css/banner.md
 #: css/banner.md
 #: css/banner.md
 #: css/base.md
@@ -1310,6 +1310,10 @@ msgstr ""
 #: css/form-field.md
 #: css/gap.md
 #: css/gap.md
+#: css/global-nav-bar.item.md
+#: css/global-nav-bar.item.md
+#: css/global-nav-bar.md
+#: css/global-nav-bar.md
 #: css/heading.md
 #: css/heading.md
 #: css/heading.md
@@ -1342,16 +1346,12 @@ msgstr ""
 #: css/maskglobal.md
 #: css/menu.group.md
 #: css/menu.group.md
-#: css/menu.group.md
 #: css/menu.item.md
 #: css/menu.item.md
-#: css/menu.item.md
 #: css/menu.md
 #: css/menu.md
 #: css/menu.md
 #: css/menu.md
-#: css/menu.md
-#: css/menu.separator.md
 #: css/menu.separator.md
 #: css/menu.separator.md
 #: css/metric.md
@@ -1389,7 +1389,6 @@ msgstr ""
 #: css/prose.md
 #: css/radio-input-group.md
 #: css/radio-input-group.md
-#: css/radio.md
 #: css/radio.md
 #: css/radio.md
 #: css/range-input.md
@@ -1483,11 +1482,11 @@ msgstr ""
 #: css/alert.md
 #: css/alert.md
 #: css/alert.md
+#: css/alert.md
 #: css/avatar.md
 #: css/avatar.md
 #: css/badge.md
 #: css/badge.md
-#: css/banner.md
 #: css/banner.md
 #: css/banner.md
 #: css/base.md
@@ -1543,6 +1542,10 @@ msgstr ""
 #: css/form-field.md
 #: css/gap.md
 #: css/gap.md
+#: css/global-nav-bar.item.md
+#: css/global-nav-bar.item.md
+#: css/global-nav-bar.md
+#: css/global-nav-bar.md
 #: css/heading.md
 #: css/heading.md
 #: css/heading.md
@@ -1575,16 +1578,12 @@ msgstr ""
 #: css/maskglobal.md
 #: css/menu.group.md
 #: css/menu.group.md
-#: css/menu.group.md
 #: css/menu.item.md
 #: css/menu.item.md
-#: css/menu.item.md
 #: css/menu.md
 #: css/menu.md
 #: css/menu.md
 #: css/menu.md
-#: css/menu.md
-#: css/menu.separator.md
 #: css/menu.separator.md
 #: css/menu.separator.md
 #: css/metric.md
@@ -1622,7 +1621,6 @@ msgstr ""
 #: css/prose.md
 #: css/radio-input-group.md
 #: css/radio-input-group.md
-#: css/radio.md
 #: css/radio.md
 #: css/radio.md
 #: css/range-input.md
@@ -1841,7 +1839,6 @@ msgstr ""
 #: css/ai-gradient.md
 #: css/ai-gradient.md
 #: css/avatar.md
-#: css/banner.md
 #: css/button-set.md
 #: css/button.md
 #: css/byline.md
@@ -1852,11 +1849,7 @@ msgstr ""
 #: css/heading.md
 #: css/input-group.md
 #: css/maskglobal.md
-#: css/menu.group.md
 #: css/menu.item.md
-#: css/menu.item.md
-#: css/menu.md
-#: css/menu.separator.md
 #: css/progress.md
 #: css/radio-input-group.md
 #: css/radio.md
@@ -1905,6 +1898,8 @@ msgstr ""
 #: css/form-field-messages.md
 #: css/form-field.md
 #: css/gap.md
+#: css/global-nav-bar.item.md
+#: css/global-nav-bar.md
 #: css/heading.md
 #: css/icon.md
 #: css/img.md
@@ -2006,6 +2001,8 @@ msgstr ""
 #: css/form-field-messages.md
 #: css/form-field.md
 #: css/gap.md
+#: css/global-nav-bar.item.md
+#: css/global-nav-bar.md
 #: css/heading.md
 #: css/icon.md
 #: css/img.md
@@ -2080,8 +2077,9 @@ msgid "WCAG 2.2 1.4.10"
 msgstr ""
 
 #: css/agent-shell.md
+#: css/alert.md
+#: css/alert.md
 #: css/avatar.md
-#: css/banner.md
 #: css/billboard.md
 #: css/button-set.md
 #: css/button-set.md
@@ -2092,7 +2090,6 @@ msgstr ""
 #: css/modal.md
 #: css/progress.md
 #: css/radio-input-group.md
-#: css/radio.md
 #: css/radio.md
 #: css/segmented-control.md
 #: css/tabs.md
@@ -2145,6 +2142,8 @@ msgstr ""
 #: css/form-field-messages.md
 #: css/form-field.md
 #: css/gap.md
+#: css/global-nav-bar.item.md
+#: css/global-nav-bar.md
 #: css/heading.md
 #: css/icon.md
 #: css/img.md
@@ -2246,6 +2245,8 @@ msgstr ""
 #: css/form-field-messages.md
 #: css/form-field.md
 #: css/gap.md
+#: css/global-nav-bar.item.md
+#: css/global-nav-bar.md
 #: css/heading.md
 #: css/icon.md
 #: css/img.md
@@ -2327,6 +2328,7 @@ msgstr ""
 #: css/alert.md
 #: css/alert.md
 #: css/alert.md
+#: css/alert.md
 #: css/avatar.md
 #: css/avatar.md
 #: css/badge.md
@@ -2383,6 +2385,10 @@ msgstr ""
 #: css/form-field.md
 #: css/gap.md
 #: css/gap.md
+#: css/global-nav-bar.item.md
+#: css/global-nav-bar.item.md
+#: css/global-nav-bar.md
+#: css/global-nav-bar.md
 #: css/heading.md
 #: css/heading.md
 #: css/icon.md
@@ -2455,7 +2461,6 @@ msgstr ""
 #: css/prose.md
 #: css/radio-input-group.md
 #: css/radio-input-group.md
-#: css/radio.md
 #: css/radio.md
 #: css/radio.md
 #: css/range-input.md
@@ -2567,6 +2572,8 @@ msgstr ""
 #: css/form-field-messages.md
 #: css/form-field.md
 #: css/gap.md
+#: css/global-nav-bar.item.md
+#: css/global-nav-bar.md
 #: css/heading.md
 #: css/icon.md
 #: css/img.md
@@ -2668,6 +2675,8 @@ msgstr ""
 #: css/form-field-messages.md
 #: css/form-field.md
 #: css/gap.md
+#: css/global-nav-bar.item.md
+#: css/global-nav-bar.md
 #: css/heading.md
 #: css/icon.md
 #: css/img.md
@@ -2883,7 +2892,7 @@ msgid "A transparent border framed by the shared AI gradient."
 msgstr ""
 
 #: css/ai-gradient.md
-#: css/banner.md
+#: css/alert.md
 #: css/billboard.md
 #: css/button-set.md
 #: css/button.md
@@ -2893,12 +2902,7 @@ msgstr ""
 #: css/input-group.md
 #: css/link.md
 #: css/maskglobal.md
-#: css/menu.group.md
-#: css/menu.item.md
-#: css/menu.md
-#: css/menu.separator.md
 #: css/progress.md
-#: css/radio.md
 #: css/simple-select.md
 #, no-c-format
 msgctxt "docs.api:prose"
@@ -2906,7 +2910,7 @@ msgid "Rules (axe-core)"
 msgstr ""
 
 #: css/ai-gradient.md
-#: css/banner.md
+#: css/alert.md
 #: css/button-set.md
 #: css/button.md
 #: css/byline.md
@@ -2916,7 +2920,6 @@ msgstr ""
 #: css/link.md
 #: css/maskglobal.md
 #: css/progress.md
-#: css/radio.md
 #: css/simple-select.md
 #, no-c-format
 msgctxt "docs.api:prose"
@@ -2926,7 +2929,7 @@ msgstr ""
 #: css/ai-gradient.md
 #: css/alert.md
 #: css/alert.md
-#: css/banner.md
+#: css/alert.md
 #: css/button-set.md
 #: css/button.md
 #: css/button.md
@@ -2946,7 +2949,6 @@ msgstr ""
 #: css/menu.item.md
 #: css/menu.md
 #: css/menu.md
-#: css/menu.separator.md
 #: css/modal.body.md
 #: css/modal.footer.md
 #: css/modal.header.md
@@ -2957,13 +2959,12 @@ msgstr ""
 #: css/progress.md
 #: css/radio-input-group.md
 #: css/radio.md
-#: css/radio.md
 #: css/segmented-control.md
-#: css/simple-select.md
 #: css/simple-select.md
 #: css/tabs.md
 #: css/toggle-details.md
 #: css/toggle-group.md
+#: css/tooltip.md
 #: css/tooltip.md
 #: css/tray.md
 #, no-c-format
@@ -2972,7 +2973,6 @@ msgid "WCAG 2.2 1.4.3"
 msgstr ""
 
 #: css/ai-gradient.md
-#: css/banner.md
 #: css/button-set.md
 #: css/button.md
 #: css/heading.md
@@ -3199,7 +3199,22 @@ msgid "For an important message, add `role=\"alert\"` or an `aria-live` region s
 msgstr ""
 
 #: css/alert.md
-#: css/banner.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Rebrand (light), Canvas, Canvas High Contrast:"
+msgstr ""
+
+#: css/alert.md
+#: css/byline.md
+#: css/form-field.md
+#: css/link.md
+#: css/progress.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid " Elements must meet minimum color contrast ratio thresholds"
+msgstr ""
+
+#: css/alert.md
 #: css/base.md
 #: css/billboard.md
 #: css/breadcrumb.link.md
@@ -3216,6 +3231,8 @@ msgstr ""
 #: css/form-field-messages.md
 #: css/form-field.md
 #: css/gap.md
+#: css/global-nav-bar.item.md
+#: css/global-nav-bar.md
 #: css/icon.md
 #: css/in-place-edit.md
 #: css/input-group.md
@@ -3257,7 +3274,6 @@ msgid "forced-colors-focus-visible"
 msgstr ""
 
 #: css/alert.md
-#: css/banner.md
 #: css/base.md
 #: css/billboard.md
 #: css/breadcrumb.link.md
@@ -3274,6 +3290,8 @@ msgstr ""
 #: css/form-field-messages.md
 #: css/form-field.md
 #: css/gap.md
+#: css/global-nav-bar.item.md
+#: css/global-nav-bar.md
 #: css/icon.md
 #: css/in-place-edit.md
 #: css/input-group.md
@@ -3321,7 +3339,6 @@ msgstr ""
 #: css/drawer-layout.tray.md
 #: css/menu.group.md
 #: css/menu.md
-#: css/menu.separator.md
 #: css/modal.body.md
 #: css/modal.footer.md
 #: css/modal.header.md
@@ -3341,15 +3358,68 @@ msgstr ""
 #: css/alert.md
 #: css/button-set.md
 #: css/button.md
+#: css/checkbox.md
+#: css/link.md
+#: css/radio-input-group.md
+#: css/radio.md
+#: css/segmented-control.md
+#: css/text-area.md
+#: css/view.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Rebrand (light):"
+msgstr ""
+
+#: css/alert.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid " With prefers-contrast: less, one piece of text falls below the minimum contrast. The worst is \"Your session expires soon.\" at 2.74:1 (needs 4.5:1). Softer contrast is fine only while text stays readable."
+msgstr ""
+
+#: css/alert.md
+#: css/checkbox.md
+#: css/link.md
+#: css/link.md
+#: css/radio-input-group.md
+#: css/radio.md
+#: css/text-area.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Canvas:"
+msgstr ""
+
+#: css/alert.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid " With prefers-contrast: less, one piece of text falls below the minimum contrast. The worst is \"Your session expires soon.\" at 2.77:1 (needs 4.5:1). Softer contrast is fine only while text stays readable."
+msgstr ""
+
+#: css/alert.md
+#: css/link.md
+#: css/radio-input-group.md
+#: css/radio.md
+#: css/text-area.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Canvas High Contrast:"
+msgstr ""
+
+#: css/alert.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid " With prefers-contrast: less, one piece of text falls below the minimum contrast. The worst is \"Your session expires soon.\" at 1.48:1 (needs 4.5:1). Softer contrast is fine only while text stays readable."
+msgstr ""
+
+#: css/alert.md
+#: css/button-set.md
+#: css/button.md
 #: css/file-drop.md
 #: css/menu.group.md
 #: css/menu.item.md
 #: css/menu.md
-#: css/menu.separator.md
 #: css/number-input.md
 #: css/progress.md
 #: css/segmented-control.md
-#: css/simple-select.md
 #: css/tag.md
 #: css/toggle-details.md
 #: css/toggle-group.md
@@ -3360,8 +3430,13 @@ msgid "Not applicable"
 msgstr ""
 
 #: css/alert.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid " With prefers-contrast: more, one piece of text falls below the minimum contrast. The worst is \"Your session expires soon.\" at 2.74:1 (needs 4.5:1)."
+msgstr ""
+
+#: css/alert.md
 #: css/badge.md
-#: css/banner.md
 #: css/button-set.md
 #: css/button.md
 #: css/card.md
@@ -3395,7 +3470,6 @@ msgstr ""
 
 #: css/alert.md
 #: css/badge.md
-#: css/banner.md
 #: css/button-set.md
 #: css/button.md
 #: css/card.md
@@ -4175,24 +4249,6 @@ msgid "Add `role=\"status\"` (or `role=\"alert\"` for urgent messages) so assist
 msgstr ""
 
 #: css/banner.md
-#: css/checkbox.md
-#: css/link.md
-#: css/link.md
-#: css/radio-input-group.md
-#: css/radio.md
-#: css/text-area.md
-#, no-c-format
-msgctxt "docs.api:prose"
-msgid "Canvas:"
-msgstr ""
-
-#: css/banner.md
-#, no-c-format
-msgctxt "docs.api:prose"
-msgid " With prefers-contrast: more, two pieces of text fall below the minimum contrast. The worst is \"Undo\" at 4.46:1 (needs 4.5:1)."
-msgstr ""
-
-#: css/banner.md
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "- [alert](/api/css/alert.md) — A non-dismissible, status-coloured counterpart for inline messages.\n- [close-button](/api/css/close-button.md) — The dismiss control a banner may include."
@@ -4698,21 +4754,6 @@ msgid "All touch targets must be 24px large, or leave sufficient space"
 msgstr ""
 
 #: css/button-set.md
-#: css/button.md
-#: css/checkbox.md
-#: css/link.md
-#: css/radio-input-group.md
-#: css/radio.md
-#: css/radio.md
-#: css/segmented-control.md
-#: css/text-area.md
-#: css/view.md
-#, no-c-format
-msgctxt "docs.api:prose"
-msgid "Rebrand (light):"
-msgstr ""
-
-#: css/button-set.md
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid " With prefers-contrast: more, six pieces of text fall below the minimum contrast. The worst is \"Send\" at 1.64:1 (needs 4.5:1)."
@@ -4722,7 +4763,6 @@ msgstr ""
 #: css/button.md
 #: css/checkbox.md
 #: css/link.md
-#: css/menu.item.md
 #: css/radio-input-group.md
 #: css/radio.md
 #: css/segmented-control.md
@@ -5137,16 +5177,6 @@ msgstr ""
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "Give an informative hero image alt text and mark a decorative one with an empty `alt` or `aria-hidden=\"true\"`. Use a real heading element for the `.title` when it belongs in the document outline."
-msgstr ""
-
-#: css/byline.md
-#: css/form-field.md
-#: css/link.md
-#: css/progress.md
-#: css/radio.md
-#, no-c-format
-msgctxt "docs.api:prose"
-msgid " Elements must meet minimum color contrast ratio thresholds"
 msgstr ""
 
 #: css/calendar.day.md
@@ -6943,6 +6973,12 @@ msgstr ""
 #: css/index.md
 #, no-c-format
 msgctxt "docs.api:prose"
+msgid "The opt-in global reset: `box-sizing`, the page surface, base text colour and font, `color-scheme`, and link defaults."
+msgstr ""
+
+#: css/index.md
+#, no-c-format
+msgctxt "docs.api:prose"
 msgid "A large empty-state or call-to-action block: a hero icon or image, a heading, and a message."
 msgstr ""
 
@@ -7210,6 +7246,12 @@ msgstr ""
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "A circular progress ring driven by `--value` and `--value-max` custom properties."
+msgstr ""
+
+#: css/index.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Typographic defaults for raw HTML — headings, paragraphs, lists, links, and code — applied automatically wherever it's imported (default `:where(body)`); pass `options.scope` to target a different content root instead (e.g. `.vp-doc`)."
 msgstr ""
 
 #: css/index.md
@@ -7498,18 +7540,6 @@ msgstr ""
 #: css/index.md
 #, no-c-format
 msgctxt "docs.api:prose"
-msgid "The opt-in global reset: `box-sizing`, the page surface, base text colour and font, `color-scheme`, and link defaults."
-msgstr ""
-
-#: css/index.md
-#, no-c-format
-msgctxt "docs.api:prose"
-msgid "Typographic defaults for raw HTML — headings, paragraphs, lists, links, and code — applied automatically wherever it's imported (default `:where(body)`); pass `options.scope` to target a different content root instead (e.g. `.vp-doc`)."
-msgstr ""
-
-#: css/index.md
-#, no-c-format
-msgctxt "docs.api:prose"
 msgid "Extra-small viewport width for phone-sized previews."
 msgstr ""
 
@@ -7761,15 +7791,6 @@ msgstr ""
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid " With prefers-contrast: more, three pieces of text fall below the minimum contrast. The worst is \"Settings unavailable on brand\" at 2.76:1 (needs 4.5:1)."
-msgstr ""
-
-#: css/link.md
-#: css/radio-input-group.md
-#: css/radio.md
-#: css/text-area.md
-#, no-c-format
-msgctxt "docs.api:prose"
-msgid "Canvas High Contrast:"
 msgstr ""
 
 #: css/link.md
@@ -8478,31 +8499,12 @@ msgstr ""
 
 #: css/menu.group.md
 #: css/menu.item.md
-#: css/menu.md
-#: css/menu.separator.md
+#: css/progress.md
+#: css/toggle-group.md
+#: css/tooltip.md
 #, no-c-format
 msgctxt "docs.api:prose"
-msgid "aria-valid-attr-value"
-msgstr ""
-
-#: css/menu.group.md
-#: css/menu.item.md
-#: css/menu.md
-#: css/menu.separator.md
-#: css/tabs.md
-#: css/toggle-details.md
-#, no-c-format, pantoken-verbatim
-msgctxt "docs.api:prose"
-msgid "WCAG 2.2 4.1.2"
-msgstr ""
-
-#: css/menu.group.md
-#: css/menu.item.md
-#: css/menu.md
-#: css/menu.separator.md
-#, no-c-format
-msgctxt "docs.api:prose"
-msgid "ARIA attributes must conform to valid values"
+msgid "dark-mode-contrast"
 msgstr ""
 
 #: css/menu.item.md
@@ -8542,11 +8544,9 @@ msgid "Checked actions use `menuitemcheckbox` or `menuitemradio` with `aria-chec
 msgstr ""
 
 #: css/menu.item.md
-#: css/progress.md
-#: css/simple-select.md
 #, no-c-format
 msgctxt "docs.api:prose"
-msgid "dark-mode-contrast"
+msgid "Rebrand (light), Rebrand (dark):"
 msgstr ""
 
 #: css/menu.item.md
@@ -9977,7 +9977,7 @@ msgstr ""
 #: css/radio.md
 #, no-c-format
 msgctxt "docs.api:prose"
-msgid " With prefers-contrast: less, six pieces of text fall below the minimum contrast. The worst is \"Warning selected\" at 1.67:1 (needs 4.5:1). Softer contrast is fine only while text stays readable."
+msgid " With prefers-contrast: less, four pieces of text fall below the minimum contrast. The worst is \"Disabled unselected\" at 2.74:1 (needs 4.5:1). Softer contrast is fine only while text stays readable."
 msgstr ""
 
 #: css/radio.md
@@ -10001,7 +10001,7 @@ msgstr ""
 #: css/radio.md
 #, no-c-format
 msgctxt "docs.api:prose"
-msgid " With prefers-contrast: more, six pieces of text fall below the minimum contrast. The worst is \"Warning selected\" at 1.67:1 (needs 4.5:1)."
+msgid " With prefers-contrast: more, four pieces of text fall below the minimum contrast. The worst is \"Disabled unselected\" at 2.74:1 (needs 4.5:1)."
 msgstr ""
 
 #: css/radio.md
@@ -11494,6 +11494,13 @@ msgstr ""
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "selected-state-exposed"
+msgstr ""
+
+#: css/tabs.md
+#: css/toggle-details.md
+#, no-c-format, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "WCAG 2.2 4.1.2"
 msgstr ""
 
 #: css/tabs.md
@@ -22374,7 +22381,7 @@ msgstr ""
 #: renderers/tinymce/src/interfaces/CssDocEntry.md
 #, no-c-format
 msgctxt "docs.api:prose"
-msgid "The record name from `@component`/`@utility`/`@rule`/`@declaration`/`@name`, e.g. `button`."
+msgid "The canonical record name from a record-opening tag, e.g. `button`."
 msgstr ""
 
 #: renderers/tinymce/src/interfaces/CssDocEntry.md
@@ -22410,7 +22417,13 @@ msgstr ""
 #: renderers/tinymce/src/interfaces/CssDocEntry.md
 #, no-c-format
 msgctxt "docs.api:prose"
-msgid "The release stage from a modifier flag tag (`@alpha`/`@beta`/`@experimental`/`@internal`/`@public`)."
+msgid "Release maturity from `@stage` or a legacy maturity flag tag."
+msgstr ""
+
+#: renderers/tinymce/src/interfaces/CssDocEntry.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Audience visibility; absent means public."
 msgstr ""
 
 #: renderers/tinymce/src/interfaces/CssDocEntry.md
@@ -22434,7 +22447,7 @@ msgstr ""
 #: renderers/tinymce/src/interfaces/CssDocEntry.md
 #, no-c-format
 msgctxt "docs.api:prose"
-msgid "Set when this record carries a `@global` tag — its modifiers (and per-modifier `@global` flags)\napply to any component/layout/rule/declaration, not just this record's base class. Used during\nvalidation and consumption checks to resolve modifier matches globally."
+msgid "Set when this record carries a `@global` tag — its modifiers (and per-modifier `@global` flags)\napply to any record, not just this record's base class. Used during\nvalidation and consumption checks to resolve modifier matches globally."
 msgstr ""
 
 #: renderers/tinymce/src/interfaces/CssDocEntry.md
