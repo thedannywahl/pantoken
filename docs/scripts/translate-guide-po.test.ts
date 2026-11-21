@@ -2,6 +2,7 @@ import { afterEach, beforeEach, expect, test, vi } from "vite-plus/test";
 import type { PoEntry } from "@pantoken/i18n-engine";
 import { generatedFileMarkdown } from "../../tools/translation-adapters/src/generated-values.ts";
 import { migrateCompatibilityTranslation } from "../../tools/translation-adapters/src/compatibility-markdown.ts";
+import { formatGeneratedFile } from "../../scripts/release/format-generated.ts";
 
 const source =
   "<!-- pantoken-generated-values -->\n| Package | Version |\n| --- | --- |\n| `pkg` | `2.0` |\n";
@@ -84,9 +85,12 @@ test("restores current values from a reviewed compatibility template", async () 
 
   expect(mocks.writeFileSync).toHaveBeenCalledWith(
     expect.stringContaining("docs/hu/compatibility.md"),
-    expect.stringContaining("| `pkg` | `2.0` |"),
+    expect.stringContaining("`2.0`"),
   );
-  expect(mocks.writeFileSync.mock.calls[0][1]).not.toContain("{{ptk_code_");
+  const [path, content] = mocks.writeFileSync.mock.calls[0];
+  expect(content).not.toContain("{{ptk_code_");
+  expect(content).not.toContain("| --- | --- |");
+  expect(await formatGeneratedFile(content, path)).toBe(content);
 });
 
 test("still rejects a corrupt reviewed compatibility template", async () => {

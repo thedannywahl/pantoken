@@ -171,7 +171,7 @@ describe("frontmatter content pipeline", () => {
         'msgid "Hello home"\nmsgstr "Szia otthon"',
       ),
     );
-    const rendered = runRenderContent(config, testDir, "docs.home", "hu");
+    const rendered = await runRenderContent(config, testDir, "docs.home", "hu");
     expect(rendered.filesWritten).toHaveLength(1);
     expect(readFileSync(join(testDir, "docs/hu/index.md"), "utf8")).toContain("text: Szia otthon");
   });

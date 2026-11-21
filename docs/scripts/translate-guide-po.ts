@@ -21,6 +21,7 @@ import {
   compatibilityUnits,
   renderCompatibility,
 } from "../../tools/translation-adapters/src/compatibility-markdown.ts";
+import { formatGeneratedFile } from "../../scripts/release/format-generated.ts";
 
 const repoRoot = new URL("../../", import.meta.url).pathname;
 const config = loadConfig(join(repoRoot, "i18n.config.json"));
@@ -59,16 +60,20 @@ for (const locale of locales) {
   );
   const missing = compatibilityUnits(compatibility).filter((unit) => !reviewed.has(unit));
   if (missing.length === 0) {
+    const guidePath = join(docsRoot, locale, "compatibility.md");
     writeFileSync(
-      join(docsRoot, locale, "compatibility.md"),
-      `${normalizeRenderedGuide(
-        renderCompatibility(compatibility, (unit) => {
-          const translation = reviewed.get(unit);
-          if (translation === undefined)
-            throw new Error(`${locale}: missing reviewed compatibility translation`);
-          return translation;
-        }),
-      )}\n`,
+      guidePath,
+      await formatGeneratedFile(
+        `${normalizeRenderedGuide(
+          renderCompatibility(compatibility, (unit) => {
+            const translation = reviewed.get(unit);
+            if (translation === undefined)
+              throw new Error(`${locale}: missing reviewed compatibility translation`);
+            return translation;
+          }),
+        )}\n`,
+        guidePath,
+      ),
     );
   } else {
     console.warn(`  ! ${locale} compatibility.md: ${missing.length} reviewed unit(s) missing`);

@@ -19,6 +19,7 @@ import {
 } from "node:fs";
 import { dirname, join, relative, sep } from "node:path";
 import { DriftReporter, type DriftPolicy } from "@pantoken/translation-adapters";
+import { formatGeneratedFile } from "../../../scripts/release/format-generated.ts";
 import {
   assertGeneratedTranslation,
   generatedFileMarkdown,
@@ -281,12 +282,12 @@ export interface RenderResult {
 }
 
 /** Render a translated content space's locale output with English fallback for empty PO entries. */
-export function runRenderContent(
+export async function runRenderContent(
   config: I18nConfig,
   configDir: string,
   spaceId: string,
   locale: string,
-): RenderResult {
+): Promise<RenderResult> {
   const space = config.spaces[spaceId];
   if (!space || space.kind !== "content") throw new Error(`"${spaceId}" is not a content space.`);
   const entries = loadPoEntriesForSpace(config, configDir, spaceId, locale);
@@ -337,7 +338,12 @@ export function runRenderContent(
         ? join(configDir, space.root ?? ".", locale, file.reference)
         : join(configDir, resolvePattern(space.render, { locale, path: file.renderPath }));
     mkdirSync(dirname(outPath), { recursive: true });
-    writeFileSync(outPath, rendered);
+    writeFileSync(
+      outPath,
+      spaceId === "docs.guides" && file.reference === "compatibility.md"
+        ? await formatGeneratedFile(rendered, outPath)
+        : rendered,
+    );
     filesWritten.push(outPath);
   }
   cleanupStaleRenderedFiles(space, configDir, locale, new Set(filesWritten));

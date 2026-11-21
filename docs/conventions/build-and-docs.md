@@ -13,7 +13,8 @@ and code examples remain unchanged.
 ## Generated values and translation identity
 
 Compatibility Markdown is formatted through `vite-plus/fmt` before it is written, so running
-`sync:compatibility` doesn't need a later table-format repair commit.
+`sync:compatibility` or rendering translated compatibility pages doesn't need a later table-format
+repair commit.
 
 Generated package compatibility paragraphs opt in with `<!-- pantoken-generated-values -->`.
 Their code spans and link destinations become stable `{{ptk_code_N}}` placeholders during

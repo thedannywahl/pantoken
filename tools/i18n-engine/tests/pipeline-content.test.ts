@@ -5,6 +5,7 @@ import { afterEach, beforeEach, expect, test } from "vite-plus/test";
 import { parseConfig, type I18nConfig } from "../src/config.ts";
 import { parsePo, serializePo, writeCatalog } from "../src/po.ts";
 import { runExtractContent, runRenderContent, runTranslateContent } from "../src/pipeline.ts";
+import { formatGeneratedFile } from "../../../scripts/release/format-generated.ts";
 
 let repo: string;
 let config: I18nConfig;
@@ -74,16 +75,16 @@ test("the block segment splits the same sources into prose leaves", () => {
   expect(result.unitCount).toBeGreaterThan(2);
 });
 
-test("renders each source to its {path}, relative to the include glob's static prefix", () => {
+test("renders each source to its {path}, relative to the include glob's static prefix", async () => {
   runExtractContent(config, repo, "scaffold.readme");
-  const result = runRenderContent(config, repo, "scaffold.readme", "hu");
+  const result = await runRenderContent(config, repo, "scaffold.readme", "hu");
   expect(result.filesWritten).toHaveLength(2);
   expect(result.filesWritten[0]).toContain(join("generated", "l10n", "hu", "react", "README.md"));
 });
 
-test("renders the English source verbatim for an untranslated unit", () => {
+test("renders the English source verbatim for an untranslated unit", async () => {
   runExtractContent(config, repo, "scaffold.readme");
-  runRenderContent(config, repo, "scaffold.readme", "hu");
+  await runRenderContent(config, repo, "scaffold.readme", "hu");
   const rendered = readFileSync(
     join(repo, "packages/scaffold/generated/l10n/hu/react/README.md"),
     "utf8",
@@ -93,7 +94,7 @@ test("renders the English source verbatim for an untranslated unit", () => {
   );
 });
 
-test("splices a translated whole-file unit into the rendered output", () => {
+test("splices a translated whole-file unit into the rendered output", async () => {
   runExtractContent(config, repo, "scaffold.readme");
   const poPath = join(repo, "l10n", "hu", "scaffold.readme.po");
   mkdirSync(join(repo, "l10n", "hu"), { recursive: true });
@@ -103,7 +104,7 @@ test("splices a translated whole-file unit into the rendered output", () => {
   }
   writeCatalog(poPath, serializePo(entries));
 
-  runRenderContent(config, repo, "scaffold.readme", "hu");
+  await runRenderContent(config, repo, "scaffold.readme", "hu");
   const rendered = readFileSync(
     join(repo, "packages/scaffold/generated/l10n/hu/react/README.md"),
     "utf8",
@@ -112,7 +113,7 @@ test("splices a translated whole-file unit into the rendered output", () => {
   expect(rendered).toContain("{{projectName}}");
 });
 
-test("removes stale persistent rendered files when a source file is removed", () => {
+test("removes stale persistent rendered files when a source file is removed", async () => {
   const persistentConfig = parseConfig({
     source: "en",
     locales: {
@@ -132,17 +133,17 @@ test("removes stale persistent rendered files when a source file is removed", ()
     },
   });
   runExtractContent(persistentConfig, repo, "scaffold.readme");
-  runRenderContent(persistentConfig, repo, "scaffold.readme", "hu");
+  await runRenderContent(persistentConfig, repo, "scaffold.readme", "hu");
 
   rmSync(join(repo, "packages/scaffold/templates", "vue", "README.md"));
   runExtractContent(persistentConfig, repo, "scaffold.readme");
-  runRenderContent(persistentConfig, repo, "scaffold.readme", "hu");
+  await runRenderContent(persistentConfig, repo, "scaffold.readme", "hu");
 
   expect(existsSync(join(repo, "packages/scaffold/generated/l10n/hu/react/README.md"))).toBe(true);
   expect(existsSync(join(repo, "packages/scaffold/generated/l10n/hu/vue/README.md"))).toBe(false);
 });
 
-test("reuses generated table translations with current bindings across locales", () => {
+test("reuses generated table translations with current bindings across locales", async () => {
   const sourcePath = join(repo, "packages/scaffold/templates/react/README.md");
   const source =
     "<!-- pantoken-generated-values -->\n# Support\n\n| Package | Version |\n| --- | --- |\n| `pkg` | `1.0` |\n";
@@ -171,7 +172,7 @@ test("reuses generated table translations with current bindings across locales",
   );
   expect(updated?.msgid).toBe(generated?.msgid);
   for (const locale of ["hu", "de"]) {
-    runRenderContent(config, repo, "scaffold.readme", locale);
+    await runRenderContent(config, repo, "scaffold.readme", locale);
     const rendered = readFileSync(
       join(repo, "packages/scaffold/generated/l10n", locale, "react/README.md"),
       "utf8",
@@ -183,13 +184,13 @@ test("reuses generated table translations with current bindings across locales",
   }
 });
 
-test("does not render a generated whole-file template from an incomplete catalog", () => {
+test("does not render a generated whole-file template from an incomplete catalog", async () => {
   writeFileSync(
     join(repo, "packages/scaffold/templates/react/README.md"),
     "<!-- pantoken-generated-values -->\n| Package | Version |\n| --- | --- |\n| `pkg` | `1.0` |\n",
   );
   runExtractContent(config, repo, "scaffold.readme");
-  expect(() => runRenderContent(config, repo, "scaffold.readme", "hu")).toThrow(
+  await expect(runRenderContent(config, repo, "scaffold.readme", "hu")).rejects.toThrow(
     "missing reviewed generated-value translation",
   );
 });
@@ -227,8 +228,14 @@ test("extracts compatibility rows independently and renders current values to th
     serializePo(entries.map((entry) => ({ ...entry, msgstr: entry.msgid }))),
   );
   writeFileSync(sourcePath, source.replace("`1.0`", "`2.0`"));
-  runRenderContent(guides, repo, "docs.guides", "hu");
-  expect(readFileSync(join(repo, "docs/hu/compatibility.md"), "utf8")).toContain("`2.0`");
+  await runRenderContent(guides, repo, "docs.guides", "hu");
+  const guidePath = join(repo, "docs/hu/compatibility.md");
+  const rendered = readFileSync(guidePath, "utf8");
+  expect(rendered).toContain("`2.0`");
+  expect(rendered).not.toContain("| --- | --- |");
+  expect(await formatGeneratedFile(rendered, guidePath)).toBe(rendered);
+  await runRenderContent(guides, repo, "docs.guides", "hu");
+  expect(readFileSync(guidePath, "utf8")).toBe(rendered);
   expect(existsSync(join(repo, "docs/hu/guide/compatibility.md"))).toBe(false);
   const command = process.env.I18N_TRANSLATION_COMMAND;
   delete process.env.I18N_TRANSLATION_COMMAND;
@@ -247,7 +254,7 @@ test("extracts compatibility rows independently and renders current values to th
     expect(
       updated.filter((entry) => !entry.obsolete && (entry.fuzzy || !entry.msgstr)),
     ).toHaveLength(1);
-    expect(() => runRenderContent(guides, repo, "docs.guides", "hu")).toThrow(
+    await expect(runRenderContent(guides, repo, "docs.guides", "hu")).rejects.toThrow(
       "missing reviewed compatibility translation",
     );
   } finally {
