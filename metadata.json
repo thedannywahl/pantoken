@@ -41,7 +41,7 @@
     "api_call_count": 59
   },
   "redaction": {
-    "replacements": 10044,
+    "replacements": 10559,
     "layers": {
       "betterleaks": 5,
       "connection_string": 0,
@@ -49,7 +49,7 @@
       "credential_value": 4,
       "credentialed_uri": 0,
       "custom": 0,
-      "entropy": 37795,
+      "entropy": 40047,
       "goredact": 0,
       "key_context": 0,
       "pii": 13,
