@@ -1,0 +1,171 @@
+more failures:
+```
+Co-authored-by: Copilot <223556219+Copilot@users.noreply.github.com>
+
+    
+
+  
+
+    
+      
+      
+      Entire-Checkpoint: 01M7ZE0GYKCEMEMARTVQZA3BRH
+
+    
+
+  
+
+    
+      
+      
+      ✔   found 0 problems, 0 warnings
+
+    
+
+  
+
+    
+      
+      
+      ⧗   --- input ---
+
+    
+
+  
+
+    
+      
+      
+      upgrade: cssdoc to 0.18.1 and migrate @rule to @component tags
+
+    
+
+  
+
+    
+      
+      
+      
+
+    
+
+  
+
+    
+      
+      
+      - Update cssdoc dependency to 0.18.1
+
+    
+
+  
+
+    
+      
+      
+      - Migrate all @rule tags to @component (cssdoc 0.18.1 now treats @rule as an
+
+    
+
+  
+
+    
+      
+      
+        alias for @component, so using @component is more explicit and semantic)
+
+    
+
+  
+
+    
+      
+      
+      - Updated base.css, prose rule, and popover-reset.css cssdoc headers
+
+    
+
+  
+
+    
+      
+      
+      - Update documentation references in define.ts and build-css-api.ts
+
+    
+
+  
+
+    
+      
+      
+      - All gate checks pass with 100% test coverage
+
+    
+
+  
+
+    
+      
+      
+      
+
+    
+
+  
+
+    
+      
+      
+      Co-authored-by: Copilot <223556219+Copilot@users.noreply.github.com>
+
+    
+
+  
+
+    
+      
+      
+      Entire-Checkpoint: 01M7XGYQ0EX9A1ATDRT0PFQ070
+
+    
+
+  
+
+    
+      
+      
+      ✖   type must be one of [build, chore, ci, docs, feat, fix, perf, refactor, revert, style, test] [type-enum]
+
+    
+
+  
+
+    
+      
+      
+      
+
+    
+
+  
+
+    
+      
+      
+      ✖   found 1 problems, 0 warnings
+
+    
+
+  
+
+    
+      
+      
+      ⓘ   Get help: [https://github.com/conventional-changelog/commitlint/#what-is-commitlint](https://github.com/conventional-changelog/commitlint/#what-is-commitlint)
+```
+rewrite and force push.
+
+---
+
+there's still something going on between two linters fighting over spaces vs tabs or multiple spaces on md tables, this creates a lot of unnecessary changes on compatibility.md files.
