@@ -8,7 +8,8 @@
  * batched request; large markdown is translated per file on a miss to keep fidelity.
  *
  * The flow is: diff (hash vs. cache) → objectify (batch the misses) → translate → destructure (map
- * results back by hash) → save (prune to the units seen this run, write the catalog).
+ * results back by hash) → save (prune to the units seen this run, write the catalog). API cache hits
+ * require active, non-fuzzy entries; stale translations stay misses until reviewed or translated.
  *
  * @module
  */
@@ -98,7 +99,7 @@ export class TranslationMemory {
     this._poByKey = poEntries
       ? new Map(
           poEntries
-            .filter((entry) => !entry.msgid.includes("{{ptk_code_") || !entry.obsolete)
+            .filter((entry) => !entry.obsolete)
             .map((entry) => [`${entry.msgctxt ?? ""}\0${entry.msgid}`, entry]),
         )
       : undefined;
@@ -121,10 +122,7 @@ export class TranslationMemory {
     if (process.env.DOCS_TRANSLATION_FORCE === "1") return undefined;
     if (this._poByKey) {
       const entry = this._poByKey.get(`docs.api:${kind}\0${source}`);
-      const translation =
-        entry && (!source.includes("{{ptk_code_") || (!entry.fuzzy && !entry.obsolete))
-          ? entry.msgstr
-          : undefined;
+      const translation = entry && !entry.fuzzy ? entry.msgstr : undefined;
       if (translation !== undefined && translation !== "")
         assertGeneratedTranslation(source, translation);
       if (translation) this._poHits++;
