@@ -115,6 +115,34 @@ test("treats fuzzy prose and generated bindings as cache misses", () => {
   expect(memory.get("prose", "Use {{ptk_code_0}}.")).toBeUndefined();
 });
 
+test("retains only current, non-fuzzy glossary terms from archived API text entries", () => {
+  existsSync.mockReturnValue(true);
+  readFileSync.mockReturnValue(
+    '#~ msgctxt "docs.api:text"\n#~ msgid "Usage"\n#~ msgstr "Használat"\n\n' +
+      '#, fuzzy\n#~ msgctxt "docs.api:text"\n#~ msgid "Value"\n#~ msgstr "Érték"\n\n' +
+      '#~ msgctxt "docs.api:text"\n#~ msgid "Retired label"\n#~ msgstr "Old label"\n\n' +
+      '#~ msgctxt "docs.api:prose"\n#~ msgid "Usage"\n#~ msgstr "Old prose"\n',
+  );
+  const memory = TranslationMemory.load("hu", "api");
+  expect(memory.get("text", "Usage")).toBe("Használat");
+  expect(memory.get("text", "Value")).toBeUndefined();
+  expect(memory.get("text", "Retired label")).toBeUndefined();
+  expect(memory.get("prose", "Usage")).toBeUndefined();
+});
+
+test.each([true, false])(
+  "active glossary translations take precedence over archived ones (archived first: %s)",
+  (archivedFirst) => {
+    existsSync.mockReturnValue(true);
+    const archived = '#~ msgctxt "docs.api:text"\n#~ msgid "Usage"\n#~ msgstr "Archived wording"\n';
+    const active = 'msgctxt "docs.api:text"\nmsgid "Usage"\nmsgstr "Current wording"\n';
+    readFileSync.mockReturnValue(
+      (archivedFirst ? [archived, active] : [active, archived]).join("\n"),
+    );
+    expect(TranslationMemory.load("hu", "api").get("text", "Usage")).toBe("Current wording");
+  },
+);
+
 test.each(["Ordinary prose", "Use {{ptk_code_0}}."])(
   "obsolete entries cannot shadow reviewed active translations for %j",
   (source) => {

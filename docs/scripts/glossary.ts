@@ -1,10 +1,11 @@
 /**
  * The deterministic structural-term glossary: headings, badges, and table-column labels TypeDoc/cssdoc
  * emit verbatim in generated API docs. Each term is matched by shape (`kind`) — see `patternFor` in
- * `api-translation.ts` — and its per-locale translation lives in the `<locale>.api.json`
- * translation-memory cache (content-addressed by `term`, same convention as the chrome/guides/API
- * caches), filled as part of the API translation workflow. This file is only the English source of truth: the term
- * list and how each is matched, never a translation.
+ * `api-translation.ts` — and its per-locale translation lives in `l10n/<locale>/docs.api.po` under
+ * `docs.api:text`. Structural terms aren't extracted into the API POT, so `msgmerge` archives their
+ * entries. The glossary still reads non-fuzzy translations for terms in this list, preferring active
+ * entries when present. This file is only the English source of truth: the term list and how each is
+ * matched, never a translation.
  *
  * @module
  */

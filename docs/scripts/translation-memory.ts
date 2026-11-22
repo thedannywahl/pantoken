@@ -9,7 +9,7 @@
  *
  * The flow is: diff (hash vs. cache) → objectify (batch the misses) → translate → destructure (map
  * results back by hash) → save (prune to the units seen this run, write the catalog). API cache hits
- * require active, non-fuzzy entries; stale translations stay misses until reviewed or translated.
+ * require active, non-fuzzy prose entries; stale translations stay misses until reviewed or translated.
  *
  * @module
  */
@@ -23,6 +23,7 @@ import {
   type VerbatimPolicy,
 } from "@pantoken/translation-adapters";
 import type { TranslationAdapter } from "./api-translation.ts";
+import { GLOSSARY_TERMS } from "./glossary.ts";
 import {
   parsePo,
   readCatalog,
@@ -62,6 +63,7 @@ const cacheDir = join(import.meta.dirname, "..", "i18n-cache");
  * reject the cached value on every later run and pay to retranslate it forever.
  */
 const VERBATIM_FLAG = "pantoken-verbatim";
+const GLOSSARY_TEXT = new Set(GLOSSARY_TERMS.map(({ term }) => term));
 
 /** The stable content key for a unit: `sha256(kind \0 source)`, hex. */
 export function keyFor(kind: string, source: string): string {
@@ -99,7 +101,14 @@ export class TranslationMemory {
     this._poByKey = poEntries
       ? new Map(
           poEntries
-            .filter((entry) => !entry.obsolete)
+            // Structural terms are omitted from the API POT, so msgmerge archives their
+            // translations even while the glossary still uses them. Prose stays active-only.
+            .filter(
+              (entry) =>
+                !entry.obsolete ||
+                (entry.msgctxt === "docs.api:text" && GLOSSARY_TEXT.has(entry.msgid)),
+            )
+            .sort((a, b) => Number(b.obsolete) - Number(a.obsolete))
             .map((entry) => [`${entry.msgctxt ?? ""}\0${entry.msgid}`, entry]),
         )
       : undefined;
