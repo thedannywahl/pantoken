@@ -2353,6 +2353,27 @@
       ],
       "additionalProperties": false
     },
+    "PantokenBanner": {
+      "type": "object",
+      "description": "A Pantoken banner component with safe text and child content.",
+      "properties": {
+        "component": {
+          "const": "PantokenBanner"
+        },
+        "label": {
+          "$ref": "common_types.json#/$defs/DynamicString"
+        },
+        "children": {
+          "$ref": "common_types.json#/$defs/ChildList",
+          "minItems": 1,
+          "maxItems": 32
+        }
+      },
+      "required": [
+        "component"
+      ],
+      "additionalProperties": false
+    },
     "PantokenPill": {
       "type": "object",
       "description": "A compact status pill.",
@@ -4932,6 +4953,48 @@
       ],
       "additionalProperties": false
     },
+    "PantokenGlobalNavBar": {
+      "type": "object",
+      "description": "A Pantoken global-nav-bar component with safe text and child content.",
+      "properties": {
+        "component": {
+          "const": "PantokenGlobalNavBar"
+        },
+        "label": {
+          "$ref": "common_types.json#/$defs/DynamicString"
+        },
+        "children": {
+          "$ref": "common_types.json#/$defs/ChildList",
+          "minItems": 1,
+          "maxItems": 32
+        }
+      },
+      "required": [
+        "component"
+      ],
+      "additionalProperties": false
+    },
+    "PantokenGlobalNavBarItem": {
+      "type": "object",
+      "description": "A Pantoken global-nav-bar-item component with safe text and child content.",
+      "properties": {
+        "component": {
+          "const": "PantokenGlobalNavBarItem"
+        },
+        "label": {
+          "$ref": "common_types.json#/$defs/DynamicString"
+        },
+        "children": {
+          "$ref": "common_types.json#/$defs/ChildList",
+          "minItems": 1,
+          "maxItems": 32
+        }
+      },
+      "required": [
+        "component"
+      ],
+      "additionalProperties": false
+    },
     "PantokenTreeBrowser": {
       "type": "object",
       "description": "An accessible tree whose child components are exposed as focusable tree items.",
@@ -6236,6 +6299,9 @@
           "$ref": "#/components/PantokenBadge"
         },
         {
+          "$ref": "#/components/PantokenBanner"
+        },
+        {
           "$ref": "#/components/PantokenBillboard"
         },
         {
@@ -6285,6 +6351,12 @@
         },
         {
           "$ref": "#/components/PantokenFormFieldMessages"
+        },
+        {
+          "$ref": "#/components/PantokenGlobalNavBar"
+        },
+        {
+          "$ref": "#/components/PantokenGlobalNavBarItem"
         },
         {
           "$ref": "#/components/PantokenHeading"

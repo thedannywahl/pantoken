@@ -102,10 +102,10 @@ describe("extractGuideSpace (the real docs/guide corpus)", () => {
     expect(units.length).toBeGreaterThan(20);
   });
 
-  test("every unit has a non-empty msgid and a guide/ reference", () => {
+  test("every unit has a non-empty msgid and a guide/ or compatibility reference", () => {
     for (const unit of units) {
       expect(unit.msgid.trim()).not.toBe("");
-      expect(unit.reference).toMatch(/^guide\/.+\.md:\d+$/u);
+      expect(unit.reference).toMatch(/^(?:guide\/.+\.md|\bcompatibility\.md):\d+$/u);
     }
   });
 

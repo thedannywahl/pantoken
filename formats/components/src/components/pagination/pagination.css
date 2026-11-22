@@ -10,7 +10,7 @@
  * @part .page-input-label — The label for the page-number input (input variant).
  * @cssstate disabled
  * @a11y Label the `<nav>` with aria-label, mark the current page with aria-current="page", give each arrow an aria-label, and disable end arrows with disabled or aria-disabled="true".
- * @example -canvas-rce -docs
+ * @example labels=[canvas-rce,docs]
  * ```html
  * <nav class="pfx-pagination" aria-label="Pagination">
  *   <button class="arrow" type="button" aria-label="First page" disabled><span class="pfx-icon -icon-chevrons-left"></span></button>
@@ -32,7 +32,7 @@
  *   .page:many {}
  *   .ellipsis:optional {}
  * }
- * @example -automatica11y
+ * @example labels=[automatica11y]
  * ```html
  * <nav class="pfx-pagination" aria-label="Pagination">
  *   <button class="arrow" type="button" aria-label="First page" disabled><span class="pfx-icon -icon-chevrons-left"></span></button>

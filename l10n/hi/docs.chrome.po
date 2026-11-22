@@ -1349,6 +1349,12 @@ msgctxt "docs.chrome:a2uiCatalogDescriptions.PantokenBadge"
 msgid "A compact count or status badge."
 msgstr "एक संक्षिप्त संख्या या स्थिति बैज।"
 
+#: docs/.vitepress/catalog-i18n.json#a2uiCatalogDescriptions.PantokenBanner
+#, fuzzy, no-c-format
+msgctxt "docs.chrome:a2uiCatalogDescriptions.PantokenBanner"
+msgid "A Pantoken banner component with safe text and child content."
+msgstr "सुरक्षित पाठ और चाइल्ड कंटेंट वाला Pantoken बायलाइन घटक।"
+
 #: docs/.vitepress/catalog-i18n.json#a2uiCatalogDescriptions.PantokenPill
 #, no-c-format
 msgctxt "docs.chrome:a2uiCatalogDescriptions.PantokenPill"
@@ -1427,6 +1433,19 @@ msgstr "स्वच्छ किए गए मीडिया URL और सी
 msgctxt "docs.chrome:a2uiCatalogDescriptions.PantokenSideNavBar"
 msgid "A vertical navigation rail that can collapse to icon-only presentation."
 msgstr "एक लंबवत नेविगेशन रेल, जिसे केवल-आइकन रूप में समेटा जा सकता है।"
+
+#: docs/.vitepress/catalog-i18n.json#a2uiCatalogDescriptions.PantokenGlobalNavBar
+#, fuzzy, no-c-format
+msgctxt "docs.chrome:a2uiCatalogDescriptions.PantokenGlobalNavBar"
+msgid "A Pantoken global-nav-bar component with safe text and child content."
+msgstr "सुरक्षित पाठ और चाइल्ड कंटेंट वाला Pantoken बिलबोर्ड घटक।"
+
+#: docs/.vitepress/catalog-i18n.json#a2uiCatalogDescriptions.PantokenGlobalNavBarItem
+#, fuzzy, no-c-format
+msgctxt "docs.chrome:a2uiCatalogDescriptions.PantokenGlobalNavBarItem"
+msgid ""
+"A Pantoken global-nav-bar-item component with safe text and child content."
+msgstr "सुरक्षित पाठ और चाइल्ड कंटेंट वाला Pantoken बायलाइन घटक।"
 
 #: docs/.vitepress/catalog-i18n.json#a2uiCatalogDescriptions.PantokenTreeBrowser
 #, no-c-format
@@ -2027,6 +2046,19 @@ msgid ""
 msgstr ""
 "सेमांटिक .instui-breadcrumb क्लास से स्टाइल किया गया Instructure ब्रेडक्रंब कंपोनेंट।"
 
+#: docs/.vitepress/catalog-i18n.json#registryBrowserItems.banner.title
+#, fuzzy, no-c-format
+msgctxt "docs.chrome:registryBrowserItems.banner.title"
+msgid "Banner"
+msgstr "रनर"
+
+#: docs/.vitepress/catalog-i18n.json#registryBrowserItems.banner.description
+#, fuzzy, no-c-format
+msgctxt "docs.chrome:registryBrowserItems.banner.description"
+msgid ""
+"Instructure Banner component styled with semantic .instui-banner classes."
+msgstr "सेमांटिक .instui-spinner क्लास से स्टाइल किया गया Instructure स्पिनर कंपोनेंट।"
+
 #: docs/.vitepress/catalog-i18n.json#registryBrowserItems.billboard.title
 #, no-c-format
 msgctxt "docs.chrome:registryBrowserItems.billboard.title"
@@ -2176,6 +2208,22 @@ msgctxt "docs.chrome:registryBrowserItems.side-nav-bar.description"
 msgid ""
 "Instructure Side-nav-bar component styled with semantic .instui-side-nav-bar "
 "classes."
+msgstr ""
+"सेमांटिक .instui-side-nav-bar क्लास से स्टाइल किया गया Instructure साइड-नेविगेशन-"
+"बार कंपोनेंट।"
+
+#: docs/.vitepress/catalog-i18n.json#registryBrowserItems.global-nav-bar.title
+#, fuzzy, no-c-format
+msgctxt "docs.chrome:registryBrowserItems.global-nav-bar.title"
+msgid "Global-nav-bar"
+msgstr "साइड-नेविगेशन-बार"
+
+#: docs/.vitepress/catalog-i18n.json#registryBrowserItems.global-nav-bar.description
+#, fuzzy, no-c-format
+msgctxt "docs.chrome:registryBrowserItems.global-nav-bar.description"
+msgid ""
+"Instructure Global-nav-bar component styled with semantic .instui-global-nav-"
+"bar classes."
 msgstr ""
 "सेमांटिक .instui-side-nav-bar क्लास से स्टाइल किया गया Instructure साइड-नेविगेशन-"
 "बार कंपोनेंट।"
@@ -2508,18 +2556,6 @@ msgctxt "docs.chrome:registryBrowserItems.view.description"
 msgid "Instructure View component styled with semantic .instui-view classes."
 msgstr "Instructure दृश्य घटक, semantic .instui-view क्लासों से स्टाइल किया गया है।"
 
-#: docs/.vitepress/catalog-i18n.json#registryBrowserItems.banner.title
-#, fuzzy, no-c-format
-msgctxt "docs.chrome:registryBrowserItems.banner.title"
-msgid "Banner"
-msgstr "रनर"
-
-#: docs/.vitepress/catalog-i18n.json#registryBrowserItems.banner.description
-#, no-c-format
-msgctxt "docs.chrome:registryBrowserItems.banner.description"
-msgid "Pantoken banner component styles and documented HTML structure."
-msgstr "Pantoken बैनर घटक की स्टाइल और प्रलेखित HTML संरचना।"
-
 #: docs/.vitepress/catalog-i18n.json#registryBrowserItems.agent-shell.title
 #, fuzzy, no-c-format
 msgctxt "docs.chrome:registryBrowserItems.agent-shell.title"
@@ -2797,6 +2833,11 @@ msgstr "दृश्य डिबग"
 msgctxt "docs.chrome:registryBrowserItems.visual-debug.description"
 msgid "Development-only layout outlines for Pantoken components."
 msgstr "केवल डेवलपमेंट के लिए Pantoken घटकों के लेआउट की रूपरेखाएँ।"
+
+#, no-c-format
+#~ msgctxt "docs.chrome:registryBrowserItems.banner.description"
+#~ msgid "Pantoken banner component styles and documented HTML structure."
+#~ msgstr "Pantoken बैनर घटक की स्टाइल और प्रलेखित HTML संरचना।"
 
 #, no-c-format
 #~ msgctxt "docs.chrome:a2uiCatalog.reactSupport"

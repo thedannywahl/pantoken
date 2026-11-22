@@ -18,7 +18,7 @@
  * }
  * @sealed
  * @stable
- * @example -automatica11y
+ * @example labels=[automatica11y]
  * ```html
  * <nav class="pfx-breadcrumb -size-sm" aria-label="Small breadcrumb"><ol><li><a href="#home">Home</a></li><li aria-current="page">Guides</li></ol></nav>
  * <nav class="pfx-breadcrumb -size-md" aria-label="Medium breadcrumb"><ol><li><a href="#home">Home</a></li><li aria-current="page">Guides</li></ol></nav>

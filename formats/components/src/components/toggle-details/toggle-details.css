@@ -10,12 +10,12 @@
  * @modifier -size-lg — Large.
  * @pseudo ::before — Draws the summary's disclosure chevron, a masked glyph that rotates to point down when the disclosure is open.
  * @cssstate open
- * @example -canvas-rce
+ * @example labels=[canvas-rce]
  * <details class="pfx-toggle-details" open>
  *   <summary>What ships in this package?</summary>
  *   Class-based component styles, built from the Instructure tokens, plus a prose layer.
  * </details>
- * @example -automatica11y
+ * @example labels=[automatica11y]
  * ```html
  * <details class="pfx-toggle-details" data-a11y-root>
  *   <summary data-a11y-trigger>What ships in this package?</summary>
@@ -25,7 +25,7 @@
  * <details class="pfx-toggle-details -variant-filled" open><summary>Filled disclosure</summary></details>
  * <details class="pfx-toggle-details -chevron-end" open><summary>End-chevron disclosure</summary></details>
  * ```
- * @example -docs
+ * @example labels=[docs]
  * <details class="pfx-toggle-details -variant-filled">
  *   <summary>Keyboard support</summary>
  *   The native disclosure control supports keyboard interaction.

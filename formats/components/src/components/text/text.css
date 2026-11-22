@@ -32,7 +32,7 @@
  * @modifier -size-sm — Small.
  * @modifier -size-lg — Large.
  * @modifier -size-xl — Extra large.
- * @example -canvas-rce -docs
+ * @example labels=[canvas-rce,docs]
  * ```html
  * <span class="pfx-text -size-xs --display-block">x-small text</span>
  * <span class="pfx-text -size-sm --display-block">small text</span>
@@ -43,7 +43,7 @@
  * @related truncate — Clips this text to one line or a set number of lines.
  * @stable
  * @sealed
- * @example -automatica11y
+ * @example labels=[automatica11y]
  * ```html
  * <p class="pfx-text -size-xs">Updated today.</p>
  * <p class="pfx-text -size-sm">Last edited by Lee.</p>

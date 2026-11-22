@@ -37,6 +37,7 @@ export interface PreservedMarkdown {
   packageNames: string[];
   escapedBrackets: string[];
   templateTokens: string[];
+  scopeComments: string[];
 }
 
 // TypeDoc renders a generic type as several separately backtick-wrapped tokens joined by bare escaped
@@ -52,7 +53,13 @@ const TEMPLATE_TOKEN = /\{\{[^{}\n]+\}\}/g;
 export function preserveMarkdown(input: string): PreservedMarkdown {
   const fenced = mask(input, /```[\s\S]*?```/g, "PTK_CODE_BLOCK");
   const inline = mask(fenced.text, /`[^`\n]+`/g, "PTK_INLINE_CODE");
-  const packages = mask(inline.text, /@[a-z0-9][a-z0-9.-]*\/[a-z0-9][a-z0-9.-]*/gi, "PTK_PACKAGE");
+  // Generated scopes encode `<`; excluding it also prevents rescanning nested prefixes.
+  const scopes = mask(
+    inline.text,
+    /<!-- pantoken-(?:value-scope:[^<\n]*|compatibility-scaffold) -->/g,
+    "PTK_SCOPE",
+  );
+  const packages = mask(scopes.text, /@[a-z0-9][a-z0-9.-]*\/[a-z0-9][a-z0-9.-]*/gi, "PTK_PACKAGE");
   const brackets = mask(packages.text, ESCAPED_ANGLE_BRACKET, "PTK_ESC");
   const tokens = mask(brackets.text, TEMPLATE_TOKEN, "PTK_VAR");
   return {
@@ -62,6 +69,7 @@ export function preserveMarkdown(input: string): PreservedMarkdown {
     packageNames: packages.blocks,
     escapedBrackets: brackets.blocks,
     templateTokens: tokens.blocks,
+    scopeComments: scopes.blocks,
   };
 }
 
@@ -70,6 +78,7 @@ export function restoreMarkdown(translated: string, preserved: PreservedMarkdown
   let out = unmask(translated, preserved.templateTokens, "PTK_VAR");
   out = unmask(out, preserved.escapedBrackets, "PTK_ESC");
   out = unmask(out, preserved.packageNames, "PTK_PACKAGE");
+  out = unmask(out, preserved.scopeComments, "PTK_SCOPE");
   out = unmask(out, preserved.inlineCode, "PTK_INLINE_CODE");
   return unmask(out, preserved.codeBlocks, "PTK_CODE_BLOCK");
 }
@@ -93,6 +102,7 @@ export function buildMarkdownTranslationPrompt(
     "- Translate heading text too (the words after the leading # symbols) — do not leave headings in English.",
     "- Do not alter placeholder tokens like __PTK_CODE_BLOCK_#__ or __PTK_INLINE_CODE_#__.",
     "- Do not alter placeholder tokens like __PTK_PACKAGE_#__, __PTK_ESC_#__, or __PTK_VAR_#__.",
+    "- Do not alter placeholder tokens like __PTK_SCOPE_#__.",
     "- Preserve whitespace and line breaks.",
     "- Keep import paths, package names, URLs, and identifiers intact.",
     `File: ${reference}`,

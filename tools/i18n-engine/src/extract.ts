@@ -133,9 +133,12 @@ export function extractFileUnits(source: string, filePath: string): ExtractedUni
   });
 }
 
-/** Every `docs.guides` file under `docsRoot`'s `guide/` subdirectory, sorted, relative to `docsRoot`. */
+/** Every `docs.guides` file under `docsRoot`'s `guide/` subdirectory plus `compatibility.md`, sorted, relative to `docsRoot`. */
 export function listGuideFiles(docsRoot: string): string[] {
-  return globSync("guide/**/*.md", { cwd: docsRoot }).sort();
+  const guideFiles = globSync("guide/**/*.md", { cwd: docsRoot });
+  const compatibilityFile = "compatibility.md";
+  const files = [...new Set([...guideFiles, compatibilityFile])];
+  return files.sort();
 }
 
 /** Extract every `docs.guides` file under `docsRoot` (its `guide/` subdirectory, recursively). */

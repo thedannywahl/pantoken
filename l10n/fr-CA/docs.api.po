@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: pantoken\n"
-"PO-Revision-Date: 2026-11-13 22:02+0000\n"
+"PO-Revision-Date: 2026-11-21 20:15+0000\n"
 "Last-Translator: pantoken localization engine\n"
 "Language-Team: pantoken\n"
 "MIME-Version: 1.0\n"
@@ -35878,3 +35878,177 @@ msgstr "numberInput"
 msgctxt "docs.api:text"
 msgid "componentElements"
 msgstr "componentElements"
+
+msgctxt "docs.api:prose"
+msgid "\n  An alert with text-color-base modifier for high contrast.\n"
+msgstr "\n  Une alerte avec le modificateur text-color-base pour un contraste élevé.\n"
+
+msgctxt "docs.api:prose"
+msgid "\n  A warning alert with explicit base text color.\n"
+msgstr "\n  Une alerte d’avertissement avec une couleur de texte de base explicite.\n"
+
+msgctxt "docs.api:prose"
+msgid "\n  An inline alert with inline status icon.\n"
+msgstr "\n  Une alerte en ligne avec une icône d’état en ligne.\n"
+
+msgctxt "docs.api:prose"
+msgid "Render inline icon using the status color (for inline alerts)."
+msgstr "Afficher l’icône en ligne à l’aide de la couleur d’état (pour les alertes en ligne)."
+
+msgctxt "docs.api:prose"
+msgid "Use base text color instead of on-color (high-contrast)."
+msgstr "Utiliser la couleur de texte de base plutôt que la couleur on-color (contraste élevé)."
+
+msgctxt "docs.api:prose"
+msgid "Use on-color text (default for floating)."
+msgstr "Utiliser la couleur de texte on-color (par défaut pour les alertes flottantes)."
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "**Source:** [banner.css](https://github.com/thedannywahl/pantoken/blob/main/formats/components/src/components/banner/banner.css)"
+msgstr "**Source:** [banner.css](https://github.com/thedannywahl/pantoken/blob/main/formats/components/src/components/banner/banner.css)"
+
+msgctxt "docs.api:prose"
+msgid "`.item` — A navigation entry (InstUI `GlobalNavBar.Item`); `-selected` marks the active one."
+msgstr "`.item` — Une entrée de navigation (InstUI `GlobalNavBar.Item`); `-selected` indique l’entrée active."
+
+msgctxt "docs.api:prose"
+msgid "The parent `global-nav-bar`'s `-minimized` modifier hides this member's `.label` — see `global-nav-bar`'s own doc for that modifier."
+msgstr "Le modificateur `-minimized` du parent `global-nav-bar` masque le `.label` de ce membre — consultez la documentation propre à `global-nav-bar` pour ce modificateur."
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "**Source:** [global-nav-bar.css](https://github.com/thedannywahl/pantoken/blob/main/formats/components/src/components/global-nav-bar/global-nav-bar.css)"
+msgstr "**Source:** [global-nav-bar.css](https://github.com/thedannywahl/pantoken/blob/main/formats/components/src/components/global-nav-bar/global-nav-bar.css)"
+
+msgctxt "docs.api:prose"
+msgid "`.instui-global-nav-bar` — A vertical navigation rail of icon-over-label items, with a minimized icons-only mode."
+msgstr "`.instui-global-nav-bar` — Une barre de navigation verticale composée d’éléments avec une icône au-dessus du libellé, avec un mode réduit aux icônes seulement."
+
+msgctxt "docs.api:prose"
+msgid "Sets its own `gap` between nav items and its own `padding`; chaining a `-gap-*`/`-p-*`/`-padding-*` spacing utility modifier overrides those built-in values. See the `global-nav-bar.item` member for the individual nav entries."
+msgstr "Définit son propre `gap` entre les éléments de navigation et son propre `padding`; l’utilisation en chaîne d’un modificateur utilitaire d’espacement `-gap-*`/`-p-*`/`-padding-*` remplace ces valeurs intégrées. Consultez le membre `global-nav-bar.item` pour les entrées de navigation individuelles."
+
+msgctxt "docs.api:prose"
+msgid "Collapse to icons only (labels hidden). @affects global-nav-bar.item — Hides the item's label."
+msgstr "Réduire aux icônes seulement (libellés masqués). @affects global-nav-bar.item — Masque le libellé de l’élément."
+
+msgctxt "docs.api:prose"
+msgid "A styled container for display of important information with two size variants and color themes."
+msgstr "Un conteneur stylisé pour afficher des renseignements importants, offert en deux tailles et avec différents thèmes de couleur."
+
+msgctxt "docs.api:prose"
+msgid "A navigation entry (InstUI `GlobalNavBar.Item`); `-selected` marks the active one."
+msgstr "Une entrée de navigation (InstUI `GlobalNavBar.Item`); `-selected` indique celle qui est active."
+
+msgctxt "docs.api:prose"
+msgid "Large padding around arrow icons in overflow buttons."
+msgstr "Grand espacement autour des icônes de flèche dans les boutons de débordement."
+
+msgctxt "docs.api:prose"
+msgid "Standalone `banner` stylesheet — the prefixed CSS for the banner container, ready to ship as a `.css` file."
+msgstr "Feuille de style autonome `banner` — le CSS préfixé pour le conteneur de bannière, prête à être livrée comme fichier `.css`."
+
+msgctxt "docs.api:prose"
+msgid "Standalone `globalNavBar` stylesheet — the prefixed CSS for the navigation rail, ready to ship as a `.css` file."
+msgstr "Feuille de style autonome `globalNavBar` — le CSS préfixé du rail de navigation, prêt à être livré comme fichier `.css`."
+
+msgctxt "docs.api:prose"
+msgid "Standalone `global-nav-bar.item` stylesheet."
+msgstr "Feuille de style autonome `global-nav-bar.item`."
+
+msgctxt "docs.api:prose"
+msgid "Use `globalNavBarCss` instead."
+msgstr "Utilisez `globalNavBarCss` à la place."
+
+msgctxt "docs.api:prose"
+msgid "Use `globalNavBarItemCss` instead."
+msgstr "Utilisez `globalNavBarItemCss` à la place."
+
+#, pantoken-verbatim
+msgctxt "docs.api:text"
+msgid "bannerCss"
+msgstr "bannerCss"
+
+#, pantoken-verbatim
+msgctxt "docs.api:text"
+msgid "globalNavBarCss"
+msgstr "globalNavBarCss"
+
+#, pantoken-verbatim
+msgctxt "docs.api:text"
+msgid "globalNavBarItemCss"
+msgstr "globalNavBarItemCss"
+
+#, pantoken-verbatim
+msgctxt "docs.api:text"
+msgid "global-nav-bar"
+msgstr "global-nav-bar"
+
+msgctxt "docs.api:prose"
+msgid "Rebrand (light), Canvas, Canvas High Contrast:"
+msgstr "Refonte (clair), Canvas, Canvas High Contrast:"
+
+msgctxt "docs.api:prose"
+msgid " With prefers-contrast: less, one piece of text falls below the minimum contrast. The worst is \"Your session expires soon.\" at 2.74:1 (needs 4.5:1). Softer contrast is fine only while text stays readable."
+msgstr " Avec prefers-contrast : less, un élément textuel passe sous le contraste minimal. Le pire est « Votre session expire bientôt. » à 2,74:1 (nécessite 4,5:1). Un contraste plus doux est acceptable seulement tant que le texte demeure lisible."
+
+msgctxt "docs.api:prose"
+msgid " With prefers-contrast: less, one piece of text falls below the minimum contrast. The worst is \"Your session expires soon.\" at 2.77:1 (needs 4.5:1). Softer contrast is fine only while text stays readable."
+msgstr " Avec prefers-contrast : less, un élément textuel passe sous le contraste minimal. Le pire est « Votre session expire bientôt. » à 2,77:1 (nécessite 4,5:1). Un contraste plus doux est acceptable seulement tant que le texte demeure lisible."
+
+msgctxt "docs.api:prose"
+msgid " With prefers-contrast: less, one piece of text falls below the minimum contrast. The worst is \"Your session expires soon.\" at 1.48:1 (needs 4.5:1). Softer contrast is fine only while text stays readable."
+msgstr " Avec prefers-contrast : less, un élément textuel passe sous le contraste minimal. Le pire est « Votre session expire bientôt. » à 1,48:1 (nécessite 4,5:1). Un contraste plus doux est acceptable seulement tant que le texte demeure lisible."
+
+msgctxt "docs.api:prose"
+msgid " With prefers-contrast: more, one piece of text falls below the minimum contrast. The worst is \"Your session expires soon.\" at 2.74:1 (needs 4.5:1)."
+msgstr " Avec prefers-contrast : more, un élément textuel passe sous le contraste minimal. Le pire est « Votre session expire bientôt. » à 2,74:1 (nécessite 4,5:1)."
+
+msgctxt "docs.api:prose"
+msgid "**Size** controls padding and gap: `relaxed` (default) is roomier; `compact` tightens both. **Color** sets the fill: bare (no modifier) is unfilled — border and icon only; `-color-violet` and `-color-sea` add a tinted background plus a matching icon swatch."
+msgstr "**Taille** contrôle le rembourrage et l’espacement : `relaxed` (la valeur par défaut) est plus spacieuse; `compact` resserre les deux. **Couleur** définit le remplissage : la valeur nue (sans modificateur) est sans remplissage — bordure et icône seulement; `-color-violet` et `-color-sea` ajoutent un arrière-plan teinté ainsi qu’une pastille d’icône assortie."
+
+msgctxt "docs.api:prose"
+msgid "Its own chained modifiers (`-color-*`, `-size-*`, `-shape-*`, `-toggle`, `-condensed`, `-without-background`, `-without-border`, `-display-block`) set a default for every child `.instui-button` that doesn't carry its own modifier in that same category — a button's own modifier class always wins over the group's default. `-icon-*` is always per-button; it's never read from the group. Deprecated button aliases (`-ghost`, `-color-primary-inverse`) aren't supported as group-level modifiers — use their canonical replacements (`-color-tertiary`, `-on-color`) instead. Each join shows a single 1px seam in the buttons' own border color (solid fills, whose border matches the fill, tint it with the label color). `-without-seam` is group-only: it hides that seam so the buttons read as one continuous control. Put `-width-half` on an individual icon-only child button for a split-action trigger with half the standard square width and the full button height."
+msgstr "Ses propres modificateurs enchaînés (`-color-*`, `-size-*`, `-shape-*`, `-toggle`, `-condensed`, `-without-background`, `-without-border`, `-display-block`) définissent une valeur par défaut pour chaque enfant `.instui-button` qui n'a pas son propre modificateur dans cette même catégorie — la classe de modificateur propre au bouton l'emporte toujours sur la valeur par défaut du groupe. `-icon-*` s'applique toujours à chaque bouton individuellement; sa valeur n'est jamais héritée du groupe. Les alias de boutons obsolètes (`-ghost`, `-color-primary-inverse`) ne sont pas pris en charge comme modificateurs de groupe — utilisez plutôt leurs remplacements canoniques (`-color-tertiary`, `-on-color`). Chaque jonction laisse une fine séparation de 1 px dans la couleur de bordure propre aux boutons (pour les remplissages unis, dont la bordure correspond au remplissage, elle est teintée de la couleur du libellé). `-without-seam` s'applique uniquement au groupe : il masque cette séparation pour que les boutons forment un seul contrôle continu. Appliquez `-width-half` à un bouton enfant individuel composé uniquement d'une icône pour créer un déclencheur d'action fractionnée dont la largeur est la moitié de celle d'un bouton carré standard et dont la hauteur correspond à celle du bouton."
+
+msgctxt "docs.api:prose"
+msgid "Rebrand (light), Rebrand (dark):"
+msgstr "Nouvelle image (light), Nouvelle image (dark):"
+
+msgctxt "docs.api:prose"
+msgid " With prefers-contrast: less, four pieces of text fall below the minimum contrast. The worst is \"Disabled unselected\" at 2.74:1 (needs 4.5:1). Softer contrast is fine only while text stays readable."
+msgstr " Avec prefers-contrast: less, quatre éléments de texte n’atteignent pas le contraste minimal. Le pire résultat est « Désactivé, non sélectionné » à 2.74:1 (il faut 4.5:1). Un contraste plus doux convient seulement si le texte reste lisible."
+
+msgctxt "docs.api:prose"
+msgid " With prefers-contrast: more, four pieces of text fall below the minimum contrast. The worst is \"Disabled unselected\" at 2.74:1 (needs 4.5:1)."
+msgstr " Avec prefers-contrast: more, quatre éléments de texte n’atteignent pas le contraste minimal. Le pire résultat est « Désactivé, non sélectionné » à 2.74:1 (il faut 4.5:1)."
+
+msgctxt "docs.api:prose"
+msgid "The selected segment uses a distinct active-item shadow; it does not match an existing --instui-elevation-* composite. Overflow buttons use the upstream elevation3 component tokens."
+msgstr "Le segment sélectionné utilise une ombre d’élément actif distincte; elle ne correspond à aucun composite --instui-elevation-* existant. Les boutons en débordement utilisent les jetons de composant elevation3 en amont."
+
+msgctxt "docs.api:prose"
+msgid "A `-icon-*` class may live on the label or its native input; the interaction helper promotes input classes to the label so the shared glyph painter can render it."
+msgstr "Une classe `-icon-*` peut se trouver sur l’étiquette ou son champ de saisie natif; l’aide à l’interaction transfère les classes de l’input vers l’étiquette afin que le moteur de glyphes partagé puisse l’afficher."
+
+msgctxt "docs.api:prose"
+msgid "The canonical record name from a record-opening tag, e.g. `button`."
+msgstr "Le nom canonique de l’enregistrement provenant d’une balise d’ouverture d’enregistrement, p. ex. `button`."
+
+msgctxt "docs.api:prose"
+msgid "Release maturity from `@stage` or a legacy maturity flag tag."
+msgstr "Le niveau de maturité de la version provenant de `@stage` ou d’une balise d’indicateur de maturité héritée."
+
+msgctxt "docs.api:prose"
+msgid "Audience visibility; absent means public."
+msgstr "Visibilité pour le public cible; si elle est absente, l’enregistrement est public."
+
+msgctxt "docs.api:prose"
+msgid "Set when this record carries a `@global` tag — its modifiers (and per-modifier `@global` flags)\napply to any record, not just this record's base class. Used during\nvalidation and consumption checks to resolve modifier matches globally."
+msgstr "Défini lorsque cet enregistrement contient une balise `@global` — ses modificateurs (et les indicateurs `@global` propres à chaque modificateur)\n) s’appliquent à tout enregistrement, pas seulement à la classe de base de cet enregistrement. Utilisé lors de la\nvalidation et des vérifications d’utilisation pour résoudre globalement les correspondances de modificateurs."
+
+msgctxt "docs.api:prose"
+msgid "Private `@example` labels, keyed by zero-based index into [examples](#examples)."
+msgstr "Étiquettes privées `@example`, indexées selon la position commençant à zéro dans [examples](#examples)."

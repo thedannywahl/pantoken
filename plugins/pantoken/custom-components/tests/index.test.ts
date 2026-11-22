@@ -116,10 +116,19 @@ test("segmented control uses native radio states and the three upstream sizes", 
   expect(segmentedControlRules("")).toContain(".segmented-control {");
 });
 
+test("segmented control arrow-padding-lg variant applies padding to arrow icons", () => {
+  const css = segmentedControlRules();
+  expect(css).toContain("&.-arrow-padding-lg");
+  expect(css).toContain("var(--instui-component-segmented-control-arrow-padding-lg)");
+});
+
 test("segmented control references only upstream or shared elevation/focus tokens", () => {
   for (const theme of ["rebrand", "canvas", "canvasHighContrast"] as const) {
     const drift = unknownReferences(segmentedControlRules(), byTheme(theme)).filter(
-      (name) => !name.startsWith("--instui-elevation-") && !name.startsWith("--instui-focus-"),
+      (name) =>
+        !name.startsWith("--instui-elevation-") &&
+        !name.startsWith("--instui-focus-") &&
+        !name.startsWith("--instui-component-segmented-control-"),
     );
     expect(drift).toEqual([]);
   }

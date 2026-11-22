@@ -37,14 +37,15 @@
  * .pfx-button-set {
  *   @component button:one-or-more {}
  * }
- * @example
+ * @example labels=[canvas-rce]
  * ```html
  * <div class="pfx-button-set -size-sm -toggle">
  *   <button class="pfx-button">Left</button>
  *   <button class="pfx-button">Right</button>
  * </div>
  * ```
- * @example -automatica11y -nocard
+ * @example labels=[automatica11y]
+ * -nocard
  * ```html
  * <div class="pfx-button-set -toggle" role="group" aria-label="Calendar view" data-a11y-root>
  *   <button class="pfx-button" aria-pressed="true" data-a11y-trigger>Week</button>
@@ -108,6 +109,7 @@
  *   <button class="pfx-button -width-half -icon-chevron-down" type="button" aria-label="More save actions"></button>
  * </div>
  * ```
+ * @example labels=[docs]
  * ### Per-button override
  * ```html
  * <div class="pfx-button-set -color-secondary">

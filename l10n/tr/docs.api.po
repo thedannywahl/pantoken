@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: pantoken\n"
-"PO-Revision-Date: 2026-11-14 01:06+0000\n"
+"PO-Revision-Date: 2026-11-21 21:24+0000\n"
 "Last-Translator: pantoken localization engine\n"
 "Language-Team: pantoken\n"
 "MIME-Version: 1.0\n"
@@ -35044,3 +35044,178 @@ msgstr "numberInput"
 msgctxt "docs.api:text"
 msgid "componentElements"
 msgstr "componentElements"
+
+msgctxt "docs.api:prose"
+msgid "\n  An alert with text-color-base modifier for high contrast.\n"
+msgstr "\n  Yüksek kontrast için text-color-base modifier'ına sahip bir uyarı.\n"
+
+msgctxt "docs.api:prose"
+msgid "\n  A warning alert with explicit base text color.\n"
+msgstr "\n  Açıkça belirtilmiş temel metin rengine sahip bir uyarı bildirimi.\n"
+
+msgctxt "docs.api:prose"
+msgid "\n  An inline alert with inline status icon.\n"
+msgstr "\n  Satır içi durum simgesine sahip bir satır içi uyarı bildirimi.\n"
+
+msgctxt "docs.api:prose"
+msgid "Render inline icon using the status color (for inline alerts)."
+msgstr "Satır içi simgeyi durum rengini kullanarak oluştur (satır içi uyarılar)."
+
+msgctxt "docs.api:prose"
+msgid "Use base text color instead of on-color (high-contrast)."
+msgstr "on-color yerine temel metin rengini kullan (yüksek kontrast)."
+
+msgctxt "docs.api:prose"
+msgid "Use on-color text (default for floating)."
+msgstr "on-color metin rengini kullan (kayan bildirimler için varsayılan)."
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "**Source:** [banner.css](https://github.com/thedannywahl/pantoken/blob/main/formats/components/src/components/banner/banner.css)"
+msgstr "**Source:** [banner.css](https://github.com/thedannywahl/pantoken/blob/main/formats/components/src/components/banner/banner.css)"
+
+msgctxt "docs.api:prose"
+msgid "`.item` — A navigation entry (InstUI `GlobalNavBar.Item`); `-selected` marks the active one."
+msgstr "`.item` — Bir gezinme girdisi (InstUI `GlobalNavBar.Item`); `-selected` etkin olanı belirtir."
+
+msgctxt "docs.api:prose"
+msgid "The parent `global-nav-bar`'s `-minimized` modifier hides this member's `.label` — see `global-nav-bar`'s own doc for that modifier."
+msgstr "Üst öğenin `global-nav-bar`'s `-minimized` değiştiricisi bu üyenin `.label` özelliğini gizler — bu değiştirici için `global-nav-bar` belgesine bakın."
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "**Source:** [global-nav-bar.css](https://github.com/thedannywahl/pantoken/blob/main/formats/components/src/components/global-nav-bar/global-nav-bar.css)"
+msgstr "**Source:** [global-nav-bar.css](https://github.com/thedannywahl/pantoken/blob/main/formats/components/src/components/global-nav-bar/global-nav-bar.css)"
+
+msgctxt "docs.api:prose"
+msgid "`.instui-global-nav-bar` — A vertical navigation rail of icon-over-label items, with a minimized icons-only mode."
+msgstr "`.instui-global-nav-bar` — Simge ve etiketlerden oluşan dikey bir gezinme çubuğu; simgelerin tek başına gösterildiği küçültülmüş bir modu vardır."
+
+msgctxt "docs.api:prose"
+msgid "Sets its own `gap` between nav items and its own `padding`; chaining a `-gap-*`/`-p-*`/`-padding-*` spacing utility modifier overrides those built-in values. See the `global-nav-bar.item` member for the individual nav entries."
+msgstr "Gezinme öğeleri arasına kendi `gap` değerini, kendi `padding` değerini ayarlar; zincirleme kullanılan bir `-gap-*`/`-p-*`/`-padding-*` aralık yardımcı programı değiştiricisi bu yerleşik değerleri geçersiz kılar. Tek tek gezinme öğeleri için `global-nav-bar.item` üyesine bakın."
+
+msgctxt "docs.api:prose"
+msgid "Collapse to icons only (labels hidden). @affects global-nav-bar.item — Hides the item's label."
+msgstr "Yalnızca simgelere daralt (etiketler gizli). @affects global-nav-bar.item — Öğenin etiketini gizler."
+
+msgctxt "docs.api:prose"
+msgid "A styled container for display of important information with two size variants and color themes."
+msgstr "Önemli bilgilerin iki boyut seçeneği ve renk temasıyla gösterilmesi için biçimlendirilmiş bir kapsayıcı."
+
+msgctxt "docs.api:prose"
+msgid "A navigation entry (InstUI `GlobalNavBar.Item`); `-selected` marks the active one."
+msgstr "Bir gezinme girdisi (InstUI `GlobalNavBar.Item`); `-selected` etkin olanı işaretler."
+
+msgctxt "docs.api:prose"
+msgid "Large padding around arrow icons in overflow buttons."
+msgstr "Taşma düğmelerindeki ok simgelerinin çevresinde geniş iç boşluk."
+
+msgctxt "docs.api:prose"
+msgid "Standalone `banner` stylesheet — the prefixed CSS for the banner container, ready to ship as a `.css` file."
+msgstr "Bağımsız `banner` stil sayfası — banner kapsayıcısı için önekli CSS, `.css` dosyası olarak yayımlanmaya hazır."
+
+msgctxt "docs.api:prose"
+msgid "Standalone `globalNavBar` stylesheet — the prefixed CSS for the navigation rail, ready to ship as a `.css` file."
+msgstr "Tek başına `globalNavBar` stil sayfası — gezinme rayı için önekli CSS, `.css` dosyası olarak yayımlanmaya hazır."
+
+msgctxt "docs.api:prose"
+msgid "Standalone `global-nav-bar.item` stylesheet."
+msgstr "Bağımsız `global-nav-bar.item` stil sayfası."
+
+msgctxt "docs.api:prose"
+msgid "Use `globalNavBarCss` instead."
+msgstr "Bunun yerine `globalNavBarCss` kullanın."
+
+msgctxt "docs.api:prose"
+msgid "Use `globalNavBarItemCss` instead."
+msgstr "Bunun yerine `globalNavBarItemCss` kullanın."
+
+#, pantoken-verbatim
+msgctxt "docs.api:text"
+msgid "bannerCss"
+msgstr "bannerCss"
+
+#, pantoken-verbatim
+msgctxt "docs.api:text"
+msgid "globalNavBarCss"
+msgstr "globalNavBarCss"
+
+#, pantoken-verbatim
+msgctxt "docs.api:text"
+msgid "globalNavBarItemCss"
+msgstr "globalNavBarItemCss"
+
+#, pantoken-verbatim
+msgctxt "docs.api:text"
+msgid "global-nav-bar"
+msgstr "global-nav-bar"
+
+msgctxt "docs.api:prose"
+msgid "Rebrand (light), Canvas, Canvas High Contrast:"
+msgstr "Yeniden markalama (aydınlık), Canvas, Canvas Yüksek Kontrast:"
+
+msgctxt "docs.api:prose"
+msgid " With prefers-contrast: less, one piece of text falls below the minimum contrast. The worst is \"Your session expires soon.\" at 2.74:1 (needs 4.5:1). Softer contrast is fine only while text stays readable."
+msgstr " prefers-contrast: less ile, bir metin parçası minimum kontrastın altına düşüyor. En kötüsü \"Oturumunuz yakında sona erecek.\" metnidir; oranı 2.74:1'dir (4.5:1) gerekir. Metin okunabilir kaldığı sürece daha yumuşak kontrast uygundur."
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid " With prefers-contrast: less, one piece of text falls below the minimum contrast. The worst is \"Your session expires soon.\" at 2.77:1 (needs 4.5:1). Softer contrast is fine only while text stays readable."
+msgstr " With prefers-contrast: less, one piece of text falls below the minimum contrast. The worst is \"Your session expires soon.\" at 2.77:1 (needs 4.5:1). Softer contrast is fine only while text stays readable."
+
+msgctxt "docs.api:prose"
+msgid " With prefers-contrast: less, one piece of text falls below the minimum contrast. The worst is \"Your session expires soon.\" at 1.48:1 (needs 4.5:1). Softer contrast is fine only while text stays readable."
+msgstr " prefers-contrast: less ile, bir metin parçası minimum kontrastın altına düşüyor. En kötüsü \"Oturumunuz yakında sona erecek.\" metnidir; oranı 1.48:1'dir (4.5:1) gerekir. Metin okunabilir kaldığı sürece daha yumuşak kontrast uygundur."
+
+msgctxt "docs.api:prose"
+msgid " With prefers-contrast: more, one piece of text falls below the minimum contrast. The worst is \"Your session expires soon.\" at 2.74:1 (needs 4.5:1)."
+msgstr " prefers-contrast: more ile, bir metin parçası minimum kontrastın altına düşüyor. En kötüsü \"Oturumunuz yakında sona erecek.\" metnidir; oranı 2.74:1'dir (4.5:1) gerekir."
+
+msgctxt "docs.api:prose"
+msgid "**Size** controls padding and gap: `relaxed` (default) is roomier; `compact` tightens both. **Color** sets the fill: bare (no modifier) is unfilled — border and icon only; `-color-violet` and `-color-sea` add a tinted background plus a matching icon swatch."
+msgstr "**Boyut** doldurma ve boşluğu denetler: `relaxed` (varsayılan) daha ferah alan sunar; `compact` her ikisini de sıkıştırır. **Renk** dolguyu ayarlar: yalın (değiştirici yok) dolgusuzdur — yalnızca kenarlık ve simge bulunur; `-color-violet` ve `-color-sea` tonlu bir arka plan ve eşleşen bir simge örneği ekler."
+
+msgctxt "docs.api:prose"
+msgid "Its own chained modifiers (`-color-*`, `-size-*`, `-shape-*`, `-toggle`, `-condensed`, `-without-background`, `-without-border`, `-display-block`) set a default for every child `.instui-button` that doesn't carry its own modifier in that same category — a button's own modifier class always wins over the group's default. `-icon-*` is always per-button; it's never read from the group. Deprecated button aliases (`-ghost`, `-color-primary-inverse`) aren't supported as group-level modifiers — use their canonical replacements (`-color-tertiary`, `-on-color`) instead. Each join shows a single 1px seam in the buttons' own border color (solid fills, whose border matches the fill, tint it with the label color). `-without-seam` is group-only: it hides that seam so the buttons read as one continuous control. Put `-width-half` on an individual icon-only child button for a split-action trigger with half the standard square width and the full button height."
+msgstr "Zincirlenmiş kendi değiştiricileri (`-color-*`, `-size-*`, `-shape-*`, `-toggle`, `-condensed`, `-without-background`, `-without-border`, `-display-block`) aynı kategoride kendi değiştiricisini taşımayan her alt öğe için bir varsayılan belirler — bir düğmenin kendi değiştirici sınıfı, grup varsayılanına her zaman göre önceliklidir. `-icon-*` her zaman düğmeye özeldir; grup üzerinden okunmaz. Kullanımdan kaldırılmış düğme diğer adları (`-ghost`, `-color-primary-inverse`) grup düzeyindeki değiştiriciler olarak desteklenmez — bunun yerine standart karşılıklarını (`-color-tertiary`, `-on-color`) kullanın. Her birleşim, düğmelerin kendi kenarlık renginde tek bir 1 piksellik dikiş oluşturur (kenarlığı dolgu rengiyle eşleşen düz dolguların kenarlığını, etiket rengiyle tonlandırır). `-without-seam` yalnızca gruba uygundur: düğmelerin tek bir sürekli kontrol olarak görünmesi için bu dikişi gizler. Standart kare genişliğinin yarısı ve tam düğme yüksekliğiyle bir bölünmüş işlem tetikleyicisi için, `-width-half` yalnızca simge içeren bireysel alt düğmeye ekleyin."
+
+msgctxt "docs.api:prose"
+msgid "Rebrand (light), Rebrand (dark):"
+msgstr "Yeniden markala (aydınlık), Yeniden markala (karanlık):"
+
+msgctxt "docs.api:prose"
+msgid " With prefers-contrast: less, four pieces of text fall below the minimum contrast. The worst is \"Disabled unselected\" at 2.74:1 (needs 4.5:1). Softer contrast is fine only while text stays readable."
+msgstr " prefers-contrast: less ile, dört metin parçası minimum kontrastın altına düşüyor. En kötüsü, 2,74:1 ile \"Disabled unselected\" (4,5:1) gerekiyor). Daha yumuşak kontrast, yalnızca metin okunabilir kaldığı sürece uygundur."
+
+msgctxt "docs.api:prose"
+msgid " With prefers-contrast: more, four pieces of text fall below the minimum contrast. The worst is \"Disabled unselected\" at 2.74:1 (needs 4.5:1)."
+msgstr " prefers-contrast: more ile, dört metin parçası minimum kontrastın altına düşüyor. En kötüsü, 2,74:1 ile \"Disabled unselected\" (4,5:1) gerekiyor)."
+
+msgctxt "docs.api:prose"
+msgid "The selected segment uses a distinct active-item shadow; it does not match an existing --instui-elevation-* composite. Overflow buttons use the upstream elevation3 component tokens."
+msgstr "Seçili segment, farklı bir active-item gölgesi kullanır; mevcut --instui-elevation-* bileşiğiyle eşleşmez. Taşan butonlar, upstream elevation3 bileşen tokenlarını kullanır."
+
+msgctxt "docs.api:prose"
+msgid "A `-icon-*` class may live on the label or its native input; the interaction helper promotes input classes to the label so the shared glyph painter can render it."
+msgstr "Bir `-icon-*` sınıfı etiketin veya yerel giriş öğesinin üzerinde bulunabilir; etkileşim yardımcısı, ortak glif boyayıcısının bunu oluşturabilmesi için giriş öğesi sınıflarını etikete taşır."
+
+msgctxt "docs.api:prose"
+msgid "The canonical record name from a record-opening tag, e.g. `button`."
+msgstr "Bir kayıt açma etiketindeki kanonik kayıt adı; ör. `button`."
+
+msgctxt "docs.api:prose"
+msgid "Release maturity from `@stage` or a legacy maturity flag tag."
+msgstr "`@stage` veya eski bir olgunluk bayrağı etiketinden alınan sürüm olgunluğu."
+
+msgctxt "docs.api:prose"
+msgid "Audience visibility; absent means public."
+msgstr "Hedef kitle görünürlüğü; belirtilmemişse herkese açıktır."
+
+msgctxt "docs.api:prose"
+msgid "Set when this record carries a `@global` tag — its modifiers (and per-modifier `@global` flags)\napply to any record, not just this record's base class. Used during\nvalidation and consumption checks to resolve modifier matches globally."
+msgstr "Bu kayıt bir `@global` etiketi taşıdığında ayarlanır — değiştiricileri (ve değiştirici başına `@global` bayrakları)\n yalnızca bu kaydın temel sınıfına değil, herhangi bir kayda uygulanır. Değiştirici eşleşmelerini genel olarak çözümlemek için \ndoğrulama ve kullanım denetimleri sırasında kullanılır."
+
+msgctxt "docs.api:prose"
+msgid "Private `@example` labels, keyed by zero-based index into [examples](#examples)."
+msgstr "Özel `@example` etiketleri; [examples](#examples) içindeki sıfır tabanlı dizine göre anahtarlanır."

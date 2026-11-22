@@ -7,6 +7,7 @@
  * @modifier -size-lg — Large segments.
  * @modifier -size-md — Medium segments (default).
  * @modifier -size-sm — Small segments.
+ * @modifier -arrow-padding-lg — Large padding around arrow icons in overflow buttons.
  * @part viewport — Clips the segment row and anchors the overflow controls.
  * @part track — Scrollable row containing the selectable segments.
  * @part overflow-start — Scroll to the preceding hidden segment.
@@ -23,7 +24,7 @@
  * }
  * @a11y Use a labelled fieldset and one shared radio name with a checked default. Native radios
  *   announce their checked state; overflow buttons need labels describing their scroll direction.
- * @example
+ * @example labels=[canvas-rce]
  * ```html
  * <fieldset class="pfx-segmented-control" aria-label="Course view">
  *   <div class="viewport">
@@ -40,7 +41,8 @@
  *   </div>
  * </fieldset>
  * ```
- * @example -automatica11y -nocard
+ * @example labels=[automatica11y]
+ * -nocard
  * ```html
  * <fieldset class="pfx-segmented-control" aria-label="Course view" data-a11y-root>
  *   <div class="viewport">
@@ -246,5 +248,9 @@
 
   & > .viewport > :is(.overflow-start, .overflow-end)[hidden] {
     display: none;
+  }
+
+  &.-arrow-padding-lg > .viewport > :is(.overflow-start, .overflow-end)::before {
+    padding: var(--instui-component-segmented-control-arrow-padding-lg);
   }
 }

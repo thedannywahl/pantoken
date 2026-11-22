@@ -1372,6 +1372,12 @@ msgctxt "docs.chrome:a2uiCatalogDescriptions.PantokenBadge"
 msgid "A compact count or status badge."
 msgstr "Bathodyn cryno ar gyfer cyfrif neu statws."
 
+#: docs/.vitepress/catalog-i18n.json#a2uiCatalogDescriptions.PantokenBanner
+#, fuzzy, no-c-format
+msgctxt "docs.chrome:a2uiCatalogDescriptions.PantokenBanner"
+msgid "A Pantoken banner component with safe text and child content."
+msgstr "Cydran llinell awdur Pantoken gyda thestun diogel a chynnwys plant."
+
 #: docs/.vitepress/catalog-i18n.json#a2uiCatalogDescriptions.PantokenPill
 #, no-c-format
 msgctxt "docs.chrome:a2uiCatalogDescriptions.PantokenPill"
@@ -1454,6 +1460,19 @@ msgctxt "docs.chrome:a2uiCatalogDescriptions.PantokenSideNavBar"
 msgid "A vertical navigation rail that can collapse to icon-only presentation."
 msgstr ""
 "Bar llywio fertigol y gellir ei chrebachu i gyflwyniad eiconau yn unig."
+
+#: docs/.vitepress/catalog-i18n.json#a2uiCatalogDescriptions.PantokenGlobalNavBar
+#, fuzzy, no-c-format
+msgctxt "docs.chrome:a2uiCatalogDescriptions.PantokenGlobalNavBar"
+msgid "A Pantoken global-nav-bar component with safe text and child content."
+msgstr "Cydran hysbysfwrdd Pantoken gyda thestun diogel a chynnwys plant."
+
+#: docs/.vitepress/catalog-i18n.json#a2uiCatalogDescriptions.PantokenGlobalNavBarItem
+#, fuzzy, no-c-format
+msgctxt "docs.chrome:a2uiCatalogDescriptions.PantokenGlobalNavBarItem"
+msgid ""
+"A Pantoken global-nav-bar-item component with safe text and child content."
+msgstr "Cydran llinell awdur Pantoken gyda thestun diogel a chynnwys plant."
 
 #: docs/.vitepress/catalog-i18n.json#a2uiCatalogDescriptions.PantokenTreeBrowser
 #, no-c-format
@@ -2108,6 +2127,21 @@ msgstr ""
 "Cydran Breadcrumb Instructure wedi'i steilio â dosbarthiadau "
 "semantig .instui-breadcrumb."
 
+#: docs/.vitepress/catalog-i18n.json#registryBrowserItems.banner.title
+#, fuzzy, no-c-format
+msgctxt "docs.chrome:registryBrowserItems.banner.title"
+msgid "Banner"
+msgstr "Rhedegwr"
+
+#: docs/.vitepress/catalog-i18n.json#registryBrowserItems.banner.description
+#, fuzzy, no-c-format
+msgctxt "docs.chrome:registryBrowserItems.banner.description"
+msgid ""
+"Instructure Banner component styled with semantic .instui-banner classes."
+msgstr ""
+"Cydran Spinner Instructure wedi'i steilio â dosbarthiadau semantig .instui-"
+"spinner."
+
 #: docs/.vitepress/catalog-i18n.json#registryBrowserItems.billboard.title
 #, no-c-format
 msgctxt "docs.chrome:registryBrowserItems.billboard.title"
@@ -2263,6 +2297,22 @@ msgctxt "docs.chrome:registryBrowserItems.side-nav-bar.description"
 msgid ""
 "Instructure Side-nav-bar component styled with semantic .instui-side-nav-bar "
 "classes."
+msgstr ""
+"Cydran Side-nav-bar Instructure wedi'i steilio â dosbarthiadau "
+"semantig .instui-side-nav-bar."
+
+#: docs/.vitepress/catalog-i18n.json#registryBrowserItems.global-nav-bar.title
+#, fuzzy, no-c-format
+msgctxt "docs.chrome:registryBrowserItems.global-nav-bar.title"
+msgid "Global-nav-bar"
+msgstr "Bar llywio ochr"
+
+#: docs/.vitepress/catalog-i18n.json#registryBrowserItems.global-nav-bar.description
+#, fuzzy, no-c-format
+msgctxt "docs.chrome:registryBrowserItems.global-nav-bar.description"
+msgid ""
+"Instructure Global-nav-bar component styled with semantic .instui-global-nav-"
+"bar classes."
 msgstr ""
 "Cydran Side-nav-bar Instructure wedi'i steilio â dosbarthiadau "
 "semantig .instui-side-nav-bar."
@@ -2602,18 +2652,6 @@ msgid "Instructure View component styled with semantic .instui-view classes."
 msgstr ""
 "Cydran View Instructure wedi’i steilio â dosbarthiadau semantig .instui-view."
 
-#: docs/.vitepress/catalog-i18n.json#registryBrowserItems.banner.title
-#, fuzzy, no-c-format
-msgctxt "docs.chrome:registryBrowserItems.banner.title"
-msgid "Banner"
-msgstr "Rhedegwr"
-
-#: docs/.vitepress/catalog-i18n.json#registryBrowserItems.banner.description
-#, no-c-format
-msgctxt "docs.chrome:registryBrowserItems.banner.description"
-msgid "Pantoken banner component styles and documented HTML structure."
-msgstr "Arddulliau cydran baner Pantoken a strwythur HTML wedi’i ddogfennu."
-
 #: docs/.vitepress/catalog-i18n.json#registryBrowserItems.agent-shell.title
 #, fuzzy, no-c-format
 msgctxt "docs.chrome:registryBrowserItems.agent-shell.title"
@@ -2903,6 +2941,11 @@ msgid "Development-only layout outlines for Pantoken components."
 msgstr ""
 "Amlinelliadau cynllun ar gyfer cydrannau Pantoken, at ddefnydd datblygu yn "
 "unig."
+
+#, no-c-format
+#~ msgctxt "docs.chrome:registryBrowserItems.banner.description"
+#~ msgid "Pantoken banner component styles and documented HTML structure."
+#~ msgstr "Arddulliau cydran baner Pantoken a strwythur HTML wedi’i ddogfennu."
 
 #, no-c-format
 #~ msgctxt "docs.chrome:a2uiCatalog.reactSupport"

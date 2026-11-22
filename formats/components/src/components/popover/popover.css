@@ -9,7 +9,7 @@
  * @modifier -placement-start — Sit at the start (inline-start) of the anchor.
  * @modifier -placement-end — Sit at the end (inline-end) of the anchor.
  * @compat Uses CSS anchor positioning (`position-anchor`/`position-area`) and the native `[popover]` API, both Chromium-only today; an `@supports` guard keeps the placement inert elsewhere, where the UA centres the popover in the top layer.
- * @example -canvas-rce -docs
+ * @example labels=[canvas-rce,docs]
  * ```html
  * <div class="pfx-popover -placement-bottom" id="pop-1">
  *   <div class="pfx-heading -level-h4">Share this page</div>
@@ -25,22 +25,22 @@
  * }
  * @related tooltip — A tooltip is a smaller, hover- or focus-triggered anchored surface.
  * @related context-view — Context view is a related anchored surface with a pointer.
- * @example -automatica11y
+ * @example labels=[automatica11y]
  * ```html
  * <p><button type="button" popovertarget="popover-top" style="anchor-name: --audit-popover-top">Top popover</button></p>
  * <div class="pfx-popover -placement-top" id="popover-top" popover="auto" role="region" aria-label="Top popover" style="position-anchor: --audit-popover-top"></div>
  * ```
- * @example -automatica11y
+ * @example labels=[automatica11y]
  * ```html
  * <p><button type="button" popovertarget="popover-bottom" style="anchor-name: --audit-popover-bottom">Bottom popover</button></p>
  * <div class="pfx-popover -placement-bottom" id="popover-bottom" popover="auto" role="region" aria-label="Bottom popover" style="position-anchor: --audit-popover-bottom"></div>
  * ```
- * @example -automatica11y
+ * @example labels=[automatica11y]
  * ```html
  * <p><button type="button" popovertarget="popover-start" style="anchor-name: --audit-popover-start">Start popover</button></p>
  * <div class="pfx-popover -placement-start" id="popover-start" popover="auto" role="region" aria-label="Start popover" style="position-anchor: --audit-popover-start"></div>
  * ```
- * @example -automatica11y
+ * @example labels=[automatica11y]
  * ```html
  * <p><button type="button" popovertarget="popover-end" style="anchor-name: --audit-popover-end">End popover</button></p>
  * <div class="pfx-popover -placement-end" id="popover-end" popover="auto" role="region" aria-label="End popover" style="position-anchor: --audit-popover-end"></div>

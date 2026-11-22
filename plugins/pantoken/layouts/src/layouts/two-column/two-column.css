@@ -13,7 +13,8 @@
  * - Ensure both columns are perceivable and usable on narrow viewports
  * - Use semantic landmarks (e.g., `<section>`) to wrap column content
  * - Maintain sufficient space and contrast between columns
- * @example -automatica11y -nocard
+ * @example labels=[automatica11y]
+ * -nocard
  * ```html
  * <div class="pfx-two-column" data-a11y-root>
  *   <section class="pfx-left" slot="left" aria-labelledby="course-details-title">

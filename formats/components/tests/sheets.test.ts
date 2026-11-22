@@ -3,6 +3,7 @@ import { tokens } from "@pantoken/tokens";
 import { unknownReferences } from "@pantoken/utils";
 import {
   avatarCss,
+  bannerCss,
   baseCss,
   billboardCss,
   breadcrumbCss,
@@ -140,6 +141,18 @@ test("modifiers are key-value: sizes alias short/long, deviations keep a depreca
   // Old bare shorthands are gone as canonical.
   expect(css).not.toContain(".instui-button.-secondary {");
   expect(css).not.toContain(".instui-button.-circle {");
+});
+
+test("banner has size and theme variants with typography tokens", () => {
+  const banner = bannerCss({ prefix: "instui" });
+  expect(banner).toContain("&.-size-compact");
+  expect(banner).toContain("&.-size-relaxed");
+  expect(banner).toContain("&.-theme-sea");
+  expect(banner).toContain("&.-theme-violet");
+  expect(banner).toContain("var(--instui-component-banner-heading-font-weight)");
+  expect(banner).toContain("var(--instui-component-banner-content-font-weight)");
+  expect(banner).toContain("var(--instui-component-banner-compact-heading-font-size)");
+  expect(banner).toContain("var(--instui-component-banner-relaxed-heading-font-size)");
 });
 
 test("pill has status variants + status weight; tag has sizes and a dismissible inline variant", () => {

@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: pantoken\n"
-"PO-Revision-Date: 2026-11-13 22:46+0000\n"
+"PO-Revision-Date: 2026-11-21 20:31+0000\n"
 "Last-Translator: pantoken localization engine\n"
 "Language-Team: pantoken\n"
 "MIME-Version: 1.0\n"
@@ -35916,3 +35916,178 @@ msgstr "numberInput"
 msgctxt "docs.api:text"
 msgid "componentElements"
 msgstr "componentElements"
+
+msgctxt "docs.api:prose"
+msgid "\n  An alert with text-color-base modifier for high contrast.\n"
+msgstr "\n  Riasztás text-color-base módosítóval a nagy kontrasztért.\n"
+
+msgctxt "docs.api:prose"
+msgid "\n  A warning alert with explicit base text color.\n"
+msgstr "\n  Figyelmeztető riasztás explicit alapszövegszínnel.\n"
+
+msgctxt "docs.api:prose"
+msgid "\n  An inline alert with inline status icon.\n"
+msgstr "\n  Beágyazott állapotikonnal ellátott beágyazott riasztás.\n"
+
+msgctxt "docs.api:prose"
+msgid "Render inline icon using the status color (for inline alerts)."
+msgstr "A beágyazott ikont az állapotszínnel jeleníti meg (beágyazott riasztásoknál)."
+
+msgctxt "docs.api:prose"
+msgid "Use base text color instead of on-color (high-contrast)."
+msgstr "Az alapszövegszínt használja az on-color helyett (nagy kontraszthoz)."
+
+msgctxt "docs.api:prose"
+msgid "Use on-color text (default for floating)."
+msgstr "On-color szöveget használ (lebegő riasztásoknál ez az alapértelmezett)."
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "**Source:** [banner.css](https://github.com/thedannywahl/pantoken/blob/main/formats/components/src/components/banner/banner.css)"
+msgstr "**Source:** [banner.css](https://github.com/thedannywahl/pantoken/blob/main/formats/components/src/components/banner/banner.css)"
+
+msgctxt "docs.api:prose"
+msgid "`.item` — A navigation entry (InstUI `GlobalNavBar.Item`); `-selected` marks the active one."
+msgstr "`.item` — Navigációs elem (InstUI `GlobalNavBar.Item`); `-selected` jelöli az aktív elemet."
+
+msgctxt "docs.api:prose"
+msgid "The parent `global-nav-bar`'s `-minimized` modifier hides this member's `.label` — see `global-nav-bar`'s own doc for that modifier."
+msgstr "A szülő `global-nav-bar`'s `-minimized` módosítója elrejti ennek a tagnak a `.label` értékét — a módosító leírását lásd a `global-nav-bar` saját dokumentációjában."
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "**Source:** [global-nav-bar.css](https://github.com/thedannywahl/pantoken/blob/main/formats/components/src/components/global-nav-bar/global-nav-bar.css)"
+msgstr "**Source:** [global-nav-bar.css](https://github.com/thedannywahl/pantoken/blob/main/formats/components/src/components/global-nav-bar/global-nav-bar.css)"
+
+msgctxt "docs.api:prose"
+msgid "`.instui-global-nav-bar` — A vertical navigation rail of icon-over-label items, with a minimized icons-only mode."
+msgstr "`.instui-global-nav-bar` — Függőleges navigációs sáv, ahol az ikonok a címkék fölött helyezkednek el, és van egy minimalizált, csak ikonokat megjelenítő mód."
+
+msgctxt "docs.api:prose"
+msgid "Sets its own `gap` between nav items and its own `padding`; chaining a `-gap-*`/`-p-*`/`-padding-*` spacing utility modifier overrides those built-in values. See the `global-nav-bar.item` member for the individual nav entries."
+msgstr "Beállítja a saját `gap` értékét a navigációs elemek között, valamint a saját `padding` értékét; a `-gap-*`/`-p-*`/`-padding-*` térközsegéd-módosító láncolása felülírja ezeket a beépített értékeket. Az egyes navigációs elemekért lásd a `global-nav-bar.item` tagot."
+
+msgctxt "docs.api:prose"
+msgid "Collapse to icons only (labels hidden). @affects global-nav-bar.item — Hides the item's label."
+msgstr "Összecsukás csak ikonokra (címkék elrejtve). @affects global-nav-bar.item — Elrejti az elem címkéjét."
+
+msgctxt "docs.api:prose"
+msgid "A styled container for display of important information with two size variants and color themes."
+msgstr "Stílusozott tároló fontos információk megjelenítésére, két méretváltozattal és színtémával."
+
+msgctxt "docs.api:prose"
+msgid "A navigation entry (InstUI `GlobalNavBar.Item`); `-selected` marks the active one."
+msgstr "Navigációs elem (InstUI `GlobalNavBar.Item`); `-selected` jelöli az aktív elemet."
+
+msgctxt "docs.api:prose"
+msgid "Large padding around arrow icons in overflow buttons."
+msgstr "Nagy belső térköz a túlcsordulási gombok nyíl ikonjai körül."
+
+msgctxt "docs.api:prose"
+msgid "Standalone `banner` stylesheet — the prefixed CSS for the banner container, ready to ship as a `.css` file."
+msgstr "Önálló `banner` stíluslap — a banner tárolójának előtaggal ellátott CSS-e, amely `.css` fájlként már használatra kész."
+
+msgctxt "docs.api:prose"
+msgid "Standalone `globalNavBar` stylesheet — the prefixed CSS for the navigation rail, ready to ship as a `.css` file."
+msgstr "Önálló `globalNavBar` stíluslap — az előtaggal ellátott CSS a navigációs sávhoz, készen áll a `.css` fájlként való kiadásra."
+
+msgctxt "docs.api:prose"
+msgid "Standalone `global-nav-bar.item` stylesheet."
+msgstr "Önálló `global-nav-bar.item` stíluslap."
+
+msgctxt "docs.api:prose"
+msgid "Use `globalNavBarCss` instead."
+msgstr "Használja `globalNavBarCss` helyette."
+
+msgctxt "docs.api:prose"
+msgid "Use `globalNavBarItemCss` instead."
+msgstr "Ezt használja `globalNavBarItemCss` helyett."
+
+#, pantoken-verbatim
+msgctxt "docs.api:text"
+msgid "bannerCss"
+msgstr "bannerCss"
+
+#, pantoken-verbatim
+msgctxt "docs.api:text"
+msgid "globalNavBarCss"
+msgstr "globalNavBarCss"
+
+#, pantoken-verbatim
+msgctxt "docs.api:text"
+msgid "globalNavBarItemCss"
+msgstr "globalNavBarItemCss"
+
+#, pantoken-verbatim
+msgctxt "docs.api:text"
+msgid "global-nav-bar"
+msgstr "global-nav-bar"
+
+msgctxt "docs.api:prose"
+msgid "Rebrand (light), Canvas, Canvas High Contrast:"
+msgstr "Arculatváltás (világos), Canvas, Canvas High Contrast:"
+
+msgctxt "docs.api:prose"
+msgid " With prefers-contrast: less, one piece of text falls below the minimum contrast. The worst is \"Your session expires soon.\" at 2.74:1 (needs 4.5:1). Softer contrast is fine only while text stays readable."
+msgstr " A prefers-contrast: less beállítás esetén egy szövegrész nem éri el a minimális kontrasztot. A legrosszabb az „A munkameneted hamarosan lejár.” mondat 2.74:1 aránnyal (szükséges: 4.5:1). A lágyabb kontraszt csak akkor megfelelő, ha a szöveg olvasható marad."
+
+msgctxt "docs.api:prose"
+msgid " With prefers-contrast: less, one piece of text falls below the minimum contrast. The worst is \"Your session expires soon.\" at 2.77:1 (needs 4.5:1). Softer contrast is fine only while text stays readable."
+msgstr " A prefers-contrast: less beállítás esetén egy szövegrész nem éri el a minimális kontrasztot. A legrosszabb az „A munkameneted hamarosan lejár.” mondat 2.77:1 aránnyal (szükséges: 4.5:1). A lágyabb kontraszt csak akkor megfelelő, ha a szöveg olvasható marad."
+
+msgctxt "docs.api:prose"
+msgid " With prefers-contrast: less, one piece of text falls below the minimum contrast. The worst is \"Your session expires soon.\" at 1.48:1 (needs 4.5:1). Softer contrast is fine only while text stays readable."
+msgstr " A prefers-contrast: less beállítás esetén egy szövegrész nem éri el a minimális kontrasztot. A legrosszabb az „A munkameneted hamarosan lejár.” mondat 1.48:1 aránnyal (szükséges: 4.5:1). A lágyabb kontraszt csak akkor megfelelő, ha a szöveg olvasható marad."
+
+msgctxt "docs.api:prose"
+msgid " With prefers-contrast: more, one piece of text falls below the minimum contrast. The worst is \"Your session expires soon.\" at 2.74:1 (needs 4.5:1)."
+msgstr " A prefers-contrast: more beállítás esetén egy szövegrész nem éri el a minimális kontrasztot. A legrosszabb az „A munkameneted hamarosan lejár.” mondat 2.74:1 aránnyal (szükséges: 4.5:1)."
+
+msgctxt "docs.api:prose"
+msgid "**Size** controls padding and gap: `relaxed` (default) is roomier; `compact` tightens both. **Color** sets the fill: bare (no modifier) is unfilled — border and icon only; `-color-violet` and `-color-sea` add a tinted background plus a matching icon swatch."
+msgstr "**Méret** a belső térközt és a térközt szabályozza: `relaxed` (alapértelmezés szerint) tágasabb; `compact` mindkettőt szűkíti. **Szín** a kitöltést határozza meg: csupaszon (módosító nélkül) kitöltetlen — csak szegély és ikon; `-color-violet` és `-color-sea` színezett hátteret és hozzá illő ikonszínmintát adnak."
+
+msgctxt "docs.api:prose"
+msgid "Its own chained modifiers (`-color-*`, `-size-*`, `-shape-*`, `-toggle`, `-condensed`, `-without-background`, `-without-border`, `-display-block`) set a default for every child `.instui-button` that doesn't carry its own modifier in that same category — a button's own modifier class always wins over the group's default. `-icon-*` is always per-button; it's never read from the group. Deprecated button aliases (`-ghost`, `-color-primary-inverse`) aren't supported as group-level modifiers — use their canonical replacements (`-color-tertiary`, `-on-color`) instead. Each join shows a single 1px seam in the buttons' own border color (solid fills, whose border matches the fill, tint it with the label color). `-without-seam` is group-only: it hides that seam so the buttons read as one continuous control. Put `-width-half` on an individual icon-only child button for a split-action trigger with half the standard square width and the full button height."
+msgstr "A saját, láncolt módosítói (`-color-*`, `-size-*`, `-shape-*`, `-toggle`, `-condensed`, `-without-background`, `-without-border`, `-display-block`) alapértelmezést állítanak be minden olyan gyermekhez (`.instui-button`), amely nem rendelkezik saját módosítóval ugyanabban a kategóriában — a gomb saját módosítóosztálya mindig elsőbbséget élvez a csoport alapértelmezésével szemben. A `-icon-*` mindig gombonként van beállítva; a csoportból soha nem olvassa be a rendszer. Az elavult gombaliasok (`-ghost`, `-color-primary-inverse`)) csoportszintű módosítóként nem támogatottak — használd helyettük a kanonikus megfelelőiket (`-color-tertiary`, `-on-color`)). Minden illesztésnél egyetlen, 1 px-es varrat látható a gombok saját szegélyszínével (az egyszínű kitöltések esetén, ahol a szegély színe megegyezik a kitöltésével, a varratot a címke színe árnyalja). A `-without-seam` csak a csoportra vonatkozik: elrejti ezt a varratot, így a gombok egyetlen folytonos vezérlőként jelennek meg. A `-width-half` elemet egy különálló, csak ikont tartalmazó gyermekgombra tedd, ha a normál négyzetes szélesség felével és a gomb teljes magasságával rendelkező, osztott műveletű aktiválót szeretnél."
+
+msgctxt "docs.api:prose"
+msgid "Rebrand (light), Rebrand (dark):"
+msgstr "Átnevezés (világos), Átnevezés (sötét):"
+
+msgctxt "docs.api:prose"
+msgid " With prefers-contrast: less, four pieces of text fall below the minimum contrast. The worst is \"Disabled unselected\" at 2.74:1 (needs 4.5:1). Softer contrast is fine only while text stays readable."
+msgstr " A prefers-contrast: less használatakor négy szövegrész nem ér el minimális kontrasztot. A legrosszabb a „Letiltva és nincs kijelölve” 2,74:1 aránnyal (4,5:1 szükséges). A lágyabb kontraszt csak akkor megfelelő, ha a szöveg olvasható marad."
+
+msgctxt "docs.api:prose"
+msgid " With prefers-contrast: more, four pieces of text fall below the minimum contrast. The worst is \"Disabled unselected\" at 2.74:1 (needs 4.5:1)."
+msgstr " A prefers-contrast: more használatakor négy szövegrész nem ér el minimális kontrasztot. A legrosszabb a „Letiltva és nincs kijelölve” 2,74:1 aránnyal (4,5:1 szükséges)."
+
+msgctxt "docs.api:prose"
+msgid "The selected segment uses a distinct active-item shadow; it does not match an existing --instui-elevation-* composite. Overflow buttons use the upstream elevation3 component tokens."
+msgstr "A kijelölt szegmens különálló árnyékot használ az aktív elemhez; ez nem egyezik egyetlen meglévő --instui-elevation-* összetett értékkel sem. A túlcsordulási gombok az upstream elevation3 komponens-tokeneket használják."
+
+msgctxt "docs.api:prose"
+msgid "A `-icon-*` class may live on the label or its native input; the interaction helper promotes input classes to the label so the shared glyph painter can render it."
+msgstr "Egy `-icon-*` osztály a címkén vagy a natív beviteli mezőjén is szerepelhet; az interakciós segéd a beviteli mező osztályait a címkére helyezi át, hogy a közös glyph-festő megjeleníthesse."
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "The canonical record name from a record-opening tag, e.g. `button`."
+msgstr "The canonical record name from a record-opening tag, e.g. `button`."
+
+msgctxt "docs.api:prose"
+msgid "Release maturity from `@stage` or a legacy maturity flag tag."
+msgstr "Kiadási érettség a következőből: `@stage` vagy egy örökölt érettségijelző-címke."
+
+msgctxt "docs.api:prose"
+msgid "Audience visibility; absent means public."
+msgstr "Közönség láthatósága; hiányában nyilvános."
+
+msgctxt "docs.api:prose"
+msgid "Set when this record carries a `@global` tag — its modifiers (and per-modifier `@global` flags)\napply to any record, not just this record's base class. Used during\nvalidation and consumption checks to resolve modifier matches globally."
+msgstr "Beállítva, amikor ez a rekord egy `@global` címkét hordoz — a módosítói (és módosítónkénti `@global` jelzői)\n minden rekordra érvényesek, nem csak e rekord alaposztályára. Az ellenőrzések során\n használatos a módosítóegyezések globális feloldására."
+
+msgctxt "docs.api:prose"
+msgid "Private `@example` labels, keyed by zero-based index into [examples](#examples)."
+msgstr "Privát `@example` címkék, a [példák](#examples) nulla alapú példatömb-indexei szerint rendezve."

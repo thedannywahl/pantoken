@@ -39,7 +39,7 @@ export const overflow: Definition = defineUtility({
  * @modifier --overflow-y-scroll — overflow-y: scroll.
  * @modifier --overflow-y-clip — overflow-y: clip.
  * @a11y A scrollable region must work from the keyboard: give it \`tabindex="0"\`, a role, and an accessible name (or make sure it contains a focusable control). Don't use \`hidden\` or \`clip\` to cut off content people need to read.
- * @example -automatica11y
+ * @example labels=[automatica11y]
  * \`\`\`html
  * <div class="--overflow-y-auto" tabindex="0" role="region" aria-label="Release notes" style="block-size: 5rem">
  *   <p>Version 2.4 adds keyboard shortcuts for the gradebook.</p>
@@ -48,7 +48,7 @@ export const overflow: Definition = defineUtility({
  *   <p>Version 2.1 updates the file upload messages.</p>
  * </div>
  * \`\`\`
- * @example
+ * @example labels=[canvas-rce]
  * <div class="--overflow-y-auto">…</div>
  */
       ${rules.join("\n")}

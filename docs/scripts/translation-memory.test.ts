@@ -57,26 +57,119 @@ test("validates generated bindings in JSON caches on both read and write", () =>
   expect(() => memory.set("prose", source, "No binding")).toThrow("placeholder");
 });
 
-test("keeps ordinary fuzzy lookup behavior without accepting fuzzy generated bindings", () => {
+test("translates scoped prose without sending its comment and reuses the result", async () => {
+  const prefix = "<!-- pantoken-value-scope:bundlers%2Fnext -->\n";
+  const source = `${prefix}Target: Next.js. Format: {{ptk_code_0}}.`;
+  const translated = `${prefix}Cél: Next.js. Formátum: {{ptk_code_0}}.`;
+  const memory = TranslationMemory.load("hu", "test");
+  const translateBatch = vi.fn(async (items: readonly { id: string; text: string }[]) => {
+    expect(items[0].text).toBe("Target: Next.js. Format: {{ptk_code_0}}.");
+    return { [items[0].id]: "Cél: Next.js. Formátum: {{ptk_code_0}}." };
+  });
+  const units: TranslationUnit[] = [{ kind: "prose", source }];
+  const first = await translateUnits(adapter({ translateBatch }), memory, units);
+  const second = await translateUnits(adapter({ translateBatch }), memory, units);
+  expect(first.get(keyFor("prose", source))).toBe(translated);
+  expect(second.get(keyFor("prose", source))).toBe(translated);
+  expect(translateBatch).toHaveBeenCalledTimes(1);
+});
+
+test("does not cache scoped English echoed alongside a translated unit", async () => {
+  const source = "<!-- pantoken-value-scope:page -->\nUse {{ptk_code_0}}.";
+  const memory = TranslationMemory.load("hu", "test");
+  const translateBatch = vi.fn(async (items: readonly { id: string; text: string }[]) =>
+    Object.fromEntries(
+      items.map((item) => [item.id, item.text === "Other prose" ? "Más" : item.text]),
+    ),
+  );
+  const units: TranslationUnit[] = [
+    { kind: "prose", source },
+    { kind: "prose", source: "Other prose" },
+  ];
+  await translateUnits(adapter({ translateBatch }), memory, units);
+  await translateUnits(adapter({ translateBatch }), memory, units);
+  expect(translateBatch).toHaveBeenCalledTimes(2);
+  expect(translateBatch.mock.calls[1][0]).toEqual([
+    { id: keyFor("prose", source), text: "Use {{ptk_code_0}}." },
+  ]);
+});
+
+test("rejects translated scoped prose that loses generated values", async () => {
+  const source = "<!-- pantoken-value-scope:page -->\nUse {{ptk_code_0}}.";
+  const memory = TranslationMemory.load("hu", "test");
+  await expect(
+    translateUnits(adapter({ translateText: async () => "Használja ezt." }), memory, [
+      { kind: "prose", source },
+    ]),
+  ).rejects.toThrow("placeholder");
+});
+
+test("treats fuzzy prose and generated bindings as cache misses", () => {
   existsSync.mockReturnValue(true);
   readFileSync.mockReturnValue(
     '#, fuzzy\nmsgctxt "docs.api:prose"\nmsgid "Ordinary prose"\nmsgstr "Existing prose"\n\n' +
       '#, fuzzy\nmsgctxt "docs.api:prose"\nmsgid "Use {{ptk_code_0}}."\nmsgstr "Use {{ptk_code_0}}."\n',
   );
   const memory = TranslationMemory.load("hu", "api");
-  expect(memory.get("prose", "Ordinary prose")).toBe("Existing prose");
+  expect(memory.get("prose", "Ordinary prose")).toBeUndefined();
   expect(memory.get("prose", "Use {{ptk_code_0}}.")).toBeUndefined();
 });
 
-test("obsolete generated entries cannot shadow reviewed active translations", () => {
+test("retains only current, non-fuzzy glossary terms from archived API text entries", () => {
   existsSync.mockReturnValue(true);
   readFileSync.mockReturnValue(
-    'msgctxt "docs.api:prose"\nmsgid "Use {{ptk_code_0}}."\nmsgstr "Hasznald: {{ptk_code_0}}."\n\n' +
-      '#~ msgctxt "docs.api:prose"\n#~ msgid "Use {{ptk_code_0}}."\n#~ msgstr "Old translation"\n',
+    '#~ msgctxt "docs.api:text"\n#~ msgid "Usage"\n#~ msgstr "Használat"\n\n' +
+      '#, fuzzy\n#~ msgctxt "docs.api:text"\n#~ msgid "Value"\n#~ msgstr "Érték"\n\n' +
+      '#~ msgctxt "docs.api:text"\n#~ msgid "Retired label"\n#~ msgstr "Old label"\n\n' +
+      '#~ msgctxt "docs.api:prose"\n#~ msgid "Usage"\n#~ msgstr "Old prose"\n',
   );
-  expect(TranslationMemory.load("hu", "api").get("prose", "Use {{ptk_code_0}}.")).toBe(
-    "Hasznald: {{ptk_code_0}}.",
+  const memory = TranslationMemory.load("hu", "api");
+  expect(memory.get("text", "Usage")).toBe("Használat");
+  expect(memory.get("text", "Value")).toBeUndefined();
+  expect(memory.get("text", "Retired label")).toBeUndefined();
+  expect(memory.get("prose", "Usage")).toBeUndefined();
+});
+
+test.each([true, false])(
+  "active glossary translations take precedence over archived ones (archived first: %s)",
+  (archivedFirst) => {
+    existsSync.mockReturnValue(true);
+    const archived = '#~ msgctxt "docs.api:text"\n#~ msgid "Usage"\n#~ msgstr "Archived wording"\n';
+    const active = 'msgctxt "docs.api:text"\nmsgid "Usage"\nmsgstr "Current wording"\n';
+    readFileSync.mockReturnValue(
+      (archivedFirst ? [archived, active] : [active, archived]).join("\n"),
+    );
+    expect(TranslationMemory.load("hu", "api").get("text", "Usage")).toBe("Current wording");
+  },
+);
+
+test.each(["Ordinary prose", "Use {{ptk_code_0}}."])(
+  "obsolete entries cannot shadow reviewed active translations for %j",
+  (source) => {
+    existsSync.mockReturnValue(true);
+    readFileSync.mockReturnValue(
+      `msgctxt "docs.api:prose"\nmsgid "${source}"\nmsgstr "Hasznald: ${source}"\n\n` +
+        `#~ msgctxt "docs.api:prose"\n#~ msgid "${source}"\n#~ msgstr "Old translation"\n`,
+    );
+    expect(TranslationMemory.load("hu", "api").get("prose", source)).toBe(`Hasznald: ${source}`);
+  },
+);
+
+test("retranslates fuzzy prose instead of retaining stale machine values", async () => {
+  existsSync.mockReturnValue(true);
+  readFileSync.mockReturnValue(
+    '#, fuzzy, no-c-format\nmsgctxt "docs.api:prose"\nmsgid "Contrast is 2.74:1."\nmsgstr "Kontraszt: 3.15:1."\n',
   );
+  const memory = TranslationMemory.load("hu", "api");
+  const translateText = vi.fn(async () => "Kontraszt: 2.74:1.");
+  await translateUnits(adapter({ translateText }), memory, [
+    { kind: "prose", source: "Contrast is 2.74:1." },
+  ]);
+  expect(translateText).toHaveBeenCalledExactlyOnceWith("Contrast is 2.74:1.");
+  expect(memory.get("prose", "Contrast is 2.74:1.")).toBe("Kontraszt: 2.74:1.");
+  existsSync.mockReturnValue(false);
+  memory.save();
+  expect(writeFileSync.mock.calls[0][1]).not.toContain("fuzzy");
 });
 
 test("load starts empty when no cache file exists", () => {

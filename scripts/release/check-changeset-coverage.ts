@@ -33,6 +33,9 @@ const NON_SHIPPED = [
   /(^|\/)tsconfig[^/]*\.json$/,
   /(^|\/)cssdoc\.jsonc?$/,
   /\.md$/,
+  // This localization helper renders repository README translations; it is not part of the
+  // scaffold build or published files. Other package scripts may affect shipped output.
+  /^packages\/scaffold\/scripts\/sync-readme-locales\.ts$/,
 ];
 
 const toPosix = (value: string): string => value.split(path.sep).join("/");
@@ -207,10 +210,7 @@ async function main(): Promise<void> {
   );
   for (const name of missing) console.error(`  - ${name}`);
   console.error("\nAdd one with `vp run changeset:add`, then commit the file under .changeset/.");
-  console.error(
-    "A change that genuinely needs no release should still add a changeset bumping the package\n" +
-      "`patch` with a note — an empty/global changeset does NOT count as coverage.",
-  );
+  console.error("An empty/global changeset does NOT count as coverage.");
   process.exitCode = 1;
 }
 

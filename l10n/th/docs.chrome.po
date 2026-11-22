@@ -1340,6 +1340,12 @@ msgctxt "docs.chrome:a2uiCatalogDescriptions.PantokenBadge"
 msgid "A compact count or status badge."
 msgstr "ป้ายจำนวนหรือสถานะขนาดกะทัดรัด"
 
+#: docs/.vitepress/catalog-i18n.json#a2uiCatalogDescriptions.PantokenBanner
+#, fuzzy, no-c-format
+msgctxt "docs.chrome:a2uiCatalogDescriptions.PantokenBanner"
+msgid "A Pantoken banner component with safe text and child content."
+msgstr "คอมโพเนนต์ข้อความระบุผู้เขียน Pantoken ที่มีข้อความและเนื้อหาลูกที่ปลอดภัย"
+
 #: docs/.vitepress/catalog-i18n.json#a2uiCatalogDescriptions.PantokenPill
 #, no-c-format
 msgctxt "docs.chrome:a2uiCatalogDescriptions.PantokenPill"
@@ -1418,6 +1424,19 @@ msgstr "รูปภาพที่ปรับตามขนาดหน้า
 msgctxt "docs.chrome:a2uiCatalogDescriptions.PantokenSideNavBar"
 msgid "A vertical navigation rail that can collapse to icon-only presentation."
 msgstr "แถบนำทางแนวตั้งที่ยุบให้แสดงเฉพาะไอคอนได้"
+
+#: docs/.vitepress/catalog-i18n.json#a2uiCatalogDescriptions.PantokenGlobalNavBar
+#, fuzzy, no-c-format
+msgctxt "docs.chrome:a2uiCatalogDescriptions.PantokenGlobalNavBar"
+msgid "A Pantoken global-nav-bar component with safe text and child content."
+msgstr "คอมโพเนนต์บิลบอร์ด Pantoken ที่มีข้อความและเนื้อหาลูกที่ปลอดภัย"
+
+#: docs/.vitepress/catalog-i18n.json#a2uiCatalogDescriptions.PantokenGlobalNavBarItem
+#, fuzzy, no-c-format
+msgctxt "docs.chrome:a2uiCatalogDescriptions.PantokenGlobalNavBarItem"
+msgid ""
+"A Pantoken global-nav-bar-item component with safe text and child content."
+msgstr "คอมโพเนนต์ข้อความระบุผู้เขียน Pantoken ที่มีข้อความและเนื้อหาลูกที่ปลอดภัย"
 
 #: docs/.vitepress/catalog-i18n.json#a2uiCatalogDescriptions.PantokenTreeBrowser
 #, no-c-format
@@ -2032,6 +2051,20 @@ msgstr ""
 "คอมโพเนนต์ Breadcrumb ของ Instructure ที่จัดรูปแบบด้วยคลาสเชิงความหมาย .instui-"
 "breadcrumb"
 
+#: docs/.vitepress/catalog-i18n.json#registryBrowserItems.banner.title
+#, fuzzy, no-c-format
+msgctxt "docs.chrome:registryBrowserItems.banner.title"
+msgid "Banner"
+msgstr "ตัวรัน"
+
+#: docs/.vitepress/catalog-i18n.json#registryBrowserItems.banner.description
+#, fuzzy, no-c-format
+msgctxt "docs.chrome:registryBrowserItems.banner.description"
+msgid ""
+"Instructure Banner component styled with semantic .instui-banner classes."
+msgstr ""
+"คอมโพเนนต์ Spinner ของ Instructure ที่จัดรูปแบบด้วยคลาสเชิงความหมาย .instui-spinner"
+
 #: docs/.vitepress/catalog-i18n.json#registryBrowserItems.billboard.title
 #, no-c-format
 msgctxt "docs.chrome:registryBrowserItems.billboard.title"
@@ -2186,6 +2219,22 @@ msgctxt "docs.chrome:registryBrowserItems.side-nav-bar.description"
 msgid ""
 "Instructure Side-nav-bar component styled with semantic .instui-side-nav-bar "
 "classes."
+msgstr ""
+"คอมโพเนนต์ Side-nav-bar ของ Instructure ที่จัดรูปแบบด้วยคลาสเชิงความหมาย .instui-"
+"side-nav-bar"
+
+#: docs/.vitepress/catalog-i18n.json#registryBrowserItems.global-nav-bar.title
+#, fuzzy, no-c-format
+msgctxt "docs.chrome:registryBrowserItems.global-nav-bar.title"
+msgid "Global-nav-bar"
+msgstr "แถบนำทางด้านข้าง"
+
+#: docs/.vitepress/catalog-i18n.json#registryBrowserItems.global-nav-bar.description
+#, fuzzy, no-c-format
+msgctxt "docs.chrome:registryBrowserItems.global-nav-bar.description"
+msgid ""
+"Instructure Global-nav-bar component styled with semantic .instui-global-nav-"
+"bar classes."
 msgstr ""
 "คอมโพเนนต์ Side-nav-bar ของ Instructure ที่จัดรูปแบบด้วยคลาสเชิงความหมาย .instui-"
 "side-nav-bar"
@@ -2519,18 +2568,6 @@ msgctxt "docs.chrome:registryBrowserItems.view.description"
 msgid "Instructure View component styled with semantic .instui-view classes."
 msgstr "คอมโพเนนต์ View ของ Instructure ที่จัดรูปแบบด้วยคลาสเชิงความหมาย .instui-view"
 
-#: docs/.vitepress/catalog-i18n.json#registryBrowserItems.banner.title
-#, fuzzy, no-c-format
-msgctxt "docs.chrome:registryBrowserItems.banner.title"
-msgid "Banner"
-msgstr "ตัวรัน"
-
-#: docs/.vitepress/catalog-i18n.json#registryBrowserItems.banner.description
-#, no-c-format
-msgctxt "docs.chrome:registryBrowserItems.banner.description"
-msgid "Pantoken banner component styles and documented HTML structure."
-msgstr "สไตล์คอมโพเนนต์แบนเนอร์ของ Pantoken และโครงสร้าง HTML ที่มีเอกสารกำกับ"
-
 #: docs/.vitepress/catalog-i18n.json#registryBrowserItems.agent-shell.title
 #, fuzzy, no-c-format
 msgctxt "docs.chrome:registryBrowserItems.agent-shell.title"
@@ -2810,6 +2847,11 @@ msgstr "ดีบักภาพ"
 msgctxt "docs.chrome:registryBrowserItems.visual-debug.description"
 msgid "Development-only layout outlines for Pantoken components."
 msgstr "เส้นกรอบเลย์เอาต์สำหรับคอมโพเนนต์ Pantoken ซึ่งใช้เฉพาะในการพัฒนา"
+
+#, no-c-format
+#~ msgctxt "docs.chrome:registryBrowserItems.banner.description"
+#~ msgid "Pantoken banner component styles and documented HTML structure."
+#~ msgstr "สไตล์คอมโพเนนต์แบนเนอร์ของ Pantoken และโครงสร้าง HTML ที่มีเอกสารกำกับ"
 
 #, no-c-format
 #~ msgctxt "docs.chrome:a2uiCatalog.reactSupport"

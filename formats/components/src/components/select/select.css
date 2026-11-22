@@ -3,6 +3,12 @@
  * @selector .pfx-simple-select
  * @a11y It keeps native `<select>` semantics and keyboard behavior; associate it with a visible `<label>`, and check that the customized popup keeps a visible focus indicator and sufficient contrast.
  * @summary Experimental CSS Customizable Select (`appearance: base-select`, Chrome 135+, not yet Baseline). Enhances .pfx-simple-select; degrades to the plain control where unsupported.
+ * @remarks Uses token families like `component-options-item-{background,highlighted-background,selected-background,selected-highlighted-background,color,...}` to style `option` states: base, highlighted (hover/focus), selected, and selected+highlighted (selected hover/focus).
+ * @cssstate option:hover — Hovered option uses highlighted background and label color tokens.
+ * @cssstate option:focus — Focused option uses highlighted background and label color tokens.
+ * @cssstate option:checked — Selected option uses selected background color, selected label color, selected font-weight, and a checkmark.
+ * @cssstate option:checked:hover — Selected hovered option uses selected-highlighted background color (canvas rebrand alignment).
+ * @cssstate option:checked:focus — Selected focused option uses selected-highlighted background color (canvas rebrand alignment).
  */
 @scope (.pfx-simple-select) {
   @supports (appearance: base-select) {
@@ -60,6 +66,13 @@
       background-position: right var(--instui-component-options-item-padding-horizontal) center;
       background-size: 1rem 1rem;
       padding-inline-end: calc(var(--instui-component-options-item-padding-horizontal) + 1.5rem);
+    }
+
+    & option:checked:hover,
+    & option:checked:focus {
+      background-color: var(--instui-component-options-item-selected-highlighted-background);
+      color: var(--instui-component-options-item-selected-label-color);
+      outline: none;
     }
   }
 }

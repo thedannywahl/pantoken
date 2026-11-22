@@ -287,7 +287,7 @@ test("handles pages without tokens and skips unrelated unaudited utilities", () 
 
 test("checked-in evidence has supported coverage and retains real review/failure gaps", () => {
   const snapshot = loadAccessibilitySnapshot(snapshotJson);
-  expect(Object.keys(snapshot.records)).toHaveLength(97);
+  expect(Object.keys(snapshot.records)).toHaveLength(99);
   expect(snapshot.records.badge).toHaveLength(4);
   expect(snapshot.records.alert).toHaveLength(8);
   const details = Object.values(snapshot.records).flatMap((rows) =>
@@ -298,6 +298,8 @@ test("checked-in evidence has supported coverage and retains real review/failure
   expect(snapshot.records.modal).toHaveLength(72);
   expect(snapshot.records["agent-shell"]).toHaveLength(4);
   expect(snapshot.records["ai-gradient"]).toHaveLength(4);
+  expect(snapshot.records["global-nav-bar"]).toHaveLength(4);
+  expect(snapshot.records["global-nav-bar.item"]).toHaveLength(4);
   expect(snapshot.records.truncate).toHaveLength(4);
 });
 

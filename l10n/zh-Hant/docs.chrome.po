@@ -1330,6 +1330,12 @@ msgctxt "docs.chrome:a2uiCatalogDescriptions.PantokenBadge"
 msgid "A compact count or status badge."
 msgstr "精簡的計數或狀態徽章。"
 
+#: docs/.vitepress/catalog-i18n.json#a2uiCatalogDescriptions.PantokenBanner
+#, fuzzy, no-c-format
+msgctxt "docs.chrome:a2uiCatalogDescriptions.PantokenBanner"
+msgid "A Pantoken banner component with safe text and child content."
+msgstr "採用 Pantoken 樣式並含安全文字與子內容的署名列元件。"
+
 #: docs/.vitepress/catalog-i18n.json#a2uiCatalogDescriptions.PantokenPill
 #, no-c-format
 msgctxt "docs.chrome:a2uiCatalogDescriptions.PantokenPill"
@@ -1408,6 +1414,19 @@ msgstr "使用經清理媒體 URL 且呈現方式受限的自適應圖片。"
 msgctxt "docs.chrome:a2uiCatalogDescriptions.PantokenSideNavBar"
 msgid "A vertical navigation rail that can collapse to icon-only presentation."
 msgstr "可收合為僅顯示圖示的垂直導覽列。"
+
+#: docs/.vitepress/catalog-i18n.json#a2uiCatalogDescriptions.PantokenGlobalNavBar
+#, fuzzy, no-c-format
+msgctxt "docs.chrome:a2uiCatalogDescriptions.PantokenGlobalNavBar"
+msgid "A Pantoken global-nav-bar component with safe text and child content."
+msgstr "採用 Pantoken 樣式並含安全文字與子內容的主視覺元件。"
+
+#: docs/.vitepress/catalog-i18n.json#a2uiCatalogDescriptions.PantokenGlobalNavBarItem
+#, fuzzy, no-c-format
+msgctxt "docs.chrome:a2uiCatalogDescriptions.PantokenGlobalNavBarItem"
+msgid ""
+"A Pantoken global-nav-bar-item component with safe text and child content."
+msgstr "採用 Pantoken 樣式並含安全文字與子內容的署名列元件。"
 
 #: docs/.vitepress/catalog-i18n.json#a2uiCatalogDescriptions.PantokenTreeBrowser
 #, no-c-format
@@ -2004,6 +2023,19 @@ msgid ""
 "classes."
 msgstr "採用語意化 .instui-breadcrumb 類別樣式的 Instructure 導覽路徑元件。"
 
+#: docs/.vitepress/catalog-i18n.json#registryBrowserItems.banner.title
+#, fuzzy, no-c-format
+msgctxt "docs.chrome:registryBrowserItems.banner.title"
+msgid "Banner"
+msgstr "執行器"
+
+#: docs/.vitepress/catalog-i18n.json#registryBrowserItems.banner.description
+#, fuzzy, no-c-format
+msgctxt "docs.chrome:registryBrowserItems.banner.description"
+msgid ""
+"Instructure Banner component styled with semantic .instui-banner classes."
+msgstr "採用語意化 .instui-spinner 類別樣式的 Instructure 載入指示器元件。"
+
 #: docs/.vitepress/catalog-i18n.json#registryBrowserItems.billboard.title
 #, no-c-format
 msgctxt "docs.chrome:registryBrowserItems.billboard.title"
@@ -2144,6 +2176,21 @@ msgctxt "docs.chrome:registryBrowserItems.side-nav-bar.description"
 msgid ""
 "Instructure Side-nav-bar component styled with semantic .instui-side-nav-bar "
 "classes."
+msgstr ""
+"採用語意化 .instui-side-nav-bar 類別樣式的 Instructure 側邊導覽列元件。"
+
+#: docs/.vitepress/catalog-i18n.json#registryBrowserItems.global-nav-bar.title
+#, fuzzy, no-c-format
+msgctxt "docs.chrome:registryBrowserItems.global-nav-bar.title"
+msgid "Global-nav-bar"
+msgstr "側邊導覽列"
+
+#: docs/.vitepress/catalog-i18n.json#registryBrowserItems.global-nav-bar.description
+#, fuzzy, no-c-format
+msgctxt "docs.chrome:registryBrowserItems.global-nav-bar.description"
+msgid ""
+"Instructure Global-nav-bar component styled with semantic .instui-global-nav-"
+"bar classes."
 msgstr ""
 "採用語意化 .instui-side-nav-bar 類別樣式的 Instructure 側邊導覽列元件。"
 
@@ -2461,18 +2508,6 @@ msgctxt "docs.chrome:registryBrowserItems.view.description"
 msgid "Instructure View component styled with semantic .instui-view classes."
 msgstr "Instructure 檢視元件，使用語意化的 .instui-view 類別設定樣式。"
 
-#: docs/.vitepress/catalog-i18n.json#registryBrowserItems.banner.title
-#, fuzzy, no-c-format
-msgctxt "docs.chrome:registryBrowserItems.banner.title"
-msgid "Banner"
-msgstr "執行器"
-
-#: docs/.vitepress/catalog-i18n.json#registryBrowserItems.banner.description
-#, no-c-format
-msgctxt "docs.chrome:registryBrowserItems.banner.description"
-msgid "Pantoken banner component styles and documented HTML structure."
-msgstr "Pantoken 橫幅元件樣式及其文件所述的 HTML 結構。"
-
 #: docs/.vitepress/catalog-i18n.json#registryBrowserItems.agent-shell.title
 #, fuzzy, no-c-format
 msgctxt "docs.chrome:registryBrowserItems.agent-shell.title"
@@ -2750,6 +2785,11 @@ msgstr "視覺除錯"
 msgctxt "docs.chrome:registryBrowserItems.visual-debug.description"
 msgid "Development-only layout outlines for Pantoken components."
 msgstr "僅供開發使用的 Pantoken 元件版面配置外框。"
+
+#, no-c-format
+#~ msgctxt "docs.chrome:registryBrowserItems.banner.description"
+#~ msgid "Pantoken banner component styles and documented HTML structure."
+#~ msgstr "Pantoken 橫幅元件樣式及其文件所述的 HTML 結構。"
 
 #, no-c-format
 #~ msgctxt "docs.chrome:a2uiCatalog.reactSupport"

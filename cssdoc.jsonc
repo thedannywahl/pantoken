@@ -31,6 +31,12 @@
       "see"
     ],
     "headingPrefix": "CSS:",
-    "structureView": "both"
+    "structureView": "both",
+    "exampleFilters": {
+      "markdown": {
+        "labels": ["docs"],
+        "includeUnlabeled": true
+      }
+    }
   }
 }

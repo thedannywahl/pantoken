@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: pantoken\n"
-"PO-Revision-Date: 2026-11-14 01:19+0000\n"
+"PO-Revision-Date: 2026-11-21 21:28+0000\n"
 "Last-Translator: pantoken localization engine\n"
 "Language-Team: pantoken\n"
 "MIME-Version: 1.0\n"
@@ -32710,3 +32710,177 @@ msgstr "numberInput"
 msgctxt "docs.api:text"
 msgid "componentElements"
 msgstr "componentElements"
+
+msgctxt "docs.api:prose"
+msgid "\n  An alert with text-color-base modifier for high contrast.\n"
+msgstr "\n  Một cảnh báo với modifier text-color-base để tăng độ tương phản.\n"
+
+msgctxt "docs.api:prose"
+msgid "\n  A warning alert with explicit base text color.\n"
+msgstr "\n  Một cảnh báo dạng warning với màu văn bản cơ bản được chỉ định rõ.\n"
+
+msgctxt "docs.api:prose"
+msgid "\n  An inline alert with inline status icon.\n"
+msgstr "\n  Một cảnh báo nội dòng với biểu tượng trạng thái nội dòng.\n"
+
+msgctxt "docs.api:prose"
+msgid "Render inline icon using the status color (for inline alerts)."
+msgstr "Hiển thị biểu tượng nội dòng bằng màu trạng thái (dành cho cảnh báo nội dòng)."
+
+msgctxt "docs.api:prose"
+msgid "Use base text color instead of on-color (high-contrast)."
+msgstr "Dùng màu văn bản cơ bản thay vì on-color (độ tương phản cao)."
+
+msgctxt "docs.api:prose"
+msgid "Use on-color text (default for floating)."
+msgstr "Dùng văn bản on-color (mặc định cho cảnh báo nổi)."
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "**Source:** [banner.css](https://github.com/thedannywahl/pantoken/blob/main/formats/components/src/components/banner/banner.css)"
+msgstr "**Source:** [banner.css](https://github.com/thedannywahl/pantoken/blob/main/formats/components/src/components/banner/banner.css)"
+
+msgctxt "docs.api:prose"
+msgid "`.item` — A navigation entry (InstUI `GlobalNavBar.Item`); `-selected` marks the active one."
+msgstr "`.item` — Một mục điều hướng (InstUI `GlobalNavBar.Item`); `-selected` đánh dấu mục đang hoạt động."
+
+msgctxt "docs.api:prose"
+msgid "The parent `global-nav-bar`'s `-minimized` modifier hides this member's `.label` — see `global-nav-bar`'s own doc for that modifier."
+msgstr "Bộ sửa đổi `global-nav-bar` của mục cha `-minimized` ẩn `.label` của thành viên này — xem tài liệu riêng của `global-nav-bar` về bộ sửa đổi đó."
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "**Source:** [global-nav-bar.css](https://github.com/thedannywahl/pantoken/blob/main/formats/components/src/components/global-nav-bar/global-nav-bar.css)"
+msgstr "**Source:** [global-nav-bar.css](https://github.com/thedannywahl/pantoken/blob/main/formats/components/src/components/global-nav-bar/global-nav-bar.css)"
+
+msgctxt "docs.api:prose"
+msgid "`.instui-global-nav-bar` — A vertical navigation rail of icon-over-label items, with a minimized icons-only mode."
+msgstr "`.instui-global-nav-bar` — Thanh điều hướng dọc gồm các mục biểu tượng phía trên nhãn, có chế độ thu gọn chỉ hiển thị biểu tượng."
+
+msgctxt "docs.api:prose"
+msgid "Sets its own `gap` between nav items and its own `padding`; chaining a `-gap-*`/`-p-*`/`-padding-*` spacing utility modifier overrides those built-in values. See the `global-nav-bar.item` member for the individual nav entries."
+msgstr "Tự thiết lập `gap` giữa các mục điều hướng và `padding` riêng; khi kết hợp, một tiện ích khoảng cách `-gap-*`/`-p-*`/`-padding-*` sẽ ghi đè các giá trị tích hợp này. Xem thành viên `global-nav-bar.item` để biết các mục điều hướng riêng lẻ."
+
+msgctxt "docs.api:prose"
+msgid "Collapse to icons only (labels hidden). @affects global-nav-bar.item — Hides the item's label."
+msgstr "Thu gọn chỉ còn biểu tượng (nhãn bị ẩn). @affects global-nav-bar.item — Ẩn nhãn của mục."
+
+msgctxt "docs.api:prose"
+msgid "A styled container for display of important information with two size variants and color themes."
+msgstr "Một vùng chứa được tạo kiểu để hiển thị thông tin quan trọng, với hai biến thể kích thước và các chủ đề màu sắc."
+
+msgctxt "docs.api:prose"
+msgid "A navigation entry (InstUI `GlobalNavBar.Item`); `-selected` marks the active one."
+msgstr "Một mục điều hướng (InstUI `GlobalNavBar.Item`); `-selected` đánh dấu mục đang hoạt động."
+
+msgctxt "docs.api:prose"
+msgid "Large padding around arrow icons in overflow buttons."
+msgstr "Khoảng đệm lớn xung quanh các biểu tượng mũi tên trong các nút tràn."
+
+msgctxt "docs.api:prose"
+msgid "Standalone `banner` stylesheet — the prefixed CSS for the banner container, ready to ship as a `.css` file."
+msgstr "Độc lập `banner` biểu định kiểu — CSS có tiền tố cho vùng chứa biểu ngữ, sẵn sàng phát hành dưới dạng tệp `.css`."
+
+msgctxt "docs.api:prose"
+msgid "Standalone `globalNavBar` stylesheet — the prefixed CSS for the navigation rail, ready to ship as a `.css` file."
+msgstr "Biểu định kiểu độc lập `globalNavBar` — CSS có tiền tố dành cho thanh điều hướng, sẵn sàng phát hành dưới dạng tệp `.css`."
+
+msgctxt "docs.api:prose"
+msgid "Standalone `global-nav-bar.item` stylesheet."
+msgstr "Tệp định kiểu độc lập `global-nav-bar.item`."
+
+msgctxt "docs.api:prose"
+msgid "Use `globalNavBarCss` instead."
+msgstr "Thay vào đó, hãy sử dụng `globalNavBarCss`."
+
+msgctxt "docs.api:prose"
+msgid "Use `globalNavBarItemCss` instead."
+msgstr "Thay vào đó, hãy sử dụng `globalNavBarItemCss`."
+
+#, pantoken-verbatim
+msgctxt "docs.api:text"
+msgid "bannerCss"
+msgstr "bannerCss"
+
+#, pantoken-verbatim
+msgctxt "docs.api:text"
+msgid "globalNavBarCss"
+msgstr "globalNavBarCss"
+
+#, pantoken-verbatim
+msgctxt "docs.api:text"
+msgid "globalNavBarItemCss"
+msgstr "globalNavBarItemCss"
+
+#, pantoken-verbatim
+msgctxt "docs.api:text"
+msgid "global-nav-bar"
+msgstr "global-nav-bar"
+
+msgctxt "docs.api:prose"
+msgid "Rebrand (light), Canvas, Canvas High Contrast:"
+msgstr "Đổi thương hiệu (light), Canvas, Canvas High Contrast:"
+
+msgctxt "docs.api:prose"
+msgid " With prefers-contrast: less, one piece of text falls below the minimum contrast. The worst is \"Your session expires soon.\" at 2.74:1 (needs 4.5:1). Softer contrast is fine only while text stays readable."
+msgstr " Với prefers-contrast: less, một đoạn văn bản không đạt độ tương phản tối thiểu. Đoạn tệ nhất là \"Phiên làm việc của bạn sắp hết hạn.\" ở mức 2.74:1 (cần 4.5:1). Độ tương phản dịu hơn chỉ phù hợp miễn là văn bản vẫn dễ đọc."
+
+msgctxt "docs.api:prose"
+msgid " With prefers-contrast: less, one piece of text falls below the minimum contrast. The worst is \"Your session expires soon.\" at 2.77:1 (needs 4.5:1). Softer contrast is fine only while text stays readable."
+msgstr " Với prefers-contrast: less, một đoạn văn bản không đạt độ tương phản tối thiểu. Đoạn tệ nhất là \"Phiên làm việc của bạn sắp hết hạn.\" ở mức 2.77:1 (cần 4.5:1). Độ tương phản dịu hơn chỉ phù hợp miễn là văn bản vẫn dễ đọc."
+
+msgctxt "docs.api:prose"
+msgid " With prefers-contrast: less, one piece of text falls below the minimum contrast. The worst is \"Your session expires soon.\" at 1.48:1 (needs 4.5:1). Softer contrast is fine only while text stays readable."
+msgstr " Với prefers-contrast: less, một đoạn văn bản không đạt độ tương phản tối thiểu. Đoạn tệ nhất là \"Phiên làm việc của bạn sắp hết hạn.\" ở mức 1.48:1 (cần 4.5:1). Độ tương phản dịu hơn chỉ phù hợp miễn là văn bản vẫn dễ đọc."
+
+msgctxt "docs.api:prose"
+msgid " With prefers-contrast: more, one piece of text falls below the minimum contrast. The worst is \"Your session expires soon.\" at 2.74:1 (needs 4.5:1)."
+msgstr " Với prefers-contrast: more, một đoạn văn bản không đạt độ tương phản tối thiểu. Đoạn tệ nhất là \"Phiên làm việc của bạn sắp hết hạn.\" ở mức 2.74:1 (cần 4.5:1)."
+
+msgctxt "docs.api:prose"
+msgid "**Size** controls padding and gap: `relaxed` (default) is roomier; `compact` tightens both. **Color** sets the fill: bare (no modifier) is unfilled — border and icon only; `-color-violet` and `-color-sea` add a tinted background plus a matching icon swatch."
+msgstr "**Kích thước** điều khiển đệm và khoảng cách: `relaxed` (mặc định) thoáng hơn; `compact` thu nhỏ cả hai. **Màu sắc** thiết lập phần tô: không có bổ biến (không modifier)) là không tô — chỉ có viền và biểu tượng; `-color-violet` và `-color-sea` thêm nền màu nhẹ cùng mẫu màu biểu tượng phù hợp."
+
+msgctxt "docs.api:prose"
+msgid "Its own chained modifiers (`-color-*`, `-size-*`, `-shape-*`, `-toggle`, `-condensed`, `-without-background`, `-without-border`, `-display-block`) set a default for every child `.instui-button` that doesn't carry its own modifier in that same category — a button's own modifier class always wins over the group's default. `-icon-*` is always per-button; it's never read from the group. Deprecated button aliases (`-ghost`, `-color-primary-inverse`) aren't supported as group-level modifiers — use their canonical replacements (`-color-tertiary`, `-on-color`) instead. Each join shows a single 1px seam in the buttons' own border color (solid fills, whose border matches the fill, tint it with the label color). `-without-seam` is group-only: it hides that seam so the buttons read as one continuous control. Put `-width-half` on an individual icon-only child button for a split-action trigger with half the standard square width and the full button height."
+msgstr "Các modifier xâu chuỗi riêng của nó (`-color-*`, `-size-*`, `-shape-*`, `-toggle`, `-condensed`, `-without-background`, `-without-border`, `-display-block`) đặt giá trị mặc định cho mọi phần tử con `.instui-button` không mang modifier riêng trong cùng danh mục — class modifier riêng của một nút luôn thắng giá trị mặc định của nhóm. `-icon-*` luôn áp dụng riêng cho từng nút; nó không bao giờ được đọc từ nhóm. Các bí danh nút đã ngừng sử dụng (`-ghost`, `-color-primary-inverse`) không được hỗ trợ làm modifier cấp nhóm — thay vào đó, hãy dùng các phần thay thế chính thức (`-color-tertiary`, `-on-color`). Mỗi điểm nối hiển thị một đường nối 1px duy nhất theo màu viền riêng của các nút (với phần tô đặc, đường viền trùng với màu tô, hãy nhuộm nó bằng màu nhãn). `-without-seam` chỉ dành cho cấp nhóm: nó ẩn đường nối đó để các nút được thể hiện như một điều khiển liên tục. Đặt `-width-half` trên nút con chỉ có biểu tượng riêng lẻ để tạo bộ kích hoạt chia tác vụ có chiều rộng hình vuông bằng một nửa chiều rộng tiêu chuẩn và chiều cao đầy đủ của nút."
+
+msgctxt "docs.api:prose"
+msgid "Rebrand (light), Rebrand (dark):"
+msgstr "Đổi thương hiệu (sáng), Đổi thương hiệu (tối):"
+
+msgctxt "docs.api:prose"
+msgid " With prefers-contrast: less, four pieces of text fall below the minimum contrast. The worst is \"Disabled unselected\" at 2.74:1 (needs 4.5:1). Softer contrast is fine only while text stays readable."
+msgstr " Khi prefers-contrast: less, bốn phần văn bản giảm xuống dưới mức tương phản tối thiểu. Tệ nhất là \"Disabled unselected\" ở mức 2.74:1 (cần 4.5:1). Tương phản nhẹ hơn chỉ ổn khi văn bản vẫn dễ đọc."
+
+msgctxt "docs.api:prose"
+msgid " With prefers-contrast: more, four pieces of text fall below the minimum contrast. The worst is \"Disabled unselected\" at 2.74:1 (needs 4.5:1)."
+msgstr " Khi prefers-contrast: more, bốn phần văn bản giảm xuống dưới mức tương phản tối thiểu. Tệ nhất là \"Disabled unselected\" ở mức 2.74:1 (cần 4.5:1)."
+
+msgctxt "docs.api:prose"
+msgid "The selected segment uses a distinct active-item shadow; it does not match an existing --instui-elevation-* composite. Overflow buttons use the upstream elevation3 component tokens."
+msgstr "Đoạn được chọn sử dụng bóng đổ riêng cho mục đang hoạt động; nó không khớp với composite --instui-elevation-* hiện có. Các nút tràn sử dụng các token thành phần elevation3 từ upstream."
+
+msgctxt "docs.api:prose"
+msgid "A `-icon-*` class may live on the label or its native input; the interaction helper promotes input classes to the label so the shared glyph painter can render it."
+msgstr "Một lớp `-icon-*` có thể nằm trên nhãn hoặc phần tử input gốc của nhãn; trình trợ giúp tương tác sẽ chuyển các lớp của input lên nhãn để trình vẽ biểu tượng dùng chung có thể hiển thị lớp đó."
+
+msgctxt "docs.api:prose"
+msgid "The canonical record name from a record-opening tag, e.g. `button`."
+msgstr "Tên bản ghi chuẩn từ thẻ mở bản ghi, ví dụ: `button`."
+
+msgctxt "docs.api:prose"
+msgid "Release maturity from `@stage` or a legacy maturity flag tag."
+msgstr "Mức độ phát hành ổn định từ `@stage` hoặc thẻ cờ mức độ phát hành cũ."
+
+msgctxt "docs.api:prose"
+msgid "Audience visibility; absent means public."
+msgstr "Khả năng hiển thị đối với đối tượng; nếu không có thì là công khai."
+
+msgctxt "docs.api:prose"
+msgid "Set when this record carries a `@global` tag — its modifiers (and per-modifier `@global` flags)\napply to any record, not just this record's base class. Used during\nvalidation and consumption checks to resolve modifier matches globally."
+msgstr "Được đặt khi bản ghi này mang thẻ `@global` — các modifier của nó (và các `@global` cờ)\n theo modifier) áp dụng cho mọi bản ghi, không chỉ lớp cơ sở của bản ghi này. Được dùng trong quá trình\nkiểm tra xác thực và tiêu thụ để phân giải các kết quả khớp modifier trên toàn hệ thống."
+
+msgctxt "docs.api:prose"
+msgid "Private `@example` labels, keyed by zero-based index into [examples](#examples)."
+msgstr "Nhãn `@example` riêng tư, được lập chỉ mục theo chỉ số bắt đầu từ 0 trong [examples](#examples)."

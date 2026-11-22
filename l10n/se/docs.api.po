@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: pantoken\n"
-"PO-Revision-Date: 2026-11-13 23:37+0000\n"
+"PO-Revision-Date: 2026-11-21 20:48+0000\n"
 "Last-Translator: pantoken localization engine\n"
 "Language-Team: pantoken\n"
 "MIME-Version: 1.0\n"
@@ -35053,3 +35053,177 @@ msgstr "numberInput"
 msgctxt "docs.api:text"
 msgid "componentElements"
 msgstr "componentElements"
+
+msgctxt "docs.api:prose"
+msgid "\n  An alert with text-color-base modifier for high contrast.\n"
+msgstr "\n  Dieđáhus mas lea text-color-base-modifiseren alit kontrásta várás.\n"
+
+msgctxt "docs.api:prose"
+msgid "\n  A warning alert with explicit base text color.\n"
+msgstr "\n  Várrehusdieđáhus mas lea čielga vuođđotekstivdni.\n"
+
+msgctxt "docs.api:prose"
+msgid "\n  An inline alert with inline status icon.\n"
+msgstr "\n  Inline-dieđáhus mas lea inline-stáhtusgova.\n"
+
+msgctxt "docs.api:prose"
+msgid "Render inline icon using the status color (for inline alerts)."
+msgstr "Čájet inline-gova stáhtusivnni geavahemiin (inline-dieđáhusaid várás)."
+
+msgctxt "docs.api:prose"
+msgid "Use base text color instead of on-color (high-contrast)."
+msgstr "Geavat vuođđotekstivnni on-color ivnni sajis (alit kontrásta)."
+
+msgctxt "docs.api:prose"
+msgid "Use on-color text (default for floating)."
+msgstr "Geavat on-color teaksta (floating-dieđáhusaid standárda)."
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "**Source:** [banner.css](https://github.com/thedannywahl/pantoken/blob/main/formats/components/src/components/banner/banner.css)"
+msgstr "**Source:** [banner.css](https://github.com/thedannywahl/pantoken/blob/main/formats/components/src/components/banner/banner.css)"
+
+msgctxt "docs.api:prose"
+msgid "`.item` — A navigation entry (InstUI `GlobalNavBar.Item`); `-selected` marks the active one."
+msgstr "`.item` — Navigašuvdnamerka (InstUI `GlobalNavBar.Item`); `-selected` mearkkaša aktiivvalaš merkoša."
+
+msgctxt "docs.api:prose"
+msgid "The parent `global-nav-bar`'s `-minimized` modifier hides this member's `.label` — see `global-nav-bar`'s own doc for that modifier."
+msgstr "Váhnema `global-nav-bar`'s `-minimized` modifiseren čiega dán miellahtu `.label` — geahča `global-nav-bar` iežas dokumenta dan modifiserema birra."
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "**Source:** [global-nav-bar.css](https://github.com/thedannywahl/pantoken/blob/main/formats/components/src/components/global-nav-bar/global-nav-bar.css)"
+msgstr "**Source:** [global-nav-bar.css](https://github.com/thedannywahl/pantoken/blob/main/formats/components/src/components/global-nav-bar/global-nav-bar.css)"
+
+msgctxt "docs.api:prose"
+msgid "`.instui-global-nav-bar` — A vertical navigation rail of icon-over-label items, with a minimized icons-only mode."
+msgstr "`.instui-global-nav-bar` — Ceahkkálaga navigašuvdnaráidu, mas leat ikonaid bajábealde namahusat, ja unniduvvon modus dušše ikonain."
+
+msgctxt "docs.api:prose"
+msgid "Sets its own `gap` between nav items and its own `padding`; chaining a `-gap-*`/`-p-*`/`-padding-*` spacing utility modifier overrides those built-in values. See the `global-nav-bar.item` member for the individual nav entries."
+msgstr "Bidjá iežas `gap` navigašuvdnagaskaosiid gaskii ja iežas `padding`; go čatná `-gap-*`/`-p-*`/`-padding-*` gaskautilisáhta modifiera, de dat badjáda daid sisahkalaš árvvuid. Geahča `global-nav-bar.item` ovttaskas navigašuvdnačuoggáid várás."
+
+msgctxt "docs.api:prose"
+msgid "Collapse to icons only (labels hidden). @affects global-nav-bar.item — Hides the item's label."
+msgstr "Unnit dušše ikonain (namahusat čiegahuvvon). @affects global-nav-bar.item — Čiega dan čiega namahusa."
+
+msgctxt "docs.api:prose"
+msgid "A styled container for display of important information with two size variants and color themes."
+msgstr "Stilastuvvon konteiner deattuhuvvon dieđuid ovdanbuktimii guovtte sturrodatvariánttain ja ivdnatemáinnaiguin."
+
+msgctxt "docs.api:prose"
+msgid "A navigation entry (InstUI `GlobalNavBar.Item`); `-selected` marks the active one."
+msgstr "Navigašuvdnaeaktu (InstUI `GlobalNavBar.Item`); `-selected` mearkkaša aktiivvalaš ovtta."
+
+msgctxt "docs.api:prose"
+msgid "Large padding around arrow icons in overflow buttons."
+msgstr "Stuorra gaskkaheapmi čuolddasymbolaid birra badjelbáhcánboaluin."
+
+msgctxt "docs.api:prose"
+msgid "Standalone `banner` stylesheet — the prefixed CSS for the banner container, ready to ship as a `.css` file."
+msgstr "Iešheanalaš `banner` stílasiidu — banner-konteinerii prefikserejuvvon CSS, gárvvis almmuhuvvot `.css` fiilan."
+
+msgctxt "docs.api:prose"
+msgid "Standalone `globalNavBar` stylesheet — the prefixed CSS for the navigation rail, ready to ship as a `.css` file."
+msgstr "Iešheanalaš `globalNavBar` stílafiila — navigašuvdnaráiddu prefikserejuvvon CSS, gárvvis almmustuvvot `.css` fiilan."
+
+msgctxt "docs.api:prose"
+msgid "Standalone `global-nav-bar.item` stylesheet."
+msgstr "Iešheanalaš `global-nav-bar.item` stílaskearru."
+
+msgctxt "docs.api:prose"
+msgid "Use `globalNavBarCss` instead."
+msgstr "Geavat `globalNavBarCss` dan sadjái."
+
+msgctxt "docs.api:prose"
+msgid "Use `globalNavBarItemCss` instead."
+msgstr "Geavat `globalNavBarItemCss` dan sadjái."
+
+#, pantoken-verbatim
+msgctxt "docs.api:text"
+msgid "bannerCss"
+msgstr "bannerCss"
+
+#, pantoken-verbatim
+msgctxt "docs.api:text"
+msgid "globalNavBarCss"
+msgstr "globalNavBarCss"
+
+#, pantoken-verbatim
+msgctxt "docs.api:text"
+msgid "globalNavBarItemCss"
+msgstr "globalNavBarItemCss"
+
+#, pantoken-verbatim
+msgctxt "docs.api:text"
+msgid "global-nav-bar"
+msgstr "global-nav-bar"
+
+msgctxt "docs.api:prose"
+msgid "Rebrand (light), Canvas, Canvas High Contrast:"
+msgstr "Ođasmahttin brándda (čuovga), Canvas, Canvas High Contrast:"
+
+msgctxt "docs.api:prose"
+msgid " With prefers-contrast: less, one piece of text falls below the minimum contrast. The worst is \"Your session expires soon.\" at 2.74:1 (needs 4.5:1). Softer contrast is fine only while text stays readable."
+msgstr " Preferere kontrásta: unnit geavahettiin, okta teakstabihttá báhcá vuolábeale unnimus kontrásta. Váddáseamos lea \"Du čoahkkináigi nohká fargga.\" 2.74:1 (gáibiduvvo 4.5:1). Geahppaseappot kontrásta lea dohkálaš dušše go teaksta lea ain lohkat álgái."
+
+msgctxt "docs.api:prose"
+msgid " With prefers-contrast: less, one piece of text falls below the minimum contrast. The worst is \"Your session expires soon.\" at 2.77:1 (needs 4.5:1). Softer contrast is fine only while text stays readable."
+msgstr " Preferere kontrásta: unnit geavahettiin, okta teakstabihttá báhcá vuolábeale unnimus kontrásta. Váddáseamos lea \"Du čoahkkináigi nohká fargga.\" 2.77:1 (gáibiduvvo 4.5:1). Geahppaseappot kontrásta lea dohkálaš dušše go teaksta lea ain lohkat álgái."
+
+msgctxt "docs.api:prose"
+msgid " With prefers-contrast: less, one piece of text falls below the minimum contrast. The worst is \"Your session expires soon.\" at 1.48:1 (needs 4.5:1). Softer contrast is fine only while text stays readable."
+msgstr " Preferere kontrásta: unnit geavahettiin, okta teakstabihttá báhcá vuolábeale unnimus kontrásta. Váddáseamos lea \"Du čoahkkináigi nohká fargga.\" 1.48:1 (gáibiduvvo 4.5:1). Geahppaseappot kontrásta lea dohkálaš dušše go teaksta lea ain lohkat álgái."
+
+msgctxt "docs.api:prose"
+msgid " With prefers-contrast: more, one piece of text falls below the minimum contrast. The worst is \"Your session expires soon.\" at 2.74:1 (needs 4.5:1)."
+msgstr " Preferere kontrásta: eanet geavahettiin, okta teakstabihttá báhcá vuolábeale unnimus kontrásta. Váddáseamos lea \"Du čoahkkináigi nohká fargga.\" 2.74:1 (gáibiduvvo 4.5:1)."
+
+msgctxt "docs.api:prose"
+msgid "**Size** controls padding and gap: `relaxed` (default) is roomier; `compact` tightens both. **Color** sets the fill: bare (no modifier) is unfilled — border and icon only; `-color-violet` and `-color-sea` add a tinted background plus a matching icon swatch."
+msgstr "**Sturrodat**stivre paddinga ja gaskka: `relaxed` (standarda) lea stuorát; `compact`gáržžida goappašiid. **Ivdni**mearrida deavdaga: dušše (modifiera haga) lea deavddekeahtes — dušše ráji ja ikona; `-color-violet` ja `-color-sea`lasihit ivdnejuvvon duogáža ja danseamma ikonadoadjaga."
+
+msgctxt "docs.api:prose"
+msgid "Its own chained modifiers (`-color-*`, `-size-*`, `-shape-*`, `-toggle`, `-condensed`, `-without-background`, `-without-border`, `-display-block`) set a default for every child `.instui-button` that doesn't carry its own modifier in that same category — a button's own modifier class always wins over the group's default. `-icon-*` is always per-button; it's never read from the group. Deprecated button aliases (`-ghost`, `-color-primary-inverse`) aren't supported as group-level modifiers — use their canonical replacements (`-color-tertiary`, `-on-color`) instead. Each join shows a single 1px seam in the buttons' own border color (solid fills, whose border matches the fill, tint it with the label color). `-without-seam` is group-only: it hides that seam so the buttons read as one continuous control. Put `-width-half` on an individual icon-only child button for a split-action trigger with half the standard square width and the full button height."
+msgstr "Dan iežas soallagoju modulárat (`-color-*`, `-size-*`, `-shape-*`, `-toggle`, `-condensed`, `-without-background`, `-without-border`, `-display-block`) bidjet standárda juohke mánnái `.instui-button` mii ii guoskka iežas modifikáhtoris dan seamma kategoriijas — boallo iežas modifikátorklássa vuoitá álohii joavkku standárdda. `-icon-*` lea álohii boallo iežalas; dat ii loga joavkkus. Boallo boarásnuvvan aliasat (`-ghost`, `-color-primary-inverse`) eai doarjjo joavkomodifikátorin — geavat daid kanonalaš molssaevttiid (`-color-tertiary`, `-on-color`) dan sajis. Juohke čatnasa čájeha ovtta 1px-saevi boallo iežas rávdafivnniin (čieŋal dat, geain rávda ii leat seammá ivdni go deavdá, maid njalmmalaš ivdnit addet dan leavdná, dušše rávdat leat njalbmen). `-without-seam` lea dušše joavkkodoaimma: dat čieká dan saevi nu ahte boalut lohkkojuvvojit oktan joatkka stivremin. Bija `-width-half` ovtta ovttaskas ikona-dušše mánnábohtii juogadastála stivrema várás, man govdodat lea standarda čiegahis gustovuođa bealli ja olles boallo allodat."
+
+msgctxt "docs.api:prose"
+msgid "Rebrand (light), Rebrand (dark):"
+msgstr "Ođasmahte (čuovgat), Ođasmahte (sevdnjes):"
+
+msgctxt "docs.api:prose"
+msgid " With prefers-contrast: less, four pieces of text fall below the minimum contrast. The worst is \"Disabled unselected\" at 2.74:1 (needs 4.5:1). Softer contrast is fine only while text stays readable."
+msgstr " prefers-contrast: less geavadedettiin njeallje teakstaoasi leat unnimus kontrastagáibádusa vuolábealde. Vuolimus kontrasta lea «Ealáskeahtes, válljejuvvon» (2.74:1; gáibida 4.5:1). Geahppaseamos kontrasta lea dohkálaš dušše jus teaksta lea ain lohkat."
+
+msgctxt "docs.api:prose"
+msgid " With prefers-contrast: more, four pieces of text fall below the minimum contrast. The worst is \"Disabled unselected\" at 2.74:1 (needs 4.5:1)."
+msgstr " prefers-contrast: more geavadedettiin njeallje teakstaoasi leat unnimus kontrastagáibádusa vuolábealde. Vuolimus kontrasta lea «Ealáskeahtes, válljejuvvon» (2.74:1; gáibida 4.5:1)."
+
+msgctxt "docs.api:prose"
+msgid "The selected segment uses a distinct active-item shadow; it does not match an existing --instui-elevation-* composite. Overflow buttons use the upstream elevation3 component tokens."
+msgstr "Válljejuvvon oassi geavaha sierra aktiivvalaš elemeantta suoivvana; dat ii leat seamma go ovdalágan --instui-elevation-*-kombinašuvdna. Eambbo válljenboalut geavahit bajábeale elevation3-komponenta-tokenaid."
+
+msgctxt "docs.api:prose"
+msgid "A `-icon-*` class may live on the label or its native input; the interaction helper promotes input classes to the label so the shared glyph painter can render it."
+msgstr "Luohkká sáhttá leat namahusas dahje dan natiivalaš input-eldosis; interakšuvdna veahkki lokte input-luohkáid namahussii, vai oktasaš glyph-málle sáhttá ráhkadit dan."
+
+msgctxt "docs.api:prose"
+msgid "The canonical record name from a record-opening tag, e.g. `button`."
+msgstr "Kanoniálaš registarnamma tagas mii álggaha registra, omd. `button`."
+
+msgctxt "docs.api:prose"
+msgid "Release maturity from `@stage` or a legacy maturity flag tag."
+msgstr "Almmustahttima gárvvisvuohta `@stage` dahje boares gárvvisvuođa merke-tagas."
+
+msgctxt "docs.api:prose"
+msgid "Audience visibility; absent means public."
+msgstr "Geavaheaddjijoavkku oidno; jus ii leat meroštallon, de lea almmolaš."
+
+msgctxt "docs.api:prose"
+msgid "Set when this record carries a `@global` tag — its modifiers (and per-modifier `@global` flags)\napply to any record, not just this record's base class. Used during\nvalidation and consumption checks to resolve modifier matches globally."
+msgstr "Bidjá go dát registras lea `@global` tagga — dan modifierat (ja modifieriid `@global` flagat)\ngustojit juohke registrii, eai dušše dán registra vuođđoluohkái. Geavahuvvo\ndárkkisteamis ja geavaheami dárkkisteamis modifier-ovttastallamiid čoavdimii globálalaččat."
+
+msgctxt "docs.api:prose"
+msgid "Private `@example` labels, keyed by zero-based index into [examples](#examples)."
+msgstr "Priváhta `@example` namahusat, čadnon nollas álgi indeaksii [ovdamearkkat](#examples)."

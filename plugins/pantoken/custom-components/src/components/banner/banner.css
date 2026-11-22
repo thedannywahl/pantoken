@@ -42,7 +42,8 @@
  * @a11y Add `role="status"` (or `role="alert"` for urgent messages) so assistive tech announces the
  *   banner; mark a decorative icon `aria-hidden="true"` and give the close button an `aria-label`.
  * @usage @import "@pantoken/plugin-custom-components/custom-components.css";
- * @example -canvas-rce -docs -nocard
+ * @example labels=[canvas-rce,docs]
+ * -nocard
  * ```html
  * <div class="pfx-banner -icon-canvas-icon-reversed" role="status">
  *   <h2 class="pfx-heading">New feature</h2>
@@ -54,20 +55,23 @@
  *   <button class="pfx-close-button" aria-label="Close"></button>
  * </div>
  * ```
+ * @example labels=[reference]
  * ### Sea colored and compact spacing -nocard
  * ```html
  * <div class="pfx-banner -color-sea -size-sm" role="status">
  *   This is a sea-colored banner with compact spacing.
  * </div>
  * ```
- * @example -canvas-rce-no-interactions -nocard
+ * @example labels=[canvas-rce-no-interactions]
+ * -nocard
  * ```html
  * <div class="pfx-banner -icon-canvas-icon-reversed" role="status">
  *   <h2 class="pfx-heading">New feature</h2>
  *   <span class="instui-text">This is a violet banner with a custom icon.</span>
  * </div>
  * ```
- * @example -automatica11y -nocard
+ * @example labels=[automatica11y]
+ * -nocard
  * ```html
  * <div class="pfx-banner" role="status" data-a11y-root>
  *   <h2>Profile changes saved</h2>

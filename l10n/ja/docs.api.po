@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: pantoken\n"
-"PO-Revision-Date: 2026-11-13 23:10+0000\n"
+"PO-Revision-Date: 2026-11-21 20:39+0000\n"
 "Last-Translator: pantoken localization engine\n"
 "Language-Team: pantoken\n"
 "MIME-Version: 1.0\n"
@@ -857,10 +857,10 @@ msgstr "more-contrast-respected"
 #: css/tabs.tab.md css/tag.md css/text-area.md css/text-input.md
 #: css/toggle-group.md css/tooltip.md css/tray.md css/tree-browser.md
 #: css/view.md
-#, no-c-format
+#, no-c-format, pantoken-verbatim
 msgctxt "docs.api:prose"
 msgid "WCAG 2.2 1.4.3, 1.4.6"
-msgstr "WCAG 2.2 1.4.3、1.4.6"
+msgstr "WCAG 2.2 1.4.3, 1.4.6"
 
 #: css/agent-shell.md css/ai-gradient.md css/avatar.md css/banner.md
 #: css/button-set.md css/button.md css/byline.md css/drawer-layout.md
@@ -35056,3 +35056,178 @@ msgstr "numberInput"
 msgctxt "docs.api:text"
 msgid "componentElements"
 msgstr "componentElements"
+
+msgctxt "docs.api:prose"
+msgid "\n  An alert with text-color-base modifier for high contrast.\n"
+msgstr "\n  ハイコントラスト向けの text-color-base モディファイアを使ったアラート。\n"
+
+msgctxt "docs.api:prose"
+msgid "\n  A warning alert with explicit base text color.\n"
+msgstr "\n  明示的なベーステキストカラーを使った警告アラート。\n"
+
+msgctxt "docs.api:prose"
+msgid "\n  An inline alert with inline status icon.\n"
+msgstr "\n  インラインのステータスアイコンを含むインラインアラート。\n"
+
+msgctxt "docs.api:prose"
+msgid "Render inline icon using the status color (for inline alerts)."
+msgstr "インラインアラートでは、ステータスカラーを使ってインラインアイコンを描画します)。"
+
+msgctxt "docs.api:prose"
+msgid "Use base text color instead of on-color (high-contrast)."
+msgstr "オンカラーの代わりにベーステキストカラーを使います（ハイコントラスト向け)。"
+
+msgctxt "docs.api:prose"
+msgid "Use on-color text (default for floating)."
+msgstr "オンカラーテキストを使います（フローティングではデフォルト)。"
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "**Source:** [banner.css](https://github.com/thedannywahl/pantoken/blob/main/formats/components/src/components/banner/banner.css)"
+msgstr "**Source:** [banner.css](https://github.com/thedannywahl/pantoken/blob/main/formats/components/src/components/banner/banner.css)"
+
+msgctxt "docs.api:prose"
+msgid "`.item` — A navigation entry (InstUI `GlobalNavBar.Item`); `-selected` marks the active one."
+msgstr "`.item` — ナビゲーション項目（InstUI `GlobalNavBar.Item`); `-selected` はアクティブな項目を示します。"
+
+msgctxt "docs.api:prose"
+msgid "The parent `global-nav-bar`'s `-minimized` modifier hides this member's `.label` — see `global-nav-bar`'s own doc for that modifier."
+msgstr "親の `global-nav-bar` の `-minimized` 修飾子によって、このメンバーの `.label` は非表示になります。この修飾子については、`global-nav-bar` 自身のドキュメントを参照してください。"
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "**Source:** [global-nav-bar.css](https://github.com/thedannywahl/pantoken/blob/main/formats/components/src/components/global-nav-bar/global-nav-bar.css)"
+msgstr "**Source:** [global-nav-bar.css](https://github.com/thedannywahl/pantoken/blob/main/formats/components/src/components/global-nav-bar/global-nav-bar.css)"
+
+msgctxt "docs.api:prose"
+msgid "`.instui-global-nav-bar` — A vertical navigation rail of icon-over-label items, with a minimized icons-only mode."
+msgstr "`.instui-global-nav-bar` — アイコンをラベルの上に配置した項目で構成される縦型ナビゲーションレール。アイコンのみの縮小モードも備えています。"
+
+msgctxt "docs.api:prose"
+msgid "Sets its own `gap` between nav items and its own `padding`; chaining a `-gap-*`/`-p-*`/`-padding-*` spacing utility modifier overrides those built-in values. See the `global-nav-bar.item` member for the individual nav entries."
+msgstr "ナビゲーション項目間に独自の `gap` を設定し、独自の `padding` も設定します。`-gap-*`/`-p-*`/`-padding-*` 間隔ユーティリティ修飾子を連結すると、これらの組み込み値が上書きされます。個々のナビゲーション項目については、`global-nav-bar.item` メンバーを参照してください。"
+
+msgctxt "docs.api:prose"
+msgid "Collapse to icons only (labels hidden). @affects global-nav-bar.item — Hides the item's label."
+msgstr "アイコンのみ（ラベルを非表示）に折りたたむ). @affects global-nav-bar.item — 項目のラベルを非表示にします。"
+
+msgctxt "docs.api:prose"
+msgid "A styled container for display of important information with two size variants and color themes."
+msgstr "重要な情報を表示するための、2種類のサイズとカラーテーマを備えたスタイル付きコンテナ。"
+
+msgctxt "docs.api:prose"
+msgid "A navigation entry (InstUI `GlobalNavBar.Item`); `-selected` marks the active one."
+msgstr "ナビゲーション項目 (InstUI `GlobalNavBar.Item`); `-selected` はアクティブな項目を示します。"
+
+msgctxt "docs.api:prose"
+msgid "Large padding around arrow icons in overflow buttons."
+msgstr "オーバーフローボタンの矢印アイコンの周囲に大きなパディングがあります。"
+
+msgctxt "docs.api:prose"
+msgid "Standalone `banner` stylesheet — the prefixed CSS for the banner container, ready to ship as a `.css` file."
+msgstr "単独で使える `banner` スタイルシート — バナーコンテナ用のプレフィックス付き CSS で、`.css` ファイルとしてそのまま出荷できます。"
+
+msgctxt "docs.api:prose"
+msgid "Standalone `globalNavBar` stylesheet — the prefixed CSS for the navigation rail, ready to ship as a `.css` file."
+msgstr "単独の `globalNavBar` スタイルシート — ナビゲーションレール用のプレフィックス付き CSS で、`.css` ファイルとしてそのまま公開できます。"
+
+msgctxt "docs.api:prose"
+msgid "Standalone `global-nav-bar.item` stylesheet."
+msgstr "単独の `global-nav-bar.item` スタイルシート。"
+
+msgctxt "docs.api:prose"
+msgid "Use `globalNavBarCss` instead."
+msgstr "代わりに`globalNavBarCss`を使用してください。"
+
+msgctxt "docs.api:prose"
+msgid "Use `globalNavBarItemCss` instead."
+msgstr "`globalNavBarItemCss`の代わりに使用してください。"
+
+#, pantoken-verbatim
+msgctxt "docs.api:text"
+msgid "bannerCss"
+msgstr "bannerCss"
+
+#, pantoken-verbatim
+msgctxt "docs.api:text"
+msgid "globalNavBarCss"
+msgstr "globalNavBarCss"
+
+#, pantoken-verbatim
+msgctxt "docs.api:text"
+msgid "globalNavBarItemCss"
+msgstr "globalNavBarItemCss"
+
+#, pantoken-verbatim
+msgctxt "docs.api:text"
+msgid "global-nav-bar"
+msgstr "global-nav-bar"
+
+msgctxt "docs.api:prose"
+msgid "Rebrand (light), Canvas, Canvas High Contrast:"
+msgstr "リブランド（light)、Canvas、Canvas High Contrast："
+
+msgctxt "docs.api:prose"
+msgid " With prefers-contrast: less, one piece of text falls below the minimum contrast. The worst is \"Your session expires soon.\" at 2.74:1 (needs 4.5:1). Softer contrast is fine only while text stays readable."
+msgstr " prefers-contrast: less を使用すると、テキストの一部が最小コントラストを下回ります。最も低いのは「Your session expires soon.」で、2.74:1（4.5:1 が必要）です)。テキストが読みやすい状態に保たれる間は、コントラストを弱くしても問題ありません。"
+
+msgctxt "docs.api:prose"
+msgid " With prefers-contrast: less, one piece of text falls below the minimum contrast. The worst is \"Your session expires soon.\" at 2.77:1 (needs 4.5:1). Softer contrast is fine only while text stays readable."
+msgstr " prefers-contrast: less を使用すると、テキストの一部が最小コントラストを下回ります。最も低いのは「Your session expires soon.」で、2.77:1（4.5:1 が必要）です)。テキストが読みやすい状態に保たれる間は、コントラストを弱くしても問題ありません。"
+
+msgctxt "docs.api:prose"
+msgid " With prefers-contrast: less, one piece of text falls below the minimum contrast. The worst is \"Your session expires soon.\" at 1.48:1 (needs 4.5:1). Softer contrast is fine only while text stays readable."
+msgstr " prefers-contrast: less を使用すると、テキストの一部が最小コントラストを下回ります。最も低いのは「Your session expires soon.」で、1.48:1（4.5:1 が必要）です)。テキストが読みやすい状態に保たれる間は、コントラストを弱くしても問題ありません。"
+
+msgctxt "docs.api:prose"
+msgid " With prefers-contrast: more, one piece of text falls below the minimum contrast. The worst is \"Your session expires soon.\" at 2.74:1 (needs 4.5:1)."
+msgstr " prefers-contrast: more を使用すると、テキストの一部が最小コントラストを下回ります。最も低いのは「Your session expires soon.」で、2.74:1（4.5:1 が必要）です)."
+
+msgctxt "docs.api:prose"
+msgid "**Size** controls padding and gap: `relaxed` (default) is roomier; `compact` tightens both. **Color** sets the fill: bare (no modifier) is unfilled — border and icon only; `-color-violet` and `-color-sea` add a tinted background plus a matching icon swatch."
+msgstr "**Size** はパディングと間隔を制御します: `relaxed`（デフォルト) はゆったりしています; `compact` は両方を狭くします。**Color** は塗りを設定します: bare（修飾子なし) は塗りなし — 境界線とアイコンのみ; `-color-violet` と `-color-sea` は淡い色の背景と一致するアイコンのスウォッチを追加します。"
+
+msgctxt "docs.api:prose"
+msgid "Its own chained modifiers (`-color-*`, `-size-*`, `-shape-*`, `-toggle`, `-condensed`, `-without-background`, `-without-border`, `-display-block`) set a default for every child `.instui-button` that doesn't carry its own modifier in that same category — a button's own modifier class always wins over the group's default. `-icon-*` is always per-button; it's never read from the group. Deprecated button aliases (`-ghost`, `-color-primary-inverse`) aren't supported as group-level modifiers — use their canonical replacements (`-color-tertiary`, `-on-color`) instead. Each join shows a single 1px seam in the buttons' own border color (solid fills, whose border matches the fill, tint it with the label color). `-without-seam` is group-only: it hides that seam so the buttons read as one continuous control. Put `-width-half` on an individual icon-only child button for a split-action trigger with half the standard square width and the full button height."
+msgstr "自身の連鎖モディファイア（`-color-*`, `-size-*`, `-shape-*`, `-toggle`, `-condensed`, `-without-background`, `-without-border`, `-display-block`) は、同じカテゴリで自身のモディファイアを持たないすべての子 `.instui-button` にデフォルトを設定します。ボタン自身のモディファイアクラスは、グループのデフォルトより常に優先されます。 `-icon-*` は常にボタン単位であり、グループから読み取られることはありません。非推奨のボタンエイリアス（`-ghost`, `-color-primary-inverse`) は、グループレベルのモディファイアとしてはサポートされていません。代わりに正規の置換モディファイア（`-color-tertiary`, `-on-color`) を使用してください。各接合部には、ボタン固有の境界線の色で1pxの継ぎ目が1本表示されます（塗りつぶしと境界線が一致するソリッド塗りつぶしでは、ラベルの色で色付けします). `-without-seam` はグループ専用です。継ぎ目を非表示にすることで、ボタンが1つの連続したコントロールとして表示されます。分割アクションのトリガーとして、標準の正方形幅の半分でボタンの高さいっぱいの個別のアイコンのみの子ボタンに `-width-half` を設定してください。"
+
+msgctxt "docs.api:prose"
+msgid "Rebrand (light), Rebrand (dark):"
+msgstr "リブランド (ライト), リブランド (ダーク):"
+
+msgctxt "docs.api:prose"
+msgid " With prefers-contrast: less, four pieces of text fall below the minimum contrast. The worst is \"Disabled unselected\" at 2.74:1 (needs 4.5:1). Softer contrast is fine only while text stays readable."
+msgstr " prefers-contrast: less では、4つのテキストのコントラスト比が最小値を下回ります。最も低いのは「無効・未選択」の 2.74:1 です（4.5:1 が必要)。コントラストを弱めても、テキストが読みやすい状態を保てる場合に限ります。"
+
+msgctxt "docs.api:prose"
+msgid " With prefers-contrast: more, four pieces of text fall below the minimum contrast. The worst is \"Disabled unselected\" at 2.74:1 (needs 4.5:1)."
+msgstr " prefers-contrast: more では、4つのテキストのコントラスト比が最小値を下回ります。最も低いのは「無効・未選択」の 2.74:1 です（4.5:1 が必要)."
+
+msgctxt "docs.api:prose"
+msgid "The selected segment uses a distinct active-item shadow; it does not match an existing --instui-elevation-* composite. Overflow buttons use the upstream elevation3 component tokens."
+msgstr "選択されたセグメントでは、既存の --instui-elevation-* コンポジットとは一致しない、個別のアクティブアイテムシャドウを使用しています。オーバーフローボタンには、アップストリームの elevation3 コンポーネントトークンを使用します。"
+
+msgctxt "docs.api:prose"
+msgid "A `-icon-*` class may live on the label or its native input; the interaction helper promotes input classes to the label so the shared glyph painter can render it."
+msgstr "`-icon-*` クラスは label またはネイティブ input に設定できます。interaction helper は共有 glyph painter が描画できるよう、input クラスを label に昇格します。"
+
+msgctxt "docs.api:prose"
+msgid "The canonical record name from a record-opening tag, e.g. `button`."
+msgstr "レコード開始タグから取得される正規のレコード名。例：`button`。"
+
+msgctxt "docs.api:prose"
+msgid "Release maturity from `@stage` or a legacy maturity flag tag."
+msgstr "`@stage`またはレガシーの成熟度フラグタグから取得されるリリース成熟度。"
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "Audience visibility; absent means public."
+msgstr "Audience visibility; absent means public."
+
+msgctxt "docs.api:prose"
+msgid "Set when this record carries a `@global` tag — its modifiers (and per-modifier `@global` flags)\napply to any record, not just this record's base class. Used during\nvalidation and consumption checks to resolve modifier matches globally."
+msgstr "このレコードが`@global`タグを持つ場合に設定されます。この場合、モディファイア（およびモディファイアごとの`@global`フラグ)\n）は、このレコードのベースクラスだけでなく、任意のレコードに適用されます。モディファイアの一致をグローバルに解決するため、\n検証および使用時のチェック中に使用されます。"
+
+msgctxt "docs.api:prose"
+msgid "Private `@example` labels, keyed by zero-based index into [examples](#examples)."
+msgstr "非公開の`@example`ラベル。[examples](#examples)内のゼロから始まるインデックスで指定します。"

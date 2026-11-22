@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: pantoken\n"
-"PO-Revision-Date: 2026-11-13 22:09+0000\n"
+"PO-Revision-Date: 2026-11-21 20:17+0000\n"
 "Last-Translator: pantoken localization engine\n"
 "Language-Team: pantoken\n"
 "MIME-Version: 1.0\n"
@@ -35071,3 +35071,177 @@ msgstr "numberInput"
 msgctxt "docs.api:text"
 msgid "componentElements"
 msgstr "componentElements"
+
+msgctxt "docs.api:prose"
+msgid "\n  An alert with text-color-base modifier for high contrast.\n"
+msgstr "\n  Foláireamh le mionathraitheoir text-color-base le haghaidh ardchodarsnachta.\n"
+
+msgctxt "docs.api:prose"
+msgid "\n  A warning alert with explicit base text color.\n"
+msgstr "\n  Foláireamh rabhaidh le dath téacs bunúsach sainráite.\n"
+
+msgctxt "docs.api:prose"
+msgid "\n  An inline alert with inline status icon.\n"
+msgstr "\n  Foláireamh inlíne le deilbhín stádais inlíne.\n"
+
+msgctxt "docs.api:prose"
+msgid "Render inline icon using the status color (for inline alerts)."
+msgstr "Rindreáil an deilbhín inlíne agus dath an stádais á úsáid (le haghaidh foláirimh inlíne)."
+
+msgctxt "docs.api:prose"
+msgid "Use base text color instead of on-color (high-contrast)."
+msgstr "Úsáid dath téacs bunúsach in ionad dath an tulra (ardchodarsnacht)."
+
+msgctxt "docs.api:prose"
+msgid "Use on-color text (default for floating)."
+msgstr "Úsáid dath téacs an tulra (réamhshocrú le haghaidh foláirimh ar snámh)."
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "**Source:** [banner.css](https://github.com/thedannywahl/pantoken/blob/main/formats/components/src/components/banner/banner.css)"
+msgstr "**Source:** [banner.css](https://github.com/thedannywahl/pantoken/blob/main/formats/components/src/components/banner/banner.css)"
+
+msgctxt "docs.api:prose"
+msgid "`.item` — A navigation entry (InstUI `GlobalNavBar.Item`); `-selected` marks the active one."
+msgstr "`.item` — Iontráil nascleanúna (InstUI `GlobalNavBar.Item`); `-selected` a mharcálann an ceann gníomhach."
+
+msgctxt "docs.api:prose"
+msgid "The parent `global-nav-bar`'s `-minimized` modifier hides this member's `.label` — see `global-nav-bar`'s own doc for that modifier."
+msgstr "An tuismitheoir `global-nav-bar`'s `-minimized` modhnóir a cheiltíonn `.label` an ball seo — féach ar dhoiciméad `global-nav-bar` féin don mhodhnóir sin."
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "**Source:** [global-nav-bar.css](https://github.com/thedannywahl/pantoken/blob/main/formats/components/src/components/global-nav-bar/global-nav-bar.css)"
+msgstr "**Source:** [global-nav-bar.css](https://github.com/thedannywahl/pantoken/blob/main/formats/components/src/components/global-nav-bar/global-nav-bar.css)"
+
+msgctxt "docs.api:prose"
+msgid "`.instui-global-nav-bar` — A vertical navigation rail of icon-over-label items, with a minimized icons-only mode."
+msgstr "`.instui-global-nav-bar` — Ráille nascleanúna ingearach ina bhfuil deilbhíní os cionn lipéid, agus mód íoslaghdaithe ina dtaispeántar deilbhíní amháin."
+
+msgctxt "docs.api:prose"
+msgid "Sets its own `gap` between nav items and its own `padding`; chaining a `-gap-*`/`-p-*`/`-padding-*` spacing utility modifier overrides those built-in values. See the `global-nav-bar.item` member for the individual nav entries."
+msgstr "Socraíonn sé a `gap` féin idir míreanna nascleanúna agus a `padding` féin; sáraíonn modhnóir fóntais spásála `-gap-*`/`-p-*`/`-padding-*` na luachanna ionsuite sin nuair a shlabhraítear é. Féach ar an mball `global-nav-bar.item` le haghaidh na míreanna aonair nascleanúna."
+
+msgctxt "docs.api:prose"
+msgid "Collapse to icons only (labels hidden). @affects global-nav-bar.item — Hides the item's label."
+msgstr "Laghdaigh go dtí deilbhíní amháin (lipéid i bhfolach). @affects global-nav-bar.item — Folaíonn sé lipéad na míre."
+
+msgctxt "docs.api:prose"
+msgid "A styled container for display of important information with two size variants and color themes."
+msgstr "Coimeádán stílithe chun faisnéis thábhachtach a thaispeáint, le dhá leagan méide agus téamaí datha."
+
+msgctxt "docs.api:prose"
+msgid "A navigation entry (InstUI `GlobalNavBar.Item`); `-selected` marks the active one."
+msgstr "Iontráil nascleanúna (InstUI `GlobalNavBar.Item`); `-selected`a léiríonn an ceann gníomhach."
+
+msgctxt "docs.api:prose"
+msgid "Large padding around arrow icons in overflow buttons."
+msgstr "Stuáil mhór timpeall ar dheilbhíní saighde sna cnaipí thar maoil."
+
+msgctxt "docs.api:prose"
+msgid "Standalone `banner` stylesheet — the prefixed CSS for the banner container, ready to ship as a `.css` file."
+msgstr "Stílbhileog neamhspleách `banner` — an CSS leis an réimír don choimeádán meirge, réidh le seoladh mar chomhad `.css`."
+
+msgctxt "docs.api:prose"
+msgid "Standalone `globalNavBar` stylesheet — the prefixed CSS for the navigation rail, ready to ship as a `.css` file."
+msgstr "Stílbhileog neamhspleách `globalNavBar` — an CSS réimírthe don ráille nascleanúna, réidh le foilsiú mar chomhad `.css`."
+
+msgctxt "docs.api:prose"
+msgid "Standalone `global-nav-bar.item` stylesheet."
+msgstr "Stílbhileog neamhspleách `global-nav-bar.item`"
+
+msgctxt "docs.api:prose"
+msgid "Use `globalNavBarCss` instead."
+msgstr "Úsáid `globalNavBarCss` ina ionad."
+
+msgctxt "docs.api:prose"
+msgid "Use `globalNavBarItemCss` instead."
+msgstr "Úsáid `globalNavBarItemCss` ina ionad."
+
+#, pantoken-verbatim
+msgctxt "docs.api:text"
+msgid "bannerCss"
+msgstr "bannerCss"
+
+#, pantoken-verbatim
+msgctxt "docs.api:text"
+msgid "globalNavBarCss"
+msgstr "globalNavBarCss"
+
+#, pantoken-verbatim
+msgctxt "docs.api:text"
+msgid "globalNavBarItemCss"
+msgstr "globalNavBarItemCss"
+
+#, pantoken-verbatim
+msgctxt "docs.api:text"
+msgid "global-nav-bar"
+msgstr "global-nav-bar"
+
+msgctxt "docs.api:prose"
+msgid "Rebrand (light), Canvas, Canvas High Contrast:"
+msgstr "Athbhrandáil (light), Canvas, Ardchodarsnacht an Chanbháis:"
+
+msgctxt "docs.api:prose"
+msgid " With prefers-contrast: less, one piece of text falls below the minimum contrast. The worst is \"Your session expires soon.\" at 2.74:1 (needs 4.5:1). Softer contrast is fine only while text stays readable."
+msgstr " Le prefers-contrast: less, titeann píosa amháin téacs faoi bhun an chodarsnacht íosta. Is é an ceann is measa \"Imíonn do sheisiún go luath.\" ag 2.74:1 (teastaíonn 4.5:1). Níl ach codarsnacht níos boige ceart fad a bhfanann an téacs so-léite."
+
+msgctxt "docs.api:prose"
+msgid " With prefers-contrast: less, one piece of text falls below the minimum contrast. The worst is \"Your session expires soon.\" at 2.77:1 (needs 4.5:1). Softer contrast is fine only while text stays readable."
+msgstr " Le prefers-contrast: less, titeann píosa amháin téacs faoi bhun an chodarsnacht íosta. Is é an ceann is measa \"Imíonn do sheisiún go luath.\" ag 2.77:1 (teastaíonn 4.5:1). Níl ach codarsnacht níos boige ceart fad a bhfanann an téacs so-léite."
+
+msgctxt "docs.api:prose"
+msgid " With prefers-contrast: less, one piece of text falls below the minimum contrast. The worst is \"Your session expires soon.\" at 1.48:1 (needs 4.5:1). Softer contrast is fine only while text stays readable."
+msgstr " Le prefers-contrast: less, titeann píosa amháin téacs faoi bhun an chodarsnacht íosta. Is é an ceann is measa \"Imíonn do sheisiún go luath.\" ag 1.48:1 (teastaíonn 4.5:1). Níl ach codarsnacht níos boige ceart fad a bhfanann an téacs so-léite."
+
+msgctxt "docs.api:prose"
+msgid " With prefers-contrast: more, one piece of text falls below the minimum contrast. The worst is \"Your session expires soon.\" at 2.74:1 (needs 4.5:1)."
+msgstr " Le prefers-contrast: more, titeann píosa amháin téacs faoi bhun an chodarsnacht íosta. Is é an ceann is measa \"Imíonn do sheisiún go luath.\" ag 2.74:1 (teastaíonn 4.5:1)."
+
+msgctxt "docs.api:prose"
+msgid "**Size** controls padding and gap: `relaxed` (default) is roomier; `compact` tightens both. **Color** sets the fill: bare (no modifier) is unfilled — border and icon only; `-color-violet` and `-color-sea` add a tinted background plus a matching icon swatch."
+msgstr "**Méid** rialaíonn an stuáil agus an bhearna: `relaxed` (réamhshocrú) bhfuil níos mó spáis ann; `compact` teannann sé an dá cheann. **Dath** socraíonn sé an líonadh: lom (gan mhodhnóir) tá sé gan líonadh — teorainn agus deilbhín amháin; `-color-violet` agus `-color-sea` cuireann siad cúlra daite agus dath deilbhín comhfhreagrach leis."
+
+msgctxt "docs.api:prose"
+msgid "Its own chained modifiers (`-color-*`, `-size-*`, `-shape-*`, `-toggle`, `-condensed`, `-without-background`, `-without-border`, `-display-block`) set a default for every child `.instui-button` that doesn't carry its own modifier in that same category — a button's own modifier class always wins over the group's default. `-icon-*` is always per-button; it's never read from the group. Deprecated button aliases (`-ghost`, `-color-primary-inverse`) aren't supported as group-level modifiers — use their canonical replacements (`-color-tertiary`, `-on-color`) instead. Each join shows a single 1px seam in the buttons' own border color (solid fills, whose border matches the fill, tint it with the label color). `-without-seam` is group-only: it hides that seam so the buttons read as one continuous control. Put `-width-half` on an individual icon-only child button for a split-action trigger with half the standard square width and the full button height."
+msgstr "Leagann a chuid modhnóirí slabhraithe féin (`-color-*`, `-size-*`, `-shape-*`, `-toggle`, `-condensed`, `-without-background`, `-without-border`, `-display-block`) réamhshocrú do gach leanbh `.instui-button` nach bhfuil a mhodhnóir féin aige sa chatagóir chéanna — is i gcónaí an rang modhnóra féin an chnaipe a bhuaileann réamhshocrú an ghrúpa. `-icon-*` i gcónaí in aghaidh an chnaipe; ní léitear ón ngrúpa é riamh. Ní thacaítear le leasainmneacha cnaipe dímheasta (`-ghost`, `-color-primary-inverse`) mar mhodhnóirí ar leibhéal an ghrúpa — bain úsáid as na hionaid chainónacha (`-color-tertiary`, `-on-color`) ina n-ionad. Taispeánann gach acomhal imeall aonair 1px i ndath teorann féin na gcnaipí (líonta dlútha, a bhfuil a dteorainn ag teacht leis an líonadh, dath an lipéid á dhathú uirthi). `-without-seam` le haghaidh an ghrúpa amháin: folaíonn sé an imeall sin ionas go léireofar na cnaipí mar rialú leanúnach aonair. Cuir `-width-half` ar leanbh aonair a bhfuil deilbhín amháin aige le haghaidh spreagthóir split-action atá leath leithead chearnach caighdeánach agus airde iomlán an chnaipe."
+
+msgctxt "docs.api:prose"
+msgid "Rebrand (light), Rebrand (dark):"
+msgstr "Athbhrandú (geal), Athbhrandú (dorcha): "
+
+msgctxt "docs.api:prose"
+msgid " With prefers-contrast: less, four pieces of text fall below the minimum contrast. The worst is \"Disabled unselected\" at 2.74:1 (needs 4.5:1). Softer contrast is fine only while text stays readable."
+msgstr " Le prefers-contrast: less, titeann ceithre phíosa téacs faoi bhun an chodarsnachta íosta. Is é \"Díchumasaithe gan roghnú\" an ceann is measa, ag 2.74:1 (teastaíonn 4.5:1). Tá codarsnacht níos boige inghlactha fad is atá an téacs inléite."
+
+msgctxt "docs.api:prose"
+msgid " With prefers-contrast: more, four pieces of text fall below the minimum contrast. The worst is \"Disabled unselected\" at 2.74:1 (needs 4.5:1)."
+msgstr " Le prefers-contrast: more, titeann ceithre phíosa téacs faoi bhun an chodarsnachta íosta. Is é \"Díchumasaithe gan roghnú\" an ceann is measa, ag 2.74:1 (teastaíonn 4.5:1)."
+
+msgctxt "docs.api:prose"
+msgid "The selected segment uses a distinct active-item shadow; it does not match an existing --instui-elevation-* composite. Overflow buttons use the upstream elevation3 component tokens."
+msgstr "Úsáideann an mhír roghnaithe scáth ar leith don mhír ghníomhach; ní hionann é agus comhchodach --instui-elevation-* atá ann cheana. Úsáideann cnaipí thar maoil comharthaí comhpháirte elevation3 ón bhfoinse réamhtheachtach."
+
+msgctxt "docs.api:prose"
+msgid "A `-icon-*` class may live on the label or its native input; the interaction helper promotes input classes to the label so the shared glyph painter can render it."
+msgstr "Féadfaidh aicme `-icon-*` a bheith ar an lipéad nó ar a ionchur dúchasach; cuireann cúntóir na hidirghníomhaíochta aicmí an ionchuir ar aghaidh chuig an lipéad ionas gur féidir leis an bpéintéir glyph comhroinnte í a rindreáil."
+
+msgctxt "docs.api:prose"
+msgid "The canonical record name from a record-opening tag, e.g. `button`."
+msgstr "An tainm canónach taifead ó chlib oscailte taifid, m.sh. `button`."
+
+msgctxt "docs.api:prose"
+msgid "Release maturity from `@stage` or a legacy maturity flag tag."
+msgstr "Aibíocht scaoilte ó `@stage` nó chlib bhratach aibíochta oidhreachta."
+
+msgctxt "docs.api:prose"
+msgid "Audience visibility; absent means public."
+msgstr "Infheictheacht an lucht féachana; má tá sé in easnamh, tá sé poiblí."
+
+msgctxt "docs.api:prose"
+msgid "Set when this record carries a `@global` tag — its modifiers (and per-modifier `@global` flags)\napply to any record, not just this record's base class. Used during\nvalidation and consumption checks to resolve modifier matches globally."
+msgstr "Leagtar é nuair a bhíonn clib `@global` ag an taifead seo — baineann a mhionathraitheoirí (agus na bratacha `@global`in aghaidh gach mionathraitheora)\nle haon taifead, ní hamháin aicme bhunúsach an taifid seo. Úsáidtear é le linn\nseiceálacha bailíochtaithe agus tomhaltais chun meaitseálacha mionathraitheoirí a réiteach go domhanda."
+
+msgctxt "docs.api:prose"
+msgid "Private `@example` labels, keyed by zero-based index into [examples](#examples)."
+msgstr "Lipéid phríobháideacha `@example`, eochraithe de réir innéacs nialasbhunaithe isteach i [samplaí](#examples)."

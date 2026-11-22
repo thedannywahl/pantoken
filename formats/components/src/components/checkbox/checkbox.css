@@ -24,7 +24,7 @@
  * @cssstate indeterminate
  * @cssstate disabled
  * @accessibility Wrap the native `<input type="checkbox">` and its visible text in a `<label>` to supply its accessible name. The input drives `:checked`, `:indeterminate`, and `:disabled`; set `el.indeterminate = true` in JavaScript for the mixed state. `-readonly` is styling only since checkboxes have no native readonly attribute.
- * @example -canvas-rce -docs
+ * @example labels=[canvas-rce,docs]
  * ```html
  * <label class="pfx-checkbox --display-block --mb-sm">
  *   <input type="checkbox" checked>Checkbox
@@ -34,7 +34,7 @@
  * </label>
  * ```
  * @related radio — The single-select counterpart.
- * @example -automatica11y
+ * @example labels=[automatica11y]
  * ```html
  * <p><label class="pfx-checkbox"><input type="checkbox">Unchecked checkbox</label></p>
  * <p><label class="pfx-checkbox -label-placement-end"><input type="checkbox" checked>Checked checkbox, label after</label></p>

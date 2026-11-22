@@ -13,7 +13,7 @@
  * .pfx-list {
  *   li:many {}
  * }
- * @example -canvas-rce -docs
+ * @example labels=[canvas-rce,docs]
  * ```html
  * <ul class="pfx-list">
  *   <li>First item</li>
@@ -21,7 +21,7 @@
  *   <li>Third item</li>
  * </ul>
  * ```
- * @example -automatica11y
+ * @example labels=[automatica11y]
  * ```html
  * <ul class="pfx-list -size-sm"><li>Small first item</li><li>Small second item</li></ul>
  * <ul class="pfx-list -size-md"><li>Medium first item</li><li>Medium second item</li></ul>

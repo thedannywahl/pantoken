@@ -2,9 +2,10 @@ import { existsSync, readFileSync, writeFileSync } from "node:fs";
 import { join, relative } from "node:path";
 import { parsePo, type PoEntry } from "@pantoken/i18n-engine";
 import {
-  generatedFileMarkdown,
-  restoreGeneratedMarkdown,
-} from "../../tools/translation-adapters/src/generated-values.ts";
+  compatibilityMarkdown,
+  equivalentCompatibilityPages,
+  renderCompatibility,
+} from "../../tools/translation-adapters/src/compatibility-markdown.ts";
 import { formatGeneratedFile } from "../../scripts/release/format-generated.ts";
 import { runAsMain } from "../../scripts/release/cli.ts";
 import { GlossaryTranslationAdapter } from "./api-translation.ts";
@@ -42,7 +43,7 @@ export async function renderGeneratedValues(
   const root = join(import.meta.dirname, "../..");
   const docs = join(root, "docs");
   const locales = parseRequestedLocales(process.env.DOCS_TRANSLATION_LOCALE, NON_ROOT_LOCALES);
-  const compatibility = generatedFileMarkdown(readFileSync(join(docs, "compatibility.md"), "utf8"));
+  const compatibility = compatibilityMarkdown(readFileSync(join(docs, "compatibility.md"), "utf8"));
   const pending: Array<{ path: string; content: string }> = [];
   const stage = (path: string, content: string): void => {
     if (!existsSync(path) || readFileSync(path, "utf8") !== content)
@@ -51,19 +52,26 @@ export async function renderGeneratedValues(
 
   for (const locale of locales) {
     const guides = parsePo(readFileSync(join(root, "l10n", locale, "docs.guides.po"), "utf8"));
-    const guide = guides.find(
-      (entry) =>
-        !entry.obsolete &&
-        !entry.fuzzy &&
-        entry.msgid === compatibility.template &&
-        entry.msgstr !== "",
+    const reviewed = new Map(
+      guides
+        .filter((entry) => !entry.obsolete && !entry.fuzzy && entry.msgstr !== "")
+        .map((entry) => [entry.msgid, entry.msgstr]),
     );
-    if (!guide) throw new Error(`${locale}: missing reviewed compatibility translation`);
+    const content = renderCompatibility(compatibility, (unit) => {
+      const translation = reviewed.get(unit);
+      if (translation === undefined)
+        throw new Error(
+          `${locale}: missing reviewed compatibility translation: ${unit.slice(0, 100)}`,
+        );
+      return translation;
+    });
     const guidePath = join(docs, locale, "compatibility.md");
-    stage(
-      guidePath,
-      await formatGeneratedFile(restoreGeneratedMarkdown(guide.msgstr, compatibility), guidePath),
-    );
+    const formatted = await formatGeneratedFile(content, guidePath);
+    if (
+      !existsSync(guidePath) ||
+      !equivalentCompatibilityPages(readFileSync(guidePath, "utf8"), formatted)
+    )
+      stage(guidePath, formatted);
     if (options.guidesOnly) continue;
 
     const entries = parsePo(readFileSync(join(root, "l10n", locale, "docs.api.po"), "utf8"));

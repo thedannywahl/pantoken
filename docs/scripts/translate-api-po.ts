@@ -4,6 +4,11 @@ import { join } from "node:path";
 import { AiTranslationAdapter } from "./api-translation.ts";
 import { isPassthroughTranslation } from "@pantoken/translation-adapters";
 import {
+  assertGeneratedTranslation,
+  splitGeneratedScope,
+} from "../../tools/translation-adapters/src/generated-values.ts";
+import { isWcagReference } from "./api-verbatim.ts";
+import {
   LOCALE_VERBATIM_API_PROSE,
   PANTOKEN_VERBATIM_FLAG,
   refreshApiPot,
@@ -31,7 +36,9 @@ const localeVerbatimSources = new Set(LOCALE_VERBATIM_API_PROSE.get(locale) ?? [
 let markedVerbatim = false;
 for (const entry of entries) {
   const requiredVerbatim =
-    entry.flags.includes(PANTOKEN_VERBATIM_FLAG) || localeVerbatimSources.has(entry.msgid);
+    entry.flags.includes(PANTOKEN_VERBATIM_FLAG) ||
+    localeVerbatimSources.has(entry.msgid) ||
+    isWcagReference(entry.msgid);
   if (
     !entry.obsolete &&
     requiredVerbatim &&
@@ -59,7 +66,8 @@ const selected = requestedUnits
 const allowsVerbatim = (entry: (typeof entries)[number]): boolean =>
   /^en(?:-|$)/u.test(locale) ||
   entry.flags.includes(PANTOKEN_VERBATIM_FLAG) ||
-  localeVerbatimSources.has(entry.msgid);
+  localeVerbatimSources.has(entry.msgid) ||
+  isWcagReference(entry.msgid);
 const needsTranslation = (entry: (typeof entries)[number]): boolean =>
   !entry.obsolete &&
   (entry.msgstr === "" ||
@@ -76,13 +84,12 @@ if (missing.length > 0) {
   const adapter = new AiTranslationAdapter(locale);
   const byId = new Map(missing.map((entry) => [`${entry.msgctxt ?? ""}\0${entry.msgid}`, entry]));
   const persistChunk = (translations: Record<string, string>): void => {
-    for (const [id, translation] of Object.entries(translations)) {
+    for (const [id, value] of Object.entries(translations)) {
       const entry = byId.get(id);
-      if (
-        entry !== undefined &&
-        translation.trim() !== "" &&
-        (allowsVerbatim(entry) || !isPassthroughTranslation(entry.msgid, translation))
-      ) {
+      if (entry === undefined || value.trim() === "") continue;
+      const translation = splitGeneratedScope(entry.msgid).prefix + value;
+      if (allowsVerbatim(entry) || !isPassthroughTranslation(entry.msgid, translation)) {
+        assertGeneratedTranslation(entry.msgid, translation);
         entry.msgstr = translation;
         entry.fuzzy = false;
         entry.flags = entry.flags.filter((flag) => flag !== "fuzzy");
@@ -95,7 +102,7 @@ if (missing.length > 0) {
   await adapter.translateBatch(
     missing.map((entry) => ({
       id: `${entry.msgctxt ?? ""}\0${entry.msgid}`,
-      text: entry.msgid,
+      text: splitGeneratedScope(entry.msgid).text,
     })),
     persistChunk,
   );

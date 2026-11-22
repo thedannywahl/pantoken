@@ -1,0 +1,68 @@
+/**
+ * @component global-nav-bar.item
+ * @memberOf global-nav-bar
+ * @selector .item
+ * @a11y Mark the active entry with `aria-current="page"` as well as `-selected`, and keep an accessible name, such as `aria-label`, when the parent's `-minimized` modifier hides the `.label`.
+ * @summary A navigation entry (InstUI `GlobalNavBar.Item`); `-selected` marks the active one.
+ * @modifier -selected — The active nav item.
+ * @part .label — The item's text label; hidden when the rail is minimized.
+ * @remarks The parent `global-nav-bar`'s `-minimized` modifier hides this member's `.label` — see `global-nav-bar`'s own doc for that modifier.
+ * @structure
+ * @component global-nav-bar {
+ *   .item {
+ *     [class*="-icon-"]:optional {}
+ *     .label {}
+ *   }
+ * }
+ * @example labels=[automatica11y]
+ * ```html
+ * <nav class="pfx-global-nav-bar" aria-label="Primary">
+ *   <a class="item -selected" href="#home" aria-current="page">
+ *     <span class="-icon-house" aria-hidden="true"></span>
+ *     <span class="label">Home</span>
+ *   </a>
+ *   <a class="item" href="#inbox">
+ *     <span class="-icon-inbox" aria-hidden="true"></span>
+ *     <span class="label">Inbox</span>
+ *   </a>
+ * </nav>
+ * <nav class="pfx-global-nav-bar -minimized" aria-label="Minimized primary">
+ *   <a class="item -selected" href="#home" aria-current="page" aria-label="Home"><span class="-icon-house" aria-hidden="true"></span><span class="label">Home</span></a>
+ *   <a class="item" href="#inbox" aria-label="Inbox"><span class="-icon-inbox" aria-hidden="true"></span><span class="label">Inbox</span></a>
+ * </nav>
+ * ```
+ */
+@scope (.pfx-global-nav-bar) {
+  :scope {
+    > .item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: var(--instui-spacing-space2xs);
+      padding: var(--instui-component-side-nav-bar-item-content-padding);
+      min-inline-size: var(--instui-component-side-nav-bar-minimized-width);
+      color: var(--instui-component-side-nav-bar-item-font-color);
+      background: var(--instui-component-side-nav-bar-item-background-color);
+      border-radius: var(--instui-component-side-nav-bar-item-border-radius);
+      font-size: var(--instui-component-side-nav-bar-item-font-size);
+      font-weight: var(--instui-component-side-nav-bar-item-font-weight);
+      line-height: var(--instui-component-side-nav-bar-item-line-height);
+      text-align: center;
+      text-decoration: var(--instui-component-side-nav-bar-item-link-text-decoration);
+      cursor: pointer;
+    }
+
+    > .item :is([class^="-icon-"], [class*=" -icon-"]) {
+      line-height: 1;
+    }
+
+    > .item:hover {
+      background: var(--instui-component-side-nav-bar-item-hover-background-color);
+    }
+
+    > .item.-selected {
+      background: var(--instui-component-side-nav-bar-item-selected-background-color);
+      color: var(--instui-component-side-nav-bar-item-selected-font-color);
+    }
+  }
+}

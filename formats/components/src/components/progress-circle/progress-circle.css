@@ -37,13 +37,14 @@
  * @cssproperty --pantoken-pc-stroke <length> — The ring's stroke width; the -size-* modifiers set it.
  * @a11y Use native `<progress>` for a zero-based task completion range and `<meter>` when the minimum is non-zero. Give either element an accessible name by nesting it in `<label>` or associating a separate `<label>` through matching `for` and `id` values.
  * @compat Registers the numeric progress properties with `@property` and paints with CSS `mask` and `conic-gradient`; where custom-property transitions are unsupported the ring still renders but won't animate.
- * @example -canvas-rce -docs
+ * @example labels=[canvas-rce,docs]
  * ### Nested label
- * ```html -canvas-rce -docs
+ * ```html
  * <label>
  *   Uploading Document: <progress class="pfx-progress-circle -size-sm" value="70">70%</progress>
  * </label>
  * ```
+ * @example labels=[reference]
  * ### External label
  * ```html
  * <label for="score">Score</label>
@@ -66,7 +67,7 @@
  * @related progress — The linear bar form of the same determinate progress.
  * @stable
  * @sealed
- * @example -automatica11y
+ * @example labels=[automatica11y]
  * ```html
  * <div><label>Uploading notes <progress class="pfx-progress-circle -color-brand -size-xs" value="70" max="100" style="--value: 70">70%</progress></label></div>
  * <div><label>Preparing files <progress class="pfx-progress-circle -color-info -size-sm" value="40" max="100" style="--value: 40">40%</progress></label></div>

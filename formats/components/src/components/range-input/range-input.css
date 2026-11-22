@@ -5,12 +5,12 @@
  * @remarks Each vendor thumb/track pseudo-element needs its own separate rule — grouping them in one selector list would invalidate the whole rule in browsers that don't recognize the other vendor's pseudo.
  * @pseudo ::before — Draws the value bubble's caret, a small triangle pointing back toward the track.
  * @accessibility The control is a native `<input type="range">`; give it an accessible name with `aria-label` or an associated `<label>`. Forced colors use a system-color outline because the thumb's box-shadow focus ring doesn't survive that mode.
- * @example -canvas-rce -docs
+ * @example labels=[canvas-rce,docs]
  * ```html
  * <input class="pfx-range-input" id="r1" type="range" value="30">
  * ```
  * @related number-input — The typed numeric-entry counterpart.
- * @example -automatica11y
+ * @example labels=[automatica11y]
  * ```html
  * <p><span class="pfx-range-input"><label for="audit-range-small">Volume with small value bubble</label>
  *   <input id="audit-range-small" class="pfx-range-input" type="range" min="0" max="100" value="30">

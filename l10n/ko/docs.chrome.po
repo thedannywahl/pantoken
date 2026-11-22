@@ -1356,6 +1356,13 @@ msgctxt "docs.chrome:a2uiCatalogDescriptions.PantokenBadge"
 msgid "A compact count or status badge."
 msgstr "간결한 개수 또는 상태 배지입니다."
 
+#: docs/.vitepress/catalog-i18n.json#a2uiCatalogDescriptions.PantokenBanner
+#, fuzzy, no-c-format
+msgctxt "docs.chrome:a2uiCatalogDescriptions.PantokenBanner"
+msgid "A Pantoken banner component with safe text and child content."
+msgstr ""
+"안전한 텍스트와 하위 콘텐츠를 사용하는 Pantoken 바이라인 컴포넌트입니다."
+
 #: docs/.vitepress/catalog-i18n.json#a2uiCatalogDescriptions.PantokenPill
 #, no-c-format
 msgctxt "docs.chrome:a2uiCatalogDescriptions.PantokenPill"
@@ -1434,6 +1441,20 @@ msgstr "정제된 미디어 URL과 제한된 표시 방식을 사용하는 반�
 msgctxt "docs.chrome:a2uiCatalogDescriptions.PantokenSideNavBar"
 msgid "A vertical navigation rail that can collapse to icon-only presentation."
 msgstr "아이콘 전용 표시로 접을 수 있는 세로 탐색 레일입니다."
+
+#: docs/.vitepress/catalog-i18n.json#a2uiCatalogDescriptions.PantokenGlobalNavBar
+#, fuzzy, no-c-format
+msgctxt "docs.chrome:a2uiCatalogDescriptions.PantokenGlobalNavBar"
+msgid "A Pantoken global-nav-bar component with safe text and child content."
+msgstr "안전한 텍스트와 하위 콘텐츠를 사용하는 Pantoken 빌보드 컴포넌트입니다."
+
+#: docs/.vitepress/catalog-i18n.json#a2uiCatalogDescriptions.PantokenGlobalNavBarItem
+#, fuzzy, no-c-format
+msgctxt "docs.chrome:a2uiCatalogDescriptions.PantokenGlobalNavBarItem"
+msgid ""
+"A Pantoken global-nav-bar-item component with safe text and child content."
+msgstr ""
+"안전한 텍스트와 하위 콘텐츠를 사용하는 Pantoken 바이라인 컴포넌트입니다."
 
 #: docs/.vitepress/catalog-i18n.json#a2uiCatalogDescriptions.PantokenTreeBrowser
 #, no-c-format
@@ -2082,6 +2103,21 @@ msgstr ""
 "시맨틱 .instui-breadcrumb 클래스로 스타일을 적용한 Instructure 이동 경로 컴포"
 "넌트입니다."
 
+#: docs/.vitepress/catalog-i18n.json#registryBrowserItems.banner.title
+#, fuzzy, no-c-format
+msgctxt "docs.chrome:registryBrowserItems.banner.title"
+msgid "Banner"
+msgstr "실행기"
+
+#: docs/.vitepress/catalog-i18n.json#registryBrowserItems.banner.description
+#, fuzzy, no-c-format
+msgctxt "docs.chrome:registryBrowserItems.banner.description"
+msgid ""
+"Instructure Banner component styled with semantic .instui-banner classes."
+msgstr ""
+"시맨틱 .instui-spinner 클래스로 스타일을 적용한 Instructure 스피너 컴포넌트입"
+"니다."
+
 #: docs/.vitepress/catalog-i18n.json#registryBrowserItems.billboard.title
 #, no-c-format
 msgctxt "docs.chrome:registryBrowserItems.billboard.title"
@@ -2237,6 +2273,22 @@ msgctxt "docs.chrome:registryBrowserItems.side-nav-bar.description"
 msgid ""
 "Instructure Side-nav-bar component styled with semantic .instui-side-nav-bar "
 "classes."
+msgstr ""
+"시맨틱 .instui-side-nav-bar 클래스로 스타일을 적용한 Instructure 사이드 내비"
+"게이션 바 컴포넌트입니다."
+
+#: docs/.vitepress/catalog-i18n.json#registryBrowserItems.global-nav-bar.title
+#, fuzzy, no-c-format
+msgctxt "docs.chrome:registryBrowserItems.global-nav-bar.title"
+msgid "Global-nav-bar"
+msgstr "사이드 내비게이션 바"
+
+#: docs/.vitepress/catalog-i18n.json#registryBrowserItems.global-nav-bar.description
+#, fuzzy, no-c-format
+msgctxt "docs.chrome:registryBrowserItems.global-nav-bar.description"
+msgid ""
+"Instructure Global-nav-bar component styled with semantic .instui-global-nav-"
+"bar classes."
 msgstr ""
 "시맨틱 .instui-side-nav-bar 클래스로 스타일을 적용한 Instructure 사이드 내비"
 "게이션 바 컴포넌트입니다."
@@ -2581,18 +2633,6 @@ msgstr ""
 "Instructure View 컴포넌트에 의미론적 .instui-view 클래스가 적용된 스타일입니"
 "다."
 
-#: docs/.vitepress/catalog-i18n.json#registryBrowserItems.banner.title
-#, fuzzy, no-c-format
-msgctxt "docs.chrome:registryBrowserItems.banner.title"
-msgid "Banner"
-msgstr "실행기"
-
-#: docs/.vitepress/catalog-i18n.json#registryBrowserItems.banner.description
-#, no-c-format
-msgctxt "docs.chrome:registryBrowserItems.banner.description"
-msgid "Pantoken banner component styles and documented HTML structure."
-msgstr "Pantoken 배너 컴포넌트 스타일 및 문서화된 HTML 구조입니다."
-
 #: docs/.vitepress/catalog-i18n.json#registryBrowserItems.agent-shell.title
 #, fuzzy, no-c-format
 msgctxt "docs.chrome:registryBrowserItems.agent-shell.title"
@@ -2873,6 +2913,11 @@ msgstr "시각적 디버그"
 msgctxt "docs.chrome:registryBrowserItems.visual-debug.description"
 msgid "Development-only layout outlines for Pantoken components."
 msgstr "Pantoken 컴포넌트의 개발 전용 레이아웃 윤곽선입니다."
+
+#, no-c-format
+#~ msgctxt "docs.chrome:registryBrowserItems.banner.description"
+#~ msgid "Pantoken banner component styles and documented HTML structure."
+#~ msgstr "Pantoken 배너 컴포넌트 스타일 및 문서화된 HTML 구조입니다."
 
 #, no-c-format
 #~ msgctxt "docs.chrome:a2uiCatalog.reactSupport"

@@ -11,12 +11,12 @@
  * @cssstate disabled
  * @pseudo ::before — The × glyph, masked in `currentColor`.
  * @a11y Give the icon-only button an `aria-label` (e.g. "Close"), and mark a disabled button with `aria-disabled` (or the native `disabled`).
- * @example -canvas-rce -docs
+ * @example labels=[canvas-rce,docs]
  * ```html
  * <button class="pfx-close-button -size-sm" aria-label="Close"></button>
  * ```
  * @related button — The general-purpose action button.
- * @example -automatica11y
+ * @example labels=[automatica11y]
  * ```html
  * <div><button class="pfx-close-button -size-sm" type="button" aria-label="Dismiss reminder" data-a11y-trigger></button></div>
  * <div><button class="pfx-close-button -size-md" type="button" aria-label="Dismiss notice"></button></div>

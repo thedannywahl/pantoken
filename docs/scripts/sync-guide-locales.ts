@@ -13,5 +13,5 @@ const config = loadConfig(`${repoRoot}/i18n.config.json`);
 runExtractContent(config, repoRoot, "docs.guides");
 for (const locale of NON_ROOT_LOCALES) {
   await runTranslateContent(config, repoRoot, "docs.guides", locale);
-  runRenderContent(config, repoRoot, "docs.guides", locale);
+  await runRenderContent(config, repoRoot, "docs.guides", locale);
 }

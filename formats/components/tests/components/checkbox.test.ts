@@ -26,7 +26,7 @@ test("checkbox has a toggle-switch variant driven by the toggle tokens", () => {
 test("checkbox examples retain native label associations even when a label matches a role word", () => {
   const [record] = parseCssDocs(checkboxCss({ prefix: "instui" }));
   expect(record!.examples.length).toBeGreaterThan(0);
-  const auditExamples = resolveExampleTargets(record!.examples).automatica11y;
+  const auditExamples = resolveExampleTargets(record!).automatica11y;
   for (const [index, example] of record!.examples.entries()) {
     const window = new Window();
     try {

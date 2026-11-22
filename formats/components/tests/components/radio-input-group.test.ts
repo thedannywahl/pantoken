@@ -33,13 +33,20 @@ test("radio-input-group lays toggle radios out flush as a segmented control", ()
 test("independent radio-group examples have distinct names, legends, and selections", () => {
   const [record] = parseCssDocs(radioInputGroupCss({ prefix: "instui" }));
   expect(record!.examples.length).toBeGreaterThan(0);
-  const auditExamples = resolveExampleTargets(record!.examples).automatica11y;
-  for (const [index, example] of record!.examples.entries()) {
+  const auditExamples = resolveExampleTargets(record!).automatica11y;
+  const nonAuditExamples = record!.examples.filter((_, index) => !auditExamples.includes(index));
+  const examples = [
+    { html: nonAuditExamples.map(exampleHtml).join("\n"), isAudit: false },
+    ...auditExamples.map((index) => ({
+      html: exampleHtml(record!.examples[index]!),
+      isAudit: true,
+    })),
+  ];
+  for (const { html, isAudit } of examples) {
     const window = new Window();
     try {
-      window.document.body.innerHTML = exampleHtml(example);
+      window.document.body.innerHTML = html;
       const groups = [...window.document.querySelectorAll("fieldset")];
-      const isAudit = auditExamples.includes(index);
       if (isAudit) {
         expect(groups.length).toBeGreaterThan(2);
         for (const modifier of [

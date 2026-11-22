@@ -1,4 +1,4 @@
-/** Consumer supported by a cssdoc example's audience flag. */
+/** Audience labels on a cssdoc example. */
 export type ExampleAudience =
   | "automatica11y"
   | "canvas-rce"
@@ -12,12 +12,10 @@ export interface ExampleTargetSelection {
   docs: number[];
 }
 
-const AUDIENCE_FLAGS = new Map<string, ExampleAudience>([
-  ["-automatica11y", "automatica11y"],
-  ["-canvas-rce", "canvas-rce"],
-  ["-canvas-rce-no-interactions", "canvas-rce-no-interactions"],
-  ["-docs", "docs"],
-]);
+interface LabeledExamples {
+  examples: readonly string[];
+  exampleLabels?: Readonly<Record<number, readonly string[]>>;
+}
 
 /**
  * Strip a leading flag header only when it ends in a newline.
@@ -50,58 +48,26 @@ export function stripExampleMetadata(example: string, multilineWhitespace = fals
   return example.slice(end);
 }
 
-function audienceFlags(example: string): Set<ExampleAudience> {
-  const fenceStart = example.indexOf("```");
-  const metadata = fenceStart < 0 ? example : example.slice(0, fenceStart);
-  const fenceInfo =
-    fenceStart < 0 ? "" : (example.slice(fenceStart + 3).split(/\r?\n/u, 1)[0] ?? "");
-  const metadataTokens = metadata.trim().split(/\s+/u).filter(Boolean);
-  const metadataIsFlags = metadataTokens.every((token) => /^-[a-z][a-z0-9-]*$/u.test(token));
-  const flags = new Set<ExampleAudience>();
-
-  for (const token of [...(metadataIsFlags ? metadataTokens : []), ...fenceInfo.split(/\s+/u)]) {
-    const audience = AUDIENCE_FLAGS.get(token);
-    if (audience) flags.add(audience);
-  }
-
-  return flags;
-}
-
-/** Resolve example indexes for each consumer while preserving the pre-flag defaults. */
+/** Resolve example indexes from the parsed cssdoc labels, not the example body. */
 export function resolveExampleTargets(
-  examples: readonly string[],
+  { examples, exampleLabels }: LabeledExamples,
   options: { interactions?: boolean } = {},
 ): ExampleTargetSelection {
-  const flags = examples.map(audienceFlags);
+  const labels = examples.map((_, index) => exampleLabels?.[index] ?? []);
   const explicit = (audience: ExampleAudience): number[] =>
-    flags.flatMap((exampleFlags, index) => (exampleFlags.has(audience) ? [index] : []));
+    labels.flatMap((exampleLabels, index) => (exampleLabels.includes(audience) ? [index] : []));
   const automatica11y = explicit("automatica11y");
   const withoutInteractions = explicit("canvas-rce-no-interactions");
   const canvasRce =
     options.interactions === false && withoutInteractions.length > 0
       ? withoutInteractions
       : explicit("canvas-rce");
-  const docs = explicit("docs");
-
-  if (flags.every((exampleFlags) => exampleFlags.size === 0)) {
-    return {
-      automatica11y: [],
-      canvasRce: examples.length === 0 ? [] : [0],
-      docs: examples.map((_, index) => index),
-    };
-  }
-
-  const unassigned = flags.flatMap((exampleFlags, index) =>
-    exampleFlags.size === 0 ? [index] : [],
-  );
-  const fallbackCanvas = canvasRce.length === 0 ? unassigned.slice(0, 1) : [];
-  const assignedCanvas = canvasRce.length > 0 ? canvasRce : fallbackCanvas;
-  const fallbackDocs =
-    docs.length > 0 ? [] : unassigned.filter((index) => !fallbackCanvas.includes(index));
-
+  const fallback = labels.findIndex((exampleLabels) => exampleLabels.length === 0);
   return {
     automatica11y,
-    canvasRce: assignedCanvas,
-    docs: docs.length > 0 ? docs : fallbackDocs,
+    canvasRce: canvasRce.length || fallback === -1 ? canvasRce : [fallback],
+    docs: labels.flatMap((labels, index) =>
+      !labels.length || labels.includes("docs") ? [index] : [],
+    ),
   };
 }

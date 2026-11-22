@@ -14,9 +14,7 @@ test.each(PLUGIN_AUDIT_RECORDS)("documents and audits the plugin component $name
     (candidate) => candidate.name === record.name,
   );
   expect(entry?.accessibility?.trim(), record.name).toBeTruthy();
-  expect(resolveExampleTargets(entry!.examples).automatica11y.length, record.name).toBeGreaterThan(
-    0,
-  );
+  expect(resolveExampleTargets(entry!).automatica11y.length, record.name).toBeGreaterThan(0);
 });
 
 test.each(records)("documents accessibility guidance for $name", (record) => {
@@ -33,7 +31,7 @@ test.each([...records, ...PLUGIN_AUDIT_RECORDS])(
     const entry = entries.find((candidate) => candidate.name === record.name);
     expect(entry, record.name).toBeDefined();
     const examples = entry!.examples;
-    const selected = resolveExampleTargets(examples).automatica11y;
+    const selected = resolveExampleTargets(entry!).automatica11y;
     if (/^(?:modal(?:\.|$)|tray$|mask$|popover$|tooltip$)/u.test(record.name))
       expect(selected.length, record.name).toBeGreaterThan(0);
     else expect(selected.length, record.name).toBe(1);
@@ -115,7 +113,7 @@ test.each([...records, ...PLUGIN_AUDIT_RECORDS])(
   "covers canonical color, size, and state modifiers for $name",
   (record) => {
     const entry = parseCssDocs(record.rules("instui-")).find((item) => item.name === record.name)!;
-    const markup = resolveExampleTargets(entry.examples)
+    const markup = resolveExampleTargets(entry)
       .automatica11y.map((index) => exampleHtml(entry.examples[index]!))
       .join("\n");
     const window = new Window();
@@ -147,7 +145,7 @@ test.each(COMPONENTS.filter((record) => record.kind === "component" && !record.n
   "keeps documentation and Canvas examples available for $name",
   (record) => {
     const entry = parseCssDocs(record.rules("instui-")).find((item) => item.name === record.name)!;
-    const targets = resolveExampleTargets(entry.examples);
+    const targets = resolveExampleTargets(entry);
     expect(targets.docs.length, record.name).toBeGreaterThan(0);
     expect(
       targets.docs.some((index) => !targets.automatica11y.includes(index)),

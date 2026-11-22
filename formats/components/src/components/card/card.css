@@ -11,7 +11,7 @@
  *   use `<section>` when grouped within a larger landmark. In `-variant-container`, prefer
  *   `<section>` elements as direct children so each bordered region carries semantic meaning.
  * @usage @import "@pantoken/components/components.css";
- * @example
+ * @example labels=[canvas-rce]
  * Content card -nocard
  * ```html
  * <article class="pfx-card -variant-base">
@@ -35,7 +35,8 @@
  *   </div>
  * </article>
  * ```
- * @example -automatica11y -nocard
+ * @example labels=[automatica11y]
+ * -nocard
  * ```html
  * <article class="pfx-card -variant-base" data-a11y-root>
  *   <div class="content">

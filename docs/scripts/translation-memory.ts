@@ -8,7 +8,8 @@
  * batched request; large markdown is translated per file on a miss to keep fidelity.
  *
  * The flow is: diff (hash vs. cache) → objectify (batch the misses) → translate → destructure (map
- * results back by hash) → save (prune to the units seen this run, write the catalog).
+ * results back by hash) → save (prune to the units seen this run, write the catalog). API cache hits
+ * require active, non-fuzzy prose entries; stale translations stay misses until reviewed or translated.
  *
  * @module
  */
@@ -22,6 +23,7 @@ import {
   type VerbatimPolicy,
 } from "@pantoken/translation-adapters";
 import type { TranslationAdapter } from "./api-translation.ts";
+import { GLOSSARY_TERMS } from "./glossary.ts";
 import {
   parsePo,
   readCatalog,
@@ -30,7 +32,10 @@ import {
   writeCatalog,
   type PoEntry,
 } from "@pantoken/i18n-engine";
-import { assertGeneratedTranslation } from "../../tools/translation-adapters/src/generated-values.ts";
+import {
+  assertGeneratedTranslation,
+  splitGeneratedScope,
+} from "../../tools/translation-adapters/src/generated-values.ts";
 
 /** Match a translation's trailing-newline shape to its source string. */
 export function alignTrailingNewline(source: string, translation: string): string {
@@ -58,6 +63,7 @@ const cacheDir = join(import.meta.dirname, "..", "i18n-cache");
  * reject the cached value on every later run and pay to retranslate it forever.
  */
 const VERBATIM_FLAG = "pantoken-verbatim";
+const GLOSSARY_TEXT = new Set(GLOSSARY_TERMS.map(({ term }) => term));
 
 /** The stable content key for a unit: `sha256(kind \0 source)`, hex. */
 export function keyFor(kind: string, source: string): string {
@@ -95,7 +101,14 @@ export class TranslationMemory {
     this._poByKey = poEntries
       ? new Map(
           poEntries
-            .filter((entry) => !entry.msgid.includes("{{ptk_code_") || !entry.obsolete)
+            // Structural terms are omitted from the API POT, so msgmerge archives their
+            // translations even while the glossary still uses them. Prose stays active-only.
+            .filter(
+              (entry) =>
+                !entry.obsolete ||
+                (entry.msgctxt === "docs.api:text" && GLOSSARY_TEXT.has(entry.msgid)),
+            )
+            .sort((a, b) => Number(b.obsolete) - Number(a.obsolete))
             .map((entry) => [`${entry.msgctxt ?? ""}\0${entry.msgid}`, entry]),
         )
       : undefined;
@@ -118,10 +131,7 @@ export class TranslationMemory {
     if (process.env.DOCS_TRANSLATION_FORCE === "1") return undefined;
     if (this._poByKey) {
       const entry = this._poByKey.get(`docs.api:${kind}\0${source}`);
-      const translation =
-        entry && (!source.includes("{{ptk_code_") || (!entry.fuzzy && !entry.obsolete))
-          ? entry.msgstr
-          : undefined;
+      const translation = entry && !entry.fuzzy ? entry.msgstr : undefined;
       if (translation !== undefined && translation !== "")
         assertGeneratedTranslation(source, translation);
       if (translation) this._poHits++;
@@ -279,7 +289,7 @@ function cachedTranslation(
   if (cached === undefined) return undefined;
   if (isApprovedCacheValue(memory, unit, cached, options)) return cached;
   console.warn(
-    `  !${translationContext(unit, options)} cached ${unit.kind} translation for ${JSON.stringify(unit.source.slice(0, 40))} looks untranslated; retranslating`,
+    `  !${translationContext(unit, options)} cached ${unit.kind} translation for ${JSON.stringify(splitGeneratedScope(unit.source).text.slice(0, 40))} looks untranslated; retranslating`,
   );
   return undefined;
 }
@@ -373,9 +383,13 @@ function persistBatchUnit(
 ): boolean {
   const id = keyFor(unit.kind, unit.source);
   const verbatim = isPassthroughTranslation(unit.source, value);
-  if (!adapterProducedChanges && !allowsVerbatim(unit.source, options) && verbatim) {
+  if (
+    (!adapterProducedChanges || splitGeneratedScope(unit.source).prefix !== "") &&
+    !allowsVerbatim(unit.source, options) &&
+    verbatim
+  ) {
     console.warn(
-      `  !${translationContext(unit, options)} ${unit.kind} unit looks untranslated (identical to source), not cached: ${JSON.stringify(unit.source.slice(0, 40))}`,
+      `  !${translationContext(unit, options)} ${unit.kind} unit looks untranslated (identical to source), not cached: ${JSON.stringify(splitGeneratedScope(unit.source).text.slice(0, 40))}`,
     );
     result.set(id, unit.source);
     return false;
@@ -399,7 +413,10 @@ async function translateBatchableMisses(
   options: TranslateOptions,
 ): Promise<void> {
   if (batchable.length === 0) return;
-  const items = batchable.map((u) => ({ id: keyFor(u.kind, u.source), text: u.source }));
+  const items = batchable.map((u) => ({
+    id: keyFor(u.kind, u.source),
+    text: splitGeneratedScope(u.source).text,
+  }));
   const byId = new Map(items.map((item, index) => [item.id, batchable[index]]));
   const consumed = new Set<string>();
   const persist = (partial: Record<string, string>): void => {
@@ -412,7 +429,10 @@ async function translateBatchableMisses(
       adapter.translatesProse !== false &&
       Object.entries(partial).some(([id, value]) => {
         const unit = byId.get(id);
-        return unit !== undefined && !isPassthroughTranslation(unit.source, value);
+        return (
+          unit !== undefined &&
+          !isPassthroughTranslation(splitGeneratedScope(unit.source).text, value)
+        );
       });
     const added = Object.entries(partial).reduce((count, [id, value]) => {
       const unit = byId.get(id);
@@ -420,7 +440,16 @@ async function translateBatchableMisses(
       consumed.add(id);
       return (
         count +
-        Number(persistBatchUnit(memory, result, unit, value, options, adapterProducedChanges))
+        Number(
+          persistBatchUnit(
+            memory,
+            result,
+            unit,
+            splitGeneratedScope(unit.source).prefix + value,
+            options,
+            adapterProducedChanges,
+          ),
+        )
       );
     }, 0);
     if (added === 0) return; // e.g. the final sweep re-seeing an already-persisted chunk

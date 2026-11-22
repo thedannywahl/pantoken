@@ -17,7 +17,7 @@
  * @pseudo ::after — Renders the decorative required-field asterisk after the label text when the field is required.
  * @accessibility A wrapping `<label>` names the control. When it also contains messages, use `aria-labelledby` to identify just the visible label text and `aria-describedby` for hints. Associate visible validation errors and synchronize `aria-invalid` in application code or with the opt-in native validation behavior; the decorative required asterisk isn't an accessible-name substitute.
  * @compat Contains its element styles with the CSS `@scope` at-rule; needs a recent Chromium, Firefox, or Safari.
- * @example -canvas-rce
+ * @example labels=[canvas-rce]
  * <label class="pfx-form-field">
  *   <span class="label" id="email-label">Email address</span>
  *   <span class="controls"><input class="pfx-text-input" type="email" placeholder="you@example.com" aria-labelledby="email-label" aria-describedby="email-hint"></span>
@@ -26,7 +26,7 @@
  *     <span class="pfx-form-field-message -type-error">Enter a valid email address.</span>
  *   </span>
  * </label>
- * @example -automatica11y
+ * @example labels=[automatica11y]
  * ```html
  * <label class="pfx-form-field" data-native-validation data-a11y-root>
  *   <span class="label" id="audit-email-label">Email address</span>
@@ -66,13 +66,14 @@
  *   <span class="controls"><input class="pfx-text-input -readonly" readonly value="Alex" aria-labelledby="audit-field-readonly-label"></span>
  * </label>
  * ```
- * @example -docs
+ * @example labels=[docs]
  * ```html
  * <label class="pfx-form-field">
  *   <span class="label">Display name</span>
  *   <span class="controls"><input class="pfx-text-input" type="text" autocomplete="nickname"></span>
  * </label>
  * ```
+ * @example labels=[reference]
  * ### Native validation (opt-in)
  * ```html
  * <label class="pfx-form-field" data-native-validation>

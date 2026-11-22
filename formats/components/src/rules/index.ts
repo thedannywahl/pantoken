@@ -1,5 +1,5 @@
 /**
- * The `RULES` registry — the documented `@rule` records (`base`, `prose`), for the parity test.
+ * The `RULES` registry — the documented `@component` records (`base`, `prose`), for the parity test.
  *
  * @module
  */

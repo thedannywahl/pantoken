@@ -3,12 +3,12 @@
  * @summary Visually hides content while keeping it available to assistive tech (the standard clip pattern).
  * @selector .pfx-screen-reader-content
  * @a11y Keeps text in the accessibility tree for screen readers while removing it from the visual layout.
- * @example
+ * @example labels=[canvas-rce]
  * ```html
  * <a class="instui-link" href="#examples" target="_blank">example</a>
  * <span class="instui-screen-reader-content">Opens in a new window</span>
  * ```
- * @example -automatica11y
+ * @example labels=[automatica11y]
  * ```html
  * <button data-a11y-root data-a11y-trigger>
  *   <span aria-hidden="true">+</span>

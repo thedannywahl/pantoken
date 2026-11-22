@@ -1358,6 +1358,12 @@ msgctxt "docs.chrome:a2uiCatalogDescriptions.PantokenBadge"
 msgid "A compact count or status badge."
 msgstr "نشان فشردهٔ تعداد یا وضعیت."
 
+#: docs/.vitepress/catalog-i18n.json#a2uiCatalogDescriptions.PantokenBanner
+#, fuzzy, no-c-format
+msgctxt "docs.chrome:a2uiCatalogDescriptions.PantokenBanner"
+msgid "A Pantoken banner component with safe text and child content."
+msgstr "کامپوننت زیرنویس نویسندهٔ Pantoken با متن امن و محتوای فرزند."
+
 #: docs/.vitepress/catalog-i18n.json#a2uiCatalogDescriptions.PantokenPill
 #, no-c-format
 msgctxt "docs.chrome:a2uiCatalogDescriptions.PantokenPill"
@@ -1436,6 +1442,19 @@ msgstr "تصویری واکنش‌گرا با نشانی رسانهٔ پاک‌�
 msgctxt "docs.chrome:a2uiCatalogDescriptions.PantokenSideNavBar"
 msgid "A vertical navigation rail that can collapse to icon-only presentation."
 msgstr "نوار پیمایش عمودی که می‌تواند به نمای فقط‌آیکون جمع شود."
+
+#: docs/.vitepress/catalog-i18n.json#a2uiCatalogDescriptions.PantokenGlobalNavBar
+#, fuzzy, no-c-format
+msgctxt "docs.chrome:a2uiCatalogDescriptions.PantokenGlobalNavBar"
+msgid "A Pantoken global-nav-bar component with safe text and child content."
+msgstr "کامپوننت بیلبورد Pantoken با متن امن و محتوای فرزند."
+
+#: docs/.vitepress/catalog-i18n.json#a2uiCatalogDescriptions.PantokenGlobalNavBarItem
+#, fuzzy, no-c-format
+msgctxt "docs.chrome:a2uiCatalogDescriptions.PantokenGlobalNavBarItem"
+msgid ""
+"A Pantoken global-nav-bar-item component with safe text and child content."
+msgstr "کامپوننت زیرنویس نویسندهٔ Pantoken با متن امن و محتوای فرزند."
 
 #: docs/.vitepress/catalog-i18n.json#a2uiCatalogDescriptions.PantokenTreeBrowser
 #, no-c-format
@@ -2067,6 +2086,20 @@ msgstr ""
 "مؤلفهٔ مسیر راهنمای Instructure با کلاس‌های معنایی .instui-breadcrumb "
 "استایل‌دهی شده است."
 
+#: docs/.vitepress/catalog-i18n.json#registryBrowserItems.banner.title
+#, fuzzy, no-c-format
+msgctxt "docs.chrome:registryBrowserItems.banner.title"
+msgid "Banner"
+msgstr "رانر"
+
+#: docs/.vitepress/catalog-i18n.json#registryBrowserItems.banner.description
+#, fuzzy, no-c-format
+msgctxt "docs.chrome:registryBrowserItems.banner.description"
+msgid ""
+"Instructure Banner component styled with semantic .instui-banner classes."
+msgstr ""
+"مؤلفهٔ چرخانهٔ Instructure با کلاس‌های معنایی .instui-spinner استایل‌دهی شده است."
+
 #: docs/.vitepress/catalog-i18n.json#registryBrowserItems.billboard.title
 #, no-c-format
 msgctxt "docs.chrome:registryBrowserItems.billboard.title"
@@ -2221,6 +2254,22 @@ msgctxt "docs.chrome:registryBrowserItems.side-nav-bar.description"
 msgid ""
 "Instructure Side-nav-bar component styled with semantic .instui-side-nav-bar "
 "classes."
+msgstr ""
+"مؤلفهٔ نوار پیمایش کناری Instructure با کلاس‌های معنایی .instui-side-nav-bar "
+"استایل‌دهی شده است."
+
+#: docs/.vitepress/catalog-i18n.json#registryBrowserItems.global-nav-bar.title
+#, fuzzy, no-c-format
+msgctxt "docs.chrome:registryBrowserItems.global-nav-bar.title"
+msgid "Global-nav-bar"
+msgstr "نوار پیمایش کناری"
+
+#: docs/.vitepress/catalog-i18n.json#registryBrowserItems.global-nav-bar.description
+#, fuzzy, no-c-format
+msgctxt "docs.chrome:registryBrowserItems.global-nav-bar.description"
+msgid ""
+"Instructure Global-nav-bar component styled with semantic .instui-global-nav-"
+"bar classes."
 msgstr ""
 "مؤلفهٔ نوار پیمایش کناری Instructure با کلاس‌های معنایی .instui-side-nav-bar "
 "استایل‌دهی شده است."
@@ -2563,18 +2612,6 @@ msgid "Instructure View component styled with semantic .instui-view classes."
 msgstr ""
 "کامپوننت نما Instructure که با کلاس‌های معنایی .instui-view استایل‌دهی شده است."
 
-#: docs/.vitepress/catalog-i18n.json#registryBrowserItems.banner.title
-#, fuzzy, no-c-format
-msgctxt "docs.chrome:registryBrowserItems.banner.title"
-msgid "Banner"
-msgstr "رانر"
-
-#: docs/.vitepress/catalog-i18n.json#registryBrowserItems.banner.description
-#, no-c-format
-msgctxt "docs.chrome:registryBrowserItems.banner.description"
-msgid "Pantoken banner component styles and documented HTML structure."
-msgstr "استایل‌های کامپوننت بنر Pantoken و ساختار HTML مستندشده."
-
 #: docs/.vitepress/catalog-i18n.json#registryBrowserItems.agent-shell.title
 #, fuzzy, no-c-format
 msgctxt "docs.chrome:registryBrowserItems.agent-shell.title"
@@ -2852,6 +2889,11 @@ msgstr "اشکال‌زدایی بصری"
 msgctxt "docs.chrome:registryBrowserItems.visual-debug.description"
 msgid "Development-only layout outlines for Pantoken components."
 msgstr "خطوط پیرامونی چیدمان مختص توسعه برای کامپوننت‌های Pantoken."
+
+#, no-c-format
+#~ msgctxt "docs.chrome:registryBrowserItems.banner.description"
+#~ msgid "Pantoken banner component styles and documented HTML structure."
+#~ msgstr "استایل‌های کامپوننت بنر Pantoken و ساختار HTML مستندشده."
 
 #, no-c-format
 #~ msgctxt "docs.chrome:a2uiCatalog.reactSupport"

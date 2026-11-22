@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: pantoken\n"
-"PO-Revision-Date: 2026-11-14 02:41+0000\n"
+"PO-Revision-Date: 2026-11-21 20:28+0000\n"
 "Last-Translator: pantoken localization engine\n"
 "Language-Team: pantoken\n"
 "MIME-Version: 1.0\n"
@@ -35124,3 +35124,178 @@ msgstr "एक hoverable \"view fullscreen\" बटन, जो एक डेम�
 #~ msgctxt "docs.api:text"
 #~ msgid "componentElements"
 #~ msgstr "componentElements"
+
+msgctxt "docs.api:prose"
+msgid "\n  An alert with text-color-base modifier for high contrast.\n"
+msgstr "\n  उच्च कंट्रास्ट के लिए text-color-base मॉडिफ़ायर वाला अलर्ट।\n"
+
+msgctxt "docs.api:prose"
+msgid "\n  A warning alert with explicit base text color.\n"
+msgstr "\n  स्पष्ट base टेक्स्ट रंग वाला चेतावनी अलर्ट।\n"
+
+msgctxt "docs.api:prose"
+msgid "\n  An inline alert with inline status icon.\n"
+msgstr "\n  inline status आइकन वाला inline अलर्ट।\n"
+
+msgctxt "docs.api:prose"
+msgid "Render inline icon using the status color (for inline alerts)."
+msgstr "inline अलर्ट के लिए status रंग का उपयोग करके inline आइकन रेंडर करें)."
+
+msgctxt "docs.api:prose"
+msgid "Use base text color instead of on-color (high-contrast)."
+msgstr "on-color के बजाय base टेक्स्ट रंग का उपयोग करें (high-contrast)."
+
+msgctxt "docs.api:prose"
+msgid "Use on-color text (default for floating)."
+msgstr "on-color टेक्स्ट का उपयोग करें (floating के लिए डिफ़ॉल्ट)."
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "**Source:** [banner.css](https://github.com/thedannywahl/pantoken/blob/main/formats/components/src/components/banner/banner.css)"
+msgstr "**Source:** [banner.css](https://github.com/thedannywahl/pantoken/blob/main/formats/components/src/components/banner/banner.css)"
+
+msgctxt "docs.api:prose"
+msgid "`.item` — A navigation entry (InstUI `GlobalNavBar.Item`); `-selected` marks the active one."
+msgstr "`.item` — एक नेविगेशन प्रविष्टि (InstUI `GlobalNavBar.Item`); `-selected` सक्रिय प्रविष्टि को दर्शाता है।"
+
+msgctxt "docs.api:prose"
+msgid "The parent `global-nav-bar`'s `-minimized` modifier hides this member's `.label` — see `global-nav-bar`'s own doc for that modifier."
+msgstr "पैरेंट `global-nav-bar` का `-minimized` संशोधक इस सदस्य का `.label` छिपाता है — उस संशोधक के लिए `global-nav-bar` का अपना दस्तावेज़ देखें।"
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "**Source:** [global-nav-bar.css](https://github.com/thedannywahl/pantoken/blob/main/formats/components/src/components/global-nav-bar/global-nav-bar.css)"
+msgstr "**Source:** [global-nav-bar.css](https://github.com/thedannywahl/pantoken/blob/main/formats/components/src/components/global-nav-bar/global-nav-bar.css)"
+
+msgctxt "docs.api:prose"
+msgid "`.instui-global-nav-bar` — A vertical navigation rail of icon-over-label items, with a minimized icons-only mode."
+msgstr "`.instui-global-nav-bar` — आइकन के ऊपर लेबल वाले आइटमों की एक लंबवत नेविगेशन रेल, जिसमें केवल आइकन वाला संक्षिप्त मोड है।"
+
+msgctxt "docs.api:prose"
+msgid "Sets its own `gap` between nav items and its own `padding`; chaining a `-gap-*`/`-p-*`/`-padding-*` spacing utility modifier overrides those built-in values. See the `global-nav-bar.item` member for the individual nav entries."
+msgstr "यह nav आइटमों के बीच अपना `gap` और अपना `padding` सेट करता है; `-gap-*`/`-p-*`/`-padding-*` स्पेसिंग यूटिलिटी मॉडिफ़ायर को जोड़ने पर ये अंतर्निहित मान ओवरराइड हो जाते हैं। अलग-अलग nav प्रविष्टियों के लिए `global-nav-bar.item` सदस्य देखें।"
+
+msgctxt "docs.api:prose"
+msgid "Collapse to icons only (labels hidden). @affects global-nav-bar.item — Hides the item's label."
+msgstr "केवल आइकन तक संक्षिप्त करें (लेबल छिपे हुए). @affects global-nav-bar.item — आइटम का लेबल छिपाता है।"
+
+msgctxt "docs.api:prose"
+msgid "A styled container for display of important information with two size variants and color themes."
+msgstr "दो आकार विकल्पों और रंग थीम के साथ महत्वपूर्ण जानकारी दिखाने के लिए एक स्टाइल किया गया कंटेनर।"
+
+msgctxt "docs.api:prose"
+msgid "A navigation entry (InstUI `GlobalNavBar.Item`); `-selected` marks the active one."
+msgstr "एक नेविगेशन प्रविष्टि (InstUI `GlobalNavBar.Item`); `-selected` सक्रिय प्रविष्टि को चिह्नित करता है।"
+
+msgctxt "docs.api:prose"
+msgid "Large padding around arrow icons in overflow buttons."
+msgstr "ओवरफ़्लो बटनों में तीर आइकनों के चारों ओर अधिक पैडिंग।"
+
+msgctxt "docs.api:prose"
+msgid "Standalone `banner` stylesheet — the prefixed CSS for the banner container, ready to ship as a `.css` file."
+msgstr "स्वतंत्र `banner` स्टाइलशीट — बैनर कंटेनर के लिए उपसर्गयुक्त CSS, जिसे `.css` फ़ाइल के रूप में शिप करने के लिए तैयार किया गया है।"
+
+msgctxt "docs.api:prose"
+msgid "Standalone `globalNavBar` stylesheet — the prefixed CSS for the navigation rail, ready to ship as a `.css` file."
+msgstr "स्वतंत्र `globalNavBar` स्टाइलशीट — नेविगेशन रेल के लिए उपसर्गित CSS, `.css` फ़ाइल के रूप में जारी करने के लिए तैयार।"
+
+msgctxt "docs.api:prose"
+msgid "Standalone `global-nav-bar.item` stylesheet."
+msgstr "स्वतंत्र `global-nav-bar.item` स्टाइलशीट।"
+
+msgctxt "docs.api:prose"
+msgid "Use `globalNavBarCss` instead."
+msgstr "__PTK_INLINE_CODE_0_ के बजाय इसका उपयोग करें_।"
+
+msgctxt "docs.api:prose"
+msgid "Use `globalNavBarItemCss` instead."
+msgstr "इसके बजाय `globalNavBarItemCss` का उपयोग करें।"
+
+#, pantoken-verbatim
+msgctxt "docs.api:text"
+msgid "bannerCss"
+msgstr "bannerCss"
+
+#, pantoken-verbatim
+msgctxt "docs.api:text"
+msgid "globalNavBarCss"
+msgstr "globalNavBarCss"
+
+#, pantoken-verbatim
+msgctxt "docs.api:text"
+msgid "globalNavBarItemCss"
+msgstr "globalNavBarItemCss"
+
+#, pantoken-verbatim
+msgctxt "docs.api:text"
+msgid "global-nav-bar"
+msgstr "global-nav-bar"
+
+msgctxt "docs.api:prose"
+msgid "Rebrand (light), Canvas, Canvas High Contrast:"
+msgstr "रिब्रांड (हल्का), Canvas, Canvas उच्च कंट्रास्ट:"
+
+msgctxt "docs.api:prose"
+msgid " With prefers-contrast: less, one piece of text falls below the minimum contrast. The worst is \"Your session expires soon.\" at 2.74:1 (needs 4.5:1). Softer contrast is fine only while text stays readable."
+msgstr " prefers-contrast: less के साथ, एक पाठ न्यूनतम कंट्रास्ट से नीचे रहता है। सबसे खराब स्थिति \"Your session expires soon.\" है, जो 2.74:1 है (4.5:1) की आवश्यकता है)। जब पाठ पढ़ने योग्य बना रहता है, तभी नरम कंट्रास्ट ठीक है।"
+
+msgctxt "docs.api:prose"
+msgid " With prefers-contrast: less, one piece of text falls below the minimum contrast. The worst is \"Your session expires soon.\" at 2.77:1 (needs 4.5:1). Softer contrast is fine only while text stays readable."
+msgstr " prefers-contrast: less के साथ, एक पाठ न्यूनतम कंट्रास्ट से नीचे रहता है। सबसे खराब स्थिति \"Your session expires soon.\" है, जो 2.77:1 है (4.5:1) की आवश्यकता है)। जब पाठ पढ़ने योग्य बना रहता है, तभी नरम कंट्रास्ट ठीक है।"
+
+msgctxt "docs.api:prose"
+msgid " With prefers-contrast: less, one piece of text falls below the minimum contrast. The worst is \"Your session expires soon.\" at 1.48:1 (needs 4.5:1). Softer contrast is fine only while text stays readable."
+msgstr " prefers-contrast: less के साथ, एक पाठ न्यूनतम कंट्रास्ट से नीचे रहता है। सबसे खराब स्थिति \"Your session expires soon.\" है, जो 1.48:1 है (4.5:1) की आवश्यकता है)। जब पाठ पढ़ने योग्य बना रहता है, तभी नरम कंट्रास्ट ठीक है।"
+
+msgctxt "docs.api:prose"
+msgid " With prefers-contrast: more, one piece of text falls below the minimum contrast. The worst is \"Your session expires soon.\" at 2.74:1 (needs 4.5:1)."
+msgstr " prefers-contrast: more के साथ, एक पाठ न्यूनतम कंट्रास्ट से नीचे रहता है। सबसे खराब स्थिति \"Your session expires soon.\" है, जो 2.74:1 है (4.5:1) की आवश्यकता है)।"
+
+msgctxt "docs.api:prose"
+msgid "**Size** controls padding and gap: `relaxed` (default) is roomier; `compact` tightens both. **Color** sets the fill: bare (no modifier) is unfilled — border and icon only; `-color-violet` and `-color-sea` add a tinted background plus a matching icon swatch."
+msgstr "**आकार** पैडिंग और गैप को नियंत्रित करता है: `relaxed` (डिफ़ॉल्ट) में अधिक जगह होती है; `compact` दोनों को सघन करता है। **रंग** भरण निर्धारित करता है: बिना संशोधक के खाली) रहता है — केवल बॉर्डर और आइकन; `-color-violet` और `-color-sea` रंगत वाली पृष्ठभूमि और उससे मेल खाता आइकन स्वैच जोड़ते हैं।"
+
+msgctxt "docs.api:prose"
+msgid "Its own chained modifiers (`-color-*`, `-size-*`, `-shape-*`, `-toggle`, `-condensed`, `-without-background`, `-without-border`, `-display-block`) set a default for every child `.instui-button` that doesn't carry its own modifier in that same category — a button's own modifier class always wins over the group's default. `-icon-*` is always per-button; it's never read from the group. Deprecated button aliases (`-ghost`, `-color-primary-inverse`) aren't supported as group-level modifiers — use their canonical replacements (`-color-tertiary`, `-on-color`) instead. Each join shows a single 1px seam in the buttons' own border color (solid fills, whose border matches the fill, tint it with the label color). `-without-seam` is group-only: it hides that seam so the buttons read as one continuous control. Put `-width-half` on an individual icon-only child button for a split-action trigger with half the standard square width and the full button height."
+msgstr "इसके चेन किए गए अपने modifiers (`-color-*`, `-size-*`, `-shape-*`, `-toggle`, `-condensed`, `-without-background`, `-without-border`, `-display-block`) प्रत्येक child `.instui-button` के लिए एक default सेट करते हैं जो उसी category में अपना modifier नहीं रखता — button का अपना modifier class हमेशा group के default पर प्राथमिकता रखता है। `-icon-*` हमेशा प्रति-button होता है; इसे group से कभी नहीं पढ़ा जाता। Deprecated button aliases (`-ghost`, `-color-primary-inverse`) group-level modifiers के रूप में समर्थित नहीं हैं — इसके बजाय उनके canonical replacements (`-color-tertiary`, `-on-color`) का उपयोग करें। प्रत्येक join buttons के अपने border color में एक single 1px seam दिखाता है (solid fills, जिनकी border fill से मेल खाती है, को label color से tint करें). `-without-seam` केवल group में उपयोग होता है: यह उस seam को छिपाता है ताकि buttons एक continuous control के रूप में दिखाई दें। किसी individual icon-only child button पर `-width-half` रखें ताकि split-action trigger मानक square width का आधा और button की पूरी height ले।"
+
+msgctxt "docs.api:prose"
+msgid "Rebrand (light), Rebrand (dark):"
+msgstr "रीब्रांड (हल्का), रीब्रांड (गहरा):"
+
+msgctxt "docs.api:prose"
+msgid " With prefers-contrast: less, four pieces of text fall below the minimum contrast. The worst is \"Disabled unselected\" at 2.74:1 (needs 4.5:1). Softer contrast is fine only while text stays readable."
+msgstr " prefers-contrast: less के साथ, चार पाठ हिस्से न्यूनतम कंट्रास्ट से नीचे चले जाते हैं। सबसे खराब \"Disabled unselected\" है, जो 2.74:1 है (4.5:1 की आवश्यकता है). नरम कंट्रास्ट केवल तब ठीक है जब पाठ पठनीय बना रहे।"
+
+msgctxt "docs.api:prose"
+msgid " With prefers-contrast: more, four pieces of text fall below the minimum contrast. The worst is \"Disabled unselected\" at 2.74:1 (needs 4.5:1)."
+msgstr " prefers-contrast: more के साथ, चार पाठ हिस्से न्यूनतम कंट्रास्ट से नीचे चले जाते हैं। सबसे खराब \"Disabled unselected\" है, जो 2.74:1 है (4.5:1 की आवश्यकता है)."
+
+msgctxt "docs.api:prose"
+msgid "The selected segment uses a distinct active-item shadow; it does not match an existing --instui-elevation-* composite. Overflow buttons use the upstream elevation3 component tokens."
+msgstr "चयनित segment अलग active-item shadow उपयोग करता है; यह मौजूदा --instui-elevation-* composite से मेल नहीं खाता। Overflow बटन upstream elevation3 component tokens का उपयोग करते हैं।"
+
+msgctxt "docs.api:prose"
+msgid "A `-icon-*` class may live on the label or its native input; the interaction helper promotes input classes to the label so the shared glyph painter can render it."
+msgstr "एक `-icon-*` क्लास लेबल पर या उसके नेटिव इनपुट पर हो सकती है; इंटरेक्शन हेल्पर साझा ग्लिफ़ पेंटर द्वारा इसे रेंडर करने के लिए इनपुट क्लास को लेबल पर स्थानांतरित करता है।"
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "The canonical record name from a record-opening tag, e.g. `button`."
+msgstr "The canonical record name from a record-opening tag, e.g. `button`."
+
+msgctxt "docs.api:prose"
+msgid "Release maturity from `@stage` or a legacy maturity flag tag."
+msgstr "`@stage` या पुरानी परिपक्वता फ़्लैग टैग से रिलीज़ परिपक्वता।"
+
+msgctxt "docs.api:prose"
+msgid "Audience visibility; absent means public."
+msgstr "दर्शक दृश्यता; अनुपस्थित होने पर सार्वजनिक।"
+
+msgctxt "docs.api:prose"
+msgid "Set when this record carries a `@global` tag — its modifiers (and per-modifier `@global` flags)\napply to any record, not just this record's base class. Used during\nvalidation and consumption checks to resolve modifier matches globally."
+msgstr "जब यह रिकॉर्ड `@global` टैग रखता है, तो सेट किया जाता है — इसके संशोधक (और प्रति-संशोधक `@global` फ़्लैग)\n किसी रिकॉर्ड के आधार क्लास तक सीमित न रहते हुए किसी भी रिकॉर्ड पर लागू होते हैं। संशोधक मिलानों को वैश्विक रूप से हल करने के लिए\n सत्यापन और उपभोग जाँचों के दौरान इसका उपयोग किया जाता है।"
+
+msgctxt "docs.api:prose"
+msgid "Private `@example` labels, keyed by zero-based index into [examples](#examples)."
+msgstr "निजी `@example` लेबल, जिन्हें [examples](#examples) में शून्य-आधारित इंडेक्स द्वारा कुंजीबद्ध किया गया है।"

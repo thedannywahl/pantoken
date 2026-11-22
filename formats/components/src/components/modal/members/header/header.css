@@ -11,7 +11,7 @@
  *     strong {}
  *   }
  * }
- * @example -automatica11y
+ * @example labels=[automatica11y]
  * ```html
  * <button type="button" command="--show" commandfor="account-dialog" data-a11y-trigger>Open account details</button>
  * <dialog class="pfx-modal" id="account-dialog" aria-labelledby="account-dialog-title" data-a11y-root>
@@ -20,12 +20,12 @@
  *   <div class="footer"><button type="button" command="--close" commandfor="account-dialog">Close</button></div>
  * </dialog>
  * ```
- * @example -automatica11y
+ * @example labels=[automatica11y]
  * ```html
  * <button type="button" command="--show" commandfor="compact-header-dialog" data-a11y-trigger>Open compact header</button>
  * <dialog class="pfx-modal -density-compact" id="compact-header-dialog" aria-labelledby="compact-header" data-a11y-root><div class="header" id="compact-header">Compact header</div><div class="footer"><button type="button" command="--close" commandfor="compact-header-dialog">Close</button></div></dialog>
  * ```
- * @example -automatica11y
+ * @example labels=[automatica11y]
  * ```html
  * <button type="button" command="--show" commandfor="inverse-header-dialog" data-a11y-trigger>Open inverse header</button>
  * <dialog class="pfx-modal -color-inverse" id="inverse-header-dialog" aria-labelledby="inverse-header" data-a11y-root><div class="header" id="inverse-header">Inverse header</div><div class="footer"><button type="button" command="--close" commandfor="inverse-header-dialog">Close</button></div></dialog>

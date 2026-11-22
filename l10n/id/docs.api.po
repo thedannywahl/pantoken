@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: pantoken\n"
-"PO-Revision-Date: 2026-11-13 22:58+0000\n"
+"PO-Revision-Date: 2026-11-21 20:35+0000\n"
 "Last-Translator: pantoken localization engine\n"
 "Language-Team: pantoken\n"
 "MIME-Version: 1.0\n"
@@ -35056,3 +35056,177 @@ msgstr "numberInput"
 msgctxt "docs.api:text"
 msgid "componentElements"
 msgstr "componentElements"
+
+msgctxt "docs.api:prose"
+msgid "\n  An alert with text-color-base modifier for high contrast.\n"
+msgstr "\n  Peringatan dengan modifier text-color-base untuk kontras tinggi.\n"
+
+msgctxt "docs.api:prose"
+msgid "\n  A warning alert with explicit base text color.\n"
+msgstr "\n  Peringatan dengan warna teks dasar yang eksplisit.\n"
+
+msgctxt "docs.api:prose"
+msgid "\n  An inline alert with inline status icon.\n"
+msgstr "\n  Peringatan inline dengan ikon status inline.\n"
+
+msgctxt "docs.api:prose"
+msgid "Render inline icon using the status color (for inline alerts)."
+msgstr "Render ikon inline menggunakan warna status (untuk peringatan inline)."
+
+msgctxt "docs.api:prose"
+msgid "Use base text color instead of on-color (high-contrast)."
+msgstr "Gunakan warna teks dasar, bukan on-color (kontras tinggi)."
+
+msgctxt "docs.api:prose"
+msgid "Use on-color text (default for floating)."
+msgstr "Gunakan teks on-color (default untuk peringatan mengambang)."
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "**Source:** [banner.css](https://github.com/thedannywahl/pantoken/blob/main/formats/components/src/components/banner/banner.css)"
+msgstr "**Source:** [banner.css](https://github.com/thedannywahl/pantoken/blob/main/formats/components/src/components/banner/banner.css)"
+
+msgctxt "docs.api:prose"
+msgid "`.item` — A navigation entry (InstUI `GlobalNavBar.Item`); `-selected` marks the active one."
+msgstr "`.item` — Entri navigasi (InstUI `GlobalNavBar.Item`); `-selected` menandai item yang aktif."
+
+msgctxt "docs.api:prose"
+msgid "The parent `global-nav-bar`'s `-minimized` modifier hides this member's `.label` — see `global-nav-bar`'s own doc for that modifier."
+msgstr "Induk `global-nav-bar` memiliki modifier `-minimized` yang menyembunyikan `.label` milik anggota ini — lihat dokumentasi `global-nav-bar` sendiri untuk modifier tersebut."
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "**Source:** [global-nav-bar.css](https://github.com/thedannywahl/pantoken/blob/main/formats/components/src/components/global-nav-bar/global-nav-bar.css)"
+msgstr "**Source:** [global-nav-bar.css](https://github.com/thedannywahl/pantoken/blob/main/formats/components/src/components/global-nav-bar/global-nav-bar.css)"
+
+msgctxt "docs.api:prose"
+msgid "`.instui-global-nav-bar` — A vertical navigation rail of icon-over-label items, with a minimized icons-only mode."
+msgstr "`.instui-global-nav-bar` — Rel navigasi vertikal berisi item dengan ikon di atas label, serta mode ringkas yang hanya menampilkan ikon."
+
+msgctxt "docs.api:prose"
+msgid "Sets its own `gap` between nav items and its own `padding`; chaining a `-gap-*`/`-p-*`/`-padding-*` spacing utility modifier overrides those built-in values. See the `global-nav-bar.item` member for the individual nav entries."
+msgstr "Mengatur `gap` sendiri di antara item navigasi dan `padding` sendiri; merangkai modifier utilitas spasi `-gap-*`/`-p-*`/`-padding-*` akan menggantikan nilai bawaan tersebut. Lihat anggota `global-nav-bar.item` untuk entri navigasi satu per satu."
+
+msgctxt "docs.api:prose"
+msgid "Collapse to icons only (labels hidden). @affects global-nav-bar.item — Hides the item's label."
+msgstr "Ciutkan menjadi ikon saja (label disembunyikan). @affects global-nav-bar.item — Menyembunyikan label item."
+
+msgctxt "docs.api:prose"
+msgid "A styled container for display of important information with two size variants and color themes."
+msgstr "Kontainer bergaya untuk menampilkan informasi penting dengan dua varian ukuran dan tema warna."
+
+msgctxt "docs.api:prose"
+msgid "A navigation entry (InstUI `GlobalNavBar.Item`); `-selected` marks the active one."
+msgstr "Entri navigasi (InstUI `GlobalNavBar.Item`); `-selected` menandai entri yang aktif."
+
+msgctxt "docs.api:prose"
+msgid "Large padding around arrow icons in overflow buttons."
+msgstr "Padding besar di sekitar ikon panah pada tombol overflow."
+
+msgctxt "docs.api:prose"
+msgid "Standalone `banner` stylesheet — the prefixed CSS for the banner container, ready to ship as a `.css` file."
+msgstr "Lembar gaya mandiri `banner` — CSS berprefiks untuk kontainer banner, siap dipaketkan sebagai file `.css`."
+
+msgctxt "docs.api:prose"
+msgid "Standalone `globalNavBar` stylesheet — the prefixed CSS for the navigation rail, ready to ship as a `.css` file."
+msgstr "Lembar gaya `globalNavBar` mandiri — CSS dengan prefiks untuk bilah navigasi, siap digunakan sebagai file `.css`."
+
+msgctxt "docs.api:prose"
+msgid "Standalone `global-nav-bar.item` stylesheet."
+msgstr "Mandiri `global-nav-bar.item` lembar gaya."
+
+msgctxt "docs.api:prose"
+msgid "Use `globalNavBarCss` instead."
+msgstr "Gunakan `globalNavBarCss` sebagai gantinya."
+
+msgctxt "docs.api:prose"
+msgid "Use `globalNavBarItemCss` instead."
+msgstr "Gunakan `globalNavBarItemCss` sebagai gantinya."
+
+#, pantoken-verbatim
+msgctxt "docs.api:text"
+msgid "bannerCss"
+msgstr "bannerCss"
+
+#, pantoken-verbatim
+msgctxt "docs.api:text"
+msgid "globalNavBarCss"
+msgstr "globalNavBarCss"
+
+#, pantoken-verbatim
+msgctxt "docs.api:text"
+msgid "globalNavBarItemCss"
+msgstr "globalNavBarItemCss"
+
+#, pantoken-verbatim
+msgctxt "docs.api:text"
+msgid "global-nav-bar"
+msgstr "global-nav-bar"
+
+msgctxt "docs.api:prose"
+msgid "Rebrand (light), Canvas, Canvas High Contrast:"
+msgstr "Rebranding (terang), Canvas, Canvas Kontras Tinggi:"
+
+msgctxt "docs.api:prose"
+msgid " With prefers-contrast: less, one piece of text falls below the minimum contrast. The worst is \"Your session expires soon.\" at 2.74:1 (needs 4.5:1). Softer contrast is fine only while text stays readable."
+msgstr " Dengan prefers-contrast: less, satu bagian teks berada di bawah kontras minimum. Yang terburuk adalah \"Sesi Anda akan segera berakhir.\" pada 2.74:1 (memerlukan 4.5:1). Kontras yang lebih lembut dapat diterima hanya selama teks tetap terbaca."
+
+msgctxt "docs.api:prose"
+msgid " With prefers-contrast: less, one piece of text falls below the minimum contrast. The worst is \"Your session expires soon.\" at 2.77:1 (needs 4.5:1). Softer contrast is fine only while text stays readable."
+msgstr " Dengan prefers-contrast: less, satu bagian teks berada di bawah kontras minimum. Yang terburuk adalah \"Sesi Anda akan segera berakhir.\" pada 2.77:1 (memerlukan 4.5:1). Kontras yang lebih lembut dapat diterima hanya selama teks tetap terbaca."
+
+msgctxt "docs.api:prose"
+msgid " With prefers-contrast: less, one piece of text falls below the minimum contrast. The worst is \"Your session expires soon.\" at 1.48:1 (needs 4.5:1). Softer contrast is fine only while text stays readable."
+msgstr " Dengan prefers-contrast: less, satu bagian teks berada di bawah kontras minimum. Yang terburuk adalah \"Sesi Anda akan segera berakhir.\" pada 1.48:1 (memerlukan 4.5:1). Kontras yang lebih lembut dapat diterima hanya selama teks tetap terbaca."
+
+msgctxt "docs.api:prose"
+msgid " With prefers-contrast: more, one piece of text falls below the minimum contrast. The worst is \"Your session expires soon.\" at 2.74:1 (needs 4.5:1)."
+msgstr " Dengan prefers-contrast: more, satu bagian teks berada di bawah kontras minimum. Yang terburuk adalah \"Sesi Anda akan segera berakhir.\" pada 2.74:1 (memerlukan 4.5:1)."
+
+msgctxt "docs.api:prose"
+msgid "**Size** controls padding and gap: `relaxed` (default) is roomier; `compact` tightens both. **Color** sets the fill: bare (no modifier) is unfilled — border and icon only; `-color-violet` and `-color-sea` add a tinted background plus a matching icon swatch."
+msgstr "**Ukuran** mengatur padding dan jarak: `relaxed` (bawaan) lebih lapang; `compact` mempersempit keduanya. **Warna** menentukan isian: tanpa modifier (kosong) — hanya garis tepi dan ikon; `-color-violet` dan `-color-sea` menambahkan latar berwarna lembut beserta contoh warna ikon yang senada."
+
+msgctxt "docs.api:prose"
+msgid "Its own chained modifiers (`-color-*`, `-size-*`, `-shape-*`, `-toggle`, `-condensed`, `-without-background`, `-without-border`, `-display-block`) set a default for every child `.instui-button` that doesn't carry its own modifier in that same category — a button's own modifier class always wins over the group's default. `-icon-*` is always per-button; it's never read from the group. Deprecated button aliases (`-ghost`, `-color-primary-inverse`) aren't supported as group-level modifiers — use their canonical replacements (`-color-tertiary`, `-on-color`) instead. Each join shows a single 1px seam in the buttons' own border color (solid fills, whose border matches the fill, tint it with the label color). `-without-seam` is group-only: it hides that seam so the buttons read as one continuous control. Put `-width-half` on an individual icon-only child button for a split-action trigger with half the standard square width and the full button height."
+msgstr "Modifier berantai miliknya (`-color-*`, `-size-*`, `-shape-*`, `-toggle`, `-condensed`, `-without-background`, `-without-border`, `-display-block`) menetapkan nilai default untuk setiap `.instui-button` child yang tidak memiliki modifier-nya sendiri dalam kategori yang sama — kelas modifier milik tombol selalu menang atas nilai default grup. `-icon-*` selalu berlaku per tombol; nilai ini tidak pernah dibaca dari grup. Alias tombol yang sudah tidak digunakan lagi (`-ghost`, `-color-primary-inverse`) tidak didukung sebagai modifier tingkat grup — gunakan pengganti kanonisnya (`-color-tertiary`, `-on-color`) sebagai gantinya. Setiap sambungan menampilkan satu garis sambung 1px dalam warna border milik tombol (isian solid, yang bordernya cocok dengan isian, warnai dengan warna label). `-without-seam` hanya berlaku untuk grup: modifier ini menyembunyikan garis sambung tersebut agar tombol-tombol tampil sebagai satu kontrol yang berkesinambungan. Letakkan `-width-half` pada tombol child individual yang hanya berisi ikon untuk pemicu aksi terpisah dengan setengah lebar persegi standar dan tinggi tombol penuh."
+
+msgctxt "docs.api:prose"
+msgid "Rebrand (light), Rebrand (dark):"
+msgstr "Pembaruan merek (terang), Pembaruan merek (gelap):"
+
+msgctxt "docs.api:prose"
+msgid " With prefers-contrast: less, four pieces of text fall below the minimum contrast. The worst is \"Disabled unselected\" at 2.74:1 (needs 4.5:1). Softer contrast is fine only while text stays readable."
+msgstr " Dengan prefers-contrast: less, empat bagian teks berada di bawah kontras minimum. Yang terburuk adalah \"Dinonaktifkan tidak dipilih\" pada 2,74:1 (memerlukan 4.5:1). Kontras yang lebih lembut hanya baik selama teks tetap terbaca."
+
+msgctxt "docs.api:prose"
+msgid " With prefers-contrast: more, four pieces of text fall below the minimum contrast. The worst is \"Disabled unselected\" at 2.74:1 (needs 4.5:1)."
+msgstr " Dengan prefers-contrast: more, empat bagian teks berada di bawah kontras minimum. Yang terburuk adalah \"Dinonaktifkan tidak dipilih\" pada 2,74:1 (memerlukan 4.5:1)."
+
+msgctxt "docs.api:prose"
+msgid "The selected segment uses a distinct active-item shadow; it does not match an existing --instui-elevation-* composite. Overflow buttons use the upstream elevation3 component tokens."
+msgstr "Segmen yang dipilih menggunakan bayangan elemen aktif yang khas; bayangan tersebut tidak cocok dengan komposit --instui-elevation-* yang sudah ada. Tombol overflow menggunakan token komponen elevation3 dari upstream."
+
+msgctxt "docs.api:prose"
+msgid "A `-icon-*` class may live on the label or its native input; the interaction helper promotes input classes to the label so the shared glyph painter can render it."
+msgstr "Sebuah `-icon-*` dapat berada pada label atau input bawaan; pembantu interaksi mempromosikan kelas input ke label agar pelukis glyph bersama dapat merendernya."
+
+msgctxt "docs.api:prose"
+msgid "The canonical record name from a record-opening tag, e.g. `button`."
+msgstr "Nama rekam kanonis dari tag pembuka rekam, misalnya `button`."
+
+msgctxt "docs.api:prose"
+msgid "Release maturity from `@stage` or a legacy maturity flag tag."
+msgstr "Maturitas rilis dari `@stage` atau tag flag maturitas lama."
+
+msgctxt "docs.api:prose"
+msgid "Audience visibility; absent means public."
+msgstr "Visibilitas audiens; jika tidak ada, berarti publik."
+
+msgctxt "docs.api:prose"
+msgid "Set when this record carries a `@global` tag — its modifiers (and per-modifier `@global` flags)\napply to any record, not just this record's base class. Used during\nvalidation and consumption checks to resolve modifier matches globally."
+msgstr "Ditetapkan saat rekaman ini membawa tag `@global` — pengubahnya (dan flag per-pengubah `@global` diterapkan pada rekaman mana pun, bukan hanya kelas dasar rekaman ini. Digunakan selama )\npemeriksaan validasi dan konsumsi untuk menyelesaikan pencocokan pengubah secara global."
+
+msgctxt "docs.api:prose"
+msgid "Private `@example` labels, keyed by zero-based index into [examples](#examples)."
+msgstr "Label `@example` privat, dikunci berdasarkan indeks berbasis nol ke [contoh](#examples)."

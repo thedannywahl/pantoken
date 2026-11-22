@@ -123,8 +123,8 @@ export function collectExamples(
     if (records.length !== 1)
       throw new Error(`Expected one model record for ${name}; found ${records.length}`);
     const entry = records[0]!;
-    const selected = resolveExampleTargets(entry.examples).automatica11y;
-    if (!selected.length) throw new Error(`Missing -automatica11y example: ${name}`);
+    const selected = resolveExampleTargets(entry).automatica11y;
+    if (!selected.length) throw new Error(`Missing automatica11y-labeled example: ${name}`);
     for (const index of selected)
       examples.push({ record: name, index, html: exampleHtml(entry.examples[index]!) });
   }

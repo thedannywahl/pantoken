@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: pantoken\n"
-"PO-Revision-Date: 2026-11-14 00:29+0000\n"
+"PO-Revision-Date: 2026-11-21 21:05+0000\n"
 "Last-Translator: pantoken localization engine\n"
 "Language-Team: pantoken\n"
 "MIME-Version: 1.0\n"
@@ -857,10 +857,10 @@ msgstr "more-contrast-respected"
 #: css/tabs.tab.md css/tag.md css/text-area.md css/text-input.md
 #: css/toggle-group.md css/tooltip.md css/tray.md css/tree-browser.md
 #: css/view.md
-#, no-c-format
+#, no-c-format, pantoken-verbatim
 msgctxt "docs.api:prose"
 msgid "WCAG 2.2 1.4.3, 1.4.6"
-msgstr "WCAG 2.2 1.4.3、1.4.6"
+msgstr "WCAG 2.2 1.4.3, 1.4.6"
 
 #: css/agent-shell.md css/ai-gradient.md css/avatar.md css/banner.md
 #: css/button-set.md css/button.md css/byline.md css/drawer-layout.md
@@ -2719,10 +2719,10 @@ msgstr "reduced-transparency-respected"
 
 #: css/button-set.md css/button.md css/maskglobal.md css/number-input.md
 #: css/segmented-control.md css/tag.md css/toggle-details.md css/view.md
-#, no-c-format
+#, no-c-format, pantoken-verbatim
 msgctxt "docs.api:prose"
 msgid "WCAG 2.2 1.4.3, 1.4.11"
-msgstr "WCAG 2.2 1.4.3、1.4.11"
+msgstr "WCAG 2.2 1.4.3, 1.4.11"
 
 #: css/button-set.md
 #, no-c-format
@@ -35056,3 +35056,178 @@ msgstr "numberInput"
 msgctxt "docs.api:text"
 msgid "componentElements"
 msgstr "componentElements"
+
+msgctxt "docs.api:prose"
+msgid "\n  An alert with text-color-base modifier for high contrast.\n"
+msgstr "\n  一个使用 text-color-base 修饰符以实现高对比度的警报。\n"
+
+msgctxt "docs.api:prose"
+msgid "\n  A warning alert with explicit base text color.\n"
+msgstr "\n  显式指定基础文本颜色的警告警报。\n"
+
+msgctxt "docs.api:prose"
+msgid "\n  An inline alert with inline status icon.\n"
+msgstr "\n  带有内联状态图标的内联警报。\n"
+
+msgctxt "docs.api:prose"
+msgid "Render inline icon using the status color (for inline alerts)."
+msgstr "使用状态颜色渲染内联图标 (适用于内联警报)."
+
+msgctxt "docs.api:prose"
+msgid "Use base text color instead of on-color (high-contrast)."
+msgstr "使用基础文本颜色而非 on-color（适用于高对比度)."
+
+msgctxt "docs.api:prose"
+msgid "Use on-color text (default for floating)."
+msgstr "使用 on-color 文本（浮动警报的默认设置)."
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "**Source:** [banner.css](https://github.com/thedannywahl/pantoken/blob/main/formats/components/src/components/banner/banner.css)"
+msgstr "**Source:** [banner.css](https://github.com/thedannywahl/pantoken/blob/main/formats/components/src/components/banner/banner.css)"
+
+msgctxt "docs.api:prose"
+msgid "`.item` — A navigation entry (InstUI `GlobalNavBar.Item`); `-selected` marks the active one."
+msgstr "`.item` — 一个导航项（InstUI `GlobalNavBar.Item`)；`-selected` 标记当前活动项。"
+
+msgctxt "docs.api:prose"
+msgid "The parent `global-nav-bar`'s `-minimized` modifier hides this member's `.label` — see `global-nav-bar`'s own doc for that modifier."
+msgstr "父级 `global-nav-bar` 的 `-minimized` 修饰符会隐藏此成员的 `.label` — 请参阅 `global-nav-bar` 自身的文档，了解该修饰符。"
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "**Source:** [global-nav-bar.css](https://github.com/thedannywahl/pantoken/blob/main/formats/components/src/components/global-nav-bar/global-nav-bar.css)"
+msgstr "**Source:** [global-nav-bar.css](https://github.com/thedannywahl/pantoken/blob/main/formats/components/src/components/global-nav-bar/global-nav-bar.css)"
+
+msgctxt "docs.api:prose"
+msgid "`.instui-global-nav-bar` — A vertical navigation rail of icon-over-label items, with a minimized icons-only mode."
+msgstr "`.instui-global-nav-bar` — 垂直导航栏，由图标位于标签上方的项目组成，并提供仅显示图标的收起模式。"
+
+msgctxt "docs.api:prose"
+msgid "Sets its own `gap` between nav items and its own `padding`; chaining a `-gap-*`/`-p-*`/`-padding-*` spacing utility modifier overrides those built-in values. See the `global-nav-bar.item` member for the individual nav entries."
+msgstr "在导航项之间设置自己的 `gap`，并设置自己的 `padding`；串联使用 `-gap-*`/`-p-*`/`-padding-*` 间距工具修饰符会覆盖这些内置值。请参阅 `global-nav-bar.item` 成员，了解各个导航项。"
+
+msgctxt "docs.api:prose"
+msgid "Collapse to icons only (labels hidden). @affects global-nav-bar.item — Hides the item's label."
+msgstr "折叠为仅显示图标（隐藏标签). @affects global-nav-bar.item — 隐藏项目的标签。"
+
+msgctxt "docs.api:prose"
+msgid "A styled container for display of important information with two size variants and color themes."
+msgstr "一个用于展示重要信息的样式化容器，提供两种尺寸和多种颜色主题。"
+
+msgctxt "docs.api:prose"
+msgid "A navigation entry (InstUI `GlobalNavBar.Item`); `-selected` marks the active one."
+msgstr "一个导航项（InstUI `GlobalNavBar.Item`)；`-selected`表示当前选中的项。"
+
+msgctxt "docs.api:prose"
+msgid "Large padding around arrow icons in overflow buttons."
+msgstr "溢出按钮中的箭头图标周围留有较大的内边距。"
+
+msgctxt "docs.api:prose"
+msgid "Standalone `banner` stylesheet — the prefixed CSS for the banner container, ready to ship as a `.css` file."
+msgstr "可独立使用的 `banner` 样式表——横幅容器的带前缀 CSS，可直接作为 `.css` 文件发布。"
+
+msgctxt "docs.api:prose"
+msgid "Standalone `globalNavBar` stylesheet — the prefixed CSS for the navigation rail, ready to ship as a `.css` file."
+msgstr "独立的 `globalNavBar` 样式表 — 用于导航栏的带前缀 CSS，可直接作为 `.css` 文件发布。"
+
+msgctxt "docs.api:prose"
+msgid "Standalone `global-nav-bar.item` stylesheet."
+msgstr "独立的 `global-nav-bar.item` 样式表。"
+
+msgctxt "docs.api:prose"
+msgid "Use `globalNavBarCss` instead."
+msgstr "改用 `globalNavBarCss`。"
+
+msgctxt "docs.api:prose"
+msgid "Use `globalNavBarItemCss` instead."
+msgstr "请改用 `globalNavBarItemCss`。"
+
+#, pantoken-verbatim
+msgctxt "docs.api:text"
+msgid "bannerCss"
+msgstr "bannerCss"
+
+#, pantoken-verbatim
+msgctxt "docs.api:text"
+msgid "globalNavBarCss"
+msgstr "globalNavBarCss"
+
+#, pantoken-verbatim
+msgctxt "docs.api:text"
+msgid "globalNavBarItemCss"
+msgstr "globalNavBarItemCss"
+
+#, pantoken-verbatim
+msgctxt "docs.api:text"
+msgid "global-nav-bar"
+msgstr "global-nav-bar"
+
+msgctxt "docs.api:prose"
+msgid "Rebrand (light), Canvas, Canvas High Contrast:"
+msgstr "品牌重塑（浅色)，Canvas，Canvas 高对比度："
+
+msgctxt "docs.api:prose"
+msgid " With prefers-contrast: less, one piece of text falls below the minimum contrast. The worst is \"Your session expires soon.\" at 2.74:1 (needs 4.5:1). Softer contrast is fine only while text stays readable."
+msgstr " 当 prefers-contrast: less 时，有一段文字的对比度低于最低要求。最差的是“您的会话即将过期。”，对比度为 2.74:1（需要 4.5:1)。只有在文字仍清晰可读时，较柔和的对比度才可以接受。"
+
+msgctxt "docs.api:prose"
+msgid " With prefers-contrast: less, one piece of text falls below the minimum contrast. The worst is \"Your session expires soon.\" at 2.77:1 (needs 4.5:1). Softer contrast is fine only while text stays readable."
+msgstr " 当 prefers-contrast: less 时，有一段文字的对比度低于最低要求。最差的是“您的会话即将过期。”，对比度为 2.77:1（需要 4.5:1)。只有在文字仍清晰可读时，较柔和的对比度才可以接受。"
+
+msgctxt "docs.api:prose"
+msgid " With prefers-contrast: less, one piece of text falls below the minimum contrast. The worst is \"Your session expires soon.\" at 1.48:1 (needs 4.5:1). Softer contrast is fine only while text stays readable."
+msgstr " 当 prefers-contrast: less 时，有一段文字的对比度低于最低要求。最差的是“您的会话即将过期。”，对比度为 1.48:1（需要 4.5:1)。只有在文字仍清晰可读时，较柔和的对比度才可以接受。"
+
+msgctxt "docs.api:prose"
+msgid " With prefers-contrast: more, one piece of text falls below the minimum contrast. The worst is \"Your session expires soon.\" at 2.74:1 (needs 4.5:1)."
+msgstr " 当 prefers-contrast: more 时，有一段文字的对比度低于最低要求。最差的是“您的会话即将过期。”，对比度为 2.74:1（需要 4.5:1)。"
+
+msgctxt "docs.api:prose"
+msgid "**Size** controls padding and gap: `relaxed` (default) is roomier; `compact` tightens both. **Color** sets the fill: bare (no modifier) is unfilled — border and icon only; `-color-violet` and `-color-sea` add a tinted background plus a matching icon swatch."
+msgstr "**尺寸** 控制内边距和间距： `relaxed`（默认)更宽松； `compact`会同时收紧两者。 **颜色**设置填充：裸样式（无修饰符)不填充——仅显示边框和图标； `-color-violet`和 `-color-sea`会添加有色背景和匹配的图标色块。"
+
+msgctxt "docs.api:prose"
+msgid "Its own chained modifiers (`-color-*`, `-size-*`, `-shape-*`, `-toggle`, `-condensed`, `-without-background`, `-without-border`, `-display-block`) set a default for every child `.instui-button` that doesn't carry its own modifier in that same category — a button's own modifier class always wins over the group's default. `-icon-*` is always per-button; it's never read from the group. Deprecated button aliases (`-ghost`, `-color-primary-inverse`) aren't supported as group-level modifiers — use their canonical replacements (`-color-tertiary`, `-on-color`) instead. Each join shows a single 1px seam in the buttons' own border color (solid fills, whose border matches the fill, tint it with the label color). `-without-seam` is group-only: it hides that seam so the buttons read as one continuous control. Put `-width-half` on an individual icon-only child button for a split-action trigger with half the standard square width and the full button height."
+msgstr "其自身的链式修饰符（`-color-*`, `-size-*`, `-shape-*`, `-toggle`, `-condensed`, `-without-background`, `-without-border`, `-display-block`) 会为每个未在同一类别中携带自身修饰符的子 `.instui-button` 设置默认值——按钮自身的修饰符类始终优先于分组默认值。 `-icon-*` 始终按按钮单独设置；它绝不会从分组读取。已弃用的按钮别名（`-ghost`, `-color-primary-inverse`) 不支持作为分组级修饰符——请改用其规范替代项（`-color-tertiary`, `-on-color`)。每个连接处的按钮自身边框颜色会显示一条单独的 1px 接缝（实心填充的边框与填充色相匹配，并使用标签颜色着色)。 `-without-seam` 仅适用于分组：它会隐藏该接缝，使按钮看起来像一个连续的控件。将 `-width-half` 放在单独的纯图标子按钮上，可将其变成分裂操作触发器，其宽度为标准正方形宽度的一半，高度与完整按钮相同。"
+
+msgctxt "docs.api:prose"
+msgid "Rebrand (light), Rebrand (dark):"
+msgstr "品牌重塑（浅色)，品牌重塑（深色)："
+
+msgctxt "docs.api:prose"
+msgid " With prefers-contrast: less, four pieces of text fall below the minimum contrast. The worst is \"Disabled unselected\" at 2.74:1 (needs 4.5:1). Softer contrast is fine only while text stays readable."
+msgstr " 在 prefers-contrast: less 模式下，有四段文本低于最低对比度。最差的是“Disabled unselected”，对比度为 2.74:1（需要 4.5:1). 只有文本保持可读时，较柔和的对比度才合适。"
+
+msgctxt "docs.api:prose"
+msgid " With prefers-contrast: more, four pieces of text fall below the minimum contrast. The worst is \"Disabled unselected\" at 2.74:1 (needs 4.5:1)."
+msgstr " 在 prefers-contrast: more 模式下，有四段文本低于最低对比度。最差的是“Disabled unselected”，对比度为 2.74:1（需要 4.5:1)."
+
+msgctxt "docs.api:prose"
+msgid "The selected segment uses a distinct active-item shadow; it does not match an existing --instui-elevation-* composite. Overflow buttons use the upstream elevation3 component tokens."
+msgstr "所选分段使用独特的活动项阴影；它与现有的 --instui-elevation-* 复合令牌不匹配。溢出按钮使用上游 elevation3 组件令牌。"
+
+msgctxt "docs.api:prose"
+msgid "A `-icon-*` class may live on the label or its native input; the interaction helper promotes input classes to the label so the shared glyph painter can render it."
+msgstr "一个 `-icon-*` 类可以位于标签或其原生输入上；交互辅助函数会将输入类提升到标签上，以便共享字形绘制器能够渲染它。"
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "The canonical record name from a record-opening tag, e.g. `button`."
+msgstr "The canonical record name from a record-opening tag, e.g. `button`."
+
+msgctxt "docs.api:prose"
+msgid "Release maturity from `@stage` or a legacy maturity flag tag."
+msgstr "`@stage` 的发布成熟度或旧版成熟度标志标签。"
+
+msgctxt "docs.api:prose"
+msgid "Audience visibility; absent means public."
+msgstr "受众可见性；缺省表示公开。"
+
+msgctxt "docs.api:prose"
+msgid "Set when this record carries a `@global` tag — its modifiers (and per-modifier `@global` flags)\napply to any record, not just this record's base class. Used during\nvalidation and consumption checks to resolve modifier matches globally."
+msgstr "当此记录带有 `@global` 标签时设置——其修饰符（以及每个修饰符的 `@global` 标志)\n适用于任何记录，而不仅限于此记录的基类。在\n验证和消费检查期间使用，以全局解析修饰符匹配。"
+
+msgctxt "docs.api:prose"
+msgid "Private `@example` labels, keyed by zero-based index into [examples](#examples)."
+msgstr "私有 `@example` 标签，按零基索引对应到 [示例](#examples)。"

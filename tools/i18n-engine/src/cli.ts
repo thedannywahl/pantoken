@@ -249,12 +249,12 @@ export function createI18nCommand(options: { configPath?: string } = {}): Comman
           // `resolveMessagesForLocale`. Nothing to do here.
           console.log(`"render" for a messages space is a no-op — its package owns codegen.`);
         },
-        (config, spaceId) => {
+        async (config, spaceId) => {
           const locales = opts.locale
             ? [opts.locale]
             : contentLocales(config, configDirOf(), spaceId);
           for (const locale of locales) {
-            const result = runRenderContent(config, configDirOf(), spaceId, locale);
+            const result = await runRenderContent(config, configDirOf(), spaceId, locale);
             console.log(
               `${spaceId} (${locale}): wrote ${String(result.filesWritten.length)} file(s).`,
             );
