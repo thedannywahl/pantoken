@@ -1,0 +1,978 @@
+before I re-run translations, we need to update some of the strings for how they're referenced so that we don't re-try translations on every run, see the new accessibility strings and the html comments:
+```
+✓ API compatibility: updated 39 package pages
+🔄 ar: translating...
+    ar/api/ai/pantoken-ai/src/functions/installAgentAssets.md: 6 glossary, 4 prose (4 cached, 0 translated)
+    ar/api/ai/pantoken-ai/src/functions/isScaffoldPlatform.md: 5 glossary, 1 prose (1 cached, 0 translated)
+    ar/api/ai/pantoken-ai/src/functions/scaffoldAndInit.md: 8 glossary, 6 prose (6 cached, 0 translated)
+    ar/api/ai/pantoken-ai/src/functions/scaffoldProject.md: 8 glossary, 6 prose (6 cached, 0 translated)
+    ar/api/ai/pantoken-ai/src/index.md: 5 glossary, 3 prose (3 cached, 0 translated)
+    ar/api/ai/pantoken-ai/src/type-aliases/AgentTool.md: 2 glossary, 1 prose (1 cached, 0 translated)
+    ar/api/ai/pantoken-ai/src/type-aliases/ScaffoldPlatform.md: 2 glossary, 1 prose (1 cached, 0 translated)
+    ar/api/ai/pantoken-ai/src/variables/AGENTS_MD.md: 3 glossary, 2 prose (2 cached, 0 translated)
+    ar/api/ai/pantoken-ai/src/variables/AGENT_TOOLS.md: 2 glossary, 1 prose (1 cached, 0 translated)
+    ar/api/ai/pantoken-ai/src/variables/LLMS_TXT.md: 3 glossary, 2 prose (2 cached, 0 translated)
+    ar/api/ai/pantoken-ai/src/variables/SCAFFOLD_PLATFORMS.md: 3 glossary, 2 prose (2 cached, 0 translated)
+    ar/api/bundlers/next/src/functions/withPantoken.md: 7 glossary, 5 prose (5 cached, 0 translated)
+  ! [ar] cached prose translation for "<!-- pantoken-value-scope:bundlers%2Fnex" looks untranslated; retranslating
+    ar/api/bundlers/next/src/index.md: 8 glossary, 4 prose (4 cached, 1 translated)
+    ar/api/bundlers/next/src/interfaces/NextConfigLike.md: 5 glossary, 1 prose (1 cached, 0 translated)
+    ar/api/bundlers/next/src/interfaces/WithPantokenOptions.md: 4 glossary, 2 prose (2 cached, 0 translated)
+    ar/api/bundlers/next/src/variables/INSTUI_TRANSPILE_PACKAGES.md: 3 glossary, 2 prose (2 cached, 0 translated)
+    ar/api/bundlers/panda/src/functions/toPandaPreset.md: 6 glossary, 5 prose (5 cached, 0 translated)
+  ! [ar] cached prose translation for "<!-- pantoken-value-scope:bundlers%2Fpan" looks untranslated; retranslating
+    ar/api/bundlers/panda/src/index.md: 10 glossary, 5 prose (5 cached, 2 translated)
+    ar/api/bundlers/panda/src/interfaces/PandaPreset.md: 7 glossary, 1 prose (1 cached, 0 translated)
+    ar/api/bundlers/panda/src/interfaces/PandaSemanticToken.md: 4 glossary, 1 prose (1 cached, 0 translated)
+    ar/api/bundlers/panda/src/interfaces/PandaToken.md: 4 glossary, 1 prose (1 cached, 0 translated)
+    ar/api/bundlers/panda/src/type-aliases/PandaCategory.md: 2 glossary, 1 prose (1 cached, 0 translated)
+    ar/api/bundlers/panda/src/variables/pantokenPreset.md: 3 glossary, 2 prose (2 cached, 0 translated)
+  ! [ar] cached prose translation for "<!-- pantoken-value-scope:bundlers%2Fpos" looks untranslated; retranslating
+    ar/api/bundlers/postcss/src/index.md: 7 glossary, 3 prose (3 cached, 1 translated)
+    ar/api/bundlers/postcss/src/interfaces/PantokenPostcssOptions.md: 4 glossary, 2 prose (2 cached, 0 translated)
+    ar/api/bundlers/postcss/src/variables/pantoken.md: 8 glossary, 5 prose (5 cached, 0 translated)
+    ar/api/bundlers/tailwind/src/functions/pantokenPreset.md: 6 glossary, 4 prose (4 cached, 0 translated)
+  ! [ar] cached prose translation for "<!-- pantoken-value-scope:bundlers%2Ftai" looks untranslated; retranslating
+    ar/api/bundlers/tailwind/src/index.md: 7 glossary, 4 prose (4 cached, 1 translated)
+    ar/api/bundlers/tailwind/src/interfaces/PantokenPresetOptions.md: 4 glossary, 2 prose (2 cached, 0 translated)
+    ar/api/bundlers/tailwind/src/interfaces/TailwindPreset.md: 8 glossary, 1 prose (1 cached, 0 translated)
+    ar/api/bundlers/vite/src/functions/pantoken.md: 6 glossary, 5 prose (5 cached, 0 translated)
+  ! [ar] cached prose translation for "<!-- pantoken-value-scope:bundlers%2Fvit" looks untranslated; retranslating
+    ar/api/bundlers/vite/src/index.md: 7 glossary, 5 prose (5 cached, 1 translated)
+    ar/api/bundlers/vite/src/interfaces/PantokenViteOptions.md: 4 glossary, 2 prose (2 cached, 0 translated)
+    ar/api/bundlers/webpack/src/classes/PantokenWebpackPlugin.md: 11 glossary, 3 prose (3 cached, 0 translated)
+  ! [ar] cached prose translation for "<!-- pantoken-value-scope:bundlers%2Fweb" looks untranslated; retranslating
+    ar/api/bundlers/webpack/src/index.md: 7 glossary, 3 prose (3 cached, 1 translated)
+    ar/api/bundlers/webpack/src/interfaces/PantokenWebpackOptions.md: 4 glossary, 2 prose (2 cached, 0 translated)
+  ! [ar] cached prose translation for "WCAG 2.2 1.4.3, 1.4.6" looks untranslated; retranslating
+  ! [ar] cached prose translation for "WCAG 2.2 1.4.10" looks untranslated; retranslating
+  ! [ar] cached prose translation for "WCAG 2.2 1.4.12" looks untranslated; retranslating
+  ! [ar] prose unit looks untranslated (identical to source), not cached: "WCAG 2.2 1.4.3, 1.4.6"
+  ! [ar] prose unit looks untranslated (identical to source), not cached: "WCAG 2.2 1.4.10"
+  ! [ar] prose unit looks untranslated (identical to source), not cached: "WCAG 2.2 1.4.12"
+    ar/api/css/agent-shell.md: 10 glossary, 26 prose (31 cached, 8 translated)
+  ! [ar] cached prose translation for "WCAG 2.2 1.4.3" looks untranslated; retranslating
+  ! [ar] cached prose translation for "WCAG 2.2 1.4.3, 1.4.6" looks untranslated; retranslating
+  ! [ar] cached prose translation for "WCAG 2.2 1.4.10" looks untranslated; retranslating
+  ! [ar] cached prose translation for "WCAG 2.2 1.4.12" looks untranslated; retranslating
+  ! [ar] prose unit looks untranslated (identical to source), not cached: "WCAG 2.2 1.4.3"
+  ! [ar] prose unit looks untranslated (identical to source), not cached: "WCAG 2.2 1.4.3, 1.4.6"
+  ! [ar] prose unit looks untranslated (identical to source), not cached: "WCAG 2.2 1.4.10"
+  ! [ar] prose unit looks untranslated (identical to source), not cached: "WCAG 2.2 1.4.12"
+    ar/api/css/ai-gradient.md: 10 glossary, 26 prose (37 cached, 2 translated)
+  ! [ar] cached prose translation for "WCAG 2.2 1.4.3" looks untranslated; retranslating
+  ! [ar] cached prose translation for "WCAG 2.2 1.4.11, 2.4.7" looks untranslated; retranslating
+  ! [ar] cached prose translation for "WCAG 2.2 1.4.3" looks untranslated; retranslating
+  ! [ar] cached prose translation for "WCAG 2.2 1.4.3, 1.4.6" looks untranslated; retranslating
+  ! [ar] cached prose translation for "WCAG 2.2 2.3.3, 2.2.2" looks untranslated; retranslating
+  ! [ar] cached prose translation for "WCAG 2.2 1.4.10" looks untranslated; retranslating
+  ! [ar] cached prose translation for "WCAG 2.2 1.4.12" looks untranslated; retranslating
+  ! [ar] cached prose translation for "WCAG 2.2 1.4.3" looks untranslated; retranslating
+  ! [ar] prose unit looks untranslated (identical to source), not cached: "WCAG 2.2 1.4.3"
+  ! [ar] prose unit looks untranslated (identical to source), not cached: "WCAG 2.2 1.4.11, 2.4.7"
+  ! [ar] prose unit looks untranslated (identical to source), not cached: "WCAG 2.2 1.4.3, 1.4.6"
+  ! [ar] prose unit looks untranslated (identical to source), not cached: "WCAG 2.2 2.3.3, 2.2.2"
+  ! [ar] prose unit looks untranslated (identical to source), not cached: "WCAG 2.2 1.4.10"
+  ! [ar] prose unit looks untranslated (identical to source), not cached: "WCAG 2.2 1.4.12"
+    ar/api/css/alert.md: 36 glossary, 85 prose (108 cached, 18 translated)
+  ! [ar] cached prose translation for "WCAG 2.2 1.4.3, 1.4.6" looks untranslated; retranslating
+  ! [ar] cached prose translation for "WCAG 2.2 1.4.10" looks untranslated; retranslating
+  ! [ar] cached prose translation for "WCAG 2.2 1.4.12" looks untranslated; retranslating
+  … 3/3 labels + prose blocks translated
+    ar/api/css/avatar.md: 25 glossary, 62 prose (67 cached, 7 translated)
+  ! [ar] cached prose translation for "WCAG 2.2 2.3.3, 2.2.2" looks untranslated; retranslating
+    ar/api/css/badge.md: 23 glossary, 38 prose (43 cached, 3 translated)
+    ar/api/css/banner.md: 22 glossary, 31 prose (36 cached, 2 translated)
+  ! [ar] cached prose translation for "WCAG 2.2 1.4.11, 2.4.7" looks untranslated; retranslating
+  ! [ar] prose unit looks untranslated (identical to source), not cached: "WCAG 2.2 1.4.11, 2.4.7"
+    ar/api/css/base.md: 14 glossary, 20 prose (26 cached, 1 translated)
+  ! [ar] cached prose translation for "WCAG 2.2 1.4.11, 2.4.7" looks untranslated; retranslating
+  ! [ar] prose unit looks untranslated (identical to source), not cached: "WCAG 2.2 1.4.11, 2.4.7"
+    ar/api/css/billboard.md: 16 glossary, 38 prose (47 cached, 5 translated)
+  ! [ar] cached prose translation for "WCAG 2.2 1.4.11, 2.4.7" looks untranslated; retranslating
+  ! [ar] prose unit looks untranslated (identical to source), not cached: "WCAG 2.2 1.4.11, 2.4.7"
+    ar/api/css/breadcrumb.link.md: 14 glossary, 26 prose (31 cached, 0 translated)
+  ! [ar] cached prose translation for "WCAG 2.2 1.4.11, 2.4.7" looks untranslated; retranslating
+  ! [ar] prose unit looks untranslated (identical to source), not cached: "WCAG 2.2 1.4.11, 2.4.7"
+    ar/api/css/breadcrumb.md: 13 glossary, 31 prose (36 cached, 1 translated)
+    ar/api/css/breakpoints.md: 7 glossary, 3 prose (3 cached, 0 translated)
+  ! [ar] cached prose translation for "WCAG 2.2 1.4.3" looks untranslated; retranslating
+  ! [ar] cached prose translation for "WCAG 2.2 2.5.8" looks untranslated; retranslating
+  ! [ar] cached prose translation for "WCAG 2.2 1.4.11, 2.4.7" looks untranslated; retranslating
+  ! [ar] cached prose translation for "WCAG 2.2 1.4.3, 1.4.11" looks untranslated; retranslating
+  ! [ar] prose unit looks untranslated (identical to source), not cached: "WCAG 2.2 1.4.3"
+  ! [ar] prose unit looks untranslated (identical to source), not cached: "WCAG 2.2 2.5.8"
+  ! [ar] prose unit looks untranslated (identical to source), not cached: "WCAG 2.2 1.4.11, 2.4.7"
+  ! [ar] prose unit looks untranslated (identical to source), not cached: "WCAG 2.2 1.4.3, 1.4.11"
+    ar/api/css/button-set.md: 21 glossary, 68 prose (78 cached, 2 translated)
+  ! [ar] cached prose translation for "WCAG 2.2 1.4.3" looks untranslated; retranslating
+  ! [ar] cached prose translation for "WCAG 2.2 1.4.11, 2.4.7" looks untranslated; retranslating
+  ! [ar] cached prose translation for "WCAG 2.2 1.4.3, 1.4.11" looks untranslated; retranslating
+  ! [ar] cached prose translation for "WCAG 2.2 1.4.3" looks untranslated; retranslating
+  ! [ar] prose unit looks untranslated (identical to source), not cached: "WCAG 2.2 1.4.3"
+  ! [ar] prose unit looks untranslated (identical to source), not cached: "WCAG 2.2 1.4.11, 2.4.7"
+  ! [ar] prose unit looks untranslated (identical to source), not cached: "WCAG 2.2 1.4.3, 1.4.11"
+    ar/api/css/button.md: 22 glossary, 82 prose (102 cached, 8 translated)
+  ! [ar] cached prose translation for "WCAG 2.2 1.4.3" looks untranslated; retranslating
+  ! [ar] prose unit looks untranslated (identical to source), not cached: "WCAG 2.2 1.4.3"
+    ar/api/css/byline.md: 15 glossary, 37 prose (47 cached, 1 translated)
+    ar/api/css/calendar.day.md: 10 glossary, 18 prose (23 cached, 0 translated)
+    ar/api/css/calendar.md: 13 glossary, 28 prose (33 cached, 1 translated)
+    ar/api/css/callout.md: 17 glossary, 8 prose (8 cached, 0 translated)
+  ! [ar] cached prose translation for "WCAG 2.2 1.4.11, 2.4.7" looks untranslated; retranslating
+  ! [ar] cached prose translation for "WCAG 2.2 1.4.3" looks untranslated; retranslating
+  ! [ar] prose unit looks untranslated (identical to source), not cached: "WCAG 2.2 1.4.11, 2.4.7"
+  ! [ar] prose unit looks untranslated (identical to source), not cached: "WCAG 2.2 1.4.3"
+    ar/api/css/card.md: 15 glossary, 31 prose (36 cached, 2 translated)
+  ! [ar] cached prose translation for "WCAG 2.2 1.4.11, 2.4.7" looks untranslated; retranslating
+  ```
+  I stopped this before it went through every string in the docs.
+
+---
+
+I ran docs:locales:translate but I'm still getting this warning:
+```
+@pantoken/docs — translation drift by surface:
+  docs.api: 5 unit(s) in 3 file(s), 4 locale(s) — blocks
+
+✗ @pantoken/docs: 5 blocking drift finding(s) across 3 file(s):
+  [docs.api] docs/api/css/radio.md — 2 in 1 locale(s)
+    locales: ar
+    - [prose] With prefers-contrast: less, four pieces of text fall below …
+    - [prose] With prefers-contrast: more, four pieces of text fall below …
+  [docs.api] docs/api/css/segmented-control.segment.md — 2 in 2 locale(s)
+    locales: it, sl
+    - [prose] A `-icon-*` class may live on the label or its native input;…
+    - [prose] A `-icon-*` class may live on the label or its native input;…
+  [docs.api] docs/api/css/segmented-control.md — 1 in 1 locale(s)
+    locales: nb
+    - [prose] The selected segment uses a distinct active-item shadow; it …
+
+Blocking translation drift. Run `vp run docs:locales:translate` locally, then commit the updated translation cache. Loosen or tighten what blocks in `i18n.config.json`.
+docs.guides: no drift, skipping
+```
+
+---
+
+[139](https://github.com/thedannywahl/pantoken/actions/runs/45025361511/job/137217436902?pr=358#step:9:7140)
+      
+      
+
+    
+
+  
+
+    
+      
+      
+      ⎯⎯⎯⎯⎯⎯⎯ Failed Tests 5 ⎯⎯⎯⎯⎯⎯⎯
+
+    
+
+  
+
+    
+      
+      
+      
+
+    
+
+  
+
+    
+      
+      
+       FAIL  docs/scripts/api-translation.test.ts > glossary adapter substitutes known heading and table-label terms
+
+    
+
+  
+
+    
+      
+      
+      AssertionError: expected '## Usage\n\nSome text.' not to be '## Usage\n\nSome text.' // Object.is equality
+
+    
+
+  
+
+    
+      
+      
+       ❯ docs/scripts/api-translation.test.ts:100:67
+
+    
+
+  
+
+    
+      
+      
+           98|   expect(g.name).toBe("glossary");
+
+    
+
+  
+
+    
+      
+      
+           99|   expect(g.translatesProse).toBe(false);
+
+    
+
+  
+
+    
+      
+      
+          100|   expect(await g.translateMarkdown("## Usage\n\nSome text.")).not.toBe…
+
+    
+
+  
+
+    
+      
+      
+             |                                                                   ^
+
+    
+
+  
+
+    
+      
+      
+          101|   expect(await g.translateText("Value")).not.toBe("Value");
+
+    
+
+  
+
+  
+
+    
+    
+      
+      
+          102| });
+
+    
+
+  
+
+    
+      
+      
+      
+
+    
+
+  
+
+    
+      
+      
+      ⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/5]⎯
+
+    
+
+  
+
+    
+      
+      
+      
+
+    
+
+  
+
+    
+      
+      
+       FAIL  docs/scripts/api-translation.test.ts > glossary adapter leaves fenced code untouched
+
+    
+
+  
+
+    
+      
+      
+      AssertionError: expected '## Usage\n\n```\n## Usage inside a fe…' not to contain '## Usage\n\n'
+
+    
+
+  
+
+    
+      
+      
+      
+
+    
+
+  
+
+    
+      
+      
+      - Expected
+
+    
+
+  
+
+    
+      
+      
+      + Received
+
+    
+
+  
+
+    
+      
+      
+      
+
+    
+
+  
+
+    
+      
+      
+        ## Usage
+
+    
+
+  
+
+    
+      
+      
+      
+
+    
+
+  
+
+    
+      
+      
+      -
+
+    
+
+  
+
+    
+      
+      
+      + ```
+
+    
+
+  
+
+    
+      
+      
+      + ## Usage inside a fence
+
+    
+
+  
+
+    
+      
+      
+      + ```
+
+    
+
+  
+
+    
+      
+      
+      
+
+    
+
+  
+
+    
+      
+      
+       ❯ docs/scripts/api-translation.test.ts:108:19
+
+    
+
+  
+
+    
+      
+      
+          106|   const input = ["## Usage", "", "```", "## Usage inside a fence", "``…
+
+    
+
+  
+
+    
+      
+      
+          107|   const out = await g.translateMarkdown(input);
+
+    
+
+  
+
+    
+      
+      
+          108|   expect(out).not.toContain("## Usage\n\n"); // heading translated
+
+    
+
+  
+
+    
+      
+      
+             |                   ^
+
+    
+
+  
+
+    
+      
+      
+          109|   expect(out).toContain("## Usage inside a fence"); // fenced line pre…
+
+    
+
+  
+
+    
+      
+      
+          110| });
+
+    
+
+  
+
+    
+      
+      
+      
+
+    
+
+  
+
+    
+      
+      
+      ⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[2/5]⎯
+
+    
+
+  
+
+    
+      
+      
+      
+
+    
+
+  
+
+    
+      
+      
+       FAIL  docs/scripts/api-translation.test.ts > glossary adapter preserves @scope/package names
+
+    
+
+  
+
+    
+      
+      
+      AssertionError: expected 'Import @pantoken/components Parameter…' not to contain 'Parameters'
+
+    
+
+  
+
+    
+      
+      
+      
+
+    
+
+  
+
+    
+      
+      
+      Expected: "Parameters"
+
+    
+
+  
+
+    
+      
+      
+      Received: "Import @pantoken/components Parameters."
+
+    
+
+  
+
+    
+      
+      
+      
+
+    
+
+  
+
+    
+      
+      
+       ❯ docs/scripts/api-translation.test.ts:116:19
+
+    
+
+  
+
+    
+      
+      
+          114|   const out = await g.translateText("Import @pantoken/components Param…
+
+    
+
+  
+
+    
+      
+      
+          115|   expect(out).toContain("@pantoken/components");
+
+    
+
+  
+
+    
+      
+      
+          116|   expect(out).not.toContain("Parameters"); // word-boundary rule trans…
+
+    
+
+  
+
+    
+      
+      
+             |                   ^
+
+    
+
+  
+
+    
+      
+      
+          117| });
+
+    
+
+  
+
+    
+      
+      
+          118|
+
+    
+
+  
+
+    
+      
+      
+      
+
+    
+
+  
+
+    
+      
+      
+      ⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[3/5]⎯
+
+    
+
+  
+
+    
+      
+      
+      
+
+    
+
+  
+
+    
+      
+      
+       FAIL  docs/scripts/api-translation.test.ts > glossary adapter translateBatch fires onChunk with the full result
+
+    
+
+  
+
+    
+      
+      
+      AssertionError: expected 'Overview' not to be 'Overview' // Object.is equality
+
+    
+
+  
+
+    
+      
+      
+       ❯ docs/scripts/api-translation.test.ts:123:22
+
+    
+
+  
+
+    
+      
+      
+          121|   const chunks: Record<string, string>[] = [];
+
+    
+
+  
+
+    
+      
+      
+          122|   const out = await g.translateBatch([{ id: "k1", text: "Overview" }],…
+
+    
+
+  
+
+    
+      
+      
+          123|   expect(out.k1).not.toBe("Overview");
+
+    
+
+  
+
+    
+      
+      
+             |                      ^
+
+    
+
+  
+
+  
+
+    
+    
+      
+      
+          124|   expect(chunks[0].k1).toBe(out.k1);
+
+    
+
+  
+
+    
+      
+      
+          125| });
+
+    
+
+  
+
+    
+      
+      
+      
+
+    
+
+  
+
+    
+      
+      
+      ⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[4/5]⎯
+
+    
+
+  
+
+    
+      
+      
+      
+
+    
+
+  
+
+    
+      
+      
+       FAIL  docs/scripts/api-translation.test.ts > glossary adapter translates the js-requirement callout labels
+
+    
+
+  
+
+    
+      
+      
+      AssertionError: expected 'JS Requirement' not to be 'JS Requirement' // Object.is equality
+
+    
+
+  
+
+    
+      
+      
+       ❯ docs/scripts/api-translation.test.ts:131:27
+
+    
+
+  
+
+    
+      
+      
+          129|   const requirement = await g.translateText("JS Requirement");
+
+    
+
+  
+
+    
+      
+      
+          130|   const enhancement = await g.translateText("JS Enhancement");
+
+    
+
+  
+
+    
+      
+      
+          131|   expect(requirement).not.toBe("JS Requirement");
+
+    
+
+  
+
+    
+      
+      
+             |                           ^
+
+    
+
+  
+
+    
+      
+      
+          132|   expect(enhancement).not.toBe("JS Enhancement");
+
+    
+
+  
+
+    
+      
+      
+          133|   expect(requirement).not.toBe(enhancement);
+
+    
+
+  
+
+    
+      
+      
+      
+
+    
+
+  
+
+    
+      
+      
+      ⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[5/5]⎯
+
+    
+
+  
+
+    
+      
+      
+      
+
+    
+
+  
+
+    
+      
+      
+      
+
+    
+
+  
+
+    
+      
+      
+       Test Files  1 failed | 427 passed (428)
+
+    
+
+  
+
+    
+      
+      
+            Tests  5 failed | 4009 passed (4014)
+
+    
+
+  
+
+    
+      
+      
+         Start at  13:05:56
+
+    
+
+  
+
+    
+      
+      
+         Duration  150.10s (import 56%, tests 29%, transform 6%, environment 4%, worker 3%, setup 3%)
+
+    
+
+  
+
+    
+      
+      
+      
+
+    
+
+  
+
+    
+      
+      
+           Import  3022 modules were evaluated 19362 times · 140.73s total, 56% of tracked time
+
+    
+
+  
+
+    
+      
+      
+                   ~51.52s faster with isolate: false — shared modules are evaluated once per worker instead of once per file
+
+    
+
+  
+
+    
+      
+      
+                   learn more: [https://vitest.dev/guide/improving-performance#test-isolation](https://vitest.dev/guide/improving-performance#test-isolation)
+
+    
+
+  
+
+    
+      
+      
+      
+
+    
+
+  
+
+    
+      
+      
+      JUNIT report written to /home/runner/work/pantoken/pantoken/junit.xml
+
+    
+
+  
+
+    
+      
+      
+      Error: Process completed with exit code 1.
+
+---
+
+fix(i18n): preserve translations for current glossary terms
+
+Keep strict active and reviewed lookup for API prose while retaining non-fuzzy archived structural labels that are intentionally excluded from the API template. Prefer active glossary translations over archived entries.
+
+Co-authored-by: Copilot <223556219+Copilot@users.noreply.github.com>
+Entire-Checkpoint: 01M81Q5SCVG9EP7NDJH12C65KB
+✖   body's lines must not be longer than 100 characters [body-max-line-length]
+
+✖   found 1 problems, 0 warnings
