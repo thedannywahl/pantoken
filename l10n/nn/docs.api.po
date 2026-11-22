@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: pantoken\n"
-"PO-Revision-Date: 2026-11-20 03:31+0000\n"
+"PO-Revision-Date: 2026-11-21 20:53+0000\n"
 "Last-Translator: pantoken localization engine\n"
 "Language-Team: pantoken\n"
 "MIME-Version: 1.0\n"
@@ -35162,3 +35162,71 @@ msgstr "globalNavBarItemCss"
 msgctxt "docs.api:text"
 msgid "global-nav-bar"
 msgstr "global-nav-bar"
+
+msgctxt "docs.api:prose"
+msgid "Rebrand (light), Canvas, Canvas High Contrast:"
+msgstr "Merkeomlegging (light), Canvas, Canvas High Contrast:"
+
+msgctxt "docs.api:prose"
+msgid " With prefers-contrast: less, one piece of text falls below the minimum contrast. The worst is \"Your session expires soon.\" at 2.74:1 (needs 4.5:1). Softer contrast is fine only while text stays readable."
+msgstr " Med prefers-contrast: less, fell ein del av teksten under minimumkontrasten. Det dårlegaste dømet er «Økta di går ut snart.» med 2.74:1 (krev 4.5:1). Mykjare kontrast er berre greitt så lenge teksten held seg leseleg."
+
+msgctxt "docs.api:prose"
+msgid " With prefers-contrast: less, one piece of text falls below the minimum contrast. The worst is \"Your session expires soon.\" at 2.77:1 (needs 4.5:1). Softer contrast is fine only while text stays readable."
+msgstr " Med prefers-contrast: less, fell ein del av teksten under minimumkontrasten. Det dårlegaste dømet er «Økta di går ut snart.» med 2.77:1 (krev 4.5:1). Mykjare kontrast er berre greitt så lenge teksten held seg leseleg."
+
+msgctxt "docs.api:prose"
+msgid " With prefers-contrast: less, one piece of text falls below the minimum contrast. The worst is \"Your session expires soon.\" at 1.48:1 (needs 4.5:1). Softer contrast is fine only while text stays readable."
+msgstr " Med prefers-contrast: less, fell ein del av teksten under minimumkontrasten. Det dårlegaste dømet er «Økta di går ut snart.» med 1.48:1 (krev 4.5:1). Mykjare kontrast er berre greitt så lenge teksten held seg leseleg."
+
+msgctxt "docs.api:prose"
+msgid " With prefers-contrast: more, one piece of text falls below the minimum contrast. The worst is \"Your session expires soon.\" at 2.74:1 (needs 4.5:1)."
+msgstr " Med prefers-contrast: more, fell ein del av teksten under minimumkontrasten. Det dårlegaste dømet er «Økta di går ut snart.» med 2.74:1 (krev 4.5:1)."
+
+msgctxt "docs.api:prose"
+msgid "**Size** controls padding and gap: `relaxed` (default) is roomier; `compact` tightens both. **Color** sets the fill: bare (no modifier) is unfilled — border and icon only; `-color-violet` and `-color-sea` add a tinted background plus a matching icon swatch."
+msgstr "**Storleik** styrer innvendig marg og mellomrom: `relaxed` (standard) er romslegare; `compact` gjer begge strammare. **Farge** bestemmer fyll: utan modifikator) er han utan fyll – berre kantlinje og ikon; `-color-violet` og `-color-sea` legg til ein tona bakgrunn og ein matchande ikonfargeprøve."
+
+msgctxt "docs.api:prose"
+msgid "Its own chained modifiers (`-color-*`, `-size-*`, `-shape-*`, `-toggle`, `-condensed`, `-without-background`, `-without-border`, `-display-block`) set a default for every child `.instui-button` that doesn't carry its own modifier in that same category — a button's own modifier class always wins over the group's default. `-icon-*` is always per-button; it's never read from the group. Deprecated button aliases (`-ghost`, `-color-primary-inverse`) aren't supported as group-level modifiers — use their canonical replacements (`-color-tertiary`, `-on-color`) instead. Each join shows a single 1px seam in the buttons' own border color (solid fills, whose border matches the fill, tint it with the label color). `-without-seam` is group-only: it hides that seam so the buttons read as one continuous control. Put `-width-half` on an individual icon-only child button for a split-action trigger with half the standard square width and the full button height."
+msgstr "De eigne kjedemodifikatorane (`-color-*`, `-size-*`, `-shape-*`, `-toggle`, `-condensed`, `-without-background`, `-without-border`, `-display-block`) set eit standardval for kvart barn `.instui-button` som ikkje har sin eigen modifikator i same kategori — modifikatorklassen til knappen sjølv vinn alltid over standardverdien for gruppa. `-icon-*` gjeld alltid per knapp; han vert aldri lese frå gruppa. Avskrivne knappealiasar (`-ghost`, `-color-primary-inverse`) støttast ikkje som modifikatorar på gruppenivå — bruk dei kanoniske erstatningane (`-color-tertiary`, `-on-color`) i staden. Kvar samanslåing viser ei enkel 1px skjøt i kantfargen til knappane (ved solide fyll, der kanten samsvarar med fyllen, ton den med merkelappfargen). `-without-seam` gjeld berre gruppa: han gøymer skjøta slik at knappane framstår som éin samanhengande kontroll. Plasser `-width-half` på ein individuell berre-ikon-barnknapp for ein delt-handling-utløysar med halv standard kvadratbreidd og full knappehøgd."
+
+msgctxt "docs.api:prose"
+msgid "Rebrand (light), Rebrand (dark):"
+msgstr "Nytt design (lys), Nytt design (mørk):"
+
+msgctxt "docs.api:prose"
+msgid " With prefers-contrast: less, four pieces of text fall below the minimum contrast. The worst is \"Disabled unselected\" at 2.74:1 (needs 4.5:1). Softer contrast is fine only while text stays readable."
+msgstr " Med prefers-contrast: less fell fire tekststykke under minimumkontrasten. Det verste er «Disabled unselected» på 2,74:1 (krev 4,5:1). Mykjare kontrast er berre grei så lenge teksten held seg lesbar."
+
+msgctxt "docs.api:prose"
+msgid " With prefers-contrast: more, four pieces of text fall below the minimum contrast. The worst is \"Disabled unselected\" at 2.74:1 (needs 4.5:1)."
+msgstr " Med prefers-contrast: more fell fire tekststykke under minimumkontrasten. Det verste er «Disabled unselected» på 2,74:1 (krev 4,5:1)."
+
+msgctxt "docs.api:prose"
+msgid "The selected segment uses a distinct active-item shadow; it does not match an existing --instui-elevation-* composite. Overflow buttons use the upstream elevation3 component tokens."
+msgstr "Det valde segmentet brukar ein eigen skugge for aktivt element; det samsvarar ikkje med ein eksisterande --instui-elevation-*-kompositte. Overflytknappar brukar dei oppstraums komponenttokena elevation3."
+
+msgctxt "docs.api:prose"
+msgid "A `-icon-*` class may live on the label or its native input; the interaction helper promotes input classes to the label so the shared glyph painter can render it."
+msgstr "Ein `-icon-*`-klasse kan liggja på etiketten eller det opphavlege input-elementet; interaksjonshjelparen flyttar inputklassane til etiketten slik at den delte glyfemålaren kan rendre henne."
+
+msgctxt "docs.api:prose"
+msgid "The canonical record name from a record-opening tag, e.g. `button`."
+msgstr "Det kanoniske record-namnet frå ei record-opningstagg, t.d. `button`."
+
+msgctxt "docs.api:prose"
+msgid "Release maturity from `@stage` or a legacy maturity flag tag."
+msgstr "Frigjevingsmodenheit frå `@stage` eller ei eldre maturity-flagg-tagg."
+
+msgctxt "docs.api:prose"
+msgid "Audience visibility; absent means public."
+msgstr "Synlegheit for publikum; dersom han manglar, er han offentleg."
+
+msgctxt "docs.api:prose"
+msgid "Set when this record carries a `@global` tag — its modifiers (and per-modifier `@global` flags)\napply to any record, not just this record's base class. Used during\nvalidation and consumption checks to resolve modifier matches globally."
+msgstr "Sett når denne posten har ei `@global`-tagg — modifikatorane hennar (og `@global` flagg)\ngjeld for alle postar, ikkje berre basisklassen til denne posten. Brukt under\nvaliderings- og forbrukssjekkar for å løyse modifikatortreff globalt."
+
+msgctxt "docs.api:prose"
+msgid "Private `@example` labels, keyed by zero-based index into [examples](#examples)."
+msgstr "Private `@example`-etikettar, indeksert etter nullbasert indeks i [døme](#examples)."

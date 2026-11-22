@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: pantoken\n"
-"PO-Revision-Date: 2026-11-20 02:39+0000\n"
+"PO-Revision-Date: 2026-11-21 20:03+0000\n"
 "Last-Translator: pantoken localization engine\n"
 "Language-Team: pantoken\n"
 "MIME-Version: 1.0\n"
@@ -35158,3 +35158,71 @@ msgstr "globalNavBarItemCss"
 msgctxt "docs.api:text"
 msgid "global-nav-bar"
 msgstr "global-nav-bar"
+
+msgctxt "docs.api:prose"
+msgid "Rebrand (light), Canvas, Canvas High Contrast:"
+msgstr "Huisstijl (licht), Canvas, Canvas Hoog Contrast:"
+
+msgctxt "docs.api:prose"
+msgid " With prefers-contrast: less, one piece of text falls below the minimum contrast. The worst is \"Your session expires soon.\" at 2.74:1 (needs 4.5:1). Softer contrast is fine only while text stays readable."
+msgstr " Met prefers-contrast: less valt één tekstgedeelte onder het minimale contrast. Het slechtste resultaat is \"Your session expires soon.\" bij 2.74:1 (vereist 4.5:1). Zachter contrast is alleen acceptabel zolang de tekst leesbaar blijft."
+
+msgctxt "docs.api:prose"
+msgid " With prefers-contrast: less, one piece of text falls below the minimum contrast. The worst is \"Your session expires soon.\" at 2.77:1 (needs 4.5:1). Softer contrast is fine only while text stays readable."
+msgstr " Met prefers-contrast: less valt één tekstgedeelte onder het minimale contrast. Het slechtste resultaat is \"Your session expires soon.\" bij 2.77:1 (vereist 4.5:1). Zachter contrast is alleen acceptabel zolang de tekst leesbaar blijft."
+
+msgctxt "docs.api:prose"
+msgid " With prefers-contrast: less, one piece of text falls below the minimum contrast. The worst is \"Your session expires soon.\" at 1.48:1 (needs 4.5:1). Softer contrast is fine only while text stays readable."
+msgstr " Met prefers-contrast: less valt één tekstgedeelte onder het minimale contrast. Het slechtste resultaat is \"Your session expires soon.\" bij 1.48:1 (vereist 4.5:1). Zachter contrast is alleen acceptabel zolang de tekst leesbaar blijft."
+
+msgctxt "docs.api:prose"
+msgid " With prefers-contrast: more, one piece of text falls below the minimum contrast. The worst is \"Your session expires soon.\" at 2.74:1 (needs 4.5:1)."
+msgstr " Met prefers-contrast: more valt één tekstgedeelte onder het minimale contrast. Het slechtste resultaat is \"Your session expires soon.\" bij 2.74:1 (vereist 4.5:1)."
+
+msgctxt "docs.api:prose"
+msgid "**Size** controls padding and gap: `relaxed` (default) is roomier; `compact` tightens both. **Color** sets the fill: bare (no modifier) is unfilled — border and icon only; `-color-violet` and `-color-sea` add a tinted background plus a matching icon swatch."
+msgstr "**Grootte** bepaalt opvulling en gap: `relaxed` (standaard) is ruimer; `compact` maakt beide smaller. **Kleur** bepaalt de vulling: leeg (geen modifier) is niet gevuld — alleen rand en pictogram; `-color-violet` en `-color-sea` voegen een getinte achtergrond en een overeenkomend pictogramkleurvlak toe."
+
+msgctxt "docs.api:prose"
+msgid "Its own chained modifiers (`-color-*`, `-size-*`, `-shape-*`, `-toggle`, `-condensed`, `-without-background`, `-without-border`, `-display-block`) set a default for every child `.instui-button` that doesn't carry its own modifier in that same category — a button's own modifier class always wins over the group's default. `-icon-*` is always per-button; it's never read from the group. Deprecated button aliases (`-ghost`, `-color-primary-inverse`) aren't supported as group-level modifiers — use their canonical replacements (`-color-tertiary`, `-on-color`) instead. Each join shows a single 1px seam in the buttons' own border color (solid fills, whose border matches the fill, tint it with the label color). `-without-seam` is group-only: it hides that seam so the buttons read as one continuous control. Put `-width-half` on an individual icon-only child button for a split-action trigger with half the standard square width and the full button height."
+msgstr "De eigen aaneengeschakelde modifiers (`-color-*`, `-size-*`, `-shape-*`, `-toggle`, `-condensed`, `-without-background`, `-without-border`, `-display-block`) stellen een standaardwaarde in voor elk onderliggend element `.instui-button` dat geen eigen modifier in diezelfde categorie heeft — de eigen modifierklasse van een knop heeft altijd voorrang op de standaardwaarde van de groep. `-icon-*` geldt altijd per knop; deze wordt nooit overgenomen van de groep. Verouderde knopaliassen (`-ghost`, `-color-primary-inverse`) worden niet ondersteund als modifiers op groepsniveau — gebruik in plaats daarvan de canonieke vervangingen (`-color-tertiary`, `-on-color`). Tussen elke combinatie is een naad van 1 px zichtbaar in de eigen randkleur van de knoppen (bij effen vlakken, waarvan de rand overeenkomt met de vulkleur, krijgt deze de tint van de labelkleur). `-without-seam` is uitsluitend voor groepen: hiermee verberg je die naad, zodat de knoppen eruitzien als één doorlopende bediening. Plaats `-width-half` op een afzonderlijke onderliggende knop met alleen een pictogram voor een gesplitste actieknop, met de helft van de standaardbreedte van het vierkant en de volledige knophoogte."
+
+msgctxt "docs.api:prose"
+msgid "Rebrand (light), Rebrand (dark):"
+msgstr "Herbranding (light), Herbranding (dark):"
+
+msgctxt "docs.api:prose"
+msgid " With prefers-contrast: less, four pieces of text fall below the minimum contrast. The worst is \"Disabled unselected\" at 2.74:1 (needs 4.5:1). Softer contrast is fine only while text stays readable."
+msgstr " Met prefers-contrast: less vallen vier stukjes tekst onder het minimale contrast. Het slechtste is \"Uitgeschakeld niet geselecteerd\" met 2,74:1 (moet 4,5:1) zijn). Zachter contrast is alleen goed zolang tekst leesbaar blijft."
+
+msgctxt "docs.api:prose"
+msgid " With prefers-contrast: more, four pieces of text fall below the minimum contrast. The worst is \"Disabled unselected\" at 2.74:1 (needs 4.5:1)."
+msgstr " Met prefers-contrast: more vallen vier stukjes tekst onder het minimale contrast. Het slechtste is \"Uitgeschakeld niet geselecteerd\" met 2,74:1 (moet 4,5:1) zijn)."
+
+msgctxt "docs.api:prose"
+msgid "The selected segment uses a distinct active-item shadow; it does not match an existing --instui-elevation-* composite. Overflow buttons use the upstream elevation3 component tokens."
+msgstr "Het geselecteerde segment gebruikt een afzonderlijke schaduw voor het actieve item; deze komt niet overeen met een bestaande samengestelde --instui-elevation-*. Overloopknoppen gebruiken de upstream componenttokens voor elevation3."
+
+msgctxt "docs.api:prose"
+msgid "A `-icon-*` class may live on the label or its native input; the interaction helper promotes input classes to the label so the shared glyph painter can render it."
+msgstr "Een `-icon-*`-klasse kan op het label of het native invoerveld staan; de interactiehelper verplaatst invoerklassen naar het label, zodat de gedeelde glyph-painter deze kan weergeven."
+
+msgctxt "docs.api:prose"
+msgid "The canonical record name from a record-opening tag, e.g. `button`."
+msgstr "De canonieke recordnaam uit een openingstag van een record, bijv. `button`."
+
+msgctxt "docs.api:prose"
+msgid "Release maturity from `@stage` or a legacy maturity flag tag."
+msgstr "Releasevolwassenheid uit `@stage` of een verouderde tag voor volwassenheidsvlaggen."
+
+msgctxt "docs.api:prose"
+msgid "Audience visibility; absent means public."
+msgstr "Zichtbaarheid voor doelgroepen; ontbrekend betekent openbaar."
+
+msgctxt "docs.api:prose"
+msgid "Set when this record carries a `@global` tag — its modifiers (and per-modifier `@global` flags)\napply to any record, not just this record's base class. Used during\nvalidation and consumption checks to resolve modifier matches globally."
+msgstr "Ingesteld wanneer dit record een `@global`-tag bevat — de modifiers ervan (en de `@global`-vlaggen per modifier)\n zijn van toepassing op elk record, niet alleen op de basisklasse van dit record. Wordt gebruikt bij\nvalidatie- en consumptiecontroles om modifiermatches globaal op te lossen."
+
+msgctxt "docs.api:prose"
+msgid "Private `@example` labels, keyed by zero-based index into [examples](#examples)."
+msgstr "Privélabels `@example`, geïndexeerd op basis van een nulgebaseerde index in [examples](#examples)."

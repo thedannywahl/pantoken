@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: pantoken\n"
-"PO-Revision-Date: 2026-11-20 02:48+0000\n"
+"PO-Revision-Date: 2026-11-21 20:11+0000\n"
 "Last-Translator: pantoken localization engine\n"
 "Language-Team: pantoken\n"
 "MIME-Version: 1.0\n"
@@ -35162,3 +35162,73 @@ msgstr "globalNavBarItemCss"
 msgctxt "docs.api:text"
 msgid "global-nav-bar"
 msgstr "global-nav-bar"
+
+msgctxt "docs.api:prose"
+msgid "Rebrand (light), Canvas, Canvas High Contrast:"
+msgstr "Uudelleenbrändäys (light), Canvas, Canvas High Contrast:"
+
+msgctxt "docs.api:prose"
+msgid " With prefers-contrast: less, one piece of text falls below the minimum contrast. The worst is \"Your session expires soon.\" at 2.74:1 (needs 4.5:1). Softer contrast is fine only while text stays readable."
+msgstr " Kun prefers-contrast: less on käytössä, yksi teksti alittaa vähimmäiskontrastin. Huonoin tapaus on \"Istuntosi vanhenee pian.\" suhteella 2.74:1 (vaatii 4.5:1). Pehmeämpi kontrasti on hyvä vain, kun teksti pysyy luettavana."
+
+msgctxt "docs.api:prose"
+msgid " With prefers-contrast: less, one piece of text falls below the minimum contrast. The worst is \"Your session expires soon.\" at 2.77:1 (needs 4.5:1). Softer contrast is fine only while text stays readable."
+msgstr " Kun prefers-contrast: less on käytössä, yksi teksti alittaa vähimmäiskontrastin. Huonoin tapaus on \"Istuntosi vanhenee pian.\" suhteella 2.77:1 (vaatii 4.5:1). Pehmeämpi kontrasti on hyvä vain, kun teksti pysyy luettavana."
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid " With prefers-contrast: less, one piece of text falls below the minimum contrast. The worst is \"Your session expires soon.\" at 1.48:1 (needs 4.5:1). Softer contrast is fine only while text stays readable."
+msgstr " With prefers-contrast: less, one piece of text falls below the minimum contrast. The worst is \"Your session expires soon.\" at 1.48:1 (needs 4.5:1). Softer contrast is fine only while text stays readable."
+
+msgctxt "docs.api:prose"
+msgid " With prefers-contrast: more, one piece of text falls below the minimum contrast. The worst is \"Your session expires soon.\" at 2.74:1 (needs 4.5:1)."
+msgstr " Kun prefers-contrast: more on käytössä, yksi teksti alittaa vähimmäiskontrastin. Huonoin tapaus on \"Istuntosi vanhenee pian.\" suhteella 2.74:1 (vaatii 4.5:1)."
+
+msgctxt "docs.api:prose"
+msgid "**Size** controls padding and gap: `relaxed` (default) is roomier; `compact` tightens both. **Color** sets the fill: bare (no modifier) is unfilled — border and icon only; `-color-violet` and `-color-sea` add a tinted background plus a matching icon swatch."
+msgstr "**Koko** säätää täyttöä ja väliä: `relaxed` (oletus) on tilavampi; `compact` tiivistää molemmat. **Väri** määrittää täytön: bare (ilman lisäosaa) on täyttämätön — vain reunus ja kuvake; `-color-violet` ja `-color-sea` lisäävät sävytetyn taustan ja vastaavan kuvakesävyn."
+
+msgctxt "docs.api:prose"
+msgid "Its own chained modifiers (`-color-*`, `-size-*`, `-shape-*`, `-toggle`, `-condensed`, `-without-background`, `-without-border`, `-display-block`) set a default for every child `.instui-button` that doesn't carry its own modifier in that same category — a button's own modifier class always wins over the group's default. `-icon-*` is always per-button; it's never read from the group. Deprecated button aliases (`-ghost`, `-color-primary-inverse`) aren't supported as group-level modifiers — use their canonical replacements (`-color-tertiary`, `-on-color`) instead. Each join shows a single 1px seam in the buttons' own border color (solid fills, whose border matches the fill, tint it with the label color). `-without-seam` is group-only: it hides that seam so the buttons read as one continuous control. Put `-width-half` on an individual icon-only child button for a split-action trigger with half the standard square width and the full button height."
+msgstr "Sen omat ketjutetut muokkaajat (`-color-*`, `-size-*`, `-shape-*`, `-toggle`, `-condensed`, `-without-background`, `-without-border`, `-display-block`) asettavat oletusarvon jokaiselle lapselle `.instui-button`, jolla ei ole omaa muokkaajaa samassa kategoriassa — painikkeen oma muokkaajaluokka voittaa ryhmän oletusarvon aina. `-icon-*` koskee aina vain yhtä painiketta; sitä ei koskaan lueta ryhmästä. Vanhentuneita painikkeiden aliaksia (`-ghost`, `-color-primary-inverse`) ei tueta ryhmätason muokkaajina — käytä niiden kanonisia korvaavia muokkaajia (`-color-tertiary`, `-on-color`) sen sijaan. Jokainen liitos näyttää yksittäisen 1 px:n saumakohdan painikkeiden omassa reunavärissä (täyte on yhtenäinen, jolloin reunaväri vastaa täyttöä, sävytä se otsikon värillä). `-without-seam` koskee vain ryhmää: se piilottaa saumakohdan, jotta painikkeet näyttävät yhdeltä jatkuvalta ohjauskomponentilta. Lisää `-width-half` yksittäiseen pelkän kuvakkeen sisältävään lapsipainikkeeseen jaettuja toimintoja varten, jolloin sen neliöleveys on puolet tavallisesta ja korkeus sama kuin painikkeella."
+
+msgctxt "docs.api:prose"
+msgid "Rebrand (light), Rebrand (dark):"
+msgstr "Uudelleenbrändäys (light), Uudelleenbrändäys (dark):"
+
+msgctxt "docs.api:prose"
+msgid " With prefers-contrast: less, four pieces of text fall below the minimum contrast. The worst is \"Disabled unselected\" at 2.74:1 (needs 4.5:1). Softer contrast is fine only while text stays readable."
+msgstr " Kun prefers-contrast: less -asetuksen kanssa neljä tekstikappaletta alittaa vähimmäiskontrastin. Huonoin on \"Disabled unselected\" 2,74:1 (vaatii 4,5:1). Hieman heikompi kontrasti on hyväksyttävää vain, kun teksti pysyy luettavana."
+
+msgctxt "docs.api:prose"
+msgid " With prefers-contrast: more, four pieces of text fall below the minimum contrast. The worst is \"Disabled unselected\" at 2.74:1 (needs 4.5:1)."
+msgstr " Kun prefers-contrast: more -asetuksen kanssa neljä tekstikappaletta alittaa vähimmäiskontrastin. Huonoin on \"Disabled unselected\" 2,74:1 (vaatii 4,5:1)."
+
+msgctxt "docs.api:prose"
+msgid "The selected segment uses a distinct active-item shadow; it does not match an existing --instui-elevation-* composite. Overflow buttons use the upstream elevation3 component tokens."
+msgstr "Valittu segmentti käyttää erillistä aktiivisen kohteen varjoa; se ei vastaa olemassa olevaa --instui-elevation-*-yhdistelmää. Ylivuotopainikkeet käyttävät upstreamin elevation3-komponenttitokeneita."
+
+msgctxt "docs.api:prose"
+msgid "A `-icon-*` class may live on the label or its native input; the interaction helper promotes input classes to the label so the shared glyph painter can render it."
+msgstr "Luokka `-icon-*` voi olla tunnisteessa tai sen natiivissa syötekentässä; vuorovaikutinta avustava apufunktio siirtää syötekentän luokat tunnisteeseen, jotta yhteinen glyyfien piirto-ohjelma voi piirtää sen."
+
+msgctxt "docs.api:prose"
+msgid "The canonical record name from a record-opening tag, e.g. `button`."
+msgstr "Tietueen kanoninen nimi tietueen avausmerkinnästä, esim. `button`. "
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "Release maturity from `@stage` or a legacy maturity flag tag."
+msgstr "Release maturity from `@stage` or a legacy maturity flag tag."
+
+msgctxt "docs.api:prose"
+msgid "Audience visibility; absent means public."
+msgstr "Kohdeyleisön näkyvyys; puuttuva arvo tarkoittaa julkista."
+
+msgctxt "docs.api:prose"
+msgid "Set when this record carries a `@global` tag — its modifiers (and per-modifier `@global` flags)\napply to any record, not just this record's base class. Used during\nvalidation and consumption checks to resolve modifier matches globally."
+msgstr "Asetetaan, kun tämä tietue sisältää `@global`-tunnisteen — sen modifikaattorit (ja `@global`modifikaattorikohtaiset liput)\nkoskevat mitä tahansa tietuetta, eivät vain tämän tietueen perusluokkaa. Käytetään \nvalidointi- ja kulutustarkistuksissa modifikaattorivastaavuuksien ratkaisemiseen."
+
+msgctxt "docs.api:prose"
+msgid "Private `@example` labels, keyed by zero-based index into [examples](#examples)."
+msgstr "Yksityiset `@example`-nimilaput, indeksoitu nollasta alkaen kohteeseen [examples](#examples)."

@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: pantoken\n"
-"PO-Revision-Date: 2026-11-20 02:33+0000\n"
+"PO-Revision-Date: 2026-11-21 19:57+0000\n"
 "Last-Translator: pantoken localization engine\n"
 "Language-Team: pantoken\n"
 "MIME-Version: 1.0\n"
@@ -31915,3 +31915,71 @@ msgstr "globalNavBarItemCss"
 msgctxt "docs.api:text"
 msgid "global-nav-bar"
 msgstr "global-nav-bar"
+
+msgctxt "docs.api:prose"
+msgid "Rebrand (light), Canvas, Canvas High Contrast:"
+msgstr "Վերաբրենդավորում (բաց), Canvas, Canvas High Contrast:"
+
+msgctxt "docs.api:prose"
+msgid " With prefers-contrast: less, one piece of text falls below the minimum contrast. The worst is \"Your session expires soon.\" at 2.74:1 (needs 4.5:1). Softer contrast is fine only while text stays readable."
+msgstr " prefers-contrast: less-ի դեպքում տեքստի մեկ հատվածի հակադրությունը նվազագույնից ցածր է։ Ամենացածրը «Ձեր աշխատաշրջանը շուտով կավարտվի» հատվածինն է՝ 2.74:1 (պահանջվում է 4.5:1). Ավելի մեղմ հակադրությունն ընդունելի է միայն այն դեպքում, երբ տեքստը մնում է ընթեռնելի։"
+
+msgctxt "docs.api:prose"
+msgid " With prefers-contrast: less, one piece of text falls below the minimum contrast. The worst is \"Your session expires soon.\" at 2.77:1 (needs 4.5:1). Softer contrast is fine only while text stays readable."
+msgstr " prefers-contrast: less-ի դեպքում տեքստի մեկ հատվածի հակադրությունը նվազագույնից ցածր է։ Ամենացածրը «Ձեր աշխատաշրջանը շուտով կավարտվի» հատվածինն է՝ 2.77:1 (պահանջվում է 4.5:1). Ավելի մեղմ հակադրությունն ընդունելի է միայն այն դեպքում, երբ տեքստը մնում է ընթեռնելի։"
+
+msgctxt "docs.api:prose"
+msgid " With prefers-contrast: less, one piece of text falls below the minimum contrast. The worst is \"Your session expires soon.\" at 1.48:1 (needs 4.5:1). Softer contrast is fine only while text stays readable."
+msgstr " prefers-contrast: less-ի դեպքում տեքստի մեկ հատվածի հակադրությունը նվազագույնից ցածր է։ Ամենացածրը «Ձեր աշխատաշրջանը շուտով կավարտվի» հատվածինն է՝ 1.48:1 (պահանջվում է 4.5:1). Ավելի մեղմ հակադրությունն ընդունելի է միայն այն դեպքում, երբ տեքստը մնում է ընթեռնելի։"
+
+msgctxt "docs.api:prose"
+msgid " With prefers-contrast: more, one piece of text falls below the minimum contrast. The worst is \"Your session expires soon.\" at 2.74:1 (needs 4.5:1)."
+msgstr " prefers-contrast: more-ի դեպքում տեքստի մեկ հատվածի հակադրությունը նվազագույնից ցածր է։ Ամենացածրը «Ձեր աշխատաշրջանը շուտով կավարտվի» հատվածինն է՝ 2.74:1 (պահանջվում է 4.5:1)."
+
+msgctxt "docs.api:prose"
+msgid "**Size** controls padding and gap: `relaxed` (default) is roomier; `compact` tightens both. **Color** sets the fill: bare (no modifier) is unfilled — border and icon only; `-color-violet` and `-color-sea` add a tinted background plus a matching icon swatch."
+msgstr "**Չափը** կարգավորում է ներքին բացատն ու միջակայքը․ `relaxed` (կանխադրված) տարբերակն ավելի ընդարձակ է, իսկ `compact`-ը սեղմում է երկուսն էլ։ **Գույնը** սահմանում է լրացումը․ առանց փոփոխիչի տարբերակը լրացում չունի՝ միայն եզրագիծ և պատկերակ․ `-color-violet`-ը և `-color-sea`-ը ավելացնում են երանգավորված ֆոն և դրան համապատասխան պատկերակի գունային նմուշ։"
+
+msgctxt "docs.api:prose"
+msgid "Its own chained modifiers (`-color-*`, `-size-*`, `-shape-*`, `-toggle`, `-condensed`, `-without-background`, `-without-border`, `-display-block`) set a default for every child `.instui-button` that doesn't carry its own modifier in that same category — a button's own modifier class always wins over the group's default. `-icon-*` is always per-button; it's never read from the group. Deprecated button aliases (`-ghost`, `-color-primary-inverse`) aren't supported as group-level modifiers — use their canonical replacements (`-color-tertiary`, `-on-color`) instead. Each join shows a single 1px seam in the buttons' own border color (solid fills, whose border matches the fill, tint it with the label color). `-without-seam` is group-only: it hides that seam so the buttons read as one continuous control. Put `-width-half` on an individual icon-only child button for a split-action trigger with half the standard square width and the full button height."
+msgstr "Դրա սեփական շղթայված մոդիֆիկատորները (`-color-*`, `-size-*`, `-shape-*`, `-toggle`, `-condensed`, `-without-background`, `-without-border`, `-display-block`) սահմանում են լռելյայն արժեք յուրաքանչյուր զավակի համար (`.instui-button`), որը նույն կատեգորիայում չունի իր սեփական մոդիֆիկատորը․ կոճակի սեփական մոդիֆիկատորի դասը միշտ գերակայում է խմբի լռելյայն արժեքին։ `-icon-*`-ը միշտ վերաբերում է առանձին կոճակին․ այն երբեք չի վերցվում խմբից։ Կոճակների հնացած այլանունները (`-ghost`, `-color-primary-inverse`)) չեն աջակցվում որպես խմբի մակարդակի մոդիֆիկատորներ․ փոխարենը օգտագործեք դրանց կանոնական փոխարինիչները (`-color-tertiary`, `-on-color`)։ Յուրաքանչյուր միացում կոճակների եզրագծի սեփական գույնով ցույց է տալիս մեկ՝ 1px լայնությամբ կար (լիովին լցված կոճակների դեպքում, որոնց եզրագիծը համընկնում է լցվածքի հետ, այն երանգավորվում է պիտակի գույնով)։ `-without-seam`-ը նախատեսված է միայն խմբերի համար․ այն թաքցնում է այդ կարը, որպեսզի կոճակները երևան որպես մեկ շարունակական կառավարում։ Տեղադրեք `-width-half`-ը պատկերակով առանձին զավակ կոճակի վրա՝ բաժանված գործողության գործարկիչ ստանալու համար, որի լայնությունը ստանդարտ քառակուսիի կեսն է, իսկ բարձրությունը՝ կոճակի ամբողջ բարձրությունը։"
+
+msgctxt "docs.api:prose"
+msgid "Rebrand (light), Rebrand (dark):"
+msgstr "Վերաբրենդավորում (բաց), Վերաբրենդավորում (մուգ):"
+
+msgctxt "docs.api:prose"
+msgid " With prefers-contrast: less, four pieces of text fall below the minimum contrast. The worst is \"Disabled unselected\" at 2.74:1 (needs 4.5:1). Softer contrast is fine only while text stays readable."
+msgstr " prefers-contrast: less-ի դեպքում տեքստի չորս հատվածի կոնտրաստը նվազագույնից ցածր է։ Ամենացածր ցուցանիշը «Անջատված, չընտրված» տեքստինն է՝ 2.74:1 (պահանջվում է 4.5:1). Ավելի մեղմ կոնտրաստը ընդունելի է միայն այնքան ժամանակ, քանի դեռ տեքստը մնում է ընթեռնելի։"
+
+msgctxt "docs.api:prose"
+msgid " With prefers-contrast: more, four pieces of text fall below the minimum contrast. The worst is \"Disabled unselected\" at 2.74:1 (needs 4.5:1)."
+msgstr " prefers-contrast: more-ի դեպքում տեքստի չորս հատվածի կոնտրաստը նվազագույնից ցածր է։ Ամենացածր ցուցանիշը «Անջատված, չընտրված» տեքստինն է՝ 2.74:1 (պահանջվում է 4.5:1)."
+
+msgctxt "docs.api:prose"
+msgid "The selected segment uses a distinct active-item shadow; it does not match an existing --instui-elevation-* composite. Overflow buttons use the upstream elevation3 component tokens."
+msgstr "Ընտրված հատվածն օգտագործում է հստակ ակտիվ տարրի ստվեր․ այն չի համապատասխանում գոյություն ունեցող --instui-elevation-* կոմպոզիտին։ Overflow կոճակներն օգտագործում են upstream elevation3 բաղադրիչի թոքենները։"
+
+msgctxt "docs.api:prose"
+msgid "A `-icon-*` class may live on the label or its native input; the interaction helper promotes input classes to the label so the shared glyph painter can render it."
+msgstr "Մի `-icon-*` դաս կարող է լինել պիտակի կամ դրա native input-ի վրա; interaction helper-ը input-ի դասերը փոխանցում է պիտակին, որպեսզի shared glyph painter-ը կարողանա այն ցուցադրել։"
+
+msgctxt "docs.api:prose"
+msgid "The canonical record name from a record-opening tag, e.g. `button`."
+msgstr "Կանոնական գրառման անունը գրառում բացող պիտակից, օրինակ՝ `button`:"
+
+msgctxt "docs.api:prose"
+msgid "Release maturity from `@stage` or a legacy maturity flag tag."
+msgstr "Թողարկման հասունությունը `@stage` պիտակից կամ հին հասունության դրոշակով պիտակից:"
+
+msgctxt "docs.api:prose"
+msgid "Audience visibility; absent means public."
+msgstr "Հանդիսատեսի տեսանելիությունը. Բացակայության դեպքում public:"
+
+msgctxt "docs.api:prose"
+msgid "Set when this record carries a `@global` tag — its modifiers (and per-modifier `@global` flags)\napply to any record, not just this record's base class. Used during\nvalidation and consumption checks to resolve modifier matches globally."
+msgstr "Սահմանվում է, երբ այս գրառումը կրում է `@global` պիտակ — դրա փոփոխիչները (և յուրաքանչյուր փոփոխիչի `@global` դրոշակները)\nկիրառվում են ցանկացած գրառման, ոչ միայն այս գրառման հիմնական դասի վրա։ Օգտագործվում է\nվավերացման և սպառման ստուգումների ընթացքում՝ փոփոխիչների համընկնումները գլոբալորեն լուծելու համար։"
+
+msgctxt "docs.api:prose"
+msgid "Private `@example` labels, keyed by zero-based index into [examples](#examples)."
+msgstr "Գաղտնի `@example` պիտակներ, որոնք դասավորված են ըստ զրոյից սկսվող ինդեքսի դեպի [օրինակներ](#examples):"

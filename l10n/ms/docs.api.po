@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: pantoken\n"
-"PO-Revision-Date: 2026-11-20 03:24+0000\n"
+"PO-Revision-Date: 2026-11-21 20:46+0000\n"
 "Last-Translator: pantoken localization engine\n"
 "Language-Team: pantoken\n"
 "MIME-Version: 1.0\n"
@@ -35162,3 +35162,71 @@ msgstr "globalNavBarItemCss"
 msgctxt "docs.api:text"
 msgid "global-nav-bar"
 msgstr "global-nav-bar"
+
+msgctxt "docs.api:prose"
+msgid "Rebrand (light), Canvas, Canvas High Contrast:"
+msgstr "Penjenamaan semula (light), Canvas, Canvas High Contrast:"
+
+msgctxt "docs.api:prose"
+msgid " With prefers-contrast: less, one piece of text falls below the minimum contrast. The worst is \"Your session expires soon.\" at 2.74:1 (needs 4.5:1). Softer contrast is fine only while text stays readable."
+msgstr " Dengan prefers-contrast: less, satu bahagian teks berada di bawah kontras minimum. Yang paling teruk ialah \"Sesi anda akan tamat tidak lama lagi.\" pada 2.74:1 (memerlukan 4.5:1). Kontras yang lebih lembut hanya sesuai selagi teks kekal mudah dibaca."
+
+msgctxt "docs.api:prose"
+msgid " With prefers-contrast: less, one piece of text falls below the minimum contrast. The worst is \"Your session expires soon.\" at 2.77:1 (needs 4.5:1). Softer contrast is fine only while text stays readable."
+msgstr " Dengan prefers-contrast: less, satu bahagian teks berada di bawah kontras minimum. Yang paling teruk ialah \"Sesi anda akan tamat tidak lama lagi.\" pada 2.77:1 (memerlukan 4.5:1). Kontras yang lebih lembut hanya sesuai selagi teks kekal mudah dibaca."
+
+msgctxt "docs.api:prose"
+msgid " With prefers-contrast: less, one piece of text falls below the minimum contrast. The worst is \"Your session expires soon.\" at 1.48:1 (needs 4.5:1). Softer contrast is fine only while text stays readable."
+msgstr " Dengan prefers-contrast: less, satu bahagian teks berada di bawah kontras minimum. Yang paling teruk ialah \"Sesi anda akan tamat tidak lama lagi.\" pada 1.48:1 (memerlukan 4.5:1). Kontras yang lebih lembut hanya sesuai selagi teks kekal mudah dibaca."
+
+msgctxt "docs.api:prose"
+msgid " With prefers-contrast: more, one piece of text falls below the minimum contrast. The worst is \"Your session expires soon.\" at 2.74:1 (needs 4.5:1)."
+msgstr " Dengan prefers-contrast: more, satu bahagian teks berada di bawah kontras minimum. Yang paling teruk ialah \"Sesi anda akan tamat tidak lama lagi.\" pada 2.74:1 (memerlukan 4.5:1)."
+
+msgctxt "docs.api:prose"
+msgid "**Size** controls padding and gap: `relaxed` (default) is roomier; `compact` tightens both. **Color** sets the fill: bare (no modifier) is unfilled — border and icon only; `-color-violet` and `-color-sea` add a tinted background plus a matching icon swatch."
+msgstr "**Saiz** mengawal pelapik dan jarak: `relaxed` (lalai) lebih longgar; `compact` mengetatkan kedua-duanya. **Warna** menetapkan isian: kosongan (tiada pengubah suai) tidak berisi — hanya sempadan dan ikon; `-color-violet` dan `-color-sea` menambah latar belakang berwarna serta swatch ikon yang sepadan."
+
+msgctxt "docs.api:prose"
+msgid "Its own chained modifiers (`-color-*`, `-size-*`, `-shape-*`, `-toggle`, `-condensed`, `-without-background`, `-without-border`, `-display-block`) set a default for every child `.instui-button` that doesn't carry its own modifier in that same category — a button's own modifier class always wins over the group's default. `-icon-*` is always per-button; it's never read from the group. Deprecated button aliases (`-ghost`, `-color-primary-inverse`) aren't supported as group-level modifiers — use their canonical replacements (`-color-tertiary`, `-on-color`) instead. Each join shows a single 1px seam in the buttons' own border color (solid fills, whose border matches the fill, tint it with the label color). `-without-seam` is group-only: it hides that seam so the buttons read as one continuous control. Put `-width-half` on an individual icon-only child button for a split-action trigger with half the standard square width and the full button height."
+msgstr "Pengubah rantai miliknya (`-color-*`, `-size-*`, `-shape-*`, `-toggle`, `-condensed`, `-without-background`, `-without-border`, `-display-block`) menetapkan lalai untuk setiap anak `.instui-button` yang tidak membawa pengubah tersendiri dalam kategori yang sama — kelas pengubah milik butang itu sentiasa mengatasi lalai kumpulan. `-icon-*` sentiasa mengikut butang; ia tidak pernah dibaca daripada kumpulan. Alias butang lapuk (`-ghost`, `-color-primary-inverse`) tidak disokong sebagai pengubah peringkat kumpulan — gunakan penggantian kanoniknya (`-color-tertiary`, `-on-color`) sebagai gantinya. Setiap cantuman menunjukkan jahitan tunggal 1px dalam warna sempadan butang itu sendiri (isi pepejal, yang sempadannya sepadan dengan isi, warnakannya dengan warna label). `-without-seam` hanya untuk kumpulan: ia menyembunyikan jahitan itu supaya butang kelihatan sebagai satu kawalan berterusan. Letakkan `-width-half` pada butang anak individu yang hanya mempunyai ikon untuk picu tindakan terpisah dengan separuh lebar segi empat piawai dan ketinggian butang penuh."
+
+msgctxt "docs.api:prose"
+msgid "Rebrand (light), Rebrand (dark):"
+msgstr "Penjenamaan semula (cerah), Penjenamaan semula (gelap): "
+
+msgctxt "docs.api:prose"
+msgid " With prefers-contrast: less, four pieces of text fall below the minimum contrast. The worst is \"Disabled unselected\" at 2.74:1 (needs 4.5:1). Softer contrast is fine only while text stays readable."
+msgstr " Dengan prefers-contrast: less, empat bahagian teks berada di bawah kontras minimum. Yang paling teruk ialah \"Dilumpuhkan tidak dipilih\" pada 2.74:1 (memerlukan 4.5:1). Kontras yang lebih lembut adalah baik hanya apabila teks kekal mudah dibaca."
+
+msgctxt "docs.api:prose"
+msgid " With prefers-contrast: more, four pieces of text fall below the minimum contrast. The worst is \"Disabled unselected\" at 2.74:1 (needs 4.5:1)."
+msgstr " Dengan prefers-contrast: more, empat bahagian teks berada di bawah kontras minimum. Yang paling teruk ialah \"Dilumpuhkan tidak dipilih\" pada 2.74:1 (memerlukan 4.5:1)."
+
+msgctxt "docs.api:prose"
+msgid "The selected segment uses a distinct active-item shadow; it does not match an existing --instui-elevation-* composite. Overflow buttons use the upstream elevation3 component tokens."
+msgstr "Segmen yang dipilih menggunakan bayang-bayang item aktif yang berbeza; ia tidak sepadan dengan komposit --instui-elevation-* yang sedia ada. Butang limpahan menggunakan token komponen elevation3 upstream."
+
+msgctxt "docs.api:prose"
+msgid "A `-icon-*` class may live on the label or its native input; the interaction helper promotes input classes to the label so the shared glyph painter can render it."
+msgstr "Satu kelas `-icon-*` boleh terletak pada label atau input asalnya; pembantu interaksi menaikkan kelas input ke label supaya pelukis glif bersama dapat memaparkannya."
+
+msgctxt "docs.api:prose"
+msgid "The canonical record name from a record-opening tag, e.g. `button`."
+msgstr "Nama rekod kanonik daripada teg pembuka rekod, cth. `button`."
+
+msgctxt "docs.api:prose"
+msgid "Release maturity from `@stage` or a legacy maturity flag tag."
+msgstr "Tahap kematangan keluaran daripada `@stage` atau teg bendera kematangan lama."
+
+msgctxt "docs.api:prose"
+msgid "Audience visibility; absent means public."
+msgstr "Keterlihatan khalayak; tiada bermaksud awam."
+
+msgctxt "docs.api:prose"
+msgid "Set when this record carries a `@global` tag — its modifiers (and per-modifier `@global` flags)\napply to any record, not just this record's base class. Used during\nvalidation and consumption checks to resolve modifier matches globally."
+msgstr "Ditetapkan apabila rekod ini membawa teg `@global` — pengubah suaian dan bendera bagi setiap pengubah suai `@global`bendera)\ndigunakan pada mana-mana rekod, bukan hanya kelas asas rekod ini. Digunakan semasa\npengesahan dan semakan penggunaan untuk menyelesaikan padanan pengubah suai secara global."
+
+msgctxt "docs.api:prose"
+msgid "Private `@example` labels, keyed by zero-based index into [examples](#examples)."
+msgstr "Label `@example` peribadi, dikunci mengikut indeks berasaskan sifar ke dalam [contoh](#examples)."

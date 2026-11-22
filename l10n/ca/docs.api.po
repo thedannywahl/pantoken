@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: pantoken\n"
-"PO-Revision-Date: 2026-11-20 02:35+0000\n"
+"PO-Revision-Date: 2026-11-21 19:59+0000\n"
 "Last-Translator: pantoken localization engine\n"
 "Language-Team: pantoken\n"
 "MIME-Version: 1.0\n"
@@ -35166,3 +35166,71 @@ msgstr "globalNavBarItemCss"
 msgctxt "docs.api:text"
 msgid "global-nav-bar"
 msgstr "global-nav-bar"
+
+msgctxt "docs.api:prose"
+msgid "Rebrand (light), Canvas, Canvas High Contrast:"
+msgstr "Renova la marca (light), Canvas, Canvas High Contrast:"
+
+msgctxt "docs.api:prose"
+msgid " With prefers-contrast: less, one piece of text falls below the minimum contrast. The worst is \"Your session expires soon.\" at 2.74:1 (needs 4.5:1). Softer contrast is fine only while text stays readable."
+msgstr " Amb prefers-contrast: less, un fragment de text no arriba al contrast mínim. El pitjor és «La vostra sessió caduca aviat.» a 2.74:1 (cal 4.5:1). Un contrast més suau només és acceptable mentre el text continuï llegible."
+
+msgctxt "docs.api:prose"
+msgid " With prefers-contrast: less, one piece of text falls below the minimum contrast. The worst is \"Your session expires soon.\" at 2.77:1 (needs 4.5:1). Softer contrast is fine only while text stays readable."
+msgstr " Amb prefers-contrast: less, un fragment de text no arriba al contrast mínim. El pitjor és «La vostra sessió caduca aviat.» a 2.77:1 (cal 4.5:1). Un contrast més suau només és acceptable mentre el text continuï llegible."
+
+msgctxt "docs.api:prose"
+msgid " With prefers-contrast: less, one piece of text falls below the minimum contrast. The worst is \"Your session expires soon.\" at 1.48:1 (needs 4.5:1). Softer contrast is fine only while text stays readable."
+msgstr " Amb prefers-contrast: less, un fragment de text no arriba al contrast mínim. El pitjor és «La vostra sessió caduca aviat.» a 1.48:1 (cal 4.5:1). Un contrast més suau només és acceptable mentre el text continuï llegible."
+
+msgctxt "docs.api:prose"
+msgid " With prefers-contrast: more, one piece of text falls below the minimum contrast. The worst is \"Your session expires soon.\" at 2.74:1 (needs 4.5:1)."
+msgstr " Amb prefers-contrast: more, un fragment de text no arriba al contrast mínim. El pitjor és «La vostra sessió caduca aviat.» a 2.74:1 (cal 4.5:1)."
+
+msgctxt "docs.api:prose"
+msgid "**Size** controls padding and gap: `relaxed` (default) is roomier; `compact` tightens both. **Color** sets the fill: bare (no modifier) is unfilled — border and icon only; `-color-violet` and `-color-sea` add a tinted background plus a matching icon swatch."
+msgstr "**Mida** controla el farciment i l'espaiat: `relaxed` (per defecte) és més espaiós; `compact` estreny tots dos. **Color** defineix el farciment: sense modificador) no té farciment — només la vora i la icona; `-color-violet` i `-color-sea` afegeixen un fons tenyit i una mostra d'icona a joc."
+
+msgctxt "docs.api:prose"
+msgid "Its own chained modifiers (`-color-*`, `-size-*`, `-shape-*`, `-toggle`, `-condensed`, `-without-background`, `-without-border`, `-display-block`) set a default for every child `.instui-button` that doesn't carry its own modifier in that same category — a button's own modifier class always wins over the group's default. `-icon-*` is always per-button; it's never read from the group. Deprecated button aliases (`-ghost`, `-color-primary-inverse`) aren't supported as group-level modifiers — use their canonical replacements (`-color-tertiary`, `-on-color`) instead. Each join shows a single 1px seam in the buttons' own border color (solid fills, whose border matches the fill, tint it with the label color). `-without-seam` is group-only: it hides that seam so the buttons read as one continuous control. Put `-width-half` on an individual icon-only child button for a split-action trigger with half the standard square width and the full button height."
+msgstr "Els seus propis modificadors encadenats (`-color-*`, `-size-*`, `-shape-*`, `-toggle`, `-condensed`, `-without-background`, `-without-border`, `-display-block`) estableixen un valor per defecte per a tots els fills `.instui-button` que no tenen el seu propi modificador dins aquesta mateixa categoria — el modificador propi d'un botó sempre preval sobre el valor predeterminat del grup. `-icon-*` sempre és per botó; mai no es llegeix des del grup. Els àlies obsolets dels botons (`-ghost`, `-color-primary-inverse`) no són compatibles com a modificadors de nivell de grup — feu servir els seus reemplaçaments canònics (`-color-tertiary`, `-on-color`)). Cada unió mostra una sola costura d'1 px amb el color de la vora dels botons (els emplenaments sòlids, la vora dels quals coincideix amb l'emplenament, es tenyeixen amb el color de l'etiqueta). `-without-seam` només és del grup: amaga aquesta costura perquè els botons es llegeixin com un únic control continu. Poseu `-width-half` en un botó fill individual que només conté una icona per a un activador d'acció dividida amb la meitat de l'amplada quadrada habitual i l'alçada completa del botó."
+
+msgctxt "docs.api:prose"
+msgid "Rebrand (light), Rebrand (dark):"
+msgstr "Canvi de marca (light), Canvi de marca (dark):"
+
+msgctxt "docs.api:prose"
+msgid " With prefers-contrast: less, four pieces of text fall below the minimum contrast. The worst is \"Disabled unselected\" at 2.74:1 (needs 4.5:1). Softer contrast is fine only while text stays readable."
+msgstr " Amb prefers-contrast: less, quatre fragments de text queden per sota del contrast mínim. El pitjor és \"Inhabilitat no seleccionat\" a 2.74:1 (necessita 4.5:1). El contrast més suau només és adequat mentre el text continua sent llegible."
+
+msgctxt "docs.api:prose"
+msgid " With prefers-contrast: more, four pieces of text fall below the minimum contrast. The worst is \"Disabled unselected\" at 2.74:1 (needs 4.5:1)."
+msgstr " Amb prefers-contrast: more, quatre fragments de text queden per sota del contrast mínim. El pitjor és \"Inhabilitat no seleccionat\" a 2.74:1 (necessita 4.5:1)."
+
+msgctxt "docs.api:prose"
+msgid "The selected segment uses a distinct active-item shadow; it does not match an existing --instui-elevation-* composite. Overflow buttons use the upstream elevation3 component tokens."
+msgstr "El segment seleccionat utilitza una ombra d'element actiu diferent; no coincideix amb un compost --instui-elevation-* existent. Els botons de desbordament utilitzen els tokens upstream elevation3 del component."
+
+msgctxt "docs.api:prose"
+msgid "A `-icon-*` class may live on the label or its native input; the interaction helper promotes input classes to the label so the shared glyph painter can render it."
+msgstr "Una `-icon-*` classe pot viure a l’etiqueta o al seu camp d’entrada natiu; l’ajuda d’interacció promou les classes d’entrada a l’etiqueta perquè el pintor compartit de glifs les pugui representar."
+
+msgctxt "docs.api:prose"
+msgid "The canonical record name from a record-opening tag, e.g. `button`."
+msgstr "El nom canònic del registre d'una etiqueta d'obertura de registre, p. ex. `button`."
+
+msgctxt "docs.api:prose"
+msgid "Release maturity from `@stage` or a legacy maturity flag tag."
+msgstr "Maduresa de llançament de `@stage` o de l'etiqueta de maduresa antiga."
+
+msgctxt "docs.api:prose"
+msgid "Audience visibility; absent means public."
+msgstr "Visibilitat del públic; si falta, significa públic."
+
+msgctxt "docs.api:prose"
+msgid "Set when this record carries a `@global` tag — its modifiers (and per-modifier `@global` flags)\napply to any record, not just this record's base class. Used during\nvalidation and consumption checks to resolve modifier matches globally."
+msgstr "S'estableix quan aquest registre porta una etiqueta `@global`: els seus modificadors (i les `@global`banderes)\nper modificador s'apliquen a qualsevol registre, no només a la classe base d'aquest registre. S'utilitza durant les comprovacions de validació i de consum per resoldre globalment les coincidències dels modificadors."
+
+msgctxt "docs.api:prose"
+msgid "Private `@example` labels, keyed by zero-based index into [examples](#examples)."
+msgstr "Etiquetes `@example` privades, indexades per índex basat en zero a [exemples](#exemples)."

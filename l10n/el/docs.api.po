@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: pantoken\n"
-"PO-Revision-Date: 2026-11-20 02:59+0000\n"
+"PO-Revision-Date: 2026-11-21 20:22+0000\n"
 "Last-Translator: pantoken localization engine\n"
 "Language-Team: pantoken\n"
 "MIME-Version: 1.0\n"
@@ -35162,3 +35162,72 @@ msgstr "globalNavBarItemCss"
 msgctxt "docs.api:text"
 msgid "global-nav-bar"
 msgstr "global-nav-bar"
+
+msgctxt "docs.api:prose"
+msgid "Rebrand (light), Canvas, Canvas High Contrast:"
+msgstr "Ανανέωση επωνυμίας (light), Canvas, Canvas High Contrast:"
+
+msgctxt "docs.api:prose"
+msgid " With prefers-contrast: less, one piece of text falls below the minimum contrast. The worst is \"Your session expires soon.\" at 2.74:1 (needs 4.5:1). Softer contrast is fine only while text stays readable."
+msgstr " Με prefers-contrast: less, ένα μέρος του κειμένου πέφτει κάτω από την ελάχιστη αντίθεση. Το χειρότερο είναι «Your session expires soon.» στο 2.74:1 (απαιτεί 4.5:1). Η απαλότερη αντίθεση είναι κατάλληλη μόνο εφόσον το κείμενο παραμένει ευανάγνωστο."
+
+msgctxt "docs.api:prose"
+msgid " With prefers-contrast: less, one piece of text falls below the minimum contrast. The worst is \"Your session expires soon.\" at 2.77:1 (needs 4.5:1). Softer contrast is fine only while text stays readable."
+msgstr " Με prefers-contrast: less, ένα μέρος του κειμένου πέφτει κάτω από την ελάχιστη αντίθεση. Το χειρότερο είναι «Your session expires soon.» στο 2.77:1 (απαιτεί 4.5:1). Η απαλότερη αντίθεση είναι κατάλληλη μόνο εφόσον το κείμενο παραμένει ευανάγνωστο."
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid " With prefers-contrast: less, one piece of text falls below the minimum contrast. The worst is \"Your session expires soon.\" at 1.48:1 (needs 4.5:1). Softer contrast is fine only while text stays readable."
+msgstr " With prefers-contrast: less, one piece of text falls below the minimum contrast. The worst is \"Your session expires soon.\" at 1.48:1 (needs 4.5:1). Softer contrast is fine only while text stays readable."
+
+msgctxt "docs.api:prose"
+msgid " With prefers-contrast: more, one piece of text falls below the minimum contrast. The worst is \"Your session expires soon.\" at 2.74:1 (needs 4.5:1)."
+msgstr " Με prefers-contrast: more, ένα μέρος του κειμένου πέφτει κάτω από την ελάχιστη αντίθεση. Το χειρότερο είναι «Your session expires soon.» στο 2.74:1 (απαιτεί 4.5:1)."
+
+msgctxt "docs.api:prose"
+msgid "**Size** controls padding and gap: `relaxed` (default) is roomier; `compact` tightens both. **Color** sets the fill: bare (no modifier) is unfilled — border and icon only; `-color-violet` and `-color-sea` add a tinted background plus a matching icon swatch."
+msgstr "**Μέγεθος** ελέγχει την αναπλήρωση και το κενό: `relaxed` (η προεπιλεγμένη) είναι πιο ευρύχωρη· `compact` περιορίζει και τα δύο. **Χρώμα** ορίζει το γέμισμα: bare (χωρίς modifier) δεν έχει γέμισμα — μόνο περίγραμμα και εικονίδιο· `-color-violet` και `-color-sea` προσθέτουν χρωματισμένο φόντο και αντίστοιχο χρωματικό δείγμα εικονιδίου."
+
+msgctxt "docs.api:prose"
+msgid "Its own chained modifiers (`-color-*`, `-size-*`, `-shape-*`, `-toggle`, `-condensed`, `-without-background`, `-without-border`, `-display-block`) set a default for every child `.instui-button` that doesn't carry its own modifier in that same category — a button's own modifier class always wins over the group's default. `-icon-*` is always per-button; it's never read from the group. Deprecated button aliases (`-ghost`, `-color-primary-inverse`) aren't supported as group-level modifiers — use their canonical replacements (`-color-tertiary`, `-on-color`) instead. Each join shows a single 1px seam in the buttons' own border color (solid fills, whose border matches the fill, tint it with the label color). `-without-seam` is group-only: it hides that seam so the buttons read as one continuous control. Put `-width-half` on an individual icon-only child button for a split-action trigger with half the standard square width and the full button height."
+msgstr "Οι δικοί του συνδυασμένοι τροποποιητές (`-color-*`, `-size-*`, `-shape-*`, `-toggle`, `-condensed`, `-without-background`, `-without-border`, `-display-block`) ορίζουν μια προεπιλογή για κάθε παιδί `.instui-button` που δεν έχει δικό του τροποποιητή στην ίδια κατηγορία — η ίδια η κλάση τροποποιητή ενός κουμπιού υπερισχύει πάντα της προεπιλογής της ομάδας. `-icon-*` ισχύει πάντα ανά κουμπί· δεν διαβάζεται ποτέ από την ομάδα. Οι παρωχημένες συντομεύσεις κουμπιών (`-ghost`, `-color-primary-inverse`) δεν υποστηρίζονται ως τροποποιητές επιπέδου ομάδας — χρησιμοποιήστε αντί αυτών τις κανονικές αντικαταστάσεις (`-color-tertiary`, `-on-color`). Κάθε ένωση εμφανίζει μία ενιαία αρμόγραμμη 1 px στο χρώμα περιγράμματος των ίδιων των κουμπιών (στα συμπαγή γεμίσματα, των οποίων το περίγραμμα ταιριάζει με το γέμισμα, χρησιμοποιήστε χρώμα ετικέτας). `-without-seam` ισχύει μόνο για την ομάδα: αποκρύπτει αυτή την αρμόγραμμη, ώστε τα κουμπιά να εμφανίζονται ως μία συνεχής μονάδα ελέγχου. Τοποθετήστε `-width-half` σε ένα μεμονωμένο παιδί κουμπί μόνο για εικονίδιο για ένα split-action trigger με το μισό του τυπικού τετραγωνικού πλάτους και το πλήρες ύψος κουμπιού."
+
+msgctxt "docs.api:prose"
+msgid "Rebrand (light), Rebrand (dark):"
+msgstr "Επανασχεδιασμός (φωτεινό), Επανασχεδιασμός (σκοτεινό):"
+
+msgctxt "docs.api:prose"
+msgid " With prefers-contrast: less, four pieces of text fall below the minimum contrast. The worst is \"Disabled unselected\" at 2.74:1 (needs 4.5:1). Softer contrast is fine only while text stays readable."
+msgstr " Με prefers-contrast: less, τέσσερα τμήματα κειμένου έχουν αντίθεση κάτω από το ελάχιστο. Η χειρότερη περίπτωση είναι «Απενεργοποιημένο μη επιλεγμένο» με 2.74:1 (απαιτείται 4.5:1). Η πιο ήπια αντίθεση είναι αποδεκτή μόνο όσο το κείμενο παραμένει ευανάγνωστο."
+
+msgctxt "docs.api:prose"
+msgid " With prefers-contrast: more, four pieces of text fall below the minimum contrast. The worst is \"Disabled unselected\" at 2.74:1 (needs 4.5:1)."
+msgstr " Με prefers-contrast: more, τέσσερα τμήματα κειμένου έχουν αντίθεση κάτω από το ελάχιστο. Η χειρότερη περίπτωση είναι «Απενεργοποιημένο μη επιλεγμένο» με 2.74:1 (απαιτείται 4.5:1)."
+
+msgctxt "docs.api:prose"
+msgid "The selected segment uses a distinct active-item shadow; it does not match an existing --instui-elevation-* composite. Overflow buttons use the upstream elevation3 component tokens."
+msgstr "Το επιλεγμένο τμήμα χρησιμοποιεί διακριτή σκιά για το ενεργό στοιχείο· δεν αντιστοιχεί σε υπάρχον σύνθετο --instui-elevation-*. Τα κουμπιά υπερχείλισης χρησιμοποιούν τα ανάντη tokens elevation3 του στοιχείου."
+
+msgctxt "docs.api:prose"
+msgid "A `-icon-*` class may live on the label or its native input; the interaction helper promotes input classes to the label so the shared glyph painter can render it."
+msgstr "Μια `-icon-*` κλάση μπορεί να βρίσκεται στην ετικέτα ή στο εγγενές στοιχείο εισόδου της· ο βοηθός αλληλεπίδρασης προωθεί τις κλάσεις του στοιχείου εισόδου στην ετικέτα, ώστε ο κοινόχρηστος μηχανισμός σχεδίασης γλυφών να μπορεί να τις αποδώσει."
+
+msgctxt "docs.api:prose"
+msgid "The canonical record name from a record-opening tag, e.g. `button`."
+msgstr "Το κανονικό όνομα εγγραφής από μια ετικέτα ανοίγματος εγγραφής, π.χ. `button`."
+
+msgctxt "docs.api:prose"
+msgid "Release maturity from `@stage` or a legacy maturity flag tag."
+msgstr "Ωριμότητα έκδοσης από `@stage` ή από μια παλαιού τύπου ετικέτα σημαίας ωριμότητας."
+
+msgctxt "docs.api:prose"
+msgid "Audience visibility; absent means public."
+msgstr "Ορατότητα κοινού· αν απουσιάζει, είναι δημόσιο."
+
+msgctxt "docs.api:prose"
+msgid "Set when this record carries a `@global` tag — its modifiers (and per-modifier `@global` flags)\napply to any record, not just this record's base class. Used during\nvalidation and consumption checks to resolve modifier matches globally."
+msgstr "Ορίζεται όταν αυτή η εγγραφή περιέχει μια ετικέτα `@global` — οι τροποποιητές της (και οι σημαίες `@global` ανά τροποποιητή)\n) εφαρμόζονται σε οποιαδήποτε εγγραφή, όχι μόνο στην βασική κλάση αυτής της εγγραφής. Χρησιμοποιείται κατά την επικύρωση και τους ελέγχους κατανάλωσης για την καθολική επίλυση αντιστοιχίσεων τροποποιητών."
+
+msgctxt "docs.api:prose"
+msgid "Private `@example` labels, keyed by zero-based index into [examples](#examples)."
+msgstr "Ιδιωτικές ετικέτες `@example`, με κλειδί τον μηδενικής βάσης δείκτη στο [παραδείγματα](#examples)."

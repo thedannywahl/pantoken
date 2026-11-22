@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: pantoken\n"
-"PO-Revision-Date: 2026-11-20 03:42+0000\n"
+"PO-Revision-Date: 2026-11-21 21:03+0000\n"
 "Last-Translator: pantoken localization engine\n"
 "Language-Team: pantoken\n"
 "MIME-Version: 1.0\n"
@@ -35162,3 +35162,71 @@ msgstr "globalNavBarItemCss"
 msgctxt "docs.api:text"
 msgid "global-nav-bar"
 msgstr "global-nav-bar"
+
+msgctxt "docs.api:prose"
+msgid "Rebrand (light), Canvas, Canvas High Contrast:"
+msgstr "Ребрендинг (светлая тема), Canvas, Canvas High Contrast:"
+
+msgctxt "docs.api:prose"
+msgid " With prefers-contrast: less, one piece of text falls below the minimum contrast. The worst is \"Your session expires soon.\" at 2.74:1 (needs 4.5:1). Softer contrast is fine only while text stays readable."
+msgstr " При prefers-contrast: less один фрагмент текста имеет контраст ниже минимального. Худший показатель — у фразы \"Your session expires soon.\" — 2.74:1 (требуется 4.5:1). Более мягкий контраст допустим только до тех пор, пока текст остается читаемым."
+
+msgctxt "docs.api:prose"
+msgid " With prefers-contrast: less, one piece of text falls below the minimum contrast. The worst is \"Your session expires soon.\" at 2.77:1 (needs 4.5:1). Softer contrast is fine only while text stays readable."
+msgstr " При prefers-contrast: less один фрагмент текста имеет контраст ниже минимального. Худший показатель — у фразы \"Your session expires soon.\" — 2.77:1 (требуется 4.5:1). Более мягкий контраст допустим только до тех пор, пока текст остается читаемым."
+
+msgctxt "docs.api:prose"
+msgid " With prefers-contrast: less, one piece of text falls below the minimum contrast. The worst is \"Your session expires soon.\" at 1.48:1 (needs 4.5:1). Softer contrast is fine only while text stays readable."
+msgstr " При prefers-contrast: less один фрагмент текста имеет контраст ниже минимального. Худший показатель — у фразы \"Your session expires soon.\" — 1.48:1 (требуется 4.5:1). Более мягкий контраст допустим только до тех пор, пока текст остается читаемым."
+
+msgctxt "docs.api:prose"
+msgid " With prefers-contrast: more, one piece of text falls below the minimum contrast. The worst is \"Your session expires soon.\" at 2.74:1 (needs 4.5:1)."
+msgstr " При prefers-contrast: more один фрагмент текста имеет контраст ниже минимального. Худший показатель — у фразы \"Your session expires soon.\" — 2.74:1 (требуется 4.5:1)."
+
+msgctxt "docs.api:prose"
+msgid "**Size** controls padding and gap: `relaxed` (default) is roomier; `compact` tightens both. **Color** sets the fill: bare (no modifier) is unfilled — border and icon only; `-color-violet` and `-color-sea` add a tinted background plus a matching icon swatch."
+msgstr "**Размер** управляет отступами и промежутками: `relaxed` (по умолчанию) он просторнее; `compact` делает оба параметра меньше. **Цвет** задаёт заливку: bare (без модификатора) заливка отсутствует — только граница и значок; `-color-violet` и `-color-sea` добавляют оттеночный фон и соответствующую цветовую плашку значка."
+
+msgctxt "docs.api:prose"
+msgid "Its own chained modifiers (`-color-*`, `-size-*`, `-shape-*`, `-toggle`, `-condensed`, `-without-background`, `-without-border`, `-display-block`) set a default for every child `.instui-button` that doesn't carry its own modifier in that same category — a button's own modifier class always wins over the group's default. `-icon-*` is always per-button; it's never read from the group. Deprecated button aliases (`-ghost`, `-color-primary-inverse`) aren't supported as group-level modifiers — use their canonical replacements (`-color-tertiary`, `-on-color`) instead. Each join shows a single 1px seam in the buttons' own border color (solid fills, whose border matches the fill, tint it with the label color). `-without-seam` is group-only: it hides that seam so the buttons read as one continuous control. Put `-width-half` on an individual icon-only child button for a split-action trigger with half the standard square width and the full button height."
+msgstr "Собственные цепочечные модификаторы (`-color-*`, `-size-*`, `-shape-*`, `-toggle`, `-condensed`, `-without-background`, `-without-border`, `-display-block`) задают значение по умолчанию для каждого дочернего элемента `.instui-button`, который не содержит собственного модификатора в этой же категории — собственный класс модификатора кнопки всегда имеет приоритет над значением по умолчанию группы. `-icon-*` всегда применяется для одной кнопки; он никогда не считывается из группы. Устаревшие псевдонимы кнопок (`-ghost`, `-color-primary-inverse`) не поддерживаются как модификаторы уровня группы — вместо них используйте их канонические замены (`-color-tertiary`, `-on-color`). На каждом соединении появляется один шов шириной 1 px в собственном цвете границы кнопок (для сплошных заливок, граница которых совпадает с заливкой, используйте цвет метки). `-without-seam` применяется только к группе: он скрывает этот шов, чтобы кнопки выглядели как один непрерывный элемент управления. Поместите `-width-half` на отдельную дочернюю кнопку только со значком для запуска разделенного действия с шириной в половину стандартной квадратной ширины и полной высотой кнопки."
+
+msgctxt "docs.api:prose"
+msgid "Rebrand (light), Rebrand (dark):"
+msgstr "Ребрендинг (светлая), Ребрендинг (тёмная):"
+
+msgctxt "docs.api:prose"
+msgid " With prefers-contrast: less, four pieces of text fall below the minimum contrast. The worst is \"Disabled unselected\" at 2.74:1 (needs 4.5:1). Softer contrast is fine only while text stays readable."
+msgstr " При prefers-contrast: less четыре фрагмента текста не соответствуют минимальному контрасту. Худший показатель у «Disabled unselected»: 2.74:1 (требуется 4.5:1). Более мягкий контраст допустим только до тех пор, пока текст остается читаемым."
+
+msgctxt "docs.api:prose"
+msgid " With prefers-contrast: more, four pieces of text fall below the minimum contrast. The worst is \"Disabled unselected\" at 2.74:1 (needs 4.5:1)."
+msgstr " При prefers-contrast: more четыре фрагмента текста не соответствуют минимальному контрасту. Худший показатель у «Disabled unselected»: 2.74:1 (требуется 4.5:1)."
+
+msgctxt "docs.api:prose"
+msgid "The selected segment uses a distinct active-item shadow; it does not match an existing --instui-elevation-* composite. Overflow buttons use the upstream elevation3 component tokens."
+msgstr "Выбранный сегмент использует отдельную тень активного элемента; она не соответствует существующему составному * --instui-elevation-. Кнопки переполнения используют промежуточные компонентные токены elevation3 из исходного проекта."
+
+msgctxt "docs.api:prose"
+msgid "A `-icon-*` class may live on the label or its native input; the interaction helper promotes input classes to the label so the shared glyph painter can render it."
+msgstr "Класс `-icon-*` может находиться на метке или на собственном поле ввода; вспомогательная функция взаимодействия переносит классы поля ввода на метку, чтобы общий отрисовщик глифов мог отобразить его."
+
+msgctxt "docs.api:prose"
+msgid "The canonical record name from a record-opening tag, e.g. `button`."
+msgstr "Каноническое имя записи из тега открытия записи, например `button`."
+
+msgctxt "docs.api:prose"
+msgid "Release maturity from `@stage` or a legacy maturity flag tag."
+msgstr "Зрелость выпуска из `@stage` или тега устаревшего флага зрелости."
+
+msgctxt "docs.api:prose"
+msgid "Audience visibility; absent means public."
+msgstr "Видимость для аудитории; отсутствие означает общедоступность."
+
+msgctxt "docs.api:prose"
+msgid "Set when this record carries a `@global` tag — its modifiers (and per-modifier `@global` flags)\napply to any record, not just this record's base class. Used during\nvalidation and consumption checks to resolve modifier matches globally."
+msgstr "Устанавливается, когда эта запись содержит тег `@global` — её модификаторы (и флаги `@global` для каждого модификатора)\n) применяются к любой записи, а не только к базовому классу этой записи. Используется во время\nпроверки и анализа потребления для глобального сопоставления модификаторов."
+
+msgctxt "docs.api:prose"
+msgid "Private `@example` labels, keyed by zero-based index into [examples](#examples)."
+msgstr "Приватные метки `@example`, проиндексированные нулем по индексу в [примеры](#examples)."

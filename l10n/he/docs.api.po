@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: pantoken\n"
-"PO-Revision-Date: 2026-11-20 03:03+0000\n"
+"PO-Revision-Date: 2026-11-21 20:26+0000\n"
 "Last-Translator: pantoken localization engine\n"
 "Language-Team: pantoken\n"
 "MIME-Version: 1.0\n"
@@ -35162,3 +35162,71 @@ msgstr "globalNavBarItemCss"
 msgctxt "docs.api:text"
 msgid "global-nav-bar"
 msgstr "global-nav-bar"
+
+msgctxt "docs.api:prose"
+msgid "Rebrand (light), Canvas, Canvas High Contrast:"
+msgstr "מיתוג מחדש (בהיר), Canvas, Canvas עם ניגודיות גבוהה:"
+
+msgctxt "docs.api:prose"
+msgid " With prefers-contrast: less, one piece of text falls below the minimum contrast. The worst is \"Your session expires soon.\" at 2.74:1 (needs 4.5:1). Softer contrast is fine only while text stays readable."
+msgstr " עם prefers-contrast: less, חלק מהטקסט יורד מתחת לניגודיות המינימלית. הניגודיות הנמוכה ביותר היא ב־\"תוקף ההפעלה שלך עומד לפוג בקרוב.\" ועומדת על 2.74:1 (נדרשת 4.5:1). ניגודיות רכה יותר מתאימה רק כל עוד הטקסט נשאר קריא."
+
+msgctxt "docs.api:prose"
+msgid " With prefers-contrast: less, one piece of text falls below the minimum contrast. The worst is \"Your session expires soon.\" at 2.77:1 (needs 4.5:1). Softer contrast is fine only while text stays readable."
+msgstr " עם prefers-contrast: less, חלק מהטקסט יורד מתחת לניגודיות המינימלית. הניגודיות הנמוכה ביותר היא ב־\"תוקף ההפעלה שלך עומד לפוג בקרוב.\" ועומדת על 2.77:1 (נדרשת 4.5:1). ניגודיות רכה יותר מתאימה רק כל עוד הטקסט נשאר קריא."
+
+msgctxt "docs.api:prose"
+msgid " With prefers-contrast: less, one piece of text falls below the minimum contrast. The worst is \"Your session expires soon.\" at 1.48:1 (needs 4.5:1). Softer contrast is fine only while text stays readable."
+msgstr " עם prefers-contrast: less, חלק מהטקסט יורד מתחת לניגודיות המינימלית. הניגודיות הנמוכה ביותר היא ב־\"תוקף ההפעלה שלך עומד לפוג בקרוב.\" ועומדת על 1.48:1 (נדרשת 4.5:1). ניגודיות רכה יותר מתאימה רק כל עוד הטקסט נשאר קריא."
+
+msgctxt "docs.api:prose"
+msgid " With prefers-contrast: more, one piece of text falls below the minimum contrast. The worst is \"Your session expires soon.\" at 2.74:1 (needs 4.5:1)."
+msgstr " עם prefers-contrast: more, חלק מהטקסט יורד מתחת לניגודיות המינימלית. הניגודיות הנמוכה ביותר היא ב־\"תוקף ההפעלה שלך עומד לפוג בקרוב.\" ועומדת על 2.74:1 (נדרשת 4.5:1)."
+
+msgctxt "docs.api:prose"
+msgid "**Size** controls padding and gap: `relaxed` (default) is roomier; `compact` tightens both. **Color** sets the fill: bare (no modifier) is unfilled — border and icon only; `-color-violet` and `-color-sea` add a tinted background plus a matching icon swatch."
+msgstr "**גודל** שולט בריפוד ובמרווח: `relaxed` (ברירת המחדל) מרווחת יותר; `compact` מצמצם את שניהם. **צבע** קובע את המילוי: ללא שינוי (בלי modifier) אין מילוי — רק מסגרת ואייקון; `-color-violet` ו-`-color-sea` מוסיפים רקע בגוון תואם וגם דוגמית אייקון תואמת."
+
+msgctxt "docs.api:prose"
+msgid "Its own chained modifiers (`-color-*`, `-size-*`, `-shape-*`, `-toggle`, `-condensed`, `-without-background`, `-without-border`, `-display-block`) set a default for every child `.instui-button` that doesn't carry its own modifier in that same category — a button's own modifier class always wins over the group's default. `-icon-*` is always per-button; it's never read from the group. Deprecated button aliases (`-ghost`, `-color-primary-inverse`) aren't supported as group-level modifiers — use their canonical replacements (`-color-tertiary`, `-on-color`) instead. Each join shows a single 1px seam in the buttons' own border color (solid fills, whose border matches the fill, tint it with the label color). `-without-seam` is group-only: it hides that seam so the buttons read as one continuous control. Put `-width-half` on an individual icon-only child button for a split-action trigger with half the standard square width and the full button height."
+msgstr "המודיפיירים המשורשרים משלו (`-color-*`, `-size-*`, `-shape-*`, `-toggle`, `-condensed`, `-without-background`, `-without-border`, `-display-block`) קובעים ברירת מחדל לכל רכיב צאצא `.instui-button` שאינו נושא מודיפייר משלו באותה קטגוריה — מודיפייר משלו של כפתור תמיד גובר על ברירת המחדל של הקבוצה. `-icon-*` מיועד תמיד לכפתור יחיד; הוא לעולם אינו נקרא מהקבוצה. כינויים מיושנים של כפתורים (`-ghost`, `-color-primary-inverse`) אינם נתמכים כמודיפיירים ברמת הקבוצה — השתמשו במקומם בהחלפות הקנוניות (`-color-tertiary`, `-on-color`). כל חיבור מציג תפר יחיד של 1px בצבע המסגרת של הכפתורים (במילויים אחידים, שהגבול שלהם תואם למילוי, הצבע הוא בצבע התווית). `-without-seam` מיועד לקבוצה בלבד: הוא מסתיר תפר זה כדי שהכפתורים ייראו כפקד רציף אחד. הציבו `-width-half` על כפתור בודד לילדי עם סמל בלבד, כדי ליצור מפעיל לפעולה מפוצלת ברוחב ריבועי המחצית מהרגיל ובגובה מלא של הכפתור."
+
+msgctxt "docs.api:prose"
+msgid "Rebrand (light), Rebrand (dark):"
+msgstr "מיתוג מחדש (בהיר), מיתוג מחדש (כהה):"
+
+msgctxt "docs.api:prose"
+msgid " With prefers-contrast: less, four pieces of text fall below the minimum contrast. The worst is \"Disabled unselected\" at 2.74:1 (needs 4.5:1). Softer contrast is fine only while text stays readable."
+msgstr " עם prefers-contrast: less, ארבעה קטעי טקסט יורדים מתחת לניגודיות המינימלית. הניגודיות הנמוכה ביותר היא של \"מושבת, לא נבחר\" — 2.74:1 (נדרשת 4.5:1). ניגודיות רכה יותר מתאימה רק כל עוד הטקסט נשאר קריא."
+
+msgctxt "docs.api:prose"
+msgid " With prefers-contrast: more, four pieces of text fall below the minimum contrast. The worst is \"Disabled unselected\" at 2.74:1 (needs 4.5:1)."
+msgstr " עם prefers-contrast: more, ארבעה קטעי טקסט יורדים מתחת לניגודיות המינימלית. הניגודיות הנמוכה ביותר היא של \"מושבת, לא נבחר\" — 2.74:1 (נדרשת 4.5:1)."
+
+msgctxt "docs.api:prose"
+msgid "The selected segment uses a distinct active-item shadow; it does not match an existing --instui-elevation-* composite. Overflow buttons use the upstream elevation3 component tokens."
+msgstr "הקטע שנבחר משתמש בצל ייחודי לפריט פעיל; הוא אינו תואם לרכיב composite קיים של --instui-elevation-*. כפתורי גלישה משתמשים בטוקני הרכיב elevation3 של upstream."
+
+msgctxt "docs.api:prose"
+msgid "A `-icon-*` class may live on the label or its native input; the interaction helper promotes input classes to the label so the shared glyph painter can render it."
+msgstr "מחלקה `-icon-*` יכולה להיות על התווית או על הקלט המקורי שלה; עוזר האינטראקציה מקדם מחלקות קלט לתווית כך שהצייר המשותף של הגליפים יכול להציג אותה."
+
+msgctxt "docs.api:prose"
+msgid "The canonical record name from a record-opening tag, e.g. `button`."
+msgstr "שם הרשומה הקנוני מתג פתיחת רשומה, למשל `button`."
+
+msgctxt "docs.api:prose"
+msgid "Release maturity from `@stage` or a legacy maturity flag tag."
+msgstr "בשלות גרסה מתוך `@stage` או מתג דגל בשלות מיושן."
+
+msgctxt "docs.api:prose"
+msgid "Audience visibility; absent means public."
+msgstr "נראות הקהל; אם חסר, ההגדרה היא ציבורית."
+
+msgctxt "docs.api:prose"
+msgid "Set when this record carries a `@global` tag — its modifiers (and per-modifier `@global` flags)\napply to any record, not just this record's base class. Used during\nvalidation and consumption checks to resolve modifier matches globally."
+msgstr "נקבע כאשר רשומה זו נושאת תג `@global` — המ modifiers שלה (ודגלי `@global` לכל modifier)\nחלים על כל רשומה, ולא רק על המחלקה הבסיסית של רשומה זו. משמש במהלך\nאימות ובדיקות צריכה לפתרון התאמות modifiers באופן גלובלי."
+
+msgctxt "docs.api:prose"
+msgid "Private `@example` labels, keyed by zero-based index into [examples](#examples)."
+msgstr "תוויות `@example` פרטיות, ממופה לפי אינדקס מבוסס אפס ב-[examples](#examples)."

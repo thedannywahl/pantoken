@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: pantoken\n"
-"PO-Revision-Date: 2026-11-21 16:09+0000\n"
+"PO-Revision-Date: 2026-11-21 19:47+0000\n"
 "Last-Translator: pantoken localization engine\n"
 "Language-Team: pantoken\n"
 "MIME-Version: 1.0\n"
@@ -1830,7 +1830,7 @@ msgstr ""
 #: css/tray.md
 #: css/tree-browser.md
 #: css/view.md
-#, no-c-format
+#, no-c-format, pantoken-verbatim
 msgctxt "docs.api:prose"
 msgid "WCAG 2.2 1.4.3, 1.4.6"
 msgstr ""
@@ -2071,7 +2071,7 @@ msgstr ""
 #: css/truncate.md
 #: css/view.md
 #: css/visual-debug.md
-#, no-c-format
+#, no-c-format, pantoken-verbatim
 msgctxt "docs.api:prose"
 msgid "WCAG 2.2 1.4.10"
 msgstr ""
@@ -2315,7 +2315,7 @@ msgstr ""
 #: css/truncate.md
 #: css/view.md
 #: css/visual-debug.md
-#, no-c-format
+#, no-c-format, pantoken-verbatim
 msgctxt "docs.api:prose"
 msgid "WCAG 2.2 1.4.12"
 msgstr ""
@@ -2967,7 +2967,7 @@ msgstr ""
 #: css/tooltip.md
 #: css/tooltip.md
 #: css/tray.md
-#, no-c-format
+#, no-c-format, pantoken-verbatim
 msgctxt "docs.api:prose"
 msgid "WCAG 2.2 1.4.3"
 msgstr ""
@@ -3327,7 +3327,7 @@ msgstr ""
 #: css/tray.md
 #: css/tree-browser.md
 #: css/view.md
-#, no-c-format
+#, no-c-format, pantoken-verbatim
 msgctxt "docs.api:prose"
 msgid "WCAG 2.2 1.4.11, 2.4.7"
 msgstr ""
@@ -3496,7 +3496,7 @@ msgstr ""
 #: css/toggle-details.md
 #: css/tooltip.md
 #: css/tray.md
-#, no-c-format
+#, no-c-format, pantoken-verbatim
 msgctxt "docs.api:prose"
 msgid "WCAG 2.2 2.3.3, 2.2.2"
 msgstr ""
@@ -4742,7 +4742,7 @@ msgid "target-size"
 msgstr ""
 
 #: css/button-set.md
-#, no-c-format
+#, no-c-format, pantoken-verbatim
 msgctxt "docs.api:prose"
 msgid "WCAG 2.2 2.5.8"
 msgstr ""
@@ -4818,7 +4818,7 @@ msgstr ""
 #: css/tag.md
 #: css/toggle-details.md
 #: css/view.md
-#, no-c-format
+#, no-c-format, pantoken-verbatim
 msgctxt "docs.api:prose"
 msgid "WCAG 2.2 1.4.3, 1.4.11"
 msgstr ""

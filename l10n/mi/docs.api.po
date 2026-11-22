@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: pantoken\n"
-"PO-Revision-Date: 2026-11-20 03:21+0000\n"
+"PO-Revision-Date: 2026-11-21 20:44+0000\n"
 "Last-Translator: pantoken localization engine\n"
 "Language-Team: pantoken\n"
 "MIME-Version: 1.0\n"
@@ -35162,3 +35162,71 @@ msgstr "globalNavBarItemCss"
 msgctxt "docs.api:text"
 msgid "global-nav-bar"
 msgstr "global-nav-bar"
+
+msgctxt "docs.api:prose"
+msgid "Rebrand (light), Canvas, Canvas High Contrast:"
+msgstr "Whakahou (light), Canvas, Te Rerekētanga Tae Tino Nui:"
+
+msgctxt "docs.api:prose"
+msgid " With prefers-contrast: less, one piece of text falls below the minimum contrast. The worst is \"Your session expires soon.\" at 2.74:1 (needs 4.5:1). Softer contrast is fine only while text stays readable."
+msgstr " Mā prefers-contrast: less, ka taka tētahi wāhanga tuhinga ki raro i te rerekētanga iti rawa. Ko te kino rawa ko \"Ka mutu tō wā session i nā tata.\" i te 2.74:1 (me 4.5:1). He pai noa te rerekētanga ngawari i te wā e noho pānuitia ana te tuhinga."
+
+msgctxt "docs.api:prose"
+msgid " With prefers-contrast: less, one piece of text falls below the minimum contrast. The worst is \"Your session expires soon.\" at 2.77:1 (needs 4.5:1). Softer contrast is fine only while text stays readable."
+msgstr " Mā prefers-contrast: less, ka taka tētahi wāhanga tuhinga ki raro i te rerekētanga iti rawa. Ko te kino rawa ko \"Ka mutu tō wā session i nā tata.\" i te 2.77:1 (me 4.5:1). He pai noa te rerekētanga ngawari i te wā e noho pānuitia ana te tuhinga."
+
+msgctxt "docs.api:prose"
+msgid " With prefers-contrast: less, one piece of text falls below the minimum contrast. The worst is \"Your session expires soon.\" at 1.48:1 (needs 4.5:1). Softer contrast is fine only while text stays readable."
+msgstr " Mā prefers-contrast: less, ka taka tētahi wāhanga tuhinga ki raro i te rerekētanga iti rawa. Ko te kino rawa ko \"Ka mutu tō wā session i nā tata.\" i te 1.48:1 (me 4.5:1). He pai noa te rerekētanga ngawari i te wā e noho pānuitia ana te tuhinga."
+
+msgctxt "docs.api:prose"
+msgid " With prefers-contrast: more, one piece of text falls below the minimum contrast. The worst is \"Your session expires soon.\" at 2.74:1 (needs 4.5:1)."
+msgstr " Mā prefers-contrast: more, ka taka tētahi wāhanga tuhinga ki raro i te rerekētanga iti rawa. Ko te kino rawa ko \"Ka mutu tō wā session i nā tata.\" i te 2.74:1 (me 4.5:1)."
+
+msgctxt "docs.api:prose"
+msgid "**Size** controls padding and gap: `relaxed` (default) is roomier; `compact` tightens both. **Color** sets the fill: bare (no modifier) is unfilled — border and icon only; `-color-violet` and `-color-sea` add a tinted background plus a matching icon swatch."
+msgstr "**Rahi** e whakahaere ana i te padding me te āputa: `relaxed` (taunoa) he whānui ake; `compact` ka whakaiti i ēnei e rua. **Tae** e tautuhi ana i te whakakī: ko te kore (kāore he whakakē) kāore e whakakī — he taitapa me te ata anake; `-color-violet` me `-color-sea` ka tāpiri i tētahi papamuri whai tae me tētahi tauira tae ata e hāngai ana."
+
+msgctxt "docs.api:prose"
+msgid "Its own chained modifiers (`-color-*`, `-size-*`, `-shape-*`, `-toggle`, `-condensed`, `-without-background`, `-without-border`, `-display-block`) set a default for every child `.instui-button` that doesn't carry its own modifier in that same category — a button's own modifier class always wins over the group's default. `-icon-*` is always per-button; it's never read from the group. Deprecated button aliases (`-ghost`, `-color-primary-inverse`) aren't supported as group-level modifiers — use their canonical replacements (`-color-tertiary`, `-on-color`) instead. Each join shows a single 1px seam in the buttons' own border color (solid fills, whose border matches the fill, tint it with the label color). `-without-seam` is group-only: it hides that seam so the buttons read as one continuous control. Put `-width-half` on an individual icon-only child button for a split-action trigger with half the standard square width and the full button height."
+msgstr "Ko ōna whakarerekē mekameka ake (`-color-*`, `-size-*`, `-shape-*`, `-toggle`, `-condensed`, `-without-background`, `-without-border`, `-display-block`) ka whakarite i tētahi taunoa mō ia tamaiti `.instui-button` kāore e mau i tana ake whakarerekē i taua kāwai anō — ko te akomanga whakarerekē ake a te pātene ka toa i te taunoa a te rōpū. `-icon-*` he pātene-takitahi tonu; kāore rawa i te pānuihia mai i te rōpū. Kāore e tautokona ngā ingoa whakarite tawhito a te pātene (`-ghost`, `-color-primary-inverse`) hei whakarerekē taumata-rōpū — whakamahia ōna whakakapinga tikanga (`-color-tertiary`, `-on-color`) kē. Ka whakaatu ia hononga i tētahi raina hono 1px kotahi i te tae taitapa ake o ngā pātene (mō ngā kī tonu, ko tōna taitapa e ōrite ana ki te kī, whakatia ki te tae tapanga). `-without-seam` he rōpū-anake: ka hunahia taua raina hono kia pānuihia ai ngā pātene hei whakahaerenga kotahi tonu. Whakatakotoria `-width-half` ki runga i tētahi tamaiti pātene atāhono-takitahi takitahi hei pūoho mahi-wehewehe me te haurua o te whānui tapawha paerewa me te teitei pātene katoa."
+
+msgctxt "docs.api:prose"
+msgid "Rebrand (light), Rebrand (dark):"
+msgstr "Whakahou (light), Whakahou (dark):"
+
+msgctxt "docs.api:prose"
+msgid " With prefers-contrast: less, four pieces of text fall below the minimum contrast. The worst is \"Disabled unselected\" at 2.74:1 (needs 4.5:1). Softer contrast is fine only while text stays readable."
+msgstr " Mā te prefers-contrast: less, e whā ngā wāhanga tuhituhi e heke iho ana i te rerekētanga iti rawa. Ko te kino rawa ko \"Kua monokia, kāore i tīpakohia\" i te 2.74:1 (me 4.5:1). He pai noa te rerekētanga ngoikore engari me noho tonu te tuhituhi hei mea pānui."
+
+msgctxt "docs.api:prose"
+msgid " With prefers-contrast: more, four pieces of text fall below the minimum contrast. The worst is \"Disabled unselected\" at 2.74:1 (needs 4.5:1)."
+msgstr " Mā te prefers-contrast: more, e whā ngā wāhanga tuhituhi e heke iho ana i te rerekētanga iti rawa. Ko te kino rawa ko \"Kua monokia, kāore i tīpakohia\" i te 2.74:1 (me 4.5:1)."
+
+msgctxt "docs.api:prose"
+msgid "The selected segment uses a distinct active-item shadow; it does not match an existing --instui-elevation-* composite. Overflow buttons use the upstream elevation3 component tokens."
+msgstr "Ka whakamahi te wāhanga kua tīpakohia i tētahi atarangi tūemi hohe motuhake; kāore e taurite ki tētahi pūhui --instui-elevation-* e noho ana. Ka whakamahi ngā pātene rerenga rawa i ngā tohu wāhanga elevation3 o te puna."
+
+msgctxt "docs.api:prose"
+msgid "A `-icon-*` class may live on the label or its native input; the interaction helper promotes input classes to the label so the shared glyph painter can render it."
+msgstr "Ka taea e te akomanga `-icon-*` te noho i runga i te tapanga, i tōna tāuru taketake rānei; ka whakatairanga te pūāwhina tauwhitinga i ngā akomanga tāuru ki te tapanga kia taea ai e te kaipeita glyph tiri te tuhi."
+
+msgctxt "docs.api:prose"
+msgid "The canonical record name from a record-opening tag, e.g. `button`."
+msgstr "Te ingoa tūturu o te rekoata mai i tētahi tūtohu whakatuwhera rekoata, hei tauira `button`."
+
+msgctxt "docs.api:prose"
+msgid "Release maturity from `@stage` or a legacy maturity flag tag."
+msgstr "Te taumata pakeketanga tuku mai i `@stage` rānei i tētahi tūtohu haki taumata pakeketanga tawhito."
+
+msgctxt "docs.api:prose"
+msgid "Audience visibility; absent means public."
+msgstr "Te kitea e te hunga whakarongo; ki te kore e tautuhia, he tūmatanui."
+
+msgctxt "docs.api:prose"
+msgid "Set when this record carries a `@global` tag — its modifiers (and per-modifier `@global` flags)\napply to any record, not just this record's base class. Used during\nvalidation and consumption checks to resolve modifier matches globally."
+msgstr "Ka tautuhia ina mau tēnei rekoata i te tūtohu `@global` — ka pā ōna whakarerekētanga (me ngā haki `@global` mō ia whakarerekētanga)\nki ngā rekoata katoa, kaua ki te akomanga tūāpapa o tēnei rekoata anake. Ka whakamahia i te wā o te\nwhakamana me ngā arowhai whakamahi hei whakatau i ngā ōritenga whakarerekētanga puta noa i te katoa."
+
+msgctxt "docs.api:prose"
+msgid "Private `@example` labels, keyed by zero-based index into [examples](#examples)."
+msgstr "Ngā tapanga `@example` tūmataiti, ka tohua mā te taupū tīmata-kore ki roto i [examples](#examples)."

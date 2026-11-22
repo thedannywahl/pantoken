@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: pantoken\n"
-"PO-Revision-Date: 2026-11-20 02:41+0000\n"
+"PO-Revision-Date: 2026-11-21 20:05+0000\n"
 "Last-Translator: pantoken localization engine\n"
 "Language-Team: pantoken\n"
 "MIME-Version: 1.0\n"
@@ -857,7 +857,7 @@ msgstr "more-contrast-respected"
 #: css/tabs.tab.md css/tag.md css/text-area.md css/text-input.md
 #: css/toggle-group.md css/tooltip.md css/tray.md css/tree-browser.md
 #: css/view.md
-#, no-c-format
+#, no-c-format, pantoken-verbatim
 msgctxt "docs.api:prose"
 msgid "WCAG 2.2 1.4.3, 1.4.6"
 msgstr "WCAG 2.2 1.4.3, 1.4.6"
@@ -935,7 +935,7 @@ msgstr "reflow-at-320px"
 #: css/text-input.md css/text.md css/toggle-details.md css/toggle-group.md
 #: css/tooltip.md css/transition.md css/tray.md css/tree-browser.md
 #: css/truncate.md css/view.md css/visual-debug.md
-#, no-c-format
+#, no-c-format, pantoken-verbatim
 msgctxt "docs.api:prose"
 msgid "WCAG 2.2 1.4.10"
 msgstr "WCAG 2.2 1.4.10"
@@ -1017,7 +1017,7 @@ msgstr "text-spacing-no-clipping"
 #: css/text-input.md css/text.md css/toggle-details.md css/toggle-group.md
 #: css/tooltip.md css/transition.md css/tray.md css/tree-browser.md
 #: css/truncate.md css/view.md css/visual-debug.md
-#, no-c-format
+#, no-c-format, pantoken-verbatim
 msgctxt "docs.api:prose"
 msgid "WCAG 2.2 1.4.12"
 msgstr "WCAG 2.2 1.4.12"
@@ -1207,7 +1207,7 @@ msgstr "color-contrast"
 #: css/popover.md css/progress.md css/radio-input-group.md css/radio.md
 #: css/segmented-control.md css/simple-select.md css/tabs.md
 #: css/toggle-details.md css/toggle-group.md css/tooltip.md css/tray.md
-#, no-c-format
+#, no-c-format, pantoken-verbatim
 msgctxt "docs.api:prose"
 msgid "WCAG 2.2 1.4.3"
 msgstr "WCAG 2.2 1.4.3"
@@ -1439,7 +1439,7 @@ msgstr "forced-colors-focus-visible"
 #: css/tabs.md css/tabs.panel.md css/tabs.tab.md css/tag.md css/text-area.md
 #: css/text-input.md css/toggle-details.md css/toggle-group.md css/tooltip.md
 #: css/tray.md css/tree-browser.md css/view.md
-#, no-c-format
+#, no-c-format, pantoken-verbatim
 msgctxt "docs.api:prose"
 msgid "WCAG 2.2 1.4.11, 2.4.7"
 msgstr "WCAG 2.2 1.4.11, 2.4.7"
@@ -1483,7 +1483,7 @@ msgstr "reduced-motion-respected"
 #: css/screen-reader-content.md css/segmented-control.md css/simple-select.md
 #: css/skeleton-loader.md css/spinner.md css/tabs.md css/tabs.panel.md
 #: css/tabs.tab.md css/toggle-details.md css/tooltip.md css/tray.md
-#, no-c-format
+#, no-c-format, pantoken-verbatim
 msgctxt "docs.api:prose"
 msgid "WCAG 2.2 2.3.3, 2.2.2"
 msgstr "WCAG 2.2 2.3.3, 2.2.2"
@@ -2719,7 +2719,7 @@ msgstr "reduced-transparency-respected"
 
 #: css/button-set.md css/button.md css/maskglobal.md css/number-input.md
 #: css/segmented-control.md css/tag.md css/toggle-details.md css/view.md
-#, no-c-format
+#, no-c-format, pantoken-verbatim
 msgctxt "docs.api:prose"
 msgid "WCAG 2.2 1.4.3, 1.4.11"
 msgstr "WCAG 2.2 1.4.3, 1.4.11"
@@ -36067,3 +36067,86 @@ msgstr "globalNavBarItemCss"
 msgctxt "docs.api:text"
 msgid "global-nav-bar"
 msgstr "global-nav-bar"
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "Rebrand (light), Canvas, Canvas High Contrast:"
+msgstr "Rebrand (light), Canvas, Canvas High Contrast:"
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid " With prefers-contrast: less, one piece of text falls below the minimum contrast. The worst is \"Your session expires soon.\" at 2.74:1 (needs 4.5:1). Softer contrast is fine only while text stays readable."
+msgstr " With prefers-contrast: less, one piece of text falls below the minimum contrast. The worst is \"Your session expires soon.\" at 2.74:1 (needs 4.5:1). Softer contrast is fine only while text stays readable."
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid " With prefers-contrast: less, one piece of text falls below the minimum contrast. The worst is \"Your session expires soon.\" at 2.77:1 (needs 4.5:1). Softer contrast is fine only while text stays readable."
+msgstr " With prefers-contrast: less, one piece of text falls below the minimum contrast. The worst is \"Your session expires soon.\" at 2.77:1 (needs 4.5:1). Softer contrast is fine only while text stays readable."
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid " With prefers-contrast: less, one piece of text falls below the minimum contrast. The worst is \"Your session expires soon.\" at 1.48:1 (needs 4.5:1). Softer contrast is fine only while text stays readable."
+msgstr " With prefers-contrast: less, one piece of text falls below the minimum contrast. The worst is \"Your session expires soon.\" at 1.48:1 (needs 4.5:1). Softer contrast is fine only while text stays readable."
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid " With prefers-contrast: more, one piece of text falls below the minimum contrast. The worst is \"Your session expires soon.\" at 2.74:1 (needs 4.5:1)."
+msgstr " With prefers-contrast: more, one piece of text falls below the minimum contrast. The worst is \"Your session expires soon.\" at 2.74:1 (needs 4.5:1)."
+
+msgctxt "docs.api:prose"
+msgid "**Size** controls padding and gap: `relaxed` (default) is roomier; `compact` tightens both. **Color** sets the fill: bare (no modifier) is unfilled — border and icon only; `-color-violet` and `-color-sea` add a tinted background plus a matching icon swatch."
+msgstr "**Size** controls padding and gap: `relaxed` (default) is roomier; `compact` tightens both. **Colour** sets the fill: bare (no modifier) is unfilled — border and icon only; `-color-violet` and `-color-sea` add a tinted background plus a matching icon swatch."
+
+msgctxt "docs.api:prose"
+msgid "Its own chained modifiers (`-color-*`, `-size-*`, `-shape-*`, `-toggle`, `-condensed`, `-without-background`, `-without-border`, `-display-block`) set a default for every child `.instui-button` that doesn't carry its own modifier in that same category — a button's own modifier class always wins over the group's default. `-icon-*` is always per-button; it's never read from the group. Deprecated button aliases (`-ghost`, `-color-primary-inverse`) aren't supported as group-level modifiers — use their canonical replacements (`-color-tertiary`, `-on-color`) instead. Each join shows a single 1px seam in the buttons' own border color (solid fills, whose border matches the fill, tint it with the label color). `-without-seam` is group-only: it hides that seam so the buttons read as one continuous control. Put `-width-half` on an individual icon-only child button for a split-action trigger with half the standard square width and the full button height."
+msgstr "Its own chained modifiers (`-color-*`, `-size-*`, `-shape-*`, `-toggle`, `-condensed`, `-without-background`, `-without-border`, `-display-block`) set a default for every child `.instui-button` that doesn't carry its own modifier in that same category — a button's own modifier class always wins over the group's default. `-icon-*` is always per-button; it's never read from the group. Deprecated button aliases (`-ghost`, `-color-primary-inverse`) aren't supported as group-level modifiers — use their canonical replacements (`-color-tertiary`, `-on-color`) instead. Each join shows a single 1px seam in the buttons' own border colour (solid fills, whose border matches the fill, tint it with the label colour). `-without-seam` is group-only: it hides that seam so the buttons read as one continuous control. Put `-width-half` on an individual icon-only child button for a split-action trigger with half the standard square width and the full button height."
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "Rebrand (light), Rebrand (dark):"
+msgstr "Rebrand (light), Rebrand (dark):"
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid " With prefers-contrast: less, four pieces of text fall below the minimum contrast. The worst is \"Disabled unselected\" at 2.74:1 (needs 4.5:1). Softer contrast is fine only while text stays readable."
+msgstr " With prefers-contrast: less, four pieces of text fall below the minimum contrast. The worst is \"Disabled unselected\" at 2.74:1 (needs 4.5:1). Softer contrast is fine only while text stays readable."
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid " With prefers-contrast: more, four pieces of text fall below the minimum contrast. The worst is \"Disabled unselected\" at 2.74:1 (needs 4.5:1)."
+msgstr " With prefers-contrast: more, four pieces of text fall below the minimum contrast. The worst is \"Disabled unselected\" at 2.74:1 (needs 4.5:1)."
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "The selected segment uses a distinct active-item shadow; it does not match an existing --instui-elevation-* composite. Overflow buttons use the upstream elevation3 component tokens."
+msgstr "The selected segment uses a distinct active-item shadow; it does not match an existing --instui-elevation-* composite. Overflow buttons use the upstream elevation3 component tokens."
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "A `-icon-*` class may live on the label or its native input; the interaction helper promotes input classes to the label so the shared glyph painter can render it."
+msgstr "A `-icon-*` class may live on the label or its native input; the interaction helper promotes input classes to the label so the shared glyph painter can render it."
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "The canonical record name from a record-opening tag, e.g. `button`."
+msgstr "The canonical record name from a record-opening tag, e.g. `button`."
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "Release maturity from `@stage` or a legacy maturity flag tag."
+msgstr "Release maturity from `@stage` or a legacy maturity flag tag."
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "Audience visibility; absent means public."
+msgstr "Audience visibility; absent means public."
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "Set when this record carries a `@global` tag — its modifiers (and per-modifier `@global` flags)\napply to any record, not just this record's base class. Used during\nvalidation and consumption checks to resolve modifier matches globally."
+msgstr "Set when this record carries a `@global` tag — its modifiers (and per-modifier `@global` flags)\napply to any record, not just this record's base class. Used during\nvalidation and consumption checks to resolve modifier matches globally."
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "Private `@example` labels, keyed by zero-based index into [examples](#examples)."
+msgstr "Private `@example` labels, keyed by zero-based index into [examples](#examples)."

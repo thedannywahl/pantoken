@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: pantoken\n"
-"PO-Revision-Date: 2026-11-20 03:56+0000\n"
+"PO-Revision-Date: 2026-11-21 21:21+0000\n"
 "Last-Translator: pantoken localization engine\n"
 "Language-Team: pantoken\n"
 "MIME-Version: 1.0\n"
@@ -31259,9 +31259,10 @@ msgctxt "docs.api:prose"
 msgid "Canvas High Contrast"
 msgstr "Canvas 高對比"
 
+#, pantoken-verbatim
 msgctxt "docs.api:prose"
 msgid "WCAG 2.2 1.4.3, 1.4.6"
-msgstr "WCAG 2.2 1.4.3、1.4.6"
+msgstr "WCAG 2.2 1.4.3, 1.4.6"
 
 msgctxt "docs.api:prose"
 msgid "Review needed"
@@ -31508,9 +31509,10 @@ msgctxt "docs.api:prose"
 msgid " With prefers-contrast: more, two pieces of text fall below the minimum contrast. The worst is \"Rewrite\" at 1.88:1 (needs 4.5:1)."
 msgstr " 在 prefers-contrast: more 的情況下，有兩段文字的對比度低於最低要求。最差的是「改寫」，對比度為 1.88:1（需要 4.5:1)。"
 
+#, pantoken-verbatim
 msgctxt "docs.api:prose"
 msgid "WCAG 2.2 1.4.3, 1.4.11"
-msgstr "WCAG 2.2 1.4.3、1.4.11"
+msgstr "WCAG 2.2 1.4.3, 1.4.11"
 
 msgctxt "docs.api:prose"
 msgid "In a 320px window, the page scrolls sideways (it is 592px wide in a 320px window), and one element reaches past the right edge: "
@@ -32810,3 +32812,73 @@ msgstr "globalNavBarItemCss"
 msgctxt "docs.api:text"
 msgid "global-nav-bar"
 msgstr "global-nav-bar"
+
+msgctxt "docs.api:prose"
+msgid "Rebrand (light), Canvas, Canvas High Contrast:"
+msgstr "品牌重塑（light)、Canvas、Canvas 高對比："
+
+msgctxt "docs.api:prose"
+msgid " With prefers-contrast: less, one piece of text falls below the minimum contrast. The worst is \"Your session expires soon.\" at 2.74:1 (needs 4.5:1). Softer contrast is fine only while text stays readable."
+msgstr " 使用 prefers-contrast：less 時，有一段文字低於最低對比度。最差的文字是「Your session expires soon.」，對比度為 2.74:1（需要 4.5:1)。只有文字仍保持可讀時，較柔和的對比度才適用。"
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid " With prefers-contrast: less, one piece of text falls below the minimum contrast. The worst is \"Your session expires soon.\" at 2.77:1 (needs 4.5:1). Softer contrast is fine only while text stays readable."
+msgstr " With prefers-contrast: less, one piece of text falls below the minimum contrast. The worst is \"Your session expires soon.\" at 2.77:1 (needs 4.5:1). Softer contrast is fine only while text stays readable."
+
+msgctxt "docs.api:prose"
+msgid " With prefers-contrast: less, one piece of text falls below the minimum contrast. The worst is \"Your session expires soon.\" at 1.48:1 (needs 4.5:1). Softer contrast is fine only while text stays readable."
+msgstr " 使用 prefers-contrast：less 時，有一段文字低於最低對比度。最差的文字是「Your session expires soon.」，對比度為 1.48:1（需要 4.5:1)。只有文字仍保持可讀時，較柔和的對比度才適用。"
+
+msgctxt "docs.api:prose"
+msgid " With prefers-contrast: more, one piece of text falls below the minimum contrast. The worst is \"Your session expires soon.\" at 2.74:1 (needs 4.5:1)."
+msgstr " 使用 prefers-contrast：more 時，有一段文字低於最低對比度。最差的文字是「Your session expires soon.」，對比度為 2.74:1（需要 4.5:1)。"
+
+msgctxt "docs.api:prose"
+msgid "**Size** controls padding and gap: `relaxed` (default) is roomier; `compact` tightens both. **Color** sets the fill: bare (no modifier) is unfilled — border and icon only; `-color-violet` and `-color-sea` add a tinted background plus a matching icon swatch."
+msgstr "**尺寸** 控制內距與間距：`relaxed`（預設)較寬裕；`compact`會同時縮小兩者。**顏色**設定填色：不加修飾符時)不填色，僅顯示邊框與圖示；`-color-violet`和`-color-sea`會加上淡色背景和相符的圖示色塊。"
+
+msgctxt "docs.api:prose"
+msgid "Its own chained modifiers (`-color-*`, `-size-*`, `-shape-*`, `-toggle`, `-condensed`, `-without-background`, `-without-border`, `-display-block`) set a default for every child `.instui-button` that doesn't carry its own modifier in that same category — a button's own modifier class always wins over the group's default. `-icon-*` is always per-button; it's never read from the group. Deprecated button aliases (`-ghost`, `-color-primary-inverse`) aren't supported as group-level modifiers — use their canonical replacements (`-color-tertiary`, `-on-color`) instead. Each join shows a single 1px seam in the buttons' own border color (solid fills, whose border matches the fill, tint it with the label color). `-without-seam` is group-only: it hides that seam so the buttons read as one continuous control. Put `-width-half` on an individual icon-only child button for a split-action trigger with half the standard square width and the full button height."
+msgstr "其自身串接的修飾符（`-color-*`、`-size-*`、`-shape-*`、`-toggle`、`-condensed`、`-without-background`、`-without-border`、`-display-block`)會為每個在相同類別中沒有自身修飾符的子項目設定預設值 — 按鈕自身的修飾符類別一定會優先於群組預設值。`-icon-*`一律按個別按鈕設定；絕不會從群組讀取。已棄用的按鈕別名（`-ghost`、`-color-primary-inverse`)）不支援作為群組層級修飾符 — 請改用其標準替代項（`-color-tertiary`、`-on-color`)。每個接合處都會顯示一條 1px 的接縫，顏色與按鈕自身的邊框相同（純色填滿按鈕的邊框與填滿色相同，因此接縫會帶有標籤文字的顏色)。`-without-seam`僅適用於群組：它會隱藏這條接縫，讓按鈕看起來像一個連續的控制項。將 `-width-half`加在個別的純圖示子按鈕上，可建立分割動作觸發器，其寬度為標準正方形按鈕的一半，高度則與完整按鈕相同。"
+
+msgctxt "docs.api:prose"
+msgid "Rebrand (light), Rebrand (dark):"
+msgstr "品牌重塑 (淺色), 品牌重塑 (深色:"
+
+msgctxt "docs.api:prose"
+msgid " With prefers-contrast: less, four pieces of text fall below the minimum contrast. The worst is \"Disabled unselected\" at 2.74:1 (needs 4.5:1). Softer contrast is fine only while text stays readable."
+msgstr " 在 prefers-contrast: less 模式下，有四段文字低於最低對比度。最差的是「Disabled unselected」，僅為 2.74:1（需要 4.5:1)。只有文字保持清晰可讀時，較柔和的對比才適用。"
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid " With prefers-contrast: more, four pieces of text fall below the minimum contrast. The worst is \"Disabled unselected\" at 2.74:1 (needs 4.5:1)."
+msgstr " With prefers-contrast: more, four pieces of text fall below the minimum contrast. The worst is \"Disabled unselected\" at 2.74:1 (needs 4.5:1)."
+
+msgctxt "docs.api:prose"
+msgid "The selected segment uses a distinct active-item shadow; it does not match an existing --instui-elevation-* composite. Overflow buttons use the upstream elevation3 component tokens."
+msgstr "所選區段使用獨特的作用中項目陰影；它不符合現有的 --instui-elevation-* 複合設定。溢位按鈕使用上游 elevation3 元件權杖。"
+
+msgctxt "docs.api:prose"
+msgid "A `-icon-*` class may live on the label or its native input; the interaction helper promotes input classes to the label so the shared glyph painter can render it."
+msgstr "一個 `-icon-*` 類別可位於標籤或其原生輸入元素上；互動輔助工具會將輸入元素的類別提升至標籤，以便共用圖示繪製器能夠呈現它。"
+
+msgctxt "docs.api:prose"
+msgid "The canonical record name from a record-opening tag, e.g. `button`."
+msgstr "記錄開啟標籤中的規範記錄名稱，例如 `button`。"
+
+msgctxt "docs.api:prose"
+msgid "Release maturity from `@stage` or a legacy maturity flag tag."
+msgstr "來自 `@stage` 或舊版成熟度旗標標籤的發布成熟度。"
+
+msgctxt "docs.api:prose"
+msgid "Audience visibility; absent means public."
+msgstr "受眾可見性；未設定表示公開。"
+
+msgctxt "docs.api:prose"
+msgid "Set when this record carries a `@global` tag — its modifiers (and per-modifier `@global` flags)\napply to any record, not just this record's base class. Used during\nvalidation and consumption checks to resolve modifier matches globally."
+msgstr "當此記錄帶有 `@global` 標籤時設置 — 其修飾符（以及每個修飾符的 `@global` 旗標)\n適用於所有記錄，而不僅限於此記錄的基礎類別。用於\n驗證和消費檢查，以全域解析修飾符比對。"
+
+msgctxt "docs.api:prose"
+msgid "Private `@example` labels, keyed by zero-based index into [examples](#examples)."
+msgstr "私人 `@example` 標籤，依據 [examples](#examples) 中的零基索引建立索引。"

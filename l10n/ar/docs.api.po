@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: pantoken\n"
-"PO-Revision-Date: 2026-11-20 20:30+0000\n"
+"PO-Revision-Date: 2026-11-21 22:33+0000\n"
 "Last-Translator: pantoken localization engine\n"
 "Language-Team: pantoken\n"
 "MIME-Version: 1.0\n"
@@ -207,7 +207,7 @@ msgstr "**حوّل حزم InstUI الإضافية**"
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "<!-- pantoken-value-scope:bundlers%2Fnext%2Fsrc%2Findex.md -->\nTarget: Next.js. Current format: {{ptk_code_0}}. Minimum host version: {{ptk_code_1}}. Tested through {{ptk_code_2}}. Newer releases require review."
-msgstr "<!-- pantoken-value-scope:bundlers%2Fnext%2Fsrc%2Findex.md -->\nTarget: Next.js. Current format: {{ptk_code_0}}. Minimum host version: {{ptk_code_1}}. Tested through {{ptk_code_2}}. Newer releases require review."
+msgstr "<!-- pantoken-value-scope:bundlers%2Fnext%2Fsrc%2Findex.md -->\nالهدف: Next.js. التنسيق الحالي: {{ptk_code_0}}. الحد الأدنى لإصدار المضيف: {{ptk_code_1}}. تم الاختبار وصولًا إلى {{ptk_code_2}}. تتطلب الإصدارات الأحدث مراجعة."
 
 #: bundlers/next/src/index.md
 #, fuzzy, no-c-format
@@ -382,7 +382,7 @@ msgstr "**ادمجه في panda.config.ts**"
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "<!-- pantoken-value-scope:bundlers%2Fpostcss%2Fsrc%2Findex.md -->\nTarget: PostCSS. Minimum host version: {{ptk_code_0}}. Tested through {{ptk_code_1}}. Newer releases require review."
-msgstr "<!-- pantoken-value-scope:bundlers%2Fpostcss%2Fsrc%2Findex.md -->\nTarget: PostCSS. Minimum host version: {{ptk_code_0}}. Tested through {{ptk_code_1}}. Newer releases require review."
+msgstr "<!-- pantoken-value-scope:bundlers%2Fpostcss%2Fsrc%2Findex.md -->\nالهدف: PostCSS. الحد الأدنى لإصدار المضيف: {{ptk_code_0}}. تم الاختبار حتى {{ptk_code_1}}. تتطلب الإصدارات الأحدث مراجعة."
 
 #: bundlers/postcss/src/index.md
 #, no-c-format
@@ -482,7 +482,7 @@ msgstr "**اعرض أيضًا لوحة الألوان primitive تحت بادئ�
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "<!-- pantoken-value-scope:bundlers%2Ftailwind%2Fsrc%2Findex.md -->\nTarget: Tailwind CSS. Minimum host version: {{ptk_code_0}}. Tested through {{ptk_code_1}}. Newer releases require review."
-msgstr "<!-- pantoken-value-scope:bundlers%2Ftailwind%2Fsrc%2Findex.md -->\nTarget: Tailwind CSS. Minimum host version: {{ptk_code_0}}. Tested through {{ptk_code_1}}. Newer releases require review."
+msgstr "<!-- pantoken-value-scope:bundlers%2Ftailwind%2Fsrc%2Findex.md -->\nالهدف: Tailwind CSS. الحد الأدنى لإصدار المضيف: {{ptk_code_0}}. تم اختباره حتى {{ptk_code_1}}. تتطلب الإصدارات الأحدث مراجعة."
 
 #: bundlers/tailwind/src/index.md
 #, fuzzy, no-c-format
@@ -554,7 +554,7 @@ msgstr "**استخدم الوحدات الافتراضية في كود التط�
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "<!-- pantoken-value-scope:bundlers%2Fvite%2Fsrc%2Findex.md -->\nTarget: Vite. Minimum host version: {{ptk_code_0}}. Tested through {{ptk_code_1}}. Newer releases require review."
-msgstr "<!-- pantoken-value-scope:bundlers%2Fvite%2Fsrc%2Findex.md -->\nTarget: Vite. Minimum host version: {{ptk_code_0}}. Tested through {{ptk_code_1}}. Newer releases require review."
+msgstr "<!-- pantoken-value-scope:bundlers%2Fvite%2Fsrc%2Findex.md -->\nالهدف: Vite. الحد الأدنى لإصدار المضيف: {{ptk_code_0}}. تم الاختبار حتى الإصدار {{ptk_code_1}}. تتطلب الإصدارات الأحدث مراجعة."
 
 #: bundlers/vite/src/index.md
 #, fuzzy, no-c-format
@@ -614,7 +614,7 @@ msgstr "**إعادة تسمية الأصل المُصدر**"
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "<!-- pantoken-value-scope:bundlers%2Fwebpack%2Fsrc%2Findex.md -->\nTarget: webpack. Current format: {{ptk_code_0}}. Minimum host version: {{ptk_code_1}}. Tested through {{ptk_code_2}}. Newer releases require review."
-msgstr "<!-- pantoken-value-scope:bundlers%2Fwebpack%2Fsrc%2Findex.md -->\nTarget: webpack. Current format: {{ptk_code_0}}. Minimum host version: {{ptk_code_1}}. Tested through {{ptk_code_2}}. Newer releases require review."
+msgstr "<!-- pantoken-value-scope:bundlers%2Fwebpack%2Fsrc%2Findex.md -->\nالهدف: webpack. التنسيق الحالي: {{ptk_code_0}}. الحد الأدنى لإصدار المضيف: {{ptk_code_1}}. تم الاختبار حتى {{ptk_code_2}}. تتطلب الإصدارات الأحدث مراجعة."
 
 #: bundlers/webpack/src/index.md
 #, no-c-format
@@ -677,7 +677,8 @@ msgstr "الغلاف عبارة عن حاوية عادية ليس لها دور 
 #: css/checkbox.md css/close-button.md css/context-view.md css/cursor.md
 #: css/drawer-layout.content.md css/drawer-layout.md css/drawer-layout.tray.md
 #: css/file-drop.md css/form-field-group.md css/form-field-messages.md
-#: css/form-field.md css/gap.md css/heading.md css/icon.md css/img.md
+#: css/form-field.md css/gap.md css/global-nav-bar.item.md
+#: css/global-nav-bar.md css/heading.md css/icon.md css/img.md
 #: css/in-place-edit.md css/input-group.md css/layout.md css/link.md
 #: css/list.item.md css/list.md css/logo.md css/mask.md css/maskglobal.md
 #: css/menu.group.md css/menu.item.md css/menu.md css/menu.separator.md
@@ -707,7 +708,8 @@ msgstr "الشروط"
 #: css/checkbox.md css/close-button.md css/context-view.md css/cursor.md
 #: css/drawer-layout.content.md css/drawer-layout.md css/drawer-layout.tray.md
 #: css/file-drop.md css/form-field-group.md css/form-field-messages.md
-#: css/form-field.md css/gap.md css/heading.md css/icon.md css/img.md
+#: css/form-field.md css/gap.md css/global-nav-bar.item.md
+#: css/global-nav-bar.md css/heading.md css/icon.md css/img.md
 #: css/in-place-edit.md css/input-group.md css/layout.md css/link.md
 #: css/list.item.md css/list.md css/logo.md css/mask.md css/maskglobal.md
 #: css/menu.group.md css/menu.item.md css/menu.md css/menu.separator.md
@@ -737,7 +739,8 @@ msgstr "إعادة تصميم العلامة التجارية (فاتح)"
 #: css/checkbox.md css/close-button.md css/context-view.md css/cursor.md
 #: css/drawer-layout.content.md css/drawer-layout.md css/drawer-layout.tray.md
 #: css/file-drop.md css/form-field-group.md css/form-field-messages.md
-#: css/form-field.md css/gap.md css/heading.md css/icon.md css/img.md
+#: css/form-field.md css/gap.md css/global-nav-bar.item.md
+#: css/global-nav-bar.md css/heading.md css/icon.md css/img.md
 #: css/in-place-edit.md css/input-group.md css/layout.md css/link.md
 #: css/list.item.md css/list.md css/logo.md css/mask.md css/maskglobal.md
 #: css/menu.group.md css/menu.item.md css/menu.md css/menu.separator.md
@@ -767,7 +770,8 @@ msgstr "إعادة تصميم العلامة التجارية (داكن)"
 #: css/checkbox.md css/close-button.md css/context-view.md css/cursor.md
 #: css/drawer-layout.content.md css/drawer-layout.md css/drawer-layout.tray.md
 #: css/file-drop.md css/form-field-group.md css/form-field-messages.md
-#: css/form-field.md css/gap.md css/heading.md css/icon.md css/img.md
+#: css/form-field.md css/gap.md css/global-nav-bar.item.md
+#: css/global-nav-bar.md css/heading.md css/icon.md css/img.md
 #: css/in-place-edit.md css/input-group.md css/layout.md css/link.md
 #: css/list.item.md css/list.md css/logo.md css/mask.md css/maskglobal.md
 #: css/menu.group.md css/menu.item.md css/menu.md css/menu.separator.md
@@ -797,7 +801,8 @@ msgstr "Canvas"
 #: css/checkbox.md css/close-button.md css/context-view.md css/cursor.md
 #: css/drawer-layout.content.md css/drawer-layout.md css/drawer-layout.tray.md
 #: css/file-drop.md css/form-field-group.md css/form-field-messages.md
-#: css/form-field.md css/gap.md css/heading.md css/icon.md css/img.md
+#: css/form-field.md css/gap.md css/global-nav-bar.item.md
+#: css/global-nav-bar.md css/heading.md css/icon.md css/img.md
 #: css/in-place-edit.md css/input-group.md css/layout.md css/link.md
 #: css/list.item.md css/list.md css/logo.md css/mask.md css/maskglobal.md
 #: css/menu.group.md css/menu.item.md css/menu.md css/menu.separator.md
@@ -857,17 +862,16 @@ msgstr "more-contrast-respected"
 #: css/tabs.tab.md css/tag.md css/text-area.md css/text-input.md
 #: css/toggle-group.md css/tooltip.md css/tray.md css/tree-browser.md
 #: css/view.md
-#, no-c-format
+#, no-c-format, pantoken-verbatim
 msgctxt "docs.api:prose"
 msgid "WCAG 2.2 1.4.3, 1.4.6"
 msgstr "WCAG 2.2 1.4.3, 1.4.6"
 
-#: css/agent-shell.md css/ai-gradient.md css/avatar.md css/banner.md
-#: css/button-set.md css/button.md css/byline.md css/drawer-layout.md
-#: css/drawer-layout.tray.md css/form-field.md css/heading.md
-#: css/input-group.md css/maskglobal.md css/menu.group.md css/menu.item.md
-#: css/menu.md css/menu.separator.md css/progress.md css/radio-input-group.md
-#: css/radio.md css/simple-select.md css/tabs.md css/tabs.tab.md
+#: css/agent-shell.md css/ai-gradient.md css/avatar.md css/button-set.md
+#: css/button.md css/byline.md css/drawer-layout.md css/drawer-layout.tray.md
+#: css/form-field.md css/heading.md css/input-group.md css/maskglobal.md
+#: css/menu.item.md css/progress.md css/radio-input-group.md css/radio.md
+#: css/simple-select.md css/tabs.md css/tabs.tab.md
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "Review needed"
@@ -887,7 +891,8 @@ msgstr "تتغير الصفحة عند تفعيل prefers-contrast: more، لك�
 #: css/checkbox.md css/close-button.md css/context-view.md css/cursor.md
 #: css/drawer-layout.content.md css/drawer-layout.md css/drawer-layout.tray.md
 #: css/file-drop.md css/form-field-group.md css/form-field-messages.md
-#: css/form-field.md css/gap.md css/heading.md css/icon.md css/img.md
+#: css/form-field.md css/gap.md css/global-nav-bar.item.md
+#: css/global-nav-bar.md css/heading.md css/icon.md css/img.md
 #: css/in-place-edit.md css/input-group.md css/layout.md css/link.md
 #: css/list.item.md css/list.md css/logo.md css/mask.md css/maskglobal.md
 #: css/menu.group.md css/menu.item.md css/menu.md css/menu.separator.md
@@ -917,7 +922,8 @@ msgstr "reflow-at-320px"
 #: css/checkbox.md css/close-button.md css/context-view.md css/cursor.md
 #: css/drawer-layout.content.md css/drawer-layout.md css/drawer-layout.tray.md
 #: css/file-drop.md css/form-field-group.md css/form-field-messages.md
-#: css/form-field.md css/gap.md css/heading.md css/icon.md css/img.md
+#: css/form-field.md css/gap.md css/global-nav-bar.item.md
+#: css/global-nav-bar.md css/heading.md css/icon.md css/img.md
 #: css/in-place-edit.md css/input-group.md css/layout.md css/link.md
 #: css/list.item.md css/list.md css/logo.md css/mask.md css/maskglobal.md
 #: css/menu.group.md css/menu.item.md css/menu.md css/menu.separator.md
@@ -935,12 +941,12 @@ msgstr "reflow-at-320px"
 #: css/text-input.md css/text.md css/toggle-details.md css/toggle-group.md
 #: css/tooltip.md css/transition.md css/tray.md css/tree-browser.md
 #: css/truncate.md css/view.md css/visual-debug.md
-#, no-c-format
+#, no-c-format, pantoken-verbatim
 msgctxt "docs.api:prose"
 msgid "WCAG 2.2 1.4.10"
 msgstr "WCAG 2.2 1.4.10"
 
-#: css/agent-shell.md css/avatar.md css/banner.md css/billboard.md
+#: css/agent-shell.md css/alert.md css/avatar.md css/billboard.md
 #: css/button-set.md css/button.md css/checkbox.md css/link.md css/modal.md
 #: css/progress.md css/radio-input-group.md css/radio.md
 #: css/segmented-control.md css/tabs.md css/text-area.md css/tray.md
@@ -969,7 +975,8 @@ msgstr " ينتهي عند 336px. يستثني معيار WCAG 1.4.10 لإعاد
 #: css/checkbox.md css/close-button.md css/context-view.md css/cursor.md
 #: css/drawer-layout.content.md css/drawer-layout.md css/drawer-layout.tray.md
 #: css/file-drop.md css/form-field-group.md css/form-field-messages.md
-#: css/form-field.md css/gap.md css/heading.md css/icon.md css/img.md
+#: css/form-field.md css/gap.md css/global-nav-bar.item.md
+#: css/global-nav-bar.md css/heading.md css/icon.md css/img.md
 #: css/in-place-edit.md css/input-group.md css/layout.md css/link.md
 #: css/list.item.md css/list.md css/logo.md css/mask.md css/maskglobal.md
 #: css/menu.group.md css/menu.item.md css/menu.md css/menu.separator.md
@@ -999,7 +1006,8 @@ msgstr "text-spacing-no-clipping"
 #: css/checkbox.md css/close-button.md css/context-view.md css/cursor.md
 #: css/drawer-layout.content.md css/drawer-layout.md css/drawer-layout.tray.md
 #: css/file-drop.md css/form-field-group.md css/form-field-messages.md
-#: css/form-field.md css/gap.md css/heading.md css/icon.md css/img.md
+#: css/form-field.md css/gap.md css/global-nav-bar.item.md
+#: css/global-nav-bar.md css/heading.md css/icon.md css/img.md
 #: css/in-place-edit.md css/input-group.md css/layout.md css/link.md
 #: css/list.item.md css/list.md css/logo.md css/mask.md css/maskglobal.md
 #: css/menu.group.md css/menu.item.md css/menu.md css/menu.separator.md
@@ -1017,7 +1025,7 @@ msgstr "text-spacing-no-clipping"
 #: css/text-input.md css/text.md css/toggle-details.md css/toggle-group.md
 #: css/tooltip.md css/transition.md css/tray.md css/tree-browser.md
 #: css/truncate.md css/view.md css/visual-debug.md
-#, no-c-format
+#, no-c-format, pantoken-verbatim
 msgctxt "docs.api:prose"
 msgid "WCAG 2.2 1.4.12"
 msgstr "WCAG 2.2 1.4.12"
@@ -1029,7 +1037,8 @@ msgstr "WCAG 2.2 1.4.12"
 #: css/checkbox.md css/close-button.md css/context-view.md css/cursor.md
 #: css/drawer-layout.content.md css/drawer-layout.md css/drawer-layout.tray.md
 #: css/file-drop.md css/form-field-group.md css/form-field-messages.md
-#: css/form-field.md css/gap.md css/heading.md css/icon.md css/img.md
+#: css/form-field.md css/gap.md css/global-nav-bar.item.md
+#: css/global-nav-bar.md css/heading.md css/icon.md css/img.md
 #: css/in-place-edit.md css/input-group.md css/layout.md css/link.md
 #: css/list.item.md css/list.md css/logo.md css/mask.md css/maskglobal.md
 #: css/menu.group.md css/menu.item.md css/menu.md css/menu.separator.md
@@ -1059,7 +1068,8 @@ msgstr "Pass"
 #: css/checkbox.md css/close-button.md css/context-view.md css/cursor.md
 #: css/drawer-layout.content.md css/drawer-layout.md css/drawer-layout.tray.md
 #: css/file-drop.md css/form-field-group.md css/form-field-messages.md
-#: css/form-field.md css/gap.md css/heading.md css/icon.md css/img.md
+#: css/form-field.md css/gap.md css/global-nav-bar.item.md
+#: css/global-nav-bar.md css/heading.md css/icon.md css/img.md
 #: css/in-place-edit.md css/input-group.md css/layout.md css/link.md
 #: css/list.item.md css/list.md css/logo.md css/mask.md css/maskglobal.md
 #: css/menu.group.md css/menu.item.md css/menu.md css/menu.separator.md
@@ -1089,7 +1099,8 @@ msgstr "قارئ شاشة (محاكاة)"
 #: css/checkbox.md css/close-button.md css/context-view.md css/cursor.md
 #: css/drawer-layout.content.md css/drawer-layout.md css/drawer-layout.tray.md
 #: css/file-drop.md css/form-field-group.md css/form-field-messages.md
-#: css/form-field.md css/gap.md css/heading.md css/icon.md css/img.md
+#: css/form-field.md css/gap.md css/global-nav-bar.item.md
+#: css/global-nav-bar.md css/heading.md css/icon.md css/img.md
 #: css/in-place-edit.md css/input-group.md css/layout.md css/link.md
 #: css/list.item.md css/list.md css/logo.md css/mask.md css/maskglobal.md
 #: css/menu.group.md css/menu.item.md css/menu.md css/menu.separator.md
@@ -1180,41 +1191,39 @@ msgctxt "docs.api:prose"
 msgid "A transparent border framed by the shared AI gradient."
 msgstr "حد شفاف محاط بتدرج AI المشترك."
 
-#: css/ai-gradient.md css/banner.md css/billboard.md css/button-set.md
+#: css/ai-gradient.md css/alert.md css/billboard.md css/button-set.md
 #: css/button.md css/byline.md css/form-field.md css/heading.md
-#: css/input-group.md css/link.md css/maskglobal.md css/menu.group.md
-#: css/menu.item.md css/menu.md css/menu.separator.md css/progress.md
-#: css/radio.md css/simple-select.md
+#: css/input-group.md css/link.md css/maskglobal.md css/progress.md
+#: css/simple-select.md
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "Rules (axe-core)"
 msgstr "القواعد (axe-core)"
 
-#: css/ai-gradient.md css/banner.md css/button-set.md css/button.md
+#: css/ai-gradient.md css/alert.md css/button-set.md css/button.md
 #: css/byline.md css/form-field.md css/heading.md css/input-group.md
-#: css/link.md css/maskglobal.md css/progress.md css/radio.md
-#: css/simple-select.md
+#: css/link.md css/maskglobal.md css/progress.md css/simple-select.md
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "color-contrast"
 msgstr "color-contrast"
 
-#: css/ai-gradient.md css/alert.md css/banner.md css/button-set.md
-#: css/button.md css/byline.md css/card.md css/context-view.md
-#: css/drawer-layout.md css/drawer-layout.tray.md css/form-field.md
-#: css/heading.md css/input-group.md css/link.md css/maskglobal.md
-#: css/menu.group.md css/menu.item.md css/menu.md css/menu.separator.md
-#: css/modal.body.md css/modal.footer.md css/modal.header.md css/modal.md
-#: css/popover.md css/progress.md css/radio-input-group.md css/radio.md
-#: css/segmented-control.md css/simple-select.md css/tabs.md
-#: css/toggle-details.md css/toggle-group.md css/tooltip.md css/tray.md
-#, no-c-format
+#: css/ai-gradient.md css/alert.md css/button-set.md css/button.md
+#: css/byline.md css/card.md css/context-view.md css/drawer-layout.md
+#: css/drawer-layout.tray.md css/form-field.md css/heading.md
+#: css/input-group.md css/link.md css/maskglobal.md css/menu.group.md
+#: css/menu.item.md css/menu.md css/modal.body.md css/modal.footer.md
+#: css/modal.header.md css/modal.md css/popover.md css/progress.md
+#: css/radio-input-group.md css/radio.md css/segmented-control.md
+#: css/simple-select.md css/tabs.md css/toggle-details.md css/toggle-group.md
+#: css/tooltip.md css/tray.md
+#, no-c-format, pantoken-verbatim
 msgctxt "docs.api:prose"
 msgid "WCAG 2.2 1.4.3"
 msgstr "WCAG 2.2 1.4.3"
 
-#: css/ai-gradient.md css/banner.md css/button-set.md css/button.md
-#: css/heading.md css/input-group.md css/maskglobal.md css/simple-select.md
+#: css/ai-gradient.md css/button-set.md css/button.md css/heading.md
+#: css/input-group.md css/maskglobal.md css/simple-select.md
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "Elements must meet minimum color contrast ratio thresholds"
@@ -1431,16 +1440,29 @@ msgctxt "docs.api:prose"
 msgid "For an important message, add `role=\"alert\"` or an `aria-live` region so assistive tech announces it; the dismiss control is a labelled close button (the `.instui-close-button` in the example carries `aria-label=\"Close\"`)."
 msgstr "لرسالة مهمّة، أضف `role=\"alert\"` أو منطقة `aria-live` حتى تعلنها تقنيات المساعدة؛ عنصر الإغلاق هو زر مُوسوم (يحمل المثال `.instui-close-button` `aria-label=\"Close\"`)."
 
-#: css/alert.md css/banner.md css/base.md css/billboard.md
-#: css/breadcrumb.link.md css/breadcrumb.md css/button-set.md css/button.md
-#: css/card.md css/checkbox.md css/close-button.md css/context-view.md
-#: css/cursor.md css/file-drop.md css/form-field-group.md
-#: css/form-field-messages.md css/form-field.md css/gap.md css/icon.md
-#: css/in-place-edit.md css/input-group.md css/link.md css/menu.group.md
-#: css/menu.item.md css/menu.md css/menu.separator.md css/modal.md
-#: css/number-input.md css/overflow.md css/pagination.md css/pagination.page.md
-#: css/popover.md css/prose.md css/radio-input-group.md css/radio.md
-#: css/range-input.md css/screen-reader-content.md css/segmented-control.md
+#: css/alert.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Rebrand (light), Canvas, Canvas High Contrast:"
+msgstr "إعادة التصميم (فاتح)، Canvas، Canvas High Contrast:"
+
+#: css/alert.md css/byline.md css/form-field.md css/link.md css/progress.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid " Elements must meet minimum color contrast ratio thresholds"
+msgstr " يجب أن تستوفي العناصر الحد الأدنى لنسب تباين الألوان"
+
+#: css/alert.md css/base.md css/billboard.md css/breadcrumb.link.md
+#: css/breadcrumb.md css/button-set.md css/button.md css/card.md
+#: css/checkbox.md css/close-button.md css/context-view.md css/cursor.md
+#: css/file-drop.md css/form-field-group.md css/form-field-messages.md
+#: css/form-field.md css/gap.md css/global-nav-bar.item.md
+#: css/global-nav-bar.md css/icon.md css/in-place-edit.md css/input-group.md
+#: css/link.md css/menu.group.md css/menu.item.md css/menu.md
+#: css/menu.separator.md css/modal.md css/number-input.md css/overflow.md
+#: css/pagination.md css/pagination.page.md css/popover.md css/prose.md
+#: css/radio-input-group.md css/radio.md css/range-input.md
+#: css/screen-reader-content.md css/segmented-control.md
 #: css/side-nav-bar.item.md css/side-nav-bar.md css/simple-select.md
 #: css/tabs.md css/tabs.panel.md css/tabs.tab.md css/tag.md css/text-area.md
 #: css/text-input.md css/toggle-details.md css/toggle-group.md css/tooltip.md
@@ -1450,49 +1472,94 @@ msgctxt "docs.api:prose"
 msgid "forced-colors-focus-visible"
 msgstr "forced-colors-focus-visible"
 
-#: css/alert.md css/banner.md css/base.md css/billboard.md
-#: css/breadcrumb.link.md css/breadcrumb.md css/button-set.md css/button.md
-#: css/card.md css/checkbox.md css/close-button.md css/context-view.md
-#: css/cursor.md css/file-drop.md css/form-field-group.md
-#: css/form-field-messages.md css/form-field.md css/gap.md css/icon.md
-#: css/in-place-edit.md css/input-group.md css/link.md css/menu.group.md
-#: css/menu.item.md css/menu.md css/menu.separator.md css/modal.md
-#: css/number-input.md css/overflow.md css/pagination.md css/pagination.page.md
-#: css/popover.md css/prose.md css/radio-input-group.md css/radio.md
-#: css/range-input.md css/screen-reader-content.md css/segmented-control.md
+#: css/alert.md css/base.md css/billboard.md css/breadcrumb.link.md
+#: css/breadcrumb.md css/button-set.md css/button.md css/card.md
+#: css/checkbox.md css/close-button.md css/context-view.md css/cursor.md
+#: css/file-drop.md css/form-field-group.md css/form-field-messages.md
+#: css/form-field.md css/gap.md css/global-nav-bar.item.md
+#: css/global-nav-bar.md css/icon.md css/in-place-edit.md css/input-group.md
+#: css/link.md css/menu.group.md css/menu.item.md css/menu.md
+#: css/menu.separator.md css/modal.md css/number-input.md css/overflow.md
+#: css/pagination.md css/pagination.page.md css/popover.md css/prose.md
+#: css/radio-input-group.md css/radio.md css/range-input.md
+#: css/screen-reader-content.md css/segmented-control.md
 #: css/side-nav-bar.item.md css/side-nav-bar.md css/simple-select.md
 #: css/tabs.md css/tabs.panel.md css/tabs.tab.md css/tag.md css/text-area.md
 #: css/text-input.md css/toggle-details.md css/toggle-group.md css/tooltip.md
 #: css/tray.md css/tree-browser.md css/view.md
-#, no-c-format
+#, no-c-format, pantoken-verbatim
 msgctxt "docs.api:prose"
 msgid "WCAG 2.2 1.4.11, 2.4.7"
 msgstr "WCAG 2.2 1.4.11, 2.4.7"
 
 #: css/alert.md css/card.md css/context-view.md css/drawer-layout.md
-#: css/drawer-layout.tray.md css/menu.group.md css/menu.md
-#: css/menu.separator.md css/modal.body.md css/modal.footer.md
-#: css/modal.header.md css/modal.md css/popover.md css/progress.md
-#: css/radio-input-group.md css/radio.md css/segmented-control.md
-#: css/toggle-group.md css/tray.md
+#: css/drawer-layout.tray.md css/menu.group.md css/menu.md css/modal.body.md
+#: css/modal.footer.md css/modal.header.md css/modal.md css/popover.md
+#: css/progress.md css/radio-input-group.md css/radio.md
+#: css/segmented-control.md css/toggle-group.md css/tray.md
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "less-contrast-stays-readable"
 msgstr "less-contrast-stays-readable"
 
+#: css/alert.md css/button-set.md css/button.md css/checkbox.md css/link.md
+#: css/radio-input-group.md css/radio.md css/segmented-control.md
+#: css/text-area.md css/view.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Rebrand (light):"
+msgstr "إعادة تسمية العلامة التجارية (الفاتح):"
+
+#: css/alert.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid " With prefers-contrast: less, one piece of text falls below the minimum contrast. The worst is \"Your session expires soon.\" at 2.74:1 (needs 4.5:1). Softer contrast is fine only while text stays readable."
+msgstr " مع prefers-contrast: less، ينخفض نص واحد عن الحد الأدنى للتباين. الأسوأ هو \"تنتهي جلستك قريبًا.\" بنسبة 2.74:1 (بحاجة إلى 4.5:1). التباين الأكثر نعومة مناسب فقط بقدر بقاء النص مقروءًا."
+
+#: css/alert.md css/checkbox.md css/link.md css/radio-input-group.md
+#: css/radio.md css/text-area.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Canvas:"
+msgstr "كانفاس:"
+
+#: css/alert.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid " With prefers-contrast: less, one piece of text falls below the minimum contrast. The worst is \"Your session expires soon.\" at 2.77:1 (needs 4.5:1). Softer contrast is fine only while text stays readable."
+msgstr " مع prefers-contrast: less، ينخفض نص واحد عن الحد الأدنى للتباين. الأسوأ هو \"تنتهي جلستك قريبًا.\" بنسبة 2.77:1 (بحاجة إلى 4.5:1). التباين الأكثر نعومة مناسب فقط بقدر بقاء النص مقروءًا."
+
+#: css/alert.md css/link.md css/radio-input-group.md css/radio.md
+#: css/text-area.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Canvas High Contrast:"
+msgstr "تباين Canvas العالي:"
+
+#: css/alert.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid " With prefers-contrast: less, one piece of text falls below the minimum contrast. The worst is \"Your session expires soon.\" at 1.48:1 (needs 4.5:1). Softer contrast is fine only while text stays readable."
+msgstr " مع prefers-contrast: less، ينخفض نص واحد عن الحد الأدنى للتباين. الأسوأ هو \"تنتهي جلستك قريبًا.\" بنسبة 1.48:1 (بحاجة إلى 4.5:1). التباين الأكثر نعومة مناسب فقط بقدر بقاء النص مقروءًا."
+
 #: css/alert.md css/button-set.md css/button.md css/file-drop.md
-#: css/menu.group.md css/menu.item.md css/menu.md css/menu.separator.md
-#: css/number-input.md css/progress.md css/segmented-control.md
-#: css/simple-select.md css/tag.md css/toggle-details.md css/toggle-group.md
-#: css/tooltip.md
+#: css/menu.group.md css/menu.item.md css/menu.md css/number-input.md
+#: css/progress.md css/segmented-control.md css/tag.md css/toggle-details.md
+#: css/toggle-group.md css/tooltip.md
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "Not applicable"
 msgstr "لا ينطبق"
 
-#: css/alert.md css/badge.md css/banner.md css/button-set.md css/button.md
-#: css/card.md css/close-button.md css/context-view.md css/form-field.md
-#: css/icon.md css/link.md css/menu.group.md css/menu.item.md css/menu.md
+#: css/alert.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid " With prefers-contrast: more, one piece of text falls below the minimum contrast. The worst is \"Your session expires soon.\" at 2.74:1 (needs 4.5:1)."
+msgstr " مع prefers-contrast: more، ينخفض نص واحد عن الحد الأدنى للتباين. الأسوأ هو \"تنتهي جلستك قريبًا.\" بنسبة 2.74:1 (بحاجة إلى 4.5:1). "
+
+#: css/alert.md css/badge.md css/button-set.md css/button.md css/card.md
+#: css/close-button.md css/context-view.md css/form-field.md css/icon.md
+#: css/link.md css/menu.group.md css/menu.item.md css/menu.md
 #: css/menu.separator.md css/modal.md css/progress-circle.md css/progress.md
 #: css/screen-reader-content.md css/segmented-control.md css/simple-select.md
 #: css/skeleton-loader.md css/spinner.md css/tabs.md css/tabs.panel.md
@@ -1502,14 +1569,14 @@ msgctxt "docs.api:prose"
 msgid "reduced-motion-respected"
 msgstr "reduced-motion-respected"
 
-#: css/alert.md css/badge.md css/banner.md css/button-set.md css/button.md
-#: css/card.md css/close-button.md css/context-view.md css/form-field.md
-#: css/icon.md css/link.md css/menu.group.md css/menu.item.md css/menu.md
+#: css/alert.md css/badge.md css/button-set.md css/button.md css/card.md
+#: css/close-button.md css/context-view.md css/form-field.md css/icon.md
+#: css/link.md css/menu.group.md css/menu.item.md css/menu.md
 #: css/menu.separator.md css/modal.md css/progress-circle.md css/progress.md
 #: css/screen-reader-content.md css/segmented-control.md css/simple-select.md
 #: css/skeleton-loader.md css/spinner.md css/tabs.md css/tabs.panel.md
 #: css/tabs.tab.md css/toggle-details.md css/tooltip.md css/tray.md
-#, no-c-format
+#, no-c-format, pantoken-verbatim
 msgctxt "docs.api:prose"
 msgid "WCAG 2.2 2.3.3, 2.2.2"
 msgstr "WCAG 2.2 2.3.3, 2.2.2"
@@ -1530,7 +1597,7 @@ msgstr "focus-indicator-visible"
 
 #: css/alert.md css/button.md css/form-field.md css/link.md css/menu.md
 #: css/modal.md css/tabs.md css/toggle-details.md css/tooltip.md
-#, no-c-format
+#, no-c-format, pantoken-verbatim
 msgctxt "docs.api:prose"
 msgid "WCAG 2.2 2.4.7"
 msgstr "WCAG 2.2 2.4.7"
@@ -1542,7 +1609,7 @@ msgid "focus-stays-on-trigger"
 msgstr "focus-stays-on-trigger"
 
 #: css/alert.md
-#, no-c-format
+#, no-c-format, pantoken-verbatim
 msgctxt "docs.api:prose"
 msgid "WCAG 2.2 4.1.3"
 msgstr "WCAG 2.2 4.1.3"
@@ -1574,7 +1641,7 @@ msgstr "no-focus-trap"
 
 #: css/alert.md css/button.md css/form-field.md css/link.md css/menu.md
 #: css/modal.md css/tabs.md css/toggle-details.md css/tooltip.md
-#, no-c-format
+#, no-c-format, pantoken-verbatim
 msgctxt "docs.api:prose"
 msgid "WCAG 2.2 2.1.2"
 msgstr "WCAG 2.2 2.1.2"
@@ -1594,7 +1661,7 @@ msgstr "trigger-reachable-by-tab"
 
 #: css/alert.md css/button.md css/form-field.md css/link.md css/menu.md
 #: css/modal.md css/tabs.md css/toggle-details.md css/tooltip.md
-#, no-c-format
+#, no-c-format, pantoken-verbatim
 msgctxt "docs.api:prose"
 msgid "WCAG 2.2 2.1.1"
 msgstr "WCAG 2.2 2.1.1"
@@ -2130,19 +2197,6 @@ msgctxt "docs.api:prose"
 msgid "Add `role=\"status\"` (or `role=\"alert\"` for urgent messages) so assistive tech announces the\n  banner; mark a decorative icon `aria-hidden=\"true\"` and give the close button an `aria-label`."
 msgstr "أضف `role=\"status\"` (أو `role=\"alert\"` للرسائل العاجلة) حتى تعلن تقنيات المساعدة عن الشريط؛ علّم الأيقونة الزخرفية بـ `aria-hidden=\"true\"` وأعطِ زر الإغلاق `aria-label`."
 
-#: css/banner.md css/checkbox.md css/link.md css/radio-input-group.md
-#: css/radio.md css/text-area.md
-#, no-c-format
-msgctxt "docs.api:prose"
-msgid "Canvas:"
-msgstr "كانفاس:"
-
-#: css/banner.md
-#, no-c-format
-msgctxt "docs.api:prose"
-msgid " With prefers-contrast: more, two pieces of text fall below the minimum contrast. The worst is \"Undo\" at 4.46:1 (needs 4.5:1)."
-msgstr " مع prefers-contrast: more، ينخفض تباين نصين عن الحد الأدنى. وأسوأهما \"تراجع\" بنسبة 4.46:1 (يتطلب 4.5:1)."
-
 #: css/banner.md
 #, no-c-format
 msgctxt "docs.api:prose"
@@ -2288,7 +2342,7 @@ msgid "label-content-name-mismatch"
 msgstr "label-content-name-mismatch"
 
 #: css/billboard.md
-#, no-c-format
+#, no-c-format, pantoken-verbatim
 msgctxt "docs.api:prose"
 msgid "WCAG 2.2 2.5.3"
 msgstr "WCAG 2.2 2.5.3"
@@ -2624,7 +2678,7 @@ msgid "target-size"
 msgstr "target-size"
 
 #: css/button-set.md
-#, no-c-format
+#, no-c-format, pantoken-verbatim
 msgctxt "docs.api:prose"
 msgid "WCAG 2.2 2.5.8"
 msgstr "WCAG 2.2 2.5.8"
@@ -2635,21 +2689,13 @@ msgctxt "docs.api:prose"
 msgid "All touch targets must be 24px large, or leave sufficient space"
 msgstr "يجب أن تكون جميع أهداف اللمس بحجم 24px على الأقل، أو اترك مسافة كافية بينها"
 
-#: css/button-set.md css/button.md css/checkbox.md css/link.md
-#: css/radio-input-group.md css/radio.md css/segmented-control.md
-#: css/text-area.md css/view.md
-#, no-c-format
-msgctxt "docs.api:prose"
-msgid "Rebrand (light):"
-msgstr "إعادة تسمية العلامة التجارية (الفاتح):"
-
 #: css/button-set.md
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid " With prefers-contrast: more, six pieces of text fall below the minimum contrast. The worst is \"Send\" at 1.64:1 (needs 4.5:1)."
 msgstr " مع تفعيل prefers-contrast: more، ينخفض تباين ستة أجزاء من النص عن الحد الأدنى. أسوأها \"Send\" بنسبة 1.64:1 (المطلوب 4.5:1)."
 
-#: css/button-set.md css/button.md css/checkbox.md css/link.md css/menu.item.md
+#: css/button-set.md css/button.md css/checkbox.md css/link.md
 #: css/radio-input-group.md css/radio.md css/segmented-control.md
 #: css/text-area.md css/view.md
 #, no-c-format
@@ -2685,7 +2731,7 @@ msgstr "reduced-transparency-respected"
 
 #: css/button-set.md css/button.md css/maskglobal.md css/number-input.md
 #: css/segmented-control.md css/tag.md css/toggle-details.md css/view.md
-#, no-c-format
+#, no-c-format, pantoken-verbatim
 msgctxt "docs.api:prose"
 msgid "WCAG 2.2 1.4.3, 1.4.11"
 msgstr "WCAG 2.2 1.4.3, 1.4.11"
@@ -2903,7 +2949,7 @@ msgstr "boundary-contrast"
 
 #: css/button.md css/form-field.md css/menu.md css/modal.md css/tabs.md
 #: css/tooltip.md
-#, no-c-format
+#, no-c-format, pantoken-verbatim
 msgctxt "docs.api:prose"
 msgid "WCAG 2.2 1.4.11"
 msgstr "WCAG 2.2 1.4.11"
@@ -2917,7 +2963,7 @@ msgstr "focus-indicator-contrast"
 
 #: css/button.md css/form-field.md css/link.md css/menu.md css/modal.md
 #: css/tabs.md css/toggle-details.md css/tooltip.md
-#, no-c-format
+#, no-c-format, pantoken-verbatim
 msgctxt "docs.api:prose"
 msgid "WCAG 2.2 1.4.11, 2.4.13"
 msgstr "WCAG 2.2 1.4.11, 2.4.13"
@@ -3012,12 +3058,6 @@ msgstr "نص العنوان."
 msgctxt "docs.api:prose"
 msgid "Give an informative hero image alt text and mark a decorative one with an empty `alt` or `aria-hidden=\"true\"`. Use a real heading element for the `.title` when it belongs in the document outline."
 msgstr "قدّم نصًا بديلًا وصفيًا لصورة الواجهة الرئيسية، واجعل النص البديل للصورة الزخرفية فارغًا باستخدام `alt` أو `aria-hidden=\"true\"`. استخدم عنصر عنوان حقيقيًا لـ `.title` عندما يكون مناسبًا لبنية المستند."
-
-#: css/byline.md css/form-field.md css/link.md css/progress.md css/radio.md
-#, no-c-format
-msgctxt "docs.api:prose"
-msgid " Elements must meet minimum color contrast ratio thresholds"
-msgstr " يجب أن تستوفي العناصر الحد الأدنى لنسب تباين الألوان"
 
 #: css/calendar.day.md
 #, no-c-format
@@ -4229,7 +4269,7 @@ msgid "error-associated-on-invalid"
 msgstr "error-associated-on-invalid"
 
 #: css/form-field.md
-#, no-c-format
+#, no-c-format, pantoken-verbatim
 msgctxt "docs.api:prose"
 msgid "WCAG 2.2 3.3.1, 4.1.3"
 msgstr "WCAG 2.2 3.3.1, 4.1.3"
@@ -4241,7 +4281,7 @@ msgid "label-associated"
 msgstr "label-associated"
 
 #: css/form-field.md
-#, no-c-format
+#, no-c-format, pantoken-verbatim
 msgctxt "docs.api:prose"
 msgid "WCAG 2.2 1.3.1, 3.3.2, 4.1.2"
 msgstr "WCAG 2.2 1.3.1, 3.3.2, 4.1.2"
@@ -4776,6 +4816,12 @@ msgid "A dismissible, iconed message surface for page-level or in-context announ
 msgstr "سطح رسالة قابلة للإغلاق مع أيقونة للإعلانات على مستوى الصفحة أو ضمن السياق."
 
 #: css/index.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "The opt-in global reset: `box-sizing`, the page surface, base text colour and font, `color-scheme`, and link defaults."
+msgstr "إعادة التعيين العالمية الاختيارية: `box-sizing`، سطح الصفحة، لون وحجم الخط الأساسيان، `color-scheme`، وإعدادات الروابط الافتراضية."
+
+#: css/index.md
 #, fuzzy, no-c-format
 msgctxt "docs.api:prose"
 msgid "A large empty-state or call-to-action block: a hero icon or image, a heading, and a message."
@@ -5044,6 +5090,12 @@ msgstr "شريط تقدم محدد مع مقياس ملون، أحجام، وو�
 msgctxt "docs.api:prose"
 msgid "A circular progress ring driven by `--value` and `--value-max` custom properties."
 msgstr "`.instui-progress-circle` · <span class=\"instui-pill -color-success pantoken-doc-tag\">stable</span> — حلقة تقدم دائرية يقودها `--value` و`--value-max` خصائص مخصصة."
+
+#: css/index.md
+#, fuzzy, no-c-format
+msgctxt "docs.api:prose"
+msgid "Typographic defaults for raw HTML — headings, paragraphs, lists, links, and code — applied automatically wherever it's imported (default `:where(body)`); pass `options.scope` to target a different content root instead (e.g. `.vp-doc`)."
+msgstr "`:where(body)` — الإعدادات الافتراضية للطباعة لملفات HTML الخام — العناوين، الفقرات، القوائم، الروابط، والتعليمات البرمجية — تُطبَّق تلقائيًا في أي مكان يتم استيرادها فيه (الافتراضي `:where(body)`); مرِّر `options.scope` لاستهداف جذر محتوى مختلف بدلاً من ذلك (مثل `.vp-doc`)."
 
 #: css/index.md
 #, fuzzy, no-c-format
@@ -5330,18 +5382,6 @@ msgstr "`.-with-visual-debug` — مخطط لتصحيح تخطيط الواجه�
 #: css/index.md
 #, no-c-format
 msgctxt "docs.api:prose"
-msgid "The opt-in global reset: `box-sizing`, the page surface, base text colour and font, `color-scheme`, and link defaults."
-msgstr "إعادة التعيين العالمية الاختيارية: `box-sizing`، سطح الصفحة، لون وحجم الخط الأساسيان، `color-scheme`، وإعدادات الروابط الافتراضية."
-
-#: css/index.md
-#, fuzzy, no-c-format
-msgctxt "docs.api:prose"
-msgid "Typographic defaults for raw HTML — headings, paragraphs, lists, links, and code — applied automatically wherever it's imported (default `:where(body)`); pass `options.scope` to target a different content root instead (e.g. `.vp-doc`)."
-msgstr "`:where(body)` — الإعدادات الافتراضية للطباعة لملفات HTML الخام — العناوين، الفقرات، القوائم، الروابط، والتعليمات البرمجية — تُطبَّق تلقائيًا في أي مكان يتم استيرادها فيه (الافتراضي `:where(body)`); مرِّر `options.scope` لاستهداف جذر محتوى مختلف بدلاً من ذلك (مثل `.vp-doc`)."
-
-#: css/index.md
-#, no-c-format
-msgctxt "docs.api:prose"
 msgid "Extra-small viewport width for phone-sized previews."
 msgstr "عرض نافذة عرض صغير جدًا لمعاينات بحجم الهاتف."
 
@@ -5586,12 +5626,6 @@ msgstr " عند استخدام prefers-contrast: more، ينخفض تباين ن
 msgctxt "docs.api:prose"
 msgid " With prefers-contrast: more, three pieces of text fall below the minimum contrast. The worst is \"Settings unavailable on brand\" at 2.76:1 (needs 4.5:1)."
 msgstr " عند استخدام prefers-contrast: more، ينخفض تباين ثلاثة نصوص عن الحد الأدنى. أسوأها «الإعدادات غير متاحة على العلامة التجارية» عند 2.76:1 (المطلوب 4.5:1)."
-
-#: css/link.md css/radio-input-group.md css/radio.md css/text-area.md
-#, no-c-format
-msgctxt "docs.api:prose"
-msgid "Canvas High Contrast:"
-msgstr "تباين Canvas العالي:"
 
 #: css/link.md
 #, no-c-format
@@ -6271,24 +6305,12 @@ msgctxt "docs.api:prose"
 msgid "Wrap the grouped items in an element with `role=\"group\"` and point `aria-labelledby` at the group heading so assistive technology announces the group name."
 msgstr "غلّف العناصر المجمّعة داخل عنصر يحمل `role=\"group\"`، واجعل `aria-labelledby` يشير إلى عنوان المجموعة كي تعلن التقنية المساعدة اسم المجموعة."
 
-#: css/menu.group.md css/menu.item.md css/menu.md css/menu.separator.md
+#: css/menu.group.md css/menu.item.md css/progress.md css/toggle-group.md
+#: css/tooltip.md
 #, no-c-format
 msgctxt "docs.api:prose"
-msgid "aria-valid-attr-value"
-msgstr "aria-valid-attr-value"
-
-#: css/menu.group.md css/menu.item.md css/menu.md css/menu.separator.md
-#: css/tabs.md css/toggle-details.md
-#, no-c-format
-msgctxt "docs.api:prose"
-msgid "WCAG 2.2 4.1.2"
-msgstr "WCAG 2.2 4.1.2"
-
-#: css/menu.group.md css/menu.item.md css/menu.md css/menu.separator.md
-#, no-c-format
-msgctxt "docs.api:prose"
-msgid "ARIA attributes must conform to valid values"
-msgstr "يجب أن تلتزم سمات ARIA بقيم صالحة"
+msgid "dark-mode-contrast"
+msgstr "dark-mode-contrast"
 
 #: css/menu.item.md
 #, no-c-format
@@ -6326,11 +6348,11 @@ msgctxt "docs.api:prose"
 msgid "Checked actions use `menuitemcheckbox` or `menuitemradio` with `aria-checked`; applications update that state on activation. Pair `-disabled` with `aria-disabled=\"true\"` or native `disabled`, not the CSS class alone. Opt-in menu navigation keeps ARIA-disabled items reachable but prevents their activation."
 msgstr "تستخدم الإجراءات المحددة `menuitemcheckbox` أو `menuitemradio` مع `aria-checked`؛ وتحدّث التطبيقات هذه الحالة عند التفعيل. اربط `-disabled` بـ `aria-disabled=\"true\"` أو بـ `disabled` الأصلي، وليس بفئة CSS وحدها. يُبقي التنقل الاختياري في القائمة العناصر المعطّلة عبر ARIA قابلة للوصول، لكنه يمنع تفعيلها."
 
-#: css/menu.item.md css/progress.md css/simple-select.md
+#: css/menu.item.md
 #, no-c-format
 msgctxt "docs.api:prose"
-msgid "dark-mode-contrast"
-msgstr "dark-mode-contrast"
+msgid "Rebrand (light), Rebrand (dark):"
+msgstr "إعادة العلامة التجارية (فاتح), إعادة العلامة التجارية (داكن):"
 
 #: css/menu.item.md
 #, no-c-format
@@ -6399,7 +6421,7 @@ msgid "escape-closes-and-returns-focus"
 msgstr "escape-closes-and-returns-focus"
 
 #: css/menu.md
-#, no-c-format
+#, no-c-format, pantoken-verbatim
 msgctxt "docs.api:prose"
 msgid "WCAG 2.2 2.1.1, 2.4.3"
 msgstr "WCAG 2.2 2.1.1, 2.4.3"
@@ -6663,7 +6685,7 @@ msgid "focus-moves-into-dialog"
 msgstr "focus-moves-into-dialog"
 
 #: css/modal.md
-#, no-c-format
+#, no-c-format, pantoken-verbatim
 msgctxt "docs.api:prose"
 msgid "WCAG 2.2 2.4.3"
 msgstr "WCAG 2.2 2.4.3"
@@ -7723,8 +7745,8 @@ msgstr "`<input type=\"checkbox\">` الأصلي يتحكم في `:checked` و`:
 #: css/radio.md
 #, no-c-format
 msgctxt "docs.api:prose"
-msgid " With prefers-contrast: less, six pieces of text fall below the minimum contrast. The worst is \"Warning selected\" at 1.67:1 (needs 4.5:1). Softer contrast is fine only while text stays readable."
-msgstr " مع prefers-contrast: less، ينخفض تباين ستة مقاطع نصية عن الحد الأدنى. أسوأها «تحذير محدد» بنسبة 1.67:1 (المطلوب 4.5:1). لا بأس بتباين أخف ما دام النص يظل مقروءًا."
+msgid " With prefers-contrast: less, four pieces of text fall below the minimum contrast. The worst is \"Disabled unselected\" at 2.74:1 (needs 4.5:1). Softer contrast is fine only while text stays readable."
+msgstr " مع prefers-contrast: less، ينخفض تباين أربعة مقاطع نصية عن الحد الأدنى. أسوأها «معطّل وغير محدد» بنسبة 2.74:1 (المطلوب 4.5:1). لا بأس بتباين أخف ما دام النص يظل مقروءًا."
 
 #: css/radio.md
 #, no-c-format
@@ -7747,8 +7769,8 @@ msgstr " تظل مقاطع النص الـ31 التي تم قياسها جميع
 #: css/radio.md
 #, no-c-format
 msgctxt "docs.api:prose"
-msgid " With prefers-contrast: more, six pieces of text fall below the minimum contrast. The worst is \"Warning selected\" at 1.67:1 (needs 4.5:1)."
-msgstr " مع prefers-contrast: more، ينخفض تباين ستة مقاطع نصية عن الحد الأدنى. أسوأها «تحذير محدد» بنسبة 1.67:1 (المطلوب 4.5:1)."
+msgid " With prefers-contrast: more, four pieces of text fall below the minimum contrast. The worst is \"Disabled unselected\" at 2.74:1 (needs 4.5:1)."
+msgstr " مع prefers-contrast: more، ينخفض تباين أربعة مقاطع نصية عن الحد الأدنى. أسوأها «معطّل وغير محدد» بنسبة 2.74:1 (المطلوب 4.5:1)."
 
 #: css/radio.md
 #, no-c-format
@@ -9238,6 +9260,12 @@ msgctxt "docs.api:prose"
 msgid "selected-state-exposed"
 msgstr "selected-state-exposed"
 
+#: css/tabs.md css/toggle-details.md
+#, no-c-format, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "WCAG 2.2 4.1.2"
+msgstr "WCAG 2.2 4.1.2"
+
 #: css/tabs.md
 #, no-c-format
 msgctxt "docs.api:prose"
@@ -9767,7 +9795,7 @@ msgid "enter-toggles"
 msgstr "enter-toggles"
 
 #: css/toggle-details.md
-#, no-c-format
+#, no-c-format, pantoken-verbatim
 msgctxt "docs.api:prose"
 msgid "WCAG 2.2 2.1.1, 4.1.2"
 msgstr "WCAG 2.2 2.1.1, 4.1.2"
@@ -9899,7 +9927,7 @@ msgid "appears-on-focus"
 msgstr "appears-on-focus"
 
 #: css/tooltip.md
-#, no-c-format
+#, no-c-format, pantoken-verbatim
 msgctxt "docs.api:prose"
 msgid "WCAG 2.2 1.4.13"
 msgstr "WCAG 2.2 1.4.13"
@@ -15297,7 +15325,7 @@ msgstr "**وضع داكن مع أيقونات VectorDrawables**"
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "<!-- pantoken-value-scope:platforms%2Fandroid%2Fsrc%2Findex.md -->\nTarget: Android resources. Current format: {{ptk_code_0}}. Minimum host version: {{ptk_code_1}}. Tested through {{ptk_code_2}}. Newer releases require review."
-msgstr "<!-- pantoken-value-scope:platforms%2Fandroid%2Fsrc%2Findex.md -->\nTarget: Android resources. Current format: {{ptk_code_0}}. Minimum host version: {{ptk_code_1}}. Tested through {{ptk_code_2}}. Newer releases require review."
+msgstr "<!-- pantoken-value-scope:platforms%2Fandroid%2Fsrc%2Findex.md -->\nالهدف: موارد Android. التنسيق الحالي: {{ptk_code_0}}. الحد الأدنى لإصدار المضيف: {{ptk_code_1}}. تم الاختبار حتى {{ptk_code_2}}. تتطلب الإصدارات الأحدث مراجعة."
 
 #: platforms/android/src/index.md
 #, fuzzy, no-c-format
@@ -15654,7 +15682,7 @@ msgstr "**بناء موضوع فرعي (sub-theme) اعتمادًا على ثي�
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "<!-- pantoken-value-scope:platforms%2Fdrupal%2Fsrc%2Findex.md -->\nTarget: Drupal themes. Current format: {{ptk_code_0}}. Minimum host version: {{ptk_code_1}}. Tested through {{ptk_code_2}}. Newer releases require review."
-msgstr "<!-- pantoken-value-scope:platforms%2Fdrupal%2Fsrc%2Findex.md -->\nTarget: Drupal themes. Current format: {{ptk_code_0}}. Minimum host version: {{ptk_code_1}}. Tested through {{ptk_code_2}}. Newer releases require review."
+msgstr "<!-- pantoken-value-scope:platforms%2Fdrupal%2Fsrc%2Findex.md -->\nالهدف: سمات Drupal. التنسيق الحالي: {{ptk_code_0}}. الحد الأدنى لإصدار المضيف: {{ptk_code_1}}. تم الاختبار حتى {{ptk_code_2}}. تتطلب الإصدارات الأحدث مراجعة."
 
 #: platforms/drupal/src/index.md
 #, fuzzy, no-c-format
@@ -15908,7 +15936,7 @@ msgstr "**اكتب الأصول تحت جذر الموقع**"
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "<!-- pantoken-value-scope:platforms%2Fhugo%2Fsrc%2Findex.md -->\nTarget: Hugo. Current format: {{ptk_code_0}}. Minimum host version: {{ptk_code_1}}. Tested through {{ptk_code_2}}. Newer releases require review."
-msgstr "<!-- pantoken-value-scope:platforms%2Fhugo%2Fsrc%2Findex.md -->\nTarget: Hugo. Current format: {{ptk_code_0}}. Minimum host version: {{ptk_code_1}}. Tested through {{ptk_code_2}}. Newer releases require review."
+msgstr "<!-- pantoken-value-scope:platforms%2Fhugo%2Fsrc%2Findex.md -->\nالهدف: Hugo. التنسيق الحالي: {{ptk_code_0}}. الحد الأدنى لإصدار المضيف: {{ptk_code_1}}. تم الاختبار حتى الإصدار {{ptk_code_2}}. تتطلب الإصدارات الأحدث مراجعة."
 
 #: platforms/hugo/src/index.md
 #, fuzzy, no-c-format
@@ -15945,7 +15973,7 @@ msgstr "جزء Sass (`_sass/pantoken.scss`), ورقة الأنماط البسي�
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "<!-- pantoken-value-scope:platforms%2Fjekyll%2Fsrc%2Findex.md -->\nTarget: Jekyll. Current format: {{ptk_code_0}}. Minimum host version: {{ptk_code_1}}. Tested through {{ptk_code_2}}. Newer releases require review."
-msgstr "<!-- pantoken-value-scope:platforms%2Fjekyll%2Fsrc%2Findex.md -->\nTarget: Jekyll. Current format: {{ptk_code_0}}. Minimum host version: {{ptk_code_1}}. Tested through {{ptk_code_2}}. Newer releases require review."
+msgstr "<!-- pantoken-value-scope:platforms%2Fjekyll%2Fsrc%2Findex.md -->\nالهدف: Jekyll. التنسيق الحالي: {{ptk_code_0}}. الحد الأدنى لإصدار المضيف: {{ptk_code_1}}. تم الاختبار حتى {{ptk_code_2}}. تتطلب الإصدارات الأحدث مراجعة."
 
 #: platforms/jekyll/src/index.md
 #, fuzzy, no-c-format
@@ -16060,7 +16088,7 @@ msgstr "**الوضع الداكن مع اسم فئة مخصص وكتالوج ا�
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "<!-- pantoken-value-scope:platforms%2Fswift%2Fsrc%2Findex.md -->\nTarget: Swift iOS. Current format: {{ptk_code_0}}. Tested environment: {{ptk_code_1}}. Runtime tested only on iOS Simulator 27.0; this does not establish an iOS 15 runtime floor. No watchOS or tvOS claim."
-msgstr "<!-- pantoken-value-scope:platforms%2Fswift%2Fsrc%2Findex.md -->\nTarget: Swift iOS. Current format: {{ptk_code_0}}. Tested environment: {{ptk_code_1}}. Runtime tested only on iOS Simulator 27.0; this does not establish an iOS 15 runtime floor. No watchOS or tvOS claim."
+msgstr "<!-- pantoken-value-scope:platforms%2Fswift%2Fsrc%2Findex.md -->\nالهدف: Swift iOS. التنسيق الحالي: {{ptk_code_0}}. بيئة الاختبار: {{ptk_code_1}}. تم اختبار وقت التشغيل فقط على iOS Simulator 27.0؛ وهذا لا يثبت حدًا أدنى لوقت تشغيل iOS 15. لا يوجد ادعاء بشأن watchOS أو tvOS."
 
 #: platforms/swift/src/index.md
 #, fuzzy, no-c-format
@@ -16204,7 +16232,7 @@ msgstr "**حوّل IR إلى theme.json بنمط فاتح**"
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "<!-- pantoken-value-scope:platforms%2Fwordpress%2Fsrc%2Findex.md -->\nTarget: WordPress block themes. Current format: {{ptk_code_0}}. Minimum host version: {{ptk_code_1}}. Tested through {{ptk_code_2}}. Newer releases require review."
-msgstr "<!-- pantoken-value-scope:platforms%2Fwordpress%2Fsrc%2Findex.md -->\nTarget: WordPress block themes. Current format: {{ptk_code_0}}. Minimum host version: {{ptk_code_1}}. Tested through {{ptk_code_2}}. Newer releases require review."
+msgstr "<!-- pantoken-value-scope:platforms%2Fwordpress%2Fsrc%2Findex.md -->\nالهدف: قوالب كتل ووردبريس. التنسيق الحالي: {{ptk_code_0}}. الحد الأدنى لإصدار المضيف: {{ptk_code_1}}. تم الاختبار حتى {{ptk_code_2}}. تتطلب الإصدارات الأحدث مراجعة."
 
 #: platforms/wordpress/src/index.md
 #, fuzzy, no-c-format
@@ -18466,7 +18494,7 @@ msgstr "سجّل عناصر pantoken المخصصة (استدعِها مرة و�
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "<!-- pantoken-value-scope:renderers%2Fangular%2Fsrc%2Findex.md -->\nTarget: Angular. Current format: {{ptk_code_0}}. Minimum host version: {{ptk_code_1}}. Tested through {{ptk_code_2}}. Newer releases require review."
-msgstr "<!-- pantoken-value-scope:renderers%2Fangular%2Fsrc%2Findex.md -->\nTarget: Angular. Current format: {{ptk_code_0}}. Minimum host version: {{ptk_code_1}}. Tested through {{ptk_code_2}}. Newer releases require review."
+msgstr "<!-- pantoken-value-scope:renderers%2Fangular%2Fsrc%2Findex.md -->\nالهدف: Angular. التنسيق الحالي: {{ptk_code_0}}. الحد الأدنى لإصدار المضيف: {{ptk_code_1}}. تم الاختبار حتى {{ptk_code_2}}. تتطلب الإصدارات الأحدث مراجعة."
 
 #: renderers/angular/src/index.md
 #, no-c-format
@@ -18508,7 +18536,7 @@ msgstr "بناء ورقة أنماط pantoken لقالب (مع CSS للمكوّ�
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "<!-- pantoken-value-scope:renderers%2Fastro%2Fsrc%2Findex.md -->\nTarget: Astro / Starlight. Current format: {{ptk_code_0}}. Minimum host version: {{ptk_code_1}}. Tested through {{ptk_code_2}}. Newer releases require review."
-msgstr "<!-- pantoken-value-scope:renderers%2Fastro%2Fsrc%2Findex.md -->\nTarget: Astro / Starlight. Current format: {{ptk_code_0}}. Minimum host version: {{ptk_code_1}}. Tested through {{ptk_code_2}}. Newer releases require review."
+msgstr "<!-- pantoken-value-scope:renderers%2Fastro%2Fsrc%2Findex.md -->\nالهدف: Astro / Starlight. التنسيق الحالي: {{ptk_code_0}}. الحد الأدنى لإصدار المضيف: {{ptk_code_1}}. تم الاختبار حتى {{ptk_code_2}}. تتطلب الإصدارات الأحدث مراجعة."
 
 #: renderers/astro/src/index.md
 #, fuzzy, no-c-format
@@ -18582,7 +18610,7 @@ msgstr "**قصر النطاق على سمة theme في Bootstrap**"
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "<!-- pantoken-value-scope:renderers%2Fbootstrap%2Fsrc%2Findex.md -->\nTarget: Bootstrap. Current format: {{ptk_code_0}}. Minimum host version: {{ptk_code_1}}. Tested through {{ptk_code_2}}. Newer releases require review."
-msgstr "<!-- pantoken-value-scope:renderers%2Fbootstrap%2Fsrc%2Findex.md -->\nTarget: Bootstrap. Current format: {{ptk_code_0}}. Minimum host version: {{ptk_code_1}}. Tested through {{ptk_code_2}}. Newer releases require review."
+msgstr "<!-- pantoken-value-scope:renderers%2Fbootstrap%2Fsrc%2Findex.md -->\nالهدف: Bootstrap. التنسيق الحالي: {{ptk_code_0}}. الحد الأدنى لإصدار المضيف: {{ptk_code_1}}. تم الاختبار حتى الإصدار {{ptk_code_2}}. تتطلب الإصدارات الأحدث مراجعة."
 
 #: renderers/bootstrap/src/index.md
 #, no-c-format
@@ -18665,7 +18693,7 @@ msgstr "حوّل `--instui-color-background-brand` إلى `colorBackgroundBrand`
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "<!-- pantoken-value-scope:renderers%2Fcss-in-js%2Fsrc%2Findex.md -->\nTarget: Emotion CSS-in-JS. Current format: {{ptk_code_0}}. Minimum host version: {{ptk_code_1}}. Tested through {{ptk_code_2}}. Newer releases require review."
-msgstr "<!-- pantoken-value-scope:renderers%2Fcss-in-js%2Fsrc%2Findex.md -->\nTarget: Emotion CSS-in-JS. Current format: {{ptk_code_0}}. Minimum host version: {{ptk_code_1}}. Tested through {{ptk_code_2}}. Newer releases require review."
+msgstr "<!-- pantoken-value-scope:renderers%2Fcss-in-js%2Fsrc%2Findex.md -->\nالهدف: Emotion CSS-in-JS. التنسيق الحالي: {{ptk_code_0}}. الحد الأدنى لإصدار المضيف: {{ptk_code_1}}. تم الاختبار حتى {{ptk_code_2}}. تتطلب الإصدارات الأحدث مراجعة."
 
 #: renderers/css-in-js/src/index.md
 #, fuzzy, no-c-format
@@ -18725,7 +18753,7 @@ msgstr "إخراج جسر متغيرات CSS من Infima → Instructure."
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "<!-- pantoken-value-scope:renderers%2Fdocusaurus%2Fsrc%2Findex.md -->\nTarget: Docusaurus theme-classic. Current format: {{ptk_code_0}}. Minimum host version: {{ptk_code_1}}. Tested through {{ptk_code_2}}. Newer releases require review."
-msgstr "<!-- pantoken-value-scope:renderers%2Fdocusaurus%2Fsrc%2Findex.md -->\nTarget: Docusaurus theme-classic. Current format: {{ptk_code_0}}. Minimum host version: {{ptk_code_1}}. Tested through {{ptk_code_2}}. Newer releases require review."
+msgstr "<!-- pantoken-value-scope:renderers%2Fdocusaurus%2Fsrc%2Findex.md -->\nالهدف: Docusaurus theme-classic. التنسيق الحالي: {{ptk_code_0}}. الحد الأدنى لإصدار المضيف: {{ptk_code_1}}. تم اختباره حتى الإصدار {{ptk_code_2}}. تتطلب الإصدارات الأحدث مراجعة."
 
 #: renderers/docusaurus/src/index.md
 #, fuzzy, no-c-format
@@ -18797,7 +18825,7 @@ msgstr "**دع إعدادات المستهلك تفوز**"
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "<!-- pantoken-value-scope:renderers%2Ffoundation%2Fsrc%2Findex.md -->\nTarget: Foundation for Sites. Current format: {{ptk_code_0}}. Minimum host version: {{ptk_code_1}}. Tested through {{ptk_code_2}}. Newer releases require review."
-msgstr "<!-- pantoken-value-scope:renderers%2Ffoundation%2Fsrc%2Findex.md -->\nTarget: Foundation for Sites. Current format: {{ptk_code_0}}. Minimum host version: {{ptk_code_1}}. Tested through {{ptk_code_2}}. Newer releases require review."
+msgstr "<!-- pantoken-value-scope:renderers%2Ffoundation%2Fsrc%2Findex.md -->\nالهدف: Foundation for Sites. التنسيق الحالي: {{ptk_code_0}}. الحد الأدنى لإصدار المضيف: {{ptk_code_1}}. تم الاختبار حتى {{ptk_code_2}}. تتطلب الإصدارات الأحدث مراجعة."
 
 #: renderers/foundation/src/index.md
 #, no-c-format
@@ -18883,7 +18911,7 @@ msgstr "**تكوين محلل ملحق brand-icon**"
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "<!-- pantoken-value-scope:renderers%2Fmarkdown-it%2Fsrc%2Findex.md -->\nTarget: markdown-it. Minimum host version: {{ptk_code_0}}. Tested through {{ptk_code_1}}. Newer releases require review."
-msgstr "<!-- pantoken-value-scope:renderers%2Fmarkdown-it%2Fsrc%2Findex.md -->\nTarget: markdown-it. Minimum host version: {{ptk_code_0}}. Tested through {{ptk_code_1}}. Newer releases require review."
+msgstr "<!-- pantoken-value-scope:renderers%2Fmarkdown-it%2Fsrc%2Findex.md -->\nالهدف: markdown-it. الحد الأدنى لإصدار المضيف: {{ptk_code_0}}. تم الاختبار حتى {{ptk_code_1}}. تتطلب الإصدارات الأحدث مراجعة."
 
 #: renderers/markdown-it/src/index.md
 #, no-c-format
@@ -18973,7 +19001,7 @@ msgstr "المفاتيح `colors` + `background` للدمج في `docs.json` ا�
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "<!-- pantoken-value-scope:renderers%2Fmintlify%2Fsrc%2Findex.md -->\nTarget: Mintlify docs.json. Current format: {{ptk_code_0}}. Minimum host version: {{ptk_code_1}}. Tested through {{ptk_code_2}}. Newer releases require review."
-msgstr "<!-- pantoken-value-scope:renderers%2Fmintlify%2Fsrc%2Findex.md -->\nTarget: Mintlify docs.json. Current format: {{ptk_code_0}}. Minimum host version: {{ptk_code_1}}. Tested through {{ptk_code_2}}. Newer releases require review."
+msgstr "<!-- pantoken-value-scope:renderers%2Fmintlify%2Fsrc%2Findex.md -->\nالهدف: Mintlify docs.json. التنسيق الحالي: {{ptk_code_0}}. الحد الأدنى لإصدار المضيف: {{ptk_code_1}}. تم الاختبار حتى الإصدار {{ptk_code_2}}. تتطلب الإصدارات الأحدث مراجعة."
 
 #: renderers/mintlify/src/index.md
 #, fuzzy, no-c-format
@@ -19057,7 +19085,7 @@ msgstr "**سمة لكل علامة تجارية ولكل وضع**"
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "<!-- pantoken-value-scope:renderers%2Fmui%2Fsrc%2Findex.md -->\nTarget: Material UI. Current format: {{ptk_code_0}}. Minimum host version: {{ptk_code_1}}. Tested through {{ptk_code_2}}. Newer releases require review."
-msgstr "<!-- pantoken-value-scope:renderers%2Fmui%2Fsrc%2Findex.md -->\nTarget: Material UI. Current format: {{ptk_code_0}}. Minimum host version: {{ptk_code_1}}. Tested through {{ptk_code_2}}. Newer releases require review."
+msgstr "<!-- pantoken-value-scope:renderers%2Fmui%2Fsrc%2Findex.md -->\nالهدف: Material UI. التنسيق الحالي: {{ptk_code_0}}. الحد الأدنى لإصدار المضيف: {{ptk_code_1}}. تم الاختبار حتى {{ptk_code_2}}. تتطلب الإصدارات الأحدث مراجعة."
 
 #: renderers/mui/src/index.md
 #, fuzzy, no-c-format
@@ -19315,7 +19343,7 @@ msgstr "مكوّن rehype إضافي يوسم اقتباسات التنبيه ف
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "<!-- pantoken-value-scope:renderers%2Freact-markdown%2Fsrc%2Findex.md -->\nTarget: react-markdown. Current format: {{ptk_code_0}}. Minimum host version: {{ptk_code_1}}. Tested through {{ptk_code_2}}. Newer releases require review."
-msgstr "<!-- pantoken-value-scope:renderers%2Freact-markdown%2Fsrc%2Findex.md -->\nTarget: react-markdown. Current format: {{ptk_code_0}}. Minimum host version: {{ptk_code_1}}. Tested through {{ptk_code_2}}. Newer releases require review."
+msgstr "<!-- pantoken-value-scope:renderers%2Freact-markdown%2Fsrc%2Findex.md -->\nالهدف: react-markdown. التنسيق الحالي: {{ptk_code_0}}. الحد الأدنى لإصدار المضيف: {{ptk_code_1}}. تم الاختبار حتى {{ptk_code_2}}. تتطلب الإصدارات الأحدث مراجعة."
 
 #: renderers/react-markdown/src/index.md
 #, fuzzy, no-c-format
@@ -19525,7 +19553,7 @@ msgstr "هوك React يعيد قيمة التوكن المحللة `--instui-*` 
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "<!-- pantoken-value-scope:renderers%2Freact%2Fsrc%2Findex.md -->\nTarget: React. Current format: {{ptk_code_0}}. Minimum host version: {{ptk_code_1}}. Tested through {{ptk_code_2}}. Newer releases require review."
-msgstr "<!-- pantoken-value-scope:renderers%2Freact%2Fsrc%2Findex.md -->\nTarget: React. Current format: {{ptk_code_0}}. Minimum host version: {{ptk_code_1}}. Tested through {{ptk_code_2}}. Newer releases require review."
+msgstr "<!-- pantoken-value-scope:renderers%2Freact%2Fsrc%2Findex.md -->\nالهدف: React. التنسيق الحالي: {{ptk_code_0}}. الحد الأدنى لإصدار المضيف: {{ptk_code_1}}. تم الاختبار حتى {{ptk_code_2}}. تتطلب الإصدارات الأحدث مراجعة."
 
 #: renderers/react/src/index.md
 #, no-c-format
@@ -19592,7 +19620,7 @@ msgstr "**مجموعة أيقونات مدمجة**"
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "<!-- pantoken-value-scope:renderers%2Frehype%2Fsrc%2Findex.md -->\nTarget: rehype. Current format: {{ptk_code_0}}. Minimum host version: {{ptk_code_1}}. Tested through {{ptk_code_2}}. Newer releases require review."
-msgstr "<!-- pantoken-value-scope:renderers%2Frehype%2Fsrc%2Findex.md -->\nTarget: rehype. Current format: {{ptk_code_0}}. Minimum host version: {{ptk_code_1}}. Tested through {{ptk_code_2}}. Newer releases require review."
+msgstr "<!-- pantoken-value-scope:renderers%2Frehype%2Fsrc%2Findex.md -->\nالهدف: rehype. التنسيق الحالي: {{ptk_code_0}}. الحد الأدنى لإصدار المضيف: {{ptk_code_1}}. تم الاختبار حتى {{ptk_code_2}}. تتطلب الإصدارات الأحدث مراجعة."
 
 #: renderers/rehype/src/index.md
 #, no-c-format
@@ -19640,7 +19668,7 @@ msgstr "توليد أسماء مستعارة لـ Tailwind v4 لمتغيرات �
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "<!-- pantoken-value-scope:renderers%2Fshadcn%2Fsrc%2Findex.md -->\nTarget: shadcn/ui CSS variables. Current format: {{ptk_code_0}}. Minimum host version: {{ptk_code_1}}. Tested through {{ptk_code_2}}. Newer releases require review."
-msgstr "<!-- pantoken-value-scope:renderers%2Fshadcn%2Fsrc%2Findex.md -->\nTarget: shadcn/ui CSS variables. Current format: {{ptk_code_0}}. Minimum host version: {{ptk_code_1}}. Tested through {{ptk_code_2}}. Newer releases require review."
+msgstr "<!-- pantoken-value-scope:renderers%2Fshadcn%2Fsrc%2Findex.md -->\nالهدف: متغيرات CSS الخاصة بـ shadcn/ui. التنسيق الحالي: {{ptk_code_0}}. الحد الأدنى لإصدار المضيف: {{ptk_code_1}}. تم الاختبار حتى {{ptk_code_2}}. تتطلب الإصدارات الأحدث مراجعة."
 
 #: renderers/shadcn/src/index.md
 #, fuzzy, no-c-format
@@ -19700,7 +19728,7 @@ msgstr "كائن على شكل `ThemeVars`."
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "<!-- pantoken-value-scope:renderers%2Fstorybook%2Fsrc%2Findex.md -->\nTarget: Storybook theming. Current format: {{ptk_code_0}}. Minimum host version: {{ptk_code_1}}. Tested through {{ptk_code_2}}. Newer releases require review."
-msgstr "<!-- pantoken-value-scope:renderers%2Fstorybook%2Fsrc%2Findex.md -->\nTarget: Storybook theming. Current format: {{ptk_code_0}}. Minimum host version: {{ptk_code_1}}. Tested through {{ptk_code_2}}. Newer releases require review."
+msgstr "<!-- pantoken-value-scope:renderers%2Fstorybook%2Fsrc%2Findex.md -->\nالهدف: تخصيص موضوعات Storybook. التنسيق الحالي: {{ptk_code_0}}. الحد الأدنى لإصدار المضيف: {{ptk_code_1}}. تم الاختبار حتى {{ptk_code_2}}. تتطلب الإصدارات الأحدث مراجعة."
 
 #: renderers/storybook/src/index.md
 #, fuzzy, no-c-format
@@ -19781,7 +19809,7 @@ msgstr "يُمرَّر إلى `register()` (مثال: `prefix`, `only`)."
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "<!-- pantoken-value-scope:renderers%2Fsvelte%2Fsrc%2Findex.md -->\nTarget: Svelte. Current format: {{ptk_code_0}}. Minimum host version: {{ptk_code_1}}. Tested through {{ptk_code_2}}. Newer releases require review."
-msgstr "<!-- pantoken-value-scope:renderers%2Fsvelte%2Fsrc%2Findex.md -->\nTarget: Svelte. Current format: {{ptk_code_0}}. Minimum host version: {{ptk_code_1}}. Tested through {{ptk_code_2}}. Newer releases require review."
+msgstr "<!-- pantoken-value-scope:renderers%2Fsvelte%2Fsrc%2Findex.md -->\nالهدف: Svelte. الصيغة الحالية: {{ptk_code_0}}. الحد الأدنى لإصدار المضيف: {{ptk_code_1}}. تم الاختبار حتى {{ptk_code_2}}. تتطلب الإصدارات الأحدث مراجعة."
 
 #: renderers/svelte/src/index.md
 #, no-c-format
@@ -20075,7 +20103,7 @@ msgstr "تحقق من رمز فئة pantoken (مثل \"instui-button\"، \"instu
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "<!-- pantoken-value-scope:renderers%2Ftinymce%2Fsrc%2Findex.md -->\nTarget: TinyMCE PluginManager. Current format: {{ptk_code_0}}. Minimum host version: {{ptk_code_1}}. Tested through {{ptk_code_2}}. Newer releases require review."
-msgstr "<!-- pantoken-value-scope:renderers%2Ftinymce%2Fsrc%2Findex.md -->\nTarget: TinyMCE PluginManager. Current format: {{ptk_code_0}}. Minimum host version: {{ptk_code_1}}. Tested through {{ptk_code_2}}. Newer releases require review."
+msgstr "<!-- pantoken-value-scope:renderers%2Ftinymce%2Fsrc%2Findex.md -->\nالهدف: TinyMCE PluginManager. التنسيق الحالي: {{ptk_code_0}}. الحد الأدنى لإصدار المضيف: {{ptk_code_1}}. تم الاختبار حتى {{ptk_code_2}}. تتطلب الإصدارات الأحدث مراجعة."
 
 #: renderers/tinymce/src/interfaces/ContentClassesPluginOptions.md
 #, fuzzy, no-c-format
@@ -20098,8 +20126,8 @@ msgstr "سجل CSS موثق واحد: فئته الأساسية وكل ما تم
 #: renderers/tinymce/src/interfaces/CssDocEntry.md
 #, no-c-format
 msgctxt "docs.api:prose"
-msgid "The record name from `@component`/`@utility`/`@rule`/`@declaration`/`@name`, e.g. `button`."
-msgstr "اسم السجل من `@component`/`@utility`/`@rule`/`@declaration`/`@name`، على سبيل المثال `button`."
+msgid "The canonical record name from a record-opening tag, e.g. `button`."
+msgstr "الاسم المعتمد للسجل من وسم افتتاح السجل، مثل `button`."
 
 #: renderers/tinymce/src/interfaces/CssDocEntry.md
 #, fuzzy, no-c-format
@@ -20132,10 +20160,16 @@ msgid "Internal-only prose from `@privateRemarks` (emitters may choose to omit i
 msgstr "نص داخلي فقط من `@privateRemarks` (قد تختار أدوات الإرسال عدم تضمينه في المخرجات العامة)."
 
 #: renderers/tinymce/src/interfaces/CssDocEntry.md
-#, fuzzy, no-c-format
+#, no-c-format
 msgctxt "docs.api:prose"
-msgid "The release stage from a modifier flag tag (`@alpha`/`@beta`/`@experimental`/`@internal`/`@public`)."
-msgstr "مرحلة الإصدار من وسم علم المُعدل (`@alpha`/`@beta`/`@experimental`/`@internal`/`@public`)."
+msgid "Release maturity from `@stage` or a legacy maturity flag tag."
+msgstr "نضج الإصدار من `@stage` أو وسم قديم لعلامة النضج."
+
+#: renderers/tinymce/src/interfaces/CssDocEntry.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Audience visibility; absent means public."
+msgstr "مدى ظهور الجمهور؛ ويعني غيابه أن المحتوى عام."
 
 #: renderers/tinymce/src/interfaces/CssDocEntry.md
 #, fuzzy, no-c-format
@@ -20156,10 +20190,10 @@ msgid "Accessibility guidance, from `@a11y`/`@accessibility`."
 msgstr "إرشادات إمكانية الوصول، من `@a11y`/`@accessibility`."
 
 #: renderers/tinymce/src/interfaces/CssDocEntry.md
-#, fuzzy, no-c-format
+#, no-c-format
 msgctxt "docs.api:prose"
-msgid "Set when this record carries a `@global` tag — its modifiers (and per-modifier `@global` flags)\napply to any component/layout/rule/declaration, not just this record's base class. Used during\nvalidation and consumption checks to resolve modifier matches globally."
-msgstr "يُضبط عندما يحمل هذا السجل وسم `@global` — تعد modifierاته (وعلامات `@global` لكل مُعدل)\nقابلة للتطبيق على أي مكوّن/تخطيط/قاعدة/تصريح، وليس فقط فئة السجل الأساسية. تُستخدم أثناء\nالتحقق والاستهلاك لحل مطابقات المعدل على مستوى العالم."
+msgid "Set when this record carries a `@global` tag — its modifiers (and per-modifier `@global` flags)\napply to any record, not just this record's base class. Used during\nvalidation and consumption checks to resolve modifier matches globally."
+msgstr "يُضبط عند احتواء هذا السجل على وسم `@global` — إذ تنطبق معدِّلاته (وعلامات `@global` لكل معدِّل)\n على أي سجل، وليس على الفئة الأساسية لهذا السجل فقط. يُستخدم أثناء \nالتحقق وفحوصات الاستهلاك لحل تطابقات المعدِّلات على مستوى شامل."
 
 #: renderers/tinymce/src/interfaces/CssDocEntry.md
 #, fuzzy, no-c-format
@@ -20255,7 +20289,7 @@ msgstr "كتل `@example` حرفيًا."
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "Private `@example` labels, keyed by zero-based index into [examples](#examples)."
-msgstr ""
+msgstr "تسميات `@example` الخاصة، مفهرسة حسب الفهرس الذي يبدأ من الصفر ضمن [examples](#examples)."
 
 #: renderers/tinymce/src/interfaces/CssDocEntry.md
 #, no-c-format
@@ -20550,7 +20584,7 @@ msgstr "تخطيطات الصفحات المضمّنة المعروضة عبر �
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "<!-- pantoken-value-scope:renderers%2Fvitepress%2Fsrc%2Findex.md -->\nTarget: VitePress. Current format: {{ptk_code_0}}. Minimum host version: {{ptk_code_1}}. Tested through {{ptk_code_2}}. Newer releases require review."
-msgstr "<!-- pantoken-value-scope:renderers%2Fvitepress%2Fsrc%2Findex.md -->\nTarget: VitePress. Current format: {{ptk_code_0}}. Minimum host version: {{ptk_code_1}}. Tested through {{ptk_code_2}}. Newer releases require review."
+msgstr "<!-- pantoken-value-scope:renderers%2Fvitepress%2Fsrc%2Findex.md -->\nالهدف: VitePress. التنسيق الحالي: {{ptk_code_0}}. الحد الأدنى لإصدار المضيف: {{ptk_code_1}}. تم الاختبار حتى الإصدار {{ptk_code_2}}. تتطلب الإصدارات الأحدث مراجعة."
 
 #: renderers/vitepress/src/index.md
 #, fuzzy, no-c-format
@@ -20601,7 +20635,7 @@ msgstr "المُحلِّل (افتراضيًا إلى مجموعة أيقونا�
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "<!-- pantoken-value-scope:renderers%2Fvue%2Fsrc%2Findex.md -->\nTarget: Vue. Current format: {{ptk_code_0}}. Minimum host version: {{ptk_code_1}}. Tested through {{ptk_code_2}}. Newer releases require review."
-msgstr "<!-- pantoken-value-scope:renderers%2Fvue%2Fsrc%2Findex.md -->\nTarget: Vue. Current format: {{ptk_code_0}}. Minimum host version: {{ptk_code_1}}. Tested through {{ptk_code_2}}. Newer releases require review."
+msgstr "<!-- pantoken-value-scope:renderers%2Fvue%2Fsrc%2Findex.md -->\nالهدف: Vue. التنسيق الحالي: {{ptk_code_0}}. الحد الأدنى لإصدار المضيف: {{ptk_code_1}}. تم الاختبار حتى {{ptk_code_2}}. تتطلب الإصدارات الأحدث مراجعة."
 
 #: renderers/vue/src/index.md
 #, no-c-format
@@ -20758,7 +20792,7 @@ msgstr "أول يوم في الأسبوع كمؤشر JS `Date.getDay()` (0=ال�
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "<!-- pantoken-value-scope:renderers%2Fweb-components%2Fsrc%2Findex.md -->\nTarget: Web Components. Current format: {{ptk_code_0}}. Tested environment: {{ptk_code_1}}. Real-browser rendering and interaction behavior are not verified."
-msgstr "<!-- pantoken-value-scope:renderers%2Fweb-components%2Fsrc%2Findex.md -->\nTarget: Web Components. Current format: {{ptk_code_0}}. Tested environment: {{ptk_code_1}}. Real-browser rendering and interaction behavior are not verified."
+msgstr "<!-- pantoken-value-scope:renderers%2Fweb-components%2Fsrc%2Findex.md -->\nالهدف: مكوّنات الويب. التنسيق الحالي: {{ptk_code_0}}. بيئة الاختبار: {{ptk_code_1}}. لم يتم التحقق من العرض وسلوك التفاعل في متصفح حقيقي."
 
 #: renderers/web-components/src/index.md
 #, fuzzy, no-c-format
@@ -22201,6 +22235,46 @@ msgstr "سلسلة مصدر Stylus."
 msgctxt "docs.api:prose"
 msgid "A hoverable \"view fullscreen\" button, overlaid on a demo/example frame the same way VitePress's own\ncode-block \"copy\" button reveals on hover. Purely markup — wire a delegated click handler in your\nhost page (`button.closest(...).querySelector(\"iframe\")?.requestFullscreen()`; see the pantoken docs\ntheme for the reference wiring) and style the reveal-on-hover with `@pantoken/demo/demo.css`."
 msgstr "زر قابل للتحويم \"عرض بملء الشاشة\"، مغطى فوق إطار العرض/المثال بنفس الطريقة التي يظهر بها زر \"نسخ\" الخاص بـ VitePress عند التحويم.\nمجرد وسم — اربط معالج نقر مفوض في صفحة المضيف الخاصة بك (`button.closest(...).querySelector(\"iframe\")?.requestFullscreen()`; راجع theme مستندات pantoken للوصل المرجعي) وقم بتنسيق الإظهار عند التحويم باستخدام `@pantoken/demo/demo.css`."
+
+#, no-c-format
+#~ msgctxt "docs.api:prose"
+#~ msgid " With prefers-contrast: more, two pieces of text fall below the minimum contrast. The worst is \"Undo\" at 4.46:1 (needs 4.5:1)."
+#~ msgstr " مع prefers-contrast: more، ينخفض تباين نصين عن الحد الأدنى. وأسوأهما \"تراجع\" بنسبة 4.46:1 (يتطلب 4.5:1)."
+
+#, no-c-format
+#~ msgctxt "docs.api:prose"
+#~ msgid "aria-valid-attr-value"
+#~ msgstr "aria-valid-attr-value"
+
+#, no-c-format
+#~ msgctxt "docs.api:prose"
+#~ msgid "ARIA attributes must conform to valid values"
+#~ msgstr "يجب أن تلتزم سمات ARIA بقيم صالحة"
+
+#, no-c-format
+#~ msgctxt "docs.api:prose"
+#~ msgid " With prefers-contrast: less, six pieces of text fall below the minimum contrast. The worst is \"Warning selected\" at 1.67:1 (needs 4.5:1). Softer contrast is fine only while text stays readable."
+#~ msgstr " مع prefers-contrast: less، ينخفض تباين ستة مقاطع نصية عن الحد الأدنى. أسوأها «تحذير محدد» بنسبة 1.67:1 (المطلوب 4.5:1). لا بأس بتباين أخف ما دام النص يظل مقروءًا."
+
+#, no-c-format
+#~ msgctxt "docs.api:prose"
+#~ msgid " With prefers-contrast: more, six pieces of text fall below the minimum contrast. The worst is \"Warning selected\" at 1.67:1 (needs 4.5:1)."
+#~ msgstr " مع prefers-contrast: more، ينخفض تباين ستة مقاطع نصية عن الحد الأدنى. أسوأها «تحذير محدد» بنسبة 1.67:1 (المطلوب 4.5:1)."
+
+#, no-c-format
+#~ msgctxt "docs.api:prose"
+#~ msgid "The record name from `@component`/`@utility`/`@rule`/`@declaration`/`@name`, e.g. `button`."
+#~ msgstr "اسم السجل من `@component`/`@utility`/`@rule`/`@declaration`/`@name`، على سبيل المثال `button`."
+
+#, fuzzy, no-c-format
+#~ msgctxt "docs.api:prose"
+#~ msgid "The release stage from a modifier flag tag (`@alpha`/`@beta`/`@experimental`/`@internal`/`@public`)."
+#~ msgstr "مرحلة الإصدار من وسم علم المُعدل (`@alpha`/`@beta`/`@experimental`/`@internal`/`@public`)."
+
+#, fuzzy, no-c-format
+#~ msgctxt "docs.api:prose"
+#~ msgid "Set when this record carries a `@global` tag — its modifiers (and per-modifier `@global` flags)\napply to any component/layout/rule/declaration, not just this record's base class. Used during\nvalidation and consumption checks to resolve modifier matches globally."
+#~ msgstr "يُضبط عندما يحمل هذا السجل وسم `@global` — تعد modifierاته (وعلامات `@global` لكل مُعدل)\nقابلة للتطبيق على أي مكوّن/تخطيط/قاعدة/تصريح، وليس فقط فئة السجل الأساسية. تُستخدم أثناء\nالتحقق والاستهلاك لحل مطابقات المعدل على مستوى العالم."
 
 #, no-c-format
 #~ msgctxt "docs.api:prose"

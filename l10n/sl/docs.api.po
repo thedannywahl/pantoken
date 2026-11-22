@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: pantoken\n"
-"PO-Revision-Date: 2026-11-20 03:47+0000\n"
+"PO-Revision-Date: 2026-11-21 21:07+0000\n"
 "Last-Translator: pantoken localization engine\n"
 "Language-Team: pantoken\n"
 "MIME-Version: 1.0\n"
@@ -30478,9 +30478,11 @@ msgstr "Gumb, ki se ob premiku miške prikaže kot \"prikaži celozaslonsko\", p
 #~ msgid "`.instui-segmented-control` — A selectable segmented-control label and its native radio input."
 #~ msgstr "`.instui-segmented-control` — Izbirna oznaka segmentiranega kontrolnika in njen izvorni radio vnos."
 
-#~ msgctxt "docs.api:prose"
-#~ msgid "A `-icon-*` class may live on the label or its native input; the interaction helper\n  promotes input classes to the label so the shared glyph painter can render it."
-#~ msgstr "Razred `-icon-*` lahko živi na oznaki ali na njenem izvor­nem vnosu; pomočnik za interakcijo\n  premakne razrede vnosa na oznako, tako da jih lahko skupni risar glifov upodobi."
+#: css/segmented-control.segment.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "A `-icon-*` class may live on the label or its native input; the interaction helper promotes input classes to the label so the shared glyph painter can render it."
+msgstr "Razred `-icon-*` lahko živi na oznaki ali na njenem izvor­nem vnosu; pomočnik za interakcijo\n  premakne razrede vnosa na oznako, tako da jih lahko skupni risar glifov upodobi."
 
 #~ msgctxt "docs.api:prose"
 #~ msgid "Keep the native radio in the label so checked, focus, disabled, and keyboard semantics remain available."
@@ -32817,3 +32819,67 @@ msgstr "globalNavBarItemCss"
 msgctxt "docs.api:text"
 msgid "global-nav-bar"
 msgstr "global-nav-bar"
+
+msgctxt "docs.api:prose"
+msgid "Rebrand (light), Canvas, Canvas High Contrast:"
+msgstr "Prenova (svetla), Canvas, Canvas High Contrast:"
+
+msgctxt "docs.api:prose"
+msgid " With prefers-contrast: less, one piece of text falls below the minimum contrast. The worst is \"Your session expires soon.\" at 2.74:1 (needs 4.5:1). Softer contrast is fine only while text stays readable."
+msgstr " Pri prefers-contrast: less eno besedilo pade pod minimalno kontrastnost. Najslabše je „Vaša seja se kmalu izteče.“ pri 2.74:1 (zahteva 4.5:1). Mehkejši kontrast je primeren le, če besedilo ostane berljivo."
+
+msgctxt "docs.api:prose"
+msgid " With prefers-contrast: less, one piece of text falls below the minimum contrast. The worst is \"Your session expires soon.\" at 2.77:1 (needs 4.5:1). Softer contrast is fine only while text stays readable."
+msgstr " Pri prefers-contrast: less eno besedilo pade pod minimalno kontrastnost. Najslabše je „Vaša seja se kmalu izteče.“ pri 2.77:1 (zahteva 4.5:1). Mehkejši kontrast je primeren le, če besedilo ostane berljivo."
+
+msgctxt "docs.api:prose"
+msgid " With prefers-contrast: less, one piece of text falls below the minimum contrast. The worst is \"Your session expires soon.\" at 1.48:1 (needs 4.5:1). Softer contrast is fine only while text stays readable."
+msgstr " Pri prefers-contrast: less eno besedilo pade pod minimalno kontrastnost. Najslabše je „Vaša seja se kmalu izteče.“ pri 1.48:1 (zahteva 4.5:1). Mehkejši kontrast je primeren le, če besedilo ostane berljivo."
+
+msgctxt "docs.api:prose"
+msgid " With prefers-contrast: more, one piece of text falls below the minimum contrast. The worst is \"Your session expires soon.\" at 2.74:1 (needs 4.5:1)."
+msgstr " Pri prefers-contrast: more eno besedilo pade pod minimalno kontrastnost. Najslabše je „Vaša seja se kmalu izteče.“ pri 2.74:1 (zahteva 4.5:1)."
+
+msgctxt "docs.api:prose"
+msgid "**Size** controls padding and gap: `relaxed` (default) is roomier; `compact` tightens both. **Color** sets the fill: bare (no modifier) is unfilled — border and icon only; `-color-violet` and `-color-sea` add a tinted background plus a matching icon swatch."
+msgstr "**Velikost** določa oblazinjenje in razmik: `relaxed` (privzeta možnost) je prostornejša; `compact` oboje zoži. **Barva** določa polnilo: brez modifikatorja) pomeni, da ni polnila — samo obroba in ikona; `-color-violet` in `-color-sea` dodata obarvano ozadje in ujemajoč se barvni vzorec ikone."
+
+msgctxt "docs.api:prose"
+msgid "Its own chained modifiers (`-color-*`, `-size-*`, `-shape-*`, `-toggle`, `-condensed`, `-without-background`, `-without-border`, `-display-block`) set a default for every child `.instui-button` that doesn't carry its own modifier in that same category — a button's own modifier class always wins over the group's default. `-icon-*` is always per-button; it's never read from the group. Deprecated button aliases (`-ghost`, `-color-primary-inverse`) aren't supported as group-level modifiers — use their canonical replacements (`-color-tertiary`, `-on-color`) instead. Each join shows a single 1px seam in the buttons' own border color (solid fills, whose border matches the fill, tint it with the label color). `-without-seam` is group-only: it hides that seam so the buttons read as one continuous control. Put `-width-half` on an individual icon-only child button for a split-action trigger with half the standard square width and the full button height."
+msgstr "Njegovi lastni verižno povezani modifikatorji (`-color-*`, `-size-*`, `-shape-*`, `-toggle`, `-condensed`, `-without-background`, `-without-border`, `-display-block`) določijo privzeto vrednost za vsakega podrejenega `.instui-button`, ki nima lastnega modifikatorja v isti kategoriji — lastni razred modifikatorja gumba vedno prevlada nad privzetim razredom skupine. `-icon-*` vedno velja za posamezni gumb; nikoli se ne bere iz skupine. Zastareli vzdevki gumbov (`-ghost`, `-color-primary-inverse`) niso podprti kot modifikatorji na ravni skupine — namesto njih uporabljajte njihove kanonične nadomestke (`-color-tertiary`, `-on-color`). Vsaka spoj prikazuje enojni 1px rob v lastni barvi obrobe gumbov (pri polnih polnilih, katerih obroba se ujema s polnilom, ga obarvajte z barvo oznake). `-without-seam` je namenjen samo skupini: skrije ta šiv, tako da se gumbi berejo kot en neprekinjen kontrolnik. Postavite `-width-half` na posamezni podrejeni gumb samo z ikono za sprožilec razdeljenega dejanja, ki je polovično širok glede na standardno kvadratno širino, po višini pa zajema cel gumb."
+
+msgctxt "docs.api:prose"
+msgid "Rebrand (light), Rebrand (dark):"
+msgstr "Preoblikovanje blagovne znamke (svetlo), preoblikovanje blagovne znamke (temno):"
+
+msgctxt "docs.api:prose"
+msgid " With prefers-contrast: less, four pieces of text fall below the minimum contrast. The worst is \"Disabled unselected\" at 2.74:1 (needs 4.5:1). Softer contrast is fine only while text stays readable."
+msgstr " Pri prefers-contrast: less štirje deli besedila ne dosegajo minimalnega kontrasta. Najslabši primer je »Disabled unselected« pri 2.74:1 (zahteva 4.5:1). Mehkejši kontrast je primeren le, če besedilo ostane berljivo."
+
+msgctxt "docs.api:prose"
+msgid " With prefers-contrast: more, four pieces of text fall below the minimum contrast. The worst is \"Disabled unselected\" at 2.74:1 (needs 4.5:1)."
+msgstr " Pri prefers-contrast: more štirje deli besedila ne dosegajo minimalnega kontrasta. Najslabši primer je »Disabled unselected« pri 2.74:1 (zahteva 4.5:1)."
+
+msgctxt "docs.api:prose"
+msgid "The selected segment uses a distinct active-item shadow; it does not match an existing --instui-elevation-* composite. Overflow buttons use the upstream elevation3 component tokens."
+msgstr "Izbrani segment uporablja izrazito senco aktivnega elementa; ne ujema se z obstoječim kompozitom --instui-elevation-*. Gumbi za prelivanje uporabljajo zgornjotokačne sestavljene žetone elevation3."
+
+msgctxt "docs.api:prose"
+msgid "The canonical record name from a record-opening tag, e.g. `button`."
+msgstr "Kanonično ime zapisa iz oznake za odpiranje zapisa, npr. `button`."
+
+msgctxt "docs.api:prose"
+msgid "Release maturity from `@stage` or a legacy maturity flag tag."
+msgstr "Zrelost izdaje iz `@stage` ali zastarele oznake zastavice zrelosti."
+
+msgctxt "docs.api:prose"
+msgid "Audience visibility; absent means public."
+msgstr "Vidnost občinstva; če manjka, pomeni javno."
+
+msgctxt "docs.api:prose"
+msgid "Set when this record carries a `@global` tag — its modifiers (and per-modifier `@global` flags)\napply to any record, not just this record's base class. Used during\nvalidation and consumption checks to resolve modifier matches globally."
+msgstr "Nastavi se, kadar ta zapis vsebuje oznako `@global` — njegovi modifikatorji (in zastavice `@global` za posamezne modifikatorje)\nveljajo za kateri koli zapis, ne samo za osnovni razred tega zapisa. Uporablja se med\npreverjanjem veljavnosti in kontrolami porabe za globalno razreševanje ujemanj modifikatorjev."
+
+msgctxt "docs.api:prose"
+msgid "Private `@example` labels, keyed by zero-based index into [examples](#examples)."
+msgstr "Zasebne `@example` oznake, indeksirane z ničelnim indeksom v [primeri](#examples)."

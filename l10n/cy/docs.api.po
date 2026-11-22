@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: pantoken\n"
-"PO-Revision-Date: 2026-11-20 04:06+0000\n"
+"PO-Revision-Date: 2026-11-21 21:30+0000\n"
 "Last-Translator: pantoken localization engine\n"
 "Language-Team: pantoken\n"
 "MIME-Version: 1.0\n"
@@ -32816,3 +32816,71 @@ msgstr "globalNavBarItemCss"
 msgctxt "docs.api:text"
 msgid "global-nav-bar"
 msgstr "global-nav-bar"
+
+msgctxt "docs.api:prose"
+msgid "Rebrand (light), Canvas, Canvas High Contrast:"
+msgstr "Ailfrandio (light), Canvas, Canvas High Contrast:"
+
+msgctxt "docs.api:prose"
+msgid " With prefers-contrast: less, one piece of text falls below the minimum contrast. The worst is \"Your session expires soon.\" at 2.74:1 (needs 4.5:1). Softer contrast is fine only while text stays readable."
+msgstr " Gyda prefers-contrast: less, mae un darn o destun yn disgyn islaw’r cyferbyniad lleiaf. Y gwaethaf yw “Your session expires soon.” ar 2.74:1 (angen 4.5:1). Mae cyferbyniad meddal yn dderbyniol yn unig tra bod y testun yn aros yn ddarllenadwy."
+
+msgctxt "docs.api:prose"
+msgid " With prefers-contrast: less, one piece of text falls below the minimum contrast. The worst is \"Your session expires soon.\" at 2.77:1 (needs 4.5:1). Softer contrast is fine only while text stays readable."
+msgstr " Gyda prefers-contrast: less, mae un darn o destun yn disgyn islaw’r cyferbyniad lleiaf. Y gwaethaf yw “Your session expires soon.” ar 2.77:1 (angen 4.5:1). Mae cyferbyniad meddal yn dderbyniol yn unig tra bod y testun yn aros yn ddarllenadwy."
+
+msgctxt "docs.api:prose"
+msgid " With prefers-contrast: less, one piece of text falls below the minimum contrast. The worst is \"Your session expires soon.\" at 1.48:1 (needs 4.5:1). Softer contrast is fine only while text stays readable."
+msgstr " Gyda prefers-contrast: less, mae un darn o destun yn disgyn islaw’r cyferbyniad lleiaf. Y gwaethaf yw “Your session expires soon.” ar 1.48:1 (angen 4.5:1). Mae cyferbyniad meddal yn dderbyniol yn unig tra bod y testun yn aros yn ddarllenadwy."
+
+msgctxt "docs.api:prose"
+msgid " With prefers-contrast: more, one piece of text falls below the minimum contrast. The worst is \"Your session expires soon.\" at 2.74:1 (needs 4.5:1)."
+msgstr " Gyda prefers-contrast: more, mae un darn o destun yn disgyn islaw’r cyferbyniad lleiaf. Y gwaethaf yw “Your session expires soon.” ar 2.74:1 (angen 4.5:1)."
+
+msgctxt "docs.api:prose"
+msgid "**Size** controls padding and gap: `relaxed` (default) is roomier; `compact` tightens both. **Color** sets the fill: bare (no modifier) is unfilled — border and icon only; `-color-violet` and `-color-sea` add a tinted background plus a matching icon swatch."
+msgstr "**Maint** sy'n rheoli'r padin a'r bwlch: `relaxed` (y rhagosodiad) yn fwy helaeth; `compact` yn tynhau'r ddau. **Lliw** sy'n pennu'r llenwad: mae'r cyflwr plaen (heb addasydd) heb ei lenwi — ymyl ac eicon yn unig; `-color-violet` a `-color-sea` yn ychwanegu cefndir arlliwiedig ynghyd â sampl lliw eicon sy'n cyfateb."
+
+msgctxt "docs.api:prose"
+msgid "Its own chained modifiers (`-color-*`, `-size-*`, `-shape-*`, `-toggle`, `-condensed`, `-without-background`, `-without-border`, `-display-block`) set a default for every child `.instui-button` that doesn't carry its own modifier in that same category — a button's own modifier class always wins over the group's default. `-icon-*` is always per-button; it's never read from the group. Deprecated button aliases (`-ghost`, `-color-primary-inverse`) aren't supported as group-level modifiers — use their canonical replacements (`-color-tertiary`, `-on-color`) instead. Each join shows a single 1px seam in the buttons' own border color (solid fills, whose border matches the fill, tint it with the label color). `-without-seam` is group-only: it hides that seam so the buttons read as one continuous control. Put `-width-half` on an individual icon-only child button for a split-action trigger with half the standard square width and the full button height."
+msgstr "Mae ei addaswyr cadwynedig ei hun (`-color-*`, `-size-*`, `-shape-*`, `-toggle`, `-condensed`, `-without-background`, `-without-border`, `-display-block`) yn gosod rhagosodiad ar gyfer pob plentyn `.instui-button` nad oes ganddo ei addasydd ei hun yn yr un categori — mae dosbarth addasydd y botwm ei hun bob amser yn drech na rhagosodiad y grŵp. `-icon-*` sydd bob amser yn perthyn i fotwm unigol; ni chaiff ei ddarllen o'r grŵp byth. Ni chynhelir arallenwau botwm anghymeradwy (`-ghost`, `-color-primary-inverse`) fel addaswyr ar lefel grŵp — defnyddiwch eu cyfnewidiadau canonaidd (`-color-tertiary`, `-on-color`) yn lle hynny. Mae pob uniad yn dangos un wythïen 1px yn lliw border y botymau eu hunain (mae llenwadau solet, y mae eu border yn cyfateb i'r llenwad, yn ei arlliwio â lliw'r label). Mae `-without-seam` ar gyfer y grŵp yn unig: mae'n cuddio'r wythïen honno fel bod y botymau'n ymddangos fel un rheolydd parhaus. Rhowch `-width-half` ar fotwm plentyn unigol sydd ag eicon yn unig, ar gyfer sbardun gweithred hollt sydd â hanner lled sgwâr safonol ac uchder llawn botwm."
+
+msgctxt "docs.api:prose"
+msgid "Rebrand (light), Rebrand (dark):"
+msgstr "Ailfrandio (golau), Ailfrandio (tywyll):"
+
+msgctxt "docs.api:prose"
+msgid " With prefers-contrast: less, four pieces of text fall below the minimum contrast. The worst is \"Disabled unselected\" at 2.74:1 (needs 4.5:1). Softer contrast is fine only while text stays readable."
+msgstr " Gyda prefers-contrast: less, mae pedwar darn o destun yn is na'r cyferbyniad lleiaf. Y gwaethaf yw \"Wedi'i analluogi heb ei ddewis\" ar 2.74:1 (angen 4.5:1). Mae cyferbyniad meddal yn dderbyniol dim ond tra bo'r testun yn parhau i fod yn ddarllenadwy."
+
+msgctxt "docs.api:prose"
+msgid " With prefers-contrast: more, four pieces of text fall below the minimum contrast. The worst is \"Disabled unselected\" at 2.74:1 (needs 4.5:1)."
+msgstr " Gyda prefers-contrast: more, mae pedwar darn o destun yn is na'r cyferbyniad lleiaf. Y gwaethaf yw \"Wedi'i analluogi heb ei ddewis\" ar 2.74:1 (angen 4.5:1)."
+
+msgctxt "docs.api:prose"
+msgid "The selected segment uses a distinct active-item shadow; it does not match an existing --instui-elevation-* composite. Overflow buttons use the upstream elevation3 component tokens."
+msgstr "Mae'r segment a ddewiswyd yn defnyddio cysgod eitem weithredol gwahanol; nid yw'n cyfateb â chyfansoddyn --instui-elevation-* presennol. Mae botymau gorlifo yn defnyddio'r tocynnau cydran elevation3 i fyny'r afon."
+
+msgctxt "docs.api:prose"
+msgid "A `-icon-*` class may live on the label or its native input; the interaction helper promotes input classes to the label so the shared glyph painter can render it."
+msgstr "Gall dosbarth `-icon-*` fod ar y label neu ar ei fewnbwn cynhenid; mae’r cymhorthydd rhyngweithio yn trosglwyddo dosbarthiadau mewnbwn i’r label fel y gall y peintiwr glyffau a rennir ei ddangos."
+
+msgctxt "docs.api:prose"
+msgid "The canonical record name from a record-opening tag, e.g. `button`."
+msgstr "Yr enw cofnod canonaidd o dag agor cofnod, e.e. `button`."
+
+msgctxt "docs.api:prose"
+msgid "Release maturity from `@stage` or a legacy maturity flag tag."
+msgstr "Aeddfedrwydd rhyddhau o `@stage` neu dag baner aeddfedrwydd etifeddol."
+
+msgctxt "docs.api:prose"
+msgid "Audience visibility; absent means public."
+msgstr "Gwelededd y gynulleidfa; mae absenoldeb yn golygu cyhoeddus."
+
+msgctxt "docs.api:prose"
+msgid "Set when this record carries a `@global` tag — its modifiers (and per-modifier `@global` flags)\napply to any record, not just this record's base class. Used during\nvalidation and consumption checks to resolve modifier matches globally."
+msgstr "Gosodir pan fydd y cofnod hwn yn cario dag `@global` — mae ei addaswyr (a fflagiau `@global` fesul addasydd)\nyn berthnasol i unrhyw gofnod, nid yn unig i ddosbarth sylfaen y cofnod hwn. Fe'i defnyddir yn ystod\ngwirio dilysu a defnydd i ddatrys cydweddiadau addaswyr yn fyd-eang."
+
+msgctxt "docs.api:prose"
+msgid "Private `@example` labels, keyed by zero-based index into [examples](#examples)."
+msgstr "Labeli preifat `@example`, wedi'u mynegeio yn ôl mynegai'n dechrau o sero yn [examples](#examples)."
