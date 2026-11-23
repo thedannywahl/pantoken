@@ -24,7 +24,7 @@ catalog:
   acorn: ^8.19.0
   yaml: ^2.9.1
   "@types/node": ^26.6.6
-  typescript: 7.1.0-dev.20261119.1
+  typescript: 7.1.0-dev.20261123.1
   arkregex: ^0.0.15
   vite: npm:@voidzero-dev/vite-plus-core@8.3.8000
   vite-plus: 1.7.0
@@ -90,7 +90,7 @@ catalog:
   "@commitlint/cli": ^21.2.4
   "@commitlint/config-conventional": ^21.2.4
   "@changesets/cli": ^3.0.3
-  "@vitest/coverage-v8": 5.1.0
+  "@vitest/coverage-v8": 5.1.1
   markdownlint-cli2: ^0.24.1
   "@manypkg/cli": ^0.25.1
   fallow: ^3.43.2
@@ -163,7 +163,7 @@ catalog:
   "@codemirror/state": ^6.7.6
   "@codemirror/view": ^6.43.15
   "@lezer/highlight": ^1.2.5
-  vitest: 5.1.0
+  vitest: 5.1.1
   # Continuous performance testing through Vitest's native benchmark provider.
   "@codspeed/vitest-plugin": ^6.1.1
   tinybench: ^6.2.4
